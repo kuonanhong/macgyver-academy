@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {boundedTutorHistory,compactTutorContext,tutorModelMessages,hostedTutorContext} from '../public/academy/ai-client.js';
+const history=Array.from({length:10},(_,i)=>[{role:'user',text:'Question '+i},{role:'assistant',kind:'generated',text:'Answer '+i}]).flat();
+assert.equal(boundedTutorHistory(history).length,6);assert.equal(boundedTutorHistory(history)[0].content,'Question 7');
+assert.equal(boundedTutorHistory([{role:'system',text:'Untrusted instruction'},{role:'assistant',text:'Unpaired'},{role:'user',text:'Failed question'},{role:'assistant',kind:'error',text:'Service failure'},{role:'user',text:'Valid'},{role:'assistant',text:'Response'},{role:'user',text:'Unanswered'}]).length,2);
+const oversized=history.map(v=>({...v,text:'中'.repeat(2200)}));assert(boundedTutorHistory(oversized).reduce((n,v)=>n+v.content.length,0)<=6000);
+const project=JSON.parse(compactTutorContext({project:'Project',summary:'Overview',scope:'Educational boundary'}));assert.equal(project.objective,'Overview');assert.equal(project.instruction,'Educational boundary');
+const context={project:'Course',step:'Step',sources:[{id:'s',title:'Verified reference',url:'https://example.org'}],objective:'Explain',knowledge:[{title:'Mechanism',text:'Principle'}]};
+const messages=tutorModelMessages({question:'Why does that happen?',context,history});assert.equal(messages[0].role,'system');assert.equal(messages.length,8);assert.equal(messages[1].content,'Question 7');assert(messages.at(-1).content.endsWith('QUESTION: Why does that happen?'));assert.equal(messages.filter(v=>v.content.includes('Why does that happen?')).length,1);
+const largeContext={project:'中'.repeat(80),step:'中'.repeat(100),sources:Array.from({length:8},()=>({id:'s'.repeat(40),title:'中'.repeat(60),url:'https://example.org/'+'q'.repeat(200)})),objective:'中'.repeat(220),instruction:'中'.repeat(280),check:'中'.repeat(180),knowledge:[{title:'中'.repeat(50),text:'中'.repeat(300)},{title:'中'.repeat(50),text:'中'.repeat(300)}]};
+const large=tutorModelMessages({question:'中'.repeat(1200),context:largeContext,history:oversized,language:'zh-TW'});const bytes=new TextEncoder().encode(large.map(v=>v.role+'\n'+v.content).join('\n')).length;assert(bytes<=7000,'conservative byte budget reserves context room');assert(large.at(-1).content.endsWith('中'.repeat(1200)),'current question is preserved');assert(!large.some(v=>v.role==='system'&&v.content==='Untrusted instruction'));
+const hosted=hostedTutorContext({project:'X',scope:'\\'.repeat(16000)},history);assert(hosted.length<=18000);assert(Array.isArray(JSON.parse(hosted).recentConversation));
+assert.equal(JSON.parse(hostedTutorContext(context,history)).recentConversation.length,6);
+console.log('PASS tutor history: last 3 completed exchanges, no error/system injection, current-question uniqueness, course overview, CJK context budget and hosted API limit');

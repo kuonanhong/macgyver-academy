@@ -1,0 +1,1571 @@
+{
+  "courses": [
+    {
+      "courseId": "idf",
+      "overview": "把公開航空製造案例延伸到檢測、接合與需求追溯。以下是民用工程方法的原創桌面練習，不提供經國號結構尺寸、性能改良或武器製造程序。",
+      "overviewEn": "Extend public aerospace manufacturing into inspection, joining and requirements traceability. These original desk exercises cover civilian engineering methods, not IDF dimensions, performance improvements or weapons manufacturing.",
+      "references": [
+        {
+          "title": "Quality Assurance",
+          "publisher": "AIDC 漢翔",
+          "url": "https://www.aidc.com.tw/en/about/quality",
+          "scope": "公開品質能力及量測、無損檢測方法的分類；未提供軍機工件尺寸或製造配方。",
+          "scopeEn": "Public quality capabilities and metrology/NDT categories; no military-part dimensions or manufacturing recipes.",
+          "titleEn": "Quality Assurance"
+        },
+        {
+          "title": "Aviation Handbooks & Manuals — Maintenance Technician handbooks",
+          "publisher": "FAA",
+          "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation",
+          "scope": "官方維修教育手冊入口；選讀 General／Airframe 的材料、圖面、檢查與紀錄原理。",
+          "scopeEn": "Official maintenance-education handbook index; General/Airframe support materials, drawings, inspection and records principles.",
+          "titleEn": "Aviation Handbooks & Manuals — Maintenance Technician handbooks"
+        },
+        {
+          "title": "NASA Systems Engineering Handbook",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/reference/systems-engineering-handbook/",
+          "scope": "需求、介面、驗證與組態管理的一般方法；不代表任何機型的原廠資料。",
+          "scopeEn": "General requirements, interfaces, verification and configuration methods; not documentation for a particular aircraft or vehicle.",
+          "titleEn": "NASA Systems Engineering Handbook"
+        },
+        {
+          "title": "2.008 Design and Manufacturing II (Spring 2025)",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+          "scope": "製程物理、製造設計、裝配、變異與品質的大學課程；跨域練習為本網站原創。",
+          "scopeEn": "University material on process physics, manufacturing design, assembly, variation and quality; transfer exercises are original to this site.",
+          "titleEn": "2.008 Design and Manufacturing II (Spring 2025)"
+        },
+        {
+          "title": "Engineering Statistics Handbook — Measurement Process Characterization",
+          "publisher": "NIST/SEMATECH",
+          "url": "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm",
+          "scope": "量測偏差、重複性、再現性、校準與不確定度；不指定產品放行公差。",
+          "scopeEn": "Measurement bias, repeatability, reproducibility, calibration and uncertainty; no product acceptance tolerances.",
+          "titleEn": "Engineering Statistics Handbook — Measurement Process Characterization"
+        }
+      ],
+      "related": [
+        {
+          "id": "c052",
+          "title": "航空複材超音波檢測",
+          "titleEn": "Aircraft composite ultrasonic inspection",
+          "why": "外觀良好無法排除複材內部分層，適合學習可觀察證據的限制。",
+          "whyEn": "A clean surface cannot exclude internal delamination; learn the limits of observable evidence.",
+          "transfer": "把「缺陷假設—檢查方法—參考樣本」的配對方式轉用到一般複材零件。",
+          "transferEn": "Transfer the pairing of defect hypothesis, inspection method and reference specimen to ordinary composite parts.",
+          "difference": "金屬尺寸量測與複材內部檢測解答不同問題；教學圖不構成缺陷判退標準。",
+          "differenceEn": "Metal dimensional checks and composite internal inspection answer different questions; sketches are not rejection criteria.",
+          "practice": [
+            "畫出非飛行用夾層試片，標出表面及假想分層。",
+            "列出目視與超音波各能支持的判斷。",
+            "寫出還缺少的校準樣本、材料方向及授權驗收依據。"
+          ],
+          "practiceEn": [
+            "Sketch a nonflying sandwich coupon with a hypothetical delamination.",
+            "List what visual and ultrasonic evidence can each support.",
+            "Identify missing reference specimens, material orientation and approved acceptance criteria."
+          ],
+          "referenceUrls": [
+            "https://www.aidc.com.tw/en/about/quality",
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation"
+          ]
+        },
+        {
+          "id": "c492",
+          "title": "三次元量床校準",
+          "titleEn": "Coordinate-measuring machine calibration",
+          "why": "大型裝配孔位必須共享座標基準，否則兩份合格報告仍可能無法接合。",
+          "whyEn": "Assembly hole locations need common datums; individually acceptable reports may otherwise disagree.",
+          "transfer": "轉用座標框架、探測策略與量測不確定度的紀錄方法。",
+          "transferEn": "Transfer documentation of coordinate frames, probing strategy and measurement uncertainty.",
+          "difference": "校準設備不等於證明每個工件合格；溫度、夾持及取點也影響結果。",
+          "differenceEn": "Instrument calibration does not certify every part; temperature, fixturing and sampling affect results.",
+          "practice": [
+            "替虛構支架指定三個基準特徵。",
+            "用自訂座標比較更換基準前後的孔位報告。",
+            "把儀器偏差與工件位置偏差分成兩欄。"
+          ],
+          "practiceEn": [
+            "Assign three datum features to a fictional bracket.",
+            "Compare hole coordinates before and after changing the datum using invented values.",
+            "Separate instrument bias from part-position error."
+          ],
+          "referenceUrls": [
+            "https://www.aidc.com.tw/en/about/quality",
+            "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm"
+          ]
+        },
+        {
+          "id": "c068",
+          "title": "航空線束製造與追溯",
+          "titleEn": "Aircraft wiring-harness manufacturing",
+          "why": "線束將機械配置與電氣連通連在一起，也容易因版本不一致而裝錯。",
+          "whyEn": "Harnesses connect mechanical layout and electrical continuity and are vulnerable to version mismatches.",
+          "transfer": "保留接頭、導線標識及修訂版之間的追溯關係，可轉用到民用設備線束。",
+          "transferEn": "Trace connector, wire identification and revision relationships in civilian equipment harnesses.",
+          "difference": "連通測試不能取代絕緣、環境及安裝合適性驗證；不得推定實機腳位。",
+          "differenceEn": "Continuity does not replace insulation, environmental or installation checks; do not infer aircraft pinouts.",
+          "practice": [
+            "畫三個虛構低壓模組的連接關係。",
+            "給每一條線與接頭唯一編號及版本。",
+            "模擬一個接頭變更，列出受影響的文件與檢查項目。"
+          ],
+          "practiceEn": [
+            "Draw connections among three fictional low-voltage modules.",
+            "Assign unique wire/connector IDs and revisions.",
+            "Simulate one connector change and list affected documents and checks."
+          ],
+          "referenceUrls": [
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation",
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        },
+        {
+          "id": "c074",
+          "title": "航電軟體需求追溯",
+          "titleEn": "Avionics software requirements traceability",
+          "why": "系統需求若無法連到測試結果，就難以判定修改是否完整。",
+          "whyEn": "A requirement without linked test evidence makes change completeness difficult to assess.",
+          "transfer": "把需求、設計決策、測試與變更串成可雙向查找的證據表。",
+          "transferEn": "Link requirements, design decisions, tests and changes in a bidirectional evidence table.",
+          "difference": "桌面軟體測試不等於航空軟體取證，也未涵蓋實機時序與失效條件。",
+          "differenceEn": "Desk software tests are not aviation certification and omit real timing and failure conditions.",
+          "practice": [
+            "為虛構溫度顯示器寫三條可驗證需求。",
+            "每條需求連到一個正常與一個邊界測試。",
+            "改動顯示範圍後，標記需重新驗證的項目。"
+          ],
+          "practiceEn": [
+            "Write three testable requirements for a fictional temperature display.",
+            "Link each to a nominal and a boundary test.",
+            "Change its display range and mark evidence that needs renewal."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        },
+        {
+          "id": "c046",
+          "title": "航空鉚接接頭品質管理",
+          "titleEn": "Aircraft riveted-joint quality",
+          "why": "接頭品質連結孔位、材料、裝配順序與載荷路徑。",
+          "whyEn": "Joint quality connects hole geometry, materials, assembly sequence and load paths.",
+          "transfer": "轉用基準一致性、接合前檢查與過程可追溯性到非承載教學接頭。",
+          "transferEn": "Transfer datum consistency, pre-join checks and traceability to a nonstructural teaching joint.",
+          "difference": "外觀尺寸相似不代表疲勞與腐蝕行為相同；不同材料接合不能套用同一工法。",
+          "differenceEn": "Similar appearance does not establish equal fatigue or corrosion behavior; joining methods depend on materials.",
+          "practice": [
+            "用紙板畫搭接與對接的載荷路徑。",
+            "建立孔位、材料批次與外觀的檢查表。",
+            "說明哪項問題需要材料試片而非照片判讀。"
+          ],
+          "practiceEn": [
+            "Draw load paths for lap and butt joints on cardboard.",
+            "Create a checklist for hole location, material lot and appearance.",
+            "Identify a question requiring material coupons rather than photographs."
+          ],
+          "referenceUrls": [
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation",
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/"
+          ]
+        },
+        {
+          "id": "c075",
+          "title": "飛機系統故障樹分析",
+          "titleEn": "Aircraft-system fault-tree analysis",
+          "why": "整機正常運作需要多個功能同時成立，故障不能只逐零件理解。",
+          "whyEn": "System operation depends on interacting functions, so failures cannot be understood component by component alone.",
+          "transfer": "用頂端事件、因果分支與共同原因分類，分析一般設備的功能中斷。",
+          "transferEn": "Use top events, causal branches and common-cause categories for ordinary equipment outages.",
+          "difference": "未知故障率不能填成零；只有邏輯樹而無證據時，不宣稱可靠度數值。",
+          "differenceEn": "Unknown failure rates are not zero; a logical tree alone cannot establish numerical reliability.",
+          "practice": [
+            "以「教學顯示器失去讀值」作頂端事件。",
+            "畫出電源、感測與資料路徑的概念分支。",
+            "找出兩個分支共用的依賴並標記未知證據。"
+          ],
+          "practiceEn": [
+            "Use loss of a teaching display reading as the top event.",
+            "Draw conceptual power, sensing and data-path branches.",
+            "Identify a shared dependency and mark unknown evidence."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "apache",
+      "overview": "以阿帕契作公共案例入口，延伸到民用旋翼機的力學、振動、重量平衡與工作紀錄。練習只使用符號、虛構資料或桌面模型，不調整真實飛行器，也不涉及武器系統。",
+      "overviewEn": "Use the Apache as public context for civilian rotorcraft mechanics, vibration, weight/balance and work records. Exercises use symbols, fictional data or desk models, with no real aircraft adjustment or weapons systems.",
+      "references": [
+        {
+          "title": "Helicopter Flying Handbook",
+          "publisher": "FAA",
+          "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook",
+          "scope": "民用直升機力學、重量平衡與系統概念；不是阿帕契操作、維修或武器手冊。",
+          "scopeEn": "Civil-helicopter mechanics, weight/balance and system concepts; not an Apache operating, maintenance or weapons manual.",
+          "titleEn": "Helicopter Flying Handbook"
+        },
+        {
+          "title": "2.003SC Engineering Dynamics",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/",
+          "scope": "剛體動力學、轉動、不平衡激振與振動模型；只用符號或低風險桌面模型。",
+          "scopeEn": "Rigid-body dynamics, rotation, imbalance excitation and vibration models, used only in symbolic or low-risk desk exercises.",
+          "titleEn": "2.003SC Engineering Dynamics"
+        },
+        {
+          "title": "Rotorcraft Collective — preflight and icing education",
+          "publisher": "FAA / FAASTeam",
+          "url": "https://www.faasafety.gov/SPANS/noticeView.aspx?nid=13463",
+          "scope": "飛前觀察、旅客安全與地面結冰的民用教育影片索引。",
+          "scopeEn": "Civil educational video index for preflight observation, passenger safety and ground icing.",
+          "titleEn": "Rotorcraft Collective — preflight and icing education"
+        },
+        {
+          "title": "Aviation Handbooks & Manuals — Maintenance Technician handbooks",
+          "publisher": "FAA",
+          "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation",
+          "scope": "官方維修教育手冊入口；選讀 General／Airframe 的材料、圖面、檢查與紀錄原理。",
+          "scopeEn": "Official maintenance-education handbook index; General/Airframe support materials, drawings, inspection and records principles.",
+          "titleEn": "Aviation Handbooks & Manuals — Maintenance Technician handbooks"
+        },
+        {
+          "title": "NASA Systems Engineering Handbook",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/reference/systems-engineering-handbook/",
+          "scope": "需求、介面、驗證與組態管理的一般方法；不代表任何機型的原廠資料。",
+          "scopeEn": "General requirements, interfaces, verification and configuration methods; not documentation for a particular aircraft or vehicle.",
+          "titleEn": "NASA Systems Engineering Handbook"
+        }
+      ],
+      "related": [
+        {
+          "id": "c087",
+          "title": "直升機旋翼追蹤與平衡",
+          "titleEn": "Helicopter rotor tracking and balancing",
+          "why": "旋翼的週期運動讓振動方向與頻率成為可比較的證據。",
+          "whyEn": "Periodic rotor motion makes vibration direction and frequency useful evidence.",
+          "transfer": "由簡化旋轉質量模型理解激振與量測的關係，再區分追蹤與平衡兩個問題。",
+          "transferEn": "Use a simplified rotating-mass model to distinguish excitation, measurement, tracking and balance.",
+          "difference": "槳葉軌跡與質量不平衡不能互相替代；此練習不提供配重或槳距調整程序。",
+          "differenceEn": "Blade tracking and mass balance are distinct; no balance-weight or blade-pitch adjustment procedure is supplied.",
+          "practice": [
+            "畫出理想旋轉平面與假想偏移軌跡。",
+            "將兩組自製正弦波標上頻率與相位。",
+            "列出判斷原因前仍需的轉速基準與感測方向。"
+          ],
+          "practiceEn": [
+            "Draw an ideal rotation plane and an imagined displaced track.",
+            "Label frequency and phase on two invented sine waves.",
+            "List required speed references and sensing directions before diagnosing a cause."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/",
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook"
+          ]
+        },
+        {
+          "id": "c081",
+          "title": "飛機地面振動試驗",
+          "titleEn": "Aircraft ground-vibration testing",
+          "why": "結構自然頻率與旋轉激振頻率接近時，單看靜態剛度可能漏掉動態問題。",
+          "whyEn": "Static stiffness alone can miss dynamic problems when forcing approaches a natural frequency.",
+          "transfer": "使用質量—彈簧—阻尼模型比較共振、阻尼與感測位置。",
+          "transferEn": "Compare resonance, damping and sensor placement using a mass-spring-damper model.",
+          "difference": "單自由度示意不能替代具有多個模態的整機地面振動試驗。",
+          "differenceEn": "A single-degree model cannot replace a whole-aircraft test with multiple modes.",
+          "practice": [
+            "畫一個單自由度模型並標出輸入與量測量。",
+            "用假設參數比較低阻尼與高阻尼頻率響應。",
+            "說明增加質量後，哪些原先的比較條件已改變。"
+          ],
+          "practiceEn": [
+            "Draw a single-degree model with input and measured output.",
+            "Compare frequency responses for assumed low and high damping.",
+            "Explain which comparison conditions change when mass is added."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/"
+          ]
+        },
+        {
+          "id": "c080",
+          "title": "飛機重量與平衡管理",
+          "titleEn": "Aircraft weight and balance management",
+          "why": "相同總重量仍可能具有不同重心，功能配置必須連同位置考慮。",
+          "whyEn": "Equal total mass can produce different centers of gravity, making placement part of system design.",
+          "transfer": "把質量、位置與力矩表的做法轉用到小型教學模型。",
+          "transferEn": "Transfer mass-position-moment bookkeeping to small teaching models.",
+          "difference": "算出重心不等於符合飛行包線；本例不用阿帕契裝載資料。",
+          "differenceEn": "A center-of-gravity calculation does not prove flight-envelope compliance; no Apache loading data is used.",
+          "practice": [
+            "為三個紙上模組指定任意一致單位的質量與位置。",
+            "計算移動同一模組前後的重心。",
+            "將計算結果與尚缺的允許範圍分開記錄。"
+          ],
+          "practiceEn": [
+            "Assign arbitrary consistent masses and locations to three paper modules.",
+            "Calculate the center of gravity before and after relocating one module.",
+            "Record the result separately from the still-unknown allowed envelope."
+          ],
+          "referenceUrls": [
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook",
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation"
+          ]
+        },
+        {
+          "id": "c066",
+          "title": "飛機除冰防冰系統",
+          "titleEn": "Aircraft ice-protection systems",
+          "why": "結冰可能同時影響外形、感測與地面活動，適合練習系統邊界。",
+          "whyEn": "Icing can affect shape, sensing and ground activity, making it useful for system-boundary reasoning.",
+          "transfer": "建立環境條件—受影響功能—觀察證據的對照表。",
+          "transferEn": "Map environmental conditions to affected functions and observable evidence.",
+          "difference": "防冰與除冰功能不同；通用教育材料不能當作特定機型放飛判定。",
+          "differenceEn": "Anti-icing and deicing are different functions; general education is not an aircraft release decision.",
+          "practice": [
+            "從官方影片列出三種可觀察的結冰相關風險。",
+            "把事前避免與事後清除分成兩類功能。",
+            "標記必須查閱型號文件及合格人員決策的事項。"
+          ],
+          "practiceEn": [
+            "Identify three observable icing-related risks from official material.",
+            "Separate prevention from removal functions.",
+            "Mark decisions requiring type documentation and qualified personnel."
+          ],
+          "referenceUrls": [
+            "https://www.faasafety.gov/SPANS/noticeView.aspx?nid=13463",
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/helicopter_flying_handbook"
+          ]
+        },
+        {
+          "id": "c078",
+          "title": "航空維修數位工卡",
+          "titleEn": "Digital aircraft maintenance work cards",
+          "why": "複雜維護跨多人與班次，口頭記憶不足以保存狀態。",
+          "whyEn": "Complex maintenance spans people and shifts; memory alone cannot preserve work state.",
+          "transfer": "將完成條件、未決事項與覆核欄位轉成可交接的數位工卡。",
+          "transferEn": "Transfer completion criteria, open issues and review fields into a handover-ready work card.",
+          "difference": "勾選欄位只記錄動作，不自動證明適航，也不能用來代替檢驗證據。",
+          "differenceEn": "A checked box records an action, not airworthiness, and cannot replace inspection evidence.",
+          "practice": [
+            "為桌面模型的外觀檢查設計一張工卡。",
+            "加入人員、時間、版本、發現及附件欄位。",
+            "故意留下未決事項，確認下個人能辨識不能放行的原因。"
+          ],
+          "practiceEn": [
+            "Design a visual-inspection card for a desk model.",
+            "Include person, time, revision, findings and evidence fields.",
+            "Leave an open issue and verify that another reader can identify the hold reason."
+          ],
+          "referenceUrls": [
+            "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation",
+            "https://www.faasafety.gov/SPANS/noticeView.aspx?nid=13463"
+          ]
+        },
+        {
+          "id": "c075",
+          "title": "飛機系統故障樹分析",
+          "titleEn": "Aircraft-system fault-tree analysis",
+          "why": "多套功能共用電源或感測資料時，重複裝置不必然等於獨立備援。",
+          "whyEn": "Duplicated equipment is not necessarily independent when power or sensor data are shared.",
+          "transfer": "把共同原因與依賴關係的分析轉用到民用監測系統。",
+          "transferEn": "Transfer common-cause and dependency analysis to civilian monitoring systems.",
+          "difference": "沒有系統邊界與故障證據，不能由備援數量估算安全程度。",
+          "differenceEn": "Redundancy count alone cannot establish safety without boundaries and failure evidence.",
+          "practice": [
+            "畫出兩個虛構顯示通道及其共用電源。",
+            "分別列出單通道與共用依賴失效。",
+            "寫出哪個假設需要新的驗證，而非再加一個顯示器。"
+          ],
+          "practiceEn": [
+            "Draw two fictional display channels and their shared supply.",
+            "Separate channel failures from shared-dependency failures.",
+            "Identify an assumption needing verification rather than another display."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "submarine",
+      "overview": "從公開水下載具案例轉向科學潛器的浮力、耐壓、介面與驗證。來源支持的是民用海洋研究原理；練習不設計軍用艦體、不製作載人耐壓容器，也不進行加壓試驗。",
+      "overviewEn": "Move from public underwater-vehicle context to scientific buoyancy, pressure, interfaces and verification. Sources support civilian ocean science; exercises do not design naval hulls, build human-occupied pressure vessels or conduct pressure tests.",
+      "references": [
+        {
+          "title": "How do ocean robots take the pressure?",
+          "publisher": "Woods Hole Oceanographic Institution",
+          "url": "https://www.whoi.edu/ocean-learning-hub/ocean-facts/how-do-ocean-robots-take-the-pressure/",
+          "scope": "科學水下載具的外壓、浮力與材料取捨；本延伸不提供耐壓艙製造尺寸。",
+          "scopeEn": "External pressure, buoyancy and material tradeoffs in scientific vehicles; this extension provides no pressure-housing construction dimensions.",
+          "titleEn": "How do ocean robots take the pressure?"
+        },
+        {
+          "title": "Holding Up Under Pressure",
+          "publisher": "Woods Hole Oceanographic Institution",
+          "url": "https://www.whoi.edu/ocean-learning-hub/multimedia/bearing-up-under-pressure/",
+          "scope": "Alvin 浮力泡材的公開介紹與專業驗證背景，不是配方或自製壓力試驗指引。",
+          "scopeEn": "Public background on Alvin flotation material and professional validation, not a formulation or home pressure-test procedure.",
+          "titleEn": "Holding Up Under Pressure"
+        },
+        {
+          "title": "Alvin — User Supplied Equipment",
+          "publisher": "WHOI / National Deep Submergence Facility",
+          "url": "https://ndsf.whoi.edu/alvin/user-supplied-equipment/",
+          "scope": "民用科學儀器的重量、介面、材料與提交審查要求；不推廣到軍用艦艇規格。",
+          "scopeEn": "Mass, interfaces, materials and review requirements for civilian science instruments; not naval-vessel specifications.",
+          "titleEn": "Alvin — User Supplied Equipment"
+        },
+        {
+          "title": "Micromodem",
+          "publisher": "WHOI Acoustic Communications Group",
+          "url": "https://acomms.whoi.edu/micro-modem",
+          "scope": "公開水聲資料傳輸與整體吞吐量的區別；不用於軍用通訊或隱蔽作業。",
+          "scopeEn": "Public distinction between acoustic packet transmission and end-to-end throughput; no military communications or covert operations.",
+          "titleEn": "Micromodem"
+        },
+        {
+          "title": "NASA Systems Engineering Handbook",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/reference/systems-engineering-handbook/",
+          "scope": "需求、介面、驗證與組態管理的一般方法；不代表任何機型的原廠資料。",
+          "scopeEn": "General requirements, interfaces, verification and configuration methods; not documentation for a particular aircraft or vehicle.",
+          "titleEn": "NASA Systems Engineering Handbook"
+        }
+      ],
+      "related": [
+        {
+          "id": "c185",
+          "title": "水下科學機器人耐壓艙",
+          "titleEn": "Scientific ROV pressure housings",
+          "why": "水下電子裝置的外殼不只是防水，還面對外部壓差。",
+          "whyEn": "An underwater electronics enclosure faces external pressure differences as well as water exposure.",
+          "transfer": "把環境負載、材料限制與驗證證據分開列入設計需求表。",
+          "transferEn": "Separate environmental loading, material constraints and verification evidence in requirements.",
+          "difference": "外壓失穩與內壓膨脹是不同問題；常壓容器或防潑水等級不能推定深水能力。",
+          "differenceEn": "External-pressure instability differs from internal-pressure expansion; splash resistance does not establish depth capability.",
+          "practice": [
+            "畫出內外壓力方向，不標製造尺寸。",
+            "列出外殼、窗口與接頭各自需要的證據類型。",
+            "指出只有照片或材料名稱時仍無法判定的能力。"
+          ],
+          "practiceEn": [
+            "Sketch internal and external pressure directions without construction dimensions.",
+            "List evidence needed for the housing, window and connector separately.",
+            "Identify capabilities that photographs or material names cannot establish."
+          ],
+          "referenceUrls": [
+            "https://www.whoi.edu/ocean-learning-hub/ocean-facts/how-do-ocean-robots-take-the-pressure/"
+          ]
+        },
+        {
+          "id": "c186",
+          "title": "水下機器人浮力材料",
+          "titleEn": "Underwater-robot buoyancy materials",
+          "why": "載具增重會改變浮力需求，材料選擇不能只看強度。",
+          "whyEn": "Added vehicle mass changes buoyancy requirements, so strength alone is an incomplete material criterion.",
+          "transfer": "用質量、排水體積與損傷狀態的分項帳，追蹤浮力變化。",
+          "transferEn": "Track buoyancy changes with separate accounts for mass, displacement and damage state.",
+          "difference": "低密度不等於深海可用；壓縮、吸水及循環損傷都需要專業證據。",
+          "differenceEn": "Low density does not establish deep-ocean suitability; compression, water uptake and cyclic damage need evidence.",
+          "practice": [
+            "用任意單位建立三個虛構材料的質量與體積表。",
+            "只比較理想浮力，再列出模型忽略的材料行為。",
+            "設計觀察紀錄欄位來區分初始狀態與服役後損傷。"
+          ],
+          "practiceEn": [
+            "Tabulate assumed masses and volumes for three fictional materials.",
+            "Compare ideal buoyancy and list omitted material behavior.",
+            "Design observation fields separating initial condition from service damage."
+          ],
+          "referenceUrls": [
+            "https://www.whoi.edu/ocean-learning-hub/multimedia/bearing-up-under-pressure/",
+            "https://www.whoi.edu/ocean-learning-hub/ocean-facts/how-do-ocean-robots-take-the-pressure/"
+          ]
+        },
+        {
+          "id": "c188",
+          "title": "海洋感測器水密接頭",
+          "titleEn": "Marine sensor watertight connectors",
+          "why": "感測器整合常在接頭、電源與資料格式交界出現問題。",
+          "whyEn": "Sensor integration often fails at connector, power and data-format boundaries.",
+          "transfer": "把機械、電氣、資料與環境限制寫成同一份介面表。",
+          "transferEn": "Put mechanical, electrical, data and environmental constraints in one interface table.",
+          "difference": "接頭可插合不代表電壓、資料語意或耐環境能力相容；不用真實腳位圖推作。",
+          "differenceEn": "Mating connectors do not prove electrical, semantic or environmental compatibility; no inferred real pinouts are used.",
+          "practice": [
+            "替虛構溫度記錄器列出四類介面。",
+            "用紙上例子找出一個單位或資料時間戳不一致。",
+            "建立需由供應者確認的未決欄位，不自行補上未知規格。"
+          ],
+          "practiceEn": [
+            "List four interface categories for a fictional temperature logger.",
+            "Find a units or timestamp mismatch in a paper example.",
+            "Create open fields for supplier confirmation rather than inventing specifications."
+          ],
+          "referenceUrls": [
+            "https://ndsf.whoi.edu/alvin/user-supplied-equipment/",
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        },
+        {
+          "id": "c189",
+          "title": "水下聲學通訊",
+          "titleEn": "Underwater acoustic communications",
+          "why": "水聲封包速率與有效資料到達率不同，等待與重傳也佔時間。",
+          "whyEn": "Acoustic packet rate differs from useful delivery rate because waiting and retries consume time.",
+          "transfer": "把端到端延遲拆成傳輸、傳播、處理與回覆等時間帳。",
+          "transferEn": "Break end-to-end delay into transmission, propagation, processing and acknowledgment.",
+          "difference": "無線網路的直覺不能直接套入水聲環境；本例不提供軍用通訊配置。",
+          "differenceEn": "Radio-network assumptions do not transfer directly underwater; no military communication configuration is provided.",
+          "practice": [
+            "畫一段科學儀器到接收端的封包時間線。",
+            "以假設時間比較有回覆與無回覆的有效吞吐量。",
+            "分開標記量測值、假設值與尚未量到的時間。"
+          ],
+          "practiceEn": [
+            "Draw a packet timeline from a science instrument to its receiver.",
+            "Compare assumed throughput with and without acknowledgment.",
+            "Distinguish measured, assumed and unknown time terms."
+          ],
+          "referenceUrls": [
+            "https://acomms.whoi.edu/micro-modem"
+          ]
+        },
+        {
+          "id": "c197",
+          "title": "商船海上試航驗收",
+          "titleEn": "Merchant-vessel sea-trial acceptance",
+          "why": "單一元件通過檢查後，還需確認整合後的功能與資料紀錄。",
+          "whyEn": "Component checks must be followed by integrated functional and data-record verification.",
+          "transfer": "借用試航驗收的需求—證據思路，建立不下水的桌面整合矩陣。",
+          "transferEn": "Borrow acceptance-trial traceability to build a dry desk-integration matrix.",
+          "difference": "商船試航與潛器專業驗證的環境、風險及授權不同，不能共用通過門檻。",
+          "differenceEn": "Merchant-vessel trials and submersible qualification have different conditions, risks and authorities.",
+          "practice": [
+            "為虛構科學載具列出電源、資料與狀態回報需求。",
+            "為每項需求指定可查驗的輸出及責任人。",
+            "把未驗證環境條件標成待辦，不以桌面成功替代。"
+          ],
+          "practiceEn": [
+            "List power, data and status-reporting requirements for a fictional science vehicle.",
+            "Assign inspectable output and an owner to each requirement.",
+            "Mark unverified environments as open rather than treating desk success as qualification."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/reference/systems-engineering-handbook/",
+            "https://ndsf.whoi.edu/alvin/user-supplied-equipment/"
+          ]
+        },
+        {
+          "id": "c101",
+          "title": "Alvin 載人科學潛器",
+          "titleEn": "Alvin human-occupied research submersible",
+          "why": "Alvin 展示了載具與外加科學儀器之間的整合關係。",
+          "whyEn": "Alvin illustrates integration between a vehicle and user-supplied scientific instruments.",
+          "transfer": "從公開儀器提交要求學習重量、占用空間、材料與操作責任的協調。",
+          "transferEn": "Use public instrument-submission requirements to study mass, volume, materials and responsibility coordination.",
+          "difference": "科學潛器的任務、認證與操作體系和國造潛艦不同，不能從前者反推後者規格。",
+          "differenceEn": "Scientific submersibles differ from naval submarines in mission, certification and operation; one cannot reveal the other’s specifications.",
+          "practice": [
+            "畫出載具平台與一件虛構取樣儀器的功能邊界。",
+            "將需求分成平台提供與儀器提供兩欄。",
+            "模擬儀器增重，列出需通知及重新核對的介面。"
+          ],
+          "practiceEn": [
+            "Draw the boundary between a platform and a fictional sampling instrument.",
+            "Separate platform-provided and instrument-provided functions.",
+            "Simulate added instrument mass and list interfaces requiring review."
+          ],
+          "referenceUrls": [
+            "https://ndsf.whoi.edu/alvin/user-supplied-equipment/",
+            "https://www.whoi.edu/ocean-learning-hub/ocean-facts/how-do-ocean-robots-take-the-pressure/"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "cybersecurity",
+      "overview": "把防禦網路延伸為身分、存取、復原、事件與工控界面的學習鏈。所有練習使用虛構資產、合成日誌或自己擁有的隔離測試資料，不對第三方系統掃描或更改設定。",
+      "overviewEn": "Extend defensive networking into identity, access, recovery, incidents and OT interfaces. Exercises use fictional assets, synthetic logs or owned isolated test data, without scanning third-party systems or changing their configuration.",
+      "references": [
+        {
+          "title": "SP 800-207 — Zero Trust Architecture",
+          "publisher": "NIST",
+          "url": "https://csrc.nist.gov/pubs/sp/800/207/final",
+          "scope": "資源導向存取決策、身分與設備的驗證；只在自有隔離模型中練習。",
+          "scopeEn": "Resource-oriented access decisions and identity/device verification, practiced only in owned isolated models.",
+          "titleEn": "SP 800-207 — Zero Trust Architecture"
+        },
+        {
+          "title": "Digital Identity Guidelines — Authentication and Authenticator Management (800-63-4)",
+          "publisher": "NIST",
+          "url": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+          "scope": "驗證因子、驗證器生命週期與復原的技術背景；不在此聲稱合規認證。",
+          "scopeEn": "Technical background on factors, authenticator lifecycle and recovery; no compliance certification is claimed here.",
+          "titleEn": "Digital Identity Guidelines — Authentication and Authenticator Management (800-63-4)"
+        },
+        {
+          "title": "SP 800-61 Rev. 3 — Incident Response Recommendations and Considerations",
+          "publisher": "NIST",
+          "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+          "scope": "事件準備、偵測、回應與復原如何連結風險管理；練習使用虛構事件。",
+          "scopeEn": "How incident preparation, detection, response and recovery connect with risk management; exercises use fictional incidents.",
+          "titleEn": "SP 800-61 Rev. 3 — Incident Response Recommendations and Considerations"
+        },
+        {
+          "title": "CSF 2.0 — Small Business Quick-Start Guide",
+          "publisher": "NIST",
+          "url": "https://www.nist.gov/publications/nist-cybersecurity-framework-20-small-business-quick-start-guide",
+          "scope": "小型組織資產、責任、保護與復原的入門框架。",
+          "scopeEn": "An introductory framework for small-organization assets, responsibilities, protection and recovery.",
+          "titleEn": "CSF 2.0 — Small Business Quick-Start Guide"
+        },
+        {
+          "title": "SP 800-82 Rev. 3 — Guide to Operational Technology Security",
+          "publisher": "NIST",
+          "url": "https://csrc.nist.gov/pubs/sp/800/82/r3/final",
+          "scope": "OT 架構與安全、可靠性、可用性限制；不得把紙上規則直接套入運轉產線。",
+          "scopeEn": "OT architecture and safety, reliability and availability constraints; paper rules must not be applied directly to live production.",
+          "titleEn": "SP 800-82 Rev. 3 — Guide to Operational Technology Security"
+        }
+      ],
+      "related": [
+        {
+          "id": "a351",
+          "title": "企業零信任網路",
+          "titleEn": "Enterprise zero-trust networks",
+          "why": "網路位置不能單獨證明一個請求可信，需要明確的資源存取決策。",
+          "whyEn": "Network location alone cannot establish trust; resource access needs explicit decisions.",
+          "transfer": "把主體、設備、資源、動作與條件整理成可檢驗的存取矩陣。",
+          "transferEn": "Transfer subject-device-resource-action-condition reasoning into an inspectable access matrix.",
+          "difference": "零信任是架構原則，不是安裝一個產品或取消所有網路分區。",
+          "differenceEn": "Zero trust is an architectural principle, not a single product or the removal of all segmentation.",
+          "practice": [
+            "列出三個虛構角色及兩個資料資源。",
+            "為讀取與修改各寫一條允許或拒絕條件。",
+            "測試離職、設備失去管理與權限過期三個紙上情境。"
+          ],
+          "practiceEn": [
+            "Define three fictional roles and two data resources.",
+            "Write allow/deny conditions for reading and editing.",
+            "Review departed-user, unmanaged-device and expired-access scenarios on paper."
+          ],
+          "referenceUrls": [
+            "https://csrc.nist.gov/pubs/sp/800/207/final"
+          ]
+        },
+        {
+          "id": "a352",
+          "title": "身分與存取管理",
+          "titleEn": "Identity and access management",
+          "why": "帳號建立之後，角色變更與停權同樣會影響資料存取。",
+          "whyEn": "Role changes and account suspension matter as much as account creation.",
+          "transfer": "用建立、變更、覆核、停用的生命週期追蹤權限來源。",
+          "transferEn": "Track access provenance across creation, change, review and deactivation.",
+          "difference": "驗證身分與授予權限不同；登入成功不應直接代表可存取全部資源。",
+          "differenceEn": "Authentication and authorization differ; a successful login does not grant every resource.",
+          "practice": [
+            "畫一個虛構新進人員到離職的流程。",
+            "為角色變更列出應新增及撤銷的權限。",
+            "設計一次權限覆核表，保留核准依據。"
+          ],
+          "practiceEn": [
+            "Draw a fictional joiner-to-leaver workflow.",
+            "List permissions added and removed after a role change.",
+            "Design an access-review record retaining approval evidence."
+          ],
+          "referenceUrls": [
+            "https://csrc.nist.gov/pubs/sp/800/207/final",
+            "https://pages.nist.gov/800-63-4/sp800-63b.html"
+          ]
+        },
+        {
+          "id": "a353",
+          "title": "多因素驗證系統",
+          "titleEn": "Multifactor authentication systems",
+          "why": "多因素驗證需要獨立因子，不能把兩個密碼視為兩因素。",
+          "whyEn": "Multifactor authentication needs distinct factors; two passwords are not two factors.",
+          "transfer": "將驗證器綁定、使用、遺失與復原串成完整的使用者流程。",
+          "transferEn": "Connect authenticator binding, use, loss and recovery into a user lifecycle.",
+          "difference": "可用性、抗釣魚能力與復原風險要分開比較；不聲稱任一教學方案取得保證等級認證。",
+          "differenceEn": "Compare usability, phishing resistance and recovery risk separately; no teaching design claims assurance-level certification.",
+          "practice": [
+            "分類幾個虛構登入方式所使用的因子。",
+            "寫出遺失第二因素時的紙上復原流程。",
+            "找出是否存在只靠弱問題就繞過較強驗證的環節。"
+          ],
+          "practiceEn": [
+            "Classify factors in fictional login methods.",
+            "Write a paper recovery flow for a lost second factor.",
+            "Look for a weak recovery question bypassing stronger authentication."
+          ],
+          "referenceUrls": [
+            "https://pages.nist.gov/800-63-4/sp800-63b.html"
+          ]
+        },
+        {
+          "id": "a329",
+          "title": "災難復原與備份演練",
+          "titleEn": "Disaster recovery and backup exercises",
+          "why": "有備份檔不等於能在需要時恢復可用服務。",
+          "whyEn": "A backup file does not establish that a usable service can be restored.",
+          "transfer": "把資料完整性、復原順序、時間及業務可用性分成可驗證證據。",
+          "transferEn": "Separate data integrity, recovery order, elapsed time and usable service as evidence.",
+          "difference": "備份複製速度與復原目標不同；隔離練習成功不能代表生產環境已演練。",
+          "differenceEn": "Copy speed differs from recovery objectives; an isolated exercise is not a production rehearsal.",
+          "practice": [
+            "在隔離資料夾建立無敏感內容的三個測試檔。",
+            "複製後恢復到另一個空資料夾並核對內容。",
+            "記錄步驟、耗時與未測試的相依服務。"
+          ],
+          "practiceEn": [
+            "Create three nonsensitive test files in an isolated folder.",
+            "Restore copies into a different empty folder and compare contents.",
+            "Record steps, elapsed time and untested service dependencies."
+          ],
+          "referenceUrls": [
+            "https://www.nist.gov/publications/nist-cybersecurity-framework-20-small-business-quick-start-guide",
+            "https://csrc.nist.gov/pubs/sp/800/61/r3/final"
+          ]
+        },
+        {
+          "id": "a362",
+          "title": "安全資訊事件管理",
+          "titleEn": "Security information and event management",
+          "why": "分散日誌需要一致時間、來源與事件語意才能支援調查。",
+          "whyEn": "Distributed logs need consistent time, provenance and event semantics to support investigation.",
+          "transfer": "用合成事件建立時間線，保留原始紀錄與分析結論的分隔。",
+          "transferEn": "Build a timeline from synthetic events while separating raw records from conclusions.",
+          "difference": "警報數量不能直接代表攻擊次數；重複、缺漏與時間偏差會改變解讀。",
+          "differenceEn": "Alert counts are not attack counts; duplication, gaps and clock offsets affect interpretation.",
+          "practice": [
+            "自製登入、檔案存取及管理變更三類假日誌。",
+            "加上一筆重複事件與一個時間偏差，整理時間線。",
+            "為每個推論列出支持紀錄及仍缺少的證據。"
+          ],
+          "practiceEn": [
+            "Create fictional login, file-access and administrative-change logs.",
+            "Add a duplicate and a clock offset, then reconstruct a timeline.",
+            "Link each inference to supporting records and missing evidence."
+          ],
+          "referenceUrls": [
+            "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+            "https://www.nist.gov/publications/nist-cybersecurity-framework-20-small-business-quick-start-guide"
+          ]
+        },
+        {
+          "id": "a364",
+          "title": "工控網路分區與隔離",
+          "titleEn": "Industrial-control network segmentation",
+          "why": "工控設備的可用性與物理安全可能受網路改動直接影響。",
+          "whyEn": "Network changes can directly affect OT availability and physical safety.",
+          "transfer": "把資產功能、必要流量與信任邊界畫成可審查的分區圖。",
+          "transferEn": "Map asset functions, necessary traffic and trust boundaries into a reviewable segmentation diagram.",
+          "difference": "辦公 IT 的更新與阻擋策略不能原樣套到連續運轉的控制系統。",
+          "differenceEn": "Office-IT patching and blocking practices do not transfer unchanged to continuously operating control systems.",
+          "practice": [
+            "只在紙上畫感測、控制、監控及企業網路區域。",
+            "為每一條資料流說明方向與業務必要性。",
+            "列出任何規則變更前需確認的可用性與安全依賴。"
+          ],
+          "practiceEn": [
+            "Draw sensing, control, supervisory and enterprise zones on paper.",
+            "Explain the direction and operational purpose of each flow.",
+            "List availability and safety dependencies to review before any rule change."
+          ],
+          "referenceUrls": [
+            "https://csrc.nist.gov/pubs/sp/800/82/r3/final"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "steam-locomotive",
+      "overview": "以蒸汽機車連接熱力學、往復機械、製造與量測史。理想循環和幾何模型用來理解能量與運動，不是鍋爐、壓力容器或實車運轉程序。",
+      "overviewEn": "Connect steam locomotives with thermodynamics, reciprocating mechanisms, manufacturing and measurement history. Ideal cycles and geometric models explain energy and motion, not boiler construction, pressure-vessel work or locomotive operation.",
+      "references": [
+        {
+          "title": "Phase Change Energy Conversion II",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/8-21-the-physics-of-energy-fall-2009/resources/mit8_21s09_lec12/",
+          "scope": "蒸汽循環與能量轉換的物理背景；機車排汽與理想封閉循環的差異須另列。",
+          "scopeEn": "Physics of steam cycles and energy conversion; distinguish locomotive exhaust from ideal closed-cycle assumptions.",
+          "titleEn": "Phase Change Energy Conversion II"
+        },
+        {
+          "title": "2.003SC Engineering Dynamics",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/",
+          "scope": "剛體動力學、轉動、不平衡激振與振動模型；只用符號或低風險桌面模型。",
+          "scopeEn": "Rigid-body dynamics, rotation, imbalance excitation and vibration models, used only in symbolic or low-risk desk exercises.",
+          "titleEn": "2.003SC Engineering Dynamics"
+        },
+        {
+          "title": "2.008 Design and Manufacturing II (Spring 2025)",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+          "scope": "製程物理、製造設計、裝配、變異與品質的大學課程；跨域練習為本網站原創。",
+          "scopeEn": "University material on process physics, manufacturing design, assembly, variation and quality; transfer exercises are original to this site.",
+          "titleEn": "2.008 Design and Manufacturing II (Spring 2025)"
+        },
+        {
+          "title": "Engineering Statistics Handbook — Measurement Process Characterization",
+          "publisher": "NIST/SEMATECH",
+          "url": "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm",
+          "scope": "量測偏差、重複性、再現性、校準與不確定度；不指定產品放行公差。",
+          "scopeEn": "Measurement bias, repeatability, reproducibility, calibration and uncertainty; no product acceptance tolerances.",
+          "titleEn": "Engineering Statistics Handbook — Measurement Process Characterization"
+        },
+        {
+          "title": "Loco speedometers and track-destroying trains",
+          "publisher": "National Railway Museum / Science Museum Group",
+          "url": "https://blog.railwaymuseum.org.uk/loco-speedometers-and-track-destroying-trains/",
+          "scope": "歷史速度紀錄與動力測試車量測的案例；不等同今日運轉許可。",
+          "scopeEn": "Historical speed records and dynamometer-car measurement; not a present-day operating authorization.",
+          "titleEn": "Loco speedometers and track-destroying trains"
+        }
+      ],
+      "related": [
+        {
+          "id": null,
+          "title": "蒸汽能量收支與循環比較",
+          "titleEn": "Steam energy accounting and cycle comparison",
+          "why": "燃料投入、汽缸作功與排熱之間需要一份一致的能量帳。",
+          "whyEn": "Fuel input, cylinder work and rejected heat need a consistent energy account.",
+          "transfer": "將系統邊界與能量收支用於比較理想循環及開放排汽情境。",
+          "transferEn": "Transfer boundary and energy accounting to ideal-cycle and open-exhaust comparisons.",
+          "difference": "一般蒸汽機車排汽不等於帶冷凝器的理想封閉 Rankine 循環；不能直接照搬效率。",
+          "differenceEn": "Typical locomotive exhaust is not an ideal closed Rankine cycle with a condenser; efficiencies cannot be copied directly.",
+          "practice": [
+            "畫出熱輸入、機械輸出及損失的概念箭頭。",
+            "用自訂能量單位建立守恆的收支表。",
+            "列出理想模型未納入的摩擦、洩漏與非穩態項。"
+          ],
+          "practiceEn": [
+            "Draw conceptual heat-input, work-output and loss arrows.",
+            "Build a balanced account using invented energy units.",
+            "List omitted friction, leakage and transient terms."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/8-21-the-physics-of-energy-fall-2009/resources/mit8_21s09_lec12/"
+          ]
+        },
+        {
+          "id": "c284",
+          "title": "活塞引擎曲軸製造",
+          "titleEn": "Piston-engine crankshaft manufacturing",
+          "why": "連桿與曲柄把往復運動轉成轉動，幾何與製造基準互相影響。",
+          "whyEn": "Rods and cranks convert reciprocation to rotation, linking geometry with manufacturing datums.",
+          "transfer": "把軸頸同軸性、曲柄位置與檢查基準的思路轉用到一般往復機械。",
+          "transferEn": "Transfer journal-axis, crank-position and inspection-datum reasoning to ordinary reciprocating machines.",
+          "difference": "機車的曲柄輪、曲柄軸與汽車曲軸配置不必相同；不可用同一外形推定載荷。",
+          "differenceEn": "Locomotive crank wheels/axles and automotive crankshafts differ; shape alone cannot establish loading.",
+          "practice": [
+            "用紙片與圖釘概念圖標出固定點及轉動中心。",
+            "畫出一圈轉動中三個角度的活塞位置。",
+            "為假想加工件列出兩個基準與對應的量測問題。"
+          ],
+          "practiceEn": [
+            "Sketch fixed points and rotation centers with a paper-linkage concept.",
+            "Draw piston positions at three crank angles.",
+            "Assign two datums and corresponding measurement questions to a fictional part."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/",
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/"
+          ]
+        },
+        {
+          "id": "c471",
+          "title": "高速轉子動平衡",
+          "titleEn": "High-speed rotor dynamic balancing",
+          "why": "不平衡力會隨轉動出現，單純加重並不保證振動降低。",
+          "whyEn": "Imbalance produces rotating forces, and adding mass does not necessarily reduce vibration.",
+          "transfer": "用力向量與相位圖理解平衡的限制，再比較往復質量。",
+          "transferEn": "Use force vectors and phase diagrams to understand balancing limits and compare reciprocating masses.",
+          "difference": "蒸汽機車含往復與轉動成分；純剛性轉子平衡不能完整消除所有動態力。",
+          "differenceEn": "Locomotives combine reciprocating and rotating masses; rigid-rotor balance cannot eliminate every dynamic force.",
+          "practice": [
+            "畫兩個不同相位的假設旋轉力向量。",
+            "比較合力隨相位改變的方向與大小。",
+            "把模型未包含的往復慣性另列一欄。"
+          ],
+          "practiceEn": [
+            "Draw two assumed rotating-force vectors with different phases.",
+            "Compare resultant direction and magnitude as phase changes.",
+            "List reciprocating inertia separately as an omitted term."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/"
+          ]
+        },
+        {
+          "id": "c468",
+          "title": "機械密封設計與檢驗",
+          "titleEn": "Mechanical-seal design and inspection",
+          "why": "運動界面需要同時考慮密封、摩擦與磨耗。",
+          "whyEn": "Moving interfaces require attention to sealing, friction and wear together.",
+          "transfer": "用功能分解比較阻止介質流失、允許運動與維持表面的需求。",
+          "transferEn": "Compare preventing leakage, allowing motion and preserving surfaces through functional decomposition.",
+          "difference": "現代旋轉機械密封與往復蒸汽填料不是可直接互換的零件；介質與溫度條件不同。",
+          "differenceEn": "Modern rotary mechanical seals and reciprocating steam packing are not interchangeable; media and temperature conditions differ.",
+          "practice": [
+            "畫不帶壓力的滑動界面示意。",
+            "把洩漏路徑與接觸摩擦位置分開標記。",
+            "列出選型前需要的運動型態、介質及材料資料。"
+          ],
+          "practiceEn": [
+            "Sketch an unpressurized sliding interface.",
+            "Mark leakage paths separately from friction contacts.",
+            "List motion, medium and material information needed before selection."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+            "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/"
+          ]
+        },
+        {
+          "id": "c491",
+          "title": "量測系統分析 GRR",
+          "titleEn": "Measurement-system GRR analysis",
+          "why": "磨耗趨勢可能被量具或量測人的差異掩蓋。",
+          "whyEn": "Instrument and operator differences can obscure a wear trend.",
+          "transfer": "把重複量測與不同觀察者量測分開記錄，先辨識量測系統變異。",
+          "transferEn": "Separate repeated readings from between-observer readings to identify measurement variation.",
+          "difference": "幾個教學讀值不足以完成工業 GRR 或宣告零件可繼續運轉。",
+          "differenceEn": "A few teaching readings cannot establish industrial GRR or continued-service acceptance.",
+          "practice": [
+            "用一個無安全功能的物件設計重複量測表。",
+            "以假設資料區分同一人重測與不同人量測。",
+            "寫出判斷磨耗之前仍需的基準與量測不確定度。"
+          ],
+          "practiceEn": [
+            "Design a repeated-measurement table for a noncritical object.",
+            "Use assumed data to separate within- and between-observer variation.",
+            "Identify the baseline and uncertainty needed before judging wear."
+          ],
+          "referenceUrls": [
+            "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm"
+          ]
+        },
+        {
+          "id": "c247",
+          "title": "LNER Mallard 蒸汽機車",
+          "titleEn": "LNER Mallard steam locomotive",
+          "why": "Mallard 的歷史紀錄可用來學習性能主張如何依賴量測。",
+          "whyEn": "Mallard’s historical record illustrates how performance claims depend on measurement.",
+          "transfer": "將現場指示、獨立量測與資料記錄的區別轉用到工程展示。",
+          "transferEn": "Transfer the distinction between indications, independent measurements and records to engineering demonstrations.",
+          "difference": "歷史最高速度不能代表長期可靠度、今天的運轉狀態或其他機車能力。",
+          "differenceEn": "A historical peak speed does not establish endurance, present operating condition or another locomotive’s capability.",
+          "practice": [
+            "整理博物館文章中的主張及量測手段。",
+            "把「瞬時峰值」與「可持續性能」列成兩個問題。",
+            "為一次虛構模型車展示提出獨立驗證證據。"
+          ],
+          "practiceEn": [
+            "List claims and measurement methods in the museum article.",
+            "Separate peak performance from sustained performance questions.",
+            "Propose independent evidence for a fictional model-vehicle demonstration."
+          ],
+          "referenceUrls": [
+            "https://blog.railwaymuseum.org.uk/loco-speedometers-and-track-destroying-trains/",
+            "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "ferrari",
+      "overview": "從公開汽車製造延伸到接合、表面品質、鑄造、量測與產線分析。能轉用的是製程與證據的推理方法，不能把個別車型的工法或公差當作所有汽車的標準。",
+      "overviewEn": "Extend public automotive manufacturing into joining, surfaces, casting, metrology and production-flow analysis. Transfer process and evidence reasoning, while keeping model-specific methods and tolerances separate.",
+      "references": [
+        {
+          "title": "Inside the Factory: The Body Welding Plant",
+          "publisher": "Ferrari",
+          "url": "https://www.ferrari.com/en-US/magazine/articles/inside-the-factory-the-body-welding-plant",
+          "scope": "官方公開車身裝配與品質檢查案例；不同年份、車型及材料不能直接沿用參數。",
+          "scopeEn": "Official public body-assembly and quality-check example; parameters do not transfer automatically across years, models or materials.",
+          "titleEn": "Inside the Factory: The Body Welding Plant"
+        },
+        {
+          "title": "2.008 Design and Manufacturing II (Spring 2025)",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+          "scope": "製程物理、製造設計、裝配、變異與品質的大學課程；跨域練習為本網站原創。",
+          "scopeEn": "University material on process physics, manufacturing design, assembly, variation and quality; transfer exercises are original to this site.",
+          "titleEn": "2.008 Design and Manufacturing II (Spring 2025)"
+        },
+        {
+          "title": "Engineering Statistics Handbook — Measurement Process Characterization",
+          "publisher": "NIST/SEMATECH",
+          "url": "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm",
+          "scope": "量測偏差、重複性、再現性、校準與不確定度；不指定產品放行公差。",
+          "scopeEn": "Measurement bias, repeatability, reproducibility, calibration and uncertainty; no product acceptance tolerances.",
+          "titleEn": "Engineering Statistics Handbook — Measurement Process Characterization"
+        },
+        {
+          "title": "Engineering Statistics Handbook — Process or Product Monitoring and Control",
+          "publisher": "NIST/SEMATECH",
+          "url": "https://www.itl.nist.gov/div898/handbook/pmc/pmc.htm",
+          "scope": "製程監控、管制圖與品質判讀的方法；管制界限不是設計規格界限。",
+          "scopeEn": "Methods for process monitoring, control charts and quality interpretation; control limits are not design specification limits.",
+          "titleEn": "Engineering Statistics Handbook — Process or Product Monitoring and Control"
+        }
+      ],
+      "related": [
+        {
+          "id": "c251",
+          "title": "汽車白車身焊裝",
+          "titleEn": "Automotive body-in-white assembly",
+          "why": "車身板件需同時符合接合、幾何與後續裝配需求。",
+          "whyEn": "Body panels must satisfy joining, geometry and downstream assembly needs together.",
+          "transfer": "把基準、夾持、接合順序與檢查點串成可追溯流程。",
+          "transferEn": "Connect datums, fixturing, joining order and inspection points into a traceable flow.",
+          "difference": "外觀接縫與結構接合品質不同；官方案例也不代表所有年份及車型。",
+          "differenceEn": "An attractive panel gap does not establish structural joint quality, and a published example is not universal.",
+          "practice": [
+            "畫三片虛構車身板件及定位基準。",
+            "比較兩種接合順序會如何影響量測可達性。",
+            "把外觀、尺寸及接合內部品質分成三類證據。"
+          ],
+          "practiceEn": [
+            "Sketch three fictional body panels and their locating datums.",
+            "Compare how two joining orders affect measurement access.",
+            "Separate appearance, dimensions and internal joint-quality evidence."
+          ],
+          "referenceUrls": [
+            "https://www.ferrari.com/en-US/magazine/articles/inside-the-factory-the-body-welding-plant",
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/"
+          ]
+        },
+        {
+          "id": "c443",
+          "title": "珩磨與孔面品質",
+          "titleEn": "Honing and bore-surface quality",
+          "why": "精密孔面需要把尺寸、形狀與表面紋理分開理解。",
+          "whyEn": "Precision bores require separate reasoning about size, form and surface texture.",
+          "transfer": "轉用加工前後基準一致性與多項品質量的檢查思路。",
+          "transferEn": "Transfer consistent before/after datums and multiple quality measures to bore inspection.",
+          "difference": "鏡面感不等於合適表面；珩磨紋理、圓度及尺寸不能互相代替。",
+          "differenceEn": "A mirror-like appearance is not sufficient; honing texture, roundness and size are different attributes.",
+          "practice": [
+            "畫一個虛構孔的軸向與周向取樣位置。",
+            "為直徑、圓度及粗糙度分別指定需要的資料。",
+            "說明只看一張內孔照片會漏掉哪些問題。"
+          ],
+          "practiceEn": [
+            "Mark axial and circumferential sample positions on a fictional bore.",
+            "Specify evidence for diameter, roundness and roughness separately.",
+            "Explain what a single bore photograph cannot reveal."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+            "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm"
+          ]
+        },
+        {
+          "id": "c457",
+          "title": "精密脫蠟鑄造",
+          "titleEn": "Precision investment casting",
+          "why": "複雜金屬形狀可從模具、凝固與後加工的關係開始理解。",
+          "whyEn": "Complex metal shapes can be studied through tooling, solidification and finishing relationships.",
+          "transfer": "把幾何可製造性、材料轉換與缺陷查驗串成製程選擇表。",
+          "transferEn": "Connect geometric manufacturability, material transformation and defect evidence in a process-choice table.",
+          "difference": "脫蠟鑄造、砂模鑄造與壓鑄不是同一路線；本項不聲稱 Ferrari 指定零件採用脫蠟工法。",
+          "differenceEn": "Investment, sand and die casting are different routes; this item makes no claim that a particular Ferrari part uses investment casting.",
+          "practice": [
+            "選一個自繪的非承載金屬外形。",
+            "列出模具可移除性、收縮及後加工的三類問題。",
+            "比較兩種鑄造路線仍需要哪些材料與品質資料。"
+          ],
+          "practiceEn": [
+            "Choose a self-drawn nonstructural metal shape.",
+            "List tooling removal, shrinkage and finishing questions.",
+            "Compare information needed to assess two casting routes."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/"
+          ]
+        },
+        {
+          "id": "c491",
+          "title": "量測系統分析 GRR",
+          "titleEn": "Measurement-system GRR analysis",
+          "why": "裝配公差越小，越需要知道變異來自零件還是量測系統。",
+          "whyEn": "Tighter assembly demands make it more important to distinguish part variation from measurement variation.",
+          "transfer": "把重複性、觀察者差異與零件差異分開記錄。",
+          "transferEn": "Record repeatability, observer differences and part differences separately.",
+          "difference": "提高讀數小數位並不等於提高量測能力；示例數據不是 Ferrari 實測。",
+          "differenceEn": "More displayed decimal places do not establish better capability; example data are not Ferrari measurements.",
+          "practice": [
+            "建立三個虛構零件、兩位觀察者的量測表。",
+            "以合成讀數展示同一零件反覆量測的分散。",
+            "列出正式 GRR 之前需確認的抽樣與方法一致性。"
+          ],
+          "practiceEn": [
+            "Build a table for three fictional parts and two observers.",
+            "Use synthetic readings to show repeated-measurement spread.",
+            "List sampling and method-consistency conditions needed for formal GRR."
+          ],
+          "referenceUrls": [
+            "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm"
+          ]
+        },
+        {
+          "id": "c490",
+          "title": "工廠統計製程管制",
+          "titleEn": "Factory statistical process control",
+          "why": "只檢查最後成品，可能來不及看到製程已逐漸漂移。",
+          "whyEn": "End-product inspection can miss an earlier process drift.",
+          "transfer": "把時間順序與製程分組保留下來，先問過程是否穩定。",
+          "transferEn": "Preserve time order and process grouping before judging stability.",
+          "difference": "管制圖界限反映過程行為，規格界限來自設計；穩定也不保證符合規格。",
+          "differenceEn": "Control limits describe process behavior; specification limits come from design. Stability does not guarantee conformity.",
+          "practice": [
+            "自製一組帶有緩慢漂移的尺寸資料。",
+            "標記取樣順序、工站與量具版本。",
+            "將穩定性問題與是否超出假設規格分開討論。"
+          ],
+          "practiceEn": [
+            "Create a synthetic dimension series with gradual drift.",
+            "Label sample order, station and instrument revision.",
+            "Separate stability from conformity to an assumed specification."
+          ],
+          "referenceUrls": [
+            "https://www.itl.nist.gov/div898/handbook/pmc/pmc.htm",
+            "https://www.itl.nist.gov/div898/handbook/mpc/mpc.htm"
+          ]
+        },
+        {
+          "id": "c488",
+          "title": "工廠輸送線節拍平衡",
+          "titleEn": "Factory conveyor-line balancing",
+          "why": "手工與自動化混合的產線容易在交接點產生等待。",
+          "whyEn": "Mixed manual and automated lines can accumulate waiting at handoffs.",
+          "transfer": "把加工時間、搬運、等待與重工分開，尋找限制吞吐量的步驟。",
+          "transferEn": "Separate processing, transport, waiting and rework to identify a throughput constraint.",
+          "difference": "宣傳影片的剪輯長度不是工站週期；增加單站速度不一定提高整線產出。",
+          "differenceEn": "Edited video duration is not station cycle time; a faster station may not improve total output.",
+          "practice": [
+            "畫三個假想工站及緩衝區。",
+            "用自訂時間比較瓶頸前後的在製品累積。",
+            "列出需要現場觀測才能驗證的假設。"
+          ],
+          "practiceEn": [
+            "Draw three hypothetical stations and buffers.",
+            "Use invented times to compare work-in-process around a bottleneck.",
+            "List assumptions that need real observations."
+          ],
+          "referenceUrls": [
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+            "https://www.ferrari.com/en-US/magazine/articles/inside-the-factory-the-body-welding-plant"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "tesla",
+      "overview": "以電動車功能架構連接熱管理、控制、功率轉換、充電與產線。這些是跨品牌原理與原創紙上模型，不能替代特定車型維修資料；不拆解電池或操作高壓線路。",
+      "overviewEn": "Connect EV architecture with thermal management, control, power conversion, charging and manufacturing flow. These cross-brand principles and original paper models do not replace model-specific service information; no pack disassembly or high-voltage work is involved.",
+      "references": [
+        {
+          "title": "How Do All-Electric Cars Work?",
+          "publisher": "U.S. Department of Energy / AFDC",
+          "url": "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work",
+          "scope": "一般電動車的電池、馬達、功率電子、充電與熱系統功能；不是特斯拉線路圖。",
+          "scopeEn": "Functions of EV batteries, motors, power electronics, charging and thermal systems; not a Tesla circuit diagram.",
+          "titleEn": "How Do All-Electric Cars Work?"
+        },
+        {
+          "title": "Electric Vehicles for Consumers",
+          "publisher": "U.S. Department of Energy / AFDC",
+          "url": "https://afdc.energy.gov/vehicles/electric-consumers",
+          "scope": "充電類別與連接器的使用者層級介紹；地區、年份與車型相容性另行確認。",
+          "scopeEn": "User-level charging categories and connectors; region, date and vehicle compatibility require separate checking.",
+          "titleEn": "Electric Vehicles for Consumers"
+        },
+        {
+          "title": "Vehicle Thermal Management",
+          "publisher": "NLR",
+          "url": "https://www.nlr.gov/transportation/vtm",
+          "scope": "車輛電池、空調與整合熱管理研究；練習只做能量與熱阻示意。",
+          "scopeEn": "Research on batteries, HVAC and integrated vehicle thermal management; exercises use only energy and thermal-resistance models.",
+          "titleEn": "Vehicle Thermal Management"
+        },
+        {
+          "title": "Manufacturing",
+          "publisher": "Tesla",
+          "url": "https://www.tesla.com/manufacturing",
+          "scope": "公開工廠與製造系統概覽；不支持由宣傳影片反推真實節拍或良率。",
+          "scopeEn": "Public factory and manufacturing-system overview; promotional footage cannot establish actual takt time or yield.",
+          "titleEn": "Manufacturing"
+        },
+        {
+          "title": "2.008 Design and Manufacturing II (Spring 2025)",
+          "publisher": "MIT OpenCourseWare",
+          "url": "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/",
+          "scope": "製程物理、製造設計、裝配、變異與品質的大學課程；跨域練習為本網站原創。",
+          "scopeEn": "University material on process physics, manufacturing design, assembly, variation and quality; transfer exercises are original to this site.",
+          "titleEn": "2.008 Design and Manufacturing II (Spring 2025)"
+        }
+      ],
+      "related": [
+        {
+          "id": "c265",
+          "title": "電動車電池熱管理",
+          "titleEn": "EV battery thermal management",
+          "why": "電池平均溫度與局部溫差是不同問題，且會和車艙熱需求競爭資源。",
+          "whyEn": "Average pack temperature and local gradients differ, while cabin and component systems may share thermal resources.",
+          "transfer": "用熱源、熱阻與冷卻邊界圖辨識局部熱點及熱流方向。",
+          "transferEn": "Identify local hot spots and heat-flow direction using sources, resistances and cooling boundaries.",
+          "difference": "降低平均溫度不自動消除局部風險；簡化熱網路不是熱失控驗證。",
+          "differenceEn": "Lower average temperature does not automatically eliminate local risk; a thermal network is not runaway validation.",
+          "practice": [
+            "畫三個假想熱節點及環境邊界。",
+            "比較一個局部熱源與均勻熱源的情境。",
+            "列出還需要的材料、介面與感測位置資料。"
+          ],
+          "practiceEn": [
+            "Draw three assumed thermal nodes and an ambient boundary.",
+            "Compare localized and uniform heat generation.",
+            "List missing material, interface and sensing-location data."
+          ],
+          "referenceUrls": [
+            "https://www.nlr.gov/transportation/vtm",
+            "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work"
+          ]
+        },
+        {
+          "id": "c266",
+          "title": "電動車電池管理系統",
+          "titleEn": "EV battery-management systems",
+          "why": "電池管理需要將感測、估計與限制決策分開理解。",
+          "whyEn": "Battery management requires separating sensing, estimation and limit decisions.",
+          "transfer": "把真實量、估計狀態及控制命令整理成訊號關係圖。",
+          "transferEn": "Map measured quantities, estimated states and control commands separately.",
+          "difference": "荷電狀態不是單靠一次電壓就能保證的真值；通用功能圖不揭露 Tesla 演算法。",
+          "differenceEn": "State of charge is not guaranteed by one voltage reading; a generic diagram does not disclose Tesla algorithms.",
+          "practice": [
+            "畫電壓、電流、溫度輸入及狀態估計方塊。",
+            "以合成資料標記遺失或不一致的感測值。",
+            "說明資料不足時哪些結論應保持未知。"
+          ],
+          "practiceEn": [
+            "Draw voltage, current and temperature inputs with a state-estimation block.",
+            "Mark missing or inconsistent readings in synthetic data.",
+            "State which conclusions must remain unknown when evidence is insufficient."
+          ],
+          "referenceUrls": [
+            "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work",
+            "https://www.nlr.gov/transportation/vtm"
+          ]
+        },
+        {
+          "id": "c268",
+          "title": "電動車功率逆變器",
+          "titleEn": "EV traction inverters",
+          "why": "馬達與電池之間需要電能轉換與控制，而不只是直接連接。",
+          "whyEn": "Motor and battery interaction requires conversion and control rather than a simple direct connection.",
+          "transfer": "用能量流與損失帳區分直流端、轉換器與機械輸出。",
+          "transferEn": "Distinguish DC input, conversion and mechanical output with an energy-flow and loss account.",
+          "difference": "平均功率模型不能描述開關波形、電磁相容性或實際保護設計。",
+          "differenceEn": "An average-power model omits switching waveforms, EMC and real protective design.",
+          "practice": [
+            "畫電池、功率電子、馬達與負載的方塊圖。",
+            "用任意能量單位保持輸入等於輸出加損失。",
+            "把控制訊號與承載能量的路徑畫成不同線型。"
+          ],
+          "practiceEn": [
+            "Draw battery, power-electronics, motor and load blocks.",
+            "Balance input, output and losses using arbitrary energy units.",
+            "Distinguish control signals from energy-carrying paths."
+          ],
+          "referenceUrls": [
+            "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work"
+          ]
+        },
+        {
+          "id": "c263",
+          "title": "汽車回生制動整合",
+          "titleEn": "Automotive regenerative-braking integration",
+          "why": "減速時的能量可能回到電池，但接收能力與減速需求未必一致。",
+          "whyEn": "Deceleration energy may return to the battery, but acceptance and braking demand need not match.",
+          "transfer": "把車輛動能、回收、耗散與限制條件建立成完整能量帳。",
+          "transferEn": "Account for kinetic energy, recovery, dissipation and constraints together.",
+          "difference": "可回收能量不等於所有煞車需求；道路安全功能不能由紙上效率推算。",
+          "differenceEn": "Recoverable energy is not the entire braking requirement; paper efficiency cannot establish road safety.",
+          "practice": [
+            "對虛構車輛比較兩個速度狀態的動能。",
+            "假設一個回收上限，將其餘能量列入耗散。",
+            "列出電池狀態、輪胎路面與制動功能的模型邊界。"
+          ],
+          "practiceEn": [
+            "Compare kinetic energy at two speeds for a fictional vehicle.",
+            "Assume a recovery limit and account for remaining dissipation.",
+            "List battery-state, road-contact and braking-function limits of the model."
+          ],
+          "referenceUrls": [
+            "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work"
+          ]
+        },
+        {
+          "id": "c270",
+          "title": "電動車充電連接介面",
+          "titleEn": "EV charging connection interfaces",
+          "why": "相同外形或品牌並不保證充電模式與車輛相容。",
+          "whyEn": "Connector appearance or branding alone does not establish charging compatibility.",
+          "transfer": "以機械連接、電能模式、通訊與設備能力四欄檢查介面。",
+          "transferEn": "Review mechanical mating, energy mode, communication and equipment capability separately.",
+          "difference": "AC 充電與 DC 充電的轉換位置不同；地區與年份會影響可用連接器。",
+          "differenceEn": "AC and DC charging place conversion differently; connector availability depends on region and date.",
+          "practice": [
+            "用官方資料畫 AC 與 DC 充電的轉換方塊。",
+            "為虛構車輛建立相容性資訊需求表。",
+            "把已核實、需要轉接確認及未知項分別標記。"
+          ],
+          "practiceEn": [
+            "Draw AC/DC conversion blocks from official descriptions.",
+            "Create a compatibility-information checklist for a fictional vehicle.",
+            "Separate verified, adapter-dependent and unknown items."
+          ],
+          "referenceUrls": [
+            "https://afdc.energy.gov/vehicles/electric-consumers",
+            "https://afdc.energy.gov/vehicles/how-do-all-electric-cars-work"
+          ]
+        },
+        {
+          "id": "c488",
+          "title": "工廠輸送線節拍平衡",
+          "titleEn": "Factory conveyor-line balancing",
+          "why": "電動車總裝仍需協調物料、檢測與人機工站交接。",
+          "whyEn": "EV final assembly still coordinates material, inspection and human-machine handoffs.",
+          "transfer": "把需求節拍、工站能力與緩衝分開，分析整線而非單一機器。",
+          "transferEn": "Separate demand takt, station capability and buffers when analyzing the whole line.",
+          "difference": "公開廠房影片不提供完整停機、換線或重工分布，不能據此估算量產產能。",
+          "differenceEn": "Public factory footage omits full downtime, changeover and rework distributions and cannot establish production capacity.",
+          "practice": [
+            "建立四工站的虛構物料流。",
+            "指定假設週期與一次重工支線。",
+            "比較改善瓶頸及改善非瓶頸的整線影響。"
+          ],
+          "practiceEn": [
+            "Create a fictional four-station material flow.",
+            "Assign assumed cycle times and one rework branch.",
+            "Compare improving a bottleneck with improving a non-bottleneck."
+          ],
+          "referenceUrls": [
+            "https://www.tesla.com/manufacturing",
+            "https://ocw.mit.edu/courses/2-008-design-and-manufacturing-ii-spring-2025/"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "starlink",
+      "overview": "把星鏈的公開功能拆成通訊、平台、電力、熱管理與退役責任，再連到一般小衛星工程。不同衛星世代與其他小衛星案例的數據不能混用；以下不提供飛行硬體施工或軌道操作指令。",
+      "overviewEn": "Separate public Starlink functions into communications, bus, power, thermal management and retirement responsibilities, then connect them to small-spacecraft engineering. Keep generations and other spacecraft examples separate; no flight-hardware build or orbital-operation commands are supplied.",
+      "references": [
+        {
+          "title": "Starlink Technology",
+          "publisher": "Starlink / SpaceX",
+          "url": "https://starlink.com/technology",
+          "scope": "公開平台、電力、無線及光學鏈路功能；硬體數量與性能須對照世代，本文不固定宣稱。",
+          "scopeEn": "Public bus, power, radio and optical-link functions; hardware counts/performance depend on generation and are not fixed here.",
+          "titleEn": "Starlink Technology"
+        },
+        {
+          "title": "State-of-the-Art of Small Spacecraft Technology",
+          "publisher": "NASA Small Spacecraft Systems Virtual Institute",
+          "url": "https://www.nasa.gov/smallsat-institute/sst-soa/",
+          "scope": "公開小衛星電力、通訊、整合等子系統索引；技術例子不等於 Starlink 原廠配置。",
+          "scopeEn": "Public small-spacecraft power, communications and integration references; examples are not Starlink manufacturer configurations.",
+          "titleEn": "State-of-the-Art of Small Spacecraft Technology"
+        },
+        {
+          "title": "7.0 Thermal Control",
+          "publisher": "NASA Small Spacecraft Systems Virtual Institute",
+          "url": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+          "scope": "太空熱傳與熱控制方法；不提供特定星系的飛行溫度或試驗配方。",
+          "scopeEn": "Spacecraft heat transfer and thermal-control methods; no constellation-specific flight temperatures or test recipes.",
+          "titleEn": "7.0 Thermal Control"
+        },
+        {
+          "title": "Orbital Debris Program Office — Debris Mitigation",
+          "publisher": "NASA",
+          "url": "https://orbitaldebris.jsc.nasa.gov/mitigation/",
+          "scope": "碎片減緩與任務結束規劃的公開背景；不是跨國法規適用性判定。",
+          "scopeEn": "Public background on debris mitigation and end-of-mission planning; not a determination of international regulatory applicability.",
+          "titleEn": "Orbital Debris Program Office — Debris Mitigation"
+        },
+        {
+          "title": "NASA Systems Engineering Handbook",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/reference/systems-engineering-handbook/",
+          "scope": "需求、介面、驗證與組態管理的一般方法；不代表任何機型的原廠資料。",
+          "scopeEn": "General requirements, interfaces, verification and configuration methods; not documentation for a particular aircraft or vehicle.",
+          "titleEn": "NASA Systems Engineering Handbook"
+        }
+      ],
+      "related": [
+        {
+          "id": "a347",
+          "title": "衛星地面站通訊鏈路",
+          "titleEn": "Satellite ground-station communication links",
+          "why": "用戶終端、衛星與地面網路構成多段連線，每段限制不同。",
+          "whyEn": "User terminals, satellites and ground networks form multiple links with different constraints.",
+          "transfer": "把端到端連線拆成介面與延遲項，避免只用距離估算整體服務。",
+          "transferEn": "Break end-to-end connectivity into interfaces and delay terms instead of inferring service from distance alone.",
+          "difference": "傳播延遲只是總延遲的一部分；公開功能介紹不是實際服務保證。",
+          "differenceEn": "Propagation is only one delay component; public functional descriptions are not service guarantees.",
+          "practice": [
+            "畫終端、衛星、地面接入及網際網路節點。",
+            "為各段標記傳播、處理及排隊的可能來源。",
+            "對未公開的路徑與時間明確保留未知。"
+          ],
+          "practiceEn": [
+            "Draw terminal, satellite, ground-access and internet nodes.",
+            "Mark possible propagation, processing and queueing terms.",
+            "Leave undisclosed paths and times explicitly unknown."
+          ],
+          "referenceUrls": [
+            "https://starlink.com/technology",
+            "https://www.nasa.gov/smallsat-institute/sst-soa/"
+          ]
+        },
+        {
+          "id": "a348",
+          "title": "低軌衛星網路路由",
+          "titleEn": "Low-Earth-orbit satellite-network routing",
+          "why": "低軌節點會相對移動，連線圖也會隨時間改變。",
+          "whyEn": "Low-orbit nodes move relative to one another, changing the connectivity graph over time.",
+          "transfer": "用時間分段的圖模型比較可用路徑與連線中斷。",
+          "transferEn": "Compare available routes and interruptions with time-indexed graph models.",
+          "difference": "有光學鏈路不代表所有資料必經光學路徑；真實路由政策並未由示意圖揭露。",
+          "differenceEn": "Optical links do not imply every packet uses them, and a sketch does not disclose operational routing policy.",
+          "practice": [
+            "自繪三個時間點的六節點網路圖。",
+            "在一條邊不可用時找出仍存在的概念路徑。",
+            "比較跳數最少與假設延遲最少的路徑是否相同。"
+          ],
+          "practiceEn": [
+            "Draw six-node network graphs at three times.",
+            "Find a conceptual surviving path after removing one edge.",
+            "Compare minimum-hop and assumed minimum-delay routes."
+          ],
+          "referenceUrls": [
+            "https://starlink.com/technology",
+            "https://www.nasa.gov/smallsat-institute/sst-soa/"
+          ]
+        },
+        {
+          "id": "c392",
+          "title": "衛星太陽能陣列展開",
+          "titleEn": "Satellite solar-array deployment",
+          "why": "太陽能陣列同時有發電與機械展開功能，不能只看額定功率。",
+          "whyEn": "Solar arrays combine generation and deployment functions, not merely rated power.",
+          "transfer": "把收納、展開、遮蔽與供電需求當成互相影響的介面。",
+          "transferEn": "Treat stowage, deployment, shading and power demand as interacting interfaces.",
+          "difference": "紙上展開成功不代表能承受發射或太空環境；不同衛星陣列配置不能混用。",
+          "differenceEn": "A paper deployment does not establish launch or space-environment qualification, and configurations vary by spacecraft.",
+          "practice": [
+            "畫收納與展開兩種概念狀態。",
+            "用假設時段建立日照、負載與儲能的能量帳。",
+            "指出機構卡滯與供電不足分別需要哪類證據。"
+          ],
+          "practiceEn": [
+            "Sketch stowed and deployed conceptual states.",
+            "Use assumed intervals to account for sunlight, load and storage.",
+            "Identify distinct evidence for mechanism jamming and insufficient power."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/smallsat-institute/sst-soa/",
+            "https://starlink.com/technology"
+          ]
+        },
+        {
+          "id": "c393",
+          "title": "太空儀器熱真空試驗",
+          "titleEn": "Space-instrument thermal-vacuum testing",
+          "why": "太空環境改變熱傳路徑，地面有風冷卻的直覺不一定適用。",
+          "whyEn": "Space changes heat-transfer paths, so air-cooled ground intuition may fail.",
+          "transfer": "把熱源、導熱介面與輻射邊界列入模型及驗證計畫。",
+          "transferEn": "Include heat sources, conduction interfaces and radiation boundaries in the model and verification plan.",
+          "difference": "熱平衡模型與熱真空試驗目的不同；本練習不提供真空設備操作程序。",
+          "differenceEn": "Thermal-balance models and thermal-vacuum tests serve different purposes; no vacuum-equipment procedure is provided.",
+          "practice": [
+            "畫電子熱源到外表面的概念熱路徑。",
+            "分開比較日照與陰影的假設邊界。",
+            "寫出一個模型預測，以及需用什麼量測證據檢驗它。"
+          ],
+          "practiceEn": [
+            "Draw a conceptual path from electronics heat sources to external surfaces.",
+            "Compare assumed sunlit and shadow boundaries.",
+            "State one model prediction and the evidence needed to check it."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/"
+          ]
+        },
+        {
+          "id": "c399",
+          "title": "太空碎片減緩與退役",
+          "titleEn": "Space-debris mitigation and disposal",
+          "why": "工程任務的責任延伸到停止服務之後，退役需要早期納入需求。",
+          "whyEn": "Engineering responsibility continues after service ends, so retirement belongs in early requirements.",
+          "transfer": "用生命週期檢核把正常結束與故障後情境分開。",
+          "transferEn": "Use lifecycle review to distinguish nominal retirement from failure scenarios.",
+          "difference": "碎片減緩原則不是任何地區的完整法規判定；不在此推算或下達軌道機動。",
+          "differenceEn": "Mitigation principles are not complete jurisdiction-specific legal determinations; no orbital maneuvers are calculated or commanded here.",
+          "practice": [
+            "為虛構衛星建立服務開始到結束的責任表。",
+            "分別列出正常退役與失去部分功能後的未決問題。",
+            "標記需要主管機關、營運者及專業評估的證據。"
+          ],
+          "practiceEn": [
+            "Create a responsibility table from commissioning to retirement for a fictional satellite.",
+            "List open questions for nominal retirement and partial failure.",
+            "Mark evidence requiring authorities, operators and professional assessment."
+          ],
+          "referenceUrls": [
+            "https://orbitaldebris.jsc.nasa.gov/mitigation/",
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        },
+        {
+          "id": "c391",
+          "title": "CubeSat 小衛星系統工程",
+          "titleEn": "CubeSat small-satellite systems engineering",
+          "why": "小衛星能清楚展示有限資源下如何協調需求與子系統。",
+          "whyEn": "Small spacecraft clearly illustrate requirements and subsystem coordination under limited resources.",
+          "transfer": "把質量、功率、資料及熱負載分配到可追溯的介面帳。",
+          "transferEn": "Allocate mass, power, data and thermal loads through traceable interface accounts.",
+          "difference": "CubeSat 的尺寸與標準化介面不能當成 Starlink 衛星的實際配置。",
+          "differenceEn": "CubeSat sizes and standardized interfaces are not Starlink configurations.",
+          "practice": [
+            "為虛構科學小衛星指定一項任務目標。",
+            "建立四種資源的假設分配表，明示預留量。",
+            "模擬新增感測器後，標記哪些其他預算也要重新檢查。"
+          ],
+          "practiceEn": [
+            "Assign one mission objective to a fictional science satellite.",
+            "Create four assumed resource budgets with explicit reserves.",
+            "Add a sensor and identify other budgets needing review."
+          ],
+          "referenceUrls": [
+            "https://www.nasa.gov/smallsat-institute/sst-soa/",
+            "https://www.nasa.gov/reference/systems-engineering-handbook/"
+          ]
+        }
+      ]
+    }
+  ]
+}

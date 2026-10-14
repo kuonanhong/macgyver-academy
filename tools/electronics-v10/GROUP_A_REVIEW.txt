@@ -1,0 +1,82 @@
+V10 electrical/electronics, group A — 2026-10-14
+
+Scope: a201–a235, exactly matching catalog titles and category electronics.
+35 courses: 33 newly guided and 2 extensions. Each has 12 newly authored,
+topic-specific technical units, each taught as modeling and diagnostic work.
+840 appended steps, 876 total steps, 1,962 total knowledge records.
+a203: original 12 steps retained plus 24 new; curriculumVersion 6 retained.
+a211: original 24 steps retained plus 24 new; curriculumVersion 7 retained.
+Original stage objects, step IDs, order and original content remain identical.
+Extensions carry enrichmentVersion 10; newly authored courses use version 10.
+
+Rebuild:
+  python3 tools/electronics-v10/build_group_a.py
+The builder reads only the committed group_a_snapshot.json, not mutable public
+catalog/featured files. The snapshot stores names and the two original courses.
+Repeated builds produced identical bytes. Python ast.parse(feature_version=(3,10))
+passed. Bilingual step fields, 2–3 knowledge records, 3-answer quizzes, sources,
+all 35 map records and all 70 guided-course comparison links were checked.
+
+Sources: 51 official primary records. Researched using web search and opened
+representative product/research pages on 2026-10-14. Search-returned official
+content was also used when direct page fetch was unavailable (the Siemens
+vacuum-switching overview timed out on one direct open; its official search
+result and the 3AH product results were available). URLs, publishers and scope
+are recorded in group_a.json. No website artwork, prose passage or copyrighted
+manual text was reproduced. Equations and chosen numerical inputs are original
+educational exercises, not manufacturer-measured performance or official recipes.
+Manufacturer claims of superiority, precise production recipes and standards
+thresholds are not adopted as course acceptance criteria.
+
+Places: public institutional addresses or a clearly identified city reference.
+Coordinates are approximate, not surveyed facility/equipment positions. A
+headquarters marker does not claim manufacturing at that address. Siemens AG
+and Siemens Energy are distinguished. The Solar MEMS contact-page postal address
+is used as published; legal-page postal code differs, so coordinates remain
+representative and maps use the complete named address.
+
+Numeric audit: all 35 worked examples were independently reviewed by the
+v10_media agent alongside all 420 unit principles. Three precision issues found
+and fixed before delivery:
+1. a224: short-term RMS current limit, not an instantaneous peak/RMS mixture.
+2. a205: p/T uses absolute pressure, kelvin, fixed composition and the ideal-gas
+   approximation; neither gauge pressure nor Celsius is valid.
+3. a231: solar irradiance (W/m²), not photometric illuminance (lux).
+An additional author check gives the modal real part in s^-1 and imaginary
+angular frequency in rad/s in a226.
+
+Examples checked include:
+201: 3600 rpm; 2.041 MW assumed loss.
+202: 180 rpm; 44.145 MW hydraulic-to-electric estimate.
+203: 251.0 A; 10 pu idealized fault current (not a setting).
+204: 50 K and 60 K lumped temperature rises.
+205/207: coaxial fields about 3.61/4.55 MV/m; never withstand ratings.
+209: 5.625 m parabolic sag; not a clearance release.
+210/211: 10 kJ surge energy; 945 kJ DC-energy rise and 9.45 ms ideal accumulation.
+212: 4 kJ/submodule; 400 kJ/arm; 2.0202 kV after hypothetical bypass.
+213/214: constant-current Q falls linearly with voltage; fixed-susceptance Q
+          falls quadratically (45.73 MVAr and 64 MVAr in the separate cases).
+215: 15.84 MJ rotational energy change.
+217: 0.0216 degree timing phase error and about 0.0377% small-angle TVE.
+220: 49.152 Mbit/s raw traffic; overhead assumptions explicitly stated.
+221: 64.17% hypothetical customer-minute reduction.
+222/225: 111.11/233.33 kWh available DC energy in separate cases.
+226: 0.955 Hz and damping ratio 0.0830.
+228: 1840 W, 3.68 kWh; 0.141% independent V/I uncertainty contribution only.
+229: current THD 11.18%; total RMS 100.62 A.
+230: weighted mean 1.008 pu and independent standard uncertainty 0.00894 pu.
+232: ideal optical absorption 86.47%/95.02%, not electrical efficiency.
+234: 11.94 V amplitude, 23.87 V peak-to-peak ideal DC ripple.
+235: 939.69 W received direct optical power, not generated electric power.
+
+Safety and certification scope: all HV/grid work is offline diagramming,
+simulation, test planning and report interpretation. No live switching orders,
+actual relay settings, energization SOP, installation approval or professional
+license is implied. Course completion measures learning tasks, not permission
+to construct or operate industrial equipment.
+
+Limitations: the group contributes curriculum, links and representative maps;
+it does not add actual industrial datasets or vendor factory access. Numerical
+cases are deliberately hypothetical and media/interactive integration is handled
+by the main V10 build. Commercial providers are lesson-role references, without
+stock prices, endorsement or a claim that vendors teach these courses.

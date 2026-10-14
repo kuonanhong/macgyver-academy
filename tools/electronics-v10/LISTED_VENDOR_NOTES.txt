@@ -1,0 +1,30 @@
+V10 listed-vendor overrides — reviewed 2026-10-14
+
+8 existing electrical/electronics registry entities receive official IR links.
+5 directly matching public-company securities are included:
+First Solar FSLR / NASDAQ / USD; Eaton ETN / NYSE / USD;
+Microchip Technology MCHP / NASDAQ / USD;
+TTM Technologies TTMI / NASDAQ / USD; Keysight Technologies KEYS / NYSE / USD.
+Official issuer stock pages, investor overviews or shareholder FAQ pages identify
+their tickers and exchanges. These are US exchange quotations in US dollars.
+Each row sourceUrl records the primary issuer page used. No stock prices copied.
+
+ABB, Siemens Energy and Infineon receive IR links only. ABB's issuer page lists
+ABBN on SIX and ABB on Nasdaq Stockholm, and ABBNY as an OTC level-I ADR;
+we do NOT reuse the former NYSE ABB listing. Infineon's page lists IFX in
+Frankfurt and IFNNY on OTCQX. No European security is added because the precise
+Twelve Data exchange field and licensed instrument were not verified end to end.
+
+The official Twelve Data docs demonstrate NASDAQ / NYSE and USD and state US
+listed equity coverage, but no licensed quote request was made. Its public
+stock-list API was inaccessible to the web retrieval tool during this review.
+Runtime must still validate response symbol, exchange and currency, and return
+unavailable when the licensed feed cannot establish identity.
+Provider references:
+https://support.twelvedata.com/en/articles/9935903-us-equities-market-data
+https://support.twelvedata.com/en/articles/5620513-how-to-find-all-available-symbols-at-twelve-data
+https://twelvedata.com/docs/markets/market-state
+
+Only the same listed entity is used: Hitachi Energy, Samsung Display, Kollmorgen,
+Universal Robots, Red Hat and other subsidiaries are not assigned parent stock.
+This JSON is an authoring override; registry and builder were not modified.

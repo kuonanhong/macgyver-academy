@@ -1,0 +1,215 @@
+import { projectIconSvg } from './project-identity.js';
+
+const esc = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+const pair = (zh, en) => [zh, en];
+const isZh = language => language === true || /^zh(?:-|$)/i.test(String(language ?? 'zh-TW'));
+const choose = (value, zh) => Array.isArray(value) ? value[zh ? 0 : 1] || value[0] : String(value ?? '');
+const field = (course, key, zh) => String(course?.[zh ? key : `${key}En`] || course?.[key] || course?.[`${key}En`] || '');
+const textFor = course => [course.title, course.titleEn, course.summary, course.summaryEn, course.subcategoryTitle, course.subcategoryTitleEn, course.learningTrack, course.learningSubdiscipline, ...(Array.isArray(course.learningTags) ? course.learningTags : []), ...(Array.isArray(course.tags) ? course.tags : [])].filter(Boolean).join(' ').normalize('NFKC').toLowerCase();
+
+/** These are editorial learning families, not rankings or geographic locations. */
+export const LEARNING_TRACKS = [
+  {id:'quantum', icon:'quantum', title:pair('量子電腦與 QPU','Quantum computers & QPUs'), description:pair('依物理實作、控制、讀出與錯誤處理比較量子門派。','Compare physical implementations, control, readout and error handling.'), boundary:pair('共同點是量子態準備、控制與量測；低溫、雷射、光損耗及錯誤模型各不相同。','State preparation, control and measurement are shared; cryogenics, lasers, optical loss and error models differ.')},
+  {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('從神經網路到 GPU、TPU、資料流與推論服務。','From neural networks to GPUs, TPUs, dataflow and inference services.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
+  {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('處理器、儲存、叢集、機房與科學運算的系統觀。','A systems view of processors, storage, clusters, facilities and scientific computing.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
+  {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('身分、信任、分段、證據、監測與復原。','Identity, trust, segmentation, evidence, monitoring and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
+  {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('封包、光纖、無線、衛星與量子通訊介面。','Packet, fiber, wireless, satellite and quantum-communication interfaces.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
+  {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('作業系統、編譯器、資料庫、建置與可信交付。','Operating systems, compilers, databases, builds and trustworthy delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
+  {id:'energy', icon:'energy', title:pair('核能、再生能源與儲能','Nuclear, renewable energy & storage'), description:pair('核電、SMR、核融合、風力、水力、地熱與儲能。','Nuclear plants, SMRs, fusion, wind, hydro, geothermal and storage.'), boundary:pair('比較能量轉換、熱流、機電介面與監測；裂變、融合與再生能源的物理及驗證條件不同。','Compare conversion, heat flow, electromechanical interfaces and monitoring; fission, fusion and renewables have different physics and validation conditions.')},
+  {id:'resources', icon:'resources', title:pair('石油、天然氣與採礦','Oil, gas & mineral resources'), description:pair('資源調查、井與礦場系統、淘金及環境監測。','Resource surveys, well and mine systems, gold recovery and environmental monitoring.'), boundary:pair('共同點是地質證據、物料流與環境監測；油氣井、露天礦與重力選礦的工程邊界不同。','Geological evidence, material flow and environmental monitoring are shared; wells, open-pit mines and gravity separation have different engineering boundaries.')},
+  {id:'semiconductor', icon:'chip', title:pair('半導體製程','Semiconductor fabrication'), description:pair('材料、微影、元件、互連、量測與整合。','Materials, lithography, devices, interconnects, metrology and integration.'), boundary:pair('以製程窗口與量測證據連結工法；不同節點、材料與產品的配方不可直接移用。','Connect process windows and measurement evidence; recipes are not directly transferable across nodes, materials and products.')},
+  {id:'packaging', icon:'layers', title:pair('先進封裝與矽光子','Advanced packaging & silicon photonics'), description:pair('晶粒互連、熱機電共同設計與光引擎。','Die interconnects, thermomechanical co-design and optical engines.'), boundary:pair('比較介面、損耗、熱與應力；電子互連與光耦合需要不同的驗證方法。','Compare interfaces, loss, heat and stress; electrical interconnects and optical coupling require different validation methods.')},
+  {id:'electronics', icon:'circuit', title:pair('電機與電子','Electrical & electronic engineering'), description:pair('電網、馬達、功率電子、訊號鏈與可靠組裝。','Grids, motors, power electronics, signal chains and reliable assembly.'), boundary:pair('比較電磁、訊號與功率預算；功能模型不等於帶電設備操作程序。','Compare electromagnetic, signal and power budgets; functional models are not procedures for energized equipment.')},
+  {id:'civil', icon:'bridge', title:pair('土木、水務與城市','Civil, water & urban engineering'), description:pair('大橋、隧道、結構、水處理與環境系統。','Bridges, tunnels, structures, water treatment and environmental systems.'), boundary:pair('比較載重、流體、地質與施工介面；場址條件改變設計與驗證。','Compare loads, fluids, geology and construction interfaces; site conditions change design and validation.')},
+  {id:'mobility', icon:'motion', title:pair('機械、交通與航太','Mechanical, transport & aerospace'), description:pair('製造、車輛、鐵路、船舶、航空與太空專案。','Manufacturing, vehicles, railways, ships, aviation and space projects.'), boundary:pair('以結構、運動、控制與驗證串連；不同載具的工作環境與法規不同。','Connect structures, motion, control and validation; operating environments and regulations differ between vehicles.')},
+  {id:'materials', icon:'materials', title:pair('材料與冶金','Materials & metallurgy'), description:pair('金屬、陶瓷、複材、玻璃與材料表徵。','Metals, ceramics, composites, glass and characterization.'), boundary:pair('比較成分、微結構、製程與性質；材料證據不能只由外觀判斷。','Compare composition, microstructure, processing and properties; appearance alone is not material evidence.')},
+  {id:'science', icon:'science', title:pair('科學設施與精密儀器','Research facilities & precision instruments'), description:pair('加速器、望遠鏡、感測與大型科學設施。','Accelerators, telescopes, sensing and large research facilities.'), boundary:pair('以訊號、校準、不確定度與系統整合比較；不同觀測尺度需要不同儀器。','Compare signals, calibration, uncertainty and integration; different observation scales require different instruments.')},
+  {id:'process', icon:'process', title:pair('工業製程與醫療工程','Industrial processes & biomedical engineering'), description:pair('單元操作、製程系統與生醫工程設計。','Unit operations, process systems and biomedical engineering design.'), boundary:pair('比較物料、能量、品質與驗證；工業產品與生醫應用的證據要求不同。','Compare material, energy, quality and validation; industrial products and biomedical uses require different evidence.')},
+  {id:'other', icon:'compass', title:pair('跨領域與其他工程','Cross-disciplinary & other engineering'), description:pair('保留完整目錄中的其他與新加入主題。','Retain other and newly added topics from the complete catalog.'), boundary:pair('先確認系統邊界、輸入輸出與驗證證據，再選擇相關領域。','Identify system boundaries, inputs, outputs and validation evidence before selecting related disciplines.')}
+];
+
+const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
+export const LEARNING_SUBDISCIPLINES = [
+  subdivision('quantum-superconducting','quantum','超導量子位元','Superconducting qubits',/超導|superconduct|transmon|fluxonium/),
+  subdivision('quantum-ion','quantum','囚禁離子','Trapped ions',/囚禁離子|離子阱|trapped.?ion|ion.?trap/),
+  subdivision('quantum-neutral','quantum','中性原子','Neutral atoms',/中性原子|rydberg|neutral.?atom/),
+  subdivision('quantum-photon','quantum','光子量子運算','Photonic quantum computing',/光子|光學|photon|optical/),
+  subdivision('quantum-spin','quantum','半導體自旋','Semiconductor spins',/自旋|量子點|spin.?qubit|quantum.?dot/),
+  subdivision('quantum-annealing','quantum','量子退火','Quantum annealing',/退火|anneal|d.?wave/),
+  subdivision('quantum-qec','quantum','錯誤校正與容錯','Error correction & fault tolerance',/量子.*(?:錯誤|糾錯|校正|容錯)|surface.?code|qec|quantum.*(?:error|fault)/),
+  subdivision('quantum-topological','quantum','拓樸量子研究與證據界線','Topological quantum research & evidence boundaries',/拓樸|拓扑|topologic|majorana/,pair('量測與產品宣稱需逐項核驗；此分類不表示已證實拓樸性或容錯運算。','Measurements and product claims require separate verification; this classification does not establish topology or fault-tolerant computation.')),
+  subdivision('ai-neural','ai','神經網路架構','Neural-network architectures',/神經網路|neural.?network|transformer|attention|cnn|rnn|diffusion|擴散模型|注意力|卷積/),
+  subdivision('ai-gpu','ai','GPU 與平行核心','GPUs & parallel cores',/gpu|cuda|平行運算核心/),
+  subdivision('ai-tpu','ai','TPU 與張量資料流','TPUs & tensor dataflow',/tpu|tensor|張量|systolic|脈動陣列/),
+  subdivision('ai-wafer','ai','晶圓級加速器','Wafer-scale accelerators',/wafer.?scale|晶圓尺度|晶圓級|cerebras/),
+  subdivision('ai-fpga','ai','FPGA 與可重組資料流','FPGAs & reconfigurable dataflow',/fpga|可重組|reconfigur/),
+  subdivision('ai-neuromorphic','ai','類神經與事件驅動','Neuromorphic & event-driven',/neuromorphic|類神經|神經形態|spiking|脈衝神經/),
+  subdivision('ai-services','ai','資料、推論與模型服務','Data, inference & model services',/模型|model|推論|inference|機器學習|machine.?learning|retrieval|檢索|federated|聯邦|speech|語音|vision|視覺/),
+  subdivision('servers-hpc','servers','超級電腦與 HPC','Supercomputers & HPC',/supercomputer|超級電腦|hpc|mpi|frontier|fugaku|富岳|summit|lumi|aurora|lhc.*comput|運算網格/),
+  subdivision('server-design','servers','伺服器與機房架構','Server & facility design',/server|伺服器|機房|data.?cent(?:er|re)|rack|機櫃|cooling|液冷/),
+  subdivision('servers-distributed','servers','分散式系統與可靠度','Distributed systems & reliability',/分散式|distributed|儲存|storage|叢集|cluster|復原|recovery|備份|backup|high.?availability|高可用|consensus|共識/),
+  subdivision('cyber-identity','cyber','身分、金鑰與信任','Identity, keys & trust',/身分|認證|驗證|identity|authentication|key|金鑰|密鑰|信任|trust|憑證|certificate|pki|cryptograph|密碼|encryption|加密/),
+  subdivision('cyber-monitoring','cyber','監測、事件與證據','Monitoring, incidents & evidence',/監測|偵測|monitor|detection|事件|incident|鑑識|forensic|證據|evidence|siem|response|回應/),
+  subdivision('cyber-boundaries','cyber','隔離、供應鏈與隱私','Isolation, supply chains & privacy',/隔離|isolation|分區|segmentation|供應鏈|supply.?chain|privacy|隱私|secure.?boot|安全啟動|弱點|vulnerab/),
+  subdivision('networks-optical','networks','光纖與量子通訊','Optical & quantum communications',/光纖|光纜|fiber|fibre|optical|量子通訊|quantum.?communication|qkd/),
+  subdivision('networks-wireless','networks','無線、行動與衛星','Wireless, mobile & satellite',/無線|wireless|行動|mobile|衛星|satellite|蜂巢|cellular|5g|radio|基地台/),
+  subdivision('networks-packet','networks','封包、路由與時序','Packets, routing & timing',/封包|packet|路由|routing|router|交換|switch|dns|網域|domain|ptp|time|時序|時間|ethernet|乙太|ipv6|internet|網際/),
+  subdivision('energy-smr','energy','小型模組化反應爐','Small modular reactors',/小型.*(?:核能|核電|反應爐)|模組化反應爐|small.?modular|\bsmr\b|bwrx|nuscale/),
+  subdivision('energy-fusion','energy','核融合','Fusion energy',/核融合|fusion|tokamak|stellarator|仿星器|托卡馬克|iter|wendelstein|慣性拘束/),
+  subdivision('energy-nuclear','energy','核能發電與熱循環','Nuclear generation & heat cycles',/核電|核能|反應爐|nuclear|reactor|fission|裂變/),
+  subdivision('energy-wind','energy','風力與風機設計','Wind energy & turbine design',/風力|風機|風電|風場|wind|hornsea|dogger.?bank|hywind/),
+  subdivision('energy-hydro','energy','水力、抽蓄與水輪機','Hydro, pumped storage & water turbines',/水力|水電|水輪|抽蓄|hydro|pumped.?storage|pelton|kaplan|francis|三峽|three.?gorges/),
+  subdivision('energy-geothermal','energy','地熱、井與儲層','Geothermal energy, wells & reservoirs',/地熱|geothermal|hellisheidi|geysers|olkaria|wairakei|larderello/),
+  subdivision('energy-storage','energy','儲能與電網整合','Storage & grid integration',/儲能|storage|電池|battery|電網|grid|flywheel|飛輪|thermal|蓄熱/),
+  subdivision('energy-solar','energy','太陽能與其他轉換','Solar & other energy conversion',/太陽能|光伏|solar|photovoltaic|潮汐|tidal|波浪|wave|燃氣|gas.?turbine|蒸汽|steam/),
+  subdivision('resources-gold','resources','淘金與黃金礦業','Gold recovery & gold mining',/淘金|黃金|金礦|gold|placer/),
+  subdivision('resources-oil','resources','石油、天然氣與井','Oil, gas & wells',/石油|油氣|油田|天然氣|oil|petroleum|gas|well|鑽井/),
+  subdivision('resources-mining','resources','採礦、選礦與監測','Mining, beneficiation & monitoring',/採礦|礦場|礦山|選礦|mining|mine|ore|mineral|tailings|尾礦/)
+];
+
+/** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
+export const LEARNING_ROUTES = [
+  {id:'compute',title:pair('從處理器到 AI 與超級電腦','From processors to AI and supercomputers'),goal:pair('沿計算、記憶體、資料流與叢集介面比較。','Compare compute, memory, dataflow and cluster interfaces.'),courses:['a302','a303','a304','a305','a388','a392']},
+  {id:'software',title:pair('從核心到可信軟體交付','From kernels to trustworthy delivery'),goal:pair('用介面契約、可重現建置與簽章證據連結。','Connect interface contracts, reproducible builds and signing evidence.'),courses:['a311','a313','a314','a327','a328','a326']},
+  {id:'distributed',title:pair('從資料儲存到可恢復服務','From storage to recoverable services'),goal:pair('追蹤交易、共識、監測與復原，不把備份等同高可用。','Trace transactions, consensus, monitoring and recovery; backup is not high availability.'),courses:['a317','a318','a319','a321','a325','a329','a330']},
+  {id:'cyber',title:pair('建立可核驗的防禦網路','Build a verifiable defensive network'),goal:pair('把資產、身分、分段、監測與復原的證據串起來。','Connect evidence for assets, identity, segmentation, monitoring and recovery.'),courses:['cybersecurity','a351','a352','a364','a362','a369','a370']},
+  {id:'networks',title:pair('從區域網路到全球光纖與衛星','From LANs to global fiber and satellites'),goal:pair('比較封包轉送與物理鏈路限制。','Compare packet forwarding and physical-link constraints.'),courses:['a331','a332','a334','a345','a346','a348','starlink']},
+  {id:'quantum',title:pair('量子硬體門派的比較入口','Compare quantum-hardware schools'),goal:pair('先辨識量子位元、控制與讀出，再比較物理實作；多種門派是分支，不是必須逐台建造的序列。','Identify qubits, control and readout before comparing physical implementations; schools are branches, not a required sequence of machines.'),courses:[{track:'quantum',subdiscipline:'quantum-superconducting'},{track:'quantum',subdiscipline:'quantum-ion'},{track:'quantum',subdiscipline:'quantum-neutral'},{track:'quantum',subdiscipline:'quantum-photon'},{track:'quantum',subdiscipline:'quantum-spin'},{track:'quantum',subdiscipline:'quantum-annealing'},{track:'quantum',subdiscipline:'quantum-qec'},{track:'quantum',subdiscipline:'quantum-topological'}],branching:true},
+  {id:'ai-stack',title:pair('神經網路、加速器與可信服務','Neural networks, accelerators & trustworthy services'),goal:pair('比較架構、硬體資料流與推論監測。','Compare architectures, hardware dataflow and inference monitoring.'),courses:[{track:'ai',subdiscipline:'ai-neural'},'a304','a305','a379','a381','a367']},
+  {id:'hydro',title:pair('水力發電到電網介面','Hydropower to grid interfaces'),goal:pair('由水力與水輪機跨接發電機、調速與抽蓄系統。','Connect hydraulics and turbines to generators, governing and pumped storage.'),courses:['three-gorges','d051','d054','d055','d056','a201']},
+  {id:'wind',title:pair('風場、葉片與發電系統','Wind farms, blades & generation systems'),goal:pair('比較轉子、支承、傳動、發電與海纜介面。','Compare rotors, supports, drives, generation and export cables.'),courses:['d035','d066','d067','d069','d070','d071']},
+  {id:'geothermal',title:pair('地熱場到可驗證能量轉換','Geothermal fields to verifiable conversion'),goal:pair('把地質證據、井完整性、儲層與熱循環連結。','Connect geological evidence, well integrity, reservoirs and heat cycles.'),courses:['d023','d073','d075','d074','d080']},
+  {id:'nuclear-compare',title:pair('核電、SMR 與核融合的系統比較','Compare nuclear plants, SMRs & fusion'),goal:pair('比較能量來源、熱轉換、監測與研究成熟度；融合不是小型裂變反應爐。','Compare energy sources, heat conversion, monitoring and research maturity; fusion is not a small fission reactor.'),courses:[{track:'energy',subdiscipline:'energy-nuclear'},{track:'energy',subdiscipline:'energy-smr'},{track:'energy',subdiscipline:'energy-fusion'}],branching:true},
+  {id:'resources',title:pair('油氣、淘金與礦業系統比較','Compare oil, gold & mining systems'),goal:pair('比較地質證據、開採介面、物料分離與環境監測。','Compare geological evidence, extraction interfaces, material separation and environmental monitoring.'),courses:[{track:'resources',subdiscipline:'resources-oil'},{track:'resources',subdiscipline:'resources-gold'},{track:'resources',subdiscipline:'resources-mining'}],branching:true}
+];
+
+const TRACK_IDS = new Set(LEARNING_TRACKS.map(track => track.id));
+const SUBDISCIPLINE_IDS = new Map(LEARNING_SUBDISCIPLINES.map(subdivision => [subdivision.id, subdivision]));
+const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'civil',water:'civil',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
+
+export function classifyLearningCourse(course = {}) {
+  // Generic roadmap summaries mention security and testing in every category;
+  // use authored identity fields to avoid classifying all computing topics as cyber.
+  const text = [course.title,course.titleEn,course.subcategoryTitle,course.subcategoryTitleEn,...(Array.isArray(course.learningTags)?course.learningTags:[]),...(Array.isArray(course.tags)?course.tags:[])].filter(Boolean).join(' ').normalize('NFKC').toLowerCase();
+  let track = TRACK_IDS.has(course.learningTrack) ? course.learningTrack : '';
+  if (!track) {
+    if (/量子.*(?:電腦|運算|位元|處理器|錯誤|容錯)|quantum.*(?:comput|qubit|processor|error|fault)|\bqpu\b|transmon|fluxonium|trapped.?ion|neutral.?atom|quantum.?anneal/.test(text) && !/量子通訊|quantum.?communication|\bqkd\b/.test(field(course,'title',false)+' '+field(course,'title',true))) track='quantum';
+    else if (/神經網路|neural.?network|neuromorphic|類神經|\bgpu\b|\btpu\b|張量運算|tensor.?comput|cerebras|晶圓(?:尺度|級).*(?:加速|運算|叢集)|wafer.?scale.*(?:accelerat|comput|cluster)|fpga.*(?:加速|資料流|accelerat|dataflow)|機器學習|machine.?learning|語言模型|language.?model|檢索增強|retrieval.?augmented|模型監測|model.?monitor|聯邦學習|federated.?learning|語音辨識|speech.?recognition|機器視覺|machine.?vision|向量資料庫|vector.?database/.test(text)) track='ai';
+    else if (course.category==='computing' && /安全|資安|信任|身分|認證|驗證|金鑰|密鑰|密碼|加密|隱私|鑑識|弱點|security|secure|trust|identity|authentic|cryptograph|encryption|privacy|forensic|vulnerab|intrusion/.test(text)) track='cyber';
+    else if (course.category==='computing' && /network|網路|網域|domain.?name|router|路由|ethernet|乙太|光纖|光纜|fiber|fibre|wireless|satellite|衛星|radio|基地台|\bipv6\b|\bptp\b/.test(text)) track='networks';
+    else if (course.category==='computing' && /server|伺服器|supercomputer|超級電腦|\bhpc\b|\bmpi\b|\bcpu\b|多核心|multicore|快取|cache|運算網格|distributed|分散式|儲存|storage|叢集|cluster|recovery|復原|備份|backup|高可用|highly.?available|物件儲存|記憶體控制/.test(text)) track='servers';
+    else if (/淘金|金礦|黃金.*礦|gold.?min|gold.?recover|石油.*開採|oil.*extract|petroleum|採礦|礦場|mining|油氣|油田|天然氣.*開採/.test(text)) track='resources';
+    else track=categoryTrack[course.category] || 'other';
+  }
+  const declared = SUBDISCIPLINE_IDS.get(course.learningSubdiscipline);
+  const subdivision = declared?.track === track ? declared : LEARNING_SUBDISCIPLINES.find(candidate => candidate.track === track && candidate.pattern.test(text));
+  const authoredSubcategory = typeof course.subcategory==='string' && /^[a-z0-9-]{1,80}$/i.test(course.subcategory) && (course.subcategoryTitle || course.subcategoryTitleEn) ? course.subcategory : '';
+  const trackTitle=LEARNING_TRACKS.find(candidate=>candidate.id===track)?.title;
+  return {track, subdiscipline:subdivision?.id || (authoredSubcategory?`${track}-${authoredSubcategory}`:`${track}-general`), subdivisionTitle:subdivision?.title || (authoredSubcategory?pair(course.subcategoryTitle||course.subcategoryTitleEn,course.subcategoryTitleEn||course.subcategoryTitle):pair(`${choose(trackTitle,true)} · 系統`,`${choose(trackTitle,false)} · Systems`)),subdivisionNote:subdivision?.note||null};
+}
+
+function guided(course) { return Array.isArray(course.stages) || course.status === 'guided' || course.kind === 'course'; }
+function locked(course) { return course.locked === true || course.access === 'locked'; }
+function stepCount(course) { return Number.isFinite(Number(course.stepCount)) && Number(course.stepCount) >= 0 ? Math.floor(Number(course.stepCount)) : Array.isArray(course.stages) ? course.stages.reduce((sum, stage) => sum+(Array.isArray(stage.steps)?stage.steps.length:0),0) : 0; }
+
+/** Merge public metadata and supplied curricula without allowing stale curriculum data to clear a lock. */
+export function buildLearningMapIndex(catalog = [], featured = []) {
+  const supplied = new Map((Array.isArray(featured)?featured:[]).filter(course=>typeof course?.id==='string').map(course=>[course.id,course]));
+  const courses = [], ids = new Set();
+  for (const metadata of Array.isArray(catalog)?catalog:[]) {
+    if (!metadata || typeof metadata.id !== 'string' || !metadata.id || ids.has(metadata.id)) continue;
+    const curriculum=supplied.get(metadata.id);
+    const course={...metadata,...curriculum,locked:locked(metadata)||locked(curriculum||{})};
+    // Catalog names and research scope remain authoritative for the map.
+    for (const key of ['title','titleEn','category','learningTrack','learningSubdiscipline','learningTags']) if(metadata[key]!==undefined) course[key]=metadata[key];
+    ids.add(course.id); courses.push({...course,...classifyLearningCourse(course),guided:guided(course),stepCount:stepCount(course),searchText:textFor(course)});
+  }
+  for (const course of supplied.values()) if(!ids.has(course.id)) {ids.add(course.id);courses.push({...course,...classifyLearningCourse(course),guided:guided(course),locked:locked(course),stepCount:stepCount(course),searchText:textFor(course)});}
+  return courses;
+}
+
+function matchesQuery(course, query) {
+  const tokens=String(query||'').normalize('NFKC').trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const track=LEARNING_TRACKS.find(item=>item.id===course.track);
+  const haystack=[course.id,course.searchText,choose(track?.title,true),choose(track?.title,false),choose(course.subdivisionTitle,true),choose(course.subdivisionTitle,false)].join(' ').normalize('NFKC').toLowerCase();
+  return tokens.every(token=>haystack.includes(token));
+}
+
+export function filterLearningMapCourses(index, state = {}) {
+  return index.filter(course => (!state.track || course.track===state.track) && (!state.subdiscipline || course.subdiscipline===state.subdiscipline) && (!state.maturity || (state.maturity==='guided'?course.guided:state.maturity==='research'?!course.guided:state.maturity==='locked'?course.locked:true)) && matchesQuery(course,state.query));
+}
+
+export function resolveLearningRoute(route, index) {
+  const byId=new Map(index.map(course=>[course.id,course])), seen=new Set();
+  return (Array.isArray(route?.courses)?route.courses:[]).map(selector => typeof selector==='string' ? byId.get(selector) : selector && typeof selector==='object' ? index.find(course=>(!selector.track||course.track===selector.track)&&(!selector.subdiscipline||course.subdiscipline===selector.subdiscipline)&&(!selector.id||course.id===selector.id)) : null).filter(course=>course&&!seen.has(course.id)&&seen.add(course.id));
+}
+
+function courseIds(value) {return (Array.isArray(value)?value:[]).map(item=>typeof item==='string'?item:item?.id).filter(id=>typeof id==='string');}
+export function learningCoursePath(courseId, index, routes = LEARNING_ROUTES) {
+  const course=index.find(item=>item.id===courseId);if(!course)return null;
+  const byId=new Map(index.map(item=>[item.id,item]));
+  const route=(Array.isArray(routes)?routes:[]).map(item=>({definition:item,courses:resolveLearningRoute(item,index)})).find(item=>item.courses.some(candidate=>candidate.id===courseId));
+  const position=route?.courses.findIndex(candidate=>candidate.id===courseId)??-1;
+  const valid=(ids)=>[...new Set(ids)].filter(id=>id!==courseId).map(id=>byId.get(id)).filter(Boolean).slice(0,3);
+  const prior=valid([...courseIds(course.learningPrerequisites||course.prerequisiteIds||course.prerequisites),...(!route?.definition?.branching&&position>0?route.courses.slice(Math.max(0,position-2),position).map(item=>item.id):[])]);
+  const next=valid([...courseIds(course.learningDerivatives||course.derivativeIds),...(!route?.definition?.branching&&position>=0?route.courses.slice(position+1,position+3).map(item=>item.id):[])]);
+  const compare=index.filter(candidate=>candidate.id!==courseId&&candidate.track===course.track&&(candidate.subdiscipline===course.subdiscipline||route?.definition?.branching)).slice(0,3);
+  return {course,prior,next,compare,route:route?.definition||null};
+}
+
+function trackIcon(type) {
+  const shapes={quantum:'<ellipse cx="24" cy="24" rx="20" ry="8"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(60 24 24)"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(120 24 24)"/><circle cx="24" cy="24" r="3"/>',ai:'<path d="M10 10L24 17L38 10M10 24L24 17L38 24M10 38L24 31L38 38M24 17V31M10 10V38M38 10V38"/><circle cx="10" cy="10" r="3"/><circle cx="38" cy="10" r="3"/><circle cx="10" cy="24" r="3"/><circle cx="38" cy="24" r="3"/><circle cx="10" cy="38" r="3"/><circle cx="38" cy="38" r="3"/>',servers:'<rect x="8" y="5" width="32" height="38" rx="4"/><path d="M8 18H40M8 30H40M14 11H27M14 24H27M14 36H27"/><circle cx="34" cy="11" r="1"/><circle cx="34" cy="24" r="1"/><circle cx="34" cy="36" r="1"/>',shield:'<path d="M24 4L41 11V23C41 34 31 40 24 44C17 40 7 34 7 23V11Z"/><path d="M15 24L21 30L33 17"/>',network:'<path d="M24 9V24M9 37L24 24L39 37"/><rect x="16" y="3" width="16" height="12" rx="2"/><rect x="2" y="32" width="14" height="12" rx="2"/><rect x="32" y="32" width="14" height="12" rx="2"/><circle cx="24" cy="24" r="4"/>',code:'<path d="M15 13L4 24L15 35M33 13L44 24L33 35M28 8L20 40"/>',energy:'<path d="M26 3L10 27H23L20 45L38 20H25Z"/>',resources:'<path d="M4 38L18 17L27 29L34 20L44 38ZM12 8L36 12M24 10L17 25M8 44H42"/>',chip:'<rect x="11" y="11" width="26" height="26" rx="3"/><rect x="18" y="18" width="12" height="12"/><path d="M17 3V11M24 3V11M31 3V11M17 37V45M24 37V45M31 37V45M3 17H11M3 24H11M3 31H11M37 17H45M37 24H45M37 31H45"/>',layers:'<path d="M3 17L24 5L45 17L24 29ZM3 24L24 36L45 24M3 31L24 43L45 31"/>',circuit:'<path d="M4 11H17V24H31V37H44M4 37H17V24M31 24V11H44"/><circle cx="4" cy="11" r="3"/><circle cx="4" cy="37" r="3"/><circle cx="44" cy="11" r="3"/><circle cx="44" cy="37" r="3"/>',bridge:'<path d="M3 33H45M11 40V8M37 40V8M3 30L11 10Q24 37 37 10L45 30M18 33V22M24 33V26M30 33V22"/>',motion:'<circle cx="13" cy="35" r="8"/><circle cx="37" cy="35" r="8"/><path d="M8 35L16 18H30L37 35M13 35H37M20 18L17 9H10M26 18L30 9H38"/>',materials:'<path d="M24 4L43 14V35L24 45L5 35V14ZM5 14L24 24L43 14M24 24V45M24 4V24"/>',science:'<path d="M15 4H33M20 4V20L6 40Q5 44 10 44H38Q43 44 42 40L28 20V4M13 31H35"/><circle cx="21" cy="36" r="2"/><circle cx="29" cy="39" r="1"/>',process:'<path d="M3 24H12M20 24H28M36 24H45"/><rect x="12" y="12" width="8" height="24" rx="2"/><rect x="28" y="12" width="8" height="24" rx="2"/><path d="M16 5V12M32 36V43"/>',compass:'<circle cx="24" cy="24" r="20"/><path d="M32 16L28 28L16 32L20 20Z"/>'};
+  return `<svg class="learning-map-track-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${shapes[type]||shapes.compass}</svg>`;
+}
+
+function statusMarkup(course,zh) {return `<span class="learning-map-status ${course.guided?'guided':'research'}">${zh?(course.guided?'逐步課程':'研究選題'):(course.guided?'Guided course':'Research topic')}</span>${course.locked?`<span class="learning-map-status locked">${zh?'需解鎖':'Locked'}</span>`:''}`;}
+function projectLink(course,zh,compact=false) {return `<a href="#project/${encodeURIComponent(course.id)}" class="learning-map-course-link" data-learning-open="${esc(course.id)}"><strong>${esc(field(course,'title',zh))}</strong>${compact?'':`<small>${esc(field(course,'title',!zh))}</small>`}</a>`;}
+
+function routePathMarkup(path,zh) {
+  if(!path)return '';
+  const track=LEARNING_TRACKS.find(item=>item.id===path.course.track);
+  const column=(title,courses,empty)=>`<div class="learning-map-path-column"><h4>${esc(title)}</h4>${courses.length?`<ul>${courses.map(course=>`<li>${projectLink(course,zh,true)}${statusMarkup(course,zh)}</li>`).join('')}</ul>`:`<p class="learning-map-muted">${esc(empty)}</p>`}</div>`;
+  return `<section class="learning-map-path" aria-labelledby="learningMapPathTitle"><div class="learning-map-path-heading"><div><span class="learning-map-eyebrow">${zh?'目前選定的學習項目':'SELECTED LEARNING TOPIC'}</span><h3 id="learningMapPathTitle">${esc(field(path.course,'title',zh))}</h3></div><button type="button" class="learning-map-button secondary" data-map-close-path>${zh?'收起路線':'Close path'} ×</button></div><p>${esc(path.route?choose(path.route.goal,zh):choose(track?.boundary,zh))}</p><div class="learning-map-path-grid">${column(zh?'建議先理解':'Suggested preparation',path.prior,zh?'尚未編定課程依賴；先閱讀本課的工程任務與來源。':'No course dependency is authored; begin with the project brief and sources.')}<div class="learning-map-path-column selected"><h4>${zh?'本項目':'This topic'}</h4>${projectLink(path.course,zh)}${statusMarkup(path.course,zh)}<p>${esc(choose(path.course.subdivisionTitle,zh))}${path.course.guided?` · ${path.course.stepCount} ${zh?'步驟':'steps'}`:''}</p>${path.course.subdivisionNote?`<p class="learning-map-muted">${esc(choose(path.course.subdivisionNote,zh))}</p>`:''}</div>${column(zh?'衍生與下一個比較':'Derivatives & next comparisons',path.next.length?path.next:path.compare,zh?'尚無目錄內的對應項目；不建立空白連結。':'No matching catalog topic exists; no empty links are created.')}</div><p class="learning-map-comparison">${esc(choose(track?.boundary,zh))}</p><p class="learning-map-muted">${zh?'此處為概念準備與比較建議，不是強制先修或工業操作順序。研究選題尚未包含完整逐步教材。':'These are conceptual preparation and comparison suggestions, not enforced prerequisites or industrial procedures. Research topics do not yet contain full guided curricula.'}</p></section>`;
+}
+
+function stateFor(index,options={}) {
+  const track=TRACK_IDS.has(options.track)?options.track:'';
+  const subdiscipline=index.some(course=>course.subdiscipline===options.subdiscipline&&(!track||course.track===track))?options.subdiscipline:'';
+  const pageSize=Number.isFinite(options.pageSize)?Math.max(6,Math.min(60,Math.floor(options.pageSize))):18;
+  return {query:String(options.query||''),track,subdiscipline,maturity:['guided','research','locked'].includes(options.maturity)?options.maturity:'',page:Math.max(0,Math.floor(Number(options.page)||0)),pageSize,selectedId:index.some(course=>course.id===options.selectedId)?options.selectedId:''};
+}
+
+/** Pure markup API. Use mountLearningMap after inserting it to activate controls. */
+export function renderLearningMap(catalog=[],featured=[],language='zh-TW',options={}) {
+  const zh=isZh(language),index=buildLearningMapIndex(catalog,featured),state=stateFor(index,options),matches=filterLearningMapCourses(index,state),pages=Math.max(1,Math.ceil(matches.length/state.pageSize)),page=Math.min(state.page,pages-1),shown=matches.slice(page*state.pageSize,(page+1)*state.pageSize),routes=options.routes||LEARNING_ROUTES;
+  const counts=new Map(LEARNING_TRACKS.map(track=>[track.id,{all:0,guided:0,locked:0}]));
+  for(const course of index){const count=counts.get(course.track);count.all++;if(course.guided)count.guided++;if(course.locked)count.locked++;}
+  const subdivisions=[...new Set(index.filter(course=>!state.track||course.track===state.track).map(course=>course.subdiscipline))].map(id=>({id,title:index.find(course=>course.subdiscipline===id).subdivisionTitle,count:index.filter(course=>course.subdiscipline===id).length})).sort((a,b)=>choose(a.title,zh).localeCompare(choose(b.title,zh),zh?'zh-TW':'en'));
+  const path=learningCoursePath(state.selectedId,index,routes),routeCards=(Array.isArray(routes)?routes:[]).map(route=>({route,courses:resolveLearningRoute(route,index)})).filter(item=>item.courses.length>=2&&(!state.track||item.courses.some(course=>course.track===state.track)));
+  return `<section class="learning-map" data-learning-map lang="${zh?'zh-Hant':'en'}" aria-labelledby="learningMapTitle"><header class="learning-map-header"><div><span class="learning-map-eyebrow">LEARNING ROUTES · SYSTEMS · DERIVATIVES</span><h1 id="learningMapTitle">${zh?'課程與技能地圖':'Course & skill map'}</h1><p>${zh?'依工程門派找到原理、架構與實作入口，再沿相關介面深入比較。':'Find principles, architectures and practical learning by engineering family, then compare related interfaces.'}</p></div><a class="learning-map-atlas" href="#map">${zh?'查看工程地點與世界地圖':'Explore project locations in the atlas'} ↗</a></header><p class="learning-map-distinction">${zh?'這張地圖整理技能與課程關係；世界工程地圖呈現專案所在地。所有目錄項目都保留，逐步課程與研究選題分別標示。':'This map organizes skills and course relationships; the world engineering atlas shows project locations. Every catalog topic is retained, with guided courses and research topics labeled separately.'}</p><div class="learning-map-summary" aria-label="${zh?'全站課程統計':'Academy course totals'}"><span><strong>${index.length.toLocaleString()}</strong> ${zh?'項工程':'topics'}</span><span><strong>${index.filter(course=>course.guided).length.toLocaleString()}</strong> ${zh?'門逐步課程':'guided courses'}</span><span><strong>${index.filter(course=>!course.guided).length.toLocaleString()}</strong> ${zh?'項研究選題':'research topics'}</span><span><strong>${index.filter(course=>course.locked).length.toLocaleString()}</strong> ${zh?'門需解鎖':'locked courses'}</span></div><nav class="learning-map-tracks" aria-label="${zh?'選擇工程門派':'Choose an engineering family'}"><button type="button" class="learning-map-track all ${!state.track?'active':''}" data-map-track="" aria-pressed="${!state.track}">${trackIcon('compass')}<span><strong>${zh?'完整課程地圖':'Complete course map'}</strong><small>${index.length.toLocaleString()} ${zh?'項目':'topics'}</small></span></button>${LEARNING_TRACKS.filter(track=>track.id!=='other'||counts.get(track.id).all).map(track=>{const count=counts.get(track.id);return `<button type="button" class="learning-map-track ${state.track===track.id?'active':''}" data-map-track="${track.id}" aria-pressed="${state.track===track.id}">${trackIcon(track.icon)}<span><strong>${esc(choose(track.title,zh))}</strong><small>${count.all.toLocaleString()} ${zh?'項目':'topics'} · ${count.guided} ${zh?'逐步課程':'guided'}</small></span></button>`;}).join('')}</nav>${state.track?`<div class="learning-map-track-description"><h2>${esc(choose(LEARNING_TRACKS.find(track=>track.id===state.track)?.title,zh))}</h2><p>${esc(choose(LEARNING_TRACKS.find(track=>track.id===state.track)?.description,zh))}</p></div>`:''}<form class="learning-map-controls" data-map-filter-form role="search"><label><span>${zh?'搜尋中英文工程與原理':'Search projects and principles in Chinese or English'}</span><input name="query" type="search" value="${esc(state.query)}" placeholder="${zh?'例如：QPU、GPU、核融合、zero trust':'For example: QPU, GPU, fusion, 零信任'}" autocomplete="off"></label><label><span>${zh?'專業分支':'Subdiscipline'}</span><select name="subdiscipline"><option value="">${zh?'所有分支':'All subdisciplines'}</option>${subdivisions.map(subdivision=>`<option value="${esc(subdivision.id)}" ${state.subdiscipline===subdivision.id?'selected':''}>${esc(choose(subdivision.title,zh))} (${subdivision.count})</option>`).join('')}</select></label><label><span>${zh?'內容與存取':'Content & access'}</span><select name="maturity"><option value="">${zh?'所有項目':'All topics'}</option><option value="guided" ${state.maturity==='guided'?'selected':''}>${zh?'逐步課程':'Guided courses'}</option><option value="research" ${state.maturity==='research'?'selected':''}>${zh?'研究選題':'Research topics'}</option><option value="locked" ${state.maturity==='locked'?'selected':''}>${zh?'需解鎖課程':'Locked courses'}</option></select></label><button class="learning-map-button" type="submit">${zh?'搜尋':'Search'}</button><button class="learning-map-button secondary" type="button" data-map-reset>${zh?'清除篩選':'Clear filters'}</button></form>${routePathMarkup(path,zh)}<div class="learning-map-results-heading"><h2>${zh?'工程與課程入口':'Project & course entries'}</h2><span role="status" aria-live="polite">${zh?`顯示 ${matches.length?page*state.pageSize+1:0}–${Math.min((page+1)*state.pageSize,matches.length)}／${matches.length.toLocaleString()} 項`:`Showing ${matches.length?page*state.pageSize+1:0}–${Math.min((page+1)*state.pageSize,matches.length)} of ${matches.length.toLocaleString()} topics`}</span></div><div class="learning-map-courses">${shown.map(course=>`<article class="learning-map-course" data-learning-course="${esc(course.id)}"><div class="learning-map-course-identity">${projectIconSvg(course,{en:!zh})}<span class="learning-map-code">${esc(course.id)}</span></div><div class="learning-map-course-title">${projectLink(course,zh)}</div><div class="learning-map-course-meta">${statusMarkup(course,zh)}<span>${esc(choose(course.subdivisionTitle,zh))}</span>${course.guided?`<span>${course.stepCount} ${zh?'學習步驟':'learning steps'}</span>`:''}</div><p>${esc(field(course,'summary',zh))}</p><button type="button" class="learning-map-route-button" data-map-select-course="${esc(course.id)}" aria-expanded="${state.selectedId===course.id}">${zh?'準備、衍生與比較':'Preparation, derivatives & comparisons'} ↗</button></article>`).join('')||`<p class="learning-map-empty">${zh?'沒有符合的項目；請改用另一個中英文關鍵字，或清除篩選。':'No matching topics. Try another Chinese or English keyword, or clear the filters.'}</p>`}</div><nav class="learning-map-pagination" aria-label="${zh?'課程地圖分頁':'Course-map pages'}"><button class="learning-map-button secondary" type="button" data-map-page="${page-1}" ${page===0?'disabled':''}>← ${zh?'上一頁':'Previous'}</button><label>${zh?'頁次':'Page'} <input type="number" name="page" min="1" max="${pages}" value="${page+1}" data-map-page-input aria-label="${zh?'前往頁次':'Go to page'}"> / ${pages}</label><button class="learning-map-button secondary" type="button" data-map-page="${page+1}" ${page===pages-1?'disabled':''}>${zh?'下一頁':'Next'} →</button></nav>${routeCards.length?`<details class="learning-map-routes" ${state.track?'open':''}><summary>${zh?'依工程目標選擇學習路線':'Choose a learning route by engineering goal'} <small>${routeCards.length}</small></summary><div class="learning-map-route-grid">${routeCards.map(({route,courses})=>`<article><h3>${esc(choose(route.title,zh))}</h3><p>${esc(choose(route.goal,zh))}</p><${route.branching?'ul':'ol'}>${courses.map(course=>`<li>${projectLink(course,zh,true)}${statusMarkup(course,zh)}</li>`).join('')}</${route.branching?'ul':'ol'}></article>`).join('')}</div><p class="learning-map-muted">${zh?'路線中的順序表示概念準備建議；量子門派、能源類型等比較分支沒有強制順序。所有連結只指向現有目錄。':'Route order suggests conceptual preparation; comparisons between quantum schools or energy types have no enforced order. Every link points to an existing catalog entry.'}</p></details>`:''}</section>`;
+}
+
+/** No network request or global listener. Call dispose before replacing the containing app view. */
+export function mountLearningMap(root,{catalog=[],featured=[],language='zh-TW',routes=LEARNING_ROUTES,onOpenCourse,onRendered,state:initialState={}}={}) {
+  if(!root||typeof root.addEventListener!=='function')return {dispose(){},update(){},getState(){return null;}};
+  let data={catalog,featured,language,routes},state=stateFor(buildLearningMapIndex(catalog,featured),initialState),disposed=false;
+  const current=()=>buildLearningMapIndex(data.catalog,data.featured);
+  const render=()=>{if(disposed)return;state=stateFor(current(),state);const matches=filterLearningMapCourses(current(),state);state.page=Math.min(state.page,Math.max(0,Math.ceil(matches.length/state.pageSize)-1));root.innerHTML=renderLearningMap(data.catalog,data.featured,data.language,{...state,routes:data.routes});onRendered?.({...state});};
+  const formValues=()=>{const form=root.querySelector('[data-map-filter-form]');return {query:form?.querySelector('[name="query"]')?.value||'',subdiscipline:form?.querySelector('[name="subdiscipline"]')?.value||'',maturity:form?.querySelector('[name="maturity"]')?.value||''};};
+  const handleClick=event=>{
+    if(disposed)return;const target=event.target?.closest?.('[data-map-track],[data-map-select-course],[data-map-close-path],[data-map-page],[data-map-reset],[data-learning-open]');if(!target||!root.contains(target))return;
+    if(target.dataset.learningOpen!==undefined){if(typeof onOpenCourse==='function'){event.preventDefault();onOpenCourse(target.dataset.learningOpen);}return;}
+    if(target.disabled)return;
+    if(target.dataset.mapTrack!==undefined){state={...state,track:target.dataset.mapTrack,subdiscipline:'',page:0};}
+    else if(target.dataset.mapSelectCourse!==undefined){state.selectedId=target.dataset.mapSelectCourse;}
+    else if(target.dataset.mapClosePath!==undefined){state.selectedId='';}
+    else if(target.dataset.mapPage!==undefined){state.page=Math.max(0,Math.floor(Number(target.dataset.mapPage)||0));}
+    else if(target.dataset.mapReset!==undefined){state=stateFor(current(),{pageSize:state.pageSize});}
+    render();
+    if(target.dataset.mapSelectCourse!==undefined){const panel=root.querySelector('.learning-map-path');if(panel){panel.setAttribute('tabindex','-1');panel.focus?.({preventScroll:true});panel.scrollIntoView?.({behavior:'auto',block:'nearest'});}}
+  };
+  const handleSubmit=event=>{if(event.target?.matches?.('[data-map-filter-form]')){event.preventDefault();state={...state,...formValues(),page:0};render();root.querySelector('.learning-map-results-heading')?.scrollIntoView?.({behavior:'auto',block:'nearest'});}};
+  const handleChange=event=>{if(disposed)return;if(event.target?.matches?.('[data-map-page-input]')){state.page=Math.max(0,Math.floor(Number(event.target.value)||1)-1);render();}else if(event.target?.matches?.('[name="subdiscipline"],[name="maturity"]')){state={...state,...formValues(),page:0};render();}};
+  root.addEventListener('click',handleClick);root.addEventListener('submit',handleSubmit);root.addEventListener('change',handleChange);render();
+  return {getState:()=>({...state}),update:next=>{if(disposed)return;data={...data,...next};if(next?.state)state={...state,...next.state};render();},dispose(){if(disposed)return;disposed=true;root.removeEventListener('click',handleClick);root.removeEventListener('submit',handleSubmit);root.removeEventListener('change',handleChange);}};
+}

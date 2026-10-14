@@ -1,0 +1,2451 @@
+[
+  {
+    "id": "semiconductor",
+    "title": "半導體製程工藝",
+    "titleEn": "Semiconductor Fabrication",
+    "category": "semiconductor",
+    "summary": "由晶圓、薄膜與圖案轉移到封裝測試，建立可追溯的製程流程。重點是製程相依性、量測證據與良率，而非把數百個機台動作誤當通用配方。",
+    "summaryEn": "Trace a chip from wafer preparation through films, pattern transfer, packaging and test. Learn dependencies, measurement evidence and yield rather than a purported universal fabrication recipe.",
+    "scope": "公開原理的分層工程教學；步驟是可驗證的學習任務，並非原廠配方、施工圖或操作許可。",
+    "scopeEn": "A layered course in public engineering principles. Steps are verifiable learning tasks, not vendor recipes, construction drawings, or operating authorization.",
+    "contentStatus": "reviewable-educational-curriculum",
+    "sourceIds": [
+      "asml-principles",
+      "tsmc-n2",
+      "intel-packaging"
+    ],
+    "diagram": {
+      "type": "wafer",
+      "labels": [
+        "基板",
+        "隔離",
+        "閘極",
+        "互連",
+        "封裝"
+      ],
+      "labelsEn": [
+        "Substrate",
+        "Isolation",
+        "Gate",
+        "Interconnect",
+        "Package"
+      ],
+      "original": true,
+      "notToScale": true
+    },
+    "depth": 4,
+    "stages": [
+      {
+        "id": "semiconductor-s01",
+        "order": 1,
+        "title": "產品需求與製程地圖",
+        "titleEn": "Requirements and process map",
+        "steps": [
+          {
+            "id": "semiconductor-s01-01",
+            "order": 1,
+            "title": "界定電路用途",
+            "titleEn": "Define circuit purpose",
+            "objective": "完成「界定電路用途」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for define circuit purpose.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s01-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "類比、邏輯與功率元件需要不同的電壓、漏電與材料取捨。",
+                "textEn": "Analog, logic and power devices require different voltage, leakage and material trade-offs."
+              },
+              {
+                "id": "semiconductor-s01-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "建立含功耗、速度與成本的需求表，為每項標明單位。",
+                "textEn": "Create a requirement table with power, speed and cost, including units."
+              }
+            ],
+            "check": "建立含功耗、速度與成本的需求表，為每項標明單位。",
+            "checkEn": "Create a requirement table with power, speed and cost, including units.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「界定電路用途」的核心原理？",
+              "questionEn": "Which statement most directly explains define circuit purpose?",
+              "options": [
+                "類比、邏輯與功率元件需要不同的電壓、漏電與材料取捨。",
+                "清洗、沉積、微影、蝕刻與量測會反覆出現，流程不是單次直線加工。",
+                "同一批晶圓的材料、機台、時間與量測紀錄共同構成可追溯性。"
+              ],
+              "optionsEn": [
+                "Analog, logic and power devices require different voltage, leakage and material trade-offs.",
+                "Cleaning, deposition, lithography, etch and metrology recur rather than forming one simple pass.",
+                "Material, tool, time and measurement records together provide wafer-lot traceability."
+              ],
+              "answer": 0,
+              "explanation": "類比、邏輯與功率元件需要不同的電壓、漏電與材料取捨。",
+              "explanationEn": "Analog, logic and power devices require different voltage, leakage and material trade-offs."
+            },
+            "prerequisiteIds": [],
+            "sequence": 1,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s01-02",
+            "order": 2,
+            "title": "畫出模組相依性",
+            "titleEn": "Map module dependencies",
+            "objective": "完成「畫出模組相依性」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for map module dependencies.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s01-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "清洗、沉積、微影、蝕刻與量測會反覆出現，流程不是單次直線加工。",
+                "textEn": "Cleaning, deposition, lithography, etch and metrology recur rather than forming one simple pass."
+              },
+              {
+                "id": "semiconductor-s01-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "用箭頭標出每個模組的輸入、輸出與返工限制。",
+                "textEn": "Mark each module's inputs, outputs and rework constraints."
+              }
+            ],
+            "check": "用箭頭標出每個模組的輸入、輸出與返工限制。",
+            "checkEn": "Mark each module's inputs, outputs and rework constraints.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「畫出模組相依性」的核心原理？",
+              "questionEn": "Which statement most directly explains map module dependencies?",
+              "options": [
+                "同一批晶圓的材料、機台、時間與量測紀錄共同構成可追溯性。",
+                "類比、邏輯與功率元件需要不同的電壓、漏電與材料取捨。",
+                "清洗、沉積、微影、蝕刻與量測會反覆出現，流程不是單次直線加工。"
+              ],
+              "optionsEn": [
+                "Material, tool, time and measurement records together provide wafer-lot traceability.",
+                "Analog, logic and power devices require different voltage, leakage and material trade-offs.",
+                "Cleaning, deposition, lithography, etch and metrology recur rather than forming one simple pass."
+              ],
+              "answer": 2,
+              "explanation": "清洗、沉積、微影、蝕刻與量測會反覆出現，流程不是單次直線加工。",
+              "explanationEn": "Cleaning, deposition, lithography, etch and metrology recur rather than forming one simple pass."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s01-01"
+            ],
+            "sequence": 2,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s01-03",
+            "order": 3,
+            "title": "定義批次追溯",
+            "titleEn": "Define lot traceability",
+            "objective": "完成「定義批次追溯」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for define lot traceability.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s01-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "同一批晶圓的材料、機台、時間與量測紀錄共同構成可追溯性。",
+                "textEn": "Material, tool, time and measurement records together provide wafer-lot traceability."
+              },
+              {
+                "id": "semiconductor-s01-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "為模擬批次建立唯一編號和不可覆寫的事件紀錄。",
+                "textEn": "Assign a unique ID and append-only event log to the simulated lot."
+              }
+            ],
+            "check": "為模擬批次建立唯一編號和不可覆寫的事件紀錄。",
+            "checkEn": "Assign a unique ID and append-only event log to the simulated lot.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「定義批次追溯」的核心原理？",
+              "questionEn": "Which statement most directly explains define lot traceability?",
+              "options": [
+                "清洗、沉積、微影、蝕刻與量測會反覆出現，流程不是單次直線加工。",
+                "同一批晶圓的材料、機台、時間與量測紀錄共同構成可追溯性。",
+                "類比、邏輯與功率元件需要不同的電壓、漏電與材料取捨。"
+              ],
+              "optionsEn": [
+                "Cleaning, deposition, lithography, etch and metrology recur rather than forming one simple pass.",
+                "Material, tool, time and measurement records together provide wafer-lot traceability.",
+                "Analog, logic and power devices require different voltage, leakage and material trade-offs."
+              ],
+              "answer": 1,
+              "explanation": "同一批晶圓的材料、機台、時間與量測紀錄共同構成可追溯性。",
+              "explanationEn": "Material, tool, time and measurement records together provide wafer-lot traceability."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s01-02"
+            ],
+            "sequence": 3,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s02",
+        "order": 2,
+        "title": "晶圓與潔淨控制",
+        "titleEn": "Wafer and contamination control",
+        "steps": [
+          {
+            "id": "semiconductor-s02-01",
+            "order": 1,
+            "title": "辨識晶向與摻雜",
+            "titleEn": "Identify orientation and doping",
+            "objective": "完成「辨識晶向與摻雜」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for identify orientation and doping.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s02-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "晶向影響材料各向異性，摻雜改變載子濃度與電阻率。",
+                "textEn": "Crystal orientation affects anisotropy; doping changes carrier concentration and resistivity."
+              },
+              {
+                "id": "semiconductor-s02-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "標示晶圓正面、定位缺口、晶向及基板型別。",
+                "textEn": "Label wafer front, notch, orientation and substrate type."
+              }
+            ],
+            "check": "標示晶圓正面、定位缺口、晶向及基板型別。",
+            "checkEn": "Label wafer front, notch, orientation and substrate type.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「辨識晶向與摻雜」的核心原理？",
+              "questionEn": "Which statement most directly explains identify orientation and doping?",
+              "options": [
+                "微粒、金屬離子與有機殘留可能造成不同的電性或結構缺陷。",
+                "厚度、翹曲與表面狀態會影響後續對焦、搬運及薄膜均勻性。",
+                "晶向影響材料各向異性，摻雜改變載子濃度與電阻率。"
+              ],
+              "optionsEn": [
+                "Particles, metal ions and organic residues can cause different electrical or structural defects.",
+                "Thickness, bow and surface condition influence focusing, handling and film uniformity.",
+                "Crystal orientation affects anisotropy; doping changes carrier concentration and resistivity."
+              ],
+              "answer": 2,
+              "explanation": "晶向影響材料各向異性，摻雜改變載子濃度與電阻率。",
+              "explanationEn": "Crystal orientation affects anisotropy; doping changes carrier concentration and resistivity."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s01-03"
+            ],
+            "sequence": 4,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s02-02",
+            "order": 2,
+            "title": "建立污染路徑圖",
+            "titleEn": "Map contamination paths",
+            "objective": "完成「建立污染路徑圖」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for map contamination paths.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s02-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "微粒、金屬離子與有機殘留可能造成不同的電性或結構缺陷。",
+                "textEn": "Particles, metal ions and organic residues can cause different electrical or structural defects."
+              },
+              {
+                "id": "semiconductor-s02-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "將三種污染源各連到一個可觀察失效。",
+                "textEn": "Link three contamination sources to observable failure modes."
+              }
+            ],
+            "check": "將三種污染源各連到一個可觀察失效。",
+            "checkEn": "Link three contamination sources to observable failure modes.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立污染路徑圖」的核心原理？",
+              "questionEn": "Which statement most directly explains map contamination paths?",
+              "options": [
+                "晶向影響材料各向異性，摻雜改變載子濃度與電阻率。",
+                "微粒、金屬離子與有機殘留可能造成不同的電性或結構缺陷。",
+                "厚度、翹曲與表面狀態會影響後續對焦、搬運及薄膜均勻性。"
+              ],
+              "optionsEn": [
+                "Crystal orientation affects anisotropy; doping changes carrier concentration and resistivity.",
+                "Particles, metal ions and organic residues can cause different electrical or structural defects.",
+                "Thickness, bow and surface condition influence focusing, handling and film uniformity."
+              ],
+              "answer": 1,
+              "explanation": "微粒、金屬離子與有機殘留可能造成不同的電性或結構缺陷。",
+              "explanationEn": "Particles, metal ions and organic residues can cause different electrical or structural defects."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s02-01"
+            ],
+            "sequence": 5,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s02-03",
+            "order": 3,
+            "title": "規劃進料量測",
+            "titleEn": "Plan incoming metrology",
+            "objective": "完成「規劃進料量測」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for plan incoming metrology.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s02-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "厚度、翹曲與表面狀態會影響後續對焦、搬運及薄膜均勻性。",
+                "textEn": "Thickness, bow and surface condition influence focusing, handling and film uniformity."
+              },
+              {
+                "id": "semiconductor-s02-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "比較兩組虛擬晶圓資料，寫明接受或隔離的理由。",
+                "textEn": "Compare two mock wafer datasets and justify acceptance or quarantine."
+              }
+            ],
+            "check": "比較兩組虛擬晶圓資料，寫明接受或隔離的理由。",
+            "checkEn": "Compare two mock wafer datasets and justify acceptance or quarantine.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「規劃進料量測」的核心原理？",
+              "questionEn": "Which statement most directly explains plan incoming metrology?",
+              "options": [
+                "厚度、翹曲與表面狀態會影響後續對焦、搬運及薄膜均勻性。",
+                "晶向影響材料各向異性，摻雜改變載子濃度與電阻率。",
+                "微粒、金屬離子與有機殘留可能造成不同的電性或結構缺陷。"
+              ],
+              "optionsEn": [
+                "Thickness, bow and surface condition influence focusing, handling and film uniformity.",
+                "Crystal orientation affects anisotropy; doping changes carrier concentration and resistivity.",
+                "Particles, metal ions and organic residues can cause different electrical or structural defects."
+              ],
+              "answer": 0,
+              "explanation": "厚度、翹曲與表面狀態會影響後續對焦、搬運及薄膜均勻性。",
+              "explanationEn": "Thickness, bow and surface condition influence focusing, handling and film uniformity."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s02-02"
+            ],
+            "sequence": 6,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s03",
+        "order": 3,
+        "title": "薄膜與熱預算",
+        "titleEn": "Thin films and thermal budget",
+        "steps": [
+          {
+            "id": "semiconductor-s03-01",
+            "order": 1,
+            "title": "比較沉積機制",
+            "titleEn": "Compare deposition mechanisms",
+            "objective": "完成「比較沉積機制」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for compare deposition mechanisms.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s03-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "PVD、CVD 與 ALD 的覆蓋性、成長方式及材料適用性不同。",
+                "textEn": "PVD, CVD and ALD differ in coverage, growth mechanism and material compatibility."
+              },
+              {
+                "id": "semiconductor-s03-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "為平面與高深寬比溝槽選擇概念沉積方式並說明限制。",
+                "textEn": "Select conceptual deposition methods for a plane and a deep trench and explain limits."
+              }
+            ],
+            "check": "為平面與高深寬比溝槽選擇概念沉積方式並說明限制。",
+            "checkEn": "Select conceptual deposition methods for a plane and a deep trench and explain limits.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「比較沉積機制」的核心原理？",
+              "questionEn": "Which statement most directly explains compare deposition mechanisms?",
+              "options": [
+                "後續熱處理可能改變摻雜分布、薄膜應力與界面狀態。",
+                "PVD、CVD 與 ALD 的覆蓋性、成長方式及材料適用性不同。",
+                "熱氧化會消耗部分矽形成氧化層，並非只在表面額外貼膜。"
+              ],
+              "optionsEn": [
+                "Later thermal treatments can alter dopant profiles, film stress and interface states.",
+                "PVD, CVD and ALD differ in coverage, growth mechanism and material compatibility.",
+                "Thermal oxidation consumes some silicon to form oxide instead of merely adding a surface sheet."
+              ],
+              "answer": 1,
+              "explanation": "PVD、CVD 與 ALD 的覆蓋性、成長方式及材料適用性不同。",
+              "explanationEn": "PVD, CVD and ALD differ in coverage, growth mechanism and material compatibility."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s02-03"
+            ],
+            "sequence": 7,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s03-02",
+            "order": 2,
+            "title": "建立氧化截面",
+            "titleEn": "Build an oxidation cross-section",
+            "objective": "完成「建立氧化截面」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for build an oxidation cross-section.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s03-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "熱氧化會消耗部分矽形成氧化層，並非只在表面額外貼膜。",
+                "textEn": "Thermal oxidation consumes some silicon to form oxide instead of merely adding a surface sheet."
+              },
+              {
+                "id": "semiconductor-s03-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在剖面圖分別標示原始表面與氧化後界面。",
+                "textEn": "Mark original surface and post-oxidation interfaces on a cross-section."
+              }
+            ],
+            "check": "在剖面圖分別標示原始表面與氧化後界面。",
+            "checkEn": "Mark original surface and post-oxidation interfaces on a cross-section.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立氧化截面」的核心原理？",
+              "questionEn": "Which statement most directly explains build an oxidation cross-section?",
+              "options": [
+                "熱氧化會消耗部分矽形成氧化層，並非只在表面額外貼膜。",
+                "後續熱處理可能改變摻雜分布、薄膜應力與界面狀態。",
+                "PVD、CVD 與 ALD 的覆蓋性、成長方式及材料適用性不同。"
+              ],
+              "optionsEn": [
+                "Thermal oxidation consumes some silicon to form oxide instead of merely adding a surface sheet.",
+                "Later thermal treatments can alter dopant profiles, film stress and interface states.",
+                "PVD, CVD and ALD differ in coverage, growth mechanism and material compatibility."
+              ],
+              "answer": 0,
+              "explanation": "熱氧化會消耗部分矽形成氧化層，並非只在表面額外貼膜。",
+              "explanationEn": "Thermal oxidation consumes some silicon to form oxide instead of merely adding a surface sheet."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s03-01"
+            ],
+            "sequence": 8,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s03-03",
+            "order": 3,
+            "title": "累積熱歷程",
+            "titleEn": "Track thermal history",
+            "objective": "完成「累積熱歷程」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for track thermal history.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s03-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "後續熱處理可能改變摻雜分布、薄膜應力與界面狀態。",
+                "textEn": "Later thermal treatments can alter dopant profiles, film stress and interface states."
+              },
+              {
+                "id": "semiconductor-s03-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "把三個熱步驟依材料相容性排序，註明風險。",
+                "textEn": "Sequence three thermal steps by material compatibility and annotate risks."
+              }
+            ],
+            "check": "把三個熱步驟依材料相容性排序，註明風險。",
+            "checkEn": "Sequence three thermal steps by material compatibility and annotate risks.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「累積熱歷程」的核心原理？",
+              "questionEn": "Which statement most directly explains track thermal history?",
+              "options": [
+                "PVD、CVD 與 ALD 的覆蓋性、成長方式及材料適用性不同。",
+                "熱氧化會消耗部分矽形成氧化層，並非只在表面額外貼膜。",
+                "後續熱處理可能改變摻雜分布、薄膜應力與界面狀態。"
+              ],
+              "optionsEn": [
+                "PVD, CVD and ALD differ in coverage, growth mechanism and material compatibility.",
+                "Thermal oxidation consumes some silicon to form oxide instead of merely adding a surface sheet.",
+                "Later thermal treatments can alter dopant profiles, film stress and interface states."
+              ],
+              "answer": 2,
+              "explanation": "後續熱處理可能改變摻雜分布、薄膜應力與界面狀態。",
+              "explanationEn": "Later thermal treatments can alter dopant profiles, film stress and interface states."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s03-02"
+            ],
+            "sequence": 9,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s04",
+        "order": 4,
+        "title": "光阻與微影",
+        "titleEn": "Photoresist and lithography",
+        "steps": [
+          {
+            "id": "semiconductor-s04-01",
+            "order": 1,
+            "title": "拆解光阻功能",
+            "titleEn": "Separate resist functions",
+            "objective": "完成「拆解光阻功能」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for separate resist functions.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s04-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "樹脂、感光組分與溶劑共同影響成膜、曝光反應及顯影；不同光阻系統並不共用配方。",
+                "textEn": "Polymer, photosensitive components and solvent affect coating, exposure response and development; resist systems do not share one recipe."
+              },
+              {
+                "id": "semiconductor-s04-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "以功能方塊說明各成分角色，不填入未公開比例或合成條件。",
+                "textEn": "Explain component functions without inventing proprietary ratios or synthesis conditions."
+              }
+            ],
+            "check": "以功能方塊說明各成分角色，不填入未公開比例或合成條件。",
+            "checkEn": "Explain component functions without inventing proprietary ratios or synthesis conditions.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「拆解光阻功能」的核心原理？",
+              "questionEn": "Which statement most directly explains separate resist functions?",
+              "options": [
+                "樹脂、感光組分與溶劑共同影響成膜、曝光反應及顯影；不同光阻系統並不共用配方。",
+                "光學像與光阻反應共同決定成像，光罩圖案不能直接視為晶圓上的精確形狀。",
+                "CD 衡量圖案尺寸，overlay 衡量不同層的相對位置，兩者需分開驗證。"
+              ],
+              "optionsEn": [
+                "Polymer, photosensitive components and solvent affect coating, exposure response and development; resist systems do not share one recipe.",
+                "The optical image and resist response jointly determine the printed pattern; a mask is not an exact wafer image.",
+                "CD measures feature size while overlay measures interlayer position; each requires separate verification."
+              ],
+              "answer": 0,
+              "explanation": "樹脂、感光組分與溶劑共同影響成膜、曝光反應及顯影；不同光阻系統並不共用配方。",
+              "explanationEn": "Polymer, photosensitive components and solvent affect coating, exposure response and development; resist systems do not share one recipe."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s03-03"
+            ],
+            "sequence": 10,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s04-02",
+            "order": 2,
+            "title": "比較曝光圖案",
+            "titleEn": "Compare exposure patterns",
+            "objective": "完成「比較曝光圖案」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for compare exposure patterns.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s04-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "光學像與光阻反應共同決定成像，光罩圖案不能直接視為晶圓上的精確形狀。",
+                "textEn": "The optical image and resist response jointly determine the printed pattern; a mask is not an exact wafer image."
+              },
+              {
+                "id": "semiconductor-s04-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "比較設計線、空中像與顯影輪廓，指出差異來源。",
+                "textEn": "Compare design lines, aerial image and developed contour and identify differences."
+              }
+            ],
+            "check": "比較設計線、空中像與顯影輪廓，指出差異來源。",
+            "checkEn": "Compare design lines, aerial image and developed contour and identify differences.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「比較曝光圖案」的核心原理？",
+              "questionEn": "Which statement most directly explains compare exposure patterns?",
+              "options": [
+                "CD 衡量圖案尺寸，overlay 衡量不同層的相對位置，兩者需分開驗證。",
+                "樹脂、感光組分與溶劑共同影響成膜、曝光反應及顯影；不同光阻系統並不共用配方。",
+                "光學像與光阻反應共同決定成像，光罩圖案不能直接視為晶圓上的精確形狀。"
+              ],
+              "optionsEn": [
+                "CD measures feature size while overlay measures interlayer position; each requires separate verification.",
+                "Polymer, photosensitive components and solvent affect coating, exposure response and development; resist systems do not share one recipe.",
+                "The optical image and resist response jointly determine the printed pattern; a mask is not an exact wafer image."
+              ],
+              "answer": 2,
+              "explanation": "光學像與光阻反應共同決定成像，光罩圖案不能直接視為晶圓上的精確形狀。",
+              "explanationEn": "The optical image and resist response jointly determine the printed pattern; a mask is not an exact wafer image."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s04-01"
+            ],
+            "sequence": 11,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s04-03",
+            "order": 3,
+            "title": "量化線寬與對準",
+            "titleEn": "Quantify linewidth and overlay",
+            "objective": "完成「量化線寬與對準」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for quantify linewidth and overlay.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s04-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "CD 衡量圖案尺寸，overlay 衡量不同層的相對位置，兩者需分開驗證。",
+                "textEn": "CD measures feature size while overlay measures interlayer position; each requires separate verification."
+              },
+              {
+                "id": "semiconductor-s04-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在兩層模擬圖中各標一個 CD 誤差與套刻誤差。",
+                "textEn": "Mark one CD error and one overlay error in a two-layer mock pattern."
+              }
+            ],
+            "check": "在兩層模擬圖中各標一個 CD 誤差與套刻誤差。",
+            "checkEn": "Mark one CD error and one overlay error in a two-layer mock pattern.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「量化線寬與對準」的核心原理？",
+              "questionEn": "Which statement most directly explains quantify linewidth and overlay?",
+              "options": [
+                "光學像與光阻反應共同決定成像，光罩圖案不能直接視為晶圓上的精確形狀。",
+                "CD 衡量圖案尺寸，overlay 衡量不同層的相對位置，兩者需分開驗證。",
+                "樹脂、感光組分與溶劑共同影響成膜、曝光反應及顯影；不同光阻系統並不共用配方。"
+              ],
+              "optionsEn": [
+                "The optical image and resist response jointly determine the printed pattern; a mask is not an exact wafer image.",
+                "CD measures feature size while overlay measures interlayer position; each requires separate verification.",
+                "Polymer, photosensitive components and solvent affect coating, exposure response and development; resist systems do not share one recipe."
+              ],
+              "answer": 1,
+              "explanation": "CD 衡量圖案尺寸，overlay 衡量不同層的相對位置，兩者需分開驗證。",
+              "explanationEn": "CD measures feature size while overlay measures interlayer position; each requires separate verification."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s04-02"
+            ],
+            "sequence": 12,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s05",
+        "order": 5,
+        "title": "蝕刻與圖案轉移",
+        "titleEn": "Etch and pattern transfer",
+        "steps": [
+          {
+            "id": "semiconductor-s05-01",
+            "order": 1,
+            "title": "比較方向性與選擇比",
+            "titleEn": "Compare directionality and selectivity",
+            "objective": "完成「比較方向性與選擇比」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for compare directionality and selectivity.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s05-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "異向性描述蝕刻方向差異，選擇比描述不同材料的相對移除速度。",
+                "textEn": "Anisotropy describes directional etching; selectivity describes relative removal rates of materials."
+              },
+              {
+                "id": "semiconductor-s05-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "繪製等向與異向的截面並標示遮罩消耗。",
+                "textEn": "Draw isotropic and anisotropic sections and mark mask consumption."
+              }
+            ],
+            "check": "繪製等向與異向的截面並標示遮罩消耗。",
+            "checkEn": "Draw isotropic and anisotropic sections and mark mask consumption.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「比較方向性與選擇比」的核心原理？",
+              "questionEn": "Which statement most directly explains compare directionality and selectivity?",
+              "options": [
+                "蝕刻終點需連結材料變化與量測訊號，固定時間無法涵蓋所有變異。",
+                "側壁殘留、線邊粗糙度及圖案倒塌可分別來自不同製程環節。",
+                "異向性描述蝕刻方向差異，選擇比描述不同材料的相對移除速度。"
+              ],
+              "optionsEn": [
+                "An etch endpoint links material change to a measured signal; fixed time does not cover every variation.",
+                "Sidewall residue, line-edge roughness and pattern collapse can originate in different process modules.",
+                "Anisotropy describes directional etching; selectivity describes relative removal rates of materials."
+              ],
+              "answer": 2,
+              "explanation": "異向性描述蝕刻方向差異，選擇比描述不同材料的相對移除速度。",
+              "explanationEn": "Anisotropy describes directional etching; selectivity describes relative removal rates of materials."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s04-03"
+            ],
+            "sequence": 13,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s05-02",
+            "order": 2,
+            "title": "分析終點訊號",
+            "titleEn": "Analyze endpoint signals",
+            "objective": "完成「分析終點訊號」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for analyze endpoint signals.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s05-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "蝕刻終點需連結材料變化與量測訊號，固定時間無法涵蓋所有變異。",
+                "textEn": "An etch endpoint links material change to a measured signal; fixed time does not cover every variation."
+              },
+              {
+                "id": "semiconductor-s05-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在示意曲線上標出終點候選區與過蝕刻風險。",
+                "textEn": "Mark candidate endpoint region and over-etch risk on a schematic curve."
+              }
+            ],
+            "check": "在示意曲線上標出終點候選區與過蝕刻風險。",
+            "checkEn": "Mark candidate endpoint region and over-etch risk on a schematic curve.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「分析終點訊號」的核心原理？",
+              "questionEn": "Which statement most directly explains analyze endpoint signals?",
+              "options": [
+                "異向性描述蝕刻方向差異，選擇比描述不同材料的相對移除速度。",
+                "蝕刻終點需連結材料變化與量測訊號，固定時間無法涵蓋所有變異。",
+                "側壁殘留、線邊粗糙度及圖案倒塌可分別來自不同製程環節。"
+              ],
+              "optionsEn": [
+                "Anisotropy describes directional etching; selectivity describes relative removal rates of materials.",
+                "An etch endpoint links material change to a measured signal; fixed time does not cover every variation.",
+                "Sidewall residue, line-edge roughness and pattern collapse can originate in different process modules."
+              ],
+              "answer": 1,
+              "explanation": "蝕刻終點需連結材料變化與量測訊號，固定時間無法涵蓋所有變異。",
+              "explanationEn": "An etch endpoint links material change to a measured signal; fixed time does not cover every variation."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s05-01"
+            ],
+            "sequence": 14,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s05-03",
+            "order": 3,
+            "title": "檢查轉移後缺陷",
+            "titleEn": "Inspect transfer defects",
+            "objective": "完成「檢查轉移後缺陷」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for inspect transfer defects.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s05-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "側壁殘留、線邊粗糙度及圖案倒塌可分別來自不同製程環節。",
+                "textEn": "Sidewall residue, line-edge roughness and pattern collapse can originate in different process modules."
+              },
+              {
+                "id": "semiconductor-s05-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "為三張示意缺陷圖指定下一個確認量測。",
+                "textEn": "Assign a follow-up measurement to each of three schematic defects."
+              }
+            ],
+            "check": "為三張示意缺陷圖指定下一個確認量測。",
+            "checkEn": "Assign a follow-up measurement to each of three schematic defects.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「檢查轉移後缺陷」的核心原理？",
+              "questionEn": "Which statement most directly explains inspect transfer defects?",
+              "options": [
+                "側壁殘留、線邊粗糙度及圖案倒塌可分別來自不同製程環節。",
+                "異向性描述蝕刻方向差異，選擇比描述不同材料的相對移除速度。",
+                "蝕刻終點需連結材料變化與量測訊號，固定時間無法涵蓋所有變異。"
+              ],
+              "optionsEn": [
+                "Sidewall residue, line-edge roughness and pattern collapse can originate in different process modules.",
+                "Anisotropy describes directional etching; selectivity describes relative removal rates of materials.",
+                "An etch endpoint links material change to a measured signal; fixed time does not cover every variation."
+              ],
+              "answer": 0,
+              "explanation": "側壁殘留、線邊粗糙度及圖案倒塌可分別來自不同製程環節。",
+              "explanationEn": "Sidewall residue, line-edge roughness and pattern collapse can originate in different process modules."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s05-02"
+            ],
+            "sequence": 15,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s06",
+        "order": 6,
+        "title": "元件與互連",
+        "titleEn": "Devices and interconnects",
+        "steps": [
+          {
+            "id": "semiconductor-s06-01",
+            "order": 1,
+            "title": "配置源汲極與閘極",
+            "titleEn": "Place source drain and gate",
+            "objective": "完成「配置源汲極與閘極」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for place source drain and gate.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s06-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "閘極透過電場控制通道，源汲極提供載子注入與收集路徑。",
+                "textEn": "The gate controls the channel electrostatically; source and drain provide carrier injection and collection paths."
+              },
+              {
+                "id": "semiconductor-s06-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "標示導通路徑，並辨別閘極絕緣層位置。",
+                "textEn": "Mark the conduction path and identify the gate dielectric."
+              }
+            ],
+            "check": "標示導通路徑，並辨別閘極絕緣層位置。",
+            "checkEn": "Mark the conduction path and identify the gate dielectric.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「配置源汲極與閘極」的核心原理？",
+              "questionEn": "Which statement most directly explains place source drain and gate?",
+              "options": [
+                "金屬線提供橫向連接，通孔連接不同層，介電層抑制非預期導通。",
+                "閘極透過電場控制通道，源汲極提供載子注入與收集路徑。",
+                "即使通道性能良好，接觸電阻仍可能限制整體導通電流。"
+              ],
+              "optionsEn": [
+                "Metal lines connect laterally, vias connect layers and dielectrics prevent unintended conduction.",
+                "The gate controls the channel electrostatically; source and drain provide carrier injection and collection paths.",
+                "Even with a good channel, contact resistance can limit total on-current."
+              ],
+              "answer": 1,
+              "explanation": "閘極透過電場控制通道，源汲極提供載子注入與收集路徑。",
+              "explanationEn": "The gate controls the channel electrostatically; source and drain provide carrier injection and collection paths."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s05-03"
+            ],
+            "sequence": 16,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s06-02",
+            "order": 2,
+            "title": "分析接觸電阻",
+            "titleEn": "Analyze contact resistance",
+            "objective": "完成「分析接觸電阻」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for analyze contact resistance.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s06-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "即使通道性能良好，接觸電阻仍可能限制整體導通電流。",
+                "textEn": "Even with a good channel, contact resistance can limit total on-current."
+              },
+              {
+                "id": "semiconductor-s06-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "用串聯電阻模型分離接觸與通道的壓降。",
+                "textEn": "Use a series-resistance model to separate contact and channel voltage drops."
+              }
+            ],
+            "check": "用串聯電阻模型分離接觸與通道的壓降。",
+            "checkEn": "Use a series-resistance model to separate contact and channel voltage drops.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「分析接觸電阻」的核心原理？",
+              "questionEn": "Which statement most directly explains analyze contact resistance?",
+              "options": [
+                "即使通道性能良好，接觸電阻仍可能限制整體導通電流。",
+                "金屬線提供橫向連接，通孔連接不同層，介電層抑制非預期導通。",
+                "閘極透過電場控制通道，源汲極提供載子注入與收集路徑。"
+              ],
+              "optionsEn": [
+                "Even with a good channel, contact resistance can limit total on-current.",
+                "Metal lines connect laterally, vias connect layers and dielectrics prevent unintended conduction.",
+                "The gate controls the channel electrostatically; source and drain provide carrier injection and collection paths."
+              ],
+              "answer": 0,
+              "explanation": "即使通道性能良好，接觸電阻仍可能限制整體導通電流。",
+              "explanationEn": "Even with a good channel, contact resistance can limit total on-current."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s06-01"
+            ],
+            "sequence": 17,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s06-03",
+            "order": 3,
+            "title": "建立互連堆疊",
+            "titleEn": "Build the interconnect stack",
+            "objective": "完成「建立互連堆疊」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for build the interconnect stack.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s06-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "金屬線提供橫向連接，通孔連接不同層，介電層抑制非預期導通。",
+                "textEn": "Metal lines connect laterally, vias connect layers and dielectrics prevent unintended conduction."
+              },
+              {
+                "id": "semiconductor-s06-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "追蹤一條跨兩層的訊號，檢查是否短路或開路。",
+                "textEn": "Trace a signal across two layers and inspect for shorts or opens."
+              }
+            ],
+            "check": "追蹤一條跨兩層的訊號，檢查是否短路或開路。",
+            "checkEn": "Trace a signal across two layers and inspect for shorts or opens.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立互連堆疊」的核心原理？",
+              "questionEn": "Which statement most directly explains build the interconnect stack?",
+              "options": [
+                "閘極透過電場控制通道，源汲極提供載子注入與收集路徑。",
+                "即使通道性能良好，接觸電阻仍可能限制整體導通電流。",
+                "金屬線提供橫向連接，通孔連接不同層，介電層抑制非預期導通。"
+              ],
+              "optionsEn": [
+                "The gate controls the channel electrostatically; source and drain provide carrier injection and collection paths.",
+                "Even with a good channel, contact resistance can limit total on-current.",
+                "Metal lines connect laterally, vias connect layers and dielectrics prevent unintended conduction."
+              ],
+              "answer": 2,
+              "explanation": "金屬線提供橫向連接，通孔連接不同層，介電層抑制非預期導通。",
+              "explanationEn": "Metal lines connect laterally, vias connect layers and dielectrics prevent unintended conduction."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s06-02"
+            ],
+            "sequence": 18,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s07",
+        "order": 7,
+        "title": "平坦化與統計控制",
+        "titleEn": "Planarization and statistical control",
+        "steps": [
+          {
+            "id": "semiconductor-s07-01",
+            "order": 1,
+            "title": "理解 CMP 平坦化",
+            "titleEn": "Understand CMP planarization",
+            "objective": "完成「理解 CMP 平坦化」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for understand cmp planarization.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s07-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "CMP 同時依賴化學與機械作用，材料移除率及圖案密度會影響平坦度。",
+                "textEn": "CMP combines chemical and mechanical action; removal rates and pattern density affect planarity."
+              },
+              {
+                "id": "semiconductor-s07-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "比較稀疏與密集圖案剖面，標出凹陷或侵蝕。",
+                "textEn": "Compare sparse and dense pattern sections and mark dishing or erosion."
+              }
+            ],
+            "check": "比較稀疏與密集圖案剖面，標出凹陷或侵蝕。",
+            "checkEn": "Compare sparse and dense pattern sections and mark dishing or erosion.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「理解 CMP 平坦化」的核心原理？",
+              "questionEn": "Which statement most directly explains understand cmp planarization?",
+              "options": [
+                "CMP 同時依賴化學與機械作用，材料移除率及圖案密度會影響平坦度。",
+                "管制界限來自製程統計，規格界限來自產品需求，兩者意義不同。",
+                "缺陷密度、敏感面積與失效機制共同影響良率，平均值不足以判斷所有風險。"
+              ],
+              "optionsEn": [
+                "CMP combines chemical and mechanical action; removal rates and pattern density affect planarity.",
+                "Control limits describe process statistics; specification limits describe product requirements.",
+                "Defect density, sensitive area and failure mechanisms jointly affect yield; an average alone is insufficient."
+              ],
+              "answer": 0,
+              "explanation": "CMP 同時依賴化學與機械作用，材料移除率及圖案密度會影響平坦度。",
+              "explanationEn": "CMP combines chemical and mechanical action; removal rates and pattern density affect planarity."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s06-03"
+            ],
+            "sequence": 19,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s07-02",
+            "order": 2,
+            "title": "建立製程管制圖",
+            "titleEn": "Build a control chart",
+            "objective": "完成「建立製程管制圖」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for build a control chart.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s07-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "管制界限來自製程統計，規格界限來自產品需求，兩者意義不同。",
+                "textEn": "Control limits describe process statistics; specification limits describe product requirements."
+              },
+              {
+                "id": "semiconductor-s07-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在同一張示意圖分別標示兩類界限。",
+                "textEn": "Label both types of limit separately on one schematic chart."
+              }
+            ],
+            "check": "在同一張示意圖分別標示兩類界限。",
+            "checkEn": "Label both types of limit separately on one schematic chart.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立製程管制圖」的核心原理？",
+              "questionEn": "Which statement most directly explains build a control chart?",
+              "options": [
+                "缺陷密度、敏感面積與失效機制共同影響良率，平均值不足以判斷所有風險。",
+                "CMP 同時依賴化學與機械作用，材料移除率及圖案密度會影響平坦度。",
+                "管制界限來自製程統計，規格界限來自產品需求，兩者意義不同。"
+              ],
+              "optionsEn": [
+                "Defect density, sensitive area and failure mechanisms jointly affect yield; an average alone is insufficient.",
+                "CMP combines chemical and mechanical action; removal rates and pattern density affect planarity.",
+                "Control limits describe process statistics; specification limits describe product requirements."
+              ],
+              "answer": 2,
+              "explanation": "管制界限來自製程統計，規格界限來自產品需求，兩者意義不同。",
+              "explanationEn": "Control limits describe process statistics; specification limits describe product requirements."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s07-01"
+            ],
+            "sequence": 20,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s07-03",
+            "order": 3,
+            "title": "串接缺陷與良率",
+            "titleEn": "Connect defects and yield",
+            "objective": "完成「串接缺陷與良率」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for connect defects and yield.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s07-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "缺陷密度、敏感面積與失效機制共同影響良率，平均值不足以判斷所有風險。",
+                "textEn": "Defect density, sensitive area and failure mechanisms jointly affect yield; an average alone is insufficient."
+              },
+              {
+                "id": "semiconductor-s07-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "說明相同缺陷數量為何可能造成不同晶粒良率。",
+                "textEn": "Explain why equal defect counts can produce different die yields."
+              }
+            ],
+            "check": "說明相同缺陷數量為何可能造成不同晶粒良率。",
+            "checkEn": "Explain why equal defect counts can produce different die yields.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「串接缺陷與良率」的核心原理？",
+              "questionEn": "Which statement most directly explains connect defects and yield?",
+              "options": [
+                "管制界限來自製程統計，規格界限來自產品需求，兩者意義不同。",
+                "缺陷密度、敏感面積與失效機制共同影響良率，平均值不足以判斷所有風險。",
+                "CMP 同時依賴化學與機械作用，材料移除率及圖案密度會影響平坦度。"
+              ],
+              "optionsEn": [
+                "Control limits describe process statistics; specification limits describe product requirements.",
+                "Defect density, sensitive area and failure mechanisms jointly affect yield; an average alone is insufficient.",
+                "CMP combines chemical and mechanical action; removal rates and pattern density affect planarity."
+              ],
+              "answer": 1,
+              "explanation": "缺陷密度、敏感面積與失效機制共同影響良率，平均值不足以判斷所有風險。",
+              "explanationEn": "Defect density, sensitive area and failure mechanisms jointly affect yield; an average alone is insufficient."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s07-02"
+            ],
+            "sequence": 21,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "semiconductor-s08",
+        "order": 8,
+        "title": "封裝測試與交付",
+        "titleEn": "Packaging test and release",
+        "steps": [
+          {
+            "id": "semiconductor-s08-01",
+            "order": 1,
+            "title": "分辨晶圓測試與成品測試",
+            "titleEn": "Distinguish wafer and final test",
+            "objective": "完成「分辨晶圓測試與成品測試」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for distinguish wafer and final test.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s08-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "晶圓測試篩選晶粒，封裝後測試還需捕捉組裝互連帶來的缺陷。",
+                "textEn": "Wafer test screens dies; final test must also detect assembly and interconnect defects."
+              },
+              {
+                "id": "semiconductor-s08-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "把三種缺陷歸到最早能有效攔截的測試站。",
+                "textEn": "Assign three defects to the earliest effective test station."
+              }
+            ],
+            "check": "把三種缺陷歸到最早能有效攔截的測試站。",
+            "checkEn": "Assign three defects to the earliest effective test station.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「分辨晶圓測試與成品測試」的核心原理？",
+              "questionEn": "Which statement most directly explains distinguish wafer and final test?",
+              "options": [
+                "可靠度評估需要失效機制、應力條件及樣本資訊，不能只靠一次功能通過。",
+                "製程旅行單串接每個步驟的版本、負責人與檢驗結果，支援問題追查。",
+                "晶圓測試篩選晶粒，封裝後測試還需捕捉組裝互連帶來的缺陷。"
+              ],
+              "optionsEn": [
+                "Reliability assessment needs failure mechanisms, stress conditions and sample information, not one functional pass.",
+                "A process traveler links step revisions, ownership and inspection results to support investigation.",
+                "Wafer test screens dies; final test must also detect assembly and interconnect defects."
+              ],
+              "answer": 2,
+              "explanation": "晶圓測試篩選晶粒，封裝後測試還需捕捉組裝互連帶來的缺陷。",
+              "explanationEn": "Wafer test screens dies; final test must also detect assembly and interconnect defects."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s07-03"
+            ],
+            "sequence": 22,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s08-02",
+            "order": 2,
+            "title": "制定可靠度證據",
+            "titleEn": "Define reliability evidence",
+            "objective": "完成「制定可靠度證據」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for define reliability evidence.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s08-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "可靠度評估需要失效機制、應力條件及樣本資訊，不能只靠一次功能通過。",
+                "textEn": "Reliability assessment needs failure mechanisms, stress conditions and sample information, not one functional pass."
+              },
+              {
+                "id": "semiconductor-s08-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "建立含機制、量測與判定準則的驗證矩陣。",
+                "textEn": "Build a verification matrix of mechanism, measurement and decision criterion."
+              }
+            ],
+            "check": "建立含機制、量測與判定準則的驗證矩陣。",
+            "checkEn": "Build a verification matrix of mechanism, measurement and decision criterion.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「制定可靠度證據」的核心原理？",
+              "questionEn": "Which statement most directly explains define reliability evidence?",
+              "options": [
+                "晶圓測試篩選晶粒，封裝後測試還需捕捉組裝互連帶來的缺陷。",
+                "可靠度評估需要失效機制、應力條件及樣本資訊，不能只靠一次功能通過。",
+                "製程旅行單串接每個步驟的版本、負責人與檢驗結果，支援問題追查。"
+              ],
+              "optionsEn": [
+                "Wafer test screens dies; final test must also detect assembly and interconnect defects.",
+                "Reliability assessment needs failure mechanisms, stress conditions and sample information, not one functional pass.",
+                "A process traveler links step revisions, ownership and inspection results to support investigation."
+              ],
+              "answer": 1,
+              "explanation": "可靠度評估需要失效機制、應力條件及樣本資訊，不能只靠一次功能通過。",
+              "explanationEn": "Reliability assessment needs failure mechanisms, stress conditions and sample information, not one functional pass."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s08-01"
+            ],
+            "sequence": 23,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "semiconductor-s08-03",
+            "order": 3,
+            "title": "交付製程旅行單",
+            "titleEn": "Release a process traveler",
+            "objective": "完成「交付製程旅行單」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for release a process traveler.",
+            "knowledge": [
+              {
+                "id": "semiconductor-s08-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "製程旅行單串接每個步驟的版本、負責人與檢驗結果，支援問題追查。",
+                "textEn": "A process traveler links step revisions, ownership and inspection results to support investigation."
+              },
+              {
+                "id": "semiconductor-s08-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "輸出完整模擬批次紀錄，列出仍待驗證的假設。",
+                "textEn": "Export the complete mock lot record and list unverified assumptions."
+              }
+            ],
+            "check": "輸出完整模擬批次紀錄，列出仍待驗證的假設。",
+            "checkEn": "Export the complete mock lot record and list unverified assumptions.",
+            "sourceIds": [
+              "asml-principles",
+              "tsmc-n2",
+              "intel-packaging"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「交付製程旅行單」的核心原理？",
+              "questionEn": "Which statement most directly explains release a process traveler?",
+              "options": [
+                "製程旅行單串接每個步驟的版本、負責人與檢驗結果，支援問題追查。",
+                "晶圓測試篩選晶粒，封裝後測試還需捕捉組裝互連帶來的缺陷。",
+                "可靠度評估需要失效機制、應力條件及樣本資訊，不能只靠一次功能通過。"
+              ],
+              "optionsEn": [
+                "A process traveler links step revisions, ownership and inspection results to support investigation.",
+                "Wafer test screens dies; final test must also detect assembly and interconnect defects.",
+                "Reliability assessment needs failure mechanisms, stress conditions and sample information, not one functional pass."
+              ],
+              "answer": 0,
+              "explanation": "製程旅行單串接每個步驟的版本、負責人與檢驗結果，支援問題追查。",
+              "explanationEn": "A process traveler links step revisions, ownership and inspection results to support investigation."
+            },
+            "prerequisiteIds": [
+              "semiconductor-s08-02"
+            ],
+            "sequence": 24,
+            "estimatedMinutes": 15
+          }
+        ]
+      }
+    ],
+    "stepCount": 24,
+    "estimatedMinutes": 360,
+    "languageCoverage": [
+      "zh-TW",
+      "en"
+    ],
+    "status": "guided",
+    "kind": "course"
+  },
+  {
+    "id": "packaging",
+    "title": "先進封裝共同設計",
+    "titleEn": "Advanced Packaging Co-Design",
+    "category": "packaging",
+    "summary": "從 chiplet 分割、互連和組裝一路連到熱機可靠度與成品測試，理解封裝如何成為系統設計的一部分。",
+    "summaryEn": "Connect chiplet partitioning, interconnect and assembly to thermomechanical reliability and final test.",
+    "scope": "公開原理的分層工程教學；步驟是可驗證的學習任務，並非原廠配方、施工圖或操作許可。",
+    "scopeEn": "A layered course in public engineering principles. Steps are verifiable learning tasks, not vendor recipes, construction drawings, or operating authorization.",
+    "contentStatus": "reviewable-educational-curriculum",
+    "sourceIds": [
+      "intel-packaging",
+      "intel-photonics"
+    ],
+    "diagram": {
+      "type": "package",
+      "labels": [
+        "晶粒",
+        "互連",
+        "中介層",
+        "基板",
+        "散熱"
+      ],
+      "labelsEn": [
+        "Dies",
+        "Interconnect",
+        "Interposer",
+        "Substrate",
+        "Cooling"
+      ],
+      "original": true,
+      "notToScale": true
+    },
+    "depth": 4,
+    "stages": [
+      {
+        "id": "packaging-s01",
+        "order": 1,
+        "title": "系統與分割",
+        "titleEn": "System and partitioning",
+        "steps": [
+          {
+            "id": "packaging-s01-01",
+            "order": 1,
+            "title": "建立 chiplet 功能圖",
+            "titleEn": "Map chiplet functions",
+            "objective": "完成「建立 chiplet 功能圖」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for map chiplet functions.",
+            "knowledge": [
+              {
+                "id": "packaging-s01-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "分割可以讓不同功能採不同製程，但增加封裝介面。",
+                "textEn": "Partitioning lets functions use different processes but adds package interfaces."
+              },
+              {
+                "id": "packaging-s01-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "標出運算、記憶體與 I/O 的連線需求。",
+                "textEn": "Mark connections among compute, memory and I/O."
+              }
+            ],
+            "check": "標出運算、記憶體與 I/O 的連線需求。",
+            "checkEn": "Mark connections among compute, memory and I/O.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立 chiplet 功能圖」的核心原理？",
+              "questionEn": "Which statement most directly explains map chiplet functions?",
+              "options": [
+                "分割可以讓不同功能採不同製程，但增加封裝介面。",
+                "並排與垂直堆疊帶來不同互連距離、熱路徑和測試限制。",
+                "電、熱、機械與成本需一起約束，單一最優可能損害全系統。"
+              ],
+              "optionsEn": [
+                "Partitioning lets functions use different processes but adds package interfaces.",
+                "Side-by-side and vertical integration differ in interconnect distance, heat paths and test constraints.",
+                "Electrical, thermal, mechanical and cost constraints interact; one local optimum may harm the system."
+              ],
+              "answer": 0,
+              "explanation": "分割可以讓不同功能採不同製程，但增加封裝介面。",
+              "explanationEn": "Partitioning lets functions use different processes but adds package interfaces."
+            },
+            "prerequisiteIds": [],
+            "sequence": 1,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s01-02",
+            "order": 2,
+            "title": "比較 2.5D 與 3D",
+            "titleEn": "Compare 2.5D and 3D",
+            "objective": "完成「比較 2.5D 與 3D」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for compare 2.5d and 3d.",
+            "knowledge": [
+              {
+                "id": "packaging-s01-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "並排與垂直堆疊帶來不同互連距離、熱路徑和測試限制。",
+                "textEn": "Side-by-side and vertical integration differ in interconnect distance, heat paths and test constraints."
+              },
+              {
+                "id": "packaging-s01-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "畫出兩種結構的訊號與熱流。",
+                "textEn": "Draw signal and heat paths in both structures."
+              }
+            ],
+            "check": "畫出兩種結構的訊號與熱流。",
+            "checkEn": "Draw signal and heat paths in both structures.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「比較 2.5D 與 3D」的核心原理？",
+              "questionEn": "Which statement most directly explains compare 2.5d and 3d?",
+              "options": [
+                "電、熱、機械與成本需一起約束，單一最優可能損害全系統。",
+                "分割可以讓不同功能採不同製程，但增加封裝介面。",
+                "並排與垂直堆疊帶來不同互連距離、熱路徑和測試限制。"
+              ],
+              "optionsEn": [
+                "Electrical, thermal, mechanical and cost constraints interact; one local optimum may harm the system.",
+                "Partitioning lets functions use different processes but adds package interfaces.",
+                "Side-by-side and vertical integration differ in interconnect distance, heat paths and test constraints."
+              ],
+              "answer": 2,
+              "explanation": "並排與垂直堆疊帶來不同互連距離、熱路徑和測試限制。",
+              "explanationEn": "Side-by-side and vertical integration differ in interconnect distance, heat paths and test constraints."
+            },
+            "prerequisiteIds": [
+              "packaging-s01-01"
+            ],
+            "sequence": 2,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s01-03",
+            "order": 3,
+            "title": "制定整體預算",
+            "titleEn": "Set system budgets",
+            "objective": "完成「制定整體預算」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for set system budgets.",
+            "knowledge": [
+              {
+                "id": "packaging-s01-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "電、熱、機械與成本需一起約束，單一最優可能損害全系統。",
+                "textEn": "Electrical, thermal, mechanical and cost constraints interact; one local optimum may harm the system."
+              },
+              {
+                "id": "packaging-s01-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "建立帶單位的共同設計表。",
+                "textEn": "Create a co-design table with units."
+              }
+            ],
+            "check": "建立帶單位的共同設計表。",
+            "checkEn": "Create a co-design table with units.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「制定整體預算」的核心原理？",
+              "questionEn": "Which statement most directly explains set system budgets?",
+              "options": [
+                "並排與垂直堆疊帶來不同互連距離、熱路徑和測試限制。",
+                "電、熱、機械與成本需一起約束，單一最優可能損害全系統。",
+                "分割可以讓不同功能採不同製程，但增加封裝介面。"
+              ],
+              "optionsEn": [
+                "Side-by-side and vertical integration differ in interconnect distance, heat paths and test constraints.",
+                "Electrical, thermal, mechanical and cost constraints interact; one local optimum may harm the system.",
+                "Partitioning lets functions use different processes but adds package interfaces."
+              ],
+              "answer": 1,
+              "explanation": "電、熱、機械與成本需一起約束，單一最優可能損害全系統。",
+              "explanationEn": "Electrical, thermal, mechanical and cost constraints interact; one local optimum may harm the system."
+            },
+            "prerequisiteIds": [
+              "packaging-s01-02"
+            ],
+            "sequence": 3,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "packaging-s02",
+        "order": 2,
+        "title": "互連與基板",
+        "titleEn": "Interconnect and substrate",
+        "steps": [
+          {
+            "id": "packaging-s02-01",
+            "order": 1,
+            "title": "理解 RDL 與通孔",
+            "titleEn": "Understand RDL and vias",
+            "objective": "完成「理解 RDL 與通孔」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for understand rdl and vias.",
+            "knowledge": [
+              {
+                "id": "packaging-s02-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "RDL 重分布橫向連線，通孔提供垂直連接。",
+                "textEn": "RDL redistributes lateral connections; vias provide vertical paths."
+              },
+              {
+                "id": "packaging-s02-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "追蹤一條從晶粒到外部焊球的訊號。",
+                "textEn": "Trace a signal from die to external solder ball."
+              }
+            ],
+            "check": "追蹤一條從晶粒到外部焊球的訊號。",
+            "checkEn": "Trace a signal from die to external solder ball.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「理解 RDL 與通孔」的核心原理？",
+              "questionEn": "Which statement most directly explains understand rdl and vias?",
+              "options": [
+                "不同鍵合方式在表面平坦、潔淨及接點密度方面有不同要求。",
+                "供電與回流路徑一起決定壓降及寄生電感。",
+                "RDL 重分布橫向連線，通孔提供垂直連接。"
+              ],
+              "optionsEn": [
+                "Bonding methods differ in planarity, cleanliness and interconnect-density requirements.",
+                "Supply and return paths jointly determine voltage drop and parasitic inductance.",
+                "RDL redistributes lateral connections; vias provide vertical paths."
+              ],
+              "answer": 2,
+              "explanation": "RDL 重分布橫向連線，通孔提供垂直連接。",
+              "explanationEn": "RDL redistributes lateral connections; vias provide vertical paths."
+            },
+            "prerequisiteIds": [
+              "packaging-s01-03"
+            ],
+            "sequence": 4,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s02-02",
+            "order": 2,
+            "title": "比較微凸塊與混合鍵合",
+            "titleEn": "Compare microbumps and hybrid bonding",
+            "objective": "完成「比較微凸塊與混合鍵合」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for compare microbumps and hybrid bonding.",
+            "knowledge": [
+              {
+                "id": "packaging-s02-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "不同鍵合方式在表面平坦、潔淨及接點密度方面有不同要求。",
+                "textEn": "Bonding methods differ in planarity, cleanliness and interconnect-density requirements."
+              },
+              {
+                "id": "packaging-s02-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "建立介面要求比較表，不填入未公開製程參數。",
+                "textEn": "Compare interface requirements without inventing proprietary settings."
+              }
+            ],
+            "check": "建立介面要求比較表，不填入未公開製程參數。",
+            "checkEn": "Compare interface requirements without inventing proprietary settings.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「比較微凸塊與混合鍵合」的核心原理？",
+              "questionEn": "Which statement most directly explains compare microbumps and hybrid bonding?",
+              "options": [
+                "RDL 重分布橫向連線，通孔提供垂直連接。",
+                "不同鍵合方式在表面平坦、潔淨及接點密度方面有不同要求。",
+                "供電與回流路徑一起決定壓降及寄生電感。"
+              ],
+              "optionsEn": [
+                "RDL redistributes lateral connections; vias provide vertical paths.",
+                "Bonding methods differ in planarity, cleanliness and interconnect-density requirements.",
+                "Supply and return paths jointly determine voltage drop and parasitic inductance."
+              ],
+              "answer": 1,
+              "explanation": "不同鍵合方式在表面平坦、潔淨及接點密度方面有不同要求。",
+              "explanationEn": "Bonding methods differ in planarity, cleanliness and interconnect-density requirements."
+            },
+            "prerequisiteIds": [
+              "packaging-s02-01"
+            ],
+            "sequence": 5,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s02-03",
+            "order": 3,
+            "title": "檢查供電回路",
+            "titleEn": "Review power return paths",
+            "objective": "完成「檢查供電回路」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for review power return paths.",
+            "knowledge": [
+              {
+                "id": "packaging-s02-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "供電與回流路徑一起決定壓降及寄生電感。",
+                "textEn": "Supply and return paths jointly determine voltage drop and parasitic inductance."
+              },
+              {
+                "id": "packaging-s02-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在示意封裝上畫出完整閉合電流路徑。",
+                "textEn": "Draw a complete current loop on the package schematic."
+              }
+            ],
+            "check": "在示意封裝上畫出完整閉合電流路徑。",
+            "checkEn": "Draw a complete current loop on the package schematic.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「檢查供電回路」的核心原理？",
+              "questionEn": "Which statement most directly explains review power return paths?",
+              "options": [
+                "供電與回流路徑一起決定壓降及寄生電感。",
+                "RDL 重分布橫向連線，通孔提供垂直連接。",
+                "不同鍵合方式在表面平坦、潔淨及接點密度方面有不同要求。"
+              ],
+              "optionsEn": [
+                "Supply and return paths jointly determine voltage drop and parasitic inductance.",
+                "RDL redistributes lateral connections; vias provide vertical paths.",
+                "Bonding methods differ in planarity, cleanliness and interconnect-density requirements."
+              ],
+              "answer": 0,
+              "explanation": "供電與回流路徑一起決定壓降及寄生電感。",
+              "explanationEn": "Supply and return paths jointly determine voltage drop and parasitic inductance."
+            },
+            "prerequisiteIds": [
+              "packaging-s02-02"
+            ],
+            "sequence": 6,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "packaging-s03",
+        "order": 3,
+        "title": "組裝與計量",
+        "titleEn": "Assembly and metrology",
+        "steps": [
+          {
+            "id": "packaging-s03-01",
+            "order": 1,
+            "title": "安排晶粒定位",
+            "titleEn": "Plan die alignment",
+            "objective": "完成「安排晶粒定位」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for plan die alignment.",
+            "knowledge": [
+              {
+                "id": "packaging-s03-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "平移、旋轉和高度誤差會共同影響接點重合。",
+                "textEn": "Translation, rotation and height errors jointly affect interconnect alignment."
+              },
+              {
+                "id": "packaging-s03-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在虛擬對位圖標出三種誤差。",
+                "textEn": "Mark three alignment errors in a virtual overlay."
+              }
+            ],
+            "check": "在虛擬對位圖標出三種誤差。",
+            "checkEn": "Mark three alignment errors in a virtual overlay.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「安排晶粒定位」的核心原理？",
+              "questionEn": "Which statement most directly explains plan die alignment?",
+              "options": [
+                "外觀、X 光及聲學影像觀察不同缺陷，需互補使用。",
+                "平移、旋轉和高度誤差會共同影響接點重合。",
+                "材料彈性、熱膨脹與界面黏著影響熱循環可靠度。"
+              ],
+              "optionsEn": [
+                "Visual, X-ray and acoustic imaging reveal different defects and complement one another.",
+                "Translation, rotation and height errors jointly affect interconnect alignment.",
+                "Elasticity, thermal expansion and adhesion affect thermal-cycle reliability."
+              ],
+              "answer": 1,
+              "explanation": "平移、旋轉和高度誤差會共同影響接點重合。",
+              "explanationEn": "Translation, rotation and height errors jointly affect interconnect alignment."
+            },
+            "prerequisiteIds": [
+              "packaging-s02-03"
+            ],
+            "sequence": 7,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s03-02",
+            "order": 2,
+            "title": "理解填膠與封裝材料",
+            "titleEn": "Understand underfill and encapsulants",
+            "objective": "完成「理解填膠與封裝材料」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for understand underfill and encapsulants.",
+            "knowledge": [
+              {
+                "id": "packaging-s03-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "材料彈性、熱膨脹與界面黏著影響熱循環可靠度。",
+                "textEn": "Elasticity, thermal expansion and adhesion affect thermal-cycle reliability."
+              },
+              {
+                "id": "packaging-s03-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "把材料屬性連到可能的脫層或應力。",
+                "textEn": "Link material properties to possible delamination or stress."
+              }
+            ],
+            "check": "把材料屬性連到可能的脫層或應力。",
+            "checkEn": "Link material properties to possible delamination or stress.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「理解填膠與封裝材料」的核心原理？",
+              "questionEn": "Which statement most directly explains understand underfill and encapsulants?",
+              "options": [
+                "材料彈性、熱膨脹與界面黏著影響熱循環可靠度。",
+                "外觀、X 光及聲學影像觀察不同缺陷，需互補使用。",
+                "平移、旋轉和高度誤差會共同影響接點重合。"
+              ],
+              "optionsEn": [
+                "Elasticity, thermal expansion and adhesion affect thermal-cycle reliability.",
+                "Visual, X-ray and acoustic imaging reveal different defects and complement one another.",
+                "Translation, rotation and height errors jointly affect interconnect alignment."
+              ],
+              "answer": 0,
+              "explanation": "材料彈性、熱膨脹與界面黏著影響熱循環可靠度。",
+              "explanationEn": "Elasticity, thermal expansion and adhesion affect thermal-cycle reliability."
+            },
+            "prerequisiteIds": [
+              "packaging-s03-01"
+            ],
+            "sequence": 8,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s03-03",
+            "order": 3,
+            "title": "規劃缺陷檢查",
+            "titleEn": "Plan defect inspection",
+            "objective": "完成「規劃缺陷檢查」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for plan defect inspection.",
+            "knowledge": [
+              {
+                "id": "packaging-s03-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "外觀、X 光及聲學影像觀察不同缺陷，需互補使用。",
+                "textEn": "Visual, X-ray and acoustic imaging reveal different defects and complement one another."
+              },
+              {
+                "id": "packaging-s03-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "為空洞、脫層與缺球選擇檢查方式。",
+                "textEn": "Choose inspections for voids, delamination and missing balls."
+              }
+            ],
+            "check": "為空洞、脫層與缺球選擇檢查方式。",
+            "checkEn": "Choose inspections for voids, delamination and missing balls.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「規劃缺陷檢查」的核心原理？",
+              "questionEn": "Which statement most directly explains plan defect inspection?",
+              "options": [
+                "平移、旋轉和高度誤差會共同影響接點重合。",
+                "材料彈性、熱膨脹與界面黏著影響熱循環可靠度。",
+                "外觀、X 光及聲學影像觀察不同缺陷，需互補使用。"
+              ],
+              "optionsEn": [
+                "Translation, rotation and height errors jointly affect interconnect alignment.",
+                "Elasticity, thermal expansion and adhesion affect thermal-cycle reliability.",
+                "Visual, X-ray and acoustic imaging reveal different defects and complement one another."
+              ],
+              "answer": 2,
+              "explanation": "外觀、X 光及聲學影像觀察不同缺陷，需互補使用。",
+              "explanationEn": "Visual, X-ray and acoustic imaging reveal different defects and complement one another."
+            },
+            "prerequisiteIds": [
+              "packaging-s03-02"
+            ],
+            "sequence": 9,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "packaging-s04",
+        "order": 4,
+        "title": "熱與機械",
+        "titleEn": "Thermal and mechanical behavior",
+        "steps": [
+          {
+            "id": "packaging-s04-01",
+            "order": 1,
+            "title": "建立熱阻網路",
+            "titleEn": "Build a thermal network",
+            "objective": "完成「建立熱阻網路」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for build a thermal network.",
+            "knowledge": [
+              {
+                "id": "packaging-s04-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "熱源、介面與散熱端共同決定溫升，接觸熱阻可能主導。",
+                "textEn": "Heat source, interfaces and sink determine temperature rise; contact resistance may dominate."
+              },
+              {
+                "id": "packaging-s04-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "畫出兩條並聯散熱路徑並比較瓶頸。",
+                "textEn": "Draw two parallel heat paths and identify bottlenecks."
+              }
+            ],
+            "check": "畫出兩條並聯散熱路徑並比較瓶頸。",
+            "checkEn": "Draw two parallel heat paths and identify bottlenecks.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立熱阻網路」的核心原理？",
+              "questionEn": "Which statement most directly explains build a thermal network?",
+              "options": [
+                "熱源、介面與散熱端共同決定溫升，接觸熱阻可能主導。",
+                "不同材料的熱膨脹差異會產生變形與應力。",
+                "網格收斂、邊界條件及材料模型影響模擬可信度。"
+              ],
+              "optionsEn": [
+                "Heat source, interfaces and sink determine temperature rise; contact resistance may dominate.",
+                "Differing thermal expansion causes deformation and stress.",
+                "Mesh convergence, boundary conditions and material models affect simulation credibility."
+              ],
+              "answer": 0,
+              "explanation": "熱源、介面與散熱端共同決定溫升，接觸熱阻可能主導。",
+              "explanationEn": "Heat source, interfaces and sink determine temperature rise; contact resistance may dominate."
+            },
+            "prerequisiteIds": [
+              "packaging-s03-03"
+            ],
+            "sequence": 10,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s04-02",
+            "order": 2,
+            "title": "分析熱膨脹失配",
+            "titleEn": "Analyze expansion mismatch",
+            "objective": "完成「分析熱膨脹失配」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for analyze expansion mismatch.",
+            "knowledge": [
+              {
+                "id": "packaging-s04-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "不同材料的熱膨脹差異會產生變形與應力。",
+                "textEn": "Differing thermal expansion causes deformation and stress."
+              },
+              {
+                "id": "packaging-s04-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "畫出加熱與降溫後的定性翹曲方向。",
+                "textEn": "Draw qualitative warpage directions under heating and cooling."
+              }
+            ],
+            "check": "畫出加熱與降溫後的定性翹曲方向。",
+            "checkEn": "Draw qualitative warpage directions under heating and cooling.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「分析熱膨脹失配」的核心原理？",
+              "questionEn": "Which statement most directly explains analyze expansion mismatch?",
+              "options": [
+                "網格收斂、邊界條件及材料模型影響模擬可信度。",
+                "熱源、介面與散熱端共同決定溫升，接觸熱阻可能主導。",
+                "不同材料的熱膨脹差異會產生變形與應力。"
+              ],
+              "optionsEn": [
+                "Mesh convergence, boundary conditions and material models affect simulation credibility.",
+                "Heat source, interfaces and sink determine temperature rise; contact resistance may dominate.",
+                "Differing thermal expansion causes deformation and stress."
+              ],
+              "answer": 2,
+              "explanation": "不同材料的熱膨脹差異會產生變形與應力。",
+              "explanationEn": "Differing thermal expansion causes deformation and stress."
+            },
+            "prerequisiteIds": [
+              "packaging-s04-01"
+            ],
+            "sequence": 11,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s04-03",
+            "order": 3,
+            "title": "檢查 CAE 假設",
+            "titleEn": "Review CAE assumptions",
+            "objective": "完成「檢查 CAE 假設」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for review cae assumptions.",
+            "knowledge": [
+              {
+                "id": "packaging-s04-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "網格收斂、邊界條件及材料模型影響模擬可信度。",
+                "textEn": "Mesh convergence, boundary conditions and material models affect simulation credibility."
+              },
+              {
+                "id": "packaging-s04-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "列出三個需以量測核對的模型假設。",
+                "textEn": "List three model assumptions requiring measurement checks."
+              }
+            ],
+            "check": "列出三個需以量測核對的模型假設。",
+            "checkEn": "List three model assumptions requiring measurement checks.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「檢查 CAE 假設」的核心原理？",
+              "questionEn": "Which statement most directly explains review cae assumptions?",
+              "options": [
+                "不同材料的熱膨脹差異會產生變形與應力。",
+                "網格收斂、邊界條件及材料模型影響模擬可信度。",
+                "熱源、介面與散熱端共同決定溫升，接觸熱阻可能主導。"
+              ],
+              "optionsEn": [
+                "Differing thermal expansion causes deformation and stress.",
+                "Mesh convergence, boundary conditions and material models affect simulation credibility.",
+                "Heat source, interfaces and sink determine temperature rise; contact resistance may dominate."
+              ],
+              "answer": 1,
+              "explanation": "網格收斂、邊界條件及材料模型影響模擬可信度。",
+              "explanationEn": "Mesh convergence, boundary conditions and material models affect simulation credibility."
+            },
+            "prerequisiteIds": [
+              "packaging-s04-02"
+            ],
+            "sequence": 12,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "packaging-s05",
+        "order": 5,
+        "title": "可靠度與失效",
+        "titleEn": "Reliability and failure",
+        "steps": [
+          {
+            "id": "packaging-s05-01",
+            "order": 1,
+            "title": "分辨疲勞與瞬間破壞",
+            "titleEn": "Distinguish fatigue and overload",
+            "objective": "完成「分辨疲勞與瞬間破壞」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for distinguish fatigue and overload.",
+            "knowledge": [
+              {
+                "id": "packaging-s05-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "反覆熱應變可能累積損傷，單次強度合格不足以保證壽命。",
+                "textEn": "Repeated thermal strain can accumulate damage; static strength does not prove lifetime."
+              },
+              {
+                "id": "packaging-s05-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "比較單次載荷與循環載荷的驗證需求。",
+                "textEn": "Compare validation needs for single and cyclic loads."
+              }
+            ],
+            "check": "比較單次載荷與循環載荷的驗證需求。",
+            "checkEn": "Compare validation needs for single and cyclic loads.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「分辨疲勞與瞬間破壞」的核心原理？",
+              "questionEn": "Which statement most directly explains distinguish fatigue and overload?",
+              "options": [
+                "症狀、缺陷位置與物理機制需逐步建立證據。",
+                "加速模型需對應失效機制，改變機制會使外推失效。",
+                "反覆熱應變可能累積損傷，單次強度合格不足以保證壽命。"
+              ],
+              "optionsEn": [
+                "Symptoms, defect location and physical mechanism require sequential evidence.",
+                "Acceleration models must match the failure mechanism; changing mechanisms invalidates extrapolation.",
+                "Repeated thermal strain can accumulate damage; static strength does not prove lifetime."
+              ],
+              "answer": 2,
+              "explanation": "反覆熱應變可能累積損傷，單次強度合格不足以保證壽命。",
+              "explanationEn": "Repeated thermal strain can accumulate damage; static strength does not prove lifetime."
+            },
+            "prerequisiteIds": [
+              "packaging-s04-03"
+            ],
+            "sequence": 13,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s05-02",
+            "order": 2,
+            "title": "建立失效分析鏈",
+            "titleEn": "Build a failure-analysis chain",
+            "objective": "完成「建立失效分析鏈」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for build a failure-analysis chain.",
+            "knowledge": [
+              {
+                "id": "packaging-s05-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "症狀、缺陷位置與物理機制需逐步建立證據。",
+                "textEn": "Symptoms, defect location and physical mechanism require sequential evidence."
+              },
+              {
+                "id": "packaging-s05-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "把開路症狀連到待驗證的接點假設。",
+                "textEn": "Link an open-circuit symptom to a joint hypothesis for verification."
+              }
+            ],
+            "check": "把開路症狀連到待驗證的接點假設。",
+            "checkEn": "Link an open-circuit symptom to a joint hypothesis for verification.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「建立失效分析鏈」的核心原理？",
+              "questionEn": "Which statement most directly explains build a failure-analysis chain?",
+              "options": [
+                "反覆熱應變可能累積損傷，單次強度合格不足以保證壽命。",
+                "症狀、缺陷位置與物理機制需逐步建立證據。",
+                "加速模型需對應失效機制，改變機制會使外推失效。"
+              ],
+              "optionsEn": [
+                "Repeated thermal strain can accumulate damage; static strength does not prove lifetime.",
+                "Symptoms, defect location and physical mechanism require sequential evidence.",
+                "Acceleration models must match the failure mechanism; changing mechanisms invalidates extrapolation."
+              ],
+              "answer": 1,
+              "explanation": "症狀、缺陷位置與物理機制需逐步建立證據。",
+              "explanationEn": "Symptoms, defect location and physical mechanism require sequential evidence."
+            },
+            "prerequisiteIds": [
+              "packaging-s05-01"
+            ],
+            "sequence": 14,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s05-03",
+            "order": 3,
+            "title": "處理加速試驗外推",
+            "titleEn": "Review accelerated-test extrapolation",
+            "objective": "完成「處理加速試驗外推」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for review accelerated-test extrapolation.",
+            "knowledge": [
+              {
+                "id": "packaging-s05-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "加速模型需對應失效機制，改變機制會使外推失效。",
+                "textEn": "Acceleration models must match the failure mechanism; changing mechanisms invalidates extrapolation."
+              },
+              {
+                "id": "packaging-s05-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "在教學報告列出模型、適用條件及不確定度。",
+                "textEn": "List model, applicability and uncertainty in the learning report."
+              }
+            ],
+            "check": "在教學報告列出模型、適用條件及不確定度。",
+            "checkEn": "List model, applicability and uncertainty in the learning report.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「處理加速試驗外推」的核心原理？",
+              "questionEn": "Which statement most directly explains review accelerated-test extrapolation?",
+              "options": [
+                "加速模型需對應失效機制，改變機制會使外推失效。",
+                "反覆熱應變可能累積損傷，單次強度合格不足以保證壽命。",
+                "症狀、缺陷位置與物理機制需逐步建立證據。"
+              ],
+              "optionsEn": [
+                "Acceleration models must match the failure mechanism; changing mechanisms invalidates extrapolation.",
+                "Repeated thermal strain can accumulate damage; static strength does not prove lifetime.",
+                "Symptoms, defect location and physical mechanism require sequential evidence."
+              ],
+              "answer": 0,
+              "explanation": "加速模型需對應失效機制，改變機制會使外推失效。",
+              "explanationEn": "Acceleration models must match the failure mechanism; changing mechanisms invalidates extrapolation."
+            },
+            "prerequisiteIds": [
+              "packaging-s05-02"
+            ],
+            "sequence": 15,
+            "estimatedMinutes": 15
+          }
+        ]
+      },
+      {
+        "id": "packaging-s06",
+        "order": 6,
+        "title": "測試與交付",
+        "titleEn": "Test and handover",
+        "steps": [
+          {
+            "id": "packaging-s06-01",
+            "order": 1,
+            "title": "規劃已知良品晶粒",
+            "titleEn": "Plan known-good-die evidence",
+            "objective": "完成「規劃已知良品晶粒」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for plan known-good-die evidence.",
+            "knowledge": [
+              {
+                "id": "packaging-s06-01-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "早期篩選晶粒能降低後段報廢，但測試覆蓋率仍有限。",
+                "textEn": "Early die screening reduces downstream loss but test coverage remains finite."
+              },
+              {
+                "id": "packaging-s06-01-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "比較早測與晚測的概念成本。",
+                "textEn": "Compare conceptual costs of early and late testing."
+              }
+            ],
+            "check": "比較早測與晚測的概念成本。",
+            "checkEn": "Compare conceptual costs of early and late testing.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「規劃已知良品晶粒」的核心原理？",
+              "questionEn": "Which statement most directly explains plan known-good-die evidence?",
+              "options": [
+                "晶粒、材料、組裝版本與測試結果需能相互追溯。",
+                "早期篩選晶粒能降低後段報廢，但測試覆蓋率仍有限。",
+                "高速互連需同時檢查訊號完整性、供電和熱條件。"
+              ],
+              "optionsEn": [
+                "Dies, materials, assembly revisions and test outcomes need mutual traceability.",
+                "Early die screening reduces downstream loss but test coverage remains finite.",
+                "High-speed links require signal, power and thermal checks together."
+              ],
+              "answer": 1,
+              "explanation": "早期篩選晶粒能降低後段報廢，但測試覆蓋率仍有限。",
+              "explanationEn": "Early die screening reduces downstream loss but test coverage remains finite."
+            },
+            "prerequisiteIds": [
+              "packaging-s05-03"
+            ],
+            "sequence": 16,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s06-02",
+            "order": 2,
+            "title": "驗證系統功能",
+            "titleEn": "Verify system function",
+            "objective": "完成「驗證系統功能」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for verify system function.",
+            "knowledge": [
+              {
+                "id": "packaging-s06-02-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "高速互連需同時檢查訊號完整性、供電和熱條件。",
+                "textEn": "High-speed links require signal, power and thermal checks together."
+              },
+              {
+                "id": "packaging-s06-02-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "定義三種工況的整合測試表。",
+                "textEn": "Define integration checks for three operating conditions."
+              }
+            ],
+            "check": "定義三種工況的整合測試表。",
+            "checkEn": "Define integration checks for three operating conditions.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「驗證系統功能」的核心原理？",
+              "questionEn": "Which statement most directly explains verify system function?",
+              "options": [
+                "高速互連需同時檢查訊號完整性、供電和熱條件。",
+                "晶粒、材料、組裝版本與測試結果需能相互追溯。",
+                "早期篩選晶粒能降低後段報廢，但測試覆蓋率仍有限。"
+              ],
+              "optionsEn": [
+                "High-speed links require signal, power and thermal checks together.",
+                "Dies, materials, assembly revisions and test outcomes need mutual traceability.",
+                "Early die screening reduces downstream loss but test coverage remains finite."
+              ],
+              "answer": 0,
+              "explanation": "高速互連需同時檢查訊號完整性、供電和熱條件。",
+              "explanationEn": "High-speed links require signal, power and thermal checks together."
+            },
+            "prerequisiteIds": [
+              "packaging-s06-01"
+            ],
+            "sequence": 17,
+            "estimatedMinutes": 15
+          },
+          {
+            "id": "packaging-s06-03",
+            "order": 3,
+            "title": "交付追溯資料",
+            "titleEn": "Deliver traceability records",
+            "objective": "完成「交付追溯資料」的概念模型與工程檢核。",
+            "objectiveEn": "Build and review the conceptual model for deliver traceability records.",
+            "knowledge": [
+              {
+                "id": "packaging-s06-03-k1",
+                "title": "核心原理",
+                "titleEn": "Core principle",
+                "text": "晶粒、材料、組裝版本與測試結果需能相互追溯。",
+                "textEn": "Dies, materials, assembly revisions and test outcomes need mutual traceability."
+              },
+              {
+                "id": "packaging-s06-03-k2",
+                "title": "總工程師檢核",
+                "titleEn": "Chief engineer review",
+                "text": "輸出模擬封裝的完整履歷。",
+                "textEn": "Export the complete simulated package history."
+              }
+            ],
+            "check": "輸出模擬封裝的完整履歷。",
+            "checkEn": "Export the complete simulated package history.",
+            "sourceIds": [
+              "intel-packaging",
+              "intel-photonics"
+            ],
+            "simulationOnly": true,
+            "quiz": {
+              "question": "哪個敘述最直接說明「交付追溯資料」的核心原理？",
+              "questionEn": "Which statement most directly explains deliver traceability records?",
+              "options": [
+                "早期篩選晶粒能降低後段報廢，但測試覆蓋率仍有限。",
+                "高速互連需同時檢查訊號完整性、供電和熱條件。",
+                "晶粒、材料、組裝版本與測試結果需能相互追溯。"
+              ],
+              "optionsEn": [
+                "Early die screening reduces downstream loss but test coverage remains finite.",
+                "High-speed links require signal, power and thermal checks together.",
+                "Dies, materials, assembly revisions and test outcomes need mutual traceability."
+              ],
+              "answer": 2,
+              "explanation": "晶粒、材料、組裝版本與測試結果需能相互追溯。",
+              "explanationEn": "Dies, materials, assembly revisions and test outcomes need mutual traceability."
+            },
+            "prerequisiteIds": [
+              "packaging-s06-02"
+            ],
+            "sequence": 18,
+            "estimatedMinutes": 15
+          }
+        ]
+      }
+    ],
+    "stepCount": 18,
+    "estimatedMinutes": 270,
+    "languageCoverage": [
+      "zh-TW",
+      "en"
+    ],
+    "status": "guided",
+    "kind": "course"
+  }
+]

@@ -1,0 +1,19 @@
+// Curated entry routes. A route selects learning order, not a fabrication traveler.
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export const PACKAGING_PATHS = [
+  {id:'bond',title:['從凸塊走到混合接合','From bumps to hybrid bonding'],goal:['比較接面、平坦度、對準與失效證據。','Compare interfaces, planarity, alignment and failure evidence.'],courses:['a103','a104','a105','a106','a107','a108']},
+  {id:'stack',title:['把小晶片組成系統','Build a chiplet system'],goal:['沿著 TSV、中介層、HBM 與量產案例建立整合觀點。','Connect TSVs, interposers, HBM and industrial integration cases.'],courses:['a121','a122','a125','a130','a131','a196']},
+  {id:'thermal',title:['熱、應力與封裝壽命','Heat, stress and package lifetime'],goal:['區分熱阻、CTE 失配、循環疲勞與可靠度證據。','Distinguish thermal resistance, CTE mismatch, cyclic fatigue and reliability evidence.'],courses:['a115','a139','a140','a146','a148','a186']},
+  {id:'electrical',title:['高速互連與電源品質','High-speed links and power quality'],goal:['以參考平面、寄生萃取與供電阻抗檢查系統假設。','Check system assumptions through reference planes, parasitics and PDN impedance.'],courses:['a134','a136','a133','a137','a138','a194']},
+  {id:'photonics',title:['從波導到光收發器','From waveguides to transceivers'],goal:['先建立模式與損耗預算，再加入調變與偵測。','Establish modes and loss budgets before adding modulation and detection.'],courses:['a151','a152','a155','a162','a164','a178']},
+  {id:'assembly',title:['光纖組裝與漂移補償','Fiber assembly and drift compensation'],goal:['把對準、固化、溫度與應力連到插入損耗及相位。','Connect alignment, curing, temperature and stress to loss and phase.'],courses:['a156','a157','a158','a186','a187','a189']},
+  {id:'cpo',title:['CPO 與光學 I/O','CPO and optical I/O'],goal:['從光源、共同設計走到熱管理、測試及故障重路由。','Move from sources and co-design to thermal management, tests and failure rerouting.'],courses:['silicon-photonics','a172','a193','a191','a192','a188']},
+  {id:'sensing',title:['積體光子感測與新應用','Integrated sensing and new applications'],goal:['比較相位陣列、FMCW、感測選擇性與量子光源的驗證。','Compare verification for phased arrays, FMCW, sensing selectivity and quantum light sources.'],courses:['a179','a180','a181','a182','a183','a184']}
+];
+export function packagingPathsMarkup(catalog, zh=true) {
+  const courses=new Map(catalog.map(c=>[c.id,c]));
+  const ready=catalog.filter(c=>c.category==='packaging'&&c.stages);
+  if(!ready.length)return '';
+  const L=(a,b)=>zh?a:b;
+  return `<section class="packaging-collection" aria-labelledby="packagingCollectionTitle"><div class="packaging-collection-head"><div><span class="eyebrow">COLLECTION 09 · PACKAGING × PHOTONICS</span><h2 id="packagingCollectionTitle">${L('先進封裝與矽光子，從這裡深入。','Go deeper into packaging and silicon photonics.')}</h2><p>${ready.length} ${L('門逐步課程','guided courses')} · ${new Set(ready.map(c=>c.subcategory).filter(Boolean)).size} ${L('個專業子領域','subdisciplines')} · ${L('原理 → 算例 → 量測 → 失效判讀','Principles → calculations → measurements → diagnosis')}</p></div><a class="button" href="#catalog/domain/packaging" data-catalog-route="domain/packaging">${L('探索全部','Explore all')} ${ready.length} ${L('門','courses')} ↗</a></div><p class="subtext mt"><a href="data/packaging-photonics-100.csv" download>${L('下載 100 門完整中英索引 CSV','Download the complete 100-course bilingual CSV')} ↓</a></p><details class="packaging-routes"><summary>${L('不知道從哪裡開始？展開 8 條學習路線','Where to begin? Open 8 learning routes')}</summary><div class="packaging-route-grid">${PACKAGING_PATHS.map(path=>`<article><span class="task-label">${esc(path.id.toUpperCase())}</span><h3>${esc(path.title[zh?0:1])}</h3><p>${esc(path.goal[zh?0:1])}</p><ol>${path.courses.map(id=>courses.get(id)).filter(Boolean).map(c=>`<li><a href="#project/${esc(c.id)}">${esc(zh?c.title:c.titleEn)}</a></li>`).join('')}</ol></article>`).join('')}</div><p class="subtext">${L('這是概念學習順序；真實製程需依產品、設備與驗證條件整合。','These are conceptual learning sequences. Actual processes require product-, equipment- and validation-specific integration.')}</p></details></section>`;
+}

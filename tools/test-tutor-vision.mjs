@@ -1,0 +1,47 @@
+// Contract and state tests with image decoder/fetch mocks. No real inference is claimed.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {boundedTutorHistory,hostedTutorContext} from '../public/academy/ai-client.js';
+import {prepareTutorImage,releaseTutorImage,tutorImageMime,tutorImageDimensions,tutorServiceRoutes,TUTOR_IMAGE_LIMIT} from '../public/academy/tutor-attachments.js';
+const png=Uint8Array.from([137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,3,32,0,0,2,88]);
+const file=(bytes=png,type='image/png',size=bytes.length)=>({name:'<private screenshot>.png',type,size,arrayBuffer:async()=>bytes.buffer});
+let created=0,closed=0,revoked=[],dimensions={width:800,height:600},decoder=null;
+const env={btoa:s=>Buffer.from(s,'binary').toString('base64'),URL:{createObjectURL:()=>`blob:test-${++created}`,revokeObjectURL:url=>revoked.push(url)},createImageBitmap:async()=>{if(decoder)return decoder;return{...dimensions,close(){closed++;}}}};
+assert.equal(tutorImageMime(png),'image/png');assert.deepEqual(tutorImageDimensions(png),{width:800,height:600});const huge=png.slice();new DataView(huge.buffer).setUint32(16,100000);await assert.rejects(prepareTutorImage(file(huge),env),/IMAGE_DIMENSIONS/);assert.equal(closed,0,'oversized header rejected before image decode');assert.equal(tutorImageMime(Uint8Array.from([255,216,255])),'image/jpeg');
+assert.equal(tutorImageMime(new TextEncoder().encode('RIFF1234WEBP')),'image/webp');
+await assert.rejects(prepareTutorImage(file(png,'image/svg+xml'),env),/IMAGE_TYPE/);
+await assert.rejects(prepareTutorImage(file(png,'image/png',TUTOR_IMAGE_LIMIT+1),env),/IMAGE_SIZE/);
+await assert.rejects(prepareTutorImage(file(png,'image/jpeg'),env),/IMAGE_TYPE/);
+await assert.rejects(prepareTutorImage(file(png,'image/png',png.length-1),env),/IMAGE_TYPE/);
+dimensions={width:8193,height:10};await assert.rejects(prepareTutorImage(file(),env),/IMAGE_DIMENSIONS/);
+dimensions={width:6000,height:6000};await assert.rejects(prepareTutorImage(file(),env),/IMAGE_DIMENSIONS/);
+dimensions={width:800,height:600};const prepared=await prepareTutorImage(file(),env);assert.equal(prepared.image.data,Buffer.from(png).toString('base64'));releaseTutorImage(prepared,env);assert(revoked.includes(prepared.previewUrl));assert(closed>=3,'decoder resources close after valid and invalid dimensions');
+assert.equal(tutorServiceRoutes([],true)[0].cloud,true,'legacy service is conservatively cloud');assert.equal(tutorServiceRoutes([],false).length,0);
+assert.equal(tutorServiceRoutes([{id:'bad / route'},{id:'gemini'},{id:'gemini'}]).length,1);
+let panel,owner='one',project='semi',calls=[],stored=new Map(),clientAsks=0;
+const document={activeElement:{focus(){}},body:{append:n=>panel=n},createElement:()=>node()};
+function node(){const children=new Map();let html='';return{value:'',checked:false,hidden:false,setAttribute(){},addEventListener(){},focus(){},get innerHTML(){return html},set innerHTML(text){html=text;children.clear();for(const match of text.matchAll(/<[a-z][^>]*\s(data-ai-[\w-]+)(?:="[^"]*")?[^>]*>/g))children.set('['+match[1]+']',node());},querySelector(selector){if(children.has(selector))return children.get(selector);for(const child of children.values()){const found=child.querySelector(selector);if(found)return found;}return null;},textContent:'',scrollHeight:0};}
+const routes=[{id:'ollama-text',label:'Local text',model:'qwen3:4b',cloud:false,supportsImages:false,destination:'This computer · Ollama'},{id:'ollama-vision',label:'Local vision',model:'qwen3-vl:2b',cloud:false,supportsImages:true,destination:'This computer · Ollama'},{id:'gemini',label:'Gemini',model:'test-gemini',cloud:true,supportsImages:true,destination:'Google Gemini'}];
+const sandbox={document,console,AbortController,boundedTutorHistory,hostedTutorContext,tutorServiceRoutes,prepareTutorImage:f=>prepareTutorImage(f,env),releaseTutorImage:f=>releaseTutorImage(f,env),localStorage:{getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v)},AI_MODELS:[{id:'tiny',kind:'browser',label:'Tiny CPU',sourceUrl:'https://example.org'}],createAIClient:()=>({state:()=>({phase:'ready',modelId:'tiny'}),capabilities:()=>({supported:true}),cancel(){},ask:async()=>{clientAsks++;return'CPU text answer';}}),fetch:async(url,options)=>{calls.push({url,payload:JSON.parse(options.body)});return{ok:true,json:async()=>({answer:'A grounded answer',model:'test-provider'})};}};
+const code=fs.readFileSync(new URL('../public/academy/tutor-panel.js',import.meta.url),'utf8').replace(/^import .*;\n/gm,'').replace(/export function /g,'function ');
+const context=vm.createContext(sandbox);vm.runInContext(code+'\nthis.make=createTutorPanel;this.commands=tutorNativeCommands;',context);
+assert.equal(context.commands('qwen3-17b').join('\n'),'bash install-ai-models.sh --model qwen3-17b --download\nbash run-ai-llamacpp.sh');assert.equal(context.commands('qwen3-4b')[0],'bash run-ai-local.sh --download');assert.equal(context.commands('qwen3-vl-2b')[0],'bash run-ai-local.sh --vision --download');
+const api=context.make({getLanguage:()=> 'en',getOwner:()=>owner,getHostedAvailable:()=>true,getHostedRoutes:()=>routes,getContext:()=>({projectId:project,project:'Test course',objective:'Objective'})});
+const select=value=>panel.querySelector('[data-ai-model]').onchange({target:{value}});
+const attach=f=>panel.querySelector('[data-ai-image]').onchange({target:{files:[f]}});
+api.open();assert(panel.innerHTML.includes('Four AI routes'));assert(panel.innerHTML.includes('help.html'));assert(panel.innerHTML.includes('docs/AI_ROUTES_V81_ZH.md'));assert(!panel.innerHTML.includes('LOCAL_AI_V81'));assert(fs.existsSync(new URL('../docs/AI_ROUTES_V81_ZH.md',import.meta.url)));assert(panel.querySelector('[data-ai-image]').disabled);
+select('route:gemini');assert(!panel.querySelector('[data-ai-image]').disabled);assert(panel.innerHTML.includes('Google Gemini'));assert(panel.innerHTML.includes('retrieved local document passages'));
+await attach(file());assert.equal(calls.length,0,'choosing a photo never uploads it');assert(panel.querySelector('[data-ai-attachment]').innerHTML.includes('&lt;private screenshot&gt;'));assert.equal(stored.size,0,'preview is never persisted');
+await api.ask('Interpret this screenshot');assert.equal(calls.length,0,'image and question are blocked before per-request cloud consent');assert(panel.querySelector('[data-ai-attachment]').innerHTML.includes('blob:test-'));
+panel.querySelector('[data-ai-cloud-consent]').checked=true;await api.ask('Interpret this screenshot');assert.equal(calls.length,1);assert.equal(calls[0].payload.route,'gemini');assert.equal(calls[0].payload.cloudConsent,true);assert.equal(calls[0].payload.image.mimeType,'image/png');assert.equal(calls[0].payload.image.data,Buffer.from(png).toString('base64'));assert.equal(panel.querySelector('[data-ai-cloud-consent]').checked,false);assert.equal(panel.querySelector('[data-ai-attachment]').innerHTML,'');
+for(const value of stored.values()){assert(!value.includes('data:image'));assert(!value.includes(Buffer.from(png).toString('base64')));assert(!value.includes('blob:test'));assert(!value.includes('private screenshot'));}
+assert(panel.querySelector('[data-ai-log]').innerHTML.includes('not saved in chat history'));
+await api.ask('Another question');assert.equal(calls.length,1,'cloud consent cannot be reused');panel.querySelector('[data-ai-cloud-consent]').checked=true;await api.ask('Another question');assert.equal(calls.length,2);assert.equal(calls[1].payload.image,undefined,'previous image is never resent');
+select('route:ollama-vision');await attach(file());await api.ask('Read locally');assert.equal(calls.length,3);assert.equal(calls[2].payload.route,'ollama-vision');assert.equal(calls[2].payload.cloudConsent,false);assert(calls[2].payload.image);
+await attach(file());select('browser:tiny');assert.equal(panel.querySelector('[data-ai-attachment]').innerHTML,'','changing model removes pending image');assert(panel.querySelector('[data-ai-image]').disabled);await attach(file());await api.ask('Text only');assert.equal(calls.length,3);assert.equal(clientAsks,1,'browser inference remains text only');
+select('route:ollama-vision');await attach(file());const prior=revoked.length;owner='two';api.refresh();assert.equal(panel.querySelector('[data-ai-attachment]').innerHTML,'');assert(revoked.length>prior,'account switch revokes image preview');assert(!panel.querySelector('[data-ai-log]').innerHTML.includes('Read locally'));
+let resolve;decoder=new Promise(r=>resolve=r);const pending=attach(file());project='new-course';api.refresh();resolve({...dimensions,close(){closed++;}});await pending;decoder=null;assert.equal(panel.querySelector('[data-ai-attachment]').innerHTML,'','late image decode cannot leak into another course');
+await attach(file());api.close();assert.equal(panel.hidden,true);api.open();assert.equal(panel.querySelector('[data-ai-attachment]').innerHTML,'','closing destroys the pending image');
+await attach(file(png,'image/svg+xml'));assert(panel.querySelector('[data-ai-status]').textContent.includes('valid PNG'));assert.equal(calls.length,3);
+console.log('PASS image mentor: MIME/size/dimensions, preview-only attachment, explicit per-request cloud consent, local route payload, no image persistence/reuse, account/course cancellation, browser text-only and source setup link (mocked decoder/providers).');

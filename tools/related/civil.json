@@ -1,0 +1,1139 @@
+{
+  "courses": [
+    {
+      "courseId": "danjiang",
+      "overview": "從淡江大橋的斜張橋受力與分階段成橋出發，先延伸到預力混凝土節塊橋，再比較金門大橋的懸索系統。接著把索力、風振、河床沖刷、感測與伸縮縫串成可追查的維護證據。以下是原創的圖解與資料判讀練習；公開資料支持原理與案例，不代表各橋的核定設計或現場施工程序。",
+      "overviewEn": "Start with Danjiang’s cable-stayed load paths and staged assembly, move to prestressed concrete segmental bridges, and compare the Golden Gate suspension system. Connect cable forces, wind response, scour, sensors, and joints through inspection evidence. These original diagram and data-review exercises use public principles and cases, not approved bridge designs or construction procedures.",
+      "references": [
+        {
+          "title": "後拉預力鋼腱安裝與灌漿手冊（2013）",
+          "titleEn": "Post-Tensioning Tendon Installation and Grouting Manual (2013)",
+          "publisher": "Federal Highway Administration",
+          "url": "https://www.fhwa.dot.gov/bridge/construction/pubs/hif13026.pdf",
+          "scope": "支持節塊橋、鋼腱、孔道與防蝕品質的原理；歷史版技術手冊，非本課程施工規範。",
+          "scopeEn": "Principles of segmental bridges, tendons, ducts, and corrosion protection; a historical technical manual, not this course’s construction specification."
+        },
+        {
+          "title": "橋梁後拉預力與手冊導讀",
+          "titleEn": "Post-Tensioning for Bridges: FHWA Manual Presents New State-of-the-Practice",
+          "publisher": "Federal Highway Administration",
+          "url": "https://www.fhwa.dot.gov/publications/focus/13dec/13dec01.cfm",
+          "scope": "說明預壓、先拉與後拉預力的差異，及灌漿與錨頭防蝕。",
+          "scopeEn": "Explains precompression, pretensioning versus post-tensioning, grouting, and anchorage protection."
+        },
+        {
+          "title": "金門大橋：懸吊橋面",
+          "titleEn": "Hanging the Roadway Deck",
+          "publisher": "Golden Gate Bridge, Highway and Transportation District",
+          "url": "https://www.goldengate.org/exhibits/hanging-the-roadway-deck/",
+          "scope": "橋主對橋面、吊索、主纜與平衡架設的說明；用於比較受力路徑。",
+          "scopeEn": "Owner explanation of the deck, suspenders, main cables, and balanced erection, used to compare load paths."
+        },
+        {
+          "title": "淡江大橋節塊完成銲接，全橋結構連成一體",
+          "titleEn": "Danjiang Bridge segments welded into a continuous structure",
+          "publisher": "交通部公路局 / Highway Bureau, MOTC",
+          "url": "https://www.thb.gov.tw/News_Content_table.aspx?n=12181&s=282680",
+          "scope": "淡江大橋節塊定位、銲接、索力調整與線形控制的案例；不提供可移植的張拉值。",
+          "scopeEn": "Danjiang case of positioning, welding, stay adjustment, and geometry control; no transferable stressing values."
+        },
+        {
+          "title": "斜張索風致振動研究：第 4 章",
+          "titleEn": "Wind-Induced Vibration of Stay Cables: Chapter 4",
+          "publisher": "Federal Highway Administration",
+          "url": "https://www.fhwa.dot.gov/publications/research/infrastructure/bridge/05083/chap4.cfm",
+          "scope": "雨風振動機制、表面處理、阻尼與量測證據；不直接套用個案尺寸或門檻。",
+          "scopeEn": "Rain–wind mechanisms, surface treatments, damping, and monitoring evidence, without transferring case dimensions or limits."
+        },
+        {
+          "title": "橋梁沖刷評估 HEC-18（第 5 版）",
+          "titleEn": "Evaluating Scour at Bridges, HEC-18, Fifth Edition",
+          "publisher": "Federal Highway Administration",
+          "url": "https://www.fhwa.dot.gov/engineering/hydraulics/pubs/hif12003.pdf",
+          "scope": "橋墩局部沖刷、束縮沖刷、河床材料與風險判讀。",
+          "scopeEn": "Local pier scour, contraction scour, bed materials, and risk interpretation."
+        },
+        {
+          "title": "淡江大橋設計耐久性與即時監測系統",
+          "titleEn": "Danjiang Bridge durability and real-time monitoring",
+          "publisher": "交通部公路局 / Highway Bureau, MOTC",
+          "url": "https://www.thb.gov.tw/News_Content.aspx?n=87&s=60328",
+          "scope": "橋主對斜張索、檢查及監測安排的公開說明；設計目標不等於保證使用年限。",
+          "scopeEn": "Owner explanation of stay cables, inspection, and monitoring; a design target is not a guaranteed service life."
+        },
+        {
+          "title": "橋梁伸縮縫量測與資料驗證",
+          "titleEn": "Expansion Joints: LTBP Protocol FLD-DC-VIJ-002",
+          "publisher": "Federal Highway Administration",
+          "url": "https://www.fhwa.dot.gov/publications/research/infrastructure/structures/ltbp/16007/055.cfm",
+          "scope": "將縫寬、同時溫度、照片與歷次維修紀錄一起判讀的檢查原則。",
+          "scopeEn": "Inspection principles linking joint opening, concurrent temperature, photographs, and maintenance history."
+        }
+      ],
+      "related": [
+        {
+          "id": "b038",
+          "title": "橋梁節塊平衡懸臂施工",
+          "titleEn": "Balanced-cantilever segmental bridge construction",
+          "why": "學會斜張橋之後，用混凝土節塊橋分辨「材料」與「橋型」，避免把所有長橋都當成鋼索承重。",
+          "whyEn": "After studying cable-stayed bridges, use a concrete segmental bridge to separate material choice from structural form.",
+          "transfer": "把淡江大橋每加一節塊就更新受力與線形的觀念，移到橋墩兩側逐段延伸的箱梁。標出負彎矩區、預力鋼腱與合龍前後支承條件；說明混凝土徐變、收縮會讓長期變形不同於剛接成橋的狀態。",
+          "transferEn": "Transfer staged load and geometry accounting to a box girder extending from both sides of a pier. Mark negative-moment regions, prestressing tendons, and support conditions before and after closure. Include creep and shrinkage when separating long-term deformation from the newly completed state.",
+          "difference": "平衡懸臂是施工與受力階段的描述；混凝土是材料。預力鋼腱主要在梁內或梁附近施加預壓，斜張索則把橋面荷載傳至高塔，兩者不能只靠外形類比。",
+          "differenceEn": "Balanced cantilever describes an erection method and structural stages; concrete describes material. Prestressing compresses the girder, whereas stays transfer deck loads to a tower.",
+          "practice": [
+            "畫出懸臂、合龍、完成三張受力圖，逐張標出支承改變。",
+            "以同一示意跨度比較無預力與有預力梁的受拉區，註明假設。",
+            "交付一張表：施工不平衡、徐變、合龍溫度各需要哪種觀測才能判斷。"
+          ],
+          "practiceEn": [
+            "Draw cantilever, closure, and completed load-path diagrams, marking changed supports.",
+            "Compare tensile regions with and without prestress for one assumed span.",
+            "Map erection imbalance, creep, and closure temperature to the observations needed to assess each."
+          ],
+          "referenceUrls": [
+            "https://www.fhwa.dot.gov/bridge/construction/pubs/hif13026.pdf",
+            "https://www.fhwa.dot.gov/publications/focus/13dec/13dec01.cfm"
+          ]
+        },
+        {
+          "id": "b015",
+          "title": "舊金山金門大橋",
+          "titleEn": "Golden Gate Bridge",
+          "why": "從混凝土梁橋再走到金門大橋，可看清相同跨河任務如何改變支承、剛度與維修重點。",
+          "whyEn": "Moving from concrete girders to the Golden Gate Bridge shows how the same crossing task changes support, stiffness, and maintenance.",
+          "transfer": "沿著橋面桁架、吊索、主纜、橋塔與錨碇畫出連續荷載路徑，再與淡江大橋橋面、斜張索、主塔的路徑並排。把橋面分段架設時的對稱性，連回「施工中也必須形成可成立的結構」。",
+          "transferEn": "Trace deck truss, suspenders, main cables, towers, and anchorages beside Danjiang’s deck–stay–tower path. Relate balanced deck erection to the requirement for a viable structure during every construction stage.",
+          "difference": "懸索橋的吊索先把荷載送到彎曲的主纜，主纜再由塔及錨碇承接；斜張橋的斜索直接連接橋面與塔。金門大橋是 1937 年通車的歷史案例，不可套用今日工程的設計條件。",
+          "differenceEn": "Suspension hangers feed curved main cables supported by towers and anchorages; stays connect deck and tower directly. Golden Gate opened in 1937 and is a historical comparison, not a current design template.",
+          "practice": [
+            "各用五個節點畫兩種橋的荷載路徑，禁止只畫輪廓。",
+            "假想移除一個支承構件，在圖上圈出需要重新分析的荷載路徑。",
+            "比較鋼索檢查、橋面剛度與錨碇需求，寫出兩項可轉用與兩項不可照搬的知識。"
+          ],
+          "practiceEn": [
+            "Draw both load paths with five labeled components rather than silhouettes.",
+            "Hypothetically remove one support component and mark paths requiring reanalysis.",
+            "Compare cable inspection, deck stiffness, and anchorage needs; identify two transferable and two nontransferable ideas."
+          ],
+          "referenceUrls": [
+            "https://www.goldengate.org/exhibits/hanging-the-roadway-deck/",
+            "https://www.thb.gov.tw/News_Content_table.aspx?n=12181&s=282680"
+          ]
+        },
+        {
+          "id": "b037",
+          "title": "斜張橋斜索張力調整",
+          "titleEn": "Cable-stayed bridge stay-force tuning",
+          "why": "索力會同時影響橋面高程與主塔反應，是總工程師整合材料、測量及結構模型的典型問題。",
+          "whyEn": "Stay force affects deck elevation and tower response, making it a useful exercise in combining measurements with structural models.",
+          "transfer": "沿用淡江大橋的階段控制，建立「節塊位置—索力—橋面高程—溫度」證據表。把一根索的變化視為整個結構剛度系統的擾動；用同時量得的幾何與力學資料，辨別張力差異和溫度效應。",
+          "transferEn": "Build a segment-position, cable-force, deck-elevation, and temperature evidence table. Treat a changed stay as a perturbation of the whole stiffness system; compare simultaneous force and geometry measurements to distinguish force changes from temperature effects.",
+          "difference": "完成橋的目標線形不能直接當成每一施工階段的目標；改一根索也不只改一個節點。此處練習判讀與模型比較，不提供張拉順序或現場控制值。",
+          "differenceEn": "Final geometry is not automatically the target for every erection stage, and changing one stay affects more than one node. Exercises compare evidence and models without prescribing stressing sequences or field values.",
+          "practice": [
+            "自製兩組不同溫度的示意量測表，標出哪些讀值不可直接比較。",
+            "在簡化模型上提高一根索的相對張力，預測鄰近橋面與塔的反應方向。",
+            "寫出「高程符合但索力不符」時仍需查核的三個假說。"
+          ],
+          "practiceEn": [
+            "Create two illustrative measurement tables at different temperatures and flag noncomparable readings.",
+            "Increase one stay’s relative force in a simplified model and predict adjacent responses.",
+            "List three hypotheses to check when geometry agrees but cable force does not."
+          ],
+          "referenceUrls": [
+            "https://www.thb.gov.tw/News_Content_table.aspx?n=12181&s=282680",
+            "https://www.thb.gov.tw/News_Content.aspx?n=87&s=60328"
+          ]
+        },
+        {
+          "id": "b054",
+          "title": "預力混凝土孔道灌漿",
+          "titleEn": "Prestressing-duct grouting",
+          "why": "學會預力混凝土後，孔道內看不見的品質成為重要的延伸：外觀完整不代表鋼腱受到完整保護。",
+          "whyEn": "After prestressed concrete, invisible duct quality becomes the next lesson: an intact exterior does not prove complete tendon protection.",
+          "transfer": "把橋面節塊的可見接合，延伸為孔道連續性、錨頭密封、灌漿填充與防蝕的證據鏈。用剖面圖區分鋼腱受力路徑及保護層功能，並說明空隙、滲水與材料異常如何形成不同的調查問題。",
+          "transferEn": "Extend visible segment joints into an evidence chain for duct continuity, anchorage sealing, grout coverage, and corrosion protection. Separate tendon force transfer from protective functions, then distinguish voids, water ingress, and material anomalies as different investigation questions.",
+          "difference": "鋼腱張拉建立預力，灌漿主要涉及孔道填充、黏結及保護；完成張拉紀錄不能取代灌漿品質證據。灌漿技術也不能直接套到外露斜張索。",
+          "differenceEn": "Stressing establishes prestress; grouting concerns filling, bond, and protection. Stressing records do not replace grout-quality evidence, and duct grouting is not directly applicable to exposed stays.",
+          "practice": [
+            "畫出孔道高點、錨頭與接頭的示意剖面，標記可能藏匿空隙的位置。",
+            "將批次紀錄、灌入量、排出觀察與後續檢測分成直接證據及間接證據。",
+            "對「表面沒有鏽斑」提出仍不能排除的兩種內部缺陷。"
+          ],
+          "practiceEn": [
+            "Sketch duct high points, anchorages, and joints, marking potential hidden voids.",
+            "Classify batch records, volume records, outlet observations, and follow-up inspection as direct or indirect evidence.",
+            "Name two internal defects that an unmarked exterior cannot exclude."
+          ],
+          "referenceUrls": [
+            "https://www.fhwa.dot.gov/bridge/construction/pubs/hif13026.pdf",
+            "https://www.fhwa.dot.gov/publications/focus/13dec/13dec01.cfm"
+          ]
+        },
+        {
+          "id": "b051",
+          "title": "斜張索雨風振動抑制",
+          "titleEn": "Rain–wind vibration mitigation for stay cables",
+          "why": "同樣是索力，靜態值正常仍可能出現振動問題；這使橋梁課程從平衡走向動態。",
+          "whyEn": "Normal static cable force does not exclude vibration problems, extending bridge learning from equilibrium to dynamics.",
+          "transfer": "把風速、風向、雨量與索振動時間對齊，判斷振幅增加是否與降雨及特定風向共同出現。比較表面擾流、外加阻尼與交叉連索各自改變的機制，並保留「觀測關聯不是單獨的因果證明」。",
+          "transferEn": "Align wind, rain, and cable-motion records to test whether greater response accompanies rain and particular wind directions. Compare how surface changes, dampers, and crossties act on different mechanisms, keeping correlation distinct from causal proof.",
+          "difference": "雨風振動、渦激振動與整橋氣動反應不是同一問題。能降低某根索振幅的方案，仍需考慮索網模態與耐久性，不能當成通用阻尼配方。",
+          "differenceEn": "Rain–wind response, vortex excitation, and whole-bridge aerodynamics differ. Reducing one cable’s response still requires consideration of system modes and durability.",
+          "practice": [
+            "用自製時間軸疊合雨量、風向與振幅，找出支持及反對雨風機制的時段。",
+            "列出三種減振構想分別改變激振、耗能或耦合的哪一項。",
+            "寫出尚缺的量測與可能混淆因子，不只選擇看起來較平穩的曲線。"
+          ],
+          "practiceEn": [
+            "Overlay invented rain, wind-direction, and amplitude traces and identify supporting and contradictory periods.",
+            "Classify three mitigation ideas by excitation, energy dissipation, or coupling.",
+            "Identify missing measurements and confounders rather than choosing only the smoothest trace."
+          ],
+          "referenceUrls": [
+            "https://www.fhwa.dot.gov/publications/research/infrastructure/bridge/05083/chap4.cfm"
+          ]
+        },
+        {
+          "id": "b049",
+          "title": "橋梁基礎沖刷監測",
+          "titleEn": "Bridge-foundation scour monitoring",
+          "why": "橋面以上的監測之外，河床改變也會改變支承條件；跨河橋須把水理與結構聯繫起來。",
+          "whyEn": "Riverbed change can alter support conditions, linking river hydraulics to the structure above the water.",
+          "transfer": "把基礎承載模型與河床高程歷程並排，區分局部沖刷、河道束縮及較長期的河床變遷。用洪水前後的可比較測線、流況與漂流物紀錄支持解釋，不把單次深度讀值當成完整安全結論。",
+          "transferEn": "Compare foundation assumptions with bed-elevation histories, distinguishing local scour, contraction, and longer-term bed change. Use comparable surveys, flow conditions, and debris observations rather than treating one depth reading as a complete safety finding.",
+          "difference": "沖刷改變外部支承環境；混凝土裂縫屬構材反應。淡江河口另有潮汐與沉積因素，內陸河川案例不能不加檢查地移植。",
+          "differenceEn": "Scour changes the support environment; concrete cracking describes a member response. An estuary adds tidal and sediment effects that require checking before transferring inland-river cases.",
+          "practice": [
+            "畫出同一橋墩周圍兩期河床剖面，統一高程基準並標出缺測。",
+            "把局部沖刷、整段河床降低、感測器位移列為競爭假說。",
+            "為每個假說指定至少一項獨立佐證與一項仍未知的基礎資料。"
+          ],
+          "practiceEn": [
+            "Draw two bed profiles around one pier using a common datum and mark missing coverage.",
+            "Compare local scour, reach-wide degradation, and sensor movement as competing explanations.",
+            "Specify independent evidence and a remaining foundation-data gap for each explanation."
+          ],
+          "referenceUrls": [
+            "https://www.fhwa.dot.gov/engineering/hydraulics/pubs/hif12003.pdf"
+          ]
+        },
+        {
+          "id": "b057",
+          "title": "橋梁健康監測感測網",
+          "titleEn": "Structural health-monitoring networks for bridges",
+          "why": "感測器多不等於橋梁已被理解；總工程師要能說明每個通道對哪一種問題提供證據。",
+          "whyEn": "More sensors do not automatically mean better understanding; each channel must answer a specific engineering question.",
+          "transfer": "將索力、位移、溫度與振動資料組成同一時間基準的觀测矩陣。先確認校正、缺值與參考點，再比較結構模型預測；把超出基線分成環境變化、儀器問題及可能結構改變三類。",
+          "transferEn": "Build a synchronized observation matrix of force, movement, temperature, and vibration. Check calibration, missing values, and reference stability before comparing with model predictions; separate environmental changes, instrument faults, and possible structural changes.",
+          "difference": "持續監測擅長發現變化，目視與近接檢查可補充局部狀況；兩者不能互相替代。資料異常是待查線索，不自動等於損傷位置與嚴重程度。",
+          "differenceEn": "Continuous monitoring detects change, while visual and close-up inspection add local condition evidence. Neither replaces the other, and an anomaly does not automatically identify damage or severity.",
+          "practice": [
+            "對三個假想故障各選兩種互補感測量，說明為何需要交叉驗證。",
+            "在示意資料加入時鐘偏移與斷訊，觀察錯誤關聯如何產生。",
+            "交付含資料品質欄位的異常報告，區分已觀測、推論與待補資料。"
+          ],
+          "practiceEn": [
+            "Choose two complementary measurements for each of three hypothetical faults.",
+            "Insert clock offset and missing data into a toy dataset to expose false correlations.",
+            "Write an anomaly report separating observations, inferences, and missing evidence."
+          ],
+          "referenceUrls": [
+            "https://www.thb.gov.tw/News_Content.aspx?n=87&s=60328",
+            "https://www.fhwa.dot.gov/publications/research/infrastructure/bridge/05083/chap4.cfm"
+          ]
+        },
+        {
+          "id": "b044",
+          "title": "橋梁伸縮縫安裝與更換",
+          "titleEn": "Bridge expansion-joint installation and replacement",
+          "why": "橋梁會因溫度與荷載而移動；伸縮縫把這些正常位移與耐久、行車舒適連在一起。",
+          "whyEn": "Bridge movement links expansion joints to durability and ride quality as well as temperature and loading.",
+          "transfer": "把整橋變形縮小到橋面端部，追查位移如何由支承配置及縫隙吸收。比較同時記錄的溫度、縫寬、兩端差異、漏水痕跡與維修歷史，辨別正常伸縮及局部卡阻。",
+          "transferEn": "Trace global deformation to deck ends and how supports and joints accommodate it. Compare concurrent temperature, openings across the joint, leakage evidence, and maintenance history to distinguish movement from possible restraint.",
+          "difference": "縫隙較大不必然代表損壞，某一季節拍到的照片也不能直接與另一季節相比。縫寬檢查和防水性能是相關但不同的評估。",
+          "differenceEn": "A larger opening is not automatically damage, and photographs from different seasons may not be directly comparable. Movement accommodation and watertightness are related but distinct assessments.",
+          "practice": [
+            "自製冷、暖兩期縫寬圖，附溫度、位置與時間，指出比較限制。",
+            "將漏水、雜物卡阻及不均勻縫寬各連到需要追加的證據。",
+            "提出一份照片命名與座標規則，讓下次檢查能重現同一位置。"
+          ],
+          "practiceEn": [
+            "Create cold- and warm-period opening diagrams with temperature, location, and time.",
+            "Map leakage, debris restraint, and uneven openings to the evidence needed next.",
+            "Define photo names and coordinates that allow repeat inspection of the same points."
+          ],
+          "referenceUrls": [
+            "https://www.fhwa.dot.gov/publications/research/infrastructure/structures/ltbp/16007/055.cfm"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "hsuehshan",
+      "overview": "以雪山隧道的地質不確定性、湧水與長隧道系統介面為起點，分別比較山岳深埋隧道、海底沉管與都市軟土潛盾。每個延伸都要求先說明地層、地下水、開挖方式與使用情境，才比較可轉移的觀測方法。練習用自製示意資料或自行取得的公開資料，不假設網站附有現地監測資料集。",
+      "overviewEn": "Start with geological uncertainty, water inflow, and long-tunnel interfaces in Hsuehshan, then compare deep mountain tunnels, immersed tunnels, and urban soft-ground shields. State ground, groundwater, excavation method, and operating context before transferring monitoring ideas. Exercises use illustrative data you create or public data you obtain; no field dataset is implied.",
+      "references": [
+        {
+          "title": "阿爾卑斯新鐵路：地質與測量",
+          "titleEn": "Geology and Surveying",
+          "publisher": "Swiss Federal Archives / Alptransit Portal",
+          "url": "https://www.alptransit-portal.ch/en/overview/construction/events/ereignis/geology-and-surveying/true",
+          "scope": "哥達工程前期探勘與施工中持續修正地質認識的官方歷史資料。",
+          "scopeEn": "Official history of advance investigation and updating geological understanding during Gotthard construction."
+        },
+        {
+          "title": "費馬恩隧道如何建造",
+          "titleEn": "Building the Tunnel",
+          "publisher": "Femern A/S",
+          "url": "https://femern.com/the-construction/building-the-tunnel?trk=public_profile_project-button",
+          "scope": "沉管節段預製、浮運、沉放、接合與系統安裝的橋主資料。",
+          "scopeEn": "Owner explanation of immersed-element manufacture, towing, immersion, joining, and technical fit-out."
+        },
+        {
+          "title": "公路隧道技術資料庫",
+          "titleEn": "Tunnel Publications Library",
+          "publisher": "Federal Highway Administration",
+          "url": "https://www.fhwa.dot.gov/bridge/tunnel/library.cfm",
+          "scope": "連結公路隧道土建設計與施工手冊，以及節塊襯砌等技術資料。",
+          "scopeEn": "Official library linking the road-tunnel civil-elements manual and segmental-lining resources."
+        },
+        {
+          "title": "Crossrail 蘭貝斯群地質模型",
+          "titleEn": "The Lambeth Group in the Crossrail Project of London, UK: The Geological Model",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/lambeth-group-crossrail-project-london-uk-geological-model/",
+          "scope": "施工團隊對鑽孔比對、地層變異與地下水相關風險的技術論文。",
+          "scopeEn": "Project-team paper on borehole correlation, ground variability, and groundwater-related risks."
+        },
+        {
+          "title": "Finsbury Circus 的連結式監測",
+          "titleEn": "Use of Linked Monitoring Systems for Asset Protection at Finsbury Circus SCL Tunnelling",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/use-linked-monitoring-systems-asset-protection-finsbury-circus-scl-tunnelling-crossrail-station-2/",
+          "scope": "基準點、精度與多種量測連結的案例；地表沉陷與隧道收斂不是同一量。",
+          "scopeEn": "Case on reference stability, accuracy, and linked instruments; surface settlement and tunnel convergence remain different measurements."
+        },
+        {
+          "title": "Victoria Dock Portal 潛盾到達前地盤改良",
+          "titleEn": "Ground Improvement Measures in Advance of Drive G TBM Arrival at Victoria Dock Portal",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/ground-improvement-measures-advance-drive-g-tbm-arrival-victoria-dock-portal/",
+          "scope": "特定淺覆土混合地層案例，說明開挖面壓力不足與過高的不同後果；數值不移植。",
+          "scopeEn": "Specific shallow-cover, mixed-ground case showing different consequences of too little and too much face pressure; values are not transferred."
+        },
+        {
+          "title": "隧道防淹水整合測試",
+          "titleEn": "Prevention of Tunnel Flood: Integration Testing",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/prevention-of-tunnel-flood-integration-testing/",
+          "scope": "排水、感測、電力與控制介面；該案例的消防管路入流情境不同於山岳湧水。",
+          "scopeEn": "Drainage, sensing, power, and control interfaces; its fire-main inflow scenario differs from mountain groundwater ingress."
+        },
+        {
+          "title": "連絡通道工法與地質比較",
+          "titleEn": "Cross Passages: Construction Methods and Geology",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/cross-passages-construction-methods-geology/",
+          "scope": "連絡通道地質、降水、灌漿與地盤凍結的工程案例比較。",
+          "scopeEn": "Project comparison of cross-passage geology, dewatering, grouting, and ground freezing."
+        },
+        {
+          "title": "用 CFD 與冷煙測試驗證排煙設計",
+          "titleEn": "Verification of the Smoke Ventilation Design Using Ventilation Rates Derived from CFD Cold Smoke Simulation",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/verification-of-the-smoke-ventilation-design-using-ventilation-rates-derived-from-cfd-cold-smoke-simulation/",
+          "scope": "排煙模型與現場氣流驗證的關係；冷煙不重現完整火災熱浮力。",
+          "scopeEn": "Relationship between smoke-control models and airflow verification; cold smoke does not reproduce full fire buoyancy."
+        },
+        {
+          "title": "車站、豎井與洞口的樓梯加壓",
+          "titleEn": "Application of Stair Pressurisation in Crossrail Stations, Shafts and Portals",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/application-stair-pressurisation-crossrail-stations-shafts-portals/",
+          "scope": "樓梯加壓、車站與隧道通風之介面，以及門狀態對測試的影響。",
+          "scopeEn": "Interfaces between stair pressurisation, station and tunnel ventilation, and door-state effects in testing."
+        }
+      ],
+      "related": [
+        {
+          "id": "b103",
+          "title": "哥達基線隧道",
+          "titleEn": "Gotthard Base Tunnel",
+          "why": "同為穿山長隧道，哥達案例讓學徒檢查哪些地質與調查觀念可轉用，哪些必須重新證明。",
+          "whyEn": "Gotthard provides another long mountain tunnel for testing which investigation principles transfer and which require new evidence.",
+          "transfer": "沿用雪山隧道的風險剖面思考，把岩性、破碎帶、覆土與調查可信度畫成獨立圖層。對照初始推估和開挖後更新的模型，說明探勘的目的在縮小不確定性，而不是保證地下條件完全已知。",
+          "transferEn": "Map rock type, disturbed zones, overburden, and investigation confidence as separate layers. Compare the initial interpretation with updates during excavation, treating investigation as uncertainty reduction rather than proof that all underground conditions are known.",
+          "difference": "哥達是鐵路隧道，雪山是公路隧道；交通、坡度需求、救援與通風情境不同。相同長度尺度不能證明可使用相同機具或支撐設計。",
+          "differenceEn": "Gotthard carries trains and Hsuehshan road vehicles; gradients, incidents, rescue, and ventilation differ. Similar scale does not establish interchangeable machines or support designs.",
+          "practice": [
+            "繪製兩工程的地質、用途與調查方法比較表，未知資料明列未知。",
+            "在假想剖面新增一處破碎帶，指出哪些原先結論需更新。",
+            "提出三個可由後續調查降低、但不能完全消除的不確定性。"
+          ],
+          "practiceEn": [
+            "Compare geology, use, and investigation methods, explicitly marking unknowns.",
+            "Add a fractured zone to an illustrative section and identify conclusions needing revision.",
+            "Identify three uncertainties that further investigation can reduce but not eliminate."
+          ],
+          "referenceUrls": [
+            "https://www.alptransit-portal.ch/en/overview/construction/events/ereignis/geology-and-surveying/true",
+            "https://www.fhwa.dot.gov/bridge/tunnel/library.cfm"
+          ]
+        },
+        {
+          "id": "b107",
+          "title": "費馬恩海峽沉管隧道",
+          "titleEn": "Fehmarnbelt immersed tunnel",
+          "why": "沉管隧道把「在地層中挖洞」改成「把預製結構放入水下」，最能顯示工法選擇取決於場址。",
+          "whyEn": "An immersed tunnel replaces boring through ground with placing fabricated structures underwater, exposing the role of site conditions.",
+          "transfer": "沿用雪山隧道的防水與介面管理，追查沉管節段的外殼、端部隔艙及永久接頭各在不同階段的角色。將製造、浮運、沉放、接合和使用狀態分開，逐階段標出水壓與浮力。",
+          "transferEn": "Transfer waterproofing and interface thinking to shells, temporary bulkheads, and permanent element joints. Separate manufacture, towing, immersion, joining, and service, marking water pressure and buoyancy in each state.",
+          "difference": "海床開槽沉放涉及海事作業、航道與海床條件，不能拿山岳隧道的掘進進度或支撐邏輯套用。費馬恩案例展示沉管原理，不是雪山隧道採用的工法。",
+          "differenceEn": "Seabed immersion brings marine operations, navigation, and seabed conditions absent from a mountain drive. Fehmarnbelt illustrates an alternative method, not the method used at Hsuehshan.",
+          "practice": [
+            "畫出漂浮與完成沉放兩個自由體圖，區分自重、浮力與支承。",
+            "列出一個接頭在運輸、接合與使用時各需要的證據。",
+            "以海灣、深山、都會三場址比較候選工法，為每個選擇列一項否決條件。"
+          ],
+          "practiceEn": [
+            "Draw floating and installed free-body diagrams showing weight, buoyancy, and support.",
+            "Identify joint evidence needed during transport, joining, and service.",
+            "Compare candidate methods for a bay, mountain, and city, giving a disqualifying condition for each."
+          ],
+          "referenceUrls": [
+            "https://femern.com/the-construction/building-the-tunnel?trk=public_profile_project-button",
+            "https://www.fhwa.dot.gov/bridge/tunnel/library.cfm"
+          ]
+        },
+        {
+          "id": "b126",
+          "title": "隧道超前探測鑽孔",
+          "titleEn": "Probe drilling ahead of tunnel faces",
+          "why": "超前資訊決定能否在遭遇異常地層前修正模型，是雪山隧道課程最可延伸的調查能力。",
+          "whyEn": "Advance information helps revise the ground model before encountering a change, making investigation a central transferable skill.",
+          "transfer": "把鑽孔位置、方向、岩芯描述、地下水觀察及距離開挖面的位置放在同一剖面。比較不同方向的證據，理解一支鑽孔只穿過有限體積；用新證據更新破碎帶範圍與可信度。",
+          "transferEn": "Place borehole position and direction, core descriptions, groundwater observations, and face location on one section. Compare evidence from different directions, recognizing that each borehole samples a limited volume; update both zone boundaries and confidence.",
+          "difference": "超前探測是資訊取得，不等於排水或地盤改良已完成。探孔未見異常也不能證明整個開挖輪廓都沒有風險。",
+          "differenceEn": "Probe investigation acquires information; it does not establish that drainage or ground treatment is complete. A clean probe does not prove the entire excavation envelope is free of anomalies.",
+          "practice": [
+            "在示意三維地層畫兩支探孔，圈出完全沒有被穿過的區域。",
+            "把岩芯破碎、出水與既有地質界面分成直接觀察和解釋。",
+            "新增一筆矛盾資料後更新剖面，說明需要哪種獨立查證。"
+          ],
+          "practiceEn": [
+            "Draw two probes through an illustrative ground model and mark unsampled zones.",
+            "Separate core condition and water observations from interpreted geological boundaries.",
+            "Revise the section after contradictory evidence and specify an independent check."
+          ],
+          "referenceUrls": [
+            "https://www.alptransit-portal.ch/en/overview/construction/events/ereignis/geology-and-surveying/true",
+            "https://learninglegacy.crossrail.co.uk/documents/lambeth-group-crossrail-project-london-uk-geological-model/"
+          ]
+        },
+        {
+          "id": "b133",
+          "title": "隧道收斂量測",
+          "titleEn": "Tunnel convergence monitoring",
+          "why": "開挖後的變形要和時間、位置與基準點一起解讀，才能把量測變成判斷。",
+          "whyEn": "Post-excavation deformation becomes useful evidence only when tied to time, location, and a stable reference.",
+          "transfer": "把斷面上點對點距離變化與對外部基準的位移分開。對齊開挖面位置及量測時間，比較收斂速率是否改變；先排除參考點移動、視線條件與儀器偏差，再解釋地層與支撐反應。",
+          "transferEn": "Separate changes in distances across a tunnel section from movement relative to external references. Align measurements with face position and time; investigate changes in convergence rate only after checking reference movement and instrument bias.",
+          "difference": "隧道整體下沉可能同時保持斷面尺寸；只測收斂會漏掉這類剛體位移。地表沉陷資料也不能直接取代洞內收斂。",
+          "differenceEn": "A tunnel can settle while retaining its section dimensions, so convergence alone can miss rigid movement. Surface settlement also does not replace internal convergence measurements.",
+          "practice": [
+            "為整體平移與斷面擠壓各畫一組量測，指出哪種儀器能區分。",
+            "在自製曲線標出讀值中斷與基準更換，避免誤算變形速率。",
+            "建立一張同時列量測不確定度與地質假說的解讀表。"
+          ],
+          "practiceEn": [
+            "Sketch measurements for rigid movement and section distortion, identifying instruments that distinguish them.",
+            "Mark interruptions and reference changes on toy traces before estimating rates.",
+            "Build an interpretation table including measurement uncertainty and geological hypotheses."
+          ],
+          "referenceUrls": [
+            "https://learninglegacy.crossrail.co.uk/documents/use-linked-monitoring-systems-asset-protection-finsbury-circus-scl-tunnelling-crossrail-station-2/",
+            "https://www.fhwa.dot.gov/bridge/tunnel/library.cfm"
+          ]
+        },
+        {
+          "id": "b135",
+          "title": "軟土潛盾開挖面穩定分析",
+          "titleEn": "Face-stability analysis for soft-ground shields",
+          "why": "從山岳湧水問題移到都市潛盾，可理解水壓、土體穩定與地表沉陷之間的耦合。",
+          "whyEn": "Moving to urban shields connects groundwater pressure, face stability, and ground movement.",
+          "transfer": "用軟土剖面標示覆土、地下水與開挖面，定性比較支撐不足造成流失或沉陷，及壓力過高造成隆起的可能性。將面壓讀值與出土、地表觀測聯讀，不依賴單一平均值。",
+          "transferEn": "Mark cover, groundwater, and the face on a soft-ground section. Compare loss or settlement from inadequate support with possible heave from excessive pressure. Interpret pressure alongside excavated-material and ground-response evidence rather than relying on one mean value.",
+          "difference": "閉鎖式土壓平衡潛盾的工作原理不等同硬岩隧道機。案例的地盤改良與壓力區間僅適用該分析條件，不能變成通用操作設定。",
+          "differenceEn": "An earth-pressure-balance shield does not work like a hard-rock machine. Ground-treatment assumptions and pressure ranges in a case study are not universal operating settings.",
+          "practice": [
+            "畫出支撐不足及過度支撐兩個概念圖，各列一項可觀察後果。",
+            "把地下水升高與覆土降低分別加入模型，預測哪一項假設需重算。",
+            "提出至少兩項除面壓以外的資料，用來檢查「開挖面穩定」的結論。"
+          ],
+          "practiceEn": [
+            "Sketch inadequate and excessive support, giving an observable consequence of each.",
+            "Raise groundwater and reduce cover separately; identify assumptions needing recalculation.",
+            "Specify two data types beyond face pressure needed to assess stability."
+          ],
+          "referenceUrls": [
+            "https://learninglegacy.crossrail.co.uk/documents/ground-improvement-measures-advance-drive-g-tbm-arrival-victoria-dock-portal/",
+            "https://learninglegacy.crossrail.co.uk/documents/lambeth-group-crossrail-project-london-uk-geological-model/"
+          ]
+        },
+        {
+          "id": "b164",
+          "title": "隧道湧水排導系統",
+          "titleEn": "Tunnel inflow collection and drainage",
+          "why": "湧水控制不只是一台幫浦；感測、集水、供電與告警一起決定系統能否工作。",
+          "whyEn": "Inflow management is a chain of collection, sensing, power, pumping, and alarms rather than a pump alone.",
+          "transfer": "以入流與排流的質量平衡畫集水系統，將水位感測、控制命令、泵浦回授與備援電力分成不同介面。比較單泵可運轉與整個排水鏈可用的差別，提出連鎖故障下仍可驗證的證據。",
+          "transferEn": "Draw collection using inflow–outflow balance and distinguish level sensing, commands, pump feedback, and power interfaces. Compare an operable individual pump with an available drainage chain, then identify evidence for combined failure scenarios.",
+          "difference": "Crossrail 文章的消防管路入流與雪山地層湧水不同；可轉用的是整合測試思考，入流量、含砂與水源持續性都要重新評估。",
+          "differenceEn": "Crossrail’s fire-main scenario differs from mountain groundwater ingress. Integration-test reasoning transfers, while flow, sediment, and persistence assumptions require reassessment.",
+          "practice": [
+            "畫出入流到排出端的方塊圖，將每條介面加上可觀測回授。",
+            "建立感測失效、供電中斷及排出受阻三種示意案例，避免只測正常啟動。",
+            "用自製流量表檢查水量守恆，明列未量到的入流。"
+          ],
+          "practiceEn": [
+            "Draw an inflow-to-outlet diagram and label observable feedback at each interface.",
+            "Develop sensor-loss, power-loss, and blocked-outlet scenarios alongside normal start-up.",
+            "Check water balance with invented flow records and state unmeasured inflows."
+          ],
+          "referenceUrls": [
+            "https://learninglegacy.crossrail.co.uk/documents/prevention-of-tunnel-flood-integration-testing/",
+            "https://www.fhwa.dot.gov/bridge/tunnel/library.cfm"
+          ]
+        },
+        {
+          "id": "b179",
+          "title": "交叉隧道人工地盤凍結",
+          "titleEn": "Ground freezing for tunnel cross-passages",
+          "why": "連絡通道雖短，卻可能穿越不同地層與水壓環境；局部處理要以證據確認範圍。",
+          "whyEn": "A short cross-passage can cross difficult ground and water conditions, making verified treatment coverage essential.",
+          "transfer": "以地質分區圖比較降水、灌漿與凍結的作用目標，辨別降低水壓、改變滲透性與形成暫時支承的差別。把溫度量測位置與預期凍結區畫在一起，追問相鄰冷點是否足以證明連續封閉。",
+          "transferEn": "Compare the purposes of dewatering, grouting, and freezing on a geological map: pressure reduction, permeability change, and temporary support differ. Plot temperature observations against the intended frozen zone and ask whether isolated cold readings establish continuity.",
+          "difference": "凍結效果有時間性，地下水流動會影響熱傳；解凍後的地層反應也要考慮。這不是所有連絡通道都必須採用的工法。",
+          "differenceEn": "Freezing is temporary, groundwater flow affects heat transfer, and thaw response matters. It is not required for every cross-passage.",
+          "practice": [
+            "給三種不同地層選擇候選處理法，逐項列出選擇所需證據。",
+            "在示意溫度布點圖留下盲區，說明為何不能宣告閉合。",
+            "比較施工期穩定、防水與解凍後變形三個不同的驗證問題。"
+          ],
+          "practiceEn": [
+            "Select candidate treatments for three ground conditions and state the evidence needed.",
+            "Leave a blind area in a temperature layout and explain why closure is unproven.",
+            "Separate verification of temporary stability, water exclusion, and post-thaw movement."
+          ],
+          "referenceUrls": [
+            "https://learninglegacy.crossrail.co.uk/documents/cross-passages-construction-methods-geology/",
+            "https://learninglegacy.crossrail.co.uk/documents/lambeth-group-crossrail-project-london-uk-geological-model/"
+          ]
+        },
+        {
+          "id": "b385",
+          "title": "鐵路車站排煙整合",
+          "titleEn": "Railway-station smoke-control integration",
+          "why": "長隧道通風延伸到車站排煙時，必須把人員逃生路徑和門、樓梯、月台空間一起思考。",
+          "whyEn": "Extending tunnel ventilation to stations requires explicit escape paths and interactions among doors, stairs, and platforms.",
+          "transfer": "把火源、排煙區、補風路徑與受保護樓梯分別標在平面圖上。比較模型預測、風量測試與冷煙流向的證據範圍；檢查開門、關門及某一風機不可用時，空氣路徑是否改變。",
+          "transferEn": "Map the fire location, extract zone, makeup paths, and protected stairs. Compare what modeling, measured airflow, and cold-smoke direction can establish; examine how door states or an unavailable fan change pathways.",
+          "difference": "公路隧道的車流與縱向氣流問題，不能直接等同捷運車站的多層空間。冷煙可顯示流向，但不能自行證明高溫煙層、能見度或可耐受性。",
+          "differenceEn": "Road-tunnel traffic and longitudinal airflow differ from multilevel stations. Cold smoke can reveal direction but alone does not establish hot-smoke layers, visibility, or tenability.",
+          "practice": [
+            "畫兩種門狀態下的氣流圖，標出可能影響逃生路徑的流向。",
+            "把可由冷煙驗證和必須另以熱煙模型分析的命題分欄。",
+            "寫出通風、門禁、告警與控制中心之間需要共同驗證的三項介面。"
+          ],
+          "practiceEn": [
+            "Draw airflow for two door states and flag paths affecting evacuation.",
+            "Separate claims testable with cold smoke from those requiring thermal analysis.",
+            "Identify three interfaces among ventilation, doors, alarms, and supervisory control."
+          ],
+          "referenceUrls": [
+            "https://learninglegacy.crossrail.co.uk/documents/verification-of-the-smoke-ventilation-design-using-ventilation-rates-derived-from-cfd-cold-smoke-simulation/",
+            "https://learninglegacy.crossrail.co.uk/documents/application-stair-pressurisation-crossrail-stations-shafts-portals/"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "three-gorges",
+      "overview": "由三峽工程的擋水、發電與流域協調出發，先比較重力壩、拱壩與心牆土石壩，再延伸到壩基排水、洪水調度、泥砂、水錘與抽蓄。重點是把結構、地下水、河川及電網連成同一個有邊界的模型；比較案例不表示三峽採用所有列出的壩型或設備。練習為概念分析，不含真實水庫的操作指令。",
+      "overviewEn": "Extend Three Gorges through gravity, arch, and earth-core dams, then foundation drainage, flood coordination, sediment, transients, and pumped storage. Build explicit boundaries between structural, groundwater, river, and grid models. Comparison cases do not imply that Three Gorges uses every listed dam type or device. Exercises are conceptual analyses, not real-reservoir operating instructions.",
+      "references": [
+        {
+          "title": "胡佛壩：壩體常見問題",
+          "titleEn": "Hoover Dam: Dam Frequently Asked Questions",
+          "publisher": "U.S. Bureau of Reclamation",
+          "url": "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+          "scope": "壩主說明胡佛壩的拱重力型式、岩盤與施工歷史。",
+          "scopeEn": "Owner account of Hoover’s arch-gravity form, rock foundation, and construction history."
+        },
+        {
+          "title": "白鶴灘巨型水電樞紐的工程難題",
+          "titleEn": "Engineering Challenges of the Baihetan Hydropower Complex",
+          "publisher": "China Three Gorges Corporation",
+          "url": "https://www.ctg.com.cn/sxjt/xwzx55/zhxw23/2026071011034927273/index.html",
+          "scope": "工程業主說明不對稱岸坡、拱壩與岩體協同及混凝土溫控；採其工程描述，不採宣傳性評價。",
+          "scopeEn": "Owner description of asymmetric abutments, arch–rock interaction, and concrete thermal control; promotional assessments are not adopted."
+        },
+        {
+          "title": "設計標準第 13 號：土石壩",
+          "titleEn": "Design Standards No. 13: Embankment Dams",
+          "publisher": "U.S. Bureau of Reclamation",
+          "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html",
+          "scope": "官方索引含壩體分區、保護濾層、滲流與監測章節；用於理解各層功能。",
+          "scopeEn": "Official index covering zoning, protective filters, seepage, and instrumentation, used to understand functional layers."
+        },
+        {
+          "title": "土石壩設計標準：滲流",
+          "titleEn": "Design Standards No. 13, Chapter 8: Seepage",
+          "publisher": "U.S. Bureau of Reclamation",
+          "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-8.pdf",
+          "scope": "滲透壓力、滲流控制與土石壩穩定的技術背景。",
+          "scopeEn": "Technical background on seepage pressure, seepage control, and embankment stability."
+        },
+        {
+          "title": "水壩與相關結構排水手冊摘要",
+          "titleEn": "Drainage for Dams and Associated Structures: Abstract",
+          "publisher": "U.S. Bureau of Reclamation",
+          "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs16.html",
+          "scope": "排水降低揚壓、堵塞降低效能及持續監測維護的原理。",
+          "scopeEn": "Principles of uplift reduction by drainage, impaired effectiveness from blockage, and continued monitoring."
+        },
+        {
+          "title": "HEC-ResSim 水庫模擬功能",
+          "titleEn": "HEC-ResSim Features",
+          "publisher": "U.S. Army Corps of Engineers, Hydrologic Engineering Center",
+          "url": "https://www.hec.usace.army.mil/software/hec-ressim/features.aspx",
+          "scope": "多水庫、河段、出口與操作約束的模型結構；不表示網站已安裝此軟體。",
+          "scopeEn": "Model structure for reservoirs, reaches, outlets, and operating constraints; this does not imply that the software is installed here."
+        },
+        {
+          "title": "排砂隧道的配置與設計研究",
+          "titleEn": "Layout and Design of Sediment Bypass Tunnels",
+          "publisher": "ETH Zürich, Laboratory of Hydraulics, Hydrology and Glaciology (VAW)",
+          "url": "https://ethz.ch/content/dam/ethz/special-interest/baug/vaw/vaw-dam/documents/forschung/wasserbau/abgeschlossene-projekte/phd-research-project-layout-and-design-of-sediment-bypass-tunnels.pdf",
+          "scope": "大學原始研究的排砂繞流概念、輸砂與磨蝕問題；不代表三峽有相同設施。",
+          "scopeEn": "University research on sediment bypass, transport, and abrasion; it does not imply an identical facility at Three Gorges."
+        },
+        {
+          "title": "水力發電廠水聲與暫態課程",
+          "titleEn": "Hydroacoustic for Hydropower Plants, ME-443",
+          "publisher": "École polytechnique fédérale de Lausanne (EPFL)",
+          "url": "https://edu.epfl.ch/coursebook/en/hydroacoustic-for-hydropower-plants-ME-443",
+          "scope": "區分管路水錘、調壓井質量振盪及機組暫態，並界定一維模型元件。",
+          "scopeEn": "Distinguishes pipe water hammer, surge-tank mass oscillation, and machine transients, and identifies one-dimensional model components."
+        },
+        {
+          "title": "Clear Creek 調壓井模型試驗（1957）",
+          "titleEn": "Model Studies of Clear Creek Power Conduit Surge Tank (1957)",
+          "publisher": "U.S. Bureau of Reclamation",
+          "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/HYD/HYD-438.pdf",
+          "scope": "歷史模型試驗展示卸載流量、壓力與通氣的證據比較；個案尺度與數值不移植。",
+          "scopeEn": "Historical model tests comparing load-rejection flow, pressure, and aeration evidence; case dimensions and values are not transferred."
+        },
+        {
+          "title": "抽蓄水力發電",
+          "titleEn": "Pumped Storage Hydropower",
+          "publisher": "U.S. Department of Energy",
+          "url": "https://www.energy.gov/cmei/water/pumped-storage-hydropower",
+          "scope": "上下水庫、抽水與發電循環，以及開放式與封閉式系統的差異。",
+          "scopeEn": "Upper and lower reservoirs, pumping and generating cycles, and open-loop versus closed-loop systems."
+        }
+      ],
+      "related": [
+        {
+          "id": "b202",
+          "title": "胡佛壩",
+          "titleEn": "Hoover Dam",
+          "why": "胡佛壩讓學徒用同樣的水壓問題，比較壩體自重與拱作用如何共同承受荷載。",
+          "whyEn": "Hoover uses the same water-loading problem to compare contributions from self-weight and arch action.",
+          "transfer": "由三峽重力壩的剖面受力圖，延伸到胡佛拱重力壩的平面與剖面雙視圖。沿水壓、壩體、壩基和兩岸岩體畫出荷載路徑，並把揚壓列為改變有效穩定作用的因素。",
+          "transferEn": "Extend a gravity-dam section into plan and section views of Hoover’s arch-gravity system. Trace water load through concrete to foundation and abutments, and include uplift in assessing effective stabilizing action.",
+          "difference": "胡佛壩並非只有自重作用的直線重力壩，也不是只看兩岸推力即可的薄拱。1930 年代案例可教結構原理，不能代替現代場址的材料與地震分析。",
+          "differenceEn": "Hoover is neither a purely straight gravity section nor a thin arch assessed only through abutment thrust. Its 1930s history teaches principles, not current site-specific material or seismic requirements.",
+          "practice": [
+            "為兩種壩各畫平面與剖面，使用不同箭頭標出水壓與岩體反力。",
+            "在示意剖面增加揚壓，說明哪些穩定力或力矩要重算。",
+            "列出比較兩壩前必須取得的三類岩盤資料，而非只比壩高。"
+          ],
+          "practiceEn": [
+            "Draw plan and section views for both dam forms with water loads and rock reactions.",
+            "Add uplift to an illustrative section and identify forces or moments needing recalculation.",
+            "Specify three rock-foundation data categories needed before comparing dams."
+          ],
+          "referenceUrls": [
+            "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+            "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs16.html"
+          ]
+        },
+        {
+          "id": "b208",
+          "title": "白鶴灘水壩",
+          "titleEn": "Baihetan Dam",
+          "why": "白鶴灘把拱壩與兩岸岩體的共同作用凸顯出來，能檢查「混凝土強就足夠」的錯誤直覺。",
+          "whyEn": "Baihetan highlights the arch and abutments as one system, challenging the idea that concrete strength alone is sufficient.",
+          "transfer": "將三峽壩體—壩基模型拓展為壩、兩岸、基礎與水體。定性比較兩岸剛度不同時反力分配與變形的改變；再將混凝土內外溫度差與受拘束變形連結，區分材料性能和結構約束。",
+          "transferEn": "Expand the dam–foundation model to include both abutments and the reservoir. Compare how unequal abutment stiffness changes reactions and deformation; connect temperature differences to restrained deformation rather than concrete strength alone.",
+          "difference": "三峽與白鶴灘的壩型及峽谷條件不同。拱壩形狀最佳化的結論依賴岩體模型，不能把較薄壩體解讀為任何河谷都更省料、更安全。",
+          "differenceEn": "Dam form and valley conditions differ. Arch optimization depends on the rock model; a thinner section is not automatically economical or appropriate in another valley.",
+          "practice": [
+            "在兩岸同剛度與不同剛度的概念圖上，畫出可能的反力再分配。",
+            "列出溫度、變位、裂縫觀察各能支持與不能支持的結論。",
+            "寫一段比較說明，將壩型、岩體及溫度約束分成三個獨立條件。"
+          ],
+          "practiceEn": [
+            "Sketch possible reaction redistribution for equal and unequal abutment stiffness.",
+            "State what temperature, displacement, and crack observations can and cannot establish.",
+            "Compare the dams while separating form, rock conditions, and thermal restraint."
+          ],
+          "referenceUrls": [
+            "https://www.ctg.com.cn/sxjt/xwzx55/zhxw23/2026071011034927273/index.html",
+            "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html"
+          ]
+        },
+        {
+          "id": "b235",
+          "title": "心牆土石壩分區填築",
+          "titleEn": "Zoned placement in earth-core rockfill dams",
+          "why": "改看心牆土石壩，能分清「擋水」與「提供穩定」並不一定由同一種材料完成。",
+          "whyEn": "Earth-core rockfill dams show that water exclusion and structural support need not be provided by the same material.",
+          "transfer": "把混凝土壩的整體剖面拆成心牆、過渡濾層、外殼及排水區的功能圖。沿可能的滲流路徑追查水與細料會到哪裡，理解濾層既要讓水通過，也要限制被保護土料流失。",
+          "transferEn": "Replace the concrete section with functional zones for core, transitions and filters, shells, and drainage. Trace possible water and particle movement, recognizing that filters must transmit seepage while retaining the protected soil.",
+          "difference": "土石壩更依賴分區相容性、變形與滲流控制；不能用混凝土抗壓強度當成主要替代指標。材料試验合格也不等於層與層的介面已被驗證。",
+          "differenceEn": "Zoning compatibility, deformation, and seepage control dominate different questions from concrete strength. Material test results do not alone verify interfaces between zones.",
+          "practice": [
+            "以顏色畫各區功能，不使用未經設計的粒徑或壓實參數。",
+            "在示意心牆加一條裂隙，追蹤水及顆粒可能路徑。",
+            "提出濾層失效、排水堵塞與整體變形三種情境各需的證據。"
+          ],
+          "practiceEn": [
+            "Color-code zone functions without assigning unverified gradation or compaction parameters.",
+            "Add an illustrative core crack and trace water and particle pathways.",
+            "Identify evidence for filter failure, drain blockage, and global deformation."
+          ],
+          "referenceUrls": [
+            "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html",
+            "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-8.pdf"
+          ]
+        },
+        {
+          "id": "b238",
+          "title": "壩基排水廊道",
+          "titleEn": "Dam-foundation drainage galleries",
+          "why": "排水廊道將看不見的壩基水壓變成可觀察、可追蹤的工程問題。",
+          "whyEn": "Drainage galleries turn hidden foundation-water pressure into an observable engineering problem.",
+          "transfer": "把水位、孔隙水壓與排水量畫成同步時間序列，再對照廊道與排水孔位置。區分降低滲入量的措施及釋放已進入壩基水壓的措施，避免把兩種功能混為一談。",
+          "transferEn": "Align reservoir level, piezometric pressure, and drainage discharge with the gallery layout. Distinguish measures limiting inflow from those relieving pressure after water enters the foundation.",
+          "difference": "排水量下降可能是入流變少，也可能是排水通道堵塞；不能直接判成改善。廊道提供可達性與觀測位置，不自行證明整體壩基狀態。",
+          "differenceEn": "Lower discharge can indicate reduced inflow or blocked drainage, so it is not automatically improvement. A gallery provides access and observation, not proof of overall foundation condition.",
+          "practice": [
+            "自製兩種同樣排水量下降、但水壓相反的曲線，分別解釋。",
+            "在示意剖面標出入流阻隔與壓力釋放的位置。",
+            "寫一份異常紀錄，包含水庫水位、儀器狀態與待確認原因。"
+          ],
+          "practiceEn": [
+            "Create two falling-discharge traces with opposite pressure trends and explain them.",
+            "Mark inflow limitation and pressure-relief locations on a section.",
+            "Write an anomaly record including reservoir level, instrument status, and unresolved causes."
+          ],
+          "referenceUrls": [
+            "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs16.html",
+            "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-8.pdf"
+          ]
+        },
+        {
+          "id": "b280",
+          "title": "洪水預報與水庫聯合操作",
+          "titleEn": "Flood forecasting and coordinated reservoir operation",
+          "why": "單一水壩的蓄水量無法代表流域結果；上游、支流與下游限制共同決定調度可行性。",
+          "whyEn": "Storage at one dam does not determine basin outcomes; upstream releases, tributaries, and downstream constraints interact.",
+          "transfer": "用節點與河段建立簡化流域圖，對每個水庫保留水量守恆、庫容與出口限制。比較不同洪水到達時間的示意情境，將預報誤差與操作約束分開，不把一條最佳曲線當成確定未來。",
+          "transferEn": "Build a reservoir-and-reach network with mass balance, storage, and outlet constraints. Compare illustrative flood-arrival timings, separating forecast uncertainty from operating constraints rather than treating one optimized trace as certain.",
+          "difference": "水庫模擬是受假設限制的決策工具；同時降低某處洪峰可能犧牲另一項目標。真實調度還需要核定規則、即時資料與權責，課程不產生操作命令。",
+          "differenceEn": "Simulation is constrained decision support, with potential conflicts between goals. Real operation also needs approved rules, live information, and authority; the exercise produces no operating commands.",
+          "practice": [
+            "畫出兩水庫、一支流與一控制點，標明每一輸入的資料來源。",
+            "以自製三種預報情境比較庫容與下游流量，不僅比較最高發電量。",
+            "列出約束衝突與無可行解的情況，保留假設及誤差紀錄。"
+          ],
+          "practiceEn": [
+            "Draw two reservoirs, a tributary, and a control point with input provenance.",
+            "Compare storage and downstream flow across three invented forecast scenarios.",
+            "Document conflicting constraints, infeasible cases, assumptions, and uncertainty."
+          ],
+          "referenceUrls": [
+            "https://www.hec.usace.army.mil/software/hec-ressim/features.aspx"
+          ]
+        },
+        {
+          "id": "b253",
+          "title": "水庫排砂隧道",
+          "titleEn": "Reservoir sediment-bypass tunnels",
+          "why": "學習水量後加入泥砂，才能理解庫容、河道與設備磨耗為何會隨時間改變。",
+          "whyEn": "Adding sediment to the water balance connects changing storage, downstream channels, and equipment wear.",
+          "transfer": "建立入砂、出砂、沉積與再懸浮的概念收支，將繞流隧道視為改變泥砂路徑的設施。比較截取高含砂來流、保留水量與隧道磨蝕的取捨，並分清水的通過比例和泥砂的通過比例。",
+          "transferEn": "Build a sediment budget for inflow, outflow, deposition, and remobilization. Treat a bypass as a changed sediment pathway; compare routing sediment-rich water, retaining water, and tunnel abrasion, distinguishing water fractions from sediment fractions.",
+          "difference": "排砂繞流、沖砂與浚渫不是同一方法；地形及水庫配置不同，效益也不同。此延伸研究替代方案，並非聲稱三峽設有該類排砂隧道。",
+          "differenceEn": "Bypassing, flushing, and dredging are distinct methods with different site requirements. This comparison studies an alternative and does not claim that Three Gorges has such a bypass tunnel.",
+          "practice": [
+            "畫出原河道與繞流兩種泥砂路徑，標記沉積可能轉移的位置。",
+            "用自製收支表檢查入砂、出砂及庫內變化是否守恆。",
+            "比較庫容保護、下游泥砂與隧道磨蝕，列出三項不能同時只靠單一指標評分的結果。"
+          ],
+          "practiceEn": [
+            "Draw original and bypass sediment paths and mark where deposition may shift.",
+            "Check an invented sediment budget for conservation.",
+            "Compare storage protection, downstream sediment, and abrasion using separate outcome measures."
+          ],
+          "referenceUrls": [
+            "https://ethz.ch/content/dam/ethz/special-interest/baug/vaw/vaw-dam/documents/forschung/wasserbau/abgeschlossene-projekte/phd-research-project-layout-and-design-of-sediment-bypass-tunnels.pdf",
+            "https://www.hec.usace.army.mil/software/hec-ressim/features.aspx"
+          ]
+        },
+        {
+          "id": "b260",
+          "title": "調壓井水錘控制",
+          "titleEn": "Surge-shaft control of water hammer",
+          "why": "水力發電不是只有穩態流量；機組需求突然改變會引出管路與調壓設施的動態問題。",
+          "whyEn": "Hydropower involves transient behavior when machine demand changes, not only steady flow.",
+          "transfer": "將水庫、引水道、調壓井、壓力管與機組畫成連續系統。分辨管內快速壓力波和調壓井較慢水位振盪，並比較機組負載突變前後的質量與動量敘述。用時間尺度而非同一個「水壓過大」標籤分類。",
+          "transferEn": "Draw the reservoir, waterway, surge shaft, penstock, and machine as a connected system. Distinguish fast pipe-pressure waves from slower surge-level oscillations and compare mass and momentum behavior before and after a load change.",
+          "difference": "調壓井不會消除所有暫態；幾何、摩擦、通氣、機組特性及邊界條件會影響結果。這是一般水力系統延伸，不聲稱三峽配置相同的調壓井。",
+          "differenceEn": "A surge shaft does not remove every transient; geometry, friction, aeration, machine behavior, and boundaries matter. This is a general extension, not a claim of identical Three Gorges equipment.",
+          "practice": [
+            "畫一張壓力波與水位振盪的雙時間尺度圖，註明兩者不是同一量。",
+            "比較有、無調壓支路的概念模型，列出需要重新設定的邊界。",
+            "閱讀模型試驗案例，分欄記錄觀察、模型限制與不可直接移植的數值。"
+          ],
+          "practiceEn": [
+            "Draw separate timescales for pressure waves and level oscillations.",
+            "Compare conceptual models with and without a surge branch and identify changed boundaries.",
+            "Review the model-test case, separating observations, limitations, and nontransferable values."
+          ],
+          "referenceUrls": [
+            "https://edu.epfl.ch/coursebook/en/hydroacoustic-for-hydropower-plants-ME-443",
+            "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/HYD/HYD-438.pdf"
+          ]
+        },
+        {
+          "id": "b258",
+          "title": "抽蓄水庫水位調度",
+          "titleEn": "Reservoir-level scheduling for pumped storage",
+          "why": "抽蓄把水力機械連到電網儲能，能區分發電功率、可儲能量與完整循環的損失。",
+          "whyEn": "Pumped storage connects hydraulic machines to the grid while separating power, stored energy, and cycle losses.",
+          "transfer": "沿用水庫水量平衡，但同時追蹤上下庫水位與電能。先畫抽水充能和放水發電兩種方向，再比較水頭變化對可用能量的影響；將往返損失計入，避免把循環發電當成淨創造能源。",
+          "transferEn": "Track both reservoir levels and electrical energy. Draw pumping and generating directions, examine how changing head affects available energy, and account for round-trip losses rather than treating circulation as net energy creation.",
+          "difference": "一般河川水力利用自然來水，抽蓄還使用外部電力搬運水。開放式與封閉式抽蓄的水文連接不同，不能假定兩者具有相同的流域影響。",
+          "differenceEn": "Conventional hydropower uses natural inflow; pumped storage also consumes electricity to move water. Open- and closed-loop arrangements have different hydrological connections and impacts.",
+          "practice": [
+            "畫兩個運轉模式的水流與電能箭頭，清楚標出系統邊界。",
+            "用自製能量表檢查一循環輸入與輸出，分開功率及能量單位。",
+            "比較開放式和封閉式兩方案，列出各自需要取得的補水與環境資料。"
+          ],
+          "practiceEn": [
+            "Draw water and electrical flows in both modes with explicit system boundaries.",
+            "Check an invented cycle energy budget, keeping power and energy units separate.",
+            "Compare open- and closed-loop options and identify makeup-water and environmental data needs."
+          ],
+          "referenceUrls": [
+            "https://www.energy.gov/cmei/water/pumped-storage-hydropower",
+            "https://edu.epfl.ch/coursebook/en/hydroacoustic-for-hydropower-plants-ME-443"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "metro",
+      "overview": "從捷運列車與控制系統出發，延伸到通訊式列控、聯鎖、占用偵測、牽引供電、回流、月台門、旅客流與整合測試。每個主題都要求說明輸入、狀態、回授及失效時的行為，並分辨設備合格與整條線可運作的證據。以下使用示意模型和公開案例，不提供營運系統的接線、控制參數或變更指令。",
+      "overviewEn": "Extend metro learning through CBTC, interlocking, occupancy detection, traction power, return current, platform doors, passenger flow, and integration testing. Specify inputs, states, feedback, and failure behavior, distinguishing individual equipment compliance from evidence for line operation. Exercises use illustrative models and public cases, not live-system wiring, settings, or change instructions.",
+      "references": [
+        {
+          "title": "列車號誌系統模擬測試設施",
+          "titleEn": "Factsheet: Simulation Facilities for Signalling System Testing",
+          "publisher": "Land Transport Authority, Singapore",
+          "url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/2/news-releases/Simulation_facilities_for_signalling_system_testing.html",
+          "scope": "營運機構與主管機關使用相近硬軟體驗證號誌軟體變更及訓練的案例。",
+          "scopeEn": "Case of authority and operators using representative hardware and software to test signalling changes and train engineers."
+        },
+        {
+          "title": "鐵路號誌原理",
+          "titleEn": "Signals Explained",
+          "publisher": "Network Rail",
+          "url": "https://www.networkrail.co.uk/stories/signals-explained/",
+          "scope": "列車偵測、號誌、道岔、聯鎖與列車防護的不同角色。",
+          "scopeEn": "Different roles of detection, signals, points, interlocking, and train protection."
+        },
+        {
+          "title": "鐵路安全詞彙：聯鎖",
+          "titleEn": "Safety Central Jargon Buster: Interlocking",
+          "publisher": "Network Rail",
+          "url": "https://safety.networkrail.co.uk/jargon-buster/",
+          "scope": "官方聯鎖術語定義，支持防止衝突進路的基本概念。",
+          "scopeEn": "Official interlocking definition supporting the basic prevention of conflicting routes."
+        },
+        {
+          "title": "軌道電路原理",
+          "titleEn": "Track Circuits Explained",
+          "publisher": "Network Rail",
+          "url": "https://www.networkrail.co.uk/stories/track-circuits-explained/",
+          "scope": "以電氣回路辨別軌道區段占用的業主說明及故障情境。",
+          "scopeEn": "Owner explanation of electrical detection of occupied track sections and fault scenarios."
+        },
+        {
+          "title": "南北線與東西線六大核心系統更新",
+          "titleEn": "Upgrading the North-South and East-West Lines",
+          "publisher": "Land Transport Authority, Singapore",
+          "url": "https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/system_renewal/upgrading_the_north_south_and_east_west_lines_nsewl.html",
+          "scope": "第三軌、供電監測、號誌與軌道電路的系統更新案例；不移植當地額定值。",
+          "scopeEn": "Renewal case covering third rail, power monitoring, signalling, and track circuits without transferring local ratings."
+        },
+        {
+          "title": "道路與鐵路土建設計準則：第 14 章雜散電流",
+          "titleEn": "Civil Design Criteria for Road and Rail Transit Systems: Chapter 14, Stray Current Corrosion Control",
+          "publisher": "Land Transport Authority, Singapore",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/industry_innovations/industry_matters/development_construction_resources/civil_standards/pdf/EGD09106A2_Overall.pdf",
+          "scope": "2019 年文件中的回流路徑、軌道絕緣、腐蝕及監測介面；僅解釋原理，不作現行通用規範。",
+          "scopeEn": "2019 document covering return paths, insulation, corrosion, and monitoring interfaces; used for principles, not as a universal current specification."
+        },
+        {
+          "title": "跨島線號誌與月台門系統",
+          "titleEn": "LTA Awards Two Contracts for Cross Island Line Systems",
+          "publisher": "Land Transport Authority, Singapore",
+          "url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/4/news-releases/lta_awards_2_contracts_for_CRL_systems.html",
+          "scope": "官方專案資料說明 CBTC、月台門及其他控制通訊系統的整合範圍。",
+          "scopeEn": "Official project account of CBTC, platform doors, and related control and communication system scope."
+        },
+        {
+          "title": "車站容量規劃 S1371（公開歷史文件）",
+          "titleEn": "Station Capacity Planning S1371 (Public Historical Document)",
+          "publisher": "Transport for London",
+          "url": "https://foi.tfl.gov.uk/FOI-0402-1920/S1371%20Station%20capacity%20Planning%20%28new%29.pdf",
+          "scope": "一般與降級營運下的旅客流、月台、通道與垂直動線；不引用為現行容量門檻。",
+          "scopeEn": "Passenger movement, platforms, passageways, and vertical circulation in normal and degraded operation; not used as current capacity limits."
+        },
+        {
+          "title": "Crossrail 車站服務整合測試",
+          "titleEn": "Integration Tests for Crossrail Station Services",
+          "publisher": "Crossrail Learning Legacy",
+          "url": "https://learninglegacy.crossrail.co.uk/documents/integration-tests-crossrail-station-services/",
+          "scope": "軟體、實體與間接介面共同驗證的工程經驗。",
+          "scopeEn": "Project experience verifying software, physical, and indirect interfaces together."
+        },
+        {
+          "title": "新加坡鐵路測試中心",
+          "titleEn": "Singapore Rail Test Centre Opens for Operations",
+          "publisher": "Land Transport Authority, Singapore",
+          "url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/3/news-releases/singapore-rail-test-centre-opens-for-operations.html",
+          "scope": "號誌、通訊、供電與監控系統於投入營運前的整合測試設施。",
+          "scopeEn": "Facility for integrated testing of signalling, communications, power, and supervision before operational deployment."
+        }
+      ],
+      "related": [
+        {
+          "id": "b370",
+          "title": "通訊式列車控制",
+          "titleEn": "Communications-based train control",
+          "why": "通訊式列車控制將列車位置、通訊品質與移動許可連在一起，是捷運控制課程的核心延伸。",
+          "whyEn": "CBTC links train position, communication quality, and movement authority, extending the metro control model.",
+          "transfer": "把列車位置估計、速度、前方限制及許可分為不同資訊。以示意時間軸觀察更新延遲和資料過期，討論控制器如何在可信輸入減少時保持受限制的行為，再以模擬驗證需求與觀測一致。",
+          "transferEn": "Separate position estimates, speed, route limits, and movement authority. Use a toy timeline to examine delay and stale information, then reason about constrained behavior when trusted input is reduced and compare requirements with simulated observations.",
+          "difference": "無線通訊只是 CBTC 的一部分；高連線率不自行證明位置可信或防護功能正確。增加班次也受停站時間、供電與折返能力限制。",
+          "differenceEn": "Radio connectivity is only part of CBTC; high availability does not prove trusted position or correct protection. Frequency also depends on dwell, power, and turnback constraints.",
+          "practice": [
+            "畫出位置、許可、速度控制的資料流程，標明哪些量是估計值。",
+            "為資料延遲、丟失及版本不一致寫出三個模擬測試的預期觀察。",
+            "比較號誌縮短間隔與車站停留造成排隊的兩種瓶頸。"
+          ],
+          "practiceEn": [
+            "Draw position, authority, and speed-control data flows, marking estimated quantities.",
+            "Specify expected observations for delayed, missing, and version-inconsistent data in a simulation.",
+            "Compare a signalling headway limit with a dwell-induced station bottleneck."
+          ],
+          "referenceUrls": [
+            "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/2/news-releases/Simulation_facilities_for_signalling_system_testing.html",
+            "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/4/news-releases/lta_awards_2_contracts_for_CRL_systems.html"
+          ]
+        },
+        {
+          "id": "b372",
+          "title": "鐵路電子聯鎖邏輯驗證",
+          "titleEn": "Electronic interlocking logic verification",
+          "why": "聯鎖讓學徒練習把「不能同時發生」寫成可檢查的系統條件。",
+          "whyEn": "Interlocking turns incompatible movements into conditions that can be checked explicitly.",
+          "transfer": "將示意站場拆成進路、道岔位置、占用區段與保護條件。用狀態表描述申請、確認、鎖定與釋放的差別；測試兩條衝突進路的請求順序，避免只驗證單條進路的成功案例。",
+          "transferEn": "Decompose an illustrative station into routes, point positions, occupied sections, and protection conditions. Distinguish request, confirmation, locking, and release states, then test competing requests rather than only successful single-route cases.",
+          "difference": "聯鎖處理進路衝突與條件一致，列車防護處理允許範圍內的運動限制；功能可以整合但不能因此省略個別需求與證據。",
+          "differenceEn": "Interlocking addresses route conflict and consistent conditions; train protection constrains movement within authority. Integration does not remove the need to verify each function.",
+          "practice": [
+            "畫一個虛構分岔站場，建立進路衝突矩陣。",
+            "把「命令道岔轉向」與「收到位置確認」列成不同狀態。",
+            "對兩個相反請求順序各列出預期拒絕條件，並保留未知狀態。"
+          ],
+          "practiceEn": [
+            "Draw a fictional junction and build its route-conflict matrix.",
+            "Separate a point-movement command from confirmed position.",
+            "Test opposite request orders and document rejection conditions and unknown states."
+          ],
+          "referenceUrls": [
+            "https://www.networkrail.co.uk/stories/signals-explained/",
+            "https://safety.networkrail.co.uk/jargon-buster/"
+          ]
+        },
+        {
+          "id": "b373",
+          "title": "軌道電路列車占用偵測",
+          "titleEn": "Track-circuit train-occupancy detection",
+          "why": "列控依賴知道列車在哪裡；軌道電路提供一種區段層級的證據，適合與位置估計對照。",
+          "whyEn": "Track circuits provide section-level occupancy evidence to compare with estimated train positions.",
+          "transfer": "用簡化電路圖分開供電、鋼軌、輪軸分路及接收端。將占用、空閒與設備異常的觀測做成證據表，說明為何偵測系統的保守反應與實際列車位置是兩個層次。",
+          "transferEn": "Separate supply, rails, wheel–axle shunting, and receiver in a simplified diagram. Compare observations for occupied, clear, and faulty conditions, distinguishing conservative system indications from the actual train location.",
+          "difference": "軌道電路通常提供區段占用，不等於連續精確座標。計軸器則從進出軸數建立占用狀態，證據鏈與失效復原需求不同。",
+          "differenceEn": "Track circuits normally indicate section occupancy rather than precise continuous coordinates. Axle counters derive occupancy from axle passage counts, creating different evidence and recovery questions.",
+          "practice": [
+            "畫出輪軸進入區段前後的概念電路，不指定營運設備接線。",
+            "為「顯示占用但沒看到列車」列出三項需查核的原因。",
+            "比較軌道電路、計軸與車載位置估計各提供的資訊粒度。"
+          ],
+          "practiceEn": [
+            "Sketch the circuit before and after wheel–axle entry without real-system wiring.",
+            "List three hypotheses for an occupied indication without a visible train.",
+            "Compare information resolution from track circuits, axle counting, and onboard estimates."
+          ],
+          "referenceUrls": [
+            "https://www.networkrail.co.uk/stories/track-circuits-explained/",
+            "https://www.networkrail.co.uk/stories/signals-explained/"
+          ]
+        },
+        {
+          "id": "b363",
+          "title": "直流第三軌供電設計",
+          "titleEn": "DC third-rail power-supply design",
+          "why": "第三軌供電把牽引需求、電力網路與機械接觸連在一起，能看出提高班次的跨系統影響。",
+          "whyEn": "Third-rail supply links traction demand, the power network, and mechanical contact, exposing cross-system effects of service frequency.",
+          "transfer": "沿牽引變電、供電軌、集電裝置、車載驅動與回流畫能量路徑。以相對負載比較一列與多列同時加速的情況，將壓降、設備狀態監測及替代供電路徑列為不同證據。",
+          "transferEn": "Trace traction supply, power rail, current collection, onboard drive, and return. Compare relative demand for one train and several accelerating trains, distinguishing voltage drop, equipment monitoring, and alternate supply paths.",
+          "difference": "第三軌是供電介面，不是列車速度控制器；可用功率仍受供電配置與列車需求影響。不能把一條線的電壓、保護或切換規則搬到另一條線。",
+          "differenceEn": "The third rail is a power interface, not a speed controller. Available power depends on network configuration and demand; ratings and protection rules do not transfer between lines.",
+          "practice": [
+            "畫出從電源到車輪的能量圖，標上回流而不把大地當理想導線。",
+            "比較同時加速與分散加速的示意負載曲線，分開尖峰功率和耗能。",
+            "對單一供電來源不可用的假想情境，列出需驗證的介面與未知限制。"
+          ],
+          "practiceEn": [
+            "Draw energy from source to wheel and include the return path without idealizing earth.",
+            "Compare synchronized and staggered acceleration, separating peak power from energy.",
+            "Identify interfaces and unknown limits when one illustrative supply source is unavailable."
+          ],
+          "referenceUrls": [
+            "https://www.lta.gov.sg/content/ltagov/en/upcoming_projects/system_renewal/upgrading_the_north_south_and_east_west_lines_nsewl.html",
+            "https://www.lta.gov.sg/content/dam/ltagov/industry_innovations/industry_matters/development_construction_resources/civil_standards/pdf/EGD09106A2_Overall.pdf"
+          ]
+        },
+        {
+          "id": "b364",
+          "title": "鐵路回流與雜散電流控制",
+          "titleEn": "Rail-return and stray-current control",
+          "why": "追蹤回流可把電機、軌道與土木耐久性接起來，理解金屬腐蝕也可能有電氣來源。",
+          "whyEn": "Return-current tracing connects electrical systems, track, and structural durability through possible corrosion mechanisms.",
+          "transfer": "從預期回流路徑分出洩漏到周圍結構與土壤的支路，標示電位、絕緣與連接狀態各提供的證據。比較車流變化及乾濕條件下的趨勢，避免把單次電位值當成腐蝕速率。",
+          "transferEn": "Separate intended return from leakage through surrounding structures and soil. Identify evidence from potential, insulation, and connection state, comparing traffic and moisture conditions without equating one potential reading with corrosion rate.",
+          "difference": "降低雜散電流與人員觸電防護是互相關聯但不同的需求；任意增加接地連接可能改變回流路徑。課程僅分析概念電路，不要求修改真實軌道接地。",
+          "differenceEn": "Stray-current mitigation and protection against electric shock are related but distinct. Additional earth connections can change return paths; the exercise analyzes conceptual circuits only.",
+          "practice": [
+            "在示意等效電路分別標出正常回流、洩漏與量測參考。",
+            "比較乾燥與潮濕資料，提出交通負載與絕緣變化兩種競爭解釋。",
+            "建立土木、軌道與電力三專業的介面表，列出各自需交付的證據。"
+          ],
+          "practiceEn": [
+            "Label intended return, leakage, and measurement reference in an equivalent circuit.",
+            "Compare dry and wet observations using load and insulation changes as competing explanations.",
+            "Build a civil, track, and power interface table with required evidence."
+          ],
+          "referenceUrls": [
+            "https://www.lta.gov.sg/content/dam/ltagov/industry_innovations/industry_matters/development_construction_resources/civil_standards/pdf/EGD09106A2_Overall.pdf"
+          ]
+        },
+        {
+          "id": "b381",
+          "title": "月台門列車停準整合",
+          "titleEn": "Platform-screen-door and stopping-position integration",
+          "why": "月台門是機械位置、列車控制與旅客使用的交會點，能具體練習介面規格。",
+          "whyEn": "Platform doors combine mechanical position, train control, and passenger use into a concrete interface problem.",
+          "transfer": "將列車停準、門側選擇、開門許可、門狀態與離站條件分開。以示意時間序列追查命令與回授是否一致，並比較停準誤差、旅客阻擋與資料過期三種原因，而不是只觀察門能否開。",
+          "transferEn": "Separate stopping alignment, door-side selection, opening permission, door status, and departure conditions. Trace commands and feedback through illustrative sequences, distinguishing misalignment, obstruction, and stale status rather than simply checking that doors open.",
+          "difference": "列車停在月台範圍內不等於每組車門都已對齊；畫面顯示關門也不一定代表所有實體回授已滿足。不同門系統的容許值與降級程序需個別核定。",
+          "differenceEn": "Being within the platform does not establish alignment of every doorway, and a display is not every physical confirmation. Tolerances and degraded procedures are system-specific.",
+          "practice": [
+            "畫車門與月台門的示意相對位置，標出累積誤差來源。",
+            "製作正常、未停準及單門狀態不明的命令／回授表。",
+            "列出列車、號誌、月台門與控制中心各須提供的證據，不設定實車容許值。"
+          ],
+          "practiceEn": [
+            "Sketch relative door positions and mark sources of accumulated error.",
+            "Build command/feedback tables for normal, misaligned, and unknown-door cases.",
+            "Assign evidence to train, signalling, door, and control-center interfaces without field tolerances."
+          ],
+          "referenceUrls": [
+            "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/4/news-releases/lta_awards_2_contracts_for_CRL_systems.html",
+            "https://learninglegacy.crossrail.co.uk/documents/integration-tests-crossrail-station-services/"
+          ]
+        },
+        {
+          "id": "b382",
+          "title": "車站旅客流量模擬",
+          "titleEn": "Station passenger-flow simulation",
+          "why": "班距縮短未必讓旅客更快通過車站；瓶頸可能轉移到樓梯、閘門或月台候車區。",
+          "whyEn": "Shorter train intervals may move the bottleneck to stairs, gates, or platform waiting areas.",
+          "transfer": "把進站、出站、轉乘和候車分成不同流線，使用到達率、離開率與滯留量的守恆關係。分開平均密度、短時峰值及反向交錯，觀察列車延誤如何使人流波動逐步放大。",
+          "transferEn": "Separate entry, exit, interchange, and waiting flows, using arrivals, departures, and accumulation. Distinguish average density, brief peaks, and opposing flows, then examine how delayed trains amplify crowding over time.",
+          "difference": "營運容量與火災疏散是不同情境，不能以正常尖峰模擬取代緊急疏散分析。全站平均值也可能掩蓋單一狹窄通道的局部擁擠。",
+          "differenceEn": "Operational capacity and emergency evacuation are different scenarios. A whole-station average can also hide a crowded local passage.",
+          "practice": [
+            "畫進出與轉乘流線，圈出交叉及合流點。",
+            "用自製每分鐘到離人數表檢查滯留人數，不混用人數與流率。",
+            "比較正常、列車延誤與一座樓梯不可用三種情境，逐區報告結果。"
+          ],
+          "practiceEn": [
+            "Map entry, exit, and interchange flows and mark crossings and merges.",
+            "Check accumulation from invented per-minute counts, keeping counts separate from rates.",
+            "Compare normal, delayed-train, and unavailable-stair scenarios by station area."
+          ],
+          "referenceUrls": [
+            "https://foi.tfl.gov.uk/FOI-0402-1920/S1371%20Station%20capacity%20Planning%20%28new%29.pdf"
+          ]
+        },
+        {
+          "id": "b400",
+          "title": "鐵路系統整合測試與試運轉",
+          "titleEn": "Rail-system integration testing and trial running",
+          "why": "個別設備測試合格後，仍需證明供電、通訊、控制與人員流程能在同一事件下協同。",
+          "whyEn": "After equipment tests, evidence is still needed that power, communications, controls, and operating processes work together.",
+          "transfer": "建立需求—介面—情境—預期觀察—證據的追溯表，將工廠、模擬、測試線及現地整合的證據分開。由正常情境延伸到部分設備不可用，檢查事件時間戳、告警及恢復狀態是否一致。",
+          "transferEn": "Build a requirement–interface–scenario–expected observation–evidence matrix. Distinguish factory, simulation, test-track, and site evidence, then compare normal and partially unavailable states using event times, alarms, and recovery status.",
+          "difference": "模擬成功依賴模型與真實系統足夠一致；現地試車成功也不代表所有例外組合已覆蓋。驗收結論應說明覆蓋範圍、版本與未解決項。",
+          "differenceEn": "Simulation depends on model fidelity, and a successful trial does not cover every exceptional combination. Acceptance evidence needs scope, version, and unresolved issues.",
+          "practice": [
+            "為一個「列車進站到離站」情境建立跨系統追溯表。",
+            "刻意加入一項時鐘不同步或軟體版本不一致，指出可能的假通過。",
+            "寫出測試結論，分列已證明、尚未覆蓋及需重測的介面。"
+          ],
+          "practiceEn": [
+            "Build a cross-system traceability matrix for arrival through departure.",
+            "Insert clock disagreement or a version mismatch and identify possible false passes.",
+            "Write a conclusion separating demonstrated behavior, uncovered cases, and interfaces needing retest."
+          ],
+          "referenceUrls": [
+            "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/2/news-releases/Simulation_facilities_for_signalling_system_testing.html",
+            "https://learninglegacy.crossrail.co.uk/documents/integration-tests-crossrail-station-services/",
+            "https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/3/news-releases/singapore-rail-test-centre-opens-for-operations.html"
+          ]
+        }
+      ]
+    }
+  ]
+}

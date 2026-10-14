@@ -1,0 +1,44 @@
+V9 ADVANCED PACKAGING / SILICON PHOTONICS MEDIA AUDIT
+Checked: 2026-10-14
+Auditor: packaging_deep; no public datasets or media builder edited by auditor.
+
+STATUS: PASS. Structured, license, attribution and context checks completed. One author/courtesy correction, ten bilingual context clarifications and UI attribution presentation fixes are verified. The two final terminology refinements are also applied and verified.
+
+SCOPE AND RESULTS
+- Checked all 100 packaging catalog IDs against primaryPhotos and media[]. All match exactly, without duplicates or missing courses.
+- Inspected the 14 newly downloaded image files as a contact sheet. They contain 13 camera photographs and one microscopy image (Quilt solder). No generated diagram was mislabeled as a new real photograph.
+- Every new file decodes successfully, and its SHA-256 matches media.json. Existing representative files also decode, and recorded hashes match.
+- All 14 license names match the retained Commons imageinfo records in media-research/selected.json and selected-more.json. License URLs match wherever the source metadata provides one. NASA/JPL public-domain status and institutional provenance were separately checked on the live Commons source page.
+- Source pages, author, license URL, attribution and modification notes are populated. Metadata distinguishes representative images from vendor process evidence. No source figure from a commercial publication was copied as an unlicensed photo.
+- All 100 primary-photo mappings have course-specific bilingual context notes, and their referenced records contain those course IDs. The six updated existing photo records preserve their previous course associations.
+- All guide source IDs resolve against the existing source database plus the eight media sources; their stored URLs match exactly.
+- All 100 guides have one bilingual title, concept and scope; five nonempty steps in each language; paired evidence/pitfall lists; source references; and simulationOnly:true. The course observation/concept is unique for all 100. The guides use a shared five-part observation framework, not 100 independently filmed manufacturing demonstrations.
+- Reviewed the per-course observations and measurement objectives: they ask for evidence, units, resolution, baselines, repeated observations and unknowns. They do not purport to supply a proprietary fabrication recipe. The generic fourth step explicitly labels modeled numerical values as assumptions.
+- Video metadata explicitly says playback was not tested and does not promise anonymous playback or bypass restrictions. This audit did not run a browser or external player.
+
+ISSUES AND RESOLUTION
+1. v9-biosensor-lab originally credited the IPAS uploader but omitted the source description's photographer Jennie Groom and requested courtesy to Professor Andre Luiten. Media owner corrected author/attribution and added the original Flickr URL. Verified regenerated record contains Jennie Groom, Professor Andre Luiten and CC BY 2.0.
+2. app.js photoCredit and source-library.js originally rendered author+license only. Root corrected both to prefer complete attribution. Verified the source library also exposes originalSourceUrl and uses changesZh in Chinese. The courtesy now reaches rendered markup rather than surviving only in JSON.
+3. Media owner added explicit comparison-only/material/modality notes for all ten courses below. Verified each regenerated bilingual courseContext note and guide step 1 use the same scope:
+   a105: Quilt reflowed-solder micrograph is not a direct Cu-Cu bond.
+   a118: Quilt bump/interconnect image is not an RDL line cross-section.
+   a122: Image does not expose a TSV interior or fill voids.
+   a124: DRIE silicon micropillars are not glass TGVs.
+   a117: Circular wafer is a scale comparison, not panel-level packaging.
+   a127: Generic BGA cross-section does not establish a glass core.
+   a128: Generic BGA cross-section does not establish ABF material.
+   a149: Optical BGA section is not an acoustic A-/C-scan.
+   a150: Solder microscopy is not X-ray projection or CT; a specific microscopy modality is not asserted.
+   a165: GBIC monitor photodiode does not establish Ge-Si APD material or avalanche operation.
+   Confirmed updates originate from COURSE_IMAGE_LIMITS in build_media.py, preserving deterministic rebuilds. All image hashes and the corrected photographer attribution are unchanged. Final wording refinements completed: a105 now excludes both direct Cu-Cu and dielectric/Cu hybrid bonds; a150 uses the source-supported general term microscopy image rather than asserting SEM, because the retained Commons description does not explicitly name that modality. Verified both final bilingual notes and guide step 1 after regeneration.
+4. a157 Traditional-Chinese correction to 並與 completed and checked.
+
+LIVE PRIMARY PHOTO PAGES INSPECTED
+https://commons.wikimedia.org/wiki/File:Laser_diode_chip.jpg
+https://commons.wikimedia.org/wiki/File:Green_fiber,_optical_table_and_microscope.jpg
+https://commons.wikimedia.org/wiki/File:Nortel_Networks_AA1419001_GBIC_transceiver_laser_diode_tear_down.jpg
+https://commons.wikimedia.org/wiki/File:Photonics_chip_1.png
+Remaining license and author comparisons used the retained first-party Commons imageinfo responses and visually inspected files, rather than inferred ownership from search thumbnails.
+
+LIMITATIONS
+Representative images are shared between related courses. They are not images of every step, 100 proprietary factory processes, or qualification evidence. The 100 guides are authored reading/observation worksheets; actual manufacturing measurements, physical device behavior, external video playback and cross-device browser rendering remain outside this audit.

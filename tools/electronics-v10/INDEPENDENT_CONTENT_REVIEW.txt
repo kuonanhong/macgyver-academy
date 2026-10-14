@@ -1,0 +1,94 @@
+V10 independent editorial / integration review
+Date: 2026-10-14
+Reviewer: media/content-audit workstream (independent of curriculum authors)
+
+Scope
+- Original hypothetical worked examples and authored technical units, inspected
+  directly from the A/B/C authoring inputs. No claim of industrial qualification,
+  exhaustive source verification, or approval for operating physical equipment.
+- Completed content coverage: A35 + B33 + C32 = all100 electronics topics;
+  1,200 technical units and their worked examples. Each unit is expanded by its
+  author into modeling and evidence-interpretation steps; legacy A steps are
+  preserved separately and were not represented as newly reviewed authoring.
+- Bilingual delimiter integrity, source-reference propagation, media rendering,
+  and attribution scope. audit_authored_specs.py checks delimiter integrity only;
+  it does not mechanically prove engineering correctness.
+- Media delivery was separately checked with test_media.py: 31 new licensed real
+  photographs, 199 original conceptual learning maps in two languages (398 SVG
+  files), 199 visual-evidence guides, and 7 newly selected official video IDs.
+
+Findings communicated to authors and integrator
+1. A / a224 worked example: RMS current was incorrectly called a peak RMS limit.
+   Corrected to short-time RMS current limit; instantaneous peak is a different
+   quantity. Author confirmed rebuild.
+2. A / a205 gas-density unit: p/T needed absolute pressure and kelvin, with fixed
+   gas composition and ideal-gas approximation. Author confirmed rebuild.
+3. A / a231 PV illumination units: the intended input is irradiance (W/m²), not
+   photometric illuminance (lux). Author confirmed rebuild.
+4. C / a272 Friis worked example: exact NF is about 1.54359 dB; rounded result
+   corrected from 1.55 to 1.54 dB. Author confirmed.
+5. C / a271 reference/return unit: an unqualified reference-noise statement missed
+   the cancellation of correlated excitation/reference changes in ideal
+   ratiometric conversion. Corrected to explain residual uncorrelated noise,
+   bandwidth mismatch and shared-return voltage drops. Author confirmed.
+6. B / a252 field weakening: ASCII absolute-value bars in |Id| broke the six-field
+   unit delimiter. Author replaced with abs(Id); independent audit passes.
+7. C / a278 reflection/efficiency: ASCII |Γ| broke the eight-field unit delimiter.
+   C formula fields a277, a278 and a280 had the same problem, silently splitting
+   bilingual formulas into 6 or 10 fields rather than 2. Current input corrected;
+   formula count is included in independent delimiter audit.
+8. B / a245 rundown loss: positive dissipated power requires −Jω·dω/dt during
+   decay, or an explicitly signed stored-energy derivative. Author corrected.
+9. B / a237 unity-power-factor dq check: q≈0 requires the d axis aligned to the
+   voltage reference. Author now states this convention explicitly.
+10. C / a299 station-fire example: linked general/route/history pages did not
+    directly document that event. Supplied the official National Grid January
+    2023 restoration article, which documents the September2021 fire and return
+    to full service, for addition to the source map.
+11. C / a295 displacement hysteresis/creep: supplied PI's official displacement
+    behavior and forces/stiffness tutorials to supplement TI ultrasound-driver
+    references, which did not directly cover nanopositioning behavior.
+12. B / NREL wind-report links: historical PDF routes returned502 during two
+    independent retrieval methods. Provided working official research-hub landing
+    pages for reports75698,38060 and41135, preserving report identity and links to
+    full documents. This is an observed access issue, not proof of permanent loss.
+
+Root media integration verified
+- Video overlays deduplicate by YouTube identity rather than only authored ID.
+- Video source pages and visual-guide source IDs are included in course-level
+  source references, which feed the actual reverse-citation index.
+- English diagram paths are selected and both paths pass the restricted local
+  SVG path allowlist. Original/conceptual/not-to-scale status is displayed.
+- Video captionNote explains that written takeaways are original editorial
+  guides based on linked official material, not transcripts or watched timestamps.
+- Photo reverse citations use explicit course associations; sharing a category
+  alone does not assert a course citation. Historical representative photographs
+  are not described as photographs of a particular vendor's modern process.
+
+Source spot checks
+Opened and reviewed primary pages for Siemens air-cooled generators, NLR black
+start, TI TIDA-010244 energy metrology, and Hitachi grid-forming technology.
+These support the assigned background roles. Derived numerical examples remain
+explicitly hypothetical calculations, not claimed manufacturer specifications.
+The broader official references are background/reading, not evidence that a
+vendor endorses the curriculum or supplies complete manufacturing recipes.
+All three final HVDC project topics were additionally checked against primary
+event/rating references: Toshiba and Hepco 2019 new-link announcements, IFA/RTE
+route pages, National Grid interconnector history, the NZ Electricity Authority
+history, and Transpower's June2026 cable-contract announcement. Historical and
+future-plan statements remain dated; planned upgrades are not described as
+already commissioned capacity. New Hokkaido-Honshu250kV×1,200A=300MW is the
+explicitly dated real-rating example; other examples are labeled hypothetical.
+
+Safety / practical scope observed
+Reviewed HV, traction, flywheel, hydrogen-power, medical-isolation and RF topics
+use offline calculations, synthetic traces, diagrams and evidence interpretation.
+They do not direct unqualified live high-voltage wiring, energized bypass,
+physical overspeed testing, fuel plumbing, or unlicensed radio transmission.
+This review is not a substitute for field engineering or certification.
+
+Remaining at this checkpoint
+All source keys in B33/C32 authoring records resolve to their respective official
+registries. All100 authored bilingual delimiters pass. C supplemental references
+and B resilient landing-page substitutions await author confirmation. Final JSON
+integration constraints remain the responsibility of the main integrator.

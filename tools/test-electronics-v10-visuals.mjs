@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {ELECTRONICS_SUBJECTS,electronicsGeometry,electronicsGlyph,renderElectronicsVisual,renderElectronicsIcon} from '../public/academy/electronics-visuals.js';
+import {ELECTRONICS_LABS,ELECTRONICS_COURSE_LABS,calculateElectronicsLab,electronicsLabKind} from '../public/academy/electronics-calculators.js';
+import {calculateLab,labMarkup,labKind} from '../public/academy/engineering-labs.js';
+import {projectIdentitySvg,projectIconSvg} from '../public/academy/project-identity.js';
+import {resolveExercise,evaluateExercise,renderExerciseSvg} from '../public/academy/process-exercises.js';
+const catalog=JSON.parse(fs.readFileSync(new URL('../public/academy/data/catalog.json',import.meta.url)));
+const ids=Array.from({length:100},(_,i)=>'a'+(201+i));assert.deepEqual(Object.keys(ELECTRONICS_SUBJECTS).sort(),ids);assert.deepEqual(Object.keys(ELECTRONICS_COURSE_LABS).sort(),ids);
+const shapes=new Set(),icons=new Set(),svg=[];
+for(const id of ids){const c={...catalog.find(c=>c.id===id),curriculumVersion:10};assert(c.title);const subject=ELECTRONICS_SUBJECTS[id];assert.equal(subject.title,c.title);assert.equal(subject.titleEn,c.titleEn);for(const node of subject.nodes)assert(electronicsGlyph(node.kind),'missing glyph '+node.kind);shapes.add(electronicsGeometry(id,{labels:false}));icons.add(renderElectronicsIcon(id,{en:true}).replace(/<text[^>]*>[\s\S]*?<\/text>/g,'').replace(/(?:aria-label|data-[\w-]+)="[^"]*"/g,''));
+ for(const en of [false,true]){const visual=projectIdentitySvg(c,{en}),icon=projectIconSvg(c,{en});svg.push(visual,icon);assert(visual.includes(`data-project-identity="${id}"`));assert(icon.includes(`data-project-icon="${id}"`));assert(visual.includes('data-original="true"'));assert(!/<(?:script|foreignObject|image)\b|\bon\w+=|NaN|undefined/.test(visual+icon));}
+ const step={id:id+'-v10-05',sequence:5,title:'比較證據',titleEn:'Compare evidence',instruction:'核對此界面與量測。',instructionEn:'Check this interface and measurement.',check:'保留模型邊界。',checkEn:'Keep model boundaries.',quiz:{question:'有效證據為何？',questionEn:'What is valid evidence?',options:['直接量測','外觀猜測','未驗證假設'],optionsEn:['Direct measurement','Appearance guess','Untested assumption'],answer:0,explanation:'記錄條件。',explanationEn:'Record conditions.'}};
+ const spec=resolveExercise(c,step);assert.equal(spec.scene,'elev10:'+id);assert.equal(spec.provenance,'semantic-template');assert.equal(spec.expectedChoice,'answer-0');assert(!evaluateExercise(spec,{choice:'answer-0',observed:false}).passed);assert(!evaluateExercise(spec,{choice:'answer-1',observed:true}).passed);assert(evaluateExercise(spec,{choice:'answer-0',observed:true}).passed);assert.equal(spec.visualFocus,1);const drawing=renderExerciseSvg({course:c,step,labels:{language:'en'}});assert(drawing.includes(`data-course="${id}"`));svg.push(drawing);assert.notEqual(drawing,renderExerciseSvg({course:c,step:{...step,sequence:6},labels:{language:'en'}}));
+ const k=electronicsLabKind(c,step);assert.equal(Boolean(k),ELECTRONICS_COURSE_LABS[id].length>0);assert.equal(Boolean(labMarkup(c,step,true)),Boolean(k));for(const kind of ELECTRONICS_COURSE_LABS[id])assert(ELECTRONICS_LABS[kind]);
+}
+assert.equal(shapes.size,100,'Each topic has distinct meaningful geometry with text absent');assert.equal(icons.size,100,'Each topic has a distinct glyph combination');assert.equal(renderElectronicsVisual('unknown'),'');
+assert.equal(resolveExercise({id:'a203',curriculumVersion:10},{id:'a203-v6-01'}).provenance,'authored','Existing authored transformer task is preserved');
+assert(labKind({id:'a200',category:'packaging'},{sequence:1}).startsWith('pkg'),'The last packaging topic must not be captured by electronics IDs');
+const py=spawnSync('python',['-c','import json,sys,xml.etree.ElementTree as E\nfor s in json.load(sys.stdin): E.fromstring(s)'],{input:JSON.stringify(svg),encoding:'utf8'});assert.equal(py.status,0,py.stderr);
+const near=(got,expected,tolerance=1e-9)=>assert(Math.abs(got-expected)<tolerance,`${got} vs ${expected}`);
+near(calculateLab('elThreePhase',{voltage:400,current:100,pf:.9}),62.35382907247958);
+near(calculateLab('elFlux',{voltage:24,frequency:50,turns:500,area:10}),.21621621621621623);
+near(calculateLab('elCable',{rho:.017,length:100,area:25}),.068);
+near(calculateLab('elCapEnergy',{capacitance:100,high:400,fraction:.5}),6);
+near(calculateLab('elReactive',{power:100,before:.8,after:1}),75);
+near(calculateLab('elRuntime',{energy:100,usable:80,efficiency:90,power:25}),2.88);
+near(calculateLab('elCharge',{capacity:50,soc:20,current:10}),1);
+near(calculateLab('elSync',{frequency:50,poles:4}),1500);
+near(calculateLab('elTorque',{pairs:4,flux:.1,iq:10}),6);
+near(calculateLab('elMechanical',{torque:100,speed:1500}),15.707963267948966);
+near(calculateLab('elBuck',{voltage:48,duty:.25,inductance:100,frequency:100}),.9);
+near(calculateLab('elResonance',{inductance:10,capacitance:100}),159.15494309189535);
+near(calculateLab('elSwitch',{voltage:400,current:20,time:50,frequency:50}),10);
+near(calculateLab('elThermal',{power:10,resistance:2}),20);
+near(calculateLab('elRc',{resistance:10,capacitance:10}),1.5915494309189535);
+near(calculateLab('elGain',{feedback:90,ground:10}),10);
+near(calculateLab('elNoise',{temperature:300,resistance:1000,bandwidth:20}),.5756350927389775,1e-6);
+near(calculateLab('elAdc',{bits:12}),74);
+near(calculateLab('elQuant',{span:5,bits:16}),22.024164931,1e-6);
+near(calculateLab('elPll',{reference:10,n:20,r:2}),100);
+near(calculateLab('elReflect',{vswr:2}),100/9);
+near(calculateLab('elDelay',{length:100,epsilon:4}),667.128190396304);
+near(calculateLab('elSettle',{bits:12,resistance:1,capacitance:10}),90.10913347279289);
+near(calculateLab('elPiezo',{capacitance:100,voltage:10}),5);
+near(calculateLab('elPv',{irradiance:1000,area:2,efficiency:20}),400);
+assert.equal(calculateElectronicsLab('unknown',{}),null);
+for(const [kind,lab]of Object.entries(ELECTRONICS_LABS)){assert(lab.note[0].length>40&&lab.note[1].length>80);assert(lab.question.every(x=>x.length>10));const values=Object.fromEntries(lab.params.map(p=>[p[0],p[5]]));assert(Number.isFinite(calculateLab(kind,values)));for(const param of lab.params)for(const bound of [2,3])assert(Number.isFinite(calculateLab(kind,{...values,[param[0]]:param[bound]})),kind+' bounded '+param[0]);}
+if(process.argv.includes('--contact-sheet')){const sample=['a201','a203','a208','a212','a219','a235','a252','a264','a273','a279','a286','a300'];const body=sample.map((id,i)=>`<g transform="translate(${i%3*600} ${Math.floor(i/3)*370})">${renderElectronicsVisual(id,{zh:false}).replace('<svg ','<svg width="600" height="370" ')}</g>`).join('');fs.writeFileSync('/tmp/electronics-v10-contact.svg',`<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1480" viewBox="0 0 1800 1480"><rect width="1800" height="1480" fill="white"/>${body}</svg>`)}
+console.log(JSON.stringify({ok:true,topics:100,labelFreeGeometries:shapes.size,icons:icons.size,componentGlyphs:new Set(Object.values(ELECTRONICS_SUBJECTS).flatMap(s=>s.nodes.map(n=>n.kind))).size,svgDocuments:svg.length,calculators:Object.keys(ELECTRONICS_LABS).length,mappedTopics:Object.values(ELECTRONICS_COURSE_LABS).filter(x=>x.length).length,realBrowserTested:false}));

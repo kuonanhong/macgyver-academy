@@ -1,0 +1,99 @@
+{
+  "version": 11,
+  "group": "A",
+  "courses": 34,
+  "newCourses": 31,
+  "enrichedCourses": 3,
+  "technicalUnits": 544,
+  "newSteps": 1088,
+  "preservedSteps": 54,
+  "totalSteps": 1142,
+  "primarySources": 74,
+  "sourceCoverage": "Every new course and step has at least two primary official-document/paper references. Some historical V10 IDs remain global sources and are intentionally preserved.",
+  "checks": {
+    "builderIdempotent": true,
+    "snapshotTitlesCategoriesExact": true,
+    "oldStagesObjectsExact": true,
+    "oldVersionPreserved": true,
+    "uniqueNewStepIds": true,
+    "bilingualFields": true,
+    "knowledgeAtLeastTwo": true,
+    "quizThreeUniqueChoices": true,
+    "prerequisiteChains": true,
+    "relatedTwoWithMaps": true,
+    "mapsHaveTwoReferences": true
+  },
+  "groupJsonSHA256": "8051b1833ec20800d671f0d41eba7d6298366cccaf143866128ef3f5830e03ef",
+  "numericChecks": {
+    "cpuCPI": 1.12,
+    "cpuSeconds": 0.37333333333333335,
+    "gpuGElementsPerSecond": 50.0,
+    "tensorTFlops": 32.768,
+    "tensorEffectiveTFlops": 19.6608,
+    "fpgaMItemsPerSecond": 100.0,
+    "NoCRawGBPerSecond": 16.0,
+    "DRAMRawGBPerSecond": 51.2,
+    "RMThreeTaskSufficientBound": 0.7797631496846196,
+    "bootHashMs": 80.0,
+    "ipcCoreFraction": 0.19999999999999998,
+    "ringBytes": 4096,
+    "jitBreakEvenCalls": 100.0,
+    "threeReplicaTiB": 3,
+    "coded6Plus3TiB": 1.5,
+    "coded8Plus3TBWith20PctHeadroom": 171.875,
+    "groupCommitTransactionsPerSecond": 5000.0,
+    "fiveNodeMajority": 3,
+    "streamReplicaTB24h": 5.184,
+    "allocatableCPU": 28,
+    "pages2MiBPerGiB": 512.0,
+    "serverlessMeanInFlight": 20.0,
+    "retryWorstAttemptsPerSecond": 3000,
+    "traceRawMBPerSecond": 40.0,
+    "CICriticalPathMinutes": 14,
+    "hash128MiBSeconds": 0.5,
+    "TUFThreshold": 2,
+    "restoreSerialMinutesLowerBound": 93.33333333333333,
+    "availabilityBudgetMinutes30d": 43.2,
+    "seriesAvailabilityPercent": 99.8001,
+    "ethernetMFramesPerSecond10G": 14.880952380952381,
+    "routerSerializationMicroseconds": 12.0,
+    "sdnUpdatePayloadMB": 1.2,
+    "ipv6Subnets48To64": 65536,
+    "twoCpuPodIntegerPackingMaximum": 12,
+    "ZIPDOS0And1SecondsSameEncoding": true,
+    "ZIPDOS0And2SecondsDifferentEncoding": true
+  },
+  "limitations": [
+    "Conceptual workshop, not a full hardware or production-network simulator.",
+    "No live exploit, third-party scan or real infrastructure changes.",
+    "Maps are explicit representative addresses/cities, never invention/factory/visit claims.",
+    "References linked only; no third-party artwork or text copied.",
+    "Hypothetical examples are independently authored, not vendor benchmark data."
+  ],
+  "numericAuditNote": "Every worked example checked independently for dimensions and arithmetic. IPC model explicitly assumes CPU time, not elapsed latency. IEEE-like frame accounting is an assumed instructional model; all hardware numbers are non-vendor hypothetical inputs.",
+  "independentReviewCorrections": [
+    {
+      "courseId": "a321",
+      "finding": "Aggregate 28 CPU does not pack fourteen indivisible 2-CPU pods into four 7-CPU nodes.",
+      "resolution": "Explicit floor(7/2)=3 per node and at most twelve pods; fourteen are definitely unschedulable.",
+      "check": "Independent integer arithmetic."
+    },
+    {
+      "courseId": "a327",
+      "finding": "Logical timestamp difference of one second need not alter basic ZIP DOS encoding.",
+      "resolution": "Explicit two-second precision, encoded metadata vs logical timestamps and extra-field precision.",
+      "source": "PKWARE APPNOTE section 4.4.6",
+      "check": "In-memory zipfile archives verify seconds 0/1 identical and 0/2 different."
+    },
+    {
+      "courseId": "a303",
+      "finding": "Coherence vs consistency was mislabeled compatibility in Chinese.",
+      "resolution": "Label now 快取一致性與記憶體順序."
+    },
+    {
+      "courseId": "a308/a311/a327",
+      "finding": "Three typographic Chinese terms.",
+      "resolution": "Refresh 干擾、時鐘來源、絕對."
+    }
+  ]
+}

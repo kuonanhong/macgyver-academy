@@ -1,0 +1,1107 @@
+{
+  "courses": [
+    {
+      "courseId": "semiconductor",
+      "overview": "從完整晶圓流程向下比較表面、薄膜、形貌與製程變異。以下七個既有目錄主題可作延伸工作單；它們不是新增的量產配方。圖表或量測資料需自行準備或由所列來源取得。",
+      "overviewEn": "Compare surfaces, films, geometry and process variation within the wafer flow. These seven existing catalog topics are extensions for study, not new production recipes. Supply your own diagrams/data or obtain them from the references.",
+      "references": [
+        {
+          "title": "Our Processes",
+          "titleEn": "Our Processes",
+          "publisher": "Lam Research",
+          "url": "https://www.lamresearch.com/products/our-processes/",
+          "scope": "沉積、蝕刻、去阻清洗與量測的公開職能概述；沒有提供可移植的機台配方。",
+          "scopeEn": "Public roles of deposition, etch, strip/clean and metrology; no transferable equipment recipes are supplied."
+        },
+        {
+          "title": "Deposition",
+          "titleEn": "Deposition",
+          "publisher": "Lam Research",
+          "url": "https://www.lamresearch.com/products/our-processes/deposition/",
+          "scope": "CVD、ALD、電鍍及薄膜用途；支持材料與形貌的比較，不提供高介電層配方。",
+          "scopeEn": "CVD, ALD, plating and film applications; supports material and topography comparisons, not high-k recipes."
+        },
+        {
+          "title": "Etch",
+          "titleEn": "Etch",
+          "publisher": "Lam Research",
+          "url": "https://www.lamresearch.com/products/our-processes/etch/",
+          "scope": "RIE、ALE、深蝕刻及選擇性蝕刻的公開分類；不指定某廠 SiGe 蝕刻化學或閾值。",
+          "scopeEn": "Public RIE, ALE, deep-etch and selective-etch categories; not a foundry-specific SiGe chemistry or threshold."
+        },
+        {
+          "title": "CMP",
+          "titleEn": "CMP",
+          "publisher": "Applied Materials",
+          "url": "https://www.appliedmaterials.com/il/en/semiconductor/semiconductor-technologies/cmp.html",
+          "scope": "平坦化、機械與化學共同移除、厚度回饋和終點；廠商案例不是通用驗收規格。",
+          "scopeEn": "Planarization, combined chemical/mechanical removal, thickness feedback and endpoint; vendor examples are not universal acceptance specifications."
+        },
+        {
+          "title": "6.1.6. What is Process Capability?",
+          "titleEn": "6.1.6. What is Process Capability?",
+          "publisher": "NIST/SEMATECH e-Handbook",
+          "url": "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm",
+          "scope": "穩定製程、規格與能力指標及統計假設；不是晶圓廠實測資料集。",
+          "scopeEn": "Stable processes, specification limits, capability indices and statistical assumptions; not a fab measurement dataset."
+        }
+      ],
+      "related": [
+        {
+          "id": "a007",
+          "title": "晶圓表面清洗",
+          "titleEn": "Wafer surface cleaning",
+          "why": "沉積、蝕刻和接合都依賴前一步留下的表面；清洗因此是跨模組的介面工程。",
+          "whyEn": "Deposition, etching and bonding depend on the surface left by the preceding operation, making cleaning an interface discipline across modules.",
+          "transfer": "先辨認不想要的物質，再選擇不破壞目標材料的移除方式，並檢查下一步所需表面狀態。",
+          "transferEn": "Identify unwanted material, choose removal compatible with retained material, and verify the surface state needed by the next operation.",
+          "difference": "去光阻、去顆粒、金屬污染控制與原生氧化層處理有不同目的；目視乾淨不能證明化學潔淨。",
+          "differenceEn": "Resist stripping, particle removal, metal-contamination control and native-oxide treatment serve different purposes; visual cleanliness does not prove chemical cleanliness.",
+          "practice": [
+            "列出塗阻前與金屬沉積前兩種表面需求，分別標出應保留的材料。",
+            "比較顆粒殘留與有機殘留會如何影響下一步，為每種情形選一項可區分的觀察。",
+            "提交「污染種類→後續影響→證據」表；未取得量測時把判斷標為假說。"
+          ],
+          "practiceEn": [
+            "List surface requirements before resist coating and before metal deposition, marking materials that must remain.",
+            "Compare particle and organic residue effects on the next step and choose a distinguishing observation for each.",
+            "Submit a contaminant–consequence–evidence table and label unmeasured conclusions as hypotheses."
+          ],
+          "referenceUrls": [
+            "https://www.lamresearch.com/products/our-processes/"
+          ]
+        },
+        {
+          "id": "a012",
+          "title": "高介電常數原子層沉積",
+          "titleEn": "High-k atomic layer deposition",
+          "why": "高介電層把薄膜沉積與電晶體電性直接連起來，也能對照立體結構上的覆蓋需求。",
+          "whyEn": "High-k films connect deposition directly to transistor electrical behavior and introduce coverage requirements on three-dimensional structures.",
+          "transfer": "把膜厚、連續性與介面品質分別檢查；循環式成長的優勢必須用實際結構上的覆蓋證據確認。",
+          "transferEn": "Assess thickness, continuity and interface quality separately; confirm cyclic-growth benefits with coverage evidence on the actual geometry.",
+          "difference": "閘極介電層的電性要求與單純保護膜不同；ALD 一循環也不保證剛好形成一個完整原子層。",
+          "differenceEn": "Gate-dielectric electrical requirements differ from a simple protective coating; one ALD cycle does not guarantee exactly one complete atomic layer.",
+          "practice": [
+            "畫平面與凹槽兩種基材，標出同一薄膜需覆蓋的位置。",
+            "使用自備或來源中的剖面資料，分別比較頂部、側壁與底部厚度。",
+            "說明還需要哪些漏電或介面資料，才能從「覆蓋良好」進一步判斷「閘極可用」。"
+          ],
+          "practiceEn": [
+            "Draw planar and recessed substrates and mark every surface the film must cover.",
+            "Use your own or referenced cross-sectional data to compare top, sidewall and bottom thickness.",
+            "State what leakage or interface evidence is still needed before good coverage implies a usable gate dielectric."
+          ],
+          "referenceUrls": [
+            "https://www.lamresearch.com/products/our-processes/deposition/"
+          ]
+        },
+        {
+          "id": "a051",
+          "title": "反應式離子蝕刻",
+          "titleEn": "Reactive-ion etching",
+          "why": "RIE 讓光阻上的圖形轉成材料形貌，是理解圖案轉移而非只看曝光結果的下一步。",
+          "whyEn": "RIE turns a resist pattern into material geometry, extending learning from exposure to actual pattern transfer.",
+          "transfer": "共同追蹤移除方向、遮罩消耗與目標材料的保留程度，不能只用蝕刻深度判斷成功。",
+          "transferEn": "Track removal direction, mask consumption and preservation of target materials together rather than judging success by depth alone.",
+          "difference": "曝光主要改變光阻可溶性；RIE 涉及材料移除及可能的表面損傷，兩者的缺陷證據不同。",
+          "differenceEn": "Exposure mainly changes resist solubility; RIE removes material and may damage surfaces, so their defect evidence differs.",
+          "practice": [
+            "畫同一光阻圖案下的垂直與側向移除兩種假設剖面。",
+            "為兩張圖量出深度、側壁角及剩餘遮罩，所有自訂值標為示意。",
+            "指出哪一種量測能區分微影線寬錯誤與蝕刻側向侵蝕。"
+          ],
+          "practiceEn": [
+            "Draw vertical-removal and lateral-removal cross-sections beneath the same resist pattern.",
+            "Measure depth, sidewall angle and remaining mask in both sketches, labeling invented values as illustrative.",
+            "Identify a measurement distinguishing a lithographic width error from lateral etch erosion."
+          ],
+          "referenceUrls": [
+            "https://www.lamresearch.com/products/our-processes/etch/"
+          ]
+        },
+        {
+          "id": "a055",
+          "title": "選擇性矽鍺蝕刻",
+          "titleEn": "Selective silicon-germanium etching",
+          "why": "選擇性蝕刻延伸了「移除材料但保留鄰近結構」的概念，能銜接奈米片釋放。",
+          "whyEn": "Selective etching extends material removal while retaining neighboring structures and connects naturally to nanosheet release.",
+          "transfer": "每次定義被移除材料、保留材料與接觸路徑，再比較兩者損耗及空間均勻性。",
+          "transferEn": "Define removed material, retained material and access paths, then compare loss of each material and spatial uniformity.",
+          "difference": "選擇性不是零損傷保證；遮蔽空間中的反應物供應也不同於平坦試片。",
+          "differenceEn": "Selectivity does not guarantee zero damage; reactant access in hidden spaces differs from a flat coupon.",
+          "practice": [
+            "比較平面雙材料試片與交替層堆疊的可接觸表面。",
+            "分別畫「犧牲層殘留」與「保留層變薄」兩種結果。",
+            "列出能判斷殘留、粗糙度與結構完整性的三項觀察，避免只報一個平均移除率。"
+          ],
+          "practiceEn": [
+            "Compare accessible surfaces of a flat two-material coupon and an alternating-layer stack.",
+            "Sketch sacrificial-layer residue and retained-layer thinning as distinct outcomes.",
+            "List observations for residue, roughness and structural integrity rather than reporting only average removal rate."
+          ],
+          "referenceUrls": [
+            "https://www.lamresearch.com/products/our-processes/etch/"
+          ]
+        },
+        {
+          "id": "a067",
+          "title": "化學機械平坦化",
+          "titleEn": "Chemical mechanical planarization",
+          "why": "CMP 連接材料移除與下一層微影的平坦需求；局部厚度與整片形貌必須一起觀察。",
+          "whyEn": "CMP connects material removal with the planar surface needed for later lithography, requiring both local thickness and wafer-scale topography.",
+          "transfer": "把初始形貌、移除分布與終點分開建模，先決定要保留的層再討論移除效率。",
+          "transferEn": "Model initial topography, removal distribution and endpoint separately; identify the retained layer before discussing removal efficiency.",
+          "difference": "蝕刻依材料反應和傳輸移除；CMP 同時受化學、接觸與機械條件影響，平均厚度相同不代表表面同樣平坦。",
+          "differenceEn": "Etch depends on reaction and transport; CMP also involves contact and mechanics. Equal average thickness does not imply equal planarity.",
+          "practice": [
+            "畫相同平均厚度但不同起伏的兩片示意晶圓。",
+            "標出若只以平均移除量停機，哪些區域可能過度或不足移除。",
+            "提出多位置厚度及局部高度差的聯合檢查，說明它如何幫助下一道微影。"
+          ],
+          "practiceEn": [
+            "Draw two illustrative wafers with equal mean thickness but different surface relief.",
+            "Mark regions at risk of over- or under-removal if stopping uses average removal alone.",
+            "Propose combined multi-location thickness and local-height checks and explain their value for subsequent lithography."
+          ],
+          "referenceUrls": [
+            "https://www.appliedmaterials.com/il/en/semiconductor/semiconductor-technologies/cmp.html"
+          ]
+        },
+        {
+          "id": "a068",
+          "title": "CMP 漿料與磨粒控制",
+          "titleEn": "CMP slurry and abrasive control",
+          "why": "漿料與磨粒是 CMP 結果的材料來源之一，適合練習分辨移除速度與缺陷控制。",
+          "whyEn": "Slurry and abrasives contribute to CMP outcomes and offer a way to distinguish removal-rate goals from defect control.",
+          "transfer": "將製程輸入變化與多項輸出配對，單次只改一類假設，並保留材料相容性的限制。",
+          "transferEn": "Connect process-input changes to multiple outputs, varying one class of assumption at a time while retaining compatibility constraints.",
+          "difference": "磨粒條件不是唯一變數；拋光墊、接觸和化學反應同樣影響結果，不能把較快移除直接判為較佳。",
+          "differenceEn": "Abrasive conditions are not the only variables; pads, contact and chemistry also matter. Faster removal is not automatically better.",
+          "practice": [
+            "建立移除量、表面粗糙度與刮傷的三欄比較表，先定義量測方式。",
+            "提出兩組清楚標為假設的結果：高移除但缺陷多、較低移除但缺陷少。",
+            "為特定保留層提出有條件的選擇，並列出仍需確認的終點與清洗證據。"
+          ],
+          "practiceEn": [
+            "Create a comparison table for removal, roughness and scratches with measurement definitions.",
+            "Construct two explicitly hypothetical outcomes: high removal with more defects and lower removal with fewer defects.",
+            "Make a conditional choice for a specified retained layer and list missing endpoint and cleaning evidence."
+          ],
+          "referenceUrls": [
+            "https://www.appliedmaterials.com/il/en/semiconductor/semiconductor-technologies/cmp.html"
+          ]
+        },
+        {
+          "id": "a095",
+          "title": "製程統計管制系統",
+          "titleEn": "Statistical process-control systems",
+          "why": "多次加工能否穩定，比單次做出理想圖形更接近製造問題；統計管制讓跨批比較有共同語言。",
+          "whyEn": "Repeatability across processing runs is closer to manufacturing than one ideal pattern; statistical control gives comparisons across lots a common language.",
+          "transfer": "分開檢查時間上的穩定性、中心位置與散布，再比較規格邊界。",
+          "transferEn": "Examine time stability, centering and spread separately before comparing outcomes with specification limits.",
+          "difference": "規格限值不是管制限值；能力指標有分布與資料條件，不能把未穩定或混合族群直接算成可靠良率。",
+          "differenceEn": "Specification limits are not control limits. Capability indices have distribution and data assumptions and do not turn unstable or mixed populations into reliable yield claims.",
+          "practice": [
+            "將自行準備的膜厚資料依時間排序，先找批次切換與可能漂移。",
+            "對相同散布但平均值不同的兩組示意資料，比較 Cp 與 Cpk 的解讀。",
+            "記錄樣本來源、分組與模型假設；若條件不滿足，說明為何暫不報能力結論。"
+          ],
+          "practiceEn": [
+            "Order your own film-thickness data in time and inspect lot changes and possible drift.",
+            "Compare Cp and Cpk interpretations for illustrative groups with equal spread but different means.",
+            "Record provenance, subgrouping and model assumptions; explain why a capability conclusion is withheld when assumptions fail."
+          ],
+          "referenceUrls": [
+            "https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "sub2nm",
+      "overview": "從元件幾何、材料選擇性到供電與三維整合，比較先進邏輯的不同技術路線。節點名稱不等於每個尺寸，研究分支也不應拼成單一量產流程。",
+      "overviewEn": "Compare advanced-logic routes from device geometry and material selectivity to power delivery and 3D integration. A node label is not every physical dimension, and research branches should not be combined into one production flow.",
+      "references": [
+        {
+          "title": "Entering the nanosheet transistor era",
+          "titleEn": "Entering the nanosheet transistor era",
+          "publisher": "imec",
+          "url": "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0",
+          "scope": "2022 年公開研究綜述，說明奈米片、內側間隔層、釋放與 CFET 路線；歷史預測不當成今日量產證據。",
+          "scopeEn": "A 2022 public research review of nanosheets, inner spacers, release and CFET routes; historical forecasts are not current production evidence."
+        },
+        {
+          "title": "Intel 18A: See Our Biggest Process Innovation",
+          "titleEn": "Intel 18A: See Our Biggest Process Innovation",
+          "publisher": "Intel Foundry",
+          "url": "https://www.intel.com/content/www/us/en/foundry/process/18a.html",
+          "scope": "RibbonFET 與 PowerVia 的廠商架構案例；效能比較有特定條件，不外推至所有製程。",
+          "scopeEn": "Vendor architecture examples of RibbonFET and PowerVia; performance comparisons have specific conditions and are not generalized to all processes."
+        },
+        {
+          "title": "Backside power delivery",
+          "titleEn": "Backside power delivery",
+          "publisher": "imec",
+          "url": "https://www.imec-int.com/en/articles/how-power-chips-backside",
+          "scope": "背面金屬、埋入式電源軌、奈米 TSV 與晶圓薄化的公開研究整合路線；不是唯一供電架構。",
+          "scopeEn": "Public integration research on backside metals, buried rails, nano-TSVs and wafer thinning; not the only power-delivery architecture."
+        },
+        {
+          "title": "TSMC-SoIC",
+          "titleEn": "TSMC-SoIC",
+          "publisher": "TSMC",
+          "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm",
+          "scope": "3D 晶粒整合及晶圓／晶粒接合平台的公開概述；未揭露表面處理與接合配方。",
+          "scopeEn": "Public overview of 3D die integration and wafer/die bonding platforms; surface-treatment and bonding recipes are not disclosed."
+        },
+        {
+          "title": "Etch",
+          "titleEn": "Etch",
+          "publisher": "Lam Research",
+          "url": "https://www.lamresearch.com/products/our-processes/etch/",
+          "scope": "RIE、ALE、深蝕刻及選擇性蝕刻的公開分類；不指定某廠 SiGe 蝕刻化學或閾值。",
+          "scopeEn": "Public RIE, ALE, deep-etch and selective-etch categories; not a foundry-specific SiGe chemistry or threshold."
+        }
+      ],
+      "related": [
+        {
+          "id": "a023",
+          "title": "環繞閘極奈米片電晶體",
+          "titleEn": "Gate-all-around nanosheet transistors",
+          "why": "GAA 奈米片是先進邏輯的重要架構例子，可把閘極控制與可用通道寬度分開分析。",
+          "whyEn": "GAA nanosheets are an advanced-logic architecture example that separates gate control from available channel width.",
+          "transfer": "以相同版圖邊界比較通道幾何，並追問幾何變化如何改變電容、接觸及可製造性。",
+          "transferEn": "Compare channel geometry under a common layout boundary and ask how changes affect capacitance, contacts and manufacturability.",
+          "difference": "增加通道寬度或片數不保證等比例效能增益；寄生效應與互連條件不能省略。",
+          "differenceEn": "More channel width or more sheets does not guarantee proportional performance gains; parasitics and interconnect conditions remain relevant.",
+          "practice": [
+            "畫一個 FinFET 和一個奈米片剖面，標出閘極控制的表面。",
+            "在相同示意占地內改變奈米片寬度，分別記錄預期收益與新增負載。",
+            "列出需取得哪些 DC、AC 與變異資料，才能公平比較兩種架構。"
+          ],
+          "practiceEn": [
+            "Draw FinFET and nanosheet cross-sections and mark gate-controlled surfaces.",
+            "Vary sheet width within the same illustrative footprint and record expected benefit and added loading separately.",
+            "List DC, AC and variation evidence needed for a fair comparison."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0",
+            "https://www.intel.com/content/www/us/en/foundry/process/18a.html"
+          ]
+        },
+        {
+          "id": "a024",
+          "title": "互補式堆疊電晶體研究流程",
+          "titleEn": "Complementary FET research process flows",
+          "why": "CFET 將互補元件往垂直方向整合，是比較「同型通道堆疊」與「n/p 元件堆疊」的延伸。",
+          "whyEn": "CFET stacks complementary devices vertically, extending comparison from stacked same-type channels to stacked n/p devices.",
+          "transfer": "移動結構到垂直方向時，同時追蹤接觸可達性、製程先後與下層保護。",
+          "transferEn": "When moving structures vertically, track contact access, processing order and protection of lower tiers together.",
+          "difference": "CFET 不是把兩顆已封裝晶片疊起來；單體式與順序式整合的熱預算及接合需求不同。",
+          "differenceEn": "CFET is not simply stacking two packaged chips; monolithic and sequential integration have different thermal-budget and bonding requirements.",
+          "practice": [
+            "畫相鄰 n/p 元件與垂直 n/p 元件，標出各自節省或新增的空間。",
+            "比較單體式與順序式兩條概念依存圖，找出下層已完成後仍要進行的工作。",
+            "提出上層加工可能影響下層的兩個假說及對應的驗證需求。"
+          ],
+          "practiceEn": [
+            "Draw side-by-side and vertically stacked n/p devices, marking space saved and newly required.",
+            "Compare conceptual monolithic and sequential dependency graphs and identify work remaining after the lower tier is complete.",
+            "Propose two hypotheses for upper-tier processing affecting the lower tier and corresponding verification needs."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0"
+          ]
+        },
+        {
+          "id": "a028",
+          "title": "奈米片內側間隔層製作",
+          "titleEn": "Nanosheet inner-spacer fabrication",
+          "why": "內側間隔層讓奈米片釋放與閘極／源汲極隔離連在一起，適合分析狹窄側向空間。",
+          "whyEn": "Inner spacers link nanosheet processing to gate–source/drain isolation and provide a case for narrow lateral cavities.",
+          "transfer": "先界定要隔開的兩個區域，再檢查側向凹入、填入與回蝕留下的幾何。",
+          "transferEn": "Define the regions to isolate, then examine geometry after lateral recess, filling and removal of excess material.",
+          "difference": "外側側牆間隔層的剖面不能直接代表內側空腔；外觀整齊也不證明內部連續。",
+          "differenceEn": "An external sidewall spacer does not represent an internal cavity, and a neat outer profile does not prove internal continuity.",
+          "practice": [
+            "把內側與外側間隔層畫在同一元件上，標示各自相鄰材料。",
+            "比較凹入不足、凹入過深和填充空隙三種示意結果。",
+            "為每種結果寫出對隔離或寄生耦合的可能影響，及可驗證它的剖面／電性資料。"
+          ],
+          "practiceEn": [
+            "Draw inner and outer spacers on the same device and label neighboring materials.",
+            "Compare insufficient recess, excessive recess and fill voids in three sketches.",
+            "For each outcome, state a possible isolation or parasitic effect and the cross-sectional/electrical evidence needed."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0",
+            "https://www.lamresearch.com/products/our-processes/etch/"
+          ]
+        },
+        {
+          "id": "a025",
+          "title": "背面供電網路製程",
+          "titleEn": "Backside power-delivery processing",
+          "why": "背面供電把電源與訊號的空間配置重新安排，讓節點微縮的討論超越電晶體尺寸。",
+          "whyEn": "Backside power rearranges power and signal space, extending scaling analysis beyond transistor dimensions.",
+          "transfer": "用相同負載與邊界比較路徑電阻和壓降，再把製造與熱問題放回模型。",
+          "transferEn": "Compare path resistance and voltage drop for the same load and boundary, then restore manufacturing and thermal constraints.",
+          "difference": "埋入式電源軌、直接背面接觸及不同廠商方案並非同一結構；公開效能數字有各自基準。",
+          "differenceEn": "Buried rails, direct backside contacts and vendor approaches are not identical structures; published performance figures use specific baselines.",
+          "practice": [
+            "為前面與背面供電畫相同負載的電流路徑。",
+            "把導線與接點分成不同電阻項，只用有來源或明示的教學假設比較 IR 壓降。",
+            "標出薄化、對準及失效定位新增的證據需求，避免只靠較短路徑宣布成功。"
+          ],
+          "practiceEn": [
+            "Draw current paths for the same load under frontside and backside power.",
+            "Separate wire and contact resistances and compare IR drop using sourced or explicitly educational assumptions.",
+            "Mark added evidence needs for thinning, alignment and fault localization rather than declaring success from a shorter path."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/how-power-chips-backside",
+            "https://www.intel.com/content/www/us/en/foundry/process/18a.html"
+          ]
+        },
+        {
+          "id": "a020",
+          "title": "矽鍺選擇性磊晶",
+          "titleEn": "Selective silicon-germanium epitaxy",
+          "why": "Si/SiGe 材料堆疊提供奈米片路線的起始結構，也讓成長品質與後续可選擇移除相互連動。",
+          "whyEn": "Si/SiGe stacks provide a starting structure for nanosheet routes, linking growth quality with later selective removal.",
+          "transfer": "材料選擇不能只看當下成膜，還要追蹤應變、界面與後續模組相容性。",
+          "transferEn": "Material selection must track strain, interfaces and compatibility with later modules, not merely initial film formation.",
+          "difference": "源汲極中的選擇性磊晶與交替通道堆疊用途不同；相同材料名稱不代表相同生長區域或整合條件。",
+          "differenceEn": "Selective source/drain epitaxy and alternating channel stacks serve different purposes; shared material names do not imply identical growth regions or integration conditions.",
+          "practice": [
+            "畫一個局部磊晶區與一個交替層堆疊，標出預定保留及犧牲的區域。",
+            "逐一比較厚度均勻、界面清楚與後續可移除性三項需求。",
+            "列出來源已支持的材料關係與仍未公開的製程參數，分開記錄。"
+          ],
+          "practiceEn": [
+            "Draw a local epitaxial region and an alternating stack, marking retained and sacrificial regions.",
+            "Compare thickness uniformity, interface definition and later removability as distinct requirements.",
+            "Separate material relationships supported by sources from process parameters that remain undisclosed."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0"
+          ]
+        },
+        {
+          "id": "a055",
+          "title": "選擇性矽鍺蝕刻",
+          "titleEn": "Selective silicon-germanium etching",
+          "why": "奈米片釋放把選擇性蝕刻變成三維結構完整性的問題，可與一般圖案轉移比較。",
+          "whyEn": "Nanosheet release makes selective etching a three-dimensional integrity problem, comparable with ordinary pattern transfer.",
+          "transfer": "以兩種材料的相對移除和空間分布來判斷選擇性，並檢查難以接觸的深處。",
+          "transferEn": "Judge selectivity using relative removal of two materials and its spatial distribution, including less accessible regions.",
+          "difference": "蝕刻後通道仍存在不代表其粗糙度、殘留和機械狀態都可接受；形貌與電性證據需配對。",
+          "differenceEn": "A surviving channel does not establish acceptable roughness, residue or mechanical state; morphology needs paired electrical evidence.",
+          "practice": [
+            "對同一堆疊畫出完全釋放、局部殘留與通道損失三張圖。",
+            "在每張圖標出用單一頂視影像容易漏掉的位置。",
+            "提出多位置剖面與一項電性比較，說明資料不足時哪些結論必須保留。"
+          ],
+          "practiceEn": [
+            "Draw complete release, partial residue and channel loss for the same stack.",
+            "Mark regions easily missed in a single top-view image.",
+            "Propose multi-location cross-sections and an electrical comparison, stating conclusions that remain unresolved without data."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0",
+            "https://www.lamresearch.com/products/our-processes/etch/"
+          ]
+        },
+        {
+          "id": "a106",
+          "title": "晶圓對晶圓混合接合",
+          "titleEn": "Wafer-to-wafer hybrid bonding",
+          "why": "晶圓接合把先進邏輯的垂直整合和先進封裝連起來，是理解界面與堆疊路線的橋梁。",
+          "whyEn": "Wafer bonding connects vertical advanced-logic integration with advanced packaging and provides a bridge for studying interfaces and stacking routes.",
+          "transfer": "追蹤對準、表面狀態、接合後連通與熱預算；每個項目都要有自己的證據。",
+          "transferEn": "Track alignment, surface condition, postbond connectivity and thermal budget with separate evidence for each.",
+          "difference": "順序式 CFET 的層轉移與 SoIC 晶片整合目的不同；相同「接合」一詞不代表相同結構或步驟。",
+          "differenceEn": "Layer transfer for sequential CFET and SoIC chip integration have different goals; the word bonding does not imply identical structures or operations.",
+          "practice": [
+            "畫層轉移與已製作晶片整合兩種概念界面。",
+            "比較兩者接合前哪些結構已完成，以及下一步會施加什麼限制。",
+            "提交「可共用原理／不可直接移植條件」對照表，至少列出對準、熱與測試三項。"
+          ],
+          "practiceEn": [
+            "Draw conceptual interfaces for layer transfer and integration of already fabricated chips.",
+            "Compare structures completed before bonding and constraints imposed by the next operation.",
+            "Submit transferable principles versus non-transferable conditions for alignment, heat and testing."
+          ],
+          "referenceUrls": [
+            "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0",
+            "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "asml",
+      "overview": "把微影機分成光源、光學、運動、量測與材料反應，練習由子系統追查整體成像問題。消色差透鏡用來比較光學原理，不被當成 EUV 機台的可替換零件。",
+      "overviewEn": "Separate lithography into source, optics, motion, metrology and material response to trace imaging problems across subsystems. Achromatic lenses compare optical principles; they are not interchangeable EUV-machine components.",
+      "references": [
+        {
+          "title": "Lenses & mirrors",
+          "titleEn": "Lenses & mirrors",
+          "publisher": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors",
+          "scope": "DUV 折射光學、EUV 多層膜鏡、NA 與熱形變補償；不提供光學加工施工圖。",
+          "scopeEn": "DUV refractive optics, EUV multilayer mirrors, NA and thermal-deformation compensation; no optical fabrication drawings."
+        },
+        {
+          "title": "Light & lasers",
+          "titleEn": "Light & lasers",
+          "publisher": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "scope": "微影波長與錫滴雷射電漿光源的公開原理；不是高功率雷射操作流程。",
+          "scopeEn": "Public lithography-wavelength and tin-droplet laser-plasma principles; not a high-power laser operating procedure."
+        },
+        {
+          "title": "Mechanics & mechatronics",
+          "titleEn": "Mechanics & mechatronics",
+          "publisher": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/mechanics-and-mechatronics",
+          "scope": "晶圓台精密運動、掃描與系統協作；不代表取得機台控制器模型。",
+          "scopeEn": "Precision wafer-stage motion, scanning and system coordination; does not provide a machine controller model."
+        },
+        {
+          "title": "Measuring accuracy",
+          "titleEn": "Measuring accuracy",
+          "publisher": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/measuring-accuracy",
+          "scope": "量測、層間對準與製程回饋的原理；沒有提供本課程每步實測資料。",
+          "scopeEn": "Measurement, layer alignment and process-feedback principles; no step-specific measured datasets are supplied."
+        },
+        {
+          "title": "Why Use an Achromatic Lens?",
+          "titleEn": "Why Use an Achromatic Lens?",
+          "publisher": "Edmund Optics",
+          "url": "https://www.edmundoptics.com/knowledge-center/application-notes/optics/why-use-an-achromatic-lens/",
+          "scope": "消色差透鏡、色差與球差的教學比較；可見光元件案例不可直接套用 EUV。",
+          "scopeEn": "Educational comparison of achromats, chromatic and spherical aberration; visible-light component examples do not transfer directly to EUV."
+        }
+      ],
+      "related": [
+        {
+          "id": "a402",
+          "title": "EUV 多層膜反射鏡",
+          "titleEn": "EUV multilayer mirrors",
+          "why": "EUV 成像依賴多層膜反射光學，可把薄膜工程與精密表面形貌連回整機光路。",
+          "whyEn": "EUV imaging relies on multilayer reflective optics, linking thin films and precision surface form to the system optical path.",
+          "transfer": "分開考慮表面形狀、粗糙度、材料界面與光學傳輸，再評估累積影響。",
+          "transferEn": "Consider surface form, roughness, material interfaces and optical transmission separately before assessing cumulative effects.",
+          "difference": "可見光透鏡的透射設計不能直接移植到 EUV；反射損失與吸收仍存在，鏡面也有波長限制。",
+          "differenceEn": "Visible-glass transmission designs do not transfer directly to EUV; reflection loss, absorption and wavelength constraints remain.",
+          "practice": [
+            "畫出相同功能的折射與反射兩種簡化光路，標示材料界面。",
+            "以符號反射率計算多個界面的乘積，只比較趨勢而不捏造真實機台係數。",
+            "列出能區分表面形變與反射效率下降的兩類量測。"
+          ],
+          "practiceEn": [
+            "Draw simplified refractive and reflective paths performing the same function and label material interfaces.",
+            "Multiply symbolic reflectivities across interfaces without inventing actual machine coefficients.",
+            "List measurement classes distinguishing surface deformation from reduced reflection efficiency."
+          ],
+          "referenceUrls": [
+            "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors"
+          ]
+        },
+        {
+          "id": "a403",
+          "title": "EUV 光源錫滴控制概念",
+          "titleEn": "EUV-source tin-droplet control concepts",
+          "why": "錫滴與雷射脈衝的配合使光源成為時序控制問題，而不只是光學元件問題。",
+          "whyEn": "Coordinating tin droplets and laser pulses makes the source a timing-control problem as well as an optical one.",
+          "transfer": "把輸入事件、感測時刻和作用時刻放在同一時間軸，追蹤誤差如何傳到下游。",
+          "transferEn": "Place input events, sensing and action on a shared timeline and trace error propagation downstream.",
+          "difference": "雷射能量、錫滴位置與有用 EUV 輸出是不同量；光源穩定不單獨保證晶圓成像品質。",
+          "differenceEn": "Laser energy, droplet position and useful EUV output are different quantities; source stability alone does not guarantee wafer image quality.",
+          "practice": [
+            "用時間軸畫錫滴抵達、前置脈衝及主脈衝的概念順序，不寫機台參數。",
+            "分別加入位置偏移與時序偏移兩種假設，追蹤可能改變的觀察量。",
+            "提出辨識兩種誤差所需的量測，並將光源輸出與晶圓面劑量分欄。"
+          ],
+          "practiceEn": [
+            "Draw the conceptual order of droplet arrival, prepulse and main pulse without machine parameters.",
+            "Introduce separate position and timing offsets and trace potentially affected observations.",
+            "Propose measurements distinguishing these errors and separate source output from wafer-plane dose."
+          ],
+          "referenceUrls": [
+            "https://www.asml.com/en/technology/lithography-principles/light-and-lasers"
+          ]
+        },
+        {
+          "id": "a404",
+          "title": "微影晶圓台精密定位",
+          "titleEn": "Precision positioning of lithography wafer stages",
+          "why": "曝光時影像與晶圓的相對運動必須受控，因此定位平台的動態行為是微影核心。",
+          "whyEn": "Relative image–wafer motion must be controlled during exposure, making positioning-stage dynamics central to lithography.",
+          "transfer": "區分指令、量測位置、追隨誤差及整定時間，並把振動與熱漂移列入誤差來源。",
+          "transferEn": "Separate commanded and measured position, tracking error and settling time while considering vibration and thermal drift.",
+          "difference": "靜止時到達同一座標不代表掃描時誤差相同；一般馬達定位精度不能直接當作曝光套刻精度。",
+          "differenceEn": "Equal stationary coordinates do not establish equal scanning errors; ordinary motor-position accuracy is not exposure-overlay accuracy.",
+          "practice": [
+            "自製兩條明示為示意的指令與回應曲線，一條有延遲、一條有振盪。",
+            "在相同時間窗比較追隨誤差，另列停止後的定位結果。",
+            "解釋僅查看終點座標會漏掉哪些曝光問題，並提出取樣計畫。"
+          ],
+          "practiceEn": [
+            "Create explicitly illustrative command/response curves, one with lag and one with oscillation.",
+            "Compare tracking error over the same time window and record final stationary position separately.",
+            "Explain what endpoint-only checks miss during exposure and propose a sampling plan."
+          ],
+          "referenceUrls": [
+            "https://www.asml.com/en/technology/lithography-principles/mechanics-and-mechatronics",
+            "https://www.asml.com/en/technology/lithography-principles/measuring-accuracy"
+          ]
+        },
+        {
+          "id": "a405",
+          "title": "消色差透鏡設計",
+          "titleEn": "Achromatic lens design",
+          "why": "消色差透鏡回應不同波長如何聚焦的問題，幫助辨認材料色散的影響。",
+          "whyEn": "Achromatic lenses address focusing across wavelengths and help identify material-dispersion effects.",
+          "transfer": "固定口徑、波段和成像條件，分開檢查焦點位置、光斑與像差。",
+          "transferEn": "Hold aperture, wavelength range and imaging conditions fixed and inspect focal position, spot size and aberrations separately.",
+          "difference": "消色差不代表所有波長完全同焦，也不消除全部像差；EUV 反射光學另受吸收和鍍膜限制。",
+          "differenceEn": "Achromatic does not mean perfect common focus at every wavelength or elimination of every aberration; EUV optics have different absorption and coating constraints.",
+          "practice": [
+            "畫單片透鏡與消色差組的多波長光線示意，標明是概念圖。",
+            "以官方圖表比較波長改變時的焦移，並另外記錄光斑或像差指標。",
+            "說明哪些比較原理可用於 DUV，哪些可見光材料或組件不能移植至 EUV。"
+          ],
+          "practiceEn": [
+            "Sketch multicolor rays for a singlet and achromat and label the figures as conceptual.",
+            "Compare wavelength-dependent focal shifts using official figures and record spot or aberration metrics separately.",
+            "Explain transferable DUV comparison principles and visible materials/components that cannot transfer to EUV."
+          ],
+          "referenceUrls": [
+            "https://www.edmundoptics.com/knowledge-center/application-notes/optics/why-use-an-achromatic-lens/",
+            "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors"
+          ]
+        },
+        {
+          "id": "a048",
+          "title": "套刻誤差量測與補償",
+          "titleEn": "Overlay metrology and compensation",
+          "why": "套刻把先前圖案與新曝光層連在一起，適合練習多位置量測和校正後殘差。",
+          "whyEn": "Overlay connects previous patterns with a new exposure, supporting practice with multi-location measurements and post-correction residuals.",
+          "transfer": "建立共同座標，分解平移、旋轉與空間變化，並用未參與擬合的位置檢查校正。",
+          "transferEn": "Establish common coordinates, separate translation, rotation and spatial variation, and check corrections at locations excluded from fitting.",
+          "difference": "套刻不是線寬；標記未必完全代表功能圖案，清晰的線條仍可能和底層錯位。",
+          "differenceEn": "Overlay is not linewidth; markers may not fully represent device patterns, and sharp features can still be misplaced.",
+          "practice": [
+            "在兩層示意圖放入多個標記，加入整體平移和局部偏移。",
+            "先校正平移，再畫剩餘位移向量，觀察局部誤差是否仍存在。",
+            "提出獨立檢查位置及理由，避免只展示被用來校正的標記。"
+          ],
+          "practiceEn": [
+            "Place several marks on a two-layer sketch and introduce global translation plus a local offset.",
+            "Correct translation first, then plot remaining displacement vectors to inspect local error.",
+            "Propose independent check locations and justify them instead of showing only fitted markers."
+          ],
+          "referenceUrls": [
+            "https://www.asml.com/en/technology/lithography-principles/measuring-accuracy"
+          ]
+        },
+        {
+          "id": "a049",
+          "title": "曝光焦距與劑量控制",
+          "titleEn": "Exposure focus and dose control",
+          "why": "焦點與劑量共同影響光阻圖形，將機台狀態與材料反應連回曝光結果。",
+          "whyEn": "Focus and dose jointly affect resist patterns, connecting machine state and material response to exposure results.",
+          "transfer": "分清可操控變數、量測指標與判準，找同時滿足多個指標的範圍。",
+          "transferEn": "Separate controllable variables, measured responses and acceptance criteria, seeking ranges satisfying several metrics together.",
+          "difference": "增加劑量不能通用地補償失焦；不同光阻與圖形密度也不能共用同一窗口。",
+          "differenceEn": "More dose does not universally compensate for defocus; different resists and pattern densities do not share one common window.",
+          "practice": [
+            "建立焦點與劑量的空白矩陣，為線寬、殘留與完整性各訂觀察欄。",
+            "填入自備或來源資料；沒有資料時，只標出待驗證假說。",
+            "比較單點最佳結果與鄰近條件也能接受的區域，說明何者較能支持穩健性。"
+          ],
+          "practiceEn": [
+            "Create an empty focus–dose matrix with fields for linewidth, residue and integrity.",
+            "Populate it from your own or referenced data; otherwise mark only hypotheses to test.",
+            "Compare a best single point with a region tolerating neighboring conditions and explain which better supports robustness."
+          ],
+          "referenceUrls": [
+            "https://www.asml.com/en/technology/lithography-principles/measuring-accuracy",
+            "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors"
+          ]
+        },
+        {
+          "id": "a042",
+          "title": "高數值孔徑 EUV 成像",
+          "titleEn": "High-numerical-aperture EUV imaging",
+          "why": "High NA 把解析度改善與光學、運動及製程控制放在同一系統中比較。",
+          "whyEn": "High NA enables a system comparison of resolution improvement with optics, motion and process control.",
+          "transfer": "使用相同波長和明確模型假設做相對比較，再列出簡化公式省略的條件。",
+          "transferEn": "Make relative comparisons at fixed wavelength with declared assumptions, then list conditions omitted by the simplified formula.",
+          "difference": "NA 是光學參數，節點名稱是技術世代；解析度提升不直接證明套刻、產能或良率同步提升。",
+          "differenceEn": "NA is an optical parameter and a node name is a generation label; resolution improvement does not establish better overlay, throughput or yield.",
+          "practice": [
+            "用 CD 約與 λ/NA 成正比的關係，固定 λ 與 k1 比較兩個 NA。",
+            "把解析度、位置控制與光阻窗口分成三欄，列出各自證據。",
+            "提交一項可能改善與兩項仍需驗證的限制，不用節點名稱取代量測。"
+          ],
+          "practiceEn": [
+            "Compare two NA values using CD proportional to λ/NA while holding λ and k1 fixed.",
+            "Separate resolution, position control and resist window into three evidence columns.",
+            "Report one possible benefit and two unresolved constraints without substituting a node label for measurement."
+          ],
+          "referenceUrls": [
+            "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors",
+            "https://www.asml.com/en/technology/lithography-principles/mechanics-and-mechatronics",
+            "https://www.asml.com/en/technology/lithography-principles/measuring-accuracy"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "packaging",
+      "overview": "從接合粒度、中介層、HBM 到熱與可靠度，比較各子工藝如何影響同一系統。每個比較都連到現有目錄；練習屬設計推理，不是封裝產線配方或資格認證。",
+      "overviewEn": "Compare how bonding granularity, interposers, HBM, thermal behavior and reliability influence one system. Every comparison links to the existing catalog; exercises are design reasoning, not packaging-line recipes or qualification.",
+      "references": [
+        {
+          "title": "TSMC-SoIC",
+          "titleEn": "TSMC-SoIC",
+          "publisher": "TSMC",
+          "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm",
+          "scope": "3D 晶粒整合及晶圓／晶粒接合平台的公開概述；未揭露表面處理與接合配方。",
+          "scopeEn": "Public overview of 3D die integration and wafer/die bonding platforms; surface-treatment and bonding recipes are not disclosed."
+        },
+        {
+          "title": "CoWoS",
+          "titleEn": "CoWoS",
+          "publisher": "TSMC",
+          "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+          "scope": "邏輯、HBM、中介層與封裝的系統整合概念；不視不同 CoWoS 版本為同一製程。",
+          "scopeEn": "System integration of logic, HBM, interposers and packages; distinct CoWoS versions are not treated as one process."
+        },
+        {
+          "title": "Temporary Wafer Bonding Processing Theory",
+          "titleEn": "Temporary Wafer Bonding Processing Theory",
+          "publisher": "Brewer Science",
+          "url": "https://www.brewerscience.com/processing-theories/temporary-bonding/",
+          "scope": "載板支撐、暫時接合與解接合方法；材料條件須依各產品文件及設施程序。",
+          "scopeEn": "Carrier support, temporary bonding and debonding methods; material conditions depend on product documentation and facility procedures."
+        },
+        {
+          "title": "Semiconductor and IC Package Thermal Metrics (Rev. D)",
+          "titleEn": "Semiconductor and IC Package Thermal Metrics (Rev. D)",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/an/spra953c/spra953c.pdf",
+          "scope": "熱阻與熱特徵參數的邊界及誤用，原 URL 目前提供 Rev. D；不提供特定 3D 堆疊的熱模型。",
+          "scopeEn": "Boundaries and misuse of thermal resistance/characterization metrics; this original URL serves Rev. D, not a specific 3D-stack thermal model."
+        },
+        {
+          "title": "Reliability testing",
+          "titleEn": "Reliability testing",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/quality-reliability/reliability/testing.html",
+          "scope": "溫度循環、HTOL、濕熱等加速試驗的目的與區別；不能替代元件實際資格認證。",
+          "scopeEn": "Purposes and distinctions of temperature cycling, HTOL, humidity and other accelerated tests; not a substitute for actual device qualification."
+        }
+      ],
+      "related": [
+        {
+          "id": "a106",
+          "title": "晶圓對晶圓混合接合",
+          "titleEn": "Wafer-to-wafer hybrid bonding",
+          "why": "晶圓對晶圓接合同時建立大量界面，適合研究整片對準與晶粒位置對應。",
+          "whyEn": "Wafer-to-wafer bonding forms many interfaces simultaneously, making wafer alignment and die-position correspondence central.",
+          "transfer": "先定義兩側版圖對應、可接受表面與測試資訊，再討論整批整合。",
+          "transferEn": "Define layout correspondence, acceptable surfaces and available test information on both sides before reasoning about batch integration.",
+          "difference": "整片接合無法像逐顆挑選那樣任意重配晶粒；尺寸、排列和缺陷分布會影響比較。",
+          "differenceEn": "Whole-wafer assembly cannot arbitrarily remap dies like individual placement; dimensions, layout and defect maps affect the comparison.",
+          "practice": [
+            "製作兩張假想晶圓圖，標出各位置的已知良品與未知狀態。",
+            "比較固定位置成對接合與可挑選晶粒的配對結果，標明是教學模型。",
+            "說明接合缺陷尚未納入時，為何配對計數不能稱為真實封裝良率。"
+          ],
+          "practiceEn": [
+            "Create two hypothetical wafer maps with known-good and unknown sites.",
+            "Compare fixed-position pairing with selectable-die pairing, explicitly labeling the educational model.",
+            "Explain why pairing counts are not real package yield when bonding defects are omitted."
+          ],
+          "referenceUrls": [
+            "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm"
+          ]
+        },
+        {
+          "id": "a107",
+          "title": "晶粒對晶圓混合接合",
+          "titleEn": "Die-to-wafer hybrid bonding",
+          "why": "晶粒對晶圓接合讓異尺寸晶粒與已知良品選擇成為自由度，也新增逐顆放置需求。",
+          "whyEn": "Die-to-wafer bonding adds freedom for different die sizes and known-good-die selection while introducing individual placement requirements.",
+          "transfer": "把設計自由度和操作負擔一起列帳，追蹤每顆晶粒從測試到接合的身分與方向。",
+          "transferEn": "Account for design freedom and operational burden together, tracking die identity and orientation from test to bonding.",
+          "difference": "挑選已知良品不消除拾取、污染和接合失效；也不能直接沿用整片接合的產能假設。",
+          "differenceEn": "Known-good-die selection does not eliminate pickup, contamination or bonding failures, nor justify whole-wafer throughput assumptions.",
+          "practice": [
+            "畫兩種尺寸晶粒放到同一基底的示意佈局，標出方向標記。",
+            "比較兩種接合粒度在配對彈性、放置次數及追蹤上的差異。",
+            "定義接合前後要比對的晶粒 ID、測試狀態與連接證據。"
+          ],
+          "practiceEn": [
+            "Draw two die sizes on one base with orientation marks.",
+            "Compare bonding granularities for pairing flexibility, placement count and traceability.",
+            "Define die ID, test status and connection evidence to reconcile before and after bonding."
+          ],
+          "referenceUrls": [
+            "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm"
+          ]
+        },
+        {
+          "id": "a109",
+          "title": "晶圓暫時接合與解接合",
+          "titleEn": "Temporary wafer bonding and debonding",
+          "why": "暫時接合讓薄晶圓在背面加工時受到支撐，連接薄化、搬運與後續堆疊。",
+          "whyEn": "Temporary bonding supports thin wafers during backside work, connecting thinning, handling and later stacking.",
+          "transfer": "把加工時要黏住與結束後要分離視為兩個不同的性能要求。",
+          "transferEn": "Treat remaining attached during processing and separating afterward as distinct performance requirements.",
+          "difference": "暫時載板的目標是受控分離，永久電性接合則要求長期連接；材料與驗證不同。",
+          "differenceEn": "Temporary carriers aim for controlled release, whereas permanent electrical bonding aims for lasting connection; materials and verification differ.",
+          "practice": [
+            "畫晶圓、接合層與載板三層，標出加工後哪些部分保留。",
+            "比較機械、熱或光輔助解接合的概念條件，只列相容性問題而不套用未驗證參數。",
+            "為支撐失效、分離損傷和殘留各選一項觀察，說明為何厚度量測不足。"
+          ],
+          "practiceEn": [
+            "Draw wafer, bonding layer and carrier and mark what remains after processing.",
+            "Compare conceptual mechanical, thermal or optical release using compatibility questions rather than unverified settings.",
+            "Choose observations for support failure, release damage and residue and explain why thickness alone is insufficient."
+          ],
+          "referenceUrls": [
+            "https://www.brewerscience.com/processing-theories/temporary-bonding/"
+          ]
+        },
+        {
+          "id": "a125",
+          "title": "矽中介層佈線",
+          "titleEn": "Silicon-interposer routing",
+          "why": "中介層把分散晶粒的介面匯成系統路由，是由器件製程走向封裝共同設計的一步。",
+          "whyEn": "An interposer routes interfaces among distributed dies, extending device-process learning into package co-design.",
+          "transfer": "由資料流決定端點和路徑，再檢查跨距、密度、供電與測試存取。",
+          "transferEn": "Derive endpoints and paths from data flow, then inspect span, density, power and test access.",
+          "difference": "中介層不只是縮小的 PCB；材料與互連技術限制不同，面積也不能直接代表成本。",
+          "differenceEn": "An interposer is not simply a smaller PCB; materials and interconnects impose different limits, and area alone does not determine cost.",
+          "practice": [
+            "畫邏輯與記憶體晶粒的端點圖，分別標出高速訊號和電源。",
+            "交換兩顆晶粒位置，比較路徑長度、交叉與端點可達性。",
+            "列出仍需的寄生參數、組裝與測試資料，不把示意連線當作完成佈線。"
+          ],
+          "practiceEn": [
+            "Map endpoints for logic and memory dies, distinguishing high-speed signals from power.",
+            "Swap two die locations and compare length, crossings and endpoint access.",
+            "List missing parasitic, assembly and test data; schematic connections are not completed routing."
+          ],
+          "referenceUrls": [
+            "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+          ]
+        },
+        {
+          "id": "a131",
+          "title": "高頻寬記憶體堆疊整合",
+          "titleEn": "High-bandwidth-memory stack integration",
+          "why": "HBM 結合記憶體堆疊與鄰近邏輯互連，讓頻寬需求能回推至封裝介面。",
+          "whyEn": "HBM combines memory stacking with nearby logic interconnect, connecting bandwidth requirements to package interfaces.",
+          "transfer": "分開記錄通道數、每通道速率、方向與計算邊界，再評估系統瓶頸。",
+          "transferEn": "Record lane count, per-lane rate, direction and accounting boundary separately before assessing bottlenecks.",
+          "difference": "容量、峰值介面頻寬與應用可用頻寬不同；HBM 堆疊製作也不等於整個 CoWoS 組裝。",
+          "differenceEn": "Capacity, peak interface bandwidth and application bandwidth differ; HBM-stack manufacturing is not the entire CoWoS assembly flow.",
+          "practice": [
+            "為假想加速器分別列出容量與資料搬移需求，不共用一個指標。",
+            "比較增加堆疊數與增加單一路徑速率，各會改變哪些端點和熱源。",
+            "畫邏輯到記憶體的完整路徑，標明未建模的協定、利用率與熱限制。"
+          ],
+          "practiceEn": [
+            "List capacity and data-movement requirements for a hypothetical accelerator as separate metrics.",
+            "Compare adding stacks with increasing one path’s rate, noting changed endpoints and heat sources.",
+            "Draw the logic-to-memory path and mark unmodeled protocol, utilization and thermal limits."
+          ],
+          "referenceUrls": [
+            "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+            "https://www.ti.com/lit/an/spra953c/spra953c.pdf"
+          ]
+        },
+        {
+          "id": "a132",
+          "title": "3D 邏輯堆疊熱管理",
+          "titleEn": "Thermal management for 3D logic stacks",
+          "why": "3D 堆疊讓熱源相互靠近，需把晶粒、接合界面、封裝與冷卻環境一起看。",
+          "whyEn": "3D stacking brings heat sources closer, requiring a joint view of dies, bonding interfaces, package and cooling environment.",
+          "transfer": "先設定熱流邊界，再選相符的熱參數；比較時固定功率與環境。",
+          "transferEn": "Define heat-flow boundaries before selecting matching thermal metrics; hold power and environment fixed for comparisons.",
+          "difference": "資料表 RθJA 取決於測試板與環境，不是可任意套用到多層堆疊的固定材料常數。",
+          "differenceEn": "Datasheet RθJA depends on board and environment; it is not a fixed material constant freely transferable to multilayer stacks.",
+          "practice": [
+            "畫向上、向下和側向散熱路徑，標出各層熱源。",
+            "比較同功率下兩種邊界條件，記錄哪些既有熱參數不再直接適用。",
+            "提出溫度觀察位置與仍需的材料／界面資料，不用單一熱阻宣稱可靠度。"
+          ],
+          "practiceEn": [
+            "Draw upward, downward and lateral heat paths with heat sources on each tier.",
+            "Compare two boundary conditions at equal power and note thermal metrics that no longer apply directly.",
+            "Propose temperature observation points and missing material/interface data without claiming reliability from one resistance."
+          ],
+          "referenceUrls": [
+            "https://www.ti.com/lit/an/spra953c/spra953c.pdf",
+            "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm"
+          ]
+        },
+        {
+          "id": "a146",
+          "title": "封裝溫度循環可靠度",
+          "titleEn": "Package thermal-cycling reliability",
+          "why": "組裝後反覆溫度變化可能揭露界面與連接問題，補上製造當下看不到的時間維度。",
+          "whyEn": "Repeated temperature changes after assembly can reveal interface and connection problems, adding a time dimension absent from immediate inspection.",
+          "transfer": "先列失效機制，再選應力與觀察；記錄熱歷程、循環數和檢查時點。",
+          "transferEn": "Start with failure mechanisms, then choose stress and observations; record thermal history, cycle count and inspection times.",
+          "difference": "溫度循環、恆溫儲存與通電壽命不同；通過一種試驗不代表適用所有環境。",
+          "differenceEn": "Temperature cycling, high-temperature storage and operating-life tests differ; passing one does not establish suitability for every environment.",
+          "practice": [
+            "為接合界面、金屬連接與封裝材料列出可能失效的觀察項目。",
+            "比較循環溫度與恆定高溫兩種假想試驗，說明各自較能探查的問題。",
+            "設計試驗前後的同一量測比較，列出外推壽命仍缺的模型與條件。"
+          ],
+          "practiceEn": [
+            "List observable failure indicators for bonding interfaces, metal connections and package materials.",
+            "Compare hypothetical cycling and constant-temperature tests and the problems each probes.",
+            "Plan the same measurement before and after stress and list missing models/conditions for lifetime extrapolation."
+          ],
+          "referenceUrls": [
+            "https://www.ti.com/quality-reliability/reliability/testing.html"
+          ]
+        }
+      ]
+    },
+    {
+      "courseId": "silicon-photonics",
+      "overview": "把光引擎拆成耦合、調變、偵測和可製造設計，學習光、電與封裝介面的共同設計。練習使用公開模型和自備資料，不表示已取得代工 PDK 或商用求解器。",
+      "overviewEn": "Separate an optical engine into coupling, modulation, detection and manufacturable design to study optical, electrical and package interfaces together. Exercises use public models and your own data, not an assumed foundry PDK or solver license.",
+      "references": [
+        {
+          "title": "iSiPP200 integrated photonics platform",
+          "titleEn": "iSiPP200 integrated photonics platform",
+          "publisher": "imec IC-link",
+          "url": "https://www.imeciclink.com/en/asic-fabrication/silicon-photonics-foundry-services",
+          "scope": "公開列出 MZI、微環調變器、Ge 偵測器與耦合元件；可讀介紹不等於取得 PDK 授權。",
+          "scopeEn": "Publicly lists MZI/ring modulators, Ge detectors and couplers; access to this overview is not a PDK license."
+        },
+        {
+          "title": "Grating coupler",
+          "titleEn": "Grating coupler",
+          "publisher": "Ansys Optics",
+          "url": "https://optics.ansys.com/hc/en-us/articles/360042305334-Grating-coupler",
+          "scope": "官方數值模擬示例，包含幾何、對準、2D/3D 與 S 參數；範例結果不是本網站量測。",
+          "scopeEn": "Official numerical example covering geometry, alignment, 2D/3D analysis and S-parameters; example results are not measurements by this website."
+        },
+        {
+          "title": "Fiber-to-Chip Edge Coupler with a Microlens",
+          "titleEn": "Fiber-to-Chip Edge Coupler with a Microlens",
+          "publisher": "Ansys Optics",
+          "url": "https://optics.ansys.com/hc/en-us/articles/33444674330131-Fiber-to-Chip-Edge-Coupler-with-a-Microlens",
+          "scope": "模場轉換、偏移與傾斜公差的官方模擬流程；網站不內建文中商用求解器。",
+          "scopeEn": "Official simulation workflow for mode conversion, offset and tilt tolerances; the website does not embed the commercial solvers used."
+        },
+        {
+          "title": "Ring resonator getting started: Design and initial simulation",
+          "titleEn": "Ring resonator getting started: Design and initial simulation",
+          "publisher": "Ansys Optics",
+          "url": "https://optics.ansys.com/hc/en-us/articles/360042800293-Ring-resonator-getting-started-Design-and-initial-simulation",
+          "scope": "共振條件、耦合與損耗的模型練習；被動環形模型不等於完整高速調變器。",
+          "scopeEn": "Model exercise for resonance, coupling and loss; a passive ring model is not a complete high-speed modulator."
+        },
+        {
+          "title": "Process Design Kits (PDKs)",
+          "titleEn": "Process Design Kits (PDKs)",
+          "publisher": "AIM Photonics",
+          "url": "https://www.aimphotonics.com/pdk",
+          "scope": "設計指南、元件庫、規則檢查和版本管理的公開說明；PDK 本體及製造有額外存取條件。",
+          "scopeEn": "Public description of design guides, component libraries, rule checks and versioning; actual PDK and fabrication access have additional conditions."
+        }
+      ],
+      "related": [
+        {
+          "id": "a154",
+          "title": "光柵耦合器設計",
+          "titleEn": "Grating-coupler design",
+          "why": "光柵耦合器將晶片表面的光導向波導，是比較晶圓級接入與封裝光路的入口。",
+          "whyEn": "A grating coupler links light above a chip to a waveguide, introducing wafer-level access and package-optics comparisons.",
+          "transfer": "同時記錄幾何、波長、偏振及對準條件，不只比較單一峰值效率。",
+          "transferEn": "Record geometry, wavelength, polarization and alignment together rather than comparing peak efficiency alone.",
+          "difference": "表面光柵和端面耦合的光路不同；2D 模型省略的橫向效應需在適用時另行檢查。",
+          "differenceEn": "Surface gratings and edge couplers use different paths; lateral effects omitted from 2D models need separate checks where relevant.",
+          "practice": [
+            "畫表面與端面耦合光路，標出光纖位置和偏振定義。",
+            "比較同一波段的效率曲線，同時記錄光纖偏移與角度條件。",
+            "提出峰值效率之外的判準，如頻寬或容差，並指出缺少的資料。"
+          ],
+          "practiceEn": [
+            "Draw surface and edge coupling paths with fiber positions and polarization definitions.",
+            "Compare efficiency spectra over the same band while recording fiber offset and angle.",
+            "Propose a criterion beyond peak efficiency, such as bandwidth or tolerance, and identify missing evidence."
+          ],
+          "referenceUrls": [
+            "https://optics.ansys.com/hc/en-us/articles/360042305334-Grating-coupler",
+            "https://optics.ansys.com/hc/en-us/articles/33444674330131-Fiber-to-Chip-Edge-Coupler-with-a-Microlens"
+          ]
+        },
+        {
+          "id": "a155",
+          "title": "晶片邊緣耦合器設計",
+          "titleEn": "Edge-coupler design",
+          "why": "邊緣耦合器處理光纖與晶片模場差異，讓光學設計和晶粒邊緣封裝互相制約。",
+          "whyEn": "Edge couplers address fiber–chip mode mismatch and couple optical design with die-edge packaging constraints.",
+          "transfer": "在相同入射條件下比較模場轉換與位置容差，逐段建立損耗帳本。",
+          "transferEn": "Compare mode conversion and positional tolerance under common input conditions and build a segment-by-segment loss budget.",
+          "difference": "端面可達性、模場轉換區與微透鏡會改變設計；理想對準損耗不能代表組裝後分布。",
+          "differenceEn": "Edge access, spot-size conversion and microlenses change the design; nominal aligned loss does not represent assembled distributions.",
+          "practice": [
+            "畫光纖、可選微透鏡與模場轉換區，標出損耗量測邊界。",
+            "分別比較橫向偏移和軸向間距的假說或來源資料，保持波長與偏振一致。",
+            "比較最低損耗和可容忍偏移範圍，提出適合封裝的有條件選擇。"
+          ],
+          "practiceEn": [
+            "Draw fiber, optional microlens and spot-size converter with loss-measurement boundaries.",
+            "Compare hypothetical or referenced lateral-offset and axial-spacing sweeps at fixed wavelength and polarization.",
+            "Compare minimum loss with tolerated displacement and make a conditional packaging choice."
+          ],
+          "referenceUrls": [
+            "https://optics.ansys.com/hc/en-us/articles/33444674330131-Fiber-to-Chip-Edge-Coupler-with-a-Microlens"
+          ]
+        },
+        {
+          "id": "a156",
+          "title": "光纖陣列主動對準",
+          "titleEn": "Active alignment of fiber arrays",
+          "why": "主動對準使用光學訊號尋找位置，將被動幾何設計轉成組裝回饋問題。",
+          "whyEn": "Active alignment uses optical response to choose position, turning passive geometry into an assembly-feedback problem.",
+          "transfer": "定義搜尋變數、觀察訊號和停止條件，再檢查最佳點周圍的容差。",
+          "transferEn": "Define search variables, observed signal and stopping criteria, then inspect tolerance around the optimum.",
+          "difference": "輸出受光源與偏振漂移影響；暫時找到最佳位置不代表固定後長期穩定。",
+          "differenceEn": "Output can vary with source and polarization drift; a temporary optimum does not establish stability after fixation.",
+          "practice": [
+            "畫光功率隨 x、y 的變化，明確標為示意或註明資料來源。",
+            "比較逐軸搜尋與小區域掃描，指出可能停在不穩健位置的情況。",
+            "列出固定前後需重測的偏振、功率基準與位移，避免把訊號漂移當成對準改善。"
+          ],
+          "practiceEn": [
+            "Plot power versus x and y, labeling illustration or data provenance.",
+            "Compare sequential-axis search and a local-area scan, identifying fragile optima.",
+            "List polarization, reference-power and displacement checks before/after fixation to distinguish drift from alignment improvement."
+          ],
+          "referenceUrls": [
+            "https://optics.ansys.com/hc/en-us/articles/33444674330131-Fiber-to-Chip-Edge-Coupler-with-a-Microlens",
+            "https://optics.ansys.com/hc/en-us/articles/360042305334-Grating-coupler"
+          ]
+        },
+        {
+          "id": "a162",
+          "title": "馬赫曾德爾調變器",
+          "titleEn": "Mach-Zehnder modulators",
+          "why": "MZI 以兩條路徑的相位差改變輸出，可把電路驅動與光學干涉聯繫起來。",
+          "whyEn": "An MZI changes output through phase difference between two paths, linking electrical drive and optical interference.",
+          "transfer": "分開追蹤分光、相位改變、合光與輸出，觀察控制量如何轉成訊號。",
+          "transferEn": "Separate splitting, phase change, recombination and output to trace control-to-signal conversion.",
+          "difference": "干涉型 MZI 與共振型微環的頻譜和工作點不同；理想靜態曲線不是高速性能證據。",
+          "differenceEn": "Interferometric MZIs and resonant rings have different spectra and operating points; ideal static curves are not high-speed performance evidence.",
+          "practice": [
+            "畫 MZI 與微環光路，標出相位作用區和輸出埠。",
+            "在相同輸入光功率下比較工作點偏移的影響，列出理想假設。",
+            "指出仍需哪些電極、頻寬、損耗與驅動資料，才能做系統比較。"
+          ],
+          "practiceEn": [
+            "Draw MZI and ring paths with phase-control regions and output ports.",
+            "Compare operating-point shifts at equal input power, stating ideal assumptions.",
+            "Identify electrode, bandwidth, loss and drive data needed for a system comparison."
+          ],
+          "referenceUrls": [
+            "https://www.imeciclink.com/en/asic-fabrication/silicon-photonics-foundry-services",
+            "https://optics.ansys.com/hc/en-us/articles/360042800293-Ring-resonator-getting-started-Design-and-initial-simulation"
+          ]
+        },
+        {
+          "id": "a163",
+          "title": "微環調變器",
+          "titleEn": "Microring modulators",
+          "why": "微環調變器結合共振與電控變化，可深入比較小體積元件的光學與熱敏感性。",
+          "whyEn": "Microring modulators combine resonance and electrical control, extending comparison into compact-device optical and thermal sensitivity.",
+          "transfer": "區分共振位置、線寬、耦合與損耗，改一個參數後再比較輸出。",
+          "transferEn": "Distinguish resonance position, linewidth, coupling and loss before comparing outputs after parameter changes.",
+          "difference": "被動環形模型沒有自動包含電接面、驅動與高速響應；小尺寸也不保證系統功耗較低。",
+          "differenceEn": "Passive ring models do not automatically include junctions, drive or high-speed response; small footprint does not guarantee lower system power.",
+          "practice": [
+            "為 through port 與 drop port 畫預期頻譜，先確認埠定義。",
+            "比較共振平移與線寬改變，辨認對固定雷射工作點的不同影響。",
+            "列出從被動共振器推進到調變器尚缺的電性與熱控制證據。"
+          ],
+          "practiceEn": [
+            "Sketch expected through-port and drop-port spectra after confirming port definitions.",
+            "Compare resonance shift and linewidth change at a fixed laser wavelength.",
+            "List electrical and thermal-control evidence missing between a passive resonator and a modulator."
+          ],
+          "referenceUrls": [
+            "https://optics.ansys.com/hc/en-us/articles/360042800293-Ring-resonator-getting-started-Design-and-initial-simulation",
+            "https://www.imeciclink.com/en/asic-fabrication/silicon-photonics-foundry-services"
+          ]
+        },
+        {
+          "id": "a164",
+          "title": "鍺光偵測器整合",
+          "titleEn": "Germanium photodetector integration",
+          "why": "鍺光偵測器把光路接回電路，補齊光引擎的接收端而不只研究發光與導光。",
+          "whyEn": "A Ge photodetector returns the optical path to electronics, completing receiver-side analysis beyond generation and guiding.",
+          "transfer": "定義入射光功率、輸出電流和讀出邊界，再檢查頻寬與雜訊。",
+          "transferEn": "Define incident optical power, output current and readout boundaries, then examine bandwidth and noise.",
+          "difference": "偵測器和調變器的訊號轉換方向不同；光電流大不代表誤碼低或頻寬高。",
+          "differenceEn": "Detectors and modulators have different conversion directions; large photocurrent does not prove low errors or high bandwidth.",
+          "practice": [
+            "畫調變器與偵測器相反的訊號方向，標示電／光邊界。",
+            "建立光功率、響應度、電流與頻寬四欄表，未給數值保持未知。",
+            "比較改善耦合與更換偵測器兩種提案，說明還需哪些雜訊與飽和資料。"
+          ],
+          "practiceEn": [
+            "Draw opposite signal directions for modulator and detector with electrical/optical boundaries.",
+            "Create fields for power, responsivity, current and bandwidth, preserving unspecified values as unknown.",
+            "Compare improved coupling with a changed detector and explain missing noise and saturation data."
+          ],
+          "referenceUrls": [
+            "https://www.imeciclink.com/en/asic-fabrication/silicon-photonics-foundry-services",
+            "https://optics.ansys.com/hc/en-us/articles/33444674330131-Fiber-to-Chip-Edge-Coupler-with-a-Microlens"
+          ]
+        },
+        {
+          "id": "a190",
+          "title": "光子晶片製程設計套件",
+          "titleEn": "Photonic process-design kits",
+          "why": "光子 PDK 連結元件原理、版圖與模型，讓單元件學習走向可檢查的設計流程。",
+          "whyEn": "A photonic PDK connects principles, layouts and models, extending device learning into a checkable design flow.",
+          "transfer": "保存元件版本、適用條件、埠和設計規則，讓模型假設可追溯。",
+          "transferEn": "Preserve component versions, validity conditions, ports and design rules so assumptions remain traceable.",
+          "difference": "公開介紹不等於取得完整 PDK；DRC 通過不替代光學性能或封裝驗證。",
+          "differenceEn": "A public overview does not provide a complete PDK; passing DRC does not replace optical-performance or package validation.",
+          "practice": [
+            "為耦合器、調變器與偵測器製作元件卡，填入來源、版本與埠定義。",
+            "比較幾何規則合格與性能符合需求，為每種判準列出不同證據。",
+            "建立變更紀錄：更換平台或 PDK 版本時，要重查哪些模型、版圖與封裝界面。"
+          ],
+          "practiceEn": [
+            "Create cards for a coupler, modulator and detector with source, version and ports.",
+            "Compare geometry-rule compliance and performance acceptance with distinct evidence for each.",
+            "Create a change log of models, layouts and package interfaces to recheck after platform or PDK-version changes."
+          ],
+          "referenceUrls": [
+            "https://www.aimphotonics.com/pdk",
+            "https://www.imeciclink.com/en/asic-fabrication/silicon-photonics-foundry-services"
+          ]
+        }
+      ]
+    }
+  ]
+}

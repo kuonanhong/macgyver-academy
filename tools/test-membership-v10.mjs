@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+import assert from 'node:assert/strict';
+import { webcrypto } from 'node:crypto';
+import { loadBillingConfig, resetLearningEvidence, loadVerifiedLearning, submitVerifiedStep, membershipMarkup, certificateMarkup, bindMembership, formatBillingDate, safeLegalURL } from '../public/academy/membership.js';
+
+globalThis.location = {href:'https://academy.example/academy/index.html#membership',protocol:'https:'};
+globalThis.crypto ||= webcrypto;
+const configuration={mode:'disabled',protected:true,checkoutAvailable:false,freeCourseIds:['semiconductor'],plans:[{id:'all-30',title:'30 天',titleEn:'30 days',amountTwd:299,durationDays:30}],termsVersion:'v10-2026-10',legalUrls:{terms:'commerce-terms.html',privacy:'commerce-terms.html#privacy'}};
+const response=data=>({ok:true,json:async()=>data});
+await loadBillingConfig({fetchImpl:async()=>response(configuration),force:true});
+const markup=membershipMarkup({user:{name:'<script>alert(1)</script>'}});
+assert.match(markup,/課程權限已啟用保護/);
+assert.doesNotMatch(markup,/目前可使用完整教材展示版/);
+assert.match(markup,/https:\/\/academy.example\/academy\/commerce-terms.html/);
+assert.match(markup,/&lt;script&gt;/);
+assert.match(markup,/data-buy-plan="all-30" disabled/);
+assert.match(certificateMarkup({id:'semiconductor'}),/data-publish-certificate-name/);
+assert.match(formatBillingDate(1791928800,false),/2026/);
+assert.equal(formatBillingDate(null),'—');
+assert.equal(safeLegalURL('javascript:alert(1)'), '');
+assert.equal(safeLegalURL('https://user:pass@example.com/'), '');
+assert.equal(safeLegalURL('http://other.example/policy'), '');
+globalThis.location={href:'file:///academy/index.html',protocol:'file:'};
+assert.equal(safeLegalURL('commerce-terms.html'),'file:///academy/commerce-terms.html');
+assert.equal(safeLegalURL('../private.txt'),'');
+globalThis.location={href:'https://academy.example/index.html',protocol:'https:'};
+
+resetLearningEvidence('alice');
+let resolveRequest;
+globalThis.fetch=()=>new Promise(resolve=>{resolveRequest=resolve;});
+const stale=loadVerifiedLearning('semiconductor');
+resetLearningEvidence('bob');
+resolveRequest(response({revision:'r',completed:[],total:2}));
+await assert.rejects(stale,/account changed/);
+resetLearningEvidence('alice');
+const calls=[];
+globalThis.fetch=async(url,options)=>{calls.push({url,options});return response(options.method==='POST'?{passed:true,completed:1,total:2}:{revision:'current-revision',completed:[],total:2});};
+await submitVerifiedStep('semiconductor','step1',1);
+const evidence=JSON.parse(calls.find(call=>call.url==='/api/learning/evidence').options.body);
+assert.equal(evidence.expectedUserId,'alice');
+assert.equal(evidence.revision,'current-revision');
+
+await loadBillingConfig({fetchImpl:async()=>response({...configuration,mode:'sandbox',checkoutAvailable:true}),force:true});
+const button={dataset:{buyPlan:'all-30'},disabled:false}, status={textContent:''};
+const root={querySelectorAll:selector=>selector==='[data-buy-plan]'?[button]:[],querySelector:selector=>selector==='#billingTerms'?{checked:true}:selector==='#billingStatus'?status:null};
+let submitted=false;
+globalThis.document={createElement(tag){return tag==='form'?{append(){},submit(){submitted=true;}}:{};},body:{append(){}}};
+globalThis.fetch=async()=>response({action:'https://attacker.example/pay',fields:{MerchantID:'test'}});
+bindMembership(root,{user:{id:'alice',name:'Alice'}});
+await button.onclick();
+assert.equal(submitted,false);
+assert.match(status.textContent,/Unexpected checkout destination/);
+let checkoutPayload;
+globalThis.fetch=async(url,options)=>{checkoutPayload=JSON.parse(options.body);return response({action:'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5',fields:{MerchantID:'3002607',TotalAmount:'299',CheckMacValue:'PUBLIC_TEST_SIGNATURE'}});};
+await button.onclick();
+assert.equal(submitted,true); // mocked form only; no provider request
+assert.equal(checkoutPayload.expectedUserId,'alice');
+assert.equal(checkoutPayload.planId,'all-30');
+assert.match(checkoutPayload.requestId,/^[a-f0-9]{32}$/);
+assert.equal(checkoutPayload.termsAccepted,true);
+
+const output={innerHTML:'',textContent:''};
+const certificateButton={dataset:{certificate:'semiconductor'},disabled:false,parentElement:{querySelector:selector=>selector==='[data-publish-certificate-name]'?{checked:true}:output}};
+const certificateRoot={querySelector:()=>null,querySelectorAll:selector=>selector==='[data-certificate]'?[certificateButton]:[]};
+let certificatePayload;
+globalThis.fetch=async(url,options)=>{certificatePayload=JSON.parse(options.body);return response({id:'a'.repeat(40),courseTitle:'Course'});};
+bindMembership(certificateRoot,{user:{id:'alice',name:'Alice'}});
+await certificateButton.onclick();
+assert.equal(certificatePayload.publishName,true);
+assert.equal(certificatePayload.expectedUserId,'alice');
+assert.match(output.innerHTML,/\/api\/certificates\/a{40}/);
+console.log('PASS membership: protected/disabled copy, relative legal links, Unix dates, privacy opt-in, profile-change race, strict checkout host and server evidence contract; no real network or payment.');

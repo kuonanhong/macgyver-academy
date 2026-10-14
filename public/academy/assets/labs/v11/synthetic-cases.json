@@ -1,0 +1,195 @@
+{
+  "edition": 11,
+  "synthetic": true,
+  "provenance": "Original invented educational inputs, not measurements or benchmarks.",
+  "cases": {
+    "pipeline": {
+      "inputs": {
+        "base_cpi": 1,
+        "branch_fraction": 0.2,
+        "misprediction_rate": 0.05,
+        "penalty_cycles": 15
+      },
+      "checks": {
+        "cpi": 1.15
+      }
+    },
+    "roofline": {
+      "inputs": {
+        "peak_tflops": 100,
+        "bandwidth_gbs": 1000,
+        "intensity_flop_byte": 20
+      },
+      "checks": {
+        "ceiling_tflops": 20,
+        "bound": "memory"
+      }
+    },
+    "quorum": {
+      "inputs": {
+        "voters": 5,
+        "partitions": [
+          3,
+          2
+        ]
+      },
+      "checks": {
+        "majority": 3,
+        "partitions_with_majority": [
+          0
+        ]
+      }
+    },
+    "alerts": {
+      "inputs": {
+        "confusion": {
+          "tp": 80,
+          "fp": 120,
+          "fn": 20,
+          "tn": 9780
+        }
+      },
+      "checks": {
+        "precision": 0.4,
+        "recall": 0.8
+      }
+    },
+    "dns": {
+      "inputs": {
+        "ttl_s": 60,
+        "arrival_per_s": 2
+      },
+      "checks": {
+        "mean_refresh_interval_s": 60.5,
+        "refreshes_per_minute": 0.9917355371900827
+      }
+    },
+    "queue": {
+      "inputs": {
+        "arrival_per_s": 90,
+        "service_per_s": 100
+      },
+      "checks": {
+        "utilization": 0.9,
+        "mean_response_s": 0.1
+      }
+    },
+    "privacy": {
+      "inputs": {
+        "sensitivity": 1,
+        "epsilon": 0.5,
+        "sequential_epsilons": [
+          0.1,
+          0.2,
+          0.3
+        ]
+      },
+      "checks": {
+        "laplace_scale": 2,
+        "sum_epsilon_sequential": 0.6
+      }
+    },
+    "attention": {
+      "inputs": {
+        "query": [
+          1,
+          0
+        ],
+        "keys": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "values": [
+          [
+            10,
+            0
+          ],
+          [
+            0,
+            10
+          ]
+        ]
+      },
+      "checks": {}
+    },
+    "neuron": {
+      "inputs": {
+        "train": [
+          [
+            -2,
+            0
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "validation": [
+          [
+            -1.5,
+            0
+          ],
+          [
+            -0.5,
+            0
+          ],
+          [
+            0.5,
+            1
+          ],
+          [
+            1.5,
+            1
+          ]
+        ],
+        "learning_rate": 0.2,
+        "epochs": 200
+      },
+      "checks": {}
+    },
+    "hydro": {
+      "inputs": {
+        "flow_m3s": 100,
+        "net_head_m": 50,
+        "efficiency": 0.9
+      },
+      "checks": {
+        "power_mw": 44.145
+      }
+    },
+    "gold": {
+      "inputs": {
+        "dry_ore_t": 1000,
+        "grade_gt": 2,
+        "recovery": 0.8
+      },
+      "checks": {
+        "recovered_kg": 1.6
+      }
+    },
+    "facility": {
+      "inputs": {
+        "it_mw": 20,
+        "pue": 1.25
+      },
+      "checks": {
+        "total_mw": 25,
+        "non_it_mw": 5
+      }
+    }
+  }
+}

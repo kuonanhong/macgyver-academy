@@ -1,0 +1,51 @@
+name: Publish static MacGyver Academy
+# Uploading source is separate from publishing the public learning site.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: macgyver-pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assemble only the static academy
+        run: bash deploy-static.sh
+      - name: Reject private data in the public artifact
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('github-pages')
+          assert (root / 'index.html').is_file()
+          assert (root / '.nojekyll').is_file()
+          blocked = {'.git', 'node_modules', 'models', 'local-documents', 'portable'}
+          for path in root.rglob('*'):
+              assert not path.is_symlink(), path
+              assert not blocked.intersection(path.relative_to(root).parts), path
+              assert not path.name.startswith('.env'), path
+              assert path.suffix.lower() not in {'.pem', '.key', '.sqlite', '.sqlite3', '.gguf', '.safetensors'}, path
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: github-pages
+      - name: Publish Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
