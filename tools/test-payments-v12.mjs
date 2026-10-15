@@ -193,7 +193,7 @@ function paypalRoutes(overrides = {}) {
   };
 }
 
-function captureResponse(orderId, { value = '9.33', currency = 'USD', customId = orderId, status = 'COMPLETED', id = PP_ORDER, url } = {}) {
+function captureResponse(orderId, { value = '9.49', currency = 'USD', customId = orderId, status = 'COMPLETED', id = PP_ORDER, url } = {}) {
   if (url) id = ppIdFrom(url);
   return {
     id,
@@ -253,24 +253,37 @@ test('generated pricing rules match public/academy/data/pricing.json', () => {
   }
 });
 
-test('amountFor: TWD base, ceil to minor unit, zero-decimal, exact decimals', () => {
-  const r = { USD: 0.0312, JPY: '4.6512', EUR: 0.02857, HUF: 11.2, X1: 0.07, X2: '2.9e-2' };
+test('amountFor: TWD base and V13 tidy rounding (HuaTuo rule), exact decimals', () => {
+  const r = { USD: 0.0312, JPY: '4.6512', EUR: 0.02857, HUF: 11.2, KRW: 41.75, X1: 0.07, X2: '2.9e-2' };
   assert.equal(pricing.amountFor(299, 'TWD', {}), '299');
   assert.equal(pricing.amountFor(2490, 'TWD', { TWD: 99 }), '2490'); // base currency ignores rates
-  assert.equal(pricing.amountFor(299, 'USD', r), '9.33'); // 9.3288 → 9.33
-  assert.equal(pricing.amountFor(2490, 'USD', r), '77.69'); // 77.688 → 77.69
-  assert.equal(pricing.amountFor(299, 'USD', { USD: '0.0312' }), '9.33');
-  assert.equal(pricing.amountFor(299, 'JPY', r), '1391'); // 1390.7088 → 1391 (zero-decimal)
-  assert.equal(pricing.amountFor(2490, 'JPY', r), '11582'); // 11581.488 → 11582
-  assert.equal(pricing.amountFor(299, 'EUR', r), '8.55'); // 8.54243 → 8.55
-  assert.equal(pricing.amountFor(299, 'HUF', r), '3349'); // 3348.8 → 3349 (HUF zero-decimal)
-  assert.equal(pricing.amountFor(299, 'USD', { USD: 0.07 }), '20.93'); // float would give 20.94
-  assert.equal(pricing.amountFor(2490, 'USD', { USD: 0.001 }), '2.49'); // float would give 2.50
-  assert.equal(pricing.amountFor(299, 'USD', { USD: 0.0301 }), '9.00'); // 8.9999 → 9.00
-  assert.equal(pricing.amountFor(299, 'USD', { USD: '2.9e-2' }), '8.68'); // exponent form
+  assert.equal(pricing.amountFor(299, 'USD', r), '9.49'); // 9.3288 → next .49
+  assert.equal(pricing.amountFor(2490, 'USD', r), '77.99'); // 77.688 → next .99
+  assert.equal(pricing.amountFor(299, 'USD', { USD: '0.0312' }), '9.49');
+  assert.equal(pricing.amountFor(299, 'JPY', r), '1400'); // 1390.7 ≥ 1,000 → step 10
+  assert.equal(pricing.amountFor(2490, 'JPY', r), '11600'); // 11581.5 ≥ 10,000 → step 100
+  assert.equal(pricing.amountFor(299, 'KRW', r), '12500'); // 12483.25 → step 100
+  assert.equal(pricing.amountFor(2490, 'KRW', r), '104000'); // 103957.5 ≥ 100,000 → step 1,000
+  assert.equal(pricing.amountFor(299, 'EUR', r), '8.99'); // 8.54243 → next .99
+  assert.equal(pricing.amountFor(299, 'HUF', r), '3350'); // 3348.8 → step 10 (HUF zero-decimal)
+  assert.equal(pricing.amountFor(299, 'USD', { USD: 0.07 }), '20.99'); // 20.93 → 20.99
+  assert.equal(pricing.amountFor(2490, 'USD', { USD: 0.001 }), '2.49'); // exactly .49 stays
+  assert.equal(pricing.amountFor(299, 'USD', { USD: 0.0301 }), '9.49'); // 8.9999 → 9.49 (never below)
+  assert.equal(pricing.amountFor(2490, 'USD', { USD: 0.05 }), '125.00'); // 124.5 ≥ 100 → whole units
+  assert.equal(pricing.amountFor(299, 'USD', { USD: '2.9e-2' }), '8.99'); // exponent form
   assert.throws(() => pricing.amountFor(299, 'USD', {}), /No exchange rate/);
   assert.throws(() => pricing.amountFor(299, 'USD', { USD: -1 }), /Invalid decimal/);
   assert.throws(() => pricing.amountFor(0, 'TWD', {}), /Invalid plan amount/);
+});
+
+test('client tidyPrice() mirrors server amountFor()', async () => {
+  const client = await import(pathToFileURL(join(ROOT, 'public/academy/pricing.js')).href);
+  const rates = { USD: 0.0312, EUR: 0.02857, JPY: 4.6512, KRW: 41.75, HUF: 11.2, GBP: 0.0237, HKD: 0.2457, CNY: 0.2098, SGD: 0.0401 };
+  for (const [cur, rate] of Object.entries(rates)) for (const twd of [299, 2490]) {
+    const server = pricing.amountFor(twd, cur, rates);
+    const shown = client.convertTwd(twd, cur, rates);
+    assert.ok(pricing.sameAmount(server, String(shown), cur), `${cur} ${twd}: server ${server} vs client ${shown}`);
+  }
 });
 
 test('chargeCurrency: PayPal list + USD fallback; ECPay TWD only', () => {
@@ -285,11 +298,11 @@ test('chargeCurrency: PayPal list + USD fallback; ECPay TWD only', () => {
 });
 
 test('fx freshness, amount equality and fx currency list', () => {
-  assert.equal(pricing.isRateFresh(new Date(NOW - 9 * DAY), NOW), true);
-  assert.equal(pricing.isRateFresh(new Date(NOW - 11 * DAY), NOW), false);
+  assert.equal(pricing.isRateFresh(new Date(NOW - 2 * DAY), NOW), true);
+  assert.equal(pricing.isRateFresh(new Date(NOW - 4 * DAY), NOW), false);
   assert.equal(pricing.isRateFresh(null, NOW), false);
   assert.equal(pricing.sameAmount('9.30', 9.3, 'USD'), true);
-  assert.equal(pricing.sameAmount('9.33', '9.34', 'USD'), false);
+  assert.equal(pricing.sameAmount('9.49', '9.50', 'USD'), false);
   assert.equal(pricing.sameAmount('280', '280.00', 'JPY'), true);
   assert.equal(pricing.sameAmount('280.5', '280', 'JPY'), false);
   const list = pricing.fxCurrencies();
@@ -396,9 +409,9 @@ test('verify-webhook-signature request shape (raw event embedded verbatim)', asy
 
 test('capture verification rejects mismatched amount / currency / custom_id', () => {
   const id = 'MG0123456789ABCDEF01';
-  const exp = { orderId: id, amount: '9.33', currency: 'USD', paypalOrderId: PP_ORDER };
+  const exp = { orderId: id, amount: '9.49', currency: 'USD', paypalOrderId: PP_ORDER };
   assert.deepEqual(paypal.verifyCapture(captureResponse(id), exp), { kind: 'completed', captureId: PP_CAPTURE });
-  assert.deepEqual(paypal.verifyCapture(captureResponse(id), { ...exp, amount: 9.33 + '' }), { kind: 'completed', captureId: PP_CAPTURE });
+  assert.deepEqual(paypal.verifyCapture(captureResponse(id), { ...exp, amount: 9.49 + '' }), { kind: 'completed', captureId: PP_CAPTURE });
   assert.deepEqual(paypal.verifyCapture(captureResponse(id, { value: '9.32' }), exp), { kind: 'mismatch', reason: 'amount' });
   assert.deepEqual(paypal.verifyCapture(captureResponse(id, { value: '93.30' }), exp), { kind: 'mismatch', reason: 'amount' });
   assert.deepEqual(paypal.verifyCapture(captureResponse(id, { currency: 'EUR' }), exp), { kind: 'mismatch', reason: 'currency' });
@@ -413,9 +426,9 @@ test('capture verification rejects mismatched amount / currency / custom_id', ()
   two.purchase_units[0].payments.captures.push({ ...two.purchase_units[0].payments.captures[0], id: 'SECONDCAPTURE1' });
   assert.equal(paypal.verifyCapture(two, exp).kind, 'mismatch');
   assert.equal(paypal.verifyCapture({ id: PP_ORDER, status: 'COMPLETED', purchase_units: [{}] }, exp).kind, 'incomplete');
-  const body = paypal.buildCreateOrderBody({ orderId: id, amount: '9.33', currency: 'USD', description: 'd', brandName: 'b' });
+  const body = paypal.buildCreateOrderBody({ orderId: id, amount: '9.49', currency: 'USD', description: 'd', brandName: 'b' });
   assert.equal(body.intent, 'CAPTURE');
-  assert.deepEqual(body.purchase_units[0].amount, { currency_code: 'USD', value: '9.33' });
+  assert.deepEqual(body.purchase_units[0].amount, { currency_code: 'USD', value: '9.49' });
   assert.equal(body.purchase_units[0].custom_id, id);
   assert.equal(body.purchase_units[0].invoice_id, id);
   assert.equal(paypal.relatedCaptureId({ links: [{ rel: 'self', href: `${PP}/v2/payments/refunds/R1` }, { rel: 'up', href: `${PP}/v2/payments/captures/${PP_CAPTURE}` }] }), PP_CAPTURE);
@@ -458,27 +471,27 @@ test('checkout-create validates auth, terms, plan and computes the price server-
   const ok = await call({ planId: 'all-30', provider: 'paypal', currency: 'usd', amount: '0.01', termsAccepted: true, termsVersion: 'v12-2026-10' });
   assert.equal(ok.status, 200);
   assert.deepEqual(Object.keys(ok.body).sort(), ['amount', 'currency', 'durationDays', 'orderId', 'paypalOrderId', 'planId', 'provider']);
-  assert.equal(ok.body.amount, '9.33'); // client "amount" ignored
+  assert.equal(ok.body.amount, '9.49'); // client "amount" ignored
   assert.equal(ok.body.currency, 'USD');
   assert.equal(ok.body.paypalOrderId, PP_ORDER);
   assert.equal(ok.headers.get('access-control-allow-origin'), ORIGIN);
   const created = fetch.calls.find((c) => c.url === `${PP}/v2/checkout/orders`);
   const sent = JSON.parse(created.body);
-  assert.deepEqual(sent.purchase_units[0].amount, { currency_code: 'USD', value: '9.33' });
+  assert.deepEqual(sent.purchase_units[0].amount, { currency_code: 'USD', value: '9.49' });
   assert.equal(sent.purchase_units[0].custom_id, ok.body.orderId);
   assert.equal(created.headers.get('paypal-request-id'), `create-${ok.body.orderId}`);
   const row = s.orders.get(ok.body.orderId);
   assert.equal(row.status, 'pending');
   assert.equal(row.provider_order_id, PP_ORDER);
-  assert.equal(row.amount, '9.33');
+  assert.equal(row.amount, '9.49');
   assert.equal(row.amount_twd, 299);
   assert.equal(row.terms_version, 'v12-2026-10');
 
   const krw = await call({ planId: 'all-365', provider: 'paypal', currency: 'KRW', termsAccepted: true, termsVersion: 'v12-2026-10' });
   assert.equal(krw.body.currency, 'USD'); // fallback charge currency
-  assert.equal(krw.body.amount, '77.69');
+  assert.equal(krw.body.amount, '77.99');
   const jpy = await call({ planId: 'all-30', provider: 'paypal', currency: 'JPY', termsAccepted: true, termsVersion: 'v12-2026-10' });
-  assert.equal(jpy.body.amount, '1391');
+  assert.equal(jpy.body.amount, '1400');
   const stale = await call({ planId: 'all-30', provider: 'paypal', currency: 'EUR', termsAccepted: true, termsVersion: 'v12-2026-10' });
   assert.equal(stale.status, 503);
   assert.equal(stale.body.error, 'fx_unavailable');
@@ -554,7 +567,7 @@ test('checkout-capture refuses mismatched captures and handles declines', async 
   let mode = 'amount';
   const h = harness(paypalRoutes({
     capture: ({ url }) => mode === 'amount' ? { status: 201, json: captureResponse(orderId, { url, value: '0.01' }) }
-      : mode === 'currency' ? { status: 201, json: captureResponse(orderId, { url, currency: 'TWD', value: '9.33' }) }
+      : mode === 'currency' ? { status: 201, json: captureResponse(orderId, { url, currency: 'TWD', value: '9.49' }) }
       : mode === 'custom' ? { status: 201, json: captureResponse(orderId, { url, customId: 'MGAAAAAAAAAAAAAAAAAA' }) }
       : mode === 'declined' ? { status: 422, json: { name: 'UNPROCESSABLE_ENTITY', details: [{ issue: 'INSTRUMENT_DECLINED' }] } }
       : { status: 422, json: { name: 'UNPROCESSABLE_ENTITY', details: [{ issue: 'ORDER_ALREADY_CAPTURED' }] } },
@@ -598,7 +611,7 @@ test('paypal-webhook: verified capture grants, refund revokes, duplicates and fo
   const send = (event) => hook(request('POST', `${F}/paypal-webhook`, { origin: null, headers: webhookHeaders, raw: JSON.stringify(event), contentType: 'application/json' })).then(read);
   const completed = {
     id: 'WH-58D329510W468432D-8HN650336L201105X', event_type: 'PAYMENT.CAPTURE.COMPLETED', resource_type: 'capture',
-    resource: { id: PP_CAPTURE, status: 'COMPLETED', amount: { currency_code: 'USD', value: '9.33' }, custom_id: orderId, invoice_id: orderId, supplementary_data: { related_ids: { order_id: PP_ORDER } } },
+    resource: { id: PP_CAPTURE, status: 'COMPLETED', amount: { currency_code: 'USD', value: '9.49' }, custom_id: orderId, invoice_id: orderId, supplementary_data: { related_ids: { order_id: PP_ORDER } } },
   };
   verdict = 'FAILURE';
   const forged = await send(completed);
@@ -622,7 +635,7 @@ test('paypal-webhook: verified capture grants, refund revokes, duplicates and fo
 
   const refunded = {
     id: 'WH-1GE84257G0350133W-6RW800890C634293G', event_type: 'PAYMENT.CAPTURE.REFUNDED', resource_type: 'refund',
-    resource: { id: '1JU08902781691411', status: 'COMPLETED', amount: { currency_code: 'USD', value: '9.33' }, links: [{ rel: 'self', href: `${PP}/v2/payments/refunds/1JU08902781691411` }, { rel: 'up', href: `${PP}/v2/payments/captures/${PP_CAPTURE}` }] },
+    resource: { id: '1JU08902781691411', status: 'COMPLETED', amount: { currency_code: 'USD', value: '9.49' }, links: [{ rel: 'self', href: `${PP}/v2/payments/refunds/1JU08902781691411` }, { rel: 'up', href: `${PP}/v2/payments/captures/${PP_CAPTURE}` }] },
   };
   assert.equal((await send(refunded)).body.result, 'revoked');
   assert.equal(h.s.orders.get(orderId).status, 'refunded');

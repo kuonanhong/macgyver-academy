@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-# 馬蓋先 MacGyver Engineering Academy V12 — one-click maintenance.
+# 馬蓋先 MacGyver Engineering Academy V13 — one-click maintenance.
 #
 #   bash macgyver.sh              same as "deploy"
-#   bash macgyver.sh deploy       update stocks+FX → rebuild → validate → upload ONLY changed files
+#   bash macgyver.sh all          deploy the website AND upload new model weights (one click for both repos)
+#   bash macgyver.sh deploy       update stocks+FX → rebuild → validate → upload ONLY changed files, delete stale ones
 #   bash macgyver.sh compare      show what is new / modified / deleted vs GitHub (no upload)
+#   bash macgyver.sh models       get the AI weights (download, or import from the HuaTuo ZIPs) and upload only new chunks to PRIVATE-MODELS
+#   bash macgyver.sh models-compare   show which weight chunks are already in PRIVATE-MODELS (no upload)
+#   bash macgyver.sh restore-models DIR   rebuild and verify the weights from PRIVATE-MODELS into DIR
 #   bash macgyver.sh stocks       weekly stock & FX refresh, upload just those two data files
-#   bash macgyver.sh models       download the browser AI model(s) and upload weights to PRIVATE-MODELS
 #   bash macgyver.sh schedule     run "stocks" every Monday 09:07 on this computer (launchd / cron)
 #   bash macgyver.sh unschedule   remove that schedule
 #   bash macgyver.sh doctor       check git, python, node, SSH access and settings
@@ -15,15 +18,17 @@
 #   SITE_REPO=git@github.com:kuonanhong/macgyver-academy.git
 #   MODELS_REPO=git@github.com:kuonanhong/PRIVATE-MODELS.git
 #   BRANCH=main
-#   MODELS="qwen25-05b"           # space-separated ids from tools/model-manifest.json
-#   PROTECT_CONTENT=0             # 1 = publish static site only, paid stages stubbed (needs Supabase)
+#   MODELS="qwen25-05b qwen3-06b"  # ids from tools/model-manifest.json (browser models are enough for the website)
+#   HUATUO_DIR=""                  # optional folder holding HuaTuo_v2_Qwen3_CPU_part1..4of4.zip or the HuaTuo package
+#   PROTECT_CONTENT=0              # 1 = publish static site only, paid stages stubbed (needs Supabase)
 set -euo pipefail
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 CONF="${MACGYVER_CONF:-$HOME/.macgyver-academy.conf}"
 SITE_REPO='git@github.com:kuonanhong/macgyver-academy.git'
 MODELS_REPO='git@github.com:kuonanhong/PRIVATE-MODELS.git'
 BRANCH='main'
-MODELS='qwen25-05b'
+MODELS='qwen25-05b qwen3-06b'
+HUATUO_DIR=''
 PROTECT_CONTENT=0
 STATE="$(dirname "$ROOT")/MacGyver_GitHub_Sync_State"
 # shellcheck disable=SC1090
@@ -44,6 +49,7 @@ SITE_REPO='$SITE_REPO'
 MODELS_REPO='$MODELS_REPO'
 BRANCH='$BRANCH'
 MODELS='$MODELS'
+HUATUO_DIR='$HUATUO_DIR'
 PROTECT_CONTENT=$PROTECT_CONTENT
 STATE='$STATE'
 EOF
@@ -61,6 +67,14 @@ doctor(){
     if grep -q 'successfully authenticated' <<<"$out"; then say "GitHub SSH 認證成功：${out%%!*}"; else warn "GitHub SSH 尚未設定：$out"; warn '請依 docs/UPLOAD_SYNC_V12_ZH.md 第 1 節建立 SSH key 並加到 GitHub。'; ok=0; fi
   fi
   git ls-remote --heads "$SITE_REPO" "$BRANCH" >/dev/null 2>&1 && say "可讀取網站倉庫 $SITE_REPO" || { warn "無法讀取 $SITE_REPO"; ok=0; }
+  git ls-remote --heads "$MODELS_REPO" "$BRANCH" >/dev/null 2>&1 && say "可讀取模型私人倉庫 $MODELS_REPO" || warn "無法讀取 $MODELS_REPO（若尚未建立：GitHub → New repository → Private）"
+  "$PY" - "$ROOT" <<'PY' || true
+import json,hashlib,sys,pathlib
+root=pathlib.Path(sys.argv[1]);m=json.load(open(root/'tools/model-manifest.json'))['models']
+for x in m:
+    f=root/'models'/x.get('file','-')
+    print(('  ✓ ' if f.is_file() and f.stat().st_size==x.get('bytes') else '  · ')+x['id'],'—',x['label'],'（已在 models/）' if f.is_file() else '')
+PY
   ((ok)) && say '環境檢查通過。' || warn '請先處理上述項目。'
   return $((1-ok))
 }
@@ -129,22 +143,36 @@ unschedule(){
   say '已移除本機每週排程。'
 }
 
-models(){
-  local dir="$ROOT/models"
+models_prepare(){
+  local dir="$ROOT/models" id kind file
+  mkdir -p "$dir"
   for id in $MODELS; do
-    say "下載並驗證模型 $id（官方來源、固定版本與 SHA-256；可中斷後重跑接續）"
+    kind="$("$PY" -c "import json,sys;m={x['id']:x for x in json.load(open(sys.argv[1]))['models']};x=m.get(sys.argv[2]);print((x or {}).get('kind','?'),(x or {}).get('file',''))" "$ROOT/tools/model-manifest.json" "$id")"
+    file="${kind#* }"; kind="${kind%% *}"
+    if [[ "$kind" == '?' ]]; then warn "未知模型 $id，略過"; continue; fi
+    if [[ -z "$file" ]]; then warn "$id 是 Ollama 模型（由 ollama pull 管理），不需上傳私人倉庫"; continue; fi
+    if [[ "$id" == qwen3-06b && ! -f "$dir/$file" ]]; then
+      say "嘗試從華佗學院已有的 Qwen3-0.6B（四份 ZIP 或已還原的 GGUF）匯入，免重新下載"
+      local search=(--search "$(dirname "$ROOT")" --search "$HOME/Downloads")
+      [[ -n "$HUATUO_DIR" ]] && search+=(--search "$HUATUO_DIR")
+      "$PY" "$ROOT/tools/sync-v13/models_sync.py" import-huatuo "${search[@]}" --to "$dir" || true
+    fi
+    say "確認模型 $id（官方固定版本與 SHA-256；已存在且正確就不重抓，中斷可重跑接續）"
     bash "$ROOT/install-ai-models.sh" --model "$id" --download --directory "$dir"
   done
-  say "分片上傳權重到私人倉庫 $MODELS_REPO（每片 32 MiB，可續傳）"
+}
+models(){
+  models_prepare
+  say "比對並上傳權重到私人倉庫 $MODELS_REPO（40 MiB 分片，只傳雲端還沒有的部分；不會改動華佗學院的檔案）"
   warn '請確認該倉庫在 GitHub 上是 Private。'
-  bash "$ROOT/upload-github-ssh.sh" --weights-repo "$MODELS_REPO" --models-dir "$dir" --weights-private-confirmed --branch "$BRANCH"
+  "$PY" "$ROOT/tools/sync-v13/models_sync.py" push --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$ROOT/models" --state "$STATE" --private-confirmed "$@"
 }
 
 cmd="${1:-deploy}"; shift || true
 case "$cmd" in
   doctor) doctor ;;
   config)
-    echo "設定檔：$CONF"; echo "SITE_REPO=$SITE_REPO"; echo "MODELS_REPO=$MODELS_REPO"; echo "BRANCH=$BRANCH"; echo "MODELS=$MODELS"; echo "PROTECT_CONTENT=$PROTECT_CONTENT"; echo "STATE=$STATE"
+    echo "設定檔：$CONF"; echo "SITE_REPO=$SITE_REPO"; echo "MODELS_REPO=$MODELS_REPO"; echo "BRANCH=$BRANCH"; echo "MODELS=$MODELS"; echo "HUATUO_DIR=$HUATUO_DIR"; echo "PROTECT_CONTENT=$PROTECT_CONTENT"; echo "STATE=$STATE"
     if [[ -t 0 ]]; then
       read -r -p '網站倉庫 SSH 網址 [Enter 保留]：' v; [[ -n "$v" ]] && SITE_REPO="$v"
       read -r -p '模型私人倉庫 SSH 網址 [Enter 保留]：' v; [[ -n "$v" ]] && MODELS_REPO="$v"
@@ -152,20 +180,31 @@ case "$cmd" in
       save_conf
     fi ;;
   compare) [[ -n "$PY" ]] || die '需要 Python 3.10+'; sync "$@" ;;
+  models-compare) [[ -n "$PY" ]] || die '需要 Python 3.10+'; "$PY" "$ROOT/tools/sync-v13/models_sync.py" compare --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$ROOT/models" --state "$STATE" ;;
+  restore-models) [[ -n "$PY" ]] || die '需要 Python 3.10+'; "$PY" "$ROOT/tools/sync-v13/models_sync.py" restore --repo "$MODELS_REPO" --branch "$BRANCH" --state "$STATE" --to "${1:-$ROOT/models}" ;;
   deploy)
     [[ -n "$PY" ]] || die '需要 Python 3.10+'
     [[ -f "$CONF" ]] || save_conf
     update_data; rebuild
     say '比較本機套件與 GitHub，只上傳新增與修改的檔案，並刪除雲端多餘檔案'
-    sync --push --message "${MESSAGE:-MacGyver Academy V12 update $(date +%F)}" "$@"
+    sync --push --message "${MESSAGE:-MacGyver Academy V13 update $(date +%F)}" "$@"
     say '完成。GitHub Pages 通常 1–3 分鐘後更新：https://kuonanhong.github.io/macgyver-academy/' ;;
+  all)
+    [[ -n "$PY" ]] || die '需要 Python 3.10+'
+    [[ -f "$CONF" ]] || save_conf
+    update_data; rebuild
+    say '① 網站：只上傳新增與修改的檔案，刪除雲端多餘檔案'
+    sync --push --message "${MESSAGE:-MacGyver Academy V13 update $(date +%F)}"
+    say '② 模型：只上傳私人倉庫還沒有的權重分片'
+    models
+    say '全部完成。網站：https://kuonanhong.github.io/macgyver-academy/  模型：'"$MODELS_REPO" ;;
   stocks)
     [[ -n "$PY" ]] || die '需要 Python 3.10+'
     update_data
     sync --push --only public/academy/data/markets.json --only public/academy/data/fx.json --message "Weekly market & FX snapshot $(date +%F)" ;;
-  models) models ;;
+  models) [[ -n "$PY" ]] || die '需要 Python 3.10+'; models "$@" ;;
   schedule) schedule ;;
   unschedule) unschedule ;;
-  -h|--help|help) sed -n '2,20p' "$0" ;;
+  -h|--help|help) sed -n '2,25p' "$0" ;;
   *) die "未知指令：$cmd（bash macgyver.sh help）" ;;
 esac

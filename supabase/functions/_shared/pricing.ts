@@ -1,7 +1,11 @@
 // Server-side price computation. Pure: runs unchanged in Deno and Node.
-// Rule (pricing.json "rounding"): TWD × rate, rounded UP to the currency's minor
-// unit (integer for zeroDecimal currencies, 0.01 otherwise). Exact decimal
-// arithmetic with BigInt: no binary floating-point rounding is involved.
+// Rule (pricing.json "rounding", V13, same as the HuaTuo academy): TWD × rate,
+// rounded UP to a tidy price that is never below the converted value —
+// zero-decimal currencies: whole units, then steps of 10 / 100 / 1,000 for
+// amounts ≥ 1,000 / 10,000 / 100,000; two-decimal currencies: whole units when
+// ≥ 100, otherwise the next .49 or .99. Exact decimal arithmetic with BigInt:
+// no binary floating-point rounding is involved. public/academy/pricing.js
+// tidyPrice() mirrors this rule for display.
 import { PRICING_RULES } from './pricing-rules.ts';
 
 export type Provider = 'paypal' | 'ecpay';
@@ -110,10 +114,16 @@ export function amountFor(
   if (rate === undefined || rate === null || rate === '') throw new PricingError('fx_unavailable', `No exchange rate for ${currency}.`);
   const { digits, scale } = parseDecimal(rate);
   if (digits <= 0n) throw new PricingError('fx_unavailable', `Invalid exchange rate for ${currency}.`);
-  const numerator = BigInt(planTwd) * digits * 10n ** BigInt(decimals);
-  const denominator = 10n ** BigInt(scale);
-  const minor = (numerator + denominator - 1n) / denominator; // ceil for positive values
-  return formatMinorUnits(minor, decimals);
+  const num = BigInt(planTwd) * digits; // value = num / den
+  const den = 10n ** BigInt(scale);
+  const ceilDiv = (a: bigint, b: bigint) => (a + b - 1n) / b; // positive values
+  if (decimals === 0) {
+    const mag = num >= 100000n * den ? 1000n : num >= 10000n * den ? 100n : num >= 1000n * den ? 10n : 1n;
+    return formatMinorUnits(ceilDiv(num, den * mag) * mag, 0);
+  }
+  if (num >= 100n * den) return formatMinorUnits(ceilDiv(num, den) * 100n, decimals);
+  const k = ceilDiv(num * 100n + den, 50n * den); // next .49 / .99 not below the value
+  return formatMinorUnits(k * 50n - 1n, decimals);
 }
 
 /** Currency actually charged by a provider for the requested currency. */

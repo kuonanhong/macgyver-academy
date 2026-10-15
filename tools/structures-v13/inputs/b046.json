@@ -1,0 +1,307 @@
+{
+  "id": "b046",
+  "title": "鉛心橡膠支承隔震~Lead-rubber bearing seismic isolation",
+  "discipline": "st-bridge-components-seismic",
+  "family": "bearing",
+  "focus": "以鉛心屈服強度、橡膠側向勁度與等效阻尼，拉長橋梁週期並把位移集中在可檢查的支承~Lead-core yield strength, rubber lateral stiffness and equivalent damping that lengthen the bridge period and concentrate displacement in inspectable bearings",
+  "summary": "從週期移轉與設計反應譜出發，以雙線性模型量化鉛心橡膠支承的特徵強度、屈服後勁度、等效週期與阻尼，再處理疊層橡膠的形狀係數與應變、安裝初始偏移、常時約束與隔震縫、原型與量產試驗、振動台驗證、材料性質上下限與震後檢查，並以紐西蘭最早的隔震橋、金門大橋引道高架橋改造與 921 地震後的集鹿大橋研究為例。~Starting from period shift and the design spectrum, use a bilinear model to quantify a lead-rubber bearing's characteristic strength, post-yield stiffness, effective period and damping, then handle laminated-rubber shape factor and strains, initial installation offset, service restraint and isolation gaps, prototype and production tests, shake-table verification, property bounds and post-earthquake inspection, drawing on New Zealand's first isolated bridges, the Golden Gate Bridge approach-viaduct retrofit and post-Chi-Chi studies of the Chi-Lu Bridge.",
+  "units": [
+    {
+      "anchor": "隔震週期 T_eff~Isolated period T_eff",
+      "title": "週期移轉與荷載路徑~Period shift and load path",
+      "mechanism": "一般連續梁橋以固定或彈性支承連到橋墩，整體週期常落在 0.3 至 1.0 s，正好在設計反應譜的高原段，墩柱必須以塑性變形消散地震能量。隔震把上部結構放在水平方向很柔、豎向很硬的鉛心橡膠支承上，使週期拉長到約 2 至 3 s，譜加速度大幅下降；代價是上部結構相對橋墩的位移增加到數十公分，必須由支承、隔震縫與伸縮縫吸收。荷載路徑因此變成「上部慣性力 → 支承剪力 → 墩頂 → 基礎」，墩柱可保持彈性。~A conventional continuous girder bridge is tied to its piers through fixed or elastic bearings, and its period typically falls between 0.3 and 1.0 s, right on the plateau of the design spectrum, so the columns must dissipate earthquake energy by yielding. Isolation sets the superstructure on lead-rubber bearings that are very flexible horizontally and very stiff vertically, lengthening the period to about 2 to 3 s and sharply cutting spectral acceleration; the price is a superstructure displacement relative to the piers of tens of centimetres, which bearings, isolation gaps and expansion joints must absorb. The load path becomes superstructure inertia, bearing shear, pier top and foundation, and the piers can stay elastic.",
+      "model": "T = 2π√(W/(g·K))。單墩承載 W = 6,000 kN，固接時墩頂勁度 K = 60,000 kN/m，T = 2π√(6,000/(9.81×60,000)) ≈ 0.63 s；改為兩顆隔震支承、等效勁度合計 K_eff = 3,350 kN/m，T = 2π√(6,000/(9.81×3,350)) ≈ 2.68 s，週期拉長約 4.2 倍。數值為教學假設。~T = 2π√(W/(g·K)). For a pier carrying W = 6,000 kN with a fixed-connection stiffness K = 60,000 kN/m, T = 2π√(6,000/(9.81×60,000)) ≈ 0.63 s; with two isolators of combined effective stiffness K_eff = 3,350 kN/m, T = 2π√(6,000/(9.81×3,350)) ≈ 2.68 s, about 4.2 times longer. Values are teaching assumptions.",
+      "verify": "在結構模型中比較固接與隔震兩種情境的模態週期、參與質量與墩底剪力，確認隔震後第一模態以支承變形為主（支承位移佔墩頂總位移的大部分）；同時檢查場址是否為軟弱土層或近斷層，因長週期地震動可能抵消週期移轉效益。~Compare modal periods, participating mass and pier base shear in the structural model for the fixed and isolated cases, confirming that the isolated first mode is dominated by bearing deformation (most of the deck displacement occurs in the bearings); also check whether the site is soft soil or near-fault, where long-period ground motion can erode the benefit of period shift.",
+      "failure": "若橋墩本身很柔（高墩）或場址為軟土，隔震後週期增加有限，反而增加位移而沒有明顯降低力量；若忽略隔震後的大位移，地震時上部結構撞擊橋台背牆或相鄰梁，造成撞擊損傷與伸縮縫破壞。~If the piers are already flexible (tall piers) or the site is soft, isolation adds little period while increasing displacement without much force reduction; ignoring the larger isolated displacement lets the deck pound the abutment backwall or adjacent spans in an earthquake, damaging both and destroying the expansion joints.",
+      "misconception": "隔震讓橋梁在地震時完全不動，所以位移問題可以忽略。~Isolation keeps the bridge from moving in an earthquake, so displacement can be ignored.",
+      "practice": "方案階段就用簡化單自由度模型比較隔震前後的墩底剪力與支承位移，並把高墩、軟土與近斷層列為需要專門評估的情況；隔震方案要同時提出伸縮縫與隔震縫的尺寸。~At concept stage compare pier base shear and bearing displacement with and without isolation using a simple single-degree-of-freedom model, flag tall piers, soft soil and near-fault sites for special study, and propose expansion-joint and isolation-gap sizes together with the isolation scheme."
+    },
+    {
+      "anchor": "設計位移 D 與 B_L~Design displacement D and B_L",
+      "title": "等效線性化與設計位移~Equivalent linearisation and design displacement",
+      "mechanism": "鉛心橡膠支承的力—位移關係是雙線性遲滯：鉛心屈服前勁度很高，屈服後只剩橡膠勁度，迴圈面積代表每一循環消散的能量。設計常以等效線性化處理：在假設位移 D 下計算割線勁度 K_eff 與等效阻尼 β，查反應譜並以阻尼修正係數 B_L 降低位移，再以新位移重算 K_eff 與 β，反覆疊代至收斂。這個流程直接連結鉛心大小、橡膠厚度與最終的支承位移和墩頂剪力。~A lead-rubber bearing has a bilinear hysteretic force–displacement relation: very stiff before the lead core yields, then only the rubber stiffness after yield, with the loop area representing the energy dissipated per cycle. Design usually linearises it: at an assumed displacement D compute the secant stiffness K_eff and equivalent damping β, read the spectrum and reduce displacement with a damping coefficient B_L, then recompute K_eff and β with the new displacement and iterate to convergence. This process links lead-core size and rubber thickness directly to the final bearing displacement and pier-top shear.",
+      "model": "等效線性化設計位移 D = 0.25·S_D1·T_eff/B_L（m），阻尼修正係數 B_L = (β/0.05)^0.3。取 S_D1 = 0.6 g、T_eff = 2.68 s、β = 24.7%：B_L = 4.94^0.3 ≈ 1.61，D = 0.25×0.6×2.68/1.61 ≈ 0.25 m；若沒有鉛心、β = 5%，D = 0.25×0.6×2.68 ≈ 0.40 m。數值為教學假設。~D = 0.25·S_D1·T_eff/B_L (m) with B_L = (β/0.05)^0.3. For S_D1 = 0.6 g, T_eff = 2.68 s and β = 24.7%: B_L = 4.94^0.3 ≈ 1.61 and D = 0.25×0.6×2.68/1.61 ≈ 0.25 m; without a lead core, β = 5% and D = 0.25×0.6×2.68 ≈ 0.40 m. Values are teaching assumptions.",
+      "verify": "以簡化法求得的位移與剪力，和非線性時間歷程分析（以雙線性元素模擬每顆支承、輸入多組符合設計譜的地震紀錄）比較，差異過大時找出原因（例如高阻尼下等效線性化失準或雙向耦合）；並確認 β 未超過簡化法適用上限。~Compare displacement and shear from the simplified method with nonlinear time-history analysis that models each bearing as a bilinear element under several spectrum-compatible records, investigating large differences such as linearisation error at high damping or bidirectional coupling; also confirm β stays within the simplified method's limit.",
+      "failure": "若只用等效線性化而未做雙向與近斷層紀錄的時間歷程檢核，可能低估最大位移，使支承超過其穩定位移或撞上止擋；近斷層速度脈衝會讓長週期隔震系統產生遠大於預期的單向位移。~Relying only on linearisation without bidirectional and near-fault time-history checks can underestimate peak displacement, pushing bearings beyond their stable displacement or into stops; near-fault velocity pulses can drive a long-period isolated system to one-sided displacements far larger than expected.",
+      "misconception": "阻尼越大，隔震橋的所有反應一定都越小。~More damping always reduces every response of an isolated bridge.",
+      "practice": "計算書要列出每次疊代的 D、K_eff、β、B_L 與收斂結果，並明確說明採用的反應譜、場址係數與近斷層放大；重要橋梁一律以非線性時間歷程分析複核。~Calculations list D, K_eff, β, B_L for each iteration and the converged result, and state the spectrum, site factors and near-fault amplification used; important bridges are always checked by nonlinear time-history analysis."
+    },
+    {
+      "anchor": "鉛心 Q_d 與橡膠 K_d~Lead core Q_d and rubber K_d",
+      "title": "鉛心特徵強度與屈服後勁度~Lead-core characteristic strength and post-yield stiffness",
+      "mechanism": "鉛在常溫下屈服後能再結晶恢復，因此可反覆塑性變形而不累積疲勞，被壓入疊層橡膠中央孔後，受橡膠與鋼板圍束，剪切時屈服並消散能量。鉛心截面積決定特徵強度 Q_d（雙線性迴圈在零位移處的截距），橡膠的剪力模數、受剪面積與總厚度決定屈服後勁度 K_d。Robinson 與 Tucker 在 1981 年發表的早期試驗中，以屈服應力約 10 MPa 的塑性體描述鉛心，便能合理重現遲滯迴圈。~Lead recrystallises at room temperature after yielding, so it can deform plastically again and again without accumulating fatigue; pressed into the central hole of laminated rubber and confined by rubber and steel shims, it yields in shear and dissipates energy. The lead area sets the characteristic strength Q_d, the intercept of the bilinear loop at zero displacement, while the rubber's shear modulus, shear area and total thickness set the post-yield stiffness K_d. In early tests published by Robinson and Tucker in 1981, treating the lead as a plastic solid with a yield stress of about 10 MPa reasonably reproduced the hysteresis loops.",
+      "model": "Q_d = τ_y·A_pb，K_d = G·A_r/T_r。鉛心直徑 150 mm，A_pb = 0.0177 m²，τ_y = 10 MPa，Q_d ≈ 177 kN；支承直徑 800 mm，A_r = 0.503 − 0.018 = 0.485 m²，G = 0.4 MPa，T_r = 200 mm，K_d = 400×0.485/0.2 ≈ 970 kN/m；初始勁度取 K_u = 10·K_d = 9,700 kN/m。數值為教學假設。~Q_d = τ_y·A_pb and K_d = G·A_r/T_r. A 150 mm lead core gives A_pb = 0.0177 m², so with τ_y = 10 MPa, Q_d ≈ 177 kN; an 800 mm bearing has A_r = 0.503 − 0.018 = 0.485 m², and with G = 0.4 MPa and T_r = 200 mm, K_d = 400×0.485/0.2 ≈ 970 kN/m; take initial stiffness K_u = 10·K_d = 9,700 kN/m. Values are teaching assumptions.",
+      "verify": "審查製造商依原型試驗擬合的 Q_d、K_d、K_u 與其試驗條件（位移、頻率、循環數、溫度），確認設計值落在試驗涵蓋範圍內；鉛純度、橡膠配方的剪力模數與鋼板材料要有證明文件。~Review the manufacturer's Q_d, K_d and K_u fitted from prototype tests and their test conditions (displacement, frequency, cycles and temperature), confirming design values fall within the tested range; lead purity, the rubber compound's shear modulus and the shim steel must be documented.",
+      "failure": "鉛心太大時 Q_d 過高，中小地震下支承不屈服，隔震效果消失且墩頂剪力偏大；鉛心太小則阻尼不足，位移過大。反覆大位移循環中鉛心發熱會讓 Q_d 逐圈下降，若設計只取第一圈值會高估阻尼。~An oversized lead core makes Q_d too high, so the bearing does not yield in moderate earthquakes, isolation is lost and pier shear is high; an undersized core gives too little damping and excessive displacement. Heating of the lead in repeated large cycles lowers Q_d cycle by cycle, so a design based only on first-cycle values overestimates damping.",
+      "misconception": "鉛心越大，隔震效果一定越好。~The bigger the lead core, the better the isolation.",
+      "practice": "支承規格書要明列 Q_d、K_d 的設計值與允差、適用位移範圍與循環數，並要求以原型試驗的第三圈或多圈平均值為準；鉛心直徑與支承直徑的比例須在製造商有試驗證據的範圍內。~The bearing specification states design values and tolerances for Q_d and K_d, the applicable displacement range and cycle count, and requires values based on the third cycle or a multi-cycle average from prototype tests; the ratio of lead-core to bearing diameter must lie within the range the manufacturer has test evidence for."
+    },
+    {
+      "anchor": "橡膠層形狀係數 S~Rubber-layer shape factor S",
+      "title": "疊層橡膠、形狀係數與應變組合~Laminated rubber, shape factor and strain combination",
+      "mechanism": "支承由多層薄橡膠與鋼板硫化黏結而成：鋼板阻止橡膠側向膨出，使豎向勁度比水平勁度高出數百倍，同時保留水平方向的柔性。單層橡膠的形狀係數 S（受壓面積除以側面自由面積）越大，豎向勁度越高、受壓產生的剪應變越小；但大位移時上下鋼板的重疊面積減少，承壓有效面積下降，必須檢查壓縮、剪切與轉角三種剪應變的組合，以及在設計位移下的穩定性。~The bearing is made of many thin rubber layers vulcanised to steel shims: the shims stop the rubber bulging, making vertical stiffness hundreds of times the horizontal stiffness while keeping horizontal flexibility. The larger a layer's shape factor S (loaded area divided by free side area), the higher the vertical stiffness and the smaller the shear strain from compression; but at large displacement the overlap of top and bottom plates shrinks, reducing the effective bearing area, so the combined shear strains from compression, shear and rotation and the stability at design displacement must all be checked.",
+      "model": "圓形單層 S = B/(4t) = 800/(4×10) = 20；壓縮剪應變 γ_c ≈ σ/(G·S)，σ = 3,000/0.485 ≈ 6.19 MPa，γ_c ≈ 6.19/(0.4×20) ≈ 0.77；設計位移剪應變 γ_s = D/T_r = 0.25/0.20 = 1.25；兩者合計約 2.02，須小於所採規範的組合應變限值。數值為教學假設。~For a circular layer S = B/(4t) = 800/(4×10) = 20; compression shear strain γ_c ≈ σ/(G·S) with σ = 3,000/0.485 ≈ 6.19 MPa, so γ_c ≈ 6.19/(0.4×20) ≈ 0.77; shear strain at design displacement γ_s = D/T_r = 0.25/0.20 = 1.25; their sum of about 2.02 must stay below the governing code's combined-strain limit. Values are teaching assumptions.",
+      "verify": "檢查每顆支承在最大與最小豎向力、設計位移及轉角下的組合應變與穩定性，並以壓剪試驗確認在設計位移下仍能承受規定豎向力；出廠時抽樣切片或以 X 光檢查鋼板位置，並量測支承高度與平行度。~Check each bearing's combined strain and stability under maximum and minimum vertical load, design displacement and rotation, and confirm by compression–shear testing that it carries the specified vertical load at design displacement; at the factory check shim positions by sectioning samples or X-ray and measure bearing height and parallelism.",
+      "failure": "形狀係數太低或總橡膠厚度不足時，大位移下組合應變過高，可能造成橡膠與鋼板脫層、表面裂紋，甚至在重疊面積過小時發生側向失穩（翻轉或滾動）；硫化黏結不良則在第一次大地震時就發生脫層。~With too low a shape factor or too little total rubber thickness, combined strains at large displacement become excessive, causing rubber–shim delamination, surface cracking or, with too little overlap area, lateral instability by roll-out; poor vulcanised bonding can delaminate in the first major earthquake.",
+      "misconception": "橡膠越厚越軟就一定越好，因為水平勁度越低隔震效果越佳。~Thicker, softer rubber is always better because lower lateral stiffness means better isolation.",
+      "practice": "設計者應提供每顆支承的豎向力範圍（含地震引起的豎向力變化），製造商以此核算組合應變與穩定；規格書要求黏結品質檢驗與破壞性抽樣試驗，並規定鋼板最小厚度與保護層厚度。~The designer provides each bearing's vertical-load range including seismic variation, and the manufacturer checks combined strain and stability against it; the specification requires bond-quality inspection and destructive sample tests, and sets minimum shim thickness and cover thickness."
+    },
+    {
+      "anchor": "安裝初始剪變位~Initial installation shear offset",
+      "title": "安裝、定位與初始剪應變~Installation, alignment and initial shear strain",
+      "mechanism": "隔震支承以螺栓連接上下連接鋼板，下連接板坐在灌漿墊層上，上連接板與梁底的預埋板或鋼梁下翼板連接。由於支承本身就是水平彈簧，任何安裝後才發生的梁體縮短（預力縮短、潛變、乾縮）或溫度變化，都會讓支承產生長期初始剪應變，佔用一部分地震時可用的應變容量。因此要選擇適當的安裝時機與溫度、必要時先預設偏移，並在施工期間以臨時固定件防止支承在澆置與張拉時被推歪。~An isolator is bolted to top and bottom connection plates; the bottom plate sits on a grout bed and the top plate connects to an embedded plate in the girder or to a steel girder's bottom flange. Because the bearing is itself a horizontal spring, any girder shortening after installation (prestress shortening, creep, shrinkage) or temperature change imposes a long-term initial shear strain that uses part of the strain capacity available in an earthquake. Installation timing and temperature must therefore be chosen, an offset preset when needed, and temporary fixings used during casting and stressing so the bearing is not pushed out of square.",
+      "model": "初始剪應變 γ₀ = Δ/T_r。預力梁在支承安裝後長期縮短 Δ = ε·L = 4.0×10⁻⁴×75,000 mm = 30 mm，T_r = 200 mm，γ₀ = 0.15；若安裝時先預設 30 mm 偏移，長期 γ₀ 接近 0，地震時多保留 15% 的剪應變容量。數值為教學假設。~Initial shear strain γ₀ = Δ/T_r. A prestressed girder that shortens Δ = ε·L = 4.0×10⁻⁴×75,000 mm = 30 mm after bearing installation, with T_r = 200 mm, gives γ₀ = 0.15; presetting a 30 mm offset at installation brings long-term γ₀ close to 0 and keeps 15% more shear-strain capacity for an earthquake. Values are teaching assumptions.",
+      "verify": "安裝時量測支承上下板的水平相對偏移、高程與平整度，與圖面允差比較；張拉與脫模後再量測一次，並把各支承的初始偏移與梁溫一起記錄為基準，納入後續應變檢核。~At installation measure the horizontal offset between top and bottom plates, elevation and flatness against drawing tolerances; measure again after stressing and form removal, recording each bearing's initial offset with girder temperature as the baseline for later strain checks.",
+      "failure": "在張拉前就移除臨時固定件，或在高溫時安裝而未考慮後續縮短，支承會長期處於明顯剪變位，外觀呈平行四邊形；這部分應變與地震應變疊加後，可能提早達到組合應變限值。~Removing temporary fixings before stressing, or installing in hot weather without allowing for later shortening, leaves the bearing visibly sheared into a parallelogram for years; this strain adds to the earthquake strain and can reach the combined-strain limit early.",
+      "misconception": "隔震支承有彈性，安裝時的偏移會自己回正，不必控制。~Isolators are elastic, so any installation offset will self-correct and need not be controlled.",
+      "practice": "施工計畫須明定支承安裝與臨時固定件拆除的時機（例如在主要張拉完成後），並設停留點由監造確認偏移量與梁溫；偏移超過允差時由設計者判斷是否頂升重設。~The construction plan fixes when bearings are installed and temporary fixings removed, for example after main stressing, with a hold point where the inspector confirms offset and girder temperature; if the offset exceeds tolerance the designer decides whether to jack and reset."
+    },
+    {
+      "anchor": "隔震縫寬與剪力榫~Isolation gap and shear keys",
+      "title": "常時約束、隔震縫與伸縮縫~Service restraint, isolation gaps and expansion joints",
+      "mechanism": "隔震橋平時要能承受風力、制動力與溫度位移而不晃動，地震時又必須自由移動。鉛心橡膠支承的初始勁度高，鉛心屈服前就能抵抗常時水平力，因此通常不需額外固定；但若常時力超過 Q_d，就要另設可在地震時剪斷的犧牲型剪力榫。隔震縫（梁端與橋台背牆、相鄰梁之間的淨距）與伸縮縫必須能容納設計位移加溫度位移，否則地震時發生撞擊，等於把隔震系統短路。~An isolated bridge must resist wind, braking and temperature movement in service without swaying, yet move freely in an earthquake. The high initial stiffness of a lead-rubber bearing resists service horizontal forces before the lead yields, so additional restraint is usually unnecessary; but if service forces exceed Q_d, sacrificial shear keys designed to break in an earthquake are added. Isolation gaps between girder ends and abutment backwalls or adjacent spans, and the expansion joints, must accommodate design displacement plus thermal movement, or pounding in an earthquake short-circuits the isolation system.",
+      "model": "常時制動與風力合計 900 kN 由 6 顆支承分擔，每顆 150 kN，小於 Q_d ≈ 177 kN，鉛心不屈服，位移 150/9,700 ≈ 15.5 mm。隔震縫寬 ≥ D + 溫度 + 乾縮 = 250 + 40 + 20 = 310 mm。數值為教學假設。~A combined service braking and wind force of 900 kN shared by 6 bearings gives 150 kN each, below Q_d ≈ 177 kN, so the lead does not yield and displacement is 150/9,700 ≈ 15.5 mm. The isolation gap must be at least D + thermal + shrinkage = 250 + 40 + 20 = 310 mm. Values are teaching assumptions.",
+      "verify": "竣工時逐一量測梁端與背牆、相鄰梁、擋塊之間的淨距，確認沒有模板、碎石或後澆混凝土堵塞；伸縮縫型號的行程須涵蓋地震設計位移或明定為可犧牲並可快速修復。~At completion measure every clearance between girder ends and backwalls, adjacent spans and stoppers, confirming no formwork, debris or later concrete bridges the gap; the expansion-joint movement range must cover the seismic design displacement, or the joint must be specified as sacrificial and quickly repairable.",
+      "failure": "隔震縫被後來加做的人行道、管線支架或維修平台填塞，地震時上部結構撞擊背牆，衝擊力直接傳入橋台與基礎；剪力榫設計強度過高則在地震時不斷裂，隔震系統完全沒有啟動。~Isolation gaps later filled by added footpaths, utility brackets or maintenance platforms let the deck hit the backwall in an earthquake, sending impact forces straight into the abutment and foundation; shear keys designed too strong do not break, and the isolation system never engages.",
+      "misconception": "隔震縫只是施工留下的空隙，之後可以拿來安裝管線或設施。~An isolation gap is just a construction void that can later host utilities or fittings.",
+      "practice": "竣工圖與維護手冊要以醒目方式標示隔震縫的最小淨寬與禁止填塞，並列入每次定期檢查的必檢項目；任何附掛設施的新增都須經結構工程師審查其對隔震位移的影響。~As-built drawings and the maintenance manual must flag minimum isolation-gap widths and forbid filling them, and every periodic inspection must check them; any added attachment requires a structural engineer's review of its effect on isolation displacement."
+    },
+    {
+      "anchor": "遲滯迴圈 EDC~Hysteresis loop EDC",
+      "title": "原型試驗與量產試驗~Prototype and production testing",
+      "mechanism": "隔震支承的設計值必須由試驗證明：原型試驗以實尺寸或代表性試體，在設計豎向力下施加多個振幅、多圈數的反覆剪切，量出 Q_d、K_d 與每圈消散能量（EDC），並檢查在最大位移下的穩定性與豎向承載；量產試驗則對每一顆或抽樣支承做較簡短的壓剪試驗，確認與原型一致。1981 年的紐西蘭試驗就已涵蓋大樓支承（0.3 Hz）與橋梁支承（0.9 Hz）兩種頻率與多種行程。~Isolator design values must be proven by testing. Prototype tests apply repeated shear at several amplitudes and cycle counts under design vertical load to full-size or representative specimens, measuring Q_d, K_d and the energy dissipated per cycle (EDC), and check stability and vertical capacity at maximum displacement; production tests apply shorter compression–shear tests to every bearing or a sample to confirm consistency with the prototype. The New Zealand tests published in 1981 already covered building bearings at 0.3 Hz and bridge bearings at 0.9 Hz with several strokes.",
+      "model": "每圈消散能量 EDC = 4·Q_d·(D − D_y)。Q_d = 177 kN、D = 0.25 m、D_y = Q_d/(K_u − K_d) = 177/8,730 ≈ 0.020 m，EDC = 4×177×0.230 ≈ 162 kN·m；試驗量得迴圈面積 150 kN·m，為設計值的 92%，在 ±15% 允差內。數值為教學假設。~Energy dissipated per cycle EDC = 4·Q_d·(D − D_y). With Q_d = 177 kN, D = 0.25 m and D_y = Q_d/(K_u − K_d) = 177/8,730 ≈ 0.020 m, EDC = 4×177×0.230 ≈ 162 kN·m; a measured loop area of 150 kN·m is 92% of design, within a ±15% tolerance. Values are teaching assumptions.",
+      "verify": "試驗計畫要明定豎向力、位移振幅序列、頻率或速度、循環數、溫度與允收準則（例如個別支承與平均值的允差），由業主代表見證並取得原始力—位移資料；同時比對第 1 圈與第 3 圈的差異，以評估鉛心發熱效應。~The test plan fixes vertical load, amplitude sequence, frequency or velocity, cycle count, temperature and acceptance criteria (for example tolerances for individual bearings and the average), witnessed by the owner's representative with raw force–displacement data supplied; compare cycle 1 with cycle 3 to assess lead heating.",
+      "failure": "只做低速或小振幅試驗會高估鉛心強度的穩定性，忽略大位移下的發熱與橡膠非線性；若量產試驗流於形式或試驗資料不實，安裝後的支承性能就無從確認，只能等地震檢驗。~Testing only at low speed or small amplitude overstates the stability of lead-core strength and misses heating and rubber nonlinearity at large displacement; if production testing is perfunctory or test data are unreliable, installed performance cannot be confirmed until an earthquake tests it.",
+      "misconception": "支承廠商的型錄數值已經過驗證，本案不需要再做原型試驗。~Catalogue values are already verified, so this project needs no prototype tests.",
+      "practice": "把原型試驗合格列為量產開工的停留點，量產試驗報告須逐顆列出 Q_d、K_d 與偏差，並與支承序號、安裝位置對照；試驗原始資料存入竣工文件。~Make prototype acceptance a hold point before production starts; production test reports list Q_d, K_d and deviation for each bearing, cross-referenced to serial number and installed location, and raw test data are kept in the as-built records."
+    },
+    {
+      "anchor": "振動台縮尺模型~Shake-table scale model",
+      "title": "振動台驗證與強震監測~Shake-table verification and strong-motion monitoring",
+      "mechanism": "元件試驗證明支承本身的性能，振動台試驗則驗證整座隔震橋在真實地震紀錄下的系統行為，例如雙向耦合、豎向地震與撞擊。縮尺模型必須遵守相似律：以重力相似時，長度縮尺 λ 對應時間縮尺 √λ，加速度不變，因此輸入地震紀錄要壓縮時間軸。國家地震工程研究中心台南實驗室的 8 m×8 m 高速長行程振動台，可重現近斷層地震的大位移脈衝，正是長週期隔震系統最需要檢驗的情境。完工後在橋上布設強震儀，則能在真實地震中回饋支承位移與墩頂加速度。~Component tests prove the bearing itself; shake-table tests verify the system behaviour of a whole isolated bridge under real records, such as bidirectional coupling, vertical shaking and pounding. Scale models must respect similitude: with gravity similitude a length scale λ implies a time scale √λ with unchanged acceleration, so input records are time-compressed. The 8 m by 8 m high-speed long-stroke shake table at NCREE's Tainan laboratory can reproduce the large displacement pulses of near-fault motion, exactly the case long-period isolation most needs to be checked against. After completion, strong-motion instruments on the bridge feed back bearing displacements and pier-top accelerations from real earthquakes.",
+      "model": "長度縮尺 1/4 時時間縮尺 1/√4 = 1/2：原型週期 2.68 s 對應模型 1.34 s，原型位移 0.25 m 對應模型 62.5 mm，加速度維持相同；原型地震紀錄的取樣間隔 0.01 s 需壓縮為 0.005 s 輸入。數值為教學假設。~With a length scale of 1/4 the time scale is 1/√4 = 1/2: a 2.68 s prototype period becomes 1.34 s in the model, a 0.25 m prototype displacement becomes 62.5 mm and accelerations stay the same; a prototype record sampled at 0.01 s is input at 0.005 s. Values are teaching assumptions.",
+      "verify": "比較振動台量測的支承遲滯迴圈、位移時間歷程與墩底剪力，和同一輸入下的數值模型預測；差異超過預設範圍時調整模型參數並說明原因。現地強震儀則要求時間同步、記錄觸發閾值與定期功能測試。~Compare the measured bearing loops, displacement histories and pier base shears from the shake table with numerical predictions for the same input, adjusting model parameters and explaining any difference beyond a preset range. Field strong-motion instruments need time synchronisation, trigger thresholds and periodic function tests.",
+      "failure": "模型縮尺後若忽略鉛心與橡膠材料無法同比例縮小的效應，試驗結果可能偏離原型；橋上強震儀若只裝在地面而沒有量支承相對位移，就無法判斷隔震層是否如預期啟動。~Ignoring the fact that lead and rubber properties do not scale proportionally can make model results deviate from the prototype; strong-motion instruments placed only at ground level, without measuring relative bearing displacement, cannot show whether the isolation layer engaged as expected.",
+      "misconception": "縮尺模型只要把尺寸縮小，原始地震紀錄可以直接輸入。~A scale model only needs smaller dimensions; the original record can be input unchanged.",
+      "practice": "重要隔震橋的監測系統至少在橋台或自由場、墩頂與上部結構各設加速度計，並在代表性支承設相對位移計；試驗報告與監測資料格式要納入交接，方便震後由他人重算。~Monitoring on an important isolated bridge places accelerometers at least at the abutment or free field, pier top and superstructure, with relative displacement sensors on representative bearings; test reports and data formats are part of handover so others can reanalyse after an earthquake."
+    },
+    {
+      "anchor": "性質修正係數 λ~Property modification factors λ",
+      "title": "老化、溫度與性質上下限~Ageing, temperature and property bounds",
+      "mechanism": "鉛心橡膠支承的性質不是定值：橡膠隨老化與低溫變硬，鉛心在低溫時強度升高、在連續大位移循環時因發熱而降低，製造批次也有差異。因此設計採用上下限分析：以性質修正係數把名目 Q_d 與 K_d 放大或縮小，上限性質產生較大的墩頂剪力與基礎力，下限性質產生較大的支承位移與隔震縫需求，兩組結果分別控制不同構件。~A lead-rubber bearing's properties are not constant: rubber stiffens with ageing and cold, lead strength rises at low temperature and falls as it heats during continuous large cycles, and production batches vary. Design therefore uses bounding analysis: property modification factors scale nominal Q_d and K_d up and down; upper-bound properties produce larger pier shears and foundation forces, lower-bound properties produce larger bearing displacements and gap demands, and each set governs different components.",
+      "model": "名目 Q_d = 177 kN，取 λ_max = 1.3、λ_min = 0.85：上限 Q_d ≈ 230 kN、下限 Q_d ≈ 150 kN。上限值用於檢核墩柱與基礎強度，下限值用於檢核支承位移、組合應變與隔震縫寬。數值為教學假設，λ 依規範與試驗資料決定。~Nominal Q_d = 177 kN with λ_max = 1.3 and λ_min = 0.85 gives an upper bound of about 230 kN and a lower bound of about 150 kN. Upper-bound values check pier and foundation strength; lower-bound values check bearing displacement, combined strain and gap width. Values are teaching assumptions; λ follows the code and test data.",
+      "verify": "λ 的組成（溫度、老化、汙染、循環、製造變異）要有依據：引用規範預設值或製造商的試驗資料；分析報告須分別列出上限與下限兩組的墩底剪力、支承位移，並標明各構件由哪一組控制。~The components of λ (temperature, ageing, contamination, cycling and manufacturing variation) must be justified by code defaults or manufacturer test data; the analysis report lists pier shear and bearing displacement for both upper and lower bounds and states which set governs each component.",
+      "failure": "只用名目性質設計時，寒冷地區冬季地震可能讓鉛心強度與橡膠勁度升高，墩柱承受的剪力超出設計；而大位移連續循環使鉛心軟化時，支承位移又超過名目分析，兩端都被低估。~Designing with nominal properties only can let a winter earthquake in a cold region raise lead strength and rubber stiffness so pier shear exceeds design, while lead softening in continuous large cycles drives bearing displacement past the nominal analysis, underestimating both ends.",
+      "misconception": "支承性質由出廠試驗決定，數十年使用期間都不會改變。~Bearing properties are fixed by factory tests and do not change over decades of service.",
+      "practice": "計算書首頁列出名目值與上下限值的對照表，並要求製造商提供老化與低溫試驗依據；維護計畫在數十年使用期間安排抽樣取出支承做複驗，或保留同批次備品作為老化比對。~The calculation cover sheet tabulates nominal, upper and lower values and requires the manufacturer's ageing and low-temperature evidence; over decades of service the maintenance plan schedules sample removal and retesting, or keeps spare bearings from the same batch for ageing comparison."
+    },
+    {
+      "anchor": "殘留位移與回復力~Residual offset and restoring force",
+      "title": "震後檢查、更換與交接~Post-earthquake inspection, replacement and handover",
+      "mechanism": "隔震橋震後的第一個問題是：支承是否回到原位、有沒有損傷、還能不能承受下一次地震。鉛心橡膠支承靠橡膠彈性提供回復力，但鉛心強度會抵抗回位，因此震後可能留下殘留位移；設計時要求足夠的回復力，避免位移逐次累積。交接文件必須包含每顆支承的試驗數據、安裝偏移基準、上下限分析結果與震後檢查程序，並預留頂升點以便更換。金門大橋馬林郡引道高架橋在 1997 至 2001 年的第一期耐震改造中，就於新鋼支撐塔頂裝設鉛心橡膠隔震支承。~After an earthquake the first questions for an isolated bridge are whether the bearings have returned to position, whether they are damaged and whether they can take the next event. A lead-rubber bearing's restoring force comes from rubber elasticity, but the lead resists re-centring, so a residual offset may remain; design requires enough restoring force to prevent displacement ratcheting. Handover documents must include each bearing's test data, installation baselines, bounding-analysis results and the post-earthquake inspection procedure, with jacking points for replacement. In Phase 1 of the Golden Gate Bridge seismic retrofit, from 1997 to 2001, lead-core rubber isolators were installed atop new steel support towers on the Marin approach viaduct.",
+      "model": "回復力檢核概念：F(D) − F(D/2) = K_d·D/2 = 970×0.125 ≈ 121 kN，大於 W/80 = 3,000/80 = 37.5 kN，回復力足夠。理論最大靜態殘留位移約 Q_d/K_d = 177/970 ≈ 0.18 m，實際震後通常較小，需以量測確認。數值為教學假設。~Restoring-force check concept: F(D) − F(D/2) = K_d·D/2 = 970×0.125 ≈ 121 kN, greater than W/80 = 3,000/80 = 37.5 kN, so restoring force is adequate. The theoretical maximum static residual offset is about Q_d/K_d = 177/970 ≈ 0.18 m; actual residuals are usually smaller and must be measured. Values are teaching assumptions.",
+      "verify": "震後依程序量測每顆支承的殘留剪變位、外觀裂紋、鼓脹與脫層、連接螺栓與灌漿墊層，並檢查隔震縫撞擊痕跡；與交接基準比較後，由結構工程師判定繼續使用、監測或更換。~After an earthquake measure each bearing's residual shear offset, surface cracks, bulging and delamination, connection bolts and grout bed, and check isolation gaps for pounding marks; after comparison with handover baselines a structural engineer decides on continued use, monitoring or replacement.",
+      "failure": "若交接時沒有記錄初始偏移，震後無法分辨殘留位移是地震造成還是原本就存在；未預留頂升點時，損傷支承無法在短時間更換，橋梁只能限制通行，失去隔震設計原本要保障的震後功能。~Without recorded initial offsets at handover, post-earthquake residual displacement cannot be distinguished from pre-existing offset; without jacking points, damaged bearings cannot be replaced quickly and the bridge must be restricted, losing the post-earthquake function isolation was meant to protect.",
+      "misconception": "鉛心橡膠支承震後一定會自動回到原位，不需要檢查。~A lead-rubber bearing always re-centres by itself after an earthquake and needs no inspection.",
+      "practice": "交接文件應包含支承一覽表與序號、原型與量產試驗報告、上下限分析摘要、安裝偏移基準、隔震縫寬度、頂升程序與震後檢查表；震後是否恢復通行由主管機關指定的結構工程師簽認。~Handover includes the bearing schedule with serial numbers, prototype and production test reports, bounding-analysis summary, installation offset baselines, isolation-gap widths, jacking procedure and post-earthquake checklist; reopening after an earthquake is signed off by a structural engineer designated by the owner agency."
+    }
+  ],
+  "example": "設計練習：某連續梁橋每座墩承載 W = 6,000 kN，設兩顆鉛心橡膠支承，每顆 W = 3,000 kN。支承直徑 800 mm、鉛心 150 mm、橡膠總厚 T_r = 200 mm、G = 0.4 MPa，得 Q_d = 10 MPa×0.0177 m² ≈ 177 kN、K_d = 400×0.485/0.2 ≈ 970 kN/m、K_u ≈ 9,700 kN/m、D_y ≈ 0.020 m。設計譜 S_D1 = 0.6 g。先假設 D = 0.25 m：K_eff = 177/0.25 + 970 ≈ 1,678 kN/m，T_eff = 2π√(3,000/(9.81×1,678)) ≈ 2.68 s，β = 2×177×(0.25 − 0.020)/(π×1,678×0.25²) ≈ 24.7%，B_L = (0.247/0.05)^0.3 ≈ 1.61，D = 0.25×0.6×2.68/1.61 ≈ 0.249 m，與假設相符而收斂。每顆支承剪力 V = K_eff·D ≈ 1,678×0.249 ≈ 418 kN，約為 W 的 14%；若同一墩固接、週期 0.63 s 落在譜高原段（教學假設 S_DS = 1.0 g），彈性剪力約為 W 的 100%。若改用 β = 5% 的無鉛心橡膠支承，位移增為約 0.40 m，隔震縫與伸縮縫都要放大。數值為教學假設，不代表任何實際橋梁的設計。~Design exercise: each pier of a continuous girder bridge carries W = 6,000 kN on two lead-rubber bearings of W = 3,000 kN each. Bearing diameter 800 mm, lead core 150 mm, total rubber T_r = 200 mm and G = 0.4 MPa give Q_d = 10 MPa×0.0177 m² ≈ 177 kN, K_d = 400×0.485/0.2 ≈ 970 kN/m, K_u ≈ 9,700 kN/m and D_y ≈ 0.020 m. The design spectrum has S_D1 = 0.6 g. Assume D = 0.25 m: K_eff = 177/0.25 + 970 ≈ 1,678 kN/m, T_eff = 2π√(3,000/(9.81×1,678)) ≈ 2.68 s, β = 2×177×(0.25 − 0.020)/(π×1,678×0.25²) ≈ 24.7%, B_L = (0.247/0.05)^0.3 ≈ 1.61 and D = 0.25×0.6×2.68/1.61 ≈ 0.249 m, matching the assumption, so it converges. Bearing shear V = K_eff·D ≈ 1,678×0.249 ≈ 418 kN, about 14% of W; if the same pier were fixed with a 0.63 s period on the spectral plateau (teaching assumption S_DS = 1.0 g), elastic shear would be about 100% of W. Using plain rubber bearings with β = 5% would raise displacement to about 0.40 m and enlarge both isolation gaps and expansion joints. Values are teaching assumptions, not the design of any real bridge.",
+  "history": "紐西蘭科學與工業研究部（DSIR）的 Bill Robinson 在 1970 年代中期發展出鉛心橡膠支承，把可反覆屈服的鉛心壓入疊層橡膠，同時提供隔震柔性與遲滯阻尼；1981 年他與 Tucker 發表 William Clayton 大樓及 Toe Toe、Waiotukupuna 兩座橋的支承試驗結果。此後該技術在紐西蘭、日本、美國、中國與義大利等地大量使用，美國金門大橋第一期耐震改造（1997 至 2001 年）也在馬林郡引道高架橋採用鉛心橡膠隔震支承。1999 年 921 集集地震重創南投的集鹿大橋，其後的研究以鉛心橡膠支承評估斜張橋隔震改造，台灣的國家地震工程研究中心也以大型試驗設施驗證隔震元件與系統。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Bill Robinson of New Zealand's Department of Scientific and Industrial Research (DSIR) developed the lead-rubber bearing in the mid-1970s, pressing a repeatedly yielding lead core into laminated rubber to provide both isolation flexibility and hysteretic damping; in 1981 he and Tucker published test results for bearings of the William Clayton Building and the Toe Toe and Waiotukupuna bridges. The technique then spread widely in New Zealand, Japan, the United States, China and Italy, and Phase 1 of the Golden Gate Bridge seismic retrofit (1997 to 2001) used lead-core rubber isolators on the Marin approach viaduct. The 1999 Chi-Chi earthquake badly damaged the Chi-Lu cable-stayed bridge in Nantou, and later studies assessed lead-rubber isolation as a retrofit for it, while Taiwan's NCREE uses large test facilities to verify isolation devices and systems. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "Robinson 與 Tucker 1981 年試驗的鉛心橡膠支承最大約 600 mm 見方，鉛心以屈服應力約 10 MPa 的塑性體描述~Lead-rubber bearings tested by Robinson and Tucker in 1981 were up to about 600 mm square, with the lead modelled as a plastic solid yielding at about 10 MPa",
+    "William Clayton 大樓共製造 82 顆鉛心橡膠支承、安裝 80 顆，試驗頻率 0.3 Hz、行程達 ±110 mm~82 lead-rubber bearings were made for the William Clayton Building and 80 installed, tested at 0.3 Hz with strokes up to ±110 mm",
+    "Toe Toe 與 Waiotukupuna 兩座橋的支承以 0.9 Hz、豎向力 160 至 350 kN 試驗~Bearings of the Toe Toe and Waiotukupuna bridges were tested at 0.9 Hz under vertical loads of 160 to 350 kN",
+    "金門大橋第一期耐震改造（1997 至 2001 年）處理馬林郡引道高架橋，經費約 7,100 萬美元~Golden Gate Bridge seismic retrofit Phase 1 (1997 to 2001) addressed the Marin approach viaduct at a cost of about US$71 million",
+    "金門大橋展示資料指出其隔震支承直徑約 1 m，隔震可使地震力最多減少約三分之二~Golden Gate Bridge exhibit material describes isolators about 1 m in diameter and says isolation can cut earthquake forces by as much as about two-thirds",
+    "集鹿大橋研究採用的 921 地震 TCU084 測站紀錄，水平尖峰加速度達 978 gal~The 921 Chi-Chi record from station TCU084 used in the Chi-Lu Bridge study has a horizontal peak acceleration of 978 gal",
+    "集鹿大橋隔震改造數值研究顯示 X 向基底剪力由 10,576 t 降到 504 t~A numerical retrofit study of the Chi-Lu Bridge showed X-direction base shear falling from 10,576 t to 504 t with isolation",
+    "國家地震工程研究中心台南實驗室振動台為 8 m×8 m、最大載重約 100 t~The shake table at NCREE's Tainan laboratory is 8 m by 8 m with a payload of about 100 t",
+    "鉛心橡膠支承隔震橋的等效週期常在約 2 至 3 s，等效阻尼約 15% 至 30%~Lead-rubber isolated bridges typically have effective periods of about 2 to 3 s and equivalent damping of about 15% to 30%"
+  ],
+  "timeline": [
+    {
+      "year": "1975",
+      "event": "Bill Robinson 在紐西蘭 DSIR 完成鉛心橡膠支承設計~Bill Robinson finalises the lead-rubber bearing design at New Zealand's DSIR"
+    },
+    {
+      "year": "1981",
+      "event": "Robinson 與 Tucker 發表 William Clayton 大樓與 Toe Toe、Waiotukupuna 兩橋的首批應用支承試驗結果~Robinson and Tucker publish test results for the first-application bearings of the William Clayton Building and the Toe Toe and Waiotukupuna bridges"
+    },
+    {
+      "year": "1997–2001",
+      "event": "金門大橋第一期耐震改造在馬林郡引道高架橋採用鉛心橡膠隔震支承~Golden Gate Bridge retrofit Phase 1 installs lead-core rubber isolators on the Marin approach viaduct"
+    },
+    {
+      "year": "1999",
+      "event": "921 集集地震重創集鹿大橋，其後研究評估以鉛心橡膠支承進行隔震改造~The Chi-Chi earthquake badly damages the Chi-Lu Bridge, and later studies assess a lead-rubber isolation retrofit"
+    },
+    {
+      "year": "2017",
+      "event": "國家地震工程研究中心台南實驗室 8 m×8 m 高速長行程振動台依規劃投入運轉~NCREE's Tainan laboratory 8 m by 8 m high-speed long-stroke shake table is scheduled into operation"
+    }
+  ],
+  "codes": [
+    "AASHTO 隔震設計指引規範（Guide Specifications for Seismic Isolation Design）~AASHTO Guide Specifications for Seismic Isolation Design",
+    "EN 15129：耐震裝置（含隔震支承）~EN 15129: Anti-seismic devices, including isolators",
+    "ISO 22762：彈性體耐震隔震支承~ISO 22762: Elastomeric seismic-protection isolators",
+    "交通部公路橋梁耐震設計規範~Taiwan Seismic Design Specifications for Highway Bridges (MOTC)"
+  ],
+  "landmarks": [
+    "金門大橋馬林郡引道高架橋~Golden Gate Bridge Marin approach viaduct",
+    "紐西蘭 Toe Toe 橋與 Waiotukupuna 橋~Toe Toe and Waiotukupuna bridges, New Zealand",
+    "William Clayton 大樓（威靈頓）~William Clayton Building, Wellington",
+    "集鹿大橋（南投）~Chi-Lu Bridge, Nantou"
+  ],
+  "place": {
+    "name": "金門大橋南端展示區~Golden Gate Bridge south-end exhibits",
+    "country": "美國~United States",
+    "lat": 37.8078,
+    "lng": -122.4752,
+    "query": "Golden Gate Bridge Welcome Center exhibits"
+  },
+  "sources": [
+    {
+      "key": "nzsee-robinson-tucker-1981",
+      "title": "紐西蘭地震工程學會會刊：William Clayton 大樓、Toe Toe 與 Waiotukupuna 橋鉛心橡膠支承試驗結果（1981）",
+      "titleEn": "Bulletin of the NZ Society for Earthquake Engineering: Test results for lead-rubber bearings for Wm. Clayton Building, Toe Toe Bridge and Waiotukupuna Bridge (1981)",
+      "publisher": "New Zealand Society for Earthquake Engineering",
+      "url": "https://bulletin.nzsee.org.nz/article/view/990",
+      "sourceType": "primary",
+      "scope": "發明者團隊的原始試驗論文，含支承尺寸、試驗頻率、行程、豎向力與鉛心屈服應力模型。",
+      "scopeEn": "Original test paper by the inventor's team with bearing sizes, test frequencies, strokes, vertical loads and the lead yield-stress model."
+    },
+    {
+      "key": "ggb-retrofit-phase-1",
+      "title": "金門大橋管理區：耐震改造第一期（馬林郡引道高架橋）",
+      "titleEn": "Golden Gate Bridge, Highway and Transportation District: Seismic Retrofit Phase I",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/bridge/bridge-projects/seismic-retrofit/phase-i/",
+      "sourceType": "primary",
+      "scope": "業主說明第一期改造範圍、期程、經費與鉛心橡膠隔震支承的安裝位置；不含設計計算。",
+      "scopeEn": "Owner's description of Phase I scope, schedule, cost and where the lead-core rubber isolators were installed; no design calculations."
+    },
+    {
+      "key": "ggb-exhibit-isolation",
+      "title": "金門大橋展示：隔震",
+      "titleEn": "Golden Gate Bridge exhibits: Seismic isolation",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/exhibits/seismic-isolation/",
+      "sourceType": "primary",
+      "scope": "業主對民眾說明隔震支承的構造、大小與減力效果的展示頁。",
+      "scopeEn": "Owner's public exhibit page on isolator construction, size and force-reduction effect."
+    },
+    {
+      "key": "wcee-chilu-isolation",
+      "title": "第 13 屆世界地震工程會議：以隔震系統改造斜張橋（集鹿大橋）",
+      "titleEn": "13th World Conference on Earthquake Engineering: Cable-stayed bridge retrofit using isolation system (Chi-Lu Bridge)",
+      "publisher": "13th WCEE, Vancouver 2004 (NICEE archive)",
+      "url": "https://wcee.nicee.org/wcee/article/13_3253.pdf",
+      "sourceType": "primary",
+      "scope": "以數值分析評估集鹿大橋採鉛心橡膠支承隔震改造的研究論文，含 921 地震損傷與測站紀錄；屬研究，非施工文件。",
+      "scopeEn": "Research paper numerically assessing lead-rubber isolation retrofit of the Chi-Lu Bridge, with 921 earthquake damage and station records; research, not construction documents."
+    },
+    {
+      "key": "roadshow-bill-robinson",
+      "title": "紐西蘭科學家介紹：Bill Robinson 與隔震器",
+      "titleEn": "NZ scientists: Bill Robinson and seismic isolators",
+      "publisher": "Royal Society Te Apārangi Roadshow resources",
+      "url": "https://roadshow.org/content/resources/NZscientists/billRobinson.php",
+      "sourceType": "secondary",
+      "scope": "鉛心橡膠支承發明經過與應用案例的科普介紹，作為延伸閱讀。",
+      "scopeEn": "Popular account of the lead-rubber bearing's invention and applications, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "金門大橋公路與運輸管理區",
+      "nameEn": "Golden Gate Bridge, Highway and Transportation District",
+      "business": "金門大橋的業主與營運單位，負責分期耐震改造與維護。",
+      "businessEn": "Owner and operator of the Golden Gate Bridge, responsible for its phased seismic retrofit and maintenance.",
+      "url": "https://www.goldengate.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "業主角度的隔震改造範圍、期程與公眾說明",
+      "roleEn": "Owner's view of isolation retrofit scope, schedule and public communication"
+    },
+    {
+      "name": "國家地震工程研究中心",
+      "nameEn": "National Center for Research on Earthquake Engineering (NCREE)",
+      "business": "台灣國家級地震工程實驗研究機構，設有可施加高軸力並快速水平運動的雙軸向試驗系統（BATS），常用於隔震元件試驗。",
+      "businessEn": "Taiwan's national earthquake-engineering research laboratory, whose Bi-Axial Testing System (BATS) applies high axial load with rapid horizontal motion and is typically used to test isolation devices.",
+      "url": "https://www.ncree.narl.org.tw/",
+      "investorUrl": "",
+      "security": null,
+      "role": "隔震元件與隔震系統振動台試驗的研究資料",
+      "roleEn": "Research data on isolation-device and isolated-system shake-table testing"
+    },
+    {
+      "name": "毛勒（MAURER）",
+      "nameEn": "MAURER SE",
+      "business": "德國結構保護元件製造商，產品包括結構支承、耐震隔震器與減振阻尼器。",
+      "businessEn": "German structural protection manufacturer whose products include structural bearings, seismic isolators and vibration dampers.",
+      "url": "https://www.maurer.eu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "隔震支承產品類型與試驗要求的公開資料",
+      "roleEn": "Public information on isolator product types and testing requirements"
+    }
+  ],
+  "related": [
+    "b045",
+    "b077"
+  ],
+  "architectureNodes": [
+    [
+      "上部結構慣性力",
+      "Superstructure inertia"
+    ],
+    [
+      "鉛心橡膠支承",
+      "Lead-rubber bearings"
+    ],
+    [
+      "橋墩與基礎",
+      "Piers and foundations"
+    ],
+    [
+      "隔震縫與伸縮縫",
+      "Isolation gaps and expansion joints"
+    ],
+    [
+      "原型與量產試驗",
+      "Prototype and production tests"
+    ],
+    [
+      "強震監測與震後檢查",
+      "Strong-motion monitoring and post-event inspection"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      3,
+      5
+    ]
+  ]
+}

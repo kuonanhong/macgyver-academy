@@ -1,0 +1,301 @@
+{
+  "id": "b063",
+  "title": "巨型柱—外伸臂結構系統~Mega-column and outrigger structural systems",
+  "discipline": "st-tall-systems",
+  "family": "outrigger",
+  "focus": "外伸臂把核心筒轉角轉成巨柱軸力的勁度原理、最佳位置、核心牆接合、差異縮短延遲鎖定與阻尼外伸臂~How outriggers turn core rotation into mega-column axial force: stiffness, optimum level, core-wall connections, delayed lock-off and damped outriggers",
+  "summary": "以台北 101、哈里發塔與上海中心為例，從外伸臂約束核心轉角的旋轉彈簧模型與單道外伸臂的最佳高度出發，處理巨柱有效長度與樓板支撐力、外伸桁架穿入核心牆的力傳遞，再到差異縮短與延遲鎖定、雙層高桁架的焊接收縮、應變監測回推勁度、阻尼外伸臂，最後是外伸臂樓層的改裝管控與長期徐變監測。~Using Taipei 101, Burj Khalifa and Shanghai Tower as examples, start from the rotational-spring model of how outriggers restrain core rotation and from the optimum level of a single outrigger, handle mega-column effective length and floor bracing forces and force transfer where outrigger trusses enter core walls, then differential shortening and delayed lock-off, weld shrinkage in two-storey trusses, strain monitoring to back-calculate stiffness and damped outriggers, ending with alteration control on outrigger floors and long-term creep monitoring.",
+  "units": [
+    {
+      "anchor": "核心轉角與柱軸向勁度~Core rotation and column axial stiffness",
+      "title": "外伸臂如何約束核心筒轉角~How outriggers restrain core rotation",
+      "mechanism": "只有核心筒的高樓像一根懸臂梁，側力下底部彎矩全由核心承擔，頂部變位大。外伸臂是從核心伸出、連到周邊巨柱的深桁架或牆：核心彎曲轉動時，外伸臂一端上翹、一端下壓，迫使兩側巨柱一拉一壓，柱的軸向勁度因此變成抵抗核心轉動的旋轉彈簧，產生反向彎矩。這個反向彎矩減少外伸臂以下核心的彎矩與整棟樓的頂部變位，效果取決於柱的軸向勁度、柱距與外伸臂本身的勁度。~A tower with only a core behaves like a cantilever: under lateral load the core carries the entire base moment and the top drifts a lot. An outrigger is a deep truss or wall extending from the core to perimeter mega-columns; when the core bends and rotates, one end of the outrigger lifts and the other presses down, forcing the columns on the two sides into tension and compression, so their axial stiffness becomes a rotational spring resisting core rotation and producing a counter-moment. That counter-moment reduces core moment below the outrigger and the building's top drift, by an amount that depends on column axial stiffness, column spacing and the outrigger's own stiffness.",
+      "model": "柱群提供的旋轉勁度 K_θ = E·A·d²/(2L)。每側柱群 E = 35 GPa、A = 4 m²、兩側距離 d = 50 m、柱長（外伸臂到基礎）L = 200 m：K_θ = 35×10⁹×4×50²/(2×200) = 8.75×10¹¹ N·m/rad；核心在外伸臂處轉角 0.002 rad 時，回復彎矩 M = 8.75×10¹¹×0.002 = 1.75 GN·m。數值為教學假設。~Rotational stiffness from the column groups K_θ = E·A·d²/(2L). With E = 35 GPa and A = 4 m² per side, d = 50 m between sides and a column length from outrigger to foundation of L = 200 m, K_θ = 35×10⁹×4×50²/(2×200) = 8.75×10¹¹ N·m/rad; a core rotation of 0.002 rad at the outrigger gives a restoring moment M = 8.75×10¹¹×0.002 = 1.75 GN·m. Values are teaching assumptions.",
+      "verify": "在結構模型中分別建立「只有核心」與「核心加外伸臂」兩種情況，比較頂層變位、核心底部彎矩與巨柱軸力；再以旋轉彈簧手算核對外伸臂回復彎矩，兩者差異過大時，檢查模型中外伸臂與柱的連接是否正確模擬。~Build core-only and core-plus-outrigger cases in the structural model and compare top drift, core base moment and mega-column axial forces; then check the outrigger's restoring moment against the rotational-spring hand calculation, and if they differ widely, check whether the outrigger-to-column connection is modelled correctly.",
+      "failure": "若模型把外伸臂與柱的連接當成完全剛接，而實際接合因螺栓滑動或焊接變形而較柔，外伸臂效果被高估，核心與基礎承受的彎矩超過設計；樓板若被當成外伸臂的一部分卻沒有足夠的面內強度，地震時會在核心邊緣開裂。~If the model treats the outrigger-to-column joint as fully rigid while the real joint is softer through bolt slip or weld distortion, the outrigger's benefit is overestimated and the core and foundation see more moment than designed; floor slabs counted as part of the outrigger without enough in-plane strength crack at the core edge in an earthquake.",
+      "misconception": "外伸臂是把核心「撐住」的水平支撐，與柱子的軸向勁度無關。~An outrigger is a horizontal prop that braces the core, regardless of column axial stiffness.",
+      "practice": "設計文件要說明外伸臂系統的力學假設（剛性或彈性、接合鎖定時機、樓板是否參與），並在接合細部圖上標明哪些螺栓在施工期保持可滑動、何時鎖定，由結構設計者確認。~Design documents should state the mechanical assumptions of the outrigger system (rigid or flexible, when joints are locked, whether slabs participate) and mark on connection details which bolts stay free to slip during construction and when they are locked, confirmed by the structural designer."
+    },
+    {
+      "anchor": "最佳外伸臂高度~Optimum outrigger level",
+      "title": "單道外伸臂的最佳高度~Optimum height of a single outrigger",
+      "mechanism": "外伸臂放在頂部時，連接的柱子最長、軸向勁度最小，回復彎矩只對頂部附近有效；放得太低時，柱子短而勁，但該處核心轉角很小，外伸臂幾乎不受力。最佳位置介於兩者之間：在均勻核心、均勻風載、外伸臂本身剛性的簡化模型中，單道外伸臂的最佳位置約在離地 0.54H（距頂約 0.46H），而且與柱的軸向勁度大小無關；多道外伸臂時大致沿高度平均分布。實務上還要配合機電層位置與建築使用。~Put at the top, an outrigger engages the longest, axially softest columns and its restoring moment acts only near the top; put too low, the columns are short and stiff but the core barely rotates there, so the outrigger hardly works. The optimum lies between: in a simplified model with a uniform core, uniform wind and a rigid outrigger arm, a single outrigger works best about 0.54H above the base, about 0.46H below the top, independent of column axial stiffness, and several outriggers are best spread roughly evenly up the height. In practice the levels also follow mechanical floors and building use.",
+      "model": "頂部位移減少 Δ_red = M·a·(H − a/2)/EI，M = θ_w(a)/(a/EI + 2a/(EA·d²))，θ_w(a) = w·a·(3H² − 3Ha + a²)/(6EI)。H = 300 m、EI = 7.0×10¹³ N·m²、w = 150 kN/m、每側柱群 EA = 1.4×10¹¹ N、d = 40 m：無外伸臂時頂部位移 wH⁴/(8EI) ≈ 2.17 m；外伸臂在 a = 165 m 時減少約 54%，放在頂部只減少約 41%。數值為教學假設。~Top-drift reduction Δ_red = M·a·(H − a/2)/EI with M = θ_w(a)/(a/EI + 2a/(EA·d²)) and θ_w(a) = w·a·(3H² − 3Ha + a²)/(6EI). With H = 300 m, EI = 7.0×10¹³ N·m², w = 150 kN/m, EA = 1.4×10¹¹ N per column group and d = 40 m, the top drift without an outrigger is wH⁴/(8EI) ≈ 2.17 m; an outrigger at a = 165 m cuts it by about 54%, whereas one at the top cuts only about 41%. Values are teaching assumptions.",
+      "verify": "在結構模型中把外伸臂逐層移動，繪出頂部位移、核心底部彎矩與巨柱軸力隨高度的變化曲線，確認選定樓層接近最佳區間；多道外伸臂時再比較不同組合，並把機電層、避難層與建築使用的限制一起納入比選表。~Move the outrigger floor by floor in the structural model and plot top drift, core base moment and mega-column axial force against its level, confirming that the chosen floor lies near the optimum band; for several outriggers compare combinations, including the constraints of mechanical floors, refuge floors and building use in the comparison table.",
+      "failure": "若只因機電層剛好在頂部就把唯一的外伸臂放在那裡，減少的頂部位移可能比最佳位置少四分之一以上，核心與基礎因此必須加大；把外伸臂放得太低，則幾乎沒有減振效果卻增加了大量鋼材。~Putting the only outrigger at the top just because the plant room is there can forgo a quarter or more of the drift reduction available at the optimum, forcing a larger core and foundation; placing it too low adds a great deal of steel for almost no benefit.",
+      "misconception": "外伸臂放在建築頂部效果最好，因為那裡轉角最大。~An outrigger works best at the top of the building because rotation is largest there.",
+      "practice": "概念設計階段就以簡化模型做外伸臂位置的敏感度分析，並與建築、機電團隊共同決定加強層樓層；比選紀錄保留在設計基準書，日後若需變更加強層位置，可據以快速評估影響。~Run a sensitivity study of outrigger level with a simplified model at the concept stage and decide the strengthened floors jointly with the architecture and services teams; keep the comparison in the design basis so any later change in level can be assessed quickly."
+    },
+    {
+      "anchor": "巨柱長細比與樓板支撐~Mega-column slenderness and floor bracing",
+      "title": "巨柱的有效長度與樓板支撐力~Effective length of mega-columns and floor bracing forces",
+      "mechanism": "巨柱斷面很大，在每層樓板都有側向支撐時幾乎不會挫屈；但超高層常有挑空大廳、空中大廳或雙層機電層，若巨柱在數層甚至數十公尺範圍內沒有樓板拉住，有效長度大增，二階效應會明顯放大彎矩。支撐巨柱的樓板或繫梁也必須設計成能承受柱子傾向側移所產生的支撐力，一般以柱軸力的一小部分估計。台北 101 與上海中心都以帶狀桁架或樓板把巨柱與其他構件連成整體。~Mega-columns are so large that they hardly buckle when every floor braces them laterally; but supertall towers often have atria, sky lobbies or double-height mechanical floors, and if a mega-column runs several storeys or tens of metres without a slab holding it, its effective length grows and second-order effects markedly amplify moments. Slabs or ties that brace mega-columns must also be designed for the bracing force generated by the column's tendency to sway, usually estimated as a small fraction of its axial load. Taipei 101 and Shanghai Tower both use belt trusses or slabs to tie mega-columns into the rest of the structure.",
+      "model": "P_cr = π²·EI/L²。斷面 3.0 m × 3.0 m、E_eff = 30 GPa，EI = 30×10⁹×3⁴/12 ≈ 2.0×10¹¹ N·m²：L = 4.5 m 時 P_cr ≈ 98,700 MN；若無支撐長度 L = 60 m，P_cr ≈ 555 MN，軸力 400 MN 時比值 0.72，彎矩放大 1/(1 − 0.72) ≈ 3.6 倍。每層支撐力若取軸力 1%，約 4 MN。數值為教學假設。~P_cr = π²·EI/L². For a 3.0 m × 3.0 m section with E_eff = 30 GPa, EI = 30×10⁹×3⁴/12 ≈ 2.0×10¹¹ N·m²: at L = 4.5 m P_cr ≈ 98,700 MN, but over an unbraced L = 60 m P_cr ≈ 555 MN, so a 400 MN axial load gives a ratio of 0.72 and moment amplification of 1/(1 − 0.72) ≈ 3.6. Taking 1% of the axial load as the bracing force gives about 4 MN per floor. Values are teaching assumptions.",
+      "verify": "逐一列出每支巨柱的無支撐長度，對挑空與機電層段做二階分析或挫屈分析，確認放大係數；支撐巨柱的樓板與繫梁以支撐力檢核面內強度與連接，並確認施工期間樓板未完成前的臨時支撐。~List the unbraced length of every mega-column, run second-order or buckling analyses for atrium and mechanical segments to confirm amplification factors, check the in-plane strength and connections of bracing slabs and ties for the bracing force, and confirm temporary bracing before slabs are complete during construction.",
+      "failure": "建築變更新增挑空時若未通知結構設計者，巨柱失去數層支撐，二階彎矩可能讓柱在大震或強風時失穩；施工期間巨柱領先樓板太多，未支撐長度遠超設計，風力或吊裝碰撞就可能造成過大變形。~An architectural change that adds an atrium without telling the structural designer removes several floors of bracing, and second-order moments can destabilise the column in a major earthquake or strong wind; during construction, mega-columns that run far ahead of the slabs have unbraced lengths well beyond design, so wind or lifting impacts can cause excessive deformation.",
+      "misconception": "巨柱斷面這麼大，不可能挫屈，所以樓板支撐無關緊要。~Mega-columns are so large they cannot buckle, so floor bracing does not matter.",
+      "practice": "在結構圖上標示每支巨柱的支撐樓層與無支撐長度，任何挑空或樓板開口變更都必須回到結構設計者；施工計畫規定巨柱領先樓板的最大層數與臨時支撐方式。~Mark the bracing floors and unbraced lengths of every mega-column on the structural drawings, route any atrium or slab-opening change back to the structural designer, and set in the construction plan the maximum number of floors mega-columns may run ahead of slabs, with the temporary bracing method."
+    },
+    {
+      "anchor": "外伸桁架穿入核心牆~Outrigger chords embedded in core walls",
+      "title": "外伸桁架與核心牆的力傳遞~Force transfer between outrigger trusses and core walls",
+      "mechanism": "外伸桁架的弦桿與斜桿在核心牆處集中巨大的拉壓力，必須以埋入牆內的鋼骨、鋼板與剪力釘把力量擴散到混凝土牆中；鋼構與混凝土牆的介面是整個系統最複雜的接合。常見做法是讓弦桿穿過核心牆並與牆內鋼板或型鋼連續，或在牆內設置鋼板剪力牆區段；上海中心的核心牆在加強層內即以鋼板或型鋼補強。穿牆處同時有大量鋼筋、預埋件與澆置空間的衝突，需要三維協調。~Outrigger chords and diagonals concentrate huge tension and compression where they meet the core, so steel sections, plates and shear studs embedded in the wall must spread that force into the concrete; the steel-to-concrete interface is the most complex connection in the system. Common solutions run the chord through the core wall continuously with embedded plates or sections, or form steel-plate shear-wall zones within the wall; Shanghai Tower's core walls are stiffened with steel plates or sections in the strengthened storeys. Where chords pass through, rebar, embeds and concreting space all compete, demanding three-dimensional coordination.",
+      "model": "剪力釘數量 n = F/Q_n。直徑 22 mm 剪力釘 A_sa ≈ 380 mm²，Q_n = 0.5·A_sa·√(f'c·E_c) = 0.5×380×√(60×36,000) ≈ 279 kN，但上限 A_sa·F_u = 380×450 ≈ 171 kN，取 171 kN；弦桿力 40 MN 需 40,000/171 ≈ 234 支，計入強度折減 0.65 約需 360 支。數值為教學假設。~Number of studs n = F/Q_n. A 22 mm stud has A_sa ≈ 380 mm² and Q_n = 0.5·A_sa·√(f'c·E_c) = 0.5×380×√(60×36,000) ≈ 279 kN, capped by A_sa·F_u = 380×450 ≈ 171 kN, so 171 kN governs; a 40 MN chord force needs 40,000/171 ≈ 234 studs, or about 360 with a resistance factor of 0.65. Values are teaching assumptions.",
+      "verify": "以局部有限元素模型檢查弦桿力在牆內的擴散與混凝土局部壓應力，確認剪力釘間距符合規範最小值；施工前做三維碰撞檢查與足尺模型或試作段，驗證鋼筋綁紮、剪力釘焊接與混凝土澆置的可行性，剪力釘以彎曲試驗抽查。~Check the spread of chord force within the wall and local concrete bearing stresses with a local finite-element model and confirm stud spacing meets code minimums; before construction run three-dimensional clash checks and a full-scale mock-up or trial section to prove rebar fixing, stud welding and concreting are feasible, and spot-check studs by bend testing.",
+      "failure": "剪力釘過密或鋼筋太擠時，混凝土在鋼板背後形成空洞，弦桿力無法有效傳入牆內，接合在設計載重前就局部滑移或壓碎；弦桿端部若沒有足夠的錨定長度，大地震時可能從牆中拔出。~Overcrowded studs or congested rebar leave voids behind the plates, so chord force cannot pass effectively into the wall and the joint slips or crushes locally before design load; chord ends without enough anchorage length can pull out of the wall in a major earthquake.",
+      "misconception": "外伸桁架只要鋼構夠強，接到混凝土核心的方式不重要。~If the outrigger steel is strong enough, the way it connects to the concrete core does not matter.",
+      "practice": "加強層的鋼構、牆內鋼板、鋼筋與澆置孔要在同一個三維模型中定案，並以試作段確認施工可行；澆置前設停止點，由結構設計者確認剪力釘、埋件與鋼筋的位置與檢驗紀錄。~Finalise strengthened-storey steel, embedded plates, rebar and placement openings in one three-dimensional model and prove constructability with a trial section; set a hold point before concreting at which the structural designer confirms stud, embed and rebar positions and inspection records."
+    },
+    {
+      "anchor": "延遲鎖定接合~Delayed lock-off connection",
+      "title": "差異縮短與外伸臂的延遲鎖定~Differential shortening and delayed outrigger lock-off",
+      "mechanism": "巨柱與核心筒的應力水準、材料與施工時間不同，在重力、徐變與乾縮下的縮短量也不同；外伸臂若在施工初期就把兩者剛接，差異縮短會讓外伸臂像槓桿一樣被強迫變形，產生與風、地震無關的巨大附加力。常見做法是施工期間讓外伸臂的一端以長槽孔或可調整接頭保持可動，等主要的重力縮短發生後（例如封頂後）再鎖定，或使用可多次調整的千斤頂接頭。鎖定時機是設計與施工共同決定的關鍵參數。~Mega-columns and the core differ in stress level, material and timing, so they shorten by different amounts under gravity, creep and shrinkage; if an outrigger rigidly joins them early in construction, differential shortening forces it to deform like a lever, inducing large extra forces unrelated to wind or earthquakes. The usual answer keeps one end of the outrigger free during construction through long slotted holes or adjustable joints, locking it after most gravity shortening has occurred, for example after topping out, or uses jacked joints that can be adjusted several times. The lock-off time is a key parameter decided jointly by design and construction.",
+      "model": "彈性縮短 δ = σ·L/E。巨柱 25 MPa、核心 12 MPa、E = 38 GPa、高度 200 m：巨柱約 0.000658×200,000 ≈ 131.6 mm，核心約 63.2 mm，相差 68.4 mm；計入徐變係數 1.5 約 171 mm。若立即鎖定，柱群 EA/L = 38×10⁹×4/200 = 7.6×10⁸ N/m，僅彈性差異就產生 7.6×10⁸×0.0684 ≈ 52 MN 的附加力。數值為教學假設。~Elastic shortening δ = σ·L/E. With 25 MPa in the mega-columns, 12 MPa in the core, E = 38 GPa and 200 m height: columns about 0.000658×200,000 ≈ 131.6 mm, core about 63.2 mm, a difference of 68.4 mm, or about 171 mm with a creep coefficient of 1.5. Locked immediately, a column group with EA/L = 38×10⁹×4/200 = 7.6×10⁸ N/m picks up 7.6×10⁸×0.0684 ≈ 52 MN from the elastic difference alone. Values are teaching assumptions.",
+      "verify": "以施工階段分析（含材料時間效應）預測巨柱與核心在各施工時點的縮短，在代表性柱與核心牆埋設應變計、在外伸臂接頭設位移計；鎖定前比對實測差異與預測，確認剩餘差異引起的附加力在設計範圍內，才下達鎖定指令。~Predict mega-column and core shortening at each construction stage with a time-dependent construction-sequence analysis, embed strain gauges in representative columns and core walls, and fit displacement gauges at outrigger joints; before lock-off compare measured and predicted differences, issuing the lock-off instruction only when the extra force from the remaining difference is within design.",
+      "failure": "若外伸臂在施工早期被焊死，數十公釐的差異縮短可能讓斜桿或接合在完工前就接近降伏，或在核心牆內造成裂縫；若鎖定太晚，施工期間遭遇強風時外伸臂無法發揮作用，核心單獨承受風力。~If outriggers are welded solid early in construction, tens of millimetres of differential shortening can drive diagonals or joints close to yield before completion or crack the core walls; lock off too late and the outriggers cannot work during a construction-stage storm, leaving the core to resist wind alone.",
+      "misconception": "外伸臂越早鎖定越好，可以讓結構越早完整。~The earlier an outrigger is locked, the sooner the structure is complete, so earlier is better.",
+      "practice": "施工計畫要訂出外伸臂的暫時狀態、鎖定條件（例如封頂後且實測差異小於設定值）與施工期強風應變措施；鎖定作業設停止點，由結構設計者依監測資料簽認。~The construction plan defines the outriggers' temporary state, the lock-off conditions (for example after topping out and with measured difference below a set value) and construction-stage storm measures; lock-off is a hold point signed by the structural designer on the basis of monitoring data."
+    },
+    {
+      "anchor": "外伸桁架吊裝與焊接順序~Outrigger erection and welding sequence",
+      "title": "雙層高外伸桁架的吊裝與焊接順序~Erection and welding sequence of two-storey outrigger trusses",
+      "mechanism": "兩層高的外伸桁架構件又大又重，常拆成可吊裝的分段，在高空以全滲透焊或高強度螺栓接合。大量厚板焊接會產生收縮，若焊接順序不當，收縮累積會讓桁架節點偏離設計位置、在構件中留下殘餘應力，甚至把核心埋件或巨柱拉偏。施工方以預留收縮量、對稱焊接、先組後焊與臨時支撐控制幾何，並同時考慮塔吊在該半徑的吊重能力。~Two-storey outrigger members are large and heavy, so they are usually split into liftable segments joined at height by full-penetration welds or high-strength bolts. Welding so much thick plate causes shrinkage; with a poor sequence it accumulates, pulling truss nodes off their design positions, leaving residual stresses and even dragging core embeds or mega-columns out of line. Contractors control geometry with shrinkage allowances, symmetric welding, assembly before welding and temporary supports, while respecting tower-crane capacity at the working radius.",
+      "model": "焊接收縮累積：若每道全滲透焊接頭橫向收縮約 1.5 mm，一條弦桿上有 6 個接頭，總收縮約 6×1.5 = 9 mm；跨距 15 m 的弦桿兩端因此靠近 9 mm，製造時應預留同量延長，或以對稱焊接讓兩端各收縮約 4.5 mm。數值為教學假設。~Accumulated weld shrinkage: if each full-penetration joint shrinks about 1.5 mm transversely and a chord has 6 joints, the total is about 6×1.5 = 9 mm, pulling the ends of a 15 m chord 9 mm closer; fabrication should add the same allowance, or symmetric welding can split it into about 4.5 mm at each end. Values are teaching assumptions.",
+      "verify": "焊接前後量測節點座標與構件長度，比對預留收縮量是否正確；厚板焊接記錄預熱、層間溫度與焊接順序，完成後以超音波檢測並量測殘餘變形，偏差超過容許值時暫停後續焊接，由設計者評估。~Measure node coordinates and member lengths before and after welding to check the shrinkage allowance, record preheat, interpass temperature and welding sequence for thick plates, and after completion test ultrasonically and measure residual distortion, suspending further welding for the designer's assessment when deviations exceed tolerance.",
+      "failure": "若從單側依序焊接整條弦桿，收縮會把桁架拉向一側，使與巨柱接合的孔位錯開，只能擴孔或現場切割；焊接殘餘應力與外伸臂的施工期附加力疊加，可能在厚板接頭產生裂紋。~Welding a whole chord in sequence from one side pulls the truss to that side and misaligns the bolt holes at the mega-column, forcing reaming or site cutting; weld residual stresses added to construction-stage outrigger forces can crack thick-plate joints.",
+      "misconception": "鋼構在工廠做得精準，現場焊接不會改變幾何。~Steel fabricated accurately in the shop keeps its geometry through site welding.",
+      "practice": "焊接程序書要指定焊接順序、預留收縮量、預熱與層間溫度與量測時機；高空吊裝與焊接依審查過的吊裝計畫進行，每個階段設停止點，由鋼構工程師與結構設計者確認幾何後才可續作。~The welding procedure specifies sequence, shrinkage allowance, preheat and interpass temperature and measurement times; lifting and welding at height follow an approved lifting plan, with a hold point at every stage where the steel engineer and structural designer confirm geometry before work continues."
+    },
+    {
+      "anchor": "外伸臂構件應變監測~Strain monitoring of outrigger members",
+      "title": "量測外伸臂受力並回推系統勁度~Measuring outrigger forces to back-calculate system stiffness",
+      "mechanism": "外伸臂系統的實際效果取決於許多不確定因素：混凝土開裂後的核心勁度、接合的實際剛度、樓板參與程度與差異縮短的殘留量。在外伸臂斜桿、弦桿與相連巨柱上安裝應變計並量測溫度，可以把風或重力作用下的構件力量化，再與模型預測比較，回推系統的實際勁度分配。這些資料也是日後評估改裝或事件後狀態的基準。~An outrigger system's real effectiveness depends on many uncertainties: cracked core stiffness, actual joint rigidity, slab participation and residual differential shortening. Strain gauges with temperature sensing on outrigger diagonals, chords and connected mega-columns turn wind or gravity effects into member forces that can be compared with model predictions to back-calculate the real stiffness distribution. The data also become the baseline for later assessment of alterations or post-event condition.",
+      "model": "構件軸力 N = E·A·ε。斜桿 A = 0.12 m²、E = 200 GPa，量得風作用下應變 150 με，N = 200×10⁹×0.12×150×10⁻⁶ = 3.6 MN；若模型預測同一風況為 4.0 MN，實際約為預測的 90%，代表接合或核心勁度與假設略有差異。數值為教學假設。~Member axial force N = E·A·ε. For a diagonal with A = 0.12 m² and E = 200 GPa, a measured wind strain of 150 με gives N = 200×10⁹×0.12×150×10⁻⁶ = 3.6 MN; if the model predicted 4.0 MN for the same wind, the actual force is about 90% of the prediction, indicating joint or core stiffness somewhat different from the assumption. Values are teaching assumptions.",
+      "verify": "在同一斷面四周對稱安裝應變計以分離軸力與彎矩，並以溫度補償扣除日照影響；監測資料與風速計同步，挑選風向穩定的時段回歸出單位風壓下的構件力，再與模型比較，偏差超過約兩成時檢討模型假設。~Mount gauges symmetrically around each section to separate axial force from bending, compensate for temperature to remove solar effects, synchronise with anemometers, and regress member force per unit wind pressure over periods of steady wind direction for comparison with the model, reviewing model assumptions when the difference exceeds about 20%.",
+      "failure": "應變計只裝在構件單側時，彎曲應變會被誤當成軸力；未做溫度補償時，日照造成的應變變化可能比風造成的還大，得出錯誤的勁度結論。~Gauges on one face only mistake bending strain for axial force; without temperature compensation, solar strain changes can exceed wind-induced ones and lead to wrong stiffness conclusions.",
+      "misconception": "外伸臂在模型裡有效，實際上就一定照模型分擔。~If outriggers work in the model, they must share load exactly as modelled.",
+      "practice": "監測計畫在設計階段就決定感測器位置、初讀時機（鎖定前後各一次）與資料格式；交接時把原始資料、處理方法與基準值一起移交營運單位，作為日後評估的依據。~Decide sensor locations, initial-reading times (once before and once after lock-off) and data format at the design stage, and hand raw data, processing methods and baseline values to the operator at handover as the basis for future assessments."
+    },
+    {
+      "anchor": "阻尼外伸臂~Damped outrigger",
+      "title": "在外伸臂與巨柱之間加入阻尼器~Placing dampers between outrigger and mega-column",
+      "mechanism": "阻尼外伸臂把外伸臂端部與巨柱之間原本的剛性接合換成垂直的黏滯阻尼器：核心彎曲轉動時，外伸臂端部與巨柱之間產生相對垂直位移，阻尼器在這個相對運動中耗能，為整棟樓提供附加阻尼，同時避免剛性外伸臂傳遞過大的力。阻尼效果取決於阻尼器兩端的相對位移：外伸臂或柱子太柔時，阻尼器兩端一起動，就耗不了多少能量。~A damped outrigger replaces the rigid joint between the outrigger tip and the mega-column with vertical viscous dampers: as the core bends and rotates, relative vertical movement arises between outrigger tip and column, and the dampers dissipate energy in that motion, adding damping to the whole building while avoiding the very large forces a rigid outrigger would transmit. The benefit depends on the relative displacement across the dampers: if the outrigger or columns are too flexible, both ends of the damper move together and little energy is dissipated.",
+      "model": "附加阻尼比 ζ_add = E_d/(4π·E_s)。模態質量 50,000 t、f = 0.15 Hz（ω = 0.942 rad/s）、頂部振幅 0.3 m：E_s = ½·M·ω²·X² ≈ 2.0 MJ；阻尼器總係數 c = 50 MN·s/m、相對位移 u = 0.05 m 時 E_d = π·c·ω·u² ≈ 0.37 MJ，ζ_add ≈ 1.5%；若 u 只有 0.02 m，ζ_add 降為約 0.24%。數值為教學假設。~Added damping ζ_add = E_d/(4π·E_s). With a modal mass of 50,000 t, f = 0.15 Hz (ω = 0.942 rad/s) and a top amplitude of 0.3 m, E_s = ½·M·ω²·X² ≈ 2.0 MJ; with total damper coefficient c = 50 MN·s/m and relative displacement u = 0.05 m, E_d = π·c·ω·u² ≈ 0.37 MJ and ζ_add ≈ 1.5%; if u is only 0.02 m, ζ_add drops to about 0.24%. Values are teaching assumptions.",
+      "verify": "以包含阻尼器非線性特性的時間歷程分析計算阻尼器相對位移、力量與附加阻尼，確認在風與地震下都在阻尼器行程與力量範圍內；阻尼器做原型與逐件試驗，完工後以環境振動或強風紀錄辨識實際阻尼比，並與設計值比較。~Compute damper relative displacement, force and added damping with time-history analyses that include the dampers' nonlinear behaviour, confirming stroke and force limits are respected in wind and earthquake; test prototypes and every production damper, and after completion identify actual damping from ambient or strong-wind records for comparison with the design value.",
+      "failure": "若外伸臂本身太柔，阻尼器兩端相對位移很小，附加阻尼遠低於預期；阻尼器在大地震時若超出行程而撞到止擋，力量突然增大，可能損壞外伸臂或巨柱接合。~If the outrigger itself is too flexible, the dampers see little relative displacement and added damping falls far short of expectations; dampers exceeding their stroke in a major earthquake hit their stops, abruptly raising force and possibly damaging the outrigger or column connection.",
+      "misconception": "阻尼器裝在哪裡都一樣，只要阻尼係數夠大就有效。~It makes no difference where dampers go; a large enough coefficient always works.",
+      "practice": "阻尼外伸臂的設計基準要同時寫明附加阻尼目標、阻尼器相對位移範圍與行程限制；阻尼器的檢查、更換通道與鎖定程序在設計階段就預留，並納入維護手冊。~The design basis of a damped outrigger should state the added-damping target, the range of damper relative displacement and stroke limits together; provide access, replacement routes and locking procedures for the dampers at the design stage and include them in the maintenance manual."
+    },
+    {
+      "anchor": "外伸臂樓層的改裝管控~Alteration control on outrigger floors",
+      "title": "外伸臂樓層的使用限制與改裝管控~Use restrictions and alteration control on outrigger floors",
+      "mechanism": "外伸臂多設在機電層或避難層，這些樓層在營運期間經常需要更換設備、增設管線或改變用途。外伸桁架的斜桿與弦桿佔據大量空間，維修人員可能為了搬運設備或穿越管線而要求在構件上開孔、切割或焊接附掛物；任何一處削弱都可能切斷整個外伸臂的傳力路徑。因此外伸臂樓層在建築管理上必須被列為結構管制區，所有改裝都要經過結構審查。~Outriggers usually sit in mechanical or refuge floors, which in service often need equipment replacement, new services or changes of use. Outrigger diagonals and chords occupy much of the space, and maintenance staff may ask to cut openings, trim members or weld attachments to move equipment or run services; any one weakening can sever the load path of the whole outrigger. Outrigger floors must therefore be designated structural control zones in building management, with every alteration subject to structural review.",
+      "model": "開孔造成的淨斷面損失：弦桿斷面積 0.12 m²，若在 60 mm 厚的腹板開 600 mm 高的孔，損失 0.6×0.06 = 0.036 m²，淨斷面剩 0.084 m²，約為原來的 70%；若原使用率為 0.8，開孔後使用率升為 0.8/0.7 ≈ 1.14，已超過容量。數值為教學假設。~Net-section loss from an opening: a chord of 0.12 m² with a 600 mm high hole cut in its 60 mm web loses 0.6×0.06 = 0.036 m², leaving 0.084 m², about 70% of the original; a utilisation of 0.8 before the cut becomes 0.8/0.7 ≈ 1.14 after it, beyond capacity. Values are teaching assumptions.",
+      "verify": "在外伸臂樓層的構件上以顏色或標牌標示「結構關鍵構件，禁止切割與焊接」，定期巡檢是否有未經許可的開孔、附掛或腐蝕；改裝申請附結構計算，完成後由結構工程師現場驗收並更新竣工圖。~Mark outrigger-floor members with colour codes or signs reading critical structural member, no cutting or welding; inspect periodically for unauthorised openings, attachments or corrosion; require structural calculations with alteration requests and have the structural engineer accept the work on site and update the as-built drawings.",
+      "failure": "機電承包商為了更換大型設備而切斷一根斜桿，外伸臂的力流被打斷，強風或地震時核心與基礎承受遠超設計的彎矩；這種損傷平時看不出來，只有在極端事件中才會暴露。~A services contractor cutting through a diagonal to replace large equipment interrupts the outrigger's force flow, so in strong wind or earthquakes the core and foundation take moments far beyond design; the damage is invisible day to day and exposed only in an extreme event.",
+      "misconception": "機電層是設備空間，構件開孔只是施工方便的小事。~Mechanical floors are equipment space, so cutting members is a minor matter of convenience.",
+      "practice": "營運手冊附外伸臂樓層的結構管制圖、可用的設備搬運路徑與預留孔位置，任何改裝都須取得結構工程師簽認；設備更換路線應在設計階段就預留，避免日後切割構件。~The operations manual includes structural control plans for outrigger floors, the permitted equipment routes and the provided openings, with every alteration needing the structural engineer's sign-off; plan equipment replacement routes at the design stage so members never need cutting later."
+    },
+    {
+      "anchor": "長期徐變監測~Long-term creep monitoring",
+      "title": "外伸臂系統的長期縮短監測與交接~Long-term shortening monitoring and handover of outrigger systems",
+      "mechanism": "外伸臂鎖定之後，巨柱與核心的徐變與乾縮仍會持續數年至十數年，殘留的差異縮短會慢慢增加外伸臂與巨柱的附加力，也可能讓樓板邊緣傾斜。長期監測以應變計、精密水準與接頭位移計追蹤這個過程，並與時間相依分析比較；交接文件要讓營運單位知道哪些數值屬於正常發展、何時需要請結構顧問評估。~After lock-off, creep and shrinkage of mega-columns and core continue for years or even more than a decade, and the residual differential shortening slowly adds force to outriggers and columns and can tilt slab edges. Long-term monitoring with strain gauges, precise levelling and joint displacement gauges tracks this process against time-dependent analysis, and handover documents must tell the operator which values are normal development and when to call in the structural consultant.",
+      "model": "ACI 209 徐變發展 φ(t) = φ∞·t⁰·⁶/(10 + t⁰·⁶)，φ∞ = 2.35：t = 30 天時 φ ≈ 1.02，1 年時 ≈ 1.82，10 年時 ≈ 2.19。若加載 1 年後才鎖定，剩下的徐變只佔 10 年值的 (2.19 − 1.82)/2.19 ≈ 17%，鎖定後的附加力也大致同比例減少。數值為教學假設。~ACI 209 creep development φ(t) = φ∞·t⁰·⁶/(10 + t⁰·⁶) with φ∞ = 2.35: φ ≈ 1.02 at 30 days, ≈ 1.82 at 1 year and ≈ 2.19 at 10 years. Locking off one year after loading leaves only (2.19 − 1.82)/2.19 ≈ 17% of the 10-year creep, and the force added after lock-off falls roughly in proportion. Values are teaching assumptions.",
+      "verify": "每年以精密水準量測巨柱與核心在代表樓層的高程差，並讀取應變計與接頭位移計，與時間相依分析的預測曲線比較；發展速率異常（例如某支巨柱持續快於其他柱）時，檢查是否有局部超載或材料問題。~Each year measure level differences between mega-columns and core on representative floors by precise levelling and read strain gauges and joint displacement gauges, comparing with the predicted time-dependent curves; if a rate is abnormal, such as one column persistently outpacing the others, check for local overloading or material problems.",
+      "failure": "若沒有長期監測，殘留差異縮短造成的樓板傾斜與帷幕接縫變形會被誤認為施工瑕疵而反覆修補；外伸臂附加力超出預期，也可能在多年後才以接合螺栓鬆動或裂縫的形式出現。~Without long-term monitoring, slab tilt and façade-joint distortion from residual differential shortening are mistaken for workmanship defects and repaired again and again; outrigger forces beyond expectation may surface only years later as loosened connection bolts or cracks.",
+      "misconception": "外伸臂鎖定之後，差異縮短的問題就結束了。~Once the outriggers are locked, differential shortening is no longer an issue.",
+      "practice": "交接文件包含鎖定時的實測差異、預測的長期曲線、監測點位置與允收範圍，以及超出範圍時的處理流程；監測至少持續到徐變發展趨緩，並由結構顧問定期審閱。~Handover documents include the measured difference at lock-off, the predicted long-term curves, monitoring locations and acceptance ranges, and the procedure when values fall outside them; continue monitoring at least until creep growth levels off, with periodic review by the structural consultant."
+    }
+  ],
+  "example": "單道外伸臂設計練習：某 300 m 高樓的核心筒 EI = 7.0×10¹³ N·m²，均布風載 w = 150 kN/m，只有核心時頂部位移 Δ₀ = wH⁴/(8EI) = 150,000×300⁴/(8×7.0×10¹³) ≈ 2.17 m。兩側巨柱群各 EA = 1.4×10¹¹ N、間距 d = 40 m。外伸臂放在離地 a = 165 m 時，以 M = θ_w(a)/(a/EI + 2a/(EA·d²)) 求得回復彎矩約 2.29 GN·m，每側巨柱群軸力約 2.29×10⁹/40 ≈ 57 MN，頂部位移減少約 54%，剩約 1.00 m。若改放頂部，只減少約 41%（剩約 1.28 m）；若巨柱軸向勁度減半，最佳位置仍在約 0.54H，但減少量降為約 39%（剩約 1.32 m）。這說明外伸臂的高度與巨柱勁度同樣重要，而且在這個簡化模型中最佳高度與柱勁度無關。數值為教學假設，不代表任何實際建築的設計。~Single-outrigger exercise: a 300 m tower has a core with EI = 7.0×10¹³ N·m² and a uniform wind load w = 150 kN/m, so the core alone drifts Δ₀ = wH⁴/(8EI) = 150,000×300⁴/(8×7.0×10¹³) ≈ 2.17 m at the top. The mega-column groups on each side have EA = 1.4×10¹¹ N and are d = 40 m apart. With the outrigger at a = 165 m, M = θ_w(a)/(a/EI + 2a/(EA·d²)) gives a restoring moment of about 2.29 GN·m and a column-group force of about 2.29×10⁹/40 ≈ 57 MN, cutting top drift by about 54% to about 1.00 m. Placed at the top it cuts only about 41%, leaving about 1.28 m; with column axial stiffness halved the optimum stays near 0.54H but the reduction falls to about 39%, leaving about 1.32 m. Outrigger level and column stiffness therefore matter equally, and in this simplified model the optimum level does not depend on column stiffness. Values are teaching assumptions, not the design of any real building.",
+  "history": "外伸臂系統的想法是讓核心筒不再單獨抵抗傾覆，而是以深桁架把周邊柱拉進來形成力偶；隨著建築高度與細長比增加，這個做法在超高層中成為主流，並常與機電層、避難層結合。台北 101（2004）以多道單層至三層高的外伸桁架連結八支巨柱與斜撐核心，哈里發塔（2010）在機械層設五組外伸臂，上海中心（2015）則以六道兩層高外伸桁架、帶狀桁架與巨柱組成巨型框架；CTBUH 在 2012 年出版外伸臂設計技術指南，整理差異縮短、接合與阻尼外伸臂等議題。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~The idea of an outrigger system is that the core no longer resists overturning alone: deep trusses draw the perimeter columns in to form a couple. As building height and slenderness grew, the approach became mainstream in supertall towers, usually combined with mechanical and refuge floors. Taipei 101 (2004) links eight mega-columns to a braced core through multiple outriggers one to three storeys deep, Burj Khalifa (2010) has five sets of outriggers at mechanical floors, and Shanghai Tower (2015) forms a mega-frame from six two-storey outrigger trusses, belt trusses and super columns; in 2012 CTBUH published a technical guide on outrigger design covering differential shortening, connections and damped outriggers. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "台北 101 外伸桁架約每 8 至 10 層一道，深度為單層、雙層或三層~Taipei 101's outriggers occur about every 8 to 10 floors and are one, two or three storeys deep",
+    "台北 101 八支巨柱底部約 2.4 m × 3.0 m，填充約 69 MPa 混凝土~Taipei 101's eight mega-columns are about 2.4 m × 3.0 m at the base, filled with about 69 MPa concrete",
+    "哈里發塔在機械層設 5 組外伸臂，連結核心與周邊柱~Burj Khalifa has 5 sets of outriggers at mechanical floors linking core and perimeter columns",
+    "上海中心沿高度分 9 區，區間設兩層高外伸與帶狀桁架，外伸桁架共 6 道~Shanghai Tower has 9 zones with two-storey outrigger and belt trusses between them, 6 outrigger levels in all",
+    "上海中心巨柱底部採 C70 混凝土，含鋼率約 4% 至 5%，軸壓比限值 0.65~Shanghai Tower's mega-columns use C70 concrete at the base, about 4% to 5% steel, with an axial-load ratio limit of 0.65",
+    "上海中心大震分析中多數外伸與帶狀桁架保持彈性，平均層間變位角小於 1/130~In Shanghai Tower's major-earthquake analysis most outrigger and belt trusses stayed elastic, with mean drift below 1/130",
+    "均勻核心與均勻風載的簡化模型中，單道外伸臂最佳位置約在離地 0.54H~In a simplified model with a uniform core and wind, a single outrigger is best at about 0.54H above the base",
+    "外伸臂通常佔 1 至 3 層樓高，多設於機電層或避難層~Outriggers typically occupy 1 to 3 storeys and sit in mechanical or refuge floors"
+  ],
+  "timeline": [
+    {
+      "year": "2004",
+      "event": "台北 101 完工，以多道外伸桁架連結八支巨柱與斜撐核心~Taipei 101 is completed, linking eight mega-columns to a braced core through multiple outriggers"
+    },
+    {
+      "year": "2010",
+      "event": "哈里發塔啟用，在機械層以五組外伸臂連結核心與周邊柱~Burj Khalifa opens with five sets of outriggers at mechanical floors tying core to perimeter columns"
+    },
+    {
+      "year": "2012",
+      "event": "CTBUH 出版高層建築外伸臂設計技術指南~CTBUH publishes its technical guide on outrigger design for high-rise buildings"
+    },
+    {
+      "year": "2015",
+      "event": "上海中心完工，以六道兩層高外伸桁架與巨柱組成巨型框架~Shanghai Tower is completed with a mega-frame of six two-storey outriggers and super columns"
+    }
+  ],
+  "codes": [
+    "CTBUH 技術指南：高層建築外伸臂設計（2012）~CTBUH Technical Guide: Outrigger Design for High-Rise Buildings (2012)",
+    "JGJ 3-2010 高層建築混凝土結構技術規程（含加強層規定）~JGJ 3-2010 Technical Specification for Concrete Structures of Tall Buildings, including strengthened-storey provisions",
+    "AISC 360：鋼結構建築規範（含合成構材與剪力釘）~AISC 360: Specification for Structural Steel Buildings, including composite members and shear studs",
+    "ACI 209R：混凝土徐變、乾縮與溫度效應預測~ACI 209R: Prediction of Creep, Shrinkage and Temperature Effects in Concrete Structures"
+  ],
+  "landmarks": [
+    "台北 101~Taipei 101",
+    "上海中心大廈~Shanghai Tower",
+    "哈里發塔~Burj Khalifa"
+  ],
+  "place": {
+    "name": "上海中心大廈巨型框架~Shanghai Tower mega-frame",
+    "country": "中國~China",
+    "lat": 31.2335,
+    "lng": 121.5056,
+    "query": "Shanghai Tower Lujiazui"
+  },
+  "sources": [
+    {
+      "key": "aisc-taipei-101-outriggers",
+      "title": "AISC《Modern Steel Construction》2002 年 12 月：台北 101 結構系統",
+      "titleEn": "AISC Modern Steel Construction, December 2002: Taipei 101 structural system",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://www.aisc.org/globalassets/modern-steel/archives/2002/12/2002v12_skys_the_limit.pdf",
+      "sourceType": "primary",
+      "scope": "設計者撰寫：八支巨柱、外伸桁架間距與層數、帶狀桁架與柱續接的淨上拉。",
+      "scopeEn": "By the designers: eight mega-columns, outrigger spacing and depth, belt trusses and net uplift at column splices."
+    },
+    {
+      "key": "aisc-shanghai-tower-outriggers",
+      "title": "AISC《Modern Steel Construction》2013 年 4 月：上海中心大廈",
+      "titleEn": "AISC Modern Steel Construction, April 2013: Shanghai Tower",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://www.aisc.org/globalassets/modern-steel/archives/2013/04/2013v04_shanghai.pdf",
+      "sourceType": "primary",
+      "scope": "設計者撰寫：九區劃分、兩層高外伸與帶狀桁架、巨柱配置與性能化耐震結果。",
+      "scopeEn": "By the structural designer: nine zones, two-storey outrigger and belt trusses, super-column layout and performance-based seismic results."
+    },
+    {
+      "key": "ctbuh-paper-burj-outriggers",
+      "title": "CTBUH 論文：工程上的世界最高——杜拜塔",
+      "titleEn": "CTBUH paper: Engineering the World's Tallest, Burj Dubai",
+      "publisher": "Council on Tall Buildings and Urban Habitat",
+      "url": "https://global.ctbuh.org/resources/papers/download/1326-engineering-the-worlds-tallest-burj-bubai.pdf",
+      "sourceType": "primary",
+      "scope": "SOM 結構團隊說明機械層五組外伸臂與核心、周邊柱的關係，以及徐變與縮短補償。",
+      "scopeEn": "SOM structural team's account of the five outrigger sets at mechanical floors linking core and perimeter columns, and of creep and shortening compensation."
+    },
+    {
+      "key": "ctbuh-shanghai-tower-data",
+      "title": "CVU（原 CTBUH）摩天大樓中心：上海中心大廈",
+      "titleEn": "Skyscraper Center (CVU, formerly CTBUH): Shanghai Tower",
+      "publisher": "Council on Vertical Urbanism (formerly Council on Tall Buildings and Urban Habitat)",
+      "url": "https://www.skyscrapercenter.com/building/shanghai-tower/56",
+      "sourceType": "primary",
+      "scope": "高度、樓層、結構材料與設計團隊等基本資料。",
+      "scopeEn": "Basic data on height, floors, structural material and design team."
+    },
+    {
+      "key": "constructsteel-shanghai-megacolumns",
+      "title": "Constructsteel：上海中心大廈巨柱與外伸桁架整理",
+      "titleEn": "Constructsteel: Shanghai Tower mega-columns and outriggers",
+      "publisher": "Constructsteel",
+      "url": "https://constructsteel.org/steel-solutions/steel-composite-concrete-solution/building/column/complex-building-in-shanghai-shanghai-tower/",
+      "sourceType": "secondary",
+      "scope": "巨柱混凝土強度、含鋼率、軸壓比限值、核心牆厚度與外伸桁架數量的整理。",
+      "scopeEn": "Summary of mega-column concrete strength, steel ratio, axial-load ratio limit, core wall thickness and outrigger count."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Thornton Tomasetti",
+      "nameEn": "Thornton Tomasetti",
+      "business": "結構工程顧問，設計台北 101 概念與上海中心的巨型框架與外伸臂系統。",
+      "businessEn": "Structural engineering consultancy behind the Taipei 101 concept and Shanghai Tower's mega-frame and outrigger system.",
+      "url": "https://www.thorntontomasetti.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "巨柱與外伸臂系統的公開技術文章與專案資料",
+      "roleEn": "Public technical articles and project material on mega-column and outrigger systems"
+    },
+    {
+      "name": "SOM",
+      "nameEn": "Skidmore, Owings & Merrill",
+      "business": "建築與結構工程設計事務所，設計哈里發塔的扶壁核心與機械層外伸臂。",
+      "businessEn": "Architecture and structural engineering practice that designed Burj Khalifa's buttressed core and mechanical-floor outriggers.",
+      "url": "https://www.som.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "外伸臂與縮短補償在超高層中的公開設計論文",
+      "roleEn": "Public design papers on outriggers and shortening compensation in supertall towers"
+    },
+    {
+      "name": "垂直都市委員會（原 CTBUH）",
+      "nameEn": "Council on Vertical Urbanism (formerly CTBUH)",
+      "business": "高層建築的國際非營利組織，出版技術指南並維護摩天大樓資料庫。",
+      "businessEn": "International non-profit for tall buildings that publishes technical guides and maintains the Skyscraper Center database.",
+      "url": "https://verticalurbanism.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "外伸臂設計技術指南與各案例的公開資料",
+      "roleEn": "Outrigger design guide and public data on reference projects"
+    }
+  ],
+  "related": [
+    "b021",
+    "b023"
+  ],
+  "architectureNodes": [
+    [
+      "核心筒",
+      "Core"
+    ],
+    [
+      "外伸桁架",
+      "Outrigger trusses"
+    ],
+    [
+      "巨柱",
+      "Mega-columns"
+    ],
+    [
+      "帶狀桁架與樓板支撐",
+      "Belt trusses and floor bracing"
+    ],
+    [
+      "延遲鎖定或阻尼接頭",
+      "Delayed lock-off or damper joints"
+    ],
+    [
+      "基礎",
+      "Foundation"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      0,
+      5
+    ]
+  ]
+}

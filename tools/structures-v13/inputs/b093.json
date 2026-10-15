@@ -1,0 +1,315 @@
+{
+  "id": "b093",
+  "title": "鋼構耐火被覆施工~Structural-steel fireproofing application",
+  "discipline": "st-seismic-precast-fire",
+  "family": "fire",
+  "focus": "以臨界溫度、斷面係數與現場厚度、密度、黏結抽驗，確保鋼構件在火害中維持設計耐火時效~Critical temperature, section factor and field thickness, density and bond checks that keep steel members within their rated fire resistance",
+  "summary": "從鋼材在火害中的強度折減與臨界溫度出發，建立斷面係數與被覆厚度的熱傳關係，比較噴覆型防火材料（SFRM）與膨脹型防火塗料的材料機制、施工環境與交叉作業損傷，再以 ASTM E605／E736 現場抽驗、耐火試驗登錄與約束條件判讀完成驗收，並以世界貿易中心、紐約時報大樓與馬德里溫莎大樓說明厚度、黏結與改修過渡期的風險。~Starting from steel strength loss and critical temperature in fire, build the heat-transfer link between section factor and protection thickness, compare the mechanisms, site conditions and trade damage of sprayed fire-resistive materials (SFRM) and intumescent coatings, then close acceptance with ASTM E605/E736 field sampling, fire-test listings and restraint classification, using the World Trade Center, the New York Times Building and the Windsor Building in Madrid to show the risks of thin spots, weak bond and half-finished retrofits.",
+  "units": [
+    {
+      "anchor": "鋼構件臨界溫度~Critical steel temperature",
+      "title": "火害曝露與鋼材強度折減~Fire exposure and steel strength loss",
+      "mechanism": "結構鋼在約 400°C 以上開始明顯損失降伏強度與彈性模數，600°C 左右只剩常溫強度的一半左右，而一般建築火災的煙層溫度在數十分鐘內即可超過 800°C。耐火被覆本身不承載，它的任務是延緩熱量進入鋼材，使構件在要求的耐火時效內仍低於「臨界溫度」，也就是剩餘強度恰好等於火災時載重效應的溫度。臨界溫度不是固定值：火災載重組合採用較低的活載重，構件利用率越低，可容許的溫度越高；梁柱的支承與約束條件也會改變破壞模式。~Structural steel begins to lose yield strength and stiffness noticeably above about 400°C and keeps only about half its ambient strength near 600°C, while gas temperatures in an ordinary building fire can exceed 800°C within tens of minutes. Fireproofing carries no load; its task is to slow heat flow into the steel so that, for the required fire-resistance period, the member stays below its critical temperature, the temperature at which the remaining strength just equals the load effect in fire. That temperature is not fixed: fire load combinations use reduced live load, a lower utilisation allows a higher temperature, and support and restraint conditions change the failure mode.",
+      "model": "EN 1993-1-2 臨界溫度 θ_cr = 39.19·ln[1/(0.9674·μ₀^3.833) − 1] + 482。利用率 μ₀ = 0.6 時 θ_cr ≈ 554°C；μ₀ = 0.4 時 θ_cr ≈ 620°C。ISO 834 標準升溫 θ_g = 345·log₁₀(8t+1) + 20 在 t = 60 min 時約 945°C，遠高於兩者，因此必須靠被覆延緩升溫。數值為教學假設。~EN 1993-1-2 gives the critical temperature θ_cr = 39.19·ln[1/(0.9674·μ₀^3.833) − 1] + 482. A utilisation μ₀ = 0.6 gives θ_cr ≈ 554°C; μ₀ = 0.4 gives θ_cr ≈ 620°C. The ISO 834 standard curve θ_g = 345·log₁₀(8t+1) + 20 reaches about 945°C at t = 60 min, far above both, so protection must delay the heating. Values are teaching assumptions.",
+      "verify": "在結構計算書列出每一類構件在火災載重組合下的利用率並換算臨界溫度，再對照所選耐火試驗登錄的允收溫度（ASTM E119 梁為四點平均 593°C、任一點 704°C）是否一致或較保守；若採性能化設計，需由防火工程師提出升溫分析，並經審查單位與主管建築機關認可。~List each member type's utilisation under the fire load combination in the structural calculations, convert it to a critical temperature, and check that the acceptance temperature of the chosen fire-test listing (ASTM E119 beams: 593°C average over four points, 704°C at any point) is consistent or more conservative; a performance-based design needs a heat-transfer analysis by a fire engineer, accepted by the peer reviewer and the building authority.",
+      "failure": "把所有構件一律套用相同被覆厚度而不看利用率與斷面，常造成重載的細長柱保護不足、輕載大梁卻過度保護；火災中保護不足的柱先達臨界溫度並縮短，迫使上方樓層荷重重分配，嚴重時引發連鎖破壞。~Applying one thickness to every member regardless of utilisation and section often leaves heavily loaded slender columns under-protected and lightly loaded girders over-protected; in a fire the under-protected column reaches its critical temperature first and shortens, forcing load redistribution in the floors above and, at worst, progressive failure.",
+      "misconception": "鋼材要到熔點（約 1,500°C）才會失去承載力，所以一般火災不足以讓鋼構倒塌。~Steel only loses capacity near its melting point of about 1,500°C, so an ordinary fire cannot bring down a steel frame.",
+      "practice": "設計圖應以表格列出每種構件的耐火時效、所依據的試驗登錄編號、利用率假設與所需厚度，並註明「變更斷面或載重須重新核算被覆」；這張表是監造、被覆廠商與檢驗員共同的依據。~Drawings should tabulate for each member type the fire-resistance rating, the listing number relied on, the assumed utilisation and the required thickness, with a note that any change of section or load requires the fireproofing to be re-checked; this table is the common reference for the supervising engineer, applicator and inspector."
+    },
+    {
+      "anchor": "斷面係數 Ap/V~Section factor Ap/V",
+      "title": "斷面係數與受保護鋼材升溫~Section factor and heating of protected steel",
+      "mechanism": "受火鋼材的升溫速度取決於吸熱表面積與可儲熱鋼材體積之比，也就是斷面係數 Ap/V（美制以每呎重量與受熱周長之比 W/D 表示，意義相反）。同樣的被覆厚度包在薄腹細長斷面上升溫較快，包在厚重斷面上升溫較慢。被覆以低熱傳導係數形成熱阻，熱流大約與厚度成反比；含水的水泥系材料在約 100°C 時還會因水分蒸發出現升溫平台。三面受火（上方為樓板）與四面受火的周長不同，必須依實際構造計算。~The heating rate of protected steel depends on the ratio of heated surface to the steel volume that stores heat, the section factor Ap/V (US practice uses weight per foot over heated perimeter, W/D, the inverse sense). The same protection thickness lets a thin-walled slender section heat faster than a heavy one. The protection forms a thermal resistance with low conductivity, so heat flow is roughly inversely proportional to thickness; moisture in cementitious products also produces a temperature plateau near 100°C as water evaporates. Three-sided exposure under a slab and four-sided exposure give different perimeters and must follow the actual construction.",
+      "model": "輕質被覆的集總升溫率 Δθ/Δt ≈ (λp/dp)·(Ap/V)·(θg − θa)/(ca·ρa)。取 λp = 0.12 W/m·K、dp = 25 mm、Ap/V = 150 m⁻¹、θg − θa = 800 K、ca = 600 J/kg·K、ρa = 7,850 kg/m³：(0.12/0.025)×150×800×60 s/(600×7,850) ≈ 7.3 K/min；厚度加倍為 50 mm 時約 3.7 K/min。數值為教學假設。~For light protection the lumped heating rate is Δθ/Δt ≈ (λp/dp)·(Ap/V)·(θg − θa)/(ca·ρa). With λp = 0.12 W/m·K, dp = 25 mm, Ap/V = 150 m⁻¹, θg − θa = 800 K, ca = 600 J/kg·K and ρa = 7,850 kg/m³: (0.12/0.025)×150×800×60 s/(600×7,850) ≈ 7.3 K/min; doubling the thickness to 50 mm gives about 3.7 K/min. Values are teaching assumptions.",
+      "verify": "從鋼構深化圖取出每一斷面尺寸，依三面或四面受火計算受熱周長與斷面係數，與廠商厚度表或試驗登錄的適用範圍比對；超出範圍（斷面係數過大或過小）時不可外插，須取得廠商或試驗機構出具的工程判定書。~Take each section's dimensions from the steel shop drawings, compute heated perimeter and section factor for three- or four-sided exposure, and compare with the range of the manufacturer's thickness tables or the test listing; outside that range, with a section factor too high or too low, do not extrapolate but obtain an engineering judgement from the manufacturer or test body.",
+      "failure": "把四面受火周長套用到頂部有樓板的梁，或把箱形柱當成 H 型鋼計算，斷面係數算錯會直接造成厚度不足或浪費；另一常見錯誤是忽略蜂巢梁與腹板開孔梁的薄腹板，局部升溫遠快於翼板。~Using a four-sided perimeter for a beam under a slab, or treating a box column as an H-section, gives a wrong section factor and directly produces too little or wasted thickness; another common error ignores the thin webs of cellular or castellated beams, which heat much faster locally than the flanges.",
+      "misconception": "被覆厚度只依耐火時效決定，與鋼構件斷面大小無關。~Protection thickness depends only on the required rating, not on the size of the steel section.",
+      "practice": "深化圖階段由鋼構廠輸出每支構件的斷面係數清單，被覆廠商據此提出逐件厚度表並簽章；現場每支構件以噴漆或標籤標示所需厚度，讓施作人員與檢驗員不必在現場自行換算。~At shop-drawing stage the steel fabricator issues a section-factor list for every member, the fireproofing contractor returns a signed member-by-member thickness schedule, and each member on site is marked with its required thickness so that applicators and inspectors never recalculate in the field."
+    },
+    {
+      "anchor": "噴覆型防火材料 SFRM~Sprayed fire-resistive material",
+      "title": "噴覆材料密度與厚度換算~SFRM density and thickness substitution",
+      "mechanism": "SFRM 以石膏或水泥為膠結材，加入礦物纖維、蛭石或輕質骨材，濕噴或乾噴於鋼材表面，固化後形成多孔隔熱層。標準密度產品（約 15–21 pcf，240–336 kg/m³）適用於隱蔽空間；中、高密度產品抗衝擊與黏結較佳，用於停車場、機房或外露區。耐火試驗只對特定試體斷面取得厚度，其他斷面須以經認可的換算式調整：較重的斷面（W/D 較大）吸熱能力較高，可用較薄的被覆，但不得低於登錄的最小厚度。~SFRM uses a gypsum or cement binder with mineral fibre, vermiculite or lightweight aggregate, sprayed wet or dry onto the steel and cured into a porous insulating layer. Standard-density products (about 15–21 pcf, 240–336 kg/m³) suit concealed spaces; medium- and high-density products resist impact and bond better and are used in car parks, plant rooms or exposed areas. A fire test establishes thickness only for the tested section, so other sections are adjusted with an accepted substitution equation: heavier sections with higher W/D absorb more heat and may take a thinner coat, but never below the listed minimum thickness.",
+      "model": "梁斷面替代式 T₁ = T₂·(W₂/D₂ + 0.6)/(W₁/D₁ + 0.6)。W16×26 三面受火周長 D = 3bf + 2d − 2tw = 3×5.50 + 2×15.7 − 2×0.25 = 47.4 in，W/D = 26/47.4 ≈ 0.55。若試驗梁 W/D = 0.82、厚度 1.00 in，則 T₁ = 1.00×1.42/1.15 ≈ 1.24 in，取 1.25 in（約 32 mm）。數值為教學假設。~Beam substitution T₁ = T₂·(W₂/D₂ + 0.6)/(W₁/D₁ + 0.6). A W16×26 with three-sided exposure has D = 3bf + 2d − 2tw = 3×5.50 + 2×15.7 − 2×0.25 = 47.4 in, so W/D = 26/47.4 ≈ 0.55. If the tested beam has W/D = 0.82 and 1.00 in of protection, T₁ = 1.00×1.42/1.15 ≈ 1.24 in, specified as 1.25 in (about 32 mm). Values are teaching assumptions.",
+      "verify": "確認所選登錄設計允許使用替代式、替代式只用於以溫度判定的非約束梁等級、計算結果不低於 3/8 in 等最小厚度，並把每一斷面的換算過程附在送審文件；同時核對產品密度等級與使用環境（隱蔽、外露、潮濕）相符。~Confirm that the chosen listed design permits substitution, that the equation is applied only to the temperature-based unrestrained beam rating, and that results respect minimum thicknesses such as 3/8 in; attach the calculation for each section to the submittal, and check that the product density class matches the exposure: concealed, exposed or damp.",
+      "failure": "把梁的替代式用在柱，或為較輕斷面減少厚度，等於拿試驗沒有涵蓋的條件冒險；把標準密度產品噴在經常受碰撞的停車場或機房，短期內就被撞落、刮除，留下大片裸露鋼材。~Using the beam equation for columns, or reducing thickness for a lighter section, gambles on conditions the test never covered; spraying standard-density product in a car park or plant room that sees frequent impact soon leaves it knocked off and scraped away, exposing large areas of bare steel.",
+      "misconception": "噴覆材料越輕越隔熱，因此任何場所都應選用最低密度的產品。~Lighter fireproofing always insulates better, so the lowest-density product suits every location.",
+      "practice": "規範應依區域指定密度等級（外露區與停車場用中、高密度），並要求廠商提交產品登錄、替代計算與現場密度試驗計畫；任何以較薄厚度取代設計值的提案，都須經結構與防火設計者書面同意。~The specification should assign density classes by zone, with medium or high density for exposed areas and car parks, and require listings, substitution calculations and a field density-testing plan; any proposal to use a thinner coat than designed needs written approval from the structural and fire designers."
+    },
+    {
+      "anchor": "膨脹型防火塗料~Intumescent coating",
+      "title": "膨脹型塗料與塗裝系統相容~Intumescent coatings and coating-system compatibility",
+      "mechanism": "膨脹型防火塗料在常溫下只是一層數百微米到數毫米的塗膜，受熱到約 200–250°C 時，酸源、碳源與發泡劑反應，膨脹成多孔炭化層；薄塗型膨脹比可達約 50 倍，厚塗環氧型膨脹較小但耐候與抗衝擊較佳，常用於建築師希望保留鋼構外形的外露梁柱。塗膜是一個系統：底漆提供防蝕與附著，膨脹層提供耐火，面漆提供耐候與顏色；三者必須在試驗中一起驗證，任意更換底漆或面漆都可能讓炭化層剝落或膨脹不足。~An intumescent coating is only a film of a few hundred microns to a few millimetres at ambient temperature; at about 200–250°C its acid source, carbon source and blowing agent react and swell into a porous char. Thin-film products can expand about 50 times, while thick-film epoxy types expand less but resist weather and impact better; they are used where architects want exposed beams and columns to keep their steel profile. The film is a system: the primer gives corrosion protection and adhesion, the intumescent layer gives fire resistance and the topcoat gives weathering and colour. All three must be proven together in testing, and swapping a primer or topcoat can make the char detach or under-expand.",
+      "model": "乾膜厚 DFT = 濕膜厚 WFT × 體積固含量 VS。目標 DFT 2.10 mm、VS = 70%、每道最大 WFT 1.0 mm，則每道 DFT = 0.70 mm，需 3 道；理論用量 2.10/0.70 = 3.0 L/m²，計入 30% 損耗為 3.0/0.7 ≈ 4.3 L/m²。若膨脹 50 倍，1.0 mm 薄塗膜約形成 50 mm 炭化層。數值為教學假設。~Dry film thickness DFT = wet film thickness WFT × volume solids VS. For a target DFT of 2.10 mm, VS = 70% and a maximum WFT of 1.0 mm per coat, each coat gives 0.70 mm DFT, so 3 coats are needed; theoretical consumption is 2.10/0.70 = 3.0 L/m², or 3.0/0.7 ≈ 4.3 L/m² with 30% loss. At 50-fold expansion a 1.0 mm thin film forms about 50 mm of char. Values are teaching assumptions.",
+      "verify": "核對塗裝系統（底漆、膨脹層、面漆）與評估報告或試驗登錄（如 EN 13381-8 或 UL 設計）所列產品完全一致；施工中以濕膜梳量測每道濕膜，乾燥後以磁感式膜厚計依斷面分區量測乾膜，平均值須達要求、最低讀值在允許範圍內，並扣除底漆與面漆厚度。~Check that the system of primer, intumescent and topcoat matches exactly the products in the assessment report or listing, for example EN 13381-8 or a UL design; during work measure each wet coat with a comb gauge, and after drying measure DFT with a magnetic gauge zone by zone on each section, requiring the mean to reach the target and the lowest readings to stay within tolerance, after deducting primer and topcoat thickness.",
+      "failure": "面漆過厚或使用未經驗證的面漆會壓住膨脹，火災時炭化層只有設計的一部分；底漆不相容則可能讓整片塗膜受熱脫落。單道塗得過厚還會流垂、溶劑封在膜內而起泡，乾膜讀值看似足夠，內部卻有空洞。~An over-thick or unproven topcoat can restrain expansion so the char reaches only part of its design thickness; an incompatible primer may let the whole film fall away when heated. A single coat applied too thick sags or traps solvent and blisters, so the DFT reading looks adequate while the film contains voids.",
+      "misconception": "膨脹型塗料只要總乾膜厚度足夠，底漆與面漆可以任意搭配。~As long as the total dry film is thick enough, any primer and topcoat can be paired with an intumescent coating.",
+      "practice": "工廠塗裝與現場塗裝要劃清界面：哪些構件在廠內完成、運輸吊裝損傷由誰修補、接合部位留白多少與如何補塗，都要寫入塗裝計畫；底漆或面漆變更須取得塗料廠商的相容性書面確認。~Draw a clear line between shop and site application: which members are finished in the shop, who repairs transport and erection damage, how much is left bare at connections and how it is made good must all be in the coating plan; any primer or topcoat change needs the coating manufacturer's written compatibility confirmation."
+    },
+    {
+      "anchor": "鋼材表面與環境條件~Substrate and ambient conditions",
+      "title": "表面準備、環境條件與施工順序~Surface preparation, ambient conditions and sequencing",
+      "mechanism": "被覆能否在火災時留在鋼材上，首先取決於施工當天的表面與環境：油汙、軋鋼鱗片、浮鏽或不相容的底漆會降低黏結，結露的鋼面會讓塗膜附著不良，低溫則使水泥系材料無法正常水化。SFRM 通常在樓板混凝土澆置、鋼承板與吊架夾具完成後施作，以免後續焊接或鑽孔破壞被覆；但若太晚，管線與風管已擋住鋼梁，噴槍無法到達。施工順序因此是品質的一部分，而不只是進度問題。~Whether protection stays on the steel in a fire depends first on the surface and ambient conditions on the day of application: oil, mill scale, loose rust or an incompatible primer reduce bond, condensation on the steel prevents coating adhesion, and low temperature stops cementitious products from hydrating properly. SFRM is normally applied after the slab is cast and deck attachments and hanger clips are installed, so that later welding or drilling does not damage it; but if it comes too late, pipes and ducts already shield the beams and the spray gun cannot reach. Sequencing is therefore part of quality, not just of programme.",
+      "model": "Magnus 露點 Td = 243.12·γ/(17.62 − γ)，γ = ln(RH) + 17.62·T/(243.12 + T)。氣溫 28°C、相對濕度 85%：γ = ln(0.85) + 17.62×28/271.12 ≈ 1.657，Td ≈ 243.12×1.657/15.96 ≈ 25.2°C；若要求鋼面高於露點 3°C，鋼面須 ≥ 28.2°C，量得 26°C 即不得塗裝。數值為教學假設。~Magnus dew point Td = 243.12·γ/(17.62 − γ), with γ = ln(RH) + 17.62·T/(243.12 + T). At 28°C and 85% relative humidity, γ = ln(0.85) + 17.62×28/271.12 ≈ 1.657 and Td ≈ 243.12×1.657/15.96 ≈ 25.2°C; requiring steel at least 3°C above dew point means 28.2°C or more, so a measured 26°C stops coating. Values are teaching assumptions.",
+      "verify": "每班開工前記錄氣溫、相對濕度、鋼面溫度與露點，檢查表面清潔度與底漆狀態，必要時先做小面積黏結試噴；SFRM 須確認基材溫度與通風符合廠商要求，並在施作前完成吊架、夾具與焊接的先行件檢查，簽核後才放行噴覆。~Before each shift record air temperature, relative humidity, steel surface temperature and dew point, and inspect cleanliness and primer condition, with a small bond trial patch where needed; for SFRM confirm substrate temperature and ventilation meet the manufacturer's limits, and complete a pre-application check of hangers, clips and welding, released by signature before spraying begins.",
+      "failure": "在潮濕清晨噴塗膨脹漆，膜下結露造成大面積起泡剝離；SFRM 噴在帶油的鋼梁上，乾燥後看似完整，卻在後續振動或碰撞時整塊脫落。若被覆完成後才在梁上焊接吊架，熱影響區的被覆燒損又常被天花板遮住而未被發現。~Intumescent sprayed on a damp morning with condensation under the film blisters and peels over large areas; SFRM sprayed on oily beams looks intact once dry but falls off in sheets under later vibration or impact. Hangers welded to beams after fireproofing burn the protection in the heat-affected zone, and the damage is often hidden by the ceiling and never found.",
+      "misconception": "只要噴得夠厚，鋼材表面的油汙或浮鏽不會影響被覆效果。~If it is sprayed thick enough, oil or loose rust on the steel does not affect the protection.",
+      "practice": "把被覆前檢查設為停止點：鋼承板焊接、吊架夾具、剪力釘與穿孔全部完成，表面與環境紀錄合格後，由監造簽發被覆許可；之後任何焊接或鑽孔都要事先申請，並排定補修與複驗。~Make the pre-fireproofing inspection a hold point: deck welding, hanger clips, shear studs and penetrations all complete and surface and ambient records accepted, then the supervising engineer issues a permit to fireproof; any later welding or drilling requires a prior request and scheduled repair and re-inspection."
+    },
+    {
+      "anchor": "機電吊架與補修區~Hanger penetrations and patch areas",
+      "title": "交叉作業損傷與等效厚度~Trade damage and equivalent thickness",
+      "mechanism": "被覆完成後，機電、消防灑水、天花板與帷幕牆工班仍需在鋼梁上固定吊架、切割或搬運材料，常刮除或撞落局部被覆。由於熱流近似與厚度成反比，局部變薄或裸露的區域就是熱的捷徑，使該處鋼材升溫遠快於平均厚度所預測。NIST 在世界貿易中心調查中以「熱等效均勻厚度」描述不均勻被覆的實際效果：原設計的平均厚度並不能代表最薄處的風險。~After fireproofing, MEP, sprinkler, ceiling and façade trades still fix hangers to beams and cut or move materials, often scraping or knocking off local patches. Because heat flow is roughly inversely proportional to thickness, thin or bare spots become thermal short cuts where the steel heats much faster than the average thickness predicts. In its World Trade Center investigation NIST described the real effect of uneven protection with a thermally equivalent uniform thickness: the average thickness does not represent the risk at the thinnest areas.",
+      "model": "並聯熱流路徑的等效厚度 d_eq = 1/Σ(fᵢ/dᵢ)。90% 面積 25 mm、10% 面積因刮損只剩 5 mm：d_eq = 1/(0.9/25 + 0.1/5) = 1/0.056 ≈ 17.9 mm，算術平均卻是 23 mm；升溫率約為原設計的 25/17.9 ≈ 1.4 倍。數值為教學假設。~For parallel heat paths the equivalent thickness is d_eq = 1/Σ(fᵢ/dᵢ). With 90% of the area at 25 mm and 10% scraped to 5 mm: d_eq = 1/(0.9/25 + 0.1/5) = 1/0.056 ≈ 17.9 mm, although the arithmetic mean is 23 mm; the heating rate rises to about 25/17.9 ≈ 1.4 times the design value. Values are teaching assumptions.",
+      "verify": "天花板封板前安排第二次全面目視與抽量，特別檢查吊架、穿孔與梁柱接頭周邊；補修使用原產品或廠商核可的補修材料，補修區重新量測厚度並拍照，記入樓層補修清單後才准許封板。~Schedule a second full visual inspection with spot measurements before ceilings close, focusing on hangers, penetrations and beam–column joints; repairs use the original product or a manufacturer-approved patching material, each repaired area is re-measured and photographed, and the floor's repair log must be complete before ceilings may be closed.",
+      "failure": "天花板封閉後才發現被覆缺損，修補成本極高而常被忽略；火災時這些裸露點附近的梁下翼板先達臨界溫度，造成局部撓曲與接頭破壞。NIST 的世界貿易中心調查也指出，飛機撞擊使樓板桁架與柱上的被覆大量脫落，是鋼構件快速升溫的重要原因。~Damage found only after ceilings close is so expensive to reach that it is often ignored; in a fire the bottom flange near these bare spots reaches its critical temperature first, causing local deflection and connection failure. NIST's World Trade Center investigation also found that the aircraft impacts dislodged much of the fireproofing on floor trusses and columns, a key reason for rapid heating of the steel.",
+      "misconception": "被覆驗收合格之後，後續工班的作業不會影響耐火性能。~Once fireproofing passes acceptance, later trades cannot affect its fire performance.",
+      "practice": "合約應規定誰破壞誰負擔、由原被覆廠商修補，並要求機電吊架優先採用夾具而非焊接；每層樓在天花板封閉前設最終被覆檢查停止點，由監造與第三方檢驗員共同簽認。~The contract should make the trade that causes damage pay for repair by the original fireproofing contractor and require clamp-on rather than welded MEP hangers; each floor gets a final fireproofing hold point before ceilings close, signed jointly by the supervising engineer and the third-party inspector."
+    },
+    {
+      "anchor": "厚度、密度與黏結抽驗~Thickness, density and bond sampling",
+      "title": "現場厚度、密度與黏結強度抽驗~Field sampling of thickness, density and bond strength",
+      "mechanism": "現場驗收把試驗室的耐火設計轉成三個可量測的量：厚度、密度與黏結強度。厚度依 ASTM E605 以探針式量規在指定位置量測，梁與柱都有規定的點數與抽樣比例；密度由切取試塊的體積與乾重求得；黏結強度則依 ASTM E736 以拉拔試驗確認被覆不會從鋼材或自身內部分離。美國 IBC 要求這些項目由特別檢驗員執行，並依樓高提高高層建築的黏結強度門檻。~Field acceptance turns the laboratory fire design into three measurable quantities: thickness, density and bond strength. Thickness is measured to ASTM E605 with a probe gauge at prescribed locations, with set numbers of readings and sampling rates for beams and columns; density comes from the volume and dry mass of cut samples; and bond strength is checked to ASTM E736 with a pull-off test showing that the material does not separate from the steel or within itself. The US IBC assigns these items to a special inspector and raises the bond threshold for high-rise buildings by height.",
+      "model": "IBC 黏結門檻換算：150 psf × 47.88 Pa/psf ≈ 7.2 kPa；430 psf ≈ 20.6 kPa；1,000 psf ≈ 47.9 kPa。若拉拔蓋接觸面積 A = 0.0045 m²，所需破壞荷重 F = σ·A 分別約 32 N、93 N 與 215 N。密度試塊 0.30×0.30×0.025 m = 0.00225 m³、乾重 0.63 kg，密度 = 280 kg/m³。門檻為 IBC 規定，其餘為教學假設。~IBC bond thresholds: 150 psf × 47.88 Pa/psf ≈ 7.2 kPa; 430 psf ≈ 20.6 kPa; 1,000 psf ≈ 47.9 kPa. With a pull-off cap area A = 0.0045 m², the required failure loads F = σ·A are about 32 N, 93 N and 215 N. A density sample of 0.30×0.30×0.025 m = 0.00225 m³ with 0.63 kg dry mass gives 280 kg/m³. The thresholds are IBC values; the rest are teaching assumptions.",
+      "verify": "依 IBC 第 1705 節抽樣：樓板每 1,000 ft² 至少 4 點厚度；每層至少 25% 構件，梁在 12 in 長度兩端各量 9 點、寬翼柱各量 12 點；密度與黏結每 2,500 ft² 至少一組。平均厚度須達設計值；設計 ≥ 1 in 時單點不得低於設計值減 1/4 in，小於 1 in 時不得低於設計值減 25%。~Sample per IBC Section 1705: at least 4 thickness readings per 1,000 ft² of floor; at least 25% of members per storey, with 9 readings at each end of a 12 in length on beams and 12 on wide-flange columns; at least one density and one bond sample per 2,500 ft². Mean thickness must reach the design value; for a design of 1 in or more no reading may fall below design minus 1/4 in, and below 1 in no reading may fall below design minus 25%.",
+      "failure": "只量容易到達的腹板而不量下翼板邊緣，或讓遠超設計的讀值拉高平均，都會掩蓋薄點。世界貿易中心樓板桁架原規定 1/2 in，NIST 引用的實測平均約 0.75 in、變異係數約 0.4；若以常態分布估算，約兩成讀值可能低於 0.5 in。~Measuring only the easily reached web and not the bottom-flange edges, or letting very thick readings inflate the average, hides thin spots. The World Trade Center floor trusses originally specified 1/2 in, and NIST cited a measured average of about 0.75 in with a coefficient of variation of about 0.4; a normal-distribution estimate puts about one reading in five below 0.5 in.",
+      "misconception": "平均厚度達到設計值，就代表每一處都有足夠的保護。~If the average thickness meets the design value, every location is adequately protected.",
+      "practice": "檢驗計畫須在施工前送審，列明抽樣位置的隨機選取方式（不由施工者指定）、量規校正、取樣孔的補修方法，以及不合格時擴大抽樣的規則；高層建築要先確認適用的黏結強度門檻。~Submit the inspection plan before work starts, stating how sample locations are chosen at random rather than by the applicator, gauge calibration, how sample holes are patched and the rule for expanding sampling after a failure; for high-rise buildings confirm the applicable bond threshold first."
+    },
+    {
+      "anchor": "耐火試驗登錄與約束條件~Fire-test listing and restraint",
+      "title": "標準耐火試驗、登錄設計與約束分類~Standard fire tests, listed designs and restraint classification",
+      "mechanism": "ASTM E119（與 UL 263 同等）以標準升溫曲線加熱載重試體，梁的溫度判準為四點平均 593°C 或任一點 704°C；試驗結果以登錄設計公告，規定鋼材斷面、被覆產品、厚度與構造細部。試驗分為約束與非約束兩種等級：約束假設周邊結構阻止梁受熱伸長，會在梁內產生軸壓並改變破壞模式。實際建築的約束程度介於兩者之間，熱膨脹推擠柱與接頭本身也是火災倒塌的重要機制。~ASTM E119, equivalent to UL 263, heats loaded specimens along a standard time–temperature curve; for beams the temperature criteria are 593°C averaged over four thermocouples or 704°C at any point. Results are published as listed designs that fix the steel section, protection product, thickness and construction details. Tests yield restrained and unrestrained ratings: restraint assumes the surrounding structure prevents thermal elongation of the beam, inducing axial compression and changing the failure mode. Real buildings fall between the two, and thermal expansion pushing on columns and connections is itself an important collapse mechanism.",
+      "model": "受熱伸長 ΔL = α·L·ΔT。α = 1.2×10⁻⁵ /K、跨度 L = 10.67 m（35 ft）、升溫 ΔT = 500 K：ΔL = 1.2×10⁻⁵×10.67×500 ≈ 64 mm。若完全約束，σ = E·α·ΔT = 200,000×1.2×10⁻⁵×500 = 1,200 MPa，遠超過降伏強度，代表實際上必有接頭滑移、梁挫屈或柱被推出。數值為教學假設。~Thermal elongation ΔL = α·L·ΔT. With α = 1.2×10⁻⁵ /K, span L = 10.67 m (35 ft) and ΔT = 500 K: ΔL = 1.2×10⁻⁵×10.67×500 ≈ 64 mm. If fully restrained, σ = E·α·ΔT = 200,000×1.2×10⁻⁵×500 = 1,200 MPa, far beyond yield, so in reality connections slip, the beam buckles or the column is pushed out. Values are teaching assumptions.",
+      "verify": "審查送審資料時逐項比對登錄設計：鋼材斷面範圍、樓板種類、被覆產品與厚度、是否需金屬網或黏結劑，以及採用約束或非約束等級；建築的約束分類須由結構設計者依周邊構架判定並寫入圖說，而非由被覆廠商自行選擇。~When reviewing submittals compare item by item with the listed design: steel section range, slab type, protection product and thickness, need for mesh or bonding agent, and whether the restrained or unrestrained rating is used; the restraint classification must be decided by the structural engineer from the surrounding framing and written on the drawings, not chosen by the applicator.",
+      "failure": "NIST 委託 UL 對世界貿易中心樓板桁架做的 ASTM E119 試驗中，35 ft 跨度非約束試體得到 2 小時，約束試體只有 1.5 小時，與一般預期相反，提醒工程師小型試驗爐的結果不能直接外推到長跨度與真實約束。忽略熱膨脹，柱與接頭可能在梁尚未失去強度前就被推壞。~In the ASTM E119 tests of World Trade Center floor trusses that NIST commissioned from UL, the 35 ft unrestrained specimen achieved 2 hours while the restrained one achieved only 1.5 hours, contrary to expectation, a reminder that small-furnace results cannot simply be extrapolated to long spans and real restraint. Ignoring thermal expansion lets columns and connections be pushed to failure before the beam itself loses strength.",
+      "misconception": "約束等級的耐火時效一定比非約束等級長，所以都應採用約束等級。~A restrained rating always lasts longer than an unrestrained one, so it should always be used.",
+      "practice": "圖說應明確標示採用的試驗登錄編號與約束條件；任何偏離登錄的構造（不同樓板、不同斷面、開孔梁）都要取得試驗機構或廠商的工程判定，並經防火設計者與主管建築機關認可後才可施工。~Drawings must state the listing number and restraint condition used; any construction that departs from the listing, such as a different slab, section or a cellular beam, needs an engineering judgement from the test body or manufacturer, accepted by the fire designer and the building authority before work proceeds."
+    },
+    {
+      "anchor": "外露鋼構厚塗環氧膨脹漆~Exterior thick-film epoxy intumescent",
+      "title": "外露環境、耐久與維護~Exposure, durability and maintenance",
+      "mechanism": "室內乾燥環境中的 SFRM 數十年幾乎不變，但外露或半外露構件要承受雨水、紫外線、溫濕循環與鹽分。薄塗型膨脹漆吸濕後可能失去膨脹能力，因此外露鋼構多採厚塗環氧型膨脹漆加耐候面漆；紐約時報大樓外露的角柱與橫梁即以約 80 或 120 mils（約 2 或 3 mm）的環氧膨脹漆一次噴塗，再滾平外觀。防火塗層同時擔任防蝕層，一旦面漆破損或膜下鏽蝕擴展，耐火與防蝕會一起失效。~SFRM in dry interiors hardly changes for decades, but exposed or semi-exposed members face rain, ultraviolet light, thermal and humidity cycling and salt. Thin-film intumescents can lose their ability to expand after absorbing moisture, so exterior steel usually takes a thick-film epoxy intumescent with a weathering topcoat; the exposed corner columns and cross beams of the New York Times Building received epoxy intumescent sprayed in one coat at about 80 or 120 mils, about 2 or 3 mm, and back-rolled for appearance. The fire coating also acts as corrosion protection, so once the topcoat fails or rust creeps beneath the film, fire and corrosion protection fail together.",
+      "model": "面漆壽命 t = (初始厚度 − 最小厚度)/年損耗率。面漆 60 μm、最低需保留 30 μm、外露面年損耗 5 μm：t = (60 − 30)/5 = 6 年；改用 80 μm 面漆則 t = 10 年。單位換算：80 mils × 25.4 μm/mil ≈ 2,030 μm，120 mils ≈ 3,050 μm。除單位換算外，數值為教學假設。~Topcoat life t = (initial − minimum thickness)/annual loss. With a 60 μm topcoat, a 30 μm minimum and 5 μm/year loss on exposed faces: t = (60 − 30)/5 = 6 years; an 80 μm topcoat gives t = 10 years. Unit check: 80 mils × 25.4 μm/mil ≈ 2,030 μm and 120 mils ≈ 3,050 μm. Apart from the unit conversion, values are teaching assumptions.",
+      "verify": "正式施工前以實尺寸鋼構樣品做外觀與施工性試驗（紐約時報大樓曾在業主場址做過兩次鋼構樣品現場試驗），完工後建立分區基準照片與乾膜厚度圖；之後定期目視檢查粉化、龜裂、起泡與鏽水，抽量乾膜厚度與附著力，與基準比較決定局部修補或全面重塗面漆。~Before production, apply the system to full-size steel mock-ups for appearance and workability (the New York Times Building ran two off-site field tests on steel mock-ups at the owner's facility), and after completion record zone-by-zone baseline photographs and DFT maps; then inspect periodically for chalking, cracking, blistering and rust staining, spot-check DFT and adhesion, and compare with the baseline to choose between local repair and full topcoat renewal.",
+      "failure": "把室內型薄塗膨脹漆用於半外露的雨遮梁或停車場邊梁，數年後塗膜吸濕軟化、起泡，火災時膨脹不足；邊緣與螺栓頭等銳角處膜厚最薄，往往最先鏽蝕並從底部把塗層撐開。~Using an interior thin-film intumescent on semi-exposed canopy or car-park edge beams lets the film absorb moisture, soften and blister within a few years, so it under-expands in a fire; sharp edges and bolt heads carry the thinnest film and are often the first to corrode and lift the coating from beneath.",
+      "misconception": "防火塗料只在火災時發揮作用，平時不需要檢查與維護。~Fire-protective coatings only matter during a fire, so they need no routine inspection or maintenance.",
+      "practice": "依環境分類選用經耐久評估的產品（如 ETAG 018-2 依室內、半外露與外露區分的類別），並在維護手冊列出檢查週期、允許的修補材料與修補後須量測的乾膜厚度；外露構件的任何塗層修補都要由原系統廠商確認相容性。~Select products with a durability assessment matching the exposure, for example the internal, semi-exposed and exposed categories of ETAG 018-2, and list in the maintenance manual the inspection interval, permitted repair materials and the DFT to be measured after repair; every coating repair on exposed members needs compatibility confirmation from the original system manufacturer."
+    },
+    {
+      "anchor": "既有建築被覆升級~Retrofit upgrade of fireproofing",
+      "title": "改修升級、用途變更與竣工交接~Retrofit upgrades, change of use and handover",
+      "mechanism": "既有鋼構建築常因法規更新、樓高分類或用途變更而需提高耐火時效，改修期間建築多半仍在使用，部分樓層已完成、部分尚未施作，防火區劃與被覆同時處於不完整狀態。馬德里溫莎大樓 2005 年火災時，外圍鋼柱的補強被覆只完成到第 17 層以下，未保護的上部外圍鋼柱在火中失效，上方樓層局部崩塌；世界貿易中心在 1990 年代把樓板桁架被覆由 1/2 in 提高到 1.5 in，也只完成部分樓層。改修計畫必須同時管控過渡期風險。~Existing steel buildings often need higher fire ratings after code updates, a change of height class or a change of use, and they usually stay occupied during the work, so some floors are finished and others not, with compartmentation and protection both incomplete. When the Windsor Building in Madrid burned in 2005, retrofit protection to the perimeter steel columns had been completed only below the 17th floor; the unprotected upper perimeter columns failed and upper storeys partly collapsed. The World Trade Center raised floor-truss protection from 1/2 in to 1.5 in in the 1990s, but only on some floors. A retrofit plan must manage the risk of the transition period.",
+      "model": "柱的厚度關係常寫成 R = (C₁·W/D + C₂)·h。取教學常數 C₁ = 1.05、C₂ = 0.61，W/D = 0.80：R/h = 1.05×0.80 + 0.61 = 1.45 h/in；2 小時需 h = 2/1.45 ≈ 1.38 in，升級為 3 小時需 3/1.45 ≈ 2.07 in，增加約 0.69 in（約 17.5 mm）。數值為教學假設。~Column thickness relations are often written R = (C₁·W/D + C₂)·h. With teaching constants C₁ = 1.05 and C₂ = 0.61 and W/D = 0.80: R/h = 1.05×0.80 + 0.61 = 1.45 h/in; 2 hours needs h = 2/1.45 ≈ 1.38 in, and an upgrade to 3 hours needs 3/1.45 ≈ 2.07 in, an increase of about 0.69 in (about 17.5 mm). Values are teaching assumptions.",
+      "verify": "改修前以破壞性取樣確認既有被覆的產品、厚度、密度與黏結，判定可否直接加噴或必須全部清除；改修後依新建標準抽驗，並更新每層的被覆狀態圖，標示已完成、施工中與未施作區域，供消防單位與管理者掌握。~Before retrofit, take destructive samples to establish the existing product, thickness, density and bond, and decide whether to overspray or strip completely; after retrofit sample to new-construction standards and update each floor's fireproofing status plan, marking completed, in-progress and untouched zones for the fire service and building management.",
+      "failure": "改修期間拆除層間防火阻隔與天花板卻未設臨時防火措施，火災會跨樓層蔓延並同時加熱多層未保護鋼材，溫莎大樓的報導即指出施工中層間防火阻隔曾被移除；新材料直接噴在老化或含石綿的舊被覆上，黏結失效時兩層會一起剝落。~Removing floor-edge fire stops and ceilings during retrofit without temporary protection lets fire spread across storeys and heat several levels of unprotected steel at once, and reports on the Windsor Building note that fire stops between floors had been removed during the works; spraying new material straight over aged or asbestos-containing old protection can fail in bond and peel both layers off together.",
+      "misconception": "既有被覆只要外觀完整，就能直接加噴新材料達到更高的耐火時效。~If existing fireproofing looks intact, new material can simply be sprayed over it to reach a higher rating.",
+      "practice": "竣工交接應包含逐構件厚度表、登錄設計編號、檢驗報告、補修紀錄與產品資料，並在 BIM 或樓層圖標示被覆類型；任何改裝、用途變更或新增吊掛荷重前，須由結構與防火設計者評估，改修計畫的分區與臨時措施須經主管建築機關核准。~Handover should include the member-by-member thickness schedule, listing numbers, inspection reports, repair logs and product data, with protection types marked in BIM or floor plans; before any alteration, change of use or added suspended load, the structural and fire designers must assess the impact, and the building authority must approve the retrofit plan's phasing and temporary measures."
+    }
+  ],
+  "example": "設計練習：某 150 m（約 492 ft）辦公塔的樓板梁要求 2 小時非約束等級，選用的登錄設計以 W/D = 0.82 的試驗梁、SFRM 厚度 1.00 in 取得該等級。專案梁 W16×26：D = 3bf + 2d − 2tw = 3×5.50 + 2×15.7 − 2×0.25 = 47.4 in，W/D = 26/47.4 ≈ 0.55，換算斷面係數 Ap/V ≈ 134/(W/D) ≈ 244 m⁻¹；厚度 T₁ = 1.00×(0.82 + 0.6)/(0.55 + 0.6) = 1.42/1.15 ≈ 1.24 in，取 1.25 in（約 32 mm）。現場允收：設計 ≥ 1 in，單點不得低於 1.25 − 0.25 = 1.00 in。樓高超過 420 ft，黏結門檻 1,000 psf ≈ 47.9 kPa，以 0.0045 m² 拉拔蓋需承受約 215 N 不破壞。若改用 W16×40（D = 3×7.00 + 2×16.0 − 2×0.305 ≈ 52.4 in，W/D ≈ 0.76），T₁ = 1.42/1.36 ≈ 1.04 in，較重斷面可減薄約 0.2 in，但仍不得低於登錄最小厚度。數值為教學假設，不代表任何實際建築的設計。~Design exercise: floor beams in a 150 m (about 492 ft) office tower need a 2-hour unrestrained rating, and the chosen listed design achieved it with a test beam of W/D = 0.82 and 1.00 in of SFRM. Project beam W16×26: D = 3bf + 2d − 2tw = 3×5.50 + 2×15.7 − 2×0.25 = 47.4 in, W/D = 26/47.4 ≈ 0.55, equivalent to a section factor Ap/V ≈ 134/(W/D) ≈ 244 m⁻¹; thickness T₁ = 1.00×(0.82 + 0.6)/(0.55 + 0.6) = 1.42/1.15 ≈ 1.24 in, specified as 1.25 in (about 32 mm). Field acceptance: with a design of 1 in or more, no reading may be below 1.25 − 0.25 = 1.00 in. The tower exceeds 420 ft, so the bond threshold is 1,000 psf ≈ 47.9 kPa, meaning a 0.0045 m² pull-off cap must hold about 215 N. If a W16×40 is used instead (D = 3×7.00 + 2×16.0 − 2×0.305 ≈ 52.4 in, W/D ≈ 0.76), T₁ = 1.42/1.36 ≈ 1.04 in, so the heavier section saves about 0.2 in but must still respect the listed minimum. Values are teaching assumptions, not the design of any real building.",
+  "history": "1918 年美國 ASTM 委員會通過建築構造耐火試驗標準並建立標準升溫曲線，其後的 ASTM E119 與 UL 263 成為北美鋼構耐火被覆的試驗基礎。1995 至 1997 年英國 Cardington 實尺寸鋼構火災試驗中，未保護的組合樓板梁最高約 1,100°C 仍未倒塌，推動了性能化防火設計；2001 年世界貿易中心倒塌後，NIST 調查指出被覆被撞落與厚度不均的影響，促成 2009 年版 IBC 提高高層建築 SFRM 黏結強度並要求現場特別檢驗。2005 年馬德里溫莎大樓火災則揭示改修過渡期的風險。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~In 1918 an ASTM committee adopted a fire-test standard for building construction that established the standard time–temperature curve, and its successors ASTM E119 and UL 263 became the test basis for steel fireproofing in North America. In the full-scale Cardington steel-frame fire tests in the UK from 1995 to 1997, unprotected composite floor beams reached about 1,100°C without collapse, encouraging performance-based fire design; after the 2001 World Trade Center collapses, the NIST investigation highlighted dislodged and uneven fireproofing and led the 2009 IBC to raise SFRM bond strength for high-rise buildings and require field special inspection. The 2005 Windsor Building fire in Madrid exposed the risk of a building caught mid-retrofit. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "ASTM E119 對梁的溫度判準為四點平均 1,100°F（593°C）或任一點 1,300°F（704°C）~ASTM E119 beam criteria: 1,100°F (593°C) average over four thermocouples or 1,300°F (704°C) at any point",
+    "IBC 規定 SFRM 黏結強度一般至少 150 psf（約 7.2 kPa），樓高 75–420 ft 高層為 430 psf，超過 420 ft 為 1,000 psf~IBC requires SFRM bond strength of at least 150 psf (about 7.2 kPa), 430 psf for 75–420 ft high-rises and 1,000 psf above 420 ft",
+    "標準密度 SFRM 約 15–21 pcf（240–336 kg/m³），中密度約 22–39 pcf~Standard-density SFRM is about 15–21 pcf (240–336 kg/m³); medium density is about 22–39 pcf",
+    "世界貿易中心樓板桁架 1969 年規定被覆 1/2 in，1995 年升級規定為 1.5 in，NIST 引用實測平均約 0.75 in 與 2.5 in~World Trade Center floor trusses were specified 1/2 in of fireproofing in 1969 and 1.5 in for the 1995 upgrade; NIST cited measured averages of about 0.75 in and 2.5 in",
+    "NIST 委託 UL 做了 4 次 ASTM E119 樓板試驗，分別在 17 ft 與 35 ft 試驗爐進行~NIST commissioned 4 ASTM E119 floor tests from UL, in 17 ft and 35 ft furnaces",
+    "紐約時報大樓約 250,000 ft² 外露鋼構以 80 或 120 mils 環氧膨脹漆保護，要求至少 2 小時~About 250,000 ft² of exposed steel at the New York Times Building was protected with 80 or 120 mils of epoxy intumescent for at least 2 hours",
+    "薄塗型膨脹漆約在 200–250°C 開始反應，膨脹比約 50 倍~Thin-film intumescents start reacting at about 200–250°C and expand about 50-fold",
+    "Cardington 1995–1997 年試驗中，未保護鋼梁最高約 1,100°C 而結構未倒塌~In the 1995–1997 Cardington tests unprotected steel beams reached about 1,100°C without structural collapse",
+    "馬德里溫莎大樓為 30 層，2005 年火災延燒約 1¾ 小時後上部外圍局部崩塌~The Windsor Building in Madrid had 30 storeys; in the 2005 fire its upper perimeter partly collapsed after about 1¾ hours of severe burning"
+  ],
+  "timeline": [
+    {
+      "year": "1918",
+      "event": "ASTM 委員會通過建築構造耐火試驗標準並建立標準升溫曲線~An ASTM committee adopts a fire-test standard for building construction and establishes the standard time–temperature curve"
+    },
+    {
+      "year": "1969",
+      "event": "紐約港務局函文規定世界貿易中心樓板桁架噴覆被覆 1/2 in~A Port Authority letter specifies 1/2 in of sprayed fireproofing for World Trade Center floor trusses"
+    },
+    {
+      "year": "1995–1997",
+      "event": "英國 Cardington 實尺寸鋼構火災試驗，未保護鋼梁未導致倒塌~Full-scale Cardington steel-frame fire tests in the UK show unprotected beams without collapse"
+    },
+    {
+      "year": "2005",
+      "event": "馬德里溫莎大樓於被覆改修期間發生火災，上部外圍鋼柱失效~The Windsor Building in Madrid burns mid-retrofit and its upper perimeter steel columns fail"
+    },
+    {
+      "year": "2007",
+      "event": "紐約時報大樓完工，外露鋼構採現場噴塗環氧膨脹型防火塗料~The New York Times Building is completed with site-sprayed epoxy intumescent on its exposed steel"
+    },
+    {
+      "year": "2007–2009",
+      "event": "ICC 依 NIST 建議提高 SFRM 黏結強度並納入現場特別檢驗，見於 2009 年版 IBC~ICC adopts NIST-based SFRM bond and special-inspection requirements, reflected in the 2009 IBC"
+    }
+  ],
+  "codes": [
+    "ASTM E119／UL 263：建築構造與材料耐火試驗方法~ASTM E119 / UL 263: Standard test methods for fire tests of building construction and materials",
+    "AWCI Technical Manual 12-A 與 ASTM E605／E736：噴覆防火材料現場檢驗、厚度密度與黏結試驗~AWCI Technical Manual 12-A with ASTM E605 / E736: field inspection, thickness, density and bond testing of SFRM",
+    "國際建築規範 IBC 第 403.2.4 與 1705 節：高層 SFRM 黏結強度與特別檢驗~International Building Code Sections 403.2.4 and 1705: high-rise SFRM bond strength and special inspection",
+    "EN 1993-1-2 鋼結構防火設計與 EN 13381-8 反應型被覆評估~EN 1993-1-2 structural fire design of steel and EN 13381-8 assessment of reactive protection"
+  ],
+  "landmarks": [
+    "紐約時報大樓~The New York Times Building, New York",
+    "紐約世界貿易中心雙塔~World Trade Center towers, New York",
+    "馬德里溫莎大樓~Windsor Building, Madrid",
+    "英國 Cardington 鋼構火災試驗大樓~Cardington steel-frame fire test building, UK"
+  ],
+  "place": {
+    "name": "紐約時報大樓外露鋼構~New York Times Building exposed steel",
+    "country": "美國~United States",
+    "lat": 40.7562,
+    "lng": -73.9901,
+    "query": "The New York Times Building 620 Eighth Avenue"
+  },
+  "sources": [
+    {
+      "key": "nist-icc-code-changes-2008",
+      "title": "NIST：依世界貿易中心調查建議通過的 ICC 建築與消防規範修訂",
+      "titleEn": "NIST: Changes to ICC building and fire codes from the WTC investigation (FY 2008)",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://www.nist.gov/el/changes-icc-building-and-fire-codes-fy-2008-ncst-annual-report",
+      "sourceType": "primary",
+      "scope": "說明高層建築 SFRM 黏結強度提高的倍數、現場安裝要求與特別檢驗項目；不含個別產品資料。",
+      "scopeEn": "Describes the multiples by which high-rise SFRM bond strength was raised, field-installation requirements and special-inspection items; no product data."
+    },
+    {
+      "key": "nist-wtc-ul-floor-tests",
+      "title": "NIST：世界貿易中心樓板系統 UL 耐火試驗公開簡報",
+      "titleEn": "NIST: Public briefing on UL fire resistance tests of the WTC floor system",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://www.nist.gov/document/publicbriefingultestsrevc0825041pdf",
+      "sourceType": "primary",
+      "scope": "列出樓板桁架被覆的原規定與升級厚度、實測平均與變異、四次 ASTM E119 試驗的跨度與等級。",
+      "scopeEn": "Lists the original and upgraded floor-truss fireproofing specifications, measured averages and variability, and the spans and ratings of four ASTM E119 tests."
+    },
+    {
+      "key": "aisc-msc-fire-thickness",
+      "title": "AISC《現代鋼構》：耐火被覆厚度換算與 W/D 替代式",
+      "titleEn": "AISC Modern Steel Construction: fire-protection thickness and the W/D substitution equation",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://aisc.org/globalassets/modern-steel/archives/2002/04/2002v04_fire.pdf",
+      "sourceType": "primary",
+      "scope": "說明梁替代式的形式、適用於非約束等級、最小厚度與 ASTM E119 梁溫度判準；課程數值另為教學假設。",
+      "scopeEn": "Explains the beam substitution equation, its limitation to unrestrained ratings, minimum thickness and ASTM E119 beam temperature criteria; course numbers are separate teaching assumptions."
+    },
+    {
+      "key": "sci-new-york-times-building",
+      "title": "SteelConstruction.info：紐約時報大樓外露鋼構防火案例",
+      "titleEn": "SteelConstruction.info: The New York Times Building fire protection case study",
+      "publisher": "SteelConstruction.info (BCSA, SCI and Steel for Life)",
+      "url": "https://steelconstruction.info/The_New_York_Times_Building,_New_York",
+      "sourceType": "secondary",
+      "scope": "外露鋼構面積、環氧膨脹漆塗膜厚度、耐火時效要求與樣品試驗的公開案例說明。",
+      "scopeEn": "Public case description of exposed steel area, epoxy intumescent film thickness, rating requirement and mock-up trials."
+    },
+    {
+      "key": "nsc-lessons-from-madrid",
+      "title": "New Steel Construction：馬德里溫莎大樓火災的教訓",
+      "titleEn": "New Steel Construction: Lessons from Madrid",
+      "publisher": "New Steel Construction (BCSA)",
+      "url": "https://www.newsteelconstruction.com/wp/lessons-from-madrid/",
+      "sourceType": "secondary",
+      "scope": "溫莎大樓的結構組成、改修中未完成的外圍鋼柱被覆與局部崩塌經過；不含原始調查資料。",
+      "scopeEn": "Structure of the Windsor Building, the unfinished perimeter-column protection retrofit and the partial collapse; no original investigation data."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Isolatek International（CAFCO）",
+      "nameEn": "Isolatek International",
+      "business": "生產 CAFCO 噴覆型防火材料、膨脹型防火塗料與防火板，涵蓋標準、中、高密度產品。",
+      "businessEn": "Produces CAFCO sprayed fire-resistive materials, intumescent coatings and fire boards across standard, medium and high densities.",
+      "url": "https://www.isolatek.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "SFRM 密度等級、產品分類與施工要求的公開資料",
+      "roleEn": "Public information on SFRM density classes, product types and application requirements"
+    },
+    {
+      "name": "阿克蘇諾貝爾（International 防護塗料）",
+      "nameEn": "AkzoNobel (International Protective Coatings)",
+      "business": "全球塗料集團，旗下 International 品牌提供 Chartek 等被動式防火塗料與鋼構防蝕系統。",
+      "businessEn": "Global coatings group whose International brand supplies passive fire protection such as Chartek and corrosion-protection systems for steel.",
+      "url": "https://www.international-pc.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "AKZA",
+        "exchange": "AMS",
+        "currency": "EUR"
+      },
+      "role": "膨脹型防火塗料系統、底漆面漆相容與外露鋼構案例",
+      "roleEn": "Intumescent fire-protection systems, primer and topcoat compatibility and exposed-steel examples"
+    },
+    {
+      "name": "美國國家標準與技術研究院 國家火災研究實驗室",
+      "nameEn": "NIST National Fire Research Laboratory",
+      "business": "美國政府研究機構，進行實尺寸結構火災試驗、火災後調查與規範改進研究。",
+      "businessEn": "US government research facility running real-scale structural fire experiments, post-fire investigations and research that improves codes.",
+      "url": "https://www.nist.gov/el/fire-research-division-73300/national-fire-research-laboratory-73306",
+      "investorUrl": "",
+      "security": null,
+      "role": "鋼構火害行為、世界貿易中心調查與規範修訂的公開研究",
+      "roleEn": "Public research on steel behaviour in fire, the WTC investigation and code changes"
+    }
+  ],
+  "related": [
+    "b091",
+    "b099"
+  ],
+  "architectureNodes": [
+    [
+      "火災曝露與臨界溫度",
+      "Fire exposure and critical temperature"
+    ],
+    [
+      "鋼構斷面係數",
+      "Steel section factor"
+    ],
+    [
+      "噴覆或膨脹型被覆",
+      "Sprayed or intumescent protection"
+    ],
+    [
+      "表面準備與施工順序",
+      "Surface preparation and sequencing"
+    ],
+    [
+      "厚度密度黏結抽驗",
+      "Thickness, density and bond sampling"
+    ],
+    [
+      "維護改修與交接紀錄",
+      "Maintenance, retrofit and handover records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      0,
+      5
+    ]
+  ]
+}

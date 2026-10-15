@@ -25,7 +25,7 @@
    │
  PayPal 伺服器 ──► /functions/v1/paypal-webhook   先呼叫 PayPal 驗章，再處理付款完成／退款／撤銷
  綠界伺服器   ──► /functions/v1/ecpay-notify     驗 CheckMacValue + 伺服器端 QueryTradeInfo 查單 → 回 1|OK
- pg_cron 每週 ──► /functions/v1/fx-refresh       更新 fx_rates 匯率（需 x-cron-secret）
+ pg_cron 每 12 小時 ──► /functions/v1/fx-refresh  更新 fx_rates 匯率（需 x-cron-secret；V13）
 
  Supabase Postgres：profiles、plans、fx_rates、orders、entitlements、payment_events、login_attempts、course_content
  錢的流向：買家 → PayPal／綠界 → 您在 PayPal／綠界後台綁定的本人帳戶（見第 12 節）
@@ -228,7 +228,7 @@ PayPal JS SDK 只需要公開的 Client ID：
 
 ## 10. 匯率自動更新（非台幣 PayPal 付款需要）
 
-非 TWD 的價格 = 台幣價格 × `fx_rates.per_twd`，**無條件進位**到該幣別最小單位（JPY、HUF、TWD 等為整數，其餘到 0.01）。匯率超過 10 天（pricing.json `fxMaxAgeDays`）未更新時，該幣別會暫停結帳並提示改用台幣。
+非 TWD 的價格 = 台幣價格 × `fx_rates.per_twd`，再依 V13（與華佗學院相同）的規則**無條件進位到當地慣用價位**：整數幣別（JPY、KRW、HUF…）取整數，≥1,000／10,000／100,000 時分別以 10／100／1,000 為級距；兩位小數幣別 ≥100 取整數，未滿 100 進位到下一個 .49 或 .99（例：USD 9.3288 → 9.49、EUR 8.54 → 8.99、JPY 1,390.7 → 1,400）。價格一定不低於換算值。網頁 `pricing.js` 的 `tidyPrice()` 與伺服器 `amountFor()` 規則相同並有自動測試比對。匯率超過 3 天（pricing.json `fxMaxAgeDays`）未更新時，該幣別會暫停結帳並提示改用台幣。
 
 手動更新一次：
 
@@ -236,7 +236,9 @@ PayPal JS SDK 只需要公開的 Client ID：
 curl -X POST -H "x-cron-secret: <CRON_SECRET>" https://<project-ref>.supabase.co/functions/v1/fx-refresh
 ```
 
-每週自動更新：在 Dashboard → Database → Extensions 啟用 `pg_cron` 與 `pg_net`，再依 `002_accounts_commerce.sql` 最後的註解範例，把同一個 CRON_SECRET 存進 Vault 並建立排程。
+每 12 小時自動更新（V13，與華佗學院的 12 小時快取相同）：在 Dashboard → Database → Extensions 啟用 `pg_cron` 與 `pg_net`，再依 `002_accounts_commerce.sql` 最後的註解範例（排程 `17 */12 * * *`），把同一個 CRON_SECRET 存進 Vault 並建立排程。已建立舊的每週排程者，先 `select cron.unschedule('academy-fx-refresh');` 再重新建立。
+
+網頁顯示的匯率來源依序為：① 本站 Supabase `fx_rates`（與伺服器收費同一份）；② 瀏覽器直接向 open.er-api.com 取得的最新匯率（快取 12 小時）；③ 套件內每週快照 `data/fx.json`。②、③ 只用於顯示，結帳一律以伺服器報價為準。
 匯率來源為 open.er-api.com（ExchangeRate-API 免費端點，約每日更新）；網站若顯示換算價格，請依其使用條款加註「Rates By Exchange Rate API」與連結 https://www.exchangerate-api.com 。
 
 ---
@@ -314,7 +316,7 @@ select public.academy_revoke_entitlement('MG0123456789ABCDEF01', 'refund: ECPay 
 - [ ] `ALLOWED_ORIGINS`、`SITE_URL` 只有正式網址；`TERMS_VERSION` 與網站條款頁一致，條款含退款與數位內容說明。
 - [ ] Auth：Confirm email 開啟、密碼最少 12、正式 SMTP、Site URL／Redirect URLs 正確。
 - [ ] `pricing.json`、`pricing-rules.ts`、`plans` 三者一致（`node tools/payments-v12/sync-pricing.mjs --check`）。
-- [ ] 匯率排程已建立，`fx_rates` 在 10 天內。
+- [ ] 匯率排程已建立（每 12 小時），`fx_rates` 在 3 天內。
 - [ ] 清除測試期開通的權限：
       `select public.academy_revoke_entitlement(id, 'sandbox cleanup') from public.orders where env = 'sandbox' and status = 'paid';`
 - [ ] 公開網站已移除付費階段內容（第 11 節）。

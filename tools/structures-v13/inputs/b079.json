@@ -1,0 +1,304 @@
+{
+  "id": "b079",
+  "title": "挫屈束制支撐安裝~Buckling-restrained brace installation",
+  "discipline": "st-seismic-precast-fire",
+  "family": "damper",
+  "focus": "以核心降伏力、層間變位換算的核心應變、安裝時機與配合誤差控制，確保挫屈束制支撐只在地震時才降伏耗能~Core yield force, drift-to-core-strain conversion, installation timing and fit-up control that keep buckling-restrained braces yielding only in earthquakes",
+  "summary": "從挫屈束制支撐構架的受力路徑與層間變位換算核心應變出發，檢查核心、套管與脫層材及節點板的設計，再把重點放在安裝：重力荷載與安裝時機造成的預壓、現場配合誤差與螺栓鎖固，接著談 AISC 341 資格試驗與震後評估、防火與熱膨脹，最後是更換與交接，並以 One Rincon Hill、鹽湖城國際機場與日本製鐵工程的無黏結支撐公開資料對照。~Starting from the load path of buckling-restrained braced frames and the conversion of storey drift into core strain, check the core, casing, unbonding layer and gusset design, then focus on installation: preload from gravity loads and installation timing, fit-up misfit and bolt tightening, followed by AISC 341 qualification tests and post-earthquake assessment, fire and thermal expansion, and finally replacement and handover, compared with public information on One Rincon Hill, Salt Lake City International Airport and Nippon Steel Engineering's unbonded brace.",
+  "units": [
+    {
+      "anchor": "支撐核心降伏力~Brace core yield force",
+      "title": "挫屈束制支撐構架的受力路徑~Load path of a buckling-restrained braced frame",
+      "mechanism": "挫屈束制支撐（BRB）由一根可降伏的鋼核心與包覆它的鋼套管及砂漿組成，套管防止核心在受壓時整體挫屈，使核心在拉與壓兩個方向都能降伏並形成飽滿的遲滯迴圈。這讓支撐像一個以鋼材塑性耗能的阻尼器：地震力經樓板傳到梁，再由節點板進入支撐，核心降伏限制了傳入構架的最大力，梁、柱與節點板則依支撐可能的最大力做容量設計，保持彈性。日本製鐵工程公開說明，其無黏結支撐自上市 30 餘年來已交付超過 10 萬支。~A buckling-restrained brace (BRB) consists of a yielding steel core enclosed by a steel casing and mortar; the casing prevents overall buckling of the core in compression, so the core yields in both tension and compression with full hysteresis loops. The brace thus acts as a damper dissipating energy through steel plasticity: earthquake force passes from the slab into the beam, through the gusset into the brace, and core yielding caps the force entering the frame, while beams, columns and gussets are capacity-designed for the maximum brace force and remain elastic. Nippon Steel Engineering states that more than 100,000 of its unbonded braces have been delivered in over 30 years on the market.",
+      "model": "核心面積 A_sc = 4,000 mm²、標稱 F_y = 345 MPa：P_ysc = 4,000×345 ≈ 1,380 kN。以應變硬化係數 ω = 1.4 與受壓強度調整係數 β = 1.1，最大拉力 T_max = ω·P_ysc ≈ 1,932 kN，最大壓力 C_max = β·ω·P_ysc ≈ 2,125 kN，梁柱與節點板依此做容量設計。數值為教學假設。~With core area A_sc = 4,000 mm² and nominal F_y = 345 MPa, P_ysc = 4,000×345 ≈ 1,380 kN. With strain-hardening factor ω = 1.4 and compression adjustment factor β = 1.1, the maximum tension is T_max = ω·P_ysc ≈ 1,932 kN and the maximum compression C_max = β·ω·P_ysc ≈ 2,125 kN, which govern capacity design of beams, columns and gussets. Values are teaching assumptions.",
+      "verify": "設計時列出每支支撐的 P_ysc、T_max、C_max 與所連接的梁、柱、節點板需求比；核心鋼材以鋼板試片的實測降伏強度確認落在規格範圍內，避免實際強度過高使構架超載。~In design, tabulate P_ysc, T_max and C_max for every brace with the demand ratios of the beams, columns and gussets it connects; confirm from coupon tests on the core plate that the measured yield strength falls within the specified range, so that an overly strong core does not overload the frame.",
+      "failure": "若核心鋼材實際降伏強度遠高於設計值，支撐在設計地震中不降伏，力量直接傳入柱與基礎，可能使柱或節點板先破壞；反之核心太弱，則在中小地震就降伏並累積損傷。~If the actual core yield strength is far above design, the brace does not yield in the design earthquake and force flows straight into columns and foundations, which may fail first; a core that is too weak yields in minor earthquakes and accumulates damage.",
+      "misconception": "支撐的鋼材強度越高越安全，所以核心用高強度鋼最好。~Stronger brace steel is always safer, so the core should use the highest-strength steel.",
+      "practice": "規格書應規定核心鋼材的降伏強度範圍（上下限），並要求每批鋼板試片報告；容量設計所用的 ω 與 β 必須取自該產品的資格試驗，不可直接沿用其他廠牌數值。~The specification should set an upper and lower bound on core yield strength and require coupon reports for every plate heat; the ω and β used in capacity design must come from that product's qualification tests, not from another manufacturer's values."
+    },
+    {
+      "anchor": "核心降伏段應變~Core yielding-zone strain",
+      "title": "層間變位與核心應變需求~Storey drift and core strain demand",
+      "mechanism": "支撐的變形需求來自層間變位：樓層水平位移在斜撐方向的分量就是支撐伸縮量，而這個伸縮量主要集中在核心的降伏段，兩端的加勁連接段幾乎不變形。降伏段越短，同樣的層間變位就造成越大的核心應變，低週疲勞壽命也越短；降伏段越長，支撐越柔、層間變位越大。因此核心降伏段長度是在構架勁度與核心應變之間取捨，必須與製造商的試驗應變範圍對照。~A brace's deformation demand comes from storey drift: the component of horizontal storey displacement along the brace axis is the brace elongation or shortening, concentrated in the yielding zone of the core while the stiffened end zones barely deform. A shorter yielding zone gives larger core strain for the same drift and shorter low-cycle fatigue life; a longer one makes the brace more flexible and increases drift. The yielding-zone length is therefore a trade-off between frame stiffness and core strain and must be checked against the manufacturer's tested strain range.",
+      "model": "柱距 6 m、樓高 4 m：支撐角 θ = atan(4/6) ≈ 33.7°，工作點長度約 7.21 m。層間變位 2%×4,000 = 80 mm，支撐伸縮 80×cos33.7° ≈ 66.6 mm；降伏段取工作點長度的 60%，L_ysc ≈ 4,327 mm，核心應變 ≈ 66.6/4,327 ≈ 1.54%，試驗須涵蓋其兩倍約 3.1%。數值為教學假設。~With a 6 m bay and 4 m storey, the brace angle is θ = atan(4/6) ≈ 33.7° and the work-point length about 7.21 m. A 2% drift of 80 mm gives a brace deformation of 80×cos33.7° ≈ 66.6 mm; with a yielding zone of 60% of the work-point length, L_ysc ≈ 4,327 mm and core strain ≈ 66.6/4,327 ≈ 1.54%, so tests must cover twice that, about 3.1%. Values are teaching assumptions.",
+      "verify": "從非線性分析取得每支支撐在設計與最大考量地震下的最大變形，換算核心應變並與資格試驗達到的應變比較；日本製鐵工程公開說明其無黏結支撐在約 3% 至 4% 軸應變下仍有穩定遲滯與疲勞性能，可作為比較的量級參考。~Take each brace's maximum deformation under the design and maximum considered earthquakes from nonlinear analysis, convert it to core strain and compare with the strain reached in qualification tests; Nippon Steel Engineering reports stable hysteresis and fatigue performance for its unbonded brace at about 3% to 4% axial strain, a useful order of magnitude for comparison.",
+      "failure": "若為了提高勁度而把降伏段縮得很短，核心應變超過試驗範圍，強震時核心在數個大循環後斷裂，支撐失去強度，層間變位突然增大；若核心應變分析只用平均樓層位移而忽略扭轉，角落支撐的需求會被低估。~Shortening the yielding zone to raise stiffness can push core strain beyond the tested range, so the core fractures after a few large cycles in a strong earthquake, the brace loses strength and drift jumps; using average storey displacement while ignoring torsion underestimates demand on corner braces.",
+      "misconception": "支撐越短越硬越好，核心降伏段長度不影響耐久性。~Shorter, stiffer braces are always better, and the yielding-zone length has no effect on durability.",
+      "practice": "支撐訂購表要列出每支支撐的工作點長度、降伏段長度、設計變形與最大變形，由製造商確認落在其資格試驗範圍內；設計變更影響樓高或柱距時，須重新計算核心應變。~The brace schedule should list work-point length, yielding-zone length, design and maximum deformation for every brace, confirmed by the manufacturer to lie within its qualification range; any change to storey height or bay width requires recalculating core strain."
+    },
+    {
+      "anchor": "鋼套管與脫層材~Steel casing and unbonding layer",
+      "title": "核心、套管、砂漿與脫層材~Core, casing, mortar and unbonding layer",
+      "mechanism": "核心受壓時會產生高階挫屈波形並推擠周圍砂漿，套管與砂漿必須有足夠勁度把核心限制在直線上；同時核心與砂漿之間要有脫層材或微小間隙，一方面讓核心受壓時因泊松效應的橫向膨脹有空間，另一方面避免軸力經摩擦傳入套管。間隙太小，套管分擔軸力而使受壓強度遠高於受拉；間隙太大，核心高階挫屈振幅過大而局部受損。日本製鐵工程的無黏結支撐即以鋼管與砂漿約束中心鋼材，並以特殊緩衝材使鋼管與砂漿不承受軸力。~In compression the core develops higher-mode buckling waves that push against the surrounding mortar, so the casing and mortar must be stiff enough to keep the core straight; at the same time an unbonding layer or small gap between core and mortar gives room for the core's Poisson expansion in compression and stops axial force passing into the casing by friction. Too small a gap lets the casing share axial load so compression strength far exceeds tension; too large a gap allows large higher-mode buckling amplitudes and local damage. Nippon Steel Engineering's unbonded brace restrains its central steel with a steel tube and mortar, using a special cushioning material so that the tube and mortar carry no axial force.",
+      "model": "套管 250×250×6 mm 方管：I = (250⁴ − 238⁴)/12 ≈ 5.81×10⁷ mm⁴，長 6.0 m 時 P_e = π²EI/L² = π²×200,000×5.81×10⁷/6,000² ≈ 3,188 kN，為 C_max = 2,125 kN 的 1.5 倍（不計砂漿貢獻）。若改用 6 mm 壁厚的 200 mm 方管，I 約減半，比值低於 1，套管會先挫屈。數值為教學假設。~For a 250×250×6 mm square casing, I = (250⁴ − 238⁴)/12 ≈ 5.81×10⁷ mm⁴; over 6.0 m, P_e = π²EI/L² = π²×200,000×5.81×10⁷/6,000² ≈ 3,188 kN, 1.5 times C_max = 2,125 kN, ignoring the mortar. A 200 mm tube with the same 6 mm wall has roughly half the I, a ratio below 1, and the casing would buckle first. Values are teaching assumptions.",
+      "verify": "製造時檢查核心板寬厚、脫層材厚度與包覆完整性、砂漿配比與灌注密實度，並記錄套管直線度；出廠時隨機抽樣切開或以非破壞檢測確認砂漿無大孔隙，製造檢驗紀錄與支撐序號對應。~During fabrication check core plate dimensions, unbonding-layer thickness and coverage, mortar mix and compaction, and casing straightness; at dispatch, cut open a random sample or use non-destructive testing to confirm the mortar has no large voids, and link inspection records to brace serial numbers.",
+      "failure": "砂漿灌注不實留下空洞時，核心在該處的高階挫屈振幅增大，局部彎曲使核心提早斷裂；脫層材破損或遺漏時，核心與砂漿黏結，套管分擔軸力，受壓強度大幅提高，使連接與構架超載。~Voids left by poorly placed mortar let higher-mode buckling grow at that spot, and local bending fractures the core early; damaged or missing unbonding material bonds core to mortar, the casing shares axial force and compression strength rises sharply, overloading connections and frame.",
+      "misconception": "套管只是外殼，壁厚可以任意減薄。~The casing is just a shell, so its wall can be thinned at will.",
+      "practice": "核心降伏段不得在現場焊接或鑽孔，套管上也不得焊接附掛物；運輸與吊裝時以吊帶支撐套管兩點，避免彎曲損傷砂漿，運抵現場須檢查套管凹損並記錄。~Never weld or drill the core yielding zone on site, and do not weld attachments to the casing; during transport and lifting, support the casing at two points with slings to avoid bending damage to the mortar, and inspect and record casing dents on arrival."
+    },
+    {
+      "anchor": "節點板與螺栓耳板~Gusset and bolted lug",
+      "title": "節點板、耳板與構架作用~Gussets, lugs and frame action",
+      "mechanism": "支撐兩端的連接段必須在支撐最大拉壓力下保持彈性，包括耳板、螺栓、節點板與梁柱接合。節點板受壓時可能面外挫屈，帶動支撐端部轉動，使支撐整體失穩；另外構架在層間變位時，梁柱夾角會開合，節點板被反覆擠壓與拉開，即所謂構架作用，可能在節點板邊緣產生裂縫。CoreBrace 提供螺栓耳板、銷接與焊接三種接頭，螺栓耳板的現場容許誤差較大，銷接的安裝容許誤差較小，選擇時要同時考慮力量傳遞與現場施工性。~The end connections must stay elastic under the maximum brace tension and compression, including lugs, bolts, gussets and the beam–column joint. A gusset in compression can buckle out of plane and rotate the brace end, destabilising the whole brace; moreover, as the frame drifts the beam–column angle opens and closes, repeatedly squeezing and pulling the gusset, the so-called frame action, which can crack gusset edges. CoreBrace offers bolted-lug, pinned and welded connections: the bolted lug tolerates more field misfit while the pinned connection has tighter erection tolerances, so the choice weighs force transfer against constructability.",
+      "model": "Whitmore 有效寬度 w = b + 2·L·tan30°。螺栓群寬 b = 150 mm、連接長度 L = 300 mm：w = 150 + 2×300×0.577 ≈ 496 mm；節點板厚 25 mm、F_y = 345 MPa，φR = 0.9×345×496×25 ≈ 3,850 kN，大於 T_max = 1,932 kN。受壓時另須以等效柱檢查挫屈。數值為教學假設。~The Whitmore effective width is w = b + 2·L·tan30°. With a bolt-group width b = 150 mm and connection length L = 300 mm, w = 150 + 2×300×0.577 ≈ 496 mm; a 25 mm gusset with F_y = 345 MPa gives φR = 0.9×345×496×25 ≈ 3,850 kN, above T_max = 1,932 kN. Compression buckling must be checked separately as an equivalent column. Values are teaching assumptions.",
+      "verify": "以有限元素分析或經試驗驗證的方法檢查節點板在 C_max 下的面外挫屈、在最大層間變位下的構架作用應力，以及耳板與節點板在支撐端轉角下的穩定；資格試驗的子結構試體應包含實際節點板型式。~Check gusset out-of-plane buckling under C_max, frame-action stresses at maximum drift and the stability of lug and gusset under brace-end rotation by finite-element analysis or a test-validated method; subassemblage specimens in qualification tests should include the actual gusset configuration.",
+      "failure": "節點板面外挫屈常發生在自由邊過長、未設加勁板的情況，支撐端部隨之轉動，整支支撐像普通斜撐一樣挫屈；構架作用在梁翼與節點板焊道處反覆作用，地震後可見焊道裂縫。~Out-of-plane gusset buckling typically occurs where free edges are long and unstiffened, the brace end rotates with it, and the whole brace buckles like an ordinary brace; frame action cycling at the beam flange and gusset welds leaves visible weld cracks after an earthquake.",
+      "misconception": "只要支撐本身合格，節點板照一般斜撐設計就可以。~If the brace itself is qualified, the gusset can be designed as for an ordinary brace.",
+      "practice": "節點板的自由邊應設加勁板或限制長度，並在圖說中標示支撐中心線、工作點與允許偏差；接頭型式若由螺栓改為銷接或焊接，須重新檢查安裝誤差與連接設計。~Stiffen or limit the free edges of gussets, and show brace centrelines, work points and tolerances on drawings; switching from bolted to pinned or welded connections requires a fresh check of erection tolerance and connection design."
+    },
+    {
+      "anchor": "安裝時機與重力預壓~Installation timing and gravity preload",
+      "title": "安裝順序與重力荷載造成的預壓~Installation sequence and preload from gravity loads",
+      "mechanism": "挫屈束制支撐是為地震而設，不應在平時承受明顯的重力荷載。若支撐在上方樓層、樓板或外牆尚未施作前就鎖固，之後增加的自重會使柱縮短、梁下垂，支撐跟著受壓，預先用掉一部分降伏容量；倒 V 形配置的支撐尤其會分擔梁的重力。因此許多設計要求支撐在主要靜載施加後才最終鎖固，或先以長圓孔暫時固定。支撐也不應被當作施工期間的臨時穩定斜撐，除非經過設計者核算。~Buckling-restrained braces are meant for earthquakes and should not carry significant gravity load in service. If a brace is fully connected before the floors, slabs or façade above are built, the added self-weight shortens columns and deflects beams and the brace is compressed, using up part of its yield capacity in advance; chevron braces in particular pick up beam gravity load. Many designs therefore require final connection only after the main dead loads are applied, or temporary fixing through slotted holes first. Braces should not serve as temporary construction bracing unless the designer has checked it.",
+      "model": "鎖固後上方再增加荷載使柱應力增加 150 MPa：每層柱縮短 Δv = 150/200,000×4,000 = 3.0 mm，支撐方向分量 3.0×sin33.7° ≈ 1.66 mm。支撐軸向勁度約 1.4×EA/L_ysc ≈ 1.4×200,000×4,000/4,327 ≈ 259 kN/mm，預壓約 259×1.66 ≈ 431 kN，相當 P_ysc 的 31%。數值為教學假設。~If loads added after connection raise column stress by 150 MPa, each storey's column shortens by Δv = 150/200,000×4,000 = 3.0 mm, and the component along the brace is 3.0×sin33.7° ≈ 1.66 mm. With brace axial stiffness about 1.4×EA/L_ysc ≈ 1.4×200,000×4,000/4,327 ≈ 259 kN/mm, the preload is about 259×1.66 ≈ 431 kN, 31% of P_ysc. Values are teaching assumptions.",
+      "verify": "施工計畫中以施工階段分析計算各支撐在不同鎖固時點的預壓，選擇可接受的鎖固時點；現場以施工日誌記錄每支支撐暫時固定與最終鎖固的日期，以及當時上方已完成的樓層與外牆範圍。~Use construction-stage analysis in the construction plan to compute preload in each brace for different connection times and choose an acceptable one; record on site the dates of temporary fixing and final connection for every brace, together with the floors and façade already completed above.",
+      "failure": "若支撐在結構體剛立起時就最終鎖固，完工後部分支撐已承受約三成的降伏力，地震時在受壓方向提早降伏，構架反應不對稱，殘留變位增加；把支撐當臨時斜撐承受施工荷載，也可能使核心在使用前就產生塑性變形。~If braces are finally connected as soon as the frame is erected, some already carry about 30% of their yield force at completion, yield early in compression during an earthquake, and produce asymmetric response with larger residual drift; using braces as temporary bracing under construction loads can even yield the core before service.",
+      "misconception": "支撐越早鎖固越好，可以順便當施工期間的穩定斜撐。~The earlier braces are connected the better, since they can double as construction bracing.",
+      "practice": "安裝說明書要寫明暫時固定方式、最終鎖固的前置條件（例如上方若干樓層樓板與外牆完成）、鎖固順序與停止點，並由結構設計者確認；任何提前鎖固的要求都須提出施工階段分析。~Installation instructions should state the temporary fixing method, the preconditions for final connection (for example slabs and façade completed for a number of floors above), the connection sequence and hold points, confirmed by the structural designer; any request to connect earlier must be backed by construction-stage analysis."
+    },
+    {
+      "anchor": "配合誤差與螺栓鎖固~Fit-up misfit and bolt tightening",
+      "title": "現場尺寸控制、配合誤差與鎖固檢查~Site dimensional control, misfit and tightening checks",
+      "mechanism": "支撐在工廠依工作點長度製造，但現場的柱垂直度、梁高程與節點板位置都有誤差，兩端螺栓孔對不上時，常見的錯誤做法是用千斤頂或吊車把支撐硬拉或硬壓進去，這會在支撐中留下預力。正確做法是先量測兩端節點板實際距離，在允許範圍內以長圓孔、墊片或現場擴孔處理，超出範圍則由製造商與設計者決定更換或修改。螺栓鎖固則依規定的預拉方法（例如轉角法）並逐一做記號檢查。~Braces are made to work-point length in the factory, but column plumbness, beam elevation and gusset positions all deviate on site; when bolt holes at the two ends do not line up, a common mistake is to jack or crane the brace into place, locking in prestress. The correct approach is to measure the actual distance between gussets first, accommodate deviations within tolerance with slotted holes, shims or field reaming, and refer larger deviations to the manufacturer and designer for replacement or modification. Bolts are tightened by the specified pretensioning method, such as turn-of-nut, with every bolt marked and checked.",
+      "model": "支撐軸向勁度約 259 kN/mm。若兩端孔位累積錯位 2 mm 而以外力強迫就位，鎖入的預力約 259×2 ≈ 518 kN，約為 P_ysc = 1,380 kN 的 38%；即使只有 0.5 mm，也有約 130 kN。數值為教學假設。~With brace axial stiffness about 259 kN/mm, forcing a brace into place across a cumulative hole misalignment of 2 mm locks in about 259×2 ≈ 518 kN, roughly 38% of P_ysc = 1,380 kN; even 0.5 mm leaves about 130 kN. Values are teaching assumptions.",
+      "verify": "安裝前以全測站或捲尺量測兩端節點板孔中心距並與支撐實際長度比較，記錄差值與處置方式；鎖固後以轉角法記號或扭力扳手抽驗螺栓預拉，檢查耳板與節點板密貼，並拍照存證。~Before installation, measure the hole-centre distance between gussets with a total station or tape, compare it with the actual brace length and record the difference and its treatment; after tightening, verify bolt pretension by turn-of-nut marks or torque-wrench sampling, check that lugs and gussets are in firm contact and photograph the result.",
+      "failure": "以吊車或手拉吊具硬拉支撐就位，支撐帶著數百 kN 的預力進入使用，地震時在一個方向提早降伏；螺栓若未達預拉，接頭在反覆荷載下滑動並產生敲擊，耳板孔壁磨損擴大。~Pulling a brace into position with a crane or chain hoist puts it into service with a locked-in force of several hundred kN, so it yields early in one direction during an earthquake; bolts below pretension let the joint slip and knock under cyclic load, wearing and enlarging the lug holes.",
+      "misconception": "支撐兩端孔位差幾公釐沒關係，用吊具拉一下就能裝上。~A few millimetres of misfit do not matter, since a hoist can pull the brace into place.",
+      "practice": "安裝檢查表應包含孔距實測值、處置方式、螺栓批號與預拉檢查結果，並設為停止點由監造簽認；禁止以外力強迫支撐就位，修改孔位或長度須經製造商與結構技師書面核可。這些是檢核要求，不是吊裝作業許可。~The installation checklist should record measured hole spacing, treatment, bolt lot and pretension results as a hold point signed by the site supervisor; forcing braces into position is prohibited, and altering holes or length requires written approval from the manufacturer and structural engineer. These are inspection requirements, not a rigging permit."
+    },
+    {
+      "anchor": "資格試驗加載程序~Qualification loading protocol",
+      "title": "AISC 341 資格試驗與 ω、β 係數~AISC 341 qualification tests and the ω and β factors",
+      "mechanism": "挫屈束制支撐沒有通用的計算公式能保證性能，因此規範要求以試驗證明：AISC 341 規定以子結構試驗與單軸試驗驗證支撐在逐級增加的變形下（至設計變形的兩倍）穩定，並達到足夠的累積非彈性變形，同時由試驗求出應變硬化係數 ω 與受壓強度調整係數 β，供容量設計使用。One Rincon Hill 的報導提到其支撐曾在柏克萊加州大學做實尺度試驗。試驗是產品與連接型式的資格，實際工程的支撐必須落在試驗涵蓋的尺寸與變形範圍內。~No general formula guarantees BRB performance, so codes require proof by testing: AISC 341 requires subassemblage and uniaxial tests showing stable behaviour as deformation increases in steps up to twice the design deformation, with sufficient cumulative inelastic deformation, and uses the tests to derive the strain-hardening factor ω and compression adjustment factor β for capacity design. Reports on One Rincon Hill mention full-scale testing of its braces at the University of California, Berkeley. Tests qualify a product and connection type, and project braces must fall within the sizes and deformations the tests cover.",
+      "model": "Δ_by = (380/200,000)×4,327 ≈ 8.2 mm，Δ_bm = 66.6 mm。在 0.5、1.0、1.5、2.0 倍 Δ_bm 各 2 個循環，每循環非彈性變形約 4(Δ − Δ_by)：合計約 200 + 467 + 733 + 999 ≈ 2,400 mm ≈ 292 Δ_by，高於常見的 200 Δ_by 要求。試驗 T_max = 1,850 kN、C_max = 2,030 kN，ω = 1,850/1,380 ≈ 1.34，β = 2,030/1,850 ≈ 1.10。數值為教學假設。~Δ_by = (380/200,000)×4,327 ≈ 8.2 mm and Δ_bm = 66.6 mm. With 2 cycles each at 0.5, 1.0, 1.5 and 2.0 Δ_bm and about 4(Δ − Δ_by) inelastic deformation per cycle, the total is about 200 + 467 + 733 + 999 ≈ 2,400 mm ≈ 292 Δ_by, above the usual 200 Δ_by requirement. With test T_max = 1,850 kN and C_max = 2,030 kN, ω = 1,850/1,380 ≈ 1.34 and β = 2,030/1,850 ≈ 1.10. Values are teaching assumptions.",
+      "verify": "審查試驗報告時，比對試體的核心面積、降伏段長度、鋼材強度與連接型式是否涵蓋工程支撐；檢查遲滯迴圈是否飽滿、無強度衰退或受壓突升，累積非彈性變形與 β 是否符合 AISC 341 的限制，並確認試驗由獨立單位見證。~When reviewing test reports, check that specimen core area, yielding length, steel strength and connection type cover the project braces; confirm full hysteresis loops without strength degradation or sudden compression rise, that cumulative inelastic deformation and β meet AISC 341 limits, and that an independent party witnessed the tests.",
+      "failure": "若工程支撐的核心應變或尺寸超出試驗範圍，卻沿用既有報告，實際支撐可能在比試驗少的循環就斷裂；β 過大代表套管分擔軸力，若未反映在容量設計中，節點板與柱會在受壓循環超載。~Using an existing report for project braces whose core strain or size lies outside its range means real braces may fracture in fewer cycles than tested; a large β signals that the casing shares axial load, and if capacity design ignores it, gussets and columns are overloaded in compression cycles.",
+      "misconception": "只要支撐廠牌有任何一份試驗報告，所有尺寸的支撐都算合格。~Any test report from a brace manufacturer qualifies braces of every size.",
+      "practice": "送審文件須附資格試驗報告與涵蓋範圍對照表，設計者據以核定 ω、β 與允許應變；工程若有特殊尺寸或連接，應安排專案試驗並設為材料核可的停止點。~Submittals must include qualification test reports with a coverage comparison table from which the designer approves ω, β and allowable strain; special sizes or connections call for project-specific tests as a hold point for material approval."
+    },
+    {
+      "anchor": "震後殘留變形量測~Post-earthquake residual deformation survey",
+      "title": "完工檢查、震後評估與剩餘能力~Completion inspection, post-earthquake assessment and remaining capacity",
+      "mechanism": "挫屈束制支撐的損傷藏在套管內，外觀很難判斷核心累積了多少塑性變形。完工時要建立基準：每支支撐的序號、實際長度、螺栓狀態與照片；地震後則量測殘留層間變位與支撐長度變化，並以分析或量測紀錄估算核心累積的非彈性變形，判斷剩餘能力。CoreBrace 推出可記錄支撐變形歷程的裝置，目的就是協助震後評估剩餘能力。~BRB damage is hidden inside the casing, and appearance tells little about how much plastic deformation the core has accumulated. At completion, establish a baseline: serial number, actual length, bolt condition and photographs of every brace; after an earthquake, measure residual drift and changes in brace length, and estimate the core's cumulative inelastic deformation by analysis or recorded data to judge remaining capacity. CoreBrace offers a device that records brace deformation history precisely to support post-event assessment of remaining capacity.",
+      "model": "震後殘留層間變位 0.5%×4,000 = 20 mm，支撐殘留伸長 20×cos33.7° ≈ 16.6 mm，核心殘留應變 ≈ 16.6/4,327 ≈ 0.38%。若分析估計此次地震消耗約 120 Δ_by，而資格試驗達到約 292 Δ_by，已使用約 41% 的試驗能力。數值為教學假設。~A residual storey drift of 0.5%×4,000 = 20 mm gives a residual brace elongation of 20×cos33.7° ≈ 16.6 mm and residual core strain ≈ 16.6/4,327 ≈ 0.38%. If analysis estimates that the earthquake consumed about 120 Δ_by while qualification reached about 292 Δ_by, about 41% of the tested capacity has been used. Values are teaching assumptions.",
+      "verify": "地震後依檢查表量測各樓層殘留變位、每支支撐長度與套管偏移，檢查節點板與耳板裂縫、螺栓鬆動與套管凹損；結合強震紀錄或變形記錄裝置估算累積非彈性變形，超過設定比例的支撐列為更換候選。~After an earthquake, follow a checklist to measure residual drift on each floor, every brace's length and casing offset, and to check gusset and lug cracks, loose bolts and casing dents; combine strong-motion records or deformation recorders to estimate cumulative inelastic deformation, flagging braces beyond a set fraction for replacement.",
+      "failure": "若沒有完工基準，震後無法分辨支撐長度變化是地震造成還是原本的製造誤差；只看外觀就判定支撐完好，可能讓已接近疲勞壽命的支撐留在原處，下一次地震時核心斷裂。~Without a completion baseline, nobody can tell whether a change in brace length came from the earthquake or from original fabrication tolerance; judging braces sound by appearance alone can leave cores near their fatigue life in place to fracture in the next earthquake.",
+      "misconception": "挫屈束制支撐外觀沒有變形，就表示裡面的核心沒有損傷。~If a BRB looks undeformed, its core is undamaged.",
+      "practice": "竣工資料應包含每支支撐的序號、長度、照片與螺栓檢查紀錄，並訂定震後檢查的觸發條件（例如樓層殘留變位超過 0.2%）與更換判斷流程，由結構技師負責評估。~As-built records should include every brace's serial number, length, photographs and bolt inspection results, with defined post-earthquake inspection triggers, for example residual drift above 0.2%, and a replacement decision procedure assessed by the structural engineer."
+    },
+    {
+      "anchor": "支撐防火被覆~Brace fire protection",
+      "title": "防火、熱膨脹與套管保護~Fire protection, thermal expansion and casing protection",
+      "mechanism": "挫屈束制支撐是主要抗側力構件，必須依建築耐火時效做防火被覆；砂漿雖能延緩核心升溫，但不等於合格的防火保護。火災時被兩端構架束制的支撐受熱膨脹，因核心降伏應變很小，溫升不大就會在受壓方向降伏，降伏後力量受限，反而保護了構架；冷卻時則反向受拉。使用期間也要防止在套管上焊接或吊掛設備、管線，因為那會改變套管受力並破壞防火被覆。~A BRB is a primary lateral-force member and must be fireproofed to the building's fire-resistance rating; the mortar slows core heating but is not a qualified fire protection. In a fire a brace restrained by the frame at both ends expands, and since the core's yield strain is small, a modest temperature rise makes it yield in compression, after which its force is capped, which actually protects the frame; on cooling it reverses into tension. In service, welding or hanging equipment and pipes on the casing must be prevented, because that alters casing forces and damages the fireproofing.",
+      "model": "核心降伏應變 ε_y = 380/200,000 = 0.0019；完全束制時熱應變 α·ΔT 達到 ε_y 所需溫升 ΔT = 0.0019/(1.2×10⁻⁵) ≈ 158°C。也就是說，被束制的支撐升溫約 160°C 就會在受壓方向降伏，之後軸力約維持在 C_max 以下。數值為教學假設，未計高溫強度折減。~Core yield strain ε_y = 380/200,000 = 0.0019; under full restraint, thermal strain α·ΔT reaches ε_y at ΔT = 0.0019/(1.2×10⁻⁵) ≈ 158°C. A restrained brace therefore yields in compression after a rise of about 160°C, after which axial force stays below about C_max. Values are teaching assumptions without high-temperature strength reduction.",
+      "verify": "檢查防火被覆的型式、厚度與耐火認證是否適用於支撐斷面與連接段，施作後以測厚儀抽測；使用期間的定期檢查要確認被覆完整、套管無附掛物與焊接痕跡，耳板與螺栓無鏽蝕。~Check that the fireproofing type, thickness and fire-rating listing suit the brace section and end connections, and sample thickness with a gauge after application; periodic inspections in service confirm intact fireproofing, no attachments or weld marks on casings, and no corrosion on lugs and bolts.",
+      "failure": "後續裝修在支撐套管上焊接吊架或鑽孔固定管線，局部高溫或孔洞破壞砂漿約束，地震時該處核心局部挫屈；防火被覆被拆除未補，火災時連接段先失去強度，支撐脫落，構架失去抗側力。~Later fit-out welding hangers or drilling pipe fixings into a casing damages the mortar restraint with local heat or holes, so the core buckles locally there in an earthquake; fireproofing removed and not reinstated lets the end connections lose strength first in a fire, the brace drops out and the frame loses lateral resistance.",
+      "misconception": "支撐裡面已經灌滿砂漿，所以不需要再做防火被覆。~A brace is already filled with mortar, so it needs no fireproofing.",
+      "practice": "在支撐套管上標示「抗震構件，禁止焊接、鑽孔與吊掛」，並把支撐位置圖交給物業管理與機電承包商；任何需要穿越或靠近支撐的管線，須經結構技師核可並恢復防火被覆。~Label casings ‘seismic member: no welding, drilling or hanging’ and give brace location plans to facility managers and services contractors; any service routed through or near a brace needs structural engineer approval and reinstated fireproofing."
+    },
+    {
+      "anchor": "支撐更換與竣工紀錄~Brace replacement and as-built records",
+      "title": "可更換設計、備品與交接~Replaceable design, spares and handover",
+      "mechanism": "挫屈束制支撐的優點之一是損傷集中在可更換的支撐上，而不是梁柱。這個優點只有在設計時就保留更換條件才成立：採用螺栓耳板或銷接而非現場全焊，保留搬運與吊掛的空間與路徑，並考慮更換期間該樓層的抗側力暫時降低。日本製鐵工程與 CoreBrace 等製造商都以標準化產品供應大量支撐，交接時把每支支撐的身分資料與試驗紀錄完整留下，才能在數十年後找到相同性能的替換品。~One advantage of BRBs is that damage concentrates in replaceable braces rather than beams and columns. This holds only if replacement is planned in design: bolted lugs or pins rather than full field welds, space and routes for handling and lifting, and consideration of the temporary loss of lateral strength on that floor during replacement. Manufacturers such as Nippon Steel Engineering and CoreBrace supply large numbers of standardised braces, and only complete identity and test records at handover make it possible to source replacements of equal performance decades later.",
+      "model": "一支支撐的重量：核心 4,000 mm²×7.21 m×7.85 t/m³ ≈ 0.23 t，套管 5,856 mm²×6.0 m×7.85 t/m³ ≈ 0.28 t，砂漿約 0.0526 m²×6.0 m×2.2 t/m³ ≈ 0.69 t，合計約 1.2 t，室內更換須規劃可承受約 1.2 t 加吊具的吊點與搬運路徑。數值為教學假設。~One brace weighs: core 4,000 mm²×7.21 m×7.85 t/m³ ≈ 0.23 t, casing 5,856 mm²×6.0 m×7.85 t/m³ ≈ 0.28 t and mortar about 0.0526 m²×6.0 m×2.2 t/m³ ≈ 0.69 t, about 1.2 t in total, so indoor replacement needs lifting points and handling routes rated for about 1.2 t plus rigging. Values are teaching assumptions.",
+      "verify": "交接前核對每支支撐的序號、製造批號、鋼材試片報告、出廠檢驗、安裝檢查表與照片是否完整並與位置圖對應；在維護手冊中列出更換步驟所需的臨時措施與結構技師核可點。~Before handover, check that serial number, production lot, coupon report, factory inspection, installation checklist and photographs are complete for every brace and match the location plan; the maintenance manual lists the temporary measures and structural engineer approval points needed for replacement.",
+      "failure": "若支撐以現場全焊安裝且周邊被管線與天花包覆，震後更換需拆除大量裝修並在現場切割焊接，工期與費用使業主延後更換，受損支撐被留在原處；交接文件缺漏，則無法確認替換品的降伏強度與試驗涵蓋範圍。~Braces fully field-welded and boxed in by services and ceilings require extensive demolition, cutting and welding to replace after an earthquake, so owners postpone replacement and damaged braces stay in service; incomplete handover records leave no way to confirm a replacement's yield strength and test coverage.",
+      "misconception": "挫屈束制支撐裝好之後就是永久構件，不需要考慮更換。~Once installed, a BRB is a permanent member with no need to plan for replacement.",
+      "practice": "交接文件應包含支撐位置與序號圖、核心鋼材與資格試驗資料、安裝與鎖固紀錄、震後檢查觸發條件與更換程序，並說明更換時的臨時側向支撐方案須經結構技師核可。~Handover should include the brace location and serial-number plan, core material and qualification data, installation and tightening records, post-earthquake inspection triggers and the replacement procedure, stating that temporary lateral bracing during replacement requires structural engineer approval."
+    }
+  ],
+  "example": "設計與安裝練習：核心 A_sc = 4,000 mm²、F_y = 345 MPa，P_ysc ≈ 1,380 kN；以 ω = 1.4、β = 1.1，T_max ≈ 1,932 kN、C_max ≈ 2,125 kN。柱距 6 m、樓高 4 m，θ ≈ 33.7°、工作點長度約 7.21 m，降伏段 L_ysc ≈ 4,327 mm。設計層間變位 2%（80 mm）時支撐伸縮 ≈ 66.6 mm，核心應變 ≈ 1.54%，資格試驗須涵蓋約 3.1%。套管 250×250×6 mm、長 6.0 m，P_e ≈ 3,188 kN，為 C_max 的 1.5 倍。支撐勁度約 259 kN/mm：若鎖固後上方荷載使每層柱縮短 3.0 mm，支撐預壓約 431 kN（P_ysc 的 31%）；若安裝時強迫消除 2 mm 錯位，再增加約 518 kN。兩者相加約 949 kN，已達 P_ysc 的約 69%，地震時受壓側會提早降伏。若改為主要靜載完成後才鎖固並以墊片處理錯位，預壓可降到 P_ysc 的 10% 以下。數值為教學假設，不代表任何實際產品或建築。~Design and installation exercise: a core with A_sc = 4,000 mm² and F_y = 345 MPa gives P_ysc ≈ 1,380 kN; with ω = 1.4 and β = 1.1, T_max ≈ 1,932 kN and C_max ≈ 2,125 kN. For a 6 m bay and 4 m storey, θ ≈ 33.7°, the work-point length is about 7.21 m and the yielding zone L_ysc ≈ 4,327 mm. At a design drift of 2% (80 mm) the brace deforms about 66.6 mm, a core strain of about 1.54%, so qualification must cover about 3.1%. A 250×250×6 mm casing 6.0 m long has P_e ≈ 3,188 kN, 1.5 times C_max. With brace stiffness about 259 kN/mm, loads added after connection that shorten each storey's columns by 3.0 mm preload the brace by about 431 kN (31% of P_ysc), and forcing out a 2 mm misfit adds about 518 kN. Together about 949 kN, roughly 69% of P_ysc, so the brace yields early on the compression side in an earthquake. Connecting after the main dead loads and shimming the misfit can keep preload below 10% of P_ysc. Values are teaching assumptions, not any real product or building.",
+  "history": "挫屈束制支撐的構想在 1970 至 1980 年代於日本發展成熟，日本製鐵工程的無黏結支撐上市至今已 30 餘年、交付超過 10 萬支。1994 年 Northridge 與 1995 年阪神地震後，美國開始在建築中採用挫屈束制支撐構架，並透過柏克萊加州大學等機構的實尺度試驗與 AISC 341 的資格試驗條文制度化。舊金山 One Rincon Hill 在塔樓中以挫屈束制支撐處理地震力，近年的鹽湖城國際機場與紐約 Louis Armstrong 網球場也採用美國製造商 CoreBrace 的支撐。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~The buckling-restrained brace matured in Japan during the 1970s and 1980s, and Nippon Steel Engineering's unbonded brace has been on the market for more than 30 years with over 100,000 braces delivered. After the 1994 Northridge and 1995 Kobe earthquakes, buckling-restrained braced frames were adopted in US buildings and codified through full-scale tests at institutions such as the University of California, Berkeley, and the qualification testing provisions of AISC 341. One Rincon Hill in San Francisco uses buckling-restrained braces in its tower for seismic resistance, and more recently Salt Lake City International Airport and Louis Armstrong Stadium in New York used braces from the US manufacturer CoreBrace. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "日本製鐵工程的無黏結支撐上市 30 餘年，交付超過 100,000 支~Nippon Steel Engineering's unbonded brace has been on the market for over 30 years with more than 100,000 braces delivered",
+    "日本製鐵工程表示其無黏結支撐在約 3% 至 4% 軸應變下仍有穩定遲滯與疲勞性能~Nippon Steel Engineering reports stable hysteresis and fatigue performance for its unbonded brace at about 3% to 4% axial strain",
+    "One Rincon Hill 的挫屈束制支撐設在第 30 與第 50 層附近，實尺度試驗驗證約 2.5 倍規範需求~One Rincon Hill's buckling-restrained braces sit near the 30th and 50th levels, with full-scale tests verifying about 2.5 times code demand",
+    "One Rincon Hill 南塔高約 184 m、地上 54 層，2008 年完工~One Rincon Hill South Tower is about 184 m tall with 54 floors above ground, completed in 2008",
+    "報導估計 One Rincon Hill 採用挫屈束制支撐比傳統耐震設計每平方呎節省約 5 美元~Reports estimate that buckling-restrained braces at One Rincon Hill saved about 5 US dollars per square foot over conventional seismic design",
+    "CoreBrace 提供螺栓耳板、銷接與焊接 3 種支撐接頭型式~CoreBrace offers 3 brace connection types: bolted lug, pinned and welded",
+    "核心降伏應變約 0.0019 的支撐在完全束制下升溫約 158°C 即受壓降伏~A brace core with yield strain of about 0.0019 yields in compression after a rise of about 158°C under full restraint"
+  ],
+  "timeline": [
+    {
+      "year": "1980s",
+      "event": "日本發展以鋼管與砂漿約束鋼核心的無黏結支撐並推向實用~Japan develops the unbonded brace, a steel core restrained by tube and mortar, into practical use"
+    },
+    {
+      "year": "1994–1995",
+      "event": "Northridge 與阪神地震後，挫屈束制支撐構架受到美國結構界重視~After the Northridge and Kobe earthquakes, buckling-restrained braced frames gain attention among US structural engineers"
+    },
+    {
+      "year": "2008",
+      "event": "舊金山 One Rincon Hill 南塔完工，塔樓以挫屈束制支撐抵抗地震力~One Rincon Hill South Tower in San Francisco is completed, using buckling-restrained braces for seismic resistance"
+    },
+    {
+      "year": "2018–2020",
+      "event": "新建的紐約 Louis Armstrong 網球場與鹽湖城國際機場相繼啟用，均採用 CoreBrace 挫屈束制支撐~The new Louis Armstrong Stadium in New York and Salt Lake City International Airport open in turn, both using CoreBrace buckling-restrained braces"
+    }
+  ],
+  "codes": [
+    "AISC 341 鋼結構建築耐震規範（挫屈束制支撐構架與資格試驗）~AISC 341 Seismic Provisions for Structural Steel Buildings (buckling-restrained braced frames and qualification testing)",
+    "AISC 360 鋼結構建築規範~AISC 360 Specification for Structural Steel Buildings",
+    "RCSC 高強度螺栓結構接合規範~RCSC Specification for Structural Joints Using High-Strength Bolts",
+    "內政部建築物耐震設計規範及解說~Taiwan Seismic Design Code for Buildings and Commentary"
+  ],
+  "landmarks": [
+    "舊金山 One Rincon Hill~One Rincon Hill, San Francisco",
+    "鹽湖城國際機場~Salt Lake City International Airport",
+    "紐約 Louis Armstrong 網球場~Louis Armstrong Stadium, New York"
+  ],
+  "place": {
+    "name": "舊金山 One Rincon Hill 參照點~One Rincon Hill, San Francisco reference",
+    "country": "美國~United States",
+    "lat": 37.7859,
+    "lng": -122.3922,
+    "query": "One Rincon Hill 425 1st Street San Francisco"
+  },
+  "sources": [
+    {
+      "key": "nsec-unbonded-brace",
+      "title": "日本製鐵工程：無黏結支撐（アンボンドブレース）產品頁",
+      "titleEn": "Nippon Steel Engineering: Unbonded Brace product page",
+      "publisher": "Nippon Steel Engineering Co., Ltd.",
+      "url": "https://www.eng.nipponsteel.com/steelstructures/product/base_isolation/unbondedbrace/",
+      "sourceType": "primary",
+      "scope": "製造商說明核心、鋼管、砂漿與緩衝材的構造、交付數量與軸應變性能；不含設計計算。",
+      "scopeEn": "Manufacturer's description of core, tube, mortar and cushioning construction, delivery numbers and axial-strain performance; no design calculations."
+    },
+    {
+      "key": "corebrace-home",
+      "title": "CoreBrace：挫屈束制支撐製造商首頁",
+      "titleEn": "CoreBrace: Buckling-restrained brace manufacturer",
+      "publisher": "CoreBrace",
+      "url": "https://www.corebrace.com/",
+      "sourceType": "primary",
+      "scope": "說明支撐構造、三種接頭型式、疲勞試驗計畫與震後剩餘能力記錄裝置，並列出代表專案。",
+      "scopeEn": "Describes brace construction, three connection types, the fatigue testing programme and a post-event remaining-capacity recorder, with representative projects."
+    },
+    {
+      "key": "corebrace-products",
+      "title": "CoreBrace：支撐接頭型式與安裝容許誤差",
+      "titleEn": "CoreBrace: Brace connection types and erection tolerance",
+      "publisher": "CoreBrace",
+      "url": "https://corebrace.com/products/",
+      "sourceType": "primary",
+      "scope": "比較螺栓耳板、焊接與銷接接頭的現場容許誤差與適用情況。",
+      "scopeEn": "Compares field tolerance and suitability of bolted-lug, welded and pinned connections."
+    },
+    {
+      "key": "bdc-one-rincon-hill-brb",
+      "title": "Building Design+Construction：One Rincon Hill 的風與地震對策",
+      "titleEn": "Building Design+Construction: Solving wind and seismic problems at One Rincon Hill",
+      "publisher": "Building Design+Construction",
+      "url": "https://www.bdcnetwork.com/home/article/55145003/solving-wind-seismic-problems-at-one-rincon-hill",
+      "sourceType": "secondary",
+      "scope": "產業媒體報導挫屈束制支撐位置、柏克萊實尺度試驗與節省成本估計。",
+      "scopeEn": "Trade-press report on brace locations, full-scale Berkeley tests and estimated cost savings."
+    },
+    {
+      "key": "ctbuh-one-rincon-hill",
+      "title": "CTBUH 摩天大樓中心：One Rincon Hill 南塔",
+      "titleEn": "CTBUH Skyscraper Center: One Rincon Hill South Tower",
+      "publisher": "Council on Tall Buildings and Urban Habitat",
+      "url": "https://www.skyscrapercenter.com/pdf/building/2161",
+      "sourceType": "primary",
+      "scope": "超高層資料庫的建築高度、樓層、完工年份與結構顧問資訊。",
+      "scopeEn": "Tall-building database entry with height, floors, completion year and structural engineer."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "日本製鐵工程",
+      "nameEn": "Nippon Steel Engineering",
+      "business": "日本製鐵集團的工程公司，製造無黏結支撐等制震與隔震元件並承攬鋼構工程。",
+      "businessEn": "Engineering company of the Nippon Steel group that makes unbonded braces and other seismic devices and builds steel structures.",
+      "url": "https://www.eng.nipponsteel.com/english/",
+      "investorUrl": "",
+      "security": null,
+      "role": "無黏結支撐的構造原理與大量應用實績",
+      "roleEn": "Principles and large-scale application record of the unbonded brace"
+    },
+    {
+      "name": "CoreBrace",
+      "nameEn": "CoreBrace",
+      "business": "美國的挫屈束制支撐設計與製造商，提供多種接頭型式。",
+      "businessEn": "US designer and fabricator of buckling-restrained braces offering several connection types.",
+      "url": "https://www.corebrace.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "接頭型式、安裝容許誤差與震後評估裝置",
+      "roleEn": "Connection types, erection tolerances and post-event assessment devices"
+    },
+    {
+      "name": "日本製鐵",
+      "nameEn": "Nippon Steel Corporation",
+      "business": "鋼鐵製造商，供應建築用鋼板與型鋼，為日本製鐵工程的母公司。",
+      "businessEn": "Steelmaker supplying structural plates and sections, parent of Nippon Steel Engineering.",
+      "url": "https://www.nipponsteel.com/en/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "5401",
+        "exchange": "TSE",
+        "currency": "JPY"
+      },
+      "role": "支撐核心鋼材的材料來源與品質管理",
+      "roleEn": "Source and quality control of core steel for braces"
+    }
+  ],
+  "related": [
+    "b068",
+    "b080"
+  ],
+  "architectureNodes": [
+    [
+      "樓板與梁傳入地震力",
+      "Seismic force from slab and beam"
+    ],
+    [
+      "節點板與螺栓耳板",
+      "Gussets and bolted lugs"
+    ],
+    [
+      "鋼核心降伏段",
+      "Steel core yielding zone"
+    ],
+    [
+      "套管、砂漿與脫層材",
+      "Casing, mortar and unbonding layer"
+    ],
+    [
+      "安裝時機與配合控制",
+      "Installation timing and fit-up control"
+    ],
+    [
+      "震後評估與更換紀錄",
+      "Post-earthquake assessment and replacement records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      4,
+      5
+    ]
+  ]
+}

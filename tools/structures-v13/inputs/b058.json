@@ -1,0 +1,309 @@
+{
+  "id": "b058",
+  "title": "橋梁動態荷重試驗~Dynamic bridge load testing",
+  "discipline": "st-bridge-durability-monitoring",
+  "family": "survey",
+  "focus": "以受控的車輛、人群與激振試驗量出實際動力放大、頻率與阻尼，並把結果轉成評等與舒適度決策~Measuring actual dynamic amplification, frequency and damping with controlled vehicle, crowd and shaker tests, and turning the results into rating and comfort decisions",
+  "summary": "從車輛動力效應與人群同步振動出發，說明試驗載重與預期反應的計算、儀器與取樣率、趟次矩陣與封橋安全、強迫振動與人群試驗、動力放大與頻率判讀、以試驗修正係數更新評等，以及舒適度改善與基準交接，並以倫敦千禧橋的人群試驗與阻尼改造、雪梨港灣大橋 1932 年的機車載重試驗與 1940 年塔科馬海峽橋為對照。~Starting from vehicle dynamic effects and crowd lock-in, explain how to compute test loads and expected responses, choose instruments and sampling rates, plan run matrices and safe closures, run forced-vibration and crowd tests, interpret amplification and frequency, update load ratings with test adjustment factors, and handle comfort retrofits and baseline handover, drawing on the crowd tests and damper retrofit of London's Millennium Bridge, the 1932 locomotive load test of Sydney Harbour Bridge and the 1940 Tacoma Narrows Bridge.",
+  "units": [
+    {
+      "anchor": "動力放大係數~Dynamic amplification factor",
+      "title": "車輛動力效應與衝擊係數~Vehicle dynamic effects and impact allowance",
+      "mechanism": "車輛以速度通過橋梁時，橋面不平整、伸縮縫高差與車輛懸吊的彈跳，會使橋梁反應高於同一部車緩慢通過時的靜態反應。設計規範以固定的動力載重容許值涵蓋這個效應，AASHTO 對設計車輛的靜態活載效應增加 33%；TRB 的橋梁載重試驗入門指出這個值常偏保守，主要受引道不平與伸縮縫控制。動態荷重試驗的第一個目的，就是用同一部試驗車在慢速與不同車速下的反應比值，量出這座橋實際的動力放大。~When a vehicle crosses at speed, deck roughness, steps at expansion joints and the bounce of the vehicle suspension make the bridge respond more than when the same vehicle crawls across. Design codes cover this with a fixed dynamic load allowance; AASHTO adds 33% to the static live-load effects of the design vehicle, and the TRB primer on bridge load testing notes that this value is often conservative and is governed mainly by approach roughness and expansion joints. The first purpose of a dynamic load test is to measure this bridge's actual amplification from the ratio of responses to the same test truck at crawl speed and at various speeds.",
+      "model": "DAF = R_dyn/R_static。某主梁下翼板在試驗車以低於 8 km/h 慢速通過時量得 100 με，以 70 km/h 通過時峰值 118 με：DAF = 118/100 = 1.18，即衝擊 18%，低於規範的 33%；若伸縮縫出現 20 mm 高差使峰值升為 140 με，DAF 變為 1.40。數值為教學假設。~DAF = R_dyn/R_static. A girder bottom flange reads 100 με when the test truck crawls below 8 km/h and peaks at 118 με at 70 km/h, so DAF = 118/100 = 1.18, an impact of 18%, below the code's 33%; if a 20 mm step at an expansion joint raises the peak to 140 με, DAF becomes 1.40. Values are teaching assumptions.",
+      "verify": "每個車速至少重複三趟，以同一車道、同一量測點的慢速平均值作為分母；確認動態峰值不是電氣雜訊或單一突波，並記錄當時橋面與伸縮縫狀況，使衝擊值能對應到具體的路面條件。~Repeat each speed at least three times and use the crawl-speed average for the same lane and gauge as the denominator; confirm that dynamic peaks are not electrical noise or single spikes, and record deck and joint condition at the time so the measured impact is tied to a specific surface condition.",
+      "failure": "若只在路面剛重鋪後做試驗，量到的動力放大偏低；數年後伸縮縫磨損、引道沉陷，實際衝擊可能遠超過試驗值，以此低值放寬評等的橋就失去了原本由規範值提供的保守度。~Testing only just after resurfacing measures low amplification; years later, with worn joints and settled approaches, actual impact can far exceed the test value, and a bridge whose rating was relaxed on that low value has lost the margin the code value provided.",
+      "misconception": "車速越快，橋梁的動力放大一定越大。~The faster the vehicle, the larger the dynamic amplification must be.",
+      "practice": "試驗報告要寫明實測動力放大適用的路面與伸縮縫條件，並規定伸縮縫更換、路面重鋪或出現明顯高差時須重新評估；以實測值取代規範值須由評等工程師簽認。~The test report must state the surface and joint conditions under which the measured amplification applies, and require reassessment after joint replacement, resurfacing or a visible step; replacing the code value with a measured one needs the rating engineer's signature."
+    },
+    {
+      "anchor": "側向步頻與人群同步~Lateral footfall and crowd lock-in",
+      "title": "人群誘發振動與同步效應~Crowd-induced vibration and lock-in",
+      "mechanism": "行人步行的垂直力頻率約 2 Hz，左右腳交替產生的側向力頻率只有一半，約 1 Hz。若橋的側向振態落在這個範圍且阻尼很低，橋面輕微搖晃會讓行人不自覺調整步伐去配合，側向力因而同步放大，形成正回饋。倫敦千禧橋在 2000 年 6 月 10 日開放，兩天後就因側向振動封閉；這種同步側向激振不會隨人數平滑增加，而是在人數超過臨界值時突然出現，因此一般的單人或小群試驗看不到。~Walking produces vertical forces at about 2 Hz, while the alternating left and right steps produce lateral forces at half that, about 1 Hz. If a bridge has a lightly damped lateral mode in this range, slight sway makes pedestrians unconsciously adjust their gait to match it, so their lateral forces synchronise and grow in positive feedback. London's Millennium Bridge opened on 10 June 2000 and closed two days later because of lateral vibration; this synchronous lateral excitation does not grow smoothly with crowd size but appears suddenly once the number of people passes a critical value, so tests with one walker or a small group do not reveal it.",
+      "model": "臨界人數 N_L = 8π·ζ·f·M/k，k 為每人側向力與橋面速度的比例係數。取 ζ = 0.7%、f = 1.0 Hz、模態質量 M = 130,000 kg、k = 300 N·s/m：N_L = 8π×0.007×1.0×130,000/300 ≈ 76 人；阻尼提高到 15% 時 N_L ≈ 1,630 人。數值為教學假設。~Critical number of pedestrians N_L = 8π·ζ·f·M/k, where k relates each person's lateral force to deck velocity. With ζ = 0.7%, f = 1.0 Hz, modal mass M = 130,000 kg and k = 300 N·s/m, N_L = 8π×0.007×1.0×130,000/300 ≈ 76 people; raising damping to 15% gives N_L ≈ 1,630 people. Values are teaching assumptions.",
+      "verify": "以逐步增加人數的群眾步行試驗，同步量測橋面側向加速度與橋上人數，找出加速度突然非線性增加時的人數，並與 N_L 估計比較；試驗須設定中止準則，例如側向加速度超過預定值即停止放行並疏散。~Run walking tests with stepwise increases in crowd size while measuring lateral deck acceleration and the number on the bridge, find the count at which acceleration suddenly grows nonlinearly and compare it with the N_L estimate; set a stop criterion, for example halting entry and clearing the deck once lateral acceleration exceeds a preset value.",
+      "failure": "千禧橋開幕日約有 90,000 人通過、同時最多約 2,000 人在橋上，側向擺動最大約 70 mm，行人需要扶著欄杆行走；橋梁開放兩天即封閉，改造工程自 2001 年 5 月持續到 2002 年 1 月。~On the Millennium Bridge's opening day about 90,000 people crossed with up to about 2,000 on the deck at once; lateral sway reached about 70 mm and walkers had to hold the handrails. The bridge closed after two days, and the retrofit ran from May 2001 to January 2002.",
+      "misconception": "只要垂直頻率避開 2 Hz，人行橋就不會有振動問題。~As long as the vertical frequency avoids 2 Hz, a footbridge will have no vibration problems.",
+      "practice": "人行橋設計須同時檢查垂直與側向振態；側向頻率低於約 1.3 Hz 且質量輕時，要以人群密度情境評估同步風險，並預留加裝阻尼器的空間與連接點，開放前由設計者主持人群試驗並簽認。~Check both vertical and lateral modes in footbridge design; where a light deck has lateral frequencies below about 1.3 Hz, assess lock-in risk under crowd-density scenarios and reserve space and connections for dampers, with a crowd test led and signed off by the designer before opening."
+    },
+    {
+      "anchor": "試驗車輛軸重~Test-vehicle axle weights",
+      "title": "試驗載重與預期反應~Test loads and predicted response",
+      "mechanism": "試驗載重必須是已知的：每部試驗車都要以地磅逐軸秤重並量測軸距，裝載物固定不可移動，量測反應才能與計算比較。1932 年雪梨港灣大橋開放前，以最多 96 部蒸汽機車頭尾相接排滿四條鐵軌，進行約三週的載重試驗後才宣布安全，那是以極大靜載驗證整體行為的做法。動態試驗的載重較輕，卻更重視可重複性：同一部車、同一車道、不同車速，並以事先計算的預期反應決定感測器量程與停止準則。~The test load must be known: each test vehicle is weighed axle by axle on a weighbridge and its axle spacing measured, with the payload secured so that measured responses can be compared with calculations. Before Sydney Harbour Bridge opened in 1932, up to 96 steam locomotives were placed end to end across its four rail tracks for about three weeks of testing before it was declared safe, a verification of overall behaviour with a very large static load. Dynamic tests use lighter loads but care more about repeatability: the same truck, the same lane, different speeds, with predicted responses computed beforehand to set sensor ranges and stop criteria.",
+      "model": "30 m 簡支梁跨中，300 kN 試驗車近似集中載重：M = PL/4 = 300×30/4 = 2,250 kN·m；分配到最受力主梁 0.6 倍為 1,350 kN·m，斷面模數 S = 0.045 m³：σ = 1.35×10⁶ N·m/0.045 m³ = 30 MPa，鋼材 ε = 30/200,000 = 150 με。數值為教學假設。~For a 30 m simple span with a 300 kN test truck approximated as a midspan point load, M = PL/4 = 300×30/4 = 2,250 kN·m; distributing 0.6 of it to the most loaded girder gives 1,350 kN·m, and with section modulus S = 0.045 m³, σ = 1.35×10⁶ N·m/0.045 m³ = 30 MPa, a steel strain of ε = 30/200,000 = 150 με. Values are teaching assumptions.",
+      "verify": "試驗前由第三方地磅出具逐軸重量與總重證明，量測軸距與輪距並拍照；以實際數值重算影響線反應，訂出每個量測點的預期值與停止門檻，例如預期值的 1.2 倍或規範容許應力的一定比例。~Before testing, obtain third-party weighbridge tickets for each axle and the gross weight, measure and photograph axle and wheel spacing, recompute influence-line responses with the actual values, and set an expected value and stop threshold for each gauge, for example 1.2 times the prediction or a set fraction of the allowable stress.",
+      "failure": "若試驗車載運砂石卻未秤重、只依車型估計，或試驗中途更換車輛，量測反應就無法與計算比較；試驗車過重則可能讓已劣化的構件在試驗中受損，試驗本身變成事故。~If a gravel-loaded truck is not weighed but estimated from its type, or vehicles are swapped mid-test, measured responses cannot be compared with calculations; an overweight truck can damage deteriorated members during the test, turning the test into an incident.",
+      "misconception": "載重試驗用的車越重，得到的結論就越可靠。~The heavier the test vehicle, the more reliable the conclusions.",
+      "practice": "試驗計畫須由評等或設計工程師核算試驗載重不超過構件容許值，列出逐級加載與停止準則；試驗當天現場要有有權中止試驗的工程師在場，所有決定記錄在試驗日誌。~The test plan must have the rating or design engineer confirm that test loads stay within member capacities and list load stages and stop criteria; on test day an engineer with authority to stop the test must be on site, and every decision goes into the test log."
+    },
+    {
+      "anchor": "動態應變計與加速度計~Dynamic strain gauges and accelerometers",
+      "title": "量測儀器與取樣率~Instrumentation and sampling rate",
+      "mechanism": "動態試驗同時需要三類資料：主梁與關鍵構件的應變、跨中撓度或加速度，以及車輛位置與速度。應變計要能反應快速變化，加速度計的頻寬與解析度要涵蓋主要振態與試驗產生的微小加速度，撓度可用線性位移計、雷射或雷達干涉儀量測。車輛位置可用路面觸發開關或影像同步，讓每一筆反應都能對應到荷重位置，這是區分靜態與動態成分的前提。~A dynamic test needs three kinds of data at once: strains in girders and critical members, midspan deflection or acceleration, and vehicle position and speed. Strain gauges must follow fast changes, accelerometers need bandwidth and resolution covering the main modes and the small accelerations a test produces, and deflection can be measured by displacement transducers, laser or radar interferometry. Vehicle position from road-surface trigger switches or synchronised video lets every response be tied to load position, the precondition for separating static from dynamic components.",
+      "model": "試驗車以 80 km/h（22.2 m/s）通過 30 m 跨需 30/22.2 ≈ 1.35 s；若每次通過要有至少 50 個取樣點描述影響線，取樣率 ≥ 50/1.35 ≈ 37 Hz；要辨識 20 Hz 以下的振態，依 2.56 倍規則需 ≥ 51.2 Hz，因此取 100 Hz 以上。數值為教學假設。~A truck at 80 km/h (22.2 m/s) crosses a 30 m span in 30/22.2 ≈ 1.35 s; at least 50 samples per crossing to describe the influence line needs ≥ 50/1.35 ≈ 37 Hz, and identifying modes up to 20 Hz by the 2.56 rule needs ≥ 51.2 Hz, so 100 Hz or more is chosen. Values are teaching assumptions.",
+      "verify": "試驗前檢查每個通道的方向、增益與雜訊底線，並以已知敲擊或靜置歸零確認；每一趟試驗後立即檢視資料是否飽和、缺漏或觸發錯位，有問題的趟次當場重做，而不是回辦公室才發現。~Before testing, check every channel's orientation, gain and noise floor and confirm with a known tap or a static zero; after each run, inspect the data immediately for saturation, gaps or trigger misalignment and repeat faulty runs on the spot rather than discovering them back at the office.",
+      "failure": "取樣率太低時峰值被削掉，算出的動力放大偏小；位移計架在會隨橋振動的臨時支架上，量到的其實是支架的運動；車輛位置沒有同步，事後就無法判斷峰值發生時車在哪裡。~Too low a sampling rate clips peaks and underestimates amplification; a displacement transducer on a temporary frame that vibrates with the bridge measures the frame; without synchronised vehicle position nobody can later tell where the truck was at the peak.",
+      "misconception": "只要量到最大應變，取樣率高低並不重要。~As long as the maximum strain is captured, sampling rate does not matter.",
+      "practice": "量測計畫以表格列出每個通道的感測器型號、位置、方向、量程、取樣率與預期值，現場安裝後逐一拍照核對；所有通道共用同一時間基準，原始檔案保留車輛觸發訊號。~The instrumentation plan tabulates sensor model, location, orientation, range, sampling rate and expected value for every channel, with each installation photographed and checked; all channels share one time base, and raw files keep the vehicle trigger signals."
+    },
+    {
+      "anchor": "試驗趟次矩陣~Test-run matrix",
+      "title": "試驗程序、封橋與安全管理~Test procedure, closure and safety",
+      "mechanism": "動態試驗通常依序進行：先量環境振動，再做慢速（TRB 入門所稱低於約 5 mph，即 8 km/h）的準靜態趟次，接著是不同車速的動態趟次，必要時在橋面放置木板做跳車試驗，最後再量一次環境振動確認橋梁狀態未改變。每一組條件重複三趟以上以評估離散度。試驗需要封閉交通，因此要預先排定趟次矩陣、時程與緊急開放程序，並在每一階段確認資料合理後才進入下一階段。~A dynamic test usually runs in order: ambient vibration first, then quasi-static runs at crawl speed (below about 5 mph, or 8 km/h, as the TRB primer describes), then dynamic runs at several speeds, a plank or bump test where needed, and a final ambient record to confirm the bridge has not changed. Each condition is repeated three or more times to judge scatter. Testing requires a traffic closure, so the run matrix, schedule and emergency reopening procedure must be fixed in advance, with each stage's data checked for plausibility before moving on.",
+      "model": "兩個車道 × 四種車速（20、40、60、80 km/h）× 三趟 = 24 趟，加上兩車道慢速各三趟共 30 趟；每趟含迴轉與歸零約 6 分鐘，需約 30×6 = 180 min = 3 小時封橋，另加前後環境振動量測。數值為教學假設。~Two lanes × four speeds (20, 40, 60 and 80 km/h) × three runs = 24 runs, plus three crawl runs in each lane, 30 runs in all; at about 6 minutes per run including turning and re-zeroing, the closure needs about 30×6 = 180 min = 3 hours, plus ambient records before and after. Values are teaching assumptions.",
+      "verify": "試驗主持人在每一趟後檢查關鍵通道峰值與預期值的比值，若超過停止準則（例如 1.2 倍）或出現未歸零的殘餘應變，即暫停並檢查橋梁與儀器；所有趟次以編號、時間、車速與車道記錄於試驗日誌。~After every run, the test director checks the ratio of peak to predicted value on key channels; if it exceeds the stop criterion, for example 1.2, or residual strain fails to return to zero, testing pauses for a bridge and instrument check. Every run is logged with number, time, speed and lane.",
+      "failure": "為了縮短封橋時間而省略重複趟次，單一趟次受到風或駕駛偏移影響，得到的動力放大不具代表性；試驗車沒有按標線行駛或速度不穩，也會使不同趟次無法比較。~Skipping repeats to shorten the closure leaves single runs affected by wind or driver offset, so the measured amplification is unrepresentative; a truck that strays from its marked line or holds an unsteady speed makes runs incomparable.",
+      "misconception": "動態試驗只要讓卡車以最高速通過一次就夠了。~A dynamic test only needs one pass of the truck at top speed.",
+      "practice": "高速趟次屬有風險的作業，須由交通主管機關核准封閉、設置緩衝區與救援車輛，試驗駕駛事先演練；本課只說明試驗設計邏輯，實際執行須依業主核准的試驗計畫與安全計畫辦理。~High-speed runs are hazardous: the traffic authority must approve the closure, buffer zones and recovery vehicles must be in place and drivers must rehearse; this course explains test-design logic only, and real tests must follow the owner-approved test and safety plans."
+    },
+    {
+      "anchor": "激振器與人群步行試驗~Shaker and crowd walking tests",
+      "title": "強迫振動與人群試驗~Forced-vibration and crowd tests",
+      "mechanism": "卡車通過只能短暫激起振動，要精確量測特定振態的頻率、振型與阻尼，常用偏心質量激振器在固定頻率持續激振，或以掃頻找出共振峰；人行橋則用可控制人數與步頻的人群試驗。千禧橋在 2000 年以最多 275 人在單一跨上進行人群試驗，找出側向振動隨人數突然增加的行為；改造完成後，Arup 再安排 2,000 人過橋驗證阻尼裝置的效果。~A passing truck excites vibration only briefly, so measuring the frequency, shape and damping of a particular mode precisely calls for an eccentric-mass shaker driven steadily at one frequency or swept to find the resonant peak; footbridges use crowd tests with controlled numbers and pacing. In 2000 the Millennium Bridge was tested with crowds of up to 275 people on one span, revealing lateral vibration that jumped once numbers passed a threshold; after the retrofit, Arup had 2,000 people walk across to verify the damping devices.",
+      "model": "偏心質量激振力 F = m_e·e·ω²。m_e·e = 2 kg·m、f = 2 Hz（ω = 12.57 rad/s）：F = 2×157.9 ≈ 316 N。模態質量 M = 50,000 kg、模態勁度 k = M·ω² ≈ 7.9×10⁶ N/m、ζ = 1%：共振振幅 x = F/(2ζk) ≈ 2.0 mm，加速度 ω²x ≈ 0.32 m/s²。數值為教學假設。~Eccentric-mass shaker force F = m_e·e·ω². With m_e·e = 2 kg·m and f = 2 Hz (ω = 12.57 rad/s), F = 2×157.9 ≈ 316 N. For modal mass M = 50,000 kg, modal stiffness k = M·ω² ≈ 7.9×10⁶ N/m and ζ = 1%, the resonant amplitude is x = F/(2ζk) ≈ 2.0 mm and the acceleration ω²x ≈ 0.32 m/s². Values are teaching assumptions.",
+      "verify": "掃頻時以小步距逐步改變頻率，每一頻率等待穩態後記錄力與加速度，繪出頻率響應函數求共振頻率與阻尼；人群試驗以影像或計數器記錄人數與分布，並設定即時顯示的加速度中止門檻。~In a sweep, step the frequency in small increments, wait for steady state at each and record force and acceleration, then build the frequency response function to obtain resonance and damping; in crowd tests, record numbers and distribution with video or counters and set a live-displayed acceleration stop threshold.",
+      "failure": "激振器若固定在不夠剛的位置，量到的是局部板件振動而非整體振態；人群試驗若沒有中止門檻，側向同步一旦觸發，人群可能在擺動中失去平衡或擠向欄杆。~A shaker fixed at a flexible spot measures local plate vibration rather than the global mode; a crowd test without a stop threshold can see people lose balance or crowd the railings once lateral lock-in starts.",
+      "misconception": "人行橋只要強度設計通過，就不必做人群振動試驗。~If a footbridge passes its strength design, it needs no crowd vibration test.",
+      "practice": "人群試驗須先完成風險評估：人數分級逐步增加、出入口管制、醫護與廣播、加速度即時顯示與中止權責；參與者事前須了解試驗內容，所有分級與中止決定由試驗主持工程師記錄。~A crowd test needs a prior risk assessment: stepwise crowd stages, controlled entry and exit, first aid and public address, live acceleration display and a clear stop authority; participants are briefed in advance, and the test director records every stage and stop decision."
+    },
+    {
+      "anchor": "動態與準靜態歷時~Dynamic and quasi-static histories",
+      "title": "動力放大、頻率與勁度判讀~Interpreting amplification, frequency and stiffness",
+      "mechanism": "一趟高速通過的應變歷時包含兩部分：隨車輛位置緩慢變化的準靜態成分，以及橋梁自身振動造成的動態成分。可用低通濾波從高速趟次中分離準靜態成分，或直接與慢速趟次比較，求得動力放大。車輛離橋後的自由振動可用頻譜分析得到自振頻率，與模型比較即可判斷實際勁度：頻率與勁度的平方根成正比，所以頻率高約 6% 代表勁度高約 13%。~A strain history from a fast run contains two parts: a quasi-static component that follows vehicle position slowly, and a dynamic component from the bridge's own vibration. Low-pass filtering separates the quasi-static part from a fast run, or the fast run can be compared directly with a crawl run, to obtain amplification. The free vibration after the truck leaves gives natural frequencies by spectral analysis, and comparing them with the model reveals actual stiffness: frequency varies with the square root of stiffness, so a frequency about 6% higher means a stiffness about 13% higher.",
+      "model": "慢速峰值 120 με、80 km/h 峰值 142 με：DAF = 142/120 ≈ 1.18。第一彎曲頻率 f = (π/2L²)·√(EI/m)，L = 30 m、EI = 8.0×10¹⁰ N·m²、m = 12,000 kg/m：f_m ≈ 4.51 Hz；實測 4.80 Hz，勁度比 (4.80/4.51)² ≈ 1.13，實際勁度約高 13%。數值為教學假設。~Crawl peak 120 με and 80 km/h peak 142 με give DAF = 142/120 ≈ 1.18. The first bending frequency is f = (π/2L²)·√(EI/m); with L = 30 m, EI = 8.0×10¹⁰ N·m² and m = 12,000 kg/m, f_m ≈ 4.51 Hz. A measured 4.80 Hz gives a stiffness ratio (4.80/4.51)² ≈ 1.13, about 13% stiffer than modelled. Values are teaching assumptions.",
+      "verify": "以至少兩種方式（慢速比較與濾波分離）計算動力放大，結果應一致；頻率以多趟自由振動與環境振動資料交叉確認，並記錄試驗時溫度，以判斷差異是否來自護欄、鋪面參與或支承束制。~Compute amplification by at least two routes, crawl comparison and filtering, and require agreement; confirm frequencies with several free-vibration records and ambient data, and record test temperature to judge whether differences come from barriers, surfacing or bearing restraint.",
+      "failure": "低通濾波截止頻率選得太低，會把部分準靜態峰值也濾掉，使動力放大被高估；把較高的實測頻率直接解讀為橋梁很健康，卻沒發現那是支承卡死造成的額外束制，反而掩蓋了另一種問題。~A low-pass cut-off set too low also removes part of the quasi-static peak and overstates amplification; reading a higher measured frequency simply as a healthy bridge can miss that it comes from seized bearings, masking a different problem.",
+      "misconception": "實測頻率比模型高，就代表橋梁沒有任何問題。~A measured frequency higher than the model means the bridge has no problems.",
+      "practice": "判讀報告要附上每一趟的原始歷時圖、濾波參數與頻譜圖，並說明實測與模型差異的可能來源（非結構構件、支承、溫度）；差異超過預定範圍時必須有工程解釋，不能直接調整模型參數使其吻合。~The interpretation report should attach each run's raw history, filter settings and spectrum, and explain likely sources of difference between test and model (non-structural elements, bearings, temperature); any difference beyond a preset range needs an engineering explanation, not a quiet parameter tweak to force agreement."
+    },
+    {
+      "anchor": "試驗修正係數~Test adjustment factor",
+      "title": "模型修正與載重評等~Model updating and load rating",
+      "mechanism": "試驗的最終用途常是載重評等：若實測應變低於計算值，表示橋梁有計算未考慮的有利機制，例如未設計為組合作用的混凝土橋面、護欄參與、支承束制或較佳的橫向分配。AASHTO 橋梁評估手冊允許以試驗修正係數調整計算評等，但必須判斷這些有利機制在更重載重下是否仍然可靠；支承束制或未設計的組合作用可能在重載下失效，因此修正量要打折。動態試驗得到的實測動力放大也可取代規範值，前提是路面條件被納入管理。~The usual end use of a test is load rating: measured strains below calculation show favourable mechanisms the calculation ignored, such as unintended composite action with the deck, barrier participation, bearing restraint or better lateral distribution. The AASHTO Manual for Bridge Evaluation lets a test adjustment factor modify the calculated rating, but engineers must judge whether those mechanisms remain reliable under heavier loads; bearing restraint or unintended composite action can break down under heavy load, so the benefit is discounted. A measured dynamic amplification can also replace the code value, provided the surface condition is managed.",
+      "model": "評等修正 RF_T = RF_c·K，K = 1 + K_a·K_b。計算應變 ε_c = 150 με、實測 ε_T = 120 με：K_a = ε_c/ε_T − 1 = 0.25；取 K_b = 0.5（試驗載重相對評等載重較低、有利機制不完全可靠），K = 1.125。原評等 RF_c = 0.92 提升為 0.92×1.125 ≈ 1.04。數值為教學假設。~Rating adjustment RF_T = RF_c·K with K = 1 + K_a·K_b. With calculated strain ε_c = 150 με and measured ε_T = 120 με, K_a = ε_c/ε_T − 1 = 0.25; taking K_b = 0.5 (test load low relative to the rating load, favourable mechanisms not fully reliable) gives K = 1.125, raising RF_c = 0.92 to 0.92×1.125 ≈ 1.04. Values are teaching assumptions.",
+      "verify": "以實測資料更新有限元素模型的邊界勁度與組合作用程度，檢查模型能否同時重現多個量測點與多個車道的反應，而不只是單一點；修正係數的取值依據要逐項說明，並由評等工程師簽認。~Update boundary stiffness and degree of composite action in the finite-element model from the test data, and check that it reproduces responses at many gauges and in several lanes, not just one point; justify each term of the adjustment factor and have the rating engineer sign it.",
+      "failure": "把支承卡死造成的有利束制當成永久性能而大幅提高評等，若支承日後鬆動或更換，實際應力會回到計算值以上；只用單一量測點修正模型，可能把局部效應誤當成整體行為。~Treating restraint from seized bearings as permanent and raising the rating sharply leaves stresses above calculation once the bearings free up or are replaced; updating the model on a single gauge can mistake a local effect for global behaviour.",
+      "misconception": "實測應變比計算低，就可以按比例直接提高橋梁的容許載重。~If measured strain is lower than calculated, the permitted load can be raised in direct proportion.",
+      "practice": "以試驗提高評等時，報告必須列出所依賴的有利機制、可能失效的條件與重新試驗的觸發事件（例如支承更換、橋面重鋪、超重車輛增加），並明訂評等結果的適用期限。~When a test raises a rating, the report must list the favourable mechanisms relied on, the conditions under which they could fail and the events that trigger retesting (bearing replacement, resurfacing, more overweight traffic), and state how long the rating remains valid."
+    },
+    {
+      "anchor": "黏滯阻尼器與調諧質量阻尼器~Viscous dampers and TMDs",
+      "title": "舒適度準則與振動改善~Comfort criteria and vibration retrofit",
+      "mechanism": "人行橋與輕量橋梁的振動多半是使用性問題而非強度問題，判斷標準是加速度：歐洲規範 EN 1990 附錄 A2 建議人行橋垂直加速度不超過 0.7 m/s²，側向在一般使用不超過 0.2 m/s²、特殊人群情況 0.4 m/s²。千禧橋的改造加裝了 37 組黏滯阻尼器與 52 組調諧質量阻尼器，2002 年 2 月 22 日重新開放後沒有再出現明顯振動。改造前後都需要動態試驗：前者確定要對付哪些振態，後者證明阻尼確實達到目標。~Vibration of footbridges and light bridges is mostly a serviceability issue rather than a strength issue, judged by acceleration: EN 1990 Annex A2 recommends a maximum footbridge acceleration of 0.7 m/s² vertically and 0.2 m/s² laterally in normal use, 0.4 m/s² for exceptional crowds. The Millennium Bridge retrofit added 37 viscous dampers and 52 tuned mass dampers, and since reopening on 22 February 2002 it has shown no significant vibration. Dynamic tests are needed both before a retrofit, to identify the modes to treat, and after it, to prove the damping target was reached.",
+      "model": "共振加速度 a ≈ F/(2ζM)。側向等效人群力 F = 250 N、模態質量 M = 100,000 kg、ζ = 0.5%：a = 250/(2×0.005×100,000) = 0.25 m/s²，超過 0.2 m/s²；要降到 0.2 m/s² 需 ζ ≥ 250/(2×100,000×0.2) ≈ 0.63%，實務上會取更高的阻尼以涵蓋人群同步。數值為教學假設。~Resonant acceleration a ≈ F/(2ζM). With an equivalent lateral crowd force F = 250 N, modal mass M = 100,000 kg and ζ = 0.5%, a = 250/(2×0.005×100,000) = 0.25 m/s², above 0.2 m/s²; reaching 0.2 m/s² needs ζ ≥ 250/(2×100,000×0.2) ≈ 0.63%, and practice adopts much higher damping to cover crowd lock-in. Values are teaching assumptions.",
+      "verify": "改造後以與改造前相同的條件重做試驗（同樣的人數分級或激振頻率），比較加速度與阻尼比；阻尼器出廠前另做力—速度試驗，交接時記錄每組阻尼器的編號與位置，作為日後維護比對的基準。~After a retrofit, repeat the tests under the same conditions as before (same crowd stages or excitation frequencies) and compare accelerations and damping ratios; test each damper for force and velocity before delivery, and record serial numbers and locations at handover as the baseline for later maintenance.",
+      "failure": "若只針對開幕時出問題的振態加裝阻尼，未檢查其他接近步頻的振態，人群密度增加後可能換另一個振態被激發；阻尼器連接件鬆動或漏油，也會使阻尼逐年下降而無人察覺。~Damping only the mode that misbehaved at opening, without checking other modes near walking frequencies, lets another mode take over when crowds grow denser; loose damper connections or leaking units let damping fall year by year unnoticed.",
+      "misconception": "加大構件斷面一定是解決人行橋振動最有效的方法。~Enlarging member sections is always the most effective cure for footbridge vibration.",
+      "practice": "振動改善設計應由設計者、阻尼器供應商與試驗單位共同確認目標振態與目標阻尼，並把改造後的驗證試驗列為重新開放的停留點，由業主核准後才開放通行。~The designer, damper supplier and test team should jointly confirm target modes and target damping, and the post-retrofit verification test should be a hold point for reopening, released only on the owner's approval."
+    },
+    {
+      "anchor": "動態試驗基準檔~Dynamic-test baseline file",
+      "title": "試驗報告、重現性與基準交接~Test report, repeatability and baseline handover",
+      "mechanism": "一次動態試驗的價值會延續數十年：它提供橋梁在已知載重、溫度與路面下的頻率、阻尼、動力放大與影響線，是之後健康監測、補強與重新評等的比較基準。要讓基準能被他人使用，報告必須保存原始資料、試驗車重與軸距、車速與車道、感測器位置與方向、溫度與路面狀況，並說明結果的離散度。千禧橋改造前後以同一套試驗邏輯對照，正是用試驗驗證工程成效的例子；1940 年塔科馬海峽橋通車約四個月即在風中倒塌，也提醒動力行為必須被量測而不只是假設。~A single dynamic test keeps its value for decades: it gives frequencies, damping, amplification and influence lines under known load, temperature and surface condition, the baseline for later monitoring, strengthening and re-rating. For others to use it, the report must preserve raw data, truck weights and axle spacings, speeds and lanes, sensor positions and orientations, temperature and surface condition, and state the scatter of results. Comparing the Millennium Bridge before and after its retrofit with the same test logic is an example of verifying engineering work by testing, and the Tacoma Narrows Bridge, which fell in the wind about four months after opening in 1940, is a reminder that dynamic behaviour must be measured, not merely assumed.",
+      "model": "三趟重複得 DAF = 1.18、1.22、1.15：平均 1.183、標準差 0.035；95% 信賴區間半寬 = t(0.975, 2)×s/√3 = 4.303×0.035/1.732 ≈ 0.087，上限約 1.27。評等若採 1.27 仍低於規範的 1.33；若只做一趟，就無法評估這個離散度。數值為教學假設。~Three repeat runs give DAF = 1.18, 1.22 and 1.15: mean 1.183, standard deviation 0.035; the 95% confidence half-width is t(0.975, 2)×s/√3 = 4.303×0.035/1.732 ≈ 0.087, an upper bound of about 1.27. Rating with 1.27 still stays below the code's 1.33; a single run could not reveal this scatter at all. Values are teaching assumptions.",
+      "verify": "交接前由第三方抽取數趟原始資料，依報告記載的處理參數重算峰值、動力放大與頻率，確認可以重現；檢查報告是否附有試驗車秤重單、儀器校正證書與試驗日誌，並確認資料格式可被業主的監測系統讀取。~Before handover, have a third party take several raw runs and recompute peaks, amplification and frequencies with the processing parameters in the report to confirm reproducibility; check that weighbridge tickets, calibration certificates and the test log are attached and that the data format can be read by the owner's monitoring system.",
+      "failure": "若報告只留下結論數字，十年後橋梁補強或改建時，工程師無法判斷頻率變化是結構改變還是試驗方法不同；試驗車重與溫度紀錄缺漏，則讓前後兩次試驗無法比較。~If the report keeps only conclusions, engineers strengthening or rebuilding the bridge ten years later cannot tell whether a frequency change reflects the structure or a different test method; missing truck weights or temperatures make the two tests incomparable.",
+      "misconception": "載重試驗通過一次，就證明橋梁永遠安全。~Passing one load test proves the bridge safe forever.",
+      "practice": "業主應把動態試驗資料納入橋梁管理系統，訂定重新試驗的觸發條件（重大補強、事故、評等變更、伸縮縫更換），並要求後續試驗盡量沿用相同的量測點與試驗車配置，以便直接比較。~The owner should load dynamic-test data into the bridge management system, define triggers for retesting (major strengthening, accidents, rating changes, joint replacement), and require later tests to reuse the same gauge locations and truck configuration wherever possible so results compare directly."
+    }
+  ],
+  "example": "設計練習：一座 30 m 簡支鋼—混凝土組合梁橋，以 300 kN 試驗車做動態試驗。(1) 預測：M = 300×30/4 = 2,250 kN·m，最受力主梁分配 0.6 為 1,350 kN·m，S = 0.045 m³，σ = 30 MPa，ε_c = 150 με。(2) 實測：慢速峰值 ε_T = 120 με，80 km/h 三趟峰值的動力放大為 1.18、1.22、1.15，平均 1.183，95% 上限約 1.27，低於規範 1.33。(3) 頻率：模型 f = (π/2L²)√(EI/m) ≈ 4.51 Hz，實測 4.80 Hz，勁度比約 1.13。(4) 評等：K_a = 150/120 − 1 = 0.25，K_b 取 0.5，K = 1.125，RF 由 0.92 提升至約 1.04。(5) 若改變一個輸入：伸縮縫出現高差，使 80 km/h 峰值升為 168 με，DAF = 168/120 = 1.40，已超過規範的 1.33，這時不但不能以實測值放寬評等，還應先修復伸縮縫再重新試驗。數值為教學假設，不代表任何實際橋梁。~Design exercise: a 30 m simply supported steel–concrete composite girder bridge is tested dynamically with a 300 kN truck. (1) Prediction: M = 300×30/4 = 2,250 kN·m, 0.6 of it to the most loaded girder gives 1,350 kN·m, S = 0.045 m³, σ = 30 MPa and ε_c = 150 με. (2) Measurement: the crawl peak is ε_T = 120 με, and three 80 km/h runs give amplifications of 1.18, 1.22 and 1.15, mean 1.183 and 95% upper bound about 1.27, below the code's 1.33. (3) Frequency: the model gives f = (π/2L²)√(EI/m) ≈ 4.51 Hz, the test 4.80 Hz, a stiffness ratio of about 1.13. (4) Rating: K_a = 150/120 − 1 = 0.25, K_b = 0.5, K = 1.125, so RF rises from 0.92 to about 1.04. (5) Changing one input: if a step develops at the expansion joint and the 80 km/h peak rises to 168 με, DAF = 168/120 = 1.40, above the code's 1.33, so the measured value cannot relax the rating and the joint should be repaired and the bridge retested first. Values are teaching assumptions, not any real bridge.",
+  "history": "橋梁載重試驗早期多為靜態驗證，1932 年雪梨港灣大橋開放前以最多 96 部蒸汽機車進行約三週的試驗即為代表。1940 年塔科馬海峽橋通車約四個月後在風中倒塌，使橋梁的動力行為成為設計與試驗的核心課題。2000 年倫敦千禧橋開放兩天即因人群同步側向振動封閉，工程團隊以人群試驗找出臨界行為，加裝黏滯與調諧質量阻尼器後，再以 2,000 人過橋驗證，2002 年重新開放。2019 年 TRB 發布橋梁載重試驗入門，整理診斷試驗、驗證試驗與動態試驗的方法與限制。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Early bridge load tests were mostly static proofs, exemplified by the roughly three-week test with up to 96 steam locomotives before Sydney Harbour Bridge opened in 1932. The Tacoma Narrows Bridge fell in the wind about four months after opening in 1940, putting dynamic behaviour at the centre of bridge design and testing. In 2000 London's Millennium Bridge closed two days after opening because of synchronous lateral crowd vibration; engineers used crowd tests to find the critical behaviour, added viscous and tuned mass dampers, verified them with 2,000 people walking across and reopened the bridge in 2002. In 2019 TRB published a primer on bridge load testing that summarises diagnostic, proof and dynamic testing methods and their limits. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "AASHTO 設計車輛的動力載重容許值為靜態活載效應增加 33%~AASHTO's dynamic load allowance adds 33% to the static live-load effects of the design vehicle",
+    "TRB 入門所述診斷試驗的慢速試驗車速度通常低於 5 mph（約 8 km/h）~The TRB primer describes diagnostic tests with test vehicles typically below 5 mph (about 8 km/h)",
+    "雪梨港灣大橋 1932 年以最多 96 部蒸汽機車試驗約 3 週，同年 3 月 19 日開放~Sydney Harbour Bridge was tested with up to 96 steam locomotives for about 3 weeks in 1932 and opened on 19 March",
+    "千禧橋全長 325 m，三跨約 81、144、108 m，橋面寬 4 m~The Millennium Bridge is 325 m long with spans of about 81, 144 and 108 m and a 4 m deck",
+    "千禧橋開幕日約 90,000 人通過，同時最多約 2,000 人，側向擺動最大約 70 mm~About 90,000 people crossed the Millennium Bridge on opening day, up to about 2,000 at once, with lateral sway up to about 70 mm",
+    "千禧橋加裝 37 組黏滯阻尼器與 52 組調諧質量阻尼器，2002 年 2 月 22 日重新開放~The Millennium Bridge received 37 viscous dampers and 52 tuned mass dampers and reopened on 22 February 2002",
+    "EN 1990 附錄 A2 建議人行橋垂直加速度上限 0.7 m/s²，側向 0.2 m/s²（特殊人群 0.4 m/s²）~EN 1990 Annex A2 recommends footbridge acceleration limits of 0.7 m/s² vertical and 0.2 m/s² lateral (0.4 m/s² for exceptional crowds)",
+    "1940 年塔科馬海峽橋 7 月 1 日通車、11 月 7 日在風中倒塌~The 1940 Tacoma Narrows Bridge opened on 1 July and collapsed in the wind on 7 November"
+  ],
+  "timeline": [
+    {
+      "year": "1932",
+      "event": "雪梨港灣大橋開放前以最多 96 部蒸汽機車進行約三週的載重試驗~Sydney Harbour Bridge is load-tested for about three weeks with up to 96 steam locomotives before opening"
+    },
+    {
+      "year": "1940",
+      "event": "塔科馬海峽橋通車約四個月後在風中倒塌，動力行為成為橋梁工程核心課題~The Tacoma Narrows Bridge collapses in the wind about four months after opening, making dynamic behaviour a core bridge-engineering issue"
+    },
+    {
+      "year": "2000",
+      "event": "倫敦千禧橋開放兩天即因人群同步側向振動封閉，隨後以最多 275 人進行人群試驗~London's Millennium Bridge closes two days after opening because of synchronous lateral vibration, followed by crowd tests with up to 275 people"
+    },
+    {
+      "year": "2002",
+      "event": "千禧橋加裝黏滯與調諧質量阻尼器並經人群驗證後重新開放~The Millennium Bridge reopens after viscous and tuned mass dampers are installed and verified by crowd testing"
+    },
+    {
+      "year": "2019",
+      "event": "TRB 發布橋梁載重試驗入門（E-C257），整理診斷、驗證與動態試驗方法~TRB publishes the Primer on Bridge Load Testing (E-C257), summarising diagnostic, proof and dynamic testing"
+    }
+  ],
+  "codes": [
+    "AASHTO 橋梁評估手冊第 8 章 非破壞載重試驗~AASHTO Manual for Bridge Evaluation, Section 8 Nondestructive Load Testing",
+    "ISO 18649：機械振動—橋梁動態試驗與調查之量測結果評估~ISO 18649: Mechanical vibration — Evaluation of measurement results from dynamic tests and investigations on bridges",
+    "EN 1990 附錄 A2：橋梁應用（含人行橋舒適度準則）~EN 1990 Annex A2: Application for bridges (including footbridge comfort criteria)",
+    "TRB E-C257 橋梁載重試驗入門~TRB Transportation Research Circular E-C257 Primer on Bridge Load Testing"
+  ],
+  "landmarks": [
+    "倫敦千禧橋~Millennium Bridge, London",
+    "雪梨港灣大橋~Sydney Harbour Bridge",
+    "塔科馬海峽橋（1940）~Tacoma Narrows Bridge (1940)"
+  ],
+  "place": {
+    "name": "倫敦千禧橋參照點~Millennium Bridge reference point",
+    "country": "英國~United Kingdom",
+    "lat": 51.510173,
+    "lng": -0.098438,
+    "query": "Millennium Bridge London"
+  },
+  "sources": [
+    {
+      "key": "trb-ec257-load-testing",
+      "title": "TRB：橋梁載重試驗入門（E-C257）",
+      "titleEn": "TRB: Primer on Bridge Load Testing (Transportation Research Circular E-C257)",
+      "publisher": "Transportation Research Board",
+      "url": "https://onlinepubs.trb.org/onlinepubs/circulars/ec257.pdf",
+      "sourceType": "primary",
+      "scope": "說明診斷、驗證與動態試驗的目的、動力載重容許值、慢速試驗與資料擷取規劃；課程計算另為教學假設。",
+      "scopeEn": "Explains the aims of diagnostic, proof and dynamic tests, the dynamic load allowance, crawl-speed testing and data-acquisition planning; course calculations are separate teaching assumptions."
+    },
+    {
+      "key": "arup-millennium-bridge",
+      "title": "Arup：倫敦千禧橋專案",
+      "titleEn": "Arup: Millennium Bridge project",
+      "publisher": "Arup",
+      "url": "https://www.arup.com/projects/millennium-bridge",
+      "sourceType": "primary",
+      "scope": "設計者說明側向振動的正回饋機制、受控人群試驗、加裝阻尼裝置與 2,000 人驗證試驗。",
+      "scopeEn": "Designer's account of the positive-feedback lateral vibration, controlled crowd tests, added damping devices and the 2,000-person verification test."
+    },
+    {
+      "key": "wsdot-tacoma-narrows-history",
+      "title": "華盛頓州交通部：塔科馬海峽橋歷史",
+      "titleEn": "WSDOT: Tacoma Narrows Bridge history",
+      "publisher": "Washington State Department of Transportation",
+      "url": "https://www.wsdot.wa.gov/tnbhistory/",
+      "sourceType": "primary",
+      "scope": "業主的歷史頁，記載 1940 年橋梁通車與倒塌日期及其對懸索橋設計的影響。",
+      "scopeEn": "Owner's history pages recording the 1940 opening and collapse dates and their influence on suspension-bridge design."
+    },
+    {
+      "key": "wiki-millennium-bridge",
+      "title": "維基百科：倫敦千禧橋（英文）",
+      "titleEn": "Wikipedia: Millennium Bridge, London",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Millennium_Bridge,_London",
+      "sourceType": "secondary",
+      "scope": "跨徑、開放與封閉日期、人群數量、阻尼器數量與重新開放日期的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of spans, opening and closure dates, crowd numbers, damper counts and reopening date, for further reading."
+    },
+    {
+      "key": "wiki-sydney-harbour-bridge",
+      "title": "維基百科：雪梨港灣大橋（英文）",
+      "titleEn": "Wikipedia: Sydney Harbour Bridge",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+      "sourceType": "secondary",
+      "scope": "1932 年機車載重試驗與開放日期的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of the 1932 locomotive load test and opening date, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "奧雅納",
+      "nameEn": "Arup",
+      "business": "工程顧問公司，千禧橋的結構設計者，負責其側向振動調查、人群試驗與阻尼改造。",
+      "businessEn": "Engineering consultancy and structural designer of the Millennium Bridge, responsible for its lateral-vibration investigation, crowd testing and damping retrofit.",
+      "url": "https://www.arup.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "人群誘發振動調查與改造驗證的公開案例",
+      "roleEn": "Public case of crowd-induced vibration investigation and retrofit verification"
+    },
+    {
+      "name": "泰勒設備",
+      "nameEn": "Taylor Devices",
+      "business": "製造流體黏滯阻尼器、鎖定裝置與隔震系統，應用於大量橋梁與重要結構。",
+      "businessEn": "Manufactures fluid viscous dampers, lock-up devices and isolation systems used on many bridges and critical structures.",
+      "url": "https://www.taylordevices.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "TAYD",
+        "exchange": "NASDAQ",
+        "currency": "USD"
+      },
+      "role": "振動改善用黏滯阻尼器的產品類型與試驗概念",
+      "roleEn": "Product types and testing concepts for viscous dampers used in vibration retrofits"
+    },
+    {
+      "name": "美國運輸研究委員會",
+      "nameEn": "Transportation Research Board (TRB)",
+      "business": "美國國家學院所屬機構，出版橋梁載重試驗、評等與檢測的研究與指引。",
+      "businessEn": "Unit of the US National Academies that publishes research and guidance on bridge load testing, rating and inspection.",
+      "url": "https://www.trb.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "載重試驗方法與限制的整理文件",
+      "roleEn": "Reference documents on load-testing methods and their limits"
+    }
+  ],
+  "related": [
+    "b057",
+    "b050"
+  ],
+  "architectureNodes": [
+    [
+      "試驗目的與預測反應",
+      "Test objectives and predicted response"
+    ],
+    [
+      "試驗車輛、人群與激振器",
+      "Test trucks, crowds and shakers"
+    ],
+    [
+      "感測器與資料擷取",
+      "Sensors and data acquisition"
+    ],
+    [
+      "動力放大與模態判讀",
+      "Amplification and modal interpretation"
+    ],
+    [
+      "評等修正與舒適度決策",
+      "Rating adjustment and comfort decisions"
+    ],
+    [
+      "試驗基準與交接",
+      "Test baseline and handover"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      0,
+      2
+    ]
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "id": "b089",
+  "title": "雙層通風幕牆整合~Double-skin ventilated facade integration",
+  "discipline": "st-facade-digital",
+  "family": "facade",
+  "focus": "以腔體熱平衡、浮力通風、外層支撐結構與防火排煙整合，讓雙層幕牆在節能、舒適與安全間取得平衡~Cavity heat balance, buoyancy ventilation, outer-skin support and fire and smoke integration that balance energy, comfort and safety in double-skin façades",
+  "summary": "從雙層通風幕牆的腔體類型與氣候條件出發，建立日射吸熱與通風量決定腔體溫升、煙囪效應決定浮力風量的模型，說明外層玻璃與懸挑托架、檢修走道的結構設計、開口與遮陽的細部，再處理施工整合、控制系統試運轉、樣品牆熱流量測與腔體煙控，最後以清潔、結露與實測能耗完成交接，並以柏林 GSW 總部、溫尼伯曼尼托巴水電大樓與倫敦聖瑪莉斧街 30 號說明不同的腔體策略。~Starting from cavity types and climate, build models in which absorbed solar gain and airflow set cavity temperature rise and the stack effect sets buoyant airflow, explain the structural design of outer glass, cantilever brackets and maintenance walkways and the detailing of openings and shading, then cover construction integration, control commissioning, mock-up heat-flow measurement and smoke control in the cavity, and close with cleaning, condensation and measured energy at handover, comparing cavity strategies at the GSW headquarters in Berlin, Manitoba Hydro Place in Winnipeg and 30 St Mary Axe in London.",
+  "units": [
+    {
+      "anchor": "通風腔體熱平衡~Cavity heat balance",
+      "title": "腔體類型與日射熱平衡~Cavity types and the solar heat balance",
+      "mechanism": "雙層幕牆在內層隔熱玻璃外再加一層單層玻璃，兩層之間形成數十公分到一公尺以上的通風腔體，常依分隔方式分為箱窗式、井箱式、走廊式與多樓層式。遮陽百葉放在腔體內可免受風雨，但百葉吸收的日射會加熱腔體空氣，若通風不足，腔體可能比室外熱得多，反而把熱推進室內。因此腔體的核心是熱平衡：吸收的日射熱必須由流經腔體的空氣帶走，風量與開口決定了腔體是「緩衝區」還是「烤箱」。~A double-skin façade adds a single-glazed outer layer outside the insulated inner glazing, forming a ventilated cavity from a few tenths of a metre to over a metre deep, usually classified by its subdivision as box-window, shaft-box, corridor or multi-storey. Blinds in the cavity are protected from wind and rain, but the solar energy they absorb heats the cavity air, and with too little ventilation the cavity can become much hotter than outdoors and push heat indoors. The core of the cavity is therefore its heat balance: absorbed solar gain must be carried away by air flowing through the cavity, and airflow and openings decide whether the cavity is a buffer or an oven.",
+      "model": "百葉吸收率 0.5、垂直日射 600 W/m²，每格 3.0×3.6 = 10.8 m² 吸熱 0.5×600×10.8 = 3,240 W，其中 70% 對流入腔體空氣為 2,268 W。腔體溫升 ΔT = Q/(ρ·cp·V)，ρ·cp = 1.2×1,005 ≈ 1,206 J/m³K：風量 0.3 m³/s 時 ΔT ≈ 6.3 K；風量降為 0.1 m³/s 時 ΔT ≈ 18.8 K。數值為教學假設。~With blind absorptance 0.5 and 600 W/m² vertical irradiance, each 3.0×3.6 = 10.8 m² bay absorbs 0.5×600×10.8 = 3,240 W, of which 70%, 2,268 W, is convected to cavity air. Temperature rise ΔT = Q/(ρ·cp·V) with ρ·cp = 1.2×1,005 ≈ 1,206 J/m³K: at 0.3 m³/s ΔT ≈ 6.3 K; if airflow drops to 0.1 m³/s, ΔT ≈ 18.8 K. Values are teaching assumptions.",
+      "verify": "以分區熱網路模型或計算流體力學模擬各方位、季節與遮陽位置下的腔體溫度與內層玻璃熱流，檢查夏季最熱時段的腔體溫度上限與冬季的預熱效益；模擬假設須在樣品牆量測中驗證，並由機電與帷幕牆顧問共同確認。~Simulate cavity temperatures and heat flow through the inner glazing for each orientation, season and blind position with a zonal thermal-network model or computational fluid dynamics, checking the cavity temperature ceiling in the hottest summer hours and the preheating benefit in winter; the assumptions must be validated by mock-up measurement and agreed by the MEP and façade consultants.",
+      "failure": "在高日射地區採用封閉或通風不足的腔體，夏季腔體溫度遠高於室外，內層玻璃與窗框成為大型輻射熱源，空調負荷不降反升；百葉卡在放下位置又無法通風時，腔體高溫甚至使密封材料老化與玻璃熱破裂。~Using a closed or under-ventilated cavity in a high-irradiance climate makes summer cavity temperatures far exceed outdoor air, so the inner glazing and frames become large radiant heat sources and cooling loads rise instead of falling; with blinds stuck down and ventilation blocked, cavity heat can even age seals and cause thermal breakage of glass.",
+      "misconception": "多加一層玻璃一定能減少建築的空調耗能。~Adding a second layer of glass always reduces air-conditioning energy.",
+      "practice": "方案階段就以當地氣候資料比較單層高性能帷幕牆與各類雙層幕牆的全年耗能、舒適度與造價，並把腔體最高溫度、最小風量與遮陽控制邏輯寫成設計準則，作為後續各專業共同遵守的目標。~At concept stage compare annual energy, comfort and cost of a high-performance single skin against each double-skin type using local climate data, and write the maximum cavity temperature, minimum airflow and shading control logic into design criteria that all disciplines then follow."
+    },
+    {
+      "anchor": "煙囪效應浮力風量~Stack-driven airflow",
+      "title": "煙囪效應、風壓與腔體通風量~Stack effect, wind pressure and cavity airflow",
+      "mechanism": "腔體空氣受熱後密度降低而上升，形成煙囪效應：腔體越高、溫差越大，浮力驅動的壓差就越大。多樓層式腔體可利用數十公尺的高度產生可觀的自然通風，柏林 GSW 總部的西向雙層立面即把腔體當成對流井，輔助高層辦公室的自然通風。然而外部風壓同樣作用在進出風口上，迎風面可能加強、背風面可能抵銷甚至逆轉浮力流；高樓層的風壓遠大於浮力壓差，因此腔體開口常需可調風門。~Heated cavity air becomes less dense and rises, creating a stack effect: the taller the cavity and the larger the temperature difference, the greater the buoyancy-driven pressure difference. A multi-storey cavity can use tens of metres of height to generate substantial natural ventilation; the west double façade of the GSW headquarters in Berlin uses its cavity as a convection shaft that supports natural ventilation of the high-rise offices. Wind pressure acts on the inlets and outlets too, reinforcing buoyancy on the windward side and cancelling or even reversing it on the leeward side; at height wind pressures far exceed stack pressures, so cavity openings usually need adjustable dampers.",
+      "model": "浮力壓差 ΔP = ρ·g·h·ΔT/T。h = 20 m、ΔT = 8 K、T = 300 K：ΔP = 1.2×9.81×20×8/300 ≈ 6.3 Pa。開口 Cd = 0.6、A = 0.5 m²：V = Cd·A·√(2ΔP/ρ) = 0.6×0.5×√(2×6.3/1.2) ≈ 0.97 m³/s。若迎風面 5 m/s 的風壓係數差 0.2，風壓約 0.5×1.2×5²×0.2 = 3 Pa，足以明顯改變流量。數值為教學假設。~Stack pressure ΔP = ρ·g·h·ΔT/T. With h = 20 m, ΔT = 8 K and T = 300 K: ΔP = 1.2×9.81×20×8/300 ≈ 6.3 Pa. Through an opening with Cd = 0.6 and A = 0.5 m²: V = Cd·A·√(2ΔP/ρ) = 0.6×0.5×√(2×6.3/1.2) ≈ 0.97 m³/s. A 5 m/s wind with a pressure-coefficient difference of 0.2 gives about 0.5×1.2×5²×0.2 = 3 Pa, enough to change the flow noticeably. Values are teaching assumptions.",
+      "verify": "以風洞試驗或計算流體力學取得各風向下進出風口的風壓係數，與浮力模型合併計算全年風量分布，檢查逆流與停滯的時數；完工後以腔體內多點溫度與風速量測確認實際流向，並與控制系統紀錄的風門開度比對。~Obtain pressure coefficients at inlets and outlets for each wind direction from wind-tunnel tests or CFD, combine them with the buoyancy model to compute the annual airflow distribution and count hours of reversal and stagnation; after completion confirm actual flow direction with multi-point temperature and air-speed measurement in the cavity, compared with damper positions logged by the control system.",
+      "failure": "只以無風浮力計算開口大小，高樓層在強風時腔體出現逆流，熱空氣與汙染空氣被壓回上方樓層的開窗；或在無風炎熱的午後浮力不足，腔體停滯過熱。~Sizing openings for windless buoyancy alone lets strong wind reverse the cavity flow at upper floors, pushing hot or polluted air back into windows above; on a still, hot afternoon buoyancy may be too weak and the cavity stagnates and overheats.",
+      "misconception": "雙層幕牆的腔體只要夠高，空氣就一定會由下往上流動。~If the cavity is tall enough, air will always flow upward through it.",
+      "practice": "開口與風門的設計要同時考慮浮力、風壓與防雨，並在控制邏輯中設定強風關閉、逆流偵測與過熱開啟的條件；這些條件須由機電顧問、帷幕牆顧問與自動控制承包商共同簽認。~Design openings and dampers for buoyancy, wind pressure and rain together, and set control conditions for closing in high wind, detecting reversal and opening on overheating; these conditions must be signed off jointly by the MEP consultant, façade consultant and controls contractor."
+    },
+    {
+      "anchor": "外層玻璃懸挑托架~Outer-skin cantilever bracket",
+      "title": "外層玻璃、托架與檢修走道結構~Outer glass, brackets and maintenance-walkway structure",
+      "mechanism": "外層玻璃通常由樓板邊緣或內層幕牆伸出的懸挑托架支承，托架同時承托腔體內的檢修格柵走道。因此托架要承受外層玻璃自重、走道恆載與維修活載、外層玻璃承受的風壓，以及這些力在懸臂根部造成的彎矩。外層玻璃有開口時，風壓會部分進入腔體，內外兩層各自分擔的壓差隨開口比例與陣風而改變，保守做法是外層以全部外部風壓設計、內層再以腔體與室內的壓差檢核。托架穿越內層的位置也是熱橋與漏水的弱點。~The outer glass is usually carried on cantilever brackets from the slab edge or the inner curtain wall, and the same brackets support the grating walkway in the cavity. The brackets must therefore carry outer-glass self-weight, walkway dead and maintenance live loads, wind on the outer glass and the resulting moments at the cantilever root. Where the outer skin has openings, wind pressure partly enters the cavity and the share taken by each skin varies with opening ratio and gusts; a conservative approach designs the outer skin for the full external pressure and checks the inner skin for the cavity-to-room difference. Where brackets pass through the inner skin they are weak points for thermal bridging and leaks.",
+      "model": "托架間距 1.5 m、層高 3.6 m、腔深 0.9 m。外層 12 mm 玻璃約 30 kg/m²：1.5×3.6×30×9.81 ≈ 1.59 kN，力臂 0.9 m 彎矩 ≈ 1.43 kN·m；走道恆載 0.5 kPa 與維修活載 1.5 kPa 作用於 1.5×0.9 m²，合力 0.675 + 2.025 = 2.70 kN，力臂 0.45 m 彎矩 ≈ 1.22 kN·m；托架根部合計約 2.65 kN·m，另有 2.0 kPa 風壓造成的 10.8 kN 水平力。數值為教學假設。~With brackets at 1.5 m, 3.6 m storeys and a 0.9 m cavity: 12 mm outer glass at about 30 kg/m² gives 1.5×3.6×30×9.81 ≈ 1.59 kN, a moment of about 1.43 kN·m at 0.9 m; walkway dead load 0.5 kPa and maintenance live load 1.5 kPa on 1.5×0.9 m² give 0.675 + 2.025 = 2.70 kN, about 1.22 kN·m at 0.45 m; the bracket root sees about 2.65 kN·m in total, plus a 10.8 kN horizontal force from 2.0 kPa wind. Values are teaching assumptions.",
+      "verify": "托架與走道的結構計算須涵蓋恆載、維修活載、風壓與可能的人員墜落荷重組合，並確認根部連接、樓板邊緣錨栓與內層幕牆框料的承載；以樣品牆或原型托架做載重試驗，量測撓度與殘餘變形，並檢查走道格柵的防墜與防滑。~Bracket and walkway calculations must cover combinations of dead load, maintenance live load, wind and any fall-arrest loads, and confirm the capacity of the root connection, slab-edge anchors and inner curtain-wall frames; load-test a mock-up or prototype bracket for deflection and residual set, and check the grating for fall protection and slip resistance.",
+      "failure": "托架只以玻璃自重設計而忽略檢修人員與工具荷重，維修時托架下垂、外層玻璃受扭而破裂；托架以鋼件直接穿過內層鋁框且未斷熱，冬季穿越點結露並生鏽漏水。~Brackets designed only for glass weight, ignoring maintenance staff and tools, sag during cleaning and twist the outer glass until it breaks; steel brackets passing straight through aluminium inner frames without a thermal break condense at each penetration in winter, then rust and leak.",
+      "misconception": "外層玻璃有開口，所以幾乎不受風壓，可以用很薄的玻璃。~Because the outer skin has openings, it sees almost no wind and can use very thin glass.",
+      "practice": "外層玻璃採膠合玻璃以防破裂墜落，托架與走道的設計荷重、防墜錨點與允許人數須標示在現場與維護手冊；托架穿越內層處的斷熱與防水細部須在樣品牆中驗證，經帷幕牆顧問核可後才可量產。~Use laminated outer glass so broken glass does not fall, and post the design loads, fall-arrest anchors and permitted number of people for brackets and walkways on site and in the maintenance manual; thermal-break and waterproofing details where brackets cross the inner skin must be proven on the mock-up and approved by the façade consultant before production."
+    },
+    {
+      "anchor": "進出風口與防蟲網~Inlet, outlet and insect screens",
+      "title": "開口、風門、遮陽與樓層分隔細部~Openings, dampers, shading and floor-separation details",
+      "mechanism": "腔體的性能最終由細部決定：進出風口的有效面積、百葉格柵與防蟲網造成的阻力、風門的密合度、遮陽百葉與玻璃之間的距離，以及每層或每數層的水平分隔。走廊式與箱窗式腔體在每層設水平分隔，可阻斷聲音、氣味與煙在樓層間傳遞，但限制了浮力高度；多樓層式腔體通風較強，卻必須以其他方式處理防火與隔音。倫敦聖瑪莉斧街 30 號的螺旋採光井每六層設防火隔斷，就是在通風效益與防火之間折衷的例子。~Cavity performance is ultimately decided by details: the effective area of inlets and outlets, the resistance of louvres and insect screens, the tightness of dampers, the spacing between blinds and glass, and horizontal divisions at every floor or every few floors. Corridor and box-window cavities divided at each floor stop sound, odours and smoke passing between floors but limit the buoyancy height; multi-storey cavities ventilate better but must deal with fire and acoustics in other ways. The spiralling light wells of 30 St Mary Axe in London, interrupted by fire breaks every sixth floor, are an example of compromise between ventilation benefit and fire safety.",
+      "model": "所需有效開口 Cd·A = 0.3 m²，百葉格柵自由面積比 50%、流量係數 0.6：毛面積 = 0.3/(0.6×0.5) = 1.0 m²，在 3.0 m 寬的開間即需高約 0.33 m 的開口帶；加裝使自由面積再降至 60% 的防蟲網，毛面積增為 0.3/(0.6×0.5×0.6) ≈ 1.67 m²，約高 0.56 m。數值為教學假設。~For a required effective opening Cd·A = 0.3 m² with a louvre free-area ratio of 50% and a discharge coefficient of 0.6, the gross area is 0.3/(0.6×0.5) = 1.0 m², an opening band about 0.33 m high across a 3.0 m bay; adding an insect screen that cuts free area to 60% raises the gross area to 0.3/(0.6×0.5×0.6) ≈ 1.67 m², about 0.56 m high. Values are teaching assumptions.",
+      "verify": "以廠商試驗的百葉與防蟲網壓損資料計算實際有效面積，並在樣品牆中量測開口處風速；水平分隔須確認材料耐火時效、與內外兩層的接合密封，以及檢修人員通過時的開閉方式；遮陽百葉與玻璃的距離須檢查熱應力與百葉擺動碰撞。~Calculate actual effective area from the manufacturer's tested pressure-loss data for louvres and insect screens, and measure air speed at openings on the mock-up; for horizontal divisions confirm fire rating, seals to both skins and how they open for maintenance staff to pass; check blind-to-glass spacing for thermal stress and blind swing contact.",
+      "failure": "設計時以開口毛面積計算風量，加上百葉與防蟲網後實際有效面積只剩三成，腔體長期過熱；防蟲網積塵或被鳥巢堵塞後風量再降，而沒有人知道要清理。~Calculating airflow from gross opening area means that louvres and insect screens leave only about a third of the effective area and the cavity overheats chronically; once screens clog with dust or bird nests, airflow falls further and nobody knows they need cleaning.",
+      "misconception": "腔體開口只要外觀上夠大，通風量就足夠。~If cavity openings look large enough, the airflow will be sufficient.",
+      "practice": "開口與防蟲網要設計成可從腔體內安全拆卸清潔，並在維護手冊列出清潔週期與壓損檢查方法；樓層水平分隔的位置與耐火時效須由防火工程師與帷幕牆顧問共同確認，並經主管機關審查。~Design openings and insect screens to be removed and cleaned safely from inside the cavity, and list the cleaning interval and pressure-loss check in the maintenance manual; positions and fire ratings of horizontal divisions must be agreed by the fire engineer and façade consultant and reviewed by the authority."
+    },
+    {
+      "anchor": "預組箱窗單元~Prefabricated box-window unit",
+      "title": "雙層單元的預組、吊裝與施工整合~Prefabrication, lifting and construction integration of double-skin units",
+      "mechanism": "雙層幕牆可以分別安裝內層與外層，也可以在工廠把內外兩層、腔體百葉與風門組成一個箱窗單元整體吊裝。整體單元減少現場工序與腔體汙染，但重量與尺寸明顯增加，吊裝設備、樓層運輸與錨件都要重新檢討；分開安裝則需要協調兩組工班與托架的施工順序，並在外層封閉前完成腔體內所有電線、馬達與感測器。無論哪一種，腔體一旦封閉，任何遺漏的接線或碎屑都很難處理。~A double-skin façade can be installed as separate inner and outer layers, or factory-assembled with both skins, cavity blinds and dampers into box-window units lifted as one piece. Complete units reduce site operations and cavity contamination but are much heavier and larger, so lifting equipment, floor logistics and anchors must be reconsidered; separate installation requires coordinating two crews and the bracket sequence, and completing every cable, motor and sensor in the cavity before the outer skin closes. Either way, once the cavity is closed, any missed wiring or debris is hard to deal with.",
+      "model": "3.0×3.6 m = 10.8 m² 單元：單層幕牆約 60 kg/m²，重約 648 kg；雙層箱窗單元（內層 50、外層玻璃 30、框架與百葉 25 kg/m²）約 105 kg/m²，重約 1,134 kg，為單層的 1.75 倍。若塔吊在該半徑額定 1.5 t、吊具 0.2 t，餘裕約 0.17 t。數值為教學假設。~For a 3.0×3.6 m = 10.8 m² unit: a single skin at about 60 kg/m² weighs about 648 kg; a box-window double-skin unit (inner 50, outer glass 30, frame and blinds 25 kg/m²) at about 105 kg/m² weighs about 1,134 kg, 1.75 times as much. With a 1.5 t crane rating at that radius and 0.2 t of rigging, about 0.17 t of margin remains. Values are teaching assumptions.",
+      "verify": "比較整體單元與分開安裝的吊裝重量、錨件反力、樓層暫存荷重與工期；外層封閉前設腔體檢查停止點，逐格確認百葉、馬達、感測器與線路已安裝並通電測試，腔體清潔無碎屑，並拍照紀錄。~Compare complete-unit and separate installation for lifting weight, anchor reactions, floor storage loads and programme; set a cavity hold point before the outer skin closes, confirming bay by bay that blinds, motors, sensors and wiring are installed and power-tested and that the cavity is clean, with photographs.",
+      "failure": "外層玻璃安裝完畢後才發現某些樓層的百葉馬達線路未接，只能拆除外層玻璃重來；腔體封閉前未清除施工粉塵與碎屑，完工後百葉卡死、感測器失準，玻璃內側也留下難以清潔的汙漬。~Finding after the outer glass is installed that blind motors on some floors were never wired means removing the outer glass and starting again; failing to clear construction dust and debris before closure leaves blinds jamming, sensors drifting and stains on inner glass faces that are hard to clean.",
+      "misconception": "雙層幕牆只是把一般帷幕牆多做一層，施工程序不需要改變。~A double-skin façade is just an ordinary curtain wall with one more layer, so the construction process need not change.",
+      "practice": "施工計畫要明確劃分帷幕牆、機電與自動控制承包商在腔體內的工作界面與順序，以「腔體封閉許可」作為停止點，由三方與監造共同簽認；吊裝重量增加時須重新核算塔吊、樓板與錨件。~The construction plan must define the cavity work interfaces and sequence between façade, MEP and controls contractors, with a cavity-closure permit as a hold point signed by all three and the supervising engineer; heavier lifts require cranes, slabs and anchors to be re-checked."
+    },
+    {
+      "anchor": "風門百葉控制點~Damper and blind control points",
+      "title": "控制系統整合與試運轉~Control-system integration and commissioning",
+      "mechanism": "雙層幕牆是一個需要「操作」的立面：風門開度、百葉角度、內層窗戶與空調系統必須依日射、室外溫度、風速、雨量與腔體溫度協同動作。曼尼托巴水電大樓的東西向雙層立面內外兩層都設可開啟窗，配合中庭與太陽能煙囪通風，就仰賴建築自動化系統整合。控制邏輯若只在設計說明中描述而未經實際試運轉，常出現感測器位置不當、指令衝突或手動覆寫後無法回復等問題，使立面長期停在不利的狀態。~A double-skin façade has to be operated: damper positions, blind angles, inner windows and HVAC must act together according to irradiance, outdoor temperature, wind speed, rain and cavity temperature. Manitoba Hydro Place, with operable windows in both layers of its east and west double façades working with atria and a solar chimney, relies on building-automation integration in exactly this way. Control logic described in a design report but never commissioned often suffers from poorly sited sensors, conflicting commands or manual overrides that never reset, leaving the façade stuck in an unfavourable state for years.",
+      "model": "60 層、每層 40 個開間，每開間 2 個風門與 1 個百葉馬達：致動器 60×40×3 = 7,200 個。若試運轉每日完成 150 個點的逐點測試，需 7,200/150 = 48 個工作天；若每點須加做一次功能測試，約需 96 天。數值為教學假設。~With 60 floors, 40 bays per floor and 2 dampers plus 1 blind motor per bay, there are 60×40×3 = 7,200 actuators. At 150 point-to-point tests per day, commissioning takes 7,200/150 = 48 working days; adding one functional test per point brings it to about 96 days. Values are teaching assumptions.",
+      "verify": "試運轉分三層：逐點測試（每個致動器與感測器的接線、方向與回饋）、功能測試（依控制邏輯模擬日射、強風、降雨與火警情境）與季節性測試（夏冬各一次實際運轉後檢討趨勢資料）；每項由試運轉顧問見證並記錄缺失與改正。~Commission in three levels: point-to-point tests of each actuator and sensor's wiring, direction and feedback; functional tests simulating irradiance, high wind, rain and fire-alarm scenarios against the control logic; and seasonal tests reviewing trend data after real operation in summer and winter. A commissioning authority witnesses each step and logs defects and corrections.",
+      "failure": "雨量感測器裝在被遮蔽的位置，降雨時風門仍保持開啟而讓雨水進入腔體；火警時控制系統未把腔體風門切換到預定狀態，煙在腔體內擴散到上方樓層。使用者頻繁手動覆寫百葉後，系統失去整體協調。~A rain sensor mounted in a sheltered spot keeps dampers open during rain so water enters the cavity; on a fire alarm the control system fails to move cavity dampers to their preset state and smoke spreads up the cavity; frequent manual overrides of blinds by occupants leave the system without overall coordination.",
+      "misconception": "雙層幕牆是被動式設計，完工後不需要控制系統試運轉。~A double-skin façade is passive, so it needs no control commissioning after completion.",
+      "practice": "控制邏輯應以表格列出每個情境的感測條件、致動器動作、優先順序與手動覆寫的自動回復時間；火警時的腔體狀態必須由防火工程師訂定並納入消防聯動測試，未完成者不得取得使用許可。~Tabulate the control logic for each scenario with sensing conditions, actuator actions, priorities and automatic reset time after manual override; the cavity state on fire alarm must be set by the fire engineer and included in fire-system interface testing, without which occupancy should not be granted."
+    },
+    {
+      "anchor": "腔體溫度與風速量測~Cavity temperature and air-speed survey",
+      "title": "樣品牆與實建築的熱流量測~Heat-flow measurement on mock-ups and the real building",
+      "mechanism": "腔體性能無法只靠計算保證，需要在實尺寸樣品牆或完工建築上量測：在腔體不同高度布設遮光溫度計、風速計與日射計，同時量測內層玻璃表面溫度與通過內層的熱通量。由進出風口的風量與溫差可以算出腔體帶走的熱量，再與吸收的日射熱比較，檢查能量平衡是否閉合；若差異很大，代表量測位置、百葉吸收率或滲漏假設有問題。這些資料也是校正控制邏輯與能耗模型的基礎。~Cavity performance cannot be guaranteed by calculation alone; it must be measured on a full-size mock-up or the completed building. Shielded thermometers, anemometers and pyranometers are placed at several heights in the cavity, while inner-glass surface temperature and heat flux through the inner skin are measured. Airflow and temperature difference across inlets and outlets give the heat removed by the cavity, which is compared with absorbed solar gain to check whether the energy balance closes; a large discrepancy points to problems with sensor positions, blind absorptance or leakage assumptions. These data also form the basis for tuning control logic and energy models.",
+      "model": "量測風量 0.25 m³/s、進出風口溫差 9 K：帶走熱量 Q = ρ·cp·V·ΔT = 1,206×0.25×9 ≈ 2,714 W；與第一步估算的對流熱 2,268 W 相比高約 (2,714 − 2,268)/2,268 ≈ 20%，表示實際日射或百葉吸收率高於假設，或有室內空氣滲入腔體。數值為教學假設。~With a measured airflow of 0.25 m³/s and a 9 K inlet-to-outlet difference, the heat removed is Q = ρ·cp·V·ΔT = 1,206×0.25×9 ≈ 2,714 W; compared with the 2,268 W of convected heat estimated earlier it is about (2,714 − 2,268)/2,268 ≈ 20% higher, suggesting irradiance or blind absorptance above the assumption, or room air leaking into the cavity. Values are teaching assumptions.",
+      "verify": "量測計畫事先規定感測器校正、遮光方式、取樣頻率、量測期間（至少涵蓋晴天與陰天）與能量平衡允許誤差；樣品牆量測結果與模擬比較後，若差異超過預定範圍，須修正模型或細部再決定量產，並保留原始資料供日後重算。~The measurement plan states sensor calibration, radiation shielding, sampling rate, duration (covering at least clear and overcast days) and the allowable energy-balance error; if mock-up results differ from simulation beyond the agreed range, revise the model or details before production, and keep the raw data for later recalculation.",
+      "failure": "溫度計未加遮光，陽光直射使讀值偏高數度，誤判腔體過熱而增加不必要的機械通風；量測只在陰天進行，無法發現夏季晴天的停滯問題，完工後才在最熱的月份出現大量抱怨。~Unshielded thermometers read several degrees high in direct sun, falsely indicating overheating and prompting unnecessary mechanical ventilation; measuring only on overcast days misses the clear-sky summer stagnation problem, which surfaces as a flood of complaints in the hottest month after completion.",
+      "misconception": "腔體溫度只要量一個點就能代表整個腔體。~One temperature reading represents the whole cavity.",
+      "practice": "完工後至少保留一個代表性開間的永久量測點，並把腔體溫度、風門與百葉狀態納入建築自動化系統的趨勢紀錄；第一年夏冬季的資料要由設計團隊檢討並調整控制參數。~Keep permanent sensors in at least one representative bay after completion and log cavity temperature, damper and blind states as trends in the building-automation system; the design team should review the first summer and winter of data and adjust control parameters."
+    },
+    {
+      "anchor": "腔體煙控與防火分隔~Cavity smoke control and fire separation",
+      "title": "腔體煙流、防火分隔與消防驗證~Cavity smoke flow, fire separation and fire-safety verification",
+      "mechanism": "雙層幕牆的腔體可能成為火與煙的垂直通道：下層火災破窗後，熱煙進入腔體，被浮力推升並從上層開啟的窗戶或風門回到室內；外層玻璃也可能把火焰反射或約束在腔體內，使上層內層玻璃承受更高的熱暴露。因此防火策略常包括每層或數層的水平分隔、火警時關閉或開啟特定風門、腔體內灑水或耐火玻璃，以及以煙控模擬驗證。這些措施必須與建築的消防分區與避難策略一致。~A double-skin cavity can become a vertical path for fire and smoke: after a fire breaks the windows of a lower floor, hot smoke enters the cavity, is driven upward by buoyancy and re-enters upper floors through open windows or dampers; the outer glass may also reflect or confine flames in the cavity, increasing the heat exposure of inner glazing above. Fire strategies therefore include horizontal divisions at every floor or every few floors, closing or opening particular dampers on alarm, sprinklers or fire-resistant glass in the cavity, and verification by smoke modelling, all consistent with the building's compartmentation and evacuation strategy.",
+      "model": "熱煙在 6 層高（21.6 m）連通腔體中的浮力壓差 ΔP = ρ_a·g·h·(1 − T_a/T_s)。T_a = 293 K、煙溫 T_s = 493 K（比環境高 200 K）：ΔP = 1.2×9.81×21.6×(1 − 293/493) ≈ 103 Pa，遠大於一般樓梯加壓的數十帕，足以把煙推進上層開口。數值為教學假設。~The buoyancy pressure of hot smoke in a six-storey (21.6 m) connected cavity is ΔP = ρ_a·g·h·(1 − T_a/T_s). With T_a = 293 K and smoke at T_s = 493 K, 200 K above ambient: ΔP = 1.2×9.81×21.6×(1 − 293/493) ≈ 103 Pa, far above the few tens of pascals of typical stair pressurisation and enough to push smoke into openings above. Values are teaching assumptions.",
+      "verify": "由防火工程師以計算流體力學煙控模擬檢查各火災情境下腔體與上層樓層的煙溫、能見度與可用避難時間；現場驗證水平分隔的耐火構造、腔體灑水的覆蓋與排水，並在消防聯動測試中確認火警時每個腔體風門移到預定位置。~Have the fire engineer run CFD smoke simulations of each fire scenario, checking smoke temperature, visibility and available evacuation time in the cavity and upper floors; on site verify the fire-resisting construction of horizontal divisions and the coverage and drainage of any cavity sprinklers, and confirm in fire-interface testing that every cavity damper moves to its preset position on alarm.",
+      "failure": "多樓層連通腔體未設任何分隔，下層辦公室火災的煙在數分鐘內進入上方多層，避難時間遠低於設計假設；改裝時移除或穿越水平分隔而未修復，原本合格的防火策略悄悄失效。~A multi-storey cavity without any division lets smoke from an office fire below reach several floors above within minutes, far less than the assumed evacuation time; removing or penetrating horizontal divisions during later alterations without repair silently defeats a previously compliant strategy.",
+      "misconception": "雙層幕牆的外層玻璃可以擋住火焰，所以腔體不需要防火設計。~The outer glass of a double skin stops flames, so the cavity needs no fire design.",
+      "practice": "雙層幕牆的防火策略須在設計初期由防火工程師主導，與帷幕牆形式一起決定，並送主管建築與消防機關審查；竣工後任何穿越或改動水平分隔、腔體風門的工程，都須經防火工程師評估。~The fire strategy for a double-skin façade must be led by the fire engineer from early design, decided together with the façade type and reviewed by the building and fire authorities; after completion any work that penetrates or alters horizontal divisions or cavity dampers needs the fire engineer's assessment."
+    },
+    {
+      "anchor": "腔體清潔與結露~Cavity cleaning and condensation",
+      "title": "清潔、結露與長期維護~Cleaning, condensation and long-term maintenance",
+      "mechanism": "雙層幕牆有四個玻璃面需要清潔：外層兩面與內層兩面，其中腔體內的兩面只能由檢修走道或可開啟的外層進入。腔體還會累積灰塵、昆蟲與鳥類，使百葉與風門卡住、玻璃透光率下降。冬季若室內的潮濕空氣經由內層漏入腔體，碰到接近室外溫度的外層玻璃內側就會結露，長期造成框料腐蝕與汙漬；因此內層應比外層更氣密，腔體則以室外空氣通風，讓腔體的水汽含量接近室外。~A double-skin façade has four glass faces to clean, two on each skin, and the two inside the cavity can only be reached from the walkway or by opening the outer skin. The cavity also collects dust, insects and birds, jamming blinds and dampers and reducing light transmission. In winter, if moist room air leaks through the inner skin into the cavity, it condenses on the inside of the outer glass, which is close to outdoor temperature, corroding frames and leaving stains over time; so the inner skin should be tighter than the outer, and the cavity ventilated with outdoor air so its moisture content stays close to outdoor conditions.",
+      "model": "室內 21°C、相對濕度 50% 的露點約 10.2°C；室外 0°C、相對濕度 80% 的露點約 −3.0°C。外層玻璃內側冬夜約 2°C：若腔體空氣接近室外水汽量（露點 −3°C）不會結露；若室內空氣滲入使露點接近 10°C，就會大量結露。立面 10,000 m² 時，需清潔的玻璃面由單層的 20,000 m² 增為 40,000 m²。數值為教學假設。~Room air at 21°C and 50% relative humidity has a dew point of about 10.2°C; outdoor air at 0°C and 80% has about −3.0°C. With the inside of the outer glass at about 2°C on a winter night, cavity air close to outdoor moisture (dew point −3°C) will not condense, but room air leaking in and lifting the dew point toward 10°C causes heavy condensation. For a 10,000 m² façade, glass faces to clean rise from 20,000 m² for a single skin to 40,000 m². Values are teaching assumptions.",
+      "verify": "定期檢查腔體內的結露痕跡、框料腐蝕、百葉與風門動作、防蟲網堵塞與玻璃透光；以氣密試驗確認內層比外層更氣密；冬季以溫濕度紀錄器量測腔體露點與外層玻璃溫度，評估結露時數，並與交接時的基準比較。~Inspect the cavity periodically for condensation marks, frame corrosion, blind and damper operation, screen clogging and glass transmission; confirm by air-leakage testing that the inner skin is tighter than the outer; in winter log cavity dew point and outer-glass temperature to estimate condensation hours, compared with the handover baseline.",
+      "failure": "內層幕牆氣密不良、腔體又以室內排氣通風，冬季外層玻璃內側每晚結露，水沿框料流入樓板邊緣；清潔預算只以單層幕牆估算，業主減少腔體清潔次數，數年後百葉卡死、透光率下降而增加照明耗能。~A leaky inner skin combined with cavity ventilation by room exhaust air causes condensation on the outer glass every winter night, with water running along frames to the slab edge; a cleaning budget estimated for a single skin leads the owner to cut cavity cleaning, and within a few years blinds jam and reduced light transmission increases lighting energy.",
+      "misconception": "腔體位於室內外之間受到保護，不需要定期清潔與檢查。~The cavity is sheltered between inside and outside, so it needs no regular cleaning or inspection.",
+      "practice": "維護手冊要列出腔體進入方式、安全措施（防墜、通風、照明）、清潔週期、百葉與風門保養與更換程序，以及結露異常的處理方式；腔體進入屬局限或高處作業時，須依工作許可制度核准。~The maintenance manual must state how to enter the cavity, safety measures (fall protection, ventilation, lighting), cleaning intervals, blind and damper servicing and replacement, and what to do about abnormal condensation; where cavity entry is confined-space or work at height, it requires approval under a permit-to-work system."
+    },
+    {
+      "anchor": "實測能耗與交接紀錄~Measured energy and handover records",
+      "title": "實測性能驗證與竣工交接~Measured performance verification and handover",
+      "mechanism": "雙層幕牆的投資理由通常是節能、舒適、自然通風與隔音，因此交接時不能只交圖面，而要交付可驗證的性能：設計時的能耗與舒適度預測、控制邏輯、試運轉紀錄、量測基準與維護計畫。完工後一到兩年應以實測能耗與趨勢資料比較設計預測，找出控制參數、使用行為或細部的偏差。曼尼托巴水電大樓於 2009 年完工並取得 LEED 白金級，GSW 總部則以西向腔體與可動穿孔金屬遮陽板展現立面與通風一體的設計，這些案例都依賴長期的操作與調整。~The case for a double skin is usually energy, comfort, natural ventilation and acoustics, so handover must deliver verifiable performance, not just drawings: predicted energy and comfort, control logic, commissioning records, measurement baselines and a maintenance plan. One to two years after completion measured energy and trend data should be compared with predictions to find deviations in control parameters, occupant behaviour or details. Manitoba Hydro Place, completed in 2009 with LEED Platinum, and the GSW headquarters, with its west cavity and movable perforated-metal shading panels integrating façade and ventilation, both depend on long-term operation and tuning.",
+      "model": "設計預測冷房耗能 80 kWh/m²·年，實測 96 kWh/m²·年，性能落差 (96 − 80)/80 = 20%。若分析顯示其中 12 kWh/m²·年來自百葉控制門檻設得太高，調整後預估回到 84 kWh/m²·年，落差縮小為 5%。數值為教學假設。~Predicted cooling energy is 80 kWh/m²·year and measured is 96 kWh/m²·year, a performance gap of (96 − 80)/80 = 20%. If analysis attributes 12 kWh/m²·year to a blind-control threshold set too high, retuning is predicted to bring consumption back to 84 kWh/m²·year, narrowing the gap to 5%. Values are teaching assumptions.",
+      "verify": "交接後的第一年進行季節性複驗：比較分項電表、腔體溫度與風門百葉趨勢資料與設計預測，訪查使用者舒適度與手動覆寫頻率，提出調整清單並重新試運轉；結果寫入性能報告，作為保固期結束前的驗收依據。~In the first year after handover carry out seasonal re-verification: compare sub-metered energy and cavity-temperature, damper and blind trends with predictions, survey occupant comfort and override frequency, issue a tuning list and recommission; record the outcome in a performance report used for acceptance before the warranty expires.",
+      "failure": "交接時沒有控制邏輯說明與量測基準，管理單位為了減少抱怨把百葉與風門全部改為手動，雙層幕牆變成昂貴的單層幕牆；能耗上升也無從判斷原因。~Without control-logic documentation and measurement baselines at handover, building management switches all blinds and dampers to manual to reduce complaints, turning the double skin into an expensive single skin; rising energy then has no traceable cause.",
+      "misconception": "雙層幕牆的節能效果在設計模擬時就已確定，完工後不需要驗證。~The energy savings of a double skin are fixed by the design simulation and need no verification after completion.",
+      "practice": "竣工文件應包含腔體類型與設計準則、控制邏輯表、試運轉與量測紀錄、維護手冊、消防聯動狀態與性能驗證計畫；任何改變控制參數、遮陽或腔體分隔的變更，須經原設計團隊或指定顧問評估並記錄。~Completion documents should include cavity type and design criteria, the control-logic table, commissioning and measurement records, the maintenance manual, fire-interface states and the performance-verification plan; any change to control parameters, shading or cavity divisions needs assessment by the original design team or an appointed consultant, and must be recorded."
+    }
+  ],
+  "example": "設計練習：某 20 m 高的多樓層式雙層幕牆開間寬 3.0 m、層高 3.6 m、腔深 0.9 m。夏季晴天百葉吸收 0.5×600×10.8 = 3,240 W/開間，70% 即 2,268 W 進入腔體空氣。若以腔體出風溫升 ΔT ≤ 8 K 為目標，需風量 V = 2,268/(1,206×8) ≈ 0.235 m³/s。浮力壓差 ΔP = 1.2×9.81×20×8/300 ≈ 6.3 Pa；有效開口 Cd·A = V/√(2ΔP/ρ) = 0.235/3.24 ≈ 0.073 m²，以 50% 自由面積、Cd = 0.6 的百葉需毛面積約 0.073/0.3 ≈ 0.24 m²，加防蟲網（再乘 0.6）約 0.40 m²。外層托架根部彎矩約 2.65 kN·m。若腔體高度降為 10 m，ΔP 減半為約 3.1 Pa，同樣風量需開口增為約 √2 ≈ 1.41 倍，即約 0.57 m²。數值為教學假設，不代表任何實際建築的設計。~Design exercise: a 20 m high multi-storey double-skin façade has 3.0 m bays, 3.6 m storeys and a 0.9 m cavity. On a clear summer day the blinds absorb 0.5×600×10.8 = 3,240 W per bay, 70% of which, 2,268 W, enters the cavity air. To keep the outlet temperature rise to ΔT ≤ 8 K requires V = 2,268/(1,206×8) ≈ 0.235 m³/s. The stack pressure is ΔP = 1.2×9.81×20×8/300 ≈ 6.3 Pa, so the effective opening is Cd·A = V/√(2ΔP/ρ) = 0.235/3.24 ≈ 0.073 m²; a louvre with 50% free area and Cd = 0.6 needs a gross area of about 0.073/0.3 ≈ 0.24 m², or about 0.40 m² with an insect screen (a further factor of 0.6). The outer-skin bracket root moment is about 2.65 kN·m. If the cavity height drops to 10 m, ΔP halves to about 3.1 Pa and the same airflow needs openings about √2 ≈ 1.41 times larger, about 0.57 m². Values are teaching assumptions, not the design of any real building.",
+  "history": "在建築外再加一層玻璃以形成緩衝空間的構想很早就出現，二十世紀初德國吉恩根的 Steiff 工廠常被引為早期例子；1990 年代起，歐洲在節能與高層自然通風的需求下大量採用雙層幕牆。由 Sauerbruch Hutton 設計、1995 至 1999 年施工的柏林 GSW 總部，以西向腔體作為對流井並在腔體內設可動穿孔金屬遮陽板；2003 年完工的倫敦聖瑪莉斧街 30 號以六道螺旋採光井協助自然通風，並每六層設防火隔斷；2009 年完工的溫尼伯曼尼托巴水電大樓則在嚴寒氣候中結合東西向雙層立面、中庭與太陽能煙囪，取得 LEED 白金級。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~The idea of adding a second glass layer outside a building to form a buffer space appeared early, and the Steiff factory in Giengen, Germany, from the early twentieth century is often cited as an early example; from the 1990s Europe adopted double-skin façades widely in pursuit of energy savings and natural ventilation in tall buildings. The GSW headquarters in Berlin, designed by Sauerbruch Hutton and built from 1995 to 1999, uses its west cavity as a convection shaft with movable perforated-metal shading panels inside; 30 St Mary Axe in London, completed in 2003, uses six spiralling light wells to support natural ventilation, with fire breaks every sixth floor; and Manitoba Hydro Place in Winnipeg, completed in 2009, combines east and west double façades with atria and a solar chimney in a severe climate and achieved LEED Platinum. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "雙層幕牆的腔體深度常見約 0.2–1.5 m，依箱窗式、井箱式、走廊式與多樓層式分類~Double-skin cavities are commonly about 0.2–1.5 m deep and classified as box-window, shaft-box, corridor or multi-storey",
+    "柏林 GSW 總部於 1995–1999 年施工，西向腔體作為對流井並設可動穿孔金屬遮陽板~The GSW headquarters in Berlin was built in 1995–1999 with a west cavity acting as a convection shaft and movable perforated-metal shading",
+    "曼尼托巴水電大樓於 2009 年完工並取得 LEED 白金級，設有 3 座疊置的 6 層高中庭~Manitoba Hydro Place was completed in 2009 with LEED Platinum and has 3 stacked six-storey atria",
+    "曼尼托巴水電大樓的雙層外牆緩衝區寬約 1 m，太陽能煙囪頂部高約 115 m~Manitoba Hydro Place's double-wall buffer zone is about 1 m wide, and its solar chimney rises to about 115 m",
+    "倫敦聖瑪莉斧街 30 號高約 180 m，以 6 道螺旋採光井協助自然通風~30 St Mary Axe in London is about 180 m tall and uses 6 spiralling light wells to support natural ventilation",
+    "聖瑪莉斧街 30 號的通風井每 6 層以防火隔斷分開~The ventilation shafts of 30 St Mary Axe are interrupted by fire breaks every 6 floors",
+    "空氣的體積熱容 ρ·cp 約 1,206 J/m³K，每 0.1 m³/s 風量升溫 1 K 約帶走 121 W~Air's volumetric heat capacity ρ·cp is about 1,206 J/m³K, so 0.1 m³/s warming by 1 K removes about 121 W"
+  ],
+  "timeline": [
+    {
+      "year": "1995–1999",
+      "event": "柏林 GSW 總部施工，西向雙層立面以腔體作為對流井~The GSW headquarters in Berlin is built, its west double façade using the cavity as a convection shaft"
+    },
+    {
+      "year": "2003",
+      "event": "倫敦聖瑪莉斧街 30 號完工，螺旋採光井協助自然通風~30 St Mary Axe in London is completed with spiralling light wells supporting natural ventilation"
+    },
+    {
+      "year": "2004",
+      "event": "聖瑪莉斧街 30 號獲英國皇家建築師學會史特林獎~30 St Mary Axe receives the RIBA Stirling Prize"
+    },
+    {
+      "year": "2009",
+      "event": "曼尼托巴水電大樓完工，東西向雙層立面結合中庭與太陽能煙囪~Manitoba Hydro Place is completed with east and west double façades, atria and a solar chimney"
+    },
+    {
+      "year": "2012",
+      "event": "曼尼托巴水電大樓正式取得 LEED 白金級認證~Manitoba Hydro Place is formally awarded LEED Platinum certification"
+    }
+  ],
+  "codes": [
+    "EN 13830：帷幕牆產品標準~EN 13830: Curtain walling — Product standard",
+    "ISO 15099：窗、門與遮陽裝置的熱性能詳細計算~ISO 15099: Thermal performance of windows, doors and shading devices — Detailed calculations",
+    "EN ISO 52022-3：遮陽裝置與玻璃組合的日射與採光特性詳細方法~EN ISO 52022-3: Solar and daylight characteristics of solar protection devices combined with glazing — Detailed method",
+    "NFPA 92：排煙與煙控系統標準~NFPA 92: Standard for smoke control systems"
+  ],
+  "landmarks": [
+    "柏林 GSW 總部~GSW Headquarters, Berlin",
+    "溫尼伯曼尼托巴水電大樓~Manitoba Hydro Place, Winnipeg",
+    "倫敦聖瑪莉斧街 30 號~30 St Mary Axe, London"
+  ],
+  "place": {
+    "name": "曼尼托巴水電大樓雙層立面~Manitoba Hydro Place double façade",
+    "country": "加拿大~Canada",
+    "lat": 49.8937,
+    "lng": -97.1441,
+    "query": "Manitoba Hydro Place 360 Portage Avenue Winnipeg"
+  },
+  "sources": [
+    {
+      "key": "kpmb-manitoba-hydro-place",
+      "title": "KPMB：曼尼托巴水電大樓專案頁",
+      "titleEn": "KPMB Architects: Manitoba Hydro Place",
+      "publisher": "KPMB Architects",
+      "url": "https://www.kpmb.com/project/manitoba-hydro-place/",
+      "sourceType": "primary",
+      "scope": "設計建築師的專案頁，說明東西向雙層立面、內外層可開窗、中庭與太陽能煙囪、完工年份與 LEED 等級。",
+      "scopeEn": "Design architect's project page describing east and west double façades, operable windows in both layers, atria and solar chimney, completion year and LEED level."
+    },
+    {
+      "key": "sauerbruch-hutton-gsw",
+      "title": "Sauerbruch Hutton：柏林 GSW 總部",
+      "titleEn": "Sauerbruch Hutton: GSW Headquarters, Berlin",
+      "publisher": "Sauerbruch Hutton",
+      "url": "https://www.sauerbruchhutton.de/en/project/gsw",
+      "sourceType": "primary",
+      "scope": "設計建築師的專案頁，說明西向腔體作為對流井、可動穿孔金屬遮陽板與施工期間；不含量測數據。",
+      "scopeEn": "Design architect's project page describing the west cavity as a convection shaft, movable perforated-metal shading and the construction period; no measured data."
+    },
+    {
+      "key": "arup-30-st-mary-axe",
+      "title": "Arup：聖瑪莉斧街 30 號",
+      "titleEn": "Arup: 30 St Mary Axe",
+      "publisher": "Arup",
+      "url": "https://www.arup.com/projects/30-st-mary-axe",
+      "sourceType": "primary",
+      "scope": "工程顧問的專案頁，說明六道螺旋採光井與通風策略、斜交網格結構與獲獎紀錄。",
+      "scopeEn": "Engineer's project page describing the six spiralling light wells and ventilation strategy, the diagrid and awards."
+    },
+    {
+      "key": "wiki-manitoba-hydro-place",
+      "title": "維基百科：曼尼托巴水電大樓（英文）",
+      "titleEn": "Wikipedia: Manitoba Hydro Place",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Manitoba_Hydro_Place",
+      "sourceType": "secondary",
+      "scope": "雙層外牆緩衝區寬度、太陽能煙囪高度與認證時間的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of the double-wall buffer width, solar-chimney height and certification date for further reading."
+    },
+    {
+      "key": "wiki-30-st-mary-axe",
+      "title": "維基百科：聖瑪莉斧街 30 號（英文）",
+      "titleEn": "Wikipedia: 30 St Mary Axe",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/30_St_Mary_Axe",
+      "sourceType": "secondary",
+      "scope": "高度、完工時間與通風井每六層防火隔斷的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of height, completion and the fire breaks every sixth floor in the ventilation shafts, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Schüco",
+      "nameEn": "Schüco",
+      "business": "德國門窗、帷幕牆、通風與遮陽系統製造商，提供立面型材與系統元件。",
+      "businessEn": "German manufacturer of window, door, façade, ventilation and solar-shading systems supplying façade profiles and system components.",
+      "url": "https://www.schueco.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "立面系統、通風與遮陽元件的產品資料",
+      "roleEn": "Product information on façade systems, ventilation and shading components"
+    },
+    {
+      "name": "奧雅納（Arup）",
+      "nameEn": "Arup",
+      "business": "跨領域工程顧問，提供結構、立面、建築物理、機電與防火工程設計。",
+      "businessEn": "Multidisciplinary engineering consultancy providing structural, façade, building-physics, MEP and fire engineering design.",
+      "url": "https://www.arup.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "高層自然通風、立面與結構整合的公開專案說明",
+      "roleEn": "Public project descriptions integrating natural ventilation, façade and structure in tall buildings"
+    },
+    {
+      "name": "聖戈班",
+      "nameEn": "Saint-Gobain",
+      "business": "法國建材集團，生產建築平板玻璃、鍍膜與隔熱材料等輕量永續建材。",
+      "businessEn": "French building-materials group producing architectural flat glass, coatings, insulation and other light, sustainable construction materials.",
+      "url": "https://www.saint-gobain.com/en",
+      "investorUrl": "",
+      "security": {
+        "symbol": "SGO",
+        "exchange": "EURONEXT",
+        "currency": "EUR"
+      },
+      "role": "內外層玻璃的日射與熱性能資料來源",
+      "roleEn": "Source of solar and thermal performance data for inner and outer glazing"
+    }
+  ],
+  "related": [
+    "b088",
+    "b091"
+  ],
+  "architectureNodes": [
+    [
+      "外層單層玻璃",
+      "Outer single glazing"
+    ],
+    [
+      "通風腔體與遮陽",
+      "Ventilated cavity and shading"
+    ],
+    [
+      "內層隔熱帷幕牆",
+      "Inner insulated curtain wall"
+    ],
+    [
+      "托架與檢修走道",
+      "Brackets and maintenance walkway"
+    ],
+    [
+      "風門與自動控制",
+      "Dampers and automatic controls"
+    ],
+    [
+      "防火分隔與煙控",
+      "Fire divisions and smoke control"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      1,
+      5
+    ]
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "id": "b085",
+  "title": "可開合體育場屋頂~Retractable stadium roofs",
+  "discipline": "st-landmark-roofs",
+  "family": "roof",
+  "focus": "把會移動的千噸級屋面板當成結構與機械的組合，控制輪壓、驅動、偏斜與運轉風速~Treating thousand-tonne moving roof panels as combined structure and machinery: wheel loads, drives, skew and operating wind limits",
+  "summary": "可開合屋頂同時是大跨度鋼結構與一部大型行走機械：固定主結構承受軌道與移動屋面板，轉向架把輪壓傳入軌道梁，驅動與制動在限定風速下讓屋面板同步移動。本課以多倫多 SkyDome（今 Rogers Centre）、亞特蘭大賓士體育場、溫布頓中央球場與福岡巨蛋為例，建立狀態荷載、輪壓、驅動功率、偏斜控制、試運轉與長期維護的工程判斷。~A retractable roof is both a long-span steel structure and a large travelling machine: the fixed primary structure carries rails and moving panels, bogies deliver wheel loads into rail girders, and drives and brakes move the panels in step below a set wind speed. Using Toronto's SkyDome (now Rogers Centre), Atlanta's Mercedes-Benz Stadium, Wimbledon's Centre Court and Fukuoka Dome, the course builds engineering judgement on state-dependent loads, wheel loads, drive power, skew control, commissioning and long-term maintenance.",
+  "units": [
+    {
+      "anchor": "運轉風速門檻~Operating wind limit",
+      "title": "開、閉與移動三種狀態的荷載組合~Load combinations for open, closed and moving states",
+      "mechanism": "可開合屋頂至少有三種結構狀態：全閉、全開停放，以及正在移動。停放狀態的屋面板由夾軌器或鎖定裝置固定，必須承受設計回歸期的風與雪；移動狀態下屋面板只靠車輪與驅動器約束，因此業主會訂出運轉風速上限，超過就不得開合。溫布頓中央球場的移動屋頂設計採用百年回歸期的雪與風，並規定約 25 m/s 以上不運轉；Rogers Centre 的屋頂則要求在約 40 mph 的風中仍能操作。設計者必須把每一種狀態都列成獨立的荷載組合，而不是只算一個「完成後」的模型。~A retractable roof has at least three structural states: fully closed, fully open and parked, and moving. When parked, panels are held by rail clamps or locking devices and must resist design-return-period wind and snow; while moving they are restrained only by wheels and drives, so owners set an operating wind limit above which the roof may not move. Wimbledon's Centre Court moving roof was designed for 1-in-100-year snow and wind and is not operated above about 25 m/s, while Rogers Centre's roof is required to operate in winds up to about 40 mph. Each state must be listed as its own load combination rather than relying on a single as-built model.",
+      "model": "風壓 q = ½ρV²。運轉上限 V = 25 m/s 時 q = 0.5×1.225×25² ≈ 383 Pa；停放設計風速 V = 45 m/s 時 q ≈ 1,240 Pa，兩者相差 (45/25)² = 3.24 倍，所以移動機構只需承受約 1/3 的風壓，但停放鎖定必須承擔全部設計風力。數值為教學假設。~Wind pressure q = ½ρV². At an operating limit of V = 25 m/s, q = 0.5×1.225×25² ≈ 383 Pa; at a parked design speed of V = 45 m/s, q ≈ 1,240 Pa, a ratio of (45/25)² = 3.24, so the travelling machinery sees about one third of the design pressure while the parking locks must carry the full design wind force. Values are teaching assumptions.",
+      "verify": "在設計基準文件中列出每一狀態（全閉、全開、移動中、停在中間位置）的風、雪、溫度與地震組合，並要求風洞試驗分別提供開啟與閉合幾何下的壓力係數；審查時逐一核對驅動與鎖定元件是否各自對應正確的狀態荷載。~List the wind, snow, temperature and seismic combinations for each state in the design basis (closed, open, moving and stopped part-way), and require the wind-tunnel study to give pressure coefficients for both open and closed geometries; at review, check that every drive and locking component is sized for the correct state load.",
+      "failure": "若只用閉合狀態做風洞與設計，開啟時屋面板邊緣與看台上方的負壓與漩渦可能遠大於預期；屋面板停在中間位置時遇到陣風，夾軌器若未設計成可在任意位置鎖定，屋面板可能被推動或產生上揚。~If the wind-tunnel study and design use only the closed geometry, suction and vortices at panel edges and over the stands when open can far exceed expectations; if a gust arrives while a panel is stopped part-way and the rail clamps cannot lock at arbitrary positions, the panel may be pushed along or lifted.",
+      "misconception": "可開合屋頂只要按閉合後的固定屋頂設計就足夠安全。~A retractable roof is safe if it is simply designed as a fixed roof in the closed position.",
+      "practice": "業主需求書應明訂運轉風速上限、量測位置與平均時間（陣風或十分鐘平均），並規定中途停車時的鎖定能力；這些數字要同時寫進結構計算書與操作手冊，由結構工程師與機械設計者共同簽認。~The owner's requirements should state the operating wind limit, its measurement location and averaging time (gust or ten-minute mean), and the locking capacity when stopped part-way; the same numbers belong in both the structural calculations and the operating manual, signed off jointly by the structural engineer and the mechanism designer."
+    },
+    {
+      "anchor": "固定主桁架與軌道梁~Primary trusses and rail girders",
+      "title": "移動屋面板的承載路徑與變形相容~Load path and deformation compatibility of moving panels",
+      "mechanism": "移動屋面板本身是一個可自行站立的鋼結構，透過轉向架坐在軌道上；軌道梁再把輪壓傳給固定主桁架或拱，最後經支柱進入基礎。關鍵在於主結構的撓度會隨屋面板位置改變：屋面板移到跨中時，主桁架下垂最大，軌道坡度也跟著改變。賓士體育場以 4 道跨距約 220 m、深約 21 m 的主桁架支撐 8 片花瓣狀屋面板；溫布頓的移動桁架跨距約 77 m。設計必須讓軌道在各種位置下的高程差、坡度與軌距變化都落在機構可容許的範圍內。~Each moving panel is a self-supporting steel structure seated on rails through bogies; rail girders pass the wheel loads to fixed primary trusses or arches and then through columns to the foundations. The critical point is that primary-structure deflection changes with panel position: when a panel moves to mid-span, the truss sags most and the rail gradient changes with it. Mercedes-Benz Stadium supports eight petal panels on four primary trusses spanning about 220 m and about 21 m deep, while Wimbledon's moving trusses span about 77 m. The design must keep rail level differences, gradients and gauge changes within what the mechanism tolerates for every panel position.",
+      "model": "以拋物線近似主桁架撓曲，跨距 L = 220 m、撓度限值 L/400 時 δ = 0.55 m，支點附近的軌道附加坡度 θ ≈ 4δ/L = 4×0.55/220 = 0.010，也就是 1%。這 1% 坡度會直接加到驅動器需要克服的爬坡阻力上。數值為教學假設。~Approximating the truss deflection as a parabola with span L = 220 m and a limit of L/400 gives δ = 0.55 m, so the added rail gradient near the supports is θ ≈ 4δ/L = 4×0.55/220 = 0.010, or 1%. That 1% gradient adds directly to the climbing resistance the drives must overcome. Values are teaching assumptions.",
+      "verify": "以分析模型把屋面板放在每一個停靠點與中間位置，輸出軌道沿線的高程、坡度與兩側軌道的相對位移，與機構設計者提供的容許值逐點比較；完工後以精密水準測量在無屋面板、屋面板停在不同位置時各量一次軌頂高程。~Place the panels at every stop and intermediate position in the analysis model, output rail elevation, gradient and relative displacement between paired rails along the run, and compare point by point with the mechanism designer's tolerances; after completion survey rail-top levels by precise levelling with no panel present and with panels parked at several positions.",
+      "failure": "主桁架撓度造成兩側軌道下垂量不同時，屋面板會被扭曲，車輪輪緣頂住軌道側面，驅動電流急升甚至跳脫；長期下來輪緣與軌道側面磨耗不均，屋面板閉合時兩片之間出現縫隙而漏水。~When truss deflection makes paired rails sag by different amounts, the panel is twisted, wheel flanges bear against the rail sides and drive current jumps or trips; over time flanges and rail sides wear unevenly and gaps open between panels when closed, letting water in.",
+      "misconception": "軌道只要施工時調平，之後屋面板移動不會改變軌道幾何。~Once rails are levelled during construction, panel movement will not change the rail geometry.",
+      "practice": "把「軌道幾何容許值表」列為結構與機械之間的正式介面文件，任何主結構變更（增加吊掛荷重、看板）都要重算軌道撓度並由機構設計者確認，例如賓士體育場屋架另承受約 1,000 t 的環形看板。~Make a rail-geometry tolerance table the formal interface document between structure and machinery; any change to the primary structure, such as added rigging loads or scoreboards, must trigger a recalculation of rail deflection confirmed by the mechanism designer, as at Mercedes-Benz Stadium where the roof also carries a halo board of about 1,000 t."
+    },
+    {
+      "anchor": "轉向架與車輪~Bogies and wheels",
+      "title": "輪壓、上揚車輪與軌道接觸~Wheel loads, uplift wheels and rail contact",
+      "mechanism": "屋面板的重量經由轉向架分配到多個車輪，轉向架以鉸接方式讓各輪在軌道不平時仍能分擔荷重。但實際輪壓永遠不均勻：軌道高程誤差、屋面板勁度與溫度變形都會讓部分車輪多受力。懸臂式或受上揚風力的屋面板還需要從軌道下方扣住的上揚車輪；賓士體育場每片花瓣配有 6 組上揚轉向架與 8 組重力轉向架，外側軌道專門抵抗懸臂尖端的上揚。車輪與軌道的接觸應力決定了車輪直徑、軌道斷面與材料硬度。~Panel weight is distributed through bogies to many wheels, and the bogies are articulated so that each wheel still shares load on an uneven rail. Real wheel loads are never uniform, however: rail level errors, panel stiffness and thermal movement all make some wheels carry more. Cantilevered panels, or panels exposed to wind uplift, also need uplift wheels that bear on the underside of the rail; each Mercedes-Benz Stadium petal has six uplift bogies and eight gravity bogies, and an outer track resists uplift at the cantilevered tips. Wheel–rail contact stress governs wheel diameter, rail section and material hardness.",
+      "model": "屋面板 1,200 t，重量 W = 1,200×9.81 = 11,772 kN，以 16 個車輪承載時平均 735.8 kN，乘不均勻係數 1.3 得設計輪壓 ≈ 956 kN。以簡化線壓檢核 P ≤ p_L·D·b，取 p_L = 8 N/mm²、D = 1,000 mm、b = 120 mm，容量 960 kN，剛好足夠；若不均勻係數升到 1.5，輪壓 1,104 kN 即超出，需增加車輪。數值為教學假設。~A 1,200 t panel weighs W = 1,200×9.81 = 11,772 kN; on 16 wheels the mean is 735.8 kN, and an unevenness factor of 1.3 gives a design wheel load of about 956 kN. A simplified line-pressure check P ≤ p_L·D·b with p_L = 8 N/mm², D = 1,000 mm and b = 120 mm gives 960 kN, just enough; if the unevenness factor rises to 1.5 the wheel load of 1,104 kN exceeds it and more wheels are needed. Values are teaching assumptions.",
+      "verify": "以有限元素模型把軌道高程誤差（例如 ±5 mm）隨機加入支承點，求最大輪壓與不均勻係數；工廠端對車輪與軸承做硬度、超音波與尺寸檢驗，現場以荷重銷或液壓千斤頂讀值抽測各輪實際荷重，與計算值比較。~Add random rail-level errors, for example ±5 mm, at the support points of the finite-element model to find the maximum wheel load and unevenness factor; at the factory check wheel and bearing hardness, ultrasonic soundness and dimensions, and on site sample actual wheel loads with load pins or jack readings for comparison with calculation.",
+      "failure": "輪壓集中的車輪會出現剝落、凹陷與軸承過熱，軌頂形成波浪狀磨耗，運轉時噪音與振動增加；上揚車輪間隙調得過大，強風時屋面板先被抬起再撞回軌道，衝擊會傷害轉向架銷接與軌道固定件。~Overloaded wheels develop spalling, dents and hot bearings, rail heads wear into ripples, and noise and vibration grow in operation; if uplift-wheel clearances are set too large, a strong gust lifts the panel and drops it back on the rail, and the impact damages bogie pins and rail fasteners.",
+      "misconception": "只要車輪數量乘上單輪容量大於屋面板重量，輪壓就一定安全。~If the number of wheels times the single-wheel capacity exceeds the panel weight, the wheel loads are safe.",
+      "practice": "規範中要求轉向架為可拆換單元，預留頂升點與更換空間，並規定上揚車輪與軌道下翼的間隙值與量測頻率；車輪與軌道材料硬度要成對規定，避免較貴的軌道被較硬的車輪先磨壞。~Specify bogies as replaceable units with jacking points and removal space, state the uplift-wheel clearance to the rail underside and how often it is measured, and specify wheel and rail hardness as a pair so the costlier rail is not worn out by a harder wheel."
+    },
+    {
+      "anchor": "牽引驅動與停車制動~Traction drives and parking brakes",
+      "title": "驅動力、功率與制動設計~Drive force, power and braking",
+      "mechanism": "推動屋面板需要克服三種阻力：車輪滾動阻力、軌道坡度造成的重力分量，以及運轉風速下的風力。驅動方式可用摩擦輪直接驅動、齒條或鋼索絞盤：賓士體育場每片花瓣以多台 7.5 hp 馬達帶動牽引輪並配有失效安全制動與夾軌器；斯德哥爾摩 Friends Arena 則以場館結構內的捲筒收放 10 條鋼索拉動屋面板。摩擦輪驅動必須確認驅動輪上的正壓力足以提供附著力，否則在坡段或逆風時會打滑。~Moving a panel means overcoming three resistances: wheel rolling resistance, the gravity component on rail gradients, and wind force at the operating wind speed. Drives may be friction wheels, rack-and-pinion or cable winches: each Mercedes-Benz Stadium petal uses several 7.5 hp motors on traction wheels with fail-safe brakes and rail clamps, while Friends Arena in Stockholm hauls its panels with ten cables spooled by drums inside the arena structure. Friction-wheel drives must have enough normal load on the driven wheels to provide adhesion, or they will slip on gradients or into a headwind.",
+      "model": "F = W·μ_r + W·i + q·A：W = 11,772 kN、μ_r = 0.005 得 58.9 kN；坡度 i = 1% 得 117.7 kN；風壓 383 Pa 作用於 600 m² 得 229.7 kN；合計 F ≈ 406 kN。行走速度 0.12 m/s 時輸出功率 P = F·v ≈ 48.8 kW，效率 0.85 時輸入約 57.4 kW。附著係數 0.15 需驅動輪正壓力 406/0.15 ≈ 2,708 kN，約為平均輪壓的 3.7 倍，所以至少 4 個驅動輪。數值為教學假設。~F = W·μ_r + W·i + q·A: with W = 11,772 kN and μ_r = 0.005 this gives 58.9 kN; a 1% gradient adds 117.7 kN; 383 Pa on 600 m² adds 229.7 kN; total F ≈ 406 kN. At 0.12 m/s the output power is P = F·v ≈ 48.8 kW, or about 57.4 kW input at 0.85 efficiency. An adhesion coefficient of 0.15 needs 406/0.15 ≈ 2,708 kN on driven wheels, about 3.7 times the mean wheel load, so at least four driven wheels. Values are teaching assumptions.",
+      "verify": "工廠對減速機、馬達與制動器做負載試驗與制動扭矩量測；現場試運轉時記錄每台驅動器電流與屋面板位置，比對計算阻力曲線在坡段與跨中的變化，並以停電測試確認失效安全制動能在規定距離內停住屋面板。~Load-test gearboxes, motors and brakes at the factory and measure braking torque; during site commissioning log every drive's current against panel position, compare it with the calculated resistance along gradients and at mid-span, and confirm in a power-loss test that fail-safe brakes stop the panel within the specified distance.",
+      "failure": "驅動力只按平地滾動阻力設計，在主桁架撓曲造成的坡段或逆風時就會失速；驅動輪附著不足時一側打滑、另一側繼續前進，屋面板偏斜卡死在軌道上，必須以臨時千斤頂或絞盤脫困。~Drives sized only for level rolling resistance stall on deflection-induced gradients or in a headwind; with insufficient adhesion one side slips while the other keeps moving, the panel skews and jams on the rails, and it must be freed with temporary jacks or winches.",
+      "misconception": "屋面板很重，所以靜止時本身重量就足以抵抗風力，不需要停車制動。~Panels are so heavy that their weight alone resists wind when parked, so no parking brake is needed.",
+      "practice": "驅動系統應採多台分散配置，單一驅動器失效時其餘仍能把屋面板送到安全停靠點；停車制動、夾軌器與防風錨定的釋放與鎖定狀態要接入控制聯鎖，未確認鎖定前不得宣告屋頂可承受設計風。~Distribute the drives so that if one fails the rest can still bring the panel to a safe parking position; wire the release and locked status of parking brakes, rail clamps and storm anchors into the control interlocks, and never declare the roof ready for design wind until locking is confirmed."
+    },
+    {
+      "anchor": "屋面板吊裝作業~Roof-panel lifting",
+      "title": "屋面板安裝、臨時支撐與吊裝風險~Panel erection, temporary support and lifting risk",
+      "mechanism": "移動屋面板常在其最終停放位置或地面組裝後分段吊上軌道，吊裝期間的屋面板面積大、重量重，迎風面像一面巨大的帆。吊掛中的構件受風時會在吊鉤處產生水平力，直接吃掉起重機的側向與傾覆裕度。1999 年 7 月 14 日密爾瓦基 Miller Park 以名為 Big Blue 的大型起重機吊裝約 400 t 屋頂構件時倒塌，造成 3 名鐵工死亡；當天國家氣象局記錄陣風約 26 mph。這個事件讓可開合屋頂的安裝計畫必須把風對吊掛構件的作用納入正式計算與停工條件。~Moving panels are often assembled at their final parked position or on the ground and lifted onto the rails in segments; during lifting they are large and heavy, and their windward face acts like a huge sail. Wind on a suspended piece creates a horizontal force at the hook that eats directly into the crane's side-load and overturning margins. On 14 July 1999, at Milwaukee's Miller Park, the large crane known as Big Blue collapsed while lifting a roof section of about 400 t, killing three ironworkers; the National Weather Service recorded gusts of about 26 mph that day. Since then, erection plans for retractable roofs must treat wind on suspended pieces as a formal calculation and stop-work condition.",
+      "model": "陣風 11.6 m/s 時 q = 0.5×1.225×11.6² ≈ 82 Pa；吊掛面積 1,200 m²、阻力係數 1.2，水平力 F = 82×1.2×1,200 ≈ 119 kN。構件重 400 t 即 3,924 kN，水平力約為重量的 3.0%，相當於吊鉤處持續的側向荷重，必須與起重機製造商的側載容許值比較。數值為教學假設。~A gust of 11.6 m/s gives q = 0.5×1.225×11.6² ≈ 82 Pa; on a suspended area of 1,200 m² with a drag coefficient of 1.2 the horizontal force is F = 82×1.2×1,200 ≈ 119 kN. A 400 t piece weighs 3,924 kN, so the horizontal force is about 3.0% of the weight, a sustained side load at the hook that must be compared with the crane manufacturer's side-load allowance. Values are teaching assumptions.",
+      "verify": "吊裝計畫要列出每一吊次的重量、迎風面積、起重機組態、容許風速與量測位置，由吊裝工程師與起重機製造商確認；吊裝前以吊鉤高度的風速計即時讀值作為放行依據，並確認荷重力矩限制器與風速警報裝置電源與校正有效。~The lifting plan lists each lift's weight, windward area, crane configuration, allowable wind speed and where it is measured, confirmed by the lifting engineer and the crane manufacturer; release each lift on a live anemometer reading at hook height, and confirm that load-moment limiters and wind alarms are powered and calibrated.",
+      "failure": "只核對構件重量與起重機額定荷重，忽略風對大面積構件的側向力與擺動，起重機可能在看似「未超重」的情況下倒塌；臨時支撐拆除順序錯誤時，屋面板在轉移到轉向架前就可能因單點受力而局部變形。~Checking only the piece weight against the crane rating while ignoring wind side load and swing on a large-area piece can topple a crane that seems within capacity; removing temporary supports in the wrong order can locally distort the panel through single-point loading before it is transferred onto its bogies.",
+      "misconception": "只要吊裝重量低於起重機額定荷重，風速多大都可以吊。~If the lift weight is below the crane rating, lifting can proceed in any wind.",
+      "practice": "大型屋面構件吊裝屬高風險作業，必須在施工計畫中設停檢點：吊裝工程師、起重機製造商代表與結構設計者共同簽認吊裝計畫，現場由指定人員依即時風速下達放行或停止，任何人都可喊停。~Lifting large roof pieces is high-risk work that needs a hold point in the construction plan: the lifting engineer, the crane manufacturer's representative and the structural designer jointly sign off the lift plan, a named person releases or stops each lift on live wind readings, and anyone on site may call a stop."
+    },
+    {
+      "anchor": "軌道高程與軌距~Rail level and gauge",
+      "title": "軌道對位、溫度伸縮與偏斜控制~Rail alignment, thermal movement and skew control",
+      "mechanism": "一片屋面板通常橫跨兩條以上的軌道，兩側驅動器若速度稍有差異，屋面板就會偏斜，輪緣頂住軌道並產生很大的側向力。長軌道與屋面板本身也會隨日照溫差伸縮，因此通常只讓一側車輪受導向約束，另一側容許橫向滑動。Rogers Centre 的控制系統更新案特別指出，限制偏斜差是避免屋面板卡死、錯位與閉合後留縫的關鍵；賓士體育場的控制系統則個別調整每片花瓣速度，讓路徑長短不同的花瓣同時到達終點。~A panel usually spans two or more rails, and if the drives on each side run at slightly different speeds the panel skews, its flanges bear against the rails and large lateral forces develop. Long rails and the panel itself also expand and contract with solar temperature changes, so usually only one side's wheels are guided while the other side may slide laterally. The Rogers Centre control upgrade stressed that limiting skew differential is key to avoiding jamming, misalignment and gaps when closed, and Mercedes-Benz Stadium's control system adjusts each petal's speed individually so that petals with different path lengths arrive together.",
+      "model": "溫度伸縮 ΔL = α·L·ΔT = 12×10⁻⁶×220×40 ≈ 0.106 m，表示 220 m 長的屋面板兩端相對位移約 106 mm，必須由滑動支承吸收。偏斜：行走速度 0.12 m/s、兩側速度差 1% 時，偏斜每秒增加 1.2 mm，若容許偏斜 50 mm，控制系統必須在約 42 s 內完成修正。數值為教學假設。~Thermal movement ΔL = α·L·ΔT = 12×10⁻⁶×220×40 ≈ 0.106 m, so the ends of a 220 m panel move about 106 mm relative to each other and sliding bearings must absorb it. Skew: at 0.12 m/s with a 1% speed difference between sides, skew grows 1.2 mm per second; with a 50 mm allowance the controls must correct within about 42 s. Values are teaching assumptions.",
+      "verify": "以全站儀與精密水準在固定溫度時段量測軌道中心線、軌距與軌頂高程，並記錄量測時的鋼構溫度；試運轉時以兩側位置編碼器或雷射測距比較屋面板兩端位置，確認自動修正在偏斜達警戒值前啟動，超過停止值時能安全停車。~Survey rail centrelines, gauge and rail-top levels with a total station and precise levelling at a fixed temperature window, recording steel temperature at the time; during commissioning compare the positions of both panel ends with encoders or laser rangefinders on each side, confirming that automatic correction starts before skew reaches the warning value and that the panel stops safely at the stop value.",
+      "failure": "若兩側都設導向輪而沒有預留溫度滑動，夏季高溫時屋面板被兩條軌道夾住，輪緣與軌道側面產生巨大側推力，可能剪斷軌道固定螺栓；偏斜控制失效時屋面板斜卡在軌道上，閉合後屋面板接縫無法對齊，雨水沿縫隙滲入。~If both sides are guided with no allowance for thermal sliding, in summer heat the panel is clamped between the rails and huge lateral thrust develops at the flanges, which can shear rail fastening bolts; if skew control fails the panel jams askew, panel joints cannot align when closed and rainwater enters through the gaps.",
+      "misconception": "兩側驅動器規格相同，屋面板自然會直線前進，不需要偏斜回饋控制。~If the drives on both sides are identical, the panel will naturally travel straight with no need for skew feedback.",
+      "practice": "軌道驗收要規定量測溫度條件與換算方法，偏斜控制需設警戒值、停止值與手動復位程序；導向側與自由側要在圖面與現場標示清楚，避免維修人員把自由側車輪換成導向輪。~Rail acceptance must state the survey temperature and correction method; skew control needs a warning value, a stop value and a manual reset procedure; mark guided and free sides clearly on the drawings and on site so that maintenance crews never swap a free-side wheel for a guided one."
+    },
+    {
+      "anchor": "試運轉與同步測試~Commissioning and synchronisation tests",
+      "title": "試運轉、首次開合與運轉時間驗收~Commissioning, first operation and travel-time acceptance",
+      "mechanism": "可開合屋頂的試運轉要從單一驅動器空轉開始，逐步進行單片屋面板低速移動、全速移動、多片同步與緊急停止，每一步都同時量測結構變形、驅動電流、偏斜與噪音。SkyDome 的設計團隊曾製作約 1:400、直徑約 2.5 m 的模型確認幾何不會卡死，第一次收回屋面板時還刻意選在深夜進行以策安全。驗收指標通常包括全程時間、同步誤差、緊急停止距離與閉合後的水密。~Commissioning starts with single drives running unloaded and progresses step by step through slow travel of one panel, full-speed travel, synchronised travel of several panels and emergency stops, measuring structural deformation, drive current, skew and noise at every step. SkyDome's design team built a model of about 1:400 scale, roughly 2.5 m in diameter, to confirm that the geometry would not jam, and the first panel retraction was deliberately carried out in the middle of the night as a precaution. Acceptance usually covers total travel time, synchronisation error, emergency stopping distance and watertightness when closed.",
+      "model": "全程時間 t = L/v + t_a（梯形速度曲線，加減速各需 t_a）。行程 L = 70 m、v = 0.12 m/s、t_a = 10 s 時 t = 583 + 10 ≈ 593 s ≈ 9.9 min，可達成「10 分鐘內開合」的需求；若為降低衝擊把速度降到 0.10 m/s，t ≈ 710 s ≈ 11.8 min 就超出。數值為教學假設。~Total travel time t = L/v + t_a for a trapezoidal speed profile with ramps of t_a each. For L = 70 m, v = 0.12 m/s and t_a = 10 s, t = 583 + 10 ≈ 593 s ≈ 9.9 min, meeting a ten-minute requirement; slowing to 0.10 m/s to reduce impact gives t ≈ 710 s ≈ 11.8 min, which fails it. Values are teaching assumptions.",
+      "verify": "依試運轉程序書逐階段記錄：空轉、單片低速、單片全速、同步、緊急停止與斷電制動，每階段設停檢點由業主代表、機構設計者與結構工程師簽認；最終以連續多次全程開合確認時間、電流與偏斜都在規定值內，再做閉合後灑水試驗。~Record each stage against the commissioning procedure: unloaded running, slow single panel, full-speed single panel, synchronised travel, emergency stop and power-loss braking, with a hold point at each stage signed by the owner's representative, the mechanism designer and the structural engineer; finish with several consecutive full open-close cycles confirming time, current and skew within limits, followed by a water test when closed.",
+      "failure": "趕在開幕前略過階段性試運轉，第一次全速同步就出現偏斜或卡死，屋頂只能長期停在固定位置；賓士體育場的屋頂就在場館啟用後約一年才達到完全運轉，顯示機構調整需要充分時程。~Skipping staged commissioning to meet an opening date means the first full-speed synchronised run may skew or jam, leaving the roof stuck in one position for months; Mercedes-Benz Stadium's roof became fully operational only about a year after the venue opened, showing that tuning the mechanism needs adequate time.",
+      "misconception": "屋面板在工廠組裝試轉過，現場只要通電就能正式開合。~Panels trial-run in the factory can be opened and closed for real as soon as power is connected on site.",
+      "practice": "總工程進度要為屋頂機構保留獨立的試運轉期程，並規定在完成全部階段試驗前屋頂須以臨時鎖定固定在設計停放位置；所有試驗數據要成為日後維護比對的基準。~The master programme should reserve a separate commissioning window for the roof mechanism, require the roof to be temporarily locked in a design parking position until all staged tests are complete, and keep every test record as the baseline for later maintenance comparisons."
+    },
+    {
+      "anchor": "屋頂氣象站與聯鎖~Rooftop weather station and interlocks",
+      "title": "風況監測與開合決策~Wind monitoring and the operating decision",
+      "mechanism": "開合決策不能只看當下風速，因為一次開合要花十到二十分鐘，風在這段時間內可能增強；控制系統因此需要屋頂氣象站、預報資料與明確的決策規則。Rogers Centre 的更新工程加裝了屋頂氣象站以改善開合條件預測，並納入自我診斷與例外報告。風速計的位置、高度與平均時間必須與設計時假設的運轉風速定義一致，否則門檻數字就失去意義；控制系統應在風速超過門檻時阻止啟動，並在移動中風速上升時把屋面板送到最近的安全位置。~The decision to open or close cannot rest on the current wind alone, because one operation takes ten to twenty minutes and the wind may strengthen meanwhile; the controls therefore need a rooftop weather station, forecast data and explicit decision rules. The Rogers Centre upgrade added a rooftop weather station to improve forecasting of open and close conditions, together with self-diagnostics and exception reporting. The anemometer's position, height and averaging time must match the definition of operating wind speed assumed in design, otherwise the threshold means nothing; the controls should block starts above the threshold and, if wind rises during travel, send the panel to the nearest safe position.",
+      "model": "若運轉上限為陣風 25 m/s、陣風係數 G = 1.5，對應十分鐘平均風速約 25/1.5 ≈ 16.7 m/s。現況平均風速 12 m/s、預報每小時增加 4 m/s，到達 16.7 m/s 約需 (16.7−12)/4 ≈ 1.17 h ≈ 70 min；閉合需 20 min 加 10 min 裕度，最遲須在 40 min 內啟動閉合。數值為教學假設。~If the operating limit is a 25 m/s gust with gust factor G = 1.5, the corresponding ten-minute mean is about 25/1.5 ≈ 16.7 m/s. With a current mean of 12 m/s forecast to rise 4 m/s per hour, it reaches 16.7 m/s in about (16.7−12)/4 ≈ 1.17 h ≈ 70 min; with 20 min to close plus 10 min margin, closing must start within 40 min. Values are teaching assumptions.",
+      "verify": "以兩支以上、安裝在不同位置的風速計互相比對，定期校正並記錄；比較屋頂量測與鄰近氣象站資料以建立換算關係，並以實際運轉紀錄檢查控制系統是否在風速超限時正確阻止啟動或觸發回收。~Cross-check two or more anemometers at different locations, calibrate them on a schedule and log it; compare rooftop readings with a nearby weather station to establish a conversion, and use operating logs to check that the controls correctly blocked starts or triggered retraction when wind exceeded the limit.",
+      "failure": "風速計被新增的看板或設備遮蔽，讀值長期偏低，操作人員在實際超限的風中開合屋頂；或只看瞬間讀值而忽略趨勢，屋面板移動到一半時風速超限，只能停在中間位置承受強風。~An anemometer shadowed by a new sign or equipment reads low for months, so operators move the roof in winds actually above the limit; or operators watch only the instantaneous reading and ignore the trend, and the limit is exceeded with the panel half-way, leaving it stopped in mid-travel in strong wind.",
+      "misconception": "只要按下開合鍵時風速低於門檻，整個開合過程就一定安全。~If the wind is below the limit when the button is pressed, the whole operation is safe.",
+      "practice": "操作手冊應以決策表呈現：預報、現況、趨勢與剩餘運轉時間如何組合成「可開合、需提前閉合、禁止操作」三種結論，並規定由誰做最後決定與如何留存紀錄。~The operating manual should present a decision table showing how forecast, current reading, trend and remaining travel time combine into three outcomes, go, close early or do not operate, and state who makes the final call and how it is recorded."
+    },
+    {
+      "anchor": "車輪與軌道磨耗~Wheel and rail wear",
+      "title": "運轉循環、磨耗與疲勞評估~Operating cycles, wear and fatigue",
+      "mechanism": "固定屋頂的疲勞主要來自風，可開合屋頂則多了明確的機械循環：每次開合，所有車輪都碾過軌道，驅動齒輪、軸承與制動器也完成一次負載循環。Rogers Centre 的控制系統要求每年可開合多達約 400 次。軌道焊接接頭、軌道固定件與軌道梁上翼板在重複輪壓下承受局部應力循環，車輪與軌頂則以滾動接觸疲勞與磨耗為主。設計需同時評估結構細部的應力範圍疲勞，以及機械元件的磨耗壽命與更換週期。~A fixed roof's fatigue comes mainly from wind, but a retractable roof adds well-defined mechanical cycles: every operation rolls all wheels over the rails and puts the drive gears, bearings and brakes through a load cycle. Rogers Centre's control system is required to open or close up to about 400 times a year. Rail welds, rail fasteners and rail-girder top flanges see local stress cycles under repeated wheel loads, while wheels and rail heads are governed by rolling-contact fatigue and wear. Design must assess both stress-range fatigue in structural details and the wear life and replacement interval of mechanical parts.",
+      "model": "每年 400 次運轉、壽命 30 年、每一點有 8 個車輪通過，循環數 N = 400×30×8 = 96,000。以細部類別 71 MPa（2×10⁶ 次）、斜率 m = 3 推算，容許應力範圍 Δσ_R = 71×(2×10⁶/96,000)^(1/3) ≈ 195 MPa，結構細部通常不是瓶頸；但滾動接觸處的局部應力遠高於此，磨耗與剝落才是主要壽命限制。數值為教學假設。~With 400 operations a year, a 30-year life and 8 wheels passing each point, N = 400×30×8 = 96,000 cycles. Using detail category 71 MPa at 2×10⁶ cycles and slope m = 3, the allowable stress range is Δσ_R = 71×(2×10⁶/96,000)^(1/3) ≈ 195 MPa, so structural details are seldom the limit; local rolling-contact stresses are far higher, and wear and spalling govern life. Values are teaching assumptions.",
+      "verify": "建立車輪直徑、輪緣厚度與軌頂斷面的定期量測紀錄，以磨耗量對運轉次數作圖預測更換時點；軌道焊接接頭以目視、磁粉或超音波定期檢查，並把檢查結果與運轉次數、溫度與異常事件連結。~Keep periodic records of wheel diameter, flange thickness and rail-head profile, and plot wear against operation count to forecast replacement; inspect rail welds by visual, magnetic-particle or ultrasonic testing on a schedule, linking results to operation counts, temperature and unusual events.",
+      "failure": "軌頂磨耗不均讓車輪出現衝擊，加速軸承損壞與軌道固定螺栓鬆脫；若潤滑與清潔不足，鳥糞、砂塵與積水在軌道上造成腐蝕坑，成為疲勞裂縫起點，最後可能在高輪壓處斷軌。~Uneven rail-head wear makes wheels hammer, accelerating bearing failure and loosening rail fasteners; with poor lubrication and cleaning, bird droppings, grit and standing water pit the rails, the pits become fatigue crack initiation sites, and a rail may eventually fracture under high wheel load.",
+      "misconception": "可開合屋頂一年只開合幾百次，所以不用考慮疲勞與磨耗。~A retractable roof only operates a few hundred times a year, so fatigue and wear do not matter.",
+      "practice": "維護手冊應以運轉次數而不只以日曆時間訂定檢查週期，控制系統自動累計每片屋面板的運轉次數與異常停機；車輪、軸承與制動片列為消耗品並保留備品，更換程序要包含頂升點與臨時支撐計算。~Base inspection intervals in the maintenance manual on operation counts as well as calendar time, have the controls log each panel's operations and abnormal stops, treat wheels, bearings and brake pads as consumables with spares on hand, and include jacking points and temporary-support calculations in the replacement procedure."
+    },
+    {
+      "anchor": "控制系統與運轉紀錄~Control system and operating records",
+      "title": "控制系統更新、可用度與工程交接~Control upgrades, availability and engineering handover",
+      "mechanism": "鋼結構可用數十年，但控制系統的零件可能在十多年後就停產；Rogers Centre 於 1989 年啟用，2015 至 2017 年間進行約 1,000 萬加幣的控制系統更新，原因之一就是舊系統零件不再生產，更新後運轉時間縮短約 46%。可開合屋頂的交接文件除了結構圖說，還必須包含控制邏輯、聯鎖清單、試運轉基準、軌道幾何基準與緊急程序，讓下一代維護團隊能在不依賴原設計者的情況下安全運轉。~Steelwork lasts for decades, but control components may go out of production within ten or fifteen years; Rogers Centre opened in 1989 and underwent a control-system upgrade of about CAD 10 million between 2015 and 2017, partly because parts for the old system were no longer made, and the upgrade cut operating time by about 46%. Besides structural drawings, retractable-roof handover documents must include the control logic, the interlock list, commissioning baselines, rail-geometry baselines and emergency procedures so that later maintenance teams can operate the roof safely without depending on the original designers.",
+      "model": "若每次運轉成功率 0.995，一季 400 次全部成功的機率 = 0.995^400 ≈ 0.135，代表幾乎每季都會遇到故障；若關鍵通道改為雙重冗餘、單次失效率降為 0.005² = 2.5×10⁻⁵，400 次全部成功的機率 = (1−2.5×10⁻⁵)^400 ≈ 0.990。數值為教學假設。~With a per-operation success probability of 0.995, the chance that all 400 operations in a season succeed is 0.995^400 ≈ 0.135, so a fault is almost certain each season; with dual redundancy on critical channels the per-operation failure drops to 0.005² = 2.5×10⁻⁵ and the chance of 400 clean operations becomes (1−2.5×10⁻⁵)^400 ≈ 0.990. Values are teaching assumptions.",
+      "verify": "以故障樹或失效模式分析列出單點失效，逐項確認冗餘或手動備援；控制系統更新時以新舊系統並行或分段切換，重新執行同步、偏斜、緊急停止與斷電制動試驗，並與原始試運轉基準比較。~List single points of failure with fault-tree or failure-mode analysis and confirm redundancy or manual back-up for each; when upgrading controls, run old and new systems in parallel or cut over in stages, repeat synchronisation, skew, emergency-stop and power-loss braking tests, and compare with the original commissioning baseline.",
+      "failure": "控制系統老化又缺乏備品時，業主只能降速運轉以免過載，開合時間拉長，運轉風速窗口變窄；若交接時沒有留下控制邏輯與聯鎖說明，故障排除只能靠猜測，甚至有人為了讓屋頂動起來而短接安全聯鎖。~When ageing controls lack spares, owners run the roof below full speed to avoid overloads, operations take longer and the usable wind window shrinks; without documented control logic and interlocks at handover, fault-finding becomes guesswork and someone may even bypass a safety interlock just to get the roof moving.",
+      "misconception": "屋頂結構沒有問題，控制系統只是附屬設備，壞了再換即可。~If the roof structure is sound, the control system is an accessory that can simply be replaced when it fails.",
+      "practice": "交接時應移交可編輯的控制程式、聯鎖矩陣、軌道與偏斜基準、試運轉報告與備品清單，並規定任何控制邏輯修改都需經結構工程師與機構設計者審查；建議每隔數年做一次完整的運轉性能複驗。~At handover deliver editable control programs, the interlock matrix, rail and skew baselines, commissioning reports and a spares list, require structural-engineer and mechanism-designer review of any change to control logic, and repeat a full operating-performance verification every few years."
+    }
+  ],
+  "example": "設計練習：一片屋面板質量 1,200 t，坐在 16 個車輪上，行程 70 m，運轉風速上限 25 m/s。重量 W = 1,200×9.81 = 11,772 kN；平均輪壓 735.8 kN，不均勻係數 1.3 時設計輪壓 ≈ 956 kN。行走阻力：滾動 W×0.005 = 58.9 kN，主桁架撓曲造成的 1% 坡度 W×0.01 = 117.7 kN，風壓 q = 0.5×1.225×25² ≈ 383 Pa 乘迎風面積 600 m² 得 229.7 kN，合計 F ≈ 406 kN。速度 v = 0.12 m/s 時輸出功率 P = F·v ≈ 48.8 kW，效率 0.85 時輸入約 57.4 kW；附著係數 0.15 需驅動輪正壓力 ≈ 2,708 kN，至少 4 個驅動輪。全程時間 t = 70/0.12 + 10 ≈ 593 s ≈ 9.9 min。若把運轉風速上限提高到 30 m/s，風力變為 229.7×(30/25)² ≈ 331 kN，總阻力 ≈ 507 kN，輸入功率增為約 71.6 kW，驅動輪正壓力需求也增加約 25%。數值為教學假設，不代表任何實際體育場的設計。~Design exercise: a 1,200 t panel sits on 16 wheels, travels 70 m and has an operating wind limit of 25 m/s. Its weight is W = 1,200×9.81 = 11,772 kN; the mean wheel load is 735.8 kN, and with an unevenness factor of 1.3 the design wheel load is about 956 kN. Travel resistance: rolling W×0.005 = 58.9 kN, a 1% gradient from truss deflection W×0.01 = 117.7 kN, and wind q = 0.5×1.225×25² ≈ 383 Pa on 600 m² giving 229.7 kN, for a total F ≈ 406 kN. At v = 0.12 m/s the output power is P = F·v ≈ 48.8 kW, about 57.4 kW input at 0.85 efficiency; an adhesion coefficient of 0.15 needs about 2,708 kN on driven wheels, so at least four driven wheels. Travel time is t = 70/0.12 + 10 ≈ 593 s ≈ 9.9 min. Raising the operating limit to 30 m/s makes the wind force 229.7×(30/25)² ≈ 331 kN and the total about 507 kN, so input power rises to about 71.6 kW and the required normal load on driven wheels rises by about 25%. Values are teaching assumptions, not the design of any real stadium.",
+  "history": "1976 年蒙特婁奧運體育場的可收放織物屋頂未能可靠運作，成為後來設計者的反面教材。1985 年 Michael Allen 與建築師 Rod Robbie 提出 SkyDome 的屋頂構想：兩片中段拱形屋面直線滑動、一片四分之一圓頂旋轉，1989 年啟用。日本福岡巨蛋於 1993 年完成三片繞中心旋轉的屋頂，2009 年溫布頓中央球場加裝可摺疊移動屋頂，2017 年啟用的亞特蘭大賓士體育場則以 8 片花瓣狀屋面板直線移動形成光圈造型。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~The retractable fabric roof of Montreal's 1976 Olympic stadium never worked reliably and became a cautionary example for later designers. In 1985 Michael Allen and architect Rod Robbie devised the SkyDome roof, with two middle arched panels sliding in straight lines and a quarter-dome panel rotating, and the stadium opened in 1989. Fukuoka Dome in Japan completed a roof of three sections rotating about its centre in 1993, Wimbledon's Centre Court added a folding moving roof in 2009, and Atlanta's Mercedes-Benz Stadium, opened in 2017, moves eight petal panels in straight lines to form an aperture. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "SkyDome（今 Rogers Centre）1989 年啟用，屋頂由 4 段組成、其中 3 段可動，總重約 11,000 t，覆蓋約 8 英畝（約 3.2 ha）~SkyDome (now Rogers Centre) opened in 1989; its roof has 4 sections, 3 of them movable, weighs about 11,000 t and covers about 8 acres (about 3.2 ha)",
+    "Rogers Centre 屋頂原需約 20 分鐘開合，2015–2017 年控制系統更新後運轉時間縮短約 46%~Rogers Centre's roof originally took about 20 minutes to operate; the 2015–2017 control upgrade cut operating time by about 46%",
+    "賓士體育場 8 片花瓣屋面板各移動約 56–70 m（185–230 ft），開合時間少於 10 分鐘~Mercedes-Benz Stadium's 8 petals each travel about 56–70 m (185–230 ft) and open in under 10 minutes",
+    "賓士體育場以 4 道跨距約 220 m（723 ft）、深約 21 m 的主桁架支撐屋面~Mercedes-Benz Stadium's roof is carried by 4 primary trusses spanning about 220 m (723 ft) and about 21 m deep",
+    "賓士體育場每片花瓣配有 6 組上揚轉向架與 8 組重力轉向架~Each Mercedes-Benz Stadium petal rides on 6 uplift bogies and 8 gravity bogies",
+    "溫布頓中央球場移動屋頂約 1,100 t，移動桁架跨距約 77 m，風速約 25 m/s 以上不運轉~Wimbledon Centre Court's moving roof weighs about 1,100 t, its trusses span about 77 m, and it is not operated above about 25 m/s",
+    "福岡巨蛋 1993 年 3 月完成，跨距約 213 m，三片屋頂繞中心旋轉開合~Fukuoka Dome was completed in March 1993 with a span of about 213 m and three roof sections that rotate about the centre",
+    "1999 年 Miller Park 吊裝約 400 t 屋頂構件時起重機倒塌，3 名鐵工罹難，當日陣風約 26 mph~In 1999 a crane collapsed at Miller Park while lifting a roof section of about 400 t, killing 3 ironworkers; gusts reached about 26 mph that day"
+  ],
+  "timeline": [
+    {
+      "year": "1976",
+      "event": "蒙特婁奧運體育場的可收放織物屋頂未能可靠運作，成為後續設計的反面教材~Montreal's Olympic stadium retractable fabric roof fails to work reliably, becoming a cautionary example"
+    },
+    {
+      "year": "1985–1989",
+      "event": "SkyDome 屋頂構想提出並以約 1:400 模型驗證幾何，1989 年啟用~The SkyDome roof concept is devised and checked with a model of about 1:400 scale; the stadium opens in 1989"
+    },
+    {
+      "year": "1993",
+      "event": "福岡巨蛋完成，三片屋頂繞中心旋轉，跨距約 213 m~Fukuoka Dome is completed with three roof sections rotating about the centre over a span of about 213 m"
+    },
+    {
+      "year": "1999",
+      "event": "Miller Park 屋頂吊裝起重機倒塌，促使業界把吊掛構件的風荷重納入正式吊裝計算~The Miller Park roof-lift crane collapse pushes the industry to include wind on suspended pieces in formal lift calculations"
+    },
+    {
+      "year": "2009",
+      "event": "溫布頓中央球場的可摺疊移動屋頂完成，獲英國鋼結構設計獎~Wimbledon Centre Court's folding moving roof is completed and wins a UK structural steel design award"
+    },
+    {
+      "year": "2017–2018",
+      "event": "賓士體育場啟用，8 片花瓣屋頂約一年後達到完全運轉~Mercedes-Benz Stadium opens, and its eight-petal roof becomes fully operational about a year later"
+    }
+  ],
+  "codes": [
+    "ASCE/SEI 7：建築物與其他結構的最小設計荷載（風、雪荷載）~ASCE/SEI 7: Minimum Design Loads and Associated Criteria for Buildings and Other Structures (wind and snow)",
+    "EN 1991-1-4 歐洲規範 1：風力作用~EN 1991-1-4 Eurocode 1: Actions on structures — Wind actions",
+    "EN 13001 起重機設計通則（常作為行走機構、車輪與驅動元件的設計參考）~EN 13001 Cranes — General design (often referenced for travelling mechanisms, wheels and drive components)"
+  ],
+  "landmarks": [
+    "多倫多 Rogers Centre（原 SkyDome）~Rogers Centre (SkyDome), Toronto",
+    "亞特蘭大賓士體育場~Mercedes-Benz Stadium, Atlanta",
+    "溫布頓中央球場~Wimbledon Centre Court, London",
+    "福岡巨蛋~Fukuoka Dome"
+  ],
+  "place": {
+    "name": "多倫多 Rogers Centre 可開合屋頂~Rogers Centre retractable roof, Toronto",
+    "country": "加拿大~Canada",
+    "lat": 43.6414,
+    "lng": -79.3894,
+    "query": "Rogers Centre Toronto"
+  },
+  "sources": [
+    {
+      "key": "aisc-mbs-riseup",
+      "title": "AISC《Modern Steel Construction》：賓士體育場屋頂鋼構專文",
+      "titleEn": "AISC Modern Steel Construction: Mercedes-Benz Stadium roof steel article",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://www.aisc.org/globalassets/modern-steel/archives/2017/03/riseup.pdf",
+      "sourceType": "primary",
+      "scope": "主桁架跨距與深度、花瓣行程與開合時間、轉向架數量與鋼材等級；不含機構設計計算。",
+      "scopeEn": "Primary truss span and depth, petal travel and opening time, bogie counts and steel grades; no mechanism design calculations."
+    },
+    {
+      "key": "uni-engineer-mbs",
+      "title": "Uni-Systems Engineering：賓士體育場屋頂機構專案頁",
+      "titleEn": "Uni-Systems Engineering: Mercedes-Benz Stadium roof mechanization project page",
+      "publisher": "Uni-Systems Engineering",
+      "url": "https://www.uni-engineer.com/portfolio/mercedes-benz-stadium-atlanta-georgia/",
+      "sourceType": "primary",
+      "scope": "機構設計者說明軌道配置、驅動馬達、失效安全制動、夾軌器與各花瓣速度控制；課程數值另為教學假設。",
+      "scopeEn": "Mechanism designer's description of track layout, drive motors, fail-safe brakes, rail clamps and per-petal speed control; course numbers are separate teaching assumptions."
+    },
+    {
+      "key": "sci-wimbledon-centre-court",
+      "title": "steelconstruction.info：溫布頓中央球場改建（2009 鋼結構設計獎）",
+      "titleEn": "steelconstruction.info: Wimbledon Centre Court redevelopment (SSDA 2009)",
+      "publisher": "steelconstruction.info (BCSA / SCI / Tata Steel)",
+      "url": "https://steelconstruction.info/case-studies/leisure-buildings/wimbledon-centre-court-redevelopment-london/",
+      "sourceType": "primary",
+      "scope": "移動屋頂重量、桁架跨距、轉向架驅動、運轉風速限制與百年回歸期設計荷載。",
+      "scopeEn": "Moving-roof weight, truss span, bogie drives, operating wind limit and 100-year design loads."
+    },
+    {
+      "key": "mhi-retractable-roof-installations",
+      "title": "三菱重工：可開合屋頂實績（福岡巨蛋等）",
+      "titleEn": "Mitsubishi Heavy Industries: retractable roof installations (Fukuoka Dome and others)",
+      "publisher": "Mitsubishi Heavy Industries",
+      "url": "https://www.mhi.com/business/products-services/building-equipment-structures/culture-sports-facilities-movable-installation/retractable-roof/installations",
+      "sourceType": "primary",
+      "scope": "日本可開合屋頂的完成年份、開合方式與跨距；不含設計細節。",
+      "scopeEn": "Completion years, opening types and spans of Japanese retractable roofs; no design details."
+    },
+    {
+      "key": "cce-skydome-birth",
+      "title": "Canadian Consulting Engineer：SkyDome 的誕生",
+      "titleEn": "Canadian Consulting Engineer: The SkyDome's birth",
+      "publisher": "Canadian Consulting Engineer",
+      "url": "https://canadianconsultingengineer.com/features/the-skydomes-birth",
+      "sourceType": "secondary",
+      "scope": "SkyDome 屋頂構想、四片屋面幾何、比例模型驗證與首次開合的工程背景回顧。",
+      "scopeEn": "Retrospective on the SkyDome roof concept, four-panel geometry, scale-model check and first retraction."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Uni-Systems Engineering",
+      "nameEn": "Uni-Systems Engineering",
+      "business": "可開合屋頂與大型移動結構的機構與電控設計、供應、安裝與維護。",
+      "businessEn": "Design, supply, installation and maintenance of mechanization and controls for retractable roofs and large moving structures.",
+      "url": "https://www.uni-engineer.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "屋頂驅動、軌道與控制介面的公開專案說明",
+      "roleEn": "Public project descriptions of roof drives, tracks and control interfaces"
+    },
+    {
+      "name": "三菱重工",
+      "nameEn": "Mitsubishi Heavy Industries",
+      "business": "重工業集團，業務包含體育設施可開合屋頂與大型移動設備。",
+      "businessEn": "Heavy-industry group whose business includes retractable roofs for sports facilities and large moving equipment.",
+      "url": "https://www.mhi.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "7011",
+        "exchange": "TSE",
+        "currency": "JPY"
+      },
+      "role": "日本可開合屋頂的開合型式與實績比較",
+      "roleEn": "Comparison of opening types and track record of Japanese retractable roofs"
+    },
+    {
+      "name": "羅克韋爾自動化",
+      "nameEn": "Rockwell Automation",
+      "business": "工業自動化與控制系統供應商，曾用於 Rogers Centre 屋頂控制系統更新。",
+      "businessEn": "Industrial automation and control-system supplier whose platform was used in the Rogers Centre roof control upgrade.",
+      "url": "https://www.rockwellautomation.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "ROK",
+        "exchange": "NYSE",
+        "currency": "USD"
+      },
+      "role": "屋頂控制系統更新、冗餘與診斷的案例脈絡",
+      "roleEn": "Case context for roof control upgrades, redundancy and diagnostics"
+    }
+  ],
+  "related": [
+    "b082",
+    "b032"
+  ],
+  "architectureNodes": [
+    [
+      "固定主結構與軌道梁",
+      "Fixed primary structure and rail girders"
+    ],
+    [
+      "移動屋面板",
+      "Moving roof panels"
+    ],
+    [
+      "轉向架與車輪",
+      "Bogies and wheels"
+    ],
+    [
+      "驅動與停車制動",
+      "Drives and parking brakes"
+    ],
+    [
+      "控制系統與氣象聯鎖",
+      "Controls and weather interlocks"
+    ],
+    [
+      "運轉與維護紀錄",
+      "Operating and maintenance records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      0,
+      5
+    ]
+  ]
+}

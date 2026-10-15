@@ -1,0 +1,306 @@
+{
+  "id": "b028",
+  "title": "威利斯大樓~Willis Tower",
+  "discipline": "st-supertall",
+  "family": "tower",
+  "focus": "九個 22.9 m 鋼框管綁成束筒，以內部腹板框架降低剪力遲滯並以分段收進調整質量與風荷載~Nine 22.9 m steel framed tubes bundled together, using interior web frames to cut shear lag and staged terminations to shape mass and wind load",
+  "summary": "威利斯大樓（原希爾斯大樓）由 Fazlur Khan 與 SOM 設計，九個 75 ft（22.9 m）見方的鋼框管組成 225 ft 見方的束筒，管筒在 50、66、90 層分批終止，只留兩管到頂。本課從束筒如何以內部框架減少剪力遲滯、分段收進如何降低質心與造成扭轉，到 15 ft 柱距框管、75 ft 複合樓板桁架、每週兩層的鋼構安裝與岩盤沉箱，再到週期量測、外牆熱隔離，以及 2017–2020 年在營運中改造底座時的柱補強與傳力路徑管理。~Willis Tower, formerly Sears Tower, designed by Fazlur Khan and SOM, bundles nine 75 ft (22.9 m) square steel framed tubes into a 225 ft square plan; the tubes stop in groups at floors 50, 66 and 90, leaving two to the top. The course covers how interior frames reduce shear lag, how staged terminations lower the mass centroid and create torsion, the 15 ft column module, 75 ft composite floor trusses, erection at two floors a week and rock caissons, then period measurement, thermal isolation by the skin, and column strengthening and load-path control during the 2017–2020 base repositioning of the occupied tower.",
+  "units": [
+    {
+      "anchor": "九管束筒與內部腹板~Nine bundled tubes and interior webs",
+      "title": "束筒與剪力遲滯~Bundled tubes and shear lag",
+      "mechanism": "框管結構把密排的周邊柱與深裙梁組成一個空心箱形懸臂，平行風向的兩面像箱梁腹板承受剪力，垂直風向的兩面像翼板承受拉壓。單一大管的翼板中段柱因裙梁剪力變形而「跟不上」角柱，軸力向角落集中，這就是剪力遲滯。束筒在 225 ft 見方的平面中多加兩道縱橫向內部框架，把翼板分成三段、腹板由兩道增為四道，使軸力分布更均勻，剪力勁度也加倍。~A framed tube turns closely spaced perimeter columns and deep spandrels into a hollow box cantilever: the two faces parallel to the wind act like the webs of a box girder and carry shear, while the two faces normal to it act like flanges in tension and compression. In a single large tube the flange columns near mid-face lag behind the corners because the spandrels deform in shear, concentrating axial force at the corners; this is shear lag. The bundled tube adds two interior frames in each direction within the 225 ft square, splitting each flange into three segments and doubling the web frames from two to four, which evens out axial forces and doubles shear stiffness.",
+      "model": "懸臂剪力變形 Δ_s = wH²/(2nK)，n 為腹板框架數、K 為每道框架的等效剪力勁度。取 w = 1.4 kPa×68.6 m ≈ 96.0 kN/m、H = 442 m、K = 1.0×10⁷ kN：n = 2 時 Δ_s = 96.0×442²/(2×2×10⁷) ≈ 0.469 m；n = 4 時 Δ_s ≈ 0.235 m，減半。數值為教學假設。~Cantilever shear deflection is Δ_s = wH²/(2nK), with n web frames each of equivalent shear stiffness K. With w = 1.4 kPa×68.6 m ≈ 96.0 kN/m, H = 442 m and K = 1.0×10⁷ kN, n = 2 gives Δ_s = 96.0×442²/(2×2×10⁷) ≈ 0.469 m and n = 4 gives Δ_s ≈ 0.235 m, half as much. Values are teaching assumptions.",
+      "verify": "在三維框架模型中比較單一大管與九管束筒在同一風荷載下的翼板柱軸力分布，計算角柱與中段柱的軸力比作為剪力遲滯指標，並把剪力與彎曲兩部分的頂部變位拆開檢討。~In a three-dimensional frame model compare flange-column axial forces for one large tube and for the nine-tube bundle under the same wind load, use the ratio of corner to mid-face column force as a shear-lag index, and separate the shear and bending components of top drift.",
+      "failure": "忽略剪力遲滯會低估角柱與其接頭的軸力，在強風下角柱或接頭可能先達到容量；同時高估中段柱的參與，使實際側向變位與樓板翹曲大於預期，帷幕牆接縫也被額外拉扯。~Ignoring shear lag underestimates axial forces in corner columns and their joints, which may reach capacity first in strong wind; it also overestimates the contribution of mid-face columns, so real drift and floor warping exceed predictions and façade joints are strained further.",
+      "misconception": "框管結構所有周邊柱都均勻分擔傾覆力矩產生的軸力。~All perimeter columns of a framed tube share the overturning axial force equally.",
+      "practice": "檢核框管時要以完整三維模型而非平面等效梁取得角柱設計力，並把角柱、角隅接頭與內部框架交會柱列為加強檢驗的構件類別。~Check framed tubes with a full three-dimensional model rather than an equivalent plane beam to obtain corner-column design forces, and place corner columns, corner joints and columns where interior frames intersect in an enhanced inspection category."
+    },
+    {
+      "anchor": "50／66／90 層分段收進~Setbacks at floors 50, 66 and 90",
+      "title": "管筒分段終止、質心與扭轉~Staged tube terminations, mass centroid and torsion",
+      "mechanism": "九管全部升到 50 層，西北與東南兩管在此終止；東北與西南兩管在 66 層終止，形成十字形平面；北、東、南三管在 90 層終止，只剩西管與中央管到 108 層。逐段減少的樓板面積讓質量集中在下部，降低地震與風致慣性力的力臂，也讓不同高度的寬度變化擾亂渦流脫落。代價是 90 層以上只剩兩管，平面不再雙軸對稱，質心與剛心產生偏移，上部需要處理扭轉。~All nine tubes rise to floor 50, where the northwest and southeast tubes stop; the northeast and southwest tubes stop at floor 66, leaving a cruciform plan; the north, east and south tubes stop at floor 90, leaving only the west and centre tubes to floor 108. The shrinking floor area concentrates mass low down, shortening the lever arm of seismic and wind-induced inertia forces, and the width changes disrupt vortex shedding along the height. The price is that above floor 90 only two tubes remain, the plan loses double symmetry, the centres of mass and stiffness separate, and the upper levels must handle torsion.",
+      "model": "以每管每層為一單位，層高 3.91 m：1–50 層 450 單位，中點 97.8 m；51–66 層 112 單位，226.8 m；67–90 層 120 單位，305.0 m；91–108 層 36 單位，387.1 m。質心高度 z = (450×97.8 + 112×226.8 + 120×305.0 + 36×387.1)/718 ≈ 167 m；若九管都到 108 層，z = 211 m，收進使質心降低約 21%。數值為教學假設。~Count one unit per tube per floor with a 3.91 m storey: floors 1–50 give 450 units at a mid-height of 97.8 m, floors 51–66 give 112 at 226.8 m, floors 67–90 give 120 at 305.0 m and floors 91–108 give 36 at 387.1 m. The centroid height z = (450×97.8 + 112×226.8 + 120×305.0 + 36×387.1)/718 ≈ 167 m; with all nine tubes to floor 108, z = 211 m, so the setbacks lower the centroid by about 21%. Values are teaching assumptions.",
+      "verify": "從模型取出各樓層質心與剛心位置，檢查 90 層以上的偏心距與扭轉振態的頻率與參與質量；風洞試驗則需量測扭矩頻譜，確認上部扭轉造成的角落加速度在居住性準則內。~Extract the centres of mass and stiffness at each floor from the model, checking the eccentricity above floor 90 and the frequency and participating mass of torsional modes; the wind-tunnel test must measure torque spectra to confirm that corner accelerations from upper-level torsion meet habitability criteria.",
+      "failure": "若收進處的樓板與帶狀構件沒有足夠的剪力傳遞能力，終止管筒的柱力無法順利交給相鄰管筒，造成局部應力集中；上部扭轉若被低估，角落辦公室會感受到明顯旋轉擺動。~If floors and belt members at a setback cannot transfer enough shear, forces from terminating tubes cannot pass smoothly to neighbouring tubes and stresses concentrate locally; if upper-level torsion is underestimated, corner offices feel noticeable twisting motion.",
+      "misconception": "收進只是為了造型與出租面積，對結構行為沒有影響。~Setbacks serve only appearance and leasing and do not affect structural behaviour.",
+      "practice": "收進樓層應列為結構檢核重點：樓板厚度與配筋、帶狀桁架或深梁的剪力傳遞、終止柱的錨定細部，並要求風洞報告分別列出順風、橫風與扭轉反應。~Treat setback floors as key structural checkpoints for slab thickness and reinforcement, shear transfer through belt trusses or deep beams and anchorage of terminating columns, and require the wind-tunnel report to list along-wind, across-wind and torsional responses separately."
+    },
+    {
+      "anchor": "15 ft 柱距框管與裙梁~15 ft column module and spandrels",
+      "title": "密柱框管的構件與預組單元~Members and prefabricated units of the dense-column tube",
+      "mechanism": "每個管筒的周邊柱以 15 ft（約 4.57 m）為模組，與深裙梁剛接成近似穿孔牆的框架。在側力下，裙梁兩端承受相反方向的彎矩，反曲點大約在跨中，跨中彎矩接近零，剪力則沿跨長大致固定；柱段與部分裙梁可在工廠預組，現場只做接合，減少高空焊接。SOM 說明鋼構先預組成段件再於現場以螺栓接合，柱段為兩層樓高。剛接框管的勁度主要由裙梁的彎曲與剪力勁度決定，因此裙梁深度與接頭剛度是控制參數。~Each tube's perimeter columns follow a 15 ft (about 4.57 m) module and are rigidly framed with deep spandrels into something close to a perforated wall. Under lateral load the spandrel ends bend in opposite directions, the point of contraflexure sits near mid-span where moment is nearly zero and shear is constant; column segments and parts of spandrels can be pre-assembled in the shop so the site only makes connections, reducing welding at height. SOM describes the steel as pre-assembled into sections and bolted together on site, with column pieces two storeys tall. Tube stiffness depends mainly on spandrel bending and shear stiffness, so spandrel depth and joint rigidity are the controlling parameters.",
+      "model": "反對稱彎矩下裙梁剪力 V = 2M/L。若柱面處裙梁端彎矩 M = 600 kN·m、柱距 L = 4.57 m，V = 2×600/4.57 ≈ 263 kN；在反曲點附近設置螺栓續接時，主要傳遞 263 kN 的剪力與很小的彎矩。數值為教學假設，以柱心距近似淨跨。~Under antisymmetric bending the spandrel shear is V = 2M/L. With an end moment M = 600 kN·m at the column face and a column spacing L = 4.57 m, V = 2×600/4.57 ≈ 263 kN; a bolted splice near the contraflexure point mainly carries this 263 kN shear and very little moment. Values are teaching assumptions using the centre spacing as an approximation of the clear span.",
+      "verify": "工廠預組單元出廠前檢查柱段長度、裙梁位置與孔位，以樣板或三維量測確認累積誤差；現場螺栓接合依規範抽驗預拉力，並在每組樓層完成後量測柱垂直度與樓層標高。~Before shop-assembled units leave the plant, check column length, spandrel position and hole locations with templates or three-dimensional measurement to control cumulative error; on site sample bolt pretension to the specification and survey column plumbness and floor levels after each tier.",
+      "failure": "續接若設在彎矩較大的位置卻只按剪力設計，強風下螺栓群會滑移並使框管勁度下降；預組單元尺寸誤差累積則讓上部柱與下部柱偏心接合，增加附加彎矩。~A splice placed where moment is significant but designed only for shear lets the bolt group slip in strong wind and softens the tube; accumulated dimensional errors in prefabricated units make upper and lower columns meet eccentrically, adding secondary moments.",
+      "misconception": "框管的側向勁度主要由柱子決定，裙梁大小影響不大。~A framed tube's lateral stiffness comes mainly from the columns; spandrel size hardly matters.",
+      "practice": "預組單元的分段位置應由結構工程師依彎矩圖確認，並規定工廠與現場的尺寸允差及量測紀錄格式；裙梁開孔或切割一律需結構審查。~The structural engineer should confirm splice locations of prefabricated units against the moment diagram, set shop and site dimensional tolerances with a standard record format, and require structural review for any spandrel opening or cut."
+    },
+    {
+      "anchor": "75 ft 複合樓板桁架~75 ft composite floor trusses",
+      "title": "長跨複合樓板桁架與剪力釘~Long-span composite floor trusses and studs",
+      "mechanism": "每個管筒內部無柱，樓板以跨度 75 ft（22.9 m）、深 40 in（1.02 m）的華倫式桁架、間距 15 ft 支承，桁架以只傳剪力的高強螺栓接到柱上，視為簡支。樓板為 3 in 壓型鋼板加 2½ in 輕質混凝土，以 ¾ in 剪力釘形成複合作用；角隅管筒每六層交替桁架方向，讓管壁受力平均。複合作用使混凝土板承壓、桁架下弦受拉，剪力釘必須把兩者間的水平力完整傳遞。~Each tube is column-free inside: floors are carried by Warren trusses 75 ft (22.9 m) long and 40 in (1.02 m) deep at 15 ft centres, bolted to columns with high-strength bolts designed for shear only, so they are simply supported. The slab is a 3 in metal deck with 2½ in of lightweight concrete, made composite with ¾ in shear studs; in the corner tubes the truss direction alternates every six floors to balance load on the tube walls. Composite action puts the slab in compression and the bottom chord in tension, and the studs must transfer the full horizontal force between them.",
+      "model": "w = (3.0 + 2.4) kPa×4.57 m ≈ 24.7 kN/m，L = 22.86 m：M = wL²/8 ≈ 1,612 kN·m；有效力臂約 1.10 m 時弦力 C = T ≈ 1,465 kN；每支剪力釘 Q_n 取 70 kN，半跨需約 21 支，全跨約 42 支。跨深比 22.86/1.016 ≈ 22.5。數值為教學假設。~w = (3.0 + 2.4) kPa×4.57 m ≈ 24.7 kN/m and L = 22.86 m give M = wL²/8 ≈ 1,612 kN·m; with an effective lever arm of about 1.10 m the chord force is C = T ≈ 1,465 kN; at Q_n = 70 kN per stud, about 21 studs are needed per half span, about 42 per truss. The span-to-depth ratio is 22.86/1.016 ≈ 22.5. Values are teaching assumptions.",
+      "verify": "剪力釘焊接後依 AWS D1.1 做彎曲試驗抽驗（敲彎 15° 不得斷裂）並檢查焊趾完整；桁架出廠前做尺寸與焊道檢驗，安裝後量測樓板撓度並以腳步激振量測樓板頻率，與設計預測比較。~After stud welding, bend-test a sample to AWS D1.1 (bent 15° without failure) and inspect weld collars; check truss dimensions and welds before delivery, and after erection measure slab deflection and floor frequency under heel-drop excitation for comparison with design predictions.",
+      "failure": "剪力釘數量或焊接品質不足時，樓板與桁架間發生滑移，複合勁度降低，撓度與樓板振動都增加；在壓型鋼板上焊釘若鍍鋅層或積水處理不當，焊接不良率會明顯上升。~Too few studs or poor welds let the slab slip on the truss, reducing composite stiffness and increasing deflection and floor vibration; welding through metal deck with poorly managed galvanising or standing water raises the defect rate sharply.",
+      "misconception": "樓板桁架只要強度足夠，剪力釘可以減量而不影響行為。~If the floor trusses are strong enough, shear studs can be reduced without affecting behaviour.",
+      "practice": "剪力釘施工前須做程序試焊並每日開工試驗，雨後或有積水時暫停焊接；樓板開孔改裝時，結構工程師須確認剪力釘與桁架弦桿未被破壞。~Qualify the stud-welding procedure before production and run daily start-up tests, suspending welding after rain or with standing water; for later slab openings, the structural engineer must confirm that studs and truss chords are not damaged."
+    },
+    {
+      "anchor": "每週兩層的鋼構安裝~Steel erection at two floors per week",
+      "title": "四面塔吊與兩層一節的安裝節奏~Four-side cranes and a two-storey erection rhythm",
+      "mechanism": "公開資料指出施工團隊以每週兩層的速度安裝鋼構，柱段為兩層樓高，待兩層柱就位後才開始安裝樓板構架。基座四周的塔吊直接從卡車吊起鋼料送到安裝位置，鋼料不落地堆放。高速度的關鍵在於重複性：九管相同的 15 ft 模組讓預組單元與樓板桁架高度標準化，吊次、接合與檢驗可以形成固定的循環；同時，接合尚未完成的上部樓層需要臨時穩定，安裝順序必須保證每一節在鎖定前有足夠的側向支撐。~Public sources report erection at two floors a week, with two-storey column pieces and floor framing starting once two levels of columns were in place. Cranes on all four sides of the base lifted steel straight from delivery trucks into position, so steel never sat on the ground. Speed came from repetition: the identical 15 ft module of all nine tubes standardised the prefabricated units and floor trusses, so lifts, connections and inspections formed a fixed cycle; meanwhile upper tiers with incomplete connections needed temporary stability, so the sequence had to ensure lateral support for each tier before it was locked.",
+      "model": "以總鋼量約 76,000 美噸、110 層估算，每層約 691 美噸；每週兩層即 1,382 美噸。四部塔吊平均每吊 8 美噸，每部每週需 1,382/(4×8) ≈ 43 吊，以每週 5 天計約每天 8.6 吊，另需扣除天候停工的餘裕。數值為教學假設。~With about 76,000 short tons of steel over 110 storeys, each floor needs about 691 tons, so two floors a week is 1,382 tons. Four cranes lifting an average of 8 tons each need 1,382/(4×8) ≈ 43 lifts per crane per week, about 8.6 a day over five days, before allowing for weather stoppages. Values are teaching assumptions.",
+      "verify": "每週以吊次紀錄、到貨序號與安裝順序表比對進度；每節完成後檢查臨時拉索或斜撐、螺栓初鎖數量與柱垂直度，達到規定後才可往上吊裝；強風日依塔吊廠商限制停止吊裝。~Track progress weekly by comparing lift logs, delivery piece numbers and the erection sequence; after each tier check temporary guys or braces, the number of snug-tight bolts and column plumbness before lifting higher, and stop lifting in strong wind according to the crane manufacturer's limits.",
+      "failure": "為了追趕進度而在下層接合未完成前繼續往上吊裝，上部構架可能在強風或吊物碰撞時失穩倒塌；到貨順序錯亂則迫使鋼料臨時堆放在未完成的樓板上，造成超載。~Lifting higher before lower connections are finished to catch up on schedule can let the upper frame become unstable in wind or under impact from a load; deliveries out of sequence force steel to be stored on unfinished floors and overload them.",
+      "misconception": "鋼構安裝速度只取決於塔吊數量與工人數量。~Steel erection speed depends only on the number of cranes and workers.",
+      "practice": "安裝計畫須明定每節的最低接合數量、臨時支撐與允許往上安裝的條件，並由鋼構安裝工程師與結構工程師共同簽認；樓板臨時堆放須標示容許荷重。~The erection plan must define the minimum connections, temporary bracing and conditions for proceeding upward for each tier, signed by the erection engineer and the structural engineer; temporary storage areas on floors must be marked with allowable loads."
+    },
+    {
+      "anchor": "岩盤嵌入沉箱~Rock-socketed caissons",
+      "title": "深開挖與岩盤沉箱基礎~Deep excavation and rock-socketed caissons",
+      "mechanism": "SOM 說明九個管筒坐落在延伸到岩盤的鋼筋混凝土沉箱上；後來的改造資料也指出塔樓沉箱嵌入岩盤，與廣場區的擴底沉箱各自獨立。芝加哥市中心表層為軟弱黏土，岩盤在地表下相當深處，因此柱荷重必須經由沉箱穿過黏土傳到岩層。沉箱的承載包括嵌岩段的側摩擦與底部端承；施工時地下水與黏土擠入會影響孔壁穩定與底部清潔，所以鋼套管與底部檢查是品質的關鍵。~SOM states that the nine tubes rest on reinforced-concrete caissons extending to bedrock, and later renovation records note that the tower caissons are rock-socketed and independent of the belled caissons under the plaza. Downtown Chicago has soft clay near the surface and bedrock at considerable depth, so column loads must pass through the clay to rock via caissons. Capacity comes from side friction in the rock socket and end bearing at the base; during construction groundwater and squeezing clay threaten hole stability and base cleanliness, so steel casings and base inspection are key to quality.",
+      "model": "嵌岩沉箱 Q = πDL_sf_s + (πD²/4)q_b。取 D = 3.05 m（10 ft）、嵌岩長 L_s = 3 m、側摩擦 f_s = 1.0 MPa、端承 q_b = 5 MPa：側摩擦 ≈ 28.7 MN、端承 ≈ 36.5 MN，合計約 65.3 MN；以安全係數 2.5 得容許約 26.1 MN。數值為教學假設。~For a rock-socketed caisson Q = πDL_sf_s + (πD²/4)q_b. With D = 3.05 m (10 ft), a socket length L_s = 3 m, side friction f_s = 1.0 MPa and end bearing q_b = 5 MPa, side friction gives about 28.7 MN and end bearing about 36.5 MN, about 65.3 MN in total; a factor of safety of 2.5 gives an allowable load of about 26.1 MN. Values are teaching assumptions.",
+      "verify": "每支沉箱鑽至岩盤後由大地工程師確認岩質與嵌岩長度，底部清潔度以目視或攝影檢查；澆置前檢查鋼筋籠與套管，澆置時記錄混凝土方量與理論方量比，偏差過大即檢討孔壁坍塌或擴孔。~After each caisson reaches rock, the geotechnical engineer confirms rock quality and socket length and checks base cleanliness visually or by camera; reinforcement cages and casings are inspected before concreting, and the ratio of placed to theoretical concrete volume is logged, with large deviations prompting review for collapse or over-break.",
+      "failure": "底部沉泥未清除會讓沉箱在加載後產生額外沉陷；黏土擠入或地下水湧入造成斷樁或夾泥，柱荷重集中到相鄰沉箱，使上部框管出現不均勻沉陷。~Sediment left at the base causes extra settlement under load; clay squeezing or groundwater inflow creates necking or soil inclusions, shifting column load to neighbouring caissons and causing uneven settlement in the tubes above.",
+      "misconception": "沉箱只要鑽到岩盤表面就能發揮全部承載力。~A caisson develops full capacity as soon as it touches the rock surface.",
+      "practice": "沉箱基底與嵌岩長度驗收列為停留點，每支沉箱都要有含照片與量測的竣工紀錄，作為日後改造時評估既有基礎容量的依據。~Make base and socket acceptance a hold point and keep an as-built record with photographs and measurements for every caisson, as the basis for evaluating existing foundation capacity in future alterations."
+    },
+    {
+      "anchor": "週期估算與環境振動~Period estimates and ambient vibration",
+      "title": "經驗週期公式與實測比對~Empirical period formulas versus measurement",
+      "mechanism": "結構第一週期決定風致共振與地震反應的大小。規範的近似週期公式是為了訂定保守的基底剪力下限，主要由一般高度建築的實測統計得來，套用在超過 400 m 的超高層時只能當作量級檢查。實際週期取決於質量分布、框管勁度、收進與非結構構件，應以模態分析計算，並在完工後以環境振動量測校核；不同方向與扭轉模態要分開辨識，因為束筒在上部的不對稱會讓兩個水平方向的週期不同。~The first period controls wind resonance and seismic response. Code approximate-period formulas exist to set a conservative lower bound on base shear and come mainly from measurements of ordinary-height buildings, so for a tower above 400 m they are only an order-of-magnitude check. The real period depends on mass distribution, tube stiffness, setbacks and non-structural elements and should be computed by modal analysis and checked by ambient-vibration measurement after completion; each horizontal direction and the torsional mode must be identified separately, because the asymmetric upper bundle makes the two horizontal periods differ.",
+      "model": "ASCE 7 鋼抗彎框架近似週期 T_a = 0.0724h^0.8（h 以 m 計）。h = 442.1 m 時 T_a = 0.0724×442.1^0.8 ≈ 9.47 s；常用的 T ≈ 0.1N 規則則得 0.1×108 = 10.8 s。兩者相差約 14%，說明經驗式只能當量級參考，設計須以模態分析為準。數值為教學比較。~The ASCE 7 approximate period for steel moment frames is T_a = 0.0724h^0.8 with h in metres. For h = 442.1 m, T_a = 0.0724×442.1^0.8 ≈ 9.47 s, while the common rule T ≈ 0.1N gives 0.1×108 = 10.8 s. The 14% gap shows that empirical formulas are only order-of-magnitude references and design must rely on modal analysis. Values are a teaching comparison.",
+      "verify": "在頂部與中段設置雙向加速度計，於低風時段記錄至少一小時的環境振動，以頻域分解辨識兩個水平方向與扭轉的前幾個模態，並與模態分析比較；差異超過約一成時檢討質量與勁度假設。~Install biaxial accelerometers at the top and mid-height, record at least an hour of ambient vibration in calm conditions, identify the first modes in both horizontal directions and torsion by frequency-domain decomposition, and compare with modal analysis; review mass and stiffness assumptions if the difference exceeds about ten percent.",
+      "failure": "若直接用經驗週期推算風致共振或阻尼需求，可能錯估臨界風速與加速度；忽略兩方向週期不同，則可能把兩個相近的模態誤判為一個，低估扭轉耦合。~Using an empirical period to estimate wind resonance or damping needs can misjudge critical wind speed and acceleration; ignoring the different periods in the two directions can merge two close modes into one and underestimate torsional coupling.",
+      "misconception": "規範的近似週期公式可以準確預測超高層的實際振動週期。~Code approximate-period formulas accurately predict the real period of a supertall tower.",
+      "practice": "設計報告應同時列出經驗週期、模態分析週期與（若有）實測週期，並說明採用哪一個做為風與地震設計依據；改造或增減大量質量後，要重新量測並更新紀錄。~Design reports should list the empirical, modal-analysis and any measured periods and state which governs wind and seismic design; after renovations that add or remove large masses, measure again and update the record."
+    },
+    {
+      "anchor": "外牆熱隔離與柱溫差~Skin thermal isolation and column temperature",
+      "title": "外牆隔熱與柱溫差變形~Skin insulation and column thermal movement",
+      "mechanism": "SOM 說明黑色鋁皮與青銅色玻璃外牆把結構與室外隔開，使鋼構溫度相對穩定，減少框架的熱脹冷縮。芝加哥冬夏溫差大，若周邊柱直接暴露，外柱與恆溫室內的內部柱會產生顯著溫差，數百公尺高的柱列累積的長度差會讓上部樓板傾斜、隔間開裂並在樓板梁中產生附加力。外牆保溫與柱的防火被覆共同決定實際溫差，因此外牆改造時也要回頭檢核結構。~SOM explains that the black aluminium and bronze-tinted glass skin isolates the structure from outside temperature, keeping the steel relatively stable and limiting expansion and contraction of the frame. Chicago has large seasonal temperature swings; if perimeter columns were exposed, the difference between outer columns and interior columns in conditioned space would accumulate over hundreds of metres into length differences that tilt upper floors, crack partitions and induce forces in floor beams. Skin insulation and column fireproofing together set the actual temperature difference, so façade renovations must also be checked structurally.",
+      "model": "柱長差 ΔL = αLΔT。L = 400 m、α = 12×10⁻⁶ /°C：外柱與內柱溫差 30 °C 時 ΔL = 12×10⁻⁶×400,000×30 = 144 mm；外牆隔熱把溫差降到 5 °C 時 ΔL = 24 mm。若外柱到最近內柱距離 9 m，樓板坡度由 144/9,000 ≈ 1/63 降到 24/9,000 ≈ 1/375。數值為教學假設。~Column length difference ΔL = αLΔT. For L = 400 m and α = 12×10⁻⁶ /°C, a 30 °C difference between outer and inner columns gives ΔL = 12×10⁻⁶×400,000×30 = 144 mm; insulating the skin to cut the difference to 5 °C gives ΔL = 24 mm. Over 9 m to the nearest interior column the floor slope falls from 144/9,000 ≈ 1/63 to 24/9,000 ≈ 1/375. Values are teaching assumptions.",
+      "verify": "在代表性外柱與內柱裝設溫度感測器，冬季與夏季各記錄數週，並在頂部樓層以精密水準量測外柱與內柱的相對高程變化，與溫差換算值比較；外牆維修時抽查保溫層連續性。~Install temperature sensors on representative exterior and interior columns, record for several weeks in winter and summer, and use precise levelling at upper floors to measure relative elevation changes between exterior and interior columns, comparing them with values computed from the temperature difference; spot-check insulation continuity during façade maintenance.",
+      "failure": "外牆改造時若拆除保溫或改用大面積透明玻璃而未評估柱溫差，上部樓板可能出現季節性傾斜、隔間與門框開裂，連接外柱與內部構件的梁端也會承受反覆溫度應力。~Removing insulation or switching to large clear glazing during a façade renovation without assessing column temperatures can cause seasonal floor tilt, cracked partitions and door frames, and cyclic thermal stresses at beam ends linking exterior and interior members.",
+      "misconception": "帷幕牆只負責防水與外觀，與主結構的受力無關。~The curtain wall is only for weather-tightness and appearance and has nothing to do with structural forces.",
+      "practice": "外牆或節能改造的設計審查清單應包含柱溫度條件的變化評估，並由結構工程師簽認；交接文件中保留原設計採用的柱溫差假設。~The design review checklist for façade or energy retrofits should include an assessment of changed column temperature conditions signed by the structural engineer, and handover documents should keep the original design assumption for column temperature difference."
+    },
+    {
+      "anchor": "既有柱的包覆補強~Encasement strengthening of existing columns",
+      "title": "營運中改造的柱補強~Column strengthening during an occupied renovation",
+      "mechanism": "2017 年起的底座改造在原廣場位置加建三層商業裙樓，約 20 根下層廣場鋼柱無法直接承受增加的樓層。可行處以焊接頭剪力釘於腹板後包覆混凝土，讓鋼柱與混凝土共同受壓；無法包覆處則在翼板焊上局部長度的補強板，並以分段（階梯式）構件檢核補強與未補強斷面。改造全程大樓持續營運，施工順序、臨時支撐與既有基礎容量都必須逐步確認。~From 2017 the base repositioning added a three-storey retail podium on the former plaza, and about 20 lower-level plaza columns could not carry the added floors as they were. Where possible, headed studs were welded to the column webs and the columns encased in concrete so steel and concrete share compression; where encasement was impossible, partial-length plates were welded to the flanges and the columns checked as stepped members with reinforced and unreinforced sections. The tower stayed open throughout, so sequencing, temporary support and existing foundation capacity had to be confirmed step by step.",
+      "model": "包覆後軸壓強度 P = A_sF_y + 0.85f′cA_c。既有鋼柱 A_s = 0.0258 m²、F_y = 345 MPa，P_s ≈ 8.90 MN；包覆 0.6 m×0.6 m、f′c = 35 MPa，A_c = 0.36 − 0.0258 = 0.334 m²，混凝土貢獻 ≈ 0.85×35×0.334 ≈ 9.94 MN，合計約 18.8 MN，約為原鋼柱的 2.1 倍（未計長細比折減）。數值為教學假設。~Encased squash capacity is P = A_sF_y + 0.85f′cA_c. An existing column with A_s = 0.0258 m² and F_y = 345 MPa gives P_s ≈ 8.90 MN; a 0.6 m×0.6 m encasement with f′c = 35 MPa has A_c = 0.36 − 0.0258 = 0.334 m² and adds about 0.85×35×0.334 ≈ 9.94 MN, about 18.8 MN in total, roughly 2.1 times the bare steel column before slenderness reduction. Values are teaching assumptions.",
+      "verify": "補強前以現場量測確認既有柱斷面與鋼材等級（必要時取樣試驗），剪力釘焊接做彎曲試驗抽驗，翼板補強焊道做磁粒或超音波檢測；新增荷載分階段施加時量測柱應變與基礎沉陷。~Before strengthening, confirm existing column sections and steel grade by survey, with coupon testing if needed; bend-test a sample of welded studs and inspect flange-plate welds by magnetic-particle or ultrasonic testing; measure column strain and foundation settlement as new loads are applied in stages.",
+      "failure": "在承載中的柱上焊接補強板，若熱輸入過大會使局部鋼材在高應力下軟化與變形；包覆混凝土若在新增荷載之前未達強度，荷載仍全部由鋼柱承受，補強效果打折扣。~Welding plates onto a loaded column with excessive heat input can soften and distort the steel locally under high stress; if the encasement has not gained strength before new load arrives, the steel still carries it all and the strengthening is compromised.",
+      "misconception": "在承載中的鋼柱上焊接補強是沒有風險的例行作業。~Welding reinforcement onto a loaded steel column is a routine task with no risk.",
+      "practice": "對承載中構件的焊接須有專門的焊接程序與熱輸入限制、必要的臨時卸載或支撐，並把「包覆混凝土達到規定強度」列為施加新增荷載前的停留點，由結構工程師簽認。~Welding on loaded members requires a dedicated procedure with heat-input limits and temporary unloading or shoring where needed, and the encasement reaching its specified strength must be a hold point before new loads are applied, signed off by the structural engineer."
+    },
+    {
+      "anchor": "入口裙梁更換與柱無側撐長度~Entrance spandrel replacement and column bracing",
+      "title": "改造中的管筒傳力路徑與交接紀錄~Tube load path and records during alteration",
+      "mechanism": "改造時為了新設由街道到二樓的樓梯，三根 42 in 深的組合裙梁與樓梯衝突而被降低、拆除並以新的組合鋼板梁取代。公開資料指出這中斷了框管的傳力路徑，因此在相鄰的 110 層通高巨柱上加設局部補強，並依三維塔樓模型訂定拆除與替換順序。裙梁不只抵抗側力，也為柱提供側向支撐；拆除後柱的無側撐長度變長，受壓挫屈強度隨之下降，必須在替換完成前以臨時支撐補足。~To create a new stair from the street to level two, three 42 in deep built-up spandrels that clashed with it were lowered, removed and replaced with new built-up plate girders. Public sources note that this interrupted the tube's load path, so local reinforcing was added to the adjacent full-height columns, and the demolition and replacement sequence followed a three-dimensional tower model. Spandrels do not only resist lateral load; they also brace the columns, so removing them lengthens the unbraced length and reduces buckling strength, which must be made up with temporary bracing until replacement is complete.",
+      "model": "AISC 柱強度：A = 0.0488 m²、I = 5.37×10⁻⁴ m⁴、F_y = 345 MPa、P_y ≈ 16,840 kN。無側撐長 3.91 m 時 P_e ≈ 69,300 kN，P_y/P_e ≈ 0.243，P_n = 0.658^0.243×P_y ≈ 15,200 kN；裙梁拆除使長度變 7.82 m，P_e ≈ 17,300 kN，P_y/P_e ≈ 0.971，P_n ≈ 11,200 kN，下降約 26%。數值為教學假設。~AISC column strength with A = 0.0488 m², I = 5.37×10⁻⁴ m⁴ and F_y = 345 MPa gives P_y ≈ 16,840 kN. At a 3.91 m unbraced length P_e ≈ 69,300 kN, P_y/P_e ≈ 0.243 and P_n = 0.658^0.243×P_y ≈ 15,200 kN; removing a spandrel doubles the length to 7.82 m, P_e ≈ 17,300 kN, P_y/P_e ≈ 0.971 and P_n ≈ 11,200 kN, about 26% less. Values are teaching assumptions.",
+      "verify": "拆除前以三維模型檢核每個拆除步驟的柱與相鄰構件需求容量比，臨時支撐安裝並驗收後才可切割；施工期間量測相鄰柱應變與垂直度，新裙梁接合完成並檢驗後才拆除臨時支撐，最後更新竣工圖與結構模型。~Before demolition, check demand-to-capacity ratios of columns and adjacent members for every removal step in the three-dimensional model, and cut only after temporary bracing is installed and accepted; during the work monitor strain and plumbness of adjacent columns, remove temporary bracing only after the new spandrel connections are completed and inspected, then update the as-built drawings and structural model.",
+      "failure": "若先切除裙梁再補臨時支撐，柱在短時間內處於較長的無側撐狀態，遇到強風或施工荷載可能側向挫屈；改造後若竣工圖未更新，下一次改造的團隊會以錯誤的傳力路徑做評估。~Cutting the spandrel before installing temporary bracing leaves the column unbraced over a longer length for a while, and strong wind or construction loads could buckle it; if as-built drawings are not updated afterward, the next renovation team will assess an incorrect load path.",
+      "misconception": "裙梁只是外牆的支承梁，拆除後不影響柱的承載力。~Spandrels only support the façade, so removing one does not affect column capacity.",
+      "practice": "營運中大樓的結構拆除必須有逐步的施工階段分析與臨時支撐計畫，切割作業列為停留點；完工後把變更寫入結構紀錄、竣工圖與模型，作為交接給物業管理與未來改造團隊的正式文件。~Structural demolition in an occupied tower requires step-by-step construction-stage analysis and a temporary bracing plan, with every cut treated as a hold point; afterwards record the change in the structural log, as-built drawings and model as the formal handover to facility management and future renovation teams."
+    }
+  ],
+  "example": "設計練習：以平截面假設估算束筒翼板柱在風傾覆力矩下的軸力。取均布風荷載 w = 1.4 kPa×68.6 m ≈ 96.0 kN/m、高度 H = 442 m，基座力矩 M = wH²/2 = 96.0×442²/2 ≈ 9.38×10⁶ kN·m。抵抗彎矩的翼板線位於 y = ±34.29 m（外牆）與 y = ±11.43 m（內部框架），每線 16 根同斷面柱，Σy² = 16×(2×34.29² + 2×11.43²) ≈ 41,806 m²。角柱軸力 F = M·y/Σy² = 9.38×10⁶×34.29/41,806 ≈ 7,690 kN，內部框架柱約 2,560 kN。若沒有內部框架（單一大管），Σy² = 16×2×34.29² ≈ 37,626 m²，角柱軸力升到約 8,550 kN，增加約 11%；而且單管的剪力遲滯會讓角柱實際軸力再高出更多。若風荷載提高 20%，所有軸力同比例增加。數值為教學假設，忽略腹板柱、剪力遲滯與收進，不代表實際設計。~Design exercise: estimate flange-column axial forces in the bundled tube under wind overturning using plane sections. Take a uniform wind load w = 1.4 kPa×68.6 m ≈ 96.0 kN/m and height H = 442 m, so the base moment M = wH²/2 = 96.0×442²/2 ≈ 9.38×10⁶ kN·m. The flange lines resisting the moment lie at y = ±34.29 m (exterior walls) and y = ±11.43 m (interior frames), each with 16 identical columns, so Σy² = 16×(2×34.29² + 2×11.43²) ≈ 41,806 m². The corner-column force is F = M·y/Σy² = 9.38×10⁶×34.29/41,806 ≈ 7,690 kN, and an interior-frame column carries about 2,560 kN. Without interior frames (one large tube), Σy² = 16×2×34.29² ≈ 37,626 m² and the corner force rises to about 8,550 kN, about 11% more, and shear lag in a single tube would push the real corner force higher still. A 20% increase in wind load raises every axial force by the same proportion. Values are teaching assumptions ignoring web columns, shear lag and setbacks, not the actual design.",
+  "history": "1969 年希爾斯公司委託 SOM 設計總部大樓，建築師 Bruce Graham 與結構工程師 Fazlur Khan 提出束筒概念：把九個可各自獨立成立的鋼框管綁在一起，並讓管筒在不同高度終止。1970 年 8 月動工，1973 年 5 月結構封頂，1974 年完工並開放觀景台，此後二十多年保持世界最高建築紀錄；公開資料指出其單位面積用鋼量低於早期的帝國大廈。2009 年更名為威利斯大樓，2017 至 2020 年在大樓持續營運下由 Thornton Tomasetti 與 Gensler 完成底座改造。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~In 1969 Sears commissioned SOM to design its headquarters; architect Bruce Graham and structural engineer Fazlur Khan proposed the bundled tube, tying together nine steel framed tubes that could each stand alone and letting them stop at different heights. Ground was broken in August 1970, the structure topped out in May 1973 and the tower was completed with its observation deck in 1974, remaining the world's tallest building for more than two decades; public sources note that it used less steel per unit floor area than the earlier Empire State Building. It was renamed Willis Tower in 2009, and from 2017 to 2020 Thornton Tomasetti and Gensler carried out a base repositioning while the tower stayed in operation. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "建築高度 442.1 m，含天線至頂 527 m，地上 108 層、地下 3 層~Architectural height 442.1 m, 527 m to antenna tip, 108 floors above ground and 3 below",
+    "九個 75 ft（22.9 m）見方鋼框管組成 225 ft（68.6 m）見方平面~Nine 75 ft (22.9 m) square steel framed tubes form a 225 ft (68.6 m) square plan",
+    "管筒分別在 50、66、90 層終止，只有兩管升到 108 層~Tubes terminate at floors 50, 66 and 90, with only two reaching floor 108",
+    "鋼材約 76,000 美噸，約每平方英尺 33 磅，帝國大廈約 42 磅~About 76,000 short tons of steel, about 33 lb per square foot versus about 42 lb for the Empire State Building",
+    "樓板桁架跨度 75 ft、深 40 in、間距 15 ft，層高 12 ft 10 in~Floor trusses span 75 ft, 40 in deep at 15 ft centres, with a 12 ft 10 in storey height",
+    "鋼構安裝約每週 2 層，柱段為 2 層樓高~Steel erected at about 2 floors per week with 2-storey column pieces",
+    "1970 年動工，1974 年完工~Construction began in 1970 and was completed in 1974",
+    "2017–2020 年底座改造使用 72 根轉換柱與約 80 根轉換梁，未新增基礎~The 2017–2020 base repositioning used 72 transfer columns and about 80 transfer girders without new foundations",
+    "CTBUH 資料庫列出電梯共 104 部~The CTBUH database lists 104 elevators"
+  ],
+  "timeline": [
+    {
+      "year": "1969",
+      "event": "希爾斯公司委託 SOM，Khan 與 Graham 提出九管束筒方案~Sears commissions SOM, and Khan and Graham propose the nine-tube bundled scheme"
+    },
+    {
+      "year": "1970",
+      "event": "8 月動工，開挖並施作延伸至岩盤的沉箱~Ground is broken in August and caissons are drilled to bedrock"
+    },
+    {
+      "year": "1973",
+      "event": "5 月結構封頂，以每週約兩層的速度完成鋼構~The structure tops out in May after steel erection at about two floors per week"
+    },
+    {
+      "year": "1974",
+      "event": "大樓完工並開放 103 層觀景台~The tower is completed and the level-103 observation deck opens"
+    },
+    {
+      "year": "2017–2020",
+      "event": "營運中進行底座改造，加建商業裙樓並補強既有柱~An occupied base repositioning adds a retail podium and strengthens existing columns"
+    }
+  ],
+  "codes": [
+    "AISC 360：鋼結構建築規範~AISC 360: Specification for Structural Steel Buildings",
+    "AWS D1.1：鋼結構焊接規範~AWS D1.1: Structural Welding Code – Steel",
+    "ASCE 7：建築物最小設計載重~ASCE 7: Minimum Design Loads for Buildings and Other Structures",
+    "芝加哥建築法規（市政法典 Title 14B）~Chicago Building Code (Municipal Code Title 14B)"
+  ],
+  "landmarks": [
+    "芝加哥約翰漢考克中心~John Hancock Center, Chicago",
+    "原世界貿易中心雙塔~Original World Trade Center twin towers",
+    "世界貿易中心一號大樓~One World Trade Center"
+  ],
+  "place": {
+    "name": "威利斯大樓~Willis Tower",
+    "country": "美國~United States",
+    "lat": 41.8789,
+    "lng": -87.6359,
+    "query": "Willis Tower Chicago"
+  },
+  "sources": [
+    {
+      "key": "ctbuh-willis-tower",
+      "title": "CTBUH 摩天大樓中心：威利斯大樓",
+      "titleEn": "CTBUH Skyscraper Center: Willis Tower",
+      "publisher": "Council on Tall Buildings and Urban Habitat",
+      "url": "https://www.skyscrapercenter.com/building/willis-tower/169",
+      "sourceType": "primary",
+      "scope": "高度、樓層、施工與完工年份、結構材料，以及原設計與改造的結構工程師與承包商。",
+      "scopeEn": "Height, floors, construction and completion years, structural material, and the structural engineers and contractors of the original design and the renovation."
+    },
+    {
+      "key": "som-willis-tower",
+      "title": "SOM：威利斯大樓（原希爾斯大樓）專案頁",
+      "titleEn": "SOM: Willis Tower (formerly Sears Tower) project page",
+      "publisher": "Skidmore, Owings & Merrill",
+      "url": "https://www.som.com/projects/willis_tower_formerly_sears_tower",
+      "sourceType": "primary",
+      "scope": "設計者對束筒、九個管筒尺寸、沉箱至岩盤、預組鋼構與外牆熱隔離的說明。",
+      "scopeEn": "Designer's description of the bundled tube, the nine tube dimensions, caissons to bedrock, pre-assembled steel and thermal isolation by the skin."
+    },
+    {
+      "key": "aisc-willis-50",
+      "title": "AISC Modern Steel Construction：束筒先驅威利斯大樓五十週年",
+      "titleEn": "AISC Modern Steel Construction: A Pioneer in Bundled-Tube Design, Iconic Willis Tower Turns 50",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://www.aisc.org/modernsteel/news/2023/may/a-pioneer-in-bundled-tube-design-iconic-willis-tower-turns-50/",
+      "sourceType": "primary",
+      "scope": "用鋼量、單位面積用鋼、安裝速度、柱段長度與四面塔吊的鋼料運送方式。",
+      "scopeEn": "Steel tonnage, steel per unit area, erection speed, column piece length and four-side crane delivery of steel."
+    },
+    {
+      "key": "aisc-ej-sears-floor",
+      "title": "AISC Engineering Journal（1973）：希爾斯大樓複合樓板系統",
+      "titleEn": "AISC Engineering Journal (1973): Composite Floor System for Sears Tower",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://ej.aisc.org/index.php/engj/article/download/212/211",
+      "sourceType": "primary",
+      "scope": "SOM 工程師撰寫：樓板桁架跨度與深度、間距、層高、壓型鋼板與剪力釘、角隅管筒桁架方向交替。",
+      "scopeEn": "Written by SOM engineers: floor-truss span, depth and spacing, storey height, metal deck and studs, alternating truss direction in corner tubes."
+    },
+    {
+      "key": "tt-willis-repositioning",
+      "title": "Thornton Tomasetti：威利斯大樓底座改造專案",
+      "titleEn": "Thornton Tomasetti: Willis Tower Repositioning",
+      "publisher": "Thornton Tomasetti",
+      "url": "https://www.thorntontomasetti.com/project/willis-tower-repositioning",
+      "sourceType": "primary",
+      "scope": "改造範圍、轉換柱與轉換梁數量、既有沉箱容量追蹤、柱補強方法與裙梁調整。",
+      "scopeEn": "Renovation scope, numbers of transfer columns and girders, tracking of existing caisson capacity, column strengthening methods and spandrel changes."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "SOM（Skidmore, Owings & Merrill）",
+      "nameEn": "Skidmore, Owings & Merrill",
+      "business": "建築與結構設計事務所，提出框管與束筒等高層結構系統。",
+      "businessEn": "Architecture and structural engineering practice that developed framed-tube and bundled-tube tall-building systems.",
+      "url": "https://www.som.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "原設計者，束筒概念與 Fazlur Khan 工程遺產的公開資料",
+      "roleEn": "Original designer; public material on the bundled-tube concept and Fazlur Khan's engineering legacy"
+    },
+    {
+      "name": "Thornton Tomasetti",
+      "nameEn": "Thornton Tomasetti",
+      "business": "結構、施工工程與防護設計顧問公司。",
+      "businessEn": "Structural, construction-engineering and protective-design consultancy.",
+      "url": "https://www.thorntontomasetti.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "底座改造的結構與施工工程，營運中改造的傳力路徑管理案例",
+      "roleEn": "Structural and construction engineering of the base repositioning; a case of load-path control in an occupied renovation"
+    },
+    {
+      "name": "Turner 營造（HOCHTIEF 集團）",
+      "nameEn": "Turner Construction Company",
+      "business": "美國大型營造與營建管理公司，為 HOCHTIEF 集團成員。",
+      "businessEn": "Large US builder and construction manager, part of the HOCHTIEF group.",
+      "url": "https://www.turnerconstruction.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "與 Clayco 合組團隊承攬底座改造，施工順序與臨時支撐的實務",
+      "roleEn": "Joint-venture contractor with Clayco for the repositioning; practice in sequencing and temporary support"
+    }
+  ],
+  "related": [
+    "b065",
+    "b026"
+  ],
+  "architectureNodes": [
+    [
+      "九個 22.9 m 鋼框管",
+      "Nine 22.9 m steel framed tubes"
+    ],
+    [
+      "內部框架腹板",
+      "Interior web frames"
+    ],
+    [
+      "50／66／90 層分段收進",
+      "Setbacks at floors 50, 66, 90"
+    ],
+    [
+      "75 ft 複合樓板桁架",
+      "75 ft composite floor trusses"
+    ],
+    [
+      "岩盤嵌入沉箱",
+      "Rock-socketed caissons"
+    ],
+    [
+      "改造轉換柱與補強",
+      "Renovation transfers and strengthening"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      4
+    ]
+  ]
+}

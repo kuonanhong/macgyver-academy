@@ -61,6 +61,29 @@ function opticsPathsMarkup(catalog,zh=true){
 Object.defineProperty(exports, "OPTICS_ROUTES", { enumerable: true, get: () => OPTICS_ROUTES });
 Object.defineProperty(exports, "opticsPathsMarkup", { enumerable: true, get: () => opticsPathsMarkup });
 },
+"structures-paths.js":function(require, exports) {
+'use strict';
+
+// V13 explorer collection: 100 bridges & buildings courses grouped by the
+// learning-map subdivisions written by tools/integrate-structures-v13.py.
+const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const STRUCTURES_ROUTES=[
+ ['st-suspension','SUSPENSION'],['st-cable-stayed','CABLE-STAYED'],['st-arch-viaduct-sea','ARCH · SEA CROSSING'],
+ ['st-bridge-construction','ERECTION'],['st-bridge-components-seismic','BEARINGS · SEISMIC'],['st-bridge-durability-monitoring','MONITORING'],
+ ['st-supertall','SUPERTALL'],['st-tall-systems','TALL SYSTEMS'],['st-landmark-roofs','LONG-SPAN ROOFS'],
+ ['st-concrete-steel','CONCRETE · STEEL'],['st-seismic-precast-fire','SEISMIC · FIRE'],['st-facade-digital','FACADE · DIGITAL']
+];
+function structuresPathsMarkup(catalog,zh=true){
+ const courses=catalog.filter(c=>c.learningTrack==='structures'&&(c.stages?.length||c.stepCount));
+ if(courses.length<100)return '';
+ const total=courses.reduce((n,c)=>n+(c.stepCount||0),0),pick=(z,en)=>zh?z:en;
+ const groups=STRUCTURES_ROUTES.map(([id,label])=>{const list=courses.filter(c=>c.learningSubdiscipline===id);return {id,label,list,title:list[0]?pick(list[0].subcategoryTitle,list[0].subcategoryTitleEn):id}}).filter(g=>g.list.length);
+ return `<section class="packaging-collection structures-collection" aria-labelledby="structuresCollectionTitle"><div class="packaging-collection-head"><div><span class="eyebrow">COLLECTION 13 · BRIDGES × BUILDINGS</span><h2 id="structuresCollectionTitle">${pick('橋樑與建築：從傳力路徑、施工到驗證。','Bridges and buildings: load paths, construction and verification.')}</h2><p>${pick(`${courses.length}門逐步課程 · ${groups.length}個專業子領域 · ${total.toLocaleString()}個學習步驟`,`${courses.length} guided courses · ${groups.length} subdisciplines · ${total.toLocaleString()} learning steps`)}</p></div><a class="button" href="#learning-map">${pick('開啟課程地圖','Open learning map')} ↗</a></div><p>${pick('每門課 5 個階段、40 步：荷載與結構系統、材料與接合、施工與階段控制、試驗與監測、耐久與交接；每一單元再拆成傳力機制、定量算例、試驗驗證與失效診斷。從明石海峽大橋、米約高架橋到台北 101、哈里發塔與雪梨歌劇院，並附關鍵數據、年代、規範與案例比較。每門第一節免費試學。','Each course has 5 stages and 40 steps: loads and structural system, materials and connections, construction and stage control, testing and monitoring, durability and handover; every unit is split into load path, calculation, verification and failure diagnosis. From the Akashi Kaikyō Bridge and Millau Viaduct to Taipei 101, Burj Khalifa and the Sydney Opera House, with key figures, timelines, codes and landmark comparisons. The first section of every course is free.')}</p><p><a href="data/bridges-buildings-100.csv" download>${pick('下載完整中英課程索引','Download bilingual course index')} ↓</a></p><details class="packaging-routes"><summary>${pick(`展開${groups.length}個橋樑與建築子領域`,`Explore ${groups.length} bridge and building subdisciplines`)}</summary><div class="packaging-route-grid">${groups.map(g=>`<article><span class="task-label">${e(g.label)}</span><h3>${e(g.title)}</h3><ol>${g.list.map(c=>`<li><a href="#project/${e(c.id)}">${e(zh?c.title:c.titleEn)}</a></li>`).join('')}</ol></article>`).join('')}</div></details></section>`;
+}
+
+Object.defineProperty(exports, "STRUCTURES_ROUTES", { enumerable: true, get: () => STRUCTURES_ROUTES });
+Object.defineProperty(exports, "structuresPathsMarkup", { enumerable: true, get: () => structuresPathsMarkup });
+},
 "project-icons.js":function(require, exports) {
 'use strict';
 /* V12 project glyphs: data loading, safe inline-SVG rendering and the home-page icon wall.
@@ -567,6 +590,8 @@ function worldVisualFamily(course={}){return course.architectureFamily||'';}
 function motif(family){
  const optics={"telescope": "<path d=\"M-30 18L20-22M-24 26L26-14M20-22L26-14\"/><circle cx=\"-27\" cy=\"22\" r=\"5\"/><path d=\"M-6 6L-14 34M-6 6L4 34\"/>", "microscope": "<path d=\"M-6-34h12v10h-12zM0-24v26M-14 2h28M-10 2l-6 14h32l-6-14M-26 34h52M18 16q10 6 0 18\"/>", "laser": "<rect x=\"-34\" y=\"-12\" width=\"40\" height=\"24\" rx=\"3\"/><path d=\"M6 0H36M28-6L36 0L28 6M-26-12v-6M-14-12v-6\"/>", "accelerator": "<circle r=\"28\"/><circle r=\"20\" stroke-dasharray=\"4 4\"/><path d=\"M28 0l8-4v8z\"/><circle cx=\"-20\" cy=\"-20\" r=\"3\" fill=\"currentColor\"/>", "detector": "<rect x=\"-30\" y=\"-30\" width=\"60\" height=\"60\" rx=\"4\"/><path d=\"M-30-10H30M-30 10H30M-10-30V30M10-30V30\"/><path d=\"M-36 30L0 0\" stroke-dasharray=\"3 3\"/>", "spectrometer": "<path d=\"M-34 0H-12M-12 0L-4-14L4 0Z\"/><path d=\"M4 0L34-18M4 0L34-6M4 0L34 6M4 0L34 18\"/>", "interferometer": "<path d=\"M-30 0H30M0-30V30M-8-8L8 8\"/><rect x=\"26\" y=\"-6\" width=\"6\" height=\"12\"/><rect x=\"-6\" y=\"-34\" width=\"12\" height=\"6\"/>", "gw": "<path d=\"M-30 30H34M-30 30V-34\"/><circle cx=\"34\" cy=\"30\" r=\"4\"/><circle cx=\"-30\" cy=\"-34\" r=\"4\"/><path d=\"M-24 6q8-8 16 0t16 0 16 0\"/>", "radio": "<path d=\"M-30-10q30 50 60 0M0 14V34M-14 34h28M0 14V-20M-6-20h12\"/>", "vacuum": "<circle r=\"22\"/><path d=\"M-22 0h-12M22 0h12M0 22v12M-8 34h16\"/><circle r=\"8\" stroke-dasharray=\"2 3\"/>", "cryo": "<path d=\"M0-32V32M-28-16L28 16M-28 16L28-16M-6-26L0-32L6-26M-6 26L0 32L6 26\"/>", "coating": "<path d=\"M-32 18H32M-32 10H32M-32 2H32M-32-6H32M-20-34L-4-8M4-8L20-34\"/>", "lithography": "<ellipse cx=\"0\" cy=\"-24\" rx=\"24\" ry=\"6\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"18\" ry=\"5\"/><path d=\"M-30 24H30M-24 30H24\"/><path d=\"M-10-34L-2 20M10-34L2 20\" stroke-dasharray=\"3 3\"/>", "stage": "<rect x=\"-32\" y=\"-12\" width=\"64\" height=\"30\" rx=\"3\"/><rect x=\"-18\" y=\"-26\" width=\"36\" height=\"14\" rx=\"2\"/><path d=\"M-36 30H36M-20 18v12M20 18v12\"/>", "inertial": "<circle r=\"26\"/><ellipse rx=\"26\" ry=\"9\"/><circle r=\"4\" fill=\"currentColor\"/><path d=\"M26 0l6-6M26 0l6 6\"/>", "electron": "<path d=\"M-14-34h28l-6 14h-16zM-8-20v40M8-20v40M-20 24h40M-12-4h24M-12 8h24\"/>", "fabrication": "<path d=\"M-30 10q30-24 60 0M-30 10H30M0-16V-4\"/><circle cx=\"0\" cy=\"-24\" r=\"8\"/>", "modulator": "<rect x=\"-24\" y=\"-24\" width=\"48\" height=\"48\"/><path d=\"M-24-8H24M-24 8H24M-8-24V24M8-24V24M-36-30L-24-12M36 30L24 12\"/>", "imaging": "<path d=\"M0-30q14 30 0 60q-14-30 0-60z\"/><path d=\"M-34-10L0 0L34-10M-34 10L0 0L34 10\"/>"};
  if(optics[family])return optics[family];
+ const structures={"suspension": "<path d=\"M-38 14H38M-22 14V-28M22 14V-28M-22-26Q0 14 22-26M-38 2Q-30-10-22-26M38 2Q30-10 22-26\"/><path d=\"M-12 14V-8M-4 14V-11M4 14V-11M12 14V-8\" stroke-dasharray=\"2 2\"/>", "cablestayed": "<path d=\"M-38 16H38M0 30V-32M0-28L-34 16M0-24L-22 16M0-20L-10 16M0-28L34 16M0-24L22 16M0-20L10 16M-8 30H8\"/>", "arch": "<path d=\"M-38-14H38M-30 26Q0-50 30 26M-18-14V2M-6-14V-10M6-14V-10M18-14V2M-38 26H-26M26 26H38\"/>", "viaduct": "<path d=\"M-38-10H38M-28-10V30M-10-10V30M10-10V30M28-10V30M-10-10V-26M10-10V-26M-10-24L-22-10M10-24L22-10M-38 30H38\"/>", "segmental": "<path d=\"M0-14V30M-34-14H34M-34-8Q0 4 34-8M-34-14V-8M34-14V-8M-14 30H14\"/><rect x=\"28\" y=\"-24\" width=\"9\" height=\"10\"/><path d=\"M-28-14V-8M-20-14V-6M-12-14V-4M12-14V-4M20-14V-6\"/>", "deck": "<path d=\"M-36-14H36M-30-14l4 14h8l4-14M-10-14l4 14h8l4-14M10-14l4 14h8l4-14M-36 12H36M-36-14V12M36-14V12\"/>", "cable": "<circle r=\"26\"/><circle r=\"5\"/><circle cx=\"10\" r=\"5\"/><circle cx=\"-10\" r=\"5\"/><circle cx=\"5\" cy=\"9\" r=\"5\"/><circle cx=\"-5\" cy=\"9\" r=\"5\"/><circle cx=\"5\" cy=\"-9\" r=\"5\"/><circle cx=\"-5\" cy=\"-9\" r=\"5\"/><path d=\"M26 0H38\"/>", "bearing": "<rect x=\"-30\" y=\"-20\" width=\"60\" height=\"8\"/><rect x=\"-30\" y=\"12\" width=\"60\" height=\"8\"/><path d=\"M-26-12H26M-26-6H26M-26 0H26M-26 6H26M-26 12H26\"/><rect x=\"-6\" y=\"-12\" width=\"12\" height=\"24\"/><path d=\"M-38-28H38M-38 28H38\"/>", "pier": "<path d=\"M-16-34H16M-8-34V30M8-34V30M-22 30H22\"/><path d=\"M-12 22H12M-12 14H12M-12 6H12\" stroke-dasharray=\"3 2\"/><path d=\"M-36-34H36\"/>", "foundation": "<path d=\"M-34-14H34V-4H-34ZM-24-4V32M-8-4V32M8-4V32M24-4V32M-38 8q9-6 18 0t18 0 18 0 18 0M0-14V-30\"/>", "tower": "<path d=\"M-14 34V-6H-10V-20H-6V-34H6V-20H10V-6H14V34ZM-26 34H26M-14 18H14M-14 4H14\"/>", "outrigger": "<path d=\"M-6-34V34M6-34V34M-30-34V34M30-34V34M-30-10L-6-2M30-10L6-2M-30-2L-6-10M30-2L6-10M-30-10H-6M6-10H30M-30-2H-6M6-2H30M-36 34H36\"/>", "damper": "<path d=\"M-30-34H30M-14-34L-6 2M14-34L6 2M-30 30H30M-22 14H-12M12 14H22M-30-34V30M30-34V30\"/><circle cx=\"0\" cy=\"14\" r=\"12\"/>", "roof": "<path d=\"M-36 0L-24-12L-12 0L0-12L12 0L24-12L36 0M-36 0H36M-24-12H24M-36 0V30M36 0V30M-24-12L-36 0M24-12L36 0M-40 30H40\"/>", "membrane": "<path d=\"M-34 24L-20-26L0 4L20-26L34 24M-20-26V24M20-26V24M-34 24Q0 6 34 24M-20-26Q0-6 20-26\"/>", "shell": "<path d=\"M-34 24Q-28-20-10-28Q-18 0-6 24ZM-6 24Q0-14 16-24Q8 0 18 24ZM18 24Q24-4 34-10Q28 6 32 24ZM-40 24H40\"/>", "facade": "<rect x=\"-28\" y=\"-32\" width=\"56\" height=\"64\"/><path d=\"M-28-16H28M-28 0H28M-28 16H28M-10-32V32M10-32V32\"/><path d=\"M-10-16L10 0M-36-32V32\" stroke-dasharray=\"2 2\"/>", "connection": "<rect x=\"-36\" y=\"-10\" width=\"72\" height=\"20\"/><rect x=\"-14\" y=\"-18\" width=\"28\" height=\"36\"/><circle cx=\"-7\" cy=\"-10\" r=\"3\"/><circle cx=\"7\" cy=\"-10\" r=\"3\"/><circle cx=\"-7\" cy=\"10\" r=\"3\"/><circle cx=\"7\" cy=\"10\" r=\"3\"/><path d=\"M0-18V18\" stroke-dasharray=\"2 2\"/>", "concrete": "<path d=\"M-30 30V-30M30 30V-30M-22-30V30M22-30V30M-30-20H30M-30-4H30M-30 12H30M-36 30H36\"/><circle cx=\"-14\" cy=\"-12\" r=\"2.5\"/><circle cx=\"0\" cy=\"-12\" r=\"2.5\"/><circle cx=\"14\" cy=\"-12\" r=\"2.5\"/><circle cx=\"-14\" cy=\"4\" r=\"2.5\"/><circle cx=\"0\" cy=\"4\" r=\"2.5\"/><circle cx=\"14\" cy=\"4\" r=\"2.5\"/>", "survey": "<path d=\"M0-10L-16 30M0-10L16 30M0-10V30M-8-22h16v12h-16zM8-16L30-26\"/><circle cx=\"32\" cy=\"-27\" r=\"4\"/><path d=\"M-36 30H36\"/>", "modular": "<rect x=\"-30\" y=\"4\" width=\"28\" height=\"24\"/><rect x=\"2\" y=\"4\" width=\"28\" height=\"24\"/><rect x=\"-14\" y=\"-24\" width=\"28\" height=\"20\"/><path d=\"M0-24V-36M-14-24L0-36L14-24M-36 28H36\"/>", "fire": "<path d=\"M-30 30V-30H30V30ZM-30 0H30M0 26q-12-10-4-22q2 8 8 6q-2-8 4-14q10 14 2 30z\"/>", "elevator": "<rect x=\"-22\" y=\"-34\" width=\"44\" height=\"68\"/><rect x=\"-16\" y=\"-6\" width=\"20\" height=\"22\"/><rect x=\"10\" y=\"-20\" width=\"6\" height=\"14\"/><path d=\"M-6-34V-6M13-34V-20M-22 0H-30M22 0H30\"/>"};
+ if(structures[family])return structures[family];
  if(/qpu|quantum/.test(family))return '<circle cx="0" cy="0" r="25"/><ellipse cx="0" cy="0" rx="36" ry="11" transform="rotate(35)"/><ellipse cx="0" cy="0" rx="36" ry="11" transform="rotate(-35)"/><circle cx="0" cy="0" r="4" fill="currentColor"/>';
  if(family==='fusion')return '<ellipse rx="34" ry="23"/><ellipse rx="22" ry="13"/><path d="M-34-5v10M34-5v10M-12-22v9M12-22v9M-12 13v9M12 13v9"/>';
  if(family==='wind')return '<circle r="5"/><path d="M0 5v36M0-5L8-35-4-36Z M4 2L33 13 30 24Z M-4 2L-29 21-33 11Z"/>';
@@ -2478,6 +2503,7 @@ const LEARNING_TRACKS = [
   {id:'mobility', icon:'motion', title:pair('機械、交通與航太','Mechanical, transport & aerospace'), description:pair('製造、車輛、鐵路、船舶、航空與太空專案。','Manufacturing, vehicles, railways, ships, aviation and space projects.'), boundary:pair('以結構、運動、控制與驗證串連；不同載具的工作環境與法規不同。','Connect structures, motion, control and validation; operating environments and regulations differ between vehicles.')},
   {id:'materials', icon:'materials', title:pair('材料與冶金','Materials & metallurgy'), description:pair('金屬、陶瓷、複材、玻璃與材料表徵。','Metals, ceramics, composites, glass and characterization.'), boundary:pair('比較成分、微結構、製程與性質；材料證據不能只由外觀判斷。','Compare composition, microstructure, processing and properties; appearance alone is not material evidence.')},
   {id:'optics', icon:'science', title:pair('光學與精密儀器','Optics & precision instruments'), description:pair('微影光學、光學設計與加工、鍍膜、顯微、光譜、精密量測、加速器、偵測器與天文儀器的 101 門逐步課程。','101 guided courses on lithography optics, optical design and fabrication, coatings, microscopy, spectroscopy, precision metrology, accelerators, detectors and astronomical instruments.'), boundary:pair('以物理原理、定量模型、量測驗證與失效診斷比較；儀器尺度與允收條件各自不同。','Compare through physics, quantitative models, verification and failure diagnosis; instrument scales and acceptance conditions differ.')},
+  {id:'structures', icon:'bridge', title:pair('橋樑與建築','Bridges & buildings'), description:pair('懸索橋、斜張橋、拱橋與跨海通道，超高層、大跨度屋蓋、減振、耐震、帷幕牆與數位營建的 100 門逐步課程。','100 guided courses on suspension, cable-stayed and arch bridges, sea crossings, supertall towers, long-span roofs, damping, seismic design, façades and digital construction.'), boundary:pair('共同點是荷載路徑、施工階段與量測驗證；橋梁與建築的荷載組合、規範與允收條件需分開檢核。','Load paths, construction stages and measured verification connect the courses; bridges and buildings use different load combinations, codes and acceptance criteria.')},
   {id:'science', icon:'science', title:pair('科學設施與精密儀器','Research facilities & precision instruments'), description:pair('加速器、望遠鏡、感測與大型科學設施。','Accelerators, telescopes, sensing and large research facilities.'), boundary:pair('以訊號、校準、不確定度與系統整合比較；不同觀測尺度需要不同儀器。','Compare signals, calibration, uncertainty and integration; different observation scales require different instruments.')},
   {id:'process', icon:'process', title:pair('工業製程與醫療工程','Industrial processes & biomedical engineering'), description:pair('單元操作、製程系統與生醫工程設計。','Unit operations, process systems and biomedical engineering design.'), boundary:pair('比較物料、能量、品質與驗證；工業產品與生醫應用的證據要求不同。','Compare material, energy, quality and validation; industrial products and biomedical uses require different evidence.')},
   {id:'other', icon:'compass', title:pair('跨領域與其他工程','Cross-disciplinary & other engineering'), description:pair('保留完整目錄中的其他與新加入主題。','Retain other and newly added topics from the complete catalog.'), boundary:pair('先確認系統邊界、輸入輸出與驗證證據，再選擇相關領域。','Identify system boundaries, inputs, outputs and validation evidence before selecting related disciplines.')}
@@ -2498,6 +2524,18 @@ const LEARNING_SUBDISCIPLINES = [
   subdivision('optics-astronomical','optics','天文儀器與科學感測器','Astronomical instruments and scientific sensors',/自適應|adaptive|主鏡|primary.?mirror|共相|co.?phas|導引星|guide.?star|天文|astronom|電波|radio|重力波干涉儀懸吊|suspension|紅外偵測|infrared|單光子|single.?photon|ccd|cmos/i),
   subdivision('optics-facilities-accelerators','optics','大型加速器與光源設施','Large accelerator and light-source facilities',/cern|對撞|collider|linac4|同步加速器|synchrotron|反質子|antiproton|光子源|photon.?source|光源|light.?source|esrf|diamond|spring-8|lcls|xfel/i),
   subdivision('optics-facilities-observatories','optics','大型望遠鏡與重力波觀測站','Large telescopes and gravitational-wave observatories',/vlt|elt|alma|ntt|vista|ligo|virgo|kagra|fast/i),
+  subdivision('st-suspension','structures','懸索橋巨作與主纜系統','Suspension bridges and main-cable systems',/懸索|suspension|主纜|main.?cable/i),
+  subdivision('st-cable-stayed','structures','斜張橋與斜索系統','Cable-stayed bridges and stay systems',/斜張|cable.?stayed|斜索|stay/i),
+  subdivision('st-arch-viaduct-sea','structures','拱橋、高架橋與跨海通道','Arch bridges, viaducts and sea crossings',/拱|arch|高架|viaduct|跨海|sea.?crossing/i),
+  subdivision('st-bridge-construction','structures','橋梁施工工法與大型架設','Bridge construction methods and heavy erection',/懸臂|cantilever|頂推|launch|轉體|rotation|架設|erection/i),
+  subdivision('st-bridge-components-seismic','structures','支承、伸縮縫與橋梁耐震','Bearings, joints and bridge seismic design',/支承|bearing|伸縮縫|expansion.?joint|塑鉸|plastic.?hinge/i),
+  subdivision('st-bridge-durability-monitoring','structures','橋梁耐久、檢測與健康監測','Bridge durability, inspection and health monitoring',/沖刷|scour|灌漿|grout|疲勞|fatigue|監測|monitor/i),
+  subdivision('st-supertall','structures','超高層建築巨作','Supertall building landmarks',/超高層|supertall|大廈|tower/i),
+  subdivision('st-tall-systems','structures','高層結構系統與減振','Tall-building structural systems and damping',/外伸臂|outrigger|斜交網格|diagrid|阻尼|damper/i),
+  subdivision('st-landmark-roofs','structures','地標建築與大跨度屋蓋','Landmark buildings and long-span roofs',/屋蓋|roof|薄殼|shell|膜|membrane|索網|cable.?net/i),
+  subdivision('st-concrete-steel','structures','混凝土與鋼構施工技術','Concrete and steel construction technology',/混凝土|concrete|焊接|weld|螺栓|bolt|塗裝|coating/i),
+  subdivision('st-seismic-precast-fire','structures','建築耐震、預鑄與防火','Building seismic, precast and fire safety',/隔震|isolation|預鑄|precast|防火|fire|倒塌|collapse/i),
+  subdivision('st-facade-digital','structures','帷幕牆、垂直運輸與數位營建','Facades, vertical transport and digital construction',/帷幕|curtain|幕牆|facade|電梯|elevator|bim|掃描|scan|測量|survey|模組|modular/i),
   subdivision('quantum-superconducting','quantum','超導量子位元','Superconducting qubits',/超導|superconduct|transmon|fluxonium/),
   subdivision('quantum-ion','quantum','囚禁離子','Trapped ions',/囚禁離子|離子阱|trapped.?ion|ion.?trap/),
   subdivision('quantum-neutral','quantum','中性原子','Neutral atoms',/中性原子|rydberg|neutral.?atom/),
@@ -2537,6 +2575,8 @@ const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
+  {id:'bridges-span',title:pair('從橋梁構件到跨海巨作','From bridge components to record spans'),goal:pair('先學支承、伸縮縫與主纜、斜索，再比較懸索橋、斜張橋與跨海通道。','Start with bearings, joints, main cables and stays, then compare suspension, cable-stayed and sea-crossing projects.'),courses:['b045','b044','b036','b037','b038','b040','b003','b004','b010','b011']},
+  {id:'tall-buildings',title:pair('從高層結構系統到超高層巨作','From tall-building systems to supertall landmarks'),goal:pair('先學外伸臂、斜交網格、阻尼器與差異縮短，再比較台北 101、哈里發塔與上海中心大廈。','Learn outriggers, diagrids, dampers and differential shortening, then compare Taipei 101, Burj Khalifa and Shanghai Tower.'),courses:['b063','b064','b066','b068','b074','b075','b021','b022','b023','b026']},
   {id:'optics-imaging',title:pair('從透鏡設計到先進顯微','From lens design to advanced microscopy'),goal:pair('先學光學設計與加工、鍍膜，再進入顯微、光譜與精密量測。','Start with optical design, fabrication and coatings, then move to microscopy, spectroscopy and precision metrology.'),courses:['a405','a406','a407','a412','a426','a429','a430','a439']},
   {id:'optics-facilities',title:pair('從加速腔到大型光源與望遠鏡','From RF cavities to light sources and telescopes'),goal:pair('比較加速器、光束線、偵測器與大型天文設施的系統整合。','Compare system integration across accelerators, beamlines, detectors and large observatories.'),courses:['a458','a456','a462','a485','a465','a468','a493','a497']},
   {id:'compute',title:pair('從處理器到 AI 與超級電腦','From processors to AI and supercomputers'),goal:pair('沿計算、記憶體、資料流與叢集介面比較。','Compare compute, memory, dataflow and cluster interfaces.'),courses:['a302','a303','a304','a305','a388','a392']},
@@ -3006,16 +3046,30 @@ Object.defineProperty(exports, "bindVendors", { enumerable: true, get: () => bin
 },
 "pricing.js":function(require, exports) {
 'use strict';
-/* V12 regional pricing. Plans are defined in TWD (data/pricing.json); other
- * currencies are TWD × the weekly FX snapshot (data/fx.json), rounded UP to
- * the currency's minor unit. The server recomputes every charge, so these
- * figures are display estimates until the checkout quote is returned.
- * Location is inferred only from the browser time zone and language region —
- * no GPS or IP lookup. The learner can override the currency.
+/* V13 regional pricing (HuaTuo-style exchange). Plans are defined in TWD
+ * (data/pricing.json: NT$299 / 30 days, NT$2,490 / 365 days). Other currencies
+ * are TWD × the most recent exchange rate, rounded UP to a tidy price with the
+ * same rule as the server (supabase/functions/_shared/pricing.ts):
+ *   zero-decimal currencies → whole units, then 10 / 100 / 1,000 steps for
+ *   amounts ≥ 1,000 / 10,000 / 100,000;  two-decimal currencies ≥ 100 → whole
+ *   units, below 100 → the next .49 or .99.
+ * Rate sources, newest first: the site's Supabase fx_rates table (the rates the
+ * server charges with), then the open ExchangeRate-API feed fetched in the
+ * browser and cached for 12 hours, then the bundled weekly data/fx.json.
+ * The region follows the viewer's language (語系): a language tied to one
+ * country decides the currency; otherwise the time zone and the language region
+ * decide. No GPS or IP lookup. The learner can override the currency, and the
+ * server recomputes every charge.
  */
 const CURRENCY_KEY = 'mg-currency-v12';
+const LIVE_KEY = 'mg-fx-live-v13';
+const LIVE_MAX_AGE_MS = 12 * 3600 * 1000;
+const LIVE_SOURCES = [
+  {url: 'https://open.er-api.com/v6/latest/TWD', name: 'ExchangeRate-API open access (open.er-api.com) — Rates By Exchange Rate API', attribution: 'https://www.exchangerate-api.com'},
+  {url: 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/twd.json', name: 'fawazahmed0/exchange-api (jsDelivr)', attribution: 'https://github.com/fawazahmed0/exchange-api'}
+];
 const DEFAULT_PRICING = {
-  version: 12, baseCurrency: 'TWD',
+  version: 13, baseCurrency: 'TWD',
   plans: [
     {id: 'all-30', title: '30 天學習通行證', titleEn: '30-day learning pass', amountTwd: 299, durationDays: 30},
     {id: 'all-365', title: '365 天學習通行證', titleEn: '365-day learning pass', amountTwd: 2490, durationDays: 365}
@@ -3024,7 +3078,7 @@ const DEFAULT_PRICING = {
   chargeCurrencies: {paypal: ['AUD','CAD','CHF','CZK','DKK','EUR','GBP','HKD','HUF','ILS','JPY','MXN','NOK','NZD','PHP','PLN','SEK','SGD','THB','TWD','USD'], ecpay: ['TWD']},
   fallbackChargeCurrency: 'USD',
   zeroDecimal: ['BIF','CLP','DJF','GNF','HUF','IDR','ISK','JPY','KMF','KRW','MGA','PYG','RWF','TWD','UGX','VND','VUV','XAF','XOF','XPF'],
-  fxMaxAgeDays: 10
+  fxMaxAgeDays: 3
 };
 /* Time zone → ISO country (major zones; others fall back to language region). */
 const ZONE_COUNTRY = {
@@ -3042,33 +3096,105 @@ const COUNTRY_CURRENCY = Object.assign(Object.fromEntries(EURO.map(c => [c, 'EUR
   AU:'AUD', NZ:'NZD', FJ:'FJD', ZA:'ZAR', NG:'NGN', KE:'KES', EG:'EGP', MA:'MAD', DZ:'DZD', TN:'TND', GH:'GHS', ET:'ETB', TZ:'TZS', UG:'UGX', RW:'RWF', SN:'XOF', CI:'XOF'
 });
 /* Language without a region → most common country for currency purposes. */
-const LANGUAGE_COUNTRY = {ja:'JP', ko:'KR', de:'DE', fr:'FR', it:'IT', es:'ES', pt:'BR', nl:'NL', sv:'SE', da:'DK', no:'NO', nb:'NO', fi:'FI', pl:'PL', cs:'CZ', sk:'SK', hu:'HU', ro:'RO', bg:'BG', el:'GR', tr:'TR', ru:'RU', uk:'UA', he:'IL', ar:'SA', fa:'IR', hi:'IN', bn:'BD', th:'TH', vi:'VN', id:'ID', ms:'MY', fil:'PH', tl:'PH', km:'KH', lo:'LA', my:'MM', mn:'MN', kk:'KZ', uz:'UZ', az:'AZ', ka:'GE', hy:'AM', sw:'KE', am:'ET', zu:'ZA', af:'ZA', is:'IS', et:'EE', lv:'LV', lt:'LT', sl:'SI', hr:'HR', sr:'RS', mk:'MK', sq:'AL', en:'US'};
+/* Languages spoken mainly in one country: the language alone decides the region. */
+const SINGLE_COUNTRY_LANGUAGES = new Set(['ja','ko','th','vi','id','he','el','tr','pl','cs','sk','hu','ro','bg','uk','ka','hy','az','kk','uz','mn','km','lo','my','ne','si','is','et','lv','lt','sl','hr','sr','mk','sq','bs','da','sv','no','nb','fi','fil','tl','am','hi','mr','gu','kn','ml','te','fa','af','zu','ha','yo','ig','so','mt','ga','cy','eu','gl','ca']);
+const LANGUAGE_COUNTRY = {ja:'JP', ko:'KR', de:'DE', fr:'FR', it:'IT', es:'ES', pt:'BR', nl:'NL', sv:'SE', da:'DK', no:'NO', nb:'NO', fi:'FI', pl:'PL', cs:'CZ', sk:'SK', hu:'HU', ro:'RO', bg:'BG', el:'GR', tr:'TR', ru:'RU', uk:'UA', he:'IL', ar:'SA', fa:'IR', hi:'IN', bn:'BD', th:'TH', vi:'VN', id:'ID', ms:'MY', fil:'PH', tl:'PH', km:'KH', lo:'LA', my:'MM', mn:'MN', kk:'KZ', uz:'UZ', az:'AZ', ka:'GE', hy:'AM', sw:'KE', am:'ET', zu:'ZA', af:'ZA', is:'IS', et:'EE', lv:'LV', lt:'LT', sl:'SI', hr:'HR', sr:'RS', mk:'MK', sq:'AL', bs:'BA', ne:'NP', si:'LK', mr:'IN', gu:'IN', kn:'IN', ml:'IN', te:'IN', ta:'IN', pa:'IN', ur:'PK', ha:'NG', yo:'NG', ig:'NG', so:'SO', mt:'MT', ga:'IE', cy:'GB', eu:'ES', gl:'ES', ca:'ES', zh:'TW', en:'US'};
 
 let pricing = DEFAULT_PRICING, fx = {base: 'TWD', rates: {TWD: 1}, updatedAt: null, status: 'missing'}, loaded = null;
 
 function storage() { try { return globalThis.localStorage; } catch { return null; } }
 function country(tag) { const m = String(tag || '').replaceAll('_', '-').match(/-([A-Za-z]{2})(?:-|$)/); return m ? m[1].toUpperCase() : ''; }
 
-/** Best-effort viewer country from time zone, then language region. */
-function detectCountry(env = globalThis) {
+let languageProvider = () => '';
+/** The app tells pricing which interface language the viewer chose (語系). */
+function setLanguageProvider(fn) { languageProvider = typeof fn === 'function' ? fn : () => ''; }
+
+/** Best-effort viewer country: interface language first (like HuaTuo), then time zone, then browser language region. */
+function detectCountry(env = globalThis, uiLanguage = languageProvider()) {
   let zone = '';
   try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch {}
+  const ui = String(uiLanguage || '').replaceAll('_', '-');
+  const uiRegion = country(ui), uiBase = ui.toLowerCase().split('-')[0];
+  if (uiRegion && uiRegion !== 'HANT' && uiRegion !== 'HANS') return {country: uiRegion, basis: 'language', zone};
+  if (uiBase && SINGLE_COUNTRY_LANGUAGES.has(uiBase) && LANGUAGE_COUNTRY[uiBase]) return {country: LANGUAGE_COUNTRY[uiBase], basis: 'language', zone};
   if (ZONE_COUNTRY[zone]) return {country: ZONE_COUNTRY[zone], basis: 'timezone', zone};
   const langs = [...(env.navigator?.languages || []), env.navigator?.language].filter(Boolean);
   for (const tag of langs) { const c = country(tag); if (c) return {country: c, basis: 'language', zone}; }
-  const base = String(langs[0] || 'en').toLowerCase().split('-')[0];
+  const base = uiBase || String(langs[0] || 'en').toLowerCase().split('-')[0];
   return {country: LANGUAGE_COUNTRY[base] || 'US', basis: 'language-default', zone};
 }
 function currencyForCountry(code) { return COUNTRY_CURRENCY[String(code || '').toUpperCase()] || 'USD'; }
 
-async function loadPricing({fetchImpl = globalThis.fetch} = {}) {
+function cleanRates(raw) {
+  const out = {};
+  for (const [k, v] of Object.entries(raw || {})) { const c = String(k).toUpperCase(), n = Number(v); if (/^[A-Z]{3}$/.test(c) && Number.isFinite(n) && n > 0) out[c] = n; }
+  out.TWD = 1;
+  return out;
+}
+function saneRates(rates) { return Object.keys(rates).length >= 20 && rates.USD > 0.005 && rates.USD < 0.1; }
+function newer(candidate) { return Date.parse(candidate.updatedAt || '') > Date.parse(fx.updatedAt || '') || !fx.updatedAt; }
+function adopt(candidate) {
+  if (!candidate || !saneRates(candidate.rates)) return false;
+  if (!newer(candidate) && candidate.authoritative !== true) return false;
+  fx = candidate;
+  try { globalThis.dispatchEvent?.(new CustomEvent('mg:fx-updated', {detail: {source: fx.source, updatedAt: fx.updatedAt}})); } catch {}
+  return true;
+}
+/** Rates the server charges with (Supabase fx_rates, readable with the public anon key). */
+async function cloudRates(fetchImpl) {
+  const cfg = globalThis.MG_CONFIG || globalThis.MACGYVER_CONFIG || {};
+  const url = String(cfg.supabaseUrl || '').replace(/\/$/, ''), key = cfg.supabaseAnonKey || cfg.supabasePublishableKey || '';
+  if (!/^https:\/\//.test(url) || !key) return null;
+  const rows = await fetchImpl(`${url}/rest/v1/fx_rates?select=currency,per_twd,updated_at`, {headers: {apikey: key, authorization: `Bearer ${key}`}}).then(r => { if (!r.ok) throw Error(); return r.json(); });
+  if (!Array.isArray(rows) || !rows.length) return null;
+  const rates = cleanRates(Object.fromEntries(rows.map(r => [r.currency, r.per_twd])));
+  const updatedAt = rows.filter(r => r.currency !== 'TWD').map(r => r.updated_at).sort().pop() || null;
+  if (!updatedAt || (Date.now() - Date.parse(updatedAt)) > (pricing.fxMaxAgeDays || 3) * 86400000) return null;
+  return {version: 13, base: 'TWD', status: 'server', authoritative: true, updatedAt, source: 'Site server rates (Supabase fx_rates, refreshed every 12 hours)', rates};
+}
+/** Browser-side live rates with a 12-hour cache, as in the HuaTuo academy. */
+async function liveRates(fetchImpl) {
+  try {
+    const cached = JSON.parse(storage()?.getItem(LIVE_KEY) || 'null');
+    if (cached?.rates && Date.now() - Number(cached.fetchedAt || 0) < LIVE_MAX_AGE_MS && saneRates(cleanRates(cached.rates))) return {...cached, rates: cleanRates(cached.rates)};
+  } catch {}
+  for (const src of LIVE_SOURCES) {
+    try {
+      const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+      const timer = ctrl ? setTimeout(() => ctrl.abort(), 6000) : null;
+      const doc = await fetchImpl(src.url, {cache: 'no-store', signal: ctrl?.signal}).then(r => { if (!r.ok) throw Error(); return r.json(); }).finally(() => timer && clearTimeout(timer));
+      let rates, updatedAt;
+      if (doc?.result === 'success' && doc.base_code === 'TWD') { rates = cleanRates(doc.rates); updatedAt = new Date(Number(doc.time_last_update_unix) * 1000).toISOString(); }
+      else if (doc?.twd && doc.date) { rates = cleanRates(doc.twd); updatedAt = `${doc.date}T00:00:00Z`; }
+      if (!rates || !saneRates(rates)) continue;
+      const live = {version: 13, base: 'TWD', status: 'live', updatedAt, fetchedAt: Date.now(), source: src.name, attribution: src.attribution, rates};
+      try { storage()?.setItem(LIVE_KEY, JSON.stringify(live)); } catch {}
+      return live;
+    } catch {}
+  }
+  return null;
+}
+let refreshing = null;
+/** Look for newer rates without blocking the page for long. */
+function refreshRates({fetchImpl = globalThis.fetch, waitMs = 2500} = {}) {
+  if (typeof fetchImpl !== 'function' || globalThis.location?.protocol === 'file:' && !globalThis.navigator?.onLine) return Promise.resolve(fx);
+  if (!refreshing) refreshing = (async () => {
+    try { if (adopt(await cloudRates(fetchImpl))) return fx; } catch {}
+    try { adopt(await liveRates(fetchImpl)); } catch {}
+    return fx;
+  })();
+  return Promise.race([refreshing, new Promise(resolve => setTimeout(() => resolve(fx), waitMs))]);
+}
+
+async function loadPricing({fetchImpl = globalThis.fetch, live = true} = {}) {
   if (loaded) return loaded;
   loaded = (async () => {
     const data = globalThis.MG_DATA || {};
     try { pricing = data.pricing || await fetchImpl('data/pricing.json', {cache: 'no-cache'}).then(r => { if (!r.ok) throw Error(); return r.json(); }); } catch { pricing = DEFAULT_PRICING; }
     try { fx = data.fx || await fetchImpl('data/fx.json', {cache: 'no-cache'}).then(r => { if (!r.ok) throw Error(); return r.json(); }); } catch { fx = {base: 'TWD', rates: {TWD: 1}, updatedAt: null, status: 'missing'}; }
     if (!fx?.rates || typeof fx.rates !== 'object') fx = {base: 'TWD', rates: {TWD: 1}, updatedAt: null, status: 'missing'};
-    fx.rates.TWD = 1;
+    fx = {...fx, rates: {...fx.rates, TWD: 1}};
+    if (live) await refreshRates({fetchImpl});
     return {pricing, fx};
   })();
   return loaded;
@@ -3082,19 +3208,31 @@ function minorDigits(currency) {
   if (['BHD', 'JOD', 'KWD', 'OMR', 'TND', 'IQD', 'LYD'].includes(currency)) return 3;
   return 2;
 }
-/** TWD × rate rounded up to the minor unit; null when no rate is known. */
+/** HuaTuo-style tidy price, never below TWD × rate (mirrors amountFor() on the server). */
+function tidyPrice(value, digits) {
+  if (!Number.isFinite(value) || value <= 0) return null;
+  const eps = 1e-9;
+  if (digits === 0) {
+    const mag = value >= 100000 ? 1000 : value >= 10000 ? 100 : value >= 1000 ? 10 : 1;
+    return Math.ceil(value / mag - eps) * mag;
+  }
+  if (value >= 100) return Math.ceil(value - eps);
+  const k = Math.ceil((value * 100 + 1) / 50 - eps);
+  return Math.round(k * 50 - 1) / 100;
+}
+/** TWD × rate as a tidy local price; null when no rate is known. */
 function convertTwd(amountTwd, currency, rates = fx.rates) {
   if (currency === 'TWD') return amountTwd;
   const rate = Number(rates?.[currency]);
   if (!Number.isFinite(rate) || rate <= 0) return null;
-  const scale = 10 ** minorDigits(currency);
-  return Math.ceil(amountTwd * rate * scale - 1e-9) / scale;
+  return tidyPrice(amountTwd * rate, minorDigits(currency) === 0 ? 0 : 2);
 }
 function formatMoney(amount, currency, locale) {
   if (amount === null || amount === undefined || !Number.isFinite(Number(amount))) return '—';
   const digits = minorDigits(currency);
   if (currency === 'TWD') { try { return 'NT$' + new Intl.NumberFormat(locale || undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}).format(amount); } catch { return 'NT$' + Math.round(amount); } }
-  try { return new Intl.NumberFormat(locale || undefined, {style: 'currency', currency, currencyDisplay: 'symbol', minimumFractionDigits: digits, maximumFractionDigits: digits}).format(amount); }
+  const shown = Number.isInteger(Number(amount)) && Number(amount) >= 100 ? 0 : digits;
+  try { return new Intl.NumberFormat(locale || undefined, {style: 'currency', currency, currencyDisplay: 'symbol', minimumFractionDigits: shown, maximumFractionDigits: shown}).format(amount); }
   catch { return `${currency} ${Number(amount).toFixed(minorDigits(currency))}`; }
 }
 function availableCurrencies() {
@@ -3127,13 +3265,16 @@ function priceTable(currency, locale) {
   });
 }
 
+Object.defineProperty(exports, "setLanguageProvider", { enumerable: true, get: () => setLanguageProvider });
 Object.defineProperty(exports, "detectCountry", { enumerable: true, get: () => detectCountry });
 Object.defineProperty(exports, "currencyForCountry", { enumerable: true, get: () => currencyForCountry });
+Object.defineProperty(exports, "refreshRates", { enumerable: true, get: () => refreshRates });
 Object.defineProperty(exports, "loadPricing", { enumerable: true, get: () => loadPricing });
 Object.defineProperty(exports, "pricingState", { enumerable: true, get: () => pricingState });
 Object.defineProperty(exports, "plans", { enumerable: true, get: () => plans });
 Object.defineProperty(exports, "freeStages", { enumerable: true, get: () => freeStages });
 Object.defineProperty(exports, "minorDigits", { enumerable: true, get: () => minorDigits });
+Object.defineProperty(exports, "tidyPrice", { enumerable: true, get: () => tidyPrice });
 Object.defineProperty(exports, "convertTwd", { enumerable: true, get: () => convertTwd });
 Object.defineProperty(exports, "formatMoney", { enumerable: true, get: () => formatMoney });
 Object.defineProperty(exports, "availableCurrencies", { enumerable: true, get: () => availableCurrencies });
@@ -3268,8 +3409,14 @@ function courseAccessSummary(course, {zh = true, priceText = ''} = {}) {
   let status;
   if (mode === 'owner-preview') status = pick('擁有者離線預覽：此版本可看全部內容；正式網站只開放第一節免費。', 'Owner offline preview: everything is visible here; the public site keeps only the first section free.');
   else if (state.active) status = pick('你的學習通行證有效，可學習全部階段。', 'Your learning pass is active; every stage is unlocked.') + (state.expiresAt ? ` ${pick('到期：', 'Expires: ')}${new Date(state.expiresAt).toLocaleDateString(zh ? 'zh-TW' : undefined)}` : '');
-  else status = pick(`第一節（${free} 步）免費試學；其餘 ${paid} 步需學習通行證${priceText ? '，' + priceText + ' 起' : ''}。`, `The first section (${free} steps) is free; the other ${paid} steps need a learning pass${priceText ? ', from ' + priceText : ''}.`);
-  return `<div class="course-access paywall-summary ${state.active || mode === 'owner-preview' ? '' : 'locked'}"><span>${pick('第一節免費 · 其餘會員', 'FIRST SECTION FREE · MEMBERS')}</span><p>${esc(status)}</p>${state.active || mode === 'owner-preview' ? '' : `<a class="button light" href="#membership">${pick('查看會員方案', 'View membership plans')} ↗</a>`}</div>`;
+  let price = '';
+  if (mode !== 'owner-preview' && !state.active) {
+    status = pick(`第一節（${free} 步）免費試學；其餘 ${paid} 步需學習通行證。`, `The first section (${free} steps) is free; the other ${paid} steps need a learning pass.`);
+    // V13: the local-currency price sits in its own untranslated span so every
+    // language dictionary can translate the sentence regardless of currency.
+    if (priceText) price = ` <span>${pick('學習通行證', 'Learning passes from')}</span> <span data-no-translate>${esc(priceText)}</span>${zh ? ' <span>起</span>' : ''}`;
+  }
+  return `<div class="course-access paywall-summary ${state.active || mode === 'owner-preview' ? '' : 'locked'}"><span>${pick('第一節免費 · 其餘會員', 'FIRST SECTION FREE · MEMBERS')}</span><p><span>${esc(status)}</span>${price}</p>${state.active || mode === 'owner-preview' ? '' : `<a class="button light" href="#membership">${pick('查看會員方案', 'View membership plans')} ↗</a>`}</div>`;
 }
 
 function lockedStepMarkup(course, step, {zh = true, priceText = '', signedIn = false, firstFreeIndex = 0} = {}) {
@@ -3497,7 +3644,9 @@ function membershipMarkup({zh=true,user=null}={}){
   const access=accessState(), avail=checkoutAvailability({billing:config});
   const chosen=selectedCurrency(), cur=chosen.currency, locale=localeTag(zh), table=priceTable(cur,locale), {fx}=pricingState();
   const where=detectCountry();
-  const fxNote=fx.status==='approximate-seed'||!fx.updatedAt?pick('匯率為近似種子值，尚未執行每週更新；結帳金額以伺服器報價為準。','Exchange rates are an approximate seed until the weekly update runs; the server quote at checkout is authoritative.'):`<span>${pick('匯率更新日期：','Exchange rates updated:')}</span> <span data-no-translate>${new Date(fx.updatedAt).toLocaleDateString(locale)} · ${e(fx.source||'')}</span> <span>${pick('結帳金額以伺服器報價為準。','The server quote at checkout is authoritative.')}</span>`;
+  const credit=/exchangerate-api|open\.er-api/i.test(fx.source||'')?` · <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a>`:'';
+  const tidy=`<span>${pick('價格以新台幣定價，乘以最新匯率換算，並無條件進位到當地慣用價位。','Prices are set in TWD, converted at the latest exchange rate and rounded up to a tidy local price.')}</span> `;
+  const fxNote=fx.status==='approximate-seed'||!fx.updatedAt?pick('匯率為近似種子值，尚未取得最新匯率；結帳金額以伺服器報價為準。','Exchange rates are an approximate seed until the latest rates are fetched; the server quote at checkout is authoritative.'):`${tidy}<span>${pick('匯率更新日期：','Exchange rates updated:')}</span> <span data-no-translate>${new Date(fx.updatedAt).toLocaleDateString(locale)} · ${e(String(fx.source||'').replace(/\s*[—-]\s*Rates By Exchange Rate API/i,''))}${credit}</span> <span>${pick('結帳金額以伺服器報價為準。','The server quote at checkout is authoritative.')}</span>`;
   const anyCheckout=avail.paypal||avail.ecpay||avail.server;
   const notice=access.mode==='owner-preview'?pick('擁有者離線預覽：此版本顯示全部課程內容。公開網站上，每門課只有第一節免費，其餘需學習通行證。','Owner offline preview: all content is visible here. On the public site only the first section of each course is free.'):
     !anyCheckout?pick('線上付款尚未由站長啟用。每門課第一節可免費試學；啟用付款後即可購買通行證解鎖全部階段。','Online payment has not been enabled by the site owner yet. The first section of every course is free; once payment is enabled, a pass unlocks all stages.'):
@@ -3508,7 +3657,7 @@ function membershipMarkup({zh=true,user=null}={}){
   const paidLabel=pick('付款方式','Payment method');
   return `<div class="page-lead"><div><span class="page-number">MEMBERSHIP · LEARNING PASSES</span><h1>${pick('為下一個工程，繼續學習。','Keep learning for your next engineering challenge.')}</h1><p>${pick('每門逐步課程的第一節免費試學；喜歡再選擇學習期間，解鎖全部課程與階段。','The first section of every guided course is free. Choose a learning period to unlock every course and stage.')}</p></div></div>
 <div class="notice ${anyCheckout&&!avail.sandbox?'':'warn'}">${notice}</div>
-<section class="currency-bar task-card"><div><strong>${pick('顯示幣別','Display currency')}</strong><p class="subtext">${pick('依你的時區／語系推測地區','Region inferred from your time zone / language')}<span data-no-translate>：${e(where.country)} · ${e(chosen.basis==='manual'?pick('手動選擇','manual choice'):where.zone||where.basis)}</span></p></div><label class="sr-only" for="currencySelect">${pick('幣別','Currency')}</label><select id="currencySelect" data-no-translate>${options}</select><button class="text-link" id="currencyAuto">${pick('依所在地自動','Use my region')}</button><p class="subtext fx-note">${fxNote}</p></section>
+<section class="currency-bar task-card"><div><strong>${pick('顯示幣別','Display currency')}</strong><p class="subtext">${pick('依你的語系與時區推測地區','Region inferred from your time zone / language')}<span data-no-translate>：${e(where.country)} · ${e(chosen.basis==='manual'?pick('手動選擇','manual choice'):where.zone||where.basis)}</span></p></div><label class="sr-only" for="currencySelect">${pick('幣別','Currency')}</label><select id="currencySelect" data-no-translate>${options}</select><button class="text-link" id="currencyAuto">${pick('依所在地自動','Use my region')}</button><p class="subtext fx-note">${fxNote}</p></section>
 <div class="membership-plans">
 <article class="membership-plan"><span class="eyebrow">START EXPLORING</span><h2>${pick('免費試學','Free trial')}</h2><strong class="plan-price">${e(formatMoney(0,cur,locale))}</strong><p>${pick(`每門逐步課程的第${freeStageCount()===1?'一':' '+freeStageCount()+' '}節（第一階段）免費，包含師傅示範、互動工作台與驗收。`,`The first ${freeStageCount()===1?'section':freeStageCount()+' sections'} (stage) of every guided course is free, including mentor demonstrations, the interactive workbench and checks.`)}</p><ul><li>${pick('所有課程皆可試學第一節','Try the first section of every course')}</li><li>${pick('第二節起需學習通行證','From the second section on, a learning pass is needed')}</li><li>${pick('可先註冊帳號保存進度','Register to keep your progress')}</li></ul></article>
 ${table.map(p=>{const charge=chargeCurrency('paypal',cur),chargeAmount=convertTwd(p.amountTwd,charge);return `<article class="membership-plan" data-plan-card="${e(p.id)}"><span class="eyebrow">ENGINEERING PASS</span><h2>${e(pick(p.title,p.titleEn||p.title))}</h2><strong class="plan-price" data-no-translate>${e(p.display)}</strong><p class="subtext"><span data-no-translate>${cur==='TWD'?'':`≈ ${e(p.twdDisplay)} · `}</span>${pick(`${e(p.durationDays)} 天`,`${e(p.durationDays)} days`)}</p><p>${pick('全部已展開的逐步課程與階段','All authored guided courses and stages')}</p><ul><li>${pick('各帳號獨立保存進度、跨裝置同步','Progress per account, synced across devices')}</li><li>${pick('課程驗收完成後申領平台證書','Platform certificate after course checks')}</li><li>${pick('一次付款，不自動續扣','One payment; no automatic renewal')}</li>${charge!==cur&&avail.paypal?`<li>${pick('PayPal 以','PayPal charges in')} ${e(charge)} ${pick('結帳','')} (${e(formatMoney(chargeAmount,charge,locale))})</li>`:''}</ul><button class="button" data-buy-plan="${e(p.id)}" ${anyCheckout?'':'disabled'}>${anyCheckout?pick('選擇此方案','Choose this plan'):pick('付款尚未開放','Checkout not yet available')}</button></article>`}).join('')}
@@ -5113,7 +5262,7 @@ function setLearningMedia(data) {
 }
 function mediaForCourse(id) { return mediaCourses.find(c => c.courseId === id) || null; }
 function guideMarkup(guide, zh) {
-  const rows = [['concept','原理與邊界','Principle and limits'],['procedure','練習流程','Learning procedure'],['evidence','要留下的證據','Evidence to record'],['pitfalls','常見誤判','Common mistakes']];
+  const rows = [['concept','原理與邊界','Principle and limits'],['facts','關鍵數據','Key figures'],['timeline','工程時間軸','Timeline'],['codes','相關規範與標準','Codes and standards'],['landmarks','代表工程與比較','Landmark projects to compare'],['procedure','練習流程','Learning procedure'],['evidence','要留下的證據','Evidence to record'],['pitfalls','常見誤判','Common mistakes']];
   const diagramPath=(!zh&&guide.diagram?.pathEn)||guide.diagram?.path;
   const diagram=guide.diagram?.original===true&&/^assets\/diagrams\/v10-[a-z0-9-]+\.svg$/.test(diagramPath||'')?`<figure class="media-original-diagram"><img loading="lazy" src="${escape(diagramPath)}" alt="${escape(text(guide.diagram,'alt',zh)||text(guide.diagram,'title',zh))}" style="width:100%;height:auto"><figcaption>${escape(text(guide.diagram,'title',zh))} · ${zh?'本站原創概念圖；非依比例繪製，非廠商施工圖。':'Original educational concept diagram; not to scale or a vendor construction drawing.'}</figcaption></figure>`:'';
   return `<details class="media-guide"><summary>${escape(text(guide,'title',zh))}</summary>${diagram}${rows.map(([key,z,en]) => {
@@ -6155,10 +6304,12 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ // V13: extended courses keep their own artwork; their new steps use the V13 architecture.
+ if(String(step.id).includes('-v13-')&&!course.architectureFamily&&course.v13Architecture)course={...course,...course.v13Architecture};
  const expansion=resolveExpansionExercise(course,step);if(expansion)return expansion;
  if(first26[step.id])return first26[step.id]();
  if(firstPackage[step.id])return firstPackage[step.id]();
- if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-'))){
+ if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-') || (String(step.id).includes('-v13-') && hasWorldVisual(course)))){
   const n=Number(step.sequence)||1,quiz=step.quiz,validQuiz=quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)&&quiz.options.length===quiz.optionsEn.length&&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length;
   const decisions=validQuiz?quiz.options.map((v,i)=>opt('answer-'+i,v,quiz.optionsEn[i])):[opt('evidence',step.check,step.checkEn),opt('guess','未核對模型邊界便沿用另一個案例','Reuse a case without checking model boundaries'),opt('omit','跳過本步所需的證據','Skip the required evidence')];
   const offset=n%decisions.length,computing=!!COMPUTING_SUBJECTS[course.id];
@@ -7051,6 +7202,7 @@ Object.defineProperty(exports, "createLocaleController", { enumerable: true, get
 const { labResourcesMarkup } = require("lab-resources.js");
 const { computingPathsMarkup } = require("computing-paths.js");
 const { opticsPathsMarkup } = require("optics-paths.js");
+const { structuresPathsMarkup } = require("structures-paths.js");
 const { heroIconWallMarkup, mountHeroIconWall } = require("project-icons.js");
 let iconWallController=null;
 const { renderLearningMap, mountLearningMap } = require("learning-map.js");
@@ -7077,7 +7229,7 @@ const { resolveExercise, evaluateExercise } = require("process-exercises.js");
 const { createLocaleController, languageDirection, resolveSupportedLanguage, loadDictionary, onDeviceTranslator, loadedDictionary, lookupDictionary } = require("locale.js");
 const { validMemberFields, normalizePhone } = require("cloud-sync.js");
 const { configurePaywall, refreshAccess, accessState, stepLocked, stageBadge, lockedStepMarkup, hydrateProtectedStages, hasFullAccess } = require("paywall.js");
-const { loadPricing, freeStages, priceTable, selectedCurrency } = require("pricing.js");
+const { loadPricing, freeStages, priceTable, selectedCurrency, setLanguageProvider } = require("pricing.js");
 let learningMapController=null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -7154,7 +7306,7 @@ function renderHome(){return renderCatalog()}
 function filteredCatalog(){return catalog.filter(c=>(!filter||c.category===filter)&&(!subdiscipline||courseSubcategory(c).id===subdiscipline)&&(!maturity||(maturity==='ready'?c.stages:!c.stages))&&(!query||[c.id,c.title,c.titleEn,c.summary,c.summaryEn,catName(c.category),courseSubcategory(c).title,courseSubcategory(c).titleEn].join(' ').toLowerCase().includes(query.toLowerCase())))}
 function catalogCsv(){const cell=value=>'"'+String(value??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')+'"';const rows=[['id','中文名稱','English title','中文領域','English discipline','中文內容類型','Content type','Authored learning steps','Project route'],...catalog.map(c=>[c.id,c.title,c.titleEn,catMap[c.category]?.[0]||c.category,catMap[c.category]?.[1]||c.category,c.stages?'逐步課程':'研究路線圖',c.stages?'Guided course':'Research roadmap',c.stages?allSteps(c).length:0,'#project/'+c.id])];return '\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')}
 function catalogSubdisciplineFilter(){const subs=[...new Map(catalog.filter(c=>(!filter||c.category===filter)&&c.stages).map(c=>courseSubcategory(c)).filter(s=>s.id).map(s=>[s.id,s])).values()];return `<div class="catalog-subdisciplines"><label for="catalogSubdiscipline">${isZh()?'專業子領域':'Technical subdiscipline'}</label><select id="catalogSubdiscipline" ${!subs.length?'disabled':''}><option value="">${isZh()?'全部子領域':'All subdisciplines'}</option>${subs.map(s=>`<option value="${esc(s.id)}" ${subdiscipline===s.id?'selected':''}>${esc(isZh()?s.title:s.titleEn)}</option>`).join('')}</select><span class="subtext">${isZh()?'依學習問題縮小範圍；每門都有完整工序導航。':'Narrow your learning question; each guided course has a complete step navigator.'}</span></div>`}
-function renderCatalog(){const list=filteredCatalog(),pages=Math.max(1,Math.ceil(list.length/24));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));const first=list.length?pageIndex*24+1:0,last=Math.min((pageIndex+1)*24,list.length),shown=list.slice(pageIndex*24,(pageIndex+1)*24);return `${explorerIntro()}${!filter||filter==='instruments'?opticsPathsMarkup(catalog,isZh()):''}${!filter||filter==='computing'?computingPathsMarkup(catalog,isZh()):''}${!filter||filter==='electronics'?electronicsPathsMarkup(catalog,isZh()):''}${!filter||filter==='packaging'?packagingPathsMarkup(catalog,isZh()):''}<section class="explorer-catalog" id="explorerCatalog" aria-labelledby="explorerCatalogTitle"><div class="section-head"><div><span class="page-number">ONE ENGINEERING EXPLORER</span><h2 id="explorerCatalogTitle">${isZh()?'找到下一個工程挑戰':'Find your next engineering challenge'}</h2><p class="subtext">${catalogSummary()}</p></div><button class="button light" data-download-catalog>↓ ${isZh()?'完整中英目錄 CSV':'Complete bilingual CSV'}</button></div><div class="catalog-shortcuts"><a class="chip ${!maturity?'active':''}" href="#catalog/all" data-catalog-route="all">${isZh()?`全部 ${catalog.length} 項工程`:`All ${catalog.length} topics`}</a><a class="chip ${maturity==='ready'?'active':''}" href="#catalog/ready" data-catalog-route="ready">${isZh()?`${featured.length} 門逐步課程`:`${featured.length} guided courses`}</a><a class="chip ${maturity==='roadmap'?'active':''}" href="#catalog/roadmap" data-catalog-route="roadmap">${isZh()?`${catalog.length-featured.length} 項研究路線圖`:`${catalog.length-featured.length} research roadmaps`}</a></div><div class="search-bar"><input id="search" value="${esc(query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="categoryFilter"><option value="">${t('allDomains')} (${catalog.length})</option>${domainCounts().map(d=>`<option value="${d.id}" ${filter===d.id?'selected':''}>${catName(d.id)} (${d.count})</option>`).join('')}</select><select id="maturity"><option value="">${t('allMaturity')}</option><option value="ready" ${maturity==='ready'?'selected':''}>${t('ready')} (${featured.length})</option><option value="roadmap" ${maturity==='roadmap'?'selected':''}>${t('roadmap')} (${catalog.length-featured.length})</option></select></div>${catalogSubdisciplineFilter()}${filter?`<div class="selected-domain">${domainIconSvg(filter,{decorative:true})}<strong>${esc(catName(filter))}</strong><button class="text-link" data-filter="">${isZh()?'清除領域篩選':'Clear discipline filter'} ×</button></div>`:''}<div class="catalog-info"><strong role="status">${isZh()?`顯示 ${first}–${last}／${list.length.toLocaleString()} 項`:`Showing ${first}–${last} of ${list.length.toLocaleString()}`}</strong><label>${isZh()?'顯示方式':'View'} <select id="catalogView"><option value="list" ${catalogView==='list'?'selected':''}>${isZh()?'圖像清單':'Illustrated list'}</option><option value="cards" ${catalogView==='cards'?'selected':''}>${isZh()?'圖像卡片':'Image cards'}</option></select></label></div><p class="subtext">${t('catalogScope')}</p>${catalogView==='cards'?`<div class="cards">${shown.map(card).join('')}</div>`:`<div class="catalog-table-wrap"><table class="catalog-table"><thead><tr><th>#</th><th>${isZh()?'工程／工藝名稱':'Project / craft'}</th><th>${isZh()?'領域':'Discipline'}</th><th>${isZh()?'內容與步驟':'Content and steps'}</th></tr></thead><tbody>${shown.map((c,i)=>`<tr ${c.stages?`data-guided-course="${esc(c.id)}"`:''}><td>${first+i}</td><td><div class="catalog-project-cell"><a class="catalog-thumbnail" href="#project/${esc(c.id)}" tabindex="-1" aria-hidden="true">${projectMedia(c,true)}</a><div><a href="#project/${esc(c.id)}">${esc(txt(c))}</a><small>${esc(isZh()?c.titleEn:c.title)}</small><span class="catalog-project-code">${esc(c.id)}</span></div>${projectIconSvg(c,{en:!isZh()})}</div></td><td><span class="catalog-discipline">${domainIconSvg(c.category,{decorative:true})}${esc(catName(c.category))}</span></td><td>${t(c.stages?'ready':'roadmap')}${c.stages?`<small>${c.stepCount||allSteps(c).length} ${t('steps')}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`}${!shown.length?`<p class="empty">${t('noResults')}</p>`:''}<div class="pagination"><button id="prevPage" class="button light" ${pageIndex===0?'disabled':''}>← ${t('previous')}</button><form id="catalogPageForm"><label for="catalogPage">${isZh()?'跳至頁次':'Go to page'}</label><input id="catalogPage" type="number" min="1" max="${pages}" value="${pageIndex+1}" required><span>/ ${pages}</span><button class="button light" type="submit">${isZh()?'前往':'Go'}</button></form><button id="nextPage" class="button light" ${pageIndex===pages-1?'disabled':''}>${t('next')} →</button></div></section>${showcaseMarkup({zh:isZh()})}`}
+function renderCatalog(){const list=filteredCatalog(),pages=Math.max(1,Math.ceil(list.length/24));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));const first=list.length?pageIndex*24+1:0,last=Math.min((pageIndex+1)*24,list.length),shown=list.slice(pageIndex*24,(pageIndex+1)*24);return `${explorerIntro()}${!filter||filter==='structures'?structuresPathsMarkup(catalog,isZh()):''}${!filter||filter==='instruments'?opticsPathsMarkup(catalog,isZh()):''}${!filter||filter==='computing'?computingPathsMarkup(catalog,isZh()):''}${!filter||filter==='electronics'?electronicsPathsMarkup(catalog,isZh()):''}${!filter||filter==='packaging'?packagingPathsMarkup(catalog,isZh()):''}<section class="explorer-catalog" id="explorerCatalog" aria-labelledby="explorerCatalogTitle"><div class="section-head"><div><span class="page-number">ONE ENGINEERING EXPLORER</span><h2 id="explorerCatalogTitle">${isZh()?'找到下一個工程挑戰':'Find your next engineering challenge'}</h2><p class="subtext">${catalogSummary()}</p></div><button class="button light" data-download-catalog>↓ ${isZh()?'完整中英目錄 CSV':'Complete bilingual CSV'}</button></div><div class="catalog-shortcuts"><a class="chip ${!maturity?'active':''}" href="#catalog/all" data-catalog-route="all">${isZh()?`全部 ${catalog.length} 項工程`:`All ${catalog.length} topics`}</a><a class="chip ${maturity==='ready'?'active':''}" href="#catalog/ready" data-catalog-route="ready">${isZh()?`${featured.length} 門逐步課程`:`${featured.length} guided courses`}</a><a class="chip ${maturity==='roadmap'?'active':''}" href="#catalog/roadmap" data-catalog-route="roadmap">${isZh()?`${catalog.length-featured.length} 項研究路線圖`:`${catalog.length-featured.length} research roadmaps`}</a></div><div class="search-bar"><input id="search" value="${esc(query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="categoryFilter"><option value="">${t('allDomains')} (${catalog.length})</option>${domainCounts().map(d=>`<option value="${d.id}" ${filter===d.id?'selected':''}>${catName(d.id)} (${d.count})</option>`).join('')}</select><select id="maturity"><option value="">${t('allMaturity')}</option><option value="ready" ${maturity==='ready'?'selected':''}>${t('ready')} (${featured.length})</option><option value="roadmap" ${maturity==='roadmap'?'selected':''}>${t('roadmap')} (${catalog.length-featured.length})</option></select></div>${catalogSubdisciplineFilter()}${filter?`<div class="selected-domain">${domainIconSvg(filter,{decorative:true})}<strong>${esc(catName(filter))}</strong><button class="text-link" data-filter="">${isZh()?'清除領域篩選':'Clear discipline filter'} ×</button></div>`:''}<div class="catalog-info"><strong role="status">${isZh()?`顯示 ${first}–${last}／${list.length.toLocaleString()} 項`:`Showing ${first}–${last} of ${list.length.toLocaleString()}`}</strong><label>${isZh()?'顯示方式':'View'} <select id="catalogView"><option value="list" ${catalogView==='list'?'selected':''}>${isZh()?'圖像清單':'Illustrated list'}</option><option value="cards" ${catalogView==='cards'?'selected':''}>${isZh()?'圖像卡片':'Image cards'}</option></select></label></div><p class="subtext">${t('catalogScope')}</p>${catalogView==='cards'?`<div class="cards">${shown.map(card).join('')}</div>`:`<div class="catalog-table-wrap"><table class="catalog-table"><thead><tr><th>#</th><th>${isZh()?'工程／工藝名稱':'Project / craft'}</th><th>${isZh()?'領域':'Discipline'}</th><th>${isZh()?'內容與步驟':'Content and steps'}</th></tr></thead><tbody>${shown.map((c,i)=>`<tr ${c.stages?`data-guided-course="${esc(c.id)}"`:''}><td>${first+i}</td><td><div class="catalog-project-cell"><a class="catalog-thumbnail" href="#project/${esc(c.id)}" tabindex="-1" aria-hidden="true">${projectMedia(c,true)}</a><div><a href="#project/${esc(c.id)}">${esc(txt(c))}</a><small>${esc(isZh()?c.titleEn:c.title)}</small><span class="catalog-project-code">${esc(c.id)}</span></div>${projectIconSvg(c,{en:!isZh()})}</div></td><td><span class="catalog-discipline">${domainIconSvg(c.category,{decorative:true})}${esc(catName(c.category))}</span></td><td>${t(c.stages?'ready':'roadmap')}${c.stages?`<small>${c.stepCount||allSteps(c).length} ${t('steps')}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`}${!shown.length?`<p class="empty">${t('noResults')}</p>`:''}<div class="pagination"><button id="prevPage" class="button light" ${pageIndex===0?'disabled':''}>← ${t('previous')}</button><form id="catalogPageForm"><label for="catalogPage">${isZh()?'跳至頁次':'Go to page'}</label><input id="catalogPage" type="number" min="1" max="${pages}" value="${pageIndex+1}" required><span>/ ${pages}</span><button class="button light" type="submit">${isZh()?'前往':'Go'}</button></form><button id="nextPage" class="button light" ${pageIndex===pages-1?'disabled':''}>${t('next')} →</button></div></section>${showcaseMarkup({zh:isZh()})}`}
 
 function relatedContent(c,compact=false){const entry=relatedForCourse(c);return `<div class="related-preview"><h3>${isZh()?'這項技能，還能用在哪裡？':'Where can you use this skill next?'}</h3><div class="related-preview-grid">${(entry.related||[]).slice(0,3).map(item=>{const linked=typeof item.id==='string'&&catalog.find(candidate=>candidate.id===item.id);return `<article>${linked?`<a class="text-link" href="#project/${encodeURIComponent(linked.id)}">${esc(txt(item))} ↗</a>`:`<strong>${esc(txt(item))}</strong><small>${isZh()?'詳見下方延伸比較':'See the comparison below'}</small>`}<p>${esc(txt(item,entry.curated?'transfer':'summary'))}</p></article>`}).join('')}</div></div>${relatedSkillsMarkup(c,{zh:isZh(),compact})}`}
 
@@ -7463,7 +7615,7 @@ const personalization=createPersonalization({getLanguage:resolved,getProfileId:(
 function translationModal(){modal(t('translateTitle'),`<p>${t('translateInfo')}</p><label class="field">${t('language')}<select id="translationLanguage" data-no-translate>${[['auto','◎ Auto'],...languageChoices].map(([k,n])=>`<option value="${k}" ${k===lang?'selected':''}>${n}</option>`).join('')}</select></label><div class="dialog-actions"><button id="translatePage" class="button">${t('translateGo')} ↗</button></div><p id="translateStatus" role="status"></p>`);$('#translatePage').onclick=()=>{setPreferredLanguage($('#translationLanguage').value);closeModal()}}
 $('#preferencesButton').onclick=()=>personalization.open();
 $('.skip').onclick=e=>{e.preventDefault();$('#main').focus();$('#main').scrollIntoView()};$('#closeDialog').onclick=closeModal;$('#dialog').addEventListener('click',e=>{if(e.target===$('#dialog'))closeModal()});$('#account').onclick=accountModal;$('#mentorButton').onclick=()=>openTutor();$('#translateButton').onclick=translationModal;$('#menu').onclick=()=>$('#sidebar').classList.toggle('open');$('#guideButton').onclick=()=>modal(t('guideTitle'),`<p style="white-space:pre-line">${t('guideText')}</p><div class="notice">${t('conceptModel')}</div><p>${t('translateInfo')}</p><p><a class="button light" href="help.html" target="_blank" rel="noopener noreferrer">${isZh()?'會員、資訊資安、AI 與付款設定指南':'Membership, computing/security, AI and payment setup guide'} ↗</a></p>`);$('#language').onchange=e=>setPreferredLanguage(e.target.value);window.addEventListener('hashchange',()=>{captureNotes();$('#sidebar').classList.remove('open');render();window.scrollTo(0,0)});window.addEventListener('pagehide',()=>{stopMotion();stopDemonstration();captureNotes()});document.addEventListener('keydown',handleWorkshopKey,true);document.addEventListener('keyup',handleWorkshopKey,true);document.addEventListener('focusin',handleWorkshopFocus);window.addEventListener('blur',()=>{deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()});document.addEventListener('visibilitychange',()=>{if(document.hidden){deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()}});document.addEventListener('toggle',e=>{if(e.target?.tagName==='DETAILS'&&e.target.open)applyLanguage()},true);window.addEventListener('beforeunload',()=>{captureNotes();try{localStorage.setItem(stateKey(),JSON.stringify(projects))}catch{}});
-async function boot(){loadLearningMedia();try{await Promise.all([loadBillingConfig(),loadVendors(),loadPricing(),loadMarkets()]);configurePaywall({freeStages:freeStages(),billing:billingState,cloud:()=>window.MacGyverCloud});const responses=await Promise.all(['catalog','featured','sources','photos'].map(k=>loadCurriculumData(k,{protected:billingState().protected})));[catalog,featured,sources,photos]=responses;const guided=new Map(featured.map(c=>[c.id,c]));catalog=catalog.map(item=>guided.get(item.id)||item);if(window.MG_DATA?.['course-places'])setAtlasPlaces(window.MG_DATA['course-places']);else loadAtlasPlaces();if(!featured.some(c=>c.id===activeId)){activeId=featured[0]?.id||'';localStorage.setItem('mg-active',activeId)}setRelatedSkills(window.MG_DATA?.['related-skills']||null,catalog);if(!window.MG_DATA?.['related-skills'])loadRelatedSkills();await initializeServices();await initAccount();await refreshAccess({user});if(!['en','zh-TW'].includes(resolved()))await Promise.race([loadDictionary(resolved()),new Promise(r=>setTimeout(r,2500))]);activeStep=unlocked(course());render();if(window.MacGyverCloudStartupError)toast((isZh()?'雲端登入未完成；請點帳號查看原因。':'Cloud sign-in failed; open Account for details.'));if(window.MacGyverCloudRecovery){window.MacGyverCloudRecovery=false;cloudAccountModal()}resumeEcpayReturn({zh:isZh(),user,onStatus:message=>toast(message),onDone:()=>{stepCache.delete(course());render()}});}catch(err){$('#main').innerHTML=`<div class="empty"><h2>Unable to load curriculum</h2><p>請完整解壓縮所有附件後再開啟 index.html，或重新整理已部署的網址。</p><p>Re-extract the complete package and open index.html, or reload the hosted site.</p><code>${esc(err.message)}</code></div>`}}
+async function boot(){loadLearningMedia();setLanguageProvider(()=>resolved());window.addEventListener('mg:fx-updated',()=>{if(/^#membership/.test(location.hash))render()});try{await Promise.all([loadBillingConfig(),loadVendors(),loadPricing(),loadMarkets()]);configurePaywall({freeStages:freeStages(),billing:billingState,cloud:()=>window.MacGyverCloud});const responses=await Promise.all(['catalog','featured','sources','photos'].map(k=>loadCurriculumData(k,{protected:billingState().protected})));[catalog,featured,sources,photos]=responses;const guided=new Map(featured.map(c=>[c.id,c]));catalog=catalog.map(item=>guided.get(item.id)||item);if(window.MG_DATA?.['course-places'])setAtlasPlaces(window.MG_DATA['course-places']);else loadAtlasPlaces();if(!featured.some(c=>c.id===activeId)){activeId=featured[0]?.id||'';localStorage.setItem('mg-active',activeId)}setRelatedSkills(window.MG_DATA?.['related-skills']||null,catalog);if(!window.MG_DATA?.['related-skills'])loadRelatedSkills();await initializeServices();await initAccount();await refreshAccess({user});if(!['en','zh-TW'].includes(resolved()))await Promise.race([loadDictionary(resolved()),new Promise(r=>setTimeout(r,2500))]);activeStep=unlocked(course());render();if(window.MacGyverCloudStartupError)toast((isZh()?'雲端登入未完成；請點帳號查看原因。':'Cloud sign-in failed; open Account for details.'));if(window.MacGyverCloudRecovery){window.MacGyverCloudRecovery=false;cloudAccountModal()}resumeEcpayReturn({zh:isZh(),user,onStatus:message=>toast(message),onDone:()=>{stepCache.delete(course());render()}});}catch(err){$('#main').innerHTML=`<div class="empty"><h2>Unable to load curriculum</h2><p>請完整解壓縮所有附件後再開啟 index.html，或重新整理已部署的網址。</p><p>Re-extract the complete package and open index.html, or reload the hosted site.</p><code>${esc(err.message)}</code></div>`}}
 boot();
 
 

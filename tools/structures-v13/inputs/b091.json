@@ -1,0 +1,301 @@
+{
+  "id": "b091",
+  "title": "高層建築消防分區設計~Fire compartmentation in high-rise buildings",
+  "discipline": "st-seismic-precast-fire",
+  "family": "fire",
+  "focus": "以區劃面積、防火時效、防火門與貫穿填塞、帷幕牆層間防火與樓梯加壓，把高層火災限制在起火區劃並保護結構~Compartment area, fire resistance, fire doors and penetration firestops, curtain-wall perimeter barriers and stair pressurisation that confine high-rise fires to the compartment of origin and protect the structure",
+  "summary": "從防火區劃的目的與火載量出發，比較灑水系統與區劃的分工，計算標準火災溫度與時間等效、防火門縫隙的漏煙、樓板邊緣縫隙的等效開口，再處理施工與裝修期間的區劃完整性、耐火試驗、樓梯加壓驗收、區劃失效時的結構臨界溫度，最後談使用管理與交接，並以高雄城中城大樓、倫敦 Grenfell Tower 與費城 One Meridian Plaza 的教訓對照。~Starting from the purpose of compartmentation and fire load, compare the roles of sprinklers and compartments, compute standard-fire temperatures and time equivalence, smoke leakage through fire-door gaps and the equivalent opening of slab-edge gaps, then cover compartment integrity during construction and fit-out, fire-resistance testing, stair-pressurisation acceptance and structural critical temperatures when compartments fail, and finally management in use and handover, compared with lessons from Kaohsiung's Cheng Chung Cheng Building, London's Grenfell Tower and Philadelphia's One Meridian Plaza.",
+  "units": [
+    {
+      "anchor": "防火區劃面積~Compartment floor area",
+      "title": "防火區劃的目的、面積與火載量~Purpose, area and fire load of compartments",
+      "mechanism": "防火區劃把建築切成許多以耐火牆、樓板與防火門窗圍成的小盒子，讓火災與煙在一定時間內被限制在起火的盒子裡，爭取避難與消防搶救時間，並限制同時燃燒的面積，保護結構。水平區劃限制每層的燃燒面積，垂直區劃則以樓板、樓梯間與管道間阻止火煙向上蔓延。台灣建築技術規則以每 1,500 m² 為防火構造建築物的區劃原則，設有自動滅火設備時可減計面積；十一層以上樓層則依內裝材料以更小的面積區劃，反映高層救援困難。~Compartmentation divides a building into boxes enclosed by fire-resisting walls, floors and fire doors and windows, so that fire and smoke stay in the box of origin for a defined time, buying time for evacuation and firefighting and limiting the area burning at once to protect the structure. Horizontal compartments limit the burning area on each floor, while vertical compartmentation uses floors, stair enclosures and shafts to stop upward spread. Taiwan's Building Technical Regulations take 1,500 m² as the basic compartment for fire-resistive buildings, allowing reduced counting where automatic suppression is installed, and require smaller compartments above the 10th floor depending on interior finishes, reflecting the difficulty of high-rise rescue.",
+      "model": "火載量 Q = A·q。區劃面積 1,500 m²、辦公室火載量密度 q = 600 MJ/m²：Q = 1,500×600 = 900,000 MJ = 900 GJ；若因設灑水系統使區劃面積加倍到 3,000 m²，可能同時燃燒的火載量也加倍到 1,800 GJ，前提是灑水系統確實有效。數值為教學假設。~Fire load Q = A·q. A 1,500 m² compartment with an office fire-load density q = 600 MJ/m² holds Q = 1,500×600 = 900,000 MJ = 900 GJ; if sprinklers allow the compartment to double to 3,000 m², the fire load that could burn at once also doubles to 1,800 GJ, on the assumption that the sprinklers actually work. Values are teaching assumptions.",
+      "verify": "設計階段以防火區劃圖標示每個區劃的範圍、面積、防火時效、防火門窗與貫穿部，並與建築、機電、帷幕牆圖套繪，確認區劃線在每一層都連續閉合；審查時核對灑水系統減計面積的條件是否成立。~At design stage, a compartmentation plan shows each compartment's extent, area, rating, fire doors and windows and penetrations, overlaid with architectural, services and curtain-wall drawings to confirm that compartment lines close continuously on every floor; at review, check that the conditions for any sprinkler-based area allowance are met.",
+      "failure": "若區劃線在平面上看似完整，但在天花板上方、架高地板下方或帷幕牆邊緣斷開，火煙會繞過區劃牆擴散，使整層甚至多層同時受害；以灑水系統放大區劃面積後，若灑水系統失效，燃燒面積就超過結構與救援的假設。~Compartment lines that look complete on plan but break above ceilings, below raised floors or at the curtain-wall edge let fire and smoke bypass the walls and involve whole floors or several floors at once; once sprinklers justify larger compartments, sprinkler failure leaves a burning area beyond what structure and rescue assumed.",
+      "misconception": "只要設了灑水系統，防火區劃就可有可無。~With sprinklers installed, compartmentation is optional.",
+      "practice": "防火區劃圖應由建築師與消防、結構、機電專業共同簽認，並作為竣工交接文件的一部分；任何隔間變更都必須回到這張圖上檢討。~The compartmentation plan should be signed jointly by the architect and the fire, structural and services disciplines and form part of the handover documents; any partition change must be reviewed against it."
+    },
+    {
+      "anchor": "灑水頭與火災成長~Sprinkler heads and fire growth",
+      "title": "火災成長、灑水系統與區劃的分工~Fire growth, sprinklers and the division of labour with compartments",
+      "mechanism": "室內火災初期以近似時間平方成長，若在閃燃前被灑水系統控制，火勢就不會擴大到整個區劃；區劃則是灑水失效或火勢超出設計時的第二道防線。兩者缺一，風險就大增。1991 年費城 38 層的 One Meridian Plaza 從 22 樓起火，未設灑水的樓層接連燃燒，共燒毀 8 層、歷時超過 19 小時並造成 3 名消防員殉職；火勢直到第一個設有自動灑水的 30 樓才被 10 個灑水頭擋住。~Early compartment fires grow roughly with the square of time; if sprinklers control the fire before flashover, it never spreads across the compartment, and compartmentation is the second line of defence if sprinklers fail or the fire exceeds their design. Lose either and risk rises sharply. In 1991 the 38-storey One Meridian Plaza in Philadelphia caught fire on the 22nd floor; unsprinklered floors burned one after another, eight floors were destroyed over more than 19 hours and three firefighters died, and the fire was stopped only on the 30th floor, the first with automatic sprinklers, where ten heads held it back.",
+      "model": "t² 火災 Q = α·t²，快速成長 α = 0.0469 kW/s²：熱釋放率達 1 MW 需 t = √(1,000/0.0469) ≈ 146 s，達 5 MW 需 √(5,000/0.0469) ≈ 327 s。灑水頭若在約 1 MW 前動作，火勢可被控制；延遲到 5 MW 以上，房間可能已接近閃燃。數值為教學假設。~A t² fire Q = α·t² with fast growth α = 0.0469 kW/s² reaches 1 MW at t = √(1,000/0.0469) ≈ 146 s and 5 MW at √(5,000/0.0469) ≈ 327 s. Sprinklers operating before about 1 MW can control the fire; delayed beyond 5 MW, the room may be near flashover. Values are teaching assumptions.",
+      "verify": "以火災模擬或手算檢查灑水頭在設計火災下的動作時間，確認水源、消防泵、管徑與壓力能供應設計區域；竣工時做灑水系統的流量與壓力試驗，並核對每一層都設有灑水頭，沒有因裝修而被遮蔽或漏設的區域。~Check sprinkler operating time under the design fire by fire modelling or hand calculation, and confirm that water supply, fire pumps, pipe sizes and pressure serve the design area; at completion run flow and pressure tests and verify sprinkler coverage on every floor, with no areas obstructed by fit-out or left unprotected.",
+      "failure": "One Meridian Plaza 中消防立管的減壓閥設定不當，出水壓力不足，加上電力中斷，消防員無法有效滅火，火勢依靠窗戶與樓板逐層向上；灑水系統水源中斷時，世界貿易中心 7 號大樓的下層火災也同樣失控，顯示區劃必須獨立承受長時間火災。~At One Meridian Plaza, misadjusted pressure-reducing valves on the standpipes delivered too little pressure and power was lost, so firefighters could not fight the fire effectively while it climbed floor by floor; when the sprinkler water supply was lost at World Trade Center 7, lower-floor fires likewise burned uncontrolled, showing that compartments must withstand long fires on their own.",
+      "misconception": "防火區劃只是延緩火勢，真正滅火只能靠消防隊，所以區劃不必太嚴格。~Compartments only delay a fire and only firefighters extinguish it, so compartmentation need not be rigorous.",
+      "practice": "業主與管理單位應把灑水系統、消防泵、立管減壓閥與緊急電源列為同一套維護與測試計畫，任何停水或停用都要事前通報並採取補償措施，例如加強巡查與臨時滅火設備。~Owners and managers should treat sprinklers, fire pumps, standpipe pressure-reducing valves and emergency power as one maintenance and testing programme, notifying any shutdown in advance and adopting compensating measures such as extra patrols and temporary extinguishing equipment."
+    },
+    {
+      "anchor": "區劃牆與樓板防火時效~Fire rating of compartment walls and floors",
+      "title": "防火時效、標準火災與時間等效~Fire resistance, the standard fire and time equivalence",
+      "mechanism": "區劃構件的防火時效，是在標準升溫曲線下維持承載、完整性（不讓火焰與熱氣穿過）與隔熱性（背火面溫升不超過限值）的時間。真實火災的強度取決於火載量與開口通風，與標準火災不同，因此工程上常用時間等效的觀念，把真實火災的嚴重度換算成標準火災的等效時間，與構件的防火時效比較。對高層建築而言，樓板同時是結構構件與垂直區劃，防火時效常比一般隔間牆高。~The fire resistance of a compartment element is the time it maintains load-bearing capacity, integrity against flames and hot gases and insulation, keeping the unexposed face temperature rise within limits, under the standard temperature–time curve. Real fire severity depends on fire load and ventilation and differs from the standard fire, so engineers use time equivalence to convert real severity into an equivalent standard-fire duration for comparison with the element's rating. In high-rise buildings the floor slab is both a structural member and the vertical compartment, so its rating is often higher than that of ordinary partitions.",
+      "model": "ISO 834 標準火災 T = 345·log₁₀(8t+1) + 20：t = 60 min 時 T = 345×log₁₀(481) + 20 ≈ 945°C，t = 120 min 時約 1,049°C。以 Eurocode 簡化時間等效 t_e = q·k_b·w_f，q = 600 MJ/m²、k_b = 0.07 min·m²/MJ、w_f = 1.0：t_e = 600×0.07×1.0 ≈ 42 min，小於 60 min 防火時效。數值為教學假設。~The ISO 834 standard fire is T = 345·log₁₀(8t+1) + 20: at t = 60 min, T = 345×log₁₀(481) + 20 ≈ 945°C, and at 120 min about 1,049°C. With the simplified Eurocode time equivalence t_e = q·k_b·w_f, q = 600 MJ/m², k_b = 0.07 min·m²/MJ and w_f = 1.0, t_e = 600×0.07×1.0 ≈ 42 min, below a 60-minute rating. Values are teaching assumptions.",
+      "verify": "核對每種區劃牆、樓板、防火門窗與貫穿系統都有經認可的耐火試驗或認證，試驗構造與現場構造（材料、厚度、固定方式、尺寸）一致；採性能設計時，火載量與通風假設須有調查依據並經審查。~Confirm that every compartment wall, floor, fire door and window and penetration system has an approved fire test or listing, and that the tested construction matches the site construction in materials, thickness, fixing and size; where performance-based design is used, fire-load and ventilation assumptions must be based on survey data and reviewed.",
+      "failure": "若現場以未經試驗的輕隔間或板材替代，或固定間距、板材層數與試驗不同，區劃牆在火災中提早失去完整性；倉儲或資料中心等高火載量用途若沿用辦公室的時間等效，真實火災會超過構件的防火時效。~Substituting untested partitions or boards on site, or changing fixing spacing or board layers from the tested build-up, makes compartment walls lose integrity early in a fire; applying office time equivalence to high-fire-load uses such as storage or data centres lets real fires exceed element ratings.",
+      "misconception": "標示一小時防火時效的牆，在任何火災中都一定能撐一小時。~A wall rated for one hour will always last one hour in any fire.",
+      "practice": "防火構造的材料送審要附耐火試驗報告與構造詳圖，現場依詳圖施作並由監造逐區查驗；使用用途改變為高火載量時，須重新檢討防火時效。~Submittals for fire-resisting construction must include fire test reports and construction details, with site work following the details and inspected area by area; any change to a high-fire-load use requires the ratings to be reassessed."
+    },
+    {
+      "anchor": "防火門與門縫~Fire doors and door gaps",
+      "title": "防火門、自動關閉與漏煙~Fire doors, self-closing and smoke leakage",
+      "mechanism": "防火門是區劃上最常被打開的缺口：門必須自動關閉並緊密閉合，門框與牆的接縫、門下縫與門扇周邊縫都會漏煙。高層建築的煙囪效應與加壓系統使門兩側存在壓力差，即使只有數公釐的縫隙，也能讓大量煙進入走廊或樓梯。Grenfell Tower 火災中，住戶單元的防火門未能自動關閉與密封，使煙從住戶進入梯廳；事前的防火缺失通知也已列出防火門問題。~Fire doors are the most frequently opened gaps in a compartment: they must self-close and latch tightly, and frame-to-wall joints, undercuts and leaf perimeters all leak smoke. Stack effect and pressurisation in tall buildings create pressure differences across doors, so even gaps of a few millimetres admit large amounts of smoke into corridors or stairs. In the Grenfell Tower fire, flat entrance fire doors failed to close and seal, letting smoke pass from flats into lobbies, and an earlier fire deficiency notice had already listed fire-door problems.",
+      "model": "孔口流量 Q = C·A·√(2ΔP/ρ)。2.1 m × 0.9 m 門扇周邊縫 3 mm，A = 0.003×(2×2.1 + 2×0.9) = 0.018 m²；ΔP = 25 Pa、ρ = 1.2 kg/m³、C = 0.65：v = √(2×25/1.2) ≈ 6.45 m/s，Q ≈ 0.65×0.018×6.45 ≈ 0.076 m³/s（約 272 m³/h）。門下縫再多 20 mm，面積加倍，漏煙量增為約 544 m³/h。數值為教學假設。~Orifice flow Q = C·A·√(2ΔP/ρ). A 2.1 m × 0.9 m door leaf with a 3 mm perimeter gap has A = 0.003×(2×2.1 + 2×0.9) = 0.018 m²; with ΔP = 25 Pa, ρ = 1.2 kg/m³ and C = 0.65, v = √(2×25/1.2) ≈ 6.45 m/s and Q ≈ 0.65×0.018×6.45 ≈ 0.076 m³/s, about 272 m³/h. A further 20 mm undercut doubles the area and leakage to about 544 m³/h. Values are teaching assumptions.",
+      "verify": "竣工時逐樘檢查防火門的認證標籤、門弓器自動關閉與閂鎖、門縫尺寸與防煙條，並抽樣做關閉時間測試；與消防受信總機連動的常開防火門，要實際觸發偵測器確認會關閉。~At completion check every fire door's certification label, closer self-closing and latching, gap sizes and smoke seals, and test closing time on a sample; for hold-open doors linked to the fire alarm panel, trigger the detectors to confirm they close.",
+      "failure": "防火門被楔子撐開、門弓器拆除或門扇變形無法閂鎖時，起火區的煙直接灌入走廊與樓梯，使逃生路徑在數分鐘內失去可用性；更換門鎖或加裝貓眼若破壞門扇構造，也會讓防火門失去認證性能。~Fire doors wedged open, closers removed or leaves warped so they cannot latch let smoke pour straight into corridors and stairs, making escape routes unusable within minutes; replacing locks or adding viewers in a way that breaks the leaf construction also voids the door's certified performance.",
+      "misconception": "防火門只要是防火材料做的，開著也能擋火。~A fire door made of fire-resisting material still stops fire when left open.",
+      "practice": "管理規約應禁止撐開防火門，需要常開者必須改為與偵測器連動的自動關閉裝置；防火門的五金更換須使用經認證的配件，並列入定期檢查表。~House rules should forbid propping fire doors open, with doors that must stay open fitted with detector-linked automatic release; door hardware replacements must use certified components and be included in periodic inspections."
+    },
+    {
+      "anchor": "帷幕牆層間防火~Curtain-wall perimeter fire barrier",
+      "title": "樓板邊緣、帷幕牆與外牆的垂直蔓延~Slab edges, curtain walls and vertical spread on the façade",
+      "mechanism": "高層建築的垂直區劃常在樓板邊緣斷開：帷幕牆與樓板之間留有施工縫，若沒有以經試驗的層間防火填塞封閉，火煙會沿縫隙直接竄上樓。外牆本身也可能成為火的通道，Grenfell Tower 在 2015 至 2016 年改裝時加上鋁複合板與可燃保溫材，火災時火焰沿外牆空腔向上，繞過內部的區劃，約 30 分鐘內抵達屋頂，公開調查第一階段報告指出外牆是火勢快速蔓延的主因。設計上要同時處理樓板邊緣填塞、窗間牆高度與外牆材料的燃燒性。~Vertical compartmentation in tall buildings often breaks at the slab edge: a construction gap between curtain wall and floor, if not closed with a tested perimeter fire barrier, lets fire and smoke rise straight up. The façade itself can also become a fire path; Grenfell Tower was overclad in 2015 to 2016 with aluminium composite panels and combustible insulation, and in the fire flames travelled up the external cavity, bypassing internal compartments and reaching the roof within about 30 minutes, with the inquiry's Phase 1 report identifying the exterior as the principal reason for the rapid spread. Design must address slab-edge firestopping, spandrel height and façade combustibility together.",
+      "model": "樓板外周長 160 m、帷幕牆與樓板之間的縫寬 100 mm，若完全未封填，每層等效開口 A = 0.10×160 = 16 m²，相當於樓板上一個 4 m × 4 m 的洞；即使只有 10% 長度漏封，也有約 1.6 m² 的垂直通道。數值為教學假設。~With a 160 m slab perimeter and a 100 mm gap between curtain wall and slab, an unsealed gap is an equivalent opening of A = 0.10×160 = 16 m² per floor, like a 4 m × 4 m hole in the slab; even 10% of the length left unsealed is a vertical path of about 1.6 m². Values are teaching assumptions.",
+      "verify": "層間防火填塞必須採用與帷幕牆型式一致的試驗系統，現場檢查礦棉密度、壓縮率、支撐角鐵與表面防煙密封，並逐層拍照；外牆材料須有燃燒性能證明，帷幕牆設計審查時把窗間牆與層間填塞一併檢核。~Perimeter fire barriers must be a tested system matching the curtain-wall type, with mineral-wool density, compression, support angles and surface smoke seal inspected and photographed floor by floor; façade materials need combustibility evidence, and curtain-wall design review checks spandrels and perimeter barriers together.",
+      "failure": "層間填塞因帷幕牆變位或施工擠壓脫落，或保溫材被替換為可燃材料，火災時火煙沿樓板邊緣與外牆空腔逐層向上，區劃形同虛設；地震後帷幕牆層間變位也可能把填塞拉開而無人發現。~Perimeter barriers dislodged by curtain-wall movement or construction, or insulation swapped for combustible products, let fire and smoke climb floor by floor along slab edges and façade cavities, nullifying compartmentation; storey drift in an earthquake can also pull barriers open unnoticed.",
+      "misconception": "樓板本身有防火時效，就代表上下樓層已經完全區劃。~If the floor slab is fire-rated, the floors above and below are fully compartmented.",
+      "practice": "帷幕牆、防火填塞與結構三方要在施工圖階段協調樓板邊緣細部，層間填塞列為帷幕牆安裝每層的停止點；外牆材料變更必須提出燃燒性證明並經審查，地震後檢查表應包含層間填塞。~Curtain-wall, firestopping and structural teams must coordinate slab-edge details at shop-drawing stage, with perimeter barriers a hold point on every floor of curtain-wall installation; any façade material change requires combustibility evidence and review, and post-earthquake checklists should include perimeter barriers."
+    },
+    {
+      "anchor": "管線貫穿防火填塞~Service penetration firestops",
+      "title": "施工與裝修期間的區劃完整性~Compartment integrity during construction and fit-out",
+      "mechanism": "區劃最大的敵人是施工後期與使用期間的穿孔：機電、弱電、空調與消防管線大量穿越區劃牆與樓板，每一個貫穿部都要以與管材、管徑、牆體型式相符的試驗系統封填。許多填塞在區劃牆完成驗收後才被後續工班打開，或以一般發泡材隨意填補。高層建築的貫穿部以萬計，只要少數失效就足以讓煙在樓層間流通。~The greatest enemy of compartmentation is late-stage and in-service penetrations: services, data, ductwork and fire-protection pipes cross compartment walls and floors in large numbers, and each penetration must be sealed with a tested system matching pipe material, size and wall type. Many seals are opened by later trades after the wall has been accepted, or patched with ordinary foam. A high-rise building has tens of thousands of penetrations, and a small fraction failing is enough to let smoke circulate between floors.",
+      "model": "40 層建築每層約 300 個貫穿部，總數 40×300 = 12,000 個；若 2% 未正確封填，即 240 個缺口，每個平均 0.01 m²，等效開口合計約 2.4 m²，分散在各層成為煙的通道。數值為教學假設。~A 40-storey building with about 300 penetrations per floor has 40×300 = 12,000 in total; if 2% are not properly sealed, 240 gaps averaging 0.01 m² add up to an equivalent opening of about 2.4 m², spread over the floors as smoke paths. Values are teaching assumptions.",
+      "verify": "建立貫穿部登錄系統，每個填塞貼上編號標籤並記錄系統型號、施工人員、日期與照片；由獨立檢查人員抽樣破壞性或目視檢查，發現缺失即擴大抽查；區劃牆在天花板封板前設停止點，未完成填塞不得封板。~Set up a penetration register in which each seal carries a numbered label recording system, installer, date and photograph; an independent inspector samples seals visually or destructively and extends sampling when defects appear; compartment walls have a hold point before ceilings close, and no ceiling may close over incomplete seals.",
+      "failure": "後續工班為了新增線路在已填塞的貫穿部旁鑿孔，事後只用一般矽利康或發泡劑封住，外觀看似完整，火災時這些材料迅速燒失，煙與火穿過區劃；天花板封閉後無人再檢查，缺陷一直潛伏到火災發生。~Later trades break through beside sealed penetrations to add cables and close them with ordinary sealant or foam; it looks complete, but in a fire these materials burn away quickly and smoke and flame pass through, and once ceilings close nobody checks again until a fire reveals the defect.",
+      "misconception": "管線穿過防火牆後，用任何填縫材料補起來就可以。~After pipes pass through a fire wall, any filler material can seal the gap.",
+      "practice": "施工規範規定區劃上的任何新開孔須先申請許可並指定合格施工者，完工後更新登錄系統；物業管理階段沿用同一套許可制度，裝修承包商退場前由管理單位檢查區劃。~The specification requires a permit and a qualified installer for any new opening in a compartment, with the register updated afterwards; the same permit system continues in facility management, and managers inspect compartments before fit-out contractors leave."
+    },
+    {
+      "anchor": "標準耐火試驗爐~Standard fire-resistance furnace",
+      "title": "耐火試驗、判定準則與認可範圍~Fire-resistance tests, criteria and scope of approval",
+      "mechanism": "區劃構件的防火時效來自標準耐火試驗：把牆、樓板、門或貫穿系統安裝在試驗爐上，依 ISO 834、ASTM E119 或國家標準的升溫曲線加熱，觀察承載力、完整性（有無火焰穿透或棉墊點燃）與隔熱性（背火面平均溫升與最高點溫升）何時失效。試驗結果只適用於試驗構造及其認可的延伸範圍，尺寸、材料、固定方式與試驗不同時，不能直接沿用。台灣內政部建築研究所等機構設有性能試驗設施，支持防火材料與構造的驗證。~An element's fire rating comes from standard fire-resistance tests: a wall, floor, door or penetration system is mounted on a furnace and heated to the ISO 834, ASTM E119 or national curve while load-bearing capacity, integrity (flame penetration or cotton-pad ignition) and insulation (average and maximum temperature rise on the unexposed face) are watched for failure. Results apply only to the tested construction and its approved field of extension; different sizes, materials or fixings cannot simply borrow the rating. Institutions such as Taiwan's Architecture and Building Research Institute operate performance test facilities that support verification of fire-resisting materials and constructions.",
+      "model": "ISO 834 曲線 30 min 時約 842°C、60 min 約 945°C。隔熱性常以背火面平均溫升不超過 140 K、任一點不超過 180 K 判定：室溫 20°C 時，背火面平均溫度達 160°C 或任一點達 200°C 即判定隔熱失效；若 52 分鐘時平均溫度先達 160°C，該構造只能認定為 30 分鐘等級而非 60 分鐘。數值為教學假設。~The ISO 834 curve reaches about 842°C at 30 min and 945°C at 60 min. Insulation is commonly judged by an average unexposed-face rise of no more than 140 K and no more than 180 K at any point: from 20°C ambient, failure occurs when the average reaches 160°C or any point reaches 200°C; if the average hits 160°C at 52 minutes, the construction rates only 30 minutes, not 60. Values are teaching assumptions.",
+      "verify": "審查試驗報告時核對試驗標準、試體尺寸、構造層次、固定方式、承載狀態與失效時間，並確認認可範圍涵蓋現場尺寸與配置；必要時要求第三方認證機構的產品認證與工廠品質管制紀錄。~When reviewing test reports, check the standard, specimen size, build-up, fixing, loading condition and failure times, and confirm that the approved scope covers site sizes and configurations; where needed require third-party product certification and factory quality-control records.",
+      "failure": "若引用的試驗報告是較小尺寸的門或較薄的牆，現場大尺寸構造在火災中翹曲變形、提早出現縫隙；把非承重試驗的牆當作承重區劃牆使用，火災中可能因承載而提早倒塌。~Citing a test on a smaller door or thinner wall means larger site constructions bow and open gaps early in a fire; using a wall tested as non-load-bearing as a load-bearing compartment wall can lead to early collapse under load in a fire.",
+      "misconception": "只要材料本身不燃，組成的牆或門就自動具有防火時效。~If the materials are non-combustible, the wall or door they form automatically has a fire rating.",
+      "practice": "設計說明應明列每種防火構造引用的試驗報告編號與認可範圍，承包商變更產品須提出同等或更佳的試驗證明並經建築師與消防審查核可。~The design basis should list the test report number and approved scope for each fire-resisting construction, and any product substitution by the contractor must be supported by equal or better test evidence and approved by the architect and fire reviewer."
+    },
+    {
+      "anchor": "特別安全梯加壓~Stair pressurisation",
+      "title": "樓梯加壓、排煙與驗收試驗~Stair pressurisation, smoke control and acceptance tests",
+      "mechanism": "高層建築的樓梯與緊急昇降機間是垂直逃生與消防搶救的生命線，常以加壓送風維持比走廊高的壓力，讓門縫只往外漏氣而不讓煙進入。但壓力太高時，門會推不開，避難者無法進入樓梯；壓力太低則擋不住煙。煙囪效應使高層建築上下壓力分布不同，冬夏也不一樣，因此加壓系統要在實際建築中做驗收試驗，確認多扇門同時開啟時仍能維持壓差，且開門力在限值內。~Stairs and fire-fighting lift lobbies in tall buildings are the lifelines for vertical escape and firefighting, often pressurised above corridor pressure so that air leaks outward through door gaps and smoke stays out. Too much pressure makes doors impossible to open and occupants cannot enter the stair; too little fails to hold back smoke. Stack effect distributes pressure differently over the height and between winter and summer, so pressurisation must be acceptance-tested in the real building to confirm that the pressure difference holds with several doors open and that door-opening forces stay within limits.",
+      "model": "開門力 F = F_dc + W·A·ΔP/[2(W − d)]。門寬 W = 0.9 m、門面積 A = 1.89 m²、把手距門邊 d = 0.075 m、門弓器力 F_dc = 40 N：ΔP = 50 Pa 時 F = 40 + 0.9×1.89×50/(2×0.825) ≈ 91.5 N；ΔP = 80 Pa 時約 122.5 N，接近常見的 133 N 上限。數值為教學假設。~Door-opening force F = F_dc + W·A·ΔP/[2(W − d)]. With door width W = 0.9 m, area A = 1.89 m², knob distance d = 0.075 m and closer force F_dc = 40 N: at ΔP = 50 Pa, F = 40 + 0.9×1.89×50/(2×0.825) ≈ 91.5 N; at 80 Pa about 122.5 N, close to the common 133 N limit. Values are teaching assumptions.",
+      "verify": "驗收時在多個樓層量測樓梯與走廊間的壓差，分別在全部門關閉與指定數量門開啟時測試，並以拉力計量測開門力；夏季與冬季各測一次以涵蓋煙囪效應，結果與設計值比較並記錄。~At acceptance, measure pressure difference between stair and corridor on several floors with all doors closed and with the specified number of doors open, and measure door-opening force with a force gauge; test in both summer and winter to capture stack effect, recording results against design values.",
+      "failure": "若只在單一樓層、單一季節測試，冬季強烈煙囪效應下低樓層門可能推不開，高樓層壓差卻不足而進煙；加壓風機的電源與偵測連動若未與區劃同步維護，火災時加壓失效，樓梯成為煙囪。~Testing on one floor in one season can miss that, under strong winter stack effect, lower-floor doors cannot be opened while upper floors lack pressure and admit smoke; if fan power and detector interlocks are not maintained along with compartments, pressurisation fails in a fire and the stair becomes a chimney.",
+      "misconception": "樓梯加壓的壓力越大越安全。~The higher the stair pressurisation, the safer.",
+      "practice": "加壓與排煙系統的驗收應包含跨季節試驗與聯動測試，並納入年度消防安全設備檢修；任何樓梯門、走廊隔間或機電改裝後，須重新量測壓差與開門力。~Acceptance of pressurisation and smoke control should include seasonal and interlock tests and be part of annual fire-protection maintenance; after any change to stair doors, corridor partitions or services, re-measure pressure difference and door-opening force."
+    },
+    {
+      "anchor": "鋼構臨界溫度~Steel critical temperature",
+      "title": "區劃失效時的結構防火~Structural fire safety when compartments fail",
+      "mechanism": "區劃假設火災被限制在一個區劃內燒完，結構防火被覆也依此設計；若灑水與區劃同時失效，多個區劃或多層同時燃燒，熱膨脹與強度折減會同時作用在大範圍的梁、柱與接頭上。One Meridian Plaza 火災後鋼梁與大梁下垂扭曲、樓板開裂，世界貿易中心 7 號大樓則在下層火災失控後倒塌。結構工程師要知道構件在多高的溫度會失去承載力，並與防火被覆的設計溫度一致。~Compartmentation assumes a fire burns out within one compartment, and structural fire protection is designed accordingly; if sprinklers and compartments both fail, several compartments or floors burn at once, and thermal expansion and strength loss act together on beams, columns and connections over a wide area. After the One Meridian Plaza fire, steel beams and girders sagged and twisted and floors cracked, while World Trade Center 7 collapsed after lower-floor fires burned uncontrolled. Structural engineers must know the temperature at which members lose capacity and align it with the fireproofing design temperature.",
+      "model": "EN 1993-1-2 臨界溫度 θ_cr = 39.19·ln[1/(0.9674·μ₀^3.833) − 1] + 482。使用率 μ₀ = 0.5 時 θ_cr ≈ 585°C；μ₀ = 0.7 時降為約 526°C；μ₀ = 0.3 時升為約 664°C。使用率越高，允許的鋼材溫度越低，防火被覆要越厚。數值為教學假設。~The EN 1993-1-2 critical temperature is θ_cr = 39.19·ln[1/(0.9674·μ₀^3.833) − 1] + 482. At utilisation μ₀ = 0.5, θ_cr ≈ 585°C; at μ₀ = 0.7 it drops to about 526°C, and at μ₀ = 0.3 it rises to about 664°C. Higher utilisation means a lower allowable steel temperature and thicker fire protection. Values are teaching assumptions.",
+      "verify": "結構計算書列出主要梁柱在火災荷載組合下的使用率與臨界溫度，與防火被覆廠商的厚度表一致；長跨樓板與關鍵柱另做結構火災分析，並在施工時以測厚儀抽查被覆厚度。~The structural calculations list utilisation and critical temperature for principal beams and columns under the fire load combination, consistent with the fireproofing manufacturer's thickness tables; long-span floors and key columns receive structural fire analysis, and coating thickness is sampled with a gauge during construction.",
+      "failure": "若防火被覆依一般使用率設計，而某些構件因設計變更或增加荷載使用率提高，臨界溫度下降，同樣厚度的被覆在火災中提早失效；機電施工刮除或撞落被覆而未修補，也會形成局部弱點。~If fireproofing is sized for typical utilisation while design changes or added loads raise utilisation in some members, their critical temperature falls and the same coating fails early in a fire; fireproofing scraped or knocked off by services work and not repaired creates local weak points.",
+      "misconception": "鋼構只要有防火被覆，區劃失效也不會影響結構安全。~Steelwork with fireproofing is safe even if compartmentation fails.",
+      "practice": "結構與消防設計應共同決定設計火災情境（單一區劃或多層火災）並寫入設計基準；被覆修補列入機電施工的退場檢查，使用期間的荷載增加須回饋到臨界溫度檢核。~Structural and fire engineers should jointly set the design fire scenarios, single-compartment or multi-floor, in the design basis; fireproofing repair is part of services contractors' exit inspection, and added loads in service must feed back into critical-temperature checks."
+    },
+    {
+      "anchor": "區劃管理與公共安全申報~Compartment management and safety reporting",
+      "title": "使用管理、避難時間與交接~Management in use, escape time and handover",
+      "mechanism": "區劃在使用期間最容易被破壞：防火門被撐開、走廊堆放雜物、隔間任意變更、管道間被打開。2021 年 10 月高雄 13 層的城中城大樓火災造成 46 人死亡、41 人受傷，火從一樓起火，因低樓層挑高與玻璃立面迅速竄升，濃煙充滿上方樓層，雜物又助長火勢並阻礙救援，多數死者因吸入濃煙而亡。這類老舊大樓顯示，區劃不只是設計問題，而是管理、檢查與住戶教育的長期責任。~Compartments are most easily defeated in use: fire doors propped open, corridors cluttered, partitions altered at will and shafts opened. The October 2021 fire at Kaohsiung's 13-storey Cheng Chung Cheng Building killed 46 people and injured 41; starting on the ground floor, it rose quickly through high-ceilinged lower floors with a glass frontage and filled the floors above with smoke, while clutter fed the fire and blocked rescue, and most victims died of smoke inhalation. Such ageing buildings show that compartmentation is not only a design issue but a long-term responsibility of management, inspection and occupant education.",
+      "model": "以可用避難時間與所需避難時間比較：RSET = 偵測 60 s + 反應準備 300 s（夜間睡眠）+ 移動 180 s = 540 s。若區劃失效、快速成長火災使走廊約 300 s 就不可維生，ASET − RSET = 300 − 540 = −240 s；區劃與防火門完整而把走廊維生時間延長到 900 s 以上，才有 360 s 的餘裕。數值為教學假設。~Compare available and required safe egress time: RSET = detection 60 s + pre-movement 300 s (asleep at night) + travel 180 s = 540 s. If compartments fail and a fast fire makes the corridor untenable at about 300 s, ASET − RSET = 300 − 540 = −240 s; only intact compartments and doors that extend corridor tenability beyond 900 s leave a margin of 360 s. Values are teaching assumptions.",
+      "verify": "管理單位依建築物公共安全檢查與消防安全設備檢修申報制度定期檢查防火門、區劃牆、貫穿填塞、樓梯淨空與灑水系統，檢查結果與防火區劃圖比對；改裝前由建築師或專業技師確認不破壞區劃。~Managers inspect fire doors, compartment walls, penetration seals, stair clearance and sprinklers periodically under building public-safety inspection and fire-protection equipment reporting schemes, comparing results with the compartmentation plan; before alterations an architect or professional engineer confirms that compartments are not breached.",
+      "failure": "若交接文件沒有防火區劃圖與貫穿部登錄，後續管理者不知道哪些牆是區劃牆，裝修時任意打通或開孔；長期堆放雜物與撐開防火門，讓設計上可行的避難時間在真實火災中變成負值。~Without a compartmentation plan and penetration register at handover, later managers cannot tell which walls are compartment walls and break through or cut them during renovation; years of clutter and propped-open fire doors turn an escape margin that worked in design into a negative one in a real fire.",
+      "misconception": "老舊建築只要當年合法取得使用執照，就不需要再檢討防火區劃。~An old building that was lawfully approved when built needs no further review of its compartmentation.",
+      "practice": "交接文件應包含防火區劃圖、防火構造試驗報告清單、防火門與貫穿部登錄、加壓與灑水系統驗收紀錄、檢查週期與改裝許可流程；管理單位應定期辦理住戶防火教育，並把防火門常閉列入規約。~Handover should include the compartmentation plan, a list of fire-test reports, registers of fire doors and penetrations, acceptance records for pressurisation and sprinklers, inspection intervals and the alteration permit procedure; managers should run regular occupant fire education and write ‘fire doors kept closed’ into house rules."
+    }
+  ],
+  "example": "設計練習：某 40 層辦公大樓標準層 1,500 m²、火載量 600 MJ/m²，每層一個區劃，火載量 Q = 1,500×600 = 900 GJ。以 Eurocode 簡化時間等效 t_e = 600×0.07×1.0 ≈ 42 min，樓板與區劃牆採 60 min 防火時效；ISO 834 在 60 min 時約 945°C。主要鋼梁使用率 μ₀ = 0.5，臨界溫度約 585°C，被覆厚度依此選定。防火門 3 mm 周邊縫在 25 Pa 壓差下漏煙約 272 m³/h，多 20 mm 門下縫則加倍。帷幕牆與樓板 100 mm 縫、周長 160 m，若未封填等於每層 16 m² 開口。樓梯加壓 50 Pa 時開門力約 91.5 N，80 Pa 時約 122.5 N。若灑水系統失效使火勢跨越兩層，同時燃燒的火載量變為 1,800 GJ，鋼梁若因後續加載使用率升到 0.7，臨界溫度降為約 526°C，原被覆厚度不再足夠。數值為教學假設，不代表任何實際建築的設計。~Design exercise: a 40-storey office tower has 1,500 m² typical floors and a fire load of 600 MJ/m², one compartment per floor, so Q = 1,500×600 = 900 GJ. Simplified Eurocode time equivalence gives t_e = 600×0.07×1.0 ≈ 42 min, so floors and compartment walls are rated 60 min; ISO 834 reaches about 945°C at 60 min. Principal steel beams at utilisation μ₀ = 0.5 have a critical temperature of about 585°C, which sets the coating thickness. A fire door with a 3 mm perimeter gap leaks about 272 m³/h at 25 Pa, doubled by an extra 20 mm undercut. A 100 mm curtain-wall gap around a 160 m perimeter, unsealed, equals a 16 m² opening per floor. Stair pressurisation at 50 Pa gives a door-opening force of about 91.5 N, and at 80 Pa about 122.5 N. If sprinkler failure lets the fire span two floors, the fire load burning at once becomes 1,800 GJ, and if later loads raise beam utilisation to 0.7, the critical temperature falls to about 526°C and the original coating is no longer sufficient. Values are teaching assumptions, not the design of any real building.",
+  "history": "高層建築的防火區劃觀念隨著電梯與鋼構高樓的普及而發展，大型火災不斷推動法規修訂。1991 年費城 One Meridian Plaza 火災燒毀 8 層、3 名消防員殉職，火勢直到有灑水的 30 樓才停止，成為推動既有高樓加裝灑水的重要案例；2017 年倫敦 Grenfell Tower 火災造成 72 人死亡，外牆改裝材料使火勢繞過內部區劃，公開調查第一階段報告於 2019 年 10 月發布；2021 年 10 月高雄城中城大樓火災造成 46 人死亡，促使台灣各地加強老舊建築的消防與公共安全檢查。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Compartmentation in tall buildings developed alongside lifts and steel-framed high-rises, and major fires repeatedly drove regulatory change. The 1991 One Meridian Plaza fire in Philadelphia destroyed eight floors and killed three firefighters before stopping at the sprinklered 30th floor, an important case for retrofitting sprinklers in existing towers; the 2017 Grenfell Tower fire in London killed 72 people as façade refurbishment materials let fire bypass internal compartments, with the inquiry's Phase 1 report published in October 2019; and the October 2021 Cheng Chung Cheng Building fire in Kaohsiung killed 46 people, prompting stronger fire and public-safety inspections of ageing buildings across Taiwan. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "高雄城中城大樓為 13 層、約 1981 年興建，2021 年 10 月 14 日火災造成 46 人死亡、41 人受傷~Kaohsiung's Cheng Chung Cheng Building, 13 storeys and built around 1981, burned on 14 October 2021, killing 46 and injuring 41",
+    "城中城大樓火災從 1 樓起火，迅速竄升到 6 樓並使上方樓層充滿濃煙，約 4.5 小時後撲滅~The Cheng Chung Cheng fire started on the ground floor, rose quickly to the 6th floor, filled upper floors with smoke and was extinguished after about 4.5 hours",
+    "Grenfell Tower 為 24 層、高約 67.3 m，2017 年 6 月 14 日火災造成 72 人死亡~Grenfell Tower had 24 storeys and stood about 67.3 m tall; its fire on 14 June 2017 killed 72 people",
+    "Grenfell Tower 於 2015 至 2016 年改裝加上聚乙烯芯鋁複合板，火焰在消防車抵達後約 30 分鐘內抵達屋頂~Grenfell Tower was overclad in 2015 to 2016 with polyethylene-core aluminium composite panels, and flames reached the roof within about 30 minutes of the first fire engines arriving",
+    "One Meridian Plaza 為 38 層，1991 年 2 月 23 日自 22 樓起火，燒毀 8 層、歷時超過 19 小時~One Meridian Plaza had 38 storeys; fire started on the 22nd floor on 23 February 1991, destroyed 8 floors and lasted more than 19 hours",
+    "One Meridian Plaza 火勢在第一個設灑水的 30 樓被 10 個灑水頭擋住，3 名消防員殉職~At One Meridian Plaza the fire was stopped on the 30th floor, the first with sprinklers, by 10 heads, and 3 firefighters died",
+    "One Meridian Plaza 立管減壓閥出水壓力低於 60 psi，而消防水帶瞄子需要 100 psi~At One Meridian Plaza the standpipe pressure-reducing valves delivered under 60 psi, while fire department nozzles needed 100 psi",
+    "ISO 834 標準火災在 60 分鐘時約 945°C、120 分鐘時約 1,049°C~The ISO 834 standard fire reaches about 945°C at 60 minutes and about 1,049°C at 120 minutes"
+  ],
+  "timeline": [
+    {
+      "year": "1991",
+      "event": "費城 One Meridian Plaza 火災燒毀 8 層，在設有灑水的 30 樓停止~The One Meridian Plaza fire in Philadelphia destroys eight floors and stops at the sprinklered 30th floor"
+    },
+    {
+      "year": "2017",
+      "event": "倫敦 Grenfell Tower 火災，外牆材料使火勢繞過內部區劃，72 人死亡~The Grenfell Tower fire in London kills 72 as façade materials let fire bypass internal compartments"
+    },
+    {
+      "year": "2019",
+      "event": "Grenfell Tower 公開調查第一階段報告發布，指出外牆是火勢快速蔓延的主因~The Grenfell Tower Inquiry Phase 1 report identifies the exterior as the principal reason for rapid fire spread"
+    },
+    {
+      "year": "2021",
+      "event": "高雄城中城大樓火災造成 46 人死亡，各地加強老舊建築消防與公共安全檢查~The Cheng Chung Cheng Building fire in Kaohsiung kills 46, prompting stronger fire and public-safety inspections of ageing buildings"
+    }
+  ],
+  "codes": [
+    "建築技術規則建築設計施工編（防火區劃與高層建築物專章）~Taiwan Building Technical Regulations, Building Design and Construction (compartmentation and high-rise building chapters)",
+    "NFPA 101 生命安全規範~NFPA 101 Life Safety Code",
+    "ISO 834 耐火試驗—建築構件~ISO 834 Fire-resistance tests — Elements of building construction",
+    "EN 1993-1-2 Eurocode 3：鋼結構設計—結構防火設計~EN 1993-1-2 Eurocode 3: Design of steel structures — Structural fire design"
+  ],
+  "landmarks": [
+    "高雄城中城大樓~Cheng Chung Cheng Building, Kaohsiung",
+    "倫敦 Grenfell Tower~Grenfell Tower, London",
+    "費城 One Meridian Plaza~One Meridian Plaza, Philadelphia"
+  ],
+  "place": {
+    "name": "高雄城中城大樓原址參照點~Cheng Chung Cheng Building site, Kaohsiung",
+    "country": "台灣~Taiwan",
+    "lat": 22.6253,
+    "lng": 120.2846,
+    "query": "高雄市鹽埕區府北路 城中城 原址"
+  },
+  "sources": [
+    {
+      "key": "grenfell-phase-1",
+      "title": "Grenfell Tower 公開調查：第一階段報告",
+      "titleEn": "Grenfell Tower Inquiry: Phase 1 report",
+      "publisher": "Grenfell Tower Inquiry",
+      "url": "https://www.grenfelltowerinquiry.org.uk/phase-1-report",
+      "sourceType": "primary",
+      "scope": "官方調查報告下載頁，含四冊報告與執行摘要，涵蓋火災經過、外牆與避難策略；課程只引用公開結論。",
+      "scopeEn": "Official inquiry report page with four volumes and an executive summary covering the fire's course, the exterior wall and evacuation strategy; the course cites only public conclusions."
+    },
+    {
+      "key": "nist-wtc7-fire",
+      "title": "NIST：世界貿易中心 7 號大樓調查常見問答",
+      "titleEn": "NIST: WTC 7 investigation frequently asked questions",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://www.nist.gov/world-trade-center-investigation/study-faqs/wtc-7-investigation",
+      "sourceType": "primary",
+      "scope": "說明灑水水源中斷後下層火災失控並導致結構倒塌，作為區劃與灑水失效對結構影響的背景。",
+      "scopeEn": "Explains how lower-floor fires burned uncontrolled after the sprinkler water supply was lost and led to structural collapse, as background on what compartment and sprinkler failure does to structure."
+    },
+    {
+      "key": "wiki-kaohsiung-fire",
+      "title": "維基百科：2021 年高雄城中城大樓火災（英文）",
+      "titleEn": "Wikipedia: 2021 Kaohsiung building fire",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/2021_Kaohsiung_building_fire",
+      "sourceType": "secondary",
+      "scope": "火災日期、建築規模、傷亡、起火位置與後續法規檢討的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of the date, building size, casualties, origin and regulatory follow-up of the fire, for further reading."
+    },
+    {
+      "key": "wiki-one-meridian-plaza",
+      "title": "維基百科：One Meridian Plaza（英文）",
+      "titleEn": "Wikipedia: One Meridian Plaza",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/One_Meridian_Plaza",
+      "sourceType": "secondary",
+      "scope": "1991 年火災的樓層、延燒範圍、灑水頭阻止火勢與立管壓力問題的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of the 1991 fire's floors, extent of spread, sprinkler stop and standpipe pressure problems, for further reading."
+    },
+    {
+      "key": "wiki-grenfell-fire",
+      "title": "維基百科：Grenfell Tower 火災（英文）",
+      "titleEn": "Wikipedia: Grenfell Tower fire",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Grenfell_Tower_fire",
+      "sourceType": "secondary",
+      "scope": "建築規模、改裝外牆材料、火勢蔓延、避難策略與防火門問題的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of building size, refurbishment façade materials, fire spread, evacuation strategy and fire-door issues, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "美國消防協會（NFPA）",
+      "nameEn": "National Fire Protection Association (NFPA)",
+      "business": "非營利標準組織，制定 NFPA 101 生命安全規範與灑水、排煙等消防標準並出版研究報告。",
+      "businessEn": "Non-profit standards organisation that develops NFPA 101 and standards for sprinklers and smoke control, and publishes research reports.",
+      "url": "https://www.nfpa.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "高層建築避難、灑水與排煙設計標準",
+      "roleEn": "Standards for high-rise egress, sprinklers and smoke control"
+    },
+    {
+      "name": "喜利得（Hilti）",
+      "nameEn": "Hilti",
+      "business": "建築工具與固定系統公司，提供貫穿部防火填塞與被動防火產品及軟體。",
+      "businessEn": "Construction tools and fastening company offering penetration firestop and passive fire protection products and software.",
+      "url": "https://www.hilti.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "貫穿部防火填塞系統與施工管理工具",
+      "roleEn": "Penetration firestop systems and installation management tools"
+    },
+    {
+      "name": "內政部建築研究所",
+      "nameEn": "Architecture and Building Research Institute (ABRI), Taiwan",
+      "business": "台灣政府建築研究機構，設有性能實驗中心並辦理建築防火安全研究與研討。",
+      "businessEn": "Taiwan government building research institute with a performance laboratory and research and seminars on building fire safety.",
+      "url": "https://www.abri.gov.tw/",
+      "investorUrl": "",
+      "security": null,
+      "role": "台灣建築防火研究與材料性能試驗",
+      "roleEn": "Taiwanese building fire-safety research and material performance testing"
+    }
+  ],
+  "related": [
+    "b093",
+    "b076"
+  ],
+  "architectureNodes": [
+    [
+      "起火區劃與火載量",
+      "Compartment of origin and fire load"
+    ],
+    [
+      "灑水與消防水源",
+      "Sprinklers and fire water supply"
+    ],
+    [
+      "區劃牆、樓板與防火門",
+      "Compartment walls, floors and fire doors"
+    ],
+    [
+      "貫穿部與帷幕牆層間填塞",
+      "Penetrations and perimeter fire barriers"
+    ],
+    [
+      "樓梯加壓與避難路徑",
+      "Stair pressurisation and escape routes"
+    ],
+    [
+      "結構防火與管理紀錄",
+      "Structural fire protection and management records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      3,
+      5
+    ]
+  ]
+}

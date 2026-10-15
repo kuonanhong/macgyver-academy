@@ -1,0 +1,314 @@
+{
+  "id": "b037",
+  "title": "斜張橋斜索張力調整~Cable-stayed bridge stay-force tuning",
+  "discipline": "st-cable-stayed",
+  "family": "cable",
+  "focus": "從目標索力、影響矩陣、單股等張、振動法量測到允收與再調整，建立斜索索力的計算與量測閉環~A closed loop of calculation and measurement for stay forces: target forces, influence matrices, equal-strand stressing, vibration measurement, acceptance and re-tuning",
+  "summary": "斜張橋的線形與內力幾乎完全由斜索索力決定，索力調整是把設計意圖變成實際結構的核心工序。本課以諾曼第大橋、里翁—安提里翁大橋、蘇通大橋與亞武茲蘇丹塞利姆大橋等公開案例為參照，說明成橋目標索力、影響矩陣法、平行鋼絞線的逐股等張張拉、錨具調整量、施工階段預拱、溫度修正、振動法與舉升試驗量測、長期索力漂移，以及允收準則與營運期再調整的決策流程。~The profile and internal forces of a cable-stayed bridge are set almost entirely by its stay forces, so tuning them is the core operation that turns design intent into the real structure. Referring to public cases such as the Pont de Normandie, Rion–Antirion, Sutong and Yavuz Sultan Selim bridges, the course explains completed-state target forces, the influence-matrix method, strand-by-strand equal-tension stressing, anchorage adjustment, construction-stage camber, temperature correction, vibration and lift-off measurement, long-term force drift, and acceptance criteria and in-service re-tuning decisions.",
+  "units": [
+    {
+      "anchor": "成橋目標索力表~Completed-state target force table",
+      "title": "成橋目標索力：剛性支承連續梁法~Completed-state targets: the rigidly supported continuous beam method",
+      "mechanism": "斜張橋的恆載可以有無限多組索力與之平衡，設計者必須選定一組「成橋目標索力」。常見的起點是剛性支承連續梁法：假設每個斜索錨點是一個不會沉陷的支點，把橋面當成多跨連續梁計算恆載下的支點反力，再把反力除以斜索與水平面夾角的正弦，得到每根索的目標力。這樣得到的成橋狀態橋面彎矩很小、受力均勻，塔也接近純壓。之後再依活載、溫度、徐變與塔的彎矩做最佳化微調，使所有構件在各種荷載組合下都合格。~Dead load on a cable-stayed bridge can be balanced by infinitely many sets of stay forces, so the designer must choose a completed-state target set. A common starting point is the rigidly supported continuous beam method: treat each stay anchorage as an unyielding support, compute the reactions of the deck as a multi-span continuous beam under dead load, then divide each reaction by the sine of its stay’s angle to the horizontal to get the target force. The resulting completed state has small, even deck moments and a pylon close to pure compression. Targets are then fine-tuned for live load, temperature, creep and pylon bending so all members pass every load combination.",
+      "model": "恆載 w = 200 kN/m、錨距 12 m 時，中間支點反力約 R = w·s = 200×12 = 2,400 kN。索角 30° 時 T = R/sinθ = 2,400/0.5 = 4,800 kN；索角 25° 時 T = 2,400/0.423 ≈ 5,680 kN，越平的長索目標力越大。數值為教學假設。~With dead load w = 200 kN/m and 12 m anchorage spacing, an interior reaction is about R = w·s = 200×12 = 2,400 kN. At a 30° stay angle T = R/sinθ = 2,400/0.5 = 4,800 kN; at 25°, T = 2,400/0.423 ≈ 5,680 kN, so flatter long stays need larger targets. Values are teaching assumptions.",
+      "verify": "以全橋模型施加目標索力，檢查恆載下橋面與塔的彎矩分布、線形與支承反力；再疊加活載、溫度與長期效應，確認所有斷面應力與索力比（例如使用上限約 0.45 GUTS）都在容許內，並由獨立檢核者複算。~Apply the target forces in a global model and check deck and pylon moments, profile and bearing reactions under dead load; superimpose live load, temperature and long-term effects to confirm every section stress and stay ratio (for example a service limit of about 0.45 GUTS) is acceptable, with an independent checker recomputing.",
+      "failure": "若目標索力只追求恆載彎矩最小而忽略活載與徐變，使用中部分斜索可能接近容許上限，另一些卻鬆弛；成橋目標若與施工控制採用的模型不一致，現場永遠調不到「正確」的索力。~Targets chosen only to minimise dead-load moment, ignoring live load and creep, can leave some stays near their limit in service and others slack; if the completed-state targets and the construction-control model disagree, the site can never reach the right forces.",
+      "misconception": "斜張橋的索力只有一組正確答案，由靜力平衡唯一決定。~A cable-stayed bridge has a single correct set of stay forces, fixed uniquely by statics.",
+      "practice": "目標索力表要附上推導方法、採用的模型版本、容許偏差與對應的成橋線形，並由設計者與施工控制單位共同確認為同一份「基準檔」，之後任何修改都要有版本紀錄。~The target force table should state the derivation method, model version, tolerances and the corresponding completed profile, and be confirmed by designer and construction controller as one shared baseline file, with every later change version-controlled."
+    },
+    {
+      "anchor": "索力—高程影響矩陣~Force–elevation influence matrix",
+      "title": "影響矩陣法：一次算出多根索的調整量~Influence matrices: computing several adjustments at once",
+      "mechanism": "斜張橋是高度超靜定結構，調整一根索會同時改變附近多根索的力量、橋面多處的高程與塔頂位置。影響矩陣法先以結構模型算出「單位索力變化對每個控制點的影響」，排成矩陣 A，實測偏差向量 Δy 與所需索力調整 ΔT 的關係就是 Δy = A·ΔT。當控制點數與調整索數相同時可直接求解；控制點較多時以最小平方法求出整體最佳的調整量，並可加上權重與限制條件（例如任何索力不得超過上限）。這讓工程師一次規劃多根索的調整，而不是逐根試誤。~A cable-stayed bridge is highly indeterminate, and adjusting one stay changes the forces in neighbouring stays, the levels at several deck points and the pylon position at once. The influence-matrix method first computes, from the structural model, the effect of a unit change in each stay force on every control point, forming a matrix A; measured deviations Δy and required adjustments ΔT are then related by Δy = A·ΔT. With as many control points as adjustable stays it can be solved directly; with more points, least squares gives the best overall adjustment, with weights and constraints such as no stay exceeding its limit. Engineers can thus plan several adjustments together instead of trial and error stay by stay.",
+      "model": "兩根索、兩個控制點，A = [[20, 8],[8, 25]] mm/MN，需修正 Δy = [30, −10] mm。det = 20×25 − 8×8 = 436；ΔT₁ = (25×30 − 8×(−10))/436 = 830/436 ≈ 1.90 MN，ΔT₂ = (−8×30 + 20×(−10))/436 = −440/436 ≈ −1.01 MN。驗算：20×1.90 + 8×(−1.01) ≈ 30 mm。數值為教學假設。~Two stays and two control points with A = [[20, 8],[8, 25]] mm/MN need corrections Δy = [30, −10] mm. det = 20×25 − 8×8 = 436; ΔT₁ = (25×30 − 8×(−10))/436 = 830/436 ≈ 1.90 MN and ΔT₂ = (−8×30 + 20×(−10))/436 = −440/436 ≈ −1.01 MN. Check: 20×1.90 + 8×(−1.01) ≈ 30 mm. Values are teaching assumptions.",
+      "verify": "以模型計算的影響係數與現場小量調索的實測反應比對（例如調一根索 0.5 MN，量測附近高程變化），偏差大時修正模型勁度；調整後重新量測全部控制點，殘差需落在容許範圍，否則再做一輪。~Compare model influence coefficients with measured response to a small trial adjustment, for example 0.5 MN on one stay with nearby levels surveyed, and correct model stiffness if they differ; after adjustment resurvey all control points and repeat the cycle if residuals exceed tolerance.",
+      "failure": "若影響矩陣來自與現況不符的模型（例如未更新已澆置的橋面重量或錯誤的索長），算出的調整量方向正確但大小錯誤，反覆調整導致索力來回震盪；矩陣接近奇異時，小量測誤差會放大成很大的索力調整。~An influence matrix from a model that does not match the current state, for example missing cast deck weight or wrong stay lengths, gives adjustments in the right direction but wrong size, so repeated tuning oscillates; a nearly singular matrix amplifies small survey errors into very large force changes.",
+      "misconception": "調一根索只會影響那根索自己的錨點高程。~Adjusting one stay only affects its own anchorage level.",
+      "practice": "調索作業前要確認模型已更新到現況（重量、邊界、溫度），並設定每根索單次調整上限與總體停止準則；每一輪的輸入、矩陣、計算結果與實測殘差都要存檔備查。~Before tuning, confirm the model is updated to the current state (weights, boundaries, temperature) and set a per-stay adjustment cap and an overall stop criterion; archive each round’s inputs, matrix, results and measured residuals."
+    },
+    {
+      "anchor": "參考股荷重計~Reference-strand load cell",
+      "title": "平行鋼絞線的逐股等張張拉~Strand-by-strand equal-tension stressing",
+      "mechanism": "平行鋼絞線斜索是逐股穿入、逐股張拉的。問題在於：每多張拉一股，整根索的勁度與力量增加，橋面與塔隨之變形，先前已張拉的股就會鬆掉一些。若每股都拉到相同的千斤頂讀數，最後第一股的力量會明顯低於最後一股。Freyssinet 公開說明其專利的等張法會自動調整各股，使整根索的力量均勻：概念上是在第一股（參考股）裝荷重計，之後每一股都拉到「當下參考股的讀數」，由於所有股在同一時刻承受相同的伸長狀態，結構後續變形會讓所有股一起變化，最後各股力量相等。~Parallel-strand stays are threaded and stressed one strand at a time. The difficulty is that each additional stressed strand raises the stay’s stiffness and force, the deck and pylon deform, and previously stressed strands lose some force. Stressing every strand to the same jack reading leaves the first strand clearly lower than the last. Freyssinet states publicly that its patented Isotension process automatically adjusts strands so force is uniform across the cable: conceptually, a load cell sits on the first (reference) strand and each later strand is stressed to the reference strand’s current reading, so all strands share the same elongation state at that moment and later structural deformation changes them together, leaving equal forces at the end.",
+      "model": "單股 A = 150 mm²、E = 195 GPa、索長 L = 250 m，單股勁度 EA/L = 195,000×150/250,000 = 117 N/mm；要讓一股達到 100 kN，伸長量 ΔL = 100,000/117 ≈ 855 mm。若只用伸長量控制，±5 mm 的量測誤差相當於 ±0.6 kN，但錨具夾片回縮與結構變形的不確定度遠大於此，因此以荷重計直接量力。數值為教學假設。~For a single strand with A = 150 mm², E = 195 GPa and L = 250 m, the stiffness EA/L = 195,000×150/250,000 = 117 N/mm; reaching 100 kN needs ΔL = 100,000/117 ≈ 855 mm. Controlling by elongation alone, a ±5 mm reading error is only ±0.6 kN, but uncertainty from wedge draw-in and structural deformation is far larger, so force is measured directly with a load cell. Values are teaching assumptions.",
+      "verify": "張拉完成後隨機抽取數股以單股千斤頂做舉升試驗，量測各股實際力量的平均值與離散度，與規範或規格的均勻度要求比較；同時以振動法或總體舉升量測整根索的力量，確認與各股總和一致。~After stressing, lift off a random sample of strands with a mono-strand jack to measure the mean and scatter of strand forces against the uniformity requirement; measure the whole stay by vibration or full lift-off to confirm it matches the sum of strands.",
+      "failure": "若不採用等張或補償程序，同一根索中各股力量差異可達一成以上，受力大的股承受較高的疲勞應力幅，可能先斷裂並引發其他股依序超載；荷重計未校正則整根索的力量系統性偏差。~Without an equal-tension or compensation procedure, strand forces in one stay can differ by over a tenth, so the most loaded strands see higher fatigue stress ranges and may break first, overloading others in turn; an uncalibrated load cell biases the whole stay’s force.",
+      "misconception": "每一股鋼絞線拉到相同的千斤頂讀數，整根索各股力量自然就會相同。~Stressing every strand to the same jack reading automatically gives equal strand forces.",
+      "practice": "張拉規範要指定逐股張拉方法、荷重計校正週期、各股力量容許離散度與抽驗比例；張拉人員須持有供應商或專業機構的資格，現場由監造確認每根索的張拉紀錄後才可封錨。~The stressing specification should set the strand-by-strand method, load-cell calibration interval, allowable scatter of strand forces and sampling rate; stressing crews need supplier or professional qualification, and the supervisor confirms each stay’s record before anchorages are capped."
+    },
+    {
+      "anchor": "錨具螺紋環與墊片~Anchor ring nut and shims",
+      "title": "錨具調整量：螺紋環、墊片與可調範圍~Anchorage adjustment: ring nuts, shims and adjustment range",
+      "mechanism": "斜索完成張拉後，日後的索力微調通常不再逐股進行，而是以整束千斤頂把錨頭拉起，再旋轉錨具外的螺紋環或增減墊片，改變錨頭的有效位置。設計時必須預留足夠的調整範圍，涵蓋施工誤差、長期徐變與未來可能的線形修正；若螺紋長度或墊片空間不足，就無法在不換索的情況下調整。調整量與索力變化的關係取決於索本身的軸向勁度，也取決於橋面與塔的柔度：結構越柔，同樣的錨頭位移造成的索力變化越小，需要更大的調整量。~Once a stay is stressed, later fine adjustments are usually not done strand by strand; instead a multi-strand jack lifts the anchor head and the ring nut outside the anchorage is turned or shims added or removed, changing the head’s effective position. Design must reserve enough adjustment range to cover construction error, long-term creep and possible future profile corrections; with too little thread or shim space, adjustment is impossible without replacing the stay. The relation between adjustment and force change depends on the stay’s axial stiffness and on deck and pylon flexibility: the softer the structure, the less force change a given head movement produces, so more adjustment is needed.",
+      "model": "55 股斜索 A = 55×150 = 8,250 mm²、E = 195 GPa、L = 250 m：索的勁度 EA/L = 195,000×8,250/250,000 ≈ 6,435 N/mm。增加 300 kN 只看索本身需 300,000/6,435 ≈ 46.6 mm；若結構柔度使有效勁度只剩 60%，需約 77.7 mm。數值為教學假設。~A 55-strand stay with A = 55×150 = 8,250 mm², E = 195 GPa and L = 250 m has stiffness EA/L = 195,000×8,250/250,000 ≈ 6,435 N/mm. Adding 300 kN needs 300,000/6,435 ≈ 46.6 mm considering the stay alone; if structural flexibility leaves only 60% effective stiffness, about 77.7 mm is needed. Values are teaching assumptions.",
+      "verify": "在錨具設計審查時列出每根索所需的最大調整量（施工誤差、長期效應、更換工況）與實際可用的螺紋長度或墊片空間；實際調索時記錄錨頭位移與索力變化，反算有效勁度並與模型比較。~At anchorage design review, list each stay’s maximum required adjustment (construction error, long-term effects, replacement cases) against available thread or shim space; during actual tuning record head movement and force change, back-calculate effective stiffness and compare with the model.",
+      "failure": "調整範圍用盡後，若仍需提高索力，只能加長錨具或換索，工程代價大；墊片堆疊過多或不平整，會使錨頭偏心受力，局部承壓應力過高並損傷錨墊板或混凝土。~Once adjustment range is exhausted, raising force further requires longer anchorages or new stays at great cost; too many or uneven shims load the anchor head eccentrically, overstressing bearing and damaging the bearing plate or concrete.",
+      "misconception": "斜索張拉完成後，索力就無法再調整。~Once a stay is stressed, its force can never be adjusted again.",
+      "practice": "交接資料應記錄每根索錨具剩餘的可調範圍與目前位置，維護單位調索前須確認範圍足夠；墊片使用數量、材質與厚度要有上限規定，並由錨具供應商確認。~Handover should record each anchorage’s remaining adjustment range and current position, and the maintainer must confirm enough range before tuning; set limits on shim count, material and thickness, confirmed by the anchorage supplier."
+    },
+    {
+      "anchor": "施工階段預拱表~Construction-stage camber table",
+      "title": "施工階段分析、預拱與索力的「施工時應有值」~Staged analysis, camber and as-built-at-stage forces",
+      "mechanism": "成橋目標索力是最後狀態，但施工中每一步的索力與高程都不同：新節段的重量、吊機位置、臨時荷載、混凝土徐變與鋪面都還沒全部到位。施工控制以正裝分析（依施工順序逐步加載）或倒拆分析（從成橋狀態反推）求出每一步「此時應有」的索力與高程，並把它們寫成施工控制表。現場量測與這張表比較，而不是直接與成橋目標比較。AECOM 公開資料提到其為蘇通大橋提供架設分析、線形控制與斜索安裝模擬，正是這類工作的典型範例。~The completed-state targets describe the final condition, but forces and levels differ at every construction step: new segment weight, crane position, temporary loads, concrete creep and surfacing are not yet all in place. Construction control uses forward analysis (adding loads in construction order) or backward analysis (dismantling from the completed state) to find the force and level each step should have, and records them in a control table. Site measurements are compared with this table, not directly with the completed targets. AECOM’s public material on Sutong, describing erection analysis, geometry control and stay-installation simulations, is a typical example of this work.",
+      "model": "某節段的製作預拱 = 後續恆載撓度 + 徐變收縮撓度 + 溫度與索垂度修正。取 120 mm + 35 mm + 15 mm = 170 mm；若後續鋪面延後到合龍之後才施作而未納入，則少算約 25 mm，成橋線形將低於設計。數值為教學假設。~A segment’s fabrication camber = later dead-load deflection + creep and shrinkage deflection + temperature and stay-sag corrections, here 120 mm + 35 mm + 15 mm = 170 mm; if surfacing moved after closure is left out, about 25 mm is missed and the completed profile ends below design. Values are teaching assumptions.",
+      "verify": "每一步施工後量測索力與高程，與施工控制表比較；偏差超過容許時，以影響矩陣決定在下一步修正，而非等到合龍後才一次處理；施工順序或荷載變更時重新執行施工階段分析並更新控制表版本。~After every construction step measure stay forces and levels against the control table; when deviations exceed tolerance, decide corrections for the next step using the influence matrix rather than leaving everything until closure; rerun the staged analysis and issue a new control-table version whenever sequence or loads change.",
+      "failure": "若現場把施工中的實測索力直接與成橋目標比較並「調到目標」，等後續荷載加上後索力與線形會全面偏離；施工順序臨時改變而未更新分析，也會讓合龍口高差超出可調範圍。~Comparing mid-construction forces directly with completed targets and tuning to them leaves forces and profile wrong once later loads arrive; changing the sequence on site without updating the analysis can push the closure-gap level difference beyond the adjustable range.",
+      "misconception": "施工時每一根索都應該直接張拉到成橋的設計索力。~During construction every stay should be stressed straight to its completed design force.",
+      "practice": "施工控制表要有版本號、對應的施工順序與荷載假設，並規定任何偏離施工計畫的作業（吊機移位、材料堆放）都需先通知施工控制工程師評估。~The control table needs a version number, the matching construction sequence and load assumptions, and any departure from the plan, such as moving cranes or stockpiling materials, must first be referred to the construction-control engineer."
+    },
+    {
+      "anchor": "索溫與梁溫差~Cable-to-deck temperature difference",
+      "title": "溫度效應與量測時窗~Temperature effects and measurement windows",
+      "mechanism": "斜索、鋼梁與混凝土塔對日照的反應速度與吸熱量都不同：深色 HDPE 套管在陽光下升溫快，鋼梁次之，混凝土塔最慢。索比梁熱時索伸長、索力下降、橋面下沉；橋面上下緣溫差又使橋面彎曲。同一根索在一天之內的索力與錨點高程都可能變化數個百分點與數公分，若在午後量測並據以調索，等於把暫時的溫度效應當成永久誤差修正。因此調索與量測通常安排在清晨日出前、溫度最均勻的時段，並同時記錄索、梁、塔與氣溫。~Stays, steel girders and concrete pylons respond to sunshine at different speeds and with different heat gain: dark HDPE ducts heat fastest, steel next and the concrete pylon slowest. When a stay is warmer than the deck it lengthens, its force falls and the deck drops; a temperature difference through the deck bends it as well. A stay’s force and anchorage level can shift by several percent and several centimetres within a day, and tuning from afternoon readings treats temporary thermal effects as permanent errors. Tuning and measurement are therefore usually scheduled before sunrise, when temperatures are most uniform, with stay, deck, pylon and air temperatures recorded together.",
+      "model": "索比梁溫度高 ΔT = 10 °C、α = 1.2×10⁻⁵/°C：自由應變 1.2×10⁻⁴，若完全受束制，應力變化 E·α·ΔT = 195,000×1.2×10⁻⁴ ≈ 23.4 MPa，對 8,250 mm² 的索約 193 kN；實際因結構柔度只出現其中一部分，但仍足以超過 1% 的調索精度。數值為教學假設。~With a stay 10 °C warmer than the deck and α = 1.2×10⁻⁵/°C, the free strain is 1.2×10⁻⁴; fully restrained, the stress change is E·α·ΔT = 195,000×1.2×10⁻⁴ ≈ 23.4 MPa, about 193 kN on an 8,250 mm² stay. Structural flexibility realises only part of this, but still more than a 1% tuning precision. Values are teaching assumptions.",
+      "verify": "在代表性斜索的套管內外、鋼梁上下緣與塔身設置溫度計，連續數日記錄索力與高程對溫度的關係，回歸出溫度係數；正式量測時若溫度偏離基準，以回歸係數修正到基準溫度再判讀。~Place thermometers inside and outside representative stay ducts, on top and bottom of the girder and in the pylon, logging force and level against temperature for several days to regress temperature coefficients; if formal measurements depart from the reference temperature, correct them to it before interpretation.",
+      "failure": "在日照強烈時調索，等到夜間溫度均勻後索力與線形偏離目標，需要重新調整，浪費工時並增加錨具反覆調整的磨耗；若未記錄溫度，事後無法判斷偏差來源。~Tuning in strong sunshine leaves forces and profile off target once night temperatures even out, requiring rework and wearing anchorages through repeated adjustment; without temperature records the source of deviations cannot be traced afterwards.",
+      "misconception": "斜索索力只受荷載影響，與溫度無關。~Stay forces depend only on load, not on temperature.",
+      "practice": "調索作業程序要規定量測時窗（例如日出前兩小時內）、溫度紀錄點與溫差上限，超出上限時暫停作業；所有索力紀錄須附溫度資料，否則不得作為驗收依據。~The tuning procedure should set the measurement window, for example within two hours before sunrise, temperature recording points and a maximum temperature difference, suspending work beyond it; force records without temperature data are not valid for acceptance."
+    },
+    {
+      "anchor": "加速度計頻率量測~Accelerometer frequency measurement",
+      "title": "振動法索力量測與彎曲勁度修正~Vibration-based force measurement and bending correction",
+      "mechanism": "直接以千斤頂量測每一根索的力量既費時又需要接近錨頭，營運期更不方便。振動法在索上裝加速度計，記錄風或人工激勵下的自由振動，從頻譜讀出各階自然頻率，再以張緊弦理論換算索力。長索可直接使用簡化公式；短而粗的索彎曲勁度不可忽略，頻率會因此偏高，需以修正公式扣除；很長的索則需考慮垂度對低階頻率的影響。實務上會用多階頻率一起擬合，同時估計索力與等效彎曲勁度，並以施工期的千斤頂讀數校正每根索的參數。~Measuring every stay with jacks is slow and needs access to the anchor head, and is awkward in service. The vibration method fits an accelerometer to the stay, records free vibration under wind or manual excitation, reads natural frequencies from the spectrum and converts them to force with taut-string theory. Long stays can use the simplified formula; short, stocky stays have non-negligible bending stiffness that raises frequencies and must be subtracted with a corrected formula; very long stays need the effect of sag on the lowest modes. In practice several modes are fitted together to estimate force and equivalent bending stiffness, with each stay’s parameters calibrated against construction-stage jack readings.",
+      "model": "T = 4·m·L²·f_n²/n² − n²·π²·EI/L²。長索 m = 70 kg/m、L = 180 m、f₁ = 0.62 Hz：4×70×180²×0.62² ≈ 3,487 kN，若 EI = 2×10⁵ N·m²，修正項 π²×2×10⁵/180² ≈ 61 N 可忽略。短索 L = 30 m、f₁ = 3.9 Hz：張緊弦值約 3,833 kN，若 EI = 5×10⁶ N·m²，修正項約 54.8 kN，約 1.4%。數值為教學假設。~T = 4·m·L²·f_n²/n² − n²·π²·EI/L². For a long stay with m = 70 kg/m, L = 180 m and f₁ = 0.62 Hz, 4×70×180²×0.62² ≈ 3,487 kN; with EI = 2×10⁵ N·m² the correction π²×2×10⁵/180² ≈ 61 N is negligible. For a short stay with L = 30 m and f₁ = 3.9 Hz the taut-string value is about 3,833 kN, and with EI = 5×10⁶ N·m² the correction is about 54.8 kN, about 1.4%. Values are teaching assumptions.",
+      "verify": "以施工完成時千斤頂或荷重計量得的索力，對每根索做頻率—索力校正，決定有效長度與彎曲勁度；營運期量測時至少記錄數分鐘、取得 3 階以上頻率，檢查各階頻率比是否接近整數倍，偏離時表示需要考慮垂度或邊界條件。~Calibrate frequency against force for each stay using jack or load-cell values at completion to fix effective length and bending stiffness; in service record at least several minutes and obtain three or more modes, checking that frequency ratios are close to integers, since departures signal sag or boundary effects.",
+      "failure": "若短索直接套用張緊弦公式而不修正彎曲勁度，索力會被高估，可能誤以為索力足夠；有效長度取錯（例如忽略阻尼器或導管的束制位置），也會造成數個百分點的系統誤差。~Applying the taut-string formula to short stays without bending correction overestimates force and may falsely suggest adequacy; using the wrong effective length, for example ignoring restraint at a damper or guide pipe, introduces systematic errors of several percent.",
+      "misconception": "量到斜索的第一頻率，就能直接準確算出任何斜索的索力。~Measuring the first frequency is enough to compute any stay’s force accurately.",
+      "practice": "交接資料應附每根索的校正參數（有效長度、單位質量、彎曲勁度、基準頻率）與量測位置；量測報告須說明採用的頻率階數、修正方法與估計不確定度。~Handover should include each stay’s calibration parameters (effective length, mass per metre, bending stiffness, baseline frequencies) and measurement position; reports must state the modes used, the correction method and the estimated uncertainty."
+    },
+    {
+      "anchor": "舉升試驗~Lift-off test",
+      "title": "千斤頂舉升試驗與壓力—力量換算~Lift-off tests and pressure-to-force conversion",
+      "mechanism": "舉升試驗是索力量測的「直接法」：把千斤頂套在錨頭上逐步加壓，當油壓提供的力剛好等於索力時，錨頭會開始離開承壓面（或螺紋環開始可旋轉），此時的油壓換算成力就是索力。換算需要千斤頂的有效面積與經校正的壓力—力量關係，因為活塞與密封的摩擦會讓同樣油壓產生的實際力略小。舉升判定點要靠位移計或游標尺觀察錨頭的微小移動，並避免一次加壓過頭使錨頭被拉離太多，改變索力本身。這個方法準確但需要接近錨頭與移除防護蓋。~A lift-off test is the direct way to measure stay force: a jack is fitted over the anchor head and pressure raised gradually until the jack force just equals the stay force, when the head starts to leave its bearing surface or the ring nut can be turned; that pressure converted to force is the stay force. Conversion needs the jack’s effective area and a calibrated pressure–force relation, because piston and seal friction make the actual force slightly less than pressure times area. The lift-off point is detected by watching tiny head movement with a dial gauge or calliper, without overshooting so far that the head is pulled away and the stay force itself changes. The method is accurate but requires access to the anchor head and removal of protective caps.",
+      "model": "F = p·A·η。油壓 p = 45 MPa、活塞面積 A = 0.125 m²，名目力 45×10⁶×0.125 = 5,625 kN；校正係數 η = 0.985 時實際力約 5,541 kN，相差約 84 kN（1.5%）。數值為教學假設。~F = p·A·η. With p = 45 MPa and piston area A = 0.125 m², the nominal force is 45×10⁶×0.125 = 5,625 kN; with a calibration factor η = 0.985 the actual force is about 5,541 kN, a difference of about 84 kN (1.5%). Values are teaching assumptions.",
+      "verify": "千斤頂與壓力錶成套送有認證的試驗室校正，取得加壓與卸壓兩條曲線；試驗時以位移計記錄錨頭位移對油壓的曲線，以斜率轉折點判定舉升，並與振動法結果比對，兩者差異應在可解釋範圍內。~Calibrate jack and gauge together at an accredited laboratory for both loading and unloading curves; during the test plot head displacement against pressure with a dial gauge, take lift-off at the slope change, and compare with the vibration result, expecting an explainable difference.",
+      "failure": "千斤頂與壓力錶未成套校正或校正過期，量得的索力可能系統性偏差數個百分點；舉升時加壓過頭使錨頭明顯離開，卸壓後夾片重新咬合位置改變，反而造成索力損失。~Jacks and gauges not calibrated as a set, or with expired calibration, bias forces by several percent; overshooting so the head lifts noticeably lets wedges reseat in a new position on release, actually losing stay force.",
+      "misconception": "千斤頂讀到的油壓乘上活塞面積，就是精確的索力。~Jack pressure times piston area is the exact stay force.",
+      "practice": "舉升試驗程序要規定校正證書有效期、加壓速率、判定方法、最大容許舉升量與試驗後錨具與防護蓋的復原檢查；高空錨頭作業須有通過審查的作業平台與安全計畫，並由主管工程師核准。~The lift-off procedure should specify calibration validity, loading rate, detection method, maximum allowable lift and post-test checks of anchorage and caps; work at elevated anchor heads needs an approved access platform and safety plan, authorised by the responsible engineer."
+    },
+    {
+      "anchor": "夾片回縮量~Wedge draw-in",
+      "title": "長期索力漂移：夾片回縮、鬆弛與徐變~Long-term force drift: draw-in, relaxation and creep",
+      "mechanism": "斜索完成後索力並非永遠不變。夾片式錨具在千斤頂卸載時夾片會向錨板內縮入數毫米，這個回縮對短索的影響遠大於長索，因為同樣的長度損失在短索中代表較大的應變。低鬆弛鋼絞線在使用應力約 0.45 GUTS 下的鬆弛損失很小，但混凝土塔與混凝土橋面的徐變與收縮會使錨點逐年移動，索力因此重新分配。營運初期幾年的漂移最明顯，之後趨緩；因此不少斜張橋在通車前或通車後數年安排一次全面複測與再調整。~Stay forces do not stay constant after completion. With wedge anchorages, the wedges draw in a few millimetres when the jack is released, and this matters far more for short stays, since the same length loss is a larger strain. Low-relaxation strand at a service stress of about 0.45 GUTS loses little to relaxation, but creep and shrinkage of concrete pylons and decks move anchor points year by year and redistribute stay forces. Drift is most visible in the first years of service and then slows, so many cable-stayed bridges schedule a full re-measurement and re-tuning before opening or a few years after.",
+      "model": "夾片回縮 6 mm 的應力損失 Δσ = E·Δ/L。L = 250 m 時 Δσ = 195,000×6/250,000 ≈ 4.7 MPa；L = 40 m 時 Δσ = 195,000×6/40,000 ≈ 29.3 MPa，約為 650 MPa 使用應力的 4.5%。數值為教學假設。~Stress loss from 6 mm of wedge draw-in is Δσ = E·Δ/L. For L = 250 m, Δσ = 195,000×6/250,000 ≈ 4.7 MPa; for L = 40 m, Δσ = 195,000×6/40,000 ≈ 29.3 MPa, about 4.5% of a 650 MPa service stress. Values are teaching assumptions.",
+      "verify": "張拉時記錄每根索的回縮量，短索可採用回縮補償張拉或可調式錨具；通車前與通車後定期以振動法量測全部索力，並以時間相依分析預測的漂移曲線比較，判斷偏差來自正常徐變或異常（錨具滑移、斷絲）。~Record draw-in for every stay during stressing and use draw-in compensation or adjustable anchorages for short stays; measure all stay forces by vibration before and periodically after opening, comparing with drift curves from time-dependent analysis to tell normal creep from anomalies such as anchor slip or broken wires.",
+      "failure": "若短索未補償夾片回縮，成橋索力可能低於目標數個百分點，橋面局部下沉；長期漂移若沒有被監測，部分索力逐年升高而接近上限，部分卻鬆弛並在風中振動。~Short stays without draw-in compensation can end several percent below target, letting the deck sag locally; unmonitored long-term drift lets some stays creep toward their limit year by year while others slacken and vibrate in wind.",
+      "misconception": "鋼絞線的鬆弛是斜索索力長期變化的主要原因。~Strand relaxation is the main cause of long-term stay-force change.",
+      "practice": "設計文件要列出每根索的預期長期漂移與再調整時點，交接時提供漂移預測曲線；營運單位依此安排複測，並把每次複測的結果與預測比較存檔。~Design documents should list each stay’s expected long-term drift and re-tuning time, with drift prediction curves at handover; the operator schedules re-measurements accordingly and archives each result against the prediction."
+    },
+    {
+      "anchor": "索力允收容許值~Force acceptance tolerances",
+      "title": "允收準則、再調整決策與責任分工~Acceptance criteria, re-tuning decisions and responsibilities",
+      "mechanism": "調索不可能讓每根索都精準等於目標，因此需要明確的允收準則：通常同時規定單根索的容許偏差、同一索組（例如同一塔同一側）的總和偏差，以及橋面線形與塔頂位置的容許誤差。單根偏差反映局部問題，總和偏差反映整體受力是否正確，線形則反映使用性。營運期的再調整則是一個工程決策：要考慮偏差的趨勢、原因、對構件安全的影響、調整的風險（錨具反覆調整、交通管制）與成本。Freyssinet 公開資料把局部再張拉或放鬆列為斜索維護手段之一，並建議服役約 10 至 20 年後抽樣檢驗鋼絞線。~Tuning can never make every stay exactly equal to its target, so clear acceptance criteria are needed: usually an allowable deviation for each stay, a limit on the summed deviation of a stay group such as one side of one pylon, and tolerances on deck profile and pylon position. Single-stay deviation reveals local problems, group sums reveal whether global load sharing is right, and the profile governs serviceability. In service, re-tuning is an engineering decision weighing the trend and cause of deviation, its effect on member safety, the risks of adjustment (repeated anchorage work, traffic management) and cost. Freyssinet’s public material lists partial re-tensioning or de-tensioning as a stay maintenance measure and recommends sampling strands after about 10 to 20 years of service.",
+      "model": "若單索容許偏差 ±5%，某索目標 5,000 kN、實測 5,200 kN 為 +4%，合格；另一索實測 4,700 kN 為 −6%，不合格。若該索組 8 根的總和偏差為 +0.8%，在 ±2% 內，表示整體受力正確、只需局部調整 −6% 那根。容許值為教學假設。~With a ±5% single-stay tolerance, a stay with a 5,000 kN target measuring 5,200 kN is +4% and passes; another measuring 4,700 kN is −6% and fails. If the summed deviation of that 8-stay group is +0.8%, within ±2%, global load sharing is correct and only the −6% stay needs local adjustment. Tolerances are teaching assumptions.",
+      "verify": "驗收時以溫度修正後的索力、在同一量測時窗內完成的線形測量與塔頂位置一起評估；不合格項目先複測確認，再以影響矩陣計算局部調整量並模擬其對鄰索的影響，調整後重新量測整個索組。~At acceptance assess temperature-corrected forces together with profile and pylon position surveyed in the same window; re-measure failed items first, then compute local adjustments with the influence matrix and simulate their effect on neighbours, re-measuring the whole group afterwards.",
+      "failure": "若只看單根索偏差而不看索組總和，可能出現每根都合格、但整側系統性偏高或偏低的情況，塔頂偏位與橋面線形因而超出容許；營運期頻繁小幅調整則可能損傷錨具並增加交通中斷。~Checking only single-stay deviations can pass every stay while a whole side is systematically high or low, pushing pylon displacement and deck profile out of tolerance; frequent small in-service adjustments can damage anchorages and multiply traffic disruptions.",
+      "misconception": "只要每根斜索都在容許偏差內，整座橋的受力就一定正確。~If every stay is within tolerance, the whole bridge’s load sharing must be correct.",
+      "practice": "合約與規範要寫明索力、索組總和、線形與塔位的允收準則、量測方法與溫度修正；營運期的再調整須由主管工程師依評估報告核准，並記錄調整前後的完整資料，作為下一次決策的基準。~Contracts and specifications should state acceptance criteria for stay forces, group sums, profile and pylon position, with measurement methods and temperature correction; in-service re-tuning must be approved by the responsible engineer on the basis of an assessment report, with full before-and-after data recorded as the basis for the next decision."
+    }
+  ],
+  "example": "設計練習：某斜張橋通車前複測一組 4 根索（同塔同側），溫度修正後與目標的偏差為 +3%、−7%、+2%、−1%，目標力均為 5,000 kN，即實測 5,150、4,650、5,100、4,950 kN。單索容許 ±5%：第 2 根不合格。索組總和 = 19,850 kN，對目標 20,000 kN 偏差 −0.75%，在 ±2% 內。以影響矩陣估算：若第 2 根每增加 1 MN，自身增加 1.0 MN、第 1 與第 3 根各減少 0.15 MN、錨點上升 18 mm，則把第 2 根提高 350 kN 至 5,000 kN 需要的錨具調整量，以有效勁度 6,435×0.6 ≈ 3,861 N/mm 計約 350,000/3,861 ≈ 91 mm；調整後第 1 與第 3 根各降約 0.15×350 ≈ 53 kN，分別變為約 5,097 與 5,047 kN（+1.9% 與 +0.9%），錨點上升約 0.35×18 ≈ 6.3 mm。若可用螺紋長度只剩 60 mm，必須改由相鄰索分擔或安排換索。數值為教學假設。~Design exercise: before opening, a group of 4 stays on one side of one pylon is re-measured, and after temperature correction the deviations from target are +3%, −7%, +2% and −1% for 5,000 kN targets, i.e. 5,150, 4,650, 5,100 and 4,950 kN. With a ±5% single-stay tolerance, stay 2 fails. The group sum is 19,850 kN, −0.75% against 20,000 kN, within ±2%. From the influence matrix, if each extra 1 MN in stay 2 raises it by 1.0 MN, lowers stays 1 and 3 by 0.15 MN each and lifts its anchorage 18 mm, then raising stay 2 by 350 kN to 5,000 kN needs, at an effective stiffness of 6,435×0.6 ≈ 3,861 N/mm, an anchorage adjustment of about 350,000/3,861 ≈ 91 mm; stays 1 and 3 then drop about 0.15×350 ≈ 53 kN to about 5,097 and 5,047 kN (+1.9% and +0.9%), and the anchorage rises about 0.35×18 ≈ 6.3 mm. If only 60 mm of thread remains, the correction must be shared with neighbouring stays or the stay replaced. Values are teaching assumptions.",
+  "history": "現代斜張橋始於 1955 年瑞典的 Strömsund 橋，早期以封閉式鋼索搭配墊片調整索力，張拉需要整根大型千斤頂。1980 至 1990 年代平行鋼絞線斜索普及，諾曼第大橋在 1995 年以 184 根、每根 31 至 53 股的鋼絞線斜索創下跨徑紀錄，逐股安裝與等張張拉讓長索不必整根吊裝；影響矩陣與施工階段分析則讓多索協同調整成為常規。法國 CIP 斜索建議（2002）、fib Bulletin 30（2005）與 PTI DC45.1 逐步把試驗、安裝與允收寫成規範，fib Bulletin 89（2019）再更新驗收要求。本課只重建公開原理與工程邏輯，不提供任何張拉作業授權。~Modern cable-stayed bridges began with Sweden’s Strömsund Bridge in 1955, when locked-coil ropes were adjusted with shims and stressing needed large whole-cable jacks. Parallel-strand stays spread in the 1980s and 1990s; the Pont de Normandie set a span record in 1995 with 184 stays of 31 to 53 strands each, and strand-by-strand installation with equal-tension stressing meant long stays no longer had to be lifted whole, while influence matrices and staged analysis made coordinated multi-stay tuning routine. The French CIP stay recommendations (2002), fib Bulletin 30 (2005) and PTI DC45.1 progressively codified testing, installation and acceptance, and fib Bulletin 89 (2019) updated the acceptance requirements. This course reconstructs public principles and engineering logic only and gives no authorisation for stressing operations.",
+  "facts": [
+    "斜索常見使用應力上限約 0.45 GUTS~Stay service stress is commonly limited to about 0.45 GUTS",
+    "諾曼第大橋 184 根斜索，每根 31 至 53 股 15.7 mm 鋼絞線~The Pont de Normandie has 184 stays of 31 to 53 strands of 15.7 mm each",
+    "諾曼第大橋每股使用拉力約 10 t、破斷力約 27 t，約 37%~Each Normandie strand carries about 10 t in service against about 27 t breaking, about 37%",
+    "里翁—安提里翁大橋每根斜索 43 至 73 股，鋼絞線保證強度 1,770 MPa~Rion–Antirion stays have 43 to 73 strands with 1,770 MPa guaranteed strength",
+    "亞武茲蘇丹塞利姆大橋 176 根斜索，最長逾 500 m、151 股、近 120 t~The Yavuz Sultan Selim Bridge has 176 stays, the longest over 500 m with 151 strands and nearly 120 t",
+    "該橋首次採用 1,960 MPa 鋼絞線，製造約 9,000 t~That bridge used 1,960 MPa strand for the first time, about 9,000 t of it",
+    "供應商資料建議服役約 10 至 20 年後抽樣檢驗鋼絞線~Supplier guidance recommends sampling strands after about 10 to 20 years of service",
+    "蘇通大橋最長斜索約 577 m，施工顧問提供斜索安裝模擬~Sutong’s longest stay is about 577 m, with stay-installation simulations by the construction consultant"
+  ],
+  "timeline": [
+    {
+      "year": "1955",
+      "event": "瑞典 Strömsund 橋完工，被視為第一座現代斜張橋~Sweden’s Strömsund Bridge is completed, regarded as the first modern cable-stayed bridge"
+    },
+    {
+      "year": "1995",
+      "event": "諾曼第大橋以 184 根平行鋼絞線斜索創下跨徑紀錄~The Pont de Normandie sets a span record with 184 parallel-strand stays"
+    },
+    {
+      "year": "2002",
+      "event": "法國 CIP 發布斜拉索建議，規範試驗與安裝~France’s CIP publishes stay-cable recommendations on testing and installation"
+    },
+    {
+      "year": "2005",
+      "event": "fib Bulletin 30 發布預力鋼斜拉索系統驗收建議~fib Bulletin 30 publishes acceptance recommendations for stay cable systems"
+    },
+    {
+      "year": "2018–2019",
+      "event": "PTI DC45.1-18 與 fib Bulletin 89 更新斜索設計、試驗與驗收要求~PTI DC45.1-18 and fib Bulletin 89 update stay design, testing and acceptance requirements"
+    }
+  ],
+  "codes": [
+    "PTI DC45.1-18 斜拉索設計、試驗與安裝建議~PTI DC45.1-18 Recommendations for Stay Cable Design, Testing and Installation",
+    "fib Bulletin 89 預力鋼索系統驗收（2019）~fib Bulletin 89 Acceptance of cable systems using prestressing steels (2019)",
+    "法國 CIP 斜拉索建議（Haubans, 2002）~French CIP stay-cable recommendations (Haubans, 2002)",
+    "EN 1993-1-11 鋼結構：受拉構件設計~EN 1993-1-11 Design of steel structures: Tension components"
+  ],
+  "landmarks": [
+    "諾曼第大橋~Pont de Normandie",
+    "里翁—安提里翁大橋~Rion–Antirion Bridge",
+    "蘇通長江公路大橋~Sutong Yangtze River Bridge",
+    "亞武茲蘇丹塞利姆大橋~Yavuz Sultan Selim Bridge"
+  ],
+  "place": {
+    "name": "亞武茲蘇丹塞利姆大橋~Yavuz Sultan Selim Bridge",
+    "country": "土耳其~Türkiye",
+    "lat": 41.2033,
+    "lng": 29.1117,
+    "query": "Yavuz Sultan Selim Bridge Istanbul"
+  },
+  "sources": [
+    {
+      "key": "freyssinet-cable-systems-b037",
+      "title": "Freyssinet：斜拉索系統與等張法",
+      "titleEn": "Freyssinet: Cable systems and Isotension",
+      "publisher": "Freyssinet",
+      "url": "https://www.freyssinet.com/solution/build/cable-systems/",
+      "sourceType": "primary",
+      "scope": "供應商說明逐股安裝、等張法自動均勻各股力量、錨具類型、設計年限與試驗依據的規範。",
+      "scopeEn": "Supplier page on strand-by-strand installation, Isotension equalising strand forces, anchorage types, design life and the standards used for testing."
+    },
+    {
+      "key": "freyssinet-stay-maintenance",
+      "title": "Freyssinet：斜拉索維護",
+      "titleEn": "Freyssinet: Maintenance of stay cables",
+      "publisher": "Freyssinet",
+      "url": "https://www.freyssinet.com/solution/repair/maintenance-stay-cables/",
+      "sourceType": "primary",
+      "scope": "斜索檢查、殘餘索力量測、局部再張拉或放鬆、夾片重新咬合與抽樣檢驗週期。",
+      "scopeEn": "Stay inspection, residual-force measurement, partial re-tensioning or de-tensioning, wedge re-seating and strand-sampling intervals."
+    },
+    {
+      "key": "freyssinet-yavuz-selim",
+      "title": "Freyssinet：亞武茲蘇丹塞利姆大橋斜索技術案例",
+      "titleEn": "Freyssinet: Yavuz Sultan Selim Bridge stay cable technology case study",
+      "publisher": "Freyssinet",
+      "url": "https://www.freyssinet.com/case-study/sultan-yavuz-selim-bridge-stay-cable-technology/",
+      "sourceType": "primary",
+      "scope": "176 根斜索、最長索的股數與重量、1,960 MPa 鋼絞線與阻尼器行程等專案數據。",
+      "scopeEn": "Project data on 176 stays, strand count and weight of the longest stay, 1,960 MPa strand and damper stroke."
+    },
+    {
+      "key": "fib-bulletin-30",
+      "title": "fib Bulletin 30：預力鋼斜拉索系統驗收",
+      "titleEn": "fib Bulletin 30: Acceptance of stay cable systems using prestressing steels",
+      "publisher": "fédération internationale du béton (fib)",
+      "url": "https://www.fib-international.org/publications/fib-bulletins/acceptance-of-stay-cable-systems-using-prestressing-steels-detail.html",
+      "sourceType": "primary",
+      "scope": "國際學會建議的涵蓋範圍：設計細部、耐久、材料、試驗、安裝公差、人員資格與檢查維護。",
+      "scopeEn": "Scope of the international federation’s recommendation: detailing, durability, materials, testing, installation tolerances, personnel qualification and inspection."
+    },
+    {
+      "key": "aecom-sutong-b037",
+      "title": "AECOM：蘇通大橋施工工程服務",
+      "titleEn": "AECOM: Sutong Bridge construction engineering services",
+      "publisher": "AECOM",
+      "url": "https://aecom.com/projects/sutong-bridge/",
+      "sourceType": "primary",
+      "scope": "施工顧問列出架設分析、線形控制、斜索安裝模擬與量測監控等服務，作為施工控制的公開案例。",
+      "scopeEn": "Construction consultant’s list of erection analysis, geometry control, stay-installation simulation and monitoring, a public example of construction control."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Freyssinet",
+      "nameEn": "Freyssinet",
+      "business": "Vinci 旗下的預力與斜索專業公司，提供斜索系統、等張張拉與維護服務。",
+      "businessEn": "Vinci’s prestressing and stay-cable specialist offering stay systems, Isotension stressing and maintenance.",
+      "url": "https://www.freyssinet.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "逐股張拉、等張法與索力維護的公開技術資料",
+      "roleEn": "Public technical material on strand stressing, Isotension and force maintenance"
+    },
+    {
+      "name": "VSL",
+      "nameEn": "VSL International",
+      "business": "Bouygues 旗下的後拉預力與斜索系統公司，提供斜索與斜索阻尼器。",
+      "businessEn": "Bouygues post-tensioning and stay-cable company supplying stay cables and stay dampers.",
+      "url": "https://www.vsl.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "另一套斜索系統與張拉工法的比較對象",
+      "roleEn": "An alternative stay system and stressing practice for comparison"
+    },
+    {
+      "name": "艾奕康（AECOM）",
+      "nameEn": "AECOM",
+      "business": "國際工程顧問公司，提供大跨橋梁的架設分析與線形控制。",
+      "businessEn": "International engineering firm providing erection analysis and geometry control for long-span bridges.",
+      "url": "https://aecom.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "ACM",
+        "exchange": "NYSE",
+        "currency": "USD"
+      },
+      "role": "施工控制與斜索安裝模擬的顧問角色",
+      "roleEn": "Consultant role in construction control and stay-installation simulation"
+    }
+  ],
+  "related": [
+    "b051",
+    "b013"
+  ],
+  "architectureNodes": [
+    [
+      "成橋目標索力",
+      "Completed-state target forces"
+    ],
+    [
+      "施工階段分析與控制表",
+      "Staged analysis and control table"
+    ],
+    [
+      "逐股等張張拉",
+      "Strand-by-strand equal tension"
+    ],
+    [
+      "振動法與舉升量測",
+      "Vibration and lift-off measurement"
+    ],
+    [
+      "影響矩陣調整",
+      "Influence-matrix adjustment"
+    ],
+    [
+      "允收與營運再調整",
+      "Acceptance and in-service re-tuning"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      5,
+      4
+    ]
+  ]
+}

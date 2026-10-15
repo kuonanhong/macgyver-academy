@@ -1,0 +1,310 @@
+{
+  "id": "b030",
+  "title": "碎片大廈~The Shard",
+  "discipline": "st-supertall",
+  "family": "tower",
+  "focus": "鋼構辦公、預力混凝土飯店住宅與鋼構塔頂的混合分區，以及由上而下的核心筒施工~Mixed zoning of steel offices, post-tensioned concrete hotel and homes and a steel crown, built with a top-down core",
+  "summary": "碎片大廈由 Renzo Piano 設計、WSP 擔任結構設計、Mace 承建，官方高度 309.6 m、共 95 層。結構依用途分區：下部辦公層為複合鋼構，上部飯店與住宅層為 200 mm 後拉預力混凝土平板，塔頂以鋼構「散熱器」與桅桿收尾；中央混凝土核心筒是主要抗側骨幹，以費氏桁架與 A 形轉換調整柱距。英國首次採用由上而下的核心筒施工，讓核心筒在地下室開挖時同步上升。本課涵蓋分區質量、扭轉、預力樓板、轉換構件、由上而下施工、尖塔與塔吊、風洞、鄰近鐵路監測、帷幕牆與帽桁架的交接。~The Shard, designed by Renzo Piano with WSP as structural designer and Mace as contractor, is officially 309.6 m tall with 95 storeys. Its structure is zoned by use: composite steel for the lower offices, 200 mm post-tensioned concrete flat slabs for the hotel and homes above, and a steel radiator and mast at the crown; a central concrete core is the main lateral spine, with Vierendeel trusses and A-frames changing column spacing. It was the first UK use of top-down core construction, letting the core rise while the basement was being dug. The course covers zoned mass, torsion, post-tensioned slabs, transfer structures, top-down construction, spire and cranes, wind-tunnel testing, monitoring of adjacent rail assets, curtain-wall joints and the handover of hat trusses.",
+  "units": [
+    {
+      "anchor": "用途分區與樓板質量~Use zoning and floor mass",
+      "title": "混合用途分區與樓板系統~Mixed-use zoning and floor systems",
+      "mechanism": "設計者公開說明：下部辦公與零售層採複合鋼構，周邊到混凝土核心筒的跨度可達約 15 m，樓板梁為約 500 mm 深的組合斷面；上部飯店與住宅層改用 200 mm 厚後拉預力混凝土平板，跨度約 9 m、層高約 3.1 m；塔頂約 60 m 為鋼構「散熱器」，容納散熱設備並圍繞中央斜撐鋼桅。上部較重的混凝土樓板增加了高處的模態質量與阻尼，設計者因此認為不需要另設補充阻尼裝置。~The designers explain that the lower office and retail floors are composite steel with spans of up to about 15 m from the perimeter to the concrete core and built-up floor beams about 500 mm deep; the hotel and residential floors above switch to 200 mm post-tensioned concrete flat slabs spanning about 9 m with a storey height of about 3.1 m; the top 60 m or so is a steel radiator housing heat-rejection plant around a central braced steel mast. The heavier concrete floors high up add modal mass and damping, which the designers considered sufficient to avoid supplementary damping devices.",
+      "model": "樓板自重：200 mm 預力平板 0.2×25 = 5.0 kPa；複合樓板等效厚 0.11 m×24 kN/m³ + 鋼梁 0.5 kPa ≈ 3.1 kPa，約 1.6 倍。若上部樓板使第一模態廣義質量增加 20%，在相同風力與阻尼下共振加速度約降為 1/1.2 ≈ 83%。數值為教學假設。~Floor self-weight: a 200 mm post-tensioned slab gives 0.2×25 = 5.0 kPa, while a composite slab with an equivalent 0.11 m thickness at 24 kN/m³ plus 0.5 kPa of steel gives about 3.1 kPa, so the post-tensioned slab is about 1.6 times heavier. If the upper floors raise the first-mode generalised mass by 20%, resonant acceleration under the same wind force and damping falls to about 1/1.2 ≈ 83%. Values are teaching assumptions.",
+      "verify": "在模型中分別以鋼構與混凝土樓板計算高處各層質量與第一、二模態的廣義質量，與風洞高頻力平衡試驗換算的加速度比較；完工後以環境振動量測頻率與阻尼，確認無補充阻尼的假設成立。~Compute storey masses and first- and second-mode generalised masses with steel and concrete floors in the model and compare the acceleration derived from high-frequency force-balance tests; after completion measure frequency and damping by ambient vibration to confirm that the no-supplementary-damping assumption holds.",
+      "failure": "若上部改用較輕的樓板或大幅減少隔間與裝修質量而未重新評估，高處加速度可能上升到住宅與飯店的舒適度門檻以上；不同樓板系統的交界層若勁度與質量突變未處理，也容易出現樓板裂縫。~Switching upper floors to lighter construction or greatly reducing partitions and finishes without re-evaluation can raise upper-level accelerations above residential and hotel comfort limits; abrupt stiffness and mass changes at the interface between floor systems also invite slab cracking if not addressed.",
+      "misconception": "樓板越輕越好，因為可以減少地震力與柱的負擔。~Lighter floors are always better because they reduce seismic force and column load.",
+      "practice": "設計基準應記錄各分區的樓板質量假設與其對加速度的影響，日後若變更用途（例如住宅改辦公）或大幅減輕裝修，須由結構工程師評估居住性。~The design basis should record the floor-mass assumption of each zone and its effect on acceleration, and any later change of use, such as residential to office, or major lightening of finishes requires the structural engineer to reassess habitability."
+    },
+    {
+      "anchor": "背包次核心與扭轉~Backpack secondary core and torsion",
+      "title": "核心筒抗側與次核心抑制扭轉~Core lateral resistance and torsion control by a secondary core",
+      "mechanism": "中央混凝土核心筒剪力牆是主要的抗側骨幹，飯店與住宅層另加翼牆提高核心勁度；頂部機械層的外伸帽桁架用於改善風作用下的使用性。塔樓低層一側附有被稱為「背包」的低層附屬量體，其中設有次核心，用來減少主核心承受的扭轉。當風力合力或質量中心與剛心不重合時，樓層會繞剛心旋轉，角落位移比中心大；在偏心側增加剪力牆，相當於增大扭轉勁度並拉近剛心與質心。~The central concrete core shear walls are the main lateral spine, with wing walls added at hotel and residential levels to stiffen the core, and outrigger hat trusses in the upper plant levels improve wind serviceability. A low-rise annex called the Backpack attaches to one side at the lower levels, and its secondary core reduces torsion on the main core. When the wind resultant or centre of mass does not coincide with the centre of stiffness, floors rotate about the stiffness centre and corners move more than the middle; adding shear walls on the eccentric side raises torsional stiffness and draws the centres together.",
+      "model": "扭矩 T = F·e，轉角 θ = T/K_T，角落位移 = θ·r。F = 20,000 kN、偏心 e = 5 m，T = 100,000 kN·m；主核心 K_T = 2.0×10⁸ kN·m/rad 時 θ = 5.0×10⁻⁴ rad，r = 30 m 的角落位移 15 mm；次核心使 K_T 增為 2.5×10⁸，θ = 4.0×10⁻⁴ rad，角落位移 12 mm，減少 20%。數值為教學假設。~Torque T = F·e, rotation θ = T/K_T and corner displacement = θ·r. With F = 20,000 kN and e = 5 m, T = 100,000 kN·m; a main-core K_T = 2.0×10⁸ kN·m/rad gives θ = 5.0×10⁻⁴ rad and 15 mm at a corner r = 30 m away; a secondary core raising K_T to 2.5×10⁸ gives θ = 4.0×10⁻⁴ rad and 12 mm, 20% less. Values are teaching assumptions.",
+      "verify": "以三維模型計算各層質心與剛心的偏心距、扭轉模態週期與參與質量，比較有無次核心的角落位移；風洞試驗需提供扭矩頻譜，確認角落加速度在居住性準則內。~Use the three-dimensional model to compute the eccentricity between centres of mass and stiffness at each level, torsional periods and participating mass, comparing corner displacements with and without the secondary core; the wind-tunnel test must supply torque spectra to confirm corner accelerations meet habitability criteria.",
+      "failure": "若忽略低層附屬量體造成的偏心，主核心牆角落與連梁會在風下承受額外剪力與扭轉應力而開裂；角落帷幕牆的層間變位也會大於設計值，造成密封失效。~Ignoring the eccentricity created by a low-rise annex loads the corners and coupling beams of the main core with extra shear and torsional stress that can crack them, and corner curtain walls see larger inter-storey movements than designed, causing seal failures.",
+      "misconception": "只要核心筒位於平面中央，就不會有扭轉問題。~If the core is in the middle of the plan, there is no torsion problem.",
+      "practice": "對有附屬量體或不對稱收分的塔樓，設計報告應逐層列出偏心距與扭轉不規則判定，並說明次核心或翼牆的配置理由；施工中次核心與主核心的連接樓板須按順序完成。~For towers with annexes or asymmetric tapering, the design report should list eccentricity and torsional-irregularity checks floor by floor and justify the secondary core or wing walls; floors linking secondary and main cores must be completed in the planned sequence."
+    },
+    {
+      "anchor": "200 mm 後拉預力平板~200 mm post-tensioned flat slabs",
+      "title": "後拉預力樓板與高強混凝土柱~Post-tensioned slabs and high-strength concrete columns",
+      "mechanism": "上部飯店與住宅層的柱使用約 65 至 80 MPa 高強混凝土，樓板為 50 至 60 MPa 的後拉預力平板。後拉鋼腱以拋物線佈置，在跨中靠下、在柱上靠上，張拉後對混凝土產生向上的等效荷重，抵銷大部分自重；薄板因此能以約 9 m 跨度、200 mm 厚度控制撓度與裂縫，縮小層高並在塔頂收分時節省高度。柱斷面因高強度而縮小，讓逐層收縮的平面仍保有可用面積。~Columns in the upper hotel and residential levels use about 65 to 80 MPa high-strength concrete, and floors are 50 to 60 MPa post-tensioned flat slabs. Tendons follow a parabolic profile, low at mid-span and high over columns, so after stressing they apply an upward equivalent load that cancels most of the self-weight; the thin slab can therefore span about 9 m at 200 mm thick while controlling deflection and cracking, reducing storey height and saving height as the tower tapers. High strength keeps column sections small so the shrinking floor plates retain usable area.",
+      "model": "平衡荷重 w_bal = 8Pe/L²，故 P = w_bal·L²/(8e)。目標平衡 3.5 kPa（約自重 70%）、L = 9 m、垂度 e = 0.06 m：P = 3.5×81/(8×0.06) ≈ 591 kN/m；對 200 mm 板平均預壓 591/0.2 ≈ 2.95 MPa；跨深比 9,000/200 = 45。數值為教學假設。~The balanced load is w_bal = 8Pe/L², so P = w_bal·L²/(8e). Balancing 3.5 kPa, about 70% of self-weight, over L = 9 m with a drape e = 0.06 m needs P = 3.5×81/(8×0.06) ≈ 591 kN/m, an average precompression of 591/0.2 ≈ 2.95 MPa in a 200 mm slab; the span-to-depth ratio is 9,000/200 = 45. Values are teaching assumptions.",
+      "verify": "張拉前確認混凝土達到規定的轉移強度（以現場養護試體或成熟度判定），張拉時同時記錄千斤頂力與伸長量並與計算值比較（例如允差 ±7%）；拆模後量測樓板撓度，與含預力損失的預測比較。~Before stressing, confirm the concrete has reached the specified transfer strength from field-cured specimens or maturity; during stressing record jack force and elongation together and compare with calculation, for example within ±7%; after striking, measure slab deflection against predictions that include prestress losses.",
+      "failure": "日後在預力板上鑽孔或切割若打斷鋼腱，會突然失去預力，造成局部撓度增加，甚至鋼腱彈出的危險；張拉時混凝土強度不足則可能使錨定區爆裂。~Drilling or cutting a post-tensioned slab later and severing a tendon causes a sudden loss of prestress, extra local deflection and even the danger of a tendon ejecting; stressing before the concrete is strong enough can burst the anchorage zone.",
+      "misconception": "後拉預力樓板和一般鋼筋混凝土樓板一樣，可以隨意鑽孔。~A post-tensioned slab can be drilled anywhere, just like ordinary reinforced concrete.",
+      "practice": "預力樓板竣工圖必須標示鋼腱位置與禁鑽區，物業管理規章規定任何鑽孔須先以掃描定位並經結構工程師核可；張拉屬高風險作業，須由合格專業廠商依核准程序執行。~As-built drawings of post-tensioned slabs must show tendon locations and no-drill zones, building rules must require scanning and structural approval before any drilling, and stressing, a high-risk operation, must be done by a qualified specialist under an approved procedure."
+    },
+    {
+      "anchor": "費氏桁架與 A 形轉換~Vierendeel and A-frame transfers",
+      "title": "柱距轉換：費氏桁架與 A 形構架~Column-spacing transfers by Vierendeel trusses and A-frames",
+      "mechanism": "不同用途要求不同柱距：辦公需要開闊空間，住宅與飯店則以房間模組配置柱位。設計者以鋼構費氏桁架把上部柱重新對位到辦公層，並以費氏格框把周邊柱距由 6 m 逐步加密到 3 m 再到 1.5 m；在與背包量體交接處則用 A 形轉換構架加大下方柱距。核心內另有轉換牆與轉換梁支撐半高處的空中大廳。重新對位的傾斜周邊柱會在樓板隔板產生推拉水平力，最後由核心筒平衡。費氏桁架沒有斜桿，靠弦桿與豎桿的剛接彎矩傳遞剪力。~Different uses need different column spacing: offices want open space while homes and hotels align columns with room modules. The designers used steel Vierendeel trusses to realign upper columns onto the office floors, and Vierendeel grids to step perimeter column spacing from 6 m to 3 m to 1.5 m; at the junction with the Backpack, A-frame transfers widen the spacing below. Inside the core, transfer walls and girders support the mid-height sky lobby. Inclined perimeter columns that realign create push–pull forces in the floor diaphragms, finally resolved by the core. A Vierendeel truss has no diagonals and carries shear through bending in rigidly connected chords and verticals.",
+      "model": "費氏桁架每格剪力由上下弦桿平分，反曲點在格中，弦桿端彎矩 M = (V/2)(a/2)。格內剪力 V = 1,200 kN、格寬 a = 3.0 m：M = 600×1.5 = 900 kN·m；若格寬改為 1.5 m，M 降為 450 kN·m。數值為教學假設。~In a Vierendeel panel the two chords share the shear equally with contraflexure at mid-panel, so the chord end moment is M = (V/2)(a/2). For a panel shear V = 1,200 kN and width a = 3.0 m, M = 600×1.5 = 900 kN·m; halving the width to 1.5 m reduces M to 450 kN·m. Values are teaching assumptions.",
+      "verify": "以考慮施工順序的模型計算轉換構件在各階段的內力與撓度，確認上方樓層澆置或安裝時轉換構件已完成並具足夠勁度；剛接節點的全滲透焊依規範做超音波檢測，並量測轉換層的實際撓度與預拱值比較。~Use a sequence-aware model to compute transfer-member forces and deflections at each stage, confirming the transfers are complete and stiff enough before floors above are cast or erected; ultrasonically test the complete-penetration welds at rigid joints to the code and compare the measured deflection of transfer levels with the camber provided.",
+      "failure": "費氏桁架節點若焊接品質不足或剛接性不夠，弦桿彎矩無法傳遞，轉換構件撓度與上部柱沉陷超出預期，造成上層樓板與隔間開裂；樓板隔板若在傾斜柱處被開孔削弱，推拉力找不到路徑。~If Vierendeel joints are poorly welded or not rigid enough, chord moments cannot transfer, so transfer deflection and settlement of columns above exceed predictions and crack upper floors and partitions; diaphragms weakened by openings at inclined columns leave push–pull forces without a path.",
+      "misconception": "沒有斜桿的費氏桁架承載力和有斜桿的桁架差不多。~A Vierendeel truss without diagonals carries load about as well as a braced truss.",
+      "practice": "轉換構件應列為關鍵構件，施工圖標示預拱、臨時支撐與允許拆撐的條件；轉換層樓板的開孔與日後改裝須經結構工程師審查。~Treat transfer members as key elements, showing camber, temporary shoring and conditions for removing it on the drawings, and require structural review for openings and later alterations in transfer-level slabs."
+    },
+    {
+      "anchor": "由上而下的核心筒~Top-down core",
+      "title": "由上而下施工：核心先行與地下室同步~Top-down construction: core ahead while the basement is dug",
+      "mechanism": "主塔地下室採由上而下施工：先施作周邊直徑 900 mm 的咬合樁擋土牆與直徑 1,500 mm、深約 50 m 的鑽掘樁，在樁中插入鋼柱（插入柱），再由地面向下逐層施作樓板並開挖，樓板同時作為擋土牆的水平支撐。核心筒則在地下室尚未完成時就開始向上施作，地上與地下同時推進。這縮短工期並限制鄰近地層位移，但在筏基完成前，核心筒與已完成樓層的荷重全靠插入柱與樁承擔，因此可以先蓋多高是一個明確的計算問題。~The main tower basement was built top-down: first a perimeter secant-pile wall of 900 mm piles and 1,500 mm bored piles about 50 m deep were installed, with steel plunge columns set into the piles; then slabs were cast level by level downward as excavation proceeded, each slab propping the retaining wall. The core started rising before the basement was finished, so work advanced above and below ground at once. This shortens the programme and limits ground movement, but until the raft is complete the core and finished floors rely entirely on the plunge columns and piles, so how high the core may go first is an explicit calculation.",
+      "model": "倫敦黏土中鑽掘樁側摩擦 Q_s = πDLαc_u。D = 1.5 m、L = 50 m、α = 0.5、平均 c_u = 150 kPa：Q_s ≈ 17,670 kN，安全係數 2.5 得容許約 7,070 kN。若核心下方 8 支插入柱樁，核心每層荷重 3,000 kN，筏基完成前最多約 8×7,070/3,000 ≈ 18 層。數值為教學假設。~Side friction of a bored pile in London Clay is Q_s = πDLαc_u. With D = 1.5 m, L = 50 m, α = 0.5 and average c_u = 150 kPa, Q_s ≈ 17,670 kN, or about 7,070 kN allowable with a factor of safety of 2.5. With 8 plunge-column piles under the core and 3,000 kN of core load per storey, the core can rise at most about 8×7,070/3,000 ≈ 18 storeys before the raft is complete. Values are teaching assumptions.",
+      "verify": "插入柱的位置與垂直度在澆置前以測量確認（常見允差為長度的 1/400 以內），每完成若干核心樓層即核對樁頭沉陷與插入柱應變，並以施工階段分析確認擋土牆與樓板支撐在每一開挖階段的內力；達到允許的核心高度前，筏基須完成並驗收。~Before concreting, survey plunge-column position and verticality, commonly within 1/400 of length; after every few core storeys check pile-head settlement and plunge-column strain, and use construction-stage analysis to confirm retaining-wall and slab-prop forces at each excavation stage; the raft must be complete and accepted before the core exceeds its permitted height.",
+      "failure": "插入柱若偏斜超出允差，後續包覆與樓板接合困難並產生附加彎矩；若核心上升超過樁的承載能力而筏基延誤，樁頭沉陷會使核心傾斜，連帶影響後續所有樓層的垂直度。~Plunge columns installed out of tolerance are hard to encase and connect to slabs and attract extra moments; if the core outruns the piles' capacity while the raft is delayed, pile settlement tilts the core and affects the verticality of every later storey.",
+      "misconception": "由上而下施工只是把工序倒過來，對結構設計沒有影響。~Top-down construction merely reverses the order of work and does not affect structural design.",
+      "practice": "由上而下施工須在設計階段就訂出「筏基完成前核心允許高度」與樓板拆撐順序，列為合約中的停留點；插入柱驗收與每階段開挖前的支撐確認都要有結構與大地工程師簽認。~Top-down construction needs a design-stage limit on core height before raft completion and a slab-prop removal sequence, written into the contract as hold points; plunge-column acceptance and prop confirmation before each excavation stage require sign-off by structural and geotechnical engineers."
+    },
+    {
+      "anchor": "跳升塔吊與 66 m 尖塔~Jumping cranes and the 66 m spire",
+      "title": "爬升塔吊與塔頂尖塔施工~Climbing cranes and spire construction",
+      "mechanism": "公開資料指出工程共使用五部塔吊，其中四部隨塔樓「跳升」，並有英國首部架在滑模頂上的塔吊；塔頂 66 m、約 500 公噸的尖塔由約 800 件玻璃與鋼構件組成，最後一部塔吊專為安裝上部尖塔而架設。爬升塔吊把垂直荷重與傾覆力矩透過兩道以上的支承框傳給核心牆，因此核心牆在支承位置的混凝土齡期、強度與局部承壓都要檢核；塔樓收分到頂部時空間狹小，尖塔構件的分段重量與吊裝順序決定了塔吊選型。~Public sources say five tower cranes were used, four of which jumped with the tower, including the first UK crane supported on top of a slipform; the 66 m, roughly 500 t spire at the top consists of about 800 pieces of glass and steel, and a final crane was erected specifically to install its upper part. A climbing crane transfers vertical load and overturning moment to the core walls through two or more support collars, so concrete age, strength and local bearing at the collar locations must be checked; as the tower tapers to the top, space becomes tight and the weight and sequence of spire pieces drive crane selection.",
+      "model": "塔吊傾覆力矩由上下兩道支承框以水平力偶傳給核心：H = M/s。M = 6,000 kN·m、支承框間距 s = 10 m：H = 600 kN；若間距只能做到 6 m，H = 1,000 kN，核心牆在支承處的局部承壓與錨栓拉拔需求增加約 67%。數值為教學假設。~A climbing crane passes its overturning moment to the core as a horizontal couple at two collars: H = M/s. With M = 6,000 kN·m and a collar spacing s = 10 m, H = 600 kN; if only 6 m spacing is possible, H = 1,000 kN, raising local bearing and anchor pull-out demand on the core walls by about 67%. Values are teaching assumptions.",
+      "verify": "每次跳升前由塔吊廠商與結構工程師確認支承處混凝土強度（現場試體或成熟度）、錨栓與支承框安裝，並檢查新支承位置的牆體開口與配筋；尖塔吊裝前核對每件重量、吊點與吊車半徑荷重，並記錄風速。~Before each jump, the crane supplier and structural engineer confirm concrete strength at the supports from field specimens or maturity, anchors and collar installation, and check wall openings and reinforcement at the new support level; before spire lifts verify every piece's weight, lifting points and the radius load chart, and log wind speed.",
+      "failure": "若在混凝土強度不足時跳升，支承處可能局部壓碎或錨栓拔出，塔吊傾斜甚至倒塌；尖塔構件吊裝順序不當，會讓已安裝的部分在完成斜撐前承受過大的風力。~Jumping before the concrete is strong enough can crush the wall locally or pull out anchors, tilting or even toppling the crane; a poor spire erection sequence can expose partly installed elements to excessive wind before their bracing is complete.",
+      "misconception": "塔吊的荷重只由塔吊自身的基礎承擔，與主結構無關。~A tower crane's loads go only into its own base and have nothing to do with the main structure.",
+      "practice": "塔吊跳升屬高風險作業，須有廠商與結構工程師共同核准的跳升程序、強度停留點與停止風速，由合格的塔吊主管指揮；核心牆的支承預埋件在設計圖中先行標示。~Crane jumping is high risk and needs a procedure approved jointly by the supplier and the structural engineer, with strength hold points and stop wind speeds, directed by a qualified crane supervisor; support embeds in the core walls should be shown on the design drawings in advance."
+    },
+    {
+      "anchor": "高頻力平衡風洞試驗~High-frequency force-balance test",
+      "title": "風洞試驗與居住舒適度~Wind-tunnel testing and occupant comfort",
+      "mechanism": "設計團隊以三維有限元素與動力分析求出頻率與振型，並委託 RWDI 做高頻力平衡（HFFB）風洞試驗，估算風致加速度以檢核居住舒適度；另以補充試驗設計塔頂散熱器與帷幕牆桁架。官方資料指出大樓設計在 50 年回歸期風況下擺動約 300 至 400 mm。住宅與飯店的舒適度要求比辦公嚴格，因為人在家中與夜間對擺動較敏感，所以上部住宅層的加速度是控制條件之一。~The design team derived frequencies and mode shapes with three-dimensional finite-element and dynamic analysis and commissioned RWDI to run high-frequency force-balance (HFFB) wind-tunnel tests estimating wind-induced acceleration for occupant comfort; further tests informed the design of the crown radiator and cladding trusses. Official sources state the building is designed to sway about 300 to 400 mm in winds expected once every 50 years. Comfort criteria for homes and hotels are stricter than for offices because people at home and at night are more sensitive to motion, so accelerations at the upper residential floors are one of the controlling conditions.",
+      "model": "共振分量加速度 a = (2πf)²·x。f = 0.2 Hz、動態振幅 x = 30 mm：a = (2π×0.2)²×0.030 ≈ 0.0474 m/s² ≈ 4.8 milli-g。常用的 10 年回歸期準則約為住宅 5–7 milli-g、辦公 9–12 milli-g；若振幅增為 45 mm，a ≈ 7.2 milli-g，已接近住宅上限。數值為教學假設。~The resonant acceleration is a = (2πf)²·x. With f = 0.2 Hz and a dynamic amplitude x = 30 mm, a = (2π×0.2)²×0.030 ≈ 0.0474 m/s² ≈ 4.8 milli-g. Common 10-year criteria are about 5–7 milli-g for residential and 9–12 milli-g for offices; an amplitude of 45 mm gives a ≈ 7.2 milli-g, near the residential upper limit. Values are teaching assumptions.",
+      "verify": "審查風洞報告的模態輸入（頻率、振型、廣義質量、阻尼假設）是否與最新結構模型一致，並針對住宅最高樓層與角落位置列出各回歸期的尖峰加速度；完工後以加速度計實測頻率與阻尼，回頭更新預測。~Check that the modal inputs in the wind-tunnel report, namely frequencies, mode shapes, generalised masses and damping, match the latest structural model, and list peak accelerations by return period for the highest residential floor and corner positions; after completion measure frequency and damping with accelerometers and update the prediction.",
+      "failure": "若結構頻率或阻尼與風洞假設不符（例如混凝土實際模數較低），實際加速度可能高於預測，住戶在強風夜晚感到不適，而事後加裝阻尼器在已完工的高價住宅層中極為困難。~If structural frequency or damping differs from the wind-tunnel assumption, for example because the real concrete modulus is lower, actual acceleration can exceed predictions and residents feel unwell on windy nights, while retrofitting a damper into finished high-value residential floors is extremely difficult.",
+      "misconception": "大樓擺動 300 至 400 mm 就表示結構有安全疑慮。~A tower swaying 300 to 400 mm means it is structurally unsafe.",
+      "practice": "風洞試驗應在結構模型凍結後再以最終模態參數更新一次，報告須同時列出有無補充阻尼的加速度；若不設阻尼器，須在頂部預留未來加裝的空間與承載作為保險。~Update the wind-tunnel predictions with final modal parameters once the structural model is frozen, list accelerations with and without supplementary damping, and if no damper is installed reserve space and capacity at the top as insurance for a future one."
+    },
+    {
+      "anchor": "鄰近鐵路設施位移監測~Movement monitoring of adjacent rail assets",
+      "title": "開挖引起的地層位移與監測~Excavation-induced ground movement and monitoring",
+      "mechanism": "大樓緊鄰倫敦橋車站與地下鐵設施，基地上還留有舊建築的樁與擴底。設計者以有限元素分析預測開挖對鄰近基礎設施的位移在可接受範圍，並規劃施工期監測；新樁盡量布置在既有樁與擴底之間。由上而下施工讓樓板在開挖時即提供剛性支撐，減少擋土牆變形與背後地表沉陷。監測的目的是在位移發展到影響軌道、隧道或車站結構前提出警訊，讓施工方法能及時調整。~The building sits beside London Bridge station and Underground assets, and old piles and under-reams remained on the site. The designers used finite-element analysis to predict that movements of adjacent infrastructure would stay within acceptable limits and planned monitoring during construction, and new piles were placed between existing piles and under-reams where possible. Top-down construction lets slabs prop the wall stiffly during excavation, reducing wall deflection and ground settlement behind it. Monitoring exists to warn before movements affect tracks, tunnels or station structures, so methods can be adjusted in time.",
+      "model": "以經驗關係估算：擋土牆最大水平位移 δ_h ≈ 0.15%H，背後最大沉陷 δ_v ≈ 0.75δ_h。開挖深 H = 15 m：δ_h ≈ 22.5 mm、δ_v ≈ 16.9 mm；若以預測值 70% 作為黃色警戒，δ_v 約 11.8 mm 時即應檢討。數值為教學假設。~Empirical estimates give a maximum wall deflection δ_h ≈ 0.15%H and maximum settlement behind it δ_v ≈ 0.75δ_h. For an excavation depth H = 15 m, δ_h ≈ 22.5 mm and δ_v ≈ 16.9 mm; with an amber trigger at 70% of the prediction, review should start when δ_v reaches about 11.8 mm. Values are teaching assumptions.",
+      "verify": "在擋土牆內設置傾斜管，在鄰近軌道、隧道與車站結構設置稜鏡與自動全站儀，於開挖前取得基準值；每個開挖階段比較實測與預測，達到黃色或紅色警戒值時依預定的應變計畫增加支撐或暫停開挖。~Install inclinometers in the retaining wall and prisms with automated total stations on adjacent tracks, tunnels and station structures, taking baselines before excavation; compare measured and predicted movement at every excavation stage and, at amber or red triggers, add props or pause excavation under the pre-agreed contingency plan.",
+      "failure": "若監測基準在施工擾動後才建立，或警戒值未與鐵路業主事先協議，位移超限時可能來不及處理，導致軌道幾何超標、列車限速甚至停駛。~If baselines are taken only after construction has disturbed the ground, or triggers were not agreed with the rail owner, exceedances may not be handled in time, leading to track-geometry breaches, speed restrictions or service suspension.",
+      "misconception": "只要擋土牆夠強，開挖就不會影響鄰近的鐵路設施。~If the retaining wall is strong enough, excavation cannot affect nearby rail assets.",
+      "practice": "在鐵路保護範圍內施工前，須與鐵路業主協議監測項目、頻率、警戒值與應變措施，並把資料即時分享；每個開挖階段結束後的監測檢討列為停留點。~Before working inside a rail protection zone, agree monitoring items, frequency, triggers and contingency measures with the rail owner and share data in real time; the monitoring review at the end of each excavation stage is a hold point."
+    },
+    {
+      "anchor": "帷幕牆接縫與層間變位~Curtain-wall joints and storey drift",
+      "title": "帷幕牆接縫的位移容量~Movement capacity of curtain-wall joints",
+      "mechanism": "官方資料指出外牆約有 11,000 片玻璃，傾斜的玻璃「碎片」在塔頂延伸並以 25 mm 拉桿斜撐的垂直桁架穩定。帷幕牆單元必須同時容納多種位移：層間變位造成的面內錯動、鋁框溫度伸縮、樓板邊緣撓度與柱的長期縮短。接縫若只按其中一項設計，在其他位移疊加時會被擠壓或拉開，密封膠疲勞後漏水漏氣。傾斜立面使雨水與日照條件更嚴苛，接縫的耐久與可更換性更為重要。~Official sources state the façade has about 11,000 glass panels, and the tilted glass shards extending above the roof are stabilised by vertical trusses braced with 25 mm rods. Curtain-wall units must accommodate several movements at once: in-plane racking from storey drift, thermal movement of aluminium frames, slab-edge deflection and long-term column shortening. A joint designed for only one of these is crushed or opened when the others add up, and the sealant fatigues until water and air leak. Inclined façades make rain and sun exposure harsher, so joint durability and replaceability matter even more.",
+      "model": "鋁豎框熱伸縮 ΔL = αLΔT = 23×10⁻⁶×4,000×60 ≈ 5.5 mm；層間變位 h/500 = 3,100/500 = 6.2 mm（面內錯動）；水平堆疊接縫需容納熱伸縮 5.5 mm 加樓板邊緣撓度 10 mm，約 15.5 mm。數值為教學假設。~Thermal movement of an aluminium mullion is ΔL = αLΔT = 23×10⁻⁶×4,000×60 ≈ 5.5 mm; storey drift of h/500 = 3,100/500 = 6.2 mm gives in-plane racking; the horizontal stack joint must absorb 5.5 mm of thermal movement plus 10 mm of slab-edge deflection, about 15.5 mm. Values are teaching assumptions.",
+      "verify": "以實尺寸樣品做帷幕牆性能試驗（氣密、水密、風壓與層間位移試驗，例如依 ASTM E283、E331、E330 與 AAMA 501），確認接縫在設計位移組合下不失效；安裝時抽查接縫寬度與單元水平，營運後定期檢查密封膠與排水孔。~Run full-size mock-up tests for air, water, structural pressure and inter-storey movement, for example to ASTM E283, E331, E330 and AAMA 501, confirming joints survive the design movement combination; during installation spot-check joint widths and unit levels, and in service periodically inspect sealant and drainage holes.",
+      "failure": "接縫寬度不足時，強風或夏季高溫下單元互相擠壓使玻璃邊緣受力破裂；密封膠老化後雨水沿傾斜立面滲入，造成室內漏水與錨件腐蝕。~Joints that are too narrow let units press against each other in high wind or summer heat until glass edges crack; aged sealant lets rain run into the inclined façade, causing interior leaks and corrosion of anchors.",
+      "misconception": "帷幕牆只需要承受風壓，不必考慮結構變位。~A curtain wall only needs to resist wind pressure, not structural movement.",
+      "practice": "結構工程師應以書面提供帷幕牆顧問各樓層的層間變位、樓板邊緣撓度與長期縮短值，並納入帷幕牆規格；交接文件包含玻璃與密封膠更換程序及吊籠維護設備的操作限制。~The structural engineer should give the façade consultant written values of storey drift, slab-edge deflection and long-term shortening for every level for inclusion in the façade specification; handover should include glass and sealant replacement procedures and operating limits for the building maintenance unit."
+    },
+    {
+      "anchor": "未防火被覆的帽桁架~Unprotected hat trusses",
+      "title": "使用性帽桁架的防火判斷與交接~Fire strategy and handover of serviceability hat trusses",
+      "mechanism": "設計者說明頂部機械層的外伸帽桁架用於改善風作用下的使用性，因為它們不是強度所需的構件，所以未做防火被覆。這是一個需要被記錄的工程判斷：火災時鋼材高溫後勁度下降，帽桁架對側向勁度的貢獻減少，但結構強度仍由核心筒保證。若未來有人不知道這個前提，可能把帽桁架當成承載構件加以利用（例如懸吊設備或改造時依賴其強度），就會破壞原本的防火策略。~The designers explain that the outrigger hat trusses in the upper plant levels improve wind serviceability and, because they are not required for strength, were not fire-protected. That is an engineering judgement that must be documented: in a fire, heated steel loses stiffness and the hat trusses contribute less lateral stiffness, while strength is still assured by the core. If future users are unaware of this premise and start relying on the hat trusses, for example to hang equipment or as strength members in a renovation, the original fire strategy is undermined.",
+      "model": "EN 1993-1-2 鋼材彈性模數折減係數 k_E,θ 在 600 °C 約 0.31。若帽桁架提供 25% 的側向勁度，火災時整體勁度約為 0.75 + 0.25×0.31 ≈ 0.83，頂部變位放大約 1/0.83 ≈ 1.21 倍。數值為教學假設，僅示範勁度降低而非強度設計。~EN 1993-1-2 gives a steel modulus reduction factor k_E,θ of about 0.31 at 600 °C. If the hat trusses provide 25% of lateral stiffness, the overall stiffness in a fire is about 0.75 + 0.25×0.31 ≈ 0.83, increasing top drift by about 1/0.83 ≈ 1.21 times. Values are teaching assumptions illustrating stiffness loss, not strength design.",
+      "verify": "在結構計算書中以「移除帽桁架」的分析證明核心筒單獨滿足強度要求，並把此結論寫入防火策略報告；交接時在現場與竣工圖上標示這些構件為「使用性構件、未防火被覆」，定期巡檢時確認沒有新增附掛荷載。~Demonstrate in the structural calculations, by analysis with the hat trusses removed, that the core alone meets strength requirements, and record this in the fire strategy report; at handover label these members on site and on as-built drawings as serviceability members without fire protection, and confirm at periodic inspections that no new loads have been hung from them.",
+      "failure": "改造工程若在未被覆的帽桁架上懸吊重型設備或把它當作新增樓板的支承，火災時這些構件可能先軟化變形，使原本只影響使用性的構件變成造成局部倒塌的弱點。~If a renovation hangs heavy plant from the unprotected hat trusses or uses them to support new floors, they may soften and deform first in a fire, turning a serviceability-only member into a weak point for local collapse.",
+      "misconception": "所有鋼構件都必須防火被覆，否則就是設計錯誤。~Every steel member must be fire-protected, otherwise the design is wrong.",
+      "practice": "防火策略中的「不需被覆」判斷必須附上結構依據、適用條件與禁止事項，納入交接文件與物業管理規章；任何在這些構件上的新增荷載或焊接都需結構與消防工程師共同核准。~Any no-protection decision in the fire strategy must carry its structural justification, conditions of validity and prohibitions, written into handover documents and building rules; any new load or welding on these members needs joint approval by structural and fire engineers."
+    }
+  ],
+  "example": "設計練習：由允許擺幅反推核心筒所需勁度與牆厚。以等效均布風荷載 w = 60 kN/m 作用於 H = 306 m 的懸臂，頂部變位 Δ = wH⁴/(8EI)。若容許 Δ = 0.40 m，需 EI = wH⁴/(8Δ) = 60×306⁴/(8×0.40) ≈ 1.64×10¹¹ kN·m²；取混凝土 E = 40 GPa，I = 1.64×10¹¹/(4.0×10⁷) ≈ 4,110 m⁴。以邊長 b = 20 m 的薄壁方形核心 I ≈ (2/3)t·b³ 估算，t = 4,110/((2/3)×8,000) ≈ 0.77 m。若改要求 Δ = 0.30 m，EI 增為約 2.19×10¹¹ kN·m²，I ≈ 5,480 m⁴，t ≈ 1.03 m，牆厚增加約三分之一；若改以外伸帽桁架提供部分勁度，則可在不加厚牆的情況下達到相同變位。數值為教學假設，未計開口、翼牆、背包次核心與動力效應，不代表實際設計。~Design exercise: back-calculate core stiffness and wall thickness from the allowed sway. Apply an equivalent uniform wind load w = 60 kN/m to a cantilever H = 306 m tall, with top drift Δ = wH⁴/(8EI). For an allowed Δ = 0.40 m, EI = wH⁴/(8Δ) = 60×306⁴/(8×0.40) ≈ 1.64×10¹¹ kN·m²; with E = 40 GPa, I = 1.64×10¹¹/(4.0×10⁷) ≈ 4,110 m⁴. For a thin-walled square core of side b = 20 m, I ≈ (2/3)t·b³, so t = 4,110/((2/3)×8,000) ≈ 0.77 m. Tightening the limit to Δ = 0.30 m raises EI to about 2.19×10¹¹ kN·m², I ≈ 5,480 m⁴ and t ≈ 1.03 m, about a third thicker; letting outrigger hat trusses supply part of the stiffness reaches the same drift without thickening the walls. Values are teaching assumptions ignoring openings, wing walls, the Backpack core and dynamic effects, not the actual design.",
+  "history": "碎片大廈由開發商 Irvine Sellar 推動，Renzo Piano Building Workshop 設計建築，WSP 擔任結構設計，Robert Bird Group 參與結構工程，Mace 承建。2009 年全面動工，英國首次以由上而下的方式施作核心筒，讓核心筒在地下室開挖的同時向上升；2012 年 3 月 66 m 的尖塔吊裝就位，7 月舉行落成儀式，觀景台於 2013 年 2 月開放。結構上的新意在於依用途垂直分區：下部鋼構辦公、上部後拉預力混凝土飯店與住宅、塔頂鋼構散熱器，並以轉換構件調和不同柱距，以上部混凝土樓板的質量取代補充阻尼裝置。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~The Shard was promoted by developer Irvine Sellar, designed by Renzo Piano Building Workshop with WSP as structural designer, Robert Bird Group contributing structural engineering and Mace as contractor. Full construction began in 2009 with the UK's first top-down core, rising while the basement was excavated; the 66 m spire was lifted into place in March 2012, the building was inaugurated in July and the viewing gallery opened in February 2013. Its structural novelty is vertical zoning by use: steel offices below, post-tensioned concrete hotel and homes above and a steel radiator at the crown, with transfer structures reconciling different column grids and the mass of the upper concrete floors standing in for supplementary dampers. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "官方高度 309.6 m、共 95 層，最高可居住樓層為第 72 層；CTBUH 資料庫列建築高度 306 m~Official height 309.6 m with 95 storeys and level 72 the highest habitable floor; the CTBUH database lists 306 m",
+    "觀景台位於 68 至 72 層，高約 244 m~Viewing gallery on levels 68 to 72, about 244 m high",
+    "設計在 50 年回歸期風況下擺動約 300 至 400 mm~Designed to sway about 300 to 400 mm in winds expected once in 50 years",
+    "鑽掘樁直徑 1,500 mm、深約 50 m，周邊咬合樁直徑 900 mm，筏基厚 1.5 至 3 m~Bored piles 1,500 mm in diameter and about 50 m deep, 900 mm secant perimeter piles and a 1.5 to 3 m raft",
+    "上部柱混凝土約 65 至 80 MPa，樓板約 50 至 60 MPa~Upper-level column concrete about 65 to 80 MPa and slabs about 50 to 60 MPa",
+    "後拉預力平板厚 200 mm、跨度約 9 m；辦公層跨度可達約 15 m~Post-tensioned slabs 200 mm thick spanning about 9 m; office spans reach about 15 m",
+    "塔頂尖塔高 66 m、約 500 公噸，由約 800 件玻璃與鋼構件組成~The 66 m spire weighs about 500 t and comprises about 800 glass and steel pieces",
+    "外牆約 11,000 片玻璃~About 11,000 glass panels on the façade",
+    "周邊柱距以費氏格框由 6 m 加密到 3 m 再到 1.5 m~Vierendeel grids step perimeter column spacing from 6 m to 3 m to 1.5 m"
+  ],
+  "timeline": [
+    {
+      "year": "2009",
+      "event": "3 月全面動工，展開由上而下的地下室與核心筒施工~Full construction begins in March with top-down basement and core works"
+    },
+    {
+      "year": "2011",
+      "event": "年初核心筒升到約第 72 層，上部預力樓板持續施作~Early in the year the core reaches about level 72 as upper post-tensioned floors continue"
+    },
+    {
+      "year": "2012",
+      "event": "3 月 66 m 尖塔就位，7 月舉行落成儀式~The 66 m spire is set in March and the building is inaugurated in July"
+    },
+    {
+      "year": "2013",
+      "event": "2 月觀景台開放，CTBUH 記錄的完工年份~The viewing gallery opens in February, the completion year recorded by CTBUH"
+    }
+  ],
+  "codes": [
+    "EN 1991-1-4：風力作用~EN 1991-1-4: Actions on structures – Wind actions",
+    "EN 1992-1-1：混凝土結構設計~EN 1992-1-1: Design of concrete structures – General rules",
+    "EN 1993-1-2：鋼結構防火設計~EN 1993-1-2: Design of steel structures – Structural fire design",
+    "Concrete Society TR43：後拉預力混凝土樓板~Concrete Society TR43: Post-tensioned concrete floors"
+  ],
+  "landmarks": [
+    "倫敦聖瑪莉艾克斯 30 號~30 St Mary Axe, London",
+    "倫敦加拿大廣場一號~One Canada Square, London",
+    "倫敦主教門 22 號~22 Bishopsgate, London"
+  ],
+  "place": {
+    "name": "碎片大廈~The Shard",
+    "country": "英國~United Kingdom",
+    "lat": 51.5045,
+    "lng": -0.0865,
+    "query": "The Shard London Bridge"
+  },
+  "sources": [
+    {
+      "key": "ctbuh-the-shard",
+      "title": "CTBUH 摩天大樓中心：碎片大廈",
+      "titleEn": "CTBUH Skyscraper Center: The Shard",
+      "publisher": "Council on Tall Buildings and Urban Habitat",
+      "url": "https://www.skyscrapercenter.com/building/the-shard/451",
+      "sourceType": "primary",
+      "scope": "資料庫高度、樓層、施工與完工年份、結構材料、設計與記錄結構工程師及承包商。",
+      "scopeEn": "Database height, floors, construction and completion years, structural material, design and record structural engineers and contractor."
+    },
+    {
+      "key": "structure-mag-shard",
+      "title": "STRUCTURE 雜誌：倫敦橋塔（碎片大廈）結構設計",
+      "titleEn": "STRUCTURE magazine: structural design of London Bridge Tower (The Shard)",
+      "publisher": "STRUCTURE magazine / NCSEA",
+      "url": "https://www.structuremag.org/article.aspx?articleID=694",
+      "sourceType": "primary",
+      "scope": "WSP 設計者撰寫：分區樓板系統、混凝土強度、轉換構件、核心與帽桁架、由上而下施工、樁與筏基、風洞。",
+      "scopeEn": "Written by WSP designers: zoned floor systems, concrete strengths, transfers, core and hat trusses, top-down construction, piles and raft, wind tunnel."
+    },
+    {
+      "key": "mace-the-shard",
+      "title": "Mace：碎片大廈專案頁",
+      "titleEn": "Mace: The Shard project page",
+      "publisher": "Mace Group",
+      "url": "https://www.macegroup.com/projects/the-shard",
+      "sourceType": "primary",
+      "scope": "承包商對由上而下核心施工、滑模頂塔吊、大體積澆置與尖塔重量的說明。",
+      "scopeEn": "Contractor's account of the top-down core, crane on a slipform, the large concrete pour and the spire's weight."
+    },
+    {
+      "key": "the-shard-official",
+      "title": "碎片大廈官方網站：關於大樓",
+      "titleEn": "The Shard official website: about the building",
+      "publisher": "The Shard",
+      "url": "https://www.the-shard.com/about/",
+      "sourceType": "primary",
+      "scope": "官方高度、樓層與用途分配、玻璃片數、設計擺幅與觀景台開放時間。",
+      "scopeEn": "Official height, floors and use allocation, number of glass panels, design sway and viewing-gallery opening."
+    },
+    {
+      "key": "wiki-the-shard",
+      "title": "維基百科：碎片大廈（英文）",
+      "titleEn": "Wikipedia: The Shard",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Shard",
+      "sourceType": "secondary",
+      "scope": "施工時序（動工、核心進度、尖塔就位、落成）的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of the construction chronology, including start, core progress, spire placement and inauguration, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "WSP",
+      "nameEn": "WSP Global",
+      "business": "國際工程顧問公司，提供建築結構、交通與環境工程設計服務。",
+      "businessEn": "International engineering consultancy providing building-structure, transport and environmental design services.",
+      "url": "https://www.wsp.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "WSP",
+        "exchange": "TSX",
+        "currency": "CAD"
+      },
+      "role": "本塔結構設計者，分區混合結構與轉換構件的公開技術文章",
+      "roleEn": "Structural designer of the tower; public technical articles on zoned hybrid structure and transfers"
+    },
+    {
+      "name": "Mace",
+      "nameEn": "Mace Group",
+      "business": "英國營建管理與工程顧問集團，為碎片大廈的主承包商。",
+      "businessEn": "UK construction-management and consultancy group that was main contractor for The Shard.",
+      "url": "https://www.macegroup.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "本塔承包商，由上而下核心施工與跳升塔吊的實務資料",
+      "roleEn": "Contractor of the tower; practice material on top-down core construction and jumping cranes"
+    },
+    {
+      "name": "RWDI",
+      "nameEn": "RWDI",
+      "business": "風工程顧問，提供風洞試驗、微氣候與結構振動評估。",
+      "businessEn": "Wind-engineering consultancy offering wind-tunnel testing, microclimate and structural motion assessment.",
+      "url": "https://rwdi.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "高頻力平衡風洞試驗與居住舒適度評估的方法",
+      "roleEn": "Methods for high-frequency force-balance testing and occupant-comfort assessment"
+    }
+  ],
+  "related": [
+    "b075",
+    "b094"
+  ],
+  "architectureNodes": [
+    [
+      "中央混凝土核心筒",
+      "Central concrete core"
+    ],
+    [
+      "鋼構辦公層",
+      "Steel office floors"
+    ],
+    [
+      "預力混凝土飯店住宅層",
+      "Post-tensioned hotel and residential floors"
+    ],
+    [
+      "費氏桁架與 A 形轉換",
+      "Vierendeel and A-frame transfers"
+    ],
+    [
+      "塔頂散熱器、帽桁架與尖塔",
+      "Crown radiator, hat trusses and spire"
+    ],
+    [
+      "由上而下地下室與樁筏基礎",
+      "Top-down basement and piled raft"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      5
+    ]
+  ]
+}

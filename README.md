@@ -2,11 +2,18 @@
 
 以總工程師的視角，把複雜工程拆為「專案 → 階段 → 工序 → 知識點」。學徒在左側操作，師傅在右側示範；看示範、閱讀原理、操作教具、完成驗收，依學員與專案保存進度。
 
+**V13（2026-10-15）：** 新增「橋樑與建築」100 門逐步課程：96 門新課各 **5 階段 × 8 步 = 40 步**，淡江大橋、明石海峽大橋、舊金山金門大橋、台北 101 四門延伸 40 步且舊步驟 ID 不變。每門附工程檔案（關鍵數據、年代時間軸、規範與標準、代表工程比較）、原創結構架構圖、地圖與歷史、相關公司與股價。全站 2,066 選題中 **710 門逐步課程、20,274 步、45,440 個知識點**、2,028 個公開來源、693 家公司（394 家上市）。收費：每門課只開放**第一節免費**（沒有整門免費的課程），通行證 30 天 NT$299／365 天 NT$2,490，**依觀看者語系推定幣別、乘以最新匯率（12 小時快取）並進位到當地慣用價位**（參考華佗學院做法），伺服器重新計價後才收款。模型：`bash macgyver.sh models` 與華佗學院共用私人倉庫 PRIVATE-MODELS，只傳新分片。一鍵：`bash upload-all.sh`。介面 77 種語言字典已含 V13 新字串。詳見 `docs/UPGRADE_V13_ZH.md`。
+
+**一鍵上傳：** `bash upload-all.sh`（網站＋模型，只傳差異並刪除雲端多餘檔案）；分開執行：`bash macgyver.sh`（網站）、`bash macgyver.sh models`（模型）；先比對：`bash macgyver.sh compare`、`bash macgyver.sh models-compare`。見 `docs/UPLOAD_SYNC_V12_ZH.md`、`docs/AI_MODELS_V12_ZH.md`、`docs/PAYMENTS_V12_ZH.md`（檔名保留，內容已更新到 V13）。
+
+先開 `public/academy/help.html` 看入口與設定。橋樑與建築課程索引為 `public/academy/data/bridges-buildings-100.csv`；修改課程原稿 `tools/structures-v13/inputs/` 後執行 `bash rebuild-structures.sh`。實際統計見 `public/academy/data/release.json`。**此完整 ZIP 是給擁有者的原始碼／離線教材包（含 `owner-private/` 收款設定筆記，不會上傳到 GitHub），請勿公開散布。**
+
+<details><summary>V12 摘要</summary>
+
 **V12（2026-10-15）：** 新增「光學與精密儀器」101 門逐步課程（99 門新課各 32 步，`asml`、`a405` 延伸且舊步驟 ID 不變），全站 2,066 選題中 614 門逐步課程、16,274 步。每門課只開放**第一節免費**，其餘以學習通行證（30 天 NT$299／365 天 NT$2,490，依觀看地區換算當地幣別）解鎖；會員註冊需帳號、密碼、信箱、手機四項。每門課附相關公司、官方業務連結與每週股價快照（522 家，351 家上市）。介面更簡潔，可存個人主題、版面與語音；首頁輪播 2,066 個不重複專案圖示；介面另有 77 種語言字典（依瀏覽器語言自動切換）。詳見 `docs/UPGRADE_V12_ZH.md`。
 
-**一鍵上傳與每週股價：** `bash macgyver.sh`（只上傳差異）、`bash macgyver.sh compare`（比對雲端）、`bash macgyver.sh stocks`（每週股價）、`bash macgyver.sh models`（模型上傳私人倉庫）。見 `docs/UPLOAD_SYNC_V12_ZH.md`、`docs/AI_MODELS_V12_ZH.md`、`docs/PAYMENTS_V12_ZH.md`。
-
-先開 `public/academy/help.html` 看入口與設定。光學課程索引為 `public/academy/data/optics-precision-101.csv`；實際媒體與來源統計見 `public/academy/data/release.json`。**此完整 ZIP 是給擁有者的原始碼／離線教材包（含 `owner-private/` 收款設定筆記，不會上傳到 GitHub），請勿公開散布。**
+光學課程索引為 `public/academy/data/optics-precision-101.csv`。
+</details>
 
 <details><summary>V11 摘要</summary>
 
@@ -59,7 +66,7 @@ V11 聚焦資訊與資安及世界工程：資訊與資安 100 門各增加 32 �
 
 ## 會員、付款與完成證書
 
-「會員與證書」可看到 6 門免費試學及試營運價格假設：NT$299／30 天、NT$2,490／365 天，均為一次付款、不自動續扣。**本次 Sites owner/demo 與 ZIP 未啟用真實付款。** 不能在 GitHub Pages 的公開 JSON 前只放 JavaScript 鎖，便宣稱課程受保護。
+「會員與證書」：每門逐步課程只開放第一節免費（沒有整門免費的課程），通行證 NT$299／30 天、NT$2,490／365 天，依觀看者語系換算當地幣別，均為一次付款、不自動續扣。**本次 Sites owner/demo 與 ZIP 未啟用真實付款。** 不能在 GitHub Pages 的公開 JSON 前只放 JavaScript 鎖，便宣稱課程受保護。
 
 可另外部署 `bash run-commerce.sh --port 8010` 的 Python 後端，搭配同一 HTTPS 網域，讓所有請求經過權限檢查。正式金流需業主自行申請綠界商家、設定收款銀行及私有 MerchantID / HashKey / HashIV；卡號只在綠界收銀台輸入。Webhook 簽章與伺服器查單均通過後才發期限權限，沙盒與正式資料隔離。預設禁用，沒有偷偷收費或自動建立商家。
 
@@ -132,30 +139,21 @@ PDF 需可選 pypdf，掃描 PDF 需先 OCR；文字、Markdown、CSV、JSON、P
 
 索引保存在 `portable/data/knowledge.json`，是該伺服器共用的管理者教材，不是每位學員的私人上傳區。V10 受保護付費模式中，私有文件檢索只提供有效付費會員；免費會員仍可詢問其提供的免費課程脈絡。帳號資料庫在 `portable/data/macgyver.sqlite3`，應另行備份，皆不提交公開 Git。
 
-## 整包 GitHub 推送與更新
+## 整包 GitHub 推送與更新（V13）
 
-若要以 Mac／Linux／Git Bash 的 SSH 金鑰推送，使用新腳本 `upload-github-ssh.sh`。它先從本專案建立隔離的公開程式快照，再重試失敗的 Git push；可選把模型切成小片，逐批推送到**另一個已確認為私人**的 repository。分片與 SHA-256 manifest 留在本機續傳資料夾，斷線後執行相同命令會接續已推送的批次，不強推或刪除原始模型。詳見 [GITHUB_SSH_UPLOAD_ZH.md](docs/GITHUB_SSH_UPLOAD_ZH.md)。
-
-```bash
-bash upload-github-ssh.sh --repo git@github.com:OWNER/ACADEMY.git --dry-run
-bash upload-github-ssh.sh --repo git@github.com:OWNER/ACADEMY.git
-# 可選：模型另外放入已建好的私人倉庫
-bash upload-github-ssh.sh --weights-repo git@github.com:OWNER/PRIVATE-MODELS.git \
-  --models-dir /你的模型資料夾 --weights-private-confirmed
-```
-
-GitHub Pages 由私人倉庫發布時，符合 GitHub 方案條件的預設網頁仍可公開觀看；隨頁面發布的教材亦可供訪客取得。模型分片保留在獨立私人倉庫，Pages 不會自動載入它們。SSH 驗證可用 `ssh -T git@github.com` 測試；第一次連線須先核對 GitHub 官方主機指紋。
-
-**V12 起建議只用一個指令：**
+**一鍵：** 在解壓後的資料夾執行 `bash upload-all.sh`。它會先比對本機套件與網站倉庫 `kuonanhong/macgyver-academy`，只上傳新增與修改的檔案並刪除雲端多餘的舊檔；再準備 AI 權重（Qwen3-0.6B 可直接從華佗學院四份 ZIP 匯入），比對私人倉庫 `kuonanhong/PRIVATE-MODELS`，只上傳雲端還沒有的 40 MiB 分片（只動 `projects/macgyver/`，不碰華佗學院的檔案）。
 
 ```bash
-bash macgyver.sh doctor     # 第一次：檢查 git、Python、SSH
-bash macgyver.sh compare    # 比對本機套件與 GitHub：新增 / 修改 / 刪除 / 相同
-bash macgyver.sh            # 只上傳新增與修改、刪除雲端多餘檔案
-bash macgyver.sh stocks     # 每週股價與匯率（或 bash macgyver.sh schedule 自動排程）
+bash macgyver.sh doctor            # 第一次：檢查 git、Python、SSH、兩個倉庫與本機模型
+bash macgyver.sh compare           # 網站：新增 / 修改 / 刪除 / 相同（不上傳）
+bash macgyver.sh models-compare    # 模型：已存在 / 可引用 / 需上傳 / 將刪除（不上傳）
+bash upload-all.sh                 # 一鍵：網站＋模型
+bash macgyver.sh stocks            # 每週股價與匯率（或 bash macgyver.sh schedule 自動排程）
 ```
 
-比對原理、SSH 設定、保護付費內容與每週排程見 `docs/UPLOAD_SYNC_V12_ZH.md`。舊的 `update-and-upload.sh`、`push-updates.sh` 已移除；`publish-github.sh` 保留為內部匯出工具。
+GitHub Pages 由私人倉庫發布時，符合 GitHub 方案條件的預設網頁仍可公開觀看；隨頁面發布的教材亦可供訪客取得。模型分片保留在獨立私人倉庫，Pages 不會自動載入它們（要由私人倉庫供應，見 `docs/AI_MODELS_V12_ZH.md` 的 Cloudflare Worker 代理）。SSH 驗證可用 `ssh -T git@github.com` 測試；第一次連線須先核對 GitHub 官方主機指紋。
+
+比對原理、SSH 設定、保護付費內容與每週排程見 `docs/UPLOAD_SYNC_V12_ZH.md`。舊的 `update-and-upload.sh`、`push-updates.sh`（V12）與 `upload-github-ssh.sh`（V13）已移除；`publish-github.sh` 保留為內部匯出工具。
 
 GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish static MacGyver Academy** workflow，才會發布網站。`bash deploy-static.sh` 也可產生獨立 `github-pages/` 靜態資料夾。靜態課程可搭配瀏覽器 CPU AI；跨裝置帳號由設定的 Supabase 提供，伺服器 AI 須另設後端。
 
@@ -192,12 +190,14 @@ GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish sta
 | `tools/model-manifest.json` | 官方模型版本、檔名、大小、雜湊及授權 |
 | `portable/server.py` | Python／SQLite／伺服器 AI 可選後端 |
 | `app/api/`、`db/`、`drizzle/` | 原 Sites 代管後端 |
-| `build-offline.sh` / `rebuild-curriculum.sh` | 重建離線程式與整合課程 |
+| `build-offline.sh` / `rebuild-structures.sh` | 重建離線程式；重建橋樑與建築 100 門（V13） |
+| `rebuild-curriculum.sh` | 舊版各代課程重播（V12 原包起已無法完整跑完，僅供參考） |
 | `install-ai-models.sh` / `run-ai-llamacpp.sh` | 原生 CPU 權重下載與啟動 |
 | `run-ai-local.sh` / `.ps1` | Ollama 下載與本機網站啟動 |
-| `macgyver.sh` | V12 一鍵：比對雲端、只上傳差異、每週股價、模型上傳、排程 |
+| `upload-all.sh` / `macgyver.sh` | V13 一鍵：網站與模型都只上傳差異、刪除多餘檔案；比對、每週股價、排程 |
+| `tools/sync-v13/models_sync.py` | 私人模型倉庫比對、只傳新分片、還原、從華佗 ZIP 匯入 |
+| `tools/structures-v13/` / `tools/integrate-structures-v13.py` | 橋樑與建築 100 門原稿、驗證、產生與整合 |
 | `publish-github.sh` | 隔離 GitHub 匯出（由上傳工具內部使用） |
-| `upload-github-ssh.sh` | SSH 程式推送、分片權重續傳與驗證還原；詳見 `docs/GITHUB_SSH_UPLOAD_ZH.md` |
 | `public-player/` | 獨立靜態影片播放器 |
 | `docs/` | 部署、AI、帳號、內容界線及驗證說明 |
 

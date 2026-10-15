@@ -1,0 +1,310 @@
+{
+  "id": "b087",
+  "title": "大型玻璃肋結構安裝~Structural glass-fin installation",
+  "discipline": "st-facade-digital",
+  "family": "facade",
+  "focus": "以玻璃肋的面內彎曲、側向扭轉挫屈、膠合中間膜耦合與破損後承載，控制全玻璃立面的設計、吊裝與驗收~In-plane bending, lateral–torsional buckling, interlayer coupling and post-breakage capacity that govern the design, lifting and acceptance of all-glass façades",
+  "summary": "從全玻璃立面的風壓傳遞路徑出發，把面玻璃視為支承於玻璃肋之間的板，再把玻璃肋當作細長深梁檢核面內應力、撓度與側向扭轉挫屈，說明膠合中間膜、強化與熱浸處理、結構矽利康與埋入式金屬件的設計要點，最後處理長玻璃的運輸翻轉、頂部滑動接頭、實體試驗、熱應力與自爆風險，並以上海陸家嘴、曼谷 Iconsiam 與紐約第五大道蘋果直營店的公開工程資料比較不同做法。~Starting from the wind load path through an all-glass façade, treat the face glass as plates spanning between fins and each fin as a slender deep beam checked for in-plane stress, deflection and lateral–torsional buckling, then cover laminated interlayers, toughening and heat soaking, structural silicone and laminated-in metal fittings, and finally long-glass transport and tilting, sliding head joints, physical testing, thermal stress and spontaneous-breakage risk, comparing approaches through public engineering information on Apple Pudong in Shanghai, Apple Iconsiam in Bangkok and Apple Fifth Avenue in New York.",
+  "units": [
+    {
+      "anchor": "玻璃肋風壓分擔寬度~Fin tributary wind load",
+      "title": "全玻璃立面的風壓傳遞路徑~Wind load path through an all-glass façade",
+      "mechanism": "全玻璃立面沒有鋁或鋼豎框，面玻璃把風壓以板彎曲傳到兩側的玻璃肋，玻璃肋再以面內彎曲把荷重送到頂部與底部的主結構。玻璃肋垂直於立面放置，就像一支立起來的深梁：深度方向抵抗風壓彎矩，厚度方向卻很薄。面玻璃與玻璃肋通常以結構矽利康黏結，或以金屬夾具、埋入式金屬件連接；面玻璃的自重則多由底部墊塊或頂部吊掛承受，不經過矽利康。設計時要分清楚每一種荷重走哪一條路徑，否則某個看似次要的接合會意外承擔主要力量。~An all-glass façade has no aluminium or steel mullions: face glass carries wind pressure by plate bending to the fins on either side, and each fin carries the load by in-plane bending to the main structure at its top and bottom. A fin stands perpendicular to the façade like an upended deep beam, resisting the wind moment through its depth while being very thin through its thickness. Face glass and fins are usually joined with structural silicone, or with metal clamps and laminated-in fittings, while the self-weight of the face glass sits on setting blocks at the base or hangs from the head, not on the silicone. The designer must know which path each load takes, or a seemingly minor joint ends up carrying a major force.",
+      "model": "風壓 q = 1.5 kPa、肋間距（分擔寬度）b = 2.0 m，線荷重 w = q·b = 3.0 kN/m；簡支跨度 L = 10 m，彎矩 M = wL²/8 = 3.0×10²/8 = 37.5 kN·m。肋深 d = 550 mm、總厚 t = 3×15 = 45 mm，S = t·d²/6 = 45×550²/6 ≈ 2.27×10⁶ mm³，σ = M/S ≈ 16.5 MPa。數值為教學假設。~With wind pressure q = 1.5 kPa and fin spacing (tributary width) b = 2.0 m, the line load is w = q·b = 3.0 kN/m; for a simply supported span L = 10 m the moment is M = wL²/8 = 3.0×10²/8 = 37.5 kN·m. With fin depth d = 550 mm and total thickness t = 3×15 = 45 mm, S = t·d²/6 = 45×550²/6 ≈ 2.27×10⁶ mm³ and σ = M/S ≈ 16.5 MPa. Values are teaching assumptions.",
+      "verify": "以有限元素模型同時建立面玻璃、矽利康與玻璃肋，確認風壓分配到肋的比例與手算分擔寬度一致；檢查頂部與底部支承反力的方向與大小，並與主結構設計者確認這些反力已納入屋頂梁、樓板邊梁與錨栓的設計。~Model face glass, silicone and fins together in a finite-element analysis and confirm that the share of wind reaching each fin matches the hand tributary-width estimate; check the direction and magnitude of top and bottom support reactions, and confirm with the main-structure designer that these reactions are included in the design of roof beams, slab-edge beams and anchors.",
+      "failure": "若忽略角隅或開口處的分擔寬度變化，邊肋可能承受比中間肋高出許多的風壓；支承反力未傳達給主結構設計者時，屋頂梁可能因玻璃肋反力而過度變形，反過來把壓力推回玻璃。~Ignoring changes in tributary width at corners or openings can leave edge fins carrying much more wind than the middle fins; if support reactions never reach the main-structure designer, the roof beam may deflect excessively under fin reactions and push load back into the glass.",
+      "misconception": "全玻璃立面的玻璃肋只是裝飾，風壓主要由面玻璃自己承受。~Glass fins in an all-glass façade are decorative; the face glass carries the wind by itself.",
+      "practice": "設計初期就要繪出荷重路徑圖，分別標示風壓、自重、地震與溫度變形由哪些構件與接合承擔，並列出需要主結構配合的反力與位移限制，作為帷幕牆與結構兩方介面協調的依據。~Draw a load-path diagram early, marking which members and joints carry wind, self-weight, seismic and thermal movement, and list the reactions and movement limits the main structure must accommodate, as the basis for coordinating the façade–structure interface."
+    },
+    {
+      "anchor": "玻璃肋受壓自由邊~Fin compression free edge",
+      "title": "細長玻璃肋的側向扭轉挫屈~Lateral–torsional buckling of slender fins",
+      "mechanism": "玻璃肋的深厚比常超過 10，面內彎曲時受壓的那一條邊像一根細長壓桿，可能側向彎出並帶動整支肋扭轉，這就是側向扭轉挫屈。風壓與風吸使受壓邊在內側與外側之間交替：若受壓邊緊貼面玻璃並由矽利康連續拘束，挫屈長度大幅縮短；若受壓邊是室內側的自由邊，就只能靠肋本身的弱軸與扭轉勁度抵抗。玻璃是脆性材料，挫屈造成的附加應力會直接疊加在邊緣，常在達到彎曲強度前就破壞。~A glass fin often has a depth-to-thickness ratio above 10, so under in-plane bending its compressed edge behaves like a slender strut that can bow sideways and twist the whole fin, which is lateral–torsional buckling. Wind pressure and suction alternate the compressed edge between the inside and outside: if the compressed edge bears against face glass with continuous silicone restraint, the buckling length shrinks sharply; if it is the free inner edge, only the fin's own weak-axis and torsional stiffness resist. Glass is brittle, so the extra stress from buckling adds directly at the edge and often breaks the fin before its bending strength is reached.",
+      "model": "M_cr = C₁·(π/L)·√(E·I_z·G·I_t)。E = 70,000 MPa、G = 28,700 MPa、L = 10 m、C₁ = 1.13。整體作用（45 mm 單體）：I_z = 550×45³/12 ≈ 4.18×10⁶ mm⁴、I_t ≈ 1.58×10⁷ mm⁴，M_cr ≈ 129 kN·m；完全不耦合（3 片 15 mm 各自作用）時 I_z 與 I_t 都約降為 1/9，M_cr ≈ 14.6 kN·m，低於 37.5 kN·m 的需求。數值為教學假設。~M_cr = C₁·(π/L)·√(E·I_z·G·I_t). With E = 70,000 MPa, G = 28,700 MPa, L = 10 m and C₁ = 1.13: fully composite (45 mm monolithic) gives I_z = 550×45³/12 ≈ 4.18×10⁶ mm⁴, I_t ≈ 1.58×10⁷ mm⁴ and M_cr ≈ 129 kN·m; with no coupling (three 15 mm plies acting alone) both I_z and I_t fall to about 1/9 and M_cr ≈ 14.6 kN·m, below the 37.5 kN·m demand. Values are teaching assumptions.",
+      "verify": "以考慮初始彎曲（例如 L/300）與荷重作用高度的幾何非線性分析檢核挫屈，並分別計算受壓邊在室內側與室外側兩種情況；若依賴面玻璃的側向拘束，須證明矽利康的剪力勁度與耐久足以長期提供該拘束。~Check buckling with a geometrically nonlinear analysis that includes an initial bow (for example L/300) and the load-application height, for both the inner and outer edge in compression; if relying on lateral restraint from face glass, demonstrate that the silicone's shear stiffness and durability can provide that restraint for the life of the façade.",
+      "failure": "只檢核面內彎曲應力而忽略挫屈，風吸作用下室內自由邊受壓、側向彎出，玻璃肋在遠低於設計應力時突然破裂；若面玻璃隨後失去支承，整片立面可能連鎖掉落。~Checking only in-plane bending stress and ignoring buckling lets the free inner edge, compressed under suction, bow sideways so the fin breaks suddenly far below its design stress; if the face glass then loses its support, a whole bay can fall in sequence.",
+      "misconception": "玻璃肋只要彎曲應力低於玻璃強度，就不會失效。~A glass fin cannot fail as long as its bending stress is below the strength of glass.",
+      "practice": "長玻璃肋應在設計說明中寫明挫屈驗算假設（初始彎曲、耦合程度、側向拘束來源），並要求在受壓自由邊設置可檢查的側向支撐或加深斷面；任何取消拘束的變更都須重新驗算。~For long fins the design statement must record the buckling assumptions, namely initial bow, degree of coupling and source of lateral restraint, and require an inspectable lateral restraint or a deeper section on the compressed free edge; any change that removes restraint requires a new check."
+    },
+    {
+      "anchor": "膠合中間膜耦合~Laminate interlayer coupling",
+      "title": "膠合玻璃、中間膜與等效厚度~Laminated glass, interlayers and effective thickness",
+      "mechanism": "結構玻璃肋幾乎都是兩片以上的膠合玻璃，中間夾 PVB 或離子型（ionoplast）中間膜。面內彎曲時各片玻璃深度相同、共同變形，中間膜幾乎不影響強度；但弱軸彎曲、扭轉與挫屈時，各片能否像一塊厚板一起作用，取決於中間膜的剪力勁度，而這個勁度會隨溫度升高與荷重持續時間變長而急劇下降。因此陣風、長期風或日照高溫下的同一支肋，可能有完全不同的有效厚度。離子型中間膜在較高溫度下保有較高剪力勁度，也讓玻璃破裂後的殘餘承載較好。~Structural fins are almost always laminates of two or more plies with a PVB or ionoplast interlayer. Under in-plane bending all plies have the same depth and deform together, so the interlayer barely affects strength; but in weak-axis bending, torsion and buckling, whether the plies act as one thick plate depends on the interlayer's shear stiffness, which drops sharply with higher temperature and longer load duration. The same fin can therefore have very different effective thickness under a gust, a sustained wind or hot sunshine. Ionoplast interlayers keep more shear stiffness at higher temperatures and also give better residual capacity after the glass breaks.",
+      "model": "三片 15 mm 弱軸慣性矩：完全耦合 I = 550×45³/12 ≈ 4.18×10⁶ mm⁴；完全不耦合 I = 3×550×15³/12 ≈ 0.46×10⁶ mm⁴，比值 n² = 3² = 9。一片破裂後面內斷面模數降為 2/3：σ = 37.5×10⁶/(30×550²/6) ≈ 24.8 MPa，比完整時的 16.5 MPa 高 50%。數值為教學假設。~Weak-axis inertia of three 15 mm plies: fully coupled I = 550×45³/12 ≈ 4.18×10⁶ mm⁴; uncoupled I = 3×550×15³/12 ≈ 0.46×10⁶ mm⁴, a ratio n² = 3² = 9. With one ply broken the in-plane section modulus drops to 2/3: σ = 37.5×10⁶/(30×550²/6) ≈ 24.8 MPa, 50% above the intact 16.5 MPa. Values are teaching assumptions.",
+      "verify": "依 ASTM E1300、EN 16612 或 CEN/TS 19100 的等效厚度方法，分別以陣風、長期與高溫情境的中間膜剪力模數計算；要求中間膜廠商提供不同溫度與載重時間下的剪力模數資料，並以一片破裂的情境檢核殘餘承載與變形。~Compute effective thickness by the methods of ASTM E1300, EN 16612 or CEN/TS 19100 using interlayer shear moduli for gust, long-duration and high-temperature cases; require the interlayer manufacturer's shear-modulus data across temperature and load duration, and check residual capacity and deformation with one ply broken.",
+      "failure": "以室溫短時的中間膜勁度設計，夏季正午受日照的玻璃肋實際接近不耦合狀態，挫屈承載只剩設計值的一小部分；膠合品質不良的氣泡或邊緣脫層也會讓局部變成各片獨立作用。~Designing with room-temperature short-term interlayer stiffness means that a fin in summer midday sun is actually close to uncoupled, leaving only a fraction of the design buckling capacity; bubbles or edge delamination from poor laminating make plies act separately in those zones.",
+      "misconception": "膠合玻璃的強度永遠等於同總厚度的單片玻璃。~A laminated pane is always as strong and stiff as a monolithic pane of the same total thickness.",
+      "practice": "規範要寫明中間膜種類、厚度、溫度與載重時間對應的設計剪力模數，以及一片破裂時的殘餘承載要求；玻璃廠須提交膠合製程紀錄與抽樣檢驗，替換中間膜品牌須經結構設計者重新驗算。~The specification must state interlayer type, thickness and design shear moduli for each temperature and load duration, plus the residual-capacity requirement with one ply broken; the glass processor must submit laminating records and sample tests, and any change of interlayer brand needs re-checking by the structural designer."
+    },
+    {
+      "anchor": "結構矽利康與埋入金屬件~Structural silicone and embedded fittings",
+      "title": "面玻璃接合、矽利康咬合寬與金屬件~Face-glass joints, silicone bite and metal fittings",
+      "mechanism": "面玻璃與玻璃肋的接合有兩大做法：以結構矽利康連續黏結，讓風壓沿整條邊均勻傳遞；或以螺栓、夾具與膠合入玻璃的金屬件集中傳力。矽利康柔軟、可吸收溫差與微小變位，但設計應力很低，咬合寬度與厚度都要計算；螺栓孔則會在孔緣造成應力集中，必須以襯套、墊片與強化玻璃處理。膠合入玻璃的金屬件讓力量分散到中間膜與多片玻璃，減少外露夾具與鑽孔數量，是近年大型玻璃結構的重要發展。~Face glass joins fins in two main ways: continuous structural silicone bonding, which transfers wind evenly along the whole edge, or bolts, clamps and laminated-in metal fittings that transfer it at points. Silicone is soft and absorbs thermal and small movements, but its design stress is very low, so bite and thickness must be calculated; bolt holes concentrate stress at the hole edge and need bushings, liners and toughened glass. Metal fittings laminated into the glass spread force through the interlayer and several plies, reducing exposed clamps and drilled holes, an important recent development in large glass structures.",
+      "model": "兩邊支承面玻璃每邊承受 q·b/2 = 1.5×2.0/2 = 1.5 kN/m；矽利康風載設計應力取 138 kPa（20 psi），咬合寬 = 1.5 kN/m ÷ 138 kPa ≈ 10.9 mm，取 12 mm。若肋間距改為 2.5 m，所需咬合寬約 13.6 mm。風壓值為教學假設。~Face glass supported on two edges carries q·b/2 = 1.5×2.0/2 = 1.5 kN/m per edge; with a silicone wind design stress of 138 kPa (20 psi), the bite = 1.5 kN/m ÷ 138 kPa ≈ 10.9 mm, specified as 12 mm. If fin spacing becomes 2.5 m, the bite needed is about 13.6 mm. The wind values are teaching assumptions.",
+      "verify": "依 ASTM C1401 原則提交矽利康相容性與附著試驗報告（以實際玻璃鍍膜、間隔條與清潔劑做試驗），確認咬合寬與膠縫厚度；金屬件與螺栓接合則要求原型件載重試驗，記錄破壞模式與承載，並與計算的孔緣應力比較。~Following ASTM C1401 principles, submit silicone compatibility and adhesion test reports made with the actual glass coatings, spacers and cleaners, and confirm bite and joint thickness; for metal fittings and bolted joints require prototype load tests recording failure mode and capacity, compared with the calculated hole-edge stresses.",
+      "failure": "矽利康咬合寬不足或與鍍膜不相容時，膠縫在數年後逐漸脫黏，面玻璃在強風吸力下外移甚至脫落；螺栓孔未設襯套，金屬與玻璃直接接觸，孔緣在溫度循環與振動下產生裂紋。~If the silicone bite is too small or incompatible with the coating, the joint gradually debonds over a few years and face glass moves outward or even detaches under strong suction; bolt holes without bushings put metal in direct contact with glass, and the hole edge cracks under thermal cycling and vibration.",
+      "misconception": "結構矽利康越厚、塗得越多，接合就越安全。~The thicker and more generous the structural silicone, the safer the joint.",
+      "practice": "矽利康施作須在可控的工廠或現場淨化條件下進行，每批記錄清潔、底漆、混合比與蝴蝶試驗或斷膠試驗結果；所有金屬件與螺栓接合都要有可讀的扭力或預壓紀錄，並避免金屬直接接觸玻璃。~Silicone work must be done under controlled shop or clean site conditions, with each batch recording cleaning, priming, mix ratio and butterfly or snap test results; every fitting and bolted joint needs a readable torque or preload record, and metal must never touch glass directly."
+    },
+    {
+      "anchor": "長玻璃翻轉與吊裝~Long-glass tilting and lifting",
+      "title": "長尺寸玻璃的運輸、翻轉與吊裝~Transport, tilting and lifting of long glass",
+      "mechanism": "十公尺以上的玻璃肋與面玻璃需要特殊運輸架、吊具與現場動線；玻璃最脆弱的時刻往往不是使用期，而是平放、翻轉與吊起的過程。玻璃肋平放時以弱軸受自重彎曲，與設計時的強軸受力完全不同，若支點位置不當，搬運應力可能接近風壓設計應力；邊緣碰撞造成的小缺口更是日後破裂的起點。因此吊裝計畫要指定支點位置、翻轉方式（立式運輸架或翻轉架）、吸盤或夾具配置、風速限制與每一步的停止條件。~Fins and face panels longer than ten metres need special transport frames, lifting gear and site routes; glass is often most vulnerable not in service but while lying flat, being tilted and being lifted. A fin lying flat bends under its own weight about the weak axis, completely unlike its strong-axis design loading, and with poorly placed supports the handling stress can approach the wind design stress; small chips from edge impact become the origin of later breakage. The lifting plan must therefore specify support positions, the tilting method (upright transport frame or tilting frame), vacuum-pad or clamp layout, wind-speed limits and stop conditions for every step.",
+      "model": "肋自重 w = 0.55×0.045×25 kN/m³ ≈ 0.62 kN/m，10 m 重約 6.2 kN（約 630 kg）。平放兩點支承於距端 0.207L 時 M ≈ 0.0214wL² = 0.0214×0.62×10² ≈ 1.32 kN·m。弱軸 S：整體 550×45²/6 ≈ 186,000 mm³，σ ≈ 7.1 MPa；不耦合 3×550×15²/6 ≈ 61,900 mm³，σ ≈ 21.4 MPa，乘動力係數 1.3 約 27.8 MPa。數值為教學假設。~Fin self-weight w = 0.55×0.045×25 kN/m³ ≈ 0.62 kN/m, so a 10 m fin weighs about 6.2 kN (about 630 kg). Lying flat on two supports 0.207L from the ends, M ≈ 0.0214wL² = 0.0214×0.62×10² ≈ 1.32 kN·m. Weak-axis S: composite 550×45²/6 ≈ 186,000 mm³ gives σ ≈ 7.1 MPa; uncoupled 3×550×15²/6 ≈ 61,900 mm³ gives σ ≈ 21.4 MPa, about 27.8 MPa with a 1.3 dynamic factor. Values are teaching assumptions.",
+      "verify": "吊裝計畫須附每一搬運狀態（平放、翻轉、吊升、就位）的應力計算、吊具與吸盤額定荷重與安全係數、風速上限與停止條件，由帷幕牆工程師與起重負責人共同簽認；每支玻璃進場時目視檢查邊緣與膠合品質並拍照建檔。~The lifting plan must include stress calculations for each handling state (flat, tilting, hoisting, placing), lifting-gear and vacuum-pad ratings and safety factors, wind-speed limits and stop conditions, signed jointly by the façade engineer and the lifting supervisor; inspect and photograph every pane's edges and laminate on arrival.",
+      "failure": "把長玻璃肋平放在中央單點或兩端支點上搬運，弱軸彎曲加上車輛振動足以讓玻璃開裂；翻轉時邊緣碰到地面或鋼構造成貝殼狀崩邊，安裝時看不出，數月後在風壓或溫差下自邊緣破裂。~Carrying a long fin flat on a single central support or on supports at its ends lets weak-axis bending plus vehicle vibration crack it; during tilting an edge that strikes the ground or steelwork suffers a shell chip invisible at installation that later starts a crack under wind or thermal stress months afterwards.",
+      "misconception": "玻璃肋在使用期的受力最大，吊裝過程的應力可以忽略。~A glass fin sees its highest stresses in service, so handling stresses can be ignored.",
+      "practice": "吊裝屬高風險作業，每一次大型玻璃吊裝都要有經核准的吊裝計畫、試吊與停止點，由起重負責人與帷幕牆工程師在現場確認後才能進行；玻璃以立式運輸架運送並全程保護邊緣。~Lifting is high-risk work: every major glass lift needs an approved lifting plan, a trial lift and hold points, and proceeds only after the lifting supervisor and façade engineer confirm on site; glass travels in upright transport frames with its edges protected throughout."
+    },
+    {
+      "anchor": "頂部滑動接頭~Sliding head joint",
+      "title": "安裝順序、公差與主結構變位~Installation sequence, tolerances and structural movement",
+      "mechanism": "玻璃肋安裝的關鍵是讓它只承擔設計中的荷重，而不被主結構的變形「擠壓」。屋頂梁在活載重、雪或溫度下會上下變位，若玻璃肋頂部固定死，就會被當成柱子受壓；因此常見做法是底部固定、頂部只傳遞水平力並允許垂直滑動，或改為頂部吊掛、底部滑動，讓玻璃處於受拉。安裝順序通常是先定位支座、立起並調整玻璃肋垂直度，再裝面玻璃、最後施打矽利康，每一步都要量測累積公差。~The key to fin installation is that the fin carries only its design loads and is never squeezed by deformation of the main structure. A roof beam moves vertically under live load, snow or temperature; a fin fixed rigidly at its head would be loaded as a column, so the usual approach fixes the base and lets the head transfer horizontal force while sliding vertically, or hangs the fin from the head with a sliding base so the glass is in tension. The normal sequence is to set the shoes, stand and plumb the fins, install face glass and finally apply silicone, measuring the accumulated tolerance at every step.",
+      "model": "屋頂梁跨度 18 m、活載重撓度限制 L/360：δ = 18,000/360 = 50 mm；加上安裝公差 ±10 mm，頂部滑動接頭的垂直行程至少 50 + 10 = 60 mm。若接頭被卡死，10 m 玻璃肋需承受迫使梁減少撓度的軸壓，遠超過設計。數值為教學假設。~For an 18 m roof beam with a live-load deflection limit of L/360, δ = 18,000/360 = 50 mm; adding ±10 mm installation tolerance, the sliding head joint needs at least 50 + 10 = 60 mm of vertical travel. If the joint jams, the 10 m fin must take the axial compression needed to stop the beam deflecting, far beyond its design. Values are teaching assumptions.",
+      "verify": "安裝時以全站儀或雷射量測每支玻璃肋的垂直度、間距與面外偏差，記錄於逐支檢查表；頂部滑動接頭在打矽利康前檢查行程、潤滑與止動，並確認臨時固定件已全部拆除，由監造簽認後才進行下一階段。~During installation survey each fin's plumb, spacing and out-of-plane deviation with a total station or laser and record them on a fin-by-fin checklist; before siliconing, check the sliding head joint's travel, lubrication and stops, and confirm all temporary fixings are removed, signed off by the supervising engineer before the next stage.",
+      "failure": "施工時為了方便而以點焊或螺栓暫時固定頂部滑動接頭，完工後忘記拆除；第一次大雪或屋頂設備加載時，屋頂梁下垂把玻璃肋壓裂。底部墊塊位置錯誤也會讓面玻璃自重偏心，造成角隅應力集中。~A sliding head joint temporarily tack-welded or bolted for convenience and never released lets the roof beam, sagging under the first heavy snow or rooftop equipment, crush the fin; setting blocks in the wrong position put the face glass's weight off-centre and concentrate stress at the corners.",
+      "misconception": "玻璃肋上下兩端都固定得越牢，立面就越穩定。~The more rigidly a fin is fixed at both ends, the more stable the façade.",
+      "practice": "介面圖應標示主結構在各荷重下的預估變位與滑動接頭的設計行程，並在安裝程序中設「臨時固定件拆除確認」停止點；屋頂後續增設設備或改變用途，須由結構設計者確認不超過玻璃肋的容許變位。~Interface drawings must show predicted main-structure movements under each load and the design travel of sliding joints, with a hold point in the installation procedure confirming removal of temporary fixings; any later rooftop equipment or change of use needs the structural designer to confirm that fin movement limits are not exceeded."
+    },
+    {
+      "anchor": "實尺寸玻璃肋載重試驗~Full-scale fin load test",
+      "title": "實尺寸試驗與撓度比對~Full-scale testing and deflection comparison",
+      "mechanism": "玻璃結構的計算對邊界條件、中間膜耦合與接合剛度非常敏感，因此大型玻璃肋常以實尺寸樣品做載重試驗：在試驗架上以分級靜載重或氣壓箱施加設計風壓與超載，量測撓度、側向位移與殘餘變形，並在破壞試驗中觀察裂紋起點與破裂後行為。實測撓度若明顯大於計算，表示支承鬆動、耦合不足或接合滑移，必須在量產前找出原因。~Glass calculations are very sensitive to boundary conditions, interlayer coupling and joint stiffness, so large fins are often load-tested at full scale: on a test rig, staged static loads or a pressure chamber apply design wind and overload while deflection, lateral displacement and residual set are measured, and destructive tests reveal where cracks start and how the fin behaves after breakage. A measured deflection clearly above the calculation points to loose supports, insufficient coupling or joint slip, which must be explained before production.",
+      "model": "強軸撓度 δ = 5wL⁴/(384EI)，I = 45×550³/12 ≈ 6.24×10⁸ mm⁴，w = 3.0 N/mm、L = 10,000 mm：δ = 5×3.0×10¹⁶/(384×70,000×6.24×10⁸) ≈ 8.9 mm（約 L/1,120）；150% 試驗載重時預估 13.4 mm。若實測 16.0 mm，表觀勁度只有 13.4/16.0 ≈ 84%。數值為教學假設。~Strong-axis deflection δ = 5wL⁴/(384EI) with I = 45×550³/12 ≈ 6.24×10⁸ mm⁴, w = 3.0 N/mm and L = 10,000 mm: δ = 5×3.0×10¹⁶/(384×70,000×6.24×10⁸) ≈ 8.9 mm (about L/1,120); at a 150% test load the prediction is 13.4 mm. A measured 16.0 mm means the apparent stiffness is only 13.4/16.0 ≈ 84%. Values are teaching assumptions.",
+      "verify": "試驗計畫事先定義載重分級、保持時間、量測點（中央撓度、受壓邊側向位移、支承滑移）與允收準則，例如設計載重下撓度不超過計算值一定比例、卸載後殘餘變形小於規定值、無裂紋；破壞試驗後檢查破裂片是否仍由中間膜保持在原位。~Define in advance the load steps, hold times, measurement points (mid-span deflection, lateral movement of the compressed edge, support slip) and acceptance criteria, such as deflection at design load within a set margin of the calculation, residual set below a stated limit after unloading and no cracks; after a destructive test check that broken fragments are still held in place by the interlayer.",
+      "failure": "試驗只量中央撓度而沒有量受壓邊的側向位移，挫屈前兆被忽略；或試驗樣品的支承比現場更剛硬，試驗合格但現場勁度不足，實際立面在強風時明顯晃動並有破裂風險。~Measuring only mid-span deflection and not the lateral movement of the compressed edge misses the warning signs of buckling; a test rig with stiffer supports than the site lets the sample pass while the real façade lacks stiffness, swaying visibly in strong wind with a risk of breakage.",
+      "misconception": "玻璃強度在試驗室已有大量數據，大型玻璃肋不需要再做實尺寸試驗。~Glass strength is well documented, so large fins need no full-scale testing.",
+      "practice": "試驗樣品的玻璃、中間膜、金屬件與支承要與量產相同，並由獨立試驗室執行、設計者到場見證；試驗結果與計算差異超過預定範圍時，須修正模型或細部後重新試驗，不能以「安全係數夠大」帶過。~Test samples must use the production glass, interlayer, fittings and supports, tested by an independent laboratory with the designer witnessing; if results differ from calculation beyond the agreed range, correct the model or details and retest rather than relying on a large safety factor."
+    },
+    {
+      "anchor": "玻璃邊緣品質與熱應力~Glass edge quality and thermal stress",
+      "title": "現場檢查：邊緣、熱應力與光學品質~Site inspection: edges, thermal stress and optical quality",
+      "mechanism": "玻璃破裂幾乎都從邊緣或孔緣開始，因此現場檢查的重點是邊緣：研磨等級、崩邊、刮傷與接觸金屬。局部遮陽、室內暖氣出風口或深色貼紙會讓同一片玻璃中央與邊緣溫差擴大，在邊緣產生拉應力；未強化或邊緣受損的玻璃最容易因熱應力破裂。強化玻璃還要檢查應力分布是否均勻（以偏光觀察）與輥筒波紋等光學缺陷，後者雖不影響安全，卻常是業主驗收爭議的來源。~Glass breakage almost always starts at an edge or hole, so site inspection concentrates on edges: grinding grade, chips, scratches and metal contact. Partial shading, heating outlets or dark films widen the temperature difference between the centre and edge of a pane and create edge tension; untoughened glass or damaged edges are most prone to thermal breakage. Toughened glass is also checked for uniform stress distribution by polarised viewing and for optical defects such as roller wave, which do not affect safety but often cause acceptance disputes with the owner.",
+      "model": "熱應力 σ ≈ E·α·ΔT。E = 70,000 MPa、α = 9×10⁻⁶ /K、中央與遮陰邊緣溫差 ΔT = 30 K：σ ≈ 70,000×9×10⁻⁶×30 ≈ 18.9 MPa，已接近未強化玻璃受損邊緣的允許應力；若 ΔT 增為 40 K，σ ≈ 25.2 MPa。數值為教學假設。~Thermal stress σ ≈ E·α·ΔT. With E = 70,000 MPa, α = 9×10⁻⁶ /K and a 30 K difference between the sunlit centre and shaded edge: σ ≈ 70,000×9×10⁻⁶×30 ≈ 18.9 MPa, close to the allowable stress of a damaged annealed edge; with ΔT = 40 K, σ ≈ 25.2 MPa. Values are teaching assumptions.",
+      "verify": "每片玻璃進場與安裝後以目視與放大鏡檢查邊緣，記錄崩邊大小與位置並對照允收標準；以熱應力分析檢查遮陽、暖氣與貼膜配置；強化玻璃以偏光片抽查應力分布，光學品質依合約約定的觀看距離與角度判定。~Inspect every pane's edges visually and with a magnifier on arrival and after installation, recording chip size and position against the acceptance standard; check shading, heating and film layouts with a thermal-stress analysis; spot-check toughened glass with polarising filters, and judge optical quality at the viewing distance and angle stated in the contract.",
+      "failure": "安裝時被金屬工具碰出的小崩邊未被記錄，冬季清晨室內暖氣直吹玻璃下緣、上半部仍冰冷，溫差使邊緣拉應力超過受損邊緣強度而破裂；業主事後貼深色隔熱膜也可能讓原本安全的玻璃熱裂。~A small chip from a metal tool during installation goes unrecorded, then on a winter morning heating blows on the lower edge while the upper part is still cold and the edge tension exceeds the damaged edge's strength; a dark solar film added later by the owner can also crack glass that was originally safe.",
+      "misconception": "玻璃破裂一定是因為風壓或撞擊過大。~Glass always breaks because of excessive wind or impact.",
+      "practice": "竣工文件要列出禁止事項（例如未經評估不得貼膜、不得在玻璃附近加裝出風口），並規定玻璃清潔與維修時使用不傷邊緣的工具；所有崩邊紀錄與更換紀錄都要納入維護資料庫。~Completion documents must list prohibitions, such as no films and no new air outlets near the glass without assessment, and require cleaning and maintenance tools that cannot damage edges; all chip and replacement records go into the maintenance database."
+    },
+    {
+      "anchor": "硫化鎳自爆風險~Nickel-sulphide breakage risk",
+      "title": "自爆、熱浸處理與長期耐久~Spontaneous breakage, heat soaking and long-term durability",
+      "mechanism": "強化玻璃內若含硫化鎳雜質，雜質在常溫下會緩慢相變並體積膨脹，數年後可能讓玻璃在沒有外力的情況下突然破裂，這就是自爆。熱浸處理（如 EN 14179）把強化後的玻璃加熱並保持一段時間，讓含雜質的玻璃在工廠先破，以降低現場自爆機率，但無法完全消除。玻璃肋若為強化玻璃，自爆一片就要靠其餘玻璃與中間膜承擔；長期而言，中間膜邊緣受潮脫層、矽利康老化與金屬件腐蝕也會削弱接合。~If toughened glass contains a nickel-sulphide inclusion, the inclusion slowly changes phase and expands at ambient temperature, and years later the glass may shatter with no external load, which is spontaneous breakage. Heat soaking, for example to EN 14179, reheats toughened glass and holds it at temperature so that affected panes break in the factory, reducing but not eliminating the site risk. In a toughened-glass fin one broken ply must be carried by the remaining plies and interlayer; in the long term, moisture delamination at interlayer edges, silicone ageing and corrosion of fittings also weaken the joints.",
+      "model": "若每片未熱浸強化玻璃的使用期自爆機率取 p = 0.1%，120 片中至少一片自爆的機率 = 1 − (1 − 0.001)¹²⁰ ≈ 11.3%；熱浸處理使 p 降為 0.01% 時，機率約 1.2%。數值為教學假設，不代表任何產品或標準的統計值。~If each non-heat-soaked toughened pane has a lifetime spontaneous-breakage probability p = 0.1%, the chance that at least one of 120 panes breaks is 1 − (1 − 0.001)¹²⁰ ≈ 11.3%; if heat soaking lowers p to 0.01%, the chance is about 1.2%. Values are teaching assumptions, not statistics for any product or standard.",
+      "verify": "要求玻璃廠提交每批熱浸處理的爐溫紀錄與保溫時間，並在玻璃上留可追溯的標記；使用期定期檢查玻璃肋的破裂、中間膜邊緣脫層與白化、矽利康硬化或龜裂、金屬件鏽蝕與螺栓鬆動，以照片與量測結果和竣工基準比較。~Require furnace temperature records and dwell times for every heat-soak batch and traceable marks on each pane; in service inspect fins periodically for breakage, interlayer edge delamination and clouding, silicone hardening or cracking, corrosion of fittings and loose bolts, comparing photographs and measurements with the completion baseline.",
+      "failure": "結構玻璃肋全部採用未熱浸的強化玻璃且未考慮一片破裂的殘餘承載，一次自爆就可能讓整支肋失去承載，面玻璃隨之鬆脫；中間膜邊緣長期浸水造成脫層，耦合降低而增加挫屈風險。~Using non-heat-soaked toughened glass throughout the fins without checking residual capacity after one ply breaks means a single spontaneous breakage can disable a whole fin and release the face glass; long-term water at interlayer edges causes delamination, reducing coupling and increasing buckling risk.",
+      "misconception": "熱浸處理後的強化玻璃就完全不會自爆。~Heat-soaked toughened glass can never break spontaneously.",
+      "practice": "結構玻璃肋至少應採多片膠合並以一片破裂作為設計情境，外層用半強化或熱浸強化玻璃；維護手冊要寫明破裂後的緊急隔離範圍、臨時支撐方式與更換程序，並由帷幕牆工程師判定是否可繼續開放使用。~Structural fins should be multi-ply laminates designed for the one-ply-broken case, with heat-strengthened or heat-soaked toughened outer plies; the maintenance manual must state the emergency exclusion zone, temporary support and replacement procedure after breakage, with the façade engineer deciding whether the area can stay open."
+    },
+    {
+      "anchor": "更換路徑與竣工紀錄~Replacement route and records",
+      "title": "更換計畫、簡化接合與竣工交接~Replacement planning, simplified joints and handover",
+      "mechanism": "大型玻璃肋的設計壽命可達數十年，但必須預期至少一次更換：自爆、撞擊或改裝都可能需要拆下單支肋或單片面玻璃。更換時玻璃肋是結構構件，拆除前需臨時支撐面玻璃並傳遞風壓，因此設計時就要預留吊點、運輸路徑與替換玻璃的尺寸限制。紐約第五大道蘋果直營店的玻璃立方體在 2011 年改建時，以更少、更大的玻璃單元與更少的接合件取代原版，正說明減少接合數量能同時降低維護與更換的工作量。~Large fins can have a design life of decades, but at least one replacement must be expected: spontaneous breakage, impact or alteration may require a single fin or face pane to come out. Because the fin is structural, the face glass must be temporarily supported and its wind load carried before removal, so pick points, access routes and replacement-size limits must be planned in the design. When the glass cube at Apple Fifth Avenue in New York was rebuilt in 2011, fewer and larger glass units with fewer fixings replaced the original, showing how reducing the number of joints also cuts maintenance and replacement work.",
+      "model": "第五大道蘋果直營店玻璃立方體：2006 年版 164 片玻璃單元、250 個主要接合件；2011 年版 15 片玻璃單元、40 個接合件。接合件減少 (250 − 40)/250 = 84%，玻璃單元減少 (164 − 15)/164 ≈ 91%。若每個接合件年檢 0.5 小時，年檢工時由 125 小時降為 20 小時。檢查工時為教學假設。~Apple Fifth Avenue glass cube: the 2006 version had 164 glass units and 250 primary fixings; the 2011 version had 15 units and 40 fixings. Fixings fell by (250 − 40)/250 = 84% and glass units by (164 − 15)/164 ≈ 91%. At 0.5 hours of annual inspection per fixing, annual inspection drops from 125 to 20 hours. The inspection hours are teaching assumptions.",
+      "verify": "交接前以實際演練或詳細程序書確認單支玻璃肋可被更換：臨時支撐方式、吊點、吊具與運輸路徑尺寸、替換玻璃的交期；竣工資料要包含逐片玻璃的規格、熱浸紀錄、中間膜批號、試驗報告與安裝量測紀錄。~Before handover confirm by trial or detailed method statement that a single fin can be replaced: temporary support, pick points, lifting gear, access-route dimensions and replacement-glass lead time; completion records must include each pane's specification, heat-soak record, interlayer batch, test reports and installation survey.",
+      "failure": "設計時沒有考慮更換路徑，完工後周邊加建或室內裝修封住運輸動線，一片十公尺以上的玻璃破裂後無法運入，只能長期以臨時板封閉；缺少逐片紀錄也使業主無法向供應商追查同批玻璃的風險。~Without a planned replacement route, later surrounding construction or fit-out blocks the access, so a broken pane over ten metres long cannot be brought in and the opening stays boarded for a long time; without pane-by-pane records the owner cannot trace the risk of other panes from the same batch.",
+      "misconception": "玻璃結構完工後不會再更換，因此不必保留吊點與運輸路徑。~A glass structure will never be replaced, so pick points and access routes need not be kept.",
+      "practice": "交接文件應包含更換程序、臨時支撐設計、緊急隔離範圍、備品清單與玻璃供應商資訊；任何周邊改建或內裝變更若影響吊裝路徑，須經帷幕牆顧問評估並由業主核准。~Handover must include the replacement procedure, temporary-support design, emergency exclusion zone, spares list and glass supplier details; any surrounding alteration or fit-out that affects the lifting route needs assessment by the façade consultant and the owner's approval."
+    }
+  ],
+  "example": "設計練習：某展示廳全玻璃立面高 10 m，玻璃肋間距 2.0 m，設計風壓 1.5 kPa，肋為 3×15 mm 膠合強化玻璃、深 550 mm，上下簡支。線荷重 w = 1.5×2.0 = 3.0 kN/m，M = wL²/8 = 3.0×10²/8 = 37.5 kN·m；S = 45×550²/6 ≈ 2.27×10⁶ mm³，σ ≈ 16.5 MPa；一片破裂後 σ ≈ 24.8 MPa。撓度 δ = 5wL⁴/(384EI) ≈ 8.9 mm（約 L/1,120）。挫屈：完全耦合 M_cr ≈ 129 kN·m，安全比 129/37.5 ≈ 3.4；完全不耦合 M_cr ≈ 14.6 kN·m，比值只有 0.39，不足，因此必須以面玻璃與矽利康拘束受壓邊、改用高剪力勁度中間膜，或加深斷面。若把肋深加到 650 mm，I_z 與 I_t 約按深度比增加，不耦合 M_cr 約為 14.6×650/550 ≈ 17.3 kN·m，仍不足，說明挫屈主要靠厚度與耦合而非深度解決。矽利康咬合寬 = 1.5 kN/m ÷ 138 kPa ≈ 10.9 mm，取 12 mm。數值為教學假設，不代表任何實際建築的設計。~Design exercise: a showroom has a 10 m high all-glass façade with fins at 2.0 m centres, design wind 1.5 kPa, and fins of 3×15 mm laminated toughened glass, 550 mm deep and simply supported top and bottom. Line load w = 1.5×2.0 = 3.0 kN/m and M = wL²/8 = 3.0×10²/8 = 37.5 kN·m; S = 45×550²/6 ≈ 2.27×10⁶ mm³, so σ ≈ 16.5 MPa, rising to about 24.8 MPa with one ply broken. Deflection δ = 5wL⁴/(384EI) ≈ 8.9 mm (about L/1,120). Buckling: fully coupled M_cr ≈ 129 kN·m, a ratio of 129/37.5 ≈ 3.4; uncoupled M_cr ≈ 14.6 kN·m, a ratio of only 0.39, which fails, so the compressed edge must be restrained by face glass and silicone, a stiffer interlayer used, or the section changed. Deepening the fin to 650 mm raises I_z and I_t roughly in proportion to depth, so uncoupled M_cr becomes about 14.6×650/550 ≈ 17.3 kN·m, still inadequate, showing that buckling is solved mainly by thickness and coupling rather than depth. Silicone bite = 1.5 kN/m ÷ 138 kPa ≈ 10.9 mm, specified as 12 mm. Values are teaching assumptions, not the design of any real building.",
+  "history": "以玻璃肋穩定大片玻璃立面的做法，在 1975 年完工的英國伊普斯威奇 Willis Faber & Dumas 總部等作品中受到廣泛注意，懸吊玻璃以角隅夾具與玻璃肋連接，讓立面幾乎沒有金屬框。此後強化與膠合技術、離子型中間膜與膠合入玻璃的金屬件逐步成熟，2000 年代起蘋果直營店把結構玻璃推向十公尺以上的單片尺寸：上海陸家嘴店以約 13 m 高的單片曲面玻璃與通高玻璃肋組成圓筒，第五大道店的玻璃立方體在 2011 年以更少的玻璃單元與接合件重建。歐洲則在 2021 年發布 CEN/TS 19100，將玻璃結構設計納入規範體系。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Stabilising large glass façades with glass fins drew wide attention through works such as the Willis Faber & Dumas headquarters in Ipswich, completed in 1975, where suspended glass was connected by corner patch fittings and glass fins so that the façade had almost no metal frame. Toughening and laminating, ionoplast interlayers and laminated-in metal fittings then matured, and from the 2000s Apple stores pushed structural glass to single pieces over ten metres long: the Pudong store in Shanghai formed a cylinder from single curved panels about 13 m tall with full-height glass fins, and the Fifth Avenue glass cube was rebuilt in 2011 with far fewer glass units and fixings. In 2021 Europe published CEN/TS 19100, bringing glass structural design into the code framework. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "上海陸家嘴蘋果直營店玻璃圓筒高約 13 m、半徑約 5 m，以單片 13 m 曲面膠合強化玻璃與通高玻璃肋構成~Apple Pudong's glass cylinder is about 13 m tall with a 5 m radius, built from single 13 m curved laminated toughened panels and full-height glass fins",
+    "曼谷 Iconsiam 蘋果直營店河岸立面有 18 片高 10.6 m 的平板玻璃，每隔一條接縫以結構矽利康黏結一支玻璃肋~Apple Iconsiam's riverfront façade has 18 flat panels 10.6 m tall, with a fin bonded by structural silicone at every other joint",
+    "第五大道蘋果直營店玻璃立方體 2006 年版有 164 片玻璃單元與 250 個主要接合件，2011 年版減為 15 片與 40 個~The Apple Fifth Avenue cube had 164 glass units and 250 primary fixings in 2006, reduced to 15 units and 40 fixings in 2011",
+    "香港廣東道蘋果直營店立面玻璃約 14 m 高、2.6 m 寬，以中間樓板水平支撐而不設垂直玻璃豎框~Apple Canton Road's façade panels are about 14 m tall and 2.6 m wide, propped from the intermediate floor without vertical glass mullions",
+    "Willis Faber & Dumas 總部於 1975 年完工，1991 年列為英國一級登錄建築~The Willis Faber & Dumas headquarters was completed in 1975 and Grade I listed in 1991",
+    "鈉鈣玻璃彈性模數約 70 GPa、密度約 2,500 kg/m³、熱膨脹係數約 9×10⁻⁶ /K~Soda-lime glass has an elastic modulus of about 70 GPa, density about 2,500 kg/m³ and thermal expansion about 9×10⁻⁶ /K",
+    "結構矽利康風載設計應力常取 138 kPa（20 psi）~Structural silicone is commonly designed for wind at 138 kPa (20 psi)",
+    "三片等厚玻璃完全不耦合時，弱軸慣性矩只有完全耦合的 1/9~Three equal plies with no coupling have only 1/9 of the fully coupled weak-axis inertia"
+  ],
+  "timeline": [
+    {
+      "year": "1975",
+      "event": "英國伊普斯威奇 Willis Faber & Dumas 總部完工，懸吊玻璃立面以玻璃肋與夾具穩定~The Willis Faber & Dumas headquarters in Ipswich is completed with a suspended glass façade stabilised by fins and fittings"
+    },
+    {
+      "year": "2006",
+      "event": "第五大道蘋果直營店第一代玻璃立方體以 164 片玻璃單元建成~The first Apple Fifth Avenue glass cube is built from 164 glass units"
+    },
+    {
+      "year": "2011",
+      "event": "第五大道玻璃立方體以 15 片玻璃單元與 40 個接合件重建~The Fifth Avenue cube is rebuilt with 15 glass units and 40 fixings"
+    },
+    {
+      "year": "2018",
+      "event": "曼谷 Iconsiam 蘋果直營店開幕，10.6 m 立面玻璃以矽利康黏結玻璃肋支撐~Apple Iconsiam opens in Bangkok with 10.6 m façade panels supported by silicone-bonded fins"
+    },
+    {
+      "year": "2021",
+      "event": "歐洲標準化委員會發布 CEN/TS 19100 玻璃結構設計技術規範~CEN publishes the CEN/TS 19100 technical specifications for the design of glass structures"
+    }
+  ],
+  "codes": [
+    "ASTM E1300：建築玻璃承載能力判定~ASTM E1300: Standard practice for determining load resistance of glass in buildings",
+    "CEN/TS 19100-3：面內受力玻璃構件與其機械接合設計~CEN/TS 19100-3: Design of in-plane loaded glass components and their mechanical joints",
+    "EN 14449、EN 12150 與 EN 14179：膠合玻璃、強化玻璃與熱浸強化玻璃~EN 14449, EN 12150 and EN 14179: laminated, thermally toughened and heat-soaked toughened glass",
+    "ASTM C1401：結構矽利康玻璃安裝指南~ASTM C1401: Standard guide for structural sealant glazing"
+  ],
+  "landmarks": [
+    "上海陸家嘴蘋果直營店~Apple Pudong, Shanghai",
+    "曼谷 Iconsiam 蘋果直營店~Apple Iconsiam, Bangkok",
+    "紐約第五大道蘋果直營店~Apple Fifth Avenue, New York",
+    "伊普斯威奇 Willis Faber & Dumas 總部~Willis Faber & Dumas headquarters, Ipswich"
+  ],
+  "place": {
+    "name": "上海陸家嘴蘋果直營店玻璃圓筒~Apple Pudong glass cylinder",
+    "country": "中國~China",
+    "lat": 31.2366,
+    "lng": 121.5018,
+    "query": "Apple Lujiazui Shanghai glass cylinder"
+  },
+  "sources": [
+    {
+      "key": "eoc-apple-pudong",
+      "title": "Eckersley O'Callaghan：上海陸家嘴蘋果直營店結構玻璃",
+      "titleEn": "Eckersley O'Callaghan: Apple Pudong structural glass",
+      "publisher": "Eckersley O'Callaghan",
+      "url": "https://www.eocengineers.com/projects/apple-pudong-109/",
+      "sourceType": "primary",
+      "scope": "結構工程師的專案頁，說明 13 m 單片曲面玻璃、通高玻璃肋與膠合入玻璃的接合件；不含設計計算。",
+      "scopeEn": "Structural engineer's project page describing 13 m single curved panels, full-height glass fins and laminated-in fittings; no design calculations."
+    },
+    {
+      "key": "eoc-apple-iconsiam",
+      "title": "Eckersley O'Callaghan：曼谷 Iconsiam 蘋果直營店玻璃立面",
+      "titleEn": "Eckersley O'Callaghan: Apple Iconsiam glass façade",
+      "publisher": "Eckersley O'Callaghan",
+      "url": "https://www.eocengineers.com/projects/apple-iconsiam-388/",
+      "sourceType": "primary",
+      "scope": "說明 10.6 m 平板玻璃、每隔一條接縫以結構矽利康黏結玻璃肋的面外支撐方式與開幕時間。",
+      "scopeEn": "Describes 10.6 m flat panels, out-of-plane support by fins silicone-bonded at every other joint, and the opening date."
+    },
+    {
+      "key": "eoc-apple-fifth-avenue",
+      "title": "Eckersley O'Callaghan：第五大道蘋果直營店玻璃立方體",
+      "titleEn": "Eckersley O'Callaghan: Apple Fifth Avenue glass cube",
+      "publisher": "Eckersley O'Callaghan",
+      "url": "https://www.eocengineers.com/projects/apple-fifth-avenue-445/",
+      "sourceType": "primary",
+      "scope": "比較 2006 與 2011 年版立方體的玻璃單元與接合件數量，以及膠合入玻璃的金屬件發展；課程工時為教學假設。",
+      "scopeEn": "Compares glass-unit and fixing counts of the 2006 and 2011 cubes and the development of laminated-in fittings; course inspection hours are teaching assumptions."
+    },
+    {
+      "key": "eoc-apple-canton-road",
+      "title": "Eckersley O'Callaghan：香港廣東道蘋果直營店立面",
+      "titleEn": "Eckersley O'Callaghan: Apple Canton Road façade",
+      "publisher": "Eckersley O'Callaghan",
+      "url": "https://www.eocengineers.com/projects/apple-canton-road-308/",
+      "sourceType": "primary",
+      "scope": "說明 14 m 立面玻璃以樓板水平支撐取代垂直玻璃豎框的對照做法。",
+      "scopeEn": "Describes 14 m façade panels propped from the floor instead of vertical glass mullions, as a contrasting approach."
+    },
+    {
+      "key": "wiki-willis-building",
+      "title": "維基百科：伊普斯威奇 Willis 大樓（英文）",
+      "titleEn": "Wikipedia: Willis Building, Ipswich",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Willis_Building,_Ipswich",
+      "sourceType": "secondary",
+      "scope": "建築完工年份、玻璃帷幕外觀與登錄等級的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of completion date, glass curtain-wall exterior and listing grade for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "seele",
+      "nameEn": "seele",
+      "business": "德國立面工程專業公司，從規劃、工程到安裝承作全玻璃立面、鋼與玻璃系統與可動立面。",
+      "businessEn": "German façade specialist delivering all-glass façades, steel-and-glass systems and movable façades from planning and engineering to installation.",
+      "url": "https://seele.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "大型結構玻璃加工與安裝的公開案例",
+      "roleEn": "Public examples of large structural-glass processing and installation"
+    },
+    {
+      "name": "Eckersley O'Callaghan",
+      "nameEn": "Eckersley O'Callaghan",
+      "business": "結構與立面工程顧問，以結構玻璃、膠合入玻璃的接合件與零售旗艦店玻璃結構聞名。",
+      "businessEn": "Structural and façade engineering consultancy known for structural glass, laminated-in connections and flagship retail glass structures.",
+      "url": "https://www.eocengineers.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "玻璃肋、長尺寸玻璃與接合件設計的公開專案說明",
+      "roleEn": "Public project descriptions of fins, long glass and connection design"
+    },
+    {
+      "name": "AGC（旭硝子）",
+      "nameEn": "AGC Inc.",
+      "business": "日本玻璃與材料集團，生產建築平板玻璃、膠合與強化等加工玻璃。",
+      "businessEn": "Japanese glass and materials group producing architectural float glass and processed laminated and toughened glass.",
+      "url": "https://www.agc.com/en/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "5201",
+        "exchange": "TSE",
+        "currency": "JPY"
+      },
+      "role": "建築玻璃材料、加工與性能資料的來源",
+      "roleEn": "Source of architectural glass materials, processing and performance data"
+    }
+  ],
+  "related": [
+    "b088",
+    "b090"
+  ],
+  "architectureNodes": [
+    [
+      "面玻璃",
+      "Face glass"
+    ],
+    [
+      "結構矽利康與接合件",
+      "Structural silicone and fittings"
+    ],
+    [
+      "膠合玻璃肋",
+      "Laminated glass fin"
+    ],
+    [
+      "頂部滑動接頭與底座",
+      "Sliding head joint and base shoe"
+    ],
+    [
+      "主結構屋頂梁與樓板",
+      "Main-structure roof beam and slab"
+    ],
+    [
+      "試驗與維護紀錄",
+      "Testing and maintenance records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      0,
+      5
+    ]
+  ]
+}

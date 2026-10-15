@@ -1,0 +1,314 @@
+{
+  "id": "b075",
+  "title": "建築施工階段結構分析~Construction-stage structural analysis",
+  "discipline": "st-tall-systems",
+  "family": "tower",
+  "focus": "依真實施工順序逐步啟動構件、荷重與材料齡期，找出臨時狀態的控制內力、變形與接合時機~Activating members, loads and material age in the real construction order to find governing forces, deformations and connection timing in temporary states",
+  "summary": "完工結構的分析假設所有構件同時存在、荷重一次加上，但真實建築是一層層長出來的：混凝土在年輕時就被加載、接頭在不同時間鎖定、支撐被逐步拆除，許多內力在施工中被「鎖入」並留到營運期。本課從一次加載的誤差、施工期風荷載與早齡期材料、接頭狀態與溫差，到由上而下開挖、核心領先、監測回饋、接合前位移監測、鎖入應力與營運中改造，以中央電視台總部、碎片大廈、樂天世界塔與威利斯大樓的公開做法為例。~Analysis of a completed structure assumes all members exist at once and loads arrive in one step, but real buildings grow floor by floor: concrete is loaded young, joints are locked at different times, shores are removed in stages, and many forces are locked in during construction and remain in service. The course moves from the error of one-step loading, construction-period wind and early-age materials, joint states and temperature differences, to top-down excavation, core lead, monitoring feedback, pre-closure movement monitoring, locked-in stresses and alterations in occupied buildings, drawing on public practice at CCTV Headquarters, The Shard, Lotte World Tower and Willis Tower.",
+  "units": [
+    {
+      "anchor": "一次加載與逐層加載~One-step versus staged loading",
+      "title": "一次加載模型的假想內力~Fictitious forces from one-step loading",
+      "mechanism": "一次加載模型把整棟樓的重力同時施加在完整結構上，柱與核心的縮短從底到頂連續累積，頂部差異最大；但實際施工時，每一層都是在下方已經變形之後才依設計標高施作，早期的縮短已被「歸零」。結果一次加載模型會在高樓層的樓板梁、外伸臂與轉換構件中算出實際上不存在的大內力，而低估中段的內力；在混合系統中甚至會讓內力方向相反。施工階段分析依真實順序逐步啟動構件與荷重，才能得到正確的內力與變形。~A one-step model applies the whole building's gravity load to the complete structure at once, so column and core shortening accumulates continuously from bottom to top with the largest difference at the roof; in real construction each floor is built to its design level after the structure below has already deformed, so earlier shortening is reset to zero. A one-step model therefore computes large forces in upper-floor beams, outriggers and transfers that do not exist and underestimates mid-height forces, and in hybrid systems can even reverse their sign. Construction-stage analysis activates members and loads in the real order to obtain correct forces and deformations.",
+      "model": "兩端固定梁一端相對沉陷 δ 的端彎矩 M = 6EIδ/L²。E = 200 GPa、I = 5×10⁻⁴ m⁴、L = 12 m：若一次加載模型在頂層算出柱與核心差異 δ = 20 mm，M = 6×200×10⁶×5×10⁻⁴×0.020/144 ≈ 83 kN·m；分階段分析顯示頂層差異接近 0，這個彎矩其實是假想的。數值為教學假設。~A fixed-ended beam with relative end settlement δ has end moment M = 6EIδ/L². With E = 200 GPa, I = 5×10⁻⁴ m⁴ and L = 12 m, a one-step model showing a column–core difference δ = 20 mm at the roof gives M = 6×200×10⁶×5×10⁻⁴×0.020/144 ≈ 83 kN·m; staged analysis shows a difference near zero at the roof, so this moment is fictitious. Values are teaching assumptions.",
+      "verify": "同時建立一次加載與分階段兩個模型，比較各層樓板梁端彎矩、外伸臂軸力與柱—核心差異縮短的分布，確認差異集中的樓層；再用手算的逐層加載公式抽查一兩個樓層的結果。~Build both a one-step and a staged model and compare beam-end moments, outrigger forces and column–core differential shortening floor by floor to identify where differences concentrate; spot-check one or two floors with a hand storey-by-storey loading formula.",
+      "failure": "若以一次加載結果設計，高樓層連接梁可能被過度加大，中段卻配筋不足而開裂；外伸臂的設計力可能被錯估數倍，導致接頭過大或不足。~Designing from one-step results can oversize upper-floor link beams while leaving mid-height ones under-reinforced and cracked, and can misjudge outrigger design forces several-fold, making joints too large or too small.",
+      "misconception": "只要完工狀態的模型正確，施工順序不會影響構件內力。~If the completed-state model is right, construction sequence does not affect member forces.",
+      "practice": "超過一定高度或含外伸臂、轉換構件的建築，設計規範中應要求提送施工階段分析報告，並由結構工程師說明採用的施工順序、速度與材料時間函數假設。~For buildings above a set height or with outriggers or transfer structures, require a construction-stage analysis report in which the structural engineer states the assumed sequence, speed and time functions of the materials."
+    },
+    {
+      "anchor": "施工期風荷載回歸期~Return period for construction-phase wind",
+      "title": "施工期的臨時狀態荷載~Loads in temporary construction states",
+      "mechanism": "施工期的結構和完工狀態不同：外牆尚未封閉、外伸臂還沒鎖定、樓板沒有全部澆置，但同時又承受模板、材料堆放、塔吊與施工活載。EN 1991-1-6 等規範允許依施工期長短採用較短的回歸期風速，因為暴露時間較短；但短回歸期只適用於確實能在期限內完成的狀態，對於會持續一年以上的未完成狀態仍須採用完工設計的回歸期。施工階段分析必須逐一列出這些臨時狀態與其荷載組合。~The structure during construction differs from the completed one: façades are open, outriggers unlocked and floors partly cast, while formwork, stored material, cranes and construction live loads act on it. Codes such as EN 1991-1-6 allow a shorter return period for wind according to the duration of each phase, because exposure is shorter; the shorter period applies only to states that will genuinely end within that time, and incomplete states lasting more than a year must use the completed-design return period. Construction-stage analysis must list each temporary state with its load combination.",
+      "model": "EN 1991-1-4 風速機率修正 c_prob = [(1 − K·ln(−ln(1 − p)))/(1 − K·ln(−ln 0.98))]^n，K = 0.2、n = 0.5。施工期一年內取 10 年回歸期（p = 0.1）：c_prob ≈ 0.902，風壓比 c_prob² ≈ 0.81；3 個月內取 5 年（p = 0.2）：c_prob ≈ 0.855，風壓比 ≈ 0.73。數值為公式示範。~EN 1991-1-4 gives the probability factor c_prob = [(1 − K·ln(−ln(1 − p)))/(1 − K·ln(−ln 0.98))]^n with K = 0.2 and n = 0.5. For a phase within one year using a 10-year return period (p = 0.1), c_prob ≈ 0.902 and the pressure ratio c_prob² ≈ 0.81; for three months using 5 years (p = 0.2), c_prob ≈ 0.855 and the pressure ratio ≈ 0.73. Values illustrate the formula.",
+      "verify": "施工階段分析報告應附臨時狀態清單：每個狀態的持續時間、採用回歸期、外牆封閉程度造成的風壓係數、塔吊與堆料荷重，並說明若工期延誤超過假設時間時的處置方式。~The construction-stage report should attach a list of temporary states giving each one's duration, return period used, wind pressure coefficients for the degree of enclosure, crane and storage loads, and what happens if delays extend a state beyond its assumed duration.",
+      "failure": "若以短回歸期設計某個臨時狀態，但工期延誤使它跨越颱風或冬季風暴季節，實際風荷載可能明顯超過設計，造成臨時支撐或未完成構件破壞。~Designing a temporary state for a short return period and then letting delays carry it through a typhoon or winter storm season can expose it to wind clearly above its design value and fail temporary bracing or incomplete members.",
+      "misconception": "施工期間的風荷載可以一律打折，因為只是暫時狀態。~Construction-phase wind loads can always be reduced because the state is temporary.",
+      "practice": "臨時狀態的持續時間假設應寫進施工計畫並追蹤；任何延誤使狀態超過假設期間時，由臨時工程設計者重新核算並決定是否補強，這是明確的停留點。~Write the assumed duration of each temporary state into the construction plan and track it; whenever delay pushes a state beyond its assumed period, the temporary-works designer must recheck and decide on strengthening, as a defined hold point."
+    },
+    {
+      "anchor": "早齡期混凝土加載~Loading young concrete",
+      "title": "材料時間函數：加載齡期與潛變~Material time functions: loading age and creep",
+      "mechanism": "高樓施工週期常為每三到七天一層，柱與核心牆在混凝土僅數天到數週大時就開始承受上方樓層的荷重。年輕混凝土的模數較低、潛變較大：同樣的應力，早期加載的構件會產生較大的立即變形與長期潛變。施工階段分析因此必須為每一段構件記錄澆置日期與加載時間，以時間函數計算模數與潛變係數，而不是對全樓使用單一的 28 天材料性質。~Tall buildings often rise at one floor every three to seven days, so columns and core walls start carrying the floors above when the concrete is only days or weeks old. Young concrete has a lower modulus and creeps more: under the same stress, members loaded early deform more immediately and creep more over time. Construction-stage analysis must therefore record each segment's casting date and loading time and compute modulus and creep coefficient from time functions, instead of using single 28-day properties for the whole building.",
+      "model": "ACI 209 加載齡期修正（濕養護）β_la = 1.25·t_la^−0.118。t_la = 7 天時 β_la ≈ 0.994，t_la = 28 天時 β_la ≈ 0.844，7 天加載的潛變係數約為 28 天加載的 1.18 倍；3 天加載時 β_la ≈ 1.098，約 1.30 倍。數值為公式示範。~ACI 209's loading-age factor for moist curing is β_la = 1.25·t_la^−0.118. At t_la = 7 days β_la ≈ 0.994 and at 28 days β_la ≈ 0.844, so loading at 7 days gives a creep coefficient about 1.18 times that of loading at 28 days; loading at 3 days gives β_la ≈ 1.098, about 1.30 times. Values illustrate the formula.",
+      "verify": "以現場澆置紀錄建立每段構件的齡期資料庫，與分析模型的施工階段對應；以同期養護試體測定早齡期強度與模數，必要時做早齡期加載的潛變試驗，校正模型中的時間函數。~Build an age database for every member segment from site pour records and map it to the analysis stages; measure early-age strength and modulus on field-cured specimens and, if needed, run creep tests loaded at early age to calibrate the model's time functions.",
+      "failure": "若模型以 28 天性質代表全部構件，會低估施工中的變形與潛變，補償值與鎖定時機都會偏差；若施工速度在後期大幅加快，加載齡期變短，實際縮短也會超出原預測。~Representing all members with 28-day properties underestimates construction deformations and creep, skewing compensation values and locking times; if construction speeds up greatly later, loading ages shorten and real shortening exceeds the original prediction.",
+      "misconception": "混凝土的材料性質用 28 天強度一個數值就足以描述。~A single 28-day strength fully describes concrete for analysis.",
+      "practice": "施工速度變更（例如由每週一層改為每四天一層）須通知結構工程師評估對加載齡期與縮短預測的影響；分析模型應能直接讀入實際澆置日期重算。~Any change in construction speed, for example from one floor a week to one every four days, must be reported to the structural engineer to assess the effect on loading age and shortening, and the analysis model should be able to rerun directly from actual pour dates."
+    },
+    {
+      "anchor": "接合時的兩塔溫差~Temperature difference at tower closure",
+      "title": "接頭狀態與溫差：兩塔接合~Joint states and temperature: joining two towers",
+      "mechanism": "施工階段分析中，同一個接頭在不同階段可能是開放、鉸接或剛接。最極端的例子是兩棟獨立塔樓在高處接合：接合前兩塔各自受日照、風與重力而移動，接合後它們變成一個連續結構，接合瞬間的相對位移與溫度差會被永久鎖入。Arup 說明中央電視台總部兩座傾斜塔樓在早晨約 8 點、鋼材溫度最均勻時接合，接合前監測了五天的整體與相對位移，並在安裝前最後調整連接構件長度，接合必須在幾分鐘內完成。~In construction-stage analysis the same joint may be open, pinned or rigid at different stages. The extreme case is two separate towers joined high up: before closure each tower moves under sun, wind and gravity, and after closure they act as one continuous structure, permanently locking in the relative displacement and temperature difference at the moment of joining. Arup explains that the two leaning towers of CCTV Headquarters were joined at about 8 am when the steel was at its most uniform temperature, after five days of monitoring global and relative movements, with final adjustment of the link members' length before installation and the connection made within minutes.",
+      "model": "溫差造成的長度差 ΔL = αLΔT。塔高 L = 160 m、α = 12×10⁻⁶ /°C：受日照一側與背陰一側溫差 ΔT = 10 °C 時 ΔL = 12×10⁻⁶×160,000×10 ≈ 19.2 mm；若在午後溫差最大時接合，這 19.2 mm 會被鎖入連接構件，夜間冷卻後轉成拉壓力。數值為教學假設。~Temperature-induced length difference is ΔL = αLΔT. For towers L = 160 m tall with α = 12×10⁻⁶ /°C, a 10 °C difference between sunlit and shaded sides gives ΔL = 12×10⁻⁶×160,000×10 ≈ 19.2 mm; joining in the afternoon at maximum difference would lock these 19.2 mm into the link members, becoming tension or compression as they cool at night. Values are teaching assumptions.",
+      "verify": "接合前連續數日以全站儀或衛星定位監測兩塔頂部與接合點的三維位移，同步記錄鋼材溫度，建立位移與溫度的關係，找出溫度最均勻的時段；以分析模型預測該時段的間隙，並決定連接構件的最終長度。~For several days before closure, monitor three-dimensional movements of both tower tops and the joint with total stations or satellite positioning while logging steel temperatures, establish the movement–temperature relationship and identify when temperatures are most uniform; use the analysis model to predict the gap at that time and set the final length of the link members.",
+      "failure": "若在溫差大的時段強行接合，或連接構件長度沒有依實測調整，鎖入的附加力可能使連接構件或其接頭在第一個冬季或夏季就達到設計容量，甚至開裂。~Forcing closure when temperature differences are large, or failing to adjust link lengths to measurements, can lock in additional forces that bring the link members or their joints to design capacity, or crack them, in the first winter or summer.",
+      "misconception": "兩個結構在任何時間接合，結果都一樣。~Joining two structures gives the same result whatever the time of joining.",
+      "practice": "大型合龍或接合作業應有專門的接合計畫：監測期間、溫度與位移的允許窗口、連接構件的可調範圍、作業時間上限與中止條件，由結構工程師現場確認後才可施作。~Major closures need a dedicated closure plan defining the monitoring period, permissible temperature and movement window, adjustment range of link members, maximum working time and abort criteria, executed only after on-site confirmation by the structural engineer."
+    },
+    {
+      "anchor": "由上而下開挖的分階段土壓~Staged earth pressure in top-down excavation",
+      "title": "地下開挖的分階段分析~Staged analysis of basement excavation",
+      "mechanism": "地下室開挖是最典型的施工階段問題：擋土牆在每個開挖深度下的受力與變形都不同，支撐（臨時支撐或已完成的樓板）加入的時間決定了牆體在後續階段的彎矩分布。碎片大廈採用由上而下施工，以地下室樓板作為擋土牆的剛性支撐，同時讓核心筒向上施作，設計者並以有限元素分析預測鄰近基礎設施的位移。分析必須逐階段開挖、逐階段加入支撐，並把牆體在前一階段已發生的變形帶入下一階段。~Basement excavation is the classic construction-stage problem: the retaining wall's forces and deflections differ at every excavation depth, and when props, whether temporary struts or completed floor slabs, are installed determines the wall's moment distribution in later stages. The Shard used top-down construction with basement slabs propping the wall stiffly while the core rose, and its designers used finite-element analysis to predict movements of adjacent infrastructure. The analysis must excavate stage by stage, add props stage by stage, and carry the deflection already incurred into the next stage.",
+      "model": "三角形土壓合力 P = ½Kγ H²。K = 0.5、γ = 20 kN/m³：開挖到 H = 6 m 時 P = 0.5×0.5×20×36 = 180 kN/m；若支撐尚未加入就挖到 H = 12 m，P = 720 kN/m，為 4 倍，且牆體懸臂彎矩隨 H³ 增加約 8 倍。數值為教學假設，未計水壓。~The resultant of triangular earth pressure is P = ½Kγ H². With K = 0.5 and γ = 20 kN/m³, excavating to H = 6 m gives P = 0.5×0.5×20×36 = 180 kN/m; digging to H = 12 m before the next prop gives P = 720 kN/m, four times as much, and the wall's cantilever moment grows with H³, about eight times. Values are teaching assumptions excluding water pressure.",
+      "verify": "每個開挖階段結束時比較擋土牆傾斜管實測變形與分析預測，並量測支撐軸力（應變計或荷重計）；任一階段的實測超過預測的警戒比例時，暫停下一階段開挖並由大地與結構工程師重新評估。~At the end of each excavation stage compare inclinometer deflections of the wall with the analysis and measure prop forces with strain gauges or load cells; if any stage exceeds the warning fraction of the prediction, stop the next stage until geotechnical and structural engineers reassess.",
+      "failure": "若現場為了趕工超挖、在支撐加入前多挖一層，牆體懸臂高度增加，彎矩與變形急遽上升，可能造成牆體開裂、背後地表下陷與鄰近設施損壞。~Over-excavating to save time, digging one more level before the prop goes in, increases the wall's cantilever height so moment and deflection rise sharply, risking wall cracking, ground subsidence behind it and damage to neighbouring assets.",
+      "misconception": "擋土牆只要依最終開挖深度設計，就能涵蓋所有施工階段。~A retaining wall designed for the final excavation depth automatically covers every construction stage.",
+      "practice": "開挖計畫須明訂每階段允許的最大開挖深度與支撐加入時機，任何超挖都屬不符合事項；每階段的開挖許可由臨時工程設計者依監測結果簽發。~The excavation plan must define the maximum depth for each stage and when props are installed, treating any over-excavation as a nonconformance; the temporary-works designer issues the permit for each stage based on monitoring results."
+    },
+    {
+      "anchor": "核心領先高度~Core lead height",
+      "title": "核心領先樓板時的臨時穩定~Temporary stability while the core leads",
+      "mechanism": "許多高樓以爬模或滑模讓混凝土核心筒領先周邊樓板數層到十多層，以便鋼構與樓板隨後跟上。領先段是一根沒有樓板側撐的懸臂，承受風力、爬模系統與塔吊荷重，基部彎矩隨領先高度平方增加。施工階段分析需檢核領先段在施工期風速下的牆體拉應力、連梁與爬模錨定，並與預定的領先距離上限比較；同時，周邊樓板尚未完成時，核心與外框之間的差異變形也在累積。~Many towers use climbing or slip forms to keep the concrete core several to more than ten floors ahead of the perimeter floors so steel and slabs can follow. The leading segment is a cantilever without floor bracing, carrying wind, the climbing system and crane loads, and its base moment grows with the square of the lead height. Construction-stage analysis must check wall tension, coupling beams and form anchorage in the leading segment under construction-phase wind against the planned maximum lead, while differential deformation between core and frame keeps accumulating before the perimeter floors are complete.",
+      "model": "領先段基部彎矩 M = wL²/2。核心寬 25 m、施工期風壓 1.2 kPa，w = 30 kN/m：領先 L = 40 m（約 10 層）時 M = 30×40²/2 = 24,000 kN·m；領先 60 m 時 M = 54,000 kN·m，增加 2.25 倍。數值為教學假設，未計爬模與塔吊荷重。~The base moment of the leading segment is M = wL²/2. For a 25 m wide core under 1.2 kPa construction-phase wind, w = 30 kN/m: a 40 m lead (about 10 floors) gives M = 30×40²/2 = 24,000 kN·m, and a 60 m lead gives M = 54,000 kN·m, 2.25 times more. Values are teaching assumptions excluding form and crane loads.",
+      "verify": "施工計畫中列出允許的最大領先層數，並在每次爬升前確認實際領先距離；以施工階段模型檢核領先段在施工期風速下的牆應力與連梁剪力，必要時在領先段內增設臨時橫撐或加快樓板施作。~List the maximum permitted lead in the construction plan and confirm the actual lead before every climb; check wall stresses and coupling-beam shear in the leading segment under construction-phase wind with the staged model, adding temporary struts inside the lead or accelerating floors if needed.",
+      "failure": "若鋼構或樓板因供料延誤而落後，核心領先距離不斷擴大卻沒有人重新檢核，強風時領先段牆體可能開裂或爬模錨定失效，嚴重時危及爬模平台上的人員。~If steel or slab work falls behind because of supply delays and the lead keeps growing without a recheck, a strong wind can crack the leading walls or fail the form anchors, endangering workers on the climbing platform.",
+      "misconception": "核心筒是最堅固的部分，領先多少層都沒有問題。~The core is the strongest element, so it can lead by any number of floors.",
+      "practice": "把「最大核心領先距離」列為施工控制參數，每週回報實際值；超過上限時暫停爬升，直到結構工程師核准臨時措施或樓板追上。~Make maximum core lead a construction control parameter reported weekly; when it exceeds the limit, stop climbing until the structural engineer approves temporary measures or the floors catch up."
+    },
+    {
+      "anchor": "日照熱彎曲修正~Correction for solar thermal bowing",
+      "title": "施工測量的溫度效應修正~Temperature correction of construction surveys",
+      "mechanism": "高樓在日照下一側受熱伸長、背陰側較冷，整棟樓會像雙金屬片一樣彎向背陰側，頂部在一天中的水平移動可達數十毫米。施工中以測量控制核心筒垂直度與樓板座標時，若在日照強烈時放樣，量到的是被熱彎曲扭曲的位置；施工階段分析的預測值則多半不含日照效應。因此測量與分析比對時必須在一致的溫度條件下（例如清晨）讀數，或以溫度量測修正。~Under sunshine one side of a tower heats and lengthens while the shaded side stays cooler, so the building bows toward the shade like a bimetallic strip, and the top can move tens of millimetres horizontally during the day. If core verticality and floor coordinates are set out during strong sunshine, the survey records a position distorted by thermal bowing, while construction-stage predictions usually exclude solar effects. Surveys must therefore be compared with analysis under consistent temperature conditions, for example at dawn, or corrected using temperature measurements.",
+      "model": "溫差造成的曲率 κ = αΔT/B，懸臂頂部位移 Δ = κH²/2。α = 12×10⁻⁶ /°C、兩側溫差 ΔT = 15 °C、寬 B = 30 m：κ = 6.0×10⁻⁶ /m；H = 150 m 時 Δ = 6.0×10⁻⁶×150²/2 ≈ 67.5 mm。數值為教學假設。~Temperature difference produces curvature κ = αΔT/B and a cantilever top displacement Δ = κH²/2. With α = 12×10⁻⁶ /°C, ΔT = 15 °C between faces and width B = 30 m, κ = 6.0×10⁻⁶ /m, so at H = 150 m Δ = 6.0×10⁻⁶×150²/2 ≈ 67.5 mm. Values are teaching assumptions.",
+      "verify": "在核心牆兩側埋設溫度計，在施工期間定時記錄；控制性測量安排在日出前後溫度最均勻時進行，或同時讀取溫度並依熱彎曲公式修正；以連續數日的測量建立溫度—位移關係，檢驗修正方法。~Embed thermometers on opposite faces of the core and log them regularly; schedule control surveys around sunrise when temperatures are most uniform, or read temperatures simultaneously and correct with the bowing formula; establish the temperature–displacement relationship over several days to validate the correction.",
+      "failure": "若在午後放樣並以此修正核心筒的「傾斜」，等於把可逆的熱彎曲當成永久偏差而去補償，結果在夜間核心反而偏向另一側，誤差逐層累積。~Setting out in the afternoon and correcting the core's apparent lean treats reversible thermal bowing as a permanent error; at night the core then leans the other way and the error accumulates floor by floor.",
+      "misconception": "全站儀量到的座標就是結構的真實永久位置。~Coordinates read by a total station are the structure's true permanent position.",
+      "practice": "測量規範應規定控制測量的時段、溫度記錄方式與修正程序，並要求測量團隊把讀數時間與溫度一併交給結構工程師，供與施工階段分析比較。~The survey specification should fix control-survey times, temperature recording and correction procedures, and require surveyors to pass reading times and temperatures to the structural engineer for comparison with the construction-stage analysis."
+    },
+    {
+      "anchor": "接合前位移監測窗口~Pre-closure movement window",
+      "title": "以監測資料決定接合條件~Setting closure conditions from monitoring data",
+      "mechanism": "施工階段分析能預測接合時的間隙，但真實結構的溫度、風與施工荷重都在變動，所以接合條件最終要由監測資料決定。做法是在接合前連續數日量測間隙與溫度，統計間隙在預定時段的平均值與變異，再與連接構件的可調範圍比較；只有當變異在可調範圍內，才能保證在作業窗口內完成接合而不鎖入過大的力。中央電視台總部在接合前即進行了五天的位移監測，並在安裝前最後調整構件長度。~Construction-stage analysis predicts the gap at closure, but real temperature, wind and construction loads keep changing, so closure conditions must ultimately come from monitoring data. Gaps and temperatures are measured continuously for several days, the mean and scatter of the gap during the planned window are computed and compared with the adjustment range of the link members; only if the scatter fits within that range can closure be completed in the window without locking in excessive force. At CCTV Headquarters five days of movement monitoring preceded the closure, with final adjustment of member lengths before installation.",
+      "model": "以 ±2σ 估算接合時段間隙變化：若五天清晨時段實測間隙平均 42 mm、標準差 σ = 4 mm，則 95% 範圍約 42 ± 8 mm（34 至 50 mm）。連接構件可調範圍 ±10 mm 時可涵蓋；若 σ 增為 6 mm，±12 mm 已超出，需要縮短作業窗口或改在更穩定的時段。數值為教學假設。~Estimate the gap variation in the closure window as ±2σ: if five days of dawn readings average 42 mm with standard deviation σ = 4 mm, the 95% range is about 42 ± 8 mm (34 to 50 mm). A link adjustment range of ±10 mm covers it; if σ grows to 6 mm, ±12 mm exceeds it, so the window must be shortened or moved to a more stable period. Values are teaching assumptions.",
+      "verify": "監測報告須列出每日間隙、溫度、風速與施工荷重狀態，計算預定時段的統計值並與分析預測比較；接合當天再以即時量測確認間隙落在允許範圍內，記錄實際接合時間、溫度與構件最終長度。~The monitoring report must list daily gaps, temperatures, wind speed and construction-load state, compute statistics for the planned window and compare with analysis predictions; on closure day confirm by live measurement that the gap is within limits and record the actual time, temperature and final member lengths.",
+      "failure": "若只依分析預測決定構件長度而不做監測，實際間隙偏離時只能以強制拉合或切割補焊處理，前者鎖入大力，後者在高空增加焊接缺陷風險。~Setting member lengths from analysis alone without monitoring leaves only forced pulling or cutting and re-welding if the real gap differs; the first locks in large forces and the second adds weld-defect risk at height.",
+      "misconception": "分析模型預測的接合間隙足夠精確，不需要現場監測。~The closure gap predicted by the analysis model is precise enough without site monitoring.",
+      "practice": "接合作業的放行條件以書面列出：統計間隙範圍、溫度窗口、最大風速與現場人員配置，由結構工程師與施工主管共同簽署，任何條件不符即延期。~Write down the release conditions for closure, covering the statistical gap range, temperature window, maximum wind speed and crew arrangements, signed jointly by the structural engineer and construction manager, and postpone if any condition is not met."
+    },
+    {
+      "anchor": "非複合與複合階段的鎖入應力~Locked-in stress from non-composite and composite stages",
+      "title": "鎖入應力的記錄與交接~Recording and handing over locked-in stresses",
+      "mechanism": "許多構件在施工中經歷不同的結構狀態：鋼梁先獨自承受濕混凝土，混凝土硬化後才與樓板形成複合斷面承受後加荷重；支撐拆除的順序也決定荷重由誰承擔。各階段的應力會疊加並保留下來，這就是鎖入應力。若營運期改造只用完工後的複合斷面重新分析，會低估既有應力。樂天世界塔的設計者延後外伸臂最終接合、威利斯大樓改造時以三維模型規劃拆除順序，都是在管理鎖入狀態。~Many members pass through different structural states during construction: a steel beam first carries wet concrete alone, and only after hardening does it act compositely with the slab for later loads, while the order of shore removal decides which members pick up load. Stresses from each stage add up and remain, which is locked-in stress. If a later alteration re-analyses only the completed composite section, existing stresses are underestimated. Delaying the final outrigger connections at Lotte World Tower and planning the demolition sequence with a three-dimensional model at Willis Tower are both ways of managing locked-in states.",
+      "model": "鋼梁 L = 15 m：施工階段濕混凝土 w₁ = 20 kN/m 由鋼斷面承受，M₁ = 562.5 kN·m，S_s = 3.0×10⁻³ m³，σ₁ = 187.5 MPa；複合後加荷重 w₂ = 15 kN/m，M₂ ≈ 421.9 kN·m，S_c = 5.0×10⁻³ m³，σ₂ ≈ 84.4 MPa；合計約 271.9 MPa。若一次以複合斷面計算，σ = 984.4/5.0×10⁻³ ≈ 196.9 MPa，低估約 28%。數值為教學假設。~For a 15 m steel beam, wet concrete w₁ = 20 kN/m on the bare steel gives M₁ = 562.5 kN·m and, with S_s = 3.0×10⁻³ m³, σ₁ = 187.5 MPa; later load w₂ = 15 kN/m on the composite section gives M₂ ≈ 421.9 kN·m and, with S_c = 5.0×10⁻³ m³, σ₂ ≈ 84.4 MPa, about 271.9 MPa in total. A single composite analysis gives σ = 984.4/5.0×10⁻³ ≈ 196.9 MPa, about 28% low. Values are teaching assumptions.",
+      "verify": "施工階段分析輸出關鍵構件在每個階段結束時的內力與應力，形成鎖入應力表；施工中以應變計抽查代表性構件，確認實測應力增量與各階段預測一致，並把最終鎖入狀態寫入竣工結構報告。~Have the construction-stage analysis output forces and stresses in key members at the end of each stage as a locked-in stress table; spot-check representative members with strain gauges during construction to confirm measured increments match stage predictions, and write the final locked-in state into the as-built structural report.",
+      "failure": "改造時若不知道某根梁在施工階段已以鋼斷面承受大部分自重，以複合斷面判斷仍有餘裕而增加荷重，實際應力可能超過降伏；轉換構件或外伸臂的鎖入力被忽略時，局部切割可能引發突然的力量重分配。~If renovators do not know a beam carried most of its self-weight on the bare steel during construction and add load because the composite section seems to have margin, real stress may exceed yield; ignoring locked-in forces in transfers or outriggers can trigger sudden redistribution when part is cut.",
+      "misconception": "完工後的結構內力只取決於最終幾何與荷重，與施工過程無關。~Forces in a completed structure depend only on final geometry and loads, not on how it was built.",
+      "practice": "竣工交接時附上施工階段分析的最終模型、鎖入應力表、支撐拆除與接頭鎖定紀錄；日後任何改造評估都必須以此為起點，而不是重新建立一次加載模型。~At handover include the final construction-stage model, the locked-in stress table and records of shore removal and joint locking; any later alteration assessment must start from these rather than from a new one-step model."
+    },
+    {
+      "anchor": "營運中改造的既有基礎容量~Existing foundation capacity during occupied alteration",
+      "title": "營運中建築改造的施工階段分析~Construction-stage analysis for alterations in occupied buildings",
+      "mechanism": "既有建築的改造同樣是施工階段問題，而且限制更多：結構一直在使用、荷重不能卸除、既有構件與基礎的容量需重新確認。Thornton Tomasetti 在威利斯大樓底座改造中以迭代工具追蹤哪些既有沉箱已接近容量、哪些還能承受更多，並透過土壤試驗與鑽穿既有沉箱，確認建物四十多年加壓後的土層提供了所需的額外承載，最終不需新增基礎；同時規劃臨時支撐、拆除與施作順序，讓大樓全程營運。~Altering an existing building is also a construction-stage problem with tighter constraints: the structure stays in use, loads cannot be removed, and capacities of existing members and foundations must be re-established. On the Willis Tower base repositioning, Thornton Tomasetti used an iterative tool to track which existing caissons were at or near capacity and which could take more, and confirmed through soil tests and drilling through existing caissons that soil compacted by more than forty years of building load supplied the extra bearing needed, so no new foundations were required; temporary support, demolition and construction sequences were planned so the tower stayed open throughout.",
+      "model": "既有沉箱利用率 = (既有荷重 + 新增荷重)/容量。既有 15.5 MN、新增 3.2 MN、原容量 20 MN：利用率 = 18.7/20 ≈ 93.5%；若試驗證實土層壓密使容量提高到 22 MN，利用率降為 18.7/22 ≈ 85%。數值為教學假設。~Existing caisson utilisation = (existing load + added load)/capacity. With 15.5 MN existing, 3.2 MN added and an original capacity of 20 MN, utilisation = 18.7/20 ≈ 93.5%; if tests confirm that soil densification raises capacity to 22 MN, utilisation falls to 18.7/22 ≈ 85%. Values are teaching assumptions.",
+      "verify": "以竣工圖、現場量測與材料試驗重建既有結構模型，逐一列出受影響基礎與構件的既有荷重、新增荷重與容量；每個施工步驟（拆除、臨時支撐、新增荷重）都在模型中模擬並量測關鍵柱的應變與沉陷。~Rebuild the existing-structure model from as-built drawings, site measurement and material tests, listing existing load, added load and capacity for every affected foundation and member; simulate each step of demolition, temporary support and added load in the model and measure strain and settlement of key columns.",
+      "failure": "若改造只以設計時的竣工圖推估既有容量，未發現歷次改造已增加的荷重，新增荷重可能使某些基礎超載而產生不均勻沉陷；拆除順序錯誤則可能讓營運中的樓層短暫失去支承。~Estimating existing capacity only from original drawings, without discovering loads added by earlier alterations, can overload some foundations with the new load and cause uneven settlement; a wrong demolition sequence can briefly leave occupied floors without support.",
+      "misconception": "既有建築的基礎容量固定不變，只能依原設計值使用。~An existing building's foundation capacity is fixed at its original design value.",
+      "practice": "營運中改造須提出逐步施工階段分析、臨時支撐設計與監測計畫，並與物業管理協調使用限制；每個拆除或加載步驟的放行列為停留點，由結構工程師依監測結果簽認。~Alterations in occupied buildings need step-by-step construction-stage analysis, temporary support design and a monitoring plan coordinated with facility management on use restrictions; release of each demolition or loading step is a hold point signed off by the structural engineer from monitoring results."
+    }
+  ],
+  "example": "設計練習：檢核 7 天齡期樓板在上方新澆樓板與兩層連續支撐下是否安全。板厚 0.25 m，自重 0.25×25 = 6.25 kPa，模板 0.5 kPa，施工活載 1.5 kPa。依 Grundy–Kabaila 類型的分析，多層支撐系統中受載最大的樓板約承受 2.0 倍的（自重 + 模板），需求 = 2.0×6.75 + 1.5 = 15.0 kPa；完工服務荷重為 6.25 + 1.0（附加靜載）+ 2.5（活載）= 9.75 kPa，需求比 15.0/9.75 ≈ 1.54。ACI 209 強度發展 f′c(t)/f′c28 = t/(4 + 0.85t)，7 天約 0.70，衝剪強度隨 √f′c 約為 0.84。若設計服務利用率為 0.45，7 天時等效利用率 = 0.45×1.54/0.84 ≈ 0.83，可以接受；若改在 3 天就承載，強度比 0.46、√ 約 0.68，利用率 ≈ 0.45×1.54/0.68 ≈ 1.02，超過 1.0，必須延後拆撐或增加支撐層數。數值為教學假設，不代表任何實際建築。~Design exercise: check whether a 7-day-old slab is safe under a newly cast slab above with two levels of continuous shoring. The slab is 0.25 m thick, self-weight 0.25×25 = 6.25 kPa, formwork 0.5 kPa and construction live load 1.5 kPa. Grundy–Kabaila-type analysis shows the most heavily loaded slab in a multi-level shoring system carries about 2.0 times (self-weight + formwork), so demand = 2.0×6.75 + 1.5 = 15.0 kPa; the completed service load is 6.25 + 1.0 superimposed dead + 2.5 live = 9.75 kPa, a demand ratio of 15.0/9.75 ≈ 1.54. ACI 209 strength gain is f′c(t)/f′c28 = t/(4 + 0.85t), about 0.70 at 7 days, so punching strength, varying with √f′c, is about 0.84. If the design service utilisation is 0.45, the equivalent utilisation at 7 days is 0.45×1.54/0.84 ≈ 0.83, acceptable; loading at 3 days instead gives a strength ratio of 0.46, √ about 0.68, and utilisation ≈ 0.45×1.54/0.68 ≈ 1.02, above 1.0, so striking must be delayed or more shore levels added. Values are teaching assumptions, not any real building.",
+  "history": "施工階段的結構問題很早就受到注意：1963 年 Grundy 與 Kabaila 分析了多層支撐樓板在施工中承受的荷重，柱縮短研究則在 1960 年代末隨高樓興起。ASCE 37 在 2002 年首次把施工期荷載系統化，EN 1991-1-6 於 2005 年發布施工期作用的歐洲規範。電腦分析進步後，逐層啟動構件與時間相依材料的施工階段分析成為超高層的常規工作：中央電視台總部以五天監測決定兩塔接合時機，碎片大廈以由上而下方式讓核心與地下室同時推進，樂天世界塔延後外伸臂接合，威利斯大樓則在營運中完成底座改造。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Structural problems during construction were recognised early: in 1963 Grundy and Kabaila analysed the loads on slabs in multi-level shoring, and column-shortening studies followed as high-rises grew in the late 1960s. ASCE 37 first systematised construction loads in 2002, and EN 1991-1-6 on actions during execution was published in 2005. As computing advanced, staged analysis activating members floor by floor with time-dependent materials became routine for supertall towers: CCTV Headquarters used five days of monitoring to time the joining of its two towers, The Shard advanced its core and basement simultaneously by top-down construction, Lotte World Tower delayed its outrigger connections, and Willis Tower completed a base repositioning while occupied. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "中央電視台總部高 234 m，兩座傾斜塔樓以 15 層高的懸挑連接段相連~CCTV Headquarters is 234 m tall, its two leaning towers joined by a 15-storey cantilevered link",
+    "中央電視台兩塔接合前監測位移 5 天，於早晨約 8 點鋼材溫度最均勻時接合~CCTV's towers were monitored for 5 days and joined at about 8 am when steel temperatures were most uniform",
+    "碎片大廈以由上而下施工建造 3 層地下室，樁徑 1,500 mm、深約 50 m~The Shard's 3-level basement was built top-down on 1,500 mm piles about 50 m deep",
+    "樂天世界塔 123 層，外伸臂最終接合延後並設計長期力量轉移~At 123-storey Lotte World Tower final outrigger connections were delayed and designed for long-term force transfer",
+    "威利斯大樓 2020 年完成營運中改造，使用 72 根轉換柱且未新增基礎~Willis Tower's occupied repositioning, completed in 2020, used 72 transfer columns and no new foundations",
+    "EN 1991-1-6 對持續 1 年以內的施工狀態建議採 10 年回歸期風速，約為 50 年值的 0.90 倍~EN 1991-1-6 recommends a 10-year return period for execution phases up to 1 year, about 0.90 of the 50-year wind speed",
+    "ACI 209 強度發展 t/(4 + 0.85t)：7 天約達 28 天強度的 70%~ACI 209 strength gain t/(4 + 0.85t) gives about 70% of 28-day strength at 7 days",
+    "多層支撐系統中受載最大的樓板約承受 2 倍的自重與模板荷重~In multi-level shoring the most heavily loaded slab carries about 2 times its self-weight plus formwork"
+  ],
+  "timeline": [
+    {
+      "year": "1963",
+      "event": "Grundy 與 Kabaila 分析多層支撐樓板的施工荷重~Grundy and Kabaila analyse construction loads on slabs in multi-level shoring"
+    },
+    {
+      "year": "2002",
+      "event": "ASCE 37 首版發布，系統化施工期結構荷載~The first edition of ASCE 37 systematises loads on structures during construction"
+    },
+    {
+      "year": "2005",
+      "event": "EN 1991-1-6 發布，規定施工期作用與回歸期~EN 1991-1-6 is published, covering actions and return periods during execution"
+    },
+    {
+      "year": "2009",
+      "event": "碎片大廈全面動工，以由上而下方式同步推進核心與地下室~The Shard starts full construction, advancing core and basement together top-down"
+    },
+    {
+      "year": "2012",
+      "event": "中央電視台總部建築群完工，兩塔已在監測決定的時段接合~CCTV Headquarters complex is completed, its towers having been joined in a monitored window"
+    },
+    {
+      "year": "2020",
+      "event": "威利斯大樓在營運中完成底座改造~Willis Tower completes its base repositioning while in operation"
+    }
+  ],
+  "codes": [
+    "ASCE 37：施工期結構設計荷載~ASCE 37: Design Loads on Structures During Construction",
+    "EN 1991-1-6：施工期作用~EN 1991-1-6: Actions on structures – Actions during execution",
+    "ACI 347.2R：多層混凝土建築支撐與再支撐指引~ACI 347.2R: Guide for Shoring/Reshoring of Concrete Multistory Buildings",
+    "BS 5975：臨時工程程序與支架設計作業守則~BS 5975: Code of practice for temporary works procedures and falsework design"
+  ],
+  "landmarks": [
+    "中央電視台總部大樓~CCTV Headquarters, Beijing",
+    "碎片大廈~The Shard, London",
+    "樂天世界塔~Lotte World Tower, Seoul",
+    "威利斯大樓~Willis Tower, Chicago"
+  ],
+  "place": {
+    "name": "中央電視台總部大樓~CCTV Headquarters",
+    "country": "中國~China",
+    "lat": 39.915,
+    "lng": 116.464,
+    "query": "CCTV Headquarters Beijing"
+  },
+  "sources": [
+    {
+      "key": "arup-cctv",
+      "title": "Arup：中央電視台總部大樓專案頁",
+      "titleEn": "Arup: China Central Television Headquarters project page",
+      "publisher": "Arup",
+      "url": "https://www.arup.com/projects/china-central-television-headquarters",
+      "sourceType": "primary",
+      "scope": "設計者說明連續環形結構、斜交網格與兩塔接合時機（溫度、五天監測、構件長度調整）。",
+      "scopeEn": "Designer's description of the continuous loop structure, diagrid and the timing of tower closure (temperature, five-day monitoring, length adjustment)."
+    },
+    {
+      "key": "structure-mag-shard-topdown",
+      "title": "STRUCTURE 雜誌：倫敦橋塔（碎片大廈）結構設計",
+      "titleEn": "STRUCTURE magazine: structural design of London Bridge Tower (The Shard)",
+      "publisher": "STRUCTURE magazine / NCSEA",
+      "url": "https://www.structuremag.org/article.aspx?articleID=694",
+      "sourceType": "primary",
+      "scope": "由上而下施工、插入柱與筏基、開挖對鄰近設施的有限元素預測與監測規劃。",
+      "scopeEn": "Top-down construction, plunge columns and raft, finite-element prediction of effects on adjacent infrastructure and planned monitoring."
+    },
+    {
+      "key": "structure-mag-lotte-stage",
+      "title": "STRUCTURE 雜誌：樂天世界塔的結構創新",
+      "titleEn": "STRUCTURE magazine: Structural Innovations of Lotte World Tower",
+      "publisher": "STRUCTURE magazine / NCSEA",
+      "url": "https://www.structuremag.org/article/structural-innovations-of-lotte-world-tower/",
+      "sourceType": "primary",
+      "scope": "延後外伸臂最終接合、潛變收縮考量與巨柱預拱的設計者說明。",
+      "scopeEn": "Designers' account of delayed final outrigger connections, creep and shrinkage considerations and mega-column camber."
+    },
+    {
+      "key": "tt-willis-stage",
+      "title": "Thornton Tomasetti：威利斯大樓底座改造專案",
+      "titleEn": "Thornton Tomasetti: Willis Tower Repositioning",
+      "publisher": "Thornton Tomasetti",
+      "url": "https://www.thorntontomasetti.com/project/willis-tower-repositioning",
+      "sourceType": "primary",
+      "scope": "營運中改造的既有沉箱容量追蹤、施工工程（臨時支撐、拆除與施工順序）與轉換構件數量。",
+      "scopeEn": "Tracking existing caisson capacity in an occupied alteration, construction engineering of temporary support, demolition and sequencing, and transfer-member counts."
+    },
+    {
+      "key": "wiki-cctv-hq",
+      "title": "維基百科：中央電視台總部大樓（英文）",
+      "titleEn": "Wikipedia: CCTV Headquarters",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/CCTV_Headquarters",
+      "sourceType": "secondary",
+      "scope": "高度、樓層、施工與完工時序的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of height, floors and construction and completion chronology, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "奧雅納（Arup）",
+      "nameEn": "Arup",
+      "business": "跨領域工程顧問公司，提供結構、大地、消防與施工工程分析。",
+      "businessEn": "Multidisciplinary engineering consultancy providing structural, geotechnical, fire and construction-engineering analysis.",
+      "url": "https://www.arup.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "大型接合與施工階段監測的公開案例",
+      "roleEn": "Public cases of major closures and construction-stage monitoring"
+    },
+    {
+      "name": "賓特利系統",
+      "nameEn": "Bentley Systems",
+      "business": "基礎設施工程軟體公司，提供結構分析、數位孿生與施工模擬工具。",
+      "businessEn": "Infrastructure engineering software company providing structural analysis, digital-twin and construction simulation tools.",
+      "url": "https://www.bentley.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "BSY",
+        "exchange": "NASDAQ",
+        "currency": "USD"
+      },
+      "role": "分階段結構分析與施工模擬軟體的功能概念",
+      "roleEn": "Concepts of staged structural analysis and construction simulation software"
+    },
+    {
+      "name": "Computers and Structures, Inc.（CSI）",
+      "nameEn": "Computers and Structures, Inc.",
+      "business": "結構分析軟體開發商，產品支援施工順序加載與時間相依材料分析。",
+      "businessEn": "Structural analysis software developer whose products support sequential construction loading and time-dependent material analysis.",
+      "url": "https://www.csiamerica.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "施工順序加載與潛變收縮分析的軟體文件",
+      "roleEn": "Software documentation on sequential construction loading and creep–shrinkage analysis"
+    }
+  ],
+  "related": [
+    "b074",
+    "b030"
+  ],
+  "architectureNodes": [
+    [
+      "施工順序與臨時狀態",
+      "Construction sequence and temporary states"
+    ],
+    [
+      "時間相依材料性質",
+      "Time-dependent material properties"
+    ],
+    [
+      "接頭狀態與接合時機",
+      "Joint states and closure timing"
+    ],
+    [
+      "分階段分析模型",
+      "Staged analysis model"
+    ],
+    [
+      "測量與應變監測回饋",
+      "Survey and strain feedback"
+    ],
+    [
+      "鎖入應力與竣工紀錄",
+      "Locked-in stress and as-built records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      3
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      2
+    ]
+  ]
+}

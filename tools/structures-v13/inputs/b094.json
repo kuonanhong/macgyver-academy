@@ -1,0 +1,319 @@
+{
+  "id": "b094",
+  "title": "跨層轉換桁架施工~Multi-storey transfer-truss construction",
+  "discipline": "st-tall-systems",
+  "family": "outrigger",
+  "focus": "把上部柱力經一到三層樓高的桁架轉到下部柱或巨柱時的構件、接頭、安裝、預拱、卸撐與檢驗~Members, joints, erection, camber, de-propping and inspection when one- to three-storey trusses carry upper column loads onto columns or mega-columns below",
+  "summary": "當上部樓層的柱位與下部不同，例如住宅柱網落在開闊的辦公或大廳之上，或周邊柱要集中到少數巨柱，就需要跨越一到數層樓高的轉換桁架。轉換桁架承受多層樓的集中荷重，構件厚重、接頭複雜，而且在施工中必須先完成並具足夠勁度，上方樓層才能開始施作。本課以碎片大廈的費氏轉換、樂天世界塔的帶狀桁架與吊掛樓層、赫斯特大樓的超級斜撐和威利斯大樓底座改造的轉換梁為例，談荷重路徑、吊掛、厚板焊接、接頭、整體提升、預拱與卸撐、超音波檢驗、卸載監測、防火與交接。~When upper columns do not line up with those below, for example a residential grid over open offices or a lobby, or perimeter columns gathered onto a few mega-columns, transfer trusses one to several storeys deep are needed. They carry concentrated loads from many floors, so members are heavy and joints complex, and during construction they must be complete and stiff before the floors above can proceed. Using the Vierendeel transfers of The Shard, the belt trusses and hung floors of Lotte World Tower, the super-diagonals of the Hearst Tower and the transfer girders of the Willis Tower base repositioning, the course covers load paths, hanging, thick-plate welding, joints, lifting, camber and de-propping, ultrasonic testing, unloading monitoring, fire protection and handover.",
+  "units": [
+    {
+      "anchor": "轉換桁架弦桿與斜桿力~Transfer-truss chord and diagonal forces",
+      "title": "轉換桁架的荷重路徑~Load path through a transfer truss",
+      "mechanism": "轉換桁架把上方不連續柱的軸力轉成桁架的彎矩與剪力，再集中送到兩端的支承柱。彎矩以上下弦桿的拉壓力偶抵抗，剪力由斜桿或豎桿承擔，因此桁架深度直接決定弦桿力：深度越大，弦桿越小。碎片大廈以鋼構費氏桁架把上部柱重新對位到辦公層，並以費氏格框把周邊柱距由 6 m 逐步加密到 3 m 再到 1.5 m；樂天世界塔的帶狀桁架則把頂部燈籠與飯店柱轉換到八根巨柱上。~A transfer truss turns the axial force of discontinued upper columns into truss bending and shear and delivers it to the supporting columns at its ends. Bending is resisted by a tension–compression couple in the chords and shear by diagonals or verticals, so truss depth directly sets the chord force: the deeper the truss, the smaller the chords. The Shard used steel Vierendeel trusses to realign upper columns onto the office floors and Vierendeel grids to step perimeter column spacing from 6 m to 3 m to 1.5 m; at Lotte World Tower belt trusses transfer the lantern and hotel columns onto the eight mega-columns.",
+      "model": "簡支桁架跨度 L = 24 m、深 d = 8 m（兩層樓），三分點各承受上部柱力 P = 6,000 kN：中段彎矩 M = P·L/3 = 48,000 kN·m，弦桿力 = M/d = 6,000 kN；端格剪力 V = 6,000 kN，45° 斜桿力 = V/sin45° ≈ 8,485 kN。數值為教學假設。~A simply supported truss spanning L = 24 m with depth d = 8 m (two storeys) carries upper column loads P = 6,000 kN at its third points: the mid-span moment M = P·L/3 = 48,000 kN·m, chord force = M/d = 6,000 kN; the end-panel shear V = 6,000 kN and a 45° diagonal carries V/sin45° ≈ 8,485 kN. Values are teaching assumptions.",
+      "verify": "以三維模型核對轉換桁架在各施工階段與完工狀態的弦桿、斜桿與節點力，並以手算力偶法抽查中段弦桿力；確認上部柱力的來源（樓層數、荷重組合、施工中已加上的部分）與模型一致。~Check chord, diagonal and joint forces in the transfer truss at each construction stage and in the completed state with a three-dimensional model, spot-checking mid-span chord force by the couple method; confirm that the source of upper column loads, meaning number of floors, combinations and portion already applied during construction, matches the model.",
+      "failure": "若低估上部柱力（例如漏算改用途後的荷重）或把桁架深度在建築協調中壓縮，弦桿與節點應力會大幅上升；轉換桁架撓度過大則讓上方所有樓層跟著下沉，隔間與帷幕牆開裂。~Underestimating upper column loads, for example by missing loads from a change of use, or squeezing the truss depth in architectural coordination sharply raises chord and joint stresses; excessive transfer-truss deflection drags every floor above down with it and cracks partitions and façades.",
+      "misconception": "轉換桁架只要構件夠大，深度淺一點也沒關係。~If its members are big enough, a transfer truss can be made shallower without consequence.",
+      "practice": "轉換層的深度、斜桿位置與穿越管線的開口應在設計初期與建築、機電共同凍結，任何後續變更都需結構工程師重新核算並更新預拱值。~Freeze the depth, diagonal layout and service openings of transfer levels early with architecture and building services, and require any later change to be recalculated by the structural engineer with updated camber."
+    },
+    {
+      "anchor": "吊掛樓層與吊桿伸長~Hung floors and hanger elongation",
+      "title": "吊掛樓層：載重路徑反轉~Hung floors: a reversed load path",
+      "mechanism": "有些轉換桁架不是承托上方的柱，而是吊住下方的樓層。設計者公開說明樂天世界塔的 5 至 7 層是從最低的帶狀桁架吊掛下來的。吊掛樓層的荷重先以拉力往上傳到桁架，再由桁架送到巨柱，這與一般「由下往上支承」的施工直覺相反：在桁架完成並具勁度之前，吊掛樓層不能自行站立，需要臨時支撐；吊桿受拉伸長，樓層在加載後會下沉，必須預先抬高。~Some transfer trusses do not carry columns above but hang floors below. The designers state that levels 5 to 7 of Lotte World Tower hang from the lowest belt truss. Loads from hung floors travel up in tension to the truss and then to the mega-columns, the opposite of the usual bottom-up construction logic: until the truss is complete and stiff, the hung floors cannot stand by themselves and need temporary shoring, and because the hangers stretch in tension, the floors drop as load arrives and must be set high in advance.",
+      "model": "三層吊掛樓板，每層受載面積 9 m×9 m、服務荷重 7.0 kPa：吊桿拉力 T = 3×81×7.0 = 1,701 kN；以容許應力 213 MPa 計所需斷面約 7,990 mm²；吊桿長 12 m 時伸長 δ = TL/(EA) = 1,701,000×12,000/(200,000×8,000) ≈ 12.8 mm，最低一層需預抬約 13 mm（另加桁架撓度）。數值為教學假設。~Three hung floors with 9 m×9 m tributary areas and a 7.0 kPa service load give a hanger tension T = 3×81×7.0 = 1,701 kN; at an allowable stress of 213 MPa the hanger needs about 7,990 mm²; over a 12 m hanger length the elongation δ = TL/(EA) = 1,701,000×12,000/(200,000×8,000) ≈ 12.8 mm, so the lowest floor must be set about 13 mm high, plus truss deflection. Values are teaching assumptions.",
+      "verify": "施工階段分析須模擬「臨時支撐承托—桁架完成—逐步卸撐轉為吊掛」的過程，計算每一步的吊桿力與樓板標高；卸撐時以液壓千斤頂讀數或吊桿應變計確認荷重逐步轉移，並量測樓板下沉量與預抬值比較。~The construction-stage analysis must simulate shoring support, truss completion and staged release into hanging, computing hanger forces and floor levels at each step; during release confirm gradual load transfer by jack readings or hanger strain gauges and compare measured floor drop with the pre-set.",
+      "failure": "若在桁架尚未完成或接頭未驗收前就拆除吊掛樓層的臨時支撐，樓層會失去支承而下墜；吊桿與桁架接頭若只做壓力設計而疏忽拉力細部（例如焊道或銷孔），可能在荷重轉移時突然破壞。~Removing the shores under hung floors before the truss is complete or its joints accepted leaves the floors unsupported; hanger-to-truss connections detailed for compression but not for tension, at welds or pin holes for instance, can fail suddenly during load transfer.",
+      "misconception": "吊掛樓層和一般樓層一樣，可以由下往上逐層施作並立即受力。~Hung floors can be built and loaded bottom-up immediately like ordinary floors.",
+      "practice": "吊掛樓層的臨時支撐拆除列為停留點：桁架與吊桿接頭檢驗合格、預拱量確認、分級卸撐程序與停止條件（例如任一千斤頂偏差超過 10%）經結構工程師核准後才可執行。~Make removal of shores under hung floors a hold point released by the structural engineer only after truss and hanger joints pass inspection, the pre-set is confirmed and a staged release procedure with stop criteria, for example any jack deviating by more than 10%, is approved."
+    },
+    {
+      "anchor": "厚板焊接與碳當量~Thick-plate welding and carbon equivalent",
+      "title": "厚板構件、焊接性與層狀撕裂~Thick-plate members, weldability and lamellar tearing",
+      "mechanism": "轉換桁架弦桿與節點常用 50 至 100 mm 以上的厚板與巨型型鋼，焊縫多為全滲透並在節點處三向交會。厚板冷卻快、拘束大，熱影響區容易硬化並產生氫致冷裂；板厚方向受拉的接頭還有層狀撕裂的風險，需要使用 Z 向性能鋼材並調整接頭幾何。碳當量 CE 綜合了合金元素對硬化傾向的影響，是決定預熱溫度與焊接程序的起點。~Chords and joints of transfer trusses often use plates 50 to 100 mm thick or more and jumbo sections, with complete-penetration welds meeting in three directions at the nodes. Thick plates cool fast under high restraint, so heat-affected zones harden and hydrogen-induced cold cracks can form; joints loaded through the plate thickness also risk lamellar tearing, calling for through-thickness (Z-grade) steel and adjusted joint geometry. The carbon equivalent CE sums the hardening tendency of alloying elements and is the starting point for preheat and welding procedures.",
+      "model": "IIW 碳當量 CE = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15。C 0.16、Mn 1.50、Cr 0.05、Mo 0.02、V 0.05、Ni 0.10、Cu 0.15（%）：CE = 0.16 + 0.25 + 0.024 + 0.017 ≈ 0.45。CE 約 0.45 且板厚 80 mm 時屬高硬化傾向，需依規範決定預熱（常見約 100 °C 以上）與低氫焊材。數值為教學假設。~The IIW carbon equivalent is CE = C + Mn/6 + (Cr + Mo + V)/5 + (Ni + Cu)/15. With C 0.16, Mn 1.50, Cr 0.05, Mo 0.02, V 0.05, Ni 0.10 and Cu 0.15 percent, CE = 0.16 + 0.25 + 0.024 + 0.017 ≈ 0.45. A CE near 0.45 in 80 mm plate has a high hardening tendency, so preheat, commonly 100 °C or more, and low-hydrogen consumables are set by the code. Values are teaching assumptions.",
+      "verify": "以鋼廠證明核對化學成分與 Z 向斷面收縮率，焊接程序以同等厚度與拘束的試板做程序認可（含硬度與衝擊試驗）；施焊時以測溫筆或接觸式溫度計檢查預熱與層間溫度，並保存紀錄。~Check chemistry and through-thickness reduction of area on mill certificates, qualify the welding procedure on test plates of equal thickness and restraint with hardness and impact tests, check preheat and interpass temperatures during welding with temperature crayons or contact thermometers, and keep the records.",
+      "failure": "預熱不足或焊材受潮會在焊後數小時到數天才出現延遲裂縫，若在檢驗前就繼續安裝上方構件，裂縫被覆蓋而難以發現；板厚方向受拉的接頭若使用一般鋼板，可能在焊接收縮時就產生層狀撕裂。~Insufficient preheat or damp consumables cause delayed cracks hours or days after welding, and if members above are erected before inspection the cracks are hidden; ordinary plate in joints loaded through the thickness can tear lamellarly from weld shrinkage alone.",
+      "misconception": "只要焊工有證照，厚板焊接就不需要另外的程序認可。~If the welder is certified, thick-plate welding needs no separate procedure qualification.",
+      "practice": "厚板節點須有經認可的焊接程序規範、預熱與層間溫度紀錄、焊後保溫或延遲檢驗時間（例如 48 小時後才做超音波檢測），並由焊接檢驗師簽認後才可往上安裝。~Thick-plate nodes need a qualified welding procedure specification, preheat and interpass records, post-weld insulation or a delayed inspection time, for example ultrasonic testing only after 48 hours, and sign-off by the welding inspector before erection continues above."
+    },
+    {
+      "anchor": "滑動臨界螺栓接頭~Slip-critical bolted joints",
+      "title": "節點：預埋板、螺栓群與延遲鎖定~Joints: embed plates, bolt groups and delayed locking",
+      "mechanism": "轉換桁架與支承柱的接頭決定力量能否順利進入柱中。樂天世界塔的帶狀桁架由預組段件在現場焊接到巨柱外側的預埋鋼板，使巨柱混凝土能連續施作；鋼構節點則常用滑動臨界高強螺栓，以摩擦傳力而不讓接頭在反覆荷重下滑移。若接頭需容許施工期的差異變形，可先以長槽孔或暫不鎖緊的螺栓連接，待指定階段再鎖定。接頭設計必須同時考慮施工期與完工後的受力方向，因為吊掛或轉換狀態可能讓同一構件由受壓轉為受拉。~The joints between a transfer truss and its supporting columns decide whether force can enter the columns smoothly. At Lotte World Tower belt trusses were pre-assembled and field-welded to embedded steel plates on the outside of the mega-columns so the column concrete could be cast continuously; steel nodes commonly use slip-critical high-strength bolts that transfer force by friction without slipping under reversing load. Where joints must accommodate construction-stage differential movement, they can be connected first with long slots or untightened bolts and locked at a specified stage. Joint design must cover force directions both during construction and after completion, because hanging or transfer states can turn a compression member into a tension member.",
+      "model": "EN 1993-1-8 滑動抗力 F_s,Rd = k_s·n·μ·F_p,C/γ_M3。M30 10.9 級螺栓 F_p,C = 0.7×1,000×561 ≈ 392.7 kN；k_s = 1.0、兩個摩擦面 n = 2、μ = 0.5、γ_M3 = 1.25：每支 F_s,Rd ≈ 314 kN。斜桿設計力 8,485 kN 需 8,485/314 ≈ 27.0，取 28 支。數值為教學假設。~EN 1993-1-8 slip resistance is F_s,Rd = k_s·n·μ·F_p,C/γ_M3. An M30 class 10.9 bolt has F_p,C = 0.7×1,000×561 ≈ 392.7 kN; with k_s = 1.0, two friction surfaces n = 2, μ = 0.5 and γ_M3 = 1.25, each bolt gives F_s,Rd ≈ 314 kN. A diagonal design force of 8,485 kN needs 8,485/314 ≈ 27.0, so 28 bolts. Values are teaching assumptions.",
+      "verify": "摩擦面處理（噴砂等級或塗層類別）須以試驗或認可資料確認摩擦係數；螺栓預拉力以轉角法、扭矩控制或直接張力指示墊圈施作並抽驗；預埋板錨筋與位置在澆置前檢查，澆置後量測預埋板的平整度與座標。~Confirm the slip coefficient of the faying surfaces, by blast grade or coating class, through tests or approved data; install bolt pretension by turn-of-nut, torque control or direct-tension-indicator washers and spot-check it; inspect embed-plate anchors and position before casting and survey flatness and coordinates afterwards.",
+      "failure": "摩擦面被油漆或鏽蝕污染時摩擦係數下降，接頭在設計荷重以下就滑移，轉換桁架撓度突然增加；預埋板位置偏差過大時現場只能加墊板或切割，造成偏心與額外焊接。~Faying surfaces contaminated by paint or rust lose friction so the joint slips below design load and the transfer truss suddenly deflects more; embed plates far out of position force packers or cutting on site, adding eccentricity and extra welding.",
+      "misconception": "高強螺栓只要鎖緊，就一定能以摩擦傳力。~High-strength bolts always transfer force by friction once they are tightened.",
+      "practice": "接頭圖說應標明摩擦面處理等級、螺栓等級與預拉方法，並區分「施工期可滑動」與「最終鎖定」的螺栓；最終鎖定作業與檢驗紀錄須由結構工程師確認。~Joint drawings should state faying-surface class, bolt grade and pretensioning method and distinguish bolts that may slip during construction from those finally locked; final locking and its inspection records must be confirmed by the structural engineer."
+    },
+    {
+      "anchor": "整體提升與同步千斤頂~Lifting and synchronised jacks",
+      "title": "安裝方法：原位散裝或地面組裝後提升~Erection: piece by piece in place or assembled and lifted",
+      "mechanism": "轉換桁架可以在原位以臨時支架逐件安裝，也可以在地面或較低樓層組裝後以鋼絞線千斤頂整體提升。原位安裝需要能承受桁架與上方施工荷重的臨時支架，並在高空完成大量厚板焊接；整體提升則把焊接移到地面，品質較易控制，但提升時各吊點的荷重分配、同步性與風速都是控制因素，接近就位時還要處理與支承柱的對接誤差。威利斯大樓底座改造中，最東側的一根板梁就以兩段吊裝後再續接。~A transfer truss can be erected piece by piece in place on temporary towers, or assembled at ground or a lower floor and lifted whole with strand jacks. In-place erection needs temporary towers that carry the truss and construction loads above and requires extensive thick-plate welding at height; lifting moves the welding to the ground where quality is easier to control, but load sharing between lifting points, synchronisation and wind govern the lift, and the fit-up to supporting columns must be resolved near final position. On the Willis Tower base repositioning, the easternmost plate girder was lifted in two pieces and spliced.",
+      "model": "桁架重 400 t、四個吊點，考慮不均勻係數 1.15：每點 400/4×1.15 = 115 t；再乘動力係數 1.1 得約 126.5 t。使用 200 t 鋼絞線千斤頂時利用率約 63%；若改為三個吊點，每點約 169 t，利用率升到約 84%。數值為教學假設。~A 400 t truss on four lifting points with an unevenness factor of 1.15 gives 400/4×1.15 = 115 t per point, or about 126.5 t with a dynamic factor of 1.1. With 200 t strand jacks the utilisation is about 63%; with only three points, about 169 t each, it rises to about 84%. Values are teaching assumptions.",
+      "verify": "提升前做試吊（例如提離支架約 100 mm 並停留觀察），以千斤頂壓力與鋼絞線伸長同步監測各吊點荷重，確認偏差在允許範圍；提升中監測桁架水平度與風速，就位後量測對接誤差再進行接合。~Before the lift, test-lift about 100 mm off the supports and hold to observe; monitor load at each point by jack pressure and strand elongation to confirm deviations are within limits; during the lift monitor truss levelness and wind speed, and measure fit-up error at final position before connecting.",
+      "failure": "吊點同步失控時某一吊點超載，可能導致千斤頂或錨具破壞，桁架扭轉；原位安裝若臨時支架沉陷，桁架在焊接前就變形，焊後鎖入應力與幾何誤差。~Loss of synchronisation can overload one point and break a jack or anchorage while twisting the truss; in in-place erection a settling temporary tower deforms the truss before welding, locking in stress and geometric error after welding.",
+      "misconception": "整體提升時各吊點的荷重一定平均分配。~In a lift, load is always shared equally among the lifting points.",
+      "practice": "提升作業屬高風險重型吊裝，須有經核准的提升計畫（含吊點設計、同步控制、試吊、風速限制、緊急停止與人員禁入區），由提升專業廠商與結構工程師共同簽認，並由合格的吊裝主管指揮。~Lifting is a high-risk heavy operation requiring an approved lift plan covering lifting-point design, synchronisation, test lift, wind limits, emergency stop and exclusion zones, signed jointly by the specialist lifting contractor and the structural engineer and directed by a qualified lifting supervisor."
+    },
+    {
+      "anchor": "預拱與分級卸撐~Camber and staged de-propping",
+      "title": "預拱、臨時支撐與卸撐順序~Camber, temporary support and de-propping sequence",
+      "mechanism": "轉換桁架在承受上方樓層後會撓曲，若不預拱，上方所有樓層的柱都會隨之下沉。預拱值由桁架在預期荷重下的撓度決定，包括弦桿伸縮造成的彎曲撓度與斜桿伸縮造成的剪力撓度。施工中桁架常先坐在臨時支撐上，待上方若干層完成或桁架接頭全部驗收後才分級卸撐，讓荷重逐步從臨時支撐轉到桁架；卸撐順序（由中央向兩端或反之）會影響桁架與支撐的瞬時受力。~A transfer truss deflects as the floors above load it, and without camber every column above drops with it. Camber is set from the truss deflection under expected load, including flexural deflection from chord strain and shear deflection from diagonal strain. During construction the truss often sits first on temporary supports and is de-propped in stages only after several floors above are complete or all its joints are accepted, so load moves gradually from the props to the truss; the release order, from the centre outward or the reverse, affects the transient forces in truss and props.",
+      "model": "以弦桿等效慣性矩 I = A_c·d²/2 = 0.06×8²/2 = 1.92 m⁴ 計算三分點雙載重撓度 δ = 23PL³/(648EI) = 23×6,000×24³/(648×200×10⁶×1.92) ≈ 7.7 mm；加上斜桿伸縮約 30%，總撓度約 10 mm，預拱取 10 mm。數值為教學假設。~With an equivalent chord inertia I = A_c·d²/2 = 0.06×8²/2 = 1.92 m⁴, the deflection under two third-point loads is δ = 23PL³/(648EI) = 23×6,000×24³/(648×200×10⁶×1.92) ≈ 7.7 mm; adding about 30% for diagonal strain gives a total of about 10 mm, so a 10 mm camber is specified. Values are teaching assumptions.",
+      "verify": "工廠組裝時量測桁架預拱並記錄，安裝後再量一次確認運輸與吊裝沒有改變幾何；卸撐時以千斤頂分級降載（例如每級 25%），每級量測桁架撓度與上方柱標高，與預測曲線比較，偏差超出停止條件即暫停檢討。~Measure and record the truss camber at shop assembly and again after erection to confirm transport and lifting did not alter geometry; de-prop in jack-controlled stages, for example 25% per step, measuring truss deflection and column levels above at each stage against the predicted curve and pausing for review when a stop criterion is exceeded.",
+      "failure": "未預拱或預拱過小時，上方樓層的柱與樓板在卸撐後下沉，與相鄰非轉換柱產生高差；若一次拆除全部支撐，桁架瞬間承受全部荷重，接頭或支承可能受衝擊損傷。~With no or too little camber, columns and floors above drop after de-propping, creating level differences with neighbouring non-transferred columns; removing all props at once loads the truss instantly and can damage joints or bearings by impact.",
+      "misconception": "轉換桁架只要強度足夠，就不需要預拱或分級卸撐。~If the transfer truss is strong enough, it needs neither camber nor staged de-propping.",
+      "practice": "施工圖應標示預拱值、臨時支撐位置與容量、卸撐的前提條件與分級步驟；卸撐列為停留點，由結構工程師依監測資料逐級放行。~Drawings should show camber, temporary support positions and capacities, preconditions and stages for de-propping; de-propping is a hold point released step by step by the structural engineer from monitoring data."
+    },
+    {
+      "anchor": "超音波檢測定位瑕疵~Locating flaws by ultrasonic testing",
+      "title": "全滲透焊的超音波檢驗~Ultrasonic inspection of complete-penetration welds",
+      "mechanism": "轉換桁架的厚板全滲透焊必須做體積檢測，最常用的是超音波檢測：探頭把超音波斜射入鋼板，遇到裂縫、未熔合或夾渣時反射回探頭，依聲程與入射角換算瑕疵的深度與距離，再依反射幅度與長度判定是否合格。相位陣列超音波（PAUT）可同時掃描多個角度並保存影像，便於複核。檢驗時機要配合延遲裂縫的發生時間，並在構件被上方結構覆蓋前完成。~Complete-penetration welds in transfer-truss plates need volumetric inspection, most commonly ultrasonic testing: a probe sends an angled ultrasonic beam into the plate, and cracks, lack of fusion or slag reflect it back; the sound path and beam angle give the flaw's depth and distance, and its echo amplitude and length decide acceptance. Phased-array ultrasonics (PAUT) scan several angles at once and keep images for review. Inspection timing must allow for delayed cracking and be completed before the member is covered by the structure above.",
+      "model": "斜角探頭聲程 s = v·t/2。橫波速度 v = 3,240 m/s、回波時間 t = 30 μs：s = 3,240×30×10⁻⁶/2 ≈ 48.6 mm；入射角 70° 時瑕疵深度 = s·cos70° ≈ 16.6 mm，表面距離 = s·sin70° ≈ 45.7 mm，可判斷瑕疵位於 60 mm 厚板的焊根或焊冠區。數值為教學假設。~For an angle-beam probe the sound path is s = v·t/2. With a shear-wave velocity v = 3,240 m/s and an echo time t = 30 μs, s = 3,240×30×10⁻⁶/2 ≈ 48.6 mm; at a 70° beam angle the flaw depth = s·cos70° ≈ 16.6 mm and the surface distance = s·sin70° ≈ 45.7 mm, locating it relative to the root or cap of a 60 mm plate weld. Values are teaching assumptions.",
+      "verify": "檢驗人員須具相應資格，儀器與探頭以標準試塊校正；依 AWS D1.1 或對應規範的掃描方式、靈敏度與允收表判定，每道焊縫的檢驗報告記錄位置、瑕疵指示與處置，返修後重新檢驗。~Inspectors must hold the appropriate qualification and calibrate instrument and probes on standard blocks; apply the scanning pattern, sensitivity and acceptance tables of AWS D1.1 or the governing code, recording location, indications and disposition for every weld, and re-inspect after repair.",
+      "failure": "若檢驗在焊後太早進行或被略過，延遲裂縫可能在上方樓層加載後擴展，轉換桁架節點在服務荷重下開裂；以錯誤的入射角或未校正的儀器檢測，會把瑕疵定位錯誤而修錯位置。~Inspecting too soon after welding, or skipping it, lets delayed cracks grow once the floors above load the node, cracking the transfer joint in service; testing with the wrong beam angle or an uncalibrated instrument mislocates flaws so the wrong spot is repaired.",
+      "misconception": "外觀檢查看不到裂縫，焊縫內部就沒有瑕疵。~If visual inspection finds no cracks, the weld has no internal flaws.",
+      "practice": "轉換構件的全滲透焊應 100% 做體積檢測，檢驗計畫寫明延遲檢驗時間、方法與允收標準；未取得合格報告前不得覆蓋或加載，返修次數超過規定時須由結構工程師評估母材損傷。~Inspect 100% of complete-penetration welds in transfer members volumetrically, with the inspection plan stating delay time, method and acceptance criteria; do not cover or load a weld before its report passes, and have the structural engineer assess base-metal damage when repairs exceed the allowed number."
+    },
+    {
+      "anchor": "卸載過程的應變監測~Strain monitoring during load transfer",
+      "title": "荷重轉移的監測與比對~Monitoring and comparing load transfer",
+      "mechanism": "轉換桁架從臨時支撐轉為自行承載的過程，是驗證設計假設最好的時機。在弦桿、斜桿與支承柱上安裝應變計，配合千斤頂讀數與撓度量測，可以直接得到構件軸力，與施工階段分析逐步比較。若實測力與預測相符，表示荷重路徑與勁度假設正確；若某根斜桿明顯偏低而相鄰構件偏高，可能是接頭滑移、臨時支撐未完全釋放或桁架幾何偏差。這些資料也成為日後營運監測的基準。~Transferring a truss from temporary supports to self-supporting is the best moment to verify design assumptions. Strain gauges on chords, diagonals and supporting columns, together with jack readings and deflection surveys, give member forces directly for step-by-step comparison with the construction-stage analysis. Agreement confirms the load path and stiffness assumptions; a diagonal clearly lower than predicted with neighbours higher may indicate joint slip, a prop not fully released or geometric deviation. The data also become the baseline for later in-service monitoring.",
+      "model": "構件軸力 F = E·ε·A。弦桿 A = 0.06 m²、實測應變 ε = 400 με：F = 200×10⁶×400×10⁻⁶×0.06 = 4,800 kN，與預測 5,000 kN 相差 −4%；若同一階段實測只有 250 με（3,000 kN），差 −40%，應暫停並檢查是否仍有支撐未釋放。數值為教學假設。~Member force is F = E·ε·A. For a chord with A = 0.06 m² and measured strain ε = 400 με, F = 200×10⁶×400×10⁻⁶×0.06 = 4,800 kN, −4% from the predicted 5,000 kN; if only 250 με (3,000 kN) were measured at that stage, −40%, work should pause to check for an unreleased prop. Values are teaching assumptions.",
+      "verify": "應變計在構件無應力時歸零並記錄溫度，每片構件至少在斷面兩側各裝一支以分離彎曲；卸撐每一級後讀取所有應變計、千斤頂與撓度，計算各構件力與預測的比值，設定允許偏差（例如 ±15%）作為繼續卸撐的條件。~Zero strain gauges with the member unstressed and record temperature, fitting at least one gauge on each side of the section to separate bending; after each de-propping stage read all gauges, jacks and deflections, compute measured-to-predicted force ratios and use an allowable deviation, for example ±15%, as the condition for continuing.",
+      "failure": "若只看撓度而不量構件力，荷重可能經由未預期的路徑（例如隔間牆或機電支架）傳遞，桁架看似正常但某些非結構構件已被壓壞；監測資料未保存則日後無法判斷桁架是否發生長期變化。~Watching only deflection without measuring member forces lets load find unintended paths, through partitions or service supports for instance, so the truss looks normal while non-structural elements are being crushed; without retained data no one can later tell whether the truss has changed over time.",
+      "misconception": "只要量到撓度符合預期，荷重路徑就一定正確。~If measured deflection matches the prediction, the load path must be correct.",
+      "practice": "轉換桁架的監測計畫應與卸撐程序合併撰寫，列出感測器位置、讀數時機、允許偏差與超限處置，並把最終讀數作為交接基準存檔。~Write the transfer-truss monitoring plan together with the de-propping procedure, listing sensor positions, reading times, allowable deviations and actions on exceedance, and archive the final readings as the handover baseline."
+    },
+    {
+      "anchor": "轉換構件的防火被覆~Fire protection of transfer members",
+      "title": "轉換構件的耐火與臨界溫度~Fire resistance and critical temperature of transfers",
+      "mechanism": "轉換桁架承托多層樓，一旦失效後果遠大於一般梁柱，因此通常被列為關鍵構件，要求較高的耐火時效與更可靠的防火被覆。鋼材在高溫下強度與勁度下降，構件失效時的溫度（臨界溫度）取決於火災時的荷重利用率：利用率越低，臨界溫度越高。這與只為使用性設置、經評估可不做被覆的帽桁架不同，轉換構件的被覆厚度、附著力與完整性都必須嚴格驗收，日後改裝也不得破壞。~A transfer truss supports many floors, so its failure has far greater consequences than that of an ordinary beam or column; it is usually designated a key element with a higher fire-resistance period and more reliable fire protection. Steel loses strength and stiffness at high temperature, and the temperature at which a member fails, its critical temperature, depends on the load utilisation in fire: the lower the utilisation, the higher the critical temperature. Unlike hat trusses provided only for serviceability and judged not to need protection, transfer members require strict acceptance of protection thickness, adhesion and integrity, which later alterations must not damage.",
+      "model": "EN 1993-1-2 臨界溫度 θ_cr = 39.19·ln[1/(0.9674·μ₀^3.833) − 1] + 482。μ₀ = 0.6 時 θ_cr ≈ 554 °C；μ₀ = 0.4 時 θ_cr ≈ 620 °C；μ₀ = 0.7 時 θ_cr ≈ 526 °C。降低火災時利用率可提高臨界溫度、減少所需被覆厚度。數值為公式示範。~EN 1993-1-2 gives the critical temperature θ_cr = 39.19·ln[1/(0.9674·μ₀^3.833) − 1] + 482. For μ₀ = 0.6, θ_cr ≈ 554 °C; for μ₀ = 0.4, θ_cr ≈ 620 °C; for μ₀ = 0.7, θ_cr ≈ 526 °C. Lowering utilisation in fire raises the critical temperature and reduces the protection needed. Values illustrate the formula.",
+      "verify": "防火被覆施作後以濕膜或乾膜測厚儀、或針刺法量測厚度，依規定的抽樣密度檢查並記錄；噴覆材料做附著力與密度抽驗，節點與螺栓周邊的被覆完整性逐一目視確認，缺陷修補後重新量測。~After application, measure fire-protection thickness with wet- or dry-film gauges or pin gauges at the specified sampling density and record it; spot-check adhesion and density of sprayed materials, visually confirm protection integrity around every node and bolt group, and re-measure after repairs.",
+      "failure": "後續機電管線或吊架安裝時刮除或鑽穿轉換桁架的被覆而未修補，火災時該處鋼材提早升溫，轉換構件失效可能導致上方多層樓板塌落。~If later services or hangers scrape off or drill through the protection on a transfer truss without repair, the steel there heats early in a fire, and failure of the transfer can bring down several floors above.",
+      "misconception": "所有鋼構件的防火被覆都一樣重要，不需要分級。~Fire protection is equally important on all steel members and needs no grading.",
+      "practice": "竣工圖與現場標示應把轉換構件標為「關鍵構件—防火被覆不得破壞」，任何在其上的吊掛、焊接或鑽孔都要經結構與消防工程師核准，並在完工後檢查被覆修補。~As-built drawings and site labels should mark transfer members as key elements whose fire protection must not be damaged; any hanging, welding or drilling on them needs approval from structural and fire engineers, with protection repairs inspected afterwards."
+    },
+    {
+      "anchor": "關鍵構件與改裝管制~Key elements and alteration control",
+      "title": "關鍵構件設計與交接紀錄~Key-element design and handover records",
+      "mechanism": "轉換桁架失效會讓上方所有被轉換的柱失去支承，因此常依 EN 1991-1-7 或類似規定檢核為關鍵構件：構件必須能承受額外的意外作用（例如 34 kN/m² 的面壓）而不失效。交接後最大的風險往往來自不了解其重要性的改裝：在弦桿開孔穿管、切除斜桿以增加通道、在節點旁焊接附件。交接文件必須讓營運單位知道哪些構件屬轉換與關鍵構件、它們承托哪些樓層、鎖入了哪些施工期應力，以及改裝的審查流程。~Failure of a transfer truss leaves every transferred column above unsupported, so it is often checked as a key element under EN 1991-1-7 or similar rules: the member must withstand an additional accidental action, for example a pressure of 34 kN/m², without failure. After handover the greatest risk often comes from alterations by people unaware of its importance: holes in chords for services, removed diagonals for passageways, attachments welded next to nodes. Handover documents must tell the operator which members are transfers and key elements, which floors they carry, what construction-stage stresses are locked in, and how alterations are reviewed.",
+      "model": "EN 1991-1-7 關鍵構件意外作用 34 kN/m²。斜桿迎面寬 1.0 m、長 8 m：線荷重 w = 34×1.0 = 34 kN/m，簡支彎矩 M = wL²/8 = 34×8²/8 = 272 kN·m，須與構件在意外組合下的軸力共同檢核；若迎面寬 1.5 m，M = 408 kN·m。數值為教學假設。~EN 1991-1-7 sets an accidental action of 34 kN/m² on key elements. For a diagonal with a 1.0 m face width and 8 m length, the line load w = 34×1.0 = 34 kN/m and the simply supported moment M = wL²/8 = 34×8²/8 = 272 kN·m, to be checked together with axial force in the accidental combination; a 1.5 m face width gives M = 408 kN·m. Values are teaching assumptions.",
+      "verify": "交接前完成關鍵構件清冊：構件編號、位置、所承托樓層、設計力與鎖入應力、防火等級與檢查週期；以竣工測量確認實際幾何與預拱，並把卸載監測的最終讀數與照片一併歸檔。~Before handover complete a key-element register giving member ID, location, floors carried, design and locked-in forces, fire rating and inspection interval; confirm actual geometry and camber by as-built survey and archive the final unloading readings and photographs with it.",
+      "failure": "若交接文件只有一般結構圖，日後改裝團隊可能把轉換桁架的斜桿當成可移除的支撐而切除，荷重在毫無預警下重新分配，導致上方樓層下沉或局部倒塌。~If handover provides only general structural drawings, a later renovation team may treat a transfer diagonal as removable bracing and cut it, redistributing load without warning and causing settlement or local collapse of the floors above.",
+      "misconception": "轉換桁架裡的斜桿只是穩定用的支撐，可以在改裝時移除。~Diagonals in a transfer truss are just stability bracing and can be removed during renovation.",
+      "practice": "物業管理規章明訂：轉換與關鍵構件不得切割、開孔或焊接，相關改裝須提出結構計算並取得結構技師簽證；每年巡檢時對照關鍵構件清冊確認現況，並在構件上設置永久標示。~Building rules must prohibit cutting, holing or welding transfer and key elements, require structural calculations and a licensed structural engineer's sign-off for related alterations, and have the annual inspection check each item on the key-element register, with permanent labels fixed on the members."
+    }
+  ],
+  "example": "設計練習：檢核一榀跨度 L = 18 m、深 d = 7.5 m（兩層樓）的轉換桁架，中點承受上方 20 層的一根柱。每層受載面積 9 m×9 m、服務荷重 8.0 kPa，柱力 P = 20×81×8.0 = 12,960 kN。中點彎矩 M = PL/4 = 12,960×18/4 = 58,320 kN·m，弦桿力 C = T = M/d ≈ 7,776 kN，以 0.9×345 MPa 計所需弦桿斷面約 25,040 mm²。分四格、每格 4.5 m，斜桿角度 θ = atan(7.5/4.5) ≈ 59.0°，端格剪力 V = P/2 = 6,480 kN，斜桿力 = V/sinθ ≈ 7,560 kN。弦桿取 A_c = 0.025 m²，等效 I = A_c·d²/2 ≈ 0.703 m⁴，撓度 δ = PL³/(48EI) = 12,960×18³/(48×200×10⁶×0.703) ≈ 11.2 mm，加上斜桿伸縮約 30% 得約 14.6 mm，預拱取 15 mm。若因建築要求把深度壓縮為一層 3.75 m，弦桿力加倍為約 15,550 kN，I 降為四分之一，撓度約 44.8 mm、含斜桿約 58 mm，預拱與上方樓層高差都難以控制。數值為教學假設，不代表任何實際建築。~Design exercise: check a transfer truss spanning L = 18 m with depth d = 7.5 m (two storeys), carrying at mid-span one column from 20 floors above. Each floor has a 9 m×9 m tributary area and an 8.0 kPa service load, so the column load P = 20×81×8.0 = 12,960 kN. The mid-span moment M = PL/4 = 12,960×18/4 = 58,320 kN·m and the chord force C = T = M/d ≈ 7,776 kN, needing a chord area of about 25,040 mm² at 0.9×345 MPa. With four 4.5 m panels the diagonal angle θ = atan(7.5/4.5) ≈ 59.0°, the end-panel shear V = P/2 = 6,480 kN and the diagonal force = V/sinθ ≈ 7,560 kN. Taking A_c = 0.025 m² for the chords, the equivalent I = A_c·d²/2 ≈ 0.703 m⁴ and the deflection δ = PL³/(48EI) = 12,960×18³/(48×200×10⁶×0.703) ≈ 11.2 mm; adding about 30% for diagonal strain gives about 14.6 mm, so a 15 mm camber is set. If architectural demands squeeze the depth to one 3.75 m storey, the chord force doubles to about 15,550 kN, I falls to a quarter and deflection becomes about 44.8 mm, about 58 mm with diagonals, making camber and level differences above hard to control. Values are teaching assumptions, not any real building.",
+  "history": "以深梁或桁架轉換柱位是高層建築的老問題，隨著混合用途塔樓興起而更常見：上部住宅或飯店的密柱要落在下部開闊的辦公、大廳或車站之上。2006 年完工的紐約赫斯特大樓以八根長約 27 m 的超級斜撐由第 3 層延伸到第 10 層，把斜交網格塔身的荷重送到保留的歷史立面內；2012 年封頂的碎片大廈以費氏桁架與 A 形構架轉換不同用途的柱網；2015 年封頂的樂天世界塔以帶狀桁架把燈籠與飯店柱轉到巨柱，並吊掛低層樓板；威利斯大樓在 2017 至 2020 年改造中以轉換柱與轉換梁把新裙樓的柱網對齊既有塔樓。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Transferring columns with deep beams or trusses is an old tall-building problem that has become more frequent with mixed-use towers, where dense residential or hotel columns must land over open offices, lobbies or stations below. The Hearst Tower in New York, completed in 2006, used eight super-diagonals about 27 m long running from the third to the tenth floor to carry its diagrid shaft down inside the retained historic façade; The Shard, topped out in 2012, used Vierendeel trusses and A-frames to transfer between column grids for different uses; Lotte World Tower, topped out in 2015, used belt trusses to carry the lantern and hotel columns onto mega-columns and to hang lower floors; and the 2017 to 2020 Willis Tower renovation used transfer columns and girders to align a new podium's grid with the existing tower. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "碎片大廈以費氏格框把周邊柱距由 6 m 加密到 3 m 再到 1.5 m~The Shard's Vierendeel grids step perimeter column spacing from 6 m to 3 m to 1.5 m",
+    "樂天世界塔帶狀桁架約位於 72–76 層與 104–107 層，把燈籠與飯店柱轉換到巨柱~Lotte World Tower belt trusses at about floors 72–76 and 104–107 transfer the lantern and hotel columns onto mega-columns",
+    "樂天世界塔第 5 至 7 層由最低一道帶狀桁架吊掛~Levels 5 to 7 of Lotte World Tower hang from the lowest belt truss",
+    "樂天世界塔帶狀桁架預組後現場焊接到 3.3 m 巨柱外側的預埋鋼板~Lotte World Tower belt trusses were pre-assembled and field-welded to embedded plates on the 3.3 m mega-columns",
+    "赫斯特大樓 8 根長約 27 m（90 ft）的超級斜撐由第 3 層延伸到第 10 層~Hearst Tower has 8 super-diagonals about 27 m (90 ft) long running from the third to the tenth floor",
+    "威利斯大樓底座改造使用 72 根轉換柱與約 80 根轉換梁，含 4 根 W40×503 型鋼梁~The Willis Tower repositioning used 72 transfer columns and about 80 transfer girders, including 4 W40×503 beams",
+    "威利斯大樓改造中 6 根深約 1.52 m（60 in）、長約 32 m 的板梁跨越活動空間~In the Willis Tower renovation 6 plate girders about 1.52 m (60 in) deep and about 32 m long span an event space",
+    "EN 1991-1-7 關鍵構件須承受 34 kN/m² 的意外面壓~EN 1991-1-7 key elements must resist an accidental pressure of 34 kN/m²",
+    "EN 1993-1-2 中利用率 0.6 的鋼構件臨界溫度約 554 °C~Under EN 1993-1-2 a steel member at 0.6 utilisation has a critical temperature of about 554 °C"
+  ],
+  "timeline": [
+    {
+      "year": "2005",
+      "event": "赫斯特大樓結構封頂，超級斜撐把斜交網格塔身轉到歷史立面內~Hearst Tower tops out, its super-diagonals carrying the diagrid shaft inside the historic façade"
+    },
+    {
+      "year": "2006",
+      "event": "赫斯特大樓完工，新塔身坐落在保留的歷史建築基座之上~Hearst Tower is completed, its new shaft standing above the retained historic base building"
+    },
+    {
+      "year": "2012",
+      "event": "碎片大廈封頂，費氏轉換與 A 形構架調和不同用途柱網~The Shard tops out, with Vierendeel and A-frame transfers reconciling column grids"
+    },
+    {
+      "year": "2015",
+      "event": "樂天世界塔封頂，帶狀桁架承托燈籠與飯店柱並吊掛低層樓板~Lotte World Tower tops out, its belt trusses carrying the lantern and hotel columns and hanging lower floors"
+    },
+    {
+      "year": "2017–2020",
+      "event": "威利斯大樓底座改造以轉換柱與轉換梁對齊新舊柱網~The Willis Tower base repositioning aligns new and existing grids with transfer columns and girders"
+    }
+  ],
+  "codes": [
+    "AISC 360：鋼結構建築規範~AISC 360: Specification for Structural Steel Buildings",
+    "AWS D1.1：鋼結構焊接規範~AWS D1.1: Structural Welding Code – Steel",
+    "AISC 303：鋼構建築與橋梁標準作業規範~AISC 303: Code of Standard Practice for Steel Buildings and Bridges",
+    "EN 1991-1-7：意外作用~EN 1991-1-7: Actions on structures – Accidental actions"
+  ],
+  "landmarks": [
+    "碎片大廈~The Shard, London",
+    "樂天世界塔~Lotte World Tower, Seoul",
+    "赫斯特大樓~Hearst Tower, New York",
+    "威利斯大樓~Willis Tower, Chicago"
+  ],
+  "place": {
+    "name": "碎片大廈~The Shard",
+    "country": "英國~United Kingdom",
+    "lat": 51.5045,
+    "lng": -0.0865,
+    "query": "The Shard London Bridge"
+  },
+  "sources": [
+    {
+      "key": "structure-mag-shard-transfer",
+      "title": "STRUCTURE 雜誌：倫敦橋塔（碎片大廈）結構設計",
+      "titleEn": "STRUCTURE magazine: structural design of London Bridge Tower (The Shard)",
+      "publisher": "STRUCTURE magazine / NCSEA",
+      "url": "https://www.structuremag.org/article.aspx?articleID=694",
+      "sourceType": "primary",
+      "scope": "費氏轉換桁架、柱距由 6 m 到 1.5 m 的格框、A 形轉換與傾斜柱在樓板產生的推拉力。",
+      "scopeEn": "Vierendeel transfer trusses, grids stepping columns from 6 m to 1.5 m, A-frame transfers and push–pull forces from inclined columns in floors."
+    },
+    {
+      "key": "structure-mag-lotte-belt",
+      "title": "STRUCTURE 雜誌：樂天世界塔的結構創新",
+      "titleEn": "STRUCTURE magazine: Structural Innovations of Lotte World Tower",
+      "publisher": "STRUCTURE magazine / NCSEA",
+      "url": "https://www.structuremag.org/article/structural-innovations-of-lotte-world-tower/",
+      "sourceType": "primary",
+      "scope": "帶狀桁架的轉換功能、吊掛的 5 至 7 層、巨柱尺寸與帶狀桁架構件的強健性檢核。",
+      "scopeEn": "Transfer role of belt trusses, hung levels 5 to 7, mega-column size and robustness checks of belt-truss members."
+    },
+    {
+      "key": "ctbuh-paper-lotte-belt",
+      "title": "CTBUH 2015 論文：123 層蠶室樂天世界塔結構設計的挑戰與機會",
+      "titleEn": "CTBUH 2015 paper: Challenges and Opportunities for the Structural Design of the 123-Story Jamsil Lotte World Tower",
+      "publisher": "Council on Tall Buildings and Urban Habitat",
+      "url": "https://global.ctbuh.org/resources/papers/2504-04_Kim.pdf",
+      "sourceType": "primary",
+      "scope": "帶狀桁架與外伸臂樓層、預組段件現場焊接到巨柱預埋板的施工方式與延遲接頭。",
+      "scopeEn": "Belt-truss and outrigger levels, pre-assembled sections field-welded to mega-column embed plates and delay joints."
+    },
+    {
+      "key": "aisc-willis-base-lift",
+      "title": "AISC Modern Steel Construction：威利斯大樓鋼構「底座提升」改造",
+      "titleEn": "AISC Modern Steel Construction: A Steel Base-Lift at Willis Tower",
+      "publisher": "American Institute of Steel Construction",
+      "url": "https://lsc-pagepro.mydigitalpublication.com/article/A+Steel+%E2%80%9CBase-Lift%E2%80%9D/3713265/665975/article.html",
+      "sourceType": "primary",
+      "scope": "轉換柱與轉換梁數量、W40×503 轉換梁、60 in 深板梁、分段吊裝續接與既有柱補強。",
+      "scopeEn": "Numbers of transfer columns and girders, W40×503 transfer beams, 60 in plate girders, two-piece lifting and splicing, and strengthening of existing columns."
+    },
+    {
+      "key": "wiki-hearst-tower",
+      "title": "維基百科：赫斯特大樓（紐約，英文）",
+      "titleEn": "Wikipedia: Hearst Tower (Manhattan)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hearst_Tower_(Manhattan)",
+      "sourceType": "secondary",
+      "scope": "超級斜撐的數量、長度與跨越樓層，以及施工時序的概覽。",
+      "scopeEn": "Number, length and storeys spanned by the super-diagonals, with an overview of the construction chronology."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "安賽樂米塔爾",
+      "nameEn": "ArcelorMittal",
+      "business": "全球鋼鐵製造商，生產重型熱軋型鋼、厚板與 Z 向性能鋼材。",
+      "businessEn": "Global steelmaker producing heavy rolled sections, thick plate and through-thickness-grade steel.",
+      "url": "https://corporate.arcelormittal.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "MT",
+        "exchange": "AMS",
+        "currency": "EUR"
+      },
+      "role": "轉換桁架巨型型鋼與厚板的材料等級與焊接性資料",
+      "roleEn": "Grade and weldability data for jumbo sections and thick plate in transfer trusses"
+    },
+    {
+      "name": "林肯電氣",
+      "nameEn": "Lincoln Electric",
+      "business": "焊接設備與焊材製造商，提供厚板焊接程序與自動化焊接方案。",
+      "businessEn": "Maker of welding equipment and consumables offering thick-plate welding procedures and automated welding solutions.",
+      "url": "https://www.lincolnelectric.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "LECO",
+        "exchange": "NASDAQ",
+        "currency": "USD"
+      },
+      "role": "低氫焊材、預熱與厚板焊接程序的技術資料",
+      "roleEn": "Technical data on low-hydrogen consumables, preheat and thick-plate welding procedures"
+    },
+    {
+      "name": "恩派克",
+      "nameEn": "Enerpac Tool Group",
+      "business": "液壓工具與重型提升設備製造商，產品含同步千斤頂與鋼絞線提升系統。",
+      "businessEn": "Manufacturer of hydraulic tools and heavy-lifting equipment, including synchronised jacks and strand-jack systems.",
+      "url": "https://www.enerpac.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "EPAC",
+        "exchange": "NYSE",
+        "currency": "USD"
+      },
+      "role": "同步提升、分級卸撐與千斤頂荷重監測的設備概念",
+      "roleEn": "Equipment concepts for synchronised lifting, staged de-propping and jack load monitoring"
+    }
+  ],
+  "related": [
+    "b063",
+    "b030"
+  ],
+  "architectureNodes": [
+    [
+      "上部不連續柱",
+      "Discontinued upper columns"
+    ],
+    [
+      "轉換桁架弦桿與斜桿",
+      "Transfer-truss chords and diagonals"
+    ],
+    [
+      "節點、預埋板與螺栓群",
+      "Nodes, embed plates and bolt groups"
+    ],
+    [
+      "支承柱或巨柱",
+      "Supporting columns or mega-columns"
+    ],
+    [
+      "臨時支撐與分級卸撐",
+      "Temporary props and staged release"
+    ],
+    [
+      "檢驗、監測與關鍵構件紀錄",
+      "Inspection, monitoring and key-element records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ]
+  ]
+}

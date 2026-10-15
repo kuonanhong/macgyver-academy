@@ -461,12 +461,12 @@ grant execute on function public.academy_revoke_entitlement(text, text) to servi
 revoke all on function public.academy_login_attempt(text, integer, integer) from public, anon, authenticated;
 grant execute on function public.academy_login_attempt(text, integer, integer) to service_role;
 
--- ============================================ optional: weekly fx-refresh job
+-- ======================================= optional: fx-refresh job every 12 hours (V13)
 -- Enable the pg_cron and pg_net extensions (Dashboard → Database → Extensions),
 -- store the same value as the CRON_SECRET function secret in Vault, then run:
 --
 -- select vault.create_secret('<same value as CRON_SECRET>', 'academy_cron_secret');
--- select cron.schedule('academy-fx-refresh', '17 3 * * 1', $job$
+-- select cron.schedule('academy-fx-refresh', '17 */12 * * *', $job$
 --   select net.http_post(
 --     url := 'https://<project-ref>.supabase.co/functions/v1/fx-refresh',
 --     headers := jsonb_build_object(

@@ -1,0 +1,309 @@
+{
+  "id": "b068",
+  "title": "黏滯阻尼器性能驗證~Viscous-damper performance verification",
+  "discipline": "st-tall-systems",
+  "family": "damper",
+  "focus": "以力—速度本構、原型與逐件試驗、安裝置中與系統識別，證明每具黏滯阻尼器提供設計阻尼~Force–velocity laws, prototype and production tests, installation centring and system identification that prove every viscous damper delivers its design damping",
+  "summary": "從附加阻尼的性能目標出發，建立 F = C·v^α 的非線性本構與麥斯威爾串聯模型，檢查缸體耐壓與密封，再走過逐件出廠試驗、現場安裝的行程預算與置中、原型試驗的頻率與溫升、完工系統識別，最後談長期抽樣復驗與地震後評估，並以 Torre Mayor、台灣高鐵雲林段高架橋與倫敦千禧橋的公開資料對照。~Starting from supplemental-damping performance targets, build the nonlinear law F = C·v^α and the Maxwell series model, check cylinder pressure and seals, then work through production testing of every unit, stroke budgets and centring at installation, prototype frequency and temperature-rise tests and post-completion system identification, and finally long-term sample re-testing and post-earthquake assessment, compared with public information on Torre Mayor, the Taiwan High Speed Rail Yunlin viaduct and London's Millennium Bridge.",
+  "units": [
+    {
+      "anchor": "附加阻尼比~Supplemental damping ratio",
+      "title": "附加阻尼的性能目標~Performance targets for supplemental damping",
+      "mechanism": "流體黏滯阻尼器的力與速度同相、與位移相差 90 度：結構位移最大時速度為零，阻尼力也接近零，因此能在不明顯增加柱與基礎最大內力的情況下增加耗能。設計者通常以附加阻尼比表示目標，例如把總阻尼由約 5% 提高到 20% 至 30%，以降低層間變位與樓板加速度。墨西哥市 57 層的 Torre Mayor 設有 98 具流體黏滯阻尼器，製造商公開說明它在 2003 年規模 7.6 與 2017 年規模 7.1 地震中均無損傷。性能驗證的核心，是確認每一具阻尼器真的提供設計所假設的力—速度關係。~A fluid viscous damper's force is in phase with velocity and 90 degrees out of phase with displacement: at peak displacement the velocity is zero and so is the damping force, so energy dissipation rises without markedly increasing peak column and foundation forces. Designers usually express the target as supplemental damping, for example raising total damping from about 5% to 20% to 30% to cut storey drift and floor acceleration. The 57-storey Torre Mayor in Mexico City has 98 fluid viscous dampers, and the manufacturer reports no damage in the magnitude 7.6 earthquake of 2003 or the magnitude 7.1 earthquake of 2017. The core of performance verification is confirming that every damper actually delivers the force–velocity relation assumed in design.",
+      "model": "Eurocode 8 阻尼修正係數 η = √(10/(5+ξ))（ξ 以 % 計，η ≥ 0.55）。固有阻尼 5% 加附加阻尼 20%，ξ = 25%，η = √(10/30) ≈ 0.58，設計譜位移約降為 5% 阻尼時的 58%；若實際附加阻尼只有 15%，η = √(10/25) ≈ 0.63，位移增加約 10%。數值為教學假設。~The Eurocode 8 damping correction factor is η = √(10/(5+ξ)) with ξ in percent and η ≥ 0.55. With 5% inherent plus 20% supplemental damping, ξ = 25% and η = √(10/30) ≈ 0.58, so design spectral displacement falls to about 58% of the 5%-damped value; if only 15% supplemental damping is achieved, η = √(10/25) ≈ 0.63 and displacement rises by about 10%. Values are teaching assumptions.",
+      "verify": "設計階段以非線性時間歷程分析比較有無阻尼器時的層間變位、樓板加速度與阻尼器力、行程與速度，產出每一具阻尼器的需求表（最大力、最大速度、最大行程、每次地震的耗能），作為後續試驗規格與允收標準的依據。~At design stage, compare storey drift, floor acceleration and damper force, stroke and velocity with and without dampers using nonlinear time-history analysis, and produce a demand table for every damper (peak force, peak velocity, peak stroke, energy per earthquake) as the basis for later test specifications and acceptance criteria.",
+      "failure": "若只用等效阻尼比做線性分析，而沒有算出每具阻尼器的速度與行程，試驗規格可能低估最大速度，使阻尼器在設計地震時超過額定力或觸底，失去耗能並對接頭產生衝擊力。~Linear analysis with an equivalent damping ratio alone, without computing each damper's velocity and stroke, can lead to test specifications that underestimate peak velocity, so dampers exceed rated force or bottom out in the design earthquake, losing dissipation and hammering their connections.",
+      "misconception": "加裝黏滯阻尼器會讓結構變硬，所以柱與基礎的內力一定增加。~Adding viscous dampers stiffens the structure, so column and foundation forces must increase.",
+      "practice": "結構計算書要附阻尼器需求表與編號對照圖，並在設計說明中寫明附加阻尼比、性能目標與允許性質變異範圍，讓試驗單位與審查者能直接比對。~The structural calculations should attach the damper demand table and a numbered location plan, and the design basis should state the supplemental damping ratio, performance targets and allowed property variation so that test laboratories and reviewers can compare directly."
+    },
+    {
+      "anchor": "力—速度曲線~Force–velocity curve",
+      "title": "非線性黏滯本構與阻尼指數~Nonlinear viscous law and damping exponent",
+      "mechanism": "黏滯阻尼器的力通常寫成 F = C·|v|^α·sgn(v)，C 為阻尼常數、α 為阻尼指數。α = 1 為線性阻尼，力與速度成正比；建築耐震常用 α 約 0.3 至 0.5，速度增加時力增加有限，可控制傳到斜撐、接頭與構架的最大力。製造商以孔口設計調整 C 與 α，Taylor Devices 公開的指數範圍約 0.3 至 2.0。非線性也意味著小速度時力相對較大，風振或溫度造成的緩慢變形都要檢查。~A viscous damper's force is usually written F = C·|v|^α·sgn(v), where C is the damping constant and α the damping exponent. With α = 1 the damper is linear and force is proportional to velocity; seismic building applications often use α of about 0.3 to 0.5, so force grows only modestly with velocity and the peak force sent to braces, connections and frames is capped. Manufacturers set C and α through orifice design, and Taylor Devices publishes an exponent range of about 0.3 to 2.0. Nonlinearity also means relatively large forces at low velocity, so slow deformations from wind or temperature must be checked.",
+      "model": "取 C = 1,500 kN·(s/m)^0.4、α = 0.4：v = 0.25 m/s 時 F = 1,500×0.25^0.4 ≈ 862 kN；v = 0.5 m/s 時約 1,137 kN；v = 1.0 m/s 時 1,500 kN，速度由 0.5 加倍到 1.0 m/s，力只增加約 32%。若為線性 C = 1,500 kN·s/m，同樣速度區間的力由 750 增為 1,500 kN。數值為教學假設。~Take C = 1,500 kN·(s/m)^0.4 and α = 0.4: at v = 0.25 m/s, F = 1,500×0.25^0.4 ≈ 862 kN; at 0.5 m/s about 1,137 kN; at 1.0 m/s 1,500 kN, so doubling velocity from 0.5 to 1.0 m/s raises force by only about 32%. A linear damper with C = 1,500 kN·s/m goes from 750 to 1,500 kN over the same range. Values are teaching assumptions.",
+      "verify": "原型試驗在至少三個速度（例如設計速度的 25%、50% 與 100%）下量測尖峰力，以對數座標擬合 log F = log C + α·log v 求出 C 與 α，並與規格比較；擬合殘差過大時，代表孔口或閥件在某速度區間行為改變。~Prototype tests measure peak force at no fewer than three velocities, for example 25%, 50% and 100% of the design velocity, and fit log F = log C + α·log v on log axes to obtain C and α for comparison with the specification; large fit residuals indicate that the orifice or valving changes behaviour in some velocity range.",
+      "failure": "若採購規格只寫一個最大力而未寫 C 與 α，製造商可能交付線性阻尼器；在超過設計速度的近斷層脈衝下，線性阻尼器的力比預期大很多，使斜撐或節點板先破壞。反之 α 過小時，小振幅下的力相對大，接頭在風振下累積疲勞。~If the purchase specification gives only a maximum force without C and α, a linear damper may be delivered; under a near-fault pulse above the design velocity its force is far larger than expected and the brace or gusset fails first. Conversely, a very small α gives relatively high force at small amplitude, so connections accumulate fatigue under wind.",
+      "misconception": "阻尼指數 α 越小越好，因為最大力被限制住了。~The smaller the damping exponent α the better, because the peak force is capped.",
+      "practice": "規格書要同時列出 C、α、設計速度、最大速度、最大行程與允收偏差，並要求試驗報告附力—速度擬合圖與殘差；變更 α 須重新分析結構並經設計者核可。~The specification must list C, α, design velocity, maximum velocity, maximum stroke and acceptance tolerance together, and require test reports to include the force–velocity fit and its residuals; any change to α requires reanalysis and the designer's approval."
+    },
+    {
+      "anchor": "缸體、活塞桿與矽油~Cylinder, piston rod and silicone fluid",
+      "title": "缸體耐壓、密封與流體~Cylinder pressure, seals and fluid",
+      "mechanism": "阻尼器由高強度鋼缸體、活塞桿、帶孔口的活塞與矽油組成，活塞移動時把油從一側推到另一側，高速流過孔口產生壓差，壓差乘以活塞有效面積就是阻尼力。矽油化學穩定、不易燃，黏度隨溫度變化較小，但性質仍會隨溫度改變，部分設計以雙金屬孔口補償。活塞桿進出會改變缸內容積，需要蓄壓空間或貫通桿設計；密封必須在高壓下長期不漏油，是阻尼器耐久的關鍵。~A damper consists of a high-strength steel cylinder, a piston rod, a piston with orifices and silicone fluid; as the piston moves it forces fluid from one side to the other, the high-speed flow through the orifices creates a pressure difference, and that pressure times the effective piston area is the damping force. Silicone fluid is chemically stable, non-flammable and relatively insensitive to temperature, yet its properties still change with temperature, and some designs compensate with bimetallic orifices. Rod entry changes the internal volume, so an accumulator space or through-rod design is needed; seals must hold high pressure without leaking for decades and are the key to durability.",
+      "model": "活塞有效面積 A = π/4·(D² − d²)。取缸徑 D = 250 mm、桿徑 d = 100 mm，A = π/4×(0.0625 − 0.0100) ≈ 0.0412 m²；阻尼力 1,500 kN 時缸內壓差 p = F/A ≈ 1,500/0.0412 ≈ 36.4 MPa，以 1.5 倍做耐壓驗證約 54.6 MPa。數值為教學假設。~The effective piston area is A = π/4·(D² − d²). With bore D = 250 mm and rod d = 100 mm, A = π/4×(0.0625 − 0.0100) ≈ 0.0412 m²; a 1,500 kN damping force needs a pressure difference p = F/A ≈ 1,500/0.0412 ≈ 36.4 MPa, and a 1.5 times proof test is about 54.6 MPa. Values are teaching assumptions.",
+      "verify": "每具阻尼器出廠前做耐壓試驗，壓力高於地震與風作用下的最大內壓並保持規定時間，檢查無滲漏與永久變形；同時檢查缸體與活塞桿的材料證明、桿面硬化或鍍層厚度與表面粗糙度。~Before delivery, proof-test every damper above the maximum internal pressure expected under earthquake and wind and hold it for the specified time, checking for leakage and permanent deformation; also check mill certificates for the cylinder and rod, rod surface hardening or plating thickness and surface roughness.",
+      "failure": "密封在高壓與長期往復下磨耗，起初只是桿上油膜增加，逐漸變成可見漏油；油量減少後缸內出現空氣，力—位移遲滯迴圈在換向處出現缺角，阻尼力下降並可能產生衝擊。活塞桿表面刮傷會加速密封損壞。~Seals wear under high pressure and long reciprocation: at first the rod film thickens, then visible leakage appears; as fluid is lost air enters the cylinder, the force–displacement loop shows notches at reversal, damping force drops and impacts may occur. Scratches on the rod surface accelerate seal damage.",
+      "misconception": "只要阻尼器外觀沒有油漬，內部一定沒有問題。~If a damper shows no oil stains outside, nothing can be wrong inside.",
+      "practice": "安裝後活塞桿外露段要加保護罩，避免焊渣、油漆與水泥漿附著；阻尼器附近的現場焊接必須遮蔽，並禁止把阻尼器當作吊點或臨時支撐。~After installation, fit a protective boot over the exposed rod to keep off weld spatter, paint and cement slurry; shield any site welding near the damper, and never use a damper as a lifting point or temporary support."
+    },
+    {
+      "anchor": "斜撐與節點板勁度~Brace and gusset stiffness",
+      "title": "串聯勁度與麥斯威爾模型~Series stiffness and the Maxwell model",
+      "mechanism": "阻尼器不是直接裝在樓層之間，而是透過斜撐、節點板、插銷與錨栓串聯到構架。這些元件的彈性與間隙會吃掉部分層間變形，使阻尼器實際行程小於理論值；可用麥斯威爾模型（阻尼器與彈簧串聯）描述，鬆弛時間 τ = C/K_b 越大，阻尼器在高頻下越像彈簧而不像阻尼器。插銷間隙在小振幅風振時特別關鍵，因為間隙可能與振幅同一量級。~A damper is not fixed directly between floors but connected in series through a brace, gusset plates, pins and anchors. Their flexibility and clearances absorb part of the storey drift, so the damper's actual stroke is less than the theoretical value; this is described by a Maxwell model, a damper in series with a spring, where the larger the relaxation time τ = C/K_b, the more the damper behaves like a spring rather than a dashpot at higher frequency. Pin clearance matters most in small-amplitude wind response, where the gap may be of the same order as the motion.",
+      "model": "線性 C = 2,000 kN·s/m。斜撐勁度 K_b = 200,000 kN/m 時 τ = 0.01 s，在 1.0 Hz 下 ωτ = 0.063，耗能為剛性斜撐時的 1/(1+0.063²) ≈ 99.6%；若 K_b 只有 40,000 kN/m，τ = 0.05 s，ωτ = 0.314，耗能降為約 91%。數值為教學假設。~Take a linear C = 2,000 kN·s/m. With brace stiffness K_b = 200,000 kN/m, τ = 0.01 s and at 1.0 Hz ωτ = 0.063, so dissipation is 1/(1+0.063²) ≈ 99.6% of the rigid-brace value; with K_b of only 40,000 kN/m, τ = 0.05 s, ωτ = 0.314 and dissipation falls to about 91%. Values are teaching assumptions.",
+      "verify": "以元件試驗或有限元素分析求出斜撐、節點板與錨栓的串聯勁度並納入結構模型；現場量測插銷與銷孔直徑，確認間隙不超過規格（例如 0.5 mm 以內），完工後再以小振幅激振確認阻尼器確實產生相對位移。~Obtain the series stiffness of brace, gusset and anchors from component tests or finite-element analysis and include it in the structural model; measure pin and hole diameters on site to confirm clearance within specification, for example 0.5 mm, and after completion use small-amplitude excitation to confirm that the dampers actually stroke.",
+      "failure": "斜撐太柔或節點板面外挫屈時，層間變形大多被斜撐吸收，阻尼器幾乎不動作，結構實際阻尼遠低於設計；插銷間隙過大則在風振時只有敲擊沒有耗能，並造成噪音與疲勞。~If the brace is too flexible or the gusset buckles out of plane, the brace absorbs most of the drift, the damper barely moves and real damping falls far below design; excessive pin clearance produces knocking instead of dissipation under wind, with noise and fatigue.",
+      "misconception": "阻尼器的效果只取決於阻尼器本身，與斜撐和接頭勁度無關。~A damper's effectiveness depends only on the damper and not on brace or connection stiffness.",
+      "practice": "圖說應規定斜撐最小軸向勁度、插銷間隙與球面軸承規格，接頭設計力取阻尼器最大力乘上超強係數；製造與安裝檢查表要逐具記錄插銷間隙。~Drawings should specify minimum brace axial stiffness, pin clearance and spherical-bearing requirements, with connections designed for the maximum damper force times an overstrength factor; fabrication and installation checklists must record pin clearance for every unit."
+    },
+    {
+      "anchor": "逐件出廠試驗~Production test of every unit",
+      "title": "出廠試驗與遲滯迴圈驗收~Production testing and hysteresis-loop acceptance",
+      "mechanism": "原型試驗證明設計可行，逐件出廠試驗則證明每一具都和原型一樣。常見做法是在試驗機上以正弦位移在設計頻率附近做數個循環，量測力—位移遲滯迴圈：迴圈面積代表每循環耗能，零位移時的力代表最大阻尼力，迴圈形狀則能看出空氣、摩擦或間隙。Taylor Devices 公開說明，每具結構用阻尼器都會動態試驗到規格最大力並隨貨附試驗報告。~Prototype tests prove the design; production tests prove that every unit matches the prototype. A common procedure applies several sinusoidal displacement cycles near the design frequency on a test machine and records the force–displacement hysteresis loop: the loop area is the energy dissipated per cycle, the force at zero displacement is the peak damping force, and the loop shape reveals air, friction or free play. Taylor Devices states that every structural damper it supplies is dynamically tested to its maximum specified force and shipped with a test report.",
+      "model": "線性阻尼器每循環耗能 E = π·C·ω·u₀²。C = 2,000 kN·s/m、u₀ = 50 mm、f = 0.5 Hz（ω = 3.14 rad/s）時 E = π×2,000×3.14×0.0025 ≈ 49.3 kJ；若量得迴圈面積 45.0 kJ，反算 C_eq = 45.0/(π×3.14×0.0025) ≈ 1,824 kN·s/m，偏差 −8.8%，在 ±15% 允收範圍內。數值為教學假設。~A linear damper dissipates E = π·C·ω·u₀² per cycle. With C = 2,000 kN·s/m, u₀ = 50 mm and f = 0.5 Hz (ω = 3.14 rad/s), E = π×2,000×3.14×0.0025 ≈ 49.3 kJ; a measured loop area of 45.0 kJ gives C_eq = 45.0/(π×3.14×0.0025) ≈ 1,824 kN·s/m, a deviation of −8.8%, inside a ±15% acceptance band. Values are teaching assumptions.",
+      "verify": "試驗前確認荷重元與位移計的校正可追溯至國家標準，報告須記錄試驗溫度；每具阻尼器的 C_eq、零位移力與最大行程與原型平均值比較，並由業主代表或第三方見證抽樣試驗，見證紀錄與序號一併歸檔。~Before testing, confirm that load-cell and displacement-transducer calibrations are traceable to national standards, and record test temperature in the report; compare each unit's C_eq, zero-displacement force and maximum stroke with the prototype average, and have the owner's representative or a third party witness a sample of tests, filing witness records with serial numbers.",
+      "failure": "若只抽驗少數樣品而不逐件試驗，混入一具組裝時孔口錯置或灌油不足的阻尼器，地震時可能只有一半的力；試驗時若未記錄溫度，夏季現場的實際阻尼與冬季出廠試驗的差異將無從判斷。~Testing only a few samples instead of every unit lets a damper with a misplaced orifice or incomplete fill slip through, delivering perhaps half its force in an earthquake; without recorded test temperatures, differences between summer site behaviour and winter factory tests cannot be judged.",
+      "misconception": "同一批次阻尼器只要抽驗一具合格，其他都不必試驗。~If one damper from a batch passes, the rest of the batch need not be tested.",
+      "practice": "採購合約要求逐件試驗、見證點與試驗報告格式（含序號、溫度、迴圈圖、C_eq 與偏差），不合格品不得以修正係數放行；試驗報告須與現場安裝位置一一對照。~The purchase contract should require testing of every unit, witness points and a report format with serial number, temperature, loop plot, C_eq and deviation; failed units must not be released with correction factors, and each test report must be matched to its installed location."
+    },
+    {
+      "anchor": "行程中心與安裝溫度~Stroke centre and installation temperature",
+      "title": "現場安裝、行程預算與置中~Site installation, stroke budget and centring",
+      "mechanism": "阻尼器通常在主結構完成後才安裝，讓施工期間的收縮、潛變與自重變形不佔用行程；安裝時活塞要放在依當時溫度推算的位置，使之後的溫度伸縮與地震行程都在可用範圍內。台灣高鐵雲林段高架橋在伸縮縫設置 34 具約 4,000 kN 的流體黏滯阻尼器，行程約 ±5 in（±127 mm），用來控制地震與列車煞車時的運動；緩慢的溫度伸縮速度極低、阻尼力很小，卻會移動行程中心。~Dampers are usually installed after the main structure is complete so that shrinkage, creep and self-weight deformation during construction do not consume stroke; at installation the piston is set at a position calculated for the current temperature so that later thermal movement and seismic stroke both stay within the available range. The Taiwan High Speed Rail viaduct in Yunlin has 34 fluid viscous dampers of about 4,000 kN at expansion joints, with about ±5 in (±127 mm) stroke, to control movement in earthquakes and train braking; slow thermal movement is so slow that damping force is small, yet it shifts the stroke centre.",
+      "model": "溫度伸縮 ΔL = α·L·ΔT = 1.0×10⁻⁵×60 m×40°C = 24 mm，在平均溫度置中時佔 ±12 mm；加上地震行程 ±100 mm，共 ±112 mm，小於 ±127 mm，餘裕 15 mm。若在最高溫時以中點安裝，最低溫時偏移 24 mm，總需求 124 mm，餘裕只剩 3 mm。L、ΔT 與地震行程為教學假設。~Thermal movement ΔL = α·L·ΔT = 1.0×10⁻⁵×60 m×40°C = 24 mm, or ±12 mm when centred at mean temperature; adding ±100 mm of seismic stroke gives ±112 mm, inside ±127 mm with 15 mm to spare. Centring at the hottest temperature shifts the piston 24 mm at the coldest, so total demand is 124 mm and only 3 mm remains. L, ΔT and the seismic stroke are teaching assumptions.",
+      "verify": "安裝前量測構件溫度並依圖表計算活塞目標位置，安裝後量測實際外露桿長並拍照記錄；之後於冬夏兩季複測桿長，確認溫度移動量與預測一致，並檢查是否有施工遺留的偏心或扭轉。~Before installation, measure member temperature and compute the target piston position from the chart; after installation, measure and photograph the exposed rod length; re-measure rod length in winter and summer to confirm thermal movement matches prediction and to check for eccentricity or twist left from construction.",
+      "failure": "若在構架仍在收縮或溫度極端時安裝而未置中，地震時活塞可能撞到端部，產生極大衝擊力並損壞端蓋與接頭；安裝角度偏差或插銷不同軸，則讓活塞桿承受彎矩並刮傷密封。~Installing without centring while the frame is still shrinking or at an extreme temperature lets the piston hit its end stop in an earthquake, producing huge impact forces that damage end caps and connections; angular misalignment or non-coaxial pins put bending into the rod and score the seals.",
+      "misconception": "黏滯阻尼器在任何溫度、任何時間點安裝都一樣，因為慢速變形不會產生力。~A viscous damper can be installed at any temperature and time, because slow deformation creates no force.",
+      "practice": "安裝程序要寫明安裝時段、量測溫度、目標桿長表、允許偏差與運輸鎖定件的拆除時點，並設為停止點，經結構設計者或監造簽認後才可拆除鎖定件。~The installation procedure should state the installation window, temperature measurement, target rod-length table, tolerances and when transport locks are removed, set as a hold point so that locks come off only after the structural designer or site supervisor signs off."
+    },
+    {
+      "anchor": "原型試驗與溫升~Prototype tests and temperature rise",
+      "title": "原型試驗：頻率、溫度與長時間耗能~Prototype tests: frequency, temperature and long-duration dissipation",
+      "mechanism": "原型試驗要證明阻尼器在各種實際條件下都在允許變異內：不同頻率與振幅、不同環境溫度，以及長時間連續耗能造成的自體溫升。地震只有數十個大循環但每循環耗能大；風振則是數千個小循環，總熱量可能更多。油溫升高使黏度下降、阻尼力降低，因此試驗要量測外殼與油溫並記錄性質變化，設計者再以性質上下限（例如 ±15%）做結構分析的包絡檢核。~Prototype tests must show that the damper stays within allowed variation under realistic conditions: different frequencies and amplitudes, different ambient temperatures and the self-heating caused by long continuous dissipation. An earthquake has only tens of large cycles with high energy per cycle, whereas wind imposes thousands of small cycles whose total heat can be greater. Hotter fluid has lower viscosity and less damping force, so tests measure casing and fluid temperature and track property changes, and designers then bound the structural analysis with upper and lower properties, for example ±15%.",
+      "model": "溫升 ΔT ≈ ΣE/(Σm·c)。鋼材 400 kg（c = 460 J/kg·K）加矽油 20 kg（c = 1,500 J/kg·K），合計熱容 214 kJ/K；地震 20 個循環、每循環 49.3 kJ，ΔT ≈ 987/214 ≈ 4.6°C；風振 2,000 個循環、每循環 5 kJ，若不計散熱，ΔT ≈ 10,000/214 ≈ 47°C。數值為教學假設。~Temperature rise ΔT ≈ ΣE/(Σm·c). Steel of 400 kg (c = 460 J/kg·K) plus 20 kg of silicone fluid (c = 1,500 J/kg·K) give a heat capacity of 214 kJ/K; 20 earthquake cycles of 49.3 kJ give ΔT ≈ 987/214 ≈ 4.6°C, while 2,000 wind cycles of 5 kJ, ignoring heat loss, give ΔT ≈ 10,000/214 ≈ 47°C. Values are teaching assumptions.",
+      "verify": "依 ASCE 7 第 18 章或 EN 15129 的精神規劃原型試驗：多個頻率與振幅的循環、最低與最高設計溫度下的試驗，以及連續循環的耐久與溫升試驗；比較每組試驗的 C 與 α 是否落在允許包絡內，並在試驗後拆檢密封。~Plan prototype tests in the spirit of ASCE 7 Chapter 18 or EN 15129: cycles at several frequencies and amplitudes, tests at the minimum and maximum design temperatures, and continuous-cycling endurance and temperature-rise tests; check that C and α from each series fall within the allowed envelope, and dismantle and inspect the seals afterwards.",
+      "failure": "若原型試驗只在室溫下做短時間循環，風振長時間作用下油溫升高、阻尼力衰減，或密封在高溫下老化，實際性質超出分析假設的下限；寒冷地區的低溫則使力超過上限，接頭設計不足。~If prototype tests are only short runs at room temperature, long wind events heat the fluid and reduce force, or seals age at high temperature, so real properties fall below the analysis lower bound; low temperatures in cold climates push force above the upper bound and overload under-designed connections.",
+      "misconception": "地震只有幾十秒，阻尼器不必考慮發熱問題。~An earthquake lasts only tens of seconds, so damper heating can be ignored.",
+      "practice": "結構分析必須以試驗得到的性質上限與下限各跑一次：下限檢查位移與行程，上限檢查阻尼器力、斜撐與接頭；原型試驗報告須經設計者審查核可後才可量產。~Run the structural analysis once with the tested upper-bound properties and once with the lower bound: the lower bound checks displacement and stroke, the upper bound checks damper force, braces and connections; production starts only after the designer has reviewed and approved the prototype test report."
+    },
+    {
+      "anchor": "構架附加阻尼識別~Frame added-damping identification",
+      "title": "完工系統識別與實測驗證~Post-completion system identification and field verification",
+      "mechanism": "阻尼器逐件合格不等於整個結構得到設計的附加阻尼，因為斜撐勁度、插銷間隙與非結構構件都會影響。完工後可用強制振動、拉放試驗或強震紀錄辨識結構頻率與阻尼比；非線性阻尼器的等效阻尼隨振幅改變，環境微振動只能檢查有無卡死或間隙，真正的附加阻尼要在較大振幅下驗證。倫敦千禧橋加裝阻尼裝置後，Arup 以約 2,000 人的控制行走試驗確認側向擺動已被抑制，就是系統級驗證的例子。~Passing every damper test does not guarantee the structure receives its design damping, because brace stiffness, pin clearance and non-structural elements all intervene. After completion, forced vibration, pull-back tests or strong-motion records identify frequencies and damping ratios; since the equivalent damping of nonlinear dampers varies with amplitude, ambient vibration can only show whether devices are stuck or loose, and real added damping must be verified at larger amplitude. After damping devices were installed on London's Millennium Bridge, Arup confirmed with a controlled walk of about 2,000 people that the lateral sway had been suppressed, an example of system-level verification.",
+      "model": "單自由度近似：m = 1,250 t、k = 50,000 kN/m，ω = √(k/m) ≈ 6.32 rad/s（約 1.0 Hz），臨界阻尼 c_cr = 2√(km) ≈ 15,800 kN·s/m。兩具 1,000 kN·s/m 的線性阻尼器以 35° 斜撐配置，水平等效 C_h = 2×1,000×cos²35° ≈ 1,342 kN·s/m，附加阻尼 ζ ≈ 1,342/15,800 ≈ 8.5%。數值為教學假設。~Single-degree-of-freedom approximation: m = 1,250 t and k = 50,000 kN/m give ω = √(k/m) ≈ 6.32 rad/s (about 1.0 Hz) and critical damping c_cr = 2√(km) ≈ 15,800 kN·s/m. Two linear dampers of 1,000 kN·s/m on 35° braces give a horizontal equivalent C_h = 2×1,000×cos²35° ≈ 1,342 kN·s/m and added damping ζ ≈ 1,342/15,800 ≈ 8.5%. Values are teaching assumptions.",
+      "verify": "在結構上安裝加速度計與阻尼器位移計，比較阻尼器相對位移與層間變位的比值是否接近幾何預測（例如 cos35° ≈ 0.82）；地震後以紀錄反算各層阻尼器力與耗能，與設計需求表比較，差異過大的位置優先檢查斜撐與插銷。~Install accelerometers and damper displacement transducers and check that the ratio of damper stroke to storey drift is close to the geometric prediction, for example cos35° ≈ 0.82; after an earthquake back-calculate damper force and energy for each level from the records and compare with the design demand table, inspecting braces and pins first where differences are large.",
+      "failure": "若只以環境振動資料計算阻尼比，振幅與速度太小，非線性阻尼器幾乎不出力，量到的阻尼接近結構固有阻尼，可能被誤判為阻尼器失效；忽略量測噪音，又可能把感測器漂移誤當成阻尼器位移。~Computing damping only from ambient data, where amplitude and velocity are tiny, means nonlinear dampers barely engage and the measured damping is close to inherent damping, which may be misread as damper failure; ignoring measurement noise can also mistake sensor drift for damper stroke.",
+      "misconception": "用環境微振動量到的阻尼比，就能代表地震時阻尼器提供的附加阻尼。~Damping measured from ambient vibration represents the added damping the dampers provide in an earthquake.",
+      "practice": "設計階段就規劃阻尼器位移計與強震儀的位置與配線路徑；業主的長期監測合約應涵蓋地震後自動產生阻尼器行程與力的摘要報告。~Plan locations and cable routes for damper displacement transducers and strong-motion instruments at design stage; the owner's long-term monitoring contract should include an automatic post-earthquake summary of damper strokes and forces."
+    },
+    {
+      "anchor": "密封磨耗與滲油檢查~Seal wear and leak inspection",
+      "title": "長期耐久、抽樣復驗與檢查週期~Long-term durability, sample re-testing and inspection intervals",
+      "mechanism": "建築耐震用阻尼器多半長期靜止，橋梁或人行橋阻尼器則幾乎持續動作，兩者劣化機制不同：前者擔心密封長期靜置後的黏著與油品老化，後者擔心密封磨耗與疲勞。Taylor Devices 公開說明千禧橋的 37 具阻尼器以 50 年以上、約 2×10⁹ 次循環設計，中間與主要檢查及試驗均未見劣化；其長期案例研究也提到某人行橋阻尼器在第 7 年做中間檢查、第 11 年做全面檢查，拆下 3 具動態試驗後重新安裝。~Seismic building dampers mostly sit still for years, whereas bridge and footbridge dampers move almost continuously, so their deterioration differs: the former risk seal sticking and fluid ageing after long rest, the latter seal wear and fatigue. Taylor Devices states that the 37 Millennium Bridge dampers were designed for more than 50 years and about 2×10⁹ cycles, and that intermediate and principal inspections and tests found no degradation; its long-term case study of a footbridge describes an intermediate inspection at seven years and a comprehensive one at eleven years, with three dampers removed, dynamically tested and reinstalled.",
+      "model": "2×10⁹ 次循環 ÷（50 年×365.25 天×86,400 s）≈ 1.27 次/秒，相當於約 1.3 Hz 的連續擺動；若每循環活塞往返滑動 4 mm，50 年密封累積滑動距離約 2×10⁹×4 mm = 8,000 km。4 mm 為教學假設。~2×10⁹ cycles ÷ (50 years × 365.25 days × 86,400 s) ≈ 1.27 cycles per second, equivalent to continuous motion at about 1.3 Hz; if the piston slides 4 mm per cycle, the seals travel about 2×10⁹×4 mm = 8,000 km in 50 years. The 4 mm is a teaching assumption.",
+      "verify": "定期目視檢查漏油、活塞桿刮痕、保護罩、插銷與球面軸承鏽蝕，量測外露桿長確認行程中心；依合約週期抽樣拆下阻尼器回試驗機復驗，C 與 α 與出廠值比較，超出允許偏差即擴大抽樣或更換。~Periodically inspect for leaks, rod scratches, boots, pins and spherical-bearing corrosion, and measure exposed rod length to confirm the stroke centre; at contract intervals remove sample dampers for re-testing on a machine, compare C and α with factory values, and extend sampling or replace units when tolerances are exceeded.",
+      "failure": "保護罩破損讓雨水與粉塵進入，活塞桿生鏽並刮傷密封，漏油後阻尼力下降；若檢查只看外觀而從未抽樣復驗，內部油品劣化或氣泡增加可能多年未被發現。~A torn boot admits rain and dust, the rod rusts and scores the seals, and leakage reduces damping force; if inspections only look at the outside and never re-test samples, internal fluid degradation or entrained air can go unnoticed for years.",
+      "misconception": "黏滯阻尼器是密封元件，設計壽命內不需要任何檢查或試驗。~A viscous damper is a sealed unit, so it needs no inspection or testing during its design life.",
+      "practice": "維護手冊要寫明檢查週期、目視項目、桿長紀錄表、抽樣復驗的數量與觸發條件，並保留備品或可替換設計；阻尼器位置須保留拆卸與吊運空間。~The maintenance manual should state inspection intervals, visual items, a rod-length log, sample re-test quantities and triggers, and keep spares or a replaceable design; leave space around each damper for removal and handling."
+    },
+    {
+      "anchor": "地震後評估紀錄~Post-earthquake assessment record",
+      "title": "地震後評估、更換判斷與交接~Post-earthquake assessment, replacement decisions and handover",
+      "mechanism": "大地震後，阻尼器可能已接近最大行程、承受接近額定的力，或因溫升與高壓損傷密封；工程師須在短時間內判斷結構能否繼續使用。製造商公開說明 Torre Mayor 在 2017 年規模 7.1 地震後無損傷並於當天重新開放，顯示事前準備的檢查程序與阻尼器本身的可靠性同樣重要。評估流程應結合強震紀錄反算的需求、現場目視、桿長與漏油檢查，再決定是否抽樣拆下復驗或更換。~After a major earthquake, dampers may have neared full stroke, carried close to rated force or suffered seal damage from heat and pressure, and engineers must decide quickly whether the structure can stay in use. The manufacturer reports that Torre Mayor was undamaged in the magnitude 7.1 earthquake of 2017 and reopened the same day, showing that a prepared inspection procedure matters as much as damper reliability. Assessment should combine demands back-calculated from strong-motion records with visual, rod-length and leak checks before deciding whether to remove samples for re-testing or to replace units.",
+      "model": "由強震紀錄得阻尼器軸向變形幅值 40 mm、主要週期 2.0 s（0.5 Hz），尖峰速度約 v = 2π×0.5×0.040 ≈ 0.126 m/s；以 C = 1,500 kN·(s/m)^0.4、α = 0.4，F ≈ 1,500×0.126^0.4 ≈ 654 kN，約為 1,500 kN 設計力的 44%，屬中度需求，以目視與桿長檢查為主。數值為教學假設。~Records show a damper axial deformation amplitude of 40 mm at a dominant period of 2.0 s (0.5 Hz), so peak velocity is about v = 2π×0.5×0.040 ≈ 0.126 m/s; with C = 1,500 kN·(s/m)^0.4 and α = 0.4, F ≈ 1,500×0.126^0.4 ≈ 654 kN, about 44% of the 1,500 kN design force, a moderate demand handled mainly by visual and rod-length checks. Values are teaching assumptions.",
+      "verify": "事件後依檢查表逐具記錄漏油、桿面刮痕、端部碰撞痕跡、插銷與節點板變形及外露桿長，對照紀錄反算的最大行程與力；需求超過設計值一定比例（例如 80%）的阻尼器列入抽樣復驗。~After an event, record for every damper leaks, rod scratches, end-stop impact marks, pin and gusset deformation and exposed rod length against a checklist, and compare with peak stroke and force back-calculated from records; dampers whose demand exceeded a set fraction of design, for example 80%, go into the sample re-test group.",
+      "failure": "若沒有事件前的桿長與外觀基準，事後無法判斷殘留偏移或滲油是新發生還是舊有；未經評估就恢復使用，可能讓已受損的阻尼器在餘震中失效。~Without pre-event rod-length and appearance baselines, nobody can tell whether residual offset or seepage is new or old; returning to service without assessment can let a damaged damper fail in an aftershock.",
+      "misconception": "地震後阻尼器沒有漏油，就代表它完全沒有受損。~If a damper shows no leakage after an earthquake, it is completely undamaged.",
+      "practice": "交接文件應包含阻尼器編號與位置圖、原型與出廠試驗報告、安裝桿長與溫度紀錄、檢查與復驗程序及事件後檢查表；用途變更或增設樓層前，須由結構設計者評估阻尼器需求並核可。~Handover documents should contain the numbered location plan, prototype and production test reports, installation rod-length and temperature records, inspection and re-test procedures and the post-event checklist; before a change of use or added storeys, the structural designer must assess damper demands and approve."
+    }
+  ],
+  "example": "驗收練習：規格 C = 1,500 kN·(s/m)^0.4、α = 0.4。出廠試驗以振幅 u₀ = 50 mm、頻率 f = 1.0 Hz 的正弦位移進行，尖峰速度 v = 2π×1.0×0.05 ≈ 0.314 m/s，預期尖峰力 F = 1,500×0.314^0.4 ≈ 944 kN。非線性阻尼器每循環耗能 E = λ·C·u₀^(1+α)·ω^α，α = 0.4 時 λ ≈ 3.58，E ≈ 3.58×1,500×0.0151×2.09 ≈ 169 kJ。若量得迴圈面積 152 kJ，偏差 −10%，在 ±15% 內可允收；若只有 140 kJ（約 −17%）則不合格。若改用在 0.314 m/s 時同樣出力的線性阻尼器（C ≈ 3,005 kN·s/m），每循環耗能 π·F·u₀ ≈ 148 kJ；速度加倍到 0.628 m/s 時線性阻尼器力約 1,888 kN，α = 0.4 的阻尼器只有約 1,246 kN，斜撐與接頭的設計力相差約 34%。數值為教學假設，不代表任何實際產品或專案。~Acceptance exercise: the specification is C = 1,500 kN·(s/m)^0.4 and α = 0.4. A production test uses sinusoidal displacement with amplitude u₀ = 50 mm at f = 1.0 Hz, so peak velocity is v = 2π×1.0×0.05 ≈ 0.314 m/s and the expected peak force is F = 1,500×0.314^0.4 ≈ 944 kN. A nonlinear damper dissipates E = λ·C·u₀^(1+α)·ω^α per cycle, with λ ≈ 3.58 for α = 0.4, so E ≈ 3.58×1,500×0.0151×2.09 ≈ 169 kJ. A measured loop area of 152 kJ is −10% and acceptable within ±15%; 140 kJ (about −17%) fails. A linear damper giving the same force at 0.314 m/s (C ≈ 3,005 kN·s/m) dissipates π·F·u₀ ≈ 148 kJ per cycle; if velocity doubles to 0.628 m/s the linear damper produces about 1,888 kN while the α = 0.4 damper produces about 1,246 kN, a difference of about 34% in brace and connection design force. Values are teaching assumptions, not any real product or project.",
+  "history": "流體黏滯阻尼器源自國防與航太的衝擊與振動控制，Taylor Devices 自 1955 年起製造流體阻尼器，約 1990 年前後這項技術轉入土木結構，並在大學與國家實驗室的試驗機與振動台上驗證。2000 年倫敦千禧橋開通即因行人引起的側向擺動關閉，後續加裝阻尼裝置並以約 2,000 人行走試驗確認；2003 年墨西哥市 Torre Mayor 以 98 具流體黏滯阻尼器完工，同年台灣高鐵雲林段高架橋在伸縮縫設置 34 具約 4,000 kN 的阻尼器。美國 2000 年版起的 NEHRP 條文與其後的 ASCE 7 第 18 章，把阻尼系統的分析方法與原型、出廠試驗要求制度化。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Fluid viscous dampers grew out of shock and vibration control for defence and aerospace; Taylor Devices has made fluid dampers since 1955, and around 1990 the technology moved into civil structures, proven on test machines and shaking tables at universities and national laboratories. London's Millennium Bridge closed right after opening in 2000 because of pedestrian-induced lateral sway, was later fitted with damping devices and was confirmed with a walking test of about 2,000 people; Torre Mayor in Mexico City was completed in 2003 with 98 fluid viscous dampers, and in the same year the Taiwan High Speed Rail viaduct in Yunlin received 34 dampers of about 4,000 kN at its expansion joints. The US NEHRP Provisions from the 2000 edition onward and then ASCE 7 Chapter 18 codified analysis methods and prototype and production testing for damping systems. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "Torre Mayor 地上 57 層、2003 年完工，設有 98 具流體黏滯阻尼器~Torre Mayor has 57 storeys, was completed in 2003 and contains 98 fluid viscous dampers",
+    "製造商說明 Torre Mayor 在 2003 年規模 7.6 與 2017 年規模 7.1 地震中均無損傷~The manufacturer reports Torre Mayor undamaged in the magnitude 7.6 earthquake of 2003 and the magnitude 7.1 earthquake of 2017",
+    "台灣高鐵雲林段高架橋伸縮縫設有 34 具約 4,000 kN 的流體黏滯阻尼器，行程約 ±127 mm~The Taiwan High Speed Rail viaduct in Yunlin has 34 fluid viscous dampers of about 4,000 kN at expansion joints, with about ±127 mm stroke",
+    "倫敦千禧橋長約 320 m，2000 年開通時行人引起的側向擺動達約 ±100 mm~London's Millennium Bridge is about 320 m long, and pedestrians caused lateral sway of up to about ±100 mm when it opened in 2000",
+    "千禧橋的 37 具阻尼器以 50 年以上、約 2×10⁹ 次循環設計~The 37 Millennium Bridge dampers were designed for more than 50 years and about 2×10⁹ cycles",
+    "千禧橋改善後以約 2,000 人的控制行走試驗驗證效果~The Millennium Bridge fix was verified with a controlled walk of about 2,000 people",
+    "製造商公開的阻尼指數範圍約 0.3 至 2.0，性質變異小於 ±15%~The manufacturer's published damping-exponent range is about 0.3 to 2.0, with property variation below ±15%",
+    "製造商公開的工作溫度約 −40°F 至 +160°F（約 −40°C 至 71°C）~The manufacturer's published operating range is about −40°F to +160°F (about −40°C to 71°C)"
+  ],
+  "timeline": [
+    {
+      "year": "1955",
+      "event": "Taylor Devices 開始製造流體阻尼器，最初用於國防與工業衝擊控制~Taylor Devices begins making fluid dampers, first for defence and industrial shock control"
+    },
+    {
+      "year": "2000",
+      "event": "倫敦千禧橋開通即因行人引起的側向擺動關閉，後續加裝阻尼裝置~London's Millennium Bridge closes right after opening because of pedestrian-induced lateral sway and is later fitted with damping devices"
+    },
+    {
+      "year": "2000",
+      "event": "美國 2000 年版 NEHRP 條文納入含阻尼系統建築的等效側力與模態分析程序，之後發展為 ASCE 7 第 18 章~The 2000 US NEHRP Provisions include equivalent-lateral-force and modal procedures for buildings with damping systems, later developed into ASCE 7 Chapter 18"
+    },
+    {
+      "year": "2003",
+      "event": "墨西哥市 Torre Mayor 以 98 具流體黏滯阻尼器完工，台灣高鐵雲林段高架橋設置 34 具阻尼器~Torre Mayor in Mexico City is completed with 98 fluid viscous dampers, and the Taiwan High Speed Rail Yunlin viaduct receives 34 dampers"
+    },
+    {
+      "year": "2017",
+      "event": "Torre Mayor 在規模 7.1 地震中無損傷並於當天重新開放~Torre Mayor is undamaged in a magnitude 7.1 earthquake and reopens the same day"
+    }
+  ],
+  "codes": [
+    "ASCE 7 第 18 章：含阻尼系統結構的耐震設計規定（含原型與出廠試驗）~ASCE 7 Chapter 18: Seismic design requirements for structures with damping systems, including prototype and production tests",
+    "ASCE/SEI 41 既有建築耐震評估與補強（隔震與消能章節）~ASCE/SEI 41 Seismic Evaluation and Retrofit of Existing Buildings (seismic isolation and energy dissipation chapter)",
+    "EN 15129 防震裝置（含速度相依裝置之試驗）~EN 15129 Anti-seismic devices, including testing of velocity-dependent devices",
+    "內政部建築物耐震設計規範及解說~Taiwan Seismic Design Code for Buildings and Commentary"
+  ],
+  "landmarks": [
+    "墨西哥市 Torre Mayor~Torre Mayor, Mexico City",
+    "台灣高鐵雲林段高架橋~Taiwan High Speed Rail viaduct, Yunlin",
+    "倫敦千禧橋~Millennium Bridge, London"
+  ],
+  "place": {
+    "name": "墨西哥市 Torre Mayor 參照點~Torre Mayor, Mexico City reference",
+    "country": "墨西哥~Mexico",
+    "lat": 19.4245,
+    "lng": -99.1752,
+    "query": "Torre Mayor Paseo de la Reforma 505 Mexico City"
+  },
+  "sources": [
+    {
+      "key": "taylor-torre-mayor",
+      "title": "Taylor Devices：Torre Mayor 流體黏滯阻尼器專案",
+      "titleEn": "Taylor Devices: Torre Mayor fluid viscous damper project",
+      "publisher": "Taylor Devices, Inc.",
+      "url": "https://www.taylordevices.com/structural/torre-mayor-mexico-city-mexico/",
+      "sourceType": "primary",
+      "scope": "製造商專案頁，列出樓層數、完工年份、阻尼器數量與兩次地震後的表現；不含阻尼器參數。",
+      "scopeEn": "Manufacturer's project page with storeys, completion year, damper count and performance in two earthquakes; no damper parameters."
+    },
+    {
+      "key": "taylor-thsr-yunlin",
+      "title": "Taylor Devices：台灣高鐵雲林段阻尼器專案",
+      "titleEn": "Taylor Devices: Taiwan High Speed Rail, Yunlin damper project",
+      "publisher": "Taylor Devices, Inc.",
+      "url": "https://www.taylordevices.com/structural/taiwan-high-speed-rail/",
+      "sourceType": "primary",
+      "scope": "製造商專案頁，列出阻尼器數量、出力、行程、設置於伸縮縫的目的與設計顧問。",
+      "scopeEn": "Manufacturer's project page listing damper count, force, stroke, purpose at expansion joints and design consultant."
+    },
+    {
+      "key": "taylor-fvd-product",
+      "title": "Taylor Devices：流體黏滯阻尼器產品說明",
+      "titleEn": "Taylor Devices: Fluid viscous damper product page",
+      "publisher": "Taylor Devices, Inc.",
+      "url": "https://www.taylordevices.com/products/fluid-viscous-damper/",
+      "sourceType": "primary",
+      "scope": "說明阻尼指數範圍、性質變異、工作溫度、矽油與密封設計，以及逐件動態試驗的做法。",
+      "scopeEn": "Describes exponent range, property variation, operating temperature, silicone fluid and seals, and dynamic testing of every unit."
+    },
+    {
+      "key": "taylor-millennium-bridge",
+      "title": "Taylor Devices：倫敦千禧橋阻尼器專案",
+      "titleEn": "Taylor Devices: Millennium Bridge, London damper project",
+      "publisher": "Taylor Devices, Inc.",
+      "url": "https://www.taylordevices.com/structural/millennium-bridge-london-england/",
+      "sourceType": "primary",
+      "scope": "製造商專案頁，說明 37 具阻尼器、設計循環數與中間及主要檢查結果。",
+      "scopeEn": "Manufacturer's project page on the 37 dampers, their design cycle count and the results of intermediate and principal inspections."
+    },
+    {
+      "key": "arup-millennium-bridge",
+      "title": "Arup：千禧橋專案與擺動改善",
+      "titleEn": "Arup: Millennium Bridge project and sway fix",
+      "publisher": "Arup",
+      "url": "https://www.arup.com/projects/millennium-bridge",
+      "sourceType": "primary",
+      "scope": "設計者專案頁，說明行人引起的側向擺動、加裝阻尼裝置與約 2,000 人的驗證行走試驗。",
+      "scopeEn": "Designer's project page on pedestrian-induced lateral sway, the added damping devices and the verification walk of about 2,000 people."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "泰勒設備",
+      "nameEn": "Taylor Devices",
+      "business": "製造流體黏滯阻尼器、隔震與衝擊吸收元件，並設有動態試驗設施。",
+      "businessEn": "Manufactures fluid viscous dampers, isolation and shock-absorbing devices, with in-house dynamic test facilities.",
+      "url": "https://www.taylordevices.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "TAYD",
+        "exchange": "NASDAQ",
+        "currency": "USD"
+      },
+      "role": "阻尼器規格、逐件試驗與專案案例的公開資料",
+      "roleEn": "Public information on damper specifications, unit-by-unit testing and project cases"
+    },
+    {
+      "name": "奧雅納（Arup）",
+      "nameEn": "Arup",
+      "business": "工程設計顧問，千禧橋設計者並主導其擺動改善與驗證試驗。",
+      "businessEn": "Engineering design consultancy that designed the Millennium Bridge and led its sway fix and verification tests.",
+      "url": "https://www.arup.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "系統級阻尼驗證與群眾行走試驗的案例",
+      "roleEn": "Case of system-level damping verification with a crowd walking test"
+    },
+    {
+      "name": "國家地震工程研究中心",
+      "nameEn": "National Center for Research on Earthquake Engineering (NCREE)",
+      "business": "台灣的地震工程研究與試驗機構，提供隔震與消能元件的動態試驗與技術服務。",
+      "businessEn": "Taiwan's earthquake-engineering research and testing institution, offering dynamic testing and technical services for isolation and energy-dissipation devices.",
+      "url": "https://www.ncree.niar.org.tw/",
+      "investorUrl": "",
+      "security": null,
+      "role": "台灣耐震元件試驗設施與講習資訊",
+      "roleEn": "Taiwanese test facilities and training for seismic protective devices"
+    }
+  ],
+  "related": [
+    "b066",
+    "b067"
+  ],
+  "architectureNodes": [
+    [
+      "結構層間變形",
+      "Storey drift demand"
+    ],
+    [
+      "斜撐、插銷與節點板",
+      "Braces, pins and gussets"
+    ],
+    [
+      "黏滯阻尼器本體",
+      "Viscous damper body"
+    ],
+    [
+      "原型與出廠試驗",
+      "Prototype and production tests"
+    ],
+    [
+      "安裝置中與行程預算",
+      "Installation centring and stroke budget"
+    ],
+    [
+      "監測與事件後檢查",
+      "Monitoring and post-event inspection"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      0,
+      5
+    ]
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "id": "b056",
+  "title": "鋼橋疲勞裂縫評估與修復~Steel-bridge fatigue-crack assessment and repair",
+  "discipline": "st-bridge-durability-monitoring",
+  "family": "connection",
+  "focus": "由細節類別、應力範圍與斷裂力學判斷鋼橋裂縫的風險，選擇止裂孔、錘擊或拼接補強並訂定追蹤週期~Judging steel-bridge crack risk from detail category, stress range and fracture mechanics, then choosing arrest holes, peening or splices and setting follow-up intervals",
+  "summary": "從焊接細節的應力範圍與 AASHTO 疲勞類別出發，區分載重誘發與變形誘發的疲勞裂縫，以斷裂韌性與 Paris 定律估算臨界尺寸與剩餘壽命，再處理止裂孔、錘擊、螺栓拼接、非破壞檢測、現場應變量測與斷裂關鍵構件的檢查交接，並以 Yellow Mill Pond、Lafayette Street、Hoan 與 I-40 Hernando de Soto 等橋為實例。~Starting from stress ranges at welded details and the AASHTO fatigue categories, distinguish load-induced from distortion-induced cracking, estimate critical size and remaining life with fracture toughness and the Paris law, then cover arrest holes, peening, bolted splices, nondestructive testing, field strain measurement and the inspection and handover of fracture-critical members, using the Yellow Mill Pond, Lafayette Street, Hoan and I-40 Hernando de Soto bridges as examples.",
+  "units": [
+    {
+      "anchor": "蓋板端部焊趾~Cover-plate end weld toe",
+      "title": "應力範圍與疲勞細節類別~Stress range and fatigue detail categories",
+      "mechanism": "鋼橋的疲勞裂縫幾乎都從焊接細節開始：焊趾的幾何不連續、殘餘拉應力與微小熔渣缺陷使局部應力集中，車輛每次通過造成的應力範圍（而不是最大應力）驅動裂縫逐步成長。AASHTO 把細節依疲勞強度分成 A 到 E′ 等類別，蓋板端部的橫向填角焊屬最差的 E 或 E′ 類，康乃狄克州 I-95 Yellow Mill Pond 橋的蓋板端部裂縫就是 FHWA 修復手冊中的典型照片。由於 S–N 曲線斜率為 3，應力範圍增加約 26% 壽命就減半，因此疲勞評估的核心是準確的應力範圍與循環次數。~Fatigue cracks in steel bridges almost always start at welded details: the geometric discontinuity at the weld toe, tensile residual stress and tiny slag defects concentrate stress locally, and the stress range from each passing vehicle, not the peak stress, drives the crack forward. AASHTO groups details by fatigue strength into categories A to E′; transverse fillet welds at cover-plate ends are among the worst, Category E or E′, and the cracked cover-plate end on the I-95 Yellow Mill Pond Bridge in Connecticut is a classic illustration in the FHWA repair manual. Because the S–N curve has a slope of 3, a stress range about 26% higher halves the life, so fatigue assessment hinges on accurate stress ranges and cycle counts.",
+      "model": "N = A/(ΔF)³。E 類 A = 11.0×10⁸ ksi³ ≈ 3.61×10¹¹ MPa³；有效應力範圍 ΔF = 40 MPa 時 N = 3.61×10¹¹/40³ ≈ 5.6×10⁶ 次，若每天 2,000 輛卡車各造成一次循環，約 7.7 年；同樣應力下 C 類（A ≈ 1.44×10¹² MPa³）約 2.25×10⁷ 次、約 31 年。數值為教學假設。~N = A/(ΔF)³. For Category E, A = 11.0×10⁸ ksi³ ≈ 3.61×10¹¹ MPa³; at an effective stress range ΔF = 40 MPa, N = 3.61×10¹¹/40³ ≈ 5.6×10⁶ cycles, or about 7.7 years if 2,000 trucks a day each cause one cycle. At the same stress a Category C detail (A ≈ 1.44×10¹² MPa³) lasts about 2.25×10⁷ cycles, about 31 years. Values are teaching assumptions.",
+      "verify": "以竣工圖與現場檢查列出每一個疲勞敏感細節並標註 AASHTO 類別，用影響線與實測交通量計算有效應力範圍與累積循環次數；再與細節的常幅疲勞門檻（例如 E 類 4.5 ksi，約 31 MPa）比較，判斷屬有限壽命或無限壽命區。~List every fatigue-sensitive detail from as-built drawings and field inspection and tag its AASHTO category, compute effective stress range and accumulated cycles from influence lines and measured traffic, then compare with the detail's constant-amplitude threshold (for example 4.5 ksi, about 31 MPa, for Category E) to decide whether it lies in the finite-life or infinite-life region.",
+      "failure": "蓋板端部的焊趾裂縫先在翼板內穿透厚度，再沿翼板寬度擴展；若未及時發現，裂縫可貫穿整個受拉翼板並進入腹板，FHWA 手冊收錄的明尼蘇達州聖保羅 Lafayette Street 橋就出現貫穿整個梁深的疲勞裂縫。~A weld-toe crack at a cover-plate end first grows through the flange thickness and then across its width; if missed, it can sever the whole tension flange and run into the web, as in the full-girder-depth fatigue crack of the Lafayette Street Bridge in St. Paul, Minnesota, shown in the FHWA manual.",
+      "misconception": "只要最大應力低於降伏強度，鋼橋就不會發生疲勞裂縫。~As long as peak stress stays below yield, a steel bridge cannot develop fatigue cracks.",
+      "practice": "新建設計避免使用 E 與 E′ 類細節；既有橋的疲勞清冊要依細節類別與應力範圍排序檢查優先順序，並把每一個 E′ 類細節的位置標在檢查圖上，作為每次例行檢查必看的點。~Avoid Category E and E′ details in new design; for existing bridges, rank the fatigue inventory by detail category and stress range to set inspection priority, and mark every Category E′ detail on the inspection drawings as a must-see point at each routine inspection."
+    },
+    {
+      "anchor": "連接板腹板間隙~Connection-plate web gap",
+      "title": "變形誘發疲勞與腹板間隙~Distortion-induced fatigue in web gaps",
+      "mechanism": "主梁間的橫隔或橫構架在活載下使相鄰主梁產生不同撓度，若橫構架連接板沒有與受拉翼板相連，連接板端部與翼板之間的一小段腹板（腹板間隙）就被迫承受面外變形。這段腹板很短，極小的相對位移就產生很大的二次彎曲應力，形成平行於焊道的裂縫。FHWA 手冊估計變形誘發的開裂佔全部疲勞裂縫的 90% 以上，1985 年以前的設計普遍有此細節，例如明尼蘇達州約 85% 的鋼橋建於 1986 年以前。~Under live load, diaphragms or cross-frames between girders force adjacent girders to deflect differently; if the cross-frame connection plate is not attached to the tension flange, the short strip of web between the plate end and the flange, the web gap, must absorb out-of-plane distortion. Because the strip is so short, a tiny relative displacement produces large secondary bending stress and cracks parallel to the weld. The FHWA manual estimates that distortion-induced cracking causes over 90% of all fatigue cracking, and the detail was common in designs before 1985; in Minnesota, for example, about 85% of steel bridges were built before 1986.",
+      "model": "兩端固定的腹板間隙在面外相對位移 Δ 下，彎曲應力 σ = 3E·t·Δ/g²。取 E = 200 GPa、腹板厚 t = 12 mm、Δ = 0.05 mm、間隙 g = 50 mm：σ = 3×200,000×12×0.05/50² = 144 MPa；若切除材料把間隙放大到 100 mm，σ 降為 36 MPa，只剩四分之一。數值為教學假設。~For a web gap fixed at both ends under relative out-of-plane displacement Δ, the bending stress is σ = 3E·t·Δ/g². With E = 200 GPa, web thickness t = 12 mm, Δ = 0.05 mm and gap g = 50 mm, σ = 3×200,000×12×0.05/50² = 144 MPa; enlarging the gap to 100 mm by removing material drops σ to 36 MPa, one quarter. Values are teaching assumptions.",
+      "verify": "在連接板端部上下方的腹板兩面貼應變計，量測卡車通過時的面外彎曲應變，與有限元素模型的熱點應力比較；FHWA 手冊以距焊趾約 1/4 in（6 mm）處的熱點應力對照 C 類曲線評估腹板間隙。~Fit strain gauges on both faces of the web above and below the connection-plate end, measure out-of-plane bending strain as trucks pass and compare with hot-spot stresses from a finite-element model; the FHWA manual assesses web gaps using the hot-spot stress about 1/4 in (6 mm) from the weld toe against the Category C curve.",
+      "failure": "只用主梁彎矩檢核疲勞時，腹板間隙的二次應力完全不會出現在計算中，裂縫卻在通車數年後沿連接板焊道成長；若裂縫轉向並沿腹板延伸，就由局部問題變成主梁斷面的問題。~A fatigue check based only on girder moments never shows the secondary stress in the web gap, yet cracks grow along the connection-plate weld within a few years of opening; if a crack turns and runs into the web, a local problem becomes a problem for the whole girder section.",
+      "misconception": "腹板間隙的變形只有百分之幾毫米，不可能造成裂縫。~Web-gap distortions are only hundredths of a millimetre, so they cannot cause cracks.",
+      "practice": "修復腹板間隙要先決定策略：加勁（以螺栓角鋼或 T 型鋼把連接板接到翼板）或軟化（放大間隙、移除或移位橫構架），不可兩者混用；任何修復都要先量測再設計，修復後再量一次確認應力確實下降。~Choose the web-gap strategy first: stiffening (bolting the connection plate to the flange with angles or a tee) or softening (enlarging the gap, removing or repositioning the cross-frame), never a mix; measure before designing any repair and measure again afterwards to confirm the stress has actually dropped."
+    },
+    {
+      "anchor": "臨界裂縫與 Charpy 韌性~Critical crack and Charpy toughness",
+      "title": "斷裂韌性與脆性斷裂~Fracture toughness and brittle fracture",
+      "mechanism": "疲勞裂縫本身不會讓橋倒塌，真正的危險是裂縫長到臨界尺寸後在低溫下脆性斷裂。臨界尺寸由材料韌性、應力大小與幾何拘束決定；1967 年 Silver Bridge 因無冗餘眼桿脆斷而倒塌，促成 1970 年代的斷裂控制計畫與 Charpy V 型缺口韌性要求。2000 年 12 月密爾瓦基 Hoan 橋三根主梁中有兩根斷裂，FHWA 手冊指出這是在沒有先前疲勞裂縫下發生的脆性斷裂；焊接板件交會形成的高拘束使鋼材無法藉降伏釋放應力，冬季低溫又降低了韌性。~A fatigue crack alone does not drop a bridge; the real danger is that once it reaches critical size it can fracture in a brittle way at low temperature. Critical size depends on toughness, stress level and geometric constraint. The 1967 collapse of the Silver Bridge through brittle fracture of a non-redundant eyebar led to the fracture control plan and Charpy V-notch toughness requirements of the 1970s. In December 2000 two of the three girders of Milwaukee's Hoan Bridge fractured; the FHWA manual describes it as brittle fracture without prior fatigue cracking, where highly constrained intersecting welded plates prevented the steel from relieving stress by yielding and winter cold reduced its toughness.",
+      "model": "臨界裂縫 a_c = (1/π)·[K_Ic/(Y·σ_max)]²。取 K_Ic = 100 MPa√m、邊緣裂縫 Y = 1.12、σ_max = 150 MPa：a_c = (1/π)×(100/168)² ≈ 0.113 m = 113 mm；低溫使 K_Ic 降為 50 MPa√m 時 a_c 只剩約 28 mm，為原來的四分之一。數值為教學假設。~Critical crack size a_c = (1/π)·[K_Ic/(Y·σ_max)]². With K_Ic = 100 MPa√m, an edge-crack factor Y = 1.12 and σ_max = 150 MPa, a_c = (1/π)×(100/168)² ≈ 0.113 m = 113 mm; if low temperature drops K_Ic to 50 MPa√m, a_c shrinks to about 28 mm, one quarter of the original. Values are teaching assumptions.",
+      "verify": "從構件取樣或查閱鋼材證明書，在對應設計最低溫度的試驗溫度做 Charpy V 型缺口衝擊試驗，與 AASHTO 依溫度區及斷裂關鍵構件分級的要求比較；同時檢查焊接板件交會、零間隙相交等高拘束細節。~Take samples from the member or review the mill certificates, run Charpy V-notch impact tests at the test temperature corresponding to the lowest design temperature and compare with AASHTO requirements by temperature zone and fracture-critical classification; also check for highly constrained details such as intersecting welded plates with zero gap.",
+      "failure": "Hoan 橋斷裂後北行車道下陷約 4 ft（約 1.2 m），雖無人受傷，但大橋封閉，受損段以控制爆破移除，修復與補強歷時近一年；高拘束細節即使沒有疲勞裂縫，也可能在寒冬中瞬間斷裂。~After the Hoan fracture the northbound lanes sagged about 4 ft (about 1.2 m); nobody was hurt, but the bridge closed, the damaged section was removed by controlled demolition and repair and retrofit took nearly a year. Highly constrained details can fracture suddenly in deep winter even without fatigue cracks.",
+      "misconception": "鋼材是延性材料，所以鋼橋只會先變形再破壞，不會突然斷裂。~Steel is ductile, so a steel bridge always deforms visibly before it fails and never fractures suddenly.",
+      "practice": "斷裂關鍵構件的修復焊接必須依 AASHTO/AWS D1.5 的斷裂控制計畫執行，包括銲材、預熱、韌性試驗與更嚴格的非破壞檢測；設計審查要特別找出零間隙相交的板件，改為留設間隙或螺栓連接。~Repair welding on fracture-critical members must follow the fracture control plan of AASHTO/AWS D1.5, covering consumables, preheat, toughness testing and stricter nondestructive testing; design review should hunt for plates intersecting with zero gap and change them to gapped or bolted connections."
+    },
+    {
+      "anchor": "裂縫成長曲線~Crack-growth curve",
+      "title": "裂縫成長速率與剩餘壽命~Crack-growth rate and remaining life",
+      "mechanism": "裂縫一旦存在，S–N 曲線就不再適用，需改用線彈性斷裂力學：每次循環的成長量 da/dN 與應力強度因子範圍 ΔK 的冪次成正比（Paris 定律），而 ΔK 又隨裂縫長度增加，所以裂縫越長長得越快，壽命大部分消耗在裂縫很短的階段。剩餘壽命取決於目前尺寸、臨界尺寸與應力範圍，這也說明及早找到短裂縫的價值遠大於事後補強。~Once a crack exists the S–N curve no longer applies and linear-elastic fracture mechanics takes over: growth per cycle, da/dN, is proportional to a power of the stress-intensity range ΔK (the Paris law), and ΔK itself rises with crack length, so longer cracks grow faster and most of the life is spent while the crack is still short. Remaining life depends on current size, critical size and stress range, which is why finding short cracks early is worth far more than strengthening afterwards.",
+      "model": "Paris 定律 da/dN = C·ΔK^m，取鐵素體—波來鐵鋼常用 C = 6.9×10⁻¹²（m/cycle，MPa√m）、m = 3，邊緣裂縫 ΔK = 1.12Δσ√(πa)。Δσ = 40 MPa、a 由 5 mm 成長到 113 mm：N = 2(1/√a_i − 1/√a_c)/[C(1.12Δσ√π)³] ≈ 6.5×10⁶ 次，每天 2,000 次約 8.9 年。數值為教學假設。~Paris law da/dN = C·ΔK^m, with C = 6.9×10⁻¹² (m/cycle, MPa√m) and m = 3, commonly used for ferrite–pearlite steels, and ΔK = 1.12Δσ√(πa) for an edge crack. For Δσ = 40 MPa and growth from 5 mm to 113 mm, N = 2(1/√a_i − 1/√a_c)/[C(1.12Δσ√π)³] ≈ 6.5×10⁶ cycles, about 8.9 years at 2,000 cycles a day. Values are teaching assumptions.",
+      "verify": "以兩次以上檢查量到的裂縫長度與時間間隔，比較實際成長率與模型預測；若實測成長較快，代表應力範圍或循環次數被低估，必須補量應變並縮短檢查間隔。~Use crack lengths measured at two or more inspections and the time between them to compare the actual growth rate with the model; faster measured growth means the stress range or cycle count was underestimated, so strains must be measured and the inspection interval shortened.",
+      "failure": "若認為裂縫只有幾公釐、可以等下次定期檢查再處理，卻忽略交通量增加已使應力範圍上升，裂縫可能在兩次檢查之間由穩定成長轉為快速成長，等到發現時已接近臨界尺寸。~Deciding that a crack of a few millimetres can wait for the next routine inspection, while ignoring that heavier traffic has raised the stress range, lets the crack accelerate between inspections and approach critical size by the time it is found again.",
+      "misconception": "裂縫每年增加的長度是固定的，可以直接線性外推。~A crack grows by the same length every year, so it can be extrapolated linearly.",
+      "practice": "每一條已知裂縫都要有編號、量測方法、量測日期與照片，報告中附上依斷裂力學估算的剩餘壽命與下次檢查日期；初始尺寸、應力範圍與韌性等假設必須寫明，讓下一位工程師可以更新計算。~Give every known crack a number, measurement method, date and photograph, and attach to the report a fracture-mechanics estimate of remaining life and the next inspection date; state the assumptions on initial size, stress range and toughness so the next engineer can update the calculation."
+    },
+    {
+      "anchor": "裂尖止裂孔~Crack-tip arrest hole",
+      "title": "止裂孔的尺寸與施作~Sizing and drilling crack-arrest holes",
+      "mechanism": "止裂孔是在裂尖鑽一個圓孔，把尖銳裂尖換成有限半徑的缺口，使局部應力集中降到不足以重新起裂。FHWA 手冊稱鑽孔可能是最常用的疲勞裂縫修復法，要求最小孔徑 1.0 in（25.4 mm），邊緣裂縫的計算孔徑要加大 25%，現場經驗支持 2 至 4 in 的孔徑；孔要以環形鑽施作，嚴禁火焰切割，孔緣須磨平去毛邊。孔必須真正包含裂尖，否則裂縫會從孔外繼續成長。~An arrest hole drilled at the crack tip replaces the sharp tip with a notch of finite radius, lowering the local stress concentration below what is needed to re-initiate cracking. The FHWA manual calls hole drilling perhaps the most widely used fatigue-crack repair, requires a minimum diameter of 1.0 in (25.4 mm), increases the calculated diameter by 25% for edge cracks, and notes that field experience supports holes of 2 to 4 in; holes are cut with annular cutters, never flame-cut, and their edges ground smooth. The hole must truly contain the crack tip, or the crack simply continues outside it.",
+      "model": "以 Creager–Paris 鈍化缺口關係，孔邊尖峰應力範圍 Δσ_max ≈ 2ΔK/√(πρ) = 2Δσ√(a/ρ)。要求 Δσ_max ≤ 110 MPa（教學門檻），裂縫半長 a = 40 mm、Δσ = 30 MPa：ρ ≥ 4a(Δσ/110)² = 4×40×(30/110)² ≈ 11.9 mm，孔徑約 24 mm，依最小值取 25.4 mm；若為邊緣裂縫加大 25% 約 30 mm，取 32 mm。數值為教學假設。~By the Creager–Paris blunt-notch relation, the peak stress range at the hole edge is Δσ_max ≈ 2ΔK/√(πρ) = 2Δσ√(a/ρ). Requiring Δσ_max ≤ 110 MPa (a teaching limit) for a crack half-length a = 40 mm and Δσ = 30 MPa gives ρ ≥ 4a(Δσ/110)² = 4×40×(30/110)² ≈ 11.9 mm, a diameter of about 24 mm, raised to the 25.4 mm minimum; for an edge crack, adding 25% gives about 30 mm, so use 32 mm. Values are teaching assumptions.",
+      "verify": "鑽孔前以磁粉或染色滲透確認裂尖位置，FHWA 手冊建議先鑽約 1/8 in 的參考小孔檢查背面裂尖；鑽孔後再以染色滲透檢查孔壁與孔緣，確認沒有殘留裂尖，並記錄孔位座標與孔徑。~Before drilling, locate the crack tip with magnetic particle or dye penetrant; the FHWA manual suggests a reference hole of about 1/8 in to check the tip on the far side. After drilling, inspect the bore and edges with dye penetrant to confirm no crack tip remains, and record hole coordinates and diameter.",
+      "failure": "若孔位偏離裂尖，或裂縫在背面比正面更長，止裂孔只是在裂縫旁邊多開了一個洞；以火焰切割開孔會在孔壁留下硬化層與缺口，反而成為新的疲勞起點。~If the hole misses the tip, or the crack is longer on the far face than the near face, the arrest hole is just an extra hole beside the crack; a flame-cut hole leaves a hardened, notched surface that becomes a new fatigue origin.",
+      "misconception": "止裂孔越小越好，因為開孔會削弱斷面。~Arrest holes should be as small as possible because holes weaken the section.",
+      "practice": "止裂孔是局部或暫時措施，報告須說明裂縫成因是否已處理；變形誘發裂縫在鑽孔後通常還要搭配腹板間隙加勁或軟化。孔內可依 FHWA 建議裝上全預拉的高強度螺栓與硬化墊圈，使孔周保持有利的壓應力。~An arrest hole is a local or temporary measure, and the report must say whether the cause has been addressed; distortion-induced cracks usually also need web-gap stiffening or softening after drilling. As the FHWA manual suggests, a fully pretensioned high-strength bolt with hardened washers can be installed in the hole to keep favourable compression around it."
+    },
+    {
+      "anchor": "螺栓拼接板與錘擊焊趾~Bolted splices and peened toes",
+      "title": "錘擊處理與螺栓拼接補強~Peening and bolted splice repairs",
+      "mechanism": "錘擊處理以氣動鎚沿焊趾敲擊，使表層塑性變形並引入壓縮殘餘應力，同時修圓焊趾幾何；FHWA 手冊指出它通常可把疲勞抗力提高至少一個細節類別，並可處理深約 3 mm 以內的表面裂縫。裂縫已貫穿翼板或腹板時，就要以螺栓拼接板跨越裂縫，讓力量繞過斷裂斷面；高強度鋼更偏好螺栓補強，以免焊接造成氫致開裂。2021 年 I-40 Hernando de Soto 橋繫梁斷裂後，也是先在兩側加鋼板穩住構件，再加板繞過斷裂部位並切除較小的受損段。~Peening hammers the weld toe with a pneumatic tool, plastically deforming the surface, introducing compressive residual stress and rounding the toe; the FHWA manual says it generally raises fatigue resistance by at least one detail category and can treat surface cracks up to about 3 mm deep. Once a crack has passed through a flange or web, bolted splice plates must bridge it so force bypasses the broken section, and bolting is preferred on high-strength steel to avoid hydrogen cracking from welding. After the 2021 tie-girder fracture on the I-40 Hernando de Soto Bridge, plates were first added on both sides to stabilise the member, then more plating bypassed the fracture and a smaller damaged piece was removed.",
+      "model": "受拉翼板 400×25 mm 裂斷，需傳遞力 F = 120 MPa×10,000 mm² = 1,200 kN。以兩片拼接板夾住翼板形成雙摩擦面，每支 7/8 in（M22 級）高強度螺栓預拉 173 kN、滑動係數 0.50：每支抗滑 0.50×173×2 = 173 kN，裂縫每側需 1,200/173 ≈ 6.9 支，取 8 支。數值為教學假設。~A cracked 400×25 mm tension flange must transfer F = 120 MPa×10,000 mm² = 1,200 kN. Two splice plates sandwiching the flange give two slip planes; with 7/8 in (M22-class) high-strength bolts pretensioned to 173 kN and a slip coefficient of 0.50, each bolt resists 0.50×173×2 = 173 kN, so each side of the crack needs 1,200/173 ≈ 6.9 bolts, rounded to 8. Values are teaching assumptions.",
+      "verify": "錘擊後以目視與量規確認焊趾形成連續平滑的凹槽、塑性深度在約 0.8 至 1.6 mm，並以染色滲透確認沒有搭疊缺陷；拼接板則檢查接觸面處理、螺栓預拉力與邊距，補強後量測裂縫兩側應變，確認力量確實轉移到拼接板。~After peening, confirm visually and with a gauge that the toe has a continuous smooth groove with plastic depth of about 0.8 to 1.6 mm, and check with dye penetrant for lap defects; for splices, check faying-surface preparation, bolt pretension and edge distances, then measure strains on both sides of the crack to confirm that force has actually moved into the plates.",
+      "failure": "若在已有較深裂縫上錘擊，只會把裂口表面壓合而看不見，裂縫在內部持續成長；拼接板若只用一般螺栓或接觸面留有油漆，滑動後變成螺栓承壓，孔邊又成為新的疲勞起點。~Peening over a deeper crack only closes its mouth out of sight while it keeps growing inside; splice plates with ordinary bolts or painted faying surfaces slip into bearing, and the hole edges become new fatigue origins.",
+      "misconception": "只要把裂縫焊補起來，構件就恢復原來的疲勞強度。~Simply weld-repairing a crack restores the member's original fatigue strength.",
+      "practice": "焊補只在裂縫可完全移除、焊後能做全面非破壞檢測時才考慮，FHWA 手冊提醒修補焊道的疲勞表現可能只相當於 D 類；修復方案由結構工程師依剩餘應力範圍選定，施工圖須標出每一片拼接板、螺栓等級與接觸面處理。~Consider weld repair only when the crack can be removed completely and the weld fully tested afterwards; the FHWA manual warns that repair welds may perform no better than Category D. The structural engineer selects the repair from the remaining stress range, and the shop drawings must show every splice plate, bolt grade and faying-surface treatment."
+    },
+    {
+      "anchor": "染色滲透、磁粉與超音波~Dye penetrant, MT and ultrasonics",
+      "title": "非破壞檢測定位與量測裂縫~Locating and sizing cracks by NDT",
+      "mechanism": "目視只能找到已經使油漆開裂的裂縫，確認長度與裂尖位置要靠非破壞檢測。FHWA 手冊說明染色滲透與磁粉是最簡便常用的方法：染色滲透以三種藥劑讓顯像劑把滲入裂縫的染料吸出；磁粉可找到表面及部分近表面裂縫，但隔著油漆並不可靠。量測裂縫深度需要超音波或繞射時差法（TOFD），設備與人員資格要求都較高。檢測前必須去除油漆與鏽皮，檢測後再補塗防蝕。~Visual inspection finds only cracks that have already split the paint; confirming length and tip location needs nondestructive testing. The FHWA manual describes dye penetrant and magnetic particle testing as the easiest and most widely used: penetrant is a three-part system whose developer draws dye back out of the crack, while magnetic particle testing finds surface and some near-surface cracks but is unreliable through paint. Sizing crack depth needs ultrasonic testing or time-of-flight diffraction (TOFD), with costlier equipment and more highly trained operators. Paint and mill scale must be removed before testing and the coating restored afterwards.",
+      "model": "TOFD 以兩探頭間距 2S 量測裂尖繞射波到達時間 t，深度 d = √[(c·t/2)² − S²]。縱波速 c = 5.92 mm/μs、S = 30 mm、t = 12.0 μs：c·t/2 = 35.52 mm，d = √(35.52² − 30²) ≈ 19.0 mm；t 增為 12.5 μs 時 d ≈ 21.7 mm，0.5 μs 的時間差約代表 2.7 mm 深度。數值為教學假設。~TOFD measures the arrival time t of the wave diffracted from the crack tip with probes 2S apart, so depth d = √[(c·t/2)² − S²]. With longitudinal velocity c = 5.92 mm/μs, S = 30 mm and t = 12.0 μs, c·t/2 = 35.52 mm and d = √(35.52² − 30²) ≈ 19.0 mm; at t = 12.5 μs, d ≈ 21.7 mm, so 0.5 μs corresponds to about 2.7 mm of depth. Values are teaching assumptions.",
+      "verify": "檢測人員應具 ASNT 或 ISO 9712 等級資格，以含已知人工缺陷的標準試片校正儀器；同一條裂縫至少用兩種方法交叉確認，長度以裂尖兩端的標記與量尺照片記錄，並註明檢測溫度與表面處理狀態。~Inspectors should be qualified to ASNT or ISO 9712 levels and calibrate their instruments on reference blocks with known artificial flaws; confirm each crack with at least two methods, record its length with marks at both tips and a scaled photograph, and note test temperature and surface condition.",
+      "failure": "隔著油漆做磁粉檢測，或去漆後未清除鏽皮，容易漏判短裂縫；把焊道表面的咬邊或研磨痕誤判為裂縫，則會導致不必要的鑽孔與補強，反而增加新的應力集中。~Magnetic particle testing through paint, or after paint removal without cleaning off scale, easily misses short cracks; mistaking undercut or grinding marks for cracks leads to unnecessary drilling and strengthening that adds new stress concentrations.",
+      "misconception": "目視檢查沒有看到裂縫，就表示焊接細節沒有裂縫。~If visual inspection shows no crack, the welded detail has no crack.",
+      "practice": "檢測程序書要寫明去漆範圍、檢測方法、驗收與記錄格式，並規定當天完成局部補漆；所有裂縫都在構件上以油漆筆標示裂尖與日期，便於下次檢查判斷是否成長。~The inspection procedure must define paint-removal extent, test method, acceptance and record format, and require local recoating the same day; mark every crack tip and the date on the steel with a paint pen so the next inspection can tell whether it has grown."
+    },
+    {
+      "anchor": "焊趾應變計與雨流計數~Weld-toe gauges and rainflow counting",
+      "title": "現場應變量測與有效應力範圍~Field strain measurement and effective stress range",
+      "mechanism": "設計用的疲勞卡車與實際交通差異很大，評估既有橋最可靠的做法是在疲勞敏感細節附近貼應變計，連續記錄一到數週的實際交通反應。以雨流計數法把不規則的應變歷時拆成一個個循環，再依 Miner 線性累積損傷把不同大小的循環換算成一個等效常幅應力範圍。量測也能找出模型沒有考慮的效應，例如變形誘發的二次彎曲或支承卡死造成的額外應力。~The design fatigue truck differs greatly from real traffic, so the most reliable assessment of an existing bridge puts strain gauges near fatigue-sensitive details and records actual traffic for one to several weeks. Rainflow counting splits the irregular strain history into individual cycles, and Miner's linear damage rule converts cycles of different sizes into one equivalent constant-amplitude stress range. Measurements also reveal effects the model omits, such as distortion-induced secondary bending or extra stress from seized bearings.",
+      "model": "有效應力範圍 S_re = (Σγ_i·S_i³)^(1/3)。雨流計數得 60% 循環為 10 MPa、30% 為 20 MPa、10% 為 40 MPa：S_re = (0.6×1,000 + 0.3×8,000 + 0.1×64,000)^(1/3) = 9,400^(1/3) ≈ 21.1 MPa。E 類 N = 3.61×10¹¹/21.1³ ≈ 3.8×10⁷ 次，每天 3,000 次約 35 年。數值為教學假設。~Effective stress range S_re = (Σγ_i·S_i³)^(1/3). If rainflow counting gives 60% of cycles at 10 MPa, 30% at 20 MPa and 10% at 40 MPa, S_re = (0.6×1,000 + 0.3×8,000 + 0.1×64,000)^(1/3) = 9,400^(1/3) ≈ 21.1 MPa. For Category E, N = 3.61×10¹¹/21.1³ ≈ 3.8×10⁷ cycles, about 35 years at 3,000 cycles a day. Values are teaching assumptions.",
+      "verify": "應變計距焊趾保持固定距離並避開應力梯度最陡處，以已知重量的試驗卡車做標定行車，確認量到的應力與影響線計算相符；長期記錄要涵蓋平日與週末，並剔除溫度漂移造成的假循環。~Place gauges at a fixed distance from the weld toe, away from the steepest stress gradient, and run a calibration truck of known weight to confirm that measured stresses match influence-line calculations; long-term records must cover weekdays and weekends, with spurious cycles from thermal drift removed.",
+      "failure": "只量幾個小時或只在離峰時段量測，會低估重車循環與最大應力範圍；忽略低於門檻的小循環在有大循環存在時仍會造成損傷，也會讓剩餘壽命估得過於樂觀。~Recording for only a few hours, or only off-peak, underestimates heavy-truck cycles and the maximum stress range; ignoring that small cycles below the threshold still cause damage when larger cycles are present makes the remaining-life estimate too optimistic.",
+      "misconception": "疲勞評估只要用規範的疲勞卡車計算，不需要現場量測。~Fatigue assessment needs only the code fatigue truck, never field measurement.",
+      "practice": "量測報告要附上應變計位置照片、標定車重、取樣頻率、濾波設定與雨流計數門檻，並把 S_re、每日循環數與剩餘壽命一起列入疲勞清冊，作為交通量改變時重新評估的基準。~The measurement report should attach gauge-location photographs, calibration truck weight, sampling rate, filter settings and rainflow thresholds, and enter S_re, daily cycles and remaining life into the fatigue inventory as the baseline for reassessment when traffic changes."
+    },
+    {
+      "anchor": "修復後追蹤檢查週期~Post-repair inspection interval",
+      "title": "檢查間隔與修復後追蹤~Inspection intervals and post-repair follow-up",
+      "mechanism": "修復不是終點：止裂孔可能重新起裂、拼接板邊緣成為新的起點，未修的同類細節也可能陸續出現裂縫。FHWA 手冊指出，對常見的冗餘橋梁，最好的選擇常常不是修復而是監測裂縫，面外變形造成的裂縫尤其如此。檢查間隔應由可偵測的最小裂縫、臨界裂縫與成長速率決定，而不只是套用固定的兩年週期；偵測能力越差，所需的檢查頻率就越高。~Repair is not the end: arrest holes can re-initiate, splice-plate edges can become new origins, and unrepaired details of the same type may crack in turn. The FHWA manual notes that for common redundant bridges the best choice is often to monitor rather than repair a crack, especially one caused by out-of-plane distortion. Inspection intervals should follow from the smallest detectable crack, the critical crack and the growth rate, not just a fixed two-year cycle; the poorer the detection capability, the more often one must inspect.",
+      "model": "沿用第 4 單元（Δσ = 40 MPa、a_c = 113 mm）：非破壞檢測能可靠偵測 5 mm 裂縫時，剩餘約 6.5×10⁶ 次 ≈ 8.9 年；若只靠目視、25 mm 才看得到，只剩約 1.9×10⁶ 次 ≈ 2.7 年。要求斷裂前至少有兩次檢查機會，間隔分別不超過約 4.4 年與 1.3 年。數值為教學假設。~Using unit 4 (Δσ = 40 MPa, a_c = 113 mm): if NDT reliably detects a 5 mm crack, about 6.5×10⁶ cycles ≈ 8.9 years remain; if only visual inspection finds it at 25 mm, only about 1.9×10⁶ cycles ≈ 2.7 years remain. Requiring at least two inspection opportunities before fracture gives intervals of no more than about 4.4 and 1.3 years respectively. Values are teaching assumptions.",
+      "verify": "每次追蹤檢查以相同方法量測裂縫長度與止裂孔孔緣，並與上次紀錄比對；對冗餘度低或應力範圍高的細節加裝裂縫計或聲射感測器並設定成長警戒值，超過即提前安排詳細檢查。~At each follow-up inspection, measure crack length and arrest-hole edges with the same method and compare with the previous record; fit crack gauges or acoustic-emission sensors with growth alarms on details of low redundancy or high stress range, bringing forward a detailed inspection whenever an alarm is exceeded.",
+      "failure": "2021 年 I-40 Hernando de Soto 橋繫梁斷裂被發現後，業餘照片顯示同一位置早在 2016 年就有損傷，2019 年的空拍檢查影像也拍到裂縫；調查認為斷裂源於製造時焊接修補引發的氫致裂紋而非疲勞成長，但它說明若未真正近距離檢視，任何追蹤計畫都會落空。~After the 2021 tie-girder fracture on the I-40 Hernando de Soto Bridge was found, amateur photographs showed damage at the same spot as early as 2016, and drone footage from a 2019 inspection also captured it; the investigation traced the fracture to hydrogen cracks from fabrication weld repairs rather than fatigue growth, but it shows that any follow-up plan fails without genuine close-up examination.",
+      "misconception": "裂縫修復完成後就可以恢復一般的兩年檢查週期，不必再追蹤。~Once a crack is repaired, the normal two-year cycle can resume without follow-up.",
+      "practice": "修復後的第一次追蹤檢查應在較短期間內（例如數個月到一年）進行，確認止裂孔沒有重新起裂；追蹤結果與原始裂縫圖一起存檔，並由負責工程師簽署是否可恢復常規間隔。~Schedule the first follow-up inspection soon after repair, for example within a few months to a year, to confirm the arrest holes have not re-initiated; file the results with the original crack map and have the responsible engineer sign whether the normal interval may resume."
+    },
+    {
+      "anchor": "斷裂關鍵構件檔案~Fracture-critical member file",
+      "title": "斷裂關鍵構件管理與交接~Fracture-critical member management and handover",
+      "mechanism": "斷裂關鍵構件是受拉、一旦斷裂可能造成部分或整座橋倒塌的鋼構件，美國國家橋梁檢查標準要求至少每 24 個月做一次可以用手觸及的近距離檢查，且不適用 48 個月的延長週期。交接檔案要讓下一個檢查團隊知道每一個構件在哪裡、屬哪一類細節、曾有哪些裂縫、怎麼修、修後量到什麼。把這些資料連成時間序列，就能從裂縫成長反推實際應力範圍，判斷修復是否有效。~Fracture-critical members are steel members in tension whose failure would probably collapse part or all of the bridge; the US National Bridge Inspection Standards require hands-on inspection at least every 24 months and exclude them from the 48-month extended cycle. The handover file must tell the next inspection team where each member is, what detail category it belongs to, which cracks it has had, how they were repaired and what was measured afterwards. Linked as a time series, these data let engineers back-calculate the real stress range from crack growth and judge whether a repair worked.",
+      "model": "某裂縫兩年內由 20 mm 成長到 26 mm，期間約 1.46×10⁶ 次循環：da/dN ≈ 0.006/1.46×10⁶ ≈ 4.1×10⁻⁹ m/cycle。ΔK = (da/dN/C)^(1/3) = (4.1×10⁻⁹/6.9×10⁻¹²)^(1/3) ≈ 8.4 MPa√m；取平均 a = 23 mm，Δσ = ΔK/[1.12√(πa)] ≈ 28 MPa。數值為教學假設。~A crack grew from 20 mm to 26 mm over two years and about 1.46×10⁶ cycles, so da/dN ≈ 0.006/1.46×10⁶ ≈ 4.1×10⁻⁹ m/cycle. Then ΔK = (da/dN/C)^(1/3) = (4.1×10⁻⁹/6.9×10⁻¹²)^(1/3) ≈ 8.4 MPa√m, and with a mean a = 23 mm, Δσ = ΔK/[1.12√(πa)] ≈ 28 MPa. Values are teaching assumptions.",
+      "verify": "交接前核對檔案是否涵蓋所有斷裂關鍵構件的位置圖、檢查程序、近接方式（橋檢車、繩索或吊籃）、歷次裂縫圖與修復圖說；抽查幾處現場標記與檔案是否一致，並確認檢查團隊負責人的資格與近接設備已排定。~Before handover, check that the file covers location drawings, inspection procedures, access methods (snooper truck, rope access or lift), every crack map and the repair drawings for all fracture-critical members; spot-check site marks against the file and confirm the team leader's qualification and the access equipment schedule.",
+      "failure": "若檔案只保留結論而缺少裂縫量測資料，新的檢查團隊無法計算成長率，也無法判斷修復是否有效；近接設備若未事先安排，容易以遠距目視或空拍取代近距離檢查，正是讓斷裂長期未被發現的條件。~If the file keeps only conclusions without crack measurements, a new team cannot compute growth rates or judge whether repairs worked; if access equipment is not arranged in advance, distant visual checks or drone footage tend to replace hands-on inspection, exactly the condition that lets a fracture go unnoticed for years.",
+      "misconception": "空拍影像已經可以取代斷裂關鍵構件的近距離檢查。~Drone imagery can now replace hands-on inspection of fracture-critical members.",
+      "practice": "維護手冊列出每一個斷裂關鍵構件的檢查程序、近接方法、必要的非破壞檢測與通報門檻；發現疑似斷裂時，第一線檢查員必須有權立即封橋並通報業主，這項權責要在交接時寫清楚。~The maintenance manual lists, for each fracture-critical member, the inspection procedure, access method, required NDT and reporting thresholds; when a fracture is suspected, the front-line inspector must have authority to close the bridge immediately and notify the owner, and that authority must be written down at handover."
+    }
+  ],
+  "example": "設計練習：某 1970 年代鋼板梁橋受拉翼板的蓋板端部屬 AASHTO E′ 類（A = 3.9×10⁸ ksi³ ≈ 1.28×10¹¹ MPa³，常幅門檻約 18 MPa）。現場應變量測得有效應力範圍 S_re = 25 MPa、每天約 1,500 次循環（約 547,500 次/年）。(1) 疲勞壽命 N = 1.28×10¹¹/25³ ≈ 8.2×10⁶ 次，約 15 年，說明通車數十年的此類細節出現裂縫並不意外。(2) 檢查發現半長 a = 30 mm 的邊緣裂縫，取孔邊尖峰應力範圍限值 110 MPa、設計應力範圍 Δσ = 50 MPa：ρ ≥ 4×30×(50/110)² ≈ 24.8 mm，孔徑約 49.6 mm，邊緣裂縫加大 25% 約 62 mm，選用 64 mm（2.5 in）環形鑽，落在 FHWA 手冊 2 至 4 in 的經驗範圍。(3) 再以螺栓拼接板跨越蓋板端部，讓力量繞過受損斷面，並於一年內追蹤檢查孔緣。(4) 若改變一個輸入：S_re 改為 30 MPa，壽命變為 8.2×10⁶×(25/30)³ ≈ 4.7×10⁶ 次，約 8.6 年，應力範圍增加 20% 使壽命少了約 42%。數值為教學假設，不代表任何實際橋梁。~Design exercise: a cover-plate end on the tension flange of a 1970s steel plate-girder bridge is AASHTO Category E′ (A = 3.9×10⁸ ksi³ ≈ 1.28×10¹¹ MPa³, constant-amplitude threshold about 18 MPa). Field strain measurement gives an effective stress range S_re = 25 MPa and about 1,500 cycles a day (about 547,500 a year). (1) Fatigue life N = 1.28×10¹¹/25³ ≈ 8.2×10⁶ cycles, about 15 years, so cracking at such a detail after decades of service is no surprise. (2) Inspection finds an edge crack of half-length a = 30 mm; with a peak hole-edge stress-range limit of 110 MPa and design stress range Δσ = 50 MPa, ρ ≥ 4×30×(50/110)² ≈ 24.8 mm, a diameter of about 49.6 mm, raised by 25% for an edge crack to about 62 mm, so a 64 mm (2.5 in) annular cutter is chosen, within the 2 to 4 in range supported in the FHWA manual. (3) Bolted splice plates then bridge the cover-plate end so force bypasses the damaged section, and the hole edges are re-inspected within a year. (4) Changing one input: with S_re = 30 MPa the life becomes 8.2×10⁶×(25/30)³ ≈ 4.7×10⁶ cycles, about 8.6 years, so a 20% higher stress range cuts life by about 42%. Values are teaching assumptions, not any real bridge.",
+  "history": "鋼橋疲勞在 1960 至 1970 年代成為美國公路橋的重要課題：1967 年 Silver Bridge 因無冗餘眼桿脆斷倒塌，促成斷裂關鍵構件的檢查與韌性要求；同一時期以 Lehigh 大學為代表的研究以足尺試驗建立焊接細節的 S–N 曲線與分類，成為 AASHTO 疲勞規定的基礎，Yellow Mill Pond 與 Lafayette Street 等橋的裂縫則提供了現場教訓。2000 年 Hoan 橋在沒有疲勞裂縫下發生脆性斷裂，2005 年完成、2013 年由 FHWA 發布的疲勞裂縫修復手冊整理了止裂孔、錘擊與螺栓拼接等方法；2021 年 I-40 Hernando de Soto 橋繫梁斷裂則凸顯近距離檢查的重要。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Fatigue of steel highway bridges became a major issue in the United States in the 1960s and 1970s: the 1967 collapse of the Silver Bridge through brittle fracture of a non-redundant eyebar led to inspection and toughness requirements for fracture-critical members, while full-scale testing led by researchers such as those at Lehigh University established S–N curves and categories for welded details that underpin the AASHTO fatigue provisions, and cracks at bridges such as Yellow Mill Pond and Lafayette Street supplied field lessons. In 2000 the Hoan Bridge fractured in a brittle way without prior fatigue cracking; FHWA's fatigue-crack repair manual, completed in 2005 and issued in 2013, collected methods such as arrest holes, peening and bolted splices; and the 2021 tie-girder fracture on the I-40 Hernando de Soto Bridge underlined the importance of hands-on inspection. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "FHWA 修復手冊估計變形誘發的開裂佔全部疲勞裂縫的 90% 以上~The FHWA repair manual estimates that distortion-induced cracking causes over 90% of all fatigue cracking",
+    "明尼蘇達州約 85% 的鋼橋建於 1986 年以前，多數可能帶有腹板間隙細節~About 85% of Minnesota's steel bridges were built before 1986 and may carry web-gap details",
+    "FHWA 手冊要求止裂孔最小孔徑 1.0 in（25.4 mm），現場經驗支持 2 至 4 in（50.8 至 101.6 mm）~The FHWA manual requires arrest holes of at least 1.0 in (25.4 mm), with field experience supporting 2 to 4 in (50.8 to 101.6 mm)",
+    "邊緣裂縫的止裂孔計算孔徑應加大 25%~The calculated arrest-hole diameter for an edge crack should be increased by 25%",
+    "氣動錘擊約 40 psi、最多 6 道，目標塑性深度 0.8 至 1.6 mm，可處理約 3 mm 深的表面裂縫~Air-hammer peening uses about 40 psi and up to 6 passes for a plastic depth of 0.8 to 1.6 mm, treating surface cracks up to about 3 mm deep",
+    "AASHTO E′ 類常幅疲勞門檻 2.6 ksi（約 18 MPa），E 類 4.5 ksi（約 31 MPa）~The AASHTO constant-amplitude fatigue threshold is 2.6 ksi (about 18 MPa) for Category E′ and 4.5 ksi (about 31 MPa) for Category E",
+    "美國國家橋梁檢查標準要求斷裂關鍵構件至少每 24 個月做近距離檢查~The US National Bridge Inspection Standards require hands-on inspection of fracture-critical members at least every 24 months",
+    "I-40 Hernando de Soto 橋主跨約 900 ft（274 m），1973 年通車，2021 年 5 月 11 日發現繫梁斷裂，8 月 2 日全面恢復通車~The I-40 Hernando de Soto Bridge has a main span of about 900 ft (274 m), opened in 1973, had a tie-girder fracture found on 11 May 2021 and fully reopened on 2 August 2021",
+    "Hoan 橋 2000 年 12 月斷裂後北行車道下陷約 4 ft（約 1.2 m）~After its December 2000 fracture, the Hoan Bridge's northbound lanes sagged about 4 ft (about 1.2 m)"
+  ],
+  "timeline": [
+    {
+      "year": "1967",
+      "event": "Silver Bridge 因無冗餘眼桿脆斷倒塌，促成斷裂關鍵構件的檢查與韌性要求~The Silver Bridge collapses through brittle fracture of a non-redundant eyebar, prompting inspection and toughness rules for fracture-critical members"
+    },
+    {
+      "year": "1970",
+      "event": "加州 Bryte Bend 橋在施工中斷裂，低韌性 A514 鋼與既有焊趾裂縫是主因~California's Bryte Bend Bridge fractures during construction, traced to low-toughness A514 steel and a pre-existing weld-toe crack"
+    },
+    {
+      "year": "2000",
+      "event": "密爾瓦基 Hoan 橋三根主梁中兩根在沒有疲勞裂縫下脆性斷裂~Two of the three girders of Milwaukee's Hoan Bridge fracture in a brittle way without prior fatigue cracking"
+    },
+    {
+      "year": "2005–2013",
+      "event": "明尼蘇達大學完成、FHWA 發布鋼橋疲勞裂縫修復與補強手冊 FHWA-IF-13-020~The University of Minnesota completes, and FHWA issues, manual FHWA-IF-13-020 on repairing and retrofitting fatigue cracks in steel bridges"
+    },
+    {
+      "year": "2021",
+      "event": "I-40 Hernando de Soto 橋發現繫梁斷裂，緊急加板補強後於 8 月恢復通車~A tie-girder fracture is found on the I-40 Hernando de Soto Bridge; after emergency plating repairs it reopens in August"
+    }
+  ],
+  "codes": [
+    "AASHTO LRFD 橋梁設計規範第 6.6 節 疲勞與斷裂~AASHTO LRFD Bridge Design Specifications, Article 6.6 Fatigue and Fracture Considerations",
+    "AASHTO 橋梁評估手冊第 7 章 鋼橋疲勞評估~AASHTO Manual for Bridge Evaluation, Section 7 Fatigue Evaluation of Steel Bridges",
+    "AASHTO/AWS D1.5 橋梁焊接規範（含斷裂關鍵構件斷裂控制計畫）~AASHTO/AWS D1.5 Bridge Welding Code (including the fracture control plan for fracture-critical members)",
+    "美國聯邦法規 23 CFR 650 Subpart C 國家橋梁檢查標準~23 CFR 650 Subpart C National Bridge Inspection Standards"
+  ],
+  "landmarks": [
+    "康乃狄克州 I-95 Yellow Mill Pond 橋~I-95 Yellow Mill Pond Bridge, Connecticut",
+    "明尼蘇達州聖保羅 Lafayette Street 橋~Lafayette Street Bridge, St. Paul",
+    "密爾瓦基 Hoan 橋~Hoan Bridge, Milwaukee",
+    "曼非斯 I-40 Hernando de Soto 橋~I-40 Hernando de Soto Bridge, Memphis"
+  ],
+  "place": {
+    "name": "I-40 Hernando de Soto 橋參照點~I-40 Hernando de Soto Bridge reference point",
+    "country": "美國~United States",
+    "lat": 35.15278,
+    "lng": -90.06389,
+    "query": "Hernando de Soto Bridge Memphis"
+  },
+  "sources": [
+    {
+      "key": "fhwa-if-13-020",
+      "title": "FHWA：鋼橋疲勞裂縫修復與補強手冊（FHWA-IF-13-020）",
+      "titleEn": "FHWA: Manual for Repair and Retrofit of Fatigue Cracks in Steel Bridges (FHWA-IF-13-020)",
+      "publisher": "Federal Highway Administration",
+      "url": "https://www.fhwa.dot.gov/bridge/steel/pubs/hif13020/hif13020.pdf",
+      "sourceType": "primary",
+      "scope": "止裂孔尺寸與施作、錘擊、螺栓補強、腹板間隙修復、非破壞檢測與案例照片；課程計算另為教學假設。",
+      "scopeEn": "Arrest-hole sizing and drilling, peening, bolted repairs, web-gap retrofits, nondestructive testing and case photographs; course calculations are separate teaching assumptions."
+    },
+    {
+      "key": "fhwa-nbis",
+      "title": "FHWA：國家橋梁檢查標準問答（23 CFR 650 Subpart C）",
+      "titleEn": "FHWA: National Bridge Inspection Standards questions and answers (23 CFR 650 Subpart C)",
+      "publisher": "Federal Highway Administration",
+      "url": "https://www.fhwa.dot.gov/bridge/nbis/",
+      "sourceType": "primary",
+      "scope": "說明例行檢查週期、斷裂關鍵構件定義與 24 個月近距離檢查要求（已有較新版本取代，供原則參考）。",
+      "scopeEn": "Explains routine inspection intervals, the definition of fracture-critical members and the 24-month hands-on requirement (since superseded by a newer version; used for principles)."
+    },
+    {
+      "key": "tdot-i40-timeline",
+      "title": "田納西州交通部：I-40 Hernando de Soto 橋修復時程",
+      "titleEn": "Tennessee DOT: I-40 Hernando de Soto Bridge repair timeline",
+      "publisher": "Tennessee Department of Transportation",
+      "url": "https://www.tn.gov/tdot/projects/region-4/i-40-hernando-desoto-bridge/timeline.html",
+      "sourceType": "primary",
+      "scope": "業主公布的緊急修復合約、兩階段加板與繞越斷裂部位的修復方式及恢復通車日期。",
+      "scopeEn": "Owner's account of the emergency repair contract, the two-phase plating and bypass repair and the reopening dates."
+    },
+    {
+      "key": "wiki-hernando-de-soto-bridge",
+      "title": "維基百科：Hernando de Soto 橋（英文）",
+      "titleEn": "Wikipedia: Hernando de Soto Bridge",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hernando_de_Soto_Bridge",
+      "sourceType": "secondary",
+      "scope": "橋梁基本資料與 2021 年斷裂、成因調查及過去影像紀錄的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of bridge data and the 2021 fracture, its investigation and earlier imagery, for further reading."
+    },
+    {
+      "key": "wiki-hoan-bridge",
+      "title": "維基百科：Hoan 橋（英文）",
+      "titleEn": "Wikipedia: Hoan Bridge",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hoan_Bridge",
+      "sourceType": "secondary",
+      "scope": "2000 年斷裂、封閉與修復經過的概覽，作為延伸閱讀；工程判讀以 FHWA 手冊為準。",
+      "scopeEn": "Overview of the 2000 fracture, closure and repair for further reading; rely on the FHWA manual for engineering interpretation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "美國聯邦公路總署",
+      "nameEn": "Federal Highway Administration (FHWA)",
+      "business": "美國聯邦公路主管機關，制定橋梁檢查標準並出版鋼橋疲勞、斷裂與修復技術手冊。",
+      "businessEn": "US federal highway agency that sets bridge inspection standards and publishes technical manuals on steel-bridge fatigue, fracture and repair.",
+      "url": "https://www.fhwa.dot.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "疲勞裂縫修復手冊與斷裂關鍵構件檢查規定",
+      "roleEn": "Fatigue-crack repair manual and fracture-critical inspection rules"
+    },
+    {
+      "name": "Mistras 集團",
+      "nameEn": "Mistras Group",
+      "business": "提供超音波、磁粉、滲透、聲射等非破壞檢測與資產完整性服務，涵蓋基礎設施與工業設施。",
+      "businessEn": "Provides ultrasonic, magnetic particle, penetrant, acoustic emission and other NDT and asset-integrity services for infrastructure and industry.",
+      "url": "https://www.mistrasgroup.com/",
+      "investorUrl": "https://investors.mistrasgroup.com/",
+      "security": {
+        "symbol": "MG",
+        "exchange": "NYSE",
+        "currency": "USD"
+      },
+      "role": "裂縫檢測與聲射監測服務的產業實務",
+      "roleEn": "Industry practice in crack detection and acoustic-emission monitoring services"
+    },
+    {
+      "name": "Kiewit",
+      "nameEn": "Kiewit",
+      "business": "北美營造與工程公司，承攬 I-40 Hernando de Soto 橋斷裂後的緊急修復合約。",
+      "businessEn": "North American construction and engineering company that held the emergency repair contract after the I-40 Hernando de Soto Bridge fracture.",
+      "url": "https://www.kiewit.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "斷裂構件緊急加板與分階段修復的施工案例",
+      "roleEn": "Construction example of emergency plating and phased repair of a fractured member"
+    }
+  ],
+  "related": [
+    "b043",
+    "b071"
+  ],
+  "architectureNodes": [
+    [
+      "焊接細節與應力範圍",
+      "Welded details and stress range"
+    ],
+    [
+      "裂縫成長與斷裂韌性",
+      "Crack growth and fracture toughness"
+    ],
+    [
+      "非破壞檢測與應變量測",
+      "NDT and strain measurement"
+    ],
+    [
+      "止裂孔、錘擊與拼接修復",
+      "Arrest holes, peening and splices"
+    ],
+    [
+      "追蹤檢查間隔",
+      "Follow-up inspection intervals"
+    ],
+    [
+      "斷裂關鍵構件檔案",
+      "Fracture-critical member file"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      2,
+      5
+    ]
+  ]
+}

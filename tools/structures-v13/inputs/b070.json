@@ -1,0 +1,302 @@
+{
+  "id": "b070",
+  "title": "巨厚筏基水化熱控制~Hydration-heat control in massive raft foundations",
+  "discipline": "st-concrete-steel",
+  "family": "foundation",
+  "focus": "以配比、澆置溫度、保溫與監測控制數萬立方公尺筏基的最高溫度與內外溫差~Controlling peak temperature and core-to-surface differential in rafts of tens of thousands of cubic metres through mix, placing temperature, insulation and monitoring",
+  "summary": "超高層的筏基厚達數公尺、一次連續澆置數萬立方公尺，水泥水化放出的熱量幾乎全部困在核心，表面卻持續散熱，造成高溫與內外溫差。本課以上海中心大廈約 6 萬 m³ 的連續澆置、天津高銀金融 117 的 65,000 m³ 筏基與洛杉磯 Wilshire Grand Center 的約 5.5 m 厚筏基為例，說明溫升估算、約束應力、低熱配比、冷卻管、連續供料與分層、保溫養護、熱電偶監測、模型校正、延遲鈣礬石風險與溫控紀錄交接。~Supertall rafts are several metres thick and placed continuously in tens of thousands of cubic metres; hydration heat is trapped almost entirely in the core while the surfaces keep losing heat, creating high temperatures and core-to-surface differentials. Using Shanghai Tower's continuous pour of about 60,000 m³, the 65,000 m³ raft of Goldin Finance 117 in Tianjin and the raft about 5.5 m thick at Wilshire Grand Center in Los Angeles, the course covers temperature-rise estimates, restraint stresses, low-heat mixes, cooling pipes, continuous supply and layering, insulated curing, thermocouple monitoring, model calibration, delayed ettringite risk and handover of thermal-control records.",
+  "units": [
+    {
+      "anchor": "筏基核心溫升~Raft core temperature rise",
+      "title": "水化熱與厚度造成的近絕熱狀態~Hydration heat and near-adiabatic conditions from thickness",
+      "mechanism": "水泥水化是放熱反應，薄板中的熱很快從表面散失，溫度只略為上升；但筏基厚度一旦達到數公尺，核心的熱要穿過數公尺混凝土才能到達表面，散熱時間遠長於放熱時間，核心幾乎處於絕熱狀態。結果是核心溫度接近「澆置溫度加絕熱溫升」，而表面溫度隨氣溫下降，兩者的差距在數天內迅速擴大。ACI 301 第 8 節把這類需要溫度控制的構件列為巨積混凝土，並在契約未另訂時採用最高溫度約 70°C、內外溫差約 19°C 的預設限值。~Cement hydration releases heat; a thin slab loses it quickly through its surfaces and warms only slightly, but once a raft is several metres thick the core's heat must travel through metres of concrete to escape, so heat loss takes far longer than heat generation and the core is almost adiabatic. The core therefore approaches placing temperature plus adiabatic rise, while the surfaces cool toward air temperature, and the gap widens rapidly over a few days. ACI 301 Section 8 classes such members as mass concrete and, unless the contract states otherwise, uses default limits of about 70°C maximum temperature and about 19°C core-to-surface difference.",
+      "model": "散熱特徵時間 t ≈ (h/2)²/a，混凝土熱擴散係數 a ≈ 0.0036 m²/h。1 m 厚板 (0.5)²/0.0036 ≈ 69 h ≈ 2.9 天，與水化放熱時間相當，溫度峰值有限；6 m 厚筏基 (3)²/0.0036 = 2,500 h ≈ 104 天，遠長於放熱期，核心近乎絕熱。數值為教學假設。~Characteristic cooling time t ≈ (h/2)²/a with thermal diffusivity a ≈ 0.0036 m²/h. A 1 m slab gives (0.5)²/0.0036 ≈ 69 h ≈ 2.9 days, comparable to the heat-release period, so the peak stays modest; a 6 m raft gives (3)²/0.0036 = 2,500 h ≈ 104 days, far longer than heat release, so the core is nearly adiabatic. Values are teaching assumptions.",
+      "verify": "設計階段以一維或三維熱傳分析預測核心與表面溫度歷程，並與 ACI 301 或契約規定的最高溫度與溫差限值比較；同時確認分析所用的熱擴散係數、表面散熱係數與配比放熱曲線都有試驗或文獻依據。~At design stage predict core and surface temperature histories with one- or three-dimensional heat-transfer analysis and compare them with the maximum temperature and differential limits in ACI 301 or the contract, confirming that the diffusivity, surface heat-transfer coefficient and mix heat curve used are backed by tests or literature.",
+      "failure": "把筏基當成一般基礎施工，未做溫控計畫，核心溫度超過 80°C、表面在夜間急冷，數天內表面出現網狀或貫穿裂縫，地下水由裂縫滲入，筏基防水與鋼筋耐久都受影響。~Treating a raft like an ordinary footing without a thermal-control plan lets the core exceed 80°C while the surface cools rapidly at night, so map or through cracks appear within days, groundwater seeps in through them, and both waterproofing and reinforcement durability suffer.",
+      "misconception": "筏基越厚越堅固，水化熱只是暫時現象，不需要特別控制。~The thicker the raft the stronger it is; hydration heat is temporary and needs no special control.",
+      "practice": "凡厚度超過約 1 m 或膠結料用量高的筏基，都應在契約中指定巨積混凝土條款，要求承包商在澆置前提交溫控計畫，內容包括預測溫度、限值、配比、保溫、監測與超限應變措施，並經結構工程師核准。~For any raft thicker than about 1 m or with high binder content, invoke mass-concrete provisions in the contract and require a thermal-control plan before placement, covering predicted temperatures, limits, mix, insulation, monitoring and actions on exceedance, approved by the structural engineer."
+    },
+    {
+      "anchor": "內外溫差與約束~Core-to-surface differential and restraint",
+      "title": "溫差、約束與溫度裂縫~Temperature differential, restraint and thermal cracking",
+      "mechanism": "溫度本身不會造成裂縫，被約束的溫度變形才會。巨積筏基有兩種約束：內部約束來自核心熱膨脹、表面冷收縮，表面被核心拉住而受拉，常在早期造成表面裂縫；外部約束來自筏基底部與既有地盤、樁或先澆混凝土的黏結，整體冷卻收縮時被底部拉住，可能在後期形成貫穿裂縫。早齡混凝土的彈性模數與抗拉強度都在快速成長，所以溫差是否造成裂縫，要比較的是當下的拉應力與當下的抗拉強度。~Temperature alone does not crack concrete; restrained thermal strain does. A massive raft has two kinds of restraint: internal restraint, where the hot expanding core holds back the cooler contracting surface and puts it in tension, often cracking the surface early; and external restraint from bond to the ground, piles or earlier concrete at the base, which resists overall cooling contraction and can produce through cracks later. Elastic modulus and tensile strength of young concrete are both growing fast, so whether a differential cracks the raft depends on comparing the tensile stress at that moment with the tensile strength at that moment.",
+      "model": "約束拉應力 σ = R·E·α·ΔT。約束係數 R = 0.5、早齡 E = 25,000 MPa、α = 10×10⁻⁶/°C、溫差 20°C 時 σ = 2.5 MPa；3 天抗拉強度 2.2 MPa，裂縫指數 2.2/2.5 = 0.88 < 1，可能開裂。溫差降到 15°C 時 σ ≈ 1.88 MPa、指數約 1.17。數值為教學假設。~Restrained tensile stress σ = R·E·α·ΔT. With R = 0.5, early-age E = 25,000 MPa, α = 10×10⁻⁶ per °C and a 20°C differential, σ = 2.5 MPa; against a 3-day tensile strength of 2.2 MPa the cracking index is 2.2/2.5 = 0.88 < 1, so cracking is likely. At 15°C, σ ≈ 1.88 MPa and the index is about 1.17. Values are teaching assumptions.",
+      "verify": "以熱—應力耦合分析計算各齡期的拉應力與抗拉強度比值（裂縫指數），並以 JCI 巨積混凝土裂縫控制指針等方法判定裂縫機率；試驗室以同配比試體量測早齡彈性模數與劈裂抗拉強度，回填分析模型。~Compute the ratio of tensile strength to tensile stress, the cracking index, at each age with coupled thermal–stress analysis, and judge cracking probability with methods such as the JCI guidelines for mass-concrete crack control; measure early-age modulus and splitting tensile strength on specimens of the same mix in the laboratory and feed them back into the model.",
+      "failure": "只控制核心最高溫度而忽略溫差，表面保溫拆除過早，寒流夜裡表面急冷，產生大量表面裂縫；筏基與先澆的墊層或連續壁緊密黏結，冷卻收縮受外部約束，數週後出現貫穿全厚的垂直裂縫。~Controlling only peak core temperature and ignoring the differential, with insulation removed too early, lets the surface chill on a cold night and crack extensively; a raft bonded tightly to a previously cast blinding or diaphragm wall is externally restrained in cooling and develops full-depth vertical cracks weeks later.",
+      "misconception": "只要核心溫度低於 70°C，筏基就不會產生溫度裂縫。~If the core stays below 70°C, the raft will not crack thermally.",
+      "practice": "溫控計畫要同時規定最高溫度、溫差與降溫速率，並說明外部約束的處理方式（例如滑動層、分區澆置或配置溫度鋼筋）；裂縫寬度允收值與修補方式應事先約定，避免事後爭議。~The thermal-control plan should set maximum temperature, differential and cooling rate together, explain how external restraint is handled (for example a slip layer, zoned pours or temperature reinforcement), and agree crack-width acceptance and repair methods in advance to avoid disputes later."
+    },
+    {
+      "anchor": "低熱膠結料配比~Low-heat binder mix",
+      "title": "配比：低熱水泥、礦物摻料與骨材~Mix design: low-heat cement, supplementary materials and aggregate",
+      "mechanism": "降低溫升最直接的方法是減少放熱：降低單位水泥量、以飛灰或爐石取代部分水泥、使用中低熱水泥，並以較大粒徑與良好級配的骨材減少漿體量。筏基常以 56 或 90 天齡期定義設計強度，讓含大量摻料的配比有時間發展強度。天津高銀金融 117 的筏基使用 C50P8 混凝土，表示筏基同時需要足夠的強度與抗滲等級；配比必須在低熱、強度、抗滲與可泵性之間取得平衡，而不是只追求最低放熱。~The most direct way to cut temperature rise is to release less heat: lower cement content, replace part of the cement with fly ash or slag, use low- or moderate-heat cement, and reduce paste volume with larger, well-graded aggregate. Rafts often define design strength at 56 or 90 days so that mixes with high replacement levels have time to gain strength. The raft of Goldin Finance 117 used C50P8 concrete, showing that rafts also need adequate strength and impermeability; the mix must balance low heat, strength, impermeability and pumpability rather than chase the lowest heat alone.",
+      "model": "絕熱溫升 ΔT_ad = Σ(m_i·h_i)/(ρc)，ρc = 2,400 kJ/m³K。配比 A：水泥 450 kg/m³×420 kJ/kg = 189,000 kJ/m³，ΔT_ad ≈ 78.8°C。配比 B：水泥 230×420 + 飛灰 100×120 + 爐石 120×300 = 144,600 kJ/m³，ΔT_ad ≈ 60.3°C，降低約 18.5°C。數值為教學假設。~Adiabatic rise ΔT_ad = Σ(m_i·h_i)/(ρc) with ρc = 2,400 kJ/m³K. Mix A: cement 450 kg/m³×420 kJ/kg = 189,000 kJ/m³, ΔT_ad ≈ 78.8°C. Mix B: cement 230×420 + fly ash 100×120 + slag 120×300 = 144,600 kJ/m³, ΔT_ad ≈ 60.3°C, about 18.5°C lower. Values are teaching assumptions.",
+      "verify": "以絕熱或半絕熱溫升試驗量測候選配比的實際溫升曲線，並做 7、28、56 天強度、抗滲與坍流度試驗；把量得的放熱曲線輸入熱分析模型，確認預測核心溫度在限值內才核定配比。~Measure actual temperature-rise curves of candidate mixes with adiabatic or semi-adiabatic tests, and test 7-, 28- and 56-day strength, impermeability and slump flow; feed the measured heat curve into the thermal model and approve the mix only when the predicted core temperature is within limits.",
+      "failure": "為了確保早期強度而提高水泥用量，核心溫度超過限值；或摻料比例過高但未延長設計齡期，28 天強度不合格引發爭議；不同批次飛灰品質變動，放熱與強度發展不一致。~Raising cement content to secure early strength pushes the core over its limit; using high replacement without extending the design age causes 28-day strength failures and disputes; variable fly-ash batches give inconsistent heat release and strength gain.",
+      "misconception": "筏基強度要求高，所以水泥用量越多越安全。~Rafts need high strength, so the more cement the safer.",
+      "practice": "在結構圖說中允許筏基以 56 或 90 天強度驗收，並明訂摻料種類與比例範圍；材料來源鎖定單一水泥廠與摻料供應商，變更須重新做溫升試驗。~Allow raft acceptance at 56 or 90 days in the structural documents with the type and range of supplementary materials stated; lock cement and supplementary material sources to single suppliers, and require new temperature-rise tests for any change."
+    },
+    {
+      "anchor": "預埋冷卻水管~Embedded cooling pipes",
+      "title": "冷卻水管、預冷與分層等構造措施~Cooling pipes, pre-cooling and layering measures",
+      "mechanism": "除了減少放熱，也可以主動帶走熱量或降低起始溫度。預埋冷卻水管在澆置後通水，把核心的熱帶出；以冰水、碎冰或液態氮預冷混凝土則降低澆置溫度；分層澆置讓每層有時間散熱。冷卻水管必須控制水溫與流量：水溫太低會在管周形成局部溫差裂縫，停止通水過早則核心再度升溫。冷卻管在完成後要灌漿封堵，避免成為滲水通道。並非所有筏基都使用冷卻管，許多案例只靠低熱配比、預冷與保溫就能達成限值，選擇取決於厚度、配比與工期。~Besides releasing less heat, heat can be removed actively or the starting temperature lowered. Embedded cooling pipes carry water after placement to draw heat from the core; chilled water, crushed ice or liquid nitrogen pre-cools the concrete and lowers placing temperature; layered placement gives each lift time to lose heat. Cooling pipes need controlled water temperature and flow: water that is too cold creates local differentials and cracks around the pipe, and stopping too early lets the core reheat. Pipes are grouted afterwards so they do not become seepage paths. Not every raft uses cooling pipes; many meet the limits with low-heat mixes, pre-cooling and insulation alone, depending on thickness, mix and programme.",
+      "model": "一條冷卻迴路流量 20 L/min（約 0.333 kg/s）、進出水溫差 8°C，帶走熱量 Q = ṁ·c·ΔT = 0.333×4.186×8 ≈ 11.2 kW。配比 B 前 72 h 約放出一半熱量 72,300 kJ/m³，平均約 0.279 kW/m³，一條迴路約可處理 11.2/0.279 ≈ 40 m³ 混凝土的放熱。數值為教學假設。~One cooling loop at 20 L/min (about 0.333 kg/s) with an 8°C inlet–outlet rise removes Q = ṁ·c·ΔT = 0.333×4.186×8 ≈ 11.2 kW. Mix B releases about half its heat, 72,300 kJ/m³, in the first 72 h, an average of about 0.279 kW/m³, so one loop handles the heat of about 11.2/0.279 ≈ 40 m³ of concrete. Values are teaching assumptions.",
+      "verify": "冷卻管安裝後做水壓試驗確認無洩漏，澆置後記錄每條迴路的進出水溫與流量，並與鄰近熱電偶的核心溫度比對；通水停止時機依核心溫度與溫差曲線決定，最後以灌漿紀錄確認封堵。~Pressure-test cooling pipes after installation, record inlet and outlet temperatures and flow for each loop after placement and compare with nearby core thermocouples; decide when to stop circulation from the core temperature and differential curves, and confirm sealing from grouting records.",
+      "failure": "冷卻水溫過低或流量過大，管周混凝土與核心之間形成新的局部溫差，沿冷卻管出現裂縫；冷卻管在澆置中被壓扁或接頭鬆脫，無法通水，或通水後漏水，冷卻管成為日後的滲水通道。~Water that is too cold or flows too fast creates a new local differential between the concrete around the pipe and the core, cracking along the pipe; pipes crushed or disconnected during placement cannot carry water, or leak when used, and become future seepage paths.",
+      "misconception": "冷卻水越冷、流量越大，筏基的溫度裂縫就越少。~The colder and faster the cooling water, the fewer thermal cracks in the raft.",
+      "practice": "冷卻管配置、進出水溫差上限、通水起訖條件與灌漿封堵方法須寫入溫控計畫，並在澆置前完成水壓試驗作為停檢點；若選擇不用冷卻管，計畫中要說明以預冷與保溫達成限值的依據。~Write the cooling-pipe layout, the limit on water temperature rise, start and stop criteria and grouting method into the thermal-control plan and make the pressure test a pre-pour hold point; if cooling pipes are not used, the plan must explain how pre-cooling and insulation meet the limits."
+    },
+    {
+      "anchor": "連續澆置與分層供料~Continuous placement and layered supply",
+      "title": "連續澆置、供料速率與冷縫風險~Continuous placement, supply rate and cold-joint risk",
+      "mechanism": "巨厚筏基通常要求一次連續澆置，避免在受力最大的基礎內產生施工縫。這需要龐大的供料與泵送能力：三一重工公布上海中心大廈筏基以約 60 小時澆置約 61,000 m³，天津高銀金融 117 以 18 台拖泵與 4 台車載泵在 80 小時內澆置 65,000 m³；Wilshire Grand Center 在 2014 年 2 月以約 20 小時完成約 16,200 m³ 的連續澆置。連續澆置以斜面分層推進，每一層必須在下層初凝前覆蓋並振搗結合，否則形成冷縫；澆置速度也影響溫度，因為每層暴露散熱的時間不同。~Massive rafts are usually placed in one continuous pour to avoid construction joints in the most heavily loaded part of the foundation. That demands enormous supply and pumping capacity: Sany reports that Shanghai Tower's raft placed about 61,000 m³ in about 60 hours and that Goldin Finance 117 placed 65,000 m³ in 80 hours with 18 trailer pumps and 4 truck pumps, while Wilshire Grand Center completed a continuous pour of about 16,200 m³ in about 20 hours in February 2014. Continuous pours advance in sloping layers, each covered and vibrated into the one below before it sets, or a cold joint forms; placement rate also affects temperature, because each layer is exposed to heat loss for a different time.",
+      "model": "平均澆置速率：上海中心 61,000/60 ≈ 1,017 m³/h、高銀 117 為 65,000/80 ≈ 813 m³/h、Wilshire Grand 約 16,200/20 ≈ 810 m³/h。分層檢核：筏基面積 8,000 m²、每層 0.5 m 需 4,000 m³，以 1,000 m³/h 約 4 h 覆蓋一層，小於緩凝後 6 h 的初凝時間；若供料降到 600 m³/h，需 6.7 h，超過初凝時間而有冷縫風險。後者為教學假設。~Average placement rates: Shanghai Tower 61,000/60 ≈ 1,017 m³/h, Goldin 117 65,000/80 ≈ 813 m³/h and Wilshire Grand about 16,200/20 ≈ 810 m³/h. Layer check: a raft of 8,000 m² with 0.5 m layers needs 4,000 m³ per layer, covered in about 4 h at 1,000 m³/h, less than a retarded initial set of 6 h; if supply drops to 600 m³/h it takes 6.7 h, exceeding the setting time and risking a cold joint. The layer check uses teaching assumptions.",
+      "verify": "澆置前以供料計畫核算各預拌廠產能、車隊數量、泵機數量與備援，並做澆置演練；澆置中以即時看板記錄各區累積方量與各層覆蓋時間，與凝結時間試驗結果比較，必要時調整緩凝劑或澆置區域。~Before the pour check each batch plant's capacity, the truck fleet, the number of pumps and back-ups against the supply plan and rehearse the pour; during it track cumulative volume by zone and layer cover times on a live board, compare them with setting-time tests and adjust retarder or zones where needed.",
+      "failure": "某一預拌廠設備故障或交通管制使供料驟降，斜面上已澆混凝土初凝，新混凝土無法與其結合，形成大面積冷縫；為趕進度集中在少數泵位澆置，某區層厚過大，振搗不足而產生蜂窩。~A batch-plant breakdown or road closure suddenly cuts supply, concrete on the slope sets and new concrete cannot bond to it, leaving a large cold joint; concentrating placement at a few pump positions to catch up makes some layers too thick, so vibration is inadequate and honeycombing results.",
+      "misconception": "只要總方量在預定時間內澆完，筏基內就不會有冷縫。~If the total volume is placed within the planned time, the raft will have no cold joints.",
+      "practice": "大體積連續澆置屬重大施工節點，需事先由業主、設計、監造與承包商共同審查供料、泵送、交通、照明、人員輪班與緊急應變計畫，並在澆置前一日召開停檢會議確認所有資源就位。~A large continuous pour is a major construction milestone; owner, designer, resident engineer and contractor should jointly review supply, pumping, traffic, lighting, shift rotas and contingency plans beforehand, with a hold-point meeting the day before to confirm every resource is in place."
+    },
+    {
+      "anchor": "保溫養護與拆除時機~Insulated curing and removal timing",
+      "title": "保溫養護、表面散熱與拆除時機~Insulated curing, surface heat loss and removal timing",
+      "mechanism": "控制內外溫差的關鍵通常不是冷卻核心，而是讓表面保持溫暖：在筏基頂面覆蓋塑膠布防止水分散失，再加上保溫毯或保溫板，減緩表面降溫，使表面溫度跟著核心一起緩慢下降。側面若採用鋼模，保溫效果差，可在模板外加保溫或延後拆模。保溫的拆除時機同樣關鍵：核心仍熱時拆除保溫，表面會在短時間內降到氣溫，溫差瞬間超限；應等到核心、表面與氣溫三者的差距都夠小時，分段逐步拆除。~The key to controlling differential is usually keeping the surface warm rather than cooling the core: cover the top with plastic sheeting to stop moisture loss, then add insulation blankets or boards to slow surface cooling so that the surface follows the core down slowly. Steel side forms insulate poorly, so add insulation outside them or delay stripping. Removal timing is equally critical: removing insulation while the core is still hot drops the surface to air temperature within hours and the differential instantly exceeds its limit; wait until core, surface and air are all close enough, then remove in stages.",
+      "model": "表面熱流 q = ΔT/R_total。表面 55°C、氣溫 20°C，未保溫時表面熱傳係數約 10 W/m²K，R = 0.1 m²K/W，q = 35/0.1 = 350 W/m²；加 50 mm、導熱係數 0.04 W/mK 的保溫毯，R = 0.05/0.04 + 0.1 = 1.35 m²K/W，q = 35/1.35 ≈ 25.9 W/m²，散熱降為約 1/13。數值為教學假設。~Surface heat flux q = ΔT/R_total. With the surface at 55°C and air at 20°C, an uninsulated surface coefficient of about 10 W/m²K gives R = 0.1 m²K/W and q = 35/0.1 = 350 W/m²; a 50 mm blanket with conductivity 0.04 W/mK gives R = 0.05/0.04 + 0.1 = 1.35 m²K/W and q = 35/1.35 ≈ 25.9 W/m², about one thirteenth. Values are teaching assumptions.",
+      "verify": "以表面下約 50 mm 的熱電偶監測表面溫度，與核心溫度相減得到溫差；拆除保溫前確認核心與表面溫差、表面與氣溫差都在計畫限值內，並查看未來數日氣溫預報，寒流前不得拆除。~Monitor surface temperature with thermocouples about 50 mm below the surface and subtract it from core temperature to get the differential; before removing insulation confirm that both core-to-surface and surface-to-air differences are within plan limits and check the forecast, never removing it ahead of a cold front.",
+      "failure": "為了進行後續鋼筋或模板作業，在核心仍約 60°C 時拆除整片保溫，夜間氣溫下降使表面迅速冷卻，第二天清晨即出現大面積表面裂縫；保溫毯被風吹開或積水浸濕而失效，局部區域溫差超限。~Removing all insulation while the core is still about 60°C so that following rebar or formwork work can start lets the surface chill overnight, and widespread surface cracks appear by the next morning; blankets blown aside by wind or soaked by ponding lose effect and local differentials exceed the limit.",
+      "misconception": "保溫只是為了冬天防凍，夏天澆置的筏基不需要保溫。~Insulation is only for winter frost protection; rafts poured in summer do not need it.",
+      "practice": "溫控計畫中須以溫度條件而非日期定義保溫拆除時機，並規定分段拆除與每次拆除後的監測頻率；後續工種要求提早拆除時，必須由溫控負責人書面評估後才可執行。~Define insulation removal in the thermal-control plan by temperature conditions rather than dates, with staged removal and monitoring frequency after each stage; any request from following trades for early removal requires a written assessment by the person responsible for thermal control."
+    },
+    {
+      "anchor": "熱電偶陣列~Thermocouple array",
+      "title": "溫度監測佈點與資料判讀~Temperature monitoring layout and data interpretation",
+      "mechanism": "溫度監測是溫控計畫的回饋迴路。佈點要能抓到最高溫度與最大溫差：筏基平面中央與最厚處的核心、頂面與底面下約 50 mm、側面與角落，以及環境氣溫；冷卻管附近也應設點。每一個核心點都要有對應的表面點，才能直接計算溫差。資料應自動記錄並即時傳輸，設定警戒值與行動值，讓溫控人員在溫差接近限值前就能增加保溫或調整冷卻，而不是事後才發現超限。~Temperature monitoring is the feedback loop of the thermal-control plan. Sensors must capture peak temperature and maximum differential: the core at the centre and thickest part of the raft, about 50 mm below the top and bottom surfaces, at sides and corners, and ambient air, plus points near cooling pipes. Every core sensor needs a matching surface sensor so the differential can be computed directly. Data should be logged automatically and transmitted live with alert and action thresholds, so that thermal-control staff add insulation or adjust cooling before the differential reaches its limit rather than discovering an exceedance afterwards.",
+      "model": "6 m 筏基每個監測柱在深度 0.05、1.5、3.0、4.5、5.95 m 各設一點；每 30 min 記錄、持續 28 天，每點約 1,344 筆，40 個感測器共約 53,760 筆。某時刻核心 68.5°C、頂面 51.0°C，溫差 17.5°C，低於 19°C 限值但已超過 17°C 的警戒值，應增加保溫。數值為教學假設。~In a 6 m raft each monitoring column has sensors at depths of 0.05, 1.5, 3.0, 4.5 and 5.95 m; logging every 30 min for 28 days gives about 1,344 readings per sensor and about 53,760 for 40 sensors. A reading of 68.5°C in the core and 51.0°C at the top gives a 17.5°C differential, below the 19°C limit but above a 17°C alert value, so insulation should be increased. Values are teaching assumptions.",
+      "verify": "感測器在安裝前做冰水與溫水兩點校正，安裝時以支架固定在鋼筋上並拍照記錄深度；澆置後確認每點都有資料，若某點失效，以備援點或鄰近點補足判讀，並在報告中註明。~Calibrate sensors at two points in ice water and warm water before installation, fix them to rebar on brackets and photograph their depths; after placement confirm that every point reports, cover any failed point with spare or neighbouring sensors and note it in the report.",
+      "failure": "感測器只裝在核心而未裝表面點，無法判斷溫差；或表面點裝得太深，讀到的溫度偏高，低估實際溫差；資料只在每天上班時下載，夜間溫差超限無人知道。~Installing sensors only in the core leaves the differential unknown; surface sensors set too deep read high and underestimate the real differential; downloading data only during office hours means night-time exceedances go unnoticed.",
+      "misconception": "只要量到核心的最高溫度，就能判斷筏基是否會開裂。~Measuring the peak core temperature alone tells you whether the raft will crack.",
+      "practice": "監測系統應具備自動警報與遠端存取，溫控負責人與值班人員的聯絡方式寫入計畫；監測至少持續到核心與表面溫差及核心與氣溫差都穩定低於限值，並由溫控負責人簽認結束。~The monitoring system should have automatic alarms and remote access, with contact details of the thermal-control lead and duty staff in the plan; monitoring continues until both core-to-surface and core-to-ambient differences are stable below the limits, and its end is signed off by the thermal-control lead."
+    },
+    {
+      "anchor": "熱分析模型校正~Thermal model calibration",
+      "title": "預測與實測比對、模型校正與裂縫指數更新~Comparing prediction and measurement, model calibration and updated cracking index",
+      "mechanism": "熱分析模型的預測依賴許多假設：配比放熱曲線、澆置溫度、表面散熱係數、保溫效果與地盤溫度。實際澆置後的前兩三天，就應以監測資料校正模型：若核心溫升比預測快或高，代表放熱參數或澆置溫度被低估，後續的最高溫度、溫差與保溫拆除時機都要重新預測。分區或分次澆置的筏基，前一次的實測校正可以直接改善下一次的配比與保溫設計。~Thermal model predictions rest on many assumptions: the mix heat curve, placing temperature, surface heat-transfer coefficient, insulation performance and ground temperature. Within the first two or three days after placement the model should be calibrated against monitoring data: if the core heats faster or higher than predicted, the heat parameters or placing temperature were underestimated, and peak temperature, differential and insulation-removal timing must all be re-predicted. For rafts placed in zones or stages, calibration from one pour directly improves the mix and insulation design of the next.",
+      "model": "預測峰值 66°C、實測 70.5°C，澆置溫度 25°C。以溫升比例校正放熱：(70.5 − 25)/(66 − 25) = 45.5/41 ≈ 1.11，即實際放熱約高 11%；以此係數重算後續溫差與降溫曲線，若預測溫差將達 20°C，就必須提前加厚保溫。數值為教學假設。~Predicted peak 66°C, measured 70.5°C, placing temperature 25°C. Calibrate heat by the rise ratio (70.5 − 25)/(66 − 25) = 45.5/41 ≈ 1.11, so actual heat is about 11% higher; recompute later differentials and cooling curves with this factor, and if the predicted differential reaches 20°C, thicken the insulation in advance. Values are teaching assumptions.",
+      "verify": "每天把實測曲線與預測曲線疊圖比較，記錄偏差與修正後的參數；修正後的模型須由溫控負責人與結構工程師確認，並據以更新裂縫指數與保溫拆除條件。~Overlay measured and predicted curves daily, recording deviations and revised parameters; have the thermal-control lead and the structural engineer confirm the revised model and update the cracking index and insulation-removal criteria from it.",
+      "failure": "忽略早期的預測偏差，仍按原計畫在第七天拆除保溫，結果實際溫差遠大於原預測而開裂；分次澆置時未把第一次的實測回饋到第二次，重複同樣問題。~Ignoring early prediction errors and removing insulation on day seven as originally planned produces much larger real differentials than predicted and cracks the raft; failing to feed the first pour's measurements into the second repeats the same problem.",
+      "misconception": "熱分析在澆置前做完就好，澆置後不需要再修正。~Thermal analysis is finished before placement and needs no revision afterwards.",
+      "practice": "溫控計畫應規定模型校正的時點（例如澆置後 24、48、72 h）與觸發條件（例如峰值偏差超過 3°C），校正結果與決策紀錄保存於溫控檔案，作為後續工程的參考。~The thermal-control plan should set calibration times, for example 24, 48 and 72 h after placement, and triggers such as a peak deviation above 3°C, and file calibration results and decisions in the thermal-control record for use on later work."
+    },
+    {
+      "anchor": "高溫與延遲鈣礬石~High temperature and delayed ettringite",
+      "title": "高溫養護後的耐久風險~Durability risks after high-temperature curing",
+      "mechanism": "筏基核心溫度過高，不只造成溫差裂縫，也可能損害混凝土本身。早期溫度若超過約 70°C，水泥水化產物中的鈣礬石可能分解，日後在潮濕環境下延遲再生成（延遲鈣礬石生成，DEF），體積膨脹造成內部裂縫，往往在數年後才出現。這是許多規範把最高溫度定在約 70°C 的主要理由之一；使用適量飛灰或爐石可降低 DEF 風險。筏基長期處於地下水中，正是 DEF 需要的潮濕條件，因此筏基的最高溫度控制比地上構件更重要。~An excessively hot raft core risks more than differential cracking; it can damage the concrete itself. If early temperature exceeds about 70°C, ettringite in the hydration products may decompose and later re-form in moist conditions (delayed ettringite formation, DEF), expanding and cracking the concrete internally, often only after several years. This is one of the main reasons many specifications cap maximum temperature at about 70°C, and suitable fly ash or slag contents reduce DEF risk. A raft sits in groundwater for its whole life, exactly the moist condition DEF needs, so peak-temperature control matters even more for rafts than for members above ground.",
+      "model": "若某區核心峰值 76°C、峰值後降溫速率 1.5°C/天，超過 70°C 的時間約 (76 − 70)/1.5 = 4 天。若改以配比 B 加上 15°C 澆置溫度，預測峰值 15 + 0.9×60.3 ≈ 69.2°C，則不超過 70°C。數值為教學假設。~If a zone peaks at 76°C in the core and cools at 1.5°C per day afterwards, it stays above 70°C for about (76 − 70)/1.5 = 4 days. Using mix B with a 15°C placing temperature, the predicted peak is 15 + 0.9×60.3 ≈ 69.2°C, which does not exceed 70°C. Values are teaching assumptions.",
+      "verify": "以監測資料統計每一區超過 70°C 的時間與最高溫度，對超限區域評估配比中的摻料比例與硫酸鹽含量是否足以抑制 DEF；必要時鑽心以顯微分析或膨脹試驗評估。~From monitoring data, tabulate for each zone the time above 70°C and the peak, assess whether the supplementary-material content and sulphate level of the mix suppress DEF in zones that exceeded it, and if needed take cores for microscopy or expansion testing.",
+      "failure": "核心溫度短暫超過 80°C 但當時未見裂縫，工程照常驗收；數年後筏基在地下水作用下出現不規則網狀裂縫與膨脹，修復極為困難，因為筏基上方已是整棟建築。~A core briefly exceeds 80°C with no cracks visible at the time and the work is accepted; years later, in groundwater, the raft develops irregular map cracking and expansion that is extremely hard to repair because the whole building sits on top.",
+      "misconception": "筏基溫度高只會影響早期裂縫，只要當時沒裂就沒有後遺症。~High raft temperature only matters for early cracking; if it does not crack at the time there are no consequences.",
+      "practice": "最高溫度超限應列為不符合事項，由結構工程師與材料專家評估耐久風險與是否需要長期監測；溫控紀錄必須保留，作為建築使用期間若出現異常裂縫時的調查依據。~Treat any peak-temperature exceedance as a nonconformance assessed by the structural engineer and a materials specialist for durability risk and the need for long-term monitoring; keep the thermal records as evidence for any investigation if unusual cracking appears during the building's life."
+    },
+    {
+      "anchor": "溫控計畫與竣工紀錄~Thermal-control plan and as-built records",
+      "title": "溫控計畫、裂縫調查與工程交接~Thermal-control plan, crack survey and engineering handover",
+      "mechanism": "巨厚筏基完成後會被上部結構完全覆蓋，日後幾乎無法檢查；因此在被覆蓋前完成裂縫調查、修補與紀錄是交接的最後機會。調查應繪製裂縫分布圖，記錄寬度、長度與是否貫穿，判定是否需要注入環氧樹脂或其他修補。交接資料包括溫控計畫、配比與放熱試驗、澆置紀錄（時間、方量、各層覆蓋時間）、溫度監測原始資料、模型校正紀錄、不符合事項處理與裂縫修補紀錄，讓業主與未來的結構工程師理解筏基的實際狀態。~Once complete, a massive raft is entirely covered by the superstructure and can hardly be inspected again, so finishing the crack survey, repairs and records before it is covered is the last chance at handover. The survey should map cracks, recording width, length and whether they pass through, and decide whether epoxy injection or another repair is needed. Handover records include the thermal-control plan, mix and heat tests, placement logs with times, volumes and layer cover times, raw temperature data, model calibration records, nonconformance actions and crack repair records, so that the owner and future structural engineers understand the raft's real condition.",
+      "model": "裂縫寬 0.3 mm、深 300 mm、長 50 m 時，注入體積 V = 0.0003×0.3×50 = 0.0045 m³ = 4.5 L；考慮損耗與管路，實際備料約 1.5 倍，約 6.8 L。若允收寬度訂為 0.2 mm，則所有大於此值的裂縫都需納入修補清單。數值為教學假設。~A crack 0.3 mm wide, 300 mm deep and 50 m long needs V = 0.0003×0.3×50 = 0.0045 m³ = 4.5 L of injection; allowing 1.5 times for losses and lines, about 6.8 L should be prepared. If the acceptance width is 0.2 mm, every crack wider than that goes on the repair list. Values are teaching assumptions.",
+      "verify": "在筏基被覆蓋前，以裂縫寬度計與照片完成全面調查，必要時以超音波或鑽心判斷深度；修補後以壓水試驗或鑽心確認填充，所有紀錄與溫度資料一併交給業主並保存於建築檔案。~Complete a full survey with crack-width gauges and photographs before the raft is covered, using ultrasonics or cores to judge depth where needed; after repair confirm filling with water-pressure tests or cores, and hand all records and temperature data to the owner for the building file.",
+      "failure": "急於進行上部結構施工，筏基表面裂縫未調查就被防水層與樓板覆蓋，日後地下室滲水時無法判斷來源；溫度監測原始資料未保存，多年後出現疑似 DEF 裂縫時無法回溯當年的最高溫度。~Rushing into the superstructure lets raft surface cracks be covered by waterproofing and slabs without a survey, so later basement leaks cannot be traced; without retained raw temperature data, suspected DEF cracking years later cannot be checked against the original peak temperatures.",
+      "misconception": "筏基被覆蓋後看不到，所以裂縫調查與溫度紀錄沒有保存價值。~Once the raft is covered nobody can see it, so crack surveys and temperature records have no lasting value.",
+      "practice": "把裂縫調查與修補完成列為上部結構開工前的停檢點，由監造與結構工程師簽認；交接文件包含溫控與裂縫的完整紀錄，並在建築維護手冊中註明地下室滲水或異常裂縫時應先查閱這些資料。~Make completion of the crack survey and repairs a hold point before superstructure work, signed by the resident engineer and structural engineer; include complete thermal and crack records in the handover and note in the building maintenance manual that they should be consulted first if basement leaks or unusual cracks appear."
+    }
+  ],
+  "example": "設計練習：筏基面積 8,000 m²、厚 6 m，總量 48,000 m³，以 1,000 m³/h 連續澆置約 48 h。配比 B（水泥 230、飛灰 100、爐石 120 kg/m³）絕熱溫升 ΔT_ad = 144,600/2,400 ≈ 60.3°C，6 m 厚核心散熱時間約 104 天，取核心達到絕熱溫升的 90%。澆置溫度 15°C 時預測峰值 15 + 0.9×60.3 ≈ 69.2°C，低於 70°C；表面加 50 mm 保溫毯使散熱由 350 W/m² 降到約 26 W/m²，預測溫差控制在 15°C，約束應力 0.5×25,000×10⁻⁵×15 ≈ 1.88 MPa，裂縫指數 2.2/1.88 ≈ 1.17。若改用配比 A（水泥 450 kg/m³），ΔT_ad ≈ 78.8°C，同樣 15°C 澆置時峰值約 85.9°C，超過限值 15.9°C，即使把澆置溫度預冷到 5°C 仍有約 75.9°C，必須改配比或加冷卻管。數值為教學假設，不代表任何實際專案。~Design exercise: a raft of 8,000 m² and 6 m thickness holds 48,000 m³, placed continuously at 1,000 m³/h in about 48 h. Mix B (cement 230, fly ash 100, slag 120 kg/m³) has ΔT_ad = 144,600/2,400 ≈ 60.3°C; the 6 m core needs about 104 days to cool, so take the core reaching 90% of adiabatic rise. At a placing temperature of 15°C the predicted peak is 15 + 0.9×60.3 ≈ 69.2°C, below 70°C; a 50 mm blanket cuts surface loss from 350 W/m² to about 26 W/m² and keeps the predicted differential at 15°C, giving a restraint stress of 0.5×25,000×10⁻⁵×15 ≈ 1.88 MPa and a cracking index of 2.2/1.88 ≈ 1.17. With mix A (cement 450 kg/m³), ΔT_ad ≈ 78.8°C and the peak at 15°C placing is about 85.9°C, 15.9°C over the limit; even pre-cooling to 5°C leaves about 75.9°C, so the mix must change or cooling pipes be added. Values are teaching assumptions, not any real project.",
+  "history": "1930 年代美國胡佛水壩以分塊澆置與預埋冷卻水管控制巨積混凝土的水化熱，奠定大體積溫控的工程方法。超高層筏基把這些原則帶入建築：1999 年拉斯維加斯 Venetian 以約 21,000 立方碼創下連續澆置紀錄，2014 年 2 月洛杉磯 Wilshire Grand Center 以約 21,200 立方碼（約 16,200 m³）、約 20 小時的連續澆置刷新紀錄；三一重工公布上海中心大廈筏基約 60 小時澆置約 61,000 m³，天津高銀金融 117 以 80 小時澆置 65,000 m³。ACI 301 第 8 節則把巨積混凝土的溫度限值與溫控計畫要求納入規範。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~In the 1930s Hoover Dam controlled the hydration heat of mass concrete with block placement and embedded cooling pipes, establishing the engineering methods of thermal control for large volumes. Supertall rafts brought these principles into buildings: in 1999 the Venetian in Las Vegas set a continuous-pour record of about 21,000 cubic yards, and in February 2014 Wilshire Grand Center in Los Angeles broke it with about 21,200 cubic yards (about 16,200 m³) in about 20 hours; Sany reports that Shanghai Tower's raft placed about 61,000 m³ in about 60 hours and that Goldin Finance 117 placed 65,000 m³ in 80 hours. ACI 301 Section 8 brought temperature limits and thermal-control plan requirements for mass concrete into a specification. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "上海中心大廈筏基約 60 小時連續澆置約 61,000 m³ 混凝土~Shanghai Tower's raft placed about 61,000 m³ of concrete continuously in about 60 hours",
+    "天津高銀金融 117 筏基以 18 台拖泵與 4 台車載泵在 80 小時內澆置 65,000 m³ 的 C50P8 混凝土~Goldin Finance 117's raft placed 65,000 m³ of C50P8 concrete in 80 hours with 18 trailer pumps and 4 truck pumps",
+    "Wilshire Grand Center 筏基厚約 18 ft（約 5.5 m），2014 年 2 月約 20 小時澆置約 16,200 m³~Wilshire Grand Center's raft is about 18 ft (about 5.5 m) thick; about 16,200 m³ was placed in about 20 hours in February 2014",
+    "Wilshire Grand 的澆置打破 1999 年 Venetian 約 21,000 立方碼的連續澆置紀錄~The Wilshire Grand pour broke the continuous-pour record of about 21,000 cubic yards set at the Venetian in 1999",
+    "ACI 301 對巨積混凝土的預設限值為最高溫度約 70°C、內外溫差約 19°C~ACI 301 default limits for mass concrete are about 70°C maximum temperature and about 19°C core-to-surface difference",
+    "上述三座筏基的平均澆置速率約 810 至 1,020 m³/h~Average placement rates for these three rafts were about 810 to 1,020 m³/h",
+    "6 m 厚筏基的核心散熱特徵時間約 100 天以上，遠長於水化放熱期~The core of a 6 m raft has a characteristic cooling time of over about 100 days, far longer than the heat-release period"
+  ],
+  "timeline": [
+    {
+      "year": "1930s",
+      "event": "胡佛水壩以分塊澆置與預埋冷卻水管控制巨積混凝土水化熱~Hoover Dam controls mass-concrete hydration heat with block placement and embedded cooling pipes"
+    },
+    {
+      "year": "1999",
+      "event": "拉斯維加斯 Venetian 以約 21,000 立方碼創下連續澆置紀錄~The Venetian in Las Vegas sets a continuous-pour record of about 21,000 cubic yards"
+    },
+    {
+      "year": "2014",
+      "event": "Wilshire Grand Center 以約 16,200 m³、約 20 小時的筏基連續澆置刷新紀錄~Wilshire Grand Center sets a new record with a continuous raft pour of about 16,200 m³ in about 20 hours"
+    },
+    {
+      "year": "2020",
+      "event": "ACI 301-20 發布，第 8 節規定巨積混凝土的材料、執行與溫控要求~ACI 301-20 is issued, with Section 8 covering materials, execution and thermal control of mass concrete"
+    }
+  ],
+  "codes": [
+    "ACI 301 結構混凝土規範第 8 節：巨積混凝土~ACI 301 Specifications for Concrete Construction, Section 8: Mass Concrete",
+    "ACI 207.1R 巨積混凝土指南~ACI 207.1R Guide to Mass Concrete",
+    "ACI 207.2R 巨積混凝土溫度與體積變化對裂縫的影響報告~ACI 207.2R Report on Thermal and Volume Change Effects on Cracking of Mass Concrete",
+    "日本混凝土學會（JCI）巨積混凝土裂縫控制指針~JCI Guidelines for Control of Cracking of Mass Concrete"
+  ],
+  "landmarks": [
+    "上海中心大廈筏基~Shanghai Tower raft",
+    "天津高銀金融 117 筏基~Goldin Finance 117 raft, Tianjin",
+    "洛杉磯 Wilshire Grand Center 筏基~Wilshire Grand Center raft, Los Angeles"
+  ],
+  "place": {
+    "name": "洛杉磯 Wilshire Grand Center 筏基~Wilshire Grand Center raft, Los Angeles",
+    "country": "美國~USA",
+    "lat": 34.0503,
+    "lng": -118.2601,
+    "query": "Wilshire Grand Center Los Angeles"
+  },
+  "sources": [
+    {
+      "key": "sany-pump-king-raft",
+      "title": "三一重工新聞稿：泵王挑戰天際高度（含筏基澆置）",
+      "titleEn": "Sany press release: Sany Pump King challenges the sky's height (including raft pours)",
+      "publisher": "Sany Group",
+      "url": "https://www.sanyglobal.com/press_releases/91/",
+      "sourceType": "primary",
+      "scope": "設備製造商公布的上海中心與高銀金融 117 筏基澆置方量、時間、混凝土等級與設備數量。",
+      "scopeEn": "Equipment maker's reported raft volumes, durations, concrete grade and equipment numbers for Shanghai Tower and Goldin Finance 117."
+    },
+    {
+      "key": "aci-301-20-preview",
+      "title": "ACI 301-20《結構混凝土規範》預覽（含第 8 節巨積混凝土目錄）",
+      "titleEn": "ACI 301-20 Specifications for Concrete Construction (preview, including Section 8 Mass Concrete contents)",
+      "publisher": "American Concrete Institute",
+      "url": "https://www.concrete.org/Portals/0/Files/PDF/Previews/301-20_preview.pdf",
+      "sourceType": "primary",
+      "scope": "確認第 8 節巨積混凝土的章節架構與適用條件；溫度限值為業界常用預設值，課程計算另為教學假設。",
+      "scopeEn": "Confirms the structure and applicability of Section 8 Mass Concrete; temperature limits are common defaults and course calculations are teaching assumptions."
+    },
+    {
+      "key": "wiki-wilshire-grand",
+      "title": "維基百科：Wilshire Grand Center（英文）",
+      "titleEn": "Wikipedia: Wilshire Grand Center",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wilshire_Grand_Center",
+      "sourceType": "secondary",
+      "scope": "筏基連續澆置的日期、方量、時間、厚度與金氏紀錄的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of the raft pour date, volume, duration, thickness and Guinness record for further reading."
+    },
+    {
+      "key": "mecn-sany-shanghai-raft",
+      "title": "Middle East Construction News：上海中心大廈泵送與筏基澆置報導",
+      "titleEn": "Middle East Construction News: Shanghai Tower pumping and raft pour report",
+      "publisher": "Middle East Construction News",
+      "url": "https://meconstructionnews.com/6212/sany-pumps-to-586m-in-shanghai/amp",
+      "sourceType": "secondary",
+      "scope": "上海中心大廈約 6 萬 m³ 筏基澆置與設備配置的新聞報導。",
+      "scopeEn": "News report on Shanghai Tower's raft pour of about 60,000 m³ and the equipment used."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "海德堡材料",
+      "nameEn": "Heidelberg Materials",
+      "business": "全球水泥、骨材與預拌混凝土生產商，提供低熱水泥與含摻料膠結材。",
+      "businessEn": "Global producer of cement, aggregates and ready-mixed concrete, including low-heat and blended binders.",
+      "url": "https://www.heidelbergmaterials.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "HEI",
+        "exchange": "XETRA",
+        "currency": "EUR"
+      },
+      "role": "低熱膠結料與巨積混凝土配比的材料脈絡",
+      "roleEn": "Materials context for low-heat binders and mass-concrete mixes"
+    },
+    {
+      "name": "豪赫蒂夫（旗下 Turner Construction）",
+      "nameEn": "HOCHTIEF (Turner Construction)",
+      "business": "國際營建集團，美國子公司 Turner 為 Wilshire Grand Center 的承包商。",
+      "businessEn": "International construction group whose US subsidiary Turner was the contractor for Wilshire Grand Center.",
+      "url": "https://www.hochtief.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "HOT",
+        "exchange": "XETRA",
+        "currency": "EUR"
+      },
+      "role": "大體積連續澆置的承包商組織與後勤案例",
+      "roleEn": "Contractor organisation and logistics case for very large continuous pours"
+    },
+    {
+      "name": "三一重工",
+      "nameEn": "Sany Heavy Industry",
+      "business": "工程機械製造商，提供大型筏基連續澆置所用的拖泵、車載泵與布料設備。",
+      "businessEn": "Construction-machinery maker supplying trailer pumps, truck pumps and placing equipment for large continuous raft pours.",
+      "url": "https://www.sanyglobal.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "600031",
+        "exchange": "SSE",
+        "currency": "CNY"
+      },
+      "role": "筏基連續澆置的設備數量與供料規模",
+      "roleEn": "Equipment numbers and supply scale for continuous raft pours"
+    }
+  ],
+  "related": [
+    "b069",
+    "b023"
+  ],
+  "architectureNodes": [
+    [
+      "低熱配比與材料",
+      "Low-heat mix and materials"
+    ],
+    [
+      "連續澆置與分層",
+      "Continuous placement and layering"
+    ],
+    [
+      "筏基核心與表面溫度場",
+      "Raft core and surface temperature field"
+    ],
+    [
+      "保溫與冷卻措施",
+      "Insulation and cooling measures"
+    ],
+    [
+      "熱電偶監測與模型校正",
+      "Thermocouple monitoring and model calibration"
+    ],
+    [
+      "裂縫調查與溫控紀錄",
+      "Crack survey and thermal records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ]
+  ]
+}

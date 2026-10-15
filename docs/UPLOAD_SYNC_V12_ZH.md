@@ -1,8 +1,16 @@
-# V12 一鍵上傳、比對雲端與每週股價更新
+# 一鍵上傳、比對雲端與每週股價更新（V13 更新）
+
+> 檔名保留 `UPLOAD_SYNC_V12_ZH.md`，因為網站與介面字典連到這個路徑；內容已更新到 V13。
 
 本文件說明如何用 **一個指令** 把本機套件的新增／修改上傳到 GitHub（`kuonanhong/macgyver-academy`），
 如何先「比對」本機新套件與雲端倉庫的差異，以及如何每週自動更新股價與匯率。
-模型權重上傳到私人倉庫 `kuonanhong/PRIVATE-MODELS` 請見 `docs/AI_MODELS_V12_ZH.md`。
+模型權重上傳到私人倉庫 `kuonanhong/PRIVATE-MODELS` 的細節見 `docs/AI_MODELS_V12_ZH.md`。
+
+**最簡單：一鍵同時更新兩個倉庫**
+
+```bash
+bash upload-all.sh        # = bash macgyver.sh all：網站只傳差異＋刪除多餘檔案，再把新權重分片傳到私人倉庫
+```
 
 > 所有腳本只在**你自己的電腦**執行。本套件不含任何 GitHub 密碼或 token，也不會替你按下 push。
 
@@ -12,17 +20,21 @@
 
 | 指令 | 做什麼 |
 |---|---|
+| `bash upload-all.sh` | **一鍵全部**＝`bash macgyver.sh all`：網站（只傳新增／修改、刪除雲端多餘檔案）＋模型（只傳私人倉庫還沒有的分片） |
 | `bash macgyver.sh` | 等於 `deploy`：更新股價匯率 → 重建 → 驗證 → **只上傳新增／修改的檔案，並刪除雲端多餘檔案** |
-| `bash macgyver.sh compare` | 只比對，不上傳；列出新增 / 修改 / 刪除 / 相同 |
+| `bash macgyver.sh compare` | 只比對網站倉庫，不上傳；列出新增 / 修改 / 刪除 / 相同 |
+| `bash macgyver.sh models` | 取得 AI 權重（已存在就驗證；Qwen3-0.6B 可由華佗 ZIP 匯入；其餘官方下載），只上傳私人倉庫沒有的 40 MiB 分片 |
+| `bash macgyver.sh models-compare` | 只比對私人倉庫的權重分片，不上傳 |
+| `bash macgyver.sh restore-models 資料夾` | 從私人倉庫還原並驗證權重 |
 | `bash macgyver.sh stocks` | 每週股價與匯率：只更新並上傳 `markets.json`、`fx.json` 兩個檔 |
 | `bash macgyver.sh schedule` | 在這台電腦排程：每週一 09:07 自動執行 `stocks` |
 | `bash macgyver.sh unschedule` | 取消本機排程 |
-| `bash macgyver.sh models` | 下載瀏覽器 AI 權重並分片上傳到私人倉庫 PRIVATE-MODELS |
-| `bash macgyver.sh doctor` | 檢查 git、Python、Node、SSH 認證與倉庫讀取 |
+| `bash macgyver.sh doctor` | 檢查 git、Python、Node、SSH 認證、兩個倉庫的讀取與本機已有的模型 |
 | `bash macgyver.sh config` | 顯示／修改設定（存在 `~/.macgyver-academy.conf`，不會上傳） |
 
-舊的 `push-updates.sh`、`update-and-upload.sh` 已由 `macgyver.sh` 取代；下次 `deploy` 時，雲端上的這些舊檔會被列為「刪除」並移除。
-`upload-github-ssh.sh`（模型分片上傳）與 `publish-github.sh`（隔離匯出）仍保留，由 `macgyver.sh` 在內部呼叫。
+V13 移除了多餘的 `upload-github-ssh.sh` 與其說明文件（功能由 `macgyver.sh` 與 `tools/sync-v13/models_sync.py` 取代）；
+下次 `deploy` 時，雲端上的這些舊檔會被列為「刪除」並移除。`publish-github.sh`（隔離匯出）仍保留，由匯出工具在內部使用。
+
 
 ---
 
@@ -59,23 +71,25 @@
 bash macgyver.sh compare
 ```
 
-輸出範例（2026-10-15 以本 V12 套件比對 `kuonanhong/macgyver-academy@main` 的實際結果）：
+輸出範例（2026-10-15 以本 V13 套件唯讀比對 `kuonanhong/macgyver-academy@main`（雲端為 V12，提交 9d32de2）的實際結果）：
 
 ```
 比較結果 / comparison  (git@github.com:kuonanhong/macgyver-academy.git @ main)
-  新增 added    : 581
-  修改 modified : 57
-  刪除 deleted  : 6
-  相同 unchanged: 1569（不會重新上傳）
-  需上傳資料量  : 180.3 MiB（git 另行壓縮）
-    + public/academy/pricing.js
-    ~ public/academy/app.js
-    - public/academy/data/course-parts/part-0001-d4af90885f509616.json   （舊分片，已被新分片取代）
-    - push-updates.sh
-    - update-and-upload.sh
-    - tests/test_upload_wrapper.py
+  新增 added    : 289
+  修改 modified : 135
+  刪除 deleted  : 14
+  相同 unchanged: 2,057（不會重新上傳）
+  需上傳資料量  : 309.3 MiB（git 另行壓縮）
+    + docs/UPGRADE_V13_ZH.md
+    + public/academy/structures-paths.js
+    + public/academy/data/bridges-buildings-100.csv
+    ~ public/academy/app.bundle.js
+    - public/academy/data/course-parts/part-0001-45a134bea8a54413.json   （舊分片，已被新分片取代）
+    - upload-github-ssh.sh
+    - docs/GITHUB_SSH_UPLOAD_ZH.md
 ```
-6 個刪除就是「多餘的舊腳本與舊分片」：3 個被新版取代的課程分片、2 個舊上傳腳本與 1 個舊測試。
+14 個刪除就是「多餘的舊腳本與舊分片」：12 個被新版取代的課程分片，以及 V13 移除的 `upload-github-ssh.sh` 與其說明文件。
+修改最多的是 78 個介面語言檔（新增橋樑與建築收藏等 38 個字串）。
 
 ### 比對原理（為什麼可靠）
 
@@ -111,7 +125,7 @@ bash macgyver.sh            # 或 bash macgyver.sh deploy
 1. 更新股價與匯率（失敗時保留上週資料，不會中斷）
 2. 若有翻譯原稿，編譯 `i18n/<語言>.js`
 3. 有 Node 時重建 `app.bundle.js` 與離線資料（內容沒變就跳過）
-4. `tools/validate-data.py` 驗證 2,066 選題、614 門課、16,274 步；失敗就**不上傳**
+4. `tools/validate-data.py` 驗證全部選題、逐步課程與步驟數（V13：含橋樑與建築 100 門）；失敗就**不上傳**
 5. 比對雲端 → 只把新增／修改寫入、刪除多餘檔案 → 一次 commit → push（失敗自動重試 3 次）
 
 GitHub Pages 通常 1–3 分鐘後更新：https://kuonanhong.github.io/macgyver-academy/
@@ -131,7 +145,7 @@ GitHub Pages 是公開的靜態網站：放在倉庫裡的課程 JSON，懂技�
 
 > ⚠️ 這個模式會讓公開倉庫**只剩網站本體**（`public/academy/`、首頁轉址、README、每週股價腳本與 Action）。
 > 第一次執行時 `compare` 會列出約 480 個「刪除」：`app/`、`portable/`、`tools/`、`docs/` 等原始碼會從公開倉庫移除，
-> 它們仍完整保存在你的電腦與 V12 ZIP。請先 `bash macgyver.sh compare` 看清楚再上傳；Git 歷史中的舊版本仍可被查到，
+> 它們仍完整保存在你的電腦與 V13 ZIP。請先 `bash macgyver.sh compare` 看清楚再上傳；Git 歷史中的舊版本仍可被查到，
 > 若要徹底移除歷史內容，需另行重建倉庫歷史。
 
 ---

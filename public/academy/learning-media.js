@@ -122,7 +122,7 @@ export function setLearningMedia(data) {
 }
 export function mediaForCourse(id) { return mediaCourses.find(c => c.courseId === id) || null; }
 function guideMarkup(guide, zh) {
-  const rows = [['concept','原理與邊界','Principle and limits'],['procedure','練習流程','Learning procedure'],['evidence','要留下的證據','Evidence to record'],['pitfalls','常見誤判','Common mistakes']];
+  const rows = [['concept','原理與邊界','Principle and limits'],['facts','關鍵數據','Key figures'],['timeline','工程時間軸','Timeline'],['codes','相關規範與標準','Codes and standards'],['landmarks','代表工程與比較','Landmark projects to compare'],['procedure','練習流程','Learning procedure'],['evidence','要留下的證據','Evidence to record'],['pitfalls','常見誤判','Common mistakes']];
   const diagramPath=(!zh&&guide.diagram?.pathEn)||guide.diagram?.path;
   const diagram=guide.diagram?.original===true&&/^assets\/diagrams\/v10-[a-z0-9-]+\.svg$/.test(diagramPath||'')?`<figure class="media-original-diagram"><img loading="lazy" src="${escape(diagramPath)}" alt="${escape(text(guide.diagram,'alt',zh)||text(guide.diagram,'title',zh))}" style="width:100%;height:auto"><figcaption>${escape(text(guide.diagram,'title',zh))} · ${zh?'本站原創概念圖；非依比例繪製，非廠商施工圖。':'Original educational concept diagram; not to scale or a vendor construction drawing.'}</figcaption></figure>`:'';
   return `<details class="media-guide"><summary>${escape(text(guide,'title',zh))}</summary>${diagram}${rows.map(([key,z,en]) => {

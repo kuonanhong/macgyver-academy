@@ -1,0 +1,306 @@
+{
+  "id": "b047",
+  "title": "橋墩塑鉸韌性設計~Ductile plastic-hinge design for bridge piers",
+  "discipline": "st-bridge-components-seismic",
+  "family": "pier",
+  "focus": "以容量設計、圍束箍筋與塑鉸轉角，讓橋墩在大地震中延展變形而不剪斷或倒塌~Capacity design, confinement and plastic-hinge rotation that let piers deform in a major earthquake without shear failure or collapse",
+  "summary": "從 1989 年賽普勒斯高架橋、1995 年阪神高速神戶線與 1999 年 921 地震的橋墩破壞出發，建立容量設計層級與位移韌性需求，量化圍束箍筋、塑鉸長度與轉角容量，再處理箍筋與續接器施工、反覆載重試驗、震後殘留漂移、塑鉸區腐蝕與既有橋墩的剪力退化評估，說明為何塑鉸只能出現在預先選定、詳細配筋且可檢查的位置。~Starting from pier failures in the 1989 Cypress Viaduct, the 1995 Hanshin Expressway Kobe Route and the 1999 Chi-Chi earthquake, build the capacity-design hierarchy and displacement-ductility demand, quantify confinement, plastic-hinge length and rotation capacity, then cover hoop and coupler construction, cyclic testing, residual drift, hinge-zone corrosion and shear degradation in existing piers, explaining why plastic hinges may form only at preselected, well-detailed and inspectable locations.",
+  "units": [
+    {
+      "anchor": "超強度彎矩 M_o~Overstrength moment M_o",
+      "title": "容量設計與破壞層級~Capacity design and failure hierarchy",
+      "mechanism": "以彈性設計抵抗設計地震對橋墩並不經濟，因此規範允許橋墩以塑性變形消散能量，但必須事先決定「哪裡可以壞、怎麼壞」。容量設計把柱端彎曲塑鉸設為唯一的延性保險絲，其他構件（剪力、帽梁、基礎、梁柱接頭、支承與錨定）都以塑鉸可能達到的超強度彎矩來設計，確保它們保持彈性。這樣即使地震遠超預期，破壞仍以可預測、可修復的彎曲變形出現，而不是脆性剪斷或基礎破壞。~Designing piers to stay elastic in the design earthquake is uneconomical, so codes allow piers to dissipate energy by yielding, but the designer must decide in advance where damage may occur and how. Capacity design makes the column-end flexural plastic hinge the only ductile fuse, and designs every other element (shear, cap beam, foundation, beam–column joint, bearings and anchorages) for the overstrength moment the hinge can develop, so that they stay elastic. Even in an earthquake far beyond expectation, damage then appears as predictable, repairable flexural deformation rather than brittle shear or foundation failure.",
+      "model": "超強度彎矩 M_o = 1.2·M_p。M_p = 12 MN·m 時 M_o = 14.4 MN·m；懸臂高 L = 10 m 的單柱，對應剪力 V_o = M_o/L = 1.44 MN，基礎、帽梁與柱剪力都以此設計；若柱高只有 6 m，V_o 升為 2.4 MN。數值為教學假設，係數依所採規範。~Overstrength moment M_o = 1.2·M_p. For M_p = 12 MN·m, M_o = 14.4 MN·m; for a single cantilever column of height L = 10 m the corresponding shear is V_o = M_o/L = 1.44 MN, used to design foundation, cap beam and column shear; a 6 m column raises V_o to 2.4 MN. Values are teaching assumptions; the factor follows the governing code.",
+      "verify": "以彎矩—曲率分析求得柱的理想化塑性彎矩 M_p（採期望材料強度），乘以超強度係數後，逐一核對柱剪力、帽梁、基礎、樁與接頭的設計強度是否大於對應需求，並在計算書中列出完整的能力保護清單。~Obtain the column's idealised plastic moment M_p from moment–curvature analysis using expected material strengths, apply the overstrength factor, and check that the design strengths of column shear, cap beam, footing, piles and joints exceed the corresponding demands, listing the full capacity-protection table in the calculations.",
+      "failure": "若剪力或基礎只以設計地震力計算，塑鉸形成前或形成時柱先剪斷，強度在一個循環內驟降；1971 年聖費爾南多與 1989 年洛馬普列塔地震中多座高架橋就因柱剪力與接頭不足而崩塌。~If shear or foundations are designed only for the design earthquake force, the column can fail in shear before or as the hinge forms, losing strength within one cycle; in the 1971 San Fernando and 1989 Loma Prieta earthquakes several viaducts collapsed because of inadequate column shear and joint capacity.",
+      "misconception": "橋墩越強越好，所有構件都加強就能確保耐震安全。~The stronger the pier the better; strengthening every member guarantees seismic safety.",
+      "practice": "設計審查時要求一張「延性構件與能力保護構件」對照表，列出塑鉸位置、M_p、M_o 與各能力保護構件的強度比；變更柱配筋時，必須同步重算所有能力保護構件。~Design review requires a table of ductile versus capacity-protected members listing hinge locations, M_p, M_o and each protected member's strength ratio; any change to column reinforcement triggers recalculation of all capacity-protected members."
+    },
+    {
+      "anchor": "位移韌性需求 μ_D~Displacement ductility demand μ_D",
+      "title": "位移需求與韌性限值~Displacement demand and ductility limits",
+      "mechanism": "對週期較長的橋梁，等位移原則指出非線性結構的最大位移與同週期的彈性結構相近，因此設計可先求彈性位移需求，再除以柱的降伏位移得到位移韌性需求 μ_D。韌性需求越高，塑鉸轉角越大、損傷越重；加州運輸局耐震設計準則 1.7 版把固定基礎單柱橋墩的 μ_D 限制在 4、多柱排架限制在 5，並要求每個延性構件的局部位移韌性容量至少為 3。限值的目的是讓需求與容量之間保有餘裕，同時把震後損傷控制在可修復範圍。~For longer-period bridges the equal-displacement principle says the peak displacement of a nonlinear structure is close to that of an elastic structure with the same period, so design first finds the elastic displacement demand and divides it by the column's yield displacement to get the displacement ductility demand μ_D. Higher demand means larger hinge rotations and heavier damage; Caltrans Seismic Design Criteria version 1.7 limits μ_D to 4 for single-column bents on fixed foundations and 5 for multi-column bents, and requires each ductile member to have a local displacement ductility capacity of at least 3. The limits keep a margin between demand and capacity and hold post-earthquake damage within a repairable range.",
+      "model": "降伏曲率 φ_y ≈ 2.25·ε_y/D，ε_y = 475/200,000 = 0.002375，D = 2.0 m，φ_y ≈ 0.00267 1/m；降伏位移 Δ_y = φ_y·L²/3 = 0.00267×10²/3 ≈ 0.089 m（未計鋼筋滑移）。彈性位移需求 Δ_D = 0.30 m，μ_D = 0.30/0.089 ≈ 3.4，小於 4。數值為教學假設。~Yield curvature φ_y ≈ 2.25·ε_y/D with ε_y = 475/200,000 = 0.002375 and D = 2.0 m gives φ_y ≈ 0.00267 1/m; yield displacement Δ_y = φ_y·L²/3 = 0.00267×10²/3 ≈ 0.089 m, ignoring bar slip. For an elastic displacement demand Δ_D = 0.30 m, μ_D = 0.30/0.089 ≈ 3.4, below 4. Values are teaching assumptions.",
+      "verify": "以反應譜或非線性時間歷程分析求得每座排架的位移需求，與推覆分析（pushover）得到的降伏位移與容量位移比較，確認 μ_D 不超過規範限值且 Δ_D 小於容量位移；短週期橋梁要另加位移放大係數。~Obtain each bent's displacement demand by response-spectrum or nonlinear time-history analysis and compare it with yield and capacity displacements from pushover analysis, confirming μ_D stays within the code limit and Δ_D below capacity; short-period bridges need an additional displacement magnification factor.",
+      "failure": "同一座橋中長短不一的橋墩若未調整勁度，短墩吸收大部分地震力且韌性需求集中，可能先達到剪力或韌性極限；忽略短週期放大則低估位移，使塑鉸轉角超過容量。~If piers of very different heights in one bridge are not balanced in stiffness, the short piers attract most of the seismic force and concentrate ductility demand, reaching shear or ductility limits first; ignoring short-period magnification underestimates displacement and drives hinge rotation beyond capacity.",
+      "misconception": "只要強度需求以韌性折減後滿足，就不必檢查位移。~If strength demand reduced by ductility is satisfied, displacement need not be checked.",
+      "practice": "相鄰排架的有效勁度比應盡量接近（例如以墩高、斷面或基礎埋深調整），設計報告須列出每座排架的 Δ_D、Δ_y、Δ_c 與 μ_D，作為審查與後續評估的基準。~Keep effective stiffness ratios of adjacent bents close, adjusting pier height, section or foundation embedment, and list Δ_D, Δ_y, Δ_c and μ_D for every bent in the design report as the baseline for review and later assessment."
+    },
+    {
+      "anchor": "螺旋箍筋體積比 ρ_s~Spiral volumetric ratio ρ_s",
+      "title": "圍束箍筋與核心混凝土~Confining hoops and core concrete",
+      "mechanism": "塑鉸轉角容量主要取決於受壓區混凝土能承受多大壓應變：保護層混凝土在應變約 0.004 時剝落，但被螺旋箍筋或封閉箍筋圍束的核心混凝土，受到箍筋的側向反力，強度與極限應變都大幅提高。圍束同時防止縱向主筋在反覆載重下挫屈，以及提供剪力強度。圓形斷面用螺旋筋圍束效率最高，矩形斷面則需要繫筋把箍筋的長邊拉住，否則箍筋向外彎曲，圍束作用只在角落有效。~The rotation capacity of a plastic hinge depends mainly on how much compressive strain the concrete can sustain: cover concrete spalls at a strain of about 0.004, but core concrete confined by spirals or closed hoops gains strength and ultimate strain from the hoops' lateral reaction. Confinement also stops longitudinal bars buckling under reversed loading and supplies shear strength. Circular sections confined by spirals are the most efficient; rectangular sections need cross-ties to restrain the long sides of the hoops, or the hoops bow outward and confine effectively only at the corners.",
+      "model": "ρ_s = 4·A_sp/(D′·s)，22 mm 螺旋筋 A_sp = 380 mm²、核心直徑 D′ = 1,900 mm、間距 s = 100 mm，ρ_s = 1,520/190,000 = 0.0080。極限應變 ε_cu = 0.004 + 1.4·ρ_s·f_yh·ε_su/f′_cc = 0.004 + 1.4×0.008×475×0.09/50 ≈ 0.0136，約為未圍束值的 3.4 倍。數值為教學假設。~ρ_s = 4·A_sp/(D′·s); a 22 mm spiral with A_sp = 380 mm², core diameter D′ = 1,900 mm and pitch s = 100 mm gives ρ_s = 1,520/190,000 = 0.0080. Ultimate strain ε_cu = 0.004 + 1.4·ρ_s·f_yh·ε_su/f′_cc = 0.004 + 1.4×0.008×475×0.09/50 ≈ 0.0136, about 3.4 times the unconfined value. Values are teaching assumptions.",
+      "verify": "以 Mander 等圍束混凝土模型建立彎矩—曲率分析，確認極限曲率由核心混凝土壓應變或主筋拉應變控制；並檢查箍筋間距不超過規範對防止主筋挫屈的上限（常以主筋直徑的倍數表示）。~Build the moment–curvature analysis with a confined-concrete model such as Mander's, confirming whether ultimate curvature is governed by core compressive strain or bar tensile strain; check that hoop spacing does not exceed the code limit for preventing bar buckling, usually expressed as a multiple of bar diameter.",
+      "failure": "1989 年洛馬普列塔地震中崩塌的賽普勒斯街高架橋，柱缺乏足夠的環向圍束以防止爆裂，上下柱之間也缺少鋼筋連接；圍束不足的柱在保護層剝落後核心壓碎、主筋外凸挫屈，強度與軸向承載同時喪失。~The Cypress Street Viaduct, which collapsed in the 1989 Loma Prieta earthquake, had columns lacking enough hoop confinement to prevent bursting and upper columns not tied to the lower ones with reinforcement; in poorly confined columns, once the cover spalls the core crushes and bars buckle outward, losing both lateral strength and axial capacity.",
+      "misconception": "箍筋主要是用來固定主筋位置，對耐震性能影響不大。~Hoops mainly hold the longitudinal bars in place and matter little for seismic performance.",
+      "practice": "塑鉸區的箍筋必須是封閉箍或連續螺旋，彎鉤以 135 度彎入核心並有足夠延伸長度，或採焊接封閉箍；圖面要單獨繪出塑鉸區的箍筋間距與範圍，不得以一般區配筋替代。~Hinge-zone hoops must be closed hoops or continuous spirals, with 135-degree hooks anchored into the core with adequate extension, or welded closed hoops; drawings show hinge-zone spacing and extent separately and must not substitute general-zone detailing."
+    },
+    {
+      "anchor": "塑鉸長度 L_p~Plastic-hinge length L_p",
+      "title": "塑鉸長度、轉角容量與搭接禁區~Hinge length, rotation capacity and no-splice zones",
+      "mechanism": "實際塑性變形分布在柱底一段區域內，為了計算方便，以等效塑鉸長度 L_p 把曲率集中成一個轉角：L_p 一部分來自柱高（彎矩梯度），一部分來自主筋在基礎中的應變滲透，因此與主筋直徑及降伏強度有關。塑鉸轉角容量等於（極限曲率 − 降伏曲率）乘以 L_p，再乘以柱高換算為塑性位移。塑鉸區內不允許主筋搭接，因為搭接在反覆大應變下會滑脫，這正是許多早期橋墩在柱底搭接處破壞的原因。~Plastic deformation actually spreads over a zone at the column base; for convenience an equivalent plastic-hinge length L_p concentrates curvature into one rotation. Part of L_p comes from the column height through moment gradient and part from strain penetration of the bars into the footing, so it depends on bar diameter and yield strength. Hinge rotation capacity equals ultimate minus yield curvature times L_p, converted to plastic displacement through the column height. Lap splices are not allowed in the hinge zone because they slip under reversed large strains, which is why many older piers failed at base lap splices.",
+      "model": "等效塑鉸長度 L_p = 0.08·L + 0.022·f_ye·d_bl = 0.08×10 + 0.022×475×0.036 ≈ 1.18 m（不小於 0.044·f_ye·d_bl ≈ 0.75 m）。中性軸深 c = 0.25·D = 0.5 m，φ_u = 0.0136/0.5 ≈ 0.0272 1/m；θ_p = (0.0272 − 0.0027)×1.18 ≈ 0.029 rad；Δ_p = θ_p·(L − L_p/2) ≈ 0.029×9.41 ≈ 0.27 m。數值為教學假設。~L_p = 0.08·L + 0.022·f_ye·d_bl = 0.08×10 + 0.022×475×0.036 ≈ 1.18 m (not less than 0.044·f_ye·d_bl ≈ 0.75 m). With neutral-axis depth c = 0.25·D = 0.5 m, φ_u = 0.0136/0.5 ≈ 0.0272 1/m; θ_p = (0.0272 − 0.0027)×1.18 ≈ 0.029 rad; Δ_p = θ_p·(L − L_p/2) ≈ 0.029×9.41 ≈ 0.27 m. Values are teaching assumptions.",
+      "verify": "比對手算與推覆分析的容量位移，並確認圖面上的塑鉸區範圍（通常取 L_p、斷面尺寸與柱高某比例三者中的較大值）內沒有主筋搭接、斷筋或施工縫錯位；續接只能放在塑鉸區外或使用經試驗認可的機械續接器。~Compare the hand capacity displacement with the pushover result, and confirm that within the hinge-zone extent on the drawings (usually the greatest of L_p, the section dimension and a fraction of column height) there are no lap splices, bar cutoffs or misplaced construction joints; splices go outside the zone or use test-qualified mechanical couplers.",
+      "failure": "舊橋常在柱底以短搭接連接基礎預留筋，地震時搭接段滑脫，柱底彎矩強度驟降並形成搖擺；主筋在柱中段截斷時，塑鉸可能轉移到截斷點而該處缺乏圍束，造成意外的剪力或彎曲破壞。~Older piers often lap column bars onto short footing starter bars at the base; in an earthquake the splice slips, base moment strength collapses and the column rocks; where bars are cut off at mid-height, the hinge can migrate to the cutoff point, which lacks confinement, causing unexpected shear or flexural failure.",
+      "misconception": "塑鉸長度就是柱底出現裂縫的長度，可以在現場直接量到。~The plastic-hinge length is simply the cracked length at the column base and can be measured on site.",
+      "practice": "柱主筋優先採用通長或塑鉸區外的機械續接，基礎內錨定長度與彎鉤方向依設計圖施作；施工前召開配筋協調會，確認塑鉸區、施工縫與續接位置。~Prefer continuous column bars or mechanical couplers outside the hinge zone, and build footing anchorage length and hook direction exactly as drawn; hold a reinforcement coordination meeting before construction to confirm hinge-zone, construction-joint and splice locations."
+    },
+    {
+      "anchor": "箍筋間距查驗~Hoop spacing inspection",
+      "title": "塑鉸區鋼筋施工與查驗~Hinge-zone reinforcement construction and inspection",
+      "mechanism": "塑鉸區配筋最密：大直徑主筋、密集螺旋筋、繫筋與基礎頂層筋交錯，模板內空間有限，施工者常為了方便澆置而放寬箍筋間距、縮短彎鉤或省略繫筋，這些小變更都直接降低圍束效果。混凝土方面，粒料粒徑與坍度必須讓混凝土流過密集鋼筋並充分搗實，否則柱底出現蜂窩，保護層與核心之間的握裹不良。施工縫若設在塑鉸區內，界面也會成為弱面。~The hinge zone has the densest reinforcement: large longitudinal bars, closely spaced spirals, cross-ties and the footing's top mat all intersect in limited form space, and contractors are tempted to widen hoop spacing, shorten hooks or omit cross-ties for easier placing, each of which directly reduces confinement. For concrete, aggregate size and slump must let it flow through congested steel and be fully compacted, or honeycombing appears at the column base with poor bond between cover and core. A construction joint placed within the hinge zone also becomes a plane of weakness.",
+      "model": "螺旋筋體積比與間距成反比，ρ_s ∝ 1/s。設計間距 s = 100 mm、ρ_s = 0.0080；若現場放寬為 130 mm，ρ_s = 1,520/(1,900×130) ≈ 0.0062，下降約 23%；ε_cu 由 0.0136 降為 0.004 + 1.4×0.0062×475×0.09/50 ≈ 0.0114，約下降 16%，轉角容量隨之降低。數值為教學假設。~ρ_s ∝ 1/s. With s = 100 mm, ρ_s = 0.0080; if widened on site to 130 mm, ρ_s = 1,520/(1,900×130) ≈ 0.0062, about 23% lower; ε_cu falls from 0.0136 to 0.004 + 1.4×0.0062×475×0.09/50 ≈ 0.0114, about 16% lower, and rotation capacity drops accordingly. Values are teaching assumptions.",
+      "verify": "澆置前由監造逐支柱量測塑鉸區箍筋間距、彎鉤角度與延伸長度、繫筋數量與保護層，以照片與量尺記錄；混凝土採用可通過鋼筋淨距的粒料尺寸，並在試拌時確認流動性；拆模後檢查柱底是否有蜂窩。~Before casting, the inspector measures each column's hinge-zone hoop spacing, hook angle and extension, cross-tie count and cover, recording with photos and a tape; the concrete uses an aggregate size that passes the bar clear spacing with flowability confirmed in trial mixes; after stripping inspect the column base for honeycombing.",
+      "failure": "箍筋間距在施工中被放寬、彎鉤只做 90 度或繫筋遺漏，地震時保護層剝落後箍筋彎鉤張開，核心混凝土失去圍束，主筋挫屈；這種缺陷在完工後完全被混凝土覆蓋，只有大地震才會暴露。~Hoop spacing widened during construction, 90-degree hooks or missing cross-ties let hooks open once the cover spalls in an earthquake, so the core loses confinement and bars buckle; such defects are completely hidden by concrete after completion and are exposed only by a major earthquake.",
+      "misconception": "箍筋間距差幾公分不影響結構安全，可以依現場方便調整。~A few centimetres of extra hoop spacing do not affect safety and can be adjusted for site convenience.",
+      "practice": "把塑鉸區配筋查驗列為澆置前的停留點，未經監造簽認不得澆置；任何配筋變更（間距、彎鉤、續接）須經設計者書面同意，並記入竣工圖。~Make hinge-zone reinforcement inspection a hold point before casting that cannot be passed without the inspector's signature; any change to spacing, hooks or splices needs the designer's written approval and goes into the as-built drawings."
+    },
+    {
+      "anchor": "機械續接器與基礎錨定~Mechanical couplers and footing anchorage",
+      "title": "續接器、錨定與接頭施工~Couplers, anchorage and joint construction",
+      "mechanism": "柱主筋要在塑鉸區發展到超過降伏的大應變，因此續接與錨定必須比鋼筋本身更強：機械續接器要能讓鋼筋在續接器外降伏並硬化，而不是在續接器內拉脫；主筋伸入基礎或帽梁的長度與彎鉤方向，要確保塑鉸應變滲透段不會拔出。梁柱接頭內鋼筋交錯最密，接頭剪力需要專門的箍筋與垂直筋，施工順序也要讓接頭混凝土能一次澆置密實。~Column bars must develop strains well beyond yield in the hinge zone, so splices and anchorages must be stronger than the bars: a mechanical coupler must let the bar yield and strain-harden outside the coupler rather than pull out inside it, and the length and hook direction of bars extending into the footing or cap beam must ensure the strain-penetration zone does not pull out. Beam–column joints have the most congested steel; joint shear needs dedicated hoops and vertical bars, and the construction sequence must let joint concrete be placed densely in one pour.",
+      "model": "36 mm 主筋面積 A_b = π×18² ≈ 1,018 mm²；若要求續接器在鋼筋拉力達 620 MPa（教學取期望抗拉強度）前不破壞，所需能力 F = 1,018×620 ≈ 631 kN；試驗若在 590 kN 時於續接器內滑脫，只達需求的 94%，判定不合格。數值為教學假設。~A 36 mm bar has A_b = π×18² ≈ 1,018 mm²; if a coupler must not fail before the bar reaches 620 MPa (taken here as expected tensile strength), the required capacity is F = 1,018×620 ≈ 631 kN; a test that slips inside the coupler at 590 kN reaches only 94% of demand and fails acceptance. Values are teaching assumptions.",
+      "verify": "續接器須有型式試驗證明可發展鋼筋的期望抗拉強度與足夠延性，並在現場抽樣做拉力試驗；安裝時檢查鋼筋插入深度標記與鎖緊扭力，梁柱接頭澆置前檢查接頭箍筋與錨定長度。~Couplers need type-test evidence that they develop the bar's expected tensile strength with adequate ductility, plus site sample tension tests; during installation check bar insertion marks and tightening torque, and before casting the joint check joint hoops and anchorage lengths.",
+      "failure": "使用只能達到鋼筋降伏強度的一般續接器，大地震時鋼筋硬化後拉力超過續接器能力，在續接器處拉斷或拔出，塑鉸無法發展完整轉角；梁柱接頭剪力不足時，接頭先開裂破壞，與賽普勒斯高架橋接頭區的教訓一致。~Ordinary couplers that only develop the bar's yield strength fail by fracture or pull-out once the bars strain-harden in a major earthquake, so the hinge cannot develop full rotation; inadequate joint shear capacity lets the joint crack and fail first, consistent with the joint-region lessons of the Cypress Viaduct.",
+      "misconception": "只要續接器能承受鋼筋的降伏強度，就可以用在塑鉸區。~Any coupler that develops the bar's yield strength can be used in a plastic hinge zone.",
+      "practice": "規格書區分「一般續接」與「可用於塑鉸區的高等級續接」，後者須附型式試驗、批次證明與現場抽樣拉力報告；梁柱接頭配筋以三維圖或實體模型預先檢查可施工性。~The specification distinguishes ordinary splices from high-grade splices allowed in hinge zones, the latter requiring type tests, batch certificates and site sample tension reports; check beam–column joint reinforcement for buildability in advance with 3D drawings or a physical mock-up."
+    },
+    {
+      "anchor": "反覆載重遲滯迴圈~Cyclic hysteresis loops",
+      "title": "擬靜態反覆載重試驗~Quasi-static cyclic column testing",
+      "mechanism": "塑鉸設計公式來自大量柱試體的反覆載重試驗：在固定軸力下，以逐級增加的層間位移角（漂移比）反覆推拉柱頂，每級重複數圈，記錄力—位移遲滯迴圈、裂縫、保護層剝落、主筋挫屈與斷裂的順序。太平洋地震工程研究中心（PEER）的結構性能資料庫收錄了 400 多組反覆載重柱試驗，台灣的國家地震工程研究中心也以反力牆設施進行實尺寸或大比例橋柱試驗。試驗的用途是校驗分析模型與破壞準則，而不是證明單一設計。~Plastic-hinge design formulas come from many cyclic column tests: under constant axial load the column top is pushed and pulled through increasing drift ratios, several cycles per step, recording hysteresis loops and the sequence of cracking, cover spalling, bar buckling and fracture. The Pacific Earthquake Engineering Research Center's Structural Performance Database holds over 400 cyclic column tests, and Taiwan's NCREE tests full-size or large-scale bridge columns against its reaction wall. Tests calibrate analysis models and failure criteria rather than proving a single design.",
+      "model": "1/2.5 縮尺試體柱高 4 m，最大水平力出現在漂移比 1.5%，強度下降到最大值 80% 時漂移比 5.0%，即極限位移 Δ_u = 0.05×4 = 0.20 m；降伏漂移比 0.9%（Δ_y = 0.036 m），位移韌性 μ = 0.20/0.036 ≈ 5.6。數值為教學假設。~A 1/2.5-scale specimen 4 m tall reaches peak lateral force at 1.5% drift and falls to 80% of peak at 5.0% drift, so ultimate displacement Δ_u = 0.05×4 = 0.20 m; with 0.9% yield drift (Δ_y = 0.036 m), displacement ductility μ = 0.20/0.036 ≈ 5.6. Values are teaching assumptions.",
+      "verify": "試驗計畫寫明軸力比、加載歷程、每級圈數、量測項目（柱頂位移、柱底曲率、鋼筋應變）與破壞定義（例如強度降至最大值 80%）；把試驗結果與彎矩—曲率加塑鉸長度的預測比較，誤差在可解釋範圍內才用於設計校驗。~The test plan states axial-load ratio, loading history, cycles per step, measurements (top displacement, base curvature, bar strains) and the failure definition, for example strength falling to 80% of peak; compare results with the moment–curvature-plus-hinge-length prediction and use them for calibration only if differences are explainable.",
+      "failure": "只做單調推覆或圈數太少的試驗，會高估韌性；試體縮尺後若沒有同比例縮小箍筋與粒料，圍束與握裹行為與原型不同，試驗得到的漂移容量可能偏樂觀。~Monotonic pushover tests or too few cycles overestimate ductility; if hoops and aggregate are not scaled with the specimen, confinement and bond differ from the prototype and the measured drift capacity may be optimistic.",
+      "misconception": "單調推到破壞的試驗就足以代表地震下的柱韌性。~A monotonic push to failure is enough to represent column ductility under earthquakes.",
+      "practice": "引用試驗資料庫校驗設計時，要篩選軸力比、剪跨比、配筋率與本案相近的試體，並在報告中列出所選試體與篩選條件，避免以不相干的試驗支持設計假設。~When calibrating against a test database, select specimens with axial-load ratio, shear-span ratio and reinforcement ratios close to the project and list the selection and criteria in the report, so unrelated tests are not used to support design assumptions."
+    },
+    {
+      "anchor": "殘留漂移比~Residual drift ratio",
+      "title": "震後損傷量測與殘留變形~Post-earthquake damage measurement and residual deformation",
+      "mechanism": "韌性設計允許塑鉸損傷，因此震後要能快速判斷橋墩還能不能用：可觀察的指標包括裂縫寬度、保護層剝落範圍、主筋外露或挫屈，以及柱的殘留傾斜。殘留漂移比是決定能否修復的關鍵，因為傾斜的柱在重力下產生 P-Δ 二次彎矩，降低後續地震的安全餘裕；1995 年阪神地震後日本在設計中引入殘留位移檢核，即是為了避免大量傾斜橋墩只能拆除重建。~Ductile design accepts hinge damage, so after an earthquake engineers must judge quickly whether a pier can stay in service: observable indicators include crack width, extent of cover spalling, exposed or buckled bars and the column's residual tilt. Residual drift is the key repairability criterion because a tilted column carries second-order P-Δ moment under gravity, eroding safety for later earthquakes; after the 1995 Kobe earthquake Japan introduced residual-displacement checks into design to avoid large numbers of tilted piers that could only be demolished and rebuilt.",
+      "model": "殘留漂移比 = Δ_r/H = 0.08/10 = 0.8%。P-Δ 二次彎矩 = P·Δ_r = 8 MN×0.08 m = 0.64 MN·m，約為 M_p = 12 MN·m 的 5.3%，低於設計時常用的 20% 檢核比例；若 Δ_r = 0.30 m，P-Δ 為 2.4 MN·m，即達 20%。數值為教學假設。~Residual drift = Δ_r/H = 0.08/10 = 0.8%. The P-Δ moment = P·Δ_r = 8 MN×0.08 m = 0.64 MN·m, about 5.3% of M_p = 12 MN·m, below the 20% ratio commonly checked in design; a residual of 0.30 m gives 2.4 MN·m, reaching 20%. Values are teaching assumptions.",
+      "verify": "震後以全站儀或傾斜儀量測柱頂相對柱底的水平偏移，記錄裂縫寬度、剝落高度與主筋狀態，並與設計時預估的損傷等級比較；超過門檻（例如殘留漂移 1%，教學假設）或主筋挫屈時，限制通行並由結構工程師評估。~After an earthquake measure the horizontal offset of column top relative to base with a total station or inclinometer, record crack widths, spalling height and bar condition, and compare with the damage state predicted at design; beyond a threshold, for example 1% residual drift as a teaching assumption, or with buckled bars, restrict traffic pending a structural engineer's assessment.",
+      "failure": "未量測殘留傾斜就恢復通行，若主筋已挫屈或柱核心已壓碎，餘震中柱可能失去軸向承載；1995 年阪神地震中阪神高速神戶線有多處高架段整段側倒，正顯示缺乏韌性與殘留變形控制的後果。~Reopening without measuring residual tilt risks loss of axial capacity in aftershocks if bars have buckled or the core has crushed; in the 1995 Kobe earthquake several elevated sections of the Hanshin Expressway Kobe Route toppled sideways, showing the consequence of lacking ductility and residual-deformation control.",
+      "misconception": "震後柱子沒有倒，就表示可以直接恢復通行。~If a column did not collapse in the earthquake, the bridge can reopen immediately.",
+      "practice": "震後檢查程序要事先分級（立即通行、限制通行、封閉），每級對應裂縫、剝落、殘留漂移與主筋狀態的量化門檻；量測基準點與柱的竣工垂直度在交接時就要建立。~Grade the post-earthquake procedure in advance into open, restricted and closed, each tied to quantitative thresholds for cracking, spalling, residual drift and bar condition; set up survey reference points and as-built column plumbness at handover."
+    },
+    {
+      "anchor": "塑鉸區保護層~Hinge-zone cover",
+      "title": "塑鉸區的耐久性與箍筋腐蝕~Durability of the hinge zone and hoop corrosion",
+      "mechanism": "柱底塑鉸區通常在地面或水面附近，最容易受到乾濕循環、鹽分、除冰鹽或河水沖刷磨耗；箍筋位於最外層，比主筋更早腐蝕。箍筋斷面一旦因腐蝕減少，圍束能力與剪力強度同步下降，而這兩者正是韌性設計賴以成立的條件。因此耐久設計（保護層厚度、混凝土品質、裂縫控制、表面保護）在塑鉸區不只是延壽問題，而是維持耐震性能的必要條件。~The base hinge zone usually sits near ground or water level, where it is most exposed to wetting and drying, salts, de-icing salts and abrasion by river flow; hoops lie outermost and corrode before longitudinal bars. Once corrosion reduces hoop area, confinement and shear strength fall together, and those are exactly the conditions ductile design relies on. Durability design (cover, concrete quality, crack control and surface protection) in the hinge zone is therefore not just about service life but a prerequisite for keeping seismic performance.",
+      "model": "箍筋腐蝕使有效面積減少 20%，ρ_s 由 0.0080 降為 0.0064，ε_cu = 0.004 + 1.4×0.0064×475×0.09/50 ≈ 0.0117，比原設計 0.0136 低約 14%，塑鉸轉角容量也相應降低。數值為教學假設。~Corrosion that removes 20% of hoop area lowers ρ_s from 0.0080 to 0.0064, so ε_cu = 0.004 + 1.4×0.0064×475×0.09/50 ≈ 0.0117, about 14% below the original 0.0136, with a corresponding loss of hinge rotation capacity. Values are teaching assumptions.",
+      "verify": "定期檢查柱底的鏽水、裂縫與剝落，必要時以保護層厚度計、半電池電位與氯離子含量取樣評估腐蝕風險；發現箍筋外露時量測殘餘直徑，回算圍束與剪力強度並與原設計比較。~Inspect column bases periodically for rust staining, cracking and spalling, and where needed assess corrosion risk with cover meters, half-cell potential and chloride sampling; where hoops are exposed, measure remaining diameter and back-calculate confinement and shear strength against the original design.",
+      "failure": "河川或沿海橋墩柱底保護層被沖刷磨耗、箍筋鏽斷，平時外觀只是局部剝落，地震時塑鉸區卻提早剪力破壞或主筋挫屈，原本設計的韌性容量已不存在。~At river or coastal piers, abraded cover and corroded-through hoops at the column base look like minor spalling in service, yet in an earthquake the hinge zone fails early in shear or by bar buckling, because the designed ductility capacity no longer exists.",
+      "misconception": "耐震與耐久是兩個獨立問題，腐蝕不會影響橋墩的耐震能力。~Seismic and durability performance are separate issues; corrosion does not affect a pier's seismic capacity.",
+      "practice": "塑鉸區保護層厚度、混凝土等級與表面保護要依暴露環境提高，河中橋墩加設防撞與防磨耗保護；檢查手冊把柱底箍筋狀態列為耐震關鍵項目，並設定修復門檻。~Increase hinge-zone cover, concrete grade and surface protection to suit exposure, and add impact and abrasion protection for in-river piers; the inspection manual lists base hoop condition as a seismic-critical item with defined repair thresholds."
+    },
+    {
+      "anchor": "剪力隨韌性退化~Shear degradation with ductility",
+      "title": "既有橋墩評估與工程交接~Assessing existing piers and engineering handover",
+      "mechanism": "依舊規範設計的橋墩常見三種韌性缺陷：圍束箍筋太少、柱底主筋搭接、以及剪力強度不足。混凝土提供的剪力強度會隨塑鉸轉動而退化，因為斜裂縫張開、骨材互鎖減弱，所以即使柱在小變形時剪力足夠，進入韌性範圍後也可能剪斷，短柱尤其危險。評估流程是先求彎曲容量對應的剪力需求，再與隨韌性退化的剪力容量比較，判斷破壞模式；結果決定是否需要鋼板包覆或纖維複材補強，並寫入交接與維護文件。~Piers designed to older codes commonly show three ductility deficiencies: too little confinement, lap splices at the column base and inadequate shear strength. The concrete contribution to shear degrades as the hinge rotates, because diagonal cracks open and aggregate interlock weakens, so a column with adequate shear at small deformation can fail in shear once it enters the ductile range, short columns especially. Assessment first finds the shear demand corresponding to flexural capacity, then compares it with shear capacity degrading with ductility to identify the failure mode; the result decides whether steel or fibre-reinforced-polymer jacketing is needed and is written into handover and maintenance records.",
+      "model": "V_c = k·√f′_c·A_e，f′_c = 30 MPa、A_e = 0.8×π×1.0² ≈ 2.51 m²：μ ≤ 2 時 k = 0.29，V_c ≈ 3.99 MN；μ = 4 時 k = 0.10，V_c ≈ 1.38 MN。舊箍筋 13 mm@300 mm 提供 V_s ≈ 0.64 MN，合計 2.02 MN；6 m 短柱 V_o = 2.4 MN，判定韌性未達 4 即剪力破壞。數值為教學假設。~V_c = k·√f′_c·A_e with f′_c = 30 MPa and A_e = 0.8×π×1.0² ≈ 2.51 m²: k = 0.29 for μ ≤ 2 gives V_c ≈ 3.99 MN; k = 0.10 at μ = 4 gives V_c ≈ 1.38 MN. Old 13 mm hoops at 300 mm add V_s ≈ 0.64 MN, 2.02 MN in total; a 6 m short column with V_o = 2.4 MN fails in shear before reaching μ = 4. Values are teaching assumptions.",
+      "verify": "以竣工圖與現地取樣（鑽心強度、鋼筋掃描、局部打除確認箍筋與搭接）建立既有橋墩模型，進行推覆分析並同時繪出剪力需求與剪力容量隨位移的曲線，交點即破壞模式判斷依據；評估結果須經第二位工程師複核。~Build the existing-pier model from as-built drawings and site sampling (core strengths, rebar scanning, local breakouts to confirm hoops and splices), run a pushover and plot shear demand and degrading shear capacity against displacement, using their intersection to identify the failure mode; a second engineer checks the assessment.",
+      "failure": "評估若只用設計時的未退化剪力強度，會誤判舊橋墩為彎曲破壞而不需補強；1999 年 921 地震中台灣有約 102 座主要橋梁嚴重受損，提醒既有橋墩的韌性缺陷在強震前往往不被察覺。~Using the undegraded shear strength misclassifies old piers as flexure-governed and not needing retrofit; in the 1999 Chi-Chi earthquake about 102 major bridges in Taiwan were badly damaged, a reminder that ductility deficiencies in existing piers often go unnoticed until a strong earthquake.",
+      "misconception": "混凝土剪力強度是固定值，不會因柱子的彎曲變形而改變。~The concrete shear strength is a fixed value that does not change with column flexural deformation.",
+      "practice": "交接文件應包含每座排架的推覆曲線、破壞模式判斷、塑鉸區配筋竣工照片、續接器試驗報告與震後檢查門檻；既有橋墩評估若顯示剪力先於彎曲破壞，須排入補強計畫並經主管機關核定優先順序。~Handover contains each bent's pushover curve, failure-mode determination, as-built photos of hinge-zone reinforcement, coupler test reports and post-earthquake thresholds; where assessment shows shear failure before flexure, the pier enters the retrofit programme with priority approved by the owner agency."
+    }
+  ],
+  "example": "設計練習：單柱懸臂圓形橋墩直徑 D = 2.0 m、柱高 L = 10 m、軸力 P = 8 MN，主筋 46 支 36 mm（A_s ≈ 0.0468 m²，ρ_l ≈ 1.5%），f_ye = 475 MPa，以彎矩—曲率分析得 M_p ≈ 12 MN·m（教學假設）。降伏曲率 φ_y ≈ 2.25×0.002375/2.0 ≈ 0.00267 1/m，Δ_y = φ_y·L²/3 ≈ 0.089 m。螺旋筋 22 mm@100 mm，ρ_s = 0.0080，ε_cu ≈ 0.0136，φ_u ≈ 0.0136/0.5 ≈ 0.0272 1/m。L_p = 0.08×10 + 0.022×475×0.036 ≈ 1.18 m，θ_p ≈ (0.0272 − 0.0027)×1.18 ≈ 0.029 rad，Δ_p ≈ 0.029×9.41 ≈ 0.27 m，容量位移 Δ_c ≈ 0.36 m，μ_c ≈ 0.36/0.089 ≈ 4.0（≥ 3）。設計需求 Δ_D = 0.30 m，μ_D ≈ 3.4（≤ 4），Δ_c/Δ_D ≈ 1.2。能力保護：M_o = 1.2×12 = 14.4 MN·m，V_o = 1.44 MN，基礎與柱剪力須以此設計。若螺旋筋間距放寬到 130 mm，ε_cu 降為約 0.0114，Δ_c 降到約 0.31 m，餘裕幾乎消失。數值為教學假設，不代表任何實際橋梁的設計。~Design exercise: a single cantilever circular pier with D = 2.0 m, height L = 10 m and axial load P = 8 MN has 46 bars of 36 mm (A_s ≈ 0.0468 m², ρ_l ≈ 1.5%) with f_ye = 475 MPa, and moment–curvature analysis gives M_p ≈ 12 MN·m (teaching assumption). Yield curvature φ_y ≈ 2.25×0.002375/2.0 ≈ 0.00267 1/m and Δ_y = φ_y·L²/3 ≈ 0.089 m. A 22 mm spiral at 100 mm gives ρ_s = 0.0080, ε_cu ≈ 0.0136 and φ_u ≈ 0.0136/0.5 ≈ 0.0272 1/m. L_p = 0.08×10 + 0.022×475×0.036 ≈ 1.18 m, θ_p ≈ (0.0272 − 0.0027)×1.18 ≈ 0.029 rad, Δ_p ≈ 0.029×9.41 ≈ 0.27 m, so capacity Δ_c ≈ 0.36 m and μ_c ≈ 0.36/0.089 ≈ 4.0 (at least 3). With demand Δ_D = 0.30 m, μ_D ≈ 3.4 (at most 4) and Δ_c/Δ_D ≈ 1.2. Capacity protection: M_o = 1.2×12 = 14.4 MN·m and V_o = 1.44 MN govern foundation and column shear design. Widening the spiral pitch to 130 mm lowers ε_cu to about 0.0114 and Δ_c to about 0.31 m, nearly erasing the margin. Values are teaching assumptions, not the design of any real bridge.",
+  "history": "1971 年聖費爾南多地震後，加州開始檢討橋柱圍束不足的問題；1989 年洛馬普列塔地震中奧克蘭雙層的賽普勒斯街高架橋崩塌、造成 42 人死亡，其柱缺乏圍束且上下柱未以鋼筋連接，促使加州運輸局全面推動以容量設計與位移韌性為核心的耐震設計準則。1995 年阪神地震中阪神高速神戶線多處高架段側倒，日本隨後大幅修訂道路橋耐震設計並引入殘留位移檢核；1999 年台灣 921 集集地震約 102 座主要橋梁嚴重受損，也推動了公路橋梁耐震設計規範與既有橋梁補強。Priestley、Seible 與 Calvi 等研究者以大量柱試驗建立塑鉸長度與圍束模型，成為今日韌性設計的基礎。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~After the 1971 San Fernando earthquake California began addressing inadequate column confinement; in the 1989 Loma Prieta earthquake Oakland's double-deck Cypress Street Viaduct collapsed, killing 42 people, its columns lacking confinement and its upper columns not tied to the lower ones, prompting Caltrans to adopt seismic criteria built on capacity design and displacement ductility. In the 1995 Kobe earthquake several elevated sections of the Hanshin Expressway Kobe Route toppled, and Japan then substantially revised highway bridge seismic design and introduced residual-displacement checks; in Taiwan's 1999 Chi-Chi earthquake about 102 major bridges were badly damaged, driving revisions to the highway bridge seismic code and retrofit of existing bridges. Researchers such as Priestley, Seible and Calvi built hinge-length and confinement models from extensive column tests, the basis of today's ductile design. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "賽普勒斯街高架橋 1957 年通車，1989 年 10 月 17 日洛馬普列塔地震中崩塌，42 人罹難~The Cypress Street Viaduct opened in 1957 and collapsed in the Loma Prieta earthquake on 17 October 1989, killing 42 people",
+    "加州耐震設計準則 1.7 版：固定基礎單柱排架位移韌性需求 μ_D ≤ 4，多柱排架 ≤ 5~Caltrans SDC 1.7 limits displacement ductility demand to μ_D ≤ 4 for single-column bents on fixed foundations and ≤ 5 for multi-column bents",
+    "同一準則要求每個延性構件的局部位移韌性容量 μ_c 至少為 3~The same criteria require each ductile member to have a local displacement ductility capacity μ_c of at least 3",
+    "加州準則採用 A706 鋼筋期望降伏強度 68 ksi（475 MPa）~Caltrans criteria use an expected yield strength of 68 ksi (475 MPa) for A706 reinforcement",
+    "加州準則柱主筋比上限 0.04 A_g、下限 0.01 A_g~Caltrans criteria limit column longitudinal steel to between 0.01 A_g and 0.04 A_g",
+    "加州準則 2.1 版以理想化塑性彎矩的 120% 作為超強度彎矩~Caltrans SDC 2.1 takes the overstrength moment as 120% of the idealised plastic moment",
+    "PEER 結構性能資料庫收錄超過 400 組鋼筋混凝土柱反覆載重試驗~The PEER Structural Performance Database holds over 400 cyclic tests of reinforced concrete columns",
+    "1999 年 921 集集地震（Mw 7.7）造成台灣約 102 座主要橋梁嚴重受損~The 1999 Chi-Chi earthquake (Mw 7.7) badly damaged about 102 major bridges in Taiwan",
+    "1995 年阪神地震中阪神高速神戶線共有 10 跨高架段在 3 處側倒~In the 1995 Kobe earthquake 10 spans of the Hanshin Expressway Kobe Route toppled at 3 locations"
+  ],
+  "timeline": [
+    {
+      "year": "1971",
+      "event": "聖費爾南多地震暴露橋柱圍束與剪力不足，加州開始修訂橋梁耐震設計~The San Fernando earthquake exposes inadequate column confinement and shear, and California begins revising bridge seismic design"
+    },
+    {
+      "year": "1989",
+      "event": "洛馬普列塔地震中賽普勒斯街高架橋崩塌，加速以容量設計為核心的準則~The Cypress Street Viaduct collapses in the Loma Prieta earthquake, accelerating criteria built on capacity design"
+    },
+    {
+      "year": "1995",
+      "event": "阪神地震中阪神高速神戶線多處單柱高架段側倒~Several single-column elevated sections of the Hanshin Expressway Kobe Route topple in the Kobe earthquake"
+    },
+    {
+      "year": "1996",
+      "event": "日本修訂道路橋示方書耐震設計編，強化韌性設計並引入殘留位移檢核~Japan revises the seismic part of its highway bridge specifications, strengthening ductility design and adding residual-displacement checks"
+    },
+    {
+      "year": "1999",
+      "event": "台灣 921 集集地震約 102 座主要橋梁嚴重受損，推動規範修訂與既有橋梁補強~Taiwan's Chi-Chi earthquake badly damages about 102 major bridges, driving code revision and retrofit of existing bridges"
+    }
+  ],
+  "codes": [
+    "加州運輸局耐震設計準則（Caltrans Seismic Design Criteria, SDC）~Caltrans Seismic Design Criteria (SDC)",
+    "AASHTO LRFD 橋梁耐震設計指引規範~AASHTO Guide Specifications for LRFD Seismic Bridge Design",
+    "日本道路橋示方書 V 耐震設計編~Japanese Specifications for Highway Bridges, Part V: Seismic Design",
+    "交通部公路橋梁耐震設計規範~Taiwan Seismic Design Specifications for Highway Bridges (MOTC)"
+  ],
+  "landmarks": [
+    "賽普勒斯街高架橋（奧克蘭）~Cypress Street Viaduct, Oakland",
+    "阪神高速道路 3 號神戶線~Hanshin Expressway Route 3 Kobe Line",
+    "I-880 尼米茲高速公路賽普勒斯改線段~I-880 Nimitz Freeway Cypress realignment"
+  ],
+  "place": {
+    "name": "國家地震工程研究中心（台北）~NCREE, Taipei",
+    "country": "台灣~Taiwan",
+    "lat": 25.0137,
+    "lng": 121.5428,
+    "query": "National Center for Research on Earthquake Engineering Taipei"
+  },
+  "sources": [
+    {
+      "key": "caltrans-sdc-21",
+      "title": "加州運輸局耐震設計準則 2.1 版",
+      "titleEn": "Caltrans Seismic Design Criteria Version 2.1",
+      "publisher": "California Department of Transportation",
+      "url": "https://dot.ca.gov/-/media/dot-media/programs/engineering/documents/seismicdesigncriteria-sdc/202501seismicdesigncriteria21a11y.pdf",
+      "sourceType": "primary",
+      "scope": "現行耐震設計準則，定義超強度彎矩與剪力、塑鉸長度、圍束與能力保護；課程僅引用公開原則。",
+      "scopeEn": "Current seismic design criteria defining overstrength moment and shear, plastic-hinge length, confinement and capacity protection; the course cites public principles only."
+    },
+    {
+      "key": "caltrans-sdc-17",
+      "title": "加州運輸局耐震設計準則 1.7 版",
+      "titleEn": "Caltrans Seismic Design Criteria Version 1.7",
+      "publisher": "California Department of Transportation",
+      "url": "https://dot.ca.gov/-/media/dot-media/programs/engineering/documents/seismicdesigncriteria-sdc/f0007585seismicdesigncriteriasdc17fullversionoeereleasea11y.pdf",
+      "sourceType": "primary",
+      "scope": "前版準則，列出位移韌性需求與容量限值、最小側向強度、P-Δ 檢核與主筋比限制。",
+      "scopeEn": "Previous edition listing displacement-ductility demand and capacity limits, minimum lateral strength, P-Δ check and longitudinal-steel limits."
+    },
+    {
+      "key": "peer-spd",
+      "title": "PEER 結構性能資料庫（鋼筋混凝土柱反覆載重試驗）",
+      "titleEn": "PEER Structural Performance Database (cyclic tests of RC columns)",
+      "publisher": "Pacific Earthquake Engineering Research Center / University of Washington",
+      "url": "https://nisee.berkeley.edu/spd/",
+      "sourceType": "primary",
+      "scope": "大學研究中心建立的柱試驗資料庫，含幾何、材料、配筋、軸力與力—位移歷程，用於模型校驗。",
+      "scopeEn": "University research-centre database of column tests with geometry, materials, reinforcement, axial load and force–displacement histories for model calibration."
+    },
+    {
+      "key": "wiki-cypress-viaduct",
+      "title": "維基百科：賽普勒斯街高架橋（英文）",
+      "titleEn": "Wikipedia: Cypress Street Viaduct",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cypress_Street_Viaduct",
+      "sourceType": "secondary",
+      "scope": "高架橋歷史、1989 年崩塌原因與改線重建概要，作為延伸閱讀。",
+      "scopeEn": "Overview of the viaduct's history, the causes of its 1989 collapse and its realignment, for further reading."
+    },
+    {
+      "key": "wiki-1999-jiji",
+      "title": "維基百科：1999 年集集地震（英文）",
+      "titleEn": "Wikipedia: 1999 Jiji earthquake",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/1999_Jiji_earthquake",
+      "sourceType": "secondary",
+      "scope": "921 地震規模、傷亡與橋梁受損數量概要，作為延伸閱讀；工程細節以官方與研究資料為準。",
+      "scopeEn": "Overview of the Chi-Chi earthquake's magnitude, casualties and bridge damage count, for further reading; rely on official and research sources for engineering detail."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "加州運輸局",
+      "nameEn": "California Department of Transportation (Caltrans)",
+      "business": "加州公路橋梁主管機關，制定並公開耐震設計準則與橋梁設計手冊。",
+      "businessEn": "California's highway and bridge agency, which develops and publishes seismic design criteria and bridge design manuals.",
+      "url": "https://dot.ca.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "容量設計與位移韌性準則的官方版本與演進",
+      "roleEn": "Official versions and evolution of capacity-design and displacement-ductility criteria"
+    },
+    {
+      "name": "太平洋地震工程研究中心（PEER）",
+      "nameEn": "Pacific Earthquake Engineering Research Center (PEER)",
+      "business": "以加州大學柏克萊分校為核心的地震工程研究中心，維護試驗與地震動資料庫。",
+      "businessEn": "Earthquake-engineering research centre based at UC Berkeley that maintains test and ground-motion databases.",
+      "url": "https://peer.berkeley.edu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "柱反覆載重試驗資料與性能設計研究",
+      "roleEn": "Cyclic column test data and performance-based design research"
+    },
+    {
+      "name": "國家地震工程研究中心",
+      "nameEn": "National Center for Research on Earthquake Engineering (NCREE)",
+      "business": "台灣國家級地震工程實驗研究機構，進行大型構件反覆載重與振動台試驗。",
+      "businessEn": "Taiwan's national earthquake-engineering laboratory conducting large-scale cyclic member tests and shake-table tests.",
+      "url": "https://www.ncree.narl.org.tw/",
+      "investorUrl": "",
+      "security": null,
+      "role": "台灣橋柱試驗與 921 地震後耐震研究",
+      "roleEn": "Taiwanese bridge-column tests and post-Chi-Chi seismic research"
+    }
+  ],
+  "related": [
+    "b048",
+    "b046"
+  ],
+  "architectureNodes": [
+    [
+      "地震位移需求",
+      "Seismic displacement demand"
+    ],
+    [
+      "柱塑鉸區（延性保險絲）",
+      "Column plastic hinge (ductile fuse)"
+    ],
+    [
+      "圍束箍筋與主筋",
+      "Confining hoops and longitudinal bars"
+    ],
+    [
+      "能力保護構件（帽梁、基礎、接頭）",
+      "Capacity-protected members (cap, footing, joints)"
+    ],
+    [
+      "反覆載重試驗與模型校驗",
+      "Cyclic tests and model calibration"
+    ],
+    [
+      "震後檢查與既有橋評估",
+      "Post-event inspection and existing-pier assessment"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      3,
+      5
+    ]
+  ]
+}

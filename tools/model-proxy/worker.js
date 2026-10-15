@@ -2,17 +2,19 @@
  * MacGyver Academy model mirror — Cloudflare Worker.
  *
  * Serves the chunked weights stored in the PRIVATE GitHub repository
- * (e.g. kuonanhong/PRIVATE-MODELS, uploaded by upload-github-ssh.sh) to the
- * public website, without ever putting a GitHub token in the browser.
+ * (e.g. kuonanhong/PRIVATE-MODELS, uploaded by `bash macgyver.sh models`,
+ * tools/sync-v13/models_sync.py) to the public website, without ever putting a
+ * GitHub token in the browser.
  *
- *   GET /weights-manifest.json        -> manifest (schema 1)
- *   GET /parts/<model>/<part-file>     -> one ≤32 MiB chunk
+ *   GET /weights-manifest.json        -> <MODEL_PREFIX>weights-manifest.json (schema 1)
+ *   GET /parts/<aa>/<sha256>.part      -> <MODEL_PREFIX>parts/… one ≤48 MiB chunk
  *
  * Secrets / vars (wrangler secret put …):
  *   GITHUB_TOKEN    fine-grained PAT: only PRIVATE-MODELS, "Contents: Read-only"
  *   GITHUB_REPO     "kuonanhong/PRIVATE-MODELS"
  *   GITHUB_BRANCH   "main"
  *   ALLOWED_ORIGINS "https://kuonanhong.github.io"
+ *   MODEL_PREFIX    "projects/macgyver/"  (V13 shared-repo folder; "" for the V12 root layout)
  *
  * Note: anything this Worker serves can be downloaded by any visitor of the
  * site (the browser must receive the weights to run them). The repository and
@@ -40,7 +42,9 @@ export default {
     const cacheKey = new Request(url.origin + url.pathname, {method: 'GET'});
     let cached = await cache.match(cacheKey);
     if (!cached) {
-      const api = `https://api.github.com/repos/${env.GITHUB_REPO}/contents/${match[1]}?ref=${encodeURIComponent(env.GITHUB_BRANCH || 'main')}`;
+      const prefix = String(env.MODEL_PREFIX ?? 'projects/macgyver/').replace(/^\/+/, '');
+      if (prefix && !/^[A-Za-z0-9._-]+(\/[A-Za-z0-9._-]+)*\/$/.test(prefix)) return new Response('Bad MODEL_PREFIX', {status: 500, headers: cors});
+      const api = `https://api.github.com/repos/${env.GITHUB_REPO}/contents/${prefix}${match[1]}?ref=${encodeURIComponent(env.GITHUB_BRANCH || 'main')}`;
       const upstream = await fetch(api, {headers: {
         'Authorization': `Bearer ${env.GITHUB_TOKEN}`,
         'Accept': 'application/vnd.github.raw',

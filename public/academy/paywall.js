@@ -121,8 +121,14 @@ export function courseAccessSummary(course, {zh = true, priceText = ''} = {}) {
   let status;
   if (mode === 'owner-preview') status = pick('擁有者離線預覽：此版本可看全部內容；正式網站只開放第一節免費。', 'Owner offline preview: everything is visible here; the public site keeps only the first section free.');
   else if (state.active) status = pick('你的學習通行證有效，可學習全部階段。', 'Your learning pass is active; every stage is unlocked.') + (state.expiresAt ? ` ${pick('到期：', 'Expires: ')}${new Date(state.expiresAt).toLocaleDateString(zh ? 'zh-TW' : undefined)}` : '');
-  else status = pick(`第一節（${free} 步）免費試學；其餘 ${paid} 步需學習通行證${priceText ? '，' + priceText + ' 起' : ''}。`, `The first section (${free} steps) is free; the other ${paid} steps need a learning pass${priceText ? ', from ' + priceText : ''}.`);
-  return `<div class="course-access paywall-summary ${state.active || mode === 'owner-preview' ? '' : 'locked'}"><span>${pick('第一節免費 · 其餘會員', 'FIRST SECTION FREE · MEMBERS')}</span><p>${esc(status)}</p>${state.active || mode === 'owner-preview' ? '' : `<a class="button light" href="#membership">${pick('查看會員方案', 'View membership plans')} ↗</a>`}</div>`;
+  let price = '';
+  if (mode !== 'owner-preview' && !state.active) {
+    status = pick(`第一節（${free} 步）免費試學；其餘 ${paid} 步需學習通行證。`, `The first section (${free} steps) is free; the other ${paid} steps need a learning pass.`);
+    // V13: the local-currency price sits in its own untranslated span so every
+    // language dictionary can translate the sentence regardless of currency.
+    if (priceText) price = ` <span>${pick('學習通行證', 'Learning passes from')}</span> <span data-no-translate>${esc(priceText)}</span>${zh ? ' <span>起</span>' : ''}`;
+  }
+  return `<div class="course-access paywall-summary ${state.active || mode === 'owner-preview' ? '' : 'locked'}"><span>${pick('第一節免費 · 其餘會員', 'FIRST SECTION FREE · MEMBERS')}</span><p><span>${esc(status)}</span>${price}</p>${state.active || mode === 'owner-preview' ? '' : `<a class="button light" href="#membership">${pick('查看會員方案', 'View membership plans')} ↗</a>`}</div>`;
 }
 
 export function lockedStepMarkup(course, step, {zh = true, priceText = '', signedIn = false, firstFreeIndex = 0} = {}) {

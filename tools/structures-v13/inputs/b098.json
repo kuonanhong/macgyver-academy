@@ -1,0 +1,331 @@
+{
+  "id": "b098",
+  "title": "建築雷射掃描竣工比對~Laser-scan verification of as-built construction",
+  "discipline": "st-facade-digital",
+  "family": "survey",
+  "focus": "以量測不確定度、精度等級、控制配準與偏差分析，判定竣工幾何能否交給下一工序~Measurement uncertainty, accuracy levels, controlled registration and deviation analysis that decide whether as-built geometry can pass to the next trade",
+  "summary": "從竣工偏差與量測不確定度出發，說明 USIBD LOA 的量測與表現精度、掃描儀測距誤差與點間距、標靶控制與配準，再處理依施工節點排定掃描、樓板平整度、點雲與模型偏差分析、獨立檢核點與 ISO 17123-9 檢定，最後談基準掃描、變形比對與 E57 資料交接，並以巴黎聖母院與烏干達卡蘇比王陵的掃描紀錄支持重建為例。~Starting from as-built deviation and measurement uncertainty, explain measured and represented accuracy under the USIBD LOA specification, scanner ranging errors and point spacing, target control and registration, then scheduling scans at construction milestones, slab flatness, cloud-to-model deviation analysis, independent check points and ISO 17123-9 testing, and finally baseline scans, change detection and E57 data handover, using the scan records that supported rebuilding at Notre-Dame de Paris and the Kasubi Tombs in Uganda.",
+  "units": [
+    {
+      "anchor": "竣工偏差與量測不確定度~As-built deviation and measurement uncertainty",
+      "title": "為何以掃描驗證竣工幾何~Why verify as-built geometry by scanning",
+      "mechanism": "設計模型描述的是理想幾何，實際完成的結構總有偏差：柱子傾斜、樓板高低不平、樓板邊緣進出、預埋件偏位。帷幕牆、電梯導軌、預製機電與裝修都依賴實際幾何，所以竣工驗證不是為了存檔，而是判斷偏差是否在公差內、下一工序能否吸收。雷射掃描一次取得數百萬點，能把整個樓層的偏差畫成分布圖；但量測本身也有不確定度，判定合格與否時必須讓量測不確定度明顯小於公差。~The design model describes ideal geometry, while the finished structure always deviates: columns lean, slabs undulate, slab edges wander and embeds shift. Curtain walls, lift rails, prefabricated services and fit-out all depend on the actual geometry, so as-built verification is not for the archive but for deciding whether deviations are within tolerance and whether the next trade can absorb them. Laser scanning captures millions of points at once and can map deviations over a whole floor, but the measurement itself is uncertain, and conformance decisions require that uncertainty to be clearly smaller than the tolerance.",
+      "model": "公差 ±10 mm，若要求量測不確定度比 4:1，95% 不確定度須 ≤ 10/4 = 2.5 mm。若配準後點雲的 95% 不確定度為 6 mm，比值只有 10/6 ≈ 1.7，應設保護帶：量到的偏差 ≤ 10 − 6 = 4 mm 才判定合格，介於 4 至 16 mm 為不確定，需以全測站補測。數值為教學假設。~For a ±10 mm tolerance and a 4:1 uncertainty ratio, the 95% measurement uncertainty must be ≤ 10/4 = 2.5 mm. If the registered cloud's 95% uncertainty is 6 mm, the ratio is only 10/6 ≈ 1.7, so a guard band applies: accept only measured deviations ≤ 10 − 6 = 4 mm, treat 4 to 16 mm as inconclusive and re-measure by total station. Values are teaching assumptions.",
+      "verify": "在掃描計畫中為每一類元素寫明公差、所需量測不確定度與含保護帶的判定規則，掃描後以獨立檢核點估計實際不確定度；判定結果分為合格、不合格與不確定三類，不確定者以更高精度方法複測，而不是直接歸為合格。~In the scan plan, state for each element type the tolerance, the required measurement uncertainty and the decision rule including guard bands, and after scanning estimate actual uncertainty from independent check points; classify results as conforming, nonconforming or inconclusive, re-measuring the inconclusive ones by a more accurate method rather than treating them as conforming.",
+      "failure": "以 ±6 mm 不確定度的點雲判定 ±10 mm 公差的錨栓，報告宣稱全部合格，鋼柱吊裝時卻有數支對不上；反之也可能把合格構件誤判為不合格，造成不必要的打除與爭議。~Judging ±10 mm anchor bolts from a cloud with ±6 mm uncertainty yields a report declaring every bolt compliant, yet several steel columns will not fit at erection; the reverse error can also condemn compliant work, causing needless demolition and disputes.",
+      "misconception": "點雲有數百萬個點，所以每一點都比全測站量測更準確。~A point cloud has millions of points, so every point is more accurate than a total-station measurement.",
+      "practice": "合約應寫明竣工驗證的判定規則與量測不確定度要求，並約定不確定結果的處理方式；判定不合格的元素由設計者評估可否接受或需修正，結論須書面化。~The contract should state decision rules and measurement-uncertainty requirements for as-built verification and agree how inconclusive results are handled; elements judged nonconforming are assessed by the designer for acceptance or correction, with the decision in writing."
+    },
+    {
+      "anchor": "LOA 精度等級~LOA accuracy level",
+      "title": "量測精度、表現精度與規格制定~Measured accuracy, represented accuracy and specification",
+      "mechanism": "美國建築文件協會（USIBD）的 LOA 規範把精度分成兩種：量測精度是點雲本身相對於控制的精度，表現精度是由點雲擷取或建立的模型、圖面相對於真實位置的精度。後者還包含擬合、簡化與建模者判斷的誤差，所以不可能優於前者。規範以標準差的倍數（約 2σ）表示等級，並鼓勵依元素指定，例如結構柱與帷幕牆埋件要求較高、一般隔間要求較低，而不是整棟建築套用單一數字。~The USIBD LOA Specification separates two accuracies: measured accuracy is that of the point cloud itself relative to control, and represented accuracy is that of the models or drawings extracted from the cloud relative to true position. The latter adds errors from fitting, simplification and modeller judgement, so it can never be better than the former. The specification expresses levels as multiples of standard deviation, about 2σ, and encourages assigning them by element, for example tighter for structural columns and façade embeds and looser for ordinary partitions, rather than one number for the whole building.",
+      "model": "點雲量測精度 2σ = 4 mm，建模擬合誤差 2σ = 6 mm，表現精度約 √(4² + 6²) = √52 ≈ 7.2 mm（2σ）。若元素公差 ±15 mm 而要求 4:1，表現精度須 ≤ 15/4 ≈ 3.75 mm，這組成果不足，需提高掃描密度並以幾何擬合取代手動描繪。數值為教學假設。~With measured accuracy 2σ = 4 mm and modelling-fit error 2σ = 6 mm, represented accuracy is about √(4² + 6²) = √52 ≈ 7.2 mm at 2σ. If the element tolerance is ±15 mm with a 4:1 requirement, represented accuracy must be ≤ 15/4 ≈ 3.75 mm, so this result falls short and needs denser scanning and geometric fitting instead of manual tracing. Values are teaching assumptions.",
+      "verify": "交付時分別提出量測精度報告（檢核點殘差）與表現精度報告（模型元素與點雲的距離統計），兩者都以 2σ 表示並與規格中每類元素的 LOA 等級比較；抽樣元素由第三方以全測站複測。~At delivery provide separate reports for measured accuracy (check-point residuals) and represented accuracy (distance statistics between model elements and the cloud), both at 2σ and compared with the LOA level specified for each element class; a third party re-measures sampled elements by total station.",
+      "failure": "業主只寫「竣工模型精度 ±5 mm」而未區分量測與表現精度，掃描廠商交出高精度點雲，建模者卻以簡化牆體描繪，模型位置偏差達數公分，事後各方對責任歸屬爭執不下。~An owner who writes only ‘as-built model accuracy ±5 mm’ without separating measured and represented accuracy receives a precise cloud from the scanning firm, but the modeller traces simplified walls several centimetres off, and the parties then argue over responsibility.",
+      "misconception": "點雲精度很高，由它建立的模型自然也同樣精確。~If the point cloud is accurate, the model built from it is automatically just as accurate.",
+      "practice": "在掃描與建模規格中依元素類別分別指定量測與表現的 LOA 等級，並寫明採用的信賴水準；採購時要求廠商提出以往專案的檢核點報告作為能力證明。~In the scanning and modelling specification assign measured and represented LOA levels by element class and state the confidence level used; at procurement ask firms for check-point reports from earlier projects as evidence of capability."
+    },
+    {
+      "anchor": "點間距與入射角~Point spacing and incidence angle",
+      "title": "掃描儀測距原理與誤差來源~Scanner ranging principles and error sources",
+      "mechanism": "地面雷射掃描儀以飛行時間或相位差量測距離，再配合水平與垂直角度編碼器得到每一點的三維坐標。點的品質隨距離、入射角與表面反射率改變：距離越遠、光束越斜，光斑越大、測距雜訊越高；深色、潮濕或鏡面材料回波弱或產生多路徑；光束同時打到前後兩個物體邊緣時會產生懸浮的混合點。掃描規劃因此要控制最大距離與入射角，而不是只看儀器的標稱精度。~A terrestrial laser scanner measures range by time of flight or phase difference and, with horizontal and vertical angle encoders, gives three-dimensional coordinates for each point. Point quality varies with range, incidence angle and surface reflectivity: longer ranges and more oblique beams enlarge the footprint and raise range noise, dark, wet or mirror-like materials return weak signals or multipath, and a beam that clips the edges of two objects at different depths produces floating mixed points. Scan planning must therefore limit maximum range and incidence angle rather than relying on the nominal instrument accuracy.",
+      "model": "點間距 s = R·Δθ。角度步距 0.036° = 6.28×10⁻⁴ rad：距離 20 m 時 s = 20×6.28×10⁻⁴ ≈ 12.6 mm，50 m 時約 31.4 mm；若入射角 70°，牆面上的點間距再放大 1/cos 70° ≈ 2.92 倍，20 m 處約 36.7 mm，可能漏掉 25 mm 寬埋件的邊緣。數值為教學假設。~Point spacing s = R·Δθ. With an angular step of 0.036° = 6.28×10⁻⁴ rad, s = 20×6.28×10⁻⁴ ≈ 12.6 mm at 20 m and about 31.4 mm at 50 m; at a 70° incidence angle the spacing on a wall grows by 1/cos 70° ≈ 2.92, to about 36.7 mm at 20 m, enough to miss the edge of a 25 mm wide embed. Values are teaching assumptions.",
+      "verify": "掃描前以平面圖規劃測站，確認每個需驗證的元素至少有一站在距離與入射角限制內；掃描後檢查點雲的點間距、雜訊（例如平面擬合殘差）與混合點，深色或反光表面以噴粉或標靶輔助，必要時加站補掃。~Plan stations on the floor plan before scanning so that every element to be verified is seen by at least one station within the range and incidence limits; after scanning check point spacing, noise (for example plane-fit residuals) and mixed points, use spray or targets on dark or reflective surfaces, and add stations where needed.",
+      "failure": "為了省時只在樓層中央架一站，遠端柱面以極斜角度被掃到，點雲稀疏且雜訊大，偏差分析把雜訊當成柱子歪斜而發出不合格通知，經全測站複測才確認是量測問題。~To save time a single station is set up in the middle of the floor, so far column faces are hit at very oblique angles; the sparse, noisy cloud makes deviation analysis read noise as column lean and issue a nonconformance, which only a total-station re-measure exposes as a measurement artefact.",
+      "misconception": "掃描儀的標稱精度在任何距離與角度都一樣。~A scanner's nominal accuracy holds at every range and angle.",
+      "practice": "掃描作業程序要規定最大掃描距離、最大入射角與每類元素的最小點密度，在現場以快速預覽確認覆蓋率後才拆站，並事先列出反光或深色材料的處理方式。~The scanning procedure should set maximum range, maximum incidence angle and minimum point density per element type, confirm coverage on a quick preview before striking each station, and list in advance how reflective or dark materials will be handled."
+    },
+    {
+      "anchor": "球形標靶與控制點~Sphere targets and control points",
+      "title": "標靶、控制與點雲配準~Targets, control and point-cloud registration",
+      "mechanism": "每一站掃描都有自己的局部坐標，必須配準成一個整體並轉到工地坐標系，才能與設計模型比較。配準可利用球形或棋盤格標靶，也可用點雲重疊區域自動匹配；後者方便，但在長走廊或樓梯間這類幾何單調的空間容易沿長軸滑移，誤差也會沿測站鏈累積。以全測站測得的控制標靶把點雲綁到工地控制網，並保留不參與配準的檢核標靶，才能證明配準結果可信。~Each scan station has its own local coordinates, so stations must be registered into one cloud and transformed into the site coordinate system before comparison with the design model. Registration can use sphere or checkerboard targets or automatic matching of overlapping clouds; the latter is convenient but tends to slide along the long axis in geometrically plain spaces such as corridors and stairwells, and errors accumulate along a chain of stations. Tying the cloud to the site control network through targets surveyed by total station, and keeping check targets that take no part in registration, is what proves the registration trustworthy.",
+      "model": "20 站以點雲匹配串聯，每一連接隨機誤差 2 mm，鏈末端累積約 √20×2 ≈ 8.9 mm；若每 5 站以全測站控制標靶約束一次，累積僅約 √5×2 ≈ 4.5 mm。數值為教學假設。~Chaining 20 stations by cloud matching with 2 mm random error per link accumulates about √20×2 ≈ 8.9 mm at the end of the chain; constraining every fifth station with total-station control targets limits accumulation to about √5×2 ≈ 4.5 mm. Values are teaching assumptions.",
+      "verify": "配準報告須列出每個標靶與重疊區的殘差、整體平差統計與檢核標靶的偏差；檢核標靶由全測站獨立量測，偏差超過規格（例如 2σ 超出要求的 LOA 上限）時，該區點雲不得用於判定。~The registration report must list residuals for each target and overlap, overall adjustment statistics and deviations at check targets; check targets are measured independently by total station, and if their deviations exceed the specification, for example a 2σ beyond the required LOA bound, that part of the cloud may not be used for conformance decisions.",
+      "failure": "長走廊只靠點雲自動匹配而沒有控制標靶，點雲沿長軸慢慢伸縮與彎曲，偏差圖顯示遠端牆面偏移數公分而被誤判為施工錯誤；或者整片點雲以最佳擬合對到設計模型，真實的整體偏移被抹去。~A long corridor registered only by automatic cloud matching, with no control targets, slowly stretches and bends along its axis, and the deviation map shows the far walls several centimetres out, wrongly blamed on construction; or the whole cloud is best-fitted to the design model and a real overall offset is erased.",
+      "misconception": "自動配準軟體顯示誤差很小，點雲位置就一定正確。~If automatic registration reports small errors, the cloud must be correctly positioned.",
+      "practice": "規定每個掃描區至少有三個由全測站量測的控制標靶，另保留至少兩個檢核標靶；點雲一律以工地控制定位，不得先以最佳擬合對齊設計模型再做偏差分析。~Require at least three total-station control targets for each scan area plus at least two check targets; always position clouds on site control and never best-fit them to the design model before deviation analysis."
+    },
+    {
+      "anchor": "隱蔽前掃描時點~Pre-concealment scan window",
+      "title": "依施工節點排定掃描~Scheduling scans at construction milestones",
+      "mechanism": "竣工掃描最有價值的時點，是某些東西即將被蓋住或被下一工序依賴之前：澆置前的預埋件與套管、鋼構吊裝完成而帷幕牆托架尚未安裝、天花板封板前的機電管線、樓板澆置後的平整度。錯過時點就只能破壞檢查或接受不確定。掃描也受工地條件限制，人員與材料造成遮蔽、機具震動、粉塵與日照都有影響，所以掃描要像混凝土澆置一樣排進施工計畫，並保留清場時間。~The most valuable moments for as-built scanning come just before something is covered or relied on by the next trade: embeds and sleeves before a pour, steel after erection but before façade brackets go on, services before ceilings close, and slab flatness after a pour. Missing the moment leaves only destructive checks or accepted uncertainty. Scanning is also constrained by site conditions such as occlusion by people and materials, plant vibration, dust and sunlight, so scans belong in the construction programme like a concrete pour, with time reserved to clear the area.",
+      "model": "一個 2,000 m² 樓層，每站有效涵蓋約 150 m²（扣除遮蔽），需 2,000/150 ≈ 13.3，取 14 站；每站掃描 6 分鐘、移站 3 分鐘，共 14×9 = 126 分鐘 ≈ 2.1 小時，加上標靶布設與量測約 30 分鐘，每層約需 2.6 小時的清場窗口。數值為教學假設。~For a 2,000 m² floor where each station effectively covers about 150 m² after occlusion, 2,000/150 ≈ 13.3, so 14 stations are needed; at 6 minutes scanning and 3 minutes moving per station that is 14×9 = 126 minutes ≈ 2.1 hours, plus about 30 minutes to place and survey targets, so each floor needs a cleared window of about 2.6 hours. Values are teaching assumptions.",
+      "verify": "把掃描節點寫入施工排程並設為檢查點，由監造確認掃描已完成、資料初步檢查無缺漏後，才允許澆置、封板或安裝下一工序；每次掃描記錄天候、溫度、遮蔽與現場狀況，供日後解讀偏差時參考。~Write scan milestones into the programme as inspection points, allowing a pour, close-up or next installation only after the supervising engineer confirms the scan is done and a first check shows no gaps; record weather, temperature, occlusion and site conditions at each scan to help interpret deviations later.",
+      "failure": "天花板封板趕在掃描之前完成，機電竣工位置只能依施工圖推定；多年後維修人員找閥門與管線時發現與模型差了數十公分，只好逐片拆天花板查找。~Ceilings closed before the scan leave the as-built services positions to be inferred from shop drawings; years later maintenance staff looking for valves and pipes find them tens of centimetres from the model and have to remove ceiling tiles one by one.",
+      "misconception": "竣工掃描可以等全部完工後一次做完就好。~As-built scanning can wait until everything is finished and be done once.",
+      "practice": "在施工計畫中列出掃描節點清單（預埋件、鋼構、機電封板前、樓板平整度、帷幕牆托架），每個節點都是保留點，未經監造確認不得進入下一工序。~List scan milestones in the construction plan (embeds, steelwork, services before close-up, slab flatness, façade brackets), make each a hold point, and do not proceed to the next trade without the supervising engineer's confirmation."
+    },
+    {
+      "anchor": "樓板高程色階圖~Slab elevation heat map",
+      "title": "混凝土樓板平整度的掃描檢驗~Scan-based checks of slab flatness and levelness",
+      "mechanism": "樓板的平整度與水平度影響架高地板、倉儲貨架、帷幕牆底部收邊與地坪材料厚度。傳統以水準儀在格點量測，或依 ASTM E1155 沿量測線計算 F 數；雷射掃描能一次取得整片樓板的高程，畫成色階圖顯示高點與低點，並據以估算研磨量或自平材料用量。混凝土澆置後還會因乾縮翹曲與撤撐後的撓度改變形狀，所以量測時點必須與規格約定的時點一致。~Slab flatness and levelness affect raised floors, warehouse racking, the bottom closure of curtain walls and the thickness of floor finishes. Traditionally a level is read at grid points, or F-numbers are computed along survey lines to ASTM E1155; laser scanning captures the elevation of the whole slab at once and plots it as a heat map of highs and lows from which grinding or self-levelling quantities are estimated. After pouring, concrete changes shape through shrinkage curling and deflection when shoring is removed, so the time of measurement must match the time the specification refers to.",
+      "model": "400 m² 的低窪區平均比設計高程低 6 mm，所需自平材料約 400×0.006 = 2.4 m³。兩個相距 3 m 的點高差 8 mm，坡度 8/3,000 ≈ 1/375；若規格要求 3 m 內高差不超過 5 mm，該處需研磨或補平。數值為教學假設。~A 400 m² low area averaging 6 mm below design level needs about 400×0.006 = 2.4 m³ of self-levelling compound. Two points 3 m apart differing by 8 mm give a slope of 8/3,000 ≈ 1/375; if the specification allows no more than 5 mm over 3 m, that location needs grinding or filling. Values are teaching assumptions.",
+      "verify": "依規格約定的時點掃描（例如澆置後固定天數內，或撤撐前後各一次），以控制點將點雲定位到設計高程，再以格點與量測線抽取高程，與水準儀抽驗點比較；計算結果與色階圖一起提交監造審查。~Scan at the time the specification agrees, for example within a fixed number of days after the pour or before and after shoring removal, position the cloud to design levels through control points, extract elevations at grid points and survey lines, and compare them with spot checks by level; submit the results with the heat map for the supervising engineer's review.",
+      "failure": "撤撐後才掃描並據以判定施工不合格，承包商主張偏差來自結構撓度而非澆置，雙方各執一詞；若量測時點未在合約中約定，爭議只能靠第三方鑑定解決。~Scanning only after shoring removal and judging the pour nonconforming leads the contractor to argue that the deviation is structural deflection rather than placement; if the measurement time was never agreed in the contract, the dispute can only be settled by third-party appraisal.",
+      "misconception": "樓板澆置完成後形狀就固定不變，何時量測都一樣。~Once a slab is poured its shape is fixed, so it does not matter when it is measured.",
+      "practice": "規格要同時寫明平整度指標、量測方法、量測時點與基準高程，並把撤撐前的掃描列為保留點；需研磨或補平的範圍經監造確認後才可施作面層。~The specification must state the flatness measure, measurement method, measurement time and reference level together, with a pre-shoring-removal scan as a hold point; areas needing grinding or filling are confirmed by the supervising engineer before finishes are laid."
+    },
+    {
+      "anchor": "點雲與模型偏差圖~Cloud-to-model deviation map",
+      "title": "點雲與設計模型的偏差分析~Deviation analysis between cloud and design model",
+      "mechanism": "偏差分析計算每個點到設計模型表面的距離，再依元素統計平均值、標準差與落在公差內的比例，並以色階圖呈現。結果強烈依賴對齊方式：以控制網定位時，系統性偏移會如實呈現；若把點雲最佳擬合到模型，整體偏移被吸收，看起來幾乎全部合格。因此偏差分析要同時檢視平均偏移與離散程度，並逐一元素呈現，而非整棟建築一個數字。~Deviation analysis computes the distance from each point to the design-model surface, then reports mean, standard deviation and the share within tolerance for each element, displayed as a colour map. Results depend strongly on alignment: positioning on the control network shows systematic offsets as they are, while best-fitting the cloud to the model absorbs the overall offset and makes nearly everything look compliant. Deviation analysis must therefore examine mean offset and scatter together, element by element rather than as one number for the building.",
+      "model": "牆面偏差以控制定位時平均 +7 mm、標準差 4 mm，落在 ±10 mm 內的比例 = Φ((10−7)/4) − Φ((−10−7)/4) = Φ(0.75) − Φ(−4.25) ≈ 0.773，約 77%。若以最佳擬合使平均變為 0，比例 = Φ(2.5) − Φ(−2.5) ≈ 0.988，看似 99% 合格，但 7 mm 的系統偏移被隱藏。數值為教學假設。~With control-based positioning a wall shows mean deviation +7 mm and standard deviation 4 mm, so the share within ±10 mm is Φ((10−7)/4) − Φ((−10−7)/4) = Φ(0.75) − Φ(−4.25) ≈ 0.773, about 77%. Best-fitting to zero mean gives Φ(2.5) − Φ(−2.5) ≈ 0.988, apparently 99% compliant, while the 7 mm systematic offset is hidden. Values are teaching assumptions.",
+      "verify": "偏差報告要說明對齊方式與控制來源，逐元素列出平均偏移、標準差、最大偏差與合格比例，並附色階圖與剖面；偏差集中的區域以全測站或捲尺抽驗確認，再交由設計者判斷是否影響下一工序。~The deviation report must state the alignment method and control source, list mean offset, standard deviation, maximum deviation and compliant share element by element with colour maps and sections, spot-check areas of concentrated deviation by total station or tape, and pass them to the designer to judge the effect on the next trade.",
+      "failure": "報告只給整棟樓「95% 點位在公差內」的單一數字，實際上 5% 的超差點全集中在帷幕牆托架所在的樓板邊緣，直到帷幕牆單元到場無法安裝才被發現。~A report giving a single building-wide figure of ‘95% of points within tolerance’ hides that the 5% outside are all at slab edges where façade brackets sit, so the problem appears only when curtain-wall units arrive and cannot be installed.",
+      "misconception": "偏差圖大部分是綠色，就代表竣工品質合格。~If the deviation map is mostly green, the as-built quality is acceptable.",
+      "practice": "偏差分析一律以工地控制定位，禁止先最佳擬合再判定；報告須依元素類別與下一工序的介面位置分區呈現，並由設計者與下一工序承包商共同簽閱。~Always position deviation analysis on site control and never best-fit before judging; present reports by element class and by interface zones with the next trade, signed by both the designer and the following contractor."
+    },
+    {
+      "anchor": "獨立檢核點~Independent check points",
+      "title": "掃描精度驗證與儀器檢定~Verifying scan accuracy and testing scanners",
+      "mechanism": "掃描成果的精度不能只引用儀器規格或配準軟體的數字，而要以獨立檢核點證明：在掃描範圍內設置一批由全測站量測、未參與配準的檢核點，比較它們在點雲中的坐標與全測站坐標，計算均方根誤差。ISO 17123-9 規定以現場程序檢查地面雷射掃描儀的重複精度，可在專案開始前與定期檢查時使用；檢核結果再與 LOA 規格比較，決定成果能否用於判定。~The accuracy of a scan cannot simply be quoted from the instrument specification or the registration software; it must be shown with independent check points. A set of points surveyed by total station, not used in registration, is placed within the scanned area, and their cloud coordinates are compared with total-station coordinates to compute the root-mean-square error. ISO 17123-9 gives field procedures for checking the repeatability of terrestrial laser scanners, usable before a project and at periodic checks, and the check-point result is compared with the LOA specification to decide whether the data can support conformance decisions.",
+      "model": "10 個檢核點的殘差（mm）為 2.1、−1.5、3.0、−2.4、1.2、0.8、−2.9、1.9、−0.6、2.6，平方和 = 42.64，RMSE = √(42.64/10) = √4.264 ≈ 2.06 mm，2σ 約 4.1 mm，落在 1 至 5 mm 的等級範圍內但接近上限。數值為教學假設。~Ten check-point residuals (mm) of 2.1, −1.5, 3.0, −2.4, 1.2, 0.8, −2.9, 1.9, −0.6 and 2.6 give a sum of squares of 42.64 and RMSE = √(42.64/10) = √4.264 ≈ 2.06 mm, a 2σ of about 4.1 mm, inside a 1 to 5 mm class but near its upper bound. Values are teaching assumptions.",
+      "verify": "檢核點應分布在掃描範圍四周與中央、不同高度與距離，數量依面積訂定；每台掃描儀在專案開始前依 ISO 17123-9 做現場檢定並保存紀錄，檢核點結果與 LOA 規格一起列入交付報告，未達規格者重掃或補控制。~Distribute check points around the edges and centre of the scanned area at different heights and ranges, with numbers set by area; test each scanner in the field to ISO 17123-9 before the project and keep the records, include check-point results with the LOA specification in the delivery report, and re-scan or add control where the specification is not met.",
+      "failure": "只以配準軟體顯示的「平均誤差 1 mm」作為精度證明，沒有任何獨立檢核；後來以全測站抽驗發現點雲整體旋轉，遠端偏差達 15 mm，已據以下料的帷幕牆托架必須重做。~Using the registration software's ‘mean error 1 mm’ as the only proof of accuracy, with no independent checks, a later total-station spot check finds the cloud rotated so that far points are 15 mm out, and façade brackets already cut from it must be remade.",
+      "misconception": "配準軟體報告的誤差就是點雲的絕對精度。~The error reported by registration software is the absolute accuracy of the cloud.",
+      "practice": "交付規格要求每個掃描區附獨立檢核點報告與儀器檢定紀錄，檢核點不得用於配準；監造驗收以檢核點結果為準，不接受只有軟體統計的成果。~Delivery specifications require an independent check-point report and instrument test record for every scan area, with check points excluded from registration; the supervising engineer accepts on check-point results and rejects deliveries supported only by software statistics."
+    },
+    {
+      "anchor": "災前基準掃描~Pre-event baseline scan",
+      "title": "基準掃描、變形比對與重建驗證~Baseline scans, change detection and reconstruction checks",
+      "mechanism": "掃描成果在完工後仍有價值：它是日後變形監測的基準，也是災後重建的依據。藝術史學者 Andrew Tallon 自 2010 年起以雷射掃描記錄巴黎聖母院，2019 年大火後這批資料成為修復的參考；烏干達卡蘇比王陵在 2009 年被掃描，2010 年主陵毀於火災，這批紀錄被規劃作為重建依據。兩期掃描比對時，可偵測的最小變化不只取決於點的雜訊，更取決於兩期配準是否一致。~Scan data keeps its value after completion: it is the baseline for later deformation monitoring and the reference for rebuilding after disaster. The art historian Andrew Tallon laser-scanned Notre-Dame de Paris from 2010, and after the 2019 fire his data became a reference for restoration; the Kasubi Tombs in Uganda were scanned in 2009, their main tomb was destroyed by fire in 2010, and those records were intended to support reconstruction. When two epochs are compared, the smallest detectable change depends less on point noise than on whether the two registrations are consistent.",
+      "model": "每點雜訊 σ = 2 mm，取 100 點平均的區塊 σ = 2/√100 = 0.2 mm，兩期差值 σ = √2×0.2 ≈ 0.28 mm，95% 偵測門檻約 1.96×0.28 ≈ 0.55 mm。若每期配準另有 1.5 mm 系統誤差，差值 σ = √(2×(0.2² + 1.5²)) ≈ 2.14 mm，門檻升到約 4.2 mm。數值為教學假設。~With point noise σ = 2 mm, a patch averaging 100 points has σ = 2/√100 = 0.2 mm, the difference of two epochs σ = √2×0.2 ≈ 0.28 mm, and a 95% detection threshold of about 1.96×0.28 ≈ 0.55 mm. If each epoch's registration also carries a 1.5 mm systematic error, the difference σ = √(2×(0.2² + 1.5²)) ≈ 2.14 mm and the threshold rises to about 4.2 mm. Values are teaching assumptions.",
+      "verify": "基準掃描要使用長期保留的控制點，並把控制點坐標、儀器、日期與配準報告一起保存；後續各期以同一組控制點定位，先比較穩定區域（例如基礎或未受影響的牆面）確認兩期一致，再解讀變化區域。重建時從基準掃描抽取關鍵尺寸，與新建構件的掃描比較。~Baseline scans must use long-term control points, archiving their coordinates, the instrument, date and registration report together; later epochs are positioned on the same control, stable areas such as foundations or unaffected walls are compared first to confirm consistency, and only then are changed areas interpreted. In reconstruction, key dimensions are extracted from the baseline and compared with scans of the new work.",
+      "failure": "兩期掃描各自以點雲匹配配準、沒有共同控制，比對結果顯示整座結構「傾斜」數毫米，引發不必要的緊急評估，查證後才發現只是兩期坐標系統不一致。~Two epochs each registered by cloud matching without common control show the whole structure ‘tilting’ by several millimetres, triggering an unnecessary emergency assessment, until checking reveals that the two coordinate systems simply did not agree.",
+      "misconception": "兩期點雲直接相減，就能偵測到小於單點雜訊的變形。~Subtracting two point clouds directly detects deformation smaller than single-point noise.",
+      "practice": "重要建築與文化資產應在完工或重大修復後建立基準掃描並納入資產紀錄，長期控制點與基準資料一起保存；變形判定結果須經結構工程師確認後才可發布。~Important buildings and heritage assets should receive a baseline scan after completion or major restoration, kept in the asset record with the long-term control points; any deformation finding must be confirmed by a structural engineer before release."
+    },
+    {
+      "anchor": "E57 點雲檔與後設資料~E57 files and metadata",
+      "title": "點雲資料管理、格式與交接~Point-cloud data management, formats and handover",
+      "mechanism": "點雲檔案很大且格式多樣，若只以掃描軟體的專有格式交付，業主日後可能無法讀取。ASTM E57 格式可在一個檔案中保存三維點、強度或顏色與影像，是常用的中立交換格式。交接時除了點雲本身，還要附上後設資料：坐標系統、控制點、儀器與日期、配準與檢核報告、LOA 等級；同時要管理資料量、版本與存取權限，以及掃描到的人員與敏感區域。~Point clouds are large and come in many formats, and delivery only in a scanning package's proprietary format may leave the owner unable to read them later. The ASTM E57 format stores three-dimensional points, intensity or colour and images in one file and is a common neutral exchange format. Handover needs metadata as well as the cloud: coordinate system, control points, instrument and date, registration and check reports, and LOA level, while data volume, versions, access rights and any captured people or sensitive areas must also be managed.",
+      "model": "10 億點、每點以 3 個 4 位元組坐標加 2 位元組強度與 3 位元組顏色計 17 位元組，約 1×10⁹×17 = 17 GB；若坐標以 8 位元組儲存，每點 29 位元組約 29 GB。三期掃描即 51 至 87 GB；抽稀保留 10% 作日常瀏覽約 1.7 至 2.9 GB。數值為教學假設。~One billion points at 17 bytes each (three 4-byte coordinates plus 2 bytes of intensity and 3 of colour) is about 1×10⁹×17 = 17 GB; with 8-byte coordinates, 29 bytes per point gives about 29 GB. Three epochs make 51 to 87 GB, and a 10% decimated copy for everyday viewing is about 1.7 to 2.9 GB. Values are teaching assumptions.",
+      "verify": "交接前以第二套軟體開啟 E57 檔，確認坐標、強度與影像完整，並抽查控制點坐標與後設資料一致；檢查檔名與版本規則、備份與存取權限，並確認敏感區域已遮蔽或依規定處理。~Before handover open the E57 files in a second software package to confirm coordinates, intensity and images are intact, and spot-check that control-point coordinates agree with the metadata; check naming and version rules, backups and access rights, and confirm that sensitive areas are masked or handled as required.",
+      "failure": "交付的點雲只有專有格式且沒有坐標系統說明，幾年後軟體授權失效、廠商不再支援，業主手上的資料等於無法使用，翻修時只能全部重新掃描。~Clouds delivered only in a proprietary format with no coordinate-system note become unusable years later when the licence lapses and the vendor no longer supports the format, so a renovation must scan everything again.",
+      "misconception": "點雲交出檔案就完成交接，不需要後設資料。~Handing over the point-cloud files completes the handover; metadata is unnecessary.",
+      "practice": "合約要求以 E57 等中立格式加原生格式雙軌交付，附後設資料表與配準、檢核報告；業主資訊管理人員確認可讀後才簽收，並把點雲連結到資產資訊模型。~The contract should require delivery in a neutral format such as E57 alongside the native format, with a metadata sheet and registration and check reports; the owner's information manager signs for it only after confirming readability, and links the cloud to the asset information model."
+    }
+  ],
+  "example": "設計練習：一棟 30 層建築以掃描檢查帷幕牆托架位置，每層 40 個托架點、共 1,200 點，相對設計位置的偏差平均 +6 mm、標準差 8 mm（假設常態分布且已含量測誤差），托架可調範圍 ±20 mm。超出範圍的機率 = P(z > (20−6)/8 = 1.75) + P(z < (−20−6)/8 = −3.25) ≈ 0.0401 + 0.0006 ≈ 0.041，約 1,200×0.041 ≈ 49 個托架需另做處理。若依掃描結果把帷幕牆安裝基準整體平移 6 mm，使平均偏差歸零，超出機率變為 P(|z| > 20/8 = 2.5) ≈ 0.012，只剩約 15 個。竣工掃描的價值不只在判定合格，更在讓下一工序依實際幾何調整基準；但基準調整須由帷幕牆設計者確認不影響室內淨距與接縫寬度。數值為教學假設，不代表任何實際專案。~Design exercise: curtain-wall bracket positions on a 30-storey building are checked by scanning, 40 bracket points per floor and 1,200 in all, with deviations from design averaging +6 mm and a standard deviation of 8 mm (assumed normal and including measurement error), against a bracket adjustment range of ±20 mm. The probability of falling outside is P(z > (20−6)/8 = 1.75) + P(z < (−20−6)/8 = −3.25) ≈ 0.0401 + 0.0006 ≈ 0.041, so about 1,200×0.041 ≈ 49 brackets need special treatment. Shifting the whole façade setting-out datum by 6 mm according to the scan, so that the mean deviation becomes zero, changes the probability to P(|z| > 20/8 = 2.5) ≈ 0.012, leaving only about 15. The value of as-built scanning lies not only in judging conformance but in letting the next trade adjust its datum to actual geometry; the datum shift must still be confirmed by the façade designer as not affecting internal clearances or joint widths. Values are teaching assumptions, not any real project.",
+  "history": "1990 年代 Ben Kacyra 等人開發可攜式雷射掃描儀 Cyrax，2001 年由徠卡測量系統收購，使地面雷射掃描逐漸進入測量與營建。非營利組織 CyArk 把掃描用於文化資產紀錄，2009 年掃描烏干達卡蘇比王陵，次年主陵毀於火災；Andrew Tallon 自 2010 年掃描巴黎聖母院，2019 年大火後成為修復參考。2011 年 ASTM 發布 E57 中立交換格式，2018 年 ISO 17123-9 訂定掃描儀現場檢定程序，USIBD 的 LOA 規範則提供指定與驗證精度的共同語言。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~In the 1990s Ben Kacyra and colleagues developed the Cyrax portable laser scanner, acquired by Leica Geosystems in 2001, which helped bring terrestrial laser scanning into surveying and construction. The non-profit CyArk applied scanning to heritage records, scanning the Kasubi Tombs in Uganda in 2009 a year before their main tomb burned; Andrew Tallon scanned Notre-Dame de Paris from 2010, and his data became a reference for restoration after the 2019 fire. In 2011 ASTM published the neutral E57 exchange format, in 2018 ISO 17123-9 set field test procedures for scanners, and the USIBD LOA specification provides a common language for specifying and verifying accuracy. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "Andrew Tallon 自 2010 年起掃描巴黎聖母院，掃描儀約移站 50 次，取得超過 10 億個點~Andrew Tallon began scanning Notre-Dame de Paris in 2010, moving the scanner about 50 times and capturing over one billion points",
+    "巴黎聖母院於 2019 年 4 月 15 日失火，修復後於 2024 年 12 月重新開放~Notre-Dame de Paris burned on 15 April 2019 and reopened after restoration in December 2024",
+    "重建的聖母院尖塔頂端風信雞約距地面 96 m，於 2023 年 12 月 16 日安裝，尖塔重建用了約 1,000 棵橡木~The cockerel atop Notre-Dame's rebuilt spire sits about 96 m above ground, installed on 16 December 2023; the spire used about 1,000 oak trees",
+    "卡蘇比王陵於 2001 年列入世界遺產，2010 年主陵毀於火災，2010 至 2023 年列於瀕危名錄~The Kasubi Tombs were inscribed as World Heritage in 2001, the main tomb burned in 2010, and the site was on the Danger List from 2010 to 2023",
+    "卡蘇比王陵重建協議於 2013 年 3 月簽署，重建工程於 2014 年 5 月開始~The Kasubi Tombs reconstruction agreement was signed in March 2013 and reconstruction began in May 2014",
+    "可攜式雷射掃描儀 Cyrax 於 1990 年代開發，2001 年由徠卡測量系統收購~The Cyrax portable laser scanner was developed in the 1990s and acquired by Leica Geosystems in 2001",
+    "ASTM E2807-11（2019 年再確認）定義 E57 格式，可保存三維點、強度或顏色與二維影像~ASTM E2807-11 (reapproved 2019) defines the E57 format for 3D points, intensity or colour and 2D images",
+    "USIBD LOA 規範現行為 3.1 版，常用等級約為 LOA30 5 至 15 mm、LOA40 1 至 5 mm（約 2σ）~The USIBD LOA Specification is at version 3.1; commonly used levels are about LOA30 5 to 15 mm and LOA40 1 to 5 mm (about 2σ)",
+    "角度步距 0.036° 的掃描在 20 m 處點間距約 12.6 mm，50 m 處約 31.4 mm~A scan with a 0.036° angular step has a point spacing of about 12.6 mm at 20 m and about 31.4 mm at 50 m"
+  ],
+  "timeline": [
+    {
+      "year": "2001",
+      "event": "徠卡測量系統收購 1990 年代開發的 Cyrax 可攜式雷射掃描技術~Leica Geosystems acquires the Cyrax portable laser-scanning technology developed in the 1990s"
+    },
+    {
+      "year": "2009",
+      "event": "CyArk 掃描烏干達卡蘇比王陵，建立數位紀錄~CyArk scans the Kasubi Tombs in Uganda, creating a digital record"
+    },
+    {
+      "year": "2010",
+      "event": "Andrew Tallon 開始掃描巴黎聖母院；同年卡蘇比王陵主陵毀於火災~Andrew Tallon begins scanning Notre-Dame de Paris; the same year the main Kasubi tomb is destroyed by fire"
+    },
+    {
+      "year": "2011",
+      "event": "ASTM 發布 E2807 規範，定義 E57 三維影像資料交換格式~ASTM publishes E2807, defining the E57 3D imaging data exchange format"
+    },
+    {
+      "year": "2018",
+      "event": "ISO 17123-9 發布，訂定地面雷射掃描儀的現場檢定程序~ISO 17123-9 is published with field procedures for testing terrestrial laser scanners"
+    },
+    {
+      "year": "2019–2024",
+      "event": "巴黎聖母院 2019 年失火，2023 年尖塔結構完成，2024 年 12 月重新開放~Notre-Dame de Paris burns in 2019, its spire structure is completed in 2023 and it reopens in December 2024"
+    }
+  ],
+  "codes": [
+    "USIBD 精度等級（LOA）規範 3.1 版~USIBD Level of Accuracy (LOA) Specification, version 3.1",
+    "ASTM E2807-11(2019) 三維影像資料交換規範（E57 格式）~ASTM E2807-11(2019) Standard Specification for 3D Imaging Data Exchange (E57 format)",
+    "ISO 17123-9:2018 大地與測量儀器現場檢定程序—第 9 部：地面雷射掃描儀~ISO 17123-9:2018 Field procedures for testing geodetic and surveying instruments — Part 9: Terrestrial laser scanners"
+  ],
+  "landmarks": [
+    "巴黎聖母院~Notre-Dame de Paris",
+    "烏干達卡蘇比王陵~Tombs of Buganda Kings at Kasubi, Uganda"
+  ],
+  "place": {
+    "name": "巴黎聖母院~Notre-Dame de Paris",
+    "country": "法國~France",
+    "lat": 48.853,
+    "lng": 2.3499,
+    "query": "Cathédrale Notre-Dame de Paris"
+  },
+  "sources": [
+    {
+      "key": "usibd-loa",
+      "title": "USIBD：精度等級（LOA）規範",
+      "titleEn": "USIBD: Level of Accuracy (LOA) Specification",
+      "publisher": "U.S. Institute of Building Documentation",
+      "url": "https://usibd.org/level-of-accuracy/",
+      "sourceType": "primary",
+      "scope": "規範發布機構的說明頁，介紹 LOA 3.1 版用途與以標準差指定公差的方法；完整分級表需下載規範。",
+      "scopeEn": "Publisher's page describing the purpose of LOA version 3.1 and specifying tolerances by standard deviation; the full level table is in the downloadable specification."
+    },
+    {
+      "key": "astm-e2807",
+      "title": "ASTM E2807-11(2019) 三維影像資料交換規範",
+      "titleEn": "ASTM E2807-11(2019) Standard Specification for 3D Imaging Data Exchange, Version 1.0",
+      "publisher": "ASTM International",
+      "url": "https://store.astm.org/e2807-11r19.html",
+      "sourceType": "primary",
+      "scope": "標準組織的規範頁，說明 E57 檔可保存的點資料、屬性與影像；全文需購買。",
+      "scopeEn": "Standards body page describing the point data, attributes and imagery an E57 file can hold; the full text is purchased separately."
+    },
+    {
+      "key": "unesco-kasubi",
+      "title": "聯合國教科文組織世界遺產：卡蘇比布干達王陵",
+      "titleEn": "UNESCO World Heritage: Tombs of Buganda Kings at Kasubi",
+      "publisher": "UNESCO World Heritage Centre",
+      "url": "https://whc.unesco.org/en/list/1022",
+      "sourceType": "primary",
+      "scope": "列名年份、2010 年火災、瀕危名錄期間與重建時程，以及對完整紀錄支持重建的要求。",
+      "scopeEn": "Inscription year, the 2010 fire, Danger List period and reconstruction dates, and the call for complete documentation to support rebuilding."
+    },
+    {
+      "key": "notre-dame-restoration",
+      "title": "巴黎聖母院修復公共機構：修復工程",
+      "titleEn": "Rebâtir Notre-Dame de Paris: The restoration",
+      "publisher": "Établissement public Rebâtir Notre-Dame de Paris",
+      "url": "https://rebatirnotredamedeparis.fr/en/restoration",
+      "sourceType": "primary",
+      "scope": "業主機構說明尖塔與屋架重建、風信雞高度與時程；未提供掃描技術細節。",
+      "scopeEn": "Owner body's account of spire and roof-frame reconstruction, cockerel height and dates; no scanning details."
+    },
+    {
+      "key": "wiki-andrew-tallon",
+      "title": "維基百科：Andrew Tallon（英文）",
+      "titleEn": "Wikipedia: Andrew Tallon",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Andrew_Tallon",
+      "sourceType": "secondary",
+      "scope": "整理 Tallon 自 2010 年掃描聖母院的移站次數與點數，以及資料在火災後的用途，作為延伸閱讀。",
+      "scopeEn": "Summary of Tallon's Notre-Dame scanning from 2010, number of setups and points, and post-fire use of the data, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "海克斯康（徠卡測量系統）",
+      "nameEn": "Hexagon (Leica Geosystems)",
+      "business": "量測科技集團，旗下徠卡測量系統承接 Cyrax 技術，生產地面雷射掃描儀與點雲處理軟體。",
+      "businessEn": "Measurement-technology group whose Leica Geosystems unit carried forward the Cyrax technology and makes terrestrial laser scanners and point-cloud software.",
+      "url": "https://hexagon.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "HEXA-B",
+        "exchange": "STO",
+        "currency": "SEK"
+      },
+      "role": "地面雷射掃描儀與標靶配準流程的產品脈絡",
+      "roleEn": "Product context for terrestrial scanners and target-based registration"
+    },
+    {
+      "name": "法如科技",
+      "nameEn": "FARO Technologies",
+      "business": "三維量測公司，生產相位式雷射掃描儀與現場掃描到模型的軟體。",
+      "businessEn": "3D measurement company making phase-based laser scanners and scan-to-model software.",
+      "url": "https://www.faro.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "建築竣工掃描與偏差分析的工具類型",
+      "roleEn": "Tool types for as-built building scans and deviation analysis"
+    },
+    {
+      "name": "天寶",
+      "nameEn": "Trimble",
+      "business": "定位與營建科技公司，提供掃描全測站、雷射掃描儀與點雲比對軟體。",
+      "businessEn": "Positioning and construction-technology company offering scanning total stations, laser scanners and point-cloud comparison software.",
+      "url": "https://www.trimble.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "TRMB",
+        "exchange": "NASDAQ",
+        "currency": "USD"
+      },
+      "role": "結合全測站控制與掃描的工地流程",
+      "roleEn": "Site workflows combining total-station control with scanning"
+    },
+    {
+      "name": "CyArk",
+      "nameEn": "CyArk",
+      "business": "以雷射掃描與攝影測量記錄文化資產的非營利組織，曾掃描卡蘇比王陵。",
+      "businessEn": "Non-profit that records heritage sites with laser scanning and photogrammetry, including the Kasubi Tombs.",
+      "url": "https://www.cyark.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "基準掃描支持災後重建的公開案例",
+      "roleEn": "Public cases of baseline scans supporting post-disaster reconstruction"
+    }
+  ],
+  "related": [
+    "b096",
+    "b097"
+  ],
+  "architectureNodes": [
+    [
+      "掃描規劃與精度規格",
+      "Scan planning and accuracy specification"
+    ],
+    [
+      "掃描儀與標靶控制",
+      "Scanners and target control"
+    ],
+    [
+      "點雲配準與定位",
+      "Registration and georeferencing"
+    ],
+    [
+      "模型偏差分析",
+      "Model deviation analysis"
+    ],
+    [
+      "不符合事項與修正",
+      "Nonconformance and correction"
+    ],
+    [
+      "點雲典藏與資產交接",
+      "Point-cloud archive and asset handover"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      2,
+      5
+    ]
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "id": "b057",
+  "title": "橋梁健康監測感測網~Structural health-monitoring networks for bridges",
+  "discipline": "st-bridge-durability-monitoring",
+  "family": "survey",
+  "focus": "從監測問題反推感測器種類、位置、取樣與同步，並把資料變成可行動的警戒與維護決策~Working back from monitoring questions to sensor types, locations, sampling and synchronisation, and turning data into actionable alerts and maintenance decisions",
+  "summary": "以香港青馬大橋等橋的風與結構健康監測系統、明尼阿波利斯 I-35W St. Anthony Falls 新橋內建感測器與加州收費橋梁的強震儀為例，說明如何由監測目的決定量測項目與感測器配置，處理感測原理、安裝與供電、資料擷取與時間同步、施工期基準值、模態識別與溫度效應、警戒值與誤報率，以及系統維護與資料交接。~Using the wind and structural health monitoring system on Hong Kong's Tsing Ma and neighbouring bridges, the built-in sensors of Minneapolis's new I-35W St. Anthony Falls Bridge and the strong-motion instruments on California toll bridges, explain how monitoring objectives set what is measured and where sensors go, then cover sensing principles, installation and power, data acquisition and time synchronisation, construction-stage baselines, modal identification and temperature effects, alert thresholds and false-alarm rates, and system maintenance and data handover.",
+  "units": [
+    {
+      "anchor": "監測目標清單~Monitoring objectives list",
+      "title": "監測目的決定量測項目~Objectives define what to measure",
+      "mechanism": "健康監測系統不是把感測器貼滿橋，而是回答幾個具體問題：風與交通是否超過設計假設、構件應力與位移是否在預期範圍、支承與伸縮縫是否正常活動、地震或颱風後能否快速判斷可否通行。香港公路署的風與結構健康監測系統在青馬、汀九、汲水門與昂船洲橋上量測風速、溫度、構件應變、主纜與橋面位移、動態地磅與 GPS 位置，每一類量測都對應一項設計假設或維護決策。先寫出問題清單，再決定通道數，才能避免資料多卻無人使用。~A health-monitoring system is not about covering a bridge with sensors but about answering a few specific questions: do wind and traffic exceed design assumptions, are member stresses and displacements within expected ranges, are bearings and joints moving freely, and can the bridge be judged safe to reopen quickly after an earthquake or typhoon. Hong Kong Highways Department's wind and structural health monitoring system on the Tsing Ma, Ting Kau, Kap Shui Mun and Stonecutters bridges measures wind speed, temperature, member strain, cable and deck movement, weigh-in-motion loads and GPS positions, each tied to a design assumption or a maintenance decision. Writing the question list before counting channels avoids a system rich in data that nobody uses.",
+      "model": "原始資料量 = 通道數 × 取樣率 × 每筆位元組。350 個通道、100 Hz、4 bytes：350×100×4 = 140,000 B/s，每天 140,000×86,400 ≈ 12.1 GB，每年約 4.4 TB。若溫度與位移通道改為 1 Hz，資料量可大幅下降。數值為教學假設。~Raw data volume = channels × sampling rate × bytes per sample. With 350 channels at 100 Hz and 4 bytes, 350×100×4 = 140,000 B/s, or 140,000×86,400 ≈ 12.1 GB a day and about 4.4 TB a year. Logging temperature and displacement channels at 1 Hz instead cuts the volume sharply. Values are teaching assumptions.",
+      "verify": "設計階段把每一個監測問題對應到量測量、感測器、取樣率、警戒值與使用者，製成需求追溯表；完工驗收時逐項確認每個問題都有可用資料與負責判讀的人，沒有對應問題的通道要說明保留理由。~At design stage, map every monitoring question to a measurand, sensor, sampling rate, threshold and user in a requirements traceability table; at acceptance, confirm item by item that each question has usable data and a named interpreter, and justify any channel that serves no question.",
+      "failure": "只以「越多越好」佈設感測器，數年後資料庫累積數十 TB，卻沒有人定義正常範圍或警戒值；真正發生異常時，工程師在雜訊中找不到訊號，監測系統反而成為維護負擔。~Deploying sensors on the principle that more is better leaves a database of tens of terabytes after a few years with no defined normal range or threshold; when a real anomaly occurs engineers cannot find the signal in the noise, and the system becomes a maintenance burden instead of a tool.",
+      "misconception": "感測器裝得越多，橋梁就越安全。~The more sensors installed, the safer the bridge.",
+      "practice": "監測系統規格書第一章應是監測目的與決策流程，而不是設備清單；每一項量測都要寫明由誰、在多久內、根據什麼數值做出什麼決定，並由業主的橋梁管理單位簽認。~The first chapter of a monitoring specification should be objectives and decision flow, not an equipment list; every measurand should state who decides what, within how long and on which value, signed off by the owner's bridge management unit."
+    },
+    {
+      "anchor": "伸縮縫位移計量程~Expansion-joint displacement range",
+      "title": "結構反應與感測器配置~Structural response and sensor placement",
+      "mechanism": "感測器位置要由預期的結構反應決定：加速度計放在主要振態振幅大的位置，以便辨識模態；應變計放在應力高或疲勞敏感的細節旁，並避開局部應力集中造成的誤判；位移計放在支承與伸縮縫，記錄溫度引起的伸縮與可能的卡死。大跨橋梁每天最大的反應往往來自溫度而非車輛，若位移計量程不足，夏季或冬季的極端值就會飽和。~Sensor locations follow from the expected structural response: accelerometers go where the main mode shapes have large amplitude so that modes can be identified; strain gauges sit beside highly stressed or fatigue-sensitive details while avoiding misleading local stress concentrations; displacement sensors go at bearings and expansion joints to record thermal movement and possible seizure. On long-span bridges the largest daily response often comes from temperature rather than traffic, so an undersized displacement range saturates at summer or winter extremes.",
+      "model": "伸縮量 ΔL = α·L·ΔT。鋼梁 α = 12×10⁻⁶ /°C、伸縮長度 L = 700 m、有效溫差 ΔT = 40°C：ΔL = 12×10⁻⁶×700×40 ≈ 0.34 m；位移計量程至少取 ±0.4 m 並保留安裝偏差，若只選 ±0.25 m，極端季節必然飽和。數值為教學假設。~Thermal movement ΔL = α·L·ΔT. For steel with α = 12×10⁻⁶ /°C, an expansion length L = 700 m and an effective range ΔT = 40°C, ΔL = 12×10⁻⁶×700×40 ≈ 0.34 m; the displacement sensor needs at least ±0.4 m with allowance for installation offset, and a ±0.25 m unit would certainly saturate in extreme seasons. Values are teaching assumptions.",
+      "verify": "以有限元素模型計算各模態振型與溫度、交通、風下的反應包絡，檢查每個感測器的量程、解析度與位置是否涵蓋預期範圍；完工後以第一年資料確認沒有通道長期飽和或反應過小而被雜訊淹沒。~Compute mode shapes and response envelopes under temperature, traffic and wind with the finite-element model, and check that each sensor's range, resolution and position cover the expected values; after completion, use the first year of data to confirm that no channel saturates for long periods or responds so little that noise swamps it.",
+      "failure": "應變計若貼在焊趾或開孔邊緣的局部應力集中處，讀數遠高於構件平均應力，容易觸發誤報；加速度計若剛好放在某一模態的節點附近，該模態在資料中幾乎看不見，識別結果會漏掉重要振態。~A strain gauge placed at a weld toe or hole edge reads far above the member's average stress and triggers false alarms; an accelerometer placed near a node of a mode makes that mode almost invisible in the data, so identification misses an important mode.",
+      "misconception": "感測器裝在任何位置都能量到結構的真實狀態。~A sensor anywhere on the bridge measures the true structural state.",
+      "practice": "感測器配置圖要同時標示模態振型、預期反應量與量程，並為每個關鍵量測安排至少一個冗餘通道；配置變更必須經設計者確認，不可因施工方便而自行移位。~The sensor layout drawing should show mode shapes, expected responses and ranges together, with at least one redundant channel for every key measurand; any relocation needs the designer's approval and must not be made just for construction convenience."
+    },
+    {
+      "anchor": "振弦式應變計與光纖光柵~Vibrating-wire and FBG gauges",
+      "title": "感測器類型與量測原理~Sensor types and measuring principles",
+      "mechanism": "不同感測器適合不同時間尺度：振弦式應變計以鋼弦頻率反映應變，長期穩定、適合混凝土潛變與溫度應變，但取樣慢；箔式電阻應變計反應快，適合車輛與疲勞量測，但長期漂移較大；光纖布拉格光柵可在一條光纖上串接數十個量測點、不受電磁干擾，但溫度與應變都會改變波長，必須補償。加速度計、風速計、GNSS 接收器與傾斜儀則分別處理振動、風場、絕對位移與轉角。~Different sensors suit different time scales: a vibrating-wire strain gauge reads strain from the frequency of a steel wire, is stable for years and suits concrete creep and thermal strain, but samples slowly; a foil resistance gauge responds fast and suits traffic and fatigue measurement but drifts more over the long term; a fibre Bragg grating lets dozens of points share one fibre and is immune to electromagnetic interference, yet both temperature and strain shift its wavelength, so compensation is essential. Accelerometers, anemometers, GNSS receivers and tiltmeters cover vibration, wind, absolute displacement and rotation respectively.",
+      "model": "光纖光柵 Δλ/λ ≈ (1 − p_e)·ε + (溫度項)。λ = 1,550 nm、p_e = 0.22：應變靈敏度 ≈ 0.78×1,550 nm = 1.21 pm/με，100 με 約移動 121 pm。若溫度靈敏度約 10 pm/°C，1°C 就相當於約 8.3 με 的假應變，必須以無應變參考光柵扣除。數值為教學假設。~For a fibre Bragg grating, Δλ/λ ≈ (1 − p_e)·ε + (temperature term). With λ = 1,550 nm and p_e = 0.22, strain sensitivity ≈ 0.78×1,550 nm = 1.21 pm/με, so 100 με shifts it by about 121 pm. If temperature sensitivity is about 10 pm/°C, 1°C mimics about 8.3 με of false strain, which must be removed with a strain-free reference grating. Values are teaching assumptions.",
+      "verify": "每支感測器出廠附校正證書，安裝前抽樣在實驗室複驗靈敏度與溫度係數；現場以已知溫度變化或標定載重檢查讀數方向與量級是否合理，並把校正係數、序號與安裝位置一同寫入資料庫。~Every sensor ships with a calibration certificate, and samples are re-checked in the laboratory for sensitivity and temperature coefficient before installation; on site, check sign and magnitude against a known temperature change or calibration load, and store calibration factors, serial numbers and locations together in the database.",
+      "failure": "未做溫度補償的光纖光柵在日夜溫差下顯示數十微應變的變化，被誤判為結構應力變化；用箔式應變計量測多年的混凝土潛變，則會把感測器漂移當成結構行為。~An uncompensated fibre Bragg grating shows tens of microstrain of day–night change that is mistaken for structural stress; using foil gauges to follow concrete creep for years mistakes sensor drift for structural behaviour.",
+      "misconception": "所有應變計都一樣，只要精度高就能用於任何監測目的。~All strain gauges are equivalent; any high-precision gauge suits any purpose.",
+      "practice": "規格書應依量測目的指定感測原理、長期穩定性、溫度補償方式與取樣率，而不只寫精度；同一量測量混用不同原理時，要在資料庫中標示並建立換算與比對程序。~The specification should define sensing principle, long-term stability, temperature compensation and sampling rate by purpose, not just accuracy; where different principles measure the same quantity, flag them in the database and set up a conversion and comparison procedure."
+    },
+    {
+      "anchor": "感測器底座、纜線與防雷~Mounts, cabling and surge protection",
+      "title": "安裝、供電與環境防護~Installation, power and environmental protection",
+      "mechanism": "橋梁感測器要在鹽霧、紫外線、振動與雷擊環境下工作數十年，安裝細部常比感測器本身更決定壽命：底座要與結構可靠接合又不損傷防蝕塗層，纜線要沿可檢修的線槽佈設並有應力釋放，戶外箱體要有足夠防護等級，並以等電位接地與突波保護避免雷擊沿纜線進入擷取設備。遠離電源的位置常用太陽能與電池供電，必須以最不利季節計算能量平衡。~Bridge sensors must work for decades amid salt spray, ultraviolet light, vibration and lightning, and installation details often govern life more than the sensor itself: mounts must bond reliably without damaging the corrosion protection, cables must run in maintainable trays with strain relief, outdoor enclosures need an adequate protection rating, and equipotential bonding with surge protection keeps lightning from travelling along cables into the acquisition hardware. Remote locations are often solar and battery powered, so the energy balance must be checked for the least favourable season.",
+      "model": "某遠端節點耗電 5 W，每天 5×24 = 120 Wh；要求 3 天無日照自主、電池放電深度 50%，電池容量 120×3/0.5 = 720 Wh。冬季日照 4 峰值小時、系統效率 0.7，太陽板功率 120/(4×0.7) ≈ 43 W，取 50 W。數值為教學假設。~A remote node draws 5 W, so it uses 5×24 = 120 Wh a day; with 3 days of autonomy without sun and 50% depth of discharge the battery needs 120×3/0.5 = 720 Wh. With 4 peak sun hours in winter and 0.7 system efficiency, the panel needs 120/(4×0.7) ≈ 43 W, so 50 W is chosen. Values are teaching assumptions.",
+      "verify": "安裝後逐一量測接地電阻、纜線絕緣與每個通道的雜訊底線，並拍照記錄底座、方向與纜線路徑；供電系統則在第一個冬季檢查電池最低電壓與資料缺漏時段，確認能量平衡假設成立。~After installation, measure grounding resistance, cable insulation and the noise floor of every channel, and photograph mounts, orientations and cable routes; for power, check minimum battery voltage and data gaps during the first winter to confirm the energy-balance assumptions.",
+      "failure": "感測器底座直接以焊接固定在鋼構件上，會在受拉翼板留下不良焊接細節而成為疲勞起點；纜線未做應力釋放，在橋面振動下數年就疲勞斷線；雷擊沒有突波保護，一次就可能燒毀整個擷取站。~Welding sensor mounts directly onto steel members leaves poor welded details on tension flanges that become fatigue origins; cables without strain relief break by fatigue under deck vibration within a few years; without surge protection, one lightning strike can destroy a whole acquisition station.",
+      "misconception": "感測器是附屬設備，安裝方式不會影響結構本身。~Sensors are accessories, so how they are mounted cannot affect the structure.",
+      "practice": "感測器在鋼構件上的固定方式須經結構工程師核准，受拉區優先採用夾具或黏著而非焊接；所有箱體與纜線路徑都要留檢修通道，並納入橋梁檢查路線，讓監測設備與結構一起被檢查。~Mounting methods on steel members need the structural engineer's approval, preferring clamps or adhesives to welding in tension zones; every enclosure and cable route needs maintenance access and should be on the bridge inspection route so the monitoring hardware is inspected along with the structure."
+    },
+    {
+      "anchor": "資料擷取站與時間同步~Acquisition stations and time sync",
+      "title": "資料擷取、取樣與時間同步~Data acquisition, sampling and time synchronisation",
+      "mechanism": "分散在全橋的擷取站把類比訊號經抗混疊濾波與類比數位轉換變成數位資料，再傳回控制中心。取樣率要高於關心頻率的兩倍以上並配合濾波器，否則高頻振動會混疊成假的低頻成分。更容易被忽略的是時間同步：模態振型由不同位置加速度的相位關係決定，各站時鐘若相差數十毫秒，振型就會扭曲；因此長橋常以 GNSS 授時或 IEEE 1588 精確時間協定同步各站。~Acquisition stations distributed along the bridge pass analogue signals through anti-aliasing filters and analogue-to-digital converters and send the data to a control centre. Sampling must exceed twice the highest frequency of interest, with matching filters, or high-frequency vibration aliases into false low-frequency content. Time synchronisation is more easily overlooked: mode shapes come from phase relations between accelerations at different locations, so station clocks that differ by tens of milliseconds distort them; long bridges therefore synchronise stations by GNSS timing or the IEEE 1588 precision time protocol.",
+      "model": "時間誤差造成的相位誤差 Δφ = 360°×f×Δt。f = 2 Hz 的模態、Δt = 5 ms：Δφ = 360×2×0.005 = 3.6°；若只靠一般網路校時、Δt = 50 ms，Δφ = 36°，相鄰測點同相或反相都可能判錯。數值為教學假設。~Phase error from a timing offset is Δφ = 360°×f×Δt. For a 2 Hz mode and Δt = 5 ms, Δφ = 360×2×0.005 = 3.6°; relying on ordinary network time with Δt = 50 ms gives Δφ = 36°, enough to misjudge whether neighbouring points move in or out of phase. Values are teaching assumptions.",
+      "verify": "驗收時把兩站的感測器並排放在同一振動源上，比較兩通道的相位差，確認時間同步誤差在規格內；同時以已知頻率的訊號檢查抗混疊濾波與取樣率設定，並檢查資料封包缺漏率。~At acceptance, place sensors from two stations side by side on one vibration source and compare their phase to confirm that the synchronisation error is within specification; also check anti-aliasing filters and sampling settings with a known-frequency signal, and measure the packet-loss rate.",
+      "failure": "若擷取站之間沒有可靠的時間同步，模態識別得到的振型在主跨中央出現不合理的扭轉或反相；地震事件時各站觸發時間不一致，也會讓事後的波傳與反應分析失去意義。~Without reliable synchronisation between stations, identified mode shapes show implausible twisting or phase reversals at midspan; in an earthquake, inconsistent trigger times across stations make later wave-propagation and response analyses meaningless.",
+      "misconception": "只要取樣率夠高，不同擷取站的資料就可以直接一起分析。~If sampling rates are high enough, data from different stations can be analysed together directly.",
+      "practice": "規格書要寫明各通道取樣率、濾波器、類比數位轉換解析度與時間同步精度，並要求系統記錄每筆資料的時間來源與同步狀態；同步失效時資料仍要保存，但必須加上旗標供分析者排除。~The specification should state each channel's sampling rate, filter, converter resolution and time-synchronisation accuracy, and require the system to log the time source and sync status of every record; data recorded during a sync failure must still be kept but flagged so analysts can exclude it."
+    },
+    {
+      "anchor": "零點讀數與施工期基準~Zero readings and construction baseline",
+      "title": "施工期安裝與基準值建立~Installation during construction and baselines",
+      "mechanism": "很多重要的應變與變形發生在施工期間：預力張拉、合龍、鋪面加載與混凝土早期收縮。感測器若在施工中就埋設並記錄零點，監測系統能看到構件從無應力到使用狀態的完整歷程；若等到完工才安裝，只能量到之後的變化。2007 年 I-35W 舊橋倒塌後，明尼蘇達州交通部以設計施工統包在 339 天內完成新橋，並把感測與監測系統直接建在橋內，作為百年設計壽命期間的監測基礎。完工時再以環境振動或載重試驗建立第一組基準值。~Many important strains and deformations occur during construction: post-tensioning, closure, surfacing loads and early concrete shrinkage. If sensors are embedded during construction with recorded zero readings, the system sees the whole history from unstressed to service state; installed only after completion, they can measure only later changes. After the 2007 collapse of the old I-35W bridge, MnDOT delivered the new bridge by design–build in 339 days with a sensor and monitoring system built into the structure as the basis for monitoring over its 100-year design life. At completion, ambient vibration or a load test sets the first baseline.",
+      "model": "預力造成的平均壓應變 ε = P/(A·E_c)。P = 50 MN、A = 10 m²、E_c = 35 GPa：ε = 50×10⁶/(10×35×10⁹) ≈ 143 με。若應變計在張拉後才歸零，資料中就永遠少了這 143 με，之後的潛變與預力損失也無法與設計值比較。數值為教學假設。~Mean compressive strain from prestress is ε = P/(A·E_c). With P = 50 MN, A = 10 m² and E_c = 35 GPa, ε = 50×10⁶/(10×35×10⁹) ≈ 143 με. If gauges are zeroed after stressing, those 143 με are missing from the data forever and later creep and prestress loss cannot be compared with design values. Values are teaching assumptions.",
+      "verify": "每支埋設感測器記錄安裝時間、零點讀數、當時溫度與施工狀態（例如張拉前、合龍後），並在每個施工里程碑讀取一次，與施工階段分析的預測值比較；差異超出預定範圍時查明是感測器問題還是結構行為。~Record for every embedded sensor its installation time, zero reading, temperature and construction state (for example before stressing or after closure), read it at each construction milestone and compare with the predictions of the construction-stage analysis; when the difference exceeds a preset range, establish whether the sensor or the structure is responsible.",
+      "failure": "施工中埋設的感測器若沒有保護，常在澆置、振動棒或焊接時損壞，完工後才發現三成通道失效；零點紀錄遺失則讓資料只剩相對變化，無法回答構件實際應力是多少。~Embedded sensors left unprotected are often damaged by casting, vibrators or welding, so a third of channels may be found dead at completion; a lost zero record leaves only relative changes and cannot answer what the actual member stress is.",
+      "misconception": "監測系統等橋梁完工後再安裝即可，不會損失任何資訊。~A monitoring system can be installed after completion without losing any information.",
+      "practice": "監測承包商應與主體承包商共同排定埋設時程，並設置停留點：感測器埋設、讀值確認與保護完成後才可澆置；每個施工里程碑的讀值由監造簽認，作為交接基準的一部分。~The monitoring contractor and main contractor should schedule embedment together with a hold point: casting proceeds only after sensors are placed, read and protected; readings at each construction milestone are signed by the resident engineer and become part of the handover baseline."
+    },
+    {
+      "anchor": "頻率—溫度回歸~Frequency–temperature regression",
+      "title": "模態識別與環境效應分離~Modal identification and environmental effects",
+      "mechanism": "以環境振動做運轉模態分析，可以長期追蹤橋梁的頻率、振型與阻尼。但頻率不只受損傷影響：溫度改變材料模數、鋪面勁度、支承摩擦與纜索張力，季節變化常造成數個百分比的頻率漂移，往往大於中等損傷造成的變化。因此要先用一段健康期資料建立頻率與溫度等環境變數的回歸模型，之後只看扣除環境效應後的殘差，殘差持續偏離時才代表結構可能改變。~Operational modal analysis of ambient vibration tracks a bridge's frequencies, mode shapes and damping over the long term. But frequency responds to more than damage: temperature changes material modulus, surfacing stiffness, bearing friction and cable tension, and seasonal changes often shift frequencies by several percent, often more than moderate damage would. A regression of frequency on temperature and other environmental variables must therefore be built from a healthy reference period; afterwards only the residual after removing environmental effects is tracked, and a persistent drift of that residual is what signals possible structural change.",
+      "model": "回歸 f = f₀ + k·(T − 20°C)，f₀ = 0.500 Hz、k = −0.0005 Hz/°C。35°C 時預測 f = 0.500 − 0.0005×15 = 0.4925 Hz；實測 0.4880 Hz，殘差 −0.0045 Hz（約 −0.9%）。若健康期殘差標準差 σ = 0.0015 Hz，此值恰為 3σ。數值為教學假設。~Regression f = f₀ + k·(T − 20°C) with f₀ = 0.500 Hz and k = −0.0005 Hz/°C predicts f = 0.500 − 0.0005×15 = 0.4925 Hz at 35°C; a measured 0.4880 Hz leaves a residual of −0.0045 Hz (about −0.9%). If the residual standard deviation in the healthy period is σ = 0.0015 Hz, this equals 3σ. Values are teaching assumptions.",
+      "verify": "以至少一整年的健康期資料涵蓋四季溫度，建立回歸並以交叉驗證檢查預測誤差；用兩種識別方法（例如頻域分解與隨機子空間）比對頻率，並把結果與完工時的載重試驗或有限元素模型比較。~Use at least a full year of healthy-period data spanning all seasons to fit the regression and check prediction error by cross-validation; compare frequencies from two identification methods, such as frequency-domain decomposition and stochastic subspace identification, and check them against the completion load test or finite-element model.",
+      "failure": "只用夏季數週資料建立基準，冬季頻率自然上升就被誤判為異常，或反過來把真正的勁度下降掩蓋在溫度變化中；支承在低溫卡死造成的頻率突跳，也可能被誤認為損傷。~A baseline built from a few summer weeks flags the natural winter rise in frequency as an anomaly, or conversely hides a real stiffness loss inside temperature variation; a frequency jump caused by bearings seizing in cold weather can also be mistaken for damage.",
+      "misconception": "橋梁頻率下降就一定代表結構受損。~A drop in a bridge's frequency always means structural damage.",
+      "practice": "環境效應模型要隨資料累積定期更新並保留版本，警戒判斷一律使用殘差而非原始頻率；任何維修、鋪面更換或支承更換都要在資料庫中標記，作為新的基準段起點。~Update the environmental model periodically as data accumulate and keep its versions, base alerts on residuals rather than raw frequencies, and flag every repair, resurfacing or bearing replacement in the database as the start of a new baseline segment."
+    },
+    {
+      "anchor": "三級警戒值~Three-level alert thresholds",
+      "title": "警戒值、誤報率與事件觸發~Alert thresholds, false alarms and event triggers",
+      "mechanism": "監測的價值在於觸發正確的行動。警戒值通常分三級：注意（需要工程師查看）、警告（需要現場檢查）、行動（需要交通管制），並分別對應設計值、使用性限值或統計殘差。地震或颱風時，系統應切換到事件模式，以較高取樣率記錄並自動產生初步評估。加州運輸局的快速評估計畫（BRACE2）即以 Hayward 580/238 立體交叉為試辦橋，把現場感測資料直接傳到分析平台，以模型與易損性演算法即時估計震後損傷，取代過去等待資料處理的延遲。~The value of monitoring lies in triggering the right action. Thresholds usually have three levels, notice (an engineer looks), warning (a site inspection) and action (traffic control), tied respectively to design values, serviceability limits or statistical residuals. During an earthquake or typhoon the system should switch to event mode, record at higher rates and generate a preliminary assessment automatically. Caltrans' rapid-assessment project BRACE2 uses the Hayward 580/238 Separation as its trial bridge, sending site sensor data directly to an analysis platform where models and fragility algorithms estimate post-earthquake damage in near real time, removing the delay of waiting for processed data.",
+      "model": "若殘差呈常態，雙尾 3σ 門檻每次判斷的誤報機率約 0.27%；每小時判斷一次，一年 8,760 次約 0.0027×8,760 ≈ 23.7 次誤報。門檻提高到 4σ（約 6.3×10⁻⁵）時，每年約 0.55 次，但真實異常也要更大才會被偵測。數值為教學假設。~If residuals are normal, a two-sided 3σ threshold has a false-alarm probability of about 0.27% per evaluation; evaluating hourly, 8,760 times a year, gives about 0.0027×8,760 ≈ 23.7 false alarms. Raising the threshold to 4σ (about 6.3×10⁻⁵) gives about 0.55 a year, but a real anomaly must then be larger to be detected. Values are teaching assumptions.",
+      "verify": "以過去資料回放測試警戒邏輯，統計誤報與漏報次數並調整門檻；每年至少做一次演練，從模擬警報、通知、現場確認到解除，檢查責任人與時效是否符合規定，並記錄改善事項。~Replay historical data through the alert logic to count false and missed alarms and tune thresholds; run at least one drill a year, from simulated alert through notification and site confirmation to stand-down, checking responsibilities and response times against the procedure and recording improvements.",
+      "failure": "門檻設得太低，每週數次誤報讓值班人員習慣性忽略，真正的警報也被當成雜訊；門檻設得太高或只看單一通道，則支承卡死或構件斷裂的早期跡象在跨越門檻前就被錯過。~Thresholds set too low produce several false alarms a week, training staff to ignore them until a real alarm is dismissed as noise; thresholds set too high, or on single channels only, miss early signs of seized bearings or member fracture before they cross the line.",
+      "misconception": "警戒門檻越嚴格，監測系統就越安全。~The stricter the alarm threshold, the safer the monitoring system.",
+      "practice": "每一級警戒都要對應書面的行動程序：通知對象、到場時限、可採取的交通措施與解除條件；交通管制的決定權必須事先授權給明確的職位，不能等到事件發生才協調。~Every alert level needs a written action procedure: whom to notify, response time, permitted traffic measures and stand-down conditions; authority for traffic control must be delegated in advance to a named post, not negotiated during the event."
+    },
+    {
+      "anchor": "資料完整率與感測器存活率~Data completeness and sensor survival",
+      "title": "系統可用率、漂移與維護~System availability, drift and maintenance",
+      "mechanism": "橋梁設計壽命可達百年，感測器與電子設備的壽命卻常只有十到二十年，而且會漂移、故障、被施工或撞擊損壞。監測系統因此需要自己的維護計畫：定期檢查通道健康狀態、比對冗餘通道找出漂移、更換故障感測器並重新建立零點，以及因應電子零件停產而規劃世代更新。資料完整率是衡量系統是否仍在工作的基本指標，應與結構指標一起報告。~A bridge may be designed for a hundred years, but sensors and electronics often last only ten to twenty, and they drift, fail or get damaged by works or impacts. A monitoring system therefore needs its own maintenance plan: regular channel health checks, comparison of redundant channels to catch drift, replacement of failed sensors with new zero readings, and generational upgrades as electronic parts go obsolete. Data completeness is the basic indicator of whether the system still works and should be reported alongside the structural indicators.",
+      "model": "350 個感測器、每年故障率 3%：每年預期故障 350×0.03 ≈ 10.5 支；若 5 年不更換，存活比例 0.97⁵ ≈ 0.859，只剩約 301 支。若關鍵量測只有單一通道，5 年內失去該量測的機率約 1 − 0.859 ≈ 14%。數值為教學假設。~With 350 sensors and a 3% annual failure rate, about 350×0.03 ≈ 10.5 fail each year; without replacement for 5 years the surviving fraction is 0.97⁵ ≈ 0.859, about 301 sensors. A key measurand on a single channel then has about a 1 − 0.859 ≈ 14% chance of being lost within 5 years. Values are teaching assumptions.",
+      "verify": "每月自動產生通道健康報告：資料完整率、雜訊底線、零點漂移與冗餘通道差異，低於門檻的通道列入維修清單；每年抽樣以攜帶式參考儀器現場比對，確認感測器讀值仍在允差內。~Generate a monthly channel-health report automatically, covering data completeness, noise floor, zero drift and differences between redundant channels, and put channels below threshold on the repair list; each year, spot-check sensors on site against a portable reference instrument to confirm readings remain within tolerance.",
+      "failure": "系統建置時預算充足，維護卻沒有編列經費，數年後大半通道失效、軟體無人更新，監測中心只剩螢幕上的空白曲線；更換感測器時未記錄新零點，新舊資料拼接出不存在的應變跳動。~Generous capital funding with no maintenance budget leaves most channels dead and software unpatched after a few years, so the control room shows only blank traces; replacing a sensor without recording a new zero splices old and new data into a strain jump that never happened.",
+      "misconception": "監測系統一旦建置完成，就能自動運作數十年。~Once built, a monitoring system runs itself for decades.",
+      "practice": "監測合約應包含至少數年的維運期，並把資料完整率（例如關鍵通道 95% 以上）列為付款條件；更換感測器時要做新舊並行量測一段時間，以銜接資料序列。~The monitoring contract should include several years of operation and maintenance and make data completeness, for example above 95% on key channels, a payment condition; when replacing a sensor, run old and new in parallel for a period to splice the data series."
+    },
+    {
+      "anchor": "後設資料與資料庫~Metadata and database",
+      "title": "資料管理、決策應用與交接~Data management, decision use and handover",
+      "mechanism": "監測資料只有在後設資料完整時才有長期價值：每個通道的位置、方向、感測原理、校正係數、零點、更換紀錄與資料處理參數都要可查。資料庫也要與橋梁檢查紀錄、維修履歷及結構模型連結，讓工程師能把異常讀值與現場狀況對照。交接時，業主應取得原始資料格式說明、處理程式與存取權限，而不只是一份年報；網路安全與資料保存期限也要在交接文件中寫明。~Monitoring data keep long-term value only with complete metadata: every channel's location, orientation, sensing principle, calibration factors, zero reading, replacement history and processing parameters must be retrievable. The database should also link to inspection records, maintenance history and the structural model so engineers can compare an anomalous reading with site conditions. At handover the owner should receive the raw data format description, processing software and access rights, not just an annual report, and cybersecurity and data retention periods must be written into the handover documents.",
+      "model": "原始資料每天 12.1 GB、每年約 4.4 TB。若只長期保存事件期間原始資料，其餘改存每 10 分鐘 6 項統計值（平均、最大、最小、標準差等）：350×6×144×8 bytes ≈ 2.4 MB/天，每年約 0.88 GB，約為原始量的五千分之一。數值為教學假設。~Raw data at 12.1 GB a day amount to about 4.4 TB a year. Keeping raw records only for events and storing six statistics every 10 minutes otherwise (mean, maximum, minimum, standard deviation and so on) gives 350×6×144×8 bytes ≈ 2.4 MB a day, about 0.88 GB a year, roughly one five-thousandth of the raw volume. Values are teaching assumptions.",
+      "verify": "交接前由業主或第三方以交付的文件與程式，從原始資料獨立重算一段期間的統計值與模態結果，與承包商報告比對；同時抽查後設資料是否與現場標籤、照片一致，並測試備份還原。~Before handover, have the owner or a third party independently recompute statistics and modal results for a sample period from raw data using the delivered documents and software, and compare with the contractor's reports; also spot-check metadata against site labels and photographs and test a backup restore.",
+      "failure": "若資料格式與處理程式掌握在原承包商手中，合約結束後業主只能看到停止更新的圖表；多年後需要追查某次異常時，才發現原始資料已被刪除或無法解讀。~If data formats and processing software stay with the original contractor, the owner is left with frozen charts when the contract ends; years later, when an anomaly must be traced, the raw data turn out to be deleted or unreadable.",
+      "misconception": "只要每年有一份監測報告，資料本身就不需要保存。~As long as there is an annual monitoring report, the data themselves need not be kept.",
+      "practice": "交接文件應包含通道清單與後設資料、資料字典、處理程式原始碼或可執行版本、警戒程序、維護紀錄與聯絡窗口；業主必須擁有資料所有權，並把監測結果正式納入橋梁檢查與維修決策流程。~Handover should include the channel list with metadata, a data dictionary, processing source code or executables, alert procedures, maintenance records and contacts; the owner must own the data and formally feed monitoring results into bridge inspection and maintenance decisions."
+    }
+  ],
+  "example": "設計練習：為一座教學用斜張橋規劃監測網，共 40 個加速度通道（100 Hz）、60 個應變通道（20 Hz）與 20 個溫度通道（1 Hz），每筆 4 bytes。(1) 資料率 = (40×100 + 60×20 + 20×1)×4 = 20,880 B/s，每天約 1.80 GB，每年約 659 GB。(2) 關心的最高模態約 3 Hz，若要求相位誤差 ≤ 1°，Δt ≤ 1/(360×3) ≈ 0.93 ms，一般網路校時不夠，需 GNSS 授時或 IEEE 1588 同步。(3) 以每小時判斷一次的殘差警戒，3σ 每年約 23.7 次誤報、4σ 約 0.55 次，選擇以 3σ 作為注意級、4σ 作為警告級。(4) 遠端節點耗電 5 W，需 720 Wh 電池與 50 W 太陽板。(5) 若改變一個輸入：加速度改以 200 Hz 取樣，資料率增為 36,880 B/s，每天約 3.19 GB，儲存與傳輸成本約增加 77%。數值為教學假設，不代表任何實際橋梁的監測設計。~Design exercise: plan a monitoring network for a teaching cable-stayed bridge with 40 acceleration channels at 100 Hz, 60 strain channels at 20 Hz and 20 temperature channels at 1 Hz, 4 bytes per sample. (1) Data rate = (40×100 + 60×20 + 20×1)×4 = 20,880 B/s, about 1.80 GB a day and about 659 GB a year. (2) The highest mode of interest is about 3 Hz; a phase error of no more than 1° needs Δt ≤ 1/(360×3) ≈ 0.93 ms, which ordinary network time cannot deliver, so GNSS timing or IEEE 1588 synchronisation is required. (3) With hourly residual checks, 3σ gives about 23.7 false alarms a year and 4σ about 0.55, so 3σ is used for the notice level and 4σ for the warning level. (4) A remote node drawing 5 W needs a 720 Wh battery and a 50 W panel. (5) Changing one input: sampling acceleration at 200 Hz raises the rate to 36,880 B/s, about 3.19 GB a day, increasing storage and transmission by about 77%. Values are teaching assumptions, not the monitoring design of any real bridge.",
+  "history": "大跨橋梁的長期監測在 1990 年代後期快速發展：1997 年通車的香港青馬大橋與汀九、汲水門橋由公路署的風與結構健康監測系統監測，之後再納入昂船洲大橋，系統共約 900 個感測器，量測風、溫度、應變、位移、動態地磅與 GPS。2007 年明尼阿波利斯 I-35W 舊橋倒塌後，2008 年 9 月通車的新橋把約 323 個感測器直接建在橋內，由明尼蘇達大學協助分析。加州運輸局則在收費橋梁設置強震儀，並自 2020 年起推動 BRACE2 計畫，嘗試在震後即時評估橋梁狀態。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Long-term monitoring of long-span bridges grew rapidly from the late 1990s: Hong Kong's Tsing Ma Bridge, opened in 1997, together with the Ting Kau and Kap Shui Mun bridges, is monitored by the Highways Department's wind and structural health monitoring system, later extended to Stonecutters Bridge, with about 900 sensors measuring wind, temperature, strain, displacement, weigh-in-motion loads and GPS positions. After the 2007 collapse of the old I-35W bridge in Minneapolis, the new bridge opened in September 2008 with about 323 sensors built in, analysed with the University of Minnesota. Caltrans instruments its toll bridges with strong-motion sensors and since 2020 has pursued the BRACE2 project to assess bridge condition in near real time after earthquakes. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "香港風與結構健康監測系統涵蓋青馬、汀九、汲水門與昂船洲四座橋，約 900 個感測器~Hong Kong's wind and structural health monitoring system covers four bridges, Tsing Ma, Ting Kau, Kap Shui Mun and Stonecutters, with about 900 sensors",
+    "青馬大橋超過 350 個感測器、汀九橋約 350 個、汲水門橋約 200 個~Tsing Ma Bridge has more than 350 sensors, Ting Kau about 350 and Kap Shui Mun about 200",
+    "青馬大橋主跨 1,377 m，1997 年 5 月通車，上層 6 線道路、下層雙軌鐵路~Tsing Ma Bridge has a 1,377 m main span, opened in May 1997, with six road lanes above and two rail tracks below",
+    "I-35W St. Anthony Falls 新橋約 323 個感測器，2008 年 9 月 18 日通車~The new I-35W St. Anthony Falls Bridge has about 323 sensors and opened on 18 September 2008",
+    "I-35W 新橋以設計施工統包在 339 天內完成，寬 189 ft、10 線車道，設計壽命 100 年~The new I-35W bridge was delivered by design–build in 339 days, is 189 ft wide with 10 lanes and has a 100-year design life",
+    "I-35W 新橋最長跨約 504 ft（154 m），全長約 1,216 ft（371 m）~The new I-35W bridge has a longest span of about 504 ft (154 m) and a total length of about 1,216 ft (371 m)",
+    "加州運輸局 BRACE2 計畫執行期為 2020 年 8 月至 2024 年 1 月，試辦橋為 Hayward 580/238 立體交叉~Caltrans' BRACE2 project ran from August 2020 to January 2024 with the Hayward 580/238 Separation as its trial bridge",
+    "光纖光柵在 1,550 nm 的應變靈敏度約 1.2 pm/με，溫度靈敏度約 10 pm/°C 量級~A fibre Bragg grating at 1,550 nm has a strain sensitivity of about 1.2 pm/με and a temperature sensitivity of the order of 10 pm/°C"
+  ],
+  "timeline": [
+    {
+      "year": "1997",
+      "event": "香港青馬大橋通車，與汀九、汲水門橋由風與結構健康監測系統長期監測~Hong Kong's Tsing Ma Bridge opens and, with Ting Kau and Kap Shui Mun, is monitored long term by a wind and structural health monitoring system"
+    },
+    {
+      "year": "2007",
+      "event": "明尼阿波利斯 I-35W 舊橋於 8 月 1 日倒塌，觸發以設計施工統包快速重建~The old I-35W bridge in Minneapolis collapses on 1 August, triggering rapid design–build replacement"
+    },
+    {
+      "year": "2008",
+      "event": "I-35W St. Anthony Falls 新橋通車，約 323 個感測器內建於橋體~The new I-35W St. Anthony Falls Bridge opens with about 323 sensors built into the structure"
+    },
+    {
+      "year": "2020",
+      "event": "加州運輸局啟動 BRACE2 震後橋梁快速評估中心計畫~Caltrans launches the BRACE2 Bridge Rapid Assessment Center for Extreme Events project"
+    },
+    {
+      "year": "2023",
+      "event": "BRACE2 完成全域模型、資料傳輸與即時處理平台，Hayward 橋資料可直接傳入系統~BRACE2 completes the global model, data transfer and real-time processing platform, with Hayward bridge data streaming directly into the system"
+    }
+  ],
+  "codes": [
+    "ISO 16587：機械振動與衝擊—結構狀態監測之性能參數~ISO 16587: Mechanical vibration and shock — Performance parameters for condition monitoring of structures",
+    "ISO 14963：機械振動與衝擊—橋梁與高架橋動態試驗與調查指引~ISO 14963: Mechanical vibration and shock — Guidelines for dynamic tests and investigations on bridges and viaducts",
+    "IEEE 1588：網路量測與控制系統之精確時間同步協定~IEEE 1588: Precision Clock Synchronization Protocol for Networked Measurement and Control Systems"
+  ],
+  "landmarks": [
+    "香港青馬大橋~Tsing Ma Bridge, Hong Kong",
+    "香港昂船洲大橋~Stonecutters Bridge, Hong Kong",
+    "明尼阿波利斯 I-35W St. Anthony Falls 橋~I-35W St. Anthony Falls Bridge, Minneapolis",
+    "加州 Hayward 580/238 立體交叉~Hayward 580/238 Separation, California"
+  ],
+  "place": {
+    "name": "香港青馬大橋參照點~Tsing Ma Bridge reference point",
+    "country": "中國香港~Hong Kong, China",
+    "lat": 22.35139,
+    "lng": 114.07417,
+    "query": "Tsing Ma Bridge Lantau Link Viewing Platform"
+  },
+  "sources": [
+    {
+      "key": "mndot-i35w-overview",
+      "title": "明尼蘇達州交通部：I-35W St. Anthony Falls 橋概述",
+      "titleEn": "MnDOT: I-35W St. Anthony Falls Bridge overview",
+      "publisher": "Minnesota Department of Transportation",
+      "url": "https://www.dot.state.mn.us/i35wbridge/overview.html",
+      "sourceType": "primary",
+      "scope": "業主說明新橋內建感測與監測系統、高性能混凝土、339 天統包工期與 100 年設計壽命；未列感測器細目。",
+      "scopeEn": "Owner's description of the built-in sensor and monitoring system, high-performance concrete, 339-day design–build and 100-year design life; no sensor details."
+    },
+    {
+      "key": "caltrans-brace2",
+      "title": "加州運輸局研究摘要：極端事件橋梁快速評估中心（BRACE2）",
+      "titleEn": "Caltrans research note: Bridge Rapid Assessment Center for Extreme Events (BRACE2)",
+      "publisher": "California Department of Transportation",
+      "url": "https://dot.ca.gov/-/media/dot-media/programs/research-innovation-system-information/documents/research-notes/task3703-rns-03-23-a11y.pdf",
+      "sourceType": "primary",
+      "scope": "說明收費橋梁強震儀資料流、Hayward 試辦橋的即時傳輸、OpenSees 模型與易損性評估平台的進度。",
+      "scopeEn": "Describes toll-bridge strong-motion data flow, real-time transfer from the Hayward trial bridge, the OpenSees model and the fragility-based assessment platform."
+    },
+    {
+      "key": "cesmd-strong-motion",
+      "title": "工程強震資料中心（CESMD）",
+      "titleEn": "Center for Engineering Strong Motion Data (CESMD)",
+      "publisher": "Center for Engineering Strong Motion Data",
+      "url": "https://www.strongmotioncenter.org/",
+      "sourceType": "primary",
+      "scope": "提供地震事件與特定結構測站的強震紀錄查詢，可了解結構監測資料如何公開與交換。",
+      "scopeEn": "Portal for strong-motion records by earthquake and by instrumented structure, showing how structural monitoring data are published and exchanged."
+    },
+    {
+      "key": "wiki-washms",
+      "title": "維基百科：風與結構健康監測系統（英文）",
+      "titleEn": "Wikipedia: Wind and Structural Health Monitoring System",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wind_and_Structural_Health_Monitoring_System",
+      "sourceType": "secondary",
+      "scope": "香港四座橋的監測項目與各橋感測器數量概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of measurands and sensor counts on the four Hong Kong bridges, for further reading."
+    },
+    {
+      "key": "wiki-i35w-st-anthony-falls",
+      "title": "維基百科：I-35W St. Anthony Falls 橋（英文）",
+      "titleEn": "Wikipedia: I-35W Saint Anthony Falls Bridge",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/I-35W_Saint_Anthony_Falls_Bridge",
+      "sourceType": "secondary",
+      "scope": "新橋跨徑、通車日期與約 323 個感測器的概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of spans, opening date and the roughly 323 sensors of the new bridge, for further reading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "天寶",
+      "nameEn": "Trimble",
+      "business": "提供 GNSS 接收器、全測站與變形監測軟體，用於橋梁與結構的位移監測。",
+      "businessEn": "Provides GNSS receivers, total stations and deformation-monitoring software for displacement monitoring of bridges and structures.",
+      "url": "https://www.trimble.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "TRMB",
+        "exchange": "NASDAQ",
+        "currency": "USD"
+      },
+      "role": "GNSS 位移監測與時間同步硬體的產品類型",
+      "roleEn": "Product types for GNSS displacement monitoring and timing hardware"
+    },
+    {
+      "name": "海克斯康",
+      "nameEn": "Hexagon",
+      "business": "旗下 Leica Geosystems 提供 GNSS、自動化全測站與監測軟體，用於結構變形監測。",
+      "businessEn": "Its Leica Geosystems unit supplies GNSS, automated total stations and monitoring software for structural deformation monitoring.",
+      "url": "https://hexagon.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "HEXA-B",
+        "exchange": "STO",
+        "currency": "SEK"
+      },
+      "role": "自動化測量與監測軟體的公開產品資訊",
+      "roleEn": "Public product information on automated surveying and monitoring software"
+    },
+    {
+      "name": "加州運輸局",
+      "nameEn": "California Department of Transportation (Caltrans)",
+      "business": "管理加州公路與收費橋梁，於橋梁設置強震儀並推動震後快速評估研究。",
+      "businessEn": "Manages California highways and toll bridges, instruments bridges with strong-motion sensors and funds post-earthquake rapid-assessment research.",
+      "url": "https://dot.ca.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "業主端監測資料流與震後決策應用",
+      "roleEn": "Owner-side monitoring data flow and post-earthquake decision use"
+    }
+  ],
+  "related": [
+    "b049",
+    "b058"
+  ],
+  "architectureNodes": [
+    [
+      "監測目的與警戒程序",
+      "Objectives and alert procedures"
+    ],
+    [
+      "感測器與安裝",
+      "Sensors and installation"
+    ],
+    [
+      "擷取站與時間同步",
+      "Acquisition and time sync"
+    ],
+    [
+      "資料庫與後設資料",
+      "Database and metadata"
+    ],
+    [
+      "模態識別與環境補償",
+      "Modal identification and compensation"
+    ],
+    [
+      "維護與決策交接",
+      "Maintenance and decision handover"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      3,
+      5
+    ]
+  ]
+}

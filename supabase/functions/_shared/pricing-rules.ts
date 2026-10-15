@@ -3,7 +3,7 @@
 import type { PricingRules } from './pricing.ts';
 
 export const PRICING_RULES: PricingRules = {
-  "version": 12,
+  "version": 13,
   "baseCurrency": "TWD",
   "plans": [
     {
@@ -73,6 +73,6 @@ export const PRICING_RULES: PricingRules = {
     "XOF",
     "XPF"
   ],
-  "rounding": "Convert TWD × rate, then round UP to the currency's minor unit (integer for zeroDecimal currencies, 0.01 otherwise).",
-  "fxMaxAgeDays": 10
+  "rounding": "Convert TWD × rate, then round UP to a tidy price (HuaTuo rule): zero-decimal currencies to whole units, in steps of 10/100/1,000 at ≥1,000/10,000/100,000; two-decimal currencies to whole units at ≥100, otherwise to the next .49 or .99. Never below TWD × rate.",
+  "fxMaxAgeDays": 3
 };

@@ -1,0 +1,304 @@
+{
+  "id": "b073",
+  "title": "組合樓板剪力釘焊接~Stud welding for composite floor systems",
+  "discipline": "st-concrete-steel",
+  "family": "connection",
+  "focus": "以剪力流計算、穿板焊接條件控制、首件彎曲試驗與推出試驗，確保鋼梁與混凝土樓板真正組合受力~Making steel beams and concrete slabs truly act together through shear-flow design, control of through-deck welding, first-stud bend tests and push-out tests",
+  "summary": "從組合梁介面的水平剪力流與部分組合出發，說明頭釘強度與壓型鋼板肋的折減、穿板焊接的電流與環境條件、首件 30° 彎曲試驗與外觀檢查、推出試驗求取剪力釘強度，以及火災溫度效應與改修時的紀錄需求，並以 NIST 對世界貿易中心七號樓組合樓板的調查、雙子塔以桁架「指節」取得組合作用的樓板，以及英國鋼結構協會對穿板焊接的說明為依據。~Starting from horizontal shear flow and partial composite action at the beam–slab interface, explain headed-stud strength and its reduction in deck ribs, current and site conditions for through-deck welding, first-stud 30° bend tests and visual checks, push-out tests for stud resistance, and fire and thermal effects and record-keeping for alterations, drawing on NIST's investigation of the composite floors of 7 World Trade Center, the Twin Towers' floors made composite by truss knuckles, and steel-industry guidance on through-deck welding.",
+  "units": [
+    {
+      "anchor": "鋼梁與樓板介面剪力~Beam–slab interface shear",
+      "title": "組合梁的水平剪力流~Horizontal shear flow in composite beams",
+      "mechanism": "鋼梁上的混凝土樓板若只是放在梁上，兩者各自彎曲，接觸面會相對滑動；焊在上翼板的剪力釘阻止滑動，讓樓板成為受壓翼緣、鋼梁成為受拉部分，斷面像一根更深的梁，強度與勁度都大幅提高。剪力釘要傳遞的是從零彎矩點到最大彎矩點之間的水平剪力總和，等於混凝土受壓合力與鋼梁受拉合力中較小者。剪力釘數量不足時，梁只能部分組合，強度與勁度介於純鋼梁與完全組合之間。~A concrete slab merely resting on a steel beam bends separately and slips along the interface; studs welded to the top flange prevent this slip so the slab becomes a compression flange and the steel a tension zone, behaving like a much deeper beam with far greater strength and stiffness. The studs must carry the total horizontal shear between the points of zero and maximum moment, equal to the smaller of the concrete compression force and the steel tension force. With too few studs, the beam is only partially composite, with strength and stiffness between those of the bare steel and full composite action.",
+      "model": "C = min(A_s·F_y, 0.85·f′c·b·t_c)。W460×60 鋼梁 A_s = 7,590 mm²、F_y = 345 MPa：A_s·F_y ≈ 2,619 kN；樓板有效寬 3,000 mm、肋上混凝土厚 64 mm、f′c = 28 MPa：0.85×28×3,000×64 ≈ 4,570 kN，取 C = 2,619 kN，即半跨內剪力釘須傳遞約 2,619 kN。數值為教學假設。~C = min(A_s·F_y, 0.85·f′c·b·t_c). For a W460×60 beam with A_s = 7,590 mm² and F_y = 345 MPa, A_s·F_y ≈ 2,619 kN; a slab of 3,000 mm effective width with 64 mm of concrete above the ribs and f′c = 28 MPa gives 0.85×28×3,000×64 ≈ 4,570 kN, so C = 2,619 kN, the force the studs in each half span must transfer. Values are teaching assumptions.",
+      "verify": "設計審查時核對每根組合梁的剪力釘數量、間距與分布是否滿足半跨剪力總和，並檢查集中載重或開口附近的剪力釘是否足夠；施工圖須以每根梁的剪力釘數量標示，現場以清點方式核對。~In design review, check that each composite beam's stud count, spacing and distribution satisfy the half-span shear total and that studs are sufficient near concentrated loads and openings; shop drawings must give the stud count for each beam, checked on site by counting.",
+      "failure": "若施工時因壓型鋼板肋位不合或趕工而少焊剪力釘，梁在使用載重下仍看似正常，但撓度與振動比設計大，極限狀態下介面滑動使強度不足；事後補焊需要打除樓板，代價極高。~If studs are omitted because rib positions do not match or work is rushed, the beam looks normal in service but deflects and vibrates more than designed, and at ultimate load interface slip leaves it short of strength; adding studs afterwards means breaking out the slab at great cost.",
+      "misconception": "混凝土樓板放在鋼梁上，自然就會和鋼梁一起受力。~A concrete slab resting on a steel beam automatically works together with it.",
+      "practice": "結構圖應在每根組合梁旁標示剪力釘數量與排列（單排、雙排、每肋支數），並註明是否為完全或部分組合；施工中若肋位與設計不符，須由結構工程師重新核算，而不是由現場自行減少。~Structural drawings should note stud number and arrangement (single or double row, studs per rib) beside each composite beam and say whether it is fully or partially composite; if rib positions differ from design, the structural engineer re-checks, rather than the site reducing studs on its own."
+    },
+    {
+      "anchor": "組合比與有效慣性矩~Composite ratio and effective inertia",
+      "title": "部分組合、勁度與使用性~Partial composite action, stiffness and serviceability",
+      "mechanism": "實務上很多組合梁刻意設計成部分組合，因為壓型鋼板肋距限制了可焊剪力釘的位置，而強度往往不需要完全組合。部分組合時，介面有少量滑動，有效慣性矩低於完全組合的換算斷面，撓度與樓板振動因此變大。組合比（實際剪力釘總強度除以完全組合所需值）同時控制強度與勁度，太低時剪力釘會在變形能力用盡前斷裂，因此規範通常設定最低組合比。~In practice many composite beams are deliberately partially composite, because deck rib spacing limits where studs can go and strength often does not need full composite action. With partial composite action the interface slips slightly and the effective moment of inertia falls below that of the fully composite transformed section, so deflection and floor vibration increase. The composite ratio, total stud strength divided by that required for full action, governs both strength and stiffness; too low a ratio lets studs fracture before their deformation capacity is used, so codes usually set a minimum ratio.",
+      "model": "部分組合有效慣性矩 I_eff ≈ I_s + √(ΣQ_n/C_f)·(I_tr − I_s)。I_s = 255×10⁶ mm⁴、I_tr = 700×10⁶ mm⁴，半跨 20 支剪力釘每支 76.5 kN：ΣQ_n ≈ 1,531 kN，組合比 1,531/2,619 ≈ 0.58，√0.58 ≈ 0.76，I_eff ≈ 255 + 0.76×445 ≈ 595×10⁶ mm⁴，約為完全組合的 85%。數值為教學假設。~For partial composite action I_eff ≈ I_s + √(ΣQ_n/C_f)·(I_tr − I_s). With I_s = 255×10⁶ mm⁴, I_tr = 700×10⁶ mm⁴ and 20 studs of 76.5 kN per half span, ΣQ_n ≈ 1,531 kN, a composite ratio of 1,531/2,619 ≈ 0.58; √0.58 ≈ 0.76, so I_eff ≈ 255 + 0.76×445 ≈ 595×10⁶ mm⁴, about 85% of full composite. Values are teaching assumptions.",
+      "verify": "以有效慣性矩計算施工後的長期撓度與樓板自振頻率，與使用性標準比較；完工後可抽樣量測樓板頻率或以已知載重量測撓度，若明顯低於預期勁度，追查是否有剪力釘缺漏或焊接不良。~Use the effective inertia to compute long-term deflection and floor natural frequency against serviceability criteria; after completion, sample floor frequencies or measure deflection under a known load, and if stiffness is clearly below expectation, trace whether studs are missing or poorly welded.",
+      "failure": "為了節省剪力釘而把組合比壓得很低，梁強度檢核勉強通過，但樓板在人員走動下振動明顯，辦公室使用者抱怨；剪力釘在反覆滑動下也可能先達到變形極限而斷裂。~Pushing the composite ratio very low to save studs lets the strength check pass narrowly, but the floor vibrates noticeably under footfall and office users complain; under repeated slip the studs may also reach their deformation limit and fracture first.",
+      "misconception": "部分組合梁只影響強度，不影響撓度與振動。~Partial composite action affects only strength, not deflection or vibration.",
+      "practice": "設計說明應寫明每類組合梁採用的組合比及其使用性檢核結果；當樓板用途改變（例如由辦公改為實驗室或健身房）時，須以原組合比重新檢核振動與撓度。~The design basis should state the composite ratio adopted for each beam type and its serviceability results; when floor use changes, for example from office to laboratory or gym, recheck vibration and deflection with the original composite ratio."
+    },
+    {
+      "anchor": "19 mm 頭釘~19 mm headed stud",
+      "title": "剪力釘尺寸、材料與強度~Stud size, material and resistance",
+      "mechanism": "建築組合樓板最常用的是直徑 19 mm 的頭釘，釘頭讓混凝土能抵抗拔出，釘身則以剪力與彎曲把介面力傳入混凝土。單支剪力釘的強度由兩個機制中較小者決定：周圍混凝土被壓碎或劈裂，或釘身鋼材剪斷；放在壓型鋼板肋內時，肋的寬度、高度與剪力釘在肋中的位置還會進一步折減強度，例如剪力釘位於受力方向的不利側（弱位置）時強度明顯較低。~The most common connector in building composite floors is the 19 mm headed stud: the head anchors it against pull-out while the shank carries interface force into the concrete by shear and bending. A single stud's resistance is the lesser of two mechanisms, crushing or splitting of the surrounding concrete or shearing of the steel shank; inside a deck rib, the rib's width and height and the stud's position within it reduce strength further, notably when the stud sits on the unfavourable side of the rib relative to the load, the weak position.",
+      "model": "Q_n = 0.5·A_sc·√(f′c·E_c) ≤ R_g·R_p·A_sc·F_u。19 mm 頭釘 A_sc ≈ 283.5 mm²，f′c = 28 MPa、E_c ≈ 24,870 MPa：混凝土控制值 ≈ 118 kN；F_u = 450 MPa，肋內單支弱位置 R_g = 1.0、R_p = 0.6：0.6×283.5×450 ≈ 76.5 kN 控制；強位置 R_p = 0.75 時約 95.7 kN。數值為教學假設。~Q_n = 0.5·A_sc·√(f′c·E_c) ≤ R_g·R_p·A_sc·F_u. For a 19 mm stud, A_sc ≈ 283.5 mm²; with f′c = 28 MPa and E_c ≈ 24,870 MPa the concrete limit is about 118 kN; with F_u = 450 MPa, one stud per rib in the weak position (R_g = 1.0, R_p = 0.6) governs at 0.6×283.5×450 ≈ 76.5 kN, rising to about 95.7 kN in the strong position (R_p = 0.75). Values are teaching assumptions.",
+      "verify": "進場時核對剪力釘的材料證明（抗拉強度、伸長率）、尺寸與釘頭形狀，以及配套陶瓷護圈的型號；設計時確認所用的肋折減係數與實際壓型鋼板的肋寬、肋高與剪力釘位置一致。~At delivery, check stud material certificates (tensile strength, elongation), dimensions and head shape, and the matching ceramic ferrule type; in design, confirm that the rib reduction factors used match the actual deck rib width, height and stud position.",
+      "failure": "若設計以平板條件計算剪力釘強度，卻使用肋高較大的壓型鋼板並把剪力釘焊在弱位置，實際強度可能只有計算值的六成多，組合梁的極限強度與延性都不足。~Designing stud strength for a solid slab, then using a deep-rib deck with studs welded in the weak position, can leave actual strength at little more than sixty percent of the calculated value, short of both ultimate strength and ductility.",
+      "misconception": "剪力釘越長、越粗，強度就一定成比例提高。~Longer and thicker studs always give proportionally higher strength.",
+      "practice": "施工圖應指定剪力釘在肋中的位置（例如一律焊在強位置），並在壓型鋼板配置圖上標示；若壓型鋼板中間有加勁肋使剪力釘無法置中，須由設計者指定偏移方向。~Shop drawings should fix the stud position in the rib, for example always the strong position, and show it on the deck layout; where a stiffener in the rib prevents central placement, the designer must specify the direction of offset."
+    },
+    {
+      "anchor": "鋼承板肋與穿板焊接~Deck ribs and through-deck welding",
+      "title": "壓型鋼板與穿板焊接細部~Profiled decking and through-deck welding details",
+      "mechanism": "英國鋼結構業界的說明指出，穿板焊接是把剪力釘固定在鋼梁上翼板的常規做法：壓型鋼板夾在剪力釘底部與翼板之間，一次焊接把三者熔合。約 1 mm 厚的鍍鋅鋼承板不影響焊接品質，但鋼承板必須緊貼翼板、保持乾燥，翼板頂面不得有影響焊接的厚塗層。橫向鋪設的鋼承板每個肋內通常最多兩支剪力釘，因此肋距直接決定可配置的剪力釘數量；兩支並排時每支強度又會再折減。~Steel-industry guidance in the UK describes through-deck welding as the normal way to fix studs to a beam's top flange: the decking is sandwiched between the stud base and the flange and one weld fuses all three. Galvanized decking about 1 mm thick does not affect weld quality, but the deck must sit tight on the flange and be dry, and the flange top must be free of thick coatings that impair welding. With transverse decking, usually no more than two studs go in one trough, so rib spacing directly sets how many studs can be placed, and two studs side by side are each reduced further.",
+      "model": "12 m 梁、肋距 300 mm，半跨約 20 個肋。每肋 1 支弱位置 76.5 kN：ΣQ_n ≈ 1,531 kN，組合比 58%；每肋 2 支時 R_g = 0.85，每支 0.85×0.6×283.5×450 ≈ 65.1 kN，40 支 ≈ 2,603 kN，組合比約 99%。數值為教學假設。~A 12 m beam with ribs at 300 mm has about 20 ribs per half span. One weak-position stud per rib at 76.5 kN gives ΣQ_n ≈ 1,531 kN, a 58% ratio; two per rib with R_g = 0.85 gives 0.85×0.6×283.5×450 ≈ 65.1 kN each, 40 studs ≈ 2,603 kN, a ratio of about 99%. Values are teaching assumptions.",
+      "verify": "焊接前檢查鋼承板是否已依圖固定、與翼板間無縫隙、接頭搭接位置是否避開剪力釘位置，並確認肋內無積水與雜物；翼板頂面若有底漆，須確認是否為允許穿板焊接的類型或已清除。~Before welding, check that the deck is fixed as drawn, tight to the flange with no gap, with laps placed clear of stud positions, and that ribs are free of water and debris; if the flange top is primed, confirm the primer is permitted for through-deck welding or has been removed.",
+      "failure": "鋼承板與翼板之間有空隙或兩層鋼承板搭接處焊接，熔池無法同時熔合鋼承板與翼板，剪力釘看似牢固，實際只焊在鋼承板上；樓板澆置後這些剪力釘幾乎不傳力。~A gap between deck and flange, or welding through a double-thickness lap, stops the weld pool fusing deck and flange together; the stud looks firm but is welded only to the deck and carries almost no force once the slab is cast.",
+      "misconception": "只要剪力釘焊在鋼承板上站得住，就代表已與鋼梁焊牢。~If a stud stands firm on the deck, it must be welded to the beam.",
+      "practice": "鋼承板配置圖應與剪力釘配置圖一起審查，確認肋位、搭接與剪力釘位置相容；鋼承板鋪設完成並經檢查後才可開始焊接剪力釘，雨後須清除肋內積水並讓板面乾燥。~Review the deck layout together with the stud layout to confirm that rib positions, laps and stud locations are compatible; welding may start only after the deck is laid and inspected, and after rain, water must be cleared from the ribs and the surface allowed to dry."
+    },
+    {
+      "anchor": "焊槍設定與陶瓷護圈~Gun settings and ceramic ferrules",
+      "title": "拉弧式剪力釘焊接施工條件~Drawn-arc stud welding conditions",
+      "mechanism": "拉弧式剪力釘焊接由焊槍提起剪力釘引弧，在設定時間內熔化釘端與母材，再把剪力釘壓入熔池；釘端的鋁球協助脫氧，陶瓷護圈集中熱量、保護熔池並使焊瘤成形，焊後敲除。焊接品質取決於電流、時間、提升與壓入量的組合，而這些設定又受剪力釘直徑、是否穿板、焊接電纜長度與接地位置影響。現場常見問題是電源容量不足、電纜過長或接地不良，使實際電流低於設定。~In drawn-arc stud welding the gun lifts the stud to strike an arc, melts the stud end and base metal for a set time, then plunges the stud into the pool; an aluminium flux ball on the stud end deoxidises the weld, and a ceramic ferrule concentrates heat, shields the pool and shapes the flash before being knocked off. Quality depends on the combination of current, time, lift and plunge, which in turn depend on stud diameter, whether welding through deck, cable length and ground position. Common site problems are undersized power supplies, overlong cables and poor grounds that leave actual current below the setting.",
+      "model": "焊接電纜壓降 ΔV = I·R。銅纜截面 107 mm²，每米電阻 1.72×10⁻⁸/107×10⁻⁶ ≈ 1.61×10⁻⁴ Ω；正負線合計 60 m，R ≈ 0.0096 Ω。若焊接電流 1,500 A，ΔV = 1,500×0.0096 ≈ 14.5 V，相對於數十伏的電弧電壓並不小，必須依電纜長度調整設定。數值為教學假設。~Cable voltage drop ΔV = I·R. A 107 mm² copper cable has about 1.72×10⁻⁸/107×10⁻⁶ ≈ 1.61×10⁻⁴ Ω per metre; with 60 m of lead and return, R ≈ 0.0096 Ω. At a welding current of 1,500 A, ΔV = 1,500×0.0096 ≈ 14.5 V, not small compared with an arc voltage of a few tens of volts, so settings must be adjusted for cable length. Values are teaching assumptions.",
+      "verify": "每個班次開工前以首件試焊確認設定，記錄電流、時間、電纜長度與接地位置；作業中若更換電纜、移動電源或改變剪力釘批次，須重新試焊；雨天或板面潮濕時停止焊接。~Confirm settings with first-stud trial welds at the start of each shift and record current, time, cable length and ground position; re-test after changing cables, moving the power source or changing stud lots, and stop welding in rain or on wet deck.",
+      "failure": "電源與多支焊槍共用造成電流不足，焊瘤不完整、釘端未完全熔合，剪力釘在敲擊或彎曲時從根部脫落；接地夾夾在遠端鋼承板上，電流經由鋼承板搭接處流通，產生電弧偏吹與不穩定焊接。~A power source shared among several guns leaves current too low, giving incomplete flash and unfused stud bases that break off when tapped or bent; a ground clamp on distant decking routes current through deck laps, causing arc blow and erratic welds.",
+      "misconception": "剪力釘焊接是自動化的，設定一次就可以整天使用。~Stud welding is automatic, so one setting serves all day.",
+      "practice": "剪力釘焊接人員須經訓練與資格認定，焊接程序寫明各直徑在穿板與直接焊接時的設定範圍、電源容量與最大電纜長度；接地夾須直接夾在鋼梁上並靠近焊接區。~Stud welders must be trained and qualified, and the procedure must state setting ranges for each diameter when welding through deck or direct, power-source capacity and maximum cable length; the ground clamp must be fixed directly to the steel beam close to the welding area."
+    },
+    {
+      "anchor": "30° 彎曲試驗~30° bend test",
+      "title": "首件試驗與尺寸檢核~First-stud testing and dimensional checks",
+      "mechanism": "每個生產時段開始或設定改變時，先在代表性的構件上焊兩支剪力釘，目視確認 360° 完整焊瘤，再用鐵鎚把剪力釘敲彎約 30°，焊道與熱影響區不得斷裂；通過後才開始量產。焊後長度也要檢查：拉弧焊接會消耗數公釐長度，焊後剪力釘必須高出鋼承板頂足夠距離，頂端又要保留足夠的混凝土保護層，兩者都影響剪力釘的錨定與耐久。~At the start of each production period or after a settings change, two studs are welded on a representative member, checked visually for a full 360° flash, then hammered over to about 30°; neither weld nor heat-affected zone may fracture, and only then does production begin. After-weld length is checked too: the drawn-arc process consumes a few millimetres, and the welded stud must still project far enough above the deck while leaving enough concrete cover over its head, both affecting anchorage and durability.",
+      "model": "焊前長 130 mm、焊接消耗約 5 mm，焊後 125 mm。鋼承板肋高 76 mm：高出肋頂 125 − 76 = 49 mm（≥ 38 mm）；樓板總厚 140 mm：釘頂保護層 140 − 125 = 15 mm（≥ 13 mm）。30° 彎曲時 125 mm 剪力釘頂端位移約 125×sin30° ≈ 62.5 mm。數值為教學假設。~A stud 130 mm long before welding loses about 5 mm, leaving 125 mm. With a 76 mm deck rib it projects 125 − 76 = 49 mm above the rib (≥ 38 mm), and in a 140 mm slab it leaves 140 − 125 = 15 mm of cover over the head (≥ 13 mm). Bending a 125 mm stud by 30° moves its tip about 125×sin30° ≈ 62.5 mm. Values are teaching assumptions.",
+      "verify": "首件試驗由檢驗員見證並記錄日期、構件、設定、剪力釘批次與結果；失敗時調整設定並重做兩支，直到合格；量產中抽量焊後長度，若長度變化異常（過長代表熔化不足、過短代表過度熔化），立即停焊檢查。~Inspectors witness first-stud tests and record date, member, settings, stud lot and result; on failure, adjust and repeat with two more studs until they pass; during production, spot-measure after-weld length and stop to investigate abnormal changes, since too long suggests insufficient melting and too short excessive melting.",
+      "failure": "省略首件試驗直接量產，當天設定其實偏低，整區數百支剪力釘焊瘤不完整；若混凝土已澆置，只能以鑽心或打除樓板抽查，補救工程遠比一次試驗昂貴。~Skipping first-stud tests and going straight to production with a low setting leaves hundreds of studs across an area with incomplete flash; once concrete is placed, checking requires coring or breaking out the slab, far costlier than one test.",
+      "misconception": "被敲彎做試驗的剪力釘已經受損，必須割除重焊。~A stud bent in the test is damaged and must be cut off and rewelded.",
+      "practice": "把首件彎曲試驗列為每個班次與每次設定變更後的停留點，結果寫入剪力釘焊接日誌；通過試驗而彎曲的剪力釘若不妨礙鋼筋與保護層，一般可保留，具體做法依規範與工程師指示。~Make the first-stud bend test a hold point for every shift and every settings change and log the results; studs bent in a passing test can usually remain if they do not obstruct reinforcement or cover, following the code and the engineer's instructions."
+    },
+    {
+      "anchor": "360° 焊瘤與敲擊聲~360° flash and hammer ring",
+      "title": "外觀、敲擊與補焊檢查~Visual, ring and replacement checks",
+      "mechanism": "量產中的剪力釘檢查以全數目視為主：焊瘤應完整環繞釘根，沒有缺口、裂紋或過度飛濺；剪力釘應垂直、長度一致。焊瘤不完整或可疑的剪力釘可以鐵鎚敲擊聽聲，或敲彎約 15° 檢查根部，不合格者須在旁邊補焊新剪力釘或依程序以填角焊修補。由於混凝土澆置後無法再檢查，檢驗必須在澆置前完成並放行，這是整個組合樓板最關鍵的停留點。~Production studs are checked mainly by 100% visual inspection: the flash should fully encircle the base with no gaps, cracks or excessive spatter, and studs should be upright and of consistent length. Studs with incomplete or doubtful flash can be ring-tested with a hammer or bent about 15° to check the base, and rejects are replaced by a new stud alongside or repaired by fillet welding per the procedure. Because nothing can be checked once concrete is placed, inspection must be completed and released before casting, the single most critical hold point for a composite floor.",
+      "model": "若某區不良率為 10%，隨機敲彎 5 支都沒抽到不良的機率 0.9⁵ ≈ 59%；一根梁 40 支剪力釘、不良率 2% 時，至少有一支不良的機率 1 − 0.98⁴⁰ ≈ 55%。抽樣無法代替全數目視，彎曲只用於可疑剪力釘。數值為教學假設。~If an area has a 10% defect rate, the chance that 5 randomly bent studs include no defect is 0.9⁵ ≈ 59%; for a beam with 40 studs and a 2% defect rate, the chance that at least one is defective is 1 − 0.98⁴⁰ ≈ 55%. Sampling cannot replace 100% visual inspection, and bending is reserved for doubtful studs. Values are teaching assumptions.",
+      "verify": "以樓層與梁編號分區檢查，每根梁清點剪力釘數量並與施工圖比對，檢查焊瘤、垂直度與長度，可疑者敲擊或彎曲；不合格與補焊位置以油漆標記並記錄，全部完成後由檢驗員簽發澆置放行單。~Inspect by floor and beam number, count studs on every beam against the shop drawing, check flash, plumbness and length, and ring or bend doubtful studs; mark and record rejects and replacements in paint, and have the inspector issue a casting release once all are complete.",
+      "failure": "若澆置時程壓縮而未完成剪力釘檢查，混凝土車到場就直接澆置，缺漏或不良的剪力釘從此無法發現；之後即使樓板裂縫或撓度異常，也很難判斷是否源自剪力釘。~If the casting schedule is squeezed and stud inspection is incomplete when the trucks arrive, missing or defective studs are buried for good; later slab cracking or excess deflection can then hardly be traced to the studs.",
+      "misconception": "剪力釘只要數量正確，焊接品質可以等澆置後再抽查。~If the stud count is right, weld quality can be spot-checked after casting.",
+      "practice": "澆置前的剪力釘檢查放行單應列為混凝土澆置許可的必要文件，由結構監造簽認；補焊剪力釘須使用相同程序並重新檢查，放行單上註明補焊數量與位置。~Make the stud inspection release a required document for the concrete pour permit, signed by the structural inspector; replacement studs use the same procedure and are re-inspected, with their number and locations noted on the release."
+    },
+    {
+      "anchor": "推出試驗試體~Push-out test specimen",
+      "title": "推出試驗與剪力釘強度驗證~Push-out tests and stud resistance",
+      "mechanism": "剪力釘在特定壓型鋼板、混凝土與焊接條件下的強度與滑移能力，可用推出試驗直接量測：把焊有剪力釘的短鋼梁夾在兩塊混凝土板之間，從上方推壓鋼梁，記錄載重與滑移，直到剪力釘或混凝土破壞。歐洲規範 EN 1994-1-1 以特徵滑移能力至少 6 mm 作為延性剪力釘的條件，並提供由試驗結果求取設計強度的方法。新型壓型鋼板、特殊剪力釘或非標準焊接條件，都應以推出試驗確認。~The strength and slip capacity of studs with a particular deck, concrete and welding condition can be measured directly by push-out tests: a short steel section with studs is sandwiched between two concrete slabs and pushed down while load and slip are recorded until the studs or concrete fail. EN 1994-1-1 treats studs as ductile when their characteristic slip capacity is at least 6 mm and gives a procedure for deriving design resistance from tests. New deck profiles, special connectors or non-standard welding conditions should be confirmed by push-out testing.",
+      "model": "三組推出試驗每支剪力釘破壞載重 92、88、95 kN，平均約 91.7 kN，各值偏差都在 10% 以內；特徵強度取最小值的 0.9 倍：P_Rk = 0.9×88 = 79.2 kN，設計強度 P_Rd = P_Rk/γ_V = 79.2/1.25 ≈ 63.4 kN。數值為教學假設。~Three push-out tests give failure loads per stud of 92, 88 and 95 kN, a mean of about 91.7 kN with every result within 10%; the characteristic resistance is 0.9 times the minimum, P_Rk = 0.9×88 = 79.2 kN, and the design resistance P_Rd = P_Rk/γ_V = 79.2/1.25 ≈ 63.4 kN. Values are teaching assumptions.",
+      "verify": "試體須使用與實際工程相同的壓型鋼板、剪力釘批次、焊接設定與混凝土配比，並在試驗當天量測混凝土強度；記錄完整的載重—滑移曲線，確認破壞模式（剪力釘剪斷、混凝土劈裂或拔出）與滑移能力是否滿足延性條件。~Specimens must use the same deck, stud lot, welding settings and concrete mix as the project, with concrete strength measured on test day; record the full load–slip curve and confirm the failure mode (stud shear, concrete splitting or pull-out) and whether slip capacity meets the ductility condition.",
+      "failure": "若以標準平板的試驗結果套用到肋高較大、肋寬較窄的新型鋼承板，實際破壞可能由混凝土肋劈裂控制，強度與滑移能力都低於假設，部分組合梁的塑性設計前提隨之失效。~Applying solid-slab test results to a new deep, narrow-rib deck can miss that failure is governed by rib splitting, with strength and slip capacity both below assumption, invalidating the plastic design premise of partially composite beams.",
+      "misconception": "剪力釘強度只取決於鋼材強度，與混凝土和鋼承板形狀無關。~Stud strength depends only on the steel, not on the concrete or deck shape.",
+      "practice": "採用新型壓型鋼板或非標準剪力釘配置時，設計者應要求供應商提供依規範進行的推出試驗報告，並在設計說明中註明採用的強度與延性依據；報告須涵蓋實際使用的剪力釘位置與數量。~When a new deck profile or non-standard stud layout is used, the designer should require the supplier's code-compliant push-out test reports and state the adopted resistance and ductility basis in the design notes; the reports must cover the actual stud positions and numbers used."
+    },
+    {
+      "anchor": "樓板熱膨脹與梁端接頭~Floor thermal expansion and beam-end connections",
+      "title": "火災與溫度效應下的組合樓板~Composite floors under fire and thermal effects",
+      "mechanism": "剪力釘讓鋼梁與樓板連成一體，這在常溫下是優點，在火災中卻會帶來另一種力：受熱的組合梁膨脹時被周圍結構束制，產生很大的軸向推力，推向梁端接頭與相鄰大梁。NIST 對世界貿易中心七號樓的調查指出，樓板梁以剪力釘與混凝土組合，長跨樓板梁在遠低於一般設計考慮的溫度下熱膨脹，推動一根關鍵大梁離開其在 79 號柱的支承座，引發樓板連續破壞與柱挫屈；NIST 建議設計時檢討組合樓板與未考慮熱效應之接頭的熱膨脹影響。~Studs make the steel beam and slab act as one, an advantage at normal temperature that brings a different force in fire: a heated composite beam expands against surrounding restraint and develops large axial thrust on its end connections and adjacent girders. NIST's investigation of 7 World Trade Center found that floor beams, made composite with the slab by shear studs, expanded on long spans at temperatures far below those normally considered in design and pushed a key girder off its seat at Column 79, starting progressive floor failures and column buckling; NIST recommended evaluating thermal expansion in buildings with composite floor systems and connections not designed for thermal effects.",
+      "model": "熱膨脹 ΔL = α·L·ΔT。15 m 長的樓板梁、α = 12×10⁻⁶ /°C、升溫 400°C：ΔL = 12×10⁻⁶×15,000×400 = 72 mm。若梁端支承只有約 100 mm 的餘裕，在完全無束制下升溫約 100/(12×10⁻⁶×15,000) ≈ 556°C 即可推離。數值為教學假設。~Thermal expansion ΔL = α·L·ΔT. A 15 m floor beam with α = 12×10⁻⁶ /°C heated by 400°C grows ΔL = 12×10⁻⁶×15,000×400 = 72 mm. If its end bearing has only about 100 mm of margin, an unrestrained rise of about 100/(12×10⁻⁶×15,000) ≈ 556°C pushes it off. Values are teaching assumptions.",
+      "verify": "性能式防火設計時，以考慮熱膨脹與束制的分析檢查長跨組合梁的端部接頭、支承座寬度與相鄰大梁的側向力；施工時核對防火被覆範圍是否涵蓋接頭與剪力釘附近的翼板，避免局部高溫。~In performance-based fire design, analyse long-span composite beams with thermal expansion and restraint to check end connections, seat widths and lateral forces on adjacent girders; during construction, confirm that fireproofing covers connections and flanges near the studs to avoid local hot spots.",
+      "failure": "若接頭只依重力剪力設計，未考慮熱膨脹產生的軸向力與位移，火災時樓板梁推動大梁或剪斷接頭螺栓，樓板失去支承後層層掉落，最後連帶柱的側向支撐失效。~If connections are designed only for gravity shear, without thermal axial force and movement, fire-heated floor beams push girders or shear connection bolts, unsupported floors fall one onto another, and columns lose their lateral bracing.",
+      "misconception": "組合樓板越剛越好，火災時也一定比較安全。~The stiffer the composite floor, the safer it must be in fire.",
+      "practice": "長跨組合樓板的防火與接頭設計應由結構與防火工程師共同檢討熱膨脹路徑，並在圖說中標示需特別防護或容許位移的接頭；這類變更須經主管機關審查，本課只說明原理，不代替防火設計。~Structural and fire engineers should jointly review thermal-expansion paths in long-span composite floors and mark on the drawings the connections needing special protection or movement allowance; such changes require authority review, and this course explains principles only, not fire design."
+    },
+    {
+      "anchor": "剪力釘配置圖與檢查紀錄~Stud layout and inspection records",
+      "title": "剪力釘紀錄、改修與交接~Stud records, alterations and handover",
+      "mechanism": "樓板完成後剪力釘全部埋在混凝土中，日後改修時工程師只能依賴紀錄判斷樓板與梁的組合程度。不同年代的組合樓板做法也不同：NIST 描述世界貿易中心雙子塔的樓板以輕型鋼桁架支承 4 in 厚的輕質混凝土，桁架腹桿頂端彎折的「指節」伸出上弦約 3 in 埋入樓板而產生組合作用，而不是焊接剪力釘。改修時若在梁旁開大洞、切除樓板或增加重載設備，都可能減少有效的剪力連接，必須依原始紀錄重新檢核。~Once the slab is cast, every stud is buried, and engineers altering the floor later can judge composite action only from records. Composite floors also differ by era: NIST describes the Twin Towers' floors as 4 in of lightweight concrete on light steel trusses whose bent web tops, the knuckles, projected about 3 in above the top chord into the slab to create composite action, rather than welded studs. Cutting large openings beside beams, removing slab or adding heavy equipment during alterations can reduce effective shear connection, so the original records must be used to recheck it.",
+      "model": "原設計半跨 20 支剪力釘、每支 76.5 kN，組合比 58%。改修時沿梁開 1.2 m 寬的洞，切除 4 個肋內的剪力釘：剩 16 支，ΣQ_n = 16×76.5 ≈ 1,224 kN，組合比降為 1,224/2,619 ≈ 47%，須確認仍高於設計者設定的最低組合比並重新檢核強度與撓度。數值為教學假設。~The original design has 20 studs of 76.5 kN per half span, a 58% ratio. An alteration cutting a 1.2 m opening along the beam removes the studs in 4 ribs, leaving 16: ΣQ_n = 16×76.5 ≈ 1,224 kN and the ratio falls to 1,224/2,619 ≈ 47%, which must be confirmed above the designer's minimum ratio, with strength and deflection rechecked. Values are teaching assumptions.",
+      "verify": "交接前核對竣工剪力釘配置圖與焊接日誌、首件試驗紀錄、澆置放行單是否一一對應；改修設計前，以紀錄確認原組合比，必要時以鑽心或局部打除樓板抽查剪力釘實際位置與狀態。~Before handover, check that the as-built stud layout matches the welding logs, first-stud test records and casting releases one for one; before designing an alteration, confirm the original composite ratio from the records and, if needed, core or locally break out the slab to verify actual stud positions and condition.",
+      "failure": "若竣工圖沒有剪力釘資料，改修設計者只能假設梁為非組合，導致不必要的補強；反之若誤以為所有梁都完全組合，在梁旁開洞或加設備後，可能使樓板撓度與振動明顯增加，甚至超過強度餘裕。~Without stud data in the as-builts, an alteration designer must assume non-composite beams and strengthen needlessly; conversely, wrongly assuming full composite action everywhere can let openings or new equipment beside beams markedly increase deflection and vibration, or even exceed the strength margin.",
+      "misconception": "剪力釘埋在混凝土裡，日後改修不必考慮它們。~Studs are buried in concrete, so later alterations need not consider them.",
+      "practice": "交接文件應包含每根組合梁的剪力釘數量與位置、壓型鋼板型號、組合比、首件試驗與放行紀錄；建物管理規則要求樓板開孔或重型設備進駐前須經結構工程師核准，並更新紀錄。~Handover should include each composite beam's stud count and positions, deck type, composite ratio, first-stud test and release records; building management rules should require the structural engineer's approval, and a records update, before any slab opening or heavy equipment installation."
+    }
+  ],
+  "example": "設計練習：12 m 簡支組合梁 W460×60（A_s = 7,590 mm²、F_y = 345 MPa），梁距 3 m，76 mm 高的壓型鋼板橫向鋪設、肋距 300 mm，樓板總厚 140 mm、f′c = 28 MPa，使用 19 mm 頭釘（F_u = 450 MPa）。(1) 完全組合所需剪力 C = min(7,590×345, 0.85×28×3,000×64) ≈ min(2,619, 4,570) = 2,619 kN。(2) 每肋 1 支、弱位置：Q_n = 0.6×283.5×450 ≈ 76.5 kN，半跨 20 個肋 ΣQ_n ≈ 1,531 kN，組合比 58%；I_eff ≈ 255 + √0.58×(700 − 255) ≈ 595×10⁶ mm⁴，約為完全組合的 85%。(3) 焊後長度 125 mm，高出肋頂 49 mm，保護層 15 mm，皆滿足要求。(4) 若改變一個輸入：剪力釘全部焊在強位置（R_p = 0.75），每支約 95.7 kN，ΣQ_n ≈ 1,914 kN，組合比提高到約 73%，不必增加剪力釘數量就提高勁度與強度。數值為教學假設，不代表任何實際建築。~Design exercise: a 12 m simply supported composite beam W460×60 (A_s = 7,590 mm², F_y = 345 MPa) at 3 m spacing carries a slab 140 mm thick on transverse 76 mm deck with ribs at 300 mm and f′c = 28 MPa, using 19 mm headed studs (F_u = 450 MPa). (1) Full composite shear C = min(7,590×345, 0.85×28×3,000×64) ≈ min(2,619, 4,570) = 2,619 kN. (2) One weak-position stud per rib: Q_n = 0.6×283.5×450 ≈ 76.5 kN, and 20 ribs per half span give ΣQ_n ≈ 1,531 kN, a 58% ratio; I_eff ≈ 255 + √0.58×(700 − 255) ≈ 595×10⁶ mm⁴, about 85% of full composite. (3) The welded stud of 125 mm projects 49 mm above the rib with 15 mm of cover, both acceptable. (4) Changing one input: welding every stud in the strong position (R_p = 0.75) gives about 95.7 kN each, ΣQ_n ≈ 1,914 kN and a ratio of about 73%, raising stiffness and strength without adding studs. Values are teaching assumptions, not any real building.",
+  "history": "鋼梁與混凝土樓板的組合構造在二十世紀中後期成為鋼構建築樓板的主流，焊接頭釘與壓型鋼板的穿板焊接讓剪力連接可以在現場快速完成。1960 至 1970 年代興建的世界貿易中心雙子塔，樓板以輕型桁架腹桿頂端的「指節」埋入混凝土取得組合作用；1980 年代完成的世界貿易中心七號樓，則以剪力釘把樓板梁與混凝土組合。2001 年七號樓在長時間火災後倒塌，NIST 於 2008 年的最終報告指出樓板梁熱膨脹推動大梁離座是關鍵，並建議檢討組合樓板與接頭的熱膨脹效應。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Composite construction of steel beams and concrete slabs became the dominant floor system for steel buildings in the mid to late twentieth century, with welded headed studs and through-deck welding letting shear connection be made quickly on site. The World Trade Center Twin Towers, built in the 1960s and 1970s, achieved composite floors with truss-web knuckles embedded in the concrete, while 7 World Trade Center, completed in the 1980s, made its floor beams composite with shear studs. After 7 World Trade Center collapsed following prolonged fires in 2001, NIST's final report in 2008 identified thermal expansion of floor beams pushing a girder off its seat as the key event and recommended evaluating thermal expansion in composite floors and their connections. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "英國鋼結構業界說明：建築組合樓板最常用直徑 19 mm 的頭釘~UK steel-industry guidance states that 19 mm headed studs are by far the most common connectors in building composite floors",
+    "約 1 mm 厚的鍍鋅鋼承板不影響穿板焊接品質，橫向鋼承板每肋通常最多 2 支剪力釘~Galvanized decking about 1 mm thick does not affect through-deck weld quality, and transverse decking usually takes no more than 2 studs per trough",
+    "世界貿易中心七號樓第 8 至 47 層樓板為 76 mm（3 in）壓型鋼板上約 140 mm（5.5 in）混凝土~Floors 8 to 47 of 7 World Trade Center had about 140 mm (5.5 in) of concrete on 76 mm (3 in) metal deck",
+    "NIST 2008 年最終報告指出七號樓樓板梁熱膨脹推動大梁離開 79 號柱支承座~NIST's 2008 final report found that thermal expansion of floor beams pushed a girder off its seat at Column 79 of 7 World Trade Center",
+    "世界貿易中心七號樓高約 190 m（610 ft）、47 層~7 World Trade Center was about 190 m (610 ft) tall with 47 storeys",
+    "雙子塔樓板為 4 in 輕質混凝土，主桁架長 60 ft 或 35 ft，間距 6 ft 8 in~The Twin Towers' floors had 4 in of lightweight concrete on main trusses 60 ft or 35 ft long at 6 ft 8 in spacing",
+    "雙子塔桁架腹桿「指節」伸出上弦約 3 in 埋入樓板形成組合作用~Twin Towers truss-web knuckles projected about 3 in above the top chord into the slab to create composite action",
+    "EN 1994-1-1 以特徵滑移能力至少 6 mm 作為延性剪力連接的條件~EN 1994-1-1 treats shear connectors as ductile when their characteristic slip capacity is at least 6 mm"
+  ],
+  "timeline": [
+    {
+      "year": "1966–1973",
+      "event": "世界貿易中心雙子塔興建，樓板以桁架「指節」埋入混凝土取得組合作用~The World Trade Center Twin Towers are built with floors made composite by truss knuckles embedded in the concrete"
+    },
+    {
+      "year": "1985",
+      "event": "世界貿易中心七號樓結構圖完成，樓板梁以剪力釘與混凝土組合~Structural drawings for 7 World Trade Center are issued, with floor beams made composite by shear studs"
+    },
+    {
+      "year": "2001",
+      "event": "七號樓在長時間火災後倒塌，組合樓板的熱膨脹效應成為調查焦點~7 World Trade Center collapses after prolonged fires, making thermal expansion of composite floors a focus of investigation"
+    },
+    {
+      "year": "2004",
+      "event": "歐洲規範 EN 1994-1-1 發布，納入剪力連接與推出試驗的設計規定~Eurocode EN 1994-1-1 is published, including design rules for shear connection and push-out testing"
+    },
+    {
+      "year": "2008",
+      "event": "NIST 發布七號樓最終報告，建議檢討組合樓板與接頭的熱膨脹~NIST issues its final report on 7 World Trade Center, recommending evaluation of thermal expansion in composite floors and connections"
+    }
+  ],
+  "codes": [
+    "AWS D1.1 鋼結構焊接規範（剪力釘焊接章節）~AWS D1.1 Structural Welding Code — Steel (stud welding clause)",
+    "AISC 360 鋼構造建築規範第 I 章 組合構材設計~AISC 360 Specification for Structural Steel Buildings, Chapter I Design of Composite Members",
+    "EN 1994-1-1 鋼與混凝土組合結構設計—一般規則與建築規則~EN 1994-1-1 Design of composite steel and concrete structures — General rules and rules for buildings",
+    "ISO 14555 焊接—金屬材料之電弧螺柱焊接~ISO 14555 Welding — Arc stud welding of metallic materials"
+  ],
+  "landmarks": [
+    "紐約世界貿易中心七號樓（1987–2001）~7 World Trade Center (1987–2001), New York",
+    "紐約世界貿易中心雙子塔（1973–2001）~World Trade Center Twin Towers (1973–2001), New York"
+  ],
+  "place": {
+    "name": "NIST 國家防火研究實驗室參照點~NIST National Fire Research Laboratory",
+    "country": "美國~United States",
+    "lat": 39.1336,
+    "lng": -77.2165,
+    "query": "NIST National Fire Research Laboratory Gaithersburg"
+  },
+  "sources": [
+    {
+      "key": "nist-ncstar-1a",
+      "title": "NIST：世界貿易中心七號樓倒塌最終報告（NCSTAR 1A）",
+      "titleEn": "NIST: Final Report on the Collapse of World Trade Center Building 7 (NCSTAR 1A)",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/NCSTAR/ncstar1a.pdf",
+      "sourceType": "primary",
+      "scope": "說明樓板梁以剪力釘組合、樓板厚度、熱膨脹推動大梁離座的機制與建議；課程計算另為教學假設。",
+      "scopeEn": "Describes stud-connected composite floor beams, slab thickness, the mechanism of thermal expansion pushing a girder off its seat, and recommendations; course calculations are separate teaching assumptions."
+    },
+    {
+      "key": "nist-ncstar-1",
+      "title": "NIST：世界貿易中心雙子塔倒塌最終報告（NCSTAR 1）",
+      "titleEn": "NIST: Final Report on the Collapse of the World Trade Center Towers (NCSTAR 1)",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/NCSTAR/ncstar1.pdf",
+      "sourceType": "primary",
+      "scope": "描述雙子塔樓板桁架、樓板厚度與以桁架指節埋入混凝土取得組合作用的做法。",
+      "scopeEn": "Describes the Twin Towers' floor trusses, slab thickness and composite action from truss knuckles embedded in the concrete."
+    },
+    {
+      "key": "sci-composite-construction",
+      "title": "SteelConstruction.info：組合構造",
+      "titleEn": "SteelConstruction.info: Composite construction",
+      "publisher": "SteelConstruction.info (BCSA, SCI and Tata Steel)",
+      "url": "https://www.steelconstruction.info/Composite_construction",
+      "sourceType": "primary",
+      "scope": "英國鋼結構業界的技術說明，涵蓋頭釘尺寸、穿板焊接、鍍鋅鋼承板與每肋剪力釘數量。",
+      "scopeEn": "UK steel-industry technical guidance covering stud size, through-deck welding, galvanized decking and studs per trough."
+    },
+    {
+      "key": "wiki-stud-welding",
+      "title": "維基百科：螺柱焊接（英文）",
+      "titleEn": "Wikipedia: Stud welding",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Stud_welding",
+      "sourceType": "secondary",
+      "scope": "拉弧式與電容放電式螺柱焊接的原理、陶瓷護圈與尺寸範圍概覽，作為延伸閱讀。",
+      "scopeEn": "Overview of drawn-arc and capacitor-discharge stud welding, ceramic ferrules and size ranges, for further reading."
+    },
+    {
+      "key": "wiki-7-world-trade-center",
+      "title": "維基百科：世界貿易中心七號樓（1987–2001）（英文）",
+      "titleEn": "Wikipedia: 7 World Trade Center (1987–2001)",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/7_World_Trade_Center_(1987%E2%80%932001)",
+      "sourceType": "secondary",
+      "scope": "建築高度、樓層與 NIST 調查結論的概覽，作為延伸閱讀；工程判讀以 NIST 報告為準。",
+      "scopeEn": "Overview of height, storeys and NIST's findings for further reading; rely on the NIST report for engineering interpretation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "美國國家標準與技術研究院",
+      "nameEn": "National Institute of Standards and Technology (NIST)",
+      "business": "美國聯邦研究機構，進行建築火災與結構倒塌調查，並營運大型結構防火實驗室。",
+      "businessEn": "US federal research agency that investigates building fires and structural collapses and runs a large structural fire laboratory.",
+      "url": "https://www.nist.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "組合樓板火災行為與倒塌調查的公開報告",
+      "roleEn": "Public reports on composite-floor fire behaviour and collapse investigations"
+    },
+    {
+      "name": "英國鋼結構研究所",
+      "nameEn": "The Steel Construction Institute (SCI)",
+      "business": "鋼結構技術研究與出版機構，提供組合構造、剪力連接與防火設計指引。",
+      "businessEn": "Steel-construction research and publishing body providing guidance on composite construction, shear connection and fire design.",
+      "url": "https://www.steel-sci.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "穿板焊接與組合梁設計的業界技術指引",
+      "roleEn": "Industry technical guidance on through-deck welding and composite beam design"
+    },
+    {
+      "name": "喜利得",
+      "nameEn": "Hilti",
+      "business": "生產建築用緊固與錨定系統，包括以火藥擊釘固定的組合梁剪力連接件。",
+      "businessEn": "Produces construction fastening and anchoring systems, including powder-actuated shear connectors for composite beams.",
+      "url": "https://www.hilti.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "焊接剪力釘以外的替代剪力連接方式",
+      "roleEn": "Alternative shear-connection methods to welded studs"
+    }
+  ],
+  "related": [
+    "b072",
+    "b093"
+  ],
+  "architectureNodes": [
+    [
+      "鋼梁與混凝土樓板",
+      "Steel beam and concrete slab"
+    ],
+    [
+      "剪力釘與壓型鋼板",
+      "Studs and profiled deck"
+    ],
+    [
+      "穿板焊接設定",
+      "Through-deck welding settings"
+    ],
+    [
+      "首件試驗與澆置放行",
+      "First-stud tests and casting release"
+    ],
+    [
+      "推出試驗與強度驗證",
+      "Push-out tests and resistance"
+    ],
+    [
+      "火災效應與改修紀錄",
+      "Fire effects and alteration records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      0,
+      5
+    ]
+  ]
+}

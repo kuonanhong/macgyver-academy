@@ -1,0 +1,313 @@
+{
+  "id": "b078",
+  "title": "鋼筋混凝土剪力牆施工~Reinforced-concrete shear-wall construction",
+  "discipline": "st-concrete-steel",
+  "family": "concrete",
+  "focus": "把設計圖上的韌性剪力牆真正做出來：邊界構材圍束、續接、鋼筋擁擠下的澆置與驗收~Building the ductile shear wall the drawings describe: boundary confinement, splices, placing concrete through congested steel, and acceptance",
+  "summary": "剪力牆是高層與中高層建築最主要的側力抵抗構件，其耐震表現取決於牆端邊界構材的圍束、縱筋續接位置、施工縫處理與混凝土在密集鋼筋中的密實度。本課以哈里發塔的扶壁式核心牆、亞特蘭大電梯試驗塔的滑模核心牆，以及 2011 年基督城 CTV 大樓倒塌後皇家調查委員會的檢討為背景，說明側力分配、邊界構材需求、圍束配筋、續接、鋼筋間距與骨材、澆置振搗、強度驗收、澆置前查驗、震後損傷判讀與開孔變更管控。~Shear walls are the main lateral-force-resisting members of mid- and high-rise buildings, and their seismic performance depends on confinement of boundary elements, the location of longitudinal splices, treatment of construction joints and the compaction of concrete within dense reinforcement. Against the background of Burj Khalifa's buttressed core walls, the slipformed core walls of the Atlanta elevator test tower and the Royal Commission's review after the 2011 collapse of the CTV Building in Christchurch, the course covers lateral force sharing, boundary-element demand, confinement detailing, splices, bar spacing and aggregate size, placing and vibration, strength acceptance, pre-pour inspection, post-earthquake damage interpretation and control of later openings.",
+  "units": [
+    {
+      "anchor": "牆體側力分配~Lateral force share between walls",
+      "title": "剪力牆系統與側力傳遞路徑~Shear-wall systems and the lateral load path",
+      "mechanism": "樓板像一片水平深梁，把每層的風力或地震慣性力收集起來，再依各牆的相對勁度分配給剪力牆；剪力牆以懸臂方式把剪力與彎矩傳到基礎。牆的勁度與長度三次方成正比，所以長牆分擔絕大多數側力，短牆幾乎只是跟著變形。哈里發塔由三翼各自的高性能混凝土核心牆與中央六角形核心互相扶壁，使整體抗扭勁度很高；這種「牆接牆」的佈置讓側力能在三翼之間互相分擔。施工時任何改變牆長、開口位置或樓板與牆連接的變更，都會改變這條傳力路徑。~Floors act as horizontal deep beams that collect each storey's wind or seismic inertia force and distribute it to the shear walls in proportion to their stiffness; the walls then carry shear and moment as cantilevers to the foundation. Wall stiffness varies with the cube of length, so long walls take most of the lateral force while short walls largely follow along. At Burj Khalifa each of the three wings has its own high-performance concrete core walls, and these buttress one another through a central hexagonal core, giving very high torsional stiffness; this wall-to-wall arrangement lets lateral force be shared among the wings. During construction, any change to wall length, opening position or the floor-to-wall connection alters this load path.",
+      "model": "兩道等厚懸臂牆、長度 8 m 與 4 m，以撓曲控制時勁度比 ∝ L³ = 512 : 64，長牆分擔 512/(512+64) ≈ 89% 的側力。若施工中把長牆中段改為 1.2 m 寬的門洞，牆被分成兩段，勁度與分擔比例都大幅改變，需重新分析。數值為教學假設。~For two cantilever walls of equal thickness and lengths of 8 m and 4 m, flexure-governed stiffness scales as L³ = 512 : 64, so the long wall takes 512/(512+64) ≈ 89% of the lateral force. If a 1.2 m door is cut into the middle of the long wall during construction, the wall is split in two and both stiffness and share change greatly, requiring re-analysis. Values are teaching assumptions.",
+      "verify": "以結構分析模型輸出各牆的剪力與彎矩分擔，與手算勁度比例核對量級；施工圖審查時逐一比對牆長、開口與樓板連接是否與分析模型一致，差異需由結構設計者確認。~Output each wall's share of shear and moment from the structural model and check the order of magnitude against hand stiffness ratios; at shop-drawing review compare wall lengths, openings and floor connections with the analysis model one by one, with any difference confirmed by the structural designer.",
+      "failure": "樓板與牆之間的連接（集力構件、拉桿）不足時，地震中樓板無法把慣性力交給剪力牆，牆體雖然完好，樓板卻從牆上脫開；皇家調查委員會對基督城 CTV 大樓的報告即專章檢討其結構系統與樓板拉桿補強。~If the connections between floors and walls, collectors and drag bars, are inadequate, floors cannot deliver inertia forces to the shear walls in an earthquake, and floors may separate from walls that remain intact; the Royal Commission's report on Christchurch's CTV Building devotes sections to its structural system and the drag-bar retrofit.",
+      "misconception": "建築裡每一道牆都平均分擔地震力，所以多加幾道短牆就能有效提高抗震能力。~Every wall in a building shares seismic force equally, so adding a few short walls effectively raises seismic capacity.",
+      "practice": "施工圖必須明示樓板與剪力牆之間的集力構件、拉桿與錨定長度，並列為澆置前查驗項目；任何牆體開口或牆長變更，須經結構設計者重新分析並書面同意。~Shop drawings must show collectors, drag bars and anchorage lengths between floors and shear walls and include them in pre-pour inspection; any change in wall openings or length needs re-analysis and written approval by the structural designer."
+    },
+    {
+      "anchor": "邊界構材範圍~Boundary-element extent",
+      "title": "撓曲、軸壓與邊界構材需求~Flexure, axial load and boundary-element demand",
+      "mechanism": "剪力牆在地震中以牆底塑性鉸的撓曲變形消散能量，牆端受壓區的混凝土應變最高。若受壓區深度大、側向變位大，牆端混凝土會壓碎、縱筋挫屈，因此規範要求在需要時設置特殊邊界構材，以密集箍筋圍束牆端。ACI 318-19 以位移為基礎判斷是否需要邊界構材：中性軸深度 c 超過某個與牆長及設計位移相關的門檻時就需設置，並規定其水平延伸範圍。軸壓越高，c 越大，邊界構材越長，這也是為什麼高層下部牆體的端部鋼筋最密。~In an earthquake a shear wall dissipates energy through flexural deformation at a plastic hinge near its base, and the compression zone at the wall end sees the highest concrete strain. With a deep compression zone and large drift, the wall-end concrete crushes and longitudinal bars buckle, so codes require special boundary elements, wall ends confined by closely spaced hoops, where needed. ACI 318-19 uses a displacement-based check: a boundary element is needed when the neutral-axis depth c exceeds a threshold related to wall length and design displacement, and its horizontal extent is specified. Higher axial load increases c and lengthens the boundary element, which is why wall ends in the lower storeys of tall buildings carry the densest steel.",
+      "model": "ACI 318-19 門檻 c ≥ l_w/[600(1.5δ_u/h_w)]。l_w = 8 m、δ_u/h_w = 0.01 時門檻 = 8,000/(600×0.015) ≈ 889 mm；若分析得 c = 1,100 mm，需要特殊邊界構材，其延伸長度取 max(c − 0.1l_w, c/2) = max(300, 550) = 550 mm。數值為教學假設。~ACI 318-19 threshold c ≥ l_w/[600(1.5δ_u/h_w)]. With l_w = 8 m and δ_u/h_w = 0.01 the threshold is 8,000/(600×0.015) ≈ 889 mm; if analysis gives c = 1,100 mm a special boundary element is needed, extending max(c − 0.1l_w, c/2) = max(300, 550) = 550 mm. Values are teaching assumptions.",
+      "verify": "以斷面分析（應變相容）在設計軸力與彎矩下求中性軸深度，與規範門檻比較；施工圖審查時確認每一道牆的邊界構材長度、高度範圍與箍筋配置都與計算書一致，並在模板放樣時標出邊界構材範圍。~Find the neutral-axis depth from strain-compatibility section analysis under design axial load and moment and compare with the code threshold; at shop-drawing review confirm that every wall's boundary-element length, height range and hoop layout match the calculations, and mark boundary-element zones during formwork setting-out.",
+      "failure": "邊界構材長度不足或只在牆底一層設置，地震中牆端混凝土壓碎、縱筋外挫，牆體失去軸向承載而突然下陷；牆太薄時，即使有箍筋，牆端也可能側向挫屈。~Boundary elements that are too short or provided only at the lowest storey let the wall-end concrete crush and bars buckle outward in an earthquake, so the wall loses axial capacity and drops suddenly; walls that are too thin may buckle laterally at their ends even with hoops.",
+      "misconception": "剪力牆主要承受剪力，所以只要水平筋足夠，牆端不需要特別圍束。~Shear walls mainly carry shear, so with enough horizontal bars their ends need no special confinement.",
+      "practice": "施工圖應以獨立的牆端詳圖標示邊界構材範圍、箍筋與繫筋間距及延伸高度，現場以噴漆在模板與鋼筋上標記範圍；邊界構材查驗列為停檢點，由監造逐道簽認。~Shop drawings should give separate wall-end details showing boundary-element extent, hoop and crosstie spacing and height, with the zones spray-marked on forms and steel on site; boundary-element inspection is a hold point signed wall by wall by the resident engineer."
+    },
+    {
+      "anchor": "端部箍筋與繫筋~Boundary hoops and crossties",
+      "title": "圍束鋼筋量、箍筋形狀與彎鉤~Confinement quantity, hoop shape and hooks",
+      "mechanism": "圍束的作用是讓被箍住的核心混凝土在高壓應變下仍能承載，並防止縱筋挫屈。圍束效果取決於箍筋面積、間距、形狀與彎鉤：箍筋需以 135° 彎鉤錨入核心，繫筋要勾住縱筋，並且間距要夠小，使每一根或每隔一根縱筋都受到側向支撐。現場最常見的問題不是鋼筋量不足，而是彎鉤角度不對、繫筋未勾住縱筋，或為了方便澆置而把箍筋間距放寬。這些錯誤在圖面上看不出來，只有在現場查驗才能發現。~Confinement lets the confined core carry load at high compressive strain and stops longitudinal bars from buckling. Its effectiveness depends on hoop area, spacing, shape and hooks: hoops must anchor into the core with 135° hooks, crossties must engage longitudinal bars, and spacing must be close enough that every bar or every other bar is laterally supported. The commonest site problems are not too little steel but wrong hook angles, crossties that miss the bars, or hoop spacing opened up to ease concreting. These errors are invisible on drawings and are found only by site inspection.",
+      "model": "ACI 318 特殊邊界構材 A_sh/(s·b_c) ≥ max[0.3(A_g/A_ch − 1)f′_c/f_yt, 0.09f′_c/f_yt]。f′_c = 42 MPa、f_yt = 420 MPa，邊界 400×600 mm、核心 320×520 mm，A_g/A_ch ≈ 1.442，前式 ≈ 0.0133 控制；s = 100 mm、b_c = 320 mm 時 A_sh ≥ 0.0133×100×320 ≈ 425 mm²，4 肢 D13 提供 507 mm²。數值為教學假設。~ACI 318 special boundary elements require A_sh/(s·b_c) ≥ max[0.3(A_g/A_ch − 1)f′_c/f_yt, 0.09f′_c/f_yt]. With f′_c = 42 MPa, f_yt = 420 MPa, a 400×600 mm boundary and a 320×520 mm core, A_g/A_ch ≈ 1.442 and the first term ≈ 0.0133 governs; for s = 100 mm and b_c = 320 mm, A_sh ≥ 0.0133×100×320 ≈ 425 mm², met by four legs of D13 giving 507 mm². Values are teaching assumptions.",
+      "verify": "現場查驗以捲尺量測箍筋間距（取連續 5 個間距平均並記錄最大值）、檢查彎鉤角度與延伸長度、確認繫筋勾住縱筋；查驗結果拍照並標註牆編號與樓層，與施工圖逐項核對。~On site measure hoop spacing with a tape, averaging five consecutive spaces and recording the maximum, check hook angles and extensions and confirm that crossties engage the bars; photograph the results labelled by wall number and storey and check them item by item against the shop drawings.",
+      "failure": "箍筋以 90° 彎鉤收尾，地震中保護層剝落後彎鉤張開，箍筋失去圍束，牆端混凝土壓碎、縱筋挫屈；繫筋只勾住箍筋而未勾住縱筋，縱筋在反覆載重下向外鼓出。~Hoops finished with 90° hooks open up once the cover spalls in an earthquake, losing confinement so the wall-end concrete crushes and bars buckle; crossties hooked only around hoops and not around longitudinal bars let those bars bow outward under cyclic load.",
+      "misconception": "只要箍筋總量符合計算，彎鉤是 90° 還是 135° 並不重要。~As long as the total hoop steel meets the calculation, whether hooks are 90° or 135° does not matter.",
+      "practice": "鋼筋加工圖要明示所有邊界構材箍筋與繫筋的彎鉤角度與延伸長度，加工廠出貨前抽檢；現場不得以「方便施工」為由調整箍筋間距或彎鉤，任何調整都須設計者書面同意。~Bar-bending schedules must state hook angles and extensions for every boundary hoop and crosstie, with sampling at the fabrication shop before delivery; site crews may not change hoop spacing or hooks for convenience, and any change needs the designer's written approval."
+    },
+    {
+      "anchor": "縱筋續接位置~Longitudinal splice location",
+      "title": "縱筋搭接、續接器與塑性鉸區~Lap splices, mechanical couplers and the plastic-hinge zone",
+      "mechanism": "剪力牆的縱筋必須逐層接續，最常見的是搭接，但搭接需要很長的長度，並使接頭處鋼筋數量加倍。塑性鉸區是地震中鋼筋反覆降伏的位置，搭接在此區容易因保護層剝落而失效，因此規範對塑性鉸區的續接位置與型式有額外限制，常改用可發展鋼筋實際強度的機械式續接器，或把搭接錯開到塑性鉸區以外。續接位置也影響施工：每層澆置高度、模板與鋼筋吊裝順序都需配合續接設計。~Wall longitudinal bars must be continued storey by storey, most often by lap splices, but laps need considerable length and double the number of bars at the splice. The plastic-hinge zone is where bars yield repeatedly in an earthquake, and laps there can fail once the cover spalls, so codes impose extra limits on splice location and type in that zone, often using mechanical couplers able to develop the bar's actual strength, or staggering laps outside the hinge region. Splice location also drives construction: lift heights, formwork and rebar lifting sequences must all suit the splice design.",
+      "model": "ACI 318 簡化公式 l_d = f_y·ψ/(1.7λ√f′_c)·d_b。f_y = 420 MPa、f′_c = 42 MPa（√42 ≈ 6.48）時 l_d ≈ 38.1d_b，D25 約 953 mm；B 類搭接 1.3l_d ≈ 1,240 mm。若同一斷面全部搭接，該處縱筋數量加倍，下一步的鋼筋間距檢核會顯示擁擠問題。數值為教學假設。~ACI 318's simplified l_d = f_y·ψ/(1.7λ√f′_c)·d_b with f_y = 420 MPa and f′_c = 42 MPa (√42 ≈ 6.48) gives l_d ≈ 38.1d_b, about 953 mm for D25; a Class B lap is 1.3l_d ≈ 1,240 mm. Lapping every bar at one section doubles the bar count there, which the next unit's spacing check shows to be congested. Values are teaching assumptions.",
+      "verify": "續接器須有符合規範等級的型式試驗報告，現場每批抽樣做拉伸試驗並檢查螺紋或壓接長度；搭接位置與長度在施工圖上標示，查驗時以捲尺量測並確認錯開距離。~Couplers need type-test reports for the required code class, with site samples from each batch tension-tested and thread or swage length checked; mark lap positions and lengths on the shop drawings, and measure laps and stagger distances with a tape during inspection.",
+      "failure": "在塑性鉸區使用一般搭接，地震中保護層剝落、搭接失去握裹，縱筋被拉脫，牆體撓曲強度驟降；使用未經認證的續接器或螺紋未鎖到底，接頭在鋼筋降伏前先破壞。~Using ordinary laps in the plastic-hinge zone lets cover spall and laps lose bond in an earthquake, pulling bars out and dropping the wall's flexural strength abruptly; uncertified couplers or threads not fully engaged fail before the bars yield.",
+      "misconception": "搭接長度只要符合一般構件的要求，用在剪力牆塑性鉸區也一樣安全。~A lap length adequate for ordinary members is equally safe in a shear wall's plastic-hinge zone.",
+      "practice": "結構圖應標示塑性鉸區範圍以及該區允許的續接型式；續接器供應商的認證、現場抽樣試驗與鎖緊檢查紀錄要納入品質文件，未經驗收的批次不得使用。~Structural drawings should mark the plastic-hinge zone and the splice types allowed in it; supplier certification, site sample tests and tightening records for couplers belong in the quality file, and unaccepted batches may not be used."
+    },
+    {
+      "anchor": "鋼筋淨間距與骨材~Clear bar spacing and aggregate",
+      "title": "鋼筋擁擠、骨材粒徑與模板配合~Congestion, aggregate size and formwork",
+      "mechanism": "剪力牆邊界構材中，縱筋、箍筋、繫筋、續接與預埋件集中在很小的斷面內，混凝土必須能從鋼筋間隙流過並包覆每一根鋼筋。若鋼筋淨間距小於粗骨材能通過的寬度，骨材會在鋼筋上架橋，下方形成蜂窩與空洞，正好出現在最需要混凝土的牆端。因此設計與施工必須一起決定鋼筋配置、骨材最大粒徑、是否使用自充填混凝土，以及澆置管或振動棒能否插入。這是設計圖上的鋼筋與現場可施工性之間最常發生衝突的地方。~In a shear-wall boundary element, longitudinal bars, hoops, crossties, splices and embeds are packed into a small section, and concrete must flow through the gaps and surround every bar. If clear spacing is less than coarse aggregate can pass, the aggregate bridges across the bars and leaves honeycombing and voids underneath, exactly at the wall ends that most need concrete. Design and construction must therefore settle together the bar layout, maximum aggregate size, whether to use self-consolidating concrete, and whether a tremie or vibrator can be inserted. This is where drawings and site buildability most often collide.",
+      "model": "邊界寬 600 mm，保護層 40 mm、箍筋 D13，排 5 根 D25 時淨間距 = (600 − 80 − 26 − 125)/4 ≈ 92 mm；若同一斷面全部搭接變成 10 根，淨間距 = (600 − 80 − 26 − 250)/9 ≈ 27 mm，粗骨材最大粒徑須 ≤ 0.75×27 ≈ 20 mm，且已接近 25 mm 的最小淨距。錯開搭接或改用續接器可恢復約 92 mm。數值為教學假設。~In a 600 mm boundary with 40 mm cover and D13 hoops, five D25 bars leave a clear spacing of (600 − 80 − 26 − 125)/4 ≈ 92 mm; lapping all of them at one section makes ten bars and (600 − 80 − 26 − 250)/9 ≈ 27 mm, so maximum aggregate must be ≤ 0.75×27 ≈ 20 mm and spacing is close to the 25 mm minimum. Staggering laps or using couplers restores about 92 mm. Values are teaching assumptions.",
+      "verify": "以三維鋼筋模型或足尺樣板檢查邊界構材最擁擠斷面（通常在搭接處與樓板交界處），確認淨間距、振動棒插入路徑與澆置管位置；必要時製作足尺試體澆置後切開檢查密實度。~Check the most congested sections of boundary elements, usually at laps and at floor intersections, with a 3D rebar model or a full-size mock-up, confirming clear spacing, vibrator insertion paths and tremie positions; where needed cast a full-size specimen and cut it open to check compaction.",
+      "failure": "鋼筋過密導致粗骨材卡在箍筋上方，拆模後牆端出現大面積蜂窩，需鑿除重澆；為了讓混凝土流過而現場加水，強度下降並增加收縮裂縫。~Excessive congestion traps coarse aggregate above hoops and leaves extensive honeycombing at wall ends after stripping, requiring break-out and recasting; adding water on site to make concrete flow cuts strength and increases shrinkage cracking.",
+      "misconception": "鋼筋放得越多越密，剪力牆就越安全。~The more and the denser the reinforcement, the safer the shear wall.",
+      "practice": "在施工圖階段召開鋼筋可施工性檢討，由設計者、鋼筋承包商與混凝土供應商共同決定搭接錯開、續接器使用與骨材粒徑；最擁擠的節點應先做足尺樣板並列為停檢點。~Hold a rebar buildability review at shop-drawing stage where designer, rebar contractor and concrete supplier jointly decide lap staggering, coupler use and aggregate size; mock up the most congested joints at full size first and make them a hold point."
+    },
+    {
+      "anchor": "分層澆置與振搗~Layered placing and vibration",
+      "title": "分層澆置、振搗與蜂窩防止~Layered placing, vibration and preventing honeycombing",
+      "mechanism": "剪力牆又高又薄，混凝土從頂部落下時容易析離，粗骨材先落到底部堆積，砂漿留在上方；因此牆體澆置要以澆置管或軟管伸入模板內，控制自由落差，並分層澆置、逐層振搗。振動棒必須插入下層約 100 mm 使兩層結合，插入間距要小於作用半徑的 1.5 倍，並在牆端邊界構材、開口下方與施工縫等容易缺漿的位置加強振搗。亞特蘭大試驗塔的外牆厚約 460 mm、內牆約 250 mm，薄牆中振動棒的操作空間更小。~Shear walls are tall and thin, and concrete dropped from the top segregates easily, with coarse aggregate piling at the bottom and mortar staying above; walls are therefore placed through a tremie or hose lowered into the form to limit free fall, in layers vibrated one by one. The vibrator must penetrate about 100 mm into the layer below to knit the layers together, with insertion spacing less than 1.5 times its radius of action, and extra attention at boundary elements, under openings and at construction joints where paste is easily lacking. The Atlanta test tower's exterior walls were about 460 mm thick and its interior walls about 250 mm, leaving even less room to work a vibrator in the thinner walls.",
+      "model": "振動棒作用半徑 300 mm 時插入間距 ≤ 1.5×300 = 450 mm。8 m 長牆每層需 8/0.45 ≈ 17.8，取 18 個插入點；層厚 0.5 m、牆高 3.6 m 需約 8 層（最後一層較薄），共約 144 次插入，每次 10 s，約 24 分鐘純振搗時間，人力與振動棒數量要據此安排。數值為教學假設。~With a 300 mm radius of action, insertion spacing is ≤ 1.5×300 = 450 mm. An 8 m wall needs 8/0.45 ≈ 17.8, so 18 insertions per layer; 0.5 m layers over 3.6 m of height need about 8 layers (the last one thinner), about 144 insertions at 10 s each, roughly 24 minutes of vibrating, and crews and vibrators should be planned on that basis. Values are teaching assumptions.",
+      "verify": "澆置前確認澆置管長度可伸到距底部 1.5 m 以內、振動棒數量與備品足夠；澆置中由專人記錄每層高度與振搗位置，拆模後全面目視檢查蜂窩、冷縫與砂紋，缺陷按程序記錄與修補。~Before placing confirm that the tremie reaches within 1.5 m of the bottom and that there are enough vibrators and spares; during placing a designated person records each layer height and vibration positions, and after stripping inspect the whole surface for honeycombing, cold joints and sand streaks, recording and repairing defects by procedure.",
+      "failure": "從樓板高度直接把混凝土倒入 3 m 以上的牆模，底部骨材堆積、上方砂漿過多，牆底與樓板交界形成蜂窩帶；振動棒未插入下層，兩層之間形成弱面，在地震中沿該面滑移或滲水。~Dumping concrete from slab level into wall forms over 3 m high piles aggregate at the bottom with excess mortar above, leaving a honeycomb band at the wall–slab junction; vibrators that do not enter the lower layer leave a weak plane between lifts that can slip or leak in an earthquake.",
+      "misconception": "剪力牆用高坍度混凝土就不需要振搗。~Shear walls cast with high-slump concrete do not need vibrating.",
+      "practice": "澆置計畫須標示每道牆的澆置點、分層厚度、振動棒數量與負責人員；若改用自充填混凝土，須另做樣板試驗確認填充性與模板側壓，並經設計者同意。~The placing plan should mark pour points, layer thickness, number of vibrators and responsible crew for each wall; switching to self-consolidating concrete requires mock-up trials of filling ability and form pressure and the designer's approval."
+    },
+    {
+      "anchor": "混凝土強度與鑽心~Concrete strength and cores",
+      "title": "強度驗收、鑽心試驗與非破壞檢測~Strength acceptance, cores and non-destructive testing",
+      "mechanism": "剪力牆的混凝土強度直接影響邊界構材需求、剪力強度與鋼筋握裹，因此驗收不能只看平均值。ACI 318 的驗收規則同時要求連續三組試驗的平均值達到規定強度，以及單組不得低於某個下限，前者控制整體品質，後者抓出個別不良批次。若試體結果不合格，要先檢討取樣與試驗程序，再以鑽心試驗評估結構中的實際強度；回彈錘或超音波等非破壞檢測可用來找出可疑區域與決定鑽心位置，但不能取代鑽心。~Shear-wall concrete strength directly affects boundary-element demand, shear strength and bond, so acceptance cannot rest on the average alone. ACI 318 acceptance requires both that every three consecutive tests average at least the specified strength and that no single test falls below a lower bound; the first controls overall quality and the second catches individual bad batches. If specimens fail, first review sampling and testing, then assess in-place strength by coring; rebound hammer or ultrasonic tests help locate suspect zones and choose core locations but cannot replace cores.",
+      "model": "f′_c = 42 MPa（大於 35 MPa）時，單組下限為 0.9f′_c = 37.8 MPa。假設三組結果 44.1、40.2、38.5 MPa：平均 40.9 MPa < 42 MPa 不合格，單組皆 ≥ 37.8 MPa。鑽心評估：三個鑽心平均須 ≥ 0.85f′_c = 35.7 MPa，且單一不低於 0.75f′_c = 31.5 MPa。數值為教學假設，不是任何專案的試驗資料。~With f′_c = 42 MPa (above 35 MPa) the single-test lower bound is 0.9f′_c = 37.8 MPa. Assume three results of 44.1, 40.2 and 38.5 MPa: the average of 40.9 MPa is below 42 MPa and fails, while each single test is ≥ 37.8 MPa. For cores, three cores must average ≥ 0.85f′_c = 35.7 MPa with none below 0.75f′_c = 31.5 MPa. Values are teaching assumptions, not test data from any project.",
+      "verify": "依規範頻率取樣並記錄每組對應的牆體與樓層；不合格時先以回彈或超音波掃描找出低值區，再於避開邊界構材主筋的位置鑽心，鑽心依規定的含水狀態試驗並修正長徑比，結果由結構設計者評估是否需補強。~Sample at the code frequency and record which wall and storey each test represents; when a result fails, scan with rebound or ultrasonics to find low zones, core in locations that avoid main boundary bars, test cores in the specified moisture condition with length-to-diameter corrections, and have the structural designer decide whether strengthening is needed.",
+      "failure": "試體在工地曝曬或搬運不當而強度偏低，誤判結構不合格；反之，只看平均值而忽略某一批次明顯偏低，該批次正好用在底層剪力牆的邊界構材，日後在地震中成為最弱處。~Specimens left in the sun or mishandled read low and wrongly condemn the structure; conversely, watching only the average while ignoring one clearly low batch, used precisely in a ground-storey boundary element, leaves the weakest point where earthquakes hit hardest.",
+      "misconception": "混凝土強度平均值合格，就代表每一道剪力牆都合格。~If the average concrete strength passes, every shear wall passes.",
+      "practice": "強度試驗紀錄要能追溯到每道牆的澆置位置與車次；不合格處理程序（重驗、非破壞檢測、鑽心、結構評估、補強）須事先寫入品質計畫並設停檢點，未完成評估前不得在該牆上繼續施作上部結構。~Strength records must trace to each wall's pour location and truck; write the nonconformance procedure (retest, non-destructive testing, coring, structural assessment, strengthening) into the quality plan in advance with a hold point, and do not continue building above a wall until its assessment is complete."
+    },
+    {
+      "anchor": "保護層與鋼筋查驗~Cover and rebar inspection",
+      "title": "澆置前查驗與保護層量測~Pre-pour inspection and cover measurement",
+      "mechanism": "剪力牆合模之後鋼筋就看不到了，所以澆置前查驗是確認設計意圖的最後機會。查驗清單包括：鋼筋號數、數量與間距、邊界構材範圍與箍筋、彎鉤、續接位置與長度、樓板拉桿與集力構件、預埋件與開口補強、保護層墊塊與鋼筋固定、施工縫清潔。保護層不足會讓鋼筋提早鏽蝕並降低耐火性；保護層過大則減少有效深度與圍束效果。查驗應以檢查表逐項進行，並保留照片與簽名紀錄。~Once wall forms close, the reinforcement disappears, so the pre-pour inspection is the last chance to confirm the design intent. The checklist covers bar sizes, numbers and spacing, boundary-element extent and hoops, hooks, splice locations and lengths, floor drag bars and collectors, embeds and reinforcement around openings, cover spacers and bar fixing, and cleanliness of construction joints. Too little cover lets bars corrode early and reduces fire resistance; too much reduces effective depth and confinement. Inspection should follow the checklist item by item with photographs and signatures kept on record.",
+      "model": "ACI 318 對有效深度大於 200 mm 的構件，保護層容許負誤差 13 mm，且減少量不得超過規定保護層的 1/3。規定保護層 40 mm 時最小允許值 = max(40 − 13, 2/3×40) = max(27, 26.7) = 27 mm。若 52 個量測點中有 3 點低於 27 mm（約 5.8%），須在澆置前調整墊塊。數值為教學假設。~For members with effective depth over 200 mm, ACI 318 allows a cover tolerance of −13 mm, with the reduction not exceeding one third of the specified cover. For 40 mm specified cover the minimum allowed is max(40 − 13, 2/3×40) = max(27, 26.7) = 27 mm. If 3 of 52 readings fall below 27 mm, about 5.8%, the spacers must be adjusted before pouring. Values are teaching assumptions.",
+      "verify": "合模前由鋼筋承包商自主檢查，再由監造依檢查表查驗並拍照，每一道牆有獨立紀錄；合模後以手持式保護層測定儀從模板開口或拆模後抽測保護層，結果與查驗紀錄比對。~Before closing forms the rebar contractor self-inspects and the resident engineer then inspects against the checklist with photographs, keeping a separate record for every wall; after closing or stripping, sample cover with a handheld covermeter and compare with the inspection record.",
+      "failure": "查驗流於形式只看主筋數量，未注意樓板拉桿漏放、開口周邊補強筋缺少或墊塊被踩壞，合模後才發現已無法補救；保護層不足的牆面數年後出現鏽水與剝落，修補成本遠高於當初調整墊塊。~A token inspection that counts only main bars misses missing drag bars, absent opening reinforcement or crushed spacers, which cannot be fixed once forms are closed; walls with too little cover show rust stains and spalling years later, at repair costs far above re-setting spacers at the time.",
+      "misconception": "鋼筋綁好後只要數量對，保護層多一點少一點無所謂。~Once the bars are tied, a little more or less cover makes no difference as long as the bar count is right.",
+      "practice": "澆置前查驗設為停檢點：未經監造簽認的牆體不得通知預拌車；檢查表由設計者審定，並把剪力牆特有的項目（邊界構材、135° 彎鉤、拉桿、續接器）列為必檢項目。~Make pre-pour inspection a hold point: no ready-mix truck is called for a wall without the resident engineer's signature; have the designer approve the checklist and make shear-wall-specific items, boundary elements, 135° hooks, drag bars and couplers, mandatory."
+    },
+    {
+      "anchor": "震後裂縫與鋼筋應變~Post-earthquake cracks and bar strain",
+      "title": "震後損傷判讀、修復與補強~Post-earthquake damage interpretation, repair and strengthening",
+      "mechanism": "地震後剪力牆的損傷可從裂縫型態判讀：水平裂縫集中在牆底表示撓曲作用，斜裂縫表示剪力作用，牆端保護層剝落、縱筋外露或挫屈表示邊界構材已達高應變，牆端壓碎則是嚴重損傷。殘留裂縫寬度可以粗略推估鋼筋是否已降伏：若裂縫在地震後仍明顯張開，表示鋼筋可能已產生塑性變形。修復策略從環氧樹脂灌注、局部置換混凝土，到以鋼板、纖維複合材料或增設牆體補強，需依損傷程度與殘餘能力決定，而不是只看外觀。~After an earthquake, shear-wall damage can be read from crack patterns: horizontal cracks concentrated at the base indicate flexure, diagonal cracks indicate shear, spalled cover with exposed or buckled bars at wall ends shows the boundary element reached high strain, and crushing at the wall end is severe damage. Residual crack width gives a rough indication of whether bars have yielded: cracks that stay clearly open after shaking suggest plastic deformation in the steel. Repair ranges from epoxy injection and local concrete replacement to strengthening with steel plates, fibre composites or added walls, chosen by damage level and residual capacity rather than appearance alone.",
+      "model": "以裂縫間距估算鋼筋平均應變 ε ≈ w/s_cr。殘留裂縫寬 0.6 mm、間距 200 mm 時 ε ≈ 0.6/200 = 0.003，大於 f_y = 420 MPa 鋼筋的降伏應變 420/200,000 = 0.0021，表示鋼筋很可能已降伏，需要工程評估而非只做表面修補。數值為教學假設。~Average bar strain can be estimated from crack spacing as ε ≈ w/s_cr. A residual crack of 0.6 mm at 200 mm spacing gives ε ≈ 0.6/200 = 0.003, above the yield strain of 420/200,000 = 0.0021 for f_y = 420 MPa, so the bars have probably yielded and an engineering assessment, not just surface repair, is needed. Values are teaching assumptions.",
+      "verify": "震後以裂縫寬度計與裂縫圖記錄每道牆的裂縫位置、方向與寬度，必要時打開保護層檢查鋼筋是否挫屈或斷裂，並以結構分析評估殘餘能力；修復後以灌注紀錄、鑽心或超音波確認灌注效果。~After an earthquake record crack location, direction and width for each wall with crack gauges and crack maps, open the cover where needed to check for buckled or fractured bars, and assess residual capacity by structural analysis; after repair confirm injection quality from injection records, cores or ultrasonics.",
+      "failure": "只以環氧樹脂灌注把裂縫填滿就宣告修復，卻未檢查已挫屈或疲勞的縱筋，下一次地震時牆端在原位置迅速破壞；修補時鑿除混凝土過深，切斷或損傷原有箍筋，反而降低圍束。~Declaring a wall repaired after merely filling cracks with epoxy, without checking for buckled or fatigued longitudinal bars, lets the wall end fail quickly at the same spot in the next earthquake; breaking out too deep during repair cuts or damages existing hoops and reduces confinement.",
+      "misconception": "震後剪力牆裂縫只要灌注環氧樹脂，就能恢復原來的耐震能力。~Injecting epoxy into post-earthquake shear-wall cracks restores the original seismic capacity.",
+      "practice": "震後評估應由結構技師依損傷分級程序進行，記錄每道牆的損傷照片與量測值，並與原設計及竣工資料比對；修復或補強設計須經結構審查，施工中設停檢點確認鋼筋狀況。~Post-earthquake assessment should be done by a structural engineer following a damage-classification procedure, recording photos and measurements for every wall and comparing them with the original design and as-built records; repair or strengthening designs need structural review, with hold points during work to confirm reinforcement condition."
+    },
+    {
+      "anchor": "開孔變更與竣工圖~Later openings and as-built drawings",
+      "title": "開孔變更管控、竣工紀錄與工程交接~Controlling later openings, as-built records and handover",
+      "mechanism": "剪力牆在使用期間最常遭遇的破壞來源不是地震，而是後來的開孔：機電管線、門洞、窗口或裝修改造。在剪力牆上鑽孔或切割，會減少剪力斷面、切斷縱筋或水平筋，甚至把一道長牆變成兩道短牆，改變整棟建築的側力分配。因此交接文件必須清楚標示哪些牆是剪力牆、邊界構材與塑性鉸區的位置，以及哪些範圍禁止開孔；任何開孔都要經結構工程師評估。施工期間的開孔變更也應同樣受控。~The commonest threat to shear walls in service is not earthquakes but later openings: services penetrations, doors, windows or fit-out changes. Drilling or cutting a shear wall reduces shear area, cuts vertical or horizontal bars and may turn one long wall into two short ones, changing the lateral force distribution of the whole building. Handover documents must therefore clearly identify which walls are shear walls, where boundary elements and plastic-hinge zones are, and which areas must not be penetrated, with every opening assessed by a structural engineer. Opening changes during construction need the same control.",
+      "model": "ACI 318 牆剪力強度 V_n = A_cv(α_c√f′_c + ρ_t f_y)。牆長 8 m、厚 0.4 m，A_cv = 3.2×10⁶ mm²；α_c = 0.17、√42 ≈ 6.48、ρ_t = 0.0025、f_y = 420 MPa，單位應力 ≈ 1.10 + 1.05 = 2.15 MPa，V_n ≈ 6,886 kN。事後切出 1.2 m 寬開口時有效長度剩 6.8 m，V_n 降為約 5,853 kN（減少 15%），尚未計入被切斷鋼筋與開口角隅應力集中。數值為教學假設。~ACI 318 wall shear strength V_n = A_cv(α_c√f′_c + ρ_t f_y). For an 8 m long, 0.4 m thick wall, A_cv = 3.2×10⁶ mm²; with α_c = 0.17, √42 ≈ 6.48, ρ_t = 0.0025 and f_y = 420 MPa, the unit stress is about 1.10 + 1.05 = 2.15 MPa and V_n ≈ 6,886 kN. Cutting a 1.2 m opening later leaves 6.8 m effective and V_n drops to about 5,853 kN, 15% less, before counting severed bars and stress concentrations at the corners. Values are teaching assumptions.",
+      "verify": "任何開孔申請須附開孔位置、尺寸與鋼筋掃描結果，由結構工程師以原設計模型評估並指定補強；施工時以鋼筋掃描避開主筋，完成後量測實際位置並更新竣工圖。~Every opening request should include location, size and a rebar scan, assessed by a structural engineer against the original design model with specified strengthening; during work use rebar scanning to avoid main bars, and survey the actual opening afterwards to update the as-built drawings.",
+      "failure": "裝修工程未查閱竣工圖就在一樓剪力牆切出大門洞，正好切掉邊界構材，牆的撓曲與剪力能力都大幅下降，平時看不出異狀，直到地震才暴露；機電管線密集鑽孔使牆體形成一排弱點，地震中沿孔洞連線開裂。~A fit-out contractor who never checked the as-built drawings cuts a large doorway through a ground-floor shear wall, removing a boundary element, so the wall loses much of its flexural and shear capacity with no visible sign until an earthquake; dense services holes drilled in a line create a row of weak points along which the wall cracks in an earthquake.",
+      "misconception": "剪力牆上鑽幾個管線孔不會影響結構安全，不需要結構工程師評估。~Drilling a few services holes in a shear wall does not affect structural safety and needs no structural engineer's assessment.",
+      "practice": "交接時提供以顏色標示剪力牆、邊界構材與禁止開孔區的平面圖，並將其納入建築物使用維護手冊；管理單位應建立開孔申請與審查程序，所有開孔都要記錄在竣工圖的更新版本中。~At handover provide colour-coded plans showing shear walls, boundary elements and no-penetration zones and include them in the building's operation and maintenance manual; the owner should run an opening application and review procedure, recording every opening in updated as-built drawings."
+    }
+  ],
+  "example": "設計檢核練習：一道長 l_w = 8 m、厚 400 mm 的剪力牆，f′_c = 42 MPa、f_y = 420 MPa，設計位移比 δ_u/h_w = 0.01，分析得中性軸深度 c = 1,100 mm。邊界構材門檻 8,000/(600×0.015) ≈ 889 mm，c 超過門檻，需特殊邊界構材，延伸長度 max(1,100 − 800, 550) = 550 mm，取 600 mm。圍束：邊界 400×600 mm、核心 320×520 mm，A_g/A_ch ≈ 1.442，0.3×0.442×42/420 ≈ 0.0133 控制，s = 100 mm 時 A_sh ≥ 425 mm²，用 4 肢 D13（507 mm²）。剪力強度 V_n = 3.2×10⁶×(0.17×6.48 + 0.0025×420) ≈ 6,886 kN，φV_n = 0.75×6,886 ≈ 5,164 kN。縱筋 D25 的 B 類搭接約 1,240 mm，若全部在同一斷面搭接，邊界淨間距由約 92 mm 降到約 27 mm，故改為錯開或使用續接器。若設計位移比提高到 0.015，門檻降為 8,000/(600×0.0225) ≈ 593 mm，邊界構材需求更明確，延伸長度仍為 550 mm 但塑性鉸區的應變更高。數值為教學假設，不代表任何實際建築的設計。~Design check exercise: a shear wall with l_w = 8 m and 400 mm thickness has f′_c = 42 MPa, f_y = 420 MPa, a design drift ratio δ_u/h_w = 0.01 and an analysed neutral-axis depth c = 1,100 mm. The boundary threshold is 8,000/(600×0.015) ≈ 889 mm, which c exceeds, so a special boundary element is needed, extending max(1,100 − 800, 550) = 550 mm, taken as 600 mm. Confinement: with a 400×600 mm boundary and 320×520 mm core, A_g/A_ch ≈ 1.442 and 0.3×0.442×42/420 ≈ 0.0133 governs, so at s = 100 mm A_sh ≥ 425 mm², provided by four legs of D13 (507 mm²). Shear strength is V_n = 3.2×10⁶×(0.17×6.48 + 0.0025×420) ≈ 6,886 kN and φV_n = 0.75×6,886 ≈ 5,164 kN. A Class B lap for D25 is about 1,240 mm; lapping all bars at one section would cut boundary clear spacing from about 92 mm to about 27 mm, so laps are staggered or couplers used. If the design drift ratio rises to 0.015, the threshold falls to 8,000/(600×0.0225) ≈ 593 mm, the boundary-element demand becomes clearer, and although the extent remains 550 mm the hinge-zone strains are higher. Values are teaching assumptions, not the design of any real building.",
+  "history": "鋼筋混凝土剪力牆自二十世紀中期成為中高層建築的主要抗側力系統，歷次大地震的經驗逐步把規範的重點從強度轉向牆端圍束與韌性。2010 年完工的哈里發塔以三翼高性能混凝土核心牆互相扶壁，形成抗扭勁度很高的扶壁式核心；2011 年 2 月 22 日基督城 CTV 大樓倒塌，紐西蘭皇家調查委員會在 2012 年的第六卷報告中檢討其結構系統與樓板拉桿補強。ACI 318-19 把邊界構材的判斷改為以 1.5 倍設計位移計算，反映對牆端應變需求的新認識。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~Reinforced-concrete shear walls became the main lateral system of mid- and high-rise buildings from the mid-twentieth century, and experience from successive major earthquakes gradually shifted code emphasis from strength to wall-end confinement and ductility. Burj Khalifa, completed in 2010, uses high-performance concrete core walls in three wings that buttress one another, forming a buttressed core with very high torsional stiffness; after the CTV Building in Christchurch collapsed on 22 February 2011, Volume 6 of the New Zealand Royal Commission's 2012 report reviewed its structural system and drag-bar retrofit. ACI 318-19 changed the boundary-element check to use 1.5 times the design displacement, reflecting new understanding of wall-end strain demands. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "哈里發塔高 828 m、地上 163 層，下部以鋼筋混凝土核心、柱與樓板構成~Burj Khalifa is 828 m tall with 163 floors above ground, its lower part built of reinforced-concrete core, columns and floors",
+    "哈里發塔 3 翼各有高性能混凝土核心，經 6 邊形中央核心互相扶壁~Each of Burj Khalifa's 3 wings has its own high-performance concrete core, buttressed through a six-sided central core",
+    "哈里發塔核心與翼牆厚度由 200 mm 變化到 1.3 m~Burj Khalifa's core and wing walls range from 200 mm to 1.3 m thick",
+    "亞特蘭大電梯試驗塔外牆厚約 460 mm（18 in）、內牆約 250 mm（10 in），分隔 9 個試驗井道~The Atlanta elevator test tower has exterior walls about 460 mm (18 in) and interior walls about 250 mm (10 in) thick, separating 9 test shafts",
+    "基督城 CTV 大樓於 2011 年 2 月 22 日倒塌，皇家調查委員會第六卷報告於 2012 年發布~The CTV Building in Christchurch collapsed on 22 February 2011, and Volume 6 of the Royal Commission's report was released in 2012",
+    "ACI 318-19 邊界構材門檻 c ≥ l_w/[600(1.5δ_u/h_w)]，8 m 牆、位移比 0.01 時約 889 mm~The ACI 318-19 boundary threshold c ≥ l_w/[600(1.5δ_u/h_w)] is about 889 mm for an 8 m wall at 0.01 drift ratio",
+    "ACI 318 特殊結構牆腹板鋼筋比最小值為 0.0025~ACI 318 sets a minimum web reinforcement ratio of 0.0025 for special structural walls",
+    "ACI 318 牆剪力強度係數 α_c 由 0.25（h_w/l_w ≤ 1.5）降到 0.17（h_w/l_w ≥ 2.0）~ACI 318 wall shear coefficient α_c falls from 0.25 (h_w/l_w ≤ 1.5) to 0.17 (h_w/l_w ≥ 2.0)"
+  ],
+  "timeline": [
+    {
+      "year": "2010",
+      "event": "哈里發塔完工，扶壁式鋼筋混凝土核心牆成為超高層剪力牆的代表~Burj Khalifa is completed, making its buttressed reinforced-concrete core a reference for supertall shear walls"
+    },
+    {
+      "year": "2011",
+      "event": "基督城地震中 CTV 大樓倒塌，引發對牆體系統與樓板連接的檢討~The CTV Building collapses in the Christchurch earthquake, prompting review of wall systems and floor connections"
+    },
+    {
+      "year": "2012",
+      "event": "紐西蘭皇家調查委員會發布 CTV 大樓專卷報告~The New Zealand Royal Commission releases its volume on the CTV Building"
+    },
+    {
+      "year": "2019",
+      "event": "ACI 318-19 以 1.5 倍設計位移判斷特殊邊界構材需求~ACI 318-19 uses 1.5 times the design displacement to decide special boundary-element demand"
+    },
+    {
+      "year": "2020",
+      "event": "亞特蘭大電梯試驗塔以滑模完成鋼筋混凝土核心牆~The Atlanta elevator test tower completes its reinforced-concrete core walls by slipforming"
+    }
+  ],
+  "codes": [
+    "ACI 318 結構混凝土建築規範（第 11 章牆與第 18 章耐震特殊結構牆）~ACI 318 Building Code Requirements for Structural Concrete (Chapter 11 walls and Chapter 18 special structural walls)",
+    "內政部混凝土結構設計規範~Taiwan Design Code for Concrete Structures (Ministry of the Interior)",
+    "EN 1998-1 歐洲規範 8：耐震設計（韌性牆）~EN 1998-1 Eurocode 8: Design of structures for earthquake resistance (ductile walls)",
+    "ACI 117 混凝土施工與材料容許誤差規範~ACI 117 Specification for Tolerances for Concrete Construction and Materials"
+  ],
+  "landmarks": [
+    "杜拜哈里發塔扶壁式核心~Burj Khalifa buttressed core, Dubai",
+    "紐西蘭基督城 CTV 大樓~CTV Building, Christchurch",
+    "亞特蘭大 TK Elevator 試驗塔~TK Elevator test tower, Atlanta"
+  ],
+  "place": {
+    "name": "國家地震工程研究中心台北實驗室~NCREE Taipei laboratory",
+    "country": "台灣~Taiwan",
+    "lat": 25.0124,
+    "lng": 121.5505,
+    "query": "National Center for Research on Earthquake Engineering Taipei"
+  },
+  "sources": [
+    {
+      "key": "som-burj-khalifa",
+      "title": "SOM：哈里發塔專案頁",
+      "titleEn": "SOM: Burj Khalifa project page",
+      "publisher": "Skidmore, Owings & Merrill",
+      "url": "https://www.som.com/projects/burj-khalifa/",
+      "sourceType": "primary",
+      "scope": "設計者說明扶壁式核心、三翼高性能混凝土核心與柱牆對齊的傳力路徑；不含配筋細節。",
+      "scopeEn": "Designer's description of the buttressed core, high-performance concrete wing cores and aligned column–wall load path; no reinforcement details."
+    },
+    {
+      "key": "ctbuh-burj-khalifa-walls",
+      "title": "CTBUH 摩天大樓中心：哈里發塔建築資料",
+      "titleEn": "CTBUH Skyscraper Center: Burj Khalifa building data",
+      "publisher": "Council on Tall Buildings and Urban Habitat",
+      "url": "https://www.skyscrapercenter.com/building/burj-khalifa/3",
+      "sourceType": "primary",
+      "scope": "建築高度、樓層數、結構材料分段與設計及施工團隊。",
+      "scopeEn": "Height, floor count, structural material by zone and design and construction team."
+    },
+    {
+      "key": "doka-burj-khalifa-walls",
+      "title": "Doka 參考案例：哈里發塔核心與翼牆模板",
+      "titleEn": "Doka reference: Burj Khalifa core and wing-wall formwork",
+      "publisher": "Doka",
+      "url": "https://www.doka.com/en/references/show/513",
+      "sourceType": "primary",
+      "scope": "核心與翼牆的牆厚範圍、澆置次數與澆置高度。",
+      "scopeEn": "Wall-thickness range, number of pours and lift heights of the core and wing walls."
+    },
+    {
+      "key": "nz-royal-commission-ctv",
+      "title": "坎特伯雷地震皇家調查委員會：第六卷 CTV 大樓",
+      "titleEn": "Canterbury Earthquakes Royal Commission: Volume 6, CTV Building",
+      "publisher": "Canterbury Earthquakes Royal Commission (New Zealand Department of Internal Affairs)",
+      "url": "https://canterbury.royalcommission.govt.nz/Final-Report-Volume-Six-Contents",
+      "sourceType": "primary",
+      "scope": "政府調查報告目錄，涵蓋 CTV 大樓結構系統、拉桿補強、倒塌情境與原因檢討；課程不轉述未查證的細節。",
+      "scopeEn": "Government inquiry contents covering the CTV Building's structural system, drag-bar retrofit, collapse scenarios and causes; the course does not restate unverified details."
+    },
+    {
+      "key": "enr-atlanta-walls",
+      "title": "ENR：滑模加速 398 英尺電梯試驗塔施工",
+      "titleEn": "ENR: Slipforming speeds erection of 398-ft elevator test tower",
+      "publisher": "Engineering News-Record",
+      "url": "https://enr.com/articles/49267-slipforming-next-level-coordination-speed-erection-of-398-ft-tall-elevator-test-tower",
+      "sourceType": "secondary",
+      "scope": "試驗塔核心牆的內外牆厚、井道數量與垂直度容許值報導。",
+      "scopeEn": "Reported interior and exterior wall thicknesses, shaft count and verticality tolerance of the test-tower core."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "SOM",
+      "nameEn": "Skidmore, Owings & Merrill",
+      "business": "建築與結構設計事務所，哈里發塔的設計工程師。",
+      "businessEn": "Architecture and structural engineering firm that was design engineer for Burj Khalifa.",
+      "url": "https://www.som.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "超高層剪力牆核心系統的公開設計說明",
+      "roleEn": "Public design descriptions of supertall shear-wall core systems"
+    },
+    {
+      "name": "三星物產",
+      "nameEn": "Samsung C&T",
+      "business": "韓國綜合企業，營建部門參與哈里發塔等超高層鋼筋混凝土核心施工。",
+      "businessEn": "Korean conglomerate whose construction division built reinforced-concrete cores on supertalls including Burj Khalifa.",
+      "url": "https://www.samsungcnt.com/",
+      "investorUrl": "",
+      "security": {
+        "symbol": "028260",
+        "exchange": "KRX",
+        "currency": "KRW"
+      },
+      "role": "超高層剪力牆施工的承包商角色",
+      "roleEn": "Contractor's role in supertall shear-wall construction"
+    },
+    {
+      "name": "國家地震工程研究中心",
+      "nameEn": "National Center for Research on Earthquake Engineering (NCREE)",
+      "business": "台灣的地震工程研究機構，進行鋼筋混凝土構件與結構的大型試驗。",
+      "businessEn": "Taiwan's earthquake-engineering research institute conducting large-scale tests of reinforced-concrete members and structures.",
+      "url": "https://www.ncree.narl.org.tw/",
+      "investorUrl": "",
+      "security": null,
+      "role": "剪力牆與耦合梁耐震試驗與研究的公開資料",
+      "roleEn": "Public research and testing information on shear walls and coupling beams"
+    }
+  ],
+  "related": [
+    "b047",
+    "b080"
+  ],
+  "architectureNodes": [
+    [
+      "樓板與集力構件",
+      "Floors and collectors"
+    ],
+    [
+      "剪力牆腹板",
+      "Shear-wall web"
+    ],
+    [
+      "邊界構材與圍束",
+      "Boundary elements and confinement"
+    ],
+    [
+      "縱筋續接與施工縫",
+      "Bar splices and construction joints"
+    ],
+    [
+      "基礎與塑性鉸區",
+      "Foundation and plastic-hinge zone"
+    ],
+    [
+      "查驗、試驗與竣工紀錄",
+      "Inspection, testing and as-built records"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

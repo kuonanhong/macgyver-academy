@@ -75,7 +75,8 @@ def snapshot(source):
                 continue
             if path.is_symlink():
                 fail('拒絕符號連結，請改成實際公開檔案：' + relative.as_posix())
-            if path.stat().st_size >= SIZE_LIMIT:
+            # V13: featured.json can exceed 100 MiB; it is rebuilt from the hashed course-parts and never committed.
+            if path.stat().st_size >= SIZE_LIMIT and relative.as_posix() not in GENERATED_FOR_GIT:
                 fail('檔案達 100 MiB，請另用 LFS / 物件儲存：' + relative.as_posix())
             data = path.read_bytes()
             if SECRETS.search(data):

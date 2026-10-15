@@ -1,9 +1,21 @@
 {
- "version": 12,
+ "version": 13,
  "baseCurrency": "TWD",
  "plans": [
-  {"id": "all-30", "title": "30 天學習通行證", "titleEn": "30-day learning pass", "amountTwd": 299, "durationDays": 30},
-  {"id": "all-365", "title": "365 天學習通行證", "titleEn": "365-day learning pass", "amountTwd": 2490, "durationDays": 365}
+  {
+   "id": "all-30",
+   "title": "30 天學習通行證",
+   "titleEn": "30-day learning pass",
+   "amountTwd": 299,
+   "durationDays": 30
+  },
+  {
+   "id": "all-365",
+   "title": "365 天學習通行證",
+   "titleEn": "365-day learning pass",
+   "amountTwd": 2490,
+   "durationDays": 365
+  }
  ],
  "freePolicy": {
   "freeStagesPerCourse": 1,
@@ -11,11 +23,58 @@
   "noteEn": "Only the first section (first stage) of every guided course is free; all other stages require an active learning pass."
  },
  "chargeCurrencies": {
-  "paypal": ["AUD", "CAD", "CHF", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "ILS", "JPY", "MXN", "NOK", "NZD", "PHP", "PLN", "SEK", "SGD", "THB", "TWD", "USD"],
-  "ecpay": ["TWD"]
+  "paypal": [
+   "AUD",
+   "CAD",
+   "CHF",
+   "CZK",
+   "DKK",
+   "EUR",
+   "GBP",
+   "HKD",
+   "HUF",
+   "ILS",
+   "JPY",
+   "MXN",
+   "NOK",
+   "NZD",
+   "PHP",
+   "PLN",
+   "SEK",
+   "SGD",
+   "THB",
+   "TWD",
+   "USD"
+  ],
+  "ecpay": [
+   "TWD"
+  ]
  },
  "fallbackChargeCurrency": "USD",
- "zeroDecimal": ["BIF", "CLP", "DJF", "GNF", "HUF", "IDR", "ISK", "JPY", "KMF", "KRW", "MGA", "PYG", "RWF", "TWD", "UGX", "VND", "VUV", "XAF", "XOF", "XPF"],
- "rounding": "Convert TWD × rate, then round UP to the currency's minor unit (integer for zeroDecimal currencies, 0.01 otherwise).",
- "fxMaxAgeDays": 10
+ "zeroDecimal": [
+  "BIF",
+  "CLP",
+  "DJF",
+  "GNF",
+  "HUF",
+  "IDR",
+  "ISK",
+  "JPY",
+  "KMF",
+  "KRW",
+  "MGA",
+  "PYG",
+  "RWF",
+  "TWD",
+  "UGX",
+  "VND",
+  "VUV",
+  "XAF",
+  "XOF",
+  "XPF"
+ ],
+ "rounding": "Convert TWD × rate, then round UP to a tidy price (HuaTuo rule): zero-decimal currencies to whole units, in steps of 10/100/1,000 at ≥1,000/10,000/100,000; two-decimal currencies to whole units at ≥100, otherwise to the next .49 or .99. Never below TWD × rate.",
+ "fxMaxAgeDays": 3,
+ "fxRefreshHours": 12,
+ "currencyRegion": "Interface language first (single-country languages decide the region), then time zone, then browser language region; the learner may choose manually."
 }

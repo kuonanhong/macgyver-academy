@@ -1,0 +1,311 @@
+{
+  "id": "b015",
+  "title": "舊金山金門大橋~Golden Gate Bridge",
+  "discipline": "st-suspension",
+  "family": "suspension",
+  "focus": "以業主公開數據做定量延伸：主纜張力、側向重力勁度、索夾螺栓預力損失、橋面減重抬升、欄杆風鳴與第 3B 期耐震改造~Quantitative extension from owner data: cable tension, lateral gravity stiffness, cable-band bolt preload loss, deck-lightening rise, railing wind tones and Phase 3B seismic retrofit",
+  "summary": "本延伸課程接在 24 道概念步驟之後，改用金門大橋管理區公布的數據做定量練習：由塔頂主纜荷重反推主纜張力與安全係數、以重力勁度解釋 27.7 ft 的設計橫向變位、核算 1930 年代鋼絲與吊索、估算空中紡線速度與 1980 年代橋面減重造成的抬升，再分析索夾螺栓預力損失、新欄杆的風鳴試驗、第 3B 期耐震改造的消能裝置，以及防墜網與抗風改造對斷面的影響。~This extension follows the 24 conceptual steps and works quantitatively from data published by the Golden Gate Bridge District: back-calculating cable tension and safety factor from the cable load on each tower, explaining the 27.7 ft design lateral deflection by gravity stiffness, checking the 1930s wire and suspender ropes, estimating the aerial-spinning rate and the deck rise caused by lightening the deck in the 1980s, then analysing cable-band bolt preload loss, wind-tunnel tests of the singing railing, the energy-dissipation devices of the Phase 3B seismic retrofit, and how the deterrent net and wind retrofit change the deck section.",
+  "units": [
+    {
+      "anchor": "每塔 61,500 噸纜力~61,500-ton cable load per tower",
+      "title": "由塔頂荷重反推主纜張力~Back-calculating cable tension from tower load",
+      "mechanism": "業主資料指出兩條主纜施加在每座橋塔的荷重約 61,500 噸（美噸）。這個豎向力等於主跨與邊跨主纜在索鞍兩側的豎向分量之和，因此只要知道兩側主纜在塔頂的傾角，就能反推主纜水平張力與最大張力，再與鋼絲面積及強度比較得到安全係數。這種「由支承反力反推內力」的檢核，是評估既有懸索橋時最常用的獨立驗算，可與原始計算書或有限元素模型相互印證。~Owner data state that the two main cables place about 61,500 tons (short tons) on each tower. This vertical force is the sum of the vertical components of the main-span and side-span cables on either side of the saddle, so knowing the cable angles at the tower top gives the horizontal and maximum tensions, which can then be compared with wire area and strength for a safety factor. Back-calculating internal forces from support reactions is the most common independent check when evaluating an existing suspension bridge, cross-checking the original calculations or a finite-element model.",
+      "model": "V = 61,500 short ton×907.2 kg×9.81 ≈ 547 MN。取主跨 tanθ_m = 0.44、邊跨 tanθ_s = 0.40：H = V/(0.44+0.40) ≈ 651 MN（兩纜），每纜 326 MN；T = 326×√(1+0.44²) ≈ 356 MN。每纜鋼絲面積 27,572×18.68 mm² ≈ 515,000 mm²，應力 ≈ 691 N/mm²，對最低強度 1,517 N/mm² 的係數約 2.19。傾角為教學假設。~V = 61,500 short tons×907.2 kg×9.81 ≈ 547 MN. Taking tanθ_m = 0.44 for the main span and tanθ_s = 0.40 for the side span: H = V/(0.44+0.40) ≈ 651 MN for both cables, 326 MN each; T = 326×√(1+0.44²) ≈ 356 MN. Wire area per cable 27,572×18.68 mm² ≈ 515,000 mm² gives a stress of about 691 N/mm², a factor of about 2.19 on the 1,517 N/mm² minimum strength. The angles are teaching assumptions.",
+      "verify": "以竣工測量或光達掃描取得塔頂兩側主纜實際傾角，代回計算 H 與 T，並與原設計值和有限元素模型比較；若三者差異超過約定範圍，檢查恆載假設（例如 1986 年更換後的橋面重量）與塔頂索鞍位置。~Obtain actual cable angles on both sides of the tower top from as-built survey or lidar, recompute H and T, and compare with original design values and the finite-element model; if the three differ beyond an agreed band, check dead-load assumptions such as the deck weight after the 1986 replacement and the saddle positions.",
+      "failure": "若評估仍沿用 1937 年的恆載而忽略後來的橋面更換、加勁與附加設施，計算出的主纜應力與安全係數會偏離實際；反過來若遺漏新增荷重（防墜網、抗風整流板），可能高估剩餘容量。~An evaluation still using 1937 dead loads, ignoring later deck replacement, bracing and attachments, misstates cable stress and safety factor; conversely, missing added loads such as the deterrent net or wind fairings can overstate remaining capacity.",
+      "misconception": "塔頂荷重就等於主纜張力。~The load on the tower equals the cable tension.",
+      "practice": "既有懸索橋的評估報告應附一份「恆載履歷表」，逐項列出歷次改造增減的重量與日期，並以塔頂反力與主纜幾何做獨立驗算，作為與有限元素模型比對的基準。~An evaluation of an existing suspension bridge should include a dead-load history listing the weight added or removed by each modification with dates, and an independent check from tower reactions and cable geometry as the benchmark for the finite-element model."
+    },
+    {
+      "anchor": "27.7 ft 橫向變位~27.7 ft lateral deflection",
+      "title": "主纜重力勁度與橫向變位~Cable gravity stiffness and lateral deflection",
+      "mechanism": "業主資料列出主跨中央最大橫向變位約 27.7 ft（約 8.4 m），遠大於最大下垂 10.8 ft 與上揚 5.8 ft。懸索橋抵抗側風的勁度主要不是來自加勁桁架的側向彎曲，而是來自主纜的「重力勁度」：受張的主纜像鐘擺一樣，被側向推開時，張力的水平分量會把它拉回中心。張力越大、跨徑越短，回復力越強；1950 年代增設的下層橫向斜撐則提高了橋面本身的側向與扭轉勁度，兩者共同決定側風下的變位與振動特性。~Owner data list a maximum transverse deflection at mid-span of about 27.7 ft (about 8.4 m), far more than the maximum downward 10.8 ft and upward 5.8 ft. A suspension bridge resists crosswind mainly not through lateral bending of the stiffening truss but through the gravity stiffness of the cables: like a pendulum, a tensioned cable pushed sideways is pulled back by the horizontal component of its tension. Higher tension and shorter span give stronger restoring force; the lower lateral bracing added in the 1950s raised the deck's own lateral and torsional stiffness, and the two together set deflection and vibration in crosswinds.",
+      "model": "以弦受側向均布力估算 δ = w_L·l²/(8H)。取 H = 651 MN（兩纜合計）、l = 1,280 m、側向風力 w_L = 15 kN/m：δ = 15×1,280²/(8×651,000) ≈ 4.7 m；反算達到 8.4 m 需 w_L ≈ 8×651,000×8.44/1,280² ≈ 26.9 kN/m。忽略桁架側向勁度，為教學假設。~Estimate with a string under uniform lateral load δ = w_L·l²/(8H). With H = 651 MN for both cables, l = 1,280 m and lateral wind load w_L = 15 kN/m: δ = 15×1,280²/(8×651,000) ≈ 4.7 m; reaching 8.4 m would need w_L ≈ 8×651,000×8.44/1,280² ≈ 26.9 kN/m. Truss lateral stiffness is ignored; values are teaching assumptions.",
+      "verify": "以 GNSS 在跨中與四分點量測強風中的側向位移，同步記錄橋面高度的風速風向，將位移對風壓（∝U²）作圖，檢查斜率是否符合重力勁度加桁架勁度的模型；並比較伸縮縫與風支承在側向位移時的行程。~Measure lateral displacement in strong wind with GNSS at mid-span and quarter points, recording deck-level wind speed and direction, plot displacement against wind pressure (∝U²) and check the slope against a gravity-plus-truss stiffness model; also compare the travel of expansion joints and wind shoes during lateral movement.",
+      "failure": "若改造增加了橋面側向受風面積（例如加裝圍欄或設備）而未更新側風分析，實際橫向變位與伸縮縫行程需求可能超出原設計；側向勁度不足也會讓渦振與扭轉耦合更容易發生。~If a modification increases the deck's lateral wind area, such as new fencing or equipment, without updating the crosswind analysis, actual lateral deflection and joint travel demand may exceed design; low lateral stiffness also makes vortex and torsional coupling easier.",
+      "misconception": "懸索橋的橫向勁度主要來自橋面桁架，主纜只負責垂直荷重。~A suspension bridge's lateral stiffness comes mainly from the deck truss; the cables only carry vertical load.",
+      "practice": "任何會增加橋面受風面積或改變斷面形狀的工程，都要在設計階段提出側風變位與氣動穩定的評估，並由業主的風工程顧問核可；評估須同時列出伸縮縫、風支承與管線的位移容量。~Any work that adds wind area or changes the deck section must come with an assessment of lateral deflection and aerodynamic stability at design stage, approved by the owner's wind consultant, listing the displacement capacity of joints, wind shoes and services."
+    },
+    {
+      "anchor": "0.192 in 鍍鋅鋼絲~0.192 in galvanised wire",
+      "title": "1930 年代鋼絲的強度與延性~Strength and ductility of the 1930s wire",
+      "mechanism": "金門大橋每條主纜含 27,572 根直徑 0.192 in（約 4.88 mm）的鍍鋅鋼絲，分成 61 束、平均每束約 452 根，連同纏繞外徑約 36⅜ in（0.92 m）。業主公布的鋼絲平均抗拉強度 235,600 psi（規格最低 220,000 psi）、降伏強度 182,600 psi、斷裂伸長率 6.3%（最低 4.0%）。與現代 1,770 至 1,960 MPa 級鋼絲相比強度較低，但延性與降伏比較寬裕；評估既有主纜時，要用當時規格的最低值與實際抽樣結果，而不是現代鋼絲的數字。~Each Golden Gate cable contains 27,572 galvanised wires of 0.192 in (about 4.88 mm) diameter in 61 strands averaging about 452 wires, about 36⅜ in (0.92 m) in diameter with wrapping. The owner lists average wire tensile strength of 235,600 psi (220,000 psi specified minimum), yield of 182,600 psi and elongation at rupture of 6.3% (4.0% minimum). The strength is lower than modern 1,770 to 1,960 MPa wire, but ductility and yield ratio are generous; evaluating an existing cable must use the period specification minimum and actual sample results, not modern wire figures.",
+      "model": "換算：235,600 psi ≈ 1,624 N/mm²、220,000 psi ≈ 1,517 N/mm²、182,600 psi ≈ 1,259 N/mm²，降伏比 ≈ 0.775。單絲面積 π/4×4.877² ≈ 18.68 mm²，每纜面積 ≈ 515,000 mm²，以最低強度計破斷力 ≈ 781 MN。兩纜總長核算：2×27,572×2,332 m ≈ 128,600 km，與公布的約 129,000 km 一致。~Conversions: 235,600 psi ≈ 1,624 N/mm², 220,000 psi ≈ 1,517 N/mm², 182,600 psi ≈ 1,259 N/mm², a yield ratio ≈ 0.775. Wire area π/4×4.877² ≈ 18.68 mm², about 515,000 mm² per cable, for a minimum breaking force ≈ 781 MN. Total length check: 2×27,572×2,332 m ≈ 128,600 km, matching the published 129,000 km or so.",
+      "verify": "開纜檢查時取出代表性鋼絲做拉伸、伸長率與扭轉試驗，並以金相與鍍鋅層量測判斷腐蝕階段；依試驗結果與斷絲統計建立剩餘強度模型，比較設計時的最低強度與實際分布。~During cable openings remove representative wires for tensile, elongation and torsion tests, and assess corrosion stage by metallography and zinc measurement; build a remaining-strength model from test results and broken-wire counts, comparing the original specified minimum with the actual distribution.",
+      "failure": "若評估直接套用現代鋼絲強度，主纜安全係數會被高估；反之若只依外觀判斷而不做試驗，可能忽略內部鋼絲的脆化或腐蝕裂縫，延誤除濕或補強決策。~Applying modern wire strengths overstates the cable's safety factor; judging only by appearance without testing can miss embrittlement or corrosion cracking of inner wires and delay dehumidification or strengthening decisions.",
+      "misconception": "老橋的鋼絲強度一定比規格值低很多，所以不值得試驗。~Old bridge wire is always far below its specification, so testing is pointless.",
+      "practice": "保存原始鋼絲規格與出廠試驗紀錄，每次開纜取樣都要記錄位置、束號與試驗結果，納入同一資料庫，讓日後的剩餘強度評估能追溯並比較趨勢。~Keep the original wire specification and mill test records, and log location, strand number and results for every cable sample in one database so later remaining-strength evaluations can trace and compare trends."
+    },
+    {
+      "anchor": "250 對吊索~250 pairs of suspenders",
+      "title": "吊索受力與 1970 年代全面更換~Suspender forces and the 1970s full replacement",
+      "mechanism": "金門大橋有 250 對豎向吊索，間距 50 ft，每根直徑 2-11/16 in；原吊索於 1972 至 1976 年間全部更換，最後一根於 1976 年 5 月 4 日完成。吊索把橋面荷重傳到索夾與主纜，最脆弱的部位通常是下端錨頭附近：雨水沿吊索流下積聚、海鹽與鋼絲彎曲應力在此疊加。更換吊索時，必須在不中斷交通的情況下以臨時吊具分擔荷重，逐根卸載、拆除與張拉，並控制橋面高程與相鄰吊索的受力變化。~Golden Gate has 250 pairs of vertical suspender ropes at 50 ft spacing, each 2-11/16 in in diameter; the originals were all replaced between 1972 and 1976, the last on 4 May 1976. Suspenders carry deck load to the cable bands and main cables, and the weakest zone is usually near the lower socket, where rainwater running down the rope collects and salt and wire bending stress combine. Replacing suspenders without stopping traffic means sharing load through temporary hangers, then unloading, removing and tensioning ropes one at a time while controlling deck level and force changes in neighbouring suspenders.",
+      "model": "每對吊索承擔 50 ft（15.24 m）橋面。若每側橋面恆載 100 kN/m，每對受力 100×15.24 ≈ 1,524 kN，每根 762 kN。直徑 68.3 mm 鋼索若金屬面積約為毛面積的 60%，A ≈ 0.6×π/4×68.3² ≈ 2,196 mm²，應力 ≈ 347 N/mm²。恆載與填充率為教學假設。~Each pair carries 50 ft (15.24 m) of deck. With 100 kN/m of dead load per side, a pair carries 100×15.24 ≈ 1,524 kN, or 762 kN per rope. For a 68.3 mm rope with metallic area about 60% of gross, A ≈ 0.6×π/4×68.3² ≈ 2,196 mm², a stress of about 347 N/mm². Dead load and fill factor are teaching assumptions.",
+      "verify": "更換時以千斤頂讀值與吊索應變計量測新舊吊索受力轉移，量測橋面高程變化與相鄰吊索力，確保偏差在容許範圍；完成後以振動法或荷重計抽測吊索力，並以磁通檢測建立新吊索的基準剖面。~During replacement measure the force transfer between old and new ropes with jack readings and strain gauges, monitoring deck level and neighbouring forces within tolerance; afterwards spot-check forces by vibration method or load cell and record a magnetic-flux baseline for each new rope.",
+      "failure": "下端錨頭附近的腐蝕斷絲常被護套或塗裝遮蔽，若只做目視檢查可能延誤更換；更換時若荷重轉移順序錯誤，相鄰吊索過載或橋面局部下陷，可能造成桁架構件附加應力。~Broken wires near lower sockets are often hidden under sleeves or paint, so visual inspection alone can delay replacement; a wrong load-transfer order during replacement can overload neighbouring ropes or locally drop the deck, adding stress to truss members.",
+      "misconception": "吊索只是把橋面掛起來的細鋼索，壞一兩根不影響整體。~Suspenders are just thin ropes hanging the deck; losing one or two does not matter.",
+      "practice": "吊索更換計畫應列出臨時吊具容量、逐根卸載與張拉的停留點、橋面高程允差與停止條件，並由結構工程師現場核可；新吊索要建立可追溯的出廠證明與安裝張力紀錄。~A suspender replacement plan should list temporary hanger capacity, hold points for unloading and tensioning each rope, deck-level tolerance and stop conditions, approved on site by the structural engineer; new ropes need traceable mill certificates and installation tension records."
+    },
+    {
+      "anchor": "6 個月又 9 天的紡線~Six months and nine days of spinning",
+      "title": "1930 年代空中紡線的進度估算~Estimating 1930s aerial-spinning progress",
+      "mechanism": "業主資料記載金門大橋主纜鋼絲紡線在 6 個月又 9 天內完成，兩條主纜共用約 80,000 mi（約 129,000 km）的鍍鋅鋼絲。空中紡線讓紡線輪沿貓道上方來回運行，每趟把鋼絲環從一座錨碇帶到另一座，在兩端錨碇的索靴上繞回；工人在塔頂與跨中逐根調整鋼絲垂度，使每束鋼絲受力一致。速度受限於紡線輪數量、運行速度、調整垂度所需的時間與風。這個進度數字可以用來回推每天必須鋪設的鋼絲長度與每束完成所需時間。~Owner data record that wire spinning for the Golden Gate cables was completed in six months and nine days, using about 80,000 mi (about 129,000 km) of galvanised wire for both cables. Aerial spinning runs spinning wheels back and forth above the catwalk, each trip carrying a loop of wire from one anchorage to the other, where it turns around strand shoes; crews at the towers and mid-span adjust wire sag one by one so every wire in a strand carries the same force. Speed is limited by the number of wheels, their travel speed, the time to adjust sag, and wind. The progress figure lets us back-calculate the wire length that had to be laid each day and the time per strand.",
+      "model": "總長 129,000 km ÷ 190 天 ≈ 679 km/天。單根主纜鋼絲長約 2,332 m，相當於每天約 679,000/2,332 ≈ 291 根全長鋼絲；兩纜共 122 束，平均每束約 190/122 ≈ 1.6 天完成（忽略並行作業）。若因強風停工 20 天，日進度需提高到約 129,000/170 ≈ 759 km/天。工作日假設為教學假設。~Total 129,000 km ÷ 190 days ≈ 679 km a day. With each cable wire about 2,332 m long, that is about 679,000/2,332 ≈ 291 full-length wires a day; across 122 strands in both cables, about 190/122 ≈ 1.6 days per strand on average (ignoring parallel work). Losing 20 days to wind would require about 129,000/170 ≈ 759 km a day. Working-day assumptions are teaching assumptions.",
+      "verify": "紡線期間每日記錄各紡線輪趟數、完成鋼絲數、停工時間與天氣，並以每束完成後的垂度量測確認品質；進度曲線與計畫比較，落後時優先檢討停工原因而不是縮短垂度調整時間。~During spinning log trips per wheel, wires completed, downtime and weather daily, confirming quality by sag survey after each strand; compare the progress curve with the plan and, when behind, examine causes of downtime first rather than shortening sag adjustment.",
+      "failure": "為追趕進度而縮短垂度調整，會讓同一束鋼絲受力不均，壓擠後產生鬆弛絲，長期影響主纜耐久與索夾夾緊；強風中強行紡線則可能使鋼絲纏繞或斷裂。~Cutting sag adjustment to catch up leaves uneven forces in a strand and slack wires after compaction, harming long-term durability and cable-band grip; spinning in strong wind can tangle or break wires.",
+      "misconception": "空中紡線的速度只取決於紡線輪跑多快。~Aerial-spinning speed depends only on how fast the wheels run.",
+      "practice": "紡線施工規範要寫明每束垂度允差、量測時段與溫度修正，以及停工風速；進度壓力下任何放寬品質門檻的提議都必須經設計者書面核可。~The spinning specification should state sag tolerance per strand, survey windows and temperature correction, and the stop-work wind speed; any proposal to relax quality thresholds under schedule pressure needs the designer's written approval."
+    },
+    {
+      "anchor": "1986 年橋面減重 12,300 噸~1986 deck lightening of 12,300 tons",
+      "title": "橋面更換減重後的主纜抬升~Cable rise after the lighter deck",
+      "mechanism": "1980 年代金門大橋把原有鋼筋混凝土橋面與縱梁更換為正交異性鋼橋面，業主資料記載重量減少約 12,300 噸，相當於每延英尺約 1.37 噸。施工多在夜間分段進行，每天早上恢復通車。橋面變輕後主纜張力下降、彈性伸長減少，主跨垂度隨之變小，橋面整體抬升；同時塔頂索鞍兩側的平衡改變，塔頂可能朝邊跨方向移動。因此更換順序必須控制左右對稱與跨間平衡，並預先計算完工後的路面縱斷面與伸縮縫位置。~In the 1980s the original reinforced-concrete deck and stringers were replaced with an orthotropic steel deck; owner data record a weight reduction of about 12,300 tons, about 1.37 tons per lineal foot. Work was done mostly at night in sections, reopening to traffic each morning. A lighter deck lowers cable tension and elastic stretch, so main-span sag decreases and the deck rises; the balance on either side of the tower saddles also changes and tower tops may move toward the side spans. The replacement sequence therefore had to control symmetry and balance between spans, and the final road profile and joint positions had to be predicted in advance.",
+      "model": "Δw = 1.37 short ton/ft ≈ 40 kN/m（兩纜合計）。取 f = 142 m：ΔH = Δw·l²/(8f) = 40×1,280²/(8×142) ≈ 57,700 kN，每纜 28.8 MN；主跨主纜縮短 ΔS ≈ 28.8×10⁶×1,320/(2×10¹¹×0.515) ≈ 0.37 m；Δf = (3l/(16f))·ΔS ≈ 1.69×0.37 ≈ 0.62 m 抬升。垂度、E 與纜長為教學假設，忽略塔頂位移。~Δw = 1.37 short tons/ft ≈ 40 kN/m for both cables. With f = 142 m: ΔH = Δw·l²/(8f) = 40×1,280²/(8×142) ≈ 57,700 kN, or 28.8 MN per cable; the main-span cable shortens by ΔS ≈ 28.8×10⁶×1,320/(2×10¹¹×0.515) ≈ 0.37 m, and Δf = (3l/(16f))·ΔS ≈ 1.69×0.37 ≈ 0.62 m of rise. Sag, E and cable length are teaching assumptions; tower-top movement is ignored.",
+      "verify": "每一施工段完成後量測橋面高程、塔頂位移與主纜垂度，並與分段更換分析比較；全部完成後重新測量路面縱斷面、伸縮縫開口與吊索力，更新恆載履歷與結構模型。~After each section measure deck levels, tower-top movement and cable sag against the staged-replacement analysis; at completion re-survey the road profile, joint openings and suspender forces, updating the dead-load history and structural model.",
+      "failure": "若更換不對稱推進，單側或單跨減重過多，塔頂索鞍兩側張力差增大，塔身彎矩與伸縮縫偏位可能超限；未預先調整路面高程則完工後出現縱斷面不平順與排水問題。~Asymmetric progress that lightens one side or span too much increases the tension difference across the saddles, possibly overstressing tower bending and shifting joints beyond limits; failing to plan road levels leaves an uneven profile and drainage problems after completion.",
+      "misconception": "把橋面換輕只會讓橋更安全，不會改變幾何。~A lighter deck only makes the bridge safer; it does not change the geometry.",
+      "practice": "大規模恆載改變的工程，應事先完成分段施工分析、列出每階段允許的不平衡重量與幾何監測點，並在每夜施工結束時核對量測值；超出觸發值即停止下一段，由設計者評估後才繼續。~Major dead-load changes require a staged analysis listing the allowable unbalanced weight and geometric checkpoints for each stage, with readings checked at the end of every night shift; exceeding a trigger stops the next section until the designer has assessed it."
+    },
+    {
+      "anchor": "西側欄杆鋼條風鳴~West railing slat tones",
+      "title": "抗風改造欄杆的風鳴試驗~Wind-tunnel tests of the singing retrofit railing",
+      "mechanism": "為了讓金門大橋在持續 100 mph 的風中保持結構完整，並承擔新增防墜網帶來的風阻，抗風改造把兩塔之間的西側人行道欄杆換成較透風的細長直立鋼條，並在人行道下方的桁架加裝整流板。2020 年春天起，強風中出現明顯的鳴聲：風以某些角度穿過鋼條時，渦流脫落頻率與鋼條或條間空氣的自然振動吻合。業主公布兩種音調：西風垂直吹向欄杆且達 22 mph 以上時約 280 至 700 Hz，風以小角度吹來且達 27 mph 以上時約 1.1 kHz。~To keep the Golden Gate structurally sound in sustained winds up to 100 mph and to carry the extra wind resistance of the new deterrent net, the wind retrofit replaced the west sidewalk railing between the towers with thin vertical slats that let more air through, and added a wind fairing on the truss below the sidewalk. From spring 2020 a distinct tone was heard in strong wind: as wind passed through the slats at certain angles, the vortex-shedding frequency matched the natural vibration of the slats or of the air between them. The owner reports two tones: about 280 to 700 Hz with west wind perpendicular to the railing at 22 mph or more, and about 1.1 kHz with wind at a slight angle at 27 mph or more.",
+      "model": "渦流脫落 f = St·U/d。U = 22 mph ≈ 9.8 m/s、f = 280 Hz、St = 0.2 時，對應特徵尺寸 d = St·U/f ≈ 0.2×9.8/280 ≈ 7.0 mm；27 mph（12.1 m/s）、1.1 kHz 則 d ≈ 2.2 mm，暗示高音調來自不同的流動特徵（例如邊緣或條間間隙）。St 為教學假設。~Vortex shedding f = St·U/d. With U = 22 mph ≈ 9.8 m/s, f = 280 Hz and St = 0.2, the implied characteristic size is d = St·U/f ≈ 0.2×9.8/280 ≈ 7.0 mm; 27 mph (12.1 m/s) at 1.1 kHz gives d ≈ 2.2 mm, suggesting the higher tone comes from a different flow feature such as an edge or the gap between slats. St is a teaching assumption.",
+      "verify": "業主自 2020 年秋以足尺欄杆模型做風洞試驗，比較橫桿、粗糙膠帶、U 形夾、紋理塗料與填頂等方案，最後以附薄橡膠墊的 U 形夾在 110 種風速與風向組合中消除或大幅降低聲音；剩餘情境預估每年平均約 70 小時與 18 小時。~From autumn 2020 the owner tested a full-scale railing model in a wind tunnel, comparing horizontal bars, coarse tape, U-shaped clips, textured paint and top fillers; U-shaped clips with a thin rubber insert eliminated or greatly reduced sound across 110 wind speed and direction combinations, with the remaining cases expected for about 70 and 18 hours a year on average.",
+      "failure": "若改造只檢核結構氣動穩定而未評估聲學與局部渦振，細長構件可能在常見風速下鳴響並承受高頻應力循環；高頻振動長期也可能使鋼條銲道或螺栓疲勞。~Checking only global aerodynamic stability without assessing acoustics and local vortex shedding can leave slender parts singing at common wind speeds and seeing high-frequency stress cycles, which over time can fatigue slat welds or bolts.",
+      "misconception": "只要整座橋在強風中穩定，欄杆的振動與聲音就不是工程問題。~If the whole bridge is stable in strong wind, railing vibration and noise are not engineering problems.",
+      "practice": "改變橋面細部的工程，風洞試驗範圍應包含局部構件的渦振與聲學，並在合約中訂出可接受的聲音與振動準則；改善措施（例如 12,000 根鋼條的夾具）須有安裝品質抽查與維修計畫。~For work that changes deck details, wind-tunnel scope should include local vortex shedding and acoustics, with acceptable sound and vibration criteria in the contract; remedies such as clips on 12,000 slats need installation sampling and a maintenance plan."
+    },
+    {
+      "anchor": "索夾螺栓預力~Cable-band bolt preload",
+      "title": "索夾螺栓預力損失與再張拉~Cable-band bolt preload loss and re-tensioning",
+      "mechanism": "索夾靠螺栓夾緊主纜，以摩擦力抵抗吊索力沿主纜方向的下滑分量。業主資料記載，1953 至 1954 年增設下層橫向斜撐時發現索夾螺栓最多損失了規定張力的 50%，1954 年重新張拉，1970 年代再張拉至 90,000 lb；1999 年做過張力檢查，2000 至 2001 年把 256 根直徑 2⅛ in、長 3 ft 的繫固螺栓再張拉至 92,000 lb。預力流失的主因是主纜鋼絲在夾壓下逐漸重新排列與壓密、鍍鋅層潛變，以及溫度循環；螺栓伸長量只有零點幾毫米，因此很小的直徑變化就能吃掉大半預力。~Cable bands grip the main cable by bolt clamping, using friction to resist the component of suspender force acting down the cable slope. Owner data record that when the lower lateral bracing was added in 1953–1954, cable-band bolts were found to have lost as much as 50% of their specified tension; they were re-tensioned in 1954, again to 90,000 lb in the 1970s, checked in 1999, and in 2000–2001 the 256 tie-down bolts, each 2⅛ in in diameter and 3 ft long, were re-tensioned to 92,000 lb. Preload is lost mainly as cable wires rearrange and compact under clamping, as zinc creeps and through thermal cycles; bolt elongation is only fractions of a millimetre, so a tiny diameter change can consume most of the preload.",
+      "model": "90,000 lb ≈ 400 kN，2⅛ in 螺栓毛面積 ≈ 2,288 mm²，應力 ≈ 175 N/mm²；夾緊長度取 0.6 m，彈性伸長 = 175×600/200,000 ≈ 0.52 mm。只要主纜在索夾處壓密約 0.26 mm，預力即損失約 50%。3 ft 長、92,000 lb 的繫固螺栓伸長約 179×914/200,000 ≈ 0.82 mm。夾緊長度為教學假設。~90,000 lb ≈ 400 kN; a 2⅛ in bolt has a gross area ≈ 2,288 mm², a stress ≈ 175 N/mm²; with a 0.6 m grip the elastic elongation = 175×600/200,000 ≈ 0.52 mm, so just 0.26 mm of cable compaction under the band loses about 50% of preload. A 3 ft tie-down bolt at 92,000 lb stretches about 179×914/200,000 ≈ 0.82 mm. The grip length is a teaching assumption.",
+      "verify": "以超音波量測螺栓伸長或以液壓張拉器做起始脫離（lift-off）試驗求現有預力，抽樣範圍涵蓋不同跨段與坡度；再張拉後記錄每根螺栓的目標值與實際值，數年後複測以求預力流失曲線，並檢查索夾是否有滑移痕跡。~Measure existing preload by ultrasonic bolt elongation or hydraulic lift-off tests on a sample covering different spans and slopes; after re-tensioning record target and achieved values for each bolt, re-test after some years to derive the preload-loss curve, and inspect bands for slip marks.",
+      "failure": "預力流失到摩擦力不足時，陡坡段的索夾會沿主纜下滑，吊索偏斜、索夾邊緣刮傷鋼絲並破壞防護包覆，水分隨之進入主纜；滑移也會改變吊索長度分配與橋面線形。~When preload falls until friction is inadequate, bands on steep cable slopes slide down, tilting suspenders, scoring wires at band edges and breaking the wrapping so water enters the cable; slip also redistributes suspender lengths and alters the deck profile.",
+      "misconception": "螺栓一旦鎖到規定張力，就能永久保持。~Once bolts are tightened to the specified tension, they keep it forever.",
+      "practice": "索夾螺栓應列入定期抽測的檢查項目，訂出觸發全面再張拉的預力門檻；任何會增加吊索力或改變主纜壓密狀態的工程（加撐、換橋面、除濕包覆）完成後，都要安排一次螺栓預力複測。~Make cable-band bolts a periodic sampling item with a preload threshold that triggers full re-tensioning; after any work that raises suspender forces or changes cable compaction, such as bracing, deck replacement or dehumidification wrapping, schedule a preload re-check."
+    },
+    {
+      "anchor": "38 組消能裝置~38 energy-dissipation devices",
+      "title": "第 3B 期主橋耐震改造~Phase 3B seismic retrofit of the main bridge",
+      "mechanism": "1989 年洛馬普列塔地震後的脆弱度研究指出，近距離 7.0 級以上地震可能造成嚴重損壞，8.0 級以上則可能使引橋與 Fort Point 拱段倒塌。改造以 10% 50 年超越機率（約 0.46 g）的中度地震與 1,000 年回歸期（約 0.65 g、相當於 1906 年舊金山地震）的最大可信地震為準則，分三期進行；第 2 期於 2008 年 7 月完成，消除了引橋倒塌風險。第 3B 期涵蓋主跨、兩邊跨、兩座橋塔與南塔基座：塔底以大型鋼板補強、塔內桁架補強、更換橋面與主塔及混凝土塔柱交接處的伸縮縫以容納三維位移、補強橋面橫向斜撐、改造 255 根橫梁，並安裝 38 組消能裝置，大幅減少傳入橋梁的地震能量。~A vulnerability study after the 1989 Loma Prieta earthquake found that a nearby magnitude 7.0 or larger event could cause severe damage, and one of 8.0 or larger could collapse the approach viaducts and Fort Point Arch. The retrofit uses a moderate earthquake with 10% exceedance in 50 years (about 0.46 g) and a maximum credible earthquake with a 1,000-year return period (about 0.65 g, equivalent to the 1906 San Francisco earthquake), in three phases; Phase 2, finished in July 2008, removed the approach collapse risk. Phase 3B covers the main span, both side spans, both towers and the South Tower pier: steel plates at the tower bases, strengthened tower trusses, new expansion joints at the towers and pylons for three-dimensional movement, reinforced roadway lateral bracing, 255 retrofitted floor beams and 38 energy-dissipation devices that greatly reduce seismic energy entering the bridge.",
+      "model": "以非線性黏滯阻尼器說明消能：F = C·v^α。取 C = 3,000 kN·(s/m)^0.4、α = 0.4、振幅 X = 0.5 m、週期 4 s（ω = 1.571 rad/s）：峰值速度 0.785 m/s，F ≈ 3,000×0.785^0.4 ≈ 2,720 kN；每循環耗能 E = λ·C·X^(1+α)·ω^α，λ ≈ 3.58，E ≈ 4,880 kJ。裝置型式與參數為教學假設。~Illustrate dissipation with a nonlinear viscous damper F = C·v^α. With C = 3,000 kN·(s/m)^0.4, α = 0.4, amplitude X = 0.5 m and a 4 s period (ω = 1.571 rad/s): peak velocity 0.785 m/s and F ≈ 3,000×0.785^0.4 ≈ 2,720 kN; energy per cycle E = λ·C·X^(1+α)·ω^α with λ ≈ 3.58 gives E ≈ 4,880 kJ. Device type and parameters are teaching assumptions.",
+      "verify": "消能裝置須做原型與逐件試驗，涵蓋設計速度範圍、溫度與循環次數，力—位移遲滯迴圈的耗能與規格比較；全橋以非線性時間歷程分析輸入多組近斷層紀錄，檢查塔底應力、伸縮縫三維位移與橋面斜撐受力是否符合兩級地震的性能目標。~Damping devices need prototype and production tests over the design velocity range, temperatures and cycle counts, comparing hysteresis-loop energy with the specification; the whole bridge is analysed by nonlinear time history with several near-fault records to check tower-base stress, three-dimensional joint movement and lateral-bracing forces against the performance goals for both earthquake levels.",
+      "failure": "只補強主橋而不處理伸縮縫，大地震時橋面與塔之間的相對位移可能使伸縮縫破壞、支承脫落；消能裝置若在長期風與交通的小振幅循環中磨耗而未檢查，地震時的耗能可能遠低於設計。~Strengthening the main bridge without new joints lets relative movement between deck and towers in a large earthquake destroy joints and unseat bearings; dampers worn by years of small wind and traffic cycles without inspection may dissipate far less energy than designed in an earthquake.",
+      "misconception": "1989 年地震中金門大橋沒有損壞，代表它不需要耐震改造。~Because the bridge was undamaged in 1989, it does not need seismic retrofit.",
+      "practice": "耐震改造的分期順序應依構件勁度與倒塌後果排定（業主先做較不柔的橋塔與邊跨），每期完工都要更新全橋模型與性能矩陣；消能裝置需納入定期檢查與抽測計畫，並保存原型試驗曲線作為基準。~Sequence retrofit phases by stiffness and collapse consequence (the owner starts with the less flexible towers and side spans), updating the whole-bridge model and performance matrix at the end of each phase; put damping devices on a periodic inspection and sampling programme with prototype test curves kept as the baseline."
+    },
+    {
+      "anchor": "防墜網與整流板~Deterrent net and wind fairing",
+      "title": "防墜網、整流板與斷面變更管理~Deterrent net, fairing and section-change management",
+      "mechanism": "防墜系統在東西兩側人行道下方 20 ft 處裝設海洋級不鏽鋼網，向外伸出 20 ft，沿 1.7 mi 全長連續，2018 年動工、2024 年初完成。網片與支架改變了橋面邊緣的流場並增加風阻，因此必須搭配抗風改造：透風的西側欄杆與人行道下方整流板，確保橋梁在持續 100 mph 的風中仍保有結構完整與氣動穩定。這說明一座 1937 年的懸索橋，每次在斷面上加東西，都要重新回答「顫振、抖振、渦振與側向變位是否仍可接受」的問題。~The deterrent system hangs marine-grade stainless-steel netting 20 ft below the sidewalks on both sides, extending 20 ft out and running continuously for the full 1.7 miles; it began in 2018 and was complete in early 2024. The netting and its supports change the flow at the deck edges and add wind resistance, so it had to be paired with the wind retrofit, the more porous west railing and a fairing below the sidewalk, to keep the bridge structurally sound and aerodynamically stable in sustained winds up to 100 mph. It shows that every addition to the section of a 1937 suspension bridge reopens the question of whether flutter, buffeting, vortex shedding and lateral deflection remain acceptable.",
+      "model": "100 mph（44.7 m/s）風壓 q = ½ρU² ≈ 1,249 Pa。若網片與支架在兩側合計增加等效投影深度 0.6 m、阻力係數 1.2：ΔF ≈ 1,249×1.2×0.6 ≈ 0.90 kN/m；以重力勁度估算跨中附加側向變位 Δδ = ΔF·l²/(8H) ≈ 0.90×1,280²/(8×651,000) ≈ 0.28 m。投影深度與係數為教學假設。~At 100 mph (44.7 m/s) the wind pressure q = ½ρU² ≈ 1,249 Pa. If the net and supports add an equivalent projected depth of 0.6 m in total with a drag coefficient of 1.2: ΔF ≈ 1,249×1.2×0.6 ≈ 0.90 kN/m; the gravity-stiffness estimate of added mid-span lateral deflection is Δδ = ΔF·l²/(8H) ≈ 0.90×1,280²/(8×651,000) ≈ 0.28 m. Projected depth and coefficient are teaching assumptions.",
+      "verify": "以含網片、整流板與新欄杆的斷面模型重新量測靜力係數與氣動導數，檢查顫振臨界風速、抖振反應與渦振；施工後以監測資料比較改造前後同風況下的位移與加速度，並持續記錄網片與支架的腐蝕與鬆動。~Re-measure static coefficients and aerodynamic derivatives on a section model including the net, fairing and new railing, checking flutter onset, buffeting and vortex shedding; after construction compare monitored displacement and acceleration before and after under similar winds, and keep recording corrosion and loosening of the net and supports.",
+      "failure": "若附加物在未經氣動評估下裝上，可能降低顫振裕度或在某風向引發新的渦振；網片支架與桁架的連接若疲勞或腐蝕鬆脫，部件墜落還會危及航道。~Attachments installed without aerodynamic assessment can lower flutter margin or start new vortex vibration in some wind directions; fatigued or corroded connections between net supports and the truss can loosen and drop parts into the shipping channel.",
+      "misconception": "防墜網是輕量的附屬設施，對橋梁的結構與風穩定沒有影響。~The deterrent net is a light accessory with no effect on structure or wind stability.",
+      "practice": "業主應建立「斷面變更管理」制度：任何附加於橋面或桁架的設施，先登錄重量、受風面積與連接細部，由結構與風工程顧問評估並核准，完工後更新恆載履歷、風洞基準與檢查清單，作為交接文件的一部分。~The owner should run section-change management: any attachment to deck or truss is first registered with its weight, wind area and connection details, assessed and approved by structural and wind consultants, and after completion the dead-load history, wind-tunnel baseline and inspection checklist are updated as part of the handover record."
+    }
+  ],
+  "example": "延伸練習：以業主公開數據核算主纜安全係數的變化。每座塔承受主纜荷重約 61,500 short ton（≈ 547 MN）；假設塔頂兩側 tanθ 為 0.44 與 0.40，H ≈ 651 MN（兩纜），每纜最大張力 T ≈ 356 MN。每纜鋼絲 27,572 根 × 18.68 mm² ≈ 515,000 mm²，以規格最低強度 220,000 psi（1,517 N/mm²）計破斷力 ≈ 781 MN，安全係數 ≈ 781/356 ≈ 2.19；以實測平均 235,600 psi（1,624 N/mm²）計 ≈ 2.35。若 1986 年橋面減重使每纜張力減少約 28.8 MN 的水平分量（最大張力約減 31.5 MN），係數提高到約 781/324.5 ≈ 2.41；若腐蝕使有效鋼絲面積減少 5%，係數回落到約 2.29。數值除業主公布者外均為教學假設，不代表金門大橋的評估結果。~Extension exercise: check the change in cable safety factor with the owner's data. Each tower carries about 61,500 short tons (≈ 547 MN) from the cables; assuming tanθ of 0.44 and 0.40 on either side of the tower, H ≈ 651 MN for both cables and the maximum tension per cable T ≈ 356 MN. Each cable has 27,572 wires × 18.68 mm² ≈ 515,000 mm²; at the specified minimum 220,000 psi (1,517 N/mm²) the breaking force is ≈ 781 MN and the safety factor ≈ 781/356 ≈ 2.19, or about 2.35 at the average 235,600 psi (1,624 N/mm²). If the 1986 deck lightening reduced the horizontal tension per cable by about 28.8 MN (about 31.5 MN off the maximum tension), the factor rises to about 781/324.5 ≈ 2.41; a 5% loss of effective wire area from corrosion brings it back to about 2.29. Apart from the owner's published figures, values are teaching assumptions, not the Golden Gate Bridge's evaluation results.",
+  "history": "金門大橋 1937 年通車，主跨 4,200 ft（1,280 m），由金門大橋公路及運輸管理區（1928 年成立）營運。此後它經歷了一連串可量化的改造：1953 至 1954 年增設下層橫向斜撐並再張拉索夾螺栓，1972 至 1976 年更換全部 250 對吊索，1980 年代以正交異性鋼橋面取代混凝土橋面並減重約 12,300 噸；1989 年洛馬普列塔地震後展開分期耐震改造，2008 年完成第 2 期，第 3B 期主橋工程於 2025 年 10 月發包。2020 年代的抗風改造與 2024 年完成的防墜網則再次改變了斷面。本課只重建公開原理與工程邏輯，不代表任何專案的設計文件。~The Golden Gate Bridge opened in 1937 with a 4,200 ft (1,280 m) main span and is operated by the Golden Gate Bridge, Highway and Transportation District, formed in 1928. It has since gone through a series of quantifiable modifications: lower lateral bracing and re-tensioned cable-band bolts in 1953–1954, replacement of all 250 suspender pairs in 1972–1976, and an orthotropic steel deck replacing the concrete deck in the 1980s, saving about 12,300 tons; phased seismic retrofit began after the 1989 Loma Prieta earthquake, Phase 2 finished in 2008 and the Phase 3B main-bridge contract was awarded in October 2025. The wind retrofit of the 2020s and the deterrent net completed in 2024 changed the section again. This course reconstructs public principles and engineering logic only, not any project's design documents.",
+  "facts": [
+    "主跨 4,200 ft（1,280 m），懸吊段 6,450 ft（1,966 m），全長 8,981 ft（2,737 m）~Main span 4,200 ft (1,280 m), suspension span 6,450 ft (1,966 m), total 8,981 ft (2,737 m)",
+    "橋塔高出水面 746 ft（227 m），每塔承受主纜荷重約 61,500 噸~Towers rise 746 ft (227 m) above water, each carrying about 61,500 tons from the cables",
+    "每條主纜 27,572 根 0.192 in 鋼絲、61 束，外徑約 36⅜ in（0.92 m）~Each cable has 27,572 wires of 0.192 in in 61 strands, about 36⅜ in (0.92 m) in diameter",
+    "鋼絲平均抗拉 235,600 psi（最低 220,000 psi），伸長率 6.3%~Wire tensile strength averaged 235,600 psi (220,000 psi minimum) with 6.3% elongation",
+    "跨中最大下垂 10.8 ft、上揚 5.8 ft、橫向變位 27.7 ft~Maximum mid-span deflection 10.8 ft down, 5.8 ft up and 27.7 ft transverse",
+    "250 對吊索間距 50 ft，於 1972 至 1976 年全部更換~250 pairs of suspenders at 50 ft spacing, all replaced from 1972 to 1976",
+    "1986 年橋面更換減重約 12,300 噸，每延英尺約 1.37 噸~The 1986 deck replacement cut about 12,300 tons, about 1.37 tons per lineal foot",
+    "耐震準則：中度地震約 0.46 g，最大可信地震約 0.65 g（1,000 年回歸期）~Seismic criteria: about 0.46 g moderate and about 0.65 g maximum credible (1,000-year) earthquake",
+    "第 3B 期安裝 38 組消能裝置、改造 255 根橋面橫梁~Phase 3B installs 38 energy-dissipation devices and retrofits 255 floor beams",
+    "防墜網位於人行道下 20 ft、外伸 20 ft，2024 年初完成~The deterrent net sits 20 ft below the sidewalks, extends 20 ft out and was completed in early 2024"
+  ],
+  "timeline": [
+    {
+      "year": "1937",
+      "event": "金門大橋通車，主纜鋼絲紡線曾在 6 個月又 9 天內完成~The bridge opens; its cable wires had been spun in six months and nine days"
+    },
+    {
+      "year": "1953–1954",
+      "event": "增設下層橫向斜撐，發現索夾螺栓預力最多損失 50% 並重新張拉~Lower lateral bracing added; cable-band bolts found to have lost up to 50% of tension and re-tensioned"
+    },
+    {
+      "year": "1972–1976",
+      "event": "250 對吊索全部更換，1976 年 5 月 4 日完成~All 250 suspender pairs replaced, finishing on 4 May 1976"
+    },
+    {
+      "year": "1986",
+      "event": "正交異性鋼橋面取代混凝土橋面，減重約 12,300 噸~Orthotropic steel deck replaces the concrete deck, saving about 12,300 tons"
+    },
+    {
+      "year": "2008",
+      "event": "耐震改造第 2 期完成，消除引橋與 Fort Point 拱段倒塌風險~Seismic retrofit Phase 2 completed, removing collapse risk of the approaches and Fort Point Arch"
+    },
+    {
+      "year": "2025",
+      "event": "10 月發包第 3B 期主橋耐震改造第一份合約，工期約 6 年~First Phase 3B main-bridge seismic contract awarded in October, about six years long"
+    }
+  ],
+  "codes": [
+    "AASHTO《LRFD 橋梁設計規範》~AASHTO LRFD Bridge Design Specifications",
+    "AASHTO《LRFD 橋梁耐震設計指引規範》~AASHTO Guide Specifications for LRFD Seismic Bridge Design",
+    "FHWA《公路結構耐震補強手冊》（FHWA-HRT-06-032）~FHWA Seismic Retrofitting Manual for Highway Structures (FHWA-HRT-06-032)",
+    "Caltrans《耐震設計準則》~Caltrans Seismic Design Criteria"
+  ],
+  "landmarks": [
+    "舊金山—奧克蘭海灣大橋西段（美國）~San Francisco–Oakland Bay Bridge western spans, USA",
+    "喬治華盛頓大橋（美國）~George Washington Bridge, USA",
+    "塔科馬海峽大橋（美國）~Tacoma Narrows Bridge, USA"
+  ],
+  "place": {
+    "name": "舊金山金門大橋~Golden Gate Bridge",
+    "country": "美國~United States",
+    "lat": 37.8199,
+    "lng": -122.4783,
+    "query": "Golden Gate Bridge"
+  },
+  "sources": [
+    {
+      "key": "ggb-design-construction-stats",
+      "title": "金門大橋管理區：設計與施工統計數據",
+      "titleEn": "Golden Gate Bridge District: Design and construction statistics",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+      "sourceType": "primary",
+      "scope": "業主公布的跨徑、塔高、主纜與鋼絲性質、變位、吊索、索夾螺栓與橋面更換重量；本課計算另為教學假設。",
+      "scopeEn": "Owner's figures for spans, towers, cable and wire properties, deflections, suspenders, cable-band bolts and deck-replacement weights; course calculations are separate teaching assumptions."
+    },
+    {
+      "key": "ggb-seismic-retrofit",
+      "title": "金門大橋管理區：耐震改造計畫總覽",
+      "titleEn": "Golden Gate Bridge District: Seismic retrofit programme",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/district/district-projects/seismic-retrofit/",
+      "sourceType": "primary",
+      "scope": "說明洛馬普列塔地震後的脆弱度研究、兩級設計地震準則與三期分期。",
+      "scopeEn": "Explains the post-Loma Prieta vulnerability study, the two-level design earthquake criteria and the three phases."
+    },
+    {
+      "key": "ggb-seismic-phase-3",
+      "title": "金門大橋管理區：耐震改造第 3 期（3A／3B）",
+      "titleEn": "Golden Gate Bridge District: Seismic retrofit Phase 3 (3A/3B)",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/district/district-projects/seismic-retrofit/phase-3/",
+      "sourceType": "primary",
+      "scope": "列出第 3B 期的塔底鋼板、伸縮縫、橫梁、消能裝置數量與發包時程。",
+      "scopeEn": "Lists Phase 3B tower-base plates, expansion joints, floor beams, number of energy-dissipation devices and contract timing."
+    },
+    {
+      "key": "ggb-high-wind-sounds",
+      "title": "金門大橋管理區：強風時的橋梁聲音",
+      "titleEn": "Golden Gate Bridge District: Bridge sounds during high-wind events",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/district/district-projects/suicide-deterrent-net/bridge-sounds-during-high-wind-events/",
+      "sourceType": "primary",
+      "scope": "抗風改造目的、欄杆風鳴的頻率與風況、足尺風洞試驗與 U 形夾改善方案。",
+      "scopeEn": "Purpose of the wind retrofit, frequencies and wind conditions of the railing tones, full-scale wind-tunnel tests and the U-clip remedy."
+    },
+    {
+      "key": "ggb-deterrent-net",
+      "title": "金門大橋管理區：防墜網計畫",
+      "titleEn": "Golden Gate Bridge District: Suicide deterrent net",
+      "publisher": "Golden Gate Bridge, Highway and Transportation District",
+      "url": "https://www.goldengate.org/district/district-projects/suicide-deterrent-net/",
+      "sourceType": "primary",
+      "scope": "網片位置、尺寸、材料與施工期程；本課只討論其結構與氣動影響。",
+      "scopeEn": "Net position, dimensions, material and construction period; this course discusses only its structural and aerodynamic effects."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "金門大橋公路及運輸管理區",
+      "nameEn": "Golden Gate Bridge, Highway and Transportation District",
+      "business": "1928 年成立的特別區，擁有並營運金門大橋，負責維護、耐震改造與運輸服務。",
+      "businessEn": "Special district formed in 1928 that owns and operates the Golden Gate Bridge, responsible for maintenance, seismic retrofit and transit services.",
+      "url": "https://www.goldengate.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "業主公開的橋梁數據、改造計畫與試驗結果",
+      "roleEn": "Owner's public bridge data, retrofit programmes and test results"
+    },
+    {
+      "name": "美國聯邦公路總署",
+      "nameEn": "Federal Highway Administration (FHWA)",
+      "business": "美國聯邦交通部轄下機關，發布橋梁檢測、評估與耐震補強指引。",
+      "businessEn": "US Department of Transportation agency publishing guidance on bridge inspection, evaluation and seismic retrofitting.",
+      "url": "https://www.fhwa.dot.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "既有橋梁耐震補強與主纜評估的公開指引",
+      "roleEn": "Public guidance on seismic retrofit of existing bridges and cable evaluation"
+    },
+    {
+      "name": "加州運輸廳",
+      "nameEn": "California Department of Transportation (Caltrans)",
+      "business": "加州公路主管機關，發布橋梁耐震設計準則並管理州內大型橋梁。",
+      "businessEn": "California's highway agency, publishing bridge seismic design criteria and managing major state bridges.",
+      "url": "https://dot.ca.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "加州橋梁耐震設計準則與改造案例背景",
+      "roleEn": "Background on California bridge seismic criteria and retrofit cases"
+    }
+  ],
+  "related": [
+    "b003",
+    "b036"
+  ],
+  "architectureNodes": [
+    [
+      "鋼塔與塔底補強",
+      "Steel towers and base strengthening"
+    ],
+    [
+      "空中紡線主纜",
+      "Air-spun main cables"
+    ],
+    [
+      "索夾螺栓與吊索",
+      "Cable-band bolts and suspenders"
+    ],
+    [
+      "加勁桁架與正交異性橋面",
+      "Stiffening truss and orthotropic deck"
+    ],
+    [
+      "消能裝置與伸縮縫",
+      "Dampers and expansion joints"
+    ],
+    [
+      "欄杆、整流板與防墜網",
+      "Railing, fairing and deterrent net"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      3,
+      2
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}
