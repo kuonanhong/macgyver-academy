@@ -1,0 +1,42 @@
+name: Weekly market & FX snapshot
+# Runs in GitHub's cloud every Monday 09:07 Taiwan time (01:07 UTC), even when
+# your computer is off. Only data/markets.json and data/fx.json are committed.
+on:
+  schedule:
+    - cron: '7 1 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: weekly-markets
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch weekly stock performance and exchange rates
+        run: python3 tools/markets-v12/update_markets.py
+      - name: Validate snapshot
+        run: python3 tools/markets-v12/update_markets.py --check
+      - name: Commit only changed data files
+        run: |
+          git config user.name "macgyver-weekly-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/academy/data/markets.json public/academy/data/fx.json
+          if git diff --cached --quiet; then echo "No change."; exit 0; fi
+          git commit -m "Weekly market & FX snapshot $(date -u +%F)"
+          git push
+      - name: Ask GitHub Pages to rebuild (branch-published sites)
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request skipped (Actions-published site or no change)."

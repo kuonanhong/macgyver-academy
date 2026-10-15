@@ -1,0 +1,161 @@
+{
+  "id": "a422",
+  "title": "多視角全像顯示校正~Multiview holographic-display calibration",
+  "discipline": "optics-modulation-holography",
+  "family": "modulator",
+  "focus": "角取樣、空間頻寬積、透鏡與光柵對位、相機式視點映射、串擾與眼動延遲預算~Angular sampling, space–bandwidth product, lens and grating registration, camera-based view mapping, crosstalk and eye-tracking latency budgets",
+  "summary": "從光場顯示的角取樣與全像的空間頻寬積出發，理解斜向柱狀透鏡、繞射式背光與眼動追蹤顯示為何必須逐台校正，再把摩爾相移映射、串擾與亮度漣波、熱漂移、延遲與深度驗收整合成可交接的多視角顯示校正工程。~Start from the angular sampling of light-field displays and the space–bandwidth product of holography to see why slanted-lenticular, diffractive-backlight and eye-tracked displays must each be calibrated unit by unit, then integrate moiré phase-shift mapping, crosstalk and luminance ripple, thermal drift, latency and depth acceptance into a transferable multiview calibration record.",
+  "units": [
+    {
+      "anchor": "視角錐與角取樣~View cone and angular sampling",
+      "title": "光場角取樣、視點數與景深預算~Light-field angular sampling, view count and depth budget",
+      "mechanism": "多視角顯示把面板像素分配給不同的出射方向：每個透鏡或光學單元下方的子像素各自對應一個視點，觀察者兩眼落在不同視點便看到雙眼視差，頭部移動時則看到運動視差。面板總像素數固定，所以視點數 N 與每個視點的空間解析度直接互換；視角錐被切成 N 份，角取樣間隔 Δθ 決定能重現多深的立體內容。距螢幕平面 z 的點在相鄰視點間位移 z·Δθ，一旦超過透鏡節距影像便開始模糊，因此深度預算是角取樣的直接後果，而不是渲染軟體的設定。~A multiview display distributes panel pixels over emission directions: the subpixels beneath each lens or optical cell each feed one view, so two eyes landing in different views see binocular parallax and head motion reveals motion parallax. The panel pixel count is fixed, so the view count N trades directly against per-view spatial resolution; the view cone is cut into N slices and the angular pitch Δθ decides how deep the reproducible 3D content can be. A point at distance z from the screen plane shifts by z·Δθ between adjacent views, and once that exceeds the lens pitch the image blurs, so the depth budget is a direct consequence of angular sampling, not a rendering setting.",
+      "model": "視角錐 40°、N = 45 視點：Δθ = 40°/45 = 0.889° = 0.0155 rad；3840×2160 面板每視點只剩 8.29×10⁶/45 ≈ 1.84×10⁵ 像素（約 576×320）。透鏡節距 s = 0.40 mm 時，模糊等於一個節距的深度 z = s/Δθ = 0.40/0.0155 ≈ 26 mm；放在 60 mm 處的內容模糊 60×0.0155 ≈ 0.93 mm，約 2.3 個節距。觀看距離 600 mm 時相鄰視點在眼睛處相距 9.3 mm，63 mm 瞳距橫跨約 6.8 個視點。~With a 40° view cone and N = 45 views, Δθ = 40°/45 = 0.889° = 0.0155 rad; a 3840×2160 panel leaves only 8.29×10⁶/45 ≈ 1.84×10⁵ pixels per view (about 576×320). With a lens pitch s = 0.40 mm the depth at which blur equals one pitch is z = s/Δθ = 0.40/0.0155 ≈ 26 mm; content at 60 mm blurs by 60×0.0155 ≈ 0.93 mm, about 2.3 pitches. At a 600 mm viewing distance adjacent views are 9.3 mm apart at the eye, so a 63 mm interpupillary distance spans about 6.8 views.",
+      "verify": "把相機架在 600 mm 的旋轉臂或線性滑軌上，逐度移動並拍攝只點亮單一視點的測試圖，記錄每個視點出現的角位置，求出實際視角錐寬度與平均 Δθ；再渲染放在 0、20、40、60 mm 深度的細線靶，量影像線寬對深度的曲線，應在約 26 mm 之後開始隨 z·Δθ 線性增寬。~Mount a camera on a rotary arm or linear rail at 600 mm, step it degree by degree while photographing a test image that lights a single view, and log the angle at which each view appears to obtain the actual cone width and mean Δθ; then render fine-line targets at depths of 0, 20, 40 and 60 mm and measure line width versus depth, which should begin to grow linearly as z·Δθ beyond roughly 26 mm.",
+      "failure": "內容團隊把物件放到螢幕前 100 mm 製造跳出效果，模糊達 1.55 mm（近 4 個節距），邊緣出現多重疊影；使用者抱怨失焦，工程團隊卻去重新貼合面板與透鏡，把時間浪費在不是根因的地方。~A content team places objects 100 mm in front of the screen for a pop-out effect, the blur reaches 1.55 mm (nearly four pitches) and edges show multiple ghost copies; users complain of defocus and engineering wastes time re-bonding the lens to the panel, which is not the root cause.",
+      "misconception": "視點數越多越好，增加視點不會犧牲任何東西。~More views are always better; adding views costs nothing."
+    },
+    {
+      "anchor": "SLM 像素節距與繞射錐~SLM pixel pitch and diffraction cone",
+      "title": "空間頻寬積與全像視角~Space–bandwidth product and holographic viewing angle",
+      "mechanism": "真正的全像顯示以空間光調制器重建波前，最大繞射角由像素節距決定：sinθ = λ/(2p)。視窗寬度 W 與視角 2θ 的乘積受空間頻寬積 N = W·2sinθ/λ 限制，而這個數正好等於該方向的像素數，因此像素數固定時螢幕越大視角越小，反之亦然。這個守恆與光展量（étendue）同源，透鏡或擴束器只能在 W 與 θ 之間交換，不能同時增加兩者。多視角全像必須逐視角校正，因為每個觀看方向只用到總頻寬中的一個子孔徑，各子孔徑的像差與相位誤差並不相同。~A true holographic display reconstructs a wavefront with a spatial light modulator whose maximum diffraction angle is set by the pixel pitch: sinθ = λ/(2p). The product of window width W and viewing angle 2θ is bounded by the space–bandwidth product N = W·2sinθ/λ, which equals the pixel count along that axis, so for a fixed pixel count a larger screen means a narrower viewing angle and vice versa. This conservation has the same root as optical étendue: lenses or beam expanders only trade W against θ and never raise both. Multiview holograms must be calibrated view by view because each viewing direction uses only a sub-aperture of the total bandwidth, and the aberration and phase error of each sub-aperture differ.",
+      "model": "4K LCOS、p = 3.74 µm、λ = 532 nm：sinθ = 0.532/7.48 = 0.0711，θ = 4.08°，全視角僅 8.2°；W = 4096×3.74 µm = 15.3 mm，N = 15.3 mm×0.142/532 nm ≈ 4096。若要 100 mm 寬、40° 視角：N = 0.1×2×sin20°/532×10⁻⁹ ≈ 1.29×10⁵ 每軸，節距 p = λ/(2sin20°) ≈ 0.78 µm，二維共 1.65×10¹⁰ 像素，60 Hz 三色約 3×10¹² 像素/秒。~For a 4K LCOS with p = 3.74 µm and λ = 532 nm, sinθ = 0.532/7.48 = 0.0711, θ = 4.08° and the full viewing angle is only 8.2°; W = 4096×3.74 µm = 15.3 mm and N = 15.3 mm×0.142/532 nm ≈ 4096. A 100 mm wide window with a 40° viewing angle needs N = 0.1×2×sin20°/532×10⁻⁹ ≈ 1.29×10⁵ per axis at a pitch p = λ/(2sin20°) ≈ 0.78 µm, 1.65×10¹⁰ pixels in two dimensions, or about 3×10¹² pixels per second at 60 Hz in three colours.",
+      "verify": "在 SLM 上寫入最高空間頻率的二元光柵（每兩像素一週期），於傅立葉平面用相機量 ±1 階的角位置，確認 θ 與 λ/(2p) 相符；再以相機在觀看窗內不同位置拍攝同一全像，記錄可見影像的角範圍與邊緣亮度衰減，並與像素孔徑的 sinc² 包絡比較。~Write the highest-frequency binary grating (one period per two pixels) on the SLM, measure the angular position of the ±1 orders in the Fourier plane with a camera and confirm θ agrees with λ/(2p); then photograph the same hologram from several positions inside the viewing window, logging the angular range over which the image is visible and the brightness fall-off at the edges, and compare with the sinc² envelope of the pixel aperture.",
+      "failure": "為了放大畫面在 SLM 後加一組 6× 擴束鏡，螢幕變成 92 mm 寬，但視角同時縮到約 1.4°，觀察者稍微移動頭部影像就消失；產品規格只寫尺寸不寫視角，直到驗收才發現不可用。~A 6× beam expander added after the SLM to enlarge the picture makes the screen 92 mm wide but shrinks the viewing angle to about 1.4°, so the image vanishes with the slightest head movement; the specification listed size but not viewing angle, and the problem surfaced only at acceptance.",
+      "misconception": "只要加大透鏡，就能同時得到大螢幕與大視角的全像。~A bigger lens gives a hologram both a large screen and a wide viewing angle."
+    },
+    {
+      "anchor": "斜向柱狀透鏡與面板貼合~Slanted lenticular and panel bond",
+      "title": "斜向柱狀透鏡陣列與面板對位~Slanted lenticular array registration to the panel",
+      "mechanism": "光場顯示最常見的光學層是斜向柱狀透鏡：透鏡以小角度斜跨 RGB 子像素，把視點數造成的解析度損失分攤到水平與垂直兩個方向，並打散黑色矩陣造成的摩爾紋。每個子像素屬於哪個視點由三個參數決定：以子像素為單位的透鏡節距、斜率與中心相位偏移；這些不是設計值，而是貼合後的實際值，因為模造公差、膠層厚度與溫度都會改變它們。透鏡通常以 UV 複製成型在玻璃上再光學貼合到面板，基材的熱膨脹係數必須與面板玻璃匹配。~The most common optical layer in light-field displays is the slanted lenticular: lenses tilted by a small angle across the RGB subpixels spread the resolution loss from view count over both horizontal and vertical directions and break up moiré from the black matrix. Which view a subpixel feeds is set by three parameters: lens pitch in subpixels, slant and centre-phase offset; these are not design values but as-bonded values, because moulding tolerance, adhesive thickness and temperature all change them. Lenses are usually UV-replicated on glass and optically bonded to the panel, and the substrate's thermal expansion must match the panel glass.",
+      "model": "透鏡節距 0.40 mm、焦距 0.55 mm：視角錐 2·atan(0.20/0.55) ≈ 40°。345 mm 寬面板共 862 個透鏡；以中心為基準，相對節距誤差 ε 使邊緣錯位 431ε 個週期，即 431ε×45 個視點：ε = 10⁻³ 錯 19 個視點，ε = 10⁻⁵ 只錯 0.19 個視點。熱效應：鈉鈣玻璃透鏡基材對無鹼面板玻璃 Δα = 5.8 ppm/K，升溫 10 K 邊緣移 172.5×5.8×10⁻⁶×10 = 0.010 mm，等於 1.1 個視點；匹配基材 Δα = 0.5 ppm/K 只剩 0.1 個視點。~With a 0.40 mm lens pitch and 0.55 mm focal length the view cone is 2·atan(0.20/0.55) ≈ 40°. A 345 mm wide panel carries 862 lenses; referenced to the centre, a relative pitch error ε misplaces the edge by 431ε periods, or 431ε×45 views: ε = 10⁻³ misplaces 19 views, ε = 10⁻⁵ only 0.19. Thermally, a soda-lime lens substrate on alkali-free panel glass has Δα = 5.8 ppm/K, so a 10 K rise moves the edge 172.5×5.8×10⁻⁶×10 = 0.010 mm, or 1.1 views; a matched substrate with Δα = 0.5 ppm/K leaves 0.1 views.",
+      "verify": "貼合後在量測顯微鏡下量透鏡頂點相對子像素的位置，於面板左、中、右三處求局部節距與斜率；把整機放進溫箱，在 15、25、35 °C 各執行一次視點映射校正，畫出節距參數對溫度的斜率並與 Δα 預測比較，以決定是否需要溫度補償表。~After bonding, measure lens-vertex positions relative to the subpixels under a measuring microscope at the left, centre and right of the panel to obtain local pitch and slant; then place the unit in a temperature chamber, run the view-mapping calibration at 15, 25 and 35 °C, plot the pitch parameter against temperature and compare the slope with the Δα prediction to decide whether a temperature-compensation table is needed.",
+      "failure": "為了降低成本改用只在邊框以軟膠固定的 PMMA 透鏡片，Δα 約 66 ppm/K，展場燈下升溫 10 K 邊緣錯位約 13 個視點，左右眼看到深度反轉的偽立體；而開機時在恆溫實驗室做的校正完全看不出問題。~Switching to a PMMA lens sheet held only at the frame by soft adhesive to cut cost gives Δα of about 66 ppm/K; a 10 K rise under exhibition lights misplaces the edge by about 13 views and the eyes see depth-inverted pseudoscopic images, while the start-up calibration done in a constant-temperature lab showed nothing wrong.",
+      "misconception": "透鏡節距照設計圖加工，校正時直接用設計值即可。~Lens pitch is made to the drawing, so the design value can be used directly in calibration."
+    },
+    {
+      "anchor": "導光板繞射耦出光柵~Light-guide grating outcoupler",
+      "title": "繞射式多視角背光與色散~Diffractive multiview backlight and dispersion",
+      "mechanism": "另一類被稱為全像的多視角顯示把方向性放在背光裡：光在導光板內以全反射傳播，板面上的奈米光柵把一部分光耦出到特定角度，每個光柵單元對應一個視點方向，前方的液晶面板只負責強度調制。耦出角由光柵方程式 sinθ_out = n·sinθ_g − λ/Λ 決定，同時依賴波長 λ 與導光角 θ_g；因此紅綠藍需要不同週期的光柵，而導光角的發散與光源頻寬都會直接變成視點方向的模糊。這類元件以奈米壓印或全像曝光製作，週期誤差 ΔΛ/Λ 會讓所有視點一起偏轉。~Another class of multiview display marketed as holographic puts the directionality in the backlight: light travels inside a light-guide plate by total internal reflection, and nanoscale gratings on the plate couple part of it out at specific angles, each grating element serving one view direction while the LCD in front only modulates intensity. The outcoupling angle follows the grating equation sinθ_out = n·sinθ_g − λ/Λ and depends on both wavelength λ and guided angle θ_g, so red, green and blue need different grating periods, and any spread in guided angle or source bandwidth becomes blur in view direction. Such elements are made by nanoimprint or holographic exposure, and a period error ΔΛ/Λ deflects all views together.",
+      "model": "導光板 n = 1.5、導光角 60°：n·sinθ_g = 1.299；532 nm 綠光要正向耦出需 Λ = 532/1.299 ≈ 410 nm。同一光柵下 630 nm 紅光 sinθ = 1.299 − 1.539 = −0.239，偏到 −13.8°；460 nm 藍光偏到 +10.1°。角色散 dθ/dλ = 1/Λ ≈ 0.14°/nm，20 nm 頻寬的 LED 把視點方向抹開 2.8°，是 0.89° 視點間距的 3 倍；導光角 ±2° 的發散再造成 −1.5° 到 +1.5° 的偏移。~With n = 1.5 and a 60° guided angle, n·sinθ_g = 1.299; outcoupling 532 nm green along the normal needs Λ = 532/1.299 ≈ 410 nm. With the same grating, 630 nm red gives sinθ = 1.299 − 1.539 = −0.239, deflected to −13.8°, and 460 nm blue goes to +10.1°. The angular dispersion dθ/dλ = 1/Λ ≈ 0.14°/nm, so a 20 nm bandwidth LED smears the view direction by 2.8°, three times the 0.89° view pitch, and a ±2° spread in guided angle adds a further −1.5° to +1.5° shift.",
+      "verify": "以錐光鏡（傅立葉光學視角量測儀）分別點亮紅、綠、藍，量每個光柵區塊的出射角分布並與光柵方程式預測比較；用光譜儀量光源頻寬並換算預期角展寬；在導光板入光端放可調準直器改變導光角，確認視點方向偏移的斜率。~Use a conoscope (Fourier-optics viewing-angle meter) with red, green and blue lit separately to measure the exit-angle distribution of each grating block and compare with the grating-equation prediction; measure the source bandwidth with a spectrometer and convert it into the expected angular broadening; insert an adjustable collimator at the light-guide input to vary the guided angle and confirm the slope of view-direction shift.",
+      "failure": "壓印母模磨耗與脫模收縮讓光柵週期整體短了 1%，綠光所有視點偏 −0.75°（接近一個視點），紅光偏 −0.92°、藍光偏 −0.66°，視角錐邊緣出現彩色鑲邊；若校正只用白光測試圖，會誤判為面板問題。~Stamp wear and demoulding shrinkage shorten the grating period by 1% overall, so every green view shifts −0.75° (nearly one view), red by −0.92° and blue by −0.66°, and colour fringes appear at the edges of the view cone; calibration with white test images alone misdiagnoses it as a panel fault.",
+      "misconception": "繞射背光的視點方向只由光柵週期決定，與光源無關。~A diffractive backlight's view directions depend only on grating period, not the source."
+    },
+    {
+      "anchor": "摩爾條紋與相移圖樣~Moiré fringes and phase-shift patterns",
+      "title": "相機式視點映射校正~Camera-based view-mapping calibration",
+      "mechanism": "視點映射校正的核心是讓顯示器自己顯示能放大參數誤差的圖樣：渲染只點亮單一視點的條紋，若假設節距與實際不同，固定位置的相機就會看到低頻摩爾條紋，條紋數放大了節距誤差，條紋傾角放大了斜率誤差，條紋相位給出中心偏移。數條紋只能把相對節距誤差壓到 10⁻³ 等級；要達到 10⁻⁵，必須逐步平移假設的中心相位做相移，在每個影像區塊擬合條紋相位。全像顯示則以相機在多個觀看位置做閉迴路相位校正，每個位置各有一組 Zernike 修正。~The core of view-mapping calibration is to make the display show patterns that magnify its own parameter errors: render stripes that light a single view, and if the assumed pitch differs from the real one a fixed camera sees low-frequency moiré fringes whose count magnifies the pitch error, whose tilt magnifies the slant error and whose phase gives the centre offset. Counting fringes only reaches a relative pitch error of about 10⁻³; reaching 10⁻⁵ needs phase shifting, stepping the assumed centre phase and fitting the fringe phase in every image block. Holographic displays are instead calibrated in closed loop with a camera at several viewing positions, each with its own set of Zernike corrections.",
+      "model": "345 mm 寬面上看到 3 條摩爾條紋：ε = 3×0.40/345 ≈ 3.5×10⁻³。要讓邊緣錯位低於 0.25 視點，需 431ε×45 ≤ 0.25，即 ε ≤ 1.3×10⁻⁵，相當於全寬只有 0.011 條條紋，只能用相移擬合量出。斜率同理：半高 97 mm 處容許錯位 0.25/45×0.40 mm = 2.2 µm，斜率誤差須小於 2.2 µm/97 mm ≈ 2.3×10⁻⁵ rad。~Three moiré fringes across a 345 mm wide panel give ε = 3×0.40/345 ≈ 3.5×10⁻³. Keeping edge misplacement below 0.25 views needs 431ε×45 ≤ 0.25, so ε ≤ 1.3×10⁻⁵, only 0.011 fringe across the full width and measurable only by phase-shift fitting. Slant is the same story: at the half height of 97 mm the allowed misplacement is 0.25/45×0.40 mm = 2.2 µm, so the slant error must stay below 2.2 µm/97 mm ≈ 2.3×10⁻⁵ rad.",
+      "verify": "相機固定在設計觀看距離並先完成自身的畸變校正，渲染 8 步相移的單視點條紋，於 16×9 個區塊擬合條紋相位，對 x、y 做平面擬合得節距、斜率與中心三參數；寫回後重拍，殘餘相位峰谷值應小於 0.0056 週期（0.25 視點）；再把相機移到視角錐兩端重複，確認參數不隨觀看角改變。~With the camera at the design viewing distance and its own distortion already calibrated, render an 8-step phase-shifted single-view stripe pattern, fit the fringe phase in 16×9 image blocks and fit a plane in x and y for pitch, slant and centre; write them back and re-shoot, requiring a residual phase peak-to-valley below 0.0056 period (0.25 view); then repeat with the camera at both ends of the view cone to confirm the parameters do not depend on viewing angle.",
+      "failure": "校正相機的鏡頭有 2% 桶形畸變卻未先校正，擬合出的節距在中心與邊緣不同，軟體把鏡頭畸變寫進顯示器參數；換位置觀看時邊緣錯位反而變大，而且每台機器都帶著同一支鏡頭的指紋。~A calibration camera with 2% barrel distortion that was never corrected makes the fitted pitch differ between centre and edge, so the software writes lens distortion into the display parameters; from another viewpoint the edge misplacement grows, and every unit carries the fingerprint of the same lens.",
+      "misconception": "只要畫面看起來沒有摩爾紋，映射參數就已經夠準。~If no moiré is visible, the mapping parameters are accurate enough."
+    },
+    {
+      "anchor": "視點串擾與角亮度漣波~View crosstalk and luminance ripple",
+      "title": "串擾、角亮度漣波與誤差預算~Crosstalk, angular luminance ripple and error budget",
+      "mechanism": "每個視點在角度上不是理想的方塊，而是有寬度的分布：透鏡像差、散焦、子像素開口與面板散射都會讓它變寬。視點窄時鄰點漏光少，但兩視點之間的方向亮度下陷，觀察者移動時看到明暗閃動（柵欄效應）；視點寬時亮度平順，但串擾讓深度邊緣出現疊影。串擾與漣波是同一個角分布的兩面，必須一起量、一起做預算，再把貼合錯位、熱漂移與量測不確定度依均方根加總。~Each view is not an ideal box in angle but a distribution with width: lens aberration, defocus, subpixel aperture and panel scatter all widen it. Narrow views leak little into neighbours but leave luminance dips between views, so a moving observer sees brightness flicker (the picket-fence effect); wide views give smooth luminance but crosstalk ghosts depth edges. Crosstalk and ripple are two faces of the same angular distribution and must be measured and budgeted together, with bonding misregistration, thermal drift and measurement uncertainty added root-sum-square.",
+      "model": "以高斯角分布、半高寬為 r 倍視點間距估算：r = 0.8 時每個鄰點漏光 exp(−4ln2/r²) = 1.3%，總串擾 2.6%，但視點之間亮度下陷 34%；r = 1.0 時鄰點 6.3%、總串擾 12.5%、漣波 10.8%；r = 1.2 時總串擾 29%、漣波只剩 2.3%。若規格要求串擾 ≤ 10% 且漣波 ≤ 20%，可行區間只有 r ≈ 0.91 到 0.96，透鏡焦點位置必須控制在很窄的範圍。~Modelling each view as a Gaussian whose FWHM is r times the view pitch: at r = 0.8 each neighbour leaks exp(−4ln2/r²) = 1.3%, total crosstalk 2.6%, but luminance dips 34% between views; at r = 1.0 each neighbour leaks 6.3%, total 12.5%, with 10.8% ripple; at r = 1.2 total crosstalk is 29% and ripple only 2.3%. If the specification asks for crosstalk ≤ 10% and ripple ≤ 20%, the feasible window is only r ≈ 0.91 to 0.96, so the lens focus position must be held in a narrow range.",
+      "verify": "以錐光鏡或裝在旋轉台上的成像亮度計，逐一點亮單一視點量角亮度分布，建立 N×N 串擾矩陣並求視點半高寬；再讓全部視點顯示白色量角亮度漣波；把量得的 r 與模型比較，並把儀器角解析度（例如 0.1°）列入不確定度。~Using a conoscope or an imaging luminance meter on a rotary stage, light one view at a time to measure angular luminance distributions, build the N×N crosstalk matrix and extract the view FWHM; then show white in all views and measure angular luminance ripple; compare the measured r with the model and include the instrument's angular resolution (for example 0.1°) in the uncertainty.",
+      "failure": "為了讓串擾數字好看而把透鏡焦點精準對到子像素平面，r 降到 0.7，規格書串擾只有 0.7%，但漣波達 52%，使用者左右移動時看到強烈亮暗條帶，在展場被當成閃爍，退貨原因與串擾規格毫無關係。~To make the crosstalk number look good the lens focus is placed exactly on the subpixel plane, r falls to 0.7 and the datasheet shows only 0.7% crosstalk, but ripple reaches 52% and users moving sideways see strong bright-dark banding taken as flicker at trade shows, so returns have nothing to do with the crosstalk specification.",
+      "misconception": "串擾越低，多視角顯示的觀看體驗就一定越好。~Lower crosstalk always means a better multiview viewing experience."
+    },
+    {
+      "anchor": "眼動追蹤與渲染延遲~Eye tracking and render latency",
+      "title": "眼動追蹤視點導向與延遲預算~Eye-tracked view steering and latency budget",
+      "mechanism": "眼動追蹤型立體顯示（例如以高速視覺感測器追蹤雙眼的空間實境顯示器）不再固定 N 個視點，而是即時把左右兩個視點導向兩眼，並依眼睛位置重新渲染透視。這把面板解析度集中給兩眼，但引入新的系統變數：追蹤相機曝光、影像處理、渲染、面板掃描與液晶反應構成延遲鏈，觀察者移動時畫面落後，產生透視游移，甚至讓左右眼視區交界掃過眼睛。整合時要把延遲換算成位置誤差，再以運動預測補償。~Eye-tracked stereo displays, such as spatial-reality displays that follow both eyes with a high-speed vision sensor, no longer fix N views but steer a left and a right view to the eyes in real time and re-render perspective for the tracked positions. This concentrates panel resolution on two eyes but adds new system variables: tracking-camera exposure, image processing, rendering, panel scan-out and liquid-crystal response form a latency chain, so a moving viewer sees the picture lag, producing perspective swim or even sweeping the left-right zone boundary across an eye. Integration must convert latency into position error and compensate with motion prediction.",
+      "model": "延遲鏈：追蹤 10 ms + 渲染 16.7 ms + 掃描與液晶反應 8 ms = 34.7 ms；頭部以 0.3 m/s 平移時落後 0.3×0.0347 = 10.4 mm，在 600 mm 處相當於 0.99°，約 1.1 個 0.89° 角間距。以等速度模型預測後殘差只剩加速度項 ½·a·t² = ½×2×0.0347² ≈ 1.2 mm（0.11°）；若視區交界兩側各有 6 mm 過渡帶而眼睛離交界 31.5 mm，未預測的 10.4 mm 仍留 15 mm 餘裕。~Latency chain: tracking 10 ms + rendering 16.7 ms + scan-out and LC response 8 ms = 34.7 ms; a head translating at 0.3 m/s lags by 0.3×0.0347 = 10.4 mm, which at 600 mm is 0.99°, about 1.1 angular pitches of 0.89°. Constant-velocity prediction leaves only the acceleration term ½·a·t² = ½×2×0.0347² ≈ 1.2 mm (0.11°); with a 6 mm transition band on each side of the zone boundary and the eye 31.5 mm from it, the unpredicted 10.4 mm still leaves 15 mm of margin.",
+      "verify": "在線性滑台上裝一對間距 63 mm 的假眼相機，以 0.1 到 0.5 m/s 往返移動，同時讓左右視點顯示不同顏色，記錄每台相機看到錯誤顏色的畫面比例與持續時間；以高速相機同時拍滑台位置與螢幕，直接量端到端延遲，並比較開啟與關閉運動預測的殘差。~Mount a pair of dummy-eye cameras 63 mm apart on a linear stage, move them back and forth at 0.1 to 0.5 m/s while left and right views show different colours, and log the fraction and duration of frames in which each camera sees the wrong colour; film stage position and screen together with a high-speed camera to measure end-to-end latency directly, comparing residuals with motion prediction on and off.",
+      "failure": "追蹤相機在辦公室日光燈下自動拉長曝光，延遲增加 15 ms，120 Hz 閃爍又讓偵測偶發失敗；使用者快速轉頭時左右眼影像瞬間對調造成不適，但問題只在特定照明出現，實驗室驗收從未重現。~Under office fluorescent lighting the tracking camera automatically lengthens its exposure, adding 15 ms of latency, and 120 Hz flicker makes detection fail intermittently; when users turn quickly the left and right images swap for an instant and cause discomfort, yet the fault appears only under certain lighting and was never reproduced in laboratory acceptance.",
+      "misconception": "只要眼動追蹤夠準，延遲幾十毫秒不影響立體感。~If eye tracking is accurate, tens of milliseconds of latency do not affect the 3D effect."
+    },
+    {
+      "anchor": "深度靶與驗收紀錄~Depth target and acceptance record",
+      "title": "系統驗收與校正交接~System acceptance and calibration handoff",
+      "mechanism": "驗收要證明觀察者看到的三維幾何正確，而不只是每個參數都在範圍內。做法是渲染已知深度的靶點，用兩台模擬雙眼的相機或沿軌道移動的單一相機量它在螢幕平面上的視差，反推重建深度；同時記錄串擾矩陣、角亮度漣波、各視點的色度與亮度，以及溫度與觀看位置的影響。交接文件要包含映射參數、量測時的溫度、相機與鏡頭的校正檔和允許重新校正的條件，因為顯示器出貨後會在完全不同的溫度與照明下使用。~Acceptance must prove that the observer sees correct 3D geometry, not merely that each parameter is in range. The method is to render targets at known depths, measure their parallax on the screen plane with two cameras emulating the eyes or one camera moving along a rail, and invert that into reconstructed depth; at the same time record the crosstalk matrix, angular luminance ripple, per-view chromaticity and luminance, and the effects of temperature and viewing position. The handoff file must contain the mapping parameters, the temperature during measurement, the camera and lens calibration files and the conditions under which recalibration is allowed, because shipped displays operate at entirely different temperatures and lighting.",
+      "model": "相機在 D = 600 mm 處橫移 b = 65 mm，螢幕前 z = 30 mm 的點在螢幕平面上視差 Δ = b·z/(D − z) = 65×30/570 ≈ 3.42 mm；量得 Δ = 3.25 mm 時反推 z = D·Δ/(b + Δ) = 600×3.25/68.25 ≈ 28.6 mm，深度誤差 −4.8%，剛好在 ±5% 允收內。其他門檻範例：總串擾 ≤ 10%、角亮度漣波 ≤ 20%、映射殘差 ≤ 0.25 視點、各視點白點差 Δu′v′ ≤ 0.005。~A camera at D = 600 mm translated by b = 65 mm sees a point at z = 30 mm in front of the screen shift on the screen plane by Δ = b·z/(D − z) = 65×30/570 ≈ 3.42 mm; a measured Δ = 3.25 mm inverts to z = D·Δ/(b + Δ) = 600×3.25/68.25 ≈ 28.6 mm, a −4.8% depth error just inside a ±5% allowance. Other example thresholds: total crosstalk ≤ 10%, angular luminance ripple ≤ 20%, mapping residual ≤ 0.25 views and per-view white-point difference Δu′v′ ≤ 0.005.",
+      "verify": "依固定順序：熱平衡 30 分鐘後做映射校正；量串擾矩陣與角亮度漣波；在 0、15、30、45 mm 渲染深度靶並以雙相機反推深度；在視角錐兩端與中央重複；最後於溫箱 35 °C 再量一次映射殘差。所有數值與模型預測並列填表，超出允收須記錄原因與處置。~In a fixed order: run the mapping calibration after 30 minutes of thermal settling; measure the crosstalk matrix and angular luminance ripple; render depth targets at 0, 15, 30 and 45 mm and invert depth with the twin cameras; repeat at both ends and the centre of the view cone; finally re-measure the mapping residual at 35 °C in a temperature chamber. Tabulate every value beside its model prediction and record cause and disposition for anything outside the allowance.",
+      "failure": "驗收只在中央視點量深度，邊緣視點因透鏡場曲多出 0.4 視點錯位，使用者斜看時深度被壓縮並出現疊影；由於交接紀錄沒保留校正溫度與相機檔，售後無法判斷是出貨前就存在還是運輸後才發生。~Acceptance measured depth only from the central view while edge views carry an extra 0.4-view misplacement from lens field curvature, so users looking obliquely see compressed depth and ghosting; because the handoff kept neither calibration temperature nor camera files, field service cannot tell whether the error existed before shipment or arose in transport.",
+      "misconception": "每個參數都在規格內，觀察者看到的深度就一定正確。~If every parameter is in specification, the perceived depth must be correct."
+    }
+  ],
+  "example": "多視角校正練習：假設一台 15.6 吋、45 視點、40° 視角錐的斜向柱狀透鏡顯示器，透鏡節距 0.40 mm、面寬 345 mm。角間距 Δθ = 0.0155 rad，清晰深度約 s/Δθ = 26 mm。初次拍到 3 條摩爾條紋，ε = 3×0.40/345 ≈ 3.5×10⁻³；相移擬合後殘餘 0.008 條條紋，ε = 0.008×0.40/345 ≈ 9.3×10⁻⁶，邊緣錯位 431×9.3×10⁻⁶×45 ≈ 0.18 視點。基材 Δα = 5.8 ppm/K，若內建溫度感測器誤差 1 K，溫度補償後殘差 172.5×5.8×10⁻⁶×1/0.40×45 ≈ 0.11 視點；兩者均方根 √(0.18² + 0.11²) ≈ 0.21 視點，低於 0.25 允收。透鏡焦點調到 r = 0.95，總串擾 9.3%、角亮度漣波 14.9%，兩者都合格。深度靶 z = 30 mm 量得視差 3.25 mm，反推 28.6 mm，誤差 −4.8%。數值為教學假設，不代表任何實機規格。~Multiview calibration exercise: assume a 15.6-inch slanted-lenticular display with 45 views over a 40° cone, a 0.40 mm lens pitch and a 345 mm width. The angular pitch is Δθ = 0.0155 rad and the sharp depth range is about s/Δθ = 26 mm. The first capture shows 3 moiré fringes, ε = 3×0.40/345 ≈ 3.5×10⁻³; after phase-shift fitting 0.008 fringe remains, ε = 0.008×0.40/345 ≈ 9.3×10⁻⁶, and the edge misplacement is 431×9.3×10⁻⁶×45 ≈ 0.18 views. The substrate mismatch is Δα = 5.8 ppm/K; with a built-in temperature sensor good to 1 K, the residual after compensation is 172.5×5.8×10⁻⁶×1/0.40×45 ≈ 0.11 views, and the root-sum-square √(0.18² + 0.11²) ≈ 0.21 views is below the 0.25 allowance. With the lens focus set to r = 0.95, total crosstalk is 9.3% and angular luminance ripple 14.9%, both passing. A depth target at z = 30 mm shows 3.25 mm of parallax, inverting to 28.6 mm, a −4.8% error. Values are teaching assumptions, not any product's specification.",
+  "history": "1908 年 Gabriel Lippmann 提出整合攝影，以微透鏡陣列記錄並重現多方向光線；20 世紀初 Frederic Ives 的視差屏障與後來的柱狀透鏡把多視角影像做成平面印刷品。1989 年起 MIT 媒體實驗室 Stephen Benton 團隊以聲光調制器打造 Mark I 等全像視訊系統，首次正面遭遇空間頻寬積的瓶頸。2010 年代末起，斜向柱狀透鏡光場顯示器、以高速視覺感測器追蹤雙眼的空間實境顯示器與繞射式多視角背光陸續商品化，逐台的相機式視點映射校正成為量產必要工序。本課只重建公開的物理與工程邏輯。~In 1908 Gabriel Lippmann proposed integral photography, recording and replaying rays in many directions with a microlens array; early in the twentieth century Frederic Ives's parallax barrier and later lenticular sheets turned multiview images into flat prints. From 1989 Stephen Benton's group at the MIT Media Lab built holographic video systems such as Mark I using acousto-optic modulators and met the space–bandwidth bottleneck head-on. From the late 2010s slanted-lenticular light-field displays, spatial-reality displays that track both eyes with high-speed vision sensors and diffractive multiview backlights reached the market, making unit-by-unit camera-based view-mapping calibration a necessary production step. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "MIT 媒體實驗室（全像視訊研究發源地）~MIT Media Lab, birthplace of holographic video",
+    "country": "美國~United States",
+    "lat": 42.3604,
+    "lng": -71.0872,
+    "query": "MIT Media Lab 75 Amherst Street Cambridge MA"
+  },
+  "sources": [
+    {
+      "key": "looking-glass-how-it-works",
+      "title": "Looking Glass：多視角光場顯示運作原理",
+      "titleEn": "Looking Glass: How it works",
+      "publisher": "Looking Glass Factory",
+      "url": "https://lfdocs.lookingglassfactory.com/keyconcepts/how-it-works",
+      "sourceType": "primary",
+      "scope": "官方文件說明最多約 100 個視點分布在約 58° 視角錐、quilt 視點拼圖與零視差平面外的模糊；課程中的 45 視點與 40° 為教學假設。",
+      "scopeEn": "Official documentation describing up to about 100 views over a roughly 58° view cone, the quilt view mosaic and blur away from the zero-parallax plane; the course's 45 views and 40° are teaching assumptions."
+    },
+    {
+      "key": "sony-spatial-reality-display",
+      "title": "Sony：ELF-SR2 空間實境顯示器",
+      "titleEn": "Sony: ELF-SR2 Spatial Reality Display",
+      "publisher": "Sony",
+      "url": "https://www.sony.co.in/microsite/b2b/spatial-reality-display.html",
+      "sourceType": "primary",
+      "scope": "官方產品頁，說明以第二代高速視覺感測器做眼動追蹤的 27 吋裸眼立體顯示器；課程的延遲預算為教學假設，非該產品數據。",
+      "scopeEn": "Official product page for a 27-inch glasses-free 3D display that uses a second-generation high-speed vision sensor for eye tracking; the course latency budget is a teaching assumption, not product data."
+    },
+    {
+      "key": "leia-lightfield-screens",
+      "title": "Leia：繞射式背光如何實現 3D 光場螢幕",
+      "titleEn": "Leia: How Leia brings 3D Lightfield screens to life",
+      "publisher": "Leia Inc.",
+      "url": "https://leiainc.com/newsroom/how-leia-brings-3d-lightfield-screens-to-life",
+      "sourceType": "primary",
+      "scope": "官方文章說明以背光中的奈米結構把光導向特定方向並控制視點數，對比傳統柱狀透鏡與視差屏障；課程中的光柵方程式數值為教學假設。",
+      "scopeEn": "Official article explaining nanostructures in the backlight that direct light to specific directions and control the number of views, contrasted with lenticular film and parallax barriers; the course's grating-equation numbers are teaching assumptions."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "索尼",
+      "nameEn": "Sony",
+      "business": "消費電子、影像感測器與專業顯示器集團，推出以眼動追蹤為核心的空間實境顯示器。",
+      "businessEn": "Consumer-electronics, image-sensor and professional-display group that offers eye-tracked spatial-reality displays.",
+      "url": "https://www.sony.com/",
+      "investorUrl": "",
+      "security": {"symbol": "6758", "exchange": "TSE", "currency": "JPY"},
+      "role": "眼動追蹤立體顯示與高速視覺感測器的公開產品資訊",
+      "roleEn": "Public product information on eye-tracked stereo displays and high-speed vision sensors"
+    },
+    {
+      "name": "Looking Glass Factory",
+      "nameEn": "Looking Glass Factory",
+      "business": "美國光場顯示器公司，產品以多視點柱狀透鏡顯示搭配 quilt 渲染軟體。",
+      "businessEn": "US light-field display company whose products pair multiview lenticular displays with quilt-rendering software.",
+      "url": "https://lookingglassfactory.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "多視點光場顯示與渲染流程的公開技術文件",
+      "roleEn": "Public technical documentation on multiview light-field displays and rendering workflow"
+    },
+    {
+      "name": "Leia",
+      "nameEn": "Leia Inc.",
+      "business": "美國 3D 光場顯示技術公司，以繞射式背光與裸眼立體軟體授權為主要業務。",
+      "businessEn": "US 3D light-field display technology company focused on diffractive backlights and glasses-free 3D software licensing.",
+      "url": "https://leiainc.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "繞射式多視角背光的公開技術說明",
+      "roleEn": "Public technical explanation of diffractive multiview backlights"
+    }
+  ],
+  "related": ["a421", "a419"],
+  "architectureNodes": [["渲染與視點映射引擎", "Rendering and view-mapping engine"], ["顯示面板或空間光調制器", "Display panel or spatial light modulator"], ["柱狀透鏡或繞射背光", "Lenticular array or diffractive backlight"], ["眼動追蹤感測器", "Eye-tracking sensor"], ["校正相機與錐光鏡", "Calibration camera and conoscope"], ["映射參數與溫度補償表", "Mapping parameters and temperature table"]],
+  "architectureEdges": [[0, 1], [1, 2], [3, 0], [2, 4], [4, 5], [5, 0]]
+}

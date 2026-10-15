@@ -1,0 +1,172 @@
+{
+  "id": "a442",
+  "title": "穿透電子顯微鏡~Transmission electron microscopes",
+  "discipline": "optics-analytical-instruments",
+  "family": "electron",
+  "focus": "300 kV 電子波長、相位對比傳遞函數、Cs 校正與資訊極限的穩定度工程~300 kV electron wavelength, phase-contrast transfer function, Cs correction and the stability engineering behind the information limit",
+  "summary": "以 300 kV 穿透電子顯微鏡為對象：從 1.97 pm 的電子波長與布拉格繞射出發，推導 Scherzer 解析度、對比傳遞函數與色像差資訊極限，理解六極 Cs 校正器為何把解析度推到 0.1 nm 以下，再把高壓與透鏡電流的 ppm 級穩定度、樣品厚度與撞擊損傷、場址環境與驗收測試整合成可交付的工程紀錄。~Taking a 300 kV transmission electron microscope: start from the 1.97 pm electron wavelength and Bragg diffraction, derive Scherzer resolution, the contrast transfer function and the chromatic information limit, see why a hexapole Cs corrector pushes resolution below 0.1 nm, then integrate ppm-level high-voltage and lens-current stability, specimen thickness and knock-on damage, site environment and acceptance tests into a deliverable engineering record.",
+  "units": [
+    {
+      "anchor": "薄樣品、繞射與影像平面~Thin specimen, diffraction and image planes",
+      "title": "電子波長、散射與對比機制~Electron wavelength, scattering and contrast mechanisms",
+      "mechanism": "穿透電子顯微鏡讓高能電子穿過厚度數十奈米的薄樣品，物鏡把透射與散射電子在後焦面形成繞射圖、在像平面形成影像，後續的中間鏡與投影鏡選擇放大哪一個平面。對比有三種來源：質量厚度對比來自被物鏡光圈擋掉的高角散射；繞射對比來自晶體特定取向滿足布拉格條件；相位對比來自透射束與繞射束在像平面的干涉，是晶格影像的基礎。300 kV 的電子波長只有 1.97 pm，布拉格角只有幾個毫弧度，所以整個光學系統在極小角度內工作，像差成為主要限制。~A transmission electron microscope sends high-energy electrons through a specimen tens of nanometres thick; the objective lens forms a diffraction pattern in its back focal plane and an image in the image plane, and intermediate and projector lenses choose which plane to magnify. Contrast has three origins: mass-thickness contrast from high-angle scattering stopped by the objective aperture; diffraction contrast from crystal orientations satisfying Bragg's condition; and phase contrast from interference of transmitted and diffracted beams in the image plane, the basis of lattice imaging. At 300 kV the electron wavelength is only 1.97 pm and Bragg angles are a few milliradians, so the whole optical system works within tiny angles and aberrations become the dominant limit.",
+      "model": "相對論波長 λ = h/√(2m₀eV(1 + eV/2m₀c²))：80 kV 4.18 pm、200 kV 2.51 pm、300 kV 1.97 pm。布拉格角 θ_B ≈ λ/(2d)：矽 (111) d = 0.3136 nm 在 300 kV 為 3.14 mrad = 0.18°；矽 [110] 啞鈴間距 0.136 nm 對應 7.2 mrad。繞射圖中環的半徑 R = L·λ/d：相機長度 L = 0.5 m、金 (111) d = 0.2355 nm 時 R = 4.18 mm。~Relativistic wavelength λ = h/√(2m₀eV(1 + eV/2m₀c²)): 4.18 pm at 80 kV, 2.51 pm at 200 kV, 1.97 pm at 300 kV. Bragg angle θ_B ≈ λ/(2d): silicon (111) with d = 0.3136 nm gives 3.14 mrad = 0.18° at 300 kV; the 0.136 nm silicon [110] dumbbell spacing corresponds to 7.2 mrad. Ring radius in the diffraction pattern R = L·λ/d: at camera length L = 0.5 m and gold (111) d = 0.2355 nm, R = 4.18 mm.",
+      "verify": "以多晶金薄膜拍選區繞射圖，量 (111)、(200)、(220) 環半徑，與 R = Lλ/d 計算值比較以校正相機長度；再把矽單晶轉到 [110] 帶軸，確認繞射點的角度分佈與計算的布拉格角一致，並切換物鏡光圈大小觀察質量厚度與繞射對比的消長。~Record a selected-area diffraction pattern of polycrystalline gold, measure the (111), (200) and (220) ring radii and compare with R = Lλ/d to calibrate camera length; tilt a silicon crystal to the [110] zone axis, confirm the angular distribution of spots matches the computed Bragg angles, and change the objective aperture size to watch mass-thickness and diffraction contrast trade off.",
+      "failure": "樣品厚度超過 100 nm 時多重散射與非彈性散射主導，晶格影像的相位對比消失、繞射點被動力學效應改寫，分析者用運動學公式解讀點強度而得到錯誤的結構結論。~A specimen thicker than 100 nm is dominated by multiple and inelastic scattering, lattice phase contrast vanishes and spot intensities are rewritten by dynamical effects; interpreting them with kinematic formulas yields wrong structural conclusions.",
+      "misconception": "穿透電子顯微鏡的影像對比和光學顯微鏡一樣來自吸收。~TEM image contrast comes from absorption, as in a light microscope."
+    },
+    {
+      "anchor": "對比傳遞函數與 Scherzer 離焦~Contrast transfer function and Scherzer defocus",
+      "title": "相位對比傳遞、Scherzer 解析度與 Cs 校正~Phase-contrast transfer, Scherzer resolution and Cs correction",
+      "mechanism": "薄樣品是弱相位物體，影像對比由對比傳遞函數 CTF(u) = sin χ(u) 決定，χ(u) = πλΔf·u² + (π/2)·C_s·λ³·u⁴，u 是空間頻率。球面像差 C_s 讓相位隨 u⁴ 快速振盪，CTF 在第一個過零點之後正負交替，影像不再直觀；Scherzer 離焦把 Δf 選成讓低頻段形成最寬的負值通帶，第一個過零點定義點解析度。六極或八極 Cs 校正器產生負的球面像差抵銷物鏡的正值，使 C_s 可調到接近零甚至微負，過零點外推到色像差資訊極限，解析度由 0.17 nm 進入 0.1 nm 以下，並消除離域效應。~A thin specimen is a weak phase object whose image contrast follows the contrast transfer function CTF(u) = sin χ(u) with χ(u) = πλΔf·u² + (π/2)·C_s·λ³·u⁴ and u the spatial frequency. Spherical aberration C_s makes the phase oscillate rapidly with u⁴, so beyond the first zero the CTF alternates sign and the image stops being intuitive; Scherzer defocus chooses Δf to form the widest negative passband at low frequency, and the first zero defines point resolution. A hexapole or octupole Cs corrector produces negative spherical aberration to cancel the objective's positive value, letting C_s be tuned near zero or slightly negative, pushing the first zero out to the chromatic information limit, taking resolution from 0.17 nm to below 0.1 nm and removing delocalisation.",
+      "model": "Scherzer 點解析度 d_S = 0.66·(C_s·λ³)^¼，Scherzer 離焦 Δf_S = −1.2·√(C_s·λ)。300 kV、λ = 1.97 pm：C_s = 0.6 mm 給 d_S = 0.17 nm、Δf_S = −41 nm；C_s = 1.2 mm 給 0.20 nm、−58 nm。最佳物鏡光圈半角 α ≈ (4λ/C_s)^¼ ≈ 10.7 mrad。校正器把 C_s 壓到 µm 等級後，光圈由五階像差 C₅ 限制，C₅ = 5 mm 時 α ≈ (λ/C₅)^⅙ ≈ 27 mrad，可接受的角度大了 2.5 倍，解析度改由資訊極限決定。~Scherzer point resolution d_S = 0.66·(C_s·λ³)^¼ and Scherzer defocus Δf_S = −1.2·√(C_s·λ). At 300 kV with λ = 1.97 pm: C_s = 0.6 mm gives d_S = 0.17 nm and Δf_S = −41 nm; C_s = 1.2 mm gives 0.20 nm and −58 nm. The optimum objective semi-angle is α ≈ (4λ/C_s)^¼ ≈ 10.7 mrad. Once a corrector brings C_s to the micrometre level the aperture is limited by fifth-order aberration C₅: with C₅ = 5 mm, α ≈ (λ/C₅)^⅙ ≈ 27 mrad, 2.5 times the accepted angle, and resolution passes to the information limit.",
+      "verify": "在非晶碳膜上拍一系列離焦影像並對每張做傅立葉轉換，Thon 環的半徑序列給出 CTF 的過零點，擬合 χ(u) 可同時解出 Δf 與 C_s；用 Zemlin 離焦傾斜表（在不同束傾角下的 Thon 環）量 C_s、彗差與三重像散；校正後重拍，確認第一過零點移到 0.1 nm 以外且離焦系列中晶格影像不再隨離焦反轉對比。~Record a defocus series on amorphous carbon and Fourier-transform each image: the Thon-ring radii give the CTF zeros and fitting χ(u) solves Δf and C_s together; measure C_s, coma and threefold astigmatism with a Zemlin tableau of Thon rings at several beam tilts; after correction re-record and confirm the first zero has moved beyond 0.1 nm and lattice images no longer reverse contrast across the defocus series.",
+      "failure": "未校正的顯微鏡在離焦偏離 Scherzer 值 30 nm 時，晶格影像的原子位置與真實位置互換（對比反轉），分析者把亮點當原子柱而把空隙當原子，導出錯誤的介面結構。~An uncorrected microscope defocused 30 nm away from the Scherzer value swaps bright and dark lattice positions (contrast reversal); the analyst takes bright spots for atomic columns and gaps for atoms and derives a wrong interface structure.",
+      "misconception": "Cs 校正後解析度只受電子波長限制，可以達到皮米。~After Cs correction resolution is limited only by electron wavelength and reaches picometres."
+    },
+    {
+      "anchor": "高壓槽、Schottky 槍與單色器~High-voltage tank, Schottky gun and monochromator",
+      "title": "電子槍、高壓穩定度與資訊極限~Electron gun, high-voltage stability and the information limit",
+      "mechanism": "校正球面像差後，解析度受色像差控制的時間相干性限制：電子能量散佈 ΔE、高壓漣波 ΔV/V 與物鏡電流漣波 ΔI/I 都讓焦距抖動，疊加成焦距散佈 Δ = C_c·√((ΔE/E)² + (ΔV/V)² + (2ΔI/I)²)，高頻資訊因此被阻尼包絡壓掉。所以 300 kV 的高壓發生器放在絕緣氣體槽內以 ppm 等級穩壓，透鏡電源用高精度電流源與恆溫，Schottky 槍的 0.7 eV 散佈成為最大項；需要更高極限時加單色器把散佈壓到 0.2 eV 以下，代價是損失大部分電流。~With spherical aberration corrected, resolution is bounded by temporal coherence governed by chromatic aberration: energy spread ΔE, high-voltage ripple ΔV/V and objective-current ripple ΔI/I each jitter the focus and combine into a focal spread Δ = C_c·√((ΔE/E)² + (ΔV/V)² + (2ΔI/I)²), and a damping envelope suppresses high-frequency information. The 300 kV generator therefore sits in an insulating-gas tank regulated at the ppm level, lens supplies use precision current sources in temperature-controlled housings, and the 0.7 eV spread of a Schottky gun becomes the largest term; a monochromator brings the spread below 0.2 eV when a higher limit is needed, at the cost of most of the current.",
+      "model": "資訊極限 d_info ≈ √(πλΔ/2)。300 kV、C_c = 1.4 mm、ΔV/V = 1 ppm、ΔI/I = 0.5 ppm：Schottky ΔE = 0.7 eV（含相對論修正）給 Δ ≈ 4.5 nm，d_info ≈ 0.12 nm；單色器 ΔE = 0.2 eV 給 Δ ≈ 2.3 nm，d_info ≈ 0.084 nm。若高壓穩定度退化到 10 ppm，Δ 升到約 14 nm，d_info 退回 0.21 nm，比未校正的 Scherzer 解析度還差。~Information limit d_info ≈ √(πλΔ/2). At 300 kV with C_c = 1.4 mm, ΔV/V = 1 ppm and ΔI/I = 0.5 ppm: a Schottky ΔE = 0.7 eV (with relativistic correction) gives Δ ≈ 4.5 nm and d_info ≈ 0.12 nm; a monochromator at ΔE = 0.2 eV gives Δ ≈ 2.3 nm and d_info ≈ 0.084 nm. If high-voltage stability degrades to 10 ppm, Δ rises to about 14 nm and d_info falls back to 0.21 nm, worse than the uncorrected Scherzer resolution.",
+      "verify": "用電子能量損失譜儀量零損失峰的半高寬得到 ΔE；用 Young 條紋法（同一區域兩張小位移影像的傅立葉轉換）量資訊極限；監視高壓槽的分壓回授與物鏡電流的長時間紀錄，統計 ppm 級的漣波與漂移；把量到的三項代入 Δ 公式，預測的 d_info 應與 Young 條紋結果一致。~Measure ΔE from the zero-loss-peak width in electron energy-loss spectroscopy; measure the information limit by Young's fringes (Fourier transform of two slightly shifted images of one area); log the high-voltage divider feedback and objective current over long periods to quantify ppm ripple and drift; insert the three terms into the Δ formula and the predicted d_info should match the Young's-fringe result.",
+      "failure": "高壓槽的分壓電阻受潮後穩定度從 1 ppm 退到 10 ppm，校正器調得再好晶格影像也只到 0.2 nm，操作者反覆重調校正器數日，直到看 Young 條紋才發現極限來自高壓而非像差。~A damp divider resistor degrades high-voltage stability from 1 to 10 ppm; however well the corrector is tuned, lattice images stop at 0.2 nm, and the operator re-tunes the corrector for days until Young's fringes show the limit comes from the high voltage, not aberrations.",
+      "misconception": "只要像差校正器調好，電子槍的能量散佈就無關緊要。~Once the corrector is tuned, the gun's energy spread no longer matters."
+    },
+    {
+      "anchor": "物鏡極靴、六極校正器與直接偵測器~Objective pole piece, hexapole corrector and direct detector",
+      "title": "物鏡、校正器、樣品載台與偵測器~Objective lens, corrector, specimen holder and detectors",
+      "mechanism": "物鏡的 C_s 與 C_c 隨極靴間隙縮小而降低，但間隙也限制樣品傾轉角度與分析偵測器的空間，高解析極靴通常只允許 ±20° 到 ±35° 的傾轉。校正器由兩組六極與傳遞透鏡組成，六極產生的三階負球面像差抵銷物鏡，但同時引入必須以多個偏轉與弱透鏡抵銷的寄生像差，整組需要數十個電源在毫安等級下保持 ppm 穩定。樣品載台在真空中以側插式桿承載，熱漂移與機械鬆弛決定曝光期間的位移。偵測器從閃爍體耦合 CMOS 走向直接電子偵測，後者以計數模式把偵測量子效率提升到接近 1，並允許以短幀對齊消除漂移。~Objective C_s and C_c fall as the pole-piece gap shrinks, but the gap also limits specimen tilt and room for analytical detectors, so high-resolution pole pieces usually allow only ±20° to ±35° of tilt. The corrector consists of two hexapole groups with transfer lenses; the hexapoles create negative third-order spherical aberration that cancels the objective's, but introduce parasitic aberrations that must be nulled with many deflectors and weak lenses, so dozens of supplies must stay ppm-stable at milliamp levels. The specimen rides a side-entry holder in vacuum, and its thermal drift and mechanical relaxation set the displacement during exposure. Detectors have moved from scintillator-coupled CMOS to direct electron detection, whose counting mode raises detective quantum efficiency toward 1 and allows drift removal by aligning short frames.",
+      "model": "物鏡電流穩定度換算離焦：Δf/f ≈ 2ΔI/I，焦距 f = 2 mm、ΔI/I = 1 ppm → 4 nm 離焦抖動，與 −41 nm 的 Scherzer 離焦相比可接受；10 ppm 給 40 nm，晶格影像對比反轉。載台漂移 0.5 nm/min 在 2 s 曝光中位移 0.017 nm，對 0.1 nm 解析度仍可接受，但 5 nm/min 就會把啞鈴抹成一條。直接偵測器在 1 nA、直徑 1 µm 的照明下劑量率約 8×10³ e/nm²/s，計數模式需把每像素每幀的電子數壓在 0.1 以下以避免重合損失。~Objective-current stability maps into defocus by Δf/f ≈ 2ΔI/I: with f = 2 mm and ΔI/I = 1 ppm the defocus jitters by 4 nm, acceptable against the −41 nm Scherzer value; 10 ppm gives 40 nm and lattice contrast reverses. Holder drift of 0.5 nm/min moves 0.017 nm during a 2 s exposure, still acceptable at 0.1 nm resolution, but 5 nm/min smears dumbbells into a line. A direct detector under 1 nA in a 1 µm illuminated disc sees about 8×10³ e/nm²/s, and counting mode needs fewer than 0.1 electrons per pixel per frame to avoid coincidence loss.",
+      "verify": "以金顆粒影像序列的互相關量載台漂移曲線，決定插入後的等待時間；用校正器軟體的像差表（A1、B2、C3、A3 等）確認殘餘像差在目標解析度對應的 π/4 相位容限內；偵測器以均勻照明量增益與雜訊，計算各劑量率下的 DQE(0) 與調制傳遞函數，確認計數模式的線性範圍。~Cross-correlate a gold-particle image series to get the holder drift curve and set the settling time after insertion; use the corrector software's aberration table (A1, B2, C3, A3 and so on) to confirm residual aberrations lie within the π/4 phase tolerance for the target resolution; characterise the detector under uniform illumination for gain and noise, compute DQE(0) and modulation transfer function at several dose rates, and establish the linear range of counting mode.",
+      "failure": "校正器的某個六極電源溫度漂移使三重像散 A2 在 10 分鐘內跑到 100 nm，剛調好的 0.08 nm 條件在拍攝時已退化到 0.12 nm，資料看似正常卻無法重現，問題直到比對像差表時序才被找到。~A temperature drift in one hexapole supply lets threefold astigmatism A2 run to 100 nm within 10 minutes; the freshly tuned 0.08 nm condition has degraded to 0.12 nm by the time of recording, data look normal yet cannot be reproduced, and the cause is found only by comparing aberration-table time stamps.",
+      "misconception": "極靴間隙越小越好，因為像差係數更低。~A smaller pole-piece gap is always better because aberration coefficients are lower."
+    },
+    {
+      "anchor": "矽晶格與金環校正樣品~Silicon lattice and gold-ring calibration specimens",
+      "title": "放大率、相機長度與像差量測的校正~Calibrating magnification, camera length and aberration measurement",
+      "mechanism": "影像上的長度尺度由物鏡與投影鏡的激磁決定，隨放大率檔位、高壓與鏡體溫度變化，必須以晶格間距已知的樣品校正：高倍用矽 (111) 0.3136 nm 或 (220) 0.1920 nm 晶格條紋，中低倍用溝槽光柵複製膜或奈米顆粒標準片；繞射模式的相機長度用多晶金環校正。像差量測本身也要校正：Zemlin 表假設束傾角已知，而束傾角由偏轉線圈的校正係數決定，所以先用繞射點位移校正偏轉線圈，再量像差。所有校正值都綁定高壓、放大率檔位與極靴，換任一項就要重做。~Image scale depends on objective and projector excitation and changes with magnification step, high voltage and column temperature, so it is calibrated with specimens of known lattice spacing: silicon (111) 0.3136 nm or (220) 0.1920 nm fringes at high magnification, replica gratings or nanoparticle standards at lower magnification; camera length in diffraction mode is calibrated with polycrystalline gold rings. Aberration measurement must itself be calibrated: a Zemlin tableau assumes known beam tilts, which depend on deflector calibration coefficients, so deflectors are first calibrated from diffraction-spot shifts and only then are aberrations measured. Every calibration value is bound to high voltage, magnification step and pole piece, and changing any one requires redoing it.",
+      "model": "相機長度校正：金 (111) 環在 L = 0.5 m 的半徑 4.18 mm，若實測 4.26 mm 則 L 偏差 1.9%，修正後殘餘由環半徑定位（0.02 mm → 0.5%）決定。放大率校正：矽 (111) 條紋 50 個週期應為 15.68 nm，實測像素數乘以標稱像素尺寸得 16.0 nm 時比例誤差 2%。偏轉線圈校正：束傾 10 mrad 應使繞射點移動 R = L·θ = 0.5 m×0.01 = 5 mm，偏差直接變成 Zemlin 表中 C_s 的比例誤差。~Camera-length calibration: the gold (111) ring at L = 0.5 m has radius 4.18 mm; a measured 4.26 mm means L is off by 1.9%, and after correction the residual is set by ring-radius location (0.02 mm → 0.5%). Magnification: 50 periods of silicon (111) fringes should span 15.68 nm; if pixel count times nominal pixel size gives 16.0 nm the scale error is 2%. Deflector calibration: a 10 mrad beam tilt should move the diffraction spot by R = L·θ = 0.5 m×0.01 = 5 mm, and any deviation becomes a proportional error in the C_s from the Zemlin tableau.",
+      "verify": "在每個常用放大率檔位拍矽晶格或光柵影像，由傅立葉轉換的峰位置算像素尺寸，建立放大率校正表並附高壓與日期；繞射模式對每個相機長度量金環；每季重複，比例漂移超過 1% 即重校；像差量測前先以繞射點位移校正束傾係數，再做 Zemlin 表，比較兩次獨立量測的 C_s 差異應小於 5%。~At every routinely used magnification step image silicon lattice or a grating, compute pixel size from Fourier peak positions and build a magnification table tagged with high voltage and date; measure gold rings for every camera length in diffraction mode; repeat quarterly and recalibrate when scale drifts beyond 1%; before aberration measurement calibrate beam-tilt coefficients from diffraction-spot shifts, then run the Zemlin tableau, and two independent C_s measurements should agree within 5%.",
+      "failure": "用 200 kV 時建立的放大率表在切換到 300 kV 後繼續使用，透鏡激磁不同使比例差 4%，奈米顆粒粒徑統計全部偏小，論文發表後才被同行以 X 光繞射結果質疑。~A magnification table built at 200 kV is kept after switching to 300 kV; different lens excitation shifts the scale by 4%, every nanoparticle size statistic reads small, and the discrepancy is raised by peers with X-ray diffraction results only after publication.",
+      "misconception": "軟體顯示的比例尺是絕對的，不需要用晶格校正。~The scale bar shown by the software is absolute and needs no lattice calibration."
+    },
+    {
+      "anchor": "樣品厚度、劑量與撞擊損傷~Specimen thickness, dose and knock-on damage",
+      "title": "樣品厚度、非彈性散射與輻射損傷~Specimen thickness, inelastic scattering and radiation damage",
+      "mechanism": "高解析成像要求樣品厚度在 10 到 50 nm，電子在樣品內的非彈性平均自由徑約 100 nm 等級，厚度與自由徑之比 t/λ 可由能量損失譜的零損失峰與總強度之比求得，是每張影像都應記錄的參數。電子束同時損傷樣品：撞擊位移發生在電子能把超過位移閾值的能量傳給原子核時，最大傳遞能量隨加速電壓升高而增加，輕元素最敏感；電離損傷則對高分子與某些氧化物主導，隨電壓降低反而變嚴重。因此加速電壓是依樣品而選的參數，不是越高越好。~High-resolution imaging needs specimens 10 to 50 nm thick; the inelastic mean free path is of order 100 nm, and the ratio t/λ, obtained from the zero-loss to total intensity ratio in an energy-loss spectrum, is a parameter that should be recorded with every image. The beam also damages the specimen: knock-on displacement occurs when an electron can transfer more than the displacement threshold to a nucleus, and the maximum transferable energy rises with accelerating voltage, light elements being most sensitive; radiolysis dominates in polymers and some oxides and worsens as voltage falls. Accelerating voltage is therefore chosen per specimen, not simply maximised.",
+      "model": "最大傳遞能量 E_max = 2E(E + 2m₀c²)/(Mc²)。碳（M = 12 u）：300 kV 為 71 eV、200 kV 為 44 eV、80 kV 為 15.8 eV；石墨烯的位移閾值約 17 到 20 eV，所以 80 kV 以下才安全。矽 300 kV 為 30 eV、金只有 4.3 eV。厚度：t/λ = 0.5（t ≈ 50 nm）時未散射比例 exp(−0.5) = 61%，t/λ = 0.2 時 82%，晶格影像的可解讀性隨 t/λ 迅速下降。~Maximum transferred energy E_max = 2E(E + 2m₀c²)/(Mc²). For carbon (M = 12 u): 71 eV at 300 kV, 44 eV at 200 kV, 15.8 eV at 80 kV; graphene's displacement threshold is about 17 to 20 eV, so only 80 kV and below is safe. Silicon at 300 kV gets 30 eV and gold only 4.3 eV. Thickness: at t/λ = 0.5 (t ≈ 50 nm) the unscattered fraction is exp(−0.5) = 61%, at t/λ = 0.2 it is 82%, and lattice-image interpretability falls quickly with t/λ.",
+      "verify": "每個分析區域先量 EELS 的 t/λ 並記錄；對損傷敏感的樣品在固定區域以固定劑量率連續拍攝，量繞射點強度或晶格條紋對比隨累積劑量衰減的曲線，決定臨界劑量；在 300、200、80 kV 重複，確認撞擊型損傷隨電壓降低而減輕、電離型損傷則相反。~Measure and record EELS t/λ for every analysis region; on damage-sensitive specimens record continuously on one area at a fixed dose rate, plot the decay of diffraction-spot intensity or lattice-fringe contrast against accumulated dose to find the critical dose; repeat at 300, 200 and 80 kV and confirm that knock-on damage eases as voltage falls while radiolysis does the opposite.",
+      "failure": "在 300 kV 觀察二維材料，幾秒內晶格出現空位並擴成孔洞，分析者把孔洞當成材料固有缺陷並發表缺陷密度；改用 80 kV 重做時缺陷消失。~Observing a two-dimensional material at 300 kV creates vacancies within seconds that grow into holes; the analyst reports the holes as intrinsic defects and publishes a defect density, and the defects vanish when the work is repeated at 80 kV.",
+      "misconception": "加速電壓越高穿透力越強，所以總是對樣品更溫和。~Higher accelerating voltage penetrates better and is therefore always gentler on the specimen."
+    },
+    {
+      "anchor": "鏡筒外罩、磁場消除與溫控~Column enclosure, field cancellation and temperature control",
+      "title": "場址環境：磁場、溫度、振動與聲學~Site environment: magnetic fields, temperature, vibration and acoustics",
+      "mechanism": "像差校正顯微鏡的解析度與穩定度綁在一起，場址必須把干擾壓到影像週期的十分之一以下：交流雜散磁場偏轉電子束並以電源頻率抖動影像；室溫漂移改變透鏡線圈電阻與鏡筒長度，使焦點與放大率緩慢漂移；地板振動與聲壓直接搖動樣品相對於物鏡的位置。對策包含鏡筒外的磁屏蔽與主動磁場消除、±0.1 °C 的房間溫控與鏡筒水冷恆溫、主動隔振基座與隔音外罩，以及把電子設備與操作者移到隔壁房間以遠端操作。~Aberration-corrected microscopes tie resolution to stability, and the site must hold disturbances below a tenth of the image period: ac stray fields deflect the beam and jitter the image at mains frequency; room-temperature drift changes lens-coil resistance and column length so focus and magnification creep; floor vibration and sound pressure shake the specimen relative to the objective. Countermeasures include magnetic shielding and active field cancellation around the column, ±0.1 °C room control with temperature-stabilised lens cooling water, an active isolation base, acoustic enclosures, and moving electronics and operators to an adjacent room for remote operation.",
+      "model": "磁場偏轉：300 kV 電子動量 p = 3.37×10⁻²² kg·m/s，B = 10 nT（0.1 mG）時迴轉半徑 r = p/(eB) ≈ 2.1×10⁵ m；在物鏡附近 50 mm 未屏蔽路徑上橫移 ≈ L²/(2r) ≈ 6 nm，鐵質極靴與屏蔽提供約 100 倍衰減後為 0.06 nm，恰在 0.1 nm 解析度的容許邊緣，所以常見場址規格是 0.1 mG 等級。溫度：銅線圈電阻溫度係數 0.4%/K，恆流源可補償電阻變化，但鏡筒 1 m 長的鋼體在 0.1 K 下伸長 1.2 µm，需靠溫控與熱平衡時間消化。~Field deflection: a 300 kV electron has momentum p = 3.37×10⁻²² kg·m/s, so at B = 10 nT (0.1 mG) the gyration radius is r = p/(eB) ≈ 2.1×10⁵ m; over an unshielded 50 mm path near the objective the lateral shift is ≈ L²/(2r) ≈ 6 nm, and about 100-fold attenuation by iron pole pieces and shielding leaves 0.06 nm, right at the tolerance edge for 0.1 nm resolution, which is why 0.1 mG-class site specifications are common. Temperature: a copper coil's resistance coefficient of 0.4%/K is handled by constant-current supplies, but a 1 m steel column lengthens 1.2 µm per 0.1 K and must be absorbed by control and settling time.",
+      "verify": "安裝前以磁通閘、加速規與聲壓計做 24 小時場址紀錄，與原廠規格逐項比對；安裝後在最高放大率拍 60 秒影像序列並做頻譜分析，辨認 50/60 Hz（磁場）、1 到 20 Hz（振動）與數百 Hz（聲學）各自的貢獻；開關空調、電梯與鄰近設備重複測試，建立禁用時段表。~Before installation log 24 hours of field, vibration and sound with a fluxgate, accelerometer and sound-level meter and compare item by item with the vendor specification; after installation record 60 s image series at maximum magnification and spectrally separate the 50/60 Hz (field), 1 to 20 Hz (vibration) and few-hundred-hertz (acoustic) contributions; repeat while switching air handlers, lifts and neighbouring equipment to build an exclusion timetable.",
+      "failure": "新裝的隔壁核磁共振磁鐵在鏡筒位置留下 2 mG 的直流場梯度，影像沒有抖動卻出現固定的像散與對準偏移，每次換樣品都要重調；問題持續數月，直到磁場調查才發現來源在牆的另一邊。~A newly installed NMR magnet next door leaves a 2 mG dc field gradient at the column; the image does not jitter but shows fixed astigmatism and alignment offsets that must be retuned after every specimen change, and the cause stays hidden for months until a field survey finds it on the other side of the wall.",
+      "misconception": "顯微鏡放在地下室就自動滿足振動與磁場規格。~Putting the microscope in a basement automatically satisfies vibration and field specifications."
+    },
+    {
+      "anchor": "Young 條紋、啞鈴影像與驗收清單~Young's fringes, dumbbell images and acceptance checklist",
+      "title": "解析度驗收、穩定度驗證與工程交接~Resolution acceptance, stability validation and engineering handoff",
+      "mechanism": "驗收必須用可重複的客觀指標：資訊極限以非晶材料的 Young 條紋量到的最高空間頻率表示；點解析度以矽 [110] 的 0.136 nm 啞鈴是否分開、或以 STEM-HAADF 影像中原子柱的傅立葉峰表示；穩定度以校正後的像差表在 30 分鐘內保持在容限內、以及高壓與透鏡電流的紀錄表示。EELS 與 EDS 另有能量解析度與偵測效率的驗收項。交接文件包含每個高壓與極靴組合的校正表、像差校正程序、場址環境紀錄、樣品損傷指引與每週的穩定度例行檢查，讓後續使用者能判斷儀器是否仍在驗收狀態。~Acceptance uses repeatable objective indicators: the information limit as the highest spatial frequency in Young's fringes on amorphous material; point resolution as whether the 0.136 nm silicon [110] dumbbells separate, or as Fourier peaks of atomic columns in STEM-HAADF images; stability as the corrected aberration table staying within tolerance for 30 minutes together with high-voltage and lens-current logs. EELS and EDS add energy-resolution and detection-efficiency items. The handoff package contains calibration tables for every high-voltage and pole-piece combination, the aberration-correction procedure, site environment records, specimen-damage guidance and a weekly stability routine, so later users can judge whether the instrument is still in its accepted state.",
+      "model": "驗收門檻範例（300 kV、Cs 校正）：Young 條紋資訊極限 ≤ 0.08 nm；矽 [110] 啞鈴 0.136 nm 在 HRTEM 與 HAADF 中皆可分辨，傅立葉峰訊噪比 ≥ 3；校正後 30 分鐘內 C_s 殘餘 |C₃| ≤ 2 µm、A2 ≤ 50 nm、B2 ≤ 50 nm；高壓穩定度 ≤ 1 ppm/min；載台插入 15 分鐘後漂移 ≤ 0.5 nm/min；EELS 零損失峰半高寬 ≤ 0.8 eV（Schottky）或 ≤ 0.2 eV（單色器）。任一項未達即不簽收。~Example acceptance thresholds (300 kV, Cs corrected): Young's-fringe information limit ≤ 0.08 nm; silicon [110] dumbbells at 0.136 nm resolved in both HRTEM and HAADF with Fourier-peak signal-to-noise ≥ 3; within 30 minutes after correction residual |C₃| ≤ 2 µm, A2 ≤ 50 nm and B2 ≤ 50 nm; high-voltage stability ≤ 1 ppm/min; holder drift ≤ 0.5 nm/min 15 minutes after insertion; EELS zero-loss width ≤ 0.8 eV (Schottky) or ≤ 0.2 eV (monochromated). Any failed item blocks sign-off.",
+      "verify": "依清單在同一天內由原廠與使用方共同執行每項測試，所有原始影像、傅立葉轉換、像差表與電源紀錄存檔並附時間戳；一週後由使用方獨立重測資訊極限與漂移，確認結果在驗收值的 10% 內，作為日後退化判斷的基線。~Run every listed test jointly by vendor and user within one day, archive all raw images, Fourier transforms, aberration tables and supply logs with time stamps; one week later the user independently repeats the information-limit and drift tests and confirms results within 10% of the acceptance values, establishing the baseline for later degradation judgements.",
+      "failure": "驗收只在原廠工程師調機後的黃金一小時內拍到一張 0.08 nm 的 Young 條紋便簽收，沒有要求 30 分鐘穩定度；交機後使用者每次都要花兩小時重調校正器，實際可用解析度只有 0.12 nm。~Acceptance signed on a single 0.08 nm Young's-fringe image taken in the golden hour after the factory engineer's tuning, with no 30-minute stability requirement; afterwards users spend two hours re-tuning the corrector every session and the practically usable resolution is 0.12 nm.",
+      "misconception": "規格表上的解析度就是日常使用時可達到的解析度。~The resolution on the specification sheet is the resolution achieved in daily use."
+    }
+  ],
+  "example": "300 kV 解析度預算練習：λ = 1.97 pm。未校正、C_s = 0.6 mm：Scherzer 解析度 d_S = 0.66×(0.6×10⁻³×(1.97×10⁻¹²)³)^¼ ≈ 0.17 nm，Scherzer 離焦 −1.2×√(0.6×10⁻³×1.97×10⁻¹²) ≈ −41 nm，最佳光圈半角 (4λ/C_s)^¼ ≈ 10.7 mrad；矽 [110] 的 0.136 nm 啞鈴無法分開。裝上六極校正器把 C_s 壓到 µm 等級後，光圈由 C₅ = 5 mm 限制在 (λ/C₅)^⅙ ≈ 27 mrad，解析度改由資訊極限決定：C_c = 1.4 mm、Schottky ΔE = 0.7 eV、ΔV/V = 1 ppm、ΔI/I = 0.5 ppm 給焦距散佈 Δ ≈ 4.5 nm、d_info = √(πλΔ/2) ≈ 0.12 nm，啞鈴勉強可分；加單色器到 ΔE = 0.2 eV 後 Δ ≈ 2.3 nm、d_info ≈ 0.084 nm，啞鈴清楚分開。若樣品是石墨烯，300 kV 的最大傳遞能量 71 eV 遠超 17 eV 的位移閾值，必須降到 80 kV（15.8 eV），此時 λ = 4.18 pm，同樣的 Δ 給 d_info ≈ 0.12 nm，仍足以分辨 0.213 nm 的碳六員環間距。數值為教學假設，不代表任何儀器規格。~300 kV resolution-budget exercise: λ = 1.97 pm. Uncorrected with C_s = 0.6 mm: Scherzer resolution d_S = 0.66×(0.6×10⁻³×(1.97×10⁻¹²)³)^¼ ≈ 0.17 nm, Scherzer defocus −1.2×√(0.6×10⁻³×1.97×10⁻¹²) ≈ −41 nm, optimum semi-angle (4λ/C_s)^¼ ≈ 10.7 mrad; the 0.136 nm silicon [110] dumbbells cannot be separated. With a hexapole corrector bringing C_s to the micrometre level, the aperture is limited by C₅ = 5 mm at (λ/C₅)^⅙ ≈ 27 mrad and resolution passes to the information limit: C_c = 1.4 mm, Schottky ΔE = 0.7 eV, ΔV/V = 1 ppm and ΔI/I = 0.5 ppm give a focal spread Δ ≈ 4.5 nm and d_info = √(πλΔ/2) ≈ 0.12 nm, barely resolving the dumbbells; a monochromator at ΔE = 0.2 eV gives Δ ≈ 2.3 nm and d_info ≈ 0.084 nm, resolving them clearly. For graphene the 71 eV maximum transfer at 300 kV far exceeds the 17 eV displacement threshold, so the voltage must drop to 80 kV (15.8 eV), where λ = 4.18 pm and the same Δ gives d_info ≈ 0.12 nm, still enough for the 0.213 nm carbon-ring spacing. Values are teaching assumptions, not any instrument's specification.",
+  "history": "1931 年 Ruska 與 Knoll 在柏林建造第一台電子顯微鏡，1933 年超越光學顯微鏡的解析度；Scherzer 在 1936 年證明圓對稱靜電磁透鏡的球面像差不可能為負，使像差成為此後六十年的極限。1990 年代 Rose 提出六極校正器方案，Haider、Rose 與 Urban 在 1998 年於 200 kV 儀器上實證 Cs 校正，隨後 CEOS 與各大廠把校正器商品化，300 kV 儀器的資訊極限進入 0.05 到 0.08 nm；單色器、直接電子偵測器與 ppm 級電源使穩定度工程成為今日高解析電子顯微鏡的核心。本課只重建公開原理與工程方法。~Ruska and Knoll built the first electron microscope in Berlin in 1931 and surpassed light-microscope resolution in 1933; Scherzer proved in 1936 that rotationally symmetric electrostatic and magnetic lenses cannot have negative spherical aberration, making aberration the limit for the next sixty years. In the 1990s Rose proposed the hexapole corrector, Haider, Rose and Urban demonstrated Cs correction on a 200 kV instrument in 1998, CEOS and the major makers then commercialised correctors, and the information limit of 300 kV instruments reached 0.05 to 0.08 nm; monochromators, direct electron detectors and ppm-level supplies made stability engineering the core of today's high-resolution electron microscopy. This course reconstructs public principles and engineering methods only.",
+  "place": {
+    "name": "于利希研究中心 Ernst Ruska 中心參照點~Ernst Ruska-Centre, Forschungszentrum Jülich reference",
+    "country": "德國~Germany",
+    "lat": 50.903,
+    "lng": 6.411,
+    "query": "Ernst Ruska-Centre Forschungszentrum Jülich"
+  },
+  "sources": [
+    {
+      "key": "jeol-tem-products",
+      "title": "JEOL：穿透電子顯微鏡產品",
+      "titleEn": "JEOL: Transmission electron microscope products",
+      "publisher": "JEOL Ltd.",
+      "url": "https://www.jeol.com/products/scientific/tem/",
+      "sourceType": "primary",
+      "scope": "依 300 kV、200 kV、120 kV 與低溫、半導體等用途分類的 TEM 公開產品目錄；課程數值不引用其規格。",
+      "scopeEn": "Public TEM catalogue grouped by 300 kV, 200 kV and 120 kV classes and by cryo, semiconductor and other uses; course numbers do not quote its specifications."
+    },
+    {
+      "key": "thermofisher-tem",
+      "title": "Thermo Fisher Scientific：穿透電子顯微鏡",
+      "titleEn": "Thermo Fisher Scientific: Transmission electron microscopes",
+      "publisher": "Thermo Fisher Scientific",
+      "url": "https://www.thermofisher.com/us/en/home/electron-microscopy/products/transmission-electron-microscopes.html",
+      "sourceType": "primary",
+      "scope": "依儀器、技術、功能與應用（半導體、材料、生命科學）整理的 TEM 公開產品總覽。",
+      "scopeEn": "Public TEM overview organised by instruments, techniques, features and applications in semiconductors, materials and life sciences."
+    },
+    {
+      "key": "wikipedia-tem",
+      "title": "Wikipedia：穿透電子顯微術",
+      "titleEn": "Wikipedia: Transmission electron microscopy",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Transmission_electron_microscopy",
+      "sourceType": "secondary",
+      "scope": "電子束穿透薄樣品成像、解析度優於光學顯微鏡並跨越物理、化學與生物應用的二手概述，僅作背景導讀。",
+      "scopeEn": "Secondary overview of imaging by electrons transmitted through thin specimens, with resolution far beyond light microscopy across physical, chemical and biological sciences; background reading only."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "日本電子",
+      "nameEn": "JEOL",
+      "business": "穿透與掃描電子顯微鏡、分析儀器製造，含 300 kV 像差校正 TEM。",
+      "businessEn": "Maker of transmission and scanning electron microscopes and analytical instruments, including 300 kV aberration-corrected TEMs.",
+      "url": "https://www.jeol.com/",
+      "investorUrl": "https://www.jeol.com/ir/",
+      "security": {"symbol": "6951", "exchange": "TSE", "currency": "JPY"},
+      "role": "高壓 TEM 與冷場發射槍技術的公開產品參照",
+      "roleEn": "Public product reference for high-voltage TEMs and cold field-emission guns"
+    },
+    {
+      "name": "賽默飛世爾科技",
+      "nameEn": "Thermo Fisher Scientific",
+      "business": "科學儀器供應商，電子顯微鏡事業涵蓋 Cs 校正 TEM/STEM 與單色器平台。",
+      "businessEn": "Scientific-instrument supplier whose electron-microscopy business covers Cs-corrected TEM/STEM and monochromated platforms.",
+      "url": "https://www.thermofisher.com/",
+      "investorUrl": "https://ir.thermofisher.com/",
+      "security": {"symbol": "TMO", "exchange": "NYSE", "currency": "USD"},
+      "role": "像差校正 TEM/STEM 平台的公開產品參照",
+      "roleEn": "Public product reference for aberration-corrected TEM/STEM platforms"
+    },
+    {
+      "name": "Gatan（AMETEK 旗下）",
+      "nameEn": "Gatan (part of AMETEK)",
+      "business": "電子顯微鏡用直接電子偵測相機、能量過濾器、EELS 譜儀與樣品載台。",
+      "businessEn": "Direct-electron-detection cameras, energy filters, EELS spectrometers and specimen holders for electron microscopes.",
+      "url": "https://www.gatan.com/",
+      "investorUrl": "https://investors.ametek.com/",
+      "security": {"symbol": "AME", "exchange": "NYSE", "currency": "USD"},
+      "role": "偵測器 DQE、能量過濾與 t/λ 厚度量測的參照供應商",
+      "roleEn": "Reference supplier for detector DQE, energy filtering and t/λ thickness measurement"
+    },
+    {
+      "name": "日立（日立高新技術母公司）",
+      "nameEn": "Hitachi (parent of Hitachi High-Tech)",
+      "business": "綜合電機集團，子公司日立高新技術製造 TEM、SEM 與 FIB 等電子光學儀器。",
+      "businessEn": "Diversified electrical group whose subsidiary Hitachi High-Tech manufactures TEM, SEM and FIB electron-optical instruments.",
+      "url": "https://www.hitachi.com/",
+      "investorUrl": "https://www.hitachi.com/IR-e/",
+      "security": {"symbol": "6501", "exchange": "TSE", "currency": "JPY"},
+      "role": "冷場發射 TEM 與全像電子顯微鏡的公開參照",
+      "roleEn": "Public reference for cold-field-emission TEMs and electron holography microscopes"
+    }
+  ],
+  "related": ["a441", "a443"],
+  "architectureNodes": [["Schottky 槍與 300 kV 高壓槽", "Schottky gun and 300 kV high-voltage tank"], ["聚光鏡與單色器", "Condenser lenses and monochromator"], ["物鏡極靴與樣品載台", "Objective pole piece and specimen holder"], ["六極 Cs 校正器", "Hexapole Cs corrector"], ["投影鏡與直接電子偵測器", "Projector lenses and direct electron detector"], ["EELS 能量過濾器", "EELS energy filter"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
+}

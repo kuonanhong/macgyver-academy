@@ -1,0 +1,161 @@
+{
+  "id": "a446",
+  "title": "原子力顯微鏡~Atomic force microscopes",
+  "discipline": "optics-analytical-instruments",
+  "family": "electron",
+  "focus": "懸臂力感測、光槓桿偵測、動態模式、彈簧常數校正與皮米級雜訊預算~Cantilever force sensing, optical-lever detection, dynamic modes, spring-constant calibration and picometre noise budgets",
+  "summary": "以懸臂為奈牛頓等級的力感測器出發，理解 AFM 如何用光槓桿把皮米偏折放大成可量測的訊號，再把懸臂製作、共振模式、彈簧常數校正、熱雜訊、閉迴路掃描與標準樣品驗收整合成可交接的表面計量工程。~Start from the cantilever as a nanonewton force sensor to see how an AFM amplifies picometre deflections into measurable signals with an optical lever, then integrate cantilever fabrication, resonance modes, spring-constant calibration, thermal noise, closed-loop scanning and reference-sample acceptance into a transferable surface-metrology record.",
+  "units": [
+    {
+      "anchor": "懸臂—探針—表面作用力~Cantilever–tip–surface force",
+      "title": "探針作用力與懸臂力感測~Tip–surface forces and cantilever force sensing",
+      "mechanism": "原子力顯微鏡不需要導電樣品，它把一支末端帶尖銳探針的微懸臂靠近表面，由探針與表面之間的作用力使懸臂彎曲。遠距離時以凡得瓦吸引力與靜電力為主，接觸後以泡利排斥與彈性變形為主，液體中還有毛細力與雙電層力。懸臂依虎克定律 F = k·Δz 把力轉成偏折，彈簧常數從 0.01 N/m 的軟懸臂到 40 N/m 的硬懸臂，對應可量測的力從 pN 到 µN。成像時回授系統維持偏折（接觸模式）或振幅、頻率（動態模式）為定值，Z 軸的回授輸出即為地形。~An atomic force microscope needs no conducting sample: a microcantilever carrying a sharp tip approaches the surface and the tip–surface force bends it. At long range van der Waals attraction and electrostatic forces dominate, in contact Pauli repulsion and elastic deformation take over, and in liquid capillary and double-layer forces appear as well. The cantilever converts force to deflection through Hooke's law F = k·Δz, with spring constants from 0.01 N/m for soft levers to 40 N/m for stiff ones, spanning measurable forces from piconewtons to micronewtons. During imaging the feedback holds the deflection (contact mode) or the amplitude or frequency (dynamic modes) constant, and the Z feedback output is the topography.",
+      "model": "接觸模式用 k = 0.2 N/m 的懸臂、設定偏折 2 nm，作用力 F = 0.2 × 2×10⁻⁹ = 0.4 nN；探針半徑 R = 10 nm 壓在等效模數 E* = 1 GPa 的聚合物上，Hertz 接觸壓痕深度 δ = (9F²/(16 R E*²))^(1/3) = (9×1.6×10⁻¹⁹/(16×10⁻⁸×10¹⁸))^(1/3) ≈ (9×10⁻³⁰)^(1/3) ≈ 0.21 nm，接觸半徑 a = √(Rδ) ≈ 1.4 nm；若把偏折設到 20 nm，力變 4 nN，壓痕增為 0.97 nm，軟材料將被明顯壓扁。~In contact mode with a k = 0.2 N/m lever and a 2 nm deflection set point the force is F = 0.2 × 2×10⁻⁹ = 0.4 nN; a tip of radius R = 10 nm pressed into a polymer with reduced modulus E* = 1 GPa gives a Hertz indentation δ = (9F²/(16 R E*²))^(1/3) = (9×1.6×10⁻¹⁹/(16×10⁻⁸×10¹⁸))^(1/3) ≈ (9×10⁻³⁰)^(1/3) ≈ 0.21 nm and a contact radius a = √(Rδ) ≈ 1.4 nm; raising the set point to 20 nm makes 4 nN and a 0.97 nm indentation, visibly flattening soft materials.",
+      "verify": "在硬的平坦表面（如藍寶石或矽）取力—距離曲線：接近段應平坦，接觸後偏折對壓電位移的斜率應為 1（nm/nm），這同時校正光槓桿靈敏度；再在聚合物上取曲線，用 Hertz 或 DMT 模型擬合壓痕段得到模數，與已知值比較；拉開時的黏附跳離力記錄為 pull-off 力，空氣中常為數 nN。~Record a force–distance curve on a hard flat surface such as sapphire or silicon: the approach segment should be flat and the post-contact slope of deflection versus piezo travel should be 1 (nm/nm), which simultaneously calibrates the optical-lever sensitivity; then take curves on a polymer, fit the indentation segment with a Hertz or DMT model to obtain the modulus and compare with the known value; log the adhesion jump-off on retraction as the pull-off force, typically a few nanonewtons in air.",
+      "failure": "設定力過大會讓探針在軟樣品上犁出溝槽或把生物分子推走，影像看起來平整卻是被壓平後的假象；在空氣中忽略毛細力，則實際作用力比設定值高出數 nN，探針磨損加快、解析度隨時間變差。~An excessive set-point force ploughs grooves into soft samples or sweeps biomolecules away, so the image looks smooth only because the surface has been flattened; ignoring capillary force in air means the real load exceeds the set point by several nanonewtons, accelerating tip wear so resolution degrades over time.",
+      "misconception": "AFM 探針只是輕輕碰到表面，施加的力可以忽略。~The AFM tip merely touches the surface, so the applied force is negligible."
+    },
+    {
+      "anchor": "共振懸臂的振幅與頻率~Resonant cantilever amplitude and frequency",
+      "title": "動態模式：振幅調變與頻率調變~Dynamic modes: amplitude and frequency modulation",
+      "mechanism": "動態模式讓懸臂在共振頻率附近振動，探針只在每個週期最低點短暫接觸或完全不接觸表面，橫向力幾乎為零。小振幅時作用力梯度 ∂F/∂z 會改變有效彈簧常數，使共振頻率移動 Δf ≈ −(f₀/2k)·∂F/∂z；振幅調變（輕敲）模式維持振幅定值，頻率調變模式用鎖相迴路直接追蹤 Δf。空氣中品質因數 Q 約數百，液體中只有個位數，真空中可達 10⁴ 以上；Q 越高振幅反應越慢，時間常數 τ = Q/(π f₀)，這是真空中必須改用頻率調變的原因。~Dynamic modes drive the cantilever near resonance so the tip touches the surface only briefly at the bottom of each cycle or not at all, almost eliminating lateral force. For small amplitudes the force gradient ∂F/∂z modifies the effective spring constant and shifts the resonance by Δf ≈ −(f₀/2k)·∂F/∂z; amplitude-modulation (tapping) mode holds the amplitude constant, while frequency-modulation mode tracks Δf directly with a phase-locked loop. The quality factor Q is a few hundred in air, single digits in liquid and above 10⁴ in vacuum; the higher the Q the slower the amplitude responds, with time constant τ = Q/(π f₀), which is why vacuum work switches to frequency modulation.",
+      "model": "輕敲懸臂 f₀ = 300 kHz、k = 40 N/m，若作用力梯度 1 N/m，Δf ≈ −(300×10³/80)×1 = −3.75 kHz；真空 FM-AFM 用 f₀ = 160 kHz、k = 40 N/m，梯度 0.01 N/m 給 Δf ≈ −20 Hz，仍可由鎖相迴路分辨。振幅反應時間：空氣 Q = 400 時 τ = 400/(π×300×10³) ≈ 0.42 ms；真空 Q = 20 000 時 τ ≈ 21 ms，每像素停留若只有 1 ms，振幅迴授根本來不及反應。~For a tapping lever with f₀ = 300 kHz and k = 40 N/m, a force gradient of 1 N/m gives Δf ≈ −(300×10³/80)×1 = −3.75 kHz; a vacuum FM-AFM lever with f₀ = 160 kHz and k = 40 N/m sees Δf ≈ −20 Hz for a 0.01 N/m gradient, still resolvable by the phase-locked loop. Amplitude response time: in air with Q = 400, τ = 400/(π×300×10³) ≈ 0.42 ms; in vacuum with Q = 20 000, τ ≈ 21 ms, so with only 1 ms per pixel the amplitude feedback cannot keep up.",
+      "verify": "先掃頻取得自由振盪的共振曲線，由半高寬求 Q 與 f₀；接近表面時記錄振幅與相位對距離的曲線，確認振幅線性下降區間與相位的吸引／排斥轉折；在 FM 模式用已知的 Si(111)-7×7 或 KBr 表面驗證頻率位移影像，並用 Albrecht 公式估計頻率雜訊與實測比較。~Sweep the drive to obtain the free resonance curve and extract Q and f₀ from the half-power width; while approaching, record amplitude and phase versus distance, confirming the linear amplitude-reduction region and the attractive-to-repulsive phase transition; in FM mode validate frequency-shift images on a known Si(111)-7×7 or KBr surface and compare the measured frequency noise with the Albrecht estimate.",
+      "failure": "輕敲模式若設定振幅比太低，探針從吸引區跳進排斥區，相位突然翻轉，影像出現高度跳變與對比反轉；使用者常誤以為樣品有台階，實際上是回授在雙穩態之間切換。~With too low an amplitude set-point ratio in tapping mode the tip jumps from the attractive into the repulsive regime, the phase flips abruptly and images show height jumps and contrast inversion; users often read these as sample steps when the feedback is really switching between two stable states.",
+      "misconception": "品質因數越高，影像一定越清楚，所以在空氣中也該追求高 Q。~A higher quality factor always gives sharper images, so high Q should be pursued in air too."
+    },
+    {
+      "anchor": "矽懸臂與探針尖端~Silicon cantilever and tip apex",
+      "title": "懸臂製作、彈簧常數與探針半徑~Cantilever fabrication, spring constant and tip radius",
+      "mechanism": "懸臂以單晶矽或氮化矽經微影與各向異性蝕刻批次製作，探針由矽柱經氧化銳化而成，尖端半徑約 5 到 20 nm。矩形懸臂的彈簧常數 k = E·w·t³/(4L³) 與厚度的三次方成正比，而晶圓厚度控制只有 ±10% 等級，所以同一批懸臂的 k 可相差 30% 以上，必須逐支校正。探針並非理想的點，影像是表面與探針形狀的膨脹（dilation）結果：任何比探針半徑更陡的特徵都會被探針輪廓取代。~Cantilevers are batch-fabricated from single-crystal silicon or silicon nitride by lithography and anisotropic etching, and tips are sharpened from silicon pillars by oxidation to an apex radius of about 5 to 20 nm. A rectangular lever has k = E·w·t³/(4L³), proportional to the cube of thickness, while wafer thickness control is only at the ±10% level, so levers from one batch can differ in k by more than 30% and each must be calibrated. The tip is not an ideal point: the image is the dilation of the surface by the tip shape, and any feature steeper than the tip profile is replaced by the tip's own outline.",
+      "model": "取矽的 E = 169 GPa、ρ = 2330 kg/m³、L = 225 µm、w = 30 µm、t = 3 µm：k = 169×10⁹×30×10⁻⁶×(3×10⁻⁶)³/(4×(225×10⁻⁶)³) ≈ 3.0 N/m；共振頻率 f₀ ≈ 0.162·(t/L²)·√(E/ρ) = 0.162×(3×10⁻⁶/5.06×10⁻⁸)×8517 ≈ 82 kHz。厚度若為 3.3 µm（+10%），k 升為 4.0 N/m（+33%）。探針膨脹：半徑 R = 10 nm 的探針掃過高 h = 2 nm 的台階，每側展寬約 √(2Rh) = √40 ≈ 6.3 nm。~With silicon E = 169 GPa, ρ = 2330 kg/m³, L = 225 µm, w = 30 µm and t = 3 µm: k = 169×10⁹×30×10⁻⁶×(3×10⁻⁶)³/(4×(225×10⁻⁶)³) ≈ 3.0 N/m, and the resonance f₀ ≈ 0.162·(t/L²)·√(E/ρ) = 0.162×(3×10⁻⁶/5.06×10⁻⁸)×8517 ≈ 82 kHz. A thickness of 3.3 µm (+10%) raises k to 4.0 N/m (+33%). Tip dilation: a tip of radius R = 10 nm crossing a step of height h = 2 nm broadens each edge by about √(2Rh) = √40 ≈ 6.3 nm.",
+      "verify": "用 SEM 量懸臂的 L、w 與 t 並代入公式，與熱雜訊法或 Sader 法的 k 比較，三者差異應在 20% 以內；探針半徑用尖刺陣列樣品（如 TGT1）做盲重建（blind reconstruction），或掃描已知寬度的奈米線，從展寬反推 R，並在長時間掃描後重測以追蹤磨損。~Measure the lever's L, w and t by SEM and insert them into the formula, then compare with the thermal-noise or Sader value of k, expecting agreement within 20%; estimate the tip radius by blind reconstruction on a spike-array sample such as TGT1 or by scanning nanowires of known width and inverting the broadening, and re-measure after long scans to track wear.",
+      "failure": "探針磨鈍或沾上碎屑後，所有凸起特徵呈現同樣的形狀（探針的像），寬度被高估數十 nm，顆粒尺寸統計整體偏大；若把這些尺寸當成製程回饋，會誤調微影或沉積參數。~A blunt or debris-laden tip makes every protrusion take the same shape, the tip's own image, overestimating widths by tens of nanometres and biasing particle-size statistics upward; feeding such dimensions back into a process wrongly adjusts lithography or deposition parameters.",
+      "misconception": "同一盒懸臂的彈簧常數都等於標示值，不必逐支校正。~Every lever in a box has the labelled spring constant, so per-lever calibration is unnecessary."
+    },
+    {
+      "anchor": "光槓桿與四象限光電二極體~Optical lever and quadrant photodiode",
+      "title": "光槓桿偵測與閉迴路掃描器~Optical-lever detection and closed-loop scanner",
+      "mechanism": "最常見的偏折偵測是光槓桿：雷射聚焦在懸臂背面，反射光打到四象限光電二極體，懸臂末端傾角的變化讓光點在二極體上移動，上下象限的差訊號正比於偏折，左右差訊號則對應扭轉（摩擦力）。幾何放大比由光路長度與懸臂長度決定，可把 1 nm 的偏折變成數百 nm 的光點位移。掃描器方面，現代儀器把 XY 做成帶電容式位置感測器的撓性平台，閉迴路消除壓電遲滯與潛變，Z 軸則維持高頻寬的壓電驅動，並常以獨立感測器記錄真實高度。~The commonest deflection sensor is the optical lever: a laser is focused on the back of the cantilever and the reflected beam lands on a quadrant photodiode, so a change in end slope moves the spot across the diode; the top-minus-bottom difference signal is proportional to deflection and the left-minus-right difference to torsion, hence friction. The geometric gain is set by the optical path length and the lever length and turns a 1 nm deflection into hundreds of nanometres of spot motion. For scanning, modern instruments build the XY stage as a flexure platform with capacitive position sensors whose closed loop removes piezo hysteresis and creep, while Z keeps a high-bandwidth piezo drive and often an independent sensor records true height.",
+      "model": "末端受力懸臂的端點斜率 θ = 3Δz/(2L)，反射光偏轉 2θ，在距離 D 的二極體上位移 ΔX = 2θ·D = 3D·Δz/L。取 L = 225 µm、D = 40 mm：ΔX/Δz = 3×40/0.225 ≈ 533，1 nm 偏折給 0.53 µm 的光點位移；若雷射光點直徑 30 µm，差訊號相對變化約 0.53/30 ≈ 1.8% 每 nm，以 2 V 的總和訊號換算得約 36 mV/nm，反向靈敏度 InvOLS ≈ 28 nm/V。~For an end-loaded lever the end slope is θ = 3Δz/(2L), the reflected beam turns by 2θ, and on a diode at distance D the spot moves ΔX = 2θ·D = 3D·Δz/L. With L = 225 µm and D = 40 mm, ΔX/Δz = 3×40/0.225 ≈ 533, so 1 nm of deflection moves the spot 0.53 µm; with a 30 µm laser spot the relative difference signal changes by about 0.53/30 ≈ 1.8% per nm, which for a 2 V sum signal is roughly 36 mV/nm, an inverse sensitivity InvOLS ≈ 28 nm/V.",
+      "verify": "在硬表面取力曲線，以接觸段斜率直接量 InvOLS（nm/V），每次換懸臂或移動雷射光點後重做；掃描器則用已知節距（如 3 µm 或 10 µm）的光柵在不同掃描範圍與速度下量正反向誤差，閉迴路開啟後殘差應小於 0.1%；再把電容感測器的雜訊（典型 0.1 nm rms）記錄為橫向解析度的下限。~Take a force curve on a hard surface and read InvOLS (nm/V) directly from the contact slope, repeating after every lever change or laser realignment; test the scanner on a grating of known pitch (3 µm or 10 µm) at several scan sizes and speeds, measuring forward-backward error, which with the closed loop on should fall below 0.1%; record the capacitive-sensor noise (typically 0.1 nm rms) as the floor of lateral resolution.",
+      "failure": "雷射光點偏到懸臂邊緣或打到基座，干涉條紋隨高度週期性變化，力曲線的接近段出現正弦波紋，影像背景帶有條紋；在液體中若光點跨越液面彎月，折射讓靈敏度隨液位漂移而改變。~A laser spot drifting to the lever edge or onto the chip base produces interference fringes that vary periodically with height, so approach segments of force curves show sinusoidal ripple and image backgrounds carry stripes; in liquid a spot crossing the meniscus suffers refraction that changes sensitivity as the liquid level drifts.",
+      "misconception": "光槓桿量的是懸臂末端的位移，所以不同懸臂長度靈敏度相同。~The optical lever measures end displacement directly, so sensitivity is the same for every lever length."
+    },
+    {
+      "anchor": "熱雜訊頻譜與台階高度標準片~Thermal spectrum and step-height standard",
+      "title": "彈簧常數與高度尺度的校正~Calibrating spring constant and height scale",
+      "mechanism": "力的量測需要兩個校正：光槓桿靈敏度（V 到 nm）與彈簧常數（nm 到 nN）。彈簧常數最常用熱雜訊法：由能量均分定理，懸臂的熱振動均方位移 ⟨z²⟩ 與 k_B·T/k 成正比，量頻譜中第一共振峰的面積即可求 k；光槓桿偵測的是斜率而非位移，加上第一模態只佔總能量的 97%，因此需要 Butt–Jaschke 修正係數 0.817。高度尺度則靠可溯源的台階高度標準片與節距光柵校正，Z 感測器與壓電的非線性要分段記錄。~Force measurement needs two calibrations: the optical-lever sensitivity (volts to nanometres) and the spring constant (nanometres to nanonewtons). The thermal-noise method is the usual route to k: by equipartition the mean-square thermal displacement ⟨z²⟩ of the lever scales as k_B·T/k, so integrating the first resonance peak of the measured spectrum yields k; because the optical lever senses slope rather than displacement and the first mode carries only 97% of the energy, the Butt–Jaschke correction factor 0.817 is applied. The height scale is calibrated with traceable step-height standards and pitch gratings, and the nonlinearity of the Z sensor and piezo is recorded range by range.",
+      "model": "k = 0.817·k_B·T/⟨z*²⟩。在 T = 300 K，k_B·T = 4.14×10⁻²¹ J；若光槓桿量得的熱振動 rms 為 0.130 nm，⟨z*²⟩ = 1.69×10⁻²⁰ m²，k = 0.817×4.14×10⁻²¹/1.69×10⁻²⁰ ≈ 0.20 N/m。對 40 N/m 的硬懸臂，rms 只有 √(0.817×4.14×10⁻²¹/40) ≈ 9.2 pm，接近偵測器底噪，熱法不確定度升到 20% 以上。高度校正：100.0 nm 標準台階量得 98.6 nm，Z 修正係數 1.014。~k = 0.817·k_B·T/⟨z*²⟩. At T = 300 K, k_B·T = 4.14×10⁻²¹ J; if the optical lever records a thermal rms of 0.130 nm, ⟨z*²⟩ = 1.69×10⁻²⁰ m² and k = 0.817×4.14×10⁻²¹/1.69×10⁻²⁰ ≈ 0.20 N/m. For a stiff 40 N/m lever the rms is only √(0.817×4.14×10⁻²¹/40) ≈ 9.2 pm, close to the detector floor, so the thermal method's uncertainty rises above 20%. Height calibration: a 100.0 nm standard step measuring 98.6 nm gives a Z correction factor of 1.014.",
+      "verify": "熱雜訊法取至少 100 次平均的頻譜，用簡諧振子加白噪底的模型擬合，記錄 f₀、Q 與 k，並與 Sader 法（由尺寸、Q、f₀ 與流體密度計算）比較，兩者差異超過 15% 時檢查雷射光點位置；高度校正用至少兩種台階（如 20 nm 與 100 nm）在影像中央與邊緣各量一次，比較壓電非線性。~For the thermal method average at least 100 spectra, fit a harmonic-oscillator plus white-noise model, log f₀, Q and k, and compare with the Sader method (from dimensions, Q, f₀ and fluid density); investigate the laser-spot position whenever the two differ by more than 15%; for height calibration measure at least two steps (for example 20 nm and 100 nm) at the image centre and edge to compare piezo nonlinearity.",
+      "failure": "把廠商標示的 k 直接拿來算力，誤差可達 ±50%，彈性模數結果相差一倍；若熱法頻譜中混入 50 Hz 諧波或聲學尖峰而未排除，擬合面積被高估，k 被低估，所有力值跟著縮小。~Using the vendor's nominal k for force calculations can err by ±50% and double or halve modulus results; if mains harmonics or acoustic peaks contaminate the thermal spectrum and are not excluded, the fitted area is overestimated, k is underestimated and every force value shrinks with it.",
+      "misconception": "熱雜訊法只要量 rms 就好，光槓桿的斜率效應可以忽略。~The thermal method only needs the rms value; the slope effect of the optical lever can be ignored."
+    },
+    {
+      "anchor": "偏折訊號雜訊底~Deflection-signal noise floor",
+      "title": "熱雜訊與偵測器雜訊預算~Thermal and detector noise budget",
+      "mechanism": "AFM 的垂直解析度由三類雜訊決定：懸臂本身的熱布朗運動、光槓桿與光電二極體的散粒與電子雜訊，以及掃描器與環境的機械雜訊。在遠低於共振的頻率，熱雜訊密度為 √(4k_B·T/(k·ω₀·Q))，所以軟而低頻、低 Q 的接觸懸臂最吵；硬而高頻的懸臂熱雜訊可低於 1 fm/√Hz，此時偵測器雜訊（典型 10 到 50 fm/√Hz）反而是主因。輕敲與 FM 模式工作在共振上，熱雜訊被 Q 放大，但訊號也被放大，真正的限制變成頻率或振幅雜訊。~Vertical resolution is set by three noise classes: the lever's own thermal Brownian motion, shot and electronic noise of the optical lever and photodiode, and mechanical noise from the scanner and environment. Well below resonance the thermal noise density is √(4k_B·T/(k·ω₀·Q)), so soft, low-frequency, low-Q contact levers are the noisiest; stiff high-frequency levers fall below 1 fm/√Hz and the detector noise, typically 10 to 50 fm/√Hz, dominates instead. Tapping and FM modes operate on resonance where thermal noise is amplified by Q, but so is the signal, and the true limit becomes frequency or amplitude noise.",
+      "model": "接觸懸臂 k = 0.2 N/m、f₀ = 15 kHz（ω₀ = 9.4×10⁴ s⁻¹）、Q = 50、T = 300 K：√(4×4.14×10⁻²¹/(0.2×9.4×10⁴×50)) ≈ 1.3×10⁻¹³ m/√Hz = 130 fm/√Hz，1 kHz 頻寬內 rms ≈ 4.2 pm；硬懸臂 k = 40 N/m、f₀ = 300 kHz、Q = 400 給 0.74 fm/√Hz，1 kHz 內僅 23 fm。加上 20 fm/√Hz 的偵測器雜訊：接觸懸臂總計 √(130² + 20²) ≈ 132 fm/√Hz，幾乎全是熱雜訊；硬懸臂總計 20 fm/√Hz，幾乎全是偵測器。~A contact lever with k = 0.2 N/m, f₀ = 15 kHz (ω₀ = 9.4×10⁴ s⁻¹), Q = 50 and T = 300 K: √(4×4.14×10⁻²¹/(0.2×9.4×10⁴×50)) ≈ 1.3×10⁻¹³ m/√Hz = 130 fm/√Hz, or about 4.2 pm rms in a 1 kHz bandwidth; a stiff lever with k = 40 N/m, f₀ = 300 kHz and Q = 400 gives 0.74 fm/√Hz, only 23 fm in 1 kHz. Adding 20 fm/√Hz of detector noise: the contact lever totals √(130² + 20²) ≈ 132 fm/√Hz, almost entirely thermal, while the stiff lever totals 20 fm/√Hz, almost entirely detector.",
+      "verify": "把雷射對準懸臂但探針遠離表面，記錄偏折訊號的功率譜密度：共振以下的平台應與熱雜訊加偵測器雜訊的估計相符，共振峰形狀給出 Q；再用遮住雷射或打到固定反射鏡的方式單獨量偵測器底噪，兩者相減即為懸臂熱雜訊，並在 1 kHz 頻寬內換算 rms 與影像上的高度雜訊比較。~Align the laser on the lever with the tip far from the surface and record the deflection power spectral density: the plateau below resonance should match the thermal-plus-detector estimate and the peak shape gives Q; then measure the detector floor alone by blocking the laser or reflecting it from a fixed mirror, subtract to isolate the lever's thermal noise, and convert to rms in a 1 kHz bandwidth for comparison with the height noise seen in images.",
+      "failure": "用軟接觸懸臂追求次奈米的高度精度而不縮減頻寬，4 pm 等級的熱雜訊疊在 0.3 nm 的單原子層台階上，台階邊緣無法判定；換成硬懸臂又因偵測器雜訊與較大的作用力壓壞軟樣品，兩種選擇都失敗，因為沒有先做預算。~Chasing sub-nanometre height precision with a soft contact lever and no bandwidth reduction stacks 4 pm thermal noise onto a 0.3 nm monolayer step so the edge cannot be located; switching to a stiff lever then fails through detector noise and the larger force crushing a soft sample, and both choices fail because no budget was made first.",
+      "misconception": "雜訊都來自電子線路，懸臂本身不會產生雜訊。~All noise comes from electronics; the cantilever itself produces none."
+    },
+    {
+      "anchor": "隔音罩、溫控與回授增益~Acoustic hood, temperature control and feedback gains",
+      "title": "環境、漂移與回授整合~Environment, drift and feedback integration",
+      "mechanism": "整機性能由機械迴路決定：從探針經懸臂座、掃描器、機架到樣品座的所有零件構成一個結構迴路，溫度變化會讓迴路各段不等膨脹而造成漂移，聲音與地板振動會激發迴路共振。因此 AFM 放在隔音罩與隔振平台上，整機熱平衡後才取像。回授增益需與掃描速度、樣品起伏匹配：增益太低地形被低通濾掉且探針撞上陡坡，太高則回授自激，影像出現高頻條紋；誤差訊號影像是判斷回授是否跟得上的直接證據。~Whole-instrument performance is set by the mechanical loop: every part from tip through lever holder, scanner and frame to sample holder forms a structural loop, temperature changes expand its segments unequally and cause drift, and sound or floor vibration excites its resonances. The AFM therefore sits under an acoustic hood on an isolation platform and images only after thermal equilibrium. Feedback gains must match scan speed and surface relief: too little gain low-pass filters the topography and the tip collides with steep slopes, too much gain makes the loop oscillate with high-frequency stripes, and the error-signal image is the direct evidence of whether feedback keeps up.",
+      "model": "結構迴路長 50 mm、鋼材 CTE 12 ppm/K，實驗室溫度每分鐘漂 0.02 K：漂移 ≈ 50×10⁻³×12×10⁻⁶×0.02 = 12 nm/min。512 條線、每線 1 s 的影像需 512 s，累積約 100 nm，對 1 µm 視野是 10% 的扭曲；熱穩定 1 小時後溫度斜率降到 0.002 K/min，漂移約 1.2 nm/min，影像扭曲降到 1%。回授方面，1 Hz 線頻、512 像素時每像素 1 ms，迴路頻寬至少需 1 kHz。~A 50 mm structural loop in steel with CTE 12 ppm/K in a laboratory drifting 0.02 K per minute moves about 50×10⁻³×12×10⁻⁶×0.02 = 12 nm/min. A 512-line frame at 1 s per line takes 512 s and accumulates about 100 nm, a 10% distortion over a 1 µm field; after an hour of thermal settling the slope falls to 0.002 K/min, drift to about 1.2 nm/min and the distortion to 1%. For feedback, a 1 Hz line rate with 512 pixels gives 1 ms per pixel, so the loop bandwidth must be at least 1 kHz.",
+      "verify": "開機後每 10 分鐘對同一特徵取像，用互相關求位移向量對時間的曲線，等斜率低於允許值再開始量測；同時比較高度影像與誤差訊號影像，誤差訊號的 rms 應遠小於地形起伏，並在陡坡處無明顯拖尾；最後用麥克風與加速規確認隔音罩內的聲壓與振動頻譜無共振放大。~After start-up image the same feature every 10 minutes, cross-correlate to get the displacement-versus-time curve, and start measuring only once the slope is below the allowance; at the same time compare the height image with the error-signal image, whose rms should be far below the relief with no tailing at steep edges; finally use a microphone and accelerometer to confirm that sound pressure and vibration inside the hood show no resonant amplification.",
+      "failure": "為了趕時間在開機 10 分鐘內取像，漂移把圓形顆粒拉成橢圓並讓正反向影像錯位；又為了修正而把增益調高，結果迴路在 2 到 5 kHz 自激，影像出現細密條紋，兩個錯誤互相掩蓋，量測結果完全不可信。~Imaging within 10 minutes of start-up to save time lets drift stretch circular particles into ellipses and misregister forward and backward frames; raising the gain to compensate makes the loop oscillate at 2 to 5 kHz with fine stripes, and the two errors mask each other so the results cannot be trusted.",
+      "misconception": "閉迴路掃描器會自動修正所有漂移，因此不需要等熱平衡。~A closed-loop scanner corrects all drift automatically, so waiting for thermal equilibrium is unnecessary."
+    },
+    {
+      "anchor": "驗收標準片與交接紀錄~Acceptance standards and handoff record",
+      "title": "標準樣品驗收與工程交接~Reference-sample acceptance and engineering handoff",
+      "mechanism": "AFM 的驗收把前面的模型變成可重複的測試：可溯源的台階高度與節距光柵驗證 Z 與 XY 尺度，懸臂熱頻譜驗證彈簧常數與雜訊底，尖刺樣品驗證探針半徑，長時間重複成像驗證漂移，硬表面的力曲線驗證靈敏度與線性度。交接紀錄要包含每個掃描範圍的校正係數、感測器雜訊、所用懸臂型號與量得的 k、f₀、Q，以及環境條件，因為任何一項改變都會讓後續量測的不確定度失效。~AFM acceptance turns the earlier models into repeatable tests: traceable step heights and pitch gratings verify the Z and XY scales, the lever's thermal spectrum verifies spring constant and noise floor, a spike sample verifies tip radius, long repeated imaging verifies drift, and force curves on a hard surface verify sensitivity and linearity. The handoff record must contain calibration factors for each scan range, sensor noise, the lever type with its measured k, f₀ and Q, and the environmental conditions, because a change in any of them invalidates the uncertainty of later measurements.",
+      "model": "驗收門檻範例：100.0 ± 0.6 nm 標準台階量得 98.6 nm，偏差 −1.4%，校正後重量應落在 ±1% 內；3.000 µm 光柵量得 2.985 µm，XY 修正 1.005；接觸硬表面時 Z 雜訊 25 pm rms（1 kHz 頻寬），對 20 nm 台階信噪比 800，對 0.34 nm 石墨烯單層台階約 14，仍可判讀；探針半徑由尖刺樣品重建得 12 nm，與標稱 10 nm 相符；30 分鐘漂移 1.5 nm/min，低於 2 nm/min 的允收值。~Example acceptance thresholds: a 100.0 ± 0.6 nm standard step measuring 98.6 nm is a −1.4% deviation and must re-measure within ±1% after correction; a 3.000 µm grating measuring 2.985 µm gives an XY correction of 1.005; Z noise in contact with a hard surface is 25 pm rms (1 kHz bandwidth), a signal-to-noise ratio of 800 on a 20 nm step and about 14 on a 0.34 nm graphene monolayer step, still readable; the tip radius reconstructed from the spike sample is 12 nm against a nominal 10 nm; drift after 30 minutes is 1.5 nm/min, below the 2 nm/min allowance.",
+      "verify": "依固定順序執行：熱頻譜與 k；硬表面力曲線與 InvOLS；台階與光柵在三個掃描範圍各量三次並取平均與標準差；尖刺樣品探針重建；同一區域 30 分鐘重複成像求漂移；全部結果填入與模型並列的驗收表，任何項目超出允收值需重做校正並記錄原因。~Execute in a fixed order: thermal spectrum and k; hard-surface force curve and InvOLS; step and grating measured three times at three scan ranges with mean and standard deviation; tip reconstruction on the spike sample; repeated imaging of one area for 30 minutes for drift; enter every result into an acceptance table beside its model value, and redo the calibration with a recorded cause whenever an item exceeds its allowance.",
+      "failure": "只驗收一個掃描範圍的尺度，使用者在小範圍量奈米顆粒時壓電非線性讓尺寸偏差 5% 以上；交接紀錄漏掉懸臂的實測 k，後續力學量測全部引用標稱值，模數結果系統性偏差卻無人察覺。~Accepting the scale at one scan range only lets piezo nonlinearity bias nanoparticle sizes by more than 5% when users work at small ranges; omitting the measured k from the handoff record makes every later mechanical measurement fall back on the nominal value, so modulus results carry a systematic bias nobody notices.",
+      "misconception": "AFM 的高度值是絕對的，不需要用標準片校正。~AFM height values are absolute and need no calibration against standards."
+    }
+  ],
+  "example": "校正與雜訊練習：在 300 K 以光槓桿量得某懸臂的熱振動 rms 為 0.130 nm，k = 0.817×4.14×10⁻²¹/(0.130×10⁻⁹)² ≈ 0.20 N/m；力曲線的接觸段斜率給 InvOLS = 28 nm/V。設定偏折 0.05 V 相當於 1.4 nm，作用力 F = 0.20×1.4 = 0.28 nN。該懸臂 f₀ = 15 kHz、Q = 50，熱雜訊密度 √(4×4.14×10⁻²¹/(0.20×9.4×10⁴×50)) ≈ 130 fm/√Hz，加上偵測器 20 fm/√Hz 得 132 fm/√Hz；若影像頻寬 1 kHz，高度雜訊約 4.2 pm rms，對 0.34 nm 的石墨烯台階信噪比約 80；把頻寬降到 100 Hz，雜訊降為 1.3 pm，但每像素需 10 ms，512×512 影像需 44 分鐘，漂移 1.2 nm/min 會累積 53 nm，必須用漂移補償。數值為教學假設，不代表任何實機規格。~Calibration and noise exercise: at 300 K an optical lever records a thermal rms of 0.130 nm for a cantilever, so k = 0.817×4.14×10⁻²¹/(0.130×10⁻⁹)² ≈ 0.20 N/m, and the contact slope of a force curve gives InvOLS = 28 nm/V. A deflection set point of 0.05 V equals 1.4 nm and a force F = 0.20×1.4 = 0.28 nN. With f₀ = 15 kHz and Q = 50 the thermal noise density is √(4×4.14×10⁻²¹/(0.20×9.4×10⁴×50)) ≈ 130 fm/√Hz, and with 20 fm/√Hz of detector noise the total is 132 fm/√Hz; at a 1 kHz imaging bandwidth the height noise is about 4.2 pm rms, a signal-to-noise ratio near 80 on a 0.34 nm graphene step; narrowing the bandwidth to 100 Hz lowers the noise to 1.3 pm but needs 10 ms per pixel, so a 512×512 frame takes 44 minutes and 1.2 nm/min of drift accumulates 53 nm, which demands drift compensation. Values are teaching assumptions, not any instrument's specification.",
+  "history": "1986 年 Gerd Binnig、Calvin Quate 與 Christoph Gerber 發表第一台原子力顯微鏡，用 STM 探針讀取金箔懸臂的偏折；1988 年起光槓桿偵測取代穿隧偵測，1989 年 Digital Instruments 推出商用 AFM，1993 年輕敲模式讓軟材料與生物樣品成像成為常規，1995 年 Giessibl 以頻率調變在真空中達到 Si(111)-7×7 的原子解析度。今日 AFM 已是半導體線上量測、材料力學與生物物理的標準工具。本課只重建公開的物理與工程邏輯。~In 1986 Gerd Binnig, Calvin Quate and Christoph Gerber published the first atomic force microscope, reading the deflection of a gold-foil lever with an STM tip; optical-lever detection replaced tunneling detection from 1988, Digital Instruments shipped a commercial AFM in 1989, tapping mode made soft materials and biological samples routine from 1993, and in 1995 Giessibl reached atomic resolution on Si(111)-7×7 in vacuum with frequency modulation. The AFM is now a standard tool for in-line semiconductor metrology, materials mechanics and biophysics. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "史丹佛大學 Ginzton 實驗室（Quate 研究群）~Stanford University Ginzton Laboratory, Quate group",
+    "country": "美國~United States",
+    "lat": 37.428,
+    "lng": -122.172,
+    "query": "Ginzton Laboratory Stanford University"
+  },
+  "sources": [
+    {
+      "key": "bruker-dimension-icon-afm",
+      "title": "Bruker：Dimension Icon 原子力顯微鏡",
+      "titleEn": "Bruker: Dimension Icon atomic force microscope",
+      "publisher": "Bruker",
+      "url": "https://www.bruker.com/en/products-and-solutions/microscopes/materials-afm/dimension-icon-afm.html",
+      "sourceType": "primary",
+      "scope": "大樣品閉迴路 AFM 的公開產品說明，涵蓋掃描器、低雜訊與成像模式；課程數值為教學假設。",
+      "scopeEn": "Public product description of a large-sample closed-loop AFM covering scanner, low noise and imaging modes; course numbers are teaching assumptions."
+    },
+    {
+      "key": "park-systems-about",
+      "title": "Park Systems：公司與 AFM 技術簡介",
+      "titleEn": "Park Systems: company and AFM technology overview",
+      "publisher": "Park Systems",
+      "url": "https://www.parksystems.com/company/about-us",
+      "sourceType": "primary",
+      "scope": "AFM 製造商的公開背景，說明源自史丹佛 Quate 研究群的技術脈絡與閉迴路獨立 XY/Z 掃描器設計方向。",
+      "scopeEn": "Public background of an AFM maker tracing its lineage to the Stanford Quate group and its direction of closed-loop decoupled XY/Z scanner design."
+    },
+    {
+      "key": "asylum-research-afm",
+      "title": "Oxford Instruments Asylum Research：AFM 產品與資源",
+      "titleEn": "Oxford Instruments Asylum Research: AFM products and resources",
+      "publisher": "Oxford Instruments",
+      "url": "https://afm.oxinst.com",
+      "sourceType": "primary",
+      "scope": "研究型 AFM 的公開產品入口與技術資源，涵蓋高解析成像、力學量測與校正方法概述。",
+      "scopeEn": "Public product portal and technical resources for research AFMs, covering high-resolution imaging, mechanical measurement and calibration overviews."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "布魯克",
+      "nameEn": "Bruker",
+      "business": "科學儀器集團，Nano Surfaces 部門承接 Digital Instruments 的 AFM 產品線。",
+      "businessEn": "Scientific-instrument group whose Nano Surfaces division carries the AFM line descended from Digital Instruments.",
+      "url": "https://www.bruker.com/",
+      "investorUrl": "https://ir.bruker.com/",
+      "security": {"symbol": "BRKR", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "商用 AFM 平台、探針與成像模式的公開資訊",
+      "roleEn": "Public information on commercial AFM platforms, probes and imaging modes"
+    },
+    {
+      "name": "Park Systems",
+      "nameEn": "Park Systems",
+      "business": "韓國 AFM 製造商，產品涵蓋研究型與半導體線上自動化 AFM。",
+      "businessEn": "Korean AFM maker with research and automated in-line semiconductor AFM products.",
+      "url": "https://www.parksystems.com/",
+      "investorUrl": "",
+      "security": {"symbol": "140860", "exchange": "KRX", "currency": "KRW"},
+      "role": "閉迴路掃描器與自動化 AFM 的公開產品資訊",
+      "roleEn": "Public product information on closed-loop scanners and automated AFM"
+    },
+    {
+      "name": "牛津儀器 Asylum Research",
+      "nameEn": "Oxford Instruments Asylum Research",
+      "business": "研究型 AFM 與奈米力學量測系統，隸屬牛津儀器集團。",
+      "businessEn": "Research AFMs and nanomechanical measurement systems within the Oxford Instruments group.",
+      "url": "https://afm.oxinst.com",
+      "investorUrl": "https://www.oxinst.com/investors",
+      "security": {"symbol": "OXIG", "exchange": "LSE", "currency": "GBP"},
+      "role": "高解析 AFM 與校正方法的公開技術資源",
+      "roleEn": "Public technical resources on high-resolution AFM and calibration methods"
+    }
+  ],
+  "related": ["a445", "a440"],
+  "architectureNodes": [["懸臂與探針尖端", "Cantilever and tip apex"], ["光槓桿與四象限光電二極體", "Optical lever and quadrant photodiode"], ["回授控制器", "Feedback controller"], ["Z 壓電與閉迴路 XY 掃描平台", "Z piezo and closed-loop XY stage"], ["隔音隔振罩", "Acoustic and vibration enclosure"], ["影像與力曲線處理", "Image and force-curve processing"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 0], [4, 0], [2, 5]]
+}

@@ -1,0 +1,182 @@
+{
+  "id": "a451",
+  "title": "超導磁體低溫系統~Cryogenic systems for superconducting magnets",
+  "discipline": "optics-lab-infrastructure",
+  "family": "cryo",
+  "focus": "NbTi/Nb₃Sn 臨界面、4 K 熱負載預算、電流引線、失超保護與持續電流運轉~NbTi/Nb3Sn critical surface, 4 K heat-load budget, current leads, quench protection and persistent-mode operation",
+  "summary": "以 8 T、100 mm 孔徑的 NbTi 研究型螺線管為主線，說明液氦浴與冷凍機傳導冷卻兩種低溫架構如何守住僅約 0.5 K 的溫度裕度，再把熱負載預算、HTS 電流引線、失超能量釋放、持續電流漂移與降溫驗收整合成可交接的低溫磁體工程紀錄。~Follow an 8 T, 100 mm-bore NbTi research solenoid to see how a liquid-helium bath and a cryocooler conduction design each protect a temperature margin of only about 0.5 K, then integrate the heat-load budget, HTS current leads, quench energy release, persistent-mode drift and cooldown acceptance into a transferable cryogenic-magnet engineering record.",
+  "units": [
+    {
+      "anchor": "NbTi 導體工作點~NbTi conductor operating point",
+      "title": "臨界面、負載線與溫度裕度~Critical surface, load line and temperature margin",
+      "mechanism": "超導線圈只有在溫度、磁場與電流密度三者同時低於臨界面時才是零電阻。NbTi 的 Tc₀ 約 9.2 K、Bc₂₀ 約 14.5 T，延展性好、可直接繞線，是 MRI 與多數研究磁體的主力；Nb₃Sn 的 Tc 約 18 K、4.2 K 時上臨界場約 25 T 等級，但脆且對應變敏感，必須先繞線再於約 650 °C 反應熱處理。線圈的工作點沿負載線移動：電流增加時峰值磁場同比例上升，因此真正的設計餘量是電流分流溫度 T_cs 與操作溫度之差，而不是 Tc 與 4.2 K 之差。~A superconducting coil is resistanceless only while temperature, field and current density all sit below the critical surface. NbTi, with Tc0 about 9.2 K and Bc20 about 14.5 T, is ductile enough to wind directly and is the workhorse of MRI and most research magnets; Nb3Sn, with Tc about 18 K and an upper critical field of order 25 T at 4.2 K, is brittle and strain-sensitive, so it is wound first and reacted near 650 °C. The coil operating point moves along a load line on which peak field rises in proportion to current, so the real design margin is the gap between the current-sharing temperature T_cs and the operating temperature, not between Tc and 4.2 K.",
+      "model": "以經驗式 Bc₂(T) ≈ Bc₂₀[1 − (T/Tc₀)^1.7] 估算：4.2 K 時 Bc₂ ≈ 10.7 T，2.2 K 時 ≈ 13.2 T，這是 NbTi 磁體超過約 9 T 就要降到 2.2 K 的原因。峰值場 8 T 時 Tc(B) = 9.2×(1 − 8/14.5)^(1/1.7) ≈ 5.74 K；若運轉電流為 4.2 K 臨界電流的 70%，以線性 Jc(T) 近似 T_cs ≈ 5.74 − 0.7×(5.74 − 4.2) ≈ 4.66 K，在 4.2 K 液氦浴中只剩約 0.46 K 裕度。~Using the empirical Bc2(T) ≈ Bc20[1 − (T/Tc0)^1.7] gives Bc2 ≈ 10.7 T at 4.2 K and ≈ 13.2 T at 2.2 K, which is why NbTi magnets above roughly 9 T are pumped to 2.2 K. At a peak field of 8 T, Tc(B) = 9.2×(1 − 8/14.5)^(1/1.7) ≈ 5.74 K; running at 70% of the 4.2 K critical current, a linear Jc(T) approximation gives T_cs ≈ 5.74 − 0.7×(5.74 − 4.2) ≈ 4.66 K, leaving only about 0.46 K of margin in a 4.2 K bath.",
+      "verify": "取同批導線的短樣，在變溫插件中於 4.2 K 量 Ic(B)（以 0.1 µV/cm 為判準），在 6、8、10 T 各取一點並擬合臨界面參數；再把線圈負載線疊上去，讀出各電流下的峰值場與 T_cs，與設計表比較，並確認導線供應商的 Ic 證書與自行量測差異在數個百分比內。~Measure Ic(B) on short samples from the same conductor batch at 4.2 K with a 0.1 µV/cm criterion in a variable-temperature insert, take points at 6, 8 and 10 T and fit the critical-surface parameters; then overlay the coil load line to read the peak field and T_cs at each current, compare with the design table, and confirm that the supplier's Ic certificate agrees with your own data within a few percent.",
+      "failure": "若只用中心場而非線圈內緣的峰值場計算裕度，實際工作點會比設計更靠近臨界面；運轉時一點點熱擾動或冷頭溫度上升數百 mK 就觸發失超，而且失超總在接近滿場時發生。~Computing margin from the central field instead of the peak field at the winding's inner edge places the true operating point closer to the critical surface than designed; a small disturbance or a few hundred millikelvin of cold-head warming then triggers quenches that consistently occur near full field.",
+      "misconception": "NbTi 的 Tc 是 9.2 K，所以在 4.2 K 運轉有約 5 K 的安全裕度。~Since NbTi has Tc = 9.2 K, operating at 4.2 K leaves about 5 K of safety margin."
+    },
+    {
+      "anchor": "50 K 輻射屏蔽與 MLI~50 K radiation shield and MLI",
+      "title": "4 K 熱負載預算：輻射、支撐與屏蔽~The 4 K heat-load budget: radiation, supports and shielding",
+      "mechanism": "4.2 K 的每一瓦熱都很昂貴：在液氦浴中 1 W 約蒸發 1.4 L/h 液氦，冷凍機系統的二級冷頭通常只有 1 到 2 W。熱進入冷質量有三條路：輻射按 σT⁴ 與表面發射率傳遞，因此在 300 K 與 4 K 之間插入由一級冷頭冷卻的 40 到 60 K 鋁或銅屏蔽，外側再包數十層多層絕熱（MLI）；傳導經過支撐桿、管路與導線，按 Q = (A/L)∫k dT 計算，因此支撐選用 G-10 玻纖環氧或不鏽鋼並在屏蔽溫度做熱錨；第三條是電流引線，留待下一單元。殘氣傳導則靠 10⁻⁴ Pa 以下的絕熱真空壓到可忽略。~Every watt at 4.2 K is expensive: in a liquid-helium bath 1 W boils about 1.4 L/h, and a cryocooler's second stage usually offers only 1 to 2 W. Heat reaches the cold mass three ways. Radiation follows σT⁴ and surface emissivity, so a 40 to 60 K aluminium or copper shield cooled by the first stage sits between 300 K and 4 K, wrapped in tens of layers of multilayer insulation (MLI). Conduction through supports, tubes and wires follows Q = (A/L)∫k dT, so supports use G-10 glass-epoxy or stainless steel heat-sunk at the shield temperature. Current leads are the third path and get their own unit; residual-gas conduction is made negligible by an insulating vacuum below 10⁻⁴ Pa.",
+      "model": "冷質量表面 2 m²：若無屏蔽，300 K 直接輻射到 4.2 K、等效發射率 0.05，Q = 5.67×10⁻⁸×0.05×300⁴×2 ≈ 46 W，相當於 64 L/h 液氦，根本無法運轉。加 50 K 屏蔽後，4 K 側只見 σ×0.03×(50⁴ − 4.2⁴)×2 ≈ 21 mW；四支直徑 12 mm、長 0.2 m 的 G-10 支撐，取 4→50 K 熱導積分約 7 W/m（教學假設），Q = (4.52×10⁻⁴/0.2)×7 ≈ 16 mW。屏蔽本身承受 MLI 約 1 W/m²×3 m² ≈ 3 W，由一級冷頭吸收。~Take a 2 m² cold-mass surface. Without a shield, 300 K radiating to 4.2 K with an effective emissivity of 0.05 gives Q = 5.67×10⁻⁸×0.05×300⁴×2 ≈ 46 W, equal to 64 L/h of liquid helium, which is unworkable. With a 50 K shield the 4 K side sees only σ×0.03×(50⁴ − 4.2⁴)×2 ≈ 21 mW; four G-10 supports 12 mm in diameter and 0.2 m long, with a 4→50 K conductivity integral of about 7 W/m (teaching assumption), carry Q = (4.52×10⁻⁴/0.2)×7 ≈ 16 mW. The shield itself takes about 1 W/m² through MLI over 3 m², roughly 3 W, absorbed by the first stage.",
+      "verify": "穩定後把冷質量當成熱量計：以已知功率的加熱器加 0.1 W 階躍，量溫升或蒸發率的變化求出靈敏度，再反推背景熱負載；屏蔽則以多點溫度計看溫度分佈，若某處比冷頭端高出 10 K 以上，表示 MLI 被壓縮或熱錨不良。~Once stable, use the cold mass as a calorimeter: apply a known 0.1 W heater step and record the change in temperature or boil-off to obtain the sensitivity, then infer the background heat load; map the shield with several thermometers, and treat any point more than 10 K above the cold-head end as evidence of compressed MLI or a poor heat sink.",
+      "failure": "MLI 在穿越孔、轉角或被支撐壓緊處層間接觸，熱阻崩潰，局部輻射熱漏增加數倍；屏蔽溫度上升後 4 K 端輻射按 T⁴ 增加，常表現為液氦保持時間只有設計的一半，或冷凍機磁體的基礎溫度高出數百 mK。~MLI layers that touch at penetrations, corners or under supports lose their thermal resistance and multiply the local radiative leak; a warmer shield then raises the 4 K radiation as T⁴, typically showing up as half the designed helium hold time or a cryocooled magnet base temperature several hundred millikelvin high.",
+      "misconception": "只要真空夠好，就不需要中間溫度的輻射屏蔽。~A good enough vacuum makes an intermediate-temperature radiation shield unnecessary."
+    },
+    {
+      "anchor": "環氧含浸線圈與穩定銅~Epoxy-impregnated winding and stabilizer copper",
+      "title": "導體、繞線、勞侖茲應力與焓裕度~Conductor, winding, Lorentz stress and enthalpy margin",
+      "mechanism": "實用 NbTi 線是把數千根 10 到 50 µm 的超導細絲埋在高純銅基體中並扭絞：細絲夠細可抑制磁通跳躍，扭絞可降低耦合損耗，銅則在失超時分流並傳熱。線圈常以真空環氧含浸固定，因為勞侖茲力 J×B 會在通電時推動導線；4 K 下銅的比熱只有約 0.1 J/(kg·K)，導線微米級的滑移或環氧開裂所釋放的能量，就足以把局部加熱超過 T_cs。浸在液氦中的線圈可以靠液氦潛熱吸收擾動，含浸且以傳導冷卻的線圈則沒有這個緩衝，這是訓練現象與兩種冷卻架構的根本差異。~Practical NbTi wire embeds thousands of 10 to 50 µm filaments in a high-purity copper matrix and twists them: fine filaments suppress flux jumps, twisting reduces coupling loss, and the copper shares current and conducts heat during a quench. Windings are often vacuum-impregnated with epoxy because the Lorentz force J×B pushes conductors when energized. At 4 K copper's specific heat is only about 0.1 J/(kg·K), so a micrometre slip or an epoxy crack releases enough energy to heat a spot above T_cs. A coil immersed in liquid helium absorbs disturbances in the helium's latent heat, whereas an impregnated, conduction-cooled coil has no such buffer; this explains training and the basic difference between the two cooling architectures.",
+      "model": "工程電流密度 J = 200 A/mm²、峰值場 8 T、半徑 R = 50 mm，環向應力 σ ≈ J·B·R = 2×10⁸×8×0.05 = 80 MPa。勞侖茲力密度 f = J·B = 1.6×10⁹ N/m³，導線滑移 1 µm 釋放 f·δ ≈ 1.6 mJ/cm³；而銅從 4.2 K 加熱到 T_cs = 4.66 K 只需 8.96×10⁻³ kg/cm³×0.1 J/(kg·K)×0.46 K ≈ 0.41 mJ/cm³，擾動是焓裕度的約 4 倍。對照液氦潛熱 0.125 g/cm³×20.7 J/g ≈ 2.6 J/cm³，約為銅焓裕度的 6000 倍。~With an engineering current density J = 200 A/mm², peak field 8 T and radius R = 50 mm, the hoop stress is σ ≈ J·B·R = 2×10⁸×8×0.05 = 80 MPa. The Lorentz force density f = J·B = 1.6×10⁹ N/m³, so a 1 µm slip releases f·δ ≈ 1.6 mJ/cm³, whereas heating copper from 4.2 K to T_cs = 4.66 K needs only 8.96×10⁻³ kg/cm³×0.1 J/(kg·K)×0.46 K ≈ 0.41 mJ/cm³, about a quarter of the disturbance. Liquid helium's latent heat, 0.125 g/cm³×20.7 J/g ≈ 2.6 J/cm³, is about 6000 times the copper enthalpy margin.",
+      "verify": "繞線後以聲射感測器與電壓分接頭記錄升流過程中的微滑移事件，並記錄每次訓練失超的電流；訓練曲線應在數次內收斂到設計電流的 95% 以上。導線的 Cu/SC 比以截面金相量測，RRR 以室溫與剛高於 Tc 的 10 K 電阻比量測，與規格比對。~After winding, record micro-slip events during ramps with acoustic-emission sensors and voltage taps, and log the current of each training quench; the training curve should converge above 95% of design current within a few quenches. Check the conductor's Cu/SC ratio by cross-section metallography and its RRR from the ratio of room-temperature to 10 K resistance just above Tc, against specification.",
+      "failure": "含浸環氧混入氣泡或冷縮不匹配時，冷卻後會在線圈內部開裂；症狀是訓練不收斂、每次失超電流都在相同的 70% 到 80% 附近徘徊，而且每次熱循環後訓練都要重新來過。~Epoxy with voids or a thermal-contraction mismatch cracks inside the winding on cooldown; the symptom is training that never converges, quench currents clustering at the same 70% to 80% level, and training that must restart after every thermal cycle.",
+      "misconception": "含浸線圈與浸泡在液氦中的線圈一樣穩定，冷卻方式只影響降溫速度。~An impregnated coil is as stable as a bath-immersed one; the cooling method only changes cooldown speed."
+    },
+    {
+      "anchor": "電流引線與兩級冷頭~Current leads and two-stage cold head",
+      "title": "電流引線與冷凍機：銅、HTS 與冷頭容量~Current leads and cryocoolers: copper, HTS and cold-head capacity",
+      "mechanism": "電流引線要把 100 A 等級的電流從室溫送到 4 K，同時也是一條熱短路。金屬的電導與熱導由 Wiedemann–Franz 定律 k/σ = L₀T 綁在一起，截面加大降低焦耳熱卻增加傳導，因此存在最佳長截比；液氦系統可用蒸發的冷氦氣冷卻引線，把熱漏壓到約 1 mW/A 等級。傳導冷卻磁體沒有冷氣可用，因此在一級冷頭（約 50 K）以下改用 Bi-2223 或 REBCO 高溫超導引線，它不產生焦耳熱，並以低熱導金屬基材承載。GM 冷頭以往復置換器在二級提供約 1.5 W @ 4.2 K，脈衝管冷頭的冷端沒有運動件、振動較低，適合 NMR 與成像應用。~Current leads must deliver around 100 A from room temperature to 4 K while acting as a thermal short. The Wiedemann–Franz law k/σ = L0·T ties a metal's electrical and thermal conductivity together, so enlarging the cross-section cuts Joule heat but raises conduction, and an optimum length-to-area ratio exists; a helium-bath system cools the leads with boil-off gas and reaches about 1 mW/A. A conduction-cooled magnet has no cold gas, so below the first stage at about 50 K it switches to Bi-2223 or REBCO high-temperature-superconductor leads that generate no Joule heat and ride on a low-conductivity metal sheath. A GM cold head with a reciprocating displacer delivers about 1.5 W at 4.2 K on its second stage, while a pulse-tube head has no moving cold parts and vibrates less, which suits NMR and imaging.",
+      "model": "最佳化傳導冷卻銅引線的冷端熱流 Q/I = √(L₀(T_h² − T_c²))，L₀ = 2.45×10⁻⁸ WΩ/K²。300→50 K：0.046 W/A，兩支 100 A 引線共 9.3 W，落在 RDK-415D2 一級 35 W @ 50 K 之內；50→4.2 K 若仍用銅：0.0078 W/A，兩支共 1.56 W，已超過二級 1.5 W @ 4.2 K 的全部容量。改用 HTS 段後每支約 25 mW（教學假設），二級負載降到 50 mW。~An optimized conduction-cooled copper lead delivers Q/I = √(L0(T_h² − T_c²)) at its cold end, with L0 = 2.45×10⁻⁸ WΩ/K². From 300 to 50 K that is 0.046 W/A, so two 100 A leads put 9.3 W on the first stage, within the RDK-415D2 rating of 35 W at 50 K; continuing in copper from 50 to 4.2 K gives 0.0078 W/A, or 1.56 W for the pair, more than the entire 1.5 W second-stage capacity at 4.2 K. An HTS section at about 25 mW per lead (teaching assumption) cuts the second-stage load to 50 mW.",
+      "verify": "在引線兩端與中段裝溫度計與電壓分接頭，以 0、50、100 A 逐級通電，量一級與二級溫度上升，對照冷頭容量曲線換算實際熱負載；HTS 段的電壓應低於 µV 級，若出現隨電流上升的電壓，表示其熱端超溫或接頭電阻偏高。~Fit thermometers and voltage taps at both ends and mid-length of each lead, step the current through 0, 50 and 100 A, record first- and second-stage temperature rises and convert them to heat loads with the cold-head capacity map; the HTS section should show less than microvolt-level voltage, and a voltage that grows with current means its warm end is too hot or a joint resistance is high.",
+      "failure": "一級熱錨若熱阻過高，HTS 引線熱端溫度超過其在當地磁場下的臨界溫度，引線失超並把電流轉回金屬護套，焦耳熱可能迅速燒毀引線；這類事故常出現在冷頭保養逾期、一級容量衰退之後。~If the first-stage heat sink has too much thermal resistance, the HTS lead's warm end rises above its critical temperature in the local field, the lead quenches and dumps current into its metal sheath, and Joule heating can burn it out quickly; such events often follow overdue cold-head maintenance when first-stage capacity has decayed.",
+      "misconception": "引線截面加粗就能同時降低焦耳熱和熱漏。~A thicker lead lowers both Joule heating and heat leak."
+    },
+    {
+      "anchor": "蒸發氣體流量計與低溫溫度計~Boil-off flowmeter and cryogenic thermometers",
+      "title": "低溫測溫與蒸發量熱法~Cryogenic thermometry and boil-off calorimetry",
+      "mechanism": "液氦系統的熱負載最直接的量法是量蒸發氣體流量：氦在 4.2 K 的汽化潛熱約 20.7 J/g、液體密度 0.125 g/cm³，每公升液體在 0 °C、1 atm 下約變成 700 L 氣體。溫度量測用四線式電阻溫度計：Cernox 與氧化釕感測器在強磁場中的磁阻誤差小，矽二極體在 4 K、數特斯拉下誤差大，只適合放在低場區。所有感測器都需可追溯到 ITS-90 的校正曲線，激發電流要低到自熱可忽略，導線要在屏蔽與冷質量處熱錨。~The most direct heat-load measurement in a bath cryostat is the boil-off gas flow: helium's latent heat at 4.2 K is about 20.7 J/g, the liquid density is 0.125 g/cm³, and each litre of liquid becomes about 700 L of gas at 0 °C and 1 atm. Temperatures are read with four-wire resistance thermometers; Cernox and ruthenium-oxide sensors show small magnetoresistive errors in high field, while silicon diodes err badly at 4 K in several tesla and belong in low-field regions. Every sensor needs an ITS-90-traceable calibration curve, an excitation small enough for negligible self-heating, and leads heat-sunk at the shield and the cold mass.",
+      "model": "流量計讀到 4.0 SLPM（標準狀態 0 °C）時，每小時 240 L 氣體 ÷ 700 ≈ 0.343 L/h 液氦，熱負載 = 0.343×0.125×20.7×1000/3600 ≈ 0.25 W；反過來 1 W 對應約 1.39 L/h。若流量計不確定度 ±2%、量測期間液面下降造成的氣相容積變化另貢獻 ±3%，RSS 約 ±3.6%，即 0.25 ± 0.009 W。~A flowmeter reading of 4.0 SLPM (standard at 0 °C) means 240 L/h of gas ÷ 700 ≈ 0.343 L/h of liquid, a heat load of 0.343×0.125×20.7×1000/3600 ≈ 0.25 W; conversely 1 W corresponds to about 1.39 L/h. With ±2% flowmeter uncertainty and another ±3% from ullage-volume change as the level falls, the RSS is about ±3.6%, giving 0.25 ± 0.009 W.",
+      "verify": "磁體在零電流、穩定數小時後記錄基準蒸發量，再加已知 0.1 W 加熱器確認 1.39 L/h 每瓦的換算；溫度計在零場時與校正標準比對，升場過程中與置於低場區的參考感測器交叉比較，量出磁阻修正量。~Log the baseline boil-off at zero current after several hours of stability, then add a known 0.1 W heater to confirm the 1.39 L/h per watt conversion; compare thermometers against a calibrated standard at zero field and cross-check them during ramps against a reference sensor in a low-field region to quantify the magnetoresistance correction.",
+      "failure": "回收管路背壓變動會讓液氦飽和溫度與蒸發率一起改變，在背壓不穩時量測，熱負載可能誤判 20% 以上；溫度計導線未熱錨時，外部熱流沿導線直入感測器，讀值比真實冷質量高數十 mK。~Fluctuating back-pressure in the recovery line shifts both the helium saturation temperature and the boil-off rate, so measuring during unstable pressure can misjudge the heat load by more than 20%; thermometer leads that are not heat-sunk carry heat straight into the sensor and read tens of millikelvin above the true cold-mass temperature.",
+      "misconception": "矽二極體在任何磁場下都能準確量測 4 K。~A silicon diode reads 4 K accurately in any magnetic field."
+    },
+    {
+      "anchor": "失超偵測電橋與釋壓路徑~Quench-detection bridge and relief path",
+      "title": "失超偵測、儲能 ½LI² 與氦氣釋放~Quench detection, stored energy ½LI² and helium release",
+      "mechanism": "失超時正常區以焦耳熱擴張，線圈儲能 E = ½LI² 必須在熱點溫度過高前被轉移。偵測端把線圈分成兩半接成電橋，抵消升流時兩半相同的感應電壓 L·dI/dt，只留下正常區的電阻電壓；超過門檻並持續一段驗證時間後觸發保護。保護方式包括外部洩能電阻、冷端二極體分段與加熱器強制擴大正常區。對低溫系統而言，釋放到冷質量與液氦中的能量會在數十秒內蒸發大量液氦，因此釋壓閥、破裂片與回收管路的口徑是失超設計的一部分，室內也需缺氧監測。~In a quench the normal zone grows by Joule heating, and the stored energy E = ½LI² must be moved before the hot spot overheats. Detection splits the coil into two halves in a bridge to cancel the identical inductive voltage L·dI/dt during ramps, leaving only the resistive voltage of the normal zone; exceeding a threshold for a validation time triggers protection. Protection uses an external dump resistor, cold diodes across subdivided sections, or heaters that spread the normal zone. For the cryogenic system, energy deposited in the cold mass and bath boils a large volume of helium within tens of seconds, so relief valves, burst discs and recovery-line sizes are part of quench design, and the room needs oxygen-deficiency monitoring.",
+      "model": "L = 20 H、I = 100 A：E = ½×20×100² = 100 kJ。升流 0.25 A/s 時整體感應電壓 L·dI/dt = 5 V，電橋 0.5% 不平衡剩 25 mV，因此門檻設 100 mV、驗證 10 ms。若 100 kJ 全部進入液氦浴，蒸發 100/2.59 ≈ 39 L 液氦，約 27 m³（0 °C、1 atm）氦氣，釋壓路徑必須在數十秒內排出。~With L = 20 H and I = 100 A, E = ½×20×100² = 100 kJ. Ramping at 0.25 A/s induces L·dI/dt = 5 V across the coil; a 0.5% bridge imbalance leaves 25 mV, so the threshold is set at 100 mV with a 10 ms validation time. If all 100 kJ enters the bath it boils 100/2.59 ≈ 39 L of liquid helium, about 27 m³ of gas at 0 °C and 1 atm, which the relief path must vent within tens of seconds.",
+      "verify": "在降低的電流下以加熱器誘發受控失超，記錄偵測延遲、電流衰減時間常數、各段電壓與冷質量溫升，並量蒸發氣體總量與能量平衡比對；升降流時記錄電橋殘餘電壓，確認距門檻至少有 3 倍餘量。~Induce controlled quenches with heaters at reduced current, record detection delay, current-decay time constant, section voltages and cold-mass temperature rise, and compare the total boil-off gas with the energy balance; during ramps log the residual bridge voltage and confirm it stays at least a factor of 3 below the threshold.",
+      "failure": "門檻設太低，升流時的磁通跳躍或電源雜訊會誤觸保護，每次無謂洩能都浪費數十公升液氦；設太高或驗證時間太長，熱點溫度上升，絕緣與導線可能永久損傷。釋壓管路若因結冰堵塞，低溫容器會過壓。~A threshold set too low lets flux jumps or supply noise during ramps trip the protection, wasting tens of litres of helium on every needless dump; a threshold too high or a validation time too long lets the hot spot overheat and can permanently damage insulation and conductor. A relief line blocked by ice can over-pressurize the cryostat.",
+      "misconception": "失超只是磁場消失，對低溫系統沒有影響。~A quench just removes the field and has no effect on the cryogenic system."
+    },
+    {
+      "anchor": "持續電流開關與超導接頭~Persistent switch and superconducting joints",
+      "title": "持續電流模式、升流損耗與場漂移~Persistent mode, ramp losses and field drift",
+      "mechanism": "研究型與 NMR 磁體升到目標電流後，以超導持續電流開關把線圈兩端短路，再把電源降到零，電流在閉合的超導迴路中循環，引線熱負載與電源雜訊同時消失。開關本身是一段非感應繞製的超導線，以加熱器加熱到正常態來打開，加熱期間的數十 mW 直接進入 4 K 級。迴路中的超導接頭有殘餘電阻 R_j，電流以 τ = L/R_j 衰減；升流期間的磁滯與耦合損耗也是 4 K 熱負載，在傳導冷卻系統中會限制升流速度。~Research and NMR magnets, once at target current, close a superconducting persistent switch across the coil and ramp the supply to zero, so current circulates in a closed superconducting loop and both lead heat load and supply noise vanish. The switch is a non-inductively wound length of superconductor opened by a heater that drives it normal, and the tens of milliwatts spent while it is open land directly on the 4 K stage. Joints in the loop have a residual resistance R_j, so current decays with τ = L/R_j; hysteresis and coupling losses during ramps also load the 4 K stage and limit the ramp rate of a conduction-cooled system.",
+      "model": "L = 20 H、接頭總電阻 R_j = 1 nΩ：τ = 2×10¹⁰ s，場漂移 = 3600/τ ≈ 1.8×10⁻⁷/h = 0.18 ppm/h；NMR 常要求小於 0.01 ppm/h，需 R_j < 20×0.01×10⁻⁶/3600 ≈ 5.6×10⁻¹¹ Ω。升流：電源輸出 5 V 時 dI/dt = V/L = 0.25 A/s，升到 100 A 需 400 s；若升流時磁滯加耦合損耗約 0.2 W（教學假設），加上開關加熱器 30 mW，傳導冷卻二級負載短暫升到約 0.33 W。~With L = 20 H and a total joint resistance R_j = 1 nΩ, τ = 2×10¹⁰ s and the field drift is 3600/τ ≈ 1.8×10⁻⁷ per hour, or 0.18 ppm/h; NMR typically needs less than 0.01 ppm/h, requiring R_j < 20×0.01×10⁻⁶/3600 ≈ 5.6×10⁻¹¹ Ω. Ramping with 5 V from the supply gives dI/dt = V/L = 0.25 A/s, so reaching 100 A takes 400 s; if hysteresis plus coupling loss is about 0.2 W during the ramp (teaching assumption) and the switch heater adds 30 mW, a conduction-cooled second stage briefly carries about 0.33 W.",
+      "verify": "進入持續模式後以 NMR 探頭或高穩定霍爾探頭連續記錄場值 24 到 72 小時，扣除探頭溫度漂移後擬合衰減率，反推 R_j；升流時同步記錄二級溫度，確認在最大升流速度下冷質量仍低於 T_cs 至少 1 K。~After entering persistent mode, log the field with an NMR probe or a high-stability Hall probe for 24 to 72 hours, remove probe temperature drift and fit the decay rate to infer R_j; during ramps log the second-stage temperature and confirm that at the maximum ramp rate the cold mass stays at least 1 K below T_cs.",
+      "failure": "開關加熱器關閉後若冷卻時間不足就讓電源降流，開關仍在正常態，電流流入發熱中的開關，使其燒毀或觸發失超；接頭製作不良的磁體則表現為每小時數 ppm 的漂移，NMR 鎖場迴路需持續大量補償。~Ramping the supply down before the switch has cooled after its heater is turned off leaves the switch normal, so current flows into a hot switch that can burn out or trigger a quench; a magnet with poor joints drifts several ppm per hour, forcing the NMR lock loop to compensate continuously.",
+      "misconception": "持續電流模式下電流永遠不會衰減。~In persistent mode the current never decays."
+    },
+    {
+      "anchor": "降溫紀錄與再冷凝冷頭~Cooldown record and recondensing cold head",
+      "title": "降溫、零蒸發運轉與驗收交接~Cooldown, zero-boil-off operation and acceptance handoff",
+      "mechanism": "液氦磁體降溫通常先用液氮把冷質量預冷到 77 K，因為銅從 300 K 到 77 K 要移除約 73 kJ/kg，而 77 K 以下只剩約 5 kJ/kg；預冷後必須把液氮完全排淨再灌液氦，否則殘留的固態氮會消耗液氦並阻塞管路。現代系統再以 4 K 冷頭在頸管中把蒸發的氦氣再冷凝，達成零蒸發運轉，並以加熱器維持容器略高於大氣壓，防止空氣倒灌結冰。驗收要同時交付溫度裕度、熱負載、失超紀錄、場漂移與冷頭保養週期。~A bath magnet is usually precooled to 77 K with liquid nitrogen, because copper sheds about 73 kJ/kg between 300 and 77 K but only about 5 kJ/kg below 77 K; the nitrogen must then be removed completely before helium transfer, or residual solid nitrogen consumes helium and blocks lines. Modern systems add a 4 K cold head in the neck to recondense boil-off for zero-boil-off operation, with a heater holding the vessel slightly above atmospheric pressure so air cannot back-stream and freeze. Acceptance must hand over temperature margin, heat load, quench history, field drift and the cold-head maintenance interval together.",
+      "model": "150 kg 冷質量（以銅估算）：液氮預冷只計潛熱需 150×73/160 ≈ 68 L 液氮（液氮潛熱約 160 kJ/L）；77→4.2 K 若只用液氦潛熱需 150×5/2.59 ≈ 290 L，若讓冷氦氣的顯熱（4.2→77 K 約 380 J/g）一起吸熱，理想值降到 750 kJ/(0.125 kg/L×400 kJ/kg) ≈ 15 L。零蒸發：再冷凝冷頭 1.5 W @ 4.2 K，量得靜態負載 0.25 W，餘量約 1.25 W 由控壓加熱器吸收。~For a 150 kg cold mass treated as copper, nitrogen precooling with latent heat only takes 150×73/160 ≈ 68 L of liquid nitrogen (latent heat about 160 kJ/L); cooling from 77 to 4.2 K with helium latent heat alone needs 150×5/2.59 ≈ 290 L, but letting the cold gas's sensible heat (about 380 J/g from 4.2 to 77 K) absorb heat as well lowers the ideal to 750 kJ/(0.125 kg/L×400 kJ/kg) ≈ 15 L. For zero boil-off, a 1.5 W at 4.2 K recondensing head against a measured 0.25 W static load leaves about 1.25 W of margin, absorbed by the pressure-control heater.",
+      "verify": "驗收時以控壓加熱器功率直接讀出冷頭餘量：加熱器功率下降代表熱負載上升或冷頭衰退；滿場持續 24 小時液面不降、壓力穩定在設定值，記錄冷頭運轉時數並對照 10,000 小時保養週期，把降溫曲線、訓練紀錄、漂移與熱負載量測整理成交接文件。~At acceptance, read the cold-head margin directly from the pressure-control heater power, since a falling heater power means a rising heat load or a degrading cold head; hold full field for 24 hours with no level loss and pressure steady at set point, log cold-head hours against the 10,000 h maintenance interval, and compile the cooldown curve, training record, drift and heat-load data into the handoff file.",
+      "failure": "冷頭保養逾期後容量逐月下降，控壓加熱器功率逐漸歸零卻無人注意，直到容器壓力上升、液氦開始消耗；若容器曾短暫負壓，倒灌的空氣在頸管結冰，可能阻塞釋壓路徑，留下下一次失超時的過壓風險。~Past its maintenance interval a cold head loses capacity month by month and the pressure-control heater power quietly falls to zero until vessel pressure rises and helium starts to deplete; if the vessel ever runs below atmospheric pressure, back-streamed air freezes in the neck and can block the relief path, leaving an over-pressure risk for the next quench.",
+      "misconception": "零蒸發磁體不需要監測，因為液氦永遠不會減少。~A zero-boil-off magnet needs no monitoring because its helium never depletes."
+    }
+  ],
+  "example": "傳導冷卻設計練習：把同一個 8 T、L = 20 H、I = 100 A 的 NbTi 線圈改由 RDK-415D2 等級冷頭（1.5 W @ 4.2 K、35 W @ 50 K）傳導冷卻。二級靜態負載：輻射 21 mW + G-10 支撐 16 mW + HTS 引線 2×25 mW + 儀表導線 10 mW = 97 mW；升流時再加開關加熱器 30 mW 與交流損耗 0.2 W，共 0.33 W。假設冷頭負載線為 T = 2.8 K + 0.93 K/W×P、冷頭到線圈的熱鏈為 1 W/K，靜態線圈溫度 2.8 + 0.09 + 0.10 ≈ 2.99 K，升流時 2.8 + 0.31 + 0.33 ≈ 3.43 K，距 T_cs = 4.66 K 尚有 1.23 K。若 50→4.2 K 段仍用銅引線，二級負載 1.56 + 0.10 = 1.66 W，冷頭升到約 4.35 K、線圈約 6.0 K，已高於 T_cs，磁體無法到場。一級：銅引線 9.3 W + 屏蔽 3 W + 支撐與導線約 1 W ≈ 13.3 W，低於 35 W。數值為教學假設，不代表任何實機規格。~Conduction-cooling exercise: the same 8 T NbTi coil with L = 20 H and I = 100 A is cooled by a cold head of the RDK-415D2 class (1.5 W at 4.2 K, 35 W at 50 K). Second-stage static load: radiation 21 mW + G-10 supports 16 mW + HTS leads 2×25 mW + instrumentation wiring 10 mW = 97 mW; during a ramp the switch heater adds 30 mW and AC loss 0.2 W, for 0.33 W. Assuming a cold-head load line T = 2.8 K + 0.93 K/W×P and a 1 W/K thermal link to the coil, the static coil temperature is 2.8 + 0.09 + 0.10 ≈ 2.99 K and the ramping value 2.8 + 0.31 + 0.33 ≈ 3.43 K, still 1.23 K below T_cs = 4.66 K. Keeping copper leads from 50 to 4.2 K raises the second-stage load to 1.56 + 0.10 = 1.66 W, the head to about 4.35 K and the coil to about 6.0 K, above T_cs, so the magnet cannot reach field. First stage: copper leads 9.3 W + shield 3 W + supports and wiring about 1 W ≈ 13.3 W, below 35 W. Values are teaching assumptions, not any product's specification.",
+  "history": "1908 年 Kamerlingh Onnes 在萊頓液化氦，1911 年發現汞的超導；1961 年貝爾實驗室 Kunzler 等人證明 Nb₃Sn 能在約 8.8 T 下承載高電流密度，NbTi 隨後在 1960 年代成為延展性最好的實用導體。1980 年代 Fermilab Tevatron 成為第一部大型超導同步加速器，全身 MRI 也在同期商品化，使液氦浴磁體走進醫院；1990 年代稀土蓄冷材料讓 GM 與脈衝管冷頭在 4 K 提供瓦級冷量，催生不需補充液氦的傳導冷卻磁體。本課只重建公開物理與工程邏輯。~In 1908 Kamerlingh Onnes liquefied helium in Leiden and in 1911 discovered superconductivity in mercury; in 1961 Kunzler and colleagues at Bell Labs showed Nb3Sn carrying high current density near 8.8 T, and NbTi became the ductile practical conductor during the 1960s. In the 1980s the Fermilab Tevatron became the first large superconducting synchrotron and whole-body MRI was commercialized, bringing helium-bath magnets into hospitals; rare-earth regenerator materials in the 1990s let GM and pulse-tube heads deliver watt-level cooling at 4 K, enabling conduction-cooled magnets that need no liquid-helium refills. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "美國國家強磁場實驗室（塔拉赫西）~US National High Magnetic Field Laboratory, Tallahassee",
+    "country": "美國~United States",
+    "lat": 30.4255,
+    "lng": -84.3203,
+    "query": "National High Magnetic Field Laboratory Tallahassee"
+  },
+  "sources": [
+    {
+      "key": "maglab-cryogenics-facilities",
+      "title": "美國國家強磁場實驗室：低溫研究群設施",
+      "titleEn": "National MagLab: Cryogenics group facilities",
+      "publisher": "National High Magnetic Field Laboratory",
+      "url": "https://nationalmaglab.org/research/research-groups/cryogenics/facilities/",
+      "sourceType": "primary",
+      "scope": "低溫研究群的公開設施說明，含冷凍機、液氦研究用低溫容器、約 4 K 的流動設施與 MLI 熱量計；課程數值為教學假設。",
+      "scopeEn": "Public description of the cryogenics group's facilities, including cryocoolers, liquid-helium research cryostats, flow facilities near 4 K and an MLI calorimeter; course numbers are teaching assumptions."
+    },
+    {
+      "key": "bruker-lts-nb3sn",
+      "title": "Bruker：低溫超導線材（Nb₃Sn）",
+      "titleEn": "Bruker: LTS superconductors, niobium-tin wire",
+      "publisher": "Bruker Energy & Supercon Technologies",
+      "url": "https://www.bruker.com/en/products-and-solutions/superconductors/superconductors/niobium-tin-superconductor.html",
+      "sourceType": "primary",
+      "scope": "青銅法與 RRP 法 Nb₃Sn 線材的公開產品說明，提及超過 20 T 的 NMR 磁體與加速器、核融合應用；不含製程配方。",
+      "scopeEn": "Public product description of bronze-route and RRP Nb3Sn wire, citing NMR magnets above 20 T and accelerator and fusion uses; no process recipes."
+    },
+    {
+      "key": "shi-rdk-415d2",
+      "title": "SHI Cryogenics：RDK-415D2 4 K 冷頭系列",
+      "titleEn": "SHI Cryogenics: RDK-415D2 4K cryocooler series",
+      "publisher": "SHI Cryogenics Group (Sumitomo Heavy Industries)",
+      "url": "https://shicryogenics.com/?p=79",
+      "sourceType": "primary",
+      "scope": "4 K GM 冷頭的公開規格：二級 1.5 W @ 4.2 K、一級 35 W @ 50 K（50 Hz）與 10,000 小時保養週期。",
+      "scopeEn": "Public specification of a 4 K GM cold head: 1.5 W at 4.2 K on the second stage, 35 W at 50 K on the first stage (50 Hz) and a 10,000-hour maintenance interval."
+    },
+    {
+      "key": "qd-oxford-sc-magnets",
+      "title": "Quantum Design Oxford：超導磁體類型與技術",
+      "titleEn": "Quantum Design Oxford: Superconducting magnet types and technology",
+      "publisher": "Quantum Design Oxford",
+      "url": "https://qd-oxford.com/products/superconducting_magnets.html",
+      "sourceType": "primary",
+      "scope": "螺線管、分裂對與向量磁體的公開型錄，區分 Cryofree（至 16 T）與液氦冷卻（至 20 T）系統；不是設計手冊。",
+      "scopeEn": "Public catalogue of solenoid, split-pair and vector magnets that separates Cryofree systems (to 16 T) from liquid-helium-cooled ones (to 20 T); not a design manual."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "布魯克",
+      "nameEn": "Bruker",
+      "business": "科學儀器集團，旗下 Bruker EST 生產 NbTi 與 Nb₃Sn 低溫超導線材，集團也製造高場 NMR 超導磁體。",
+      "businessEn": "Scientific-instrument group whose Bruker EST unit makes NbTi and Nb3Sn low-temperature superconducting wire; the group also builds high-field NMR superconducting magnets.",
+      "url": "https://www.bruker.com/",
+      "investorUrl": "https://ir.bruker.com/",
+      "security": {"symbol": "BRKR", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "低溫超導線材與高場 NMR 磁體的公開產品資訊",
+      "roleEn": "Public product information on LTS wire and high-field NMR magnets"
+    },
+    {
+      "name": "住友重機械工業（SHI Cryogenics）",
+      "nameEn": "Sumitomo Heavy Industries (SHI Cryogenics Group)",
+      "business": "工業機械集團，旗下 SHI Cryogenics 生產 4 K GM 與脈衝管冷頭及壓縮機，廣泛用於 MRI 再冷凝與傳導冷卻磁體。",
+      "businessEn": "Industrial-machinery group whose SHI Cryogenics unit makes 4 K GM and pulse-tube cold heads and compressors widely used for MRI recondensing and conduction-cooled magnets.",
+      "url": "https://shicryogenics.com/",
+      "investorUrl": "",
+      "security": {"symbol": "6302", "exchange": "TSE", "currency": "JPY"},
+      "role": "4 K 冷頭容量與保養週期的公開規格",
+      "roleEn": "Public specifications of 4 K cold-head capacity and maintenance intervals"
+    },
+    {
+      "name": "Quantum Design Oxford",
+      "nameEn": "Quantum Design Oxford",
+      "business": "原 Oxford Instruments NanoScience，2026 年初併入 Quantum Design，提供研究用超導磁體、Cryofree 低溫量測系統與稀釋製冷機。",
+      "businessEn": "Formerly Oxford Instruments NanoScience, joined Quantum Design in early 2026; supplies research superconducting magnets, Cryofree low-temperature measurement systems and dilution refrigerators.",
+      "url": "https://qd-oxford.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "液氦與 Cryofree 研究磁體的公開型錄",
+      "roleEn": "Public catalogue of liquid-helium and Cryofree research magnets"
+    },
+    {
+      "name": "美國國家強磁場實驗室",
+      "nameEn": "National High Magnetic Field Laboratory",
+      "business": "美國國家級強磁場用戶設施，運轉超導、電阻式與混合磁體，並設有低溫工程研究群。",
+      "businessEn": "US national high-field user facility operating superconducting, resistive and hybrid magnets, with a dedicated cryogenics engineering group.",
+      "url": "https://nationalmaglab.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "強磁場低溫工程的公開研究與設施資訊",
+      "roleEn": "Public research and facility information on high-field cryogenic engineering"
+    }
+  ],
+  "related": ["a452", "a481"],
+  "architectureNodes": [["室溫真空容器與多層絕熱", "Room-temperature vacuum vessel and MLI"], ["50 K 輻射屏蔽與一級冷頭", "50 K radiation shield and first stage"], ["4 K 冷質量與 NbTi 線圈", "4 K cold mass and NbTi coil"], ["銅與 HTS 電流引線", "Copper and HTS current leads"], ["失超偵測與能量釋放", "Quench detection and energy extraction"], ["持續電流開關與電源", "Persistent switch and power supply"]],
+  "architectureEdges": [[0, 1], [1, 2], [3, 1], [3, 2], [5, 3], [4, 2], [4, 5]]
+}

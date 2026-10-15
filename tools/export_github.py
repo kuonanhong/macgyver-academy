@@ -13,7 +13,9 @@ import sys
 
 DIRECTORIES = {'app', 'build', 'components', 'db', 'docs', 'drizzle', 'examples', 'hooks', 'lib', 'portable', 'public', 'scripts', 'supabase', 'tests', 'tools', 'vendor'}
 ROOT_FILES = {'.env.example', '.gitignore', '.npmrc', 'README.md', 'SOURCE_VERSION.json', 'SHA256SUMS', 'SHA256SUMS.txt', 'cloudflare-env.d.ts', 'components.json', 'drizzle.config.ts', 'eslint.config.mjs', 'index.html', 'next.config.ts', 'package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', 'postcss.config.mjs', 'requirements-documents.txt', 'tsconfig.json', 'vite.config.ts'}
-BLOCK_DIRS = {'.git', '.next', '.vinext', '.sites-runtime', '.wrangler', '.agents', '.codex', 'node_modules', '__pycache__', 'local-documents', 'credentials', 'secrets', 'userdata', 'user-data', 'uploads', 'coverage'}
+BLOCK_DIRS = {'owner-private', '.git', '.next', '.vinext', '.sites-runtime', '.wrangler', '.agents', '.codex', 'node_modules', '__pycache__', 'local-documents', 'credentials', 'secrets', 'userdata', 'user-data', 'uploads', 'coverage'}
+# Large generated intermediates: reproducible from their inputs, kept out of Git.
+BLOCK_FILES = {'tools/optics-v12/optics.json', 'tools/markets-v12/courses_for_vendors.json'}
 BLOCK_SUFFIXES = {'.pem', '.key', '.p12', '.pfx', '.sqlite', '.sqlite3', '.db', '.gguf', '.safetensors', '.ckpt', '.pt', '.pth', '.onnx', '.bin', '.pyc'}
 # Token prefixes start at a boundary: official publication slugs containing
 # "task-..." must not be mistaken for an API key starting inside that word.
@@ -54,7 +56,7 @@ def candidate(relative):
         return relative.name in ROOT_FILES or relative.suffix.lower() in {'.sh', '.bat', '.ps1', '.command'}
     if parts[0] in DIRECTORIES:
         return True
-    if str(relative.as_posix()) in {'.github/workflows/pages.yml', '.openai/hosting.json', 'models/README.md', 'public-player/README_ZH.md'}:
+    if str(relative.as_posix()) in {'.github/workflows/pages.yml', '.github/workflows/weekly-markets.yml', '.openai/hosting.json', 'models/README.md', 'public-player/README_ZH.md'}:
         return True
     return parts[:2] == ('public-player', 'dist')
 
@@ -68,7 +70,7 @@ def snapshot(source):
         for name in sorted(files):
             path = parent / name
             relative = path.relative_to(source)
-            if not candidate(relative):
+            if not candidate(relative) or relative.as_posix() in BLOCK_FILES:
                 ignored.append(relative.as_posix())
                 continue
             if path.is_symlink():

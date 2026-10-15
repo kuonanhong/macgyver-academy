@@ -1,0 +1,172 @@
+{
+  "id": "a415",
+  "title": "偏振光學元件製作~Polarization-optics fabrication",
+  "discipline": "optics-coatings-elements",
+  "family": "coating",
+  "focus": "從 Malus 定律與雙折射出發，製作並驗證波片、晶體稜鏡、線柵與薄膜偏振元件~From Malus's law and birefringence to fabricating and verifying waveplates, crystal prisms, wire-grid and thin-film polarizers",
+  "summary": "本課以消光比與延遲量兩個核心指標貫穿偏振元件的製作：先用 Malus 定律與雙折射建立規格的物理意義，再分別處理石英波片的定向、研磨至延遲量與零級複合結構、方解石 Glan 稜鏡的全反射幾何、奈米線柵與 MacNeille 薄膜偏振分光器、Fresnel 菱體的消色差延遲，接著用 Sénarmont 與消光比量測建立誤差預算，最後處理應力雙折射安裝與規格交接。~Two figures of merit, extinction ratio and retardance, run through this course on fabricating polarization optics: Malus's law and birefringence give the specifications physical meaning, then quartz-waveplate orientation, polishing to retardance and compound zero-order construction, the total-internal-reflection geometry of calcite Glan prisms, nanowire-grid and MacNeille thin-film beam splitters and the achromatic retardance of the Fresnel rhomb are treated in turn, followed by Sénarmont and extinction-ratio metrology for the error budget, stress-birefringence-free mounting and specification handoff.",
+  "units": [
+    {
+      "anchor": "交叉偏振片與消光比~Crossed polarizers and extinction ratio",
+      "title": "Malus 定律、消光比與偏振元件分類~Malus's law, extinction ratio and polarizer classes",
+      "mechanism": "線偏振光通過透射軸夾角 θ 的理想偏振片後強度為 I = I₀cos²θ，這是 Malus 定律；真實偏振片以消光比 ER = T_max/T_min 描述，它由材料的二向吸收、晶體的全反射幾何或薄膜的 Brewster 條件決定。元件類別與消光比的典型範圍：拉伸聚合物片與含銀粒子玻璃 10³ 到 10⁴，鋁奈米線柵 10³ 到 10⁴ 且寬頻，薄膜分光立方體 10² 到 10³，方解石 Glan 稜鏡 10⁵ 到 10⁶。消光比規格必須連同波長、入射角與光束發散角一起給，因為這三者都會把漏光放大。~Linearly polarized light passing an ideal polarizer whose transmission axis is at angle θ emerges with I = I₀cos²θ, Malus's law; a real polarizer is described by its extinction ratio ER = T_max/T_min, set by dichroic absorption in the material, total-internal-reflection geometry in a crystal or the Brewster condition in a thin-film stack. Typical classes and ranges: stretched polymer sheet and silver-particle glass 10³ to 10⁴, aluminium nanowire grids 10³ to 10⁴ and broadband, thin-film cube splitters 10² to 10³, calcite Glan prisms 10⁵ to 10⁶. An extinction specification must always carry wavelength, incidence angle and beam divergence, because all three enlarge the leakage.",
+      "model": "兩片交叉偏振片的對準誤差 Δθ 造成漏光 sin²Δθ：Δθ = 1° 時 3.0×10⁻⁴（等效消光比僅 3300:1），0.5° 時 7.6×10⁻⁵，0.1° 時 3.0×10⁻⁶，0.06° 時 1.1×10⁻⁶。所以要驗證 10⁶:1 的 Glan 稜鏡，兩個元件的相對軸向必須對準到 0.06° 以內，否則量到的是對準誤差而不是元件本身。~A misalignment Δθ between two crossed polarizers leaks sin²Δθ: 3.0×10⁻⁴ at Δθ = 1° (an effective extinction of only 3300:1), 7.6×10⁻⁵ at 0.5°, 3.0×10⁻⁶ at 0.1° and 1.1×10⁻⁶ at 0.06°. Verifying a 10⁶:1 Glan prism therefore requires the two axes aligned within 0.06°, or the measurement reports the alignment error rather than the component.",
+      "verify": "在準直的單頻雷射光束中放兩片待測偏振片，用精密旋轉台以 0.01° 步進掃過消光點，記錄透射功率對角度的曲線並擬合 cos² 加常數項，常數項即為真實漏光；量測時用光阱與擋板去除雜散光，並確認偵測器在六個數量級內線性。~Place the two polarizers in a collimated single-frequency laser beam, scan through extinction on a precision rotation stage in 0.01° steps, record transmitted power against angle and fit cos² plus a constant, the constant being the true leakage; use beam dumps and baffles to remove stray light and confirm detector linearity over six decades.",
+      "failure": "用 2° 發散的 LED 光束量 Glan 稜鏡，部分光線超出全反射的接受角而直接漏過，消光比只讀到 10³:1，合格的稜鏡被判為不良；或偵測器在低功率端非線性，漏光被低估十倍。~Measuring a Glan prism with a 2° divergent LED beam lets rays beyond the total-internal-reflection acceptance angle leak straight through, reading only 10³:1 and rejecting a good prism; a detector non-linear at low power underestimates leakage tenfold.",
+      "misconception": "消光比是偏振片的固定常數，與波長、角度和光束品質無關。~Extinction ratio is a fixed constant of the polarizer independent of wavelength, angle and beam quality."
+    },
+    {
+      "anchor": "石英波片的雙折射與延遲量~Birefringence and retardance of a quartz waveplate",
+      "title": "雙折射、延遲量與零級／多級波片~Birefringence, retardance and zero-order versus multi-order plates",
+      "mechanism": "單軸晶體對平行與垂直光軸的偏振有不同折射率，厚度 d 的平板使兩個分量產生相位差 Γ = Δn·d/λ（以波數計），這就是延遲量。石英在 633 nm 的 Δn 約 0.0091，真正的零級四分之一波片只有十幾微米厚，無法獨立研磨，所以有兩種做法：多級波片把延遲量做成 m + 1/4 波（厚度數百微米），或把兩片多級片光軸交叉疊合，使厚度差等於零級厚度，稱為複合零級波片。多級波片的延遲量對波長與溫度的敏感度隨級數線性放大，這是工程選擇的核心。~A uniaxial crystal has different indices for polarizations parallel and perpendicular to its optic axis, so a plate of thickness d gives the two components a phase difference Γ = Δn·d/λ in waves, the retardance. Quartz has Δn of about 0.0091 at 633 nm, so a true zero-order quarter-wave plate is only tens of micrometres thick and cannot be polished free-standing; either a multi-order plate carries m + 1/4 waves at several hundred micrometres, or two multi-order plates are stacked with crossed axes so their thickness difference equals the zero-order thickness, the compound zero-order plate. A multi-order plate's sensitivity of retardance to wavelength and temperature scales with its order, which is the core of the engineering choice.",
+      "model": "零級四分之一波片 d = λ/(4Δn) = 633/(4×0.0091) ≈ 17.4 µm；10 級（10.25 波）d ≈ 713 µm。λ/300 的延遲量公差對應厚度公差 Δd = λ/(300Δn) ≈ 0.23 µm，零級與多級相同。波長敏感度 ∂Γ/∂λ ≈ −Γ/λ：零級每 nm 僅 4×10⁻⁴ 波（λ/2500），10 級則 0.016 波（λ/62）。溫度（取 dΔn/dT ≈ −1×10⁻⁶/K、α ≈ 1.4×10⁻⁵/K 為教學假設）：零級約 −2.4×10⁻⁵ 波/K，10 級約 −1.0×10⁻³ 波/K，10 K 溫差就吃掉 λ/100。~A zero-order quarter-wave plate has d = λ/(4Δn) = 633/(4×0.0091) ≈ 17.4 µm; a 10th-order plate (10.25 waves) d ≈ 713 µm. A λ/300 retardance tolerance corresponds to a thickness tolerance Δd = λ/(300Δn) ≈ 0.23 µm, the same for zero- and multi-order. Wavelength sensitivity ∂Γ/∂λ ≈ −Γ/λ: only 4×10⁻⁴ waves per nm (λ/2500) for zero order but 0.016 waves (λ/62) for 10th order. Temperature (taking dΔn/dT ≈ −1×10⁻⁶/K and α ≈ 1.4×10⁻⁵/K as teaching assumptions): about −2.4×10⁻⁵ waves/K for zero order and −1.0×10⁻³ waves/K for 10th order, so a 10 K change consumes λ/100.",
+      "verify": "用可調波長光源或幾條雷射線量同一片波片的延遲量，畫出延遲量對波長的斜率，由斜率反推級數並與設計核對；把波片放在溫控座上以 10 K 步進升溫量延遲量漂移，與溫度係數估計比較，確認複合零級波片的兩片厚度匹配。~Measure the same plate's retardance at a tunable source or several laser lines, plot retardance against wavelength, infer the order from the slope and check it against the design; heat the plate on a temperature-controlled mount in 10 K steps and measure the drift, comparing with the temperature-coefficient estimate to confirm that the two halves of a compound zero-order plate are thickness-matched.",
+      "failure": "為了省成本在二極體雷射系統用 10 級波片，雷射波長隨溫度漂移 2 nm 使延遲量偏 λ/30，偏振態變成橢圓，下游 Faraday 隔離器的隔離度掉 10 dB；複合零級波片兩片光軸未精確交叉，殘留的多級特性讓溫度敏感度回到多級等級。~Using a 10th-order plate in a diode-laser system to save cost lets a 2 nm wavelength drift with temperature shift retardance by λ/30, the polarization turns elliptical and the downstream Faraday isolator loses 10 dB; a compound zero-order plate whose two axes are not precisely crossed retains multi-order behaviour and its temperature sensitivity returns to the multi-order level.",
+      "misconception": "只要延遲量在設計波長正確，多級與零級波片的表現就一樣。~If retardance is right at the design wavelength, multi-order and zero-order plates behave the same."
+    },
+    {
+      "anchor": "晶體定向、研磨至延遲量與方解石稜鏡~Crystal orientation, polishing to retardance and calcite prisms",
+      "title": "晶體偏振元件的加工：波片與 Glan 稜鏡~Fabricating crystal polarization optics: waveplates and Glan prisms",
+      "mechanism": "石英波片的晶片必須切成光軸平行於表面，定向用 X 光繞射或錐光干涉圖確認到 0.1° 以內，再研磨拋光到厚度；因為延遲量對厚度的要求是 0.2 µm 等級，最後一道工序不是量厚度而是邊拋邊量延遲量，直到進入公差。複合零級波片的兩片以光學膠合或空氣間隙組合，膠合會引入應力與雷射功率限制。方解石 Glan–Taylor 稜鏡由兩塊光軸平行於入射面的方解石以空氣間隙組成，切角使尋常光在間隙全反射、非常光穿透；接受角由兩個臨界角夾出，只有幾度，材料的解理與軟度使加工與清潔都比玻璃困難。~A quartz waveplate blank is cut with the optic axis parallel to the surface, the orientation verified to within 0.1° by X-ray diffraction or conoscopic interference, then lapped and polished to thickness; because the retardance demands thickness at the 0.2 µm level, the final step measures retardance while polishing rather than thickness, stopping inside tolerance. The two halves of a compound zero-order plate are optically cemented or air-spaced, cementing bringing stress and a laser-power limit. A calcite Glan–Taylor prism is two calcite pieces with optic axes parallel to the entrance face separated by an air gap, cut so the ordinary ray is totally reflected at the gap while the extraordinary ray passes; the acceptance angle lies between two critical angles and is only a few degrees, and calcite's cleavage and softness make machining and cleaning harder than glass.",
+      "model": "方解石（589 nm）n_o = 1.658、n_e = 1.486：空氣間隙的臨界角分別為 arcsin(1/1.658) ≈ 37.1° 與 arcsin(1/1.486) ≈ 42.3°，間隙面切角取約 39.7° 使尋常光全反射而非常光穿透，內部角度餘裕約 ±2.6°，折算到空氣中約 ±4° 的接受角。研磨至延遲量：拋光速率 0.1 µm/min 時，最後 0.23 µm 的公差窗只有約 2 分鐘，必須以延遲量回授停機。~For calcite at 589 nm, n_o = 1.658 and n_e = 1.486: the air-gap critical angles are arcsin(1/1.658) ≈ 37.1° and arcsin(1/1.486) ≈ 42.3°, so the gap is cut near 39.7° to totally reflect the ordinary ray and pass the extraordinary one, leaving an internal margin of about ±2.6°, roughly ±4° of acceptance in air. Polishing to retardance: at a polish rate of 0.1 µm/min the final 0.23 µm tolerance window lasts only about 2 minutes, so the stop must be driven by retardance feedback.",
+      "verify": "每片晶片拋光前以錐光干涉圖檢查光軸方向，拋光中每隔數分鐘取下用 Sénarmont 法量延遲量並記錄厚度減少量，驗證線性關係；Glan 稜鏡組裝後以旋轉台掃描入射角，量消光比隨角度的變化，確認接受角與臨界角計算一致。~Check each blank's optic-axis direction by conoscopic interference before polishing; during polishing remove the plate every few minutes, measure retardance by the Sénarmont method and log thickness removed to verify linearity; after assembling a Glan prism, scan incidence angle on a rotation stage and measure extinction against angle to confirm the acceptance window matches the critical-angle calculation.",
+      "failure": "晶片光軸偏離表面 2°，延遲量隨入射角產生不對稱變化且在正向就偏離設計；方解石稜鏡清潔時溶劑滲入空氣間隙殘留薄膜，全反射條件被破壞，消光比從 10⁵ 掉到 10².~A blank whose optic axis is 2° out of the surface gives asymmetric retardance against incidence angle and is off design even at normal incidence; solvent wicking into the air gap of a calcite prism during cleaning leaves a film that breaks total internal reflection and drops extinction from 10⁵ to 10².",
+      "misconception": "波片做到正確厚度就行了，光軸方向差一點沒關係。~A waveplate only needs the right thickness; a slightly off optic axis does not matter."
+    },
+    {
+      "anchor": "鋁奈米線柵、MacNeille 膜堆與 Fresnel 菱體~Aluminium nanowire grid, MacNeille stack and Fresnel rhomb",
+      "title": "線柵、薄膜偏振分光器與菱體延遲器~Wire grids, thin-film polarizing splitters and rhomb retarders",
+      "mechanism": "鋁奈米線柵以奈米壓印或干涉微影在玻璃上做出週期 100 到 150 nm、占空比約一半的鋁線，當週期遠小於波長時，電場平行線條的偏振被反射、垂直的被透射，寬頻且耐高溫，但週期必須小於波長除以基板折射率才不會產生繞射級。MacNeille 偏振分光立方體靠多層膜內每個界面都在 Brewster 角工作：p 偏振幾乎不反射而 s 偏振被四分之一波堆高反射，條件 n_g² = 2n_H²n_L²/(n_H² + n_L²) 把膜材與立方體玻璃綁在一起。Fresnel 菱體用兩次全反射各產生約 45° 的相位差，延遲量只依賴折射率，幾乎不隨波長變化，是消色差的四分之一波延遲器。~An aluminium nanowire grid is made by nanoimprint or interference lithography as 100 to 150 nm pitch lines of about half duty cycle on glass; for pitch far below the wavelength the polarization parallel to the wires is reflected and the perpendicular one transmitted, broadband and heat-tolerant, but the pitch must stay below the wavelength divided by the substrate index to avoid diffracted orders. A MacNeille polarizing cube works with every interface of its multilayer at Brewster's angle: p polarization is barely reflected while s is strongly reflected by the quarter-wave stack, and the condition n_g² = 2n_H²n_L²/(n_H² + n_L²) ties the film materials to the cube glass. A Fresnel rhomb produces about 45° of phase difference at each of two total internal reflections; the retardance depends only on refractive index and hardly on wavelength, giving an achromatic quarter-wave retarder.",
+      "model": "線柵：週期 120 nm、基板 n = 1.5 時，繞射級在 λ < 1.5×120 = 180 nm 才出現，整個可見光安全。MacNeille：TiO₂/SiO₂（2.35/1.46）需 n_g = √(2×5.52×2.13/(5.52 + 2.13)) ≈ 1.75 的重火石玻璃；Al₂O₃/MgF₂（1.63/1.38）則 n_g ≈ 1.49，可用 BK7。Fresnel 菱體（BK7，54.6°）：每次全反射的延遲 δ = 2·arctan[cosθ·√(sin²θ − 1/n²)/sin²θ]，633 nm（n = 1.5151）為 45.3°，兩次 90.6°；400 nm（n = 1.5308）為 92.1°，1064 nm（n = 1.5066）為 89.7°，全波段偏離 90° 僅 −0.3° 到 +2.1°（最大約 λ/170）。~Wire grid: with 120 nm pitch and substrate n = 1.5, diffracted orders appear only for λ < 1.5×120 = 180 nm, so the whole visible band is safe. MacNeille: TiO₂/SiO₂ (2.35/1.46) needs n_g = √(2×5.52×2.13/(5.52 + 2.13)) ≈ 1.75, a dense flint glass, whereas Al₂O₃/MgF₂ (1.63/1.38) gives n_g ≈ 1.49 and works with BK7. Fresnel rhomb (BK7, 54.6°): each total internal reflection retards by δ = 2·arctan[cosθ·√(sin²θ − 1/n²)/sin²θ], 45.3° at 633 nm (n = 1.5151) and 90.6° for two; 92.1° at 400 nm (n = 1.5308) and 89.7° at 1064 nm (n = 1.5066), a departure from 90° of only −0.3° to +2.1° (at most about λ/170) across the band.",
+      "verify": "以掃描電子顯微鏡量線柵的週期、線寬與高度，用分光光度計加偏振片量 TM 穿透與 TE 反射光譜，確認短波端沒有繞射引起的穿透率突降；對 MacNeille 立方體以 s、p 偏振分別量穿透與反射對入射角的曲線，核對 Brewster 條件的角度寬度；對菱體以多波長 Sénarmont 量延遲量，驗證消色差。~Measure wire-grid pitch, line width and height by scanning electron microscopy and record TM transmission and TE reflection spectra with a spectrophotometer and polarizer, confirming no diffraction-induced transmission drop at the short-wavelength end; for a MacNeille cube measure s and p transmission and reflection against incidence angle to check the angular width of the Brewster condition; measure the rhomb's retardance at several wavelengths by the Sénarmont method to verify achromaticity.",
+      "failure": "把為 BK7 設計的 MacNeille 膜堆鍍在 n = 1.75 的玻璃上，Brewster 條件不再成立，p 偏振在每個界面都有反射，消光比從 10³ 掉到 30；線柵週期做到 200 nm，藍光端出現繞射級，穿透率在 450 nm 以下崩落。~A MacNeille stack designed for BK7 deposited on n = 1.75 glass no longer meets the Brewster condition, p polarization reflects at every interface and extinction falls from 10³ to 30; a wire grid made at 200 nm pitch diffracts at the blue end and transmission collapses below 450 nm.",
+      "misconception": "任何高折射率／低折射率膜堆鍍在任何玻璃上都能當偏振分光器。~Any high/low-index stack on any glass works as a polarizing beam splitter."
+    },
+    {
+      "anchor": "Sénarmont 補償器與六個數量級的偵測~Sénarmont compensator and six-decade detection",
+      "title": "延遲量、軸向與消光比的量測~Measuring retardance, axis orientation and extinction",
+      "mechanism": "延遲量以 Sénarmont 法量測：待測片放在 45° 的線偏振光中，其後接一片精確的四分之一波片把橢圓偏振轉回線偏振，旋轉檢偏器到消光，檢偏器轉角的兩倍就是延遲量，量測精度由旋轉台的角度讀數與消光點的判定決定；更高精度與速度用光彈調制器或旋轉補償器的偏振儀。快軸方向以同樣的消光法標定，並刻在元件邊緣。消光比量測的瓶頸不是光學而是動態範圍：10⁶:1 需要偵測器在六個數量級內線性，實務上以鎖相放大、已校正的中性密度濾片分段量測，並把雜散光底限單獨量出扣除。~Retardance is measured by the Sénarmont method: the sample sits in linearly polarized light at 45°, an accurate quarter-wave plate behind it converts the elliptical output back to linear, the analyser is rotated to extinction, and twice the analyser angle is the retardance, with accuracy set by the stage's angular readout and the extinction judgement; higher accuracy and speed come from photoelastic-modulator or rotating-compensator polarimeters. The fast-axis direction is marked by the same extinction method and engraved on the edge. The bottleneck in extinction measurement is not optics but dynamic range: 10⁶:1 needs a detector linear over six decades, so in practice lock-in detection and calibrated neutral-density filters are used in stages, with the stray-light floor measured separately and subtracted.",
+      "model": "Sénarmont：檢偏器角度讀數不確定度 0.05° 給延遲量不確定度 0.1°，即 λ/3600；若四分之一波片本身偏 λ/300（1.2°），延遲量誤差以一階近似也約 λ/300，所以補償片的品質決定量測上限。消光比：偵測器雜訊等效功率 1 pW、輸入 10 mW，可分辨的漏光 10⁻¹⁰，但雜散光若佔 10⁻⁶ 就把上限壓在 10⁶:1。~Sénarmont: an analyser angular uncertainty of 0.05° gives a retardance uncertainty of 0.1°, i.e. λ/3600; if the quarter-wave compensator itself is off by λ/300 (1.2°), the retardance error is also about λ/300 to first order, so the compensator's quality caps the measurement. Extinction: a detector noise-equivalent power of 1 pW with 10 mW input resolves leakage of 10⁻¹⁰, but a stray-light floor of 10⁻⁶ limits the measurable ratio to 10⁶:1.",
+      "verify": "以已校正的參考波片（延遲量不確定度 λ/1000）檢查 Sénarmont 系統的讀值偏差；旋轉待測片 180° 再量一次，兩次差值的一半是軸向標定誤差；在消光比量測中拿掉待測件量系統本身的漏光底限，並以中性密度濾片驗證偵測器線性。~Check the Sénarmont system's bias against a calibrated reference plate with λ/1000 retardance uncertainty; rotate the sample by 180° and re-measure, half the difference being the axis-marking error; in extinction measurement remove the sample to measure the system's own leakage floor and verify detector linearity with neutral-density filters.",
+      "failure": "用品質 λ/50 的四分之一波片當 Sénarmont 補償片，所有待測片的延遲量都帶著同一個系統偏差，整批交貨後在客戶端被判超差；消光比量測未擋雜散光，10⁶:1 的稜鏡只能量到 10⁴:1。~Using a λ/50 quarter-wave plate as the Sénarmont compensator stamps the same systematic bias on every measured plate and the whole delivery is rejected by the customer; extinction measured without stray-light control reads a 10⁶:1 prism as only 10⁴:1.",
+      "misconception": "延遲量量測只需要一個偏振片和一個功率計就夠精確。~A retardance measurement needs only one polarizer and a power meter to be accurate."
+    },
+    {
+      "anchor": "延遲量誤差預算表~Retardance error-budget table",
+      "title": "波長、溫度、入射角與公差預算~Wavelength, temperature, incidence angle and tolerance budget",
+      "mechanism": "波片的延遲量誤差來自五個獨立來源：製造厚度誤差、工作波長偏離設計、溫度、入射角與安裝應力。入射角的影響與傾斜方向有關：繞慢軸傾斜使延遲量減少，繞快軸傾斜使延遲量增加，量級約為 sin²θ/(2n²) 的相對變化，且隨級數放大。把每一項換算成波數後以均方根相加，與規格比較，就能判斷該用零級、複合零級還是消色差設計，以及公差該往哪一項收緊。~Retardance error in a waveplate comes from five independent sources: manufacturing thickness error, working wavelength away from design, temperature, incidence angle and mounting stress. The angular effect depends on tilt direction: tilting about the slow axis reduces retardance, tilting about the fast axis increases it, with a relative change of order sin²θ/(2n²), amplified by the order. Converting each term to waves and adding root-sum-square against the specification shows whether a zero-order, compound zero-order or achromatic design is needed and which tolerance to tighten.",
+      "model": "入射角：θ = 5°、n ≈ 1.55 時相對變化 ≈ 0.0076/4.8 ≈ 1.6×10⁻³，零級四分之一波片變化 4×10⁻⁴ 波（λ/2500），10 級則 0.016 波（λ/62）。零級波片預算（633 nm）：厚度 λ/300 = 3.3×10⁻³ 波、波長 ±0.5 nm → 2×10⁻⁴、溫度 ±5 K → 1.2×10⁻⁴、入射角 ±2° → 6×10⁻⁵、安裝應力 λ/1000 = 1×10⁻³，RSS ≈ √(3.3² + 0.2² + 0.12² + 0.06² + 1²)×10⁻³ ≈ 3.5×10⁻³ 波 ≈ λ/290。~Incidence angle: at θ = 5° with n ≈ 1.55 the relative change ≈ 0.0076/4.8 ≈ 1.6×10⁻³, a zero-order quarter-wave plate shifting by 4×10⁻⁴ waves (λ/2500) and a 10th-order plate by 0.016 waves (λ/62). Zero-order plate budget at 633 nm: thickness λ/300 = 3.3×10⁻³ waves, wavelength ±0.5 nm → 2×10⁻⁴, temperature ±5 K → 1.2×10⁻⁴, incidence ±2° → 6×10⁻⁵, mounting stress λ/1000 = 1×10⁻³, RSS ≈ √(3.3² + 0.2² + 0.12² + 0.06² + 1²)×10⁻³ ≈ 3.5×10⁻³ waves ≈ λ/290.",
+      "verify": "把波片裝在雙軸旋轉台上，分別繞快軸與慢軸傾斜 ±5° 量延遲量，確認符號相反且量級與 sin²θ/(2n²) 估計一致；用實測的厚度、溫度與角度分佈重算 RSS，與量到的批內延遲量分佈比較，若實測更寬就逐項追查。~Mount the plate on a two-axis stage and tilt ±5° about the fast and slow axes in turn, confirming opposite signs and magnitudes matching the sin²θ/(2n²) estimate; recompute the RSS from measured thickness, temperature and angle distributions and compare with the measured batch spread of retardance, tracing term by term if the real spread is wider.",
+      "failure": "在 f/2 的會聚光束裡使用 10 級波片，光束邊緣光線傾斜 14°，延遲量在口徑內變化超過 λ/10，輸出偏振態隨位置不同，偏振成像對比大幅下降。~A 10th-order plate used in an f/2 converging beam sees edge rays tilted 14°, retardance varies by more than λ/10 across the aperture, the output polarization changes with position and polarization-imaging contrast collapses.",
+      "misconception": "波片的延遲量只與厚度有關，使用條件不會改變它。~A waveplate's retardance depends only on thickness and is unchanged by operating conditions."
+    },
+    {
+      "anchor": "無應力安裝座與膠合界面~Stress-free mount and cemented interface",
+      "title": "應力雙折射、膠合與安裝整合~Stress birefringence, cementing and mounting integration",
+      "mechanism": "任何偏振元件在安裝時受到的機械應力都會透過光彈效應產生附加雙折射，使偏振片的消光比下降、波片的延遲量偏移，而且分佈不均勻。玻璃與熔融石英的應力光學係數約 3 到 4×10⁻¹² /Pa，看似很小，但光程只要幾毫米、應力只要 1 MPa 就能造成數十奈米的延遲。因此元件用三點或撓性無應力座固定，避免彈簧壓片與過緊的螺紋環；膠合界面要選低收縮的光學膠並控制固化，雷射功率高時改用空氣間隙或光學接觸。增透膜必須針對晶體的兩個折射率設計，並把快軸刻記與安裝基準對齊。~Any mechanical stress applied to a polarization element during mounting adds birefringence through the photoelastic effect, lowering a polarizer's extinction and shifting a waveplate's retardance, non-uniformly across the aperture. The stress-optic coefficient of glass and fused silica is only about 3 to 4×10⁻¹² /Pa, yet a path of a few millimetres under 1 MPa produces tens of nanometres of retardance. Elements are therefore held in three-point or flexure stress-free mounts rather than spring retainers or over-tightened threaded rings; cemented interfaces use low-shrinkage optical cement with controlled curing, and air spacing or optical contact replaces cement at high laser power. Antireflection films must be designed for the crystal's two indices, and the fast-axis mark aligned to the mounting datum.",
+      "model": "應力雙折射 Δn = C·σ：C = 3.5×10⁻¹² /Pa、σ = 1 MPa 時 Δn = 3.5×10⁻⁶，光程 L = 5 mm 的延遲 = Δn·L = 17.5 nm，在 633 nm 為 0.028 波 ≈ λ/36，比製造公差 λ/300 大八倍。要把安裝貢獻壓到 λ/1000（0.63 nm），應力必須低於 1 MPa × 0.63/17.5 ≈ 36 kPa，相當於 10 mm 直徑元件上不到 3 N 的均勻夾持力。~Stress birefringence Δn = C·σ: with C = 3.5×10⁻¹² /Pa and σ = 1 MPa, Δn = 3.5×10⁻⁶, and over a path L = 5 mm the retardance = Δn·L = 17.5 nm, 0.028 waves ≈ λ/36 at 633 nm, eight times the λ/300 manufacturing tolerance. Holding the mounting contribution to λ/1000 (0.63 nm) requires stress below 1 MPa × 0.63/17.5 ≈ 36 kPa, under 3 N of uniform clamping force on a 10 mm diameter element.",
+      "verify": "安裝前後各做一次全口徑延遲量成像（偏光顯微鏡或成像偏振儀），相減得到安裝引入的延遲圖與其方向，逐步放鬆固定力直到殘留小於 λ/1000；膠合件固化後放置一週再量一次，確認收縮應力已穩定。~Image full-aperture retardance before and after mounting with a polarizing microscope or imaging polarimeter, subtract to obtain the mounting-induced retardance map and its orientation, and loosen the holding force until the residual is below λ/1000; re-measure cemented parts a week after curing to confirm shrinkage stress has stabilised.",
+      "failure": "Glan 稜鏡以螺紋環鎖緊，應力雙折射讓消光比從 10⁵ 掉到 10³ 且隨溫度變化；UV 膠固化不均使複合零級波片中央與邊緣延遲量差 λ/50，偏振態在口徑內不一致。~A Glan prism locked by a threaded ring loses extinction from 10⁵ to 10³ through stress birefringence that also drifts with temperature; unevenly cured UV cement leaves a λ/50 retardance difference between centre and edge of a compound zero-order plate, so polarization varies across the aperture.",
+      "misconception": "玻璃是各向同性的，安裝時怎麼夾都不會產生雙折射。~Glass is isotropic, so clamping it any way produces no birefringence."
+    },
+    {
+      "anchor": "偏振元件規格表與隔離度預算~Polarization-component specification sheet and isolation budget",
+      "title": "規格換算、隔離度預算與交接~Specification conversion, isolation budget and handoff",
+      "mechanism": "偏振元件的規格表應列出：延遲量與公差（指定波長與溫度）、快軸標記精度、消光比（指定波長、入射角、光束發散）、穿透波前、表面品質、增透膜殘餘反射、損傷門檻、工作溫度範圍與安裝方式限制。系統端把這些數值換算成系統指標，例如 Faraday 隔離器的隔離度由偏振片消光比與 45° 旋轉角誤差共同決定，兩項漏光相加後取分貝。交接資料包含晶體批次與定向紀錄、延遲量與軸向量測報告、消光比曲線與量測條件，讓系統整合者能重現驗收結果。~A polarization-component specification should list retardance and tolerance (at stated wavelength and temperature), fast-axis marking accuracy, extinction ratio (at stated wavelength, incidence angle and beam divergence), transmitted wavefront, surface quality, antireflection residual, damage threshold, operating temperature range and mounting limits. The system side converts these into system metrics; for instance a Faraday isolator's isolation is set jointly by polarizer extinction and the error in the 45° rotation angle, the two leakages adding before conversion to decibels. The handoff carries the crystal batch and orientation record, retardance and axis measurement reports and the extinction curve with its conditions, so the integrator can reproduce the acceptance result.",
+      "model": "隔離度 ≈ −10·log₁₀(1/ER + sin²Δφ)。ER = 10⁴、旋轉角誤差 Δφ = 0.5°：漏光 10⁻⁴ + 7.6×10⁻⁵ = 1.76×10⁻⁴ → 37.5 dB，不達 40 dB；ER = 10⁵、Δφ = 0.5°：8.6×10⁻⁵ → 40.6 dB 勉強合格；ER = 10⁵、Δφ = 0.3°：3.7×10⁻⁵ → 44.3 dB，留有餘裕。所以 40 dB 的隔離器需要 10⁵:1 的偏振片與 0.3° 的旋轉角控制。~Isolation ≈ −10·log₁₀(1/ER + sin²Δφ). With ER = 10⁴ and a rotation error Δφ = 0.5°: leakage 10⁻⁴ + 7.6×10⁻⁵ = 1.76×10⁻⁴ → 37.5 dB, short of 40 dB; ER = 10⁵ and Δφ = 0.5°: 8.6×10⁻⁵ → 40.6 dB, marginal; ER = 10⁵ and Δφ = 0.3°: 3.7×10⁻⁵ → 44.3 dB with margin. A 40 dB isolator therefore needs 10⁵:1 polarizers and 0.3° rotation control.",
+      "verify": "組裝後直接量隔離度（反向注入功率與穿透功率之比），與偏振片消光比和旋轉角誤差的預算相比較，差異超過 2 dB 時回頭檢查應力與對準；核對規格表每一項都有對應的量測紀錄與條件（波長、溫度、角度），並以第二套偏振儀抽樣複測延遲量。~After assembly measure isolation directly as the ratio of reverse-injected to transmitted power and compare with the budget from polarizer extinction and rotation error; a discrepancy above 2 dB sends you back to stress and alignment. Check that every specification line has a matching measurement record with conditions (wavelength, temperature, angle), and re-measure sampled retardances on a second polarimeter.",
+      "failure": "規格只寫「四分之一波片，633 nm」而沒有公差、級數與溫度範圍，供應商交付 10 級波片，在 40 °C 的機櫃內延遲量偏 λ/60，隔離器隔離度掉到 30 dB，雙方對「合格」各執一詞。~A specification reading only quarter-wave plate, 633 nm without tolerance, order or temperature range is met with a 10th-order plate; inside a 40 °C enclosure its retardance drifts by λ/60, isolation drops to 30 dB and both sides dispute what passed.",
+      "misconception": "偏振元件只要在設計波長標稱正確，就能直接換算成系統的隔離度。~A polarization component nominally correct at its design wavelength translates directly into system isolation."
+    }
+  ],
+  "example": "複合零級石英四分之一波片練習（633 nm）：Δn = 0.0091，零級厚度差 d = 633/(4×0.0091) ≈ 17.4 µm，以兩片約 700 µm 的石英片光軸交叉組合。延遲量公差 λ/300 對應厚度差公差 633/(300×0.0091) ≈ 0.23 µm；拋光速率 0.1 µm/min 時公差窗約 2 分鐘，必須以 Sénarmont 回授停機，Sénarmont 讀數 0.05° 給 λ/3600 的量測不確定度。使用條件：波長 ±0.5 nm → 零級敏感度 4×10⁻⁴ 波/nm → 2×10⁻⁴ 波；溫度 ±5 K → 2.4×10⁻⁵ 波/K → 1.2×10⁻⁴ 波；入射角 ±2° → 2.5×10⁻⁴ 相對 → 6×10⁻⁵ 波；安裝應力控制在 36 kPa 以下 → λ/1000 = 1×10⁻³ 波。總預算 RSS ≈ √(3.3² + 0.2² + 0.12² + 0.06² + 1²)×10⁻³ ≈ 3.5×10⁻³ 波 ≈ λ/290，符合 λ/250 的系統需求。若改用單片 10 級波片，光僅波長項就達 0.016 波/nm × 0.5 = 8×10⁻³ 波（λ/125），溫度項 5×10⁻³ 波，RSS ≈ λ/100，不合格。搭配的 Glan–Taylor 稜鏡消光比 10⁵:1，與 0.3° 的旋轉角控制合併後隔離度 ≈ 44 dB。數值皆為教學假設，不代表任何產品規格。~Compound zero-order quartz quarter-wave plate exercise at 633 nm: Δn = 0.0091, zero-order thickness difference d = 633/(4×0.0091) ≈ 17.4 µm, built from two quartz plates of about 700 µm with crossed axes. A λ/300 retardance tolerance corresponds to a thickness-difference tolerance of 633/(300×0.0091) ≈ 0.23 µm; at a polish rate of 0.1 µm/min the tolerance window lasts about 2 minutes, so the stop is driven by Sénarmont feedback, whose 0.05° readout gives λ/3600 measurement uncertainty. Operating terms: wavelength ±0.5 nm with zero-order sensitivity 4×10⁻⁴ waves/nm → 2×10⁻⁴ waves; temperature ±5 K at 2.4×10⁻⁵ waves/K → 1.2×10⁻⁴ waves; incidence ±2° → 2.5×10⁻⁴ relative → 6×10⁻⁵ waves; mounting stress held below 36 kPa → λ/1000 = 1×10⁻³ waves. Total RSS ≈ √(3.3² + 0.2² + 0.12² + 0.06² + 1²)×10⁻³ ≈ 3.5×10⁻³ waves ≈ λ/290, meeting a λ/250 system requirement. A single 10th-order plate instead would have a wavelength term alone of 0.016 waves/nm × 0.5 = 8×10⁻³ waves (λ/125) and a temperature term of 5×10⁻³ waves, RSS ≈ λ/100, failing. The matching Glan–Taylor prism at 10⁵:1 combined with 0.3° rotation control gives isolation ≈ 44 dB. All values are teaching assumptions, not any product specification.",
+  "history": "1808 年 Malus 發現反射光的偏振並給出以他為名的定律，1817 年 Fresnel 提出以兩次全反射產生圓偏振的菱體，1828 年 Nicol 以方解石製成第一個實用偏振稜鏡，Glan 與 Thompson 在 1880 年代改良為今天的 Glan 型稜鏡。1929 年 Edwin Land 發明聚合物片偏振片並創立 Polaroid，1946 年 MacNeille 取得薄膜偏振分光器專利；線柵偏振器從 1888 年 Hertz 的無線電實驗、1960 年 Bird 與 Parrish 的紅外線柵，到 2000 年代奈米壓印的可見光鋁線柵，把偏振元件推向大面積量產。本課只重建公開原理與工程邏輯。~Malus discovered polarization by reflection in 1808 and gave the law that bears his name; Fresnel proposed the rhomb that produces circular polarization by two total internal reflections in 1817; Nicol made the first practical calcite polarizing prism in 1828, refined by Glan and Thompson in the 1880s into today's Glan-type prisms. Edwin Land invented the polymer sheet polarizer in 1929 and founded Polaroid, and MacNeille patented the thin-film polarizing beam splitter in 1946; wire-grid polarizers run from Hertz's radio experiments of 1888 through Bird and Parrish's infrared grids of 1960 to nanoimprinted visible aluminium grids of the 2000s, bringing polarization optics to large-area mass production. This course reconstructs only public principles and engineering logic.",
+  "place": {
+    "name": "Thorlabs 紐頓偏振光學製造參照點~Thorlabs Newton polarization-optics reference",
+    "country": "美國~United States",
+    "lat": 41.058,
+    "lng": -74.752,
+    "query": "Thorlabs Newton New Jersey"
+  },
+  "sources": [
+    {
+      "key": "edmund-understanding-waveplates",
+      "title": "Edmund Optics：認識波片",
+      "titleEn": "Edmund Optics: Understanding waveplates",
+      "publisher": "Edmund Optics",
+      "url": "https://www.edmundoptics.com/knowledge-center/application-notes/optics/understanding-waveplates/",
+      "sourceType": "primary",
+      "scope": "供應商應用筆記，說明雙折射、延遲量、零級與多級波片的差異及消色差設計；不含製程參數。",
+      "scopeEn": "Vendor application note on birefringence, retardance, the difference between zero-order and multi-order plates and achromatic designs; no process parameters."
+    },
+    {
+      "key": "ucsb-mat288-polarization-lecture",
+      "title": "加州大學聖塔芭芭拉分校 MAT 288 講義：偏振與波片",
+      "titleEn": "UC Santa Barbara MAT 288 lecture: Polarization and waveplates",
+      "publisher": "University of California, Santa Barbara (course notes)",
+      "url": "https://courses.ece.ucsb.edu/MAT288/MAT288_Sp10Cohen/Lecture%2013%20Polarization%20and%20waveplates.pdf",
+      "sourceType": "primary",
+      "scope": "大學課程講義，涵蓋 Stokes 向量、偏振片類型、以 Malus 定律量消光比、波片的波長與角度敏感度及 Faraday 隔離器。",
+      "scopeEn": "University lecture notes covering Stokes vectors, polarizer types, extinction measured with Malus's law, waveplate wavelength and angle sensitivity and Faraday isolators."
+    },
+    {
+      "key": "thorlabs-polarization-optics",
+      "title": "Thorlabs：偏振光學產品指南",
+      "titleEn": "Thorlabs: Polarization optics product guide",
+      "publisher": "Thorlabs",
+      "url": "https://www.thorlabs.com/navigation.cfm?guide_ID=8",
+      "sourceType": "primary",
+      "scope": "供應商產品導覽，列出波片、偏振片、Fresnel 菱體與偏振分光器的類別、典型消光比與延遲量規格；用於規格表對照。",
+      "scopeEn": "Vendor product guide listing waveplate, polarizer, Fresnel-rhomb and polarizing-splitter classes with typical extinction and retardance specifications; used for specification comparison."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Thorlabs",
+      "nameEn": "Thorlabs",
+      "business": "光學與光電元件製造商，生產石英與 MgF₂ 波片、晶體偏振稜鏡、線柵與薄膜偏振分光器。",
+      "businessEn": "Maker of optical and photonic components producing quartz and MgF₂ waveplates, crystal polarizing prisms, wire-grid and thin-film polarizing splitters.",
+      "url": "https://www.thorlabs.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "偏振元件類別與規格的公開產品資訊",
+      "roleEn": "Public product information on polarization-component classes and specifications"
+    },
+    {
+      "name": "OptoSigma（Sigma Koki）",
+      "nameEn": "OptoSigma (Sigma Koki)",
+      "business": "光學元件與機構製造商，供應波片、偏振片、Fresnel 菱體延遲器與精密旋轉台。",
+      "businessEn": "Maker of optical components and mechanics supplying waveplates, polarizers, Fresnel-rhomb retarders and precision rotation stages.",
+      "url": "https://www.optosigma.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "菱體延遲器與偏振元件量測機構的公開產品資訊",
+      "roleEn": "Public product information on rhomb retarders and the mechanics used in polarization metrology"
+    },
+    {
+      "name": "康寧",
+      "nameEn": "Corning",
+      "business": "特種玻璃與光學材料製造商，Polarcor 含拉伸銀粒子的玻璃偏振片用於光纖隔離器。",
+      "businessEn": "Specialty-glass and optical-materials maker whose Polarcor glass polarizers with elongated silver particles serve fibre isolators.",
+      "url": "https://www.corning.com/",
+      "investorUrl": "https://investor.corning.com/",
+      "security": {"symbol": "GLW", "exchange": "NYSE", "currency": "USD"},
+      "role": "玻璃二向吸收偏振片與隔離器應用的公開資訊",
+      "roleEn": "Public information on dichroic glass polarizers and isolator applications"
+    },
+    {
+      "name": "日東電工",
+      "nameEn": "Nitto Denko",
+      "business": "聚合物偏振膜與光學薄膜的大型製造商，供應液晶顯示器用的拉伸碘摻雜偏振片。",
+      "businessEn": "Major manufacturer of polymer polarizing films and optical films, supplying stretched iodine-doped polarizers for liquid-crystal displays.",
+      "url": "https://www.nitto.com/",
+      "investorUrl": "https://www.nitto.com/jp/en/ir/",
+      "security": {"symbol": "6988", "exchange": "TSE", "currency": "JPY"},
+      "role": "量產二向吸收偏振片的公開應用脈絡",
+      "roleEn": "Public application context for mass-produced dichroic sheet polarizers"
+    }
+  ],
+  "related": ["a432", "a419"],
+  "architectureNodes": [["石英與方解石晶體定向切割", "Quartz and calcite crystal orientation and cutting"], ["研磨拋光至延遲量", "Lapping and polishing to retardance"], ["奈米線柵與 MacNeille 膜堆", "Nanowire grid and MacNeille stack"], ["增透膜與無應力安裝", "Antireflection coating and stress-free mounting"], ["Sénarmont 與消光比量測", "Sénarmont and extinction-ratio metrology"], ["規格驗收與交接", "Specification acceptance and handoff"]],
+  "architectureEdges": [[0, 1], [1, 3], [2, 3], [3, 4], [4, 1], [4, 5]]
+}

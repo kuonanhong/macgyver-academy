@@ -17,7 +17,9 @@ from urllib.parse import parse_qsl, quote_plus, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 TERMS_VERSION = "v10-2026-10"
-FREE_COURSES = ("semiconductor", "packaging", "a201", "a242", "a271", "a281")
+# V12: no course is entirely free; the first stage of every course is.
+FREE_COURSES = ()
+FREE_STAGES = int(os.environ.get("FREE_STAGES_PER_COURSE", "1"))
 PLANS = (
     {"id": "all-30", "title": "全學院 30 天", "titleEn": "Academy · 30 days", "amountTwd": 299, "durationDays": 30},
     {"id": "all-365", "title": "全學院 365 天", "titleEn": "Academy · 365 days", "amountTwd": 2490, "durationDays": 365},
@@ -135,7 +137,7 @@ class Commerce:
 
     def config(self):
         return {"mode": self.mode, "protected": self.protected, "checkoutAvailable": bool(self.available),
-                "freeCourseIds": list(FREE_COURSES), "plans": list(PLANS), "termsVersion": TERMS_VERSION,
+                "freeCourseIds": list(FREE_COURSES), "freeStagesPerCourse": FREE_STAGES, "plans": list(PLANS), "termsVersion": TERMS_VERSION,
                 "termsUrl": "/commerce-terms.html", "reason": self.reason,
                 "legalUrls": {"terms": self.app.origin + "/commerce-terms.html", "privacy": self.app.origin + "/commerce-terms.html#privacy", "refund": self.app.origin + "/commerce-terms.html#refund"},
                 "certificateType": "server-recorded-quiz-completion" if self.protected else "local-learning-statement"}
@@ -180,16 +182,25 @@ class Commerce:
             raise self.error(402, "An active course pass is required. Sign in or review membership options.")
         return course
 
+    @staticmethod
+    def stub_stage(stage):
+        return {"id": stage["id"], "order": stage.get("order"), "title": stage.get("title"), "titleEn": stage.get("titleEn"),
+                "steps": [{"id": s["id"], "order": s.get("order"), "sequence": s.get("sequence"), "title": s.get("title"), "titleEn": s.get("titleEn"),
+                           "locked": True, "prerequisiteIds": s.get("prerequisiteIds", []), "knowledge": [],
+                           "quiz": {"question": "", "questionEn": "", "options": ["", "", ""], "optionsEn": ["", "", ""], "answer": 0}} for s in stage.get("steps", [])]}
+
+    def visible_course(self, course, entitled):
+        if entitled or not self.protected:
+            return {**course, "locked": False}
+        stages = course.get("stages", [])
+        return {**course, "stages": stages[:FREE_STAGES] + [self.stub_stage(st) for st in stages[FREE_STAGES:]], "locked": False, "paid": True, "partial": True}
+
+    def free_step(self, course, step_id):
+        return step_id in {s["id"] for st in course.get("stages", [])[:FREE_STAGES] for s in st.get("steps", [])}
+
     def curriculum(self, user_id):
         entitled = not self.protected or bool(self.entitlement(user_id))
-        result = []
-        allowed = ("id", "title", "titleEn", "summary", "summaryEn", "category", "subcategory", "subcategoryTitle", "subcategoryTitleEn", "stepCount", "estimatedMinutes", "photoId", "contentStatus", "curriculumVersion", "status", "kind")
-        for course in self.load_courses().values():
-            if entitled or course["id"] in FREE_COURSES:
-                result.append({**course, "locked": False})
-            else:
-                result.append({**{k: course[k] for k in allowed if k in course}, "stages": [], "locked": True, "paid": True})
-        return result
+        return [self.visible_course(course, entitled) for course in self.load_courses().values()]
 
     def static_allowed(self, target):
         """An allowlist applied to the resolved path prevents aliases/traversal."""
@@ -343,7 +354,9 @@ class Commerce:
     def evidence(self, user_id, payload):
         if not self.protected:
             raise self.error(409, "The demo edition creates local learning statements, not server certificates.")
-        course = self.require_access(payload.get("courseId"), user_id)
+        course = self.course(payload.get("courseId"))
+        if not self.can_access(course["id"], user_id) and not self.free_step(course, payload.get("stepId")):
+            raise self.error(402, "This step is beyond the free first section. Activate a learning pass.")
         rev, sequence = self.course_revision(course), steps(course)
         if payload.get("revision") != rev:
             raise self.error(409, "Course revision changed; reload the course evidence status.")
@@ -354,7 +367,8 @@ class Commerce:
         if position < 0:
             raise self.error(400, "Unknown step.")
         now = int(time.time())
-        mode = self.evidence_mode(course["id"])
+        mode = self.evidence_mode(course["id"], course, step_id)
+        modes = self.evidence_modes()
         with self.app.db() as db:
             db.execute("BEGIN IMMEDIATE")
             db.execute("INSERT INTO evidence_attempts VALUES(?,?,1) ON CONFLICT(user_id,hour) DO UPDATE SET count=count+1", (user_id, now // 3600))
@@ -365,7 +379,7 @@ class Commerce:
                 limited = True
             else:
                 limited = False
-                passed = {r[0] for r in db.execute("SELECT step_id FROM learning_evidence WHERE user_id=? AND course_id=? AND revision=? AND mode=?", (user_id, course["id"], rev, mode))}
+                passed = {r[0] for r in db.execute(f"SELECT step_id FROM learning_evidence WHERE user_id=? AND course_id=? AND revision=? AND mode IN ({','.join('?' * len(modes))})", (user_id, course["id"], rev, *modes))}
                 if any(s["id"] not in passed for s in sequence[:position]):
                     raise self.error(409, "Complete the preceding server-recorded quiz steps first.")
                 if answer != sequence[position].get("quiz", {}).get("answer"):
@@ -377,27 +391,35 @@ class Commerce:
         return {"passed": True, "stepId": step_id, "completed": count, "total": len(sequence)}
 
     def evidence_status(self, user_id, course_id):
-        course = self.require_access(course_id, user_id)
+        course = self.course(course_id)
         rev = self.course_revision(course)
-        mode = self.evidence_mode(course_id)
+        modes = self.evidence_modes()
         with self.app.db() as db:
-            passed = [r[0] for r in db.execute("SELECT step_id FROM learning_evidence WHERE user_id=? AND course_id=? AND revision=? AND mode=? ORDER BY passed_at,step_id", (user_id, course_id, rev, mode))]
-        return {"courseId": course_id, "revision": rev, "completed": passed, "total": len(steps(course)), "mode": mode}
+            passed = list(dict.fromkeys(r[0] for r in db.execute(f"SELECT step_id FROM learning_evidence WHERE user_id=? AND course_id=? AND revision=? AND mode IN ({','.join('?' * len(modes))}) ORDER BY passed_at,step_id", (user_id, course_id, rev, *modes))))
+        return {"courseId": course_id, "revision": rev, "completed": passed, "total": len(steps(course)), "mode": modes[-1]}
 
-    def evidence_mode(self, course_id):
-        # Free learning can continue when the operator later enables live
-        # checkout. Sandbox evidence is always isolated from real learning.
-        return "sandbox" if self.mode == "sandbox" else "free" if course_id in FREE_COURSES else self.mode
+    def evidence_mode(self, course_id, course=None, step_id=None):
+        # V12: evidence for the free first stage survives when the operator later
+        # enables live checkout. Sandbox evidence is always isolated.
+        if self.mode == "sandbox":
+            return "sandbox"
+        if course_id in FREE_COURSES or (course is not None and step_id and self.free_step(course, step_id)):
+            return "free"
+        return self.mode
+
+    def evidence_modes(self):
+        return ("sandbox",) if self.mode == "sandbox" else ("free", self.mode)
 
     def issue_certificate(self, user, payload):
         if not self.protected:
             raise self.error(409, "Certificates require a protected learning server.")
         course = self.require_access(payload.get("courseId"), user["id"])
         rev, sequence = self.course_revision(course), steps(course)
-        mode = self.evidence_mode(course["id"])
+        mode = "sandbox" if self.mode == "sandbox" else self.mode
+        modes = self.evidence_modes()
         with self.app.db() as db:
             db.execute("BEGIN IMMEDIATE")
-            evidence = {r[0] for r in db.execute("SELECT step_id FROM learning_evidence WHERE user_id=? AND course_id=? AND revision=? AND mode=?", (user["id"], course["id"], rev, mode))}
+            evidence = {r[0] for r in db.execute(f"SELECT step_id FROM learning_evidence WHERE user_id=? AND course_id=? AND revision=? AND mode IN ({','.join('?' * len(modes))})", (user["id"], course["id"], rev, *modes))}
             if not sequence or any(s["id"] not in evidence for s in sequence):
                 raise self.error(409, "All course quiz steps must first pass on this server.")
             old = db.execute("SELECT * FROM learning_certificates WHERE user_id=? AND course_id=? AND revision=? AND mode=?", (user["id"], course["id"], rev, mode)).fetchone()
@@ -457,7 +479,8 @@ def dispatch_commerce(handler, path):
     elif method == "GET" and path == "/api/curriculum":
         handler.send_json(commerce.curriculum((handler.user() or {}).get("id")))
     elif method == "GET" and path.startswith("/api/courses/"):
-        handler.send_json(commerce.require_access(path.removeprefix("/api/courses/"), (handler.user() or {}).get("id")))
+        uid = (handler.user() or {}).get("id")
+        handler.send_json(commerce.visible_course(commerce.course(path.removeprefix("/api/courses/")), commerce.can_access(path.removeprefix("/api/courses/"), uid)))
     elif method == "GET" and path.startswith("/api/learning/"):
         handler.send_json(commerce.evidence_status(handler.user(True)["id"], path.removeprefix("/api/learning/")))
     elif method == "GET" and path == "/api/certificates":

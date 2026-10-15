@@ -1,0 +1,182 @@
+{
+  "id": "a494",
+  "title": "ALMA 大型毫米及次毫米波陣列~Atacama Large Millimeter/submillimeter Array",
+  "discipline": "optics-facilities-observatories",
+  "family": "radio",
+  "focus": "5000 公尺高原上 66 座天線的毫米波干涉成像：大氣、天線面形、SIS 接收機、水汽相位校正與相關器~Millimetre interferometric imaging with 66 antennas at 5000 m: atmosphere, antenna surfaces, SIS receivers, water-vapour phase correction and the correlator",
+  "summary": "從查南托高原的大氣透射出發，建立 ALMA 以 54 座 12 m 與 12 座 7 m 天線、最長 16 km 基線在 0.32–3.6 mm 波段合成孔徑的工程鏈：天線面形與 Ruze 效率、4 K SIS 前端、183 GHz 水汽輻射計相位校正、校正誤差預算、相關器資料流與陣列驗收。~Starting from atmospheric transmission on the Chajnantor plateau, this course builds the engineering chain by which ALMA synthesises an aperture from 54 twelve-metre and 12 seven-metre antennas on baselines up to 16 km at 0.32–3.6 mm: surface accuracy and Ruze efficiency, 4 K SIS front ends, 183 GHz water-vapour-radiometer phase correction, calibration error budgets, correlator data flow and array acceptance.",
+  "units": [
+    {
+      "anchor": "查南托高原大氣視窗~Chajnantor atmospheric window",
+      "title": "高原站址與毫米波大氣不透明度~High site and millimetre-wave atmospheric opacity",
+      "mechanism": "毫米與次毫米波段的主要吸收體是大氣水汽，其壓力增寬的轉動譜線在 183 GHz、325 GHz 等處形成強吸收帶，帶間才是可觀測的大氣視窗。ALMA 選址在海拔約 5000 m 的查南托高原，可沉降水汽（PWV）中位數約 1 mm，使 0.32–3.6 mm（35–950 GHz）十個接收波段都有可用的透射率。大氣不只吸收訊號，也以自身溫度發射雜訊，因此站址同時決定訊號損失與系統雜訊的下限；這是整個陣列的第一道系統邊界。~At millimetre and submillimetre wavelengths the dominant absorber is atmospheric water vapour, whose pressure-broadened rotational lines near 183 GHz and 325 GHz form strong absorption bands; the gaps between them are the observable windows. ALMA sits on the Chajnantor plateau at about 5000 m, where the median precipitable water vapour (PWV) is near 1 mm, so all ten receiver bands between 0.32 and 3.6 mm (35–950 GHz) have usable transmission. The atmosphere not only attenuates the signal but radiates noise at its own temperature, so the site fixes both the signal loss and the noise floor; it is the first system boundary of the array.",
+      "model": "天頂不透明度 τ₀ 時，仰角對應大氣質量 A 的透射率為 exp(−τ₀·A)，天空亮溫 T_sky ≈ T_atm·[1 − exp(−τ₀·A)]。取 345 GHz、PWV = 1 mm 時 τ₀ ≈ 0.15（教學假設）、T_atm = 260 K：天頂透射率 exp(−0.15) = 0.861、T_sky ≈ 36 K；仰角 30°（A = 2）時透射率 0.741、T_sky ≈ 67 K。~With zenith opacity τ₀, the transmission at airmass A is exp(−τ₀·A) and the sky brightness is T_sky ≈ T_atm·[1 − exp(−τ₀·A)]. Taking τ₀ ≈ 0.15 at 345 GHz for PWV = 1 mm (teaching assumption) and T_atm = 260 K: zenith transmission exp(−0.15) = 0.861 with T_sky ≈ 36 K; at 30° elevation (A = 2) transmission is 0.741 and T_sky ≈ 67 K.",
+      "verify": "以站址的 183 GHz 水汽輻射計或 225 GHz 傾斜輻射計做天空傾角掃描（sky dip），在數個仰角量天空亮溫並擬合 τ₀；再把擬合值與公開的大氣透射模型（例如 ALMA 所用的 ATM 模型）在同一 PWV 下的預測比較，差異應在 10% 以內，否則檢查輻射計增益校正。~Perform a sky dip with the site 183 GHz water-vapour radiometer or a 225 GHz tipping radiometer, measuring sky brightness at several elevations and fitting τ₀; then compare the fitted value with a public atmospheric transmission model (such as the ATM model ALMA uses) at the same PWV. Agreement should be within about 10%, otherwise check the radiometer gain calibration.",
+      "failure": "若用低海拔站址的 τ₀ 經驗值排程，次毫米波段（Band 9、10）會在 PWV 稍高時完全不透明，觀測資料的訊噪比遠低於預期，且校正源的流量也因透射率估錯而系統性偏低。~Scheduling with opacity values from a low-altitude site makes the submillimetre bands (Band 9 and 10) fully opaque at slightly elevated PWV; the data arrive with far lower signal-to-noise than planned and the calibrator fluxes are also biased low because transmission was misestimated.",
+      "misconception": "只要天線夠大，站址高度對毫米波觀測影響不大。~With big enough antennas, site altitude hardly matters at millimetre wavelengths."
+    },
+    {
+      "anchor": "基線向量與 uv 平面~Baseline vectors and the uv plane",
+      "title": "干涉成像、角解析度與可回復尺度~Interferometric imaging, angular resolution and recoverable scales",
+      "mechanism": "干涉儀把每一對天線的相關輸出視為天空亮度分佈的一個空間頻率分量（可見度），空間頻率由基線向量在垂直於視線方向的投影除以波長決定。ALMA 的角解析度由最長基線 B_max 決定，約為 λ/B_max；最大可回復的擴散結構則由最短基線 B_min 決定。50 座 12 m 天線可在 150 m 到 16 km 之間重組，12 座 7 m 天線與 4 座 12 m 全功率天線組成的 Morita 緊湊陣列補足短基線與零基線資訊，使擴散結構的總流量不致流失。~An interferometer treats the correlated output of each antenna pair as one spatial-frequency component of the sky brightness (a visibility), with spatial frequency set by the baseline vector projected perpendicular to the line of sight divided by wavelength. ALMA's angular resolution is set by the longest baseline B_max, roughly λ/B_max, while the largest recoverable extended structure is set by the shortest baseline B_min. Fifty 12 m antennas can be reconfigured between 150 m and 16 km, and the Morita compact array of twelve 7 m antennas plus four 12 m total-power antennas supplies short and zero spacings so that the flux of extended emission is not lost.",
+      "model": "角解析度 θ ≈ λ/B_max：在 345 GHz（λ = 0.87 mm）、B_max = 16 km 時 θ ≈ 0.87×10⁻³/16000 = 5.4×10⁻⁸ rad ≈ 0.011″（11 毫角秒）；12 m 天線的主波束 θ_PB ≈ 1.13λ/D ≈ 16.9″。最大可回復尺度約 0.6λ/B_min：12 m 陣列 B_min ≈ 15 m 時約 7″，7 m 陣列 B_min ≈ 9 m 時約 12″。~Angular resolution θ ≈ λ/B_max: at 345 GHz (λ = 0.87 mm) and B_max = 16 km, θ ≈ 0.87×10⁻³/16000 = 5.4×10⁻⁸ rad ≈ 0.011″ (11 milliarcseconds); the 12 m primary beam is θ_PB ≈ 1.13λ/D ≈ 16.9″. The largest recoverable scale is about 0.6λ/B_min: roughly 7″ for the 12 m array with B_min ≈ 15 m and 12″ for the 7 m array with B_min ≈ 9 m.",
+      "verify": "觀測一個已知緻密的校正源（類星體）並成像，量測合成波束的半高全寬並與 λ/B_max 的預測比較；再觀測一個已知尺度的擴散源（行星或分子雲），比較僅用 12 m 陣列與加入 7 m 陣列後回復的總流量，確認短基線缺失造成的流量損失。~Image a known compact calibrator (a quasar), measure the synthesised beam FWHM and compare with the λ/B_max prediction; then observe a source of known extent (a planet or a molecular cloud), compare the total flux recovered with the 12 m array alone against 12 m plus 7 m data, and confirm the flux lost to missing short spacings.",
+      "failure": "只用長基線配置觀測擴散分子雲時，大於可回復尺度的結構在影像中被濾掉，出現負碗狀底座與低估的總流量；研究者若把這當成真實的空洞結構，科學結論就錯了。~Observing an extended molecular cloud only in a long-baseline configuration filters out structure larger than the recoverable scale, producing a negative bowl and an underestimated total flux; a researcher who reads that as a real cavity draws the wrong scientific conclusion.",
+      "misconception": "基線越長影像品質一定越好，短基線只是備用。~Longer baselines always give better images; short baselines are just backup."
+    },
+    {
+      "anchor": "12 m 天線碳纖維背架與面板~12 m antenna CFRP backup structure and panels",
+      "title": "天線面形精度、Ruze 效率與指向~Antenna surface accuracy, Ruze efficiency and pointing",
+      "mechanism": "ALMA 的 12 m 天線使用碳纖維複合材料（CFRP）背架與鋁質（部分為鍍鎳）面板，在 5000 m 的日照、風與 −20 °C 到 +20 °C 溫差下仍要維持 25 µm 的面形精度與 0.6″ 的絕對指向，主鏡以卡塞格林光學把訊號饋入接收機艙。面板的隨機誤差把部分功率散射到主波束外，損失依 Ruze 公式隨 (ε/λ)² 指數增長，因此次毫米波段對面形最敏感；指向誤差則讓源偏離主波束中心而損失增益。~ALMA's 12 m antennas use carbon-fibre-reinforced-plastic (CFRP) backup structures with aluminium (partly nickel-plated) panels, and must hold a 25 µm surface accuracy and 0.6″ absolute pointing under the sun, wind and −20 °C to +20 °C swings of the 5000 m site; Cassegrain optics feed the receiver cabin. Random panel errors scatter power out of the main beam with a loss that grows exponentially with (ε/λ)² according to the Ruze formula, so the submillimetre bands are the most sensitive to surface figure, while pointing errors move the source off the beam centre and lose gain.",
+      "model": "Ruze 效率 η_s = exp[−(4πε/λ)²]。取 ε = 25 µm（RMS）：λ = 3 mm 時 (4π×0.025/3)² = 0.011，η_s = 0.989；λ = 0.87 mm 時 (0.361)² = 0.130，η_s = 0.878；λ = 0.32 mm（Band 10）時 (0.982)² = 0.964，η_s = 0.381。可見同一面形在 Band 10 已損失六成功率。~Ruze efficiency η_s = exp[−(4πε/λ)²]. With ε = 25 µm RMS: at λ = 3 mm, (4π×0.025/3)² = 0.011 and η_s = 0.989; at λ = 0.87 mm, (0.361)² = 0.130 and η_s = 0.878; at λ = 0.32 mm (Band 10), (0.982)² = 0.964 and η_s = 0.381, so the same surface already loses sixty percent of the power in Band 10.",
+      "verify": "在 OSF（海拔 2900 m）以近場全像（holography）對準塔上發射器量測面板相位，解出每片面板的高度與傾斜誤差並調整；在高原上以行星做徑向全像或以多頻段口徑效率量測反推 ε，並以指向校正觀測（全天 pointing run）擬合指向模型殘差，確認 RMS 在 2″（相對指向）與 0.6″（絕對）以內。~At the OSF (2900 m) measure panel phase with near-field holography against a tower transmitter, solve each panel's height and tilt errors and adjust; on the plateau back out ε from multi-band aperture-efficiency measurements or planet holography, and fit a pointing model from an all-sky pointing run, confirming residuals within 2″ (offset pointing) and 0.6″ (absolute).",
+      "failure": "日照造成背架單側升溫、面板在白天失去設定面形時，若仍以夜間的全像結果觀測次毫米波段，口徑效率會在午後掉到預期的一半以下，而且各天線損失不同，流量校正也跟著失準。~When sunlight heats one side of the backup structure and the panels lose their night-time figure, observing the submillimetre bands with the night-time holography solution drops the aperture efficiency to below half the expected value in the afternoon, and because each antenna loses differently, the flux calibration also drifts.",
+      "misconception": "25 µm 的面形精度對 ALMA 所有波段都綽綽有餘。~A 25 µm surface is more than good enough for every ALMA band."
+    },
+    {
+      "anchor": "4 K 低溫恆溫器與 SIS 混頻器~4 K cryostat and SIS mixers",
+      "title": "前端接收機：SIS 混頻器與系統溫度~Front-end receivers: SIS mixers and system temperature",
+      "mechanism": "每座天線的前端在同一個三級低溫恆溫器內裝十個波段的接收卡匣，Band 3 到 10 使用超導-絕緣體-超導（SIS）穿隧接面混頻器，在約 4 K 工作，把天空訊號與本地振盪器（LO）訊號混頻降到中頻；低頻的 Band 1 與 2 則使用 HEMT 低雜訊放大器。SIS 混頻器的雜訊可接近量子極限 hν/k 的數倍，因此接收機雜訊、天空雜訊與光學損耗合起來的系統溫度 T_sys 才是靈敏度的真正決定因素。LO 參考由中央光子產生器經光纖分送到各天線並鎖相，以保持陣列相位一致。~Each antenna's front end holds ten band cartridges inside one three-stage cryostat; Bands 3 to 10 use superconductor-insulator-superconductor (SIS) tunnel-junction mixers operating near 4 K that mix the sky signal with a local-oscillator (LO) tone down to an intermediate frequency, while the low-frequency Bands 1 and 2 use HEMT low-noise amplifiers. SIS mixer noise can approach a few times the quantum limit hν/k, so the system temperature T_sys, combining receiver noise, sky noise and optical loss, is what really sets sensitivity. The LO reference is generated photonically at the central building, distributed over fibre to every antenna and phase-locked to keep the array coherent.",
+      "model": "量子極限 T_q = hν/k 在 345 GHz 為 6.626×10⁻³⁴×3.45×10¹¹/1.381×10⁻²³ ≈ 16.6 K；取接收機溫度 T_rx = 70 K（約 4 倍量子極限，教學假設）。系統溫度以大氣外為參考：T_sys ≈ (T_rx + T_sky)/exp(−τ₀A)。天頂（T_sky = 36 K、透射率 0.861）時 T_sys ≈ 106/0.861 ≈ 123 K；A = 2（T_sky = 67 K、透射率 0.741）時 T_sys ≈ 137/0.741 ≈ 185 K。~The quantum limit T_q = hν/k at 345 GHz is 6.626×10⁻³⁴×3.45×10¹¹/1.381×10⁻²³ ≈ 16.6 K; take a receiver temperature T_rx = 70 K (about four times the quantum limit, a teaching assumption). Referred to above the atmosphere, T_sys ≈ (T_rx + T_sky)/exp(−τ₀A). At zenith (T_sky = 36 K, transmission 0.861) T_sys ≈ 106/0.861 ≈ 123 K; at A = 2 (T_sky = 67 K, transmission 0.741) T_sys ≈ 137/0.741 ≈ 185 K.",
+      "verify": "以熱／冷負載（室溫吸收體與 77 K 液氮負載）做 Y 因子量測：T_rx = (T_hot − Y·T_cold)/(Y − 1)，在每個波段的中頻範圍掃描並與卡匣驗收規格比較；再在天線上以「hot load–sky」切換量出 T_sys，核對與大氣模型推算的 T_sys 是否一致。~Measure T_rx by the Y-factor method with hot and cold loads (a room-temperature absorber and a 77 K liquid-nitrogen load), T_rx = (T_hot − Y·T_cold)/(Y − 1), scanned across each band's IF range and compared with the cartridge acceptance specification; then on the antenna switch between the hot load and sky to obtain T_sys and check it against the value predicted from the atmospheric model.",
+      "failure": "LO 功率偏移使 SIS 接面偏離最佳泵浦點時，混頻器增益與雜訊同時劣化，T_rx 可在數分鐘內翻倍；若監控只看 IF 總功率而不看泵浦電流，這種退化會被誤判為天氣變差。~If the LO power drifts and the SIS junction leaves its optimum pump point, mixer gain and noise degrade together and T_rx can double within minutes; monitoring only total IF power rather than the pump current misreads this degradation as worsening weather.",
+      "misconception": "接收機冷到 4 K 之後，系統溫度就只剩天空的貢獻。~Once the receiver is at 4 K, the system temperature is only the sky's contribution."
+    },
+    {
+      "anchor": "183 GHz 水汽輻射計~183 GHz water-vapour radiometer",
+      "title": "水汽相位起伏與輻射計校正~Water-vapour phase fluctuations and radiometric correction",
+      "mechanism": "水汽的折射率使電波在大氣中多走一段「濕路徑」，約為每毫米 PWV 多出 6.5 mm 的等效路徑。兩座天線上方的水汽量因亂流而不同且隨秒級時間變化，造成基線相位的隨機起伏，在次毫米波段一小段路徑差就是好幾個波長，相干性會被摧毀。每座 12 m 天線因此裝有 183 GHz 水汽輻射計，以約 1 s 的節奏量測視線上的水汽發射，推算瞬時濕路徑並在相關後資料中逐一修正相位；殘餘的慢變化再以快速切換校正源（phase referencing）去除。~The refractive index of water vapour adds a wet path to the radio signal, roughly 6.5 mm of excess path per millimetre of PWV. The vapour above two antennas differs because of turbulence and changes on second time scales, producing random baseline phase fluctuations; at submillimetre wavelengths a small path difference is several wavelengths and coherence is destroyed. Each 12 m antenna therefore carries a 183 GHz water-vapour radiometer that measures line-of-sight vapour emission about once per second, infers the instantaneous wet path and corrects the phase of the correlated data sample by sample; the remaining slow drift is removed by fast switching to a phase calibrator.",
+      "model": "相位誤差 φ = 2π·ΔL/λ。若兩天線間 PWV 差 0.1 mm，ΔL ≈ 0.65 mm，在 λ = 0.87 mm 時 φ = 2π×0.65/0.87 ≈ 4.7 rad ≈ 269°，完全失相干；WVR 修正後殘餘路徑 15 µm 時 φ ≈ 0.108 rad ≈ 6.2°。相干損失因子 exp(−σ_φ²/2)：σ_φ = 0.108 rad 時為 0.994，σ_φ = 0.72 rad（殘餘 100 µm）時僅 0.77。~Phase error φ = 2π·ΔL/λ. A 0.1 mm PWV difference between two antennas gives ΔL ≈ 0.65 mm, which at λ = 0.87 mm is φ = 2π×0.65/0.87 ≈ 4.7 rad ≈ 269°, total decoherence; after WVR correction a 15 µm residual gives φ ≈ 0.108 rad ≈ 6.2°. The coherence factor exp(−σ_φ²/2) is 0.994 for σ_φ = 0.108 rad but only 0.77 for σ_φ = 0.72 rad (a 100 µm residual).",
+      "verify": "對強校正源做長時間相位追蹤，分別計算套用 WVR 修正前後的相位 RMS 與相干損失，並畫出相位結構函數對基線長度的關係；WVR 修正應使長基線的相位 RMS 明顯下降，而殘餘量應與輻射計的路徑雜訊規格（約 10 µm 加上 2% 的起伏量）相符。~Track the phase of a strong calibrator for a long interval, compute the phase RMS and coherence loss with and without the WVR correction, and plot the phase structure function against baseline length; the WVR correction should clearly reduce the long-baseline phase RMS, and the residual should match the radiometer path-noise specification of about 10 µm plus 2% of the fluctuation.",
+      "failure": "雲層或液態水出現時，183 GHz 發射不再只來自水汽，輻射計推算的濕路徑偏高，套用修正反而把相位弄得更差；若流程沒有偵測液態水並關閉修正，長基線影像會模糊且峰值流量下降。~When clouds or liquid water are present the 183 GHz emission no longer comes only from vapour, the inferred wet path is too large and applying the correction makes the phase worse; if the pipeline does not detect liquid water and disable the correction, long-baseline images blur and peak fluxes drop.",
+      "misconception": "乾燥站址上的大氣相位是穩定的，只要校正一次即可。~At a dry site the atmospheric phase is stable, so one calibration is enough."
+    },
+    {
+      "anchor": "校正鏈與誤差預算表~Calibration chain and error-budget table",
+      "title": "流量、頻寬、指向與基線的誤差預算~Flux, bandpass, pointing and baseline error budgets",
+      "mechanism": "ALMA 的每次觀測都包含一組校正：以行星或衛星與監測過的類星體定流量尺度，以強連續譜源定頻寬響應，以鄰近類星體做相位參考，並定期做指向與焦點校正。天線在搬移後的位置（基線向量）要以多個類星體的相位解到次毫米精度，否則校正源與目標之間的相位會隨角距離產生系統誤差。工程師要把這些項目列成誤差預算，量化每一項對振幅與相位的貢獻，才知道影像的流量不確定度（通常 5–10%）由誰主導。~Every ALMA observation carries a calibration set: the flux scale from planets or moons and monitored quasars, the bandpass from a strong continuum source, phase referencing on a nearby quasar, and periodic pointing and focus checks. After antennas are moved, their positions (baseline vectors) must be solved from the phases of several quasars to submillimetre precision, otherwise the phase between calibrator and target drifts systematically with their angular separation. The engineer tabulates these items in an error budget, quantifying each contribution to amplitude and phase, to learn which term dominates the image flux uncertainty, typically 5–10%.",
+      "model": "指向損失（高斯波束）≈ exp[−4ln2·(δ/θ_PB)²]：δ = 0.6″ 在 345 GHz（θ_PB = 16.9″）時損失僅 0.35%，在 950 GHz（θ_PB ≈ 6.2″）時損失 2.6%。基線誤差 ε_b 造成的相位誤差 φ ≈ 2π·ε_b·sinθ_sep/λ：ε_b = 0.1 mm、校正源與目標相距 2°、λ = 0.87 mm 時 φ ≈ 0.025 rad ≈ 1.4°。~Pointing loss (Gaussian beam) ≈ exp[−4ln2·(δ/θ_PB)²]: δ = 0.6″ costs only 0.35% at 345 GHz (θ_PB = 16.9″) but 2.6% at 950 GHz (θ_PB ≈ 6.2″). A baseline error ε_b gives a phase error φ ≈ 2π·ε_b·sinθ_sep/λ: with ε_b = 0.1 mm, a calibrator 2° from the target and λ = 0.87 mm, φ ≈ 0.025 rad ≈ 1.4°.",
+      "verify": "在同一觀測中交替觀測兩個已知流量的校正源，把其中一個當成「未知目標」做完整校正流程，比較回復流量與目錄值的偏差；同時檢查相位參考後目標相位的殘餘斜率是否隨校正源角距離增長，若是則重解天線位置。~Within one observation alternate between two calibrators of known flux, treat one as an unknown target, run the full calibration and compare the recovered flux with the catalogue value; also check whether the residual phase slope on the target after phase referencing grows with calibrator separation, and if so re-solve the antenna positions.",
+      "failure": "把流量不確定度的各項以線性相加、或在預算表中同時列入 WVR 殘餘與相位參考殘餘而重複計算，會讓文件看起來保守，實際卻掩蓋了主導項；相反地忘記列入天線位置誤差，會讓長基線的相位系統誤差一路傳到科學影像。~Adding flux-uncertainty terms linearly, or double counting the WVR residual and the phase-referencing residual in the budget, makes the document look conservative while hiding the dominant term; conversely, omitting antenna-position error lets a systematic long-baseline phase error propagate all the way into the science image.",
+      "misconception": "流量校正用的行星是理想點源，不需要模型。~Planets used for flux calibration are ideal point sources and need no model."
+    },
+    {
+      "anchor": "高原相關器與資料傳輸~Plateau correlator and data transport",
+      "title": "數位化、相關器與靈敏度方程~Digitisation, the correlator and the sensitivity equation",
+      "mechanism": "每座天線把 4 個 2 GHz 基頻、兩個極化的中頻以 3 位元、4 GS/s 取樣，約 96 Gb/s 的資料經光纖送到海拔 5000 m 的陣列運作站（AOS）相關器；相關器對每一對天線在每個頻道做乘積累加，產生可見度，再以 ACA 相關器處理緊湊陣列。相關器的運算量隨基線數 N(N−1)/2 與頻道數成長，而陣列靈敏度則隨 √(N(N−1)·Δν·τ) 改善，因此天線數、頻寬與整合時間是同一條方程式的三個旋鈕。~Each antenna samples four 2 GHz basebands in two polarisations at 3 bits and 4 GS/s, and about 96 Gb/s of data travel over fibre to the correlator at the 5000 m Array Operations Site (AOS); the correlator multiplies and accumulates every antenna pair in every channel to produce visibilities, with a separate ACA correlator for the compact array. Correlator load grows with the number of baselines N(N−1)/2 and with channel count, while array sensitivity improves as √(N(N−1)·Δν·τ), so antenna count, bandwidth and integration time are three knobs on the same equation.",
+      "model": "基線數為 N(N−1)/2：50 座天線有 1225 條基線，66 座有 2145 條。點源靈敏度（熱雜訊）ΔS ≈ 2k·T_sys/[η_c·η_a·A·√(N(N−1)·n_p·Δν·τ)]，其中 η_c 為相關器量化效率、η_a 為口徑效率、n_p 為極化數。取系統溫度 T_sys = 123 K、η_c = 0.88、η_a = 0.70、單天線面積 A = 113 m²（12 m）、N = 50、n_p = 2、頻寬 Δν = 7.5 GHz、整合時間 τ = 60 s：分母為 69.7×√(2.2×10¹⁵) = 69.7×4.7×10⁷ = 3.27×10⁹，得 ΔS ≈ 3.40×10⁻²¹/3.27×10⁹ ≈ 1.0×10⁻³⁰ W m⁻² Hz⁻¹ ≈ 0.10 mJy。~Baselines N(N−1)/2: 1225 for 50 antennas, 2145 for 66. Point-source sensitivity ΔS ≈ 2k·T_sys/[η_c·η_a·A·√(N(N−1)·n_p·Δν·τ)]. With T_sys = 123 K, η_c = 0.88, η_a = 0.70, A = 113 m² (12 m), N = 50, n_p = 2, Δν = 7.5 GHz and τ = 60 s: the denominator is 69.7×√(2.2×10¹⁵) = 69.7×4.7×10⁷ = 3.27×10⁹, so ΔS ≈ 3.40×10⁻²¹/3.27×10⁹ ≈ 1.0×10⁻³⁰ W m⁻² Hz⁻¹ ≈ 0.10 mJy.",
+      "verify": "把一段無源的空天區資料成像，量測影像的 RMS 雜訊並與靈敏度方程的預測比較，差異應在 20% 內；再檢查相關器輸出的量化修正（3 位元取樣的 η_c）與資料傳輸的遺失封包率，確認雜訊不是來自資料鏈而是熱雜訊。~Image an empty region of sky, measure the image RMS noise and compare it with the sensitivity-equation prediction, expecting agreement within 20%; then check the quantisation correction applied to the correlator output (η_c for 3-bit sampling) and the packet-loss rate of the data link to confirm that the noise is thermal and not from the data chain.",
+      "failure": "數位化器的取樣電平未隨 IF 功率調整時，3 位元量化落到非線性區，η_c 從 0.88 掉到 0.7 以下，而且強源附近出現假訊號；靈敏度預測與實測差距擴大卻找不到天氣或接收機原因。~If digitiser sampling thresholds are not adjusted to the IF power, 3-bit quantisation falls into its nonlinear range, η_c drops from 0.88 to below 0.7 and spurious signals appear near strong sources; the gap between predicted and measured sensitivity widens with no weather or receiver cause to blame.",
+      "misconception": "天線數加倍，靈敏度就恰好加倍。~Doubling the number of antennas exactly doubles the sensitivity."
+    },
+    {
+      "anchor": "陣列重組與系統驗收紀錄~Array reconfiguration and system-acceptance record",
+      "title": "天線整合、重組與陣列驗收~Antenna integration, reconfiguration and array acceptance",
+      "mechanism": "天線先在 OSF 組裝並完成全像、指向與伺服測試，再由 28 輪的運輸車載上 5000 m 高原的 192 個基座之一；每次重組後要重解天線位置、確認光纖長度補償（線長校正器）與 LO 鎖相，並以閉合相位檢驗相關器與資料鏈。陣列的驗收不是逐天線合格，而是以整體指標判定：相位穩定度對基線長度的關係、影像動態範圍、流量尺度一致性與可觀測時間比例，這些數字進入系統驗證紀錄並成為每個觀測週期的基準。~An antenna is first assembled at the OSF, passing holography, pointing and servo tests, then carried by a 28-wheel transporter to one of 192 pads on the 5000 m plateau; after each reconfiguration the antenna positions are re-solved, the fibre length compensation (line-length corrector) and LO phase lock are confirmed, and closure phases check the correlator and data chain. The array is accepted not antenna by antenna but on system metrics: phase stability versus baseline length, image dynamic range, flux-scale consistency and the fraction of usable observing time, all recorded in the system-verification record that becomes the baseline for each observing cycle.",
+      "model": "快照影像動態範圍的粗估 D ≈ √(N_bl·N_t)/σ_φ：N_bl = 1225、N_t = 100 個時間取樣、殘餘天線相位 σ_φ = 5°（0.087 rad）時 D ≈ 350/0.087 ≈ 4000:1；若 σ_φ = 20°（0.35 rad）則 D ≈ 1000:1。三天線閉合相位 φ₁₂ + φ₂₃ + φ₃₁ 與天線相位誤差無關，應在雜訊內為 0。~A rough snapshot dynamic range is D ≈ √(N_bl·N_t)/σ_φ: with N_bl = 1225, N_t = 100 time samples and a residual antenna phase σ_φ = 5° (0.087 rad), D ≈ 350/0.087 ≈ 4000:1; with σ_φ = 20° (0.35 rad), D ≈ 1000:1. The three-antenna closure phase φ₁₂ + φ₂₃ + φ₃₁ is independent of antenna-based errors and should be zero within noise.",
+      "verify": "重組後先對強類星體做短觀測：檢查所有三角形的閉合相位是否為零、各天線的相位解是否連續，再對同一源自校正（self-calibration）量影像動態範圍；把相位 RMS 對基線的曲線、動態範圍與流量尺度寫入驗收紀錄，與前一次配置比較，差異超過預期者回頭查天線位置或線長補償。~After a reconfiguration make a short observation of a strong quasar: check that closure phases on all triangles are zero, that each antenna's phase solution is continuous, then self-calibrate the same source and measure image dynamic range; enter the phase-RMS-versus-baseline curve, dynamic range and flux scale into the acceptance record, compare with the previous configuration, and trace any excess to antenna positions or line-length compensation.",
+      "failure": "一座天線在搬移後位置誤差 1 mm 未被重解，所有含該天線的基線相位隨時間緩慢旋轉；自校正會把誤差吸收進增益解而掩蓋問題，但目標源的位置會系統性偏移，直到有人比對校正源位置才發現。~An antenna whose position is off by 1 mm after a move and not re-solved makes every baseline containing it rotate slowly in phase; self-calibration absorbs the error into gain solutions and hides the problem, but target positions shift systematically until someone compares calibrator positions.",
+      "misconception": "每座天線各自通過驗收，陣列就自動可以做科學觀測。~If every antenna passes its own acceptance, the array is automatically ready for science."
+    }
+  ],
+  "example": "Band 7 相干性與靈敏度練習（教學假設）：天線面形 ε = 25 µm，在 λ = 0.87 mm 的 Ruze 效率 η_s = exp[−(4π×0.025/0.87)²] = exp(−0.130) = 0.878。WVR 修正後殘餘路徑 15 µm，相位 RMS σ_φ = 2π×0.015/0.87 = 0.108 rad，相干因子 exp(−0.108²/2) = 0.994，總效率 0.878×0.994 = 0.873。若 WVR 失效、殘餘路徑 100 µm，σ_φ = 0.722 rad，相干因子 exp(−0.261) = 0.770，總效率降為 0.878×0.770 = 0.676。以第 7 單元的 0.104 mJy 熱雜訊為基準，等效靈敏度分別為 0.104/0.873 ≈ 0.119 mJy 與 0.104/0.676 ≈ 0.154 mJy，即失去 WVR 修正使偵測同一源所需的整合時間增加 (0.154/0.119)² ≈ 1.7 倍。數值為教學假設，不代表陣列實際規格。~Band 7 coherence and sensitivity exercise (teaching assumptions): with surface error ε = 25 µm the Ruze efficiency at λ = 0.87 mm is η_s = exp[−(4π×0.025/0.87)²] = exp(−0.130) = 0.878. A 15 µm residual path after WVR correction gives phase RMS σ_φ = 2π×0.015/0.87 = 0.108 rad and a coherence factor exp(−0.108²/2) = 0.994, so the total efficiency is 0.878×0.994 = 0.873. If the WVR fails and 100 µm of path remains, σ_φ = 0.722 rad, the coherence factor is exp(−0.261) = 0.770 and the total efficiency falls to 0.878×0.770 = 0.676. Referenced to the 0.104 mJy thermal noise of unit 7, the effective sensitivities are 0.104/0.873 ≈ 0.119 mJy and 0.104/0.676 ≈ 0.154 mJy, so losing the WVR correction multiplies the integration time needed for the same detection by (0.154/0.119)² ≈ 1.7. Values are teaching assumptions, not array specifications.",
+  "history": "ALMA 由歐洲南方天文台（ESO）、美國國家科學基金會（經 NRAO）與日本國立天文台（NAOJ，含台灣與韓國的參與）合作，在智利北部查南托高原建造，2003 年動工、2011 年以部分天線開始早期科學觀測、2013 年 3 月落成；12 m 天線由北美與歐洲兩家承包團隊製造，日本負責 Morita 緊湊陣列的 16 座天線，台灣中研院天文所參與前端整合與 Band 1 接收機研製。此後陣列持續更新，包括規劃中的寬頻靈敏度升級。本課只重建公開的工程原理，不涉及任何承包商的專有設計。~ALMA was built on the Chajnantor plateau of northern Chile by ESO, the US National Science Foundation through NRAO, and the National Astronomical Observatory of Japan (NAOJ, with Taiwan and Korea participating): construction began in 2003, early science started in 2011 with a partial array, and the observatory was inaugurated in March 2013. The 12 m antennas came from North American and European contractor teams, Japan delivered the 16 antennas of the Morita compact array, and Taiwan's ASIAA contributed front-end integration and Band 1 receiver development. The array keeps evolving, including the planned wideband sensitivity upgrade. This course reconstructs only public engineering principles, not any contractor's proprietary design.",
+  "place": {
+    "name": "ALMA 查南托高原陣列運作站~ALMA Array Operations Site on the Chajnantor plateau",
+    "country": "智利~Chile",
+    "lat": -23.029,
+    "lng": -67.755,
+    "query": "ALMA Observatory Chajnantor plateau Chile"
+  },
+  "sources": [
+    {
+      "key": "alma-about",
+      "title": "ALMA 天文台：ALMA 概覽",
+      "titleEn": "ALMA Observatory: About ALMA, at first glance",
+      "publisher": "ALMA Observatory",
+      "url": "https://www.almaobservatory.org/en/about-alma/",
+      "sourceType": "primary",
+      "scope": "官方概覽：66 座天線、50 座主陣列與 16 座緊湊陣列、基線 150 m 至 16 km、波長 0.32–3.6 mm、三方合作夥伴。",
+      "scopeEn": "Official overview: 66 antennas, a 50-antenna main array plus a 16-antenna compact array, baselines from 150 m to 16 km, wavelengths 0.32–3.6 mm and the three partners."
+    },
+    {
+      "key": "alma-antennas",
+      "title": "ALMA 天文台：天線技術頁",
+      "titleEn": "ALMA Observatory: Antennas (technology page)",
+      "publisher": "ALMA Observatory",
+      "url": "https://www.almaobservatory.org/en/about-alma/how-alma-works/technologies/antennas/",
+      "sourceType": "primary",
+      "scope": "說明 54 座 12 m 與 12 座 7 m 天線、25 µm 面形精度、0.6″ 指向精度與運輸車重組；不含承包商設計細節。",
+      "scopeEn": "Describes the 54 twelve-metre and 12 seven-metre antennas, 25 µm surface accuracy, 0.6″ pointing and transporter reconfiguration; no contractor design detail."
+    },
+    {
+      "key": "eso-alma",
+      "title": "ESO：ALMA 望遠鏡頁",
+      "titleEn": "ESO: ALMA telescope page",
+      "publisher": "European Southern Observatory",
+      "url": "https://www.eso.org/public/teles-instr/alma/",
+      "sourceType": "primary",
+      "scope": "站址海拔 4576–5044 m、卡塞格林光學與經緯儀架台、基線與波長範圍的官方規格表。",
+      "scopeEn": "Official specification table: site altitude 4576–5044 m, Cassegrain optics on alt-azimuth mounts, baseline and wavelength ranges."
+    },
+    {
+      "key": "nrao-alma",
+      "title": "NRAO：ALMA 望遠鏡頁",
+      "titleEn": "NRAO: Atacama Large Millimeter/submillimeter Array",
+      "publisher": "National Radio Astronomy Observatory",
+      "url": "https://public.nrao.edu/telescopes/alma/",
+      "sourceType": "primary",
+      "scope": "接收頻率 35–950 GHz、192 個天線基座、約 6600 m² 集光面積與各配置的角解析度範圍。",
+      "scopeEn": "Receiver coverage 35–950 GHz, 192 antenna pads, about 6600 m² collecting area and the angular-resolution range of each configuration."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "美國國家電波天文台",
+      "nameEn": "National Radio Astronomy Observatory (NRAO)",
+      "business": "北美 ALMA 執行機構，負責北美天線、相關器與科學中心的運作。",
+      "businessEn": "North American executive for ALMA, responsible for the North American antennas, the correlator contribution and the regional science centre.",
+      "url": "https://public.nrao.edu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "陣列運作、相關器與公開技術說明",
+      "roleEn": "Array operations, correlator and public technical documentation"
+    },
+    {
+      "name": "歐洲南方天文台",
+      "nameEn": "European Southern Observatory (ESO)",
+      "business": "歐洲 ALMA 執行機構，提供 25 座 12 m 天線、運輸車與區域科學中心。",
+      "businessEn": "European executive for ALMA, providing 25 twelve-metre antennas, the transporters and the European regional science centre.",
+      "url": "https://www.eso.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "歐洲天線與站址基礎設施的公開資訊",
+      "roleEn": "Public information on the European antennas and site infrastructure"
+    },
+    {
+      "name": "中央研究院天文及天文物理研究所",
+      "nameEn": "Academia Sinica Institute of Astronomy and Astrophysics (ASIAA)",
+      "business": "台灣的 ALMA 參與機構，參與前端接收機整合與 Band 1 接收機研製及 ALMA 科學運作。",
+      "businessEn": "Taiwan's ALMA partner institute, involved in front-end receiver integration, Band 1 receiver development and ALMA science operations.",
+      "url": "https://www.asiaa.sinica.edu.tw/",
+      "investorUrl": "",
+      "security": null,
+      "role": "前端接收機整合與台灣 ALMA 參與的公開資訊",
+      "roleEn": "Public information on front-end integration and Taiwan's ALMA participation"
+    },
+    {
+      "name": "三菱電機",
+      "nameEn": "Mitsubishi Electric",
+      "business": "電機與電子系統製造商，為 NAOJ 製造 ALMA Morita 緊湊陣列的 7 m 與 12 m 天線。",
+      "businessEn": "Electrical and electronic systems manufacturer that built the 7 m and 12 m antennas of ALMA's Morita compact array for NAOJ.",
+      "url": "https://www.mitsubishielectric.com/",
+      "investorUrl": "",
+      "security": {"symbol": "6503", "exchange": "TSE", "currency": "JPY"},
+      "role": "高精度毫米波天線製造的產業參照",
+      "roleEn": "Industrial reference for high-precision millimetre-wave antenna manufacturing"
+    }
+  ],
+  "related": ["a474", "a475"],
+  "architectureNodes": [["大氣與站址（5000 m）", "Atmosphere and site (5000 m)"], ["12 m／7 m 天線與面板", "12 m and 7 m antennas and panels"], ["4 K SIS 前端與 LO 分送", "4 K SIS front end and LO distribution"], ["183 GHz 水汽輻射計", "183 GHz water-vapour radiometers"], ["數位化與光纖傳輸", "Digitisers and fibre transport"], ["AOS 相關器與校正流程", "AOS correlator and calibration pipeline"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 4], [4, 5], [3, 5], [1, 3]]
+}

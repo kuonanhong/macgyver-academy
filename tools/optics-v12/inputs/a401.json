@@ -1,0 +1,182 @@
+{
+  "id": "a401",
+  "title": "ASML 微影投影光學工程~ASML lithography projection-optics engineering",
+  "discipline": "optics-lithography",
+  "family": "lithography",
+  "focus": "從 Rayleigh 解析度到折反射浸潤鏡頭的像差、熱漂移與套刻預算~From Rayleigh resolution to aberration, thermal drift and overlay budgets of catadioptric immersion lenses",
+  "summary": "以 ASML TWINSCAN 的 4 倍縮小投影鏡頭為對象，從 CD = k₁·λ/NA 與景深出發，拆解熔融石英與 CaF₂ 鏡片的面形預算、NA 1.35 折反射浸潤架構與偏振、原位波前量測與 Zernike 分解、鏡片熱漂移與操縱器校正，最後整合成套刻預算與成像驗收記錄。~Taking the 4× reduction projection lens of an ASML TWINSCAN as the object, this course starts from CD = k₁·λ/NA and depth of focus, then works through figure budgets for fused-silica and CaF₂ elements, the NA 1.35 catadioptric immersion layout and polarization, in-situ wavefront metrology with Zernike decomposition, lens-heating drift and manipulator correction, and ends with the overlay budget and imaging acceptance record.",
+  "units": [
+    {
+      "anchor": "投影鏡頭數值孔徑與像方空間~Projection-lens NA and image space",
+      "title": "Rayleigh 解析度與景深的系統邊界~Rayleigh resolution and depth-of-focus system boundaries",
+      "mechanism": "投影光學把光罩圖形縮小 4 倍成像到晶圓，能印出的最小特徵由 Rayleigh 關係 CD = k₁·λ/NA 決定：λ 是曝光波長，NA 是像方數值孔徑，k₁ 是由照明、光罩與光阻製程共同決定的製程因子，物理下限為 0.25。景深則隨 NA 平方縮小，DOF ≈ k₂·λ/NA²，所以提高 NA 換來解析度的同時，晶圓平坦度、對焦控制與鏡頭場曲的預算都被壓縮。ArF 浸潤式以水的折射率 1.437 把 NA 推到 1.35，EUV 則以 13.5 nm 波長在 NA 0.33 與 0.55 上取得更小的 CD。~The projection optics image the reticle pattern onto the wafer at 4× reduction, and the smallest printable feature follows the Rayleigh relation CD = k₁·λ/NA, where λ is the exposure wavelength, NA the image-side numerical aperture and k₁ a process factor set jointly by illumination, mask and resist with a physical floor of 0.25. Depth of focus shrinks with the square of NA, DOF ≈ k₂·λ/NA², so every gain in resolution from NA compresses the budget left for wafer flatness, focus control and lens field curvature. ArF immersion uses water with index 1.437 to reach NA 1.35, while EUV reaches smaller CD at 13.5 nm with NA 0.33 and 0.55.",
+      "model": "取 λ = 193 nm、NA = 1.35、k₁ = 0.28：CD = 0.28×193/1.35 ≈ 40 nm；最小可解析半週期為 λ/(4NA) = 193/5.4 ≈ 36 nm（k₁ = 0.25）。EUV 取 λ = 13.5 nm、NA = 0.33、k₁ = 0.4：CD ≈ 16 nm；NA = 0.55 時約 10 nm。近軸景深 λ/NA² 在浸潤式為 193/1.8225 ≈ 106 nm，在 EUV NA 0.33 為 124 nm。~With λ = 193 nm, NA = 1.35 and k₁ = 0.28, CD = 0.28×193/1.35 ≈ 40 nm; the smallest resolvable half-pitch is λ/(4NA) = 193/5.4 ≈ 36 nm (k₁ = 0.25). For EUV with λ = 13.5 nm, NA = 0.33 and k₁ = 0.4, CD ≈ 16 nm, and about 10 nm at NA 0.55. The paraxial depth of focus λ/NA² is 193/1.8225 ≈ 106 nm for immersion and 124 nm for EUV at NA 0.33.",
+      "verify": "用測試光罩印出一組不同間距的線條，以 CD-SEM 量測最小仍能解析的半週期，反推實際 k₁ 並與 0.25 下限比較；再做對焦曝光矩陣（FEM）畫出 Bossung 曲線，讀出 CD 維持在 ±10% 內的可用景深，與 λ/NA² 估計值核對。~Print a set of line pitches from a test reticle, measure the smallest half-pitch still resolved with a CD-SEM, back out the actual k₁ and compare it with the 0.25 floor; then run a focus-exposure matrix, plot Bossung curves and read the usable depth of focus over which CD stays within ±10%, checking it against the λ/NA² estimate.",
+      "failure": "若只按 CD 公式選 NA 而忽略景深縮小，晶圓高低差與對焦雜訊會吃掉整個製程窗口，結果是場邊緣線條隨機斷線或橋接，而鏡頭本身的像差數據卻完全合格。~Choosing NA from the CD formula alone while ignoring the shrinking depth of focus lets wafer topography and focus noise consume the whole process window, so lines at the field edge randomly break or bridge even though the lens aberration data pass every specification.",
+      "misconception": "只要 k₁ 設得夠小，單次曝光就能印出任何間距。~With a small enough k₁, a single exposure can print any pitch."
+    },
+    {
+      "anchor": "照明光瞳與部分同調~Illumination pupil and partial coherence",
+      "title": "照明設定、部分同調與遠心~Illumination settings, partial coherence and telecentricity",
+      "mechanism": "照明系統把雷射光整形成光瞳上的特定分佈，用 σ 表示照明 NA 與投影 NA 的比值；離軸照明（環形、雙極）讓零階與一階繞射光對稱落入光瞳，能把可解析間距推到 λ/(2NA)。投影鏡頭在像方必須遠心：主光線垂直於晶圓，否則離焦會轉成放大率變化與套刻位移。光罩側也接近遠心，以降低光罩高度變化造成的位移。~The illuminator shapes the laser beam into a chosen pupil distribution, with σ denoting the ratio of illumination NA to projection NA; off-axis schemes such as annular or dipole illumination place the zeroth and first diffraction orders symmetrically in the pupil, pushing the resolvable pitch toward λ/(2NA). The projection lens must be telecentric on the image side, with chief rays normal to the wafer, otherwise defocus turns into magnification change and overlay shift. The reticle side is also nearly telecentric to suppress placement errors from reticle height variation.",
+      "model": "部分同調照明下可解析的最小間距為 p_min = λ/(NA·(1+σ))：σ = 0.5 時 p_min = 193/(1.35×1.5) ≈ 95 nm；σ = 1 時 ≈ 72 nm。像方遠心誤差 θ_t = 5 mrad 配上 100 nm 離焦，會造成 Δx = θ_t·Δz = 0.5 nm 的套刻位移，已占奈米級套刻預算的三分之一。~Under partially coherent illumination the minimum resolvable pitch is p_min = λ/(NA·(1+σ)): with σ = 0.5, p_min = 193/(1.35×1.5) ≈ 95 nm, and about 72 nm at σ = 1. An image-side telecentricity error of θ_t = 5 mrad combined with 100 nm of defocus produces an overlay shift Δx = θ_t·Δz = 0.5 nm, already a third of a nanometre-class overlay budget.",
+      "verify": "以光瞳量測感測器在晶圓台上記錄照明光瞳影像，比較實際 σ、環形內外徑與設定值；再以不同離焦量曝光同一套刻標記，量測位移對離焦的斜率，直接得到各場點的遠心誤差並畫成場圖。~Record the illumination pupil with a pupil-measurement sensor on the wafer stage and compare the actual σ and annulus radii with the settings; then expose the same overlay marks at several defocus values and measure the slope of shift versus defocus, which gives the telecentricity error at every field point as a map.",
+      "failure": "照明光瞳若因鏡片污染而不對稱，雙極兩瓣能量不等，水平與垂直線條的 CD 出現系統性差異（H-V bias），並隨劑量漂移，常被誤判為光阻問題。~If lens contamination makes the illumination pupil asymmetric so that the two dipole lobes carry unequal energy, horizontal and vertical lines show a systematic CD difference (H-V bias) that drifts with dose and is often misdiagnosed as a resist problem.",
+      "misconception": "σ 越大照明越亮，所以解析度一定越好。~A larger σ means brighter illumination and therefore always better resolution."
+    },
+    {
+      "anchor": "熔融石英與 CaF₂ 鏡片~Fused-silica and CaF₂ lens elements",
+      "title": "深紫外鏡片材料、色散與面形預算~DUV lens materials, dispersion and figure budgets",
+      "mechanism": "193 nm 可用的透鏡材料只有高純度熔融石英（n ≈ 1.560）與氟化鈣（n ≈ 1.501），兩者在深紫外的色散都很大，所以鏡頭幾乎無法消色差，必須靠雷射線寬窄化到 0.3 pm 等級來避免色像差。折射面的面形誤差 h 轉成波前誤差時乘上 (n − 1)，約為 0.56h，比反射鏡的 2h 寬鬆近四倍，但鏡頭有數十片元件，總波前預算仍須分配到次奈米。~Only high-purity fused silica (n ≈ 1.560) and calcium fluoride (n ≈ 1.501) transmit well enough at 193 nm, and both disperse strongly in the deep UV, so the lens can barely be achromatised and instead relies on a laser linewidth narrowed to the 0.3 pm level to avoid chromatic aberration. A refracting surface converts a figure error h into wavefront error (n − 1)h, about 0.56h, nearly four times more forgiving than the 2h of a mirror, but with tens of elements the total wavefront budget still has to be split into sub-nanometre shares.",
+      "model": "若系統波前 RMS 預算為 2.0 nm、由 30 片元件等額分擔，每片允許 2.0/√30 ≈ 0.37 nm 波前，對應熔融石英表面面形 0.37/0.56 ≈ 0.65 nm RMS；同樣預算若給 6 片反射鏡，每片為 2.0/√6 ≈ 0.82 nm 波前，即 0.41 nm 面形。~If the system wavefront RMS budget is 2.0 nm shared equally by 30 elements, each element may contribute 2.0/√30 ≈ 0.37 nm of wavefront, corresponding to a fused-silica surface figure of 0.37/0.56 ≈ 0.65 nm RMS; the same budget spread over 6 mirrors allows 2.0/√6 ≈ 0.82 nm of wavefront per mirror, i.e. 0.41 nm of figure.",
+      "verify": "每片鏡片以干涉儀量測面形後換算成 193 nm 的波前貢獻，核對是否在分配值內；材料則用 193 nm 透過率與雷射誘發吸收量測，並以干涉儀量測整塊毛胚的折射率均勻性，確認體內折射率變化不會另外吃掉波前預算。~Measure each element's figure interferometrically, convert it to wavefront contribution at 193 nm and check it against the allocation; qualify the material with 193 nm transmission and laser-induced absorption tests, and map the refractive-index homogeneity of each blank with an interferometer so that bulk index variation does not silently consume the wavefront budget.",
+      "failure": "熔融石英在高能量密度下會形成色心與緻密化，折射率局部上升，鏡頭隨累積劑量逐漸出現球差與透過率下降；若未在材料驗證中做壽命外推，鏡頭在現場數年後才失效。~Under high fluence fused silica develops colour centres and compaction that raise the local refractive index, so the lens slowly gains spherical aberration and loses transmission with accumulated dose; without lifetime extrapolation during material qualification the lens fails in the field only after years.",
+      "misconception": "折射鏡頭的面形要求和反射鏡一樣嚴格。~Refractive surfaces need figure as tight as mirrors."
+    },
+    {
+      "anchor": "折反射浸潤式末端鏡組~Catadioptric immersion final group",
+      "title": "折反射架構、浸潤與偏振控制~Catadioptric architecture, immersion and polarization control",
+      "mechanism": "NA 超過 1 時，光在像方介質中的角度極大，純折射設計需要巨大的鏡片直徑與難以修正的場曲，因此高 NA 鏡頭採用折反射架構：以凹面鏡提供負 Petzval 貢獻並壓縮鏡片尺寸。末端鏡片以平面接觸水膜，水的折射率 1.437 把像方 NA 提高。在這麼大的角度下，TM 偏振的兩束干涉對比隨 cos(2θ) 下降甚至反相，因此照明必須以 TE 偏振為主並由鏡頭保持偏振純度。~Above NA 1 the ray angles in the image medium become extreme, and an all-refractive design would need huge element diameters and uncorrectable field curvature, so high-NA lenses use a catadioptric layout in which a concave mirror supplies negative Petzval contribution and shrinks the elements. The final element touches the water film with a flat face, and the water index of 1.437 raises the image-side NA. At such angles the two-beam interference contrast for TM polarization falls as cos(2θ) and can even invert, so illumination must be predominantly TE polarized and the lens must preserve that polarization purity.",
+      "model": "NA = 1.35 時水中邊緣光角度 sinθ = 1.35/1.437 = 0.939，θ ≈ 70°；進入光阻（n = 1.7）後 sinθ = 0.794，θ ≈ 52.6°，TM 干涉對比因子 cos(2θ) = cos(105.1°) ≈ −0.26，表示未偏振照明的對比會被嚴重稀釋；TE 偏振的對比因子維持 1。~At NA = 1.35 the marginal ray in water has sinθ = 1.35/1.437 = 0.939, θ ≈ 70°; inside resist with n = 1.7, sinθ = 0.794 and θ ≈ 52.6°, so the TM interference-contrast factor cos(2θ) = cos(105.1°) ≈ −0.26, meaning unpolarized illumination would badly dilute the contrast, whereas TE polarization keeps the factor at 1.",
+      "verify": "用晶圓台上的偏振量測感測器量鏡頭出瞳的 Stokes 參數，計算照明偏振純度（IPS）與鏡頭的偏振相位延遲；再以水平與垂直雙極照明分別曝光同一間距，比較對比與 CD 差異，與 cos(2θ) 模型預測核對。~Measure the Stokes parameters at the lens exit pupil with a polarization sensor on the wafer stage to compute illumination polarization purity and the lens retardance; then expose the same pitch with horizontal and vertical dipoles and compare contrast and CD differences against the cos(2θ) model prediction.",
+      "failure": "CaF₂ 的本質雙折射與鏡片應力雙折射會把 TE 光部分轉成 TM，偏振純度下降幾個百分點就讓最小間距的對比明顯變差；水膜中若出現氣泡或局部溫度變化，則直接造成局部離焦與缺陷。~Intrinsic birefringence of CaF₂ and stress birefringence in elements convert part of the TE light into TM, and a few percent loss of polarization purity visibly degrades contrast at the smallest pitch; bubbles or local temperature changes in the water film cause local defocus and printed defects directly.",
+      "misconception": "浸潤只是讓鏡頭更靠近晶圓，與 NA 無關。~Immersion merely brings the lens closer to the wafer and does not affect NA."
+    },
+    {
+      "anchor": "波前感測器與 Zernike 係數~Wavefront sensor and Zernike coefficients",
+      "title": "原位波前量測與 Zernike 分解~In-situ wavefront metrology and Zernike decomposition",
+      "mechanism": "微影機在晶圓台上裝有干涉式波前感測器，以鏡頭本身的曝光光經過光罩側的針孔或光柵，在像方量測整個出瞳的波前，並分解成 Zernike 多項式係數 Z₂ 到 Z₃₇ 以上。低階的傾斜與離焦對應套刻位移與最佳焦面，彗差與球差造成圖形位移隨間距改變與 CD 隨焦距不對稱，像散造成水平與垂直線最佳焦面分離。每個場點都要量，因為像差隨場變化。~The scanner carries an interferometric wavefront sensor on the wafer stage that uses the exposure light itself, passing through a pinhole or grating on the reticle side, to measure the full exit-pupil wavefront at the image and decompose it into Zernike coefficients from Z₂ up to Z₃₇ and beyond. Low-order tilt and defocus map to overlay shift and best-focus position, coma and spherical aberration produce pitch-dependent pattern shift and asymmetric CD through focus, and astigmatism separates the best focus of horizontal and vertical lines. Every field point must be measured because aberrations vary across the field.",
+      "model": "傾斜項 Z₂ 係數 a₂ 造成像位移 Δx = a₂/NA：a₂ = 1 nm、NA = 1.35 時 Δx ≈ 0.74 nm。離焦項的近軸關係為 a₄ ≈ Δz·NA²/(4n)，故 a₄ = 1 nm 對應 Δz = 4n·a₄/NA² = 4×1.437/1.8225 ≈ 3.2 nm 的焦面偏移。~A tilt coefficient a₂ of Z₂ shifts the image by Δx = a₂/NA: with a₂ = 1 nm and NA = 1.35, Δx ≈ 0.74 nm. The paraxial defocus relation is a₄ ≈ Δz·NA²/(4n), so a₄ = 1 nm corresponds to a focus offset Δz = 4n·a₄/NA² = 4×1.437/1.8225 ≈ 3.2 nm.",
+      "verify": "在多個場點重複量測波前，計算各 Zernike 項的重現性（通常要優於 0.1 nm），再用已知的靈敏度把 Z₇ 彗差預測的圖形位移與實際曝光的套刻量測比較，確認感測器座標、符號與縮放都與曝光結果一致。~Repeat the wavefront measurement at several field points, compute the repeatability of each Zernike term (typically required to be better than 0.1 nm), then compare the pattern shift predicted from the measured Z₇ coma through known sensitivities with the overlay actually printed, confirming that sensor coordinates, sign conventions and scaling agree with exposure results.",
+      "failure": "若感測器與曝光座標的符號約定不一致，校正動作會把像差加倍而不是消除；若只在場中心量測，場邊緣的像散與彗差未被看到，CD 場內均勻性就會超差。~If the sensor and exposure coordinate sign conventions disagree, the correction doubles the aberration instead of cancelling it; measuring only at field centre leaves edge astigmatism and coma unseen, so CD uniformity across the field fails.",
+      "misconception": "鏡頭出廠時的波前數據可以一直沿用。~The factory wavefront data of a lens remain valid indefinitely."
+    },
+    {
+      "anchor": "鏡片熱負載與熱透鏡效應~Lens thermal load and thermal lensing",
+      "title": "鏡頭加熱、像差漂移與誤差預算~Lens heating, aberration drift and the error budget",
+      "mechanism": "曝光光在鏡片材料與鍍膜中的微量吸收會讓鏡片升溫，熔融石英在 193 nm 的 dn/dT 約 2×10⁻⁵ K⁻¹，溫度分佈又跟照明光瞳形狀相關：雙極照明只加熱光瞳上的兩個區域，於是產生與時間相關的像散與高階像差。這種漂移在每批晶圓曝光期間以分鐘尺度變化，必須以熱模型預測並由鏡頭操縱器即時補償，誤差預算要同時包含量測不確定度與模型殘差。~Weak absorption of the exposure light in element materials and coatings heats the elements, and fused silica has dn/dT of about 2×10⁻⁵ K⁻¹ at 193 nm; because the heating pattern follows the illumination pupil, a dipole heats only two zones of a pupil-plane element and generates time-dependent astigmatism and higher-order aberrations. The drift evolves on a minute scale during each lot, so it must be predicted by a thermal model and compensated in real time by lens manipulators, with the error budget covering both measurement uncertainty and model residuals.",
+      "model": "光程變化 ΔOPD = L·(dn/dT)·ΔT：光瞳面附近元件厚度 L = 20 mm、兩瓣之間溫差 ΔT = 5 mK，ΔOPD = 0.02×2×10⁻⁵×0.005 = 2×10⁻⁹ m = 2 nm 的像散型波前誤差，已等於整支鏡頭的波前預算；熱膨脹項 (n − 1)·α·ΔT·L 以 α = 0.55 ppm/K 計僅約 0.03 nm，可忽略。~The optical-path change is ΔOPD = L·(dn/dT)·ΔT: for an element of thickness L = 20 mm near the pupil with ΔT = 5 mK between the two heated lobes, ΔOPD = 0.02×2×10⁻⁵×0.005 = 2×10⁻⁹ m = 2 nm of astigmatism-like wavefront error, equal to the entire lens wavefront budget; the expansion term (n − 1)·α·ΔT·L with α = 0.55 ppm/K is only about 0.03 nm and can be neglected.",
+      "verify": "以固定照明設定連續曝光並每隔數分鐘量一次波前，繪出各 Zernike 項對累積劑量的曲線，擬合熱時間常數與飽和值，與熱模型比較；再切換照明設定觀察冷卻恢復曲線，確認模型能預測正反兩個方向。~Expose continuously with a fixed illumination setting and measure the wavefront every few minutes, plot each Zernike term against accumulated dose, fit the thermal time constant and saturation level and compare with the thermal model; then switch illumination settings and record the cooling recovery curve to confirm the model predicts both directions.",
+      "failure": "若熱模型用錯了照明光瞳或吸收係數，前饋補償會在批次開始時過度修正、批次結束時修正不足，CD 與套刻在每批內呈現系統性的首片到末片趨勢。~If the thermal model uses the wrong illumination pupil or absorption coefficient, feedforward compensation over-corrects at lot start and under-corrects at lot end, so CD and overlay show a systematic first-to-last-wafer trend within every lot.",
+      "misconception": "鏡片吸收不到 1%，熱效應可以忽略。~Elements absorb under 1%, so thermal effects are negligible."
+    },
+    {
+      "anchor": "鏡片操縱器與靈敏度矩陣~Lens manipulators and sensitivity matrix",
+      "title": "鏡頭操縱器、前饋補償與校正收斂~Lens manipulators, feedforward and correction convergence",
+      "mechanism": "鏡頭內有若干片可由致動器沿軸向移動、傾斜或橫向平移的元件，另有可變形或可加熱的波前操縱元件；每個自由度對各 Zernike 項的靈敏度在出廠時以干涉量測建立成矩陣。校正時把量測到的像差向量以最小平方法反解成操縱器動作，同時要控制交叉耦合：修正球差的軸向移動也會改變離焦與放大率，必須由其他自由度同時抵消。~Several elements inside the lens can be moved axially, tilted or translated by actuators, and deformable or heated wavefront manipulators add further degrees of freedom; the sensitivity of each degree of freedom to every Zernike term is established interferometrically at the factory as a matrix. During correction the measured aberration vector is inverted by least squares into manipulator moves while cross-coupling is managed, because an axial move that corrects spherical aberration also changes focus and magnification and must be cancelled simultaneously by other degrees of freedom.",
+      "model": "設某元件軸向移動對 Z₉ 球差的靈敏度為 0.10 nm/µm，對 Z₄ 離焦的交叉靈敏度為 0.30 nm/µm。要修正 1.5 nm 的 Z₉ 需移動 15 µm，同時引入 4.5 nm 的 Z₄，必須由對焦系統抵消；致動器 20 nm 的解析度留下 0.002 nm 的 Z₉ 殘差，表示收斂極限由靈敏度矩陣的誤差而非致動器解析度決定。~Suppose an element's axial move has a sensitivity of 0.10 nm/µm to Z₉ spherical aberration and a cross-sensitivity of 0.30 nm/µm to Z₄ defocus. Correcting 1.5 nm of Z₉ requires a 15 µm move that also introduces 4.5 nm of Z₄, which the focus system must cancel; the actuator's 20 nm resolution leaves a Z₉ residual of only 0.002 nm, showing that the convergence limit is set by errors in the sensitivity matrix rather than by actuator resolution.",
+      "verify": "對每個操縱器施加已知步進並量測波前，重新擬合靈敏度矩陣並與出廠值比較，差異超過幾個百分比就更新；然後做閉環校正試驗，記錄每次疊代後的殘差 RMS，確認在兩到三次內收斂到預算以下且不出現振盪。~Apply known steps to each manipulator while measuring the wavefront, refit the sensitivity matrix and compare it with the factory values, updating it when differences exceed a few percent; then run a closed-loop correction trial, log the residual RMS after each iteration and confirm convergence below budget within two or three iterations without oscillation.",
+      "failure": "靈敏度矩陣若因鏡片老化而漂移，最小平方解會把能量推到條件數差的方向，操縱器大幅移動卻只換來微小改善，最後觸及行程極限而無法再校正。~If the sensitivity matrix drifts with lens ageing, the least-squares solution pushes effort into poorly conditioned directions, so manipulators move a long way for little improvement and finally hit their travel limits, leaving the lens uncorrectable.",
+      "misconception": "操縱器越多，任何像差都能被完全修正。~With enough manipulators every aberration can be corrected completely."
+    },
+    {
+      "anchor": "成像驗收與製程窗口報告~Imaging acceptance and process-window record",
+      "title": "系統成像驗證、套刻預算與工程交接~System imaging validation, overlay budget and handoff",
+      "mechanism": "投影光學的最終驗收不是看鏡頭報告，而是看印出的結果：以測試光罩在整個場內量 CD 均勻性、H-V bias、通焦 CD 曲線與套刻畸變，並把鏡頭畸變、晶圓台、對準與光罩的貢獻合成一張套刻預算表。交接文件必須包含各場點的 Zernike 基準值、操縱器狀態、熱模型參數與允許的漂移範圍，讓後續維護能判斷鏡頭是否仍在預算內。~Final acceptance of projection optics is judged on printed results rather than the lens report: a test reticle is used to measure CD uniformity across the field, H-V bias, CD through focus and overlay distortion, and the contributions of lens distortion, wafer stage, alignment and reticle are combined into a single overlay budget table. The handoff record must contain the baseline Zernike values at every field point, manipulator states, thermal-model parameters and permitted drift ranges, so that later maintenance can judge whether the lens is still within budget.",
+      "model": "機台對自身的套刻預算以均方根相加：鏡頭畸變 0.5 nm、晶圓台 0.8 nm、對準 0.6 nm、光罩 0.5 nm，RSS = √(0.25+0.64+0.36+0.25) = √1.50 ≈ 1.22 nm；再加入 0.5 nm 的鏡頭熱漂移殘差後為 √1.75 ≈ 1.32 nm，仍低於 1.5 nm 的允收值。~The machine-to-itself overlay budget adds in quadrature: lens distortion 0.5 nm, wafer stage 0.8 nm, alignment 0.6 nm and reticle 0.5 nm give RSS = √(0.25+0.64+0.36+0.25) = √1.50 ≈ 1.22 nm; adding a 0.5 nm residual from lens-heating drift raises it to √1.75 ≈ 1.32 nm, still below an acceptance value of 1.5 nm.",
+      "verify": "以同一片晶圓做兩次曝光並量測套刻，分離出機台重複性與系統性畸變；對照 CD-SEM 的場內 CD 圖與波前推算的 CD 圖，核對殘差是否在量測不確定度內；最後確認交接文件的每個參數都有對應的量測日期與方法。~Expose the same wafer twice and measure overlay to separate machine repeatability from systematic distortion; compare the CD-SEM field map with the CD map predicted from the measured wavefront and confirm the residual lies within metrology uncertainty; finally check that every parameter in the handoff record carries a measurement date and method.",
+      "failure": "驗收若只核對元件與鏡頭報告而不做整機成像，裝機時的鏡頭座應力或照明對準誤差會被忽略，直到量產晶圓出現場邊緣 CD 偏差才發現，重新校正要停機數日。~Acceptance that only checks element and lens reports without full-system imaging misses mount stress or illuminator misalignment introduced at installation, which surfaces as field-edge CD deviation on production wafers and costs days of downtime to recalibrate.",
+      "misconception": "鏡頭通過干涉儀驗收，就不需要再做曝光驗證。~A lens that passes interferometric acceptance needs no exposure validation."
+    }
+  ],
+  "example": "製程窗口練習：ArF 浸潤式 λ = 193 nm、NA = 1.35、水折射率 n = 1.437。邊緣光角度 sinθ = 1.35/1.437 = 0.939，θ = 70°。高 NA 景深用 DOF = λ/[2n(1 − cosθ)] 估算：cos70° = 0.342，DOF = 193/(2×1.437×0.658) = 193/1.891 ≈ 102 nm，與近軸 λ/NA² ≈ 106 nm 相近。對焦預算以均方根合成：晶圓形貌 25 nm、晶圓台對焦 15 nm、鏡頭場曲 10 nm、調平感測 10 nm，RSS = √(625+225+100+100) = √1050 ≈ 32 nm；取正負兩側共 2×32 = 64 nm，留給光阻製程的可用景深約 102 − 64 = 38 nm。若 CD 以 k₁ = 0.28 計為 40 nm，CD 容差 ±10% 即 ±4 nm，Bossung 曲線必須在這 38 nm 內維持此容差。數值皆為教學假設，不代表任何機台規格。~Process-window exercise: ArF immersion with λ = 193 nm, NA = 1.35 and water index n = 1.437. The marginal-ray angle is sinθ = 1.35/1.437 = 0.939, θ = 70°. Estimate the high-NA depth of focus with DOF = λ/[2n(1 − cosθ)]: cos70° = 0.342, so DOF = 193/(2×1.437×0.658) = 193/1.891 ≈ 102 nm, close to the paraxial λ/NA² ≈ 106 nm. Build the focus budget in quadrature: wafer topography 25 nm, stage focus 15 nm, lens field curvature 10 nm and levelling sensor 10 nm give RSS = √(625+225+100+100) = √1050 ≈ 32 nm; counting both sides, 2×32 = 64 nm, leaving about 102 − 64 = 38 nm of usable depth of focus for the resist process. With CD = 40 nm at k₁ = 0.28, the ±10% CD tolerance is ±4 nm, and the Bossung curves must hold that tolerance across those 38 nm. All values are teaching assumptions, not any tool's specification.",
+  "history": "1980 年代的步進機以全折射 g-line 與 i-line 鏡頭成像，1990 年代步進掃描機以縫隙掃描把視場擴大到 26×33 mm；ASML 與蔡司在 2000 年代把 ArF 鏡頭推進到折反射浸潤架構，NA 1.35 的 TWINSCAN NXT 系列從 2007 年前後成為先進製程主力，之後由 13.5 nm 的 NXE 與 NA 0.55 的 High-NA EXE 接續。Nikon 與 Canon 也各自發展浸潤與 i-line 投影鏡頭。本課只重建公開的物理與工程邏輯，不涉及任何專有設計。~Steppers of the 1980s imaged with all-refractive g-line and i-line lenses, and 1990s step-and-scan systems enlarged the field to 26×33 mm by scanning a slit; ASML and ZEISS advanced ArF lenses to catadioptric immersion layouts in the 2000s, and the NA 1.35 TWINSCAN NXT series became the workhorse of advanced nodes from around 2007, later joined by the 13.5 nm NXE and the NA 0.55 High-NA EXE. Nikon and Canon developed their own immersion and i-line projection lenses. This course reconstructs public physics and engineering logic only, not any proprietary design.",
+  "place": {
+    "name": "ASML 費爾德霍芬總部參照點~ASML Veldhoven headquarters reference",
+    "country": "荷蘭~Netherlands",
+    "lat": 51.411,
+    "lng": 5.397,
+    "query": "ASML Veldhoven Netherlands"
+  },
+  "sources": [
+    {
+      "key": "asml-lenses-mirrors",
+      "title": "ASML：透鏡與反射鏡（微影原理）",
+      "titleEn": "ASML: Lenses and mirrors (lithography principles)",
+      "publisher": "ASML",
+      "url": "https://www.asml.com/technology/lithography-principles/lenses-and-mirrors",
+      "sourceType": "primary",
+      "scope": "說明 DUV 投影鏡頭與 EUV 反射鏡的公開原理、數值孔徑與解析度關係；不含任何設計資料。",
+      "scopeEn": "Public explanation of DUV projection lenses and EUV mirrors, numerical aperture and resolution; contains no design data."
+    },
+    {
+      "key": "zeiss-smt-duv-litho",
+      "title": "ZEISS SMT：DUV 微影光學",
+      "titleEn": "ZEISS SMT: DUV lithography optics",
+      "publisher": "ZEISS Semiconductor Manufacturing Technology",
+      "url": "https://zeiss.com/semiconductor-manufacturing-technology/inspiring-technology/duv-lithography.html",
+      "sourceType": "primary",
+      "scope": "公開介紹 DUV 投影鏡頭與照明系統的技術領域與製造背景；不是設計手冊。",
+      "scopeEn": "Public overview of DUV projection lenses and illumination systems and their manufacturing context; not a design manual."
+    },
+    {
+      "key": "asml-duv-systems",
+      "title": "ASML：DUV 微影系統產品入口",
+      "titleEn": "ASML: DUV lithography systems",
+      "publisher": "ASML",
+      "url": "https://www.asml.com/en/products/duv-lithography-systems",
+      "sourceType": "primary",
+      "scope": "列出 ArF 浸潤式與乾式 TWINSCAN 機型的公開分類與用途；課程數值為教學假設。",
+      "scopeEn": "Lists public categories and uses of ArF immersion and dry TWINSCAN systems; course numbers are teaching assumptions."
+    },
+    {
+      "key": "asml-nxe3800e",
+      "title": "ASML：TWINSCAN NXE:3800E 產品頁",
+      "titleEn": "ASML: TWINSCAN NXE:3800E product page",
+      "publisher": "ASML",
+      "url": "https://asml.com/en/products/euv-lithography-systems/twinscan-nxe-3800e",
+      "sourceType": "primary",
+      "scope": "公開的 EUV 微影系統參數入口，用於對照 13.5 nm 與 NA 0.33 的解析度討論。",
+      "scopeEn": "Public EUV lithography-system page used to contextualise the 13.5 nm and NA 0.33 resolution discussion."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "ASML",
+      "nameEn": "ASML",
+      "business": "DUV 與 EUV 微影系統整合商，負責投影光學、晶圓台與感測器的系統整合。",
+      "businessEn": "Integrator of DUV and EUV lithography systems, combining projection optics, wafer stages and sensors.",
+      "url": "https://www.asml.com/",
+      "investorUrl": "https://www.asml.com/en/investors",
+      "security": {"symbol": "ASML", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "投影光學系統整合與公開微影原理說明",
+      "roleEn": "Projection-optics system integration and public lithography-principles explanations"
+    },
+    {
+      "name": "蔡司半導體製造技術",
+      "nameEn": "ZEISS SMT",
+      "business": "DUV 與 EUV 投影鏡頭、照明系統與微影光學的製造。",
+      "businessEn": "Manufacturer of DUV and EUV projection lenses, illumination systems and lithography optics.",
+      "url": "https://www.zeiss.com/semiconductor-manufacturing-technology/home.html",
+      "investorUrl": "https://www.zeiss.com/corporate/en/about-zeiss/company-figures.html",
+      "security": null,
+      "role": "折反射浸潤投影鏡頭的製造與公開技術介紹",
+      "roleEn": "Manufacturing and public technical description of catadioptric immersion projection lenses"
+    },
+    {
+      "name": "尼康",
+      "nameEn": "Nikon",
+      "business": "ArF 浸潤式與 i-line 步進掃描微影機及其投影鏡頭。",
+      "businessEn": "ArF immersion and i-line step-and-scan lithography systems and their projection lenses.",
+      "url": "https://www.nikon.com/",
+      "investorUrl": "https://www.nikon.com/company/ir/",
+      "security": {"symbol": "7731", "exchange": "TSE", "currency": "JPY"},
+      "role": "另一家投影鏡頭與掃描機系統的公開參照",
+      "roleEn": "Public reference for another projection-lens and scanner system maker"
+    },
+    {
+      "name": "佳能",
+      "nameEn": "Canon",
+      "business": "i-line 與 KrF 半導體微影設備及奈米壓印設備。",
+      "businessEn": "i-line and KrF semiconductor lithography equipment and nanoimprint systems.",
+      "url": "https://global.canon/en/product/indtech/semicon",
+      "investorUrl": "https://global.canon/en/ir/",
+      "security": {"symbol": "7751", "exchange": "TSE", "currency": "JPY"},
+      "role": "折射式投影鏡頭微影設備的公開產品資訊",
+      "roleEn": "Public product information on refractive projection-lens lithography equipment"
+    }
+  ],
+  "related": ["a402", "a404"],
+  "architectureNodes": [["ArF 準分子雷射與線寬窄化", "ArF excimer laser and line narrowing"], ["照明光瞳成形", "Illumination pupil shaping"], ["光罩與光罩台", "Reticle and reticle stage"], ["折反射浸潤投影鏡頭", "Catadioptric immersion projection lens"], ["波前感測與操縱器", "Wavefront sensor and manipulators"], ["晶圓像面與套刻量測", "Wafer image plane and overlay metrology"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 5], [5, 4], [4, 3]]
+}

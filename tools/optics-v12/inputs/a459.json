@@ -1,0 +1,172 @@
+{
+  "id": "a459",
+  "title": "超導加速腔製作~Superconducting accelerating-cavity fabrication",
+  "discipline": "optics-accelerators-detectors",
+  "family": "accelerator",
+  "focus": "1.3 GHz 鈮九腔的 BCS 表面電阻、Q₀、材料與表面處理到低溫垂直測試的工程鏈~BCS surface resistance, Q₀, niobium material, surface treatment and 2 K vertical testing of 1.3 GHz nine-cell cavities",
+  "summary": "以 TESLA 型 1.3 GHz 九腔鈮製超導加速腔為對象，從 BCS 表面電阻與 Q₀ = G/Rs 出發，走過高 RRR 鈮板、深拉與電子束焊、電解拋光與烘烤、2 K 垂直測試與頻率調諧，最後整合成低溫模組並交付驗收紀錄。~Using the TESLA-type 1.3 GHz nine-cell niobium cavity, start from BCS surface resistance and Q₀ = G/Rs, then follow high-RRR niobium sheet, deep drawing and electron-beam welding, electropolishing and baking, 2 K vertical testing and frequency tuning, and end with cryomodule integration and an acceptance record.",
+  "units": [
+    {
+      "anchor": "九腔鈮腔與 2 K 氦槽~Nine-cell niobium cavity and 2 K helium bath",
+      "title": "超導腔的能量平衡與系統邊界~Energy balance and system boundary of an SRF cavity",
+      "mechanism": "TESLA 型加速腔由九個橢圓形腔室以 π 模式串接，長度約 1.038 m，在 1.3 GHz 下建立沿軸的加速電場 E_acc。腔壁為鈮，臨界溫度 9.25 K，浸在 2 K 的超流氦中；壁面電流只在約 40 nm 的穿透深度內流動，表面電阻為奈歐姆等級，使品質因數 Q₀ 達 10¹⁰ 量級。系統邊界包括射頻功率耦合器、高階模耦合器、氦槽與調諧器；進入腔壁的功率全部變成 2 K 熱負載，而 2 K 製冷每瓦要花數百瓦電力，所以 Q₀ 是整個設計的經濟核心。~A TESLA-type cavity chains nine elliptical cells in the π mode over about 1.038 m and builds the on-axis accelerating field E_acc at 1.3 GHz. The wall is niobium with a critical temperature of 9.25 K, immersed in 2 K superfluid helium; wall current flows only within the roughly 40 nm penetration depth, the surface resistance is at the nano-ohm level, and the quality factor Q₀ reaches the 10¹⁰ range. The system boundary includes the RF power coupler, higher-order-mode couplers, helium vessel and tuner; every watt dissipated in the wall becomes a 2 K heat load, and 2 K refrigeration costs several hundred watts of electricity per watt, so Q₀ is the economic core of the design.",
+      "model": "腔壁耗散功率 P = V²/[(R/Q)·Q₀]，其中 V = E_acc·L。取 E_acc = 16 MV/m、L = 1.038 m（V = 16.6 MV）、R/Q = 1036 Ω、Q₀ = 2.7×10¹⁰：P = (1.66×10⁷)²/(1036×2.7×10¹⁰) ≈ 2.76×10¹⁴/2.80×10¹³ ≈ 9.9 W（連續波）。若 Q₀ 只有 1×10¹⁰，同樣梯度下耗散升到約 27 W。~Wall dissipation is P = V²/[(R/Q)·Q₀] with V = E_acc·L. For E_acc = 16 MV/m, L = 1.038 m (V = 16.6 MV), R/Q = 1036 Ω and Q₀ = 2.7×10¹⁰: P = (1.66×10⁷)²/(1036×2.7×10¹⁰) ≈ 2.76×10¹⁴/2.80×10¹³ ≈ 9.9 W in continuous-wave operation. With Q₀ = 1×10¹⁰ the same gradient dissipates about 27 W.",
+      "verify": "在垂直測試架上以校正過的方向耦合器量前向、反射與穿透功率，穩態時 P_diss = P_fwd − P_refl − P_trans；同時以氦槽壓力與蒸發流量做量熱法交叉比對，兩者差異應在 10% 以內，再把 P_diss 代回公式反算 Q₀。~On the vertical test stand measure forward, reflected and transmitted power with calibrated directional couplers; in steady state P_diss = P_fwd − P_refl − P_trans. Cross-check calorimetrically from helium bath pressure and boil-off flow, require agreement within about 10%, then invert the formula to obtain Q₀.",
+      "failure": "把射頻耗散當成「可忽略的小量」而只按靜態熱負載設計低溫系統，實機在高梯度連續波運轉時 2 K 氦槽壓力無法維持，腔體被迫降梯度或脈衝化運轉。~Treating RF dissipation as negligible and sizing the cryogenics only for static load leaves the 2 K bath unable to hold pressure at high-gradient CW operation, forcing the cavity to lower gradient or pulsed duty.",
+      "misconception": "超導腔沒有電阻，所以射頻功率不會在腔壁發熱。~A superconducting cavity has zero resistance, so RF power does not heat the wall."
+    },
+    {
+      "anchor": "BCS 表面電阻與殘餘電阻~BCS surface resistance and residual resistance",
+      "title": "表面電阻、幾何因子與 Q₀ 的溫度依存~Surface resistance, geometry factor and the temperature dependence of Q₀",
+      "mechanism": "射頻場下超導體仍有耗散，因為未配對的準粒子在交變電場中被加速而碰撞。BCS 理論給出表面電阻 R_BCS ∝ (f²/T)·exp(−Δ/k_B T)，其中 Δ 是能隙，鈮的 Δ/k_B ≈ 17.7 K；溫度越低、頻率越低，R_BCS 越小。實際表面電阻 R_s = R_BCS + R_res，殘餘電阻 R_res 來自捕獲磁通、氫化物析出與表面汙染，與溫度無關。品質因數 Q₀ = G/R_s，G 是只由腔形決定的幾何因子，TESLA 腔形 G ≈ 270 Ω。~A superconductor still dissipates under RF because unpaired quasiparticles are accelerated by the alternating field and scatter. BCS theory gives a surface resistance R_BCS ∝ (f²/T)·exp(−Δ/k_B T), where Δ is the energy gap and for niobium Δ/k_B ≈ 17.7 K; lower temperature and lower frequency reduce R_BCS. The real surface resistance is R_s = R_BCS + R_res, where the residual term comes from trapped magnetic flux, hydride precipitation and surface contamination and does not depend on temperature. The quality factor is Q₀ = G/R_s, with G a geometry factor fixed only by the cell shape, about 270 Ω for the TESLA shape.",
+      "model": "鈮的表面電阻常用近似式 R_BCS ≈ 2×10⁻⁴·(1/T)·(f/1.5 GHz)²·exp(−17.67/T) Ω（溫度 T 以 K 計）。在頻率 f = 1.3 GHz：溫度 T = 2.0 K 時 R_BCS ≈ 2×10⁻⁴×0.5×0.751×1.46×10⁻⁴ ≈ 11 nΩ；溫度 4.2 K 時 ≈ 2×10⁻⁴×0.238×0.751×0.0149 ≈ 530 nΩ。加上殘餘電阻 R_res = 5 nΩ，2 K 的總表面電阻 R_s ≈ 16 nΩ，品質因數 Q₀ = 270/16×10⁻⁹ ≈ 1.7×10¹⁰；4.2 K 時 Q₀ 只剩約 5×10⁸。~A common approximation is R_BCS ≈ 2×10⁻⁴·(1/T)·(f/1.5 GHz)²·exp(−17.67/T) Ω with T in kelvin. At f = 1.3 GHz: T = 2.0 K gives R_BCS ≈ 2×10⁻⁴×0.5×0.751×1.46×10⁻⁴ ≈ 11 nΩ; T = 4.2 K gives ≈ 2×10⁻⁴×0.238×0.751×0.0149 ≈ 530 nΩ. Adding R_res = 5 nΩ, R_s at 2 K is ≈ 16 nΩ and Q₀ = 270/16×10⁻⁹ ≈ 1.7×10¹⁰, while at 4.2 K Q₀ falls to about 5×10⁸.",
+      "verify": "在垂直測試中由 4.2 K 緩慢降溫到 1.6 K，每隔 0.2 K 量一次低場 Q₀，畫 R_s = G/Q₀ 對 1/T 的半對數圖：斜率給出能隙 Δ/k_B，1/T → 0 的截距給出 R_res；再與材料與處理紀錄比對是否符合 ≤ 5 nΩ 的殘餘電阻目標。~During the vertical test cool slowly from 4.2 K to 1.6 K and record low-field Q₀ every 0.2 K; plot R_s = G/Q₀ against 1/T on a semi-log scale. The slope yields the gap Δ/k_B and the intercept at 1/T → 0 yields R_res, which is then compared with the ≤ 5 nΩ residual target for the material and treatment lot.",
+      "failure": "降溫經過 9.25 K 時若環境磁場未屏蔽到 1 µT 以下，磁通被釘扎在腔壁，每 1 µT 大約增加 0.3 到 1 nΩ 的殘餘電阻，Q₀ 顯著低於 BCS 預測，且怎麼降溫都救不回來，只能回溫重冷。~If the ambient field is not shielded below about 1 µT when cooling through 9.25 K, flux is pinned in the wall; each microtesla adds roughly 0.3 to 1 nΩ of residual resistance, Q₀ falls well below the BCS prediction, and no further cooling helps until the cavity is warmed above T_c and re-cooled.",
+      "misconception": "只要溫度低於臨界溫度，表面電阻就是零。~Below the critical temperature the surface resistance is exactly zero."
+    },
+    {
+      "anchor": "高 RRR 鈮板與渦電流掃描~High-RRR niobium sheet and eddy-current scanning",
+      "title": "鈮材純度、熱導率與熱崩潰場~Niobium purity, thermal conductivity and the thermal-breakdown field",
+      "mechanism": "腔體用的鈮以殘餘電阻比 RRR ≥ 300 規格採購，RRR 是 300 K 與 4.2 K 正常態電阻的比值，反映間隙雜質（O、N、C、H）與金屬雜質（Ta、W）含量。高 RRR 的意義不在超導本身，而在 4.2 K 以下的熱導率，4.2 K 時 κ ≈ RRR/4 W/(m·K)。射頻表面上若有正常導電的缺陷或夾雜，局部發熱必須經由約 2.8 mm 厚的壁傳到氦槽；熱導率不足時缺陷周圍溫度超過 T_c，正常區域雪崩擴張，即熱崩潰（quench）。板材出廠要做渦電流或 SQUID 掃描找出夾雜，並以拉伸試驗確認深拉所需的延展性。~Cavity niobium is purchased at a residual resistivity ratio RRR ≥ 300, the ratio of normal-state resistivity at 300 K and 4.2 K, which reflects interstitial (O, N, C, H) and metallic (Ta, W) impurities. The value of high RRR is not superconductivity itself but thermal conductivity below 4.2 K, approximately κ ≈ RRR/4 W/(m·K) at 4.2 K. A normal-conducting defect or inclusion on the RF surface heats locally and the heat must cross the roughly 2.8 mm wall to the helium bath; with insufficient conductivity the surrounding temperature exceeds T_c, the normal zone avalanches outward and the cavity quenches. Sheets are eddy-current or SQUID scanned for inclusions and tensile-tested for the ductility needed in deep drawing.",
+      "model": "缺陷模型的熱崩潰磁場 H_b = √[4κ(T_c − T_b)/(a·R_n)]，a 為缺陷半徑、R_n 為其正常態表面電阻。取 κ = 75 W/(m·K)（RRR 300）、T_c − T_b = 9.2 − 2.0 = 7.2 K、a = 50 µm、R_n = 10 mΩ：H_b = √(2160/5×10⁻⁷) ≈ 6.6×10⁴ A/m，即 B ≈ 83 mT；以 TESLA 腔 B_pk/E_acc ≈ 4.26 mT/(MV/m) 換算，崩潰梯度約 19 MV/m。若 RRR 只有 40（κ ≈ 10），同一缺陷在約 7 MV/m 就崩潰。~The defect model gives the thermal-breakdown field H_b = √[4κ(T_c − T_b)/(a·R_n)], with a the defect radius and R_n its normal-state surface resistance. For κ = 75 W/(m·K) (RRR 300), T_c − T_b = 9.2 − 2.0 = 7.2 K, a = 50 µm and R_n = 10 mΩ: H_b = √(2160/5×10⁻⁷) ≈ 6.6×10⁴ A/m, i.e. B ≈ 83 mT; with the TESLA ratio B_pk/E_acc ≈ 4.26 mT/(MV/m) the quench gradient is about 19 MV/m. With RRR 40 (κ ≈ 10) the same defect quenches near 7 MV/m.",
+      "verify": "每批板材抽樣做四點法 RRR 量測與渦電流掃描，缺陷圖與腔體編號綁定；垂直測試時用溫度圖（T-map）或第二聲（second sound）感測器定位崩潰點，再回頭核對該位置是否對應掃描時標記的夾雜或焊道。~Sample each sheet lot with four-probe RRR measurement and eddy-current scanning, binding the defect map to the cavity serial number; during the vertical test locate the quench with a temperature map or second-sound sensors and check whether the spot coincides with a flagged inclusion or a weld seam.",
+      "failure": "一片 RRR 偏低或含有 Ta 夾雜的板材混入批次，做出來的腔在 10 MV/m 以下反覆崩潰；因為缺陷在板材內部，再多次化學處理也無效，整支腔只能報廢或降級。~A sheet with low RRR or a tantalum inclusion slipped into the lot produces a cavity that quenches repeatedly below 10 MV/m; because the defect is inside the material, repeated chemistry cannot help and the cavity is scrapped or derated.",
+      "misconception": "鈮越純越好只是為了提高臨界溫度。~Purer niobium matters only because it raises the critical temperature."
+    },
+    {
+      "anchor": "電子束焊道與電解拋光槽~Electron-beam weld seams and electropolishing cell",
+      "title": "成形、電子束焊接與表面處理鏈~Forming, electron-beam welding and the surface-treatment chain",
+      "mechanism": "半腔由 2.8 mm 鈮板深拉成形，車削邊緣後在真空中以電子束焊接：先在虹膜（iris）焊成啞鈴，啞鈴再於赤道焊接成九腔；赤道焊道位於磁場最強處，焊道底面必須平滑無飛濺。焊接後表面有約 100 到 150 µm 的損傷層，用電解拋光（EP，HF–H₂SO₄ 電解液）或緩衝化學拋光（BCP）移除。接著 800 °C 真空退火數小時除氫，避免降溫時析出氫化鈮；最後再做輕度 EP、超純水高壓沖洗（HPR）、ISO 4 無塵室組裝與 120 °C 烘烤 48 小時，後者可明顯抑制高場 Q 下降。本課只說明公開的工藝邏輯，不含配方細節。~Half-cells are deep-drawn from 2.8 mm niobium sheet, machined at the edges and electron-beam welded in vacuum: iris welds first join half-cells into dumbbells, then equator welds join the dumbbells into a nine-cell. The equator weld sits where the magnetic field is highest, so its underbead must be smooth and spatter-free. Welding leaves a damage layer of roughly 100 to 150 µm that is removed by electropolishing (EP, an HF–H₂SO₄ electrolyte) or buffered chemical polishing (BCP). A vacuum anneal at 800 °C for several hours then degasses hydrogen so that niobium hydride cannot precipitate on cooldown; a light final EP, ultrapure-water high-pressure rinsing (HPR), ISO 4 cleanroom assembly and a 120 °C bake for 48 hours follow, the bake strongly reducing the high-field Q drop. This course covers only public process logic, not recipes.",
+      "model": "EP 的移除速率由法拉第定律估計：厚度速率 = j·M/(z·F·ρ)，鈮 M = 92.9 g/mol、z = 5、ρ = 8.57 g/cm³、F = 96485 C/mol。取 j = 30 mA/cm²：速率 ≈ 0.03×92.9/(5×96485×8.57) ≈ 6.7×10⁻⁷ cm/s ≈ 0.40 µm/min，移除 150 µm 約需 6.2 小時；一支九腔內表面約 1.2 m²，對應電流約 360 A。~The EP removal rate follows Faraday's law: thickness rate = j·M/(z·F·ρ), with niobium M = 92.9 g/mol, z = 5, ρ = 8.57 g/cm³ and F = 96485 C/mol. For j = 30 mA/cm²: rate ≈ 0.03×92.9/(5×96485×8.57) ≈ 6.7×10⁻⁷ cm/s ≈ 0.40 µm/min, so removing 150 µm takes about 6.2 hours; a nine-cell inner surface of about 1.2 m² corresponds to roughly 360 A of cell current.",
+      "verify": "處理前後用超音波測厚儀在每個腔室赤道與虹膜各量壁厚，移除量應與電荷積分推算值一致在 ±10% 內；用內視鏡與複製膜（replica）檢查赤道焊道粗糙度；800 °C 退火後以樣片熱脫附確認氫含量降到數 wt.ppm。~Measure wall thickness ultrasonically at each equator and iris before and after treatment; the removal must agree with the charge-integrated estimate within ±10%. Inspect equator welds by borescope and surface replica for roughness, and confirm by witness-sample thermal desorption that hydrogen drops to a few wt. ppm after the 800 °C anneal.",
+      "failure": "省略 800 °C 除氫而直接降溫，腔在 100 K 附近停留時析出氫化鈮，Q₀ 在 2 K 掉一個數量級（Q disease）；赤道焊道若有一個 0.5 mm 的焊孔，便成為場發射與崩潰的固定起點。~Skipping the 800 °C degassing and cooling directly lets niobium hydride precipitate during a dwell near 100 K, dropping Q₀ by an order of magnitude at 2 K (Q disease); a single 0.5 mm pinhole in an equator weld becomes a permanent site for field emission and quench.",
+      "misconception": "焊接後只要把表面打磨光亮，射頻性能就會好。~After welding, a mirror-bright mechanical polish is enough for good RF performance."
+    },
+    {
+      "anchor": "垂直測試架與衰減時間量測~Vertical test stand and decay-time measurement",
+      "title": "2 K 垂直測試：Q₀ 對 E_acc 曲線~2 K vertical test: the Q₀ versus E_acc curve",
+      "mechanism": "整支腔在垂直低溫槽內浸入 2 K 超流氦，以可調天線耦合射頻，鎖相迴路追蹤腔頻率。先在低場量射頻關斷後的指數衰減時間 τ，得到負載品質因數 Q_L = ω·τ；由前向與反射功率算出耦合係數 β，Q₀ = Q_L(1 + β)。接著逐步升場，每一點以穩態功率平衡求 P_diss 與儲能 U，得 Q₀(E_acc) 曲線，同時記錄輻射劑量率（場發射）與崩潰梯度。~The cavity hangs in a vertical dewar immersed in 2 K superfluid helium, RF is coupled through an adjustable antenna and a phase-locked loop tracks the cavity frequency. At low field the exponential decay time τ after switching the RF off gives the loaded quality factor Q_L = ω·τ; the coupling factor β from forward and reflected power yields Q₀ = Q_L(1 + β). The field is then raised step by step, and at each point the steady-state power balance gives P_diss and the stored energy U, producing the Q₀(E_acc) curve while the radiation dose rate (field emission) and the quench gradient are logged.",
+      "model": "量到 τ = 1.2 s：Q_L = 2π×1.3×10⁹×1.2 ≈ 9.8×10⁹；臨界耦合 β = 1 時 Q₀ = 2Q_L ≈ 2.0×10¹⁰。升場後穩態量得 P_diss = 10 W，則 V² = P_diss·(R/Q)·Q₀ = 10×1036×2.0×10¹⁰ ≈ 2.07×10¹⁴，V ≈ 14.4 MV，E_acc = V/1.038 m ≈ 13.9 MV/m。電纜校正誤差 ±0.2 dB 對應功率 ±4.7%，換成場為 ±2.3%。~A measured τ = 1.2 s gives Q_L = 2π×1.3×10⁹×1.2 ≈ 9.8×10⁹; at critical coupling β = 1, Q₀ = 2Q_L ≈ 2.0×10¹⁰. With the field raised and a steady-state P_diss = 10 W, V² = P_diss·(R/Q)·Q₀ = 10×1036×2.0×10¹⁰ ≈ 2.07×10¹⁴, V ≈ 14.4 MV and E_acc = V/1.038 m ≈ 13.9 MV/m. A ±0.2 dB cable-calibration error is ±4.7% in power and ±2.3% in field.",
+      "verify": "每次測試前用網路分析儀校正電纜與方向耦合器的衰減；以穿透探針的 Q_t（由衰減量測校定）與 P_trans 做第二條獨立的場校定，兩種方法的 E_acc 差異應小於 5%；比對同一支腔在不同測試架的結果以排除系統誤差。~Calibrate cable and coupler attenuation with a network analyzer before every test; use the pickup-probe Q_t (fixed from the decay measurement) with P_trans as a second, independent field calibration and require the two E_acc values to agree within 5%; compare the same cavity on different test stands to expose systematic errors.",
+      "failure": "耦合天線插太深使 β ≫ 1，反射功率量測的微小誤差被放大，Q₀ 被高估兩倍；反之在高場時衰減時間太短無法量測，只能靠功率平衡，電纜一有鬆動就把整條曲線平移。~An antenna inserted too deep gives β ≫ 1, so a small error in reflected power is amplified and Q₀ is overestimated by a factor of two; conversely at high field the decay becomes too short to measure, leaving only the power balance, and a loose cable shifts the whole curve.",
+      "misconception": "Q₀ 是腔的固定常數，量一次低場值就夠了。~Q₀ is a fixed constant of the cavity, so one low-field measurement suffices."
+    },
+    {
+      "anchor": "珠拉場分佈與勞倫茲力失諧~Bead-pull field profile and Lorentz-force detuning",
+      "title": "頻率、場平坦度與失諧預算~Frequency, field flatness and the detuning budget",
+      "mechanism": "九個腔室必須諧振在同一頻率，否則 π 模式的場在各腔室不等，局部峰值場提早到達崩潰極限。製作後以珠拉法（bead-pull）量軸上場分佈：小珠沿軸移動造成的頻率擾動正比於局部 E²（Slater 擾動定理），得到每腔室的相對振幅，場平坦度定義為 1 − (E_max − E_min)/E_avg，驗收通常要求 ≥ 95%。再以調諧機塑性拉伸或壓縮個別腔室校正頻率，並把整體頻率對準目標。運轉中腔壁受輻射壓力（勞倫茲力）而內凹，頻率隨 E_acc² 下降；加上氦壓波動與機械微震動，構成失諧預算。~All nine cells must resonate at the same frequency; otherwise the π-mode field differs cell to cell and the local peak field reaches the quench limit early. After fabrication a bead-pull measures the on-axis field: the frequency perturbation from a small bead moved along the axis is proportional to the local E² (Slater's theorem), giving each cell's relative amplitude; field flatness is defined as 1 − (E_max − E_min)/E_avg and acceptance usually requires ≥ 95%. A tuning machine then plastically stretches or squeezes individual cells and sets the overall frequency. In operation radiation pressure (the Lorentz force) dents the wall inward so the frequency drops with E_acc²; together with helium-pressure fluctuations and microphonics this forms the detuning budget.",
+      "model": "勞倫茲力失諧 Δf = −K_L·E_acc²，帶加強環的 TESLA 腔 K_L ≈ 1 Hz/(MV/m)²：在 25 MV/m 時 Δf ≈ −625 Hz。負載帶寬 f/Q_L 在 Q_L = 3×10⁶ 時為 1.3×10⁹/3×10⁶ ≈ 433 Hz，失諧超過一個帶寬，脈衝內必須靠壓電調諧器補償；若氦壓靈敏度為 20 Hz/mbar，±1 mbar 的壓力波動再貢獻 ±20 Hz。~Lorentz-force detuning is Δf = −K_L·E_acc², with K_L ≈ 1 Hz/(MV/m)² for a stiffened TESLA cavity: at 25 MV/m, Δf ≈ −625 Hz. The loaded bandwidth f/Q_L at Q_L = 3×10⁶ is 1.3×10⁹/3×10⁶ ≈ 433 Hz, so the detuning exceeds one bandwidth and a piezo tuner must compensate within the pulse; with a pressure sensitivity of 20 Hz/mbar, ±1 mbar of helium-pressure ripple adds ±20 Hz.",
+      "verify": "室溫下以網路分析儀做珠拉，計算場平坦度與各腔室頻率並記錄調諧前後的數據；低溫測試時量頻率對氦壓的斜率與 Δf 對 E_acc² 的斜率，與設計值 K_L 比對；以頻譜分析儀記錄微震動的 rms 失諧，確認落在預算內。~At room temperature run the bead-pull with a network analyzer, compute flatness and per-cell frequencies, and record values before and after tuning; at 2 K measure the frequency slope against helium pressure and Δf against E_acc² and compare with the design K_L; log the rms microphonic detuning with a spectrum analyzer and confirm it fits the budget.",
+      "failure": "場平坦度只有 85% 的腔，最熱的腔室在平均 20 MV/m 時已達 24 MV/m，整支腔在該腔室崩潰而被判定為低性能，其實是調諧問題；未補償的勞倫茲失諧則讓脈衝後段功率大量反射。~A cavity at 85% flatness has its hottest cell at 24 MV/m when the average is 20 MV/m, quenches there and is judged low-performance when the real issue is tuning; uncompensated Lorentz detuning reflects most of the power late in the pulse.",
+      "misconception": "鈮腔是剛性金屬，射頻場不可能改變它的形狀與頻率。~A niobium cavity is rigid metal, so the RF field cannot change its shape or frequency."
+    },
+    {
+      "anchor": "氦槽、調諧器與功率耦合器~Helium vessel, tuner and power coupler",
+      "title": "氦槽焊接、耦合器與低溫模組整合~Helium-vessel welding, couplers and cryomodule integration",
+      "mechanism": "通過垂直測試的腔被焊進鈦製氦槽，鈦與鈮的熱收縮相近且可電子束焊接；槽上裝慢速步進調諧器與快速壓電元件，透過拉伸整支腔改變頻率。基波功率耦合器把室溫波導功率經陶瓷窗送入 2 K 的腔，外部品質因數 Q_ext 依束流負載選定；高階模耦合器把束流激發的寄生模導出。八支腔在無塵室內串接成腔串，與雙相氦管、熱屏、磁屏蔽與真空容器一起組成低溫模組。靜態漏熱與動態射頻耗散共同決定 2 K 製冷機的規模。~A cavity that passes the vertical test is welded into a titanium helium vessel, titanium matching niobium in thermal contraction and being electron-beam weldable; the vessel carries a slow stepper tuner and a fast piezo element that change frequency by stretching the whole cavity. The fundamental power coupler brings room-temperature waveguide power through a ceramic window into the 2 K cavity, its external quality factor Q_ext chosen for the beam loading; higher-order-mode couplers extract beam-excited parasitic modes. Eight cavities are assembled into a string in the cleanroom and, with the two-phase helium line, thermal shields, magnetic shielding and vacuum vessel, form a cryomodule. Static heat leak plus dynamic RF dissipation set the size of the 2 K refrigerator.",
+      "model": "2 K 製冷的卡諾功比為 (300 − 2)/2 = 149；大型氦製冷機效率約 20% 到 25%，故每瓦 2 K 熱負載約需 600 到 750 W 電力。一個模組若有 8 支腔各 10 W 動態耗散加 10 W 靜態漏熱，2 K 負載 90 W，電力約 54 到 68 kW；若 Q₀ 從 2.7×10¹⁰ 退化到 1×10¹⁰，動態負載升到 216 W，電力需求幾乎三倍。~The Carnot work ratio for 2 K refrigeration is (300 − 2)/2 = 149; large helium plants reach 20 to 25% of Carnot, so each watt at 2 K costs roughly 600 to 750 W of electricity. A module with 8 cavities at 10 W dynamic each plus 10 W static leak has a 90 W load at 2 K, about 54 to 68 kW of electrical power; if Q₀ degrades from 2.7×10¹⁰ to 1×10¹⁰ the dynamic load rises to 216 W and the power demand nearly triples.",
+      "verify": "氦槽焊接後重做頻率與場平坦度量測，確認焊接變形在調諧範圍內；耦合器在測試台上以行波與駐波模式老化（conditioning）到額定功率，記錄真空與電子活動；模組冷卻後以氦流量與溫度感測器分離靜態與動態熱負載，與設計預算逐項比較。~Re-measure frequency and flatness after vessel welding to confirm the distortion lies within the tuner range; condition the coupler on a test stand in travelling- and standing-wave modes up to rated power while logging vacuum and electron activity; after the module cools, separate static and dynamic heat loads with helium flow and temperature sensors and compare line by line with the design budget.",
+      "failure": "無塵室組裝時一粒微米級顆粒落入腔內，模組測試時場發射在 15 MV/m 就起跳，整個模組必須回溫、拆串、重新沖洗，損失數週；耦合器陶瓷窗若鍍膜不當，多路徑放電（multipacting）讓功率上不去。~A single micrometre particle dropped into the cavity during string assembly makes field emission start at 15 MV/m in the module test, forcing warm-up, disassembly and re-rinsing that costs weeks; a poorly coated coupler ceramic window multipacts and blocks the power ramp.",
+      "misconception": "垂直測試合格的腔，裝進模組後性能一定相同。~A cavity that passed the vertical test will perform identically inside the module."
+    },
+    {
+      "anchor": "腔體履歷卡與可用梯度定義~Cavity traveler and the usable-gradient definition",
+      "title": "驗收判準、統計與工程交接~Acceptance criteria, statistics and engineering handoff",
+      "mechanism": "量產腔的驗收不是單一數字，而是一組可追溯的紀錄：板材 RRR 與掃描圖、焊接參數、化學移除量、退火與烘烤紀錄、珠拉數據、每次垂直測試的 Q₀(E_acc) 曲線、輻射劑量與崩潰位置。可用梯度定義為三者的最小值：崩潰梯度扣除安全邊際、Q₀ 仍高於規格的梯度、場發射輻射低於限值的梯度。未達標的腔依失效原因決定重做 HPR、重做輕度 EP 或退回重新焊接；統計上的良率決定需要多少備用腔。~Acceptance of production cavities is a traceable record rather than one number: sheet RRR and scan maps, weld parameters, chemical removal, anneal and bake logs, bead-pull data, every vertical-test Q₀(E_acc) curve, radiation dose and quench location. The usable gradient is the minimum of three values: the quench gradient minus a safety margin, the gradient at which Q₀ still meets specification, and the gradient at which field-emission radiation stays below the limit. Cavities that fall short are routed by failure cause to a repeat HPR, a light EP or a return to welding; the statistical yield sets how many spare cavities to order.",
+      "model": "某腔崩潰於 30 MV/m，扣 10% 邊際得 27 MV/m；Q₀ 在 28 MV/m 降到 1×10¹⁰ 的規格線；輻射在 26 MV/m 超過限值，則可用梯度 = min(27, 28, 26) = 26 MV/m。若規格是 23.6 MV/m 且 800 支腔中 75% 第一次就過，另 20% 經重做 HPR 後通過，總良率 95%，為交付 800 支合格腔需投產約 842 支。~A cavity quenching at 30 MV/m gives 27 MV/m after a 10% margin; Q₀ crosses the 1×10¹⁰ specification at 28 MV/m; radiation exceeds the limit at 26 MV/m, so the usable gradient is min(27, 28, 26) = 26 MV/m. If the specification is 23.6 MV/m and 75% of 800 cavities pass first time while another 20% pass after a repeat HPR, the overall yield is 95% and about 842 cavities must be produced to deliver 800 accepted ones.",
+      "verify": "交接審查時抽樣核對履歷卡的每一項是否有量測值、單位與日期，Q₀ 曲線是否附校正證據；把全批可用梯度畫成直方圖與累積分佈，和專案規格與模組排程比對；確認備用腔數量與再處理產能足以覆蓋統計上的低尾端。~At the handoff review sample traveler entries for measured value, unit and date, and check that each Q₀ curve carries its calibration evidence; histogram the usable gradients of the whole lot with a cumulative distribution against the project specification and module schedule; confirm that spares and reprocessing capacity cover the statistical low tail.",
+      "failure": "只以崩潰梯度排序腔體而忽略場發射紀錄，裝進模組後輻射使鄰近電子元件與低溫絕緣劣化，加速器被迫以低於設計的梯度運轉。~Ranking cavities by quench gradient alone while ignoring the field-emission record puts radiation sources into the module that degrade nearby electronics and cryogenic insulation, and the accelerator runs below design gradient.",
+      "misconception": "腔體最高梯度就是它在加速器中的運轉梯度。~A cavity's maximum gradient is the gradient it will run at in the accelerator."
+    }
+  ],
+  "example": "Q₀ 與製冷電力練習：1.3 GHz 九腔在 2.0 K，用 R_BCS ≈ 2×10⁻⁴·(1/T)·(f/1.5)²·exp(−17.67/T) Ω 得 R_BCS ≈ 11 nΩ；假設 R_res = 4 nΩ，R_s = 15 nΩ，Q₀ = G/R_s = 270/15×10⁻⁹ = 1.8×10¹⁰。在 E_acc = 16 MV/m、L = 1.038 m 下 V = 16.6 MV，P_diss = V²/[(R/Q)·Q₀] = (1.66×10⁷)²/(1036×1.8×10¹⁰) ≈ 2.76×10¹⁴/1.86×10¹³ ≈ 14.8 W。一個 8 腔模組動態負載 118 W，加靜態 10 W 為 128 W；以每瓦 2 K 需 700 W 電力估計，製冷電力約 90 kW。若殘餘電阻因磁通捕獲升到 14 nΩ，R_s = 25 nΩ，Q₀ 降到 1.08×10¹⁰，模組電力升到約 146 kW。數值為教學假設，不代表任何實機規格。~Q₀ and refrigeration exercise: a 1.3 GHz nine-cell at 2.0 K has R_BCS ≈ 11 nΩ from R_BCS ≈ 2×10⁻⁴·(1/T)·(f/1.5)²·exp(−17.67/T) Ω; assuming R_res = 4 nΩ, R_s = 15 nΩ and Q₀ = G/R_s = 270/15×10⁻⁹ = 1.8×10¹⁰. At E_acc = 16 MV/m and L = 1.038 m, V = 16.6 MV and P_diss = V²/[(R/Q)·Q₀] = (1.66×10⁷)²/(1036×1.8×10¹⁰) ≈ 2.76×10¹⁴/1.86×10¹³ ≈ 14.8 W. An 8-cavity module then has 118 W dynamic plus 10 W static load, 128 W; at an assumed 700 W of electricity per watt at 2 K the refrigeration draws about 90 kW. If trapped flux raises the residual resistance to 14 nΩ, R_s = 25 nΩ, Q₀ falls to 1.08×10¹⁰ and the module's electrical demand rises to about 146 kW. Values are teaching assumptions, not any machine's specification.",
+  "history": "超導射頻加速腔在 1960 年代由史丹佛等實驗室首次展示；傑佛遜實驗室 CEBAF 於 1990 年代以三百多支 1.5 GHz 鈮腔建成第一座大型超導直線加速器。以 DESY 為核心的 TESLA 合作在 1990 年代確立 1.3 GHz 九腔設計與電解拋光、烘烤等處理流程，歐洲 XFEL 在 2010 年代由工業界量產約 800 支腔；費米實驗室 2013 年公開的氮摻雜使 Q₀ 提升兩到三倍，被 LCLS-II 採用。本課只重建公開的物理與工程邏輯。~Superconducting RF cavities were first demonstrated in the 1960s at Stanford and elsewhere; Jefferson Lab's CEBAF became the first large SRF linac in the 1990s with more than three hundred 1.5 GHz niobium cavities. The DESY-centred TESLA collaboration fixed the 1.3 GHz nine-cell design and the electropolishing and baking sequence in the 1990s, and industry produced about 800 cavities for the European XFEL in the 2010s; nitrogen doping published by Fermilab in 2013 raised Q₀ two- to threefold and was adopted for LCLS-II. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "DESY 漢堡超導腔測試參照點~DESY Hamburg SRF cavity-testing reference",
+    "country": "德國~Germany",
+    "lat": 53.576,
+    "lng": 9.881,
+    "query": "DESY Hamburg Notkestrasse 85"
+  },
+  "sources": [
+    {
+      "key": "jlab-srf-institute",
+      "title": "傑佛遜實驗室：SRF 研究所",
+      "titleEn": "Jefferson Lab: SRF Institute",
+      "publisher": "Thomas Jefferson National Accelerator Facility",
+      "url": "https://www.jlab.org/accelerator/srf",
+      "sourceType": "primary",
+      "scope": "說明超導射頻腔與低溫模組的設計、製作、測試與安裝，以及鈮腔測試與鈮薄膜研究；不含專有配方。",
+      "scopeEn": "Describes design, fabrication, testing and installation of SRF cavities and cryomodules, plus niobium cavity testing and film research; no proprietary recipes."
+    },
+    {
+      "key": "xfel-how-it-works",
+      "title": "歐洲 XFEL：運作原理（鈮超導諧振腔）",
+      "titleEn": "European XFEL: How it works (niobium superconducting resonators)",
+      "publisher": "European XFEL GmbH",
+      "url": "https://www.xfel.eu/facility/overview/how_it_works/index_eng.html",
+      "sourceType": "primary",
+      "scope": "公開說明以鈮製超導諧振腔在接近絕對零度下加速電子束的原理與設施概況。",
+      "scopeEn": "Public explanation of accelerating electron bunches in niobium superconducting resonators near absolute zero, with facility overview."
+    },
+    {
+      "key": "padamsee-cas-srf-design",
+      "title": "Padamsee：超導射頻腔與附屬元件設計主題（CAS 講義）",
+      "titleEn": "Padamsee: Design Topics for Superconducting RF Cavities and Ancillaries (CAS lecture notes)",
+      "publisher": "arXiv / CERN Accelerator School",
+      "url": "https://arxiv.org/abs/1501.07129",
+      "sourceType": "primary",
+      "scope": "CERN 加速器學校講義，涵蓋腔形設計、耦合器與調諧器；課程中的 R/Q、G、K_L 等數值為依其原理建立的教學假設。",
+      "scopeEn": "CERN Accelerator School notes covering cavity shape design, couplers and tuners; course values for R/Q, G and K_L are teaching assumptions built on its principles."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "RI Research Instruments",
+      "nameEn": "RI Research Instruments GmbH",
+      "business": "加速器元件製造商，產品含超導腔、常導腔與加速器系統。",
+      "businessEn": "Accelerator-component manufacturer whose products include superconducting and normal-conducting cavities and accelerator systems.",
+      "url": "https://research-instruments.de/",
+      "investorUrl": "",
+      "security": null,
+      "role": "超導腔工業化製作的公開產品資訊",
+      "roleEn": "Public product information on industrial SRF cavity fabrication"
+    },
+    {
+      "name": "傑佛遜實驗室",
+      "nameEn": "Jefferson Lab",
+      "business": "美國能源部核物理實驗室，設有 SRF 研究所負責腔體與低溫模組的設計、製作與測試。",
+      "businessEn": "US DOE nuclear-physics laboratory whose SRF Institute designs, fabricates and tests cavities and cryomodules.",
+      "url": "https://www.jlab.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "SRF 腔體處理、垂直測試與低溫模組組裝的公開技術說明",
+      "roleEn": "Public technical description of SRF processing, vertical testing and cryomodule assembly"
+    },
+    {
+      "name": "費米實驗室",
+      "nameEn": "Fermilab",
+      "business": "美國能源部粒子物理實驗室，發展氮摻雜等高 Q₀ 超導腔技術並製作 LCLS-II 與 PIP-II 低溫模組。",
+      "businessEn": "US DOE particle-physics laboratory that developed nitrogen doping and other high-Q₀ SRF techniques and builds LCLS-II and PIP-II cryomodules.",
+      "url": "https://www.fnal.gov/",
+      "investorUrl": "",
+      "security": null,
+      "role": "高 Q₀ 表面處理與低溫模組量產的公開研究",
+      "roleEn": "Public research on high-Q₀ surface treatment and cryomodule production"
+    },
+    {
+      "name": "高能加速器研究機構 KEK",
+      "nameEn": "KEK Accelerator Laboratory",
+      "business": "日本高能加速器研究機構，發展超導腔製作、電解拋光與測試設施。",
+      "businessEn": "Japan's high-energy accelerator research organization, developing SRF cavity fabrication, electropolishing and test facilities.",
+      "url": "https://www2.kek.jp/accl/eng/",
+      "investorUrl": "",
+      "security": null,
+      "role": "超導腔製作與表面處理研究的公開資訊",
+      "roleEn": "Public information on SRF cavity fabrication and surface-treatment research"
+    }
+  ],
+  "related": ["a458", "a451"],
+  "architectureNodes": [["高 RRR 鈮板與半腔成形", "High-RRR niobium sheet and half-cell forming"], ["電子束焊接九腔", "Electron-beam-welded nine-cell"], ["電解拋光、退火與烘烤", "Electropolishing, anneal and bake"], ["2 K 垂直測試", "2 K vertical test"], ["氦槽、調諧器與耦合器", "Helium vessel, tuner and coupler"], ["低溫模組腔串", "Cryomodule cavity string"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [3, 2]]
+}

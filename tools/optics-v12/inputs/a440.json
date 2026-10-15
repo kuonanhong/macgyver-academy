@@ -1,0 +1,172 @@
+{
+  "id": "a440",
+  "title": "白光干涉表面輪廓儀~White-light interferometric profilometers",
+  "discipline": "optics-precision-metrology",
+  "family": "interferometer",
+  "focus": "低相干包絡定位、Mirau 干涉物鏡、垂直掃描與 ISO 25178 計量特性校正~Low-coherence envelope localisation, Mirau interference objectives, vertical scanning and ISO 25178 metrological-characteristic calibration",
+  "summary": "以相干掃描干涉術（CSI）為核心，理解寬頻光源為何只在零光程差附近產生條紋、包絡與相位如何合成次奈米高度，再把干涉物鏡的數值孔徑、壓電掃描器、相機雜訊、蝙蝠翼邊緣誤差與異材相位差整合成可依 ISO 25178-600 校正與交付的表面輪廓量測工程。~Built around coherence scanning interferometry (CSI), understand why a broadband source produces fringes only near zero optical-path difference and how envelope and phase combine into sub-nanometre height, then integrate objective numerical aperture, the piezo scanner, camera noise, batwing edge artefacts and dissimilar-material phase offsets into surface-topography metrology that can be calibrated and delivered per ISO 25178-600.",
+  "units": [
+    {
+      "anchor": "寬頻光源與零光程差包絡~Broadband source and zero-OPD envelope",
+      "title": "低相干干涉與相干長度~Low-coherence interference and coherence length",
+      "mechanism": "白光干涉輪廓儀用 LED 或鹵素燈這類頻寬上百奈米的光源照明一個干涉物鏡，物鏡內部的分光膜把光分到待測表面與內建參考鏡。因為每個波長的條紋週期不同，只有在兩臂光程差接近零的位置各波長的條紋才同相疊加，離開零光程差幾個條紋後就互相抵消；於是條紋被一個寬度約等於相干長度的包絡包住，包絡的位置直接標記表面高度，沒有單色干涉儀每 λ/2 的相位模糊。整個表面高度圖由物鏡沿光軸掃描、每個像素各自找出包絡位置而得。~A white-light profilometer illuminates an interference objective with an LED or halogen source of bandwidth above one hundred nanometres; a beamsplitter film inside the objective divides light between the test surface and a built-in reference mirror. Because every wavelength has a different fringe period, fringes of all wavelengths add in phase only where the two arms' optical paths nearly match and cancel a few fringes away; the fringes are therefore wrapped in an envelope about one coherence length wide whose position marks the surface height directly, with none of the λ/2 phase ambiguity of a monochromatic interferometer. A height map results from scanning the objective along its axis and locating the envelope independently in every pixel.",
+      "model": "相干長度 l_c ≈ λ₀²/Δλ。教學假設中心波長 λ₀ = 570 nm、頻寬 Δλ = 100 nm：l_c ≈ 570²/100 ≈ 3.25 µm。因為表面高度變化 z 造成光程差 2z，包絡在高度座標上的寬度約 l_c/2 ≈ 1.6 µm，其中包含約 1.6/0.285 ≈ 6 個條紋，條紋在高度上的週期為 λ₀/2 = 285 nm。~Coherence length l_c ≈ λ₀²/Δλ. Teaching assumptions: centre wavelength λ₀ = 570 nm and bandwidth Δλ = 100 nm give l_c ≈ 570²/100 ≈ 3.25 µm. Since a surface height change z creates an optical-path difference of 2z, the envelope width in height coordinates is about l_c/2 ≈ 1.6 µm, containing about 1.6/0.285 ≈ 6 fringes with a height period of λ₀/2 = 285 nm.",
+      "verify": "在拋光矽片上記錄單一像素隨掃描位置的強度曲線（相干圖），量出包絡的半高寬與條紋週期，與由光源光譜儀量到的 λ₀、Δλ 計算值比較；更換窄頻濾光片使 Δλ 減半，確認包絡寬度大約加倍而條紋週期幾乎不變。~On a polished silicon wafer record one pixel's intensity against scan position (the correlogram), measure the envelope's full width at half maximum and the fringe period, and compare with values computed from λ₀ and Δλ measured by a spectrometer on the source; insert a narrower bandpass filter that halves Δλ and confirm the envelope roughly doubles in width while the fringe period barely changes.",
+      "failure": "光源老化或濾光片偏移使光譜變窄，相干長度拉長到十幾微米，包絡變平、峰值定位變差，而且相鄰高度差小於包絡寬度的結構開始互相干擾，粗糙度讀值無故升高。~Source ageing or a shifted filter narrows the spectrum, stretches the coherence length to over ten micrometres, flattens the envelope and degrades peak location, while neighbouring structures whose height difference is below the envelope width start to interfere with each other and roughness readings rise without cause.",
+      "misconception": "白光干涉儀的高度解析度等於相干長度。~A white-light interferometer's height resolution equals its coherence length."
+    },
+    {
+      "anchor": "相干圖訊號與頻域分析~Correlogram signal and frequency-domain analysis",
+      "title": "相干圖模型、包絡與相位的合成~Correlogram model and combining envelope with phase",
+      "mechanism": "每個像素的相干圖可寫成 I(z) = I₀[1 + V·g(z − h)·cos(4π(z − h)/λ₀ + φ)]，g 是包絡、h 是表面高度、φ 是反射相位。只用包絡峰值定高度，重複性約在幾奈米；再利用包絡內條紋的相位可把高度精修到次奈米，但必須用包絡解開 λ/2 的整數模糊。頻域分析法對相干圖做傅立葉轉換，相位對波數的斜率給出高度（群速度等效），截距給出相位高度，兩者互相校驗。掃描取樣必須每個條紋至少四個點，否則相位會混疊。~Each pixel's correlogram is I(z) = I₀[1 + V·g(z − h)·cos(4π(z − h)/λ₀ + φ)], with g the envelope, h the surface height and φ the reflection phase. Locating the envelope peak alone gives height with a repeatability of a few nanometres; using the fringe phase inside the envelope refines it to sub-nanometre, but the envelope must resolve the λ/2 integer ambiguity. Frequency-domain analysis Fourier-transforms the correlogram: the slope of phase against wavenumber gives a group-velocity height and the intercept gives a phase height, and the two cross-check each other. Scan sampling needs at least four points per fringe or the phase aliases.",
+      "model": "取樣步距 λ₀/8 = 71 nm（每條紋 4 點）。相機 100 幀/秒時掃描速度 7.1 µm/s，掃 100 µm 需 14 s，掃 20 µm 只需 2.8 s（281 幀）。相位高度解析度受光子雜訊限制：像素滿井 N = 10⁴ 電子、條紋對比 V = 0.5 時單幀相位誤差 δφ ≈ 1/(V√N) = 0.02 rad，對應高度 δh = δφ·λ₀/(4π) ≈ 0.9 nm；包絡內約 40 幀平均後 ≈ 0.14 nm。~Sampling step λ₀/8 = 71 nm (4 points per fringe). At 100 frames per second the scan speed is 7.1 µm/s, a 100 µm scan takes 14 s and a 20 µm scan only 2.8 s (281 frames). Phase-height resolution is photon-noise limited: with a pixel full well of N = 10⁴ electrons and fringe contrast V = 0.5 the single-frame phase error is δφ ≈ 1/(V√N) = 0.02 rad, a height of δh = δφ·λ₀/(4π) ≈ 0.9 nm, and averaging the roughly 40 frames inside the envelope gives ≈ 0.14 nm.",
+      "verify": "同一位置連續量兩次拋光平面，把兩張高度圖相減後取 Sq 再除以 √2，得到儀器量測雜訊（ISO 25178-600 的 measurement noise），分別在只用包絡與包絡加相位兩種演算法下比較，相位法應低一個數量級；再故意把取樣步距放大到每條紋 2 點，觀察高度圖出現條紋狀混疊。~Measure a polished flat twice at the same spot, subtract the two height maps, take Sq and divide by √2 to obtain the instrument measurement noise of ISO 25178-600; compare envelope-only and envelope-plus-phase algorithms, where the phase method should be an order of magnitude lower; then deliberately coarsen the step to 2 points per fringe and watch fringe-like aliasing appear in the height map.",
+      "failure": "表面局部反射率太低或太高使條紋對比 V 降到 0.1，相位誤差放大五倍，演算法在解 λ/2 模糊時選錯整數，高度圖出現 285 nm 的孤立尖峰，被誤當成顆粒。~Where local reflectance is too low or too high the fringe contrast V drops to 0.1, phase error grows fivefold, the algorithm picks the wrong integer when resolving the λ/2 ambiguity and the height map shows isolated 285 nm spikes that are mistaken for particles.",
+      "misconception": "掃描步距越小高度越準，所以應該總是用最小步距。~Smaller scan steps always give more accurate height, so the finest step should always be used."
+    },
+    {
+      "anchor": "Mirau 干涉物鏡與數值孔徑~Mirau interference objective and numerical aperture",
+      "title": "干涉物鏡、橫向解析度與斜率極限~Interference objectives, lateral resolution and slope limit",
+      "mechanism": "干涉物鏡有三種構型：Michelson 型在物鏡前方放分光立方體與側向參考鏡，只適合低倍率；Mirau 型把半透膜與一個小參考鏡疊在物鏡前方的玻璃板上，結構緊湊，覆蓋 10× 到 100×；Linnik 型用兩支相同物鏡分別對著樣品與參考鏡，可達最高數值孔徑但對準困難。橫向解析度由數值孔徑決定，可量測的最大表面斜率也由數值孔徑決定，因為鏡面反射光必須回到物鏡孔徑內；粗糙表面靠散射可略超過此限。Mirau 的參考鏡會遮住光瞳中心，使有效數值孔徑略小於標示值，並使高數值孔徑下的等效波長變長。~Interference objectives come in three forms: Michelson puts a beamsplitter cube and side reference mirror ahead of the objective and suits only low magnification; Mirau stacks a semi-reflective film and a small reference mirror on a glass plate in front of the objective, compact and covering 10× to 100×; Linnik uses two matched objectives for sample and reference, reaching the highest numerical aperture but hard to align. Lateral resolution is set by numerical aperture, and so is the maximum measurable slope, because specularly reflected light must return inside the objective's aperture; rough surfaces exceed this slightly through scatter. The Mirau reference mirror obscures the pupil centre, making the effective numerical aperture a little below the nominal value and lengthening the equivalent wavelength at high aperture.",
+      "model": "橫向解析度 ≈ 0.61λ₀/NA，斜率極限 ≈ arcsin(NA)。λ₀ = 570 nm 時：50× NA 0.55 → 0.63 µm、33°；10× NA 0.30 → 1.16 µm、17.5°；5× NA 0.13 → 2.7 µm、7.5°；100× NA 0.85 → 0.41 µm、58°。相機像素 6.5 µm 在 50× 下對應 0.13 µm/像素，1024 像素視場 133 µm，Nyquist 取樣 0.26 µm 小於 0.63 µm 的光學解析度，符合取樣要求。~Lateral resolution ≈ 0.61λ₀/NA and slope limit ≈ arcsin(NA). At λ₀ = 570 nm: 50× NA 0.55 → 0.63 µm and 33°; 10× NA 0.30 → 1.16 µm and 17.5°; 5× NA 0.13 → 2.7 µm and 7.5°; 100× NA 0.85 → 0.41 µm and 58°. A 6.5 µm camera pixel at 50× maps to 0.13 µm per pixel, a 1024-pixel field of 133 µm, and the 0.26 µm Nyquist sampling is finer than the 0.63 µm optical resolution, satisfying the sampling requirement.",
+      "verify": "量一片已知週期的解析度標準片（例如 1 µm 到 0.4 µm 的線對光柵），找出條紋對比降到可辨認門檻的最細週期，與 0.61λ₀/NA 比較；再量一顆已知半徑的拋光球，記錄高度圖中資料失效的邊緣位置，由幾何算出斜率並與 arcsin(NA) 比較，確認物鏡的有效數值孔徑。~Measure a resolution standard of known pitch (line gratings from 1 µm down to 0.4 µm), find the finest pitch at which fringe contrast still resolves and compare with 0.61λ₀/NA; then measure a polished sphere of known radius, note where the height map loses data at the edge, compute the slope from geometry and compare with arcsin(NA) to confirm the objective's effective numerical aperture.",
+      "failure": "用 10× 物鏡量斜率 25° 的透鏡模具側壁，反射光完全落在孔徑外，高度圖出現整片無資料區，軟體以內插填補後給出平滑但虛構的輪廓，導致模具斜角被錯誤驗收。~Measuring a 25° lens-mould sidewall with a 10× objective puts the reflected light entirely outside the aperture, the height map shows a blank region, the software fills it by interpolation with a smooth but fictitious profile, and the mould draft angle is wrongly accepted.",
+      "misconception": "倍率越高橫向解析度越好，與數值孔徑無關。~Higher magnification always means better lateral resolution regardless of numerical aperture."
+    },
+    {
+      "anchor": "壓電掃描器、相機與參考鏡~Piezo scanner, camera and reference mirror",
+      "title": "垂直掃描器、相機雜訊與參考面品質~Vertical scanner, camera noise and reference-surface quality",
+      "mechanism": "垂直掃描由壓電致動器帶動物鏡或整個干涉頭，以電容感測器閉迴路線性化，行程從 100 µm 到 1 mm 以上，長行程機型改用馬達配光學尺。掃描器的線性度直接變成高度比例誤差，因此儀器要以步高標準片校正放大係數。相機的滿井容量與讀出雜訊決定相位高度的雜訊底，大像素、高幀率與全域快門是優先選項。參考鏡的面形會原封不動加到每一張高度圖上，所以參考鏡用 λ/20 以上的超平面，或以多次平均的平面量測建立參考面扣除檔。~Vertical scanning moves the objective or the whole interferometric head with a piezo actuator linearised by a capacitive sensor in closed loop, with travel from 100 µm to over 1 mm; long-range instruments switch to a motor with an optical scale. Scanner linearity becomes a height scale error directly, so instruments are calibrated with step-height standards for the amplification coefficient. Camera full-well capacity and read noise set the phase-height noise floor, favouring large pixels, high frame rate and global shutter. The reference mirror's figure is added unchanged to every height map, so the reference is a λ/20 or better superflat, or an averaged flat measurement builds a reference-subtraction file.",
+      "model": "掃描器非線性 0.1% 在 100 µm 行程上造成 100 nm 的高度誤差，對 10 µm 台階為 10 nm，必須以多個高度的步高標準片擬合校正到 0.02% 以下。參考鏡 λ/20（以 633 nm 計 ≈ 32 nm PV）的面形若不扣除，會在平面量測的 Sz 中直接出現 32 nm；扣除後殘差取決於參考面量測的雜訊，約 0.3 nm。相機 12 位元、滿井 10⁴ 電子時量化步階 2.4 電子，小於光子雜訊 100 電子，量化不是限制。~A 0.1% scanner non-linearity produces 100 nm of height error over 100 µm of travel and 10 nm on a 10 µm step, so calibration against step standards at several heights must bring it below 0.02%. A λ/20 reference (≈ 32 nm peak-to-valley at 633 nm) adds 32 nm directly to the Sz of a flat measurement unless subtracted; after subtraction the residual follows the reference-measurement noise, about 0.3 nm. A 12-bit camera with a 10⁴-electron full well has a quantisation step of 2.4 electrons, below the 100-electron photon noise, so quantisation is not the limit.",
+      "verify": "量 1 µm、10 µm 與 100 µm 三種認證步高標準片，把量測值對證書值作線性擬合，斜率偏差是放大係數誤差、殘差是線性度偏差；以電容感測器的獨立讀值對照壓電命令位置，確認閉迴路線性；在超平面上做 16 次平均建立參考扣除檔，再量另一片超平面確認殘餘平面度偏差小於 1 nm。~Measure certified step standards of 1 µm, 10 µm and 100 µm, fit measured against certified values, read the amplification-coefficient error from the slope and the linearity deviation from residuals; compare independent capacitive-sensor readings with piezo command positions to confirm closed-loop linearity; average 16 measurements on a superflat to build the reference-subtraction file and measure a second superflat to confirm residual flatness deviation below 1 nm.",
+      "failure": "壓電掃描器的電容感測器受潮漂移後閉迴路仍回報線性，但實際位移比例改變 0.5%，所有台階高度一律偏高 0.5% 而儀器自檢全部通過；只有定期量步高標準片才會發現。~A capacitive sensor that drifts with humidity keeps reporting a linear closed loop while the real displacement scale shifts by 0.5%; every step height reads 0.5% high, all instrument self-tests pass, and only periodic step-standard measurement exposes it.",
+      "misconception": "參考鏡的面形誤差會在兩次量測相減時自動消失。~Reference-mirror figure error cancels automatically when two measurements are subtracted."
+    },
+    {
+      "anchor": "ISO 25178-600 計量特性與標準片~ISO 25178-600 metrological characteristics and standards",
+      "title": "放大係數、雜訊、平面度與橫向尺度的校正~Calibrating amplification, noise, flatness and lateral scale",
+      "mechanism": "ISO 25178-600 把面輪廓儀的校正拆成幾個計量特性：量測雜訊、平面度偏差、放大係數、線性度偏差、x/y 尺度、解析度與垂直對準，各自有對應的實體標準片與程序，ISO 25178-604 則專門描述相干掃描干涉儀。放大係數用步高標準片校正，橫向尺度用已知節距的光柵或網格校正，平面度用超平面，雜訊用重複量測相減。這些結果合起來才能寫出高度、Sa、Sq 與節距等參數的不確定度，而且各特性必須在實際使用的物鏡與視場下分別做。~ISO 25178-600 breaks profilometer calibration into metrological characteristics: measurement noise, flatness deviation, amplification coefficient, linearity deviation, x/y scales, resolution and perpendicularity, each with its own physical standard and procedure, while ISO 25178-604 addresses coherence scanning interferometers specifically. Amplification is calibrated with step-height standards, lateral scale with gratings or grids of known pitch, flatness with a superflat and noise by subtracting repeated measurements. Only together do these results support uncertainty statements for height, Sa, Sq and pitch parameters, and every characteristic must be determined separately for each objective and field of view actually used.",
+      "model": "放大係數誤差 0.2% 對 10 µm 台階給 20 nm、對 1 µm 台階給 2 nm；橫向尺度誤差 0.3% 在 133 µm 視場上為 0.4 µm，對 10 µm 節距的量測為 30 nm。量測雜訊由兩次量測差的 Sq 除以 √2 得到，例如差圖 Sq = 0.42 nm → 雜訊 0.3 nm；若量測粗糙度 Sq = 2 nm 的表面，雜訊貢獻按均方根扣除後真實值 √(2² − 0.3²) ≈ 1.98 nm。~A 0.2% amplification error gives 20 nm on a 10 µm step and 2 nm on 1 µm; a 0.3% lateral-scale error is 0.4 µm across a 133 µm field and 30 nm on a 10 µm pitch measurement. Measurement noise is the Sq of the difference of two measurements divided by √2, for example a difference-map Sq = 0.42 nm → noise 0.3 nm; measuring a surface of Sq = 2 nm and removing the noise in quadrature gives a true value of √(2² − 0.3²) ≈ 1.98 nm.",
+      "verify": "依標準片證書建立校正紀錄：每支物鏡量步高（至少兩個高度）、節距光柵（x 與 y 各一方向）、超平面（平面度與雜訊）；把每項結果與允收值比較並記錄環境溫度；每季重複，追蹤放大係數隨時間的漂移曲線，超過 0.1% 即重新校正並回溯影響期間的量測報告。~Build a calibration record from certified standards: for each objective measure step heights (at least two values), a pitch grating (in x and y), and a superflat (flatness and noise); compare each result with acceptance limits and log ambient temperature; repeat quarterly, trend the amplification coefficient over time and, when drift exceeds 0.1%, recalibrate and review reports from the affected period.",
+      "failure": "只在 10× 物鏡上校正放大係數，然後用 50× 物鏡量測；Mirau 物鏡在高數值孔徑下的等效波長變長，放大係數偏差 1% 以上，10 µm 的台階量成 10.1 µm，而校正紀錄看起來完整。~Calibrating amplification only with the 10× objective and then measuring with 50×: at high numerical aperture the Mirau equivalent wavelength lengthens, the amplification coefficient is off by over 1%, a 10 µm step reads 10.1 µm, and the calibration record looks complete.",
+      "misconception": "儀器開機自檢通過就代表校正有效。~Passing the instrument's start-up self-test means the calibration is valid."
+    },
+    {
+      "anchor": "台階邊緣蝙蝠翼與異材相位差~Batwings at step edges and dissimilar-material phase offset",
+      "title": "蝙蝠翼、異材相位與薄膜干擾~Batwing artefacts, dissimilar-material phase and thin-film interference",
+      "mechanism": "當台階高度小於相干長度時，台階上下兩側的光在邊緣處繞射並互相干涉，包絡被扭曲，高度圖在邊緣兩側出現向外翹起的假尖峰，形狀像蝙蝠翼，幅度可達數十到上百奈米、寬度約等於橫向解析度。不同材料反射時的相位變化不同，例如金屬與介電質，使相位法高度產生與真實幾何無關的偏移。透明薄膜會在上表面與基板界面各產生一組包絡：膜的光學厚度大於相干長度的一半時兩組可分離並可同時量膜厚，否則合併成一個偏移且變寬的包絡，高度與膜厚都錯。~When a step is lower than the coherence length, light from the upper and lower levels diffracts at the edge and interferes, the envelope is distorted and false spikes rise outward on both sides of the edge, shaped like bat wings, with amplitudes of tens to over a hundred nanometres and widths about one lateral resolution. Different materials, for example metal versus dielectric, impose different reflection phase changes, so phase-based heights carry offsets unrelated to real geometry. A transparent film produces one envelope at its top surface and another at the substrate interface: if the film's optical thickness exceeds half the coherence length the two separate and thickness can be measured too, otherwise they merge into one shifted, broadened envelope and both height and thickness are wrong.",
+      "model": "異材偏移 δh = Δφ·λ₀/(4π)：鋁與玻璃的反射相位差取 0.3 rad（教學假設）時 δh ≈ 0.3×570/(4π) ≈ 13.6 nm，對 100 nm 的金屬線高度是 14% 的誤差。薄膜分離條件 2·n·t > l_c：n = 1.5、l_c = 3.25 µm 時 t > 1.08 µm；100 nm 的氧化層完全落在合併區。蝙蝠翼只在台階 < l_c/2 ≈ 1.6 µm 時出現，對 300 nm 台階常見，對 10 µm 台階消失。~Dissimilar-material offset δh = Δφ·λ₀/(4π): taking a 0.3 rad reflection-phase difference between aluminium and glass (teaching assumption), δh ≈ 0.3×570/(4π) ≈ 13.6 nm, a 14% error on a 100 nm metal line. The film-separation condition 2·n·t > l_c with n = 1.5 and l_c = 3.25 µm requires t > 1.08 µm; a 100 nm oxide lies entirely in the merged regime. Batwings appear only for steps below l_c/2 ≈ 1.6 µm, common at 300 nm and absent at 10 µm.",
+      "verify": "量一片 300 nm 的矽步高標準片，沿垂直台階的剖面觀察邊緣兩側是否有超過標稱高度的尖峰，比較以包絡法、相位法與軟體的邊緣抑制演算法得到的台階寬度與高度；異材偏移以金屬線跨越玻璃的樣品，用原子力顯微鏡或觸針式輪廓儀量真實高度，差值即相位偏移，寫進材料修正表。~Measure a 300 nm silicon step standard and inspect a profile across the edge for spikes exceeding the nominal height on both sides, comparing step width and height from envelope, phase and the software's edge-suppression algorithms; for dissimilar-material offset use a metal line crossing glass, measure the true height with an atomic-force microscope or stylus profiler, and enter the difference as a phase offset in the material-correction table.",
+      "failure": "把帶蝙蝠翼的剖面直接拿去算線寬，邊緣位置被假尖峰拉偏 0.5 µm，線寬量測系統性偏小；若再用相位法量金屬圖案在玻璃上的高度而沒有材料修正，每條線都偏 14 nm，製程視窗被誤判。~Using a profile with batwings to compute line width lets the false spikes pull the edge position by 0.5 µm and the width reads systematically narrow; measuring metal-on-glass heights by the phase method without material correction then biases every line by 14 nm and the process window is misjudged.",
+      "misconception": "光學輪廓儀量的是幾何表面，所以材料不影響高度讀值。~An optical profilometer measures geometric surface, so material does not affect height readings."
+    },
+    {
+      "anchor": "隔振平台、拼接與自動化~Vibration isolation, stitching and automation",
+      "title": "產線整合：隔振、視場拼接與產能~Production integration: vibration, field stitching and throughput",
+      "mechanism": "相干掃描需要數秒，掃描期間任何相對於樣品的垂直振動都會扭曲相干圖，條紋相位對振動的靈敏度是 4π/λ₀，所以儀器安放在被動或主動隔振平台上並封在防風罩內；產線機型用高幀率相機縮短掃描時間，使振動更難進入。大面積量測以自動平台把多個視場拼接，相鄰視場重疊 20% 左右，用重疊區的高度差解出每個視場的活塞與傾斜，但誤差會沿拼接鏈累積。自動化還包含自動對焦找包絡、自動光強與自動樣品辨識，產能由掃描長度、幀率與拼接數決定。~A coherence scan takes seconds, and any vertical vibration between instrument and sample during that time distorts the correlogram, the fringe phase being sensitive to vibration by 4π/λ₀, so instruments sit on passive or active isolation inside draught enclosures; production models use high-frame-rate cameras to shorten scans and shut vibration out. Large areas are covered by stitching fields with an automated stage, overlapping neighbours by about 20% and solving each field's piston and tilt from the overlap, but errors accumulate along the stitching chain. Automation adds auto-focus to find the envelope, auto-intensity and sample recognition, and throughput follows scan length, frame rate and the number of fields.",
+      "model": "振動幅度 10 nm 造成的條紋相位誤差 = 4π×10/570 ≈ 0.22 rad，相當於 10 nm 的高度誤差，比 0.14 nm 的光子雜訊大 70 倍，所以隔振平台需把 10 到 100 Hz 的振動壓到 1 nm 以下。拼接 10 個 133 µm 視場成 1.1 mm：每個視場殘餘傾斜 10 µrad 的累積高度誤差 ≈ 10×133 µm×10 µrad ≈ 13 nm；產能估算：每視場掃 20 µm 需 2.8 s，加 1 s 移動，100 個視場需約 6.3 min。~A 10 nm vibration amplitude gives a fringe-phase error of 4π×10/570 ≈ 0.22 rad, equivalent to 10 nm of height error, 70 times the 0.14 nm photon noise, so the isolation platform must hold 10 to 100 Hz vibration below 1 nm. Stitching 10 fields of 133 µm into 1.1 mm: a residual tilt of 10 µrad per field accumulates a height error of ≈ 10×133 µm×10 µrad ≈ 13 nm; throughput: each field needs 2.8 s for a 20 µm scan plus 1 s of travel, so 100 fields take about 6.3 min.",
+      "verify": "用加速規量儀器基座在 1 到 200 Hz 的振動譜，與未隔振的地面比較，並在開啟附近設備時重複平面雜訊量測，確認雜訊不上升；拼接驗證用一片跨越多個視場的認證平面或長節距光柵，比較拼接高度圖的整體平面度與節距累積誤差和單一視場的結果。~Measure the instrument base's 1 to 200 Hz vibration spectrum with an accelerometer against the unisolated floor, and repeat the flat-noise measurement with nearby equipment switched on to confirm the noise does not rise; validate stitching with a certified flat or long-pitch grating spanning several fields, comparing the stitched map's overall flatness and cumulative pitch error with single-field results.",
+      "failure": "產線上空調風直接吹向未封罩的干涉頭，空氣折射率在掃描中擾動，相干圖包絡抖動，高度圖出現與掃描同步的波紋；因為是週期性的，被誤判為樣品的真實紋理。~Air-conditioning draught on an unenclosed interferometric head perturbs the air index during the scan, the envelope wobbles and the height map shows ripples synchronous with the scan; being periodic, they are misread as real sample texture.",
+      "misconception": "拼接視場越多量測越準，因為資料更多。~Stitching more fields makes the measurement more accurate because there is more data."
+    },
+    {
+      "anchor": "不確定度預算與交接報告~Uncertainty budget and handoff report",
+      "title": "與觸針／AFM 比對、不確定度與工程交接~Comparison with stylus/AFM, uncertainty and engineering handoff",
+      "mechanism": "交付前要用獨立方法驗證：觸針式輪廓儀與原子力顯微鏡對材料相位不敏感，可用來比對台階高度與粗糙度；兩者的差異若落在合成不確定度內，表示材料修正與校正都正確。粗糙度參數還依賴濾波：ISO 25178 的 S 濾波（去除雜訊）與 L 濾波（去除形狀）截止值必須與比對方法一致，否則 Sa 與 Sq 不可比。交接報告列出每個計量特性的校正值與日期、各物鏡的不確定度預算、材料修正表、濾波設定與禁用條件（斜率、薄膜、台階高度範圍）。~Before handoff, validate with independent methods: stylus profilers and atomic-force microscopes are insensitive to material phase and serve to compare step heights and roughness; agreement within the combined uncertainty shows that material corrections and calibrations are right. Roughness parameters also depend on filtering: the ISO 25178 S-filter (noise removal) and L-filter (form removal) cut-offs must match the comparison method or Sa and Sq are not comparable. The handoff report lists each metrological characteristic with its calibrated value and date, an uncertainty budget per objective, the material-correction table, filter settings and exclusion conditions (slope, thin films, step-height range).",
+      "model": "1 µm 台階的不確定度預算（教學假設，標準不確定度）：放大係數 0.2% → 2 nm；量測雜訊 0.3 nm；參考面殘餘平面度 2 nm；步高標準片證書 2 nm；蝙蝠翼邊緣排除後的取樣區選擇 1 nm。RSS = √(2² + 0.3² + 2² + 2² + 1²) ≈ 3.6 nm，k = 2 擴展不確定度 ≈ 7 nm，即 0.7%。與觸針式輪廓儀的比對差若為 5 nm，落在兩者合成不確定度內，驗證通過。~Uncertainty budget for a 1 µm step (teaching assumptions, standard uncertainties): amplification 0.2% → 2 nm; measurement noise 0.3 nm; residual reference flatness 2 nm; step-standard certificate 2 nm; sampling-region choice after excluding batwing edges 1 nm. RSS = √(2² + 0.3² + 2² + 2² + 1²) ≈ 3.6 nm, expanded uncertainty at k = 2 ≈ 7 nm, that is 0.7%. A 5 nm difference against a stylus profiler lies within the combined uncertainty of both, so validation passes.",
+      "verify": "選三件代表性工件（光滑矽片、金屬台階、粗糙磨削面），分別以白光干涉儀、觸針式輪廓儀與 AFM 在同一區域、同樣的 S/L 濾波下量 Sa、Sq 與台階高度，製作比對表並計算歸一化誤差 E_n = 差值/√(U₁² + U₂²)，E_n < 1 才簽收；報告附上各物鏡的校正證書與材料修正紀錄。~Choose three representative parts (smooth silicon, a metal step, a rough ground surface), measure Sa, Sq and step height on the same region with the white-light interferometer, a stylus profiler and an AFM under identical S/L filters, tabulate the comparison and compute the normalised error E_n = difference/√(U₁² + U₂²), signing off only when E_n < 1; attach each objective's calibration certificate and the material-correction record to the report.",
+      "failure": "交接時只給 Sa 數值而不附濾波截止與物鏡，使用者用另一台儀器以不同 L 濾波量到 Sa 差了 40%，雙方各自堅持儀器正確，爭議拖延數週才發現是濾波定義不同。~A handoff that gives Sa values without filter cut-offs or objective lets the user measure 40% different Sa on another instrument with a different L-filter; both sides defend their instruments and weeks pass before the filter definition is found to be the cause.",
+      "misconception": "白光干涉儀的粗糙度讀值和觸針式輪廓儀的 Ra 可以直接互換。~White-light roughness readings and stylus Ra values are directly interchangeable."
+    }
+  ],
+  "example": "MEMS 台階量測練習：以 50× Mirau 物鏡（NA 0.55）、λ₀ = 570 nm、Δλ = 100 nm 量一個標稱 2.5 µm 的矽台階。相干長度 l_c = 570²/100 ≈ 3.25 µm，包絡高度寬度 ≈ 1.6 µm，台階 2.5 µm 大於 1.6 µm，所以上下兩面包絡分離、不會有蝙蝠翼。掃描範圍 20 µm、步距 λ₀/8 = 71 nm → 281 幀，100 幀/秒需 2.8 s。橫向解析度 0.61×570/0.55 ≈ 0.63 µm，視場 133 µm。光子雜訊：N = 10⁴、V = 0.5 → 單幀 0.9 nm，包絡內 40 幀平均 ≈ 0.14 nm。不確定度：放大係數 0.2%×2.5 µm = 5 nm、參考面殘餘 2 nm、標準片證書 2 nm、雜訊 0.14 nm、取樣區 1 nm，RSS ≈ 5.8 nm，k = 2 ≈ 12 nm，相對 0.5%。若改用 10× 物鏡，橫向解析度退到 1.16 µm，台階邊緣的過渡區加寬，但高度不確定度幾乎不變。數值為教學假設，不代表任何儀器規格。~MEMS step exercise: measure a nominal 2.5 µm silicon step with a 50× Mirau objective (NA 0.55), λ₀ = 570 nm, Δλ = 100 nm. Coherence length l_c = 570²/100 ≈ 3.25 µm, envelope height width ≈ 1.6 µm; the 2.5 µm step exceeds 1.6 µm, so the upper and lower envelopes separate and no batwings occur. Scan range 20 µm at a step of λ₀/8 = 71 nm → 281 frames, 2.8 s at 100 frames per second. Lateral resolution 0.61×570/0.55 ≈ 0.63 µm, field 133 µm. Photon noise: N = 10⁴, V = 0.5 → 0.9 nm per frame, ≈ 0.14 nm after averaging 40 frames inside the envelope. Uncertainty: amplification 0.2%×2.5 µm = 5 nm, reference residual 2 nm, standard certificate 2 nm, noise 0.14 nm, sampling region 1 nm, RSS ≈ 5.8 nm, k = 2 ≈ 12 nm, relative 0.5%. Switching to a 10× objective degrades lateral resolution to 1.16 µm and widens the edge transition but leaves the height uncertainty almost unchanged. Values are teaching assumptions, not any instrument's specification.",
+  "history": "1980 年代中期 Davidson、Kino 等人把低相干光源與干涉顯微鏡結合，證明可用包絡位置量高度而不受 λ/2 模糊限制；1990 年代初 Zygo 的 Deck 與 de Groot 以頻域分析把相干掃描干涉術推向商用，Wyko（後併入 Veeco，再成為 Bruker 一部分）則以垂直掃描干涉術進入半導體與資料儲存產業。2010 年代 ISO 25178 系列把面輪廓量測的計量特性與校正程序標準化，其中 25178-604 專門規範相干掃描干涉儀，使不同廠牌儀器的量測可相互比較。本課只重建公開原理與工程方法。~In the mid-1980s Davidson, Kino and others combined low-coherence sources with interference microscopes, showing that envelope position measures height free of the λ/2 ambiguity; in the early 1990s Deck and de Groot at Zygo brought coherence scanning interferometry to market with frequency-domain analysis, while Wyko (later part of Veeco and then Bruker) entered semiconductor and data-storage industries with vertical scanning interferometry. In the 2010s the ISO 25178 series standardised metrological characteristics and calibration procedures for areal surface texture, with 25178-604 dedicated to coherence scanning interferometers, making measurements from different makers comparable. This course reconstructs public principles and engineering methods only.",
+  "place": {
+    "name": "Zygo 康乃狄克州米德菲爾德光學計量參照點~Zygo Middlefield Connecticut optical-metrology reference",
+    "country": "美國~United States",
+    "lat": 41.516,
+    "lng": -72.716,
+    "query": "Zygo Corporation Middlefield Connecticut"
+  },
+  "sources": [
+    {
+      "key": "zygo-3d-optical-profilers",
+      "title": "Zygo：光學輪廓儀與 3D 光學輪廓儀",
+      "titleEn": "Zygo: Optical profilometers and 3D optical profilers",
+      "publisher": "Zygo Corporation (AMETEK)",
+      "url": "https://www.zygo.com/products/metrology-systems/3d-optical-profilers",
+      "sourceType": "primary",
+      "scope": "相干掃描干涉式 3D 輪廓儀的公開產品分類，說明非接觸表面紋理與特徵量測及依速度、精度、量程選型的原則；課程數值不引用其規格。",
+      "scopeEn": "Public product category for coherence-scanning 3D profilers, covering non-contact surface texture and feature measurement and selection by speed, precision and range; course numbers do not quote its specifications."
+    },
+    {
+      "key": "bruker-3d-optical-profilers",
+      "title": "Bruker：3D 光學輪廓儀",
+      "titleEn": "Bruker: 3D optical profilers",
+      "publisher": "Bruker Corporation",
+      "url": "https://www.bruker.com/en/products-and-solutions/test-and-measurement/3d-optical-profilers.html",
+      "sourceType": "primary",
+      "scope": "白光干涉式非接觸 3D 表面形貌量測儀的公開產品頁，涵蓋從 MEMS 到大型工件的應用範圍與軟體。",
+      "scopeEn": "Public product page for non-contact white-light interferometric 3D surface-topography instruments, spanning MEMS to large parts, with software."
+    },
+    {
+      "key": "wikipedia-csi",
+      "title": "Wikipedia：相干掃描干涉術",
+      "titleEn": "Wikipedia: Coherence scanning interferometry",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Coherence_scanning_interferometry",
+      "sourceType": "secondary",
+      "scope": "以掃描光程並定位干涉條紋量測表面形貌、透明薄膜與光學性質的二手概述，僅作背景導讀。",
+      "scopeEn": "Secondary overview of measuring surface topography, transparent films and optical properties by scanning optical path and locating fringes; background reading only."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Zygo（AMETEK 旗下）",
+      "nameEn": "Zygo (part of AMETEK)",
+      "business": "相干掃描干涉輪廓儀、雷射干涉儀與精密光學元件製造。",
+      "businessEn": "Coherence-scanning interferometric profilers, laser interferometers and precision optics manufacturing.",
+      "url": "https://www.zygo.com/",
+      "investorUrl": "https://investors.ametek.com/",
+      "security": {"symbol": "AME", "exchange": "NYSE", "currency": "USD"},
+      "role": "相干掃描干涉術與頻域分析演算法的公開產品參照",
+      "roleEn": "Public product reference for coherence scanning interferometry and frequency-domain analysis"
+    },
+    {
+      "name": "布魯克",
+      "nameEn": "Bruker",
+      "business": "科學儀器，包含白光干涉 3D 光學輪廓儀、原子力顯微鏡與觸針式輪廓儀。",
+      "businessEn": "Scientific instruments including white-light interferometric 3D optical profilers, atomic-force microscopes and stylus profilers.",
+      "url": "https://www.bruker.com/",
+      "investorUrl": "https://ir.bruker.com/",
+      "security": {"symbol": "BRKR", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "垂直掃描干涉儀與可供比對的 AFM／觸針式儀器供應商",
+      "roleEn": "Supplier of vertical-scanning interferometers and of the AFM/stylus instruments used for comparison"
+    },
+    {
+      "name": "基恩斯",
+      "nameEn": "Keyence",
+      "business": "工廠自動化感測器與量測儀器，包含白光干涉式 3D 表面輪廓量測系統。",
+      "businessEn": "Factory-automation sensors and measuring instruments including white-light interferometric 3D surface profilers.",
+      "url": "https://www.keyence.com/",
+      "investorUrl": "https://www.keyence.com/company/ir/",
+      "security": {"symbol": "6861", "exchange": "TSE", "currency": "JPY"},
+      "role": "產線導向白光干涉輪廓儀的參照供應商",
+      "roleEn": "Reference supplier of production-oriented white-light interferometric profilers"
+    },
+    {
+      "name": "德國物理技術研究院",
+      "nameEn": "PTB",
+      "business": "德國國家計量機構，維持表面形貌與步高標準片的溯源與比對。",
+      "businessEn": "German national metrology institute maintaining traceability and comparisons for surface-texture and step-height standards.",
+      "url": "https://www.ptb.de/",
+      "investorUrl": "",
+      "security": null,
+      "role": "步高與節距標準片溯源及面輪廓儀計量特性的公開基礎",
+      "roleEn": "Public basis for step-height and pitch standard traceability and areal-profiler metrological characteristics"
+    }
+  ],
+  "related": ["a439", "a446"],
+  "architectureNodes": [["寬頻 LED 光源與 Köhler 照明", "Broadband LED source and Köhler illumination"], ["Mirau 干涉物鏡與參考鏡", "Mirau interference objective and reference mirror"], ["壓電垂直掃描器", "Piezo vertical scanner"], ["相機與相干圖擷取", "Camera and correlogram acquisition"], ["包絡／相位高度演算法", "Envelope/phase height algorithm"], ["校正標準片與不確定度報告", "Calibration standards and uncertainty report"]],
+  "architectureEdges": [[0, 1], [2, 1], [1, 3], [3, 4], [5, 4]]
+}

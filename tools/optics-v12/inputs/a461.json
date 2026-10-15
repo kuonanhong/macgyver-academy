@@ -1,0 +1,229 @@
+{
+ "id": "a461",
+ "title": "同步輻射單色器~Synchrotron monochromators",
+ "discipline": "optics-accelerators-detectors",
+ "family": "spectrometer",
+ "focus": "Si(111) 雙晶單色器的布拉格角、Darwin 寬度、能量解析度、液氮冷卻與能量校正~Bragg angle, Darwin width, energy resolution, liquid-nitrogen cooling and energy calibration of a Si(111) double-crystal monochromator",
+ "summary": "以插件磁鐵光束線上的液氮冷卻 Si(111) 雙晶單色器為對象，從布拉格條件與動力學繞射的 Darwin 寬度推導能量解析度，再處理數百瓦熱負載下的晶體變形、固定出口機構、吸收邊能量校正、穩定度預算與高次諧波抑制，最後交付一份可重現的試運轉紀錄。~Taking the liquid-nitrogen-cooled Si(111) double-crystal monochromator of an insertion-device beamline, derive energy resolution from the Bragg condition and the dynamical-diffraction Darwin width, then handle crystal distortion under hundreds of watts, the fixed-exit mechanism, absorption-edge energy calibration, the stability budget and harmonic rejection, ending with a reproducible commissioning record.",
+ "units": [
+  {
+   "anchor": "白光入口與 Si(111) 第一晶體~White-beam entrance and the first Si(111) crystal",
+   "title": "布拉格條件與單色器的工作範圍~The Bragg condition and the monochromator's working range",
+   "mechanism": "插件磁鐵送來的白光含有從數百 eV 到數十 keV 的連續光譜，單色器的工作是用完美矽單晶的晶格週期當作繞射光柵，只讓滿足布拉格條件 λ = 2d·sinθ 的波長以角度 2θ 反射出去。Si(111) 的面間距 d = 3.1356 Å，Si(311) 與 Si(511) 則用更小的 d 換取更高解析度。雙晶配置讓第二晶體把光束折回與入射平行，改變能量只需同步轉動兩晶體的布拉格角；可用能量範圍由機構能達到的最小與最大角度決定，低能端受限於大角度下晶體幾何與窗口吸收，高能端受限於小角度下的足跡與角解析度。~The white beam from an insertion device carries a continuous spectrum from a few hundred eV to tens of keV; the monochromator uses the lattice period of a perfect silicon crystal as a diffraction grating so that only wavelengths satisfying the Bragg condition λ = 2d·sinθ are reflected at 2θ. Si(111) has d = 3.1356 Å, while Si(311) and Si(511) trade smaller d for higher resolution. The double-crystal arrangement lets the second crystal return the beam parallel to the incident one, so changing energy only requires rotating both crystals together; the usable range is set by the smallest and largest Bragg angles the mechanics can reach, limited at low energy by crystal geometry and window absorption at large angles and at high energy by beam footprint and angular resolution at small angles.",
+   "model": "λ(Å) = 12.398/E(keV)，sinθ = λ/2d，2d = 6.2712 Å。E = 10 keV：λ = 1.2398 Å，sinθ = 0.1977，θ = 11.40°；E = 4 keV：λ = 3.0995 Å，θ = 29.62°；E = 30 keV：λ = 0.4133 Å，θ = 3.78°。因此一台涵蓋 4 到 30 keV 的 Si(111) 單色器，布拉格軸行程約 26°。此結果說明布拉格角隨能量變化的幅度，直接決定測角器行程、角度解析與晶體冷卻座的設計空間。~λ(Å) = 12.398/E(keV), sinθ = λ/2d with 2d = 6.2712 Å. E = 10 keV: λ = 1.2398 Å, sinθ = 0.1977, θ = 11.40°; E = 4 keV: λ = 3.0995 Å, θ = 29.62°; E = 30 keV: λ = 0.4133 Å, θ = 3.78°. A Si(111) monochromator covering 4 to 30 keV therefore needs about 26° of Bragg-axis travel. These numbers show how far the Bragg angle swings with energy, which sets goniometer travel, angular resolution and the space available for the cooled crystal mount.",
+   "verify": "以布拉格軸編碼器讀值與公式算出的能量，對照下游離子腔量到的已知元素吸收邊（例如 Cu K 邊 8979 eV）位置，確認角度到能量的轉換在整個行程內單調且無機械間隙；再比較 Si(111) 與 Si(311) 在同一能量下的角度差是否符合 d 值比。~Compare the energy computed from the Bragg-axis encoder with the positions of known absorption edges measured in the downstream ion chamber, such as the Cu K edge at 8979 eV, confirming that the angle-to-energy conversion is monotonic without backlash over the whole travel; then check that the angle difference between Si(111) and Si(311) at one energy matches the ratio of d values.",
+   "failure": "把編碼器零點直接當作 θ = 0 而不做吸收邊校正，整條能量軸系統性偏移數 eV，XAFS 量測的邊位置與文獻對不上，所有化學態判讀都錯位。~Taking the encoder zero as θ = 0 without an absorption-edge calibration shifts the entire energy axis by several eV, so XAFS edge positions disagree with the literature and every chemical-state assignment is displaced.",
+   "misconception": "單色器像濾光片一樣吸收掉不要的波長，只讓需要的波長穿過。~A monochromator absorbs unwanted wavelengths like a filter and transmits only the wanted one."
+  },
+  {
+   "anchor": "Darwin 反射曲線與 DuMond 圖~Darwin reflectivity curve and the DuMond diagram",
+   "title": "動力學繞射、Darwin 寬度與能量解析度~Dynamical diffraction, Darwin width and energy resolution",
+   "mechanism": "完美晶體的布拉格反射不是無限窄的 δ 函數：動力學繞射理論顯示在一個有限角度範圍內反射率接近 100%，這個範圍稱為 Darwin 寬度，由結構因子、波長與偏振決定，Si(111) 的相對寬度 ΔE/E 約 1.3×10⁻⁴，幾乎與能量無關。單色器輸出的能量頻寬是 Darwin 寬度與入射光束發散角在角度空間的卷積，再透過微分布拉格式 ΔE/E = cotθ·Δθ 轉成能量；低能量大角度時 cotθ 小，解析度較好，高能量小角度時同樣的角度誤差放大成更大的能量誤差。~A perfect-crystal Bragg reflection is not an infinitely narrow delta function: dynamical diffraction theory shows near-100% reflectivity over a finite angular range, the Darwin width, set by the structure factor, wavelength and polarisation; for Si(111) the relative width ΔE/E is about 1.3×10⁻⁴ and nearly independent of energy. The output bandwidth is the convolution in angle of the Darwin width with the incident beam divergence, converted to energy through the differentiated Bragg law ΔE/E = cotθ·Δθ; at low energy and large angle cotθ is small and resolution is good, while at high energy and small angle the same angular error becomes a larger energy error.",
+   "model": "10 keV、θ = 11.40°、tanθ = 0.2017：Si(111) 的 Darwin 寬度 ω_D ≈ 1.33×10⁻⁴×0.2017 ≈ 26.8 µrad（約 5.5 角秒）。若聚頻磁鐵垂直發散 FWHM 為 23 µrad，合成角寬 √(26.8² + 23²) ≈ 35.3 µrad，ΔE/E = 35.3×10⁻⁶/0.2017 ≈ 1.75×10⁻⁴，即 ΔE ≈ 1.75 eV；把上游狹縫收到發散 5 µrad，則 ΔE/E ≈ 1.35×10⁻⁴，ΔE ≈ 1.35 eV，逼近晶體本徵極限。~At 10 keV, θ = 11.40° and tanθ = 0.2017: the Si(111) Darwin width is ω_D ≈ 1.33×10⁻⁴×0.2017 ≈ 26.8 µrad (about 5.5 arcsec). With an undulator vertical divergence of 23 µrad FWHM the combined angular width is √(26.8² + 23²) ≈ 35.3 µrad, so ΔE/E = 35.3×10⁻⁶/0.2017 ≈ 1.75×10⁻⁴, i.e. ΔE ≈ 1.75 eV; closing the upstream slit to 5 µrad divergence gives ΔE/E ≈ 1.35×10⁻⁴ and ΔE ≈ 1.35 eV, close to the intrinsic crystal limit.",
+   "verify": "固定第一晶體，以壓電驅動第二晶體掃描俯仰角並記錄離子腔強度，得到雙晶搖擺曲線；其寬度應接近兩條 Darwin 曲線的自相關寬度加上發散貢獻，若量到的寬度明顯大於計算值（例如 45 µrad 對 35 µrad），就表示晶體受應變或熱變形。~With the first crystal fixed, scan the second crystal's pitch with the piezo while recording the ion-chamber intensity to obtain the double-crystal rocking curve; its width should approach the autocorrelation width of two Darwin curves plus the divergence term, and a measured width clearly above the calculation (say 45 µrad against 35 µrad) indicates strained or thermally distorted crystals.",
+   "failure": "為了提高通量把上游狹縫全開，發散角 60 µrad 使 10 keV 的能量頻寬變成約 3.3 eV，XANES 的精細結構被抹平，使用者得到的不是更好的資料而是更糟的解析度。~Opening the upstream slit fully for flux lets a 60 µrad divergence widen the 10 keV bandwidth to about 3.3 eV, washing out XANES fine structure, so the user gets worse resolution rather than better data.",
+   "misconception": "完美晶體只反射一個精確波長，解析度由機械精度決定。~A perfect crystal reflects one exact wavelength, so resolution is set only by mechanical precision."
+  },
+  {
+   "anchor": "液氮冷卻塊與熱凸起~Liquid-nitrogen cooling block and thermal bump",
+   "title": "高熱負載下的矽晶體與液氮冷卻~Silicon crystals under high heat load and liquid-nitrogen cooling",
+   "mechanism": "第一晶體承受插件磁鐵白光中數百瓦的吸收功率，功率集中在數平方毫米的足跡內，形成局部溫升與熱凸起；凸起的斜率誤差一旦與 Darwin 寬度同量級，反射率下降、頻寬變寬、出射方向偏移。矽的熱性能指標是熱導率與熱膨脹係數之比 κ/α：室溫下 κ ≈ 148 W/(m·K)、α ≈ 2.6×10⁻⁶/K；降到 77 K 時 κ 升到約 1300 W/(m·K)，α 變成約 −0.5×10⁻⁶/K（在約 125 K 穿越零點），κ/α 改善四十倍以上。因此第一晶體以液氮直接或間接冷卻，第二晶體可為間接冷卻或銅辮熱連接。~The first crystal absorbs hundreds of watts of the insertion-device white beam concentrated in a footprint of a few square millimetres, producing a local temperature rise and a thermal bump; once the bump's slope error is comparable to the Darwin width, reflectivity drops, bandwidth widens and the exit direction shifts. Silicon's thermal figure of merit is the ratio of conductivity to expansion coefficient κ/α: at room temperature κ ≈ 148 W/(m·K) and α ≈ 2.6×10⁻⁶/K; at 77 K κ rises to about 1300 W/(m·K) while α becomes about −0.5×10⁻⁶/K (crossing zero near 125 K), improving κ/α by more than forty times. The first crystal is therefore cooled directly or indirectly by liquid nitrogen, and the second by indirect cooling or copper braids.",
+   "model": "一維量級估計：熱凸起斜率 ≈ (α/κ)·(P/L)，P 為吸收功率、L 為沿光束方向的足跡長度。P = 200 W，2 mm 高的光束在 θ = 11.4° 下足跡 L = 2/0.1977 ≈ 10 mm，P/L = 2×10⁴ W/m。室溫：α/κ = 2.6×10⁻⁶/148 ≈ 1.76×10⁻⁸ m/W，斜率 ≈ 350 µrad，是 Darwin 寬度 27 µrad 的十三倍，反射幾乎崩潰；77 K：|α/κ| = 0.5×10⁻⁶/1300 ≈ 3.8×10⁻¹⁰ m/W，斜率 ≈ 7.7 µrad，約 Darwin 寬度的 0.3 倍，可接受（精確值需有限元素分析）。~One-dimensional order-of-magnitude estimate: thermal-bump slope ≈ (α/κ)·(P/L), with P the absorbed power and L the footprint length along the beam. P = 200 W; a 2 mm tall beam at θ = 11.4° has footprint L = 2/0.1977 ≈ 10 mm, so P/L = 2×10⁴ W/m. Room temperature: α/κ = 2.6×10⁻⁶/148 ≈ 1.76×10⁻⁸ m/W, slope ≈ 350 µrad, thirteen times the 27 µrad Darwin width and the reflection collapses; at 77 K: |α/κ| = 0.5×10⁻⁶/1300 ≈ 3.8×10⁻¹⁰ m/W, slope ≈ 7.7 µrad, about 0.3 Darwin widths and acceptable (exact values need finite-element analysis).",
+   "verify": "在不同儲存環電流（即不同吸收功率）下量雙晶搖擺曲線的寬度與峰值位置，畫出寬度對功率的曲線；若寬度隨功率線性增加且峰值位置偏移，就是熱凸起的指紋；同時監測晶體溫度感測器與液氮流量，確認晶體維持在約 80 K。~Measure the double-crystal rocking-curve width and peak position at several ring currents (hence absorbed powers) and plot width against power; a width that grows linearly with power together with a shifting peak is the fingerprint of the thermal bump; monitor the crystal thermocouples and nitrogen flow at the same time to confirm the crystal stays near 80 K.",
+   "failure": "液氮管路中的沸騰或泵浦脈動以 20 到 50 Hz 搖動第一晶體，搖擺曲線看起來很寬，單色光強度以同樣頻率閃爍，使用者資料出現週期性雜訊，誤以為是儲存環不穩。~Boiling or pump pulsation in the nitrogen lines shakes the first crystal at 20 to 50 Hz; the rocking curve looks broad, the monochromatic intensity flickers at the same frequency, and users see periodic noise they blame on the storage ring.",
+   "misconception": "矽晶體夠厚、熱容夠大，幾百瓦的熱負載不會改變反射。~A thick silicon crystal has enough heat capacity that a few hundred watts cannot alter the reflection."
+  },
+  {
+   "anchor": "固定出口機構與布拉格軸編碼器~Fixed-exit mechanism and Bragg-axis encoder",
+   "title": "晶體安裝、固定出口幾何與角度解析度~Crystal mounting, fixed-exit geometry and angular resolution",
+   "mechanism": "晶體必須以無應變方式夾持，任何夾持力都會彎曲晶格、讓 Darwin 曲線變寬；常見做法是重力或輕壓的運動學支撐、銦箔熱界面與對稱的夾具。兩晶體平行且相隔垂直距離 D 時，出射光束相對入射光束的高度偏移為 H = 2D·cosθ；要在改變能量時維持固定出口高度，D 必須隨 θ 改變，由第二晶體的平移台完成。整個晶體籠裝在布拉格軸上，由真空內步進或伺服馬達驅動，高解析度編碼器讀取角度；第二晶體另有壓電俯仰與滾轉微調。所有機構都在高真空中並承受液氮管路的熱收縮。~Crystals must be held strain-free, since any clamping force bends the lattice and widens the Darwin curve; common practice uses gravity or lightly loaded kinematic supports, indium-foil thermal interfaces and symmetric fixtures. With the two crystals parallel and separated by a perpendicular gap D, the exit beam is offset from the incident one by H = 2D·cosθ; keeping a fixed exit height while changing energy requires D to vary with θ, done by the second crystal's translation stage. The crystal cage sits on the Bragg axis driven by in-vacuum stepper or servo motors with a high-resolution encoder, and the second crystal carries piezo pitch and roll fine adjustments. Everything operates in high vacuum while coping with the thermal contraction of the nitrogen lines.",
+   "model": "固定出口高度 H = 20 mm：D = H/(2cosθ)，30 keV（θ = 3.78°）時 D = 10.02 mm，4 keV（θ = 29.62°）時 D = 11.50 mm，平移行程約 1.5 mm；D 誤差 10 µm 使出口高度偏 2×10 µm×cosθ ≈ 20 µm。角度解析度轉成能量步長：δE = E·cotθ·δθ，在 10 keV、cotθ = 4.96、編碼器解析度 0.1 µrad 時 δE ≈ 10⁴×4.96×10⁻⁷ ≈ 5 meV，足以支撐 1 eV 等級的頻寬掃描。~Fixed exit height H = 20 mm: D = H/(2cosθ), giving D = 10.02 mm at 30 keV (θ = 3.78°) and 11.50 mm at 4 keV (θ = 29.62°), a translation range of about 1.5 mm; a 10 µm error in D shifts the exit height by 2×10 µm×cosθ ≈ 20 µm. Angular resolution maps to an energy step δE = E·cotθ·δθ; at 10 keV with cotθ = 4.96 and a 0.1 µrad encoder resolution, δE ≈ 10⁴×4.96×10⁻⁷ ≈ 5 meV, ample for scanning a 1 eV-class bandwidth.",
+   "verify": "安裝晶體後在實驗室以雷射自準直儀量夾持前後的反射面傾斜變化，應小於 1 µrad；上線後用下游四象限光束位置偵測器在整個能量範圍掃描，記錄出口高度對能量的曲線，殘差應在 ±10 µm 內；以自準直儀或干涉儀檢查編碼器的線性與回差。~After mounting, measure with a laser autocollimator the change in reflecting-surface tilt before and after clamping, which should stay below 1 µrad; once installed, scan the whole energy range while a downstream quadrant beam-position detector records exit height against energy, with residuals within ±10 µm; check encoder linearity and backlash with an autocollimator or interferometer.",
+   "failure": "銦箔界面在熱循環後局部脫開，第一晶體一側升溫而另一側維持 80 K，溫度梯度把晶體彎成柱面，搖擺曲線裂成雙峰，通量掉一半且能量標定隨之漂移。~An indium interface that partly delaminates after thermal cycling lets one side of the first crystal warm while the other stays at 80 K; the gradient bends the crystal into a cylinder, the rocking curve splits into two peaks, flux halves and the energy calibration drifts.",
+   "misconception": "只要兩晶體平行，出口光束的高度就與能量無關。~As long as the two crystals are parallel, the exit height does not depend on energy."
+  },
+  {
+   "anchor": "吸收邊能量校正與 I₀ 離子腔~Absorption-edge calibration and the I₀ ion chamber",
+   "title": "能量校正、搖擺曲線量測與峰值鎖定~Energy calibration, rocking-curve measurement and peak locking",
+   "mechanism": "能量軸的絕對校正用金屬箔的 K 邊或 L 邊：在單色器後放離子腔 I₀、箔與離子腔 I₁，掃描能量並取 ln(I₀/I₁) 的一階導數極大值為邊位置，與公認值比較，把差異換算成布拉格角偏移修正編碼器零點。多個吸收邊可同時檢查能量軸的線性。日常運轉中第二晶體的平行度用峰值鎖定回授維持：把第二晶體俯仰停在搖擺曲線的斜坡或以抖動法鎖在峰頂，補償熱漂移。還要記錄多束繞射造成的「毛刺」能量位置，避免誤判為樣品訊號。~Absolute energy calibration uses the K or L edges of metal foils: with an ion chamber I₀, the foil and an ion chamber I₁ behind the monochromator, scan energy, take the maximum of the first derivative of ln(I₀/I₁) as the edge position, compare with the accepted value and convert the difference into a Bragg-angle correction of the encoder zero. Several edges together check the linearity of the energy axis. In routine operation the second crystal's parallelism is held by peak-locking feedback, either parking its pitch on the rocking-curve flank or dithering to lock on the peak, compensating thermal drift. The energies of multiple-beam diffraction 'glitches' are also logged so they are not mistaken for sample features.",
+   "model": "Cu K 邊公認值 8979 eV，θ = 12.72°、tanθ = 0.2257；若量到 8976 eV（偏 −3 eV），由 ΔE/E = −cotθ·Δθ 得 |Δθ| = (3/8979)×0.2257 ≈ 7.5×10⁻⁵ rad ≈ 75 µrad ≈ 15.6 角秒，須把編碼器零點修正這個量。若同時 Fe K 邊（7112 eV）偏 −2.4 eV、Zn K 邊（9659 eV）偏 −3.2 eV，三者換算出的 Δθ 一致，表示是零點誤差而非 d 值或機械非線性。~The accepted Cu K edge is 8979 eV, with θ = 12.72° and tanθ = 0.2257; a measured 8976 eV (−3 eV) gives, from ΔE/E = −cotθ·Δθ, |Δθ| = (3/8979)×0.2257 ≈ 7.5×10⁻⁵ rad ≈ 75 µrad ≈ 15.6 arcsec, which must be applied to the encoder zero. If the Fe K edge (7112 eV) reads −2.4 eV and the Zn K edge (9659 eV) reads −3.2 eV at the same time, the three convert to the same Δθ, indicating a zero offset rather than a d-spacing or mechanical nonlinearity error.",
+   "verify": "每次更換晶體或維修後掃描至少三個吸收邊，擬合編碼器零點與可能的尺度因子；把擬合殘差列在校正紀錄中並要求小於 0.2 eV；再以搖擺曲線掃描量出寬度並與單元 2 的計算值比較，作為晶體狀態的健康指標。~After every crystal change or maintenance scan at least three absorption edges and fit the encoder zero plus any scale factor; list the fit residuals in the calibration record and require them below 0.2 eV; then scan the rocking curve, measure its width and compare with the unit-2 calculation as a crystal-health indicator.",
+   "failure": "峰值鎖定回授把第二晶體鎖在搖擺曲線斜坡的錯誤側，溫度漂移時回授反向推動，單色光強度在幾分鐘內掉到零，掃描資料出現無法解釋的斷崖。~Peak-locking feedback parked on the wrong flank of the rocking curve drives the second crystal the wrong way under thermal drift, the monochromatic intensity falls to zero within minutes and scans show an unexplained cliff.",
+   "misconception": "矽的 d 值是常數，所以能量軸不需要用樣品校正。~Silicon's d-spacing is a constant, so the energy axis needs no calibration against a sample."
+  },
+  {
+   "anchor": "角度穩定度頻譜與出射光束指向~Angular-stability spectrum and exit-beam pointing",
+   "title": "能量解析度與強度穩定的誤差預算~Error budget for energy resolution and intensity stability",
+   "mechanism": "單色器的誤差預算分成兩張表：能量解析度表把 Darwin 寬度、入射發散、熱凸起斜率、晶體應變與角度抖動在角度空間以均方根相加後除以 tanθ；穩定度表則追蹤第二晶體相對第一晶體的角度漂移與振動對強度與出射指向的影響。因為出射方向是入射方向加上兩倍的晶體角度誤差，微弧度級的俯仰變化在數十公尺外就是數十微米的光束位移，對聚焦到微米等級的實驗是不可接受的；而在搖擺曲線斜坡上工作時，同樣的角度抖動直接變成強度雜訊。~The monochromator error budget comes in two tables: the resolution table adds the Darwin width, incident divergence, thermal-bump slope, crystal strain and angular jitter in quadrature in angle space and divides by tanθ; the stability table tracks how angular drift and vibration of the second crystal relative to the first affect intensity and exit pointing. Because the exit direction is the incident direction plus twice the crystal angle error, microradian pitch changes become tens of micrometres of beam motion tens of metres downstream, unacceptable for experiments focused to micrometre spots; and when working on the rocking-curve flank the same angular jitter turns directly into intensity noise.",
+   "model": "角度預算（10 keV）：Darwin 26.8 µrad、發散 23 µrad、熱斜率 7.7 µrad、應變 5 µrad、抖動 2 µrad，均方根合成 √(26.8² + 23² + 7.7² + 5² + 2²) ≈ 36.5 µrad，ΔE/E ≈ 36.5×10⁻⁶/0.2017 ≈ 1.81×10⁻⁴，ΔE ≈ 1.8 eV。指向：第二晶體俯仰 1 µrad 的 rms 振動使出射光束角度變化 2 µrad，在 20 m 外位移 40 µm；若鎖在搖擺曲線半高處、10% 到 90% 的斜坡寬約 10 µrad，1 µrad 抖動約造成 8% 的強度調變。~Angular budget at 10 keV: Darwin 26.8 µrad, divergence 23 µrad, thermal slope 7.7 µrad, strain 5 µrad, jitter 2 µrad, combining in quadrature to √(26.8² + 23² + 7.7² + 5² + 2²) ≈ 36.5 µrad, so ΔE/E ≈ 36.5×10⁻⁶/0.2017 ≈ 1.81×10⁻⁴ and ΔE ≈ 1.8 eV. Pointing: 1 µrad rms pitch vibration of the second crystal changes the exit angle by 2 µrad, a 40 µm displacement 20 m downstream; locked at half-height on a flank whose 10% to 90% width is about 10 µrad, 1 µrad of jitter produces roughly 8% intensity modulation.",
+   "verify": "在下游 20 m 處用高頻寬光束位置偵測器與離子腔同時記錄，計算位置與強度的功率譜密度，找出與液氮泵、真空泵或樓板振動一致的頻率峰；把積分後的 rms 角度抖動填回預算表，與分配值比較。~Record simultaneously a high-bandwidth beam-position detector 20 m downstream and the ion chamber, compute power spectral densities of position and intensity, and identify peaks coinciding with the nitrogen pump, vacuum pumps or floor vibration; integrate to an rms angular jitter and enter it in the budget against the allocation.",
+   "failure": "為了「提高穩定度」把回授增益調到最大，迴路在 30 Hz 自激，第二晶體以 5 µrad 振盪，強度雜訊與光束跳動反而比不加回授時更差。~Turning the feedback gain to maximum 'for stability' makes the loop oscillate at 30 Hz, the second crystal swings by 5 µrad and intensity noise and beam jitter become worse than without feedback.",
+   "misconception": "只要能量解析度達標，單色器就算穩定。~If the energy resolution meets specification, the monochromator is stable."
+  },
+  {
+   "anchor": "諧波抑制鏡與失諧第二晶體~Harmonic-rejection mirror and detuned second crystal",
+   "title": "高次諧波抑制與光束線整合~Harmonic rejection and beamline integration",
+   "mechanism": "Si(111) 在選定 10 keV 時也同時以 (333) 反射讓 30 keV 通過（(222) 在鑽石結構中為禁制反射），高次諧波會污染吸收光譜與繞射資料。兩種抑制方法互補：一是把第二晶體稍微失諧，因為高次反射的 Darwin 寬度窄得多，失諧幾微弧度就能大幅抑制諧波而只損失部分基頻；二是在單色器後放一對掠角反射鏡，利用全外反射的臨界角與能量成反比的性質，把高於截止能量的光子拒於門外。整合時還要考慮上游白光狹縫定義功率與發散、鈹窗、下游聚焦鏡與實驗站的光束位置偵測器。~With Si(111) set to 10 keV the (333) reflection also passes 30 keV ((222) is forbidden in the diamond structure), and higher harmonics contaminate absorption spectra and diffraction data. Two complementary suppression methods exist: detuning the second crystal slightly, since the harmonic Darwin width is far narrower, so a few microradians of detuning strongly suppresses the harmonic while costing only part of the fundamental; and a pair of grazing-incidence mirrors after the monochromator, exploiting the fact that the total-external-reflection critical angle scales inversely with energy, so photons above the cutoff energy are rejected. Integration also covers the upstream white-beam slit that defines power and divergence, beryllium windows, downstream focusing mirrors and the beam-position detectors in the experimental station.",
+   "model": "銠鍍膜鏡在 10 keV 的臨界角由 θ_c = √(2δ) 算得：δ ≈ 2.25×10⁻⁵，θ_c ≈ 6.7 mrad；鏡子固定在 3 mrad 掠角時截止能量 E_c ≈ 10 keV×6.7/3 ≈ 22 keV，10 keV 基頻反射率約 0.9，而 30 keV 的三次諧波遠高於截止而被抑制到 10⁻³ 以下。失諧法：Si(333) 的 ΔE/E ≈ 1×10⁻⁵，在 θ = 11.4° 的角寬只有約 2 µrad，第二晶體失諧 10 µrad 時基頻約保留 70%，諧波降到約 1%。~For a rhodium-coated mirror at 10 keV the critical angle follows θ_c = √(2δ): δ ≈ 2.25×10⁻⁵ gives θ_c ≈ 6.7 mrad; with the mirror fixed at a 3 mrad glancing angle the cutoff is E_c ≈ 10 keV×6.7/3 ≈ 22 keV, the 10 keV fundamental reflects at about 0.9, and the 30 keV third harmonic lies far above the cutoff and is suppressed below 10⁻³. Detuning: Si(333) has ΔE/E ≈ 1×10⁻⁵, an angular width of only about 2 µrad at θ = 11.4°, so detuning the second crystal by 10 µrad keeps about 70% of the fundamental while the harmonic drops to about 1%.",
+   "verify": "用薄箔的透射比在基頻與三倍頻能量下差異很大的特性，或用能量解析偵測器直接量諧波比例，分別在失諧 0、5、10 µrad 與鏡子開關下記錄；確認基頻損失與諧波抑制符合預期，並把最佳失諧量寫入自動化程序。~Use a thin foil whose transmission differs strongly between the fundamental and the third harmonic, or an energy-resolving detector, to measure the harmonic fraction at detuning 0, 5 and 10 µrad and with the mirror in and out; confirm that fundamental loss and harmonic suppression behave as expected and store the optimum detuning in the automation sequence.",
+   "failure": "在 4 keV 工作時為了通量把諧波鏡移出光路，Si(333) 讓 12 keV 的三次諧波進入樣品，XAFS 的邊躍升被壓低、EXAFS 振幅錯誤，資料分析得到不存在的配位數。~Moving the harmonic mirror out at 4 keV for flux lets Si(333) pass a 12 keV third harmonic into the sample; the XAFS edge jump is suppressed, EXAFS amplitudes are wrong and the analysis yields coordination numbers that do not exist.",
+   "misconception": "單色器輸出只有一個能量，不會有其他能量混入。~A monochromator outputs a single energy with nothing else mixed in."
+  },
+  {
+   "anchor": "試運轉紀錄與連鎖門檻~Commissioning record and interlock thresholds",
+   "title": "長期漂移驗證與工程交接~Long-term drift validation and engineering handoff",
+   "mechanism": "交接時要證明單色器在數天尺度上仍符合規格：能量漂移（以重複掃描吸收邊追蹤）、強度穩定（與儲存環電流正規化後的 I₀ 漂移）、出射位置漂移與液氮系統的溫度紀錄。能量漂移主要來自晶體溫度改變面間距與機構的熱膨脹；液氮冷卻的好處之一是矽在 77 K 的膨脹係數很小，但布拉格軸的鋼製機構仍以約 12×10⁻⁶/K 膨脹，必須靠環境溫控。文件包含能量校正表、搖擺曲線基準、毛刺能量表、最佳失諧量、連鎖門檻（晶體溫度、液氮流量、真空）與維護程序。~Handoff must show that the monochromator still meets specification over days: energy drift (tracked by repeated edge scans), intensity stability (I₀ drift after normalising to ring current), exit-position drift and the temperature log of the nitrogen system. Energy drift comes mainly from crystal temperature changing the d-spacing and from thermal expansion of the mechanics; one benefit of nitrogen cooling is silicon's tiny expansion coefficient at 77 K, but the steel Bragg-axis mechanics still expand at about 12×10⁻⁶/K and rely on environmental temperature control. The documentation holds the energy-calibration table, rocking-curve baseline, glitch-energy table, optimum detuning, interlock thresholds (crystal temperature, nitrogen flow, vacuum) and maintenance procedures.",
+   "model": "晶體溫度漂移：ΔE/E = −Δd/d = −α·ΔT。77 K 下 α ≈ −0.5×10⁻⁶/K，ΔT = +2 K 給 ΔE/E = +1×10⁻⁶，10 keV 時 +10 meV；室溫晶體（α = 2.6×10⁻⁶/K）同樣 2 K 則漂移 −52 meV。機構：鋼製 100 mm 臂長溫變 0.1 K 伸長 0.12 µm，相當於約 1.2 µrad 的角度，ΔE = 10 keV×4.96×1.2×10⁻⁶ ≈ 60 meV，是晶體項的六倍，所以機櫃與棚屋溫控到 ±0.1 K 是驗收條件。~Crystal temperature drift: ΔE/E = −Δd/d = −α·ΔT. At 77 K with α ≈ −0.5×10⁻⁶/K, ΔT = +2 K gives ΔE/E = +1×10⁻⁶, i.e. +10 meV at 10 keV; a room-temperature crystal (α = 2.6×10⁻⁶/K) drifts −52 meV for the same 2 K. Mechanics: a 100 mm steel arm changing by 0.1 K lengthens by 0.12 µm, roughly 1.2 µrad of angle, so ΔE = 10 keV×4.96×1.2×10⁻⁶ ≈ 60 meV, six times the crystal term, which is why hutch and rack temperature control to ±0.1 K is an acceptance condition.",
+   "verify": "連續 72 小時每 2 小時自動掃描 Cu K 邊，記錄邊位置、I₀/電流與出射位置，同時記錄棚屋溫度；要求能量漂移峰對峰 < 100 meV、強度漂移 < 2%、位置漂移 < 20 µm，並檢查漂移與溫度的相關係數以判定主因；試運轉報告附上所有原始掃描檔與分析腳本。~For 72 hours automatically scan the Cu K edge every 2 hours, logging edge position, I₀ per unit ring current and exit position together with hutch temperature; require peak-to-peak energy drift < 100 meV, intensity drift < 2% and position drift < 20 µm, and use the correlation with temperature to identify the dominant cause; attach all raw scans and analysis scripts to the commissioning report.",
+   "failure": "空調在夜間切換模式使棚屋溫度每晚變化 1 K，能量軸隨之擺動 0.5 eV；交接時只在白天做驗收，使用者的隔夜長時間掃描出現無法重現的邊位移，數月後才追溯到溫控。~Night-time air-conditioning mode changes swing the hutch temperature by 1 K every evening and the energy axis by 0.5 eV; acceptance was done only by day, so users' overnight scans show irreproducible edge shifts traced to temperature control only months later.",
+   "misconception": "液氮冷卻後晶體溫度不變，能量軸就不會再漂移。~With nitrogen cooling the crystal temperature is fixed, so the energy axis cannot drift."
+  }
+ ],
+ "example": "Si(111) 雙晶單色器 10 keV 練習：λ = 12.398/10 = 1.2398 Å，sinθ = 1.2398/6.2712 = 0.1977，θ = 11.40°，tanθ = 0.2017。Darwin 寬度 ω_D ≈ 1.33×10⁻⁴×0.2017 ≈ 26.8 µrad；入射垂直發散 23 µrad FWHM、液氮冷卻後熱斜率 7.7 µrad，合成角寬 √(26.8² + 23² + 7.7²) ≈ 36.2 µrad，ΔE/E ≈ 36.2×10⁻⁶/0.2017 ≈ 1.79×10⁻⁴，ΔE ≈ 1.8 eV。若晶體改為室溫水冷、熱斜率 350 µrad，角寬變成約 352 µrad，ΔE ≈ 17 eV 且反射率崩潰，XANES 無法進行。固定出口 H = 20 mm 時 D = 20/(2×cos11.40°) = 10.20 mm；編碼器 0.1 µrad 對應 δE ≈ 5 meV。Cu K 邊若量到 8976 eV 而非 8979 eV，零點修正 Δθ ≈ (3/8979)×tan12.72° ≈ 75 µrad。數值為教學假設，不代表任何實機規格。~Si(111) double-crystal exercise at 10 keV: λ = 12.398/10 = 1.2398 Å, sinθ = 1.2398/6.2712 = 0.1977, θ = 11.40°, tanθ = 0.2017. Darwin width ω_D ≈ 1.33×10⁻⁴×0.2017 ≈ 26.8 µrad; with 23 µrad FWHM incident vertical divergence and a 7.7 µrad thermal slope after nitrogen cooling, the combined angular width is √(26.8² + 23² + 7.7²) ≈ 36.2 µrad, ΔE/E ≈ 36.2×10⁻⁶/0.2017 ≈ 1.79×10⁻⁴ and ΔE ≈ 1.8 eV. With a room-temperature water-cooled crystal and a 350 µrad thermal slope the width becomes about 352 µrad, ΔE ≈ 17 eV and the reflectivity collapses, making XANES impossible. For a fixed exit H = 20 mm, D = 20/(2×cos11.40°) = 10.20 mm; a 0.1 µrad encoder step corresponds to δE ≈ 5 meV. If the Cu K edge reads 8976 eV instead of 8979 eV, the zero correction is Δθ ≈ (3/8979)×tan12.72° ≈ 75 µrad. Values are teaching assumptions, not any beamline's specification.",
+ "history": "雙晶 X 光光譜儀在 1930 年代由 Compton 與 Allison 等人建立，DuMond 以圖解法描述兩晶體的角度與波長匹配。1970 到 1980 年代同步輻射光源普及後，雙晶單色器成為 XAFS 與繞射光束線的標準元件；第三代光源的插件磁鐵熱負載促使 1980 年代後期提出並在 1990 年代於 ESRF、APS 等實現液氮冷卻矽晶體。今日 Diamond、ESRF-EBS 與台灣光子源等設施的單色器已達次微弧度級穩定度，並以自動化能量校正與峰值鎖定支援使用者。~Double-crystal X-ray spectrometers were established in the 1930s by Compton, Allison and others, with DuMond's diagram describing the angle–wavelength matching of two crystals. After synchrotron sources spread in the 1970s and 1980s the double-crystal monochromator became standard on XAFS and diffraction beamlines; insertion-device heat loads at third-generation sources led to liquid-nitrogen-cooled silicon, proposed in the late 1980s and realised at ESRF, APS and others in the 1990s. Today monochromators at Diamond, ESRF-EBS and the Taiwan Photon Source reach sub-microradian stability and support users with automated energy calibration and peak locking.",
+ "place": {
+  "name": "Diamond 光源哈威爾園區參照點~Diamond Light Source Harwell reference",
+  "country": "英國~United Kingdom",
+  "lat": 51.575,
+  "lng": -1.311,
+  "query": "Diamond Light Source Harwell Science and Innovation Campus"
+ },
+ "sources": [
+  {
+   "key": "xdb-multilayers-crystals",
+   "title": "X 光資料手冊 4.1 節：多層膜與晶體（Underwood）",
+   "titleEn": "X-Ray Data Booklet Section 4.1: Multilayers and Crystals (Underwood)",
+   "publisher": "Lawrence Berkeley National Laboratory, Center for X-Ray Optics",
+   "url": "https://xdb.lbl.gov/Section4/Sec_4-1.html",
+   "sourceType": "primary",
+   "scope": "給出布拉格方程式與常用晶體的 2d 值（Si(111) 2d = 6.2712 Å）；課程的 Darwin 寬度與解析度數值為依動力學繞射原理建立的教學假設。",
+   "scopeEn": "Gives the Bragg equation and 2d values of common crystals (Si(111) 2d = 6.2712 Å); course Darwin-width and resolution numbers are teaching assumptions built on dynamical-diffraction principles."
+  },
+  {
+   "key": "fmb-oxford-home",
+   "title": "FMB Oxford：光束線與單色器／低溫冷卻器產品入口",
+   "titleEn": "FMB Oxford: Beamlines and monochromators/cryocoolers portal",
+   "publisher": "FMB Oxford Ltd",
+   "url": "https://fmb-oxford.com/",
+   "sourceType": "primary",
+   "scope": "同步輻射光束線元件供應商的公開入口，含單色器與液氮冷卻器產品類別；不是設計手冊。",
+   "scopeEn": "Public portal of a synchrotron beamline-component supplier with monochromator and cryocooler product categories; not a design manual."
+  },
+  {
+   "key": "diamond-how-it-works",
+   "title": "Diamond 光源：同步輻射如何運作",
+   "titleEn": "Diamond Light Source: How Diamond Works",
+   "publisher": "Diamond Light Source Ltd",
+   "url": "https://www.diamond.ac.uk/Home/About/How-Diamond-Works.html",
+   "sourceType": "primary",
+   "scope": "說明同步輻射產生與 35 條光束線實驗站的公開概覽，作為單色器所在光束線的背景。",
+   "scopeEn": "Public overview of synchrotron-light generation and the 35 beamline laboratories, background for the beamline that hosts the monochromator."
+  }
+ ],
+ "vendors": [
+  {
+   "name": "FMB Oxford",
+   "nameEn": "FMB Oxford",
+   "business": "英國同步輻射光束線與元件製造商，產品含雙晶單色器與液氮冷卻器。",
+   "businessEn": "UK manufacturer of synchrotron beamlines and components, including double-crystal monochromators and liquid-nitrogen cryocoolers.",
+   "url": "https://fmb-oxford.com/",
+   "investorUrl": "",
+   "security": null,
+   "role": "雙晶單色器與液氮冷卻系統的公開產品資訊",
+   "roleEn": "Public product information on double-crystal monochromators and nitrogen cooling systems"
+  },
+  {
+   "name": "神津精機",
+   "nameEn": "Kohzu Precision",
+   "business": "日本精密定位平台製造商，供應同步輻射相關設備與測角儀機構。",
+   "businessEn": "Japanese maker of precision positioning stages supplying synchrotron-related equipment and goniometer mechanics.",
+   "url": "https://www.kohzu.co.jp/",
+   "investorUrl": "",
+   "security": null,
+   "role": "單色器布拉格軸與晶體微調機構的公開產品資訊",
+   "roleEn": "Public product information on Bragg-axis and crystal fine-adjustment mechanics"
+  },
+  {
+   "name": "Diamond 光源",
+   "nameEn": "Diamond Light Source",
+   "business": "英國國家同步輻射設施，營運 3 GeV 儲存環與數十條光束線。",
+   "businessEn": "UK national synchrotron facility operating a 3 GeV storage ring and dozens of beamlines.",
+   "url": "https://www.diamond.ac.uk/",
+   "investorUrl": "",
+   "security": null,
+   "role": "光束線單色器運轉與使用者設施的公開資訊",
+   "roleEn": "Public information on beamline monochromator operation and user facilities"
+  },
+  {
+   "name": "歐洲同步輻射設施 ESRF",
+   "nameEn": "ESRF",
+   "business": "位於格勒諾布爾的歐洲同步輻射設施，營運 6 GeV 極高亮度儲存環與 X 光光學研發。",
+   "businessEn": "European synchrotron in Grenoble operating a 6 GeV extremely brilliant storage ring with X-ray optics development.",
+   "url": "https://www.esrf.fr/",
+   "investorUrl": "",
+   "security": null,
+   "role": "高熱負載 X 光光學與液氮冷卻單色器的公開研發資訊",
+   "roleEn": "Public development information on high-heat-load X-ray optics and nitrogen-cooled monochromators"
+  }
+ ],
+ "related": [
+  "a462",
+  "a456"
+ ],
+ "architectureNodes": [
+  [
+   "插件磁鐵白光與狹縫",
+   "Insertion-device white beam and slits"
+  ],
+  [
+   "液氮冷卻第一晶體",
+   "Nitrogen-cooled first crystal"
+  ],
+  [
+   "第二晶體與固定出口平移",
+   "Second crystal and fixed-exit translation"
+  ],
+  [
+   "布拉格軸與編碼器",
+   "Bragg axis and encoder"
+  ],
+  [
+   "諧波抑制鏡",
+   "Harmonic-rejection mirror"
+  ],
+  [
+   "I₀ 離子腔與能量校正",
+   "I₀ ion chamber and energy calibration"
+  ]
+ ],
+ "architectureEdges": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   3,
+   1
+  ],
+  [
+   3,
+   2
+  ],
+  [
+   2,
+   4
+  ],
+  [
+   4,
+   5
+  ],
+  [
+   5,
+   3
+  ]
+ ]
+}

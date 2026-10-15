@@ -1,0 +1,172 @@
+{
+  "id": "a411",
+  "title": "磁流變光學拋光~Magnetorheological optical finishing",
+  "discipline": "optics-design-fabrication",
+  "family": "fabrication",
+  "focus": "以磁場硬化的磁流變液帶、Preston 去除關係與去除點校正，確定性修正非球面面形~Deterministic aspheric figure correction with a field-stiffened MR ribbon, Preston removal relation and spot calibration",
+  "summary": "從羰基鐵粒子在磁場中成鏈、形成具降伏應力的流體帶談起，用 Preston 關係與 D 形去除點建立磁流變拋光的去除模型，再把拋光輪、流體黏度閉迴路、工件材料與次表面損傷、干涉量測與去除點校正、誤差預算，直到清洗與驗收交接，整合成一條可重複的非球面修形流程。~Start with carbonyl-iron particles chaining in a magnetic field into a ribbon with a yield stress, model removal with the Preston relation and the D-shaped spot, then integrate the wheel, fluid-viscosity loop, workpiece materials and subsurface damage, interferometry and spot calibration, error budget, cleaning and acceptance into a repeatable aspheric figuring process.",
+  "units": [
+    {
+      "anchor": "磁流變液帶與電磁鐵~MR ribbon and electromagnet",
+      "title": "磁流變效應與降伏應力流體帶~Magnetorheological effect and the yield-stress ribbon",
+      "mechanism": "磁流變液是水基懸浮液，含有直徑約 4 µm 的羰基鐵粒子、拋光用的氧化鈰或奈米鑽石磨料以及穩定劑。無磁場時它是黏度約 0.5 Pa·s 的流體，可被泵送到旋轉輪面；進入電磁鐵上方約 0.2 到 0.4 T 的區域後，鐵粒子沿磁力線成鏈，流體在毫秒內變成具有降伏應力的賓漢塑性體，形成一條硬化的「流體帶」。工件以約 0.5 mm 的深度浸入帶中，磨料被磁場梯度推向帶的表面，材料去除由這個受控的剪切流決定，而不是由硬質拋光工具的壓力決定。~An MR fluid is a water-based suspension of roughly 4 µm carbonyl-iron particles, cerium-oxide or nanodiamond polishing abrasive and stabilisers. Without a field it is a liquid of about 0.5 Pa·s that can be pumped onto a rotating wheel; above the electromagnet, in a field of about 0.2 to 0.4 T, the iron particles chain along field lines and within milliseconds the fluid becomes a Bingham plastic with a yield stress, forming a stiffened ribbon. The workpiece is immersed about 0.5 mm into the ribbon, the field gradient pushes abrasive toward the ribbon surface, and removal is governed by this controlled shear flow rather than by the pressure of a hard tool.",
+      "model": "賓漢模型 τ = τ_y(B) + η·γ̇。取 0.3 T 下 τ_y ≈ 20 kPa（教學假設）、η = 0.5 Pa·s；輪面速度 2 m/s、浸入深度 0.5 mm 的剪切率 γ̇ ≈ 2/(0.5×10⁻³) = 4000 s⁻¹，黏性項 η·γ̇ = 2 kPa，只有降伏項的十分之一，所以去除主要由磁場設定的降伏應力決定，而磁場電流 5% 的變化會直接反映為去除率變化。~Bingham model τ = τ_y(B) + η·γ̇. Take τ_y ≈ 20 kPa at 0.3 T (teaching assumption) and η = 0.5 Pa·s; at a wheel speed of 2 m/s and 0.5 mm immersion the shear rate γ̇ ≈ 2/(0.5×10⁻³) = 4000 s⁻¹, so the viscous term η·γ̇ = 2 kPa is only a tenth of the yield term. Removal is therefore set mainly by the field-controlled yield stress, and a 5% change in magnet current shows up directly as a removal-rate change.",
+      "verify": "用旋轉流變儀在不同磁場下量流體的降伏應力與黏度曲線，確認 τ_y 隨磁場的上升與飽和；在機台上以高斯計量輪面上方磁通密度，並用特氟龍刮片量流體帶高度，確認帶形與磁場分佈一致。~Measure the fluid's yield stress and viscosity curves at several fields with a rotational rheometer to confirm how τ_y rises and saturates with field; on the machine, measure flux density above the wheel with a gaussmeter and ribbon height with a PTFE gauge to confirm the ribbon shape matches the field distribution.",
+      "failure": "鐵粒子氧化或流體含水量變化會讓降伏應力與黏度漂移，去除點深度在一天內變化超過 10%，用舊校正值執行的駐留圖留下與誤差圖同形的殘差。~Oxidised iron particles or a change in water content shift yield stress and viscosity, the spot depth drifts by more than 10% within a day, and a dwell map run with the old calibration leaves a residual shaped like the error map.",
+      "misconception": "磁流變拋光就是用磁鐵把磨料壓在工件上，去除量取決於壓力大小。~MRF simply presses abrasive onto the part with a magnet, so removal depends on how hard it presses."
+    },
+    {
+      "anchor": "D 形去除點與 Preston 關係~D-shaped removal spot and the Preston relation",
+      "title": "Preston 去除關係與去除點函數~Preston removal relation and the spot function",
+      "mechanism": "材料去除率遵循 Preston 關係：單位時間去除深度正比於介面應力與相對速度的乘積，比例常數 k_p 由材料、磨料與化學環境決定。工件靜止在流體帶中時，去除集中在一個 D 形的去除點，長軸沿輪面運動方向約 10 mm、寬約 4 mm，深度分佈由帶內剪切應力與磨料分佈決定。去除點是整個修形的單位脈衝：工件沿螺旋或光柵軌跡移動，實際去除等於去除點函數與駐留時間的卷積，去除點一旦量準，修形便是確定性的。~Removal follows the Preston relation: depth removed per unit time is proportional to the product of interfacial stress and relative velocity, with a constant k_p set by material, abrasive and chemistry. With the part held still in the ribbon the removal concentrates in a D-shaped spot about 10 mm long along the wheel motion and 4 mm wide, its depth profile set by the shear stress and abrasive distribution in the ribbon. The spot is the unit impulse of the whole process: the part moves along a spiral or raster path, actual removal equals the convolution of the spot function with dwell time, and once the spot is measured the figuring is deterministic.",
+      "model": "dz/dt = k_p·P·v。取 BK7 配氧化鈰的 k_p = 2×10⁻¹³ Pa⁻¹、介面應力 P = 100 kPa、v = 2 m/s（教學假設），峰值去除率 = 2×10⁻¹³ × 10⁵ × 2 = 4×10⁻⁸ m/s = 40 nm/s ≈ 2.4 µm/min；靜止 10 s 得到 0.4 µm 深的去除點。D 形去除點體積去除率 ≈ 0.4 × 10 mm × 4 mm × 2.4 µm/min ≈ 0.04 mm³/min。~dz/dt = k_p·P·v. With k_p = 2×10⁻¹³ Pa⁻¹ for BK7 with cerium oxide, interfacial stress P = 100 kPa and v = 2 m/s (teaching assumptions), the peak removal rate = 2×10⁻¹³ × 10⁵ × 2 = 4×10⁻⁸ m/s = 40 nm/s ≈ 2.4 µm/min, so a 10 s stationary dwell makes a 0.4 µm deep spot. The D-shaped spot's volumetric rate ≈ 0.4 × 10 mm × 4 mm × 2.4 µm/min ≈ 0.04 mm³/min.",
+      "verify": "在同材料、同曲率的試片上打幾個固定時間的去除點，用干涉儀量深度與形狀，深度除以時間得到峰值去除率，積分得到體積去除率；改變輪速 ±20% 重做，確認去除率近似線性隨速度變化，符合 Preston 關係。~Make several fixed-time spots on a witness piece of the same material and curvature, measure depth and shape with an interferometer, divide depth by time for the peak rate and integrate for the volumetric rate; repeat at wheel speeds ±20% to confirm the rate scales roughly linearly with speed as the Preston relation predicts.",
+      "failure": "在平面試片上校正去除點，卻拿來修曲率半徑 100 mm 的凸面，浸入幾何改變使去除點變形，實際去除比預測偏 10% 以上，面形收斂停在幾十奈米。~Calibrating the spot on a flat witness and using it on a convex surface of 100 mm radius changes the immersion geometry, distorts the spot, and shifts removal by more than 10% from prediction, stalling figure convergence at tens of nanometres.",
+      "misconception": "去除點只與流體有關，與工件曲率和浸入深度無關。~The spot depends only on the fluid, not on part curvature or immersion depth."
+    },
+    {
+      "anchor": "拋光輪、噴嘴與流體調節迴路~Wheel, nozzle and fluid-conditioning loop",
+      "title": "機台結構、流體循環與黏度閉迴路~Machine structure, fluid circulation and the viscosity loop",
+      "mechanism": "機台把流體從調節槽泵到噴嘴，鋪在直徑約 150 mm 的旋轉輪面上，流過電磁鐵極靴上方的工作區後被刮刀回收，回到調節槽重新混合與控溫。因為水會蒸發、鐵粒子會氧化，調節迴路用流量與壓降推算黏度，並自動補水把黏度維持在設定值，這是去除率穩定的關鍵。工件由多軸數控平台握持，三軸機可修平面與淺曲面，修非球面與自由曲面需五軸讓表面法線始終對準流體帶。~The machine pumps fluid from a conditioning tank to a nozzle, lays it on a rotating wheel of about 150 mm diameter, carries it through the working zone above the electromagnet pole pieces, scrapes it off and returns it to the tank for remixing and temperature control. Because water evaporates and iron oxidises, the loop infers viscosity from flow and pressure drop and adds water automatically to hold the setpoint, which is the key to a stable removal rate. A multi-axis CNC stage holds the part; three axes suffice for flats and shallow curves, while aspheres and freeforms need five axes to keep the surface normal aligned to the ribbon.",
+      "model": "輪面速度 v = πDN/60：D = 150 mm、N = 250 rpm 時 v = π×0.15×250/60 ≈ 1.96 m/s。流體帶高度 1.5 mm、浸入 0.5 mm；若流體含水量下降 1%，黏度上升約 5%（教學假設），依 Preston 關係去除率同向變化數個百分點，所以黏度迴路的控制精度要求為 ±1%。總量 2 L、流量 1 L/min 的迴路在一小時內讓每一份流體經過工作區約 30 次。~Wheel speed v = πDN/60: for D = 150 mm and N = 250 rpm, v = π×0.15×250/60 ≈ 1.96 m/s. Ribbon height 1.5 mm with 0.5 mm immersion; if the water content drops 1% the viscosity rises about 5% (teaching assumption) and the Preston removal rate shifts by several percent, so the viscosity loop must hold ±1%. With a 2 L charge circulating at 1 L/min, each portion of fluid passes the working zone about 30 times per hour.",
+      "verify": "以流變儀每日取樣比對機台推算的黏度，確認兩者差異在 ±2% 內；用轉速計與高斯計檢查輪速與磁場，並用去除點深度的日誌追蹤去除率與黏度、溫度的相關性，建立機台的穩定度紀錄。~Compare a daily rheometer sample with the machine's inferred viscosity to confirm agreement within ±2%; check wheel speed and field with a tachometer and gaussmeter, and log spot depth against viscosity and temperature to build a stability record for the machine.",
+      "failure": "黏度感測器被乾涸的流體結塊堵塞後，補水邏輯失準，流體越來越濃，去除點深度在一次長時間修形中慢慢下降，面形出現沿軌跡遞減的系統性殘差。~A viscosity sensor clogged by dried fluid lumps misleads the water-addition logic, the fluid thickens, the spot depth falls slowly during a long run, and the figure carries a systematic residual that decreases along the tool path.",
+      "misconception": "磁流變液像拋光粉一樣，配好以後就可以長期使用不必監控。~MR fluid is like polishing slurry: once mixed it can be used for a long time without monitoring."
+    },
+    {
+      "anchor": "工件材料與次表面損傷層~Workpiece material and subsurface-damage layer",
+      "title": "材料反應、磨料選擇與次表面損傷~Material response, abrasive choice and subsurface damage",
+      "mechanism": "不同材料的 Preston 常數差異很大：矽酸鹽玻璃配氧化鈰去除快，熔融石英較慢，藍寶石與碳化矽需要奈米鑽石磨料且去除率低一個數量級。磁流變拋光的法向載荷小、以剪切為主，因此不會產生新的次表面損傷，反而能去除前段研磨與拋光留下的微裂紋層，表面粗糙度可達 0.5 到 1 nm RMS。對軟質或水溶性晶體，流體的水基環境與化學作用必須另外評估，否則會出現腐蝕紋或霧化。~Preston constants differ widely between materials: silicate glass with cerium oxide removes quickly, fused silica more slowly, and sapphire or silicon carbide need nanodiamond abrasive with rates an order of magnitude lower. Because MRF applies a small normal load and works by shear, it creates no new subsurface damage and instead strips the microcrack layer left by earlier grinding and polishing, reaching 0.5 to 1 nm RMS roughness. For soft or water-soluble crystals the aqueous chemistry of the fluid must be assessed separately or etch texture and haze appear.",
+      "model": "取教學假設的峰值去除率：BK7 2.4 µm/min、熔融石英 1.2 µm/min、藍寶石（鑽石磨料）0.2 µm/min。若前段拋光留下 1 µm 的次表面損傷層，在直徑 100 mm 工件上均勻去除 1 µm 需體積 7.85 mm³，以 BK7 的體積去除率 0.04 mm³/min 需約 196 min，藍寶石則需約 12 倍時間，所以硬材料必須在研磨階段就把損傷層壓到更薄。~Take teaching-assumption peak rates of 2.4 µm/min for BK7, 1.2 µm/min for fused silica and 0.2 µm/min for sapphire with diamond. If the previous polish left a 1 µm subsurface-damage layer, removing 1 µm uniformly from a 100 mm part means 7.85 mm³, about 196 min at the BK7 volumetric rate of 0.04 mm³/min and roughly 12 times longer for sapphire, so hard materials must leave the grinding stage with a thinner damage layer.",
+      "verify": "以磁流變點蝕法逐步加深去除點，用顯微鏡觀察點底部微裂紋消失的深度，直接量出次表面損傷層厚度；修形後以白光干涉儀量粗糙度與 PSD，與修形前比較，確認高頻段下降而非上升。~Use the MRF spot-etch method, deepening a spot in steps and observing under a microscope the depth at which microcracks vanish, to measure the subsurface-damage thickness directly; after figuring, measure roughness and PSD with white-light interferometry and compare with the pre-run state to confirm the high-frequency band fell rather than rose.",
+      "failure": "把為玻璃配製的氧化鈰流體用在氟化鈣上，水基化學侵蝕晶面造成霧狀表面，粗糙度從 0.5 nm 升到 3 nm，散射超標而整批報廢。~Using a cerium-oxide fluid formulated for glass on calcium fluoride lets the aqueous chemistry attack the crystal face, leaving a hazy surface with roughness rising from 0.5 nm to 3 nm, failing scatter and scrapping the batch.",
+      "misconception": "只要是拋光，就一定會在表面下留下新的損傷層。~Any polishing process necessarily leaves a fresh damage layer beneath the surface."
+    },
+    {
+      "anchor": "干涉儀與去除點校正紀錄~Interferometer and spot-calibration record",
+      "title": "面形量測、CGH 零檢與去除點校正~Figure metrology, CGH null test and spot calibration",
+      "mechanism": "修形迴路的輸入是干涉儀的面形圖：球面用參考球面直接量，非球面需電腦全像（CGH）零檢鏡或子孔徑拼接，自由曲面則用拼接或輪廓儀。量測圖必須對位到機台座標，機台用工件邊緣與基準記號定位，位置誤差乘上局部斜率成為去除誤差。每次修形前先在工件本身或同材料試片上打一個去除點並量測，取得當天的峰值去除率與點形，去除率的日漂移通常為百分之幾，這就是校正不能省略的原因。~The loop's input is an interferometric map: spheres are measured against a reference sphere, aspheres need a computer-generated-hologram null or sub-aperture stitching, and freeforms use stitching or profilometry. The map must be registered to machine coordinates using the part edge and fiducials, since position error times local slope becomes removal error. Before each run a spot is made and measured on the part itself or a witness of the same material to obtain that day's peak rate and spot shape; day-to-day drift of a few percent is why calibration cannot be skipped.",
+      "model": "去除點 10 s 深 0.40 µm → 峰值去除率 40 nm/s；若當天量到 0.38 µm，去除率低 5%，不更新校正則 250 nm 的去除會少 12.5 nm。對位誤差 20 µm 乘上非球面邊緣局部斜率 0.5 µm/mm，造成 10 nm 誤差；干涉儀 16 幀平均重複性約 1 nm RMS，CGH 零檢的對準殘差另計 3 nm。~A 10 s spot 0.40 µm deep gives a peak rate of 40 nm/s; if today's spot reads 0.38 µm the rate is 5% low, and leaving the calibration stale under-removes 12.5 nm of a 250 nm correction. A 20 µm registration error times a local edge slope of 0.5 µm/mm on the asphere gives 10 nm; a 16-frame interferometer average repeats to about 1 nm RMS, with CGH alignment residual counted separately at 3 nm.",
+      "verify": "用兩次獨立裝夾的量測相減估重複性；在 CGH 零檢中旋轉工件 90° 再量一次，把隨工件轉動的誤差與不轉的系統誤差分離；比較去除點的量測形狀與駐留軟體內建的點函數，形狀差異需小於 5%。~Estimate repeatability by subtracting two measurements with independent mounting; in the CGH null test rotate the part by 90° and re-measure to separate errors that rotate with the part from fixed systematic ones; compare the measured spot shape with the spot function stored in the dwell software, requiring agreement within 5%.",
+      "failure": "CGH 零檢鏡與干涉儀未對準，產生假的彗差被當成真實面形修掉，修形後實際面形多了一個相反的彗差項，而用另一台儀器驗收時才發現。~A misaligned CGH null produces false coma that is figured out as if it were real, so the finished surface carries a coma of opposite sign, discovered only when acceptance is run on a different instrument.",
+      "misconception": "量測圖只要夠清晰就能直接送進駐留時間計算，對位和校正是可選步驟。~A sharp measurement map can go straight into dwell-time calculation; registration and calibration are optional."
+    },
+    {
+      "anchor": "修形誤差預算與中頻紋理~Figuring error budget and mid-frequency texture",
+      "title": "誤差預算、收斂率與軌跡紋理~Error budget, convergence ratio and tool-path texture",
+      "mechanism": "一次修形後的殘差由獨立項的均方根組成：去除率漂移乘以去除深度、量測重複性、對位誤差乘以斜率，以及去除點沿軌跡變化留下的中頻紋理。因為去除點寬度只有幾毫米，光柵或螺旋軌跡的步距若接近點寬會留下週期性波紋，步距小於點寬的一半時波紋被去除點本身平滑掉。磁流變拋光通常每次迭代可把低頻面形縮小 5 到 10 倍，但中頻紋理決定了收斂平台，必要時由後續小步距的「平滑」趟次或離子束處理。~The post-run residual is the root-sum-square of independent terms: rate drift times removal depth, measurement repeatability, registration error times slope, and the mid-frequency texture left by spot variation along the path. Because the spot is only a few millimetres wide, a raster or spiral pitch close to the spot width leaves periodic ripple, while a pitch below half the spot width is smoothed by the spot itself. MRF typically shrinks low-frequency figure by 5 to 10 times per iteration, but mid-frequency texture sets the convergence floor, handled if needed by a fine-pitch smoothing pass or ion-beam finishing.",
+      "model": "第一次迭代：去除率 3%×250 nm = 7.5 nm、量測 1 nm、對位 1 nm、中頻紋理 3 nm，殘差 ≈ √(7.5² + 1² + 1² + 3²) ≈ 8.2 nm RMS，從 60 nm 起算縮小 7.3 倍。軌跡波紋：點寬 4 mm 視為 σ ≈ 1.7 mm 的平滑核，步距 1 mm 的波紋傳遞 exp(−2π²σ²f²) = exp(−57) ≈ 0，步距 3 mm 時 exp(−6.3) ≈ 0.002 仍可忽略，但步距 4 mm 以上開始可見。~First iteration: rate 3%×250 nm = 7.5 nm, metrology 1 nm, registration 1 nm, mid-frequency texture 3 nm, residual ≈ √(7.5² + 1² + 1² + 3²) ≈ 8.2 nm RMS, a 7.3-fold reduction from 60 nm. Path ripple: treating the 4 mm spot as a smoothing kernel with σ ≈ 1.7 mm, a 1 mm pitch transmits exp(−2π²σ²f²) = exp(−57) ≈ 0, a 3 mm pitch exp(−6.3) ≈ 0.002, still negligible, but ripple becomes visible beyond a 4 mm pitch.",
+      "verify": "修形後把殘差圖做二維 PSD，檢查步距對應頻率是否出現尖峰；把預算表中各項的預測值與實測殘差分解比較，若實測明顯高於預算，先查去除率日誌再查對位，不要盲目加迭代。~Compute the two-dimensional PSD of the post-run residual and look for a peak at the pitch frequency; compare each budget term's prediction with the decomposed measured residual, and if the measurement is clearly above budget check the removal-rate log first, then registration, instead of blindly adding iterations.",
+      "failure": "為了縮短時間把步距放大到與點寬相同，面上留下 4 mm 週期的波紋，干涉圖看似合格但 PSD 在 0.25 mm⁻¹ 出現尖峰，成像系統出現可見的鬼影與對比下降。~Widening the pitch to the spot width to save time leaves 4 mm period ripple; the interferogram looks acceptable but the PSD shows a spike at 0.25 mm⁻¹, and the imaging system shows ghost structure and reduced contrast.",
+      "misconception": "只要 RMS 達標，面形圖裡的週期性紋理就不會影響成像。~If the RMS meets specification, periodic texture in the map cannot affect imaging."
+    },
+    {
+      "anchor": "製程鏈、邊緣處理與清洗~Process chain, edge handling and cleaning",
+      "title": "與研磨拋光鏈整合、邊緣與清洗~Integration with the grind-polish chain, edges and cleaning",
+      "mechanism": "磁流變拋光接在精磨或傳統拋光之後：前段提供可量測的面形與受控的粗糙度，磁流變負責去除損傷層與確定性修形，之後視規格再接離子束。因為去除靠剪切流，工件邊緣沒有壓力式工具的塌邊，但軌跡仍需讓去除點完整越過邊緣以維持均勻性。修形後工件表面殘留鐵粒子與乾涸流體，必須在數分鐘內用去離子水沖洗並以適當清潔程序處理，否則鐵鏽斑與水痕會在鍍膜前留下缺陷；鏡片的斜面與邊緣也需檢查是否有流體殘留。~MRF follows fine grinding or conventional polishing: the earlier stages supply a measurable figure and controlled roughness, MRF removes the damage layer and performs deterministic figuring, and ion-beam finishing may follow depending on specification. Because removal is by shear flow there is no pressure-tool edge roll, but the path must still carry the spot fully across the edge for uniformity. After the run the surface holds iron particles and drying fluid; it must be rinsed with deionised water within minutes and cleaned by a suitable procedure, or rust spots and water marks become coating defects, and bevels and edges must be checked for trapped fluid.",
+      "model": "批量規劃：直徑 100 mm 的 BK7 非球面，每片平均去除 0.25 µm，體積 0.25×10⁻³ × 7854 ≈ 1.96 mm³，以 0.04 mm³/min 需約 49 min；邊緣越程讓掃描直徑從 100 增到 110 mm，面積增加 21%，約 59 min。20 片一批加上每日 15 min 去除點校正與每片 10 min 裝卸量測，總時間 ≈ 20×69 + 15 ≈ 1395 min ≈ 23 h。~Batch planning: a 100 mm BK7 asphere needs a mean removal of 0.25 µm per part, a volume of 0.25×10⁻³ × 7854 ≈ 1.96 mm³, about 49 min at 0.04 mm³/min; extending the path for the edge grows the scanned diameter from 100 to 110 mm, 21% more area, about 59 min. For a batch of 20 with 15 min of daily spot calibration and 10 min of loading and measurement per part, total ≈ 20×69 + 15 ≈ 1395 min ≈ 23 h.",
+      "verify": "修形後立即以暗場顯微鏡檢查表面與斜面是否有鐵粒子殘留，清洗後再檢查一次；比較邊緣 5 mm 環帶與中央的殘差 RMS，確認越程策略有效；追蹤整批的修形時間與去除率日誌，驗證批量計畫的假設。~Inspect the surface and bevels under dark-field microscopy immediately after the run and again after cleaning for iron residue; compare residual RMS in the outer 5 mm annulus with the centre to confirm the overrun strategy; track run times and the removal-rate log across the batch to validate the planning assumptions.",
+      "failure": "工件修完後放置過夜才清洗，乾涸的流體在表面留下鐵鏽斑與蝕痕，鍍膜後出現針孔缺陷；或邊緣越程不足，最外 3 mm 去除不足而留下上翹環帶。~Leaving a finished part overnight before cleaning lets dried fluid leave rust spots and etch marks that become pinholes after coating; insufficient edge overrun under-removes the outer 3 mm and leaves an upturned annulus.",
+      "misconception": "磁流變拋光可以取代所有前段工序，直接從粗磨面修到最終面形。~MRF can replace all earlier steps and figure a rough-ground surface directly to final shape."
+    },
+    {
+      "anchor": "驗收報告與穿透波前換算~Acceptance report and transmitted-wavefront conversion",
+      "title": "規格換算、驗收與工程交接~Specification conversion, acceptance and engineering handoff",
+      "mechanism": "透鏡表面誤差對穿透波前的影響是 (n − 1) 倍，反射面則是 2 倍，驗收前必須把表面 RMS 換算成系統要求的波前量，並註明是否扣除傾斜、離焦與使用的空間濾波。交接資料應包含最終面形圖與 Zernike 係數、分頻段 PSD、修形前後粗糙度、去除點校正紀錄、流體批號與黏度日誌、總去除深度與清洗紀錄，使鍍膜與組裝端能評估殘留風險。獨立儀器的複測是驗收的核心，而不是只核對機台自己的量測。~A lens surface error enters the transmitted wavefront (n − 1) times, a mirror surface 2 times, so before acceptance the surface RMS must be converted to the wavefront quantity the system requires, stating whether tilt and focus were removed and which spatial filter was used. The handoff package should contain the final map with Zernike coefficients, band-limited PSDs, roughness before and after, the spot-calibration record, fluid batch and viscosity log, total removal depth and cleaning record, so coating and assembly can judge residual risk. Re-measurement on an independent instrument is the core of acceptance, not a check of the machine's own data.",
+      "model": "BK7 在 633 nm 的 n = 1.517，表面殘差 8.2 nm RMS 的穿透波前貢獻 = (1.517 − 1)×8.2 ≈ 4.2 nm RMS ≈ λ/150；同樣的表面若作為反射鏡則為 16.4 nm ≈ λ/39。若系統分配給此面的波前預算為 λ/100 = 6.3 nm，則表面允許 6.3/0.517 ≈ 12.2 nm RMS，8.2 nm 的結果合格並留有 30% 餘裕。~For BK7 at 633 nm, n = 1.517, so a surface residual of 8.2 nm RMS contributes (1.517 − 1)×8.2 ≈ 4.2 nm RMS ≈ λ/150 to the transmitted wavefront; the same surface used as a mirror would give 16.4 nm ≈ λ/39. If the system allocates λ/100 = 6.3 nm of wavefront to this surface, the surface may carry 6.3/0.517 ≈ 12.2 nm RMS, so the 8.2 nm result passes with 30% margin.",
+      "verify": "用第二台干涉儀或不同的 CGH 複測最終面形，兩者差異需小於規格的五分之一；把透鏡裝入組件後量穿透波前，與 (n − 1) 換算值比較；檢查交接資料中所有數值的濾波、對位與波長條件一致。~Re-measure the final figure on a second interferometer or with a different CGH, requiring agreement within one fifth of specification; after mounting, measure the transmitted wavefront and compare with the (n − 1) conversion; check that filtering, registration and wavelength conditions are consistent across every number in the package.",
+      "failure": "把反射量測的表面誤差直接當成穿透波前報出，數值被高估兩倍而讓合格件被退回；或缺少流體批號與去除點紀錄，日後同型件失效時無法分辨是流體老化還是量測問題。~Reporting a reflection-measured surface error directly as transmitted wavefront overstates it twofold and rejects a good part; missing fluid-batch and spot records later make it impossible to tell fluid ageing from a metrology problem when a similar part fails.",
+      "misconception": "表面誤差數值就是波前誤差，透鏡與反射鏡的規格可以直接互換。~Surface error equals wavefront error, so lens and mirror specifications are interchangeable."
+    }
+  ],
+  "example": "非球面修形練習：直徑 100 mm 的 BK7 非球面，初始面形 60 nm RMS、300 nm PV。去除點以 10 s 靜止得到 0.40 µm 深度，峰值去除率 40 nm/s = 2.4 µm/min，D 形點 10 mm × 4 mm，體積去除率 ≈ 0.4×10×4×2.4×10⁻³ ≈ 0.04 mm³/min。駐留圖需要的平均去除量取 0.25 µm（高點平均 0.20 µm 加 0.05 µm 底層），體積 0.25×10⁻³ mm × 7854 mm² ≈ 1.96 mm³，修形時間 ≈ 1.96/0.04 ≈ 49 min，含 21% 邊緣越程約 59 min。誤差預算：去除率漂移 3% × 250 nm = 7.5 nm、量測 1 nm、對位 20 µm × 0.5 µm/mm = 10 nm 以 RMS 計約 1 nm（斜率只在邊緣大）、中頻紋理 3 nm，殘差 ≈ √(7.5² + 1² + 1² + 3²) ≈ 8.2 nm RMS，縮小 7.3 倍。第二次迭代去除深度降到約 30 nm，漂移項 0.9 nm，殘差 ≈ √(0.9² + 1² + 1² + 3²) ≈ 3.4 nm RMS。穿透波前貢獻 (1.517 − 1)×3.4 ≈ 1.8 nm ≈ λ/350。數值皆為教學假設，不代表任何機台規格。~Aspheric-figuring exercise: a 100 mm BK7 asphere with initial figure 60 nm RMS and 300 nm PV. A 10 s stationary spot is 0.40 µm deep, so the peak rate is 40 nm/s = 2.4 µm/min; the D-shaped spot is 10 mm × 4 mm with a volumetric rate ≈ 0.4×10×4×2.4×10⁻³ ≈ 0.04 mm³/min. The dwell map needs a mean removal of 0.25 µm (0.20 µm mean height of the hills plus a 0.05 µm floor), a volume of 0.25×10⁻³ mm × 7854 mm² ≈ 1.96 mm³, a run time ≈ 1.96/0.04 ≈ 49 min, about 59 min with 21% edge overrun. Error budget: rate drift 3% × 250 nm = 7.5 nm, metrology 1 nm, registration 20 µm × 0.5 µm/mm = 10 nm at the edge but about 1 nm as an area-weighted RMS because slope is large only near the rim, mid-frequency texture 3 nm, residual ≈ √(7.5² + 1² + 1² + 3²) ≈ 8.2 nm RMS, a 7.3-fold reduction. In the second iteration the removal depth falls to about 30 nm, the drift term to 0.9 nm, and the residual ≈ √(0.9² + 1² + 1² + 3²) ≈ 3.4 nm RMS. The transmitted-wavefront contribution is (1.517 − 1)×3.4 ≈ 1.8 nm ≈ λ/350. All values are teaching assumptions, not any machine's specification.",
+  "history": "磁流變拋光的概念由 William Kordonski 與同事在 1980 年代末於明斯克提出，1990 年代在羅徹斯特大學光學製造中心由 Jacobs、Golini 與 Kordonski 等人發展成確定性的光學修形技術，1996 年成立的 QED Technologies 把它商品化為數控機台，2001 年該技術獲得美國國防部的製造技術獎。此後磁流變拋光成為非球面、自由曲面與高功率雷射光學的標準修形工具，與離子束修形互補。本課只重建公開的物理與工程邏輯，不涉及任何流體配方。~The magnetorheological finishing concept was proposed by William Kordonski and colleagues in Minsk in the late 1980s, developed in the 1990s at the University of Rochester Center for Optics Manufacturing by Jacobs, Golini, Kordonski and others into a deterministic optical figuring technique, commercialised as CNC machines by QED Technologies, founded in 1996, and recognised with a U.S. Department of Defense manufacturing-technology award in 2001. MRF has since become a standard figuring tool for aspheres, freeforms and high-power laser optics, complementary to ion-beam figuring. This course reconstructs only public physics and engineering logic, not any fluid formulation.",
+  "place": {
+    "name": "羅徹斯特大學雷射能量學實驗室參照點~University of Rochester LLE reference",
+    "country": "美國~United States",
+    "lat": 43.119,
+    "lng": -77.63,
+    "query": "Laboratory for Laser Energetics Rochester NY"
+  },
+  "sources": [
+    {
+      "key": "lle-review-v63-mrf",
+      "title": "羅徹斯特大學 LLE Review 第 63 卷：磁流變拋光",
+      "titleEn": "University of Rochester LLE Review Volume 63: Magnetorheological finishing",
+      "publisher": "University of Rochester, Laboratory for Laser Energetics",
+      "url": "https://www.lle.rochester.edu/media/publications/lle_review/documents/v63/63_06_Magnetorheological.pdf",
+      "sourceType": "primary",
+      "scope": "實驗室公開技術報告，說明磁流變液的成分與機制、去除點與確定性修形的早期結果；本課數值為以其原理建立的教學假設。",
+      "scopeEn": "Public laboratory report describing MR-fluid composition and mechanism, the removal spot and early deterministic-figuring results; course numbers are teaching assumptions built on its principles."
+    },
+    {
+      "key": "rochester-news-mrf-award-2001",
+      "title": "羅徹斯特大學新聞：光學修形技術獲國防部獎項",
+      "titleEn": "University of Rochester news: High-tech optics finishing technology wins award from DoD",
+      "publisher": "University of Rochester",
+      "url": "https://www.rochester.edu/news/printable.php?id=1200",
+      "sourceType": "primary",
+      "scope": "大學公開新聞，說明光學製造中心發展的磁流變拋光及其商品化公司 QED Technologies；提供歷史脈絡。",
+      "scopeEn": "University news release describing MRF developed at the Center for Optics Manufacturing and its commercialisation by QED Technologies; provides historical context."
+    },
+    {
+      "key": "qed-technologies-site",
+      "title": "QED Technologies：磁流變拋光機台與量測",
+      "titleEn": "QED Technologies: MRF polishing machines and metrology",
+      "publisher": "QED Technologies International",
+      "url": "https://www.qedmrf.com/",
+      "sourceType": "primary",
+      "scope": "設備商公開網站，說明磁流變拋光機台、流體與子孔徑拼接干涉儀的產品類別；不提供流體配方或製程參數。",
+      "scopeEn": "Vendor site describing MRF machines, fluids and sub-aperture stitching interferometers as product categories; no fluid formulation or process parameters."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "QED Technologies",
+      "nameEn": "QED Technologies International",
+      "business": "磁流變拋光機台、磁流變液與子孔徑拼接干涉量測系統的製造商。",
+      "businessEn": "Manufacturer of magnetorheological finishing machines, MR fluids and sub-aperture stitching interferometry systems.",
+      "url": "https://www.qedmrf.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "磁流變拋光設備與流體的公開產品資訊",
+      "roleEn": "Public product information on MRF equipment and fluids"
+    },
+    {
+      "name": "Zygo（AMETEK）",
+      "nameEn": "Zygo (AMETEK)",
+      "business": "雷射干涉儀、白光干涉輪廓儀與精密光學元件製造，支援修形迴路的面形與粗糙度量測。",
+      "businessEn": "Laser interferometers, white-light interferometric profilers and precision optics manufacturing supporting figure and roughness metrology in the figuring loop.",
+      "url": "https://www.zygo.com/",
+      "investorUrl": "https://investors.ametek.com/",
+      "security": {"symbol": "AME", "exchange": "NYSE", "currency": "USD"},
+      "role": "修形迴路中的干涉量測與粗糙度量測",
+      "roleEn": "Interferometric figure and roughness metrology within the figuring loop"
+    },
+    {
+      "name": "羅徹斯特大學雷射能量學實驗室",
+      "nameEn": "University of Rochester Laboratory for Laser Energetics",
+      "business": "美國大學研究機構，進行高能雷射與光學製造研究，發表磁流變拋光的早期公開技術報告。",
+      "businessEn": "U.S. university laboratory for high-energy lasers and optics manufacturing research that published early public reports on MRF.",
+      "url": "https://www.lle.rochester.edu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "磁流變拋光原理與早期結果的機構來源",
+      "roleEn": "Institutional source for MRF principles and early results"
+    },
+    {
+      "name": "肖特",
+      "nameEn": "SCHOTT",
+      "business": "光學玻璃與微晶玻璃材料製造商，提供修形所需的基板材料與材料性質資料。",
+      "businessEn": "Maker of optical glass and glass-ceramic materials, supplying substrates and material data relevant to removal-rate behaviour.",
+      "url": "https://www.schott.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "基板材料性質與去除率差異的公開資料",
+      "roleEn": "Public material data underlying removal-rate differences between substrates"
+    }
+  ],
+  "related": ["a407", "a410"],
+  "architectureNodes": [["磁流變液與調節迴路", "MR fluid and conditioning loop"], ["電磁鐵與拋光輪", "Electromagnet and polishing wheel"], ["多軸數控平台", "Multi-axis CNC stage"], ["非球面工件", "Aspheric workpiece"], ["干涉儀與去除點校正", "Interferometer and spot calibration"], ["清洗、驗收與交接", "Cleaning, acceptance and handoff"]],
+  "architectureEdges": [[0, 1], [1, 3], [2, 3], [3, 4], [4, 2], [4, 5]]
+}

@@ -118,9 +118,34 @@ export function createAIClient({onStatus=()=>{},config=globalThis.MG_CONFIG||{},
  const capabilities=()=>{const protocol=environment.location?.protocol;const reasons=[];if(!/^https?:$/.test(protocol||''))reasons.push('Open the HTTPS website or the optional local HTTP launcher; file:// cannot create this model worker.');if(!environment.Worker||!environment.WebAssembly)reasons.push('This browser has no WebAssembly worker support.');const memory=Number(environment.navigator?.deviceMemory)||null;return {supported:reasons.length===0,reasons,memoryGB:memory,threads:environment.crossOriginIsolated?Math.min(4,environment.navigator?.hardwareConcurrency||1):1,cache:!!environment.caches,models};};
  const assertLive=turn=>{if(turn!==operation||controller?.signal.aborted)throw new DOMException('Cancelled','AbortError');};
  async function verifyBlob(blob,model,turn,onProgress){const hash=createModelHasher(),reader=blob.stream().getReader();let loaded=0;try{while(true){assertLive(turn);const {value,done}=await reader.read();if(done)break;hash.update(value);loaded+=value.length;onProgress?.({loaded,total:model.bytes,progress:loaded/model.bytes,message:'Verifying SHA-256'});}}finally{reader.releaseLock();}if(loaded!==model.bytes||hash.hex()!==model.sha256)throw aiError('The model checksum does not match the pinned official file.','integrity');}
+ async function mirrorBlob(base,model,turn,onProgress){
+  const manifestRes=await fetcher(base+'weights-manifest.json',{signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer',cache:'no-cache'});
+  if(!manifestRes.ok)throw aiError('Mirror manifest unavailable.','download');
+  const doc=await manifestRes.json();const item=(doc?.files||[]).find(f=>f&&f.sha256===model.sha256&&f.size===model.bytes&&String(f.path||'').split('/').pop()===model.file);
+  if(!item||!Array.isArray(item.parts)||!item.parts.length)throw aiError('Model not listed on mirror.','download');
+  emit('downloading','Downloading verified parts from the owner mirror…');
+  const whole=createModelHasher(),pieces=[];let loaded=0;
+  for(const part of item.parts){
+   if(!/^parts\/[A-Za-z0-9._\/-]{1,200}$/.test(part.path||'')||String(part.path).includes('..'))throw aiError('Invalid mirror part path.','integrity');
+   const res=await fetcher(base+part.path,{signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!res.ok||!res.body)throw aiError('Mirror part download failed.','download');
+   const reader=res.body.getReader(),hash=createModelHasher();let size=0;
+   try{while(true){assertLive(turn);const {value,done}=await reader.read();if(done)break;size+=value.length;loaded+=value.length;if(size>part.size||loaded>model.bytes)throw aiError('Mirror part exceeds its size.','integrity');hash.update(value);whole.update(value);pieces.push(value);onProgress?.({loaded,total:model.bytes,progress:loaded/model.bytes,message:'Downloading mirror parts and checking SHA-256'});}}
+   catch(e){await reader.cancel().catch(()=>{});throw e;}finally{reader.releaseLock();}
+   if(size!==part.size||hash.hex()!==part.sha256)throw aiError('Mirror part checksum failed.','integrity');
+  }
+  if(loaded!==model.bytes||whole.hex()!==model.sha256)throw aiError('Mirror model checksum failed. Nothing was installed.','integrity');
+  return new Blob(pieces);
+ }
  async function modelBlob(model,turn,onProgress){
   const url='https://huggingface.co/'+model.repo+'/resolve/'+model.revision+'/'+model.file;let cache=null;try{cache=await environment.caches?.open(AI_CACHE);}catch{}
   const cached=await cache?.match(url);if(cached){const blob=await cached.blob();emit('verifying');try{await verifyBlob(blob,model,turn,onProgress);return blob;}catch(e){if(e.name==='AbortError')throw e;await cache.delete(url);}}
+  // V12: optional owner mirrors (e.g. a Cloudflare Worker that reads the private
+  // PRIVATE-MODELS repository with a server-side read-only token). The same
+  // pinned size and SHA-256 are enforced; Hugging Face stays the fallback.
+  for(const base of (Array.isArray(config.modelMirrors)?config.modelMirrors:[]).filter(v=>typeof v==='string'&&/^https:\/\/[^\s?#]+\/$/.test(v)).slice(0,3)){
+   try{const blob=await mirrorBlob(base,model,turn,onProgress);if(cache)try{await cache.put(url,new Response(blob,{headers:{'Content-Type':'application/octet-stream'}}));}catch{}return blob;}
+   catch(e){if(e.name==='AbortError')throw e;emit('downloading','Mirror unavailable; using the official source.');}
+  }
   emit('downloading');const res=await fetcher(url,{signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!res.ok||!res.body)throw aiError('Model download failed. Check internet access and free storage.','download');
   const reader=res.body.getReader(),chunks=[],hash=createModelHasher();let loaded=0;try{while(true){assertLive(turn);const {value,done}=await reader.read();if(done)break;loaded+=value.length;if(loaded>model.bytes)throw aiError('Model exceeds its expected size.','integrity');hash.update(value);chunks.push(value);onProgress?.({loaded,total:model.bytes,progress:loaded/model.bytes,message:'Downloading and checking SHA-256'});}}catch(e){await reader.cancel().catch(()=>{});throw e;}finally{reader.releaseLock();}
   if(loaded!==model.bytes||hash.hex()!==model.sha256)throw aiError('Model checksum failed. Nothing was installed.','integrity');assertLive(turn);const blob=new Blob(chunks);if(cache)try{await cache.put(url,new Response(blob,{headers:{'Content-Type':'application/octet-stream'}}));}catch{/* A storage quota failure still permits this consented session. */}return blob;

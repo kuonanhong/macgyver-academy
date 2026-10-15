@@ -15,6 +15,17 @@ window.MG_CONFIG = Object.assign({
   supabasePublishableKey: '',
   // Runtime is bundled. GGUF weights download only after explicit learner consent.
   aiRuntimeBase: './vendor/wllama/',
+  // V12: optional owner mirrors for browser model weights (HTTPS, trailing slash),
+  // e.g. the Cloudflare Worker in tools/model-proxy that reads PRIVATE-MODELS with
+  // a server-side token. Hugging Face (pinned revision + SHA-256) stays the fallback.
+  modelMirrors: [],
+  // V12 paywall: first stage of every course is free; later stages need a pass.
+  // ownerPreviewOnFile shows everything when the owner opens index.html locally.
+  paywall: { enabled: true, freeStagesPerCourse: 1, ownerPreviewOnFile: true },
+  // V12 payments (public identifiers only — secrets live in Supabase Edge Function secrets).
+  // paypalClientId: PayPal REST app "Client ID" (sandbox or live). ecpayEnabled: true after
+  // the ECPay merchant is approved and the Edge Functions are deployed.
+  payments: { paypalClientId: '', paypalEnv: 'sandbox', ecpayEnabled: false, termsUrl: 'commerce-terms.html' },
   // BEGIN GENERATED YOUTUBE IDS — node tools/build-public-player.mjs
   allowedYouTubeIds: ["-egYoxajTz0","0rVQHFPZfJk","1nYQV88Jbcg","2ytGLTAGlwk","4G8wXQGEBrA","6UqW4GEla3Q","78Z5nkh_m-0","CAKWkOuoWrs","ClAgalrHyig","Fml3yuPR2AU","GFc_NIgC_E0","GlwtS_Vq9aE","HEyW9ox9Ne0","HydRZ0oXg2M","IhbQqEMlUz8","MfFGRl00LKY","NrahF3opykM","P7UDE2cISPQ","Rt-7c9Wgnds","ST_1krgYni4","Skdf8ekrHbU","UAWu1O1UuQc","VSX-tFSwCtE","W0jlu0ghNIg","XV-aIWEBTsg","YhbUOq5oaes","Z-E5IUozd7M","_5TSeXkX5Js","_T-mh72VRIY","_TG3lUu-k0k","blW-Fa4a10g","bor0qLifjz4","dpekP4lbAMw","dxlDqeF0IhM","e2DYwblIr-E","fCBlXMDpa2I","h_zgURwr6nA","haYFixYgrHM","hksKKrkcAJg","l6o7VH8lJk4","pPPiaGU12Og","pk7yLLw3zAU","rGhfF44-QsE","stvB1MPTF-c","t_YmVXB6veY","v9Pg92cdJa4","wJVDpclyG6A","ykfong1WNU8"],
   // END GENERATED YOUTUBE IDS

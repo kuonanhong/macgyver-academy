@@ -1,0 +1,182 @@
+{
+  "id": "a496",
+  "title": "VISTA 紅外巡天望遠鏡~VISTA infrared survey telescope",
+  "discipline": "optics-facilities-observatories",
+  "family": "telescope",
+  "focus": "4.1 m f/1 廣視場紅外巡天：光學集光率、VIRCAM 16 片 HgCdTe 偵測器、波前感測與巡天資料流~A 4.1 m f/1 wide-field infrared survey: étendue, the 16 HgCdTe detectors of VIRCAM, wavefront sensing and survey data flow",
+  "summary": "以 ESO 帕拉納爾的 VISTA 為對象，從 1.65° 視場與 12 m² 集光面積的集光率出發，解析 f/1 Zerodur 主鏡與 84 點支撐、三噸重 VIRCAM 低溫相機內 16 片 Raytheon VIRGO HgCdTe 陣列的背景極限、副鏡六足平台的閉環波前控制、2MASS 光度與天文定位校正，以及每晚數百 GB 的巡天資料流與驗收。~Taking ESO's VISTA at Paranal, this course starts from the étendue of a 1.65° field on 12 m² of collecting area and works through the f/1 Zerodur primary on 84 supports, the background-limited performance of the 16 Raytheon VIRGO HgCdTe arrays inside the three-tonne cryogenic VIRCAM, closed-loop wavefront control of the secondary hexapod, photometric and astrometric calibration against 2MASS, and the hundreds of gigabytes per night of survey data flow and acceptance.",
+  "units": [
+    {
+      "anchor": "1.65° 視場與集光率~1.65° field and étendue",
+      "title": "巡天望遠鏡的集光率與近紅外背景~Survey étendue and the near-infrared background",
+      "mechanism": "巡天望遠鏡的效率由集光率 A·Ω 決定：集光面積乘以視場立體角，代表單位時間能以給定深度覆蓋多少天區。VISTA 以 4.1 m 主鏡（中央有 1.2 m 孔）配上直徑 1.65° 的視場，是專為 0.8–2.3 µm 近紅外巡天設計的系統。近紅外天空並不暗：J 波段由 OH 氣輝主導，Ks 波段則加上大氣與望遠鏡的熱輻射，天空亮度約 13 等每平方角秒，因此偵測極限由天空光子雜訊而非偵測器決定，曝光策略必須繞著背景設計。~A survey telescope's efficiency is set by its étendue A·Ω, collecting area times field solid angle, which measures how much sky can be covered to a given depth per unit time. VISTA pairs a 4.1 m primary with a 1.2 m central hole to a 1.65° diameter field, a system designed specifically for 0.8–2.3 µm near-infrared surveys. The near-infrared sky is not dark: the J band is dominated by OH airglow and the Ks band adds thermal emission from the atmosphere and telescope, giving a sky brightness near 13 magnitudes per square arcsecond, so the detection limit is set by sky photon noise rather than the detector and the exposure strategy must be built around the background.",
+      "model": "集光面積 A = π(2.05² − 0.60²) ≈ 12.1 m²；VIRCAM 偵測器有效視場 0.60 deg² = 0.60×(π/180)² ≈ 1.8×10⁻⁴ sr，故 A·Ω ≈ 2.2×10⁻³ m²·sr。相比之下，一座 8.2 m 望遠鏡配 6.8′×6.8′ 視場（0.0128 deg² ≈ 3.9×10⁻⁶ sr、A ≈ 50 m²）的 A·Ω ≈ 2.0×10⁻⁴ m²·sr，VISTA 的巡天速度約為其 11 倍。~Collecting area A = π(2.05² − 0.60²) ≈ 12.1 m²; the VIRCAM detector field of 0.60 deg² = 0.60×(π/180)² ≈ 1.8×10⁻⁴ sr gives A·Ω ≈ 2.2×10⁻³ m²·sr. By comparison an 8.2 m telescope with a 6.8′×6.8′ field (0.0128 deg² ≈ 3.9×10⁻⁶ sr, A ≈ 50 m²) has A·Ω ≈ 2.0×10⁻⁴ m²·sr, so VISTA surveys about 11 times faster.",
+      "verify": "從一組 Ks 波段影像量天空背景計數，換算成每平方角秒的星等並與帕拉納爾公開的近紅外天空亮度比較；再用集光率與量到的天空亮度，預測達到指定 5σ 深度所需的曝光時間，與巡天實際排程比對。~Measure the sky background counts in a set of Ks images, convert them to magnitudes per square arcsecond and compare with the published Paranal near-infrared sky brightness; then use the étendue and the measured sky to predict the exposure time needed for a specified 5σ depth and compare with the survey's actual scheduling.",
+      "failure": "用可見光巡天的長曝光策略拍 Ks 波段，天空在數十秒內就讓偵測器接近飽和並進入非線性區，星像光度全部偏差；資料雖然「拍到了」，卻無法校正。~Applying a visible-survey long-exposure strategy in the Ks band drives the detector near saturation and into nonlinearity within tens of seconds, biasing every stellar magnitude; the data were taken but cannot be calibrated.",
+      "misconception": "望遠鏡口徑越大，巡天速度一定越快。~A larger aperture always means a faster survey."
+    },
+    {
+      "anchor": "f/1 雙曲面主鏡與 f/3.25 卡塞格林焦點~f/1 hyperboloid primary and f/3.25 Cassegrain focus",
+      "title": "快焦比光學、矢高與焦深~Fast optics, sag and depth of focus",
+      "mechanism": "為了在 4 m 級口徑上得到大視場又讓相機尺寸可控，VISTA 的主鏡做成 f/1 的雙曲面，副鏡為 1.24 m 的凸雙曲面，系統焦距 12.07 m、卡塞格林焦比 f/3.25；視場像差由相機內的透鏡校正器修正。f/1 的鏡面曲率極深，矢高超過鏡坯厚度，拋光與檢測都比傳統 f/2 以上的鏡面困難得多；而 f/3.25 的焦深只有數十微米，副鏡位置與鏡筒的熱伸縮必須持續補償。~To obtain a wide field at 4 m aperture while keeping the camera a manageable size, VISTA's primary is an f/1 hyperboloid and the secondary a 1.24 m convex hyperboloid, giving a system focal length of 12.07 m and an f/3.25 Cassegrain focus; field aberrations are corrected by lenses inside the camera. An f/1 surface is extremely deeply curved, with a sag exceeding the blank thickness, making polishing and testing far harder than for conventional f/2 or slower mirrors, and the f/3.25 depth of focus is only tens of micrometres, so secondary position and tube thermal expansion must be compensated continuously.",
+      "model": "主鏡近似球面曲率半徑 R = 2f = 8.2 m，邊緣矢高 z = r²/(2R) = 2.05²/16.4 ≈ 0.256 m，比 0.17 m 的鏡坯厚度還深。焦深 ±2λF²：λ = 1.0 µm、F = 3.25 時 ±2×1.0×10⁻⁶×10.6 ≈ ±21 µm，Ks 波段（λ = 2.15 µm）為 ±45 µm；像素 20 µm 對應 20×10⁻⁶/12.07 ≈ 1.66×10⁻⁶ rad ≈ 0.34″。~The primary's paraxial radius is R = 2f = 8.2 m and the edge sag z = r²/(2R) = 2.05²/16.4 ≈ 0.256 m, deeper than the 0.17 m blank thickness. Depth of focus ±2λF²: with λ = 1.0 µm and F = 3.25 it is ±2×1.0×10⁻⁶×10.6 ≈ ±21 µm, or ±45 µm in Ks (λ = 2.15 µm); a 20 µm pixel subtends 20×10⁻⁶/12.07 ≈ 1.66×10⁻⁶ rad ≈ 0.34″.",
+      "verify": "做焦點序列：以 10 µm 步進移動副鏡並量每一步的星像 FWHM，擬合拋物線取最佳焦點與曲率，曲率寬度應與 ±2λF² 的預測一致；同時以已知角距的雙星或星表位置量實際像素比例，與 0.34″/px 的設計值比對。~Run a focus sequence: step the secondary in 10 µm increments, measure stellar FWHM at each step and fit a parabola for best focus and curvature, whose width should match the ±2λF² prediction; at the same time measure the actual pixel scale from stars of known separation or catalogue positions and compare with the 0.34″/px design value.",
+      "failure": "鏡筒在入夜降溫時收縮，主副鏡間距改變數十微米，若焦點只在黃昏設定一次，一小時後星像 FWHM 從 0.6″ 退化到超過 1″，整段巡天影像深度不足需要重拍。~As the tube contracts during evening cooling the primary-secondary separation changes by tens of micrometres; if focus is set only once at dusk, stellar FWHM degrades from 0.6″ to more than 1″ within an hour and the survey images fall short of depth and must be repeated.",
+      "misconception": "焦比快只是讓曝光更短，對機械與熱設計沒有影響。~A fast focal ratio only shortens exposures and has no mechanical or thermal consequences."
+    },
+    {
+      "anchor": "17 cm Zerodur 主鏡與 84 點支撐~17 cm Zerodur primary and 84-point support",
+      "title": "主鏡坯、氣動軸向支撐與副鏡六足平台~Primary blank, pneumatic axial supports and the secondary hexapod",
+      "mechanism": "VISTA 主鏡是厚 17 cm、中央開孔 1.2 m 的 Zerodur 彎月鏡，由 84 點軸向支撐承載：81 個氣動致動器提供可調的支撐力，3 個被動定義點決定鏡面位置，側向支撐則承擔指向偏離天頂時的橫向重量。副鏡裝在五軸六足平台上，可做微米級的平移與 0.1″ 級的傾斜，以修正離焦與彗差。氣動支撐的優點是力的均勻性與低摩擦，但壓力迴路的響應與洩漏必須監控。~VISTA's primary is a Zerodur meniscus 17 cm thick with a 1.2 m central hole, carried by 84 axial supports: 81 pneumatic actuators provide adjustable force, 3 passive definers fix the mirror position, and lateral supports take the transverse load away from zenith. The secondary sits on a five-axis hexapod capable of micrometre translations and 0.1″ tilts to correct defocus and coma. Pneumatic supports offer uniform force and low friction, but the response and leakage of the pressure loops must be monitored.",
+      "model": "主鏡質量 m ≈ ρ·A·t = 2530×12.1×0.17 ≈ 5.2 t，每個軸向支撐平均承力 5200×9.81/84 ≈ 610 N。多點支撐的重力印痕 RMS 可用 δ ≈ γ·(q/D_f)·(A/N)² 估計（γ ≈ 1.2×10⁻³ 為最佳化支撐的形狀係數）：面載荷 q = ρgt ≈ 4220 Pa，板剛度 D_f = Et³/[12(1−ν²)] ≈ 3.9×10⁷ N·m，A/N = 12.1/84 ≈ 0.144 m²，得 δ ≈ 1.2×10⁻³×1.08×10⁻⁴×0.0207 ≈ 2.7 nm。~The primary mass is m ≈ ρ·A·t = 2530×12.1×0.17 ≈ 5.2 t, so each axial support carries on average 5200×9.81/84 ≈ 610 N. Gravity print-through RMS for a multi-point support can be estimated as δ ≈ γ·(q/D_f)·(A/N)² (γ ≈ 1.2×10⁻³ for an optimised support): with areal load q = ρgt ≈ 4220 Pa, plate stiffness D_f = Et³/[12(1−ν²)] ≈ 3.9×10⁷ N·m and A/N = 12.1/84 ≈ 0.144 m², δ ≈ 1.2×10⁻³×1.08×10⁻⁴×0.0207 ≈ 2.7 nm.",
+      "verify": "在鏡室內裝荷重元監控每個氣動支撐的實際力，比較與指令壓力的線性度與滯後；以望遠鏡在不同天頂距下的高階波前量測結果反推支撐印痕，確認其 RMS 在奈米等級而非數十奈米；六足平台則以位移感測器驗證 1 µm 步進的重複性。~Monitor the actual force of each pneumatic support with load cells in the cell, checking linearity and hysteresis against commanded pressure; back out the support print-through from high-order wavefront measurements at several zenith distances and confirm an RMS at the nanometre rather than tens-of-nanometre level; verify the hexapod's 1 µm step repeatability with displacement sensors.",
+      "failure": "一個氣動迴路慢速洩漏使該區支撐力偏低數十牛頓，鏡面局部下陷，影像一角出現像散與星像拉長；若監控只讀取壓力設定值而非實際力，這個偏差會持續數週。~A slow leak in one pneumatic loop lowers the local support force by tens of newtons, the mirror sags locally and one corner of the field shows astigmatism and elongated stars; if monitoring reads only the pressure setpoint rather than the actual force, the error persists for weeks.",
+      "misconception": "鏡坯厚度 17 cm 已經夠厚，不需要主動支撐。~A 17 cm thick blank is stiff enough to need no active support."
+    },
+    {
+      "anchor": "VIRCAM 低溫相機與 16 片 VIRGO HgCdTe 陣列~VIRCAM cryogenic camera and 16 VIRGO HgCdTe arrays",
+      "title": "紅外相機：偵測器、低溫與背景極限~The infrared camera: detectors, cryogenics and the background limit",
+      "mechanism": "VIRCAM 重約 3 t，內部以 4×4 排列安裝 16 片 Raytheon VIRGO 2048×2048 的 HgCdTe 陣列，像素 20 µm，總計 6700 萬像素，偵測器間留有間隙，因此一次曝光（pawprint）覆蓋 0.60 deg² 而非整個 1.65° 視場。偵測器與濾鏡輪在低溫下工作以壓低暗電流與自身熱輻射，相機入口是一片直徑近 1 m 的大型紅外窗；系統不設冷光闌，而以長冷擋光筒抑制來自望遠鏡結構的熱背景。在 Ks 波段，天空與熱背景的光子雜訊遠大於讀出雜訊，是典型的背景極限成像。~VIRCAM weighs about 3 t and holds 16 Raytheon VIRGO 2048×2048 HgCdTe arrays in a 4×4 layout with 20 µm pixels, 67 million pixels in all; gaps between detectors mean one exposure, a pawprint, covers 0.60 deg² rather than the full 1.65° field. Detectors and the filter wheel run cold to suppress dark current and their own thermal emission, the camera entrance is a large infrared window nearly 1 m across, and instead of a cold pupil stop a long cold baffle tube suppresses thermal background from the telescope structure. In Ks the photon noise of sky and thermal background far exceeds read noise, the classic background-limited regime.",
+      "model": "以 Ks 波段零點 24.6 等（每秒 1 電子，教學假設）與天空 13.0 等/arcsec² 計算：天空電子率 = 10^(0.4×(24.6 − 13.0)) ≈ 4.4×10⁴ e⁻/s/arcsec²，每像素（0.339″，0.115 arcsec²）約 5000 e⁻/s。滿井約 1.5×10⁵ e⁻ 時 30 s 就飽和，為保持線性區曝光須控制在 5–10 s；低溫下暗電流 < 1 e⁻/s/px，相對天空可忽略。~With a Ks zero point of 24.6 mag for 1 electron per second (teaching assumption) and a sky of 13.0 mag/arcsec²: sky rate = 10^(0.4×(24.6 − 13.0)) ≈ 4.4×10⁴ e⁻/s/arcsec², about 5000 e⁻/s per 0.339″ pixel (0.115 arcsec²). With a full well of about 1.5×10⁵ e⁻ the pixel saturates in 30 s, so exposures must stay at 5–10 s to remain in the linear range; the cold dark current below 1 e⁻/s/px is negligible against the sky.",
+      "verify": "以暗場與不同曝光時間的平場做線性度曲線，找出每片偵測器的非線性起點與滿井；在實際天空影像中量每像素的天空電子率與其雜訊，確認雜訊接近 √N 的光子統計，且讀出雜訊的貢獻小於 10%。~Build linearity curves from darks and flats of increasing exposure time to find each detector's nonlinearity onset and full well; in real sky images measure the sky electron rate per pixel and its noise, confirming the noise approaches √N photon statistics with read noise contributing less than 10%.",
+      "failure": "相機內某個低溫級溫度升高幾 K 時，濾鏡與擋光筒的熱輻射在 Ks 波段迅速增加，背景計數翻倍而深度損失 0.4 等；若未同時記錄溫度，這會被誤判成天氣變差。~If one cryogenic stage inside the camera warms by a few kelvin, thermal emission from the filters and baffle rises sharply in Ks, the background doubles and the depth loses 0.4 magnitudes; without a temperature log this is mistaken for bad weather.",
+      "misconception": "紅外偵測器只要夠冷，曝光越長影像越深。~As long as the infrared detector is cold enough, longer exposures always go deeper."
+    },
+    {
+      "anchor": "低階波前感測器與副鏡閉環~Low-order wavefront sensors and the secondary loop",
+      "title": "波前感測與副鏡閉環對準~Wavefront sensing and closed-loop secondary alignment",
+      "mechanism": "VIRCAM 內建兩個低階波前感測器，在視場邊緣以 CCD 取得離焦星像做曲率感測，每分鐘左右輸出離焦與彗差，驅動六足平台做五軸閉環對準；高階波前則由可移入的分光鏡把星光送到科學偵測器量測，每晚數次用來修正主鏡的 81 個氣動支撐力。這種分工讓快速變化的熱效應交給副鏡、慢變的鏡面模態交給主鏡，是廣視場望遠鏡能在整夜維持次角秒影像的關鍵。~VIRCAM carries two low-order wavefront sensors that take defocused star images on CCDs at the field edge for curvature sensing, delivering defocus and coma about once a minute to drive the hexapod in five-axis closed-loop alignment; high-order wavefront is measured by moving beamsplitters that send starlight to the science detectors, a few times a night, to update the 81 pneumatic support forces of the primary. This division sends fast thermal effects to the secondary and slow mirror modes to the primary, and is what lets a wide-field telescope hold sub-arcsecond images all night.",
+      "model": "副鏡軸向移動 Δz 造成的焦面位移 Δf ≈ (m² + 1)·Δz，m = 3.25 為副鏡放大率，故 m² + 1 ≈ 11.6；要把焦面保持在 ±21 µm 焦深內，副鏡軸向位置須控制在 ±21/11.6 ≈ ±1.8 µm，與六足平台約 1 µm 的步進相當。若 3 m 長的鋼結構（α ≈ 12×10⁻⁶/K）降溫 1 K，間距改變 36 µm，焦面移動約 420 µm，故每分鐘更新一次是必要的。~An axial secondary shift Δz moves the focal plane by Δf ≈ (m² + 1)·Δz, with secondary magnification m = 3.25 giving m² + 1 ≈ 11.6; holding the focal plane within the ±21 µm depth of focus requires the secondary axial position within ±21/11.6 ≈ ±1.8 µm, comparable to the hexapod's roughly 1 µm step. A 3 m steel structure (α ≈ 12×10⁻⁶/K) cooling by 1 K changes the separation by 36 µm and moves the focus by about 420 µm, so updates every minute are necessary.",
+      "verify": "在閉環運轉中記錄六足平台五軸的指令時間序列與對應的星像 FWHM，確認焦點修正量與鏡筒溫度變化的相關性；再故意把副鏡傾斜 5″ 觀察彗差感測器的讀值與預期的幾何關係，驗證感測器標定與符號。~Log the five-axis hexapod command time series during closed-loop operation together with stellar FWHM, confirming that the focus corrections correlate with tube temperature changes; then tilt the secondary deliberately by 5″ and check that the coma sensor reading follows the expected geometric relation, verifying sensor calibration and sign.",
+      "failure": "波前感測器導星的參考星太暗或落在偵測器邊緣時，曲率感測給出帶雜訊的離焦解，六足平台每分鐘來回跳動數微米，星像 FWHM 隨之起伏；若迴路沒有訊噪比門檻，整夜影像品質會隨導星亮度而變。~When the wavefront-sensor reference star is too faint or sits at the detector edge, curvature sensing returns a noisy defocus solution, the hexapod hops back and forth by micrometres every minute and the stellar FWHM fluctuates with it; without a signal-to-noise threshold in the loop, image quality tracks the guide-star brightness all night.",
+      "misconception": "副鏡對準只需要在白天用雷射做一次。~Secondary alignment only needs to be done once by day with a laser."
+    },
+    {
+      "anchor": "2MASS 參考星與光度校正表~2MASS reference stars and photometric calibration table",
+      "title": "光度、天文定位校正與誤差預算~Photometric and astrometric calibration and error budgets",
+      "mechanism": "VISTA 的每張影像都含有數百顆 2MASS 星表中的星，可直接解出零點與消光，不必另拍標準星；但 2MASS 到 VISTA 濾鏡系統的顏色轉換、偵測器之間的量子效率差異、平場的「照明修正」與視場邊緣的徑向畸變，都是系統誤差來源。天文定位同樣以 2MASS 為參考框架，畸變以徑向多項式建模，殘差的統計要分別記錄為每顆星的隨機誤差與整片偵測器的系統誤差，形成可追溯的誤差預算。~Every VISTA frame contains hundreds of 2MASS catalogue stars, so zero point and extinction can be solved directly without separate standard-star fields; but the colour transformation from 2MASS to the VISTA filter system, quantum-efficiency differences between detectors, the illumination correction to the flat field and radial distortion at the field edge are all systematic error sources. Astrometry uses 2MASS as the reference frame as well, distortion is modelled with a radial polynomial, and the residual statistics are logged separately as per-star random error and per-detector systematic error, forming a traceable error budget.",
+      "model": "零點誤差預算以 RSS 合成：2MASS 參考系統 0.02 等、照明修正殘餘 0.01 等、平場 0.01 等、消光時間變化 0.01 等，總和 √(0.02² + 0.01² + 0.01² + 0.01²) = √0.0007 ≈ 0.026 等。天文定位單星隨機誤差 σ ≈ (FWHM/2.355)/SNR：FWHM = 0.9″、SNR = 100 時 ≈ 0.0038″ ≈ 4 mas，遠小於 2MASS 參考框架本身約 70 mas 的單星誤差，因此整體精度受參考框架限制。~The zero-point budget combines in RSS: 2MASS reference system 0.02 mag, illumination-correction residual 0.01 mag, flat field 0.01 mag and extinction variation 0.01 mag, giving √(0.02² + 0.01² + 0.01² + 0.01²) = √0.0007 ≈ 0.026 mag. The per-star astrometric random error is σ ≈ (FWHM/2.355)/SNR: with FWHM = 0.9″ and SNR = 100 it is ≈ 0.0038″ ≈ 4 mas, far below the roughly 70 mas per-star error of the 2MASS frame itself, so overall precision is limited by the reference frame.",
+      "verify": "把同一天區在不同夜晚、不同偵測器位置的重複觀測互相比較：星等差的分佈寬度給出隨機誤差，平均偏移給出系統誤差，兩者都應落在預算內；天文定位則比較重疊區的位置殘差，檢查是否隨視場半徑增長，若是則更新畸變模型。~Compare repeated observations of the same field on different nights and at different detector positions: the width of the magnitude-difference distribution gives the random error and the mean offset the systematic error, both of which must fall within the budget; for astrometry compare position residuals in the overlap regions and check whether they grow with field radius, updating the distortion model if they do.",
+      "failure": "忽略照明修正而只用圓頂平場時，視場邊緣的零點偏差可達 0.05 等以上，巡天目錄在拼接邊界出現星等跳階；研究者若據此做星族分析，會得到假的密度梯度。~Ignoring the illumination correction and using only dome flats leaves zero-point errors above 0.05 mag at the field edge, and the survey catalogue shows magnitude steps at tile boundaries; stellar-population analysis built on it finds spurious density gradients.",
+      "misconception": "有了 2MASS 星，VISTA 的光度校正就不會有系統誤差。~With 2MASS stars in every frame, VISTA photometry has no systematic error."
+    },
+    {
+      "anchor": "Pawprint 拼貼與巡天資料流~Pawprint tiling and survey data flow",
+      "title": "巡天觀測策略與資料流~Survey observing strategy and the data pipeline",
+      "mechanism": "因為偵測器之間有約 0.9 與 0.425 片的間隙，VISTA 以 6 個互相偏移的 pawprint 拼成一個約 1.5 deg² 的連續 tile，每個天區至少被覆蓋兩次；再加上小幅抖動（jitter）去除壞像素與偵測器特徵，Ks 波段用短曝光多幀疊加避免飽和。資料先在帕拉納爾做即時品質檢查，再送到英國 CASU 與 WFAU 的 VISTA 資料流系統做校正、堆疊、目錄抽取與品質分級，公開巡天如 VVV、VHS、VIKING、UltraVISTA 都以此流程產生資料釋出。~Because the detectors are separated by gaps of about 0.9 and 0.425 detector widths, VISTA combines 6 offset pawprints into one contiguous tile of about 1.5 deg², covering every point at least twice; small jitter offsets remove bad pixels and detector features, and Ks uses many short exposures stacked to avoid saturation. Data pass a real-time quality check at Paranal and then flow to the VISTA data-flow system at CASU and WFAU in the UK for calibration, stacking, catalogue extraction and quality grading; public surveys such as VVV, VHS, VIKING and UltraVISTA produce their data releases through this pipeline.",
+      "model": "一個 tile 由 6 個 pawprint 組成：曝光覆蓋總面積 6×0.60 = 3.6 deg²，tile 面積 1.5 deg²，平均每點被覆蓋 3.6/1.5 = 2.4 次。資料量：每幀 16×2048²×2 位元組 ≈ 134 MB；以 12 s 的節奏（10 s 曝光加讀出）在 10 小時夜晚取得約 3000 幀，原始資料約 400 GB，因此需要專用的網路與歸檔。~A tile is built from 6 pawprints: the total exposed area is 6×0.60 = 3.6 deg² over a 1.5 deg² tile, so each point is covered 3.6/1.5 = 2.4 times on average. Data volume: each frame is 16×2048²×2 bytes ≈ 134 MB; at a 12 s cadence (10 s exposure plus readout) a 10 hour night yields about 3000 frames and roughly 400 GB of raw data, which demands dedicated networking and archiving.",
+      "verify": "對一個完成的 tile 畫覆蓋次數地圖，確認最少 2 次、平均約 2.4 次且間隙全部補滿；統計每夜的原始資料量與傳輸延遲，確認歸檔在隔日完成；並抽樣比對 pipeline 輸出目錄與獨立測光結果，檢查堆疊與目錄抽取沒有引入偏差。~Plot a coverage-count map for a completed tile, confirming a minimum of 2, an average near 2.4 and no remaining gaps; record the nightly raw data volume and transfer latency to confirm archiving completes by the next day; and spot-check the pipeline catalogue against independent photometry to make sure stacking and extraction introduce no bias.",
+      "failure": "若 6 個 pawprint 的偏移量輸入錯誤 10%，tile 中出現未覆蓋的條狀間隙，而且某些區域只有單次覆蓋無法去除壞像素；問題往往在資料釋出前的覆蓋檢查才被發現，該天區必須整個重拍。~If the 6 pawprint offsets are entered 10% wrong, uncovered strips appear in the tile and some areas receive only single coverage so bad pixels cannot be rejected; the problem is often found only at the coverage check before data release, and the whole field must be re-observed.",
+      "misconception": "一次曝光就能拍滿整個 1.65° 視場。~One exposure fills the whole 1.65° field."
+    },
+    {
+      "anchor": "驗收影像品質與卡塞格林儀器交接~Accepted image quality and Cassegrain instrument handover",
+      "title": "驗收、營運移交與 4MOST 換裝~Acceptance, operational handover and the 4MOST changeover",
+      "mechanism": "VISTA 由英國大學聯盟以實物貢獻方式建造，2009 年 12 月通過 ESO 臨時驗收並取得首光；驗收不只看單張影像，而是把量得的星像 FWHM 扣除當時的大氣視寧度後反推望遠鏡加相機的貢獻，並與設計的 50% 能量集中直徑等指標比對。VIRCAM 於 2023 年退役，卡塞格林焦點改裝 4MOST 多目標光纖光譜儀，這次換裝再度要求重做焦面幾何、波前感測與指向的全套驗證並更新交接文件。~VISTA was built by a UK university consortium as an in-kind contribution and passed ESO's provisional acceptance in December 2009, when it saw first light; acceptance did not rely on single images but on subtracting the atmospheric seeing of the moment from the measured stellar FWHM to back out the telescope-plus-camera contribution and comparing it with design metrics such as the 50% encircled-energy diameter. VIRCAM was decommissioned in 2023 and the Cassegrain focus was refitted with the 4MOST multi-object fibre spectrograph, a changeover that again demanded the full verification set for focal-plane geometry, wavefront sensing and pointing, with updated handover documents.",
+      "model": "視寧度隨波長按 λ^(−1/5) 變化：500 nm 的 DIMM 視寧度 0.75″ 換算到 Ks（2.15 µm）為 0.75×(2.15/0.5)^(−0.2) ≈ 0.56″。若 Ks 影像量到 FWHM 0.90″，以 5/3 次方相減得望遠鏡加相機項 = (0.90^(5/3) − 0.56^(5/3))^(3/5) = (0.839 − 0.380)^(0.6) ≈ 0.63″，高於例如 0.45″ 的分配值，表示須檢查對焦、準直或追蹤而非歸咎天氣。~Seeing scales with wavelength as λ^(−1/5): a 0.75″ DIMM seeing at 500 nm becomes 0.75×(2.15/0.5)^(−0.2) ≈ 0.56″ in Ks (2.15 µm). If the Ks images show FWHM 0.90″, subtracting in 5/3 power gives a telescope-plus-camera term of (0.90^(5/3) − 0.56^(5/3))^(3/5) = (0.839 − 0.380)^(0.6) ≈ 0.63″, above an allocation of, say, 0.45″, which means focus, collimation or tracking must be checked rather than blaming the weather.",
+      "verify": "驗收夜以同步的 DIMM 紀錄與各偵測器的星像 FWHM 建立表格，逐偵測器反推望遠鏡項並檢查是否在視場內均勻；將指向模型殘差、波前感測器零點、六足平台校正與氣動支撐力表一併歸檔，換裝 4MOST 後重做同一套量測並與舊紀錄比對。~On acceptance nights tabulate synchronous DIMM records against stellar FWHM on every detector, back out the telescope term detector by detector and check uniformity across the field; archive the pointing-model residuals, wavefront-sensor zero points, hexapod calibration and pneumatic force table together, and after the 4MOST changeover repeat the same measurements and compare with the old record.",
+      "failure": "換裝新儀器時若沿用舊相機的波前感測器零點，閉環把副鏡對準到錯誤的位置，整個視場帶著固定的彗差，而操作團隊誤以為是新儀器的光學問題，調試時間拖長數週。~Reusing the old camera's wavefront-sensor zero points after installing a new instrument makes the closed loop align the secondary to the wrong position, the whole field carries a fixed coma, and the operations team blames the new instrument's optics while commissioning drags on for weeks.",
+      "misconception": "望遠鏡驗收過一次，換儀器後就不必重新驗證。~Once a telescope is accepted, swapping instruments needs no re-verification."
+    }
+  ],
+  "example": "Ks 波段深度練習（教學假設）：零點 24.6 等（1 e⁻/s），天空 13.0 等/arcsec²，像素 0.339″，一顆 Ks = 18.0 的星每秒給 10^(0.4×(24.6 − 18.0)) ≈ 437 e⁻；天空每像素 ≈ 5000 e⁻/s。測光孔徑直徑 2″（面積 3.14 arcsec²，27.3 像素），60 s 總曝光（6 幀各 10 s，讀出雜訊 20 e⁻）：訊號 437×60 = 26200 e⁻；天空 27.3×5000×60 = 8.2×10⁶ e⁻；讀出雜訊變異數 27.3×6×20² ≈ 6.6×10⁴ e⁻²。SNR = 26200/√(26200 + 8.2×10⁶ + 6.6×10⁴) = 26200/2880 ≈ 9.1。5σ 極限星等 ≈ 18.0 + 2.5·log₁₀(9.1/5) ≈ 18.65 等。讀出雜訊只占總變異數的 0.8%，證實為背景極限；要再深 1 等需要 6.3 倍的曝光時間。數值為教學假設，不代表望遠鏡實際規格。~Ks-band depth exercise (teaching assumptions): zero point 24.6 mag for 1 e⁻/s, sky 13.0 mag/arcsec², pixel 0.339″, so a Ks = 18.0 star gives 10^(0.4×(24.6 − 18.0)) ≈ 437 e⁻/s and the sky ≈ 5000 e⁻/s per pixel. For a 2″ photometric aperture (3.14 arcsec², 27.3 pixels) and 60 s total exposure (6 frames of 10 s, read noise 20 e⁻): signal 437×60 = 26200 e⁻; sky 27.3×5000×60 = 8.2×10⁶ e⁻; read-noise variance 27.3×6×20² ≈ 6.6×10⁴ e⁻². SNR = 26200/√(26200 + 8.2×10⁶ + 6.6×10⁴) = 26200/2880 ≈ 9.1. The 5σ limiting magnitude ≈ 18.0 + 2.5·log₁₀(9.1/5) ≈ 18.65 mag. Read noise is only 0.8% of the total variance, confirming the background limit; going 1 magnitude deeper needs 6.3 times the exposure. Values are teaching assumptions, not telescope specifications.",
+  "history": "VISTA 由以倫敦瑪麗王后大學為首的 18 所英國大學聯盟提出，作為英國加入 ESO 的實物貢獻，由 STFC 的英國天文技術中心管理設計與建造，2009 年 12 月 10 日通過 ESO 臨時驗收、12 月 11 日取得首光，隨後以 VIRCAM 執行 VVV、VHS、VIKING、VIDEO、UltraVISTA 等公開巡天十餘年。VIRCAM 於 2023 年退役，望遠鏡改裝 4MOST 多目標光纖光譜儀以進行大規模光譜巡天。本課只重建公開的工程原理與數據邏輯。~VISTA was proposed by a consortium of 18 UK universities led by Queen Mary University of London as the UK's in-kind contribution on joining ESO, with design and construction managed by the STFC UK Astronomy Technology Centre; ESO granted provisional acceptance on 10 December 2009 and first light followed on 11 December, after which VIRCAM carried out public surveys such as VVV, VHS, VIKING, VIDEO and UltraVISTA for more than a decade. VIRCAM was retired in 2023 and the telescope was refitted with the 4MOST multi-object fibre spectrograph for large spectroscopic surveys. This course reconstructs only public engineering principles and data logic.",
+  "place": {
+    "name": "ESO 帕拉納爾天文台 VISTA 山峰~ESO Paranal Observatory VISTA peak",
+    "country": "智利~Chile",
+    "lat": -24.616,
+    "lng": -70.398,
+    "query": "VISTA telescope Cerro Paranal ESO Chile"
+  },
+  "sources": [
+    {
+      "key": "eso-vista-public",
+      "title": "ESO：VISTA 可見光與紅外巡天望遠鏡公眾頁",
+      "titleEn": "ESO: Visible and Infrared Survey Telescope for Astronomy (public page)",
+      "publisher": "European Southern Observatory",
+      "url": "https://www.eso.org/public/teles-instr/paranal-observatory/surveytelescopes/vista/",
+      "sourceType": "primary",
+      "scope": "官方概覽：4.1 m 主鏡、三噸重 16 偵測器相機、2009 年 12 月首光與臨時驗收、英國大學聯盟與 UK ATC 的建造背景。",
+      "scopeEn": "Official overview: 4.1 m primary, three-tonne 16-detector camera, first light and provisional acceptance in December 2009, and the UK consortium and UK ATC construction background."
+    },
+    {
+      "key": "eso-vista-sci",
+      "title": "ESO 科學營運：VISTA 望遠鏡頁",
+      "titleEn": "ESO science operations: VISTA telescope page",
+      "publisher": "European Southern Observatory",
+      "url": "https://www.eso.org/sci/facilities/paranal/telescopes/vista.html",
+      "sourceType": "primary",
+      "scope": "f/1 主鏡、f/3.25 卡塞格林焦點、相機安裝於主鏡室旋轉器、VIRCAM 1.65° 視場與 0.339″ 像素。",
+      "scopeEn": "f/1 primary, f/3.25 Cassegrain focus, camera mounted on the primary-cell rotator, VIRCAM 1.65° field and 0.339″ pixels."
+    },
+    {
+      "key": "eso-vircam",
+      "title": "ESO：VIRCAM 儀器頁（已退役）",
+      "titleEn": "ESO: VIRCAM instrument page (decommissioned)",
+      "publisher": "European Southern Observatory",
+      "url": "https://www.eso.org/sci/facilities/paranal/instruments/vircam.html",
+      "sourceType": "primary",
+      "scope": "6700 萬像素、Z/Y/J/H/Ks 寬帶與 0.98/0.99/1.18 µm 窄帶濾鏡、視場與像素比例；頁面列於已退役儀器之下。",
+      "scopeEn": "67 million pixels, Z/Y/J/H/Ks broadband and 0.98/0.99/1.18 µm narrowband filters, field and pixel scale; listed under decommissioned instruments."
+    },
+    {
+      "key": "sutherland-2015-vista",
+      "title": "Sutherland 等：VISTA 設計、技術概覽與性能（A&A，arXiv）",
+      "titleEn": "Sutherland et al.: VISTA design, technical overview and performance (A&A, arXiv)",
+      "publisher": "Astronomy & Astrophysics via arXiv",
+      "url": "https://arxiv.org/abs/1409.4780",
+      "sourceType": "primary",
+      "scope": "計畫團隊的技術論文：f/1 Zerodur 主鏡 17 cm 厚、1.24 m 副鏡、12.07 m 系統焦距、84 點支撐（81 氣動）、五軸六足平台、16 片 Raytheon VIRGO 2048² HgCdTe、20 µm 像素與波前感測架構。",
+      "scopeEn": "Project-team technical paper: 17 cm thick f/1 Zerodur primary, 1.24 m secondary, 12.07 m system focal length, 84-point support (81 pneumatic), five-axis hexapod, 16 Raytheon VIRGO 2048² HgCdTe arrays with 20 µm pixels and the wavefront-sensing architecture."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "歐洲南方天文台",
+      "nameEn": "European Southern Observatory (ESO)",
+      "business": "擁有並營運帕拉納爾天文台的 VISTA、VLT 與巡天資料釋出。",
+      "businessEn": "Owns and operates VISTA and the VLT at Paranal and publishes the survey data releases.",
+      "url": "https://www.eso.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "望遠鏡營運、儀器頁面與資料釋出的公開資訊",
+      "roleEn": "Public information on telescope operations, instrument pages and data releases"
+    },
+    {
+      "name": "英國天文技術中心（STFC）",
+      "nameEn": "UK Astronomy Technology Centre (STFC)",
+      "business": "英國科學技術設施委員會所屬的天文儀器研發中心，管理 VISTA 的設計與建造。",
+      "businessEn": "Astronomical instrumentation centre of the UK Science and Technology Facilities Council that managed the design and construction of VISTA.",
+      "url": "https://www.ukatc.stfc.ac.uk/",
+      "investorUrl": "",
+      "security": null,
+      "role": "望遠鏡與相機系統工程管理的公開資訊",
+      "roleEn": "Public information on telescope and camera systems-engineering management"
+    },
+    {
+      "name": "RTX（雷神）",
+      "nameEn": "RTX (Raytheon)",
+      "business": "航太與國防集團，旗下雷神視覺系統部門製造 VIRCAM 所用的 VIRGO 2048×2048 HgCdTe 紅外陣列。",
+      "businessEn": "Aerospace and defence group whose Raytheon vision-systems business made the VIRGO 2048×2048 HgCdTe infrared arrays used in VIRCAM.",
+      "url": "https://www.rtx.com/",
+      "investorUrl": "",
+      "security": {"symbol": "RTX", "exchange": "NYSE", "currency": "USD"},
+      "role": "大面陣 HgCdTe 紅外偵測器的產業參照",
+      "roleEn": "Industrial reference for large-format HgCdTe infrared detectors"
+    },
+    {
+      "name": "SCHOTT",
+      "nameEn": "SCHOTT AG",
+      "business": "特種玻璃與玻璃陶瓷製造商，生產 VISTA 主鏡的 ZERODUR 彎月鏡坯。",
+      "businessEn": "Specialty glass and glass-ceramic manufacturer producing the ZERODUR meniscus blank of the VISTA primary.",
+      "url": "https://www.schott.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "低膨脹鏡坯材料的公開資料",
+      "roleEn": "Public data on low-expansion mirror-blank material"
+    }
+  ],
+  "related": ["a477", "a492"],
+  "architectureNodes": [["4.1 m f/1 Zerodur 主鏡與 84 點支撐", "4.1 m f/1 Zerodur primary on 84 supports"], ["1.24 m 副鏡與五軸六足平台", "1.24 m secondary on five-axis hexapod"], ["VIRCAM 低溫相機與 16 片 HgCdTe", "VIRCAM cryogenic camera with 16 HgCdTe arrays"], ["低階／高階波前感測器", "Low- and high-order wavefront sensors"], ["Pawprint 拼貼排程", "Pawprint tiling scheduler"], ["CASU／WFAU 資料流與釋出", "CASU/WFAU data flow and releases"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 1], [3, 0], [4, 2], [2, 5]]
+}

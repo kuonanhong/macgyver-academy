@@ -13,7 +13,8 @@ const publicRoot = path.join(root, 'public/academy');
 const checked = spawnSync(process.execPath, [path.join(root, 'tools/build-offline.mjs'), '--check'], { encoding: 'utf8' });
 assert.equal(checked.status, 0, checked.stdout + checked.stderr);
 const manifest = JSON.parse(fs.readFileSync(path.join(publicRoot, 'offline-build.json'), 'utf8'));
-const expectedData = fs.readdirSync(path.join(publicRoot, 'data')).filter(n => n.endsWith('.json')).map(n => n.slice(0, -5)).sort();
+// markets.json and fx.json are refreshed weekly and fetched at runtime (not embedded).
+const expectedData = fs.readdirSync(path.join(publicRoot, 'data')).filter(n => n.endsWith('.json') && !['markets.json', 'fx.json'].includes(n)).map(n => n.slice(0, -5)).sort();
 assert.deepEqual(manifest.dataSets, expectedData, 'every public JSON is embedded');
 assert(!fs.readFileSync(path.join(publicRoot, 'index.html'), 'utf8').includes('type="module"'), 'file entry must use classic scripts');
 assert(!fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes('<iframe'), 'root launcher must not trap keyboard focus in an iframe');
@@ -125,7 +126,7 @@ assert.equal(app.nativeRequests, 0);
 const reloaded = await boot({ storage: app.storage });
 assert.equal(reloaded.context.MacGyverOffline.activeProfile().id, first.id);
 reloaded.fixed.get('account').onclick();
-assert(reloaded.fixed.get('dialogBody').innerHTML.includes('offlineProfileForm'), 'offline account opens local profiles');
+assert(reloaded.fixed.get('dialogBody').innerHTML.includes('offlineMemberForm'), 'offline account opens local member accounts');
 assert(!reloaded.fixed.get('dialogBody').innerHTML.includes('/signout-with-chatgpt'), 'offline profile never offers a cloud logout');
 reloaded.context.location.hash = '#workshop'; reloaded.listeners.get('hashchange')(); await flush();
 assert(reloaded.fixed.get('main').innerHTML.includes('learnerModel'), 'direct-file workbench renders');

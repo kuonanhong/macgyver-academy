@@ -1,0 +1,171 @@
+{
+  "id": "a450",
+  "title": "核磁共振光譜儀~Nuclear magnetic-resonance spectrometers",
+  "discipline": "optics-analytical-instruments",
+  "family": "spectrometer",
+  "focus": "拉莫頻率、化學位移、超導磁體與鎖場、探頭訊噪比、勻場與定量 NMR 的弛豫預算~Larmor frequency, chemical shift, superconducting magnet and lock, probe signal-to-noise, shimming and relaxation budgets for quantitative NMR",
+  "summary": "從原子核在強磁場中以拉莫頻率進動、卻只有百萬分之幾十淨極化出發，理解核磁共振光譜儀如何以超導磁體、勻場線圈、低溫探頭與數位接收器把 ppb 級的頻率差轉成化學結構資訊，再把漂移、線形、脈衝校正、T₁ 弛豫與場地振動整合成可交接的定量量測紀錄。~Start from nuclei precessing at the Larmor frequency in a strong field yet carrying only tens of parts per million of net polarisation to see how an NMR spectrometer uses a superconducting magnet, shim coils, a cryogenic probe and a digital receiver to turn ppb-level frequency differences into chemical structure, then integrate drift, line shape, pulse calibration, T₁ relaxation and site vibration into a transferable quantitative measurement record.",
+  "units": [
+    {
+      "anchor": "主磁場中的核自旋~Nuclear spins in the main field",
+      "title": "拉莫進動與自旋極化~Larmor precession and spin polarisation",
+      "mechanism": "具有自旋的原子核（¹H、¹³C、¹⁵N、¹⁹F、³¹P）帶有磁矩，放在靜磁場 B₀ 中會繞磁場以拉莫頻率 ω = γB₀ 進動，並分裂成能量差 ħγB₀ 的能階。室溫下這個能差遠小於 k_BT，兩能階的佈居只差百萬分之幾十，淨磁化非常微弱，這是 NMR 先天低靈敏度的根源。射頻脈衝把淨磁化扳離 B₀ 方向後，它在線圈中感應出以拉莫頻率振盪、逐漸衰減的電壓，也就是自由感應衰減（FID）。訊噪比大約隨 B₀^(3/2) 成長，這是 NMR 不斷追求更強超導磁體的原因。~Nuclei with spin (¹H, ¹³C, ¹⁵N, ¹⁹F, ³¹P) carry magnetic moments that, in a static field B₀, precess about the field at the Larmor frequency ω = γB₀ and split into levels separated by ħγB₀. At room temperature this splitting is far below k_BT, so the populations differ by only tens of parts per million and the net magnetisation is tiny, the root of NMR's inherent insensitivity. After a radio-frequency pulse tips the net magnetisation away from B₀, it induces in the coil a decaying voltage oscillating at the Larmor frequency, the free induction decay (FID). Signal-to-noise grows roughly as B₀^(3/2), which is why NMR keeps pushing toward stronger superconducting magnets.",
+      "model": "¹H 的 γ/2π = 42.577 MHz/T，在 14.1 T 為 600.3 MHz，600.13 MHz 對應 14.095 T；同一磁場下 ²H 鎖場頻道為 92.12 MHz、¹³C 為 150.9 MHz。298 K 時極化 P ≈ hν/(2k_BT) = 6.626×10⁻³⁴×600×10⁶/(2×1.381×10⁻²³×298) ≈ 4.8×10⁻⁵，每兩百萬個質子只有約 97 個淨貢獻。由 600 MHz 換到 900 MHz，訊噪比約提高 (900/600)^1.5 ≈ 1.84 倍。~For ¹H, γ/2π = 42.577 MHz/T, so 14.1 T gives 600.3 MHz and 600.13 MHz corresponds to 14.095 T; in the same field the ²H lock channel is at 92.12 MHz and ¹³C at 150.9 MHz. At 298 K the polarisation is P ≈ hν/(2k_BT) = 6.626×10⁻³⁴×600×10⁶/(2×1.381×10⁻²³×298) ≈ 4.8×10⁻⁵, so only about 97 of every two million protons contribute net signal. Moving from 600 to 900 MHz raises signal-to-noise by roughly (900/600)^1.5 ≈ 1.84.",
+      "verify": "以標準樣品調諧探頭並以 ²H 鎖場，記錄 TMS 或 DSS 的 ¹H 頻率並換算磁場，確認 ¹H、²H 與 ¹³C 的頻率比與 γ 比相符；在兩台不同場強的儀器上以相同樣品、濃度與掃描次數量訊噪比，比較其比值與 B₀^(3/2) 的預測，並把差異歸因到探頭、溫度與接收鏈。~Tune the probe on a standard sample, lock on ²H, record the ¹H frequency of TMS or DSS and convert it to field, confirming that the ¹H, ²H and ¹³C frequency ratios match the γ ratios; measure signal-to-noise on two instruments of different field with the same sample, concentration and scan count, compare the ratio with the B₀^(3/2) prediction and attribute differences to probe, temperature and receiver chain.",
+      "failure": "以為換上高場磁體就能按比例提升靈敏度，結果樣品導電、探頭未最佳化或溶劑雜訊主導，實際只多出 20%，採購效益大打折扣；跨場強比較化學位移時以 Hz 而非 ppm 表示，同一化合物的峰位對不起來而被誤判為不同物質。~Expecting a higher-field magnet to raise sensitivity proportionally disappoints when a conductive sample, an unoptimised probe or solvent noise dominates and the real gain is only 20%; comparing chemical shifts across fields in hertz instead of ppm misaligns the peaks of one compound so it is mistaken for different substances.",
+      "misconception": "核自旋在強磁場中幾乎全部同向排列，所以 NMR 訊號很強。~Nuclear spins in a strong magnet nearly all align, so the NMR signal is strong."
+    },
+    {
+      "anchor": "化學位移與耦合多重峰~Chemical shifts and coupling multiplets",
+      "title": "化學位移、J 耦合與磁場分散~Chemical shift, J coupling and field dispersion",
+      "mechanism": "分子中的電子在外磁場下產生感應電流，局部屏蔽原子核，使其實際感受的場為 B₀(1 − σ)，不同化學環境的核因此有不同的共振頻率。化學位移定義為 δ = (ν − ν_ref)/ν_ref × 10⁶ ppm，以 TMS 或 DSS 為零點而與場強無關；經由化學鍵傳遞的純量耦合 J 則以 Hz 表示，也與場強無關。所以高場把以 Hz 計的位移差拉開而耦合寬度不變，Δν/J 變大後強耦合的二階譜型逐漸變回容易解讀的一階多重峰。最後能否分辨兩個峰還取決於線寬 Δν½ = 1/(πT₂*)，它同時包含樣品的橫向弛豫與磁場不均勻。~Electrons in a molecule respond to the applied field with induced currents that shield each nucleus locally, so it experiences B₀(1 − σ) and nuclei in different chemical environments resonate at different frequencies. The chemical shift is δ = (ν − ν_ref)/ν_ref × 10⁶ ppm, referenced to TMS or DSS and independent of field, while scalar coupling J transmitted through bonds is expressed in hertz and is also field-independent. A higher field therefore spreads shift differences in hertz while coupling widths stay fixed, and as Δν/J grows, strongly coupled second-order patterns relax toward easily read first-order multiplets. Whether two peaks can be separated finally depends on the linewidth Δν½ = 1/(πT₂*), which contains both transverse relaxation and field inhomogeneity.",
+      "model": "兩個質子相距 0.02 ppm、J = 7 Hz：600 MHz 時差 12 Hz，Δν/J = 1.71；400 MHz 時差 8 Hz，Δν/J = 1.14，兩者都是強耦合的 AB 譜型，但 600 MHz 的屋頂效應較輕。¹H 約 12 ppm 的位移範圍在 600 MHz 等於 7.2 kHz。線寬 0.5 Hz 需要 T₂* ≥ 1/(π×0.5) ≈ 0.64 s，相當於整個樣品內的磁場均勻度 0.5/(600×10⁶) ≈ 0.83 ppb。~Two protons 0.02 ppm apart with J = 7 Hz differ by 12 Hz at 600 MHz, Δν/J = 1.71, and by 8 Hz at 400 MHz, Δν/J = 1.14; both are strongly coupled AB patterns, but the roof effect is milder at 600 MHz. The ¹H shift range of about 12 ppm spans 7.2 kHz at 600 MHz. A 0.5 Hz linewidth needs T₂* ≥ 1/(π×0.5) ≈ 0.64 s, equivalent to a field homogeneity of 0.5/(600×10⁶) ≈ 0.83 ppb across the whole sample.",
+      "verify": "以已知化合物（如乙苯或鄰二氯苯）在兩個場強取譜，確認耦合常數以 Hz 計相同、化學位移以 ppm 計相同；以 TMS 或 DSS 內標設定零點；以半高寬量測線寬，並以譜圖模擬軟體擬合強耦合多重峰，取得真實的 δ 與 J 再與文獻值比較。~Record a known compound such as ethylbenzene or o-dichlorobenzene at two field strengths and confirm that coupling constants agree in hertz and chemical shifts agree in ppm; set the zero with a TMS or DSS internal reference; measure linewidths at half height and fit strongly coupled multiplets with spectral simulation software to obtain true δ and J for comparison with literature values.",
+      "failure": "把強耦合 AB 譜中兩條內線的中點當成化學位移，位移與耦合常數一起讀錯，結構指認錯誤；水溶液不加 DSS 而以溶劑峰定零點，溫度改變 5 K 時水峰本身約以 −0.01 ppm/K 移動，整組位移偏差達 0.05 ppm 以上。~Reading the midpoint of the two inner lines of a strongly coupled AB pattern as a chemical shift gets both shifts and coupling constants wrong and leads to a wrong structure; referencing an aqueous sample to the solvent peak without DSS lets a 5 K temperature change move the water peak itself by about −0.01 ppm/K, offsetting every shift by 0.05 ppm or more.",
+      "misconception": "磁場越強，J 耦合常數也會等比例變大。~A stronger field enlarges J coupling constants proportionally."
+    },
+    {
+      "anchor": "超導線圈、超導接點與液氦槽~Superconducting coil, joints and helium bath",
+      "title": "超導磁體、持續電流與場頻鎖定~Superconducting magnet, persistent current and field-frequency lock",
+      "mechanism": "高解析 NMR 磁體以 NbTi 與 Nb₃Sn 超導線繞成多段螺管，浸在 4.2 K 液氦中，外層以液氮或冷頭冷卻的輻射屏與真空層隔熱；約 1 GHz 以上的磁體還加入高溫超導內插線圈。充磁後以超導開關把線圈與超導接點閉合成迴路進入持續模式，電流以 L/R 時間常數衰減，由於接點電阻極小，磁場漂移只有每小時數 Hz。剩餘漂移與環境擾動由氘鎖場迴路修正：儀器持續觀測溶劑的 ²H 訊號，以 Z0 線圈的微小電流把 ²H 頻率鎖住。主動遮蔽線圈則把外部雜散場的 0.5 mT（5 G）線縮到磁體附近。~High-resolution NMR magnets are multi-section solenoids wound from NbTi and Nb₃Sn superconductor, immersed in 4.2 K liquid helium and insulated by radiation shields cooled with liquid nitrogen or a cryocooler and by vacuum spaces; magnets above about 1 GHz add high-temperature-superconductor inserts. After energising, a superconducting switch closes the coil and its superconducting joints into a persistent loop whose current decays with the time constant L/R, and because the joint resistance is minute the field drifts only a few hertz per hour. Residual drift and environmental disturbances are corrected by the deuterium lock, which continuously observes the solvent ²H signal and holds its frequency with small currents in a Z0 coil. Active shielding coils pull the external 0.5 mT (5 G) stray-field line close to the magnet.",
+      "model": "600 MHz 磁體漂移 5 Hz/h，相對值 5/(600.13×10⁶) ≈ 8.3×10⁻⁹ /h，等效時間常數 L/R ≈ 1.2×10⁸ h ≈ 13 700 年；若線圈電感假設為 100 H，整個迴路電阻只有 100/(1.2×10⁸×3600) ≈ 2.3×10⁻¹⁰ Ω。不鎖場量測 12 小時，峰位漂移 60 Hz（0.1 ppm），過夜的二維譜會被拉長；此場的 ²H 鎖場頻率為 92.12 MHz。~A 600 MHz magnet drifting 5 Hz/h changes by 5/(600.13×10⁶) ≈ 8.3×10⁻⁹ per hour, an equivalent time constant L/R ≈ 1.2×10⁸ h or about 13 700 years; with an assumed coil inductance of 100 H the whole loop resistance is only 100/(1.2×10⁸×3600) ≈ 2.3×10⁻¹⁰ Ω. Measuring unlocked for 12 hours drifts peaks by 60 Hz (0.1 ppm) and smears an overnight 2D spectrum; the ²H lock frequency in this field is 92.12 MHz.",
+      "verify": "鎖場關閉時以固定頻率取一系列短譜，追蹤水或 TMS 峰位隨時間的變化求出 Hz/h 漂移並與出廠規格比較；記錄液氦與液氮液位或冷頭狀態的長期趨勢；開啟鎖場後確認鎖定訊號穩定、鎖相位與增益恰當，並以 2 小時連續取譜確認峰位變化小於 0.1 Hz。~With the lock off, acquire a series of short spectra at fixed frequency and track the water or TMS peak position over time to obtain the Hz/h drift for comparison with the factory specification; log long-term trends of liquid helium and nitrogen levels or cryocooler status; with the lock on, confirm a stable lock signal with appropriate lock phase and gain and verify by two hours of continuous acquisition that peaks move less than 0.1 Hz.",
+      "failure": "鎖場增益或相位設定錯誤，鎖迴路振盪讓所有峰出現調變旁帶並變寬；液氦液位長期低於最低值而未補充，線圈局部失超，磁場在數秒內消失並大量蒸發氦氣，磁體需重新降溫與充磁而停機數週。~Wrong lock gain or phase makes the lock loop oscillate, adding modulation sidebands to every peak and broadening them; letting the liquid-helium level sit below its minimum allows a local quench, the field collapses within seconds while helium boils off, and the magnet must be re-cooled and re-energised over weeks of downtime.",
+      "misconception": "超導磁體的電流永不衰減，所以 NMR 不需要鎖場。~A superconducting magnet's current never decays, so NMR needs no lock."
+    },
+    {
+      "anchor": "射頻線圈、調諧電路與低溫前置放大器~RF coil, tuning circuit and cryogenic preamplifier",
+      "title": "探頭、低溫探頭與訊噪比~Probe, cryoprobe and signal-to-noise ratio",
+      "mechanism": "探頭把射頻線圈放在磁體中心，溶液 NMR 多用鞍形線圈產生垂直於 B₀ 的 B₁；線圈與電容組成共振電路，必須調諧到觀測核的拉莫頻率並匹配到 50 Ω。訊噪比約正比於 √(ηQ/T_noise)，η 是填充因子，Q 是電路品質因數，T_noise 包含線圈、樣品與前置放大器的雜訊溫度。低溫探頭把線圈與前置放大器冷卻到約 20 K（氦冷）或液氮溫度，同時提高 Q 並降低熱雜訊，可得數倍訊噪比；但樣品仍在室溫，含鹽水溶液的導電與介電損耗會讓樣品雜訊成為主導項，使增益大幅縮水。~The probe places the RF coil at the magnet centre; solution NMR usually uses a saddle coil producing B₁ perpendicular to B₀, and the coil with its capacitors forms a resonant circuit that must be tuned to the observed nucleus's Larmor frequency and matched to 50 Ω. Signal-to-noise scales roughly as √(ηQ/T_noise), with η the filling factor, Q the circuit quality factor and T_noise the combined noise temperature of coil, sample and preamplifier. A cryogenic probe cools the coil and preamplifier to about 20 K with helium or to liquid-nitrogen temperature, raising Q and cutting thermal noise for several-fold gains; but the sample stays at room temperature, and conductive and dielectric losses of a salty aqueous solution make sample noise dominant and shrink the gain sharply.",
+      "model": "以相對值估算：室溫探頭線圈電阻 1、298 K，前置放大器雜訊溫度 35 K；低溫探頭 Q 提高 3 倍（電阻 1/3）、線圈 20 K、前置放大器 10 K。無樣品損耗時訊噪比比值 = √((298 + 35)/((1/3)×20 + (1/3)×10)) = √(333/10) ≈ 5.8；若含鹽水樣品貢獻電阻 0.3（298 K），比值 = √((298 + 89.4 + 1.3×35)/(6.67 + 89.4 + 0.633×10)) = √(432.9/102.4) ≈ 2.1。~In relative units, a room-temperature probe has coil resistance 1 at 298 K and a 35 K preamplifier noise temperature, while a cryoprobe has 3 times the Q (resistance 1/3), a 20 K coil and a 10 K preamplifier. Without sample loss the signal-to-noise ratio improves by √((298 + 35)/((1/3)×20 + (1/3)×10)) = √(333/10) ≈ 5.8; if a salty aqueous sample adds resistance 0.3 at 298 K, the gain becomes √((298 + 89.4 + 1.3×35)/(6.67 + 89.4 + 0.633×10)) = √(432.9/102.4) ≈ 2.1.",
+      "verify": "以網路分析儀或內建調諧曲線確認線圈在 ¹H 與 ¹³C 頻率的反射最低點與匹配深度；以 0.1% 乙苯或廠商標準樣品量 ¹H 訊噪比，與規格及上次紀錄比較；再以含 150 mM 氯化鈉的水溶液重量，量化鹽分造成的訊噪比與 90° 脈衝寬度變化，建立鹽濃度修正表。~Confirm the reflection minimum and match depth of the coil at the ¹H and ¹³C frequencies with a network analyser or the built-in tuning display; measure ¹H signal-to-noise on 0.1% ethylbenzene or the vendor standard and compare with the specification and the previous record; repeat with an aqueous solution containing 150 mM sodium chloride to quantify the salt-induced change in signal-to-noise and 90° pulse width, building a salt-correction table.",
+      "failure": "換了溶劑或鹽濃度卻沒有重新調諧匹配，反射功率增加，90° 脈衝變長且訊噪比下降 30%，定量與多維實驗的脈衝角度全部偏離；低溫探頭真空劣化或冷卻中斷時線圈升溫，靈敏度突然掉到室溫探頭以下，若未監測冷卻狀態就會誤判為樣品濃度過低。~Changing solvent or salt concentration without retuning and rematching raises reflected power, lengthens the 90° pulse and cuts signal-to-noise by 30%, so every pulse angle in quantitative and multidimensional experiments is off; a cryoprobe whose vacuum degrades or whose cooling stops warms up and suddenly falls below room-temperature-probe sensitivity, which without cooling-status monitoring is misread as a dilute sample.",
+      "misconception": "低溫探頭對所有樣品都能提供相同的四到五倍靈敏度增益。~A cryoprobe gives the same four- to five-fold sensitivity gain for every sample."
+    },
+    {
+      "anchor": "室溫勻場線圈與線形~Room-temperature shim coils and line shape",
+      "title": "勻場、磁場均勻度與線形校正~Shimming, field homogeneity and line-shape calibration",
+      "mechanism": "超導磁體本身的均勻度不足以給出次 Hz 線寬，樣品、樣品管與探頭材料的磁化率也會扭曲局部磁場，所以磁體孔內放置數十組依球諧函數設計的室溫勻場線圈（Z1–Z5、X、Y、XZ、XY 等），以電流抵銷各階梯度。現代儀器以脈衝場梯度量出磁場分布圖，自動求解勻場電流，再手動微調高階項。線形不只看半高寬，還要看接近基線的裙擺：偶數階 Z 項錯誤造成對稱展寬，奇數階造成不對稱，樣品旋轉時的橫向不均勻則產生旋轉邊帶。~A superconducting magnet alone is not homogeneous enough for sub-hertz linewidths, and the magnetic susceptibility of sample, tube and probe materials distorts the local field, so the bore holds dozens of room-temperature shim coils designed as spherical harmonics (Z1–Z5, X, Y, XZ, XY and others) whose currents cancel each gradient order. Modern instruments map the field with pulsed field gradients and solve for shim currents automatically before high orders are refined manually. Line shape is judged not only by half-height width but also by the skirt near the baseline: even-order Z errors broaden symmetrically, odd orders skew the line, and transverse inhomogeneity with sample spinning produces spinning sidebands.",
+      "model": "若殘餘 Z1 梯度為 1 ppb/mm、有效樣品長度 18 mm，場差 18 ppb，在 600 MHz 造成 10.8 Hz 展寬；要讓線寬 ≤ 0.5 Hz，梯度需小於 0.5/(600.13×10⁶) ÷ 18 mm ≈ 0.046 ppb/mm。線形測試常以 CHCl₃ 峰在 50%、0.55%、0.11% 高度量寬，目標假設為 0.5、6、12 Hz，對應的均勻度分別約 0.83、10、20 ppb。~A residual Z1 gradient of 1 ppb/mm over an 18 mm active sample length spreads the field by 18 ppb, a 10.8 Hz broadening at 600 MHz; a linewidth of 0.5 Hz or less needs a gradient below 0.5/(600.13×10⁶) ÷ 18 mm ≈ 0.046 ppb/mm. Line-shape tests commonly measure the CHCl₃ peak width at 50%, 0.55% and 0.11% of height, with assumed targets of 0.5, 6 and 12 Hz corresponding to homogeneities of about 0.83, 10 and 20 ppb.",
+      "verify": "以標準線形樣品先做梯度勻場並記錄每組勻場電流；取單一脈衝譜，以 50%、0.55%、0.11% 三個高度量寬並與允收值比較；比較樣品旋轉與不旋轉時的邊帶高度；把最佳勻場檔存為各探頭與溶劑的基準，換樣品後只以梯度勻場修正低階項並記錄修正量。~Gradient-shim a standard line-shape sample and log every shim current; acquire a single-pulse spectrum, measure widths at 50%, 0.55% and 0.11% of height and compare with the allowances; compare sideband heights with and without sample spinning; store the best shim file as the baseline for each probe and solvent, and after sample changes correct only low orders by gradient shimming while logging the corrections.",
+      "failure": "樣品管液高不足或有氣泡，管端的磁化率不連續讓高階 Z 項無法修正，線形出現寬裙擺，0.1% 等級的小峰被掩埋在大峰底部而在雜質定量中漏報；彎曲或品質差的樣品管旋轉時晃動，旋轉邊帶與真實的耦合峰或衛星峰混淆。~An under-filled tube or a bubble creates a susceptibility discontinuity that high-order Z shims cannot correct, leaving a broad skirt that buries 0.1%-level peaks beneath a large one so impurities go unreported; a bent or poor-quality tube wobbles while spinning and its spinning sidebands are confused with genuine coupling or satellite peaks.",
+      "misconception": "只要半高寬夠窄，勻場就算完成。~If the half-height width is narrow enough, shimming is finished."
+    },
+    {
+      "anchor": "90° 脈衝、FID 取樣與弛豫延遲~90° pulse, FID sampling and relaxation delay",
+      "title": "脈衝校正、FID 取樣與定量的弛豫預算~Pulse calibration, FID sampling and the relaxation budget for quantitation",
+      "mechanism": "射頻脈衝在旋轉座標中讓磁化繞 B₁ 轉動 θ = γB₁t_p，90° 脈衝把全部縱向磁化轉到橫向，訊號最大；脈衝寬度隨探頭調諧、樣品導電度與功率而變，必須每個樣品校正。FID 以正交偵測取樣，取樣間隔 1/SW 決定譜寬，擷取時間 AQ 決定數位解析度 1/AQ，再經切趾函數與傅立葉轉換成頻譜。定量時兩次掃描之間必須讓縱向磁化依 1 − e^(−t/T₁) 回復，T₁ 不同的訊號若回復不完全，積分比就偏離真實的質子數比。~A radio-frequency pulse rotates the magnetisation about B₁ in the rotating frame by θ = γB₁t_p, and a 90° pulse turns all longitudinal magnetisation into the transverse plane for maximum signal; the pulse width varies with probe tuning, sample conductivity and power and must be calibrated per sample. The FID is sampled with quadrature detection, the dwell 1/SW sets the spectral width and the acquisition time AQ sets the digital resolution 1/AQ before apodisation and Fourier transformation produce the spectrum. For quantitation the longitudinal magnetisation must recover as 1 − e^(−t/T₁) between scans, and incompletely recovered signals with different T₁ give integral ratios that depart from the true proton-count ratios.",
+      "model": "90° 脈衝 10 µs 對應 B₁ = (π/2)/(γt_p) = 1.571/(2.675×10⁸×10⁻⁵) ≈ 0.587 mT，章動頻率 25 kHz。600 MHz 時譜寬 20 ppm = 12 003 Hz，取樣間隔 83.3 µs；AQ = 3 s 給 0.33 Hz 數位解析度、約 36 000 個複數點。兩個訊號 T₁ = 3 s 與 1 s，若每 3 s 重複 90° 脈衝，回復分別為 0.632 與 0.950，積分比偏低 33%；重複時間 15 s（5T₁）時回復為 0.993 與 1.000，偏差 0.7%。~A 10 µs 90° pulse corresponds to B₁ = (π/2)/(γt_p) = 1.571/(2.675×10⁸×10⁻⁵) ≈ 0.587 mT, a 25 kHz nutation frequency. At 600 MHz a 20 ppm spectral width is 12 003 Hz with an 83.3 µs dwell; AQ = 3 s gives 0.33 Hz digital resolution and about 36 000 complex points. For two signals with T₁ = 3 s and 1 s, repeating 90° pulses every 3 s recovers 0.632 and 0.950, so their integral ratio reads 33% low; a 15 s repetition (5T₁) recovers 0.993 and 1.000, a 0.7% bias.",
+      "verify": "以零點法找出訊號通過零的 360° 脈衝再除以 4 得 90° 寬度，每個定量樣品都重做；以反轉回復實驗量待測與內標訊號的 T₁，把重複時間設為最長 T₁ 的 5 到 7 倍；再以兩種已知質量比的標準品做定量，確認積分比與重量比相符在 1% 內。~Find the 360° pulse where the signal passes through zero and divide by four for the 90° width, repeating for every quantitative sample; measure T₁ of the analyte and internal-standard signals by inversion recovery and set the repetition time to 5 to 7 times the longest T₁; then quantify two standards of known mass ratio and confirm that the integral ratio matches the weighed ratio within 1%.",
+      "failure": "沿用前一個樣品的 90° 脈衝，含鹽樣品實際需要更長脈衝，所有實驗變成約 70° 脈衝且相位循環失效，二維譜出現假交叉峰；為了省時把重複時間縮到 2 s，長 T₁ 的芳香或烯基質子被低估，純度結果系統性偏差達數十個百分點。~Reusing the previous sample's 90° pulse on a salty sample that needs a longer one turns every experiment into a roughly 70° pulse, breaks phase cycling and puts false cross-peaks into 2D spectra; shortening the repetition time to 2 s to save time under-represents long-T₁ aromatic or olefinic protons and biases purity results by tens of percentage points.",
+      "misconception": "NMR 積分在任何取樣條件下都直接等於質子數比例。~NMR integrals equal proton-count ratios under any acquisition conditions."
+    },
+    {
+      "anchor": "磁體場地、振動與變溫單元~Magnet site, vibration and variable-temperature unit",
+      "title": "場地、振動旁帶與冷媒整合~Site, vibration sidebands and cryogen integration",
+      "mechanism": "NMR 的系統整合從場地開始：雜散磁場 0.5 mT 線內須管制心律調節器使用者與鐵磁物件，鄰近電梯、車輛與鋼構移動會擾動磁場；地板振動經磁體腳架與探頭傳到樣品，在殘餘梯度中調變共振頻率，於主峰兩側形成以振動頻率為間距的旁帶。液氦與液氮補充週期、冷頭或零蒸發系統維護、失超排氣管與氧氣監測屬於設計階段就要確定的安全基礎設施。變溫單元以加熱氣流控制樣品溫度，溫度梯度會引起對流並劣化線形，實際溫度需以甲醇或乙二醇的化學位移差校正。~NMR integration starts with the site: inside the 0.5 mT stray-field line pacemaker wearers and ferromagnetic objects must be controlled, and nearby lifts, vehicles and moving steelwork disturb the field; floor vibration travels through the magnet legs and probe to the sample and modulates its resonance in residual gradients, producing sidebands spaced by the vibration frequency on both sides of every main peak. Helium and nitrogen fill intervals, cryocooler or zero-boil-off maintenance, quench vent lines and oxygen monitoring are safety infrastructure to be fixed at the design stage. The variable-temperature unit controls sample temperature with a heated gas flow, temperature gradients drive convection and degrade line shape, and the actual temperature must be calibrated from the shift difference of methanol or ethylene glycol.",
+      "model": "地板振動 15 Hz 調變樣品處磁場，假設峰值頻率偏移 δν = 0.05 Hz，調變指數 β = δν/f_v = 0.05/15 ≈ 0.0033，旁帶出現在 ±15 Hz、相對高度約 β/2 ≈ 0.17%；對訊噪比 10 000 的主峰，旁帶約為雜訊的 17 倍，足以被誤認為 0.17% 的雜質。液氦假設蒸發 15 mL/h，每天 0.36 L，120 天約 43 L，補充排程必須依實測蒸發率訂定。~Floor vibration at 15 Hz modulating the field at the sample with an assumed peak deviation δν = 0.05 Hz gives a modulation index β = δν/f_v = 0.05/15 ≈ 0.0033, so sidebands appear at ±15 Hz with relative height about β/2 ≈ 0.17%; on a main peak with signal-to-noise 10 000 they stand about 17 times above the noise, enough to be mistaken for a 0.17% impurity. Assuming 15 mL/h of helium boil-off, consumption is 0.36 L per day and about 43 L per 120 days, so the fill schedule must follow the measured rate.",
+      "verify": "以加速規在磁體腳架與地板量測振動頻譜，與 NMR 譜上旁帶的頻率間距比對確認來源；量測主峰兩側旁帶的相對高度並追蹤隔振腳墊或氣浮腳等改善措施的效果；以甲醇樣品校正變溫單元的實際溫度；記錄液氦液位曲線推算蒸發率並訂出補充日期。~Measure vibration spectra on the magnet legs and floor with an accelerometer and match them to the sideband spacing in NMR spectra to confirm the source; measure the relative sideband height on both sides of a main peak and track the effect of remedies such as damping pads or pneumatic legs; calibrate the variable-temperature unit's actual temperature with a methanol sample; log the liquid-helium level curve to derive the boil-off rate and set fill dates.",
+      "failure": "新裝的空調機組或樓上設備帶來 20–30 Hz 振動，旁帶在藥物雜質或代謝體等高動態範圍實驗中被報成未知成分；液氦補充排程沒有依實測蒸發率調整，長假期間液位跌破最低點引發失超，磁體停機數週並需重新充磁。~A newly installed air-handling unit or equipment upstairs introduces 20–30 Hz vibration, and its sidebands are reported as unknown components in high-dynamic-range work such as pharmaceutical impurities or metabolomics; a helium fill schedule not adjusted to the measured boil-off lets the level fall below minimum over a long holiday, causing a quench, weeks of downtime and re-energisation.",
+      "misconception": "NMR 磁場夠強，周圍的振動與磁性物件不會影響量測。~The NMR field is so strong that nearby vibration and magnetic objects cannot affect measurements."
+    },
+    {
+      "anchor": "靈敏度、線形與溫度驗收表~Sensitivity, line-shape and temperature acceptance table",
+      "title": "儀器驗收與工程交接~Instrument acceptance and engineering handoff",
+      "mechanism": "NMR 驗收把前面各單元的模型逐一轉成測試：漂移與鎖場穩定度驗證磁體，標準樣品的 ¹H 與 ¹³C 訊噪比驗證探頭與接收鏈，CHCl₃ 線形驗證勻場，90° 脈衝寬度與功率驗證發射鏈與調諧，甲醇溫度計驗證變溫單元，脈衝場梯度回復與旁帶高度驗證整合。交接紀錄須包含每個探頭與溶劑的勻場檔、各核的 90° 脈衝與功率、量到的訊噪比與線形、磁體漂移與冷媒液位趨勢，以及定量方法所用的 T₁ 與重複時間，使任何異常都能追溯到具體元件。~NMR acceptance turns each earlier model into a test: drift and lock stability verify the magnet, ¹H and ¹³C signal-to-noise on standards verify the probe and receiver chain, the CHCl₃ line shape verifies shimming, 90° pulse widths and powers verify the transmit chain and tuning, a methanol thermometer verifies the variable-temperature unit, and pulsed-field-gradient recovery and sideband height verify integration. The handoff record must contain shim files per probe and solvent, 90° pulses and powers per nucleus, measured signal-to-noise and line shapes, magnet drift and cryogen-level trends, and the T₁ values and repetition times used in quantitative methods, so that any anomaly can be traced to a specific component.",
+      "model": "驗收範例：鎖場關閉時漂移 3 Hz/h（允收 ≤ 5 Hz/h）；CHCl₃ 線形 0.45/5.2/10.8 Hz（50%/0.55%/0.11%，目標 0.5/6/12 Hz）；¹H 90° 脈衝 9.6 µs；0.1% 乙苯 ¹H 訊噪比 1150:1（假設允收 1000:1），16 次掃描依 √16 預期 4600:1、實測 4520:1；甲醇溫度計 298.0 ± 0.1 K；振動旁帶 0.03%，低於 0.1% 允收值。~Example acceptance: unlocked drift is 3 Hz/h against an allowance of 5 Hz/h; the CHCl₃ line shape is 0.45/5.2/10.8 Hz at 50%/0.55%/0.11% against targets of 0.5/6/12 Hz; the ¹H 90° pulse is 9.6 µs; ¹H signal-to-noise on 0.1% ethylbenzene is 1150:1 against an assumed 1000:1 allowance, and 16 scans should give 4600:1 by √16 with 4520:1 measured; the methanol thermometer reads 298.0 ± 0.1 K; vibration sidebands are 0.03%, below the 0.1% allowance.",
+      "verify": "依固定順序執行：冷媒液位與漂移、鎖場、調諧匹配、梯度勻場與線形、90° 脈衝、¹H 與 ¹³C 訊噪比、溫度校正、旁帶與梯度回復；每項結果與模型值並列於驗收表，超出允收值時記錄原因並重做，最後把勻場檔、脈衝表與趨勢圖一起交接並排定下次驗證日期。~Execute in a fixed order: cryogen levels and drift, lock, tuning and matching, gradient shimming and line shape, 90° pulses, ¹H and ¹³C signal-to-noise, temperature calibration, sidebands and gradient recovery; enter each result beside its model value in the acceptance table, record the cause and repeat any item outside its allowance, and hand over shim files, the pulse table and trend plots with the next verification date.",
+      "failure": "驗收只用室溫探頭，日後換上低溫探頭時沒有重新量訊噪比與脈衝，含鹽生物樣品的靈敏度只有預期的一半卻無人察覺；交接紀錄沒有冷媒趨勢，冷頭故障讓蒸發率加倍，直到液位警報響起才發現，已來不及安排補充。~Accepting only the room-temperature probe means that when a cryoprobe is later installed nobody re-measures signal-to-noise and pulses, so salty biological samples run at half the expected sensitivity unnoticed; with no cryogen trend in the handoff record, a cryocooler fault that doubles boil-off is discovered only when the level alarm sounds, too late to schedule a fill.",
+      "misconception": "訊噪比規格合格就代表 NMR 儀器的所有性能都合格。~Passing the signal-to-noise specification means every NMR performance item passes."
+    }
+  ],
+  "example": "定量 NMR 純度練習（600.13 MHz、DMSO-d₆）：秤取阿斯匹靈樣品 20.00 mg（M = 180.16 g/mol，乙醯基 CH₃ 3H 單峰約 2.2 ppm）與馬來酸內標 10.00 mg（M = 116.07 g/mol，烯基 2H 單峰約 6.3 ppm，純度 99.9%）。積分比 I_x/I_std = 1.906，純度 P = (I_x/I_std)(N_std/N_x)(M_x/M_std)(m_std/m_x)P_std = 1.906×(2/3)×(180.16/116.07)×(10.00/20.00)×0.999 ≈ 98.5%。假設 T₁(CH₃) = 1.5 s、T₁(內標) = 4 s：若每 5 s 重複 90° 脈衝，回復分別為 0.964 與 0.713，積分比被放大 1.35 倍，算出不合理的 133%；重複時間 20 s（內標的 5T₁）時偏差 +0.68%；28 s（7T₁）時只剩 +0.09%。16 次掃描需 16 × 28 s ≈ 7.5 分鐘。數值為教學假設，不代表任何實機規格。~Quantitative NMR purity exercise at 600.13 MHz in DMSO-d₆: weigh 20.00 mg of an aspirin sample (M = 180.16 g/mol, acetyl CH₃ 3H singlet near 2.2 ppm) and 10.00 mg of maleic acid internal standard (M = 116.07 g/mol, olefinic 2H singlet near 6.3 ppm, purity 99.9%). With an integral ratio I_x/I_std = 1.906 the purity is P = (I_x/I_std)(N_std/N_x)(M_x/M_std)(m_std/m_x)P_std = 1.906×(2/3)×(180.16/116.07)×(10.00/20.00)×0.999 ≈ 98.5%. Assuming T₁(CH₃) = 1.5 s and T₁(standard) = 4 s, repeating 90° pulses every 5 s recovers 0.964 and 0.713, inflating the integral ratio 1.35-fold to an impossible 133%; a 20 s repetition (5T₁ of the standard) leaves a +0.68% bias and 28 s (7T₁) only +0.09%. Sixteen scans then take 16 × 28 s ≈ 7.5 minutes. Values are teaching assumptions, not any instrument's specification.",
+  "history": "1938 年 Rabi 以分子束觀測到核磁共振，1945–46 年 Felix Bloch（史丹佛）與 Edward Purcell（哈佛）分別在凝態物質中偵測到 NMR，兩人共獲 1952 年諾貝爾物理獎；1950 年前後發現化學位移與 J 耦合，使 NMR 成為化學結構工具。1966 年 Richard Ernst 與 Weston Anderson 在 Varian 發展脈衝傅立葉轉換 NMR，Ernst 獲 1991 年諾貝爾化學獎；超導磁體從 1960 年代起不斷提高場強，Kurt Wüthrich 以 NMR 解析蛋白質結構獲 2002 年諾貝爾化學獎，2020 年起含高溫超導內插線圈的 1.2 GHz（28.2 T）磁體投入使用。本課只重建公開的物理與工程邏輯。~In 1938 Rabi observed nuclear magnetic resonance in molecular beams, and in 1945–46 Felix Bloch at Stanford and Edward Purcell at Harvard independently detected NMR in condensed matter, sharing the 1952 Nobel Prize in Physics; the discovery of chemical shift and J coupling around 1950 made NMR a tool for chemical structure. In 1966 Richard Ernst and Weston Anderson at Varian developed pulsed Fourier-transform NMR, earning Ernst the 1991 Nobel Prize in Chemistry; superconducting magnets have raised field strength since the 1960s, Kurt Wüthrich received the 2002 Nobel Prize in Chemistry for protein structures by NMR, and from 2020 magnets of 1.2 GHz (28.2 T) with high-temperature-superconductor inserts entered service. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "美國國家強磁場實驗室（塔拉赫西）~National High Magnetic Field Laboratory, Tallahassee",
+    "country": "美國~United States",
+    "lat": 30.4263,
+    "lng": -84.3209,
+    "query": "National High Magnetic Field Laboratory Tallahassee"
+  },
+  "sources": [
+    {
+      "key": "bruker-ascend-nmr-magnets",
+      "title": "Bruker：Ascend NMR 超導磁體",
+      "titleEn": "Bruker: Ascend NMR magnets",
+      "publisher": "Bruker",
+      "url": "https://www.bruker.com/en/products-and-solutions/mr/nmr/ascend-nmr-magnets.html",
+      "sourceType": "primary",
+      "scope": "高解析 NMR 超導磁體的公開產品頁，涵蓋場強系列、主動遮蔽與冷媒消耗設計；課程數值為教學假設。",
+      "scopeEn": "Public product page of high-resolution NMR superconducting magnets covering field range, active shielding and cryogen-consumption design; course numbers are teaching assumptions."
+    },
+    {
+      "key": "bruker-cryoprobe-prodigy",
+      "title": "Bruker：CryoProbe Prodigy 液氮冷卻探頭",
+      "titleEn": "Bruker: CryoProbe Prodigy nitrogen-cooled probe",
+      "publisher": "Bruker",
+      "url": "https://bruker.com/en/products-and-solutions/mr/nmr/cryoprobes/CryoProbe-Prodigy.html",
+      "sourceType": "primary",
+      "scope": "以液氮冷卻射頻線圈與前置放大器提升靈敏度的探頭公開說明。",
+      "scopeEn": "Public description of a probe that cools RF coils and preamplifiers with liquid nitrogen to raise sensitivity."
+    },
+    {
+      "key": "jeol-usa-nmr",
+      "title": "JEOL USA：核磁共振光譜儀",
+      "titleEn": "JEOL USA: nuclear magnetic resonance spectrometers",
+      "publisher": "JEOL USA",
+      "url": "https://www.jeolusa.com/PRODUCTS/Nuclear-Magnetic-Resonance",
+      "sourceType": "primary",
+      "scope": "NMR 主機、磁體與探頭的公開產品入口，涵蓋溶液與固態 NMR 系統。",
+      "scopeEn": "Public product portal for NMR consoles, magnets and probes covering solution and solid-state systems."
+    },
+    {
+      "key": "maglab-nmr-mri-facility",
+      "title": "美國國家強磁場實驗室：NMR/MRI 使用者設施",
+      "titleEn": "National MagLab: NMR/MRI user facilities",
+      "publisher": "National High Magnetic Field Laboratory",
+      "url": "https://nationalmaglab.org/user-facilities/nmr-mri",
+      "sourceType": "primary",
+      "scope": "國家級高場 NMR 與 MRI 使用者設施的公開介紹，涵蓋高場磁體與光譜儀配置。",
+      "scopeEn": "Public introduction to a national high-field NMR and MRI user facility, covering high-field magnets and spectrometer configurations."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "布魯克",
+      "nameEn": "Bruker",
+      "business": "科學儀器集團，磁共振部門提供 NMR 主機、超導磁體與低溫探頭。",
+      "businessEn": "Scientific-instrument group whose magnetic-resonance division supplies NMR consoles, superconducting magnets and cryoprobes.",
+      "url": "https://www.bruker.com/",
+      "investorUrl": "https://ir.bruker.com/",
+      "security": {"symbol": "BRKR", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "高場 NMR 磁體、主機與低溫探頭的公開資訊",
+      "roleEn": "Public information on high-field NMR magnets, consoles and cryoprobes"
+    },
+    {
+      "name": "日本電子",
+      "nameEn": "JEOL",
+      "business": "日本科學儀器公司，產品涵蓋電子顯微鏡、質譜儀與 NMR 光譜儀。",
+      "businessEn": "Japanese scientific-instrument company whose products span electron microscopes, mass spectrometers and NMR spectrometers.",
+      "url": "https://www.jeol.com/",
+      "investorUrl": "https://www.jeol.com/ir/",
+      "security": {"symbol": "6951", "exchange": "TSE", "currency": "JPY"},
+      "role": "溶液與固態 NMR 系統的公開產品資訊",
+      "roleEn": "Public product information on solution and solid-state NMR systems"
+    },
+    {
+      "name": "美國國家強磁場實驗室",
+      "nameEn": "National High Magnetic Field Laboratory",
+      "business": "由美國國家科學基金會支持的強磁場研究機構，提供高場 NMR 與 MRI 使用者設施。",
+      "businessEn": "High-field research institution supported by the US National Science Foundation, operating high-field NMR and MRI user facilities.",
+      "url": "https://nationalmaglab.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "高場 NMR 設施與磁體技術的公開資訊",
+      "roleEn": "Public information on high-field NMR facilities and magnet technology"
+    }
+  ],
+  "related": ["a451", "a449"],
+  "architectureNodes": [["超導磁體與冷媒杜瓦", "Superconducting magnet and cryostat"], ["室溫勻場與梯度線圈", "Room-temperature shim and gradient coils"], ["探頭：射頻線圈與調諧", "Probe: RF coil and tuning"], ["射頻發射與功率放大器", "RF transmitter and power amplifiers"], ["前置放大器、數位接收器與鎖場", "Preamplifier, digital receiver and lock"], ["FID 處理與傅立葉轉換", "FID processing and Fourier transform"]],
+  "architectureEdges": [[0, 2], [1, 2], [3, 2], [2, 4], [4, 5], [4, 1]]
+}

@@ -118,7 +118,7 @@ class TutorRouteHTTPTests(unittest.TestCase):
         self.server.app = server.Application(root / 'data' / 'accounts.sqlite3', public, self.origin)
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
-        status, headers, data = self.call('POST', '/api/register', {'email': 'routes@example.test', 'name': 'Learner', 'password': 'test-passphrase-long'})
+        status, headers, data = self.call('POST', '/api/register', {'email': 'routes@example.test', 'name': 'Learner', 'password': 'test-passphrase-long', 'username': 'routes_learner', 'phone': '+886912345678'})
         self.assertEqual(status, 200, data)
         self.cookie = headers['Set-Cookie'].split(';')[0]
 

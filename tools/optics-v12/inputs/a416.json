@@ -1,0 +1,172 @@
+{
+  "id": "a416",
+  "title": "繞射光學元件製作~Diffractive optical-element fabrication",
+  "discipline": "optics-coatings-elements",
+  "family": "coating",
+  "focus": "以純量繞射效率、相位階數與蝕刻深度控制，把微影製作的繞射元件做到可驗收的效率與零級洩漏~Bringing lithographically made diffractive elements to acceptable efficiency and zero-order leakage through scalar efficiency, phase-level count and etch-depth control",
+  "summary": "本課從 2π 相位摺疊與 M 階量化的 sinc² 效率出發，說明設計波長失諧與深度誤差如何把能量漏到零級與高階，再走過二元微影的光罩數與最小線寬、反應離子蝕刻與灰階直寫、奈米壓印複製，用輪廓儀與零級洩漏量測建立效率誤差預算，最後以混合折射繞射消色差透鏡的整合與規格交接收尾。~Starting from 2π phase wrapping and the sinc² efficiency of M-level quantisation, the course shows how design-wavelength detuning and depth error leak energy into the zero and higher orders, walks through mask count and minimum feature in binary lithography, reactive-ion etching, grayscale direct writing and nanoimprint replication, builds an efficiency error budget from profilometry and zero-order leakage measurement, and closes with hybrid refractive-diffractive achromat integration and specification handoff.",
+  "units": [
+    {
+      "anchor": "2π 相位摺疊與 M 階階梯~2π phase wrapping and the M-level staircase",
+      "title": "純量繞射、相位量化與效率~Scalar diffraction, phase quantisation and efficiency",
+      "mechanism": "繞射光學元件把一個連續的相位函數以 2π 為模數摺疊成薄的表面浮雕，每個週期內相位從 0 線性升到 2π，理想的閃耀（kinoform）輪廓在設計波長把全部能量送進第一繞射級。微影製作無法做出連續斜面，而是以 M 個等高階梯逼近，純量理論給出第一級效率 η = sinc²(1/M)，剩餘能量分散到其他級次。浮雕的總深度由材料折射率決定，d = λ₀/(n − 1)，階數越多越接近連續輪廓，但每多一個光罩就多一次對準與蝕刻，製程誤差也隨之累積。~A diffractive optical element folds a continuous phase function modulo 2π into a thin surface relief, the phase rising linearly from 0 to 2π within each period, and an ideal blazed (kinoform) profile sends all the energy into the first diffraction order at the design wavelength. Lithography cannot make a continuous slope, so it approximates it with M equal-height steps; scalar theory gives a first-order efficiency η = sinc²(1/M), with the remainder spread over other orders. The total relief depth is set by the material index, d = λ₀/(n − 1); more levels approach the continuous profile, but every extra mask adds an alignment and an etch, and process errors accumulate accordingly.",
+      "model": "η_M = [sin(π/M)/(π/M)]²：M = 2 為 0.405，4 為 0.811，8 為 0.950，16 為 0.987，32 為 0.997，連續輪廓為 1。熔融石英在 633 nm 的 n = 1.457，閃耀深度 d = 633/0.457 ≈ 1385 nm；8 階元件的實際最大深度為 d×7/8 ≈ 1212 nm，每階 ≈ 173 nm，由三道光罩分別蝕刻 693、346、173 nm 完成。~η_M = [sin(π/M)/(π/M)]²: 0.405 for M = 2, 0.811 for 4, 0.950 for 8, 0.987 for 16, 0.997 for 32 and 1 for a continuous profile. Fused silica has n = 1.457 at 633 nm, so the blaze depth d = 633/0.457 ≈ 1385 nm; an 8-level element has an actual maximum depth of d×7/8 ≈ 1212 nm with ≈ 173 nm per step, produced by three masks etched 693, 346 and 173 nm deep.",
+      "verify": "製作 2、4、8 階的同週期光柵，用 He-Ne 雷射照射並以功率計量各繞射級的功率，比較第一級效率與 sinc² 預測值；同時以輪廓儀量總深度與階高，確認深度與 λ₀/(n − 1) 的關係。~Make gratings of the same period with 2, 4 and 8 levels, illuminate with a He-Ne laser and measure each order's power with a power meter, comparing first-order efficiency with the sinc² prediction; measure total depth and step heights with a profilometer to confirm the relation to λ₀/(n − 1).",
+      "failure": "把為 PMMA（n = 1.49）設計的 1292 nm 深度直接用在熔融石英上，相位深度只有 2π×0.457/0.49，不足約 7%（ε ≈ −0.067），看似小，卻把約 0.5% 的能量送進零級並在雷射系統中形成中央亮點。~Using the 1292 nm depth designed for PMMA (n = 1.49) directly on fused silica gives a phase depth of only 2π×0.457/0.49, about 7% short (ε ≈ −0.067), which looks small yet sends about 0.5% of the energy into the zero order as a central hot spot in a laser system.",
+      "misconception": "相位階數加倍，繞射效率就會加倍。~Doubling the number of phase levels doubles the diffraction efficiency."
+    },
+    {
+      "anchor": "設計波長失諧與零級洩漏~Design-wavelength detuning and zero-order leakage",
+      "title": "波長失諧、深度誤差與級次洩漏~Wavelength detuning, depth error and order leakage",
+      "mechanism": "浮雕深度只在設計波長給出 2π 相位；波長改變或深度有誤差時，相位深度變成 2π(1 + ε)，第一級效率降為 sinc²(ε)，而零級與第二級各獲得約 ε² 量級的能量。這就是繞射元件強烈色散與對深度敏感的根源：在雷射系統裡，零級洩漏表現為未被整形的中央亮點，對光束整形器與分束器而言比效率損失更致命。寬頻應用需要混合折射繞射設計或多階（harmonic）繞射元件，把深度做成多個 2π 的整數倍以在數個波長同時閃耀。~The relief depth gives 2π of phase only at the design wavelength; when the wavelength changes or the depth is in error, the phase depth becomes 2π(1 + ε), first-order efficiency falls to sinc²(ε), and the zero and second orders each receive energy of order ε². This is the root of a diffractive element's strong dispersion and depth sensitivity: in a laser system zero-order leakage appears as an unshaped central hot spot, more damaging to beam shapers and splitters than the efficiency loss itself. Broadband use calls for hybrid refractive-diffractive designs or harmonic diffractive elements whose depth is several integer multiples of 2π so that several wavelengths blaze simultaneously.",
+      "model": "為 633 nm 閃耀的連續輪廓用在 532 nm：ε = 633/532 − 1 = 0.19，η₁ = sinc²(0.19) ≈ 0.887；用在 650 nm：ε = −0.026，η₁ ≈ 0.998。深度超量 5%（ε = 0.05）：η₁ = sinc²(0.05) ≈ 0.992，零級 η₀ = sinc²(1.05) ≈ ε²/(1 + ε)² ≈ 0.0023，即 0.23% 的中央亮點；反過來，量到 η₀ = 0.1% 就代表 ε ≈ 3.3%，深度偏差約 45 nm。~A continuous profile blazed for 633 nm used at 532 nm has ε = 633/532 − 1 = 0.19 and η₁ = sinc²(0.19) ≈ 0.887; at 650 nm, ε = −0.026 and η₁ ≈ 0.998. A 5% depth overshoot (ε = 0.05) gives η₁ = sinc²(0.05) ≈ 0.992 and a zero order η₀ = sinc²(1.05) ≈ ε²/(1 + ε)² ≈ 0.0023, a 0.23% central hot spot; conversely a measured η₀ = 0.1% implies ε ≈ 3.3%, a depth deviation of about 45 nm.",
+      "verify": "用兩個以上的雷射波長量同一元件的第一級與零級效率，與 sinc² 曲線擬合求出實際相位深度；在設計波長下以相機記錄零級亮點的相對強度，作為深度誤差的靈敏指標並與輪廓儀深度量測交叉比對。~Measure the first- and zero-order efficiencies of the same element at two or more laser wavelengths and fit the sinc² curve to extract the actual phase depth; at the design wavelength record the relative intensity of the zero-order spot with a camera as a sensitive depth-error indicator and cross-check against profilometer depth.",
+      "failure": "為 1064 nm 設計的光束整形器被用在 1030 nm 的光纖雷射，ε ≈ 3.3%，零級漏光 0.1% 聚焦後在工件中心燒出一個小孔，整形出的平頂光束因此報廢。~A beam shaper designed for 1064 nm used with a 1030 nm fibre laser has ε ≈ 3.3%; the 0.1% zero-order leak focuses into a small hole at the workpiece centre and ruins the flat-top profile.",
+      "misconception": "繞射元件在鄰近波長的表現與設計波長幾乎相同。~A diffractive element performs almost the same at nearby wavelengths as at its design wavelength."
+    },
+    {
+      "anchor": "三道光罩與最外環帶的最小線寬~Three masks and the minimum feature of the outermost zone",
+      "title": "二元微影：光罩數、最小線寬與環帶幾何~Binary lithography: mask count, minimum feature and zone geometry",
+      "mechanism": "二元光學以 N 道二元光罩製作 2ᴺ 階：第一道蝕刻 d/2、第二道 d/4、第三道 d/8，每道都要與前一道的圖形套準。繞射透鏡的環帶向外越來越密，最外環帶的週期等於波長除以數值孔徑，而最細線寬是週期除以階數，這決定了需要接觸式曝光、步進機還是電子束直寫。套準誤差對效率的傷害與最細線寬成反比，週期小、階數多的元件往往因為套準而不是階數限制了效率。~Binary optics builds 2ᴺ levels with N binary masks: the first etches d/2, the second d/4, the third d/8, and each must be overlaid on the previous pattern. The zones of a diffractive lens grow denser outward; the outermost period equals the wavelength divided by the numerical aperture, and the finest feature is that period divided by the level count, which decides between contact exposure, a stepper or electron-beam writing. Overlay error damages efficiency in inverse proportion to the finest feature, so small-period, many-level elements are often limited by overlay rather than by level count.",
+      "model": "f = 50 mm、D = 10 mm、λ = 633 nm 的繞射透鏡：NA ≈ 0.1，最外環帶週期 Λ_min = λ/NA ≈ 6.3 µm，環帶數 N = r²/(2fλ) = 25/(2×50×6.33×10⁻⁴) ≈ 395；8 階的最細線寬 ≈ 0.8 µm，i 線步進機可做。若 NA = 0.5，Λ_min ≈ 1.27 µm、最細線寬 0.16 µm，必須電子束直寫。純量模型（週期 10 µm、8 階）：第三道光罩套準偏 0.1 µm 使效率由 0.950 降到 0.907，第二與第三道各偏 0.1 µm 則降到 0.838。~A diffractive lens with f = 50 mm, D = 10 mm and λ = 633 nm has NA ≈ 0.1, an outermost period Λ_min = λ/NA ≈ 6.3 µm and N = r²/(2fλ) = 25/(2×50×6.33×10⁻⁴) ≈ 395 zones; the 8-level finest feature ≈ 0.8 µm suits an i-line stepper. At NA = 0.5, Λ_min ≈ 1.27 µm and the finest feature 0.16 µm demand electron-beam writing. Scalar model (10 µm period, 8 levels): a 0.1 µm overlay error on the third mask lowers efficiency from 0.950 to 0.907, and 0.1 µm on both the second and third masks to 0.838.",
+      "verify": "用套準標記在顯微鏡或 SEM 下量每道光罩的實際偏移，代入純量模型預測效率，與雷射量測的第一級效率比較；量最外環帶的線寬與設計值的差異（線寬損失），確認曝光劑量與顯影沒有把最細線條吃掉。~Measure the actual offset of each mask on overlay marks under a microscope or SEM, feed it into the scalar model to predict efficiency and compare with the laser-measured first-order value; measure the line-width loss of the outermost zone against design to confirm that exposure dose and development have not eroded the finest lines.",
+      "failure": "用對準精度 0.5 µm 的接觸式曝光機做週期 6 µm 的 8 階透鏡，第三道光罩的 0.75 µm 線條幾乎整條套歪，效率掉到 4 階的水準，多花的兩道光罩毫無收益。~Making a 6 µm period, 8-level lens on a contact aligner with 0.5 µm overlay misplaces almost the whole 0.75 µm line of the third mask; efficiency falls to 4-level territory and the two extra masks buy nothing.",
+      "misconception": "只要光罩畫得出來，階數就可以隨意增加。~As long as the masks can be drawn, the level count can be raised at will."
+    },
+    {
+      "anchor": "反應離子蝕刻、灰階直寫與壓印模具~Reactive-ion etching, grayscale writing and imprint mould",
+      "title": "蝕刻深度控制、灰階直寫與複製~Etch-depth control, grayscale writing and replication",
+      "mechanism": "浮雕以反應離子蝕刻或感應耦合電漿蝕刻轉移到熔融石英，深度由蝕刻速率與時間決定，速率隨腔體狀態漂移數個百分點，因此需要干涉式終點偵測或以見證片逐批校正，側壁角與微負載效應（密集區蝕刻較慢）則讓環帶內外的深度不一致。灰階直寫以雷射或電子束在光阻中寫入連續劑量，顯影後得到近似連續的輪廓再蝕刻轉移，省去套準但依賴光阻對比與蝕刻選擇比的線性。量產靠奈米壓印或 UV 澆鑄複製：以母模壓印聚合物，聚合物固化收縮會同時改變深度與橫向尺寸，後者直接改變繞射透鏡的焦距。~The relief is transferred into fused silica by reactive-ion or inductively coupled plasma etching, the depth set by etch rate and time; the rate drifts by several percent with chamber condition, so interferometric endpoint detection or per-batch witness calibration is needed, while sidewall angle and microloading (dense regions etch more slowly) make depth differ between inner and outer zones. Grayscale direct writing exposes a continuous dose into resist with a laser or electron beam, giving a near-continuous profile after development that is then etch-transferred, avoiding overlay but relying on the linearity of resist contrast and etch selectivity. Volume production uses nanoimprint or UV casting: a master mould is pressed into polymer, and curing shrinkage changes both depth and lateral dimensions, the latter shifting a diffractive lens's focal length directly.",
+      "model": "蝕刻速率 100 nm/min、目標階高 173 nm：速率漂移 3% 對應 5 nm 誤差（ε = 0.4%），終點偵測可壓到 2 nm。微負載使最外密集環帶比中心少蝕 4%，局部 η₀ 升到約 0.16%。壓印複製橫向收縮 1%：繞射透鏡 f = r²/(2Nλ) ∝ r²，焦距縮短 2%，50 mm 變成 49 mm；深度收縮 2% 只讓 η₁ 降到 sinc²(0.02) ≈ 0.9987。~With an etch rate of 100 nm/min and a target step of 173 nm, a 3% rate drift means 5 nm of error (ε = 0.4%), which endpoint detection reduces to 2 nm. Microloading that under-etches the dense outer zones by 4% raises the local η₀ to about 0.16%. A 1% lateral shrinkage in imprint replication: since the diffractive focal length f = r²/(2Nλ) ∝ r², the focal length shortens by 2%, from 50 mm to 49 mm; a 2% depth shrinkage only lowers η₁ to sinc²(0.02) ≈ 0.9987.",
+      "verify": "每批蝕刻放入見證片，用白光干涉輪廓儀量階高並回推當批蝕刻速率；在元件中心與邊緣各量一次階高，量化微負載差異；對壓印品以干涉儀量焦距與母模比較，由焦距比反推橫向收縮率。~Put a witness piece in every etch batch and measure step height with a white-light interferometric profiler to back out that batch's etch rate; measure step height at the element's centre and edge to quantify microloading; for imprinted parts measure focal length interferometrically against the master and infer lateral shrinkage from the focal ratio.",
+      "failure": "腔體清洗後蝕刻速率升高 8% 而未重新校正，整批元件深度超量，零級漏光 0.6% 在每個光束整形器中心留下亮點；壓印母模未補償收縮，複製透鏡焦距短了 1 mm，整個光學模組離焦。~An 8% etch-rate rise after chamber cleaning, left uncalibrated, over-etches the whole batch, and a 0.6% zero-order leak puts a hot spot at the centre of every beam shaper; an imprint master not compensated for shrinkage yields replicas with focal length 1 mm short and the whole module defocused.",
+      "misconception": "蝕刻時間一樣，深度就一樣。~Equal etch time gives equal depth."
+    },
+    {
+      "anchor": "白光干涉輪廓儀與零級功率計~White-light profiler and zero-order power meter",
+      "title": "浮雕量測與繞射級功率分佈~Relief metrology and diffraction-order power distribution",
+      "mechanism": "繞射元件的量測分兩層：幾何層以白光干涉輪廓儀或觸針式輪廓儀量階高與總深度（精度數奈米）、以 SEM 量線寬與側壁、以 AFM 量階面粗糙度；功能層以設計波長的雷射照射，用功率計量各繞射級的功率得到效率與零級洩漏，對光束整形器則用相機記錄輸出強度分佈並計算均勻度。零級洩漏對深度的二次敏感度使它成為比輪廓儀更靈敏的深度檢驗：輪廓儀的 2 nm 不確定度對 1385 nm 深度是 0.14%，而零級量到 0.01% 就能分辨 1% 的深度偏差。~Measurement of a diffractive element has two layers: the geometric layer uses white-light or stylus profilometry for step height and total depth (a few nanometres), SEM for line width and sidewalls and AFM for step-surface roughness; the functional layer illuminates at the design wavelength and measures each order's power with a power meter for efficiency and zero-order leakage, while beam shapers are recorded with a camera to compute uniformity. The quadratic sensitivity of zero-order leakage to depth makes it a more sensitive depth check than the profiler: 2 nm of profiler uncertainty is 0.14% of a 1385 nm depth, whereas a zero-order measurement at 0.01% resolves a 1% depth deviation.",
+      "model": "η₀ ≈ ε²/(1 + ε)²：量到 η₀ = 0.01% → ε ≈ 1.0%（14 nm）；0.1% → ε ≈ 3.3%（45 nm）；0.5% → ε ≈ 7.6%（105 nm）。效率量測：入射 10.00 mW，第一級 8.95 mW、零級 0.012 mW、其餘級次 0.63 mW、反射與吸收 0.41 mW，η₁ = 89.5%，η₀ = 0.12%；功率計不確定度 1% 使 η₁ 的不確定度約 ±1.3%。~η₀ ≈ ε²/(1 + ε)²: a measured η₀ = 0.01% → ε ≈ 1.0% (14 nm); 0.1% → ε ≈ 3.3% (45 nm); 0.5% → ε ≈ 7.6% (105 nm). Efficiency measurement: incident 10.00 mW, first order 8.95 mW, zero order 0.012 mW, other orders 0.63 mW, reflection and absorption 0.41 mW, so η₁ = 89.5% and η₀ = 0.12%; a 1% power-meter uncertainty gives about ±1.3% uncertainty in η₁.",
+      "verify": "以同一片元件做輪廓儀深度與零級洩漏兩種量測，把輪廓儀深度代入 sinc² 預測 η₀ 並與實測比較，差異應在量測不確定度內；在效率量測中用光闌確保只收到目標級次，並用已知效率的參考光柵校正整個光路。~Measure the same element by both profiler depth and zero-order leakage, predict η₀ from the profiler depth with the sinc² relation and compare with the measurement, expecting agreement within uncertainty; in efficiency measurement use apertures to admit only the target order and calibrate the whole train with a reference grating of known efficiency.",
+      "failure": "只做輪廓儀驗收，階面上 3 nm RMS 的蝕刻粗糙度與側壁圓角沒有被量到，實際效率比純量預測低 4%，客戶端的功率預算不足；或功率計未加光闌，鄰近級次混入使效率被高估。~Relying on profilometry alone misses 3 nm RMS etch roughness on the step surfaces and rounded sidewalls, so real efficiency is 4% below the scalar prediction and the customer's power budget falls short; a power meter without an aperture admits neighbouring orders and overstates efficiency.",
+      "misconception": "輪廓儀量到深度正確，效率就一定達到理論值。~If the profiler shows the right depth, efficiency must reach the theoretical value."
+    },
+    {
+      "anchor": "效率誤差預算表~Efficiency error-budget table",
+      "title": "效率預算：量化、深度、套準與散射~Efficiency budget: quantisation, depth, overlay and scatter",
+      "mechanism": "繞射元件的效率損失是相乘而不是相加：量化損失 sinc²(1/M)、深度誤差 sinc²(ε)、套準造成的相位錯誤區、階面粗糙度與側壁圓角的散射、以及未鍍增透膜的 Fresnel 反射，各自是一個小於 1 的因子。預算表把每項的設計值與製程能力並列，判斷哪一項最值得投資：例如從 8 階升到 16 階只多 3.7%，但若套準能力不足，多出的兩道光罩反而讓效率下降。純量模型在週期小於約十倍波長時開始高估效率，接近波長尺度的元件必須以嚴格耦合波分析重算。~Efficiency losses in a diffractive element multiply rather than add: quantisation sinc²(1/M), depth error sinc²(ε), phase-error regions from overlay, scatter from step roughness and sidewall rounding, and Fresnel reflection where no antireflection film is applied, each a factor below 1. The budget table places each term's design value beside the process capability to judge which investment pays: going from 8 to 16 levels adds only 3.7%, and with insufficient overlay capability the two extra masks lower efficiency instead. The scalar model starts to overestimate efficiency when the period falls below roughly ten wavelengths, and wavelength-scale elements must be recomputed with rigorous coupled-wave analysis.",
+      "model": "8 階熔融石英元件：量化 0.950 × 深度誤差 3%（sinc²(0.03) ≈ 0.997）× 第三道光罩套準 0.1 µm（0.907/0.950 ≈ 0.954）× 階面粗糙度與側壁散射 0.98 × 單面 Fresnel 反射 0.965 ≈ 0.853；加鍍增透膜（反射 0.3%）後 ≈ 0.881。若第二、三道光罩都偏 0.1 µm，純量模型的套準因子降到 0.882，總效率 ≈ 0.79；改為 16 階且三道後續光罩同樣各偏 0.1 µm，量化升到 0.987 但套準因子只剩 0.866，總效率 ≈ 0.81，多出的光罩只換到約 2%。~An 8-level fused-silica element: quantisation 0.950 × 3% depth error (sinc²(0.03) ≈ 0.997) × 0.1 µm overlay on the third mask (0.907/0.950 ≈ 0.954) × step roughness and sidewall scatter 0.98 × single-surface Fresnel reflection 0.965 ≈ 0.853; with an antireflection film (0.3% reflection) ≈ 0.881. If both the second and third masks are off by 0.1 µm the scalar overlay factor falls to 0.882 and the total to ≈ 0.79; a 16-level version with all three later masks off by the same 0.1 µm raises quantisation to 0.987 but has an overlay factor of only 0.866, a total ≈ 0.81, so the extra mask buys about 2%.",
+      "verify": "逐項量測：以輪廓儀得 ε、以套準標記得偏移、以 AFM 得粗糙度、以分光光度計得 Fresnel 反射，把各因子相乘與雷射實測的 η₁ 比較；若實測低於預算 2% 以上，先檢查週期是否已進入純量模型失效區，再查散射項。~Measure term by term: ε from the profiler, offset from overlay marks, roughness from AFM and Fresnel reflection from the spectrophotometer, multiply the factors and compare with the laser-measured η₁; if the measurement falls more than 2% below budget, first check whether the period has entered the scalar model's failure region, then the scatter term.",
+      "failure": "以純量公式承諾週期 1.5 µm、8 階、633 nm 元件的效率 95%，嚴格計算與實測只有約 70%，合約違約；或為了追求效率把階數提高到 32，套準誤差讓實際效率反而低於 8 階版本。~Promising 95% from the scalar formula for a 1.5 µm period, 8-level, 633 nm element, when rigorous calculation and measurement give only about 70%, breaches the contract; raising the level count to 32 for efficiency lets overlay error push real efficiency below the 8-level version.",
+      "misconception": "效率損失可以像誤差一樣用均方根相加。~Efficiency losses add root-sum-square like random errors."
+    },
+    {
+      "anchor": "混合折射繞射消色差透鏡~Hybrid refractive-diffractive achromat",
+      "title": "混合消色差設計與系統整合~Hybrid achromat design and system integration",
+      "mechanism": "繞射面的等效 Abbe 數是 −3.45，色散與玻璃相反而且強得多，所以在折射透鏡上加一個弱的繞射面就能消色差，而不需要第二種玻璃；繞射部分只佔總光焦度的幾個百分點，環帶週期很大，可用鑽石車削或壓印製作。整合時要決定浮雕面朝向（朝內以免刮傷與污染）、增透膜在階梯上的陰影效應、以及繞射面效率損失變成的雜散光：第零級與第二級的光聚焦在不同位置，形成背景光暈，相機鏡頭對此比雷射系統更敏感。繞射面的清潔只能吹氣與溶劑沖洗，不能擦拭。~A diffractive surface has an equivalent Abbe number of −3.45, dispersing opposite to glass and far more strongly, so adding a weak diffractive surface to a refractive lens corrects chromatic aberration without a second glass; the diffractive part carries only a few percent of the total power, its zone periods are large, and it can be diamond-turned or imprinted. Integration decides the relief orientation (inward, away from scratches and contamination), the shadowing of antireflection films on the steps, and the stray light produced by the diffractive efficiency loss: the zero and second orders focus elsewhere and form a background halo to which camera lenses are far more sensitive than laser systems. A diffractive surface may be cleaned only by blowing and solvent rinsing, never by wiping.",
+      "model": "消色差條件 φ_r/V_r + φ_d/V_d = 0，BK7 V_r = 64.2、V_d = −3.45：φ_d/φ_r = 3.45/64.2 ≈ 0.054。總焦距 100 mm：φ_r ≈ 0.00949 mm⁻¹、φ_d ≈ 0.00051 mm⁻¹，繞射部分 f_d ≈ 1960 mm。口徑 20 mm：環帶數 N = r²/(2f_dλ) = 100/(2×1960×5.88×10⁻⁴) ≈ 43，最外環帶週期 Λ = λf_d/r ≈ 115 µm，深度 d = 588/0.517 ≈ 1137 nm，鑽石車削即可製作。~Achromat condition φ_r/V_r + φ_d/V_d = 0 with BK7 V_r = 64.2 and V_d = −3.45 gives φ_d/φ_r = 3.45/64.2 ≈ 0.054. For a 100 mm total focal length, φ_r ≈ 0.00949 mm⁻¹ and φ_d ≈ 0.00051 mm⁻¹, so the diffractive part has f_d ≈ 1960 mm. For a 20 mm aperture the zone count N = r²/(2f_dλ) = 100/(2×1960×5.88×10⁻⁴) ≈ 43, the outermost period Λ = λf_d/r ≈ 115 µm and the depth d = 588/0.517 ≈ 1137 nm, within reach of diamond turning.",
+      "verify": "用 F、d、C 三條譜線量混合透鏡的焦距，確認軸向色差被壓到折射單透鏡的十分之一以下；用點光源成像並量零級與第二級形成的光暈相對強度，與效率預算中的洩漏值比較；增透膜鍍後以顯微鏡檢查階梯側壁是否有陰影造成的未覆蓋區。~Measure the hybrid lens's focal length at the F, d and C lines to confirm axial colour is reduced below a tenth of the refractive singlet's; image a point source and measure the relative intensity of the halo from the zero and second orders against the leakage in the efficiency budget; after antireflection coating inspect the step sidewalls under a microscope for uncoated shadowed regions.",
+      "failure": "把浮雕面朝外安裝的混合透鏡在組裝清潔時被擦拭，階梯邊緣崩裂使散射暴增，影像出現彩色光暈；設計波段 400 到 700 nm 卻用單層浮雕，兩端波長的效率只有 80% 而零級光暈在白光影像中清晰可見。~A hybrid lens mounted relief-outward is wiped during assembly, the step edges chip, scatter surges and the image shows a coloured halo; a single-layer relief used across 400 to 700 nm gives only 80% efficiency at the band ends and a visible zero-order halo in white-light images.",
+      "misconception": "繞射面色散太強，不可能用來做消色差透鏡。~A diffractive surface disperses too strongly to be useful for achromatic lenses."
+    },
+    {
+      "anchor": "繞射元件規格表與級次功率報告~DOE specification sheet and order-power report",
+      "title": "規格定義、保護帶與工程交接~Specification definition, guard band and engineering handoff",
+      "mechanism": "繞射元件的規格必須寫明：設計波長與可用波段、目標級次效率的下限、零級洩漏的上限、分束器各級次的均勻度定義（最大減最小除以最大加最小）、光束整形器的輸入光束尺寸與 M² 容許範圍、材料與損傷門檻、基板厚度與平面度。驗收以設計波長的級次功率報告為準，並以量測不確定度設保護帶。交接資料包含光罩組編號、蝕刻批次與見證片階高、輪廓儀與零級量測結果，以及清潔與安裝方向的限制，讓系統端能在失效時區分設計、製程與使用問題。~A diffractive-element specification must state design wavelength and usable band, the lower limit on target-order efficiency, the upper limit on zero-order leakage, the uniformity definition for splitters (maximum minus minimum over maximum plus minimum), the input-beam size and M² range for beam shapers, material and damage threshold, substrate thickness and flatness. Acceptance rests on the order-power report at the design wavelength with a guard band set by measurement uncertainty. The handoff includes the mask-set number, etch batch and witness step heights, profiler and zero-order results and the cleaning and orientation limits, so the system side can separate design, process and usage problems at failure.",
+      "model": "規格：η₁ ≥ 88%、η₀ ≤ 0.2%，功率計不確定度 1.3%（效率）與 0.01%（零級）→ 保護帶後判定門檻 η₁ ≥ 89.3%、η₀ ≤ 0.19%。實測 η₁ = 89.5%、η₀ = 0.12% 合格，η₀ 反推 ε ≈ 3.6%，與見證片階高偏差 −6 nm（−3.5%）一致。1×9 分束器：九級功率 8.6% 到 9.4%，均勻度 (9.4 − 8.6)/(9.4 + 8.6) ≈ 4.4%，符合 ≤ 5% 規格。~Specification: η₁ ≥ 88% and η₀ ≤ 0.2%, with power-meter uncertainty 1.3% (efficiency) and 0.01% (zero order), so the guard-banded thresholds are η₁ ≥ 89.3% and η₀ ≤ 0.19%. Measured η₁ = 89.5% and η₀ = 0.12% pass; η₀ implies ε ≈ 3.6%, consistent with the witness step deviation of −6 nm (−3.5%). A 1×9 splitter with order powers from 8.6% to 9.4% has uniformity (9.4 − 8.6)/(9.4 + 8.6) ≈ 4.4%, meeting a ≤ 5% specification.",
+      "verify": "以第二套雷射與功率計複測級次功率，差異需小於保護帶的一半；核對規格表每一項都有量測紀錄與條件（波長、光束尺寸、偏振、溫度）；把零級反推的 ε 與見證片階高並列，兩者不一致時優先懷疑階面粗糙度或側壁而非深度。~Re-measure order powers with a second laser and power meter, requiring agreement within half the guard band; check that every specification line has a measurement record with conditions (wavelength, beam size, polarization, temperature); place the ε inferred from the zero order beside the witness step height, and when they disagree suspect step roughness or sidewalls before depth.",
+      "failure": "規格只寫「效率 90%」而未定義零級上限與輸入光束尺寸，供應商以較大光束量得合格，客戶用小光束時零級亮點明顯且平頂變形，雙方無法判定責任；沒有光罩組與蝕刻批號，失效件無法回溯到同批見證片。~A specification reading only 90% efficiency without a zero-order limit or input-beam size passes at the supplier's larger beam, but the customer's smaller beam shows a bright zero-order spot and a distorted flat top with no way to assign responsibility; without mask-set and etch-batch numbers a failed part cannot be traced to its witness pieces.",
+      "misconception": "繞射元件的規格只需要一個效率數字。~A diffractive element's specification needs only one efficiency number."
+    }
+  ],
+  "example": "8 階繞射透鏡製作練習：熔融石英（n = 1.457）、λ₀ = 633 nm、f = 50 mm、D = 10 mm。閃耀深度 d = 633/0.457 ≈ 1385 nm，8 階的階高 ≈ 173 nm，三道光罩蝕刻 693、346、173 nm；NA ≈ 0.1，最外環帶週期 λ/NA ≈ 6.3 µm，環帶數 r²/(2fλ) = 25/(2×50×6.33×10⁻⁴) ≈ 395，最細線寬 ≈ 0.8 µm。效率預算：量化 sinc²(1/8) = 0.950；蝕刻速率 100 nm/min、終點偵測後階高誤差 2 nm（ε ≈ 0.15%，因子 ≈ 1.000）；第三道光罩套準 0.1 µm 的純量模型因子 0.907/0.950 ≈ 0.954；階面粗糙度與側壁 0.98；雙面增透膜後 Fresnel 因子 0.994；預測 η₁ ≈ 0.950 × 1.000 × 0.954 × 0.98 × 0.994 ≈ 0.883。驗收量測：入射 10.00 mW，第一級 8.80 mW → η₁ = 88.0%，零級 0.010 mW → η₀ = 0.10% → ε ≈ 3.3%（約 45 nm），與輪廓儀量到的總深度 1340 nm（−3.2%）一致，表示蝕刻校正應上修 3%。若改用 532 nm 使用，ε = 0.19，η₁ 再乘 0.887 只剩約 78%。數值皆為教學假設，不代表任何產品規格。~8-level diffractive-lens exercise: fused silica (n = 1.457), λ₀ = 633 nm, f = 50 mm, D = 10 mm. Blaze depth d = 633/0.457 ≈ 1385 nm, 8-level step ≈ 173 nm, three masks etched 693, 346 and 173 nm; NA ≈ 0.1, outermost period λ/NA ≈ 6.3 µm, zone count r²/(2fλ) = 25/(2×50×6.33×10⁻⁴) ≈ 395, finest feature ≈ 0.8 µm. Efficiency budget: quantisation sinc²(1/8) = 0.950; etch rate 100 nm/min with endpoint detection leaves 2 nm step error (ε ≈ 0.15%, factor ≈ 1.000); 0.1 µm overlay on the third mask gives a scalar-model factor 0.907/0.950 ≈ 0.954; step roughness and sidewalls 0.98; Fresnel factor 0.994 after double-sided antireflection; predicted η₁ ≈ 0.950 × 1.000 × 0.954 × 0.98 × 0.994 ≈ 0.883. Acceptance measurement: incident 10.00 mW, first order 8.80 mW → η₁ = 88.0%, zero order 0.010 mW → η₀ = 0.10% → ε ≈ 3.3% (about 45 nm), consistent with a profiler total depth of 1340 nm (−3.2%), so the etch calibration should be raised by 3%. Used at 532 nm instead, ε = 0.19 and η₁ is multiplied by 0.887 to about 78%. All values are teaching assumptions, not any product specification.",
+  "history": "1875 年 Soret 製作了 Fresnel 波帶片，1969 年 IBM 的 Lesem、Hirsch 與 Jordan 提出以 2π 摺疊相位的 kinoform，1971 年 Dammann 發表二元相位分束光柵。1980 年代 MIT 林肯實驗室的 Veldkamp 與 Swanson 提出「二元光學」，以多道光罩與離子蝕刻製作多階繞射元件並建立 sinc² 效率理論，1989 年的技術報告成為此領域的標準參考；1990 年代後，繞射元件進入雷射光束整形、光譜儀與消費相機的混合折射繞射鏡頭，奈米壓印與灰階直寫則把它推向量產與連續輪廓。本課只重建公開原理與工程邏輯。~Soret made Fresnel zone plates in 1875; Lesem, Hirsch and Jordan at IBM introduced the kinoform with 2π-wrapped phase in 1969; Dammann published binary-phase splitting gratings in 1971. In the 1980s Veldkamp and Swanson at MIT Lincoln Laboratory introduced binary optics, making multilevel diffractive elements with multiple masks and ion etching and establishing the sinc² efficiency theory, and their 1989 technical report became the field's standard reference; from the 1990s diffractive elements entered laser beam shaping, spectrometers and hybrid refractive-diffractive camera lenses, while nanoimprint and grayscale writing carried them to volume production and continuous profiles. This course reconstructs only public principles and engineering logic.",
+  "place": {
+    "name": "麻省理工學院林肯實驗室二元光學參照點~MIT Lincoln Laboratory binary-optics reference",
+    "country": "美國~United States",
+    "lat": 42.459,
+    "lng": -71.267,
+    "query": "MIT Lincoln Laboratory Lexington MA"
+  },
+  "sources": [
+    {
+      "key": "swanson-binary-optics-tr854",
+      "title": "MIT 林肯實驗室技術報告 854：二元光學技術—多階繞射元件的理論與設計",
+      "titleEn": "MIT Lincoln Laboratory Technical Report 854: Binary optics technology, theory and design of multi-level diffractive optical elements",
+      "publisher": "MIT Lincoln Laboratory via Defense Technical Information Center",
+      "url": "https://apps.dtic.mil/sti/pdfs/ADA213404.pdf",
+      "sourceType": "primary",
+      "scope": "1989 年公開技術報告，推導 N 階繞射元件的第一級效率（2、4、8、16 階分別約 0.41、0.81、0.95、0.99）與光罩製程原理；本課的效率公式直接以此為基礎。",
+      "scopeEn": "Public 1989 technical report deriving first-order efficiency of N-level elements (about 0.41, 0.81, 0.95 and 0.99 for 2, 4, 8 and 16 levels) and the mask-process principles; the course's efficiency formulas rest directly on it."
+    },
+    {
+      "key": "holoor-capabilities",
+      "title": "Holo/Or：繞射光學元件製作能力",
+      "titleEn": "Holo/Or: Diffractive optical-element fabrication capabilities",
+      "publisher": "Holo/Or Ltd.",
+      "url": "https://www.holoor.co.il/capabilities",
+      "sourceType": "primary",
+      "scope": "製造商公開能力頁，說明直寫微影、光阻、乾式電漿蝕刻、灰階寫入、熔融石英與 ZnSe 基材及光束整形元件類型；不含製程配方。",
+      "scopeEn": "Manufacturer capabilities page describing direct-write lithography, resist, dry plasma etching, grayscale writing, fused-silica and ZnSe substrates and beam-shaping element types; no process recipe."
+    },
+    {
+      "key": "jenoptik-doe-microoptics",
+      "title": "Jenoptik：繞射光學元件與微光學",
+      "titleEn": "Jenoptik: Diffractive optical elements and micro-optics",
+      "publisher": "Jenoptik AG",
+      "url": "https://www.jenoptik.com/products/optical-systems/optical-precision-components/diffractive-optical-elements-doe-microoptics",
+      "sourceType": "primary",
+      "scope": "製造商產品頁，說明以晶圓級微影製作的繞射元件類別、材料與應用波段；用於規格與應用脈絡。",
+      "scopeEn": "Manufacturer product page describing wafer-level lithographically made diffractive element classes, materials and application bands; used for specification and application context."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Holo/Or",
+      "nameEn": "Holo/Or Ltd.",
+      "business": "以色列繞射光學元件製造商，以微影與電漿蝕刻在熔融石英與 ZnSe 上製作光束整形器、分束器與繞射透鏡。",
+      "businessEn": "Israeli diffractive-optics maker producing beam shapers, splitters and diffractive lenses in fused silica and ZnSe by lithography and plasma etching.",
+      "url": "https://www.holoor.co.il/",
+      "investorUrl": "",
+      "security": null,
+      "role": "繞射元件製作流程與元件類型的公開資訊",
+      "roleEn": "Public information on diffractive-element fabrication flow and element types"
+    },
+    {
+      "name": "Jenoptik",
+      "nameEn": "Jenoptik AG",
+      "business": "光學系統與微光學製造商，以晶圓級微影生產繞射與折射微光學元件。",
+      "businessEn": "Optical-systems and micro-optics maker producing diffractive and refractive micro-optics by wafer-level lithography.",
+      "url": "https://www.jenoptik.com/",
+      "investorUrl": "https://www.jenoptik.com/investors",
+      "security": {"symbol": "JEN", "exchange": "XETRA", "currency": "EUR"},
+      "role": "晶圓級繞射微光學的公開產品資訊",
+      "roleEn": "Public product information on wafer-level diffractive micro-optics"
+    },
+    {
+      "name": "SUSS MicroTec",
+      "nameEn": "SUSS MicroTec SE",
+      "business": "光罩對準曝光機、壓印微影與晶圓製程設備製造商，供應多階繞射元件所需的套準曝光與奈米壓印設備。",
+      "businessEn": "Maker of mask aligners, imprint lithography and wafer-processing equipment supplying the overlay exposure and nanoimprint tools used for multilevel diffractive elements.",
+      "url": "https://www.suss.com/",
+      "investorUrl": "https://www.suss.com/en/investor-relations",
+      "security": {"symbol": "SMHN", "exchange": "XETRA", "currency": "EUR"},
+      "role": "光罩套準與壓印微影設備的公開技術資訊",
+      "roleEn": "Public technical information on mask-overlay and imprint-lithography equipment"
+    },
+    {
+      "name": "佳能",
+      "nameEn": "Canon",
+      "business": "影像與半導體設備製造商，在相機鏡頭中使用多層繞射光學元件，並供應奈米壓印微影設備。",
+      "businessEn": "Imaging and semiconductor-equipment maker that uses multilayer diffractive optical elements in camera lenses and supplies nanoimprint lithography systems.",
+      "url": "https://global.canon/",
+      "investorUrl": "https://global.canon/en/ir/",
+      "security": {"symbol": "7751", "exchange": "TSE", "currency": "JPY"},
+      "role": "繞射元件於相機鏡頭的應用與奈米壓印設備的公開資訊",
+      "roleEn": "Public information on diffractive elements in camera lenses and nanoimprint equipment"
+    }
+  ],
+  "related": ["a417", "a418"],
+  "architectureNodes": [["相位設計與 2π 摺疊", "Phase design and 2π wrapping"], ["二元光罩組與套準曝光", "Binary mask set and overlay exposure"], ["反應離子蝕刻與灰階直寫", "Reactive-ion etching and grayscale writing"], ["熔融石英浮雕元件", "Fused-silica relief element"], ["輪廓儀與級次功率量測", "Profilometry and order-power metrology"], ["混合透鏡整合與驗收", "Hybrid-lens integration and acceptance"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 2], [4, 5]]
+}

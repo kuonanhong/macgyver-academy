@@ -1,0 +1,182 @@
+{
+  "id": "a424",
+  "title": "數位全像顯微鏡~Digital holographic microscopy",
+  "discipline": "optics-modulation-holography",
+  "family": "microscope",
+  "focus": "離軸全像記錄、數值重建與定量相位量測的誤差預算~Off-axis hologram recording, numerical reconstruction and the error budget of quantitative phase measurement",
+  "summary": "從物光與參考光在感測器上形成的離軸干涉條紋出發，理解載波頻率如何讓單張全像圖分離出複數波前，再把相位展開、光源同調、物鏡曲率補償、折射率與波長校正、雜訊預算和數值重聚焦整合成可驗收的定量相位顯微工程。~Start from the off-axis interference fringes that object and reference beams form on the sensor, see how the carrier frequency lets a single hologram yield the complex wavefront, then integrate phase unwrapping, source coherence, objective-curvature compensation, refractive-index and wavelength calibration, noise budgets and numerical refocusing into an acceptable quantitative-phase microscope.",
+  "units": [
+    {
+      "anchor": "離軸干涉條紋與感測器~Off-axis fringes and the sensor",
+      "title": "離軸全像記錄與載波頻率~Off-axis hologram recording and carrier frequency",
+      "mechanism": "數位全像顯微鏡用相機記錄物光 O 與參考光 R 的干涉強度 I = |O|² + |R|² + OR* + O*R。若參考光以角度 θ 斜射，交叉項帶有空間載波 sinθ/λ，在頻譜中把 +1 階（含完整複數物光）、−1 階與零階分開；數值濾波取出 +1 階後就能同時得到振幅與相位。載波必須夠高才能分離三項，卻又不能高到讓條紋週期小於兩個像素而違反取樣定理。~A digital holographic microscope records on a camera the interference intensity of object wave O and reference wave R, I = |O|² + |R|² + OR* + O*R. When the reference arrives at an angle θ, the cross terms carry a spatial carrier sinθ/λ that separates the +1 order, which contains the full complex object wave, from the −1 order and the zero order in the spectrum; filtering out the +1 order numerically gives amplitude and phase at once. The carrier must be high enough to separate the three terms yet low enough that the fringe period stays above two pixels, otherwise sampling fails.",
+      "model": "物光在像面的頻寬半寬為 f_max = NA/(M·λ)；取 40×/0.65 物鏡、λ = 532 nm，f_max = 0.65/(40×0.532 µm) ≈ 30.5 lp/mm。分離條件 f_c ≥ 3·f_max ≈ 92 lp/mm，取樣條件 f_c + f_max ≤ 1/(2p)；像素 p = 3.45 µm 時上限 145 lp/mm。選 3 像素條紋 Λ = 10.35 µm，f_c = 96.6 lp/mm，θ = asin(λ·f_c) = asin(0.0514) ≈ 2.95°，兩個條件都滿足。~The image-plane half-bandwidth of the object wave is f_max = NA/(M·λ); for a 40×/0.65 objective at λ = 532 nm, f_max = 0.65/(40×0.532 µm) ≈ 30.5 lp/mm. Separation needs f_c ≥ 3·f_max ≈ 92 lp/mm and sampling needs f_c + f_max ≤ 1/(2p), which for p = 3.45 µm pixels is 145 lp/mm. Choosing 3-pixel fringes, Λ = 10.35 µm, gives f_c = 96.6 lp/mm and θ = asin(λ·f_c) = asin(0.0514) ≈ 2.95°, satisfying both.",
+      "verify": "對一張空白區域全像圖做二維傅立葉轉換，量 +1 階中心到零階的距離並換算成 lp/mm，與 λ·sinθ 的設計值比較；再檢查 +1 階與零階邊緣之間是否留有空隙，並確認 +1 階完全落在奈奎斯特邊界內。~Take the 2D Fourier transform of a hologram of an empty field, measure the distance from the +1 order centre to the zero order in lp/mm and compare with the design value sinθ/λ; then check that a gap remains between the +1 order and the edge of the zero-order lobe and that the +1 order lies entirely inside the Nyquist boundary.",
+      "failure": "參考光角度太小時 +1 階與零階重疊，重建相位出現低頻假象與對比損失；角度太大時條紋欠取樣而混疊，相位圖出現與樣品無關的摩爾紋。~Too small a reference angle overlaps the +1 and zero orders, producing low-frequency artefacts and contrast loss in the reconstructed phase; too large an angle undersamples the fringes and aliasing imprints moiré patterns unrelated to the sample.",
+      "misconception": "載波頻率越高，分離越乾淨，所以參考光角度應盡量大。~A higher carrier always separates orders better, so the reference angle should be as large as possible."
+    },
+    {
+      "anchor": "包裹相位圖~Wrapped phase map",
+      "title": "相位與光程差、包裹與展開~Phase, optical path difference, wrapping and unwrapping",
+      "mechanism": "重建得到的相位 φ = arg(O) 只在 (−π, π] 內有定義，實際光程差超過一個波長時相位會跳回，形成 2π 包裹。透射量測的相位 Δφ = 2π·(n_s − n_m)·h/λ 與樣品厚度 h 及折射率差成正比；反射量測因光來回兩次，Δφ = 4π·h/λ。展開演算法沿路徑補回 2π 跳變，但只在相鄰像素相位差小於 π 時可靠，陡峭台階需要雙波長合成波長來擴大不含糊範圍。~The reconstructed phase φ = arg(O) is defined only within (−π, π]; when the real optical path exceeds one wavelength the phase jumps back, producing 2π wraps. In transmission Δφ = 2π·(n_s − n_m)·h/λ scales with sample thickness h and the index difference; in reflection the light travels twice, so Δφ = 4π·h/λ. Unwrapping algorithms restore the 2π jumps along a path, but only reliably when neighbouring pixels differ by less than π, so steep steps need a two-wavelength synthetic wavelength to extend the unambiguous range.",
+      "model": "反射式在 λ = 532 nm 的不含糊高度範圍為 λ/2 = 266 nm。一個 400 nm 台階給出 Δφ = 4π×0.400/0.532 = 9.45 rad，包裹後讀到 9.45 − 4π = −3.12 rad，若不展開會誤判為 −132 nm。改用 532 與 561 nm 雙波長，合成波長 Λ = λ₁λ₂/|λ₁ − λ₂| = 532×561/29 ≈ 10.29 µm，範圍擴大到 Λ/2 ≈ 5.1 µm。~In reflection at λ = 532 nm the unambiguous height range is λ/2 = 266 nm. A 400 nm step gives Δφ = 4π×0.400/0.532 = 9.45 rad, which wraps to 9.45 − 4π = −3.12 rad and would be misread as −132 nm without unwrapping. With 532 and 561 nm the synthetic wavelength Λ = λ₁λ₂/|λ₁ − λ₂| = 532×561/29 ≈ 10.29 µm extends the range to Λ/2 ≈ 5.1 µm.",
+      "verify": "量測一片已認證的台階高度標準片，比較展開後的台階高度與證書值；再刻意量一個超過 λ/2 的台階，確認單波長結果出現 2π 錯誤而雙波長結果正確，並記錄展開演算法在雜訊區的失敗率。~Measure a certified step-height standard and compare the unwrapped step with the certificate; then deliberately measure a step higher than λ/2 to confirm that the single-wavelength result carries a 2π error while the two-wavelength result is correct, and log where the unwrapping algorithm fails in noisy regions.",
+      "failure": "展開路徑穿過低對比或散斑區時，一個錯誤的 2π 判定會沿路徑傳播，整個區域的高度整體偏移半個波長，造成看似合理卻完全錯誤的地形圖。~When the unwrapping path crosses a low-contrast or speckled region, one wrong 2π decision propagates along the path and offsets a whole region by half a wavelength, producing a plausible but entirely wrong topography.",
+      "misconception": "只要相位圖連續，量到的高度就不會有 2π 含糊。~If the phase map looks continuous the measured height cannot have a 2π ambiguity."
+    },
+    {
+      "anchor": "雷射光源與參考臂~Laser source and reference arm",
+      "title": "光源同調與參考臂的路徑匹配~Source coherence and reference-arm path matching",
+      "mechanism": "干涉條紋的對比取決於兩臂光程差與光源同調長度的關係，以及兩光束的強度比。長同調雷射讓裝調容易，但光學元件的寄生反射也會互相干涉，形成固定的同調雜訊；短同調光源能壓制這些雜訊，代價是兩臂光程必須匹配到同調長度的一小部分，並且樣品厚度變化也會讓對比下降。參考臂通常用可調延遲線與衰減器，把強度比與光程都調到設計點。~Fringe contrast depends on the arm path difference relative to the source coherence length and on the intensity ratio of the two beams. A long-coherence laser makes alignment easy but lets parasitic reflections from every optic interfere as fixed coherent noise; a short-coherence source suppresses that noise at the price of matching the two arm paths to a fraction of the coherence length, and thick samples also reduce contrast. The reference arm therefore carries an adjustable delay line and an attenuator to set both the path and the intensity ratio at the design point.",
+      "model": "同調長度 L_c ≈ λ²/Δλ：660 nm 雷射二極體、Δλ = 0.05 nm 時 L_c ≈ 0.660²/5×10⁻⁵ µm ≈ 8.7 mm。條紋對比 V = 2√(I_O·I_R)/(I_O + I_R)·|γ|；取 I_R = 4·I_O 得幾何因子 0.8，若線形為勞侖茲型 |γ| ≈ exp(−ΔL/L_c)，ΔL = 2 mm 時 |γ| ≈ 0.79，V ≈ 0.63。~Coherence length L_c ≈ λ²/Δλ: a 660 nm laser diode with Δλ = 0.05 nm has L_c ≈ 0.660²/5×10⁻⁵ µm ≈ 8.7 mm. Fringe contrast is V = 2√(I_O·I_R)/(I_O + I_R)·|γ|; with I_R = 4·I_O the geometric factor is 0.8, and for a Lorentzian line |γ| ≈ exp(−ΔL/L_c), so ΔL = 2 mm gives |γ| ≈ 0.79 and V ≈ 0.63.",
+      "verify": "以功率計分別量兩臂到達感測器的強度並算出幾何因子，再掃描參考臂延遲線、記錄條紋對比對光程差的曲線，從曲線半寬反推同調長度並與光譜儀量到的線寬比較。~Measure each arm's intensity at the sensor with a power meter and compute the geometric factor, then scan the reference delay line while recording fringe contrast against path difference; derive the coherence length from the curve width and compare with the linewidth measured on a spectrometer.",
+      "failure": "參考臂光程偏離匹配點數毫米時，條紋對比降到 0.3 以下，相位雜訊按 1/V 放大，而且樣品厚區與薄區對比不同，造成高度量測在視場內不一致。~When the reference path drifts several millimetres from the match point, fringe contrast falls below 0.3, phase noise grows as 1/V, and thick and thin sample regions show different contrast, making height measurements inconsistent across the field.",
+      "misconception": "同調長度越長的雷射，全像品質一定越好。~A laser with longer coherence length always gives better holograms."
+    },
+    {
+      "anchor": "顯微物鏡與曲率補償~Microscope objective and curvature compensation",
+      "title": "物鏡、中繼光學與感測器取樣~Objective, relay optics and sensor sampling",
+      "mechanism": "顯微物鏡把物光放大並投射到感測器，但也在物光上疊加一個球面相位，與平面參考光相減後留下二次項曲率，必須以參考臂放置相同物鏡做物理補償，或在重建時乘上數位相位遮罩做數值補償。感測器的像素尺寸、位元深度與滿井電荷決定條紋取樣與相位雜訊；同調照明下的橫向解析極限為 λ/NA，放大率需讓這個尺度在感測器上占數個像素。~The objective magnifies the object wave onto the sensor but also imposes a spherical phase on it; subtracting the plane reference leaves a quadratic curvature that must be compensated physically with an identical objective in the reference arm or numerically with a digital phase mask at reconstruction. Pixel pitch, bit depth and full-well capacity of the sensor set fringe sampling and phase noise; under coherent illumination the lateral resolution limit is λ/NA, and the magnification must map that scale onto several pixels.",
+      "model": "殘留曲率半徑 R 造成的二次相位 φ(r) = π·r²/(λ·R)：感測器上 r = 1 mm（約 290 像素）、R = 2 m、λ = 532 nm 時 φ ≈ π×10⁻⁶/(0.532×10⁻⁶×2) ≈ 2.95 rad，即使 2 m 的殘留曲率在視場邊緣也接近一個波長。40×/0.65 物鏡的同調解析極限 λ/NA ≈ 0.82 µm，在感測器上為 32.7 µm ≈ 9.5 個 3.45 µm 像素。~A residual curvature radius R leaves a quadratic phase φ(r) = π·r²/(λ·R): at r = 1 mm on the sensor (about 290 pixels), R = 2 m and λ = 532 nm, φ ≈ π×10⁻⁶/(0.532×10⁻⁶×2) ≈ 2.95 rad, so even a 2 m residual radius approaches one wave at the field edge. The coherent resolution limit of a 40×/0.65 objective is λ/NA ≈ 0.82 µm, which maps to 32.7 µm or about 9.5 pixels of 3.45 µm on the sensor.",
+      "verify": "重建一片光學平板的相位圖，對其擬合二次多項式取出殘留曲率半徑，調整補償物鏡位置或數位遮罩參數直到殘留峰谷值小於 0.1 rad；再用解析力標板確認橫向解析度達到 λ/NA 的設計值。~Reconstruct the phase of an optical flat, fit a quadratic polynomial to extract the residual curvature radius, and adjust the compensating objective or the digital mask until the residual peak-to-valley is below 0.1 rad; then confirm with a resolution target that the lateral resolution reaches the λ/NA design value.",
+      "failure": "若用平坦區擬合去除曲率時把樣品本身的大尺度形貌一起扣掉，平緩的真實曲面會從量測結果中消失，得到假的平坦表面。~If the curvature fit on a flat region also removes the sample's own large-scale shape, a gently curved real surface disappears from the measurement and a false flat surface results.",
+      "misconception": "數值補償可以修正任何物鏡像差，所以物鏡品質不重要。~Numerical compensation can fix any objective aberration, so objective quality does not matter."
+    },
+    {
+      "anchor": "台階標準片與折射率解耦~Step standard and index decoupling",
+      "title": "高度校正、波長與折射率追溯~Height calibration, wavelength and refractive-index traceability",
+      "mechanism": "相位轉換成高度需要準確的波長與折射率差。反射式只依賴波長與入射角，可以用認證台階標準片直接驗證；透射式的厚度與折射率差耦合在同一個光程差裡，必須用兩種已知折射率的介質分別量測來解耦，或用已知厚度的樣品反推折射率。橫向比例尺則以載物台測微尺或光柵標板校正，和高度軸分開追溯。~Converting phase to height needs an accurate wavelength and index difference. Reflection measurements depend only on wavelength and incidence angle and can be checked directly with a certified step standard; in transmission, thickness and index difference are coupled in one optical path difference, so they are decoupled by measuring in two media of known index or by inferring index from a sample of known thickness. The lateral scale is calibrated separately with a stage micrometer or grating target.",
+      "model": "透射式的相對誤差為 δh/h ≈ δλ/λ + δ(Δn)/Δn。Δn = 0.035 ± 0.002 時折射率項為 5.7%，而 λ = 532 ± 0.1 nm 的波長項只有 0.02%。量到 OPD = 280 nm 時，Δn = 0.035 給 h = 8.00 µm，Δn = 0.037 則給 7.57 µm，差 5.4%，顯示折射率才是主要誤差來源。~In transmission the relative error is δh/h ≈ δλ/λ + δ(Δn)/Δn. With Δn = 0.035 ± 0.002 the index term is 5.7%, whereas λ = 532 ± 0.1 nm contributes only 0.02%. For a measured OPD = 280 nm, Δn = 0.035 gives h = 8.00 µm but Δn = 0.037 gives 7.57 µm, a 5.4% difference, so the refractive index dominates the error.",
+      "verify": "以反射模式量測認證台階片（例如 100 nm 等級）取得高度軸比例；透射模式下把同一細胞或微結構分別浸在兩種已知折射率介質中量測 OPD，聯立解出厚度與折射率，並與原子力顯微鏡或輪廓儀的厚度比較。~Calibrate the height axis in reflection with a certified step of order 100 nm; in transmission measure the OPD of the same cell or microstructure immersed in two media of known index, solve the pair of equations for thickness and index, and compare the thickness with an atomic-force microscope or profilometer.",
+      "failure": "把文獻的平均細胞折射率套用到所有樣品，厚度誤差可達 5% 到 10%，且不同細胞類型之間的差異會被誤讀為厚度差異。~Applying a literature-average cell index to every sample produces thickness errors of 5% to 10%, and differences between cell types are misread as thickness differences.",
+      "misconception": "定量相位影像直接給出厚度，不需要知道折射率。~Quantitative phase imaging gives thickness directly without knowing the refractive index."
+    },
+    {
+      "anchor": "時間與空間相位雜訊圖~Temporal and spatial phase-noise maps",
+      "title": "相位雜訊來源與高度誤差預算~Phase-noise sources and the height error budget",
+      "mechanism": "相位雜訊來自光子散粒雜訊、感測器讀出雜訊、同調雜訊（寄生干涉與散斑）、以及兩臂之間的機械振動與空氣擾動。散粒雜訊決定單張全像圖的極限，與條紋對比和每像素光電子數有關；振動與熱漂移主要造成整場的活塞項與傾斜項，可用視場內的參考平坦區自我參考去除；殘留的空間雜訊則來自同調雜訊與曲率擬合殘差，需分項列入預算。~Phase noise comes from photon shot noise, sensor read noise, coherent noise from parasitic interference and speckle, and mechanical vibration and air turbulence between the arms. Shot noise sets the single-hologram limit and depends on fringe contrast and photoelectrons per pixel; vibration and thermal drift mainly add piston and tilt across the field, which self-referencing to a flat region removes; the remaining spatial noise comes from coherent noise and curvature-fit residuals and must be budgeted item by item.",
+      "model": "散粒雜訊極限 σ_φ ≈ 1/(V·√N_e)：N_e = 20,000 e⁻、V = 0.6 時 σ_φ ≈ 11.8 mrad，反射式 σ_h = λ·σ_φ/(4π) ≈ 0.50 nm，100 像素平均後約 0.05 nm。兩臂 10 mm 的空氣路徑差在 dn/dT ≈ −1×10⁻⁶/K、0.1 K 擾動下產生 1 nm 活塞項，自我參考後殘留取 0.2 nm；RSS 預算 √(0.5² + 0.2² + 0.3²) ≈ 0.62 nm。~Shot-noise limit σ_φ ≈ 1/(V·√N_e): with N_e = 20,000 e⁻ and V = 0.6, σ_φ ≈ 11.8 mrad, so in reflection σ_h = λ·σ_φ/(4π) ≈ 0.50 nm, or about 0.05 nm after averaging 100 pixels. A 10 mm air-path mismatch with dn/dT ≈ −1×10⁻⁶/K and 0.1 K fluctuation adds a 1 nm piston, of which 0.2 nm is assumed to remain after self-referencing; the RSS budget √(0.5² + 0.2² + 0.3²) ≈ 0.62 nm.",
+      "verify": "連續記錄 100 張平坦鏡面的全像圖，計算每像素相位的時間標準差得到時間雜訊，計算單張相位圖去除活塞與傾斜後的空間標準差得到空間雜訊，並把兩者與散粒雜訊估計及預算表比較。~Record 100 consecutive holograms of a flat mirror, compute the per-pixel temporal standard deviation of phase for temporal noise and the spatial standard deviation of a single phase map after removing piston and tilt for spatial noise, then compare both with the shot-noise estimate and the budget table.",
+      "failure": "把曝光拉長以增加光子數，卻讓振動在曝光時間內抹平條紋，對比下降反而使相位雜訊上升，整體雜訊比短曝光更差。~Lengthening the exposure to collect more photons lets vibration wash out the fringes within the exposure; the lower contrast raises phase noise and the result is worse than a short exposure.",
+      "misconception": "相位雜訊只由相機雜訊決定，與光學裝調無關。~Phase noise is set by the camera alone and has nothing to do with optical alignment."
+    },
+    {
+      "anchor": "角譜重建與數值重聚焦~Angular-spectrum reconstruction and numerical refocusing",
+      "title": "數值重建流程與數值重聚焦~Numerical reconstruction pipeline and numerical refocusing",
+      "mechanism": "重建流程依序為：傅立葉轉換、+1 階濾波與移到中心、乘上曲率補償遮罩、以角譜法或菲涅耳法傳播到像面、取振幅與相位、展開並去除活塞與傾斜。角譜法對波前每個平面波分量乘上傳播因子 exp(i·2π·d·√(1/λ² − f²))，可精確處理短距離傳播；因為複數波前已被記錄，重聚焦只需改變 d，不必移動樣品，等於把景深延伸到遠超物鏡本身。~The pipeline runs: Fourier transform, +1-order filtering and recentring, multiplication by the curvature mask, propagation to the image plane by the angular-spectrum or Fresnel method, extraction of amplitude and phase, then unwrapping and removal of piston and tilt. The angular-spectrum method multiplies each plane-wave component by exp(i·2π·d·√(1/λ² − f²)) and handles short propagation distances exactly; because the complex wavefront is recorded, refocusing only changes d without moving the sample, extending the usable depth far beyond the objective's own depth of field.",
+      "model": "像空間傳播距離換算到物空間為 Δz_obj = Δz_img/M²：M = 40、Δz_img = 16 mm 時 Δz_obj = 16/1600 mm = 10 µm。物鏡本身的景深約 n·λ/NA² = 0.532/0.65² ≈ 1.26 µm，所以數值重聚焦把可用深度擴大約 8 倍，而不改變橫向解析度。~Propagation in image space converts to object space as Δz_obj = Δz_img/M²: with M = 40 and Δz_img = 16 mm, Δz_obj = 16/1600 mm = 10 µm. The objective's own depth of field is about n·λ/NA² = 0.532/0.65² ≈ 1.26 µm, so numerical refocusing extends the usable depth roughly 8 times without changing lateral resolution.",
+      "verify": "記錄一片傾斜放置的解析力標板，單張全像圖以不同 d 重建並以振幅方差或稀疏度指標自動對焦，確認各區域的最佳 d 隨位置線性變化且斜率符合 M² 換算；再與機械移動載物台得到的焦點位置比較。~Record a tilted resolution target, reconstruct the single hologram at several d values with an autofocus metric such as amplitude variance or sparsity, confirm that the best d varies linearly across the field with a slope matching the M² conversion, and compare with focus positions found by moving the stage mechanically.",
+      "failure": "傳播距離取錯符號或在角譜法中忽略消逝波項，會得到看似清晰但相位錯誤的影像；若 d 偏離真正像面數微米，邊緣會出現繞射環並把相位台階弄圓。~A wrong sign of the propagation distance, or neglecting the evanescent terms in the angular-spectrum method, yields images that look sharp but carry wrong phase; a d a few micrometres off the true image plane adds diffraction rings at edges and rounds phase steps.",
+      "misconception": "數值重聚焦可以無限制延伸景深，不受物鏡限制。~Numerical refocusing extends the depth of field without limit regardless of the objective."
+    },
+    {
+      "anchor": "驗收報告與重建參數檔~Acceptance record and reconstruction parameter file",
+      "title": "系統驗證、比對與工程交接~System validation, comparison and engineering handoff",
+      "mechanism": "驗收不是只看單一指標，而是把橫向解析度、高度準確度、時間與空間雜訊、視場、重聚焦範圍與重建參數一起記錄。高度準確度用認證台階片與相符性指標 E_n 判定；解析度用標板的最小可分辨線對；雜訊用平坦鏡面連拍；重建參數檔（波長、像素尺寸、傳播距離、濾波視窗、補償遮罩）必須版本化存檔，否則同一張全像圖日後無法重現相同結果。~Acceptance is not a single number but a record of lateral resolution, height accuracy, temporal and spatial noise, field of view, refocusing range and reconstruction parameters together. Height accuracy is judged with a certified step and the E_n compatibility index; resolution with the smallest resolved line pair of a target; noise with repeated flat-mirror captures; and the reconstruction parameter file (wavelength, pixel size, propagation distance, filter window, compensation mask) must be versioned, otherwise the same hologram cannot be reproduced later.",
+      "model": "相符性指標 E_n = |h_lab − h_ref|/√(U_lab² + U_ref²)，U 為 k = 2 擴充不確定度。台階證書 100.0 nm、U_ref = 2.0 nm，實驗室量得 100.8 nm、U_lab = 1.2 nm，E_n = 0.8/√(1.44 + 4.0) = 0.8/2.33 ≈ 0.34 < 1，判定相符；若 E_n 超過 1 就必須找出未計入的系統誤差。~The compatibility index is E_n = |h_lab − h_ref|/√(U_lab² + U_ref²) with U the k = 2 expanded uncertainty. For a certified 100.0 nm step with U_ref = 2.0 nm and a laboratory result of 100.8 nm with U_lab = 1.2 nm, E_n = 0.8/√(1.44 + 4.0) = 0.8/2.33 ≈ 0.34 < 1, so the results agree; an E_n above 1 means an unaccounted systematic error must be found.",
+      "verify": "執行驗收清單：台階片三次重複量測與 E_n 計算、解析力標板最小線對、100 張連拍的時間雜訊、單張的空間雜訊、傾斜標板的重聚焦範圍，並把每項結果連同重建參數檔與原始全像圖一起歸檔。~Run the acceptance list: three repeated step measurements with E_n, the smallest resolved line pair on the target, temporal noise from 100 captures, spatial noise from a single map, refocusing range on a tilted target, and archive every result together with the reconstruction parameter file and the raw holograms.",
+      "failure": "只存重建後的相位圖而不存原始全像圖與參數檔，日後發現曲率補償或濾波視窗設錯時無法重算，整批量測資料必須作廢重測。~Storing only reconstructed phase maps without the raw holograms and parameter file means that when a wrong compensation mask or filter window is found later nothing can be recomputed, and the whole batch must be re-measured.",
+      "misconception": "台階片量測一次正確，整台系統就驗收完成。~One correct step measurement means the whole system is accepted."
+    }
+  ],
+  "example": "設計練習：λ = 532 nm、像素 3.45 µm、40×/0.65 物鏡。物光頻寬半寬 f_max = 0.65/(40×0.532 µm) ≈ 30.5 lp/mm，選 3 像素條紋 Λ = 10.35 µm 得 f_c = 96.6 lp/mm，滿足 f_c ≥ 3·f_max = 92 lp/mm 與 f_c + f_max = 127 lp/mm ≤ 145 lp/mm，參考光角度 θ = asin(0.532×0.0966) ≈ 2.95°。反射式量一個 400 nm 台階：Δφ = 4π×0.400/0.532 = 9.45 rad，包裹後為 9.45 − 12.57 = −3.12 rad，若不展開會讀成 −132 nm。加入 561 nm 第二波長，合成波長 Λ = 532×561/29 ≈ 10.29 µm，合成相位 4π×0.400/10.29 ≈ 0.489 rad 不會包裹，反算高度 0.489×10.29/(4π) = 0.400 µm。但合成波長把相位雜訊放大 Λ/λ ≈ 19 倍：σ_φ = 10 mrad 時單波長 σ_h ≈ 0.42 nm，合成波長 σ_h ≈ 8.2 nm，所以用合成波長決定 2π 級數、再用單波長取得細節。數值為教學假設。~Design exercise: λ = 532 nm, 3.45 µm pixels, 40×/0.65 objective. The object half-bandwidth is f_max = 0.65/(40×0.532 µm) ≈ 30.5 lp/mm; choosing 3-pixel fringes Λ = 10.35 µm gives f_c = 96.6 lp/mm, satisfying f_c ≥ 3·f_max = 92 lp/mm and f_c + f_max = 127 lp/mm ≤ 145 lp/mm, with reference angle θ = asin(0.532×0.0966) ≈ 2.95°. Measuring a 400 nm step in reflection: Δφ = 4π×0.400/0.532 = 9.45 rad, which wraps to 9.45 − 12.57 = −3.12 rad and reads as −132 nm if not unwrapped. Adding a 561 nm second wavelength gives Λ = 532×561/29 ≈ 10.29 µm; the synthetic phase 4π×0.400/10.29 ≈ 0.489 rad does not wrap and returns 0.489×10.29/(4π) = 0.400 µm. The synthetic wavelength amplifies phase noise by Λ/λ ≈ 19, so with σ_φ = 10 mrad the single-wavelength σ_h ≈ 0.42 nm becomes about 8.2 nm; use the synthetic wavelength to fix the 2π order and the single wavelength for detail. Values are teaching assumptions.",
+  "history": "Gabor 在 1948 年提出全像術，Leith 與 Upatnieks 於 1962 年引入離軸參考光使影像項分離；Goodman 與 Lawrence 在 1967 年示範以電子感測器記錄全像並用電腦重建。1999 年 Cuche、Marquet 與 Depeursinge 在洛桑聯邦理工學院把離軸數位全像與顯微物鏡結合，從單張全像圖同時得到振幅與定量相位，隨後衍生出商用數位全像顯微鏡與活細胞定量相位成像；2010 年代起全像斷層技術進一步把多角度相位資料重建成三維折射率分佈。本課只重建公開的原理與工程邏輯。~Gabor proposed holography in 1948; Leith and Upatnieks introduced the off-axis reference in 1962 to separate the image terms; Goodman and Lawrence in 1967 recorded holograms on an electronic sensor and reconstructed them by computer. In 1999 Cuche, Marquet and Depeursinge at EPFL combined off-axis digital holography with a microscope objective to obtain amplitude and quantitative phase from a single hologram, leading to commercial digital holographic microscopes and live-cell quantitative phase imaging; from the 2010s holotomography reconstructed multi-angle phase data into three-dimensional refractive-index maps. This course rebuilds only public principles and engineering logic.",
+  "place": {
+    "name": "洛桑聯邦理工學院數位全像參照點~EPFL Lausanne digital-holography reference",
+    "country": "瑞士~Switzerland",
+    "lat": 46.519,
+    "lng": 6.566,
+    "query": "EPFL Ecole Polytechnique Federale de Lausanne"
+  },
+  "sources": [
+    {
+      "key": "lynceetec-dhm",
+      "title": "Lyncée Tec：數位全像顯微鏡（DHM）",
+      "titleEn": "Lyncée Tec: Digital holographic microscopy (DHM)",
+      "publisher": "Lyncée Tec SA",
+      "url": "https://www.lynceetec.com/",
+      "sourceType": "primary",
+      "scope": "數位全像顯微鏡製造商的公開產品與技術入口，涵蓋反射式表面量測與透射式活細胞相位成像；不含演算法細節。",
+      "scopeEn": "Public product and technology entry page of a digital-holographic-microscope maker, covering reflective surface metrology and transmission live-cell phase imaging; no algorithm details."
+    },
+    {
+      "key": "tomocube-holotomography",
+      "title": "Tomocube：全像斷層（Holotomography）無標記三維活細胞成像",
+      "titleEn": "Tomocube: Holotomography for label-free 3D live-cell imaging",
+      "publisher": "Tomocube Inc.",
+      "url": "https://www.tomocube.com/",
+      "sourceType": "primary",
+      "scope": "說明以多角度全像相位資料重建三維折射率分佈的商用系統；提供定量相位成像的應用脈絡。",
+      "scopeEn": "Describes commercial systems that reconstruct three-dimensional refractive-index maps from multi-angle holographic phase data; application context for quantitative phase imaging."
+    },
+    {
+      "key": "holomonitor-qpi",
+      "title": "HoloMonitor：培養箱內無標記定量相位活細胞分析",
+      "titleEn": "HoloMonitor: Label-free quantitative-phase live-cell analysis in the incubator",
+      "publisher": "Phase Holographic Imaging (HoloMonitor)",
+      "url": "https://holomonitor.org/",
+      "sourceType": "primary",
+      "scope": "以數位全像定量相位成像監測細胞培養的商用平台公開頁面；用於理解低功率雷射與長時間穩定性需求。",
+      "scopeEn": "Public page of a commercial platform that monitors cell cultures by digital-holographic quantitative phase imaging; useful for the low-power laser and long-term stability requirements."
+    },
+    {
+      "key": "wiki-dhm",
+      "title": "維基百科：數位全像顯微鏡",
+      "titleEn": "Wikipedia: Digital holographic microscopy",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Digital_holographic_microscopy",
+      "sourceType": "secondary",
+      "scope": "概述離軸記錄、數值重建演算法與定量相位對比的背景；僅作次要參考。",
+      "scopeEn": "Background overview of off-axis recording, numerical reconstruction algorithms and quantitative phase contrast; secondary reference only."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Lyncée Tec",
+      "nameEn": "Lyncée Tec SA",
+      "business": "反射式與透射式數位全像顯微鏡、工業用全像干涉儀與 OEM 模組。",
+      "businessEn": "Reflection and transmission digital holographic microscopes, industrial holographic interferometers and OEM modules.",
+      "url": "https://www.lynceetec.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "離軸數位全像顯微鏡的商用實作與表面量測應用",
+      "roleEn": "Commercial implementation of off-axis digital holographic microscopes and surface-metrology applications"
+    },
+    {
+      "name": "Tomocube",
+      "nameEn": "Tomocube Inc.",
+      "business": "全像斷層顯微鏡與三維折射率影像分析軟體。",
+      "businessEn": "Holotomography microscopes and three-dimensional refractive-index image-analysis software.",
+      "url": "https://www.tomocube.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "多角度全像相位資料的三維折射率重建",
+      "roleEn": "Three-dimensional refractive-index reconstruction from multi-angle holographic phase data"
+    },
+    {
+      "name": "Nanolive",
+      "nameEn": "Nanolive SA",
+      "business": "無標記三維活細胞全像斷層成像平台與分析軟體。",
+      "businessEn": "Label-free three-dimensional live-cell holotomographic imaging platforms and analysis software.",
+      "url": "https://www.nanolive.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "低功率長時間活細胞定量相位成像的工程參考",
+      "roleEn": "Engineering reference for low-power, long-duration live-cell quantitative phase imaging"
+    },
+    {
+      "name": "Phase Holographic Imaging",
+      "nameEn": "Phase Holographic Imaging (HoloMonitor)",
+      "business": "培養箱內使用的數位全像定量相位細胞分析儀。",
+      "businessEn": "Digital-holographic quantitative-phase cell analysers designed for use inside incubators.",
+      "url": "https://holomonitor.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "緊湊型數位全像顯微鏡的穩定性與低功率設計參考",
+      "roleEn": "Reference for stability and low-power design of compact digital holographic microscopes"
+    }
+  ],
+  "related": ["a421", "a440"],
+  "architectureNodes": [["雷射與分光器", "Laser and beam splitter"], ["物光臂與顯微物鏡", "Object arm and microscope objective"], ["參考臂延遲線", "Reference-arm delay line"], ["離軸全像感測器", "Off-axis hologram sensor"], ["數值重建與相位展開", "Numerical reconstruction and unwrapping"], ["定量相位影像", "Quantitative phase image"]],
+  "architectureEdges": [[0, 1], [0, 2], [1, 3], [2, 3], [3, 4], [4, 5]]
+}

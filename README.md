@@ -2,16 +2,23 @@
 
 以總工程師的視角，把複雜工程拆為「專案 → 階段 → 工序 → 知識點」。學徒在左側操作，師傅在右側示範；看示範、閱讀原理、操作教具、完成驗收，依學員與專案保存進度。
 
-**V11 聚焦資訊與資安及世界工程：** 資訊與資安 100 門各增加 32 步，合計 3,254 步；另外加入 80 門具名的量子、神經網路／加速器、伺服器、能源與資源工程。全站 2,066 選題中，515 門提供逐步課程，共 13,042 步；另有 1,551 項研究工作表。原有半導體 99 門、先進封裝／矽光子 100 門、電機／電子 100 門與既有進度 ID 保留。新增課程地圖、180 組雙語原創架構圖、16 個資訊算例、8 個能源／資源算例、雙量子位理想模擬器及 12 個可下載 Python 小實驗。參見 `docs/UPGRADE_V11_ZH.md`。
+**V12（2026-10-15）：** 新增「光學與精密儀器」101 門逐步課程（99 門新課各 32 步，`asml`、`a405` 延伸且舊步驟 ID 不變），全站 2,066 選題中 614 門逐步課程、16,274 步。每門課只開放**第一節免費**，其餘以學習通行證（30 天 NT$299／365 天 NT$2,490，依觀看地區換算當地幣別）解鎖；會員註冊需帳號、密碼、信箱、手機四項。每門課附相關公司、官方業務連結與每週股價快照（522 家，351 家上市）。介面更簡潔，可存個人主題、版面與語音；首頁輪播 2,066 個不重複專案圖示；介面另有 77 種語言字典（依瀏覽器語言自動切換）。詳見 `docs/UPGRADE_V12_ZH.md`。
 
-先開 `public/academy/help.html` 看入口與設定。新索引為 `public/academy/data/information-security-100.csv` 與 `world-expansion-v11.csv`；既有電機／電子及封裝／矽光子 CSV 仍保留。實際媒體與來源統計見 `public/academy/data/release.json`。**此完整 ZIP 是給擁有者的原始碼／離線教材包，不是已經收費的產品或可公開下載的付費門禁。**
+**一鍵上傳與每週股價：** `bash macgyver.sh`（只上傳差異）、`bash macgyver.sh compare`（比對雲端）、`bash macgyver.sh stocks`（每週股價）、`bash macgyver.sh models`（模型上傳私人倉庫）。見 `docs/UPLOAD_SYNC_V12_ZH.md`、`docs/AI_MODELS_V12_ZH.md`、`docs/PAYMENTS_V12_ZH.md`。
+
+先開 `public/academy/help.html` 看入口與設定。光學課程索引為 `public/academy/data/optics-precision-101.csv`；實際媒體與來源統計見 `public/academy/data/release.json`。**此完整 ZIP 是給擁有者的原始碼／離線教材包（含 `owner-private/` 收款設定筆記，不會上傳到 GitHub），請勿公開散布。**
+
+<details><summary>V11 摘要</summary>
+
+V11 聚焦資訊與資安及世界工程：資訊與資安 100 門各增加 32 步；另外加入 80 門具名的量子、神經網路／加速器、伺服器、能源與資源工程；新增課程地圖、180 組雙語原創架構圖、16 個資訊算例、8 個能源／資源算例、雙量子位理想模擬器及 12 個 Python 小實驗。參見 `docs/UPGRADE_V11_ZH.md`。
+</details>
 
 ## 快速開始：直接開啟 HTML
 
 1. **完整解壓 ZIP**，保留所有資料夾，不要只抽出一個 HTML。
 2. 雙擊最外層 `index.html`。課程、照片、師傅示範、雙手控制與本機進度不需啟動伺服器。
 3. 使用當代 Chrome、Edge、Firefox 或 Safari。影片、外部來源、Google Maps 需要網路。
-4. 本機學習檔案可填姓名、信箱並分別保存進度；它**不是密碼保護或跨裝置帳號**。請定期匯出 JSON，避免清除瀏覽器資料、改用另一瀏覽器或移動資料夾後遺失紀錄。
+4. 本機會員帳號（帳號、密碼、信箱、手機）只存在此瀏覽器，密碼以加鹽雜湊保存，可防止同一台裝置上的他人切換你的紀錄；它**不是跨裝置帳號**。請定期匯出 JSON，避免清除瀏覽器資料、改用另一瀏覽器或移動資料夾後遺失紀錄。
 5. 手機／平板優先使用 HTTPS 網站。檔案預覽器未必能執行 JavaScript；觸控學習不需要在手機安裝 Python。
 
 離線包已預先建好，不需安裝 npm 套件。修改原始碼或課程後，執行 `bash build-offline.sh` 重建；修改課程原稿後可執行 `bash rebuild-curriculum.sh` 整合與驗證。
@@ -139,22 +146,16 @@ bash upload-github-ssh.sh --weights-repo git@github.com:OWNER/PRIVATE-MODELS.git
 
 GitHub Pages 由私人倉庫發布時，符合 GitHub 方案條件的預設網頁仍可公開觀看；隨頁面發布的教材亦可供訪客取得。模型分片保留在獨立私人倉庫，Pages 不會自動載入它們。SSH 驗證可用 `ssh -T git@github.com` 測試；第一次連線須先核對 GitHub 官方主機指紋。
 
-先建立自己的空白 GitHub 倉庫（例如 `macgyver-academy`），設定 Git 姓名、信箱及認證，再於解壓目錄執行：
+**V12 起建議只用一個指令：**
 
 ```bash
-bash publish-github.sh --repo https://github.com/kuonanhong/macgyver-academy.git --dry-run
-bash publish-github.sh --repo https://github.com/kuonanhong/macgyver-academy.git --push
+bash macgyver.sh doctor     # 第一次：檢查 git、Python、SSH
+bash macgyver.sh compare    # 比對本機套件與 GitHub：新增 / 修改 / 刪除 / 相同
+bash macgyver.sh            # 只上傳新增與修改、刪除雲端多餘檔案
+bash macgyver.sh stocks     # 每週股價與匯率（或 bash macgyver.sh schedule 自動排程）
 ```
 
-程式會在專案外建立隔離副本，不改原 Sites 倉庫 origin；排除帳號、私有教材、密鑰與模型。完整首次登入、遠端已有歷史及更新流程見 `docs/GITHUB_UPLOAD_ZH.md`。這些腳本不代表已替您執行 GitHub push。
-
-後續程式／教材更新可一個指令處理：
-
-```bash
-bash update-and-upload.sh --repo https://github.com/kuonanhong/macgyver-academy.git
-```
-
-它先重建離線包、預檢公開匯出，再推送隔離副本。只有明確指定 `--models-remote mycloud:MacGyver/models` 才以 rclone 複製權重；未完成下載檔會排除，不隱含使用 Git LFS。私人教材可另以 `--documents`、`--documents-remote`、`--index-documents` 處理，詳見 AI 文件。
+比對原理、SSH 設定、保護付費內容與每週排程見 `docs/UPLOAD_SYNC_V12_ZH.md`。舊的 `update-and-upload.sh`、`push-updates.sh` 已移除；`publish-github.sh` 保留為內部匯出工具。
 
 GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish static MacGyver Academy** workflow，才會發布網站。`bash deploy-static.sh` 也可產生獨立 `github-pages/` 靜態資料夾。靜態課程可搭配瀏覽器 CPU AI；跨裝置帳號由設定的 Supabase 提供，伺服器 AI 須另設後端。
 
@@ -179,6 +180,13 @@ GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish sta
 | `public/academy/quantum-lab.js` | 理想雙量子位閘、機率、相位與糾纏模型 |
 | `public/academy/assets/labs/v11/` | 12 個標準函式庫 Python 小實驗、假想資料與可下載 ZIP |
 | `public/academy/personalization.js` / `membership.js` / `vendors.js` | 個人工作室、會員與產業資訊介面 |
+| `public/academy/pricing.js` / `paywall.js` / `checkout.js` | V12 地區定價、第一節免費門禁、PayPal／綠界結帳 |
+| `supabase/002_accounts_commerce.sql` / `supabase/functions/` | V12 會員四欄位、訂單、通行證與金流驗證 |
+| `tools/optics-v12/` / `tools/integrate-optics-v12.py` | 光學與精密儀器 101 門原稿、建置與整合 |
+| `tools/markets-v12/` / `.github/workflows/weekly-markets.yml` | 公司名單合併、每週股價匯率更新 |
+| `tools/sync-v12/sync_github.py` | 以 Git blob 指紋比對雲端並只上傳差異 |
+| `tools/model-proxy/` | 可選：私人模型倉庫的 Cloudflare Worker 代理 |
+| `owner-private/` | 站長私人筆記（收款帳戶），永不上傳 |
 | `portable/commerce.py` / `commerce_admin.py` | 可另部署的受保護金流、權限與證書 |
 | `run-commerce.sh` / `examples/commerce-*` | 付費後端啟動與設定範本，預設不收款 |
 | `tools/model-manifest.json` | 官方模型版本、檔名、大小、雜湊及授權 |
@@ -187,7 +195,8 @@ GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish sta
 | `build-offline.sh` / `rebuild-curriculum.sh` | 重建離線程式與整合課程 |
 | `install-ai-models.sh` / `run-ai-llamacpp.sh` | 原生 CPU 權重下載與啟動 |
 | `run-ai-local.sh` / `.ps1` | Ollama 下載與本機網站啟動 |
-| `publish-github.sh` / `update-and-upload.sh` | 隔離 GitHub 匯出、更新與明確指定的備份 |
+| `macgyver.sh` | V12 一鍵：比對雲端、只上傳差異、每週股價、模型上傳、排程 |
+| `publish-github.sh` | 隔離 GitHub 匯出（由上傳工具內部使用） |
 | `upload-github-ssh.sh` | SSH 程式推送、分片權重續傳與驗證還原；詳見 `docs/GITHUB_SSH_UPLOAD_ZH.md` |
 | `public-player/` | 獨立靜態影片播放器 |
 | `docs/` | 部署、AI、帳號、內容界線及驗證說明 |

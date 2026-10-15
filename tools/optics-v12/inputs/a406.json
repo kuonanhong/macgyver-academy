@@ -1,0 +1,182 @@
+{
+  "id": "a406",
+  "title": "複消色差顯微物鏡~Apochromatic microscope objectives",
+  "discipline": "optics-design-fabrication",
+  "family": "microscope",
+  "focus": "Abbe 極限、二級光譜與部分色散、齊明前鏡組、蓋玻片球差與 PSF 驗證~Abbe limit, secondary spectrum and partial dispersion, aplanatic front group, cover-glass spherical aberration and PSF validation",
+  "summary": "以 100×/1.4 油浸複消色差物鏡為對象：從 Abbe 解析度與軸向景深建立規格邊界，推導二級光譜如何由玻璃的部分色散差決定、為何需要螢石類異常色散材料，說明齊明半球前鏡組如何把 NA 1.4 的光線角逐級降低，再談鏡片偏心與增透膜、蓋玻片厚度球差與校正環，最後以多波長 PSF 量測與 Strehl 預算完成驗收。~Taking a 100×/1.4 oil-immersion apochromat as the object, the course sets the specification boundary from Abbe resolution and axial depth of field, derives how secondary spectrum is fixed by the partial-dispersion difference of the glasses and why fluorite-type anomalous-dispersion materials are needed, explains how the aplanatic hemispherical front group steps the NA 1.4 ray angles down, covers element decentration, antireflection coatings, cover-glass spherical aberration and the correction collar, and closes acceptance with multi-wavelength PSF measurement and a Strehl budget.",
+  "units": [
+    {
+      "anchor": "物鏡出瞳與數值孔徑~Objective exit pupil and numerical aperture",
+      "title": "Abbe 解析度與軸向景深的規格邊界~Abbe resolution and axial depth as specification boundaries",
+      "mechanism": "顯微物鏡能分辨的最小週期由 Abbe 條件決定：d = λ/(2NA)，NA = n·sinα 是物方介質折射率與半孔徑角正弦的乘積，油浸以 n = 1.515 把 NA 推到 1.4。軸向解析度隨 NA 的平方改善，但景深也跟著縮到 1 µm 以下，於是任何波長之間的焦點差都必須小於景深，否則不同顏色的影像無法同時清晰；這正是複消色差物鏡存在的理由，色差規格要用景深為尺度來訂。~The finest period a microscope objective can resolve follows the Abbe condition d = λ/(2NA), where NA = n·sinα is the product of the object-space index and the sine of the half-aperture angle, and oil immersion with n = 1.515 pushes NA to 1.4. Axial resolution improves with the square of NA, but depth of field shrinks below 1 µm with it, so any focus difference between wavelengths must be smaller than that depth or the colours cannot be sharp simultaneously; this is exactly why apochromats exist, and chromatic specifications must be written in units of depth of field.",
+      "model": "100×/1.4 油浸物鏡在 λ = 550 nm：Abbe 極限 d = 550/(2×1.4) ≈ 196 nm，Rayleigh 判據 0.61λ/NA ≈ 240 nm；軸向單側景深 n·λ/NA² = 1.515×0.55/1.96 ≈ 0.43 µm，全寬約 0.85 µm。乾式 40×/0.95 的橫向極限為 290 nm，軸向景深 0.61 µm。~For a 100×/1.4 oil objective at λ = 550 nm the Abbe limit is d = 550/(2×1.4) ≈ 196 nm and the Rayleigh criterion 0.61λ/NA ≈ 240 nm; the one-sided axial depth n·λ/NA² = 1.515×0.55/1.96 ≈ 0.43 µm, about 0.85 µm full width. A dry 40×/0.95 objective has a lateral limit of 290 nm and an axial depth of 0.61 µm.",
+      "verify": "以 100 nm 螢光珠或 Siemens 星形靶量測橫向 PSF 半高寬與最小可分辨週期，與 λ/(2NA) 比較；再沿 z 軸以 50 nm 步進掃描同一顆珠，量軸向強度分佈的半高寬，核對是否接近 n·λ/NA² 的預測，偏大表示實際 NA 不足或存在球差。~Measure the lateral PSF full width at half maximum and the smallest resolvable period with 100 nm fluorescent beads or a Siemens star target and compare with λ/(2NA); then scan the same bead along z in 50 nm steps, measure the axial intensity full width at half maximum and check it against the n·λ/NA² prediction, since a larger value indicates reduced effective NA or spherical aberration.",
+      "failure": "若浸油折射率與設計值不符或油膜中有氣泡，有效 NA 下降，橫向解析度從 196 nm 退化到 250 nm 以上，而物鏡本身並無缺陷，使用者卻以為物鏡不良。~If the immersion oil index deviates from design or the oil film contains bubbles, the effective NA drops, lateral resolution degrades from 196 nm to above 250 nm, and the user blames an objective that is actually faultless.",
+      "misconception": "放大倍率越高，解析度就一定越好。~Higher magnification always means better resolution."
+    },
+    {
+      "anchor": "部分色散圖與二級光譜~Partial-dispersion diagram and secondary spectrum",
+      "title": "二級光譜、部分色散與複消色差條件~Secondary spectrum, partial dispersion and the apochromatic condition",
+      "mechanism": "消色差雙合鏡只能讓兩個波長（F 與 C 線）共焦，其餘波長的焦點偏離稱為二級光譜，大小由兩種玻璃的部分色散差 ΔP 與 Abbe 數差 Δν 的比值決定。普通玻璃的部分色散幾乎落在一條直線上，所以 ΔP/Δν 幾乎是常數，無法用普通玻璃消除；只有螢石、氟磷酸鹽冕玻璃或特殊短火石這類偏離正常線的材料，才能讓三個波長共焦並同時校正球差，這就是複消色差。~An achromatic doublet brings only two wavelengths (the F and C lines) to a common focus; the residual focus error of other wavelengths is the secondary spectrum, whose size is set by the ratio of the partial-dispersion difference ΔP to the Abbe-number difference Δν of the two glasses. Ordinary glasses have partial dispersions lying almost on a straight line, so ΔP/Δν is nearly constant and cannot be cancelled with ordinary glasses; only materials off the normal line such as fluorite, fluorophosphate crowns or special short flints allow three wavelengths to share a focus while spherical aberration is also corrected, which is the apochromatic condition.",
+      "model": "二級光譜 Δf_g ≈ f·(P₁ − P₂)/(ν₁ − ν₂)。N-BK7（ν = 64.2，P_gF = 0.535）與 F2（ν = 36.4，P_gF = 0.583）：ΔP/Δν = −0.048/27.8 ≈ −1.7×10⁻³，即 f/580；物鏡焦距 f = 2 mm 時 g 線焦點偏離 3.4 µm，是 0.43 µm 景深的 8 倍。改用匹配的異常色散對（ΔP ≈ 0.004、Δν ≈ 50）得 8×10⁻⁵，即 f/12500，殘差 0.16 µm，小於景深。~Secondary spectrum Δf_g ≈ f·(P₁ − P₂)/(ν₁ − ν₂). For N-BK7 (ν = 64.2, P_gF = 0.535) with F2 (ν = 36.4, P_gF = 0.583), ΔP/Δν = −0.048/27.8 ≈ −1.7×10⁻³, i.e. f/580; for an objective focal length f = 2 mm the g-line focus is off by 3.4 µm, 8 times the 0.43 µm depth of field. A matched anomalous-dispersion pair (ΔP ≈ 0.004, Δν ≈ 50) gives 8×10⁻⁵, i.e. f/12500, a residual of 0.16 µm, below the depth of field.",
+      "verify": "用 405、488、561 與 640 nm 的雷射線或窄帶濾光片依序對同一顆次解析螢光珠找最佳焦面，記錄各波長的 z 位置差；把焦點差畫成波長的函數，與設計軟體輸出的軸向色差曲線比較，並確認最大偏差落在景深之內。~Find the best focus of the same sub-resolution fluorescent bead at 405, 488, 561 and 640 nm using laser lines or narrowband filters and record the z position for each wavelength; plot the focus difference against wavelength, compare with the axial chromatic curve from the design software and confirm the largest deviation lies within the depth of field.",
+      "failure": "若量產時把一片氟磷酸鹽冕玻璃替換成部分色散不同的替代牌號，三個波長的共焦條件被破壞，紅與藍通道的影像平面相差超過 1 µm，多色共定位實驗出現假性的空間分離。~If production substitutes a fluorophosphate crown with an alternative grade of different partial dispersion, the three-wavelength common focus is lost, red and blue image planes separate by more than 1 µm, and multicolour colocalisation experiments show false spatial separation.",
+      "misconception": "只要鏡片數量夠多，用普通玻璃也能消除二級光譜。~With enough elements, ordinary glasses can remove the secondary spectrum."
+    },
+    {
+      "anchor": "齊明半球前鏡組~Aplanatic hemispherical front group",
+      "title": "齊明面、螢石材料與光線角的逐級降低~Aplanatic surfaces, fluorite materials and stepwise angle reduction",
+      "mechanism": "高 NA 物鏡的前端是一片半球或超半球透鏡，試樣與浸油的折射率相近，試樣位於球面的齊明點（距球心 R/n）時，球面既不產生球差也不產生彗差，但把光線的正弦角度除以 n，再接一片齊明彎月鏡可以再除一次。這樣把 NA 1.4 的陡峭光束降成後方鏡組容易處理的角度，之後的螢石與異常色散玻璃雙合、三合鏡才負責色差與剩餘球差的校正。螢石（CaF₂）的 Abbe 數約 95，但質地軟且易受熱衝擊，加工與鍍膜都需特別處理。~The front of a high-NA objective is a hemispherical or hyper-hemispherical lens; with specimen and immersion oil of nearly equal index, a specimen at the aplanatic point of the sphere (R/n from the centre) sees neither spherical aberration nor coma, while the sine of the ray angle is divided by n, and a following aplanatic meniscus divides it once more. This reduces the steep NA 1.4 beam to angles the rear groups can handle, after which fluorite and anomalous-dispersion doublets and triplets correct colour and residual spherical aberration. Fluorite (CaF₂) has an Abbe number near 95 but is soft and sensitive to thermal shock, so it needs special handling in polishing and coating.",
+      "model": "油中邊緣光 sinu = 1.4/1.515 = 0.924（u ≈ 67.5°）；經第一齊明面後 sinu' = 0.924/1.515 = 0.610（37.6°），第二齊明彎月鏡後 0.610/1.515 = 0.403（23.7°），相當於後鏡組只需處理 NA 0.4 的光束。每個齊明面的橫向放大率為 n² ≈ 2.3，兩面合計約 5.3 倍。~The marginal ray in oil has sinu = 1.4/1.515 = 0.924 (u ≈ 67.5°); after the first aplanatic surface sinu' = 0.924/1.515 = 0.610 (37.6°), and after the second aplanatic meniscus 0.610/1.515 = 0.403 (23.7°), so the rear groups handle only an NA 0.4 beam. Each aplanatic surface magnifies by n² ≈ 2.3, about 5.3× for the two together.",
+      "verify": "用設計軟體追跡邊緣光線，核對每個齊明面前後的 sinu 比值是否等於折射率，並確認前鏡組單獨的球差與彗差係數接近零；實物上以干涉儀對前鏡組做局部波前測試，比較量測的球差項與設計殘差，差異反映曲率半徑或中心厚度的加工偏差。~Trace the marginal ray in design software and check that the ratio of sinu before and after each aplanatic surface equals the refractive index, confirming that the front group alone has near-zero spherical and coma coefficients; on hardware, test the front group's wavefront interferometrically and compare the measured spherical term with the design residual, since any difference reflects fabrication errors in radius or centre thickness.",
+      "failure": "半球前鏡的中心厚度若比設計厚 20 µm，齊明點位置偏移，球差與彗差同時出現，無法靠校正環完全補償，整支物鏡的 Strehl 在最佳焦面也降到 0.8 以下。~If the hemispherical front lens is 20 µm thicker than design, the aplanatic point shifts, spherical aberration and coma appear together, the correction collar cannot fully compensate, and the whole objective's Strehl falls below 0.8 even at best focus.",
+      "misconception": "螢石鏡片只是為了讓透過率更高。~Fluorite elements are used only to raise transmission."
+    },
+    {
+      "anchor": "鏡片偏心公差與增透膜~Element centring tolerance and antireflection coatings",
+      "title": "鏡片製造、對心組裝與寬頻增透膜~Element fabrication, centred assembly and broadband antireflection coatings",
+      "mechanism": "一支複消色差物鏡通常有 10 到 15 片鏡片，其中多組膠合；每片的曲率、厚度與折射率誤差都會改變色差與球差的平衡，所以組裝時以空氣間隙或選配鏡片作為補償項。鏡片對心是最敏感的公差：偏心產生與視場無關的彗差，用對心儀以反射像判定光軸後再修邊與膠合。每個玻璃空氣界面都要鍍寬頻增透膜，否則 30 個界面的反射損失會讓透過率與對比同時崩潰。~An apochromat typically has 10 to 15 elements, several cemented; errors in radius, thickness and refractive index of every element shift the balance of chromatic and spherical correction, so an air gap or selected elements serve as compensators during assembly. Centring is the most sensitive tolerance: decentration produces field-independent coma, so each element's optical axis is located with a centring instrument from reflected images before edging and cementing. Every glass-air interface needs a broadband antireflection coating, otherwise the reflection losses of 30 interfaces collapse both transmission and contrast.",
+      "model": "若某片鏡片的彗差靈敏度為 0.05 波/µm 偏心，2 µm 偏心產生 0.1 波（550 nm 下 55 nm）的彗差，超過 Maréchal 判據 λ/14 ≈ 39 nm，因此偏心必須控制在約 1 µm。透過率：30 個界面各反射 0.3% 時 T = 0.997³⁰ ≈ 0.91；若未鍍膜各反射 4%，T = 0.96³⁰ ≈ 0.29。~If an element's coma sensitivity is 0.05 waves per µm of decentration, 2 µm produces 0.1 waves (55 nm at 550 nm) of coma, beyond the Maréchal criterion λ/14 ≈ 39 nm, so decentration must be held to about 1 µm. Transmission: 30 interfaces at 0.3% reflection each give T = 0.997³⁰ ≈ 0.91; uncoated at 4% each, T = 0.96³⁰ ≈ 0.29.",
+      "verify": "組裝後以星點測試或干涉儀量軸上波前，彗差項若大於預算就依靈敏度表反推是哪一組偏心並重新對心；用分光光度計量整支物鏡 400 到 700 nm 的透過率曲線，與各界面鍍膜反射率的乘積模型比較，差異大於 3% 表示某層膜或膠合層有問題。~After assembly measure the on-axis wavefront with a star test or interferometer; if the coma term exceeds budget, use the sensitivity table to identify which group is decentred and re-centre it. Measure the full objective's transmission from 400 to 700 nm with a spectrophotometer and compare with the product model of the interface reflectances, where a discrepancy above 3% points to a faulty coating or cement layer.",
+      "failure": "膠合層固化時收縮不均會把一組鏡片拉偏數微米，物鏡在出廠測試合格，但經過幾個月的熱循環後彗差逐漸浮現，影像在整個視場出現同方向的彗星尾。~Uneven shrinkage of a cement layer during curing can pull a cemented group several micrometres off centre; the objective passes the factory test, but after months of thermal cycling coma gradually emerges and every point in the field shows a comet tail in the same direction.",
+      "misconception": "鏡片多幾片沒關係，鍍膜損失可以忽略。~A few extra elements do not matter because coating losses are negligible."
+    },
+    {
+      "anchor": "多波長 PSF 量測台~Multi-wavelength PSF measurement bench",
+      "title": "PSF、Strehl 與軸向色差的量測~Measuring PSF, Strehl and axial colour",
+      "mechanism": "物鏡的最終品質以點擴散函數（PSF）衡量：用直徑遠小於解析度的螢光珠或針孔作為點光源，記錄三維影像堆疊，從中取橫向半高寬、軸向半高寬、對稱性與 Strehl 比。多波長量測則揭露軸向色差與橫向色差；干涉儀測試能給出 Zernike 係數，但需要與物鏡匹配的參考球面與浸液。量測時蓋玻片厚度、浸油折射率與溫度都必須和設計條件一致，否則量到的是測試條件的像差而非物鏡的像差。~An objective's final quality is judged by its point-spread function (PSF): a fluorescent bead or pinhole far smaller than the resolution serves as a point source, a three-dimensional image stack is recorded, and lateral and axial full widths at half maximum, symmetry and Strehl ratio are extracted. Multi-wavelength measurement exposes axial and lateral colour; interferometric testing gives Zernike coefficients but needs a matched reference sphere and immersion. Cover-glass thickness, oil index and temperature during the test must match the design conditions, otherwise the measured aberration belongs to the test setup rather than to the objective.",
+      "model": "NA 1.4 在 520 nm 的理想橫向 PSF 半高寬 ≈ 0.51λ/NA = 0.51×520/1.4 ≈ 189 nm；若量到 215 nm，相當於有效 NA 降到 1.23 或存在像差。Strehl 由 RMS 波前估計：σ = 30 nm 時 Strehl ≈ exp[−(2π×30/550)²] = exp(−0.117) ≈ 0.89；σ = 45 nm 時約 0.77，已低於 0.8。~The ideal lateral PSF full width at half maximum at NA 1.4 and 520 nm is ≈ 0.51λ/NA = 0.51×520/1.4 ≈ 189 nm; a measured 215 nm corresponds to an effective NA of 1.23 or to aberration. Strehl is estimated from RMS wavefront: for σ = 30 nm, Strehl ≈ exp[−(2π×30/550)²] = exp(−0.117) ≈ 0.89; for σ = 45 nm about 0.77, already below 0.8.",
+      "verify": "以同一批 100 nm 珠在至少三個波長各取 10 顆珠的 PSF，計算半高寬平均與標準差，排除珠子大小的貢獻（以 √(FWHM² − d²) 近似去卷積）；把量測的 PSF 與由設計 Zernike 係數模擬的 PSF 比較，兩者半高寬差異應在 5% 內。~Acquire PSFs of at least 10 beads from the same 100 nm batch at three or more wavelengths, compute the mean and standard deviation of the widths and remove the bead-size contribution with the approximation √(FWHM² − d²); compare the measured PSF with the PSF simulated from the design Zernike coefficients, where the widths should agree within 5%.",
+      "failure": "若用厚度 150 µm 的蓋玻片測試設計給 170 µm 的物鏡，球差讓軸向 PSF 不對稱並拉長 50% 以上，測試報告判定物鏡不良，實際上是測試條件錯誤。~Testing an objective designed for a 170 µm cover glass with a 150 µm one introduces spherical aberration that makes the axial PSF asymmetric and over 50% longer, so the report condemns a good objective when the test condition was wrong.",
+      "misconception": "量一個波長的 PSF 就足以驗證複消色差物鏡。~A single-wavelength PSF measurement suffices to qualify an apochromat."
+    },
+    {
+      "anchor": "蓋玻片厚度與校正環~Cover-glass thickness and correction collar",
+      "title": "蓋玻片球差、折射率失配與誤差預算~Cover-glass spherical aberration, index mismatch and the error budget",
+      "mechanism": "物鏡以特定蓋玻片厚度（通常 0.17 mm）與浸液折射率設計，任何厚度偏差或折射率失配都會引入與 NA 四次方成正比的球差，高 NA 乾式物鏡對此最敏感，因此配有校正環改變一組鏡片的間距來抵消。油浸物鏡在蓋玻片與油折射率匹配時對厚度不敏感，但觀察水性試樣深處時，水與油的折射率差會隨深度累積球差。誤差預算要把這些使用條件項與物鏡本身的殘差一起列入。~An objective is designed for a specific cover-glass thickness (usually 0.17 mm) and immersion index, and any thickness deviation or index mismatch introduces spherical aberration proportional to the fourth power of NA, to which high-NA dry objectives are most sensitive, hence a correction collar that shifts one lens group to cancel it. Oil objectives are insensitive to cover-glass thickness when oil and glass indices match, but imaging deep into aqueous specimens accumulates spherical aberration with depth from the water-oil index difference. The error budget must list these usage-condition terms alongside the objective's own residuals.",
+      "model": "平行平板引入的三階球差 W₀₄₀ ≈ Δt·(n² − 1)/(8n³)·NA⁴：n = 1.515 時 (n² − 1)/(8n³) ≈ 0.0466；乾式 NA 0.95 的 NA⁴ = 0.81，厚度誤差 Δt = 10 µm 給 0.0466×0.81×10 µm ≈ 0.38 µm 的峰值波前，重新對焦後 RMS ≈ W₀₄₀/13.4 ≈ 28 nm；Δt = 20 µm 時約 56 nm，超過 λ/14 = 39 nm。~A plane-parallel plate adds third-order spherical aberration W₀₄₀ ≈ Δt·(n² − 1)/(8n³)·NA⁴: for n = 1.515, (n² − 1)/(8n³) ≈ 0.0466; a dry NA 0.95 objective has NA⁴ = 0.81, so a thickness error Δt = 10 µm gives 0.0466×0.81×10 µm ≈ 0.38 µm of peak wavefront, about 28 nm RMS after refocus (W₀₄₀/13.4); Δt = 20 µm gives about 56 nm, beyond λ/14 = 39 nm.",
+      "verify": "用一組已知厚度（150、170、190 µm）的蓋玻片放置同樣的螢光珠，對每一片記錄軸向 PSF 並量不對稱度，驗證球差隨厚度偏差線性變化；再轉動校正環找出每個厚度的最佳設定，建立校正環刻度對實際厚度的對照表。~Place the same fluorescent beads under cover glasses of known thickness (150, 170 and 190 µm), record the axial PSF for each and quantify its asymmetry to verify that spherical aberration varies linearly with thickness deviation; then rotate the correction collar to find the best setting for each thickness and build a table relating collar scale to actual thickness.",
+      "failure": "在 37 °C 的活細胞實驗中，浸油折射率比 23 °C 時低約 0.005，與蓋玻片失配後產生的球差隨成像深度累積，30 µm 深處的訊號強度與解析度明顯下降，常被誤判為試樣散射。~In live-cell work at 37 °C the immersion-oil index is about 0.005 lower than at 23 °C, the resulting mismatch with the cover glass accumulates spherical aberration with imaging depth, and signal and resolution at 30 µm depth drop visibly, often misattributed to specimen scattering.",
+      "misconception": "油浸物鏡對任何試樣深度都沒有球差。~Oil-immersion objectives are free of spherical aberration at any specimen depth."
+    },
+    {
+      "anchor": "筒鏡、齊焦距離與視場數~Tube lens, parfocal distance and field number",
+      "title": "無限遠共軛系統整合與橫向色差~Infinity-conjugate system integration and lateral colour",
+      "mechanism": "現代物鏡為無限遠校正：物鏡把試樣成像到無窮遠，由筒鏡（焦距依廠牌為 164.5、180 或 200 mm）成像到中間像面，標稱倍率等於筒鏡焦距除以物鏡焦距。物鏡與筒鏡是一組被整體設計的系統，橫向色差（放大率隨波長變化）可能在物鏡內校正，也可能留給筒鏡補償，因此混用不同廠牌會引入橫向色差。齊焦距離、螺紋規格、視場數與後焦面位置都是整合時必須一致的介面參數。~Modern objectives are infinity-corrected: the objective images the specimen to infinity and a tube lens (164.5, 180 or 200 mm focal length depending on the maker) forms the intermediate image, with nominal magnification equal to tube-lens focal length divided by objective focal length. Objective and tube lens are designed as one system, and lateral colour (magnification varying with wavelength) may be corrected inside the objective or left for the tube lens to compensate, so mixing makers introduces lateral colour. Parfocal distance, thread standard, field number and back-focal-plane position are the interface parameters that must agree during integration.",
+      "model": "筒鏡 200 mm 配 100× 物鏡時 f_obj = 2 mm；視場數 25 mm 對應試樣面視場直徑 25/100 = 0.25 mm。若混用廠牌造成 486 與 656 nm 之間 0.1% 的放大率差，視場邊緣（離軸 125 µm）的紅藍影像橫向錯位 125 µm×0.001 = 125 nm，已超過半個解析極限。~A 200 mm tube lens with a 100× objective implies f_obj = 2 mm; a field number of 25 mm corresponds to a specimen-plane field diameter of 25/100 = 0.25 mm. If mixing makers produces a 0.1% magnification difference between 486 and 656 nm, the red and blue images at the field edge (125 µm off axis) are displaced laterally by 125 µm×0.001 = 125 nm, more than half the resolution limit.",
+      "verify": "在視場邊緣以多色螢光珠記錄紅、綠、藍通道影像，量測各通道質心的徑向位置差並對離軸距離作圖，斜率即橫向色差的放大率差；同時用刻度尺標定實際倍率，確認筒鏡焦距與物鏡匹配。~Record red, green and blue channel images of multicolour beads at the field edge, measure the radial centroid difference between channels and plot it against off-axis distance, where the slope gives the magnification difference of lateral colour; calibrate the actual magnification with a stage micrometer to confirm that tube-lens focal length and objective are matched.",
+      "failure": "把為 180 mm 筒鏡設計的物鏡裝在 200 mm 筒鏡的顯微鏡上，倍率變成 111× 而非 100×，若軟體仍以 100× 計算像素尺寸，所有長度量測都有 11% 的系統誤差。~Mounting an objective designed for a 180 mm tube lens on a microscope with a 200 mm tube lens yields 111× instead of 100×, and if software still assumes 100× for pixel size, every length measurement carries an 11% systematic error.",
+      "misconception": "物鏡上標的倍率在任何顯微鏡上都成立。~The magnification engraved on an objective holds on any microscope."
+    },
+    {
+      "anchor": "物鏡驗收資料表~Objective acceptance data sheet",
+      "title": "Strehl 預算、驗收報告與交接~Strehl budget, acceptance report and handoff",
+      "mechanism": "物鏡出貨前的驗收把所有量測整合成一份資料表：各波長的軸上 Strehl 與 Zernike 係數、軸向與橫向色差、視場平坦度、透過率曲線、工作距離與齊焦距離實測值，以及測試時的蓋玻片厚度、浸液與溫度。系統整合者再把物鏡殘差、筒鏡、對準與使用條件以均方根合成，判斷整機能否維持 Strehl 0.8。交接時必須連同測試條件一起移交，否則後續的現場量測無法與出廠值比較。~Pre-shipment acceptance consolidates every measurement into one data sheet: on-axis Strehl and Zernike coefficients per wavelength, axial and lateral colour, field flatness, transmission curve, measured working and parfocal distances, and the cover-glass thickness, immersion and temperature used in testing. The system integrator then combines objective residual, tube lens, alignment and usage conditions in quadrature to judge whether the whole instrument keeps Strehl at 0.8. The test conditions must be handed over with the data, otherwise later field measurements cannot be compared with factory values.",
+      "model": "RMS 波前預算：物鏡殘差 25 nm、筒鏡 15 nm、對準 15 nm、蓋玻片與浸液殘差 20 nm，RSS = √(625+225+225+400) = √1475 ≈ 38 nm，恰在 λ/14 ≈ 39 nm 之內；Strehl ≈ exp[−(2π×38/550)²] = exp(−0.189) ≈ 0.83。若蓋玻片項放寬到 30 nm，RSS ≈ 44 nm，Strehl 降到約 0.78。~RMS wavefront budget: objective residual 25 nm, tube lens 15 nm, alignment 15 nm and cover-glass plus immersion residual 20 nm give RSS = √(625+225+225+400) = √1475 ≈ 38 nm, just inside λ/14 ≈ 39 nm; Strehl ≈ exp[−(2π×38/550)²] = exp(−0.189) ≈ 0.83. Relaxing the cover-glass term to 30 nm raises the RSS to about 44 nm and drops Strehl to about 0.78.",
+      "verify": "在整合後的顯微鏡上重複出廠的 PSF 與色差量測，使用相同的珠子、蓋玻片與浸液，比較 Strehl 與軸向色差是否在出廠值的不確定度內；逐項核對資料表的測試條件、日期與儀器，並把現場量測結果附在交接文件中作為新的基準。~Repeat the factory PSF and chromatic measurements on the integrated microscope with the same beads, cover glass and immersion, and compare Strehl and axial colour with the factory values within their uncertainty; check the test conditions, dates and instruments on the data sheet item by item and attach the field results to the handoff record as the new baseline.",
+      "failure": "資料表若只給一個總 Strehl 值而未註明波長與蓋玻片條件，現場用不同波長量到 0.7 時無法判斷是物鏡退化、筒鏡不匹配還是測試條件不同，爭議只能靠返廠重測解決。~If the data sheet gives a single Strehl value without wavelength and cover-glass conditions, a field measurement of 0.7 at another wavelength cannot be attributed to objective degradation, tube-lens mismatch or test conditions, and the dispute can only be settled by returning the objective for retest.",
+      "misconception": "物鏡的 Strehl 是固定常數，與使用條件無關。~An objective's Strehl is a fixed constant independent of usage conditions."
+    }
+  ],
+  "example": "二級光譜練習：100× 物鏡配 200 mm 筒鏡，f_obj = 2 mm；NA 1.4 油浸在 550 nm 的單側景深 n·λ/NA² = 1.515×0.55/1.96 ≈ 0.43 µm。若用 N-BK7（ν = 64.2，P_gF = 0.535）與 F2（ν = 36.4，P_gF = 0.583）做消色差，g 線焦點偏離 Δf = f·ΔP/Δν = 2 mm×(−0.048/27.8) ≈ −3.4 µm，是景深的 8 倍，藍色影像必然模糊。改用異常色散對（ΔP ≈ 0.004、Δν ≈ 50），Δf ≈ 2 mm×8×10⁻⁵ = 0.16 µm，落在景深內。再算整機 Strehl：物鏡 25 nm、筒鏡 15 nm、對準 15 nm、蓋玻片殘差 20 nm，RSS ≈ 38 nm，Strehl ≈ exp[−(2π×38/550)²] ≈ 0.83。若橫向色差為 0.1%，視場邊緣 125 µm 處紅藍錯位 125 nm，超過 196 nm 解析極限的一半，所以橫向色差規格也要訂在 0.05% 以下。數值皆為教學假設。~Secondary-spectrum exercise: a 100× objective with a 200 mm tube lens has f_obj = 2 mm; NA 1.4 oil immersion at 550 nm gives a one-sided depth of field n·λ/NA² = 1.515×0.55/1.96 ≈ 0.43 µm. An achromat built from N-BK7 (ν = 64.2, P_gF = 0.535) and F2 (ν = 36.4, P_gF = 0.583) places the g-line focus at Δf = f·ΔP/Δν = 2 mm×(−0.048/27.8) ≈ −3.4 µm, 8 times the depth of field, so the blue image must blur. An anomalous-dispersion pair (ΔP ≈ 0.004, Δν ≈ 50) gives Δf ≈ 2 mm×8×10⁻⁵ = 0.16 µm, inside the depth of field. Now the system Strehl: objective 25 nm, tube lens 15 nm, alignment 15 nm and cover-glass residual 20 nm give RSS ≈ 38 nm and Strehl ≈ exp[−(2π×38/550)²] ≈ 0.83. With 0.1% lateral colour, red and blue are displaced by 125 nm at the 125 µm field edge, more than half the 196 nm resolution limit, so the lateral-colour specification must also be set below 0.05%. All numbers are teaching assumptions.",
+  "history": "恩斯特·阿貝在 1886 年與奧托·肖特合作，利用耶拿新研製的玻璃與螢石推出第一批複消色差物鏡，「apochromat」一詞也由阿貝提出；20 世紀中葉平場複消色差（Plan-Apo）解決場曲問題，1990 年代各廠轉向無限遠校正系統並把橫向色差校正納入物鏡本體，使 ZEISS、Nikon、Olympus（今 Evident）與 Leica 的物鏡成為共軛焦與超解析顯微術的基礎。本課只重建公開的光學原理與工程方法。~Ernst Abbe, working with Otto Schott, introduced the first apochromatic objectives in 1886 using newly developed Jena glasses and fluorite, and Abbe coined the term apochromat; mid-20th-century plan-apochromats solved field curvature, and in the 1990s makers moved to infinity-corrected systems with lateral colour corrected inside the objective, making ZEISS, Nikon, Olympus (now Evident) and Leica objectives the foundation of confocal and super-resolution microscopy. This course reconstructs only public optical principles and engineering methods.",
+  "place": {
+    "name": "耶拿蔡司與阿貝光學傳統參照點~Jena ZEISS and Abbe optics heritage reference",
+    "country": "德國~Germany",
+    "lat": 50.927,
+    "lng": 11.586,
+    "query": "Carl Zeiss Jena Germany"
+  },
+  "sources": [
+    {
+      "key": "evident-objective-specs",
+      "title": "Evident 顯微鏡資源中心：物鏡規格與標示",
+      "titleEn": "Evident Microscope Resource: Objective specifications and identification",
+      "publisher": "Evident (Olympus)",
+      "url": "https://evidentscientific.com/en/microscope-resource/knowledge-hub/anatomy/specifications",
+      "sourceType": "primary",
+      "scope": "說明物鏡刻字、NA、蓋玻片厚度、浸液與消色差等級的公開教學資料。",
+      "scopeEn": "Public teaching material on objective engravings, NA, cover-glass thickness, immersion and correction classes."
+    },
+    {
+      "key": "zeiss-campus-objectives",
+      "title": "ZEISS Campus（FSU）：顯微鏡物鏡基礎",
+      "titleEn": "ZEISS Campus (FSU): Microscope objectives basics",
+      "publisher": "Carl Zeiss Microscopy / Florida State University",
+      "url": "https://zeiss-campus.magnet.fsu.edu/articles/basics/objectives.html",
+      "sourceType": "primary",
+      "scope": "消色差、螢石與複消色差物鏡的校正等級、齊明前鏡組與像差的公開教材。",
+      "scopeEn": "Public educational article on achromat, fluorite and apochromat correction classes, aplanatic front groups and aberrations."
+    },
+    {
+      "key": "zeiss-objective-specifications",
+      "title": "ZEISS 顯微鏡：物鏡規格知識頁",
+      "titleEn": "ZEISS Microscopy: Objective specifications knowledge page",
+      "publisher": "Carl Zeiss Microscopy GmbH",
+      "url": "https://zeiss.com/microscopy/en/resources/insights-hub/foundational-knowledge/objective-specifications.html",
+      "sourceType": "primary",
+      "scope": "官方說明倍率、NA、視場數、齊焦距離與筒鏡的介面參數。",
+      "scopeEn": "Official explanation of magnification, NA, field number, parfocal distance and tube-lens interface parameters."
+    },
+    {
+      "key": "schott-tie29-arizona",
+      "title": "SCHOTT TIE-29：折射率與色散（亞利桑那大學光機課程存檔）",
+      "titleEn": "SCHOTT TIE-29: Refractive index and dispersion (University of Arizona optomechanics course archive)",
+      "publisher": "SCHOTT AG via University of Arizona College of Optical Sciences",
+      "url": "https://wp.optics.arizona.edu/optomech/wp-content/uploads/sites/53/2016/10/tie-29_refractive_index_v2_us.pdf",
+      "sourceType": "primary",
+      "scope": "Abbe 數、部分色散與正常線偏離量的定義，本課二級光譜計算所依據的公開資料。",
+      "scopeEn": "Definitions of Abbe number, partial dispersion and deviation from the normal line, the public basis of this course's secondary-spectrum calculation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "蔡司顯微鏡",
+      "nameEn": "ZEISS Microscopy",
+      "business": "光學顯微鏡、物鏡與影像系統製造商，阿貝複消色差傳統的直接延續。",
+      "businessEn": "Maker of optical microscopes, objectives and imaging systems, the direct continuation of the Abbe apochromat tradition.",
+      "url": "https://www.zeiss.com/microscopy/",
+      "investorUrl": "https://www.zeiss.com/corporate/en/about-zeiss/company-figures.html",
+      "security": null,
+      "role": "物鏡規格與校正等級的公開知識頁",
+      "roleEn": "Public knowledge pages on objective specifications and correction classes"
+    },
+    {
+      "name": "尼康",
+      "nameEn": "Nikon",
+      "business": "CFI 無限遠校正物鏡與生物、工業顯微鏡系統。",
+      "businessEn": "CFI infinity-corrected objectives and biological and industrial microscope systems.",
+      "url": "https://www.microscope.healthcare.nikon.com/",
+      "investorUrl": "https://www.nikon.com/company/ir/",
+      "security": {"symbol": "7731", "exchange": "TSE", "currency": "JPY"},
+      "role": "200 mm 筒鏡系統與物鏡術語的公開資料",
+      "roleEn": "Public material on 200 mm tube-lens systems and objective terminology"
+    },
+    {
+      "name": "Evident（原 Olympus 科學事業）",
+      "nameEn": "Evident (formerly Olympus Scientific Solutions)",
+      "business": "生命科學與工業顯微鏡、物鏡與顯微鏡教育資源。",
+      "businessEn": "Life-science and industrial microscopes, objectives and microscopy educational resources.",
+      "url": "https://evidentscientific.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "物鏡規格與像差的公開教學資源",
+      "roleEn": "Public teaching resources on objective specifications and aberrations"
+    },
+    {
+      "name": "徠卡顯微系統（Danaher）",
+      "nameEn": "Leica Microsystems (Danaher)",
+      "business": "顯微鏡、複消色差物鏡與共軛焦系統。",
+      "businessEn": "Microscopes, apochromatic objectives and confocal systems.",
+      "url": "https://www.leica-microsystems.com/",
+      "investorUrl": "https://investors.danaher.com/",
+      "security": {"symbol": "DHR", "exchange": "NYSE", "currency": "USD"},
+      "role": "另一家複消色差物鏡製造商的公開產品資訊",
+      "roleEn": "Public product information from another apochromat manufacturer"
+    }
+  ],
+  "related": ["a426", "a407"],
+  "architectureNodes": [["齊明半球前鏡組", "Aplanatic hemispherical front group"], ["螢石與異常色散鏡片組", "Fluorite and anomalous-dispersion lens groups"], ["校正環與蓋玻片補償", "Correction collar and cover-glass compensation"], ["寬頻增透膜", "Broadband antireflection coatings"], ["筒鏡與無限遠共軛", "Tube lens and infinity conjugate"], ["PSF 與色差量測", "PSF and chromatic metrology"]],
+  "architectureEdges": [[0, 1], [1, 2], [1, 3], [1, 4], [4, 5], [5, 2]]
+}

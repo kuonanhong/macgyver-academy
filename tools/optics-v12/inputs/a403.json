@@ -1,0 +1,182 @@
+{
+  "id": "a403",
+  "title": "EUV 光源錫滴控制概念~EUV-source tin-droplet control concepts",
+  "discipline": "optics-lithography",
+  "family": "laser",
+  "focus": "雷射電漿錫滴光源的轉換效率、錫滴產生與定位、劑量穩定與集光鏡壽命~Conversion efficiency, droplet generation and targeting, dose stability and collector lifetime of laser-produced-plasma tin sources",
+  "summary": "以 13.5 nm 雷射電漿（LPP）錫滴光源為對象，從錫離子的 4d–4f 發射帶與 CO₂ 雷射的臨界密度出發，建立從驅動雷射到中間焦點的功率鏈，再拆解錫滴產生器、前脈衝與主脈衝、錫滴偵測與雷射導向、劑量統計、氫氣緩衝與集光鏡清潔，最後以可用度與反射率衰減記錄完成驗收。本課為教學模型，不含任何操作程序。~Taking the 13.5 nm laser-produced-plasma tin-droplet source as the object, the course starts from the 4d–4f emission band of tin ions and the critical density of CO₂ laser light, builds the power chain from drive laser to intermediate focus, then works through the droplet generator, pre-pulse and main pulse, droplet detection and laser steering, dose statistics, hydrogen buffer gas and collector cleaning, and closes with an availability and reflectance-decay acceptance record. It is a teaching model and contains no operating procedure.",
+  "units": [
+    {
+      "anchor": "錫電漿與 13.5 nm 頻帶~Tin plasma and the 13.5 nm band",
+      "title": "為何是錫、為何是 CO₂ 雷射~Why tin and why a CO₂ drive laser",
+      "mechanism": "錫被加熱到約 30 到 40 eV 的電漿溫度時，Sn⁸⁺ 到 Sn¹³⁺ 離子的 4d–4f 躍遷形成密集的未解析躍遷陣列，發射峰正好落在 13.5 nm，而 Mo/Si 多層膜只反射 13.5 nm ± 1% 的 2% 頻寬，所以光源的品質指標是帶內轉換效率 CE：2π 立體角內帶內 EUV 能量除以雷射脈衝能量。雷射在電漿中只能傳到臨界密度面，10.6 µm 的 CO₂ 雷射臨界密度比 1.06 µm 固態雷射低一百倍，電漿較稀薄、自吸收較少，CE 能達到 5% 以上，而固態雷射通常只有 2% 到 3%。~When tin is heated to a plasma temperature of roughly 30 to 40 eV, the 4d–4f transitions of Sn⁸⁺ to Sn¹³⁺ ions form a dense unresolved transition array whose emission peaks right at 13.5 nm, and because Mo/Si multilayers reflect only the 2% band of 13.5 nm ± 1%, the figure of merit is the in-band conversion efficiency CE: in-band EUV energy into 2π steradians divided by laser pulse energy. Laser light penetrates a plasma only up to the critical-density surface, and the critical density for 10.6 µm CO₂ light is a hundred times lower than for 1.06 µm solid-state light, so the emitting plasma is more dilute with less self-absorption, giving CE above 5% versus typically 2% to 3% with solid-state drivers.",
+      "model": "臨界電子密度 n_c ≈ 1.1×10²¹/λ² cm⁻³（λ 以 µm 計）：CO₂ 雷射 λ = 10.6 µm 時 n_c = 1.1×10²¹/112.4 ≈ 9.8×10¹⁸ cm⁻³；Nd:YAG λ = 1.064 µm 時 n_c ≈ 9.7×10²⁰ cm⁻³，相差約 100 倍。13.5 nm 光子能量 hc/λ = 1240/13.5 ≈ 91.8 eV。~The critical electron density is n_c ≈ 1.1×10²¹/λ² cm⁻³ with λ in µm: for CO₂ light at λ = 10.6 µm, n_c = 1.1×10²¹/112.4 ≈ 9.8×10¹⁸ cm⁻³; for Nd:YAG at λ = 1.064 µm, n_c ≈ 9.7×10²⁰ cm⁻³, a factor of about 100. The 13.5 nm photon energy is hc/λ = 1240/13.5 ≈ 91.8 eV.",
+      "verify": "用帶有 Zr 濾片與 Mo/Si 多層膜的能量監測器量帶內 EUV 脈衝能量，同時記錄雷射脈衝能量，計算 CE 並畫出 CE 對雷射強度與錫靶尺寸的曲線；以光譜儀確認發射峰位置與 2% 頻寬內的能量比例，與 Mo/Si 反射帶重疊。~Measure the in-band EUV pulse energy with an energy monitor behind a Zr filter and a Mo/Si multilayer while logging the laser pulse energy, compute CE and plot it against laser intensity and target size; confirm with a spectrometer that the emission peak and the fraction of energy inside the 2% band overlap the Mo/Si reflectance band.",
+      "failure": "雷射強度過高時電漿溫度超過最佳值，離子化程度過高使發射峰移出 13.5 nm 頻帶，帶內 CE 反而下降，同時帶外輻射增加而加熱集光鏡與光學系統。~If laser intensity is too high the plasma overshoots the optimum temperature, over-ionisation shifts the emission away from the 13.5 nm band, in-band CE drops, and the extra out-of-band radiation heats the collector and downstream optics.",
+      "misconception": "雷射功率越高，EUV 輸出就一定按比例增加。~More laser power always gives proportionally more EUV output."
+    },
+    {
+      "anchor": "中間焦點與功率鏈~Intermediate focus and power chain",
+      "title": "從驅動雷射到中間焦點的功率鏈~The power chain from drive laser to intermediate focus",
+      "mechanism": "光源輸出以中間焦點（IF）的帶內功率定義，IF 是光源與掃描機照明系統的交接面。功率鏈是乘法：雷射平均功率乘以 CE 得到 2π 立體角內的帶內 EUV，再乘以橢球集光鏡收集的立體角比例、多層膜反射率與氫氣透過率，才得到 IF 功率。每一項都小於 1，所以錫滴尺寸、雷射重複率與集光鏡狀態任何一項退化都會直接反映在晶圓產能上。~Source output is defined as in-band power at the intermediate focus (IF), the interface between the source and the scanner illuminator. The power chain is multiplicative: laser average power times CE gives in-band EUV into 2π steradians, and that is multiplied by the solid-angle fraction captured by the ellipsoidal collector, the multilayer reflectance and the hydrogen transmission before it becomes IF power. Every factor is below 1, so degradation in droplet size, laser repetition rate or collector condition shows up directly in wafer throughput.",
+      "model": "設雷射 20 kW、50 kHz，每脈衝 0.4 J；CE = 5% 得每脈衝 20 mJ、1000 W 帶內 EUV 進入 2π；集光鏡收集 5 sr（5/6.28 = 0.80）、反射率 0.60、氫氣透過率 0.90，合成 0.80×0.60×0.90 ≈ 0.43，IF 功率 ≈ 430 W，每脈衝 8.6 mJ，相當於 8.6×10⁻³/(91.8×1.602×10⁻¹⁹) ≈ 5.9×10¹⁴ 個光子。~Assume a 20 kW laser at 50 kHz, 0.4 J per pulse; CE = 5% gives 20 mJ per pulse, 1000 W of in-band EUV into 2π; the collector captures 5 sr (5/6.28 = 0.80) with reflectance 0.60 and hydrogen transmission 0.90, so the product 0.80×0.60×0.90 ≈ 0.43 yields about 430 W at IF, 8.6 mJ per pulse, equivalent to 8.6×10⁻³/(91.8×1.602×10⁻¹⁹) ≈ 5.9×10¹⁴ photons.",
+      "verify": "在 IF 處以校正過的 EUV 功率計量帶內功率，同時由雷射功率計、CE 量測與集光鏡反射率記錄逐項計算鏈上每個因子，兩者相差超過 10% 時逐項追查是集光鏡污染、氫氣壓力還是錫滴尺寸偏離。~Measure in-band power at IF with a calibrated EUV power meter while computing every factor of the chain from the laser power meter, the CE measurement and the collector reflectance record; when the two disagree by more than 10%, trace the discrepancy factor by factor to collector contamination, hydrogen pressure or droplet-size deviation.",
+      "failure": "集光鏡反射率從 0.60 掉到 0.50 看似只少 10 個百分點，但 IF 功率同比例下降 17%，掃描機必須放慢掃描速度補劑量，整條產線的晶圓產能隨之下降。~A collector reflectance drop from 0.60 to 0.50 looks like only 10 points, but IF power falls by the same 17% ratio, the scanner must slow its scan to keep dose, and wafer throughput of the whole line falls with it.",
+      "misconception": "光源功率只取決於雷射功率。~Source power depends only on the laser power."
+    },
+    {
+      "anchor": "錫滴產生器噴嘴~Droplet-generator nozzle",
+      "title": "錫滴產生器與 Rayleigh–Plateau 分裂~Droplet generator and Rayleigh–Plateau breakup",
+      "mechanism": "錫在 232 °C 熔化，產生器把熔融錫加壓後從微米級噴嘴射出高速液柱，液柱因表面張力的 Rayleigh–Plateau 不穩定而分裂成細小液滴；用壓電元件調制噴嘴可以鎖定分裂頻率與相位，使細滴在飛行中合併成直徑約 25 到 30 µm、頻率等於雷射重複率的目標錫滴。錫滴直徑決定可用的錫質量與電漿尺寸，頻率與速度決定錫滴間距，而噴嘴磨損或阻塞會直接改變這三個量。~Tin melts at 232 °C, and the generator pressurises molten tin through a micrometre-scale nozzle into a high-speed jet that breaks into fine droplets through the surface-tension-driven Rayleigh–Plateau instability; a piezoelectric modulation of the nozzle locks the breakup frequency and phase so the fine droplets coalesce in flight into target droplets of about 25 to 30 µm diameter at a frequency equal to the laser repetition rate. Droplet diameter sets the available tin mass and plasma size, frequency and velocity set the droplet spacing, and nozzle wear or clogging changes all three at once.",
+      "model": "取錫滴直徑 27 µm、速度 80 m/s、頻率 50 kHz：間距 = 80/50000 = 1.6 mm；單滴體積 π·D³/6 ≈ 1.03×10⁻¹⁴ m³，以密度 7000 kg/m³ 計質量 7.2×10⁻¹¹ kg，錫流量 3.6 mg/s ≈ 13 g/h；若液柱速度亦為 80 m/s，所需壓力至少為 ½ρv² = 0.5×7000×80² ≈ 22 MPa（約 220 bar），尚未計入噴嘴黏滯損失。~Take 27 µm droplets at 80 m/s and 50 kHz: spacing = 80/50000 = 1.6 mm; each droplet has volume π·D³/6 ≈ 1.03×10⁻¹⁴ m³ and, at 7000 kg/m³, mass 7.2×10⁻¹¹ kg, so the tin flow is 3.6 mg/s ≈ 13 g/h; if the jet also travels at 80 m/s the required pressure is at least ½ρv² = 0.5×7000×80² ≈ 22 MPa (about 220 bar) before viscous nozzle losses.",
+      "verify": "用頻閃背光相機拍攝錫滴列，量測直徑、間距與合併是否完成，並與壓電驅動頻率和相位比對；同時以稱重或液位記錄長時間的平均錫流量，核對與直徑、頻率計算值是否一致，偏差表示衛星滴或噴嘴狀態改變。~Image the droplet train with a strobed backlit camera to measure diameter, spacing and completeness of coalescence and compare with the piezo drive frequency and phase; also log the long-term mean tin flow by weight or level and check it against the value computed from diameter and frequency, since a discrepancy indicates satellite droplets or a changed nozzle state.",
+      "failure": "噴嘴局部阻塞或氧化錫顆粒會讓液柱偏斜與分裂相位漂移，錫滴出現衛星滴與位置抖動，雷射命中率下降、CE 波動，並把更多未蒸發的錫噴向集光鏡。~Partial nozzle clogging or tin-oxide particles deflect the jet and drift the breakup phase, producing satellite droplets and position jitter, so laser hit rate falls, CE fluctuates and more unvaporised tin is sprayed toward the collector.",
+      "misconception": "錫滴做得越大，EUV 輸出一定越多。~Bigger droplets always produce more EUV."
+    },
+    {
+      "anchor": "CO₂ 驅動雷射與前脈衝~CO₂ drive laser and pre-pulse",
+      "title": "主振盪功率放大器與前脈衝靶形~MOPA drive laser and pre-pulse target shaping",
+      "mechanism": "驅動雷射採主振盪功率放大（MOPA）架構：種子雷射產生低能量脈衝，經多級 CO₂ 放大器放大到每脈衝數百毫焦，再以反射式光學聚焦到錫滴。先打一個能量較低的前脈衝，把球形錫滴推展成直徑數百微米的薄盤或霧團，使主脈衝能被更大的面積吸收且電漿密度接近最佳，CE 由約 2% 提升到 5% 以上。放大器還需要光隔離，因為錫滴像回射鏡會把光送回放大鏈。~The drive laser is a master-oscillator power-amplifier (MOPA): a seed laser produces low-energy pulses that multi-stage CO₂ amplifiers raise to hundreds of millijoules per pulse, and reflective optics focus them onto the droplet. A weaker pre-pulse first flattens the spherical droplet into a disc or mist several hundred micrometres across, so the main pulse is absorbed over a larger area at a near-optimal plasma density, lifting CE from about 2% to above 5%. The amplifier chain also needs optical isolation because the droplet acts as a retro-reflector that sends light back into the amplifiers.",
+      "model": "若前脈衝使錫滴以徑向速度 60 m/s 展開、主脈衝延遲 2 µs，半徑增加 60×2×10⁻⁶ = 120 µm，形成直徑約 270 µm 的薄盤；主脈衝 0.4 J、脈寬 100 ns 的峰值功率為 4 MW，均分在 π×(135 µm)² ≈ 5.7×10⁻⁸ m² 上的強度約 7×10¹³ W/m² = 7×10⁹ W/cm²，落在 LPP 的典型 10⁹ 到 10¹⁰ W/cm² 區間。~If the pre-pulse expands the droplet radially at 60 m/s and the main pulse arrives 2 µs later, the radius grows by 60×2×10⁻⁶ = 120 µm, forming a disc about 270 µm across; a 0.4 J main pulse of 100 ns has a peak power of 4 MW, which spread over π×(135 µm)² ≈ 5.7×10⁻⁸ m² gives an intensity of about 7×10¹³ W/m² = 7×10⁹ W/cm², within the typical LPP window of 10⁹ to 10¹⁰ W/cm².",
+      "verify": "以陰影攝影在不同前脈衝延遲下記錄靶形，量測盤直徑對延遲的關係並擬合展開速度；掃描主脈衝延遲與能量，對每個條件量 CE，找出 CE 最大的延遲窗口並記錄其寬度，作為後續時序控制的容差。~Record target shapes by shadowgraphy at several pre-pulse delays, measure disc diameter versus delay and fit the expansion velocity; scan the main-pulse delay and energy while measuring CE at each setting, locate the delay window of maximum CE and record its width as the tolerance for later timing control.",
+      "failure": "主脈衝延遲偏離最佳窗口，靶形不是過小就是已散成稀薄霧團，CE 可能下降一半；若回射光未被隔離，放大器會自激振盪並損壞光學元件。~A main-pulse delay outside the optimum window leaves the target either too small or dispersed into a thin mist, and CE can halve; if the retro-reflected light is not isolated, the amplifiers self-oscillate and damage optics.",
+      "misconception": "前脈衝只是把錫滴預熱，省略也無妨。~The pre-pulse merely pre-heats the droplet and can be omitted."
+    },
+    {
+      "anchor": "錫滴位置偵測與雷射導向~Droplet detection and laser steering",
+      "title": "錫滴時序、位置量測與閉環導向~Droplet timing, position metrology and closed-loop steering",
+      "mechanism": "每一發雷射都必須在正確時刻命中一顆直徑 27 µm、以 80 m/s 飛行的錫滴，所以光源用雷射光簾與高速光偵測器在錫滴抵達主焦點前量測其通過時刻，用相機或位置敏感偵測器量測橫向位置，再由控制器調整雷射觸發時刻與快速導向鏡的角度。回授迴路的頻寬要能跟上錫滴列的慢速漂移與噴嘴振動，同時以統計方式過濾單顆錫滴的隨機抖動。~Every laser shot must hit a 27 µm droplet flying at 80 m/s at the right instant, so the source measures each droplet's passage time with laser curtains and fast photodetectors before it reaches the primary focus, measures lateral position with cameras or position-sensitive detectors, and lets the controller adjust the laser trigger time and the angle of fast steering mirrors. The feedback loop must track slow drift of the droplet train and nozzle vibration while statistically filtering the random jitter of individual droplets.",
+      "model": "速度 80 m/s 時，10 ns 的觸發時序誤差等於 0.8 µm 的縱向位置誤差；偵測光簾在主焦點上游 20 mm，提供 20×10⁻³/80 = 250 µs 的前置時間，相當於 50 kHz 下 12.5 個錫滴週期。若主脈衝焦斑直徑 270 µm，橫向命中容差取 ±10 µm，則導向鏡在 1 m 光程上的角度解析度需優於 10 µrad。~At 80 m/s a 10 ns trigger-timing error equals 0.8 µm of longitudinal position error; a detection curtain 20 mm upstream of the primary focus gives 20×10⁻³/80 = 250 µs of lead time, i.e. 12.5 droplet periods at 50 kHz. With a 270 µm main-pulse spot and a lateral hit tolerance of ±10 µm, the steering mirror needs angular resolution better than 10 µrad over a 1 m path.",
+      "verify": "記錄數萬發的錫滴通過時刻與橫向位置，計算標準差與功率譜，區分隨機抖動與週期性的噴嘴振動；再把 CE 逐發與量測到的命中偏差作相關分析，確認偏差在容差內時 CE 平穩，超出時 CE 明顯下降。~Log the passage time and lateral position of tens of thousands of droplets, compute standard deviation and power spectrum to separate random jitter from periodic nozzle vibration; then correlate shot-by-shot CE with the measured hit offset to confirm that CE stays flat within tolerance and falls clearly beyond it.",
+      "failure": "偵測器視窗被錫污染後訊號變弱，時序量測開始漏發或誤觸發，雷射打在錫滴之間的空隙，表現為帶內能量間歇歸零與劑量誤差警報。~When tin contaminates the detector windows the signal weakens, timing measurement starts missing or false-triggering, the laser fires into the gap between droplets, and the symptom is intermittent zero in-band energy with dose-error alarms.",
+      "misconception": "錫滴列夠穩定，雷射用固定時脈觸發即可。~A stable droplet train lets the laser fire on a fixed clock."
+    },
+    {
+      "anchor": "EUV 能量監測與劑量控制~EUV energy monitor and dose control",
+      "title": "脈衝能量統計與劑量穩定度~Pulse-energy statistics and dose stability",
+      "mechanism": "每發 EUV 脈衝能量會因錫滴尺寸、命中偏差與雷射能量而隨機波動，掃描機曝光時晶圓上每一點接收縫隙通過期間的 N 發脈衝，劑量誤差因平均而縮小為單發變異除以 √N。光源以帶內能量監測器逐發量測，並用前饋調整下一發雷射能量，同時掃描機可按即時能量調整掃描速度。劑量誤差直接轉成 CD 誤差，所以光源規格除了功率還包含劑量穩定度與脈衝能量的分佈。~Each EUV pulse's energy fluctuates randomly with droplet size, hit offset and laser energy, and during a scan every wafer point receives the N pulses delivered while the slit passes, so the dose error averages down to the single-pulse variation divided by √N. The source measures in-band energy shot by shot and feeds forward a correction to the next laser pulse, while the scanner can also adjust scan speed to the real-time energy. Dose error converts directly into CD error, so the source specification includes dose stability and the pulse-energy distribution alongside power.",
+      "model": "若單發能量標準差為 5%，縫隙在掃描方向高 2 mm、晶圓掃描速度 0.5 m/s，每點曝光時間 4 ms，在 50 kHz 下 N = 200 發，劑量標準差 ≈ 5%/√200 ≈ 0.35%；若劑量對 CD 的靈敏度為 1 nm 每 1%，對應約 0.35 nm 的 CD 隨機誤差。單發能量若有 1% 的脈衝完全漏打，平均劑量偏移 1%，必須由前饋補償。~With a 5% single-pulse standard deviation, a slit 2 mm high in the scan direction and a wafer scan speed of 0.5 m/s, each point is exposed for 4 ms, which at 50 kHz is N = 200 pulses, so the dose standard deviation ≈ 5%/√200 ≈ 0.35%; with a dose-to-CD sensitivity of 1 nm per 1%, that is about 0.35 nm of random CD error. If 1% of pulses miss entirely, the mean dose shifts by 1% and must be compensated by feedforward.",
+      "verify": "連續記錄逐發帶內能量的直方圖與自相關，計算任意連續 200 發的移動平均變異並與 σ/√N 比較；若實測大於預測，表示能量波動有低頻相關性（例如錫滴尺寸緩慢漂移），需要前饋補償而非只靠平均。~Record a histogram and autocorrelation of shot-by-shot in-band energy, compute the variance of moving averages over any 200 consecutive pulses and compare with σ/√N; if the measured value exceeds the prediction, the fluctuations are correlated at low frequency, for example slow droplet-size drift, and need feedforward rather than averaging alone.",
+      "failure": "能量監測器前的濾片被錫或碳污染後讀值偏低，前饋迴路誤以為能量不足而持續加大雷射能量，實際晶圓劑量過量、CD 系統性偏小，並加速集光鏡損耗。~When tin or carbon contaminates the filter in front of the energy monitor the reading falls low, the feedforward loop keeps raising laser energy to compensate, the wafer is overdosed with systematically small CD, and collector wear accelerates.",
+      "misconception": "只要平均功率達標，單發能量波動不重要。~If average power meets specification, single-pulse fluctuations do not matter."
+    },
+    {
+      "anchor": "氫氣緩衝與集光鏡清潔~Hydrogen buffer gas and collector cleaning",
+      "title": "碎屑抑制、氫氣透過率與集光鏡壽命~Debris mitigation, hydrogen transmission and collector life",
+      "mechanism": "電漿產生高速錫離子、中性原子與微滴，直接撞擊會濺蝕或覆蓋集光鏡多層膜，所以腔內充入低壓氫氣作為緩衝：氫分子碰撞使錫離子減速，EUV 光解離產生的氫自由基又能與沉積的錫反應生成氣態 SnH₄ 被抽走。氫氣壓力是權衡：壓力高抑制碎屑較好，但 EUV 被氫吸收的損失也增加。集光鏡反射率的衰減速率是光源壽命的核心指標。~The plasma emits fast tin ions, neutrals and micro-droplets that would sputter or coat the collector multilayer, so the vessel is filled with low-pressure hydrogen as a buffer: collisions with hydrogen molecules slow the tin ions, and hydrogen radicals produced by EUV photolysis react with deposited tin to form gaseous SnH₄ that is pumped away. Hydrogen pressure is a trade-off, since higher pressure suppresses debris better but increases EUV absorption. The decay rate of collector reflectance is the central lifetime metric of the source.",
+      "model": "100 Pa、300 K 的氫氣數密度 n = P/(kT) = 100/(1.38×10⁻²³×300) ≈ 2.4×10²² m⁻³ = 2.4×10¹⁶ cm⁻³；取 H₂ 在 13.5 nm 的吸收截面約 4×10⁻²⁰ cm²（氫原子光游離截面的量級估計），1 m 路徑的 n·σ·L ≈ 0.097，透過率 ≈ 91%。錫在 13.5 nm 的 β ≈ 0.07，α = 4πβ/λ ≈ 0.065 nm⁻¹，集光鏡上 1 nm 錫膜雙程損失 1 − exp(−0.13) ≈ 12%。~Hydrogen at 100 Pa and 300 K has number density n = P/(kT) = 100/(1.38×10⁻²³×300) ≈ 2.4×10²² m⁻³ = 2.4×10¹⁶ cm⁻³; taking an H₂ absorption cross-section of about 4×10⁻²⁰ cm² at 13.5 nm (an order-of-magnitude estimate from the hydrogen photoionisation cross-section), a 1 m path gives n·σ·L ≈ 0.097 and about 91% transmission. Tin has β ≈ 0.07 at 13.5 nm, so α = 4πβ/λ ≈ 0.065 nm⁻¹ and a 1 nm tin film on the collector costs 1 − exp(−0.13) ≈ 12% in double pass.",
+      "verify": "定期以原位反射率量測或 IF 功率對雷射功率的比值追蹤集光鏡衰減速率，與腔內錫沉積的見證片以 XPS 或橢偏儀量得的厚度對照；改變氫氣壓力時同時記錄 IF 功率與衰減速率，確認透過率損失與碎屑抑制的權衡落在預期曲線上。~Track the collector decay rate periodically through in-situ reflectance measurement or the ratio of IF power to laser power, and cross-check with tin thickness measured by XPS or ellipsometry on witness samples inside the vessel; when hydrogen pressure is changed, log IF power and decay rate together to confirm the transmission-versus-debris trade-off follows the expected curve.",
+      "failure": "氫自由基清潔若因氣流分佈不均而在集光鏡邊緣不足，錫在該區域累積成數奈米厚，反射率呈現環狀衰減；若氫氣流量過低，微滴直接撞擊造成不可逆的多層膜損傷，整片集光鏡必須更換。~If uneven gas flow starves the collector edge of hydrogen radicals, tin accumulates there to several nanometres and reflectance decays in a ring pattern; if hydrogen flow is too low, micro-droplets strike the multilayer directly and cause irreversible damage that forces a full collector replacement.",
+      "misconception": "真空腔裡沒有空氣，所以集光鏡不會被污染。~The vessel is under vacuum, so the collector cannot get contaminated."
+    },
+    {
+      "anchor": "光源驗收與可用度記錄~Source acceptance and availability record",
+      "title": "光源驗收、可用度與工程交接~Source acceptance, availability and engineering handoff",
+      "mechanism": "光源驗收不是一次量到額定功率就結束，而是以長時間運轉記錄證明：IF 帶內功率、劑量穩定度、錫滴產生器連續運轉時數、集光鏡反射率衰減速率與可用度都必須在規格內。可用度由平均故障間隔與平均修復時間決定，錫滴產生器更換與集光鏡更換是主要的計畫性停機。交接文件要包含每個子系統的基準曲線與允許漂移，讓現場工程師能從趨勢判斷何時該維護而非等待故障。~Source acceptance is not a single reading of rated power but a long-run record showing that in-band IF power, dose stability, droplet-generator continuous running hours, collector reflectance decay rate and availability all stay within specification. Availability follows from mean time between failures and mean time to repair, with droplet-generator and collector replacement as the main planned downtimes. The handoff record must carry baseline curves and allowed drift for every subsystem so field engineers can schedule maintenance from trends instead of waiting for failures.",
+      "model": "可用度 A = MTBF/(MTBF + MTTR)：若錫滴產生器平均每 400 h 需更換且更換需 10 h，A = 400/410 ≈ 97.6%；若集光鏡反射率以每週 0.5% 的速率衰減，從 0.60 降到允許下限 0.50 需 (0.10/0.60)/0.005 ≈ 33 週，據此排定更換週期。~Availability A = MTBF/(MTBF + MTTR): if the droplet generator must be replaced every 400 h on average and replacement takes 10 h, A = 400/410 ≈ 97.6%; if collector reflectance decays at 0.5% per week, falling from 0.60 to the allowed floor of 0.50 takes (0.10/0.60)/0.005 ≈ 33 weeks, which sets the replacement interval.",
+      "verify": "以數週的連續運轉資料計算實際可用度、IF 功率趨勢與劑量誤差分佈，與驗收規格逐項比較；核對交接文件中每條基準曲線都附有量測方法、日期與不確定度，並由第二位工程師獨立重算功率鏈與可用度。~Compute the actual availability, IF power trend and dose-error distribution from several weeks of continuous running data and compare each with the acceptance specification; check that every baseline curve in the handoff record carries its measurement method, date and uncertainty, and have a second engineer independently recompute the power chain and availability.",
+      "failure": "若驗收只憑短時間的峰值功率，長期運轉時錫滴產生器壽命與集光鏡衰減未被記錄，產線在數月後才發現產能逐步下滑，而且沒有基準曲線可以判斷是哪個子系統造成。~If acceptance relies on short-term peak power, droplet-generator life and collector decay go unrecorded, the fab discovers a gradual throughput decline only months later, and without baseline curves there is no way to tell which subsystem is responsible.",
+      "misconception": "驗收時達到額定功率就代表光源合格。~Reaching rated power at acceptance means the source is qualified."
+    }
+  ],
+  "example": "功率鏈練習：驅動雷射 20 kW、50 kHz，每脈衝 0.4 J；CE = 5% 得 20 mJ 帶內 EUV 進入 2π 立體角，即 1000 W。集光鏡收集 5 sr（0.80）、反射率 0.60、氫氣透過率 0.90，η = 0.43，IF 功率 ≈ 430 W，每脈衝 8.6 mJ。進入掃描機後經照明系統 4 片、光罩 1 次與投影光學 6 片共 11 次反射，每次 0.65，0.65¹¹ ≈ 0.0088，晶圓處約 3.8 W。對 30 mJ/cm² 的光阻與 300 mm 晶圓（面積 π×15² ≈ 707 cm²），每片需 21.2 J，純曝光時間 21.2/3.8 ≈ 5.6 s；實際產能再受晶圓台步進、縫隙掃描開銷與劑量餘裕限制。若集光鏡反射率降到 0.50，IF 功率變為 358 W（下降 17%），曝光時間拉長 20%。數值皆為教學假設，不代表任何光源規格。~Power-chain exercise: a 20 kW drive laser at 50 kHz gives 0.4 J per pulse; CE = 5% yields 20 mJ of in-band EUV into 2π steradians, i.e. 1000 W. The collector captures 5 sr (0.80) with reflectance 0.60 and hydrogen transmission 0.90, so η = 0.43 and IF power ≈ 430 W, 8.6 mJ per pulse. Inside the scanner the light sees 11 reflections, 4 in the illuminator, 1 at the reticle and 6 in the projection optics, each at 0.65, so 0.65¹¹ ≈ 0.0088 and about 3.8 W reaches the wafer. For a 30 mJ/cm² resist on a 300 mm wafer (area π×15² ≈ 707 cm²) each wafer needs 21.2 J, a pure exposure time of 21.2/3.8 ≈ 5.6 s; real throughput is further limited by stage stepping, slit-scan overhead and dose margin. If collector reflectance drops to 0.50, IF power becomes 358 W (a 17% loss) and exposure time grows by 20%. All values are teaching assumptions, not any source specification.",
+  "history": "雷射電漿 EUV 光源的工程化由聖地牙哥的 Cymer（1986 年成立，2013 年併入 ASML）與日本 Gigaphoton 在 2000 年代推動，TRUMPF 與 Cymer 合作把多級 CO₂ 放大器的平均功率推到數十千瓦；前脈衝靶形技術與氫氣清潔使 IF 功率從 2010 年代初的數十瓦提升到 2017 年前後的 250 W，之後持續朝 500 W 以上推進，支撐 NXE 系列進入量產。本課只重建公開文獻中的物理與工程邏輯。~Engineering of laser-produced-plasma EUV sources was driven in the 2000s by Cymer of San Diego (founded 1986, acquired by ASML in 2013) and by Gigaphoton in Japan, with TRUMPF and Cymer pushing multi-stage CO₂ amplifiers to tens of kilowatts of average power; pre-pulse target shaping and hydrogen cleaning raised IF power from tens of watts in the early 2010s to about 250 W around 2017 and onward toward 500 W and more, supporting NXE systems in volume production. This course reconstructs only the physics and engineering logic found in public literature.",
+  "place": {
+    "name": "ASML 聖地牙哥光源廠區參照點~ASML San Diego light-source site reference",
+    "country": "美國~United States",
+    "lat": 33.02,
+    "lng": -117.08,
+    "query": "ASML San Diego Cymer Rancho Bernardo"
+  },
+  "sources": [
+    {
+      "key": "trumpf-euv-drive-laser",
+      "title": "TRUMPF：EUV 驅動雷射",
+      "titleEn": "TRUMPF: EUV drive laser",
+      "publisher": "TRUMPF",
+      "url": "https://www.trumpf.com/en_US/products/lasers/euv-drive-laser",
+      "sourceType": "primary",
+      "scope": "公開說明多級 CO₂ 放大器驅動雷射在錫滴電漿光源中的角色與功率等級；不含操作程序。",
+      "scopeEn": "Public description of the multi-stage CO₂ amplifier drive laser and its power class in tin-droplet plasma sources; no operating procedure."
+    },
+    {
+      "key": "asml-cymer-euv-2009",
+      "title": "ASML 與 Cymer：EUV 光源進展新聞稿",
+      "titleEn": "ASML and Cymer: EUV source advancement press release",
+      "publisher": "ASML",
+      "url": "https://www.asml.com/en/news/press-releases/2009/asml-and-cymer-announce-advancement-in-euv-to-enable-manufacturing-of-integrated-circuits",
+      "sourceType": "primary",
+      "scope": "公開的雷射電漿 EUV 光源發展里程碑與合作背景，用於歷史脈絡。",
+      "scopeEn": "Public milestone and collaboration context for laser-produced-plasma EUV sources, used for historical framing."
+    },
+    {
+      "key": "gigaphoton-lpp-euv",
+      "title": "Gigaphoton：量產用 LPP EUV 光源進展",
+      "titleEn": "Gigaphoton: LPP EUV light source progress for volume lithography",
+      "publisher": "Gigaphoton Inc.",
+      "url": "https://www.gigaphoton.com/en/news/426",
+      "sourceType": "primary",
+      "scope": "另一家 LPP 光源開發者公開的錫滴、前脈衝與碎屑抑制技術方向；課程數值為教學假設。",
+      "scopeEn": "Public direction of droplet, pre-pulse and debris-mitigation technology from another LPP source developer; course numbers are teaching assumptions."
+    },
+    {
+      "key": "asml-san-diego",
+      "title": "ASML：聖地牙哥據點（光源研發與製造）",
+      "titleEn": "ASML: San Diego location (light-source development and manufacturing)",
+      "publisher": "ASML",
+      "url": "https://asml.com/en/company/about-asml/locations/san-diego",
+      "sourceType": "primary",
+      "scope": "公開說明聖地牙哥據點負責 DUV 與 EUV 光源的研發製造，作為地圖參照。",
+      "scopeEn": "Public description of the San Diego site as the home of DUV and EUV light-source development and manufacturing, used as the map reference."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "ASML",
+      "nameEn": "ASML",
+      "business": "EUV 微影系統整合商，旗下聖地牙哥團隊負責雷射電漿 EUV 光源。",
+      "businessEn": "EUV lithography-system integrator whose San Diego team develops laser-produced-plasma EUV sources.",
+      "url": "https://www.asml.com/",
+      "investorUrl": "https://www.asml.com/en/investors",
+      "security": {"symbol": "ASML", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "錫滴 LPP 光源與掃描機整合的公開資訊",
+      "roleEn": "Public information on tin-droplet LPP sources integrated with scanners"
+    },
+    {
+      "name": "通快",
+      "nameEn": "TRUMPF",
+      "business": "工業雷射與 EUV 驅動雷射（多級 CO₂ 放大器）製造商。",
+      "businessEn": "Industrial lasers and EUV drive lasers based on multi-stage CO₂ amplifiers.",
+      "url": "https://www.trumpf.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "CO₂ 驅動雷射的公開技術說明",
+      "roleEn": "Public technical description of CO₂ drive lasers"
+    },
+    {
+      "name": "Gigaphoton",
+      "nameEn": "Gigaphoton Inc.",
+      "business": "準分子雷射與 LPP EUV 光源開發（Komatsu 集團）。",
+      "businessEn": "Excimer lasers and LPP EUV light-source development (Komatsu group).",
+      "url": "https://www.gigaphoton.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "另一條 LPP 光源技術路線的公開進展",
+      "roleEn": "Public progress of an alternative LPP source technology line"
+    },
+    {
+      "name": "蔡司半導體製造技術",
+      "nameEn": "ZEISS SMT",
+      "business": "EUV 集光鏡、照明與投影光學製造。",
+      "businessEn": "Manufacturing of EUV collector mirrors, illumination and projection optics.",
+      "url": "https://www.zeiss.com/semiconductor-manufacturing-technology/inspiring-technology/euv-lithography.html",
+      "investorUrl": "https://www.zeiss.com/corporate/en/about-zeiss/company-figures.html",
+      "security": null,
+      "role": "多層膜集光鏡與下游 EUV 光學的公開資訊",
+      "roleEn": "Public information on multilayer collectors and downstream EUV optics"
+    }
+  ],
+  "related": ["a402", "a401"],
+  "architectureNodes": [["錫滴產生器", "Tin-droplet generator"], ["錫滴偵測與導向控制", "Droplet detection and steering control"], ["CO₂ MOPA 驅動雷射", "CO₂ MOPA drive laser"], ["電漿與氫氣緩衝腔", "Plasma and hydrogen buffer vessel"], ["橢球集光鏡", "Ellipsoidal collector mirror"], ["中間焦點與能量監測", "Intermediate focus and energy monitor"]],
+  "architectureEdges": [[0, 3], [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 2]]
+}

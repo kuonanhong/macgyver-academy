@@ -1,0 +1,182 @@
+{
+  "id": "a431",
+  "title": "傅立葉轉換紅外光譜儀~Fourier-transform infrared spectrometers",
+  "discipline": "optics-spectroscopy-radiometry",
+  "family": "interferometer",
+  "focus": "麥克森干涉儀、氦氖取樣、解析度與訊雜比交換的 FTIR 工程~Michelson interferometer, HeNe sampling, resolution and signal-to-noise trade-offs in FTIR engineering",
+  "summary": "從干涉圖與傅立葉轉換的關係出發，理解動鏡行程如何決定解析度、氦氖雷射條紋如何定義波數軸與取樣，再把分光鏡、光源、偵測器、光闌與吹掃整合成可驗收的紅外光譜儀；聚苯乙烯標準片與 100% 線測試是全課的量測主軸。~Starting from the interferogram–spectrum Fourier pair, this course shows how mirror travel sets resolution, how HeNe laser fringes define the wavenumber axis and sampling, and how beamsplitter, source, detector, aperture stop and purge combine into an acceptable infrared spectrometer; the polystyrene standard and the 100% line test are the measurement backbone throughout.",
+  "units": [
+    {
+      "anchor": "麥克森干涉儀與干涉圖~Michelson interferometer and interferogram",
+      "title": "干涉圖與光譜的傅立葉對~The interferogram–spectrum Fourier pair",
+      "mechanism": "FTIR 不用光柵分光，而是讓紅外光進入麥克森干涉儀：分光鏡把光分成兩路，一路到固定鏡、一路到以等速移動的動鏡，兩路重合後的強度隨光程差 x 變化，形成干涉圖 I(x) = ∫B(ν̃)cos(2πν̃x)dν̃。每個波數 ν̃ 的光在動鏡掃描時都以自己的頻率 f = 2v·ν̃ 被調變（v 為動鏡速度、2v 為光程差速度），所有波數同時被偵測器記錄，再用傅立葉轉換把干涉圖還原成光譜 B(ν̃)。這就是費爾蓋特多工優勢的來源：整個掃描時間內每個波數都在累積訊號，而不是像色散式儀器逐一通過狹縫。~Instead of dispersing light with a grating, an FTIR sends the infrared beam into a Michelson interferometer: the beamsplitter divides it toward a fixed mirror and a mirror moving at constant velocity, and the recombined intensity varies with optical path difference x as the interferogram I(x) = ∫B(ν̃)cos(2πν̃x)dν̃. Each wavenumber ν̃ is modulated at its own audio frequency f = 2v·ν̃ (v the mirror velocity, 2v the path-difference velocity), all wavenumbers reach the detector simultaneously, and a Fourier transform recovers the spectrum B(ν̃). This is the Fellgett multiplex advantage: every spectral element accumulates signal for the whole scan rather than taking turns through a slit.",
+      "model": "取光程差速度 2v = 0.6329 cm/s（常見設定，此處為教學假設），波數 1000 cm⁻¹ 的光被調變在 f = 0.6329×1000 ≈ 633 Hz；4000 cm⁻¹ 在約 2.5 kHz；氦氖參考雷射 15798 cm⁻¹ 則在約 10 kHz。偵測器與前置放大器的頻寬必須涵蓋整個音頻帶，否則高波數端會被衰減。~With a path-difference velocity 2v = 0.6329 cm/s (a common setting, used here as a teaching assumption), light at 1000 cm⁻¹ is modulated at f = 0.6329×1000 ≈ 633 Hz, 4000 cm⁻¹ at about 2.5 kHz, and the HeNe reference at 15798 cm⁻¹ near 10 kHz; the detector and preamplifier bandwidth must cover this whole audio band or the high-wavenumber end is attenuated.",
+      "verify": "在儀器診斷模式觀察干涉圖：中心爆（centre burst）的峰值電壓應落在 ADC 量程的 30–70%，單光束光譜在 2000 cm⁻¹ 附近的能量應與出廠基準相符；接著以示波器或診斷軟體檢查氦氖條紋頻率是否約為 10 kHz，確認動鏡速度與調變頻率的對應關係。~In the instrument diagnostic mode inspect the interferogram: the centre-burst peak should sit at 30–70% of the ADC range, and the single-beam energy near 2000 cm⁻¹ should match the factory baseline; then check with an oscilloscope or the diagnostic software that the HeNe fringe frequency is close to 10 kHz, confirming the mirror velocity and the modulation-frequency mapping.",
+      "failure": "若動鏡速度設定高於 DTGS 偵測器的響應頻寬，高波數端訊號會被偵測器的低通特性壓低，單光束光譜在 4000 cm⁻¹ 附近塌陷，使用者誤以為是光源老化。~If the mirror velocity is set above the DTGS detector's response bandwidth, the detector's low-pass behaviour suppresses the high-wavenumber end, the single-beam spectrum collapses near 4000 cm⁻¹, and users wrongly blame an aging source.",
+      "misconception": "FTIR 是用某種精密光柵把紅外光分成各個波長後逐一量測。~An FTIR uses a fine grating to separate the infrared wavelengths and measures them one at a time."
+    },
+    {
+      "anchor": "動鏡行程與雅基諾光闌~Mirror travel and the Jacquinot stop",
+      "title": "解析度、切趾與通量優勢~Resolution, apodization and the throughput advantage",
+      "mechanism": "光譜解析度由最大光程差 Δ_max 決定：Δν̃ ≈ 1/Δ_max，動鏡只需移動 Δ_max/2，因為光程差是鏡位移的兩倍。干涉圖在 Δ_max 處被截斷相當於乘上矩形窗，光譜中每條譜線因此帶有 sinc 形的儀器線形與 −22% 的旁瓣；改用三角形等切趾函數可壓低旁瓣，代價是線寬變寬。雅基諾優勢來自干涉儀不需要狹縫：允許的立體角 Ω = 2π/R（R 為解析能力 ν̃_max/Δν̃），遠大於同解析度的光柵儀器，因此可用較大的光闌通過更多能量。~Spectral resolution is fixed by the maximum optical path difference Δ_max through Δν̃ ≈ 1/Δ_max, and the mirror itself travels only Δ_max/2 because path difference is twice the mirror displacement. Truncating the interferogram at Δ_max multiplies it by a boxcar window, so every spectral line carries a sinc instrument line shape with −22% side lobes; a triangular or similar apodization suppresses the side lobes at the cost of a wider line. The Jacquinot advantage arises because an interferometer needs no slit: the admissible solid angle is Ω = 2π/R with R = ν̃_max/Δν̃ the resolving power, far larger than a grating instrument of equal resolution, so a larger stop passes more energy.",
+      "model": "標稱解析度 4 cm⁻¹ 需要 Δ_max = 0.25 cm，動鏡行程 1.25 mm；矩形窗的線寬 FWHM = 0.603/Δ_max = 2.41 cm⁻¹，三角切趾為 0.886/Δ_max = 3.54 cm⁻¹。雅基諾光闌：R = 4000/4 = 1000，Ω = 2π/1000 = 6.28×10⁻³ sr，半角 θ = √(Ω/π) = 0.0447 rad（2.56°）；若準直鏡焦距 100 mm，光闌直徑 = 2fθ ≈ 8.9 mm。~A nominal 4 cm⁻¹ resolution needs Δ_max = 0.25 cm, i.e. 1.25 mm of mirror travel; the boxcar line width is FWHM = 0.603/Δ_max = 2.41 cm⁻¹ and triangular apodization gives 0.886/Δ_max = 3.54 cm⁻¹. For the Jacquinot stop, R = 4000/4 = 1000, Ω = 2π/1000 = 6.28×10⁻³ sr, half-angle θ = √(Ω/π) = 0.0447 rad (2.56°); with a 100 mm collimator focal length the stop diameter is 2fθ ≈ 8.9 mm.",
+      "verify": "量測低壓氣體（如 CO 或 HCl）的窄轉動譜線或聚苯乙烯 2851/2870 cm⁻¹ 這一對譜線：比較矩形窗與三角切趾下的線寬與旁瓣，確認 FWHM 符合 0.603/Δ_max 與 0.886/Δ_max 的預測；再逐級縮小光闌，觀察單光束能量按光闌面積下降而線寬不再改善。~Measure narrow rotational lines of a low-pressure gas such as CO or HCl, or the polystyrene 2851/2870 cm⁻¹ pair, and compare line width and side lobes under boxcar and triangular apodization against the 0.603/Δ_max and 0.886/Δ_max predictions; then close the aperture step by step and confirm that single-beam energy falls with stop area while the line width stops improving.",
+      "failure": "為了追求 0.5 cm⁻¹ 解析度卻沒有縮小光闌，離軸光線的光程差縮短使譜線變寬、峰位偏移，解析度實際達不到標稱值；反之光闌太小又讓訊雜比下降到無法使用。~Chasing 0.5 cm⁻¹ resolution without closing the aperture lets off-axis rays with shortened path difference broaden and shift the lines so the nominal resolution is never reached; closing the stop too far instead drives the signal-to-noise ratio below usability.",
+      "misconception": "動鏡走得越遠，解析度就無限提高，與光闌大小無關。~Longer mirror travel keeps improving resolution indefinitely, regardless of aperture size."
+    },
+    {
+      "anchor": "KBr/Ge 分光鏡與 DTGS/MCT 偵測器~KBr/Ge beamsplitter and DTGS/MCT detectors",
+      "title": "光源、分光鏡與偵測器選擇~Source, beamsplitter and detector selection",
+      "mechanism": "中紅外光源通常是加熱到約 1300 K 的碳化矽棒（globar），依普朗克定律其峰值在 2.2 µm 附近，10 µm 處只在長波尾端。分光鏡是鍍 Ge 的 KBr 基板，覆蓋約 7800–350 cm⁻¹，但 KBr 會潮解，必須保持乾燥；遠紅外改用 Mylar 或固態分光鏡，近紅外改用 CaF₂ 或石英。偵測器有兩類：室溫的 DTGS 熱電型偵測器響應平坦但靈敏度低且隨調變頻率滾降；液態氮冷卻的 MCT 光導偵測器靈敏度高一到兩個數量級，但截止在約 600–750 cm⁻¹，且在強光下非線性。~The mid-infrared source is usually a silicon-carbide rod (globar) heated to about 1300 K; by Planck's law its emission peaks near 2.2 µm, so 10 µm lies on the long-wavelength tail. The beamsplitter is a germanium-coated KBr substrate covering roughly 7800–350 cm⁻¹, but KBr is hygroscopic and must be kept dry; far-infrared work uses Mylar or solid-state beamsplitters and near-infrared uses CaF₂ or quartz. Two detector classes exist: the room-temperature pyroelectric DTGS has a flat response but low sensitivity that rolls off with modulation frequency, while liquid-nitrogen-cooled photoconductive MCT is one to two orders more sensitive but cuts off near 600–750 cm⁻¹ and becomes nonlinear under strong illumination.",
+      "model": "偵測器的雜訊等效功率為 NEP = √(A_d·Δf)/D*。DTGS 取 D* = 2×10⁸ cm·Hz^½/W、感光面積 2 mm×2 mm（√A = 0.2 cm）、頻寬 Δf = 1 Hz，NEP = 0.2/2×10⁸ = 1×10⁻⁹ W；MCT 取 D* = 2×10¹⁰、面積 1 mm×1 mm（√A = 0.1 cm），NEP = 0.1/2×10¹⁰ = 5×10⁻¹² W，靈敏度約好 200 倍。光源依維恩位移定律：λ_max = 2898 µm·K/1300 K = 2.23 µm，即約 4490 cm⁻¹。~Noise-equivalent power is NEP = √(A_d·Δf)/D*. For DTGS with D* = 2×10⁸ cm·Hz^½/W, a 2 mm × 2 mm element (√A = 0.2 cm) and Δf = 1 Hz, NEP = 0.2/2×10⁸ = 1×10⁻⁹ W; for MCT with D* = 2×10¹⁰ and a 1 mm × 1 mm element (√A = 0.1 cm), NEP = 0.1/2×10¹⁰ = 5×10⁻¹² W, roughly 200 times better. Wien's law gives λ_max = 2898 µm·K/1300 K = 2.23 µm, about 4490 cm⁻¹.",
+      "verify": "以空光路單光束光譜檢查分光鏡的有效範圍與 KBr 吸水徵兆（低波數端能量下降、基線起伏）；比較 DTGS 與 MCT 在同一取樣條件下的 100% 線雜訊，確認 MCT 的增益約為兩個數量級，並用衰減片檢查 MCT 在中心爆峰值下是否出現非線性造成的負吸收。~Use an empty-beam single-beam spectrum to check the beamsplitter's usable range and signs of KBr moisture uptake (energy loss at low wavenumbers, baseline undulation); compare the 100% line noise of DTGS and MCT under identical conditions to confirm the two-order gain, and insert attenuators to check whether the MCT shows nonlinearity-induced negative absorbance below the centre-burst peak.",
+      "failure": "乾燥劑失效後 KBr 分光鏡表面霧化，600 cm⁻¹ 以下的能量先消失、接著整個光譜基線扭曲；更換分光鏡與重新乾燥比例行維護貴得多。~After the desiccant is exhausted the KBr beamsplitter fogs, energy below 600 cm⁻¹ disappears first and then the whole baseline distorts; replacing the beamsplitter and re-drying costs far more than routine maintenance.",
+      "misconception": "MCT 偵測器在任何情況下都優於 DTGS，所以應該永遠使用 MCT。~An MCT detector is better than DTGS in every situation, so MCT should always be used."
+    },
+    {
+      "anchor": "氦氖雷射條紋與零交越取樣~HeNe fringes and zero-crossing sampling",
+      "title": "動鏡掃描機構與氦氖取樣~Scanner mechanics and HeNe fringe sampling",
+      "mechanism": "動鏡裝在空氣軸承、撓性或音圈驅動的滑軌上，以伺服控制等速掃描；但真正決定波數軸的不是機械，而是與紅外光共用光路的氦氖參考雷射。氦氖光的干涉條紋每 632.8 nm 光程差重複一次，電子電路在條紋的零交越點觸發 ADC 取樣，因此干涉圖的取樣位置由雷射波長精確定義，這就是康尼斯優勢。取樣間隔決定可達的最高波數（奈奎斯特），每個零交越或每隔幾個零交越取樣是依光譜範圍選擇的設定。~The moving mirror rides on an air bearing, flexure or voice-coil slide under servo control at constant velocity, but the wavenumber axis is defined not by the mechanics but by a HeNe reference laser sharing the optical path. Its fringes repeat every 632.8 nm of path difference and the electronics trigger ADC samples at the fringe zero crossings, so the sample positions are fixed by the laser wavelength; this is the Connes advantage. The sampling interval sets the highest reachable wavenumber (Nyquist), and sampling at every zero crossing or every few crossings is chosen according to the spectral range.",
+      "model": "每個零交越取樣一次時 Δx = λ_HeNe/2 = 316.4 nm，奈奎斯特波數 ν̃_max = 1/(2Δx) = 15798 cm⁻¹；每隔一個零交越（Δx = 632.8 nm）為 7899 cm⁻¹，仍涵蓋 KBr 的 7800 cm⁻¹ 上限；每隔三個（Δx = 1.2656 µm）只剩 3950 cm⁻¹，4000 cm⁻¹ 附近的 O–H 伸縮會混疊。4 cm⁻¹（Δ_max = 0.25 cm）、Δx = 632.8 nm 時單邊點數 N = 0.25/632.8×10⁻⁷ ≈ 3950。~Sampling at every zero crossing gives Δx = λ_HeNe/2 = 316.4 nm and a Nyquist wavenumber ν̃_max = 1/(2Δx) = 15798 cm⁻¹; every second crossing (Δx = 632.8 nm) gives 7899 cm⁻¹, still covering the 7800 cm⁻¹ KBr limit; every fourth (Δx = 1.2656 µm) leaves only 3950 cm⁻¹ and O–H stretches near 4000 cm⁻¹ alias. At 4 cm⁻¹ (Δ_max = 0.25 cm) with Δx = 632.8 nm the single-sided point count is N = 0.25/632.8×10⁻⁷ ≈ 3950.",
+      "verify": "用示波器同時觀察氦氖正弦條紋與 ADC 觸發脈衝，確認觸發落在零交越且無漏拍；比較不同取樣倍率下的單光束光譜，確認截止波數與 1/(2Δx) 一致；最後刻意改變動鏡速度，確認波數軸不隨速度改變，只有強度頻響改變。~Watch the HeNe sine fringe and the ADC trigger pulses together on an oscilloscope to confirm triggering at the zero crossings with no missed beats; compare single-beam spectra at different sampling ratios to confirm the cutoff equals 1/(2Δx); finally change the mirror velocity deliberately and confirm that the wavenumber axis is unchanged while only the amplitude frequency response shifts.",
+      "failure": "氦氖雷射老化或準直偏移使條紋對比下降，零交越偵測開始漏拍，干涉圖取樣位置跳動，光譜出現鬼峰與波數軸漂移；儀器會回報雷射訊號過低，但常被忽略。~An aging or misaligned HeNe laser lowers fringe contrast, zero-crossing detection starts missing beats, the interferogram sample positions jitter, and ghost peaks and wavenumber drift appear; the instrument reports a low laser signal that is frequently ignored.",
+      "misconception": "氦氖雷射只是幫動鏡對準用的，對波數準確度沒有影響。~The HeNe laser only helps align the moving mirror and has no effect on wavenumber accuracy."
+    },
+    {
+      "anchor": "聚苯乙烯標準片 SRM 1921b~Polystyrene standard SRM 1921b",
+      "title": "波數校正與光闌引起的刻度誤差~Wavenumber calibration and aperture-induced scale error",
+      "mechanism": "氦氖雷射給出極好的波數線性，但離軸光線的光程差是 x·cosα，整個光闌錐角內的平均使所有譜線按同一比例向低波數偏移；這是系統性的刻度因子，而非隨機誤差。因此 FTIR 軟體把「有效雷射波數」當作校正參數，用 NIST SRM 1921b 聚苯乙烯片的認證峰位（例如 1601 與 1028 cm⁻¹ 附近的譜帶）去擬合，把刻度拉回正確值；換光闌、換分光鏡或重新對準後都必須重做。~The HeNe laser gives excellent wavenumber linearity, but an off-axis ray sees a path difference x·cosα, and averaging over the aperture cone shifts every line toward lower wavenumber by the same fraction; this is a systematic scale factor, not random error. FTIR software therefore treats an effective laser wavenumber as a calibration parameter fitted to the certified peak positions of the NIST SRM 1921b polystyrene film (for example the bands near 1601 and 1028 cm⁻¹) to pull the scale back; it must be redone after any change of aperture, beamsplitter or realignment.",
+      "model": "均勻充滿半角 θ 的錐角時 ⟨cosα⟩ = (1 + cosθ)/2 ≈ 1 − θ²/4，故 Δν̃/ν̃ ≈ −θ²/4 = −Ω/(4π)。取第 2 單元的 θ = 0.0447 rad：Δν̃/ν̃ = −5.0×10⁻⁴，在 2849.5 cm⁻¹ 偏移 −1.42 cm⁻¹、在 1028.3 cm⁻¹ 偏移 −0.51 cm⁻¹，都超過一般 ±1 cm⁻¹ 的驗收容差，所以必須用有效雷射波數修正。~For a uniformly filled cone of half-angle θ, ⟨cosα⟩ = (1 + cosθ)/2 ≈ 1 − θ²/4, hence Δν̃/ν̃ ≈ −θ²/4 = −Ω/(4π). With θ = 0.0447 rad from unit 2, Δν̃/ν̃ = −5.0×10⁻⁴, a shift of −1.42 cm⁻¹ at 2849.5 cm⁻¹ and −0.51 cm⁻¹ at 1028.3 cm⁻¹, both beyond a typical ±1 cm⁻¹ acceptance tolerance, so the effective-laser-wavenumber correction is mandatory.",
+      "verify": "以 4 cm⁻¹、32 次掃描量測 SRM 1921b，用重心法或多項式擬合取峰位，與證書值比較並計算刻度因子；接著把光闌縮小一半重量，確認偏移量按 θ² 縮為四分之一，證明偏移確實來自光闌而非雷射。~Measure SRM 1921b at 4 cm⁻¹ with 32 scans, locate peaks by centroid or polynomial fitting, compare with the certificate values and compute the scale factor; then halve the aperture and remeasure, confirming the shift falls to one quarter as θ² predicts, which proves the offset comes from the aperture rather than the laser.",
+      "failure": "使用者在大光闌下校正、再換到小光闌量測，刻度因子不再適用，譜峰系統性偏移約 1 cm⁻¹，藥典式的聚苯乙烯檢查失敗卻被歸咎於樣品。~Calibrating at a large aperture and then measuring at a small one leaves an unsuitable scale factor, peaks shift systematically by about 1 cm⁻¹, and a pharmacopoeia-style polystyrene check fails while the sample gets the blame.",
+      "misconception": "因為有氦氖雷射，FTIR 的波數軸永遠不需要校正。~Because of the HeNe laser, an FTIR wavenumber axis never needs calibration."
+    },
+    {
+      "anchor": "100% 線與訊雜比交換規則~The 100% line and SNR trading rules",
+      "title": "雜訊、掃描次數與解析度的交換~Noise, scan averaging and the resolution trade",
+      "mechanism": "FTIR 的雜訊以 100% 線評估：連續取兩次背景光譜相除，理想上應為平坦的 100% T，其峰對峰或均方根偏差就是光度雜訊。偵測器雜訊主導時，訊雜比隨掃描次數的平方根成長；而在固定光闌下，解析度加倍（Δν̃ 減半）使每個光譜元素的能量減半，需要四倍掃描數才能維持同樣的訊雜比；若光闌也依雅基諾條件縮小，代價再乘上四倍。這就是 FTIR 的交換規則，也是規劃量測時間的依據。~FTIR noise is judged with the 100% line: two consecutive background spectra are ratioed and should ideally be a flat 100% T, and their peak-to-peak or RMS deviation is the photometric noise. When detector noise dominates, signal-to-noise grows with the square root of the number of scans; at a fixed aperture, doubling resolution (halving Δν̃) halves the energy per spectral element and needs four times as many scans for the same SNR, and if the stop is also reduced to satisfy the Jacquinot condition the penalty multiplies by another four. These are the FTIR trading rules and the basis for planning measurement time.",
+      "model": "假設 4 cm⁻¹、32 次掃描、DTGS 的 100% 線峰對峰雜訊 0.05% T，均方根約為峰對峰的 1/5 = 0.01% T = 1×10⁻⁴；換成吸光度約 0.434×10⁻⁴ = 4.3×10⁻⁵ AU，三倍雜訊的偵測極限約 1.3×10⁻⁴ AU。改成 256 次掃描（8 倍）雜訊降為 1/√8 = 0.35 倍；若同時改成 2 cm⁻¹，固定光闌下雜訊回升 2 倍，淨改善只剩 1.4 倍。~Assume a DTGS 100% line with 0.05% T peak-to-peak noise at 4 cm⁻¹ and 32 scans; the RMS is about one fifth of that, 0.01% T = 1×10⁻⁴, which in absorbance is 0.434×10⁻⁴ = 4.3×10⁻⁵ AU, with a three-sigma detection limit near 1.3×10⁻⁴ AU. Going to 256 scans (8×) reduces noise by 1/√8 = 0.35; switching at the same time to 2 cm⁻¹ at fixed aperture doubles the noise again, so the net gain is only 1.4×.",
+      "verify": "依序以 1、4、16、64 次掃描量 100% 線，在 2200–2100 cm⁻¹ 的無吸收區計算均方根雜訊，畫成對 √N 的曲線確認斜率為 −1/2；若曲線在高掃描數處變平，表示雜訊已由光源閃爍、吹掃不穩或 ADC 量化主導，而非偵測器雜訊。~Record 100% lines at 1, 4, 16 and 64 scans, compute RMS noise in the absorption-free 2200–2100 cm⁻¹ region, and plot against √N to confirm a slope of −1/2; a flattening at high scan counts shows that source flicker, unstable purge or ADC quantisation now dominates rather than detector noise.",
+      "failure": "把 0.5 cm⁻¹ 解析度當預設值用來量測固體薄膜，訊雜比比 4 cm⁻¹ 差一個數量級、量測時間拉長數十倍，而固體譜帶本身寬達 10–20 cm⁻¹，根本不需要那樣的解析度。~Using 0.5 cm⁻¹ as the default resolution for solid films costs an order of magnitude in signal-to-noise and tens of times longer measurements, while solid bands are 10–20 cm⁻¹ wide and never needed that resolution.",
+      "misconception": "解析度越高光譜越好，掃描次數只是為了美觀。~Higher resolution always gives a better spectrum, and scan averaging is merely cosmetic."
+    },
+    {
+      "anchor": "乾燥吹掃與樣品室~Dry purge and the sample compartment",
+      "title": "水氣、二氧化碳與樣品介面整合~Water vapour, CO₂ and sample-interface integration",
+      "mechanism": "大氣水氣在 1300–1900 與 3500–3900 cm⁻¹ 有密集的轉動—振動譜線，CO₂ 在 2350 cm⁻¹ 有強雙峰、667 cm⁻¹ 有彎曲振動；它們在樣品與背景之間若有任何變化，就會以正負尖刺的形式疊在樣品光譜上。工程解法是把干涉儀與偵測器腔密封並放乾燥劑，樣品室以乾燥空氣或氮氣吹掃，並在換樣品後等待吹掃恢復；ATR 附件把路徑縮到一次漸逝波深度，是另一種同時降低氣體干擾與樣品製備負擔的介面。~Atmospheric water vapour has dense rotation–vibration lines in the 1300–1900 and 3500–3900 cm⁻¹ regions, and CO₂ has a strong doublet at 2350 cm⁻¹ and a bending mode at 667 cm⁻¹; any change between sample and background measurements appears as positive or negative spikes on the sample spectrum. The engineering answer is to seal the interferometer and detector compartments with desiccant, purge the sample compartment with dry air or nitrogen, and wait for purge recovery after each sample exchange; an ATR accessory shortens the path to a single evanescent depth and is another interface that reduces both gas interference and sample preparation.",
+      "model": "20 °C、相對濕度 50% 時水氣分壓 p ≈ 0.5×2.34 kPa = 1.17 kPa，分子數密度 n = p/(k_B T) = 1170/(1.38×10⁻²³×293) ≈ 2.9×10¹⁷ cm⁻³；吹掃到露點 −40 °C（p ≈ 12.8 Pa）後 n ≈ 3.2×10¹⁵ cm⁻³，降低約 90 倍。20 cm 樣品室路徑的水氣柱密度因此從 5.8×10¹⁸ cm⁻² 降到 6.3×10¹⁶ cm⁻²。~At 20 °C and 50% relative humidity the water partial pressure is p ≈ 0.5×2.34 kPa = 1.17 kPa and the number density n = p/(k_B T) = 1170/(1.38×10⁻²³×293) ≈ 2.9×10¹⁷ cm⁻³; purging to a −40 °C dew point (p ≈ 12.8 Pa) gives n ≈ 3.2×10¹⁵ cm⁻³, about 90 times lower. Over a 20 cm sample-compartment path the water column therefore drops from 5.8×10¹⁸ cm⁻² to 6.3×10¹⁶ cm⁻².",
+      "verify": "開啟樣品室蓋 30 秒再關上，連續每 30 秒取一次 100% 線，觀察 1600 cm⁻¹ 水氣尖刺的衰減時間常數，據此訂出換樣後的等待時間；同時用露點計確認吹掃氣體露點低於 −40 °C，並檢查 2350 cm⁻¹ 的 CO₂ 殘留是否低於光度雜訊。~Open the sample-compartment lid for 30 s, close it and take a 100% line every 30 s to watch the decay time constant of the 1600 cm⁻¹ water spikes, then set the post-exchange waiting time from it; verify with a dew-point meter that the purge gas is below −40 °C and check that the residual 2350 cm⁻¹ CO₂ feature is below the photometric noise.",
+      "failure": "吹掃氣管接到含油的壓縮空氣，光譜在 2900 cm⁻¹ 附近出現 C–H 伸縮鬼峰並隨時間增長，實驗室花數週追查「樣品污染」，問題其實在氣源。~Connecting the purge line to oil-laden compressed air produces C–H stretch ghost bands near 2900 cm⁻¹ that grow with time, and the laboratory spends weeks hunting sample contamination that actually comes from the gas supply.",
+      "misconception": "只要樣品與背景在同一天量測，水氣與 CO₂ 就會完全相消。~As long as sample and background are measured on the same day, water vapour and CO₂ cancel completely."
+    },
+    {
+      "anchor": "性能驗證報告~Performance-qualification record",
+      "title": "性能驗證、驗收準則與工程交接~Performance qualification, acceptance criteria and handoff",
+      "mechanism": "一台 FTIR 的交接不是看規格書，而是以同一套可重複的測試把波數準確度、解析度、光度雜訊、能量通量與穩定性鎖成基準：聚苯乙烯峰位在容差內、2870 與 2851 cm⁻¹ 之間的穿透率差大於規定值、100% 線雜訊低於門檻、單光束能量不低於出廠基準的某個百分比、氦氖與光源強度在診斷頁面正常。這些數據連同光闌、速度、取樣倍率、切趾等設定一起寫入驗收報告，日後任何維修或漂移都與它比對。~Handing over an FTIR is not a matter of reading the datasheet but of locking wavenumber accuracy, resolution, photometric noise, energy throughput and stability into a baseline with one repeatable test set: polystyrene peaks within tolerance, the transmittance difference between 2870 and 2851 cm⁻¹ above the specified value, 100% line noise below threshold, single-beam energy not below a stated fraction of the factory baseline, and HeNe and source levels normal on the diagnostic page. These results, together with aperture, velocity, sampling ratio and apodization settings, go into the qualification record against which every later repair or drift is compared.",
+      "model": "峰位重複性的量級估計為 σ_ν̃ ≈ FWHM/SNR：聚苯乙烯 1601 cm⁻¹ 譜帶在 4 cm⁻¹ 下的視線寬約 8 cm⁻¹，峰值訊雜比 500 時 σ_ν̃ ≈ 0.016 cm⁻¹；連續量 10 次的標準差若明顯大於 0.02 cm⁻¹，表示取樣或雷射有問題。驗收容差依藥典慣例取 ±1 cm⁻¹，兩者相差 50 倍，所以漂移可以被及早發現。~An order-of-magnitude estimate of peak repeatability is σ_ν̃ ≈ FWHM/SNR: the polystyrene 1601 cm⁻¹ band appears about 8 cm⁻¹ wide at 4 cm⁻¹ resolution, so at a peak SNR of 500, σ_ν̃ ≈ 0.016 cm⁻¹; if the standard deviation of 10 consecutive runs is clearly above 0.02 cm⁻¹, sampling or laser trouble is indicated. The acceptance tolerance follows pharmacopoeia practice at ±1 cm⁻¹, 50 times larger, so drift can be caught early.",
+      "verify": "建立一份含日期、設定與結果的性能驗證表，每月重跑：聚苯乙烯峰位、解析度測試、100% 線雜訊、單光束能量、雷射與光源診斷值；把每項畫成管制圖，任何一項超出歷史平均 ±3σ 就啟動維修，而不是等到樣品結果異常。~Create a performance-qualification sheet with date, settings and results and rerun it monthly: polystyrene peak positions, the resolution test, 100% line noise, single-beam energy, laser and source diagnostics; plot each as a control chart and trigger maintenance when any item leaves its historical mean by ±3σ rather than waiting for abnormal sample results.",
+      "failure": "維修人員更換分光鏡後只確認「有光譜」就交機，沒有重做聚苯乙烯校正與 100% 線，結果波數偏移 0.8 cm⁻¹、低波數端雜訊加倍，數月後資料庫比對全部失準。~A technician replaces the beamsplitter, confirms only that a spectrum appears and returns the instrument without redoing the polystyrene calibration and 100% line; the wavenumber scale is off by 0.8 cm⁻¹ and low-wavenumber noise doubles, and months of library matching go wrong.",
+      "misconception": "儀器自我診斷顯示綠燈，就等於通過性能驗證。~A green self-diagnostic light is the same as passing performance qualification."
+    }
+  ],
+  "example": "量測規劃練習：目標解析度 2 cm⁻¹、範圍 4000–400 cm⁻¹、KBr/Ge 分光鏡、DTGS 偵測器。最大光程差 Δ_max = 1/2 = 0.5 cm，動鏡行程 2.5 mm；取樣間隔 632.8 nm（每隔一個零交越）給奈奎斯特 7899 cm⁻¹，單邊點數 N = 0.5/632.8×10⁻⁷ ≈ 7900，雙邊約 15800 點，補零到 32768 點做 FFT。光程差速度 0.6329 cm/s 時一次雙邊掃描 2×0.5/0.6329 ≈ 1.58 s，64 次掃描約 101 s。雅基諾光闌：R = 4000/2 = 2000，Ω = 2π/2000 = 3.14×10⁻³ sr，θ = √(Ω/π) = 0.0316 rad，焦距 100 mm 下光闌直徑 6.3 mm；光闌引起的刻度偏移 −θ²/4 = −2.5×10⁻⁴，在 2849.5 cm⁻¹ 為 −0.71 cm⁻¹，由有效雷射波數校正吸收。雜訊：若 32 次掃描的 100% 線均方根為 1×10⁻⁴，64 次約 7.1×10⁻⁵，吸光度雜訊 ≈ 0.434×7.1×10⁻⁵ ≈ 3.1×10⁻⁵ AU，三倍偵測極限約 9×10⁻⁵ AU。所有數值皆為教學假設，不代表任何機型規格。~Measurement-planning exercise: target resolution 2 cm⁻¹, range 4000–400 cm⁻¹, KBr/Ge beamsplitter, DTGS detector. The maximum path difference is Δ_max = 1/2 = 0.5 cm, mirror travel 2.5 mm; a 632.8 nm sampling interval (every second zero crossing) gives a 7899 cm⁻¹ Nyquist limit, N = 0.5/632.8×10⁻⁷ ≈ 7900 points per side, about 15800 double-sided, zero-filled to 32768 for the FFT. At a path-difference velocity of 0.6329 cm/s one double-sided scan takes 2×0.5/0.6329 ≈ 1.58 s and 64 scans about 101 s. Jacquinot stop: R = 4000/2 = 2000, Ω = 2π/2000 = 3.14×10⁻³ sr, θ = √(Ω/π) = 0.0316 rad, stop diameter 6.3 mm at 100 mm focal length; the aperture-induced scale shift is −θ²/4 = −2.5×10⁻⁴, i.e. −0.71 cm⁻¹ at 2849.5 cm⁻¹, absorbed by the effective-laser-wavenumber calibration. Noise: if the 32-scan 100% line RMS is 1×10⁻⁴, 64 scans give about 7.1×10⁻⁵, an absorbance noise of ≈ 0.434×7.1×10⁻⁵ ≈ 3.1×10⁻⁵ AU and a three-sigma detection limit near 9×10⁻⁵ AU. All values are teaching assumptions, not any model's specification.",
+  "history": "麥克森在 1880 年代建立干涉儀並用它分析譜線的精細結構，但把干涉圖轉成光譜需要大量計算；直到 1949 年費爾蓋特指出多工優勢、1954 年雅基諾指出通量優勢，以及 1965 年 Cooley–Tukey 快速傅立葉轉換問世，FTIR 才在 1960 年代末由 Digilab 等公司商品化。1970–80 年代以氦氖雷射取樣與迷你電腦為基礎的桌上型儀器讓 FTIR 取代色散式紅外光譜儀，成為今日化學、材料與製藥實驗室的標準設備；本課只重建公開的儀器原理與驗證方法。~Michelson built his interferometer in the 1880s and used it to analyse spectral fine structure, but turning interferograms into spectra demanded heavy computation; only after Fellgett identified the multiplex advantage in 1949, Jacquinot the throughput advantage in 1954, and the Cooley–Tukey fast Fourier transform appeared in 1965 did companies such as Digilab commercialise FTIR in the late 1960s. Bench-top instruments built on HeNe-laser sampling and minicomputers in the 1970s and 1980s displaced dispersive infrared spectrometers, making FTIR standard equipment in chemistry, materials and pharmaceutical laboratories; this course reconstructs only public instrument principles and verification methods.",
+  "place": {
+    "name": "NIST 蓋瑟斯堡（SRM 1921b 標準物質）~NIST Gaithersburg (SRM 1921b standard reference material)",
+    "country": "美國~United States",
+    "lat": 39.13,
+    "lng": -77.216,
+    "query": "NIST Gaithersburg Maryland"
+  },
+  "sources": [
+    {
+      "key": "thermo-ftir-intro-tn50674",
+      "title": "Thermo Fisher Scientific：FTIR 光譜儀簡介技術說明（TN50674）",
+      "titleEn": "Thermo Fisher Scientific: Introduction to FTIR spectroscopy, technical note TN50674",
+      "publisher": "Thermo Fisher Scientific",
+      "url": "https://assets.thermofisher.com/TFS-Assets/CAD/Technical-Notes/tn-50674-ftir-fourier-transform-infrared-spectrometer-tn50674-en.pdf",
+      "sourceType": "primary",
+      "scope": "說明干涉儀、干涉圖、傅立葉轉換與 FTIR 相對於色散式儀器的優勢；為公開教學文件，不含任何機型的內部設計。",
+      "scopeEn": "Explains the interferometer, the interferogram, the Fourier transform and the advantages of FTIR over dispersive instruments; a public tutorial document without internal design details of any model."
+    },
+    {
+      "key": "bruker-ftir-routine",
+      "title": "Bruker：FT-IR 例行光譜儀產品頁",
+      "titleEn": "Bruker: FT-IR routine spectrometers",
+      "publisher": "Bruker",
+      "url": "https://www.bruker.com/en/products-and-solutions/infrared-and-raman/ft-ir-routine-spectrometer.html",
+      "sourceType": "primary",
+      "scope": "商用 FT-IR 光譜儀的公開產品分類與功能說明；課程數值為教學假設，不引用其規格。",
+      "scopeEn": "Public product classification and feature description of commercial FT-IR spectrometers; course numbers are teaching assumptions and do not quote its specifications."
+    },
+    {
+      "key": "nist-srm-1921b",
+      "title": "NIST：SRM 1921b 聚苯乙烯紅外穿透波長標準證書",
+      "titleEn": "NIST: SRM 1921b infrared transmission wavelength standard (polystyrene) certificate",
+      "publisher": "National Institute of Standards and Technology",
+      "url": "https://tsapps.nist.gov/srmext/certificates/1921b.pdf",
+      "sourceType": "primary",
+      "scope": "FTIR 波數軸校正用聚苯乙烯薄膜的認證峰位與使用條件；本課以其作為波數校正與驗收的參考物質。",
+      "scopeEn": "Certified peak positions and conditions of use for the polystyrene film used to calibrate FTIR wavenumber axes; the course uses it as the reference material for calibration and acceptance."
+    },
+    {
+      "key": "jasco-ir-spectrometer-fundamentals",
+      "title": "JASCO 學習中心：FTIR 光譜學基礎—紅外光譜儀",
+      "titleEn": "JASCO Learning Center: Fundamentals of FTIR spectroscopy, the IR spectrometer",
+      "publisher": "JASCO Corporation",
+      "url": "https://jascoinc.com/learning-center/theory/spectroscopy/fundamentals-ftir-spectroscopy/ir-spectrometer/",
+      "sourceType": "primary",
+      "scope": "說明光源、分光鏡、動鏡、偵測器等 FTIR 光譜儀主要元件的功能；為廠商公開教材。",
+      "scopeEn": "Describes the function of the main FTIR components such as source, beamsplitter, moving mirror and detector; a public vendor tutorial."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "賽默飛世爾科技",
+      "nameEn": "Thermo Fisher Scientific",
+      "business": "分析儀器與生命科學設備製造商，Nicolet 系列 FTIR 光譜儀的生產者。",
+      "businessEn": "Analytical-instrument and life-science equipment manufacturer; maker of the Nicolet family of FTIR spectrometers.",
+      "url": "https://www.thermofisher.com/",
+      "investorUrl": "https://ir.thermofisher.com/",
+      "security": {"symbol": "TMO", "exchange": "NYSE", "currency": "USD"},
+      "role": "FTIR 儀器原理教材與商用光譜儀供應",
+      "roleEn": "Public FTIR tutorial material and supply of commercial spectrometers"
+    },
+    {
+      "name": "布魯克",
+      "nameEn": "Bruker",
+      "business": "科學儀器公司，產品涵蓋 FT-IR、拉曼、核磁共振與 X 光分析儀器。",
+      "businessEn": "Scientific-instrument company with FT-IR, Raman, NMR and X-ray analytical products.",
+      "url": "https://www.bruker.com/",
+      "investorUrl": "https://ir.bruker.com/",
+      "security": {"symbol": "BRKR", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "研究級與例行 FT-IR 光譜儀的公開產品資訊",
+      "roleEn": "Public product information on research-grade and routine FT-IR spectrometers"
+    },
+    {
+      "name": "島津製作所",
+      "nameEn": "Shimadzu Corporation",
+      "business": "分析與量測儀器製造商，產品包括 FTIR、紫外可見光譜儀與層析質譜系統。",
+      "businessEn": "Analytical and measuring-instrument manufacturer with FTIR, UV-Vis and chromatography–mass-spectrometry systems.",
+      "url": "https://www.shimadzu.com/an/products/molecular-spectroscopy/ftir",
+      "investorUrl": "",
+      "security": {"symbol": "7701", "exchange": "TSE", "currency": "JPY"},
+      "role": "FTIR 光譜儀與附件的公開產品資訊",
+      "roleEn": "Public product information on FTIR spectrometers and accessories"
+    },
+    {
+      "name": "日本分光",
+      "nameEn": "JASCO Corporation",
+      "business": "光譜儀器製造商，產品涵蓋 FTIR、圓二色光譜儀與拉曼顯微鏡，並提供公開光譜學教材。",
+      "businessEn": "Spectroscopy-instrument manufacturer with FTIR, circular-dichroism and Raman microscopes, publishing public spectroscopy tutorials.",
+      "url": "https://jascoinc.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "FTIR 元件功能與原理的公開教材",
+      "roleEn": "Public tutorials on FTIR component functions and principles"
+    }
+  ],
+  "related": ["a430", "a439"],
+  "architectureNodes": [["碳化矽紅外光源", "Silicon-carbide infrared source"], ["麥克森干涉儀與 KBr/Ge 分光鏡", "Michelson interferometer with KBr/Ge beamsplitter"], ["氦氖參考雷射與零交越取樣", "HeNe reference laser and zero-crossing sampling"], ["吹掃樣品室與附件", "Purged sample compartment and accessories"], ["DTGS/MCT 偵測器", "DTGS/MCT detector"], ["ADC 與傅立葉轉換處理", "ADC and Fourier-transform processing"]],
+  "architectureEdges": [[0, 1], [1, 3], [3, 4], [4, 5], [2, 1], [2, 5]]
+}

@@ -96,7 +96,75 @@ function hiddenOrExcluded(element, attributes = false) {
   return false;
 }
 
-export function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, onStatus = () => {} } = {}) {
+/* V12: bundled UI dictionaries (i18n/<lang>.js, human-reviewed machine
+ * translations of the interface chrome) and Chrome's on-device Translator API
+ * for course content. Neither sends page text to this site's servers. */
+const dictionaryPromises = new Map();
+export function loadDictionary(language) {
+  const root = globalThis.window || globalThis;
+  if (!language || language === 'en' || language === 'zh-TW') return Promise.resolve(null);
+  if (root.MG_I18N?.[language]) return Promise.resolve(root.MG_I18N[language]);
+  if (!/^[a-z]{2,3}(?:-[A-Z]{2})?$/.test(language) || typeof root.document?.createElement !== 'function' || typeof root.document?.head?.appendChild !== 'function') return Promise.resolve(null);
+  if (!dictionaryPromises.has(language)) dictionaryPromises.set(language, new Promise(resolve => {
+    const script = root.document.createElement('script');
+    script.src = 'i18n/' + language + '.js'; script.async = true;
+    script.onload = () => resolve(root.MG_I18N?.[language] || null);
+    script.onerror = () => { dictionaryPromises.delete(language); resolve(null); };
+    setTimeout(() => resolve(root.MG_I18N?.[language] || null), 8000);
+    try { root.document.head.appendChild(script); } catch { resolve(null); }
+  }));
+  return dictionaryPromises.get(language);
+}
+const ARROWS = /^(.*?)(\s*[↗↘→←↓↑]+)$/u;
+// Numbers may be written with locale digits (Arabic-Indic, Persian, Devanagari, Bengali, Myanmar)
+// and grouping marks; they all map to the {n} placeholder of the dictionary keys.
+const DIGITS = '0-9\u0660-\u0669\u06F0-\u06F9\u0966-\u096F\u09E6-\u09EF\u1040-\u1049';
+const NUMBER = new RegExp(`[${DIGITS}](?:[${DIGITS},.\u066B\u066C]|[\u202F\u00A0\u2019'](?=[${DIGITS}]))*`, 'g');
+/** Look up a rendered string in a UI dictionary (exact, arrow suffix, number template, ' · ' parts). */
+export function loadedDictionary(language) { return (globalThis.window || globalThis).MG_I18N?.[language] || null; }
+export function lookupDictionary(dict, source) {
+  if (!dict || typeof source !== 'string') return undefined;
+  const strings = dict.strings || dict;
+  const one = text => {
+    const trimmed = text.trim();
+    if (!trimmed) return text;
+    if (Object.prototype.hasOwnProperty.call(strings, trimmed)) return strings[trimmed];
+    const arrow = trimmed.match(ARROWS);
+    if (arrow) { const head = one(arrow[1]); if (head !== undefined) return head + arrow[2]; }
+    const numbers = trimmed.match(NUMBER);
+    if (numbers) {
+      const key = trimmed.replace(NUMBER, '{n}');
+      if (Object.prototype.hasOwnProperty.call(strings, key)) { let i = 0; return strings[key].replace(/\{n\}/g, () => numbers[i++] ?? ''); }
+    }
+    return undefined;
+  };
+  const whole = one(source);
+  if (whole !== undefined) return whole;
+  if (source.includes(' · ')) {
+    const parts = source.split(' · ');
+    const out = parts.map(part => one(part));
+    if (out.some(v => v !== undefined)) return parts.map((part, i) => out[i] ?? part).join(' · ');
+  }
+  return undefined;
+}
+const translators = new Map();
+/** On-device translation (Chrome Translator API). Returns null when unavailable. */
+export async function onDeviceTranslator(language, {source = 'en', userActivated = false} = {}) {
+  const api = globalThis.Translator;
+  if (!api?.create || !language || language === source) return null;
+  const target = language === 'zh-CN' ? 'zh' : language === 'zh-TW' ? 'zh-Hant' : language === 'fil' ? 'tl' : language;
+  const key = source + '>' + target;
+  if (translators.has(key)) return translators.get(key);
+  try {
+    const availability = await api.availability?.({sourceLanguage: source, targetLanguage: target});
+    if (availability === 'unavailable' || availability === 'no') return null;
+    if (availability !== 'available' && availability !== 'readily' && !userActivated && !globalThis.navigator?.userActivation?.isActive) return null;
+    const promise = api.create({sourceLanguage: source, targetLanguage: target});
+    translators.set(key, promise.catch(() => { translators.delete(key); return null; }));
+    return translators.get(key);
+  } catch { return null; }
+}
+export function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
   const attributeSources = new WeakMap();
   const cache = new Map();
@@ -191,6 +259,18 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
       const value = get(keyFor(language, source));
       if (value !== undefined) translations.set(source, value);
     }
+    let dictionary = null;
+    if (!core) {
+      // Never block on the dictionary: use it when loaded, otherwise load it in
+      // the background and re-apply once it arrives.
+      dictionary = loadedDictionary(language);
+      if (!dictionary) loadDictionary(language).then(loaded => { if (loaded) try { onDictionary(language); } catch {} });
+      if (dictionary) for (const source of texts) {
+        if (translations.has(source)) continue;
+        const value = lookupDictionary(dictionary, source);
+        if (value !== undefined) translations.set(source, value);
+      }
+    }
     const cached = translations.size;
     let failed = 0;
     const cancelled = () => token !== generation;
@@ -223,7 +303,21 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
     if (core) return report('core');
     const missing = texts.filter(source => !translations.has(source));
     if (!missing.length) return report(cached ? 'cached' : 'translated');
-    if (!getAIAvailable()) return report('unavailable', 'Translation requires a signed-in account and a configured AI service. Cached translations remain available.');
+    const local = globalThis.Translator ? await onDeviceTranslator(language) : null;
+    if (local && !cancelled()) {
+      report('translating');
+      for (const source of missing) {
+        if (cancelled()) return { ...latestStatus, state: 'cancelled' };
+        try {
+          const value = String(await local.translate(source) || '').trim();
+          if (value) { translations.set(source, value); put(keyFor(language, source), value); }
+        } catch { failed++; }
+        if (translations.size % 20 === 0) write();
+      }
+      persist(); write();
+      return report(failed ? 'partial' : 'translated');
+    }
+    if (!getAIAvailable()) return report(dictionary ? 'dictionary' : 'unavailable', dictionary ? 'Interface translated with the bundled dictionary. Course content stays in English unless this browser offers on-device translation (Chrome) or the site owner configures a translation service.' : 'Translation requires a signed-in account and a configured AI service. Cached translations remain available.');
 
     report('translating');
     let cursor = 0;

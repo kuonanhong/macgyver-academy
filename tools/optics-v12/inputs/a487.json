@@ -1,0 +1,161 @@
+{
+  "id": "a487",
+  "title": "歐洲同步輻射設施 ESRF~European Synchrotron Radiation Facility",
+  "discipline": "optics-facilities-accelerators",
+  "family": "accelerator",
+  "focus": "6 GeV HMBA 儲存環的發射度、亮度與軌道穩定工程~Emittance, brilliance and orbit-stability engineering of the 6 GeV HMBA storage ring",
+  "summary": "從 6 GeV 電子在 844 m 儲存環中輻射的臨界能量與功率出發，理解 ESRF-EBS 為何以每單元 7 個彎轉磁鐵的混合多彎消色散（HMBA）晶格把水平發射度從約 4 nm·rad 壓到約 130 pm·rad，再把磁鐵、真空、束流位置監測、亮度計算與軌道回授整合成可驗收的光源工程紀錄。~Start from the critical energy and radiated power of 6 GeV electrons in the 844 m ring to see why ESRF-EBS uses a seven-bend hybrid multi-bend achromat (HMBA) lattice to cut horizontal emittance from about 4 nm·rad to about 130 pm·rad, then integrate magnets, vacuum, beam-position monitors, brilliance calculation and orbit feedback into an acceptable light-source engineering record.",
+  "units": [
+    {
+      "anchor": "6 GeV 儲存環與彎轉磁鐵輻射~6 GeV ring and bending-magnet radiation",
+      "title": "同步輻射的臨界能量與輻射功率~Critical energy and radiated power of synchrotron light",
+      "mechanism": "6 GeV 電子的勞侖茲因子 γ = E/mc² ≈ 11 742，在彎轉磁鐵中沿切線方向發出張角約 1/γ 的連續譜。臨界能量 ε_c 把輻射功率分成相等的兩半，由電子能量平方與磁場決定；每圈損失的能量 U₀ 正比於 E⁴/ρ，必須由 352.2 MHz 射頻腔每圈補回。ESRF-EBS 的儲存電流為 200 mA，所以射頻系統的功率預算直接由 U₀ 與電流的乘積決定，再加上插件磁鐵的額外損失。~A 6 GeV electron has Lorentz factor γ = E/mc² of about 11 742 and radiates a continuum into a cone of roughly 1/γ along its tangent in each bend. The critical energy ε_c splits the radiated power into two equal halves and is set by the square of the electron energy times the magnetic field; the energy lost per turn U₀ scales as E⁴/ρ and must be restored every turn by the 352.2 MHz RF cavities. With 200 mA stored, the RF power budget follows directly from U₀ times current, plus the extra loss in insertion devices.",
+      "model": "ε_c[keV] = 0.665·E²[GeV]·B[T]：E = 6 GeV、B = 0.86 T 時 ε_c = 0.665×36×0.86 ≈ 20.6 keV。每圈能量損失 U₀[keV] = 88.46·E⁴/ρ[m]，取等效彎轉半徑 ρ ≈ 45 m（教學假設）得 U₀ ≈ 88.46×1296/45 ≈ 2.55 MeV；200 mA 時同步輻射功率 P = U₀·I ≈ 2.55 MV×0.2 A ≈ 0.51 MW，未計插件磁鐵。~ε_c[keV] = 0.665·E²[GeV]·B[T]: at E = 6 GeV and B = 0.86 T, ε_c = 0.665×36×0.86 ≈ 20.6 keV. Energy loss per turn U₀[keV] = 88.46·E⁴/ρ[m]; with an effective bending radius ρ ≈ 45 m (teaching assumption) U₀ ≈ 88.46×1296/45 ≈ 2.55 MeV, so at 200 mA the radiated power is P = U₀·I ≈ 2.55 MV×0.2 A ≈ 0.51 MW before insertion devices.",
+      "verify": "從射頻系統讀出送入束流的功率，扣除腔壁損耗後與 U₀·I 比較；在彎轉磁鐵光束線以已知厚度的吸收片量穿透率曲線，反推光譜的臨界能量並與 0.665·E²·B 比較。兩者若同時吻合，表示能量與磁場的設定值一致。~Read the RF power delivered to the beam, subtract cavity wall losses and compare with U₀·I; on a bending-magnet beamline measure transmission through absorbers of known thickness, back out the spectral critical energy and compare with 0.665·E²·B. Agreement of both confirms that the energy and field settings are consistent.",
+      "failure": "若射頻電壓與功率餘裕只按裸晶格的 U₀ 設計，插件磁鐵關閉間隙後額外輻射損失讓同步相位漂移、射頻桶縮小，束流在高電流時被整團丟失。~If RF voltage and power margin are sized only for the bare-lattice U₀, closing insertion-device gaps adds radiation loss, the synchronous phase drifts, the RF bucket shrinks and the beam is lost at high current.",
+      "misconception": "提高電子能量只是讓光更亮，不會改變光譜形狀。~Raising electron energy only makes the light brighter; it does not change the spectrum."
+    },
+    {
+      "anchor": "HMBA 晶格單元（27 m，7 彎）~HMBA cell (27 m, seven bends)",
+      "title": "發射度標度律與混合多彎消色散~Emittance scaling and the hybrid multi-bend achromat",
+      "mechanism": "自然發射度來自量子激發與輻射阻尼的平衡，近似為 ε_x ≈ F·C_q·γ²·θ³，其中 θ 是單一彎轉磁鐵的偏轉角，F 由晶格型式決定。把 2π 切成更多、更弱的彎轉可以用 θ³ 壓低發射度：ESRF-EBS 以 32 個單元、每單元 7 個彎轉共 224 個取代舊 DBA 的 64 個。混合式設計在兩端以色散凸起放置六極磁鐵，兩組之間用 −I 轉換抵銷非線性，保留動態孔徑與注入效率。~Natural emittance is the balance between quantum excitation and radiation damping, approximately ε_x ≈ F·C_q·γ²·θ³, where θ is the deflection of one dipole and F depends on the lattice type. Splitting 2π into more, weaker bends lowers emittance through θ³: ESRF-EBS uses 32 cells with seven bends each, 224 in all, instead of the old double-bend achromat's 64. The hybrid design places sextupoles in dispersion bumps at both ends of the cell with a −I transformation between them so their nonlinearities cancel, preserving dynamic aperture and injection efficiency.",
+      "model": "C_q = 3.83×10⁻¹³ m，γ² ≈ 1.38×10⁸。舊 DBA 64 彎：θ = 98 mrad，F_DBA = 1/(4√15) = 0.0645，ε ≈ 3.2 nm·rad（實際約 4 nm）。新晶格 224 彎：θ = 28 mrad，(224/64)³ ≈ 43，純幾何標度給出約 93 pm·rad；理論最小 F_TME = 1/(12√15) 更低至約 25 pm，但設計值約 130 pm·rad，因為 HMBA 犧牲部分極限換取動態孔徑。~C_q = 3.83×10⁻¹³ m and γ² ≈ 1.38×10⁸. Old DBA with 64 bends: θ = 98 mrad, F_DBA = 1/(4√15) = 0.0645, ε ≈ 3.2 nm·rad (actual about 4 nm). New lattice with 224 bends: θ = 28 mrad and (224/64)³ ≈ 43, so pure scaling predicts about 93 pm·rad; the TME limit F = 1/(12√15) would give about 25 pm, but the design value is about 130 pm·rad because the HMBA trades part of that limit for dynamic aperture.",
+      "verify": "在彎轉光源用針孔相機或 X 光成像量束流截面，以 σ = √(εβ) 和 LOCO 擬合出的 β 函數反推發射度，與 ESRF 公布的 130 pm（水平）／10 pm（垂直）比較；同時量注入效率與動態孔徑（以踢束流找存活振幅），確認六極配置沒有把孔徑吃掉。~Image the beam at a bend source with a pinhole camera or X-ray imager, convert σ = √(εβ) with the LOCO-fitted β function into emittance and compare with the published ESRF values of 130 pm horizontal and 10 pm vertical; also measure injection efficiency and dynamic aperture by kicking the beam and finding the surviving amplitude, confirming that the sextupole scheme has not consumed the aperture.",
+      "failure": "若色品六極磁鐵放在色散很小的位置，所需強度暴增，非線性共振把動態孔徑壓到毫米級，注入效率與 Touschek 壽命一起崩潰，即使線性晶格的發射度完全合乎設計。~If chromatic sextupoles sit where dispersion is tiny their required strength explodes, nonlinear resonances squeeze the dynamic aperture to millimetres, and injection efficiency and Touschek lifetime collapse together even though the linear lattice meets its emittance design.",
+      "misconception": "把彎轉磁鐵切得越多越細，發射度就能無限制下降。~Slicing the bends ever finer lowers emittance without limit."
+    },
+    {
+      "anchor": "高梯度四極磁鐵與永磁彎轉~High-gradient quadrupoles and permanent-magnet bends",
+      "title": "磁鐵設計、梯度與對準公差~Magnet design, gradient and alignment tolerances",
+      "mechanism": "每個 27 m 單元有 31 個磁鐵：小孔徑、梯度達 90 T/m 等級的四極磁鐵，不耗電的永磁縱向梯度彎轉磁鐵，以及同時彎轉與聚焦的組合功能磁鐵。強聚焦意味著四極磁鐵的橫向位移會給束流一個踢角，並在全環被放大成閉軌畸變；因此磁鐵先在樑架上以 50 µm 等級互相對準，再以束流為基準微調。~Each 27 m cell carries 31 magnets: small-bore quadrupoles with gradients of order 90 T/m, permanent-magnet longitudinal-gradient dipoles that draw no power, and combined-function magnets that bend and focus at once. Strong focusing means a transverse offset of a quadrupole kicks the beam, and the kick is amplified around the ring into closed-orbit distortion; magnets are therefore aligned to each other on girders at the 50 µm level and then trimmed with beam-based alignment.",
+      "model": "聚焦強度 k = 0.2998·G/E = 0.2998×90/6 ≈ 4.5 m⁻²，長 0.3 m 的四極焦距 f = 1/(kL) ≈ 0.74 m。四極偏移 Δ = 50 µm 產生踢角 θ = kLΔ = 1.35×5×10⁻⁵ ≈ 67 µrad；閉軌畸變 Δx ≈ θ√(β_q β)/(2|sin πν|)，取 β_q = β = 5 m、分數調諧 0.17（教學假設）得 Δx ≈ 67 µrad×5 m/(2×0.51) ≈ 0.33 mm，遠大於束流尺寸。~Focusing strength k = 0.2998·G/E = 0.2998×90/6 ≈ 4.5 m⁻², so a 0.3 m quadrupole has focal length f = 1/(kL) ≈ 0.74 m. An offset Δ = 50 µm gives a kick θ = kLΔ = 1.35×5×10⁻⁵ ≈ 67 µrad; the closed-orbit distortion Δx ≈ θ√(β_q β)/(2|sin πν|) with β_q = β = 5 m and fractional tune 0.17 (teaching assumptions) is Δx ≈ 67 µrad×5 m/(2×0.51) ≈ 0.33 mm, far larger than the beam.",
+      "verify": "以旋轉線圈或拉線量測台量每顆磁鐵的梯度與諧波（高階項相對主場低於 10⁻⁴），用雷射追蹤儀把磁鐵中心標定到樑架基準；裝機後做束流對準（BBA）：改變單顆四極強度看軌道變化，找出束流穿過磁心的位置，再比較軌道響應矩陣與模型。~Measure each magnet's gradient and harmonics on a rotating-coil or stretched-wire bench (higher multipoles below 10⁻⁴ of the main field), fiducialise magnet centres to girder references with a laser tracker; after installation run beam-based alignment by varying one quadrupole and watching the orbit to find where the beam passes its centre, then compare the orbit response matrix with the model.",
+      "failure": "永磁彎轉磁鐵的 NdFeB 剩磁隨溫度約 −0.1 %/K 變化，隧道溫度漂移 1 K 就改變 0.1% 的彎轉場，束流能量與軌道跟著漂移；若沒有溫度補償分流或低溫係數材料，軌道回授會把這個錯誤推給校正磁鐵。~NdFeB remanence in permanent-magnet bends changes by about −0.1 %/K, so a 1 K tunnel drift changes the bending field by 0.1% and shifts beam energy and orbit; without temperature-compensating shunts or low-coefficient material the orbit feedback simply pushes that error into the correctors.",
+      "misconception": "永磁彎轉磁鐵不用電，所以它的場強永遠不會變。~Permanent-magnet bends draw no power, so their field never changes."
+    },
+    {
+      "anchor": "NEG 鍍膜真空腔（每單元 14 段）~NEG-coated vacuum chambers (14 per cell)",
+      "title": "小口徑真空腔、分布抽氣與阻抗~Small-aperture chambers, distributed pumping and impedance",
+      "mechanism": "緊湊的強磁鐵迫使真空腔內徑縮到 20 mm 等級。分子流狀態下細長管的導流量正比於 d³/L，集中式幫浦抽不到腔體中段，所以 EBS 腔體內壁鍍 TiZrV 非蒸發吸氣劑（NEG），把整段腔壁變成分布式幫浦並降低光致脫附。小孔徑同時提高電阻壁阻抗（正比於 1/b³），因此腔體用高導電材料並把所有截面變化做成平滑的射頻過渡。~Compact strong magnets force the chamber bore down to the 20 mm class. In molecular flow the conductance of a long tube scales as d³/L, so lumped pumps cannot reach the middle of a chamber; EBS chambers are therefore coated inside with TiZrV non-evaporable getter (NEG), turning the whole wall into a distributed pump and lowering photon-stimulated desorption. The small bore also raises resistive-wall impedance (proportional to 1/b³), so chambers use high-conductivity material and every cross-section change is made a smooth RF transition.",
+      "model": "空氣、20 °C 的長管導流量 C ≈ 12.1·d³/L L/s（d、L 以 cm 計）：d = 2 cm、L = 100 cm 得 C ≈ 12.1×8/100 ≈ 0.97 L/s，即使末端接 100 L/s 幫浦，1 m 外的有效抽速仍不到 1 L/s；若每公尺氣載 q = 1×10⁻⁹ mbar·L/s，壓力 P ≈ q/C ≈ 1×10⁻⁹ mbar，只有分布式抽氣才能把整段壓到 10⁻⁹ mbar 以下。~For air at 20 °C a long tube has conductance C ≈ 12.1·d³/L L/s with d and L in cm: d = 2 cm and L = 100 cm give C ≈ 12.1×8/100 ≈ 0.97 L/s, so even a 100 L/s pump at the end leaves under 1 L/s effective speed 1 m away; with a gas load q = 1×10⁻⁹ mbar·L/s per metre the pressure is P ≈ q/C ≈ 1×10⁻⁹ mbar, and only distributed pumping brings the whole length below 10⁻⁹ mbar.",
+      "verify": "沿單元以真空計與殘氣分析儀做壓力分布圖，比較有束流與無束流的動態壓力；記錄壓力隨累積束流劑量（A·h）的老化曲線，確認光致脫附係數持續下降；NEG 活化（約 180 到 250 °C）後量抽速；高電流運轉時監測腔體溫度判斷阻抗加熱。~Map pressure along the cell with gauges and a residual-gas analyser, comparing dynamic pressure with and without beam; log the conditioning curve of pressure versus accumulated beam dose (A·h) to confirm that the photon-stimulated desorption yield keeps falling; measure pumping speed after NEG activation at about 180 to 250 °C; and monitor chamber temperature at high current to detect impedance heating.",
+      "failure": "破真空後未重新活化的 NEG 已飽和，束流一來壓力隨電流上升，束流-氣體壽命掉到幾小時；腔體接頭的一個台階或縫隙會激發尾場，使束團加熱並引發不穩定，高電流無法達成。~NEG left unreactivated after a vent is saturated, so pressure rises with current once beam returns and beam-gas lifetime drops to a few hours; a single step or gap at a chamber joint excites wakefields that heat the bunches and drive instabilities, blocking high-current operation.",
+      "misconception": "真空腔越小，體積越小，所以越容易抽到好真空。~A smaller chamber is easier to pump because its volume is smaller."
+    },
+    {
+      "anchor": "束流位置監測器與快速軌道回授~BPMs and fast orbit feedback",
+      "title": "束流尺寸、軌道穩定度與回授~Beam size, orbit stability and feedback",
+      "mechanism": "發射度 130 pm×10 pm 代表直線段內的束流只有數十微米乘 5 µm，使用者要求光源點位置與角度的穩定度約為尺寸與發散角的 10%。每單元 10 個、全環 320 個鈕扣式 BPM 以次微米解析度把軌道送進快速軌道回授，驅動校正磁鐵抑制地面振動、樑架共振與插件磁鐵開合造成的軌道擾動，頻寬需達數百赫茲。~Emittances of 130 pm by 10 pm mean the beam in a straight is only tens of micrometres by 5 µm, and users require source position and angle stability of about 10% of size and divergence. Ten button BPMs per cell, 320 around the ring, feed sub-micrometre orbit readings into a fast orbit feedback that drives correctors to suppress ground motion, girder resonances and the orbit kicks from insertion-device gap changes, with a bandwidth of hundreds of hertz.",
+      "model": "直線段取 β_x = 6.9 m、β_y = 2.7 m（教學假設）：σ_x = √(130 pm×6.9 m) ≈ 30 µm，σ_x' = √(130 pm/6.9 m) ≈ 4.3 µrad；σ_y = √(10 pm×2.7 m) ≈ 5.2 µm，σ_y' ≈ 1.9 µrad。10% 穩定度要求位置 3 µm／0.5 µm、角度 0.4 µrad／0.2 µrad，因此 BPM 在回授頻寬內的雜訊必須低於約 0.3 µm rms。~Take β_x = 6.9 m and β_y = 2.7 m in the straight (teaching assumptions): σ_x = √(130 pm×6.9 m) ≈ 30 µm, σ_x' = √(130 pm/6.9 m) ≈ 4.3 µrad; σ_y = √(10 pm×2.7 m) ≈ 5.2 µm, σ_y' ≈ 1.9 µrad. A 10% stability requirement means 3 µm/0.5 µm in position and 0.4 µrad/0.2 µrad in angle, so BPM noise within the feedback bandwidth must stay below about 0.3 µm rms.",
+      "verify": "用三顆相鄰 BPM 的相關法求單顆解析度；比較回授開與關時軌道的頻譜，確認 0.1 到 100 Hz 的積分位移下降；在光束線用光子 BPM 獨立確認光源角度；以頂注運轉連續 24 小時記錄長期漂移，並把量到的軌道響應矩陣與模型比對。~Obtain single-BPM resolution from the correlation of three neighbouring BPMs; compare orbit spectra with feedback on and off to confirm that integrated motion from 0.1 to 100 Hz falls; confirm source angle independently with photon BPMs on the beamlines; log long-term drift over 24 h of top-up operation and compare the measured orbit response matrix with the model.",
+      "failure": "BPM 鈕扣與支架的熱漂移達每 K 數百奈米，回授會忠實地把束流鎖到一個漂走的假基準上，電子 BPM 讀零而光束線看到光源點慢慢移動。~Thermal drift of BPM buttons and supports reaches hundreds of nanometres per kelvin, so the feedback faithfully locks the beam to a drifting false reference: electron BPMs read zero while the beamline watches the source creep.",
+      "misconception": "軌道回授開著且 BPM 讀值為零，光源點就一定沒有移動。~With feedback on and BPMs reading zero, the source point cannot have moved."
+    },
+    {
+      "anchor": "亮度計算表（通量除以相空間）~Brilliance table (flux over phase space)",
+      "title": "亮度、同調分率與繞射極限~Brilliance, coherent fraction and the diffraction limit",
+      "mechanism": "亮度 B = F/(4π²·Σx·Σy·Σx'·Σy')，F 是 0.1% 頻寬內的通量，Σ 由電子束尺寸、發散角與單電子輻射的繞射項 σ_r = √(2λL)/4π、σ_r' = √(λ/2L) 平方相加而成。當發射度小於 λ/4π 時光源進入繞射極限：在 1 Å 這個值約 8 pm，EBS 的垂直 10 pm 幾乎達到，水平 130 pm 則仍由電子束主導，這決定了同調分率與聚焦極限。~Brilliance is B = F/(4π²·Σx·Σy·Σx'·Σy'), where F is the flux in 0.1% bandwidth and each Σ adds in quadrature the electron size or divergence and the single-electron diffraction terms σ_r = √(2λL)/4π and σ_r' = √(λ/2L). When emittance falls below λ/4π the source becomes diffraction limited: at 1 Å that is about 8 pm, which the 10 pm vertical emittance of EBS nearly reaches while the 130 pm horizontal is still electron dominated, and that sets the coherent fraction and focusing limit.",
+      "model": "取一支長 2 m、週期 λ_u = 18 mm、偏轉參數 K = 1 的波盪器裝在 6 GeV 儲存環：基頻波長 λ₁ = λ_u(1+K²/2)/(2γ²) ≈ 0.98 Å（光子能量 12.7 keV）。中心錐通量 F ≈ 1.43×10¹⁴·N·Q₁(K)·I = 1.43×10¹⁴×111×0.55×0.2 ≈ 1.75×10¹⁵ ph/s/0.1%BW；繞射項 σ_r ≈ 1.6 µm、σ_r' ≈ 4.9 µrad，與電子束合成後 Σx ≈ 30 µm、Σy ≈ 5.4 µm、Σx' ≈ 6.6 µrad、Σy' ≈ 5.3 µrad，代入亮度公式得 B ≈ 7.8×10²¹ ph/s/mm²/mrad²/0.1%BW。~A 2 m undulator with λ_u = 18 mm and K = 1 at 6 GeV gives λ₁ = λ_u(1+K²/2)/(2γ²) ≈ 0.98 Å (12.7 keV). Central-cone flux F ≈ 1.43×10¹⁴·N·Q₁(K)·I = 1.43×10¹⁴×111×0.55×0.2 ≈ 1.75×10¹⁵ ph/s/0.1%BW; with σ_r ≈ 1.6 µm and σ_r' ≈ 4.9 µrad the combined values are Σx ≈ 30 µm, Σy ≈ 5.4 µm, Σx' ≈ 6.6 µrad, Σy' ≈ 5.3 µrad, so B ≈ 7.8×10²¹ ph/s/mm²/mrad²/0.1%BW.",
+      "verify": "用校正過的光二極體或量熱計量通過已知針孔的絕對通量，與 F 比較；以狹縫的 Fresnel 繞射或楊氏雙狹縫的條紋可見度量光源尺寸與橫向同調長度，反推 Σ；把計算的亮度與 ESRF 公布的升級前後比值對照，區分發射度、波盪器長度與電流各自的貢獻。~Measure absolute flux through a known pinhole with a calibrated photodiode or calorimeter and compare with F; measure source size and transverse coherence length from Fresnel diffraction of a slit or the fringe visibility of a Young double slit and back out Σ; compare the computed brilliance with the published ESRF before/after ratio to separate the contributions of emittance, undulator length and current.",
+      "failure": "樑架滾轉或偏四極誤差讓耦合漂移，垂直發射度從 10 pm 升到 50 pm，Σy 加倍而亮度減半，通量計卻完全看不出異常，使用者只覺得聚焦斑變大。~Girder roll or skew-quadrupole errors let coupling drift so vertical emittance rises from 10 pm to 50 pm; Σy doubles and brilliance halves while the flux monitor shows nothing wrong, and users only notice a larger focal spot.",
+      "misconception": "亮度就是通量，光子數越多亮度一定越高。~Brilliance is just flux; more photons always means more brilliance."
+    },
+    {
+      "anchor": "對準網、溫控與地面振動~Alignment network, thermal control and ground vibration",
+      "title": "全環對準、熱漂移與振動整合~Ring-wide alignment, thermal drift and vibration integration",
+      "mechanism": "844 m 的環由 32 個單元的樑架組成，先用雷射追蹤儀與靜水壓水平系統建立全環網，再把相鄰磁鐵的相對誤差壓到 50 µm 等級；對束流而言相鄰元件的平滑度比絕對座標更重要。隧道溫度、冷卻水與地面振動都會透過樑架改變磁鐵位置，而磁鐵位置的誤差經閉軌放大後進入光源點，所以熱控、樑架剛性與回授頻寬必須一起設計。~The 844 m ring is assembled from the girders of 32 cells: a laser tracker and hydrostatic levelling build the ring-wide network, then neighbouring magnets are aligned to each other at the 50 µm level, because for the beam the smoothness between neighbours matters more than absolute coordinates. Tunnel temperature, cooling water and ground vibration all move magnets through the girders, and magnet errors reach the source point amplified by the closed orbit, so thermal control, girder stiffness and feedback bandwidth must be designed together.",
+      "model": "5 m 鋼製樑架、α = 12 ppm/K：溫度變化 0.1 K 使長度變 6 µm，1 K 變 60 µm，已超過 50 µm 的相鄰對準規格，故隧道需控溫到 ±0.1 K。地面沉降改變周長時射頻頻率必須跟著走：ΔL = 1 mm 對 843.977 m 得 Δf = f·ΔL/L = 352.2 MHz×1.18×10⁻⁶ ≈ 417 Hz，否則束流走到離能軌道。~A 5 m steel girder with α = 12 ppm/K changes length by 6 µm for 0.1 K and by 60 µm for 1 K, already beyond the 50 µm neighbour alignment specification, so the tunnel is held to ±0.1 K. When ground settlement changes the circumference the RF frequency must follow: ΔL = 1 mm on 843.977 m gives Δf = f·ΔL/L = 352.2 MHz×1.18×10⁻⁶ ≈ 417 Hz, otherwise the beam moves to an off-energy orbit.",
+      "verify": "定期做對準網閉合差檢查與靜水壓水平紀錄；在樑架與地板同時放地震計取得傳遞函數，確認樑架第一共振高於地面振動主要頻段；以束流量測：記錄隧道溫度激變期間的軌道與射頻頻率變化，並由軌道響應判斷哪一段樑架移動。~Check alignment-network closure and hydrostatic-levelling logs regularly; place seismometers on girder and floor simultaneously to get the transfer function and confirm that the first girder resonance lies above the main ground-motion band; with beam, log orbit and RF-frequency changes during tunnel temperature excursions and use the orbit response to identify which girder moved.",
+      "failure": "若把對準當成一次性的安裝工作，季節性地面沉降與冷卻水溫變化會在幾個月內讓軌道校正磁鐵的強度逐漸飽和，回授失去餘裕，最後需要停機重新對準整段。~Treating alignment as a one-time installation task lets seasonal ground settlement and cooling-water temperature changes saturate the orbit correctors within months, the feedback loses margin, and a shutdown to re-align a whole section becomes necessary.",
+      "misconception": "儲存環對準一次完成後就永久有效。~Once the ring is aligned, it stays aligned."
+    },
+    {
+      "anchor": "調試里程碑與驗收報告~Commissioning milestones and acceptance record",
+      "title": "調試、頂注運轉與性能驗收~Commissioning, top-up operation and performance acceptance",
+      "mechanism": "升級後的調試分階段推進：第一圈、儲存束流、以軌道響應矩陣（LOCO）修正線性晶格、耦合校正、電流爬到 200 mA、壽命與注入效率，最後交給使用者。驗收不是單一指標，而是發射度、壽命、軌道穩定度、注入效率與光束線通量比值的整組紀錄；頂注運轉把電流維持在 ±1% 內，使光學元件的熱負載恆定。~Post-upgrade commissioning proceeds in stages: first turn, stored beam, linear-lattice correction from the orbit response matrix (LOCO), coupling correction, current ramp to 200 mA, lifetime and injection efficiency, then user delivery. Acceptance is not one number but a set of records: emittance, lifetime, orbit stability, injection efficiency and beamline flux ratios; top-up operation keeps the current within ±1% so that the heat load on optics stays constant.",
+      "model": "均勻填充 200 mA、壽命 25 h：衰減率 dI/dt = I/τ = 200 mA/25 h = 8 mA/h。要把電流維持在 ±0.5%（1 mA）內，每 7.5 分鐘需補注 1 mA；注入效率 90% 時每次需 1.1 mA 的注入束流。4 束團模式 40 mA 壽命只有 5 h，衰減率同為 8 mA/h，但相對變化大 5 倍，頂注頻率需相應提高。~With uniform filling at 200 mA and a 25 h lifetime, the decay rate is dI/dt = I/τ = 200 mA/25 h = 8 mA/h. Holding current within ±0.5% (1 mA) requires a 1 mA top-up every 7.5 minutes, and at 90% injection efficiency each top-up needs 1.1 mA of injected beam. The 4-bunch mode at 40 mA has only a 5 h lifetime: the same 8 mA/h decay but a five times larger relative change, so top-up must be more frequent.",
+      "verify": "用 DCCT 記錄每次注入前後的電流差求注入效率；以電流對時間曲線擬合壽命並拆成真空壽命與 Touschek 壽命（改變束團數比較）；在兩到三條光束線用相同的光學配置比較升級前後的通量與聚焦斑；最後把 24 小時頂注運轉的軌道、電流與溫度紀錄附進驗收報告。~Log the current difference before and after each injection with a DCCT to get injection efficiency; fit lifetime from the current-time curve and split it into vacuum and Touschek parts by changing bunch count; compare flux and focal spot before and after the upgrade on two or three beamlines with identical optics; and attach the 24 h top-up logs of orbit, current and temperature to the acceptance record.",
+      "failure": "壽命若被殘餘耦合與高束團密度的 Touschek 散射限制，頂注頻率升高，每次注入的踢擊與輻射劑量增加，光束線快門頻繁關閉，使用者的有效束流時間反而下降。~If lifetime is limited by residual coupling and Touschek scattering at high bunch density, top-up frequency rises, each injection adds kicks and radiation dose, beamline shutters close often, and the users' effective beam time actually falls.",
+      "misconception": "儲存環能存到 200 mA 就代表驗收完成。~Storing 200 mA means the ring is accepted."
+    }
+  ],
+  "example": "亮度練習：假設 ESRF-EBS 直線段 β_x = 6.9 m、β_y = 2.7 m，發射度 130 pm×10 pm；電子束 σ_x = 30 µm、σ_x' = 4.3 µrad、σ_y = 5.2 µm、σ_y' = 1.9 µrad。2 m 波盪器、λ_u = 18 mm、K = 1：λ₁ = 0.98 Å（12.7 keV），繞射項 σ_r = √(2λL)/4π ≈ 1.6 µm、σ_r' = √(λ/2L) ≈ 4.9 µrad。合成 Σx = √(30²+1.6²) ≈ 30 µm、Σy = √(5.2²+1.6²) ≈ 5.4 µm、Σx' = √(4.3²+4.9²) ≈ 6.6 µrad、Σy' = √(1.9²+4.9²) ≈ 5.3 µrad。通量 F ≈ 1.43×10¹⁴×111×0.55×0.2 ≈ 1.75×10¹⁵ ph/s/0.1%BW，亮度 B = F/(4π²ΣxΣyΣx'Σy') ≈ 1.75×10¹⁵/(39.5×0.030×0.0054×0.0066×0.0053) ≈ 7.8×10²¹ ph/s/mm²/mrad²/0.1%BW。若換成舊 4 nm 晶格（σ_x ≈ 166 µm、σ_x' ≈ 24 µrad），同一波盪器只得約 3.8×10²⁰，相差約 20 倍，差距全部來自水平相空間。數值為教學假設，不代表任何實機規格。~Brilliance exercise: assume an ESRF-EBS straight with β_x = 6.9 m and β_y = 2.7 m and emittances 130 pm by 10 pm, so the electron beam has σ_x = 30 µm, σ_x' = 4.3 µrad, σ_y = 5.2 µm and σ_y' = 1.9 µrad. A 2 m undulator with λ_u = 18 mm and K = 1 gives λ₁ = 0.98 Å (12.7 keV), with diffraction terms σ_r = √(2λL)/4π ≈ 1.6 µm and σ_r' = √(λ/2L) ≈ 4.9 µrad. Combined: Σx = √(30²+1.6²) ≈ 30 µm, Σy = √(5.2²+1.6²) ≈ 5.4 µm, Σx' = √(4.3²+4.9²) ≈ 6.6 µrad, Σy' = √(1.9²+4.9²) ≈ 5.3 µrad. Flux F ≈ 1.43×10¹⁴×111×0.55×0.2 ≈ 1.75×10¹⁵ ph/s/0.1%BW, so brilliance B = F/(4π²ΣxΣyΣx'Σy') ≈ 1.75×10¹⁵/(39.5×0.030×0.0054×0.0066×0.0053) ≈ 7.8×10²¹ ph/s/mm²/mrad²/0.1%BW. On the old 4 nm lattice (σ_x ≈ 166 µm, σ_x' ≈ 24 µrad) the same undulator would give about 3.8×10²⁰, a factor of about 20 that comes entirely from the horizontal phase space. Values are teaching assumptions, not any facility's specification.",
+  "history": "ESRF 由歐洲多國於 1988 年共同成立，1994 年開放使用者，是第一座第三代高能硬 X 光同步輻射光源。2015 至 2022 年的 EBS 升級把原本的雙彎消色散晶格換成由 Pantaleo Raimondi 提出的混合多彎消色散晶格，2018 年底停機、2020 年 8 月重新供光，在相同的 844 m 隧道、相同的光束線位置上把水平發射度降低約 30 倍、亮度與同調性提高約兩個數量級，成為第一座第四代高能儲存環。本課只重建公開原理與工程邏輯。~ESRF was founded by a group of European countries in 1988 and opened to users in 1994 as the first third-generation high-energy hard X-ray source. The 2015 to 2022 EBS upgrade replaced the double-bend achromat lattice with the hybrid multi-bend achromat proposed by Pantaleo Raimondi; the ring shut down at the end of 2018 and restarted user operation in August 2020, lowering horizontal emittance about 30-fold and raising brilliance and coherence by about two orders of magnitude inside the same 844 m tunnel with unchanged beamline positions, making it the first fourth-generation high-energy storage ring. This course reconstructs only public principles and engineering logic.",
+  "place": {
+    "name": "ESRF 格勒諾布爾歐洲光子與中子園區~ESRF Grenoble European Photon and Neutron campus",
+    "country": "法國~France",
+    "lat": 45.208,
+    "lng": 5.69,
+    "query": "ESRF European Synchrotron Radiation Facility Grenoble"
+  },
+  "sources": [
+    {
+      "key": "esrf-ebs-parameters",
+      "title": "ESRF：EBS 加速器參數",
+      "titleEn": "ESRF: EBS accelerator parameters",
+      "publisher": "European Synchrotron Radiation Facility",
+      "url": "https://www.esrf.fr/home/Accelerators/parameters.html",
+      "sourceType": "primary",
+      "scope": "公布 EBS 儲存環的能量 6 GeV、周長 843.977 m、電流 200 mA、發射度 130/10 pm、各填充模式的壽命與束團長度。",
+      "scopeEn": "Publishes EBS storage-ring energy 6 GeV, circumference 843.977 m, current 200 mA, emittance 130/10 pm, and lifetime and bunch length per filling mode."
+    },
+    {
+      "key": "esrf-ebs-overview",
+      "title": "ESRF：EBS 極亮光源計畫說明",
+      "titleEn": "ESRF: EBS Extremely Brilliant Source overview",
+      "publisher": "European Synchrotron Radiation Facility",
+      "url": "https://www.esrf.fr/home/Accelerators/ebs---extremely-brilliant-source.html",
+      "sourceType": "primary",
+      "scope": "說明 HMBA 晶格、32 個 27 m 單元、每單元 7 個彎轉與 31 個磁鐵、發射度降低約 30 倍、亮度提升 100 倍與增能環改造。",
+      "scopeEn": "Describes the HMBA lattice, 32 cells of 27 m, seven bends and 31 magnets per cell, the roughly 30-fold emittance reduction, the 100-fold brilliance gain and the booster modifications."
+    },
+    {
+      "key": "ipac2021-esrf-ebs",
+      "title": "IPAC2021 MOXA01：ESRF-EBS 調試與首年運轉",
+      "titleEn": "IPAC2021 MOXA01: ESRF-EBS commissioning and first operation",
+      "publisher": "JACoW / IPAC2021",
+      "url": "https://proceedings.jacow.org/ipac2021/doi/JACoW-IPAC2021-MOXA01.html",
+      "sourceType": "primary",
+      "scope": "加速器會議的公開論文頁，記錄 EBS 調試階段、達成的發射度與運轉性能；課程中的數值仍為教學假設。",
+      "scopeEn": "Open conference paper page recording the EBS commissioning stages, achieved emittance and operating performance; course numbers remain teaching assumptions."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "歐洲同步輻射設施",
+      "nameEn": "ESRF",
+      "business": "歐洲多國共同營運的 6 GeV 第四代同步輻射光源，提供硬 X 光光束線與加速器技術公開資料。",
+      "businessEn": "Multinational European 6 GeV fourth-generation synchrotron light source providing hard X-ray beamlines and public accelerator documentation.",
+      "url": "https://www.esrf.fr/",
+      "investorUrl": "",
+      "security": null,
+      "role": "EBS 儲存環與光束線的營運機構與公開技術說明",
+      "roleEn": "Operator of the EBS storage ring and beamlines and publisher of its technical documentation"
+    },
+    {
+      "name": "DECTRIS",
+      "nameEn": "DECTRIS",
+      "business": "混合式光子計數 X 光像素偵測器，廣泛用於同步輻射光束線的繞射與成像實驗。",
+      "businessEn": "Hybrid photon-counting X-ray pixel detectors widely used for diffraction and imaging on synchrotron beamlines.",
+      "url": "https://www.dectris.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "高亮度光束線的偵測器技術參照",
+      "roleEn": "Detector-technology reference for high-brilliance beamlines"
+    },
+    {
+      "name": "普發真空",
+      "nameEn": "Pfeiffer Vacuum",
+      "business": "渦輪分子幫浦、真空計與殘氣分析儀，供加速器與光束線超高真空系統使用。",
+      "businessEn": "Turbomolecular pumps, vacuum gauges and residual-gas analysers for accelerator and beamline ultra-high-vacuum systems.",
+      "url": "https://www.pfeiffer-vacuum.com/",
+      "investorUrl": "https://www.pfeiffer-vacuum.com/global/en/investors",
+      "security": {"symbol": "PFV", "exchange": "XETRA", "currency": "EUR"},
+      "role": "儲存環真空量測與抽氣設備的公開產品資訊",
+      "roleEn": "Public product information on storage-ring vacuum measurement and pumping equipment"
+    }
+  ],
+  "related": ["a488", "a485"],
+  "architectureNodes": [["直線加速器與增能環", "Linac and booster"], ["HMBA 儲存環（6 GeV, 844 m）", "HMBA storage ring (6 GeV, 844 m)"], ["352 MHz 射頻系統", "352 MHz RF system"], ["插件磁鐵與彎轉光源", "Insertion devices and bend sources"], ["BPM 與快速軌道回授", "BPMs and fast orbit feedback"], ["光束線前端與光學", "Beamline front ends and optics"]],
+  "architectureEdges": [[0, 1], [2, 1], [1, 3], [1, 4], [4, 1], [3, 5]]
+}

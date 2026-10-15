@@ -5,7 +5,8 @@ def load(n):return json.loads((base/'data'/f'{n}.json').read_text())
 cs=load('catalog');fs=load('featured');ss=load('sources');ps=load('photos')
 release=load('release')
 assert len(cs)==release['topics'] and len(fs)==release['guidedCourses']
-assert len(fs)==(515 if release['version'].startswith('11.') else 338)
+assert len(fs)==({'12':614,'11':515}.get(release['version'].split('.')[0],338))
+if release['version'].startswith('12.'):assert len([c for c in fs if c['category']=='instruments'])==101 and all(c.get('status')=='guided' for c in cs if c['category']=='instruments')
 assert len([c for c in fs if c['category']=='semiconductor'])==99
 assert len([c for c in fs if c['category']=='packaging'])==100
 for key in ('id','title','titleEn'):
@@ -53,6 +54,6 @@ for p in ps:
  assert p['author'] and p['license'] and p['licenseUrl'] and p['sourceUrl']
 assert not (base/'data/materials.json').exists(), 'Removed user-material index must not be shipped'
 assert stepcount==release['allSteps'] and knowledge==release['knowledgePoints']
-assert stepcount==(13042 if release['version'].startswith('11.') else 8882)
+assert stepcount==({'12':13042+3232,'11':13042}.get(release['version'].split('.')[0],8882))
 assert len([c for c in fs if c['category']=='electronics'])==100
 print(json.dumps({'topics':len(cs),'guided':len(fs),'steps':stepcount,'knowledge':knowledge,'sources':len(ss),'photos':len(ps),'materials':0,'status':'PASS'}))

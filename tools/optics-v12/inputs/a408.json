@@ -1,0 +1,182 @@
+{
+  "id": "a408",
+  "title": "自由曲面光學量測~Freeform-optics metrology",
+  "discipline": "optics-design-fabrication",
+  "family": "interferometer",
+  "focus": "自由曲面的基準配準、CGH 與傾斜波干涉、探針輪廓、拼接與不確定度追溯~Datum registration, CGH and tilted-wave interferometry, probe profiling, stitching and traceable uncertainty for freeform surfaces",
+  "summary": "以一片口徑 50 mm、對最佳擬合球面偏離 200 µm、最大斜率 20 mrad 的自由曲面反射鏡為案例：先說明無對稱軸的表面為何讓六個剛體自由度與面形誤差糾纏，必須靠基準與定位標記配準；再比較 CGH 零位干涉、傾斜波非零位干涉、接觸與光學探針輪廓儀及次口徑拼接的物理限制，建立含 CGH 寫入誤差、基板、回溯誤差與熱漂移的不確定度預算，最後以兩種獨立方法交叉驗證並把量測圖回饋到確定性修形與實測重最佳化。~Using a 50 mm freeform mirror with 200 µm departure from its best-fit sphere and 20 mrad maximum slope as the case, the course first shows why a surface without a symmetry axis entangles the six rigid-body degrees of freedom with form error and must be registered through datums and fiducials; it then compares the physical limits of CGH null interferometry, tilted-wave non-null interferometry, contact and optical probe profilometry and subaperture stitching, builds an uncertainty budget covering CGH writing error, substrate, retrace error and thermal drift, and closes by cross-validating two independent methods and feeding the map back into deterministic figuring and as-built re-optimisation.",
+  "units": [
+    {
+      "anchor": "自由曲面定義與基準座標~Freeform definition and datum frame",
+      "title": "無對稱軸的量測對象：自由曲面與剛體自由度~A measurand without symmetry: freeforms and rigid-body freedom",
+      "mechanism": "自由曲面是沒有旋轉對稱軸的光學面，通常以圓錐基面加上 XY 多項式或 Zernike 項描述，用於離軸反射系統、頭戴顯示與光束整形。量測的對象不是「面」本身，而是面相對於設計座標系的誤差：球面或旋轉對稱非球面可以靠對稱性消去部分剛體自由度，自由曲面卻讓平移、傾斜與繞軸轉動（clocking）六個自由度都和面形誤差混在一起。沒有基準面與定位標記，量到的誤差圖只是某個最佳擬合下的殘差，與設計師在系統中需要的誤差並不相同。~A freeform is an optical surface without a rotational symmetry axis, usually described by a conic base plus XY polynomial or Zernike terms, and used in off-axis reflective systems, head-mounted displays and beam shaping. The measurand is not the surface itself but its error relative to the design coordinate frame: spheres and rotationally symmetric aspheres let symmetry eliminate some rigid-body degrees of freedom, whereas a freeform entangles all six, translation, tilt and clocking, with form error. Without datum surfaces and fiducials the measured map is only a residual under some best fit, not the error the designer needs in the system.",
+      "model": "面上局部斜率 20 mrad 處，1 µm 的橫向配準誤差產生 0.02×1 µm = 20 nm 的假性面形誤差；繞軸轉動 10 µrad 在半口徑 25 mm 處造成 0.25 µm 的橫向位移，再乘以斜率得 5 nm。若目標量測不確定度為 5 nm RMS，橫向配準必須優於約 0.2 µm、角度配準優於約 2 µrad。~Where the local slope is 20 mrad, a 1 µm lateral registration error produces 0.02×1 µm = 20 nm of false form error; a clocking error of 10 µrad displaces the half-aperture point at 25 mm by 0.25 µm, which times the slope gives 5 nm. For a target uncertainty of 5 nm RMS, lateral registration must be better than about 0.2 µm and angular registration better than about 2 µrad.",
+      "verify": "用設計的斜率圖把每個剛體自由度的單位誤差換算成假性面形圖，建立六個靈敏度圖；量測時以基準面與定位標記解出六個自由度後，把殘差圖與六個靈敏度圖做投影，確認剩餘的相關成分小於不確定度目標。~Convert a unit error in each rigid-body degree of freedom into a false form map using the design slope map to build six sensitivity maps; after solving the six degrees of freedom from datums and fiducials during measurement, project the residual map onto the six sensitivity maps and confirm that the remaining correlated content is below the uncertainty target.",
+      "failure": "量測軟體若對自由曲面也自動扣除離焦與像散這類「對準項」，真正的設計誤差會被當成對準誤差移除，報告顯示合格的鏡子裝進系統後波前比預期差數十奈米。~If the metrology software automatically removes defocus and astigmatism as alignment terms on a freeform as it would on a sphere, genuine design error is discarded as alignment, and a mirror reported compliant degrades the system wavefront by tens of nanometres once installed.",
+      "misconception": "自由曲面量測只要扣掉傾斜與離焦就能得到真正的面形誤差。~Removing tilt and defocus from a freeform measurement yields the true form error."
+    },
+    {
+      "anchor": "CGH 線距與回溯誤差~CGH line spacing and retrace error",
+      "title": "零位與非零位干涉的物理界限~Physical limits of null and non-null interferometry",
+      "mechanism": "干涉儀只能解析條紋間距大於兩個像素的區域，自由曲面對參考波前的斜率差讓條紋在大部分區域過密，因此有兩條路：零位測試用電腦全像片（CGH）以繞射產生與設計表面完全匹配的波前，條紋只反映誤差；非零位測試如傾斜波干涉儀用一組傾斜的點光源，使每個局部區域至少有一個光源的條紋可解析，再用已校正的光線追跡模型扣除非共路的回溯誤差。零位測試精度高但 CGH 專用於一個設計；非零位測試通用但依賴儀器模型的完整校正。~An interferometer resolves only regions where fringe spacing exceeds two pixels, and a freeform's slope difference from the reference wavefront makes fringes too dense almost everywhere, leaving two routes: a null test uses a computer-generated hologram (CGH) that diffracts a wavefront exactly matching the design surface so that fringes show only error, while a non-null test such as the tilted-wave interferometer uses an array of tilted point sources so that every local region has at least one source with resolvable fringes, then removes the non-common-path retrace error with a calibrated ray-trace model of the instrument. Null tests are the most accurate but each CGH serves one design; non-null tests are general but depend on a fully calibrated instrument model.",
+      "model": "表面斜率 20 mrad 在雙程反射下對應 40 mrad 的波前斜率，CGH 的局部線距 d = λ/Δ(sinθ) = 0.633 µm/0.04 ≈ 15.8 µm，也等於直接測試時無法解析的條紋間距。寫入機的圖樣定位誤差 50 nm 造成相位誤差 50/15800 ≈ 0.0032 波，即約 2 nm 波前、1 nm 表面；定位誤差 0.5 µm 則變成 10 nm 表面誤差。~A surface slope of 20 mrad becomes 40 mrad of wavefront slope after double-pass reflection, so the CGH local line spacing is d = λ/Δ(sinθ) = 0.633 µm/0.04 ≈ 15.8 µm, which also equals the unresolvable fringe spacing of a direct test. A writer placement error of 50 nm gives a phase error of 50/15800 ≈ 0.0032 waves, about 2 nm of wavefront or 1 nm of surface; a 0.5 µm placement error would become 10 nm of surface error.",
+      "verify": "取得 CGH 寫入機的定位誤差圖，以線距圖換算成相位誤差圖並納入預算；非零位儀器則量測一組已知球面與平面，比較模型預測與實測的回溯誤差，殘差超過預算時重新校正儀器模型參數。~Obtain the placement-error map of the CGH writer and convert it through the line-spacing map into a phase-error map for the budget; for a non-null instrument, measure a set of known spheres and flats, compare the retrace error predicted by the model with measurement, and recalibrate the model parameters when the residual exceeds budget.",
+      "failure": "傾斜波干涉儀的模型若未納入準直鏡的實際像差，回溯誤差扣除不完整，所有量測結果都帶有同樣的低階系統誤差，不同鏡子看起來有相同的像散圖樣而被誤認為加工問題。~If the tilted-wave model omits the real aberration of its collimator, retrace error is incompletely removed, every measurement carries the same low-order systematic error, and different mirrors appear to share one astigmatism pattern that is wrongly blamed on fabrication.",
+      "misconception": "非零位干涉儀不需要校正，因為它不用專用零位元件。~A non-null interferometer needs no calibration because it uses no dedicated null element."
+    },
+    {
+      "anchor": "CGH 基板、相位圖樣與對準區~CGH substrate, phase pattern and alignment zone",
+      "title": "CGH 製作：繞射效率、鬼像與基板誤差~CGH fabrication: diffraction efficiency, ghosts and substrate error",
+      "mechanism": "CGH 是在熔融石英基板上以電子束或雷射直寫的繞射圖樣，振幅型以鉻膜遮光，相位型以蝕刻深度產生 π 相位差，效率差四倍；設計時加入載波傾斜使主測量級次與其他級次在像面上分離，避免鬼像干涉。基板本身的面形與厚度不均勻會直接疊加在測量波前上，必須事先量測並扣除；CGH 上另外寫入對準區，用回射或貓眼圖樣讓 CGH 相對干涉儀的位置與傾斜能被獨立確認。~A CGH is a diffractive pattern written by electron beam or laser on a fused-silica substrate; amplitude types block light with chrome, phase types etch a depth giving a π phase difference and are four times more efficient. A carrier tilt is added in the design so the measurement order separates from the other orders at the image plane and ghost interference is avoided. The substrate's own figure and thickness variation add directly to the measured wavefront and must be measured beforehand and subtracted; an alignment zone written on the CGH returns a retro or cat's-eye pattern so the CGH position and tilt relative to the interferometer can be confirmed independently.",
+      "model": "二元振幅 CGH 的一階效率為 1/π² ≈ 10.1%，蝕刻至 π 相位的二元相位 CGH 為 4/π² ≈ 40.5%；雙程通過後回傳功率比例為效率的平方，分別約 1.0% 與 16.4%，相位型的訊號強度高 16 倍。基板面形若已量得 5 nm RMS 且不確定度 2 nm，扣除後只剩 2 nm 進入預算。~A binary amplitude CGH has a first-order efficiency of 1/π² ≈ 10.1%, a binary phase CGH etched to π has 4/π² ≈ 40.5%; after double pass the returned power scales with the square of efficiency, about 1.0% versus 16.4%, so the phase type delivers 16 times the signal. If the substrate figure is measured as 5 nm RMS with 2 nm uncertainty, only 2 nm enters the budget after subtraction.",
+      "verify": "以功率計量測零級與一級的回傳光強，確認效率與鬼像抑制符合設計；在干涉儀上先只裝 CGH 的對準區，調整到回射條紋為零後記錄位置，再以同一 CGH 量測一片已知的參考球面，核對殘差是否等於基板誤差扣除後的預期值。~Measure the returned power in the zeroth and first orders with a power meter to confirm efficiency and ghost suppression match the design; mount only the CGH alignment zone on the interferometer first, adjust until the retro fringes null and record the position, then measure a known reference sphere with the same CGH to check that the residual equals the expectation after substrate subtraction.",
+      "failure": "蝕刻深度若偏離 π 相位 10%，零級殘留光增強並與一級形成鬼像條紋，面形圖出現與線距相關的週期性假紋，量測重複性從 1 nm 惡化到 5 nm 以上。~If the etch depth departs from π by 10%, residual zeroth-order light grows and forms ghost fringes with the first order, the figure map shows periodic artefacts tied to the line spacing, and repeatability degrades from 1 nm to over 5 nm.",
+      "misconception": "CGH 是玻璃做的，所以基板誤差可以忽略。~A CGH is made of glass, so substrate error can be neglected."
+    },
+    {
+      "anchor": "探針球與多波長光學探頭~Probe ball and multi-wavelength optical probe",
+      "title": "接觸與光學探針輪廓量測的物理限制~Physical limits of contact and optical probe profiling",
+      "mechanism": "輪廓儀以接觸探針或非接觸光學探頭沿表面掃描，不受條紋密度限制，是自由曲面量測的通用方法。接觸探針以紅寶石球接觸表面，量到的是球心軌跡，必須依局部斜率做探針半徑補償，探針力則造成赫茲接觸壓入；光學探頭（多波長干涉或共軛焦）無接觸，但對斜率與表面反射率敏感。兩者都要用高精度的運動平台或旋轉台與線性尺，量測時間長達數小時，熱漂移成為主要誤差源。~A profilometer scans the surface with a contact stylus or a non-contact optical probe, is unconstrained by fringe density and is the general-purpose freeform method. A contact probe touches the surface with a ruby ball, measures the trajectory of the ball centre and therefore needs a radius compensation based on local slope, while the probe force causes Hertzian indentation; optical probes (multi-wavelength interferometric or confocal) are contact-free but sensitive to slope and surface reflectivity. Both rely on high-precision motion stages or rotary tables with linear scales, and because scans take hours, thermal drift becomes the dominant error.",
+      "model": "赫茲接觸：探針力 F = 1 mN、紅寶石球半徑 R = 0.5 mm、紅寶石對熔融石英的等效模數 E* ≈ 63 GPa，接觸半徑 a = (3FR/4E*)^(1/3) ≈ 1.8 µm，壓入深度 δ = a²/R ≈ 6.6 nm，最大接觸壓力約 0.15 GPa。探針半徑補償：在 20 mrad 斜率處接觸點橫移 R·sinθ = 10 µm，高度修正 R(1 − cosθ) ≈ 100 nm，不補償就是百奈米級錯誤。~Hertzian contact: a probe force F = 1 mN, a ruby ball of radius R = 0.5 mm and an effective modulus E* ≈ 63 GPa for ruby on fused silica give a contact radius a = (3FR/4E*)^(1/3) ≈ 1.8 µm, an indentation δ = a²/R ≈ 6.6 nm and a peak contact pressure of about 0.15 GPa. Radius compensation: at 20 mrad slope the contact point shifts laterally by R·sinθ = 10 µm and the height correction is R(1 − cosθ) ≈ 100 nm, a hundred-nanometre error if omitted.",
+      "verify": "用已校正的參考球量測探針球的有效半徑與形狀誤差，並在不同探針力下重複量測一片光學平面，確認壓入深度隨力的 2/3 次方變化且與赫茲預測一致；長時間掃描前後各量一次固定點，評估熱漂移並以線性或參考點法修正。~Calibrate the probe ball's effective radius and form error against a certified reference sphere, and repeat a measurement of an optical flat at several probe forces to confirm that indentation scales with the 2/3 power of force as Hertz predicts; measure a fixed point before and after a long scan to assess thermal drift and correct it linearly or with reference points.",
+      "failure": "探針球若沾上拋光粉或在高斜率處側向滑動，有效半徑與接觸點都改變，單一掃描線上出現數十奈米的台階，拼成的三維面形圖帶有條紋狀假誤差而被誤認為中頻漣波。~If the probe ball picks up polishing compound or slides sideways at high slope, both effective radius and contact point change, single scan lines show steps of tens of nanometres, and the assembled map carries stripe-like artefacts mistaken for mid-frequency ripple.",
+      "misconception": "接觸探針量到的就是表面本身的高度。~A contact probe reads the surface height directly."
+    },
+    {
+      "anchor": "次口徑拼接與重疊區~Subaperture stitching and overlap regions",
+      "title": "拼接量測與傾斜波的誤差累積~Error accumulation in stitching and tilted-wave measurement",
+      "mechanism": "次口徑拼接把自由曲面分成多個小區域，每個區域傾斜到局部斜率在干涉儀可解析範圍內分別量測，再用重疊區解出各子孔徑的六個剛體參數與參考波前誤差後合成全口徑。拼接的強項是用一般球面干涉儀量任意面形，弱點是子孔徑之間的對準誤差會隨拼接鏈長度以隨機漫步方式累積，低階的整體形狀誤差最難被約束；通常搭配一次低解析度的全口徑量測或外部基準作為全域約束。~Subaperture stitching divides a freeform into small regions, each tilted so the local slope falls within the interferometer's resolvable range and measured separately, then solves the six rigid-body parameters and reference-wavefront error of every subaperture from the overlaps to assemble the full aperture. Its strength is measuring arbitrary shapes with an ordinary spherical interferometer; its weakness is that alignment errors between subapertures accumulate along the stitching chain like a random walk, with the low-order global shape hardest to constrain, so a low-resolution full-aperture measurement or an external datum is usually added as a global constraint.",
+      "model": "每個重疊區的拼接誤差 σ_s = 2 nm、鏈長 m = 10 個重疊時，累積誤差 ≈ σ_s·√m = 2×√10 ≈ 6.3 nm；加上全域低階約束後若能把鏈長有效縮到 2，累積降為 2.8 nm。子孔徑直徑 10 mm 在 20 mrad 全域斜率的表面上，局部斜率變化約 20 mrad×(10/50) = 4 mrad，接近未傾斜時 3.2 mrad 的解析上限，因此每個子孔徑都必須單獨調傾斜。~With a stitching error σ_s = 2 nm per overlap and a chain of m = 10 overlaps, the accumulated error ≈ σ_s·√m = 2×√10 ≈ 6.3 nm; with a global low-order constraint that effectively shortens the chain to 2, it falls to 2.8 nm. A 10 mm subaperture on a surface with 20 mrad global slope sees a local slope change of about 20 mrad×(10/50) = 4 mrad, close to the 3.2 mrad resolvable limit without tilting, so every subaperture must be individually tilted.",
+      "verify": "用同一片表面做兩次不同子孔徑佈局的拼接，比較兩張全口徑圖的差異 RMS 並與 σ_s√m 預測比較；再與 CGH 零位或輪廓儀的結果相減，確認低階項（像散、彗差）的差異在全域約束的不確定度內。~Stitch the same surface twice with different subaperture layouts, compare the RMS difference of the two full-aperture maps with the σ_s√m prediction; then subtract the CGH null or profilometer result and confirm that the low-order differences (astigmatism, coma) lie within the uncertainty of the global constraint.",
+      "failure": "重疊區若只有 10% 而非建議的 30% 以上，子孔徑之間的相對傾斜解算病態，合成圖出現沿拼接邊界的「屋頂」狀折痕，被誤認為真正的面形不連續。~With overlaps of only 10% instead of the recommended 30% or more, the solution for relative tilt between subapertures becomes ill-conditioned, the assembled map shows roof-like creases along the stitching boundaries, and these are mistaken for real form discontinuities.",
+      "misconception": "子孔徑越多，拼接結果一定越準。~More subapertures always make the stitched result more accurate."
+    },
+    {
+      "anchor": "不確定度預算表與參考件~Uncertainty-budget table and reference artefacts",
+      "title": "量測不確定度預算與追溯~Measurement-uncertainty budget and traceability",
+      "mechanism": "每種方法都要有一張不確定度預算表：干涉儀參考面、CGH 或儀器模型、對準與回溯、拼接、熱漂移與雜訊逐項列出，以均方根合成後與公差比較。追溯靠參考件：三平面法或隨機球法給出絕對參考面誤差，經國家計量機構（如 PTB）校正的球面與非球面標準件提供與長度單位的連結。熱是長時間量測的主因：工件、夾具與儀器的膨脹與折射率變化都在預算內。~Every method needs an uncertainty-budget table: interferometer reference, CGH or instrument model, alignment and retrace, stitching, thermal drift and noise are listed term by term, combined in quadrature and compared with the tolerance. Traceability rests on reference artefacts: the three-flat or random-ball test gives the absolute reference-surface error, and spherical and aspheric standards calibrated by a national metrology institute such as PTB link the measurement to the unit of length. Temperature dominates long measurements, so expansion and index change of the part, fixture and instrument all belong in the budget.",
+      "model": "CGH 測試預算：CGH 圖樣 2 nm、基板 3 nm、對準與回溯 3 nm、參考面 2 nm、熱漂移 2 nm、雜訊 1 nm，RSS = √(4+9+9+4+4+1) = √31 ≈ 5.6 nm RMS，對 20 nm RMS 公差的量測比約 3.6:1。熱項來源：鋁製自由曲面矢高 5 mm、α = 23×10⁻⁶ K⁻¹、溫差 0.1 K，矢高變化 5 mm×23×10⁻⁶×0.1 ≈ 11.5 nm，因此量測時溫度須穩定在約 0.02 K 以內。~CGH test budget: CGH pattern 2 nm, substrate 3 nm, alignment and retrace 3 nm, reference surface 2 nm, thermal drift 2 nm, noise 1 nm, RSS = √(4+9+9+4+4+1) = √31 ≈ 5.6 nm RMS, a test-uncertainty ratio of about 3.6:1 against a 20 nm RMS tolerance. The thermal term comes from an aluminium freeform with 5 mm sag, α = 23×10⁻⁶ K⁻¹ and a 0.1 K change, whose sag shifts by 5 mm×23×10⁻⁶×0.1 ≈ 11.5 nm, so temperature must hold within about 0.02 K during measurement.",
+      "verify": "對每一項以實驗求值：重複量測得雜訊，拆裝重裝得對準項，參考件得參考面項，連續記錄溫度與面形得熱項；把各項的實驗值填回預算表，合成值應與整體重複性加系統誤差估計一致，並以校正標準件的量測差異驗證追溯鏈。~Evaluate each term experimentally: repeated measurements give noise, remove-and-replace cycles give alignment, reference artefacts give the reference term, and simultaneous logging of temperature and figure gives the thermal term; enter the experimental values back into the table, check that the combined value agrees with overall repeatability plus the systematic estimate, and verify the traceability chain by the measured deviation of a calibrated standard.",
+      "failure": "預算表若只用儀器型錄的重複性 0.5 nm 當作不確定度，忽略 3 nm 的基板與 3 nm 的回溯誤差，報告出的 2 nm 不確定度被客戶的獨立量測推翻，差異達 8 nm 時雙方都無法判定誰對。~If the table takes the catalogue repeatability of 0.5 nm as the uncertainty and ignores 3 nm of substrate and 3 nm of retrace error, the reported 2 nm uncertainty is contradicted by the customer's independent measurement, and when the two disagree by 8 nm neither side can tell who is right.",
+      "misconception": "量測重複性好就代表不確定度小。~Good repeatability automatically means a small measurement uncertainty."
+    },
+    {
+      "anchor": "定位標記與數位製造迴路~Fiducials and the digital manufacturing loop",
+      "title": "基準、定位標記與回饋修形的閉環~Datums, fiducials and the closed loop back to figuring",
+      "mechanism": "自由曲面的工程價值在於量測圖能被正確放回設計座標並驅動下一步：加工端用它計算修形的停留時間圖，設計端用它做實測重最佳化，裝配端用它決定補償調整。這需要在工件上設計可量測的基準：三個定位球或基準平面與邊緣，在加工機、量測機與鏡座之間共用同一套參考。定位標記本身的量測不確定度透過斜率轉成面形不確定度，因此基準的佈局要盡量拉長基線、靠近有效口徑。~The engineering value of freeform metrology lies in placing the measured map correctly into the design frame and letting it drive the next step: the fabricator computes the figuring dwell-time map from it, the designer re-optimises with as-built data, and the integrator decides compensating adjustments. This needs measurable datums designed into the part, three fiducial spheres or a datum plane plus edge, shared as one reference by the machine tool, the metrology instrument and the mount. The fiducials' own measurement uncertainty converts through slope into form uncertainty, so their layout should maximise the baseline and sit close to the clear aperture.",
+      "model": "三個定位球在 100 mm 基線上各以 1 µm 不確定度量測，繞軸轉動的配準不確定度約 1 µm/100 mm = 10 µrad；在半口徑 25 mm 處造成 0.25 µm 的橫向位移，乘以 20 mrad 斜率得 5 nm 的假性面形。若基線縮到 30 mm，轉動不確定度升到 33 µrad，假性面形變成 17 nm，接近整個公差。~Three fiducial spheres on a 100 mm baseline, each measured with 1 µm uncertainty, give a clocking registration uncertainty of about 1 µm/100 mm = 10 µrad; at the 25 mm half-aperture this displaces points laterally by 0.25 µm, which times the 20 mrad slope gives 5 nm of false form. With the baseline shortened to 30 mm the clocking uncertainty rises to 33 µrad and the false form grows to 17 nm, close to the whole tolerance.",
+      "verify": "在量測機與加工機上各量一次定位球位置，比較兩套座標轉換後的殘差，確認基準在機台之間的轉移誤差；把量測圖經座標轉換後生成修形停留時間圖，做一次修形再量測，收斂比若低於 3 表示配準或座標方向有錯。~Measure the fiducial positions on both the metrology instrument and the machine tool and compare the residual after the two coordinate transformations to confirm datum transfer error between machines; generate the figuring dwell-time map from the transformed measurement, run one figuring pass and re-measure, where a convergence ratio below 3 indicates a registration or axis-direction error.",
+      "failure": "量測機與加工機對 Y 軸正方向的定義相反，誤差圖被鏡像後送去修形，第一次修形把誤差加倍而不是消除，連續兩次疊代後才發現是座標約定問題，浪費數天與數十微米的材料。~If the metrology instrument and the machine tool define the positive Y axis oppositely, the mirrored error map is sent to figuring, the first pass doubles the error instead of removing it, and only after two iterations is the coordinate convention found at fault, wasting days and tens of micrometres of material.",
+      "misconception": "自由曲面量測圖本身就足以指導修形，不需要定位標記。~A freeform measurement map alone can guide figuring without fiducials."
+    },
+    {
+      "anchor": "交叉驗證報告與 ISO 10110-19~Cross-validation report and ISO 10110-19",
+      "title": "獨立方法交叉驗證與驗收交接~Independent-method cross-validation and acceptance handoff",
+      "mechanism": "自由曲面沒有簡單的通用標準件，所以驗收依賴兩種物理原理不同的方法互相比對：例如 CGH 干涉與探針輪廓儀，兩者的差異圖應在合成不確定度內且不含結構性圖樣。驗收報告依 ISO 10110-19 的自由曲面規格標示面形、斜率誤差、中頻與粗糙度，並註明所用的座標系、扣除的擬合項、取樣密度與不確定度；交接文件附上以設計座標表示的實測面形檔，供後續的實測重最佳化與系統對準使用。~Freeforms have no simple universal standard artefact, so acceptance relies on comparing two methods of different physical principle, for example CGH interferometry and probe profilometry, whose difference map should lie within the combined uncertainty and contain no structured pattern. The acceptance report specifies figure, slope error, mid-frequency and roughness according to the freeform conventions of ISO 10110-19 and states the coordinate frame, the removed fitted terms, the sampling density and the uncertainty; the handoff package includes the as-measured surface file in design coordinates for later as-built re-optimisation and system alignment.",
+      "model": "方法 A（CGH）不確定度 5.6 nm、方法 B（輪廓儀）8 nm，兩者差異圖的期望 RMS ≈ √(5.6² + 8²) ≈ 9.8 nm；若實測差異為 25 nm RMS，超出期望 2.5 倍，表示存在系統誤差（通常是配準或探針補償），不能把兩者平均當作結果。差異圖若含 0.3 週期/mm 的條紋成分，可直接指向拼接或掃描線間距。~Method A (CGH) with 5.6 nm uncertainty and method B (profilometer) with 8 nm give an expected RMS of the difference map ≈ √(5.6² + 8²) ≈ 9.8 nm; a measured difference of 25 nm RMS, 2.5 times the expectation, signals a systematic error, usually registration or probe compensation, and the two results must not simply be averaged. A fringe component at 0.3 cycles/mm in the difference map points directly to stitching or scan-line spacing.",
+      "verify": "把兩種方法的面形圖在同一設計座標系下相減，計算差異的 RMS、PSD 與低階 Zernike 分量，分別與合成不確定度、各方法的頻率響應及配準不確定度比較；確認報告列出的每項規格都附量測方法、擬合項與不確定度，並由另一位工程師複核座標約定。~Subtract the two methods' maps in the same design frame, compute the RMS, PSD and low-order Zernike content of the difference and compare them respectively with the combined uncertainty, each method's frequency response and the registration uncertainty; confirm that every specification in the report carries its method, fitted terms and uncertainty, and have a second engineer check the coordinate conventions.",
+      "failure": "若驗收只用一種方法且報告未註明扣除的擬合項，系統整合時發現離軸鏡的像散比報告高 30 nm，追查時無法分辨是量測遺漏、配準錯誤還是安裝變形，整個光學系統的對準時程被打亂。~Acceptance by a single method with no statement of the removed terms leaves the integrator finding 30 nm more astigmatism in the off-axis mirror than reported, with no way to separate metrology omission, registration error or mount distortion, and the alignment schedule of the whole optical system is disrupted.",
+      "misconception": "兩種方法的結果不同時，取平均就是最佳估計。~When two methods disagree, their average is the best estimate."
+    }
+  ],
+  "example": "自由曲面 CGH 量測練習：鏡面口徑 50 mm、最大斜率 20 mrad、公差 20 nm RMS。雙程波前斜率 40 mrad，CGH 局部線距 0.633/0.04 ≈ 15.8 µm；寫入機定位誤差 50 nm 產生 50/15800 ≈ 0.0032 波 ≈ 2 nm 波前，即 1 nm 表面，取保守值 2 nm。基板面形已量測並扣除，殘留 3 nm；對準與回溯 3 nm；參考面 2 nm；熱漂移 2 nm（鋁鏡矢高 5 mm、0.02 K 對應 2.3 nm）；雜訊 1 nm。RSS = √(4+9+9+4+4+1) ≈ 5.6 nm RMS，量測比 20/5.6 ≈ 3.6:1。配準：三個定位球在 100 mm 基線上各 1 µm 不確定度 → 10 µrad 轉動 → 半口徑 25 mm 處 0.25 µm → 乘 20 mrad 得 5 nm，仍在預算內。交叉驗證：輪廓儀不確定度 8 nm，差異圖期望 RMS √(5.6² + 8²) ≈ 9.8 nm；若實測差異 25 nm，先檢查探針半徑補償（20 mrad 處 100 nm 的高度修正）與 Y 軸方向約定。數值皆為教學假設。~Freeform CGH metrology exercise: mirror aperture 50 mm, maximum slope 20 mrad, tolerance 20 nm RMS. The double-pass wavefront slope is 40 mrad, so the CGH local line spacing is 0.633/0.04 ≈ 15.8 µm; a writer placement error of 50 nm gives 50/15800 ≈ 0.0032 waves ≈ 2 nm of wavefront, i.e. 1 nm of surface, taken conservatively as 2 nm. The substrate figure is measured and subtracted, leaving 3 nm; alignment and retrace 3 nm; reference surface 2 nm; thermal drift 2 nm (an aluminium mirror with 5 mm sag at 0.02 K gives 2.3 nm); noise 1 nm. RSS = √(4+9+9+4+4+1) ≈ 5.6 nm RMS, a test-uncertainty ratio of 20/5.6 ≈ 3.6:1. Registration: three fiducial spheres on a 100 mm baseline at 1 µm each give 10 µrad of clocking, 0.25 µm at the 25 mm half-aperture, which times 20 mrad is 5 nm, still within budget. Cross-validation: the profilometer uncertainty is 8 nm, so the expected RMS of the difference map is √(5.6² + 8²) ≈ 9.8 nm; if the measured difference is 25 nm, first check the probe-radius compensation (a 100 nm height correction at 20 mrad) and the Y-axis sign convention. All values are teaching assumptions.",
+  "history": "電腦全像片零位測試在 1970 年代由 Wyant 等人建立，使非球面與離軸面能用干涉儀驗收；2000 年代鑽石車削的慢刀伺服與確定性拋光讓自由曲面可以製造，量測成為瓶頸，於是出現 QED 的次口徑拼接干涉儀、斯圖加特大學 ITO 發展的傾斜波干涉儀與 PTB 的可追溯非球面量測；2013 年美國 NSF 支持羅徹斯特大學與北卡羅來納大學夏洛特分校成立自由曲面光學中心（CeFO），2015 年 ISO 10110-19 訂定自由曲面的規格標示方式。本課只整理公開的量測原理。~Computer-generated-hologram null testing was established by Wyant and colleagues in the 1970s, allowing aspheres and off-axis surfaces to be accepted interferometrically; in the 2000s slow-tool-servo diamond turning and deterministic polishing made freeforms manufacturable and metrology became the bottleneck, prompting QED's subaperture stitching interferometer, the tilted-wave interferometer developed at ITO University of Stuttgart and traceable asphere metrology at PTB; in 2013 the US NSF supported the University of Rochester and UNC Charlotte in founding the Center for Freeform Optics (CeFO), and in 2015 ISO 10110-19 defined how freeform surfaces are specified. This course compiles only public metrology principles.",
+  "place": {
+    "name": "羅徹斯特大學光學研究所與自由曲面光學中心~University of Rochester Institute of Optics and CeFO",
+    "country": "美國~United States",
+    "lat": 43.128,
+    "lng": -77.629,
+    "query": "University of Rochester Institute of Optics"
+  },
+  "sources": [
+    {
+      "key": "nsf-iucrc-cefo",
+      "title": "NSF IUCRC：自由曲面光學中心（CeFO）",
+      "titleEn": "NSF IUCRC: Center for Freeform Optics (CeFO)",
+      "publisher": "U.S. National Science Foundation",
+      "url": "https://iucrc.nsf.gov/centers/center-for-freeform-optics",
+      "sourceType": "primary",
+      "scope": "官方介紹自由曲面光學中心的研究範圍，包括設計、製造與量測；用於背景與機構脈絡。",
+      "scopeEn": "Official description of the Center for Freeform Optics and its research scope in design, fabrication and metrology; used for background and institutional context."
+    },
+    {
+      "key": "ito-tilted-wave-interferometer",
+      "title": "斯圖加特大學 ITO：傾斜波干涉儀",
+      "titleEn": "ITO University of Stuttgart: Tilted Wave Interferometer",
+      "publisher": "Institut für Technische Optik, University of Stuttgart",
+      "url": "https://www.ito.uni-stuttgart.de/en/research/group-ido/tilted-wave-interferometer-twi",
+      "sourceType": "primary",
+      "scope": "大學研究頁面公開說明非零位傾斜波干涉的原理、回溯誤差校正與適用斜率範圍。",
+      "scopeEn": "University research page explaining the non-null tilted-wave principle, retrace-error calibration and the applicable slope range."
+    },
+    {
+      "key": "ptb-asphere-metrology-424",
+      "title": "PTB 工作小組 4.24：非球面計量",
+      "titleEn": "PTB Working Group 4.24: Asphere Metrology",
+      "publisher": "Physikalisch-Technische Bundesanstalt",
+      "url": "https://www.ptb.de/cms/en/ptb/fachabteilungen/abt4/fb-42/ag-424.html",
+      "sourceType": "primary",
+      "scope": "國家計量機構公開說明非球面與自由曲面面形的可追溯量測系統與參考標準件。",
+      "scopeEn": "National metrology institute page on traceable form measurement of aspheres and freeforms and on reference standards."
+    },
+    {
+      "key": "rochester-cefo-news",
+      "title": "羅徹斯特大學新聞：產學合作推進自由曲面光學",
+      "titleEn": "University of Rochester news: Partnership advances freeform optics",
+      "publisher": "University of Rochester",
+      "url": "https://www.rochester.edu/newscenter/new-partnership-advances-freeform-optics/",
+      "sourceType": "primary",
+      "scope": "大學官方新聞說明 CeFO 成立背景與自由曲面的應用動機；用於歷史脈絡。",
+      "scopeEn": "Official university news on the founding of CeFO and the motivation for freeform optics; used for historical context."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Zygo（AMETEK）",
+      "nameEn": "Zygo (AMETEK)",
+      "business": "干涉儀、面形量測系統與 CGH 測試相關的精密光學量測。",
+      "businessEn": "Interferometers, surface-form metrology systems and precision optical metrology associated with CGH testing.",
+      "url": "https://www.zygo.com/",
+      "investorUrl": "https://investors.ametek.com/",
+      "security": {"symbol": "AME", "exchange": "NYSE", "currency": "USD"},
+      "role": "干涉式面形量測儀器的公開產品資訊",
+      "roleEn": "Public product information on interferometric form-metrology instruments"
+    },
+    {
+      "name": "Mahr",
+      "nameEn": "Mahr",
+      "business": "輪廓與粗糙度量測、非球面與自由曲面量測儀器。",
+      "businessEn": "Contour and roughness measurement, asphere and freeform measuring instruments.",
+      "url": "https://www.mahr.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "探針式非球面與自由曲面輪廓量測的公開資訊",
+      "roleEn": "Public information on probe-based asphere and freeform profiling"
+    },
+    {
+      "name": "海克斯康",
+      "nameEn": "Hexagon",
+      "business": "座標量測機、光學探頭與量測軟體。",
+      "businessEn": "Coordinate measuring machines, optical probes and metrology software.",
+      "url": "https://hexagon.com/",
+      "investorUrl": "https://investors.hexagon.com/",
+      "security": {"symbol": "HEXA-B", "exchange": "STO", "currency": "SEK"},
+      "role": "高精度座標量測與基準配準的公開資訊",
+      "roleEn": "Public information on high-accuracy coordinate metrology and datum registration"
+    },
+    {
+      "name": "德國聯邦物理技術研究院",
+      "nameEn": "PTB",
+      "business": "德國國家計量機構，提供非球面與自由曲面量測的追溯與標準件。",
+      "businessEn": "German national metrology institute providing traceability and reference artefacts for asphere and freeform metrology.",
+      "url": "https://www.ptb.de/",
+      "investorUrl": "",
+      "security": null,
+      "role": "可追溯面形量測與參考標準件",
+      "roleEn": "Traceable form metrology and reference standards"
+    }
+  ],
+  "related": ["a407", "a440"],
+  "architectureNodes": [["自由曲面定義與基準座標", "Freeform definition and datum frame"], ["CGH 零位或傾斜波干涉儀", "CGH null or tilted-wave interferometer"], ["接觸與光學探針輪廓儀", "Contact and optical probe profilometer"], ["拼接與配準演算法", "Stitching and registration algorithms"], ["不確定度預算與追溯", "Uncertainty budget and traceability"], ["回饋至確定性修形", "Feedback to deterministic figuring"]],
+  "architectureEdges": [[0, 1], [0, 2], [1, 3], [2, 3], [3, 4], [4, 5], [5, 0]]
+}

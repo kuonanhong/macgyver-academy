@@ -314,6 +314,14 @@ class Application:
               CREATE TABLE IF NOT EXISTS project_progress (user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, project_id TEXT NOT NULL, completed TEXT NOT NULL, notes TEXT NOT NULL, assembly TEXT NOT NULL, updated_at INTEGER NOT NULL, PRIMARY KEY(user_id,project_id));
               CREATE TABLE IF NOT EXISTS ai_rate_limits (user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, window INTEGER NOT NULL, count INTEGER NOT NULL, PRIMARY KEY(user_id, window));
             """)
+            # V12: member accounts require username and mobile phone as well.
+            columns = {row[1] for row in db.execute("PRAGMA table_info(users)")}
+            if "username" not in columns:
+                db.execute("ALTER TABLE users ADD COLUMN username TEXT")
+            if "phone" not in columns:
+                db.execute("ALTER TABLE users ADD COLUMN phone TEXT")
+            db.execute("CREATE UNIQUE INDEX IF NOT EXISTS users_username ON users(lower(username)) WHERE username IS NOT NULL")
+            db.execute("CREATE UNIQUE INDEX IF NOT EXISTS users_phone ON users(phone) WHERE phone IS NOT NULL")
         if os.name != "nt":
             os.chmod(database, 0o600)
         self.commerce = Commerce(self, ApiError)
@@ -469,30 +477,42 @@ class Handler(BaseHTTPRequestHandler):
         payload = self.request_body(MAX_TUTOR_BODY if path == "/api/tutor" else MAX_BODY)
         if self.command == "POST" and path in ("/api/register", "/api/login"):
             self.app.auth_limit("ip:" + self.client_address[0])
-            email = text(payload.get("email"), "email", 254).strip().casefold()
-            if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
-                raise ApiError(400, "Enter a valid email address.")
-            self.app.auth_limit("email:" + email)
+            login = text(payload.get("login") or payload.get("email"), "login", 254).strip().casefold()
+            email = text(payload.get("email") or (login if "@" in login else ""), "email", 254, empty=path == "/api/login").strip().casefold()
+            if path == "/api/register" or "@" in login:
+                if not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
+                    raise ApiError(400, "Enter a valid email address.")
+            elif not re.fullmatch(r"[a-z0-9_.-]{3,30}", login):
+                raise ApiError(400, "Enter your username or email.")
+            self.app.auth_limit("login:" + (email or login))
             password = text(payload.get("password"), "password", 256)
             if path == "/api/register":
                 if len(password) < 12:
                     raise ApiError(400, "Choose a password of at least 12 characters.")
-                name = text(payload.get("name"), "name", 80).strip()
+                username = text(payload.get("username"), "username", 30).strip()
+                phone = re.sub(r"[\s().-]", "", text(payload.get("phone"), "phone", 24))
+                if re.fullmatch(r"09\d{8}", phone):
+                    phone = "+886" + phone[1:]
+                if not re.fullmatch(r"[A-Za-z0-9_.-]{3,30}", username):
+                    raise ApiError(400, "Username: 3-30 letters, digits, underscore, dot or hyphen.")
+                if not re.fullmatch(r"\+[1-9][0-9]{7,14}", phone):
+                    raise ApiError(400, "Enter a mobile number with country code, e.g. +886912345678.")
+                name = (text(payload.get("name") or "", "name", 80, empty=True) or username).strip()
                 user_id, salt = secrets.token_hex(16), secrets.token_bytes(32)
                 digest = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, PBKDF2_ROUNDS)
                 try:
                     with self.app.db() as db:
-                        db.execute("INSERT INTO users VALUES(?,?,?,?,?,?)", (user_id, email, name, salt, digest, int(time.time())))
+                        db.execute("INSERT INTO users(id,email,name,salt,password_hash,created_at,username,phone) VALUES(?,?,?,?,?,?,?,?)", (user_id, email, name, salt, digest, int(time.time()), username, phone))
                 except sqlite3.IntegrityError:
-                    raise ApiError(409, "Unable to register this email. Try signing in.") from None
+                    raise ApiError(409, "This email, username or mobile number is already registered. Try signing in.") from None
                 user = {"id": user_id, "name": name, "email": email}
             else:
                 with self.app.db() as db:
-                    row = db.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
+                    row = db.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone() if "@" in login else db.execute("SELECT * FROM users WHERE lower(username)=?", (login,)).fetchone()
                 salt = row["salt"] if row else b"constant-time-dummy-account-salt!"
                 digest = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, PBKDF2_ROUNDS)
                 if not row or not hmac.compare_digest(digest, row["password_hash"]):
-                    raise ApiError(401, "Email or password is incorrect.")
+                    raise ApiError(401, "Username/email or password is incorrect.")
                 user = {k: row[k] for k in ("id", "name", "email")}
             self.send_json({"user": user, "authMode": "local", "aiAvailable": ai_available(), "aiRoutes": ai_routes()}, cookie=self.create_session(user["id"]))
             return
@@ -508,8 +528,14 @@ class Handler(BaseHTTPRequestHandler):
             project_id = text(payload.get("projectId"), "projectId", 100)
             if not PROJECT_RE.fullmatch(project_id):
                 raise ApiError(400, "Invalid projectId.")
-            if self.app.commerce.protected and project_id in self.app.commerce.load_courses():
-                self.app.commerce.require_access(project_id, user["id"])
+            # V12: progress inside the free first stage may be saved without a pass;
+            # completing paid steps requires an active pass.
+            commerce = self.app.commerce
+            if commerce.protected and project_id in commerce.load_courses() and not commerce.can_access(project_id, user["id"]):
+                course = commerce.course(project_id)
+                claimed = set(payload.get("completed") or []) | set(payload.get("assembly") or [])
+                if any(isinstance(step, str) and not commerce.free_step(course, step) for step in claimed):
+                    raise ApiError(402, "Steps beyond the free first section need an active learning pass.")
             base = payload.get("baseUpdatedAt")
             if base is not None and (not isinstance(base, int) or isinstance(base, bool) or base < 0 or base > 9007199254740991):
                 raise ApiError(400, "Invalid baseUpdatedAt.")

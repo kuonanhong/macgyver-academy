@@ -1,0 +1,182 @@
+{
+  "id": "a464",
+  "title": "閃爍體粒子偵測器~Scintillation particle detectors",
+  "discipline": "optics-accelerators-detectors",
+  "family": "detector",
+  "focus": "光產額、Birks 淬滅、光收集、PMT 與 SiPM 光電轉換、能量解析度、增益漂移與符合計時~Light yield, Birks quenching, light collection, PMT and SiPM photodetection, energy resolution, gain drift and coincidence timing",
+  "summary": "以 NaI(Tl)、LYSO 晶體與 EJ-200 塑膠閃爍體為例，追蹤一個 662 keV 伽瑪光子如何變成數萬個閃爍光子、數千個光電子與一個可校正的脈衝，並把 Birks 淬滅、光學耦合與反射層、PMT 與 SiPM、能量解析度分解、溫度增益漂移與符合計時整合成可交接的偵測器工程紀錄。~Using NaI(Tl), LYSO crystals and EJ-200 plastic, the course follows a 662 keV gamma ray as it becomes tens of thousands of scintillation photons, thousands of photoelectrons and one calibratable pulse, then integrates Birks quenching, optical coupling and reflectors, PMTs and SiPMs, energy-resolution decomposition, temperature-driven gain drift and coincidence timing into a transferable detector engineering record.",
+  "units": [
+    {
+      "anchor": "活化劑發光中心與衰減時間~Activator luminescence centre and decay time",
+      "title": "閃爍機制、光產額與衰減時間~Scintillation mechanism, light yield and decay time",
+      "mechanism": "無機晶體中，游離粒子產生的電子電洞對在晶格中遷移，被 Tl⁺ 或 Ce³⁺ 等活化劑捕獲後以可見光釋放能量，光產額高但衰減時間從數十到數百奈秒；有機與塑膠閃爍體則由苯環 π 電子的螢光發光，光產額較低但衰減只有數奈秒。發光波長必須落在晶體本身透明且光偵測器敏感的範圍內，塑膠閃爍體因此加入波長轉換劑。選材時光產額決定能量解析度，衰減時間決定計數率與計時能力，密度與原子序決定攔截效率，三者必須同時權衡。~In inorganic crystals the electron–hole pairs created by an ionising particle migrate through the lattice until activators such as Tl⁺ or Ce³⁺ capture them and release the energy as visible light, giving high yield with decay times from tens to hundreds of nanoseconds; organic and plastic scintillators emit by fluorescence of π electrons in aromatic rings, with lower yield but decay of only a few nanoseconds. Emission must fall where the material is transparent and the photodetector is sensitive, which is why plastics include wavelength shifters. Light yield sets energy resolution, decay time sets count rate and timing, and density and atomic number set stopping efficiency, so material choice balances all three.",
+      "model": "NaI(Tl) 光產額約 38 光子/keV，662 keV 沉積產生 38×662 ≈ 25 200 個光子；以 410 nm（3.02 eV）計，約 11.5% 的沉積能量變成光。相對 NaI(Tl)，LSO/LYSO 約 85%、衰減約 40 ns，BGO 約 21%、衰減約 300 ns；EJ-200 約 10 000 光子/MeV、衰減 2.1 ns。~NaI(Tl) yields about 38 photons/keV, so a 662 keV deposit produces 38×662 ≈ 25 200 photons; at 410 nm (3.02 eV) about 11.5% of the deposited energy becomes light. Relative to NaI(Tl), LSO/LYSO gives about 85% with about 40 ns decay and BGO about 21% with about 300 ns; EJ-200 gives about 10 000 photons/MeV with 2.1 ns decay.",
+      "verify": "以同一支已校正的 PMT 與相同耦合條件，依序量測待測晶體與參考 NaI(Tl) 晶體在 ¹³⁷Cs 662 keV 的光電峰位置，比值即為相對光產額；以快速示波器或時間相關單光子計數量測脈衝波形並擬合衰減常數，與規格書比較。~With the same calibrated PMT and identical coupling, measure the 662 keV ¹³⁷Cs photopeak position of the crystal under test and of a reference NaI(Tl) crystal in turn, taking the ratio as relative light yield; record pulse shapes with a fast oscilloscope or time-correlated single-photon counting and fit decay constants for comparison with the datasheet.",
+      "failure": "NaI(Tl) 會吸濕，封裝漏氣後表面潮解變黃，光產額與均勻性逐漸下降，光電峰向低能漂移並變寬；若只用定期能量刻度修正而不檢查封裝，數月後才會發現解析度已不可接受。~NaI(Tl) is hygroscopic: once the housing leaks the surface hydrates and yellows, light yield and uniformity fall, and the photopeak drifts down and broadens; correcting only with periodic energy recalibration without inspecting the housing reveals the unacceptable resolution months later.",
+      "misconception": "光產額最高的閃爍體在所有應用中都是最好的選擇。~The scintillator with the highest light yield is the best choice for every application."
+    },
+    {
+      "anchor": "高 dE/dx 徑跡與電子等效能量~High-dE/dx track and electron-equivalent energy",
+      "title": "Birks 淬滅與粒子相依的光輸出~Birks quenching and particle-dependent light output",
+      "mechanism": "閃爍光輸出並不嚴格正比於沉積能量：沿徑跡的游離密度越高，激發分子彼此淬滅與復合的機率越大，單位能量產生的光越少，這就是 Birks 淬滅。電子與最小游離粒子幾乎不受影響，但質子、α 粒子與重離子的光輸出被大幅壓低，所以能量刻度必須以電子等效能量 keVee 表示，並針對每種粒子另做換算。有機閃爍體中不同粒子的慢成分比例也不同，這正是脈衝形狀鑑別分辨中子與伽瑪的物理基礎。~Scintillation output is not strictly proportional to deposited energy: the higher the ionisation density along the track, the more excited molecules quench and recombine with one another and the less light each unit of energy produces, which is Birks quenching. Electrons and minimum-ionising particles are barely affected, but light from protons, alphas and heavy ions is strongly suppressed, so the energy scale is quoted in electron-equivalent keVee and converted separately for each particle type. In organic scintillators the slow-component fraction also differs between particles, which is the physical basis of pulse-shape discrimination between neutrons and gammas.",
+      "model": "Birks 公式 dL/dx = S·(dE/dx)/(1 + kB·dE/dx)，聚苯乙烯 kB ≈ 0.126 mm/MeV。最小游離電子 dE/dx ≈ 0.2 MeV/mm 時淬滅因子 1/(1 + 0.126×0.2) ≈ 0.975；約 1 MeV 反衝質子 dE/dx ≈ 26 MeV/mm 時因子 ≈ 1/(1 + 3.28) ≈ 0.23，同能量質子只產生電子約四分之一的光。~Birks' formula is dL/dx = S·(dE/dx)/(1 + kB·dE/dx), with kB ≈ 0.126 mm/MeV for polystyrene. A minimum-ionising electron at dE/dx ≈ 0.2 MeV/mm has a quenching factor 1/(1 + 0.126×0.2) ≈ 0.975, while a recoil proton near 1 MeV at dE/dx ≈ 26 MeV/mm has ≈ 1/(1 + 3.28) ≈ 0.23, so a proton gives only about a quarter of the light of an electron of the same energy.",
+      "verify": "以多個伽瑪源的康普頓邊緣建立電子等效刻度，再以單能中子束或飛行時間標定的中子量測反衝質子邊緣，擬合 kB；對脈衝形狀鑑別，以長短積分窗的比值畫出二維散布圖，計算中子與伽瑪兩群的品質因子並確認在目標門檻能量以上可分離。~Build the electron-equivalent scale from Compton edges of several gamma sources, then measure recoil-proton edges with a monoenergetic or time-of-flight-tagged neutron beam and fit kB; for pulse-shape discrimination plot the ratio of long and short integration windows as a two-dimensional scatter, compute the figure of merit between neutron and gamma bands and confirm separation above the target threshold.",
+      "failure": "把電子刻度直接套用在質子或 α 粒子上，會把沉積能量低估三到五倍，造成中子能譜或粒子鑑別的系統誤差；門檻若設在 keVee 而設計文件寫成質子能量，偵測效率會與預期大不相同。~Applying the electron calibration directly to protons or alphas underestimates deposited energy by three to five times, biasing neutron spectra or particle identification; a threshold set in keVee while the design document assumes proton energy leaves the detection efficiency far from expectation.",
+      "misconception": "同樣沉積 1 MeV，任何粒子在閃爍體中產生的光都一樣多。~Any particle depositing 1 MeV produces the same amount of light in a scintillator."
+    },
+    {
+      "anchor": "反射層、光學膠與出光面~Reflector, optical grease and exit face",
+      "title": "光收集效率、光學耦合與反射層~Light-collection efficiency, optical coupling and reflectors",
+      "mechanism": "閃爍光向各方向發射，晶體折射率高（LYSO 約 1.82、NaI 約 1.85），大部分光在出光面因全內反射被困在晶體內，必須經多次反射才能逃出。出光面以折射率接近的光學膠或矽膠墊耦合到光偵測器，可大幅擴大逃逸錐；其餘五面以 PTFE 擴散反射層或多層膜鏡面反射層包覆，把光送回出光面。表面拋光或粗化、反射層與晶體之間是否留空氣隙，都會改變光收集效率與沿長度方向的均勻性。~Scintillation light is emitted in all directions, and with a high crystal index (about 1.82 for LYSO and 1.85 for NaI) most of it is trapped by total internal reflection at the exit face and must bounce many times before escaping. Coupling the exit face to the photodetector with index-matched optical grease or a silicone pad greatly widens the escape cone, while the other five faces are wrapped in diffuse PTFE or specular multilayer reflectors that return light toward the exit face. Polished versus roughened surfaces and whether an air gap is left between reflector and crystal both change light-collection efficiency and its uniformity along the length.",
+      "model": "單次撞擊出光面的逃逸比例 ≈ (1 − cosθc)/2，θc = arcsin(n2/n1)。LYSO（n = 1.82）對空氣 θc ≈ 33.3°，逃逸比例約 8.2%；改用 n = 1.465 的光學膠，θc ≈ 53.6°，單次逃逸約 20.3%，提高約 2.5 倍，剩下的光靠反射層多次反彈回收。~The fraction escaping on a single strike of the exit face is ≈ (1 − cosθc)/2 with θc = arcsin(n2/n1). LYSO (n = 1.82) to air gives θc ≈ 33.3° and about 8.2% escape; optical grease with n = 1.465 gives θc ≈ 53.6° and about 20.3%, roughly 2.5 times more, with the remainder recovered by repeated reflector bounces.",
+      "verify": "以準直的伽瑪源或 β 源沿晶體長度逐點照射，記錄光電峰位置得到光收集均勻性曲線；比較不同反射層與耦合材料下的峰位與解析度，並以光線追跡模擬（含表面粗糙度與反射層模型）重現量測，作為量產包覆規格的依據。~Irradiate the crystal point by point along its length with a collimated gamma or beta source and record the photopeak position to obtain the light-collection uniformity curve; compare peak position and resolution for different reflectors and coupling materials, and reproduce the measurement with ray-tracing simulation that includes surface roughness and reflector models as the basis for production wrapping specifications.",
+      "failure": "光學膠在熱循環後收縮產生氣泡或脫層，出光面形成局部空氣隙，光收集下降且依位置不同，光電峰出現低能肩部；反射層包覆鬆緊不一時，同批模組的增益差異可達 10% 以上。~Optical grease that shrinks after thermal cycling forms bubbles or delaminates, leaving local air gaps at the exit face that lower light collection position-dependently and add a low-energy shoulder to the photopeak; uneven reflector wrapping can spread gains across a batch of modules by more than 10%.",
+      "misconception": "晶體越透明，光就一定越容易被光偵測器收集到。~The more transparent the crystal, the more easily the photodetector collects its light."
+    },
+    {
+      "anchor": "光電倍增管與矽光電倍增器~Photomultiplier tube and silicon photomultiplier",
+      "title": "PMT 與 SiPM：量子效率、增益與飽和~PMT and SiPM: quantum efficiency, gain and saturation",
+      "mechanism": "光電倍增管以雙鹼光電陰極把光子轉成光電子，量子效率約 25% 到 43%，再經十級左右打拿極倍增到 10⁶ 至 10⁷ 倍，雜訊低、面積大，但需要高壓且怕磁場。矽光電倍增器由數千到數萬個工作在崩潰電壓以上的微單元並聯而成，每個微單元被觸發後輸出固定電荷，光子偵測效率約 40% 到 50%，體積小、低電壓、不受磁場影響，但有暗計數、串擾與後脈衝，且同一微單元在恢復前無法再計數，強光下會飽和失去線性。~A photomultiplier tube converts photons to photoelectrons on a bialkali photocathode with quantum efficiency of about 25% to 43% and multiplies them through about ten dynodes by 10⁶ to 10⁷, offering low noise and large area but needing high voltage and fearing magnetic fields. A silicon photomultiplier consists of thousands to tens of thousands of microcells biased above breakdown in parallel, each delivering a fixed charge when fired, with photon detection efficiency of about 40% to 50%; it is compact, low-voltage and immune to magnetic fields, but shows dark counts, crosstalk and afterpulsing, and a microcell cannot count again until it recovers, so it saturates and loses linearity under bright light.",
+      "model": "SiPM 觸發微單元數 N_fired = N_cell·[1 − exp(−N_pe/N_cell)]。3×3 mm²、25 µm 微單元約 14 400 個；LYSO 吸收 511 keV 約產生 32 000×0.511 ≈ 16 350 光子，光收集 0.6、PDE 0.4 得 N_pe ≈ 3920，N_fired ≈ 3440，非線性約 12.5%，必須在能量刻度中修正。~The number of fired microcells is N_fired = N_cell·[1 − exp(−N_pe/N_cell)]. A 3×3 mm² SiPM with 25 µm cells has about 14 400 cells; LYSO absorbing 511 keV gives about 32 000×0.511 ≈ 16 350 photons, and with light collection 0.6 and PDE 0.4, N_pe ≈ 3920, N_fired ≈ 3440, a nonlinearity of about 12.5% that the energy calibration must correct.",
+      "verify": "PMT 以單光電子峰量測增益與其對高壓的關係；SiPM 以弱脈衝 LED 取得多光電子峰譜，從峰間距得到增益、從零光電子機率以泊松統計推得平均光電子數與 PDE，在暗室中量測暗計數率與串擾機率，並以多個伽瑪能量點畫出輸出對能量曲線評估飽和。~For a PMT measure gain and its high-voltage dependence from the single-photoelectron peak; for a SiPM record a multi-photoelectron spectrum with a weakly pulsed LED, derive gain from peak spacing and the mean photoelectron number and PDE from the zero-photoelectron probability by Poisson statistics, measure dark-count rate and crosstalk probability in the dark, and plot output against several gamma energies to assess saturation.",
+      "failure": "在強磁場附近使用未屏蔽的 PMT，光電子軌跡偏轉使增益下降數十個百分比且隨方位變化；SiPM 若選太大的微單元以追求 PDE，高能事件飽和使光電峰被壓縮，高能端的能量刻度系統性偏低。~An unshielded PMT near a strong magnetic field loses tens of percent of gain, varying with orientation, as photoelectron trajectories bend; a SiPM chosen with oversized microcells to maximise PDE saturates on high-energy events, compressing photopeaks and biasing the high-energy calibration low.",
+      "misconception": "SiPM 的輸出電荷永遠與入射光子數成正比。~A SiPM's output charge is always proportional to the number of incident photons."
+    },
+    {
+      "anchor": "¹³⁷Cs 光電峰與能量刻度~¹³⁷Cs photopeak and energy calibration",
+      "title": "能量刻度與解析度分解~Energy calibration and resolution decomposition",
+      "mechanism": "能量解析度以光電峰的半高寬除以峰位表示。光電子數服從泊松統計，再乘上倍增過程的超額雜訊因子，構成統計項；但無機晶體的光產額隨電子能量並不嚴格成比例，這種非比例性讓不同路徑的電子串產生不同光量，形成無法靠增加光電子數消除的本質項；另外還有光收集不均勻與電子雜訊。工程上要把量到的解析度分解成這幾項，才知道改善應該投資在光偵測器、包覆還是晶體本身。~Energy resolution is the photopeak FWHM divided by its position. The photoelectron number follows Poisson statistics, multiplied by the excess noise factor of the multiplication, which forms the statistical term; but inorganic crystals do not yield light strictly in proportion to electron energy, and this non-proportionality makes different electron cascades produce different amounts of light, an intrinsic term that more photoelectrons cannot remove; light-collection non-uniformity and electronic noise add further terms. Engineers must decompose the measured resolution into these terms to know whether to invest in the photodetector, the wrapping or the crystal itself.",
+      "model": "統計項 R_stat = 2.355·√(ENF/N_pe)。NaI(Tl) 在 662 keV 產生 25 160 光子，光收集 0.6、量子效率 0.30 得 N_pe ≈ 4530，ENF = 1.2 時 R_stat ≈ 3.8%；若實測 7.0%，本質與不均勻項 ≈ √(7.0² − 3.8²) ≈ 5.9%，主導解析度。~The statistical term is R_stat = 2.355·√(ENF/N_pe). NaI(Tl) produces 25 160 photons at 662 keV; with light collection 0.6 and quantum efficiency 0.30, N_pe ≈ 4530 and with ENF = 1.2, R_stat ≈ 3.8%; if 7.0% is measured, the intrinsic plus non-uniformity term is ≈ √(7.0² − 3.8²) ≈ 5.9% and dominates the resolution.",
+      "verify": "以 ²⁴¹Am 59.5 keV、¹³⁷Cs 662 keV 與 ⁶⁰Co 1173、1333 keV 等多點建立能量刻度，擬合線性與二次項並檢查殘差；以單光電子刻度換算各能量點的 N_pe，畫出解析度平方對 1/E 的關係，截距與斜率分別對應本質項與統計項，並與前次量測比較。~Build the energy scale from several lines such as ²⁴¹Am 59.5 keV, ¹³⁷Cs 662 keV and ⁶⁰Co 1173 and 1333 keV, fit linear and quadratic terms and check residuals; convert each energy point to N_pe with the single-photoelectron calibration, plot resolution squared against 1/E so that intercept and slope separate intrinsic and statistical terms, and compare with the previous measurement.",
+      "failure": "只用單一 ¹³⁷Cs 點做線性刻度而忽略晶體非比例性與 SiPM 飽和，低能 X 光與高能伽瑪的能量會偏差數個百分比，核種鑑別可能把峰指認錯誤。~A single-point linear calibration at ¹³⁷Cs that ignores crystal non-proportionality and SiPM saturation misplaces low-energy X-rays and high-energy gammas by several percent, so nuclide identification may assign peaks wrongly.",
+      "misconception": "只要換成量子效率更高的光偵測器，NaI(Tl) 的解析度就能無限改善。~A higher-efficiency photodetector can improve NaI(Tl) resolution without limit."
+    },
+    {
+      "anchor": "偏壓、溫度感測與 LED 監測~Bias, temperature sensing and LED monitor",
+      "title": "增益穩定度、溫度漂移與監測~Gain stability, temperature drift and monitoring",
+      "mechanism": "閃爍偵測器的峰位會隨溫度與偏壓漂移：晶體光產額本身有溫度係數，PMT 增益隨高壓呈冪次關係，SiPM 的崩潰電壓隨溫度上升，固定偏壓下過電壓變小、增益與 PDE 同時下降。長時間運轉的系統因此需要溫度感測與偏壓補償，並以穩定的 LED 光脈衝或內建參考放射源持續監測增益，把光偵測器漂移與晶體變化分開判斷。~Peak positions drift with temperature and bias: crystal light yield has its own temperature coefficient, PMT gain follows a power law in high voltage, and the SiPM breakdown voltage rises with temperature so that at fixed bias the overvoltage shrinks and gain and PDE fall together. Long-running systems therefore need temperature sensing with bias compensation and continuous gain monitoring with a stable LED pulser or an embedded reference source, distinguishing photodetector drift from crystal changes.",
+      "model": "SiPM 增益正比於過電壓 V_ov；假設崩潰電壓溫度係數 54 mV/K、V_ov = 3 V，則 ΔG/G ≈ 0.054/3 ≈ 1.8%/K，溫度變化 5 K 使峰位移動約 9%。PMT 增益 G ∝ V^(k·n)，取 k = 0.7、n = 10 級，高壓漣波 0.1% 造成增益變化約 0.7%。~SiPM gain is proportional to overvoltage V_ov; assuming a breakdown-voltage temperature coefficient of 54 mV/K and V_ov = 3 V, ΔG/G ≈ 0.054/3 ≈ 1.8%/K, so a 5 K change shifts peaks by about 9%. PMT gain follows G ∝ V^(k·n); with k = 0.7 and n = 10 stages, a 0.1% high-voltage ripple changes gain by about 0.7%.",
+      "verify": "把模組放入溫控箱，在 15 到 35 °C 間分階段量測 LED 峰與 ¹³⁷Cs 光電峰位置，求出各自的溫度係數；開啟偏壓補償後重複量測，確認峰位變化壓到 0.5%/K 以下；並以長時間記錄比較 LED 與放射源峰的比值，判斷漂移來自光偵測器還是晶體。~Place the module in a climate chamber and measure LED and ¹³⁷Cs photopeak positions in steps between 15 and 35 °C to obtain their temperature coefficients; repeat with bias compensation enabled and confirm peak movement below 0.5%/K; compare the ratio of LED and source peaks over long recordings to tell photodetector drift from crystal drift.",
+      "failure": "白天與夜間的機房溫差讓未補償的 SiPM 系統峰位漂移近 10%，能量窗口固定時計數率出現日週期變化，被誤認為放射源或樣品的真實變化；若 LED 本身也隨溫度漂移，監測反而把錯誤寫入修正。~Day-night room temperature swings shift peaks by nearly 10% in an uncompensated SiPM system, so with a fixed energy window the count rate shows a daily cycle that is mistaken for a real change in source or sample; if the LED itself drifts with temperature, monitoring writes the error into the correction.",
+      "misconception": "能量刻度做過一次之後，閃爍偵測器的峰位就會一直固定。~Once calibrated, a scintillation detector's peak positions stay fixed."
+    },
+    {
+      "anchor": "符合時間窗與時間拾取~Coincidence window and time pick-off",
+      "title": "計時解析度與符合量測~Timing resolution and coincidence measurement",
+      "mechanism": "閃爍事件的到達時間由最早幾個光電子決定，因此計時解析度取決於光產額、上升與衰減時間、光偵測器的單光子時間抖動以及晶體內光程差。兩個偵測器同時觸發才記錄的符合量測能抑制背景，但窗口內兩個無關事件也會被誤認為符合，形成隨機符合，其速率與兩路單計數率的乘積成正比。正子斷層掃描以 511 keV 光子對的符合定位反應線，飛行時間差進一步把事件定位在線上的某一段，所以符合時間解析度直接換算成影像訊雜比。~The arrival time of a scintillation event is set by the first few photoelectrons, so timing resolution depends on light yield, rise and decay times, the photodetector's single-photon time jitter and optical path differences in the crystal. Coincidence counting, which records only when two detectors fire together, suppresses background, but two unrelated events within the window are also accepted as random coincidences at a rate proportional to the product of the two singles rates. Positron emission tomography locates lines of response from coincident 511 keV photon pairs, and the time-of-flight difference further confines the event to a segment of the line, so coincidence time resolution translates directly into image signal-to-noise.",
+      "model": "光統計下限 σt ≈ √(τr·τd/N_pe)：LYSO τd = 40 ns、假設 τr = 0.1 ns、N_pe = 3920，σt ≈ 32 ps，符合時間解析度下限約 √2×2.355×32 ≈ 106 ps FWHM。實際 200 ps 對應定位 Δx = c·Δt/2 = 3 cm。隨機符合率 R = 2τ·r1·r2：2τ = 4 ns、單計數各 10⁵ cps 得 40 cps。~The photostatistical bound is σt ≈ √(τr·τd/N_pe): for LYSO with τd = 40 ns, an assumed τr = 0.1 ns and N_pe = 3920, σt ≈ 32 ps and the coincidence-time-resolution bound is about √2×2.355×32 ≈ 106 ps FWHM. A real 200 ps corresponds to Δx = c·Δt/2 = 3 cm. The random rate is R = 2τ·r1·r2; with 2τ = 4 ns and 10⁵ cps singles on each side, R = 40 cps.",
+      "verify": "以 ²²Na 正子源置於兩個相同模組之間，記錄時間差分布並擬合半高寬得到符合時間解析度，再除以 √2 得單一偵測器值；改變時間拾取門檻（前緣或恆比鑑別）找最佳點；以延遲窗口法量測隨機符合率，與 2τ·r1·r2 預測比較。~Place a ²²Na positron source between two identical modules, record the time-difference distribution and fit its FWHM as the coincidence time resolution, dividing by √2 for a single detector; vary the time pick-off threshold for leading-edge or constant-fraction discrimination to find the optimum; measure randoms with a delayed window and compare with the 2τ·r1·r2 prediction.",
+      "failure": "前緣鑑別在脈衝幅度變化大時產生時間游走，造成與能量相關的時間偏移，符合峰變寬且不對稱；符合窗口開得過寬時，高計數率下隨機符合超過真符合，影像對比與定量全部失真。~Leading-edge discrimination with widely varying pulse amplitudes produces time walk, an energy-dependent timing shift that broadens and skews the coincidence peak; an overly wide coincidence window lets randoms exceed true coincidences at high rates, distorting image contrast and quantification.",
+      "misconception": "衰減時間越長的閃爍體收集越多光，計時就越準。~A scintillator with a longer decay collects more light and therefore times better."
+    },
+    {
+      "anchor": "偵測器模組與驗收紀錄~Detector module and acceptance record",
+      "title": "模組整合、攔截效率與驗收交接~Module integration, stopping efficiency and acceptance handoff",
+      "mechanism": "把晶體、反射層、光偵測器、前端電子與冷卻組成模組時，晶體厚度與材料必須先滿足攔截效率，再兼顧光收集、計時與成本；符合量測的效率是單一偵測器效率的平方，所以厚度不足的代價會被放大。量產時每個模組的增益、解析度與時間偏移都不同，需要逐模組校正表，並以均勻性、死時間、計數率線性與長期穩定度作為驗收項目，連同包覆規格與材料批號寫入交接文件。~When crystals, reflectors, photodetectors, front-end electronics and cooling are assembled into a module, crystal material and thickness must first meet stopping efficiency before light collection, timing and cost are balanced; coincidence efficiency is the square of single-detector efficiency, so insufficient thickness is penalised twice. In production every module differs in gain, resolution and time offset and needs its own calibration table, and acceptance covers uniformity, dead time, count-rate linearity and long-term stability, filed with wrapping specifications and material batch numbers in the handoff record.",
+      "model": "攔截機率 P = 1 − exp(−x/λatt)。以 511 keV 衰減長度約 LYSO 11.4 mm、BGO 10.4 mm、NaI(Tl) 29 mm（教學近似）計，20 mm 晶體單側 P 分別約 0.83、0.85、0.50，成對符合效率 P² 約 0.68、0.73、0.25。NaI 要達到相同符合效率需要厚得多的晶體。~Stopping probability is P = 1 − exp(−x/λatt). Taking 511 keV attenuation lengths of about 11.4 mm for LYSO, 10.4 mm for BGO and 29 mm for NaI(Tl) as teaching approximations, a 20 mm crystal stops about 0.83, 0.85 and 0.50 on one side, and pair coincidence efficiency P² is about 0.68, 0.73 and 0.25. NaI needs a much thicker crystal for the same coincidence efficiency.",
+      "verify": "以已知活度的點源在多個位置量測每個模組的計數率，扣除幾何因子後與蒙地卡羅模擬的攔截效率比較；逐步提高源活度量測計數率線性與死時間；連續運轉一週記錄峰位、解析度與時間偏移的漂移，並把逐模組校正表與量測條件一起交接。~Measure each module's count rate with a point source of known activity at several positions, correct for geometry and compare with Monte Carlo stopping efficiency; raise source activity step by step to measure count-rate linearity and dead time; run continuously for a week logging drift of peak position, resolution and time offset, and hand over per-module calibration tables together with the measurement conditions.",
+      "failure": "為了降低成本選用較薄晶體，單側效率只下降一成多，但符合效率下降二成以上，系統靈敏度不足才在臨床或實驗驗收時被發現；缺少逐模組校正表時，更換單一模組就會在影像中留下環狀假影。~Choosing thinner crystals to save cost lowers single-side efficiency by only a little over a tenth but cuts coincidence efficiency by over a fifth, and the sensitivity shortfall appears only at clinical or experimental acceptance; without per-module calibration tables, replacing a single module leaves ring artefacts in the image.",
+      "misconception": "符合量測的效率等於單一偵測器的效率。~Coincidence efficiency equals single-detector efficiency."
+    }
+  ],
+  "example": "NaI(Tl) 伽瑪能譜儀練習：76 mm 晶體在 ¹³⁷Cs 662 keV 光電峰產生 38×662 ≈ 25 160 個光子。假設光收集 0.65、PMT 量子效率 0.28，N_pe = 25 160×0.65×0.28 ≈ 4580；超額雜訊因子 1.2 時統計項 2.355×√(1.2/4580) ≈ 3.8%。再假設晶體非比例性與不均勻性合計 5.5%，總解析度 √(3.8² + 5.5²) ≈ 6.7% FWHM，即約 44 keV。康普頓邊緣 E_C = E/(1 + m_ec²/2E) = 662/(1 + 511/1324) ≈ 478 keV，背散射峰約 662 − 478 ≈ 184 keV。若把 PMT 換成 PDE 0.40 的 SiPM 陣列且光收集不變，N_pe ≈ 6540，統計項降到約 3.2%，總解析度只改善到約 6.4%，顯示本質項主導。數值為教學假設，不代表任何產品規格。~NaI(Tl) gamma-spectrometer exercise: a 76 mm crystal produces 38×662 ≈ 25 160 photons in the ¹³⁷Cs 662 keV photopeak. Assuming light collection 0.65 and PMT quantum efficiency 0.28, N_pe = 25 160×0.65×0.28 ≈ 4580; with an excess noise factor of 1.2 the statistical term is 2.355×√(1.2/4580) ≈ 3.8%. Assuming crystal non-proportionality and non-uniformity together contribute 5.5%, the total resolution is √(3.8² + 5.5²) ≈ 6.7% FWHM, about 44 keV. The Compton edge is E_C = E/(1 + m_ec²/2E) = 662/(1 + 511/1324) ≈ 478 keV and the backscatter peak lies near 662 − 478 ≈ 184 keV. Replacing the PMT with a SiPM array of PDE 0.40 at unchanged light collection gives N_pe ≈ 6540, lowering the statistical term to about 3.2% but the total only to about 6.4%, showing that the intrinsic term dominates. Values are teaching assumptions, not any product's specification.",
+  "history": "1948 年 Hofstadter 發現鉈活化碘化鈉 NaI(Tl) 是高光產額的閃爍體，與同時期成熟的光電倍增管結合，使伽瑪能譜學成為常規技術；1970 年代 BGO 以高密度進入正子斷層掃描，1990 年代初 Melcher 等人發展出快速且高密度的 LSO:Ce，奠定現代飛行時間正子斷層掃描的晶體基礎。高能物理方面，CERN 的 CMS 電磁量能器以約 7.6 萬根鎢酸鉛晶體搭配崩潰光二極體與真空光三極管讀出；2000 年代以後矽光電倍增器逐漸在醫學影像與緊湊偵測器中取代部分 PMT。~In 1948 Hofstadter found that thallium-activated sodium iodide NaI(Tl) is a high-yield scintillator, and together with the photomultiplier tubes maturing at the same time it made gamma spectroscopy routine; BGO entered positron emission tomography in the 1970s for its density, and in the early 1990s Melcher and colleagues developed fast, dense LSO:Ce, the crystal basis of modern time-of-flight PET. In high-energy physics the CMS electromagnetic calorimeter at CERN uses about 76 000 lead tungstate crystals read out by avalanche photodiodes and vacuum phototriodes, and from the 2000s silicon photomultipliers began replacing PMTs in medical imaging and compact detectors.",
+  "place": {
+    "name": "CERN CMS 實驗第五點~CERN CMS experiment, Point 5",
+    "country": "法國~France",
+    "lat": 46.3095,
+    "lng": 6.0769,
+    "query": "CMS experiment Point 5 Cessy France"
+  },
+  "sources": [
+    {
+      "key": "pdg-2024-particle-detectors",
+      "title": "粒子數據組 2024 評論：加速器粒子偵測器（第 35 章）",
+      "titleEn": "Particle Data Group 2024 Review: 35. Particle Detectors at Accelerators",
+      "publisher": "Particle Data Group, Lawrence Berkeley National Laboratory",
+      "url": "https://pdg.lbl.gov/2024/reviews/rpp2024-rev-particle-detectors-accel.pdf",
+      "sourceType": "primary",
+      "scope": "收錄無機晶體相對光產額、衰減時間與發光波長表、塑膠閃爍體光產額、Birks 公式與聚苯乙烯 kB 值，以及能量解析度的本質項討論。",
+      "scopeEn": "Contains the inorganic-crystal table of relative light yield, decay time and emission peak, plastic-scintillator yield, Birks' formula with the polystyrene kB value, and discussion of the intrinsic resolution term."
+    },
+    {
+      "key": "hamamatsu-pmt-handbook",
+      "title": "濱松光子學：光電倍增管基礎與應用手冊（第四版）",
+      "titleEn": "Hamamatsu Photonics: Photomultiplier Tubes – Basics and Applications (4th edition)",
+      "publisher": "Hamamatsu Photonics",
+      "url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/etd/PMT_handbook_v4E.pdf",
+      "sourceType": "primary",
+      "scope": "說明雙鹼光電陰極與 NaI(Tl) 發光匹配、超級與極致雙鹼陰極的量子效率、打拿極倍增增益與閃爍計數應用。",
+      "scopeEn": "Explains bialkali photocathode matching to NaI(Tl) emission, quantum efficiencies of super and ultra bialkali cathodes, dynode gain and scintillation-counting applications."
+    },
+    {
+      "key": "hamamatsu-mppc-guide",
+      "title": "濱松光子學：矽光電倍增器（MPPC）技術指南第一節",
+      "titleEn": "Hamamatsu: A technical guide to silicon photomultipliers (MPPC), Section 1",
+      "publisher": "Hamamatsu Photonics",
+      "url": "https://hub.hamamatsu.com/us/en/technical-notes/mppc-sipms/a-technical-guide-to-silicon-photomutlipliers-MPPC-Section-1.html",
+      "sourceType": "primary",
+      "scope": "介紹 SiPM 微單元結構、崩潰模式運作、增益與光子偵測效率的基本概念；課程中的飽和與溫度係數數值為教學假設。",
+      "scopeEn": "Introduces SiPM microcell structure, Geiger-mode operation, gain and photon detection efficiency; the course's saturation and temperature-coefficient values are teaching assumptions."
+    },
+    {
+      "key": "eljen-ej200",
+      "title": "Eljen Technology：EJ-200 系列塑膠閃爍體規格",
+      "titleEn": "Eljen Technology: EJ-200, EJ-204, EJ-208, EJ-212 plastic scintillators",
+      "publisher": "Eljen Technology",
+      "url": "https://eljentechnology.com/products/plastic-scintillators/ej-200-ej-204-ej-208-ej-212",
+      "sourceType": "primary",
+      "scope": "列出 EJ-200 光輸出（64% 蒽、每 MeV 約一萬光子）、上升 0.9 ns、衰減 2.1 ns、425 nm 發光、380 cm 衰減長度與折射率 1.58。",
+      "scopeEn": "Lists EJ-200 light output (64% anthracene, about 10 000 photons per MeV), 0.9 ns rise, 2.1 ns decay, 425 nm emission, 380 cm attenuation length and refractive index 1.58."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "濱松光子學",
+      "nameEn": "Hamamatsu Photonics",
+      "business": "日本光電元件製造商，生產光電倍增管、矽光電倍增器（MPPC）、光二極體與閃爍偵測模組。",
+      "businessEn": "Japanese photonics manufacturer of photomultiplier tubes, silicon photomultipliers (MPPC), photodiodes and scintillation detector modules.",
+      "url": "https://www.hamamatsu.com/",
+      "investorUrl": "https://www.hamamatsu.com/jp/en/investor-relations.html",
+      "security": {"symbol": "6965", "exchange": "TSE", "currency": "JPY"},
+      "role": "PMT 與 SiPM 光偵測器的設計與供應",
+      "roleEn": "Design and supply of PMT and SiPM photodetectors"
+    },
+    {
+      "name": "Eljen Technology",
+      "nameEn": "Eljen Technology",
+      "business": "美國塑膠與液態閃爍體、波長轉換材料與反射塗料製造商。",
+      "businessEn": "US maker of plastic and liquid scintillators, wavelength-shifting materials and reflective paints.",
+      "url": "https://eljentechnology.com/products/plastic-scintillators/ej-200-ej-204-ej-208-ej-212",
+      "investorUrl": "",
+      "security": null,
+      "role": "快速塑膠閃爍體與脈衝形狀鑑別材料",
+      "roleEn": "Fast plastic scintillators and pulse-shape-discrimination materials"
+    },
+    {
+      "name": "Luxium Solutions",
+      "nameEn": "Luxium Solutions",
+      "business": "無機閃爍晶體與偵測器組件製造商，產品包含 NaI(Tl)、BGO、LYSO 與溴化鑭晶體。",
+      "businessEn": "Manufacturer of inorganic scintillation crystals and detector assemblies, including NaI(Tl), BGO, LYSO and lanthanum bromide.",
+      "url": "https://www.luxiumsolutions.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "閃爍晶體生長、封裝與偵測器組裝",
+      "roleEn": "Scintillation-crystal growth, encapsulation and detector assembly"
+    },
+    {
+      "name": "CAEN",
+      "nameEn": "CAEN S.p.A.",
+      "business": "義大利核物理電子儀器公司，提供數位化器、高壓電源與 SiPM 讀出系統。",
+      "businessEn": "Italian nuclear-electronics company supplying digitisers, high-voltage supplies and SiPM readout systems.",
+      "url": "https://www.caen.it/",
+      "investorUrl": "",
+      "security": null,
+      "role": "閃爍偵測器的偏壓、數位化與脈衝處理",
+      "roleEn": "Biasing, digitisation and pulse processing for scintillation detectors"
+    }
+  ],
+  "related": ["a467", "a463"],
+  "architectureNodes": [["閃爍晶體或塑膠", "Scintillator crystal or plastic"], ["反射層與光學耦合", "Reflector and optical coupling"], ["PMT 或 SiPM 光偵測器", "PMT or SiPM photodetector"], ["前端放大與數位化", "Front-end amplification and digitisation"], ["偏壓與溫度補償", "Bias and temperature compensation"], ["能量與時間校正、符合邏輯", "Energy and time calibration, coincidence logic"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [4, 2], [3, 5], [5, 4]]
+}

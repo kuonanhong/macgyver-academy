@@ -128,7 +128,7 @@ export function domainIdentitySvg(category,{title=category,en=false}={}) {
     .replace('原創專案識別插畫','原創領域識別插畫');
 }
 export function projectMediaMarkup(course,{photo=null,en=false,compact=false}={}) {
-  const label=photo?(en?'Licensed reference photo':'授權參考照片'):(course.educationEdition===11?(en?'Original educational architecture':'原創教學架構圖'):(en?'Original identity illustration':'原創識別插畫'));
+  const label=photo?(en?'Licensed reference photo':'授權參考照片'):(course.educationEdition>=11?(en?'Original educational architecture':'原創教學架構圖'):(en?'Original identity illustration':'原創識別插畫'));
   const src=photo?.path;
   const safePath=typeof src==='string'&&/^(?:assets\/|\.\/assets\/)/.test(src)&&!src.split('/').includes('..')?src:null;
   if(photo&&safePath)return `<div class="project-media ${compact?'compact':''}" data-media-kind="photo"><img loading="lazy" src="${escape(safePath)}" alt="${escape(en?(photo.titleEn||photo.title):(photo.title||photo.titleEn))}"><span class="project-media-kind">${label}</span>${compact?'':`<span class="image-credit">${escape(photo.author)} · ${escape(photo.license)}</span>`}<span class="project-photo-emblem">${projectIconSvg(course,{en})}</span></div>`;

@@ -15,7 +15,7 @@ try:
     manifest = json.loads((public / 'offline-build.json').read_text(encoding='utf-8'))
     sources = [root / 'tools' / 'build-offline.mjs', root / 'tools' / 'restore-featured.mjs']
     sources += [p for p in public.iterdir() if p.suffix in ('.js', '.css', '.html') and p.name not in ('app.bundle.js', 'offline-data.js') and not re.fullmatch(r'offline-data-\d+\.js', p.name)]
-    sources += list((public / 'data').glob('*.json'))
+    sources += [p for p in (public / 'data').glob('*.json') if p.name not in ('markets.json', 'fx.json')]
     expected = {p.relative_to(root).as_posix() for p in sources}
     assert manifest['version'] == 1 and expected == set(manifest['inputs'])
     for group in ('inputs', 'outputs'):

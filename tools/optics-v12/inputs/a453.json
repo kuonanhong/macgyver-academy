@@ -1,0 +1,182 @@
+{
+  "id": "a453",
+  "title": "超高真空腔體建置~Ultrahigh-vacuum chamber construction",
+  "discipline": "optics-lab-infrastructure",
+  "family": "vacuum",
+  "focus": "出氣率、傳導率、金屬密封、烘烤與壓力量測構成的 10⁻¹¹ mbar 腔體工程~Outgassing, conductance, metal seals, bakeout and pressure measurement that make a 10⁻¹¹ mbar chamber",
+  "summary": "以一個 100 L、內表面 1 m² 的不鏽鋼實驗腔為對象：從極限壓力 p = Q/S 出發，理解出氣率與分子流傳導率為何比泵的標稱抽速更重要；再把材料選擇、內側焊接、CF 金屬密封、烘烤程序、泵組合與離子真空計／殘氣分析的誤差預算整合成可驗收、可交接的超高真空腔體。~Built around a 100 L stainless experimental chamber with 1 m² of internal surface: start from the ultimate-pressure relation p = Q/S to see why outgassing and molecular-flow conductance matter more than the pump's nameplate speed, then integrate material choice, inside welding, CF metal seals, bakeout, pump combinations and the error budget of ion gauges and residual-gas analysis into an ultrahigh-vacuum chamber that can be accepted and handed over.",
+  "units": [
+    {
+      "anchor": "腔壁的氣體來源~Gas sources at the chamber wall",
+      "title": "極限壓力：出氣率、抽速與 p = Q/S~Ultimate pressure: outgassing, pumping speed and p = Q/S",
+      "mechanism": "在 10⁻⁹ mbar 以下，腔內的氣體負載不是殘留的空氣，而是從壁面脫附的分子：未烘烤系統以水氣為主，烘烤後則是從不鏽鋼本體擴散出來的氫。此時平均自由徑長達數公里，氣體以分子流運動，分子只與壁面碰撞而不彼此碰撞，壓力由平衡關係 p = Q/S_eff 決定，Q 是出氣、漏氣與滲透的總氣體流量，S_eff 是泵經過管路後在腔體入口的有效抽速。所以超高真空設計就是兩件事：把單位面積出氣率 q 與內表面積 A 的乘積壓到最低，並讓 S_eff 不被傳導率吃掉。~Below 10⁻⁹ mbar the gas load inside the chamber is not residual air but molecules desorbing from the walls: water dominates an unbaked system, and after bakeout the source is hydrogen diffusing out of the bulk stainless steel. The mean free path is then kilometres, gas moves in molecular flow where molecules collide only with walls and never with each other, and the pressure settles at p = Q/S_eff, with Q the total throughput from outgassing, leaks and permeation and S_eff the effective pumping speed at the chamber port after the connecting line. Ultrahigh-vacuum design therefore reduces to two tasks: minimise the product of specific outgassing rate q and internal area A, and keep S_eff from being throttled by conductance.",
+      "model": "腔體內表面 A = 1 m² = 10⁴ cm²。未烘烤的不鏽鋼抽氣 10 小時後 q ≈ 1×10⁻⁹ mbar·L/(s·cm²)（教學假設，以水氣為主），Q = q·A = 1×10⁻⁵ mbar·L/s；若 S_eff = 200 L/s，p = Q/S_eff = 5×10⁻⁸ mbar，只是高真空。在 150–250 °C 烘烤後 q 降到約 2×10⁻¹³ mbar·L/(s·cm²)（以氫為主），Q = 2×10⁻⁹ mbar·L/s，p = 1×10⁻¹¹ mbar，進入超高真空。同一個泵，壓力差了三個多數量級，差別全在 q。~The internal surface is A = 1 m² = 10⁴ cm². Unbaked stainless steel after 10 hours of pumping has q ≈ 1×10⁻⁹ mbar·L/(s·cm²) (teaching assumption, water-dominated), so Q = q·A = 1×10⁻⁵ mbar·L/s; with S_eff = 200 L/s, p = Q/S_eff = 5×10⁻⁸ mbar, merely high vacuum. After a 150–250 °C bakeout q falls to about 2×10⁻¹³ mbar·L/(s·cm²) (hydrogen-dominated), Q = 2×10⁻⁹ mbar·L/s and p = 1×10⁻¹¹ mbar, ultrahigh vacuum. Same pump, more than three orders of magnitude in pressure, and the whole difference is in q.",
+      "verify": "用壓升法量總氣體負載：關閉泵前的閥門，記錄壓力隨時間的上升，Q = V·(dp/dt)；例如 V = 100 L、dp/dt = 1×10⁻¹⁰ mbar/s 時 Q = 1×10⁻⁸ mbar·L/s。壓力線性上升代表漏氣或出氣，再用殘氣分析儀分辨：m/z 28 與 32 比約 4:1 是空氣漏入，m/z 18 為主是水氣出氣，m/z 2 為主是烘烤後的氫。把 Q 除以 S_eff，預測的極限壓力應與重新開閥後的穩態壓力一致。~Measure the total gas load by rate of rise: close the valve in front of the pump, log the pressure versus time and take Q = V·(dp/dt); for V = 100 L and dp/dt = 1×10⁻¹⁰ mbar/s, Q = 1×10⁻⁸ mbar·L/s. A linear rise means a leak or outgassing, and the residual-gas analyser tells them apart: m/z 28 to 32 near 4:1 is an air leak, dominant m/z 18 is water outgassing, dominant m/z 2 is post-bake hydrogen. Dividing Q by S_eff must reproduce the steady pressure observed after the valve is reopened.",
+      "failure": "一顆鎖進盲孔的未開槽螺絲把一小團空氣困在螺紋裡，形成虛漏：抽氣曲線停在 10⁻⁸ mbar 不再下降，殘氣譜像空氣，但氦氣檢漏在外部找不到任何漏點；後果是永遠到不了超高真空，直到換成有排氣槽或通孔的螺絲。~An unvented screw in a blind tapped hole traps a pocket of air in the threads and becomes a virtual leak: the pump-down curve stalls at 10⁻⁸ mbar, the residual-gas spectrum looks like air, yet helium leak detection finds nothing outside; the consequence is a chamber that never reaches ultrahigh vacuum until vented or through-drilled screws replace it.",
+      "misconception": "只要泵夠大，任何腔體都能抽到超高真空，不必管出氣。~A big enough pump reaches ultrahigh vacuum in any chamber, whatever its outgassing."
+    },
+    {
+      "anchor": "抽氣口與連接管~Pumping port and connecting tube",
+      "title": "分子流傳導率與有效抽速~Molecular-flow conductance and effective pumping speed",
+      "mechanism": "分子流下，傳導率只由幾何決定而與壓力無關：對 20 °C 的空氣，薄孔的傳導率約 C ≈ 11.6·A L/s（A 以 cm² 計），長圓管約 C ≈ 12.1·d³/L L/s（d、L 以 cm 計）。串聯元件的傳導率以倒數相加，泵的有效抽速為 1/S_eff = 1/S_pump + 1/C。因為 C 正比於 d³/L，管徑是主導因素：一段又長又細的管子會把再大的泵都節流掉。傳導率還隨氣體分子量以 1/√M 變化，氫的傳導率約為空氣的 3.8 倍，所以同一條管路對不同氣體的「有效抽速」並不相同。~In molecular flow the conductance is fixed by geometry alone and does not depend on pressure: for air at 20 °C a thin aperture has C ≈ 11.6·A L/s (A in cm²) and a long round tube C ≈ 12.1·d³/L L/s (d and L in cm). Series elements combine by adding reciprocals, and the effective pumping speed is 1/S_eff = 1/S_pump + 1/C. Because C scales as d³/L, the tube diameter dominates: a long narrow tube throttles any pump however large. Conductance also varies with molecular mass as 1/√M, hydrogen flowing about 3.8 times more readily than air, so the same line gives different effective speeds for different gases.",
+      "model": "一台 S = 300 L/s 的渦輪泵接在 DN100（d = 10 cm）、L = 30 cm 的管子上：C ≈ 12.1×10³/30 ≈ 403 L/s，S_eff = 1/(1/300 + 1/403) ≈ 172 L/s，只剩標稱抽速的 57%。若改用 DN40（d = 4 cm）同樣 30 cm：C ≈ 12.1×64/30 ≈ 25.8 L/s，S_eff ≈ 1/(1/300 + 1/25.8) ≈ 23.8 L/s，比標稱抽速低了 12 倍，等於把 300 L/s 的泵用成 24 L/s。~A turbopump of S = 300 L/s hung on a DN100 tube (d = 10 cm) of length L = 30 cm: C ≈ 12.1×10³/30 ≈ 403 L/s and S_eff = 1/(1/300 + 1/403) ≈ 172 L/s, only 57% of the nameplate speed. With a DN40 tube (d = 4 cm) of the same 30 cm: C ≈ 12.1×64/30 ≈ 25.8 L/s and S_eff ≈ 1/(1/300 + 1/25.8) ≈ 23.8 L/s, twelve times below nameplate, which turns a 300 L/s pump into a 24 L/s one.",
+      "verify": "用已知流量的校正漏孔（例如 Q = 1×10⁻⁶ mbar·L/s）接到腔體，記錄壓力上升量 Δp，則 S_eff = Q/Δp，直接與傳導率計算比較；若實測比計算低 30% 以上，先檢查閥門是否全開、管內有無擋板或網，再檢查真空計位置是否離泵口太近而讀到局部較低的壓力。~Attach a calibrated leak of known throughput (for example Q = 1×10⁻⁶ mbar·L/s) to the chamber, record the pressure rise Δp and take S_eff = Q/Δp, comparing directly with the conductance calculation; if the measurement falls more than 30% below the calculation, first check that valves are fully open and no baffle or screen sits in the line, then check whether the gauge is so close to the pump port that it reads a locally lower pressure.",
+      "failure": "為了隔離振動，在泵與腔體之間加了一段長波紋管再加一個小通徑閘閥：S_eff 掉到原來的五分之一到十分之一，極限壓力上升一個數量級，而且腔體遠端與真空計之間出現壓力梯度，樣品附近的壓力比顯示值高數倍。~A long bellows plus a small-bore gate valve inserted between pump and chamber to isolate vibration cuts S_eff to a fifth or a tenth, raises the ultimate pressure by an order of magnitude, and creates a pressure gradient between the far end of the chamber and the gauge so that the sample sees several times the displayed pressure.",
+      "misconception": "兩段管子串聯的傳導率等於兩者相加。~The conductance of two tubes in series is the sum of the two."
+    },
+    {
+      "anchor": "316L 腔壁與內側焊道~316L chamber wall and inside weld seams",
+      "title": "材料選擇、焊接與內表面處理~Material selection, welding and internal surface finishing",
+      "mechanism": "超高真空腔體用低碳的 304L／316L／316LN 不鏽鋼，避免焊接與烘烤時碳化物析出造成晶界腐蝕與漏氣；需要極低氫出氣時可先在 950 °C 真空燒結去氫。焊接採 TIG、從真空側全滲透焊接，絕不留下真空側的縫隙或被兩道焊縫夾住的死體積；只能從外側焊的部位也必須全滲透。內表面以電解拋光降低有效表面積並去除加工污染層，清洗流程為去脂、超音波、去離子水沖洗、無塵烘乾。禁用材料包括鋅、鎘、黃銅、一般塑膠與潤滑油脂，彈性體只容許用於高真空區段。~Ultrahigh-vacuum chambers use low-carbon 304L, 316L or 316LN stainless steel so that welding and bakeout do not precipitate carbides that cause intergranular corrosion and leaks; where hydrogen outgassing must be minimal the parts are vacuum-fired at 950 °C beforehand. Welding is TIG with full penetration from the vacuum side, never leaving a vacuum-side crevice or a dead volume trapped between two seams; joints that can only be welded from outside must still fully penetrate. Internal surfaces are electropolished to reduce effective area and strip the machining-contaminated layer, and cleaning runs degreasing, ultrasonic bath, deionised rinse and dust-free drying. Forbidden materials include zinc, cadmium, brass, ordinary plastics and lubricants, with elastomers tolerated only in high-vacuum sections.",
+      "model": "大氣壓對平板蓋的壓力載荷必須算：直徑 300 mm 的簡支圓板承受 Δp = 1 bar = 10⁵ Pa，316L 的 E = 193 GPa、ν = 0.3，板剛度 D = E·t³/[12(1 − ν²)]。t = 10 mm 時 D ≈ 1.77×10⁴ N·m，中央撓度 w ≈ 0.0637·p·r⁴/D = 0.0637×10⁵×(0.15)⁴/1.77×10⁴ ≈ 0.18 mm，最大應力 σ ≈ 1.24·p·(r/t)² ≈ 28 MPa，遠低於降伏。改成 t = 5 mm，撓度隨 1/t³ 增為約 1.5 mm，應力約 112 MPa：仍不會破，但裝在蓋上的光學元件會因抽氣而偏移 1.5 mm。~The atmospheric load on a flat cover must be computed: a simply supported circular plate of 300 mm diameter carries Δp = 1 bar = 10⁵ Pa, 316L has E = 193 GPa and ν = 0.3, and the plate stiffness is D = E·t³/[12(1 − ν²)]. For t = 10 mm, D ≈ 1.77×10⁴ N·m, the centre deflection w ≈ 0.0637·p·r⁴/D = 0.0637×10⁵×(0.15)⁴/1.77×10⁴ ≈ 0.18 mm and the peak stress σ ≈ 1.24·p·(r/t)² ≈ 28 MPa, far below yield. At t = 5 mm the deflection grows as 1/t³ to about 1.5 mm and the stress to about 112 MPa: it still will not fail, but optics mounted on that cover shift by 1.5 mm every time the chamber is pumped.",
+      "verify": "核對材料證明（低碳牌號、真空燒結紀錄），每一道焊縫做染色滲透或射線檢查，並以氦氣檢漏逐條確認 < 1×10⁻¹⁰ mbar·L/s；抽氣時用千分錶量大法蘭與蓋板的撓度並與平板公式比較；用輪廓儀量內表面粗糙度 Ra，確認電解拋光達到規格；最後以壓升法量整腔出氣率，和材料與面積的預估值對照。~Check the material certificates (low-carbon grade, vacuum-firing record), inspect every weld by dye penetrant or radiography and helium-leak-check each seam to below 1×10⁻¹⁰ mbar·L/s; during pump-down measure the deflection of large flanges and covers with a dial indicator and compare with the plate formula; measure the internal roughness Ra with a profilometer to confirm the electropolish meets specification; finally measure the whole-chamber outgassing by rate of rise and compare with the estimate from material and area.",
+      "failure": "為了外觀而從外側焊接、內側留下 0.1 mm 的縫，縫裡困住的空氣與清洗液成為虛漏並發生縫隙腐蝕：腔體停在 10⁻⁹ mbar，烘烤時壓力反而上升；氦檢漏對焊道噴氦有緩慢反應；後果是磨開焊道、重新清洗並從內側重焊。~Welding from the outside for cosmetic reasons leaves a 0.1 mm crevice inside, and the air and cleaning fluid trapped in it become a virtual leak with crevice corrosion: the chamber stalls at 10⁻⁹ mbar, the pressure rises during bakeout, and helium sprayed on the seam gives a slow response; the consequence is grinding out the seam, re-cleaning and re-welding from the inside.",
+      "misconception": "外側焊接比較乾淨，所以超高真空腔體應該從外面焊。~Welding from the outside is cleaner, so ultrahigh-vacuum chambers should be welded externally."
+    },
+    {
+      "anchor": "CF 刀口與無氧銅墊片~CF knife edge and OFHC copper gasket",
+      "title": "ConFlat 金屬密封與可烘烤組件~ConFlat metal sealing and bakeable components",
+      "mechanism": "CF 法蘭靠兩側不鏽鋼刀口咬入退火無氧銅墊片形成冷流金屬密封，外側的限位環阻止銅被擠出；螺栓以星形順序分段上緊，使刀口均勻壓入。銅與不鏽鋼的熱膨脹係數相近（約 17×10⁻⁶/K），所以可以反覆烘烤到 450 °C 而不鬆脫；墊片塑性變形後只能用一次。螺栓鍍銀防止高溫咬死。視窗用玻璃對金屬（Kovar）封接、耐溫受限；饋通、陶瓷絕緣段與全金屬閥都要能同步烘烤。彈性體 O 環會出氣並讓氦滲透，只能用在高真空段，不能進入超高真空的邊界。~A CF flange seals by two stainless knife edges biting into an annealed OFHC copper gasket to form a cold-flow metal seal, with an outer retaining ring that stops the copper extruding; bolts are tightened in stages in a star pattern so the knife edge sinks in evenly. Copper and stainless steel have similar expansion coefficients (about 17×10⁻⁶/K), so the joint survives repeated bakeouts to 450 °C without loosening, but the plastically deformed gasket is single-use. Bolts are silver-plated against galling at temperature. Viewports use glass-to-metal (Kovar) seals with limited bake temperature, and feedthroughs, ceramic breaks and all-metal valves must all bake together. Elastomer O-rings outgas and let helium permeate, so they belong only in high-vacuum sections and never on the ultrahigh-vacuum boundary.",
+      "model": "漏氣預算：腔體有 20 個 CF 法蘭，每個驗收漏率 ≤ 1×10⁻¹¹ mbar·L/s，總漏氣 ≤ 2×10⁻¹⁰ mbar·L/s；以 S_eff = 172 L/s 計，漏氣貢獻的壓力只有 2×10⁻¹⁰/172 ≈ 1.2×10⁻¹² mbar，比烘烤後的氫出氣小一個數量級。若換上一個 Viton O 環密封的 ISO 法蘭，其出氣加滲透約 1×10⁻⁷ mbar·L/s（教學假設），單獨就貢獻 1×10⁻⁷/172 ≈ 5.8×10⁻¹⁰ mbar，整個腔體的極限壓力被這一個環卡在 10⁻⁹ mbar 等級。~Leak budget: the chamber has 20 CF flanges each accepted at ≤ 1×10⁻¹¹ mbar·L/s, so the total leak is ≤ 2×10⁻¹⁰ mbar·L/s; with S_eff = 172 L/s the leak contribution to pressure is only 2×10⁻¹⁰/172 ≈ 1.2×10⁻¹² mbar, an order of magnitude below post-bake hydrogen outgassing. Replace one flange with a Viton O-ring ISO joint whose outgassing plus permeation is about 1×10⁻⁷ mbar·L/s (teaching assumption) and that single ring contributes 1×10⁻⁷/172 ≈ 5.8×10⁻¹⁰ mbar, pinning the whole chamber's ultimate pressure in the 10⁻⁹ mbar range.",
+      "verify": "每個法蘭都以氦氣檢漏儀確認（偵測極限 1×10⁻¹² mbar·L/s）；拆墊片時檢查壓痕，兩面都要有連續完整的環；核對螺栓扭力與星形順序紀錄；烘烤降溫後必須重新檢漏，因為熱循環會讓邊緣漏點打開；每個法蘭的漏率寫進腔體檔案，之後任何開啟都要更新。~Confirm every flange with a helium leak detector (detection limit 1×10⁻¹² mbar·L/s); when a gasket is removed inspect the imprint, which must be a continuous unbroken ring on both faces; check the recorded bolt torque and star sequence; leak-check again after bakeout and cooldown, because thermal cycling opens marginal leaks; write each flange's leak rate into the chamber logbook and update it whenever that flange is opened.",
+      "failure": "用螺絲起子撬墊片時在刀口上劃出一道徑向刮痕，此後該法蘭漏率 10⁻⁷ mbar·L/s，再怎麼鎖緊也無效：氦檢漏在那一圈有明確反應；後果是整個法蘭更換或重新車削刀口，若法蘭是焊在腔體上的，就得割下重焊。~Prying a gasket out with a screwdriver scores a radial scratch across the knife edge, after which that flange leaks 10⁻⁷ mbar·L/s no matter how hard it is tightened: the helium leak detector responds clearly around that ring; the consequence is replacing the flange or re-machining the knife edge, and if the flange is welded to the chamber it must be cut off and re-welded.",
+      "misconception": "CF 法蘭漏氣時，把螺栓鎖得更緊就能解決。~A leaking CF flange is fixed by tightening the bolts harder."
+    },
+    {
+      "anchor": "烘烤加熱帶與熱電偶~Bakeout heater tapes and thermocouples",
+      "title": "烘烤程序與氫出氣的時間行為~Bakeout procedure and the time behaviour of hydrogen outgassing",
+      "mechanism": "未烘烤系統的出氣以水氣為主，脫附率大約隨 1/t 緩慢下降；脫附時間常數遵循 τ = τ₀·exp(E_d/kT)，所以把壁面加熱到 150–250 °C 可以把需要數年的室溫脫附壓縮成一天。烘烤降溫後，剩下的主要氣源是從不鏽鋼本體擴散出來的氫，屬擴散控制、隨 1/√t 衰減，只能靠真空燒結或預先形成氧化層來進一步降低。烘烤時所有零件，包括真空計、閥門與視窗，都必須維持相近溫度，否則最冷處會重新吸附水氣；燈絲在烘烤末期除氣，並在持續抽氣下降溫。~Outgassing of an unbaked system is water-dominated and the desorption rate falls only slowly, roughly as 1/t; the desorption time constant follows τ = τ₀·exp(E_d/kT), so heating the walls to 150–250 °C compresses years of room-temperature desorption into a day. After cooldown the remaining source is hydrogen diffusing out of the bulk stainless steel, a diffusion-limited process decaying as 1/√t that can only be reduced further by vacuum firing or a pre-formed oxide barrier. During bakeout every part, including gauges, valves and viewports, must sit at a similar temperature, otherwise the coldest spot re-adsorbs the water; filaments are degassed at the end of the bake and the system cools under continuous pumping.",
+      "model": "阿瑞尼斯加速比：脫附率正比於 exp(−E_d/kT)。取水的 E_d = 0.9 eV，E_d/k = 0.9/8.617×10⁻⁵ ≈ 10,445 K；從 293 K 升到 423 K（150 °C），加速比 r = exp[10,445×(1/293 − 1/423)] = exp(10.96) ≈ 5.7×10⁴。在 150 °C 烘烤 24 小時，相當於室溫下抽氣 24×5.7×10⁴ ≈ 1.4×10⁶ 小時，約 160 年。烘烤後氫出氣 q ≈ 2×10⁻¹³ mbar·L/(s·cm²)，1 m² 腔體以 S_eff = 172 L/s 得 p ≈ 1.2×10⁻¹¹ mbar；若材料先經 950 °C 真空燒結使 q 降到 1×10⁻¹⁴，p ≈ 6×10⁻¹³ mbar。~Arrhenius acceleration: the desorption rate scales as exp(−E_d/kT). Take E_d = 0.9 eV for water, so E_d/k = 0.9/8.617×10⁻⁵ ≈ 10,445 K; going from 293 K to 423 K (150 °C) gives r = exp[10,445×(1/293 − 1/423)] = exp(10.96) ≈ 5.7×10⁴. A 24-hour bake at 150 °C is thus equivalent to 24×5.7×10⁴ ≈ 1.4×10⁶ hours, about 160 years, of room-temperature pumping. Post-bake hydrogen outgassing q ≈ 2×10⁻¹³ mbar·L/(s·cm²) gives p ≈ 1.2×10⁻¹¹ mbar for the 1 m² chamber at S_eff = 172 L/s; if the material was vacuum-fired at 950 °C so that q drops to 1×10⁻¹⁴, p ≈ 6×10⁻¹³ mbar.",
+      "verify": "在最厚的法蘭、閥體、波紋管與視窗等最冷與最熱處貼熱電偶，要求全部高於設定溫度減 20 K；烘烤期間用殘氣分析儀追蹤 m/z 18 的水峰下降、m/z 2 的氫峰取而代之；降溫後記錄壓力曲線，最終殘氣譜應以氫為主、CO（m/z 28）與 CH₄（m/z 16）為次；把最終壓力與 p = q·A/S_eff 的預測比較，差距超過三倍就要找冷點或漏點。~Fix thermocouples at the coldest and hottest locations, the thickest flanges, valve bodies, bellows and viewports, and require all of them above the setpoint minus 20 K; during the bake track the m/z 18 water peak falling and the m/z 2 hydrogen peak taking over on the residual-gas analyser; after cooldown log the pressure curve, and the final spectrum should be hydrogen-dominated with CO (m/z 28) and CH₄ (m/z 16) secondary; compare the final pressure with the prediction p = q·A/S_eff, and a gap beyond a factor of three means a cold spot or a leak.",
+      "failure": "一段沒有包覆加熱帶的波紋管在烘烤時只有 60 °C，成為冷點：整個腔體脫附出來的水在它上面重新凝結，烘烤結束後它再以數週的時間慢慢釋放；症狀是 m/z 18 在烘烤後仍然突出，壓力停在 10⁻⁹ 而非 10⁻¹¹ mbar。另一種失效是視窗超過允許溫度，玻璃對金屬封接龜裂，降溫時才出現漏氣。~A bellows left unwrapped sits at 60 °C during the bake and becomes a cold spot: water desorbed from the whole chamber recondenses on it and is then released slowly over weeks; the symptom is an m/z 18 peak still prominent after the bake and a pressure stuck at 10⁻⁹ rather than 10⁻¹¹ mbar. A second failure is a viewport driven past its rated temperature, cracking the glass-to-metal seal so that a leak appears only on cooldown.",
+      "misconception": "烘烤越熱越好，溫度只受加熱帶功率限制。~A hotter bake is always better and only the heater power limits the temperature."
+    },
+    {
+      "anchor": "Bayard–Alpert 離子真空計與 RGA~Bayard–Alpert ion gauge and RGA",
+      "title": "超高真空壓力量測與誤差預算~Ultrahigh-vacuum pressure measurement and its error budget",
+      "mechanism": "熱陰極 Bayard–Alpert 真空計以燈絲發射電子電流 I_e，電子在柵極內游離氣體，離子被細長的收集極捕獲，I⁺ = S·I_e·p，靈敏度 S 對氮約 10–25 mbar⁻¹。下限由 X 光極限決定：電子打在柵極產生軟 X 光，射到收集極釋出光電子，形成與離子電流無法區分的背景，裸式 BA 計約 10⁻¹¹ mbar，引出式（extractor）計可到 10⁻¹²。靈敏度隨氣體種類改變（相對氮：He 0.18、H₂ 0.46、Ar 1.3），顯示值是「氮當量」，必須用殘氣分析儀的成分來修正。真空計本身會出氣、也會以約 0.1 L/s 抽氣，而電子激發脫附的離子會偽裝成壓力。~A hot-cathode Bayard–Alpert gauge emits an electron current I_e from the filament, the electrons ionise gas inside the grid and the ions are caught by a thin collector wire, giving I⁺ = S·I_e·p with a sensitivity S of about 10–25 mbar⁻¹ for nitrogen. The lower limit is the X-ray limit: electrons striking the grid produce soft X-rays that release photoelectrons from the collector, a background indistinguishable from ion current, about 10⁻¹¹ mbar for a nude BA gauge and 10⁻¹² for an extractor gauge. Sensitivity depends on the gas (relative to nitrogen: He 0.18, H₂ 0.46, Ar 1.3), so the display is a nitrogen equivalent that must be corrected with the composition from a residual-gas analyser. The gauge itself outgasses, pumps at about 0.1 L/s, and electron-stimulated desorption ions masquerade as pressure.",
+      "model": "BA 計 S = 20 mbar⁻¹、I_e = 1 mA：在 p = 1×10⁻¹⁰ mbar，I⁺ = 20×10⁻³×10⁻¹⁰ = 2×10⁻¹² A = 2 pA；X 光極限相當於 1×10⁻¹¹ mbar，即 0.2 pA 的固定背景。在真實壓力 1×10⁻¹¹ mbar 時離子電流與背景相等，顯示 2×10⁻¹¹，誤差 100%。氣體修正：烘烤後殘氣以氫為主，顯示 1×10⁻¹⁰ mbar（氮當量）對應真實氫分壓 1×10⁻¹⁰/0.46 ≈ 2.2×10⁻¹⁰ mbar。不確定度預算：靈敏度 ±15%、氣體修正 ±10%、位置與傳導率 ±10%，均方根合成約 ±21%。~A BA gauge with S = 20 mbar⁻¹ and I_e = 1 mA: at p = 1×10⁻¹⁰ mbar, I⁺ = 20×10⁻³×10⁻¹⁰ = 2×10⁻¹² A = 2 pA; an X-ray limit equivalent to 1×10⁻¹¹ mbar is a fixed 0.2 pA background. At a true pressure of 1×10⁻¹¹ mbar the ion current equals that background, the display shows 2×10⁻¹¹ and the error is 100%. Gas correction: with hydrogen-dominated post-bake residual gas, a display of 1×10⁻¹⁰ mbar (nitrogen equivalent) corresponds to a true hydrogen partial pressure of 1×10⁻¹⁰/0.46 ≈ 2.2×10⁻¹⁰ mbar. Uncertainty budget: sensitivity ±15%, gas correction ±10%, location and conductance ±10%, root-sum-square about ±21%.",
+      "verify": "在重疊量程內用旋轉轉子真空計或經校正的參考計核對 BA 計的靈敏度；用殘氣分析儀取得成分後套用氣體修正係數；把 BA 計與引出式真空計並排比較，兩者在 10⁻¹¹ mbar 以下分岔的位置就是 X 光極限；除氣後等待數小時再讀值，並把燈絲關閉再開啟觀察電子激發脫附的瞬態；最後把靈敏度、氣體修正與位置效應寫成不確定度預算表。~Check the BA gauge sensitivity against a spinning-rotor gauge or a calibrated reference gauge in their overlapping range; obtain the composition from the residual-gas analyser and apply the gas-correction factors; compare the BA gauge side by side with an extractor gauge, and the point below 10⁻¹¹ mbar where they diverge is the X-ray limit; after degassing wait several hours before reading, and switch the filament off and on to observe the electron-stimulated-desorption transient; finally write sensitivity, gas correction and location effects into an uncertainty budget table.",
+      "failure": "真空計裝在泵口旁邊一段細長管上，讀到的壓力比樣品區低五倍：紙面上達到 10⁻¹⁰ mbar，樣品卻在 10⁻⁹ mbar；以黏附係數 1 估算，10⁻⁹ mbar 時一層單分子層約 1000 秒就形成，10⁻¹¹ mbar 則要約一天，表面科學數據因此被錯誤詮釋。~A gauge mounted on a narrow stub next to the pump port reads five times lower than the sample region: 10⁻¹⁰ mbar on paper while the sample sits at 10⁻⁹ mbar; with a sticking coefficient of 1 a monolayer forms in about 1000 s at 10⁻⁹ mbar but takes about a day at 10⁻¹¹ mbar, so surface-science data are misinterpreted.",
+      "misconception": "離子真空計顯示的數字就是腔內的絕對總壓。~The number on the ion gauge is the absolute total pressure in the chamber."
+    },
+    {
+      "anchor": "離子泵、TSP 與 NEG~Ion pump, TSP and NEG",
+      "title": "超高真空泵組合與長期維持~Ultrahigh-vacuum pump combinations and long-term maintenance",
+      "mechanism": "超高真空靠泵的組合而非單一泵：渦輪泵加乾式前級泵負責粗抽與烘烤期間的大氣體負載；濺射離子泵沒有活動件，靠游離與掩埋抽所有氣體，包括惰性氣體，對氫的抽速高；鈦昇華泵對活性氣體有極大抽速，但對甲烷與惰性氣體無效；非蒸發吸氣劑（NEG）是鋯釩鈦合金，在 180–450 °C 活化後把氫與活性氣體吸入本體，CERN 發展的 NEG 薄膜鍍層更把腔壁本身變成一個低出氣的泵。烘烤完成後通常把渦輪泵用全金屬閥隔離，消除振動與油氣回流風險；此後殘氣以氫與甲烷為主，而甲烷只有離子泵能抽。~Ultrahigh vacuum rests on a combination of pumps rather than one: a turbopump with a dry backing pump handles roughing and the heavy gas load during bakeout; a sputter-ion pump has no moving parts, pumps every gas including noble gases by ionisation and burial, and pumps hydrogen fast; a titanium sublimation pump offers enormous speed for active gases but none for methane or noble gases; a non-evaporable getter (NEG) of zirconium–vanadium–titanium alloy, activated at 180–450 °C, absorbs hydrogen and active gases into its bulk, and the NEG thin-film coating developed at CERN turns the chamber wall itself into a low-outgassing pump. After the bake the turbopump is usually isolated behind an all-metal valve to remove vibration and backstreaming risk; the residual gas is then hydrogen and methane, and only the ion pump removes methane.",
+      "model": "並聯泵的抽速相加。烘烤後的氫負載 Q = 2×10⁻⁹ mbar·L/s（1 m² 腔體）。只用離子泵，對氫抽速約為氮標稱 150 L/s 的 1.7 倍 ≈ 250 L/s：p = 2×10⁻⁹/250 = 8×10⁻¹² mbar。加上經埠口傳導率限制後有效 500 L/s 的鈦昇華泵與 400 L/s 的 NEG 匣：S_total ≈ 250 + 500 + 400 = 1150 L/s，p ≈ 1.7×10⁻¹² mbar。NEG 對 CO 的容量取 0.2 mbar·L（教學假設），在 Q_CO = 1×10⁻¹⁰ mbar·L/s 下可用 2×10⁹ s ≈ 63 年，所以實務上只有每次破真空後才需要重新活化。~Parallel pumps add their speeds. Post-bake hydrogen load Q = 2×10⁻⁹ mbar·L/s for the 1 m² chamber. With the ion pump alone, whose hydrogen speed is about 1.7 times its nitrogen rating of 150 L/s, roughly 250 L/s: p = 2×10⁻⁹/250 = 8×10⁻¹² mbar. Adding a titanium sublimation pump with 500 L/s effective after port conductance and a 400 L/s NEG cartridge: S_total ≈ 250 + 500 + 400 = 1150 L/s and p ≈ 1.7×10⁻¹² mbar. Taking a NEG capacity for CO of 0.2 mbar·L (teaching assumption), at Q_CO = 1×10⁻¹⁰ mbar·L/s it lasts 2×10⁹ s ≈ 63 years, so in practice reactivation is needed only after each venting.",
+      "verify": "隔離渦輪泵後記錄 48 小時壓力，應持平或下降；殘氣譜以氫為主、甲烷與 CO 為次；把離子泵電流（正比於壓力）與真空計讀值對照；逐一短暫關閉某個泵，壓力階躍 Δp/p ≈ S_i/S_total 就是該泵在總抽速中的份額，與預算表比對；NEG 活化後確認氫分壓下降的幅度與匣的標稱抽速一致。~After isolating the turbopump log the pressure for 48 hours, which should hold or fall; the residual spectrum should be hydrogen-dominated with methane and CO secondary; compare the ion-pump current, proportional to pressure, with the gauge reading; switch each pump off briefly in turn, and the pressure step Δp/p ≈ S_i/S_total is that pump's share of the total speed, to be compared with the budget; after NEG activation confirm that the drop in hydrogen partial pressure matches the cartridge's rated speed.",
+      "failure": "二極式離子泵在用含氬氣體破真空後出現氬不穩定：被掩埋的氬週期性釋出，壓力每隔數分鐘突波一次；另一種是鈦昇華泵剝落的鈦片造成高壓短路，或 NEG 在破真空後飽和未再活化，腔體卡在 10⁻⁹ mbar 而殘氣以氫為主。~A diode ion pump vented with an argon-rich gas develops argon instability: buried argon is released periodically and the pressure bursts every few minutes; other cases are a flake of titanium from the sublimation pump shorting the high voltage, or a NEG saturated by a vent and never reactivated, leaving the chamber stuck at 10⁻⁹ mbar with hydrogen as the main residual gas.",
+      "misconception": "離子泵的電流讀數永遠等於真實壓力。~The ion-pump current reading always equals the true pressure."
+    },
+    {
+      "anchor": "驗收紀錄與腔體檔案~Acceptance record and chamber logbook",
+      "title": "從抽氣曲線到驗收與交接~From pump-down curve to acceptance and handoff",
+      "mechanism": "驗收是一組可重複的量測而非一次讀數：整腔氦漏率在烘烤與熱循環後 < 1×10⁻¹⁰ mbar·L/s；在規定烘烤條件下（例如 150 °C、48 小時，再抽氣降溫 24 小時）用校正真空計加成分修正量得極限壓力 ≤ 5×10⁻¹¹ mbar；壓升法出氣率低於目標；埠口軸線在抽氣狀態下的位置與角度公差（例如 ±0.1 mm、±0.1°），因為大氣撓度會移動它們。交接文件包含材料證明、焊道圖、檢漏紀錄、烘烤紀錄、殘氣譜、真空計校正證書與埠口配置圖；破真空必須用乾燥氮氣、時間最短、並維持正壓，之後依排程重新烘烤；使用者要受訓：手套、專用工具、不留指紋。~Acceptance is a repeatable set of measurements, not one reading: whole-chamber helium leak rate below 1×10⁻¹⁰ mbar·L/s after bake and thermal cycle; ultimate pressure ≤ 5×10⁻¹¹ mbar under a specified bake (for example 150 °C for 48 hours, then 24 hours of pumped cooldown) measured with a calibrated gauge and composition correction; rate-of-rise outgassing below target; and port-axis position and angle tolerances under vacuum (for example ±0.1 mm and ±0.1°), because atmospheric deflection moves them. The handoff package contains material certificates, weld map, leak-check log, bake log, residual-gas spectra, gauge calibration certificates and the port map; venting must use dry nitrogen, as briefly as possible and under positive pressure, followed by a scheduled re-bake; users are trained in gloves, dedicated tools and no fingerprints.",
+      "model": "抽氣時間模型：粗抽段為黏滯流，V = 100 L 以 S = 5 m³/h ≈ 1.39 L/s 的乾式泵從 1000 mbar 抽到 0.1 mbar，t = (V/S)·ln(p₀/p₁) = 72×ln(10⁴) ≈ 72×9.21 ≈ 663 s ≈ 11 min。高真空段由水氣出氣主導，q(t) ≈ q₁ₕ/t（t 以小時計），取 q₁ₕ = 1×10⁻⁸ mbar·L/(s·cm²)、A = 10⁴ cm²、S_eff = 172 L/s：p(1 h) ≈ 5.8×10⁻⁷、p(10 h) ≈ 5.8×10⁻⁸、p(100 h) ≈ 5.8×10⁻⁹ mbar，抽四天也進不了超高真空；只有烘烤能把它推到 10⁻¹¹ mbar，這就是驗收必須規定烘烤條件的原因。~Pump-down time model: roughing is viscous flow, and a dry pump of S = 5 m³/h ≈ 1.39 L/s takes V = 100 L from 1000 mbar to 0.1 mbar in t = (V/S)·ln(p₀/p₁) = 72×ln(10⁴) ≈ 72×9.21 ≈ 663 s ≈ 11 min. The high-vacuum phase is governed by water outgassing q(t) ≈ q₁ₕ/t (t in hours); with q₁ₕ = 1×10⁻⁸ mbar·L/(s·cm²), A = 10⁴ cm² and S_eff = 172 L/s: p(1 h) ≈ 5.8×10⁻⁷, p(10 h) ≈ 5.8×10⁻⁸, p(100 h) ≈ 5.8×10⁻⁹ mbar, so four days of pumping never reaches ultrahigh vacuum; only a bake pushes it to 10⁻¹¹ mbar, which is why acceptance must specify the bake conditions.",
+      "verify": "依序執行驗收程序：氦檢漏、抽氣曲線與模型比對、依規定烘烤、極限壓力與殘氣成分、壓升法、熱循環、最終檢漏；每一項與驗收紀錄的限值逐欄比對。埠口位置用抽氣狀態下的光學準直或座標量測確認；交付腔體檔案並由接手的工程師簽署，之後每次開腔、換墊片、烘烤都要追加紀錄。~Run the acceptance sequence in order: helium leak check, pump-down curve against the model, bake to specification, ultimate pressure with residual-gas composition, rate of rise, thermal cycle and final leak check, comparing each with the limits in the acceptance record. Confirm port positions under vacuum by optical alignment or coordinate measurement; deliver the chamber logbook with the receiving engineer's signature, and append a record for every later opening, gasket change and bake.",
+      "failure": "驗收時沒烘烤、在 5×10⁻⁹ mbar 就簽收，半年後實驗需要 10⁻¹¹ mbar，才發現腔上有一個 Viton 密封閥與一個不可烘烤的饋通，不重建就做不到；另一種是驗收後用室內空氣破真空，壁面重新吸附水氣，重新烘烤多花數天。~Signing off unbaked at 5×10⁻⁹ mbar, then six months later needing 10⁻¹¹ mbar, reveals a Viton-sealed valve and a non-bakeable feedthrough on the chamber that make the target unreachable without rebuilding; another case is venting with room air after acceptance, so the walls re-adsorb water and the re-bake costs days.",
+      "misconception": "腔體到過一次超高真空之後，任何破真空後都能很快回到同樣壓力。~Once a chamber has reached ultrahigh vacuum it returns to the same pressure quickly after any venting."
+    }
+  ],
+  "example": "極限壓力鏈練習：腔體 V = 100 L、內表面 A = 1 m² = 10⁴ cm²，渦輪泵 300 L/s 經 DN100、30 cm 管子接入，C ≈ 12.1×1000/30 ≈ 403 L/s，S_eff = 1/(1/300 + 1/403) ≈ 172 L/s。漏氣：20 個 CF 法蘭各 ≤ 1×10⁻¹¹ mbar·L/s，合計 2×10⁻¹⁰，壓力貢獻 1.2×10⁻¹² mbar。未烘烤抽 10 小時：q = 1×10⁻⁹ mbar·L/(s·cm²)，Q = 1×10⁻⁵ mbar·L/s，p = 1×10⁻⁵/172 ≈ 5.8×10⁻⁸ mbar。150 °C 烘烤 48 小時後：q_H₂ = 2×10⁻¹³，Q = 2×10⁻⁹，p = 2×10⁻⁹/172 ≈ 1.2×10⁻¹¹ mbar。再並聯離子泵（對氫 250 L/s）與 NEG 匣 400 L/s：S_total = 172 + 250 + 400 = 822 L/s，p = 2×10⁻⁹/822 ≈ 2.4×10⁻¹² mbar。真空計讀值：氫的相對靈敏度 0.46，BA 計顯示約 0.46×2.4×10⁻¹² ≈ 1.1×10⁻¹² mbar 的氮當量，已低於其 1×10⁻¹¹ mbar 的 X 光極限，顯示會停在 10⁻¹¹ 附近，必須改用引出式真空計才能證明達標。數值為教學假設，不代表任何實機規格。~Ultimate-pressure chain exercise: chamber V = 100 L with internal surface A = 1 m² = 10⁴ cm², a 300 L/s turbopump connected through a DN100 tube 30 cm long, C ≈ 12.1×1000/30 ≈ 403 L/s and S_eff = 1/(1/300 + 1/403) ≈ 172 L/s. Leaks: 20 CF flanges at ≤ 1×10⁻¹¹ mbar·L/s each, 2×10⁻¹⁰ in total, contributing 1.2×10⁻¹² mbar. Unbaked after 10 hours: q = 1×10⁻⁹ mbar·L/(s·cm²), Q = 1×10⁻⁵ mbar·L/s and p = 1×10⁻⁵/172 ≈ 5.8×10⁻⁸ mbar. After a 48-hour bake at 150 °C: q_H₂ = 2×10⁻¹³, Q = 2×10⁻⁹ and p = 2×10⁻⁹/172 ≈ 1.2×10⁻¹¹ mbar. Adding an ion pump (250 L/s for hydrogen) and a 400 L/s NEG cartridge in parallel: S_total = 172 + 250 + 400 = 822 L/s and p = 2×10⁻⁹/822 ≈ 2.4×10⁻¹² mbar. Gauge reading: with a relative sensitivity of 0.46 for hydrogen the BA gauge displays about 0.46×2.4×10⁻¹² ≈ 1.1×10⁻¹² mbar nitrogen equivalent, below its 1×10⁻¹¹ mbar X-ray limit, so the display sticks near 10⁻¹¹ and an extractor gauge is needed to prove the target. Values are teaching assumptions, not any product's specification.",
+  "history": "1950 年 Bayard 與 Alpert 把離子真空計的收集極改成細絲，第一次量到 10⁻⁸ Torr 以下的壓力，Alpert 隨後在西屋建立了全金屬、可烘烤的超高真空系統；1958 年 Varian 推出濺射離子泵，1962 年 Wheeler 與 Carlson 在 Varian 發明刀口加銅墊片的 ConFlat 法蘭，奠定今天的標準零件體系。1990 年代末 CERN 的 Benvenuti 等人發展 NEG 薄膜鍍層以供大型加速器使用。如今超高真空腔體是表面科學、分子束磊晶、加速器、光學原子鐘與重力波干涉儀的共同基礎，LIGO 的 4 km 真空管即是世界上最大的超高真空系統之一。~In 1950 Bayard and Alpert replaced the ion-gauge collector with a thin wire and measured below 10⁻⁸ Torr for the first time, and Alpert then built all-metal bakeable ultrahigh-vacuum systems at Westinghouse; Varian introduced the sputter-ion pump in 1958, and in 1962 Wheeler and Carlson at Varian invented the knife-edge, copper-gasket ConFlat flange that defines today's standard component system. In the late 1990s Benvenuti and colleagues at CERN developed NEG thin-film coatings for large accelerators. Ultrahigh-vacuum chambers now underpin surface science, molecular-beam epitaxy, accelerators, optical atomic clocks and gravitational-wave interferometers, LIGO's 4 km beam tubes being among the largest ultrahigh-vacuum systems in the world.",
+  "place": {
+    "name": "Kurt J. Lesker 真空腔體製造參照點~Kurt J. Lesker vacuum-chamber manufacturing reference",
+    "country": "美國~United States",
+    "lat": 40.291,
+    "lng": -79.929,
+    "query": "Kurt J. Lesker Company Jefferson Hills Pennsylvania"
+  },
+  "sources": [
+    {
+      "key": "lesker-vacuum-chambers",
+      "title": "Kurt J. Lesker：真空腔體",
+      "titleEn": "Kurt J. Lesker Company: Vacuum chambers",
+      "publisher": "Kurt J. Lesker Company",
+      "url": "https://www.lesker.com/newweb/vacuumchambers.cfm",
+      "sourceType": "primary",
+      "scope": "廠商的腔體製造公開資訊：材料、法蘭配置、焊接與客製腔體的工程入口；不提供清洗或製程配方。",
+      "scopeEn": "Vendor's public chamber-manufacturing information: materials, flange configuration, welding and the engineering entry point for custom chambers; no cleaning or process recipes."
+    },
+    {
+      "key": "cern-cas-vacuum-chiggiato",
+      "title": "CERN 加速器學校講義：超導裝置的真空技術（Chiggiato）",
+      "titleEn": "CERN Accelerator School lecture: Vacuum technology for superconducting devices (Chiggiato)",
+      "publisher": "CERN / arXiv",
+      "url": "https://www.arxiv.org/pdf/1501.07162",
+      "sourceType": "primary",
+      "scope": "分子流、傳導率、抽速、出氣與烘烤、渦輪泵與低溫抽氣的公開教材，含 LHC 真空系統概述。",
+      "scopeEn": "Public lecture notes on molecular flow, conductance, pumping speed, outgassing and bakeout, turbopumps and cryopumping, with an overview of the LHC vacuum system."
+    },
+    {
+      "key": "leybold-conductance",
+      "title": "Leybold 真空基礎：如何計算真空傳導率",
+      "titleEn": "Leybold vacuum fundamentals: How is conductance in vacuum calculated",
+      "publisher": "Leybold",
+      "url": "https://www.leybold.com/en/knowledge/vacuum-fundamentals/fundamental-physics-of-vacuum/how-to-calculate-vacuum-conductance",
+      "sourceType": "primary",
+      "scope": "分子流下孔口與圓管傳導率公式（空氣 20 °C、單位 L/s 與 cm）與串聯組合的公開說明。",
+      "scopeEn": "Public explanation of aperture and tube conductance formulas in molecular flow (air at 20 °C, units L/s and cm) and of series combination."
+    },
+    {
+      "key": "mks-cf-components",
+      "title": "MKS：CF 超高真空法蘭與組件",
+      "titleEn": "MKS: CF UHV flange components and fittings",
+      "publisher": "MKS Inc.",
+      "url": "https://www.mks.com/c/cf-vacuum-components",
+      "sourceType": "primary",
+      "scope": "CF 法蘭、銅墊片、接頭與波紋管的公開產品分類與尺寸系列。",
+      "scopeEn": "Public product classification and size series of CF flanges, copper gaskets, fittings and bellows."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Kurt J. Lesker Company",
+      "nameEn": "Kurt J. Lesker Company",
+      "business": "真空腔體、法蘭與饋通、泵與真空計的製造與整合，提供客製化超高真空腔體。",
+      "businessEn": "Manufacturer and integrator of vacuum chambers, flanges and feedthroughs, pumps and gauges, including custom ultrahigh-vacuum chambers.",
+      "url": "https://www.lesker.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "客製腔體製造與標準真空零件的公開資訊",
+      "roleEn": "Public information on custom chamber manufacturing and standard vacuum components"
+    },
+    {
+      "name": "MKS",
+      "nameEn": "MKS Inc.",
+      "business": "真空量測與控制、CF 與 ISO 真空組件、壓力計與質流控制。",
+      "businessEn": "Vacuum measurement and control, CF and ISO vacuum components, pressure gauges and mass-flow control.",
+      "url": "https://www.mks.com/",
+      "investorUrl": "https://investor.mks.com/",
+      "security": {"symbol": "MKSI", "exchange": "NASDAQ", "currency": "USD"},
+      "role": "CF 金屬密封組件與真空量測的公開產品資訊",
+      "roleEn": "Public product information on CF metal-sealed components and vacuum measurement"
+    },
+    {
+      "name": "普發真空",
+      "nameEn": "Pfeiffer Vacuum",
+      "business": "渦輪分子泵、前級泵、真空計與檢漏儀，隸屬 Busch 集團。",
+      "businessEn": "Turbomolecular pumps, backing pumps, vacuum gauges and leak detectors, part of the Busch Group.",
+      "url": "https://www.pfeiffervacuum.com/us/en/",
+      "investorUrl": "",
+      "security": null,
+      "role": "超高真空腔體的抽氣與檢漏設備",
+      "roleEn": "Pumping and leak-detection equipment for ultrahigh-vacuum chambers"
+    },
+    {
+      "name": "歐洲核子研究組織 CERN",
+      "nameEn": "CERN",
+      "business": "大型加速器的真空、表面與鍍膜技術，發展 NEG 薄膜鍍層。",
+      "businessEn": "Vacuum, surface and coating technology for large accelerators; developer of NEG thin-film coatings.",
+      "url": "https://home.cern/",
+      "investorUrl": "",
+      "security": null,
+      "role": "NEG 鍍層與加速器真空技術的公開教材",
+      "roleEn": "Public teaching material on NEG coatings and accelerator vacuum technology"
+    }
+  ],
+  "related": ["a454", "a435"],
+  "architectureNodes": [["316L 腔體與內側焊道", "316L chamber body and inside welds"], ["CF 法蘭與銅墊片", "CF flanges and copper gaskets"], ["渦輪泵與乾式前級泵", "Turbopump and dry backing pump"], ["離子泵、TSP 與 NEG", "Ion pump, TSP and NEG"], ["烘烤加熱與溫控", "Bakeout heating and control"], ["離子真空計與 RGA", "Ion gauge and RGA"]],
+  "architectureEdges": [[0, 1], [1, 2], [1, 3], [4, 0], [1, 5], [2, 5]]
+}

@@ -9,7 +9,9 @@ const configuration={mode:'disabled',protected:true,checkoutAvailable:false,free
 const response=data=>({ok:true,json:async()=>data});
 await loadBillingConfig({fetchImpl:async()=>response(configuration),force:true});
 const markup=membershipMarkup({user:{name:'<script>alert(1)</script>'}});
-assert.match(markup,/課程權限已啟用保護/);
+assert.match(markup,/線上付款尚未由站長啟用/);
+assert.match(markup,/第一節免費試學/);
+assert.doesNotMatch(markup,/六門跨領域課程/);
 assert.doesNotMatch(markup,/目前可使用完整教材展示版/);
 assert.match(markup,/https:\/\/academy.example\/academy\/commerce-terms.html/);
 assert.match(markup,/&lt;script&gt;/);
@@ -41,12 +43,13 @@ assert.equal(evidence.expectedUserId,'alice');
 assert.equal(evidence.revision,'current-revision');
 
 await loadBillingConfig({fetchImpl:async()=>response({...configuration,mode:'sandbox',checkoutAvailable:true}),force:true});
-const button={dataset:{buyPlan:'all-30'},disabled:false}, status={textContent:''};
-const root={querySelectorAll:selector=>selector==='[data-buy-plan]'?[button]:[],querySelector:selector=>selector==='#billingTerms'?{checked:true}:selector==='#billingStatus'?status:null};
+const buy={dataset:{buyPlan:'all-30'},disabled:false}, button={dataset:{},disabled:false}, status={textContent:''};
+const root={querySelectorAll:selector=>selector==='[data-buy-plan]'?[buy]:[],querySelector:selector=>selector==='#billingTerms'?{checked:true}:selector==='#billingStatus'?status:selector==='#serverCheckout'?button:null};
 let submitted=false;
 globalThis.document={createElement(tag){return tag==='form'?{append(){},submit(){submitted=true;}}:{};},body:{append(){}}};
 globalThis.fetch=async()=>response({action:'https://attacker.example/pay',fields:{MerchantID:'test'}});
 bindMembership(root,{user:{id:'alice',name:'Alice'}});
+buy.onclick();
 await button.onclick();
 assert.equal(submitted,false);
 assert.match(status.textContent,/Unexpected checkout destination/);

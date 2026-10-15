@@ -1,3 +1,4 @@
+import hashlib
 """Run: python3 -m unittest discover -s tests -p 'test_*.py' -v"""
 import http.client
 import json
@@ -49,7 +50,7 @@ class PortableSecurityTests(unittest.TestCase):
         return status, output_headers, value
 
     def register(self, email):
-        status, headers, value = self.request("POST", "/api/register", {"email": email, "name": "工程學徒", "password": "Strong-learning-passphrase-123"})
+        status, headers, value = self.request("POST", "/api/register", {"email": email, "name": "工程學徒", "password": "Strong-learning-passphrase-123", "username": "u" + hashlib.sha256(email.encode()).hexdigest()[:12], "phone": "+8869" + str(int(hashlib.sha256(email.encode()).hexdigest(), 16) % 10**8).zfill(8)})
         self.assertEqual(status, 200, value)
         self.assertIn("HttpOnly", headers["Set-Cookie"])
         self.assertIn("SameSite=Lax", headers["Set-Cookie"])
@@ -83,7 +84,7 @@ class PortableSecurityTests(unittest.TestCase):
 
     def test_authentication_origin_validation_and_unavailable_ai(self):
         self.assertEqual(self.request("GET", "/api/progress", headers={"oai-authenticated-user-id": "forged", "oai-authenticated-user-email": "attacker@example.test"})[0], 401)
-        self.assertEqual(self.request("POST", "/api/register", {"email": "short@example.test", "name": "Short", "password": "short"})[0], 400)
+        self.assertEqual(self.request("POST", "/api/register", {"email": "short@example.test", "name": "Short", "password": "short", "username": "shortpw", "phone": "+886911111111"})[0], 400)
         cookie, _ = self.register("learner@example.test")
         payload = {"projectId": "project-1", "completed": [], "notes": "", "assembly": []}
         self.assertEqual(self.request("PUT", "/api/progress", payload, cookie, "https://attacker.test")[0], 403)

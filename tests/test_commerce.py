@@ -21,7 +21,7 @@ class CommerceTests(unittest.TestCase):
         root = Path(self.tmp.name)
         self.public = root / "public"
         (self.public / "data/course-parts").mkdir(parents=True)
-        self.course = {"id": "paid-course", "title": "Paid", "titleEn": "Paid course", "summary": "Public summary", "category": "electronics", "stepCount": 2, "stages": [{"id": "stage1", "steps": [{"id": "s1", "objective": "Private first lesson", "quiz": {"answer": 1}}, {"id": "s2", "objective": "Private second lesson", "quiz": {"answer": 0}}]}]}
+        self.course = {"id": "paid-course", "title": "Paid", "titleEn": "Paid course", "summary": "Public summary", "category": "electronics", "stepCount": 2, "stages": [{"id": "stage1", "steps": [{"id": "s1", "objective": "Free first lesson", "quiz": {"answer": 1}}]}, {"id": "stage2", "steps": [{"id": "s2", "objective": "Private second lesson", "quiz": {"answer": 0}}]}]}
         self.free = {**copy.deepcopy(self.course), "id": "semiconductor"}
         (self.public / "data/featured.json").write_text(json.dumps([self.course, self.free]))
         (self.public / "data/catalog.json").write_text('[{"id":"paid-course","title":"Public"}]')
@@ -43,7 +43,7 @@ class CommerceTests(unittest.TestCase):
         self.thread.start()
         with self.server.app.db() as db:
             for uid in ("alice", "bob"):
-                db.execute("INSERT INTO users VALUES(?,?,?,?,?,?)", (uid, uid + "@example.test", "學徒 " + uid, b"salt", b"hash", 0))
+                db.execute("INSERT INTO users(id,email,name,salt,password_hash,created_at) VALUES(?,?,?,?,?,?)", (uid, uid + "@example.test", "學徒 " + uid, b"salt", b"hash", 0))
             import hashlib
             self.token = "A" * 64
             db.execute("INSERT INTO sessions VALUES(?,?,?)", (hashlib.sha256(self.token.encode()).hexdigest(), "alice", int(time.time()) + 10000))
@@ -203,23 +203,31 @@ class CommerceTests(unittest.TestCase):
         status, _, result = self.request("GET", "/api/curriculum")
         self.assertEqual(status, 200)
         paid = next(c for c in result if c["id"] == "paid-course")
-        self.assertTrue(paid["locked"])
-        self.assertEqual(paid["stages"], [])
-        self.assertNotIn("Private first lesson", json.dumps(paid))
-        self.assertTrue(next(c for c in result if c["id"] == "semiconductor")["stages"])
+        # V12: the first stage is a free trial; later stages are stubs without lesson text.
+        self.assertTrue(paid["partial"])
+        self.assertIn("Free first lesson", json.dumps(paid))
+        self.assertNotIn("Private second lesson", json.dumps(paid))
+        self.assertTrue(all(step.get("locked") for step in paid["stages"][1]["steps"]))
         for path in ("/data/featured.json", "/data/course-parts/part-0001-test.json", "/offline-data-01.js", "/alias.js", "/full-source.zip", "/data/../offline-data-01.js", "/%6fffline-data-01.js"):
             self.assertEqual(self.request("GET", path, auth=True, headers={"Range": "bytes=0-100"})[0], 403, path)
         self.assertEqual(self.request("GET", "/app.js")[0], 200)
         self.assertEqual(self.request("GET", "/data/catalog.json")[0], 200)
-        self.assertEqual(self.request("GET", "/api/courses/paid-course", auth=True)[0], 402)
-        self.assertEqual(self.request("GET", "/api/courses/semiconductor")[0], 200)
+        status, _, course = self.request("GET", "/api/courses/paid-course", auth=True)
+        self.assertEqual(status, 200)
+        self.assertNotIn("Private second lesson", json.dumps(course))
+        self.billing.notification(self.notification(self.checkout()))
+        status, _, course = self.request("GET", "/api/courses/paid-course", auth=True)
+        self.assertIn("Private second lesson", json.dumps(course))
 
     def test_unauthorized_paid_progress_and_cross_origin_checkout_fail(self):
         payload = {"projectId": "paid-course", "completed": ["s1", "s2"], "assembly": [], "notes": "", "baseUpdatedAt": None}
         self.assertEqual(self.request("PUT", "/api/progress", payload, auth=True)[0], 402)
+        self.assertEqual(self.request("PUT", "/api/progress", {**payload, "completed": ["s1"]}, auth=True)[0], 200)
         self.assertEqual(self.request("POST", "/api/billing/checkout", {}, auth=True, headers={"Origin": "https://attacker.test"})[0], 403)
         self.assertEqual(self.request("POST", "/api/billing/checkout", {})[0], 401)
         self.assertEqual(self.request("POST", "/api/certificates", {"courseId": "semiconductor", "expectedUserId": "bob"}, auth=True)[0], 409)
+        state = self.billing.evidence_status("alice", "paid-course")
+        self.assert_error(402, lambda: self.billing.evidence("alice", {"courseId": "paid-course", "revision": state["revision"], "stepId": "s2", "answer": 0}))
 
     def test_public_market_route_uses_fixed_vendor_parameter(self):
         with patch.object(APP, "market_quote", return_value={"status": "unconfigured", "symbol": "TEST"}) as mocked:
@@ -233,12 +241,12 @@ class CommerceTests(unittest.TestCase):
 
     def test_free_evidence_survives_live_activation_but_sandbox_does_not(self):
         self.billing.mode = "disabled"
-        state = self.billing.evidence_status("alice", "semiconductor")
-        self.billing.evidence("alice", {"courseId": "semiconductor", "revision": state["revision"], "stepId": "s1", "answer": 1})
+        state = self.billing.evidence_status("alice", "paid-course")
+        self.billing.evidence("alice", {"courseId": "paid-course", "revision": state["revision"], "stepId": "s1", "answer": 1})
         self.billing.mode = "live"
-        self.assertEqual(self.billing.evidence_status("alice", "semiconductor")["completed"], ["s1"])
+        self.assertEqual(self.billing.evidence_status("alice", "paid-course")["completed"], ["s1"])
         self.billing.mode = "sandbox"
-        self.assertEqual(self.billing.evidence_status("alice", "semiconductor")["completed"], [])
+        self.assertEqual(self.billing.evidence_status("alice", "paid-course")["completed"], [])
 
     def test_callback_does_not_require_browser_cookie_or_origin(self):
         order = self.checkout()
@@ -248,6 +256,7 @@ class CommerceTests(unittest.TestCase):
         self.assertEqual(self.request("GET", "/api/billing/me")[0], 401)
 
     def test_certificate_rejects_client_progress_skips_wrong_answers_and_stale_revision(self):
+        self.billing.notification(self.notification(self.checkout()))
         status = self.billing.evidence_status("alice", "semiconductor")
         self.assert_error(409, lambda: self.billing.issue_certificate({"id": "alice", "name": "Learner"}, {"courseId": "semiconductor", "completed": ["s1", "s2"]}))
         base = {"courseId": "semiconductor", "revision": status["revision"], "stepId": "s2", "answer": 0}
@@ -258,6 +267,7 @@ class CommerceTests(unittest.TestCase):
         self.assertEqual(self.billing.evidence_status("alice", "semiconductor")["completed"], [])
 
     def test_certificate_is_verifiable_private_and_not_cross_account(self):
+        self.billing.notification(self.notification(self.checkout()))
         state = self.billing.evidence_status("alice", "semiconductor")
         for step, answer in (("s1", 1), ("s2", 0)):
             self.billing.evidence("alice", {"courseId": "semiconductor", "revision": state["revision"], "stepId": step, "answer": answer})
@@ -274,7 +284,8 @@ class CommerceTests(unittest.TestCase):
         self.assertIn("Certificate of Course Completion", rendered[2])
         self.assertIn("window.print()", rendered[2])
         self.assertNotIn("Private name", rendered[2])
-        self.assert_error(409, lambda: self.billing.issue_certificate({"id": "bob", "name": "Bob"}, {"courseId": "semiconductor"}))
+        # Bob has neither a pass nor Alice's evidence: V12 rejects before evidence checks.
+        self.assert_error(402, lambda: self.billing.issue_certificate({"id": "bob", "name": "Bob"}, {"courseId": "semiconductor"}))
         self.assert_error(404, lambda: self.billing.verify_certificate("a" * 40))
 
     def test_revoking_paid_order_revokes_its_certificate(self):

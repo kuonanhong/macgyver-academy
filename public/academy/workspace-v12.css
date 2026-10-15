@@ -1,0 +1,83 @@
+/* V12 personal workspace: accent colours, text size, sidebar modes, focus
+ * layout and a calmer, more professional chrome. Loaded after earlier sheets. */
+:root{--mg-font-scale:1;--accent:#235443;--accent-soft:#ddeeaa;--radius:10px;--shadow-sm:0 1px 2px rgba(18,53,36,.06),0 2px 8px rgba(18,53,36,.05)}
+:root[data-accent="ocean"]{--green:#1f4f7a;--accent:#1f4f7a;--lime:#d4e6f7;--accent-soft:#d4e6f7}
+:root[data-accent="amber"]{--green:#7a4f12;--accent:#7a4f12;--lime:#f6e3b8;--accent-soft:#f6e3b8}
+:root[data-accent="violet"]{--green:#4b3a7a;--accent:#4b3a7a;--lime:#e4dcf7;--accent-soft:#e4dcf7}
+:root[data-accent="graphite"]{--green:#2f3a40;--accent:#2f3a40;--lime:#e1e6e8;--accent-soft:#e1e6e8}
+:root[data-theme="dark"][data-accent="ocean"]{--green:#7fb5e6;--accent:#7fb5e6}
+:root[data-theme="dark"][data-accent="amber"]{--green:#e8bf6a;--accent:#e8bf6a}
+:root[data-theme="dark"][data-accent="violet"]{--green:#b7a4f0;--accent:#b7a4f0}
+:root[data-theme="dark"][data-accent="graphite"]{--green:#b9c6cc;--accent:#b9c6cc}
+body{font-size:calc(14px * var(--mg-font-scale))}
+
+/* Calmer, professional chrome */
+.topbar{position:sticky;top:0;z-index:20;backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);background:color-mix(in srgb,var(--bg,#f5f6f2) 88%,transparent);height:72px}
+.task-card,.membership-plan,.vendor-card{border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+.button{border-radius:8px;transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+.button:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(18,53,36,.12)}
+.button:focus-visible,.text-link:focus-visible,nav a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+h1{letter-spacing:-.02em}
+nav a.active{box-shadow:inset 3px 0 0 var(--accent)}
+
+/* Animated brand (original logo). Reduced-motion users get the static image. */
+.brand .brand-logo{width:48px;height:48px;border-radius:12px;object-fit:contain}
+@media (prefers-reduced-motion: reduce){.brand .brand-logo-animated{display:none}.brand .brand-logo-static{display:inline-block!important}}
+.brand .brand-logo-static{display:none}
+.brand .brand-dark{display:none}:root[data-theme="dark"] .brand .brand-light{display:none}:root[data-theme="dark"] .brand .brand-dark{display:inline-block}
+@media (prefers-reduced-motion: reduce){.brand .brand-dark,.brand .brand-light{display:none!important}}
+
+/* Sidebar modes */
+@media(min-width:701px){
+ :root[data-sidebar="compact"] .sidebar{width:76px;padding:24px 10px;align-items:center}
+ :root[data-sidebar="compact"] .shell{margin-left:76px}
+ :root[data-sidebar="compact"] .brand>span,:root[data-sidebar="compact"] .side-label,:root[data-sidebar="compact"] nav a b,:root[data-sidebar="compact"] nav a small,:root[data-sidebar="compact"] .side-note,:root[data-sidebar="compact"] .side-help{display:none}
+ :root[data-sidebar="compact"] nav a{justify-content:center;padding:12px 0}
+ :root[data-sidebar="hidden"] .sidebar,:root[data-layout="focus"] .sidebar{transform:translateX(-100%);transition:transform .25s;box-shadow:15px 0 40px #12352426}
+ :root[data-sidebar="hidden"] .sidebar.open,:root[data-layout="focus"] .sidebar.open{transform:translateX(0)}
+ :root[data-sidebar="hidden"] .shell,:root[data-layout="focus"] .shell{margin-left:0}
+ :root[data-sidebar="hidden"] .mobile-menu,:root[data-layout="focus"] .mobile-menu{display:block;font-size:21px;padding:0 6px}
+ :root[data-layout="focus"] main{max-width:1180px}
+}
+:root[data-layout="focus"] .side-note{display:none}
+
+/* Paywall */
+.pay-badge{display:inline-block;margin:0 8px;padding:1px 8px;border-radius:999px;font-size:11px;letter-spacing:.03em;vertical-align:middle}
+.pay-badge.free{background:var(--accent-soft);color:var(--ink)}
+.pay-badge.locked{background:#f8e6dc;color:#7a3417}
+.pay-badge.open{background:#e3f1e6;color:#1f5a35}
+:root[data-theme="dark"] .pay-badge.locked{background:#4a2a1d;color:#ffcfb8}
+:root[data-theme="dark"] .pay-badge.open{background:#1f3a29;color:#bfe8cb}
+.paywall-step{border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));background:linear-gradient(180deg,color-mix(in srgb,var(--accent-soft) 35%,transparent),transparent 60%)}
+.paywall-step h2{margin:6px 0 10px}.paywall-includes{margin:10px 0 14px;padding-left:20px}.paywall-price strong{font-size:22px}
+.paywall-summary.locked{border-left:4px solid var(--accent)}
+.worked-example{border-left:4px solid var(--accent-soft)}
+
+/* Membership */
+.currency-bar{display:grid;grid-template-columns:1fr auto auto;gap:10px 16px;align-items:center}.currency-bar p{margin:2px 0}.currency-bar .fx-note{grid-column:1/-1}
+.currency-bar select{min-width:110px}
+.checkout-panel .pay-methods{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-top:14px;display:grid;gap:18px}
+.checkout-panel .pay-method h3{margin:0 0 4px;font-size:16px}.paypal-buttons{max-width:420px;min-height:46px}
+.auth-tabs{display:flex;gap:6px;margin:6px 0 14px;border-bottom:1px solid var(--line)}
+.auth-tab{background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;font:inherit;cursor:pointer;color:var(--muted)}
+.auth-tab.active{border-color:var(--accent);color:var(--ink);font-weight:600}
+.profile-row{display:flex;gap:8px;align-items:center}
+@media(max-width:700px){.currency-bar{grid-template-columns:1fr}.membership-plans{grid-template-columns:1fr!important}}
+
+/* Touch-friendly controls on phones and tablets */
+@media(pointer:coarse){.button,select,input,.step-btn,nav a{min-height:44px}.text-link{padding:8px 4px}}
+
+/* V12: paid steps in the process navigator */
+.nav-paywall{display:block;margin:4px 0 8px;padding:8px 10px;border-radius:8px;background:#f8e6dc;color:#7a3417;font-size:13px;text-decoration:none}
+.nav-paywall:hover{text-decoration:underline}
+:root[data-theme="dark"] .nav-paywall{background:#4a2a1d;color:#ffcfb8}
+.step-btn.paid-locked .step-dot{font-size:11px;background:transparent}
+
+/* V12 home: rotating wall of all project icons in the hero */
+.explorer-hero .hero-wall{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:12px 16px 12px 0}
+.explorer-hero .hero-wall .icon-wall{background:transparent}
+.explorer-hero .hero-wall .art-note{margin-top:6px;font:11px var(--mono);letter-spacing:.06em;color:var(--muted);text-align:right}
+@media(max-width:700px){.explorer-hero .hero-wall{padding:0}.explorer-hero .hero-wall .art-note{text-align:left}}
+/* V12: dictionary translation is informational, not a warning */
+.translation-status.is-info{background:var(--soft,#eef1e9);border-color:var(--line,#dce2d9);color:var(--muted,#53685f)}
+:root[data-theme="dark"] .translation-status.is-info{background:#1c2a30;border-color:#2c3d44;color:#a8bcc4}

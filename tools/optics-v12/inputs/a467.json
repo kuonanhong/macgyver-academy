@@ -1,0 +1,172 @@
+{
+  "id": "a467",
+  "title": "低雜訊偵測器讀出~Low-noise detector readout",
+  "discipline": "optics-accelerators-detectors",
+  "family": "detector",
+  "focus": "電荷靈敏前端的 ENC、整形時間與系統雜訊預算~ENC, shaping time and system noise budgets for charge-sensitive front ends",
+  "summary": "以矽微條與 HPGe 前端為例，從 Ramo 定理與電荷靈敏積分出發，推導 ENC 的串聯、並聯與 1/f 項如何隨電容與整形時間變化，再把脈衝校正、能量解析度分解、ASIC 數位化與門檻佔用率整合成可交接的讀出系統驗證紀錄。~Using silicon-strip and HPGe front ends as examples, start from Ramo's theorem and charge-sensitive integration, derive how the series, parallel and 1/f terms of ENC scale with capacitance and shaping time, then integrate pulse calibration, resolution decomposition, ASIC digitisation and threshold occupancy into a transferable readout-validation record.",
+  "units": [
+    {
+      "anchor": "感測器電荷與回授電容~Sensor charge and feedback capacitor",
+      "title": "訊號電荷、Ramo 定理與電荷靈敏放大~Signal charge, Ramo's theorem and charge-sensitive amplification",
+      "mechanism": "偵測器送出的不是「到達電極的電荷」而是感應電流：依 Shockley–Ramo 定理，以速度 v 運動的電荷 q 在電極上感應的電流為 i = q·v·E_w，E_w 是把該電極設為 1 V、其餘接地時的加權場；電流對時間積分才等於訊號電荷。矽中一個最小游離粒子每微米約產生 80 個電子電洞對，300 µm 厚的感測器給出約 2.4×10⁴ 個電子，只有 3.8 fC。電荷靈敏前置放大器把這些電荷積分到回授電容 C_f 上，輸出 Q/C_f 與偵測器電容無關，前提是開迴路增益夠大。~A detector does not deliver charge arriving at the electrode but an induced current: by the Shockley–Ramo theorem a charge q moving with velocity v induces i = q·v·E_w on an electrode, where E_w is the weighting field obtained by setting that electrode to 1 V and all others to ground; only the time integral of this current equals the signal charge. A minimum-ionising particle creates about 80 electron–hole pairs per micrometre of silicon, so a 300 µm sensor yields about 2.4×10⁴ electrons, only 3.8 fC. A charge-sensitive preamplifier integrates this charge onto its feedback capacitor C_f, giving an output Q/C_f that is independent of detector capacitance provided the open-loop gain is large enough.",
+      "model": "Q = 24,000 e × 1.6×10⁻¹⁹ C = 3.84 fC；C_f = 100 fF 時 V_out = Q/C_f = 38.4 mV（10 mV/fC）；輸入端看到的等效電容為 (A+1)·C_f，要讓偵測器電容 C_d = 20 pF 的電荷幾乎全部流進回授電容需 A·C_f ≫ C_d：取 A = 10⁴，(A+1)·C_f = 1 nF ≫ 20 pF，電荷收集損失僅 C_d/((A+1)·C_f) ≈ 2%。~Q = 24,000 e × 1.6×10⁻¹⁹ C = 3.84 fC; with C_f = 100 fF, V_out = Q/C_f = 38.4 mV (10 mV/fC); the capacitance seen at the input is (A+1)·C_f, and to pull nearly all the charge of a C_d = 20 pF detector into the feedback capacitor one needs A·C_f ≫ C_d: with A = 10⁴, (A+1)·C_f = 1 nF ≫ 20 pF and the charge-collection loss is only C_d/((A+1)·C_f) ≈ 2%.",
+      "verify": "以已知電容 C_inj 注入階躍電壓產生校正電荷 Q = C_inj·ΔV，量輸出階躍高度得到 mV/fC 增益；在輸入端並聯 5–50 pF 的測試電容確認增益不隨 C_d 改變；再用示波器檢查上升時間是否對應電荷收集時間，並與 Ramo 定理算出的感應電流波形比較。~Inject a voltage step through a known capacitor C_inj to make a calibration charge Q = C_inj·ΔV and read the output step to get the gain in mV/fC; add 5–50 pF of test capacitance across the input to confirm the gain does not change with C_d; then check on an oscilloscope that the rise time matches the charge-collection time and compare with the induced-current waveform predicted by Ramo's theorem.",
+      "failure": "開迴路增益不足或回授電容選得太大時，增益開始隨偵測器電容變化，電容不同的通道增益不一致，整個系統的能量刻度跟著溫度與偏壓漂移。~With insufficient open-loop gain or an oversized feedback capacitor the gain starts to depend on detector capacitance, channels with different capacitance disagree, and the system energy scale drifts with temperature and bias.",
+      "misconception": "電荷靈敏放大器的增益由偵測器電容決定。~The gain of a charge-sensitive amplifier is set by the detector capacitance."
+    },
+    {
+      "anchor": "ENC 公式與整形時間~ENC relation and shaping time",
+      "title": "等效雜訊電荷：串聯、並聯與 1/f 項~Equivalent noise charge: series, parallel and 1/f terms",
+      "mechanism": "把所有雜訊折算到輸入端，以等效雜訊電荷 ENC 表示：串聯（電壓）雜訊來自輸入電晶體的通道熱雜訊 e_n² = 4kT·Γ/g_m，經輸入總電容 C 轉成電荷，隨整形時間 τ 縮短而增大；並聯（電流）雜訊來自漏電流的散粒雜訊 2qI 與回授電阻的熱雜訊 4kT/R_f，隨 τ 加長而增大；1/f 雜訊與 τ 無關，只隨 C² 成長。ENC² = F_v·e_n²·C²/τ + F_i·i_n²·τ + F_vf·A_f·C²，F 為整形器的形狀因子，CR-RC 整形的 F_v = F_i ≈ 0.92。~All noise is referred to the input as an equivalent noise charge (ENC): series (voltage) noise comes from the channel thermal noise of the input transistor, e_n² = 4kT·Γ/g_m, converted to charge through the total input capacitance C and growing as the shaping time τ shortens; parallel (current) noise comes from leakage-current shot noise 2qI and feedback-resistor thermal noise 4kT/R_f and grows as τ lengthens; 1/f noise is independent of τ and scales only with C². ENC² = F_v·e_n²·C²/τ + F_i·i_n²·τ + F_vf·A_f·C², where the F factors depend on the shaper, with F_v = F_i ≈ 0.92 for CR-RC shaping.",
+      "model": "教學假設：總輸入電容 C = 25 pF、輸入電晶體雜訊 e_n = 1 nV/√Hz、漏電流 I_leak = 1 nA、回授電阻 R_f = 100 MΩ、整形時間 τ = 1 µs、CR-RC 整形：並聯雜訊電流密度 i_n² = 2qI + 4kT/R_f = 3.2×10⁻²⁸ + 1.66×10⁻²⁸ = 4.9×10⁻²⁸ A²/Hz；串聯項 ENC_s² = 0.92×10⁻¹⁸×(25×10⁻¹²)²/10⁻⁶ = 5.75×10⁻³⁴ C² → 150 e⁻；並聯項 ENC_p² = 0.92×4.9×10⁻²⁸×10⁻⁶ = 4.5×10⁻³⁴ C² → 132 e⁻；合計 √(150² + 132²) ≈ 200 e⁻ rms（忽略 1/f 項）。~Take C = 25 pF, e_n = 1 nV/√Hz, I_leak = 1 nA, R_f = 100 MΩ, τ = 1 µs and CR-RC shaping: i_n² = 2qI + 4kT/R_f = 3.2×10⁻²⁸ + 1.66×10⁻²⁸ = 4.9×10⁻²⁸ A²/Hz; series term ENC_s² = 0.92×10⁻¹⁸×(25×10⁻¹²)²/10⁻⁶ = 5.75×10⁻³⁴ C² → 150 e⁻; parallel term ENC_p² = 0.92×4.9×10⁻²⁸×10⁻⁶ = 4.5×10⁻³⁴ C² → 132 e⁻; total √(150² + 132²) ≈ 200 e⁻ rms (ignoring the 1/f term).",
+      "verify": "用脈衝產生器注入固定電荷，把輸出峰值分佈的標準差換算成 ENC；掃描整形時間 0.25–8 µs 畫出 ENC 對 τ 的曲線，短 τ 端斜率 −1/2 對應串聯項、長 τ 端斜率 +1/2 對應並聯項、中間平坦段代表 1/f 項；再固定 τ、改變輸入電容量出斜率 dENC/dC。~Inject a fixed charge from a pulser and convert the standard deviation of the output peak distribution into ENC; scan shaping time from 0.25 to 8 µs and plot ENC versus τ, where the −1/2 slope at short τ is the series term, the +1/2 slope at long τ the parallel term and a flat region the 1/f term; then fix τ and vary input capacitance to measure the slope dENC/dC.",
+      "failure": "偵測器受輻射損傷後漏電流從 1 nA 升到 1 µA，散粒雜訊電流增大 √1000 ≈ 32 倍，並聯項主導，原本最佳的 1 µs 整形變成雜訊災難，解析度惡化到數千個電子。~After radiation damage raises leakage from 1 nA to 1 µA the shot-noise current grows by √1000 ≈ 32, the parallel term dominates, the formerly optimal 1 µs shaping becomes a noise disaster and resolution degrades to thousands of electrons.",
+      "misconception": "整形時間越長，雜訊一定越低。~Longer shaping time always means lower noise."
+    },
+    {
+      "anchor": "輸入電晶體與回授網路~Input transistor and feedback network",
+      "title": "輸入電晶體、電容匹配與回授元件~Input transistor, capacitance matching and feedback elements",
+      "mechanism": "串聯雜訊由輸入電晶體的跨導與閘極電容決定：JFET 在室溫到 120 K 之間 g_m 高、1/f 雜訊低，是 HPGe 與 Si(Li) 光譜儀的傳統選擇；深次微米 CMOS 讓每通道功耗降到毫瓦等級，適合數十萬通道的 ASIC。閘極電容會加進總電容 C，若 g_m ∝ √C_gs（強反轉、固定電流密度），最佳條件是 C_gs ≈ C_d，這就是電容匹配法則。回授元件必須極低漏電與低介電吸收：C_f 用 NP0/C0G 或晶片上的金屬電容，放電路徑用 GΩ 級電阻、脈衝重置或連續的電晶體回授。~Series noise is set by the transconductance and gate capacitance of the input transistor: a JFET between room temperature and 120 K offers high g_m and low 1/f noise and remains the traditional choice for HPGe and Si(Li) spectrometers, while deep-submicron CMOS brings per-channel power down to milliwatts for ASICs with hundreds of thousands of channels. The gate capacitance adds to the total C, and if g_m ∝ √C_gs (strong inversion at fixed current density) the optimum is C_gs ≈ C_d, the capacitive-matching rule. Feedback elements must have extremely low leakage and dielectric absorption: C_f is an NP0/C0G or on-chip metal capacitor, and discharge uses a GΩ-class resistor, pulsed reset or continuous transistor feedback.",
+      "model": "輸入電晶體的電壓雜訊密度 e_n = √(4kT·Γ/g_m)：室溫 T = 300 K、Γ = 0.7、跨導 g_m = 20 mS 時 4kT = 1.66×10⁻²⁰ J，e_n = √(1.66×10⁻²⁰×0.7/0.02) = √(5.8×10⁻¹⁹) ≈ 0.76 nV/√Hz；同一顆 JFET 冷卻到 120 K，4kT 降為 6.6×10⁻²¹ J，e_n ≈ 0.48 nV/√Hz，串聯雜訊電荷按比例降低 37%；回授電阻從 100 MΩ 提高到 1 GΩ，其熱雜訊電流由 1.29×10⁻¹⁴ 降到 0.41×10⁻¹⁴ A/√Hz。~e_n = √(4kT·Γ/g_m): at T = 300 K, Γ = 0.7 and g_m = 20 mS, 4kT = 1.66×10⁻²⁰ J and e_n = √(1.66×10⁻²⁰×0.7/0.02) = √(5.8×10⁻¹⁹) ≈ 0.76 nV/√Hz; cooling the same JFET to 120 K lowers 4kT to 6.6×10⁻²¹ J and e_n to ≈ 0.48 nV/√Hz, cutting the series noise charge by 37%; raising the feedback resistor from 100 MΩ to 1 GΩ reduces its thermal noise current from 1.29×10⁻¹⁴ to 0.41×10⁻¹⁴ A/√Hz.",
+      "verify": "以小訊號法量輸入電晶體在工作點的 g_m、以阻抗分析儀量 C_gs；用頻譜分析儀量輸出雜訊密度除以增益得到 e_n(f) 與 1/f 轉角；對回授電阻與電容做 pA 級漏電流與介電吸收測試；冷卻前後各量一次 ENC 曲線，確認改善量符合 √T 的預測。~Measure g_m at the operating point with a small-signal method and C_gs with an impedance analyser; obtain e_n(f) and the 1/f corner by dividing the output noise density from a spectrum analyser by the gain; test the feedback resistor and capacitor for pA-level leakage and dielectric absorption; measure the ENC curve before and after cooling and confirm the improvement follows the √T prediction.",
+      "failure": "回授電阻若用一般厚膜電阻，其過剩雜訊與電壓係數讓並聯雜訊比 4kT/R 大數倍，而且高阻值下的寄生電容使放電時間常數隨溫度漂移，基線在高計數率時堆積。~A plain thick-film feedback resistor adds excess noise and voltage dependence that make parallel noise several times 4kT/R, and the parasitic capacitance across a high value lets the discharge time constant drift with temperature so the baseline piles up at high count rate.",
+      "misconception": "輸入電晶體做得越大、閘極電容越大，雜訊就越低。~A bigger input transistor with larger gate capacitance always gives lower noise."
+    },
+    {
+      "anchor": "偏壓網路、接地與佈局~Bias network, grounding and layout",
+      "title": "前端介面、雜散電容與接地設計~Front-end interface, stray capacitance and grounding",
+      "mechanism": "從偵測器到前置放大器輸入之間的每一 pF 雜散電容都直接加進串聯雜訊：打線、保護二極體、偏壓耦合電容與 PCB 走線都要計入。偏壓透過大電阻與 AC 耦合電容送到感測器，耦合電容必須承受全偏壓且漏電極低；接地採單點或星形，讓偵測器回流電流與數位地分開，否則切換式電源與時脈的 100 kHz–10 MHz 干擾正好落在整形器通帶內。低雜訊讀出有一半是機械與佈局工程。~Every picofarad of stray capacitance between detector and preamplifier input adds directly to series noise: bond wires, protection diodes, bias-coupling capacitors and PCB traces all count. Bias reaches the sensor through a large resistor and an AC-coupling capacitor that must hold the full bias with negligible leakage; grounding must be single-point or star so that detector return currents stay separate from the digital ground, otherwise switching-regulator and clock interference at 100 kHz–10 MHz lands exactly inside the shaper passband. Half of low-noise readout is mechanical and layout engineering.",
+      "model": "在 τ = 1 µs 下串聯項為 150 e⁻ @ 25 pF，即斜率 dENC_s/dC = 6 e⁻/pF；多出 3 pF 走線電容使串聯項升到 168 e⁻，總 ENC 從 200 變成 √(168² + 132²) ≈ 214 e⁻（+7%）；偏壓電阻 R_b = 10 MΩ 的熱雜訊電流 √(4kT/R_b) = 4.1×10⁻¹⁴ A/√Hz，比 1 nA 漏電流的散粒雜訊 1.8×10⁻¹⁴ 還大，改用 100 MΩ 則降到 1.3×10⁻¹⁴。~At τ = 1 µs the series term is 150 e⁻ at 25 pF, a slope dENC_s/dC = 6 e⁻/pF; an extra 3 pF of trace capacitance raises the series term to 168 e⁻ and the total ENC from 200 to √(168² + 132²) ≈ 214 e⁻ (+7%); a bias resistor R_b = 10 MΩ has a thermal noise current √(4kT/R_b) = 4.1×10⁻¹⁴ A/√Hz, larger than the 1.8×10⁻¹⁴ shot noise of 1 nA leakage, and moving to 100 MΩ brings it down to 1.3×10⁻¹⁴.",
+      "verify": "以 LCR 表或阻抗分析儀量輸入節點對地的總電容（含打線與走線）並與設計值比較；用近場探棒與頻譜分析儀找出通帶內的干擾譜線並逐一追到來源；量偏壓耦合電容在工作電壓下的 pA 級漏電流；每次接地改動前後各量一次基線 RMS。~Measure the total input-node capacitance to ground (bond wires and traces included) with an LCR meter or impedance analyser and compare with the design; locate in-band interference lines with a near-field probe and spectrum analyser and trace each to its source; measure bias-coupling capacitor leakage at working voltage at the pA level; record baseline RMS before and after every grounding change.",
+      "failure": "接地迴路讓數位時脈的諧波耦合進輸入端，基線出現週期性波紋，能譜峰變寬且位置隨時脈相位移動；打線過長或保護二極體電容過大，每通道多出數 pF 而讓整板 ENC 超標。~A ground loop couples digital-clock harmonics into the input, the baseline shows periodic ripple and spectral peaks broaden and shift with clock phase; overly long bond wires or large protection-diode capacitance add several pF per channel and push the whole board over its ENC budget.",
+      "misconception": "雜訊只由前置放大器晶片決定，佈局與接地只影響數位部分。~Noise is set only by the preamplifier chip; layout and grounding affect only the digital side."
+    },
+    {
+      "anchor": "脈衝注入與 HPGe 能譜~Pulse injection and HPGe spectrum",
+      "title": "校正脈衝、能量刻度與解析度分解~Calibration pulses, energy scale and resolution decomposition",
+      "mechanism": "校正從精密脈衝注入開始：階躍電壓 ΔV 經注入電容 C_inj 產生 Q = C_inj·ΔV，掃描 ΔV 得到增益、線性度與動態範圍；脈衝器峰的寬度只含電子雜訊，是分離雜訊來源的工具。對能譜儀而言，實測峰寬是三項的平方和：電子雜訊 FWHM_e = 2.355·ENC·ε（ε 為每對電子電洞對的能量）、統計項 FWHM_F = 2.355·√(F·E·ε)（F 為 Fano 因子）、以及電荷收集不完整項；把三項分開，才知道該改前端、偵測器還是整形。~Calibration starts with precise pulse injection: a voltage step ΔV through an injection capacitor C_inj creates Q = C_inj·ΔV, and sweeping ΔV yields gain, linearity and dynamic range; the pulser peak width contains only electronic noise, which makes it the tool for separating noise sources. For a spectrometer the measured peak width is the quadrature sum of three terms: electronic noise FWHM_e = 2.355·ENC·ε (ε the energy per electron–hole pair), the statistical term FWHM_F = 2.355·√(F·E·ε) (F the Fano factor), and incomplete charge collection; only when the three are separated do you know whether to improve the front end, the detector or the shaping.",
+      "model": "以 HPGe 偵測器量 ⁶⁰Co 的 1332 keV 譜線為例：每對電子電洞對能量 ε = 2.96 eV、Fano 因子 F = 0.11，統計項 FWHM_F = 2.355×√(0.11×1.332×10⁶×2.96) eV = 2.355×659 eV ≈ 1.55 keV；ENC = 100 e⁻ 的電子雜訊項 FWHM_e = 2.355×100×2.96 eV ≈ 0.70 keV；電荷收集項取 0.50 keV，總 FWHM = √(1.55² + 0.70² + 0.50²) ≈ 1.77 keV。注入校正：C_inj = 100 fF、ΔV = 16 mV 給 Q = 1.6 fC = 10,000 e⁻。~HPGe at 1332 keV: ε = 2.96 eV, F = 0.11, FWHM_F = 2.355×√(0.11×1.332×10⁶×2.96) eV = 2.355×659 eV ≈ 1.55 keV; an ENC of 100 e⁻ gives FWHM_e = 2.355×100×2.96 eV ≈ 0.70 keV; taking 0.50 keV for charge collection, total FWHM = √(1.55² + 0.70² + 0.50²) ≈ 1.77 keV. Injection calibration: C_inj = 100 fF with ΔV = 16 mV gives Q = 1.6 fC = 10,000 e⁻.",
+      "verify": "在同一次量測中同時取 ⁶⁰Co 的 1332 keV 峰與脈衝器峰：脈衝器峰寬給 FWHM_e，由 F 與 ε 算 FWHM_F，殘差歸給電荷收集；再用多個 γ 能量擬合峰寬平方對能量的線性關係 FWHM² = a + b·E，截距 a 應等於 FWHM_e²，斜率 b 應接近 2.355²·F·ε。~Acquire the ⁶⁰Co 1332 keV peak and the pulser peak in the same run: the pulser width gives FWHM_e, F and ε give FWHM_F, and the residual is assigned to charge collection; then fit the squared width against energy for several γ lines, FWHM² = a + b·E, where the intercept a should equal FWHM_e² and the slope b should approach 2.355²·F·ε.",
+      "failure": "注入電容的實際值與標稱差 5% 時，所有通道的能量刻度一起偏 5%，而且線性度檢查看不出來；脈衝器上升時間若比電荷收集慢，校正出的增益會低估彈道虧損。~If the injection capacitor differs from nominal by 5%, every channel's energy scale is off by 5% in a way linearity checks cannot reveal; if the pulser rise time is slower than charge collection, the calibrated gain underestimates ballistic deficit.",
+      "misconception": "能譜峰寬完全由前置放大器的雜訊決定。~Spectral peak width is set entirely by preamplifier noise."
+    },
+    {
+      "anchor": "ENC–τ 曲線與雜訊轉角~ENC–τ curve and noise corner",
+      "title": "最佳整形時間、堆積與雜訊預算~Optimum shaping time, pile-up and the noise budget",
+      "mechanism": "串聯項與並聯項相等之處就是雜訊轉角，對應最佳整形時間 τ_opt = (C·e_n/i_n)·√(F_v/F_i)；轉角隨電容、漏電流與溫度移動，所以最佳 τ 不是固定值。整形時間同時決定計數率能力：一個脈衝佔用約數倍 τ，計數率 n 下的堆積機率約為 1 − exp(−n·T_p)，因此高計數率應用常犧牲 ENC 選較短的 τ，或改用梯形數位整形把雜訊濾波與彈道虧損分開處理。完整的雜訊預算要把串聯、並聯、1/f、量化與干擾各項列表後平方相加。~The noise corner is where the series and parallel terms are equal, corresponding to the optimum shaping time τ_opt = (C·e_n/i_n)·√(F_v/F_i); the corner moves with capacitance, leakage and temperature, so the optimum τ is not a fixed number. Shaping time also sets rate capability: a pulse occupies several τ, and at count rate n the pile-up probability is about 1 − exp(−n·T_p), so high-rate applications often sacrifice ENC for shorter τ or use trapezoidal digital shaping that separates noise filtering from ballistic deficit. A complete noise budget tabulates series, parallel, 1/f, quantisation and interference terms and adds them in quadrature.",
+      "model": "沿用前面的總電容 C = 25 pF、e_n = 1 nV/√Hz、並聯雜訊電流 i_n = 2.2×10⁻¹⁴ A/√Hz：最佳整形時間 τ_opt = 25×10⁻¹²×10⁻⁹/2.2×10⁻¹⁴ ≈ 1.1 µs，此時 ENC² = 2×0.92×e_n·i_n·C = 2×0.92×10⁻⁹×2.2×10⁻¹⁴×25×10⁻¹² ≈ 1.0×10⁻³³ C²，ENC ≈ 200 e⁻；若脈衝佔用時間 T_p = 5τ = 5 µs，計數率 10 kcps 的堆積機率 1 − exp(−0.05) ≈ 4.9%，100 kcps 時升到 39%。~With C = 25 pF, e_n = 1 nV/√Hz and i_n = 2.2×10⁻¹⁴ A/√Hz from before: τ_opt = 25×10⁻¹²×10⁻⁹/2.2×10⁻¹⁴ ≈ 1.1 µs, where ENC² = 2×0.92×e_n·i_n·C = 2×0.92×10⁻⁹×2.2×10⁻¹⁴×25×10⁻¹² ≈ 1.0×10⁻³³ C² and ENC ≈ 200 e⁻; with a pulse occupancy T_p = 5τ = 5 µs, the pile-up probability at 10 kcps is 1 − exp(−0.05) ≈ 4.9% and rises to 39% at 100 kcps.",
+      "verify": "在真實偵測器與工作溫度下量 ENC 對 τ 的曲線，找出最小值並與預測的 τ_opt 比較；用放射源改變計數率，統計被堆積拒絕器剔除的事件比例並與 1 − exp(−n·T_p) 比較；把預算表各項與量測值並列，找出佔比最大的項目。~Measure the ENC-versus-τ curve on the real detector at operating temperature, locate the minimum and compare with the predicted τ_opt; vary the count rate with a source and compare the fraction rejected by the pile-up rejector with 1 − exp(−n·T_p); set the budget table beside the measured values and identify the dominant term.",
+      "failure": "在實驗室低漏電流條件下選定 τ，裝到較熱或受輻照的偵測器上後轉角左移，原 τ 落在並聯項主導區，ENC 比預算高出一倍以上。~If τ is chosen under cool low-leakage lab conditions, a warmer or irradiated detector shifts the corner to shorter τ, the chosen τ sits in the parallel-dominated region and ENC exceeds budget by more than a factor of two.",
+      "misconception": "數位整形可以同時消除雜訊與堆積的限制。~Digital shaping removes both the noise and the pile-up limits."
+    },
+    {
+      "anchor": "ADC、數位濾波與資料鏈~ADC, digital filtering and data links",
+      "title": "整合：ASIC 讀出、數位化與動態範圍~Integration: ASIC readout, digitisation and dynamic range",
+      "mechanism": "現代系統把前置放大、整形、ADC 與序列化放進同一顆 ASIC：ALICE TPC 的 524,160 個墊片各有一條 SAMPA 通道，CAEN FERS-5200 一類的讀出平台則把 Citiroc 或 picoTDC 前端做成 64–128 通道的卡，經光纖集中。數位化後常以梯形濾波取代類比整形，並做基線追蹤與共模扣除；ADC 的量化雜訊 LSB/√12 必須遠小於類比 ENC，動態範圍則由滿刻度電荷與 ENC 之比決定，通常以位元數換取功耗。~Modern systems put preamplifier, shaper, ADC and serialiser on one ASIC: each of the 524,160 pads of the ALICE TPC has its own SAMPA channel, and readout platforms such as CAEN FERS-5200 integrate Citiroc or picoTDC front ends on 64–128-channel cards concentrated over optical links. After digitisation a trapezoidal filter often replaces analogue shaping, with baseline tracking and common-mode subtraction; the ADC quantisation noise LSB/√12 must stay well below the analogue ENC, and the dynamic range is the ratio of full-scale charge to ENC, usually traded against power through the bit count.",
+      "model": "設前端增益 50 mV/fC、10 位元 ADC、滿刻度 1 V：最小量化單位 LSB = 0.98 mV = 0.0195 fC ≈ 122 e⁻，量化雜訊 122/√12 ≈ 35 e⁻，與 200 e⁻ 的類比 ENC 平方相加只增加 1.5%；滿刻度電荷 1 V ÷ 50 mV/fC = 20 fC = 1.25×10⁵ e⁻ ≈ 5.2 個 MIP，動態範圍 1.25×10⁵/200 ≈ 625；每通道功耗 1 mW 時 10⁶ 個通道共耗 1 kW。~Gain 50 mV/fC, 10-bit ADC, 1 V full scale: LSB = 0.98 mV = 0.0195 fC ≈ 122 e⁻, quantisation noise 122/√12 ≈ 35 e⁻, which adds only 1.5% in quadrature to a 200 e⁻ analogue ENC; full-scale charge 1 V ÷ 50 mV/fC = 20 fC = 1.25×10⁵ e⁻ ≈ 5.2 MIPs, a dynamic range of 1.25×10⁵/200 ≈ 625; at 1 mW per channel, 10⁶ channels dissipate 1 kW.",
+      "verify": "用注入脈衝量 ADC 線性度（INL/DNL）與增益一致性，確認通道間增益離散在 1–2% 內；以無訊號資料驗證數位基線追蹤與共模扣除後的雜訊回到單通道 ENC；量光纖鏈誤碼率、每通道功耗與溫升，並與冷卻設計比較。~Measure ADC linearity (INL/DNL) and gain uniformity with injected pulses and confirm channel-to-channel gain spread within 1–2%; use signal-free data to verify that noise after digital baseline tracking and common-mode subtraction returns to the single-channel ENC; measure optical-link bit-error rate, per-channel power and temperature rise and compare with the cooling design.",
+      "failure": "共模雜訊未扣除時整板通道一起上下擺動，單通道 ENC 看似合格，但叢集電荷總和的雜訊隨通道數線性而非平方根成長；ADC 位元數不足則低能端被量化台階撐寬。~Without common-mode subtraction all channels on a board move together, each channel's ENC looks fine but the noise of summed cluster charge grows linearly rather than as the square root of channel count; too few ADC bits widen the low-energy end with quantisation steps.",
+      "misconception": "只要 ADC 位元數夠多，類比前端的雜訊就不重要。~With enough ADC bits, analogue front-end noise no longer matters."
+    },
+    {
+      "anchor": "門檻佔用率與驗收報告~Threshold occupancy and acceptance record",
+      "title": "系統驗證、門檻設定與工程交接~System validation, threshold setting and engineering handoff",
+      "mechanism": "系統層級的驗證是在完整安裝、接地與冷卻條件下重做雜訊量測，因為 ENC 在實驗室與實驗大廳常差一倍；接著用雜訊佔用率決定門檻：高斯雜訊超過門檻 k·ENC 的機率為 ½·erfc(k/√2)，乘上取樣率與通道數就是假訊號率，必須與效率要求折衷。交接文件必須含每通道的增益、ENC、門檻與遮蔽清單、溫度係數、注入電容常數與長期穩定度紀錄，讓後續校正可以追溯。~System-level validation repeats the noise measurements with the full installation, grounding and cooling in place, because ENC in the lab and in the experimental hall often differ by a factor of two; the threshold is then set from noise occupancy: the probability that Gaussian noise exceeds a threshold k·ENC is ½·erfc(k/√2), and multiplied by sampling rate and channel count it gives the fake-hit rate, which must be traded against efficiency. The handoff record must include per-channel gain, ENC, threshold and masking list, temperature coefficients, injection-capacitor constants and long-term stability logs so that later calibrations remain traceable.",
+      "model": "取 ENC = 800 e⁻（含安裝後的雜散電容與干擾）、門檻 4000 e⁻ = 5σ：單次取樣的雜訊超越機率 ½·erfc(5/√2) ≈ 2.9×10⁻⁷；40 MHz 取樣下每通道 11.5 Hz，10⁶ 個通道合計 1.15×10⁷ Hz 的假訊號；門檻提高到 6σ = 4800 e⁻ 時機率 ≈ 9.9×10⁻¹⁰，每通道 0.04 Hz，而 24,000 e⁻ 的 MIP 訊號仍有 5 倍餘裕。~Take ENC = 800 e⁻ (including post-installation stray capacitance and interference) and a threshold of 4000 e⁻ = 5σ: the per-sample noise crossing probability is ½·erfc(5/√2) ≈ 2.9×10⁻⁷; at 40 MHz sampling that is 11.5 Hz per channel and 1.15×10⁷ Hz of fake hits over 10⁶ channels; raising the threshold to 6σ = 4800 e⁻ gives ≈ 9.9×10⁻¹⁰, 0.04 Hz per channel, while a 24,000 e⁻ MIP signal still has a margin of 5.",
+      "verify": "逐通道做門檻掃描（S 曲線）得到雜訊佔用率對門檻的關係，擬合出 ENC 與門檻偏移並與注入校正的 ENC 比較；用宇宙射線或放射源量不同門檻下的效率，選出效率 ≥ 99% 且佔用率達標的工作點；把全部參數寫入校正資料庫並做一次冷啟動重載驗證。~Run threshold scans (S-curves) channel by channel to obtain noise occupancy versus threshold, fit for ENC and threshold offset and compare with the injection-calibrated ENC; measure efficiency at several thresholds with cosmic rays or a source and choose the working point with at least 99% efficiency at the target occupancy; write all parameters into the calibration database and validate with a cold-start reload.",
+      "failure": "門檻在實驗室條件下設定、安裝後 ENC 升高一倍卻未重新掃描時，佔用率從 10⁻⁷ 暴增到 10⁻³，資料鏈飽和、觸發率失控；反之為了壓佔用率把門檻設太高，低電荷的邊緣叢集被丟棄，位置解析度變差。~If thresholds set in the lab are kept after installation doubles the ENC, occupancy jumps from 10⁻⁷ to 10⁻³, the data links saturate and trigger rates run away; setting thresholds too high to suppress occupancy instead discards low-charge edge clusters and degrades position resolution.",
+      "misconception": "每個通道在實驗室測過雜訊，安裝後就不必再量。~Once every channel's noise is measured in the lab, no remeasurement is needed after installation."
+    }
+  ],
+  "example": "雜訊預算練習：矽微條感測器 C_d = 20 pF，加上前端輸入電容 3 pF 與走線 2 pF，總 C = 25 pF；輸入電晶體 e_n = 1 nV/√Hz，漏電流 1 nA，回授電阻 100 MΩ，CR-RC 整形 τ = 1 µs。並聯雜訊電流 i_n = √(2qI + 4kT/R_f) = √(3.2×10⁻²⁸ + 1.66×10⁻²⁸) = 2.2×10⁻¹⁴ A/√Hz。串聯項 ENC_s = √(0.92×(10⁻⁹)²×(25×10⁻¹²)²/10⁻⁶)/q = 150 e⁻，並聯項 ENC_p = √(0.92×(2.2×10⁻¹⁴)²×10⁻⁶)/q = 132 e⁻，合計 200 e⁻。MIP 訊號 24,000 e⁻，訊噪比 120。若感測器受輻照後漏電流升到 100 nA，i_n 升到 1.8×10⁻¹³ A/√Hz，ENC_p = 1070 e⁻，總 ENC ≈ 1080 e⁻，訊噪比降到 22；把 τ 縮短到 0.2 µs 後 ENC_s = 335、ENC_p = 480，總 ENC ≈ 585 e⁻，訊噪比回到 41。數值為教學假設，不代表任何實際晶片的規格。~Noise-budget exercise: a silicon strip sensor with C_d = 20 pF plus 3 pF of front-end input capacitance and 2 pF of trace gives C = 25 pF; the input transistor has e_n = 1 nV/√Hz, leakage is 1 nA, the feedback resistor 100 MΩ, with CR-RC shaping at τ = 1 µs. Parallel noise current i_n = √(2qI + 4kT/R_f) = √(3.2×10⁻²⁸ + 1.66×10⁻²⁸) = 2.2×10⁻¹⁴ A/√Hz. Series term ENC_s = √(0.92×(10⁻⁹)²×(25×10⁻¹²)²/10⁻⁶)/q = 150 e⁻, parallel term ENC_p = √(0.92×(2.2×10⁻¹⁴)²×10⁻⁶)/q = 132 e⁻, total 200 e⁻. The MIP signal of 24,000 e⁻ gives a signal-to-noise ratio of 120. If irradiation raises leakage to 100 nA, i_n becomes 1.8×10⁻¹³ A/√Hz, ENC_p = 1070 e⁻, total ENC ≈ 1080 e⁻ and the ratio drops to 22; shortening τ to 0.2 µs gives ENC_s = 335 and ENC_p = 480, total ≈ 585 e⁻, restoring the ratio to 41. Values are teaching assumptions, not any real chip's specification.",
+  "history": "電荷靈敏前置放大器與低雜訊讀出的理論由 1960 年代的核子電子學奠定：Radeka 在布魯克海文國家實驗室建立等效雜訊電荷與最佳濾波的分析框架，Goulding 與 Landis 在柏克萊發展脈衝整形與堆積拒絕；1980 年代起矽微條偵測器推動 CMOS 前端 ASIC（如 CERN 的 Amplex 與 Viking 系列），今日 LHC 實驗的數億通道與 HPGe 的 keV 級解析度都建立在同一套 ENC 工程上。本課只重建公開教科書層級的原理與數值方法。~The theory of charge-sensitive preamplifiers and low-noise readout was laid down by nuclear electronics in the 1960s: Radeka at Brookhaven National Laboratory established the equivalent-noise-charge and optimum-filter framework, while Goulding and Landis at Berkeley developed pulse shaping and pile-up rejection; from the 1980s silicon strip detectors drove CMOS front-end ASICs such as CERN's Amplex and Viking families, and today both the hundreds of millions of LHC channels and keV-class HPGe resolution rest on the same ENC engineering. This course reconstructs public textbook-level principles and numerical methods only.",
+  "place": {
+    "name": "布魯克海文國家實驗室儀器部門~Brookhaven National Laboratory Instrumentation Division",
+    "country": "美國~United States",
+    "lat": 40.8725,
+    "lng": -72.8800,
+    "query": "Brookhaven National Laboratory Instrumentation Division Upton NY"
+  },
+  "sources": [
+    {
+      "key": "caen-fers-5200",
+      "title": "CAEN：FERS-5200 分散式前端讀出平台",
+      "titleEn": "CAEN: FERS-5200 distributed front-end readout platform",
+      "publisher": "CAEN S.p.A.",
+      "url": "https://caen.it/subfamilies/fers-5200-boards/",
+      "sourceType": "primary",
+      "scope": "64/128 通道前端卡、Citiroc、Radioroc、Psiroc 與 picoTDC 前端 ASIC、電荷與時間量測、光纖集中器與通道數；為產品資訊，不是設計手冊。",
+      "scopeEn": "64/128-channel front-end cards, Citiroc, Radioroc, Psiroc and picoTDC front-end ASICs, charge and time measurement, optical concentrators and channel counts; product information, not a design manual."
+    },
+    {
+      "key": "alice-tpc-frontend",
+      "title": "ALICE 合作團：TPC 讀出與前端電子",
+      "titleEn": "ALICE Collaboration: TPC readout and front-end electronics",
+      "publisher": "CERN / ALICE Collaboration",
+      "url": "https://alice-collaboration.web.cern.ch/menu_proj_items/tpc",
+      "sourceType": "primary",
+      "scope": "524,160 個墊片各接一個前端通道，前端卡經 6552 條光纖以 3.28 TB/s 送往 360 片 FPGA 讀出卡；本課用作大型多通道讀出的尺度參照。",
+      "scopeEn": "524,160 pads each connected to one front-end channel, front-end cards streaming 3.28 TB/s over 6552 optical links to 360 FPGA readout cards; used here as the scale reference for large multi-channel readout."
+    },
+    {
+      "key": "caen-electronic-instrumentation",
+      "title": "CAEN：電子儀器產品總覽",
+      "titleEn": "CAEN: Electronic instrumentation overview",
+      "publisher": "CAEN S.p.A.",
+      "url": "https://caen.it/electronic-instrumentation/",
+      "sourceType": "primary",
+      "scope": "核子與粒子物理用電子儀器的分類：數位化器、讀出平台、高壓與低壓電源；公開產品分類。",
+      "scopeEn": "Categories of electronic instrumentation for nuclear and particle physics: digitisers, readout platforms, high- and low-voltage supplies; public product classification."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "CAEN",
+      "nameEn": "CAEN S.p.A.",
+      "business": "核子與粒子物理用的前端讀出平台、數位化器、脈衝處理模組與高壓電源。",
+      "businessEn": "Front-end readout platforms, digitisers, pulse-processing modules and high-voltage supplies for nuclear and particle physics.",
+      "url": "https://www.caen.it/",
+      "investorUrl": "",
+      "security": null,
+      "role": "多通道前端讀出與數位化平台的商用參照",
+      "roleEn": "Commercial reference for multi-channel front-end readout and digitisation platforms"
+    },
+    {
+      "name": "歐洲核子研究組織",
+      "nameEn": "CERN",
+      "business": "粒子物理實驗室；設計 picoTDC 等讀出 ASIC 並運行 LHC 實驗的大規模讀出系統。",
+      "businessEn": "Particle-physics laboratory designing readout ASICs such as picoTDC and operating the large-scale readout systems of the LHC experiments.",
+      "url": "https://home.cern/",
+      "investorUrl": "",
+      "security": null,
+      "role": "前端 ASIC 與大規模讀出架構的公開技術來源",
+      "roleEn": "Public technical source for front-end ASICs and large-scale readout architecture"
+    },
+    {
+      "name": "Weeroc",
+      "nameEn": "Weeroc",
+      "business": "SiPM、PMT 與矽偵測器用的前端讀出 ASIC（Citiroc、Radioroc、Psiroc）。",
+      "businessEn": "Front-end readout ASICs for SiPMs, PMTs and silicon detectors (Citiroc, Radioroc, Psiroc).",
+      "url": "https://www.weeroc.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "電荷靈敏前端 ASIC 的商用參照",
+      "roleEn": "Commercial reference for charge-sensitive front-end ASICs"
+    },
+    {
+      "name": "Amptek（AMETEK）",
+      "nameEn": "Amptek (AMETEK)",
+      "business": "電荷靈敏前置放大器、X 光偵測器與數位脈衝處理器；隸屬 AMETEK。",
+      "businessEn": "Charge-sensitive preamplifiers, X-ray detectors and digital pulse processors; part of AMETEK.",
+      "url": "https://www.amptek.com/",
+      "investorUrl": "https://www.ametek.com/",
+      "security": {"symbol": "AME", "exchange": "NYSE", "currency": "USD"},
+      "role": "低雜訊電荷靈敏前置放大器模組的商用參照",
+      "roleEn": "Commercial reference for low-noise charge-sensitive preamplifier modules"
+    }
+  ],
+  "related": ["a465", "a479"],
+  "architectureNodes": [["偵測器與偏壓網路", "Detector and bias network"], ["電荷靈敏前置放大器", "Charge-sensitive preamplifier"], ["整形器與數位濾波", "Shaper and digital filter"], ["ADC 與序列化鏈路", "ADC and serial link"], ["脈衝注入校正", "Pulse-injection calibration"], ["門檻、佔用率與校正資料庫", "Thresholds, occupancy and calibration database"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [4, 1], [3, 5], [4, 5]]
+}

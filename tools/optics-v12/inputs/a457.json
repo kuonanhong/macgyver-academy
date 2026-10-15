@@ -1,0 +1,161 @@
+{
+  "id": "a457",
+  "title": "自由電子雷射加速器~Free-electron-laser accelerators",
+  "discipline": "optics-accelerators-detectors",
+  "family": "accelerator",
+  "focus": "共振條件、束流品質規格、光陰極電子槍、射頻線性化、橫向偏轉診斷、抖動預算與增益曲線~Resonance condition, beam-quality specs, photocathode gun, RF linearization, deflector diagnostics, jitter budget and gain curve",
+  "summary": "以一座教學用 5.8 GeV、C 波段精簡型硬 X 光 FEL 為主線，從共振條件如何決定加速器長度出發，說明電子槍、射頻曲率線性化與磁束壓縮器如何產生 3 kA 的高品質束團，再把飛秒級縱向診斷、射頻抖動預算、波盪器軌道直線度與增益曲線驗收整合成可交接的 FEL 加速器工程紀錄。~Follow a 5.8 GeV, C-band compact hard X-ray FEL used for teaching, starting from how the resonance condition sets linac length, see how the gun, RF-curvature linearization and chicanes produce a high-quality 3 kA bunch, then integrate femtosecond longitudinal diagnostics, the RF jitter budget, undulator trajectory straightness and gain-curve acceptance into a transferable FEL-accelerator engineering record.",
+  "units": [
+    {
+      "anchor": "波盪器週期與電子能量~Undulator period and electron energy",
+      "title": "共振條件決定加速器規模~The resonance condition sets the accelerator scale",
+      "mechanism": "自由電子雷射的波長不是由增益介質決定，而是由電子能量與波盪器共同決定：λ = λu(1 + K²/2)/(2γ²)。要得到 0.1 nm 硬 X 光，γ 必須上萬，所需的直線加速器長度、隧道與建築成本因此由 λu 與 K 的選擇決定。縮短波盪器週期（真空內波盪器、小間隙）並提高加速梯度（C 波段 5.7 GHz 常溫結構），能把同樣波長所需的能量與長度降低數倍，這是 SACLA、SwissFEL 等精簡型設施的設計邏輯；代價是更小的間隙，以及更嚴格的尾場與束流品質要求。~A free-electron laser's wavelength is set not by a gain medium but jointly by electron energy and the undulator: λ = λu(1 + K²/2)/(2γ²). Reaching 0.1 nm hard X-rays requires γ above ten thousand, so the linac length, tunnel and building cost follow from the choice of λu and K. Shortening the undulator period with small-gap in-vacuum devices and raising the accelerating gradient with C-band 5.7 GHz normal-conducting structures cuts the energy and length needed for the same wavelength several-fold, which is the design logic of compact facilities such as SACLA and SwissFEL; the price is smaller gaps and tighter wakefield and beam-quality requirements.",
+      "model": "目標 λ = 0.1 nm：λu = 15 mm、K = 1.2 時 γ = √(λu(1 + K²/2)/(2λ)) = √(0.015×1.72/(2×10⁻¹⁰)) ≈ 11 360，E ≈ 5.8 GeV，以 28 MV/m 計約需 207 m 加速結構；若用 λu = 30 mm、K = 3.5，γ ≈ 32 690、E ≈ 16.7 GeV，需約 597 m。固定能量下把 K 從 1.2 關到 0.8，波長乘以 (1 + 0.32)/(1 + 0.72) ≈ 0.77，0.1 nm 變成約 0.077 nm。~For λ = 0.1 nm with λu = 15 mm and K = 1.2, γ = √(λu(1 + K²/2)/(2λ)) = √(0.015×1.72/(2×10⁻¹⁰)) ≈ 11 360 and E ≈ 5.8 GeV, about 207 m of structure at 28 MV/m; with λu = 30 mm and K = 3.5, γ ≈ 32 690 and E ≈ 16.7 GeV, needing about 597 m. At fixed energy, closing K from 1.2 to 0.8 multiplies the wavelength by (1 + 0.32)/(1 + 0.72) ≈ 0.77, turning 0.1 nm into about 0.077 nm.",
+      "verify": "以能譜分析段（偏轉磁鐵加螢光屏）量最終電子能量，並以單色器或光譜儀量自發輻射的諧波峰，兩者代入共振式反解 K，與波盪器磁場量測給出的 K 比較，差異應在 10⁻³ 等級以內。~Measure the final electron energy with a spectrometer dipole and screen, measure the spontaneous-emission harmonic peak with a monochromator or spectrometer, invert the resonance relation for K and compare with the K from undulator field measurements, expecting agreement at the 10⁻³ level.",
+      "failure": "能譜分析磁鐵未經校正，實際電子能量比標示低 0.3%，光子能量隨之低 0.6%；使用者在吸收邊附近的實驗全部偏移，波盪器間隙表卻被誤認為有誤而遭錯誤修改。~An uncalibrated spectrometer dipole leaves the true electron energy 0.3% below the displayed value, so photon energy is 0.6% low; every user experiment near an absorption edge is shifted, and the undulator gap table is wrongly blamed and wrongly edited.",
+      "misconception": "FEL 的輸出波長由雷射介質決定，與電子能量無關。~An FEL's output wavelength is set by a lasing medium and is independent of electron energy."
+    },
+    {
+      "anchor": "束流品質規格表~Beam-quality specification sheet",
+      "title": "電子束品質要求：發射度、能量散佈與峰值電流~Electron-beam requirements: emittance, energy spread and peak current",
+      "mechanism": "SASE 增益要求電子束同時滿足三個條件：橫向上，幾何發射度 ε_n/γ 最好小於 λ/4π，使電子束與輻射模式重疊；縱向上，切片能量散佈要小於 Pierce 參數 ρ，否則電子的共振波長被抹開；峰值電流要達到數 kA，ρ 才夠大、增益長度才夠短。三者互相牽制：壓縮提高電流，同時放大能量散佈，並可能因相干同步輻射劣化發射度；能量散佈過小又會引發微束團不穩定，因此加速器設計是在這些規格之間取得平衡。~SASE gain requires the electron beam to satisfy three conditions at once: transversely, the geometric emittance ε_n/γ should be below λ/4π so the beam overlaps the radiation mode; longitudinally, the slice energy spread must be below the Pierce parameter ρ or the resonant wavelength is smeared; and the peak current must reach several kiloamperes so that ρ is large and the gain length short. The three pull against each other: compression raises current but magnifies energy spread and can degrade emittance through coherent synchrotron radiation, while too small an energy spread triggers the microbunching instability, so the accelerator design is a balance among these specifications.",
+      "model": "5.8 GeV（γ ≈ 11 360）、λ = 0.1 nm：λ/4π ≈ 7.96 pm，相當於 ε_n ≤ γλ/4π ≈ 90 nm；實際 ε_n = 0.4 µm 對應幾何 35 pm，超出約 4.4 倍，需由三維增益長度修正承擔。I = 3 kA、K = 1.2、σ_x = 20 µm 時 ρ ≈ 4.9×10⁻⁴，一維增益長度 L_g = λu/(4π√3ρ) ≈ 1.39 m。切片能量散佈 0.5 MeV 對應 8.6×10⁻⁵，約為 ρ 的 1/6，滿足要求。~At 5.8 GeV (γ ≈ 11 360) and λ = 0.1 nm, λ/4π ≈ 7.96 pm, equivalent to ε_n ≤ γλ/4π ≈ 90 nm; a real ε_n = 0.4 µm gives a geometric 35 pm, about 4.4 times over, which the three-dimensional gain-length correction must absorb. With I = 3 kA, K = 1.2 and σ_x = 20 µm, ρ ≈ 4.9×10⁻⁴ and the one-dimensional gain length L_g = λu/(4π√3ρ) ≈ 1.39 m. A slice energy spread of 0.5 MeV is 8.6×10⁻⁵, about one sixth of ρ, which satisfies the requirement.",
+      "verify": "把規格表的每一項對應到一個量測：以四極掃描或多屏法量投影與切片發射度，以橫向偏轉腔加能譜儀量切片能量散佈與電流分佈，再把量得的參數代入 Ming Xie 等三維增益長度擬合式，預測增益長度並與實測增益曲線比對。~Map every line of the specification sheet to a measurement: projected and slice emittance by quadrupole scans or multi-screen methods, slice energy spread and current profile with a transverse deflector plus spectrometer, then insert the measured parameters into a three-dimensional gain-length fit such as Ming Xie's to predict the gain length and compare with the measured gain curve.",
+      "failure": "只量投影發射度就宣告合格，卻漏掉束團中心切片因相干同步輻射而歪斜；只有少數切片真正對準波盪器軸，脈衝能量只有預期的幾分之一，而且對軌道微調極度敏感。~Declaring success from projected emittance alone misses slices tilted by coherent synchrotron radiation in the bunch core; only a few slices align with the undulator axis, pulse energy is a fraction of expectation and extremely sensitive to orbit tweaks.",
+      "misconception": "電子束能量散佈越小越好，降到零最理想。~The smaller the energy spread the better; zero would be ideal."
+    },
+    {
+      "anchor": "光陰極與驅動雷射~Photocathode and drive laser",
+      "title": "光陰極射頻電子槍：量子效率、熱發射度與空間電荷~Photocathode RF gun: quantum efficiency, thermal emittance and space charge",
+      "mechanism": "FEL 的電子束品質在電子槍就大致決定，後段加速只能保持而無法改善。驅動雷射以紫外脈衝照射銅或 Cs₂Te 光陰極，量子效率（QE）決定所需雷射能量；電子離開陰極時帶有平均橫向能量（MTE），形成與雷射光斑大小成正比的熱發射度。陰極表面約 100 MV/m 的射頻電場要快速把電子加速到相對論速度，以壓住空間電荷力；陰極面上的電荷面密度不能超過鏡像電荷極限 ε₀E，電子槍後的螺線管再做發射度補償，把各切片的橫向相空間重新對齊。~An FEL's beam quality is largely fixed at the gun; downstream acceleration can preserve but not improve it. A drive laser illuminates a copper or Cs2Te photocathode with ultraviolet pulses, and the quantum efficiency (QE) sets the laser energy needed; electrons leave the cathode with a mean transverse energy (MTE) that produces a thermal emittance proportional to the laser spot size. An RF field of about 100 MV/m at the cathode must quickly accelerate electrons to relativistic speed to suppress space-charge forces; the surface charge density cannot exceed the image-charge limit ε0E, and a solenoid after the gun performs emittance compensation to realign the transverse phase space of the slices.",
+      "model": "200 pC 等於 1.25×10⁹ 個電子，266 nm 光子能量 4.66 eV。Cs₂Te 的 QE = 1% 時雷射能量 1.25×10⁹/0.01×4.66 eV ≈ 93 nJ；銅陰極 QE = 5×10⁻⁵ 時需約 18.6 µJ。熱發射度 ε_th = σ_x·√(MTE/mc²)，取 0.9 µm/mm（MTE ≈ 0.41 eV）、σ_x = 0.2 mm 得 0.18 µm。陰極場 100 MV/m 的面電荷極限 ε₀E ≈ 8.85×10⁻⁴ C/m²，半徑 0.4 mm 的光斑最多約 0.45 nC，200 pC 已用掉 45%。~200 pC is 1.25×10⁹ electrons, and a 266 nm photon carries 4.66 eV. With a Cs2Te QE of 1% the laser energy is 1.25×10⁹/0.01×4.66 eV ≈ 93 nJ; a copper cathode at QE = 5×10⁻⁵ needs about 18.6 µJ. Thermal emittance ε_th = σ_x·√(MTE/mc²); taking 0.9 µm/mm (MTE ≈ 0.41 eV) and σ_x = 0.2 mm gives 0.18 µm. At a 100 MV/m cathode field the surface-charge limit ε0E ≈ 8.85×10⁻⁴ C/m² allows at most about 0.45 nC from a 0.4 mm radius spot, so 200 pC uses 45% of it.",
+      "verify": "以法拉第杯或積分電流變壓器量電荷對雷射能量的曲線，線性段斜率即 QE，飽和處與鏡像電荷極限對照；以多種光斑尺寸量低電荷發射度，外推到零尺寸得 MTE；並定期以雷射掃描陰極面繪製 QE 分佈，追蹤局部劣化。~Measure charge versus laser energy with a Faraday cup or integrating current transformer: the linear slope is the QE and the saturation point is compared with the image-charge limit; measure low-charge emittance at several spot sizes and extrapolate to zero size to obtain the MTE; map QE across the cathode periodically with the laser to track local degradation.",
+      "failure": "陰極在不良真空下被氧化或污染，QE 逐週下降，操作者只好不斷加大雷射能量；雷射熱點使局部 QE 不均，電子束橫向分佈出現熱點，發射度與暗電流同時上升。~A cathode oxidized or contaminated by poor vacuum loses QE week by week, so operators keep raising laser energy; laser hot spots make the local QE non-uniform, the electron beam's transverse profile develops hot spots, and emittance and dark current rise together.",
+      "misconception": "電子槍之後的加速器可以降低正規化發射度，補回電子槍的不足。~The linac after the gun can reduce normalized emittance and make up for a poor gun."
+    },
+    {
+      "anchor": "X 波段線性化腔與磁束壓縮器~X-band linearizer and magnetic chicane",
+      "title": "加速結構、射頻曲率線性化與磁束壓縮器~Accelerating structures, RF-curvature linearization and chicanes",
+      "mechanism": "束團壓縮先讓電子在離峰相位通過加速結構，建立頭低尾高的能量啁啾，再經四片偏轉磁鐵組成的磁束壓縮器，讓高能量電子走較短路徑追上前方。射頻電場是餘弦形，啁啾本身帶有二次曲率，壓縮後會把電流分佈扭成尖峰加長尾；在注入器後加一段頻率為主結構 4 倍的 X 波段結構，以減速相位運轉抵消曲率，使壓縮線性化。高梯度 C 波段結構孔徑小、短程尾場強，會在束團內產生額外能量變化，必須納入啁啾設計；壓縮器中的相干同步輻射則是發射度劣化的主要來源。~Bunch compression first sends electrons off-crest through accelerating structures to build an energy chirp with the head lower and the tail higher, then through a four-dipole chicane where higher-energy electrons take a shorter path and catch up. Because the RF field is a cosine, the chirp carries a quadratic curvature that after compression twists the current profile into a spike with a long tail; an X-band section at four times the injector frequency, run at a decelerating phase after the injector, cancels the curvature and linearizes compression. High-gradient C-band structures have small irises and strong short-range wakefields that add energy variation within the bunch and must enter the chirp design, while coherent synchrotron radiation in the chicanes is the main source of emittance degradation.",
+      "model": "注入器 S 波段 V_s = 300 MV、離峰 20°，曲率項 ∝ V_s·cos φ·k_s²；以四倍頻 X 波段抵消需 V_x ≈ V_s·cos φ/n² = 300×0.94/16 ≈ 17.6 MV（減速），最終能量因此少約 17.6 MeV。磁束壓縮器 R₅₆ ≈ −2θ²(ΔL + 2L_B/3)：θ = 0.0663 rad（3.8°）、L_B = 0.25 m、ΔL = 5 m 時 R₅₆ ≈ −2×0.0044×5.17 ≈ −45 mm。~For an S-band injector with V_s = 300 MV at 20° off crest, the curvature term scales as V_s·cos φ·k_s²; cancelling it with a fourth-harmonic X-band section needs V_x ≈ V_s·cos φ/n² = 300×0.94/16 ≈ 17.6 MV at decelerating phase, costing about 17.6 MeV of final energy. A chicane has R56 ≈ −2θ²(ΔL + 2L_B/3); with θ = 0.0663 rad (3.8°), L_B = 0.25 m and ΔL = 5 m, R56 ≈ −2×0.0044×5.17 ≈ −45 mm.",
+      "verify": "以橫向偏轉腔量壓縮前後的電流分佈，掃描 X 波段相位與振幅，找出電流分佈最對稱、尖峰最小的設定；把磁束壓縮器出口的相干輻射監測器訊號對射頻相位作圖，確認壓縮工作點；並以壓縮器前後的發射度量測估算 CSR 造成的劣化。~Measure the current profile before and after compression with a transverse deflector, scan X-band phase and amplitude to find the setting with the most symmetric profile and smallest spike, plot the signal of a coherent-radiation monitor at the chicane exit against RF phase to confirm the compression working point, and estimate CSR degradation from emittance measured before and after the chicane.",
+      "failure": "X 波段線性化腔跳脫後未被察覺，壓縮後的電流出現數十 fs 的尖峰與長尾；尖峰處 CSR 使切片發射度惡化、脈衝能量下降，長尾則在波盪器中不貢獻增益，只增加輻射負載。~An X-band linearizer trip that goes unnoticed leaves a compressed current with a spike tens of femtoseconds long and a long tail; CSR in the spike spoils slice emittance and lowers pulse energy, while the tail contributes no gain in the undulator and only adds radiation load.",
+      "misconception": "只要加速到夠高能量，束團長度就會自動變短。~Accelerating to high enough energy automatically shortens the bunch."
+    },
+    {
+      "anchor": "橫向偏轉腔與螢光屏~Transverse deflecting cavity and screen",
+      "title": "飛秒級縱向診斷：橫向偏轉腔~Femtosecond longitudinal diagnostics: the transverse deflector",
+      "mechanism": "束團長度只有數十 fs，電子學無法直接量測。橫向偏轉腔以零交叉相位的橫向射頻場，讓束團頭尾得到方向相反的偏轉，把時間軸轉成螢光屏上的垂直位置；再配合水平偏轉的能譜儀，一張影像就能同時看到電流、切片能量散佈與能量啁啾。時間解析度受偏轉強度與電子束本身在屏上的垂直尺寸限制，偏轉腔也會增加切片能量散佈，因此量測設定本身要列入誤差分析。放在波盪器之後時，還能比較有無雷射作用時的切片能量損失，重建 X 光脈衝的時間形狀。~Bunches only tens of femtoseconds long cannot be measured directly with electronics. A transverse deflecting cavity applies a transverse RF field at zero crossing so head and tail are kicked in opposite directions, mapping time onto vertical position on a screen; combined with a horizontally bending spectrometer, one image shows current, slice energy spread and energy chirp together. Time resolution is limited by the kick strength and by the beam's own vertical size at the screen, and the deflector also adds slice energy spread, so the measurement setup belongs in the error analysis. Placed after the undulator, it compares slice energy loss with and without lasing to reconstruct the X-ray pulse's temporal shape.",
+      "model": "縱向剪切 S = eV·k·R₃₄/E：C 波段 f = 5.712 GHz（k = 119.7 m⁻¹）、V = 20 MV、R₃₄ = 20 m、E = 3 GeV 時 S ≈ 20×119.7×20/3000 ≈ 16，1 fs（0.30 µm）在屏上拉開 4.8 µm。若關閉偏轉腔時屏上垂直尺寸 σ_y0 = 50 µm，時間解析度 ≈ 50/4.8 ≈ 10.4 fs；要達到 5 fs，需把電壓或 R₃₄ 加倍，或把 σ_y0 降到 24 µm。~The longitudinal shear S = eV·k·R34/E with C-band f = 5.712 GHz (k = 119.7 m⁻¹), V = 20 MV, R34 = 20 m and E = 3 GeV is S ≈ 20×119.7×20/3000 ≈ 16, so 1 fs (0.30 µm) spreads to 4.8 µm on the screen. With a vertical size σ_y0 = 50 µm at the screen when the deflector is off, the time resolution ≈ 50/4.8 ≈ 10.4 fs; reaching 5 fs requires doubling the voltage or R34, or cutting σ_y0 to 24 µm.",
+      "verify": "以偏轉腔相位做小幅掃描，取屏上束流質心位移對相位的斜率作為時間標定（µm/fs）；在兩個零交叉（+90° 與 −90°）各量一次，以消除束團內原有的 y–z 相關；關閉偏轉腔量 σ_y0 確認解析度，並以相干輻射監測器的訊號趨勢交叉檢查壓縮量。~Calibrate the time axis by scanning the deflector phase slightly and taking the slope of centroid displacement versus phase (µm per fs); measure at both zero crossings, +90° and −90°, to cancel any intrinsic y–z correlation in the bunch; measure σ_y0 with the deflector off to confirm resolution, and cross-check compression against the coherent-radiation monitor trend.",
+      "failure": "只在單一零交叉量測，束團原有的 y–z 傾斜被誤當成束長，回報的電流偏高或偏低 30%；據此調整壓縮器後，實際峰值電流偏離設計，增益長度變長，飽和點移出波盪器末端。~Measuring at only one zero crossing mistakes an intrinsic y–z tilt for bunch length, reporting current 30% high or low; tuning the compressors on that basis leaves the real peak current off design, lengthens the gain length and moves saturation past the end of the undulator.",
+      "misconception": "屏上看到的垂直長度就是束團長度，不必扣除束流本身的尺寸。~The vertical length on the screen equals the bunch length with no need to remove the beam's own size."
+    },
+    {
+      "anchor": "射頻相位與振幅抖動預算~RF phase and amplitude jitter budget",
+      "title": "抖動預算：從射頻穩定度到峰值電流與到達時間~Jitter budget: from RF stability to peak current and arrival time",
+      "mechanism": "加速器每一段的射頻相位與振幅抖動，都會透過壓縮器轉換成束流參數的逐發變動：相位抖動改變啁啾，使壓縮因子與峰值電流抖動，進而改變增益長度與脈衝能量；振幅抖動造成能量偏差，經 R₅₆ 轉成到達時間偏移，並在最終能量上轉成光子波長抖動。壓縮因子在高壓縮時對啁啾非常敏感，因此第一級壓縮器之前的射頻穩定度要求最嚴，常需 0.02° 與 10⁻⁴ 等級，由低階射頻控制與光纖時序分配系統共同達成。~Phase and amplitude jitter in every RF section becomes shot-to-shot variation of beam parameters through the compressors: phase jitter alters the chirp, so compression factor and peak current fluctuate, changing gain length and pulse energy; amplitude jitter produces energy deviation that R56 converts into arrival-time offset and, at the final energy, into photon-wavelength jitter. Because the compression factor is very sensitive to chirp at strong compression, RF stability before the first compressor is the most demanding, often at the 0.02° and 10⁻⁴ level, achieved jointly by low-level RF control and an optical-fibre timing distribution system.",
+      "model": "第一級壓縮 C = 1/(1 + hR₅₆) = 10，即 hR₅₆ = −0.9；啁啾 h ∝ sin φ，離峰 20° 時相位抖動 0.02°（3.49×10⁻⁴ rad）使 dh/h = cot 20°×3.49×10⁻⁴ ≈ 9.6×10⁻⁴，壓縮因子變動 dC/C ≈ C·|hR₅₆|·dh/h ≈ 10×0.9×9.6×10⁻⁴ ≈ 0.86%。振幅抖動 10⁻⁴ 造成 δ = 10⁻⁴，經 R₅₆ = 45 mm 得 Δz = 4.5 µm，到達時間偏移約 15 fs。最終能量抖動 2×10⁻⁴ 使 12.4 keV 光子偏移約 5 eV。~For a first-stage compression C = 1/(1 + hR56) = 10, hR56 = −0.9; the chirp h ∝ sin φ, so at 20° off crest a phase jitter of 0.02° (3.49×10⁻⁴ rad) gives dh/h = cot 20°×3.49×10⁻⁴ ≈ 9.6×10⁻⁴ and a compression change dC/C ≈ C·|hR56|·dh/h ≈ 10×0.9×9.6×10⁻⁴ ≈ 0.86%. Amplitude jitter of 10⁻⁴ gives δ = 10⁻⁴, which R56 = 45 mm turns into Δz = 4.5 µm, an arrival-time offset of about 15 fs. A final energy jitter of 2×10⁻⁴ shifts 12.4 keV photons by about 5 eV.",
+      "verify": "逐發記錄各射頻站的相位與振幅、各壓縮器後的相干輻射監測器訊號、到達時間監測器與能量 BPM，計算變數之間的相關係數與靈敏度矩陣；以刻意小幅改變單一站相位的方式驗證靈敏度，並把量到的抖動依預算表分配給各站。~Log shot by shot the phase and amplitude of every RF station, the coherent-radiation monitor after each compressor, the bunch-arrival-time monitor and an energy BPM; compute correlation coefficients and a sensitivity matrix between them, verify each sensitivity by deliberately stepping one station's phase slightly, and allocate the measured jitter to stations according to the budget table.",
+      "failure": "某一速調管調變器的高壓漣波增加，相位抖動從 0.02° 升到 0.1°，峰值電流抖動放大到約 4%，X 光脈衝能量的逐發起伏變大且與電流高度相關；若只看平均脈衝能量，問題會被誤判為波盪器失準。~Increased high-voltage ripple in one klystron modulator raises phase jitter from 0.02° to 0.1°, amplifying peak-current jitter to about 4%; X-ray pulse-energy fluctuation grows and correlates strongly with current, and looking only at average pulse energy misdiagnoses the problem as undulator misalignment.",
+      "misconception": "射頻抖動只影響電子能量，不影響 X 光脈衝的到達時間。~RF jitter affects only electron energy, not the X-ray pulse arrival time."
+    },
+    {
+      "anchor": "波盪器線與自種子晶體~Undulator line and self-seeding crystal",
+      "title": "波盪器線整合：軌道直線度、相位匹配與種子化~Undulator-line integration: trajectory straightness, phase matching and seeding",
+      "mechanism": "波盪器由數十段 4 到 5 m 的模組組成，段間以四極聚焦、相位器與 BPM 銜接。電子軌道只要有微小角度偏差，路徑就比直線長，與光的相對相位滑移，使微束團與輻射失去同步；因此整條波盪器線要以束流基準對準，把軌道直線度做到每數公尺數微米。SASE 從雜訊起始，頻譜呈尖刺狀；硬 X 光自種子在中段插入鑽石晶體，以前半段 SASE 光經布拉格反射後的尾波作為窄頻種子，後半段只放大種子，使頻寬與穩定度大幅改善。~The undulator consists of tens of 4 to 5 m modules joined by quadrupoles, phase shifters and BPMs. Any small angular deviation lengthens the electron path relative to a straight line and slips its phase relative to the light, desynchronizing microbunches and radiation, so the whole line needs beam-based alignment to a straightness of a few micrometres over several metres. SASE starts from noise and has a spiky spectrum; hard X-ray self-seeding inserts a diamond crystal mid-line where the Bragg-reflected wake of the first half's SASE light serves as a narrow-band seed, and the second half amplifies only the seed, greatly improving bandwidth and stability.",
+      "model": "軌道角度 x' 使電子比直線多走 Δs = ½∫x'²ds。在約兩個增益長度（3 m）內 x' = 2 µrad：Δs = ½×(2×10⁻⁶)²×3 = 6×10⁻¹² m，相對 0.1 nm 光的相位滑移 2π×6×10⁻¹²/10⁻¹⁰ ≈ 21.6°；x' = 1 µrad 時降為 5.4°。因此軌道角度要壓到約 1 µrad，相當於 3 m 內位置偏差約 3 µm。~An orbit angle x' makes the electron travel Δs = ½∫x'²ds more than a straight path. With x' = 2 µrad over about two gain lengths (3 m), Δs = ½×(2×10⁻⁶)²×3 = 6×10⁻¹² m, a phase slip of 2π×6×10⁻¹²/10⁻¹⁰ ≈ 21.6° relative to 0.1 nm light; at x' = 1 µrad it falls to 5.4°. The orbit angle must therefore be held to about 1 µrad, equivalent to about 3 µm of position error over 3 m.",
+      "verify": "以束流基準對準：在數個不同電子能量下記錄 BPM 讀數，四極偏移造成的軌道會隨能量改變，解出各四極與 BPM 的偏移並修正，反覆進行到軌道對能量不敏感；再逐段關閉間隙量自發輻射與增益，並以相位器掃描找出各段之間脈衝能量最大的設定。~Use beam-based alignment: record BPM readings at several electron energies, since orbits caused by quadrupole offsets change with energy, solve for each quadrupole and BPM offset, correct, and iterate until the orbit is insensitive to energy; then close segments one by one to measure spontaneous emission and gain, and scan phase shifters to find the inter-segment settings that maximize pulse energy.",
+      "failure": "波盪器段因地基沉陷或溫度梯度偏移數十微米卻未重新對準，只有部分段貢獻增益，飽和點後移，脈衝能量下降一半；若自種子晶體處的電子軌道偏移，種子與電子不重疊，種子化效果消失而只剩 SASE。~Undulator segments shifted tens of micrometres by foundation settlement or thermal gradients, but not realigned, leave only some segments contributing gain, pushing saturation downstream and halving pulse energy; if the orbit at the self-seeding crystal is off, the seed and electrons do not overlap, seeding vanishes and only SASE remains.",
+      "misconception": "波盪器只要磁場合格，電子軌道誤差影響不大。~If the undulator field passes, electron orbit errors matter little."
+    },
+    {
+      "anchor": "增益曲線量測與交接紀錄~Gain-curve measurement and handoff record",
+      "title": "增益曲線、飽和脈衝能量與試運轉交接~Gain curve, saturation pulse energy and commissioning handoff",
+      "mechanism": "試運轉的核心證據是增益曲線：逐段打開波盪器間隙，或以軌道踢出使後段失效，量 X 光脈衝能量對有效波盪器長度的關係；指數增長段的斜率給出實際增益長度，轉平的位置給出飽和點。實測增益長度與由量測束流參數預測的三維值比較，可以判斷是發射度、能量散佈還是軌道誤差在吃掉增益。交接時要把操作點（電荷、壓縮設定、雷射加熱器能量、波盪器錐度）連同增益曲線、脈衝能量統計、波長穩定度與射頻抖動預算一起留下。~The core commissioning evidence is the gain curve: open undulator gaps segment by segment, or kick the orbit to disable downstream sections, and measure X-ray pulse energy versus active undulator length; the slope of the exponential region gives the real gain length and the turnover gives the saturation point. Comparing the measured gain length with the three-dimensional prediction from measured beam parameters shows whether emittance, energy spread or orbit error is eating the gain. Handoff records the working point (charge, compression settings, laser-heater energy, undulator taper) together with the gain curve, pulse-energy statistics, wavelength stability and the RF jitter budget.",
+      "model": "在 z = 20 m 量到 10 µJ、z = 26 m 量到 400 µJ：L_g = Δz/ln(E₂/E₁) = 6/ln 40 ≈ 1.63 m，比一維值 1.39 m 長約 17%，屬三維效應的合理範圍。飽和脈衝能量約為 ρ 乘以束團能量：4.9×10⁻⁴×200 pC×5.8 GV ≈ 0.57 mJ，在 12.4 keV 相當於 0.57 mJ/(12.4 keV×1.602×10⁻¹⁹ J/eV) ≈ 2.9×10¹¹ 個光子。~Measuring 10 µJ at z = 20 m and 400 µJ at z = 26 m gives L_g = Δz/ln(E2/E1) = 6/ln 40 ≈ 1.63 m, about 17% longer than the one-dimensional 1.39 m and within the normal range of three-dimensional effects. The saturation pulse energy is roughly ρ times the bunch energy, 4.9×10⁻⁴×200 pC×5.8 GV ≈ 0.57 mJ, which at 12.4 keV is 0.57 mJ/(12.4 keV×1.602×10⁻¹⁹ J/eV) ≈ 2.9×10¹¹ photons.",
+      "verify": "增益曲線每點至少平均數百發，以壓低 SASE 的統計起伏，並以絕對校正的氣體偵測器與熱電型能量計交叉校正脈衝能量；以錐度掃描確認飽和後的能量提取；交接前連續運轉 24 小時，記錄脈衝能量、波長與到達時間的統計，作為日後比對的基準。~Average at least hundreds of shots per gain-curve point to suppress SASE statistical fluctuation, and cross-calibrate pulse energy between an absolutely calibrated gas detector and a thermal energy meter; scan the taper to confirm post-saturation energy extraction; before handoff run continuously for 24 hours logging pulse-energy, wavelength and arrival-time statistics as the baseline for later comparison.",
+      "failure": "只以單發最大脈衝能量宣稱達標而忽略平均值與起伏，使用者排程後發現平均脈衝能量只有宣稱值的一半，而且隨冷卻水溫度週期變化，原因是加速結構溫度造成的相位漂移從未納入回授。~Claiming success from the single highest-energy shot while ignoring mean and fluctuation leads users, once scheduled, to find average pulse energy half the claimed value and varying with the cooling-water temperature cycle, because structure-temperature phase drift was never included in feedback.",
+      "misconception": "偵測器上看到 X 光，就表示 FEL 已經飽和。~Seeing X-rays on the detector means the FEL has saturated."
+    }
+  ],
+  "example": "精簡型硬 X 光 FEL 加速器練習：目標 0.1 nm（12.4 keV），λu = 15 mm、K = 1.2，需 E ≈ 5.8 GeV。電子槍：200 pC、Cs₂Te QE 1%，266 nm 雷射約 93 nJ；高斯束團 σ_t = 3 ps，峰值 I₀ = Q/(√(2π)σ_t) ≈ 26.6 A。要達 3 kA 需總壓縮 C ≈ 113，分配為 300 MeV 處第一級 C₁ = 10、約 2 GeV 處第二級 C₂ ≈ 11.3。雷射加熱器加入 15 keV 切片能量散佈，壓縮後放大為 15 keV×113 ≈ 1.7 MeV，在 5.8 GeV 為 2.9×10⁻⁴，仍小於 ρ ≈ 4.9×10⁻⁴，但餘量只有 1.7 倍；加熱器若設到 30 keV 就會超過 ρ。主加速：扣掉注入器 300 MeV 並補回 X 波段減速 17.6 MeV，以 28 MV/m 計約需 (5800 − 300 + 17.6)/28 ≈ 197 m 結構。飽和脈衝能量約 0.57 mJ（2.9×10¹¹ 個光子）；若最終能量抖動 2×10⁻⁴，光子能量逐發偏移約 5 eV。數值為教學假設，不代表任何實際設施規格。~Compact hard X-ray FEL accelerator exercise: target 0.1 nm (12.4 keV) with λu = 15 mm and K = 1.2, requiring E ≈ 5.8 GeV. Gun: 200 pC from Cs2Te at 1% QE needs about 93 nJ of 266 nm laser; a Gaussian bunch with σ_t = 3 ps has peak I0 = Q/(√(2π)σ_t) ≈ 26.6 A. Reaching 3 kA needs total compression C ≈ 113, split as C1 = 10 at 300 MeV and C2 ≈ 11.3 near 2 GeV. A laser heater adding 15 keV of slice energy spread is magnified by compression to 15 keV×113 ≈ 1.7 MeV, which at 5.8 GeV is 2.9×10⁻⁴, still below ρ ≈ 4.9×10⁻⁴ but with only 1.7 times margin; a 30 keV heater setting would exceed ρ. Main linac: after the 300 MeV injector and making up 17.6 MeV of X-band deceleration, about (5800 − 300 + 17.6)/28 ≈ 197 m of structure at 28 MV/m. Saturation pulse energy is about 0.57 mJ (2.9×10¹¹ photons); a final energy jitter of 2×10⁻⁴ shifts photon energy by about 5 eV shot to shot. Values are teaching assumptions, not any facility's specification.",
+  "history": "1971 年 John Madey 在史丹佛提出自由電子雷射，1977 年其團隊以超導直線加速器在 3.4 µm 做出第一台 FEL 振盪器；1980 年代 Kondratenko 與 Saldin、Bonifacio、Pellegrini 與 Narducci 建立自發放大自發輻射（SASE）理論，使不需反射鏡的 X 光 FEL 成為可能。2000 年 DESY 的 TESLA 測試設施在 109 nm 觀察到 SASE 增益，2009 年 SLAC 的 LCLS 成為第一台硬 X 光 FEL，2011 年 SACLA 以 C 波段加速與真空內波盪器縮短設施長度，2017 年 European XFEL 以超導直線加速器啟用。本課只重建公開物理與工程邏輯。~In 1971 John Madey at Stanford proposed the free-electron laser, and in 1977 his group operated the first FEL oscillator at 3.4 µm using a superconducting linac; in the 1980s Kondratenko and Saldin, and Bonifacio, Pellegrini and Narducci, developed the theory of self-amplified spontaneous emission (SASE), making mirrorless X-ray FELs possible. In 2000 the TESLA Test Facility at DESY observed SASE gain at 109 nm, in 2009 SLAC's LCLS became the first hard X-ray FEL, in 2011 SACLA shortened the facility with C-band acceleration and in-vacuum undulators, and in 2017 European XFEL opened with a superconducting linac. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "保羅謝爾研究所 SwissFEL（瑞士菲利根）~Paul Scherrer Institute SwissFEL, Villigen",
+    "country": "瑞士~Switzerland",
+    "lat": 47.5375,
+    "lng": 8.2236,
+    "query": "SwissFEL Paul Scherrer Institut Villigen"
+  },
+  "sources": [
+    {
+      "key": "xfel-how-it-works",
+      "title": "European XFEL：運作原理",
+      "titleEn": "European XFEL: How it works",
+      "publisher": "European XFEL GmbH",
+      "url": "https://www.xfel.eu/facility/overview/how_it_works/index_eng.html",
+      "sourceType": "primary",
+      "scope": "以雷射從金屬陰極擊出電子、1.7 km 鈮超導直線加速器、超過 100 m 的波盪器與 SASE 微束團機制的公開說明。",
+      "scopeEn": "Public explanation of laser-driven electron emission from a metal cathode, the 1.7 km niobium superconducting linac, undulators over 100 m long and the SASE microbunching mechanism."
+    },
+    {
+      "key": "lcls-overview",
+      "title": "LCLS：設施概覽",
+      "titleEn": "LCLS Overview",
+      "publisher": "SLAC National Accelerator Laboratory",
+      "url": "https://lcls.slac.stanford.edu/overview",
+      "sourceType": "primary",
+      "scope": "驅動雷射以紫外光照射銅光陰極產生電子、加速後進入波盪器產生飛秒硬 X 光，以及每秒 120 發到 LCLS-II 百萬發的升級方向。",
+      "scopeEn": "UV drive laser on a copper photocathode, acceleration into the undulator hall for femtosecond hard X-rays, and the upgrade path from 120 pulses per second to a million with LCLS-II."
+    },
+    {
+      "key": "lcls-machine-parameters",
+      "title": "LCLS：機器參數",
+      "titleEn": "LCLS: Machine parameters",
+      "publisher": "SLAC National Accelerator Laboratory",
+      "url": "https://lcls.slac.stanford.edu/machine/parameters",
+      "sourceType": "primary",
+      "scope": "常溫與超導直線加速器的光子能量範圍、脈衝能量與重複率等公開參數；課程數值為教學假設。",
+      "scopeEn": "Public photon-energy ranges, pulse energies and repetition rates for the normal-conducting and superconducting linacs; course numbers are teaching assumptions."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "SLAC 國家加速器實驗室",
+      "nameEn": "SLAC National Accelerator Laboratory",
+      "business": "美國能源部國家實驗室，運轉 LCLS 與 LCLS-II X 光自由電子雷射。",
+      "businessEn": "US Department of Energy national laboratory operating the LCLS and LCLS-II X-ray free-electron lasers.",
+      "url": "https://www6.slac.stanford.edu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "硬 X 光 FEL 加速器與光陰極注入器的公開資訊",
+      "roleEn": "Public information on hard X-ray FEL accelerators and photocathode injectors"
+    },
+    {
+      "name": "European XFEL",
+      "nameEn": "European XFEL",
+      "business": "位於德國漢堡附近的國際 X 光自由電子雷射設施，以 1.7 km 超導直線加速器驅動。",
+      "businessEn": "International X-ray free-electron-laser facility near Hamburg, Germany, driven by a 1.7 km superconducting linac.",
+      "url": "https://www.xfel.eu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "超導 FEL 加速器與 SASE 原理的公開說明",
+      "roleEn": "Public explanation of superconducting FEL accelerators and SASE"
+    },
+    {
+      "name": "佳能",
+      "nameEn": "Canon",
+      "business": "影像與工業設備集團，旗下 Canon Electron Tubes & Devices 生產加速器與醫療用電子管，包括 S 波段與 C 波段速調管。",
+      "businessEn": "Imaging and industrial-equipment group whose Canon Electron Tubes & Devices unit makes electron tubes for accelerators and medicine, including S-band and C-band klystrons.",
+      "url": "https://global.canon/",
+      "investorUrl": "https://global.canon/en/ir/",
+      "security": {"symbol": "7751", "exchange": "TSE", "currency": "JPY"},
+      "role": "直線加速器射頻功率源（速調管）",
+      "roleEn": "RF power sources (klystrons) for linacs"
+    }
+  ],
+  "related": ["a490", "a459"],
+  "architectureNodes": [["光陰極射頻電子槍與驅動雷射", "Photocathode RF gun and drive laser"], ["注入器與雷射加熱器", "Injector and laser heater"], ["X 波段線性化與磁束壓縮器", "X-band linearizer and chicanes"], ["C 波段主直線加速器", "C-band main linac"], ["波盪器線與自種子", "Undulator line and self-seeding"], ["橫向偏轉腔與診斷", "Transverse deflector and diagnostics"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 4], [5, 2], [5, 4]]
+}

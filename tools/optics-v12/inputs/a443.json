@@ -1,0 +1,172 @@
+{
+  "id": "a443",
+  "title": "低溫電子顯微鏡~Cryogenic electron microscopes",
+  "discipline": "optics-analytical-instruments",
+  "family": "cryo",
+  "focus": "玻璃態冰、低劑量相位對比、CTF 與 Ewald 球修正、直接偵測器與設施級產出~Vitreous ice, low-dose phase contrast, CTF and Ewald-sphere correction, direct detectors and facility-scale throughput",
+  "summary": "以 300 kV 單顆粒低溫電子顯微鏡為對象：從玻璃化與輻射損傷的劑量極限出發，理解離焦相位對比與 CTF 零點、Ewald 球曲率與束致漂移如何限制解析度，再把冷台防污染、直接電子偵測器、像素尺度校正、Rosenthal–Henderson 顆粒數估計與 FSC 驗收整合成設施級的工程交付。~For a 300 kV single-particle cryo-electron microscope: start from vitrification and the dose limits of radiation damage, see how defocus phase contrast with CTF zeros, Ewald-sphere curvature and beam-induced motion bound resolution, then integrate cold-stage anti-contamination, direct electron detectors, pixel-scale calibration, Rosenthal–Henderson particle-number estimates and FSC acceptance into a facility-level engineering delivery.",
+  "units": [
+    {
+      "anchor": "玻璃態冰與劑量預算~Vitreous ice and the dose budget",
+      "title": "玻璃化、輻射損傷與低劑量成像~Vitrification, radiation damage and low-dose imaging",
+      "mechanism": "生物分子只有在水環境中才保持結構，但顯微鏡在真空中工作，所以把含水樣品以每秒十萬度的速率急凍成玻璃態冰：水分子來不及結晶，分子被原位固定，低溫同時減緩電子束造成的自由基擴散。即使如此，每個電子穿過樣品都會沉積能量，高解析資訊在幾個電子每平方埃之後就消失，所以每張影像的總劑量被限制在數十 e⁻/Å²，影像極度缺乏訊號，必須靠平均成千上萬個相同顆粒把訊噪比補回來。劑量也要分配成多幀電影，讓後段處理能依每幀累積劑量加權。~Biological molecules keep their structure only in water, yet the microscope works in vacuum, so hydrated specimens are frozen at about 10⁵ K/s into vitreous ice: water has no time to crystallise, molecules are fixed in place, and the low temperature slows radical diffusion caused by the beam. Even so, every electron deposits energy, high-resolution information vanishes after a few electrons per square ångström, and the total dose per image is capped at tens of e⁻/Å², leaving images starved of signal that only averaging tens of thousands of identical particles can recover. The dose is also split into a multi-frame movie so later processing can weight each frame by its accumulated exposure.",
+      "model": "玻璃化：從 4 °C 冷到約 −137 °C 的去玻璃化溫度以下需降溫 141 K，在 1.4 ms 內完成即約 10⁵ K/s，液態乙烷（−183 °C）的高熱傳率是關鍵。Grant–Grigorieff 臨界曝光 N_e(k) ≈ 0.245·k^−1.665 + 2.81 e⁻/Å²（k 為空間頻率，Å⁻¹）：2 Å 時 3.6、3 Å 時 4.3、10 Å 時 14 e⁻/Å²；最佳累積曝光約為臨界值的 2.5 倍，所以 3 Å 的資訊在前 11 e⁻/Å² 內最有價值，總劑量 40 e⁻/Å² 的後段主要貢獻低解析對比。~Vitrification: cooling from 4 °C to below the roughly −137 °C devitrification temperature is 141 K, and doing it within 1.4 ms is about 10⁵ K/s, which is why the high heat-transfer rate of liquid ethane (−183 °C) matters. Grant–Grigorieff critical exposure N_e(k) ≈ 0.245·k^−1.665 + 2.81 e⁻/Å² with k the spatial frequency in Å⁻¹: 3.6 at 2 Å, 4.3 at 3 Å, 14 e⁻/Å² at 10 Å; the optimum accumulated exposure is about 2.5 times the critical value, so 3 Å information is most valuable within the first 11 e⁻/Å² and the later part of a 40 e⁻/Å² exposure mainly contributes low-resolution contrast.",
+      "verify": "在同一冰區以固定劑量率拍 60 幀電影，對每幀的傅立葉功率譜量各空間頻率的訊號衰減，擬合指數衰減常數與 Grant–Grigorieff 曲線比較；以電子繞射觀察冰是否出現六方或立方冰的繞射環，確認玻璃化成功且在搬運中沒有超過 −137 °C。~Record a 60-frame movie at fixed dose rate on one ice area, measure the signal decay at each spatial frequency from per-frame power spectra and fit decay constants against the Grant–Grigorieff curve; use electron diffraction to check for hexagonal or cubic ice rings, confirming successful vitrification and that −137 °C was never exceeded during transfer.",
+      "failure": "轉移樣品時冷卻鉗短暫離開液氮，網格升溫超過 −137 °C，玻璃態冰轉成立方冰，顆粒被擠壓變形且背景出現繞射環，整批網格資料不可用而且往往在收完數千張影像後才發現。~Tweezers leaving liquid nitrogen briefly during transfer let the grid warm above −137 °C, vitreous ice turns cubic, particles are crushed and diffraction rings appear in the background; the whole grid's data are unusable, often discovered only after thousands of images are collected.",
+      "misconception": "低溫只是為了讓樣品在真空中不蒸發。~Low temperature serves only to stop the specimen evaporating in vacuum."
+    },
+    {
+      "anchor": "離焦相位對比與 CTF 零點~Defocus phase contrast and CTF zeros",
+      "title": "弱相位物體、離焦與對比傳遞函數~Weak phase objects, defocus and the contrast transfer function",
+      "mechanism": "蛋白質在冰中幾乎不吸收電子，只改變穿透波的相位，正焦時影像幾乎沒有對比；把物鏡調到 1 到 3 µm 的欠焦，相位差經由 sin χ(u) 轉成強度對比，χ(u) = πλΔf·u² − (π/2)·C_s·λ³·u⁴。離焦越大，低頻對比越強、顆粒越容易辨認，但 CTF 的第一個零點越早出現，之後正負交替的傳遞必須在後處理中依每張影像擬合的離焦與像散做相位翻轉或 Wiener 修正，而且離焦必須量得夠準，否則高頻相位會被錯誤翻轉。~Proteins in ice barely absorb electrons and only shift the phase of the transmitted wave, so an in-focus image has almost no contrast; underfocusing the objective by 1 to 3 µm converts phase into intensity through sin χ(u), with χ(u) = πλΔf·u² − (π/2)·C_s·λ³·u⁴. Larger defocus strengthens low-frequency contrast and makes particles easier to see, but the first CTF zero arrives earlier, and the alternating transfer beyond it must be phase-flipped or Wiener-corrected in processing using defocus and astigmatism fitted per image; the defocus must be known accurately or high-frequency phases are flipped the wrong way.",
+      "model": "忽略 C_s 時第一零點在 u₁ = 1/√(λΔf)。300 kV、λ = 0.0197 Å：Δf = 0.5 µm 時 9.9 Å，1.5 µm 時 17.2 Å，2.5 µm 時 22.2 Å。到 3 Å 之前的零點數 ≈ λΔf·u² = 0.0197×15000×(1/3)² ≈ 33 個（1.5 µm）。離焦容差：要在 3 Å 保持相位誤差 < π/4，δf < 1/(4λu²) ≈ 114 Å ≈ 11 nm；2 Å 時收緊到 5 nm，所以逐張甚至逐顆粒的 CTF 精修是必要的。~Ignoring C_s the first zero lies at u₁ = 1/√(λΔf). At 300 kV with λ = 0.0197 Å: 9.9 Å at Δf = 0.5 µm, 17.2 Å at 1.5 µm, 22.2 Å at 2.5 µm. The number of zeros before 3 Å is ≈ λΔf·u² = 0.0197×15000×(1/3)² ≈ 33 at 1.5 µm. Defocus tolerance: keeping the phase error below π/4 at 3 Å needs δf < 1/(4λu²) ≈ 114 Å ≈ 11 nm, tightening to 5 nm at 2 Å, which is why per-image and even per-particle CTF refinement is necessary.",
+      "verify": "對每張顯微影像計算旋轉平均功率譜並擬合 Thon 環，得到離焦、像散與擬合可信的最高頻率；把擬合的離焦與顯微鏡回報的離焦相比，系統性偏差反映物鏡電流與高度校正；用碳膜區的 Thon 環檢查零點位置是否與 1/√(λΔf) 一致，並確認像散小於 50 nm。~Compute the rotationally averaged power spectrum of each micrograph and fit Thon rings to obtain defocus, astigmatism and the highest frequency at which the fit is credible; compare the fitted defocus with the microscope's reported value, where a systematic offset reflects objective-current and eucentric-height calibration; check on carbon-film areas that the zero positions agree with 1/√(λΔf) and that astigmatism is below 50 nm.",
+      "failure": "為了看清小顆粒把離焦設到 4 µm，第一零點退到 28 Å，到 3 Å 前有近 90 個零點，CTF 擬合在高頻失去可信度，離焦誤差超過 11 nm 的容差，重建在 4 Å 停滯而顆粒數再多也無法改善。~Setting defocus to 4 µm to see small particles pushes the first zero out to 28 Å with nearly 90 zeros before 3 Å; CTF fitting loses credibility at high frequency, the defocus error exceeds the 11 nm tolerance, and the reconstruction stalls at 4 Å no matter how many particles are added.",
+      "misconception": "離焦越大影像越清楚，所以重建解析度也越高。~Larger defocus gives clearer images and therefore higher reconstruction resolution."
+    },
+    {
+      "anchor": "急凍儀、網格與冰厚~Plunge freezer, grids and ice thickness",
+      "title": "樣品製備硬體：急凍、網格與冰厚控制~Specimen-preparation hardware: plunging, grids and ice-thickness control",
+      "mechanism": "製備在溫濕度受控的急凍儀中進行：3 µL 樣品滴在帶孔碳膜或金膜網格上，濾紙吸去多餘液體只留幾十奈米的薄膜，隨即插入液態乙烷。冰厚是最關鍵的製備參數：太厚則背景的非彈性散射淹沒顆粒對比，太薄則顆粒被擠到孔邊或變性在氣液界面。金網格與金箔支撐膜在冷卻時收縮一致，減少束致漂移；塗石墨烯或親水處理用來控制顆粒分佈與取向。冰厚可用能量過濾器由非彈性散射比例估計。~Preparation happens in a temperature- and humidity-controlled plunge freezer: 3 µL of sample is applied to a holey carbon or gold-film grid, filter paper blots away excess liquid leaving a film tens of nanometres thick, and the grid is plunged into liquid ethane. Ice thickness is the decisive preparation parameter: too thick and inelastic background swamps particle contrast, too thin and particles are pushed to hole edges or denature at the air-water interface. Gold grids with gold-foil supports contract uniformly on cooling and reduce beam-induced motion; graphene coatings or hydrophilic treatments control particle distribution and orientation. Ice thickness can be estimated with an energy filter from the inelastic-scattering fraction.",
+      "model": "300 kV 玻璃態冰的非彈性平均自由徑取約 400 nm（教學假設）：冰厚 50 nm 時 t/λ = 0.125，非彈性比例 1 − exp(−0.125) ≈ 12%；100 nm 時 22%；200 nm 時 39%。直徑 10 nm 的蛋白質在 100 nm 冰中只占路徑的 10%，其餘 90% 是只貢獻雜訊的水，這就是為何冰厚每減少一半，單顆粒的有效訊噪比明顯提升。急凍冷卻：乙烷熱傳足以讓 100 nm 水膜在 1 ms 內降溫 140 K。~Taking an inelastic mean free path of about 400 nm for vitreous ice at 300 kV (teaching assumption): 50 nm of ice gives t/λ = 0.125 and an inelastic fraction 1 − exp(−0.125) ≈ 12%; 100 nm gives 22%; 200 nm gives 39%. A 10 nm protein in 100 nm of ice occupies only 10% of the path, the other 90% being water that contributes only noise, which is why halving ice thickness visibly raises single-particle signal-to-noise. Plunge cooling: ethane heat transfer cools a 100 nm water film by 140 K within 1 ms.",
+      "verify": "以能量過濾器拍同一孔的零損失與未過濾影像，由強度比算 t/λ 並換成冰厚，建立濕度、吸附時間與冰厚的關係表；以不同吸附時間製備網格，在低倍影像中統計可用孔的比例與顆粒密度，選出重現性最高的參數；對金網格與碳網格各收一組短電影比較前 5 幀的束致漂移量。~Record zero-loss and unfiltered images of the same hole with the energy filter, compute t/λ from the intensity ratio and convert to ice thickness, building a table relating humidity, blot time and thickness; prepare grids at several blot times, count usable holes and particle density in low-magnification images and pick the most reproducible setting; collect short movies on gold and carbon grids and compare beam-induced motion in the first 5 frames.",
+      "failure": "急凍儀濕度掉到 80%，吸附後薄膜在插入乙烷前的 1 秒內蒸發變薄並濃縮緩衝鹽，顆粒聚集於孔邊、冰厚不均，整個網格只有邊緣幾個孔可用，影像收集效率掉到十分之一。~Plunge-freezer humidity falling to 80% lets the blotted film evaporate and concentrate buffer salts in the second before plunging; particles crowd hole edges, ice thickness is uneven, only a few edge holes per grid are usable and collection efficiency drops tenfold.",
+      "misconception": "冰越薄越好，所以吸附時間應該越長越好。~Thinner ice is always better, so blotting should be as long as possible."
+    },
+    {
+      "anchor": "自動載入器、冷阱與直接偵測器~Autoloader, cold trap and direct detector",
+      "title": "顯微鏡硬體：冷台防污染、能量過濾與直接偵測~Microscope hardware: cold-stage anti-contamination, energy filtering and direct detection",
+      "mechanism": "網格在液氮溫度下由自動載入器送入鏡筒，樣品台維持約 −190 °C；鏡筒內任何殘餘水氣都會凝在最冷的表面即樣品上，長出非晶冰層而增加厚度，所以樣品附近設有更冷的冷阱（抗污染器）吸走水氣，並要求超高真空。能量過濾器以 10 到 20 eV 的狹縫去除非彈性電子，提升厚冰與斷層掃描的對比。直接電子偵測器讓每個電子直接在 CMOS 中產生訊號，計數模式把偵測量子效率提升到接近 1 並記錄多幀電影，是 2013 年後解析度突破的硬體基礎；相位板則為小於 100 kDa 的分子提供正焦附近的對比。~Grids enter the column from a liquid-nitrogen autoloader and the stage stays near −190 °C; any residual water vapour in the column condenses on the coldest surface, the specimen, growing amorphous ice that thickens it, so a colder cryo-shield (anti-contaminator) near the specimen captures vapour and ultrahigh vacuum is required. An energy filter with a 10 to 20 eV slit removes inelastic electrons and raises contrast in thick ice and tomography. Direct electron detectors register each electron directly in CMOS; counting mode lifts detective quantum efficiency toward 1 and records multi-frame movies, the hardware basis of the post-2013 resolution leap, while phase plates provide near-focus contrast for molecules below 100 kDa.",
+      "model": "水氣撞擊通量 Φ = p/√(2πmkT)。p = 1×10⁻⁵ Pa、293 K 時 Φ ≈ 3.6×10¹⁷ m⁻² s⁻¹，以 10¹⁹ m⁻² 為一單層、黏附係數 1、每單層 0.3 nm 計，冰以約 40 nm/h 生長，一小時就把 50 nm 的冰厚加倍；冷阱把樣品附近的水氣分壓壓到 1×10⁻⁷ Pa 後為 0.4 nm/h。偵測器取樣：像素 0.8 Å 的 Nyquist 極限為 1.6 Å，目標 3 Å 時像素可放大到 1.0 Å；40 e⁻/Å² 在 8 s 內以 0.9 Å 像素拍攝的偵測器劑量率約 4 e⁻/像素/s，落在計數模式的線性區。~Water impingement flux Φ = p/√(2πmkT). At p = 1×10⁻⁵ Pa and 293 K, Φ ≈ 3.6×10¹⁷ m⁻² s⁻¹; taking 10¹⁹ m⁻² per monolayer, sticking coefficient 1 and 0.3 nm per layer, ice grows about 40 nm/h and doubles a 50 nm film within an hour; a cryo-shield lowering the local water partial pressure to 1×10⁻⁷ Pa cuts this to 0.4 nm/h. Detector sampling: a 0.8 Å pixel has a 1.6 Å Nyquist limit, and for a 3 Å target the pixel can grow to 1.0 Å; 40 e⁻/Å² delivered in 8 s at 0.9 Å pixels gives a detector dose rate of about 4 e⁻/pixel/s, inside the linear range of counting mode.",
+      "verify": "把一片空網格留在鏡筒中，每 30 分鐘以能量過濾法量同一孔的冰厚，斜率就是污染速率，與冷阱溫度和真空計讀值對照；偵測器以均勻照明在數個劑量率下量 DQE 與調制傳遞函數，找出計數損失開始的劑量率；能量過濾器以零損失峰位置校正狹縫中心並每日檢查漂移。~Leave an empty grid in the column and measure the same hole's ice thickness by energy filtering every 30 minutes; the slope is the contamination rate, to be correlated with cryo-shield temperature and vacuum-gauge readings; characterise the detector's DQE and modulation transfer function under uniform illumination at several dose rates to find where counting loss begins; centre the energy-filter slit on the zero-loss peak and check its drift daily.",
+      "failure": "冷阱的液氮杜瓦在夜間耗盡，冷阱回溫釋放吸附的水氣，樣品上的冰在數小時內長到數百奈米，自動收集的整夜資料影像全部過厚而報廢。~The cryo-shield's nitrogen dewar runs dry overnight, the warming shield releases its adsorbed water, ice on the specimen grows to hundreds of nanometres within hours, and the whole night of automatically collected images is discarded as too thick.",
+      "misconception": "樣品已經在真空裡，所以不會再被污染。~Once in vacuum the specimen can no longer be contaminated."
+    },
+    {
+      "anchor": "像素尺度、劑量與彗差校正~Pixel scale, dose and coma-free calibration",
+      "title": "資料收集校正：像素尺度、劑量率與束傾~Data-collection calibration: pixel scale, dose rate and beam tilt",
+      "mechanism": "重建的絕對尺度來自像素尺寸，錯 1% 就讓整個原子模型縮放 1%，因此用已知結構（例如去鐵蛋白的 2.0 Å 重建或金晶格 2.355 Å）校正，並檢查放大率的方向性差異。劑量率在偵測器上以計數校正，再換算到樣品面；劑量過高進入計數非線性區，過低則浪費時間。束傾使彗差把 CTF 變成非對稱，必須做無彗差對準並在資料處理中精修；自動收集用影像位移在多個孔間移動時會引入束傾，所以需要事先校正像移與束傾的補償關係。~The absolute scale of a reconstruction comes from pixel size, and a 1% error scales the whole atomic model by 1%, so it is calibrated with a known structure (for example a 2.0 Å apoferritin reconstruction or the 2.355 Å gold lattice) and checked for magnification anisotropy. Dose rate is calibrated on the detector in counts and converted to the specimen plane; too high a rate enters counting non-linearity, too low wastes time. Beam tilt introduces coma that makes the CTF asymmetric, so coma-free alignment is performed and refined in processing; automated collection that moves between holes by image shift introduces beam tilt, so the compensation between image shift and beam tilt must be calibrated beforehand.",
+      "model": "像素尺度：以金 (111) 2.355 Å 環校正，若 1.000 Å 像素被量成 1.012 Å，模型的所有距離偏 1.2%，一個 300 Å 的顆粒直徑偏 3.6 Å，比目標解析度 3 Å 還大。放大率各向異性 0.5% 在 2 Å 重建中造成的位置誤差 0.5%×150 Å = 0.75 Å，需在處理中修正。束傾 1 mrad 在 300 kV 產生的彗差相位誤差 ≈ 2π·C_s·λ²·u³·θ：C_s = 2.7 mm、u = 1/3 Å⁻¹ 時 ≈ 0.7 rad，已接近 π/4 容限的三倍。~Pixel scale: calibrating on the gold (111) ring at 2.355 Å, if a nominal 1.000 Å pixel measures 1.012 Å every model distance is off by 1.2% and a 300 Å particle diameter errs by 3.6 Å, larger than the 3 Å target resolution. A 0.5% magnification anisotropy in a 2 Å reconstruction displaces positions by 0.5%×150 Å = 0.75 Å and must be corrected in processing. A 1 mrad beam tilt at 300 kV produces a coma phase error ≈ 2π·C_s·λ²·u³·θ: with C_s = 2.7 mm and u = 1/3 Å⁻¹ it is ≈ 0.7 rad, almost three times the π/4 tolerance.",
+      "verify": "每次更換放大率或維修後拍金顆粒繞射或去鐵蛋白測試資料，由環半徑或模型擬合反推像素尺寸並記錄；劑量率以偵測器計數對空束的法拉第量測交叉校正；自動收集前在每個像移距離上做無彗差對準並記錄束傾補償表，收集後用處理軟體精修出的束傾殘餘應小於 0.2 mrad。~After every magnification change or service, record gold-particle diffraction or an apoferritin test set, back out pixel size from ring radii or model fitting and log it; cross-calibrate detector counts against a Faraday measurement of the empty beam; before automated collection perform coma-free alignment at each image-shift distance and record the beam-tilt compensation table, and the residual beam tilt refined by processing software afterwards should be below 0.2 mrad.",
+      "failure": "像移式自動收集沒有校正束傾補償，離中心 10 µm 的孔帶有 1 mrad 的束傾，這些影像的高頻相位被彗差破壞，重建解析度卡在 3.5 Å，直到依孔位置分組精修束傾才恢復到 2.8 Å。~Image-shift collection without beam-tilt compensation leaves holes 10 µm off-centre with 1 mrad of tilt; coma corrupts their high-frequency phases, the reconstruction stalls at 3.5 Å, and only grouping by hole position and refining beam tilt restores 2.8 Å.",
+      "misconception": "顯微鏡設定的放大率就是精確的像素尺寸。~The magnification set on the microscope gives the exact pixel size."
+    },
+    {
+      "anchor": "Ewald 球曲率與束致漂移~Ewald-sphere curvature and beam-induced motion",
+      "title": "Ewald 球修正、束致漂移與高階像差~Ewald-sphere correction, beam-induced motion and higher-order aberrations",
+      "mechanism": "投影近似假設顆粒上下表面的散射在同一平面，實際上繞射發生在半徑 1/λ 的 Ewald 球面上，球面相對於平面的凹陷在高空間頻率與大顆粒時造成上下表面的相位差，必須在重建時依顆粒厚度與離焦做曲率修正。電子束照射的前幾個 e⁻/Å² 會讓冰膜膨脹與翹曲，顆粒在幾埃內移動並旋轉，所以每張電影的幀先做全域與局部對齊，再依劑量加權。再往下是三階以上的像差：三重像散與四階球面像差在 2 Å 以下成為限制，需要以資料本身精修出的像差係數校正。~The projection approximation assumes scattering from a particle's top and bottom lies in one plane, but diffraction actually occurs on an Ewald sphere of radius 1/λ, whose sag relative to the plane creates a phase difference between the two surfaces at high spatial frequency and for large particles, requiring curvature correction during reconstruction according to particle thickness and defocus. The first few e⁻/Å² of exposure make the ice film expand and buckle, particles move several ångströms and rotate, so each movie's frames are aligned globally and locally and then dose-weighted. Beyond that, third-order and higher aberrations such as threefold astigmatism and fourth-order spherical aberration become limiting below 2 Å and need aberration coefficients refined from the data themselves.",
+      "model": "以 π/2 相位誤差為準，需做 Ewald 修正的解析度 d_E ≈ √(λD)。300 kV、λ = 0.0197 Å：直徑 D = 100 Å 的顆粒 d_E ≈ 1.4 Å，300 Å 時 2.4 Å，1000 Å 的病毒時 4.4 Å；200 kV（λ = 0.0251 Å）對 300 Å 顆粒為 2.7 Å。束致漂移：前 2 幀若移動 2 Å，未對齊時 3 Å 的訊號衰減因子 ≈ exp(−2π²σ²u²)，σ = 1 Å、u = 1/3 時 ≈ 0.11，幾乎全部喪失，對齊後殘餘 0.2 Å 時回到 0.91。~With a π/2 phase-error criterion, the resolution beyond which Ewald correction is needed is d_E ≈ √(λD). At 300 kV with λ = 0.0197 Å: a particle of diameter D = 100 Å gives d_E ≈ 1.4 Å, 300 Å gives 2.4 Å, a 1000 Å virus gives 4.4 Å; at 200 kV (λ = 0.0251 Å) a 300 Å particle gives 2.7 Å. Beam-induced motion: if the first 2 frames move 2 Å, the unaligned attenuation of 3 Å signal is ≈ exp(−2π²σ²u²), about 0.11 for σ = 1 Å and u = 1/3, nearly total loss, recovering to 0.91 after alignment leaves 0.2 Å residual.",
+      "verify": "對大顆粒資料分別以有、無 Ewald 修正重建並比較 FSC 曲線，修正應在 d_E 以下的頻率提升 FSC 且模型與圖的相關改善；對每部電影畫出對齊後的位移軌跡，統計前 5 幀的累積位移並比較不同網格類型；在高解析資料集上精修三重像散與四階球面像差，確認加入後 FSC 在 2.5 Å 以下的改善。~Reconstruct large-particle data with and without Ewald correction and compare FSC curves, expecting the correction to raise FSC below d_E and improve model-to-map correlation; plot aligned motion trajectories for every movie, tabulate cumulative displacement over the first 5 frames and compare grid types; on a high-resolution set refine threefold astigmatism and fourth-order spherical aberration and confirm the FSC gain below 2.5 Å.",
+      "failure": "對直徑 700 Å 的病毒做到 3 Å 卻未做 Ewald 修正，上下半球的相位互相抵消，圖在 3.7 Å 以後出現虛假的衰減，分析者把它歸咎於冰厚並重新製備樣品，浪費兩輪顯微鏡時間。~Pushing a 700 Å virus to 3 Å without Ewald correction lets the two hemispheres' phases cancel, the map shows false attenuation beyond 3.7 Å, and the analyst blames ice thickness and re-prepares specimens, wasting two rounds of microscope time.",
+      "misconception": "顆粒越大訊號越強，所以大顆粒總是更容易做到高解析度。~Larger particles give more signal and are therefore always easier to push to high resolution."
+    },
+    {
+      "anchor": "設施排程、液氮供應與資料管線~Facility scheduling, nitrogen supply and data pipeline",
+      "title": "設施級整合：產出、液氮、資料量與即時處理~Facility-level integration: throughput, nitrogen, data volume and on-the-fly processing",
+      "mechanism": "國家級設施把顯微鏡當成全天候運轉的產線：自動載入器一次裝入十二片網格，自動收集軟體用像移在孔陣列間每幾秒拍一部電影，一天可產出數千部；液氮以自動補給系統連續供應樣品台、冷阱與載入器，中斷即造成樣品損失。資料流是另一個瓶頸：每部電影數十幀的 4k 影像未壓縮超過 1 GB，一天數 TB，必須在收集同時做漂移修正、CTF 擬合與顆粒挑選的即時處理，把回饋在數分鐘內送回操作者以決定是否更換網格。設施還要管理使用者培訓、網格篩選顯微鏡與高解析顯微鏡的分流。~A national facility runs the microscope as a round-the-clock production line: the autoloader holds twelve grids, automated software records a movie every few seconds across hole arrays by image shift, and thousands of movies are produced per day; liquid nitrogen is supplied continuously by an automatic refill system to stage, cryo-shield and loader, and any interruption costs specimens. Data flow is another bottleneck: a movie of tens of 4k frames exceeds 1 GB uncompressed, days reach several terabytes, and motion correction, CTF fitting and particle picking must run on the fly so that feedback reaches the operator within minutes to decide whether to swap grids. The facility also manages user training and the split between screening and high-resolution microscopes.",
+      "model": "資料量：4096×4096×16 位元的一幀 = 33.5 MB，40 幀電影 = 1.34 GB，3000 部/天 = 4.0 TB/天；以計數模式的稀疏格式或 8 位元增益歸一化壓縮可降到約十分之一。產出：每部電影 8 s 曝光加 4 s 移動與對焦為 12 s，每小時 300 部；Rosenthal–Henderson 關係 ln N ∝ B/(2d²)，B = 100 Å² 時從 4 Å 進到 3 Å 需 exp(50×(1/9 − 1/16)) ≈ 11.4 倍顆粒，若 4 Å 需 2 萬顆粒則 3 Å 需約 23 萬顆，每部 150 顆粒要 1520 部電影，約 5 小時顯微鏡時間與 2 TB 原始資料。~Data: one 4096×4096×16-bit frame = 33.5 MB, a 40-frame movie = 1.34 GB, 3000 per day = 4.0 TB/day; sparse counting formats or 8-bit gain-normalised compression cut this to roughly a tenth. Throughput: 8 s exposure plus 4 s of movement and focusing = 12 s per movie, 300 per hour; the Rosenthal–Henderson relation ln N ∝ B/(2d²) with B = 100 Å² means going from 4 Å to 3 Å needs exp(50×(1/9 − 1/16)) ≈ 11.4 times the particles, so if 4 Å needs 20,000 particles then 3 Å needs about 230,000, 1520 movies at 150 particles each, about 5 hours of microscope time and 2 TB of raw data.",
+      "verify": "記錄一週內每台顯微鏡的實際電影數、停機原因與液氮消耗，與排程產能比較；量即時處理管線從電影落地到 CTF 結果的延遲，要求小於 5 分鐘；以 ResLog（解析度對 ln N）在標準樣品上量設施的 B 因子，作為各顯微鏡與各網格類型的效能指標。~Log each microscope's actual movies per week, downtime causes and nitrogen consumption against scheduled capacity; measure the on-the-fly pipeline latency from movie landing to CTF result, requiring under 5 minutes; measure the facility's B-factor on a standard sample by ResLog (resolution against ln N) as a performance indicator for each microscope and grid type.",
+      "failure": "資料儲存在收集到一半時寫滿，自動收集持續拍攝但電影被丟棄，操作者看儀器狀態一切正常，隔天才發現六小時的資料不存在，而該批網格已被取出回溫。~Storage fills midway through collection, automation keeps recording while movies are discarded, the operator sees a healthy instrument, and only the next day is it found that six hours of data never existed while the grids have already been removed and warmed.",
+      "misconception": "顯微鏡本身的解析度決定一切，資料管線只是附屬設備。~The microscope's own resolution decides everything and the data pipeline is auxiliary equipment."
+    },
+    {
+      "anchor": "FSC 0.143 與去鐵蛋白基準~FSC 0.143 and the apoferritin benchmark",
+      "title": "解析度驗證、標準樣品基準與工程交接~Resolution validation, standard-sample benchmarks and engineering handoff",
+      "mechanism": "重建解析度以黃金標準傅立葉殼相關（FSC）定義：把顆粒分成兩半獨立重建，兩圖在各空間頻率的相關降到 0.143 的頻率即為解析度，避免過擬合把雜訊當訊號。設施驗收用去鐵蛋白這類高對稱、高穩定的標準樣品：在規定的收集時間內達到 2 Å 以下證明顯微鏡、偵測器、製備與管線全部正常。交接文件要包含像素尺度與束傾校正、污染速率、偵測器 DQE、標準樣品的 ResLog 曲線與 B 因子、每日檢查清單，以及資料處理的參考流程，讓使用者能用同樣的程序判斷儀器狀態。~Reconstruction resolution is defined by the gold-standard Fourier shell correlation (FSC): particles are split into two halves reconstructed independently, and the frequency where their correlation falls to 0.143 is the resolution, which prevents overfitting from passing noise off as signal. Facility acceptance uses a highly symmetric, stable standard such as apoferritin: reaching better than 2 Å within a specified collection time proves microscope, detector, preparation and pipeline all work. The handoff package must hold pixel-scale and beam-tilt calibrations, contamination rate, detector DQE, the standard sample's ResLog curve and B-factor, a daily checklist and a reference processing workflow so users can judge instrument state by the same procedure.",
+      "model": "驗收門檻範例：去鐵蛋白在 4 小時收集內 FSC 0.143 ≤ 2.0 Å；ResLog 擬合的 B 因子 ≤ 80 Å²；像素尺寸校正不確定度 ≤ 0.3%；污染速率 ≤ 1 nm/h；束傾殘餘 ≤ 0.2 mrad；偵測器 DQE(0) ≥ 0.8；即時處理延遲 ≤ 5 min。B 因子的意義：B = 80 Å² 時從 3 Å 到 2.5 Å 需 exp(40×(1/6.25 − 1/9)) ≈ 7.1 倍顆粒，B = 120 Å² 時需 19 倍，所以 B 因子直接換算成顯微鏡時間成本。~Example acceptance thresholds: apoferritin FSC 0.143 ≤ 2.0 Å within 4 hours of collection; ResLog-fitted B-factor ≤ 80 Å²; pixel-size calibration uncertainty ≤ 0.3%; contamination rate ≤ 1 nm/h; residual beam tilt ≤ 0.2 mrad; detector DQE(0) ≥ 0.8; on-the-fly latency ≤ 5 min. What the B-factor means: at B = 80 Å² going from 3 Å to 2.5 Å needs exp(40×(1/6.25 − 1/9)) ≈ 7.1 times the particles, at B = 120 Å² 19 times, so the B-factor converts directly into microscope-time cost.",
+      "verify": "以去鐵蛋白依標準流程收集 4 小時並以固定處理流程重建，報告 FSC 曲線、局部解析度圖與 ResLog；比對模型與圖的 FSC 0.5 解析度，確認與半圖 FSC 一致；每月重複一次作為效能趨勢，任何指標退化 10% 以上即觸發維護並回溯該期間的使用者資料。~Collect apoferritin for 4 hours by the standard protocol and reconstruct with a fixed workflow, reporting the FSC curve, local-resolution map and ResLog; compare the model-to-map FSC 0.5 resolution with the half-map FSC for consistency; repeat monthly as a performance trend, and a 10% degradation of any indicator triggers maintenance and a review of user data from the period.",
+      "failure": "驗收只接受原廠一次性的去鐵蛋白 1.9 Å 結果而沒有 ResLog 與污染速率，三個月後使用者普遍只能到 3.5 Å，爭論究竟是樣品還是儀器，因為沒有基線而無法判斷。~Acceptance based on a single factory apoferritin result at 1.9 Å without ResLog or contamination rate leaves users three months later reaching only 3.5 Å and arguing whether sample or instrument is at fault, with no baseline to decide.",
+      "misconception": "FSC 曲線上任何一點都能當解析度，門檻只是慣例。~Any point on the FSC curve can serve as the resolution, the threshold being mere convention."
+    }
+  ],
+  "example": "單顆粒資料集規劃練習：目標是直徑 100 Å、約 300 kDa 的蛋白質做到 3 Å，300 kV、λ = 0.0197 Å。像素取 0.9 Å（Nyquist 1.8 Å，留 1.7 倍餘裕）；離焦範圍 0.8 到 2.0 µm，1.5 µm 時第一零點 17.2 Å、3 Å 前有 33 個零點，離焦容差 11 nm 靠逐張 CTF 擬合達成。總劑量 40 e⁻/Å² 分 40 幀，前 11 e⁻/Å² 承載 3 Å 資訊，其餘以劑量加權壓低；偵測器劑量率 40×0.9²/8 ≈ 4 e⁻/像素/s。Ewald 極限 √(0.0197×100) ≈ 1.4 Å，3 Å 不需修正。顆粒數：以 B = 100 Å² 與 4 Å 需 2 萬顆推算，3 Å 需 2 萬×11.4 ≈ 23 萬顆；每部電影 150 顆 → 1520 部；每部 12 s → 約 5 小時；原始資料 1520×1.34 GB ≈ 2 TB。冰厚 100 nm 時 22% 電子非彈性散射，若能做到 50 nm 則 12%，顆粒對比提升約 1.5 倍、所需顆粒數可降一半。數值為教學假設，不代表任何儀器或設施規格。~Single-particle dataset planning exercise: target 3 Å for a 100 Å, roughly 300 kDa protein at 300 kV with λ = 0.0197 Å. Pixel 0.9 Å (Nyquist 1.8 Å, 1.7-fold margin); defocus range 0.8 to 2.0 µm, where at 1.5 µm the first zero is 17.2 Å with 33 zeros before 3 Å and the 11 nm defocus tolerance is met by per-image CTF fitting. Total dose 40 e⁻/Å² in 40 frames, the first 11 e⁻/Å² carrying the 3 Å information and the rest down-weighted; detector dose rate 40×0.9²/8 ≈ 4 e⁻/pixel/s. Ewald limit √(0.0197×100) ≈ 1.4 Å, so no correction at 3 Å. Particle count: with B = 100 Å² and 20,000 particles needed for 4 Å, 3 Å needs 20,000×11.4 ≈ 230,000; at 150 per movie → 1520 movies; at 12 s each → about 5 hours; raw data 1520×1.34 GB ≈ 2 TB. With 100 nm ice 22% of electrons scatter inelastically; at 50 nm only 12%, raising particle contrast about 1.5-fold and roughly halving the particles needed. Values are teaching assumptions, not any instrument's or facility's specification.",
+  "history": "1980 年代 Dubochet 在 EMBL 證明水可被急凍成玻璃態冰並在電子顯微鏡中觀察，解決了含水樣品的真空問題；Frank 發展單顆粒平均與三維重建方法，Henderson 以細菌視紫質示範接近原子解析度的電子晶體學，三人於 2017 年獲諾貝爾化學獎。2013 年直接電子偵測器與電影式漂移修正帶來「解析度革命」，單顆粒重建普遍進入 3 Å 以下；國家級設施如英國 Diamond 光源的 eBIC 以 300 kV 自動化顯微鏡提供全天候的使用者服務，2020 年去鐵蛋白達到 1.2 Å。本課只重建公開原理與工程方法。~In the 1980s Dubochet at EMBL showed that water can be flash-frozen into vitreous ice and observed in the electron microscope, solving the vacuum problem for hydrated specimens; Frank developed single-particle averaging and three-dimensional reconstruction, Henderson demonstrated near-atomic electron crystallography with bacteriorhodopsin, and the three shared the 2017 Nobel Prize in Chemistry. In 2013 direct electron detectors and movie-based motion correction brought the resolution revolution, with single-particle reconstructions routinely below 3 Å; national facilities such as eBIC at the UK's Diamond Light Source provide round-the-clock user service on automated 300 kV microscopes, and apoferritin reached 1.2 Å in 2020. This course reconstructs public principles and engineering methods only.",
+  "place": {
+    "name": "英國 Diamond 光源 eBIC 國家低溫電鏡設施~eBIC national cryo-EM facility at Diamond Light Source",
+    "country": "英國~United Kingdom",
+    "lat": 51.575,
+    "lng": -1.311,
+    "query": "Diamond Light Source Harwell eBIC"
+  },
+  "sources": [
+    {
+      "key": "thermofisher-krios",
+      "title": "Thermo Fisher Scientific：Krios 低溫穿透電子顯微鏡",
+      "titleEn": "Thermo Fisher Scientific: Krios cryo-TEM",
+      "publisher": "Thermo Fisher Scientific",
+      "url": "https://www.thermofisher.com/us/en/home/electron-microscopy/products/transmission-electron-microscopes/krios-g4-cryo-tem.html",
+      "sourceType": "primary",
+      "scope": "300 kV 低溫 TEM 的公開產品頁，說明單顆粒分析、低溫電子斷層掃描與微晶電子繞射用途；課程數值不引用其規格。",
+      "scopeEn": "Public product page of a 300 kV cryo-TEM describing single-particle analysis, cryo-electron tomography and microcrystal electron diffraction; course numbers do not quote its specifications."
+    },
+    {
+      "key": "diamond-ebic",
+      "title": "Diamond 光源：eBIC 英國國家低溫電鏡設施",
+      "titleEn": "Diamond Light Source: eBIC, the UK national cryo-EM facility",
+      "publisher": "Diamond Light Source",
+      "url": "https://www.diamond.ac.uk/Instruments/Biological-Cryo-Imaging/eBIC.html",
+      "sourceType": "primary",
+      "scope": "國家級低溫電鏡設施的公開說明，涵蓋顯微鏡配置、使用者存取、專業支援與訓練，為設施級整合的參照。",
+      "scopeEn": "Public description of a national cryo-EM facility covering microscope configuration, user access, expert support and training; the reference for facility-level integration."
+    },
+    {
+      "key": "wikipedia-cryo-em",
+      "title": "Wikipedia：低溫電子顯微術",
+      "titleEn": "Wikipedia: Cryogenic electron microscopy",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cryogenic_electron_microscopy",
+      "sourceType": "secondary",
+      "scope": "以急凍樣品在低溫下進行穿透電子顯微成像、達到近原子解析度的二手概述，僅作背景導讀。",
+      "scopeEn": "Secondary overview of transmission electron imaging of flash-frozen specimens at cryogenic temperature reaching near-atomic resolution; background reading only."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "賽默飛世爾科技",
+      "nameEn": "Thermo Fisher Scientific",
+      "business": "科學儀器供應商，提供 300 kV 低溫 TEM、自動載入器、急凍製備儀與直接電子偵測器。",
+      "businessEn": "Scientific-instrument supplier providing 300 kV cryo-TEMs, autoloaders, plunge-freezing devices and direct electron detectors.",
+      "url": "https://www.thermofisher.com/",
+      "investorUrl": "https://ir.thermofisher.com/",
+      "security": {"symbol": "TMO", "exchange": "NYSE", "currency": "USD"},
+      "role": "設施級自動化低溫 TEM 平台的公開產品參照",
+      "roleEn": "Public product reference for facility-scale automated cryo-TEM platforms"
+    },
+    {
+      "name": "日本電子",
+      "nameEn": "JEOL",
+      "business": "電子顯微鏡製造商，包含冷場發射低溫 TEM 與自動載入系統。",
+      "businessEn": "Electron-microscope maker including cold-field-emission cryo-TEMs with automated loading systems.",
+      "url": "https://www.jeol.com/",
+      "investorUrl": "https://www.jeol.com/ir/",
+      "security": {"symbol": "6951", "exchange": "TSE", "currency": "JPY"},
+      "role": "冷場發射低溫 TEM 與能量散佈最小化的參照供應商",
+      "roleEn": "Reference supplier for cold-field-emission cryo-TEMs and minimised energy spread"
+    },
+    {
+      "name": "Gatan（AMETEK 旗下）",
+      "nameEn": "Gatan (part of AMETEK)",
+      "business": "直接電子偵測相機、能量過濾器、低溫樣品載台與低溫轉移系統。",
+      "businessEn": "Direct electron detection cameras, energy filters, cryo specimen holders and cryo-transfer systems.",
+      "url": "https://www.gatan.com/",
+      "investorUrl": "https://investors.ametek.com/",
+      "security": {"symbol": "AME", "exchange": "NYSE", "currency": "USD"},
+      "role": "計數模式偵測器 DQE 與能量過濾冰厚量測的參照",
+      "roleEn": "Reference for counting-mode detector DQE and energy-filtered ice-thickness measurement"
+    },
+    {
+      "name": "Diamond 光源（eBIC）",
+      "nameEn": "Diamond Light Source (eBIC)",
+      "business": "英國國家同步輻射與低溫電鏡設施，提供使用者存取、訓練與即時資料處理管線。",
+      "businessEn": "UK national synchrotron and cryo-EM facility offering user access, training and on-the-fly data-processing pipelines.",
+      "url": "https://www.diamond.ac.uk/",
+      "investorUrl": "",
+      "security": null,
+      "role": "設施級排程、資料管線與標準樣品基準的公開參照",
+      "roleEn": "Public reference for facility scheduling, data pipelines and standard-sample benchmarks"
+    }
+  ],
+  "related": ["a442", "a441"],
+  "architectureNodes": [["急凍儀與玻璃態冰網格", "Plunge freezer and vitreous-ice grid"], ["液氮自動載入器與冷阱", "Liquid-nitrogen autoloader and cryo-shield"], ["300 kV 鏡筒與物鏡（離焦相位對比）", "300 kV column and objective (defocus phase contrast)"], ["能量過濾器與直接電子偵測器", "Energy filter and direct electron detector"], ["漂移修正、CTF 擬合與顆粒挑選", "Motion correction, CTF fitting and particle picking"], ["三維重建與 FSC 驗證", "3D reconstruction and FSC validation"]],
+  "architectureEdges": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
+}

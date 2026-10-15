@@ -47,15 +47,49 @@
   const jsonRead = (key, fallback) => { try { return JSON.parse(safeStorage.getItem(key)) ?? fallback; } catch { return fallback; } };
   function profiles() {
     const values = jsonRead(profileKey, []);
-    return Array.isArray(values) ? values.filter(p => p && profileId.test(p.id) && typeof p.name === 'string' && p.name.length <= 80).slice(0, 100).map(p => ({ id: p.id, name: p.name, email: typeof p.email === 'string' ? p.email.slice(0,254) : '' })) : [];
+    return Array.isArray(values) ? values.filter(p => p && profileId.test(p.id) && typeof p.name === 'string' && p.name.length <= 80).slice(0, 100).map(p => ({ id: p.id, name: p.name, email: typeof p.email === 'string' ? p.email.slice(0,254) : '', username: typeof p.username === 'string' ? p.username.slice(0,30) : '', phone: typeof p.phone === 'string' ? p.phone.slice(0,20) : '', hasPassword: typeof p.passwordHash === 'string' && /^[a-f0-9]{64}$/.test(p.passwordHash) })) : [];
   }
   function activeProfile() {
     const list = profiles();
     return list.find(p => p.id === safeStorage.getItem(activeKey)) || list[0] || null;
   }
-  function switchProfile(id) {
+  function rawProfile(id) { const list = jsonRead(profileKey, []); return Array.isArray(list) ? list.find(p => p && p.id === id) : null; }
+  async function digest(password, salt) {
+    const key = await window.crypto.subtle.importKey('raw', new TextEncoder().encode(String(password)), 'PBKDF2', false, ['deriveBits']);
+    const bits = await window.crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: new TextEncoder().encode(salt), iterations: 210000 }, key, 256);
+    return [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  /** V12 local member: username, password, email and mobile phone, all kept in this browser only. */
+  async function createMember({ username, password, email, phone, name } = {}) {
+    username = String(username || '').trim(); email = String(email || '').trim(); phone = String(phone || '').trim();
+    if (!/^[A-Za-z0-9_.-]{3,30}$/.test(username)) throw new Error('帳號需為 3–30 個英數字、底線、點或連字號 / Username: 3–30 letters, digits, _ . -');
+    if (typeof password !== 'string' || password.length < 12 || password.length > 128) throw new Error('密碼需 12–128 字元 / Password: 12–128 characters');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) throw new Error('請填寫有效信箱 / Enter a valid email address');
+    if (!/^\+[1-9][0-9]{7,14}$/.test(phone)) throw new Error('手機號碼請含國碼 / Mobile number with country code');
+    if (profiles().some(p => p.username && p.username.toLowerCase() === username.toLowerCase())) throw new Error('此帳號已存在於本機 / This username already exists on this device');
+    if (!window.crypto?.subtle) throw new Error('此瀏覽器不支援安全雜湊 / This browser lacks Web Crypto');
+    const salt = [...window.crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, '0')).join('');
+    const passwordHash = await digest(password, salt);
+    const profile = createProfile(String(name || username).trim().slice(0, 80) || username, email);
+    const list = jsonRead(profileKey, []);
+    const row = list.find(p => p.id === profile.id);
+    Object.assign(row, { username, phone, salt, passwordHash });
+    safeStorage.setItem(profileKey, JSON.stringify(list));
+    return { ...profile, username, phone, hasPassword: true };
+  }
+  async function unlockProfile(id, password) {
+    const row = rawProfile(id);
+    if (!row) throw new Error('找不到本機學習檔案 / Local profile does not exist.');
+    if (row.passwordHash) {
+      const value = await digest(password, row.salt || '');
+      if (value !== row.passwordHash) throw new Error('密碼不正確 / Incorrect password');
+    }
+    return switchProfile(id, true);
+  }
+  function switchProfile(id, verified = false) {
     const profile = profiles().find(p => p.id === id);
     if (!profile) throw new Error('找不到本機學習檔案 / Local profile does not exist.');
+    if (profile.hasPassword && !verified) throw new Error('此帳號需要密碼 / This account requires its password');
     safeStorage.setItem(activeKey, profile.id); return { ...profile };
   }
   function createProfile(name, email = '') {
@@ -96,7 +130,7 @@
   window.MacGyverOffline = Object.freeze({
     enabled: true,
     get storageAvailable() { return persistent; },
-    listProfiles: profiles, activeProfile, createProfile, switchProfile
+    listProfiles: profiles, activeProfile, createProfile, switchProfile, createMember, unlockProfile
   });
 
   window.fetch = async function offlineFetch(input, options = {}) {

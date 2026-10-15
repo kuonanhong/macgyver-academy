@@ -11,7 +11,7 @@ import {LABS,labKind,labMarkup,bindLab,calculateLab} from '../public/academy/eng
 import {isQuantumCourse,quantumLabMarkup,quantumState} from '../public/academy/quantum-lab.js';
 const courses=JSON.parse(fs.readFileSync(new URL('../public/academy/data/featured.json',import.meta.url))),byId=Object.fromEntries(courses.map(c=>[c.id,c]));
 const computing=Object.keys(COMPUTING_SUBJECTS).map(id=>byId[id]);
-const world=courses.filter(hasWorldVisual),quantum=world.filter(c=>c.learningTrack==='quantum');
+const world=courses.filter(c=>hasWorldVisual(c)&&c.educationEdition===11),quantum=world.filter(c=>c.learningTrack==='quantum');
 assert.equal(computing.length,100);assert.equal(world.length,80);assert.equal(quantum.length,12);
 let workbenchRenders=0,assignments=0,chartPoints=0;const documents=[];
 for(const course of [...computing,...world]){

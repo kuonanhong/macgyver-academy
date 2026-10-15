@@ -1,0 +1,14 @@
+# Copy to wrangler.toml, then:
+#   npm i -g wrangler && wrangler login
+#   wrangler secret put GITHUB_TOKEN        # fine-grained PAT, PRIVATE-MODELS only, Contents: Read-only
+#   wrangler deploy
+# Put the resulting https://macgyver-models.<you>.workers.dev/ into
+# public/academy/config.js → modelMirrors: ['https://macgyver-models.<you>.workers.dev/']
+name = "macgyver-models"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+GITHUB_REPO = "kuonanhong/PRIVATE-MODELS"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGINS = "https://kuonanhong.github.io"

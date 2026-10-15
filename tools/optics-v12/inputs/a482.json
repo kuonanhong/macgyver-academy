@@ -1,0 +1,161 @@
+{
+  "id": "a482",
+  "title": "CERN Linac4 直線加速器~CERN Linac4 linear accelerator",
+  "discipline": "optics-facilities-accelerators",
+  "family": "accelerator",
+  "focus": "H⁻ 離子源、352.2 MHz RFQ 與 DTL/CCDTL/PIMS、斬波、相位掃描與電荷交換注入的束流品質預算~H⁻ source, 352.2 MHz RFQ and DTL/CCDTL/PIMS, chopping, phase scans and charge-exchange injection beam-quality budgets",
+  "summary": "以取代 Linac2、自 2020 年起為 CERN 全部質子束流源頭的 86 m 長 Linac4 為對象，說明為何把注入能量從 50 MeV 提高到 160 MeV 並改用 H⁻ 能讓 PS Booster 亮度約加倍，再把 45 keV 離子源、3 MeV RFQ、斬波線、三種 352.2 MHz 加速結構、飛行時間相位掃描、損失與剝離預算、碳膜電荷交換注入與可靠度驗收整合成可交接的加速器紀錄。~For the 86 m Linac4 that replaced Linac2 and since 2020 sources every proton beam at CERN, show why raising injection energy from 50 to 160 MeV with H⁻ ions roughly doubles PS Booster brightness, then integrate the 45 keV source, 3 MeV RFQ, chopper line, three 352.2 MHz accelerating structures, time-of-flight phase scans, loss and stripping budgets, carbon-foil charge-exchange injection and reliability acceptance into a transferable accelerator record.",
+  "units": [
+    {
+      "anchor": "H⁻ 束流與 PSB 注入點~H⁻ beam and PSB injection point",
+      "title": "為何要 H⁻ 與 160 MeV：空間電荷與亮度~Why H⁻ at 160 MeV: space charge and brightness",
+      "mechanism": "LHC 束流的亮度在注入鏈最前端就被決定：PS Booster 在低能注入時，束流自身的空間電荷使橫向工作點偏移 ΔQ ∝ N/(ε_n·β·γ²)，偏移過大就會跨越共振造成發射度成長與損失。把注入能量從 Linac2 的 50 MeV 提高到 160 MeV，β·γ² 增加約一倍，同樣的工作點偏移可容納約兩倍粒子。改用帶兩個電子的 H⁻ 則可做電荷交換注入：剝離膜在環內把 H⁻ 變成質子，這是非保守的過程，新進束流可以疊放在已循環束流的相空間上而不受劉維定理限制，多圈累積時損失與發射度成長都比質子隔板注入小。~LHC beam brightness is fixed at the very front of the injector chain: at low-energy injection into the PS Booster the beam's own space charge shifts the transverse tune by ΔQ ∝ N/(ε_n·β·γ²), and too large a shift crosses resonances, growing emittance and causing losses. Raising injection energy from Linac2's 50 MeV to 160 MeV roughly doubles β·γ², so the same tune shift accommodates about twice the particles. Switching to H⁻ ions carrying two electrons enables charge-exchange injection: a stripping foil converts H⁻ to protons inside the ring, a non-conservative process that lets incoming beam be stacked onto the circulating beam's phase space without the Liouville constraint, so multi-turn accumulation produces less loss and emittance growth than proton septum injection.",
+      "model": "以質子質量 938.27 MeV 計：50 MeV 時 γ = 1.0533、β = 0.3139，β·γ² = 0.348；160 MeV 時 γ = 1.1703、β = 0.5195，β·γ² = 0.712。比值 0.712/0.348 = 2.04，在相同發射度與工作點偏移下，PSB 可接受的每環粒子數約為原來的 2.04 倍。~Using the proton mass of 938.27 MeV: at 50 MeV γ = 1.0533 and β = 0.3139, so β·γ² = 0.348; at 160 MeV γ = 1.1703 and β = 0.5195, so β·γ² = 0.712. The ratio 0.712/0.348 = 2.04 means that at the same emittance and tune shift the PSB can accept about 2.04 times as many particles per ring.",
+      "verify": "在 PSB 以不同注入強度量測每環粒子數與橫向發射度，畫出亮度曲線（強度對發射度），與 Linac2 時代的曲線比較斜率；同時以工作點量測或模擬求空間電荷工作點偏移，確認在相同 ΔQ 下強度約增加一倍，並核對 LHC 注入所需的亮度目標。~In the PSB measure particles per ring and transverse emittance at several injected intensities and plot the brightness curve of intensity versus emittance, comparing its slope with the Linac2-era curve; obtain the space-charge tune shift from tune measurements or simulation and confirm that intensity roughly doubles at the same ΔQ, then check against the brightness target required for LHC injection.",
+      "failure": "若只提高直線加速器的流強而不提高注入能量，PSB 注入時空間電荷工作點偏移超過允許範圍，束流跨越整數或半整數共振，發射度成長並在環內損失，下游 LHC 的亮度目標無法達成，還造成環內活化。~Raising linac current without raising injection energy pushes the space-charge tune shift at PSB injection beyond its allowance, the beam crosses integer or half-integer resonances, emittance grows and particles are lost in the ring, so the LHC brightness target is missed and the ring is activated as well.",
+      "misconception": "Linac4 的主要目的是提高 LHC 的對撞能量。~Linac4's main purpose is to raise the LHC collision energy."
+    },
+    {
+      "anchor": "352.2 MHz 加速間隙與單元長度~352.2 MHz gaps and cell length",
+      "title": "同步條件、β 與單元長度 βλ~Synchronism, β and cell length βλ",
+      "mechanism": "Linac4 所有加速結構都在 352.2 MHz 工作，這也是 LEP 的頻率，讓它能沿用 LEP 的速調管與波導。粒子必須在每個加速間隙都遇到同一個 RF 相位：在 0 模的 Alvarez 型 DTL 中，相鄰間隙相距 βλ，即粒子在一個 RF 週期飛過的距離；在 π 模結構中相鄰單元相位相反，間距為 βλ/2。由於 β 從 0.08 增加到 0.52，單元沿線逐漸變長，每種結構只在某一 β 範圍內效率最高。同步相位取負值（例如 −20°），讓早到的粒子得到較少能量、晚到的得到較多，形成縱向聚焦，代價是能量增益乘以 cosφ_s。~All Linac4 structures run at 352.2 MHz, the LEP frequency, which lets the linac reuse LEP klystrons and waveguides. A particle must meet the same RF phase at every gap: in a 0-mode Alvarez DTL adjacent gaps are βλ apart, the distance travelled in one RF period, while in a π-mode structure adjacent cells are in opposite phase and spaced βλ/2. Because β grows from 0.08 to 0.52, cells lengthen along the linac and each structure type is most efficient only in a certain β range. The synchronous phase is negative, for example −20°, so early particles gain less energy and late ones more, giving longitudinal focusing at the cost of multiplying energy gain by cosφ_s.",
+      "model": "λ = c/352.2 MHz = 0.851 m，以 H⁻ 質量 939.3 MeV 計算各段的速度與單元長度：3 MeV 時 β = 0.0797、βλ = 6.79 cm；50 MeV 時 β = 0.314、26.7 cm；102 MeV 時 β = 0.432、36.7 cm；160 MeV 時 β = 0.520、44.2 cm，π 模單元 βλ/2 = 22.1 cm。50 MeV 附近一個 DTL 單元：E₀ = 3 MV/m、T = 0.8、L = 0.267 m、φ_s = −20°，ΔW = 3×0.8×0.267×cos20° ≈ 0.60 MeV。~λ = c/352.2 MHz = 0.851 m. With the H⁻ mass of 939.3 MeV: at 3 MeV β = 0.0797 and βλ = 6.79 cm; at 50 MeV β = 0.314 and 26.7 cm; at 102 MeV β = 0.432 and 36.7 cm; at 160 MeV β = 0.520 and 44.2 cm, so a π-mode cell is βλ/2 = 22.1 cm. One DTL cell near 50 MeV with E₀ = 3 MV/m, T = 0.8, L = 0.267 m and φ_s = −20° gains ΔW = 3×0.8×0.267×cos20° ≈ 0.60 MeV.",
+      "verify": "以三次元量測核對每個漂移管或單元的位置與長度，與設計的 β 沿線分布比較；用珠拉法（bead-pull）量測腔內軸向電場的平坦度與各間隙的相對場強；束流試運轉時以飛行時間法量每段結構出口的能量，與單元長度推算的同步能量比較。~Check every drift-tube or cell position and length by coordinate metrology and compare with the design β profile along the line; measure on-axis field flatness and relative gap fields with a bead-pull; during beam commissioning measure the energy at the exit of each structure by time of flight and compare with the synchronous energy implied by the cell lengths.",
+      "failure": "DTL 槽內電場沿軸傾斜時，後段單元的實際能量增益偏離設計，粒子逐漸滑離同步相位，出口能量誤差與縱向發射度成長在下一段結構被放大，最後在高能段造成損失與活化。~A field tilt along a DTL tank makes energy gain in later cells deviate from design, so particles slip away from the synchronous phase and the resulting exit-energy error and longitudinal emittance growth are amplified in the next structure, finally causing losses and activation at high energy.",
+      "misconception": "加速腔的電場一直朝前，粒子任何時候進入都會被加速。~The cavity field always points forward, so particles are accelerated whenever they arrive."
+    },
+    {
+      "anchor": "RF 驅動 H⁻ 離子源與 RFQ~RF-driven H⁻ source and RFQ",
+      "title": "H⁻ 離子源、低能傳輸線與射頻四極加速器~H⁻ ion source, LEBT and radio-frequency quadrupole",
+      "mechanism": "Linac4 的離子源以數十 kW 的射頻加熱氫電漿，配合銫降低表面功函數以增加 H⁻ 產額，同時被引出的電子由偏轉磁場導到電子收集器，H⁻ 以 45 keV 引出。低能傳輸線以螺線管把束流匹配進 RFQ，殘氣電離產生的正離子部分中和空間電荷。3 m 長的 RFQ 把束流從 45 keV 加速到 3 MeV：四片電極的正弦調制同時提供與速度無關的電四極聚焦與縱向加速場，並把直流束流絕熱地聚束成 352.2 MHz 的微束團，這正是低 β 時磁聚焦無效、空間電荷最強時所需的功能。~The Linac4 source heats a hydrogen plasma with tens of kilowatts of RF and uses caesium to lower the surface work function and raise H⁻ yield, while co-extracted electrons are bent onto an electron dump and the H⁻ ions are extracted at 45 keV. The low-energy transport line matches the beam into the RFQ with solenoids, and positive ions from residual-gas ionisation partly neutralise space charge. The 3 m RFQ accelerates from 45 keV to 3 MeV: the sinusoidal modulation of its four vanes provides velocity-independent electric quadrupole focusing and a longitudinal accelerating field, and adiabatically bunches the DC beam into 352.2 MHz micro-bunches, exactly what is needed when magnetic focusing is weak at low β and space charge is strongest.",
+      "model": "45 keV 時 β = 0.00979，βλ = 8.3 mm；3 MeV 時 βλ = 67.9 mm，RFQ 單元長度增加八倍。廣義導流係數 K = 2I/(I₀·(βγ)³)，I₀ = 4πε₀mc³/q ≈ 3.13×10⁷ A：I = 40 mA 時 45 keV 的 K = 2.7×10⁻³，3 MeV 降為 5.0×10⁻⁶，空間電荷影響減弱約 550 倍。RFQ 傳輸率 95% 時 40 mA 剩 38 mA。~At 45 keV β = 0.00979 and βλ = 8.3 mm; at 3 MeV βλ = 67.9 mm, so RFQ cells lengthen eightfold. The generalised perveance K = 2I/(I₀·(βγ)³) with I₀ = 4πε₀mc³/q ≈ 3.13×10⁷ A is 2.7×10⁻³ for 40 mA at 45 keV but 5.0×10⁻⁶ at 3 MeV, weakening space charge about 550 times. At 95% RFQ transmission 40 mA becomes 38 mA.",
+      "verify": "在離子源出口與 RFQ 出口各以束流變壓器量電流求傳輸率，並在低能傳輸線以狹縫—柵網發射度儀量測相空間；掃描 RFQ 電極電壓記錄傳輸率曲線，傳輸率開始飽和的電壓可反推實際電極電壓校正；長期記錄 H⁻ 電流、電子對 H⁻ 比與銫消耗，追蹤離子源狀態。~Measure current with beam transformers at the source exit and RFQ exit to obtain transmission, and measure phase space in the LEBT with a slit-and-grid emittance meter; scan the RFQ vane voltage and record the transmission curve, whose saturation knee calibrates the actual vane voltage; log H⁻ current, electron-to-H⁻ ratio and caesium consumption over time to track source condition.",
+      "failure": "銫覆蓋率漂移使 H⁻ 電流下降、共引出電子比例上升，引出區放電頻率增加而造成脈衝缺失；低能傳輸線匹配不當時 RFQ 傳輸率掉到八成以下，增加的發射度一路帶到 160 MeV，下游再怎麼調整也追不回亮度。~Caesium coverage drift lowers H⁻ current and raises the co-extracted electron fraction, increasing extraction breakdowns and missing pulses; a poorly matched LEBT drops RFQ transmission below 80% and the added emittance is carried all the way to 160 MeV, where no downstream tuning can recover the brightness.",
+      "misconception": "RFQ 只負責加速，聚焦完全靠外部磁鐵。~The RFQ only accelerates; focusing is done entirely by external magnets."
+    },
+    {
+      "anchor": "斬波線、DTL、CCDTL 與 PIMS~Chopper line, DTL, CCDTL and PIMS",
+      "title": "斬波線與三種加速結構的選擇~Chopper line and the choice of three accelerating structures",
+      "mechanism": "3 MeV 的中能傳輸線上有靜電偏轉板斬波器，依 PSB 約 1 MHz 的 RF 桶結構移除特定微束團，約 65% 的束流保留，被移除的束團在 3 MeV 打到吸收器，那裡活化最小，避免它們在 PSB 捕獲時於 160 MeV 損失。斬波器上升時間必須短於 2.84 ns 的束團間距。之後 DTL 以漂移管內的永久磁鐵四極聚焦把能量提高到 50 MeV；50 到約 102 MeV 用七個模組的耦合腔 DTL，四極磁鐵放在腔外，便於對準與冷卻；102 到 160 MeV 用十二個 π 模結構，在 β 約 0.5 時有較高的有效分路阻抗。所有結構以 LEP 遺留的 352 MHz 速調管與新增速調管供電。~The 3 MeV medium-energy line carries an electrostatic deflecting-plate chopper that removes selected micro-bunches to match the roughly 1 MHz RF bucket pattern of the PSB, keeping about 65% of the beam; removed bunches hit an absorber at 3 MeV where activation is minimal instead of being lost at 160 MeV during PSB capture. The chopper rise time must be shorter than the 2.84 ns bunch spacing. The DTL then reaches 50 MeV with permanent-magnet quadrupoles inside its drift tubes; seven cell-coupled DTL modules take the beam from 50 to about 102 MeV with quadrupoles outside the cavities for easier alignment and cooling; twelve π-mode structures go from 102 to 160 MeV with higher effective shunt impedance near β ≈ 0.5. All structures are powered by reused LEP 352 MHz klystrons and newer klystrons.",
+      "model": "束團間距 1/352.2 MHz = 2.84 ns，每個 PSB RF 週期約 352 個束團，保留 65% 約 229 個、移除 123 個。斬波偏轉 θ = V·L/(2·W·d)：V = 800 V、L = 0.40 m、d = 20 mm、W = 3 MeV，θ ≈ 2.7 mrad，1 m 後偏移 2.7 mm 送入吸收器（數值為假設）。功率：10 MeV、5 m 的槽在 φ_s = −20° 需 V = 10.64 MV，ZT² = 30 MΩ/m 時銅耗 V²/(ZT²·L) = 0.75 MW，加 40 mA 束流功率 0.40 MW 共 1.15 MW。~Bunch spacing is 1/352.2 MHz = 2.84 ns, about 352 bunches per PSB RF period, so keeping 65% leaves about 229 and removes 123. Chopper deflection θ = V·L/(2·W·d) with V = 800 V, L = 0.40 m, d = 20 mm and W = 3 MeV gives θ ≈ 2.7 mrad, or 2.7 mm after 1 m into the absorber (assumed values). Power: a 5 m tank gaining 10 MeV at φ_s = −20° needs V = 10.64 MV; with ZT² = 30 MΩ/m the copper loss V²/(ZT²·L) is 0.75 MW, plus 0.40 MW of 40 mA beam power for 1.15 MW.",
+      "verify": "以快速束流變壓器與 BPM 和訊號觀察斬波後的束團圖樣，量測被移除時段的殘留粒子比例（消光比）；以低階 RF 系統記錄每個槽的振幅與相位在脈衝內的穩定度，確認束流負載補償使能量不隨脈衝下垂；永久磁鐵四極在安裝前逐顆量磁場梯度與磁中心。~Observe the chopped bunch pattern with fast current transformers and BPM sum signals and measure the residual particle fraction in the removed slots, the extinction ratio; record each tank's amplitude and phase stability within the pulse from the low-level RF system to confirm beam-loading compensation keeps energy from drooping along the pulse; measure gradient and magnetic centre of every permanent-magnet quadrupole before installation.",
+      "failure": "斬波消光不完全時，部分殘留的束團落在 PSB 的 RF 桶外，捕獲時在 160 MeV 損失並活化注入區；DTL 的永久磁鐵四極安裝後無法調整，若對準誤差在組裝時沒有抓出，只能靠修正磁鐵補償，並把殘留的軌道誤差帶到下游。~Incomplete chopper extinction leaves partial bunches outside the PSB RF buckets, where they are lost at 160 MeV during capture and activate the injection region; DTL permanent-magnet quadrupoles cannot be adjusted after installation, so an alignment error missed at assembly can only be compensated with corrector magnets and leaves residual orbit errors downstream.",
+      "misconception": "斬波器會浪費束流，所以越少用越好。~A chopper only wastes beam, so it should be used as little as possible."
+    },
+    {
+      "anchor": "BPM 之間的飛行時間~Time of flight between BPMs",
+      "title": "相位掃描、飛行時間與 RF 設定點校正~Phase scans, time of flight and RF set-point calibration",
+      "mechanism": "每個加速腔的 RF 振幅與相位都要設定在讓束流以同步相位到達的位置，否則能量誤差會一路累積。做法是讓某一腔的相位掃過 360°，同時以下游兩個束流位置監測器的相位訊號量測飛行時間，換算束流能量；把量到的能量對相位曲線與模擬的特徵曲線擬合，得到該腔的振幅與相位偏差。腔體依序調整，前一腔確定後作為下一腔的參考。H⁻ 還可以用雷射把多餘電子光剝離，做不攔截的束流剖面量測。~Each cavity's RF amplitude and phase must be set so the beam arrives at the synchronous phase, otherwise energy errors accumulate down the line. One cavity's phase is swept through 360° while the time of flight between two downstream beam-position monitors is measured from their phase signals and converted to beam energy; fitting the measured energy-versus-phase curve to the simulated signature yields that cavity's amplitude and phase offsets. Cavities are set in sequence, each settled one serving as reference for the next. H⁻ beams also allow non-intercepting profile measurement by laser photodetachment of the extra electron.",
+      "model": "兩個 BPM 相距 L = 5 m、50 MeV（β = 0.3139）：t = L/(βc) = 53.13 ns，即 18.71 個 RF 週期。能量增加 0.1 MeV 使 t 縮短 49 ps，在 352.2 MHz 相當於 6.2°；若相位量測解析度 0.5°，能量解析度約 0.1×0.5/6.2 ≈ 8 keV。~With two BPMs L = 5 m apart at 50 MeV (β = 0.3139), t = L/(βc) = 53.13 ns, or 18.71 RF periods. A 0.1 MeV energy increase shortens t by 49 ps, which is 6.2° at 352.2 MHz; with 0.5° phase resolution the energy resolution is about 0.1×0.5/6.2 ≈ 8 keV.",
+      "verify": "每個腔至少做兩次完整相位掃描，比較擬合得到的振幅與相位偏差是否在重複性範圍內；以終端的能譜磁鐵或已知能量點交叉檢查飛行時間的絕對能量；事先以標準訊號校正 BPM 電纜延遲與其溫度係數，並把參考時脈分配的相位漂移記入不確定度。~Perform at least two full phase scans per cavity and check that the fitted amplitude and phase offsets agree within repeatability; cross-check the absolute time-of-flight energy against an end-of-line spectrometer magnet or a known energy point; calibrate BPM cable delays and their temperature coefficients with reference signals beforehand, and include phase drift of the reference-clock distribution in the uncertainty.",
+      "failure": "BPM 電纜延遲隨溫度漂移 20 ps，對應約 2.5° 的相位誤差與約 40 keV 的能量誤讀，操作員據此把腔體相位設偏，束流偏離波峰進入下一段結構，縱向失配在高能段轉為損失；若沒有保存掃描結果，下次更換速調管後只能從頭重做。~A 20 ps temperature drift in BPM cable delay corresponds to about 2.5° of phase and roughly 40 keV of misread energy, so operators set the cavity phase wrongly, the beam enters the next structure off crest and the longitudinal mismatch becomes losses at high energy; without saved scan results, every klystron replacement forces the procedure to start from scratch.",
+      "misconception": "只要把每個腔的 RF 功率調到最大，出口能量就會正確。~Setting every cavity to maximum RF power guarantees the correct exit energy."
+    },
+    {
+      "anchor": "發射度量測與束流損失監測器~Emittance meters and beam-loss monitors",
+      "title": "發射度成長、束流損失與 H⁻ 剝離預算~Emittance growth, beam loss and H⁻ stripping budget",
+      "mechanism": "亮度是流強除以發射度，設計要求在 PSB 注入處的正規化 rms 橫向發射度約 0.4 mm·mrad，沿線成長約 40%，其中約一半發生在斬波線。空間電荷失配與 RF 誤差會在束流周圍形成暈，暈粒子打到管壁成為損失；為了能人工維護，常用每公尺約 1 W 的損失上限。H⁻ 另有特有的損失途徑：與殘氣碰撞失去一個電子變成中性 H⁰，不再受四極磁鐵與偏轉磁鐵控制，沿直線飛到下一個轉彎處撞上真空管；束內碰撞與強磁場中的勞侖茲剝離則在更高能量才變得重要。~Brightness is current divided by emittance, and the design calls for a normalised rms transverse emittance of about 0.4 mm·mrad at PSB injection, with roughly 40% growth along the line, about half of it in the chopper line. Space-charge mismatch and RF errors build a halo whose particles strike the beam pipe as losses, and a limit of about 1 W per metre is commonly used to keep hands-on maintenance possible. H⁻ has its own loss channels: a collision with residual gas strips one electron to make neutral H⁰, which no longer responds to quadrupoles or dipoles and flies straight into the vacuum pipe at the next bend; intra-beam stripping and Lorentz stripping in strong magnetic fields matter only at higher energies.",
+      "model": "峰值束流功率 160 MeV × 25 mA = 4.0 MW；400 µs、0.83 Hz 的工作比使平均功率 4.0 MW × 400×10⁻⁶ × 0.83 = 1328 W，1 W/m 的上限即每公尺損失比例 < 7.5×10⁻⁴。殘氣剝離：1×10⁻⁷ mbar（10⁻⁵ Pa）時 n = P/kT = 2.5×10¹⁵ m⁻³，假設截面 1×10⁻²² m²、路徑 100 m，剝離比例 nσL ≈ 2.5×10⁻⁵。~Peak beam power is 160 MeV × 25 mA = 4.0 MW; a duty of 400 µs at 0.83 Hz gives an average of 4.0 MW × 400×10⁻⁶ × 0.83 = 1328 W, so a 1 W/m limit means fractional loss below 7.5×10⁻⁴ per metre. Residual-gas stripping at 1×10⁻⁷ mbar (10⁻⁵ Pa) gives n = P/kT = 2.5×10¹⁵ m⁻³; with an assumed cross-section of 1×10⁻²² m² over 100 m the stripped fraction is nσL ≈ 2.5×10⁻⁵.",
+      "verify": "沿線布置游離室式束流損失監測器並以每脈衝電荷正規化，建立損失地圖；以束流變壓器量各段傳輸率；在 3 MeV 以狹縫—柵網、在高能段以線掃描器或雷射剝離量測發射度，與模擬的成長曲線比較；用殘氣分析儀記錄各段分壓，並在壓力異常時檢查損失是否集中在下一個轉彎處。~Install ionisation-chamber beam-loss monitors along the line and normalise them to charge per pulse to build a loss map; measure section transmission with beam transformers; measure emittance with a slit and grid at 3 MeV and with wire scanners or laser stripping at high energy, comparing with the simulated growth curve; log partial pressures with residual-gas analysers, and when pressure is abnormal check whether losses concentrate at the next bend.",
+      "failure": "某段真空因洩漏或除氣使壓力升高十倍，產生的 H⁰ 不受磁鐵偏轉，在下游第一個偏轉磁鐵處集中撞擊管壁，局部活化超出維護限制；斬波線準直偏差使發射度成長超出預算，PSB 的亮度目標因此落空，即使總傳輸率看起來正常。~A leak or outgassing that raises pressure tenfold in one section produces H⁰ that ignores the magnets and concentrates on the beam pipe at the first downstream dipole, pushing local activation beyond maintenance limits; a chopper-line misalignment that grows emittance beyond budget makes the PSB miss its brightness target even though overall transmission looks normal.",
+      "misconception": "只要損失少於總束流的 1%，就不會造成問題。~Losing less than 1% of the beam can never cause a problem."
+    },
+    {
+      "anchor": "碳剝離膜與 PSB 四環分配~Carbon stripping foil and four-ring distribution",
+      "title": "電荷交換注入、剝離膜與相空間塗佈~Charge-exchange injection, stripping foil and phase-space painting",
+      "mechanism": "160 MeV 的 H⁻ 經傳輸線送到 PSB，以脈衝式踢束磁鐵與隔板把連續的束流段依序分配到上下堆疊的四個環。每個環的注入區以局部軌道凸起讓 H⁻ 與循環質子會合，H⁻ 穿過薄碳膜時兩個電子被剝離，變成質子留在環內；未完全剝離的 H⁰ 與 H⁻ 被導向內部吸收器。注入期間逐步改變凸起高度做橫向相空間塗佈，以得到目標發射度與分布；但循環質子每圈都可能再穿過碳膜，引起多重庫侖散射、核反應損失與碳膜加熱，因此塗佈與凸起收回時序必須讓穿膜次數最少。~The 160 MeV H⁻ beam travels down the transfer line to the PSB, where pulsed kickers and septa distribute successive slices to four vertically stacked rings. In each ring a local orbit bump brings the H⁻ beam alongside the circulating protons, and on crossing a thin carbon foil both electrons are stripped, leaving protons that stay in the ring; partially stripped H⁰ and unstripped H⁻ are steered to an internal dump. The bump height is changed during injection to paint transverse phase space to the target emittance and distribution, but circulating protons can cross the foil every turn, causing multiple Coulomb scattering, nuclear losses and foil heating, so painting and bump-collapse timing must minimise foil traversals.",
+      "model": "PSB 周長 2π×25 m = 157.08 m，160 MeV 質子 β = 0.5195，迴轉頻率 βc/C = 0.5195×2.998×10⁸/157.08 = 0.992 MHz，與斬波的約 1 MHz 圖樣一致。每環注入 100 µs 約 99 圈；25 mA × 100 µs = 2.5 µC = 1.56×10¹³ 個質子（教學假設）；若剝離效率 98%，每環有 3.1×10¹¹ 個粒子送往 H⁰ 吸收器。~The PSB circumference is 2π×25 m = 157.08 m; at 160 MeV a proton has β = 0.5195 and revolution frequency βc/C = 0.5195×2.998×10⁸/157.08 = 0.992 MHz, matching the roughly 1 MHz chopping pattern. A 100 µs injection per ring spans about 99 turns; 25 mA × 100 µs = 2.5 µC = 1.56×10¹³ protons as a teaching assumption, and at 98% stripping efficiency 3.1×10¹¹ particles per ring go to the H⁰ dump.",
+      "verify": "以吸收器上的電流監測器量測 H⁰ 與 H⁻ 比例，求剝離效率並追蹤其隨碳膜使用時間的變化；以環內束流變壓器比較注入粒子數與循環粒子數；以線掃描器量注入後的橫向分布與發射度，與塗佈設定比較；定期以攝影機檢視碳膜外觀並記錄更換紀錄。~Measure the H⁰ and H⁻ fractions with current monitors on the dump to obtain stripping efficiency and track how it evolves with foil age; compare injected and circulating particle numbers with ring beam transformers; measure post-injection transverse distributions and emittance with wire scanners against the painting settings; inspect the foil periodically with a camera and keep a replacement log.",
+      "failure": "碳膜因長期加熱而變薄或出現針孔，剝離效率下降，更多 H⁰ 打到吸收器使其過熱並增加注入區損失；塗佈設定錯誤讓循環束流反覆穿膜，發射度成長並在環內產生持續損失，PSB 亮度反而比設計低。~A foil thinned by prolonged heating or pierced by pinholes loses stripping efficiency, sending more H⁰ to the dump, overheating it and raising injection-region losses; wrong painting settings make the circulating beam cross the foil repeatedly, growing emittance and creating persistent ring losses so that PSB brightness ends up below design.",
+      "misconception": "剝離膜越厚越好，因為剝離一定最完全。~A thicker stripping foil is always better because stripping becomes complete."
+    },
+    {
+      "anchor": "可靠度運轉與交接紀錄~Reliability run and handoff record",
+      "title": "分段試運轉、可靠度與營運交接~Staged commissioning, reliability and operations handoff",
+      "mechanism": "Linac4 依結構安裝順序分段試運轉：先在測試站驗證離子源、RFQ 與斬波線，再於隧道內逐段把能量推進到 50、100 與 160 MeV，2016 年達到 160 MeV，之後以可靠度運轉累積故障統計，再於 2019 到 2020 年的長停機期間接上 PSB。整機可用率是串聯子系統可用率的乘積，所以離子源、每一座 RF 站、真空、電源與控制都要分配可用率預算。交接紀錄要包含 RF 設定點與相位掃描結果、離子源操作參數、損失地圖、聯鎖門檻與備品策略，讓營運團隊能在更換元件後快速回到已知狀態。~Linac4 was commissioned in stages following installation: source, RFQ and chopper line were first validated on a test stand, then energy was pushed in the tunnel to 50, 100 and 160 MeV, reaching 160 MeV in 2016, followed by a reliability run to accumulate fault statistics before connection to the PSB during the 2019–2020 long shutdown. Overall availability is the product of series subsystem availabilities, so source, every RF station, vacuum, power supplies and controls each receive an availability budget. The handoff record holds RF set points and phase-scan results, source operating parameters, loss maps, interlock thresholds and the spares policy so operations can return to a known state quickly after any component change.",
+      "model": "假設 20 座 RF 站各有 99.5% 可用率：0.995²⁰ = 0.905，再乘以離子源 0.99 得 0.896；若每站提升到 99.8%，0.998²⁰ = 0.961，乘以 0.99 得 0.951。可見在串聯系統中，每站僅 0.3% 的改善就讓整機可用率提高約 5.5 個百分點。~Assume 20 RF stations each at 99.5% availability: 0.995²⁰ = 0.905, and with a 0.99 source the total is 0.896; raising each station to 99.8% gives 0.998²⁰ = 0.961 and 0.951 with the source. In a series system a 0.3% improvement per station thus lifts overall availability by about 5.5 percentage points.",
+      "verify": "驗收項目：以飛行時間與能譜磁鐵確認出口能量 160 MeV；量測自離子源到 PIMS 出口的傳輸率並與設計的約 85% 比較；在注入處量發射度；記錄脈衝長度、斬波圖樣與損失地圖；以故障紀錄統計平均故障間隔與平均修復時間，計算各子系統可用率並與預算表比較。~Acceptance items: confirm 160 MeV exit energy by time of flight and spectrometer magnet; measure transmission from source to PIMS exit against the design value of about 85%; measure emittance at injection; record pulse length, chopping pattern and loss map; derive mean time between failures and mean time to repair from the fault log, compute each subsystem's availability and compare with the budget table.",
+      "failure": "交接時沒有保存各腔的相位掃描參考與離子源參數，某座速調管更換後操作團隊無法快速恢復設定點，停機時間拉長；離子源銫消耗的緩慢變化沒有被記錄，強度逐週下降被誤判為 RF 問題，排查方向錯誤而延誤修復。~Without saved phase-scan references and source parameters in the handoff, a klystron replacement leaves operations unable to restore set points quickly and downtime stretches; an unlogged slow change in source caesium consumption causes a week-by-week intensity decline that is misdiagnosed as an RF problem, sending troubleshooting the wrong way and delaying repair.",
+      "misconception": "每個子系統可用率都很高，整機可用率就一定很高。~If every subsystem is highly available, the whole machine must be too."
+    }
+  ],
+  "example": "Linac4 束流鏈練習：λ = c/352.2 MHz = 0.851 m。H⁻ 在 45 keV、3、50、160 MeV 的 β 為 0.00979、0.0797、0.314、0.520，單元長度 βλ 從 8.3 mm 增到 44.2 cm（π 模 22.1 cm）。40 mA 束流的廣義導流係數由 45 keV 的 2.7×10⁻³ 降到 3 MeV 的 5.0×10⁻⁶，說明 RFQ 為何必須放在最前面。飛行時間：50 MeV、5 m 路徑 53.13 ns，0.1 MeV 改變 49 ps 即 6.2°。PSB：β·γ² 從 50 MeV 的 0.348 增到 160 MeV 的 0.712，比值 2.04；迴轉頻率 0.992 MHz，每環注入 100 µs 約 99 圈、25 mA 給 1.56×10¹³ 個質子。損失：平均功率 4.0 MW × 400 µs × 0.83 Hz = 1328 W，每公尺損失比例須小於 7.5×10⁻⁴。可用率：20 座 RF 站各 99.5% 加離子源 99% 得 0.896。數值為教學假設，不代表任何實機規格。~Linac4 beam-chain exercise: λ = c/352.2 MHz = 0.851 m. H⁻ at 45 keV, 3, 50 and 160 MeV has β = 0.00979, 0.0797, 0.314 and 0.520, so cell length βλ grows from 8.3 mm to 44.2 cm, or 22.1 cm for a π-mode cell. The generalised perveance of a 40 mA beam falls from 2.7×10⁻³ at 45 keV to 5.0×10⁻⁶ at 3 MeV, which is why the RFQ must come first. Time of flight: at 50 MeV a 5 m path takes 53.13 ns and a 0.1 MeV change moves it by 49 ps, or 6.2°. PSB: β·γ² rises from 0.348 at 50 MeV to 0.712 at 160 MeV, a ratio of 2.04; the revolution frequency is 0.992 MHz, so a 100 µs injection per ring spans about 99 turns and 25 mA delivers 1.56×10¹³ protons. Losses: average power 4.0 MW × 400 µs × 0.83 Hz = 1328 W, so fractional loss must stay below 7.5×10⁻⁴ per metre. Availability: 20 RF stations at 99.5% each with a 99% source give 0.896. Values are teaching assumptions, not any machine's specification.",
+  "history": "Linac4 的構想源自 1990 年代末的研究，2004 到 2008 年進行研發，2008 年 10 月破土、2009 年開挖隧道，2013 年開始加速束流，2016 年達到 160 MeV，2017 年 5 月落成。它是 LHC 注入器升級計畫的一部分，在 2019 到 2020 年長停機期間取代自 1978 年起服役的 Linac2，從 2020 年起成為 LHC 質子束流的源頭。法國 CEA 與 CNRS、俄羅斯 BINP 與 VNIITF、波蘭 NCBJ、西班牙 ESS Bilbao、義大利 INFN 與印度 RRCAT 等機構參與建造，其設計在 2020 年整理成 CERN 黃皮書設計報告。本課只重建公開的物理與工程邏輯。~Linac4 grew from studies at the end of the 1990s, with R&D from 2004 to 2008, ground-breaking in October 2008, tunnel excavation in 2009, first accelerated beams in 2013, 160 MeV in 2016 and inauguration in May 2017. Part of the LHC Injectors Upgrade, it replaced Linac2, in service since 1978, during the 2019–2020 long shutdown and has been the source of LHC proton beams since 2020. Institutes including CEA and CNRS in France, BINP and VNIITF in Russia, NCBJ in Poland, ESS Bilbao in Spain, INFN in Italy and RRCAT in India contributed, and the design was documented in a 2020 CERN Yellow Report. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "CERN 梅林園區 Linac4~CERN Meyrin site, Linac4",
+    "country": "瑞士~Switzerland",
+    "lat": 46.236,
+    "lng": 6.047,
+    "query": "Linac4 CERN Meyrin Geneva"
+  },
+  "sources": [
+    {
+      "key": "cern-linac4",
+      "title": "CERN：Linac4 直線加速器",
+      "titleEn": "CERN: Linear accelerator 4",
+      "publisher": "CERN",
+      "url": "https://home.cern/science/accelerators/linear-accelerator-4",
+      "sourceType": "primary",
+      "scope": "官方介紹：H⁻ 加速到 160 MeV、RFQ 3 MeV、DTL 50 MeV、CCDTL 100 MeV、PIMS 160 MeV、86 m 長、地下 12 m、400 µs 脈衝，2020 年取代 Linac2。",
+      "scopeEn": "Official overview: H⁻ accelerated to 160 MeV with RFQ to 3 MeV, DTL to 50 MeV, CCDTL to 100 MeV and PIMS to 160 MeV, 86 m long, 12 m underground, 400 µs pulses, replacing Linac2 in 2020."
+    },
+    {
+      "key": "cern-yellow-report-linac4-design",
+      "title": "CERN 黃皮書：Linac4 設計報告（CERN-2020-006）",
+      "titleEn": "CERN Yellow Report: Linac4 design report (CERN-2020-006)",
+      "publisher": "CERN",
+      "url": "https://e-publishing.cern.ch/index.php/CYRM/issue/download/121/96",
+      "sourceType": "primary",
+      "scope": "官方設計報告，涵蓋 45 keV 離子源、3 m RFQ、斬波線、三槽 DTL、七模組 CCDTL、十二槽 PIMS、流強、脈衝長度、傳輸率與發射度預算。",
+      "scopeEn": "Official design report covering the 45 keV source, 3 m RFQ, chopper line, three-tank DTL, seven-module CCDTL, twelve-tank PIMS, currents, pulse length, transmission and emittance budget."
+    },
+    {
+      "key": "cern-courier-long-road-linac4",
+      "title": "CERN Courier：通往 Linac4 的漫長道路",
+      "titleEn": "CERN Courier: The long road to Linac4",
+      "publisher": "CERN Courier",
+      "url": "https://cerncourier.com/a/the-long-road-to-linac4/",
+      "sourceType": "secondary",
+      "scope": "回顧 Linac4 的時程、沿用 LEP 352 MHz RF 元件、108 個永久磁鐵四極、可靠度運轉 91% 可用率與國際合作機構。",
+      "scopeEn": "Retrospective on the Linac4 timeline, reuse of LEP 352 MHz RF components, 108 permanent-magnet quadrupoles, 91% availability in the reliability run and partner institutes."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "歐洲核子研究組織",
+      "nameEn": "CERN",
+      "business": "跨政府粒子物理實驗室，設計、建造並營運 Linac4、PS Booster 與整個 LHC 注入鏈。",
+      "businessEn": "Intergovernmental particle-physics laboratory that designed, built and operates Linac4, the PS Booster and the whole LHC injector chain.",
+      "url": "https://home.cern/",
+      "investorUrl": "",
+      "security": null,
+      "role": "Linac4 設計報告與公開工程資料",
+      "roleEn": "Linac4 design report and public engineering material"
+    },
+    {
+      "name": "法國原子能委員會 Irfu 研究所",
+      "nameEn": "CEA Irfu",
+      "business": "法國原子能與替代能源委員會轄下的基礎物理研究所，從事加速器與射頻結構研發，曾參與 Linac4 的 RFQ 設計合作。",
+      "businessEn": "Fundamental-physics institute of the French Alternative Energies and Atomic Energy Commission working on accelerators and RF structures, and a design partner on the Linac4 RFQ.",
+      "url": "https://irfu.cea.fr/en/Phocea/Vie_des_labos/Ast/ast_service.php?id_unit=1",
+      "investorUrl": "",
+      "security": null,
+      "role": "高流強質子／H⁻ 直線加速器研發的公開資訊",
+      "roleEn": "Public information on high-intensity proton and H⁻ linac development"
+    },
+    {
+      "name": "泰雷茲集團",
+      "nameEn": "Thales",
+      "business": "航太、國防與電子集團，旗下電子元件部門生產加速器用的高功率速調管等射頻真空管。",
+      "businessEn": "Aerospace, defence and electronics group whose electron-device business produces high-power klystrons and other RF vacuum tubes for accelerators.",
+      "url": "https://www.thalesgroup.com/en",
+      "investorUrl": "https://www.thalesgroup.com/en/investors",
+      "security": {"symbol": "HO", "exchange": "EURONEXT", "currency": "EUR"},
+      "role": "352 MHz 級高功率速調管與射頻源的公開產品資訊",
+      "roleEn": "Public product information on 352 MHz-class high-power klystrons and RF sources"
+    }
+  ],
+  "related": ["a481", "a460"],
+  "architectureNodes": [["45 keV RF H⁻ 離子源與 LEBT", "45 keV RF H⁻ source and LEBT"], ["3 MeV RFQ 與斬波線", "3 MeV RFQ and chopper line"], ["DTL／CCDTL／PIMS 加速結構", "DTL / CCDTL / PIMS structures"], ["352.2 MHz 速調管與低階 RF", "352.2 MHz klystrons and low-level RF"], ["束流診斷與損失監測", "Beam diagnostics and loss monitoring"], ["傳輸線與 PSB 電荷交換注入", "Transfer line and PSB charge-exchange injection"]],
+  "architectureEdges": [[0, 1], [1, 2], [3, 2], [3, 1], [2, 5], [4, 2], [4, 3]]
+}

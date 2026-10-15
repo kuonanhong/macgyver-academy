@@ -1,0 +1,182 @@
+{
+  "id": "a473",
+  "title": "天文干涉儀光程控制~Optical-path control in astronomical interferometers",
+  "discipline": "optics-astronomical",
+  "family": "interferometer",
+  "focus": "VLTI 與 CHARA 延遲線、條紋追蹤與雷射計量如何把光程差控制在奈米等級~How VLTI and CHARA delay lines, fringe tracking and laser metrology hold optical-path difference at the nanometre level",
+  "summary": "以 ESO VLTI（GRAVITY，四台望遠鏡、K 波段）與 CHARA 陣列（六台 1 m 望遠鏡、331 m 基線）為對象，從相干長度與地球自轉造成的光程差變化出發，建立延遲線機構、雷射計量、條紋追蹤、可見度校正與天體測量誤差預算的完整工程鏈。~Using the ESO VLTI with GRAVITY (four telescopes, K band) and the CHARA Array (six 1 m telescopes, 331 m baseline) as the reference instruments, the course starts from coherence length and the Earth-rotation delay rate and builds the full engineering chain of delay-line mechanics, laser metrology, fringe tracking, visibility calibration and astrometric error budgets.",
+  "units": [
+    {
+      "anchor": "基線向量與幾何延遲~Baseline vector and geometric delay",
+      "title": "基線、幾何延遲與角解析度~Baseline, geometric delay and angular resolution",
+      "mechanism": "兩台相距基線 B 的望遠鏡接收同一顆星的光，星光到達兩鏡的時間差對應幾何光程差 D = B·ŝ，其中 ŝ 是指向天體的單位向量；只有把這段光程差補償到遠小於相干長度，兩道光才能在合成實驗室裡形成干涉條紋。條紋的角週期為 λ/B，因此干涉儀的角解析度由基線而非單鏡口徑決定；條紋對比（可見度）則依 van Cittert–Zernike 定理等於天體亮度分佈在空間頻率 B/λ 上的傅立葉分量。~Two telescopes separated by baseline B receive the same starlight, and the arrival-time difference corresponds to a geometric path difference D = B·ŝ, with ŝ the unit vector toward the object; only when this difference is compensated to far less than the coherence length do the two beams form fringes in the combination laboratory. The angular fringe period is λ/B, so the resolution is set by the baseline rather than the single-aperture diameter, and by the van Cittert–Zernike theorem the fringe contrast (visibility) equals the Fourier component of the brightness distribution at spatial frequency B/λ.",
+      "model": "VLTI 四台 8.2 m 單元望遠鏡的最長基線約 130 m，在 K 波段 λ = 2.2 µm 時 λ/B = 2.2e−6/130 = 1.69e−8 rad ≈ 3.5 mas；CHARA 在 331 m 基線、λ = 0.55 µm 時 λ/(2B) ≈ 0.17 mas。若星在離基線法線 30° 的方向，130 m 基線的幾何延遲為 130·sin30° = 65 m，必須由延遲線補償。~The longest VLTI baseline between the four 8.2 m Unit Telescopes is about 130 m; at λ = 2.2 µm in the K band, λ/B = 2.2e−6/130 = 1.69e−8 rad ≈ 3.5 mas. CHARA with a 331 m baseline at λ = 0.55 µm reaches λ/(2B) ≈ 0.17 mas. For a star 30° from the baseline normal, the geometric delay on the 130 m baseline is 130·sin30° = 65 m, which the delay lines must compensate.",
+      "verify": "觀測一顆直徑已知的校正星，量測條紋可見度隨投影基線的變化，與均勻圓盤模型 V = 2J₁(x)/x、x = πθB/λ 比較；同時用條紋的角週期反推有效基線長度，與測地量測的基線向量比對到毫米等級。~Observe a calibrator star of known diameter, measure fringe visibility against projected baseline and compare with the uniform-disk model V = 2J₁(x)/x with x = πθB/λ; also back out the effective baseline from the fringe angular period and compare with the surveyed baseline vector at the millimetre level.",
+      "failure": "基線向量若有毫米級誤差，計算出的幾何延遲會隨時角漂移，延遲線追到錯誤位置，條紋在幾分鐘內移出相干包絡並消失；若誤差較小而未被發現，則轉成天體測量的系統偏差。~A millimetre-level error in the baseline vector makes the computed geometric delay drift with hour angle, the delay line tracks to the wrong position, and the fringes walk out of the coherence envelope within minutes; a smaller unnoticed error becomes a systematic astrometric bias.",
+      "misconception": "干涉儀的解析度由各望遠鏡的口徑決定，基線只影響靈敏度。~An interferometer's resolution is set by the telescope apertures; the baseline only affects sensitivity."
+    },
+    {
+      "anchor": "相干長度與條紋包絡~Coherence length and fringe envelope",
+      "title": "頻寬、相干長度與零光程差~Bandwidth, coherence length and zero OPD",
+      "mechanism": "寬頻光的干涉條紋被一個包絡調制，包絡寬度就是相干長度 L_c = λ²/Δλ；光程差超出 ±L_c/2 左右條紋對比便迅速下降，因此延遲線不只要補償幾何延遲，還必須找到並停留在零光程差附近。大氣活塞項（piston）讓這個點隨機抖動數微米，而延遲線隧道中的空氣色散會讓不同波長的零光程差位置分開，把條紋包絡拉長並降低對比；CHARA 為此把望遠鏡到實驗室的光路放在真空管內。~Broadband fringes are modulated by an envelope whose width is the coherence length L_c = λ²/Δλ; contrast collapses once the OPD leaves roughly ±L_c/2, so the delay line must not only compensate the geometric delay but find and hold the zero-OPD point. Atmospheric piston jitters that point by several micrometres, and air dispersion in the delay tunnel separates the zero-OPD positions of different wavelengths, stretching the packet and lowering contrast; CHARA therefore carries the telescope-to-laboratory beams in vacuum pipes.",
+      "model": "K 波段 λ = 2.2 µm、Δλ = 0.4 µm（2.0–2.4 µm）時 L_c = 2.2²/0.4 = 12.1 µm；若條紋追蹤器以光譜解析度 R ≈ 22 工作，Δλ = 0.1 µm，L_c 擴大到 48 µm，較容易捕捉條紋。可見光 λ = 0.7 µm、Δλ = 0.1 µm 時 L_c 僅 4.9 µm，對延遲線精度的要求更嚴。~In the K band with λ = 2.2 µm and Δλ = 0.4 µm (2.0–2.4 µm), L_c = 2.2²/0.4 = 12.1 µm; a fringe tracker working at spectral resolution R ≈ 22 has Δλ = 0.1 µm and L_c = 48 µm, which makes fringe acquisition easier. In the visible with λ = 0.7 µm and Δλ = 0.1 µm, L_c is only 4.9 µm, a far tighter delay-line requirement.",
+      "verify": "以延遲線慢速掃過零光程差並記錄條紋包絡，量包絡的半高寬，與濾光片頻寬算出的 λ²/Δλ 比較；若包絡明顯比預測寬或呈不對稱的啁啾，表示縱向色散未補償，應調整色散補償器後重測。~Scan the delay line slowly through zero OPD while recording the fringe packet, measure its full width at half maximum and compare with λ²/Δλ from the filter bandwidth; an envelope clearly wider than predicted, or an asymmetric chirp, indicates uncorrected longitudinal dispersion that must be removed with the dispersion compensator and re-measured.",
+      "failure": "在空氣中跑數十公尺不等長光路而不補償色散時，紅端與藍端的零光程差相差數十微米，寬頻條紋對比掉到幾成，弱星根本鎖不住條紋。~Running tens of metres of unequal path in air without dispersion compensation separates the red and blue zero-OPD points by tens of micrometres, broadband fringe contrast falls to a fraction, and faint stars cannot be locked at all.",
+      "misconception": "頻寬越寬收到的光越多，所以條紋總是越容易找到。~A wider bandwidth collects more light, so fringes are always easier to find."
+    },
+    {
+      "anchor": "延遲線台車與貓眼反射鏡~Delay-line carriage and cat's-eye retroreflector",
+      "title": "延遲線機構與地球自轉延遲率~Delay-line mechanics and the Earth-rotation delay rate",
+      "mechanism": "VLTI 的延遲線是沿隧道軌道行走的台車，上面裝著貓眼式反射鏡，光束來回兩次，所以台車走 60 m 可補償 120 m 的光程差；粗動由輪驅台車負責，細動由貓眼次鏡上的壓電致動器負責，兩者由雷射計量閉迴路串接。因為地球自轉，幾何延遲以 dD/dt = ω_E·B·cosθ 的速率連續變化，台車必須以毫米每秒等級平滑追蹤，而不是定點停住。~A VLTI delay line is a carriage running on rails in the tunnel carrying a cat's-eye retroreflector; the beam passes twice, so 60 m of carriage travel compensates 120 m of OPD. Coarse motion is the wheel-driven carriage, fine motion is a piezo actuator on the cat's-eye secondary, and both are closed through the laser metrology. Because the Earth rotates, the geometric delay changes continuously at dD/dt = ω_E·B·cosθ, so the carriage must track smoothly at millimetres per second rather than park at a point.",
+      "model": "ω_E = 7.29e−5 rad/s；B = 130 m 時最大延遲率 ω_E·B = 9.5 mm/s，CHARA 331 m 基線則達 24 mm/s。以 1 kHz 控制迴路計算，每個週期光程差改變 9.5 µm，約等於整個 K 波段相干長度，因此必須由細動級吸收量化誤差；貓眼雙程設計讓台車速度只需 4.7 mm/s。~With ω_E = 7.29e−5 rad/s and B = 130 m, the maximum delay rate ω_E·B is 9.5 mm/s, and the 331 m CHARA baseline reaches 24 mm/s. At a 1 kHz loop rate the OPD changes 9.5 µm per cycle, about one K-band coherence length, so the fine stage must absorb the quantisation; the double-pass cat's eye means the carriage itself only moves at 4.7 mm/s.",
+      "verify": "命令延遲線以固定速度（例如 5 mm/s）行走，用雷射計量記錄位置，扣除理想軌跡後計算 1 s 視窗內的殘差均方根與速度漣波頻譜；殘差應落在數十奈米內，漣波頻率應對應輪徑與軌道接縫的空間週期。~Command the delay line at a constant velocity (for example 5 mm/s), log the laser-metrology position, subtract the ideal trajectory and compute the residual rms in 1 s windows plus the velocity-ripple spectrum; the residual should sit within tens of nanometres and any ripple frequency should match the wheel circumference or rail-joint spacing.",
+      "failure": "軌道接縫或輪面缺陷造成週期性速度漣波，條紋相位以同樣頻率抖動，條紋追蹤器被迫吃掉大部分致動行程，弱星時失鎖；若細動級行程不足以蓋過台車的步進量，條紋會隨每一步跳動。~Rail joints or wheel defects produce periodic velocity ripple, the fringe phase jitters at the same frequency, the fringe tracker spends most of its actuator stroke on it and loses lock on faint stars; if the fine stage cannot cover a carriage step, the fringes jump with every step.",
+      "misconception": "台車定位到 1 µm 就足夠，因為條紋包絡有十幾微米寬。~Positioning the carriage to 1 µm is enough because the fringe packet is a dozen micrometres wide."
+    },
+    {
+      "anchor": "雷射計量與真空光管~Laser metrology and vacuum beam pipes",
+      "title": "內部計量、空氣折射率與真空傳輸~Internal metrology, air refractive index and vacuum transport",
+      "mechanism": "延遲線位置由氦氖雷射干涉儀連續量測，但雷射量到的是光學長度 n·L，而空氣折射率隨壓力、溫度與濕度變化（Edlén 公式），隧道內的溫度梯度會把幾何長度與星光看到的光程分開。GRAVITY 另外從合成器反向注入一道 1908 nm 計量雷射，一路量到望遠鏡上，直接量測科學光束與條紋追蹤光束之間的差分光程，因為微角秒天體測量需要的是奈米級的差分光程知識，而不是絕對光程。~The delay-line position is read continuously by a helium–neon laser interferometer, but the laser measures optical length n·L and the air index varies with pressure, temperature and humidity (Edlén equation), so temperature gradients in the tunnel separate the geometric length from the path the starlight sees. GRAVITY additionally injects a 1908 nm metrology laser backwards from the combiner all the way to the telescopes to measure the differential path between the science and fringe-tracking beams directly, because microarcsecond astrometry needs nanometre knowledge of the differential path, not of the absolute path.",
+      "model": "天體測量精度 σ_θ = σ_dOPD/B：要在 B = 130 m 達到 10 µas = 4.85e−11 rad，差分光程必須量到 σ_dOPD ≈ 6.3 nm。相對地，若延遲隧道內 120 m 的雙程空氣路徑溫度變化 1 K，以 dn/dT ≈ −0.7e−6/K（Paranal 約 740 hPa）估計，光程改變 120×0.7e−6 = 84 µm，是條紋包絡的七倍，所以絕對光程必須由計量雷射即時追蹤。~Astrometric precision is σ_θ = σ_dOPD/B: reaching 10 µas = 4.85e−11 rad on B = 130 m requires the differential OPD to be known to σ_dOPD ≈ 6.3 nm. By contrast, a 1 K change over the 120 m double-pass air path in the tunnel, with dn/dT ≈ −0.7e−6/K at the roughly 740 hPa of Paranal, shifts the path by 120×0.7e−6 = 84 µm, seven coherence lengths, so the absolute path must be tracked live by the metrology laser.",
+      "verify": "以亮星條紋相位當作光程差的真值，比較計量雷射讀數與條紋相位的差異隨時間的漂移；再用已知分離角的雙星做交換觀測（swap），把計量零點與基線誤差分離出來，殘差應收斂到奈米級。~Use the fringe phase of a bright star as the OPD truth and compare the metrology reading against it to see how the difference drifts; then observe a binary of known separation in swapped configuration to separate the metrology zero point from baseline errors, and check that the residual converges to nanometres.",
+      "failure": "計量雷射的散射光或背向反射若漏進科學偵測器，會在光譜上留下假訊號並污染相位；CHARA 真空管若漏氣，管內出現對流亂流與色散，可見度在幾天內逐步下降而不容易察覺。~Scattered or back-reflected metrology laser light leaking into the science detector leaves false spectral features and corrupts the phase; a leak in a CHARA vacuum pipe introduces convective turbulence and dispersion, and visibility degrades gradually over days without an obvious cause.",
+      "misconception": "真空光管只是為了防塵，光在空氣中傳輸對干涉沒有影響。~Vacuum pipes only keep dust out; propagating in air does not affect the interference."
+    },
+    {
+      "anchor": "條紋追蹤器與大氣活塞~Fringe tracker and atmospheric piston",
+      "title": "條紋追蹤、大氣活塞與相干時間~Fringe tracking, atmospheric piston and coherence time",
+      "mechanism": "每台望遠鏡上方的大氣各自加上隨機的活塞相位，兩鏡之間的差分活塞在 K 波段有數微米均方根，而且在相干時間 τ₀ 內就會換一次。條紋追蹤器以數百赫茲到 1 kHz 的速率量測條紋相位，命令快速壓電鏡或音圈鏡即時修正光程，讓科學相機能以秒級曝光累積訊號；τ₀ 隨波長以 λ^(6/5) 成長，所以在 K 波段追蹤比在可見光容易。GRAVITY 的條紋追蹤器正是以這種方式把四台望遠鏡的六條基線同時鎖住。~The atmosphere above each telescope adds its own random piston phase; the differential piston between two telescopes has an rms of several micrometres in the K band and changes within the coherence time τ₀. The fringe tracker measures the fringe phase at several hundred hertz to 1 kHz and commands a fast piezo or voice-coil mirror to correct the path in real time, so the science camera can integrate for seconds; τ₀ grows as λ^(6/5), which makes tracking easier in the K band than in the visible. The GRAVITY fringe tracker locks all six baselines of the four telescopes this way.",
+      "model": "若 0.5 µm 的 τ₀ = 3 ms，則 2.2 µm 的 τ₀ = 3×(2.2/0.5)^1.2 ≈ 17.8 ms。以簡化的時間延遲誤差 σ_φ² ≈ (τ/τ₀)^(5/3) 估計，迴路總延遲 τ = 3 ms 時 σ_φ² = 0.052 rad²、σ_φ = 0.23 rad，對應殘餘光程差 0.23×2.2 µm/2π ≈ 80 nm，條紋對比因子 exp(−σ_φ²/2) ≈ 0.97；數值為教學假設。~If τ₀ = 3 ms at 0.5 µm, then at 2.2 µm τ₀ = 3×(2.2/0.5)^1.2 ≈ 17.8 ms. With the simplified time-delay error σ_φ² ≈ (τ/τ₀)^(5/3), a total loop latency τ = 3 ms gives σ_φ² = 0.052 rad² and σ_φ = 0.23 rad, a residual OPD of 0.23×2.2 µm/2π ≈ 80 nm and a fringe-contrast factor exp(−σ_φ²/2) ≈ 0.97; values are teaching assumptions.",
+      "verify": "擷取條紋追蹤器的遙測：把閉迴路殘差與重建的開迴路活塞序列做功率譜，計算殘差均方根並與當晚 DIMM/MASS 量到的 τ₀ 對照；再以壓電鏡注入已知頻率的正弦活塞，量測迴路的抑制傳遞函數，確認 −3 dB 頻寬與延遲與設計相符。~Capture the fringe-tracker telemetry: form power spectra of the closed-loop residual and the reconstructed open-loop piston, compute the residual rms and compare it with the τ₀ measured that night by DIMM/MASS; then inject a sinusoidal piston of known frequency with the piezo mirror and measure the rejection transfer function to confirm the −3 dB bandwidth and latency match the design.",
+      "failure": "訊噪比下降時相位量測出現 2π 模糊，追蹤器鎖到相鄰一個波長的條紋（fringe jump），若科學相機仍在曝光，累積的可見度與相位會被系統性拉低；需要群延遲量測同時監看才能偵測並回復。~When the signal-to-noise ratio drops, the phase measurement becomes 2π-ambiguous and the tracker locks one wavelength away (a fringe jump); if the science camera keeps integrating, the accumulated visibility and phase are biased low, and only a simultaneous group-delay measurement can detect and recover it.",
+      "misconception": "各望遠鏡的自適應光學已修正波前，所以不需要再做條紋追蹤。~Each telescope's adaptive optics already corrects the wavefront, so fringe tracking is unnecessary."
+    },
+    {
+      "anchor": "可見度校正與傳遞函數~Visibility calibration and transfer function",
+      "title": "可見度損失預算與校正星~Visibility-loss budget and calibrator stars",
+      "mechanism": "量到的可見度 V_meas = T·V_true，其中系統傳遞函數 T < 1 包含殘餘活塞抖動、兩臂強度不等、偏振失配、波前殘差與色散等項，每一項都能用簡單公式估計並列成預算表。T 無法只靠模型決定，必須在科學目標前後觀測直徑已知的校正星，用它的理論可見度反推當時的 T，再內插到科學觀測；校正星的直徑不確定度因此直接進入最終結果。~The measured visibility is V_meas = T·V_true, where the system transfer function T < 1 collects residual piston jitter, unequal arm intensities, polarisation mismatch, residual wavefront error and dispersion, each estimable with a simple formula and tabulated into a budget. T cannot be fixed by modelling alone: calibrator stars of known diameter are observed before and after the science target, their theoretical visibility yields T at that time and it is interpolated to the science observation, so the calibrator's diameter uncertainty enters the final result directly.",
+      "model": "σ_OPD = 80 nm 在 2.2 µm 給 σ_φ = 0.23 rad，抖動因子 exp(−σ_φ²/2) = 0.974；兩臂強度比 0.7 給 2√0.7/1.7 = 0.984；偏振與波前另估 0.95，則 T ≈ 0.974×0.984×0.95 ≈ 0.91。直徑 1 mas 的校正星在 B = 130 m、2.2 µm 時 x = πθB/λ = 0.90，V ≈ 1 − x²/8 + x⁴/192 = 0.902；直徑誤差 5% 使 V 變成 0.893，帶來約 1% 的校正誤差。~σ_OPD = 80 nm at 2.2 µm gives σ_φ = 0.23 rad and a jitter factor exp(−σ_φ²/2) = 0.974; an arm intensity ratio of 0.7 gives 2√0.7/1.7 = 0.984; with 0.95 assumed for polarisation and wavefront, T ≈ 0.974×0.984×0.95 ≈ 0.91. A 1 mas calibrator at B = 130 m and 2.2 µm has x = πθB/λ = 0.90 and V ≈ 1 − x²/8 + x⁴/192 = 0.902; a 5% diameter error changes V to 0.893, about a 1% calibration error.",
+      "verify": "以「校正星–科學目標–校正星」序列觀測，畫出 T 隨時間的曲線並檢查其平滑度；用兩顆直徑不同的校正星互相校正，結果應在誤差內一致；對點源量測閉合相位，應在雜訊內為零。~Observe in calibrator–science–calibrator sequences, plot T against time and check that it varies smoothly; calibrate two calibrators of different diameters against each other and confirm consistency within errors; measure closure phases on a point source, which should be zero within noise.",
+      "failure": "校正星其實是未被發現的雙星時，它的真實可見度低於模型，反推的 T 被低估，科學目標的直徑被系統性高估；只有用多顆校正星交叉比對才能抓到這種錯誤。~If the calibrator turns out to be an unrecognised binary, its true visibility is below the model, the inferred T is underestimated and the science target's diameter is systematically overestimated; only cross-checking several calibrators catches this.",
+      "misconception": "只要條紋追蹤器鎖住，量到的可見度就是天體的真實可見度。~Once the fringe tracker is locked, the measured visibility is the object's true visibility."
+    },
+    {
+      "anchor": "積體光學合成器與 ABCD 輸出~Integrated-optics combiner and ABCD outputs",
+      "title": "光束合成、ABCD 相位量測與閉合相位~Beam combination, ABCD phase and closure phase",
+      "mechanism": "GRAVITY 用一片積體光學晶片把四道光束兩兩配對成六條基線，每條基線輸出四個相位各差 90° 的通道（A、B、C、D），共 24 個輸出同時落在偵測器上；由四個通道的強度差可以直接解出條紋的可見度與相位，不需要機械掃描。四台望遠鏡繞任一三角形把三條基線的相位相加得到閉合相位，望遠鏡各自的活塞誤差在相加時互相抵消，使閉合相位成為不受大氣影響的影像觀測量。~GRAVITY pairs four beams into six baselines on one integrated-optics chip, and each baseline delivers four outputs phase-shifted by 90° (A, B, C, D), 24 outputs landing simultaneously on the detector; the visibility and phase follow directly from the intensity differences without mechanical scanning. Summing the phases of the three baselines around any telescope triangle gives the closure phase, in which telescope-specific piston errors cancel, so it is an atmosphere-free imaging observable.",
+      "model": "I_A = I₀(1 + V cosφ)、I_B = I₀(1 − V sinφ)、I_C = I₀(1 − V cosφ)、I_D = I₀(1 + V sinφ)，故 φ = atan2(I_D − I_B, I_A − I_C)。光子雜訊造成的相位誤差約 σ_φ ≈ √2/(V√N)：每條基線每幀 N = 1000 光子、V = 0.5 時 σ_φ ≈ 0.089 rad，相當於 31 nm 光程。N = 4 台望遠鏡有 6 條基線、3 個獨立閉合相位（(N−1)(N−2)/2）。~I_A = I₀(1 + V cosφ), I_B = I₀(1 − V sinφ), I_C = I₀(1 − V cosφ), I_D = I₀(1 + V sinφ), so φ = atan2(I_D − I_B, I_A − I_C). The photon-noise phase error is about σ_φ ≈ √2/(V√N): with N = 1000 photons per baseline per frame and V = 0.5, σ_φ ≈ 0.089 rad, equivalent to 31 nm of path. N = 4 telescopes give 6 baselines and 3 independent closure phases, (N−1)(N−2)/2.",
+      "verify": "用內部校正光源在實驗室內產生條紋，量出每個輸出的實際相移（不會剛好 90°）與穿透係數，建立像素到可見度矩陣（P2VM）；再用同一光源確認閉合相位在雜訊內為零，並在晶片溫度改變 1 K 後重測 P2VM，評估漂移量。~Generate fringes with the internal calibration source, measure each output's actual phase shift (never exactly 90°) and transmission to build the pixel-to-visibility matrix (P2VM); then confirm with the same source that the closure phase is zero within noise, and re-measure the P2VM after a 1 K change of chip temperature to quantify drift.",
+      "failure": "晶片溫度或注入偏振改變後，實際相移偏離建立 P2VM 時的值，解出的可見度出現與波長相關的系統偏差；若無定期重做 P2VM，偏差會被誤認為天體結構。~After a change in chip temperature or injected polarisation, the real phase shifts depart from those used to build the P2VM and the recovered visibilities carry wavelength-dependent bias; without periodic P2VM re-measurement the bias is mistaken for source structure.",
+      "misconception": "閉合相位可以消除所有系統誤差，所以不需要觀測校正星。~Closure phase removes all systematic errors, so calibrator stars are unnecessary."
+    },
+    {
+      "anchor": "端到端驗收與操作紀錄~End-to-end acceptance and operations record",
+      "title": "端到端驗證、天體測量重複性與交接~End-to-end validation, astrometric repeatability and handoff",
+      "mechanism": "光程控制系統的驗收不是看延遲線在實驗室的定位精度，而是看整條鏈在天上的表現：條紋鎖定比例隨視寧度與 τ₀ 的分佈、殘餘光程差均方根、延遲線可用度，以及跨夜的天體測量重複性。交接文件必須包含基線解、計量零點、P2VM、延遲線校正表與維護週期（軌道清潔、真空泵、雷射頻率檢查），因為這些參數任何一項靜悄悄地改變，都會以假的科學訊號出現。~Acceptance of the path-control system is judged not by the laboratory positioning accuracy of a delay line but by the whole chain on sky: fringe-lock fraction binned by seeing and τ₀, residual OPD rms, delay-line availability and night-to-night astrometric repeatability. The handoff record must carry the baseline solution, metrology zero points, the P2VM, delay-line calibration tables and maintenance intervals (rail cleaning, vacuum pumps, laser-frequency checks), because a silent change in any of these shows up as a false scientific signal.",
+      "model": "若差分光程雜訊為每秒 50 nm，1800 s 平均後為 50/√1800 = 1.2 nm，對 B = 130 m 相當於統計精度 1.2e−9/130 = 9.1e−12 rad ≈ 1.9 µas；但基線知識誤差 1 mm 對 1″ 分離角帶來 (1e−3/130)×1000 mas ≈ 7.7 µas 的系統下限，所以基線必須量到次毫米，計量零點須穩定在 6 nm 內。~With a differential-OPD noise of 50 nm per second, averaging 1800 s gives 50/√1800 = 1.2 nm, a statistical precision of 1.2e−9/130 = 9.1e−12 rad ≈ 1.9 µas on B = 130 m; but a 1 mm baseline-knowledge error puts a systematic floor of (1e−3/130)×1000 mas ≈ 7.7 µas on a 1″ separation, so the baseline must be known to sub-millimetre and the metrology zero point held within 6 nm.",
+      "verify": "跨數夜重複量測已知雙星的分離角，統計其散布並與模型預測比較；整理鎖定比例對 τ₀ 的曲線、殘差對視寧度的曲線；驗收報告需同時列出延遲線殘差、計量漂移、可見度傳遞函數穩定度與天體測量重複性四項。~Repeat the separation of a known binary over several nights, compare the scatter with the model prediction; tabulate lock fraction versus τ₀ and residual versus seeing; the acceptance record must list delay-line residual, metrology drift, transfer-function stability and astrometric repeatability together.",
+      "failure": "兩次觀測之間基線模型被更新卻未記錄，天體測量結果出現數十微角秒的跳變，被當成軌道運動發表；或延遲線維護後計量零點改變，條紋追蹤在特定時角總是失鎖。~A baseline-model update between two runs that is not logged produces a jump of tens of microarcseconds in astrometry that gets published as orbital motion; or a metrology zero point changed by delay-line maintenance makes fringe tracking fail at particular hour angles.",
+      "misconception": "延遲線在實驗室達到奈米定位精度，整個干涉儀就算驗收通過。~If the delay line reaches nanometre positioning in the lab, the whole interferometer passes acceptance."
+    }
+  ],
+  "example": "光程控制練習：假設 VLTI 基線 B = 130 m、K 波段 λ = 2.2 µm、Δλ = 0.4 µm。相干長度 L_c = λ²/Δλ = 12.1 µm；地球自轉造成的最大延遲率 ω_E·B = 7.29e−5×130 = 9.5 mm/s，1 kHz 迴路每週期改變 9.5 µm。若 0.5 µm 的 τ₀ = 3 ms，K 波段 τ₀ = 3×(2.2/0.5)^1.2 = 17.8 ms；迴路延遲 3 ms 時 σ_φ² = (3/17.8)^(5/3) = 0.052 rad²，殘餘光程差 ≈ 0.23×2.2/(2π) µm ≈ 80 nm，條紋對比因子 exp(−0.026) ≈ 0.97。要達到 10 µas 天體測量，差分光程需量到 4.85e−11×130 m = 6.3 nm；若每秒雜訊 50 nm，1800 s 平均後 1.2 nm，統計上足夠，但基線誤差 1 mm 仍留下 7.7 µas 的系統下限。數值為教學假設，不代表任何實機規格。~Path-control exercise: assume a VLTI baseline B = 130 m, K band λ = 2.2 µm, Δλ = 0.4 µm. Coherence length L_c = λ²/Δλ = 12.1 µm; the maximum Earth-rotation delay rate ω_E·B = 7.29e−5×130 = 9.5 mm/s, so a 1 kHz loop sees 9.5 µm per cycle. If τ₀ = 3 ms at 0.5 µm, the K-band τ₀ = 3×(2.2/0.5)^1.2 = 17.8 ms; with a 3 ms loop latency σ_φ² = (3/17.8)^(5/3) = 0.052 rad², the residual OPD ≈ 0.23×2.2/(2π) µm ≈ 80 nm and the contrast factor exp(−0.026) ≈ 0.97. For 10 µas astrometry the differential OPD must be measured to 4.85e−11×130 m = 6.3 nm; with 50 nm per-second noise, 1800 s of averaging gives 1.2 nm, statistically sufficient, but a 1 mm baseline error still leaves a 7.7 µas systematic floor. Values are teaching assumptions, not any facility's specification.",
+  "history": "1920 年 Michelson 與 Pease 在威爾遜山以 6 m 干涉儀量出參宿四的角直徑；1974 年 Labeyrie 首次在兩台獨立望遠鏡之間取得星光條紋，證明分離望遠鏡的光程可以被控制。ESO 的 VLTI 於 2001 年取得首批條紋，延遲線隧道、雷射計量與條紋追蹤隨 AMBER、PIONIER 到 2016 年的 GRAVITY 逐步成熟，GRAVITY 在 2018 年以數十微角秒的天體測量追蹤銀河中心恆星 S2 通過近心點；喬治亞州立大學的 CHARA 陣列自 2005 年起以六台 1 m 望遠鏡與 331 m 基線運作，其真空光管與延遲線至今仍是可見光干涉的參考設計。~In 1920 Michelson and Pease measured the angular diameter of Betelgeuse with a 6 m interferometer on Mount Wilson, and in 1974 Labeyrie obtained the first stellar fringes between two independent telescopes, proving that the optical path between separate telescopes could be controlled. ESO's VLTI recorded its first fringes in 2001, and its delay-line tunnel, laser metrology and fringe tracking matured through AMBER and PIONIER to GRAVITY in 2016, which in 2018 tracked the Galactic-Centre star S2 through pericentre with astrometry at the tens-of-microarcsecond level; the CHARA Array of Georgia State University has operated six 1 m telescopes on a 331 m baseline since 2005, and its vacuum pipes and delay lines remain a reference design for visible-light interferometry.",
+  "place": {
+    "name": "ESO 帕拉納天文台 VLTI 合成實驗室~ESO Paranal Observatory VLTI laboratory",
+    "country": "智利~Chile",
+    "lat": -24.627,
+    "lng": -70.404,
+    "query": "Paranal Observatory VLTI Chile"
+  },
+  "sources": [
+    {
+      "key": "eso-gravity-public",
+      "title": "ESO：GRAVITY 儀器介紹（VLTI 四光束合成器）",
+      "titleEn": "ESO: GRAVITY instrument page (VLTI four-beam combiner)",
+      "publisher": "European Southern Observatory",
+      "url": "https://eso.org/public/teles-instr/paranal-observatory/vlt/vlt-instr/gravity",
+      "sourceType": "primary",
+      "scope": "說明 GRAVITY 結合四台望遠鏡、K 波段 2.0–2.4 µm、自帶條紋追蹤器與數十微角秒天體測量精度；公開儀器概述，非設計手冊。",
+      "scopeEn": "States that GRAVITY combines four telescopes in the 2.0–2.4 µm K band, carries its own fringe tracker and reaches tens-of-microarcsecond astrometry; a public instrument overview, not a design manual."
+    },
+    {
+      "key": "eso-gravity-user-manual",
+      "title": "ESO：GRAVITY 使用者手冊（PDF）",
+      "titleEn": "ESO: GRAVITY User Manual (PDF)",
+      "publisher": "European Southern Observatory",
+      "url": "https://www.hq.eso.org/sci/facilities/paranal/instruments/gravity/doc/Gravity_UserManual.pdf",
+      "sourceType": "primary",
+      "scope": "觀測者用手冊，描述條紋追蹤器、光譜模式、計量系統與觀測限制；課程中的延遲率與誤差預算數值為依其原理建立的教學假設。",
+      "scopeEn": "Observer manual describing the fringe tracker, spectral modes, metrology system and observing limits; the course's delay-rate and error-budget numbers are teaching assumptions built on its principles."
+    },
+    {
+      "key": "chara-array",
+      "title": "喬治亞州立大學 CHARA 陣列設施頁",
+      "titleEn": "Georgia State University: The CHARA Array facility page",
+      "publisher": "Center for High Angular Resolution Astronomy, Georgia State University",
+      "url": "https://chara.gsu.edu/instrumentation/chara-array",
+      "sourceType": "primary",
+      "scope": "描述六台 1 m 望遠鏡、34–331 m 的 15 條基線、真空光管與光程延遲線等化、以及光束合成器的配置。",
+      "scopeEn": "Describes the six 1 m telescopes, 15 baselines from 34 to 331 m, vacuum beam pipes, optical-path-length delay lines and beam-combiner configurations."
+    },
+    {
+      "key": "mpia-gravity",
+      "title": "MPIA：GRAVITY 儀器計畫頁",
+      "titleEn": "MPIA: GRAVITY instrumentation project page",
+      "publisher": "Max Planck Institute for Astronomy",
+      "url": "https://www.mpia.de/en/pfe/instrumentation/gravity",
+      "sourceType": "primary",
+      "scope": "合作機構對 GRAVITY 的技術說明，包括條紋追蹤、計量與天體測量目標；用於交叉確認儀器架構。",
+      "scopeEn": "Partner-institute technical description of GRAVITY including fringe tracking, metrology and astrometric goals; used to cross-check the instrument architecture."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "歐洲南方天文台",
+      "nameEn": "European Southern Observatory (ESO)",
+      "business": "營運 VLT／VLTI 與 ELT 的政府間天文組織，公開發布干涉儀與延遲線的技術資料。",
+      "businessEn": "Intergovernmental astronomy organisation operating the VLT/VLTI and ELT; publishes public technical material on the interferometer and delay lines.",
+      "url": "https://www.eso.org/",
+      "investorUrl": "",
+      "security": null,
+      "role": "VLTI 延遲線、計量與 GRAVITY 條紋追蹤的公開技術說明",
+      "roleEn": "Public technical description of VLTI delay lines, metrology and GRAVITY fringe tracking"
+    },
+    {
+      "name": "喬治亞州立大學 CHARA 中心",
+      "nameEn": "CHARA, Georgia State University",
+      "business": "營運威爾遜山 CHARA 光學干涉陣列的大學研究中心。",
+      "businessEn": "University research centre operating the CHARA optical interferometer array on Mount Wilson.",
+      "url": "https://chara.gsu.edu/",
+      "investorUrl": "",
+      "security": null,
+      "role": "可見光／近紅外干涉儀真空光管與延遲線的公開參考",
+      "roleEn": "Public reference for visible/near-infrared interferometer vacuum pipes and delay lines"
+    },
+    {
+      "name": "Physik Instrumente (PI)",
+      "nameEn": "Physik Instrumente (PI)",
+      "business": "壓電致動器、奈米定位平台與六足平台製造商。",
+      "businessEn": "Manufacturer of piezo actuators, nanopositioning stages and hexapods.",
+      "url": "https://www.physikinstrumente.com/",
+      "investorUrl": "",
+      "security": null,
+      "role": "延遲線細動級與快速光程修正所需的壓電致動技術",
+      "roleEn": "Piezo actuation technology of the kind used for delay-line fine stages and fast path correction"
+    },
+    {
+      "name": "Renishaw",
+      "nameEn": "Renishaw",
+      "business": "精密計量、位置編碼器與雷射干涉量測系統。",
+      "businessEn": "Precision metrology, position encoders and laser-interferometer measurement systems.",
+      "url": "https://www.renishaw.com/",
+      "investorUrl": "",
+      "security": {"symbol": "RSW", "exchange": "LSE", "currency": "GBP"},
+      "role": "長行程精密位置量測與雷射干涉計量的商用技術參照",
+      "roleEn": "Commercial reference for long-travel precision position measurement and laser interferometric metrology"
+    }
+  ],
+  "related": ["a470", "a492"],
+  "architectureNodes": [["望遠鏡與自適應光學", "Telescopes and adaptive optics"], ["真空光管與延遲線", "Vacuum beam pipes and delay lines"], ["雷射計量", "Laser metrology"], ["條紋追蹤器", "Fringe tracker"], ["積體光學光束合成器", "Integrated-optics beam combiner"], ["科學光譜儀與天體測量", "Science spectrometer and astrometry"]],
+  "architectureEdges": [[0, 1], [2, 1], [1, 4], [4, 3], [3, 1], [4, 5]]
+}

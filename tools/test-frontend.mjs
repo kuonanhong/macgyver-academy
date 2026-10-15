@@ -1,6 +1,8 @@
 import * as labResources from '../public/academy/lab-resources.js';
 import {assertRenderedData} from './assert-rendered-data.mjs';
 import * as computingPaths from '../public/academy/computing-paths.js';
+import * as opticsPaths from '../public/academy/optics-paths.js';
+import * as projectIcons from '../public/academy/project-icons.js';
 import * as learningMap from '../public/academy/learning-map.js';
 import * as quantumLab from '../public/academy/quantum-lab.js';
 // Browser-independent integration smoke test. Does not test visual layout.
@@ -25,6 +27,9 @@ import * as relatedSkills from '../public/academy/related-skills.js';
 import * as workshopModel from '../public/academy/workshop-model.js';
 import * as labs from '../public/academy/engineering-labs.js';
 import * as locale from '../public/academy/locale.js';
+import * as paywall from '../public/academy/paywall.js';
+import * as pricing from '../public/academy/pricing.js';
+import * as cloudSync from '../public/academy/cloud-sync.js';
 import { fileURLToPath } from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../public/academy');
@@ -38,7 +43,7 @@ const originalCourseIds=['semiconductor','sub2nm','asml','idf','apache','submari
 assert.equal(data.featured.length,data.release.guidedCourses,'release counts match complete guided data');
 for(const id of originalCourseIds)assert(data.featured.some(c=>c.id===id),`original requested course ${id} must remain`);
 assert.equal(data.featured.reduce((count,c)=>count+c.stages.flatMap(s=>s.steps).length,0),data.release.allSteps,'release step count matches curricula');
-for(const c of data.featured.filter(c=>!originalCourseIds.includes(c.id)))assert(((c.educationEdition===11&&c.stepCount===c.stages.flatMap(s=>s.steps).length)||[12,24].includes(c.stages.flatMap(s=>s.steps).length)||(c.id==='a106'&&c.enrichmentVersion===9&&c.stages.flatMap(s=>s.steps).length===36)||(['a203','a211'].includes(c.id)&&c.enrichmentVersion===10&&c.stages.flatMap(s=>s.steps).length===({a203:36,a211:48}[c.id]))),`${c.id}: added course step count`);
+for(const c of data.featured.filter(c=>!originalCourseIds.includes(c.id)))assert(((c.educationEdition>=11&&c.stepCount===c.stages.flatMap(s=>s.steps).length)||(c.enrichmentVersion===12&&c.stepCount===c.stages.flatMap(s=>s.steps).length)||[12,24].includes(c.stages.flatMap(s=>s.steps).length)||(c.id==='a106'&&c.enrichmentVersion===9&&c.stages.flatMap(s=>s.steps).length===36)||(['a203','a211'].includes(c.id)&&c.enrichmentVersion===10&&c.stages.flatMap(s=>s.steps).length===({a203:36,a211:48}[c.id]))),`${c.id}: added course step count`);
 for(const k of ['catalog','featured','sources','photos'])assert.equal(new Set(data[k].map(x=>x.id)).size,data[k].length,`${k}: duplicate IDs`);
 assert.equal(projectIdentity.projectIdentityDomains.length,20,'twenty dedicated discipline motifs');
 assert(projectIdentity.projectIdentitySubjectIds.length>=49,'original authored course silhouettes remain available');
@@ -94,7 +99,7 @@ function mount(html,group='main'){
 const select=s=>s.startsWith('#')?(ids.get(s.slice(1))||fixed.get(s.slice(1))||null):null;
 const selectAll=s=>{const m=s.match(/^\[data-([\w-]+)\]$/);if(!m)return[];const key=m[1].replace(/-([a-z])/g,(_,c)=>c.toUpperCase());return elements.filter(e=>key in e.dataset);};
 const storage=new Map();
-const context=vm.createContext({console,Date:TestDate,JSON,Set,URL,Blob,AbortController,NodeFilter:{SHOW_TEXT:4},setTimeout:schedule,clearTimeout:id=>timers.delete(id),setInterval:()=>1,clearInterval(){},...labResources,...computingPaths,...learningMap,...quantumLab,...electronicsPaths,...membership,...vendors,showcaseMarkup,bindMembership:()=>{},bindVendors:()=>{},bindShowcase:()=>{},createPersonalization:options=>createPersonalization({...options,document:context.document,environment:{localStorage:context.localStorage}}),...sourceLibrary,...packagingPaths,...projectIdentity,...researchPlans,...workshopModel,...locale,...labs,...exercises,...media,...demonstration,...relatedSkills,...mentorNarration,...coursePlaces,bindCoursePlaces:()=>Promise.resolve(),navigator:{languages:['en'],language:'en'},location:{hash:'#workshop'},window:{scrollTo(){}},document:{querySelector:select,querySelectorAll:selectAll,addEventListener(){},removeEventListener(){},getElementById:id=>select('#'+id),documentElement:{dataset:{}},get activeElement(){return activeElement;}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},fetch:async()=>{throw Error('Unexpected network request');},DATA:data});
+const context=vm.createContext({console,Date:TestDate,JSON,Set,URL,Blob,AbortController,NodeFilter:{SHOW_TEXT:4},setTimeout:schedule,clearTimeout:id=>timers.delete(id),setInterval:()=>1,clearInterval(){},...labResources,...computingPaths,...opticsPaths,...projectIcons,...learningMap,...quantumLab,...electronicsPaths,...paywall,...pricing,...cloudSync,...membership,...vendors,showcaseMarkup,bindMembership:()=>{},bindVendors:()=>{},bindShowcase:()=>{},createPersonalization:options=>createPersonalization({...options,document:context.document,environment:{localStorage:context.localStorage}}),...sourceLibrary,...packagingPaths,...projectIdentity,...researchPlans,...workshopModel,...locale,...labs,...exercises,...media,...demonstration,...relatedSkills,...mentorNarration,...coursePlaces,bindCoursePlaces:()=>Promise.resolve(),navigator:{languages:['en'],language:'en'},location:{hash:'#workshop'},window:{scrollTo(){}},document:{querySelector:select,querySelectorAll:selectAll,addEventListener(){},removeEventListener(){},getElementById:id=>select('#'+id),documentElement:{dataset:{}},get activeElement(){return activeElement;}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},fetch:async()=>{throw Error('Unexpected network request');},DATA:data});
 const script=fs.readFileSync(path.join(root,'app.js'),'utf8').replace(/^import .*?;\n/gm,'');
 assert(!/您提供的課程教材|Your course materials|data-show-materials|photos','materials/.test(script),'app no longer renders or loads user materials');
 const cutoff=script.indexOf("$('#preferencesButton').onclick");assert(cutoff>0,'startup boundary not found');
@@ -114,6 +119,8 @@ for(const language of ['zh-TW','en']){
     assert(html.includes('data-media-kind="'),'project brief includes a labelled photo or original illustration');
     if(c.stages){const courseSteps=c.stages.flatMap(stage=>stage.steps),visibleIds=[...html.matchAll(/data-curriculum-step="([^"]+)"/g)].map(match=>match[1]);assert.deepEqual(visibleIds,courseSteps.map(step=>step.id),'overview exposes every step once, in order');}
   }
+  // Render every step as an entitled learner; the paywall itself is checked below.
+  paywall.configurePaywall({config:{paywall:{enabled:false}}});
   for(const c of data.featured){
     const steps=c.stages.flatMap(s=>s.steps);
     for(let i=0;i<steps.length;i++){
@@ -477,13 +484,22 @@ geoRequests[1].success({coords:{latitude:3,longitude:4}});assert.equal(newlySele
 select('#locate').onclick();select('#locate').onclick();geoRequests[2].success({coords:{latitude:5,longitude:6}});assert.equal(newlySelectedMap.innerHTML,newMapMarkup,'only the most recent location request may update the map');geoRequests[3].success({coords:{latitude:7,longitude:8}});assert(newlySelectedMap.innerHTML.includes('q=7,8'),'current map request still displays the requested location');
 // Name/email local profiles and optional cloud auth forms remain distinct.
 let localCreated=null,cloudSignup=null,cloudLogin=null,cloudReset=null,cloudPassword=null,cloudUser=null;
-context.window.MacGyverOffline={storageAvailable:true,listProfiles:()=>[{id:'profile-one',name:'Local learner'}],activeProfile:()=>({id:'profile-one'}),createProfile:(name,email)=>{localCreated={name,email}},switchProfile:()=>{}};
+context.window.MacGyverOffline={storageAvailable:true,listProfiles:()=>[{id:'profile-one',name:'Local learner'}],activeProfile:()=>({id:'profile-one'}),createProfile:(name,email)=>{localCreated={name,email}},createMember:async value=>{localCreated=value},switchProfile:()=>{}};
 context.fetch=async url=>({ok:true,json:async()=>url==='/api/me'?{authMode:cloudUser?'supabase':'offline',user:cloudUser||{id:'profile-one',name:'Local learner'},aiAvailable:false}:{projects:{}}});
 run("authMode='offline';user={id:'profile-one',name:'Local learner'};offlineAccountModal()");
-assert(select('#offlineProfileEmail'),'local profile can store an optional email');select('#offlineProfileName').value='Nan-Hong';select('#offlineProfileEmail').value='learner@example.org';await select('#offlineProfileForm').onsubmit({preventDefault(){}});assert.deepEqual(localCreated,{name:'Nan-Hong',email:'learner@example.org'});
-context.window.MacGyverCloud={configured:false};await run('cloudAccountModal()');assert(fixed.get('dialogBody').innerHTML.includes('not configured'));assert(!select('#cloudPassword'),'unconfigured cloud never solicits a password');
-context.window.MacGyverCloud={configured:true,getSession:async()=>cloudUser?{user:cloudUser}:null,signUp:async value=>{cloudSignup=value;return{verificationRequired:true}},signIn:async value=>{cloudLogin=value;cloudUser={id:'cloud-one',name:'Cloud learner',email:value.email};return{user:cloudUser}},resetPassword:async email=>{cloudReset=email},updatePassword:async password=>{cloudPassword=password},signOut:async()=>{cloudUser=null}};
-await run('cloudAccountModal()');select('#cloudName').value='Cloud learner';select('#cloudEmail').value='learner@example.org';select('#cloudPassword').value='valid long password';await select('#cloudAuthForm').onsubmit({preventDefault(){},submitter:{value:'signup'}});assert.equal(cloudSignup.name,'Cloud learner');assert(select('#cloudAccountStatus').textContent.includes('verify'),'registration requests email verification instead of claiming login');await select('#cloudAuthForm').onsubmit({preventDefault(){},submitter:{value:'reset'}});assert.equal(cloudReset,'learner@example.org');await select('#cloudAuthForm').onsubmit({preventDefault(){},submitter:{value:'signin'}});assert.equal(cloudLogin.email,'learner@example.org');assert.equal(run('authMode'),'supabase');assert.equal(run('user.id'),'cloud-one');
+// V12: local member accounts need username, password, email and mobile number.
+for(const id of ['#offlineUsername','#offlinePassword','#offlineProfileEmail','#offlinePhone'])assert(select(id),'local member form has '+id);
+select('#offlineUsername').value='nanhong';select('#offlinePassword').value='short';select('#offlineProfileEmail').value='learner@example.org';select('#offlinePhone').value='0912345678';select('#offlineProfileName').value='Nan-Hong';
+await select('#offlineMemberForm').onsubmit({preventDefault(){}});assert.equal(localCreated,null,'weak password is rejected before creating a member');assert(select('#offlineProfileError').textContent.length>0);
+select('#offlinePassword').value='valid long password';await select('#offlineMemberForm').onsubmit({preventDefault(){}});assert.deepEqual(JSON.parse(JSON.stringify(localCreated)),{username:'nanhong',password:'valid long password',email:'learner@example.org',phone:'+886912345678',name:'Nan-Hong'});
+context.window.MacGyverCloud={configured:false};await run('cloudAccountModal()');assert(fixed.get('dialogBody').innerHTML.includes('not configured'));assert(!select('#memberPassword'),'unconfigured cloud never solicits a password');
+context.window.MacGyverCloud={configured:true,getSession:async()=>cloudUser?{user:cloudUser}:null,checkAvailability:async()=>({usernameAvailable:true,phoneAvailable:true}),signUp:async value=>{cloudSignup=value;return{verificationRequired:true}},signInWithLogin:async value=>{cloudLogin=value;cloudUser={id:'cloud-one',name:'Cloud learner',email:'learner@example.org'};return{user:cloudUser}},resetPassword:async email=>{cloudReset=email},updatePassword:async password=>{cloudPassword=password},signOut:async()=>{cloudUser=null}};
+await run('cloudAccountModal()');
+for(const id of ['#memberUsername','#memberPassword','#memberEmail','#memberPhone','#memberLogin'])assert(select(id),'cloud member form has '+id);
+select('#memberUsername').value='cloud_learner';select('#memberPassword').value='valid long password';select('#memberPassword2').value='valid long password';select('#memberEmail').value='learner@example.org';select('#memberPhone').value='+886912345678';select('#memberName').value='Cloud learner';select('#memberTerms').checked=true;
+await select('#memberSignUp').onsubmit({preventDefault(){},submitter:{value:'signup'}});assert.equal(cloudSignup.username,'cloud_learner');assert.equal(cloudSignup.phone,'+886912345678');assert.equal(cloudSignup.email,'learner@example.org');assert(select('#cloudAccountStatus').textContent.includes('verification'),'registration requests email verification instead of claiming login');
+select('#memberLogin').value='learner@example.org';await select('#memberSignIn').onsubmit({preventDefault(){},submitter:{value:'reset'}});assert.equal(cloudReset,'learner@example.org');
+select('#memberLogin').value='cloud_learner';select('#memberLoginPassword').value='valid long password';await select('#memberSignIn').onsubmit({preventDefault(){},submitter:{value:'signin'}});assert.equal(cloudLogin.login,'cloud_learner');assert.equal(run('authMode'),'supabase');assert.equal(run('user.id'),'cloud-one');
 await run('cloudAccountModal()');select('#cloudNewPassword').value='new valid long password';await select('#cloudPasswordForm').onsubmit({preventDefault(){}});assert.equal(cloudPassword,'new valid long password');await select('#cloudLogout').onclick();assert.equal(run('authMode'),'offline');assert.equal(run('user.id'),'profile-one','cloud sign-out returns to the local profile');
 // Retrying a stored cloud session after a failed startup needs an explicit
 // profile switch, and must drain local saves before reading cloud records.
@@ -526,4 +542,14 @@ run("activeId='packaging';activeStep=0");releaseEvidence({passed:true});assert.e
 run("activeId='semiconductor';activeStep=0");const checkingOwner=run('completeStep()');run("user={id:'verified-B',name:'B'};accountGeneration++");releaseEvidence({passed:true});assert.equal(await checkingOwner,false);assert.equal(run('activeStep'),0,'old account response cannot mutate new account');
 context.billingState=membership.billingState;
 const css=fs.readFileSync(path.join(root,'style.css'),'utf8');assert(!/fonts\.googleapis\.com/.test(css),'local stylesheet has no automatic font CDN request');assert(/\.workbenches \.model\{height:clamp\(115px,33vw,175px\);min-height:0;max-height:none;aspect-ratio:auto\}/.test(css),'compact mobile model overrides the older more-specific sizing rule');
+// V12 paywall: first stage free, later stages locked until a pass is active.
+paywall.configurePaywall({config:{paywall:{enabled:true,freeStagesPerCourse:1,ownerPreviewOnFile:false}}});
+{
+  const semi=data.featured.find(c=>c.id==='semiconductor'),firstStage=semi.stages[0].steps.length,all=semi.stages.flatMap(s=>s.steps).map(s=>s.id);
+  run(`activeId='semiconductor';activeStep=${firstStage+5};projects.semiconductor={completed:${JSON.stringify(all)},assembly:${JSON.stringify(all)},notes:'',updatedAt:1};`);
+  const html=run('renderWorkshop()');
+  assert.equal(run('activeStep'),firstStage,'navigation stops at the first paid step');
+  assert(html.includes('paywallStep')&&!html.includes('id="quizSection"'),'paid step shows the membership card, not the lesson');
+  run(`activeStep=${firstStage-1}`);assert(run('renderWorkshop()').includes('id="quizSection"'),'free first stage renders the full lesson');
+}
 console.log(JSON.stringify({passed:true,projectRenders,stepRenders,catalog:data.catalog.length,guidedCourses:data.featured.length,sources:data.sources.length,photos:data.photos.length,consecutiveStepsVerified:3,taskModes:[...taskModes],taskReloadVerified:true,oldCompletedProgressPreserved:true,controls:['grab','arrow XY','physical code','IME/non-Latin labels','dead-key code','focus activation','input/dialog exclusion','autorepeat','keyup after focus change','blur','two-hand touch','combined axes','precision','inferred Right Shift release','Shift-first undo','collision','undo','reset','pose reload'],migrationVerified:true,languagePreferenceVerified:true,synthetic520Verified:true,accountIsolationVerified:true,cloudAccountFormsVerified:true,optionalLocalEmailVerified:true,queuedConflictMergeVerified:true,queuedAccountSwitchIsolationVerified:true,accountInitRaceVerified:true,protectedDoubleClickAndSwitchVerified:true,realWorkspaceBootVerified:true,nonblockingMediaVerified:true,tutorContextVerified:true,maxTutorContextChars,narratedProcedureVerified:true,skipTourCannotCompleteStep:true,fullGuidanceRequiresEvidenceAndQuiz:true,guidancePauseAndFullUndoVerified:true,visibleNextActionVerified:true,allGuidedCoursesVisible:true,catalogCsvRows:data.catalog.length,domainCountsVerified:20,allAtlasEntriesVisible:true,atlasEntries:data.coursePlaces.courses.length,limitations:'Node VM checks HTML/data and handlers with mocked requests; no browser layout or real network/auth coverage.'},null,2));

@@ -1,0 +1,32 @@
+# Supabase CLI settings for the MacGyver Academy V12 payment functions.
+# Only what this project needs; the CLI uses its defaults for everything else.
+# If you later run `supabase init`, keep the [functions.*] blocks below.
+project_id = "macgyver-academy"
+
+# Browser calls with the member's Supabase session (Authorization: Bearer <access_token>).
+# The functions also verify the user themselves with auth.getUser().
+[functions.checkout-create]
+verify_jwt = true
+
+[functions.checkout-capture]
+verify_jwt = true
+
+[functions.access]
+verify_jwt = true
+
+# These authenticate differently, so the gateway must not demand a Supabase JWT:
+# PayPal webhook signature (verify-webhook-signature + PAYPAL_WEBHOOK_ID).
+[functions.paypal-webhook]
+verify_jwt = false
+
+# ECPay CheckMacValue + server-side QueryTradeInfo.
+[functions.ecpay-notify]
+verify_jwt = false
+
+# Visitors are not signed in yet; protected by GoTrue + hashed rate limits.
+[functions.username-login]
+verify_jwt = false
+
+# x-cron-secret header must equal CRON_SECRET.
+[functions.fx-refresh]
+verify_jwt = false

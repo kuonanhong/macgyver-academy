@@ -1,0 +1,239 @@
+{
+ "id": "a452",
+ "title": "稀釋製冷機~Dilution refrigerators",
+ "discipline": "optics-lab-infrastructure",
+ "family": "cryo",
+ "focus": "³He/⁴He 相分離的連續製冷循環、熱交換器、熱負載預算與毫克耳文溫度計量~Continuous cooling from ³He/⁴He phase separation, heat exchangers, heat-load budgets and millikelvin thermometry",
+ "summary": "以無液氦的乾式稀釋製冷機為對象：從 ³He 在 ⁴He 中的有限溶解度與相分離出發，理解混合腔如何連續製冷到 10 mK 以下；再把脈衝管冷卻器、靜止段、逆流熱交換器、氣體處理系統與熱負載預算整合成可驗收、可交接的毫克耳文實驗平台。~Built around a cryogen-free dry dilution refrigerator: start from the finite solubility of ³He in ⁴He and phase separation to see how the mixing chamber cools continuously below 10 mK, then integrate the pulse-tube cooler, still, counterflow heat exchangers, gas-handling system and heat-load budget into a millikelvin platform that can be accepted and handed over.",
+ "units": [
+  {
+   "anchor": "混合腔相界面~Mixing-chamber phase boundary",
+   "title": "³He 有限溶解度與稀釋製冷~Finite ³He solubility and dilution cooling",
+   "mechanism": "³He/⁴He 混合液在約 0.87 K 以下會相分離：富 ³He 的濃相浮在富 ⁴He 的稀相之上；即使溫度趨近 0 K，稀相仍溶有 6.6% 的 ³He，因為 ³He 原子與 ⁴He 之間的結合比 ³He 彼此之間更強。³He 原子從濃相穿過相界面進入稀相時要吸收焓差，和蒸發一樣；稀相中的 ³He 行為像費米氣體，其焓隨 T² 變化。由於溶解度不會歸零，這種「蒸發」在毫克耳文仍能持續，不像純 ³He 抽氣在 0.3 K 附近就因蒸氣壓指數下降而失效。~Below about 0.87 K a ³He/⁴He mixture separates into a ³He-rich concentrated phase floating on a ⁴He-rich dilute phase, and even as T → 0 the dilute phase still dissolves 6.6% ³He because a ³He atom binds more strongly to ⁴He than to other ³He atoms. A ³He atom crossing the phase boundary from the concentrated into the dilute phase absorbs an enthalpy difference, exactly like evaporation; in the dilute phase ³He behaves as a Fermi gas whose enthalpy scales as T². Because the solubility never vanishes, this evaporation keeps working at millikelvin temperatures, unlike pumping on pure ³He, which stops near 0.3 K as the vapour pressure collapses exponentially.",
+   "model": "濃相與稀相的莫耳焓近似為 H_c ≈ 11·T² 與 H_d ≈ 95·T² J/(mol·K²)，理想冷卻力 Q̇ = ṅ₃·(95 − 11)·T² = 84·ṅ₃·T²。取 ³He 循環率 ṅ₃ = 500 µmol/s = 5×10⁻⁴ mol/s：在 100 mK，Q̇ = 84×5×10⁻⁴×0.01 = 4.2×10⁻⁴ W = 420 µW；在 20 mK，Q̇ = 84×5×10⁻⁴×4×10⁻⁴ = 16.8 µW，與商用大型乾式系統在 100 mK 標示的 350–450 µW 屬同一量級。~The molar enthalpies of the concentrated and dilute phases are approximately H_c ≈ 11·T² and H_d ≈ 95·T² J/(mol·K²), so the ideal cooling power is Q̇ = ṅ₃·(95 − 11)·T² = 84·ṅ₃·T². With a ³He circulation rate ṅ₃ = 500 µmol/s = 5×10⁻⁴ mol/s: at 100 mK, Q̇ = 84×5×10⁻⁴×0.01 = 4.2×10⁻⁴ W = 420 µW; at 20 mK, Q̇ = 84×5×10⁻⁴×4×10⁻⁴ = 16.8 µW, the same order as the 350–450 µW at 100 mK quoted for large commercial dry systems.",
+   "verify": "在穩態下對混合腔施加已知加熱功率，逐點記錄混合腔溫度，把 Q̇ 對 T² 作圖：斜率就是有效的 84·ṅ₃，拿來和氣體處理系統流量計讀到的循環率比較。若斜率明顯低於 84·ṅ₃，表示回流 ³He 的入口溫度高於混合腔，熱交換器效率不足；完整關係是 Q̇ = ṅ₃·(95·T_mc² − 11·T_in²)。~At steady state apply a known heater power to the mixing chamber, record its temperature point by point and plot Q̇ against T²: the slope is the effective 84·ṅ₃, to be compared with the circulation rate read on the gas-handling-system flow meter. A slope clearly below 84·ṅ₃ means the returning ³He enters warmer than the mixing chamber, i.e. the heat exchangers are inefficient; the full relation is Q̇ = ṅ₃·(95·T_mc² − 11·T_in²).",
+   "failure": "混合物比例錯誤或 ³He 流失時，相界面不會落在混合腔內，而是跑到靜止段或混合腔下方的管路；症狀是靜止段與循環率看起來都正常，混合腔卻停在數百 mK 的平台，無論怎麼調整都到不了基礎溫度。~With a wrong mixture ratio or lost ³He the phase boundary does not sit inside the mixing chamber but ends up in the still or in the line below the chamber; the symptom is a still and a circulation rate that look normal while the mixing chamber plateaus at a few hundred millikelvin and no tuning reaches base temperature.",
+   "misconception": "低於 0.3 K 之後 ³He 會直接從混合物中蒸發掉，所以稀釋製冷和 ³He 抽氣一樣有指數截止。~Below 0.3 K the ³He simply evaporates out of the mixture, so dilution cooling has the same exponential cutoff as a pumped ³He pot."
+  },
+  {
+   "anchor": "靜止段與循環迴路~Still and circulation loop",
+   "title": "靜止段蒸餾、循環率與冷卻力~Still distillation, circulation rate and cooling power",
+   "mechanism": "稀相從混合腔向上延伸到溫度約 0.7 K 的靜止段；靜止段加熱器以數毫瓦到數十毫瓦的功率讓 ³He 優先蒸發，因為在 0.7 K 時 ⁴He 的蒸氣壓比 ³He 低兩到三個數量級，蒸氣中 ³He 佔 90% 以上。室溫的渦輪泵與壓縮機把蒸氣抽出、經冷阱除去空氣與水氣，再由冷凝線送回；乾式系統沒有 1 K 鍋，而是在 4 K 級與靜止段用焦耳–湯姆森阻抗把回流的 ³He 冷凝。循環率 ṅ₃ 由靜止段功率決定，靜止段太熱會讓 ⁴He 一起循環，白白消耗冷凝能力。~The dilute phase extends upward from the mixing chamber to the still at about 0.7 K, where a heater of a few to a few tens of milliwatts evaporates ³He preferentially: at 0.7 K the vapour pressure of ⁴He is two to three orders of magnitude below that of ³He, so the vapour is more than 90% ³He. A room-temperature turbopump and compressor extract the vapour, cold traps strip air and water, and the condensing line returns it; a dry system has no 1 K pot, so a Joule–Thomson impedance at the 4 K stage and still condenses the returning ³He. The circulation rate ṅ₃ is set by the still power, and an overheated still circulates ⁴He as well, wasting condensing capacity.",
+   "model": "蒸發一莫耳 ³He 離開稀相所需的有效熱量取 L_eff ≈ 40 J/mol（教學假設，含潛熱與混合熱），則 P_still ≈ ṅ₃·L_eff：要維持 ṅ₃ = 500 µmol/s，需要 P_still ≈ 5×10⁻⁴×40 = 0.02 W = 20 mW。若靜止段壓力約 0.1 mbar = 10 Pa，室溫端所需抽速 S = ṅ₃·R·T/p = 5×10⁻⁴×8.314×293/10 ≈ 0.12 m³/s ≈ 120 L/s，所以靜止段抽氣管的分子流傳導率必須遠大於 120 L/s，否則循環率受管路限制而非受加熱器限制。~Take an effective heat of L_eff ≈ 40 J/mol to evaporate one mole of ³He out of the dilute phase (teaching assumption covering latent heat and heat of mixing), so P_still ≈ ṅ₃·L_eff: sustaining ṅ₃ = 500 µmol/s needs P_still ≈ 5×10⁻⁴×40 = 0.02 W = 20 mW. If the still pressure is about 0.1 mbar = 10 Pa, the pumping speed needed at room temperature is S = ṅ₃·R·T/p = 5×10⁻⁴×8.314×293/10 ≈ 0.12 m³/s ≈ 120 L/s, so the molecular-flow conductance of the still pumping line must be well above 120 L/s or the circulation becomes line-limited rather than heater-limited.",
+   "verify": "逐步改變靜止段加熱功率，同時記錄氣體處理系統的流量計與靜止段壓力，確認 ṅ₃ 與 P_still 近似線性且斜率約為 1/L_eff；再用殘氣分析儀或冷阱稱重檢查循環氣體中的 ⁴He 比例。若靜止段超過 0.8 K 後 ⁴He 比例快速上升，表示靜止段過熱或超流膜爬行過多，需要降低功率或檢查膜燃燒器。~Step the still heater power while logging the gas-handling flow meter and the still pressure, confirming that ṅ₃ is roughly linear in P_still with a slope of about 1/L_eff; then check the ⁴He fraction in the circulating gas with a residual-gas analyser or by weighing a cold trap. A ⁴He fraction that climbs steeply once the still exceeds 0.8 K indicates an overheated still or excessive superfluid film creep, calling for lower power or a check of the film burner.",
+   "failure": "混合物中殘留的空氣或水氣在冷阱或焦耳–湯姆森阻抗處結冰、阻塞回流：症狀是冷凝線壓力在數小時內持續上升而流量下降，混合腔緩慢回暖；後果是整機回溫、清理混合物並更換冷阱，損失數天實驗時間。~Air or water left in the mixture freezes in a cold trap or in the Joule–Thomson impedance and blocks the return flow: the symptom is a condensing-line pressure that keeps rising over hours while the flow drops and the mixing chamber warms slowly; the consequence is a full warm-up, cleaning of the mixture and trap replacement, costing days of experiment time.",
+   "misconception": "靜止段加熱器只是額外的熱負載，把它關掉混合腔會更冷。~The still heater is just an extra heat load, so switching it off makes the mixing chamber colder."
+  },
+  {
+   "anchor": "脈衝管冷卻器與 4 K 法蘭~Pulse-tube cooler and 4 K flange",
+   "title": "乾式預冷鏈與各級熱錨~Cryogen-free precooling chain and stage heat sinks",
+   "mechanism": "乾式稀釋製冷機用兩級脈衝管冷卻器取代液氦：第一級約 45–50 K，擋住室溫輻射並錨定配線；第二級約 3–4 K，撐住 4 K 法蘭並冷凝 ³He/⁴He 混合物。再往下依序是約 0.7–0.9 K 的靜止段、約 100 mK 的冷板與約 10 mK 的混合腔，每一級有自己的輻射屏蔽，級與級之間用低熱導的不鏽鋼或玻纖支撐。脈衝管以約 1.4 Hz 運轉，會注入振動與磁性雜訊，所以用軟銅編織帶做熱連接並做機械去耦；各級可用的冷卻力要和輻射、傳導與配線熱負載逐級對帳。~A dry dilution refrigerator replaces liquid helium with a two-stage pulse-tube cryocooler: the first stage at about 45–50 K blocks room-temperature radiation and anchors wiring, and the second stage at about 3–4 K carries the 4 K flange and condenses the ³He/⁴He mixture. Below it sit the still at about 0.7–0.9 K, the cold plate near 100 mK and the mixing chamber near 10 mK, each with its own radiation shield and joined by low-conductivity stainless-steel or fibreglass supports. The pulse tube runs at about 1.4 Hz and injects vibration and magnetic noise, so it is thermally linked by soft copper braids and mechanically decoupled; the cooling power available at each stage must be reconciled stage by stage against radiation, conduction and wiring loads.",
+   "model": "4 K 屏蔽從 50 K 屏蔽接收的輻射為 P = ε_eff·σ·A·(T_h⁴ − T_c⁴)。取 A = 0.5 m²、有效發射率 ε_eff = 0.05（拋光鍍金面，教學假設）、T_h = 50 K、T_c = 4 K：50⁴ = 6.25×10⁶，4⁴ 可忽略，P = 0.05×5.67×10⁻⁸×0.5×6.25×10⁶ ≈ 8.9 mW，相對脈衝管第二級在 4.2 K 約 1.5 W 的冷卻力可以接受。若少了 50 K 屏蔽而直接面對 300 K，300⁴ = 8.1×10⁹，P ≈ 11.5 W，第二級永遠到不了 4 K。~Radiation received by the 4 K shield from the 50 K shield is P = ε_eff·σ·A·(T_h⁴ − T_c⁴). With A = 0.5 m², an effective emissivity ε_eff = 0.05 (polished gold-plated surfaces, teaching assumption), T_h = 50 K and T_c = 4 K: 50⁴ = 6.25×10⁶, 4⁴ is negligible, so P = 0.05×5.67×10⁻⁸×0.5×6.25×10⁶ ≈ 8.9 mW, acceptable against the roughly 1.5 W that a pulse-tube second stage delivers at 4.2 K. Without the 50 K shield, facing 300 K directly, 300⁴ = 8.1×10⁹ and P ≈ 11.5 W, so the second stage would never reach 4 K.",
+   "verify": "穩態時用校正過的感測器記錄各級溫度，再對 4 K 法蘭施加已知加熱功率，量 ΔT 對功率的負載線，與製造商的脈衝管冷卻力曲線（例如 4.2 K 約 1.5 W）比較以得知餘裕。若無外加負載時 4 K 法蘭仍高於約 4.2 K，就要找輻射漏洞：屏蔽縫隙、缺少多層絕熱或某處機械接觸。~At steady state log every stage temperature with calibrated sensors, then apply a known heater power to the 4 K flange and measure the load line of ΔT versus power, comparing it with the manufacturer's pulse-tube capacity curve (about 1.5 W at 4.2 K) to establish the margin. If the 4 K flange sits above roughly 4.2 K with no added load, hunt for a radiation leak: a shield gap, missing multilayer insulation or a mechanical touch somewhere.",
+   "failure": "50 K 屏蔽與 4 K 屏蔽之間若有鬆脫的多層絕熱毯或下垂的電纜造成熱短路，會多出數瓦的熱負載：降溫紀錄裡兩級溫度逐漸靠攏，4 K 法蘭停在 6–8 K，混合物無法在焦耳–湯姆森阻抗處冷凝，系統永遠到不了基礎溫度。~A loose multilayer-insulation blanket or a sagging cable that thermally shorts the 50 K and 4 K shields adds watts of load: in the cooldown log the two stage temperatures converge, the 4 K flange stalls at 6–8 K, the mixture cannot condense at the Joule–Thomson impedance and the system never reaches base.",
+   "misconception": "脈衝管在 4 K 有 1.5 W，所以 4 K 級的熱負載不必特別管理。~With 1.5 W available at 4 K, the loads on the 4 K stage need no management."
+  },
+  {
+   "anchor": "燒結銀熱交換器~Sintered-silver heat exchangers",
+   "title": "逆流熱交換器與卡皮查熱阻~Counterflow heat exchangers and Kapitza resistance",
+   "mechanism": "回流的濃相 ³He 在進入混合腔之前，必須被流出的冷稀相預冷，否則它帶進來的焓 11·T_in² 會吃掉冷卻力。50 mK 以上用套管式連續逆流熱交換器就夠；更低溫時液氦與金屬之間的卡皮查（聲學失配）熱邊界阻隨 T⁻³ 急升，所以改用階梯式熱交換器，在銅鎳本體內燒結銀粉，比表面積每克約 1–2 m²，提供數十平方公尺的接觸面。設計同時受流阻限制：³He 黏度在低溫上升，黏滯加熱正比於 ṅ₃² 且隨溫度降低而惡化，流道截面、燒結厚度與級數必須折衷。~Returning concentrated ³He must be precooled by the outgoing cold dilute stream before it reaches the mixing chamber, otherwise the enthalpy it carries in, 11·T_in², consumes the cooling power. Above about 50 mK a continuous tube-in-tube counterflow exchanger suffices; lower down the Kapitza (acoustic-mismatch) thermal boundary resistance between helium and metal rises as T⁻³, so step exchangers are used, with silver powder sintered inside copper–nickel bodies at roughly 1–2 m² per gram to provide tens of square metres of contact area. The design is also bounded by flow impedance: ³He viscosity rises at low temperature and viscous heating scales as ṅ₃² and worsens as temperature falls, so channel cross-section, sinter thickness and the number of steps must be traded off.",
+   "model": "取卡皮查熱阻 R_K·A ≈ 0.05/T³ K·m²/W（教學假設）。在 T = 20 mK：R_K·A = 0.05/(0.02)³ = 6250 K·m²/W。若要在 ΔT = 5 mK 的溫差下傳遞 Q̇ = 20 µW，需要面積 A = Q̇·(R_K·A)/ΔT = 2×10⁻⁵×6250/0.005 = 25 m²；以每克 1.5 m² 的燒結銀估算約需 17 g。同樣的傳熱在 100 mK 只需 1/125 的面積，因為 (100/20)³ = 125。~Take a Kapitza resistance R_K·A ≈ 0.05/T³ K·m²/W (teaching assumption). At T = 20 mK, R_K·A = 0.05/(0.02)³ = 6250 K·m²/W. To transfer Q̇ = 20 µW across ΔT = 5 mK the required area is A = Q̇·(R_K·A)/ΔT = 2×10⁻⁵×6250/0.005 = 25 m², about 17 g of sintered silver at 1.5 m² per gram. The same transfer at 100 mK needs only 1/125 of that area because (100/20)³ = 125.",
+   "verify": "用測得的冷卻力反推回流入口溫度：Q̇ = ṅ₃·(95·T_mc² − 11·T_in²)，所以 T_in = √[(95·T_mc² − Q̇/ṅ₃)/11]。例如 ṅ₃ = 500 µmol/s、T_mc = 20 mK 時理想值為 16.8 µW；若實測只有 10 µW，則 T_in = √[(0.038 − 0.02)/11] ≈ 40 mK，表示熱交換器讓回流 ³He 比混合腔熱了一倍，要檢查燒結銀是否脫落或流道是否部分阻塞。~Back out the return inlet temperature from the measured cooling power: Q̇ = ṅ₃·(95·T_mc² − 11·T_in²), hence T_in = √[(95·T_mc² − Q̇/ṅ₃)/11]. For ṅ₃ = 500 µmol/s at T_mc = 20 mK the ideal value is 16.8 µW; if only 10 µW is measured, T_in = √[(0.038 − 0.02)/11] ≈ 40 mK, meaning the exchangers deliver ³He twice as warm as the mixing chamber, so check for detached sinter or a partly blocked channel.",
+   "failure": "燒結層堵塞或流道太窄使流阻過高，³He 在管內的黏滯加熱隨 ṅ₃² 增加：症狀是提高循環率時冷卻力不升反降、冷卻力曲線在高流量端彎折，最佳循環率往低處移，基礎溫度比規格差一截。~A clogged sinter or an undersized channel makes the flow impedance too high and viscous heating of the ³He grows as ṅ₃²: the symptom is cooling power that falls instead of rising when the circulation rate is increased, a cooling-power curve that bends over at high flow, an optimum circulation rate shifted lower and a base temperature short of specification.",
+   "misconception": "熱交換面積越大一定越好，與流阻無關。~More exchanger area is always better, regardless of flow impedance."
+  },
+  {
+   "anchor": "RuO₂ 與庫侖阻塞溫度計~RuO₂ and Coulomb-blockade thermometers",
+   "title": "毫克耳文溫度計量與校正鏈~Millikelvin thermometry and the calibration chain",
+   "mechanism": "混合腔與樣品溫度通常用氧化釕厚膜或 Cernox 電阻溫度計讀取，由低激發的交流電阻電橋量測；激發功率 V²/R 必須遠小於感測器與法蘭之間熱連結能帶走的熱，否則感測器自熱。20 mK 以下，電子與聲子脫耦、引線熱漏與射頻拾取都會讓電阻溫度計讀高。絕對參考來自初級溫度計：微分電導谷寬正比於 T 的庫侖阻塞溫度計、以 SQUID 讀出的雜訊溫度計，或超導定點裝置；ITS-90 只到 0.65 K，0.9 mK 到 1 K 由 PLTS-2000 以 ³He 熔化壓力定義，校正鏈就是從這些初級標準逐級傳遞到樣品溫度計。~Mixing-chamber and sample temperatures are usually read with ruthenium-oxide thick-film or Cernox resistance thermometers on a low-excitation AC resistance bridge; the excitation power V²/R must stay far below what the thermal link between sensor and flange can carry, otherwise the sensor self-heats. Below 20 mK electron–phonon decoupling, lead heat leaks and radio-frequency pickup all make resistance thermometers read high. Absolute references come from primary thermometers: the Coulomb-blockade thermometer whose differential-conductance dip width is proportional to T, SQUID-read noise thermometers, or superconducting fixed-point devices. ITS-90 ends at 0.65 K and PLTS-2000 defines 0.9 mK to 1 K through the ³He melting pressure, and the calibration chain passes from these primary standards step by step down to the sample thermometer.",
+   "model": "自熱估算：RuO₂ 感測器在 20 mK 時 R = 10 kΩ，激發 V = 10 µV（有效值），P = V²/R = (10⁻⁵)²/10⁴ = 10⁻¹⁴ W；若感測器到法蘭的熱阻 R_th = 10⁸ K/W（教學假設），ΔT = P·R_th = 10⁻⁶ K = 1 µK，可忽略。若激發改為 1 mV，P = 10⁻¹⁰ W，ΔT = 10 mK，讀值變成 30 mK 而非 20 mK，誤差 50%。庫侖阻塞溫度計的半深寬度 ΔV ≈ 5.44·N·k_B·T/e：N = 32 個串聯接面在 20 mK 時 ΔV ≈ 5.44×32×1.38×10⁻²³×0.02/1.6×10⁻¹⁹ ≈ 300 µV，容易量測。~Self-heating estimate: a RuO₂ sensor with R = 10 kΩ at 20 mK excited at V = 10 µV rms dissipates P = V²/R = (10⁻⁵)²/10⁴ = 10⁻¹⁴ W; with a sensor-to-flange thermal resistance R_th = 10⁸ K/W (teaching assumption) ΔT = P·R_th = 10⁻⁶ K = 1 µK, negligible. At 1 mV excitation P = 10⁻¹⁰ W and ΔT = 10 mK, so the sensor reads 30 mK instead of 20 mK, a 50% error. For a Coulomb-blockade thermometer the full width at half depth is ΔV ≈ 5.44·N·k_B·T/e: with N = 32 junctions in series at 20 mK, ΔV ≈ 5.44×32×1.38×10⁻²³×0.02/1.6×10⁻¹⁹ ≈ 300 µV, an easily measured width.",
+   "verify": "把待校的 RuO₂ 與初級溫度計（庫侖阻塞或雜訊溫度計）裝在同一個混合腔法蘭上，在 10 mK 到 100 mK 之間取四到五個設定點比較；每一點把激發電壓改變三倍，讀值不應改變，否則就是自熱。把各點偏差記入校正不確定度預算，並留意 RuO₂ 曲線在 15 mK 以下「變平」，那是感測器與法蘭脫耦的徵兆。~Mount the RuO₂ under test and a primary thermometer (Coulomb-blockade or noise) on the same mixing-chamber flange and compare at four or five setpoints between 10 mK and 100 mK; at each point change the excitation by a factor of three and confirm the reading does not move, otherwise self-heating is present. Enter the deviations into the calibration-uncertainty budget and watch for the RuO₂ curve flattening below 15 mK, the signature of the sensor decoupling from the flange.",
+   "failure": "激發過大或引線沒有在每一級熱錨，溫度計自熱而讀到 30 mK，混合腔實際只有 12 mK；操作者依照假的最低點去調靜止段功率，實驗在比紀錄更暖的溫度下進行，量子位元的熱布居或熱學數據被錯誤詮釋。~Excessive excitation or leads that are not heat-sunk at every stage make the thermometer self-heat and read 30 mK while the mixing chamber is really at 12 mK; the operator tunes the still power to a false minimum, experiments run warmer than logged, and qubit thermal populations or thermal data are misinterpreted.",
+   "misconception": "RuO₂ 溫度計的出廠校正曲線不論安裝與激發方式都有效。~A RuO₂ sensor's factory calibration curve holds regardless of how it is mounted and excited."
+  },
+  {
+   "anchor": "熱負載預算表~Heat-load budget table",
+   "title": "配線、同軸線與熱負載預算~Wiring, coaxial lines and the heat-load budget",
+   "mechanism": "每一條訊號線都是從高溫級流向混合腔的熱通道：直流線束與微波同軸線的傳導熱為 Q̇ = (A/L)·∫k dT，所以外導體與內導體採用不鏽鋼或銅鎳而非純銅；微波輸入線在各級裝衰減器（例如 4 K 處 20 dB、冷板 20 dB、混合腔 20 dB），既把室溫熱雜訊逐級壓低，也把內導體熱錨到該級。其他負載包括脈衝管振動引起的摩擦與渦電流加熱、真空罐內殘餘氣體的傳熱、屏蔽孔洞漏進的輻射與量測本身的耗散；混合腔在 20 mK 約十幾微瓦的冷卻力必須大於所有負載的總和。~Every signal line is a heat path from a warmer stage to the mixing chamber: DC looms and microwave coaxial lines conduct Q̇ = (A/L)·∫k dT, which is why outer and inner conductors are stainless steel or copper–nickel rather than pure copper. Microwave input lines carry attenuators at successive stages (for example 20 dB at 4 K, 20 dB at the cold plate and 20 dB at the mixing chamber), which both suppress room-temperature thermal noise stage by stage and heat-sink the inner conductor at each stage. Other loads include friction and eddy-current heating driven by pulse-tube vibration, heat carried by residual gas in the vacuum can, radiation leaking through shield openings and the dissipation of the measurement itself; the ten-odd microwatts available at 20 mK must exceed the sum of all of them.",
+   "model": "一條不鏽鋼同軸線（外導體外徑 2.2 mm、壁厚 0.3 mm，內導體直徑 0.5 mm）的金屬截面約 A = 2×10⁻⁶ m²；不鏽鋼在 1 K 以下取 k ≈ 0.075·T W/(m·K)（教學假設）。從 100 mK 冷板到 20 mK 混合腔、長度 L = 0.3 m：∫k dT = 0.075×(0.1² − 0.02²)/2 = 3.6×10⁻⁴ W/m，Q̇ = (2×10⁻⁶/0.3)×3.6×10⁻⁴ ≈ 2.4 nW；50 條只有 0.12 µW，不到 20 mK 冷卻力 16.8 µW 的 1%。同樣的線從 4 K 到 0.8 K 的靜止段，∫k dT = 0.075×(16 − 0.64)/2 = 0.576 W/m，每條 3.8 µW，50 條 0.19 mW，由靜止段毫瓦級的冷卻力吸收。~A stainless coaxial line (outer conductor 2.2 mm diameter with 0.3 mm wall, inner conductor 0.5 mm) has a metal cross-section of about A = 2×10⁻⁶ m²; take stainless steel below 1 K as k ≈ 0.075·T W/(m·K) (teaching assumption). From the 100 mK cold plate to the 20 mK mixing chamber over L = 0.3 m: ∫k dT = 0.075×(0.1² − 0.02²)/2 = 3.6×10⁻⁴ W/m and Q̇ = (2×10⁻⁶/0.3)×3.6×10⁻⁴ ≈ 2.4 nW; 50 lines give only 0.12 µW, under 1% of the 16.8 µW available at 20 mK. The same line from 4 K to the 0.8 K still has ∫k dT = 0.075×(16 − 0.64)/2 = 0.576 W/m, 3.8 µW per line and 0.19 mW for 50 lines, absorbed by the still's milliwatt-level cooling power.",
+   "verify": "先按級別建立預算表：傳導、輻射、射頻耗散、振動與量測各列一行；再用「加熱器替代法」驗證：量得基礎溫度後對混合腔施加已知功率，擬合 Q̇(T) 曲線並外推到測得的基礎溫度，截距就是寄生負載。例如外推得到 2 µW 的寄生負載，就能解釋為何基礎溫度是 14 mK 而非規格的 10 mK，再回頭對照預算表找出超支的項目。~First build the budget table stage by stage with a row each for conduction, radiation, RF dissipation, vibration and measurement; then verify it by heater substitution: after measuring the base temperature, apply known powers to the mixing chamber, fit the Q̇(T) curve and extrapolate to the measured base, where the intercept is the parasitic load. An extrapolated parasitic load of 2 µW, for instance, explains a 14 mK base instead of the specified 10 mK, and the budget table then points to the item that overran.",
+   "failure": "一條同軸線的內導體沒有衰減器或只裝了未熱錨的直流阻斷器，4 K 的黑體光子與傳導熱直接抵達樣品：混合腔溫度計一切正常，但量子位元的有效溫度卻是 60–80 mK，出現任何製冷機調整都消不掉的熱布居。~A coaxial inner conductor with no attenuator, or only an unanchored DC block, lets 4 K black-body photons and conducted heat reach the sample directly: the mixing-chamber thermometer looks normal while the qubit's effective temperature is 60–80 mK, with an excess thermal population that no refrigerator adjustment removes.",
+   "misconception": "只要混合腔法蘭到達基礎溫度，法蘭上的樣品就自動同溫。~Once the mixing-chamber flange reaches base, a sample on it is automatically at the same temperature."
+  },
+  {
+   "anchor": "氣體處理系統與冷凝線~Gas-handling system and condensing line",
+   "title": "降溫程序、冷凝與自動化運轉~Cooldown sequence, condensation and automated operation",
+   "mechanism": "乾式系統的降溫是一套固定程序：先把真空罐抽到高真空並啟動脈衝管；內部各級從 300 K 預冷到約 4 K 時不用交換氣，而是讓混合氣體經預冷迴路循環、在各級之間搬運熱量，接近 4 K 時再把迴路切斷。接著壓縮機把混合物經冷凝線壓入，氣體在 4 K 級被冷卻、經焦耳–湯姆森阻抗膨脹而液化，依序填滿靜止段與混合腔；氣體處理系統監看各段壓力並控制閥門，之後啟動循環，混合腔在數小時內從約 0.8 K 降到基礎溫度。安全邏輯包括混合物回收桶、洩壓閥與停電時的自動回收，整個流程約 24 小時。~Cooling a dry system down follows a fixed sequence: pump the vacuum can to high vacuum and start the pulse tube; precool the internal stages from 300 K to about 4 K not with exchange gas but by circulating the mixture gas through a precooling loop that carries heat between stages, then isolate the loop near 4 K. The compressor then pushes the mixture through the condensing line, where it is cooled at the 4 K stage and liquefied by expansion across the Joule–Thomson impedance, filling the still and then the mixing chamber; the gas-handling system monitors pressures and sequences the valves, after which circulation starts and the mixing chamber falls from about 0.8 K to base within hours. Safety logic includes the mixture dump tank, relief valves and automatic recovery on power loss, and the whole process takes about 24 hours.",
+   "model": "預冷時間估算：內部銅質構件 60 kg，銅從 300 K 到 4 K 的焓約 80 kJ/kg（教學假設），需移除 60×80 = 4800 kJ = 4.8 MJ。若兩級脈衝管透過預冷迴路有效提供平均 70 W，時間 = 4.8×10⁶/70 ≈ 6.9×10⁴ s ≈ 19 h；再加約 4 h 冷凝與混合腔降溫，總計約 23 h，與商用系統「24 h 到基礎溫度」的規格一致。若只靠第二級的 1.5 W 做預冷，需要 4.8×10⁶/1.5 ≈ 3.2×10⁶ s ≈ 37 天，所以預冷迴路不可或缺。~Precool-time estimate: the internal copper parts weigh 60 kg and copper's enthalpy from 300 K to 4 K is about 80 kJ/kg (teaching assumption), so 60×80 = 4800 kJ = 4.8 MJ must be removed. If the two pulse-tube stages deliver an effective average of 70 W through the precooling loop, the time is 4.8×10⁶/70 ≈ 6.9×10⁴ s ≈ 19 h; adding about 4 h for condensation and mixing-chamber cooling gives roughly 23 h, consistent with the 24 h to base specified for commercial systems. Relying on the 1.5 W second stage alone would take 4.8×10⁶/1.5 ≈ 3.2×10⁶ s ≈ 37 days, which is why the precooling loop is indispensable.",
+   "verify": "整個降溫過程記錄各級溫度與氣體處理系統各段壓力，和初次驗收時的參考曲線疊圖比較：到達 4 K 的時間、冷凝壓力隨時間下降的形狀、循環開始後混合腔的降溫斜率都應落在參考帶內。4 K 法蘭已達 4 K 而冷凝壓力居高不下，指向阻抗阻塞或冷凝線某處偏暖；最後確認 24 h 內到達基礎溫度並重測 100 mK 的冷卻力。~Log every stage temperature and every gas-handling pressure through the cooldown and overlay them on the reference curves from commissioning: the time to reach 4 K, the shape of the falling condensing pressure and the mixing-chamber cooling slope after circulation starts should all fall inside the reference band. A condensing pressure that stays high while the 4 K flange is already at 4 K points to a blocked impedance or a warm spot on the condensing line; finally confirm base temperature within 24 h and re-measure the cooling power at 100 mK.",
+   "failure": "氣體處理系統有微小漏氣或混合物被污染，阻抗與冷阱結冰、循環率下降；若壓力失控觸發洩壓閥，昂貴且難以補充的 ³He 會被排到大氣。症狀是冷凝壓力上升、流量下降；後果是回溫清理，而且混合物庫存永久減少。~A small leak in the gas-handling system or a contaminated mixture ices up the impedance and cold traps and the circulation rate drops; if the pressure runs away and lifts a relief valve, expensive and hard-to-replace ³He is vented to the atmosphere. The symptom is rising condensing pressure with falling flow; the consequence is a warm-up for cleaning and a permanent loss of mixture inventory.",
+   "misconception": "混合物抽過一次真空就乾淨了，冷阱可有可無。~Once the mixture has been pumped on once it is clean and cold traps are optional."
+  },
+  {
+   "anchor": "驗收測試與交接文件~Acceptance test and handoff record",
+   "title": "基礎溫度、冷卻力曲線與驗收交接~Base temperature, cooling-power curve and acceptance handoff",
+   "mechanism": "驗收不是只看一次基礎溫度，而是一組可重複的量測：以校正過的溫度計確認混合腔 ≤ 10 mK、在規定循環率下量 20 mK 與 100 mK 的冷卻力、記錄降溫時間、混合腔的振動位準、24 小時溫度漂移、無人值守運轉與警報，以及每條線路的衰減與熱錨狀態。交接文件要包含實際配線圖、各溫度計校正表、氣體處理系統閥門圖、混合物庫存量、冷卻力曲線、安全設定與保養週期（壓縮機吸附器、冷阱更換）。沒有這份文件，往後任何配置變更都無法回溯是哪一項吃掉了冷卻力。~Acceptance is not a single glimpse of base temperature but a repeatable set of measurements: confirm the mixing chamber at ≤ 10 mK with a calibrated thermometer, measure the cooling power at 20 mK and 100 mK at the specified circulation rate, record the cooldown time, the vibration level at the mixing chamber, the 24-hour temperature drift, unattended operation and alarms, and the attenuation and heat-sinking state of every line. The handoff record must contain the as-built wiring diagram, every thermometer calibration table, the gas-handling valve map, the mixture inventory, the cooling-power curve, the safety settings and the maintenance intervals for the compressor adsorber and cold traps. Without this record no later configuration change can be traced back to the item that consumed the cooling power.",
+   "model": "驗收線以 ṅ₃ = 500 µmol/s 的理想曲線 Q̇ = 0.042·T² W 為基準：100 mK 實測 400 µW 對理想 420 µW 為 95%，通過；20 mK 實測 12 µW 對理想 16.8 µW 為 71%，反映 T_in > T_mc，仍在常見的 ≥ 65% 允收門檻內。把寄生負載 3 µW 代入 3×10⁻⁶ = 0.042·T²，得理想極限 T_base = √(7.14×10⁻⁵) ≈ 8.5 mK；再計入熱交換器效率，實際約 10 mK，與規格相符。~The acceptance line is the ideal curve Q̇ = 0.042·T² W for ṅ₃ = 500 µmol/s: at 100 mK a measured 400 µW against the ideal 420 µW is 95%, a pass; at 20 mK a measured 12 µW against 16.8 µW is 71%, reflecting T_in > T_mc but still inside a common ≥ 65% acceptance threshold. Substituting a parasitic load of 3 µW into 3×10⁻⁶ = 0.042·T² gives an ideal limit T_base = √(7.14×10⁻⁵) ≈ 8.5 mK; allowing for exchanger efficiency the real value is about 10 mK, matching the specification.",
+   "verify": "在所有線路接妥的狀態下做 24 小時無人值守穩定性測試，記錄混合腔溫度漂移；以加熱器階躍法在 20、50、100 mK 量冷卻力；用加速規或樣品位置的感測器量振動，標出 1.4 Hz 脈衝管基頻及其諧波；模擬停電確認混合物自動回收到儲桶；每一項結果都與驗收紀錄中的規格表逐欄比對並簽署。~With every line connected, run a 24-hour unattended stability test and log the mixing-chamber drift; measure cooling power by heater steps at 20, 50 and 100 mK; measure vibration with an accelerometer or a sample-position sensor and identify the 1.4 Hz pulse-tube fundamental and its harmonics; simulate a power loss to confirm the mixture is recovered automatically to the dump tank; compare every result column by column with the specification table in the acceptance record and sign it off.",
+   "failure": "驗收時混合腔是空的、沒有任何配線，之後才裝上一百條同軸線：冷卻力被吃掉，基礎溫度升到 20 mK；因為沒有實際配置的熱負載表，沒有人知道是哪些線造成的，後果是數個月的拆裝與重新驗證。~Acceptance was done with an empty mixing chamber and no wiring, and a hundred coaxial lines were installed afterwards: the cooling power is consumed and base rises to 20 mK; with no as-built heat-load table nobody knows which lines are responsible, and the consequence is months of disassembly and re-verification.",
+   "misconception": "驗收時到達過一次基礎溫度，就證明系統在任何後續配置下都能到達。~Reaching base once at acceptance proves the system will reach it in every later configuration."
+  }
+ ],
+ "example": "冷卻力與基礎溫度練習：假設 ³He 循環率 ṅ₃ = 500 µmol/s，理想冷卻力 Q̇ = 84·ṅ₃·T² = 0.042·T² W；考慮熱交換器效率 70%，有效係數為 0.0294 W/K²。混合腔寄生負載預算：50 條同軸線傳導 0.12 µW、衰減器耗散 0.01 µW、脈衝管振動加熱 1.0 µW、殘餘氣體 0.5 µW、屏蔽開孔輻射 0.07 µW，合計 1.7 µW。無實驗負載時基礎溫度 T = √(1.7×10⁻⁶/0.0294) = √(5.8×10⁻⁵) ≈ 7.6 mK。加上一個耗散 10 µW 的實驗，總負載 11.7 µW，T = √(11.7×10⁻⁶/0.0294) = √(3.98×10⁻⁴) ≈ 20 mK；若實驗只能容忍 15 mK，可用的有效冷卻力為 0.0294×(0.015)² = 6.6 µW，必須把實驗耗散壓到 5 µW 以下或提高循環率。數值為教學假設，不代表任何實機規格。~Cooling-power and base-temperature exercise: assume a ³He circulation rate ṅ₃ = 500 µmol/s, ideal cooling power Q̇ = 84·ṅ₃·T² = 0.042·T² W, and a 70% heat-exchanger efficiency giving an effective coefficient of 0.0294 W/K². Parasitic-load budget at the mixing chamber: conduction through 50 coaxial lines 0.12 µW, attenuator dissipation 0.01 µW, pulse-tube vibration heating 1.0 µW, residual gas 0.5 µW, radiation through shield openings 0.07 µW, total 1.7 µW. With no experiment the base temperature is T = √(1.7×10⁻⁶/0.0294) = √(5.8×10⁻⁵) ≈ 7.6 mK. Adding an experiment that dissipates 10 µW makes the total 11.7 µW and T = √(11.7×10⁻⁶/0.0294) = √(3.98×10⁻⁴) ≈ 20 mK; if the experiment can only tolerate 15 mK, the available effective cooling is 0.0294×(0.015)² = 6.6 µW, so the experiment's dissipation must be cut below 5 µW or the circulation rate raised. Values are teaching assumptions, not any product's specification.",
+ "history": "1951 年 Heinz London 提出利用 ³He 溶入 ⁴He 的稀釋熱來製冷；1965 年 Leiden 的 Das、de Bruyn Ouboter 與 Taconis 做出第一部可運轉的稀釋製冷機，隨後曼徹斯特與其他實驗室把溫度推進到數十毫克耳文，牛津儀器在 1960 年代末開始商業化生產。2000 年代以脈衝管冷卻器取代液氦的乾式稀釋製冷機問世，2008 年成立於赫爾辛基的 Bluefors 等公司把它變成可無人值守運轉的標準設備，如今是超導量子位元、單光子偵測與低溫物理實驗的基礎平台。本課只討論公開的物理與工程邏輯。~In 1951 Heinz London proposed cooling by the heat of dilution of ³He into ⁴He; in 1965 Das, de Bruyn Ouboter and Taconis in Leiden built the first working dilution refrigerator, Manchester and other laboratories soon pushed into the tens of millikelvin, and Oxford Instruments began commercial production in the late 1960s. Dry dilution refrigerators that replace liquid helium with pulse-tube cryocoolers appeared in the 2000s, and companies such as Bluefors, founded in Helsinki in 2008, turned them into standard unattended equipment that now underpins superconducting qubits, single-photon detectors and low-temperature physics. This course discusses only public physics and engineering logic.",
+ "place": {
+  "name": "Bluefors 赫爾辛基稀釋製冷機製造參照點~Bluefors Helsinki dilution-refrigerator manufacturing reference",
+  "country": "芬蘭~Finland",
+  "lat": 60.22,
+  "lng": 24.86,
+  "query": "Bluefors Oy Helsinki Finland"
+ },
+ "sources": [
+  {
+   "key": "bluefors-ld",
+   "title": "Bluefors：LD 稀釋製冷量測系統",
+   "titleEn": "Bluefors: LD dilution refrigerator measurement system",
+   "publisher": "Bluefors",
+   "url": "https://bluefors.com/products/dilution-refrigerator-measurement-systems/ld-dilution-refrigerator-measurement-system/",
+   "sourceType": "primary",
+   "scope": "公開的乾式稀釋製冷機規格：基礎溫度 10 mK、100 mK 冷卻力 350–450 µW、20 mK 冷卻力 12–14 µW、24 小時降溫與脈衝管型號；課程數值為以此量級建立的教學假設。",
+   "scopeEn": "Public dry dilution refrigerator specifications: 10 mK base, 350–450 µW at 100 mK, 12–14 µW at 20 mK, 24-hour cooldown and pulse-tube model; course numbers are teaching assumptions at this scale."
+  },
+  {
+   "key": "oxinst-proteox",
+   "title": "Quantum Design Oxford：Proteox 等稀釋製冷與低溫量測系統",
+   "titleEn": "Quantum Design Oxford: Proteox dilution refrigerators and low-temperature systems",
+   "publisher": "Quantum Design Oxford",
+   "url": "https://qd-oxford.com/",
+   "sourceType": "primary",
+   "scope": "原 Oxford Instruments NanoScience 業務的公開產品入口（2026 年起由 Quantum Design Oxford 營運）；課程數值為教學假設。",
+   "scopeEn": "Public product portal of the former Oxford Instruments NanoScience business, operated by Quantum Design Oxford since 2026; course numbers are teaching assumptions."
+  },
+  {
+   "key": "chalmers-lowtemp-16",
+   "title": "Chalmers 低溫物理講義 16：1 K 以下的製冷與溫度計量",
+   "titleEn": "Chalmers low-temperature physics lecture 16: refrigeration below 1 K and thermometry",
+   "publisher": "Chalmers University of Technology",
+   "url": "https://fy.chalmers.se/~delsing/LowTemp/LectureNotes/LectureNotes16.PDF",
+   "sourceType": "primary",
+   "scope": "大學課程講義：³He/⁴He 相圖、6.6% 溶解度、冷卻力 Q̇ = 84·ṅ₃·T² 與毫克耳文溫度計量的公開物理。",
+   "scopeEn": "University lecture notes: the ³He/⁴He phase diagram, 6.6% solubility, cooling power Q̇ = 84·ṅ₃·T² and the public physics of millikelvin thermometry."
+  },
+  {
+   "key": "wikipedia-dilution-refrigerator",
+   "title": "維基百科：稀釋製冷機",
+   "titleEn": "Wikipedia: Dilution refrigerator",
+   "publisher": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Dilution_refrigerator",
+   "sourceType": "secondary",
+   "scope": "一般性概述：歷史、靜止段、熱交換器與乾式系統的架構，僅作為輔助閱讀。",
+   "scopeEn": "General overview of history, still, heat exchangers and dry-system architecture; supporting reading only."
+  }
+ ],
+ "vendors": [
+  {
+   "name": "Bluefors",
+   "nameEn": "Bluefors",
+   "business": "乾式稀釋製冷機、量測系統與低溫配線，總部在赫爾辛基。",
+   "businessEn": "Cryogen-free dilution refrigerators, measurement systems and cryogenic wiring, headquartered in Helsinki.",
+   "url": "https://bluefors.com/",
+   "investorUrl": "",
+   "security": null,
+   "role": "乾式稀釋製冷機的公開規格與系統架構",
+   "roleEn": "Public specifications and system architecture of dry dilution refrigerators"
+  },
+  {
+   "name": "Quantum Design Oxford",
+   "nameEn": "Quantum Design Oxford",
+   "business": "稀釋製冷機、超導磁體與低溫量測系統製造商，承接原 Oxford Instruments NanoScience 業務（未上市）。",
+   "businessEn": "Maker of dilution refrigerators, superconducting magnets and low-temperature measurement systems, continuing the former Oxford Instruments NanoScience business (privately held).",
+   "url": "https://qd-oxford.com/",
+   "investorUrl": "",
+   "security": null,
+   "role": "商用稀釋製冷機與模組化低溫平台的公開產品資訊",
+   "roleEn": "Public product information on commercial dilution refrigerators and modular cryogenic platforms"
+  },
+  {
+   "name": "Lake Shore Cryotronics",
+   "nameEn": "Lake Shore Cryotronics",
+   "business": "低溫溫度感測器（RuO₂、Cernox）、溫度控制器與交流電阻電橋。",
+   "businessEn": "Cryogenic temperature sensors (RuO₂, Cernox), temperature controllers and AC resistance bridges.",
+   "url": "https://lakeshore.com/",
+   "investorUrl": "",
+   "security": null,
+   "role": "毫克耳文溫度計量與校正鏈的感測器與讀出儀器",
+   "roleEn": "Sensors and readout instruments for millikelvin thermometry and the calibration chain"
+  },
+  {
+   "name": "住友重機械工業 SHI Cryogenics",
+   "nameEn": "SHI Cryogenics Group (Sumitomo Heavy Industries)",
+   "business": "4 K 脈衝管與 GM 冷卻器、氦壓縮機，為乾式稀釋製冷機提供預冷。",
+   "businessEn": "4 K pulse-tube and GM cryocoolers and helium compressors that provide the precooling for dry dilution refrigerators.",
+   "url": "https://shicryogenics.com/",
+   "investorUrl": "",
+   "security": {
+    "symbol": "6302",
+    "exchange": "TSE",
+    "currency": "JPY"
+   },
+   "role": "乾式稀釋製冷機預冷鏈的脈衝管冷卻器",
+   "roleEn": "Pulse-tube cryocoolers for the precooling chain of dry dilution refrigerators"
+  }
+ ],
+ "related": [
+  "a451",
+  "a478"
+ ],
+ "architectureNodes": [
+  [
+   "氣體處理系統與冷凝線",
+   "Gas-handling system and condensing line"
+  ],
+  [
+   "脈衝管 4 K 級與屏蔽",
+   "Pulse-tube 4 K stage and shields"
+  ],
+  [
+   "靜止段與渦輪泵迴路",
+   "Still and turbopump loop"
+  ],
+  [
+   "逆流與燒結銀熱交換器",
+   "Counterflow and sintered heat exchangers"
+  ],
+  [
+   "混合腔與相界面",
+   "Mixing chamber and phase boundary"
+  ],
+  [
+   "溫度計與熱負載配線",
+   "Thermometry and heat-load wiring"
+  ]
+ ],
+ "architectureEdges": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   2,
+   3
+  ],
+  [
+   3,
+   4
+  ],
+  [
+   2,
+   0
+  ],
+  [
+   4,
+   5
+  ]
+ ]
+}

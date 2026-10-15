@@ -38,6 +38,390 @@ Object.defineProperty(exports, "COMPUTING_FOCUS_IDS", { enumerable: true, get: (
 Object.defineProperty(exports, "COMPUTING_PATHS", { enumerable: true, get: () => COMPUTING_PATHS });
 Object.defineProperty(exports, "computingPathsMarkup", { enumerable: true, get: () => computingPathsMarkup });
 },
+"optics-paths.js":function(require, exports) {
+'use strict';
+// V12 home collection: 101 optics & precision-instrument courses grouped by
+// the learning-map subdivisions written by tools/integrate-optics-v12.py.
+const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const OPTICS_ROUTES=[
+ ['optics-lithography','LITHOGRAPHY'],['optics-design-fabrication','DESIGN · FAB'],['optics-coatings-elements','COATINGS'],
+ ['optics-modulation-holography','HOLOGRAPHY'],['optics-microscopy','MICROSCOPY'],['optics-spectroscopy-radiometry','SPECTROSCOPY'],
+ ['optics-precision-metrology','METROLOGY'],['optics-analytical-instruments','ANALYTICAL'],['optics-lab-infrastructure','CRYO · VACUUM'],
+ ['optics-accelerators-detectors','DETECTORS'],['optics-astronomical','ASTRONOMY'],['optics-facilities-accelerators','LIGHT SOURCES'],
+ ['optics-facilities-observatories','OBSERVATORIES']
+];
+function opticsPathsMarkup(catalog,zh=true){
+ const courses=catalog.filter(c=>c.learningTrack==='optics'&&(c.stages?.length||c.stepCount));
+ if(courses.length<100)return '';
+ const total=courses.reduce((n,c)=>n+(c.stepCount||0),0),pick=(z,en)=>zh?z:en;
+ const groups=OPTICS_ROUTES.map(([id,label])=>{const list=courses.filter(c=>c.learningSubdiscipline===id);return {id,label,list,title:list[0]?pick(list[0].subcategoryTitle,list[0].subcategoryTitleEn):id}}).filter(g=>g.list.length);
+ return `<section class="packaging-collection optics-collection" aria-labelledby="opticsCollectionTitle"><div class="packaging-collection-head"><div><span class="eyebrow">COLLECTION 12 · OPTICS × PRECISION INSTRUMENTS</span><h2 id="opticsCollectionTitle">${pick('光學與精密儀器：從原理、算例到驗證。','Optics and precision instruments: principles, calculations, verification.')}</h2><p>${pick(`${courses.length}門逐步課程 · ${groups.length}個專業子領域 · ${total.toLocaleString()}個學習步驟`,`${courses.length} guided courses · ${groups.length} subdisciplines · ${total.toLocaleString()} learning steps`)}</p></div><a class="button" href="#learning-map">${pick('開啟課程地圖','Open learning map')} ↗</a></div><p>${pick('每門課以機制、定量算例、量測驗證與失效診斷四個角度拆解：從 EUV 微影、干涉量測與電子顯微，到同步輻射光源、重力波與大型望遠鏡。每門第一節免費試學。','Each course works through mechanism, quantitative example, verification and failure diagnosis: from EUV lithography, interferometry and electron microscopy to synchrotron light sources, gravitational-wave detectors and large telescopes. The first section of every course is free.')}</p><p><a href="data/optics-precision-101.csv" download>${pick('下載完整中英課程索引','Download bilingual course index')} ↓</a></p><details class="packaging-routes"><summary>${pick(`展開${groups.length}個光學與儀器子領域`,`Explore ${groups.length} optics and instrument subdisciplines`)}</summary><div class="packaging-route-grid">${groups.map(g=>`<article><span class="task-label">${e(g.label)}</span><h3>${e(g.title)}</h3><ol>${g.list.map(c=>`<li><a href="#project/${e(c.id)}">${e(zh?c.title:c.titleEn)}</a></li>`).join('')}</ol></article>`).join('')}</div></details></section>`;
+}
+
+Object.defineProperty(exports, "OPTICS_ROUTES", { enumerable: true, get: () => OPTICS_ROUTES });
+Object.defineProperty(exports, "opticsPathsMarkup", { enumerable: true, get: () => opticsPathsMarkup });
+},
+"project-icons.js":function(require, exports) {
+'use strict';
+/* V12 project glyphs: data loading, safe inline-SVG rendering and the home-page icon wall.
+   Glyph geometry: Tabler Icons (MIT) and Material Design Icons (Apache-2.0), selected and assigned
+   to projects by the academy (tools/icons-v12/assign_icons.py). Notices: assets/icons/LICENSES.md.
+   Named exports only, no imports: compatible with tools/build-offline.mjs. */
+
+const DATA_URL = 'data/project-icons.json';
+const FADE_MS = 380;
+const GEOMETRY_RE = /^(?:<(?:path|circle|line|rect|polyline|polygon|ellipse)(?:\s+(?:d|cx|cy|r|x|y|width|height|rx|ry|points|x1|y1|x2|y2)="[-0-9.,eE\sMmLlHhVvCcSsQqTtAaZz]*")+\s*\/>)+$/;
+const FALLBACK_GLYPH = '<path d="M12 3l7.8 4.5v9l-7.8 4.5l-7.8 -4.5v-9z"/><circle cx="12" cy="12" r="2.5"/>';
+
+const PROJECT_ICON_CATEGORY_LABELS = Object.freeze({
+  semiconductor: ['半導體製程', 'Semiconductors'],
+  packaging: ['先進封裝與矽光子', 'Packaging & photonics'],
+  electronics: ['電機與電子', 'Electrical & electronics'],
+  computing: ['資訊與資安', 'Computing & security'],
+  instruments: ['光學與精密儀器', 'Optics & instruments'],
+  structures: ['橋梁與建築', 'Bridges & structures'],
+  underground: ['隧道與地下工程', 'Tunnels & geotechnics'],
+  water: ['水利與海岸工程', 'Water & coastal'],
+  rail: ['鐵路與交通', 'Rail & transit'],
+  environment: ['環境與城市', 'Environment & cities'],
+  aerospace: ['航空工程', 'Aeronautics'],
+  marine: ['船舶與海洋', 'Marine & offshore'],
+  automotive: ['汽車與交通工具', 'Automotive'],
+  space: ['太空與衛星', 'Space & satellites'],
+  manufacturing: ['機械與製造', 'Manufacturing'],
+  energy: ['能源與儲能', 'Energy & storage'],
+  materials: ['材料與冶金', 'Materials'],
+  biomedical: ['醫療工程', 'Biomedical'],
+  process: ['工業與食品製程', 'Industrial processes'],
+  megascience: ['大型科學設施', 'Megascience']
+});
+
+let iconCache = null;
+let iconPromise = null;
+
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function iconsOf(doc) {
+  if (!doc || typeof doc !== 'object') return {};
+  const map = doc.icons && typeof doc.icons === 'object' ? doc.icons : doc;
+  return map && typeof map === 'object' && !Array.isArray(map) ? map : {};
+}
+
+/** Resolve to the {projectId: {n, s, d, q}} map. Uses the offline preload when present, else fetches once. */
+function loadProjectIcons() {
+  if (iconCache) return Promise.resolve(iconCache);
+  if (iconPromise) return iconPromise;
+  const preloaded = globalThis.MG_DATA?.['project-icons'];
+  if (preloaded) {
+    iconCache = iconsOf(preloaded);
+    return Promise.resolve(iconCache);
+  }
+  if (typeof globalThis.fetch !== 'function') return Promise.resolve({});
+  iconPromise = globalThis.fetch(DATA_URL)
+    .then(response => {
+      if (!response || !response.ok) throw new Error('project icons unavailable');
+      return response.json();
+    })
+    .then(doc => (iconCache = iconsOf(doc)))
+    .catch(() => {
+      iconPromise = null;   // allow a later retry; callers still get an empty map now
+      return {};
+    });
+  return iconPromise;
+}
+
+/** Synchronous access after loadProjectIcons() resolved (or offline preload); null when unknown. */
+function getProjectIcon(projectId) {
+  const map = iconCache || iconsOf(globalThis.MG_DATA?.['project-icons']);
+  const entry = map[projectId];
+  return entry && typeof entry === 'object' ? entry : null;
+}
+
+/** Inline SVG string for one icon entry ({n, s, d}). Unknown or unsafe geometry renders a neutral fallback. */
+function projectGlyph(entry, { size = 24, label = '' } = {}) {
+  const px = Number.isFinite(Number(size)) && Number(size) > 0 ? Number(size) : 24;
+  const geometry = entry && typeof entry.d === 'string' && GEOMETRY_RE.test(entry.d) ? entry.d : FALLBACK_GLYPH;
+  const filled = Boolean(entry && entry.s === 'm' && geometry !== FALLBACK_GLYPH);
+  const paint = filled
+    ? 'fill="currentColor"'
+    : 'fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"';
+  const a11y = label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"';
+  const source = filled ? 'm' : 't';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${px}" height="${px}" ${paint} ` +
+    `class="project-glyph" data-glyph-source="${source}" focusable="false" ${a11y}>${geometry}</svg>`;
+}
+
+/** Static markup for the (empty) wall; mountHeroIconWall() fills it. */
+function heroIconWallMarkup({ zh = true } = {}) {
+  const name = zh ? '工程專案圖示牆' : 'Engineering project icon wall';
+  const desc = zh
+    ? '這面圖示牆會輪流展示每一個工程專案的代表圖示，每個圖示都是前往該專案的連結。滑鼠停留、鍵盤聚焦或系統偏好減少動態時會停止輪播。'
+    : 'This wall cycles through a representative icon for every engineering project; each icon links to its project. Rotation pauses on hover, on keyboard focus and when reduced motion is preferred.';
+  return `<section class="icon-wall" data-icon-wall aria-label="${esc(name)}" aria-describedby="icon-wall-desc">` +
+    '<div class="icon-wall-grid" data-icon-wall-grid></div>' +
+    '<p class="icon-wall-caption" data-icon-wall-caption aria-live="polite" aria-atomic="true"></p>' +
+    `<p class="icon-wall-sr sr-only" id="icon-wall-desc" data-icon-wall-desc>${esc(desc)}</p>` +
+    '</section>';
+}
+
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function next() {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function tileCountFor(width) {
+  if (width >= 880) return { count: 36, cols: 12 };
+  if (width >= 520) return { count: 24, cols: 8 };
+  return { count: 12, cols: 6 };
+}
+
+function child(doc, parent, selector, tag, className, attrs) {
+  const found = parent.querySelector ? parent.querySelector(selector) : null;
+  if (found) return found;
+  const el = doc.createElement(tag);
+  el.className = className;
+  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  parent.appendChild(el);
+  return el;
+}
+
+/**
+ * Fill the wall with project tiles and rotate them.  Returns {dispose()}.
+ * options: zh (labels), icons (map; default: cached/loaded), reducedMotion (default: media query),
+ *          interval (ms, default 2200), seed (shuffle seed, default: day number).
+ */
+function mountHeroIconWall(root, catalog, { zh = true, icons, reducedMotion, interval = 2200, seed } = {}) {
+  const noop = { dispose() {} };
+  const doc = root && (root.ownerDocument || globalThis.document);
+  if (!root || !doc || typeof doc.createElement !== 'function') return noop;
+
+  const wall = root.matches && root.matches('[data-icon-wall]') ? root
+    : (root.querySelector && root.querySelector('[data-icon-wall]')) || child(doc, root, '[data-icon-wall]', 'section', 'icon-wall', { 'data-icon-wall': '' });
+  const grid = child(doc, wall, '[data-icon-wall-grid]', 'div', 'icon-wall-grid', { 'data-icon-wall-grid': '' });
+  const caption = child(doc, wall, '[data-icon-wall-caption]', 'p', 'icon-wall-caption',
+    { 'data-icon-wall-caption': '', 'aria-live': 'polite', 'aria-atomic': 'true' });
+
+  const seen = new Set();
+  const items = (Array.isArray(catalog) ? catalog : []).filter(p => {
+    if (!p || p.id == null || seen.has(String(p.id))) return false;
+    seen.add(String(p.id));
+    return true;
+  });
+  const daySeed = Math.floor(Date.now() / 86400000);
+  const rng = mulberry32(Number.isFinite(Number(seed)) ? Number(seed) : daySeed);
+  const order = items.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+
+  const intervalMs = Math.max(20, Number(interval) || 2200);
+  const fadeMs = Math.min(FADE_MS, Math.floor(intervalMs / 2));
+  let iconMap = icons && typeof icons === 'object' ? icons : (iconCache || {});
+  let disposed = false;
+  let tiles = [];
+  let shown = [];          // item index per tile
+  let cursor = 0;          // next position in `order`
+  let cols = 0;
+  let timer = null;
+  const timeouts = new Set();
+  const cleanups = [];
+  let hovering = false;
+  let focused = false;
+  let offscreen = false;
+
+  const mql = typeof globalThis.matchMedia === 'function' ? globalThis.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  let reduced = reducedMotion == null ? Boolean(mql && mql.matches) : Boolean(reducedMotion);
+
+  const titleOf = p => (zh ? p.title || p.titleEn : p.titleEn || p.title) || String(p.id);
+  const categoryOf = p => {
+    const labels = PROJECT_ICON_CATEGORY_LABELS[p.category];
+    return labels ? labels[zh ? 0 : 1] : String(p.category || '');
+  };
+
+  function fill(tile, itemIndex) {
+    const p = items[itemIndex];
+    const entry = iconMap[p.id];
+    const title = titleOf(p);
+    tile.setAttribute('href', `#project/${encodeURIComponent(String(p.id))}`);
+    tile.setAttribute('title', title);
+    tile.setAttribute('data-project-id', String(p.id));
+    tile.setAttribute('data-glyph-source', entry && entry.s === 'm' ? 'm' : 't');
+    tile.innerHTML = projectGlyph(entry) + `<span class="icon-tile-label">${esc(title)}</span>`;
+  }
+
+  function announce(itemIndex) {
+    const p = items[itemIndex];
+    caption.textContent = '';
+    const t = doc.createElement('span');
+    t.className = 'icon-wall-caption-title';
+    t.textContent = titleOf(p);
+    const c = doc.createElement('span');
+    c.className = 'icon-wall-caption-category';
+    c.textContent = categoryOf(p);
+    caption.appendChild(t);
+    caption.appendChild(c);
+  }
+
+  function nextItem() {
+    const onWall = new Set(shown);
+    for (let guard = 0; guard < order.length; guard++) {
+      const idx = order[cursor % order.length];
+      cursor = (cursor + 1) % order.length;
+      if (!onWall.has(idx)) return idx;
+    }
+    return -1;
+  }
+
+  function measure() {
+    const width = wall.clientWidth || (wall.getBoundingClientRect && wall.getBoundingClientRect().width) ||
+      root.clientWidth || globalThis.innerWidth || 1024;
+    return tileCountFor(width);
+  }
+
+  function build() {
+    const layout = measure();
+    const count = Math.min(layout.count, items.length);
+    if (count === tiles.length && layout.cols === cols) return;
+    cols = layout.cols;
+    if (wall.style && wall.style.setProperty) wall.style.setProperty('--icon-wall-cols', String(Math.min(cols, Math.max(count, 1))));
+    grid.textContent = '';
+    tiles = [];
+    shown = shown.slice(0, count);
+    for (let k = 0; k < count; k++) {
+      const tile = doc.createElement('a');
+      tile.className = 'icon-tile';
+      if (tile.style && tile.style.setProperty) tile.style.setProperty('--icon-tile-index', String(k));
+      if (shown[k] == null || shown[k] < 0) shown[k] = nextItem();
+      const idx = shown[k];
+      fill(tile, idx);
+      grid.appendChild(tile);
+      tiles.push(tile);
+    }
+    if (shown.length && !caption.textContent) announce(shown[0]);
+  }
+
+  function paused() {
+    return disposed || reduced || hovering || focused || offscreen || Boolean(doc.hidden);
+  }
+
+  function tick() {
+    if (paused() || tiles.length === 0 || items.length <= tiles.length) return;
+    const swaps = Math.min(tiles.length, 3 + Math.floor(rng() * 2));
+    const picked = new Set();
+    while (picked.size < swaps) picked.add(Math.floor(rng() * tiles.length));
+    let last = -1;
+    for (const k of picked) {
+      const idx = nextItem();
+      if (idx < 0) break;
+      shown[k] = idx;
+      last = idx;
+      const tile = tiles[k];
+      tile.classList.add('is-swapping');
+      const id = setTimeout(() => {
+        timeouts.delete(id);
+        if (disposed || tiles[k] !== tile) return;
+        fill(tile, shown[k]);
+        tile.classList.remove('is-swapping');
+      }, fadeMs);
+      timeouts.add(id);
+    }
+    if (last >= 0) announce(last);
+  }
+
+  function start() {
+    if (timer == null && !reduced && !disposed && !doc.hidden && items.length > tiles.length) {
+      timer = setInterval(tick, intervalMs);
+    }
+  }
+  function stop() {
+    if (timer != null) clearInterval(timer);
+    timer = null;
+  }
+
+  function listen(target, type, handler, opts) {
+    if (!target || typeof target.addEventListener !== 'function') return;
+    target.addEventListener(type, handler, opts);
+    cleanups.push(() => target.removeEventListener(type, handler, opts));
+  }
+
+  build();
+  wall.classList && wall.classList.toggle('is-static', reduced);
+  if (wall.setAttribute) wall.setAttribute('data-icon-wall-ready', '');
+
+  listen(wall, 'pointerenter', () => { hovering = true; });
+  listen(wall, 'pointerleave', () => { hovering = false; });
+  listen(wall, 'focusin', () => { focused = true; });
+  listen(wall, 'focusout', event => {
+    focused = Boolean(event && event.relatedTarget && wall.contains && wall.contains(event.relatedTarget));
+  });
+  listen(doc, 'visibilitychange', () => { if (doc.hidden) stop(); else start(); });
+  if (mql && reducedMotion == null) {
+    const onChange = event => {
+      reduced = Boolean(event && event.matches);
+      wall.classList && wall.classList.toggle('is-static', reduced);
+      if (reduced) stop(); else start();
+    };
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', onChange);
+      cleanups.push(() => mql.removeEventListener('change', onChange));
+    } else if (typeof mql.addListener === 'function') {
+      mql.addListener(onChange);
+      cleanups.push(() => mql.removeListener(onChange));
+    }
+  }
+  if (typeof globalThis.ResizeObserver === 'function') {
+    const ro = new globalThis.ResizeObserver(() => { if (!disposed) { build(); start(); } });
+    ro.observe(wall);
+    cleanups.push(() => ro.disconnect());
+  }
+  if (typeof globalThis.IntersectionObserver === 'function') {
+    const io = new globalThis.IntersectionObserver(entries => {
+      const last = entries[entries.length - 1];
+      offscreen = Boolean(last) && !last.isIntersecting;
+    });
+    io.observe(wall);
+    cleanups.push(() => io.disconnect());
+  }
+  if (!icons && !iconCache) {
+    loadProjectIcons().then(map => {
+      if (disposed || !map || !Object.keys(map).length) return;
+      iconMap = map;
+      tiles.forEach((tile, k) => { if (shown[k] >= 0) fill(tile, shown[k]); });
+    });
+  }
+  start();
+
+  return {
+    dispose() {
+      if (disposed) return;
+      disposed = true;
+      stop();
+      for (const id of timeouts) clearTimeout(id);
+      timeouts.clear();
+      while (cleanups.length) {
+        try { cleanups.pop()(); } catch (_) { /* observer already gone */ }
+      }
+      tiles.forEach(tile => tile.classList && tile.classList.remove('is-swapping'));
+    }
+  };
+}
+
+Object.defineProperty(exports, "PROJECT_ICON_CATEGORY_LABELS", { enumerable: true, get: () => PROJECT_ICON_CATEGORY_LABELS });
+Object.defineProperty(exports, "loadProjectIcons", { enumerable: true, get: () => loadProjectIcons });
+Object.defineProperty(exports, "getProjectIcon", { enumerable: true, get: () => getProjectIcon });
+Object.defineProperty(exports, "projectGlyph", { enumerable: true, get: () => projectGlyph });
+Object.defineProperty(exports, "heroIconWallMarkup", { enumerable: true, get: () => heroIconWallMarkup });
+Object.defineProperty(exports, "mountHeroIconWall", { enumerable: true, get: () => mountHeroIconWall });
+},
 "computing-visuals.js":function(require, exports) {
 'use strict';
 // Original conceptual information-system diagrams and bounded synthetic teaching models.
@@ -174,13 +558,15 @@ Object.defineProperty(exports, "computingLabDetail", { enumerable: true, get: ()
  * Not a vendor drawing, physical CAD, plant layout or as-built document. */
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const identityHash=v=>{let n=2166136261;for(const c of String(v)){n^=c.codePointAt(0);n=Math.imul(n,16777619);}return n>>>0;};
-const colors=['#315f62','#527eaa','#b47a34','#754c86','#487d55'];
+const colors=['#315f62','#527eaa','#b47a34','#754c86','#487d55','#8a5a2b'];
 function wrapLabel(value){
  const text=String(value??''),limit=/[^\x00-\x7f]/.test(text)?13:24,words=text.includes(' ')?text.split(/\s+/):[...text],lines=[];let line='';
  for(const word of words){const next=line+(line&&text.includes(' ')?' ':'')+word;if(next.length>limit&&line){lines.push(line);line=word;}else line=next;}if(line)lines.push(line);return lines;
 }
 function worldVisualFamily(course={}){return course.architectureFamily||'';}
 function motif(family){
+ const optics={"telescope": "<path d=\"M-30 18L20-22M-24 26L26-14M20-22L26-14\"/><circle cx=\"-27\" cy=\"22\" r=\"5\"/><path d=\"M-6 6L-14 34M-6 6L4 34\"/>", "microscope": "<path d=\"M-6-34h12v10h-12zM0-24v26M-14 2h28M-10 2l-6 14h32l-6-14M-26 34h52M18 16q10 6 0 18\"/>", "laser": "<rect x=\"-34\" y=\"-12\" width=\"40\" height=\"24\" rx=\"3\"/><path d=\"M6 0H36M28-6L36 0L28 6M-26-12v-6M-14-12v-6\"/>", "accelerator": "<circle r=\"28\"/><circle r=\"20\" stroke-dasharray=\"4 4\"/><path d=\"M28 0l8-4v8z\"/><circle cx=\"-20\" cy=\"-20\" r=\"3\" fill=\"currentColor\"/>", "detector": "<rect x=\"-30\" y=\"-30\" width=\"60\" height=\"60\" rx=\"4\"/><path d=\"M-30-10H30M-30 10H30M-10-30V30M10-30V30\"/><path d=\"M-36 30L0 0\" stroke-dasharray=\"3 3\"/>", "spectrometer": "<path d=\"M-34 0H-12M-12 0L-4-14L4 0Z\"/><path d=\"M4 0L34-18M4 0L34-6M4 0L34 6M4 0L34 18\"/>", "interferometer": "<path d=\"M-30 0H30M0-30V30M-8-8L8 8\"/><rect x=\"26\" y=\"-6\" width=\"6\" height=\"12\"/><rect x=\"-6\" y=\"-34\" width=\"12\" height=\"6\"/>", "gw": "<path d=\"M-30 30H34M-30 30V-34\"/><circle cx=\"34\" cy=\"30\" r=\"4\"/><circle cx=\"-30\" cy=\"-34\" r=\"4\"/><path d=\"M-24 6q8-8 16 0t16 0 16 0\"/>", "radio": "<path d=\"M-30-10q30 50 60 0M0 14V34M-14 34h28M0 14V-20M-6-20h12\"/>", "vacuum": "<circle r=\"22\"/><path d=\"M-22 0h-12M22 0h12M0 22v12M-8 34h16\"/><circle r=\"8\" stroke-dasharray=\"2 3\"/>", "cryo": "<path d=\"M0-32V32M-28-16L28 16M-28 16L28-16M-6-26L0-32L6-26M-6 26L0 32L6 26\"/>", "coating": "<path d=\"M-32 18H32M-32 10H32M-32 2H32M-32-6H32M-20-34L-4-8M4-8L20-34\"/>", "lithography": "<ellipse cx=\"0\" cy=\"-24\" rx=\"24\" ry=\"6\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"18\" ry=\"5\"/><path d=\"M-30 24H30M-24 30H24\"/><path d=\"M-10-34L-2 20M10-34L2 20\" stroke-dasharray=\"3 3\"/>", "stage": "<rect x=\"-32\" y=\"-12\" width=\"64\" height=\"30\" rx=\"3\"/><rect x=\"-18\" y=\"-26\" width=\"36\" height=\"14\" rx=\"2\"/><path d=\"M-36 30H36M-20 18v12M20 18v12\"/>", "inertial": "<circle r=\"26\"/><ellipse rx=\"26\" ry=\"9\"/><circle r=\"4\" fill=\"currentColor\"/><path d=\"M26 0l6-6M26 0l6 6\"/>", "electron": "<path d=\"M-14-34h28l-6 14h-16zM-8-20v40M8-20v40M-20 24h40M-12-4h24M-12 8h24\"/>", "fabrication": "<path d=\"M-30 10q30-24 60 0M-30 10H30M0-16V-4\"/><circle cx=\"0\" cy=\"-24\" r=\"8\"/>", "modulator": "<rect x=\"-24\" y=\"-24\" width=\"48\" height=\"48\"/><path d=\"M-24-8H24M-24 8H24M-8-24V24M8-24V24M-36-30L-24-12M36 30L24 12\"/>", "imaging": "<path d=\"M0-30q14 30 0 60q-14-30 0-60z\"/><path d=\"M-34-10L0 0L34-10M-34 10L0 0L34 10\"/>"};
+ if(optics[family])return optics[family];
  if(/qpu|quantum/.test(family))return '<circle cx="0" cy="0" r="25"/><ellipse cx="0" cy="0" rx="36" ry="11" transform="rotate(35)"/><ellipse cx="0" cy="0" rx="36" ry="11" transform="rotate(-35)"/><circle cx="0" cy="0" r="4" fill="currentColor"/>';
  if(family==='fusion')return '<ellipse rx="34" ry="23"/><ellipse rx="22" ry="13"/><path d="M-34-5v10M34-5v10M-12-22v9M12-22v9M-12 13v9M12 13v9"/>';
  if(family==='wind')return '<circle r="5"/><path d="M0 5v36M0-5L8-35-4-36Z M4 2L33 13 30 24Z M-4 2L-29 21-33 11Z"/>';
@@ -218,7 +604,7 @@ function hasWorldVisual(course={}){return !!course.architectureFamily&&Array.isA
 function renderWorldIcon(course,{en=false}={}){if(!hasWorldVisual(course))return '';return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 104" class="project-icon" data-project-icon="${e(course.id)}" role="img" aria-label="${e(en?course.titleEn:course.title)}"><rect x="5" y="5" width="78" height="78" rx="18" fill="#eaf0ef"/><g transform="translate(44 44) scale(.85)" fill="none" stroke="#315f62" stroke-width="2.3" stroke-linejoin="round">${motif(course.architectureFamily)}</g>${Array.from({length:20},(_,i)=>`<rect x="${7+i*3.8}" y="${81-((identityHash(course.id)>>>i)&1)*3}" width="2" height="${2+((identityHash(course.id)>>>i)&1)*3}" fill="#527eaa"/>`).join('')}<text x="44" y="98" text-anchor="middle" font-size="7" fill="#315f62">${e(course.architectureFamily.toUpperCase())}</text></svg>`;}
 function renderWorldVisual(course,{zh=true,focus=-1}={}){
  if(!hasWorldVisual(course))return '';
- const nodes=course.architectureNodes.slice(0,5),positions=[[112,90],[300,90],[488,90],[200,264],[400,264]],edges=Array.isArray(course.architectureEdges)?course.architectureEdges:[[0,1],[1,2],[1,3],[3,4]];
+ const nodes=course.architectureNodes.slice(0,6),positions=nodes.length===6?[[100,90],[300,90],[500,90],[100,264],[300,264],[500,264]]:[[112,90],[300,90],[488,90],[200,264],[400,264]],edges=Array.isArray(course.architectureEdges)?course.architectureEdges:[[0,1],[1,2],[1,3],[3,4]];
  const label=n=>Array.isArray(n)?n[zh?0:1]:(zh?n.label:n.labelEn);
  const lines=edges.filter(v=>Array.isArray(v)&&v.length===2&&Number.isInteger(v[0])&&Number.isInteger(v[1])&&v[0]>=0&&v[1]>=0&&v[0]<nodes.length&&v[1]<nodes.length&&v[0]!==v[1]).map(([a,b])=>{const [x,y]=positions[a],[u,v]=positions[b],dx=u-x,dy=v-y,d=Math.hypot(dx,dy),cut=Math.min(79/Math.max(1e-9,Math.abs(dx)),57/Math.max(1e-9,Math.abs(dy))),sx=x+dx*(cut+4/d),sy=y+10+dy*(cut+4/d),tx=u-dx*(cut+7/d),ty=v+10-dy*(cut+7/d);return `<path d="M${sx.toFixed(1)} ${sy.toFixed(1)}L${tx.toFixed(1)} ${ty.toFixed(1)}" stroke="#819893" stroke-width="2" marker-end="url(#worldArrow-${e(course.id)})"/>`;}).join('');
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 370" class="world-project-visual" data-world-visual="${e(course.id)}" role="img" aria-label="${e(zh?course.title:course.titleEn)} · ${zh?'原創教學功能架構':'Original educational functional architecture'}"><defs><marker id="worldArrow-${e(course.id)}" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#819893"/></marker></defs><rect width="600" height="370" rx="12" fill="#f2f5f3"/><text x="24" y="27" font-size="11" fill="#526c64">${e(course.architectureFamily.toUpperCase())} / ${e(course.id)}</text>${lines}${nodes.map((n,i)=>{const [x,y]=positions[i],active=focus===i,wrapped=wrapLabel(label(n)),size=Math.min(11,33/Math.max(1,wrapped.length));return `<g data-world-component="${i}"><title>${e(label(n))}</title><rect x="${x-79}" y="${y-47}" width="158" height="114" rx="10" fill="${active?'#fff1e8':'#fff'}" stroke="${active?'#c54932':colors[i]}" stroke-width="${active?3:1.5}"/><g transform="translate(${x} ${y-9}) scale(.65)" fill="none" stroke="${colors[i]}" stroke-width="2">${componentMotif(Array.isArray(n)?n[1]:n.labelEn||label(n),course.architectureFamily)}</g><text x="${x}" y="${y+35}" text-anchor="middle" font-size="${size}" fill="#253d36">${wrapped.map((line,j)=>`<tspan x="${x}" dy="${j?size+1:0}">${e(line)}</tspan>`).join('')}</text></g>`;}).join('')}<text x="24" y="351" font-size="10" fill="#526c64">${zh?'功能關係教學示意 · 非比例尺 · 非施工／設備運轉圖':'Educational functional relationships · Not to scale · Not a construction/operating drawing'}</text></svg>`;
@@ -2049,7 +2435,7 @@ function domainIdentitySvg(category,{title=category,en=false}={}) {
     .replace('原創專案識別插畫','原創領域識別插畫');
 }
 function projectMediaMarkup(course,{photo=null,en=false,compact=false}={}) {
-  const label=photo?(en?'Licensed reference photo':'授權參考照片'):(course.educationEdition===11?(en?'Original educational architecture':'原創教學架構圖'):(en?'Original identity illustration':'原創識別插畫'));
+  const label=photo?(en?'Licensed reference photo':'授權參考照片'):(course.educationEdition>=11?(en?'Original educational architecture':'原創教學架構圖'):(en?'Original identity illustration':'原創識別插畫'));
   const src=photo?.path;
   const safePath=typeof src==='string'&&/^(?:assets\/|\.\/assets\/)/.test(src)&&!src.split('/').includes('..')?src:null;
   if(photo&&safePath)return `<div class="project-media ${compact?'compact':''}" data-media-kind="photo"><img loading="lazy" src="${escape(safePath)}" alt="${escape(en?(photo.titleEn||photo.title):(photo.title||photo.titleEn))}"><span class="project-media-kind">${label}</span>${compact?'':`<span class="image-credit">${escape(photo.author)} · ${escape(photo.license)}</span>`}<span class="project-photo-emblem">${projectIconSvg(course,{en})}</span></div>`;
@@ -2091,6 +2477,7 @@ const LEARNING_TRACKS = [
   {id:'civil', icon:'bridge', title:pair('土木、水務與城市','Civil, water & urban engineering'), description:pair('大橋、隧道、結構、水處理與環境系統。','Bridges, tunnels, structures, water treatment and environmental systems.'), boundary:pair('比較載重、流體、地質與施工介面；場址條件改變設計與驗證。','Compare loads, fluids, geology and construction interfaces; site conditions change design and validation.')},
   {id:'mobility', icon:'motion', title:pair('機械、交通與航太','Mechanical, transport & aerospace'), description:pair('製造、車輛、鐵路、船舶、航空與太空專案。','Manufacturing, vehicles, railways, ships, aviation and space projects.'), boundary:pair('以結構、運動、控制與驗證串連；不同載具的工作環境與法規不同。','Connect structures, motion, control and validation; operating environments and regulations differ between vehicles.')},
   {id:'materials', icon:'materials', title:pair('材料與冶金','Materials & metallurgy'), description:pair('金屬、陶瓷、複材、玻璃與材料表徵。','Metals, ceramics, composites, glass and characterization.'), boundary:pair('比較成分、微結構、製程與性質；材料證據不能只由外觀判斷。','Compare composition, microstructure, processing and properties; appearance alone is not material evidence.')},
+  {id:'optics', icon:'science', title:pair('光學與精密儀器','Optics & precision instruments'), description:pair('微影光學、光學設計與加工、鍍膜、顯微、光譜、精密量測、加速器、偵測器與天文儀器的 101 門逐步課程。','101 guided courses on lithography optics, optical design and fabrication, coatings, microscopy, spectroscopy, precision metrology, accelerators, detectors and astronomical instruments.'), boundary:pair('以物理原理、定量模型、量測驗證與失效診斷比較；儀器尺度與允收條件各自不同。','Compare through physics, quantitative models, verification and failure diagnosis; instrument scales and acceptance conditions differ.')},
   {id:'science', icon:'science', title:pair('科學設施與精密儀器','Research facilities & precision instruments'), description:pair('加速器、望遠鏡、感測與大型科學設施。','Accelerators, telescopes, sensing and large research facilities.'), boundary:pair('以訊號、校準、不確定度與系統整合比較；不同觀測尺度需要不同儀器。','Compare signals, calibration, uncertainty and integration; different observation scales require different instruments.')},
   {id:'process', icon:'process', title:pair('工業製程與醫療工程','Industrial processes & biomedical engineering'), description:pair('單元操作、製程系統與生醫工程設計。','Unit operations, process systems and biomedical engineering design.'), boundary:pair('比較物料、能量、品質與驗證；工業產品與生醫應用的證據要求不同。','Compare material, energy, quality and validation; industrial products and biomedical uses require different evidence.')},
   {id:'other', icon:'compass', title:pair('跨領域與其他工程','Cross-disciplinary & other engineering'), description:pair('保留完整目錄中的其他與新加入主題。','Retain other and newly added topics from the complete catalog.'), boundary:pair('先確認系統邊界、輸入輸出與驗證證據，再選擇相關領域。','Identify system boundaries, inputs, outputs and validation evidence before selecting related disciplines.')}
@@ -2098,6 +2485,19 @@ const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 const LEARNING_SUBDISCIPLINES = [
+  subdivision('optics-lithography','optics','微影光學與精密定位','Lithography optics and precision positioning',/微影|lithograph|euv|asml|晶圓台|wafer.?stage/i),
+  subdivision('optics-design-fabrication','optics','光學設計與精密加工','Optical design and precision fabrication',/透鏡|lens|非球面|asphere|freeform|自由曲面|退火|anneal|拋光|polish|修形|figuring/i),
+  subdivision('optics-coatings-elements','optics','薄膜、繞射與微結構元件','Coatings, diffractive and structured elements',/鍍膜|coating|反射鏡|mirror|偏振|polariz|繞射|diffract|超穎|metalens|全像光學元件|holographic.?optical/i),
+  subdivision('optics-modulation-holography','optics','光調制、顯示與全像','Light modulation, displays and holography',/空間光調制|spatial.?light|微鏡|micromirror|計算全像|computer.?generated|散斑|speckle|全像顯示|holographic.?display|數位全像|digital.?holograph/i),
+  subdivision('optics-microscopy','optics','先進顯微與光學影像','Advanced microscopy and optical imaging',/顯微|microscop|斷層|tomograph/i),
+  subdivision('optics-spectroscopy-radiometry','optics','光譜與輻射量測','Spectroscopy and radiometry',/光譜|spectrom|積分球|integrating.?sphere|橢圓偏光|ellipsomet/i),
+  subdivision('optics-precision-metrology','optics','光頻標準、慣性與干涉量測','Frequency standards, inertial sensing and interferometry',/頻率梳|frequency.?comb|原子鐘|atomic.?clock|重力儀|gravimet|陀螺|gyro|干涉位移|interferometric|輪廓儀|profilomet/i),
+  subdivision('optics-analytical-instruments','optics','電子、離子與分析儀器','Electron, ion and analytical instruments',/電子顯微|electron.?microscop|離子束|ion.?beam|穿隧|tunneling|原子力|atomic.?force|質譜|mass.?spectrom|核磁|magnetic.?resonance|光電子能譜|photoelectron/i),
+  subdivision('optics-lab-infrastructure','optics','低溫、真空與精密平台','Cryogenics, vacuum and precision platforms',/低溫|cryogen|稀釋製冷|dilution|真空|vacuum|渦輪分子|turbomolecular|無振動|vibration/i),
+  subdivision('optics-accelerators-detectors','optics','加速器、光束線與偵測器','Accelerators, beamlines and detectors',/儲存環|storage.?ring|自由電子雷射|free.?electron|射頻腔|radio.?frequency.?cavit|加速腔|束流|beam.?position|單色器|monochromat|光束線|beamline|中子|neutron|閃爍|scintillat|像素|pixel|時間投影|time.?projection|讀出|readout/i),
+  subdivision('optics-astronomical','optics','天文儀器與科學感測器','Astronomical instruments and scientific sensors',/自適應|adaptive|主鏡|primary.?mirror|共相|co.?phas|導引星|guide.?star|天文|astronom|電波|radio|重力波干涉儀懸吊|suspension|紅外偵測|infrared|單光子|single.?photon|ccd|cmos/i),
+  subdivision('optics-facilities-accelerators','optics','大型加速器與光源設施','Large accelerator and light-source facilities',/cern|對撞|collider|linac4|同步加速器|synchrotron|反質子|antiproton|光子源|photon.?source|光源|light.?source|esrf|diamond|spring-8|lcls|xfel/i),
+  subdivision('optics-facilities-observatories','optics','大型望遠鏡與重力波觀測站','Large telescopes and gravitational-wave observatories',/vlt|elt|alma|ntt|vista|ligo|virgo|kagra|fast/i),
   subdivision('quantum-superconducting','quantum','超導量子位元','Superconducting qubits',/超導|superconduct|transmon|fluxonium/),
   subdivision('quantum-ion','quantum','囚禁離子','Trapped ions',/囚禁離子|離子阱|trapped.?ion|ion.?trap/),
   subdivision('quantum-neutral','quantum','中性原子','Neutral atoms',/中性原子|rydberg|neutral.?atom/),
@@ -2137,6 +2537,8 @@ const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
+  {id:'optics-imaging',title:pair('從透鏡設計到先進顯微','From lens design to advanced microscopy'),goal:pair('先學光學設計與加工、鍍膜，再進入顯微、光譜與精密量測。','Start with optical design, fabrication and coatings, then move to microscopy, spectroscopy and precision metrology.'),courses:['a405','a406','a407','a412','a426','a429','a430','a439']},
+  {id:'optics-facilities',title:pair('從加速腔到大型光源與望遠鏡','From RF cavities to light sources and telescopes'),goal:pair('比較加速器、光束線、偵測器與大型天文設施的系統整合。','Compare system integration across accelerators, beamlines, detectors and large observatories.'),courses:['a458','a456','a462','a485','a465','a468','a493','a497']},
   {id:'compute',title:pair('從處理器到 AI 與超級電腦','From processors to AI and supercomputers'),goal:pair('沿計算、記憶體、資料流與叢集介面比較。','Compare compute, memory, dataflow and cluster interfaces.'),courses:['a302','a303','a304','a305','a388','a392']},
   {id:'software',title:pair('從核心到可信軟體交付','From kernels to trustworthy delivery'),goal:pair('用介面契約、可重現建置與簽章證據連結。','Connect interface contracts, reproducible builds and signing evidence.'),courses:['a311','a313','a314','a327','a328','a326']},
   {id:'distributed',title:pair('從資料儲存到可恢復服務','From storage to recoverable services'),goal:pair('追蹤交易、共識、監測與復原，不把備份等同高可用。','Trace transactions, consensus, monitoring and recovery; backup is not high availability.'),courses:['a317','a318','a319','a321','a325','a329','a330']},
@@ -2379,7 +2781,21 @@ Object.defineProperty(exports, "electronicsPathsMarkup", { enumerable: true, get
  * Remote system voices may use their own provider; the chooser labels them.
  */
 const PREFIX = 'mg-workspace-v10:';
-const DEFAULT_PREFERENCES = Object.freeze({theme:'system',layout:'comfortable',voiceURI:'',voiceLanguage:'follow',rate:.9,pitch:1});
+const DEFAULT_PREFERENCES = Object.freeze({theme:'system',layout:'comfortable',accent:'forest',fontScale:1,sidebar:'full',voiceURI:'',voiceLanguage:'follow',voiceGender:'any',voiceStyle:'professional',rate:.95,pitch:1});
+/* Narration "personalities". The Web Speech API exposes only rate and pitch, so
+ * a style is a rate/pitch preset applied to the chosen device voice. */
+const VOICE_STYLES = Object.freeze({
+  professional:{rate:.95,pitch:1,zh:'專業講師（清楚、穩定）',en:'Professional instructor (clear, steady)'},
+  chief:{rate:.88,pitch:.85,zh:'沉穩總工程師（低沉、從容）',en:'Calm chief engineer (lower, unhurried)'},
+  broadcast:{rate:1,pitch:.95,zh:'新聞播報（俐落、正式）',en:'Broadcast (crisp, formal)'},
+  lively:{rate:1.08,pitch:1.15,zh:'活潑助教（明亮、輕快）',en:'Lively assistant (bright, brisk)'},
+  clear:{rate:.78,pitch:1,zh:'清晰慢速（初學者）',en:'Clear and slow (beginners)'},
+  custom:{zh:'自訂語速與音高',en:'Custom rate and pitch'}
+});
+const FEMALE=/samantha|karen|moira|tessa|victoria|fiona|allison|\bava\b|susan|zoe|kate|serena|veena|mei-?jia|sin-?ji|ting-?ting|kyoko|yuna|am[eé]lie|\banna\b|alice|paulina|m[oó]nica|joana|luciana|ellen|\bsara\b|nora|zuzana|ioana|milena|melina|yelda|laura|carmit|lekha|damayanti|kanya|\blinh\b|zira|hazel|hanhan|yating|huihui|haruka|ayumi|heami|hsiaochen|hsiaoyu|xiaoxiao|xiaoyi|xiaohan|nanami|sunhi|jenny|\baria\b|sonia|libby|natasha|clara|elvira|denise|katja|isabella|francisca|female|女/i;
+const MALE=/\balex\b|daniel|\bfred\b|\btom\b|oliver|aaron|arthur|gordon|rishi|thomas|xander|yuri|jorge|diego|\bjuan\b|\bluca\b|\breed\b|rocko|\beddy\b|grandpa|ralph|david|\bmark\b|george|zhiwei|kangkang|ichiro|yunjhe|yunxi|yunyang|yunjian|keita|injoon|\bguy\b|\bryan\b|christopher|\beric\b|william|henri|conrad|alvaro|\bmale\b|男/i;
+/** Best-effort voice gender from well-known system voice names; 'unknown' when unsure. */
+function voiceGender(voice){const name=String(voice?.name||'');if(/\bfemale\b|女/i.test(name))return 'female';if(/\bmale\b|男/i.test(name))return 'male';if(/^google\s/i.test(name))return 'female';if(FEMALE.test(name))return 'female';if(MALE.test(name))return 'male';return 'unknown';}
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const locale = value => String(value || '').replaceAll('_','-').toLowerCase();
 const base = value => locale(value).split('-')[0];
@@ -2387,12 +2803,16 @@ const bounded = (value,min,max,fallback) => typeof value === 'number' && Number.
 const languageCode = value => value === 'follow' || /^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8}){0,3}$/.test(value || '') ? value : 'follow';
 function normalizePreferences(value) {
   const input = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
-  return {theme:['system','light','dark'].includes(input.theme)?input.theme:'system',layout:['comfortable','compact'].includes(input.layout)?input.layout:'comfortable',voiceURI:typeof input.voiceURI==='string'?input.voiceURI.slice(0,500):'',voiceLanguage:languageCode(input.voiceLanguage),rate:bounded(input.rate,.6,1.4,.9),pitch:bounded(input.pitch,.6,1.4,1)};
+  return {theme:['system','light','dark'].includes(input.theme)?input.theme:'system',layout:['comfortable','compact','focus'].includes(input.layout)?input.layout:'comfortable',accent:['forest','ocean','amber','violet','graphite'].includes(input.accent)?input.accent:'forest',fontScale:[0.9,1,1.1,1.2].includes(input.fontScale)?input.fontScale:1,sidebar:['full','compact','hidden'].includes(input.sidebar)?input.sidebar:'full',voiceGender:['any','female','male'].includes(input.voiceGender)?input.voiceGender:'any',voiceStyle:Object.keys(VOICE_STYLES).includes(input.voiceStyle)?input.voiceStyle:'professional',voiceURI:typeof input.voiceURI==='string'?input.voiceURI.slice(0,500):'',voiceLanguage:languageCode(input.voiceLanguage),rate:bounded(input.rate,.6,1.4,.9),pitch:bounded(input.pitch,.6,1.4,1)};
 }
 function preferenceKey(profileId='guest') { return PREFIX + encodeURIComponent(String(profileId || 'guest').slice(0,300)); }
-function choosePersonalVoice(voices,language,voiceURI='') {
-  const matching = Array.from(voices || []).filter(voice => base(voice.lang) === base(language));
-  return matching.find(voice => voiceURI && voice.voiceURI === voiceURI) || matching.find(voice => locale(voice.lang) === locale(language)) || matching.find(voice => voice.default) || matching[0] || null;
+function choosePersonalVoice(voices,language,voiceURI='',gender='any') {
+  const all = Array.from(voices || []).filter(voice => base(voice.lang) === base(language));
+  const explicit = all.find(voice => voiceURI && voice.voiceURI === voiceURI);
+  if (explicit) return explicit;
+  const gendered = gender === 'any' ? all : all.filter(voice => voiceGender(voice) === gender);
+  const matching = gendered.length ? gendered : all;
+  return matching.find(voice => locale(voice.lang) === locale(language) && voice.localService) || matching.find(voice => locale(voice.lang) === locale(language)) || matching.find(voice => voice.default) || matching[0] || null;
 }
 
 function createPersonalization(options={}) {
@@ -2411,7 +2831,7 @@ function createPersonalization(options={}) {
   const apply = () => {
     const root=document?.documentElement;if(!root)return;
     root.dataset.theme=preferences.theme==='system'?(media?.matches?'dark':'light'):preferences.theme;
-    root.dataset.themePreference=preferences.theme;root.dataset.layout=preferences.layout;
+    root.dataset.themePreference=preferences.theme;root.dataset.layout=preferences.layout;root.dataset.accent=preferences.accent;root.dataset.sidebar=preferences.sidebar;root.style?.setProperty?.('--mg-font-scale',String(preferences.fontScale));
     const themeColor=document.querySelector?.('meta[name="theme-color"]');if(themeColor)themeColor.content=root.dataset.theme==='dark'?'#111b20':'#f5f7f8';
   };
   const persist = () => {try {if(!storage)throw new Error('storage unavailable');storage.setItem(preferenceKey(profileId),JSON.stringify(preferences));saved=true}catch{saved=false}apply();notify();return saved};
@@ -2425,11 +2845,17 @@ function createPersonalization(options={}) {
     return {...preferences};
   };
   const getNarrationLanguage = (fallback=language()) => preferences.voiceLanguage==='follow'?fallback:preferences.voiceLanguage;
-  const getSpeechOptions = (spokenLanguage=getNarrationLanguage()) => ({language:spokenLanguage,voiceURI:choosePersonalVoice(voices(),spokenLanguage,preferences.voiceURI)?.voiceURI || '',rate:preferences.rate,pitch:preferences.pitch});
+  const getSpeechOptions = (spokenLanguage=getNarrationLanguage()) => {
+    const voice=choosePersonalVoice(voices(),spokenLanguage,preferences.voiceURI,preferences.voiceGender);
+    // When no voice of the requested gender exists, approximate with pitch.
+    const missing=preferences.voiceGender!=='any'&&!preferences.voiceURI&&voice&&voiceGender(voice)!==preferences.voiceGender;
+    const pitch=missing?Math.max(.5,Math.min(2,preferences.pitch*(preferences.voiceGender==='male'?.82:1.18))):preferences.pitch;
+    return {language:spokenLanguage,voiceURI:voice?.voiceURI || '',rate:preferences.rate,pitch,genderApproximated:!!missing};
+  };
   const update = value => {preferences=normalizePreferences({...preferences,...value});persist();return {...preferences}};
   const voiceOptions = () => {
     const spokenLanguage=getNarrationLanguage(),list=voices().filter(voice=>base(voice.lang)===base(spokenLanguage));
-    return `<option value="">${words('依講解語言自動選擇','Automatically match narration language')}</option>${list.map(voice=>`<option value="${escape(voice.voiceURI)}" ${voice.voiceURI===preferences.voiceURI?'selected':''}>${escape(voice.name)} · ${escape(voice.lang)} · ${voice.localService?words('裝置語音','device voice'):words('網路語音','network voice')}</option>`).join('')}`;
+    return `<option value="">${words('依講解語言自動選擇','Automatically match narration language')}</option>${list.map(voice=>`<option value="${escape(voice.voiceURI)}" ${voice.voiceURI===preferences.voiceURI?'selected':''}>${escape(voice.name)} · ${escape(voice.lang)} · ${({female:words('女聲','female'),male:words('男聲','male'),unknown:words('未標示','unlabelled')})[voiceGender(voice)]} · ${voice.localService?words('裝置語音','device voice'):words('網路語音','network voice')}</option>`).join('')}`;
   };
   const refreshVoices = () => {
     const select=dialog?.querySelector('[data-pref="voiceURI"]');if(!select)return;select.innerHTML=voiceOptions();
@@ -2439,17 +2865,17 @@ function createPersonalization(options={}) {
   const renderDialog = () => {
     if(!dialog)return;
     const list=[...new Set(['zh-TW','en','zh-CN','ja','ko','es','fr','de','pt','it',language(),...voices().map(voice=>voice.lang)].filter(code=>languageCode(code)!=='follow'))].sort((a,b)=>a.localeCompare(b));
-    dialog.innerHTML=`<div class="dialog-head"><div><span class="eyebrow">PERSONAL WORKSPACE</span><h2>${words('我的工作室','My workspace')}</h2></div><button class="icon-btn" data-preference-close type="button" aria-label="${words('關閉','Close')}">×</button></div><p class="preference-profile" data-no-translate>${escape(options.getProfileName?.() || profileId)}</p><p class="subtext">${words('外觀與聲音設定依目前會員／學習檔案，分別存於此瀏覽器。可匯出後在另一部裝置匯入。','Appearance and voice preferences are saved separately for this member / profile in this browser. Export and import them on another device.')}</p><form data-preference-form><fieldset><legend>${words('桌面外觀','Workspace appearance')}</legend><div class="preference-grid"><label>${words('色彩主題','Color theme')}<select data-pref="theme">${[['system',words('跟隨系統','Follow system')],['light',words('淺色','Light')],['dark',words('深色','Dark')]].map(([id,title])=>`<option value="${id}" ${preferences.theme===id?'selected':''}>${title}</option>`).join('')}</select></label><label>${words('閱讀佈局','Reading layout')}<select data-pref="layout">${[['comfortable',words('舒適・較多留白','Comfortable · more space')],['compact',words('緊湊・更多內容','Compact · denser content')]].map(([id,title])=>`<option value="${id}" ${preferences.layout===id?'selected':''}>${title}</option>`).join('')}</select></label></div></fieldset><fieldset><legend>${words('師傅講解聲音','Mentor narration')}</legend><label>${words('講解語言','Narration language')}<select data-pref="voiceLanguage" data-no-translate><option value="follow" ${preferences.voiceLanguage==='follow'?'selected':''}>${words('跟隨頁面／瀏覽器語言','Follow page / browser language')}</option>${list.map(code=>`<option value="${escape(code)}" ${preferences.voiceLanguage===code?'selected':''}>${escape(code)}</option>`).join('')}</select></label><label>${words('選擇聲音','Choose a voice')}<select data-pref="voiceURI" data-no-translate>${voiceOptions()}</select></label><p class="subtext" data-voice-availability></p><p class="preference-note">${words('可依聲音名稱試聽，挑選喜歡的男聲或女聲。瀏覽器不提供一致的性別／專業度資料；音高與語速可以調整，實際聲線以裝置提供為準。網路語音可能將朗讀文字交給系統的語音服務。','Preview named voices to find the sound you prefer, including male or female voices when available. Browsers do not standardize gender or expertise labels. Pitch and speed are adjustable; actual voices depend on your device. Network voices may send narration text to the operating system’s speech provider.')}</p><div class="preference-presets" role="group" aria-label="${words('講解節奏預設','Narration pace presets')}"><button type="button" class="chip" data-voice-preset="careful">${words('清楚慢講','Careful pace')}</button><button type="button" class="chip" data-voice-preset="natural">${words('自然節奏','Natural pace')}</button><button type="button" class="chip" data-voice-preset="brisk">${words('快速複習','Quick review')}</button></div><div class="preference-grid"><label>${words('語速','Speed')} <output data-pref-output="rate">${preferences.rate.toFixed(2)}×</output><input type="range" min="0.6" max="1.4" step="0.05" value="${preferences.rate}" data-pref="rate"></label><label>${words('音高','Pitch')} <output data-pref-output="pitch">${preferences.pitch.toFixed(2)}</output><input type="range" min="0.6" max="1.4" step="0.05" value="${preferences.pitch}" data-pref="pitch"></label></div><div class="dialog-actions"><button type="button" class="button" data-voice-test>${words('▶ 試聽聲音','▶ Preview voice')}</button><button type="button" class="button light" data-voice-stop>${words('停止試聽','Stop preview')}</button></div><p class="preference-note">${words('跟隨頁面時採用手動選擇或瀏覽器語言偏好，不以所在國家或 GPS 猜測。繁中／英文以外的講解須有已設定的翻譯服務；缺少翻譯或相符語音時保留文字閱讀。新的聲音設定會套用於下一段講解。','Follow page uses your manual choice or browser language preferences, not country or GPS. Narration outside the core Chinese / English languages needs a configured translation service. Missing translations or voices leave text available. New voice settings apply to the next narrated section.')}</p></fieldset><div class="dialog-actions"><button type="button" class="button light" data-preference-export>${words('匯出設定','Export preferences')}</button><label class="button light preference-import">${words('匯入設定','Import preferences')}<input type="file" accept="application/json,.json" data-preference-import></label><button type="button" class="text-link" data-preference-reset>${words('恢復預設','Restore defaults')}</button></div><p data-preference-status role="status" aria-live="polite">${describeSaved()}</p></form>`;
+    dialog.innerHTML=`<div class="dialog-head"><div><span class="eyebrow">PERSONAL WORKSPACE</span><h2>${words('我的工作室','My workspace')}</h2></div><button class="icon-btn" data-preference-close type="button" aria-label="${words('關閉','Close')}">×</button></div><p class="preference-profile" data-no-translate>${escape(options.getProfileName?.() || profileId)}</p><p class="subtext">${words('外觀與聲音設定依目前會員／學習檔案，分別存於此瀏覽器。可匯出後在另一部裝置匯入。','Appearance and voice preferences are saved separately for this member / profile in this browser. Export and import them on another device.')}</p><form data-preference-form><fieldset><legend>${words('桌面外觀','Workspace appearance')}</legend><div class="preference-grid"><label>${words('色彩主題','Color theme')}<select data-pref="theme">${[['system',words('跟隨系統','Follow system')],['light',words('淺色','Light')],['dark',words('深色','Dark')]].map(([id,title])=>`<option value="${id}" ${preferences.theme===id?'selected':''}>${title}</option>`).join('')}</select></label><label>${words('閱讀佈局','Reading layout')}<select data-pref="layout">${[['comfortable',words('舒適・較多留白','Comfortable · more space')],['compact',words('緊湊・更多內容','Compact · denser content')]].map(([id,title])=>`<option value="${id}" ${preferences.layout===id?'selected':''}>${title}</option>`).join('')}</select></label><label>${words('強調色','Accent colour')}<select data-pref="accent">${[['forest',words('森林綠（預設）','Forest green (default)')],['ocean',words('海洋藍','Ocean blue')],['amber',words('琥珀金','Amber')],['violet',words('科技紫','Violet')],['graphite',words('石墨灰','Graphite')]].map(([id,title])=>`<option value="${id}" ${preferences.accent===id?'selected':''}>${title}</option>`).join('')}</select></label><label>${words('字體大小','Text size')}<select data-pref="fontScale">${[[0.9,words('小','Small')],[1,words('標準','Standard')],[1.1,words('大','Large')],[1.2,words('特大','Extra large')]].map(([id,title])=>`<option value="${id}" ${preferences.fontScale===id?'selected':''}>${title}</option>`).join('')}</select></label><label>${words('側邊欄','Sidebar')}<select data-pref="sidebar">${[['full',words('完整（圖示＋文字）','Full (icons + labels)')],['compact',words('精簡（只顯示圖示）','Compact (icons only)')],['hidden',words('隱藏（專注模式，按 ☰ 開啟）','Hidden (focus mode, open with ☰)')]].map(([id,title])=>`<option value="${id}" ${preferences.sidebar===id?'selected':''}>${title}</option>`).join('')}</select></label></div></fieldset><fieldset><legend>${words('師傅講解聲音','Mentor narration')}</legend><div class="preference-grid"><label>${words('聲音性別','Voice gender')}<select data-pref="voiceGender">${[['any',words('不限','Any')],['female',words('女聲','Female')],['male',words('男聲','Male')]].map(([id,title])=>`<option value="${id}" ${preferences.voiceGender===id?'selected':''}>${title}</option>`).join('')}</select></label><label>${words('講解風格／專業度','Narration style')}<select data-pref="voiceStyle">${Object.entries(VOICE_STYLES).map(([id,v])=>`<option value="${id}" ${preferences.voiceStyle===id?'selected':''}>${words(v.zh,v.en)}</option>`).join('')}</select></label></div><label>${words('講解語言','Narration language')}<select data-pref="voiceLanguage" data-no-translate><option value="follow" ${preferences.voiceLanguage==='follow'?'selected':''}>${words('跟隨頁面／瀏覽器語言','Follow page / browser language')}</option>${list.map(code=>`<option value="${escape(code)}" ${preferences.voiceLanguage===code?'selected':''}>${escape(code)}</option>`).join('')}</select></label><label>${words('選擇聲音','Choose a voice')}<select data-pref="voiceURI" data-no-translate>${voiceOptions()}</select></label><p class="subtext" data-voice-availability></p><p class="preference-note">${words('可依聲音名稱試聽，挑選喜歡的男聲或女聲。瀏覽器不提供一致的性別／專業度資料；音高與語速可以調整，實際聲線以裝置提供為準。網路語音可能將朗讀文字交給系統的語音服務。','Preview named voices to find the sound you prefer, including male or female voices when available. Browsers do not standardize gender or expertise labels. Pitch and speed are adjustable; actual voices depend on your device. Network voices may send narration text to the operating system’s speech provider.')}</p><div class="preference-presets" role="group" aria-label="${words('講解節奏預設','Narration pace presets')}"><button type="button" class="chip" data-voice-preset="careful">${words('清楚慢講','Careful pace')}</button><button type="button" class="chip" data-voice-preset="natural">${words('自然節奏','Natural pace')}</button><button type="button" class="chip" data-voice-preset="brisk">${words('快速複習','Quick review')}</button></div><div class="preference-grid"><label>${words('語速','Speed')} <output data-pref-output="rate">${preferences.rate.toFixed(2)}×</output><input type="range" min="0.6" max="1.4" step="0.05" value="${preferences.rate}" data-pref="rate"></label><label>${words('音高','Pitch')} <output data-pref-output="pitch">${preferences.pitch.toFixed(2)}</output><input type="range" min="0.6" max="1.4" step="0.05" value="${preferences.pitch}" data-pref="pitch"></label></div><div class="dialog-actions"><button type="button" class="button" data-voice-test>${words('▶ 試聽聲音','▶ Preview voice')}</button><button type="button" class="button light" data-voice-stop>${words('停止試聽','Stop preview')}</button></div><p class="preference-note">${words('跟隨頁面時採用手動選擇或瀏覽器語言偏好，不以所在國家或 GPS 猜測。繁中／英文以外的講解須有已設定的翻譯服務；缺少翻譯或相符語音時保留文字閱讀。新的聲音設定會套用於下一段講解。','Follow page uses your manual choice or browser language preferences, not country or GPS. Narration outside the core Chinese / English languages needs a configured translation service. Missing translations or voices leave text available. New voice settings apply to the next narrated section.')}</p></fieldset><div class="dialog-actions"><button type="button" class="button light" data-preference-export>${words('匯出設定','Export preferences')}</button><label class="button light preference-import">${words('匯入設定','Import preferences')}<input type="file" accept="application/json,.json" data-preference-import></label><button type="button" class="text-link" data-preference-reset>${words('恢復預設','Restore defaults')}</button></div><p data-preference-status role="status" aria-live="polite">${describeSaved()}</p></form>`;
     dialog.querySelector('[data-preference-close]').onclick=()=>dialog.close();
     dialog.querySelector('[data-preference-form]').onsubmit=event=>event.preventDefault();
-    dialog.querySelectorAll('[data-pref]').forEach(input=>{input.addEventListener(input.type==='range'?'input':'change',()=>{const key=input.dataset.pref;update({[key]:input.type==='range'?Number(input.value):input.value,...(key==='voiceLanguage'?{voiceURI:''}:{})});const output=dialog.querySelector(`[data-pref-output="${key}"]`);if(output)output.textContent=preferences[key].toFixed(2)+(key==='rate'?'×':'');if(key==='voiceLanguage')refreshVoices();status(describeSaved())})});
+    dialog.querySelectorAll('[data-pref]').forEach(input=>{input.addEventListener(input.type==='range'?'input':'change',()=>{const key=input.dataset.pref;const raw=input.type==='range'||key==='fontScale'?Number(input.value):input.value;const style=key==='voiceStyle'&&VOICE_STYLES[raw]?.rate?{rate:VOICE_STYLES[raw].rate,pitch:VOICE_STYLES[raw].pitch}:{};const manual=key==='rate'||key==='pitch'?{voiceStyle:'custom'}:{};update({[key]:raw,...style,...manual,...(key==='voiceLanguage'||key==='voiceGender'?{voiceURI:''}:{})});if(key==='voiceStyle'||key==='voiceGender'){renderDialog();return}const output=dialog.querySelector(`[data-pref-output="${key}"]`);if(output&&typeof preferences[key]==='number')output.textContent=preferences[key].toFixed(2)+(key==='rate'?'×':'');if(key==='voiceLanguage')refreshVoices();status(describeSaved())})});
     dialog.querySelectorAll('[data-voice-preset]').forEach(button=>{button.onclick=()=>{const presets={careful:{rate:.8,pitch:1},natural:{rate:1,pitch:1},brisk:{rate:1.15,pitch:1}};update(presets[button.dataset.voicePreset]);renderDialog()}});
     dialog.querySelector('[data-voice-test]').onclick=()=>{
-      stopVoice();const spoken=getNarrationLanguage(),voice=choosePersonalVoice(voices(),spoken,preferences.voiceURI),Utterance=environment.SpeechSynthesisUtterance;
+      stopVoice();const spoken=getNarrationLanguage(),speech=getSpeechOptions(spoken),voice=voices().find(v=>v.voiceURI===speech.voiceURI)||null,Utterance=environment.SpeechSynthesisUtterance;
       if(!voice || !synth?.speak || !Utterance){status(words('目前沒有相符語音；請先安裝系統語音。','No matching voice is available; install a system voice first.'));return}
       const samples={zh:'先確認目標，再觀察證據，最後完成這一道工程工序。',en:'First confirm the objective. Then inspect the evidence and complete this engineering step.',ja:'目標を確認してから、証拠を観察し、この工程を完了しましょう。',ko:'목표를 확인하고 증거를 살펴본 뒤 이 공정 단계를 완료하세요.',es:'Primero confirma el objetivo. Después revisa las pruebas y completa este paso.',fr:'Confirmez l’objectif, examinez les preuves, puis terminez cette étape.',de:'Prüfen Sie zuerst das Ziel, dann die Nachweise, und schließen Sie diesen Schritt ab.',pt:'Confirme o objetivo, examine as evidências e conclua esta etapa.',it:'Conferma l’obiettivo, osserva le prove e completa questa fase.'};
       const sample=samples[base(spoken)] || `${voice.name}. 1, 2, 3.`;
-      const item=new Utterance(sample);speaking=item;item.lang=voice.lang;item.voice=voice;item.rate=preferences.rate;item.pitch=preferences.pitch;
+      const item=new Utterance(sample);speaking=item;item.lang=voice.lang;item.voice=voice;item.rate=speech.rate;item.pitch=speech.pitch;if(speech.genderApproximated)status(words('此裝置沒有相符性別的語音，已用音高近似；可在系統安裝更多語音。','No voice of that gender on this device; pitch is used as an approximation. Install more system voices for better results.'));
       item.onend=()=>{speaking=null;status(describeSaved())};item.onerror=()=>{speaking=null;status(words('語音未能播放；請試其他裝置語音。','Speech could not play; try another device voice.'))};
       try{synth.speak(item);status(words('正在試聽…','Playing preview…'))}catch{speaking=null;status(words('語音未能播放。','Speech could not play.'))}
     };
@@ -2490,6 +2916,8 @@ function bindShowcase(root=globalThis.document,{onRendered}={}) {
 }
 
 Object.defineProperty(exports, "DEFAULT_PREFERENCES", { enumerable: true, get: () => DEFAULT_PREFERENCES });
+Object.defineProperty(exports, "VOICE_STYLES", { enumerable: true, get: () => VOICE_STYLES });
+Object.defineProperty(exports, "voiceGender", { enumerable: true, get: () => voiceGender });
 Object.defineProperty(exports, "normalizePreferences", { enumerable: true, get: () => normalizePreferences });
 Object.defineProperty(exports, "preferenceKey", { enumerable: true, get: () => preferenceKey });
 Object.defineProperty(exports, "choosePersonalVoice", { enumerable: true, get: () => choosePersonalVoice });
@@ -2507,11 +2935,33 @@ async function loadVendors(){
  if(loading)return loading;
  loading=(async()=>{try{const data=globalThis.window?.MG_DATA?.vendors||await fetch('data/vendors.json',{signal:AbortSignal.timeout(12000)}).then(r=>{if(!r.ok)throw Error('Vendor data unavailable');return r.json();});if(Array.isArray(data?.vendors)&&Array.isArray(data?.courses))registry=data;}catch{}return registry;})();return loading;
 }
+let markets={quotes:{}},marketsLoading=null;
+async function loadMarkets(){
+ if(marketsLoading)return marketsLoading;
+ marketsLoading=(async()=>{try{const data=globalThis.window?.MG_DATA?.markets||await fetch('data/markets.json',{cache:'no-cache',signal:AbortSignal.timeout(12000)}).then(r=>{if(!r.ok)throw Error('Market snapshot unavailable');return r.json();});if(data&&typeof data.quotes==='object')markets=data;}catch{}return markets;})();return marketsLoading;
+}
+const TV={NASDAQ:'NASDAQ',NYSE:'NYSE',NYSEAMERICAN:'AMEX',TWSE:'TWSE',TPEx:'TPEX',TSE:'TSE',LSE:'LSE',XETRA:'XETR',ETR:'XETR',EPA:'EURONEXT',EURONEXT:'EURONEXT',AMS:'EURONEXT',EBR:'EURONEXT',SIX:'SIX',KRX:'KRX',KOSDAQ:'KRX',HKEX:'HKEX',SSE:'SSE',SZSE:'SZSE',STO:'OMXSTO',CPH:'OMXCOP',HEL:'OMXHEX',OSL:'OSL',MIL:'MIL',BIT:'MIL',BME:'BME',TSX:'TSX',ASX:'ASX',NSE:'NSE'};
+function tradingViewSymbol(security){if(!security?.symbol||!security?.exchange)return '';const sym=['STO','CPH','HEL'].includes(security.exchange)?String(security.symbol).replace(/-/g,'_'):String(security.symbol);return (TV[security.exchange]||security.exchange)+':'+sym;}
+const signed=(v,locale)=>typeof v==='number'&&Number.isFinite(v)?`<span class="${v>0?'up':v<0?'down':''}">${v>0?'+':''}${new Intl.NumberFormat(locale,{maximumFractionDigits:2}).format(v)}%</span>`:'<span>—</span>';
+function sparklineSvg(values=[],{width=160,height=40,label=''}={}){
+ const v=values.filter(x=>typeof x==='number'&&Number.isFinite(x));if(v.length<2)return '';
+ const min=Math.min(...v),max=Math.max(...v),span=max-min||1,step=width/(v.length-1);
+ const pts=v.map((x,i)=>`${(i*step).toFixed(1)},${(height-2-(x-min)/span*(height-4)).toFixed(1)}`).join(' ');
+ const up=v[v.length-1]>=v[0];
+ return `<svg class="sparkline ${up?'up':'down'}" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="${esc(label)}"><polyline fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" points="${pts}"/></svg>`;
+}
+function snapshotMarkup(vendor,{zh=true}={}){
+ const pick=(a,b)=>zh?a:b,q=markets.quotes?.[vendor.id],locale=zh?'zh-TW':undefined;
+ if(!q||!(q.price>0))return `<p class="subtext">${pick('尚無每週行情快照；請執行每週更新或開啟即時走勢。','No weekly snapshot yet; run the weekly update or open the live chart.')}</p>`;
+ const money=new Intl.NumberFormat(locale,{maximumFractionDigits:q.price<10?3:2}).format(q.price);
+ return `<div class="market-snapshot" data-no-translate><div class="market-head"><strong class="quote-price">${esc(q.currency||vendor.security?.currency||'')} ${esc(money)}</strong>${sparklineSvg(q.spark,{label:pick('近一年週收盤走勢','One-year weekly closing trend')})}</div><dl class="market-changes"><div><dt>1D</dt><dd>${signed(q.changePct1d,locale)}</dd></div><div><dt>1W</dt><dd>${signed(q.changePct1w,locale)}</dd></div><div><dt>1M</dt><dd>${signed(q.changePct1m,locale)}</dd></div><div><dt>YTD</dt><dd>${signed(q.changePctYtd,locale)}</dd></div><div><dt>1Y</dt><dd>${signed(q.changePct1y,locale)}</dd></div></dl>${q.high52?`<p class="subtext">${pick('52 週區間','52-week range')} ${esc(new Intl.NumberFormat(locale).format(q.low52))} – ${esc(new Intl.NumberFormat(locale).format(q.high52))}</p>`:''}<p class="subtext">${pick('收盤日','Close date')} ${esc(q.asOf||'')} · ${esc(q.source||'')}${q.stale?pick(' · 本週更新失敗，顯示上週資料',' · update failed this week; previous data shown'):''}</p>${q.nameMismatch?`<p class="notice warn">${pick('交易所登記名稱與本公司不一致，代號待站長核對：','The exchange lists a different company name; the ticker awaits review:')} <span data-no-translate>${esc(q.listedName||'')}</span></p>`:''}</div>`;
+}
 function vendorsMarkup(course,{zh=true}={}){
  const pick=(a,b)=>zh?a:b,association=registry.courses.find(c=>c.courseId===course.id);
  if(!association)return `<div data-vendors-slot="${esc(course.id)}"></div>`;
- const vendors=association.vendorIds.map(id=>registry.vendors.find(v=>v.id===id)).filter(Boolean);
- return `<section class="vendor-section task-card" data-vendors-slot="${esc(course.id)}"><span class="task-label">INDUSTRY · PRODUCTS · MARKET DATA</span><h3>${pick('從課程走進產業','Connect the course to industry')}</h3><p>${esc(pick(association.connection,association.connectionEn))}</p><div class="vendor-cards">${vendors.map(v=>{const role=association.roles?.find(r=>r.vendorId===v.id);return `<article class="vendor-card"><h4>${esc(pick(v.name,v.nameEn))}</h4><p>${esc(pick(v.business,v.businessEn))}</p>${role?.role?`<p class="subtext">${esc(pick(role.role,role.roleEn))}</p>`:''}<div class="vendor-links"><a href="${esc(url(role?.productUrl)||url(v.url))}" target="_blank" rel="noopener">${pick('官方業務／產品','Official business / products')} ↗</a>${url(v.investorUrl)?`<a href="${esc(url(v.investorUrl))}" target="_blank" rel="noopener">${pick('投資人資訊','Investor information')} ↗</a>`:''}</div>${v.security?`<div class="vendor-security" data-no-translate>${esc(v.security.exchange)}: ${esc(v.security.symbol)} · ${esc(v.security.currency)}</div><button class="button light" data-quote-vendor="${esc(v.id)}">${pick('取得最新可用股價','Get latest available quote')}</button><div class="quote-output" data-quote-output="${esc(v.id)}" role="status">${pick('點擊時查詢；沒有預先填入股價。','Fetched on request; no prefilled price.')}</div>`:`<p class="subtext">${pick('尚未設定可核對的上市證券；請查官方公司資訊。','No verified listed instrument is configured; consult the official company information.')}</p>`}<small>${pick('業務資料核對：','Business references checked: ')}${esc(v.reviewed)}</small></article>`;}).join('')}</div><p class="subtext">${pick('台股採證交所每日盤後開放資料，不是逐筆即時行情。其他市場需管理者設定有對外顯示權限的資料服務；未連接時保留官方連結。股價僅作產業觀察，不作課程品質排名。','Taiwan quotes use TWSE daily closing open data, not a real-time tick feed. Other markets require an operator-configured data service licensed for external display; official links remain available otherwise. Quotes support industry observation, not a ranking of course quality.')}</p></section>`;
+ const vendors=association.vendorIds.map(id=>registry.vendors.find(v=>v.id===id)).filter(Boolean).sort((a,b)=>(b.security?1:0)-(a.security?1:0));
+ const updated=markets.updatedAt?new Date(markets.updatedAt).toLocaleDateString(zh?'zh-TW':undefined):'';
+ return `<section class="vendor-section task-card" data-vendors-slot="${esc(course.id)}"><span class="task-label">INDUSTRY · COMPANIES · STOCK PERFORMANCE</span><h3>${pick('從課程走進產業：相關廠商與股價表現','From course to industry: related companies and stock performance')}</h3><p>${esc(pick(association.connection,association.connectionEn))}</p><div class="vendor-cards">${vendors.map(v=>{const role=association.roles?.find(r=>r.vendorId===v.id),tv=tradingViewSymbol(v.security);return `<article class="vendor-card"><div class="vendor-title"><h4>${esc(pick(v.name,v.nameEn))}</h4>${v.security?`<span class="vendor-security" data-no-translate>${esc(v.security.exchange)}: ${esc(v.security.symbol)}</span>${v.security.parent?`<span class="vendor-parent subtext">${pick('由母公司上市：','Listed via parent:')} <span data-no-translate>${esc(pick(v.security.parent,v.security.parentEn||v.security.parent))}</span></span>`:''}`:`<span class="vendor-security muted">${pick(v.entityType==='technical-source-publisher'?'技術資料來源':'未上市／機構','Unlisted / institution')}</span>`}</div><p>${esc(pick(role?.business||v.business,role?.businessEn||v.businessEn))}</p>${role?.role?`<p class="subtext"><strong>${pick('與本課的關係','Relation to this course')}</strong> · ${esc(pick(role.role,role.roleEn))}</p>`:''}<div class="vendor-links"><a href="${esc(url(role?.productUrl)||url(v.url))}" target="_blank" rel="noopener">${pick('官方業務介紹','Official business overview')} ↗</a>${url(v.investorUrl)?`<a href="${esc(url(v.investorUrl))}" target="_blank" rel="noopener">${pick('投資人關係','Investor relations')} ↗</a>`:''}${tv?`<a href="https://www.tradingview.com/symbols/${esc(tv.replace(':','-'))}/" target="_blank" rel="noopener">TradingView ↗</a>`:''}</div>${v.security?`${snapshotMarkup(v,{zh})}<div class="vendor-actions"><button class="button light" data-live-chart="${esc(tv)}">${pick('載入即時走勢圖','Load live chart')}</button>${globalThis.MG_STATIC_MODE===true?'':`<button class="text-link" data-quote-vendor="${esc(v.id)}">${pick('伺服器報價','Server quote')}</button>`}</div><div class="live-chart" data-live-chart-slot="${esc(tv)}"></div><div class="quote-output" data-quote-output="${esc(v.id)}" role="status"></div>`:''}</article>`;}).join('')}</div><p class="subtext">${pick(`股價為每週更新的延遲快照${updated?`（最近更新 ${esc(updated)}）`:''}；「載入即時走勢圖」會在你點擊後連線 TradingView 顯示交易所的即時或延遲報價。行情僅供產業觀察，不構成投資建議，也不代表廠商與本課程有合作關係。`,`Prices are a weekly delayed snapshot${updated?` (last updated ${esc(updated)})`:''}; “Load live chart” connects to TradingView after you click and shows real-time or delayed exchange quotes. Market data supports industry context only — not investment advice, and no partnership with the course is implied.`)}</p></section>`;
 }
 function quoteMarkup(data,zh=true){
  const pick=(a,b)=>zh?a:b;
@@ -2521,7 +2971,22 @@ function quoteMarkup(data,zh=true){
  const asof=String(data.asOf||''),stamp=new Date(data.retrievedAt),retrieved=Number.isFinite(stamp.getTime())?stamp.toLocaleString(zh?'zh-TW':'en'):data.retrievedAt;
  return `<div data-no-translate><strong class="quote-price">${esc(data.currency)} ${esc(fmt(data.price))}</strong><span class="quote-change">${numeric(data.change)?(data.change>=0?'+':'')+esc(fmt(data.change)):'—'} ${numeric(data.changePercent)?'('+esc(fmt(data.changePercent))+'%)':''}</span></div><dl class="quote-meta"><dt>${pick('交易／報價時間','Trading / quote time')}</dt><dd data-no-translate>${esc(asof)} · ${esc(data.timeZone||'')}</dd><dt>${pick('取得時間','Retrieved')}</dt><dd data-no-translate>${esc(retrieved)}</dd><dt>${pick('資料頻率','Frequency')}</dt><dd>${data.frequency==='end-of-day'?pick('每日盤後','End of day'):pick('依供應商授權行情；最多快取 60 秒','Licensed provider feed; cached for up to 60 seconds')}</dd></dl><a href="${esc(url(data.sourceUrl))}" target="_blank" rel="noopener">${esc(data.source||'')} ↗</a>${url(data.licenseUrl)?` · <a href="${esc(url(data.licenseUrl))}" target="_blank" rel="noopener">${pick('資料授權','Data license')} ↗</a>`:''}`;
 }
+/* Official TradingView embed code, isolated in a sandboxed srcdoc frame (opaque
+ * origin: the widget cannot read this site's storage or cookies). Loaded only
+ * after the learner clicks. */
+function liveChartMarkup(symbol,{zh=true,dark=false}={}){
+ if(!/^[A-Z]{2,10}:[A-Z0-9_.-]{1,15}$/.test(symbol||''))return '';
+ const config=JSON.stringify({symbol,width:'100%',height:220,locale:zh?'zh_TW':'en',dateRange:'12M',colorTheme:dark?'dark':'light',isTransparent:true,autosize:true,largeChartUrl:'',noTimeScale:false}).replace(/</g,'\\u003c');
+ return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;background:transparent}</style></head><body><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>${config}</script></div></body></html>`;
+}
 function bindVendors(root,{zh=true,onRendered=()=>{}}={}){
+ root.querySelectorAll('[data-live-chart]').forEach(button=>button.onclick=()=>{
+  const symbol=button.dataset.liveChart,slot=button.closest('.vendor-card')?.querySelector('[data-live-chart-slot]');if(!slot)return;
+  const src=liveChartMarkup(symbol,{zh,dark:document.documentElement.dataset.theme==='dark'});if(!src){slot.textContent=zh?'此代號無法顯示即時走勢。':'No live chart for this symbol.';return;}
+  const frame=document.createElement('iframe');frame.srcdoc=src;frame.title=(zh?'即時走勢：':'Live chart: ')+symbol;frame.loading='lazy';frame.referrerPolicy='no-referrer-when-downgrade';frame.setAttribute('sandbox','allow-scripts allow-popups allow-popups-to-escape-sandbox');frame.style.cssText='width:100%;height:230px;border:0';
+  const credit=document.createElement('p');credit.className='subtext';credit.innerHTML='<a href="https://www.tradingview.com/" target="_blank" rel="noopener">'+(zh?'行情圖表由 TradingView 提供 ↗':'Chart by TradingView ↗')+'</a>';
+  slot.replaceChildren(frame,credit);button.disabled=true;onRendered();
+ });
  root.querySelectorAll('[data-quote-vendor]').forEach(button=>button.onclick=async()=>{
   const output=button.parentElement.querySelector('[data-quote-output]');button.disabled=true;output.textContent=zh?'正在查詢…':'Fetching…';
   try{if(globalThis.location?.protocol==='file:')throw Error('offline');const r=await fetch('/api/markets?vendor='+encodeURIComponent(button.dataset.quoteVendor),{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('source');const data=await r.json();if(!output.isConnected)return;output.innerHTML=quoteMarkup(data,zh);onRendered();}
@@ -2530,16 +2995,452 @@ function bindVendors(root,{zh=true,onRendered=()=>{}}={}){
 }
 
 Object.defineProperty(exports, "loadVendors", { enumerable: true, get: () => loadVendors });
+Object.defineProperty(exports, "loadMarkets", { enumerable: true, get: () => loadMarkets });
+Object.defineProperty(exports, "tradingViewSymbol", { enumerable: true, get: () => tradingViewSymbol });
+Object.defineProperty(exports, "sparklineSvg", { enumerable: true, get: () => sparklineSvg });
+Object.defineProperty(exports, "snapshotMarkup", { enumerable: true, get: () => snapshotMarkup });
 Object.defineProperty(exports, "vendorsMarkup", { enumerable: true, get: () => vendorsMarkup });
 Object.defineProperty(exports, "quoteMarkup", { enumerable: true, get: () => quoteMarkup });
+Object.defineProperty(exports, "liveChartMarkup", { enumerable: true, get: () => liveChartMarkup });
 Object.defineProperty(exports, "bindVendors", { enumerable: true, get: () => bindVendors });
+},
+"pricing.js":function(require, exports) {
+'use strict';
+/* V12 regional pricing. Plans are defined in TWD (data/pricing.json); other
+ * currencies are TWD × the weekly FX snapshot (data/fx.json), rounded UP to
+ * the currency's minor unit. The server recomputes every charge, so these
+ * figures are display estimates until the checkout quote is returned.
+ * Location is inferred only from the browser time zone and language region —
+ * no GPS or IP lookup. The learner can override the currency.
+ */
+const CURRENCY_KEY = 'mg-currency-v12';
+const DEFAULT_PRICING = {
+  version: 12, baseCurrency: 'TWD',
+  plans: [
+    {id: 'all-30', title: '30 天學習通行證', titleEn: '30-day learning pass', amountTwd: 299, durationDays: 30},
+    {id: 'all-365', title: '365 天學習通行證', titleEn: '365-day learning pass', amountTwd: 2490, durationDays: 365}
+  ],
+  freePolicy: {freeStagesPerCourse: 1},
+  chargeCurrencies: {paypal: ['AUD','CAD','CHF','CZK','DKK','EUR','GBP','HKD','HUF','ILS','JPY','MXN','NOK','NZD','PHP','PLN','SEK','SGD','THB','TWD','USD'], ecpay: ['TWD']},
+  fallbackChargeCurrency: 'USD',
+  zeroDecimal: ['BIF','CLP','DJF','GNF','HUF','IDR','ISK','JPY','KMF','KRW','MGA','PYG','RWF','TWD','UGX','VND','VUV','XAF','XOF','XPF'],
+  fxMaxAgeDays: 10
+};
+/* Time zone → ISO country (major zones; others fall back to language region). */
+const ZONE_COUNTRY = {
+  'Asia/Taipei':'TW','Asia/Tokyo':'JP','Asia/Seoul':'KR','Asia/Shanghai':'CN','Asia/Chongqing':'CN','Asia/Urumqi':'CN','Asia/Hong_Kong':'HK','Asia/Macau':'MO','Asia/Singapore':'SG','Asia/Kuala_Lumpur':'MY','Asia/Kuching':'MY','Asia/Bangkok':'TH','Asia/Ho_Chi_Minh':'VN','Asia/Saigon':'VN','Asia/Jakarta':'ID','Asia/Makassar':'ID','Asia/Jayapura':'ID','Asia/Manila':'PH','Asia/Kolkata':'IN','Asia/Calcutta':'IN','Asia/Karachi':'PK','Asia/Dhaka':'BD','Asia/Colombo':'LK','Asia/Kathmandu':'NP','Asia/Yangon':'MM','Asia/Phnom_Penh':'KH','Asia/Vientiane':'LA','Asia/Ulaanbaatar':'MN','Asia/Almaty':'KZ','Asia/Tashkent':'UZ','Asia/Baku':'AZ','Asia/Tbilisi':'GE','Asia/Yerevan':'AM','Asia/Dubai':'AE','Asia/Riyadh':'SA','Asia/Qatar':'QA','Asia/Kuwait':'KW','Asia/Bahrain':'BH','Asia/Muscat':'OM','Asia/Amman':'JO','Asia/Jerusalem':'IL','Asia/Tel_Aviv':'IL','Asia/Tehran':'IR','Asia/Baghdad':'IQ','Asia/Beirut':'LB',
+  'Europe/London':'GB','Europe/Dublin':'IE','Europe/Lisbon':'PT','Europe/Madrid':'ES','Europe/Paris':'FR','Europe/Brussels':'BE','Europe/Amsterdam':'NL','Europe/Luxembourg':'LU','Europe/Berlin':'DE','Europe/Zurich':'CH','Europe/Vienna':'AT','Europe/Rome':'IT','Europe/Malta':'MT','Europe/Copenhagen':'DK','Europe/Oslo':'NO','Europe/Stockholm':'SE','Europe/Helsinki':'FI','Europe/Tallinn':'EE','Europe/Riga':'LV','Europe/Vilnius':'LT','Europe/Warsaw':'PL','Europe/Prague':'CZ','Europe/Bratislava':'SK','Europe/Budapest':'HU','Europe/Ljubljana':'SI','Europe/Zagreb':'HR','Europe/Belgrade':'RS','Europe/Sarajevo':'BA','Europe/Skopje':'MK','Europe/Tirane':'AL','Europe/Athens':'GR','Europe/Sofia':'BG','Europe/Bucharest':'RO','Europe/Chisinau':'MD','Europe/Kiev':'UA','Europe/Kyiv':'UA','Europe/Minsk':'BY','Europe/Moscow':'RU','Europe/Istanbul':'TR','Atlantic/Reykjavik':'IS',
+  'America/New_York':'US','America/Detroit':'US','America/Chicago':'US','America/Denver':'US','America/Phoenix':'US','America/Los_Angeles':'US','America/Anchorage':'US','Pacific/Honolulu':'US','America/Toronto':'CA','America/Vancouver':'CA','America/Edmonton':'CA','America/Winnipeg':'CA','America/Halifax':'CA','America/Mexico_City':'MX','America/Monterrey':'MX','America/Tijuana':'MX','America/Bogota':'CO','America/Lima':'PE','America/Santiago':'CL','America/Argentina/Buenos_Aires':'AR','America/Buenos_Aires':'AR','America/Sao_Paulo':'BR','America/Manaus':'BR','America/Caracas':'VE','America/Montevideo':'UY','America/Asuncion':'PY','America/La_Paz':'BO','America/Guayaquil':'EC','America/Panama':'PA','America/Costa_Rica':'CR','America/Guatemala':'GT','America/Santo_Domingo':'DO',
+  'Australia/Sydney':'AU','Australia/Melbourne':'AU','Australia/Brisbane':'AU','Australia/Perth':'AU','Australia/Adelaide':'AU','Australia/Hobart':'AU','Australia/Darwin':'AU','Pacific/Auckland':'NZ','Pacific/Fiji':'FJ',
+  'Africa/Johannesburg':'ZA','Africa/Lagos':'NG','Africa/Nairobi':'KE','Africa/Cairo':'EG','Africa/Casablanca':'MA','Africa/Algiers':'DZ','Africa/Tunis':'TN','Africa/Accra':'GH','Africa/Addis_Ababa':'ET','Africa/Dar_es_Salaam':'TZ','Africa/Kampala':'UG','Africa/Kigali':'RW','Africa/Dakar':'SN','Africa/Abidjan':'CI'
+};
+const EURO = 'AT BE CY DE EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK'.split(' ');
+const COUNTRY_CURRENCY = Object.assign(Object.fromEntries(EURO.map(c => [c, 'EUR'])), {
+  TW:'TWD', JP:'JPY', KR:'KRW', CN:'CNY', HK:'HKD', MO:'MOP', SG:'SGD', MY:'MYR', TH:'THB', VN:'VND', ID:'IDR', PH:'PHP', IN:'INR', PK:'PKR', BD:'BDT', LK:'LKR', NP:'NPR', MM:'MMK', KH:'KHR', LA:'LAK', MN:'MNT', KZ:'KZT', UZ:'UZS', AZ:'AZN', GE:'GEL', AM:'AMD', AE:'AED', SA:'SAR', QA:'QAR', KW:'KWD', BH:'BHD', OM:'OMR', JO:'JOD', IL:'ILS', IR:'IRR', IQ:'IQD', LB:'LBP',
+  GB:'GBP', CH:'CHF', LI:'CHF', DK:'DKK', NO:'NOK', SE:'SEK', IS:'ISK', PL:'PLN', CZ:'CZK', HU:'HUF', RS:'RSD', BA:'BAM', MK:'MKD', AL:'ALL', BG:'BGN', RO:'RON', MD:'MDL', UA:'UAH', BY:'BYN', RU:'RUB', TR:'TRY',
+  US:'USD', CA:'CAD', MX:'MXN', CO:'COP', PE:'PEN', CL:'CLP', AR:'ARS', BR:'BRL', VE:'VES', UY:'UYU', PY:'PYG', BO:'BOB', EC:'USD', PA:'USD', CR:'CRC', GT:'GTQ', DO:'DOP', SV:'USD', PR:'USD',
+  AU:'AUD', NZ:'NZD', FJ:'FJD', ZA:'ZAR', NG:'NGN', KE:'KES', EG:'EGP', MA:'MAD', DZ:'DZD', TN:'TND', GH:'GHS', ET:'ETB', TZ:'TZS', UG:'UGX', RW:'RWF', SN:'XOF', CI:'XOF'
+});
+/* Language without a region → most common country for currency purposes. */
+const LANGUAGE_COUNTRY = {ja:'JP', ko:'KR', de:'DE', fr:'FR', it:'IT', es:'ES', pt:'BR', nl:'NL', sv:'SE', da:'DK', no:'NO', nb:'NO', fi:'FI', pl:'PL', cs:'CZ', sk:'SK', hu:'HU', ro:'RO', bg:'BG', el:'GR', tr:'TR', ru:'RU', uk:'UA', he:'IL', ar:'SA', fa:'IR', hi:'IN', bn:'BD', th:'TH', vi:'VN', id:'ID', ms:'MY', fil:'PH', tl:'PH', km:'KH', lo:'LA', my:'MM', mn:'MN', kk:'KZ', uz:'UZ', az:'AZ', ka:'GE', hy:'AM', sw:'KE', am:'ET', zu:'ZA', af:'ZA', is:'IS', et:'EE', lv:'LV', lt:'LT', sl:'SI', hr:'HR', sr:'RS', mk:'MK', sq:'AL', en:'US'};
+
+let pricing = DEFAULT_PRICING, fx = {base: 'TWD', rates: {TWD: 1}, updatedAt: null, status: 'missing'}, loaded = null;
+
+function storage() { try { return globalThis.localStorage; } catch { return null; } }
+function country(tag) { const m = String(tag || '').replaceAll('_', '-').match(/-([A-Za-z]{2})(?:-|$)/); return m ? m[1].toUpperCase() : ''; }
+
+/** Best-effort viewer country from time zone, then language region. */
+function detectCountry(env = globalThis) {
+  let zone = '';
+  try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch {}
+  if (ZONE_COUNTRY[zone]) return {country: ZONE_COUNTRY[zone], basis: 'timezone', zone};
+  const langs = [...(env.navigator?.languages || []), env.navigator?.language].filter(Boolean);
+  for (const tag of langs) { const c = country(tag); if (c) return {country: c, basis: 'language', zone}; }
+  const base = String(langs[0] || 'en').toLowerCase().split('-')[0];
+  return {country: LANGUAGE_COUNTRY[base] || 'US', basis: 'language-default', zone};
+}
+function currencyForCountry(code) { return COUNTRY_CURRENCY[String(code || '').toUpperCase()] || 'USD'; }
+
+async function loadPricing({fetchImpl = globalThis.fetch} = {}) {
+  if (loaded) return loaded;
+  loaded = (async () => {
+    const data = globalThis.MG_DATA || {};
+    try { pricing = data.pricing || await fetchImpl('data/pricing.json', {cache: 'no-cache'}).then(r => { if (!r.ok) throw Error(); return r.json(); }); } catch { pricing = DEFAULT_PRICING; }
+    try { fx = data.fx || await fetchImpl('data/fx.json', {cache: 'no-cache'}).then(r => { if (!r.ok) throw Error(); return r.json(); }); } catch { fx = {base: 'TWD', rates: {TWD: 1}, updatedAt: null, status: 'missing'}; }
+    if (!fx?.rates || typeof fx.rates !== 'object') fx = {base: 'TWD', rates: {TWD: 1}, updatedAt: null, status: 'missing'};
+    fx.rates.TWD = 1;
+    return {pricing, fx};
+  })();
+  return loaded;
+}
+function pricingState() { return {pricing, fx}; }
+function plans() { return pricing.plans || DEFAULT_PRICING.plans; }
+function freeStages() { const n = Number(pricing.freePolicy?.freeStagesPerCourse); return Number.isInteger(n) && n >= 0 ? n : 1; }
+
+function minorDigits(currency) {
+  if ((pricing.zeroDecimal || DEFAULT_PRICING.zeroDecimal).includes(currency)) return 0;
+  if (['BHD', 'JOD', 'KWD', 'OMR', 'TND', 'IQD', 'LYD'].includes(currency)) return 3;
+  return 2;
+}
+/** TWD × rate rounded up to the minor unit; null when no rate is known. */
+function convertTwd(amountTwd, currency, rates = fx.rates) {
+  if (currency === 'TWD') return amountTwd;
+  const rate = Number(rates?.[currency]);
+  if (!Number.isFinite(rate) || rate <= 0) return null;
+  const scale = 10 ** minorDigits(currency);
+  return Math.ceil(amountTwd * rate * scale - 1e-9) / scale;
+}
+function formatMoney(amount, currency, locale) {
+  if (amount === null || amount === undefined || !Number.isFinite(Number(amount))) return '—';
+  const digits = minorDigits(currency);
+  if (currency === 'TWD') { try { return 'NT$' + new Intl.NumberFormat(locale || undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}).format(amount); } catch { return 'NT$' + Math.round(amount); } }
+  try { return new Intl.NumberFormat(locale || undefined, {style: 'currency', currency, currencyDisplay: 'symbol', minimumFractionDigits: digits, maximumFractionDigits: digits}).format(amount); }
+  catch { return `${currency} ${Number(amount).toFixed(minorDigits(currency))}`; }
+}
+function availableCurrencies() {
+  const known = new Set(Object.keys(fx.rates || {}).filter(c => /^[A-Z]{3}$/.test(c)));
+  const preferred = ['TWD', 'USD', 'EUR', 'JPY', 'KRW', 'CNY', 'HKD', 'SGD', 'GBP', 'AUD', 'CAD'];
+  return [...new Set([...preferred.filter(c => known.has(c)), ...[...known].sort()])];
+}
+function selectedCurrency(env = globalThis) {
+  let saved = '';
+  try { saved = storage()?.getItem(CURRENCY_KEY) || ''; } catch {}
+  if (/^[A-Z]{3}$/.test(saved) && (saved === 'TWD' || fx.rates?.[saved])) return {currency: saved, basis: 'manual'};
+  const where = detectCountry(env), currency = currencyForCountry(where.country);
+  return {currency: currency === 'TWD' || fx.rates?.[currency] ? currency : 'USD', basis: where.basis, country: where.country, zone: where.zone};
+}
+function setCurrency(code) { try { if (/^[A-Z]{3}$/.test(code)) storage()?.setItem(CURRENCY_KEY, code); else storage()?.removeItem(CURRENCY_KEY); } catch {} }
+/** Currency that will actually be charged for a provider. */
+function chargeCurrency(provider, wanted) {
+  const list = pricing.chargeCurrencies?.[provider] || [];
+  if (list.includes(wanted)) return wanted;
+  return provider === 'ecpay' ? 'TWD' : (pricing.fallbackChargeCurrency || 'USD');
+}
+function fxAgeDays(now = Date.now()) {
+  const t = Date.parse(fx.updatedAt || '');
+  return Number.isFinite(t) ? Math.max(0, (now - t) / 86400000) : Infinity;
+}
+function priceTable(currency, locale) {
+  return plans().map(plan => {
+    const local = convertTwd(plan.amountTwd, currency);
+    return {...plan, currency, amount: local, display: formatMoney(local, currency, locale), twdDisplay: formatMoney(plan.amountTwd, 'TWD', locale)};
+  });
+}
+
+Object.defineProperty(exports, "detectCountry", { enumerable: true, get: () => detectCountry });
+Object.defineProperty(exports, "currencyForCountry", { enumerable: true, get: () => currencyForCountry });
+Object.defineProperty(exports, "loadPricing", { enumerable: true, get: () => loadPricing });
+Object.defineProperty(exports, "pricingState", { enumerable: true, get: () => pricingState });
+Object.defineProperty(exports, "plans", { enumerable: true, get: () => plans });
+Object.defineProperty(exports, "freeStages", { enumerable: true, get: () => freeStages });
+Object.defineProperty(exports, "minorDigits", { enumerable: true, get: () => minorDigits });
+Object.defineProperty(exports, "convertTwd", { enumerable: true, get: () => convertTwd });
+Object.defineProperty(exports, "formatMoney", { enumerable: true, get: () => formatMoney });
+Object.defineProperty(exports, "availableCurrencies", { enumerable: true, get: () => availableCurrencies });
+Object.defineProperty(exports, "selectedCurrency", { enumerable: true, get: () => selectedCurrency });
+Object.defineProperty(exports, "setCurrency", { enumerable: true, get: () => setCurrency });
+Object.defineProperty(exports, "chargeCurrency", { enumerable: true, get: () => chargeCurrency });
+Object.defineProperty(exports, "fxAgeDays", { enumerable: true, get: () => fxAgeDays });
+Object.defineProperty(exports, "priceTable", { enumerable: true, get: () => priceTable });
+},
+"paywall.js":function(require, exports) {
+'use strict';
+/* V12 course access policy: the first stage ("第一節") of every guided course is
+ * free; every other stage needs an active learning pass.
+ *
+ * Where the decision is enforced:
+ *  - Python protected server (billing.protected): the server strips paid stages.
+ *  - Supabase cloud: paid stage content can be removed from the public export
+ *    and served from table course_content, readable only with an entitlement.
+ *  - Plain static hosting without either: the lock is a UI policy only. The
+ *    public JSON remains downloadable, so the owner must enable the protected
+ *    export (see docs/PAYMENTS_V12_ZH.md) before selling real access.
+ *  - The owner's offline package (file://) shows everything as a preview.
+ */
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+let settings = {enabled: true, freeStagesPerCourse: 1, ownerPreviewOnFile: true};
+let state = {mode: 'local', active: false, expiresAt: null, planId: '', checked: false, error: ''};
+let deps = {billing: () => ({}), cloud: () => null};
+const contentCache = new Map();
+
+function configurePaywall({config = globalThis.MG_CONFIG || {}, freeStages = 1, billing, cloud} = {}) {
+  const c = config.paywall || {};
+  settings = {
+    enabled: c.enabled !== false,
+    freeStagesPerCourse: Number.isInteger(c.freeStagesPerCourse) && c.freeStagesPerCourse >= 0 ? c.freeStagesPerCourse : freeStages,
+    ownerPreviewOnFile: c.ownerPreviewOnFile !== false
+  };
+  if (billing) deps.billing = billing;
+  if (cloud) deps.cloud = cloud;
+  state.mode = modeNow();
+  return {...settings};
+}
+function modeNow() {
+  if (!settings.enabled) return 'disabled';
+  if (globalThis.location?.protocol === 'file:' && settings.ownerPreviewOnFile) return 'owner-preview';
+  if (deps.billing()?.protected) return 'server';
+  if (deps.cloud()?.configured) return 'cloud';
+  return 'local';
+}
+function accessState() { return {...state, mode: modeNow(), freeStages: settings.freeStagesPerCourse}; }
+function freeStageCount() { return settings.freeStagesPerCourse; }
+function hasFullAccess() {
+  const mode = modeNow();
+  return mode === 'disabled' || mode === 'owner-preview' || state.active === true;
+}
+function stageIsFree(stageIndex) { return Number(stageIndex) < settings.freeStagesPerCourse; }
+/** step must come from allSteps() (it carries stageIndex). */
+function stepLocked(course, step) {
+  if (!course || !step) return false;
+  if (step.locked === true && !hasFullAccess()) return true;
+  if (hasFullAccess()) return step.locked === true && !step.instruction && !step.objective;
+  return !stageIsFree(step.stageIndex ?? 0);
+}
+function firstLockedIndex(course, steps) { return steps.findIndex(s => stepLocked(course, s)); }
+
+/** Refresh entitlement. Never throws; failures keep the course locked. */
+async function refreshAccess({user = null} = {}) {
+  const mode = modeNow();
+  state = {...state, mode, checked: true, error: ''};
+  try {
+    if (mode === 'server') {
+      const billing = deps.billing() || {};
+      state.active = !!billing.entitlement?.active;
+      state.expiresAt = billing.entitlement?.expiresAt || null;
+      if (user && globalThis.fetch) {
+        const r = await fetch('/api/billing/me', {credentials: 'same-origin', cache: 'no-store'});
+        if (r.ok) {
+          const data = await r.json(), now = Date.now() / 1000;
+          const live = (data.entitlements || []).filter(e => !e.revokedAt && Number(e.expiresAt) > now && Number(e.startsAt || 0) <= now);
+          state.active = live.length > 0;
+          state.expiresAt = live.length ? Math.max(...live.map(e => Number(e.expiresAt))) * 1000 : null;
+        }
+      }
+    } else if (mode === 'cloud') {
+      const cloud = deps.cloud();
+      if (!user || !cloud?.myAccess) { state.active = false; state.expiresAt = null; }
+      else {
+        const access = await cloud.myAccess();
+        state.active = access?.active === true;
+        state.expiresAt = access?.expiresAt ? Date.parse(access.expiresAt) || null : null;
+        state.planId = access?.planId || '';
+      }
+    } else {
+      state.active = false; state.expiresAt = null;
+    }
+  } catch (error) {
+    state.active = false; state.error = String(error?.message || error);
+  }
+  return accessState();
+}
+
+/** Replace stub stages with protected content from Supabase when entitled. */
+async function hydrateProtectedStages(course) {
+  const cloud = deps.cloud();
+  if (!course?.stages || modeNow() !== 'cloud' || !state.active || !cloud?.loadCourseContent) return course;
+  const stubs = course.stages.some((stage, i) => !stageIsFree(i) && stage.steps?.some(s => s.locked === true));
+  if (!stubs) return course;
+  const key = course.id;
+  if (!contentCache.has(key)) contentCache.set(key, cloud.loadCourseContent(course.id).catch(error => { contentCache.delete(key); throw error; }));
+  const rows = await contentCache.get(key);
+  const byIndex = new Map((rows || []).map(row => [Number(row.stage_index), row.payload]));
+  course.stages = course.stages.map((stage, i) => {
+    const full = byIndex.get(i);
+    if (!full || full.id !== stage.id || !Array.isArray(full.steps)) return stage;
+    const ids = stage.steps.map(s => s.id).join('|');
+    return full.steps.map(s => s.id).join('|') === ids ? full : stage;
+  });
+  return course;
+}
+
+function stageBadge(stageIndex, {zh = true} = {}) {
+  if (modeNow() === 'disabled') return '';
+  if (stageIsFree(stageIndex)) return `<span class="pay-badge free">${zh ? '免費試學' : 'Free'}</span>`;
+  return hasFullAccess() ? `<span class="pay-badge open">${zh ? '已解鎖' : 'Unlocked'}</span>` : `<span class="pay-badge locked">🔒 ${zh ? '會員' : 'Members'}</span>`;
+}
+
+function courseAccessSummary(course, {zh = true, priceText = ''} = {}) {
+  const mode = modeNow(), pick = (a, b) => zh ? a : b;
+  if (!course?.stages || mode === 'disabled') return '';
+  const total = course.stages.reduce((n, st) => n + (st.steps?.length || 0), 0);
+  const free = course.stages.slice(0, settings.freeStagesPerCourse).reduce((n, st) => n + (st.steps?.length || 0), 0);
+  const paid = Math.max(0, total - free);
+  let status;
+  if (mode === 'owner-preview') status = pick('擁有者離線預覽：此版本可看全部內容；正式網站只開放第一節免費。', 'Owner offline preview: everything is visible here; the public site keeps only the first section free.');
+  else if (state.active) status = pick('你的學習通行證有效，可學習全部階段。', 'Your learning pass is active; every stage is unlocked.') + (state.expiresAt ? ` ${pick('到期：', 'Expires: ')}${new Date(state.expiresAt).toLocaleDateString(zh ? 'zh-TW' : undefined)}` : '');
+  else status = pick(`第一節（${free} 步）免費試學；其餘 ${paid} 步需學習通行證${priceText ? '，' + priceText + ' 起' : ''}。`, `The first section (${free} steps) is free; the other ${paid} steps need a learning pass${priceText ? ', from ' + priceText : ''}.`);
+  return `<div class="course-access paywall-summary ${state.active || mode === 'owner-preview' ? '' : 'locked'}"><span>${pick('第一節免費 · 其餘會員', 'FIRST SECTION FREE · MEMBERS')}</span><p>${esc(status)}</p>${state.active || mode === 'owner-preview' ? '' : `<a class="button light" href="#membership">${pick('查看會員方案', 'View membership plans')} ↗</a>`}</div>`;
+}
+
+function lockedStepMarkup(course, step, {zh = true, priceText = '', signedIn = false, firstFreeIndex = 0} = {}) {
+  const pick = (a, b) => zh ? a : b, mode = modeNow();
+  const title = zh ? (step.title || step.titleEn) : (step.titleEn || step.title);
+  const stage = zh ? (step.stage?.title || step.stage?.titleEn) : (step.stage?.titleEn || step.stage?.title);
+  const unlockNote = mode === 'local'
+    ? pick('此網站尚未由站長啟用線上付款；啟用後即可購買通行證解鎖。', 'Online payment has not been enabled by the site owner yet; once it is, a pass unlocks this content.')
+    : pick('購買學習通行證後，所有逐步課程的全部階段都會解鎖，並保存你的學習紀錄。', 'A learning pass unlocks every stage of every guided course and keeps your learning records.');
+  return `<section class="task-card paywall-step" id="paywallStep"><span class="task-label">🔒 ${pick('會員內容', 'MEMBERS ONLY')} · ${esc(stage || '')}</span><h2>${esc(title || '')}</h2><p>${pick('本課第一節為免費試學，從這一節起需要有效的學習通行證。', 'The first section of this course is free; from this section on, an active learning pass is required.')}</p><ul class="paywall-includes"><li>${pick('全部 ', 'All ')}${course.stepCount || ''} ${pick('步逐步任務、知識點與驗收', 'guided tasks, knowledge points and checks')}</li><li>${pick('師傅示範、互動工作台與 AI 師傅', 'Mentor demonstrations, interactive workbench and AI mentor')}</li><li>${pick('跨裝置學習紀錄與平台完成證書', 'Cross-device records and platform completion certificates')}</li></ul><p class="subtext">${esc(unlockNote)}</p>${priceText ? `<p class="paywall-price">${pick('通行證', 'Pass')} <strong>${esc(priceText)}</strong> ${pick('起', 'and up')}</p>` : ''}<div class="dialog-actions"><a class="button" href="#membership">${pick('查看方案與付款', 'Plans & checkout')} ↗</a>${signedIn ? '' : `<button class="button light" data-paywall-login>${pick('登入／註冊', 'Sign in / register')}</button>`}<button class="text-link" data-step="${Number(firstFreeIndex) || 0}">${pick('回到免費第一節', 'Back to the free first section')}</button></div></section>`;
+}
+
+/** Strip paid stages for a public export (used by tools, also unit-tested). */
+function publicStubCourse(course, freeStages = settings.freeStagesPerCourse) {
+  return {...course, stages: (course.stages || []).map((stage, i) => i < freeStages ? stage : {
+    id: stage.id, order: stage.order, title: stage.title, titleEn: stage.titleEn,
+    steps: (stage.steps || []).map(s => ({id: s.id, order: s.order, sequence: s.sequence, title: s.title, titleEn: s.titleEn, locked: true, prerequisiteIds: s.prerequisiteIds || [], sourceIds: s.sourceIds || [], knowledge: [], quiz: {question: '', questionEn: '', options: ['', '', ''], optionsEn: ['', '', ''], answer: 0}}))
+  })};
+}
+
+Object.defineProperty(exports, "configurePaywall", { enumerable: true, get: () => configurePaywall });
+Object.defineProperty(exports, "accessState", { enumerable: true, get: () => accessState });
+Object.defineProperty(exports, "freeStageCount", { enumerable: true, get: () => freeStageCount });
+Object.defineProperty(exports, "hasFullAccess", { enumerable: true, get: () => hasFullAccess });
+Object.defineProperty(exports, "stageIsFree", { enumerable: true, get: () => stageIsFree });
+Object.defineProperty(exports, "stepLocked", { enumerable: true, get: () => stepLocked });
+Object.defineProperty(exports, "firstLockedIndex", { enumerable: true, get: () => firstLockedIndex });
+Object.defineProperty(exports, "refreshAccess", { enumerable: true, get: () => refreshAccess });
+Object.defineProperty(exports, "hydrateProtectedStages", { enumerable: true, get: () => hydrateProtectedStages });
+Object.defineProperty(exports, "stageBadge", { enumerable: true, get: () => stageBadge });
+Object.defineProperty(exports, "courseAccessSummary", { enumerable: true, get: () => courseAccessSummary });
+Object.defineProperty(exports, "lockedStepMarkup", { enumerable: true, get: () => lockedStepMarkup });
+Object.defineProperty(exports, "publicStubCourse", { enumerable: true, get: () => publicStubCourse });
+},
+"checkout.js":function(require, exports) {
+'use strict';
+/* V12 checkout. Card data is never collected by this site:
+ *  - PayPal: the official PayPal JS SDK renders PayPal and "Debit or Credit
+ *    Card" buttons; PayPal handles card entry and 3-D Secure. Orders are created
+ *    and captured by the owner's Supabase Edge Functions, which verify amount,
+ *    currency and payer before granting a pass.
+ *  - ECPay (綠界): a signed form is created server-side and the learner pays on
+ *    ECPay's hosted page (credit card with 3-D Secure). The pass is granted only
+ *    after the server verifies ECPay's notification and queries the trade.
+ *  - Python self-hosted backend: existing /api/billing/checkout (ECPay).
+ * Payouts (e.g. to the owner's post-office account) are configured in the
+ * provider dashboards, never in this code.
+ */
+const TERMS_VERSION = 'v12-2026-10';
+const PAYPAL_SDK = 'https://www.paypal.com/sdk/js';
+const ECPAY_HOSTS = ['payment.ecpay.com.tw', 'payment-stage.ecpay.com.tw'];
+let sdkPromise = null, sdkKey = '';
+
+function paymentSettings(config = globalThis.MG_CONFIG || {}) {
+  const p = config.payments || {};
+  return {
+    paypalClientId: typeof p.paypalClientId === 'string' && /^[A-Za-z0-9_-]{20,120}$/.test(p.paypalClientId) ? p.paypalClientId : '',
+    paypalEnv: p.paypalEnv === 'live' ? 'live' : 'sandbox',
+    ecpayEnabled: p.ecpayEnabled === true,
+    termsUrl: typeof p.termsUrl === 'string' ? p.termsUrl : 'commerce-terms.html'
+  };
+}
+function checkoutAvailability({cloud = globalThis.MacGyverCloud, billing = {}, config} = {}) {
+  const s = paymentSettings(config);
+  const cloudReady = !!cloud?.configured;
+  return {
+    paypal: cloudReady && !!s.paypalClientId,
+    ecpay: cloudReady && s.ecpayEnabled,
+    server: !!billing?.protected && billing?.checkoutAvailable === true,
+    cloudReady, sandbox: s.paypalEnv !== 'live'
+  };
+}
+
+function loadPayPalSdk(clientId, currency) {
+  const key = clientId + ':' + currency;
+  if (sdkPromise && sdkKey === key) return sdkPromise;
+  document.querySelectorAll('script[data-mg-paypal]').forEach(node => node.remove());
+  try { delete globalThis.paypal; } catch { globalThis.paypal = undefined; }
+  sdkKey = key;
+  sdkPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    const params = new URLSearchParams({'client-id': clientId, currency, intent: 'capture', components: 'buttons,funding-eligibility', 'enable-funding': 'card', 'disable-funding': 'paylater,credit'});
+    script.src = PAYPAL_SDK + '?' + params.toString();
+    script.dataset.mgPaypal = '1';
+    script.async = true;
+    script.onload = () => globalThis.paypal ? resolve(globalThis.paypal) : reject(new Error('PayPal SDK unavailable.'));
+    script.onerror = () => { sdkPromise = null; reject(new Error('PayPal could not be loaded. Check the network or ad blockers.')); };
+    document.head.append(script);
+  });
+  return sdkPromise;
+}
+
+/** Render PayPal + card buttons. Returns a disposer. */
+async function mountPayPalButtons(container, {planId, currency, cloud = globalThis.MacGyverCloud, onPaid = () => {}, onStatus = () => {}, zh = true} = {}) {
+  const pick = (a, b) => zh ? a : b;
+  const s = paymentSettings();
+  if (!container || !s.paypalClientId || !cloud?.callFunction) throw new Error(pick('PayPal 尚未由站長設定。', 'PayPal is not configured by the site owner.'));
+  const paypal = await loadPayPalSdk(s.paypalClientId, currency);
+  container.replaceChildren();
+  let orderId = '';
+  const buttons = paypal.Buttons({
+    style: {layout: 'vertical', shape: 'rect', label: 'pay', height: 44},
+    createOrder: async () => {
+      onStatus(pick('正在向伺服器建立訂單並核對金額…', 'Creating the order and verifying the amount on the server…'));
+      const result = await cloud.callFunction('checkout-create', {planId, currency, provider: 'paypal', termsAccepted: true, termsVersion: TERMS_VERSION});
+      if (!result?.paypalOrderId || !result?.orderId) throw new Error('Unexpected checkout response.');
+      orderId = result.orderId;
+      onStatus(pick(`伺服器報價：${result.currency} ${result.amount}`, `Server quote: ${result.currency} ${result.amount}`));
+      return result.paypalOrderId;
+    },
+    onApprove: async (data, actions) => {
+      onStatus(pick('付款已授權，正在由伺服器確認與入帳…', 'Payment approved; the server is capturing and verifying it…'));
+      for (let attempt = 0; attempt < 6; attempt++) {
+        let result;
+        try { result = await cloud.callFunction('checkout-capture', {orderId}); }
+        catch (error) {
+          // 402 declined → let the payer choose another card / funding source.
+          if (/declin|INSTRUMENT_DECLINED/i.test(String(error.message)) && actions?.restart) { onStatus(pick('卡片被拒絕，請改用其他卡片或付款方式。', 'The card was declined; choose another card or funding source.')); return actions.restart(); }
+          throw error;
+        }
+        if (result?.status === 'paid') { onPaid(result); return; }
+        if (result?.status !== 'pending') break;
+        await new Promise(r => setTimeout(r, 3000));
+      }
+      throw new Error(pick('付款尚未完成驗證，請稍後在「我的通行證」重新整理。', 'Payment is not verified yet. Refresh “My passes” later.'));
+    },
+    onCancel: () => onStatus(pick('已取消付款，未收取任何費用。', 'Payment cancelled; nothing was charged.')),
+    onError: error => onStatus(pick('付款失敗：', 'Payment failed: ') + String(error?.message || error))
+  });
+  if (!buttons.isEligible?.() && buttons.isEligible) throw new Error(pick('此瀏覽器或地區目前無法使用 PayPal。', 'PayPal is not available for this browser or region.'));
+  await buttons.render(container);
+  return () => { try { buttons.close?.(); } catch {} container.replaceChildren(); };
+}
+
+/** Create an ECPay order on the server and submit the signed form. */
+async function startEcpay({planId, cloud = globalThis.MacGyverCloud, zh = true} = {}) {
+  const result = await cloud.callFunction('checkout-create', {planId, currency: 'TWD', provider: 'ecpay', termsAccepted: true, termsVersion: TERMS_VERSION});
+  submitSignedForm(result, zh);
+}
+function submitSignedForm(result, zh = true) {
+  let action;
+  try { action = new URL(result?.action); } catch { throw new Error(zh ? '付款網址無效。' : 'Invalid payment address.'); }
+  if (action.protocol !== 'https:' || !ECPAY_HOSTS.includes(action.hostname) || !result.fields || typeof result.fields !== 'object') throw new Error(zh ? '付款目的地未通過檢查。' : 'Unexpected payment destination.');
+  const form = document.createElement('form');
+  form.method = 'POST'; form.action = action.href;
+  for (const [key, value] of Object.entries(result.fields)) {
+    if (!/^[A-Z][A-Za-z0-9]{1,60}$/.test(key) || (typeof value !== 'string' && typeof value !== 'number')) throw new Error('Invalid checkout field.');
+    const input = document.createElement('input'); input.type = 'hidden'; input.name = key; input.value = String(value); form.append(input);
+  }
+  document.body.append(form); form.submit();
+}
+
+Object.defineProperty(exports, "TERMS_VERSION", { enumerable: true, get: () => TERMS_VERSION });
+Object.defineProperty(exports, "paymentSettings", { enumerable: true, get: () => paymentSettings });
+Object.defineProperty(exports, "checkoutAvailability", { enumerable: true, get: () => checkoutAvailability });
+Object.defineProperty(exports, "mountPayPalButtons", { enumerable: true, get: () => mountPayPalButtons });
+Object.defineProperty(exports, "startEcpay", { enumerable: true, get: () => startEcpay });
+Object.defineProperty(exports, "submitSignedForm", { enumerable: true, get: () => submitSignedForm });
 },
 "membership.js":function(require, exports) {
 'use strict';
-/* Payment UI never collects card details or grants its own entitlements. */
+/* Payment UI never collects card details or grants its own entitlements.
+ * V12: regional prices (pricing.js), first-section-free policy (paywall.js),
+ * PayPal / card and ECPay checkout via the owner's Supabase Edge Functions
+ * (checkout.js), plus the original self-hosted Python ECPay flow. */
+const { loadPricing, plans: pricingPlans, priceTable, selectedCurrency, setCurrency, availableCurrencies, chargeCurrency, formatMoney, convertTwd, pricingState, fxAgeDays, detectCountry } = require("pricing.js");
+const { accessState, refreshAccess, freeStageCount, courseAccessSummary } = require("paywall.js");
+const { checkoutAvailability, mountPayPalButtons, startEcpay, submitSignedForm, TERMS_VERSION } = require("checkout.js");
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const draftPlans = [{id:'all-30',title:'30 天學習通行證',titleEn:'30-day learning pass',amountTwd:299,durationDays:30},{id:'all-365',title:'365 天學習通行證',titleEn:'365-day learning pass',amountTwd:2490,durationDays:365}];
-let config = {mode:'disabled',protected:false,checkoutAvailable:false,freeCourseIds:['semiconductor','packaging','a201','a242','a271','a281'],plans:draftPlans};
+let config = {mode:'disabled',protected:false,checkoutAvailable:false,freeCourseIds:[],plans:draftPlans};
 const evidenceCache = new Map();
 let owner = null, pendingConfig = null;
 function billingState() { return config; }
@@ -2587,13 +3488,34 @@ async function submitVerifiedStep(courseId,stepId,answer){
   }catch(error){evidenceCache.delete(key);throw error;}
 }
 function courseAccessMarkup(course,zh=true){
-  const free=config.freeCourseIds.includes(course.id), locked=course.locked===true;
-  return `<div class="course-access ${locked?'locked':''}"><span>${zh?(free?'免費試學':'會員課程'):(free?'FREE COURSE':'MEMBER COURSE')}</span><p>${locked?(zh?'登入並啟用學習通行證後，即可依序完成本課工序。':'Sign in and activate a learning pass to work through this course.'):(config.protected?(zh?'學習驗收記錄由伺服器保存，可用於申領平台完成證書。':'Learning checks are recorded by the server for a platform completion certificate.'):(zh?'目前為完整教材展示／離線版，尚未啟用收費；可直接學習。':'This complete owner/demo edition has billing disabled; learning is available.'))}</p><a class="button light" href="#membership">${zh?'會員方案與證書':'Membership & certificates'} ↗</a></div>`;
+  const table=priceTable(selectedCurrency().currency,zh?'zh-TW':undefined);
+  return courseAccessSummary(course,{zh,priceText:table[0]?.display||''});
 }
+function localeTag(zh){return zh?'zh-TW':(globalThis.document?.documentElement?.lang||undefined);}
 function membershipMarkup({zh=true,user=null}={}){
   const e=escapeHTML, pick=(z,en)=>zh?z:en;
-  const notice=(!config.checkoutAvailable&&config.protected)?pick('課程權限已啟用保護；付款尚未完成設定，目前可使用免費試學或既有有效通行證。','Course access is protected, but checkout is not configured. Free courses and existing valid passes remain available.'):config.mode==='live'?pick('正式付款由綠界安全頁面處理。本站不收集完整卡號或安全碼。','Live payments are handled on ECPay’s secure page. This site does not collect full card numbers or security codes.'):config.mode==='sandbox'?pick('金流沙盒：只有測試付款與測試權限，不代表真實收款。','Payment sandbox: test payments and test access only; no real collection.'):pick('付款尚未啟用。目前可使用完整教材展示版；下列是建議試營運方案，不能在此付款。','Billing is not enabled. The complete demo is available; plans below are proposed launch pricing, with checkout disabled.');
-  return `<div class="page-lead"><div><span class="page-number">MEMBERSHIP · LEARNING RECORDS</span><h1>${pick('為下一個工程，繼續學習。','Keep learning for your next engineering challenge.')}</h1><p>${pick('先試學，再選擇適合自己的學習期間。','Try a course, then choose a learning period that fits.')}</p></div></div><div class="notice ${config.mode==='live'?'':'warn'}">${notice}</div><div class="membership-plans"><article class="membership-plan"><span class="eyebrow">START EXPLORING</span><h2>${pick('免費試學','Free exploration')}</h2><strong class="plan-price">NT$0</strong><p>${pick('六門跨領域課程；正式營運時同樣可保存學習紀錄。','Six courses across disciplines, with saved learning records in the production service.')}</p><ul>${config.freeCourseIds.map(id=>`<li><a href="#project/${e(id)}" data-free-course-title="${e(id)}">${e(id)}</a></li>`).join('')}</ul></article>${config.plans.map(p=>`<article class="membership-plan"><span class="eyebrow">ENGINEERING PASS</span><h2>${e(pick(p.title,p.titleEn||p.title))}</h2><strong class="plan-price">NT$${Number(p.amountTwd).toLocaleString()}</strong><p>${e(p.durationDays)} ${pick('天 · 全部已展開逐步課程','days · all authored guided courses')}</p><ul><li>${pick('各帳號獨立保存進度','Progress saved separately per account')}</li><li>${pick('課程驗收完成後申領平台證書','Platform certificate after course checks')}</li><li>${pick('一次付款，不自動續扣','One payment; no automatic renewal')}</li></ul><button class="button" data-buy-plan="${e(p.id)}" ${!config.checkoutAvailable?'disabled':''}>${config.mode==='sandbox'?pick('前往沙盒測試','Test sandbox checkout'):pick('選擇此方案','Choose this plan')}</button></article>`).join('')}</div><section class="task-card"><h2>${pick('付款前確認','Before checkout')}</h2><p>${pick('目前身分：','Current identity: ')}<strong>${e(user?.name||pick('尚未登入','Not signed in'))}</strong></p><label class="terms-check"><input id="billingTerms" type="checkbox">${pick('我已閱讀此商戶的服務、隱私與退費條款，了解通行證期限及不自動續扣。','I have read this merchant’s service, privacy and refund terms, and understand the access period and no automatic renewal.')}</label><div class="billing-legal-links">${Object.entries(config.legalUrls||{terms:config.termsUrl||'commerce-terms.html',privacy:'commerce-terms.html#privacy',refund:'commerce-terms.html#refund'}).map(([key,url])=>[key,safeLegalURL(url)]).filter(([,url])=>url).map(([key,url])=>`<a href="${e(url)}" target="_blank" rel="noopener">${e(({terms:pick('服務條款','Terms'),privacy:pick('隱私說明','Privacy'),refund:pick('退款說明','Refunds')})[key]||key)} ↗</a>`).join(' · ')}</div><p class="subtext">${pick('正式營運者需先完成商戶審核、收款帳戶與正式條款設定；價格為待驗證的試營運假設。','The operator must complete merchant verification, settlement-account setup and final legal terms. Pricing is a launch hypothesis to validate.')}</p><p id="billingStatus" role="status" aria-live="polite"></p></section><section class="task-card mt"><h2>${pick('我的訂單、通行證與證書','My orders, passes and certificates')}</h2><button class="button light" id="refreshMembership">${pick('重新取得會員狀態','Refresh membership status')}</button><div id="membershipRecords" class="mt"></div><p class="subtext">${pick('證書記錄本平台測驗完成情形，不是學位、專業執照或實務操作能力認證。離線進度不能直接換成伺服器驗證證書。','Certificates record platform learning-check completion, not an academic degree, professional license or practical competence. Offline progress cannot directly become a server-verified certificate.')}</p></section>`;
+  const access=accessState(), avail=checkoutAvailability({billing:config});
+  const chosen=selectedCurrency(), cur=chosen.currency, locale=localeTag(zh), table=priceTable(cur,locale), {fx}=pricingState();
+  const where=detectCountry();
+  const fxNote=fx.status==='approximate-seed'||!fx.updatedAt?pick('匯率為近似種子值，尚未執行每週更新；結帳金額以伺服器報價為準。','Exchange rates are an approximate seed until the weekly update runs; the server quote at checkout is authoritative.'):`<span>${pick('匯率更新日期：','Exchange rates updated:')}</span> <span data-no-translate>${new Date(fx.updatedAt).toLocaleDateString(locale)} · ${e(fx.source||'')}</span> <span>${pick('結帳金額以伺服器報價為準。','The server quote at checkout is authoritative.')}</span>`;
+  const anyCheckout=avail.paypal||avail.ecpay||avail.server;
+  const notice=access.mode==='owner-preview'?pick('擁有者離線預覽：此版本顯示全部課程內容。公開網站上，每門課只有第一節免費，其餘需學習通行證。','Owner offline preview: all content is visible here. On the public site only the first section of each course is free.'):
+    !anyCheckout?pick('線上付款尚未由站長啟用。每門課第一節可免費試學；啟用付款後即可購買通行證解鎖全部階段。','Online payment has not been enabled by the site owner yet. The first section of every course is free; once payment is enabled, a pass unlocks all stages.'):
+    (avail.sandbox&&avail.paypal)||config.mode==='sandbox'?pick('付款沙盒模式：只會建立測試付款與測試權限。','Payment sandbox: test payments and test access only.'):
+    pick('刷卡與 PayPal 由金流商的安全頁面處理並完成驗證（含 3-D Secure）；本站不接觸完整卡號或安全碼。','Card and PayPal payments are processed and verified (including 3-D Secure) on the provider’s secure pages; this site never sees full card numbers or security codes.');
+  const options=availableCurrencies().map(c=>`<option value="${e(c)}" ${c===cur?'selected':''}>${e(c)}</option>`).join('');
+  const status=access.active?pick('你的學習通行證有效','Your learning pass is active')+(access.expiresAt?` · ${pick('到期','expires')} ${new Date(access.expiresAt).toLocaleDateString(locale)}`:''):pick('目前沒有有效通行證','No active pass');
+  const paidLabel=pick('付款方式','Payment method');
+  return `<div class="page-lead"><div><span class="page-number">MEMBERSHIP · LEARNING PASSES</span><h1>${pick('為下一個工程，繼續學習。','Keep learning for your next engineering challenge.')}</h1><p>${pick('每門逐步課程的第一節免費試學；喜歡再選擇學習期間，解鎖全部課程與階段。','The first section of every guided course is free. Choose a learning period to unlock every course and stage.')}</p></div></div>
+<div class="notice ${anyCheckout&&!avail.sandbox?'':'warn'}">${notice}</div>
+<section class="currency-bar task-card"><div><strong>${pick('顯示幣別','Display currency')}</strong><p class="subtext">${pick('依你的時區／語系推測地區','Region inferred from your time zone / language')}<span data-no-translate>：${e(where.country)} · ${e(chosen.basis==='manual'?pick('手動選擇','manual choice'):where.zone||where.basis)}</span></p></div><label class="sr-only" for="currencySelect">${pick('幣別','Currency')}</label><select id="currencySelect" data-no-translate>${options}</select><button class="text-link" id="currencyAuto">${pick('依所在地自動','Use my region')}</button><p class="subtext fx-note">${fxNote}</p></section>
+<div class="membership-plans">
+<article class="membership-plan"><span class="eyebrow">START EXPLORING</span><h2>${pick('免費試學','Free trial')}</h2><strong class="plan-price">${e(formatMoney(0,cur,locale))}</strong><p>${pick(`每門逐步課程的第${freeStageCount()===1?'一':' '+freeStageCount()+' '}節（第一階段）免費，包含師傅示範、互動工作台與驗收。`,`The first ${freeStageCount()===1?'section':freeStageCount()+' sections'} (stage) of every guided course is free, including mentor demonstrations, the interactive workbench and checks.`)}</p><ul><li>${pick('所有課程皆可試學第一節','Try the first section of every course')}</li><li>${pick('第二節起需學習通行證','From the second section on, a learning pass is needed')}</li><li>${pick('可先註冊帳號保存進度','Register to keep your progress')}</li></ul></article>
+${table.map(p=>{const charge=chargeCurrency('paypal',cur),chargeAmount=convertTwd(p.amountTwd,charge);return `<article class="membership-plan" data-plan-card="${e(p.id)}"><span class="eyebrow">ENGINEERING PASS</span><h2>${e(pick(p.title,p.titleEn||p.title))}</h2><strong class="plan-price" data-no-translate>${e(p.display)}</strong><p class="subtext"><span data-no-translate>${cur==='TWD'?'':`≈ ${e(p.twdDisplay)} · `}</span>${pick(`${e(p.durationDays)} 天`,`${e(p.durationDays)} days`)}</p><p>${pick('全部已展開的逐步課程與階段','All authored guided courses and stages')}</p><ul><li>${pick('各帳號獨立保存進度、跨裝置同步','Progress per account, synced across devices')}</li><li>${pick('課程驗收完成後申領平台證書','Platform certificate after course checks')}</li><li>${pick('一次付款，不自動續扣','One payment; no automatic renewal')}</li>${charge!==cur&&avail.paypal?`<li>${pick('PayPal 以','PayPal charges in')} ${e(charge)} ${pick('結帳','')} (${e(formatMoney(chargeAmount,charge,locale))})</li>`:''}</ul><button class="button" data-buy-plan="${e(p.id)}" ${anyCheckout?'':'disabled'}>${anyCheckout?pick('選擇此方案','Choose this plan'):pick('付款尚未開放','Checkout not yet available')}</button></article>`}).join('')}
+</div>
+<section class="task-card checkout-panel" id="checkoutPanel" hidden><h2>${pick('結帳','Checkout')} · <span id="checkoutPlanName"></span></h2><p>${pick('目前身分：','Signed in as: ')}<strong data-no-translate>${e(user?.name||pick('尚未登入','Not signed in'))}</strong></p><label class="terms-check"><input id="billingTerms" type="checkbox">${pick('我已閱讀此商戶的服務、隱私與退費條款，了解通行證期限及不自動續扣。','I have read this merchant’s service, privacy and refund terms, and understand the access period and no automatic renewal.')}</label><div class="billing-legal-links">${Object.entries(config.legalUrls||{terms:config.termsUrl||'commerce-terms.html',privacy:'commerce-terms.html#privacy',refund:'commerce-terms.html#refund'}).map(([key,url])=>[key,safeLegalURL(url)]).filter(([,url])=>url).map(([key,url])=>`<a href="${e(url)}" target="_blank" rel="noopener">${e(({terms:pick('服務條款','Terms'),privacy:pick('隱私說明','Privacy'),refund:pick('退款說明','Refunds')})[key]||key)} ↗</a>`).join(' · ')}</div><fieldset class="pay-methods"><legend>${paidLabel}</legend>${avail.paypal?`<div class="pay-method"><h3>PayPal ${pick('或信用卡／金融卡','or credit / debit card')}</h3><p class="subtext">${pick('由 PayPal 安全頁面處理卡號與驗證；可不註冊 PayPal 直接刷卡（依地區提供）。','PayPal’s secure pages handle card data and verification; guest card payment is available in supported regions.')}</p><div id="paypalButtons" class="paypal-buttons"></div></div>`:''}${avail.ecpay?`<div class="pay-method"><h3>${pick('綠界 ECPay 信用卡（新台幣）','ECPay credit card (TWD)')}</h3><p class="subtext">${pick('前往綠界安全付款頁，完成 3-D 驗證後自動開通。','Pay on ECPay’s secure page; access opens after 3-D Secure verification.')}</p><button class="button light" id="ecpayButton">${pick('前往綠界付款','Pay with ECPay')}</button></div>`:''}${avail.server?`<div class="pay-method"><h3>${pick('本站付款（綠界）','Site checkout (ECPay)')}</h3><button class="button light" id="serverCheckout">${pick('建立安全付款單','Create secure checkout')}</button></div>`:''}</fieldset><p id="billingStatus" role="status" aria-live="polite"></p></section>
+<section class="task-card mt"><h2>${pick('我的通行證、訂單與證書','My passes, orders and certificates')}</h2><p><strong>${e(status)}</strong></p><button class="button light" id="refreshMembership">${pick('重新取得會員狀態','Refresh membership status')}</button><div id="membershipRecords" class="mt"></div></section>
+<details class="task-card mt"><summary>${pick('付款與撥款說明（站長）','Payments and payouts (site owner)')}</summary><p>${pick('信用卡與 PayPal 款項先由金流商驗證並入帳到商家帳戶，再依商家後台設定撥款到站長的本人金融帳戶（例如郵局帳戶）。網站程式不保存、也不顯示任何收款帳號。設定方式見套件 docs/PAYMENTS_V12_ZH.md。','Card and PayPal payments are verified and settled to the merchant account by the provider, then paid out to the owner’s own bank account (for example a post-office account) as configured in the provider dashboard. The website never stores or displays payout account numbers. See docs/PAYMENTS_V12_ZH.md.')}</p></details>`;
 }
 function certificateMarkup(course,zh=true){
   return `<div class="certificate-action"><button class="button light" data-certificate="${escapeHTML(course.id)}">${zh?'申領本課完成證書':'Request course completion certificate'}</button><span>${zh?'需完成全部伺服器驗收；離線／展示模式不發驗證證書。':'Requires all server-recorded checks; offline/demo mode does not issue verified certificates.'}</span><label class="terms-check"><input type="checkbox" data-publish-certificate-name>${zh?'我同意在公開證書驗證頁顯示我的帳號姓名（選填）':'I consent to show my account name on the public certificate verification page (optional).'}</label><div data-certificate-result role="status"></div></div>`;
@@ -2603,30 +3525,60 @@ function trustedCheckout(result){
   if(!config.checkoutAvailable||result?.action!==allowed||!result.fields||typeof result.fields!=='object'||Array.isArray(result.fields))throw new Error('Unexpected checkout destination.');
   return allowed;
 }
-function bindMembership(root,{zh=true,user=null,catalog=[],onLogin=()=>{}}={}){
+function bindMembership(root,{zh=true,user=null,catalog=[],onLogin=()=>{},onAccessChanged=()=>{}}={}){
   const pick=(a,b)=>zh?a:b, e=escapeHTML;
   const status=message=>{const node=root.querySelector('#billingStatus');if(node)node.textContent=message;};
-  root.querySelectorAll('[data-free-course-title]').forEach(a=>{const c=catalog.find(c=>c.id===a.dataset.freeCourseTitle);if(c)a.textContent=zh?c.title:c.titleEn;});
-  root.querySelectorAll('[data-buy-plan]').forEach(button=>button.onclick=async()=>{
-    if(!user){onLogin();return;}
-    if(!root.querySelector('#billingTerms')?.checked){status(pick('請先閱讀並勾選商戶條款。','Read and accept the merchant terms first.'));return;}
-    button.disabled=true;status(pick('正在建立安全付款單…','Preparing secure checkout…'));
-    try{
-      const requestId=button.dataset.requestId||(button.dataset.requestId=crypto.randomUUID().replaceAll('-',''));
-      const result=await request('/api/billing/checkout',{planId:button.dataset.buyPlan,termsAccepted:true,termsVersion:config.termsVersion||'v10-2026-10',requestId,expectedUserId:user.id});
-      if(owner!==user.id)throw new Error('The learning account changed. Please retry.');
-      const action=trustedCheckout(result),form=document.createElement('form');form.method='POST';form.action=action;
-      for(const [key,value]of Object.entries(result.fields)){if(!/^[A-Z][A-Za-z0-9]{1,60}$/.test(key)||(typeof value!=='string'&&typeof value!=='number'))throw new Error('Invalid checkout field.');const input=document.createElement('input');input.type='hidden';input.name=key;input.value=String(value);form.append(input);}
-      document.body.append(form);form.submit();
-    }catch(error){status(error.message);button.disabled=false;}
+  const panel=root.querySelector('#checkoutPanel');
+  let disposePayPal=null, planId='';
+  const rerender=()=>{try{globalThis.dispatchEvent(new Event('hashchange'));}catch{}};
+  const currency=root.querySelector('#currencySelect');
+  if(currency)currency.onchange=()=>{setCurrency(currency.value);rerender();};
+  const auto=root.querySelector('#currencyAuto');
+  if(auto)auto.onclick=()=>{setCurrency('');rerender();};
+  const termsOk=()=>{if(root.querySelector('#billingTerms')?.checked)return true;status(pick('請先閱讀並勾選商戶條款。','Read and accept the merchant terms first.'));return false;};
+  const paid=async result=>{status(pick('付款完成並已驗證，通行證已開通。','Payment verified; your pass is active.')+(result?.expiresAt?` ${pick('到期：','Expires: ')}${new Date(result.expiresAt).toLocaleDateString(zh?'zh-TW':undefined)}`:''));await refreshAccess({user});onAccessChanged();};
+  const mountPayPal=async()=>{
+    const box=root.querySelector('#paypalButtons');if(!box)return;
+    disposePayPal?.();disposePayPal=null;
+    if(!root.querySelector('#billingTerms')?.checked){box.innerHTML=`<p class="subtext">${pick('勾選條款後顯示付款按鈕。','Accept the terms to show the payment buttons.')}</p>`;return;}
+    const cur=chargeCurrency('paypal',selectedCurrency().currency);
+    try{disposePayPal=await mountPayPalButtons(box,{planId,currency:cur,zh,onPaid:paid,onStatus:status});}catch(error){status(error.message);}
+  };
+  root.querySelectorAll('[data-buy-plan]').forEach(button=>button.onclick=()=>{
+    if(!user){status('');onLogin();return;}
+    planId=button.dataset.buyPlan;
+    const plan=pricingPlans().find(p=>p.id===planId);
+    if(panel){panel.hidden=false;const name=panel.querySelector('#checkoutPlanName');if(name)name.textContent=plan?(zh?plan.title:plan.titleEn):planId;panel.scrollIntoView?.({behavior:'smooth',block:'start'});}
+    mountPayPal();
   });
+  const terms=root.querySelector('#billingTerms');
+  if(terms)terms.onchange=()=>mountPayPal();
+  const ecpay=root.querySelector('#ecpayButton');
+  if(ecpay)ecpay.onclick=async()=>{if(!user){onLogin();return;}if(!termsOk())return;ecpay.disabled=true;status(pick('正在建立綠界付款單…','Preparing the ECPay checkout…'));try{await startEcpay({planId,zh});}catch(error){status(error.message);ecpay.disabled=false;}};
+  const server=root.querySelector('#serverCheckout');
+  if(server)server.onclick=async()=>{
+    if(!user){onLogin();return;}if(!termsOk())return;
+    server.disabled=true;status(pick('正在建立安全付款單…','Preparing secure checkout…'));
+    try{
+      const requestId=server.dataset.requestId||(server.dataset.requestId=crypto.randomUUID().replaceAll('-',''));
+      const result=await request('/api/billing/checkout',{planId,termsAccepted:true,termsVersion:config.termsVersion||'v10-2026-10',requestId,expectedUserId:user.id});
+      if(owner!==user.id)throw new Error('The learning account changed. Please retry.');
+      trustedCheckout(result);submitSignedForm(result,zh);
+    }catch(error){status(error.message);server.disabled=false;}
+  };
   const refresh=root.querySelector('#refreshMembership');
   if(refresh)refresh.onclick=async()=>{
     const target=root.querySelector('#membershipRecords');
-    if(!config.protected){target.textContent=pick('此展示／離線版沒有啟用金流與伺服器證書。','Commerce and server certificates are disabled in this demo/offline edition.');return;}
     if(!user){onLogin();return;}
     refresh.disabled=true;
     try{
+      const access=await refreshAccess({user});onAccessChanged();
+      if(!config.protected){
+        const cloud=globalThis.MacGyverCloud;let orders=[];
+        if(cloud?.configured&&cloud.myOrders){try{const rows=await cloud.myOrders();orders=Array.isArray(rows)?rows:[];}catch{}}
+        target.innerHTML=`<h3>${pick('通行證','Passes')}</h3><p>${access.active?pick('有效','Active')+(access.expiresAt?' · '+e(new Date(access.expiresAt).toLocaleString(zh?'zh-TW':undefined)):''):pick('尚無有效通行證','No active pass')}</p><h3>${pick('付款記錄','Payment records')}</h3><ul>${orders.map(x=>`<li data-no-translate>${e(x.id||'')} · ${e(x.plan_id||'')} · ${e(x.currency||'')} ${e(x.amount??'')} · ${e(x.provider||'')} · ${e(x.status||'')} · ${e(x.created_at?new Date(x.created_at).toLocaleString(zh?'zh-TW':undefined):'')}</li>`).join('')||`<li>${pick('尚無訂單','No orders')}</li>`}</ul>`;
+        return;
+      }
       const [data,certs]=await Promise.all([request('/api/billing/me'),request('/api/certificates')]);
       const certificates=Array.isArray(certs)?certs:certs.certificates||[];
       target.innerHTML=`<h3>${pick('通行證','Passes')}</h3><ul>${(data.entitlements||[]).map(x=>`<li>${e(x.planId||x.plan_id||pick('學習通行證','Learning pass'))} · ${e(formatBillingDate(x.expiresAt??x.expires_at,zh))} · ${e(entitlementLabel(x,zh))}</li>`).join('')||`<li>${pick('尚無有效通行證','No active pass')}</li>`}</ul><h3>${pick('付款記錄','Payment records')}</h3><ul>${(data.orders||[]).map(x=>`<li>${e(x.orderId||x.id||'')} · NT$${e(x.amountTwd||x.amount||'')} · ${e(x.status)}</li>`).join('')||`<li>${pick('尚無訂單','No orders')}</li>`}</ul><h3>${pick('完成證書','Completion certificates')}</h3><ul>${certificates.map(x=>`<li>${e(x.courseTitle||x.courseId||x.course_id)} · ${e(formatBillingDate(x.issuedAt??x.issued_at,zh))} · ${x.sandbox?'SANDBOX · ':''}${x.revoked?pick('已撤銷 · ','Revoked · '):''} · ${certificateLink(x,zh)}</li>`).join('')||`<li>${pick('尚無證書','No certificates')}</li>`}</ul>`;
@@ -2640,6 +3592,26 @@ function bindMembership(root,{zh=true,user=null,catalog=[],onLogin=()=>{}}={}){
     try{const data=await request('/api/certificates',{courseId:button.dataset.certificate,publishName:button.parentElement.querySelector('[data-publish-certificate-name]')?.checked===true,expectedUserId:user.id});if(owner!==user.id)throw new Error('The learning account changed. Please retry.');output.innerHTML=certificateLink(data.certificate||data,zh);}catch(error){output.textContent=error.message;}finally{button.disabled=false;}
   });
 }
+/** After ECPay redirects back (?payment=ecpay&order=MG…), poll the server until verified. */
+async function resumeEcpayReturn({zh=true,user=null,onDone=()=>{},onStatus=()=>{}}={}){
+  if(typeof URLSearchParams!=='function')return null;
+  const params=new URLSearchParams(globalThis.location?.search||'');
+  const orderId=params.get('order');
+  if(params.get('payment')!=='ecpay'||!/^MG[0-9A-F]{18}$/.test(orderId||''))return null;
+  const cloud=globalThis.MacGyverCloud;if(!cloud?.callFunction||!user)return null;
+  const pick=(a,b)=>zh?a:b;
+  for(let i=0;i<24;i++){
+    try{
+      const result=await cloud.callFunction('checkout-capture',{orderId});
+      if(result?.status==='paid'){onStatus(pick('綠界付款已驗證，通行證已開通。','ECPay payment verified; your pass is active.'));await refreshAccess({user});onDone(result);history.replaceState?.(null,'',location.pathname+location.hash);return result;}
+    }catch(error){if(!/pending/i.test(String(error.message))){onStatus(String(error.message));return null;}}
+    onStatus(pick('正在等待綠界付款通知與伺服器查核…','Waiting for ECPay’s notification and server verification…'));
+    await new Promise(r=>setTimeout(r,5000));
+  }
+  onStatus(pick('尚未收到付款確認；稍後可在「我的通行證」重新整理。','Payment not confirmed yet; refresh “My passes” later.'));
+  return null;
+}
+
 function certificateLink(item,zh){
   const token=item.id||item.token||item.certificateId;
   if(!/^[a-f0-9]{40}$/.test(token||''))return escapeHTML(zh?'證書已記錄':'Certificate recorded');
@@ -2672,6 +3644,7 @@ function safeLegalURL(value){
   return '';
 }
 
+Object.defineProperty(exports, "loadPricing", { enumerable: true, get: () => loadPricing });
 Object.defineProperty(exports, "billingState", { enumerable: true, get: () => billingState });
 Object.defineProperty(exports, "resetLearningEvidence", { enumerable: true, get: () => resetLearningEvidence });
 Object.defineProperty(exports, "loadBillingConfig", { enumerable: true, get: () => loadBillingConfig });
@@ -2681,6 +3654,7 @@ Object.defineProperty(exports, "courseAccessMarkup", { enumerable: true, get: ()
 Object.defineProperty(exports, "membershipMarkup", { enumerable: true, get: () => membershipMarkup });
 Object.defineProperty(exports, "certificateMarkup", { enumerable: true, get: () => certificateMarkup });
 Object.defineProperty(exports, "bindMembership", { enumerable: true, get: () => bindMembership });
+Object.defineProperty(exports, "resumeEcpayReturn", { enumerable: true, get: () => resumeEcpayReturn });
 Object.defineProperty(exports, "formatBillingDate", { enumerable: true, get: () => formatBillingDate });
 Object.defineProperty(exports, "safeLegalURL", { enumerable: true, get: () => safeLegalURL });
 },
@@ -2701,6 +3675,11 @@ function cloudConfiguration(config){
     return {url:u.origin,key};
   }catch{throw cloudError('Use a valid HTTPS Supabase URL and publishable (or legacy anon) key. Never use a service-role key.','configuration');}
 }
+const USERNAME=/^[A-Za-z0-9_.-]{3,30}$/;
+const PHONE=/^\+[1-9][0-9]{7,14}$/;
+/** Normalise a mobile number to E.164. Taiwan local 09xxxxxxxx becomes +8869xxxxxxxx. */
+function normalizePhone(value){let v=String(value||'').trim().replace(/[\s().-]/g,'');if(/^00[1-9]/.test(v))v='+'+v.slice(2);if(/^09\d{8}$/.test(v))v='+886'+v.slice(1);return v;}
+function validMemberFields({username,email,password,phone}={}){const problems=[];if(!USERNAME.test(String(username||'').trim()))problems.push('username');if(typeof email!=='string'||!/^\S+@\S+\.\S+$/.test(email.trim()))problems.push('email');if(typeof password!=='string'||password.length<12||password.length>128)problems.push('password');if(!PHONE.test(normalizePhone(phone)))problems.push('phone');return problems;}
 function sanitizeCloudProgress(value){
   if(!value||typeof value!=='object'||Array.isArray(value))throw cloudError('Invalid progress.','validation');
   const ids=v=>{if(!Array.isArray(v)||v.length>5000||v.some(x=>typeof x!=='string'||!CLOUD_STEP_ID.test(x)))throw cloudError('Invalid step identifiers.','validation');return [...new Set(v)];};
@@ -2711,7 +3690,7 @@ function createCloudSync({config=globalThis.MG_CONFIG||{},storage=globalThis.loc
   let conf=null,configurationError=null;try{conf=cloudConfiguration(config);}catch(e){configurationError=e;}
   const key=conf?'mg-cloud-session:'+conf.url:'mg-cloud-unconfigured';let session=null,refreshing=null,generation=0;
   try{const raw=JSON.parse(storage?.getItem(key)||'null');if(raw?.refresh_token&&raw?.access_token&&raw?.user?.id&&Number.isFinite(raw.expires_at))session=raw;}catch{}
-  const publicSession=()=>session?{user:{id:session.user.id,name:session.user.user_metadata?.name||session.user.email?.split('@')[0]||'Learner',email:session.user.email||''},expiresAt:session.expires_at*1000}:null;
+  const publicSession=()=>session?{user:{id:session.user.id,name:session.user.user_metadata?.name||session.user.user_metadata?.username||session.user.email?.split('@')[0]||'Learner',email:session.user.email||'',username:session.user.user_metadata?.username||'',phone:session.user.user_metadata?.phone||''},expiresAt:session.expires_at*1000}:null;
   function persist(value){session=value;try{value?storage?.setItem(key,JSON.stringify(value)):storage?.removeItem(key);}catch{}onAuthChange(publicSession());}
   const requireConfigured=()=>{if(!conf)throw configurationError||cloudError('Cloud accounts are not configured by the site owner.','unconfigured');};
   async function request(path,{method='GET',body,token,signal}={}){
@@ -2743,8 +3722,12 @@ function createCloudSync({config=globalThis.MG_CONFIG||{},storage=globalThis.loc
   async function getRow(projectId,access){const rows=await request('/rest/v1/academy_progress?select=project_id,payload,revision&project_id=eq.'+encodeURIComponent(projectId),{token:access});return rows?.[0]?rowValue(rows[0]):null;}
   return {
     configured:!!conf,configurationError:configurationError?.message||'',
-    async signUp(value){const cred=credentials(value);const name=String(value.name||'').trim();if(!name||name.length>100)throw cloudError('Name must be 1–100 characters.','validation');
-      const turn=++generation;const data=await request('/auth/v1/signup?redirect_to='+encodeURIComponent(redirectURL()),{method:'POST',body:{...cred,data:{name}}});
+    async signUp(value){const cred=credentials(value);const name=String(value.name||value.username||'').trim();if(!name||name.length>100)throw cloudError('Name must be 1–100 characters.','validation');
+      // V12: four required member fields — username, password, email, mobile phone.
+      const username=String(value.username||'').trim(),phone=normalizePhone(value.phone);
+      if(!USERNAME.test(username))throw cloudError('帳號需為 3–30 個英數字、底線、點或連字號 / Username: 3–30 letters, digits, _ . -','validation');
+      if(!PHONE.test(phone))throw cloudError('手機號碼請含國碼，例如 +886912345678 / Mobile number with country code, e.g. +886912345678','validation');
+      const turn=++generation;const data=await request('/auth/v1/signup?redirect_to='+encodeURIComponent(redirectURL()),{method:'POST',body:{...cred,data:{name,username,phone}}});
       if(turn!==generation)throw cloudError('Session changed.','auth');if(data?.access_token){persist(normalizeSession(data));}return {user:publicSession()?.user||null,verificationRequired:!data?.access_token};},
     async signIn(value){const cred=credentials(value),turn=++generation;const data=normalizeSession(await request('/auth/v1/token?grant_type=password',{method:'POST',body:cred}));if(turn!==generation)throw cloudError('Session changed.','auth');persist(data);return publicSession();},
     async resetPassword(email){if(typeof email!=='string'||!/^\S+@\S+\.\S+$/.test(email))throw cloudError('Enter a valid email.','validation');await request('/auth/v1/recover?redirect_to='+encodeURIComponent(redirectURL()),{method:'POST',body:{email:email.trim()}});return {sent:true};},
@@ -2753,6 +3736,17 @@ function createCloudSync({config=globalThis.MG_CONFIG||{},storage=globalThis.loc
     async getSession(){if(!conf||!session)return null;const turn=generation,owner=session.user.id;try{const access=await token();if(turn!==generation||session?.user?.id!==owner)return null;const user=await request('/auth/v1/user',{token:access});if(turn!==generation)return null;if(!user?.id||user.id!==session?.user?.id)throw cloudError('Session identity changed.','auth');session.user=user;return publicSession();}catch(e){if(e.code==='auth'&&turn===generation)persist(null);throw e;}},
     async handleRedirect(){if(!conf||!location?.hash?.includes('access_token='))return {handled:false,recovery:false};const params=new URLSearchParams(location.hash.slice(1));const access=params.get('access_token'),refresh=params.get('refresh_token'),recovery=params.get('type')==='recovery';history?.replaceState(null,'',location.pathname+location.search);if(!access||!refresh)throw cloudError('Incomplete verification link.','auth');
       const turn=++generation;const user=await request('/auth/v1/user',{token:access});if(turn!==generation)throw cloudError('Session changed.','auth');persist(normalizeSession({access_token:access,refresh_token:refresh,expires_in:Number(params.get('expires_in'))||3600,user}));return {handled:true,recovery};},
+    /** Sign in with username or email. Usernames resolve server-side (Edge Function). */
+    async signInWithLogin({login,password}={}){const value=String(login||'').trim();if(value.includes('@'))return this.signIn({email:value,password});if(!USERNAME.test(value))throw cloudError('請輸入帳號或信箱 / Enter your username or email.','validation');passwordCheck(password);const turn=++generation;const data=normalizeSession(await request('/functions/v1/username-login',{method:'POST',body:{login:value,password}}));if(turn!==generation)throw cloudError('Session changed.','auth');persist(data);return publicSession();},
+    async checkAvailability({username='',phone=''}={}){const data=await request('/rest/v1/rpc/academy_check_available',{method:'POST',body:{p_username:String(username).trim(),p_phone:normalizePhone(phone)}});return data||{};},
+    async rpc(name,body={}){if(!/^academy_[a-z_]{1,60}$/.test(name))throw cloudError('Invalid RPC.','validation');const access=session?await token():null;return request('/rest/v1/rpc/'+name,{method:'POST',token:access,body});},
+    async callFunction(name,body={}){if(!/^[a-z][a-z0-9-]{1,60}$/.test(name))throw cloudError('Invalid function.','validation');const access=await token();return request('/functions/v1/'+name,{method:'POST',token:access,body});},
+    async myAccess(){if(!session)return {active:false};const access=await token();const data=await request('/rest/v1/rpc/academy_my_access',{method:'POST',token:access,body:{}});return Array.isArray(data)?data[0]||{active:false}:data||{active:false};},
+    async loadCourseContent(courseId){if(!CLOUD_PROJECT_ID.test(courseId))throw cloudError('Invalid course.','validation');const access=await token();return request('/rest/v1/course_content?select=stage_index,payload,revision&course_id=eq.'+encodeURIComponent(courseId)+'&order=stage_index',{token:access});},
+    async loadProfile(){if(!session)return null;const access=await token();const rows=await request('/rest/v1/profiles?select=username,phone,display_name,preferences&user_id=eq.'+encodeURIComponent(session.user.id),{token:access});return rows?.[0]||null;},
+    async savePreferences(preferences){if(!session)return null;const access=await token();const body={preferences:preferences&&typeof preferences==='object'?preferences:{}};if(JSON.stringify(body).length>20000)throw cloudError('Preferences too large.','validation');return request('/rest/v1/profiles?user_id=eq.'+encodeURIComponent(session.user.id),{method:'PATCH',token:access,body});},
+    async myOrders(){if(!session)return [];const access=await token();return request('/rest/v1/orders?select=id,plan_id,provider,status,currency,amount,created_at,paid_at&order=created_at.desc&limit=20',{token:access});},
+    functionsUrl(name){requireConfigured();return conf.url+'/functions/v1/'+name;},
     async loadProgress(){const turn=generation,owner=session?.user?.id;const access=await token();if(turn!==generation||session?.user?.id!==owner)throw cloudError('Session changed while loading.','auth');let result=Object.create(null);for(let offset=0;offset<20000;offset+=500){const rows=await request('/rest/v1/academy_progress?select=project_id,payload,revision&order=project_id&limit=500&offset='+offset,{token:access});if(turn!==generation||session?.user?.id!==owner)throw cloudError('Session changed while loading.','auth');for(const row of rows||[])if(CLOUD_PROJECT_ID.test(row.project_id))result[row.project_id]=rowValue(row);if((rows||[]).length<500)return result;}throw cloudError('Too many progress records.');},
     async saveProgress(projectId,value,expectedRevision=null){if(!CLOUD_PROJECT_ID.test(projectId))throw cloudError('Invalid project ID.','validation');const payload=sanitizeCloudProgress(value);if(expectedRevision!==null&&(!Number.isSafeInteger(expectedRevision)||expectedRevision<1))throw cloudError('Invalid revision.','validation');const turn=generation,owner=session?.user?.id;const access=await token();if(turn!==generation||session?.user?.id!==owner)throw cloudError('Session changed while saving.','auth');
       try{const data=await request('/rest/v1/rpc/academy_save_progress',{method:'POST',token:access,body:{p_project_id:projectId,p_payload:payload,p_expected_revision:expectedRevision}});if(turn!==generation||session?.user?.id!==owner)throw cloudError('Session changed while saving.','auth');return rowValue(Array.isArray(data)?data[0]:data);}
@@ -2760,6 +3754,8 @@ function createCloudSync({config=globalThis.MG_CONFIG||{},storage=globalThis.loc
   };
 }
 
+Object.defineProperty(exports, "normalizePhone", { enumerable: true, get: () => normalizePhone });
+Object.defineProperty(exports, "validMemberFields", { enumerable: true, get: () => validMemberFields });
 Object.defineProperty(exports, "sanitizeCloudProgress", { enumerable: true, get: () => sanitizeCloudProgress });
 Object.defineProperty(exports, "createCloudSync", { enumerable: true, get: () => createCloudSync });
 },
@@ -3109,9 +4105,34 @@ function createAIClient({onStatus=()=>{},config=globalThis.MG_CONFIG||{},fetcher
  const capabilities=()=>{const protocol=environment.location?.protocol;const reasons=[];if(!/^https?:$/.test(protocol||''))reasons.push('Open the HTTPS website or the optional local HTTP launcher; file:// cannot create this model worker.');if(!environment.Worker||!environment.WebAssembly)reasons.push('This browser has no WebAssembly worker support.');const memory=Number(environment.navigator?.deviceMemory)||null;return {supported:reasons.length===0,reasons,memoryGB:memory,threads:environment.crossOriginIsolated?Math.min(4,environment.navigator?.hardwareConcurrency||1):1,cache:!!environment.caches,models};};
  const assertLive=turn=>{if(turn!==operation||controller?.signal.aborted)throw new DOMException('Cancelled','AbortError');};
  async function verifyBlob(blob,model,turn,onProgress){const hash=createModelHasher(),reader=blob.stream().getReader();let loaded=0;try{while(true){assertLive(turn);const {value,done}=await reader.read();if(done)break;hash.update(value);loaded+=value.length;onProgress?.({loaded,total:model.bytes,progress:loaded/model.bytes,message:'Verifying SHA-256'});}}finally{reader.releaseLock();}if(loaded!==model.bytes||hash.hex()!==model.sha256)throw aiError('The model checksum does not match the pinned official file.','integrity');}
+ async function mirrorBlob(base,model,turn,onProgress){
+  const manifestRes=await fetcher(base+'weights-manifest.json',{signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer',cache:'no-cache'});
+  if(!manifestRes.ok)throw aiError('Mirror manifest unavailable.','download');
+  const doc=await manifestRes.json();const item=(doc?.files||[]).find(f=>f&&f.sha256===model.sha256&&f.size===model.bytes&&String(f.path||'').split('/').pop()===model.file);
+  if(!item||!Array.isArray(item.parts)||!item.parts.length)throw aiError('Model not listed on mirror.','download');
+  emit('downloading','Downloading verified parts from the owner mirror…');
+  const whole=createModelHasher(),pieces=[];let loaded=0;
+  for(const part of item.parts){
+   if(!/^parts\/[A-Za-z0-9._\/-]{1,200}$/.test(part.path||'')||String(part.path).includes('..'))throw aiError('Invalid mirror part path.','integrity');
+   const res=await fetcher(base+part.path,{signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!res.ok||!res.body)throw aiError('Mirror part download failed.','download');
+   const reader=res.body.getReader(),hash=createModelHasher();let size=0;
+   try{while(true){assertLive(turn);const {value,done}=await reader.read();if(done)break;size+=value.length;loaded+=value.length;if(size>part.size||loaded>model.bytes)throw aiError('Mirror part exceeds its size.','integrity');hash.update(value);whole.update(value);pieces.push(value);onProgress?.({loaded,total:model.bytes,progress:loaded/model.bytes,message:'Downloading mirror parts and checking SHA-256'});}}
+   catch(e){await reader.cancel().catch(()=>{});throw e;}finally{reader.releaseLock();}
+   if(size!==part.size||hash.hex()!==part.sha256)throw aiError('Mirror part checksum failed.','integrity');
+  }
+  if(loaded!==model.bytes||whole.hex()!==model.sha256)throw aiError('Mirror model checksum failed. Nothing was installed.','integrity');
+  return new Blob(pieces);
+ }
  async function modelBlob(model,turn,onProgress){
   const url='https://huggingface.co/'+model.repo+'/resolve/'+model.revision+'/'+model.file;let cache=null;try{cache=await environment.caches?.open(AI_CACHE);}catch{}
   const cached=await cache?.match(url);if(cached){const blob=await cached.blob();emit('verifying');try{await verifyBlob(blob,model,turn,onProgress);return blob;}catch(e){if(e.name==='AbortError')throw e;await cache.delete(url);}}
+  // V12: optional owner mirrors (e.g. a Cloudflare Worker that reads the private
+  // PRIVATE-MODELS repository with a server-side read-only token). The same
+  // pinned size and SHA-256 are enforced; Hugging Face stays the fallback.
+  for(const base of (Array.isArray(config.modelMirrors)?config.modelMirrors:[]).filter(v=>typeof v==='string'&&/^https:\/\/[^\s?#]+\/$/.test(v)).slice(0,3)){
+   try{const blob=await mirrorBlob(base,model,turn,onProgress);if(cache)try{await cache.put(url,new Response(blob,{headers:{'Content-Type':'application/octet-stream'}}));}catch{}return blob;}
+   catch(e){if(e.name==='AbortError')throw e;emit('downloading','Mirror unavailable; using the official source.');}
+  }
   emit('downloading');const res=await fetcher(url,{signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!res.ok||!res.body)throw aiError('Model download failed. Check internet access and free storage.','download');
   const reader=res.body.getReader(),chunks=[],hash=createModelHasher();let loaded=0;try{while(true){assertLive(turn);const {value,done}=await reader.read();if(done)break;loaded+=value.length;if(loaded>model.bytes)throw aiError('Model exceeds its expected size.','integrity');hash.update(value);chunks.push(value);onProgress?.({loaded,total:model.bytes,progress:loaded/model.bytes,message:'Downloading and checking SHA-256'});}}catch(e){await reader.cancel().catch(()=>{});throw e;}finally{reader.releaseLock();}
   if(loaded!==model.bytes||hash.hex()!==model.sha256)throw aiError('Model checksum failed. Nothing was installed.','integrity');assertLive(turn);const blob=new Blob(chunks);if(cache)try{await cache.put(url,new Response(blob,{headers:{'Content-Type':'application/octet-stream'}}));}catch{/* A storage quota failure still permits this consented session. */}return blob;
@@ -5137,11 +6158,11 @@ function resolveExercise(course={},step={}){
  const expansion=resolveExpansionExercise(course,step);if(expansion)return expansion;
  if(first26[step.id])return first26[step.id]();
  if(firstPackage[step.id])return firstPackage[step.id]();
- if(course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))){
+ if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-'))){
   const n=Number(step.sequence)||1,quiz=step.quiz,validQuiz=quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)&&quiz.options.length===quiz.optionsEn.length&&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length;
   const decisions=validQuiz?quiz.options.map((v,i)=>opt('answer-'+i,v,quiz.optionsEn[i])):[opt('evidence',step.check,step.checkEn),opt('guess','未核對模型邊界便沿用另一個案例','Reuse a case without checking model boundaries'),opt('omit','跳過本步所需的證據','Skip the required evidence')];
   const offset=n%decisions.length,computing=!!COMPUTING_SUBJECTS[course.id];
-  return make(`${step.id}-evidence`,'inspect',`${computing?'itv11':'worldv11'}:${course.id}`,bi(course.title,course.titleEn),bi(validQuiz?`${step.instruction}\n判讀：${quiz.question}`:step.instruction,validQuiz?`${step.instructionEn}\nReview: ${quiz.questionEn}`:step.instructionEn),bi('架構與證據的工程判讀','Engineering review of architecture and evidence'),bi(validQuiz?`${step.check} ${quiz.explanation||''}`:step.check,validQuiz?`${step.checkEn} ${quiz.explanationEn||''}`:step.checkEn),{choices:[...decisions.slice(offset),...decisions.slice(0,offset)],expectedChoice:validQuiz?'answer-'+quiz.answer:'evidence',provenance:'semantic-template',family:computing?computingVisualFamily(course.id):worldVisualFamily(course),visualFocus:(n-1)%(computing?COMPUTING_SUBJECTS[course.id].nodes.length:Math.min(5,course.architectureNodes.length)),worldCourse:computing?null:{id:course.id,title:course.title,titleEn:course.titleEn,architectureFamily:course.architectureFamily,architectureNodes:course.architectureNodes,architectureEdges:course.architectureEdges},coverage:bi('專屬功能架構配合本步證據題與雙手概念操作；高亮是功能導讀，不是實體元件位置或設備運轉程序。詳細算例與理想量子模擬另行標示。','Subject-specific architecture with this step’s evidence question and two-hand conceptual interaction. Highlights are functional guidance, not physical component positions or operating procedures. Calculators and ideal quantum models are separately labeled.')});
+  return make(`${step.id}-evidence`,'inspect',`${computing?'itv11':'worldv11'}:${course.id}`,bi(course.title,course.titleEn),bi(validQuiz?`${step.instruction}\n判讀：${quiz.question}`:step.instruction,validQuiz?`${step.instructionEn}\nReview: ${quiz.questionEn}`:step.instructionEn),bi('架構與證據的工程判讀','Engineering review of architecture and evidence'),bi(validQuiz?`${step.check} ${quiz.explanation||''}`:step.check,validQuiz?`${step.checkEn} ${quiz.explanationEn||''}`:step.checkEn),{choices:[...decisions.slice(offset),...decisions.slice(0,offset)],expectedChoice:validQuiz?'answer-'+quiz.answer:'evidence',provenance:'semantic-template',family:computing?computingVisualFamily(course.id):worldVisualFamily(course),visualFocus:(n-1)%(computing?COMPUTING_SUBJECTS[course.id].nodes.length:Math.max(1,Math.min(6,course.architectureNodes?.length||1))),worldCourse:computing||!hasWorldVisual(course)?null:{id:course.id,title:course.title,titleEn:course.titleEn,architectureFamily:course.architectureFamily,architectureNodes:course.architectureNodes,architectureEdges:course.architectureEdges},coverage:bi('專屬功能架構配合本步證據題與雙手概念操作；高亮是功能導讀，不是實體元件位置或設備運轉程序。詳細算例與理想量子模擬另行標示。','Subject-specific architecture with this step’s evidence question and two-hand conceptual interaction. Highlights are functional guidance, not physical component positions or operating procedures. Calculators and ideal quantum models are separately labeled.')});
  }
  if(ELECTRONICS_SUBJECTS[course.id] && (course.curriculumVersion>=10 || String(step.id).includes('-v10-'))){
   const n=Number(step.sequence)||Number(String(step.id).match(/(\d+)$/)?.[1])||1;
@@ -5306,7 +6327,7 @@ function routeScene(spec,choice,done,lang){
 function sceneDrawing(spec,values,choice,phase,lang){
  if(spec.expansion)return renderExpansionScene(spec,values,choice,phase,lang);
  if(spec.scene.startsWith('itv11:'))return renderComputingVisual(spec.scene.slice(6),{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');
- if(spec.scene.startsWith('worldv11:'))return renderWorldVisual(spec.worldCourse,{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');
+ if(spec.scene.startsWith('worldv11:')&&spec.worldCourse)return renderWorldVisual(spec.worldCourse,{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');
  if(spec.scene.startsWith('elev10:'))return renderElectronicsVisual(spec.scene.slice(7),{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');
  if(spec.scene.startsWith('packv9:'))return renderPackagingVisual(spec.scene.slice(7),{zh:lang==='zh'}).replace('<svg ','<svg x="16" y="39" width="368" height="219" ');
  if(spec.scene.startsWith('semiv8:'))return renderSemiconductorVisual(spec.scene.slice(7),{zh:lang==='zh'}).replace('<svg ','<svg x="16" y="48" width="368" height="198" ');
@@ -5741,7 +6762,75 @@ function hiddenOrExcluded(element, attributes = false) {
   return false;
 }
 
-function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, onStatus = () => {} } = {}) {
+/* V12: bundled UI dictionaries (i18n/<lang>.js, human-reviewed machine
+ * translations of the interface chrome) and Chrome's on-device Translator API
+ * for course content. Neither sends page text to this site's servers. */
+const dictionaryPromises = new Map();
+function loadDictionary(language) {
+  const root = globalThis.window || globalThis;
+  if (!language || language === 'en' || language === 'zh-TW') return Promise.resolve(null);
+  if (root.MG_I18N?.[language]) return Promise.resolve(root.MG_I18N[language]);
+  if (!/^[a-z]{2,3}(?:-[A-Z]{2})?$/.test(language) || typeof root.document?.createElement !== 'function' || typeof root.document?.head?.appendChild !== 'function') return Promise.resolve(null);
+  if (!dictionaryPromises.has(language)) dictionaryPromises.set(language, new Promise(resolve => {
+    const script = root.document.createElement('script');
+    script.src = 'i18n/' + language + '.js'; script.async = true;
+    script.onload = () => resolve(root.MG_I18N?.[language] || null);
+    script.onerror = () => { dictionaryPromises.delete(language); resolve(null); };
+    setTimeout(() => resolve(root.MG_I18N?.[language] || null), 8000);
+    try { root.document.head.appendChild(script); } catch { resolve(null); }
+  }));
+  return dictionaryPromises.get(language);
+}
+const ARROWS = /^(.*?)(\s*[↗↘→←↓↑]+)$/u;
+// Numbers may be written with locale digits (Arabic-Indic, Persian, Devanagari, Bengali, Myanmar)
+// and grouping marks; they all map to the {n} placeholder of the dictionary keys.
+const DIGITS = '0-9\u0660-\u0669\u06F0-\u06F9\u0966-\u096F\u09E6-\u09EF\u1040-\u1049';
+const NUMBER = new RegExp(`[${DIGITS}](?:[${DIGITS},.\u066B\u066C]|[\u202F\u00A0\u2019'](?=[${DIGITS}]))*`, 'g');
+/** Look up a rendered string in a UI dictionary (exact, arrow suffix, number template, ' · ' parts). */
+function loadedDictionary(language) { return (globalThis.window || globalThis).MG_I18N?.[language] || null; }
+function lookupDictionary(dict, source) {
+  if (!dict || typeof source !== 'string') return undefined;
+  const strings = dict.strings || dict;
+  const one = text => {
+    const trimmed = text.trim();
+    if (!trimmed) return text;
+    if (Object.prototype.hasOwnProperty.call(strings, trimmed)) return strings[trimmed];
+    const arrow = trimmed.match(ARROWS);
+    if (arrow) { const head = one(arrow[1]); if (head !== undefined) return head + arrow[2]; }
+    const numbers = trimmed.match(NUMBER);
+    if (numbers) {
+      const key = trimmed.replace(NUMBER, '{n}');
+      if (Object.prototype.hasOwnProperty.call(strings, key)) { let i = 0; return strings[key].replace(/\{n\}/g, () => numbers[i++] ?? ''); }
+    }
+    return undefined;
+  };
+  const whole = one(source);
+  if (whole !== undefined) return whole;
+  if (source.includes(' · ')) {
+    const parts = source.split(' · ');
+    const out = parts.map(part => one(part));
+    if (out.some(v => v !== undefined)) return parts.map((part, i) => out[i] ?? part).join(' · ');
+  }
+  return undefined;
+}
+const translators = new Map();
+/** On-device translation (Chrome Translator API). Returns null when unavailable. */
+async function onDeviceTranslator(language, {source = 'en', userActivated = false} = {}) {
+  const api = globalThis.Translator;
+  if (!api?.create || !language || language === source) return null;
+  const target = language === 'zh-CN' ? 'zh' : language === 'zh-TW' ? 'zh-Hant' : language === 'fil' ? 'tl' : language;
+  const key = source + '>' + target;
+  if (translators.has(key)) return translators.get(key);
+  try {
+    const availability = await api.availability?.({sourceLanguage: source, targetLanguage: target});
+    if (availability === 'unavailable' || availability === 'no') return null;
+    if (availability !== 'available' && availability !== 'readily' && !userActivated && !globalThis.navigator?.userActivation?.isActive) return null;
+    const promise = api.create({sourceLanguage: source, targetLanguage: target});
+    translators.set(key, promise.catch(() => { translators.delete(key); return null; }));
+    return translators.get(key);
+  } catch { return null; }
+}
+function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
   const attributeSources = new WeakMap();
   const cache = new Map();
@@ -5836,6 +6925,18 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
       const value = get(keyFor(language, source));
       if (value !== undefined) translations.set(source, value);
     }
+    let dictionary = null;
+    if (!core) {
+      // Never block on the dictionary: use it when loaded, otherwise load it in
+      // the background and re-apply once it arrives.
+      dictionary = loadedDictionary(language);
+      if (!dictionary) loadDictionary(language).then(loaded => { if (loaded) try { onDictionary(language); } catch {} });
+      if (dictionary) for (const source of texts) {
+        if (translations.has(source)) continue;
+        const value = lookupDictionary(dictionary, source);
+        if (value !== undefined) translations.set(source, value);
+      }
+    }
     const cached = translations.size;
     let failed = 0;
     const cancelled = () => token !== generation;
@@ -5868,7 +6969,21 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
     if (core) return report('core');
     const missing = texts.filter(source => !translations.has(source));
     if (!missing.length) return report(cached ? 'cached' : 'translated');
-    if (!getAIAvailable()) return report('unavailable', 'Translation requires a signed-in account and a configured AI service. Cached translations remain available.');
+    const local = globalThis.Translator ? await onDeviceTranslator(language) : null;
+    if (local && !cancelled()) {
+      report('translating');
+      for (const source of missing) {
+        if (cancelled()) return { ...latestStatus, state: 'cancelled' };
+        try {
+          const value = String(await local.translate(source) || '').trim();
+          if (value) { translations.set(source, value); put(keyFor(language, source), value); }
+        } catch { failed++; }
+        if (translations.size % 20 === 0) write();
+      }
+      persist(); write();
+      return report(failed ? 'partial' : 'translated');
+    }
+    if (!getAIAvailable()) return report(dictionary ? 'dictionary' : 'unavailable', dictionary ? 'Interface translated with the bundled dictionary. Course content stays in English unless this browser offers on-device translation (Chrome) or the site owner configures a translation service.' : 'Translation requires a signed-in account and a configured AI service. Cached translations remain available.');
 
     report('translating');
     let cursor = 0;
@@ -5925,18 +7040,25 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
 
 Object.defineProperty(exports, "resolveSupportedLanguage", { enumerable: true, get: () => resolveSupportedLanguage });
 Object.defineProperty(exports, "languageDirection", { enumerable: true, get: () => languageDirection });
+Object.defineProperty(exports, "loadDictionary", { enumerable: true, get: () => loadDictionary });
+Object.defineProperty(exports, "loadedDictionary", { enumerable: true, get: () => loadedDictionary });
+Object.defineProperty(exports, "lookupDictionary", { enumerable: true, get: () => lookupDictionary });
+Object.defineProperty(exports, "onDeviceTranslator", { enumerable: true, get: () => onDeviceTranslator });
 Object.defineProperty(exports, "createLocaleController", { enumerable: true, get: () => createLocaleController });
 },
 "app.js":function(require, exports) {
 'use strict';
 const { labResourcesMarkup } = require("lab-resources.js");
 const { computingPathsMarkup } = require("computing-paths.js");
+const { opticsPathsMarkup } = require("optics-paths.js");
+const { heroIconWallMarkup, mountHeroIconWall } = require("project-icons.js");
+let iconWallController=null;
 const { renderLearningMap, mountLearningMap } = require("learning-map.js");
 const { quantumLabMarkup, bindQuantumLab } = require("quantum-lab.js");
 const { electronicsPathsMarkup } = require("electronics-paths.js");
 const { createPersonalization, showcaseMarkup, bindShowcase } = require("personalization.js");
-const { loadVendors, vendorsMarkup, bindVendors } = require("vendors.js");
-const { billingState, loadBillingConfig, resetLearningEvidence, loadVerifiedLearning, submitVerifiedStep, courseAccessMarkup, membershipMarkup, certificateMarkup, bindMembership } = require("membership.js");
+const { loadVendors, loadMarkets, vendorsMarkup, bindVendors } = require("vendors.js");
+const { billingState, loadBillingConfig, resetLearningEvidence, loadVerifiedLearning, submitVerifiedStep, courseAccessMarkup, membershipMarkup, certificateMarkup, bindMembership, resumeEcpayReturn } = require("membership.js");
 const { initializeServices } = require("services.js");
 const { loadCurriculumData } = require("curriculum-loader.js");
 const { createTutorPanel } = require("tutor-panel.js");
@@ -5952,7 +7074,10 @@ const { setLearningMedia, learningMediaMarkup, bindLearningMedia, disposeLearnin
 const { labMarkup, bindLab } = require("engineering-labs.js");
 const { initialPose, normalizePose, targetFor, alignment, advancePose, assemblySvg, renderExerciseSvg } = require("workshop-model.js");
 const { resolveExercise, evaluateExercise } = require("process-exercises.js");
-const { createLocaleController, languageDirection, resolveSupportedLanguage } = require("locale.js");
+const { createLocaleController, languageDirection, resolveSupportedLanguage, loadDictionary, onDeviceTranslator, loadedDictionary, lookupDictionary } = require("locale.js");
+const { validMemberFields, normalizePhone } = require("cloud-sync.js");
+const { configurePaywall, refreshAccess, accessState, stepLocked, stageBadge, lockedStepMarkup, hydrateProtectedStages, hasFullAccess } = require("paywall.js");
+const { loadPricing, freeStages, priceTable, selectedCurrency } = require("pricing.js");
 let learningMapController=null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -5981,7 +7106,7 @@ Object.assign(messages,{
   enableKeyboard:['啟用鍵盤操作','Enable keyboard controls'],keyboardReady:['鍵盤已啟用','Keyboard active'],keyboardPaused:['點按啟用鍵盤或工作台','Click Enable keyboard or the workbench'],receivedKeys:['已接收按鍵','Keys received'],objectHeld:['零件已抓取，可移動','Object grabbed; motion enabled'],objectReleased:['零件已放開；Space 抓取','Object released; Space to grab'],
   stageDescription:['階段說明','Stage context'],instruction:['師傅帶做','Mentor instructions'],observation:['觀察什麼','What to observe'],failure:['常見錯誤與修正','Common mistakes and corrections'],referencePhoto:['工藝代表照片','Representative process photograph'],representative:['代表性照片，不是本步驟的實際施工紀錄。','Representative photograph, not an actual record of this process step.'],
   navFilter:['搜尋本課工序…','Search this course…'],module:['模組','Module'],navLimit:['僅顯示前 40 個相符工序，請縮小關鍵字。','Showing the first 40 matches; refine your search.'],showCurrent:['目前工序所在模組','Current process module'],migration:['課程已更新，舊工序編號無法直接對應。舊進度已保留於本裝置的舊版備份，筆記已保留；新版需重新驗收。','This curriculum changed and old process IDs cannot be mapped safely. Legacy progress is retained in a device backup and notes are preserved; the new curriculum requires fresh checks.'],migrationUnsafe:['課程已更新。舊編號不計入新課進度；備份空間不足，請立即匯出舊進度。','This curriculum changed. Old IDs do not count toward the new course; device backup failed, so export legacy progress now.'],exportLegacy:['匯出舊版備份','Export legacy backup'],
-  translateInfo:['繁體中文與英文是已提供的核心內容。其他 77 種語言由已連接的 AI 翻譯整頁介面、表單與教材，語言偏好跨頁保留。翻譯快取存在此裝置；未翻譯或失敗部分保留原文並顯示狀態。','Traditional Chinese and English are the provided core content. A configured AI translates the interface, forms and lessons into 77 additional languages, keeping your preference across pages. Translations are cached on this device. Missing or failed translations retain the source with visible status.'],translateGo:['儲存語言偏好','Save language preference'],language:['語言','Language'],translationWorking:['正在翻譯此頁','Translating this page'],translationUnavailable:['翻譯服務未連接，保留核心原文。語言偏好已保存。','Translation is not connected; core source text remains. Your language preference is saved.'],translationPartial:['部分內容保留原文；可稍後重試。','Some source text remains; retry later.'],translationReady:['機器翻譯已套用；技術細節請核對原文。','Machine translation applied; verify technical details against the source.'],retry:['重試翻譯','Retry translation'],sourceLanguage:['核心原文','Core source'],
+  translateInfo:['繁體中文與英文為完整核心內容。介面另內建 77 種語言字典，預設跟隨瀏覽器語言；課程內文在支援的瀏覽器（如 Chrome）由裝置內建翻譯，其餘顯示英文。語言選擇會跨頁保留。','Traditional Chinese and English are the complete core content. The interface ships with built-in dictionaries for 77 more languages and follows your browser language. Course text is translated on your device in browsers that support it (such as Chrome); otherwise it stays in English. Your language choice is kept across pages.'],translateGo:['儲存語言偏好','Save language preference'],language:['語言','Language'],translationWorking:['正在翻譯此頁','Translating this page'],translationUnavailable:['翻譯服務未連接，保留核心原文。語言偏好已保存。','Translation is not connected; core source text remains. Your language preference is saved.'],translationPartial:['部分內容保留原文；可稍後重試。','Some source text remains; retry later.'],translationDictionary:['介面已使用內建字典翻譯；課程內容在支援的瀏覽器會自動翻譯，否則顯示英文。','Interface translated with the built-in dictionary; course content is translated automatically in supporting browsers, otherwise shown in English.'],translationReady:['機器翻譯已套用；技術細節請核對原文。','Machine translation applied; verify technical details against the source.'],retry:['重試翻譯','Retry translation'],sourceLanguage:['核心原文','Core source'],
 });
 const dirtyNotes=new Set();
 Object.assign(messages,{
@@ -6024,12 +7149,12 @@ function card(c){const ready=!!c.stages,n=ready?(c.stepCount||allSteps(c).length
 function orderedFeatured(){const positions=new Map(originalCourseOrder.map((id,index)=>[id,index]));return [...featured].sort((a,b)=>(positions.get(a.id)??1000)-(positions.get(b.id)??1000))}
 function domainCounts(){return Object.keys(catMap).map(id=>({id,count:catalog.filter(c=>c.category===id).length})).filter(domain=>domain.count)}
 function catalogSummary(){const guided=catalog.filter(c=>c.stages).length;return isZh()?`${catalog.length.toLocaleString()} 項工程目錄 · ${guided} 門逐步課程 · ${catalog.length-guided} 項研究路線圖 · ${domainCounts().length} 個領域`:`${catalog.length.toLocaleString()} catalog topics · ${guided} guided courses · ${catalog.length-guided} research roadmaps · ${domainCounts().length} disciplines`}
-function explorerIntro(){return `<section class="hero explorer-hero"><div class="hero-copy"><span class="eyebrow">EXPLORE · UNDERSTAND · BUILD</span><h1>${t('heroTitle')}</h1><p>${t('heroDesc')}</p><div class="home-primary-actions"><a href="#catalog/all" data-catalog-route="all" class="button">${isZh()?`全部 ${catalog.length.toLocaleString()} 項工程`:`All ${catalog.length.toLocaleString()} engineering topics`} ↗</a><a href="#catalog/ready" data-catalog-route="ready" class="button light">${isZh()?`全部 ${featured.length} 門逐步課程`:`All ${featured.length} guided courses`} ↗</a></div></div><div class="hero-art">${projectIdentitySvg(featured.find(c=>c.id==='semiconductor')||featured[0]||{id:'macgyver',category:'semiconductor',title:'馬蓋先工程學院',titleEn:'MacGyver Engineering Academy'},{en:!isZh()})}<div class="art-note">${isZh()?'從系統全貌，到每一道工序':'FROM THE SYSTEM TO EACH LEARNING STEP'}</div></div></section><section class="stats explorer-stats"><div class="stat"><strong>${catalog.length.toLocaleString()}</strong><span>${t('topics')}</span></div><div class="stat"><strong>${featured.length}</strong><span>${t('featuredCount')}</span></div><div class="stat"><strong>${domainCounts().length}</strong><span>${isZh()?'工程領域':'engineering disciplines'}</span></div><div class="stat"><strong>${featured.reduce((sum,c)=>sum+(c.stepCount||allSteps(c).length),0).toLocaleString()}</strong><span>${t('steps')}</span></div></section><details class="domain-explorer"><summary><span>${isZh()?`依 ${domainCounts().length} 個工程領域探索`:`Explore ${domainCounts().length} engineering disciplines`}</span><small>${isZh()?'展開領域圖示與題目數':'Open discipline illustrations and topic counts'}</small></summary><div class="domain-directory">${domainCounts().map(d=>`<a href="#catalog/domain/${d.id}" data-catalog-route="domain/${d.id}"><span class="domain-illustration">${domainIdentitySvg(d.id,{title:catName(d.id),en:!isZh()})}</span>${domainIconSvg(d.id,{title:catName(d.id)})}<strong>${esc(catName(d.id))}</strong><span>${d.count} ${t('topicsCount')} ↗</span></a>`).join('')}</div><p class="subtext">${isZh()?'各領域及每項工程皆有原創識別圖；專案識別不是實物照片或施工圖。授權照片會另外標示。':'Each discipline and project has an original visual identity. Identities are not photographs or construction drawings; licensed photographs are labelled separately.'}</p></details>`}
+function explorerIntro(){return `<section class="hero explorer-hero"><div class="hero-copy"><span class="eyebrow">EXPLORE · UNDERSTAND · BUILD</span><h1>${t('heroTitle')}</h1><p>${t('heroDesc')}</p><div class="home-primary-actions"><a href="#catalog/all" data-catalog-route="all" class="button">${isZh()?`全部 ${catalog.length.toLocaleString()} 項工程`:`All ${catalog.length.toLocaleString()} engineering topics`} ↗</a><a href="#catalog/ready" data-catalog-route="ready" class="button light">${isZh()?`全部 ${featured.length} 門逐步課程`:`All ${featured.length} guided courses`} ↗</a></div></div><div class="hero-wall">${heroIconWallMarkup({zh:isZh()})}<div class="art-note">${isZh()?`${catalog.length.toLocaleString()} 項工程，各有專屬圖示 · 點圖示直接進入`:`${catalog.length.toLocaleString()} projects, one icon each · click to open`}</div></div></section><section class="stats explorer-stats"><div class="stat"><strong>${catalog.length.toLocaleString()}</strong><span>${t('topics')}</span></div><div class="stat"><strong>${featured.length}</strong><span>${t('featuredCount')}</span></div><div class="stat"><strong>${domainCounts().length}</strong><span>${isZh()?'工程領域':'engineering disciplines'}</span></div><div class="stat"><strong>${featured.reduce((sum,c)=>sum+(c.stepCount||allSteps(c).length),0).toLocaleString()}</strong><span>${t('steps')}</span></div></section><details class="domain-explorer"><summary><span>${isZh()?`依 ${domainCounts().length} 個工程領域探索`:`Explore ${domainCounts().length} engineering disciplines`}</span><small>${isZh()?'展開領域圖示與題目數':'Open discipline illustrations and topic counts'}</small></summary><div class="domain-directory">${domainCounts().map(d=>`<a href="#catalog/domain/${d.id}" data-catalog-route="domain/${d.id}"><span class="domain-illustration">${domainIdentitySvg(d.id,{title:catName(d.id),en:!isZh()})}</span>${domainIconSvg(d.id,{title:catName(d.id)})}<strong>${esc(catName(d.id))}</strong><span>${d.count} ${t('topicsCount')} ↗</span></a>`).join('')}</div><p class="subtext">${isZh()?'各領域及每項工程皆有原創識別圖；專案識別不是實物照片或施工圖。授權照片會另外標示。':'Each discipline and project has an original visual identity. Identities are not photographs or construction drawings; licensed photographs are labelled separately.'}</p></details>`}
 function renderHome(){return renderCatalog()}
 function filteredCatalog(){return catalog.filter(c=>(!filter||c.category===filter)&&(!subdiscipline||courseSubcategory(c).id===subdiscipline)&&(!maturity||(maturity==='ready'?c.stages:!c.stages))&&(!query||[c.id,c.title,c.titleEn,c.summary,c.summaryEn,catName(c.category),courseSubcategory(c).title,courseSubcategory(c).titleEn].join(' ').toLowerCase().includes(query.toLowerCase())))}
 function catalogCsv(){const cell=value=>'"'+String(value??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')+'"';const rows=[['id','中文名稱','English title','中文領域','English discipline','中文內容類型','Content type','Authored learning steps','Project route'],...catalog.map(c=>[c.id,c.title,c.titleEn,catMap[c.category]?.[0]||c.category,catMap[c.category]?.[1]||c.category,c.stages?'逐步課程':'研究路線圖',c.stages?'Guided course':'Research roadmap',c.stages?allSteps(c).length:0,'#project/'+c.id])];return '\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')}
 function catalogSubdisciplineFilter(){const subs=[...new Map(catalog.filter(c=>(!filter||c.category===filter)&&c.stages).map(c=>courseSubcategory(c)).filter(s=>s.id).map(s=>[s.id,s])).values()];return `<div class="catalog-subdisciplines"><label for="catalogSubdiscipline">${isZh()?'專業子領域':'Technical subdiscipline'}</label><select id="catalogSubdiscipline" ${!subs.length?'disabled':''}><option value="">${isZh()?'全部子領域':'All subdisciplines'}</option>${subs.map(s=>`<option value="${esc(s.id)}" ${subdiscipline===s.id?'selected':''}>${esc(isZh()?s.title:s.titleEn)}</option>`).join('')}</select><span class="subtext">${isZh()?'依學習問題縮小範圍；每門都有完整工序導航。':'Narrow your learning question; each guided course has a complete step navigator.'}</span></div>`}
-function renderCatalog(){const list=filteredCatalog(),pages=Math.max(1,Math.ceil(list.length/24));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));const first=list.length?pageIndex*24+1:0,last=Math.min((pageIndex+1)*24,list.length),shown=list.slice(pageIndex*24,(pageIndex+1)*24);return `${explorerIntro()}${!filter||filter==='computing'?computingPathsMarkup(catalog,isZh()):''}${!filter||filter==='electronics'?electronicsPathsMarkup(catalog,isZh()):''}${!filter||filter==='packaging'?packagingPathsMarkup(catalog,isZh()):''}<section class="explorer-catalog" id="explorerCatalog" aria-labelledby="explorerCatalogTitle"><div class="section-head"><div><span class="page-number">ONE ENGINEERING EXPLORER</span><h2 id="explorerCatalogTitle">${isZh()?'找到下一個工程挑戰':'Find your next engineering challenge'}</h2><p class="subtext">${catalogSummary()}</p></div><button class="button light" data-download-catalog>↓ ${isZh()?'完整中英目錄 CSV':'Complete bilingual CSV'}</button></div><div class="catalog-shortcuts"><a class="chip ${!maturity?'active':''}" href="#catalog/all" data-catalog-route="all">${isZh()?`全部 ${catalog.length} 項工程`:`All ${catalog.length} topics`}</a><a class="chip ${maturity==='ready'?'active':''}" href="#catalog/ready" data-catalog-route="ready">${isZh()?`${featured.length} 門逐步課程`:`${featured.length} guided courses`}</a><a class="chip ${maturity==='roadmap'?'active':''}" href="#catalog/roadmap" data-catalog-route="roadmap">${isZh()?`${catalog.length-featured.length} 項研究路線圖`:`${catalog.length-featured.length} research roadmaps`}</a></div><div class="search-bar"><input id="search" value="${esc(query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="categoryFilter"><option value="">${t('allDomains')} (${catalog.length})</option>${domainCounts().map(d=>`<option value="${d.id}" ${filter===d.id?'selected':''}>${catName(d.id)} (${d.count})</option>`).join('')}</select><select id="maturity"><option value="">${t('allMaturity')}</option><option value="ready" ${maturity==='ready'?'selected':''}>${t('ready')} (${featured.length})</option><option value="roadmap" ${maturity==='roadmap'?'selected':''}>${t('roadmap')} (${catalog.length-featured.length})</option></select></div>${catalogSubdisciplineFilter()}${filter?`<div class="selected-domain">${domainIconSvg(filter,{decorative:true})}<strong>${esc(catName(filter))}</strong><button class="text-link" data-filter="">${isZh()?'清除領域篩選':'Clear discipline filter'} ×</button></div>`:''}<div class="catalog-info"><strong role="status">${isZh()?`顯示 ${first}–${last}／${list.length.toLocaleString()} 項`:`Showing ${first}–${last} of ${list.length.toLocaleString()}`}</strong><label>${isZh()?'顯示方式':'View'} <select id="catalogView"><option value="list" ${catalogView==='list'?'selected':''}>${isZh()?'圖像清單':'Illustrated list'}</option><option value="cards" ${catalogView==='cards'?'selected':''}>${isZh()?'圖像卡片':'Image cards'}</option></select></label></div><p class="subtext">${t('catalogScope')}</p>${catalogView==='cards'?`<div class="cards">${shown.map(card).join('')}</div>`:`<div class="catalog-table-wrap"><table class="catalog-table"><thead><tr><th>#</th><th>${isZh()?'工程／工藝名稱':'Project / craft'}</th><th>${isZh()?'領域':'Discipline'}</th><th>${isZh()?'內容與步驟':'Content and steps'}</th></tr></thead><tbody>${shown.map((c,i)=>`<tr ${c.stages?`data-guided-course="${esc(c.id)}"`:''}><td>${first+i}</td><td><div class="catalog-project-cell"><a class="catalog-thumbnail" href="#project/${esc(c.id)}" tabindex="-1" aria-hidden="true">${projectMedia(c,true)}</a><div><a href="#project/${esc(c.id)}">${esc(txt(c))}</a><small>${esc(isZh()?c.titleEn:c.title)}</small><span class="catalog-project-code">${esc(c.id)}</span></div>${projectIconSvg(c,{en:!isZh()})}</div></td><td><span class="catalog-discipline">${domainIconSvg(c.category,{decorative:true})}${esc(catName(c.category))}</span></td><td>${t(c.stages?'ready':'roadmap')}${c.stages?`<small>${c.stepCount||allSteps(c).length} ${t('steps')}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`}${!shown.length?`<p class="empty">${t('noResults')}</p>`:''}<div class="pagination"><button id="prevPage" class="button light" ${pageIndex===0?'disabled':''}>← ${t('previous')}</button><form id="catalogPageForm"><label for="catalogPage">${isZh()?'跳至頁次':'Go to page'}</label><input id="catalogPage" type="number" min="1" max="${pages}" value="${pageIndex+1}" required><span>/ ${pages}</span><button class="button light" type="submit">${isZh()?'前往':'Go'}</button></form><button id="nextPage" class="button light" ${pageIndex===pages-1?'disabled':''}>${t('next')} →</button></div></section>${showcaseMarkup({zh:isZh()})}`}
+function renderCatalog(){const list=filteredCatalog(),pages=Math.max(1,Math.ceil(list.length/24));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));const first=list.length?pageIndex*24+1:0,last=Math.min((pageIndex+1)*24,list.length),shown=list.slice(pageIndex*24,(pageIndex+1)*24);return `${explorerIntro()}${!filter||filter==='instruments'?opticsPathsMarkup(catalog,isZh()):''}${!filter||filter==='computing'?computingPathsMarkup(catalog,isZh()):''}${!filter||filter==='electronics'?electronicsPathsMarkup(catalog,isZh()):''}${!filter||filter==='packaging'?packagingPathsMarkup(catalog,isZh()):''}<section class="explorer-catalog" id="explorerCatalog" aria-labelledby="explorerCatalogTitle"><div class="section-head"><div><span class="page-number">ONE ENGINEERING EXPLORER</span><h2 id="explorerCatalogTitle">${isZh()?'找到下一個工程挑戰':'Find your next engineering challenge'}</h2><p class="subtext">${catalogSummary()}</p></div><button class="button light" data-download-catalog>↓ ${isZh()?'完整中英目錄 CSV':'Complete bilingual CSV'}</button></div><div class="catalog-shortcuts"><a class="chip ${!maturity?'active':''}" href="#catalog/all" data-catalog-route="all">${isZh()?`全部 ${catalog.length} 項工程`:`All ${catalog.length} topics`}</a><a class="chip ${maturity==='ready'?'active':''}" href="#catalog/ready" data-catalog-route="ready">${isZh()?`${featured.length} 門逐步課程`:`${featured.length} guided courses`}</a><a class="chip ${maturity==='roadmap'?'active':''}" href="#catalog/roadmap" data-catalog-route="roadmap">${isZh()?`${catalog.length-featured.length} 項研究路線圖`:`${catalog.length-featured.length} research roadmaps`}</a></div><div class="search-bar"><input id="search" value="${esc(query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="categoryFilter"><option value="">${t('allDomains')} (${catalog.length})</option>${domainCounts().map(d=>`<option value="${d.id}" ${filter===d.id?'selected':''}>${catName(d.id)} (${d.count})</option>`).join('')}</select><select id="maturity"><option value="">${t('allMaturity')}</option><option value="ready" ${maturity==='ready'?'selected':''}>${t('ready')} (${featured.length})</option><option value="roadmap" ${maturity==='roadmap'?'selected':''}>${t('roadmap')} (${catalog.length-featured.length})</option></select></div>${catalogSubdisciplineFilter()}${filter?`<div class="selected-domain">${domainIconSvg(filter,{decorative:true})}<strong>${esc(catName(filter))}</strong><button class="text-link" data-filter="">${isZh()?'清除領域篩選':'Clear discipline filter'} ×</button></div>`:''}<div class="catalog-info"><strong role="status">${isZh()?`顯示 ${first}–${last}／${list.length.toLocaleString()} 項`:`Showing ${first}–${last} of ${list.length.toLocaleString()}`}</strong><label>${isZh()?'顯示方式':'View'} <select id="catalogView"><option value="list" ${catalogView==='list'?'selected':''}>${isZh()?'圖像清單':'Illustrated list'}</option><option value="cards" ${catalogView==='cards'?'selected':''}>${isZh()?'圖像卡片':'Image cards'}</option></select></label></div><p class="subtext">${t('catalogScope')}</p>${catalogView==='cards'?`<div class="cards">${shown.map(card).join('')}</div>`:`<div class="catalog-table-wrap"><table class="catalog-table"><thead><tr><th>#</th><th>${isZh()?'工程／工藝名稱':'Project / craft'}</th><th>${isZh()?'領域':'Discipline'}</th><th>${isZh()?'內容與步驟':'Content and steps'}</th></tr></thead><tbody>${shown.map((c,i)=>`<tr ${c.stages?`data-guided-course="${esc(c.id)}"`:''}><td>${first+i}</td><td><div class="catalog-project-cell"><a class="catalog-thumbnail" href="#project/${esc(c.id)}" tabindex="-1" aria-hidden="true">${projectMedia(c,true)}</a><div><a href="#project/${esc(c.id)}">${esc(txt(c))}</a><small>${esc(isZh()?c.titleEn:c.title)}</small><span class="catalog-project-code">${esc(c.id)}</span></div>${projectIconSvg(c,{en:!isZh()})}</div></td><td><span class="catalog-discipline">${domainIconSvg(c.category,{decorative:true})}${esc(catName(c.category))}</span></td><td>${t(c.stages?'ready':'roadmap')}${c.stages?`<small>${c.stepCount||allSteps(c).length} ${t('steps')}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`}${!shown.length?`<p class="empty">${t('noResults')}</p>`:''}<div class="pagination"><button id="prevPage" class="button light" ${pageIndex===0?'disabled':''}>← ${t('previous')}</button><form id="catalogPageForm"><label for="catalogPage">${isZh()?'跳至頁次':'Go to page'}</label><input id="catalogPage" type="number" min="1" max="${pages}" value="${pageIndex+1}" required><span>/ ${pages}</span><button class="button light" type="submit">${isZh()?'前往':'Go'}</button></form><button id="nextPage" class="button light" ${pageIndex===pages-1?'disabled':''}>${t('next')} →</button></div></section>${showcaseMarkup({zh:isZh()})}`}
 
 function relatedContent(c,compact=false){const entry=relatedForCourse(c);return `<div class="related-preview"><h3>${isZh()?'這項技能，還能用在哪裡？':'Where can you use this skill next?'}</h3><div class="related-preview-grid">${(entry.related||[]).slice(0,3).map(item=>{const linked=typeof item.id==='string'&&catalog.find(candidate=>candidate.id===item.id);return `<article>${linked?`<a class="text-link" href="#project/${encodeURIComponent(linked.id)}">${esc(txt(item))} ↗</a>`:`<strong>${esc(txt(item))}</strong><small>${isZh()?'詳見下方延伸比較':'See the comparison below'}</small>`}<p>${esc(txt(item,entry.curated?'transfer':'summary'))}</p></article>`}).join('')}</div></div>${relatedSkillsMarkup(c,{zh:isZh(),compact})}`}
 
@@ -6038,14 +7163,18 @@ async function loadRelatedSkills(){const controller=new AbortController();let ti
 function learningMediaRegion(c,step=null){return `<div id="learningMediaRegion" data-course-id="${esc(c.id)}" data-step-id="${esc(step?.id||'')}">${learningMediaMarkup(c,{zh:isZh(),photos,step,compact:!!step})}</div>`}
 function refreshLearningMedia(){const slot=$('#learningMediaRegion');if(!slot)return;const c=catalog.find(course=>course.id===slot.dataset.courseId);if(!c)return;const step=slot.dataset.stepId?allSteps(c).find(s=>s.id===slot.dataset.stepId):null;disposeLearningMedia(slot);slot.innerHTML=learningMediaMarkup(c,{zh:isZh(),photos,step,compact:!!step});bindLearningMedia(slot,()=>applyLanguage());applyLanguage()}
 async function loadLearningMedia(){if(window.MG_DATA?.media){setLearningMedia(window.MG_DATA.media);refreshLearningMedia();return}const controller=new AbortController();let timer;try{const data=await Promise.race([fetch('data/media.json',{signal:controller.signal}).then(r=>r.ok?r.json():null),new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('media-timeout'))},5000)})]);setLearningMedia(data);refreshLearningMedia()}catch{/* Optional media never blocks the curriculum or resets an active task. */}finally{clearTimeout(timer)}}
-function curriculumOverview(c){return `<div class="curriculum-overview">${c.stages.map((stage,i)=>`<details class="curriculum-stage" ${i===0?'open':''}><summary><span class="task-label">PHASE ${String(i+1).padStart(2,'0')}</span><strong>${esc(txt(stage))}</strong><small>${stage.steps.length} ${t('steps')}</small></summary><ol>${stage.steps.map(step=>`<li data-curriculum-step="${esc(step.id)}"><h4>${esc(txt(step))}</h4><p>${esc(txt(step,'objective'))}</p>${Array.isArray(step.knowledge)&&step.knowledge.length?`<small>${t('knowledge')} · ${step.knowledge.map(point=>esc(txt(point))).join(' · ')}</small>`:''}</li>`).join('')}</ol></details>`).join('')}</div>`}
-function renderProject(id){shownProjectId=id;const c=catalog.find(c=>c.id===id);if(!c)return `<p>${t('noResults')}</p>`;const ready=!!c.stages,p=photoFor(c);return `<a class="text-link" href="#catalog">← ${t('catalog')}</a><div class="page-lead mt"><div><span class="page-number">${esc(catName(c.category))} / ${t(ready?'ready':'roadmap')}</span><div class="project-brief-title">${projectIconSvg(c,{en:!isZh()})}<h1>${esc(txt(c))}</h1></div><p>${esc(txt(c,'summary'))}</p></div>${ready&&!c.locked?`<button class="button" id="beginCourse" data-id="${c.id}">${t('begin')} ↗</button>`:''}</div>${`<div class="project-mentor-invite"><button class="button light mentor-open" data-open-tutor>✳ ${isZh()?'詢問 AI 師傅 · 原理與延伸問題':'Ask AI mentor · principles and questions'}</button><span>${isZh()?'可選本地 CPU 模型；下載前先徵求同意':'Optional local CPU models; download only with consent'}</span></div>`}${ready?courseAccessMarkup(c,isZh()):''}${relatedRegion(c,true)}${coursePlacesMarkup(c,{zh:isZh()})}<div class="info-list"><div><small>${t('contentStatus')}</small>${ready?(c.stepCount||allSteps(c).length)+' '+t('steps'):t('roadmap')}</div><div><small>${t('scope')}</small>${ready?t('layers'):t('researchOverview')}</div><div><small>${t('progress')}</small>${percent(c.id)}%</div></div>${['suspension','water-treatment'].includes(c.diagram?.type)?`<figure class="course-schematic">${iconSvg(c.diagram.type,5)}<figcaption>${t('conceptModel')}</figcaption></figure>`:''}${typeof c.flowDiagram==='string'?`<figure class="course-flow"><img src="${esc(c.flowDiagram)}" alt="${esc(txt(c))} · ${isZh()?'原創教學流程圖':'Original learning flow diagram'}"><figcaption>${isZh()?'原創教學流程圖；各製程分支需依實際產品與驗證重新整合。':'Original learning flow. Process branches require product-specific integration and verification.'}</figcaption></figure>`:''}${p?`<figure class="project-brief-media">${projectMedia(c)}<figcaption class="subtext">${esc(txt(p))} · ${esc(photoCredit(p))}${photoContextCaption(p,c.id,isZh())?`<br>${esc(photoContextCaption(p,c.id,isZh()))}`:''} · <a href="${esc(safeUrl(p.sourceUrl))}" target="_blank" rel="noopener">${t('credits')} ↗</a></figcaption></figure>`:`<figure class="project-brief-media identity-only">${projectMedia(c)}<figcaption class="subtext">${c.educationEdition===11?(isZh()?'原創功能架構教學圖；非比例尺、實物照片、廠商圖稿或設備運轉圖。':'Original functional architecture for learning; not to scale, a photograph, vendor artwork or an operating drawing.'):(isZh()?'原創專案識別插畫，依領域符號與專案編號生成；不是實物照片或工程圖。':'Original project identity, built from discipline motifs and the project ID; not a photograph or engineering drawing.')}</figcaption></figure>`}${ready?`<div class="notice">${esc(txt(c,'scope'))}</div><div class="section-head"><h2>${t('curriculum')}</h2><span class="subtext">${c.stages.length} ${isZh()?'階段':'stages'}</span></div>${c.locked?'':curriculumOverview(c)}${!c.locked?certificateMarkup(c,isZh()):''}`:`<div class="notice warn">${t('roadmapNote')}</div><div class="task-card"><h3>${t('researchNote')}</h3><textarea id="researchNotes" data-project-id="${id}" class="notes" placeholder="${t('noteHint')}">${esc(progressFor(id).notes)}</textarea><button id="saveResearch" data-id="${id}" class="button mt">${t('saveResearch')}</button></div>${renderResearchPlan(c,{en:!isZh(),profileId:user?.id||'guest'})}`}${learningMediaRegion(c)}${vendorsMarkup(c,{zh:isZh()})}<div class="section-head"><h2>${t('courseSources')}</h2></div><div class="source-grid">${sourceLinks(c.sourceIds)||`<p class="subtext">${isZh()?'尚未建立此題的專屬來源索引。':'Topic-specific references have not yet been indexed.'}</p>`}</div>`}
+function curriculumOverview(c){return `<div class="curriculum-overview">${c.stages.map((stage,i)=>`<details class="curriculum-stage" ${i===0?'open':''}><summary><span class="task-label">PHASE ${String(i+1).padStart(2,'0')}</span><strong>${esc(txt(stage))}</strong>${stageBadge(i,{zh:isZh()})}<small>${stage.steps.length} ${t('steps')}</small></summary><ol>${stage.steps.map(step=>`<li data-curriculum-step="${esc(step.id)}"><h4>${esc(txt(step))}</h4><p>${esc(txt(step,'objective'))}</p>${Array.isArray(step.knowledge)&&step.knowledge.length?`<small>${t('knowledge')} · ${step.knowledge.map(point=>esc(txt(point))).join(' · ')}</small>`:''}</li>`).join('')}</ol></details>`).join('')}</div>`}
+function renderProject(id){shownProjectId=id;const c=catalog.find(c=>c.id===id);if(!c)return `<p>${t('noResults')}</p>`;const ready=!!c.stages,p=photoFor(c);return `<a class="text-link" href="#catalog">← ${t('catalog')}</a><div class="page-lead mt"><div><span class="page-number">${esc(catName(c.category))} / ${t(ready?'ready':'roadmap')}</span><div class="project-brief-title">${projectIconSvg(c,{en:!isZh()})}<h1>${esc(txt(c))}</h1></div><p>${esc(txt(c,'summary'))}</p></div>${ready&&!c.locked?`<button class="button" id="beginCourse" data-id="${c.id}">${t('begin')} ↗</button>`:''}</div>${`<div class="project-mentor-invite"><button class="button light mentor-open" data-open-tutor>✳ ${isZh()?'詢問 AI 師傅 · 原理與延伸問題':'Ask AI mentor · principles and questions'}</button><span>${isZh()?'可選本地 CPU 模型；下載前先徵求同意':'Optional local CPU models; download only with consent'}</span></div>`}${ready?courseAccessMarkup(c,isZh()):''}${relatedRegion(c,true)}${coursePlacesMarkup(c,{zh:isZh()})}<div class="info-list"><div><small>${t('contentStatus')}</small>${ready?(c.stepCount||allSteps(c).length)+' '+t('steps'):t('roadmap')}</div><div><small>${t('scope')}</small>${ready?t('layers'):t('researchOverview')}</div><div><small>${t('progress')}</small>${percent(c.id)}%</div></div>${['suspension','water-treatment'].includes(c.diagram?.type)?`<figure class="course-schematic">${iconSvg(c.diagram.type,5)}<figcaption>${t('conceptModel')}</figcaption></figure>`:''}${typeof c.flowDiagram==='string'?`<figure class="course-flow"><img src="${esc(c.flowDiagram)}" alt="${esc(txt(c))} · ${isZh()?'原創教學流程圖':'Original learning flow diagram'}"><figcaption>${isZh()?'原創教學流程圖；各製程分支需依實際產品與驗證重新整合。':'Original learning flow. Process branches require product-specific integration and verification.'}</figcaption></figure>`:''}${p?`<figure class="project-brief-media">${projectMedia(c)}<figcaption class="subtext">${esc(txt(p))} · ${esc(photoCredit(p))}${photoContextCaption(p,c.id,isZh())?`<br>${esc(photoContextCaption(p,c.id,isZh()))}`:''} · <a href="${esc(safeUrl(p.sourceUrl))}" target="_blank" rel="noopener">${t('credits')} ↗</a></figcaption></figure>`:`<figure class="project-brief-media identity-only">${projectMedia(c)}<figcaption class="subtext">${c.educationEdition>=11?(isZh()?'原創功能架構教學圖；非比例尺、實物照片、廠商圖稿或設備運轉圖。':'Original functional architecture for learning; not to scale, a photograph, vendor artwork or an operating drawing.'):(isZh()?'原創專案識別插畫，依領域符號與專案編號生成；不是實物照片或工程圖。':'Original project identity, built from discipline motifs and the project ID; not a photograph or engineering drawing.')}</figcaption></figure>`}${ready?`<div class="notice">${esc(txt(c,'scope'))}</div>${workedExampleMarkup(c)}<div class="section-head"><h2>${t('curriculum')}</h2><span class="subtext">${c.stages.length} ${isZh()?'階段':'stages'}</span></div>${c.locked?'':curriculumOverview(c)}${!c.locked?certificateMarkup(c,isZh()):''}`:`<div class="notice warn">${t('roadmapNote')}</div><div class="task-card"><h3>${t('researchNote')}</h3><textarea id="researchNotes" data-project-id="${id}" class="notes" placeholder="${t('noteHint')}">${esc(progressFor(id).notes)}</textarea><button id="saveResearch" data-id="${id}" class="button mt">${t('saveResearch')}</button></div>${renderResearchPlan(c,{en:!isZh(),profileId:user?.id||'guest'})}`}${learningMediaRegion(c)}${vendorsMarkup(c,{zh:isZh()})}<div class="section-head"><h2>${t('courseSources')}</h2></div><div class="source-grid">${sourceLinks(c.sourceIds)||`<p class="subtext">${isZh()?'尚未建立此題的專屬來源索引。':'Topic-specific references have not yet been indexed.'}</p>`}</div>`}
 async function hydrateServerLearning(c){if(!billingState().protected||!user||!c||c.locked)return;const account=user.id,generation=accountGeneration;try{const data=await loadVerifiedLearning(c.id);if(user?.id!==account||accountGeneration!==generation)return;record(c.id).completed=data.completed||[];record(c.id).assembly=[...new Set([...record(c.id).assembly,...record(c.id).completed])];}catch(error){if(user?.id!==account||accountGeneration!==generation)return;record(c.id).completed=[];toast(error.message);}}
-function unlocked(c){const arr=allSteps(c),p=progressFor(c.id);let first=arr.findIndex(s=>!p.completed.includes(s.id));return first<0?arr.length-1:first}
+function workedExampleMarkup(c){const w=c.workedExample||c.v12Extension?.workedExample;if(!w)return '';const focus=c.focus||c.v12Extension?.focus?`<p><strong>${isZh()?'本課重點':'Course focus'}</strong> · ${esc(isZh()?(c.focus||c.v12Extension?.focus):(c.focusEn||c.v12Extension?.focusEn))}</p>`:'';return `<section class="task-card worked-example"><span class="task-label">WORKED EXAMPLE</span><h3>${esc(txt(w))}</h3>${focus}<p>${esc(txt(w,'text'))}</p>${txt(w,'assumptions')?`<p class="subtext">${esc(txt(w,'assumptions'))}</p>`:''}</section>`}
+function unlocked(c){const arr=allSteps(c),p=progressFor(c.id);let first=arr.findIndex(s=>!p.completed.includes(s.id));first=first<0?arr.length-1:first;const lock=arr.findIndex(s=>stepLocked(c,s));return lock>=0?Math.min(first,lock):first}
+function priceFromText(){const row=priceTable(selectedCurrency().currency,isZh()?'zh-TW':undefined)[0];return row?.display||''}
+function renderLockedStep(c,arr,s,p){const loading=hasFullAccess();if(loading)hydrateProtectedStages(c).then(()=>{stepCache.delete(c);if(currentPage==='workshop'&&course()===c)render()}).catch(()=>toast(isZh()?'會員內容暫時無法載入，請稍後重試。':'Member content could not be loaded; retry later.'));return `<div class="work-head"><select id="courseSelect" aria-label="${t('workshop')}">${featured.map(v=>`<option value="${v.id}" ${c.id===v.id?'selected':''}>${esc(txt(v))}</option>`).join('')}</select></div><div class="work-grid">${renderNavigator(c,arr,p)}<section class="work-content"><div class="work-title" id="stepHeading" tabindex="-1"><div><span class="task-label">STEP ${activeStep+1} / ${arr.length} · ${t('module')} ${s.stageIndex+1}</span><h2>${esc(txt(s))}</h2><p class="subtext">${esc(txt(s.stage))}</p></div><a class="text-link" href="#project/${c.id}">${t('projectBrief')} ↗</a></div>${loading?`<div class="loading">${isZh()?'正在載入會員內容…':'Loading member content…'}</div>`:lockedStepMarkup(c,s,{zh:isZh(),priceText:priceFromText(),signedIn:!!user,firstFreeIndex:0})}</section></div>`}
+function bindLockedWorkshop(c){$('#toggleNavigator').onclick=()=>{const open=$('#toggleNavigator').getAttribute('aria-expanded')!=='true';$('#toggleNavigator').setAttribute('aria-expanded',String(open));$('#courseNavigator').classList.toggle('nav-open',open)};$('#courseSelect').onchange=async e=>{activeId=e.target.value;localStorage.setItem('mg-active',activeId);await hydrateServerLearning(course());activeStep=unlocked(course());navStage=-1;navQuery='';render()};$$('[data-step]').forEach(b=>b.onclick=()=>goToStep(Number(b.dataset.step)));$('#navStage').onchange=e=>{navStage=Number(e.target.value);navQuery='';render()};$('#navQuery').oninput=e=>{navQuery=e.target.value;const pos=e.target.selectionStart;render();$('#navQuery').focus();$('#navQuery').setSelectionRange(pos,pos)};$$('[data-paywall-login]').forEach(b=>b.onclick=accountModal)}
 function validCounts(c){const ids=new Set(allSteps(c).map(s=>s.id)),p=progressFor(c.id);return {done:p.completed.filter(id=>ids.has(id)).length,built:p.assembly.filter(id=>ids.has(id)).length}}
 function gateState(c,s){const p=progressFor(c.id),done=p.completed.includes(s.id),assembled=done||p.assembly.includes(s.id),checked=done||quizPass.has(c.id+':'+s.id);return {done,assembled,checked,ready:assembled&&checked}}
 function boundedTokens(arr,index,p){const lo=Math.max(0,index-4),hi=Math.min(arr.length,lo+9);return `${lo?'<span>…</span>':''}${arr.slice(lo,hi).map((v,n)=>`<span class="${p.assembly.includes(v.id)?'filled':''} ${lo+n===index?'current':''}" title="${esc(txt(v))}">${lo+n+1}</span>`).join('')}${hi<arr.length?'<span>…</span>':''}`}
-function renderNavigator(c,arr,p){const stageIndex=navStage<0?arr[activeStep].stageIndex:navStage;let list=navQuery?arr.filter(v=>[v.title,v.titleEn].join(' ').toLowerCase().includes(navQuery.toLowerCase())):arr.filter(v=>v.stageIndex===stageIndex);const full=list.length;list=list.slice(0,40);return `<aside class="curriculum" id="courseNavigator"><h3><button id="toggleNavigator" aria-expanded="false" class="nav-toggle">☰</button> ${t('curriculum')} <span class="subtext">${validCounts(c).done}/${arr.length}</span><div class="progress-track mt"><span style="width:${percent(c.id)}%"></span></div></h3><div class="nav-tools"><label for="navStage">${t('module')}</label><select id="navStage"><option value="-1">${t('showCurrent')}</option>${c.stages.map((v,i)=>`<option value="${i}" ${navStage===i?'selected':''}>${String(i+1).padStart(2,'0')} · ${esc(txt(v))}</option>`).join('')}</select><input id="navQuery" value="${esc(navQuery)}" placeholder="${t('navFilter')}" aria-label="${t('navFilter')}"></div><div class="nav-steps">${list.map(v=>{const j=arr.findIndex(x=>x.id===v.id),d=p.completed.includes(v.id);return `<button class="step-btn ${j===activeStep?'active':''} ${d?'done':''}" data-step="${j}" ${j>unlocked(c)?'disabled':''} ${j===activeStep?'aria-current="step"':''}><span class="step-dot">${d?'✓':j+1}</span><span>${esc(txt(v))}</span></button>`}).join('')||`<p class="subtext">${t('noResults')}</p>`}${full>40?`<p class="nav-limit">${t('navLimit')}</p>`:''}</div></aside>`}
+function renderNavigator(c,arr,p){const stageIndex=navStage<0?arr[activeStep].stageIndex:navStage;let list=navQuery?arr.filter(v=>[v.title,v.titleEn].join(' ').toLowerCase().includes(navQuery.toLowerCase())):arr.filter(v=>v.stageIndex===stageIndex);const full=list.length;list=list.slice(0,40);return `<aside class="curriculum" id="courseNavigator"><h3><button id="toggleNavigator" aria-expanded="false" class="nav-toggle">☰</button> ${t('curriculum')} <span class="subtext">${validCounts(c).done}/${arr.length}</span><div class="progress-track mt"><span style="width:${percent(c.id)}%"></span></div></h3><div class="nav-tools"><label for="navStage">${t('module')}</label><select id="navStage"><option value="-1">${t('showCurrent')}</option>${c.stages.map((v,i)=>`<option value="${i}" ${navStage===i?'selected':''}>${String(i+1).padStart(2,'0')} · ${esc(txt(v))}</option>`).join('')}</select><input id="navQuery" value="${esc(navQuery)}" placeholder="${t('navFilter')}" aria-label="${t('navFilter')}"></div><div class="nav-steps">${!navQuery&&list.length&&stepLocked(c,list[0])?`<a class="nav-paywall" href="#membership">🔒 ${isZh()?'此模組需學習通行證 · 查看方案':'This module needs a learning pass · see plans'}</a>`:''}${list.map(v=>{const j=arr.findIndex(x=>x.id===v.id),d=p.completed.includes(v.id),paid=stepLocked(c,v);return `<button class="step-btn ${j===activeStep?'active':''} ${d?'done':''} ${paid?'paid-locked':''}" data-step="${j}" ${j>unlocked(c)?'disabled':''} ${j===activeStep?'aria-current="step"':''} ${paid?`title="${isZh()?'需學習通行證':'Learning pass required'}"`:''}><span class="step-dot">${d?'✓':paid?'🔒':j+1}</span><span>${esc(txt(v))}</span></button>`}).join('')||`<p class="subtext">${t('noResults')}</p>`}${full>40?`<p class="nav-limit">${t('navLimit')}</p>`:''}</div></aside>`}
 function handControls(){return `<div class="hand-controls" id="handControls"><div class="hand"><h4>${t('leftHand')}</h4><div class="dpad"><button data-motion="y-" class="up" aria-label="Y minus">W ↑</button><button data-motion="x-" class="left" aria-label="X minus">A ←</button><span class="center" aria-hidden="true">XY</span><button data-motion="x+" class="right" aria-label="X plus">D →</button><button data-motion="y+" class="down" aria-label="Y plus">S ↓</button></div></div><div class="hand"><h4>${t('rightHand')}</h4><div class="dpad"><button data-motion="z+" class="up" aria-label="Lift in Z">I · Z+</button><button data-motion="r-" class="left" aria-label="Rotate left">J · ↶</button><span class="center" aria-hidden="true">Z / θ</span><button data-motion="r+" class="right" aria-label="Rotate right">L · ↷</button><button data-motion="z-" class="down" aria-label="Lower in Z">K · Z−</button></div></div><div class="pose-actions"><button id="grab" class="button light"></button><button id="precision" class="button light" aria-pressed="false">${t('precision')}</button><button id="snap" class="button light">${t('snap')}</button><button id="undo" class="button light">↶ ${t('undo')}</button><button id="resetPose" class="button light">${t('reset')}</button></div></div>`}
 const exerciseText=value=>typeof value==='string'?value:(isZh()?value?.zh||value?.en:value?.en||value?.zh)||'';
 function exerciseContext(c=course(),s=allSteps(c)[activeStep]){
@@ -6084,7 +7213,7 @@ function startGuidedAssistance(){if(!demonstrationReady()){if($('#assistanceStat
 assistanceDemo=createDemoController({frames,reducedMotion:!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,now:()=>Date.now(),schedule:fn=>setTimeout(fn,40),cancel:clearTimeout,onFrame:frame=>{if(demonstrationState().key!==key)return;const before={...state.pose};state.pose={...frame.state.pose};state.exercise={...JSON.parse(JSON.stringify(frame.state.exercise)),specId:spec.id};recordPracticeMotion(before,state.pose,true);if(frame.index!==lastIndex){for(let i=lastIndex+1;i<=frame.index;i++){const reached=frames[i];if(reached.action==='grab')notePractice('grab');if(reached.action==='adjust')for(const control of spec.controls)if(reached.state.exercise.values[control.id]!==spec.initialState.values[control.id]||reached.state.exercise.values[control.id]===control.target)notePractice('control',control.id);if(reached.action==='choose')notePractice('choice');if(reached.action==='observe')notePractice('observed');if(reached.action==='perform')notePractice('performed');if(reached.action==='release')notePractice('release')}lastIndex=frame.index}syncExerciseControls();updateAssistanceUI(frame);updatePoseFeedback()},onState:()=>updateAssistanceUI(),onComplete:()=>{practice.released=!state.pose.grabbed;persistPose();updatePoseFeedback();updateAssistanceUI();if($('#practiceHint'))$('#practiceHint').textContent=t('assistanceComplete')}});assistanceDemo.play();}
 
 
-function renderWorkshop(){const c=course();if(!c)return '';if(c.locked)return renderProject(c.id);migrateCourseProgress(c);const arr=allSteps(c);activeStep=Math.min(Math.max(0,activeStep),unlocked(c),arr.length-1);const s=arr[activeStep],p=progressFor(c.id),state=stepPose(c.id,s.id);if(state.answer===s.quiz.answer)quizPass.add(c.id+':'+s.id);const gate=gateState(c,s),photo=photos.find(p=>p.id===s.photoId)||photoFor(c);return `<div class="work-head"><select id="courseSelect" aria-label="${t('workshop')}">${featured.map(v=>`<option value="${v.id}" ${c.id===v.id?'selected':''}>${esc(txt(v))}</option>`).join('')}</select><div><span class="save-status" id="saveStatus">${esc(saveState||persistenceStatus())}</span> <button class="icon-btn" id="speak" aria-label="${t('listen')}" title="${t('listen')}">♪</button></div></div>${migrationNotices[c.id]?`<div class="notice warn">${t(migrationNotices[c.id]==='saved'?'migration':'migrationUnsafe')} <button id="exportLegacy" class="text-link">${t('exportLegacy')} ↓</button></div>`:''}<div class="work-grid">${renderNavigator(c,arr,p)}<section class="work-content"><div class="work-title" id="stepHeading" tabindex="-1"><div><span class="task-label">STEP ${activeStep+1} / ${arr.length} · ${t('module')} ${s.stageIndex+1}</span><h2>${esc(txt(s))}</h2><p class="subtext">${esc(txt(s.stage))}</p></div><a class="text-link" href="#project/${c.id}">${t('projectBrief')} ↗</a></div><div class="workshop-context-links"><button class="button light mentor-open" data-open-tutor>✳ ${isZh()?'詢問 AI 師傅':'Ask AI mentor'}</button><button class="text-link" data-workshop-context="relatedSkillsRegion">${isZh()?'相關技能・舉一反三':'Related skills · transfer learning'} ↓</button><button class="text-link" data-workshop-context="workshopPlaces">${isZh()?'工程地圖・歷史故事':'Engineering map · history'} ↓</button></div><div class="workflow-bar" id="workflowBar"><div class="workflow-states"><span id="demoGate"></span><span id="assemblyGate"></span><span id="quizGate"></span></div><div class="workflow-actions"><button id="stepPrevious" class="button light" ${activeStep===0?'disabled':''} aria-label="${t('stepPrevious')}">←</button><button id="workflowAction" class="button"></button><button id="stepNext" class="button light" ${activeStep>=unlocked(c)||activeStep>=arr.length-1?'disabled':''} aria-label="${t('stepNext')}">→</button></div></div><div class="workbenches" id="assemblySection"><div class="bench apprentice-bench"><div class="apprentice-assistance"><button id="assist" class="button assist-primary">✦ ${t('assist')}</button><button id="assistPause" class="button light" hidden>${t('pauseGuidance')}</button><p id="assistanceStatus" class="assistance-status" role="status">${t('assistanceExplain')}</p></div><div class="bench-title"><b>${t('learner')}</b><small>${percent(c.id)}%</small></div><div class="model interactive-model" id="learnerModel" tabindex="0" role="region" aria-label="${t('learner')}">${sceneMarkup(c,s,state)}</div><div class="build-dots" aria-label="${t('progress')}">${boundedTokens(arr,activeStep,p)}</div></div><div class="bench"><div class="bench-title"><b>${t('mentor')}</b><small>${t('modelSource')}</small></div><div class="model" id="mentorModel">${sceneMarkup(c,s,state,true)}</div><p id="mentorAction" class="mentor-action" role="status" tabindex="-1"></p>${mentorControls()}<p class="model-note">${t('conceptModel')}</p></div></div><div class="workbench-controls" id="workbenchControls"><div class="keyboard-toolbar"><button id="activateKeyboard" class="button light" aria-pressed="false">⌨ ${t('enableKeyboard')}</button><p id="keyboardStatus" role="status" aria-live="polite" data-no-translate></p></div><div class="pose-feedback" id="poseFeedback" role="status"></div>${handControls()}<p class="control-help">${t('poseHelp')}</p><p class="control-help muted">${t('schematicUnits')} · ${t('poseLocal')}</p><p id="practiceHint" class="practice-hint">${t('practiceOrder')}</p></div><div class="workshop-action-dock"><div id="nextRequirements" class="action-requirements" role="status"></div><button id="complete" class="button next-primary" data-ready="false">${t('stepNext')} →</button><div class="dock-guide-controls" id="dockGuideControls" hidden><button id="dockSkipTour" class="button light">${t('skipTour')}</button><button id="dockPauseGuide" class="button light">${t('demoPause')}</button></div></div><section class="workshop-context" id="workshopContext">${relatedRegion(c,true)}<div id="workshopPlaces" tabindex="-1">${coursePlacesMarkup(c,{zh:isZh(),compact:true})}</div></section>${renderTask(c,s)}<div class="assembly-controls"><p>${resolveExercise(c,s).mode==='assembly'?t('assemblyHint'):t('processHint')}</p><div><button id="place" class="button" ${gate.assembled?'disabled':''}>${t(gate.assembled?'placed':'place')} ${gate.assembled?'✓':'＋'}</button></div></div><section class="task-card" id="lessonSection"><span class="task-label">01 / ${t('goal')}</span><h3>${t('goal')}</h3><p>${esc(txt(s,'objective'))}</p>${s.stage.route?`<div class="notice"><strong>${isZh()?'學習路線':'Learning route'}</strong> · ${esc(typeof s.stage.route==='string'?txt(s.stage,'route'):(isZh()?'此階段以分支模組解說，工序編號是教學順序，並非單一連續晶圓製造配方。':'This stage explains a process branch. Numbers describe a learning sequence, not a single continuous wafer recipe.'))}</div>`:''}${txt(s.stage,'description')?`<details><summary>${t('stageDescription')}</summary><p>${esc(txt(s.stage,'description'))}</p></details>`:''}${['instruction','observation','failure'].map(k=>txt(s,k)?`<div class="lesson-block ${k}"><h4>${t(k)}</h4><p>${esc(txt(s,k))}</p></div>`:'').join('')}<div class="knowledge"><span class="sr-only">${t('knowledge')}</span>${(s.knowledge||[]).map((k,i)=>`<details><summary>${i+1} · ${esc(txt(k))} <small>↘</small></summary><p>${esc(txt(k,'text'))}</p></details>`).join('')}</div>${photo?`<figure class="lesson-photo"><img loading="lazy" src="${esc(photo.path)}" alt="${esc(txt(photo))}"><figcaption><strong>${t('referencePhoto')}</strong> · ${t('representative')} ${esc(txt(s,'photoNote')||photoContextCaption(photo,c.id,isZh())||txt(photo))}<br>${esc(photoCredit(photo))} · <a href="${esc(safeUrl(photo.sourceUrl))}" target="_blank" rel="noopener">${t('credits')} ↗</a></figcaption></figure>`:''}</section>${labMarkup(c,s,isZh())}${quantumLabMarkup(c,isZh())}${labResourcesMarkup(c,isZh())}${learningMediaRegion(c,s)}<section class="task-card quiz" id="quizSection" tabindex="-1"><span class="task-label">02 / ${t('check')}</span><h3>${t('check')}</h3><p>${esc(txt(s,'check'))}</p><h4 class="mt">${esc(txt(s.quiz,'question'))}</h4><div class="quiz-options">${(isZh()?s.quiz.options:s.quiz.optionsEn||s.quiz.options).map((o,i)=>`<button class="quiz-option ${state.answer===i?'selected':''}" data-answer="${i}" aria-pressed="${state.answer===i}">${String.fromCharCode(65+i)}. ${esc(o)}</button>`).join('')}</div><div id="quizResult" class="quiz-result" role="status">${gate.done?t('done'):gate.checked?t('correct')+' '+esc(txt(s.quiz,'explanation')):''}</div><div class="task-bottom"><p>${t('gate')}</p><button id="quizContinue" class="button light">${t('stepNext')} →</button></div></section><section class="tutor"><div class="tutor-heading"><h3>✳ ${t('tutor')}</h3><button class="button light" data-open-tutor>${isZh()?'開啟 AI 問答視窗':'Open AI chat'}</button><span class="badge">${t(aiAvailable?'tutorAI':'tutorLocal')}</span></div><div class="tutor-answer" id="answer" data-no-translate>${t('tutorIntro')}</div><div class="tutor-links"><button data-question="why">${t('why')}</button><button data-question="verify">${t('verify')}</button><button data-question="principle">${t('principle')}</button></div><form class="tutor-form" id="tutorForm"><input id="question" maxlength="1200" required placeholder="${t('askPlaceholder')}" aria-label="${t('askPlaceholder')}"><button id="ask" class="button">${t('ask')} ↗</button></form></section><section class="task-card"><h3>${t('notes')}</h3><textarea class="notes" id="notes" data-project-id="${c.id}" placeholder="${t('noteHint')}">${esc(p.notes)}</textarea><button id="saveNote" class="button light mt">${t('saveNote')}</button></section><details class="task-card"><summary>${t('readSources')}</summary><div class="stack mt">${sourceLinks(stepSourceIds(c,s))}</div></details></section></div>`}
+function renderWorkshop(){const c=course();if(!c)return '';if(c.locked)return renderProject(c.id);migrateCourseProgress(c);const arr=allSteps(c);activeStep=Math.min(Math.max(0,activeStep),unlocked(c),arr.length-1);const s=arr[activeStep],p=progressFor(c.id);if(stepLocked(c,s))return renderLockedStep(c,arr,s,p);const state=stepPose(c.id,s.id);if(state.answer===s.quiz.answer)quizPass.add(c.id+':'+s.id);const gate=gateState(c,s),photo=photos.find(p=>p.id===s.photoId)||photoFor(c);return `<div class="work-head"><select id="courseSelect" aria-label="${t('workshop')}">${featured.map(v=>`<option value="${v.id}" ${c.id===v.id?'selected':''}>${esc(txt(v))}</option>`).join('')}</select><div><span class="save-status" id="saveStatus">${esc(saveState||persistenceStatus())}</span> <button class="icon-btn" id="speak" aria-label="${t('listen')}" title="${t('listen')}">♪</button></div></div>${migrationNotices[c.id]?`<div class="notice warn">${t(migrationNotices[c.id]==='saved'?'migration':'migrationUnsafe')} <button id="exportLegacy" class="text-link">${t('exportLegacy')} ↓</button></div>`:''}<div class="work-grid">${renderNavigator(c,arr,p)}<section class="work-content"><div class="work-title" id="stepHeading" tabindex="-1"><div><span class="task-label">STEP ${activeStep+1} / ${arr.length} · ${t('module')} ${s.stageIndex+1}</span><h2>${esc(txt(s))}</h2><p class="subtext">${esc(txt(s.stage))}</p></div><a class="text-link" href="#project/${c.id}">${t('projectBrief')} ↗</a></div><div class="workshop-context-links"><button class="button light mentor-open" data-open-tutor>✳ ${isZh()?'詢問 AI 師傅':'Ask AI mentor'}</button><button class="text-link" data-workshop-context="relatedSkillsRegion">${isZh()?'相關技能・舉一反三':'Related skills · transfer learning'} ↓</button><button class="text-link" data-workshop-context="workshopPlaces">${isZh()?'工程地圖・歷史故事':'Engineering map · history'} ↓</button></div><div class="workflow-bar" id="workflowBar"><div class="workflow-states"><span id="demoGate"></span><span id="assemblyGate"></span><span id="quizGate"></span></div><div class="workflow-actions"><button id="stepPrevious" class="button light" ${activeStep===0?'disabled':''} aria-label="${t('stepPrevious')}">←</button><button id="workflowAction" class="button"></button><button id="stepNext" class="button light" ${activeStep>=unlocked(c)||activeStep>=arr.length-1?'disabled':''} aria-label="${t('stepNext')}">→</button></div></div><div class="workbenches" id="assemblySection"><div class="bench apprentice-bench"><div class="apprentice-assistance"><button id="assist" class="button assist-primary">✦ ${t('assist')}</button><button id="assistPause" class="button light" hidden>${t('pauseGuidance')}</button><p id="assistanceStatus" class="assistance-status" role="status">${t('assistanceExplain')}</p></div><div class="bench-title"><b>${t('learner')}</b><small>${percent(c.id)}%</small></div><div class="model interactive-model" id="learnerModel" tabindex="0" role="region" aria-label="${t('learner')}">${sceneMarkup(c,s,state)}</div><div class="build-dots" aria-label="${t('progress')}">${boundedTokens(arr,activeStep,p)}</div></div><div class="bench"><div class="bench-title"><b>${t('mentor')}</b><small>${t('modelSource')}</small></div><div class="model" id="mentorModel">${sceneMarkup(c,s,state,true)}</div><p id="mentorAction" class="mentor-action" role="status" tabindex="-1"></p>${mentorControls()}<p class="model-note">${t('conceptModel')}</p></div></div><div class="workbench-controls" id="workbenchControls"><div class="keyboard-toolbar"><button id="activateKeyboard" class="button light" aria-pressed="false">⌨ ${t('enableKeyboard')}</button><p id="keyboardStatus" role="status" aria-live="polite" data-no-translate></p></div><div class="pose-feedback" id="poseFeedback" role="status"></div>${handControls()}<p class="control-help">${t('poseHelp')}</p><p class="control-help muted">${t('schematicUnits')} · ${t('poseLocal')}</p><p id="practiceHint" class="practice-hint">${t('practiceOrder')}</p></div><div class="workshop-action-dock"><div id="nextRequirements" class="action-requirements" role="status"></div><button id="complete" class="button next-primary" data-ready="false">${t('stepNext')} →</button><div class="dock-guide-controls" id="dockGuideControls" hidden><button id="dockSkipTour" class="button light">${t('skipTour')}</button><button id="dockPauseGuide" class="button light">${t('demoPause')}</button></div></div><section class="workshop-context" id="workshopContext">${relatedRegion(c,true)}<div id="workshopPlaces" tabindex="-1">${coursePlacesMarkup(c,{zh:isZh(),compact:true})}</div></section>${renderTask(c,s)}<div class="assembly-controls"><p>${resolveExercise(c,s).mode==='assembly'?t('assemblyHint'):t('processHint')}</p><div><button id="place" class="button" ${gate.assembled?'disabled':''}>${t(gate.assembled?'placed':'place')} ${gate.assembled?'✓':'＋'}</button></div></div><section class="task-card" id="lessonSection"><span class="task-label">01 / ${t('goal')}</span><h3>${t('goal')}</h3><p>${esc(txt(s,'objective'))}</p>${s.stage.route?`<div class="notice"><strong>${isZh()?'學習路線':'Learning route'}</strong> · ${esc(typeof s.stage.route==='string'?txt(s.stage,'route'):(isZh()?'此階段以分支模組解說，工序編號是教學順序，並非單一連續晶圓製造配方。':'This stage explains a process branch. Numbers describe a learning sequence, not a single continuous wafer recipe.'))}</div>`:''}${txt(s.stage,'description')?`<details><summary>${t('stageDescription')}</summary><p>${esc(txt(s.stage,'description'))}</p></details>`:''}${['instruction','observation','failure'].map(k=>txt(s,k)?`<div class="lesson-block ${k}"><h4>${t(k)}</h4><p>${esc(txt(s,k))}</p></div>`:'').join('')}<div class="knowledge"><span class="sr-only">${t('knowledge')}</span>${(s.knowledge||[]).map((k,i)=>`<details><summary>${i+1} · ${esc(txt(k))} <small>↘</small></summary><p>${esc(txt(k,'text'))}</p></details>`).join('')}</div>${photo?`<figure class="lesson-photo"><img loading="lazy" src="${esc(photo.path)}" alt="${esc(txt(photo))}"><figcaption><strong>${t('referencePhoto')}</strong> · ${t('representative')} ${esc(txt(s,'photoNote')||photoContextCaption(photo,c.id,isZh())||txt(photo))}<br>${esc(photoCredit(photo))} · <a href="${esc(safeUrl(photo.sourceUrl))}" target="_blank" rel="noopener">${t('credits')} ↗</a></figcaption></figure>`:''}</section>${labMarkup(c,s,isZh())}${quantumLabMarkup(c,isZh())}${labResourcesMarkup(c,isZh())}${learningMediaRegion(c,s)}<section class="task-card quiz" id="quizSection" tabindex="-1"><span class="task-label">02 / ${t('check')}</span><h3>${t('check')}</h3><p>${esc(txt(s,'check'))}</p><h4 class="mt">${esc(txt(s.quiz,'question'))}</h4><div class="quiz-options">${(isZh()?s.quiz.options:s.quiz.optionsEn||s.quiz.options).map((o,i)=>`<button class="quiz-option ${state.answer===i?'selected':''}" data-answer="${i}" aria-pressed="${state.answer===i}">${String.fromCharCode(65+i)}. ${esc(o)}</button>`).join('')}</div><div id="quizResult" class="quiz-result" role="status">${gate.done?t('done'):gate.checked?t('correct')+' '+esc(txt(s.quiz,'explanation')):''}</div><div class="task-bottom"><p>${t('gate')}</p><button id="quizContinue" class="button light">${t('stepNext')} →</button></div></section><section class="tutor"><div class="tutor-heading"><h3>✳ ${t('tutor')}</h3><button class="button light" data-open-tutor>${isZh()?'開啟 AI 問答視窗':'Open AI chat'}</button><span class="badge">${t(aiAvailable?'tutorAI':'tutorLocal')}</span></div><div class="tutor-answer" id="answer" data-no-translate>${t('tutorIntro')}</div><div class="tutor-links"><button data-question="why">${t('why')}</button><button data-question="verify">${t('verify')}</button><button data-question="principle">${t('principle')}</button></div><form class="tutor-form" id="tutorForm"><input id="question" maxlength="1200" required placeholder="${t('askPlaceholder')}" aria-label="${t('askPlaceholder')}"><button id="ask" class="button">${t('ask')} ↗</button></form></section><section class="task-card"><h3>${t('notes')}</h3><textarea class="notes" id="notes" data-project-id="${c.id}" placeholder="${t('noteHint')}">${esc(p.notes)}</textarea><button id="saveNote" class="button light mt">${t('saveNote')}</button></section><details class="task-card"><summary>${t('readSources')}</summary><div class="stack mt">${sourceLinks(stepSourceIds(c,s))}</div></details></section></div>`}
 function renderLocalResearch(rows){if(!rows.length)return '';return `<section class="local-research-progress mt" data-local-research><div class="section-head"><h2>${isZh()?'本裝置研究工作表':'Research worksheets on this device'}</h2><span class="badge">${rows.length}</span></div><p class="notice">${isZh()?'研究證據依目前身分保存在此瀏覽器，未同步至雲端，也不計入逐步課程完成率。請在個別工作表頁面匯出研究 JSON。':'Research evidence is saved in this browser for the current profile. It is separate from cloud progress and guided-course completion. Export research JSON from each worksheet page.'}</p><div class="cards">${rows.map(item=>{const c=catalog.find(c=>c.id===item.courseId),date=new Date(item.updatedAt),validDate=Number.isFinite(date.getTime());return `<article class="progress-item" data-research-course="${esc(c.id)}"><h3>${esc(txt(c))}</h3><p class="progress-line"><strong>${item.done} / ${item.total}</strong><span>${isZh()?'研究檢核點':'research checkpoints'}</span></p>${validDate?`<p class="subtext">${isZh()?'最後更新':'Last updated'} · <time datetime="${esc(date.toISOString())}">${esc(date.toLocaleString(isZh()?'zh-TW':'en'))}</time></p>`:''}<a href="#project/${esc(c.id)}" class="button light">${isZh()?'繼續研究工作表':'Continue research worksheet'} ↗</a></article>`}).join('')}</div></section>`}
 function renderProgress(){const researchRows=researchProgressFor(user?.id||'guest').filter(item=>catalog.some(c=>c.id===item.courseId));let ids=Object.keys(projects).filter(id=>catalog.some(c=>c.id===id));return `<div class="page-lead"><div><span class="page-number">YOUR ENGINEERING JOURNEY</span><h1>${t('progress')}</h1><p>${t('progressDesc')}</p></div><div class="dialog-actions"><button id="exportProgress" class="button light">↓ ${t('export')}</button><button id="importProgress" class="button light">↑ ${t('import')}</button><input type="file" id="importFile" accept="application/json" hidden></div></div><div class="notice">${user?`${esc(user.name)} · ${persistenceStatus()}`:t('accountHint')}</div>${ids.length?`<div class="cards mt">${ids.sort((a,b)=>(projects[b].updatedAt||0)-(projects[a].updatedAt||0)).map(id=>{const c=catalog.find(c=>c.id===id),p=percent(id);return `<article class="progress-item"><span class="badge">${t(c.stages?'ready':'roadmap')}</span><h3 class="mt">${esc(txt(c))}</h3><div class="progress-track"><span style="width:${p}%"></span></div><div class="progress-line"><span>${c.stages?validCounts(c).done+' / '+allSteps(c).length:t('researchNote')}</span><b>${p}%</b></div><a href="${c.stages?'#resume/':'#project/'}${id}" class="button light">${t('continue')} ↗</a></article>`}).join('')}</div>`:researchRows.length?'':`<div class="empty mt"><span style="font-size:42px">◇</span><h3>${t('emptyProgress')}</h3><p>${t('emptyProgressDesc')}</p><a class="button" href="#catalog">${t('explore')} ↗</a></div>`}${renderLocalResearch(researchRows)}`}
 function setAtlasPlaces(data){setCoursePlaces(data);const ranks=new Map(orderedFeatured().map((c,i)=>[c.id,i]));atlasEntries=(Array.isArray(data?.courses)?data.courses:[]).filter(entry=>typeof entry?.courseId==='string'&&catalog.some(c=>c.id===entry.courseId)&&Number.isFinite(entry.place?.lat)&&Math.abs(entry.place.lat)<=90&&Number.isFinite(entry.place?.lng)&&Math.abs(entry.place.lng)<=180).sort((a,b)=>(ranks.get(a.courseId)??10000)-(ranks.get(b.courseId)??10000));atlasState='ready';if(!atlasEntries.some(e=>e.courseId===selectedPlace))selectedPlace=atlasEntries[0]?.courseId||'';}
@@ -6099,7 +7228,7 @@ function bindAtlasContent(){$$('[data-place]').forEach(button=>button.onclick=()
 function mapIframe(lat,lng){return `<iframe title="Google Maps" src="https://maps.google.com/maps?q=${Number(lat)},${Number(lng)}&z=13&hl=${encodeURIComponent(resolved())}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`}
 function renderSources(){if(!sourceIndex)sourceIndex=buildSourceIndex({courses:featured,sources,photos});return `<div class="page-lead"><div><span class="page-number">KNOWLEDGE, WITH TRACEABILITY</span><h1>${t('sourcesTitle')}</h1><p>${t('sourcesDesc')}</p></div></div><div class="notice"><strong>${catalog.length.toLocaleString()} ${t('topicsCount')} · ${featured.length} ${t('featuredCount')}</strong><br>${isZh()?'依來源與課程的實際引用關係分類。引用支持公開原理，並不等於廠商配方已公開；代表照片不等於每道工序的現場實拍。':'Categories follow actual citations. References support public principles, not undisclosed vendor recipes; representative photographs are not process-specific documentary evidence.'}</div><div class="filter-chips">${['official','photos'].map(k=>`<button class="chip ${sourceTab===k?'active':''}" data-source-tab="${k}">${t(k)}</button>`).join('')}</div>${sourceLibraryMarkup(sourceIndex,{...sourceFilters,tab:sourceTab},{zh:isZh(),categories:catMap})}<p class="subtext mt">${isZh()?'MacGyver 是「馬蓋先」的英文名稱。本教學專案與影視作品、廠商或工程業主無隸屬或背書關係。':'MacGyver is the English name for 馬蓋先. This educational project is not affiliated with or endorsed by the television franchise, manufacturers or project owners.'}</p>`}
 
-function render(){learningMapController?.dispose();learningMapController=null;personalization.syncProfile();mapRequestGeneration++;captureNotes(false);stopDemonstration();deactivateWorkshopKeyboard();localeController?.invalidate();const route=location.hash.slice(1)||'home',parts=route.split('/'),previousPage=currentPage;currentPage=parts[0];if(['home','catalog'].includes(currentPage)&&(lastCatalogRoute!==route||!['home','catalog'].includes(previousPage))){lastCatalogRoute=route;pageIndex=0;query='';subdiscipline='';filter=parts[1]==='domain'&&catMap[parts[2]]?parts[2]:'';maturity=parts[1]==='ready'?'ready':parts[1]==='roadmap'?'roadmap':''}if(currentPage==='resume'){activeId=featured.some(c=>c.id===parts[1])?parts[1]:featured[0].id;localStorage.setItem('mg-active',activeId);const resumeId=activeId,resumeOwner=accountGeneration;$('#main').innerHTML='<div class="loading">'+(isZh()?'正在載入學習紀錄…':'Loading learning records…')+'</div>';hydrateServerLearning(course()).then(()=>{if(location.hash.slice(1)!==route||activeId!==resumeId||accountGeneration!==resumeOwner)return;activeStep=unlocked(course());navStage=-1;navQuery='';location.hash='workshop';});return}if(!['home','catalog','workshop','progress','map','sources','project','membership','learning-map'].includes(currentPage)){location.hash='home';return}const pageKey=['home','catalog','project'].includes(currentPage)?'home':currentPage;$('#pageTitle').textContent=t(pageKey);$$('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));$('#accountName').textContent=user?.name||t('guest');syncLanguageSelect();document.documentElement.lang=resolved();document.documentElement.dir=languageDirection(resolved());$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===pageKey));const renderers={home:renderHome,catalog:renderCatalog,workshop:renderWorkshop,progress:renderProgress,map:renderMap,'learning-map':()=>renderLearningMap(catalog,featured,resolved()),sources:renderSources,project:()=>renderProject(parts[1]),membership:()=>membershipMarkup({zh:isZh(),user})};disposeLearningMedia($('#main'));$('#main').innerHTML=renderers[currentPage]();bind();tutorPanel?.refresh();applyLanguage();}
+function render(){learningMapController?.dispose();learningMapController=null;try{iconWallController?.dispose()}catch{}iconWallController=null;personalization.syncProfile();mapRequestGeneration++;captureNotes(false);stopDemonstration();deactivateWorkshopKeyboard();localeController?.invalidate();const route=location.hash.slice(1)||'home',parts=route.split('/'),previousPage=currentPage;currentPage=parts[0];if(['home','catalog'].includes(currentPage)&&(lastCatalogRoute!==route||!['home','catalog'].includes(previousPage))){lastCatalogRoute=route;pageIndex=0;query='';subdiscipline='';filter=parts[1]==='domain'&&catMap[parts[2]]?parts[2]:'';maturity=parts[1]==='ready'?'ready':parts[1]==='roadmap'?'roadmap':''}if(currentPage==='resume'){activeId=featured.some(c=>c.id===parts[1])?parts[1]:featured[0].id;localStorage.setItem('mg-active',activeId);const resumeId=activeId,resumeOwner=accountGeneration;$('#main').innerHTML='<div class="loading">'+(isZh()?'正在載入學習紀錄…':'Loading learning records…')+'</div>';hydrateServerLearning(course()).then(()=>{if(location.hash.slice(1)!==route||activeId!==resumeId||accountGeneration!==resumeOwner)return;activeStep=unlocked(course());navStage=-1;navQuery='';location.hash='workshop';});return}if(!['home','catalog','workshop','progress','map','sources','project','membership','learning-map'].includes(currentPage)){location.hash='home';return}const pageKey=['home','catalog','project'].includes(currentPage)?'home':currentPage;$('#pageTitle').textContent=t(pageKey);$$('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));$('#accountName').textContent=user?.name||t('guest');syncLanguageSelect();document.documentElement.lang=resolved();document.documentElement.dir=languageDirection(resolved());$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===pageKey));const renderers={home:renderHome,catalog:renderCatalog,workshop:renderWorkshop,progress:renderProgress,map:renderMap,'learning-map':()=>renderLearningMap(catalog,featured,resolved()),sources:renderSources,project:()=>renderProject(parts[1]),membership:()=>membershipMarkup({zh:isZh(),user})};disposeLearningMedia($('#main'));$('#main').innerHTML=renderers[currentPage]();bind();try{const wallRoot=document.querySelector?.('#main [data-icon-wall]');if(wallRoot)iconWallController=mountHeroIconWall(wallRoot,catalog,{zh:isZh()})}catch{}tutorPanel?.refresh();applyLanguage();}
 function record(id){if(!projects[id])projects[id]=blank();return projects[id]}
 const MERGED_NOTES_SEPARATOR='\n\n--- MERGED DEVICE NOTES ---\n\n';
 function mergeDeviceNotes(local,remote){const current=String(local||''),incoming=String(remote||'');if(!incoming||current===incoming||current.includes(incoming))return current;if(!current)return incoming;const parts=current.split(MERGED_NOTES_SEPARATOR);for(const block of incoming.split(MERGED_NOTES_SEPARATOR)){if(block&&!parts.some(part=>part===block||part.includes(block)))parts.push(block)}return parts.join(MERGED_NOTES_SEPARATOR)}
@@ -6194,6 +7323,9 @@ async function initAccount(){
   if(!current())return;
   if(authMode==='offline')saveState=persistenceStatus();
   resetLearningEvidence(user?.id||'guest');
+  try{await refreshAccess({user});}catch{}
+  if(authMode==='supabase'&&user&&window.MacGyverCloud?.loadProfile)window.MacGyverCloud.loadProfile().then(profile=>{if(current()&&profile?.preferences&&Object.keys(profile.preferences).length){personalization.syncProfile();personalization.update(profile.preferences)}}).catch(()=>{});
+  if(!current())return;
   if(billingState().protected){
     let permitted;
     try{permitted=await loadCurriculumData('featured',{protected:true});}
@@ -6290,21 +7422,21 @@ async function completeStep(){
 
 function goToStep(index){const c=course();if(index<0||index>=allSteps(c).length||index>unlocked(c))return false;captureNotes();activeStep=index;navStage=-1;navQuery='';render();focusSection('#assemblySection');return true}
 function workshopPointer(event,model){const svg=model.querySelector?.('svg');try{const matrix=svg?.getScreenCTM?.(),point=svg?.createSVGPoint?.();if(matrix&&point){point.x=event.clientX;point.y=event.clientY;const mapped=point.matrixTransform(matrix.inverse());return {x:mapped.x,y:mapped.y}}}catch{}const rect=model.getBoundingClientRect(),width=400,height=304,scale=Math.max(.001,Math.min(rect.width/width,rect.height/height));return {x:(event.clientX-(rect.left||0)-(rect.width-width*scale)/2)/scale,y:(event.clientY-(rect.top||0)-(rect.height-height*scale)/2)/scale}}
-function bindWorkshop(){const c=course();if(c.locked)return;const s=allSteps(c)[activeStep];$$('[data-workshop-context]').forEach(button=>button.onclick=()=>focusSection('#'+button.dataset.workshopContext));$('#toggleNavigator').onclick=()=>{const open=$('#toggleNavigator').getAttribute('aria-expanded')!=='true';$('#toggleNavigator').setAttribute('aria-expanded',String(open));$('#courseNavigator').classList.toggle('nav-open',open)};$('#courseSelect').onchange=async e=>{captureNotes();activeId=e.target.value;const enteringId=activeId,enteringOwner=accountGeneration;await hydrateServerLearning(course());if(activeId!==enteringId||accountGeneration!==enteringOwner)return;localStorage.setItem('mg-active',activeId);activeStep=unlocked(course());navStage=-1;navQuery='';render()};$$('[data-step]').forEach(b=>b.onclick=()=>goToStep(Number(b.dataset.step)));$('#navStage').onchange=e=>{captureNotes();navStage=Number(e.target.value);navQuery='';render()};$('#navQuery').oninput=e=>{navQuery=e.target.value;const pos=e.target.selectionStart;render();$('#navQuery').focus();$('#navQuery').setSelectionRange(pos,pos)};$('#stepPrevious').onclick=()=>goToStep(activeStep-1);$('#stepNext').onclick=()=>goToStep(activeStep+1);$('#workflowAction').onclick=advanceWorkflow;$('#place').onclick=confirmAssembly;$('#assist').onclick=alignAssist;$('#grab').onclick=()=>{activateWorkshopKeyboard();toggleGrab()};$('#activateKeyboard').onclick=activateWorkshopKeyboard;$('#snap').onclick=snapPose;$('#undo').onclick=undoPose;$('#precision').onclick=()=>{if(!mayPractice())return;stopAssistance();const {state}=poseContext();state.pose.precision=!state.pose.precision;persistPose();updatePoseFeedback()};$('#resetPose').onclick=()=>{if(!mayPractice())return;stopAssistance();stopMotion();pushPoseHistory();const {state}=poseContext();state.pose=initialPose();persistPose();updatePoseFeedback()};$$('[data-motion]').forEach(b=>{b.onpointerdown=e=>{e.preventDefault();b.setPointerCapture?.(e.pointerId);activateWorkshopKeyboard();startMotion(b.dataset.motion,'pointer:'+e.pointerId)};b.onpointerup=e=>{e.preventDefault();endMotion(b.dataset.motion,'pointer:'+e.pointerId)};b.onpointercancel=e=>endMotion(b.dataset.motion,'pointer:'+e.pointerId);b.onlostpointercapture=e=>endMotion(b.dataset.motion,'pointer:'+e.pointerId);b.onclick=e=>{if(e.detail===0){activateWorkshopKeyboard();startMotion(b.dataset.motion);endMotion(b.dataset.motion)}}});
+function bindWorkshop(){const c=course();if(c.locked)return;const s=allSteps(c)[activeStep];if(stepLocked(c,s)){bindLockedWorkshop(c);return}$$('[data-workshop-context]').forEach(button=>button.onclick=()=>focusSection('#'+button.dataset.workshopContext));$('#toggleNavigator').onclick=()=>{const open=$('#toggleNavigator').getAttribute('aria-expanded')!=='true';$('#toggleNavigator').setAttribute('aria-expanded',String(open));$('#courseNavigator').classList.toggle('nav-open',open)};$('#courseSelect').onchange=async e=>{captureNotes();activeId=e.target.value;const enteringId=activeId,enteringOwner=accountGeneration;await hydrateServerLearning(course());if(activeId!==enteringId||accountGeneration!==enteringOwner)return;localStorage.setItem('mg-active',activeId);activeStep=unlocked(course());navStage=-1;navQuery='';render()};$$('[data-step]').forEach(b=>b.onclick=()=>goToStep(Number(b.dataset.step)));$('#navStage').onchange=e=>{captureNotes();navStage=Number(e.target.value);navQuery='';render()};$('#navQuery').oninput=e=>{navQuery=e.target.value;const pos=e.target.selectionStart;render();$('#navQuery').focus();$('#navQuery').setSelectionRange(pos,pos)};$('#stepPrevious').onclick=()=>goToStep(activeStep-1);$('#stepNext').onclick=()=>goToStep(activeStep+1);$('#workflowAction').onclick=advanceWorkflow;$('#place').onclick=confirmAssembly;$('#assist').onclick=alignAssist;$('#grab').onclick=()=>{activateWorkshopKeyboard();toggleGrab()};$('#activateKeyboard').onclick=activateWorkshopKeyboard;$('#snap').onclick=snapPose;$('#undo').onclick=undoPose;$('#precision').onclick=()=>{if(!mayPractice())return;stopAssistance();const {state}=poseContext();state.pose.precision=!state.pose.precision;persistPose();updatePoseFeedback()};$('#resetPose').onclick=()=>{if(!mayPractice())return;stopAssistance();stopMotion();pushPoseHistory();const {state}=poseContext();state.pose=initialPose();persistPose();updatePoseFeedback()};$$('[data-motion]').forEach(b=>{b.onpointerdown=e=>{e.preventDefault();b.setPointerCapture?.(e.pointerId);activateWorkshopKeyboard();startMotion(b.dataset.motion,'pointer:'+e.pointerId)};b.onpointerup=e=>{e.preventDefault();endMotion(b.dataset.motion,'pointer:'+e.pointerId)};b.onpointercancel=e=>endMotion(b.dataset.motion,'pointer:'+e.pointerId);b.onlostpointercapture=e=>endMotion(b.dataset.motion,'pointer:'+e.pointerId);b.onclick=e=>{if(e.detail===0){activateWorkshopKeyboard();startMotion(b.dataset.motion);endMotion(b.dataset.motion)}}});
 const model=$('#learnerModel');let drag=null;model.onpointerdown=e=>{activateWorkshopKeyboard();if(!e.target.closest?.('#activePiece')||!mayPractice())return;stopAssistance();e.preventDefault();stopMotion();pushPoseHistory();const {state}=poseContext();state.pose.grabbed=true;notePractice('grab');drag=workshopPointer(e,model);model.setPointerCapture?.(e.pointerId);persistPose();updatePoseFeedback()};model.onpointermove=e=>{if(!drag)return;e.preventDefault();const point=workshopPointer(e,model),dx=point.x-drag.x,dy=point.y-drag.y,worldY=dy/.43,worldX=dx-.42*worldY;drag=point;const {state}=poseContext(),before={...state.pose},result=advancePose(state.pose,{x:worldX/4,y:worldY/4},false);state.pose=result.pose;recordPracticeMotion(before,state.pose);persistPose();updatePoseFeedback(result.blocked?t('collision'):'')};model.onpointerup=()=>{if(!drag)return;drag=null;const {state}=poseContext();state.pose.grabbed=false;notePractice('release');persistPose();updatePoseFeedback()};model.onpointercancel=()=>{if(!drag)return;drag=null;const {state}=poseContext();state.pose.grabbed=false;notePractice('release');persistPose();updatePoseFeedback()};model.onlostpointercapture=model.onpointercancel;
 $$('[data-answer]').forEach(b=>b.onclick=()=>{captureNotes(false);const answer=Number(b.dataset.answer),correct=answer===s.quiz.answer;stepPose(c.id,s.id).answer=answer;persistPose();$$('[data-answer]').forEach(e=>{e.classList.remove('selected');e.setAttribute('aria-pressed','false')});b.classList.add('selected');b.setAttribute('aria-pressed','true');$('#quizResult').textContent=(correct?t('correct'):t('incorrect'))+' '+txt(s.quiz,'explanation');if(correct)quizPass.add(c.id+':'+s.id);else quizPass.delete(c.id+':'+s.id);refreshWorkflow();if(correct)$('#complete').focus({preventScroll:true})});$('#complete').onclick=advanceWorkflow;$('#dockSkipTour').onclick=()=>mentorGuide?.skipTour();$('#dockPauseGuide').onclick=()=>{if(mentorGuide?.status==='paused')mentorGuide.resume();else mentorGuide?.pause();updateDockGuide()};$('#quizContinue').onclick=advanceWorkflow;$('#assistPause').onclick=()=>{if(assistanceDemo?.status==='playing')assistanceDemo.pause();else if(assistanceDemo?.status==='paused')assistanceDemo.play();updateAssistanceUI()};$('#saveNote').onclick=async()=>{captureNotes();await save(c.id);toast(saveState)};$('#notes').dataset.owner=user?.id||'guest';$('#notes').dataset.savedValue=$('#notes').value;$('#notes').oninput=()=>captureNotes(false);$('#notes').onchange=()=>captureNotes();$('#tutorForm').onsubmit=e=>{e.preventDefault();askTutor($('#question').value)};$$('[data-question]').forEach(b=>b.onclick=()=>{const q=t(b.dataset.question);$('#question').value=q;askTutor(q)});$('#speak').onclick=()=>{stopMotion();stopAssistance();return mentorGuide?.readLesson()};if($('#exportLegacy'))$('#exportLegacy').onclick=exportLegacyProgress;updatePoseFeedback();refreshWorkflow(false);keyboardActive=true;updateKeyboardStatus();bindExercise();bindDemonstration();bindLab(c,s,isZh());bindQuantumLab(c,isZh())}
 function legacyStorageKey(){return `mg-legacy-progress-v2-${user?.id||'guest'}`}
 function migrateCourseProgress(c){const p=projects[c.id];if(!p)return;const valid=new Set(allSteps(c).map(s=>s.id)),invalid=[...p.completed,...p.assembly].filter(id=>!valid.has(id));if(!invalid.length){try{const archive=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}');if(archive[c.id]?.length)migrationNotices[c.id]='saved'}catch{}return}try{const archive=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}');archive[c.id]||=[];const signature=JSON.stringify([p.completed,p.assembly]);if(!archive[c.id].some(v=>v.signature===signature))archive[c.id].push({savedAt:new Date().toISOString(),signature,reason:'Curriculum IDs changed; no guessed mapping.',progress:JSON.parse(JSON.stringify(p))});localStorage.setItem(legacyStorageKey(),JSON.stringify(archive));p.completed=p.completed.filter(id=>valid.has(id));p.assembly=p.assembly.filter(id=>valid.has(id));migrationNotices[c.id]='saved';save(c.id)}catch{migrationNotices[c.id]='failed'}}
 function exportLegacyProgress(){let data={};try{data=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}')}catch{}download('MacGyver_legacy_progress.json',{version:1,legacy:data,current:projects})}
 function syncLanguageSelect(){const select=$('#language');if(!select)return;select.setAttribute('data-no-translate','');if(!select.dataset.expanded){select.innerHTML=[['auto','◎ Auto'],...languageChoices].map(([key,name])=>`<option value="${key}">${name}</option>`).join('');select.dataset.expanded='true'}select.value=lang;select.setAttribute('aria-label',t('language'));$('#translateButton')?.setAttribute('title',t('translateTitle'));$('#closeDialog')?.setAttribute('aria-label',t('close'));$('#menu')?.setAttribute('aria-label',t('curriculum'));$('.skip')?.setAttribute('aria-label',isZh()?'跳至內容':'Skip to content')}
-function setPreferredLanguage(value){captureNotes();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';localStorage.setItem('mg-language',lang);render()}
-function updateTranslationStatus(status){translationState=status;const indicator=$('#translationStatus');if(!indicator)return;const core=['en','zh-TW'].includes(resolved());indicator.hidden=core;if(core)return;const state=status.state;const label=['translating'].includes(state)?t('translationWorking'):['translated','cached'].includes(state)?t('translationReady'):state==='unavailable'?t('translationUnavailable'):t('translationPartial');indicator.querySelector?.('[data-translation-label]')&&(indicator.querySelector('[data-translation-label]').textContent=`${resolved()} · ${label}${status.total?` (${status.translated||0}/${status.total})`:''}`)}
-function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>localeController?.apply(document.body)}$('#retryTranslation').textContent=t('retry');if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>aiAvailable,onStatus:updateTranslationStatus});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return localeController.apply(document.body)}
+function setPreferredLanguage(value){captureNotes();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';localStorage.setItem('mg-language',lang);const chosen=resolved();if(chosen!=='en'&&chosen!=='zh-TW'){onDeviceTranslator(chosen,{userActivated:true});loadDictionary(chosen).then(()=>applyLanguage())}render()}
+function updateTranslationStatus(status){translationState=status;const indicator=$('#translationStatus');if(!indicator)return;const core=['en','zh-TW'].includes(resolved());indicator.hidden=core;if(core)return;const state=status.state;const label=['translating'].includes(state)?t('translationWorking'):['translated','cached'].includes(state)?t('translationReady'):state==='unavailable'?t('translationUnavailable'):state==='dictionary'?t('translationDictionary'):t('translationPartial');const target=indicator.querySelector?.('[data-translation-label]');if(target){target.replaceChildren();const code=document.createElement('span');code.setAttribute('data-no-translate','');code.textContent=`${resolved()} · `;const text=document.createElement('span');let localized=label;try{const dict=loadedDictionary(resolved());localized=(dict&&lookupDictionary(dict,label))||label}catch{}text.textContent=localized;target.append(code,text);if(status.total&&state!=='dictionary'){const count=document.createElement('span');count.setAttribute('data-no-translate','');count.textContent=` (${status.translated||0}/${status.total})`;target.append(count)}}indicator.classList?.toggle('is-info',state==='dictionary');const retry=indicator.querySelector?.('button');if(retry)retry.hidden=state==='dictionary'}
+function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>localeController?.apply(document.body)}{let label=t('retry');try{const dict=loadedDictionary(resolved());label=(dict&&lookupDictionary(dict,label))||label}catch{}$('#retryTranslation').textContent=label;}if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>aiAvailable,onStatus:updateTranslationStatus,onDictionary:language=>{if(language===resolved())applyLanguage()}});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return localeController.apply(document.body)}
 
 function bind(){if(currentPage==='learning-map')learningMapController=mountLearningMap($('#main'),{catalog,featured,language:resolved(),onRendered:()=>applyLanguage()});if(['home','catalog'].includes(currentPage)){const search=$('#search');search.oninput=()=>{query=search.value;pageIndex=0;const pos=search.selectionStart;render();$('#search').focus();$('#search').setSelectionRange(pos,pos)};$('#categoryFilter').onchange=e=>{filter=e.target.value;subdiscipline='';pageIndex=0;render()};$('#catalogSubdiscipline').onchange=e=>{subdiscipline=e.target.value;pageIndex=0;render()};$('#maturity').onchange=e=>{maturity=e.target.value;pageIndex=0;render()};$$('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;subdiscipline='';pageIndex=0;render()});$('#prevPage').onclick=()=>{pageIndex--;render();focusSection('#explorerCatalog')};$('#nextPage').onclick=()=>{pageIndex++;render();focusSection('#explorerCatalog')};$('#catalogView').onchange=e=>{catalogView=e.target.value==='cards'?'cards':'list';render()};$('#catalogPageForm').onsubmit=e=>{e.preventDefault();const page=Number($('#catalogPage').value),pages=Math.max(1,Math.ceil(filteredCatalog().length/24));if(!Number.isInteger(page)||page<1||page>pages)return;pageIndex=page-1;render();focusSection('#search')}}
 if(currentPage==='project'){const b=$('#beginCourse');if(b)b.onclick=async()=>{activeId=b.dataset.id;const enteringId=activeId,enteringOwner=accountGeneration;await hydrateServerLearning(course());if(activeId!==enteringId||accountGeneration!==enteringOwner)return;activeStep=unlocked(course());navStage=-1;navQuery='';localStorage.setItem('mg-active',activeId);location.hash='workshop'};const s=$('#saveResearch');if(s){s.onclick=async()=>{record(s.dataset.id).notes=$('#researchNotes').value;await save(s.dataset.id);toast(saveState)};$('#researchNotes').dataset.owner=user?.id||'guest';$('#researchNotes').dataset.savedValue=$('#researchNotes').value;$('#researchNotes').oninput=()=>captureNotes(false);$('#researchNotes').onchange=()=>save(s.dataset.id)}const project=catalog.find(c=>c.id===shownProjectId);if(project&&!project.stages)bindResearchPlan(document.querySelector('[data-research-plan]'),project,{en:!isZh(),profileId:user?.id||'guest'})}
 if(currentPage==='workshop')bindWorkshop();
-bindMembership($('#main'),{zh:isZh(),user,catalog,onLogin:accountModal});bindVendors($('#main'),{zh:isZh(),onRendered:()=>applyLanguage()});bindShowcase(document,{onRendered:()=>applyLanguage()});
+bindMembership($('#main'),{zh:isZh(),user,catalog,onLogin:accountModal,onAccessChanged:()=>{stepCache.delete(course());render()}});bindVendors($('#main'),{zh:isZh(),onRendered:()=>applyLanguage()});bindShowcase(document,{onRendered:()=>applyLanguage()});
 if(currentPage==='progress'){$('#exportProgress').onclick=exportProgress;$('#importProgress').onclick=()=>$('#importFile').click();$('#importFile').onchange=importProgress}
 if(currentPage==='map'){bindAtlasContent();$('#atlasQuery').oninput=e=>{atlasQuery=e.target.value;refreshAtlas()};if(atlasState!=='ready')loadAtlasPlaces();$('#locate').onclick=()=>{if(!navigator.geolocation){toast('Geolocation unavailable');return}const host=$('#mapFrame');if(!host){toast(isZh()?'請先載入或選擇一項工程據點。':'Load or select an engineering location first.');return}const place=selectedPlace,generation=++mapRequestGeneration;const current=()=>currentPage==='map'&&selectedPlace===place&&mapRequestGeneration===generation&&host?.isConnected&&$('#mapFrame')===host;navigator.geolocation.getCurrentPosition(pos=>{if(!current())return;host.innerHTML=mapIframe(pos.coords.latitude,pos.coords.longitude);toast(isZh()?'目前位置已顯示，未保存。':'Location displayed; not saved.')},()=>{if(current())toast(isZh()?'無法取得定位；仍可瀏覽工程據點。':'Location unavailable; browse project locations instead.')},{enableHighAccuracy:false,timeout:10000,maximumAge:60000})}}
 if(currentPage==='sources'){$$('[data-source-tab]').forEach(b=>b.onclick=()=>{sourceTab=b.dataset.sourceTab;sourceFilters.page=0;render()});$('#sourceQuery').oninput=event=>{sourceFilters.query=event.target.value;sourceFilters.page=0;const position=event.target.selectionStart;render();$('#sourceQuery').focus();$('#sourceQuery').setSelectionRange(position,position)};for(const [selector,key]of [['#sourceCategory','category'],['#sourceSubcategory','subcategory'],['#sourceCourse','courseId']])$(selector).onchange=event=>{sourceFilters[key]=event.target.value;sourceFilters.page=0;if(key==='category'){sourceFilters.subcategory='';sourceFilters.courseId=''}if(key==='subcategory')sourceFilters.courseId='';render()};$('#sourcePrevious').onclick=()=>{sourceFilters.page=Math.max(0,sourceFilters.page-1);render();focusSection('#sourceQuery')};$('#sourceNext').onclick=()=>{sourceFilters.page++;render();focusSection('#sourceQuery')}}$$('[data-open-tutor]').forEach(button=>button.onclick=()=>openTutor());$$('[data-catalog-route]').forEach(link=>link.onclick=()=>{lastCatalogRoute='';if(location.hash==='#catalog/'+link.dataset.catalogRoute)render()});$$('[data-download-catalog]').forEach(button=>button.onclick=()=>download('MacGyver_Catalog_'+catalog.length+'_zh_en.csv',catalogCsv(),'text/csv;charset=utf-8'));bindLearningMedia(document,()=>applyLanguage());bindCoursePlaces({zh:isZh(),language:resolved(),onRendered:()=>applyLanguage()})}
@@ -6317,18 +7449,21 @@ async function askTutor(question){if(!String(question||'').trim())return;openTut
 function download(name,data,type='application/json'){const blob=new Blob([typeof data==='string'?data:JSON.stringify(data,null,2)],{type}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function exportProgress(){ensurePoseStore();download('MacGyver_Progress_'+new Date().toISOString().slice(0,10)+'.json',{version:1,exportedAt:new Date().toISOString(),projects,workshopLocal:poseStore,workshopStorage:'Device-only task/pose/check state for current account; completed steps and notes are separately synchronized.'})}
 async function importProgress(e){const f=e.target.files[0];if(!f)return;if(f.size>3e6){toast('File too large');return}try{const d=JSON.parse(await f.text());if(d.version!==1||!d.projects||typeof d.projects!=='object')throw Error('format');const staged=[];for(const[id,p]of Object.entries(d.projects)){const c=catalog.find(x=>x.id===id);if(!c||!Array.isArray(p.completed)||!Array.isArray(p.assembly)||typeof p.notes!=='string'||p.notes.length>20000)continue;const ids=new Set(allSteps(c).map(s=>s.id));staged.push([id,{completed:[...new Set(p.completed.filter(x=>typeof x==='string'&&x.length<200))],assembly:[...new Set(p.assembly.filter(x=>typeof x==='string'&&x.length<200))],notes:p.notes,updatedAt:Date.now()}])}if(!staged.length)throw Error('empty');modal(t('import'),`<p>${isZh()?`將合併 ${staged.length} 項工程的進度；已有筆記會保留並附加匯入筆記。`:`Merge progress for ${staged.length} projects. Existing notes will be kept and imported notes appended.`}</p><div class="dialog-actions"><button id="confirmImport" class="button">${t('import')}</button></div>`);$('#confirmImport').onclick=async()=>{for(const[id,p]of staged){const old=projects[id];if(old){p.completed=[...new Set([...old.completed,...p.completed])];p.assembly=[...new Set([...old.assembly,...p.assembly])];p.notes=old.notes===p.notes?old.notes:[old.notes,p.notes].filter(Boolean).join('\n\n--- IMPORT ---\n\n').slice(0,20000)}projects[id]=p;const targetCourse=featured.find(c=>c.id===id);if(targetCourse)migrateCourseProgress(targetCourse);if(d.workshopLocal?.[id]&&typeof d.workshopLocal[id]==='object'){ensurePoseStore();for(const step of allSteps(targetCourse)){const imported=d.workshopLocal[id][step.id];if(imported&&typeof imported==='object'){const state=stepPose(id,step.id);state.pose=normalizePose(imported.pose);const taskSpec=resolveExercise(targetCourse,step);if(imported.exercise?.specId===taskSpec.id){const raw=imported.exercise;state.exercise={specId:taskSpec.id,values:Object.fromEntries(taskSpec.controls.map(control=>[control.id,Number.isFinite(Number(raw.values?.[control.id]))?Math.max(control.min,Math.min(control.max,Number(raw.values[control.id]))):control.initial])),choice:taskSpec.choices.some(choice=>choice.id===raw.choice)?raw.choice:null,observed:!!raw.observed,performed:!!raw.performed}}if(imported.demonstration?.version===1)state.demonstration={version:1,seen:imported.demonstration.seen===true};if(imported.practice){const raw=imported.practice;state.practice={distance:Number.isFinite(Number(raw.distance))?Math.max(0,Math.min(10000,Number(raw.distance))):0,grabbed:raw.grabbed===true,released:raw.released===true,assisted:raw.assisted===true,controls:Array.isArray(raw.controls)?raw.controls.filter(id=>taskSpec.controls.some(control=>control.id===id)):[],choice:raw.choice===true,observed:raw.observed===true,performed:raw.performed===true}}state.answer=Number.isInteger(imported.answer)&&imported.answer>=0&&imported.answer<step.quiz.options.length?imported.answer:null}}persistPose()}await save(id)}closeModal();render();toast(t('saved'))}}catch{toast(isZh()?'進度檔格式不正確。':'Invalid progress file.')}}
-function offlineAccountModal(){const runtime=window.MacGyverOffline;if(!runtime)return;const profiles=runtime.listProfiles(),active=runtime.activeProfile();modal(t('offlineTitle'),`<p>${t('offlineDesc')}</p><div class="notice">${persistenceStatus()}</div>${window.MacGyverCloudStartupError?`<p class="notice warn" role="alert">${isZh()?'雲端帳號尚未連接：':'Cloud account connection failed: '}${esc(window.MacGyverCloudStartupError)}</p>`:''}<div class="stack">${profiles.map(profile=>`<button class="button light" data-offline-profile="${esc(profile.id)}" ${profile.id===active?.id?'disabled':''}>${esc(profile.name)} ${profile.id===active?.id?'✓':''}</button>`).join('')}</div><form id="offlineProfileForm" class="mt"><label class="field">${t('name')}<input id="offlineProfileName" maxlength="80" required autocomplete="name"></label><label class="field">${t('email')} <small>${isZh()?'選填，僅存於此瀏覽器；未驗證':'Optional, browser-local and unverified'}</small><input id="offlineProfileEmail" type="email" maxlength="254" autocomplete="email"></label><button class="button" type="submit">${t('newProfile')}</button><p id="offlineProfileError" role="status"></p></form><hr><h3>${isZh()?'跨裝置學習帳號':'Cross-device learning account'}</h3><p>${isZh()?'GitHub Pages 可透過已設定的 Supabase 帳號服務同步；本機名稱不會自動成為雲端帳號。':'GitHub Pages can sync through a configured Supabase account service. A local profile does not automatically become a cloud account.'}</p><button class="button light" id="openCloudAccount">${isZh()?'信箱登入／註冊與同步':'Email sign-in / registration and sync'}</button>`);$('#openCloudAccount').onclick=cloudAccountModal;const change=async action=>{captureNotes();await saveQueue;await action();await initAccount();closeModal();render()};$$('[data-offline-profile]').forEach(button=>button.onclick=()=>change(()=>runtime.switchProfile(button.dataset.offlineProfile)));$('#offlineProfileForm').onsubmit=async event=>{event.preventDefault();try{const name=$('#offlineProfileName').value.trim();if(!name)return;await change(()=>runtime.createProfile(name,$('#offlineProfileEmail').value.trim()))}catch(error){$('#offlineProfileError').textContent=error.message}}}
+function offlineAccountModal(){const runtime=window.MacGyverOffline;if(!runtime)return;const z=isZh(),profiles=runtime.listProfiles(),active=runtime.activeProfile();modal(t('offlineTitle'),`<p>${z?'本機會員帳號只保存在這個瀏覽器：帳號、密碼（加鹽雜湊）、信箱與手機都不會上傳。密碼可防止同一台裝置上的他人切換你的學習紀錄；跨裝置同步請使用雲端會員帳號。':'Local member accounts live only in this browser: username, salted password hash, email and phone are never uploaded. The password stops others on this device from switching into your records; use a cloud member account to sync across devices.'}</p><div class="notice">${persistenceStatus()}</div>${window.MacGyverCloudStartupError?`<p class="notice warn" role="alert">${z?'雲端帳號尚未連接：':'Cloud account connection failed: '}${esc(window.MacGyverCloudStartupError)}</p>`:''}<div class="stack">${profiles.map(profile=>`<div class="profile-row"><button class="button light" data-offline-profile="${esc(profile.id)}" data-has-password="${profile.hasPassword}" ${profile.id===active?.id?'disabled':''}>${profile.hasPassword?'🔒 ':''}${esc(profile.name)}${profile.username?` <small data-no-translate>@${esc(profile.username)}</small>`:''} ${profile.id===active?.id?'✓':''}</button></div>`).join('')}</div><form id="offlineUnlock" class="mt" hidden><label class="field">${z?'輸入此帳號密碼':'Enter this account’s password'}<input id="offlineUnlockPassword" type="password" maxlength="128" autocomplete="current-password"></label><button class="button">${t('signIn')}</button></form><details class="mt" open><summary>${z?'建立本機會員帳號（四項必填）':'Create a local member account (four required fields)'}</summary><form id="offlineMemberForm" class="mt"><label class="field">${z?'帳號':'Username'}<input id="offlineUsername" maxlength="30" minlength="3" pattern="[A-Za-z0-9_.\-]{3,30}" required autocomplete="username" autocapitalize="none"></label><label class="field">${t('password')}<input id="offlinePassword" type="password" minlength="12" maxlength="128" required autocomplete="new-password"></label><label class="field">${t('email')}<input id="offlineProfileEmail" type="email" maxlength="254" required autocomplete="email"></label><label class="field">${z?'手機號碼（含國碼）':'Mobile number (with country code)'}<input id="offlinePhone" type="tel" maxlength="20" required autocomplete="tel" inputmode="tel"></label><label class="field">${z?'顯示名稱（選填）':'Display name (optional)'}<input id="offlineProfileName" maxlength="80" autocomplete="name"></label><button class="button" type="submit">${t('newProfile')}</button></form></details><p id="offlineProfileError" role="status"></p><hr><h3>${z?'跨裝置會員帳號':'Cross-device member account'}</h3><p>${z?'GitHub Pages 可透過站長設定的 Supabase 會員服務登入、驗證信箱並同步；本機帳號不會自動成為雲端帳號。':'GitHub Pages can sign in, verify email and sync through the owner’s Supabase member service. A local account does not automatically become a cloud account.'}</p><button class="button light" id="openCloudAccount">${z?'雲端會員登入／註冊':'Cloud member sign-in / registration'}</button>`);$('#openCloudAccount').onclick=cloudAccountModal;const error=message=>{$('#offlineProfileError').textContent=message};const change=async action=>{captureNotes();await saveQueue;await action();await initAccount();closeModal();render()};let pending='';$$('[data-offline-profile]').forEach(button=>button.onclick=()=>{if(button.dataset.hasPassword==='true'){pending=button.dataset.offlineProfile;$('#offlineUnlock').hidden=false;$('#offlineUnlockPassword').focus();return}change(()=>runtime.switchProfile(button.dataset.offlineProfile)).catch(e=>error(e.message))});$('#offlineUnlock').onsubmit=async event=>{event.preventDefault();try{await change(()=>runtime.unlockProfile(pending,$('#offlineUnlockPassword').value))}catch(e){error(e.message)}};$('#offlineMemberForm').onsubmit=async event=>{event.preventDefault();const v={username:$('#offlineUsername').value.trim(),password:$('#offlinePassword').value,email:$('#offlineProfileEmail').value.trim(),phone:normalizePhone($('#offlinePhone').value),name:$('#offlineProfileName').value.trim()};const problems=validMemberFields(v);if(problems.length){error((z?'請檢查：':'Please check: ')+problems.join(', '));return}try{await change(()=>runtime.createMember(v))}catch(e){error(e.message)}}}
 function accountModal(){if(authMode==='supabase'){cloudAccountModal();return}if(authMode==='offline'){offlineAccountModal();return}if(user){modal(t('accountHint'),`<p data-no-translate>${esc(user.name)} · ${esc(user.email)}</p><p>${t('progressDesc')}</p><div class="dialog-actions"><button id="logout" class="button light">${t('logout')}</button></div>`);$('#logout').onclick=async()=>{await saveQueue;if(authMode==='local'){await fetch('/api/logout',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});await initAccount();closeModal();render()}else window.top.location.href='/signout-with-chatgpt?return_to=%2F'};return}
-if(authMode==='local'){modal(t('login'),`<p>${t('accountHint')}</p><form id="authForm"><label class="field">${t('name')}<input id="authName" maxlength="80" autocomplete="name"></label><label class="field">${t('email')}<input id="authEmail" type="email" required autocomplete="email"></label><label class="field">${t('password')}<input id="authPass" type="password" minlength="12" required autocomplete="current-password"></label><p id="authError" role="alert"></p><div class="dialog-actions"><button class="button" name="mode" value="login">${t('signIn')}</button><button class="button light" name="mode" value="register">${t('register')}</button></div></form>`);$('#authForm').onsubmit=async e=>{e.preventDefault();const endpoint=e.submitter.value;try{const r=await fetch('/api/'+endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#authName').value,email:$('#authEmail').value,password:$('#authPass').value})});const d=await r.json();if(!r.ok)throw Error(d.error||'Authentication failed');await initAccount();closeModal();render();toast(t('saved'))}catch(err){$('#authError').textContent=err.message}}}
+if(authMode==='local'){modal(t('login'),`<p>${t('accountHint')}</p>${memberAuthForms()}<p id="authError" role="alert"></p>`);bindMemberAuthForms({status:m=>{$('#authError').textContent=m},submit:async(mode,v)=>{if(mode==='reset')throw new Error(isZh()?'自架伺服器請聯絡站長重設密碼。':'Ask the site owner to reset your password on this self-hosted server.');const body=mode==='signup'?{username:v.username,password:v.password,email:v.email,phone:normalizePhone(v.phone),name:v.name||v.username}:{login:v.login,password:v.password};const r=await fetch('/api/'+(mode==='signup'?'register':'login'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const d=await r.json();if(!r.ok)throw Error(d.error||'Authentication failed');await initAccount();closeModal();render();toast(t('saved'))}})}
 else if(authMode==='chatgpt'){modal(t('login'),`<p>${t('accountHint')}</p><a class="button" target="_top" href="/signin-with-chatgpt?return_to=%2F">${t('signInChatGPT')} ↗</a>`)}else cloudAccountModal()}
-async function cloudAccountModal(){const cloud=window.MacGyverCloud;if(!cloud?.configured){modal(isZh()?'跨裝置學習帳號':'Cross-device learning accounts',`${cloud?.configurationError?`<p class="notice warn" role="alert">${esc(cloud.configurationError)}</p>`:''}<div class="notice">${isZh()?'此網站尚未設定雲端帳號服務。您仍可使用本機學習檔案並匯出備份。網站管理者需先設定 Supabase 專案、資料表與登入回呼網址，完成後即可用姓名、信箱註冊與跨裝置同步。':'Cloud accounts are not configured on this website. Local learning profiles and progress exports remain available. The site owner must configure a Supabase project, database and authentication callback URL before email registration and cross-device sync can work.'}</div><p>${isZh()?'完整設定請見套件 docs/GITHUB_ACCOUNTS_V8_ZH.md。私密服務金鑰不得放進網頁。':'See docs/GITHUB_ACCOUNTS_V8_ZH.md in the package. Never put a secret service key in the website.'}</p>`);return}let session;try{session=await cloud.getSession()}catch(error){toast(String(error.message||error));return}const account=session?.user,needsResume=!!account&&(authMode!=='supabase'||user?.id!==account.id);modal(isZh()?'雲端學習帳號 · 信箱驗證':'Cloud learning account · email verification',`<p>${isZh()?'姓名、信箱及學習紀錄保存在網站設定的 Supabase 服務；登入後可跨裝置繼續。註冊後請依信箱連結完成驗證。本機檔案仍獨立保存，不會自動覆蓋。':'Your name, email and progress are stored in this website’s Supabase service for cross-device learning. Follow the verification email after registration. Local profiles remain separate and are not automatically overwritten.'}</p>${account?`<p data-no-translate><strong>${esc(account.name)}</strong><br>${esc(account.email)}</p>${needsResume?`<div class="notice">${isZh()?'雲端身分已驗證，目前仍在使用本機學習檔案。恢復後會載入此雲端帳號的紀錄；本機紀錄保留在原檔案。':'Your cloud session is verified, but learning still uses the local profile. Resume to load this cloud account’s records; local records stay in their original profile.'}</div><button class="button" id="cloudResume">${isZh()?'恢復雲端學習':'Resume cloud learning'}</button>`:''}<button class="button light" id="cloudLogout">${t('logout')}</button><details class="mt"><summary>${isZh()?'重設／更新密碼':'Reset / update password'}</summary><form id="cloudPasswordForm"><label class="field">${t('password')}<input id="cloudNewPassword" type="password" minlength="12" maxlength="128" required autocomplete="new-password"></label><button class="button">${isZh()?'更新密碼':'Update password'}</button></form></details>`:`<form id="cloudAuthForm"><label class="field">${t('name')}<input id="cloudName" maxlength="80" autocomplete="name"></label><label class="field">${t('email')}<input id="cloudEmail" type="email" maxlength="254" required autocomplete="email"></label><label class="field">${t('password')}<input id="cloudPassword" type="password" minlength="12" maxlength="128" required autocomplete="current-password"></label><div class="dialog-actions"><button class="button" name="mode" value="signin">${t('signIn')}</button><button class="button light" name="mode" value="signup">${t('register')}</button><button class="text-link" name="mode" value="reset" formnovalidate>${isZh()?'寄送重設密碼信':'Send password reset email'}</button></div></form>`}<p id="cloudAccountStatus" role="status" aria-live="polite"></p>`);const status=message=>{if($('#cloudAccountStatus'))$('#cloudAccountStatus').textContent=message};if(account){if(needsResume)$('#cloudResume').onclick=async()=>{const button=$('#cloudResume');button.disabled=true;status(isZh()?'正在載入雲端紀錄…':'Loading cloud records…');try{captureNotes();await saveQueue;await cloud.resumeSession({expectedUserId:account.id});await initAccount();if(authMode!=='supabase'||user?.id!==account.id)throw new Error(isZh()?'雲端連線尚未完成，請重試。':'Cloud connection is incomplete. Please retry.');closeModal();render();toast(isZh()?'已恢復雲端學習；本機紀錄仍保留。':'Cloud learning resumed; local records were retained.')}catch(error){status(String(error.message||error))}finally{button.disabled=false}};$('#cloudLogout').onclick=async()=>{captureNotes();await saveQueue;try{await cloud.signOut();await initAccount();closeModal();render()}catch(error){status(String(error.message||error))}};$('#cloudPasswordForm').onsubmit=async event=>{event.preventDefault();try{await cloud.updatePassword($('#cloudNewPassword').value);$('#cloudNewPassword').value='';status(isZh()?'密碼已更新。':'Password updated.')}catch(error){status(String(error.message||error))}};return}$('#cloudAuthForm').onsubmit=async event=>{event.preventDefault();const mode=event.submitter?.value||'signin',email=$('#cloudEmail').value.trim(),password=$('#cloudPassword').value,name=$('#cloudName').value.trim();if(!email||!$('#cloudEmail').checkValidity()){status(isZh()?'請輸入有效信箱。':'Enter a valid email address.');return}if(mode==='signup'&&!name){status(isZh()?'註冊時請輸入顯示名稱。':'Enter a display name to register.');return}const buttons=$$('#cloudAuthForm button');buttons.forEach(button=>button.disabled=true);status(isZh()?'處理中…':'Working…');try{if(mode==='reset'){await cloud.resetPassword(email);status(isZh()?'若此信箱符合重設條件，將收到重設密碼信。請檢查收件匣與垃圾郵件。':'If this email is eligible, a password reset message will arrive. Check your inbox and spam folder.')}else{captureNotes();await saveQueue;if(mode==='signup')await cloud.signUp({name,email,password});else await cloud.signIn({email,password});await initAccount();if(authMode==='supabase'&&user){closeModal();render();toast(isZh()?'已登入雲端學習帳號。':'Signed in to your cloud learning account.')}else status(isZh()?'請到信箱完成驗證，再回到此處登入。若未收到，請檢查垃圾郵件或網站服務設定。':'Check your email to verify your account, then return here to sign in. Check spam or the site configuration if no message arrives.')}}catch(error){status(String(error.message||error))}finally{buttons.forEach(button=>button.disabled=false)}}}
+function memberAuthForms(){const z=isZh();return `<div class="auth-tabs" role="tablist"><button type="button" class="auth-tab active" data-auth-tab="signin" role="tab" aria-selected="true">${z?'登入':'Sign in'}</button><button type="button" class="auth-tab" data-auth-tab="signup" role="tab" aria-selected="false">${z?'註冊會員':'Register'}</button></div><form id="memberSignIn" class="auth-panel" data-auth-panel="signin"><label class="field">${z?'帳號或信箱':'Username or email'}<input id="memberLogin" maxlength="254" required autocomplete="username" autocapitalize="none" spellcheck="false"></label><label class="field">${t('password')}<input id="memberLoginPassword" type="password" minlength="12" maxlength="128" required autocomplete="current-password"></label><div class="dialog-actions"><button class="button" name="mode" value="signin">${t('signIn')}</button><button class="text-link" name="mode" value="reset" formnovalidate>${z?'忘記密碼（寄送重設信）':'Forgot password (send reset email)'}</button></div></form><form id="memberSignUp" class="auth-panel" data-auth-panel="signup" hidden><p class="subtext">${z?'會員註冊需填寫四項：帳號、密碼、信箱與手機號碼。信箱需點擊驗證連結後才能登入。':'Registration needs four fields: username, password, email and mobile number. Verify your email before signing in.'}</p><label class="field">${z?'帳號':'Username'} <small>${z?'3–30 個英數字、底線、點或連字號':'3–30 letters, digits, _ . -'}</small><input id="memberUsername" maxlength="30" minlength="3" pattern="[A-Za-z0-9_.\-]{3,30}" required autocomplete="username" autocapitalize="none" spellcheck="false"></label><label class="field">${t('password')}<input id="memberPassword" type="password" minlength="12" maxlength="128" required autocomplete="new-password"></label><label class="field">${z?'再次輸入密碼':'Confirm password'}<input id="memberPassword2" type="password" minlength="12" maxlength="128" required autocomplete="new-password"></label><label class="field">${t('email')}<input id="memberEmail" type="email" maxlength="254" required autocomplete="email"></label><label class="field">${z?'手機號碼':'Mobile number'} <small>${z?'含國碼，例如 +886912345678；台灣 09 開頭會自動轉換':'With country code, e.g. +886912345678'}</small><input id="memberPhone" type="tel" maxlength="20" required autocomplete="tel" inputmode="tel"></label><label class="field">${z?'顯示名稱（選填）':'Display name (optional)'}<input id="memberName" maxlength="80" autocomplete="name"></label><label class="terms-check"><input id="memberTerms" type="checkbox" required>${z?'我同意服務條款與隱私說明（帳號、信箱與手機僅用於登入、驗證與通知）。':'I agree to the terms and privacy notice (username, email and phone are used only for sign-in, verification and notices).'}</label><div class="dialog-actions"><button class="button" name="mode" value="signup">${z?'建立會員帳號':'Create member account'}</button></div></form>`}
+function bindMemberAuthForms({status,submit}){const tabs=$$('[data-auth-tab]');tabs.forEach(tab=>tab.onclick=()=>{tabs.forEach(x=>{x.classList.toggle('active',x===tab);x.setAttribute('aria-selected',String(x===tab))});$$('[data-auth-panel]').forEach(panel=>panel.hidden=panel.dataset.authPanel!==tab.dataset.authTab)});const run=async(form,mode,values)=>{const buttons=[...form.querySelectorAll('button')];buttons.forEach(b=>b.disabled=true);status(isZh()?'處理中…':'Working…');try{await submit(mode,values)}catch(error){status(String(error.message||error))}finally{buttons.forEach(b=>b.disabled=false)}};const signIn=$('#memberSignIn');if(signIn)signIn.onsubmit=event=>{event.preventDefault();const mode=event.submitter?.value||'signin',login=$('#memberLogin').value.trim();if(mode==='reset'){if(!/^\S+@\S+\.\S+$/.test(login)){status(isZh()?'請在上方輸入註冊信箱以寄送重設信。':'Enter your registered email above to receive a reset link.');return}return run(signIn,'reset',{email:login})}return run(signIn,'signin',{login,password:$('#memberLoginPassword').value})};const signUp=$('#memberSignUp');if(signUp)signUp.onsubmit=event=>{event.preventDefault();const v={username:$('#memberUsername').value.trim(),password:$('#memberPassword').value,email:$('#memberEmail').value.trim(),phone:$('#memberPhone').value.trim(),name:$('#memberName').value.trim()};if(v.password!==$('#memberPassword2').value){status(isZh()?'兩次輸入的密碼不同。':'The passwords do not match.');return}const problems=validMemberFields(v);if(problems.length){status((isZh()?'請檢查：':'Please check: ')+problems.map(k=>({username:isZh()?'帳號':'username',email:isZh()?'信箱':'email',password:isZh()?'密碼（至少 12 字元）':'password (12+ characters)',phone:isZh()?'手機號碼（含國碼）':'mobile number (with country code)'})[k]).join('、'));return}if(!$('#memberTerms').checked){status(isZh()?'請先同意服務條款與隱私說明。':'Accept the terms and privacy notice first.');return}return run(signUp,'signup',v)}}
+async function cloudAccountModal(){const cloud=window.MacGyverCloud;if(!cloud?.configured){modal(isZh()?'跨裝置學習帳號':'Cross-device learning accounts',`${cloud?.configurationError?`<p class="notice warn" role="alert">${esc(cloud.configurationError)}</p>`:''}<div class="notice">${isZh()?'此網站尚未設定雲端帳號服務。您仍可使用本機學習檔案並匯出備份。網站管理者需先設定 Supabase 專案、資料表與登入回呼網址，完成後即可用帳號、密碼、信箱與手機號碼註冊並跨裝置同步。':'Cloud accounts are not configured on this website. Local learning profiles and progress exports remain available. The site owner must configure a Supabase project, database and authentication callback URL before member registration (username, password, email and mobile number) and cross-device sync can work.'}</div><p>${isZh()?'完整設定請見套件 docs/PAYMENTS_V12_ZH.md 與 supabase/002_accounts_commerce.sql。私密服務金鑰不得放進網頁。':'See docs/PAYMENTS_V12_ZH.md and supabase/002_accounts_commerce.sql in the package. Never put a secret service key in the website.'}</p>`);return}let session;try{session=await cloud.getSession()}catch(error){toast(String(error.message||error));return}const account=session?.user,needsResume=!!account&&(authMode!=='supabase'||user?.id!==account.id);modal(isZh()?'會員帳號 · 登入與註冊':'Member account · sign in and register',`<p>${isZh()?'帳號、信箱、手機號碼及學習紀錄保存在網站設定的 Supabase 服務；登入後可跨裝置繼續。註冊後請依信箱連結完成驗證。本機檔案仍獨立保存，不會自動覆蓋。':'Your username, email, mobile number and progress are stored in this website’s Supabase service for cross-device learning. Follow the verification email after registration. Local profiles remain separate and are not automatically overwritten.'}</p>${account?`<p data-no-translate><strong>${esc(account.name)}</strong><br>${esc(account.email)}</p>${needsResume?`<div class="notice">${isZh()?'雲端身分已驗證，目前仍在使用本機學習檔案。恢復後會載入此雲端帳號的紀錄；本機紀錄保留在原檔案。':'Your cloud session is verified, but learning still uses the local profile. Resume to load this cloud account’s records; local records stay in their original profile.'}</div><button class="button" id="cloudResume">${isZh()?'恢復雲端學習':'Resume cloud learning'}</button>`:''}<button class="button light" id="cloudLogout">${t('logout')}</button><details class="mt"><summary>${isZh()?'重設／更新密碼':'Reset / update password'}</summary><form id="cloudPasswordForm"><label class="field">${t('password')}<input id="cloudNewPassword" type="password" minlength="12" maxlength="128" required autocomplete="new-password"></label><button class="button">${isZh()?'更新密碼':'Update password'}</button></form></details>`:memberAuthForms()}<p id="cloudAccountStatus" role="status" aria-live="polite"></p>`);const status=message=>{if($('#cloudAccountStatus'))$('#cloudAccountStatus').textContent=message};if(account){if(needsResume)$('#cloudResume').onclick=async()=>{const button=$('#cloudResume');button.disabled=true;status(isZh()?'正在載入雲端紀錄…':'Loading cloud records…');try{captureNotes();await saveQueue;await cloud.resumeSession({expectedUserId:account.id});await initAccount();if(authMode!=='supabase'||user?.id!==account.id)throw new Error(isZh()?'雲端連線尚未完成，請重試。':'Cloud connection is incomplete. Please retry.');closeModal();render();toast(isZh()?'已恢復雲端學習；本機紀錄仍保留。':'Cloud learning resumed; local records were retained.')}catch(error){status(String(error.message||error))}finally{button.disabled=false}};$('#cloudLogout').onclick=async()=>{captureNotes();await saveQueue;try{await cloud.signOut();await initAccount();closeModal();render()}catch(error){status(String(error.message||error))}};$('#cloudPasswordForm').onsubmit=async event=>{event.preventDefault();try{await cloud.updatePassword($('#cloudNewPassword').value);$('#cloudNewPassword').value='';status(isZh()?'密碼已更新。':'Password updated.')}catch(error){status(String(error.message||error))}};return}bindMemberAuthForms({status,submit:async(mode,v)=>{if(mode==='reset'){await cloud.resetPassword(v.email);status(isZh()?'若此信箱符合重設條件，將收到重設密碼信。請檢查收件匣與垃圾郵件。':'If this email is eligible, a password reset message will arrive. Check your inbox and spam folder.');return}captureNotes();await saveQueue;if(mode==='signup'){const free=await cloud.checkAvailability({username:v.username,phone:v.phone}).catch(()=>({}));if(free.usernameAvailable===false)throw new Error(isZh()?'此帳號已被使用，請換一個。':'This username is taken.');if(free.phoneAvailable===false)throw new Error(isZh()?'此手機號碼已註冊。':'This mobile number is already registered.');await cloud.signUp({name:v.name||v.username,username:v.username,email:v.email,phone:v.phone,password:v.password})}else await cloud.signInWithLogin({login:v.login,password:v.password});await initAccount();if(authMode==='supabase'&&user){closeModal();render();toast(isZh()?'已登入雲端學習帳號。':'Signed in to your cloud learning account.')}else status(isZh()?'請到信箱點擊驗證連結完成註冊，再回到此處以帳號或信箱登入。若未收到，請檢查垃圾郵件。':'Open the verification link in your email, then return here and sign in with your username or email. Check spam if nothing arrives.')}})}
 
 const languageChoices=[['zh-TW','繁體中文'],['en','English'],['zh-CN','简体中文'],['ja','日本語'],['ko','한국어'],['es','Español'],['fr','Français'],['de','Deutsch'],['pt','Português'],['it','Italiano'],['nl','Nederlands'],['ru','Русский'],['uk','Українська'],['pl','Polski'],['cs','Čeština'],['sk','Slovenčina'],['sl','Slovenščina'],['hr','Hrvatski'],['sr','Српски'],['bg','Български'],['ro','Română'],['hu','Magyar'],['el','Ελληνικά'],['tr','Türkçe'],['ar','العربية'],['he','עברית'],['fa','فارسی'],['ur','اردو'],['hi','हिन्दी'],['bn','বাংলা'],['ta','தமிழ்'],['te','తెలుగు'],['mr','मराठी'],['gu','ગુજરાતી'],['kn','ಕನ್ನಡ'],['ml','മലയാളം'],['pa','ਪੰਜਾਬੀ'],['ne','नेपाली'],['si','සිංහල'],['th','ไทย'],['vi','Tiếng Việt'],['id','Bahasa Indonesia'],['ms','Bahasa Melayu'],['fil','Filipino'],['km','ខ្មែរ'],['lo','ລາວ'],['my','မြန်မာ'],['mn','Монгол'],['kk','Қазақша'],['uz','Oʻzbekcha'],['az','Azərbaycanca'],['ka','ქართული'],['hy','Հայերեն'],['sw','Kiswahili'],['am','አማርኛ'],['ha','Hausa'],['yo','Yorùbá'],['ig','Igbo'],['zu','isiZulu'],['af','Afrikaans'],['so','Soomaali'],['sv','Svenska'],['no','Norsk'],['da','Dansk'],['fi','Suomi'],['is','Íslenska'],['et','Eesti'],['lv','Latviešu'],['lt','Lietuvių'],['ga','Gaeilge'],['cy','Cymraeg'],['mt','Malti'],['sq','Shqip'],['mk','Македонски'],['bs','Bosanski'],['eu','Euskara'],['gl','Galego'],['ca','Català'],['eo','Esperanto']];
-const personalization=createPersonalization({getLanguage:resolved,getProfileId:()=>user?.id||'guest',getProfileName:()=>user?.name||t('guest'),onOpen:stopDemonstration,onRendered:()=>applyLanguage()});
+let preferenceTimer=0;
+const personalization=createPersonalization({getLanguage:resolved,getProfileId:()=>user?.id||'guest',getProfileName:()=>user?.name||t('guest'),onOpen:stopDemonstration,onRendered:()=>applyLanguage(),onChanged:prefs=>{if(authMode==='supabase'&&user&&window.MacGyverCloud?.savePreferences){clearTimeout(preferenceTimer);preferenceTimer=setTimeout(()=>window.MacGyverCloud.savePreferences(prefs).catch(()=>{}),1200)}}});
 function translationModal(){modal(t('translateTitle'),`<p>${t('translateInfo')}</p><label class="field">${t('language')}<select id="translationLanguage" data-no-translate>${[['auto','◎ Auto'],...languageChoices].map(([k,n])=>`<option value="${k}" ${k===lang?'selected':''}>${n}</option>`).join('')}</select></label><div class="dialog-actions"><button id="translatePage" class="button">${t('translateGo')} ↗</button></div><p id="translateStatus" role="status"></p>`);$('#translatePage').onclick=()=>{setPreferredLanguage($('#translationLanguage').value);closeModal()}}
 $('#preferencesButton').onclick=()=>personalization.open();
 $('.skip').onclick=e=>{e.preventDefault();$('#main').focus();$('#main').scrollIntoView()};$('#closeDialog').onclick=closeModal;$('#dialog').addEventListener('click',e=>{if(e.target===$('#dialog'))closeModal()});$('#account').onclick=accountModal;$('#mentorButton').onclick=()=>openTutor();$('#translateButton').onclick=translationModal;$('#menu').onclick=()=>$('#sidebar').classList.toggle('open');$('#guideButton').onclick=()=>modal(t('guideTitle'),`<p style="white-space:pre-line">${t('guideText')}</p><div class="notice">${t('conceptModel')}</div><p>${t('translateInfo')}</p><p><a class="button light" href="help.html" target="_blank" rel="noopener noreferrer">${isZh()?'會員、資訊資安、AI 與付款設定指南':'Membership, computing/security, AI and payment setup guide'} ↗</a></p>`);$('#language').onchange=e=>setPreferredLanguage(e.target.value);window.addEventListener('hashchange',()=>{captureNotes();$('#sidebar').classList.remove('open');render();window.scrollTo(0,0)});window.addEventListener('pagehide',()=>{stopMotion();stopDemonstration();captureNotes()});document.addEventListener('keydown',handleWorkshopKey,true);document.addEventListener('keyup',handleWorkshopKey,true);document.addEventListener('focusin',handleWorkshopFocus);window.addEventListener('blur',()=>{deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()});document.addEventListener('visibilitychange',()=>{if(document.hidden){deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()}});document.addEventListener('toggle',e=>{if(e.target?.tagName==='DETAILS'&&e.target.open)applyLanguage()},true);window.addEventListener('beforeunload',()=>{captureNotes();try{localStorage.setItem(stateKey(),JSON.stringify(projects))}catch{}});
-async function boot(){loadLearningMedia();try{await Promise.all([loadBillingConfig(),loadVendors()]);const responses=await Promise.all(['catalog','featured','sources','photos'].map(k=>loadCurriculumData(k,{protected:billingState().protected})));[catalog,featured,sources,photos]=responses;const guided=new Map(featured.map(c=>[c.id,c]));catalog=catalog.map(item=>guided.get(item.id)||item);if(window.MG_DATA?.['course-places'])setAtlasPlaces(window.MG_DATA['course-places']);else loadAtlasPlaces();if(!featured.some(c=>c.id===activeId)){activeId=featured[0]?.id||'';localStorage.setItem('mg-active',activeId)}setRelatedSkills(window.MG_DATA?.['related-skills']||null,catalog);if(!window.MG_DATA?.['related-skills'])loadRelatedSkills();await initializeServices();await initAccount();activeStep=unlocked(course());render();if(window.MacGyverCloudStartupError)toast((isZh()?'雲端登入未完成；請點帳號查看原因。':'Cloud sign-in failed; open Account for details.'));if(window.MacGyverCloudRecovery){window.MacGyverCloudRecovery=false;cloudAccountModal()}}catch(err){$('#main').innerHTML=`<div class="empty"><h2>Unable to load curriculum</h2><p>請完整解壓縮所有附件後再開啟 index.html，或重新整理已部署的網址。</p><p>Re-extract the complete package and open index.html, or reload the hosted site.</p><code>${esc(err.message)}</code></div>`}}
+async function boot(){loadLearningMedia();try{await Promise.all([loadBillingConfig(),loadVendors(),loadPricing(),loadMarkets()]);configurePaywall({freeStages:freeStages(),billing:billingState,cloud:()=>window.MacGyverCloud});const responses=await Promise.all(['catalog','featured','sources','photos'].map(k=>loadCurriculumData(k,{protected:billingState().protected})));[catalog,featured,sources,photos]=responses;const guided=new Map(featured.map(c=>[c.id,c]));catalog=catalog.map(item=>guided.get(item.id)||item);if(window.MG_DATA?.['course-places'])setAtlasPlaces(window.MG_DATA['course-places']);else loadAtlasPlaces();if(!featured.some(c=>c.id===activeId)){activeId=featured[0]?.id||'';localStorage.setItem('mg-active',activeId)}setRelatedSkills(window.MG_DATA?.['related-skills']||null,catalog);if(!window.MG_DATA?.['related-skills'])loadRelatedSkills();await initializeServices();await initAccount();await refreshAccess({user});if(!['en','zh-TW'].includes(resolved()))await Promise.race([loadDictionary(resolved()),new Promise(r=>setTimeout(r,2500))]);activeStep=unlocked(course());render();if(window.MacGyverCloudStartupError)toast((isZh()?'雲端登入未完成；請點帳號查看原因。':'Cloud sign-in failed; open Account for details.'));if(window.MacGyverCloudRecovery){window.MacGyverCloudRecovery=false;cloudAccountModal()}resumeEcpayReturn({zh:isZh(),user,onStatus:message=>toast(message),onDone:()=>{stepCache.delete(course());render()}});}catch(err){$('#main').innerHTML=`<div class="empty"><h2>Unable to load curriculum</h2><p>請完整解壓縮所有附件後再開啟 index.html，或重新整理已部署的網址。</p><p>Re-extract the complete package and open index.html, or reload the hosted site.</p><code>${esc(err.message)}</code></div>`}}
 boot();
 
 

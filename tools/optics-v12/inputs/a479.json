@@ -1,0 +1,161 @@
+{
+  "id": "a479",
+  "title": "科學級 CCD 成像系統~Scientific CCD imaging systems",
+  "discipline": "optics-astronomical",
+  "family": "detector",
+  "focus": "背照式量子效率、電荷轉移效率、輸出放大器讀出雜訊、深冷暗電流與光子轉移增益校正~Back-illuminated QE, charge-transfer efficiency, output-amplifier read noise, deep-cooled dark current and photon-transfer gain calibration",
+  "summary": "以天文與光譜用的背照式深冷 CCD 為對象，從矽吸收深度與三相時脈的電荷搬運出發，說明為何一個角落像素要經過 8192 次轉移仍不能掉電荷，再把浮動擴散輸出放大器、減薄與深空乏、暗電流溫度律、光子轉移與 Fe-55 增益、像素合併與宇宙射線、多輸出串擾整合成可驗收的相機紀錄。~Using back-illuminated, deep-cooled CCDs for astronomy and spectroscopy, start from silicon absorption depth and three-phase charge transport to show why a corner pixel must survive 8192 transfers without losing charge, then integrate the floating-diffusion output amplifier, thinning and deep depletion, the dark-current temperature law, photon-transfer and Fe-55 gain, binning and cosmic rays, and multi-output crosstalk into an acceptable camera record.",
+  "units": [
+    {
+      "anchor": "背照式矽吸收層~Back-illuminated silicon absorber",
+      "title": "光電轉換、吸收深度與量子效率~Photoelectric conversion, absorption depth and quantum efficiency",
+      "mechanism": "矽的能隙 1.12 eV，可見光光子在矽中產生一個電子電洞對，X 光則平均每 3.65 eV 產生一對，因此 CCD 同時是光子計數器與能量計。前照式 CCD 的光要先穿過多晶矽電極，藍光與紫外在電極中被吸收，量子效率只有四成左右；背照式 CCD 把晶片減薄後從背面受光，加上抗反射膜可在可見光超過九成。但矽對紅光與近紅外的吸收長度很長，900 nm 約 33 µm、1000 nm 約 156 µm，薄元件的紅端效率下降，且前後表面反射形成干涉條紋。~Silicon has a 1.12 eV bandgap, so a visible photon creates one electron–hole pair while X-rays create one pair per 3.65 eV on average, making a CCD both a photon counter and an energy meter. In a front-illuminated CCD light must first cross polysilicon gates that absorb blue and ultraviolet, limiting QE to about 40%; a back-illuminated CCD is thinned and illuminated from the back, and with an antireflection coating exceeds 90% in the visible. However, silicon's absorption length is long in the red and near infrared, about 33 µm at 900 nm and 156 µm at 1000 nm, so thin devices lose red response and reflections from both surfaces create interference fringes.",
+      "model": "吸收比例 1 − exp(−d/L)：900 nm（L = 33 µm）時厚 15 µm 吸收 37%、40 µm 為 71%、100 µm 為 95%；1000 nm（L = 156 µm）時 15 µm 只有 9%、100 µm 為 47%。15 µm 厚、n = 3.6 的矽在 900 nm 的條紋間距 λ²/(2nd) = 0.81 µm²/(2×3.6×15 µm) = 7.5 nm，夜天光的窄發射線會產生明顯條紋。~Absorbed fraction 1 − exp(−d/L): at 900 nm (L = 33 µm) a 15 µm layer absorbs 37%, 40 µm absorbs 71% and 100 µm absorbs 95%; at 1000 nm (L = 156 µm) 15 µm absorbs only 9% and 100 µm 47%. A 15 µm layer with n = 3.6 has a fringe spacing at 900 nm of λ²/(2nd) = 0.81 µm²/(2×3.6×15 µm) = 7.5 nm, so narrow night-sky emission lines produce strong fringes.",
+      "verify": "以單色儀與可溯源校正光電二極體做比值法，每 10 nm 量一次 QE 並與吸收模型及抗反射膜設計曲線比較；以 1 nm 步進的窄頻平場或可調雷射照射，量測條紋振幅與間距，反推矽層厚度分布；紫外端在不同曝光歷史下重複量測以檢查 QE 遲滯。~Measure QE every 10 nm by the ratio method with a monochromator and a traceable calibrated photodiode, comparing with the absorption model and the antireflection design curve; illuminate with narrowband flats stepped by 1 nm or a tunable laser to measure fringe amplitude and spacing and infer the silicon thickness map; repeat ultraviolet measurements after different illumination histories to check for QE hysteresis.",
+      "failure": "把薄背照式 CCD 用在近紅外光譜，條紋振幅可達一到三成，若平場與科學影像的照明光譜不同，條紋無法除掉，天光扣除留下週期性殘差；背面鈍化不良時紫外 QE 隨照光歷史漂移，同一顆星的流量前後不一致。~Using a thin back-illuminated CCD for near-infrared spectroscopy produces fringes of 10% to 30%, and if flat-field and science illumination spectra differ the fringes do not divide out, leaving periodic sky-subtraction residuals; with poor backside passivation ultraviolet QE drifts with illumination history so the same star's flux changes from frame to frame.",
+      "misconception": "背照式 CCD 在所有波長都有九成以上的量子效率。~A back-illuminated CCD has over 90% QE at every wavelength."
+    },
+    {
+      "anchor": "三相時脈與電荷轉移~Three-phase clocks and charge transfer",
+      "title": "電荷耦合搬運與轉移效率~Charge-coupled transport and charge-transfer efficiency",
+      "mechanism": "CCD 的每個像素是埋入式通道上的 MOS 電容，曝光時光電子被收集在電極下的電位井中。讀出時以三相時脈依序升降相鄰電極的電壓，把整排電荷包一行一行往水平暫存器平移，再一格一格移到輸出放大器。每次轉移留下的比例稱為電荷轉移無效率 CTI，來源是矽中的缺陷陷阱、太空中質子造成的位移損傷與表面態；陷阱先捕獲電子再延後釋放，使影像沿讀出方向拖尾。CTI 在低訊號、低背景時最嚴重，因為沒有其他電荷先把陷阱填滿。~Each CCD pixel is a MOS capacitor over a buried channel, and during exposure photoelectrons collect in the potential well under the gates. Readout raises and lowers adjacent gate voltages with three-phase clocks so whole rows of charge packets step toward the serial register and then, pixel by pixel, to the output amplifier. The fraction left behind per transfer is the charge-transfer inefficiency CTI, caused by bulk defect traps, proton displacement damage in space and surface states; traps capture electrons and release them later, trailing the image along the readout direction. CTI is worst at low signal and low background because no other charge has filled the traps first.",
+      "model": "4k × 4k 元件角落像素需 4096 次平行加 4096 次水平轉移，共 8192 次。CTE = 0.999999 時保留 0.999999⁸¹⁹² = 0.9918，損失 0.82%；CTE = 0.99999 時保留 0.921，損失 7.9%。Fe-55 的 1616 e⁻ X 光事件經 4096 次 CTE = 0.99999 平行轉移剩 1551 e⁻，峰值隨列號線性下降 4%。~A corner pixel of a 4k × 4k device crosses 4096 parallel plus 4096 serial transfers, 8192 in all. At CTE = 0.999999 it keeps 0.999999⁸¹⁹² = 0.9918, losing 0.82%; at CTE = 0.99999 it keeps 0.921, losing 7.9%. A 1616 e⁻ Fe-55 X-ray event after 4096 parallel transfers at CTE = 0.99999 retains 1551 e⁻, so the peak falls linearly by 4% across the rows.",
+      "verify": "以 Fe-55 放射源均勻照射，挑出單像素事件，畫出事件振幅對列號與行號的關係，斜率除以轉移次數即得每次轉移的 CTI；另用延伸像素邊緣響應法，在平場曝光後讀取過掃描區，量最後一行之後溢出的電荷比例；在不同溫度與時脈電壓下重複，找出 CTE 最佳的操作點。~Illuminate uniformly with an Fe-55 source, select single-pixel events and plot event amplitude against row and column number; the slope divided by the transfer count gives CTI per transfer. Use extended pixel edge response as well, reading the overscan after a flat-field exposure to measure the charge that trails beyond the last column; repeat at several temperatures and clock voltages to find the operating point with the best CTE.",
+      "failure": "太空任務中質子輻射逐年增加陷阱，暗弱星點的流量損失與質心偏移隨在晶片上的位置而變，測光與天體測量都出現位置相依的系統誤差；若只用亮平場驗收 CTE，低訊號的嚴重拖尾直到科學資料才被發現。~In space, proton radiation adds traps year by year, so faint stars lose flux and shift centroid depending on their position on the chip, creating position-dependent systematics in both photometry and astrometry; accepting CTE with bright flats only hides the severe low-signal trailing until science data reveal it.",
+      "misconception": "CTE 為 0.99999 已經接近完美，大面積 CCD 不必再擔心。~A CTE of 0.99999 is essentially perfect even for large CCDs."
+    },
+    {
+      "anchor": "浮動擴散輸出放大器~Floating-diffusion output amplifier",
+      "title": "浮動擴散節點、雙斜率積分與讀出速率~Floating-diffusion node, dual-slope integration and readout rate",
+      "mechanism": "電荷包被倒入輸出端的浮動擴散節點，電容 C 把電荷轉成電壓 q/C，再由源極隨耦器送出晶片。每次倒入電荷前節點要先重設，重設帶來 kTC 雜訊，所以讀出電路在重設後與電荷倒入後各取樣一次並相減，常用雙斜率積分器實作相關雙取樣。讀出雜訊由放大器的白雜訊與 1/f 雜訊組成：取樣時間越長白雜訊越低，但 1/f 雜訊不隨之下降，而且整張影像讀出時間按像素數除以像素速率線性增加。大面積相機因此把晶片分成多個輸出同時讀出。~Each charge packet is dumped onto the floating-diffusion node, whose capacitance C converts charge to voltage q/C before a source follower drives it off chip. The node must be reset before every dump and reset introduces kTC noise, so the readout chain samples once after reset and once after the charge transfer and subtracts them, usually with a dual-slope integrator implementing correlated double sampling. Read noise combines amplifier white noise and 1/f noise: longer sampling lowers the white part but not the 1/f part, while frame readout time grows linearly with pixel count divided by pixel rate. Large cameras therefore divide each chip into several outputs read in parallel.",
+      "model": "C = 20 fF 時轉換增益 q/C = 8.0 µV/e⁻；173 K 下的重設雜訊 √(kTC)/q ≈ 43 e⁻，必須靠 CDS 消除。公開深冷相機規格列出 50 kHz 讀出 2.9 e⁻、1 MHz 為 7.0 e⁻，比值 2.4 小於純白雜訊的 √20 = 4.47，顯示 1/f 與固定項。2048² 像素以 1 MHz 讀出 4.2 s、50 kHz 需 84 s；4k × 4k 晶片分 16 個輸出、2 s 讀完，每輸出約 524 kHz。~With C = 20 fF the conversion gain is q/C = 8.0 µV/e⁻; reset noise at 173 K is √(kTC)/q ≈ 43 e⁻ and must be removed by CDS. A public deep-cooled camera datasheet lists 2.9 e⁻ at 50 kHz and 7.0 e⁻ at 1 MHz, a ratio of 2.4 rather than the √20 = 4.47 of pure white noise, revealing 1/f and fixed terms. 2048² pixels read in 4.2 s at 1 MHz but 84 s at 50 kHz; a 4k × 4k chip split into 16 outputs read in 2 s needs about 524 kHz per output.",
+      "verify": "在暗環境下以最短曝光取兩張偏壓影像相減，差值標準差除以 √2 再乘以增益即得讀出雜訊；在多個像素速率重複，畫出雜訊對取樣時間的曲線並擬合白雜訊與 1/f 項；以示波器檢查輸出波形的重設與訊號平台是否穩定，確認積分窗未落在時脈突波上。~Take two minimum-exposure bias frames in darkness and subtract them; the standard deviation of the difference divided by √2 and multiplied by the gain gives read noise. Repeat at several pixel rates, plot noise versus sampling time and fit white and 1/f terms; inspect the output waveform on an oscilloscope to confirm stable reset and signal plateaus and that integration windows avoid clock feedthrough spikes.",
+      "failure": "為了縮短讀出時間把像素速率提高而沒有調整積分窗，取樣落在時脈突波上，讀出雜訊翻倍且出現與列相關的圖樣；輸出電晶體在曝光期間持續開啟時，其熱電子發光在靠近輸出的角落形成放大器輝光。~Raising the pixel rate to shorten readout without retuning the integration windows puts samples on clock feedthrough, doubling read noise and adding row-correlated patterns; leaving the output transistor on during exposure makes its hot-carrier emission glow in the corner nearest the output.",
+      "misconception": "讀出雜訊只與晶片有關，與讀出速度無關。~Read noise belongs to the chip alone and does not depend on readout speed."
+    },
+    {
+      "anchor": "減薄、深空乏與焦面平整度~Thinning, deep depletion and focal-plane flatness",
+      "title": "背面減薄、深空乏與焦面封裝~Back-thinning, deep depletion and focal-plane packaging",
+      "mechanism": "背照式 CCD 把晶圓減薄到 10 到 20 µm，背面必須以離子佈植加雷射退火、分子束磊晶 δ 摻雜等方式鈍化，建立把光電子推向前側電位井的內建電場，否則藍光產生的電子在背面復合。深空乏元件改用高電阻率矽並施加基板偏壓，使 40 到 200 µm 厚的矽全部空乏，紅端 QE 提高且條紋減弱，但未空乏區的電荷橫向擴散會放大點擴散函數，宇宙射線徑跡也變長。大面積焦面由多片晶片拼成，封裝要控制平整度、間隙與低溫下的熱膨脹匹配。~Back-illuminated CCDs thin the wafer to 10 to 20 µm, and the back surface must be passivated by ion implantation with laser annealing or molecular-beam-epitaxy delta doping to build a field that drives photoelectrons toward the front-side wells; otherwise electrons generated by blue light recombine at the surface. Deep-depletion devices use high-resistivity silicon and a substrate bias to deplete 40 to 200 µm fully, raising red QE and suppressing fringes, but lateral diffusion from any undepleted region broadens the point-spread function and cosmic-ray tracks lengthen. Large focal planes tile many chips, so packaging must control flatness, gaps and thermal-expansion matching at cryogenic temperature.",
+      "model": "空乏深度 W = √(2ε_Si·V/(q·N_A))：ε_Si = 1.04×10⁻¹⁰ F/m、V = 20 V、N_A = 5×10¹² cm⁻³ 時 W = √(2×1.04×10⁻¹⁰×20/(1.6×10⁻¹⁹×5×10¹⁸)) ≈ 72 µm；N_A 降到 1×10¹² cm⁻³ 時約 161 µm。平整度：f/1.23 的快速光束中 10 µm 離焦造成 10/1.23 ≈ 8.1 µm 的模糊圈，約 0.8 個 10 µm 像素。~Depletion depth W = √(2ε_Si·V/(q·N_A)): with ε_Si = 1.04×10⁻¹⁰ F/m, V = 20 V and N_A = 5×10¹² cm⁻³, W = √(2×1.04×10⁻¹⁰×20/(1.6×10⁻¹⁹×5×10¹⁸)) ≈ 72 µm, rising to about 161 µm at N_A = 1×10¹² cm⁻³. Flatness: in a fast f/1.23 beam a 10 µm defocus blurs to 10/1.23 ≈ 8.1 µm, about 0.8 of a 10 µm pixel.",
+      "verify": "在工作溫度下以非接觸式雷射三角量測或干涉儀量測每片晶片與整個焦面的高度圖，比較峰谷值與景深預算；以點光源投射器在多個波長掃描焦面，量測點擴散函數寬度隨基板偏壓的變化，確認元件已完全空乏；逐片記錄晶片間隙與方向。~At operating temperature, map the height of every chip and of the full focal plane with non-contact laser triangulation or interferometry, comparing peak-to-valley with the depth-of-focus budget; scan the focal plane with a spot projector at several wavelengths and measure point-spread-function width versus substrate bias to confirm full depletion; record each chip's gaps and orientation.",
+      "failure": "基板偏壓不足時元件只部分空乏，紅光在未空乏區產生的電荷橫向擴散，點擴散函數隨波長變寬，弱重力透鏡等形狀量測出現色相依的偏差；封裝材料與矽的熱膨脹不匹配，降溫後晶片翹曲數十微米，視場邊緣影像失焦。~Insufficient substrate bias leaves the device partially depleted, charge from red light diffuses laterally in the undepleted region and the point-spread function broadens with wavelength, biasing shape measurements such as weak lensing in a colour-dependent way; a package whose expansion mismatches silicon bows the chip by tens of micrometres on cooldown and defocuses the field edges.",
+      "misconception": "矽越厚越好，因為紅光量子效率一定越高。~Thicker silicon is always better because red QE rises."
+    },
+    {
+      "anchor": "低溫恆溫器與暗電流~Cryostat and dark current",
+      "title": "暗電流的溫度依存與冷卻設計~Temperature dependence of dark current and cooling design",
+      "mechanism": "暗電流來自熱激發的電子電洞對：空乏區的產生電流按 T^1.5·exp(−E_g/2kT) 變化，未空乏區的擴散電流按 T³·exp(−E_g/kT) 變化，矽與氧化層界面的表面態則在非反轉模式下貢獻最多。多釘扎相位（MPP）操作讓表面反轉，可把表面暗電流壓低約百倍。實驗室相機以多級熱電致冷到 −70 到 −100 °C，天文台常用液氮或閉循環冷頭到 −100 °C 以下；但溫度太低時部分陷阱釋放時間變長而使 CTE 變差，暗電流也會被時脈感應電荷與輝光等其他來源墊底。~Dark current comes from thermally generated electron–hole pairs: depletion-region generation scales as T^1.5·exp(−E_g/2kT), diffusion from undepleted silicon as T³·exp(−E_g/kT), and surface states at the silicon–oxide interface contribute most in non-inverted operation. Multi-pinned-phase (MPP) operation inverts the surface and suppresses surface dark current by roughly a hundredfold. Laboratory cameras use multistage thermoelectric coolers to reach −70 to −100 °C, and observatories use liquid nitrogen or closed-cycle cold heads below −100 °C; too cold, however, lengthens some trap emission times and worsens CTE, and dark current is floored by other sources such as clock-induced charge and glow.",
+      "model": "公開規格：−70 °C 為 0.0004、−80 °C 為 0.00013 e⁻/px/s，每 10 K 相差 3.08 倍，即每 10×ln2/ln3.08 ≈ 6.2 K 減半；−100 °C 為 0.000059，20 K 只降 2.2 倍，已接近底限。1800 s 曝光在 −80 °C 累積 0.23 e⁻，散粒雜訊 0.48 e⁻ 遠小於 2.9 e⁻ 讀出雜訊；外推到 −40 °C 約 0.012 e⁻/px/s，累積 21 e⁻、雜訊 4.6 e⁻，超過讀出雜訊。~Public specifications give 0.0004 e⁻/px/s at −70 °C and 0.00013 at −80 °C, a factor of 3.08 per 10 K, i.e. halving every 10×ln2/ln3.08 ≈ 6.2 K; at −100 °C the value is 0.000059, only 2.2 times lower over 20 K, near the floor. A 1800 s exposure at −80 °C accumulates 0.23 e⁻ with 0.48 e⁻ shot noise, far below 2.9 e⁻ read noise; extrapolated to −40 °C the rate is about 0.012 e⁻/px/s, giving 21 e⁻ and 4.6 e⁻ noise, above the read noise.",
+      "verify": "在至少四個溫度、各三種曝光時間取暗場，逐像素擬合斜率得暗電流，畫 ln(D) 對 1/T 的 Arrhenius 圖求活化能，判斷是產生、擴散或表面機制主導；以快門關閉與鏡頭完全遮蓋兩種方式比較，排除漏光；建立熱像素地圖並記錄角落是否有放大器輝光。~Take darks at four or more temperatures with three exposure times each, fit the per-pixel slope to obtain dark current, and plot ln(D) against 1/T in an Arrhenius plot to find the activation energy and decide whether generation, diffusion or surface mechanisms dominate; compare shutter-closed with fully capped darks to rule out light leaks; build a hot-pixel map and note any amplifier glow at the corners.",
+      "failure": "恆溫器真空劣化或窗片結霜時晶片降不到設定溫度，暗電流每 6 K 翻倍而無人察覺；暗場與科學影像在不同溫度拍攝，扣除後殘留熱像素圖樣，長曝光的暗弱源被雜點淹沒或出現假源。~If cryostat vacuum degrades or the window frosts, the chip cannot reach its set point and dark current doubles every 6 K unnoticed; darks taken at a different temperature from science frames leave a residual hot-pixel pattern after subtraction, burying faint sources in long exposures or creating false ones.",
+      "misconception": "溫度越低越好，CCD 冷到最低溫就沒有任何代價。~Colder is always better; cooling a CCD to its minimum has no penalty."
+    },
+    {
+      "anchor": "平場對與 Fe-55 X 光源~Flat-field pairs and Fe-55 source",
+      "title": "光子轉移曲線與 Fe-55 增益校正~Photon transfer curve and Fe-55 gain calibration",
+      "mechanism": "相機增益 K（e⁻/DN）可由光子散粒雜訊的統計求得：訊號 S 個電子的變異數等於 S，兩張同條件平場相減可消去像素響應不均，差值變異數的一半等於 S/K 加上讀出雜訊平方。Fe-55 放射源的 Mn Kα 5.9 keV X 光在單一像素產生約 1616 個電子，提供獨立的絕對增益。厚 CCD 在高訊號時，已收集的電荷會把後來的電荷推向鄰近像素，造成相鄰像素正相關、單像素變異數低於泊松值的亮者變胖效應，必須把共變異數加回去。PTC 的轉折點同時給出滿井容量，要與 ADC 的量化範圍匹配。~Camera gain K in e⁻/DN follows from photon shot-noise statistics: a signal of S electrons has variance S, and subtracting two flats taken under identical conditions cancels pixel response non-uniformity, so half the variance of the difference equals S/K plus the read noise squared. The 5.9 keV Mn Kα X-rays from an Fe-55 source create about 1616 electrons in a single pixel, giving an independent absolute gain. In thick CCDs at high signal, collected charge pushes later charge into neighbouring pixels, the brighter-fatter effect, which correlates neighbours and lowers single-pixel variance below Poisson, so covariances must be added back. The PTC turnover also marks full well, which must be matched to the ADC range.",
+      "model": "設 K = 1.5 e⁻/DN：平均 10 000 DN = 15 000 e⁻，散粒變異數 15 000/1.5² = 6667 DN²，讀出雜訊 2.9 e⁻ = 1.93 DN 即 3.74 DN²，量得 6670.4 DN²，K = 10 000/(6670.4 − 3.74) = 1.50。Fe-55：1616 e⁻ 峰值落在 1077 DN，K = 1.50 吻合。16 位元 ADC 上限 65 535 DN × 1.5 = 98 300 e⁻，略低於 100 000 e⁻ 的滿井，ADC 先飽和。~Assume K = 1.5 e⁻/DN: a mean of 10 000 DN is 15 000 e⁻, shot variance 15 000/1.5² = 6667 DN², and 2.9 e⁻ read noise is 1.93 DN or 3.74 DN²; measuring 6670.4 DN² gives K = 10 000/(6670.4 − 3.74) = 1.50. Fe-55: a 1616 e⁻ peak at 1077 DN gives K = 1.50, in agreement. A 16-bit ADC tops out at 65 535 DN × 1.5 = 98 300 e⁻, slightly below the 100 000 e⁻ full well, so the ADC saturates first.",
+      "verify": "從 100 DN 到飽和取 20 組以上的平場對，畫雜訊對訊號的對數 PTC，確認讀出雜訊平台、斜率 1/2 的散粒段與滿井轉折；計算最近鄰像素共變異數隨訊號的增長並加回變異數；另以 Fe-55 曝光挑出單像素事件做直方圖，比較兩種 K 值，差異應小於 1%。~Take more than 20 flat pairs from 100 DN to saturation and plot a log–log PTC of noise versus signal, confirming the read-noise floor, the slope-1/2 shot-noise segment and the full-well turnover; compute how nearest-neighbour covariance grows with signal and add it back to the variance; histogram single-pixel events from an Fe-55 exposure and require the two K values to agree within 1%.",
+      "failure": "用單張平場而非平場對計算變異數，1% 的像素響應不均在 15 000 e⁻ 時貢獻 (0.01×15 000)² = 22 500 e⁻²，大於散粒變異數，估出的 K 只有 0.6 e⁻/DN，低估六成；忽略亮者變胖效應則高訊號段的 K 被高估，所有以電子數表示的雜訊與滿井數字都跟著錯。~Computing variance from single flats instead of pairs lets 1% response non-uniformity contribute (0.01×15 000)² = 22 500 e⁻² at 15 000 e⁻, more than the shot variance, so K comes out at 0.6 e⁻/DN, 60% low; ignoring the brighter-fatter effect overestimates K at high signal, and every noise and full-well number quoted in electrons is wrong with it.",
+      "misconception": "增益就是 ADC 位元數除以滿井，不需量測。~Gain is simply full well divided by ADC range and needs no measurement."
+    },
+    {
+      "anchor": "偏壓、暗場、平場與宇宙射線~Bias, darks, flats and cosmic rays",
+      "title": "影像校正鏈、晶片上合併與宇宙射線~Calibration chain, on-chip binning and cosmic rays",
+      "mechanism": "科學影像依序扣除過掃描區估得的偏壓位準與主偏壓的結構、扣除依曝光時間縮放的暗場、除以正規化的主平場，再套用壞像素遮罩並剔除宇宙射線；剔除可用多張曝光的中位數或以拉普拉斯邊緣偵測找出比點擴散函數更銳利的事件。CCD 可在晶片上合併像素：在水平暫存器或加總井中把相鄰電荷先相加再讀一次，整組只付一次讀出雜訊，這是 CCD 相對於逐像素讀出感測器的特殊優勢，但受水平暫存器滿井與解析度損失限制。~Science frames have the bias level estimated from the overscan and the master-bias structure removed, then a dark scaled to exposure time subtracted, a normalised master flat divided out, a bad-pixel mask applied and cosmic rays rejected, either by median-combining several exposures or by Laplacian edge detection of events sharper than the point-spread function. A CCD can bin on chip, summing neighbouring charge in the serial register or a summing well before a single read, so the group pays read noise only once; this is a distinctive CCD advantage over pixel-by-pixel readout sensors, limited by serial-register full well and loss of resolution.",
+      "model": "每像素 4 e⁻、讀出雜訊 2.9 e⁻：四像素分別讀出再相加 SNR = 16/√(16 + 4×8.41) = 2.27；晶片上 2×2 合併只讀一次 SNR = 16/√(16 + 8.41) = 3.24，提升 43%。宇宙射線：海平面約 1 個/cm²/min，27.6 mm 見方晶片 7.6 cm²，1800 s 約 228 次；最小游離粒子在矽中約 80 e⁻/µm，垂直穿過 15 µm 留下 1200 e⁻，40 µm 深空乏留下 3200 e⁻。~At 4 e⁻ per pixel and 2.9 e⁻ read noise, reading four pixels separately and summing gives SNR = 16/√(16 + 4×8.41) = 2.27, while 2×2 on-chip binning read once gives 16/√(16 + 8.41) = 3.24, 43% better. Cosmic rays: about 1 per cm² per minute at sea level, so a 27.6 mm square 7.6 cm² chip sees about 228 in 1800 s; a minimum-ionising particle leaves about 80 e⁻/µm in silicon, 1200 e⁻ crossing 15 µm vertically and 3200 e⁻ in 40 µm of deep-depleted silicon.",
+      "verify": "每張影像記錄過掃描區平均與標準差以追蹤偏壓漂移；以 50 張偏壓影像建主偏壓並以兩兩相減驗證讀出雜訊；比較合併與未合併模式下的讀出雜訊與增益；以長時間暗場統計宇宙射線事件率與電荷分布，調整剔除門檻並檢查假剔除率。~Log overscan mean and standard deviation for every frame to track bias drift; build a master bias from 50 frames and verify read noise from pairwise differences; compare read noise and gain in binned and unbinned modes; use long darks to measure cosmic-ray event rate and charge distribution, then tune the rejection threshold and check the false-rejection rate.",
+      "failure": "合併後的總電荷超過水平暫存器容量，亮星電荷沿水平方向溢出成條紋並污染同一列的暗弱源；在深空乏元件上只拍一張長曝光，數百條宇宙射線徑跡無法用中位數剔除，被誤認為暫現源或移動天體。~Binned charge that exceeds serial-register capacity spills bright-star charge into horizontal streaks that contaminate faint sources in the same row; taking a single long exposure on a deep-depletion device leaves hundreds of cosmic-ray tracks that cannot be median-rejected and are mistaken for transients or moving objects.",
+      "misconception": "像素合併只是軟體後處理，任何感測器效果都一樣。~Binning is only software post-processing and works the same on any sensor."
+    },
+    {
+      "anchor": "驗收測試台與交接紀錄~Acceptance test bench and handoff record",
+      "title": "相機驗收、多輸出串擾與工程交接~Camera acceptance, multi-output crosstalk and handoff",
+      "mechanism": "相機驗收把前面的模型逐項變成量測：各輸出的 PTC 增益與讀出雜訊、以 Fe-55 與延伸像素邊緣響應量 CTE、暗電流地圖、QE 對波長、線性度、滿井與溢出、壞像素與陷阱、多輸出同時讀出時的串擾矩陣、快門時間地圖，以及深空乏元件在近紅外過曝後的殘留體影像。交接紀錄要列出時脈電壓與時序、操作溫度、各輸出增益、壞像素遮罩、串擾係數與快門修正，因為任何一項改變都會讓既有校正失效。~Camera acceptance turns the earlier models into measurements: PTC gain and read noise per output, CTE from Fe-55 and extended pixel edge response, a dark-current map, QE versus wavelength, linearity, full well and blooming, bad pixels and traps, the crosstalk matrix between outputs read simultaneously, a shutter-timing map and, for deep-depletion devices, residual bulk image after near-infrared overexposure. The handoff record lists clock voltages and timing, operating temperature, per-output gain, bad-pixel mask, crosstalk coefficients and shutter correction, because a change in any of them invalidates the existing calibration.",
+      "model": "快門：光圈式快門中央比邊緣多曝光 8 ms，1 s 平場的照度誤差 0.8%，10 s 時降為 0.08%。串擾：係數 2×10⁻⁴ 時，一顆在 A 輸出達 60 000 DN 的亮星在 B 輸出產生 12 DN 的鬼影，若天光雜訊 10 DN，鬼影超過 1σ 會被誤判為暗弱源。線性度：在 1% 到 90% 滿井範圍內殘差需小於 1%。~Shutter: an iris shutter exposing the centre 8 ms longer than the edge gives a 0.8% illumination error in a 1 s flat but only 0.08% at 10 s. Crosstalk: with a coefficient of 2×10⁻⁴, a bright star reaching 60 000 DN on output A creates a 12 DN ghost on output B, above 1σ of a 10 DN sky noise and liable to be catalogued as a faint source. Linearity residuals must stay below 1% from 1% to 90% of full well.",
+      "verify": "依固定順序執行：偏壓與讀出雜訊；PTC 與 Fe-55 增益；CTE；溫度掃描暗電流；QE；線性度與滿井；以單一輸出放置亮點光源量串擾矩陣；以多種短曝光平場相除求快門時間地圖；近紅外過曝後連續暗場量殘影。全部結果與模型並列，超出允收值者記錄原因並重新調整時脈或溫度。~Execute in a fixed order: bias and read noise; PTC and Fe-55 gain; CTE; dark current over a temperature scan; QE; linearity and full well; crosstalk matrix from a bright spot placed on one output at a time; shutter-timing map from ratios of short-exposure flats; residual image from consecutive darks after near-infrared overexposure. List every result beside its model value and, when an item exceeds its allowance, record the cause and retune clocks or temperature.",
+      "failure": "更換控制器韌體改變了時脈重疊時間，CTE 與增益同時漂移，但交接紀錄沒有時脈設定可比對，只能從頭重做全部校正；未建立串擾矩陣的巡天相機在每顆亮星的對稱位置產生鬼影，進入星表後需要大量人工清除。~A controller firmware update changes clock overlap timing so CTE and gain both drift, and without clock settings in the handoff record there is nothing to compare against except a full recalibration; a survey camera without a crosstalk matrix produces ghosts at the mirrored position of every bright star, which enter the catalogue and need extensive manual cleaning.",
+      "misconception": "出廠規格合格的 CCD，裝進相機後不必再做系統驗收。~A CCD that met factory specifications needs no system acceptance once installed."
+    }
+  ],
+  "example": "暗弱源曝光規劃練習：窄頻濾鏡下目標每像素 0.02 e⁻/s、天光 0.05 e⁻/s，曝光 900 s，得 S = 18 e⁻、天光 45 e⁻。情境 A：−80 °C（暗電流 0.00013 e⁻/px/s，累積 0.12 e⁻）、50 kHz 讀出雜訊 2.9 e⁻，SNR = 18/√(18 + 45 + 0.12 + 8.41) = 18/8.46 = 2.13。情境 B：改用 1 MHz 讀出（7.0 e⁻），SNR = 18/√(112.1) = 1.70。情境 C：只冷到 −40 °C（約 0.0118 e⁻/px/s，累積 10.6 e⁻）、2.9 e⁻，SNR = 18/9.06 = 1.99。若在 A 條件下做晶片上 2×2 合併，SNR = 72/√(72 + 180 + 0.47 + 8.41) = 4.46，比軟體合併的 4.26 只多 5%，因為此時天光已主導雜訊。代價是 2048² 影像以 50 kHz 讀出需 84 s，1 MHz 只需 4.2 s。數值為教學假設，不代表任何實機規格。~Faint-source exposure-planning exercise: through a narrowband filter the target gives 0.02 e⁻/s per pixel and the sky 0.05 e⁻/s; a 900 s exposure yields S = 18 e⁻ and 45 e⁻ of sky. Case A: −80 °C (dark 0.00013 e⁻/px/s, 0.12 e⁻ accumulated) with 2.9 e⁻ read noise at 50 kHz gives SNR = 18/√(18 + 45 + 0.12 + 8.41) = 18/8.46 = 2.13. Case B: 1 MHz readout with 7.0 e⁻ gives SNR = 18/√(112.1) = 1.70. Case C: cooling only to −40 °C (about 0.0118 e⁻/px/s, 10.6 e⁻) with 2.9 e⁻ gives SNR = 18/9.06 = 1.99. Binning 2×2 on chip under case A gives SNR = 72/√(72 + 180 + 0.47 + 8.41) = 4.46, only 5% above the 4.26 of software binning because sky noise now dominates. The cost is readout time: a 2048² frame needs 84 s at 50 kHz but only 4.2 s at 1 MHz. Values are teaching assumptions, not any instrument's specification.",
+  "history": "1969 年貝爾實驗室的 Willard Boyle 與 George Smith 提出電荷耦合元件，2009 年因此獲得諾貝爾物理獎。1970 年代中期 JPL 與亞利桑那大學把 CCD 裝上望遠鏡拍攝行星，其遠高於底片的量子效率與線性很快讓 CCD 取代照相底片；1990 年哈伯太空望遠鏡的廣域行星相機即採用 CCD。近年魯賓天文台的 LSST 相機以 189 片科學 CCD 拼成 32 億像素焦面，每片分 16 個輸出並在約 2 秒內讀完。本課只重建公開的物理與工程邏輯。~In 1969 Willard Boyle and George Smith at Bell Labs conceived the charge-coupled device, earning the 2009 Nobel Prize in Physics. In the mid-1970s JPL and the University of Arizona put CCDs on telescopes to image planets, and their far higher quantum efficiency and linearity soon displaced photographic plates; the Wide Field/Planetary Camera launched on the Hubble Space Telescope in 1990 used CCDs. More recently the Rubin Observatory LSST Camera tiled 189 science CCDs into a 3.2-gigapixel focal plane, each read through 16 outputs in about 2 seconds. This course reconstructs only public physics and engineering logic.",
+  "place": {
+    "name": "魯賓天文台（帕瓊山）~Vera C. Rubin Observatory, Cerro Pachón",
+    "country": "智利~Chile",
+    "lat": -30.2446,
+    "lng": -70.7494,
+    "query": "Vera C. Rubin Observatory Cerro Pachon Chile"
+  },
+  "sources": [
+    {
+      "key": "andor-ikon-l-936-specifications",
+      "title": "Andor：iKon-L 936 深冷 CCD 相機規格",
+      "titleEn": "Andor: iKon-L 936 deep-cooled CCD camera specifications",
+      "publisher": "Andor Technology (Oxford Instruments)",
+      "url": "https://andor.oxinst.com/downloads/uploads/Andor_iKon-L_936_Specifications.pdf",
+      "sourceType": "primary",
+      "scope": "公開規格書：2048×2048 背照式 13.5 µm 像素、−70 到 −100 °C 的暗電流、不同像素速率的讀出雜訊、100 000 e⁻ 滿井與 16 位元數位化；課程引用其數值作為暗電流與讀出雜訊範例。",
+      "scopeEn": "Public datasheet: 2048×2048 back-illuminated 13.5 µm pixels, dark current from −70 to −100 °C, read noise at several pixel rates, 100 000 e⁻ full well and 16-bit digitisation; the course uses these values as dark-current and read-noise examples."
+    },
+    {
+      "key": "bnl-lsst-ccd",
+      "title": "布魯克海文國家實驗室：LSST 相機 CCD 感測器",
+      "titleEn": "Brookhaven National Laboratory: LSST camera CCD sensors",
+      "publisher": "Brookhaven National Laboratory",
+      "url": "https://www.bnl.gov/lsst/CCD.php",
+      "sourceType": "primary",
+      "scope": "說明 189 片科學 CCD 與 12 片導星對焦 CCD、3×3 拼板、250 µm 以內的間隙、10 µm 以內的傾斜、每片 16 個輸出與約 2 秒讀出。",
+      "scopeEn": "Describes 189 science CCDs plus 12 guide and focus CCDs, 3×3 rafts, gaps within 250 µm, tilt within 10 µm, 16 outputs per sensor and readout in about 2 seconds."
+    },
+    {
+      "key": "spie-ccd-photon-transfer",
+      "title": "SPIE：CCD 電荷收集效率與光子轉移技術",
+      "titleEn": "SPIE: CCD charge collection efficiency and the photon transfer technique",
+      "publisher": "SPIE",
+      "url": "https://remotesensing.spiedigitallibrary.org/conference-proceedings-of-spie/570/0000/CCD-Charge-Collection-Efficiency-And-The-Photon-Transfer-Technique/10.1117/12.950297.full",
+      "sourceType": "primary",
+      "scope": "光子轉移法與 X 光電荷收集量測的早期會議論文，作為增益、讀出雜訊與 CTE 量測方法的背景。",
+      "scopeEn": "Early conference paper on the photon-transfer technique and X-ray charge-collection measurement, background for gain, read-noise and CTE methods."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Teledyne Technologies",
+      "nameEn": "Teledyne Technologies",
+      "business": "數位成像與儀器集團，旗下 Teledyne e2v 生產天文與太空用大面積背照式及深空乏 CCD。",
+      "businessEn": "Digital imaging and instrumentation group whose Teledyne e2v unit builds large back-illuminated and deep-depletion CCDs for astronomy and space.",
+      "url": "https://www.teledyne.com/",
+      "investorUrl": "https://www.teledyne.com/en-us/investors",
+      "security": {"symbol": "TDY", "exchange": "NYSE", "currency": "USD"},
+      "role": "科學級 CCD 感測器的公開產品資訊",
+      "roleEn": "Public product information on scientific CCD sensors"
+    },
+    {
+      "name": "濱松光子學",
+      "nameEn": "Hamamatsu Photonics",
+      "business": "光電元件製造商，產品包含背照式 CCD 影像感測器、光二極體與科學相機。",
+      "businessEn": "Photonics component maker whose products include back-thinned CCD image sensors, photodiodes and scientific cameras.",
+      "url": "https://www.hamamatsu.com/",
+      "investorUrl": "https://www.hamamatsu.com/jp/en/investor-relations.html",
+      "security": {"symbol": "6965", "exchange": "TSE", "currency": "JPY"},
+      "role": "CCD 影像感測器特性與暗電流資料的公開資訊",
+      "roleEn": "Public information on CCD sensor characteristics and dark-current data"
+    },
+    {
+      "name": "牛津儀器 Andor",
+      "nameEn": "Oxford Instruments Andor",
+      "business": "科學相機製造商，提供深冷 CCD、EMCCD 與 sCMOS 相機，隸屬牛津儀器集團。",
+      "businessEn": "Scientific camera maker offering deep-cooled CCD, EMCCD and sCMOS cameras within the Oxford Instruments group.",
+      "url": "https://andor.oxinst.com/",
+      "investorUrl": "https://www.oxinst.com/investors",
+      "security": {"symbol": "OXIG", "exchange": "LSE", "currency": "GBP"},
+      "role": "深冷 CCD 相機規格與量測方法的公開資訊",
+      "roleEn": "Public information on deep-cooled CCD camera specifications and test methods"
+    }
+  ],
+  "related": ["a480", "a477"],
+  "architectureNodes": [["背照式 CCD 感測器", "Back-illuminated CCD sensor"], ["時脈與偏壓驅動", "Clock and bias drivers"], ["輸出放大器與 CDS 數位化", "Output amplifier and CDS digitiser"], ["低溫恆溫器與溫控", "Cryostat and temperature control"], ["快門與校正光源", "Shutter and calibration sources"], ["影像校正管線", "Image calibration pipeline"]],
+  "architectureEdges": [[1, 0], [0, 2], [3, 0], [4, 0], [2, 5], [1, 2]]
+}

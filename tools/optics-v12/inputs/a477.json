@@ -1,0 +1,247 @@
+{
+ "id": "a477",
+ "title": "低溫紅外偵測器~Cryogenic infrared detectors",
+ "discipline": "optics-astronomical",
+ "family": "detector",
+ "focus": "HgCdTe 混成陣列的截止波長、暗電流、多次取樣讀出與低溫特性化工程~Cutoff wavelength, dark current, multi-sample readout and cryogenic characterisation of HgCdTe hybrid arrays",
+ "summary": "以 JWST NIRCam 的 Teledyne HAWAII-2RG（2048×2048、18 µm、2.5 µm 與 5 µm 截止、約 40 K 工作）與 SIDECAR ASIC 為對象，從 Hansen 能隙關係與暗電流的 Arrhenius 行為出發，建立混成陣列結構、冷光闌與熱背景、CDS／Fowler／up-the-ramp 讀出雜訊、非線性與持續影像校正、低溫線路熱負載，直到偵測器特性化矩陣與操作點交接。~Using the Teledyne HAWAII-2RG arrays of JWST NIRCam (2048×2048, 18 µm pitch, 2.5 µm and 5 µm cutoffs, operated near 40 K) with their SIDECAR ASICs as the reference, the course starts from the Hansen bandgap relation and the Arrhenius behaviour of dark current and builds up hybrid-array structure, cold stops and thermal background, CDS/Fowler/up-the-ramp read noise, nonlinearity and persistence correction and cryogenic harness heat load, ending with the characterisation matrix and the operating-point handoff.",
+ "units": [
+  {
+   "anchor": "窄能隙半導體與截止波長~Narrow-gap semiconductor and cutoff wavelength",
+   "title": "為何紅外偵測器必須低溫：能隙與熱激發~Why infrared detectors must be cold: bandgap and thermal excitation",
+   "mechanism": "1–5 µm 的紅外光子能量只有 0.25–1.2 eV，要吸收它們必須用能隙同樣小的半導體，而小能隙意味著在室溫下熱激發就能跨越能隙，產生遠大於天體訊號的暗電流。Hg₁₋ₓCdₓTe 的能隙可由 Cd 比例 x 連續調整，同一材料系統能做出 1.7、2.5 或 5 µm 截止的偵測器；但截止波長越長、能隙越小，所需的工作溫度就越低。此外 290 K 的光學元件本身在 3–5 µm 強烈發光，所以不只偵測器，整個光路也要冷。~Infrared photons between 1 and 5 µm carry only 0.25–1.2 eV, so absorbing them needs a semiconductor with an equally small bandgap, and a small gap means thermal excitation crosses it at room temperature and produces a dark current far larger than any astronomical signal. The bandgap of Hg₁₋ₓCdₓTe is tuned continuously by the Cd fraction x, so one material system yields 1.7, 2.5 or 5 µm cutoff detectors; the longer the cutoff and the smaller the gap, the colder the required operating temperature. In addition, 290 K optics glow strongly at 3–5 µm, so the whole optical train must be cold, not just the detector.",
+   "model": "Hansen 關係：E_g(x,T) = −0.302 + 1.93x + 5.35×10⁻⁴·T·(1−2x) − 0.81x² + 0.832x³（eV），λ_c = 1.24/E_g µm。x = 0.445、T = 77 K：E_g = 0.474 eV，λ_c = 2.61 µm；x = 0.30、T = 40 K：E_g = 0.235 eV，λ_c = 5.27 µm，對應 NIRCam 短波與長波偵測器的 2.5 µm 與 5 µm 截止。組成比 x 的微小偏差就會移動截止波長，因此長晶時必須監控組成均勻度。~Hansen relation: E_g(x,T) = −0.302 + 1.93x + 5.35×10⁻⁴·T·(1−2x) − 0.81x² + 0.832x³ (eV), λ_c = 1.24/E_g µm. For x = 0.445 at T = 77 K, E_g = 0.474 eV and λ_c = 2.61 µm; for x = 0.30 at T = 40 K, E_g = 0.235 eV and λ_c = 5.27 µm, matching the 2.5 µm and 5 µm cutoffs of the NIRCam short- and long-wavelength detectors. Small errors in composition x shift the cutoff, so composition uniformity must be monitored during growth.",
+   "verify": "用單光儀加校正黑體量偵測器的光譜響應，找出響應下降一半的截止波長，與 Hansen 關係由材料組成預測的值比較；再在數個溫度重複，確認截止波長隨溫度的微小位移（每 10 K 約數十 nm）符合模型。~Measure the detector's spectral response with a monochromator and a calibrated blackbody, locate the cutoff where response falls to half and compare with the Hansen prediction from the material composition; repeat at several temperatures and confirm the small cutoff shift (tens of nanometres per 10 K) matches the model.",
+   "failure": "把 5 µm 截止的陣列放在暖濾光片後面，290 K 濾光片的熱輻射在幾秒內就把位阱填滿，再怎麼降低偵測器溫度都救不回來；短波陣列若誤用在 L 波段則根本沒有響應。~Placing a 5 µm cutoff array behind a warm filter lets the 290 K filter's thermal emission fill the wells within seconds no matter how cold the detector is; a short-wave array used by mistake in the L band simply has no response.",
+   "misconception": "紅外偵測器冷卻只是為了降低讀出電子的雜訊。~Infrared detectors are cooled only to reduce readout-electronics noise."
+  },
+  {
+   "anchor": "混成式焦平面與 ROIC~Hybrid focal plane and ROIC",
+   "title": "HgCdTe 光二極體、銦凸塊混成與 ROIC~HgCdTe photodiodes, indium-bump hybridisation and the ROIC",
+   "mechanism": "HAWAII-2RG 是混成陣列：HgCdTe 以分子束磊晶長在晶格匹配的 CdZnTe 基板上，每個像素是一個 p–n 光二極體，再以銦凸塊逐像素接到矽 CMOS 讀出電路（ROIC），由每像素的源極隨耦器把累積電荷轉成電壓；2048×2048 個 18 µm 像素、最外 4 圈參考像素、可選 1 到 32 個輸出。移除基板後可從背面照光並把響應延伸到 0.6 µm。與 CCD 不同，電荷不轉移，每個像素可被非破壞性地重複讀取。~The HAWAII-2RG is a hybrid: HgCdTe is grown by molecular-beam epitaxy on lattice-matched CdZnTe, each pixel is a p–n photodiode, and indium bumps connect every pixel to a silicon CMOS readout integrated circuit (ROIC) whose per-pixel source follower converts the integrated charge to a voltage; 2048×2048 pixels at 18 µm, a 4-pixel reference border and a selectable 1 to 32 outputs. Removing the substrate allows back-side illumination with response extending to 0.6 µm. Unlike a CCD the charge is never transferred, so every pixel can be read non-destructively many times.",
+   "model": "節點電容 C = 40 fF（假設）、可用電壓擺幅 0.5 V：滿阱 Q = CV/q = 40×10⁻¹⁵×0.5/1.6×10⁻¹⁹ ≈ 1.25×10⁵ e⁻，與 NIRCam 短波實測約 1.06×10⁵ e⁻ 同量級；轉換增益 q/C = 4 µV/e⁻。以 4 個輸出、每像素 100 kHz 讀出整幅 2048² = 4.2×10⁶ 像素需 10.5 s，與 JWST 的 10.7 s 幀時間一致；32 個輸出可降到 1.3 s。~With a node capacitance C = 40 fF (assumed) and a usable swing of 0.5 V, the full well is Q = CV/q = 40×10⁻¹⁵×0.5/1.6×10⁻¹⁹ ≈ 1.25×10⁵ e⁻, the same order as the measured NIRCam short-wave value of about 1.06×10⁵ e⁻; the conversion gain is q/C = 4 µV/e⁻. Reading all 2048² = 4.2×10⁶ pixels through 4 outputs at 100 kHz per pixel takes 10.5 s, consistent with JWST's 10.7 s frame time; 32 outputs bring it down to 1.3 s.",
+   "verify": "做光子轉移曲線（變異數對平均值）求轉換增益（e⁻/ADU）與滿阱；用校正光二極體在數個波長量 QE；從熱像素的核心形狀量像素間電容（IPC），因為 IPC 會讓光子轉移法高估增益，必須先修正。~Take a photon-transfer curve (variance versus mean) to obtain the conversion gain in e⁻/ADU and the full well; measure QE at several wavelengths against a calibrated photodiode; measure interpixel capacitance (IPC) from the kernel shape of hot pixels, because IPC makes the photon-transfer method overestimate gain and must be corrected first.",
+   "failure": "熱循環應力讓銦凸塊脫開，出現成片的死像素；HgCdTe/CdZnTe 與矽的熱膨脹不匹配若未由設計吸收，會在降溫時造成剪切而使整塊陣列斷裂；基板未移除則在 0.8–1 µm 出現 QE 下降與干涉條紋。~Thermal-cycling stress disconnects indium bumps and produces clusters of dead pixels; if the thermal-expansion mismatch between HgCdTe/CdZnTe and silicon is not absorbed by design, cooling shears and fractures the array; an unremoved substrate causes QE loss and interference fringes between 0.8 and 1 µm.",
+   "misconception": "紅外混成陣列像 CCD 一樣，是靠電荷轉移來讀出的。~An infrared hybrid array reads out by charge transfer, like a CCD."
+  },
+  {
+   "anchor": "暗電流與 Arrhenius 曲線~Dark current and the Arrhenius curve",
+   "title": "暗電流機制、溫度與截止波長~Dark-current mechanisms, temperature and cutoff",
+   "mechanism": "暗電流有三種主要來源：擴散電流正比於 T³·exp(−E_g/kT)，產生–復合電流正比於 T^1.5·exp(−E_g/2kT)，以及在高偏壓或缺陷處出現的穿隧電流。前兩者隨溫度指數下降，所以每降低十幾 K 暗電流就少一個數量級；但到了足夠低溫後曲線趨於平坦，由缺陷相關的穿隧與表面漏電決定地板值，再冷也沒有幫助。因此工作溫度是依截止波長選的：2.5 µm 陣列在 77 K 已可用，5 µm 陣列則要 40 K 以下。~Dark current has three main sources: diffusion current proportional to T³·exp(−E_g/kT), generation–recombination current proportional to T^1.5·exp(−E_g/2kT), and tunnelling current at high bias or at defects. The first two fall exponentially with temperature, roughly an order of magnitude for every ten-odd kelvin, but at low enough temperature the curve flattens into a floor set by defect-related tunnelling and surface leakage, and further cooling no longer helps. The operating temperature is therefore chosen by cutoff: a 2.5 µm array is usable at 77 K, a 5 µm array needs 40 K or below.",
+   "model": "擴散極限下 J ∝ T³·exp(−E_g/kT)。E_g = 0.234 eV（5.3 µm 截止）：E_g/kT 在 77 K 為 35.3、在 60 K 為 45.3，降溫比值 = (60/77)³×e^(−10) = 0.47×4.5×10⁻⁵ ≈ 2×10⁻⁵，即 77 K 到 60 K 暗電流降低約五萬倍；但實測在 40 K 的長波 NIRCam 陣列仍有約 0.035 e⁻/s/像素，短波約 0.001 e⁻/s，這就是缺陷決定的地板。~In the diffusion limit J ∝ T³·exp(−E_g/kT). With E_g = 0.234 eV (5.3 µm cutoff), E_g/kT is 35.3 at 77 K and 45.3 at 60 K, so the cooling ratio is (60/77)³×e^(−10) = 0.47×4.5×10⁻⁵ ≈ 2×10⁻⁵, a fifty-thousand-fold drop from 77 K to 60 K; yet the long-wave NIRCam arrays at 40 K still measure about 0.035 e⁻/s/pixel and the short-wave ones about 0.001 e⁻/s, which is the defect-set floor.",
+   "verify": "在 35–80 K 之間數個溫度拍長時間暗幀，畫 ln(I) 對 1/T 的 Arrhenius 圖：斜率給出活化能，接近 E_g 為擴散主導、接近 E_g/2 為產生–復合主導、趨於平坦為穿隧地板；改變讀出節奏以分離放大器輝光（glow）對暗幀的貢獻。~Take long dark frames at several temperatures between 35 and 80 K and plot ln(I) against 1/T: the slope gives the activation energy, near E_g for diffusion, near E_g/2 for generation–recombination and flat for the tunnelling floor; vary the read cadence to separate amplifier glow from true dark current.",
+   "failure": "把 5.3 µm 截止的陣列用液態氮在 77 K 操作，暗電流達到每像素每秒數百個電子，1000 s 曝光的暗電荷就接近滿阱；輻射損傷後熱像素比例上升，地板值逐年變差。~Operating a 5.3 µm cutoff array at 77 K with liquid nitrogen gives hundreds of electrons per pixel per second of dark current, and a 1000 s exposure accumulates dark charge close to full well; after radiation damage the hot-pixel population grows and the floor worsens year by year.",
+   "misconception": "暗電流只跟溫度有關，與截止波長無關。~Dark current depends only on temperature, not on the cutoff wavelength."
+  },
+  {
+   "anchor": "冷光闌與熱背景~Cold stop and thermal background",
+   "title": "冷光學、冷光闌與背景光子率~Cold optics, cold stop and background photon rate",
+   "mechanism": "紅外偵測器只能「看到」冷的表面：在光瞳像位置放一個與偵測器同溫度的冷光闌，讓偵測器除了經由光闌看到望遠鏡與天空之外，其他方向只看到低溫擋板；濾光片也必須放在冷端。任何 290 K 的表面以 Planck 定律輻射，其光子率乘上像素的 AΩ、頻寬、發射率與 QE 就是背景電子率，在 K 波段已是每像素每秒數百個電子的量級，在 L、M 波段更高數個數量級；偵測器溫度本身要穩定在 ±10 mK，否則暗電流與偏壓一起漂。~An infrared detector may only see cold surfaces: a cold stop at the pupil image, at the detector's own temperature, ensures that apart from the view through the stop toward telescope and sky the detector sees only cryogenic baffles, and the filters must sit on the cold side too. Any 290 K surface radiates by Planck's law, and its photon radiance times the pixel AΩ, bandwidth, emissivity and QE is the background electron rate, already hundreds of electrons per pixel per second in the K band and orders of magnitude more in the L and M bands; the detector temperature itself must hold to ±10 mK or dark current and bias drift together.",
+   "model": "λ = 2.2 µm、T = 290 K：hc/λkT = 22.6，B_λ = 2hc²/λ⁵/(e^22.6 − 1) ≈ 3.7×10⁻⁴ W m⁻² µm⁻¹ sr⁻¹，光子輻射率 ≈ 4.1×10¹⁵ 光子 s⁻¹ m⁻² µm⁻¹ sr⁻¹。18 µm 像素、f/8（Ω = π/(4F²) = 0.0123 sr）：AΩ = 3.24×10⁻¹⁰×0.0123 = 4.0×10⁻¹² m² sr；Δλ = 0.3 µm、ε = 0.1、QE = 0.8 時背景率 ≈ 4.1×10¹⁵×4.0×10⁻¹²×0.3×0.1×0.8 ≈ 390 e⁻/s/像素。這個背景光子率必須與暗電流及讀出雜訊比較，才能決定冷光闌口徑、濾光片頻寬與鏡筒溫度。~At λ = 2.2 µm and T = 290 K, hc/λkT = 22.6, B_λ = 2hc²/λ⁵/(e^22.6 − 1) ≈ 3.7×10⁻⁴ W m⁻² µm⁻¹ sr⁻¹, a photon radiance of ≈ 4.1×10¹⁵ photons s⁻¹ m⁻² µm⁻¹ sr⁻¹. For an 18 µm pixel at f/8 (Ω = π/(4F²) = 0.0123 sr), AΩ = 3.24×10⁻¹⁰×0.0123 = 4.0×10⁻¹² m² sr; with Δλ = 0.3 µm, ε = 0.1 and QE = 0.8 the background rate is ≈ 4.1×10¹⁵×4.0×10⁻¹²×0.3×0.1×0.8 ≈ 390 e⁻/s/pixel. This background rate must be compared with dark current and read noise to choose the cold-stop aperture, filter bandwidth and optics-barrel temperature.",
+   "verify": "分別在快門關閉、冷光闌遮蔽與正常狀態下量背景率，三者相減可分離偵測器暗電流、儀器內部漏光與外部熱背景；旋轉儀器找出背景隨方位變化的漏光；用低溫二極體溫度計記錄偵測器溫度穩定度並與暗幀偏移做相關分析。~Measure the background rate with the shutter closed, with the cold stop blanked and in normal configuration; subtracting the three separates detector dark current, internal light leaks and external thermal background; rotate the instrument to find leaks that vary with orientation; log the detector temperature with cryogenic diode sensors and correlate its stability with dark-frame offsets.",
+   "failure": "冷光闌外有一塊暖的反射面或一條漏光路徑時，背景升高十倍，長曝光的極限星等損失超過一個星等；多層絕熱材料碰到冷平台造成熱短路，偵測器溫度上升而暗電流隨之暴增。~A warm reflective surface or a light-leak path outside the cold stop raises the background tenfold and costs more than a magnitude of depth in long exposures; multilayer insulation touching the cold stage creates a thermal short, the detector warms and the dark current explodes.",
+   "misconception": "只要偵測器夠冷，光學元件維持室溫也沒關係。~As long as the detector is cold, the optics can stay at room temperature."
+  },
+  {
+   "anchor": "非破壞性讀出與取樣策略~Non-destructive reads and sampling strategy",
+   "title": "讀出模式：CDS、Fowler 與 up-the-ramp~Readout modes: CDS, Fowler and up-the-ramp",
+   "mechanism": "因為讀取不破壞電荷，同一次曝光可以多次取樣：相關雙取樣（CDS）在重置後與曝光結束各讀一次以消除 kTC 重置雜訊；Fowler-N 在曝光頭尾各讀 N 次平均，讀出雜訊約降 √N；up-the-ramp 在曝光期間等間隔連續讀取並對斜率做線性擬合，不只壓低讀出雜訊，還能辨識宇宙射線並在飽和前取回訊號。改善的極限由 1/f 雜訊與每次讀取在輸出端附近產生的放大器輝光決定。~Because reading does not destroy the charge, one exposure can be sampled many times: correlated double sampling (CDS) reads once after reset and once at the end to remove kTC reset noise; Fowler-N averages N reads at each end and lowers read noise by about √N; up-the-ramp reads at equal intervals throughout the exposure and fits the slope, which not only reduces read noise but also identifies cosmic rays and recovers the signal before saturation. The improvement is bounded by 1/f noise and by the amplifier glow deposited near the outputs on every read.",
+   "model": "NIRCam 短波 CDS 讀出雜訊約 15.8 e⁻，單次讀取 ≈ 15.8/√2 = 11.2 e⁻。等間隔 N 次讀取的斜率擬合，總訊號的讀出雜訊 σ = σ_r·√[12(N−1)/(N(N+1))]：N = 2 回到 √2·σ_r = CDS；N = 93（1000 s RAPID）係數 0.355，σ ≈ 4.0 e⁻。實測 1000 s 有效雜訊約 7.8 e⁻，差額來自 1/f 雜訊與暗電流的散粒雜訊。~The NIRCam short-wave CDS read noise is about 15.8 e⁻, so a single read is ≈ 15.8/√2 = 11.2 e⁻. For a slope fit to N equally spaced reads the read noise on the total signal is σ = σ_r·√[12(N−1)/(N(N+1))]: N = 2 returns √2·σ_r, the CDS value; N = 93 (1000 s RAPID) gives a factor 0.355 and σ ≈ 4.0 e⁻. The measured 1000 s effective noise of about 7.8 e⁻ differs because of 1/f noise and dark-current shot noise.",
+   "verify": "在零光通量下拍不同讀取次數的短斜坡，量擬合後的雜訊對 N 的曲線，與 √[12(N−1)/(N(N+1))] 比較；偏離的程度揭露 1/f 雜訊與輝光；同時用參考像素修正共模漂移，看雜訊是否進一步下降。~At zero flux take short ramps with different numbers of reads, measure the fitted noise versus N and compare with √[12(N−1)/(N(N+1))]; the departure reveals 1/f noise and glow; apply reference-pixel correction for common-mode drift and check whether the noise falls further.",
+   "failure": "每次讀取在輸出端附近沉積約 0.5 e⁻ 的輝光時，93 次讀取累積 46 e⁻，其散粒雜訊 6.8 e⁻ 已超過多次取樣省下的讀出雜訊，所以讀取次數存在最佳值；盲目增加 N 反而讓角落像素變差。~If each read deposits about 0.5 e⁻ of glow near the outputs, 93 reads accumulate 46 e⁻ whose shot noise of 6.8 e⁻ exceeds the read noise saved by multi-sampling, so there is an optimum number of reads; blindly increasing N makes the corner pixels worse.",
+   "misconception": "讀取次數越多雜訊一定越低，沒有上限。~More reads always lower the noise, without limit."
+  },
+  {
+   "anchor": "線性度、持續影像與平場~Linearity, persistence and flat field",
+   "title": "非線性、持續影像與校正鏈~Nonlinearity, persistence and the calibration chain",
+   "mechanism": "像素節點電容隨偏壓改變，訊號接近滿阱時響應偏低數個百分比，需要逐像素的多項式校正；持續影像（persistence）是亮源曝光後被耗盡區陷阱捕獲的電荷在隨後數分鐘到數小時慢慢釋放，JWST 文件給出的量級約為前次照度的 0.1%；平場修正像素間 QE 差異與光學漸暈，像素間電容把約 1% 的訊號模糊到鄰近像素，參考像素則用來扣除偏壓漂移。這些效應彼此獨立，必須各自校正、依序套用。~The pixel node capacitance changes with bias, so the response falls short by several percent near full well and needs a per-pixel polynomial correction; persistence is charge captured by traps in the depletion region during a bright exposure and released over the following minutes to hours, of order 0.1% of the previous illumination according to the JWST documentation; flat fields correct pixel-to-pixel QE differences and optical vignetting, interpixel capacitance blurs about 1% of the signal into neighbours, and reference pixels remove bias drift. These effects are independent and must each be calibrated and applied in sequence.",
+   "model": "非線性模型 S_meas = S_true(1 − a·S_true)，a = 5×10⁻⁷/e⁻：S_true = 50,000 e⁻ 時 S_meas = 48,750（低 2.5%），100,000 e⁻ 時低 5%；校正後殘差 0.1% 在 50 ke⁻ 為 50 e⁻，低於光子雜訊 √50000 = 224 e⁻。持續影像：前次 80,000 e⁻ 的曝光留下 0.1% = 80 e⁻，若在 1000 s 內釋放即 0.08 e⁻/s，是長波暗電流 0.035 e⁻/s 的兩倍多。~Nonlinearity model S_meas = S_true(1 − a·S_true) with a = 5×10⁻⁷ per e⁻: at S_true = 50,000 e⁻, S_meas = 48,750 (2.5% low), and 5% low at 100,000 e⁻; a post-correction residual of 0.1% is 50 e⁻ at 50 ke⁻, below the photon noise √50000 = 224 e⁻. Persistence: a previous 80,000 e⁻ exposure leaves 0.1% = 80 e⁻, which released over 1000 s is 0.08 e⁻/s, more than twice the long-wave dark current of 0.035 e⁻/s.",
+   "verify": "用穩定 LED 照明拍線性度斜坡並逐像素擬合多項式；做持續影像測試：先飽和再連續拍數小時暗幀，擬合釋放曲線；用積分球對每個濾光片拍平場；最後在星場上檢查測光重複性是否在 1% 內。~Take linearity ramps under stable LED illumination and fit per-pixel polynomials; run a persistence test by saturating and then taking dark frames for hours to fit the release curve; take flats with an integrating sphere in every filter; finally check photometric repeatability on a star field to within 1%.",
+   "failure": "在亮星場之後立刻觀測暗場，前一場星的潛影以假源的形式出現在新影像中；未校正的非線性讓亮星測光偏低數個百分比，而且偏差隨亮度變化，破壞顏色與星等尺度。~Observing a faint field right after a bright star field makes the previous stars appear as spurious sources in the new image; uncorrected nonlinearity biases bright-star photometry low by several percent with a brightness-dependent error that corrupts colours and the magnitude scale.",
+   "misconception": "平場校正可以把持續影像一起修掉。~Flat-fielding removes persistence as well."
+  },
+  {
+   "anchor": "SIDECAR ASIC 與低溫線束~SIDECAR ASIC and cryogenic harness",
+   "title": "低溫讀出電子、線束熱負載與干擾~Cryogenic readout electronics, harness heat load and interference",
+   "mechanism": "SIDECAR ASIC 在低溫端直接驅動 HAWAII-2RG 的時脈與偏壓並把輸出數位化（16 位元、100 kHz 或 12 位元、5 MHz），避免長距離類比線路拾取雜訊，JWST 的每一塊 H2RG 都配一顆。從低溫端到室溫電子的線束必須用低熱導的磷青銅或錳銅細線，否則傳導熱負載會壓垮低溫平台；接地要單點、時脈線要與類比線分開，否則時脈拾取在影像上形成固定圖案，參考像素只能部分消除。~The SIDECAR ASIC drives the HAWAII-2RG clocks and biases and digitises its outputs on the cold side (16 bits at 100 kHz or 12 bits at 5 MHz), avoiding noise pickup over long analogue lines; every JWST H2RG has one. The harness from the cold stage to the warm electronics must use low-conductivity phosphor-bronze or manganin wire, or the conductive heat load overwhelms the cold stage; grounding must be single-point and clock lines separated from analogue lines, otherwise clock pickup imprints fixed patterns that reference pixels remove only partially.",
+   "model": "線束熱負載 Q = n·k·A·ΔT/L：100 條 AWG 36 磷青銅線（截面 1.27×10⁻⁸ m²、k ≈ 10 W/m/K）、L = 0.5 m、ΔT = 260 K，Q = 100×10×1.27×10⁻⁸×260/0.5 ≈ 6.6 mW；改用銅線（k ≈ 400）則為 264 mW，多 40 倍，對只有毫瓦級預算的 40 K 平台不可接受。數位化：增益 2 e⁻/ADU 時量化雜訊 2/√12 = 0.58 e⁻，遠低於 11 e⁻ 的單次讀出雜訊。~Harness heat load Q = n·k·A·ΔT/L: 100 AWG 36 phosphor-bronze wires (cross-section 1.27×10⁻⁸ m², k ≈ 10 W/m/K), L = 0.5 m and ΔT = 260 K give Q = 100×10×1.27×10⁻⁸×260/0.5 ≈ 6.6 mW; copper (k ≈ 400) would give 264 mW, 40 times more, unacceptable for a 40 K stage with a milliwatt budget. Digitisation: at 2 e⁻/ADU the quantisation noise is 2/√12 = 0.58 e⁻, far below the 11 e⁻ single-read noise.",
+   "verify": "把 ASIC 輸入短路量純電子雜訊；對暗幀做二維傅立葉分析找出拾取線的頻率並對應到時脈或電源；由低溫平台的溫差或保冷時間反推線束熱負載並與計算比較；檢查參考像素修正後的殘餘條紋。~Short the ASIC inputs to measure the pure electronics noise; two-dimensional Fourier analysis of dark frames reveals pickup lines whose frequencies map to clocks or power supplies; infer the harness heat load from the cold-stage temperature difference or hold time and compare with the calculation; check the residual striping after reference-pixel correction.",
+   "failure": "暖電子與低溫恆溫器之間形成接地迴路，影像出現 50/60 Hz 的水平條帶，參考像素只能去掉一部分；若為了低電阻改用粗銅線，低溫機負載超支，偵測器永遠到不了設計溫度。~A ground loop between the warm electronics and the cryostat produces 50/60 Hz horizontal banding that reference pixels only partly remove; thick copper wire chosen for low resistance overloads the cooler and the detector never reaches its design temperature.",
+   "misconception": "線材越粗越好，因為電阻越低雜訊越小。~Thicker wires are always better because lower resistance means less noise."
+  },
+  {
+   "anchor": "特性化矩陣與操作點~Characterisation matrix and operating point",
+   "title": "偵測器特性化、操作點選擇與交接~Detector characterisation, operating-point choice and handoff",
+   "mechanism": "完整特性化包含 QE(λ)、增益、讀出雜訊、暗電流對溫度、滿阱、線性度、持續影像、像素間電容、壞像素圖、串音與可操作像素比例（通常要求 ≥ 99%）。操作點（溫度、偏壓、讀出模式）是取捨：偏壓高則滿阱大、QE 稍好但持續影像與暗電流較高；偏壓低則相反。交接時附上校正檔與「偵測器手冊」，並在望遠鏡上以實際觀測驗證背景極限曝光時間是否符合預測。~Full characterisation covers QE(λ), gain, read noise, dark current versus temperature, full well, linearity, persistence, interpixel capacitance, bad-pixel map, crosstalk and operability (usually required ≥ 99%). The operating point (temperature, bias, read mode) is a trade: higher bias gives a larger full well and slightly better QE but more persistence and dark current, lower bias the reverse. Handoff includes calibration files and a detector handbook, and on the telescope the background-limited exposure time is verified against prediction with real observations.",
+   "model": "背景極限條件：背景散粒雜訊等於讀出雜訊時 t = σ_read²/背景率。多次取樣後 σ_read = 7 e⁻、太空長波背景 2 e⁻/s/像素：t = 49/2 ≈ 25 s，要讓讀出雜訊可忽略需 ≥ 5 倍，約 120 s；地面 K 波段背景 400 e⁻/s 時僅 0.12 s。暗電流 0.035 e⁻/s 在 1000 s 累積 35 e⁻，散粒雜訊 5.9 e⁻ 與讀出雜訊同量級，所以長曝光要求暗電流 < 0.05 e⁻/s。~Background-limited condition: background shot noise equals read noise at t = σ_read²/background rate. With σ_read = 7 e⁻ after multi-sampling and a space long-wave background of 2 e⁻/s/pixel, t = 49/2 ≈ 25 s, and making read noise negligible needs ≥ 5 times that, about 120 s; a ground-based K-band background of 400 e⁻/s needs only 0.12 s. Dark current of 0.035 e⁻/s accumulates 35 e⁻ in 1000 s with shot noise 5.9 e⁻, comparable to the read noise, so long exposures require dark current below 0.05 e⁻/s.",
+   "verify": "列出驗收表：每項指標對規格、量測方法與不確定度；可操作性以逐像素通過全部準則的比例計算，低於 99% 需說明；用模擬星場做一次「類科學」測試驗證暗源測光；簽核後把操作點與校正檔一併交付。~Compile the acceptance table listing every metric against specification, method and uncertainty; compute operability as the fraction of pixels passing all criteria and justify anything below 99%; run a science-like test with a simulated star field to verify faint-source photometry; after sign-off deliver the operating point together with the calibration files.",
+   "failure": "為了最低暗電流選了低偏壓，結果滿阱太小、亮校正星全部飽和；或為了 QE 選高偏壓，持續影像讓後續每一個暗場都有潛影；實驗室與望遠鏡上的操作點不一致時，實驗室校正檔全部失效。~Choosing a low bias for minimum dark current leaves the full well too small and saturates every bright calibration star; choosing a high bias for QE lets persistence haunt every subsequent faint field; when the laboratory and telescope operating points differ, all the laboratory calibration files become invalid.",
+   "misconception": "規格表上的 QE 與雜訊是固定值，與操作點無關。~Datasheet QE and noise are fixed values independent of the operating point."
+  }
+ ],
+ "example": "紅外陣列操作練習：長波 HgCdTe 陣列 x = 0.30 在 T = 40 K 的能隙 E_g = −0.302 + 0.579 + 0.0086 − 0.0729 + 0.0225 = 0.235 eV，λ_c = 1.24/0.235 = 5.27 µm。擴散暗電流 ∝ T³·exp(−E_g/kT)，從 77 K 降到 60 K 的比值 (60/77)³×e^(−10) ≈ 2×10⁻⁵，但 40 K 實測地板約 0.035 e⁻/s。讀出：單次讀取雜訊 11.2 e⁻，up-the-ramp N = 93 時 σ = 11.2×√[12×92/(93×94)] = 11.2×0.355 = 4.0 e⁻；若每次讀取有 0.5 e⁻ 輝光，93 次累積 46 e⁻、散粒雜訊 6.8 e⁻，已超過省下的讀出雜訊。背景極限：σ_read = 7 e⁻、背景 2 e⁻/s 時 t = 49/2 = 25 s。線束：100 條磷青銅線 6.6 mW，銅線 264 mW。前次 80,000 e⁻ 曝光留下 0.1% = 80 e⁻ 的潛影，在 1000 s 內為 0.08 e⁻/s，比暗電流還大。數值為教學假設，不代表任何實機規格。~Infrared-array operating exercise: a long-wave HgCdTe array with x = 0.30 at T = 40 K has E_g = −0.302 + 0.579 + 0.0086 − 0.0729 + 0.0225 = 0.235 eV and λ_c = 1.24/0.235 = 5.27 µm. Diffusion dark current ∝ T³·exp(−E_g/kT) falls by (60/77)³×e^(−10) ≈ 2×10⁻⁵ from 77 K to 60 K, yet the measured floor at 40 K is about 0.035 e⁻/s. Readout: single-read noise 11.2 e⁻; up-the-ramp with N = 93 gives σ = 11.2×√[12×92/(93×94)] = 11.2×0.355 = 4.0 e⁻; with 0.5 e⁻ of glow per read, 93 reads accumulate 46 e⁻ whose shot noise of 6.8 e⁻ exceeds the read noise saved. Background limit: with σ_read = 7 e⁻ and a 2 e⁻/s background, t = 49/2 = 25 s. Harness: 100 phosphor-bronze wires 6.6 mW, copper 264 mW. A previous 80,000 e⁻ exposure leaves 0.1% = 80 e⁻ of latent charge, 0.08 e⁻/s over 1000 s, larger than the dark current. Values are teaching assumptions, not any instrument's specification.",
+ "history": "HgCdTe 於 1959 年由 Lawson 等人首次合成，1980 年代 Rockwell 與 Santa Barbara Research Center 等公司把它做成銦凸塊混成陣列，1990 年代的 NICMOS（256²）與 HAWAII（1024²）陣列讓哈伯太空望遠鏡與地面望遠鏡進入近紅外巡天時代。2000 年代 Rockwell Scientific（後併入 Teledyne）為 JWST 發展 2048² 的 HAWAII-2RG 與 SIDECAR ASIC，JWST 的 NIRCam、NIRSpec 與 FGS 共使用 15 塊；地面上 VISTA 的 VIRCAM 以 16 塊 2048² 陣列巡天，歐幾里得衛星的 NISP 於 2023 年以 16 塊 H2RG 升空，Roman 太空望遠鏡則採用 18 塊 4096² 的 H4RG。~HgCdTe was first synthesised by Lawson and colleagues in 1959, in the 1980s Rockwell, the Santa Barbara Research Center and others turned it into indium-bump hybrid arrays, and the NICMOS (256²) and HAWAII (1024²) arrays of the 1990s opened the near-infrared survey era for the Hubble Space Telescope and ground-based observatories. In the 2000s Rockwell Scientific, later part of Teledyne, developed the 2048² HAWAII-2RG and the SIDECAR ASIC for JWST, whose NIRCam, NIRSpec and FGS use 15 of them; on the ground VISTA's VIRCAM surveys with 16 2048² arrays, the Euclid NISP instrument launched in 2023 with 16 H2RGs, and the Roman Space Telescope carries 18 4096² H4RGs.",
+ "place": {
+  "name": "NASA 戈達德太空飛行中心偵測器特性化實驗室~NASA Goddard Detector Characterization Laboratory",
+  "country": "美國~United States",
+  "lat": 38.996,
+  "lng": -76.848,
+  "query": "NASA Goddard Space Flight Center Greenbelt Maryland"
+ },
+ "sources": [
+  {
+   "key": "jwst-nircam-detector-overview",
+   "title": "STScI JWST 文件：NIRCam 偵測器總覽",
+   "titleEn": "STScI JWST documentation: NIRCam detector overview",
+   "publisher": "Space Telescope Science Institute",
+   "url": "https://jwst-docs.stsci.edu/jwst-near-infrared-camera/nircam-instrumentation/nircam-detector-overview",
+   "sourceType": "primary",
+   "scope": "10 塊 Teledyne H2RG（8 短波 2.5 µm 截止、2 長波 5 µm 截止）、18 µm 像素、4 圈參考像素與 SIDECAR ASIC 的官方說明。",
+   "scopeEn": "Official description of the 10 Teledyne H2RGs (8 short-wave with 2.5 µm cutoff, 2 long-wave with 5 µm cutoff), 18 µm pixels, 4-pixel reference border and SIDECAR ASICs."
+  },
+  {
+   "key": "jwst-nircam-detector-performance",
+   "title": "STScI JWST 文件：NIRCam 偵測器性能",
+   "titleEn": "STScI JWST documentation: NIRCam detector performance",
+   "publisher": "Space Telescope Science Institute",
+   "url": "https://jwst-docs.stsci.edu/jwst-near-infrared-camera/nircam-instrumentation/nircam-detector-overview/nircam-detector-performance",
+   "sourceType": "primary",
+   "scope": "提供 CDS 讀出雜訊、1000 s 多次取樣有效雜訊、暗電流、滿阱、增益、QE 與持續影像的公開量測值，約 40 K 工作。",
+   "scopeEn": "Provides public measured values of CDS read noise, 1000 s multi-accum effective noise, dark current, full well, gain, QE and persistence at about 40 K."
+  },
+  {
+   "key": "teledyne-space-imaging-products",
+   "title": "Teledyne Space Imaging：產品總覽",
+   "titleEn": "Teledyne Space Imaging: Products overview",
+   "publisher": "Teledyne Technologies",
+   "url": "https://www.teledynespaceimaging.com/en-us/products",
+   "sourceType": "primary",
+   "scope": "太空與科學用影像感測器（CCD、EMCCD、CMOS、InGaAs 與紅外陣列）的製造商產品入口；課程數值非該公司規格。",
+   "scopeEn": "Manufacturer's product portal for space and science image sensors (CCD, EMCCD, CMOS, InGaAs and infrared arrays); course numbers are not the company's specifications."
+  },
+  {
+   "key": "lynred-home",
+   "title": "Lynred：紅外偵測器製造商首頁",
+   "titleEn": "Lynred: infrared detector manufacturer home page",
+   "publisher": "Lynred",
+   "url": "https://lynred.com/",
+   "sourceType": "primary",
+   "scope": "由 Sofradir 與 ULIS 合併而成的歐洲冷卻與非冷卻紅外偵測器供應商，涵蓋太空市場。",
+   "scopeEn": "European supplier of cooled and uncooled infrared detectors formed from Sofradir and ULIS, serving the space market among others."
+  }
+ ],
+ "vendors": [
+  {
+   "name": "Teledyne Technologies",
+   "nameEn": "Teledyne Technologies",
+   "business": "HAWAII 系列 HgCdTe 混成陣列、SIDECAR ASIC 與 CCD／CMOS 科學感測器製造商。",
+   "businessEn": "Maker of the HAWAII family of HgCdTe hybrid arrays, the SIDECAR ASIC and CCD/CMOS scientific sensors.",
+   "url": "https://www.teledyne.com/",
+   "investorUrl": "",
+   "security": {
+    "symbol": "TDY",
+    "exchange": "NYSE",
+    "currency": "USD"
+   },
+   "role": "JWST 與地面儀器所用 H2RG／H4RG 紅外陣列的供應商",
+   "roleEn": "Supplier of the H2RG/H4RG infrared arrays used by JWST and ground-based instruments"
+  },
+  {
+   "name": "Lynred",
+   "nameEn": "Lynred",
+   "business": "法國冷卻型與非冷卻型紅外偵測器製造商，供應國防、太空與工業市場。",
+   "businessEn": "French manufacturer of cooled and uncooled infrared detectors for defence, space and industrial markets.",
+   "url": "https://lynred.com/",
+   "investorUrl": "",
+   "security": null,
+   "role": "歐洲太空任務用紅外焦平面陣列的供應商",
+   "roleEn": "Supplier of infrared focal-plane arrays for European space missions"
+  },
+  {
+   "name": "RTX（雷神）",
+   "nameEn": "RTX (Raytheon)",
+   "business": "航太與國防集團，旗下 Raytheon 開發紅外感測器與焦平面陣列。",
+   "businessEn": "Aerospace and defence group whose Raytheon business develops infrared sensors and focal-plane arrays.",
+   "url": "https://www.rtx.com/",
+   "investorUrl": "",
+   "security": {
+    "symbol": "RTX",
+    "exchange": "NYSE",
+    "currency": "USD"
+   },
+   "role": "大型紅外焦平面陣列（例如 VISTA 所用 VIRGO 陣列）的製造背景",
+   "roleEn": "Manufacturing background of large infrared focal-plane arrays such as the VIRGO arrays used by VISTA"
+  },
+  {
+   "name": "濱松光子",
+   "nameEn": "Hamamatsu Photonics",
+   "business": "光電倍增管、InGaAs／InSb 紅外偵測器與科學相機製造商。",
+   "businessEn": "Manufacturer of photomultipliers, InGaAs/InSb infrared detectors and scientific cameras.",
+   "url": "https://www.hamamatsu.com/",
+   "investorUrl": "",
+   "security": {
+    "symbol": "6965",
+    "exchange": "TSE",
+    "currency": "JPY"
+   },
+   "role": "短波與中波紅外偵測器的商用替代技術參照",
+   "roleEn": "Commercial reference for alternative short- and mid-wave infrared detector technologies"
+  }
+ ],
+ "related": [
+  "a479",
+  "a496"
+ ],
+ "architectureNodes": [
+  [
+   "冷光闌與冷濾光片",
+   "Cold stop and cold filters"
+  ],
+  [
+   "HgCdTe 光二極體陣列",
+   "HgCdTe photodiode array"
+  ],
+  [
+   "銦凸塊與 ROIC",
+   "Indium bumps and ROIC"
+  ],
+  [
+   "SIDECAR ASIC 數位化",
+   "SIDECAR ASIC digitisation"
+  ],
+  [
+   "低溫恆溫器與溫控",
+   "Cryostat and temperature control"
+  ],
+  [
+   "校正管線：非線性、持續影像、平場",
+   "Calibration pipeline: linearity, persistence, flat"
+  ]
+ ],
+ "architectureEdges": [
+  [
+   0,
+   1
+  ],
+  [
+   1,
+   2
+  ],
+  [
+   2,
+   3
+  ],
+  [
+   4,
+   1
+  ],
+  [
+   4,
+   3
+  ],
+  [
+   3,
+   5
+  ]
+ ]
+}
