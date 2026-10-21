@@ -1,0 +1,269 @@
+{
+  "id": "b262",
+  "title": "大口徑輸水管施工~Large-diameter water-main construction",
+  "discipline": "water-rivers",
+  "family": "water",
+  "focus": "路線、管床、接頭與大管施工階段傳力~Alignment, bedding, joints and staged load transfer in large mains",
+  "summary": "本課以大口徑輸水管的施工介面為主線，從縱斷面與溝槽量方，進入土管互制、臨時吊點、焊接管殼、彎管推力及接頭位移，再把溫度、試壓和通水交接連成證據鏈。算例分開施工階段與永久狀態，避免用單一壓力或幾何合格推定整體品質。~This course follows construction interfaces in large water mains, moving from alignment and trench quantities to soil-pipe interaction, temporary lifting, welded shells, bend thrust and joint movement. Temperature, pressure testing and commissioning complete the evidence chain. Examples distinguish construction stages from permanent conditions and avoid inferring overall quality from one acceptable pressure or geometric measurement.",
+  "units": [
+    {
+      "anchor": "縱斷面與局部壓力~Alignment and local pressure",
+      "title": "縱斷面與局部壓力機理與驗證~Alignment and local pressure mechanism and verification",
+      "mechanism": "大口徑輸水管的路線選擇同時改變水力高程、施工通道與後續維修空間。相同起終點的兩條路線仍可有不同低點靜壓及高點負壓風險，管材壓力等級不能只按端點平均水頭決定；道路交叉、地滑帶與重要設施還會限制可接受的支承和接頭變形。靜水壓只由同一連通水體的高程差求得，尚未包含流動損失、泵作用與瞬變；所有標高必須使用同一基準。~A large-main alignment changes hydraulic elevation, construction access and future maintenance space together. Two routes between the same endpoints can still have different low-point static pressure and high-point low-pressure exposure. Pipe pressure classification cannot be selected from endpoint-average head alone, and crossings, unstable slopes and important utilities constrain acceptable support and joint movement. Hydrostatic pressure follows elevation difference within one connected water body. Flow losses, pumps and transients are separate, and all elevations require a common datum.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設連通水面高於管線低點h=50 m、水ρ=1000 kg/m³、g=9.81 m/s²，表壓p=ρgh=490.5 kPa，為靜止水情境。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume a connected water surface h=50 m above the low point, water ρ=1000 kg/m³ and g=9.81 m/s². Gauge pressure p=ρgh=490.5 kPa for stationary water.",
+      "verify": "將測量縱斷面、地質與地下設施圖放在共同坐標內，逐點核對管頂管底及水頭線。對關鍵高低點建立正常、停泵與施工隔離情境，記錄使用哪一組水位作比較。~Place surveyed profiles, geology and utilities in one coordinate system, checking pipe crown, invert and hydraulic grade at key points. Define normal, pump-stop and construction-isolation scenarios for significant high and low points, recording the water levels used in each comparison.",
+      "failure": "局部低點被平滑路線圖漏掉時，該段可承受比端點推估更高的壓力；錯誤高程基準還可能讓設計誤判高點仍具有足夠正壓。~If a smoothed alignment misses a local depression, that reach can experience higher pressure than endpoint estimates suggest. A mistaken elevation datum can also falsely indicate adequate positive pressure at a high point.",
+      "misconception": "管線兩端高程相同就代表中間各處壓力相同。~Equal endpoint elevations mean equal pressure everywhere between them.",
+      "practice": "為兩條假設路線畫出低點、高點與可維修位置，分別比較靜壓及施工介面；保留尚未調查的地質段落，不以最短距離直接判定最佳路線。~Draw low points, high points and maintenance access for two hypothetical routes, comparing static pressure and construction interfaces separately. Retain unresolved geological reaches rather than declaring the shortest route the best."
+    },
+    {
+      "anchor": "溝槽方量與施工邊界~Trench quantities and construction boundaries",
+      "title": "溝槽方量與施工邊界機理與驗證~Trench quantities and construction boundaries mechanism and verification",
+      "mechanism": "溝槽開挖量不等於成品管體積，工作寬度、接頭位置與支護系統會改變實際斷面。土方運輸還受原狀、鬆方和壓實體積的差異影響，而地下水及鄰近荷載會控制支護與施工分段；單純幾何估算應先定義量方邊界，不能被誤讀為允許的無支撐開挖形狀。矩形體積算例僅供材料帳，忽略放坡、支撐占位與局部工作井；它既不是支護設計，也不決定可同時開挖的長度。~Excavation volume differs from finished pipe volume because working width, joint locations and temporary support change the section. Transport quantities also depend on differences among in-situ, loose and compacted volumes. Groundwater and nearby loads govern support and staging, so a geometric estimate must define its measurement boundary and must not be interpreted as an allowable unsupported excavation shape. The rectangular volume is a quantity ledger only, omitting slopes, support occupancy and local pits. It neither designs support nor determines how much trench can be open simultaneously.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設量方寬B=2.5 m、深H=3.0 m、長L=100 m，原狀幾何體積V=BHL=750 m³；不含土方鬆脹。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume measured width B=2.5 m, depth H=3.0 m and length L=100 m. In-situ geometric volume V=BHL=750 m³, excluding bulking.",
+      "verify": "以施工前後斷面測量核對土方帳，將局部加寬、工作井與回填需求分項列示。支護及地下水方案須另外對照鄰近設施監測，量方相符不能取代開挖穩定的驗證。~Reconcile quantity records with before-and-after section surveys, listing local widening, pits and backfill separately. Independently compare support and groundwater provisions with monitoring of nearby assets; agreement in earthwork quantities cannot establish excavation stability.",
+      "failure": "把車載鬆方直接當成原狀開挖量會形成虛假超挖，反之忽略工作井又會低估回填需求；兩種偏差都可能掩蓋真實的地層流失。~Treating loose truck volumes as in-situ excavation creates a false overbreak estimate, while omitting pits understates backfill demand. Both accounting errors can conceal genuine loss of surrounding ground.",
+      "misconception": "土方車載體積與原狀溝槽體積永遠可以直接相加比較。~Truck load volumes and in-situ trench volumes can always be compared directly.",
+      "practice": "建立原狀、鬆方及壓實三種體積欄位，為每次換算註明密度或試驗依據。把計量誤差與地層流失分成兩個待查假說，再選擇能區分它們的測量。~Create separate in-situ, loose and compacted-volume columns, identifying density or test evidence for each conversion. Treat accounting error and ground loss as different hypotheses and select measurements that distinguish them."
+    },
+    {
+      "anchor": "管床接觸與土管互制~Bedding contact and soil-pipe interaction",
+      "title": "管床接觸與土管互制機理與驗證~Bedding contact and soil-pipe interaction mechanism and verification",
+      "mechanism": "管床把管重及上覆作用傳入地基，接觸寬度與均勻性會影響局部承壓和管環變形。柔性管依賴兩側回填提供側向拘束，剛性管則對不均勻支承與接頭差異沉陷敏感；因此平均床面平整不足以證明土管共同作用，局部空隙和硬點必須另行辨識。線荷載除以接觸寬度只得到假設平均壓力，沒有包含土拱效應、側向回填剛度或管殼彎曲，不能當成管材強度驗算。~Bedding transfers pipe weight and overlying loads into the ground, with contact width and uniformity controlling local pressure and ring deformation. Flexible pipes depend on sidefill for lateral restraint, while rigid pipes are sensitive to uneven support and differential settlement at joints. Average bed level therefore does not establish soil-pipe performance; voids and hard points need separate identification. Line load divided by contact width gives an assumed mean pressure only. It omits soil arching, sidefill stiffness and shell bending and cannot verify pipe structural capacity.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設每米向下荷載w=12 kN/m、有效管床寬b=0.60 m，平均接觸壓q=w/b=20 kPa，假設接觸連續。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume downward line load w=12 kN/m and effective bedding width b=0.60 m. Mean contact pressure q=w/b=20 kPa, assuming continuous contact.",
+      "verify": "核對管床材料、厚度及接觸範圍，將壓實檢測位置與管側回填層位連結。安裝後追蹤管環變形和接頭高差，以不同位置的資料辨識硬點、空隙及回填不均。~Check bedding material, thickness and contact extent, linking compaction-test locations to sidefill lifts. After installation, track ring deformation and joint level differences, using spatially distributed observations to distinguish hard points, voids and uneven backfill.",
+      "failure": "名目床寬足夠但管底懸空時，少數接觸點會集中受力並增加彎曲；柔性管側填不足也可能造成橢圓化，而平均向下承壓仍看似很低。~With voids beneath the pipe, nominally adequate bedding width leaves a few contacts carrying concentrated load and bending. Inadequate sidefill can also ovalize flexible pipe while the average downward bearing pressure remains apparently small.",
+      "misconception": "平均管床承壓很低就能證明管環完全不會變形。~Low average bedding pressure proves that the pipe ring cannot deform.",
+      "practice": "畫出連續管床與中段懸空兩種受力路徑，指出平均壓力公式忽略的彎曲。為每種管材列出對應的變形及回填驗證資料，不用同一指標涵蓋全部失效。~Draw load paths for continuous bedding and a central void, identifying bending omitted by the average-pressure formula. List deformation and backfill evidence appropriate to each pipe material instead of using one indicator for every failure mode."
+    },
+    {
+      "anchor": "吊點幾何與臨時管殼受力~Lift geometry and temporary shell loading",
+      "title": "吊點幾何與臨時管殼受力機理與驗證~Lift geometry and temporary shell loading mechanism and verification",
+      "mechanism": "大型管節吊裝時的支承狀態不同於埋設完成後，吊帶角度會改變索力，吊點間距則影響管身彎曲與局部橢圓化。對稱兩腿吊索的靜力分配只是一個理想比較，真實吊點高差、重心偏移、吊具柔度及動態作用都會破壞等分假設，須由完整吊裝計畫處理。算例中的角度由鉛直方向量起，只求兩腿對稱靜力；不包含動態放大、吊點容量、管殼局部接觸或起重機穩定。~A large pipe section has different support conditions during lifting than after burial. Sling angle changes tension, while pick-point spacing affects longitudinal bending and local ovalization. Symmetric two-leg statics is only an ideal comparison: unequal pick elevations, center-of-mass offset, rigging compliance and dynamic effects disturb equal sharing and require a complete engineered lifting plan. The angle is measured from vertical and the example covers symmetric two-leg statics only. Dynamic amplification, pick capacity, shell contact and crane stability are excluded.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設管節重量W=100 kN、每腿與鉛直夾角θ=30°，T=W/(2cosθ)=57.74 kN；不是吊具額定容量。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume pipe weight W=100 kN and each leg at θ=30° from vertical. T=W/(2cosθ)=57.74 kN, not a rigging capacity rating.",
+      "verify": "核對實際重量、重心及吊點圖，確認角度定義與量測一致，再檢查管節製造商對臨時支承的要求。由負責吊裝工程師檢核整體方案，保留吊具證明與管殼變形觀察紀錄。~Verify actual weight, center of mass and pick-point drawings, ensuring consistent angle definitions and checking the pipe manufacturer’s temporary-support requirements. The responsible lifting engineer evaluates the complete arrangement, retaining rigging documentation and observations of shell deformation.",
+      "failure": "若把相對水平的角度誤當相對鉛直，計算索力可能嚴重偏低；吊點局部壓扁也可能損傷襯層，即使吊索本身沒有超過額定荷載。~Confusing an angle from horizontal with one from vertical can greatly understate sling tension. Local flattening at a pick can damage the lining even when the sling itself remains below its rated load.",
+      "misconception": "兩條吊索就必定各自承受管節重量的一半。~Two slings necessarily carry exactly half the pipe weight each.",
+      "practice": "比較同一重量下三十度與六十度鉛直夾角的索力，標出水平分力。再列出靜力算例沒有檢查的吊點及管殼問題，避免把算式當成現場吊裝指令。~Compare tensions at thirty and sixty degrees from vertical for the same weight and mark horizontal components. List pick-point and shell issues omitted by the static example so the calculation is not mistaken for a field lifting instruction."
+    },
+    {
+      "anchor": "焊接管殼與試壓應力~Welded shells and test-pressure stress",
+      "title": "焊接管殼與試壓應力機理與驗證~Welded shells and test-pressure stress mechanism and verification",
+      "mechanism": "內壓在圓形管殼形成環向膜力，薄壁估式可顯示直徑、壁厚與壓力的相互關係。施工焊縫卻可能有幾何不連續、殘餘應力與局部缺陷，襯層也不一定參與承載；因此材料強度、接頭品質與試壓結果是不同證據，不能只看一次無漏水便宣稱所有焊接細節合格。此式適用名目薄壁膜應力，不含焊接效率、腐蝕裕度或局部應力集中；假設壓力只供計算，不代表規範試壓要求。~Internal pressure creates hoop membrane force in a circular shell, and a thin-wall estimate shows how diameter, thickness and pressure interact. Field welds can introduce geometric discontinuity, residual stress and local defects, while a lining may not carry structural load. Material strength, joint quality and pressure-test results are different evidence, so one leak-free test cannot certify every welded detail. The equation estimates nominal thin-wall membrane stress, excluding weld efficiency, corrosion allowance and local concentrations. The assumed pressure is a calculation input, not a prescribed test requirement.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設p=1.50 MPa、管徑D=1.20 m、壁厚t=0.012 m，σθ=pD/(2t)=75.0 MPa，僅為名目環應力。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume p=1.50 MPa, diameter D=1.20 m and thickness t=0.012 m. σθ=pD/(2t)=75.0 MPa is nominal hoop stress only.",
+      "verify": "將材料批號、焊接程序、焊工資格及非破壞檢測位置連到每一接頭，確認壁厚量測涵蓋局部減薄。試壓紀錄另外保存溫度、壓力基準及隔離範圍，讓漏水與結構品質可分別追溯。~Link material batches, welding procedures, welder qualifications and nondestructive examination locations to each joint, checking local thinning coverage. Separately retain temperature, pressure datum and isolation limits in test records so leakage and structural quality remain independently traceable.",
+      "failure": "只以名目壁厚估應力會漏掉施工損傷或局部減薄，未檢出的焊接缺陷又可能在後續循環載重擴展；一次試壓通過不能消除這些長期機制。~Nominal thickness can miss construction damage or local thinning, while undetected weld defects can grow under later cyclic loading. Passing one pressure test does not eliminate these longer-term deterioration mechanisms.",
+      "misconception": "試壓沒有漏水就代表焊縫不存在任何結構缺陷。~A leak-free pressure test proves that no structural weld defects exist.",
+      "practice": "把同一接頭的材料、尺寸、焊接及試壓資料整理成證據鏈，指出每項檢查能排除與不能排除的缺陷。再比較局部壁厚降低時的名目應力變化。~Assemble material, dimension, weld and pressure-test evidence for one joint, stating defects each check can and cannot exclude. Then compare nominal stress after a local reduction in thickness."
+    },
+    {
+      "anchor": "彎管推力與錨定傳力~Bend thrust and anchorage load path",
+      "title": "彎管推力與錨定傳力機理與驗證~Bend thrust and anchorage load path mechanism and verification",
+      "mechanism": "彎管改變流向，內壓在兩端截面產生不同方向的作用，合力必須經約束接頭、錨定或其他核定構件傳入地層。推力方向由向量平衡決定，不能只把壓力乘單一截面就當全部合力；土體可提供的反力還受開挖擾動、接觸面積與地下水影響。此例為等徑彎管的靜壓合力，忽略動量通量及瞬變；計算得到的是需求，尚未檢核任何錨塊或土體抗力。~A bend redirects flow, so pressure forces on its end sections act in different directions and require a load path through restrained joints, anchors or other approved components into the ground. Vector equilibrium determines resultant direction; pressure times one section is not the complete bend force. Available ground reaction also depends on excavation disturbance, contact area and groundwater. This example gives static pressure thrust for an equal-diameter bend, omitting momentum flux and transients. The result is demand; no anchor-block or soil resistance has been checked.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設p=0.80 MPa、D=1.20 m、轉向角θ=90°，A=πD²/4=1.131 m²；F=2pA sin(θ/2)=1.280 MN。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume p=0.80 MPa, D=1.20 m and deflection θ=90°. A=πD²/4=1.131 m² and F=2pA sin(θ/2)=1.280 MN.",
+      "verify": "畫出彎管兩端壓力向量與錨定反力，核對接頭是否真的具備縱向約束。查驗錨定接觸地層與回填狀態，並將正常、試壓及瞬變作用分開組合，避免只以常態壓力驗證。~Draw pressure vectors and anchorage reaction, verifying that joints actually provide axial restraint. Check the ground contact and backfill condition at the anchorage and distinguish normal, test and transient loading combinations rather than validating against normal pressure alone.",
+      "failure": "把普通可轉動接頭當成抗拉約束會中斷推力傳遞，彎管可能位移並拉開相鄰接頭；錨塊體積很大也不能補救其背後鬆散或懸空的地層。~Treating an ordinary flexible joint as tensile restraint interrupts the thrust path, allowing bend movement and opening nearby joints. A large anchor block cannot compensate for loose or unsupported ground behind it.",
+      "misconception": "錨塊混凝土越多就一定能承受任何方向的彎管推力。~More anchor-block concrete guarantees resistance to bend thrust in any direction.",
+      "practice": "以相同壓力比較直管端封與九十度彎管的力向量，標示地層反力位置。把需求計算與抗力證據分成兩欄，列出地下水或開挖狀態改變後需重核的項目。~Compare force vectors for a closed straight-pipe end and a ninety-degree bend at the same pressure, marking ground reactions. Separate demand calculations from resistance evidence and list checks that change with groundwater or excavation conditions."
+    },
+    {
+      "anchor": "差異沉陷與接頭轉角~Differential settlement and joint rotation",
+      "title": "差異沉陷與接頭轉角機理與驗證~Differential settlement and joint rotation mechanism and verification",
+      "mechanism": "管線跨越軟硬地層或結構基礎時，差異沉陷可能集中在少數接頭而非均勻分散。單一管節端點高差只能給出該節弦傾角，真正接頭相對轉角需比較兩側方向；密封需求還包含軸向拔出與剪位移，不能把名目允許角度當成所有位移的共同容量。算例假設管節剛體且相鄰管節保持水平，才把單節傾角當相對轉角；忽略管身彎曲和接頭壓縮曲線，不證明水密。~At transitions between soft and stiff ground or structural foundations, differential settlement can concentrate at a few joints. End-level difference gives one pipe section’s chord inclination, whereas relative joint rotation requires both adjacent orientations. Seal demand also includes axial withdrawal and shear, so a nominal angular allowance cannot represent capacity for every combined displacement. Only the assumed rigid section beside a horizontal neighbor makes its chord inclination equal relative rotation. Pipe bending and joint compression curves are omitted, and water tightness is not established.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設端點差Δs=20 mm、節長L=12 m，θ≈0.020/12=0.001667 rad；D=1.20 m時兩側開度差Dθ=2.0 mm。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume end difference Δs=20 mm and section length L=12 m: θ≈0.020/12=0.001667 rad. At D=1.20 m, the opening difference Dθ=2.0 mm.",
+      "verify": "在接頭兩側各設高程與方向基準，將管節傾角、軸向位置及密封區觀察對齊。比較施工後與回填後資料，查明變形來自整體傾斜、局部彎曲或接頭集中位移。~Establish level and orientation references on both sides of each joint, aligning section inclination, axial position and seal observations. Compare post-installation and post-backfill records to distinguish rigid tilt, local bending and concentrated joint displacement.",
+      "failure": "兩側管節共同傾斜卻被當成相對轉角時會高估密封需求；只量其中一側又可能漏掉方向相反的轉動，反而低估接頭邊緣開口。~Interpreting common tilt of both sections as relative rotation overstates seal demand. Measuring only one side can instead miss opposing rotations and understate opening at the joint edge.",
+      "misconception": "單一管節的傾斜角永遠等於相鄰接頭相對轉角。~One pipe section’s inclination always equals the relative rotation at its joint.",
+      "practice": "畫出兩側同向與反向轉動的接頭示意，分別計算相對角度。將幾何需求交給特定接頭的試驗曲線比較，並保留軸向拔出及剪位移的獨立檢核。~Draw joints with adjacent sections rotating together and in opposite directions, calculating relative angle separately. Compare geometric demand with the specific joint’s test curves while retaining independent checks for withdrawal and shear."
+    },
+    {
+      "anchor": "溫度伸縮與支承約束~Thermal movement and restraint",
+      "title": "溫度伸縮與支承約束機理與驗證~Thermal movement and restraint mechanism and verification",
+      "mechanism": "鋼管在暴露施工、回填與通水階段會經歷不同溫度，固定點與可滑動支承決定熱伸縮如何分配。自由伸長和完全約束熱應力是兩種相反邊界，實際系統可能兼有接頭滑移、地層摩阻及局部錨定；必須先辨識約束，才能決定把變化當位移或當力。下式先計自由伸長，不可把這個位移同時強加到完全固定模型；實際熱應力需另建相容與受力條件。~Steel pipe experiences different temperatures during exposed construction, burial and commissioning. Fixed points and sliding supports determine how thermal movement distributes. Free expansion and fully restrained thermal stress are opposite boundary cases, while actual systems combine joint slip, ground friction and local anchors. Restraint must be identified before treating thermal change as displacement or force. The calculation first gives free expansion. That movement cannot simultaneously be imposed on a fully fixed model; actual thermal stress needs separate compatibility and equilibrium conditions.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設鋼α=12×10⁻⁶/K、L=100 m、升溫ΔT=25 K，自由伸長ΔL=αLΔT=0.030 m=30 mm。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume steel α=12×10⁻⁶/K, L=100 m and temperature rise ΔT=25 K. Free expansion ΔL=αLΔT=0.030 m=30 mm.",
+      "verify": "核對安裝時溫度、固定點與滑動支座位置，將接頭初始間隙和後續溫度紀錄一起保存。量測位移若集中在意料外位置，先檢查支座卡滯與回填摩阻，再修正熱模型。~Check installation temperature and locations of fixed and sliding supports, retaining initial joint gaps with later temperature records across multiple observed temperatures. If movement concentrates unexpectedly, investigate seized supports and backfill friction before revising the thermal model.",
+      "failure": "原本設計可滑動的支座被雜物或施工偏差卡住時，熱位移會轉成額外軸力；只看管線總長變化不大，可能漏掉局部錨定與焊縫的應力增加。~Debris or misalignment can seize a support intended to slide, turning thermal movement into additional axial force. Small overall length change can therefore conceal increased stress at local anchors and welds.",
+      "misconception": "看不到管線伸長就表示溫度完全不會造成結構作用。~No visible pipe expansion means temperature causes no structural action.",
+      "practice": "以同一溫差分別畫出自由與完全約束兩個理想模型，說明哪個輸出是位移、哪個是應力。再加入一個卡滯支座，討論需要新增哪些位移與荷載量測。~Draw free and fully restrained idealizations for one temperature change, identifying displacement and stress outputs. Add a seized support and discuss the additional movement and load measurements needed."
+    },
+    {
+      "anchor": "試壓儲水與漏失判讀~Pressure-test storage and leakage interpretation",
+      "title": "試壓儲水與漏失判讀機理與驗證~Pressure-test storage and leakage interpretation mechanism and verification",
+      "mechanism": "試壓過程的補水量會同時包含水體壓縮、管壁膨脹、氣體壓縮及真正外漏，因此不能把全部補水量都當成漏失。溫度變化也可改變壓力，殘留空氣會使系統儲能與量測反應更複雜；隔離邊界與穩定條件需在試驗前明確建立，壓力曲線須與體積帳共同判讀。本算例只描述水的可壓縮部分，忽略管壁及氣體；它不是完整試壓補水量預測，更不是允許漏水標準。~Make-up volume during a pressure test includes liquid compression, wall expansion, gas compression and actual leakage, so it cannot all be classified as loss. Temperature also changes pressure, and trapped air complicates stored energy and measured response. Isolation boundaries and stabilization conditions need explicit definition, with pressure history interpreted alongside the volume balance. The example isolates liquid compressibility, excluding wall expansion and gas. It is neither a complete make-up-volume prediction nor an allowable leakage criterion.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設水體V=100 m³、體積模數K=2.2 GPa、壓升Δp=1.0 MPa，壓縮體積ΔV=VΔp/K=0.04545 m³=45.45 L。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume water volume V=100 m³, bulk modulus K=2.2 GPa and rise Δp=1.0 MPa. Compression volume ΔV=VΔp/K=0.04545 m³=45.45 L.",
+      "verify": "核對隔離閥、端封及量測表的範圍，連續記錄壓力、溫度和補水體積並標示穩定時段。將材料與接頭適用的核定試驗程序另附，避免用理論壓縮量自行建立允收門檻。~Verify isolation valves, end closures and instrument ranges, continuously recording pressure, temperature and make-up volume with stabilization periods marked. Attach the approved procedure for the actual material and joints rather than inventing an acceptance limit from theoretical compression volume.",
+      "failure": "未排除溫度漂移或氣體壓縮便推定漏水，可能導致無效開挖；另一方面以壓縮性解釋所有補水，又可能掩蓋持續外漏及隔離閥內漏。~Inferring leakage without accounting for temperature drift or gas compression can trigger unnecessary excavation. Conversely, attributing every make-up volume to compressibility can hide ongoing external leakage or internal leakage through an isolation valve.",
+      "misconception": "試壓期間加入多少水就代表管線漏掉多少水。~All water added during a pressure test is water lost through leaks.",
+      "practice": "把總補水量拆成液體、管壁、氣體與外漏四種可能來源，列出各自需要的量測。以資料不足的情境練習保留不確定區間，而非直接宣判合格或失敗。~Separate make-up volume into liquid, wall, gas and leakage contributions, listing measurements for each. Practice retaining uncertainty when data are incomplete instead of immediately declaring the test passed or failed."
+    },
+    {
+      "anchor": "通水體積與分段交接~Filling volume and staged handover",
+      "title": "通水體積與分段交接機理與驗證~Filling volume and staged handover mechanism and verification",
+      "mechanism": "通水交接不只是把空管填滿，還要確認水質、排氣、壓力邊界與資產紀錄均對應實際竣工配置。體積除以流量只給理想充填時間，實際充水會受到排氣能力、分段隔離與水源限制；未記錄的盲端或高點可能留下氣袋，改變後續流量與瞬變行為。本例為連續均勻流量的體積帳，忽略排氣與壓力控制，因此不提供現場充水速率；水質與衛生程序另按適用規定驗證。~Commissioning involves more than filling an empty pipe: water quality, air removal, pressure boundaries and asset records must match the as-built arrangement. Volume divided by flow gives an ideal filling time only. Actual filling depends on air-release capacity, isolation stages and source limits, and undocumented dead ends or high points can retain air that changes later flow and transient behavior. This is a constant-flow volume ledger, omitting venting and pressure control, so it supplies no field filling rate. Water-quality and hygiene procedures require separate applicable verification.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設D=1.20 m、L=1000 m，V=πD²L/4=1131.0 m³；若僅作比較取Q=0.10 m³/s，t=V/Q=3.142 h。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume D=1.20 m and L=1000 m: V=πD²L/4=1131.0 m³. Using comparison flow Q=0.10 m³/s gives t=V/Q=3.142 h.",
+      "verify": "以竣工管徑與長度核對充填體積，記錄分段閥位、氣體排出及壓力歷程，並將水質檢驗連到取樣位置。交接前逐一核對資產編碼、維修通道與可取得的隔離邊界。~Reconcile filling volume with as-built diameter and length, recording staged valve positions, air release and pressure history, and linking water-quality results to sampling locations. Before handover, verify asset identifiers, maintenance access and accessible isolation boundaries individually.",
+      "failure": "把理想充填時間當成固定工期，可能迫使未完成排氣或水質驗證的管段提前投入；竣工圖漏記閥位又會使後續維修隔離範圍錯誤。~Treating ideal filling time as a fixed schedule can place a reach into service before air removal or water-quality verification is complete. Missing valve-position records can then lead to an incorrect maintenance-isolation boundary.",
+      "misconception": "達到理論充水體積就能直接證明整條管線可交付使用。~Reaching theoretical filling volume proves the entire main is ready for service.",
+      "practice": "製作分段交接表，把幾何容量、壓力、水質與資產紀錄設為不同證據欄。指出哪些項目只能由現場量測確認，避免用體積帳代替整體投運驗收。~Prepare a staged handover table with separate evidence for geometric capacity, pressure, water quality and asset records. Identify items requiring field measurements so a volume ledger does not replace complete commissioning acceptance."
+    }
+  ],
+  "example": "原創敏感度算例採重量100 kN的理想管節，使用兩條對稱吊索。當每腿與鉛直夾角為30°，每腿索力57.74 kN；只把角度增加至60°，重量不變，每腿索力增至100 kN，增加73.2%。這個結果來自鉛直力平衡，不能用來宣稱吊具或起重機具備足夠容量。進一步檢查重心偏移、局部管殼接觸及動態作用，並把製造商吊點要求與完整工程吊裝計畫對照。幾何模型用來揭示角度敏感性，不提供操作指令，所有數字均與列名工程無關。~An original sensitivity example uses an ideal 100 kN pipe section and two symmetric slings. With each leg thirty degrees from vertical, tension is 57.74 kN per leg. Changing only the angle to sixty degrees increases tension to 100 kN, a 73.2% rise. This follows vertical equilibrium and does not establish rigging or crane capacity. Examine center-of-mass offset, local shell contact and dynamic effects separately, then compare manufacturer pick-point requirements with a complete engineered lifting plan. The geometry illustrates angle sensitivity rather than providing operating instructions, and none of these values comes from a named project.",
+  "history": "大型輸水工程的知識由管殼設計逐漸延伸到供水韌性與量測校核。美國墾務局壓力管專論的初版於1949年發行，現存修訂版提供歷史機理參照；2020年EPANET手冊則說明配水管網延時分析。紐約於2025年公告德拉瓦繞道須重新採購接通工程，因此本課不將其寫成已完工案例。莫卡辛系統另呈現老舊鋼管與支座更新議題。所有課內算例為獨立假設，未移植上述工程的操作參數。~Knowledge of large water conduits has expanded from shell design to supply resilience and measurement validation. Reclamation first issued its penstock monograph in 1949; its available revision is a historical mechanics reference. The 2020 EPANET manual addresses extended-period distribution modeling. New York announced a new procurement process for Delaware bypass connection in 2025, so this course does not describe it as completed. Moccasin supplies a separate aging-pipe and support-renewal comparison. Every lesson calculation uses independent assumptions rather than operating parameters from those projects.",
+  "timeline": [
+    {
+      "year": "1949",
+      "event": "墾務局焊接鋼製壓力管專論初版發行；非本課工程開工年。~Reclamation first issues the welded-steel penstock monograph; this is a publication milestone."
+    },
+    {
+      "year": "2020",
+      "event": "EPANET第二點二版手冊發布，提供延時管網模型方法。~The EPANET 2.2 manual documents extended-period network modeling."
+    },
+    {
+      "year": "2025",
+      "event": "紐約公告繞道接通重新採購，保留供水與施工協調限制。~New York announces renewed bypass-connection procurement, retaining supply and construction constraints."
+    }
+  ],
+  "codes": [
+    "墾務局工程專論第三號：壓力管機理與歷史設計參照~Reclamation Engineering Monograph 3: penstock mechanics and historical design reference",
+    "美國環保署EPANET第二點二版手冊：延時模型與單位定義~US EPA EPANET 2.2 User Manual: extended-period models and unit definitions"
+  ],
+  "landmarks": [
+    "德拉瓦輸水隧道繞道修復~Delaware Aqueduct bypass repair",
+    "莫卡辛壓力輸水管更新~Moccasin Penstock renewal"
+  ],
+  "place": {
+    "name": "紐約德拉瓦輸水系統~New York Delaware water system",
+    "country": "美國~United States",
+    "lat": 41.5,
+    "lng": -74.0,
+    "query": "Delaware Aqueduct Newburgh New York"
+  },
+  "sources": [
+    {
+      "key": "usbr-penstocks",
+      "title": "美國墾務局焊接鋼製壓力管專論",
+      "titleEn": "Welded Steel Penstocks, Engineering Monograph 3",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/EM/EM03.pdf",
+      "sourceType": "primary",
+      "scope": "支持水錘、管殼、支座及試驗原理；歷史技術指南不能替代現行地方規範。",
+      "scopeEn": "Supports water hammer, shell, support and testing principles; this historical guide does not replace current local requirements."
+    },
+    {
+      "key": "epa-epanet",
+      "title": "美國環保署配水管網模型手冊",
+      "titleEn": "EPA EPANET 2.2 User Manual",
+      "publisher": "US EPA",
+      "url": "https://usepa.github.io/EPANET2.2/",
+      "sourceType": "primary",
+      "scope": "支持延時管網、需求與水質模型；不是快速水錘求解器。",
+      "scopeEn": "Supports extended-period network, demand and water-quality modeling; not a rapid water-hammer solver."
+    },
+    {
+      "key": "nyc-delaware",
+      "title": "紐約德拉瓦輸水隧道繞道接通公告",
+      "titleEn": "Delaware Aqueduct Bypass Connection Update",
+      "publisher": "NYC DEP",
+      "url": "https://www.nyc.gov/site/dep/news/25-018/nyc-dep-develop-new-contract-final-connection-delaware-aqueduct-bypass-tunnel-following",
+      "sourceType": "primary",
+      "scope": "核對二〇二五年公告的漏水修復與供水協調；不宣稱繞道已接通，也不把教學閥門曲線當工程實測。",
+      "scopeEn": "Verifies the 2025 repair and supply-coordination announcement; does not claim completed connection or project-specific teaching valve curves."
+    },
+    {
+      "key": "sfpuc-moccasin",
+      "title": "莫卡辛壓力輸水管更新計畫",
+      "titleEn": "Moccasin Penstock Project",
+      "publisher": "SFPUC",
+      "url": "https://www.sfpuc.gov/construction-contracts/construction-projects/moccasin-penstock",
+      "sourceType": "primary",
+      "scope": "核對壓力管連結供水與發電、老舊管段及支承更新議題；現行頁列為規劃，不當竣工案例。",
+      "scopeEn": "Verifies combined water/power service and aging pipe/support issues; the page describes planning, not completed replacement."
+    },
+    {
+      "key": "wsd-mainlaying",
+      "title": "香港水務署敷設水管實務手冊",
+      "titleEn": "Manual of Mainlaying Practice",
+      "publisher": "Hong Kong Water Supplies Department",
+      "url": "https://www.wsd.gov.hk/filemanager/en/content_1456/Manual%20of%20Mainlaying%20Practice%20%28Amendment%20No.%201_2021%29.pdf",
+      "sourceType": "primary",
+      "scope": "支持管線材料、施工介面及測漏接觸點配置；此引用明示二〇二一年修訂文件。",
+      "scopeEn": "Supports materials, construction interfaces and acoustic contact-point provision; this reference explicitly identifies the 2021 amendment."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Bureau of Reclamation",
+      "nameEn": "US Bureau of Reclamation",
+      "business": "水務管理、研究或工程技術資料提供機構",
+      "businessEn": "Water management, research or engineering-information institution",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/EM/EM03.pdf",
+      "role": "本課來源及技術參照機構；未宣稱承包任何列名工程",
+      "roleEn": "Course source and technical reference; no contracting role in a named project is implied",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "Hong Kong Water Supplies Department",
+      "nameEn": "Hong Kong Water Supplies Department",
+      "business": "水務管理、研究或工程技術資料提供機構",
+      "businessEn": "Water management, research or engineering-information institution",
+      "url": "https://www.wsd.gov.hk/filemanager/en/content_1456/Manual%20of%20Mainlaying%20Practice%20%28Amendment%20No.%201_2021%29.pdf",
+      "role": "本課來源及技術參照機構；未宣稱承包任何列名工程",
+      "roleEn": "Course source and technical reference; no contracting role in a named project is implied",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "facts": [
+    "原創教學假設算例，以下量值用於簡化機理比較：假設連通水面高於管線低點h=50 m、水ρ=1000 kg/m³、g=9.81 m/s²，表壓p=ρgh=490.5 kPa，為靜止水情境。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume a connected water surface h=50 m above the low point, water ρ=1000 kg/m³ and g=9.81 m/s². Gauge pressure p=ρgh=490.5 kPa for stationary water.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設量方寬B=2.5 m、深H=3.0 m、長L=100 m，原狀幾何體積V=BHL=750 m³；不含土方鬆脹。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume measured width B=2.5 m, depth H=3.0 m and length L=100 m. In-situ geometric volume V=BHL=750 m³, excluding bulking.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設每米向下荷載w=12 kN/m、有效管床寬b=0.60 m，平均接觸壓q=w/b=20 kPa，假設接觸連續。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume downward line load w=12 kN/m and effective bedding width b=0.60 m. Mean contact pressure q=w/b=20 kPa, assuming continuous contact.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設管節重量W=100 kN、每腿與鉛直夾角θ=30°，T=W/(2cosθ)=57.74 kN；不是吊具額定容量。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume pipe weight W=100 kN and each leg at θ=30° from vertical. T=W/(2cosθ)=57.74 kN, not a rigging capacity rating.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設p=1.50 MPa、管徑D=1.20 m、壁厚t=0.012 m，σθ=pD/(2t)=75.0 MPa，僅為名目環應力。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume p=1.50 MPa, diameter D=1.20 m and thickness t=0.012 m. σθ=pD/(2t)=75.0 MPa is nominal hoop stress only.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設p=0.80 MPa、D=1.20 m、轉向角θ=90°，A=πD²/4=1.131 m²；F=2pA sin(θ/2)=1.280 MN。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume p=0.80 MPa, D=1.20 m and deflection θ=90°. A=πD²/4=1.131 m² and F=2pA sin(θ/2)=1.280 MN."
+  ],
+  "related": [
+    "b261",
+    "b263"
+  ],
+  "architectureNodes": [
+    [
+      "路線地層",
+      "Alignment and ground"
+    ],
+    [
+      "管床支承",
+      "Bedding support"
+    ],
+    [
+      "管節接頭",
+      "Pipe sections and joints"
+    ],
+    [
+      "錨定傳力",
+      "Anchorage load path"
+    ],
+    [
+      "試驗交接",
+      "Testing and handover"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ]
+  ]
+}

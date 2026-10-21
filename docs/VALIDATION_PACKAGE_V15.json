@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-21",
+  "reviewer": "/root/ai_sync/locks_coast",
+  "status": "PASS",
+  "scope": "Independent static review and small temporary-directory package fixtures; actual release ZIPs were not created or verified in this run.",
+  "commands": [
+    {
+      "command": "python tools/test-package-v15.py",
+      "exitCode": 0,
+      "tests": 9,
+      "result": "9 tests PASS, including nested .openai negative fixtures and the root hosting.json positive fixture; temporary fixture roots only."
+    }
+  ],
+  "checks": [
+    "Private directories at root and nested paths; model weight/key/database suffixes; exact portable data README/.gitkeep exceptions.",
+    "Required public frontend, local backend, build dependencies and AI/sync source files remain eligible.",
+    "ZIP .sh and .command permissions are 0755; normal documents 0644. Small archives are deterministic and CRC-valid.",
+    "A same-size source edit after the SHA snapshot is rejected rather than silently packaged.",
+    "Two independent small part ZIPs have disjoint members; their union, decoded bytes and per-file SHA-256 equal the small full fixture archive.",
+    "Existing matching release artifacts and source-tree output are rejected before validation subprocesses or ZIP writes."
+  ],
+  "pending": [],
+  "limitations": [
+    "This does not run the actual release packager or release gates, or validate final production ZIP files.",
+    "The two small part fixtures test independent archive semantics; real MiB grouping and final file counts will be checked after release packaging.",
+    "Known token/private-key pattern scan of the pre-fix real candidate tree found zero matches, but is not proof against every credential format.",
+    "A rejected changed-source fixture leaves a partial temporary ZIP, as expected; no success inventory/checksum is emitted by that failed run."
+  ],
+  "resolvedIssues": [
+    "Nested .openai auth and hosting files are now rejected; only root .openai/hosting.json remains permitted.",
+    "Root old SHA256SUMS.txt is excluded; nested laboratory checksums remain permitted.",
+    "Private directory checks apply at every depth and model weights/private key formats are excluded.",
+    "Mac .command entry retains executable ZIP mode; expected SHA snapshots detect input changes.",
+    "Reusing an output containing release archives/checksums/inventory is rejected, preventing stale part mixing."
+  ],
+  "fileSnapshots": {
+    "tools/package-v15.py": "432303d8f03f59a3f4970ef3ec6635be96e62966dda7fe544f11301c87e7fdfa",
+    "tools/test-package-v15.py": "a3d9c424b2596b71a8138d629043df5db842b5e0e0a2adfcd488a6bea90b743f"
+  }
+}

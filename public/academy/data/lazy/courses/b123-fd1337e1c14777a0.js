@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b123-fd1337e1c14777a0.json"]={sha256:"fd1337e1c14777a0174ccb01235f5813cb3d93a7ef27074c24067df5f2b4909a",value:{"id":"b123","title":"挪威里菲爾克隧道","titleEn":"Ryfylke Tunnel","category":"underground","kind":"project","summary":"以「挪威里菲爾克隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Ryfylke Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/resources/b221-0358681129413d69.json"]={sha256:"0358681129413d694f2db0077a39cc2f3e69cdc42f82f5d05325e60a8b31d215",value:{"sources":[{"id":"b-src-delta","title":"De Deltawerken","url":"https://www.rijkswaterstaat.nl/water/waterbeheer/bescherming-tegen-het-water/waterkeringen/deltawerken","publisher":"Rijkswaterstaat","scope":"Project-family primary overview for Dutch Delta Works, including flood defenses."}],"media":{"courses":[]},"related":{"courses":[]},"places":{"courses":[]},"vendors":{"courses":[],"vendors":[]}}};

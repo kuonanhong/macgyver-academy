@@ -2,6 +2,21 @@
 (function(){
 'use strict';
 const factories={
+"water-paths.js":function(require, exports) {
+'use strict';
+// Authored V15 collection; counts are computed from the loaded slim catalog.
+const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const WATER_GROUPS=[["water-dams", "世界水壩與水庫", "World dams and reservoirs"], ["water-systems", "防潮、航運與大壩施工", "Tidal barriers, navigation and dam construction"], ["water-hydraulics", "壩工監測、溢洪與壓力水路", "Dam monitoring, spillways and pressure waterways"], ["water-rivers", "輸配水、河川與都市防洪", "Water conveyance, rivers and urban flood protection"], ["water-coasts", "海岸、港灣與水資源韌性", "Coasts, ports and water-resource resilience"]];
+function waterPathsMarkup(catalog,zh=true){
+ const courses=catalog.filter(c=>c.category==='water'&&(c.status==='guided'||c.stages?.length));
+ if(courses.length<100)return '';
+ const p=(z,en)=>zh?z:en,total=courses.reduce((n,c)=>n+(c.stepCount||0),0);
+ return `<section class="packaging-collection" aria-labelledby="waterCollectionTitle"><div class="packaging-collection-head"><div><span class="eyebrow">COLLECTION 15 · WATER</span><h2 id="waterCollectionTitle">${p('水利與海岸工程：理解水流、結構與韌性。','Water and coastal engineering: connect flow, structures and resilience.')}</h2><p>${courses.length} ${p('門逐步課程','guided courses')} · ${total.toLocaleString()} ${p('個步驟','steps')}</p></div><a class="button" href="#learning-map">${p('開啟學習地圖','Open learning map')} ↗</a></div><p>${p('每門新增10個技術單元、40個步驟，逐一練習機制、定量算例、量測驗證及失效診斷，並附工程史、規範索引、對照案例與原創架構圖。','Each course adds ten technical units and forty steps covering mechanisms, quantitative examples, verification and failure diagnosis, with engineering history, guide references, comparisons and original functional diagrams.')}</p><p><a href="data/water-coastal-100.csv" download>${p('下載100門中英課程索引','Download the 100-course bilingual index')} ↓</a></p><p><a href="assets/labs/v15/water-labs-v15.zip" download>${p("下載6個可執行水工練習","Download six executable water-engineering exercises")} ↓</a></p><details><summary>${p('展開5個水利與海岸子領域','Explore five water and coastal disciplines')}</summary><div class="packaging-route-grid">${WATER_GROUPS.map(([id,z,en])=>`<article><h3>${e(p(z,en))}</h3><ol>${courses.filter(c=>c.learningSubdiscipline===id).map(c=>`<li><a href="#project/${e(c.id)}">${e(p(c.title,c.titleEn))}</a></li>`).join('')}</ol></article>`).join('')}</div></details></section>`;
+}
+
+Object.defineProperty(exports, "WATER_GROUPS", { enumerable: true, get: () => WATER_GROUPS });
+Object.defineProperty(exports, "waterPathsMarkup", { enumerable: true, get: () => waterPathsMarkup });
+},
 "lab-resources.js":function(require, exports) {
 'use strict';
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -591,6 +606,44 @@ Object.defineProperty(exports, "computingLabKind", { enumerable: true, get: () =
 Object.defineProperty(exports, "calculateComputingLab", { enumerable: true, get: () => calculateComputingLab });
 Object.defineProperty(exports, "computingLabDetail", { enumerable: true, get: () => computingLabDetail });
 },
+"water-diagram-motifs.js":function(require, exports) {
+'use strict';
+// Original symbols for functional learning diagrams; not engineering drawings.
+const waterMotifs={
+ 'water-dam':'<path d="M-36-8H-7M-36 3H-7M-36 14H-7M-8-30H5L31 30H-8ZM-40 30H40"/><path d="M0-17L12 16H21" stroke-dasharray="4 3"/>',
+ 'water-gate':'<path d="M-36 30H36M-24 30V-28M24 30V-28M-24-28H24M0-28V-10M-16-10H16V22H-16ZM-36 2H-27M27 14H36M-36 12H-27"/>',
+ 'water-lock':'<path d="M-38-20H38M-38 20H38M-25-20V20M25-20V20M-16 0H16L10 10H-10ZM-32-32V-22M32 22V32"/><path d="M-8-20V-30H8V-20M-8 20V30H8V20"/>',
+ 'water-hydraulic':'<path d="M-38-26H-8L8 22H38M-38-16H-14L2 30H38M4 12Q12-4 23 12Q32 25 40 12M12 30V38M28 30V38"/>',
+ 'water-pipe':'<path d="M-38-8H-18V-28H18V-8H38M-38 8H-2V-12H2V8H38M-28-14V14M28-14V14"/><circle cx="0" cy="-28" r="8"/><path d="M0-33V-28L5-25"/>',
+ 'water-river':'<path d="M-24-34C20-12-22 12 24 34M-40-34C4-12-38 12 8 34M-34 10L-24-2-14 10M15-10L25-22 35-10"/><path d="M-8-18L0-13-8-8M-4 12L4 17-4 22"/>',
+ 'water-coast':'<path d="M-38-20Q-30-30-22-20T-6-20T10-20T26-20T42-20M-38-4Q-30-14-22-4T-6-4T10-4M-10 30L7 7 20 7 38 30ZM-38 30H40"/><path d="M1 22L9 17 17 23M15 8L17 15"/>',
+ 'water-port':'<path d="M-36 0H36M-26 0V30M-8 0V30M10 0V30M28 0V30M-20 0V-32H22M-18-30L12-8M20-32V-14M14-14H26L20-7Z"/><path d="M-36 34Q-28 26-20 34T-4 34T12 34T28 34"/>',
+ 'water-ecology':'<path d="M-36 22Q-26 12-16 22T4 22T24 22T44 22M-24 18V-20M-24-4Q-38-16-27-25M-24 6Q-10-6-20-14M10 18V-30M10-12Q-3-23 7-32M10 3Q25-9 15-18"/>'
+};
+
+function waterComponentMotif(name,family){
+ if(!String(family).startsWith('water-'))return '';
+ const n=String(name).toLowerCase();
+ if(/monitor|sensor|track|uncertainty|measurement|survey|instrument|spectr|correlat|acoustic/.test(n))return '<rect x="-32" y="-26" width="64" height="48" rx="4"/><path d="M-24 9L-15-3-6 4 4-15 14-5 24-10M0 22V32M-16 32H16"/>';
+ if(/weight|buoyan|moment|torque|stress|force|bearing|hinge|uplift|sliding|stability/.test(n))return '<rect x="-18" y="-14" width="36" height="28" rx="2"/><path d="M0-36V-17M-5-23L0-17 5-23M0 36V17M-5 23L0 17 5 23M-36 0H-21M-27-5L-21 0-27 5M-28 28H28"/>';
+ if(/filter|poros|permeab|seep|drainage|grouting/.test(n))return '<path d="M-32-26V26H32V-26M-38 0H-25M25 0H38M32-5L38 0 32 5"/><circle cx="-15" cy="-13" r="6"/><circle cx="1" cy="-13" r="6"/><circle cx="17" cy="-13" r="6"/><circle cx="-7" cy="10" r="7"/><circle cx="11" cy="10" r="7"/>';
+ if(/hydrograph|routing|storage|balance|reservoir|retention|residence/.test(n))return '<path d="M-28-25V26H28V-25M-28 3Q-19-4-10 3T8 3T26 3M-40-14H-13M-19-19L-13-14-19-9M13 15H40M34 10L40 15 34 20"/>';
+ if(/tide|surge|wave|spectrum|overtop|runup|reflection/.test(n))return '<path d="M-38-6Q-26-32-14-6T10-6T34-6M-38 14Q-26-12-14 14T10 14T34 14M-38 34H38M-28-28V-8M-33-23L-28-28-23-23"/>';
+ if(/pipe|flow|discharge|velocity|drag|head loss|friction|water hammer/.test(n))return '<path d="M-38-16H-8V-28H18V-16H38M-38 16H38M-20 0H21M13-7L21 0 13 7M-29-22V22M29-22V22"/>';
+ if(/gate|barrier|closure|opening|seal/.test(n))return waterMotifs['water-gate'];
+ if(/lock|navigation|vessel|queue|ship/.test(n))return waterMotifs['water-lock'];
+ if(/sediment|scour|erosion|bedload|grading|silt/.test(n))return '<path d="M-38-16Q-28-24-18-16T2-16T22-16T42-16M-38 10Q-14 10-8 23T10 23T38 10M-32 30H32"/><circle cx="-26" cy="2" r="3"/><circle cx="-11" cy="5" r="3"/><circle cx="8" cy="9" r="3"/><circle cx="26" cy="1" r="3"/>';
+ if(/salt|salin|mixing|tracer|diffusion|concentration|quality/.test(n))return '<path d="M-26-30V29H26V-30M-26 8H26M-26-8H26M0-30V3M-5-3L0 3 5-3"/><circle cx="-14" cy="19" r="2"/><circle cx="2" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><circle cx="-13" cy="-18" r="2"/><circle cx="15" cy="-18" r="2"/>';
+ if(/rain|storm|catchment|runoff/.test(n))return '<path d="M-28-8C-42-22-21-34-12-23C-8-40 19-35 20-22C39-23 39-7 27-7ZM-22 4L-27 14M-5 4L-10 14M12 4L7 14M29 4L24 14M-38 30L-12 20 8 30 34 19"/>';
+ if(/lift|sling|crane|placement/.test(n))return '<path d="M0-35V-22M-26 8L0-22 26 8M-26 8H26V30H-26ZM0-22V8M-34 34H34"/>';
+ if(/power|pump|turbine|energy|efficien/.test(n))return '<circle r="24"/><circle r="6"/><path d="M0-6V-24M6 0H24M0 6V24M-6 0H-24M-38 0H-24M24 0H38M-12 25V33H12V25"/>';
+ if(/scale|froude|similarity/.test(n))return '<path d="M-36 23V-25H-8V23ZM12 23V-1H26V23ZM-36 31H26M-3-14H22M16-19L22-14 16-9M-28-8H-16M16 11H22"/>';
+ return '';
+}
+
+Object.defineProperty(exports, "waterMotifs", { enumerable: true, get: () => waterMotifs });
+Object.defineProperty(exports, "waterComponentMotif", { enumerable: true, get: () => waterComponentMotif });
+},
 "underground-diagram-motifs.js":function(require, exports) {
 'use strict';
 /* Original code-native educational symbols. Not dimensioned construction drawings. */
@@ -622,6 +675,7 @@ Object.defineProperty(exports, "undergroundComponentMotif", { enumerable: true, 
 },
 "world-project-visuals.js":function(require, exports) {
 'use strict';
+const { waterMotifs, waterComponentMotif } = require("water-diagram-motifs.js");
 const { undergroundMotifs, undergroundComponentMotif } = require("underground-diagram-motifs.js");
 /* Original functional relationships drawn from course-authored components.
  * Not a vendor drawing, physical CAD, plant layout or as-built document. */
@@ -634,6 +688,7 @@ function wrapLabel(value){
 }
 function worldVisualFamily(course={}){return course.architectureFamily||'';}
 function motif(family){
+ if(waterMotifs[family])return waterMotifs[family];
  if(undergroundMotifs[family])return undergroundMotifs[family];
  const optics={"telescope": "<path d=\"M-30 18L20-22M-24 26L26-14M20-22L26-14\"/><circle cx=\"-27\" cy=\"22\" r=\"5\"/><path d=\"M-6 6L-14 34M-6 6L4 34\"/>", "microscope": "<path d=\"M-6-34h12v10h-12zM0-24v26M-14 2h28M-10 2l-6 14h32l-6-14M-26 34h52M18 16q10 6 0 18\"/>", "laser": "<rect x=\"-34\" y=\"-12\" width=\"40\" height=\"24\" rx=\"3\"/><path d=\"M6 0H36M28-6L36 0L28 6M-26-12v-6M-14-12v-6\"/>", "accelerator": "<circle r=\"28\"/><circle r=\"20\" stroke-dasharray=\"4 4\"/><path d=\"M28 0l8-4v8z\"/><circle cx=\"-20\" cy=\"-20\" r=\"3\" fill=\"currentColor\"/>", "detector": "<rect x=\"-30\" y=\"-30\" width=\"60\" height=\"60\" rx=\"4\"/><path d=\"M-30-10H30M-30 10H30M-10-30V30M10-30V30\"/><path d=\"M-36 30L0 0\" stroke-dasharray=\"3 3\"/>", "spectrometer": "<path d=\"M-34 0H-12M-12 0L-4-14L4 0Z\"/><path d=\"M4 0L34-18M4 0L34-6M4 0L34 6M4 0L34 18\"/>", "interferometer": "<path d=\"M-30 0H30M0-30V30M-8-8L8 8\"/><rect x=\"26\" y=\"-6\" width=\"6\" height=\"12\"/><rect x=\"-6\" y=\"-34\" width=\"12\" height=\"6\"/>", "gw": "<path d=\"M-30 30H34M-30 30V-34\"/><circle cx=\"34\" cy=\"30\" r=\"4\"/><circle cx=\"-30\" cy=\"-34\" r=\"4\"/><path d=\"M-24 6q8-8 16 0t16 0 16 0\"/>", "radio": "<path d=\"M-30-10q30 50 60 0M0 14V34M-14 34h28M0 14V-20M-6-20h12\"/>", "vacuum": "<circle r=\"22\"/><path d=\"M-22 0h-12M22 0h12M0 22v12M-8 34h16\"/><circle r=\"8\" stroke-dasharray=\"2 3\"/>", "cryo": "<path d=\"M0-32V32M-28-16L28 16M-28 16L28-16M-6-26L0-32L6-26M-6 26L0 32L6 26\"/>", "coating": "<path d=\"M-32 18H32M-32 10H32M-32 2H32M-32-6H32M-20-34L-4-8M4-8L20-34\"/>", "lithography": "<ellipse cx=\"0\" cy=\"-24\" rx=\"24\" ry=\"6\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"18\" ry=\"5\"/><path d=\"M-30 24H30M-24 30H24\"/><path d=\"M-10-34L-2 20M10-34L2 20\" stroke-dasharray=\"3 3\"/>", "stage": "<rect x=\"-32\" y=\"-12\" width=\"64\" height=\"30\" rx=\"3\"/><rect x=\"-18\" y=\"-26\" width=\"36\" height=\"14\" rx=\"2\"/><path d=\"M-36 30H36M-20 18v12M20 18v12\"/>", "inertial": "<circle r=\"26\"/><ellipse rx=\"26\" ry=\"9\"/><circle r=\"4\" fill=\"currentColor\"/><path d=\"M26 0l6-6M26 0l6 6\"/>", "electron": "<path d=\"M-14-34h28l-6 14h-16zM-8-20v40M8-20v40M-20 24h40M-12-4h24M-12 8h24\"/>", "fabrication": "<path d=\"M-30 10q30-24 60 0M-30 10H30M0-16V-4\"/><circle cx=\"0\" cy=\"-24\" r=\"8\"/>", "modulator": "<rect x=\"-24\" y=\"-24\" width=\"48\" height=\"48\"/><path d=\"M-24-8H24M-24 8H24M-8-24V24M8-24V24M-36-30L-24-12M36 30L24 12\"/>", "imaging": "<path d=\"M0-30q14 30 0 60q-14-30 0-60z\"/><path d=\"M-34-10L0 0L34-10M-34 10L0 0L34 10\"/>"};
  if(optics[family])return optics[family];
@@ -651,6 +706,7 @@ function motif(family){
  return '<path d="M-35-23H-10V23H-35ZM10-23H35V23H10ZM-10-12H10M-10 12H10M-25-34V-23M25 23V34"/><path d="M-24-12q12 12 0 24M24-12q-12 12 0 24"/>';
 }
 function componentMotif(name,family){
+ const water=waterComponentMotif(name,family);if(water)return water;
  const underground=undergroundComponentMotif(name,family);if(underground)return underground;
  const n=String(name).toLowerCase();
  if(/monitor|diagnostic|readout|measurement|meter/.test(n))return '<rect x="-32" y="-25" width="64" height="43" rx="3"/><path d="M-25 0h11l7-13 13 23 8-10h11M0 18v12M-16 30h32"/>';
@@ -2536,6 +2592,7 @@ const textFor = course => [course.title, course.titleEn, course.summary, course.
 
 /** These are editorial learning families, not rankings or geographic locations. */
 const LEARNING_TRACKS = [
+  {id:'water',icon:'process',title:pair('水利與海岸工程','Water & coastal engineering'),description:pair('100門課串接世界水壩、河川防洪、輸配水、船閘、海岸與港灣。','100 courses connect world dams, flood management, conveyance, locks, coasts and ports.'),boundary:pair('分開教學假設與實測邊界；用守恆、量測與不確定度檢核水工模型。','Separate teaching assumptions from measured boundaries; verify hydraulic models through conservation, measurement and uncertainty.')},
   {id:'underground',icon:'bridge',title:pair('隧道與地下工程','Tunnels & underground engineering'),description:pair('100門課程串接世界隧道、地質調查、潛盾、支護、地下水與地盤改良。','100 courses connect landmark tunnels, investigation, TBMs, support, groundwater and ground improvement.'),boundary:pair('從公開原理與教學算例學習；施工參數必須依實測地層與審查另定。','Learn from public principles and teaching examples; field parameters require measured ground data and review.')},
   {id:'quantum', icon:'quantum', title:pair('量子電腦與 QPU','Quantum computers & QPUs'), description:pair('依物理實作、控制、讀出與錯誤處理比較量子門派。','Compare physical implementations, control, readout and error handling.'), boundary:pair('共同點是量子態準備、控制與量測；低溫、雷射、光損耗及錯誤模型各不相同。','State preparation, control and measurement are shared; cryogenics, lasers, optical loss and error models differ.')},
   {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('從神經網路到 GPU、TPU、資料流與推論服務。','From neural networks to GPUs, TPUs, dataflow and inference services.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
@@ -2560,6 +2617,12 @@ const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 const LEARNING_SUBDISCIPLINES = [
+  subdivision("water-dams","water","世界水壩與水庫","World dams and reservoirs",/water-dams/i),
+  subdivision("water-systems","water","防潮、航運與大壩施工","Tidal barriers, navigation and dam construction",/water-systems/i),
+  subdivision("water-hydraulics","water","壩工監測、溢洪與壓力水路","Dam monitoring, spillways and pressure waterways",/water-hydraulics/i),
+  subdivision("water-rivers","water","輸配水、河川與都市防洪","Water conveyance, rivers and urban flood protection",/water-rivers/i),
+  subdivision("water-coasts","water","海岸、港灣與水資源韌性","Coasts, ports and water-resource resilience",/water-coasts/i),
+
   subdivision("ug-landmarks","underground","世界隧道與地下巨作","World tunnels and underground landmarks",/ug-landmarks/i),
   subdivision("ug-investigation","underground","地質調查與變形監測","Ground investigation and deformation monitoring",/ug-investigation/i),
   subdivision("ug-tbm","underground","潛盾與掘進系統","Shield and tunnel-boring systems",/ug-tbm/i),
@@ -2633,6 +2696,12 @@ const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
+  {"id": "water-landmarks", "title": ["世界水壩的受力與調度", "Forces and operations at world dams"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b231", "b233", "b235", "b241", "b244", "b202", "three-gorges", "b216"]},
+  {"id": "water-barriers", "title": ["防潮、船閘與水位控制", "Tidal barriers, locks and water-level control"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b250", "b251", "b221", "b222", "b223", "b224", "b225", "b226", "b227"]},
+  {"id": "water-hydraulics", "title": ["從水力相似到壩工驗證", "From hydraulic similarity to dam verification"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b257", "b244", "b249", "b242", "b253", "b254", "b256", "b260"]},
+  {"id": "water-river", "title": ["從輸配水到河川防洪", "From water conveyance to flood resilience"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b261", "b264", "b265", "b269", "b270", "b271", "b272", "b279", "b280"]},
+  {"id": "water-coast", "title": ["從波浪到港灣與海岸韌性", "From waves to ports and coastal resilience"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b257", "b281", "b282", "b283", "b285", "b288", "b295", "b296", "b300"]},
+
   {"id": "ug-investigate-bore", "title": ["從地質證據到潛盾監測", "From ground evidence to TBM monitoring"], "goal": ["先確認地層與觀測可信度，再比較開挖面、灌漿、導向與沉陷。", "Establish ground evidence and measurement quality before comparing face balance, grout, guidance and settlement."], "courses": ["b126", "b128", "b132", "b135", "b136", "b137", "b143", "b145", "hsuehshan"]},
   {"id": "ug-rock-support", "title": ["從岩體到支護與世界長隧道", "From rock masses to support and long tunnels"], "goal": ["比較節理與應力、開挖序列、能量耗散與支護驗證。", "Compare joints and stress, excavation sequence, energy dissipation and support verification."], "courses": ["b130", "b131", "b148", "b151", "b153", "b160", "b161", "b103", "b116"]},
   {"id": "ug-water-city", "title": ["從地下水到城市地下空間", "From groundwater to urban underground space"], "goal": ["串接防排水、明挖沉管、地盤改良與既有管線維護。", "Connect water control, cut-and-cover and immersed works, ground improvement and utility maintenance."], "courses": ["b163", "b164", "b166", "b168", "b170", "b179", "b186", "b190", "b196", "b199"]},
@@ -2657,7 +2726,7 @@ const LEARNING_ROUTES = [
 
 const TRACK_IDS = new Set(LEARNING_TRACKS.map(track => track.id));
 const SUBDISCIPLINE_IDS = new Map(LEARNING_SUBDISCIPLINES.map(subdivision => [subdivision.id, subdivision]));
-const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'civil',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
+const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'water',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
 
 function classifyLearningCourse(course = {}) {
   // Generic roadmap summaries mention security and testing in every category;
@@ -4041,8 +4110,38 @@ async function initializeServices() {
 
 Object.defineProperty(exports, "initializeServices", { enumerable: true, get: () => initializeServices });
 },
+"lazy-index-codec.js":function(require, exports) {
+'use strict';
+/* V15 wire format. The expanded in-memory index remains backward-compatible. */
+function expandLazyIndex(value) {
+  if (value?.compactVersion !== 1) return value;
+  const invalid = () => { throw Error('Invalid compact curriculum index.'); };
+  if (value.lazyVersion !== 1 || !Array.isArray(value.catalog) || value.catalog.length > 20000) invalid();
+  const descriptors = (entries, group) => {
+    if (!entries || typeof entries !== 'object' || Array.isArray(entries)) invalid();
+    return Object.fromEntries(Object.entries(entries).map(([id, tuple]) => {
+      if (!/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/.test(id) || ['constructor', 'prototype'].includes(id) || !Array.isArray(tuple) || tuple.length !== 2 || !/^[a-f0-9]{64}$/.test(tuple[0]) || !Number.isSafeInteger(tuple[1]) || tuple[1] < 2 || tuple[1] > 32 * 1024 * 1024) invalid();
+      const [sha256, byteLength] = tuple, file = `data/lazy/${group}/${id}-${sha256.slice(0, 16)}.json`;
+      return [id, {file, script: file.replace(/\.json$/, '.js'), sha256, byteLength}];
+    }));
+  };
+  const catalog = value.catalog.map(course => {
+    if (!course || typeof course !== 'object' || Array.isArray(course)) invalid();
+    if (course.stages === undefined) return {...course};
+    if (!Array.isArray(course.stages) || course.stages.length > 1000) invalid();
+    return {...course, stages: course.stages.map(stage => {
+      if (!stage || !Array.isArray(stage.steps) || stage.steps.length > 10000 || stage.steps.some(id => typeof id !== 'string')) invalid();
+      return {...stage, steps: stage.steps.map(id => ({id}))};
+    })};
+  });
+  return {lazyVersion: 1, guidedIds: value.guidedIds, catalog, photos: value.photos, release: value.release, courses: descriptors(value.courses, 'courses'), resources: descriptors(value.resources, 'resources'), auxiliary: descriptors(value.auxiliary, 'data')};
+}
+
+Object.defineProperty(exports, "expandLazyIndex", { enumerable: true, get: () => expandLazyIndex });
+},
 "curriculum-loader.js":function(require, exports) {
 'use strict';
+const { expandLazyIndex } = require("lazy-index-codec.js");
 /* V14: catalogue first; one immutable course and its resources on demand.
  * Protected lesson responses are never taken from a static cache. */
 const ID=/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/;
@@ -4050,6 +4149,9 @@ const validID=id=>typeof id==='string'&&ID.test(id)&&!['constructor','prototype'
 const own=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
 const LIMIT=32*1024*1024;
 const CORE=new Set(['catalog','featured','photos','release']);
+class CurriculumRequestError extends Error {
+  constructor(status,url){super(`Curriculum request failed (${status||'network'}): ${url}`);this.status=status;}
+}
 function clone(value){return typeof structuredClone==='function'?structuredClone(value):JSON.parse(JSON.stringify(value));}
 function validateIndex(value){
   if(value?.lazyVersion!==1||!Array.isArray(value.catalog)||!value.catalog.length||value.catalog.length>20000||!Array.isArray(value.photos)||!Array.isArray(value.guidedIds)||!value.courses||!value.resources||!value.auxiliary)throw Error('Invalid lazy curriculum index.');
@@ -4090,7 +4192,7 @@ function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(...args),
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
     try{
       const response=await fetchImpl(url,{signal:controller.signal,credentials:'same-origin',redirect:'error',cache:cacheMode});
-      if(!response?.ok)throw Error(`Curriculum request failed (${response?.status||'network'}): ${url}`);
+      if(!response?.ok)throw new CurriculumRequestError(response?.status,url);
       const declared=response.headers?.get?.('content-length');if(declared&&Number(declared)>limit)throw Error('Curriculum response is too large.');
       let raw;
       if(response.body?.getReader){const reader=response.body.getReader(),chunks=[];let size=0;try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>limit){await reader.cancel();throw Error('Curriculum response is too large.');}chunks.push(value);}}finally{reader.releaseLock();}raw=new Uint8Array(size);let offset=0;for(const chunk of chunks){raw.set(chunk,offset);offset+=chunk.byteLength;}}
@@ -4099,7 +4201,19 @@ function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(...args),
     }finally{clearTimeout(timer);}
   }
   function index(){
-    if(!indexPromise)indexPromise=(async()=>{if(view?.MG_LAZY_INDEX)return validateIndex(view.MG_LAZY_INDEX);if(location?.protocol==='file:')throw Error('Initial catalogue is missing. Extract the complete ZIP.');return validateIndex((await json('data/lazy/index.json',12*1024*1024,'no-cache')).value);})().catch(error=>{indexPromise=null;throw error;});
+    if(!indexPromise)indexPromise=(async()=>{
+      if(view?.MG_LAZY_INDEX)return validateIndex(view.MG_LAZY_INDEX);
+      if(location?.protocol==='file:')throw Error('Initial catalogue is missing. Extract the complete ZIP.');
+      let response;
+      try{response=await json('data/lazy/index.compact.json',12*1024*1024,'no-cache');}
+      catch(error){
+        // Older releases have only the expanded index. Never bypass a bad
+        // payload, an authorization failure, or a network error with fallback.
+        if(!(error instanceof CurriculumRequestError)||![404,410].includes(error.status))throw error;
+        response=await json('data/lazy/index.json',12*1024*1024,'no-cache');
+      }
+      return validateIndex(expandLazyIndex(response.value));
+    })().catch(error=>{indexPromise=null;throw error;});
     return indexPromise;
   }
   function script(descriptor){return new Promise((resolve,reject)=>{
@@ -5408,6 +5522,65 @@ Object.defineProperty(exports, "mediaForCourse", { enumerable: true, get: () => 
 Object.defineProperty(exports, "learningMediaMarkup", { enumerable: true, get: () => learningMediaMarkup });
 Object.defineProperty(exports, "bindLearningMedia", { enumerable: true, get: () => bindLearningMedia });
 },
+"water-calculators.js":function(require, exports) {
+'use strict';
+/* Original, bounded teaching models. Inputs are hypothetical, never site limits. */
+const p=(id,zh,en,min,max,step,value,unit)=>[id,[zh,en],min,max,step,value,unit];
+const wmm='https://www.usbr.gov/tsc/techreferences/mands/wmm/indexframe.html';
+const cem='https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/636F617374616C20656E67696E656572696E67/';
+const WATER_LABS={
+ waterHydro:{title:['垂直平板靜水合力','Hydrostatic force on a vertical plate'],formula:'F = ρ g b (h₂² − h₁²) / 2',unit:'kN',params:[p('b','平板寬度','Plate width',.1,30,.1,4,'m'),p('top','頂緣水深','Top depth',0,50,.1,0,'m'),p('bottom','底緣水深','Bottom depth',.1,60,.1,5,'m')],note:['淡水、單側靜水、垂直矩形平板；深度由同一自由水面向下量。未計另一側水壓、波浪、動水與構件強度。','Freshwater on one side of a vertical rectangular plate; depths share one free surface. Opposite-side pressure, waves, dynamic water and member strength are excluded.'],question:['底緣水深加倍而頂緣仍在水面，合力會增加幾倍？','If bottom depth doubles with the top at the surface, how does force change?'],source:wmm},
+ waterPower:{title:['水輪機淨水頭與功率','Turbine net head and power'],formula:'P = ρ g Q H η',unit:'MW',params:[p('flow','流量','Flow',.1,1000,.1,40,'m³/s'),p('head','淨水頭','Net head',1,600,1,80,'m'),p('eta','總效率','Overall efficiency',.1,1,.01,.9,'')],note:['淡水穩態能量平衡；H為扣除管路損失後的淨水頭，η含水輪機與發電機效率。不含流量限制、空蝕或電網調度。','Steady freshwater energy balance; H is net of conveyance losses and η combines turbine and generator efficiency. Flow constraints, cavitation and grid dispatch are excluded.'],question:['若流量增加但淨水頭因損失下降，功率仍會線性增加嗎？','If increasing flow reduces net head through losses, does power still rise linearly?'],source:wmm},
+ waterManning:{title:['矩形明渠曼寧流量','Manning discharge in a rectangular channel'],formula:'Q = (1/n) A R^(2/3) S^(1/2); A = by; R = A/(b+2y)',unit:'m³/s',params:[p('b','渠寬','Channel width',.2,50,.1,5,'m'),p('depth','均勻水深','Uniform depth',.1,10,.1,2,'m'),p('n','曼寧糙度','Manning roughness',.01,.1,.001,.03,'s/m^(1/3)'),p('slope','能量坡降','Energy slope',.0001,.02,.0001,.001,'')],note:['SI單位、穩態均勻流、稜柱形矩形渠；濕周包括渠底及兩側。不能代替回水、急變流或複式斷面的水面線。','SI units, steady uniform flow and a prismatic rectangular channel; wetted perimeter includes bed and both sides. Backwater, rapidly varied flow and compound sections require other analyses.'],question:['渠寬有限時，為什麼不能直接把水深當成水力半徑？','Why is depth not equal to hydraulic radius in a finite-width channel?'],source:'https://www.hec.usace.army.mil/software/hec-ras/documentation/HEC-RAS_Hydraulic_Reference_Manual_v6.6.pdf'},
+ waterWeir:{title:['理想寬頂堰的臨界流','Critical flow over an ideal broad crest'],formula:'Q = C b √g (2H/3)^(3/2)',unit:'m³/s',params:[p('b','堰寬','Crest width',.2,30,.1,4,'m'),p('head','堰頂上游能量水頭','Upstream energy head above crest',.05,3,.05,1,'m'),p('c','無因次校正係數','Dimensionless correction factor',.5,1.2,.01,1,'')],note:['自由出流、矩形寬頂、可形成臨界流；H是堰頂基準的總能量水頭而非任意測點水深。C=1為理想推導，實際C須校正；未處理淹沒堰流。','Free rectangular broad-crested flow with a critical section. H is total energy above the crest, not an arbitrary depth. C=1 is ideal; actual C needs calibration. Submerged operation is excluded.'],question:['把水頭增加10%，流量約增加多少？','How much does discharge increase for a ten-percent head increase?'],source:'https://usbr.gov/tsc/techreferences/mands/wmm/chap02_13.html'},
+ waterJump:{title:['矩形水躍共軛水深','Conjugate depth of a rectangular jump'],formula:'Fr₁ = v₁/√(gy₁); y₂ = y₁(√(1+8Fr₁²)−1)/2',unit:'m',params:[p('depth','躍前水深','Upstream depth',.1,3,.1,.5,'m'),p('velocity','躍前速度','Upstream velocity',.5,20,.1,5,'m/s')],note:['水平、等寬矩形渠，以動量平衡估算共軛水深且要求Fr₁>1。水躍位置、尾水配合、護坦長度與脈動壓力須另外分析。','Momentum balance in a horizontal constant-width rectangular channel, requiring Fr₁>1. Jump position, tailwater compatibility, apron length and fluctuating pressures need separate analysis.'],question:['能量耗散了，為什麼不能用上下游比能相等求水躍？','Why is equal specific energy inappropriate across a dissipative jump?'],source:wmm},
+ waterCritical:{title:['矩形渠臨界水深','Critical depth in a rectangular channel'],formula:'y_c = (q²/g)^(1/3); q = Q/b',unit:'m',params:[p('flow','總流量','Total discharge',.1,500,.1,20,'m³/s'),p('b','渠寬','Channel width',.2,40,.1,5,'m')],note:['靜水壓分布、矩形斷面及動能修正係數為一。臨界深度由單寬流量決定，不等於一般河道的正常水深。','Hydrostatic pressure, a rectangular section and unit kinetic-energy correction. Critical depth follows unit discharge; it is not generally the normal depth of a river.'],question:['固定流量時把渠寬加倍，臨界水深如何改變？','At fixed discharge, how does doubling width change critical depth?'],source:'https://www.usbr.gov/tsc/techreferences/mands/wmm/chap02_12.html'},
+ waterFroude:{title:['福祿相似的模型流量','Model discharge under Froude similarity'],formula:'Q_m = Q_p / λ_L^(5/2)',unit:'m³/s',params:[p('flow','原型流量','Prototype discharge',1,10000,1,1000,'m³/s'),p('scale','原型／模型長度比','Prototype/model length ratio',2,100,1,25,'')],note:['無畸變、同重力的自由水面模型，λ_L為原型長度除以模型長度。雷諾數、表面張力與顆粒相似未必同時滿足。','Undistorted free-surface model under equal gravity; λ_L is prototype divided by model length. Reynolds number, surface tension and particle similarity may not be satisfied simultaneously.'],question:['為什麼流量倍率不是長度倍率的平方或立方？','Why is the discharge ratio neither the square nor the cube of the length ratio?'],source:cem},
+ waterWave:{title:['深水規則波能通量','Deep-water regular-wave energy flux'],formula:'P = ρg²H²T/(32π); L₀ = gT²/(2π)',unit:'kW/m',params:[p('height','規則波高','Regular wave height',.1,8,.1,2,'m'),p('period','週期','Period',2,15,.1,8,'s'),p('depth','水深','Water depth',5,400,1,100,'m')],note:['海水ρ=1025 kg/m³、線性規則波；要求水深≥L₀/2且H/L₀≤0.05。H不是不規則波有效波高；未處理碎波、折射或可擷取電功率。','Seawater ρ=1025 kg/m³ and linear regular waves; depth≥L₀/2 and H/L₀≤0.05. H is not significant wave height. Breaking, refraction and extractable electrical power are excluded.'],question:['波高加倍時能通量如何變化？為何規則波與波譜的係數不同？','What happens when wave height doubles, and why do regular-wave and spectral coefficients differ?'],source:cem},
+ waterStorage:{title:['分時段水庫質量平衡','Time-step reservoir mass balance'],formula:'S₂ = S₁ + (I−O)Δt',unit:'m³',params:[p('storage','初始庫容','Initial storage',0,1000000,1000,100000,'m³'),p('inflow','平均入流','Mean inflow',0,100,.1,10,'m³/s'),p('outflow','平均出流','Mean outflow',0,100,.1,8,'m³/s'),p('hours','時段長','Interval length',.1,24,.1,1,'h')],note:['I、O為同一時段平均值；此簡化式未含降雨、蒸發、滲漏與水位庫容曲線。負庫容會拒絕，不自動截斷來掩蓋守恆錯誤。','I and O are averages over the same interval. Rainfall, evaporation, leakage and stage-storage geometry are excluded. Negative storage is rejected rather than silently clamped.'],question:['使用洪峰瞬時流量代替整個時段平均入流，庫容會有什麼偏差？','What bias results from using the instantaneous peak as the interval mean inflow?'],source:wmm},
+ waterDarcy:{title:['飽和土體達西流量','Darcy discharge through saturated material'],formula:'Q = k A Δh/L',unit:'m³/h',params:[p('k','水力傳導係數','Hydraulic conductivity',.000001,.001,.000001,.00001,'m/s'),p('area','流通斷面','Flow area',1,1000,1,100,'m²'),p('head','水頭差','Head difference',.1,50,.1,5,'m'),p('length','流徑長','Flow-path length',.1,100,.1,10,'m')],note:['均質飽和一維層流、定常水頭邊界。裂隙、非飽和流、內部侵蝕與隨水頭變化的k不在此模型；流量不是管湧允收判據。','Homogeneous saturated one-dimensional laminar flow with steady head boundaries. Fractures, unsaturated flow, internal erosion and head-dependent k are excluded; discharge is not a piping acceptance criterion.'],question:['量得流量突然增加，應先排查水頭變化還是直接認定k變大？','If discharge rises suddenly, why check head changes before inferring a larger k?'],source:'https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html'},
+ waterHammer:{title:['快速速度變化的焦科夫斯基壓升','Joukowsky pressure rise for a rapid velocity change'],formula:'Δp = ρ a Δv; t_c ≤ 2L/a',unit:'MPa',params:[p('speed','壓力波速','Wave speed',200,1500,10,1000,'m/s'),p('dv','速度減量','Velocity decrease',.1,4,.1,1,'m/s'),p('length','管長','Pipe length',100,10000,100,1000,'m'),p('closure','速度變化時間','Velocity-change duration',.01,10,.01,.5,'s')],note:['淡水、充滿單管、快速速度減小，要求t_c≤2L/a；波速為含管壁順應性的輸入。未含氣穴、氣囊、反射疊加或複雜閥律，慢關必須另作暫態分析。','Freshwater in a full single pipe with a rapid velocity reduction, requiring t_c≤2L/a. Input wave speed includes wall compliance. Cavitation, air pockets, reflection superposition and complex valve laws are excluded; slow closure needs transient analysis.'],question:['若關閉時間超過往返波行時間，為何不能照搬此壓升？','Why does a closure longer than round-trip wave travel require a different calculation?'],source:'https://www.usbr.gov/tsc/techreferences/mands/manuals.html'},
+ waterOrifice:{title:['淹沒孔口的壓差流量','Differential-head discharge through a submerged orifice'],formula:'Q = C_d A √(2gΔh)',unit:'m³/s',params:[p('c','流量係數','Discharge coefficient',.1,1,.01,.6,''),p('area','孔口面積','Orifice area',.01,20,.01,1,'m²'),p('head','兩側水頭差','Differential head',.01,20,.01,2,'m')],note:['孔口兩側均淹沒且流量近似準穩態；Δh為兩水面差，C_d須以幾何與實測校正。填閘時Δh變動，不能把初始Q乘全程時間代替積分。','Both sides submerged and approximately quasi-steady. Δh is the free-surface difference and C_d needs geometric and measured calibration. During lock filling, changing head requires integration rather than initial Q times total duration.'],question:['水頭差降至原值四分之一，瞬時流量變成多少？','What happens to instantaneous flow when head difference falls to one quarter?'],source:wmm}
+};
+function waterLabKind(course,step={}){
+ if(course.category!=='water'||!(course.educationEdition===15||(course.v15Extension&&String(step.id||'').includes('-v15-'))))return '';
+ const t=`${step.titleEn||''} ${step.anchorEn||''}`.toLowerCase();
+ for(const [re,k] of [[/water.?hammer|joukowsky|surge|wave speed/,'waterHammer'],[/froude.*simil|scale|similarity/,'waterFroude'],[/conjugate|hydraulic jump/,'waterJump'],[/critical depth/,'waterCritical'],[/manning|roughness|channel conveyance/,'waterManning'],[/broad.?crest|weir/,'waterWeir'],[/orifice|filling|emptying|culvert/,'waterOrifice'],[/darcy|permeab|seepage|conductivity/,'waterDarcy'],[/wave energy|wave power|wave flux/,'waterWave'],[/power|efficiency|turbine/,'waterPower'],[/storage|mass balance|routing|water budget/,'waterStorage'],[/hydrostatic|pressure force|water load/,'waterHydro']])if(re.test(t))return k;
+ return ''; // Do not attach an unrelated generic calculation to an authored unit.
+}
+function calculateWaterLab(kind,v){
+ const lab=WATER_LABS[kind];if(!lab)return null;
+ for(const [key,,min,max] of lab.params)if(!Number.isFinite(v[key])||v[key]<min-1e-12||v[key]>max+1e-12)throw new RangeError(`${key}: ${min} ≤ value ≤ ${max}`);
+ const g=9.81;
+ if(kind==='waterHydro'){if(v.bottom<=v.top)throw new RangeError('h₂ > h₁ required / 底緣須深於頂緣');return g*v.b*(v.bottom**2-v.top**2)/2;}
+ if(kind==='waterPower')return g*v.flow*v.head*v.eta/1000;
+ if(kind==='waterManning'){const A=v.b*v.depth,R=A/(v.b+2*v.depth);return A*R**(2/3)*Math.sqrt(v.slope)/v.n;}
+ if(kind==='waterWeir')return v.c*v.b*Math.sqrt(g)*(2*v.head/3)**1.5;
+ if(kind==='waterJump'){const fr=v.velocity/Math.sqrt(g*v.depth);if(fr<=1)throw new RangeError('Fr₁ > 1 required / 躍前須為超臨界流');return v.depth*(Math.sqrt(1+8*fr*fr)-1)/2;}
+ if(kind==='waterCritical')return ((v.flow/v.b)**2/g)**(1/3);
+ if(kind==='waterFroude')return v.flow/v.scale**2.5;
+ if(kind==='waterWave'){const L=g*v.period**2/(2*Math.PI);if(v.depth<L/2||v.height/L>.05)throw new RangeError('Deep linear waves require d≥L₀/2 and H/L₀≤0.05 / 僅適用深水小振幅波');return 1025*g*g*v.height*v.height*v.period/(32*Math.PI*1000);}
+ if(kind==='waterStorage'){const s=v.storage+(v.inflow-v.outflow)*v.hours*3600;if(s<0)throw new RangeError('Storage cannot be negative / 庫容不能小於零');return s;}
+ if(kind==='waterDarcy')return v.k*v.area*v.head/v.length*3600;
+ if(kind==='waterHammer'){if(v.closure>2*v.length/v.speed)throw new RangeError('t_c ≤ 2L/a required / 本式限快速速度變化');return v.speed*v.dv/1000;}
+ if(kind==='waterOrifice')return v.c*v.area*Math.sqrt(2*g*v.head);
+ return null;
+}
+function waterLabDetail(kind,v,zh=true){
+ if(!WATER_LABS[kind])return '';
+ if(kind==='waterHydro')return `p(bottom) = ${(9.81*v.bottom).toFixed(2)} kPa`;
+ if(kind==='waterJump')return `Fr₁ = ${(v.velocity/Math.sqrt(9.81*v.depth)).toFixed(3)}`;
+ if(kind==='waterHammer')return `2L/a = ${(2*v.length/v.speed).toFixed(3)} s`;
+ if(kind==='waterFroude')return `λ_v = λ_t = ${Math.sqrt(v.scale).toFixed(3)}`;
+ if(kind==='waterWave')return `L₀ = ${(9.81*v.period**2/(2*Math.PI)).toFixed(2)} m`;
+ return zh?'原創假想輸入；單位、假設與適用範圍見下方。':'Original hypothetical inputs; units, assumptions and applicability are shown below.';
+}
+
+Object.defineProperty(exports, "WATER_LABS", { enumerable: true, get: () => WATER_LABS });
+Object.defineProperty(exports, "waterLabKind", { enumerable: true, get: () => waterLabKind });
+Object.defineProperty(exports, "calculateWaterLab", { enumerable: true, get: () => calculateWaterLab });
+Object.defineProperty(exports, "waterLabDetail", { enumerable: true, get: () => waterLabDetail });
+},
 "underground-calculators.js":function(require, exports) {
 'use strict';
 /* V14 transparent educational models; all defaults are synthetic. */
@@ -6416,6 +6589,7 @@ Object.defineProperty(exports, "electronicsLabDetail", { enumerable: true, get: 
 },
 "engineering-labs.js":function(require, exports) {
 'use strict';
+const { WATER_LABS, waterLabKind, calculateWaterLab, waterLabDetail } = require("water-calculators.js");
 const { UNDERGROUND_LABS, undergroundLabKind, calculateUndergroundLab, undergroundLabDetail } = require("underground-calculators.js");
 const { COMPUTING_LABS, COMPUTING_COURSE_LABS, computingLabKind, calculateComputingLab, computingLabDetail } = require("computing-visuals.js");
 const { WORLD_LABS, worldLabKind, calculateWorldLab, worldLabDetail } = require("world-project-labs.js");
@@ -6426,6 +6600,7 @@ const { ELECTRONICS_LABS, ELECTRONICS_COURSE_LABS, electronicsLabKind, calculate
 const e = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const choose = (pair, zh) => pair[zh ? 0 : 1];
 function labKind(course, step) {
+  const water=waterLabKind(course,step);if(water)return water;
   const underground=undergroundLabKind(course,step);if(underground)return underground;
   if(COMPUTING_COURSE_LABS[course.id])return computingLabKind(course,step);
   const world=worldLabKind(course);if(world)return world;
@@ -6489,6 +6664,7 @@ const LABS = {
   },
 };
 function calculateLab(kind, v) {
+  if(WATER_LABS[kind])return calculateWaterLab(kind,v);
   const underground=calculateUndergroundLab(kind,v);if(underground!==null)return underground;
   const computing=calculateComputingLab(kind,v);if(computing!==null)return computing;
   const world=calculateWorldLab(kind,v);if(world!==null)return world;
@@ -6503,7 +6679,7 @@ function calculateLab(kind, v) {
   if (kind === 'overlay') return Math.hypot(v.stage, v.mark, v.distortion);
   return 0;
 }
-Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS,UNDERGROUND_LABS);
+Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS,UNDERGROUND_LABS,WATER_LABS);
 function labMarkup(course, step, zh) {
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return '';
   return `<section class="lesson-card engineering-lab" id="engineeringLab" data-kind="${kind}"><div class="eyebrow">EXPLORE / ${zh?'互動工程算例':'INTERACTIVE ENGINEERING'}</div><h3>${choose(lab.title,zh)}</h3><p><code>${e(lab.formula)}</code></p>${kind==='lithography'?`<label class="field">${zh?'光學情境預設':'Optical scenario'}<select id="labPreset"><option value="duv">ArF immersion · 193 nm · NA 1.35</option><option value="euv">EUV · 13.5 nm · NA 0.33</option><option value="highna">High-NA EUV · 13.5 nm · NA 0.55</option></select></label>`:''}<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">${lab.params.map(([id,label,min,max,delta,value,unit])=>`<label class="field" for="lab-${id}">${e(choose(label,zh))} <output id="lab-value-${id}">${value}</output> ${e(unit)}<input id="lab-${id}" data-lab-input="${id}" type="range" min="${min}" max="${max}" step="${delta}" value="${value}" style="width:100%;min-height:42px;accent-color:#245443"></label>`).join('')}</div><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:20px 0"><output id="labResult" aria-live="polite" style="font-size:32px;font-weight:700;color:#245443"></output><span id="labDetail"></span></div><div id="labChart" aria-hidden="true"></div><p id="labScenarioNote" class="muted"></p><p class="notice">${e(choose(lab.note,zh))}</p><p><strong>${zh?'試著推理：':'Reason it through: '}</strong>${e(choose(lab.question,zh))}</p>${lab.source?`<a href="${e(lab.source)}" target="_blank" rel="noopener noreferrer">${zh?'公式／假設延伸閱讀':'Formula / assumptions reference'} ↗</a>`:''}</section>`;
@@ -6526,7 +6702,7 @@ function bindLab(course, step, zh) {
       return;
     }
     if(resultNode)resultNode.textContent=`${result.toFixed(result<1?3:2)} ${lab.unit}`;
-    const detail=root.querySelector('#labDetail');if(detail)detail.textContent=undergroundLabDetail(kind,values,zh)||computingLabDetail(kind,values,zh)||worldLabDetail(kind,values,zh)||electronicsLabDetail(kind,values,zh)||packagingLabDetail(kind,values,zh)||(kind==='thermal'?`R_th = ${(result/values.power).toFixed(3)} K/W`:kind==='yield'?`D₀ A = ${(values.density*values.area/100).toFixed(3)}`:'');
+    const detail=root.querySelector('#labDetail');if(detail)detail.textContent=waterLabDetail(kind,values,zh)||undergroundLabDetail(kind,values,zh)||computingLabDetail(kind,values,zh)||worldLabDetail(kind,values,zh)||electronicsLabDetail(kind,values,zh)||packagingLabDetail(kind,values,zh)||(kind==='thermal'?`R_th = ${(result/values.power).toFixed(3)} K/W`:kind==='yield'?`D₀ A = ${(values.density*values.area/100).toFixed(3)}`:'');
     const note=root.querySelector('#labScenarioNote');if(note)note.textContent=kind==='lithography'&&(values.wavelength<20&&values.na>.55)?(zh?'此組合超出本教學列出的 EUV 情境；數學結果不代表已有此設備。':'This combination exceeds the EUV scenarios supplied here; the mathematical result does not imply such a tool exists.') : kind==='lithography'&&(values.wavelength<20)?(zh?'EUV 情境使用反射光學；NA 不是可任意改動的機台設定。':'EUV scenarios use reflective optics; NA is not an arbitrary machine setting.') : '';
     const varying=lab.params[0],pts=[];for(let i=0;i<=40;i++){const sample=varying[2]+(varying[3]-varying[2])*i/40,x=(kind==='pkgN1'||kind==='elAdc'||kind==='elQuant'||kind==='elSettle'||kind==='elPll')||varying[4]>=1?Math.round(sample):sample;try{const y=calculateLab(kind,{...values,[varying[0]]:x});pts.push(Number.isFinite(y)?[x,y]:null);}catch{pts.push(null);}}
     const valid=pts.filter(Boolean),low=Math.min(0,...valid.map(p=>p[1])),high=Math.max(0,...valid.map(p=>p[1]),low+.001),span=high-low;let connected=false;const path=pts.map((p,i)=>{if(!p){connected=false;return '';}const command=connected?'L':'M';connected=true;return `${command}${30+i*9} ${(115-95*(p[1]-low)/span).toFixed(2)}`;}).join(' '),chart=root.querySelector('#labChart');
@@ -7112,13 +7288,14 @@ Object.assign(observations,{
 });
 function resolveExercise(course={},step={}){
  // Extension-only architecture: preserve every original course step and scene.
+ if(String(step.id).includes('-v15-')&&course.v15Architecture)course={...course,...course.v15Architecture};
  if(String(step.id).includes('-v14-')&&course.v14Architecture)course={...course,...course.v14Architecture};
  // V13: extended courses keep their own artwork; their new steps use the V13 architecture.
  if(String(step.id).includes('-v13-')&&!course.architectureFamily&&course.v13Architecture)course={...course,...course.v13Architecture};
  const expansion=resolveExpansionExercise(course,step);if(expansion)return expansion;
  if(first26[step.id])return first26[step.id]();
  if(firstPackage[step.id])return firstPackage[step.id]();
- if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-') || (String(step.id).includes('-v13-') && hasWorldVisual(course)) || (String(step.id).includes('-v14-') && hasWorldVisual(course)))){
+ if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-') || (String(step.id).includes('-v13-') && hasWorldVisual(course)) || (String(step.id).includes('-v14-') && hasWorldVisual(course)) || (String(step.id).includes('-v15-') && hasWorldVisual(course)))){
   const n=Number(step.sequence)||1,quiz=step.quiz,validQuiz=quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)&&quiz.options.length===quiz.optionsEn.length&&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length;
   const decisions=validQuiz?quiz.options.map((v,i)=>opt('answer-'+i,v,quiz.optionsEn[i])):[opt('evidence',step.check,step.checkEn),opt('guess','未核對模型邊界便沿用另一個案例','Reuse a case without checking model boundaries'),opt('omit','跳過本步所需的證據','Skip the required evidence')];
   const offset=n%decisions.length,computing=!!COMPUTING_SUBJECTS[course.id];
@@ -8021,6 +8198,7 @@ Object.defineProperty(exports, "createLocaleController", { enumerable: true, get
 },
 "app.js":function(require, exports) {
 'use strict';
+const { waterPathsMarkup } = require("water-paths.js");
 const { labResourcesMarkup } = require("lab-resources.js");
 const { computingPathsMarkup } = require("computing-paths.js");
 const { opticsPathsMarkup } = require("optics-paths.js");
@@ -8074,6 +8252,7 @@ Object.assign(messages,{
   poseHelp:['先點「啟用鍵盤」或工作台，再按 Space 抓取。方向鍵 ↑↓←→ 或 WASD：平面 XY；I/K（或 PageUp/PageDown）：升降 Z；J/L（或 Q/E）：旋轉。可同時按多鍵；Shift 微調；Esc 暫停。','Click Enable keyboard or the workbench, then Space to grab. Arrow keys or WASD: planar XY. I/K (or PageUp/PageDown): lift/lower Z. J/L (or Q/E): rotate. Combine keys; Shift for precision; Esc to pause.'],needsGrab:['先按「抓取」或 Space，才能移動零件。','Press Grab or Space before moving the piece.'],collision:['接觸夾具，請抬高 Z 或繞開後再移動。','Fixture collision. Lift in Z or move around it.'],alignFirst:['請先將零件對準虛線目標並放開，或使用輔助對位。','Align the piece with the dashed target and release it, or use assisted alignment.'],snapFar:['尚未進入示意容差；請靠近目標，或使用輔助對位。','Outside the schematic tolerance. Move closer or use assisted alignment.'],aligned:['已進入示意容差','Within schematic tolerance'],aligning:['正在對位','Aligning'],schematicUnits:['無因次示意座標；非製造公差','Dimensionless schematic coordinates; not manufacturing tolerances'],fixture:['夾具：可抬高或繞開','Fixture: lift or move around'],
   workshop:['工程工作台','Engineering workshop'],learner:['學徒 · 我的操作','APPRENTICE · YOUR WORK'],poseLocal:['操作數值、工具位置與未完成驗收暫存於本裝置／目前帳號；已完成進度與筆記另依登入狀態同步。','Task values, tool position and unfinished checks are saved on this device for the current account; completed progress and notes sync separately when signed in.'],guideText:['1. 選一門逐步課程，先閱讀工程簡報與來源。\n2. 在工作台完成本步指定的觀察、量測、製程或組裝任務。\n3. 點「啟用鍵盤」或工作台，再以 Space 抓取；方向鍵或 WASD 移動 XY。I/K 升降，J/L 旋轉，Shift 微調。\n4. 右側師傅顯示目標參考；下方可查閱驗證依據與教學假設。\n5. 提交本步操作證據，再回答知識驗收，才能進入下一步。\n6. 筆記與完成進度依登入狀態保存；工具姿態與未完成操作存在目前裝置，可匯出 JSON 備份。','1. Choose a guided course and read its brief and sources.\n2. Complete the inspection, measurement, process or assembly task assigned to this step.\n3. Click Enable keyboard or the workbench, then Space to grab. Arrows or WASD move XY; I/K lift/lower; J/L rotate; Shift adjusts precisely.\n4. The mentor panel shows the reference. Read the verification criteria and teaching assumptions below.\n5. Submit step evidence, then pass the knowledge check to continue.\n6. Notes and completed progress save according to sign-in status. Tool pose and unfinished task values remain on this device and can be exported as JSON.'],
   offlineTitle:['本機學習檔案','Local learning profiles'],offlineDesc:['這些名稱只用來分開目前瀏覽器的學習紀錄，不是密碼保護的帳號，也不會雲端同步。請定期匯出備份。','These names separate learning records in this browser. They are not password-protected accounts and do not sync to the cloud. Export backups regularly.'],offlineSaved:['已存至此瀏覽器／本機檔案','Saved in this browser / local profile'],sessionOnly:['瀏覽器無法持久儲存；僅本次開啟有效，請匯出備份。','Persistent browser storage is unavailable. This session only; export a backup.'],newProfile:['建立並切換本機檔案','Create and switch local profile'],switchProfile:['切換檔案','Switch profile'],
+  notSaved:['未保存，請匯出進度','Not saved; please export'],saveFailed:['保存失敗，請匯出備份','Save failed; export a backup'],
   recordCurrent:['記錄目前讀值／設定','Record current readings / settings'],needsAction:['還需要親自完成','Still perform'],
   demoGate:['0 · 師傅示範','0 · Mentor demonstration'],demoPlay:['播放／繼續示範','Play / resume demonstration'],demoPause:['暫停示範','Pause demonstration'],demoReplay:['重播師傅示範','Replay demonstration'],demoNext:['下一個示範動作','Next demonstrated action'],watchFirst:['已收到操作。請先看完右側師傅示範；暫停時可按播放或逐格繼續。','Input received. Finish the mentor demonstration first; use Play or Next action if paused.'],yourTurn:['輪到你：抓取並移動工具，再操作本步控制，放開後提交證據。','Your turn: grab and move the tool, use the step controls, release, then submit the evidence.'],reviewLocked:['本步證據已提交，操作已鎖定供複習；仍可重播师傅示範。','Step evidence is submitted and locked for review. Mentor replay remains available.'],motionRequired:['請跟著師傅抓取並移動工具，再操作下方本步控制；完成後親自放開。','Follow the mentor: grab and move the tool, use this step’s controls, then release it yourself.'],guidedHint:['輔助已啟用；它只帶你移動工具。請親自完成以下本步操作，再按 Space 放開：','Guidance moves the tool only. Complete the following step actions yourself, then press Space to release:'],guidedUsed:['本步使用過輔助','Assistance used for this step'],motionDone:['工具動作已記錄','Tool motion recorded'],practiceOrder:['先看示範 → 跟著操作 → 比較證據 → 提交 → 下一步','Watch → try the operation → compare evidence → submit → continue'],assist:['動畫跟做輔助','Animated guidance'],
   processHint:['完成本步的觀察、量測或製程任務，再提交操作證據與回答驗收題。鍵盤與雙手控制可移動示意工具。','Complete this step’s inspection, measurement or process task, submit the evidence, then pass the knowledge check. Keyboard and hand controls move the teaching tool.'],demonstrationMotion:['示意工具位置','Teaching-tool position'],gate:['先完成本步操作證據與知識驗收，才能前進。','Complete the step evidence and knowledge check to continue.'],assemblySuccess:['操作證據已保存。請完成下方驗收題。','Step evidence saved. Complete the check below.'],goAssembly:['前往操作任務','Open the step task'],
@@ -8179,7 +8358,7 @@ function renderHome(){return renderCatalog()}
 function filteredCatalog(){return catalog.filter(c=>(!filter||c.category===filter)&&(!subdiscipline||courseSubcategory(c).id===subdiscipline)&&(!maturity||(maturity==='ready'?c.stages:!c.stages))&&(!query||[c.id,c.title,c.titleEn,c.summary,c.summaryEn,catName(c.category),courseSubcategory(c).title,courseSubcategory(c).titleEn].join(' ').toLowerCase().includes(query.toLowerCase())))}
 function catalogCsv(){const cell=value=>'"'+String(value??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')+'"';const rows=[['id','中文名稱','English title','中文領域','English discipline','中文內容類型','Content type','Authored learning steps','Project route'],...catalog.map(c=>[c.id,c.title,c.titleEn,catMap[c.category]?.[0]||c.category,catMap[c.category]?.[1]||c.category,c.stages?'逐步課程':'研究路線圖',c.stages?'Guided course':'Research roadmap',c.stages?allSteps(c).length:0,'#project/'+c.id])];return '\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')}
 function catalogSubdisciplineFilter(){const subs=[...new Map(catalog.filter(c=>(!filter||c.category===filter)&&c.stages).map(c=>courseSubcategory(c)).filter(s=>s.id).map(s=>[s.id,s])).values()];return `<div class="catalog-subdisciplines"><label for="catalogSubdiscipline">${isZh()?'專業子領域':'Technical subdiscipline'}</label><select id="catalogSubdiscipline" ${!subs.length?'disabled':''}><option value="">${isZh()?'全部子領域':'All subdisciplines'}</option>${subs.map(s=>`<option value="${esc(s.id)}" ${subdiscipline===s.id?'selected':''}>${esc(isZh()?s.title:s.titleEn)}</option>`).join('')}</select><span class="subtext">${isZh()?'依學習問題縮小範圍；每門都有完整工序導航。':'Narrow your learning question; each guided course has a complete step navigator.'}</span></div>`}
-function renderCatalog(){const list=filteredCatalog(),pages=Math.max(1,Math.ceil(list.length/24));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));const first=list.length?pageIndex*24+1:0,last=Math.min((pageIndex+1)*24,list.length),shown=list.slice(pageIndex*24,(pageIndex+1)*24);return `${explorerIntro()}${!filter||filter==='structures'?structuresPathsMarkup(catalog,isZh()):''}${!filter||filter==='underground'?undergroundPathsMarkup(catalog,isZh()):''}${!filter||filter==='instruments'?opticsPathsMarkup(catalog,isZh()):''}${!filter||filter==='computing'?computingPathsMarkup(catalog,isZh()):''}${!filter||filter==='electronics'?electronicsPathsMarkup(catalog,isZh()):''}${!filter||filter==='packaging'?packagingPathsMarkup(catalog,isZh()):''}<section class="explorer-catalog" id="explorerCatalog" aria-labelledby="explorerCatalogTitle"><div class="section-head"><div><span class="page-number">ONE ENGINEERING EXPLORER</span><h2 id="explorerCatalogTitle">${isZh()?'找到下一個工程挑戰':'Find your next engineering challenge'}</h2><p class="subtext">${catalogSummary()}</p></div><button class="button light" data-download-catalog>↓ ${isZh()?'完整中英目錄 CSV':'Complete bilingual CSV'}</button></div><div class="catalog-shortcuts"><a class="chip ${!maturity?'active':''}" href="#catalog/all" data-catalog-route="all">${isZh()?`全部 ${catalog.length} 項工程`:`All ${catalog.length} topics`}</a><a class="chip ${maturity==='ready'?'active':''}" href="#catalog/ready" data-catalog-route="ready">${isZh()?`${featured.length} 門逐步課程`:`${featured.length} guided courses`}</a><a class="chip ${maturity==='roadmap'?'active':''}" href="#catalog/roadmap" data-catalog-route="roadmap">${isZh()?`${catalog.length-featured.length} 項研究路線圖`:`${catalog.length-featured.length} research roadmaps`}</a></div><div class="search-bar"><input id="search" value="${esc(query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="categoryFilter"><option value="">${t('allDomains')} (${catalog.length})</option>${domainCounts().map(d=>`<option value="${d.id}" ${filter===d.id?'selected':''}>${catName(d.id)} (${d.count})</option>`).join('')}</select><select id="maturity"><option value="">${t('allMaturity')}</option><option value="ready" ${maturity==='ready'?'selected':''}>${t('ready')} (${featured.length})</option><option value="roadmap" ${maturity==='roadmap'?'selected':''}>${t('roadmap')} (${catalog.length-featured.length})</option></select></div>${catalogSubdisciplineFilter()}${filter?`<div class="selected-domain">${domainIconSvg(filter,{decorative:true})}<strong>${esc(catName(filter))}</strong><button class="text-link" data-filter="">${isZh()?'清除領域篩選':'Clear discipline filter'} ×</button></div>`:''}<div class="catalog-info"><strong role="status">${isZh()?`顯示 ${first}–${last}／${list.length.toLocaleString()} 項`:`Showing ${first}–${last} of ${list.length.toLocaleString()}`}</strong><label>${isZh()?'顯示方式':'View'} <select id="catalogView"><option value="list" ${catalogView==='list'?'selected':''}>${isZh()?'圖像清單':'Illustrated list'}</option><option value="cards" ${catalogView==='cards'?'selected':''}>${isZh()?'圖像卡片':'Image cards'}</option></select></label></div><p class="subtext">${t('catalogScope')}</p>${catalogView==='cards'?`<div class="cards">${shown.map(card).join('')}</div>`:`<div class="catalog-table-wrap"><table class="catalog-table"><thead><tr><th>#</th><th>${isZh()?'工程／工藝名稱':'Project / craft'}</th><th>${isZh()?'領域':'Discipline'}</th><th>${isZh()?'內容與步驟':'Content and steps'}</th></tr></thead><tbody>${shown.map((c,i)=>`<tr ${c.stages?`data-guided-course="${esc(c.id)}"`:''}><td>${first+i}</td><td><div class="catalog-project-cell"><a class="catalog-thumbnail" href="#project/${esc(c.id)}" tabindex="-1" aria-hidden="true">${projectMedia(c,true)}</a><div><a href="#project/${esc(c.id)}">${esc(txt(c))}</a><small>${esc(isZh()?c.titleEn:c.title)}</small><span class="catalog-project-code">${esc(c.id)}</span></div>${projectIconSvg(c,{en:!isZh()})}</div></td><td><span class="catalog-discipline">${domainIconSvg(c.category,{decorative:true})}${esc(catName(c.category))}</span></td><td>${t(c.stages?'ready':'roadmap')}${c.stages?`<small>${c.stepCount||allSteps(c).length} ${t('steps')}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`}${!shown.length?`<p class="empty">${t('noResults')}</p>`:''}<div class="pagination"><button id="prevPage" class="button light" ${pageIndex===0?'disabled':''}>← ${t('previous')}</button><form id="catalogPageForm"><label for="catalogPage">${isZh()?'跳至頁次':'Go to page'}</label><input id="catalogPage" type="number" min="1" max="${pages}" value="${pageIndex+1}" required><span>/ ${pages}</span><button class="button light" type="submit">${isZh()?'前往':'Go'}</button></form><button id="nextPage" class="button light" ${pageIndex===pages-1?'disabled':''}>${t('next')} →</button></div></section>${showcaseMarkup({zh:isZh()})}`}
+function renderCatalog(){const list=filteredCatalog(),pages=Math.max(1,Math.ceil(list.length/24));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));const first=list.length?pageIndex*24+1:0,last=Math.min((pageIndex+1)*24,list.length),shown=list.slice(pageIndex*24,(pageIndex+1)*24);return `${explorerIntro()}${!filter||filter==='structures'?structuresPathsMarkup(catalog,isZh()):''}${!filter||filter==='water'?waterPathsMarkup(catalog,isZh()):''}${!filter||filter==='underground'?undergroundPathsMarkup(catalog,isZh()):''}${!filter||filter==='instruments'?opticsPathsMarkup(catalog,isZh()):''}${!filter||filter==='computing'?computingPathsMarkup(catalog,isZh()):''}${!filter||filter==='electronics'?electronicsPathsMarkup(catalog,isZh()):''}${!filter||filter==='packaging'?packagingPathsMarkup(catalog,isZh()):''}<section class="explorer-catalog" id="explorerCatalog" aria-labelledby="explorerCatalogTitle"><div class="section-head"><div><span class="page-number">ONE ENGINEERING EXPLORER</span><h2 id="explorerCatalogTitle">${isZh()?'找到下一個工程挑戰':'Find your next engineering challenge'}</h2><p class="subtext">${catalogSummary()}</p></div><button class="button light" data-download-catalog>↓ ${isZh()?'完整中英目錄 CSV':'Complete bilingual CSV'}</button></div><div class="catalog-shortcuts"><a class="chip ${!maturity?'active':''}" href="#catalog/all" data-catalog-route="all">${isZh()?`全部 ${catalog.length} 項工程`:`All ${catalog.length} topics`}</a><a class="chip ${maturity==='ready'?'active':''}" href="#catalog/ready" data-catalog-route="ready">${isZh()?`${featured.length} 門逐步課程`:`${featured.length} guided courses`}</a><a class="chip ${maturity==='roadmap'?'active':''}" href="#catalog/roadmap" data-catalog-route="roadmap">${isZh()?`${catalog.length-featured.length} 項研究路線圖`:`${catalog.length-featured.length} research roadmaps`}</a></div><div class="search-bar"><input id="search" value="${esc(query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="categoryFilter"><option value="">${t('allDomains')} (${catalog.length})</option>${domainCounts().map(d=>`<option value="${d.id}" ${filter===d.id?'selected':''}>${catName(d.id)} (${d.count})</option>`).join('')}</select><select id="maturity"><option value="">${t('allMaturity')}</option><option value="ready" ${maturity==='ready'?'selected':''}>${t('ready')} (${featured.length})</option><option value="roadmap" ${maturity==='roadmap'?'selected':''}>${t('roadmap')} (${catalog.length-featured.length})</option></select></div>${catalogSubdisciplineFilter()}${filter?`<div class="selected-domain">${domainIconSvg(filter,{decorative:true})}<strong>${esc(catName(filter))}</strong><button class="text-link" data-filter="">${isZh()?'清除領域篩選':'Clear discipline filter'} ×</button></div>`:''}<div class="catalog-info"><strong role="status">${isZh()?`顯示 ${first}–${last}／${list.length.toLocaleString()} 項`:`Showing ${first}–${last} of ${list.length.toLocaleString()}`}</strong><label>${isZh()?'顯示方式':'View'} <select id="catalogView"><option value="list" ${catalogView==='list'?'selected':''}>${isZh()?'圖像清單':'Illustrated list'}</option><option value="cards" ${catalogView==='cards'?'selected':''}>${isZh()?'圖像卡片':'Image cards'}</option></select></label></div><p class="subtext">${t('catalogScope')}</p>${catalogView==='cards'?`<div class="cards">${shown.map(card).join('')}</div>`:`<div class="catalog-table-wrap"><table class="catalog-table"><thead><tr><th>#</th><th>${isZh()?'工程／工藝名稱':'Project / craft'}</th><th>${isZh()?'領域':'Discipline'}</th><th>${isZh()?'內容與步驟':'Content and steps'}</th></tr></thead><tbody>${shown.map((c,i)=>`<tr ${c.stages?`data-guided-course="${esc(c.id)}"`:''}><td>${first+i}</td><td><div class="catalog-project-cell"><a class="catalog-thumbnail" href="#project/${esc(c.id)}" tabindex="-1" aria-hidden="true">${projectMedia(c,true)}</a><div><a href="#project/${esc(c.id)}">${esc(txt(c))}</a><small>${esc(isZh()?c.titleEn:c.title)}</small><span class="catalog-project-code">${esc(c.id)}</span></div>${projectIconSvg(c,{en:!isZh()})}</div></td><td><span class="catalog-discipline">${domainIconSvg(c.category,{decorative:true})}${esc(catName(c.category))}</span></td><td>${t(c.stages?'ready':'roadmap')}${c.stages?`<small>${c.stepCount||allSteps(c).length} ${t('steps')}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`}${!shown.length?`<p class="empty">${t('noResults')}</p>`:''}<div class="pagination"><button id="prevPage" class="button light" ${pageIndex===0?'disabled':''}>← ${t('previous')}</button><form id="catalogPageForm"><label for="catalogPage">${isZh()?'跳至頁次':'Go to page'}</label><input id="catalogPage" type="number" min="1" max="${pages}" value="${pageIndex+1}" required><span>/ ${pages}</span><button class="button light" type="submit">${isZh()?'前往':'Go'}</button></form><button id="nextPage" class="button light" ${pageIndex===pages-1?'disabled':''}>${t('next')} →</button></div></section>${showcaseMarkup({zh:isZh()})}`}
 
 function relatedContent(c,compact=false){const entry=relatedForCourse(c);return `<div class="related-preview"><h3>${isZh()?'這項技能，還能用在哪裡？':'Where can you use this skill next?'}</h3><div class="related-preview-grid">${(entry.related||[]).slice(0,3).map(item=>{const linked=typeof item.id==='string'&&catalog.find(candidate=>candidate.id===item.id);return `<article>${linked?`<a class="text-link" href="#project/${encodeURIComponent(linked.id)}">${esc(txt(item))} ↗</a>`:`<strong>${esc(txt(item))}</strong><small>${isZh()?'詳見下方延伸比較':'See the comparison below'}</small>`}<p>${esc(txt(item,entry.curated?'transfer':'summary'))}</p></article>`}).join('')}</div></div>${relatedSkillsMarkup(c,{zh:isZh(),compact})}`}
 
@@ -8276,12 +8455,13 @@ const MERGED_NOTES_SEPARATOR='\n\n--- MERGED DEVICE NOTES ---\n\n';
 function mergeDeviceNotes(local,remote){const current=String(local||''),incoming=String(remote||'');if(!incoming||current===incoming||current.includes(incoming))return current;if(!current)return incoming;const parts=current.split(MERGED_NOTES_SEPARATOR);for(const block of incoming.split(MERGED_NOTES_SEPARATOR)){if(block&&!parts.some(part=>part===block||part.includes(block)))parts.push(block)}return parts.join(MERGED_NOTES_SEPARATOR)}
 function retainMergedNotesInEditor(id,notes){const node=$('#notes')||$('#researchNotes');if(!node||node.dataset.projectId!==id||node.dataset.owner!==(user?.id||'guest'))return;const start=node.selectionStart,end=node.selectionEnd;node.value=notes;node.dataset.savedValue=notes;if(Number.isInteger(start)&&Number.isInteger(end))node.setSelectionRange?.(start,end)}
 function persistenceStatus(){if(authMode==='offline')return t(window.MacGyverOffline?.storageAvailable===false?'sessionOnly':'offlineSaved');return t(user?'saved':'localSaved')}
+function saveStatusMessageKey(){return ['saved','localSaved','offlineSaved','sessionOnly','saving','syncError','notSaved','saveFailed'].find(key=>messages[key].includes(saveState))}
 async function save(id){
   const owner=user?.id||'guest',generation=accountGeneration,storageKey=stateKey();
   const sameAccount=()=>generation===accountGeneration&&(user?.id||'guest')===owner;
   const p=record(id);p.updatedAt=Date.now();deviceSaveOK=true;
   try{localStorage.setItem(storageKey,JSON.stringify(projects))}catch{deviceSaveOK=false;toast(isZh()?'裝置儲存空間不足，請匯出備份。':'Device storage is full. Export a backup.')}
-  if(authMode==='offline'&&window.MacGyverOffline?.storageAvailable===false)deviceSaveOK=false;saveState=authMode==='offline'?persistenceStatus():t(user?'saving':'localSaved');if(!deviceSaveOK&&!user)saveState=isZh()?'未保存，請匯出進度':'Not saved; please export';if($('#saveStatus'))$('#saveStatus').textContent=saveState;
+  if(authMode==='offline'&&window.MacGyverOffline?.storageAvailable===false)deviceSaveOK=false;saveState=authMode==='offline'?persistenceStatus():t(user?'saving':'localSaved');if(!deviceSaveOK&&!user)saveState=t('notSaved');if($('#saveStatus'))$('#saveStatus').textContent=saveState;
   if(!user)return;
   const snapshot=JSON.parse(JSON.stringify({projectId:id,...p,ownerId:owner}));
   saveQueue=saveQueue.catch(()=>{}).then(async()=>{
@@ -8319,7 +8499,7 @@ async function save(id){
       if(latest.notes===payload.notes&&latest.completed.length===payload.completed.length&&latest.completed.every(v=>payload.completed.includes(v))&&latest.assembly.length===payload.assembly.length&&latest.assembly.every(v=>payload.assembly.includes(v)))latest.updatedAt=saved.updatedAt;
       try{localStorage.setItem(storageKey,JSON.stringify(projects))}catch{}
       saveState=persistenceStatus();
-    }catch{if(!sameAccount())return;saveState=authMode==='offline'?persistenceStatus():deviceSaveOK?t('syncError'):(isZh()?'保存失敗，請匯出備份':'Save failed; export a backup')}
+    }catch{if(!sameAccount())return;saveState=authMode==='offline'?persistenceStatus():deviceSaveOK?t('syncError'):t('saveFailed')}
     if(sameAccount()&&$('#saveStatus'))$('#saveStatus').textContent=saveState;
   });
   await saveQueue;
@@ -8478,7 +8658,7 @@ function legacyStorageKey(){return `mg-legacy-progress-v2-${user?.id||'guest'}`}
 function migrateCourseProgress(c){const p=projects[c.id];if(!p)return;const valid=new Set(allSteps(c).map(s=>s.id)),invalid=[...p.completed,...p.assembly].filter(id=>!valid.has(id));if(!invalid.length){try{const archive=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}');if(archive[c.id]?.length)migrationNotices[c.id]='saved'}catch{}return}try{const archive=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}');archive[c.id]||=[];const signature=JSON.stringify([p.completed,p.assembly]);if(!archive[c.id].some(v=>v.signature===signature))archive[c.id].push({savedAt:new Date().toISOString(),signature,reason:'Curriculum IDs changed; no guessed mapping.',progress:JSON.parse(JSON.stringify(p))});localStorage.setItem(legacyStorageKey(),JSON.stringify(archive));p.completed=p.completed.filter(id=>valid.has(id));p.assembly=p.assembly.filter(id=>valid.has(id));migrationNotices[c.id]='saved';save(c.id)}catch{migrationNotices[c.id]='failed'}}
 function exportLegacyProgress(){let data={};try{data=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}')}catch{}download('MacGyver_legacy_progress.json',{version:1,legacy:data,current:projects})}
 function syncLanguageSelect(){const select=$('#language');if(!select)return;select.setAttribute('data-no-translate','');if(!select.dataset.expanded){select.innerHTML=[['auto','◎ Auto'],...languageChoices].map(([key,name])=>`<option value="${key}">${name}</option>`).join('');select.dataset.expanded='true'}select.value=lang;select.setAttribute('aria-label',t('language'));$('#translateButton')?.setAttribute('title',t('translateTitle'));$('#closeDialog')?.setAttribute('aria-label',t('close'));$('#menu')?.setAttribute('aria-label',t('curriculum'));$('.skip')?.setAttribute('aria-label',isZh()?'跳至內容':'Skip to content')}
-function setPreferredLanguage(value){captureNotes();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';localStorage.setItem('mg-language',lang);const chosen=resolved();if(chosen!=='en'&&chosen!=='zh-TW'){onDeviceTranslator(chosen,{userActivated:true});loadDictionary(chosen).then(()=>applyLanguage())}render()}
+function setPreferredLanguage(value){captureNotes();const statusKey=saveStatusMessageKey();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';if(statusKey)saveState=t(statusKey);localStorage.setItem('mg-language',lang);const chosen=resolved();if(chosen!=='en'&&chosen!=='zh-TW'){onDeviceTranslator(chosen,{userActivated:true});loadDictionary(chosen).then(()=>applyLanguage())}render()}
 function updateTranslationStatus(status){translationState=status;const indicator=$('#translationStatus');if(!indicator)return;const core=['en','zh-TW'].includes(resolved());indicator.hidden=core;if(core)return;const state=status.state;const label=['translating'].includes(state)?t('translationWorking'):['translated','cached'].includes(state)?t('translationReady'):state==='unavailable'?t('translationUnavailable'):state==='dictionary'?t('translationDictionary'):t('translationPartial');const target=indicator.querySelector?.('[data-translation-label]');if(target){target.replaceChildren();const code=document.createElement('span');code.setAttribute('data-no-translate','');code.textContent=`${resolved()} · `;const text=document.createElement('span');let localized=label;try{const dict=loadedDictionary(resolved());localized=(dict&&lookupDictionary(dict,label))||label}catch{}text.textContent=localized;target.append(code,text);if(status.total&&state!=='dictionary'){const count=document.createElement('span');count.setAttribute('data-no-translate','');count.textContent=` (${status.translated||0}/${status.total})`;target.append(count)}}indicator.classList?.toggle('is-info',state==='dictionary');const retry=indicator.querySelector?.('button');if(retry)retry.hidden=state==='dictionary'}
 function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>localeController?.apply(document.body)}{let label=t('retry');try{const dict=loadedDictionary(resolved());label=(dict&&lookupDictionary(dict,label))||label}catch{}$('#retryTranslation').textContent=label;}if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),getTranslationAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),translateBatch:value=>tutorPanel?.translationReady?.()?tutorPanel.translate(value):null,onStatus:updateTranslationStatus,onDictionary:language=>{if(language===resolved())applyLanguage()}});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return localeController.apply(document.body)}
 

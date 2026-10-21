@@ -1,0 +1,273 @@
+{
+  "id": "b292",
+  "focus": "從水量平衡到瞬變與船舶受力理解大型船閘灌排系統~Understand large-lock filling through water balance, transients and vessel forces",
+  "units": [
+    {
+      "anchor": "閘室有效水量~Effective chamber water volume",
+      "title": "閘室有效水量~Effective chamber water volume",
+      "mechanism": "閘室水位變化所需水量由有效水平面積積分，船舶排水、局部台階與側室會影響實際幾何。矩形空閘示意只是基本量級，水量還要連到上游庫與下游河段收支；不能把一次升降量直接當成每日取水量，因為節水池與交通次序不同。 假設空閘長300m、寬30m且垂直壁，水位升10m，ΔV=LBΔh=90000m³；不含節水池或船舶幾何。 ~Required water volume follows integration of effective horizontal area with level; vessel displacement, steps and side spaces modify geometry. An empty rectangular chamber supplies a basic scale only, which must connect to upstream and downstream balances. One level-change volume is not daily freshwater demand because water-saving basins, traffic direction and operating sequences alter the complete system accounting. Assume an empty vertical-sided chamber300m long and30m wide with a10m rise. ΔV=LBΔh=90000m³, excluding basins and vessel geometry. ",
+      "model": "教學假設，非操作設定或設計允收值。假設空閘長300m、寬30m且垂直壁，水位升10m，ΔV=LBΔh=90000m³；不含節水池或船舶幾何。~Teaching assumptions, not operating settings or design acceptance limits. Assume an empty vertical-sided chamber300m long and30m wide with a10m rise. ΔV=LBΔh=90000m³, excluding basins and vessel geometry.",
+      "verify": "用閘室各高程平面面積核對容積曲線，標明是否含船舶及側廊道。將每次灌排的來源去向畫成收支圖，核對節水交換是否重複計入，並保留不同交通方向的水量差異。~Verify the volume-elevation curve from sectional areas, identifying vessel and side-space treatment. Map source and destination for each filling step, checking duplicated saving-basin exchange and retaining water-budget differences between traffic directions instead of assuming all lockages are identical. ",
+      "failure": "把總閘室容積當升降用水會高估單次需求，忽略船舶與連通空間又可能漏掉水位相關面積。若把回收水當新取水，則會錯判整個水源系統的壓力。~Using total chamber volume as lift water overstates demand, while ignored vessels or connected spaces misstate level-dependent area. Counting recovered water as fresh withdrawal then distorts the load placed on the wider source-water system.",
+      "misconception": "閘室全部容積就是每次通航必須重新消耗的淡水量。~The entire chamber volume is fresh water that must be consumed anew on every transit.",
+      "practice": "用閘室各高程平面面積核對容積曲線，標明是否含船舶及側廊道。將每次灌排的來源去向畫成收支圖，核對節水交換是否重複計入，並保留不同交通方向的水量差異。~Verify the volume-elevation curve from sectional areas, identifying vessel and side-space treatment. Map source and destination for each filling step, checking duplicated saving-basin exchange and retaining water-budget differences between traffic directions instead of assuming all lockages are identical."
+    },
+    {
+      "anchor": "平均流量與灌水時間~Mean discharge and filling time",
+      "title": "平均流量與灌水時間~Mean discharge and filling time",
+      "mechanism": "灌水時間由流量時程積分決定，平均流量只是一項事後或假設摘要。水頭隨閘室上升而降低，閥門與廊道慣性又使流量不會立即達峰；因此恆流除法適合收支檢查，不能生成現場操作時程，更不能只以最短時間評估系統功能。 假設所需補水量90000m³、整段平均流量150m³/s，t=V/Qavg=600s=10min；不表示瞬時流量恆定。 ~Filling duration follows integration of the discharge history, with mean discharge merely a summary or assumption. Head decreases as the chamber rises, and valves plus culvert inertia prevent instantaneous peak flow. Constant-flow division checks accounting but cannot generate an operational schedule or establish performance merely by minimizing elapsed time without considering water-surface disturbance and vessel response. Assume required volume90000m³ and interval-mean discharge150m³/s. t=V/Qavg=600s=10min, without implying constant instantaneous flow. ",
+      "model": "教學假設，非操作設定或設計允收值。假設所需補水量90000m³、整段平均流量150m³/s，t=V/Qavg=600s=10min；不表示瞬時流量恆定。~Teaching assumptions, not operating settings or design acceptance limits. Assume required volume90000m³ and interval-mean discharge150m³/s. t=V/Qavg=600s=10min, without implying constant instantaneous flow.",
+      "verify": "積分實測流量曲線與水位容積變化交叉核對，明列開閥前後是否納入計時。檢查末段水頭變小時的流量衰減，並把船舶運動與壓力資料對時，不以時間達標取代其他性能。~Cross-check the integrated hydrograph against level-derived volume and define the timing interval. Inspect declining flow near equalization and align vessel-motion and pressure records, ensuring a target duration does not substitute for verification of the other hydraulic performance measures. ",
+      "failure": "以峰值流量計算全程會低估灌水時間，未量到的漏流則讓容積核對不閉合。更快的平均灌水也可能伴隨更大水面坡度，不能直接解讀為整體品質提升。~Using peak flow throughout understates filling time, while unmeasured leakage prevents volume closure. Faster average filling may accompany larger surface gradients, so speed alone cannot be interpreted as an improvement in complete system performance.",
+      "misconception": "峰值流量除以總水量即可準確代表整個灌排所需時間。~Peak discharge alone provides an accurate filling duration for the complete chamber volume.",
+      "practice": "積分實測流量曲線與水位容積變化交叉核對，明列開閥前後是否納入計時。檢查末段水頭變小時的流量衰減，並把船舶運動與壓力資料對時，不以時間達標取代其他性能。~Cross-check the integrated hydrograph against level-derived volume and define the timing interval. Inspect declining flow near equalization and align vessel-motion and pressure records, ensuring a target duration does not substitute for verification of the other hydraulic performance measures."
+    },
+    {
+      "anchor": "水位上升與空間均勻~Level rise and spatial uniformity",
+      "title": "水位上升與空間均勻~Level rise and spatial uniformity",
+      "mechanism": "連續方程把淨入流轉成平均水位上升率，但長閘室內可能同時存在波動與局部射流。平均值不能顯示船首船尾水位差，也不能代表每個港池的瞬時變化；需以多點水位資料檢查空間均勻性，並把流量與幾何定義維持一致。 假設有效面積9000m²、淨入流150m³/s，dη/dt=Q/A=0.01667m/s=1m/min；僅是空間平均。 ~Continuity converts net inflow into mean level rise, but a long chamber can simultaneously contain waves and local jets. The average does not show the difference between bow and stern elevations or every local instantaneous change. Multiple gauges must test spatial uniformity, with flow and effective area consistently defined before interpreting an apparent match between average water level and discharge. Assume effective area9000m² and net inflow150m³/s. Mean rise Q/A=0.01667m/s=1m/min, not every local surface velocity. ",
+      "model": "教學假設，非操作設定或設計允收值。假設有效面積9000m²、淨入流150m³/s，dη/dt=Q/A=0.01667m/s=1m/min；僅是空間平均。~Teaching assumptions, not operating settings or design acceptance limits. Assume effective area9000m² and net inflow150m³/s. Mean rise Q/A=0.01667m/s=1m/min, not every local surface velocity.",
+      "verify": "沿閘室和船側同步量水位，先求平均再檢查各測點偏離與相位，核對淨流量是否已扣出流。將局部高差與船舶運動連結，避免僅靠一支水位計宣告灌水均勻。~Measure levels synchronously along the chamber and vessel, comparing mean, deviations and phase and checking that net flow excludes outflow. Relate local gradients to vessel motion rather than declaring uniform filling from one level sensor that happens to follow the average. ",
+      "failure": "感測器位在節點可能看不到明顯振盪，平均上升率正確仍可能有船端受力。漏掉排水支路也會讓入流量推算比實際水位變化快，造成假異常。~A sensor near a modal node may miss oscillation even when vessel-end forces are significant. An omitted outlet also makes inflow-derived rise exceed the measured rate, creating an apparent anomaly unrelated to the filling distribution itself.",
+      "misconception": "平均水位上升率穩定就證明閘室所有位置都沒有水面振盪。~A steady mean rise proves that no surface oscillation exists anywhere in the chamber.",
+      "practice": "沿閘室和船側同步量水位，先求平均再檢查各測點偏離與相位，核對淨流量是否已扣出流。將局部高差與船舶運動連結，避免僅靠一支水位計宣告灌水均勻。~Measure levels synchronously along the chamber and vessel, comparing mean, deviations and phase and checking that net flow excludes outflow. Relate local gradients to vessel motion rather than declaring uniform filling from one level sensor that happens to follow the average."
+    },
+    {
+      "anchor": "孔口水頭流量~Orifice head-discharge relation",
+      "title": "孔口水頭流量~Orifice head-discharge relation",
+      "mechanism": "閥口和孔口將水頭轉成流速，縮流及損失由流量係數近似。固定開口準定常公式忽略廊道加速度與水頭快速變化，局部係數又受開度和雷諾數影響；實際灌排需追蹤上游水位、閘內水位及開度歷程，不能只以初始最大水頭推全程。 假設固定孔口Cd=0.70、面積8m²、瞬時水頭差5m，Q=CdA√(2gH)=55.465m³/s；準定常示意。 ~An opening converts head into flow, with a discharge coefficient approximating contraction and losses. A fixed-opening quasi-steady relation omits culvert acceleration and rapid head variation, while coefficient depends on opening and flow regime. Actual filling must track upper level, chamber level and valve position through time rather than extending the maximum initial head over the whole cycle. Assume fixed opening Cd=0.70,area8m² and instantaneous head difference5m. Quasi-steady Q=CdA√(2gH)=55.465m³/s, excluding acceleration effects. ",
+      "model": "教學假設，非操作設定或設計允收值。假設固定孔口Cd=0.70、面積8m²、瞬時水頭差5m，Q=CdA√(2gH)=55.465m³/s；準定常示意。~Teaching assumptions, not operating settings or design acceptance limits. Assume fixed opening Cd=0.70,area8m² and instantaneous head difference5m. Quasi-steady Q=CdA√(2gH)=55.465m³/s, excluding acceleration effects.",
+      "verify": "核對孔口面積是否對應實際開度，同步比較兩側總水頭與流量，辨識係數在不同階段是否改變。將啟動和接近平水的區段分開驗證，不用單一校正點宣稱全時程適用。~Check that opening area matches actual position and compare simultaneous heads and discharge, identifying coefficient changes through the cycle. Validate startup and near-equalization separately rather than claiming complete hydrograph applicability from one conveniently matched calibration point. ",
+      "failure": "開度相同而上游水頭不同會產生不同流量，廊道慣性又可能讓流量落後於水頭。沿用固定係數湊合資料，可能掩蓋閥口損傷或旁通流路改變。~Equal opening with different upstream head gives different discharge, and culvert inertia can delay the response. Tuning one fixed coefficient to fit observations may conceal damaged openings or changes in bypass paths through the system.",
+      "misconception": "閥門開度固定時流量就不受兩側水頭差變化影響。~A fixed valve opening makes flow independent of the changing head difference.",
+      "practice": "核對孔口面積是否對應實際開度，同步比較兩側總水頭與流量，辨識係數在不同階段是否改變。將啟動和接近平水的區段分開驗證，不用單一校正點宣稱全時程適用。~Check that opening area matches actual position and compare simultaneous heads and discharge, identifying coefficient changes through the cycle. Validate startup and near-equalization separately rather than claiming complete hydrograph applicability from one conveniently matched calibration point."
+    },
+    {
+      "anchor": "平水末段時間~Late-stage equalization time",
+      "title": "平水末段時間~Late-stage equalization time",
+      "mechanism": "閘內水位接近上游時水頭衰減，最後一段升水通常比簡單線性外推慢。固定上游庫、固定孔口且無慣性的積分模型可以顯示平方根關係，真實末段還有振盪、漏水及控制判定；剩餘水頭門檻只是數學終點，不是開門或通航條件。 假設Ac=9000m²、Cd=0.70、孔口8m²、固定上游，水頭由10降0.1m，t=2Ac(√10−√0.1)/(CdA√2g)=2065.3s。 ~As the chamber approaches the upper level, declining head slows the final rise compared with a linear extrapolation. Integration for a fixed reservoir and opening without inertia reveals the square-root relation. Actual late-stage behavior includes oscillation, leakage and control decisions; a residual-head endpoint in this model is mathematical only, not a gate-opening or transit criterion. Assume chamber area9000m²,Cd=0.70,opening8m² and fixed upper level. Reducing head10to0.1m gives t=2Ac(√10−√0.1)/(CdA√2g)=2065.3s. ",
+      "model": "教學假設，非操作設定或設計允收值。假設Ac=9000m²、Cd=0.70、孔口8m²、固定上游，水頭由10降0.1m，t=2Ac(√10−√0.1)/(CdA√2g)=2065.3s。~Teaching assumptions, not operating settings or design acceptance limits. Assume chamber area9000m²,Cd=0.70,opening8m² and fixed upper level. Reducing head10to0.1m gives t=2Ac(√10−√0.1)/(CdA√2g)=2065.3s.",
+      "verify": "明列上游是否可當固定水位及孔口是否全程不變，將水頭平方根對時間作圖檢查近似。保存末段振盪和測量解析度，另由正式系統要求判定平水條件，不以本算例終點操作閘門。~State whether upper level and opening remain fixed and plot square-root head against time to test the approximation. Retain late oscillation and measurement resolution, leaving equalization criteria to the approved system rather than using this illustrative endpoint to operate a gate. ",
+      "failure": "上游庫面積有限時兩側都會變位，套固定庫模型會算錯時間；末段壓力振盪則可能使瞬間水位相等後再次分離。只檢查一刻讀值，無法證明持續平衡。~With finite upper storage, both levels move and the fixed-reservoir estimate becomes inaccurate. Late pressure oscillations can also separate levels again after a momentary match, so one equal reading does not establish sustained hydraulic balance.",
+      "misconception": "只要某一瞬間兩側水位相等就代表後續不會再有壓差。~One instant of equal levels proves that no pressure difference can develop afterward.",
+      "practice": "明列上游是否可當固定水位及孔口是否全程不變，將水頭平方根對時間作圖檢查近似。保存末段振盪和測量解析度，另由正式系統要求判定平水條件，不以本算例終點操作閘門。~State whether upper level and opening remain fixed and plot square-root head against time to test the approximation. Retain late oscillation and measurement resolution, leaving equalization criteria to the approved system rather than using this illustrative endpoint to operate a gate."
+    },
+    {
+      "anchor": "廊道局部水頭損失~Local culvert head losses",
+      "title": "廊道局部水頭損失~Local culvert head losses",
+      "mechanism": "彎道、分岔和閥件將能量耗散成紊流，局部損失係數需指定參考速度。把不同截面速度下的係數直接相加會失去一致性，且閥門位置隨時間改變；低損失不一定代表閘內流場較均勻，流量分配和射流方向仍要另行檢驗。 假設同一參考流速v=4m/s、局部總係數K=3，hL=Kv²/(2g)=2.446m；只合併同速度基準的損失。 ~Bends, junctions and valves dissipate energy through turbulence, with each coefficient tied to a reference velocity. Adding coefficients based on different areas is inconsistent, and valve position changes through time. Low total loss does not necessarily produce more uniform chamber flow; distribution and jet direction require separate assessment rather than being inferred from an apparently efficient hydraulic path. Assume common reference velocity4m/s and total local coefficient K=3. hL=Kv²/(2g)=2.446m, combining only coefficients on that velocity basis. ",
+      "model": "教學假設，非操作設定或設計允收值。假設同一參考流速v=4m/s、局部總係數K=3，hL=Kv²/(2g)=2.446m；只合併同速度基準的損失。~Teaching assumptions, not operating settings or design acceptance limits. Assume common reference velocity4m/s and total local coefficient K=3. hL=Kv²/(2g)=2.446m, combining only coefficients on that velocity basis.",
+      "verify": "對每個彎頭分岔標示截面與參考速度，將係數轉至共同基準後再合計，並核對壓力測點位置。比較各支路流量和閘內水面，不把較小總壓降直接解讀為較小船舶受力。~Label area and reference velocity at each fitting and convert coefficients to one basis before summing, checking pressure-tap positions. Compare branch flows and chamber surface response rather than interpreting lower total pressure loss directly as reduced vessel loading during filling. ",
+      "failure": "廊道局部縮頸會提高速度，原係數基準不改便低估損失。分岔左右阻力不均可能讓水流偏向一側，即使總流量合計正確仍會產生不均勻水面和繫纜需求。~A local constriction raises velocity, and retaining the wrong coefficient basis understates loss. Unequal branch resistance directs flow to one side, producing nonuniform surface response and mooring demand even when total discharge is correctly predicted.",
+      "misconception": "廊道總水頭損失較小就保證船閘內水流一定更均勻。~Lower total culvert head loss guarantees a more uniform flow field inside the lock.",
+      "practice": "對每個彎頭分岔標示截面與參考速度，將係數轉至共同基準後再合計，並核對壓力測點位置。比較各支路流量和閘內水面，不把較小總壓降直接解讀為較小船舶受力。~Label area and reference velocity at each fitting and convert coefficients to one basis before summing, checking pressure-tap positions. Compare branch flows and chamber surface response rather than interpreting lower total pressure loss directly as reduced vessel loading during filling."
+    },
+    {
+      "anchor": "射流動量與導流~Jet momentum and redirection",
+      "title": "射流動量與導流~Jet momentum and redirection",
+      "mechanism": "灌水射流的動量需要由導流板、周邊水體和結構共同改變，控制體收支可估合力尺度。完全停止指定方向速度只是一種邊界，實際射流會擴散及偏轉；這個反力不能直接當成船體承受的荷載，船位、湍流與水面坡度還有其他傳力路徑。 假設淡水ρ=1000kg/m³、Q=20m³/s、入口水平v=4m/s，出口該方向速度為0且忽略壓力差，反力ρQv=80kN。 ~Filling-jet momentum is redirected by diffusers, surrounding water and structure. A control-volume balance provides a resultant scale, with complete stopping in one direction only a chosen boundary. Real jets spread and turn, so this reaction is not automatically the vessel load; vessel location, turbulence and surface gradients introduce additional transfer paths that need their own observations and models. Assume freshwater1000kg/m³,Q=20m³/s,inlet horizontal speed4m/s and zero outlet component, neglecting pressure differences. Momentum reaction is80kN, not vessel force. ",
+      "model": "教學假設，非操作設定或設計允收值。假設淡水ρ=1000kg/m³、Q=20m³/s、入口水平v=4m/s，出口該方向速度為0且忽略壓力差，反力ρQv=80kN。~Teaching assumptions, not operating settings or design acceptance limits. Assume freshwater1000kg/m³,Q=20m³/s,inlet horizontal speed4m/s and zero outlet component, neglecting pressure differences. Momentum reaction is80kN, not vessel force.",
+      "verify": "畫控制體的入口出口和壓力面，核對速度向量而不只用速率，檢查有無其他支流。以導流區壓力與流速資料測試動量收支，另量船舶受力，避免把兩者視為同一量。~Draw control-volume boundaries and pressure faces, using velocity vectors rather than speed alone and checking side flows. Test momentum balance with diffuser-area measurements and observe vessel force separately, avoiding the assumption that these two distinct resultants must coincide. ",
+      "failure": "射流轉向卻被當成完全停止會算錯反力方向，漏掉出口壓力又使合力不閉合。船體只截取部分流場時，直接套整股射流動量會錯估接觸作用。~Treating a turned jet as fully stopped misstates reaction direction, while omitted outlet pressure breaks the force balance. If a vessel intercepts only part of the flow, applying the entire jet momentum misrepresents its actual hydrodynamic demand.",
+      "misconception": "灌水射流的全部動量反力都必定直接施加在閘內船舶上。~The entire filling-jet momentum reaction necessarily acts directly on the vessel in the chamber.",
+      "practice": "畫控制體的入口出口和壓力面，核對速度向量而不只用速率，檢查有無其他支流。以導流區壓力與流速資料測試動量收支，另量船舶受力，避免把兩者視為同一量。~Draw control-volume boundaries and pressure faces, using velocity vectors rather than speed alone and checking side flows. Test momentum balance with diffuser-area measurements and observe vessel force separately, avoiding the assumption that these two distinct resultants must coincide."
+    },
+    {
+      "anchor": "快速變速與水錘~Rapid velocity change and water hammer",
+      "title": "快速變速與水錘~Rapid velocity change and water hammer",
+      "mechanism": "廊道水柱快速變速會傳遞彈性壓力波，波速與管壁和含氣狀態相關。焦可夫斯基式適用相對往返波時間很快的速度改變，慢變化需考慮反射和水柱運動，不能將同一峰壓套所有啟閉時程；算式用來辨識機制，不提供實際閥門操作設定。 假設ρ=1000kg/m³、波速a=900m/s、Δv=1m/s，快速變速Δp=ρaΔv=900kPa；L=300m時須相對2L/a=0.667s很快。 ~Rapid culvert-velocity changes propagate elastic pressure waves, with speed affected by wall flexibility and entrained air. The Joukowsky relation applies to changes rapid relative to wave round-trip time. Slower changes require reflections and water-column dynamics, so the same peak cannot be applied to every valve history; the example identifies a mechanism rather than prescribing actual valve operation. Assumeρ=1000kg/m³,a=900m/s,Δv=1m/s. Rapid-changeΔp=900kPa; for L=300m the change must be fast relative to2L/a=0.667s. ",
+      "model": "教學假設，非操作設定或設計允收值。假設ρ=1000kg/m³、波速a=900m/s、Δv=1m/s，快速變速Δp=ρaΔv=900kPa；L=300m時須相對2L/a=0.667s很快。~Teaching assumptions, not operating settings or design acceptance limits. Assumeρ=1000kg/m³,a=900m/s,Δv=1m/s. Rapid-changeΔp=900kPa; for L=300m the change must be fast relative to2L/a=0.667s.",
+      "verify": "核對壓力感測頻寬和時間同步，將閥位、流速與壓力波到達時刻比較，明列有效波速來源。另檢查反射及低壓分離可能，不把單一理想增壓當成完整瞬變包絡。~Check pressure-sensor bandwidth and synchronization, comparing valve position, velocity and wave-arrival times with a justified wave speed. Review reflections and possible low-pressure separation separately instead of treating one ideal pressure increase as a complete transient envelope for the system. ",
+      "failure": "感測器太慢會漏掉短壓力尖峰，含氣量改變又使波速偏離原假設。只檢查最大正壓而忽略低壓區，可能漏掉分離後再接合造成的另一波衝擊。~Slow sensors miss brief pressure peaks, and changing air content alters assumed wave speed. Checking only positive maximum pressure overlooks separation at low pressure and another impact when the separated water column subsequently rejoins.",
+      "misconception": "任何速度變化無論多慢都會產生相同的焦可夫斯基峰值水錘。~Every velocity change produces the same Joukowsky peak regardless of how slowly it occurs.",
+      "practice": "核對壓力感測頻寬和時間同步，將閥位、流速與壓力波到達時刻比較，明列有效波速來源。另檢查反射及低壓分離可能，不把單一理想增壓當成完整瞬變包絡。~Check pressure-sensor bandwidth and synchronization, comparing valve position, velocity and wave-arrival times with a justified wave speed. Review reflections and possible low-pressure separation separately instead of treating one ideal pressure increase as a complete transient envelope for the system."
+    },
+    {
+      "anchor": "絕對壓力與空化~Absolute pressure and cavitation",
+      "title": "絕對壓力與空化~Absolute pressure and cavitation",
+      "mechanism": "閥口高速區可能接近水的汽化壓力，空化指標需用絕對壓力而非表壓。指標是否低於危險門檻與形狀、粗糙及氣核有關，不能用通用數字自動判定；同樣平均壓力下局部低壓仍可不同，水溫也會改變汽化壓力。 假設絕對壓力80kPa、汽化壓2.3kPa、ρ=1000kg/m³、v=10m/s，σ=(p−pv)/(ρv²/2)=1.554；非通用允收界線。 ~High-speed valve regions can approach vapor pressure, and cavitation indices require absolute rather than gauge pressure. A relevant onset threshold depends on geometry, roughness and nuclei, not a universal number. Identical mean pressures can conceal different local minima, while temperature changes vapor pressure; the index therefore supports comparison but does not alone establish absence of damaging cavitation. Assume absolute pressure80kPa,vapor pressure2.3kPa,ρ=1000kg/m³,v=10m/s. Cavitation indexσ=1.554, not a universal acceptance boundary. ",
+      "model": "教學假設，非操作設定或設計允收值。假設絕對壓力80kPa、汽化壓2.3kPa、ρ=1000kg/m³、v=10m/s，σ=(p−pv)/(ρv²/2)=1.554；非通用允收界線。~Teaching assumptions, not operating settings or design acceptance limits. Assume absolute pressure80kPa,vapor pressure2.3kPa,ρ=1000kg/m³,v=10m/s. Cavitation indexσ=1.554, not a universal acceptance boundary.",
+      "verify": "註明壓力儀使用表壓或絕對壓，核對溫度與汽化壓，檢查量測位置是否能代表局部低壓。比較聲學、振動與表面損傷證據，對照特定閥型資料，不以單一指標替代機制驗證。~Identify gauge versus absolute readings, verify temperature and vapor pressure and assess whether taps capture local minima. Compare acoustic, vibration and surface-damage evidence with data for the specific valve geometry rather than substituting one index for verification of the underlying mechanism. ",
+      "failure": "把表壓當絕對壓可能使指標錯一個大氣壓量級，遠離縮流區的壓力又會漏掉最不利位置。尚未出現肉眼損傷也不代表沒有間歇空化。~Using gauge pressure as absolute shifts the index by an atmospheric-pressure contribution, and distant taps miss the controlling constriction. Absence of visible erosion does not prove that intermittent cavitation is absent during part of the filling cycle.",
+      "misconception": "壓力計顯示正表壓就可以排除閥內所有局部空化現象。~Positive gauge pressure at one sensor rules out all local cavitation inside the valve.",
+      "practice": "註明壓力儀使用表壓或絕對壓，核對溫度與汽化壓，檢查量測位置是否能代表局部低壓。比較聲學、振動與表面損傷證據，對照特定閥型資料，不以單一指標替代機制驗證。~Identify gauge versus absolute readings, verify temperature and vapor pressure and assess whether taps capture local minima. Compare acoustic, vibration and surface-damage evidence with data for the specific valve geometry rather than substituting one index for verification of the underlying mechanism."
+    },
+    {
+      "anchor": "水面坡度與繫泊需求~Surface gradient and mooring demand",
+      "title": "水面坡度與繫泊需求~Surface gradient and mooring demand",
+      "mechanism": "長閘室水面坡度會對漂浮船舶形成沿坡方向的水力作用，與局部射流拖曳是不同機制。小坡度近似以排水重量乘坡度估量，但真實船型、流場和非定常加速度仍需另算；多點水位與船體運動的對時是檢驗這項機制的關鍵。 假設排水質量10000000kg、長波近靜水坡度Δη/L=0.05/200，F≈mgΔη/L=24.525kN；不含拖曳與船體加速度。 ~A longitudinal surface gradient creates a force on a floating vessel distinct from local jet drag. A small-gradient estimate uses displaced weight times slope, while hull geometry, currents and unsteady acceleration require separate treatment. Synchronized multi-point levels and vessel motion are essential for testing this mechanism, and the resulting scale is not a complete mooring-load envelope or line-setting instruction. Assume displaced mass10000000kg and long-wave quasi-hydrostatic slope0.05/200. F≈mgΔη/L=24.525kN, excluding drag and vessel acceleration. ",
+      "model": "教學假設，非操作設定或設計允收值。假設排水質量10000000kg、長波近靜水坡度Δη/L=0.05/200，F≈mgΔη/L=24.525kN；不含拖曳與船體加速度。~Teaching assumptions, not operating settings or design acceptance limits. Assume displaced mass10000000kg and long-wave quasi-hydrostatic slope0.05/200. F≈mgΔη/L=24.525kN, excluding drag and vessel acceleration.",
+      "verify": "沿船首尾同步量水位並校正共同基準，確認可用小坡度近似，再與船體加速度及繫纜力比較相位。分開射流、坡度和慣性來源，保留模型未解釋的反力而不靠調整質量湊合。~Synchronize bow-and-stern levels on a common datum, check the small-gradient approximation and compare phases with acceleration and line force. Separate jet, gradient and inertia contributions, retaining unexplained reaction rather than tuning vessel mass solely to make the calculation fit. ",
+      "failure": "水位儀基準相差幾公分便會製造假的縱坡，忽略船體慣性又可能把所有纜力都歸於水面差。若用非同步峰值相減，甚至可能推得不存在的最大坡度。~A small datum mismatch creates a false longitudinal slope, and omitted vessel inertia assigns too much line force to level difference. Subtracting nonsynchronous peaks can even produce a maximum gradient that never existed in the chamber.",
+      "misconception": "船舶所有繫纜力都可由兩端水位差單獨精確決定。~The complete vessel mooring force is exactly determined by end-to-end level difference alone.",
+      "practice": "沿船首尾同步量水位並校正共同基準，確認可用小坡度近似，再與船體加速度及繫纜力比較相位。分開射流、坡度和慣性來源，保留模型未解釋的反力而不靠調整質量湊合。~Synchronize bow-and-stern levels on a common datum, check the small-gradient approximation and compare phases with acceleration and line force. Separate jet, gradient and inertia contributions, retaining unexplained reaction rather than tuning vessel mass solely to make the calculation fit."
+    }
+  ],
+  "title": "大型船閘灌排水系統~Filling and emptying systems for navigation locks",
+  "discipline": "water-coasts",
+  "family": "water",
+  "summary": "從水量平衡到瞬變與船舶受力理解大型船閘灌排系統。課程從邊界辨識與資料整理走到水理量化、構造介面及驗證紀錄；每一步把計算結果連回可量測的證據。十個不同單元分別處理關鍵機制，不以名義尺寸或單一通過率代替整體工程判斷，並明列合成算例與現地資料的差別。~Understand large-lock filling through water balance, transients and vessel forces. The course moves from boundary identification and evidence to hydraulic quantification, structural interfaces and verification records. Ten distinct units connect each calculated quantity to measurable evidence. Nominal geometry or a single pass rate does not establish whole-system performance, and synthetic teaching examples remain separate from field observations.",
+  "history": "大型船閘的改進不只在增加閘室尺寸，也包含灌排分布、瞬變與船舶控制的共同驗證。工兵團二〇〇六年船閘水理手冊提供研究與操作經驗的方法背景，二〇一八年廊道閥手冊再聚焦控制構件。巴拿馬官方紀錄二〇一六年六月九日進行新閘試航訓練，同月二十六日完成阿瓜克拉拉與科科利首航，顯示整合試驗在啟用前的重要位置。本課沒有重建真實閥門時程，也未把新閘滾動門稱作人字門；各式只解釋水量、能量、壓力和船舶受力的不同機制，全部數值皆合成。~Improving large locks involves filling distribution, transients and vessel control as well as chamber size. USACE’s2006 manual supplies research and operational-method context, while the2018 culvert-valve manual focuses on control components. Panama records training transits on9June2016 and inaugural passage through Agua Clara and Cocoli on26June, placing integrated trials before opening. This course does not reconstruct actual valve schedules or mislabel new-lock rolling gates as miter gates. Its equations distinguish volume, energy, pressure and vessel-force mechanisms using entirely synthetic values rather than measured operating settings.",
+  "example": "以下為原創合成算例，不是地標工程的實測或推薦操作值。教學假設，非操作設定或設計允收值。假設空閘長300m、寬30m且垂直壁，水位升10m，ΔV=LBΔh=90000m³；不含節水池或船舶幾何。假設升水高度由10加10%至11m、空閘平面固定，水量由90000增至99000m³；若另假設平均流量仍150m³/s，時間600增至660s，但實際流量時程需重算。重新計算前先列固定條件、單位、適用尺度及可能失效的邊界。把模型敏感度與測量誤差分開，不能將單一參數變化直接當成工程風險或壽命比例。比較兩次結果後，記錄還需要哪些獨立證據，並由負責專業人員判斷適用性。~This original synthetic example is neither a landmark measurement nor a recommended operating value. Teaching assumptions, not operating settings or design acceptance limits. Assume an empty vertical-sided chamber300m long and30m wide with a10m rise. ΔV=LBΔh=90000m³, excluding basins and vessel geometry. Increasing lift10% from10to11m at fixed empty-chamber plan increases volume90000to99000m³. If mean discharge is separately held at150m³/s, time rises600to660s; the actual hydrograph must be recalculated. Before recalculating, list fixed conditions, units, applicable scale and boundaries that could fail. Separate model sensitivity from measurement uncertainty: a parameter change does not directly give a proportional change in engineering risk or service life. Compare the results, record independent evidence still needed, and have the responsible specialist determine applicability.",
+  "facts": [
+    "教學假設，非操作設定或設計允收值。假設空閘長300m、寬30m且垂直壁，水位升10m，ΔV=LBΔh=90000m³；不含節水池或船舶幾何。~Teaching assumptions, not operating settings or design acceptance limits. Assume an empty vertical-sided chamber300m long and30m wide with a10m rise. ΔV=LBΔh=90000m³, excluding basins and vessel geometry.",
+    "教學假設，非操作設定或設計允收值。假設所需補水量90000m³、整段平均流量150m³/s，t=V/Qavg=600s=10min；不表示瞬時流量恆定。~Teaching assumptions, not operating settings or design acceptance limits. Assume required volume90000m³ and interval-mean discharge150m³/s. t=V/Qavg=600s=10min, without implying constant instantaneous flow.",
+    "教學假設，非操作設定或設計允收值。假設有效面積9000m²、淨入流150m³/s，dη/dt=Q/A=0.01667m/s=1m/min；僅是空間平均。~Teaching assumptions, not operating settings or design acceptance limits. Assume effective area9000m² and net inflow150m³/s. Mean rise Q/A=0.01667m/s=1m/min, not every local surface velocity.",
+    "教學假設，非操作設定或設計允收值。假設固定孔口Cd=0.70、面積8m²、瞬時水頭差5m，Q=CdA√(2gH)=55.465m³/s；準定常示意。~Teaching assumptions, not operating settings or design acceptance limits. Assume fixed opening Cd=0.70,area8m² and instantaneous head difference5m. Quasi-steady Q=CdA√(2gH)=55.465m³/s, excluding acceleration effects.",
+    "教學假設，非操作設定或設計允收值。假設Ac=9000m²、Cd=0.70、孔口8m²、固定上游，水頭由10降0.1m，t=2Ac(√10−√0.1)/(CdA√2g)=2065.3s。~Teaching assumptions, not operating settings or design acceptance limits. Assume chamber area9000m²,Cd=0.70,opening8m² and fixed upper level. Reducing head10to0.1m gives t=2Ac(√10−√0.1)/(CdA√2g)=2065.3s.",
+    "教學假設，非操作設定或設計允收值。假設同一參考流速v=4m/s、局部總係數K=3，hL=Kv²/(2g)=2.446m；只合併同速度基準的損失。~Teaching assumptions, not operating settings or design acceptance limits. Assume common reference velocity4m/s and total local coefficient K=3. hL=Kv²/(2g)=2.446m, combining only coefficients on that velocity basis."
+  ],
+  "timeline": [
+    {
+      "year": "2006",
+      "event": "工兵團發布船閘水理設計方法手冊~USACE publishes its navigation-lock hydraulic design manual"
+    },
+    {
+      "year": "2016",
+      "event": "巴拿馬新閘試航訓練後正式首航~Panama new locks open after pre-inauguration trials and training"
+    },
+    {
+      "year": "2018",
+      "event": "工兵團發布船閘廊道控制閥水理手冊~USACE issues hydraulic guidance for lock culvert control valves"
+    }
+  ],
+  "codes": [
+    "船閘水理設計EM1110-2-1604，二〇〇六年~Hydraulic Design of Navigation Locks EM1110-2-1604,2006",
+    "船閘廊道閥水理設計EM1110-2-1610，二〇一八年~Hydraulic Design of Lock Culvert Valves EM1110-2-1610,2018"
+  ],
+  "landmarks": [
+    "阿瓜克拉拉船閘：擴建灌排系統~Agua Clara Locks: expanded filling system",
+    "科科利船閘：大型通航系統比較~Cocoli Locks: large-navigation-system comparison"
+  ],
+  "place": {
+    "name": "阿瓜克拉拉公共船閘背景區~Agua Clara public navigation-lock context",
+    "country": "巴拿馬~Panama",
+    "lat": 9.274,
+    "lng": -79.916,
+    "query": "Agua Clara Locks Panama"
+  },
+  "sources": [
+    {
+      "key": "lockhyd",
+      "title": "船閘水理設計手冊",
+      "titleEn": "Hydraulic Design of Navigation Locks EM1110-2-1604",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1604.pdf",
+      "sourceType": "primary",
+      "scope": "官方書目確認二〇〇六年五月版本及灌排非定常分析範圍；工具直接讀取受阻，不宣稱全文審閱。",
+      "scopeEn": "Official catalogue confirms May2006 guidance and unsteady filling/emptying analysis; direct retrieval was blocked and full-text review is not claimed."
+    },
+    {
+      "key": "panama-open",
+      "title": "巴拿馬擴建船閘首航",
+      "titleEn": "Inaugural Transit of the Expanded Panama Canal Begins",
+      "publisher": "Panama Canal Authority",
+      "url": "https://pancanal.com/en/inaugural-transit-of-the-expanded-panama-canal-begins/",
+      "sourceType": "primary",
+      "scope": "官方二〇一六年六月二十六日公告明列阿瓜克拉拉與科科利首航；課程幾何與灌排數據不是專案實測。",
+      "scopeEn": "The26June2016 authority announcement identifies inaugural transit through Agua Clara and Cocoli; lesson geometry and filling data are not field measurements."
+    },
+    {
+      "key": "lockvalve",
+      "title": "船閘廊道閥水理設計",
+      "titleEn": "Hydraulic Design of Lock Culvert Valves EM1110-2-1610",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Users/182/86/2486/EM_1110-2-1610.pdf",
+      "sourceType": "primary",
+      "scope": "官方書目確認二〇一八年九月船閘灌排控制閥資料；只作方法背景，不提供現地開度時程。",
+      "scopeEn": "Official catalogue confirms September2018 lock filling/emptying valve guidance; methodological context does not supply field opening schedules."
+    },
+    {
+      "key": "panama-trial",
+      "title": "巴拿馬新閘試航與訓練",
+      "titleEn": "Panama Canal chartered training vessel transits new locks",
+      "publisher": "Panama Canal Authority",
+      "url": "https://pancanal.com/en/panama-canals-chartered-training-vessel-transits-new-locks/",
+      "sourceType": "primary",
+      "scope": "二〇一六年六月九日官方公告確認通航前試航與訓練；用來區分計算驗證和系統試驗。",
+      "scopeEn": "The9June2016 announcement confirms pre-opening trials and training; used to distinguish numerical checks from system commissioning."
+    },
+    {
+      "key": "panama-location",
+      "title": "巴拿馬擴建環境遵循報告定位背景",
+      "titleEn": "Panama expansion compliance report location context",
+      "publisher": "Panama Canal Authority",
+      "url": "https://pancanal.com/wp-content/uploads/2023/05/Duodecimo-reporte-cumplimiento.pdf",
+      "sourceType": "primary",
+      "scope": "官方索引列阿瓜克拉拉空氣監測點座標，只用於公共工程背景定位，並非精確閘門中心。",
+      "scopeEn": "Official indexed report locates an Agua Clara air-monitoring point; used only as a public project-context location, not the exact gate centre."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Army Corps of Engineers",
+      "nameEn": "US Army Corps of Engineers",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1604.pdf",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方書目確認二〇〇六年五月版本及灌排非定常分析範圍；工具直接讀取受阻，不宣稱全文審閱。",
+      "roleEn": "Official catalogue confirms May2006 guidance and unsteady filling/emptying analysis; direct retrieval was blocked and full-text review is not claimed."
+    },
+    {
+      "name": "Panama Canal Authority",
+      "nameEn": "Panama Canal Authority",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://pancanal.com/en/inaugural-transit-of-the-expanded-panama-canal-begins/",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方二〇一六年六月二十六日公告明列阿瓜克拉拉與科科利首航；課程幾何與灌排數據不是專案實測。",
+      "roleEn": "The26June2016 authority announcement identifies inaugural transit through Agua Clara and Cocoli; lesson geometry and filling data are not field measurements."
+    }
+  ],
+  "related": [
+    "b293",
+    "b294"
+  ],
+  "architectureNodes": [
+    [
+      "閘室有效水量",
+      "Effective chamber water volume"
+    ],
+    [
+      "水位上升與空間均勻",
+      "Level rise and spatial uniformity"
+    ],
+    [
+      "平水末段時間",
+      "Late-stage equalization time"
+    ],
+    [
+      "射流動量與導流",
+      "Jet momentum and redirection"
+    ],
+    [
+      "水面坡度與繫泊需求",
+      "Surface gradient and mooring demand"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

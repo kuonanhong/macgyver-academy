@@ -1,0 +1,273 @@
+{
+  "id": "b226",
+  "title": "巴拿馬運河擴建新船閘~Panama Canal expansion locks",
+  "discipline": "water-systems",
+  "family": "water",
+  "focus": "節水池耦合、非恆定充洩水與滾動閘門的定量深化~Quantitative extension of basin coupling, unsteady filling and rolling-gate mechanics",
+  "summary": "本課以巴拿馬運河擴建新船閘為入口，深入節水池耦合、非恆定充洩水與滾動閘門的定量深化。十個單元各自對應不同的荷載路徑、能量交換或監測問題，從守恆式建立量化估算，再檢查量測配置是否能辨認真正失效原因。工程史實只採用列明範圍的公開一手資料；所有模型輸入另標為教學假設，成果是可追溯的工程判讀紀錄。~Using Panama Canal expansion locks as its entry point, this course examines quantitative extension of basin coupling, unsteady filling and rolling-gate mechanics. Ten units address different load paths, energy exchanges or monitoring questions, starting with conservation-based estimates and testing whether observations distinguish failure causes. Historical statements use scoped primary evidence. Numerical model inputs are separately identified as teaching assumptions, producing a traceable engineering interpretation record.",
+  "example": "本課原創比較練習分兩個相互獨立的物理模型。教學假設，非地標實測值或操作設定：假設閘室面積20000 m²、水位10 m，池面積10000 m²、水位4 m，同基準且斷面固定；均衡水位(20000×10+10000×4)/30000=8 m。教學假設，非地標實測值或操作設定：假設三角形充水歷線峰值300 m³/s、總歷時1200 s，水量0.5Qt=180000 m³；閘面積22500 m²則升8 m，非本站運轉歷線。先逐一圈出公式內的控制體、力方向或時間尺度，再把每項輸入的量綱換成一致單位。第二人只根據輸入重算結果，不抄第一人的中間數字。最後指出這兩個估算尚未包含的空間變化、非線性及量測誤差；若將結果用於另一座工程，必須重建其幾何、材料與邊界條件，不能挪用本練習的假設。 均衡水位的單參數比較固定閘室面積20000 m²、初始水位10 m及池面積10000 m²，只將池初始水位由4升至6 m。同基準下最終水位由8 m升為(20000×10+10000×6)/30000=8.6667 m；池升2 m只令共同水位升0.6667 m。這是兩固定面積水體的封閉體積平衡，未計船舶移動、漏水或外部補水。~This original comparison exercise uses two independent physical models. Teaching assumptions, not landmark measurements or operating settings: Assume chamber area 20000 m² at level 10 m and basin area 10000 m² at 4 m, common datum and fixed areas. Equalized level is (20000×10+10000×4)/30000=8 m. Teaching assumptions, not landmark measurements or operating settings: Assume triangular filling hydrograph with peak 300 m³/s over 1200 s. Volume is 180000 m³ and rise over 22500 m² is 8 m, not a site operating hydrograph. First identify the control volume, force direction or time scale in each relation, then convert every input to consistent units. A second reviewer recalculates from the inputs without copying intermediate numbers. Finally identify spatial variability, nonlinear effects and measurement errors omitted by both estimates. Transfer to another structure requires rebuilding its geometry, material description and boundary conditions; the assumed classroom inputs are not transferable design or operating parameters. For equalization sensitivity, keep chamber area 20000 m², initial chamber level 10 m and basin area 10000 m² fixed, raising only initial basin level from 4 m to 6 m. On the common datum, final level rises from 8 m to (20000×10+10000×6)/30000=8.6667 m. A 2 m basin change raises the common level only 0.6667 m. This closed-volume comparison excludes vessel movement, leakage and external supply.",
+  "history": "巴拿馬運河擴建新船閘把大型滾動門與節水池整合，本課承接既有概念課並深化有限水池均衡、密度交換與非恆定荷載。二月首座阿瓜克拉拉節水池充水，進入系統測試階段。 六月二十六日擴建運河正式啟用，開始新船閘服務。 機電設計指引提供比較框架，此節點為手冊出版而非運河改建。本課從公開構造辨認荷載、能量與功能之間的關係，另以自訂尺寸做守恆與極限算例。啟用、首次運轉和後續維護是不同里程碑；課程不將新聞日期當成施工日期，也不以比較用的地標暗示相同設備或相同操作規則。~The expanded Panama Canal locks integrate rolling gates and saving basins. This course extends earlier conceptual lessons with finite-pool equalization, density exchange and transient loading. The first Agua Clara saving basin is filled in February for system testing. The expanded canal officially opens on June twenty-six, beginning new-lock service. Mechanical-electrical guidance provides comparison context; this is a publication milestone, not a canal reconstruction. The course uses published configurations to distinguish loads, energy and system function, with separately assumed dimensions for conservation and limit calculations. Opening, first operation and later maintenance are different milestones. Publication dates are not substituted for construction events, and comparison landmarks do not imply identical equipment or operating rules.",
+  "units": [
+    {
+      "anchor": "雙池水位均衡~Equalization between two pools",
+      "title": "雙池水位均衡~Equalization between two pools",
+      "mechanism": "兩個有限面積水體連通時，兩邊水位都會改變，不能把節水池當無限水源。守恆終點只由初始體積與面積決定，達到終點的時間則另受管路控制。 假設閘室面積20000 m²、水位10 m，池面積10000 m²、水位4 m，同基準且斷面固定；均衡水位(20000×10+10000×4)/30000=8 m。 把較小池當固定水頭會高估可回用水量，忽略連通管容積和漏流也會破壞守恆。若兩水位計基準不同，甚至會虛構無法解釋的水量損失。~Connecting two finite pools changes both levels, so a saving basin is not an infinite reservoir. Conservation determines the equilibrium endpoint from initial storage and areas, while conduits separately determine how quickly it is approached. Assume chamber area 20000 m² at level 10 m and basin area 10000 m² at 4 m, common datum and fixed areas. Equalized level is (20000×10+10000×4)/30000=8 m. Treating the smaller basin as fixed head overstates recoverable water. Conduit storage, leakage and mismatched gauge datums can also break the apparent balance and create fictitious unexplained water losses.",
+      "model": "教學假設，非地標實測值或操作設定：假設閘室面積20000 m²、水位10 m，池面積10000 m²、水位4 m，同基準且斷面固定；均衡水位(20000×10+10000×4)/30000=8 m。~Teaching assumptions, not landmark measurements or operating settings: Assume chamber area 20000 m² at level 10 m and basin area 10000 m² at 4 m, common datum and fixed areas. Equalized level is (20000×10+10000×4)/30000=8 m.",
+      "verify": "各自積分水位變化乘面積，檢查兩側交換體積是否相反相等；再用閥位和流量時序辨識接近均衡時變慢的原因，不能只比較終點。另算閘室下降水量與池體上升水量，核對共同終點能同時滿足兩個控制體的守恆。~Integrate area times level change on each side and check equal opposite exchange volumes. Use valve and flow histories to diagnose slowing near equilibrium instead of comparing endpoints alone. Separately calculate chamber loss and basin gain and verify that the shared endpoint closes both control-volume balances.",
+      "failure": "把較小池當固定水頭會高估可回用水量，忽略連通管容積和漏流也會破壞守恆。若兩水位計基準不同，甚至會虛構無法解釋的水量損失。~Treating the smaller basin as fixed head overstates recoverable water. Conduit storage, leakage and mismatched gauge datums can also break the apparent balance and create fictitious unexplained water losses.",
+      "misconception": "節水池即使面積有限，交換水量時水位仍保持不變。~A finite saving basin maintains constant level while exchanging water.",
+      "practice": "以雙池水位均衡編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。各自積分水位變化乘面積，檢查兩側交換體積是否相反相等；再用閥位和流量時序辨識接近均衡時變慢的原因，不能只比較終點。~Prepare a reviewable evidence sheet for equalization between two pools, recording data time, units, model applicability and reviewer. Integrate area times level change on each side and check equal opposite exchange volumes. Use valve and flow histories to diagnose slowing near equilibrium instead of comparing endpoints alone."
+    },
+    {
+      "anchor": "充水歷線與慣性~Filling hydrograph and inertia",
+      "title": "充水歷線與慣性~Filling hydrograph and inertia",
+      "mechanism": "船閘水位上升速度取決於當時淨流量，初期加速和末期減速產生的水面坡度又影響船舶受力。平均充水時間無法表示瞬時最大流量。 假設三角形充水歷線峰值300 m³/s、總歷時1200 s，水量0.5Qt=180000 m³；閘面積22500 m²則升8 m，非本站運轉歷線。 同一總水量可以由溫和或尖峰歷線達成，船舶受力卻不同。若僅用完成時間驗收，可能漏掉局部流速、壓力振盪和繫纜張力峰值。~Lock level rises with instantaneous net flow. Early acceleration and late deceleration also create surface slopes affecting vessels, so average filling time cannot represent peak discharge. Assume triangular filling hydrograph with peak 300 m³/s over 1200 s. Volume is 180000 m³ and rise over 22500 m² is 8 m, not a site operating hydrograph. Equal total volumes can arise from gentle or peaked hydrographs with different vessel loads. Completion time alone misses local velocities, pressure oscillations and maximum mooring tensions during the filling cycle.",
+      "model": "教學假設，非地標實測值或操作設定：假設三角形充水歷線峰值300 m³/s、總歷時1200 s，水量0.5Qt=180000 m³；閘面積22500 m²則升8 m，非本站運轉歷線。~Teaching assumptions, not landmark measurements or operating settings: Assume triangular filling hydrograph with peak 300 m³/s over 1200 s. Volume is 180000 m³ and rise over 22500 m² is 8 m, not a site operating hydrograph.",
+      "verify": "用流量積分對照水位升幅，並比較室內前後水位差與船舶繫纜負荷；保留流量上升段解析度，避免用整段平均掩蓋慣性效應。把高頻流量歷線重新取樣後積分，檢查峰值保存程度與總水量的數值收斂。~Compare integrated flow with level rise and relate longitudinal level differences to mooring loads. Preserve the rising limb resolution instead of smoothing inertial effects into a full-cycle average. Resample the high-frequency hydrograph and integrate it, checking both peak preservation and numerical convergence of total volume.",
+      "failure": "同一總水量可以由溫和或尖峰歷線達成，船舶受力卻不同。若僅用完成時間驗收，可能漏掉局部流速、壓力振盪和繫纜張力峰值。~Equal total volumes can arise from gentle or peaked hydrographs with different vessel loads. Completion time alone misses local velocities, pressure oscillations and maximum mooring tensions during the filling cycle.",
+      "misconception": "充水量和總時間相同就表示所有瞬時水力荷載相同。~Equal filling volume and total duration imply identical transient hydraulic loads.",
+      "practice": "以充水歷線與慣性編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。用流量積分對照水位升幅，並比較室內前後水位差與船舶繫纜負荷；保留流量上升段解析度，避免用整段平均掩蓋慣性效應。~Prepare a reviewable evidence sheet for filling hydrograph and inertia, recording data time, units, model applicability and reviewer. Compare integrated flow with level rise and relate longitudinal level differences to mooring loads. Preserve the rising limb resolution instead of smoothing inertial effects into a full-cycle average."
+    },
+    {
+      "anchor": "縱向水面坡度推力~Longitudinal water-slope force",
+      "title": "縱向水面坡度推力~Longitudinal water-slope force",
+      "mechanism": "充水不均會使閘室水面形成坡度，船體承受對應的長向壓力差。以排水重量乘小坡度可估算準靜態推力，但需另外處理流速阻力和繫纜動力。 取重力加速度g=9.81 m/s²。假設船舶排水質量50000 t、閘內坡度0.0002，長向力約mgS=98.1 kN；小坡度準靜態，不含阻力與加速度。 單一水位站無法辨認室內坡度，繫纜伸長也會造成船體動態放大。若將全部張力歸於水面坡度，可能掩蓋局部射流或不對稱流入。~Uneven filling creates a longitudinal surface slope and pressure imbalance on a vessel. Displacement weight times small slope estimates quasi-static force, with current drag and mooring dynamics treated separately. Use gravitational acceleration g=9.81 m/s². Assume vessel displacement mass 50000 t and longitudinal slope 0.0002. Approximate force mgS=98.1 kN, for a small quasi-static slope without drag or acceleration. A single gauge cannot resolve chamber slope, and elastic mooring lines can amplify motion. Attributing all tension to slope may conceal a local jet or asymmetric inflow acting on the hull.",
+      "model": "教學假設，非地標實測值或操作設定：取重力加速度g=9.81 m/s²。假設船舶排水質量50000 t、閘內坡度0.0002，長向力約mgS=98.1 kN；小坡度準靜態，不含阻力與加速度。~Teaching assumptions, not landmark measurements or operating settings: Use gravitational acceleration g=9.81 m/s². Assume vessel displacement mass 50000 t and longitudinal slope 0.0002. Approximate force mgS=98.1 kN, for a small quasi-static slope without drag or acceleration.",
+      "verify": "在船首船尾及中段量測水位與流速，校核坡度估算和繫纜張力相位；將風力、推進器影響與繫纜剛度分離，建立可重現的比較工況。將船舶質量與坡度推力獨立重算，並檢查繫纜負荷是否存在不屬於水面坡度的相位。~Measure levels and currents at bow, stern and midship, comparing inferred slope with mooring-tension phase. Separate wind, propulsion effects and line stiffness to define reproducible comparison conditions. Independently recalculate displacement-slope force and check whether mooring loads contain phases inconsistent with the measured surface slope.",
+      "failure": "單一水位站無法辨認室內坡度，繫纜伸長也會造成船體動態放大。若將全部張力歸於水面坡度，可能掩蓋局部射流或不對稱流入。~A single gauge cannot resolve chamber slope, and elastic mooring lines can amplify motion. Attributing all tension to slope may conceal a local jet or asymmetric inflow acting on the hull.",
+      "misconception": "閘室平均水位平穩就表示船首船尾沒有壓力差。~A steady mean chamber level means there is no bow-to-stern pressure difference.",
+      "practice": "以縱向水面坡度推力編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。在船首船尾及中段量測水位與流速，校核坡度估算和繫纜張力相位；將風力、推進器影響與繫纜剛度分離，建立可重現的比較工況。~Prepare a reviewable evidence sheet for longitudinal water-slope force, recording data time, units, model applicability and reviewer. Measure levels and currents at bow, stern and midship, comparing inferred slope with mooring-tension phase. Separate wind, propulsion effects and line stiffness to define reproducible comparison conditions."
+    },
+    {
+      "anchor": "密度交換前緣~Density-exchange front",
+      "title": "密度交換前緣~Density-exchange front",
+      "mechanism": "海水與淡水連通時，即使兩側表面水位相同，密度差仍可驅動底層鹽水前進和上層淡水返回。這種交換不能用零淨流量判定不存在。 取重力加速度g=9.81 m/s²。假設密度差25 kg/m³、基準1000 kg/m³、水深5 m，約化重力g′=0.24525 m/s²，速度尺度√(g′h)=1.107 m/s；非精確前緣速度。 表層看似沒有入流時底層仍可向內輸送鹽分，傳感器只設單一深度會漏判。強紊流又會改變界面厚度，使理想兩層模型失效。~Connected salt and fresh water can exchange through bottom and surface currents even at equal surface elevations. Zero net discharge therefore does not establish absence of density-driven exchange. Use gravitational acceleration g=9.81 m/s². Assume density difference 25 kg/m³, reference density 1000 kg/m³ and depth 5 m. Reduced gravity is 0.24525 m/s² and √(g′h)=1.107 m/s, a scale rather than an exact front speed. Salt can enter along the bed while the surface appears still, making one-depth sensing inadequate. Strong turbulence thickens the interface and can invalidate an ideal two-layer description of exchange.",
+      "model": "教學假設，非地標實測值或操作設定：取重力加速度g=9.81 m/s²。假設密度差25 kg/m³、基準1000 kg/m³、水深5 m，約化重力g′=0.24525 m/s²，速度尺度√(g′h)=1.107 m/s；非精確前緣速度。~Teaching assumptions, not landmark measurements or operating settings: Use gravitational acceleration g=9.81 m/s². Assume density difference 25 kg/m³, reference density 1000 kg/m³ and depth 5 m. Reduced gravity is 0.24525 m/s² and √(g′h)=1.107 m/s, a scale rather than an exact front speed.",
+      "verify": "同時量測上下層流向及鹽度，計算鹽通量而非只積分總流量；追蹤前緣與船舶排水的交互作用，避免把短時混濁當作鹽分證據。以分層流量乘鹽度積分鹽通量，確認正負體積流量抵銷時仍可能輸送淨鹽量。~Measure upper and lower currents and salinity together, calculating salt flux rather than total discharge alone. Track interactions with vessel displacement and avoid treating turbidity as direct evidence of salinity. Integrate layer flow times salinity and verify that cancelling volume flows can still carry a net salt flux.",
+      "failure": "表層看似沒有入流時底層仍可向內輸送鹽分，傳感器只設單一深度會漏判。強紊流又會改變界面厚度，使理想兩層模型失效。~Salt can enter along the bed while the surface appears still, making one-depth sensing inadequate. Strong turbulence thickens the interface and can invalidate an ideal two-layer description of exchange.",
+      "misconception": "兩側水面相同時，不同密度水體就不會互相交換。~Different-density waters stop exchanging when their surface elevations are equal.",
+      "practice": "以密度交換前緣編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。同時量測上下層流向及鹽度，計算鹽通量而非只積分總流量；追蹤前緣與船舶排水的交互作用，避免把短時混濁當作鹽分證據。~Prepare a reviewable evidence sheet for density-exchange front, recording data time, units, model applicability and reviewer. Measure upper and lower currents and salinity together, calculating salt flux rather than total discharge alone. Track interactions with vessel displacement and avoid treating turbidity as direct evidence of salinity."
+    },
+    {
+      "anchor": "閘門浮力與輪載~Gate buoyancy and wheel loads",
+      "title": "閘門浮力與輪載~Gate buoyancy and wheel loads",
+      "mechanism": "滾動門靠輪組與浮力共同承受重量，水位改變會重新分配輪載。減輕平均輪載有利移動，但偏心、軌道沉降和門體變形仍可能使個別輪子受力集中。 假設門重40 MN、浮力28 MN、8輪理想均分，平均輪載(40−28)/8=1.5 MN；不含偏心、動力或軌道高差。 某輪懸空會把荷載轉給其他輪，平均公式仍可能看似正常。浮力艙漏水也可能增加荷載而不立即停止運動，所以移動成功不能代替承載檢查。~Rolling gates share weight between buoyancy and wheel groups, with levels changing wheel loads. Lower mean loading aids movement, but eccentricity, rail settlement and deformation can still concentrate reactions on individual wheels. Assume gate weight 40 MN, buoyancy 28 MN and eight equally sharing wheels. Mean wheel load is (40−28)/8=1.5 MN, excluding eccentricity, dynamics and rail-level differences. A lifted wheel transfers load to others while the average formula still appears normal. A leaking buoyancy compartment can increase loading without stopping motion, so movement success cannot replace bearing assessment.",
+      "model": "教學假設，非地標實測值或操作設定：假設門重40 MN、浮力28 MN、8輪理想均分，平均輪載(40−28)/8=1.5 MN；不含偏心、動力或軌道高差。~Teaching assumptions, not landmark measurements or operating settings: Assume gate weight 40 MN, buoyancy 28 MN and eight equally sharing wheels. Mean wheel load is (40−28)/8=1.5 MN, excluding eccentricity, dynamics and rail-level differences.",
+      "verify": "將輪載或軸承應變與水位、門位一起比對，檢查軌道高程和各輪接觸；以總反力守恆確認量測，再評估最大輪載而非平均值。比較各輪反力總和與扣除浮力後的重量，另檢查最大輪載是否隨軌道高點移動。~Compare wheel loads or bearing strains with water level and position, checking rail elevation and wheel contact. Verify total reaction equilibrium before evaluating maximum individual loads rather than averages. Compare summed reactions with weight minus buoyancy and check whether maximum wheel load follows rail high spots.",
+      "failure": "某輪懸空會把荷載轉給其他輪，平均公式仍可能看似正常。浮力艙漏水也可能增加荷載而不立即停止運動，所以移動成功不能代替承載檢查。~A lifted wheel transfers load to others while the average formula still appears normal. A leaking buoyancy compartment can increase loading without stopping motion, so movement success cannot replace bearing assessment.",
+      "misconception": "平均輪載足夠低就能排除任何個別輪組超載。~Low mean wheel load rules out overload in every individual wheel group.",
+      "practice": "以閘門浮力與輪載編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。將輪載或軸承應變與水位、門位一起比對，檢查軌道高程和各輪接觸；以總反力守恆確認量測，再評估最大輪載而非平均值。~Prepare a reviewable evidence sheet for gate buoyancy and wheel loads, recording data time, units, model applicability and reviewer. Compare wheel loads or bearing strains with water level and position, checking rail elevation and wheel contact. Verify total reaction equilibrium before evaluating maximum individual loads rather than averages."
+    },
+    {
+      "anchor": "管路快速減速壓峰~Rapid conduit deceleration pressure",
+      "title": "管路快速減速壓峰~Rapid conduit deceleration pressure",
+      "mechanism": "充洩水管路的速度改變會形成壓力波，反射邊界和含氣量決定波速與衰減。Joukowsky式適合快速改變的初估，慢速閥動作須用歷時模型。 假設ρ=1000 kg/m³、波速800 m/s、速度減少0.3 m/s且變化快於2L/a，Δp=ρaΔv=240 kPa；非閥門操作設定。 若壓力降至汽化壓以下，水柱分離後再碰撞可能產生不同峰值，單次線性式失效。把壓力計阻尼造成的平滑當成真實衰減也會低估荷載。~Velocity changes in filling conduits create pressure waves whose speed and decay depend on boundaries and air content. Joukowsky gives a rapid-change estimate; slower valve motion requires time-dependent analysis. Assume density 1000 kg/m³, wave speed 800 m/s and velocity change 0.3 m/s occurring faster than 2L/a. Δp=ρaΔv=240 kPa, not a valve operating setting. Column separation below vapor pressure and subsequent recombination can create different peaks, invalidating a single linear estimate. Sensor damping mistaken for physical decay can also underestimate the actual transient load.",
+      "model": "教學假設，非地標實測值或操作設定：假設ρ=1000 kg/m³、波速800 m/s、速度減少0.3 m/s且變化快於2L/a，Δp=ρaΔv=240 kPa；非閥門操作設定。~Teaching assumptions, not landmark measurements or operating settings: Assume density 1000 kg/m³, wave speed 800 m/s and velocity change 0.3 m/s occurring faster than 2L/a. Δp=ρaΔv=240 kPa, not a valve operating setting.",
+      "verify": "核對管長、波速和動作歷時，再比較多點壓力到達時間與反射；檢查記錄取樣率足以看到波峰，並辨識氣穴與單相彈性模型的差別。以壓波往返時間核對閥動作快慢分類，並用多站到達時差反算有效波速。~Check pipe length, wave speed and movement duration, comparing pressure arrival and reflection at several locations. Verify adequate sampling and distinguish vapor cavities from the single-phase elastic model. Compare valve movement time with wave round-trip time and infer effective wave speed from multi-station arrival differences.",
+      "failure": "若壓力降至汽化壓以下，水柱分離後再碰撞可能產生不同峰值，單次線性式失效。把壓力計阻尼造成的平滑當成真實衰減也會低估荷載。~Column separation below vapor pressure and subsequent recombination can create different peaks, invalidating a single linear estimate. Sensor damping mistaken for physical decay can also underestimate the actual transient load.",
+      "misconception": "慢速改變流量也必須產生完整的快速水錘壓峰。~A slow flow change must generate the full rapid-waterhammer pressure peak.",
+      "practice": "以管路快速減速壓峰編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。核對管長、波速和動作歷時，再比較多點壓力到達時間與反射；檢查記錄取樣率足以看到波峰，並辨識氣穴與單相彈性模型的差別。~Prepare a reviewable evidence sheet for rapid conduit deceleration pressure, recording data time, units, model applicability and reviewer. Check pipe length, wave speed and movement duration, comparing pressure arrival and reflection at several locations. Verify adequate sampling and distinguish vapor cavities from the single-phase elastic model."
+    },
+    {
+      "anchor": "混凝土溫差拘束~Concrete thermal restraint",
+      "title": "混凝土溫差拘束~Concrete thermal restraint",
+      "mechanism": "大型閘室牆體的溫度收縮受底板與相鄰澆塊拘束，裂縫風險取決於拘束和早齡強度發展。只看最高溫度會漏掉冷卻過程的拉應力。 假設E=25 GPa、熱膨脹係數10⁻⁵/K、降溫15 K、有效拘束0.4，σ=REαΔT=1.5 MPa；彈性近似，未含徐變鬆弛。 表面快速冷卻會造成局部裂縫，即使整體平均溫降不大；徐變雖降低短時應力，也不能保證止水接縫保持完整。以成熟度單值代替拉伸能力容易誤判。~Large lock walls contract against foundations and adjoining blocks. Crack risk depends on restraint and developing early-age strength, so peak temperature alone misses tensile demand during cooling. Assume E=25 GPa, thermal expansion 10⁻⁵/K, cooling 15 K and effective restraint 0.4. Stress REαΔT=1.5 MPa, an elastic estimate without creep relaxation. Rapid surface cooling can crack concrete despite a small mean drop. Creep reduces some stresses but does not guarantee watertight joints, and one maturity value cannot substitute for tensile capacity.",
+      "model": "教學假設，非地標實測值或操作設定：假設E=25 GPa、熱膨脹係數10⁻⁵/K、降溫15 K、有效拘束0.4，σ=REαΔT=1.5 MPa；彈性近似，未含徐變鬆弛。~Teaching assumptions, not landmark measurements or operating settings: Assume E=25 GPa, thermal expansion 10⁻⁵/K, cooling 15 K and effective restraint 0.4. Stress REαΔT=1.5 MPa, an elastic estimate without creep relaxation.",
+      "verify": "將核心與表面溫度、接縫位移和齡期強度同步比較，辨認內外溫差與整體拘束；使用實際材料試驗修正模數，保留養護期間邊界。以齡期相符的模數與拉伸資料重新計算，檢查溫降、拘束與開裂時間是否一致。~Compare core and surface temperatures, joint movement and age-dependent strength synchronously. Distinguish internal gradients from overall restraint and use material tests to update modulus and curing boundaries. Recalculate using age-matched modulus and tensile data and check consistency between cooling, restraint and observed crack timing.",
+      "failure": "表面快速冷卻會造成局部裂縫，即使整體平均溫降不大；徐變雖降低短時應力，也不能保證止水接縫保持完整。以成熟度單值代替拉伸能力容易誤判。~Rapid surface cooling can crack concrete despite a small mean drop. Creep reduces some stresses but does not guarantee watertight joints, and one maturity value cannot substitute for tensile capacity.",
+      "misconception": "兩澆塊最高溫度相同就表示熱裂縫風險完全相同。~Two blocks with the same peak temperature have identical thermal-cracking risk.",
+      "practice": "以混凝土溫差拘束編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。將核心與表面溫度、接縫位移和齡期強度同步比較，辨認內外溫差與整體拘束；使用實際材料試驗修正模數，保留養護期間邊界。~Prepare a reviewable evidence sheet for concrete thermal restraint, recording data time, units, model applicability and reviewer. Compare core and surface temperatures, joint movement and age-dependent strength synchronously. Distinguish internal gradients from overall restraint and use material tests to update modulus and curing boundaries."
+    },
+    {
+      "anchor": "船底餘裕與沉降量~Under-keel clearance and squat",
+      "title": "船底餘裕與沉降量~Under-keel clearance and squat",
+      "mechanism": "船底淨空由水深減吃水和動態變化決定，載重、鹽度和航速都會影響結果。幾何餘裕不是可直接使用的航行餘裕，須分列波動與量測不確定度。 假設水深16 m、吃水14.5 m、動態下沉0.25 m、其他保留0.35 m，可用餘裕16−14.5−0.25−0.35=0.90 m；全部為假設。 沉積高點可能在水深平均值仍足夠時造成局部淺區，密度改變亦會增加吃水。若把固定吃水值用於所有載重與水質，會產生不實的可用餘裕。~Under-keel clearance subtracts draft and dynamic effects from depth, with loading, salinity and speed all relevant. Geometric clearance differs from usable navigation margin, requiring separate motion and measurement allowances. Assume depth 16 m, draft 14.5 m, squat 0.25 m and other allowance 0.35 m. Available margin is 16−14.5−0.25−0.35=0.90 m, with all values assumed. A deposit high spot can create a shallow patch despite adequate mean depth, and density changes alter draft. Fixed draft across different loads and water conditions creates a misleading available margin.",
+      "model": "教學假設，非地標實測值或操作設定：假設水深16 m、吃水14.5 m、動態下沉0.25 m、其他保留0.35 m，可用餘裕16−14.5−0.25−0.35=0.90 m；全部為假設。~Teaching assumptions, not landmark measurements or operating settings: Assume depth 16 m, draft 14.5 m, squat 0.25 m and other allowance 0.35 m. Available margin is 16−14.5−0.25−0.35=0.90 m, with all values assumed.",
+      "verify": "統一水深、吃水和潮位的基準與時刻，查底床最高點而非平均深度；將船體縱傾、波動和測深誤差分別保存，避免重複或遺漏扣減。對測深誤差和吃水變化分別作敏感度分析，核對最不利位置而非只有代表斷面。~Align depth, draft and tide references and times, checking highest bed points rather than mean depth. Retain trim, motion and sounding uncertainty separately to avoid duplicated or omitted deductions. Test sounding-error and draft sensitivities separately and assess the controlling location rather than one representative section.",
+      "failure": "沉積高點可能在水深平均值仍足夠時造成局部淺區，密度改變亦會增加吃水。若把固定吃水值用於所有載重與水質，會產生不實的可用餘裕。~A deposit high spot can create a shallow patch despite adequate mean depth, and density changes alter draft. Fixed draft across different loads and water conditions creates a misleading available margin.",
+      "misconception": "平均水深足夠就能保證整條船底通道都有足夠淨空。~Adequate mean depth guarantees clearance along the entire hull route.",
+      "practice": "以船底餘裕與沉降量編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。統一水深、吃水和潮位的基準與時刻，查底床最高點而非平均深度；將船體縱傾、波動和測深誤差分別保存，避免重複或遺漏扣減。~Prepare a reviewable evidence sheet for under-keel clearance and squat, recording data time, units, model applicability and reviewer. Align depth, draft and tide references and times, checking highest bed points rather than mean depth. Retain trim, motion and sounding uncertainty separately to avoid duplicated or omitted deductions."
+    },
+    {
+      "anchor": "回用率與淨淡水耗用~Reuse ratio and net freshwater use",
+      "title": "回用率與淨淡水耗用~Reuse ratio and net freshwater use",
+      "mechanism": "回用百分比必須有明確分母，閘室交換量、從湖取水量與全年水源消耗並不相同。漏流、蒸發與鹽分管理可能改變系統邊界內的淨耗用。 假設一次交換量200000 m³、回用率0.6、另有損失5000 m³，淡水補充=(1−0.6)200000+5000=85000 m³；非官方每次用水量。 只引用回用率而省略其他損失，會把單次水力效率誤當流域節水。閘次船型差異和不完整循環又可能造成看似改善卻不可比較的績效數字。~A reuse percentage requires an explicit denominator. Chamber exchange, lake withdrawal and annual water-resource consumption differ, while leakage, evaporation and salinity management can change net use within the chosen boundary. Assume cycle exchange 200000 m³, reuse fraction 0.6 and other losses 5000 m³. Freshwater makeup is (1−0.6)200000+5000=85000 m³, not an official lockage demand. Quoting reuse alone confuses cycle hydraulics with watershed savings. Vessel differences and incomplete cycles can produce apparently improved performance values that are not comparable across the measurement period.",
+      "model": "教學假設，非地標實測值或操作設定：假設一次交換量200000 m³、回用率0.6、另有損失5000 m³，淡水補充=(1−0.6)200000+5000=85000 m³；非官方每次用水量。~Teaching assumptions, not landmark measurements or operating settings: Assume cycle exchange 200000 m³, reuse fraction 0.6 and other losses 5000 m³. Freshwater makeup is (1−0.6)200000+5000=85000 m³, not an official lockage demand.",
+      "verify": "為每個水量畫清楚來源與去向，將暫存池、外海與淡水湖分成控制體；確認計量時間覆蓋完整循環，並說明船舶排水體積是否納入。以完整週期的池位回復確認沒有借用下一循環庫容，將蒸發漏流另列為水源負擔。~Map every water source and destination, separating basins, sea and freshwater lake into control volumes. Cover a complete cycle and state whether vessel displacement is included in the metering boundary. Confirm basin-level recovery over a complete cycle to exclude borrowing future storage and list evaporation and leakage separately.",
+      "failure": "只引用回用率而省略其他損失，會把單次水力效率誤當流域節水。閘次船型差異和不完整循環又可能造成看似改善卻不可比較的績效數字。~Quoting reuse alone confuses cycle hydraulics with watershed savings. Vessel differences and incomplete cycles can produce apparently improved performance values that are not comparable across the measurement period.",
+      "misconception": "百分之六十回用一定讓全年淡水需求直接減少六成。~Sixty percent reuse necessarily reduces annual freshwater demand by sixty percent.",
+      "practice": "以回用率與淨淡水耗用編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。為每個水量畫清楚來源與去向，將暫存池、外海與淡水湖分成控制體；確認計量時間覆蓋完整循環，並說明船舶排水體積是否納入。~Prepare a reviewable evidence sheet for reuse ratio and net freshwater use, recording data time, units, model applicability and reviewer. Map every water source and destination, separating basins, sea and freshwater lake into control volumes. Cover a complete cycle and state whether vessel displacement is included in the metering boundary."
+    },
+    {
+      "anchor": "故障停航與水源緩衝~Outage backlog and water reserve",
+      "title": "故障停航與水源緩衝~Outage backlog and water reserve",
+      "mechanism": "容量與水源限制可能交互作用，故障後即使機械恢復，也需要足夠淡水與航道時間清理隊列。系統復原應同時盤點通行和水量資源。 假設積壓8次通行、每次教學補水85000 m³，額外需求680000 m³；若可分配水量每日170000 m³，至少需4 days，不含新增需求。 機械最大吞吐量可能遠高於水源允許速率，忽略這點會提出無法實現的復原計畫。若水位下降又增加抽水或通航限制，簡單固定單次需求亦會改變。~Capacity and water availability interact: after mechanical restoration, clearing a backlog also needs freshwater and navigation time. Recovery therefore requires both transit and water-resource accounting. Assume eight queued transits each needing teaching makeup 85000 m³. Extra demand is 680000 m³; allocation 170000 m³/day requires at least four days, excluding new arrivals. Mechanical throughput can exceed water-limited capacity, making a recovery plan infeasible. Falling levels can introduce further pumping or navigation constraints and change the assumed fixed water demand per transit.",
+      "model": "教學假設，非地標實測值或操作設定：假設積壓8次通行、每次教學補水85000 m³，額外需求680000 m³；若可分配水量每日170000 m³，至少需4 days，不含新增需求。~Teaching assumptions, not landmark measurements or operating settings: Assume eight queued transits each needing teaching makeup 85000 m³. Extra demand is 680000 m³; allocation 170000 m³/day requires at least four days, excluding new arrivals.",
+      "verify": "用匿名化通行隊列、可分配水量與其他取水用途建立共同日曆；將已確認的供水約束和可調整排程分開，核對每項需求是否重複計列。將每天新增通行需求加入排程重算，檢查水源可分配量是否仍足以逐日減少積壓。~Build a common calendar of anonymous transit queues, available water and other withdrawals. Separate confirmed supply constraints from adjustable schedules and check that demands are not counted twice. Add newly arriving demand to the daily schedule and check whether allocated water still reduces the backlog each day.",
+      "failure": "機械最大吞吐量可能遠高於水源允許速率，忽略這點會提出無法實現的復原計畫。若水位下降又增加抽水或通航限制，簡單固定單次需求亦會改變。~Mechanical throughput can exceed water-limited capacity, making a recovery plan infeasible. Falling levels can introduce further pumping or navigation constraints and change the assumed fixed water demand per transit.",
+      "misconception": "設備修復後，積壓通行一定能按機械最大吞吐量完成。~After repair the backlog can always clear at maximum mechanical throughput.",
+      "practice": "以故障停航與水源緩衝編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。用匿名化通行隊列、可分配水量與其他取水用途建立共同日曆；將已確認的供水約束和可調整排程分開，核對每項需求是否重複計列。~Prepare a reviewable evidence sheet for outage backlog and water reserve, recording data time, units, model applicability and reviewer. Build a common calendar of anonymous transit queues, available water and other withdrawals. Separate confirmed supply constraints from adjustable schedules and check that demands are not counted twice."
+    }
+  ],
+  "facts": [
+    "官方新閘室尺寸為427 m長、55 m寬、18.3 m深。~Official new chambers measure 427 m long, 55 m wide and 18.3 m deep.",
+    "官方回用說明為每次通行水量的60%，需保留原分母。~The official reuse statement is 60 percent per transit and requires its original denominator.",
+    "教學有限水池均衡水位為8 m。~The teaching finite-pool equilibrium level is 8 m.",
+    "教學50000 t船舶在0.0002坡度下推力98.1 kN。~A teaching 50000 t vessel on slope 0.0002 experiences force 98.1 kN.",
+    "教學快速水錘壓力增量240 kPa。~The teaching rapid-waterhammer increment is 240 kPa.",
+    "教學交換量與損失假設得到85000 m³補水。~The teaching exchange and loss assumptions give makeup 85000 m³."
+  ],
+  "timeline": [
+    {
+      "year": "2016-02",
+      "event": "二月首座阿瓜克拉拉節水池充水，進入系統測試階段。~The first Agua Clara saving basin is filled in February for system testing."
+    },
+    {
+      "year": "2016-06",
+      "event": "六月二十六日擴建運河正式啟用，開始新船閘服務。~The expanded canal officially opens on June twenty-six, beginning new-lock service."
+    },
+    {
+      "year": "2025",
+      "event": "機電設計指引提供比較框架，此節點為手冊出版而非運河改建。~Mechanical-electrical guidance provides comparison context; this is a publication milestone, not a canal reconstruction."
+    }
+  ],
+  "codes": [
+    "美國陸軍工兵團工程手冊：水工鋼結構設計，EM 1110-2-2107~USACE Design of Hydraulic Steel Structures, EM 1110-2-2107",
+    "美國陸軍工兵團土木工程機電設計手冊，EM 1110-2-2610，2025~USACE Mechanical and Electrical Design for Civil Works Structures, EM 1110-2-2610, 2025"
+  ],
+  "landmarks": [
+    "巴拿馬擴建船閘：節水池案例~Expanded Panama locks: saving-basin context",
+    "三峽升船機：升降船廂比較~Three Gorges ship lift: caisson comparison"
+  ],
+  "place": {
+    "name": "巴拿馬阿瓜克拉拉新船閘~Panama Agua Clara new locks",
+    "country": "巴拿馬~Panama",
+    "lat": 9.279,
+    "lng": -79.918,
+    "query": "Agua Clara Locks Panama"
+  },
+  "sources": [
+    {
+      "key": "acp-open",
+      "title": "巴拿馬擴建運河正式啟用",
+      "titleEn": "Inauguration of the Expanded Panama Canal",
+      "publisher": "Panama Canal Authority",
+      "url": "https://pancanal.com/en/game-changer-inauguration-of-the-expanded-panama-canal-ushers-in-new-era-of-global-trade/",
+      "sourceType": "primary",
+      "scope": "二〇一六年六月二十六日啟用與節水池回用比例的官方說明。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "acp-basin",
+      "title": "第一座節水池充水測試",
+      "titleEn": "First Panama Canal Water-Saving Basin Filled",
+      "publisher": "Panama Canal Authority",
+      "url": "https://pancanal.com/en/first-panama-canal-water-saving-basin-filled-testing-process-begins/",
+      "sourceType": "primary",
+      "scope": "二〇一六年二月測試及回用水的分母背景，不等同水庫年節水量。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "acp-dimensions",
+      "title": "認識擴建運河船閘",
+      "titleEn": "Discover the Expanded Canal",
+      "publisher": "Panama Canal Authority",
+      "url": "https://pancanal.com/en/discover-the-expanded-canal/",
+      "sourceType": "primary",
+      "scope": "新船閘長四百二十七公尺、寬五十五公尺與深十八點三公尺。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "usace-steel",
+      "title": "水工鋼結構設計手冊",
+      "titleEn": "Design of Hydraulic Steel Structures, EM 1110-2-2107",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Users/182/86/2486/EM%201110-2-2107.pdf",
+      "sourceType": "primary",
+      "scope": "二〇二二年官方水工鋼結構設計指引；一般技術背景，非地標的適用法規。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "usace-mechanical",
+      "title": "土木工程機電設計手冊",
+      "titleEn": "Mechanical and Electrical Design for Civil Works Structures, EM 1110-2-2610",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM%201110-2-2610_FINAL_18Mar2025.pdf",
+      "sourceType": "primary",
+      "scope": "二〇二五年官方機電設計手冊書目與一般功能背景；非任何地標操作程序。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Panama Canal Authority",
+      "nameEn": "Panama Canal Authority",
+      "business": "提供相關水工建設、設備或工程技術資料的機構。",
+      "businessEn": "Organization providing relevant hydraulic infrastructure, equipment or engineering information.",
+      "url": "https://pancanal.com/en/game-changer-inauguration-of-the-expanded-panama-canal-ushers-in-new-era-of-global-trade/",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作工程教育參照；不據此推定其他地標的承包關係。",
+      "roleEn": "Its public information is used for engineering education; no contractor relationship with other landmarks is inferred."
+    },
+    {
+      "name": "US Army Corps of Engineers",
+      "nameEn": "US Army Corps of Engineers",
+      "business": "提供相關水工建設、設備或工程技術資料的機構。",
+      "businessEn": "Organization providing relevant hydraulic infrastructure, equipment or engineering information.",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM%201110-2-2610_FINAL_18Mar2025.pdf",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作工程教育參照；不據此推定其他地標的承包關係。",
+      "roleEn": "Its public information is used for engineering education; no contractor relationship with other landmarks is inferred."
+    }
+  ],
+  "related": [
+    "b225",
+    "b227"
+  ],
+  "architectureNodes": [
+    [
+      "雙池水位均衡",
+      "Equalization between two pools"
+    ],
+    [
+      "縱向水面坡度推力",
+      "Longitudinal water-slope force"
+    ],
+    [
+      "閘門浮力與輪載",
+      "Gate buoyancy and wheel loads"
+    ],
+    [
+      "混凝土溫差拘束",
+      "Concrete thermal restraint"
+    ],
+    [
+      "故障停航與水源緩衝",
+      "Outage backlog and water reserve"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

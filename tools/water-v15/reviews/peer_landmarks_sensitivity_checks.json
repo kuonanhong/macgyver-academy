@@ -1,0 +1,385 @@
+{
+  "b221": {
+    "expression": [
+      "6000/3000",
+      "6000/(3000*.8)"
+    ],
+    "expected": [
+      2,
+      2.5
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Q fixed at 6000 m³/s; effective area reduced by 20%; quasi-steady comparison excludes recirculation.",
+    "status": "PASS"
+  },
+  "b228": {
+    "expression": [
+      "64/80",
+      "64*.2/10"
+    ],
+    "expected": [
+      0.8,
+      1.28
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Total load fixed 64 MN and same ten-rope subset; its share changes from uniform 10/80 to 20%; no real rope load estimate.",
+    "status": "PASS"
+  },
+  "b231": {
+    "expression": [
+      "600/75",
+      "600/75+1.5"
+    ],
+    "expected": [
+      8,
+      9.5
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Fixed 600 m³ and effective rate75 m³/h; outage changes from0 to1.5h; local construction sequencing excluded.",
+    "status": "PASS"
+  },
+  "b237": {
+    "expression": [
+      "(.1/.1)**3",
+      "(.15/.1)**3"
+    ],
+    "expected": [
+      1,
+      3.375
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Aperture0.1→0.15mm at fixed pressure gradient; normalized laminar Newtonian flow ratio; particle-bearing grout excluded.",
+    "status": "PASS"
+  },
+  "b222": {
+    "expression": [
+      "600000/(1025*1200)",
+      "300000/(1025*1200)",
+      "300/600"
+    ],
+    "expected": [
+      0.4878,
+      0.2439,
+      0.5
+    ],
+    "tolerance": [
+      5e-05,
+      5e-05,
+      1e-10
+    ],
+    "boundary": "Only added mass changes; constant waterplane and outside density; small-draft approximation, not altered submerged shape.",
+    "status": "PASS"
+  },
+  "b223": {
+    "expression": [
+      "4*1.5-2+.5",
+      "5*1.5-2+.5",
+      "((5*1.5-2+.5)/(4*1.5-2+.5)-1)*100"
+    ],
+    "expected": [
+      4.5,
+      6,
+      33.33
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10,
+      0.005
+    ],
+    "boundary": "Single force perturbation at fixed posture and moment arms; not an actual stage change that would shift resultant.",
+    "status": "PASS"
+  },
+  "b224": {
+    "expression": [
+      "1025*9.81*8/1000",
+      "1025*9.81*10/1000",
+      "101.3+1025*9.81*8/1000",
+      "101.3+1025*9.81*10/1000",
+      "(10/8-1)*100"
+    ],
+    "expected": [
+      80.442,
+      100.5525,
+      181.742,
+      201.8525,
+      25
+    ],
+    "tolerance": [
+      1e-08,
+      1e-08,
+      1e-08,
+      1e-08,
+      1e-10
+    ],
+    "boundary": "Only static column depth changes; gauge and absolute pressure percentages correctly distinguished, no pipe or buoyancy inference.",
+    "status": "PASS"
+  },
+  "b225": {
+    "expression": [
+      ".278*.75*60*2",
+      ".278*.75*90*2",
+      "(90/60-1)*100"
+    ],
+    "expected": [
+      25.02,
+      37.53,
+      50
+    ],
+    "tolerance": [
+      1e-08,
+      1e-08,
+      1e-10
+    ],
+    "boundary": "Fixed area and runoff coefficient with duration beyond concentration time in both cases; no pump design capacity claim.",
+    "status": "PASS"
+  },
+  "b226": {
+    "expression": [
+      "(20000*10+10000*4)/30000",
+      "(20000*10+10000*6)/30000",
+      "(10000*(6-4))/30000"
+    ],
+    "expected": [
+      8,
+      8.6667,
+      0.6667
+    ],
+    "tolerance": [
+      1e-10,
+      5e-05,
+      5e-05
+    ],
+    "boundary": "Closed volume and fixed areas; common datum, no external supply, vessel movement or leakage.",
+    "status": "PASS"
+  },
+  "b227": {
+    "expression": [
+      "100000*9.81*.2/1000",
+      "50000*9.81*.2/1000",
+      "(1-50/100)*100"
+    ],
+    "expected": [
+      196.2,
+      98.1,
+      50
+    ],
+    "tolerance": [
+      1e-08,
+      1e-08,
+      1e-10
+    ],
+    "boundary": "Only imbalance changes at fixed speed and gravity; gravity component not total electrical demand.",
+    "status": "PASS"
+  },
+  "b229": {
+    "expression": [
+      "1000*200*.02/1000",
+      "1000*200*.01/1000",
+      "1000*200*.02*9.81*12/1000",
+      "1000*200*.01*9.81*12/1000"
+    ],
+    "expected": [
+      4,
+      2,
+      470.88,
+      235.44
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10,
+      1e-08,
+      1e-08
+    ],
+    "boundary": "Fixed gondola area and horizontal moment arm, concentrated-mass picture; not all-angle torque or full-cycle energy.",
+    "status": "PASS"
+  },
+  "b230": {
+    "expression": [
+      "100*(1-(1-.001)**50)",
+      "100*(1-(1-.002)**50)"
+    ],
+    "expected": [
+      4.8794,
+      9.5253
+    ],
+    "tolerance": [
+      5e-05,
+      5e-05
+    ],
+    "boundary": "Independent stationary years retained; nonlinearity correctly excludes exact doubling; not a forecast of constant future hazard.",
+    "status": "PASS"
+  },
+  "b232": {
+    "expression": [
+      "5000*.3/250",
+      "5000*.3/300",
+      "(300/250-1)*100",
+      "(1-250/300)*100"
+    ],
+    "expected": [
+      6,
+      5,
+      20,
+      16.67
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10,
+      1e-10,
+      0.005
+    ],
+    "boundary": "Only effective supply rate changes at fixed lift volume; edge work, waiting and joint constraints excluded.",
+    "status": "PASS"
+  },
+  "b233": {
+    "expression": [
+      ".5*80/8",
+      ".5*80/10",
+      "(1-8/10)*100"
+    ],
+    "expected": [
+      5,
+      4,
+      20
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Ideal thin continuous arch without bending; fixed pressure and radius, no 3D redistribution inference.",
+    "status": "PASS"
+  },
+  "b234": {
+    "expression": [
+      "1-2100/2700",
+      "1-2200/2700",
+      "100*(1-2100/2700)",
+      "100*(1-2200/2700)"
+    ],
+    "expected": [
+      0.2222,
+      0.1852,
+      22.22,
+      18.52
+    ],
+    "tolerance": [
+      5e-05,
+      5e-05,
+      0.005,
+      0.005
+    ],
+    "boundary": "Only dry density changes at fixed particle density; pore fraction does not determine stiffness or permeability.",
+    "status": "PASS"
+  },
+  "b235": {
+    "expression": [
+      "1e-9*5*1000",
+      "2e-9*5*1000",
+      "1e-9*5*1000*1000",
+      "2e-9*5*1000*1000",
+      "2e-9/1e-9"
+    ],
+    "expected": [
+      5e-06,
+      1e-05,
+      0.005,
+      0.01,
+      2
+    ],
+    "tolerance": [
+      1e-14,
+      1e-14,
+      1e-10,
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Same gradient and area, homogeneous linear Darcy flow; crack or bypass discharge not reduced to a changed uniform conductivity.",
+    "status": "PASS"
+  },
+  "b236": {
+    "expression": [
+      "100*(1-2450/2500)",
+      "100*(1-2475/2500)",
+      "100*(2475-2450)/2500"
+    ],
+    "expected": [
+      2,
+      1,
+      1
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Only bulk density changes at fixed maximum density; one percentage point versus relative decrease distinguished, no mix target.",
+    "status": "PASS"
+  },
+  "b238": {
+    "expression": [
+      "(.002*50+.008*10)/(.002+.008)",
+      "(.002*50+.004*10)/(.002+.004)"
+    ],
+    "expected": [
+      18,
+      23.333
+    ],
+    "tolerance": [
+      1e-10,
+      0.0005
+    ],
+    "boundary": "Only outlet conductance halves; both heads and inlet conductance fixed, two steady states rather than transient plugging response.",
+    "status": "PASS"
+  },
+  "b239": {
+    "expression": [
+      "1e-5*24*12*1000",
+      "1e-5*24*18*1000",
+      "(18/12-1)*100"
+    ],
+    "expected": [
+      2.88,
+      4.32,
+      50
+    ],
+    "tolerance": [
+      1e-10,
+      1e-10,
+      1e-10
+    ],
+    "boundary": "Uniform cooling only; free contraction boundary retained, no direct joint-aperture or restraint-stress inference.",
+    "status": "PASS"
+  },
+  "b240": {
+    "expression": [
+      "30*(30/16)**(2/3)*math.sqrt(.001)/.025",
+      "30*(30/16)**(2/3)*math.sqrt(.001)/.030",
+      "(1-.025/.030)*100"
+    ],
+    "expected": [
+      57.701,
+      48.084,
+      16.67
+    ],
+    "tolerance": [
+      0.0005,
+      0.0005,
+      0.005
+    ],
+    "boundary": "Manning n only changes with fixed depth, area, hydraulic radius and slope; capacity comparison, not simultaneously fixed flow.",
+    "status": "PASS"
+  }
+}

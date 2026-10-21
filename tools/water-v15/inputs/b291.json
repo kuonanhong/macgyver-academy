@@ -1,0 +1,263 @@
+{
+  "id": "b291",
+  "focus": "辨識浮碼頭浮力纜繩幾何與岸上通道的耦合反應~Identify coupled buoyancy, mooring geometry and shore-access response of floating docks",
+  "units": [
+    {
+      "anchor": "浮台載重與吃水~Pontoon loading and draft",
+      "title": "浮台載重與吃水~Pontoon loading and draft",
+      "mechanism": "浮碼頭用排水體積平衡總重量，增加人員或設備會改變平均吃水與乾舷。矩形常水線面只是靜水近似，重量位置還影響傾斜，進水或浮筒形狀變化會改變面積；因此承載評估需把平均下沉、偏載與損壞狀態分開，不能只算總浮力。 假設海水1025kg/m³、水線面100m²、均勻增重10250kg，ΔT=Δm/(ρA)=0.10m；不含傾斜與波浪。 ~A floating dock balances total weight through displaced water. Added people or equipment change mean draft and freeboard. A constant rectangular waterplane is only a calm-water approximation; weight location causes heel, while flooding or changing hull shape alters area. Assessment must separate mean immersion, eccentric loading and damage rather than relying on one total-buoyancy figure for every condition. Assume seawater1025kg/m³,constant waterplane100m² and uniformly added10250kg. Mean draft increaseΔT=0.10m, excluding heel and waves. ",
+      "model": "教學假設，非操作設定或設計允收值。假設海水1025kg/m³、水線面100m²、均勻增重10250kg，ΔT=Δm/(ρA)=0.10m；不含傾斜與波浪。~Teaching assumptions, not operating settings or design acceptance limits. Assume seawater1025kg/m³,constant waterplane100m² and uniformly added10250kg. Mean draft increaseΔT=0.10m, excluding heel and waves.",
+      "verify": "用多角點吃水與重量清單交叉核對，標出人員和設備可能集中區，檢查水線面是否隨吃水改變。另記密閉艙狀態及最低乾舷，把靜水預算與實際使用限制分開保存。~Compare corner drafts with the weight schedule, marking potential concentrated occupancy and checking whether waterplane changes with immersion. Record compartment condition and minimum freeboard, keeping this static budget distinct from the actual restrictions governing use of the facility. ",
+      "failure": "偏載時平均吃水正常仍可能有一角進水，未察覺艙漏又使有效浮力持續減少。只核對設計總重量，無法辨識局部低乾舷與失去密閉性的共同影響。~Eccentric loading can flood a corner despite normal mean draft, and unnoticed leakage progressively reduces buoyant reserve. Checking design total weight alone cannot reveal the combined effect of local low freeboard and compromised compartment integrity.",
+      "misconception": "只要總浮力大於總重量就代表偏載和波浪下所有角點都安全。~Total buoyancy exceeding weight guarantees every corner remains safe under eccentric loading and waves.",
+      "practice": "用多角點吃水與重量清單交叉核對，標出人員和設備可能集中區，檢查水線面是否隨吃水改變。另記密閉艙狀態及最低乾舷，把靜水預算與實際使用限制分開保存。~Compare corner drafts with the weight schedule, marking potential concentrated occupancy and checking whether waterplane changes with immersion. Record compartment condition and minimum freeboard, keeping this static budget distinct from the actual restrictions governing use of the facility."
+    },
+    {
+      "anchor": "迎風面與風作用~Windage and wind action",
+      "title": "迎風面與風作用~Windage and wind action",
+      "mechanism": "浮碼頭與繫泊船舶的迎風面共同傳力，風向改變會讓受力位置與扭矩不同。平方風速式使用指定平均時間與高度，不能把瞬間陣風和長期平均混在同一係數下；遮蔽、上層設施及船舶配置也會改變受風面，需追蹤實際組合。 假設空氣ρ=1.225kg/m³、Cd=1.2、投影面積100m²、指定風速20m/s，F=ρCdAU²/2=29.40kN；非操作門檻。 ~The dock and attached vessels contribute windage and transfer load together; direction changes force location and torque. A quadratic wind relation requires a specified averaging period and elevation, rather than mixing gusts and long-term means under one coefficient. Shelter, superstructures and vessel arrangements also change projected area, making the actual combined configuration part of the load case. Assume air1.225kg/m³,Cd=1.2,projected area100m² and selected speed20m/s. F=ρCdAU²/2=29.40kN, not an operating threshold. ",
+      "model": "教學假設，非操作設定或設計允收值。假設空氣ρ=1.225kg/m³、Cd=1.2、投影面積100m²、指定風速20m/s，F=ρCdAU²/2=29.40kN；非操作門檻。~Teaching assumptions, not operating settings or design acceptance limits. Assume air1.225kg/m³,Cd=1.2,projected area100m² and selected speed20m/s. F=ρCdAU²/2=29.40kN, not an operating threshold.",
+      "verify": "在平面與立面標出迎風投影、合力高度及係纜點，核對風速定義與量測位置。比較不同船舶和風向配置，將遮蔽證據與未遮蔽情境分開，保留由偏心造成的扭矩需求。~Map projected area, force height and mooring points and check wind-speed definition and measurement location. Compare vessel and directional configurations, separating evidenced shelter from exposed conditions and retaining torque demand created by an eccentric line of action. ",
+      "failure": "新增遮棚或高船舶可增加迎風面及力矩，沿用空碼頭參數會低估系統需求。平均風速與陣風混用則可能把不同時間尺度的作用錯誤相加或相互抵銷。~A canopy or taller vessel increases windage and torque, so empty-dock parameters understate demand. Mixing mean wind and gust definitions can also incorrectly combine or cancel actions occurring on different response timescales in the system.",
+      "misconception": "浮碼頭繫泊需求只由碼頭自身迎風面決定而不受靠船影響。~Floating-dock mooring demand depends only on dock windage and is unaffected by attached vessels.",
+      "practice": "在平面與立面標出迎風投影、合力高度及係纜點，核對風速定義與量測位置。比較不同船舶和風向配置，將遮蔽證據與未遮蔽情境分開，保留由偏心造成的扭矩需求。~Map projected area, force height and mooring points and check wind-speed definition and measurement location. Compare vessel and directional configurations, separating evidenced shelter from exposed conditions and retaining torque demand created by an eccentric line of action."
+    },
+    {
+      "anchor": "水下流阻尺度~Submerged-current drag scale",
+      "title": "水下流阻尺度~Submerged-current drag scale",
+      "mechanism": "水流作用在浮體水下投影及附掛設備，水位與吃水改變會更新受流面。均勻穩定流估算沒有涵蓋波浪加速度或渦激反應，狹窄通道與船間流場又會加速；分析應將力向、作用點及變動時間列明，避免把平均流速當成完整動態作用。 假設海水1025kg/m³、Cd=1.0、水下面積20m²、均勻流1.5m/s，F=ρCdAU²/2=23.0625kN；不含波浪慣性。 ~Current acts on the submerged projection and attached equipment, which change with draft and water level. A uniform steady estimate excludes wave acceleration and vortex response, while narrow passages or vessel gaps can accelerate flow. Direction, force location and timescale therefore need explicit treatment; mean current speed does not by itself describe the complete dynamic action on the moored assembly. Assume seawater1025kg/m³,Cd=1.0,submerged area20m² and uniform current1.5m/s. Steady drag is23.0625kN, excluding wave inertia. ",
+      "model": "教學假設，非操作設定或設計允收值。假設海水1025kg/m³、Cd=1.0、水下面積20m²、均勻流1.5m/s，F=ρCdAU²/2=23.0625kN；不含波浪慣性。~Teaching assumptions, not operating settings or design acceptance limits. Assume seawater1025kg/m³,Cd=1.0,submerged area20m² and uniform current1.5m/s. Steady drag is23.0625kN, excluding wave inertia.",
+      "verify": "量測不同深度與流向的速度並記錄吃水，核對水下突起和海生物附著是否納入投影。將波浪與潮流資料同步，分開穩定拖曳和動態分量，避免用單點緩流區代表整個浮體。~Measure speed by depth and direction with draft, checking projections of appendages and marine growth. Synchronize wave and tide records and distinguish steady drag from dynamic components rather than representing the full submerged body with one sheltered measurement point. ",
+      "failure": "潮向反轉會讓不同纜繩承力，漏掉水下附掛物則低估面積。若水流被船體間隙加速，遠處量到的背景速度可能無法代表真正控制局部連接的流場。~Tidal reversal engages different lines, and omitted submerged attachments understate area. Flow accelerated through vessel gaps means distant background measurements may not represent the conditions controlling a particular connection or part of the floating structure.",
+      "misconception": "遠處測到的平均潮流速度必定等於所有浮體表面的局部速度。~A distant mean tidal-current measurement necessarily equals local velocity at every pontoon surface.",
+      "practice": "量測不同深度與流向的速度並記錄吃水，核對水下突起和海生物附著是否納入投影。將波浪與潮流資料同步，分開穩定拖曳和動態分量，避免用單點緩流區代表整個浮體。~Measure speed by depth and direction with draft, checking projections of appendages and marine growth. Synchronize wave and tide records and distinguish steady drag from dynamic components rather than representing the full submerged body with one sheltered measurement point."
+    },
+    {
+      "anchor": "纜繩力向分解~Resolving mooring-line forces",
+      "title": "纜繩力向分解~Resolving mooring-line forces",
+      "mechanism": "係纜的軸向張力只有投影分量抵抗指定水平力，平面角與垂直角均會影響傳力。理想兩索對稱必須同時張緊才可平均分擔，預張力、鬆弛與彈性差異會破壞此條件；不能將幾何張力直接當成纜具額定能力或現場張緊設定。 假設水平力40kN由兩條水平對稱張緊纜承受，各與力向30°，T=40/(2cos30°)=23.094kN；未含預張與動載。 ~Only a line's projected tension resists the selected horizontal action, with both plan and vertical angles affecting transfer. Two symmetric lines share equally only when simultaneously engaged. Pretension, slack and different elasticity invalidate this assumption, so geometric tension is not the rated capacity of the hardware or an instruction for setting line tension during actual mooring operations. Assume horizontal40kN resisted by two taut horizontal symmetric lines30°from the force direction. T=23.094kN each, excluding pretension and dynamics. ",
+      "model": "教學假設，非操作設定或設計允收值。假設水平力40kN由兩條水平對稱張緊纜承受，各與力向30°，T=40/(2cos30°)=23.094kN；未含預張與動載。~Teaching assumptions, not operating settings or design acceptance limits. Assume horizontal40kN resisted by two taut horizontal symmetric lines30°from the force direction. T=23.094kN each, excluding pretension and dynamics.",
+      "verify": "畫每條纜的三維方向和自由體圖，確認角度參考軸及同時受力條件，分開預張與荷載增量。沿纜具、連接和岸上錨點追蹤力路徑，核對不均分時的替代情境。~Draw each line in three dimensions and define angle reference and simultaneous engagement, separating pretension from load increment. Trace force through rope, fittings and shore anchorage and evaluate alternative sharing when the symmetric assumption is not supported. ",
+      "failure": "一條纜鬆弛時另一條可能承擔大部分需求，垂直角增加又減少水平分量。僅靠纜數平均分配，會漏掉不對稱姿態及突然繃緊造成的衝擊。~One slack line shifts much of the demand to another, and vertical inclination reduces horizontal resistance. Dividing load only by line count misses asymmetric geometry and impact when a previously slack line suddenly becomes taut.",
+      "misconception": "纜繩總數增加一倍就保證每條纜在任何姿態都只受一半張力。~Doubling line count guarantees half the tension in every line under any geometry.",
+      "practice": "畫每條纜的三維方向和自由體圖，確認角度參考軸及同時受力條件，分開預張與荷載增量。沿纜具、連接和岸上錨點追蹤力路徑，核對不均分時的替代情境。~Draw each line in three dimensions and define angle reference and simultaneous engagement, separating pretension from load increment. Trace force through rope, fittings and shore anchorage and evaluate alternative sharing when the symmetric assumption is not supported."
+    },
+    {
+      "anchor": "材料伸長與有效剛度~Material extension and effective stiffness",
+      "title": "材料伸長與有效剛度~Material extension and effective stiffness",
+      "mechanism": "纜繩伸長包含材料應變與編織重排，許多材料在循環中有遲滯、徐變和不同切線剛度。直桿彈性式只是一個局部基準，不適合把所有纜索都當鋼杆；量測時還需分開初始鬆弛與幾何拉直，否則剛度估計會隨量測區間改變。 假設直線彈性纜有效EA=5000kN、長20m、張力增量25kN，伸長ΔL=ΔTL/(EA)=0.10m；不含鬆弛與徐變。 ~Line extension combines material strain with constructional rearrangement, and many ropes show hysteresis, creep and changing tangent stiffness. A straight elastic rod is a local baseline rather than a universal steel-like representation. Initial slack and geometric straightening must be separated from material extension, otherwise the inferred stiffness depends on which portion of the load-displacement path was measured. Assume a straight elastic line with effective EA=5000kN,length20m and tension increment25kN. Extension is0.10m, excluding slack and creep. ",
+      "model": "教學假設，非操作設定或設計允收值。假設直線彈性纜有效EA=5000kN、長20m、張力增量25kN，伸長ΔL=ΔTL/(EA)=0.10m；不含鬆弛與徐變。~Teaching assumptions, not operating settings or design acceptance limits. Assume a straight elastic line with effective EA=5000kN,length20m and tension increment25kN. Extension is0.10m, excluding slack and creep.",
+      "verify": "使用相符含水與循環條件的試驗曲線，明列有效標距並分離預張階段。比較載入卸載與長時間保持資料，確認計算用割線或切線剛度，避免以單次拉伸斜率代表全部壽期。~Use response curves under relevant moisture and cycling, defining gauge length and separating pretension. Compare loading, unloading and hold periods, identify secant versus tangent stiffness, and avoid representing the entire service history by one slope from a single tensile test. ",
+      "failure": "將編織收緊當材料彈性會低估後續切線剛度，長時間徐變又可能增加鬆弛和位移。相同最終伸長下，張力歷史與儲能可以不同，不能只讀總長度。~Mistaking constructional tightening for elasticity understates later tangent stiffness, while creep adds slack and displacement. Equal final extension can conceal different tension histories and stored energy, so total line length alone is insufficient for interpreting response.",
+      "misconception": "所有纜繩都具固定線性剛度且循環後不會有永久伸長。~Every mooring line has constant linear stiffness and no permanent extension after cycling.",
+      "practice": "使用相符含水與循環條件的試驗曲線，明列有效標距並分離預張階段。比較載入卸載與長時間保持資料，確認計算用割線或切線剛度，避免以單次拉伸斜率代表全部壽期。~Use response curves under relevant moisture and cycling, defining gauge length and separating pretension. Compare loading, unloading and hold periods, identify secant versus tangent stiffness, and avoid representing the entire service history by one slope from a single tensile test."
+    },
+    {
+      "anchor": "潮位幾何與鬆弛~Tidal geometry and slack",
+      "title": "潮位幾何與鬆弛~Tidal geometry and slack",
+      "mechanism": "岸上固定點與浮台的高差隨潮位變化，連線長度及入射角因此改變，即使平面位置未動也可能拉緊纜繩。直線距離只是幾何下限，鏈條垂度和海床接觸另影響反力；不能把一段預留長度視為在所有水位都具有相同的鬆弛餘量。 假設水平距10m，高差由1變3m，直線距由√101=10.0499增至√109=10.4403m，增0.3904m；非鏈條張力模型。 ~The height difference between a shore point and a pontoon varies with tide, changing chord length and angle even without horizontal motion. Straight-line distance is a geometric lower bound; chain sag and bed contact separately affect reaction. A reserved length therefore does not provide the same slack margin at every water level or imply unchanged horizontal restoring behavior. Assume horizontal distance10m and height difference1to3m. Chord length rises10.0499to10.4403m, an increase0.3904m; this is not a catenary-tension model. ",
+      "model": "教學假設，非操作設定或設計允收值。假設水平距10m，高差由1變3m，直線距由√101=10.0499增至√109=10.4403m，增0.3904m；非鏈條張力模型。~Teaching assumptions, not operating settings or design acceptance limits. Assume horizontal distance10m and height difference1to3m. Chord length rises10.0499to10.4403m, an increase0.3904m; this is not a catenary-tension model.",
+      "verify": "以同一基準畫高低水位的纜端位置，量測可用纜長、垂度和海床接觸，核對可能卡阻。把幾何變化連回經驗證的力位移曲線，另查高水位時岸上構件的垂直反力。~Plot line-end positions at different levels on one datum, measuring available length, sag and seabed contact and checking obstructions. Relate geometric changes to a verified force-displacement curve and separately examine vertical reactions on shore attachments during higher water. ",
+      "failure": "高水位使纜線接近拉直時，剩餘伸長可能轉為很大的張力增量；低水位則可能增加海床磨耗。只檢查中潮幾何，無法涵蓋兩端的不同行為。~As a line straightens at high water, further extension can produce a large tension increment, while low water increases seabed abrasion. Mid-tide geometry alone cannot cover these different behaviors at the ends of the tidal range.",
+      "misconception": "浮台隨潮升降但平面位置不變時纜繩幾何與張力也一定不變。~If pontoon plan position is unchanged, tidal rise cannot alter line geometry or tension.",
+      "practice": "以同一基準畫高低水位的纜端位置，量測可用纜長、垂度和海床接觸，核對可能卡阻。把幾何變化連回經驗證的力位移曲線，另查高水位時岸上構件的垂直反力。~Plot line-end positions at different levels on one datum, measuring available length, sag and seabed contact and checking obstructions. Relate geometric changes to a verified force-displacement curve and separately examine vertical reactions on shore attachments during higher water."
+    },
+    {
+      "anchor": "並聯恢復剛度~Parallel restoring stiffness",
+      "title": "並聯恢復剛度~Parallel restoring stiffness",
+      "mechanism": "多條纜的水平恢復力可以在特定平衡點線性化，但只有同方向、同時受力的小位移增量才直接相加。幾何旋轉與單向受拉特性會改變參與線數，整個系統還有浮台轉動自由度；單一總剛度不代表所有位移方向和幅度都相同。 假設兩個同向並聯線性恢復分量k1=20、k2=30kN/m，受增量力10kN時x=10/(20+30)=0.20m；兩者均持續受力。 ~Horizontal restoring force can be linearized about one equilibrium, with direct addition applying only to simultaneously engaged, collinear small-displacement increments. Geometry and tension-only behavior change the active lines, and the dock also rotates. One total stiffness cannot describe every direction and amplitude, so its use must remain tied to the specified equilibrium state and local motion coordinate. Assume two collinear parallel restoring components20and30kN/m remain engaged. An incremental10kN gives x=10/50=0.20m near that equilibrium. ",
+      "model": "教學假設，非操作設定或設計允收值。假設兩個同向並聯線性恢復分量k1=20、k2=30kN/m，受增量力10kN時x=10/(20+30)=0.20m；兩者均持續受力。~Teaching assumptions, not operating settings or design acceptance limits. Assume two collinear parallel restoring components20and30kN/m remain engaged. An incremental10kN gives x=10/50=0.20m near that equilibrium.",
+      "verify": "將每條纜的力位移投影到相同水平座標，檢查小位移試驗期間是否有鬆弛或滑移。比較正反向剛度與轉動耦合，記錄適用平衡點，不能將局部斜率延伸到極端偏移。~Project each force-displacement response onto the same horizontal coordinate and check slack or sliding during small-motion tests. Compare opposite directions and rotational coupling, recording the equilibrium point instead of extending one local slope to extreme offsets of the dock. ",
+      "failure": "一條纜失去預張會讓原先並聯分擔消失，總位移可能突然增加。若只用所有材料EA相加而未投影幾何，會高估真正提供的水平恢復剛度。~Loss of pretension removes a previously active parallel contribution and can sharply increase displacement. Adding material EA values without geometric projection also overstates the horizontal restoring stiffness actually available to the floating structure.",
+      "misconception": "所有纜的軸向剛度相加就是任何方向的浮台水平剛度。~Adding all axial line stiffnesses gives the pontoon's horizontal stiffness in every direction.",
+      "practice": "將每條纜的力位移投影到相同水平座標，檢查小位移試驗期間是否有鬆弛或滑移。比較正反向剛度與轉動耦合，記錄適用平衡點，不能將局部斜率延伸到極端偏移。~Project each force-displacement response onto the same horizontal coordinate and check slack or sliding during small-motion tests. Compare opposite directions and rotational coupling, recording the equilibrium point instead of extending one local slope to extreme offsets of the dock."
+    },
+    {
+      "anchor": "水平振盪時間尺度~Horizontal oscillation timescale",
+      "title": "水平振盪時間尺度~Horizontal oscillation timescale",
+      "mechanism": "浮碼頭質量、附加水質量與恢復剛度共同決定自然振盪尺度，與波浪或船行波頻率接近時反應可能放大。單自由度無阻尼模型只能估計週期，不能預測峰值或共振幅度；實際纜繩非線性、摩擦及輻射阻尼必須另行識別並與觀測對照。 假設已含附加質量的有效m=100000kg、水平k=50000N/m，Tn=2π√(m/k)=8.886s；無阻尼線性示意。 ~Dock mass, hydrodynamic added mass and restoring stiffness set a natural timescale, with possible amplification near wave or wake frequencies. An undamped single-degree model estimates period only, not peak response or resonance amplitude. Real line nonlinearity, friction and radiation damping require separate identification and observation before the simplified timing relation can support interpretation of actual motion. Assume effective mass100000kg already includes added mass and horizontal stiffness50000N/m. Tn=2π√(m/k)=8.886s for an undamped linear illustration. ",
+      "model": "教學假設，非操作設定或設計允收值。假設已含附加質量的有效m=100000kg、水平k=50000N/m，Tn=2π√(m/k)=8.886s；無阻尼線性示意。~Teaching assumptions, not operating settings or design acceptance limits. Assume effective mass100000kg already includes added mass and horizontal stiffness50000N/m. Tn=2π√(m/k)=8.886s for an undamped linear illustration.",
+      "verify": "從小幅自由衰減或環境振動記錄辨識週期，核對質量、纜態與潮位是否與模型一致。比較外力頻譜並另估阻尼，保留大位移時非線性特徵，不用單一週期推定峰值張力。~Identify period from small-amplitude decay or ambient motion with matching mass, line state and tide. Compare forcing spectra and estimate damping separately, retaining nonlinear behavior at larger offsets rather than using one period to infer maximum line tension. ",
+      "failure": "附加質量重複計入會拉長預測週期，纜剛度隨潮位改變則移動共振區。即使週期吻合，錯誤阻尼仍可能讓預測振幅與實測相差很大。~Double-counted added mass lengthens the predicted period, while tide-dependent line stiffness shifts the resonance range. Matching period alone does not establish correct amplitude because an incorrect damping estimate can still produce a large response discrepancy.",
+      "misconception": "自然週期算對就可以不需阻尼資料直接預測最大纜繩張力。~A correct natural period predicts maximum mooring tension without any damping information.",
+      "practice": "從小幅自由衰減或環境振動記錄辨識週期，核對質量、纜態與潮位是否與模型一致。比較外力頻譜並另估阻尼，保留大位移時非線性特徵，不用單一週期推定峰值張力。~Identify period from small-amplitude decay or ambient motion with matching mass, line state and tide. Compare forcing spectra and estimate damping separately, retaining nonlinear behavior at larger offsets rather than using one period to infer maximum line tension."
+    },
+    {
+      "anchor": "引橋坡度與行程~Gangway slope and travel",
+      "title": "引橋坡度與行程~Gangway slope and travel",
+      "mechanism": "岸上平台固定而浮台升降，引橋坡度及端部滑移隨水位變化，與纜繩容許位移需要共同檢查。幾何斜率不是無障礙或使用合格證明，轉折、扶手、表面及動態運動亦有要求；在水平長度和實際橋長之間混用會導致角度與行程錯誤。 假設高差1.2m、水平投影12m，坡度10%、角度atan(1.2/12)=5.711°，斜長12.0599m；不是通行允收值。 ~A fixed shore platform and moving pontoon change gangway slope and end travel, which must be compatible with mooring offsets. Geometric grade is not proof of accessibility or acceptable use; transitions, rails, surfaces and dynamic movement matter too. Confusing horizontal run with actual span length corrupts angle and travel calculations even when the height difference is measured correctly. Assume rise1.2m and horizontal run12m. Grade is10%,angle5.711° and sloping length12.0599m, not an access acceptance criterion. ",
+      "model": "教學假設，非操作設定或設計允收值。假設高差1.2m、水平投影12m，坡度10%、角度atan(1.2/12)=5.711°，斜長12.0599m；不是通行允收值。~Teaching assumptions, not operating settings or design acceptance limits. Assume rise1.2m and horizontal run12m. Grade is10%,angle5.711° and sloping length12.0599m, not an access acceptance criterion.",
+      "verify": "分別標示水平投影、實際橋長及端部可滑行範圍，在高低潮與浮台偏移組合下重畫幾何。依適用無障礙及設施設計要求檢查全路徑，另記防滑、夾點與動態運動的驗證證據。~Distinguish horizontal run, span length and available end travel, redrawing geometry for combined tide and dock offsets. Check the entire route against applicable accessibility and facility requirements, retaining evidence for slip resistance, pinch interfaces and dynamic movement separately. ",
+      "failure": "只看平均坡度會漏掉端部短折角，浮台水平偏移也可能耗盡滑座行程。即使靜態幾何仍可通行，波動造成的相對運動仍需在使用情境中評估。~Average grade can hide a short end transition, and horizontal pontoon movement can exhaust sliding travel. Even apparently passable static geometry requires assessment of relative wave-induced movement within the actual use context of the facility.",
+      "misconception": "引橋坡度符合任意幾何計算值就自動代表完全符合無障礙要求。~Any calculated gangway slope automatically establishes full compliance with accessibility requirements.",
+      "practice": "分別標示水平投影、實際橋長及端部可滑行範圍，在高低潮與浮台偏移組合下重畫幾何。依適用無障礙及設施設計要求檢查全路徑，另記防滑、夾點與動態運動的驗證證據。~Distinguish horizontal run, span length and available end travel, redrawing geometry for combined tide and dock offsets. Check the entire route against applicable accessibility and facility requirements, retaining evidence for slip resistance, pinch interfaces and dynamic movement separately."
+    },
+    {
+      "anchor": "浮力儲備與損艙~Buoyant reserve and compartment loss",
+      "title": "浮力儲備與損艙~Buoyant reserve and compartment loss",
+      "mechanism": "浮筒損壞會改變可用排水體積及重量分布，分艙的目的之一是限制局部進水影響。完整密閉體的總容積不是損壞後可用浮力，且浸沒到頂的理論餘量不含動態乾舷需求；應分開完整和損艙狀態，追蹤何處先失去通達或穩定功能。 假設密閉可排水體積120m³、海水1025kg/m³、總質量100000kg，至全浸沒理論質量餘量23000kg；不是允許載重。 ~Damage changes available buoyant volume and weight distribution, while compartments limit the extent of flooding. Total enclosed volume in the intact state is not available buoyancy after damage, and a theoretical reserve to deck immersion excludes dynamic freeboard needs. Intact and damaged states need separate treatment, identifying where access or stability is lost before relying on a total reserve number. Assume sealed displacement capacity120m³,seawater1025kg/m³ and mass100000kg. Theoretical reserve to full immersion is23000kg, not an allowable additional load. ",
+      "model": "教學假設，非操作設定或設計允收值。假設密閉可排水體積120m³、海水1025kg/m³、總質量100000kg，至全浸沒理論質量餘量23000kg；不是允許載重。~Teaching assumptions, not operating settings or design acceptance limits. Assume sealed displacement capacity120m³,seawater1025kg/m³ and mass100000kg. Theoretical reserve to full immersion is23000kg, not an allowable additional load.",
+      "verify": "建立分艙體積和重量位置清單，核對水密檢查及進水警示，分別畫完整與指定損艙吃水姿態。將理論浮力餘量與最低乾舷、穩性及使用條件分開，不讓總容積掩蓋局部進水。~Inventory compartment volumes and weight locations, checking watertightness and flooding detection. Draw intact and specified damaged attitudes separately and distinguish theoretical buoyant reserve from freeboard, stability and use requirements so total volume does not hide localized flooding. ",
+      "failure": "某一端進水可能先造成傾斜和引橋不對位，總剩餘浮力尚大也不表示功能完整。把全浸沒餘量當可加載量，會忽略波浪、進水和人員偏載所需的空間。~Flooding at one end can first cause heel and gangway misalignment even with substantial remaining total buoyancy. Treating reserve to full immersion as permissible loading ignores the space needed for waves, flooding and eccentric occupancy.",
+      "misconception": "理論全浸沒前的浮力餘量可以全部當成額外允許載重。~All buoyant reserve up to full immersion can be used as permissible additional loading.",
+      "practice": "建立分艙體積和重量位置清單，核對水密檢查及進水警示，分別畫完整與指定損艙吃水姿態。將理論浮力餘量與最低乾舷、穩性及使用條件分開，不讓總容積掩蓋局部進水。~Inventory compartment volumes and weight locations, checking watertightness and flooding detection. Draw intact and specified damaged attitudes separately and distinguish theoretical buoyant reserve from freeboard, stability and use requirements so total volume does not hide localized flooding."
+    }
+  ],
+  "title": "浮動碼頭繫泊系統~Mooring systems for floating docks",
+  "discipline": "water-coasts",
+  "family": "water",
+  "summary": "辨識浮碼頭浮力纜繩幾何與岸上通道的耦合反應。課程從邊界辨識與資料整理走到水理量化、構造介面及驗證紀錄；每一步把計算結果連回可量測的證據。十個不同單元分別處理關鍵機制，不以名義尺寸或單一通過率代替整體工程判斷，並明列合成算例與現地資料的差別。~Identify coupled buoyancy, mooring geometry and shore-access response of floating docks. The course moves from boundary identification and evidence to hydraulic quantification, structural interfaces and verification records. Ten distinct units connect each calculated quantity to measurable evidence. Nominal geometry or a single pass rate does not establish whole-system performance, and synthetic teaching examples remain separate from field observations.",
+  "history": "浮碼頭讓登船面隨潮升降，但也把浮體、繫泊和岸上引橋連成同一系統。香港主管機關記錄二〇二一年海岸風險研究，並以馬料水與三門仔浮台作水位調適背景；二〇二五年九月新馬料水碼頭啟用公告明列浮台與引橋。現行美國官方書目在二〇二六年九月列小型船舶靠泊設施新版，舊站仍有較早版本，因此引用必須標明版本及已閱讀範圍。本課不聲稱取得這些碼頭的纜具配置，所有重量、角度及剛度均為合成示意，用來辨識浮力與力路徑如何耦合。~Floating docks follow tide but couple the pontoon, mooring and shore gangway into one system. Hong Kong records its2021 coastal-hazards study and identifies Ma Liu Shui and Sam Mun Tsai pontoons in an adaptation context; the September2025 opening announcement explicitly describes the new Ma Liu Shui platform and gangway. The current US catalogue lists a September2026 small-craft guide while a legacy site retains older issues, requiring clear version and reading-scope identification. This course does not claim access to those piers’ mooring configurations. All weights, angles and stiffnesses are synthetic illustrations of buoyancy and coupled load paths.",
+  "example": "以下為原創合成算例，不是地標工程的實測或推薦操作值。教學假設，非操作設定或設計允收值。假設海水1025kg/m³、水線面100m²、均勻增重10250kg，ΔT=Δm/(ρA)=0.10m；不含傾斜與波浪。假設增重由10250加10%至11275kg、水線面與密度不變，平均吃水增量由0.10變0.11m；並不保證各角點只增加同樣深度。重新計算前先列固定條件、單位、適用尺度及可能失效的邊界。把模型敏感度與測量誤差分開，不能將單一參數變化直接當成工程風險或壽命比例。比較兩次結果後，記錄還需要哪些獨立證據，並由負責專業人員判斷適用性。~This original synthetic example is neither a landmark measurement nor a recommended operating value. Teaching assumptions, not operating settings or design acceptance limits. Assume seawater1025kg/m³,constant waterplane100m² and uniformly added10250kg. Mean draft increaseΔT=0.10m, excluding heel and waves. Increasing added mass10% from10250 to11275kg at fixed waterplane and density changes mean draft increment from0.10 to0.11m, without guaranteeing equal immersion changes at every corner. Before recalculating, list fixed conditions, units, applicable scale and boundaries that could fail. Separate model sensitivity from measurement uncertainty: a parameter change does not directly give a proportional change in engineering risk or service life. Compare the results, record independent evidence still needed, and have the responsible specialist determine applicability.",
+  "facts": [
+    "教學假設，非操作設定或設計允收值。假設海水1025kg/m³、水線面100m²、均勻增重10250kg，ΔT=Δm/(ρA)=0.10m；不含傾斜與波浪。~Teaching assumptions, not operating settings or design acceptance limits. Assume seawater1025kg/m³,constant waterplane100m² and uniformly added10250kg. Mean draft increaseΔT=0.10m, excluding heel and waves.",
+    "教學假設，非操作設定或設計允收值。假設空氣ρ=1.225kg/m³、Cd=1.2、投影面積100m²、指定風速20m/s，F=ρCdAU²/2=29.40kN；非操作門檻。~Teaching assumptions, not operating settings or design acceptance limits. Assume air1.225kg/m³,Cd=1.2,projected area100m² and selected speed20m/s. F=ρCdAU²/2=29.40kN, not an operating threshold.",
+    "教學假設，非操作設定或設計允收值。假設海水1025kg/m³、Cd=1.0、水下面積20m²、均勻流1.5m/s，F=ρCdAU²/2=23.0625kN；不含波浪慣性。~Teaching assumptions, not operating settings or design acceptance limits. Assume seawater1025kg/m³,Cd=1.0,submerged area20m² and uniform current1.5m/s. Steady drag is23.0625kN, excluding wave inertia.",
+    "教學假設，非操作設定或設計允收值。假設水平力40kN由兩條水平對稱張緊纜承受，各與力向30°，T=40/(2cos30°)=23.094kN；未含預張與動載。~Teaching assumptions, not operating settings or design acceptance limits. Assume horizontal40kN resisted by two taut horizontal symmetric lines30°from the force direction. T=23.094kN each, excluding pretension and dynamics.",
+    "教學假設，非操作設定或設計允收值。假設直線彈性纜有效EA=5000kN、長20m、張力增量25kN，伸長ΔL=ΔTL/(EA)=0.10m；不含鬆弛與徐變。~Teaching assumptions, not operating settings or design acceptance limits. Assume a straight elastic line with effective EA=5000kN,length20m and tension increment25kN. Extension is0.10m, excluding slack and creep.",
+    "教學假設，非操作設定或設計允收值。假設水平距10m，高差由1變3m，直線距由√101=10.0499增至√109=10.4403m，增0.3904m；非鏈條張力模型。~Teaching assumptions, not operating settings or design acceptance limits. Assume horizontal distance10m and height difference1to3m. Chord length rises10.0499to10.4403m, an increase0.3904m; this is not a catenary-tension model."
+  ],
+  "timeline": [
+    {
+      "year": "2021",
+      "event": "香港完成海岸風險研究供調適規劃~Hong Kong completes a coastal-hazards study informing adaptation planning"
+    },
+    {
+      "year": "2025",
+      "event": "馬料水新碼頭啟用浮台與引橋設計~Ma Liu Shui new pier opens with a floating platform and gangway"
+    },
+    {
+      "year": "2026",
+      "event": "現行官方書目列小型船舶靠泊設施新版~The current official catalogue lists a new small-craft berthing guide"
+    }
+  ],
+  "codes": [
+    "香港海港工程設計手冊第二部，碼頭與繫船墩~Hong Kong Port Works Design Manual Part2, piers and dolphins",
+    "小型船舶靠泊設施UFC4-152-07，核對二〇二六版~Small Craft Berthing Facilities UFC4-152-07, check the2026 issue"
+  ],
+  "landmarks": [
+    "馬料水新渡輪碼頭：浮台與引橋~Ma Liu Shui New Ferry Pier: pontoon and gangway",
+    "三門仔村碼頭：浮台調適比較~Sam Mun Tsai Village Pier: pontoon-adaptation comparison"
+  ],
+  "place": {
+    "name": "馬料水公共渡輪碼頭背景區~Ma Liu Shui public ferry-pier context",
+    "country": "香港~Hong Kong",
+    "lat": 22.417,
+    "lng": 114.212,
+    "query": "Ma Liu Shui New Ferry Pier Hong Kong"
+  },
+  "sources": [
+    {
+      "key": "pwdm",
+      "title": "香港海港工程設計手冊",
+      "titleEn": "Hong Kong Port Works Design Manual",
+      "publisher": "Hong Kong CEDD",
+      "url": "https://www.cedd.gov.hk/eng/publications/ceo/pwdm/index.html",
+      "sourceType": "primary",
+      "scope": "官方列海堤防波堤、碼頭及海灘分冊和歷次勘誤；實際設計須核對相應最新版，算例不宣稱合規。",
+      "scopeEn": "Official index lists seawall/breakwater, pier and beach parts and corrigenda; actual design needs the applicable current issue and examples do not claim compliance."
+    },
+    {
+      "key": "smallcraft",
+      "title": "小型船舶靠泊設施設計資料",
+      "titleEn": "UFC4-152-07 Small Craft Berthing Facilities",
+      "publisher": "US Department of Defense via WBDG",
+      "url": "https://www.wbdg.org/dod/ufc/ufc-4-152-07",
+      "sourceType": "primary",
+      "scope": "現行官方索引列二〇二六年九月版本，舊站仍列二〇〇九版與二〇一二修訂；本課只用書目範圍，不冒稱全文查核。",
+      "scopeEn": "Current official index lists September2026; the legacy site still lists2009 with2012 change. Only bibliographic scope is used, without claiming full-text review."
+    },
+    {
+      "key": "maliushui",
+      "title": "馬料水新渡輪碼頭啟用",
+      "titleEn": "Ma Liu Shui New Ferry Pier opens",
+      "publisher": "Hong Kong Government",
+      "url": "https://www.info.gov.hk/gia/general/202509/09/P2025090900292p.htm",
+      "sourceType": "primary",
+      "scope": "二〇二五年九月官方公告確認浮台與引橋配置；不把本課假設纜繩或浮體尺寸說成現場規格。",
+      "scopeEn": "September2025 official announcement confirms floating platform and gangway; synthetic lines and pontoon dimensions are not project specifications."
+    },
+    {
+      "key": "hkpontoons",
+      "title": "香港浮碼頭與海岸調適背景",
+      "titleEn": "Hong Kong floating pontoons and coastal adaptation",
+      "publisher": "Hong Kong CEDD",
+      "url": "https://www.cedd.gov.hk/eng/our-projects/topics-in-focus/index-id-39.html",
+      "sourceType": "primary",
+      "scope": "已開啟主管機關頁，列馬料水與三門仔浮台，並記二〇二一年海岸風險研究；僅作通達與水位調適比較。",
+      "scopeEn": "Opened authority page lists Ma Liu Shui and Sam Mun Tsai pontoons and the2021 coastal study; used for access and water-level-adaptation context."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Hong Kong CEDD",
+      "nameEn": "Hong Kong CEDD",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.cedd.gov.hk/eng/publications/ceo/pwdm/index.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方列海堤防波堤、碼頭及海灘分冊和歷次勘誤；實際設計須核對相應最新版，算例不宣稱合規。",
+      "roleEn": "Official index lists seawall/breakwater, pier and beach parts and corrigenda; actual design needs the applicable current issue and examples do not claim compliance."
+    },
+    {
+      "name": "US Department of Defense via WBDG",
+      "nameEn": "US Department of Defense via WBDG",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.wbdg.org/dod/ufc/ufc-4-152-07",
+      "investorUrl": "",
+      "security": null,
+      "role": "現行官方索引列二〇二六年九月版本，舊站仍列二〇〇九版與二〇一二修訂；本課只用書目範圍，不冒稱全文查核。",
+      "roleEn": "Current official index lists September2026; the legacy site still lists2009 with2012 change. Only bibliographic scope is used, without claiming full-text review."
+    }
+  ],
+  "related": [
+    "b290",
+    "b292"
+  ],
+  "architectureNodes": [
+    [
+      "浮台載重與吃水",
+      "Pontoon loading and draft"
+    ],
+    [
+      "水下流阻尺度",
+      "Submerged-current drag scale"
+    ],
+    [
+      "材料伸長與有效剛度",
+      "Material extension and effective stiffness"
+    ],
+    [
+      "並聯恢復剛度",
+      "Parallel restoring stiffness"
+    ],
+    [
+      "浮力儲備與損艙",
+      "Buoyant reserve and compartment loss"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

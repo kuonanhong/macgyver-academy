@@ -1,0 +1,205 @@
+{
+  "date": "2026-10-21",
+  "method": "Author recomputation of synthetic SI examples; not independent engineering design approval.",
+  "courseIds": [
+    "b293"
+  ],
+  "units": 10,
+  "passes": 10,
+  "checks": [
+    {
+      "courseId": "b293",
+      "unit": 1,
+      "expression": "3000*10",
+      "recomputed": [
+        30000
+      ],
+      "published": [
+        30000.0
+      ],
+      "units": "m3",
+      "boundary": "Constant waterplane; unchanged floating displacement cancels.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設直壁閘室面積3000m²、升差10m且浮船排水量不變，ΔV=AΔh=30000m³；未計漏水與進出船交換。~Original teaching assumptions, not operating settings. Assume a vertical-wall chamber area3000m²,lift10m and unchanged floating displacement. ΔV=AΔh=30000m³, excluding leakage and vessel-entry exchange.",
+      "modelSha256": "0cdcc25315b02f551f5c449914040a5ed7d21b13b03bf164f53aa76f77d9910b",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 2,
+      "expression": "(A1*z1+A2*z2)/(A1+A2); A1*(z1-zf)",
+      "recomputed": [
+        6.0,
+        12000
+      ],
+      "published": [
+        6.0,
+        12000.0
+      ],
+      "units": "m,m3",
+      "boundary": "No external inflow/outflow, shared datum and fixed areas.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設閘室3000m²在10m、池6000m²在4m，zf=(3000×10+6000×4)/9000=6m，轉移水量12000m³。~Original teaching assumptions, not operating settings. Assume chamber3000m² at10m and basin6000m² at4m. Final zf=6m by area weighting, transferring12000m³ with no external flows.",
+      "modelSha256": "2171d8edf731f68c8c639d1bc082756674fa879f5b34107d6844b782c26a943a",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 3,
+      "expression": "rho*g/2*(A1*A2/(A1+A2))*dh**2",
+      "recomputed": [
+        353.16
+      ],
+      "published": [
+        353.16
+      ],
+      "units": "MJ",
+      "boundary": "Resting endpoints, no pumping or energy recovery.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設水1000kg/m³、兩池面積3000與6000m²、初水位差6m，耗散E=ρg[A1A2/(A1+A2)]Δh²/2=353.16MJ。~Original teaching assumptions, not operating settings. Assume water1000kg/m³,areas3000 and6000m² and initial head difference6m. Dissipated E=ρg[A1A2/(A1+A2)]Δh²/2=353.16MJ without recovery.",
+      "modelSha256": "85985ac68a33162b4f617aa61c82eda0451af5976cfaaef2596cd1f9d0be25f8",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 4,
+      "expression": "reuse/gross; gross-reuse",
+      "recomputed": [
+        0.6,
+        12000
+      ],
+      "published": [
+        0.6,
+        12000.0
+      ],
+      "units": "fraction,m3",
+      "boundary": "Same cycle and denominator; not comparison to differently sized locks.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設同一循環總交換30000m³、池回用18000m³，r=60%，外部補水12000m³；此60%不是與其他尺寸船閘的差額。~Original teaching assumptions, not operating settings. Assume one cycle exchanges30000m³ and reuses18000m³. Reuse is60% and external supply12000m³;60% is not a comparison with another lock size.",
+      "modelSha256": "1793aca05018f3697f1c9003093783d9c0889888135e4ea5550c3cc6d0a8d906",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 5,
+      "expression": "Q*86400",
+      "recomputed": [
+        1728.0
+      ],
+      "published": [
+        1728.0
+      ],
+      "units": "m3/day",
+      "boundary": "Constant rate assumption, no field acceptance threshold.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設持續漏水0.020m³/s維持86400s，日損失Qt=1728m³；僅在漏水率固定時成立，不能由此指定現場允許值。~Original teaching assumptions, not operating settings. Assume constant leakage0.020m³/s for86400s. Daily loss Qt=1728m³; the assumption does not specify an allowable field leakage rate.",
+      "modelSha256": "32fc2fd827516389a928502d35b33664d91ea171c78bcca86d418f03c93f3a39",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 6,
+      "expression": "area*evaporation",
+      "recomputed": [
+        60.0
+      ],
+      "published": [
+        60.0
+      ],
+      "units": "m3/day",
+      "boundary": "Daily exposed-water loss, not per-lockage loss.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設總水面12000m²、當日蒸發深0.005m，損失AE=60m³/day；不是每次通航都損失60m³。~Original teaching assumptions, not operating settings. Assume exposed water area12000m² and daily evaporation depth0.005m. Loss AE=60m³/day, not60m³ for every lockage.",
+      "modelSha256": "4b357c2cb13485cab2b212fd88f82bc33e40a8129a94344875eb738e2ce01446",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 7,
+      "expression": "Cd*a*sqrt(2*g*dh)",
+      "recomputed": [
+        17.539714934969723
+      ],
+      "published": [
+        17.54
+      ],
+      "units": "m3/s",
+      "boundary": "Instantaneous quasi-steady flow, not constant over exchange.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設等效Cd=0.70、開口4m²、水頭差2m，Q=Cd a√(2gΔh)=17.54m³/s；僅作瞬時準穩態示意。~Original teaching assumptions, not operating settings. Assume effective Cd=0.70,opening4m² and head difference2m. Q=Cd a√(2gΔh)=17.54m³/s is an instantaneous quasi-steady illustration.",
+      "modelSha256": "52793c3e65b03ff1011c49c675a69768e21866c03b7f3ccf8b48752ee5cf6980",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 8,
+      "expression": "2*(sqrt(h0)-sqrt(hf))/(Cd*a*sqrt(2*g)*(1/A1+1/A2))",
+      "recomputed": [
+        688.0130106613968
+      ],
+      "published": [
+        688.0
+      ],
+      "units": "s",
+      "boundary": "Both finite areas updated; finite residual0.1m and no valve sequence instruction.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設固定池面積A1=3000、A2=6000m²、a=4m²、Cd=0.7，k=Cd a√(2g)(1/A1+1/A2)；水頭差Δh由6降0.1m，準穩態時間t=2(√6−√0.1)/k=688.0s。~Original teaching assumptions, not operating settings. Assume areas3000,6000m²,opening4m²,Cd=0.7. With k=Cd a√(2g)(1/A1+1/A2), reducing head6to0.1m takes t=2(√6−√0.1)/k=688.0s.",
+      "modelSha256": "2b19e48fa6d9fe2b2122e339001ed7abb628bc14ce57b1f81253e1da3812fc5b",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 9,
+      "expression": "area*coherent_bias",
+      "recomputed": [
+        60.0
+      ],
+      "published": [
+        60.0
+      ],
+      "units": "m3",
+      "boundary": "Systematic offset, no sqrt(n) averaging.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設固定水面6000m²、共同水位偏差0.010m，庫容偏差Aδz=60m³；此系統偏差不隨讀值數增加自動消失。~Original teaching assumptions, not operating settings. Assume fixed area6000m² and coherent level bias0.010m. Storage bias Aδz=60m³; additional readings do not automatically eliminate this systematic error.",
+      "modelSha256": "a235cdf2732eee28f3f1456216aecefdf1d3d076a257c14040a77217f675ed62",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    },
+    {
+      "courseId": "b293",
+      "unit": 10,
+      "expression": "gross*(1-r1);gross*(1-r2);(new/old-1)*100",
+      "recomputed": [
+        12000.0,
+        18000.0,
+        49.99999999999998
+      ],
+      "published": [
+        12000.0,
+        18000.0,
+        50.0
+      ],
+      "units": "m3,m3,percent",
+      "boundary": "Fixed gross demand; reuse change is20percentage points, makeup change50percent.",
+      "status": "PASS",
+      "model": "原創教學假設，非操作設定。假設每循環30000m³，回用率由0.60降0.40，外部補水由12000升18000m³，增加50%；非只增加20%。~Original teaching assumptions, not operating settings. Assume gross exchange30000m³ per cycle. Reuse falls0.60to0.40; makeup rises12000to18000m³, a50% increase rather than20%.",
+      "modelSha256": "0b57f39a7cbfa09f8e47b016d6350a175cf4d617251114de7d00087a4d3e828a",
+      "inputSha256": "5ec067bffe96ad424ad7733a7a5e1d8ea59a5fece8df48abca29f01d30dfe944"
+    }
+  ],
+  "sensitivity": [
+    {
+      "courseId": "b293",
+      "base": [
+        30000,
+        12000.0
+      ],
+      "changed": [
+        33000,
+        13200.0
+      ],
+      "relativeChangePercent": 10,
+      "assumptions": "Only chamber area rises10%; fixed lift and separately assumed fixed reuse.",
+      "status": "PASS"
+    }
+  ]
+}

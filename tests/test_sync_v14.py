@@ -34,6 +34,7 @@ class SyncTests(unittest.TestCase):
    root=Path(tmp);public=root/'public/academy';data=public/'data';data.mkdir(parents=True);(root/'tools').mkdir()
    for name in ('build-offline.mjs','restore-featured.mjs'):shutil.copyfile(ROOT/'tools'/name,root/'tools'/name)
    (public/'app.js').write_text('console.log("fixture");')
+   shutil.copyfile(ROOT/'public/academy/lazy-index-codec.js',public/'lazy-index-codec.js')
    (data/'sources.json').write_text('[]');(data/'photos.json').write_text('[]');(data/'release.json').write_text('{}')
    course={'id':'b101','title':'fixture','stages':[{'id':'free','steps':[{'id':'first','instruction':'free body'}]},{'id':'paid','steps':[{'id':'second','instruction':'OWNER_PRIVATE_SENTINEL'}]}]}
    (data/'featured.json').write_text(json.dumps([course]));(data/'catalog.json').write_text(json.dumps([course]))

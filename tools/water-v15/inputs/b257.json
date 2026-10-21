@@ -1,0 +1,263 @@
+{
+  "id": "b257",
+  "focus": "用相似律與量測證據分辨水工縮尺模型可代表哪些現象~Use similitude and measurement evidence to define what hydraulic scale models represent",
+  "units": [
+    {
+      "anchor": "幾何比例與控制長度~Geometry ratio and reference length",
+      "title": "幾何比例與控制長度~Geometry ratio and reference length",
+      "mechanism": "縮尺試驗先決定要研究的水理現象，再選控制長度及完整幾何範圍，不能只把外觀縮小就認為等價。非扭曲模型各方向採同一比例，局部粗糙、縫隙與邊界若無法製作應記錄；改用垂直水平不同比例時，速度與輸砂關係必須重新推導。 假設原型與模型長度比λL=40，原型水深8m及長80m，模型分別0.20m與2m；所有方向採同一比例。~A model starts with the physical question, reference length and geometric domain rather than visual miniaturization. An undistorted model uses one ratio in all directions, documenting roughness, gaps or boundaries that cannot be reproduced. Different vertical and horizontal scales require rederived velocity and sediment relationships, so they cannot be introduced quietly while retaining undistorted-model formulas. Assume prototype-to-model length ratio40. Prototype depth8m and length80m become0.20m and2m, with the same ratio in every direction.",
+      "model": "原創教學假設，非操作設定。假設原型與模型長度比λL=40，原型水深8m及長80m，模型分別0.20m與2m；所有方向採同一比例。~Original teaching assumptions, not operating settings. Assume prototype-to-model length ratio40. Prototype depth8m and length80m become0.20m and2m, with the same ratio in every direction.",
+      "verify": "把原型及模型坐標、邊界和粗糙尺寸列成對照表，實測關鍵斷面而非只看製圖尺寸。確認是否有扭曲尺度，將無法按比例製作的縫隙獨立標出，說明可能影響哪一項觀察量。~Tabulate prototype and model coordinates, boundaries and roughness, measuring critical sections rather than relying only on drawings. Identify any distorted scale and separately mark gaps that cannot be reproduced, explaining which observed quantities their mismatch could influence.",
+      "practice": "把原型及模型坐標、邊界和粗糙尺寸列成對照表，實測關鍵斷面而非只看製圖尺寸。確認是否有扭曲尺度，將無法按比例製作的縫隙獨立標出，說明可能影響哪一項觀察量。~Tabulate prototype and model coordinates, boundaries and roughness, measuring critical sections rather than relying only on drawings. Identify any distorted scale and separately mark gaps that cannot be reproduced, explaining which observed quantities their mismatch could influence.",
+      "failure": "微小閘縫若在模型被封死會改變漏流，轉角磨圓則可能改變分離。外觀相似但垂直尺度偷偷不同時，原本的相似律不再適用，結果仍可能看起來很合理。~Closing a tiny modeled gate gap changes leakage, while rounded corners alter separation. A visually similar model with an undisclosed vertical-scale change violates the original similarity assumptions even when its output appears plausible.",
+      "misconception": "只要模型外觀像原型就可以忽略局部縫隙與尺度方向差異。~Visual similarity alone permits ignoring gaps and differences between horizontal and vertical scales."
+    },
+    {
+      "anchor": "重力流速度比例~Velocity scaling for gravity flow",
+      "title": "重力流速度比例~Velocity scaling for gravity flow",
+      "mechanism": "自由水面重力主導時以佛祿數相等建立速度比例，必須確認原型與模型使用相同重力場。此時速度不是隨長度線性縮小，且黏滯或表面張力主導的小尺度區仍可能失真；同一速度比例也不能無條件套到加壓水錘或可壓縮氣流。 假設λL=40且佛祿相似，原型速度8m/s，模型Vm=8/√40=1.2649m/s；不保證雷諾相似。~For gravity-dominated free surfaces, equal Froude numbers determine velocity scaling under equal gravity. Velocity does not shrink linearly with length, and small viscous or capillary regions may remain distorted. The same relation cannot automatically describe pressurized water hammer or compressible air, whose controlling physics and required similarity parameters differ from the chosen free-surface experiment. Assume length ratio40 and Froude similarity. Prototype velocity8m/s gives Vm=8/√40=1.2649m/s, without guaranteeing Reynolds similarity.",
+      "model": "原創教學假設，非操作設定。假設λL=40且佛祿相似，原型速度8m/s，模型Vm=8/√40=1.2649m/s；不保證雷諾相似。~Original teaching assumptions, not operating settings. Assume length ratio40 and Froude similarity. Prototype velocity8m/s gives Vm=8/√40=1.2649m/s, without guaranteeing Reynolds similarity.",
+      "verify": "分別用原型與模型水深計算佛祿數，查核速度量測位置是否對應。再估黏滯與表面張力影響範圍，區分局部薄水層和主要流區，不以整體相似掩蓋小尺度區域的失真。~Compute Froude numbers independently using corresponding depths and velocity locations. Estimate where viscosity and surface tension matter, separating thin local layers from the main flow rather than hiding small-scale distortion behind a matching global similarity parameter.",
+      "practice": "分別用原型與模型水深計算佛祿數，查核速度量測位置是否對應。再估黏滯與表面張力影響範圍，區分局部薄水層和主要流區，不以整體相似掩蓋小尺度區域的失真。~Compute Froude numbers independently using corresponding depths and velocity locations. Estimate where viscosity and surface tension matter, separating thin local layers from the main flow rather than hiding small-scale distortion behind a matching global similarity parameter.",
+      "failure": "將速度也縮小四十倍會使流態和波速錯位，僅調整入流直到外觀看似相同也可能改變水深。局部黏性控制區即使佛祿數正確，壓力和渦流仍未必可直接放大。~Reducing velocity fortyfold misrepresents flow regime and wave propagation, while adjusting inflow merely to match appearance may change depth. Locally viscous regions can still have unrepresentative pressures and vortices despite equal Froude numbers.",
+      "misconception": "佛祿相似要求速度與模型長度使用完全相同的縮小倍數。~Froude similarity requires velocity to use exactly the same reduction factor as length."
+    },
+    {
+      "anchor": "總流量縮尺次方~Total-discharge scale exponent",
+      "title": "總流量縮尺次方~Total-discharge scale exponent",
+      "mechanism": "總流量是斷面面積乘速度，非扭曲重力模型的面積按長度平方、速度按平方根縮放，因此總流量有不同次方。單位寬度流量另有分母，兩者不能混用；量測管路與模型入口也需一致，旁通或溢流未記錄會破壞整體收支。 假設λL=40、原型總Q=1000m³/s，模型Qm=Qp/λL^(5/2)=0.09882m³/s；不是單位寬度流量比例。~Total discharge combines cross-sectional area with velocity. An undistorted gravity model scales area with length squared and velocity with its square root, producing a distinct exponent. Unit-width discharge has a different denominator and cannot use the same rule. Measurement piping, bypasses and overflow must also match the model boundary to preserve the water balance. Assume length ratio40 and prototype total discharge1000m³/s. Model Qm=Qp/λL^(5/2)=0.09882m³/s, distinct from unit-width discharge scaling.",
+      "model": "原創教學假設，非操作設定。假設λL=40、原型總Q=1000m³/s，模型Qm=Qp/λL^(5/2)=0.09882m³/s；不是單位寬度流量比例。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype total discharge1000m³/s. Model Qm=Qp/λL^(5/2)=0.09882m³/s, distinct from unit-width discharge scaling.",
+      "verify": "從面積與速度比例逐步推導流量次方，確認資料標示總流量或每米寬度。以獨立容積時間法查核流量計，記錄旁通與回流，並將校正範圍對照實際模型所需的小流量。~Derive the exponent from area and velocity and label total versus per-width discharge. Check the flow meter independently by volume and time, recording bypass and recirculation and comparing its calibration range with the small discharge actually required by the model.",
+      "practice": "從面積與速度比例逐步推導流量次方，確認資料標示總流量或每米寬度。以獨立容積時間法查核流量計，記錄旁通與回流，並將校正範圍對照實際模型所需的小流量。~Derive the exponent from area and velocity and label total versus per-width discharge. Check the flow meter independently by volume and time, recording bypass and recirculation and comparing its calibration range with the small discharge actually required by the model.",
+      "failure": "把每米流量的次方用在總流量會差一個長度比例，低流量儀器超出校正範圍又會加深誤差。水面看似接近時，仍可能因錯誤流量造成錯誤能量與消能判讀。~Using the unit-width exponent for total discharge introduces an entire length-scale error, compounded if the meter operates outside calibration. Similar-looking water levels can still conceal incorrect energy and dissipation because the delivered discharge is wrong.",
+      "misconception": "總流量與每米寬度流量在縮尺模型都使用同一比例次方。~Total discharge and discharge per unit width use the same scaling exponent."
+    },
+    {
+      "anchor": "時間縮尺與記錄~Time scaling and recording",
+      "title": "時間縮尺與記錄~Time scaling and recording",
+      "mechanism": "重力模型的時間比例由長度除速度得到，原型漫長變化會在模型較短時間內發生。儀器取樣率、閥門運動與入流變化需同步配合，不能只縮放最後結果而保留原型的操作時間；資料對齊也應記錄起始事件，避免把時間偏移誤認為物理遲滯。 假設λL=40，原型事件120s，模型時間tm=120/√40=18.974s；只適用所選重力相似過程。~Gravity-model time follows length divided by velocity, compressing long prototype changes into shorter experiments. Sampling, actuator movement and inflow variation must be synchronized accordingly, rather than scaling outputs while retaining prototype operating duration. Records also require a defined start event so clock offsets are not mistaken for physical lag in the measured hydraulic response. Assume length ratio40 and prototype duration120s. Model tm=120/√40=18.974s, applying only to the selected gravity-similar process.",
+      "model": "原創教學假設，非操作設定。假設λL=40，原型事件120s，模型時間tm=120/√40=18.974s；只適用所選重力相似過程。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype duration120s. Model tm=120/√40=18.974s, applying only to the selected gravity-similar process.",
+      "verify": "把入流、閥位與量測通道放在共同時間軸，明列原型與模型的換算。以可辨識水波事件校核時鐘和觸發延遲，檢查最快變化是否仍有足夠資料，不讓儀器更新頻率主導試驗結果。~Align inflow, valve position and sensor channels on a common clock and document both time scales. Check triggers against an identifiable wave event and verify resolution of the fastest changes so instrument refresh limits do not govern the apparent experimental response.",
+      "practice": "把入流、閥位與量測通道放在共同時間軸，明列原型與模型的換算。以可辨識水波事件校核時鐘和觸發延遲，檢查最快變化是否仍有足夠資料，不讓儀器更新頻率主導試驗結果。~Align inflow, valve position and sensor channels on a common clock and document both time scales. Check triggers against an identifiable wave event and verify resolution of the fastest changes so instrument refresh limits do not govern the apparent experimental response.",
+      "failure": "閥門動作沒有縮時會讓模型充水過慢，取樣頻率不足又會漏掉短峰值。事後把時間軸乘比例，不能補回試驗當時沒有正確重現的邊界變化。~An unscaled actuator duration makes filling too slow, and sparse sampling misses short peaks. Multiplying the time axis afterward cannot restore boundary changes that were not correctly reproduced while the physical experiment was running.",
+      "misconception": "只要事後修改時間軸就能補救試驗時未縮尺的閥門動作。~Rescaling the recorded time axis repairs any valve motion that was not correctly scaled during the test."
+    },
+    {
+      "anchor": "壓力尺度與氣泡~Pressure scale and air effects",
+      "title": "壓力尺度與氣泡~Pressure scale and air effects",
+      "mechanism": "相同液體密度與重力下，重力壓力尺度隨長度比例改變，但絕對氣壓不會自動跟著縮小。模型氣泡、負壓和空化可能因此偏離原型，尤其局部高速與衝擊區；靜水或重力動壓的可放大性不能被解釋成所有瞬態壓力都相似。 假設λL=40、同密度重力壓力原型60kPa，模型壓力1.50kPa；此為表壓重力尺度，不代表絕對氣壓也縮四十倍。~At matched liquid density and gravity, gravity-pressure scale follows length, but ambient absolute pressure does not automatically scale. Air bubbles, suction and cavitation can therefore differ from the prototype, especially in high-speed or impact regions. Scaling hydrostatic or gravity-dominated pressure does not establish similarity of every transient pressure mechanism within the same apparatus. Assume length ratio40 and matched density. Prototype gravity gauge pressure60kPa scales to1.50kPa, without scaling ambient absolute air pressure fortyfold.",
+      "model": "原創教學假設，非操作設定。假設λL=40、同密度重力壓力原型60kPa，模型壓力1.50kPa；此為表壓重力尺度，不代表絕對氣壓也縮四十倍。~Original teaching assumptions, not operating settings. Assume length ratio40 and matched density. Prototype gravity gauge pressure60kPa scales to1.50kPa, without scaling ambient absolute air pressure fortyfold.",
+      "verify": "記錄壓力是表壓或絕對壓力並核對零點，區分慢變重力壓與短時衝擊。觀察氣泡和通氣路徑，將空化相關區域單獨標註，必要時以不同尺度或專門裝置檢驗未相似的機制。~Label gauge versus absolute pressure and verify zero, separating slow gravity loading from brief impact. Observe bubbles and ventilation paths, flag cavitation-sensitive regions and use alternative scales or specialized facilities where needed to examine mechanisms not represented by the chosen similitude.",
+      "practice": "記錄壓力是表壓或絕對壓力並核對零點，區分慢變重力壓與短時衝擊。觀察氣泡和通氣路徑，將空化相關區域單獨標註，必要時以不同尺度或專門裝置檢驗未相似的機制。~Label gauge versus absolute pressure and verify zero, separating slow gravity loading from brief impact. Observe bubbles and ventilation paths, flag cavitation-sensitive regions and use alternative scales or specialized facilities where needed to examine mechanisms not represented by the chosen similitude.",
+      "failure": "封閉空氣團的壓縮在模型可能比原型更顯著，直接放大尖峰會誤判結構荷載。把表壓負值當成低於蒸氣壓，亦會在沒有絕對壓力基準時錯判空化。~Trapped-air compression can be disproportionately important in the model, making direct scaling of peaks misleading. A negative gauge reading also cannot establish pressure below vapor pressure without the corresponding absolute-pressure reference.",
+      "misconception": "重力壓力比例正確就表示空化與封閉氣泡壓縮也完全相似。~Correct gravity-pressure scaling proves that cavitation and trapped-air compression are also fully similar."
+    },
+    {
+      "anchor": "合力尺度與量測~Force scaling and measurement",
+      "title": "合力尺度與量測~Force scaling and measurement",
+      "mechanism": "壓力積分成合力時還要乘面積，所以同密度重力模型的力比例是長度三次方。量測裝置的剛度、頻率和支架阻流可能改變原本流場，模型力很小時摩擦和纜線也可能重要；不能僅因荷重元件讀值穩定就認為力傳遞已被完整量到。 假設λL=40、原型重力主導合力2MN，模型Fm=2000000/40³=31.25N；未處理感測器動態或氣泡衝擊。~Integrating pressure over area gives a cubic length scale for force under matched-density gravity similarity. Sensor stiffness, natural frequency and support blockage can alter the flow, and friction or cables become significant when model forces are small. Stable readings alone do not establish that the complete intended load path reaches the calibrated measuring device. Assume length ratio40 and prototype gravity-dominated force2MN. Model Fm=2000000/40³=31.25N, excluding sensor dynamics and air-impact scaling.",
+      "model": "原創教學假設，非操作設定。假設λL=40、原型重力主導合力2MN，模型Fm=2000000/40³=31.25N；未處理感測器動態或氣泡衝擊。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype gravity-dominated force2MN. Model Fm=2000000/40³=31.25N, excluding sensor dynamics and air-impact scaling.",
+      "verify": "以已知方向和位置的砝碼校核整套力傳遞路徑，記錄支架自振頻率及零漂。比較壓力積分與總力感測器結果，檢查水流是否繞過或推到未量測的支架，不只校正單顆感測元件。~Calibrate the full load path using known weights and positions, recording support frequency and zero drift. Compare integrated pressure with measured resultant and check whether water loads bypass the sensor or act on unmeasured supports rather than calibrating only the isolated transducer.",
+      "practice": "以已知方向和位置的砝碼校核整套力傳遞路徑，記錄支架自振頻率及零漂。比較壓力積分與總力感測器結果，檢查水流是否繞過或推到未量測的支架，不只校正單顆感測元件。~Calibrate the full load path using known weights and positions, recording support frequency and zero drift. Compare integrated pressure with measured resultant and check whether water loads bypass the sensor or act on unmeasured supports rather than calibrating only the isolated transducer.",
+      "failure": "支架摩擦可能承擔部分荷重，使感測器低估；共振則可能放大短峰值。兩種偏差都能在靜態校正看似良好時出現，必須查核水中實際動態條件。~Support friction can carry load away from the sensor, while resonance amplifies short peaks. Both errors can occur despite satisfactory static calibration and require examination under the actual submerged dynamic conditions of the experiment.",
+      "misconception": "縮尺合力只需要跟長度成正比而不必考慮受壓面積。~Model force scales only linearly with length and does not depend on loaded area."
+    },
+    {
+      "anchor": "雷諾數與黏滯失真~Reynolds number and viscous distortion",
+      "title": "雷諾數與黏滯失真~Reynolds number and viscous distortion",
+      "mechanism": "使用同一水體且採佛祿相似時，模型速度和長度都變小，雷諾數不能同時保持。主要流區可能仍是紊流，但薄水層、近壁與小縫可能受黏滯控制；不能用一個全域雷諾數宣稱所有局部現象相似，應檢查尺寸改變後結果是否穩定。 假設ν=10⁻⁶m²/s，以水深為控制長度，模型V=8/√40m/s、h=0.20m，Re≈252982；原型V=8m/s、h=8m，Re=64000000。~With the same fluid under Froude similarity, both velocity and length decrease, so Reynolds number is not preserved. Main flow may remain turbulent while thin layers, walls and gaps become viscosity-sensitive. One global Reynolds number cannot qualify every local phenomenon; comparing more than one scale helps determine whether the measured result depends on the altered viscous regime. Assumeν=10⁻⁶m²/s, using depth as the reference length. Model V=8/√40m/s,h=0.20m gives Re≈252982; prototype V=8m/s,h=8m gives Re=64000000.",
+      "model": "原創教學假設，非操作設定。假設ν=10⁻⁶m²/s，以水深為控制長度，模型V=8/√40m/s、h=0.20m，Re≈252982；原型V=8m/s、h=8m，Re=64000000。~Original teaching assumptions, not operating settings. Assumeν=10⁻⁶m²/s, using depth as the reference length. Model V=8/√40m/s,h=0.20m gives Re≈252982; prototype V=8m/s,h=8m gives Re=64000000.",
+      "verify": "用真正控制局部現象的長度估雷諾數，記錄水溫對黏度的影響，不能只選最大池寬。比較至少兩尺度的壓損、分離或薄層行為，保留不能可靠外推的區域與觀察量。~Estimate Reynolds number using lengths controlling the local mechanism and record temperature-dependent viscosity rather than automatically choosing maximum basin width. Compare losses, separation or thin layers at multiple scales and retain explicit limits for quantities that cannot be reliably extrapolated.",
+      "practice": "用真正控制局部現象的長度估雷諾數，記錄水溫對黏度的影響，不能只選最大池寬。比較至少兩尺度的壓損、分離或薄層行為，保留不能可靠外推的區域與觀察量。~Estimate Reynolds number using lengths controlling the local mechanism and record temperature-dependent viscosity rather than automatically choosing maximum basin width. Compare losses, separation or thin layers at multiple scales and retain explicit limits for quantities that cannot be reliably extrapolated.",
+      "failure": "大水槽的全域雷諾數很高仍可能有層流閘縫，若把局部漏流按紊流比例放大，會算錯。溫度變化又可能在同一模型內改變黏度，使重複試驗不完全可比。~A high basin-scale Reynolds number can coexist with a laminar gate gap, invalidating turbulent leakage scaling. Water-temperature changes also alter viscosity between repeated tests, so nominally identical geometry and discharge need not give directly comparable local behavior.",
+      "misconception": "模型主流雷諾數高就可以證明每個細縫和近壁區都與原型相似。~A high main-flow Reynolds number proves similarity in every small gap and near-wall region."
+    },
+    {
+      "anchor": "韋伯數與表面張力~Weber number and surface tension",
+      "title": "韋伯數與表面張力~Weber number and surface tension",
+      "mechanism": "表面張力對小尺度水舌、液滴與薄膜相對重要，重力縮尺通常不會保留慣性與表面張力之比。模型看見的破碎、噴濺或氣泡大小可能因此失真，不能以外觀照片當定量證據；若研究問題正是這些現象，需要另選尺度或承認觀察僅能定性。 假設ρ=1000kg/m³、σ=0.072N/m、模型V²=1.6m²/s²、L=0.20m，We=ρV²L/σ=4444.4；原型值是其1600倍。~Surface tension matters disproportionately for small jets, drops and films, and gravity scaling generally does not preserve its ratio to inertia. Breakup, spray and bubble size can therefore be distorted, making photographs insufficient quantitative evidence. If these phenomena are the study objective, a different scale or explicit qualitative limitation is needed rather than assuming visual similarity guarantees the physics. Assumeρ=1000kg/m³,σ=0.072N/m,model V²=1.6m²/s² and L=0.20m. We=4444.4; the corresponding prototype value is1600times larger.",
+      "model": "原創教學假設，非操作設定。假設ρ=1000kg/m³、σ=0.072N/m、模型V²=1.6m²/s²、L=0.20m，We=ρV²L/σ=4444.4；原型值是其1600倍。~Original teaching assumptions, not operating settings. Assumeρ=1000kg/m³,σ=0.072N/m,model V²=1.6m²/s² and L=0.20m. We=4444.4; the corresponding prototype value is1600times larger.",
+      "verify": "先指定表面張力影響的局部長度，記錄水質、溫度及表面污染，查核材料是否改變潤濕。比較不同尺度水舌破裂和噴濺，將可量化水位與只宜定性解讀的液滴外觀分開。~Define the local length relevant to surface tension and record temperature, water condition and contamination, checking altered wetting on model materials. Compare jet breakup and spray across scales, separating quantitatively useful levels from droplet appearances that support only qualitative interpretation.",
+      "practice": "先指定表面張力影響的局部長度，記錄水質、溫度及表面污染，查核材料是否改變潤濕。比較不同尺度水舌破裂和噴濺，將可量化水位與只宜定性解讀的液滴外觀分開。~Define the local length relevant to surface tension and record temperature, water condition and contamination, checking altered wetting on model materials. Compare jet breakup and spray across scales, separating quantitatively useful levels from droplet appearances that support only qualitative interpretation.",
+      "failure": "模型小液滴可能被表面張力束縛，原型卻更易破碎，直接按照片估曝氣會偏差。加入界面活性物質改變張力時，也可能連帶改變氣泡與量測條件，不能當簡單修補。~Small model droplets can remain surface-tension-bound where prototype flow breaks up, biasing air-entrainment estimates from imagery. Surfactant adjustments also change bubbles and measurement conditions and cannot be treated as an uncomplicated correction to all scale effects.",
+      "misconception": "重力相似已經自動保證液滴尺寸與曝氣程度都能直接放大。~Gravity similarity automatically makes droplet size and air entrainment directly scalable."
+    },
+    {
+      "anchor": "讀值誤差的放大~Scaling measurement uncertainty",
+      "title": "讀值誤差的放大~Scaling measurement uncertainty",
+      "mechanism": "模型的微小讀值誤差放回原型後也按相應比例放大，不能以數字小就忽略。讀值重複性、共同零點及尺度製造誤差屬不同分量，必須說明相關性後再合成；原型結果的小數位應反映證據，而不是把模型儀器的每一位都乘出來展示。 假設模型水位標準不確定度0.0005m、λL=40且比例視為精確，原型相應標準不確定度0.020m；未含尺度本身誤差。~Small model reading errors grow under prototype scaling and cannot be dismissed by their absolute size. Repeatability, coherent zero offset and fabrication-scale error are distinct components requiring stated correlations before combination. Reported prototype precision should follow the evidence, not every digit produced by multiplying an instrument display by the geometric ratio in a spreadsheet. Assume model level standard uncertainty0.0005m and exact length ratio40. Prototype-equivalent uncertainty is0.020m, excluding uncertainty in the scale itself.",
+      "model": "原創教學假設，非操作設定。假設模型水位標準不確定度0.0005m、λL=40且比例視為精確，原型相應標準不確定度0.020m；未含尺度本身誤差。~Original teaching assumptions, not operating settings. Assume model level standard uncertainty0.0005m and exact length ratio40. Prototype-equivalent uncertainty is0.020m, excluding uncertainty in the scale itself.",
+      "verify": "分開估水位零偏、讀值散布及模型尺寸誤差，說明哪些為共同分量。以獨立控制點檢核高程，將量測及尺度不確定度傳播到原型結果，按有效精度四捨五入，不使用無依據的小數位。~Estimate level bias, reading scatter and fabrication error separately, identifying shared components. Check elevations against independent control, propagate measurement and scale uncertainty to prototype results and round to defensible precision rather than retaining unsupported decimal places.",
+      "practice": "分開估水位零偏、讀值散布及模型尺寸誤差，說明哪些為共同分量。以獨立控制點檢核高程，將量測及尺度不確定度傳播到原型結果，按有效精度四捨五入，不使用無依據的小數位。~Estimate level bias, reading scatter and fabrication error separately, identifying shared components. Check elevations against independent control, propagate measurement and scale uncertainty to prototype results and round to defensible precision rather than retaining unsupported decimal places.",
+      "failure": "水位零偏在所有測點共同存在時不會靠平均消失，尺度錯誤還可能同時影響水深和流量。只放大平均讀值而不放大誤差，會讓原型推估看起來過度精確。~A shared level offset survives averaging, and incorrect scale can affect both depth and discharge. Scaling the mean reading without its uncertainty makes the inferred prototype result appear more precise than the experiment actually supports.",
+      "misconception": "模型讀值誤差很小所以換算回原型後可以完全忽略不計。~A small model reading error can be ignored completely after conversion to prototype scale."
+    },
+    {
+      "anchor": "重複試驗與代表性~Replicates and representativeness",
+      "title": "重複試驗與代表性~Replicates and representativeness",
+      "mechanism": "重複試驗能估計同條件下的散布，但三次重複不能涵蓋未測水位、流量或邊界狀態。平均值標準誤與單次觀測標準差用途不同，獨立性也需要重新建立初始條件；若同一零點偏差持續存在，增加次數只會讓錯誤平均顯得更穩定。 假設獨立流量結果0.098、0.100、0.102m³/s，平均0.100、樣本標準差0.002m³/s，變異係數2%；非全部工況不確定度。~Replicates estimate scatter under one condition but do not cover untested levels, discharges or boundaries. Standard error of a mean differs from the deviation of individual observations, and independence requires reestablishing initial conditions. A persistent zero bias is not reduced by replication; more runs can merely make the wrong mean appear increasingly stable and convincing. Assume independent discharges0.098,0.100,0.102m³/s. Mean0.100 and sample deviation0.002m³/s give2% coefficient of variation, not uncertainty for all operating conditions.",
+      "model": "原創教學假設，非操作設定。假設獨立流量結果0.098、0.100、0.102m³/s，平均0.100、樣本標準差0.002m³/s，變異係數2%；非全部工況不確定度。~Original teaching assumptions, not operating settings. Assume independent discharges0.098,0.100,0.102m³/s. Mean0.100 and sample deviation0.002m³/s give2% coefficient of variation, not uncertainty for all operating conditions.",
+      "verify": "事先定義重複方式和回復初始水位程序，保留每次原始紀錄與共同校正資料。用樣本而非母體分母計標準差，另列未試工況矩陣，避免以少量重複的低散布宣稱整個模型已驗證。~Define repetition and initial-level restoration beforehand, retaining raw runs and shared calibration records. Use the sample-deviation denominator and list the untested condition matrix separately, without interpreting low scatter from a few replicates as complete validation of the model domain.",
+      "practice": "事先定義重複方式和回復初始水位程序，保留每次原始紀錄與共同校正資料。用樣本而非母體分母計標準差，另列未試工況矩陣，避免以少量重複的低散布宣稱整個模型已驗證。~Define repetition and initial-level restoration beforehand, retaining raw runs and shared calibration records. Use the sample-deviation denominator and list the untested condition matrix separately, without interpreting low scatter from a few replicates as complete validation of the model domain.",
+      "failure": "三次都受同一流量計偏差時仍可非常一致，卻系統性偏離真值。挑掉不喜歡的試驗又會縮小散布，若沒有預定排除規則，所謂重複性可能只反映選擇性報告。~Three runs sharing one meter bias can agree closely while all miss the true value. Selective deletion shrinks scatter further, and without predefined exclusion criteria apparent repeatability may reflect reporting choices rather than reliable experimental behavior.",
+      "misconception": "重複三次結果很接近就代表所有未測工況與系統偏差都已驗證。~Three closely agreeing repeats validate every untested condition and eliminate systematic bias."
+    }
+  ],
+  "title": "水力模型縮尺試驗~Scale-model testing of hydraulic structures",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "summary": "本課以非扭曲自由水面重力模型為主軸，逐步推導幾何、速度、流量、時間、壓力與合力比例，再檢查雷諾數、韋伯數及量測誤差無法自動相似的部分。十個單元要求先說明研究目的與控制尺度，再判斷哪些結果可量化放大，哪些只能定性比較，避免以模型照片漂亮取代實驗驗證。~An undistorted gravity-driven free-surface model provides the main thread. Units derive geometry, velocity, discharge, time, pressure and force scales, then examine Reynolds and Weber mismatches and measurement uncertainty. Apprentices define the question and controlling length before deciding which results support quantitative extrapolation and which allow only qualitative comparison.",
+  "history": "水工模型的價值來自可控制邊界並檢查機制，而不是宣稱微縮模型包含全部原型物理。墾務局一九八〇年水工實驗室技術手冊整理相似律、製作與量測方法，後續量水手冊解釋佛祿數在自由水面模型的角色。官方研究目錄列二〇一五年克利埃勒姆魚道模型及二〇一八年福爾松附加溢洪道閘門研究，顯示不同問題需要不同觀察量。Deltares另以伊默伊登分層流模型比較物理與數值結果。本課所有尺寸與流量獨立假設，不將案例曾用模型解釋成任意縮尺都可信。~Physical models offer controlled boundaries and mechanism checks rather than containing every prototype process in miniature. Reclamation’s1980 laboratory manual organizes similitude, fabrication and measurement, and its water-measurement guidance explains Froude similarity for free surfaces. The official catalogue lists2015 Cle Elum fish-passage studies and2018 Folsom auxiliary-spillway gate work, illustrating different questions and observations. Deltares separately compares physical and numerical stratified-flow models at IJmuiden. All dimensions and flows here are independently assumed; the existence of a landmark model study does not imply that any chosen reduction scale is reliable.",
+  "example": "原創縮尺敏感度：原型總流量1000m³/s，長度比例40，依佛祿相似Qm=1000/40^(5/2)=0.09882m³/s。若為節省實驗空間把比例增加10%至44，原型保持不變，所需模型流量降為1000/44^(5/2)=0.07787m³/s，約減少21.20%，並不是只減少10%。此時模型尺度更小，黏滯和表面張力相對影響反而更值得查核。學徒應重算速度、時間、感測器量程與誤差放大，確認試驗台是否能穩定提供較小流量。不能只因用水減少就認為改尺度必然改善研究品質。~Original scale sensitivity: a prototype discharge of1000m³/s with length ratio40 requires Qm=1000/40^(5/2)=0.09882m³/s under Froude similarity. Increasing the ratio by10% to44 to save laboratory space while retaining the same prototype reduces flow to1000/44^(5/2)=0.07787m³/s, about21.20% rather than10%. The smaller model makes relative viscous and capillary effects more important to check. Recalculate velocity, timing, sensor range and uncertainty amplification, then verify that the rig can reliably provide the lower discharge. Reduced water demand alone does not establish that the revised scale improves the quality of the experiment.",
+  "facts": [
+    "原創教學假設，非操作設定。假設原型與模型長度比λL=40，原型水深8m及長80m，模型分別0.20m與2m；所有方向採同一比例。~Original teaching assumptions, not operating settings. Assume prototype-to-model length ratio40. Prototype depth8m and length80m become0.20m and2m, with the same ratio in every direction.",
+    "原創教學假設，非操作設定。假設λL=40且佛祿相似，原型速度8m/s，模型Vm=8/√40=1.2649m/s；不保證雷諾相似。~Original teaching assumptions, not operating settings. Assume length ratio40 and Froude similarity. Prototype velocity8m/s gives Vm=8/√40=1.2649m/s, without guaranteeing Reynolds similarity.",
+    "原創教學假設，非操作設定。假設λL=40、原型總Q=1000m³/s，模型Qm=Qp/λL^(5/2)=0.09882m³/s；不是單位寬度流量比例。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype total discharge1000m³/s. Model Qm=Qp/λL^(5/2)=0.09882m³/s, distinct from unit-width discharge scaling.",
+    "原創教學假設，非操作設定。假設λL=40，原型事件120s，模型時間tm=120/√40=18.974s；只適用所選重力相似過程。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype duration120s. Model tm=120/√40=18.974s, applying only to the selected gravity-similar process.",
+    "原創教學假設，非操作設定。假設λL=40、同密度重力壓力原型60kPa，模型壓力1.50kPa；此為表壓重力尺度，不代表絕對氣壓也縮四十倍。~Original teaching assumptions, not operating settings. Assume length ratio40 and matched density. Prototype gravity gauge pressure60kPa scales to1.50kPa, without scaling ambient absolute air pressure fortyfold.",
+    "原創教學假設，非操作設定。假設λL=40、原型重力主導合力2MN，模型Fm=2000000/40³=31.25N；未處理感測器動態或氣泡衝擊。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype gravity-dominated force2MN. Model Fm=2000000/40³=31.25N, excluding sensor dynamics and air-impact scaling."
+  ],
+  "timeline": [
+    {
+      "year": "1980",
+      "event": "墾務局出版水工實驗室技術手冊~Reclamation publishes its Hydraulic Laboratory Techniques manual"
+    },
+    {
+      "year": "2015",
+      "event": "官方目錄列克利埃勒姆魚道模型研究~Official catalogue lists Cle Elum fish-passage model studies"
+    },
+    {
+      "year": "2018",
+      "event": "官方目錄列福爾松附加溢洪道閘門模型~Official catalogue lists Folsom auxiliary-spillway gate modeling"
+    }
+  ],
+  "codes": [
+    "水工實驗室技術手冊，一九八〇年~Hydraulic Laboratory Techniques manual,1980",
+    "流量量測手冊第二章佛祿數與臨界流~Water Measurement Manual Chapter2, Froude number and critical flow"
+  ],
+  "landmarks": [
+    "克利埃勒姆壩：魚道模型研究~Cle Elum Dam: fish-passage model studies",
+    "福爾松附加溢洪道：閘門模型研究~Folsom auxiliary spillway: gate model studies"
+  ],
+  "place": {
+    "name": "福爾松公共水工研究背景區~Folsom public hydraulic-study context",
+    "country": "美國~United States",
+    "lat": 38.708,
+    "lng": -121.158,
+    "query": "Folsom Dam California"
+  },
+  "sources": [
+    {
+      "key": "hydraulic-lab",
+      "title": "水工實驗室技術手冊",
+      "titleEn": "Hydraulic Laboratory Techniques",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs2020.html",
+      "sourceType": "primary",
+      "scope": "官方摘要確認一九八〇年手冊，涵蓋相似律、模型設計施工、設備與現地研究；算例不冒稱原文規定尺度。",
+      "scopeEn": "Official abstract confirms the1980 manual covering similitude, model design/construction, instruments and field studies; selected scales are original assumptions."
+    },
+    {
+      "key": "froude-manual",
+      "title": "流量量測手冊佛祿數章節",
+      "titleEn": "Water Measurement Manual: Froude Number and Critical Flow",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/wmm/chap02_12.html",
+      "sourceType": "primary",
+      "scope": "官方章節說明自由水面模型佛祿數相等的概念；不代表黏滯、表面張力和氣泡效應也相等。",
+      "scopeEn": "Official chapter explains equal Froude numbers in free-surface models; this does not also match viscosity, surface tension or air effects."
+    },
+    {
+      "key": "lab-projects",
+      "title": "水工模型研究官方目錄",
+      "titleEn": "Hydraulics Laboratory report catalogue",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/reportsdb/action_list_all.cfm",
+      "sourceType": "primary",
+      "scope": "官方目錄列二〇一五年克利埃勒姆魚道研究及二〇一八年福爾松附加溢洪道閘門模型；本課為方法比較。",
+      "scopeEn": "Official catalogue lists2015 Cle Elum fish-passage studies and2018 Folsom auxiliary-spillway gate modeling; lessons compare methods rather than site results."
+    },
+    {
+      "key": "deltares-model",
+      "title": "伊默伊登分層流縮尺研究",
+      "titleEn": "Selective Withdrawal at IJmuiden physical and numerical modeling",
+      "publisher": "Deltares",
+      "url": "https://publicwiki.deltares.nl/spaces/FRESHSALT/pages/250708679/Selective%2BWithdrawal%2Bat%2BIJmuiden",
+      "sourceType": "primary",
+      "scope": "研究機構說明一比四十物理模型與三維數值比較，特別包含分層流及量測；不能將驗證限縮成外形相似。",
+      "scopeEn": "Researcher describes1:40 physical and three-dimensional numerical comparisons with stratification and measurements; validation extends beyond geometric resemblance."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Bureau of Reclamation",
+      "nameEn": "US Bureau of Reclamation",
+      "business": "發布相關水利方法、研究或公共工程資訊。",
+      "businessEn": "Publishes relevant water-engineering methods, research or public project information.",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs2020.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方摘要確認一九八〇年手冊，涵蓋相似律、模型設計施工、設備與現地研究；算例不冒稱原文規定尺度。",
+      "roleEn": "Official abstract confirms the1980 manual covering similitude, model design/construction, instruments and field studies; selected scales are original assumptions."
+    },
+    {
+      "name": "Deltares",
+      "nameEn": "Deltares",
+      "business": "發布相關水利方法、研究或公共工程資訊。",
+      "businessEn": "Publishes relevant water-engineering methods, research or public project information.",
+      "url": "https://publicwiki.deltares.nl/spaces/FRESHSALT/pages/250708679/Selective%2BWithdrawal%2Bat%2BIJmuiden",
+      "investorUrl": "",
+      "security": null,
+      "role": "研究機構說明一比四十物理模型與三維數值比較，特別包含分層流及量測；不能將驗證限縮成外形相似。",
+      "roleEn": "Researcher describes1:40 physical and three-dimensional numerical comparisons with stratification and measurements; validation extends beyond geometric resemblance."
+    }
+  ],
+  "related": [
+    "b256",
+    "b281"
+  ],
+  "architectureNodes": [
+    [
+      "幾何比例與控制長度",
+      "Geometry ratio and reference length"
+    ],
+    [
+      "總流量縮尺次方",
+      "Total-discharge scale exponent"
+    ],
+    [
+      "壓力尺度與氣泡",
+      "Pressure scale and air effects"
+    ],
+    [
+      "韋伯數與表面張力",
+      "Weber number and surface tension"
+    ],
+    [
+      "重複試驗與代表性",
+      "Replicates and representativeness"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

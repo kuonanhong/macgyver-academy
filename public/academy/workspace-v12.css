@@ -81,3 +81,7 @@ nav a.active{box-shadow:inset 3px 0 0 var(--accent)}
 /* V12: dictionary translation is informational, not a warning */
 .translation-status.is-info{background:var(--soft,#eef1e9);border-color:var(--line,#dce2d9);color:var(--muted,#53685f)}
 :root[data-theme="dark"] .translation-status.is-info{background:#1c2a30;border-color:#2c3d44;color:#a8bcc4}
+
+/* Keep the current page label and every header control visible beside the
+   tablet sidebar; the repeated academy breadcrumb is nonessential here. */
+@media(min-width:701px) and (max-width:980px){.topbar .breadcrumb>span{display:none}}

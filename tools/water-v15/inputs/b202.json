@@ -1,0 +1,263 @@
+{
+  "id": "b202",
+  "title": "胡佛壩~Hoover Dam",
+  "discipline": "water-dams",
+  "family": "water",
+  "focus": "拱重力壩熱力水力與監測交互診斷~Arch gravity dam thermal hydraulic and monitoring diagnosis",
+  "summary": "以胡佛壩為背景，區分自重抗滑與拱向傳力、裂縫連通與揚壓，以及冷卻收縮與接縫閉合。後半部把壓力瞬變、低水頭出力、排砂與量測溫漂連結，讓學員用相互獨立的證據判斷異常原因。所有試算都明示幾何與材料是假想值，不替代既有壩評估。~Using Hoover as context, distinguish gravity resistance from arch transfer, crack connectivity from uplift, and cooling contraction from joint closure. Later units connect pressure transients, low-head output, sediment and measurement drift, requiring independent evidence to distinguish causes. Every calculation uses declared hypothetical geometry or material data and cannot replace assessment of the existing dam.",
+  "history": "墾務局以基岩至壩頂道路量得的七百二十六點四英尺描述胡佛壩高度，並明確說明它兼具拱與重力作用。官方紀錄載混凝土於一九三三年六月開始澆置、一九三五年五月完成最後澆置；課程不把最後一盤混凝土等同所有附屬工程竣工。新增內容著重既有大壩的相互作用與證據判讀，原創算例與歷史冷卻系統的實際尺寸保持分離，文獻出版日期也另作方法研究節點。~Reclamation defines Hoover height from foundation rock to the crest roadway and describes both arch and gravity action. Its record places the first concrete in June 1933 and the last placement in May 1935; this is not treated as completion of every associated facility. The additional material concerns interactions and evidence in an existing major dam. Original examples remain separate from historical cooling system dimensions, and publication dates identify methodological references rather than construction events.",
+  "example": "以下為本課原創情境串接，所有數值是假設，不能視為業主設計圖或操作許可。先完成「拱座相容與分力」的守恆與邊界檢核，再比較「裂縫連通與揚壓」及「混凝土冷卻熱量」的不同控制量。第一組計算為 ka=8 GN/m; kg=12 GN/m; F=100 MN; Fa=F*ka/(ka+kg)=40 MN；第二組為 pu=900 kPa; pd=100 kPa; B=60 m; w=1 m; U=(pu+pd)/2*B*w=30000 kN。學員須保留量綱、資料時間與量測位置，討論誤差如何傳到結果，將第三單元的限制寫入同一張決策表。任何未納入的結構、河道或機組耦合都列為下一階段工作，不由單一得數推論全工程安全。~This original sequence connects the first three units using assumed inputs; none is an owner drawing or an operating authorization. First establish conservation and boundaries for Abutment compatibility and load sharing, then compare the controlling variables in Crack connectivity and uplift and Concrete cooling heat account. The first calculation is ka=8 GN/m; kg=12 GN/m; F=100 MN; Fa=F*ka/(ka+kg)=40 MN; the second is pu=900 kPa; pd=100 kPa; B=60 m; w=1 m; U=(pu+pd)/2*B*w=30000 kN. Preserve dimensions, observation times, and measurement locations in the working sheet. Explain how input uncertainty changes each conclusion and include the third unit limitations in the same decision table. Structural, river, and machine interactions omitted by a model remain subsequent work; a single numerical answer cannot demonstrate safety of the complete project.",
+  "units": [
+    {
+      "anchor": "拱座相容與分力~Abutment compatibility and load sharing",
+      "title": "拱座相容與分力~Abutment compatibility and load sharing",
+      "mechanism": "拱重力壩把一部分水平荷載沿拱圈送到兩岸，也把一部分荷載透過壩底傳入基礎。教材以同位移的平行彈簧理解剛度與分力，不把它當成真實拱壩公式。岩體節理、施工縫及溫度會改變相容條件，所以增加某路徑剛度也會改變其他路徑分擔。 平行彈簧共同位移來自相容條件，若兩岸支承本身移動，需把支承位移加入，分力比例就不再只由剛度決定。~An arch-gravity dam transfers some horizontal load toward the abutments and some through its base. Parallel springs with equal displacement illustrate stiffness-controlled sharing, not a real arch-dam design equation. Rock joints, construction joints and temperature alter compatibility, so stiffening one path changes the load carried by the other path as well. Equal spring displacement follows compatibility; moving supports introduce imposed displacements, after which stiffness ratios alone no longer determine the force shares between the paths.",
+      "model": "原創假想算例，輸入均非本工程操作參數：ka=8 GN/m; kg=12 GN/m; F=100 MN; Fa=F*ka/(ka+kg)=40 MN。模型邊界：線彈性且兩路徑同位移；未模擬三維拱殼、開裂或接觸滑移。~Original hypothetical example; inputs are not operating parameters of this project: ka=8 GN/m; kg=12 GN/m; F=100 MN; Fa=F*ka/(ka+kg)=40 MN. Model boundary: linear elasticity and equal displacement in both paths; excludes three-dimensional shell action, cracking and contact slip.",
+      "verify": "在同一水位下比較壩體位移、拱座變形及溫度，避免用不同季節的位移直接反推剛度。以改變一個路徑剛度的敏感度分析檢查分力總和是否保持外力，並用多點量測辨認左右岸反應不對稱。~Compare dam displacement, abutment deformation and temperature at the same reservoir level before inferring stiffness. Change one path stiffness and confirm that load shares still sum to the applied force. Use several observations to distinguish an asymmetric abutment response from a uniform translation.",
+      "failure": "拱座節理張開會使承載路徑變軟並把荷載移向其他部位；若只校準壩頂單點位移，可能得到看似正確的總剛度，卻完全錯判局部應力集中。~Opening abutment joints soften one load path and transfer force elsewhere. Calibrating only one crest displacement may reproduce overall stiffness while completely misrepresenting local stress concentrations and the distribution of support reactions.",
+      "misconception": "只知道壩高就能決定拱向分力~Dam height alone determines the arch load share.",
+      "practice": "把拱座路徑剛度減半，重算兩種分力與共同位移，畫出每個路徑的自由體圖，列出需要岩體試驗才能確認的模型參數。~Halve the abutment-path stiffness and recalculate both load shares and common displacement. Draw a free-body diagram for each path and identify the parameters that require rock-mass testing before interpretation."
+    },
+    {
+      "anchor": "裂縫連通與揚壓~Crack connectivity and uplift",
+      "title": "裂縫連通與揚壓~Crack connectivity and uplift",
+      "mechanism": "基礎裂縫是否與上游水連通，會改變揚壓分布而不只是減少受壓面積。教材把已假設的壓力分布積分成向上合力，再討論裂縫開口與排水能力對分布的影響。裂縫長度不能獨立決定壓力，因流動阻力、下游水位與排水孔都參與控制。 排水點可能讓壓力圖出現折線，積分時應按各段面積相加，作用點也必須用各段力矩求得。~Whether a foundation crack connects to upstream water changes uplift distribution as well as contact area. Integrating an explicitly assumed pressure diagram gives the upward resultant; crack aperture and drainage then explain possible changes to that diagram. Crack length alone cannot determine pressure because flow resistance, tailwater and drains also control it. A drain may introduce a breakpoint in the pressure diagram; sum segment areas for force and segment moments for the resultant location on the base.",
+      "model": "原創假想算例，輸入均非本工程操作參數：pu=900 kPa; pd=100 kPa; B=60 m; w=1 m; U=(pu+pd)/2*B*w=30000 kN。模型邊界：沿基底壓力線性且以一米壩長計算；不代表裂縫內實際壓力分布。~Original hypothetical example; inputs are not operating parameters of this project: pu=900 kPa; pd=100 kPa; B=60 m; w=1 m; U=(pu+pd)/2*B*w=30000 kN. Model boundary: linear basal pressure over a one-metre dam strip; not the measured distribution within an actual crack.",
+      "verify": "將各測壓孔換算至共同基準的壓力水頭，再檢查高低庫水位期間的反應與時間差。以排水流量配對判讀：壓力上升但流量下降支持堵塞假說，壓力與流量同升則須追查新增連通路徑。~Convert piezometer readings to pressure heads on one datum and compare their response and lag at different reservoir levels. Pair pressure with drainage flow: rising pressure with falling flow supports blockage, while simultaneous increases require investigation of a newly connected seepage path.",
+      "failure": "未辨認堵塞仍沿用原先低揚壓分布，會高估有效壩重與抗滑餘量；但測管氣泡或堵管也能產生假訊號，需以沖洗紀錄及鄰孔讀值交叉確認。~Using an old low-uplift diagram after drainage blockage overstates effective weight and sliding resistance. Air or blockage in the measuring tube can also create false signals, so maintenance records and neighboring readings must corroborate the interpretation.",
+      "misconception": "只要量得裂縫長度就知道全部揚壓~Crack length alone determines the complete uplift pressure distribution.",
+      "practice": "比較線性分布與上游半段保持高壓的分段分布，分別求合力及作用點，說明相同上游水位下為何抗滑與傾覆判斷都會改變。~Compare the linear diagram with a piecewise diagram retaining high pressure over the upstream half. Find each resultant and its location, then explain changes in both sliding and overturning interpretation."
+    },
+    {
+      "anchor": "混凝土冷卻熱量~Concrete cooling heat account",
+      "title": "混凝土冷卻熱量~Concrete cooling heat account",
+      "mechanism": "大體積混凝土降溫同時涉及熱量移除與空間溫差，兩者不可互相代替。比熱模型能估算均勻降溫所需移除的顯熱，但表面冷得過快可能提高內外約束應力。需把水化熱產生、冷卻水帶走熱量與周邊散熱分列，才能判斷熱量帳是否閉合。 熱擴散時間隨特徵長度平方變化，縮小試件的冷卻曲線不能直接按時間等比例搬到大體積壩塊。~Cooling mass concrete involves both heat removal and spatial gradients, which are not interchangeable. Heat capacity estimates sensible energy for uniform cooling, while rapid surface cooling can increase restraint stresses. Separate hydration heat, heat carried by cooling water and environmental exchange to establish whether the thermal account actually closes. Thermal diffusion time scales with characteristic length squared, so cooling observations from small specimens cannot be transferred to massive blocks by simple linear time scaling.",
+      "model": "原創假想算例，輸入均非本工程操作參數：V=5000 m3; rho=2400 kg/m3; c=900 J/(kg*K); dT=8 K; E=V*rho*c*dT/1e9=86.4 GJ。模型邊界：常數比熱與均勻溫降；未計持續水化熱及熱應力。~Original hypothetical example; inputs are not operating parameters of this project: V=5000 m3; rho=2400 kg/m3; c=900 J/(kg*K); dT=8 K; E=V*rho*c*dT/1e9=86.4 GJ. Model boundary: constant heat capacity and uniform cooling; continuing hydration heat and thermal stress are excluded.",
+      "verify": "以核心、中間和表面溫度檢查均勻假設，再用冷卻水流量乘進出口溫差積分熱量。若水側移熱量大於混凝土顯熱減少，應查水化熱與邊界交換，不可立即認定溫度儀表故障。~Check the uniform-temperature assumption using core, intermediate and surface readings, then integrate cooling-water flow times temperature rise. If water-side heat removal exceeds the concrete sensible-energy decrease, investigate hydration and boundary exchange before assuming the temperature instruments are defective.",
+      "failure": "冷卻太集中會造成局部溫度梯度及裂縫，即使平均溫度下降符合目標也可能出現問題；裂縫又改變水密與局部傳熱，因此不能只以總移熱量驗收冷卻品質。~Concentrated cooling can create local gradients and cracking even when average temperature meets its target. Cracks subsequently alter watertightness and heat transfer, so total extracted energy alone cannot establish the quality of the cooling process.",
+      "misconception": "平均降溫達標就表示沒有梯度風險~Meeting an average cooling target proves there is no gradient risk.",
+      "practice": "對同一熱量設計均勻與偏側冷卻兩個假想溫度剖面，指出哪些測點能區分兩者，再估算多移除一開爾文顯熱所需的額外能量。~Construct uniform and one-sided cooling profiles with the same total heat removal. Identify sensors that distinguish them, then calculate the additional sensible energy associated with one more kelvin of cooling."
+    },
+    {
+      "anchor": "接縫閉合與溫度~Joint closure and temperature",
+      "title": "接縫閉合與溫度~Joint closure and temperature",
+      "mechanism": "分塊澆置留下的接縫，其開合取決於塊體自由熱變形、相鄰約束與水壓。線膨脹模型只描述未受約束的長度變化，接縫灌漿後的應力則需用實際約束分析。不能把某溫度下的縫寬直接解讀為永久缺陷，也不能把所有縫寬變化都歸於氣溫。 接縫量測方向若與縫面法線不一致，需將位移投影分解，否則剪切位移也可能混入開合讀值。~A joint between concrete blocks opens or closes through thermal strain, neighboring restraint and water loading. Linear expansion describes free length change only; stress after grouting depends on actual restraint. Joint width at one temperature is not automatically a permanent defect, and not every width change can be attributed to air temperature. A gauge not aligned with the joint normal requires displacement projection; otherwise tangential movement can contaminate the apparent opening or closure of the joint.",
+      "model": "原創假想算例，輸入均非本工程操作參數：alpha=0.00001 1/K; L=18 m; dT=12 K; dL=alpha*L*dT*1000=2.16 mm。模型邊界：單一塊體沿量測方向自由膨脹；不是受約束接縫的實際閉合量。~Original hypothetical example; inputs are not operating parameters of this project: alpha=0.00001 1/K; L=18 m; dT=12 K; dL=alpha*L*dT*1000=2.16 mm. Model boundary: free expansion of one block along the measurement axis; not the actual closure of a restrained joint.",
+      "verify": "將接縫計讀值與塊體內部溫度及庫水位同步繪圖，查看升溫與降溫路徑是否重合。若有遲滯，再查接觸摩擦與裂縫連通；量測基座本身的熱伸縮也必須先校正，避免誤判壩體變形。~Plot joint readings with internal block temperature and reservoir level, checking whether warming and cooling paths coincide. Hysteresis calls for investigating contact friction or crack connectivity. Correct thermal movement of the instrument mounting itself before assigning the observed change to the dam.",
+      "failure": "灌漿溫度與後續運轉溫度不相容時，可能造成過高接觸壓力或縫面重新張開；但單支接縫計也可能因固定端鬆動而跳值，需以附近位移證據區分。~An incompatible grouting and service-temperature range can produce excessive contact pressure or reopening. A loose gauge anchor can also cause a sudden reading change, requiring neighboring displacement evidence to distinguish the instrument fault from physical joint behavior.",
+      "misconception": "自由熱伸長就是受約束接縫閉合量~Free thermal extension equals closure of a restrained joint.",
+      "practice": "用三種熱膨脹係數重算自由伸長，另畫受約束與無約束兩個自由體圖，列出從位移轉成應力還缺少的剛度及接觸條件。~Recalculate free extension for three thermal expansion coefficients. Draw restrained and unrestrained free-body diagrams, then list stiffness and contact information still needed to convert displacement into a stress estimate."
+    },
+    {
+      "anchor": "壓力鋼管水錘~Penstock water hammer",
+      "title": "壓力鋼管水錘~Penstock water hammer",
+      "mechanism": "導葉或閥門快速變動使水流動量轉為壓力波，波速同時受水的可壓縮性與管壁彈性影響。焦科夫斯基關係適合估計快速速度改變的首波幅度；反射、分岔與調壓設施會改變後續波形，因此單一首波不能取代整段管路的暫態包絡。 反射的符號取決於邊界阻抗，水庫端與封閉閥端可能產生不同反射，因此應在時空圖標明每個邊界。~Rapid guide-vane or valve movement converts flow momentum into a pressure wave whose speed depends on water compressibility and pipe elasticity. The Joukowsky relation estimates the first wave from a rapid velocity change. Reflections, branches and surge facilities alter later waves, so one first-wave estimate is not a full transient envelope. Reflection sign depends on boundary impedance; reservoir and closed-valve ends can reflect differently, so every boundary must be identified on the space-time diagram.",
+      "model": "原創假想算例，輸入均非本工程操作參數：rho=1000 kg/m3; a=900 m/s; dv=0.7 m/s; dp=rho*a*dv/1e6=0.63 MPa。模型邊界：速度變化快於相關往返波時間，單相彈性首波；未含汽穴與反射疊加。~Original hypothetical example; inputs are not operating parameters of this project: rho=1000 kg/m3; a=900 m/s; dv=0.7 m/s; dp=rho*a*dv/1e6=0.63 MPa. Model boundary: velocity change is faster than the relevant wave round-trip time; single-phase elastic first wave without cavitation or reflected-wave superposition.",
+      "verify": "先以管長與波速估算往返時間，再比較控制動作時間及高速壓力記錄。用兩測點峰值到達差檢查波速，若訊號含低壓平台或不連續回升，應追查汽穴及氣體效應，而非只修改阻力係數。~Estimate round-trip time from pipe length and wave speed, then compare actuator timing with rapid pressure records. Arrival differences between two sensors test wave speed. Low-pressure plateaus or abrupt recovery warrant investigation of cavitation and gas effects rather than merely changing friction coefficients.",
+      "failure": "延遲關閉或不協調的保護動作可能形成多次反射峰值，最大壓力不一定在首波；低壓端的液柱分離也可能在重新接合時產生更大衝擊。~Delayed or uncoordinated protective actions can produce repeated reflected peaks, with the maximum occurring after the first wave. Column separation on the low-pressure side can generate a larger impact when the separated liquid columns rejoin.",
+      "misconception": "首波壓升必定是所有暫態最大壓力~The first pressure rise is always the maximum of the whole transient.",
+      "practice": "分別把速度變化減半及波速降低，計算首波幅度，再用示意時空圖標出反射路徑，寫明何時必須改用完整特徵線暫態模型。~Halve the velocity change and reduce wave speed in separate cases. Calculate first-wave amplitudes, mark reflection paths on a space-time diagram, and state when a full method-of-characteristics transient model is required."
+    },
+    {
+      "anchor": "溢洪面汽蝕指標~Spillway cavitation indicator",
+      "title": "溢洪面汽蝕指標~Spillway cavitation indicator",
+      "mechanism": "高速溢洪流在不平整表面附近會產生局部低壓，是否形成汽穴要比較局部絕對壓力與水的蒸氣壓。汽蝕數把可用壓力差除以動壓，便於比較流況，但臨界值仍依表面幾何、含氣與尺度而異。以平均壓力計算只能作初步篩查。 蒸氣壓取決於水溫，而局部絕對壓也受大氣壓影響，兩者均應使用與事件同時的條件比較。~High-speed spillway flow can create local low pressure near surface irregularities. Vapor formation depends on absolute pressure relative to vapor pressure. A cavitation number normalizes available pressure by dynamic pressure, but its critical value depends on geometry, aeration and scale. A value based on mean pressure is therefore a preliminary indicator only. Vapor pressure depends on water temperature and absolute local pressure depends on atmospheric conditions; both should represent the same event rather than unrelated reference conditions.",
+      "model": "原創假想算例，輸入均非本工程操作參數：pabs=85000 Pa; pv=2500 Pa; rho=1000 kg/m3; v=25 m/s; sigma=(pabs-pv)/(0.5*rho*v*v)=0.264。模型邊界：使用局部平均絕對壓力；未給臨界汽蝕數或損傷速率。~Original hypothetical example; inputs are not operating parameters of this project: pabs=85000 Pa; pv=2500 Pa; rho=1000 kg/m3; v=25 m/s; sigma=(pabs-pv)/(0.5*rho*v*v)=0.264. Model boundary: uses local mean absolute pressure; no critical cavitation value or erosion rate is supplied.",
+      "verify": "核對壓力感測器是表壓還是絕對壓，並量測水溫以選取蒸氣壓。將壓力波動、表面缺口及含氣記錄對齊，若平均值平穩但瞬時低壓頻繁，應分析低尾分布，不能以平均汽蝕數排除損傷。~Confirm whether the sensor reports gauge or absolute pressure and measure water temperature for vapor pressure. Align pressure fluctuations with surface defects and aeration observations. Frequent low-pressure excursions require analysis of the lower distribution tail even if the mean cavitation number appears steady.",
+      "failure": "錯把表壓當絕對壓會嚴重改變指標，表面錯台又可能使局部最低壓遠低於平均值；若只看總流量，就無法區分幾何缺陷與通氣不足的來源。~Confusing gauge with absolute pressure distorts the indicator, while a surface offset can make minimum pressure much lower than its mean. Total discharge alone cannot distinguish a geometric defect from inadequate air supply as the cause of damage.",
+      "misconception": "所有表面可採同一汽蝕數界線~One cavitation-number threshold applies to every spillway surface.",
+      "practice": "在固定壓力下把流速提高兩成，重算指標並說明平方效應，再列出判斷實際損傷還需的粗糙度、含氣與壓力波動證據。~Increase velocity by twenty percent at fixed pressure and recompute the indicator, explaining the squared effect. List roughness, aeration and pressure-fluctuation evidence still needed before assessing actual surface damage."
+    },
+    {
+      "anchor": "低水頭機組出力~Low head generating output",
+      "title": "低水頭機組出力~Low head generating output",
+      "mechanism": "庫水位下降使可用水頭改變，維持同一功率可能需要增加流量，但管路損失和機組運轉範圍限制這種補償。教材先固定流量與效率比較水頭對出力的直接作用，再要求用機組特性曲線檢查效率假設，不能線性外推至所有低水位。 導葉開度與流量的關係隨水頭改變，固定開度不等於固定流量，比較模型時必須明確哪一項受到控制。~Falling reservoir level changes available head, and maintaining power may require more discharge. Conveyance losses and the machine operating range limit that compensation. First hold flow and efficiency constant to isolate the direct head effect, then consult machine characteristics; the assumed efficiency cannot be extrapolated to every low-water condition. The relation between guide-vane opening and discharge changes with head; fixed opening is not fixed flow, so the controlled quantity must be stated explicitly.",
+      "model": "原創假想算例，輸入均非本工程操作參數：rho=1000 kg/m3; g=9.81 m/s2; Q=180 m3/s; H=70 m; eta=0.90 (dimensionless); P=rho*g*Q*H*eta/1e6=111.2454 MW。模型邊界：淨水頭已扣引水損失且效率固定；未保證機組在該工況允許運行。~Original hypothetical example; inputs are not operating parameters of this project: rho=1000 kg/m3; g=9.81 m/s2; Q=180 m3/s; H=70 m; eta=0.90 (dimensionless); P=rho*g*Q*H*eta/1e6=111.2454 MW. Model boundary: net head already excludes conveyance loss and efficiency is fixed; operation at this point is not thereby authorized.",
+      "verify": "將同步流量、淨水頭與電功率換算成效率，並按導葉開度分類比較，避免把不同工況混成一條趨勢。另查振動與壓力脈動，若功率模型符合而脈動增大，仍須研究運轉區域限制。~Calculate efficiency from synchronized discharge, net head and terminal power, grouping observations by guide-vane position. Check vibration and pressure pulsation separately. Agreement with the power equation does not resolve an increasing pulsation level or establish suitability of that operating region.",
+      "failure": "為補償低水頭而增加流量，可能提高損失與不穩定流動，使預期增益落空；若流量計受流態改變影響，也會出現虛假的效率提升，需用獨立量測核對。~Increasing flow to compensate for low head may raise losses and unstable-flow effects enough to defeat the expected gain. A meter affected by altered flow patterns can also indicate a false efficiency improvement, requiring independent verification.",
+      "misconception": "低水頭可藉無限增加流量完全補償~Any low head can be fully compensated by unlimited discharge.",
+      "practice": "以相同效率計算恢復原功率所需流量，再加入與流量平方相關的損失重算，繪出補償效果遞減的原因並列出機組曲線的必要資料。~Calculate the discharge needed to restore original power at fixed efficiency, then introduce flow-squared losses. Show why compensation diminishes and list the machine-curve data required to assess the revised point."
+    },
+    {
+      "anchor": "沉積三角洲前移~Sediment delta advance",
+      "title": "沉積三角洲前移~Sediment delta advance",
+      "mechanism": "入庫流速降低使較粗顆粒優先沉降，三角洲前緣位置影響取水與通道幾何。簡化的體積除以橫截面積只能估算平均前移距離，不能描述底坡、粒徑分選及潛流。應把泥砂供給與可容納空間分開，避免把局部淤高等同全庫均勻填滿。 沉積前緣可能沿舊河槽形成狹長分支，使用全庫平均寬度會稀釋這種集中前移，需要保留局部地形。~Deceleration at reservoir entry deposits coarse material preferentially, and delta position affects intake and channel geometry. Deposited volume divided by a representative cross-sectional area estimates mean advance only; it omits bed slope, sorting and density currents. Sediment supply and accommodation space must be distinguished from uniform filling of the reservoir. A depositional front may advance as a narrow lobe along the old channel; reservoir-average width conceals that concentration and should not replace local geometry.",
+      "model": "原創假想算例，輸入均非本工程操作參數：V=240000 m3; B=600 m; h=8 m; dx=V/(B*h)=50 m。模型邊界：假設矩形沉積前緣且全數體積推進前緣；不含壓密及側向擴展。~Original hypothetical example; inputs are not operating parameters of this project: V=240000 m3; B=600 m; h=8 m; dx=V/(B*h)=50 m. Model boundary: rectangular depositional front with all volume advancing that front; excludes consolidation and lateral spreading.",
+      "verify": "重複測量同一基準的縱剖面及橫斷面，將前緣位置、頂積層厚度與粒徑一起比較。若測得體積增加但前緣未動，應查垂向加積或側向展寬，不能因簡式預測前移便宣稱測量錯誤。~Repeat longitudinal and cross-sectional surveys on one datum, comparing front position, topset thickness and grain size. If volume rises without front advance, investigate vertical aggradation or lateral widening rather than rejecting measurements because the simple translation model predicted movement.",
+      "failure": "只追蹤表面岸線可能漏掉水下前緣逼近取水區；反之，水位變化造成的岸線位移也可能被誤作淤積，應以固定高程下的水下地形辨識。~Tracking only the visible shoreline can miss an underwater front approaching an intake. Conversely, level-driven shoreline movement may be mistaken for deposition; submerged topography referenced to a fixed elevation is needed to distinguish them.",
+      "misconception": "岸線移動距離就是沉積前緣移動距離~Shoreline movement equals the movement of the sediment front.",
+      "practice": "保持沉積體積不變，分別加倍前緣寬度與厚度，計算前移距離，再規劃足以分辨前移和垂向加積的三條重複測線。~Keep deposited volume fixed and separately double front width and thickness. Calculate advance distances, then plan three repeat survey lines that distinguish frontal translation from vertical accumulation."
+    },
+    {
+      "anchor": "垂線監測溫漂~Pendulum monitoring thermal drift",
+      "title": "垂線監測溫漂~Pendulum monitoring thermal drift",
+      "mechanism": "垂線觀測相對位置時，量測支架與讀數裝置也會受到溫度影響。把已校準的儀器溫度係數乘溫差，可估算需扣除的儀器漂移，但不能順便移除壩體真正熱變形。兩種效應必須以獨立基準、內部溫度與不同原理位移儀共同辨識。 溫漂係數具有量測軸向與安裝條件，儀器移位或更換支架後須重新檢查，不能沿用舊校準而未記錄。~Pendulum observations include temperature effects in mounting and readout hardware as well as movement of the structure. A calibrated instrument coefficient estimates instrumental drift, but must not remove genuine thermal deformation of the dam. Independent reference control, internal temperature and another displacement principle are needed to separate the effects. A drift coefficient belongs to a measurement axis and mounting arrangement; relocation or replacement of the support requires renewed checks and documented calibration continuity.",
+      "model": "原創假想算例，輸入均非本工程操作參數：yraw=4.8 mm; k=0.04 mm/K; dT=15 K; ycorr=yraw-k*dT=4.2 mm。模型邊界：儀器漂移係數由獨立校準取得且線性；未扣除壩體物理熱位移。~Original hypothetical example; inputs are not operating parameters of this project: yraw=4.8 mm; k=0.04 mm/K; dT=15 K; ycorr=yraw-k*dT=4.2 mm. Model boundary: instrument drift coefficient comes from independent linear calibration; actual thermal movement of the dam is not removed.",
+      "verify": "在儀器不移動的控制條件下校準溫度係數，再用現地獨立測量檢查修正後殘差。若季節訊號在不同原理儀器都出現，不應全部當成儀器漂移；並記錄更換支架前後的零點差。~Calibrate temperature sensitivity under controlled fixed-position conditions, then compare corrected residuals with independent field observations. Seasonal signals shared by different instrument principles should not all be removed as drift. Record zero shifts before and after replacement of mounting components as a separate effect.",
+      "failure": "用壩體量測本身回歸儀器溫度係數，可能把真正結構反應吸收到校正項而掩蓋變化；固定端鬆動則可能造成非線性跳值，線性溫漂公式無法修復。~Regressing instrument sensitivity from dam movement itself can absorb genuine structural behavior into a correction term and conceal changes. A loose mounting point can cause nonlinear jumps that a linear thermal-drift equation cannot repair.",
+      "misconception": "溫漂校正應消除所有壩體季節位移~Thermal drift correction should remove all seasonal movement of the dam.",
+      "practice": "產生同時含壩體季節位移和儀器溫漂的序列，分別用獨立係數及錯誤回歸係數校正，展示兩種方法對異常偵測的不同結果。~Generate a series containing structural seasonal movement and instrument thermal drift. Correct it using an independent calibration and an incorrect regression coefficient, then demonstrate how the two approaches alter anomaly detection."
+    },
+    {
+      "anchor": "排水備援共同原因~Drainage redundancy common causes",
+      "title": "排水備援共同原因~Drainage redundancy common causes",
+      "mechanism": "備援只有在失效機制足夠獨立時才能降低同時失效機率。兩部泵可能共用電源、進水池或控制器，因此把單機失效機率直接相乘會過度樂觀。教材先建立明示獨立的基準，再加入共同原因事件，強調可靠度數值取決於系統邊界與資料期間。 故障機率須附需求期間與成功功能定義，短時啟動成功與長時持續抽水成功是兩個不同的事件。~Redundancy reduces simultaneous failure only when failure mechanisms are sufficiently independent. Two pumps may share power, a sump or controls, making a simple product of individual probabilities optimistic. Establish an explicitly independent baseline before adding a common-cause event, and define the system boundary and observation period for every probability. A probability needs a demand interval and a defined success function; successful starting and sustained pumping throughout a long event are different reliability questions.",
+      "model": "原創假想算例，輸入均非本工程操作參數：pA=0.03 (dimensionless); pB=0.04 (dimensionless); pBoth=pA*pB=0.0012。模型邊界：兩泵同一需求期間的失效事件假設獨立；不是現場可靠度或年失效率。~Original hypothetical example; inputs are not operating parameters of this project: pA=0.03 (dimensionless); pB=0.04 (dimensionless); pBoth=pA*pB=0.0012. Model boundary: independent failure events over the same demand interval; not field reliability or an annual failure rate.",
+      "verify": "用設備接線圖與管線圖找出共同電源、閥件與吸入口，逐項核對測試是否真正涵蓋切換。把無需求時停機與有需求時失效分開統計；若兩泵常在同一事件失效，就不能保留獨立假設。~Trace shared power, valves and suction paths on electrical and hydraulic diagrams, then check whether tests actually exercise transfer. Distinguish planned idle states from failures on demand. Repeated simultaneous failures during one event invalidate the independence assumption used by the simple probability product.",
+      "failure": "淹水可能同時淹沒兩部泵的控制設備，使機械備援失去作用；只測馬達空載啟動不會揭露共同吸入口堵塞，需驗證實際抽排路徑與電力隔離。~Flooding can disable controls for both pumps and defeat mechanical redundancy. Testing unloaded motor starts does not reveal a blocked common intake, so the actual drainage path and electrical separation must be verified together.",
+      "misconception": "每增加一台備用設備就多一個獨立備援~Every additional spare device provides another fully independent backup.",
+      "practice": "加入一個共同電源失效事件，畫故障樹並計算條件機率，指出何種改造可切斷共同原因，以及需要哪些需求紀錄才能更新估計。~Add a common power-failure event, draw a fault tree and calculate conditional probabilities. Identify a modification that removes the shared cause and the demand records needed to update the estimate."
+    }
+  ],
+  "facts": [
+    "官方壩高726.4ft以基岩至壩頂道路為量測基準~Official dam height 726.4 ft uses foundation rock to crest roadway as its datum",
+    "1933 年官方紀錄：六月開始壩體混凝土澆置，不代表全部工程同年完成~1933 official record: Dam concrete placement begins in June, not completion of the entire development",
+    "假想教材：拱座相容與分力；ka=8 GN/m; kg=12 GN/m; F=100 MN; Fa=F*ka/(ka+kg)=40 MN~Hypothetical teaching: Abutment compatibility and load sharing; ka=8 GN/m; kg=12 GN/m; F=100 MN; Fa=F*ka/(ka+kg)=40 MN",
+    "假想教材：裂縫連通與揚壓；pu=900 kPa; pd=100 kPa; B=60 m; w=1 m; U=(pu+pd)/2*B*w=30000 kN~Hypothetical teaching: Crack connectivity and uplift; pu=900 kPa; pd=100 kPa; B=60 m; w=1 m; U=(pu+pd)/2*B*w=30000 kN",
+    "假想教材：混凝土冷卻熱量；V=5000 m3; rho=2400 kg/m3; c=900 J/(kg*K); dT=8 K; E=V*rho*c*dT/1e9=86.4 GJ~Hypothetical teaching: Concrete cooling heat account; V=5000 m3; rho=2400 kg/m3; c=900 J/(kg*K); dT=8 K; E=V*rho*c*dT/1e9=86.4 GJ",
+    "假想教材：接縫閉合與溫度；alpha=0.00001 1/K; L=18 m; dT=12 K; dL=alpha*L*dT*1000=2.16 mm~Hypothetical teaching: Joint closure and temperature; alpha=0.00001 1/K; L=18 m; dT=12 K; dL=alpha*L*dT*1000=2.16 mm"
+  ],
+  "timeline": [
+    {
+      "year": "1933",
+      "event": "六月開始壩體混凝土澆置，不代表全部工程同年完成~Dam concrete placement begins in June, not completion of the entire development"
+    },
+    {
+      "year": "1987",
+      "event": "墾務局監測手冊出版，這是參考文獻年代而非本壩施工年份~Reclamation instrumentation manuals are published; this dates references rather than construction of this dam"
+    },
+    {
+      "year": "2026",
+      "event": "本課核對公開來源並重算原創假想模型，屬教材修訂日期~This course verifies public references and recomputes original hypothetical models, a curriculum revision date"
+    }
+  ],
+  "codes": [
+    "美國墾務局大壩監測手冊，混凝土或土石壩依型式選讀~Reclamation Dam Instrumentation Manuals, select concrete or embankment according to dam type",
+    "美國墾務局小壩設計手冊，僅作方法比較而非大型工程核准準則~Reclamation Design of Small Dams, comparative methods rather than approval criteria for this major project"
+  ],
+  "landmarks": [
+    "胡佛壩~Hoover Dam",
+    "大古力水壩~Grand Coulee Dam"
+  ],
+  "place": {
+    "name": "胡佛壩案例參照點~Hoover Dam case reference",
+    "country": "美國~United States",
+    "lat": 36.016,
+    "lng": -114.738,
+    "query": "Hoover Dam"
+  },
+  "sources": [
+    {
+      "key": "hoover-owner",
+      "title": "胡佛壩官方常見問題",
+      "titleEn": "Hoover Dam official dam facts",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+      "sourceType": "primary",
+      "scope": "核對拱重力壩型式、壩高定義與混凝土施工年代",
+      "scopeEn": "Checks arch-gravity type, height definition and concrete construction dates"
+    },
+    {
+      "key": "usbr-manuals",
+      "title": "墾務局手冊與指南目錄",
+      "titleEn": "Reclamation Manuals and Guidelines",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/manuals.html",
+      "sourceType": "primary",
+      "scope": "僅核對手冊名稱、版本與主題索引，未宣稱全文逐頁審閱",
+      "scopeEn": "Checks titles, editions and indexed topics only; no claim of full page by page review"
+    },
+    {
+      "key": "usbr-instruments",
+      "title": "混凝土壩監測手冊官方摘要",
+      "titleEn": "Concrete Dam Instrumentation Manual official abstract",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs2.html",
+      "sourceType": "primary",
+      "scope": "僅讀官方摘要，確認監測用途與限制的文獻範圍；不提供本案警戒值",
+      "scopeEn": "Official abstract only, confirming instrumentation purpose and limitations; no project alarm values"
+    },
+    {
+      "key": "usace-catalog",
+      "title": "工兵團重力壩手冊官方目錄",
+      "titleEn": "USACE Gravity Dam Design official catalog",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/477261766974792044616D2044657369676E/udt_43544_param_direction/ascending/udt_43544_param_orderby/Latest_x0020_Review_UDT_Value/",
+      "sourceType": "primary",
+      "scope": "官方搜尋索引核對手冊題名及日期；直接頁面拒絕存取，未宣稱讀過全文",
+      "scopeEn": "Official search index confirms title and date; direct page denied access, no full-text review claimed"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Bureau of Reclamation",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供本案例公開工程背景或大壩方法文獻的機構。",
+      "businessEn": "Institution providing public project background or dam engineering reference literature.",
+      "url": "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "依所列來源說明其資料關聯；未據此宣稱是全部工項承包商。",
+      "roleEn": "Associated through the cited public source; this does not identify a contractor for every work item."
+    },
+    {
+      "name": "US Army Corps of Engineers",
+      "nameEn": "US Army Corps of Engineers",
+      "business": "提供本案例公開工程背景或大壩方法文獻的機構。",
+      "businessEn": "Institution providing public project background or dam engineering reference literature.",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/477261766974792044616D2044657369676E/udt_43544_param_direction/ascending/udt_43544_param_orderby/Latest_x0020_Review_UDT_Value/",
+      "investorUrl": "",
+      "security": null,
+      "role": "依所列來源說明其資料關聯；未據此宣稱是全部工項承包商。",
+      "roleEn": "Associated through the cited public source; this does not identify a contractor for every work item."
+    }
+  ],
+  "related": [
+    "b203",
+    "b204"
+  ],
+  "architectureNodes": [
+    [
+      "拱座相容與分力",
+      "Abutment compatibility and load sharing"
+    ],
+    [
+      "混凝土冷卻熱量",
+      "Concrete cooling heat account"
+    ],
+    [
+      "壓力鋼管水錘",
+      "Penstock water hammer"
+    ],
+    [
+      "低水頭機組出力",
+      "Low head generating output"
+    ],
+    [
+      "排水備援共同原因",
+      "Drainage redundancy common causes"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 馬蓋先 MacGyver Engineering Academy V14 — one-click maintenance.
+# 馬蓋先 MacGyver Engineering Academy V15 — one-click maintenance.
 #
 #   bash macgyver.sh              same as "deploy"
 #   bash macgyver.sh all          deploy the website AND upload new model weights (one click for both repos)
@@ -41,8 +41,13 @@ say(){ printf '\033[1;32m▶ %s\033[0m\n' "$*"; }
 warn(){ printf '\033[1;33m! %s\033[0m\n' "$*" >&2; }
 die(){ printf '\033[1;31m✖ %s\033[0m\n' "$*" >&2; exit 1; }
 PY=''
-for c in python3 python; do
-  if command -v "$c" >/dev/null 2>&1 && "$c" -c 'import sys;sys.exit(sys.version_info<(3,10))' 2>/dev/null; then PY="$c"; break; fi
+# Honour the chosen environment before PATH (including Conda paths with spaces).
+for c in "${MACGYVER_PYTHON:-}" "${CONDA_PREFIX:+$CONDA_PREFIX/bin/python}" python3 python; do
+  [[ -n "$c" ]] || continue
+  if command -v "$c" >/dev/null 2>&1 && "$c" -c 'import sys;sys.exit(sys.version_info<(3,10))' 2>/dev/null; then
+    PY="$(command -v "$c")"
+    break
+  fi
 done
 
 save_conf(){
@@ -56,7 +61,12 @@ save_conf(){
 doctor(){
   local ok=1
   command -v git >/dev/null || { warn '缺少 git（macOS：xcode-select --install）'; ok=0; }
-  [[ -n "$PY" ]] || { warn '缺少 Python 3.10+（macOS：brew install python 或 conda create -n macgyver python=3.12）'; ok=0; }
+  if [[ -n "$PY" ]]; then
+    say "$("$PY" --version 2>&1)（${PY}）"
+  else
+    warn '缺少 Python 3.10+（macOS：brew install python 或 conda create -n macgyver python=3.12；之後 conda activate macgyver）'
+    ok=0
+  fi
   if command -v node >/dev/null; then say "Node $(node --version)（重建網站用）"; else warn '未安裝 Node.js 22.13+：改程式後無法重建 app.bundle.js（只更新資料仍可）'; fi
   for k in user.name user.email; do [[ -n "$(git config --global --get $k || true)" ]] || { warn "請先執行 git config --global $k \"…\""; ok=0; }; done
   if [[ "$SITE_REPO" == git@* ]]; then
@@ -64,14 +74,16 @@ doctor(){
     if grep -q 'successfully authenticated' <<<"$out"; then say "GitHub SSH 認證成功：${out%%!*}"; else warn "GitHub SSH 尚未設定：$out"; warn '請依 docs/UPLOAD_SYNC_V12_ZH.md 第 1 節建立 SSH key 並加到 GitHub。'; ok=0; fi
   fi
   git ls-remote --heads "$SITE_REPO" "$BRANCH" >/dev/null 2>&1 && say "可讀取網站倉庫 $SITE_REPO" || { warn "無法讀取 $SITE_REPO"; ok=0; }
-  git ls-remote --heads "$MODELS_REPO" "$BRANCH" >/dev/null 2>&1 && say "可讀取模型私人倉庫 $MODELS_REPO" || warn "無法讀取 $MODELS_REPO（若尚未建立：GitHub → New repository → Private）"
-  "$PY" - "$ROOT" <<'PY' || true
+  git ls-remote --heads "$MODELS_REPO" "$BRANCH" >/dev/null 2>&1 && say "可讀取模型私人倉庫 $MODELS_REPO" || warn "無法讀取 ${MODELS_REPO}（若尚未建立：GitHub → New repository → Private）"
+  if [[ -n "$PY" ]]; then
+    "$PY" - "$ROOT" "$MODEL_DIR" <<'PY' || { warn '模型清單檢查失敗。'; ok=0; }
 import json,hashlib,sys,pathlib
-root=pathlib.Path(sys.argv[1]);m=json.load(open(root/'tools/model-manifest.json'))['models']
+root=pathlib.Path(sys.argv[1]);model_dir=pathlib.Path(sys.argv[2]);m=json.load(open(root/'tools/model-manifest.json'))['models']
 for x in m:
-    f=root/'models'/x.get('file','-')
-    print(('  ✓ ' if f.is_file() and f.stat().st_size==x.get('bytes') else '  · ')+x['id'],'—',x['label'],'（已在 models/）' if f.is_file() else '')
+    f=model_dir/x.get('file','-')
+    print(('  ✓ ' if f.is_file() and f.stat().st_size==x.get('bytes') else '  · ')+x['id'],'—',x['label'],'（本機檔案存在）' if f.is_file() else '')
 PY
+  fi
   ((ok)) && say '環境檢查通過。' || warn '請先處理上述項目。'
   return $((1-ok))
 }
@@ -146,7 +158,7 @@ models_prepare(){
   for id in $MODELS; do
     kind="$("$PY" -c "import json,sys;m={x['id']:x for x in json.load(open(sys.argv[1]))['models']};x=m.get(sys.argv[2]);print((x or {}).get('kind','?'),(x or {}).get('file',''))" "$ROOT/tools/model-manifest.json" "$id")"
     file="${kind#* }"; kind="${kind%% *}"
-    if [[ "$kind" == '?' ]]; then warn "未知模型 $id，略過"; continue; fi
+    if [[ "$kind" == '?' ]]; then warn "未知模型 ${id}，略過"; continue; fi
     if [[ -z "$file" ]]; then warn "$id 是 Ollama 模型（由 ollama pull 管理），不需上傳私人倉庫"; continue; fi
     if [[ "$id" == qwen3-06b && ! -f "$dir/$file" ]]; then
       say "嘗試從華佗學院已有的 Qwen3-0.6B（四份 ZIP 或已還原的 GGUF）匯入，免重新下載"
@@ -154,13 +166,13 @@ models_prepare(){
       [[ -n "$HUATUO_DIR" ]] && search+=(--search "$HUATUO_DIR")
       "$PY" "$ROOT/tools/sync-v13/models_sync.py" import-huatuo "${search[@]}" --to "$dir" || true
     fi
-    say "確認模型 $id（官方固定版本與 SHA-256；已存在且正確就不重抓，中斷可重跑接續）"
+    say "確認模型 ${id}（官方固定版本與 SHA-256；已存在且正確就不重抓，中斷可重跑接續）"
     bash "$ROOT/install-ai-models.sh" --model "$id" --download --directory "$dir"
   done
 }
 models(){
   models_prepare
-  say "比對並上傳權重到私人倉庫 $MODELS_REPO（40 MiB 分片，只傳雲端還沒有的部分；不會改動華佗學院的檔案）"
+  say "比對並上傳權重到私人倉庫 ${MODELS_REPO}（40 MiB 分片，只傳雲端還沒有的部分；不會改動華佗學院的檔案）"
   warn '請確認該倉庫在 GitHub 上是 Private。'
   "$PY" "$ROOT/tools/sync-v13/models_sync.py" push --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$MODEL_DIR" --state "$STATE" --private-confirmed --batch-mib "$MODEL_BATCH_MIB" "$@"
 }
@@ -184,7 +196,7 @@ case "$cmd" in
     [[ -f "$CONF" ]] || save_conf
     ((SKIP_DATA)) || update_data; rebuild
     say '比較本機套件與 GitHub，只上傳新增與修改的檔案，清理已管理的舊分片；保留遠端另加檔案'
-    sync --push --message "${MESSAGE:-MacGyver Academy V14 update $(date +%F)}" "$@"
+    sync --push --message "${MESSAGE:-MacGyver Academy V15 update $(date +%F)}" "$@"
     say '上傳完成；請在 GitHub Actions 確認建置與 Pages 狀態：https://kuonanhong.github.io/macgyver-academy/' ;;
   all)
     [[ -n "$PY" ]] || die '需要 Python 3.10+'
@@ -209,7 +221,7 @@ case "$cmd" in
       [[ -f "$CONF" ]] || save_conf
       ((SKIP_DATA)) || update_data; rebuild
       say '① 網站：差異上傳；未知遠端檔案預設保留'
-      sync --push --message "${MESSAGE:-MacGyver Academy V14 update $(date +%F)}" ${sync_extra[@]+"${sync_extra[@]}"}
+      sync --push --message "${MESSAGE:-MacGyver Academy V15 update $(date +%F)}" ${sync_extra[@]+"${sync_extra[@]}"}
       if ((!skip_models)); then say '② 模型：分片與提交檢查點'; models; fi
       say '上傳完成。請到 GitHub Actions 確認網站建置與 Pages 狀態。'
     fi ;;
@@ -221,5 +233,5 @@ case "$cmd" in
   schedule) schedule ;;
   unschedule) unschedule ;;
   -h|--help|help) sed -n '2,25p' "$0" ;;
-  *) die "未知指令：$cmd（bash macgyver.sh help）" ;;
+  *) die "未知指令：${cmd}（bash macgyver.sh help）" ;;
 esac

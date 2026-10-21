@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b218-a2e41fa61e745165.json"]={sha256:"a2e41fa61e74516584b77d3763860a7d60dbda7f6f8ca43445a61e440eb9d02b",value:{"id":"b218","title":"德基水庫大壩","titleEn":"Deji Dam","category":"water","kind":"project","summary":"以「德基水庫大壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Deji Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

@@ -1,0 +1,253 @@
+{
+  "id": "b207",
+  "title": "錦屏一級水壩~Jinping-I Dam",
+  "discipline": "water-dams",
+  "family": "water",
+  "focus": "超高雙曲拱壩與深谷環境邊界~Very high double curvature arch dam and canyon boundaries",
+  "summary": "錦屏一級案例從拱座幾何與岩體路徑開始，逐步處理水壓合力、預應力、地震慣性、噴流水舌與熱變形。水庫端再加入季節儲存和取水溫度的守恆，強調結構、消能與生態證據不可互相替代。所有模型保留量綱並列出需要三維分析的缺項。~The Jinping I case begins with abutment geometry and rock load paths, then addresses water-force resultants, prestress, seismic inertia, spillway jets and thermal movement. Seasonal storage and withdrawal-temperature balances extend the reservoir boundary. Structural, dissipation and ecological evidence cannot substitute for one another, and every dimensional model identifies questions requiring three-dimensional analysis.",
+  "history": "雅礱江業主介紹記錄錦屏一級為三百零五米雙曲混凝土拱壩，二〇〇五年正式開工，二〇一四年全部機組投產。課程使用這些事件建立高壩系統的時序背景，並將網站後續遷移日期排除於建設史之外。原創假想荷載與岩體參數不聲稱來自現場，亦不把單一截面自由體圖當成拱殼驗證。水庫高程、壩高與壓力水深需保有各自基準，避免在不同模型間誤換。~The Yalong River owner describes Jinping I as a 305 m double-curvature concrete arch dam, with formal construction beginning in 2005 and all units operating in 2014. These events establish system history; later website migration dates are excluded from construction chronology. Original loads and rock parameters are hypothetical, and a section free-body diagram is not treated as validation of an arch shell. Reservoir elevation, dam height and pressure depth retain distinct datums when moving between models.",
+  "example": "以下為本課原創情境串接，所有數值是假設，不能視為業主設計圖或操作許可。先完成「高壩水壓投影」的守恆與邊界檢核，再比較「薄拱圈膜力尺度」及「雙滑面岩楔抗力」的不同控制量。第一組計算為 gamma=9.81 kN/m3; h=260 m; w=1 m; F=0.5*gamma*h*h*w=331578 kN；第二組為 p=2 MPa; R=180 m; t=12 m; sigma=p*R/t=30 MPa。學員須保留量綱、資料時間與量測位置，討論誤差如何傳到結果，將第三單元的限制寫入同一張決策表。任何未納入的結構、河道或機組耦合都列為下一階段工作，不由單一得數推論全工程安全。~This original sequence connects the first three units using assumed inputs; none is an owner drawing or an operating authorization. First establish conservation and boundaries for High dam pressure projection, then compare the controlling variables in Thin arch ring membrane scale and Two plane wedge resistance. The first calculation is gamma=9.81 kN/m3; h=260 m; w=1 m; F=0.5*gamma*h*h*w=331578 kN; the second is p=2 MPa; R=180 m; t=12 m; sigma=p*R/t=30 MPa. Preserve dimensions, observation times, and measurement locations in the working sheet. Explain how input uncertainty changes each conclusion and include the third unit limitations in the same decision table. Structural, river, and machine interactions omitted by a model remain subsequent work; a single numerical answer cannot demonstrate safety of the complete project.",
+  "units": [
+    {
+      "anchor": "高壩水壓投影~High dam pressure projection",
+      "title": "高壩水壓投影~High dam pressure projection",
+      "mechanism": "靜水壓隨水深增加，沿垂直投影積分可得每單位壩長的水平合力，作用點位於壓力三角形形心。這是外力帳，並未說明拱壩如何把力傳向兩岸。實際雙曲面上的法向壓力需向量積分，不能把投影條帶合力直接當成每條拱圈的反力。 合力作用點由壓力一階矩決定，不是幾何深度中點；分段壓力圖改變時，力與力矩都需重新積分。~Hydrostatic pressure increases with depth, and integration over a vertical projection gives horizontal force per unit dam length at the triangular pressure centroid. This accounts for external load, not arch transfer to the banks. Normal pressure on a double-curved surface requires vector integration; a projected strip is not an individual arch reaction. The resultant location follows the first pressure moment, not the geometric midpoint; changing a piecewise pressure diagram requires recalculating both force and moment.",
+      "model": "原創假想算例，輸入均非本工程操作參數：gamma=9.81 kN/m3; h=260 m; w=1 m; F=0.5*gamma*h*h*w=331578 kN。模型邊界：垂直矩形投影條帶的靜水合力，不含尾水與動水壓。~Original hypothetical example; inputs are not operating parameters of this project: gamma=9.81 kN/m3; h=260 m; w=1 m; F=0.5*gamma*h*h*w=331578 kN. Model boundary: hydrostatic resultant on a vertical rectangular projected strip, excluding tailwater and hydrodynamic pressure.",
+      "verify": "先標出水面與投影面幾何，確認壓力深度不等於海拔高程，再以分層矩形積分接近三角形結果。將外力方向與拱圈傳力圖分開繪製，若兩者合力不平衡，應查漏列尾水或幾何投影。~Mark the water surface and projected geometry, ensuring depth is not confused with elevation, then refine rectangular pressure integration toward the triangular result. Draw external loading separately from arch transfer. An unbalanced resultant calls for checking omitted tailwater or projection geometry rather than adjusting support reactions arbitrarily.",
+      "failure": "使用壩頂高程代替水深會把基準誤差平方放大，造成外力嚴重失真；忽略曲面法向分量也可能漏掉垂直作用，不能由水平投影帳宣稱全壩荷載已完整。~Substituting crest elevation for depth squares a datum error in the load estimate. Ignoring curved-surface normal components can also omit vertical action, so a horizontal projected-force account does not constitute the complete loading of the dam.",
+      "misconception": "壩頂海拔可直接代替壓力積分水深~Crest elevation above sea level can directly replace water depth in pressure integration.",
+      "practice": "將水深降低一成，重算合力與作用點並比較非線性變化，再畫出有尾水時的差壓圖，說明哪些力尚未進入投影條帶模型。~Reduce depth by ten percent, recalculate resultant and location, and compare the nonlinear change. Draw a differential-pressure diagram with tailwater and identify forces still absent from the projected-strip model."
+    },
+    {
+      "anchor": "薄拱圈膜力尺度~Thin arch ring membrane scale",
+      "title": "薄拱圈膜力尺度~Thin arch ring membrane scale",
+      "mechanism": "理想圓拱圈在均勻徑向壓力下可藉膜壓縮傳力，壓力乘半徑再除厚度提供一個應力尺度。雙曲拱壩還有豎向懸臂、扭曲及不同剛度拱座，不能當成孤立薄圓環。教材特意保留薄度與荷載假設，讓學員指出何處需要三維殼或實體分析。 膜應力尺度不含外壓失穩與局部缺陷效應，即使材料壓縮強度足夠，也不能由這一式排除所有失效機制。~An ideal circular ring under uniform radial pressure carries membrane compression, with pressure times radius divided by thickness giving a stress scale. A double-curvature dam also has vertical cantilever action, distortion and unequal abutment stiffness, unlike an isolated thin ring. State slenderness and loading assumptions before identifying questions requiring shell or solid analysis. The membrane scale omits external-pressure instability and local defects; adequate compressive material strength therefore does not exclude every failure mechanism through this one equation.",
+      "model": "原創假想算例，輸入均非本工程操作參數：p=2 MPa; R=180 m; t=12 m; sigma=p*R/t=30 MPa。模型邊界：理想薄圓環均勻徑向壓力，R/t=15；僅教學膜壓應力尺度。~Original hypothetical example; inputs are not operating parameters of this project: p=2 MPa; R=180 m; t=12 m; sigma=p*R/t=30 MPa. Model boundary: ideal thin circular ring under uniform radial pressure with R/t=15; a teaching membrane-compression scale only.",
+      "verify": "檢查半徑與厚度定義及其比例，畫出截開半環的平衡圖，再以粗細網格比較理想模型。若加入不對稱支承後出現彎矩，應承認膜力近似缺項，不用調整半徑把彎曲反應硬塞回公式。~Check radius, thickness and their ratio, draw equilibrium of a cut half-ring, and compare mesh refinements of the ideal model. Bending after introducing asymmetric supports identifies a missing mechanism; changing the radius to force agreement does not repair the membrane approximation.",
+      "failure": "拱座變形不相容會引入彎曲與局部拉應力，平均膜壓縮仍可能很大；所以正的平均壓應力不能排除接縫張開，也不能代替混凝土與岩體接觸檢核。~Incompatible abutment movement introduces bending and local tension while mean membrane compression remains large. A positive average compressive stress therefore does not exclude joint opening or replace checks of concrete-rock contact and local stress distribution.",
+      "misconception": "平均膜壓縮很大就不可能出現局部拉應力~Large mean membrane compression makes local tensile stress impossible.",
+      "practice": "將厚度增加兩成重算膜應力，再加入概念性的拱座轉角，指出哪些新內力無法由原式得到，並規劃三維模型需輸入的邊界資料。~Increase thickness by twenty percent and recompute membrane stress. Introduce an abutment rotation conceptually, identify internal forces missing from the formula, and list boundary data required for a three-dimensional model."
+    },
+    {
+      "anchor": "雙滑面岩楔抗力~Two plane wedge resistance",
+      "title": "雙滑面岩楔抗力~Two plane wedge resistance",
+      "mechanism": "深谷岩楔可能同時受兩組節理面約束，各面的有效正向力與摩擦係數都會影響可用抗力。教材在已給定法向反力的前提下加總沿假想運動方向的摩擦，避免用單一坡角代表全部三維幾何。真正反力須由向量平衡求得，不能憑重量任意平均分配。 兩面抗力在真實空間須按向量合成，本例同方向相加是額外假設，不能直接轉用到不同交線方位。~A canyon wedge may be constrained by two joint planes, each with its own effective normal force and friction. Given resolved reactions, sum the assumed friction contributions along a movement direction rather than representing all geometry by one slope angle. Actual reactions must follow vector equilibrium, not arbitrary equal division of wedge weight. Resistance contributions require vector combination in real space; adding them along one direction is an extra assumption here and cannot transfer unchanged to other intersection geometries.",
+      "model": "原創假想算例，輸入均非本工程操作參數：N1=30 MN; U1=6 MN; mu1=0.6 (dimensionless); N2=20 MN; U2=4 MN; mu2=0.5 (dimensionless); R=mu1*(N1-U1)+mu2*(N2-U2)=22.4 MN。模型邊界：兩面摩擦皆沿同一假想抗滑方向且正向力已知，無黏聚及錨索。~Original hypothetical example; inputs are not operating parameters of this project: N1=30 MN; U1=6 MN; mu1=0.6 (dimensionless); N2=20 MN; U2=4 MN; mu2=0.5 (dimensionless); R=mu1*(N1-U1)+mu2*(N2-U2)=22.4 MN. Model boundary: both friction contributions act along one assumed resistance direction with known normal forces, no cohesion or anchors.",
+      "verify": "用立體節理圖先確認共同交線與出露條件，再將每面水壓與反力方向畫出。比較乾季和雨季的孔壓變化，若只有一面明顯反應，應保留兩面差異，不用平均水壓抹平主導失效路徑。~Use a three-dimensional joint diagram to establish intersection and daylighting, then show pressure and reaction on each plane. Compare seasonal pressures; if one plane responds strongly, retain that distinction rather than averaging pressure and concealing the controlling resistance path.",
+      "failure": "一面節理連通高水壓會重新分配接觸反力，原先固定反力假設可能失效；若某面脫開，其摩擦不能繼續按原正向力計入，需重新求運動學與平衡。~High pressure connected to one plane can redistribute contact reactions and invalidate their assumed fixed values. If a plane separates, its previous friction contribution cannot remain in the account; kinematics and equilibrium must be recalculated for the changed contact state.",
+      "misconception": "兩滑面反力可以一律把總重量平分~Reactions on two sliding planes can always be obtained by dividing weight equally.",
+      "practice": "分別提高第一面與第二面水壓，計算抗力變化並比較敏感度，再畫出一面失去接觸時原模型需要刪除及重新求解的項目。~Increase water pressure on each plane separately and compare resistance sensitivity. Draw the case where one plane loses contact and identify terms that must be removed or solved again in the revised model."
+    },
+    {
+      "anchor": "錨索長期力保留~Long term anchor force retention",
+      "title": "錨索長期力保留~Long term anchor force retention",
+      "mechanism": "預應力錨索鎖定後可能因鋼材鬆弛、岩體變形及接頭就位而損失拉力，各效應的參考狀態必須說清楚。若後一比例作用於已減少的力，應連乘而非把百分率任意相加。教材只建立保留力帳，實際錨固區承載及防蝕完整性仍要獨立評估。 保留力與可承受最大力不同，前者描述目前預應力，後者還需要鋼材截面、錨頭與岩體黏結能力等證據。~After lock-off, anchor force can decrease through steel relaxation, rock movement and seating, with each loss needing a stated reference state. If a later percentage acts on the remaining force, multiply retention factors rather than casually adding percentages. This account does not establish anchorage capacity or the integrity of corrosion protection. Retained force describes current prestress rather than maximum capacity; capacity additionally needs evidence about steel section, anchor head and rock-bond resistance along the system.",
+      "model": "原創假想算例，輸入均非本工程操作參數：F0=3000 kN; r1=0.05 (dimensionless); r2=0.08 (dimensionless); F=F0*(1-r1)*(1-r2)=2622 kN。模型邊界：兩個假想依序比例損失，並非現地錨索長期衰減定律。~Original hypothetical example; inputs are not operating parameters of this project: F0=3000 kN; r1=0.05 (dimensionless); r2=0.08 (dimensionless); F=F0*(1-r1)*(1-r2)=2622 kN. Model boundary: two assumed sequential proportional losses, not a field law for anchor deterioration.",
+      "verify": "將張拉、鎖定與後續量測的時間及溫度分別記錄，對照載重計校準與重新提離試驗。若多支同時下降，先查共同岩體位移或溫度；若單支突變，則需檢查接頭滑移及儀器。~Record stressing, lock-off and later readings with times and temperatures, checking load-cell calibration against lift-off testing. A coherent decline across anchors suggests shared rock movement or temperature, while one abrupt change requires investigation of connection slip or measurement failure.",
+      "failure": "接頭滑移可能造成突降而非平滑比例衰減，鏽蝕斷絲又可能在平均拉力變化不大時削弱冗餘；只追蹤一條力曲線不能證明錨固系統完整。~Connection slip can cause a sudden drop rather than smooth proportional decay. Corroded wire breaks can reduce redundancy without a large change in mean measured force, so one force history cannot demonstrate integrity of the complete anchoring system.",
+      "misconception": "所有錨索損失百分率都可不看基準直接相加~All anchor-loss percentages can be added without checking their reference states.",
+      "practice": "比較依序損失與兩項皆以初始力為基準的算法，算出差值，再列出鎖定力、提離力與載重計讀值各自的測試邊界。~Compare sequential losses with two losses both referenced to initial force and calculate the difference. Define the distinct measurement boundaries of lock-off force, lift-off force and load-cell readings."
+    },
+    {
+      "anchor": "挑流水舌射程~Ski jump jet travel",
+      "title": "挑流水舌射程~Ski jump jet travel",
+      "mechanism": "挑流水舌離開鼻坎後同時具有水平及垂直速度，重力使其軌跡彎曲。教材使用水平射出的拋體模型估算射程，只用來檢查尺度及方向；真實水舌會含氣、破碎並受尾水與風影響，不能以理想落點直接決定沖刷坑位置或岩體穩定。 水平射出時下落時間由高差決定，但若鼻坎提供向上速度，需解完整垂向方程，不能沿用相同飛行時間。~A ski-jump jet has horizontal and vertical velocity components and follows a gravity-curved trajectory. A horizontally launched projectile estimates travel scale and direction only. Real jets aerate, break up and interact with wind and tailwater, so an ideal impact point does not directly locate scour or establish rock stability. For horizontal launch, drop determines flight time; an upward launch component requires the full vertical equation and cannot retain the same time of flight.",
+      "model": "原創假想算例，輸入均非本工程操作參數：vx=25 m/s; drop=120 m; g=9.81 m/s2; x=vx*(2*drop/g)**0.5=123.6548417 m。模型邊界：水平初速且初始垂直速度為零的真空拋體，忽略水舌破碎。~Original hypothetical example; inputs are not operating parameters of this project: vx=25 m/s; drop=120 m; g=9.81 m/s2; x=vx*(2*drop/g)**0.5=123.6548417 m. Model boundary: horizontal launch with zero initial vertical velocity in a drag-free projectile model, excluding jet breakup.",
+      "verify": "以影像追蹤水舌外緣與中心線，核對出射角及速度範圍，再比較不同流量的落水帶寬度。若落點展寬而中心位置近似不變，應研究破碎與含氣，不能只調整平均出射速度。~Track the jet envelope and centerline with imagery, checking launch angle and velocity range, then compare impact-zone width at different discharges. A wider landing band with a similar center suggests breakup or aeration rather than merely a change in average launch speed.",
+      "failure": "出射角或流束不均會使局部水舌偏向邊坡，即使平均射程符合估算仍有側向衝擊；忽略尾水淹沒也會錯估真正能量耗散區域。~Uneven flow or launch angle can direct part of the jet toward a slope even when mean range matches the calculation. Ignoring tailwater submergence additionally misidentifies where the jet actually dissipates its energy and transfers momentum.",
+      "misconception": "理想拋體落點就是實際沖刷坑中心~The ideal projectile landing point is the actual center of the scour hole.",
+      "practice": "以兩個水平速度計算射程，再加入向上出射的概念軌跡，說明需要哪些影像及尾水資料才能從教材拋體轉向實際水舌分析。~Calculate range at two horizontal speeds, then sketch an upward-launched case. Identify image and tailwater data needed to progress from the teaching projectile to analysis of a real spillway jet."
+    },
+    {
+      "anchor": "水舌衝擊壓力尺度~Jet impact pressure scale",
+      "title": "水舌衝擊壓力尺度~Jet impact pressure scale",
+      "mechanism": "水舌速度在撞擊區轉成壓力與湍流，動壓提供一個能量密度尺度，但瞬時壓力分布取決於水舌破碎、尾水深度和岩面形狀。動壓不是整片底床均勻承受的壓力，亦不能直接乘任意面積得到設計合力。需同時掌握受力面積與時間統計。 動壓的帕斯卡與每立方米焦耳量綱相同，代表能量密度而非總能量，乘體積或面積後才得到不同物理量。~Jet velocity is converted into pressure and turbulence at impact. Dynamic pressure supplies an energy-density scale, while instantaneous distribution depends on breakup, tailwater depth and bed geometry. It is not uniform over the whole bed and cannot be multiplied by an arbitrary area to obtain a design resultant without spatial and temporal evidence. Pascals share dimensions with joules per cubic metre, expressing energy density rather than total energy; multiplying by volume or area produces different physical quantities.",
+      "model": "原創假想算例，輸入均非本工程操作參數：rho=1000 kg/m3; v=35 m/s; q=0.5*rho*v*v/1000=612.5 kPa。模型邊界：單相速度的動壓尺度，不是沖刷坑底實測峰值。~Original hypothetical example; inputs are not operating parameters of this project: rho=1000 kg/m3; v=35 m/s; q=0.5*rho*v*v/1000=612.5 kPa. Model boundary: dynamic-pressure scale for single-phase velocity, not a measured plunge-pool bottom peak.",
+      "verify": "在模型或合適量測資料中比較不同位置的平均、峰值與相關性，核對感測器頻寬及通氣影響。若鄰近測點峰值不同時發生，不能把各點最大值同時相加成總力，需保留同步壓力場。~Compare mean pressure, peaks and spatial correlation using model or suitable measured data, checking sensor bandwidth and aeration effects. Peaks at neighboring locations that occur at different times cannot simply be added into one total force; retain synchronized pressure fields for integration.",
+      "failure": "岩節理中的壓力脈動可能向內傳播並抬動岩塊，即使表面平均壓力不高；含氣改變可壓縮性與脈動傳遞，因此清水動壓尺度無法單獨描述剝離。~Pressure fluctuations can penetrate rock joints and lift blocks despite modest mean surface pressure. Aeration changes compressibility and fluctuation transmission, so a clear-water dynamic-pressure scale alone cannot describe block removal or the progression of scour.",
+      "misconception": "所有測點最大壓力可直接同時相加~Maximum pressures from all sensors can always be added as simultaneous loads.",
+      "practice": "將速度提高一成計算動壓變化，再建立兩個不同相位的壓力時序，對比逐點最大值總和與同步積分最大值的差異。~Increase velocity by ten percent and recalculate dynamic pressure. Create two out-of-phase pressure histories and compare the sum of individual maxima with the maximum of their synchronized integral."
+    },
+    {
+      "anchor": "壩塊自由收縮~Dam block free contraction",
+      "title": "壩塊自由收縮~Dam block free contraction",
+      "mechanism": "高壩混凝土塊體降溫會產生自由收縮，但拱圈閉合、岩體約束及灌漿時機會決定實際縫寬與應力。教材先算一段假想塊體的自由長度減少，明確以幅度表示；不能把它直接當接縫開度，因相鄰塊體也在變形且整體幾何可能限制位移。 相鄰塊體各自的無應力溫度未必相同，接縫灌漿年代及材料齡期會改變後續收縮的參考狀態。~Cooling a high-dam concrete block creates free contraction, while arch closure, rock restraint and grouting timing determine actual joint opening and stress. Compute the magnitude of free shortening in an assumed block first. It is not directly the joint opening because neighboring blocks deform and the overall geometry can restrain movement. Neighboring blocks may have different stress-free temperatures; grouting history and material age change the reference state from which subsequent contraction and restraint develop.",
+      "model": "原創假想算例，輸入均非本工程操作參數：alpha=0.00001 1/K; L=20 m; dTcool=15 K; shortening=alpha*L*dTcool*1000=3 mm。模型邊界：均勻降溫的自由收縮幅度，不含相鄰塊體與約束。~Original hypothetical example; inputs are not operating parameters of this project: alpha=0.00001 1/K; L=20 m; dTcool=15 K; shortening=alpha*L*dTcool*1000=3 mm. Model boundary: free-shortening magnitude for uniform cooling, excluding neighboring blocks and restraint.",
+      "verify": "同時比較塊內溫度剖面與接縫兩側位移，核對降溫是否均勻及量測正向。若兩側都朝同方向移動，接縫差值可能很小但整體位移不小，應分別呈現絕對與相對運動。~Compare internal temperature profiles with displacement on both sides of the joint, checking uniformity and sign conventions. If both sides move in the same direction, relative opening may be small despite substantial overall movement, so present absolute and relative components separately.",
+      "failure": "用單側位移當縫寬會把整體平移誤算為開裂，溫度梯度又可能造成彎曲而非純收縮；若只保存平均溫度，將失去辨認兩種機制的關鍵資訊。~Using one-side displacement as joint width mistakes translation for opening, while a temperature gradient can produce bending rather than pure shortening. Retaining only average temperature removes information needed to distinguish those mechanisms in the observed movement.",
+      "misconception": "單側位移可以直接當成相鄰接縫開度~Displacement on one side directly equals the adjacent joint opening.",
+      "practice": "為兩個相鄰塊體設定不同降溫，計算各自自由收縮，再畫共同平移與相對開縫兩種位移場，指出需要哪些量測才能區分。~Assign different cooling changes to two neighboring blocks and calculate free shortening. Draw common translation and relative opening fields, identifying the measurements needed to distinguish them rather than relying on one gauge."
+    },
+    {
+      "anchor": "分層交換位能~Stratified exchange potential energy",
+      "title": "分層交換位能~Stratified exchange potential energy",
+      "mechanism": "分層水庫上下層交換需要克服密度差產生的浮力恢復作用。教材以兩等體積水團交換高程的位能差說明密度影響，不把此值當成實際混合所需總功。湍流耗散、界面厚度及連續剖面會改變能量路徑，取水溫度控制仍需觀察真正吸入水層。 兩水團交換時各自有位能變化，將兩者相加才留下密度差項，不能把完整水密度直接代入浮力差。~Exchanging upper and lower reservoir layers works against buoyancy associated with density contrast. The potential-energy change for equal exchanged volumes illustrates that effect but is not the total work required for actual mixing. Turbulent dissipation, interface thickness and continuous density profiles alter the energy pathway and withdrawal behavior. Both exchanged parcels change potential energy; adding their contributions leaves the density-contrast term, rather than permitting full water density to represent the buoyancy difference.",
+      "model": "原創假想算例，輸入均非本工程操作參數：drho=2 kg/m3; g=9.81 m/s2; V=1000000 m3; dz=20 m; dE=drho*g*V*dz/1e6=392.4 MJ。模型邊界：上輕下重兩等體積水團交換位置的位能增加，忽略混合耗散。~Original hypothetical example; inputs are not operating parameters of this project: drho=2 kg/m3; g=9.81 m/s2; V=1000000 m3; dz=20 m; dE=drho*g*V*dz/1e6=392.4 MJ. Model boundary: potential-energy increase from swapping equal light-upper and dense-lower volumes, excluding mixing dissipation.",
+      "verify": "以密度剖面確認上下層排列，核對水團體積及高程差定義，再將取水前後剖面比較。若溫度改變但密度界面仍存在，不能宣稱整庫已混合；需分辨局部置換、捲吸與全深混合。~Verify the upper-light lower-dense arrangement using density profiles, define exchanged volume and elevation difference, and compare profiles before and after withdrawal. Changed outlet temperature with an intact interface does not demonstrate complete reservoir mixing; distinguish local replacement, entrainment and full-depth mixing.",
+      "failure": "僅用出口溫度判斷分層消失，可能漏掉深層冷水仍被隔離的情況；含砂入流也可改變密度而非單純改變溫度，使熱量與浮力的推論分歧。~Outlet temperature alone can conceal an isolated cold deep layer and falsely suggest lost stratification. Sediment-laden inflow can also change density without an equivalent temperature change, separating thermal interpretation from the actual buoyancy structure.",
+      "misconception": "出口溫度改變就證明全庫分層消失~A changed outlet temperature proves that stratification has disappeared throughout the reservoir.",
+      "practice": "將密度差減半重算交換位能，保持總熱量相同卻改變垂向分布，說明何種剖面量測可辨認不同浮力結構及取水反應。~Halve density contrast and recalculate exchange energy. Keep total heat unchanged while altering its vertical distribution, and identify profile measurements that distinguish buoyancy structures and withdrawal responses."
+    },
+    {
+      "anchor": "調蓄水的能量尺度~Stored water energy scale",
+      "title": "調蓄水的能量尺度~Stored water energy scale",
+      "mechanism": "儲水的可發電能量取決於放水時的淨水頭及效率，並非單由庫容決定。以固定水頭近似可先估算一小段水量的能量尺度，但大量放水會改變上下游水位，需沿儲量積分。水體還可能有灌溉與環境用途，所以潛在電能不等於可全部出售的電量。 能量換算需從焦耳轉為瓦時再轉為吉瓦時，忽略每小時秒數會造成巨大單位錯誤，應逐級檢查。~Stored-water generation depends on net head and efficiency during release, not storage volume alone. Constant head estimates the energy scale of a limited volume, while major drawdown requires integrating changing head with storage. Other water uses further distinguish potential electrical energy from energy actually available for sale. Energy conversion must connect joules to watt-hours and then gigawatt-hours; omitting seconds per hour causes a major unit error that dimensional steps should expose.",
+      "model": "原創假想算例，輸入均非本工程操作參數：rho=1000 kg/m3; g=9.81 m/s2; V=20000000 m3; H=180 m; eta=0.90 (dimensionless); E=rho*g*V*H*eta/3.6e12=8.829 GWh。模型邊界：固定淨水頭效率且假設全量經機組，不含其他用途與時序限制。~Original hypothetical example; inputs are not operating parameters of this project: rho=1000 kg/m3; g=9.81 m/s2; V=20000000 m3; H=180 m; eta=0.90 (dimensionless); E=rho*g*V*H*eta/3.6e12=8.829 GWh. Model boundary: fixed net head and efficiency with all water passing through turbines, excluding other uses and timing constraints.",
+      "verify": "以分段放水量與各段平均淨水頭積分，對照固定水頭結果，再核對旁通及其他取水。若庫水位下降明顯，應縮小分段以檢查收斂，不把最初最高水頭用於全部水量來高估能量。~Integrate incremental releases using each segment mean net head and compare the fixed-head estimate, accounting for bypass and other withdrawals. When level changes substantially, refine the segments and check convergence rather than applying the initial maximum head to every unit of water.",
+      "failure": "尾水隨出流上升會進一步降低淨水頭，僅考慮庫水位下降仍可能高估能量；若用總庫容替代可調節庫容，也會把不能利用的水列入電量。~Tailwater rising with release further reduces head, so accounting only for falling reservoir level may still overstate energy. Using total rather than usable storage can also include water that cannot be allocated to the assumed generating sequence.",
+      "misconception": "相同庫容在任何水頭下都代表相同電能~Equal storage volume represents equal electrical energy at every head.",
+      "practice": "把水量分成兩段並給不同淨水頭，重算總電能，與固定平均及初始水頭兩種近似比較，再列出水庫用途約束對可用量的影響。~Split release into two volumes with different net heads and calculate total energy. Compare fixed-average and initial-head approximations, then explain how water-use constraints alter the volume available for generation."
+    },
+    {
+      "anchor": "相關監測聯合殘差~Correlated monitoring residuals",
+      "title": "相關監測聯合殘差~Correlated monitoring residuals",
+      "mechanism": "壩體相鄰量測常因同一水位或溫度作用而相關，不能把每個偏離都當成獨立證據。教材以兩個標準化殘差與相關係數建立聯合距離，說明共同變動與相反變動具有不同意義。統計距離仍須依有效基線與物理機制解讀，不能直接當成安全分數。 相關係數接近一時矩陣可能病態，小量測差異會被大幅放大，應檢查基線品質與數值穩定性再解讀。~Nearby dam observations often correlate through shared level or temperature effects and cannot each be counted as independent evidence. A two-residual distance with correlation distinguishes common movement from opposing movement. Its interpretation still depends on a valid baseline and physical mechanism; the statistical distance is not a direct safety score. A correlation near one makes the covariance matrix ill-conditioned and can amplify small differences; assess baseline quality and numerical stability before interpreting the joint distance.",
+      "model": "原創假想算例，輸入均非本工程操作參數：z1=2 (dimensionless); z2=2 (dimensionless); r=0.8 (dimensionless); D2=(z1*z1-2*r*z1*z2+z2*z2)/(1-r*r)=4.444444444。模型邊界：兩個無因次標準化殘差及固定相關係數；只示範平方距離，未給警報門檻。~Original hypothetical example; inputs are not operating parameters of this project: z1=2 (dimensionless); z2=2 (dimensionless); r=0.8 (dimensionless); D2=(z1*z1-2*r*z1*z2+z2*z2)/(1-r*r)=4.444444444. Model boundary: two dimensionless standardized residuals with fixed correlation; squared-distance illustration without an alarm threshold.",
+      "verify": "用未含已知異常的基線估計相關，檢查不同季節是否穩定，並與不同原理儀器比對。若相關結構本身改變，應重查共同水力或溫度原因，而不是沿用舊矩陣把新反應自動判成正常。~Estimate correlation from a baseline excluding known anomalies, test seasonal stability and compare instruments using different principles. A changing correlation structure requires examining shared hydraulic or thermal causes rather than automatically classifying new behavior with an outdated covariance model.",
+      "failure": "基線中混入長期變形會放大變異與相關，讓真正新異常被標準化後縮小；兩感測器共用漂移基準也可能製造高度相關，並非結構反應一致的證據。~Long-term movement within the baseline inflates variance and correlation, shrinking new anomalies after standardization. A drifting shared reference can also create high correlation between instruments without providing evidence of consistent structural behavior across the monitored locations.",
+      "misconception": "兩個相關感測器就是兩份獨立異常證據~Two correlated sensors provide two independent confirmations of an anomaly.",
+      "practice": "保持兩個殘差大小但反轉其中一個符號，重算聯合距離並比較，提出一項可區分共同基準漂移與相反結構變形的獨立觀測。~Keep residual magnitudes fixed but reverse one sign, recompute the joint distance and compare. Propose an independent observation that distinguishes common reference drift from opposing structural movements."
+    }
+  ],
+  "facts": [
+    "業主記錄雙曲混凝土拱壩高度305m~The owner records a 305 m high double-curvature concrete arch dam",
+    "2014 年官方紀錄：七月全部機組投產，不代表本課假想試驗曾在現地執行~2014 official record: All units operate in July; this does not imply the hypothetical course tests occurred onsite",
+    "假想教材：高壩水壓投影；gamma=9.81 kN/m3; h=260 m; w=1 m; F=0.5*gamma*h*h*w=331578 kN~Hypothetical teaching: High dam pressure projection; gamma=9.81 kN/m3; h=260 m; w=1 m; F=0.5*gamma*h*h*w=331578 kN",
+    "假想教材：薄拱圈膜力尺度；p=2 MPa; R=180 m; t=12 m; sigma=p*R/t=30 MPa~Hypothetical teaching: Thin arch ring membrane scale; p=2 MPa; R=180 m; t=12 m; sigma=p*R/t=30 MPa",
+    "假想教材：雙滑面岩楔抗力；N1=30 MN; U1=6 MN; mu1=0.6 (dimensionless); N2=20 MN; U2=4 MN; mu2=0.5 (dimensionless); R=mu1*(N1-U1)+mu2*(N2-U2)=22.4 MN~Hypothetical teaching: Two plane wedge resistance; N1=30 MN; U1=6 MN; mu1=0.6 (dimensionless); N2=20 MN; U2=4 MN; mu2=0.5 (dimensionless); R=mu1*(N1-U1)+mu2*(N2-U2)=22.4 MN",
+    "假想教材：錨索長期力保留；F0=3000 kN; r1=0.05 (dimensionless); r2=0.08 (dimensionless); F=F0*(1-r1)*(1-r2)=2622 kN~Hypothetical teaching: Long term anchor force retention; F0=3000 kN; r1=0.05 (dimensionless); r2=0.08 (dimensionless); F=F0*(1-r1)*(1-r2)=2622 kN"
+  ],
+  "timeline": [
+    {
+      "year": "1987",
+      "event": "墾務局監測手冊出版，這是參考文獻年代而非本壩施工年份~Reclamation instrumentation manuals are published; this dates references rather than construction of this dam"
+    },
+    {
+      "year": "2014",
+      "event": "七月全部機組投產，不代表本課假想試驗曾在現地執行~All units operate in July; this does not imply the hypothetical course tests occurred onsite"
+    },
+    {
+      "year": "2026",
+      "event": "本課核對公開來源並重算原創假想模型，屬教材修訂日期~This course verifies public references and recomputes original hypothetical models, a curriculum revision date"
+    }
+  ],
+  "codes": [
+    "美國墾務局大壩監測手冊，混凝土或土石壩依型式選讀~Reclamation Dam Instrumentation Manuals, select concrete or embankment according to dam type",
+    "美國墾務局小壩設計手冊，僅作方法比較而非大型工程核准準則~Reclamation Design of Small Dams, comparative methods rather than approval criteria for this major project"
+  ],
+  "landmarks": [
+    "錦屏一級水壩~Jinping-I Dam",
+    "白鶴灘水壩~Baihetan Dam"
+  ],
+  "place": {
+    "name": "錦屏一級水壩案例參照點~Jinping-I Dam case reference",
+    "country": "中國~China",
+    "lat": 28.184,
+    "lng": 101.63,
+    "query": "Jinping-I Dam"
+  },
+  "sources": [
+    {
+      "key": "jinping-owner",
+      "title": "錦屏一級業主工程介紹",
+      "titleEn": "Jinping I owner project description",
+      "publisher": "Yalong River Hydropower Development",
+      "url": "https://www.ylhdc.com.cn/gtylj/gsyw/lykf/snzykf/webinfo/2020/11/1606121007318216.htm",
+      "sourceType": "primary",
+      "scope": "核對雙曲拱壩尺度與投產節點；網頁遷移年份不是施工日期",
+      "scopeEn": "Checks double-curvature arch dimensions and commissioning milestones; page migration date is not construction history"
+    },
+    {
+      "key": "usbr-manuals",
+      "title": "墾務局手冊與指南目錄",
+      "titleEn": "Reclamation Manuals and Guidelines",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/manuals.html",
+      "sourceType": "primary",
+      "scope": "僅核對手冊名稱、版本與主題索引，未宣稱全文逐頁審閱",
+      "scopeEn": "Checks titles, editions and indexed topics only; no claim of full page by page review"
+    },
+    {
+      "key": "usbr-instruments",
+      "title": "混凝土壩監測手冊官方摘要",
+      "titleEn": "Concrete Dam Instrumentation Manual official abstract",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/mands-abstracts/manabs2.html",
+      "sourceType": "primary",
+      "scope": "僅讀官方摘要，確認監測用途與限制的文獻範圍；不提供本案警戒值",
+      "scopeEn": "Official abstract only, confirming instrumentation purpose and limitations; no project alarm values"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Yalong River Hydropower Development",
+      "nameEn": "Yalong River Hydropower Development",
+      "business": "提供本案例公開工程背景或大壩方法文獻的機構。",
+      "businessEn": "Institution providing public project background or dam engineering reference literature.",
+      "url": "https://www.ylhdc.com.cn/gtylj/gsyw/lykf/snzykf/webinfo/2020/11/1606121007318216.htm",
+      "investorUrl": "",
+      "security": null,
+      "role": "依所列來源說明其資料關聯；未據此宣稱是全部工項承包商。",
+      "roleEn": "Associated through the cited public source; this does not identify a contractor for every work item."
+    },
+    {
+      "name": "Bureau of Reclamation",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供本案例公開工程背景或大壩方法文獻的機構。",
+      "businessEn": "Institution providing public project background or dam engineering reference literature.",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/manuals.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "依所列來源說明其資料關聯；未據此宣稱是全部工項承包商。",
+      "roleEn": "Associated through the cited public source; this does not identify a contractor for every work item."
+    }
+  ],
+  "related": [
+    "b208",
+    "b209"
+  ],
+  "architectureNodes": [
+    [
+      "高壩水壓投影",
+      "High dam pressure projection"
+    ],
+    [
+      "雙滑面岩楔抗力",
+      "Two plane wedge resistance"
+    ],
+    [
+      "挑流水舌射程",
+      "Ski jump jet travel"
+    ],
+    [
+      "壩塊自由收縮",
+      "Dam block free contraction"
+    ],
+    [
+      "相關監測聯合殘差",
+      "Correlated monitoring residuals"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

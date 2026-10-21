@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-21",
+  "status": "PASS",
+  "scope": "Repair screenshot-confirmed stale-language workshop save status; preserve saving and failure semantics. No course or CSS changes.",
+  "commands": [
+    {
+      "command": "node tools/test-save-status-language.mjs",
+      "status": "PASS",
+      "coverage": [
+        "8 known save states in both language directions",
+        "actual local/offline save followed by language switch",
+        "actual captureNotes with pending cloud save",
+        "pending success in current language",
+        "cloud failure with device backup",
+        "cloud failure without device backup",
+        "guest persistent-storage failure",
+        "preserve unknown status details and unset state",
+        "auto browser language and third-language core fallback"
+      ]
+    },
+    {
+      "command": "node --check public/academy/app.js",
+      "status": "PASS"
+    }
+  ],
+  "regressionProof": "The same test was run against a temporary copy with only the language-handler remapping removed. It failed at the expected translated-status assertion. Product source was unchanged during this negative check.",
+  "files": [
+    {
+      "path": "public/academy/app.js",
+      "sha256": "899e33d32bea49653803db8fd121f18bcfb5393400bbb7edc780012412949a59"
+    },
+    {
+      "path": "tools/test-save-status-language.mjs",
+      "sha256": "d3c2d569a27f20480c4ef110c42f085f7422765f6a832f7605cc7fa41ea01f56"
+    }
+  ],
+  "limitations": "Focused Node VM integration of real message catalogue, language handler, note-capture handler and asynchronous save handler; DOM/network/storage are simulated. Parent performs offline regeneration and browser screenshot recheck."
+}

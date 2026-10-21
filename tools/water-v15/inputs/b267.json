@@ -1,0 +1,259 @@
+{
+  "id": "b267",
+  "title": "海水淡化鹵水擴散排放~Brine diffuser outfalls for desalination",
+  "discipline": "water-rivers",
+  "family": "water",
+  "focus": "從鹽量守恆到負浮力排放的多尺度驗證~Multiscale verification from salt conservation to negatively buoyant discharge",
+  "summary": "本課逐步拆解膜段鹽量、背景稀釋、孔口流速、密度差、噴流動量與海域交換，建立可檢核的鹵水擴散分析鏈。近場、遠場和長期箱體各有控制體與適用邊界，必須分別驗證後才銜接；全部算例為原創假設，並非實廠排放或許可限值。~This course develops a checkable brine-analysis chain through membrane salt balance, background dilution, port velocity, density contrast, jet momentum and receiving-basin exchange. Near-field, far-field and long-term box models have distinct control volumes and validity limits that require separate verification before coupling. All calculations use original assumptions, not plant discharge measurements or permit limits.",
+  "units": [
+    {
+      "anchor": "濃縮鹽量守恆~Concentrate salt conservation",
+      "title": "濃縮鹽量守恆機理與驗證~Concentrate salt conservation mechanism and verification",
+      "mechanism": "淡化膜將進流水分配成產品與濃水，鹽分不會因水量減少而消失。若用質量鹽度表示濃度，必須同時使用質量流率，並保留產品水殘餘鹽分；以體積流量近似時則須明說密度差的處理。濃水濃度不只決定排口鹽負荷，也會改變密度、浮力與混合路徑，不能把產水效率與海域影響分開看待。本例固定進水質量流率並假設產品完全不含鹽，只作理想守恆；真實產品鹽分、藥劑與其他支流需要另外計入。~A membrane separates feed into product and concentrate without making dissolved salt disappear. Mass-based salinity requires mass flow rates and retention of residual product salt. A volume-flow approximation must state how density differences are treated. Concentrate salinity affects salt loading, density, buoyancy and mixing trajectory, linking recovery decisions to the receiving environment. This ideal balance fixes feed mass flow and assumes salt-free product. Actual product salt, chemical additions and side streams require separate accounting.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設進水mf=1000 kg/s、產品mp=400 kg/s、進水鹽度Sf=35 g/kg且Sp=0，mb=600 kg/s，Sb=mfSf/mb=58.33 g/kg。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume feed mf=1000 kg/s, product mp=400 kg/s, feed Sf=35 g/kg and product Sp=0. Concentrate mb=600 kg/s and Sb=mfSf/mb=58.33 g/kg.",
+      "verify": "將各股流的流率、密度與鹽度同步量測，統一為質量鹽通量後檢查收支。保留儀表校正與預處理支流資料，確認未把不同時間的最大流量與最高鹽度拼成不存在的工況。~Measure stream flow, density and salinity synchronously, convert them to salt mass flux and check closure. Retain calibration and pretreatment-stream records, ensuring that maxima from different times are not combined into a physically nonexistent operating state.",
+      "failure": "用質量鹽度直接乘不一致的體積流率會引入密度誤差，忽略產品與排泥鹽分則使收支失真；錯誤的濃度輸入還會傳到負浮力羽流模型。~Multiplying mass salinity by inconsistent volume flow introduces density error, while omitted product or sludge salt distorts closure. Incorrect concentrate inputs then propagate into the negatively buoyant plume model.",
+      "misconception": "提高產水回收率會讓剩下濃水中的總鹽量自行消失。~Higher water recovery makes the remaining concentrate salt disappear.",
+      "practice": "畫出三股質量流及鹽通量，先用理想零產品鹽度求解，再加入假設殘餘鹽分。說明哪些流量計資料必須搭配密度才能維持相同守恆基準。~Draw the three mass and salt flows, solve first with salt-free product, then introduce residual product salinity. Explain which flow-meter data require density to maintain a consistent conservation basis."
+    },
+    {
+      "anchor": "背景鹽度與稀釋定義~Background salinity and dilution",
+      "title": "背景鹽度與稀釋定義機理與驗證~Background salinity and dilution mechanism and verification",
+      "mechanism": "海水本身含鹽，因此稀釋應追蹤相對於背景的鹽度增量，而不是把環境當成無鹽水。以質量流率定義的混合倍數等於混合後總質量流率除以原排放質量流率，對應超額濃度的衰減；中心線、截面平均與通量平均值可能不同，報告中必須明確指明所比較的量。本例為完全混合的質量鹽度守恆，不預測達到該混合倍數的位置，也不把它當作許可或生態允收值。~Seawater already contains salt, so dilution tracks salinity excess above background rather than treating the environment as freshwater. A mass-flow dilution factor divides mixed total mass flow by discharged mass flow and corresponds to excess-concentration reduction. Centerline, section-averaged and flux-averaged values can differ, making the stated comparison quantity essential. The example is a fully mixed mass-salinity balance. It predicts neither where this dilution occurs nor whether it satisfies a permit or ecological criterion.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設排放Sb=60 g/kg、背景Sa=35 g/kg、質量稀釋D=10，混合Sm=Sa+(Sb−Sa)/D=37.5 g/kg。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume discharge Sb=60 g/kg, ambient Sa=35 g/kg and mass dilution D=10. Mixed Sm=Sa+(Sb−Sa)/D=37.5 g/kg.",
+      "verify": "在排口影響範圍外量測背景剖面，將潮位、深度與取樣時刻和羽流資料配對。檢查模型輸出是中心線或平均濃度，再以一致的質量或體積定義換算稀釋倍數。~Measure ambient profiles beyond the discharge influence and pair tide, depth and sampling time with plume observations. Determine whether model outputs are centerline or averaged concentrations, then convert dilution using a consistent mass or volume definition throughout the comparison.",
+      "failure": "用排放鹽度直接除以稀釋倍數會得到低於背景的不合理結果，混用中心線與平均濃度則可能低估局部暴露；背景採樣受排口污染時也會掩蓋真實增量。~Dividing discharge salinity directly by dilution can produce an impossible value below ambient. Mixing centerline and average concentration may understate local exposure, and contaminated background sampling can conceal the actual increment.",
+      "misconception": "海水鹵水稀釋十倍就是把原始總鹽度直接除以十。~Tenfold seawater-brine dilution means dividing total original salinity by ten.",
+      "practice": "用相同排放鹽度比較有鹽與無鹽背景，計算兩種混合結果並指出物理差異。為中心線與通量平均輸出各寫一句精確圖說，避免讀者以為兩者相同。~Compare saline and salt-free backgrounds for the same discharge, calculating both mixtures and explaining the physical difference. Write precise captions for centerline and flux-averaged outputs so readers do not mistake them for identical quantities."
+    },
+    {
+      "anchor": "多孔流量分配~Multiport flow distribution",
+      "title": "多孔流量分配機理與驗證~Multiport flow distribution mechanism and verification",
+      "mechanism": "擴散器將總排放分配到多個噴口以改變初始動量與接觸環境水的方式，但各孔未必等量。幹管沿程損失、孔口高程、局部背壓與堵塞會使流量偏向部分噴口；因此總流量除以孔數只是一個起始假設，不能取代幹管壓力與孔口出流的聯立分析。以下圓孔速度使用相同孔徑與等量流分配，未包含收縮係數；實際縮流速度與幾何面平均速度需要區分。~A diffuser divides discharge among ports to modify initial momentum and contact with ambient water, but equal port flow is not guaranteed. Header friction, elevation, local backpressure and blockage redistribute discharge. Dividing total flow by port count is therefore an initial assumption, not a substitute for coupled header-pressure and orifice-flow analysis. The circular-port calculation assumes identical diameters and equal flow, without a contraction coefficient. Actual contracted-jet velocity and geometric-area mean velocity must be distinguished.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設總Q=0.40 m³/s、孔數n=8、直徑d=0.15 m，單孔q=0.050 m³/s，v=q/(πd²/4)=2.829 m/s。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume total Q=0.40 m³/s, n=8 ports and diameter d=0.15 m. Each q=0.050 m³/s and v=q/(πd²/4)=2.829 m/s.",
+      "verify": "核對每孔幾何、標高與壓力，將可量測的分流量和總流量對帳。以部分堵塞及低流量情境測試均勻分配假設，並區分孔面速度、縮流速度及後續羽流平均速度。~Check each port geometry, elevation and pressure, reconciling measured branch flows with the total. Test equal-flow assumptions under partial blockage and low discharge, distinguishing geometric port velocity, contracted-jet velocity and subsequent plume-average velocity in all records.",
+      "failure": "只以孔數平均會忽略堵孔造成的局部高速及動量增大，低流量時部分孔也可能受到逆流影響；用錯有效孔徑會透過平方關係放大速度誤差。~A port-count average misses local acceleration and momentum increases caused by blockage. Some ports can experience reverse flow at low discharge, while incorrect effective diameter amplifies velocity error through the squared-area relationship.",
+      "misconception": "多孔擴散器的每個孔在所有流量和堵塞狀態下必定等量。~Every diffuser port carries equal flow at all discharges and blockage states.",
+      "practice": "先建立等量八孔基準，再假設一孔完全堵塞且總流量不變，重算其餘孔速度。指出維持總流量所需的新壓力尚未由這個面積計算求得。~Build an equal-flow eight-port baseline, then block one port while holding total flow fixed and recalculate the remaining velocities. Explain that the new pressure needed to maintain total flow is not provided by this area calculation."
+    },
+    {
+      "anchor": "密度差與縮減重力~Density contrast and reduced gravity",
+      "title": "密度差與縮減重力機理與驗證~Density contrast and reduced gravity mechanism and verification",
+      "mechanism": "鹵水通常比受納海水密度大，其浮力方向與較淡的污水羽流不同。密度差受鹽度和溫度共同影響，應在相同壓力基準下比較；縮減重力把密度差轉為浮力尺度，但並不單獨決定上升高度、落點或海床濃度，這些仍取決於噴射動量與環境流場。本例採環境密度作分母，計算負浮力的大小；若座標向上為正，對較重排放的有號浮力加速度應另記為負值。~Brine is commonly denser than receiving seawater, giving it the opposite buoyancy direction to a fresher wastewater plume. Salinity and temperature jointly affect density and must be compared at a consistent pressure basis. Reduced gravity expresses the density contrast as a buoyancy scale, but jet momentum and ambient flow are still needed to predict rise, return or seabed concentration. Ambient density is the reference denominator and the calculation gives negative-buoyancy magnitude. With upward positive, the signed buoyancy acceleration for denser discharge is negative.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設排放ρb=1040 kg/m³、環境ρa=1025 kg/m³、g=9.81 m/s²，g′=g(ρb−ρa)/ρa=0.1436 m/s²。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume discharge ρb=1040 kg/m³, ambient ρa=1025 kg/m³ and g=9.81 m/s². Reduced-gravity magnitude g′=g(ρb−ρa)/ρa=0.1436 m/s².",
+      "verify": "將排放與環境溫鹽資料轉成一致密度基準，保留垂向分層而非只取表層樣本。核對模型正負號及參考密度，並用零密度差極限確認浮力項會消失。~Convert discharge and ambient temperature-salinity data to consistent density estimates, retaining vertical stratification rather than only surface samples. Check model sign conventions and reference density, and test the zero-density-difference limit to confirm that the buoyancy term vanishes.",
+      "failure": "把負浮力套入只適合上浮羽流的終止或遠場假設，可能漏掉海床接觸與沿底擴散；忽略溫度差也可能誤估密度差大小甚至方向。~Applying rising-plume termination or far-field assumptions to negative buoyancy can omit seabed contact and bottom spreading. Ignoring temperature differences can also misestimate the magnitude or even direction of the density contrast.",
+      "misconception": "只要鹽度較高，就可忽略溫度並沿用所有上浮羽流公式。~Higher salinity allows temperature to be ignored and all rising-plume formulas reused.",
+      "practice": "為相同鹽度差建立兩種溫度情境，說明密度資料如何改變浮力輸入。畫出向上為正的座標，標記重鹵水的浮力方向及需要額外求解的軌跡。~Create two temperature scenarios for the same salinity contrast and explain how density data change buoyancy input. Draw an upward-positive coordinate system, marking dense-brine buoyancy and the trajectory that still requires solution."
+    },
+    {
+      "anchor": "密度福祿數~Densimetric Froude number",
+      "title": "密度福祿數機理與驗證~Densimetric Froude number mechanism and verification",
+      "mechanism": "密度福祿數比較噴口慣性與密度差浮力，以孔徑、噴射速度及縮減重力構成無量綱比例。較大的比例代表初始動量相對較強，卻不保證所有位置的稀釋更好；出口角度、海床距離、相鄰噴流與環境流向都會改變後續軌跡，必須在相似條件下比較。本例使用單孔圓射流的尺度定義，沒有套入未驗證的經驗稀釋係數；無量綱值不能直接當成稀釋倍數。~The densimetric Froude number compares port inertia with density-driven buoyancy using diameter, velocity and reduced gravity. A larger ratio indicates stronger initial momentum relative to buoyancy but does not guarantee better dilution everywhere. Discharge angle, bed clearance, neighboring jets and ambient-current direction alter the subsequent trajectory, so comparisons require compatible conditions. The example uses the scale definition for one circular jet without an unverified empirical dilution coefficient. This dimensionless value is not itself a dilution factor.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設噴速v=3.0 m/s、g′=0.15 m/s²、孔徑d=0.20 m，Fd=v/√(g′d)=17.32。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume jet speed v=3.0 m/s, g′=0.15 m/s² and diameter d=0.20 m. Densimetric Froude number Fd=v/√(g′d)=17.32.",
+      "verify": "逐項核對孔徑、速度截面及密度差的定義，確認比較試驗使用相同角度和邊界條件。對照實驗或適用模型的參數範圍，並另行驗證海床接觸位置與峰值濃度。~Check diameter, velocity section and density-contrast definitions, ensuring comparison experiments use matching angles and boundaries. Compare inputs with the validated parameter range of the experiment or model, and independently verify seabed contact location and peak concentration before interpreting performance.",
+      "failure": "把福祿數當稀釋倍數會省略真正的混合過程，增加噴速也可能把高濃度水送到敏感區；超出經驗式試驗範圍時，漂亮的無量綱圖不代表預測可靠。~Treating Froude number as dilution bypasses the mixing process, and increased velocity can carry concentrated water toward sensitive locations. Outside an empirical correlation’s test range, a neat dimensionless plot does not establish predictive reliability.",
+      "misconception": "密度福祿數等於最後稀釋倍數，而且越大就一定越環保。~Densimetric Froude number equals final dilution and a larger value always means less impact.",
+      "practice": "在固定流量下將孔徑增加一成，分別更新面積、噴速與福祿數。說明為何不能只把孔徑代入分母而保持速度不變，並列出仍未求解的環境結果。~Increase diameter by ten percent at fixed flow and update area, velocity and Froude number separately. Explain why velocity cannot remain fixed while only the denominator changes, and identify environmental outcomes still unresolved."
+    },
+    {
+      "anchor": "動量通量與反力~Momentum flux and reaction",
+      "title": "動量通量與反力機理與驗證~Momentum flux and reaction mechanism and verification",
+      "mechanism": "噴口把壓力能轉為射流動量，單孔的運動學動量通量與真正的力具有不同單位。若需估算構件反力，必須包含密度並考慮方向與控制體上的壓力作用；只加上所有速度大小不會得到合力，對向噴口的水平分量可能抵消而垂直分量仍保留。以下只算均勻自由射流的動量力大小，未含幹管壓力、彎頭及支承作用；不能直接拿此數值設計整支擴散管錨定。~A port converts pressure energy into jet momentum, but kinematic momentum flux and force have different units. Estimating structural reaction requires density, direction and pressure forces on the control volume. Adding speed magnitudes does not produce a resultant: opposing horizontal components may cancel while vertical components remain. This calculates momentum-force magnitude for a uniform free jet only, excluding header pressure, bends and supports. It is not a complete anchorage load for the diffuser.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設單孔ρ=1040 kg/m³、q=0.050 m³/s、v=3.0 m/s，動量力F=ρqv=156 N；運動學通量qv=0.150 m⁴/s²。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume one port ρ=1040 kg/m³, q=0.050 m³/s and v=3.0 m/s. Momentum force F=ρqv=156 N; kinematic flux qv=0.150 m⁴/s².",
+      "verify": "在控制體圖上標明每孔流向、流量及壓力邊界，將動量力分解為座標分量後才求和。與支承及幹管內力模型核對載荷傳遞，避免把單孔自由射流值當完整結構反力。~Mark port directions, flows and pressure boundaries on a control-volume diagram, resolving momentum forces into components before summation. Check load transfer against support and header-force models, avoiding use of a single free-jet result as the complete structural reaction.",
+      "failure": "漏乘密度會把運動學通量誤認成力，忽略方向則可能錯估總反力與扭矩；若再漏掉壓力端力，錨定分析即使數字整齊也缺少必要載荷。~Omitting density mistakes kinematic flux for force, while ignoring direction misstates resultant force and torque. Missing pressure end forces then leaves anchorage analysis incomplete even when its arithmetic appears orderly.",
+      "misconception": "流量乘速度已經是牛頓力，而且所有噴口反力只須加大小。~Flow times velocity is already force in newtons and port reactions require only scalar addition.",
+      "practice": "以兩個對稱斜噴口畫出動量向量，分別求水平與垂直分量。將自由射流反力和幹管壓力端力分開列帳，指出支承模型還需要哪些幾何資料。~Draw momentum vectors for two symmetric inclined ports and resolve horizontal and vertical components. List free-jet reaction separately from header pressure end force, identifying the geometry still required by the support model."
+    },
+    {
+      "anchor": "孔距與噴流合併~Port spacing and jet merging",
+      "title": "孔距與噴流合併機理與驗證~Port spacing and jet merging mechanism and verification",
+      "mechanism": "相鄰射流會在擴展過程中互相影響，過早合併可能減少各自可捲吸的環境水，但是否有利不能只由孔距大小判斷。角度、交錯排列、海流與密度差會改變交會位置；單孔模型的稀釋結果也不能直接乘以孔數當成多孔系統的表現。孔距除以孔徑只是幾何比較，不是通用的無干擾門檻；本例沒有預測合併高度或環境可接受性。~Neighboring jets interact as they widen, and early merging can reduce ambient water available to each jet. Whether a layout is beneficial cannot be judged from spacing alone. Angle, staggering, current and density contrast shift the interaction location, and single-port dilution cannot simply be multiplied by port count to represent the whole diffuser. Spacing divided by diameter is a geometric comparison, not a universal noninteraction threshold. The example predicts neither merging height nor environmental acceptability.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設中心孔距s=2.0 m、孔徑d=0.20 m，幾何比例s/d=10；若d增至0.22 m且s不變，比例為9.09。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume center spacing s=2.0 m and diameter d=0.20 m. Geometric s/d=10; increasing d to 0.22 m at fixed spacing gives 9.09.",
+      "verify": "以平面及剖面圖核對孔位和方向，使用適合多孔合併的模型或物理試驗觀察交互作用。檢查低潮、弱流及不同流向，並追蹤環境水可進入噴流間隙的路徑。~Verify port positions and directions in plan and section, using a model or physical experiment suited to multiport merging. Examine low tide, weak currents and changing current direction, tracking pathways through which ambient water can enter between adjacent jets.",
+      "failure": "把某個孔距比例當通用保證可能漏掉回流與合併，部分孔停用後有效排列也會改變；沿用正常全開工況的稀釋率會掩蓋維護或低負荷的不利情境。~Treating one spacing ratio as a universal guarantee can miss recirculation and merging. Port shutdown changes the effective arrangement, so normal all-open dilution may conceal unfavorable maintenance or low-load conditions.",
+      "misconception": "只要孔距是孔徑十倍，就能保證任何海況下噴流不互相影響。~Spacing of ten diameters guarantees no jet interaction under any marine condition.",
+      "practice": "畫出相同總長度的直列與交錯擴散器，指出可能的合併與捲吸區域。列出區分兩種布局所需的試驗觀察，而不是只用孔數或總長度選優。~Draw aligned and staggered diffusers of equal total length, marking possible merging and entrainment regions. Identify experimental observations that distinguish their behavior instead of selecting a layout solely by port count or overall length."
+    },
+    {
+      "anchor": "環境流與停留尺度~Ambient currents and residence scales",
+      "title": "環境流與停留尺度機理與驗證~Ambient currents and residence scales mechanism and verification",
+      "mechanism": "離開初始動量主導區後，羽流會受到海流、潮汐反轉及紊動輸送影響。以流速乘時間只能估計被動水團的平移尺度，不能描述密度流沿底滑動或回流累積；弱流時平均流向也可能不穩定，單一順流斷面可能漏掉往返經過的高鹽水。本例假設速度均勻且方向不變，忽略擴散、剪切及重力流；平移距離不是混合區邊界或鹽度達標距離。~Beyond the initial momentum-dominated region, currents, tidal reversal and turbulence influence transport. Velocity times time estimates passive water-parcel translation but does not describe bottom density currents or recirculating accumulation. Under weak flow the mean direction may be unstable, and one downstream transect can miss concentrated water returning with the tide. The example assumes uniform constant-direction velocity, excluding dispersion, shear and gravity currents. Translation distance is neither a mixing-zone boundary nor a distance to a salinity target.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設均勻海流U=0.10 m/s、時間t=1800 s，被動平移尺度x=Ut=180 m。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume uniform current U=0.10 m/s and time t=1800 s. Passive translation scale x=Ut=180 m.",
+      "verify": "使用涵蓋潮週期的流速剖面和溫鹽量測，區分平均流、剪切與短時反轉。檢查近場與遠場銜接時的濃度、位置及通量連續性，另確認負浮力接觸海床後的模型適用性。~Use velocity profiles and temperature-salinity measurements spanning tidal cycles to distinguish mean transport, shear and short reversals. Check concentration, position and flux continuity between near and far fields, separately confirming model validity after negatively buoyant flow contacts the seabed.",
+      "failure": "只用最大順流速度會低估弱流期停留與累積，直接把上浮羽流的被動遠場模組接到沿底重流也可能違反模型假設，造成系統性低估暴露。~Using only maximum favorable current understates residence and accumulation during weak flow. Connecting a passive far-field module for rising plumes directly to bottom gravity flow can violate assumptions and systematically understate exposure.",
+      "misconception": "海流速度乘一小時得到的距離，就是鹵水必然被稀釋完的位置。~Current speed times one hour gives the distance at which brine is necessarily fully diluted.",
+      "practice": "比較單向流與半小時後反轉的平移示意，說明相同速率不代表相同淨位移或暴露歷史。列出需要三維水動力與密度耦合分析的情境。~Compare one-way transport with a current reversing after half an hour, explaining why equal speed does not imply equal displacement or exposure history. Identify cases requiring three-dimensional hydrodynamics coupled to density."
+    },
+    {
+      "anchor": "海域箱體鹽度收支~Receiving-basin salinity budget",
+      "title": "海域箱體鹽度收支機理與驗證~Receiving-basin salinity budget mechanism and verification",
+      "mechanism": "近場高稀釋不代表半封閉水域不會長期累積鹽分，外海交換、潮汐回流與排放持續時間共同控制背景變化。簡化箱體可以檢查鹽量與交換流的尺度，卻把空間分層和局部高濃度平均掉；因此它適合守恆檢查，不適合取代底棲暴露或敏感區域的空間預測。本例以質量流率表示交換，箱體均勻且穩態，出流等於環境入流加排放；這不是忽略排放增量的近似交換式。~Strong near-field dilution does not prevent long-term salt accumulation in a semi-enclosed basin. Exchange with offshore water, tidal return and discharge duration control background change. A simple box checks salt and exchange scales but averages away stratification and local peaks, making it useful for conservation checks rather than spatial prediction of benthic exposure. The example uses mass flow, a uniform steady box, and outflow equal to ambient inflow plus discharge. It does not omit the additional discharged mass from the outlet balance.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設外海入流Ma=9000 kg/s、Sa=35 g/kg，排放Mb=1000 kg/s、Sb=60 g/kg，穩態S=(MaSa+MbSb)/(Ma+Mb)=37.5 g/kg。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume ambient inflow Ma=9000 kg/s, Sa=35 g/kg, discharge Mb=1000 kg/s and Sb=60 g/kg. Steady box S=(MaSa+MbSb)/(Ma+Mb)=37.5 g/kg.",
+      "verify": "先核對箱體水量與鹽量收支，確認外海交換不是重複計入同一來回潮水。用多深度長時間觀測測試均勻穩態假設，並對交換減弱及初始鹽度做敏感度比較。~Check both water and salt balances, ensuring that offshore exchange does not count the same returning tidal water twice. Test uniform steady conditions against long-duration measurements at several depths, and compare sensitivity to weaker exchange and different initial salinity.",
+      "failure": "把潮汐往返總流量全當新鮮外海交換會高估沖淡能力，均勻箱體也會掩蓋沿底鹽層；近場校正良好仍不能證明長期區域背景不會改變。~Treating all back-and-forth tidal flow as fresh offshore exchange overstates flushing. A uniform box also hides bottom salinity layers, and successful near-field calibration does not prove that regional background remains unchanged over time.",
+      "misconception": "排口附近混合很快，所以半封閉海灣的長期鹽量帳不必計算。~Rapid mixing near the outlet makes a long-term salt budget unnecessary in a semi-enclosed bay.",
+      "practice": "以固定排放分別計算強弱交換情境，畫出完整入出流而非只列超額鹽量。指出箱體平均無法回答哪些底棲問題，並提出可觀察分層的測點配置。~Calculate strong and weak exchange cases at fixed discharge, drawing all inflows and outflows rather than only excess salt. Identify benthic questions that a box average cannot answer and propose measurements capable of detecting stratification."
+    },
+    {
+      "anchor": "監測誤差與暴露判讀~Monitoring uncertainty and exposure",
+      "title": "監測誤差與暴露判讀機理與驗證~Monitoring uncertainty and exposure mechanism and verification",
+      "mechanism": "鹽度監測需要同時控制感測器校正、溫度補償、深度定位與時間對齊，否則小幅鹽度增量可能與量測偏差混淆。單點超額鹽度不能直接代表整個生態系的暴露，還必須關注持續時間、空間範圍與背景變化；不確定度的合成也取決於誤差是否獨立。下式只合成兩個獨立標準不確定度，未加涵蓋因子或系統漂移；它不是法定容許誤差，也不是生態效應門檻。~Salinity monitoring requires calibration, temperature compensation, depth control and synchronized timing, because a small salinity increment can be confused with measurement bias. One-point excess salinity does not represent exposure of the entire ecosystem; duration, spatial extent and background variation also matter. Combining uncertainty requires attention to whether errors are independent. The expression combines two independent standard uncertainties only, without a coverage factor or systematic drift. It is neither a legal tolerance nor an ecological-effect threshold.",
+      "model": "原創教學假設算例，以下量值用於簡化機理比較：假設排口樣本與背景標準不確定度各u1=u2=0.10 g/kg且獨立，差值uΔ=√(u1²+u2²)=0.1414 g/kg。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume independent sample and background standard uncertainties u1=u2=0.10 g/kg. Difference uncertainty uΔ=√(u1²+u2²)=0.1414 g/kg.",
+      "verify": "將校正前後結果、重複樣本與定位資料保留，核對兩儀器是否共享偏差來源。以相同潮相和深度比較背景及影響區，並把量測不確定度、暴露持續時間與生態證據分開報告。~Retain before-and-after calibration, duplicate samples and positioning records, checking whether instruments share bias sources. Compare background and affected locations at matched tidal phase and depth, reporting measurement uncertainty, exposure duration and ecological evidence as distinct components of the assessment.",
+      "failure": "共同校正偏差不一定符合獨立平方和假設，漂移也不會靠增加樣本自動消失；將短時單點差異直接描述成長期生態安全或危害，會超出資料支持範圍。~Shared calibration bias may violate the independent root-sum-square assumption, and drift does not vanish automatically with more samples. Calling a brief point difference evidence of long-term ecological safety or harm exceeds the observations.",
+      "misconception": "感測器讀值差很小，就能直接證明長期海域生態完全安全。~A small sensor difference directly proves complete long-term ecological safety.",
+      "practice": "為兩支感測器列出獨立與共同誤差來源，說明哪些可以平方和合成。設計跨潮位、深度與時間的對照採樣表，將濃度證據和生態解釋清楚分欄。~List independent and shared error sources for two sensors and identify which support root-sum-square combination. Design paired sampling across tide, depth and time, keeping concentration evidence separate from ecological interpretation."
+    }
+  ],
+  "example": "敏感度算例固定單孔流量q=0.050 m³/s及縮減重力g′=0.15 m/s²，只將孔徑由0.20 m增加至0.22 m。面平均噴速由1.5915降至1.3153 m/s，降低17.36%；密度福祿數由9.1888降至7.2407，降低21.20%，因固定流量時速度隨孔徑平方反比而變，福祿數隨孔徑的二點五次方反比。這只比較初始尺度，沒有把福祿數當成稀釋倍數，也沒有預測海床接觸點。實際比較還需幹管壓力、角度、潮流和多孔交互作用，不能只依孔徑變大就宣稱環境改善。~For sensitivity, hold one-port flow q=0.050 m³/s and reduced gravity g′=0.15 m/s² fixed while increasing diameter from 0.20 to 0.22 m. Mean exit velocity falls from 1.5915 to 1.3153 m/s, a 17.36% reduction. Densimetric Froude number falls from 9.1888 to 7.2407, a 21.20% reduction: velocity varies as diameter to the power −2 and Froude number as diameter to the power −2.5 at fixed flow. These are initial-scale comparisons, not dilution predictions or seabed-contact locations. Header pressure, discharge angle, tidal currents, seabed clearance and multiport interaction remain necessary before judging environmental performance. The calculation does not establish an ecological threshold or discharge approval.",
+  "history": "伯斯奎那那海水淡化廠於2006年開始產水，南部賓寧納普廠於2011年開始產水，業主資料提供取排水與海域監測的實際背景。加州於2015年修訂海洋計畫海淡相關條文，這是特定司法區的歷史事件而不是全球共用限值。美國環保署於2024年發布PLUMES第二點〇理論手冊，說明近場與遠場模型；其子模型邊界仍須核對，不能把一般羽流功能當成任意沿底鹵水的有效證明。本課各模型為獨立教學假設。~Perth’s Kwinana desalination plant began production in 2006 and Southern’s Binningup plant in 2011, providing owner-documented marine-system context. California amended its desalination-related Ocean Plan provisions in 2015, a jurisdiction-specific historical event rather than a universal limit. EPA issued the PLUMES 2.0 theory manual in 2024, documenting near- and far-field methods. Submodel limits still require checking; general plume capability does not validate arbitrary bottom-spreading brine. All numerical models here use independent teaching assumptions.",
+  "timeline": [
+    {
+      "year": "2006",
+      "event": "伯斯奎那那廠開始產水，建立海域系統實例。~The Perth Kwinana plant begins production, providing a marine-system case."
+    },
+    {
+      "year": "2011",
+      "event": "南部賓寧納普廠開始產水，增加海淡系統比較案例。~Southern Binningup begins production, adding a desalination-system comparison."
+    },
+    {
+      "year": "2024",
+      "event": "環保署發布羽流第二點〇理論與使用手冊。~EPA publishes the PLUMES 2.0 model theory and user manual."
+    }
+  ],
+  "codes": [
+    "美國環保署羽流第二點〇手冊：近遠場與模型限制~EPA PLUMES 2.0 manual: near/far fields and model limits",
+    "加州海洋計畫海淡資料：特定司法區歷史與評估背景~California Ocean Plan desalination materials: jurisdiction-specific history and assessment context"
+  ],
+  "landmarks": [
+    "伯斯海水淡化廠海域取排水~Perth desalination marine intake and outfall",
+    "南部海水淡化廠海域系統~Southern desalination marine system"
+  ],
+  "place": {
+    "name": "伯斯奎那那海水淡化廠~Perth Kwinana desalination plant",
+    "country": "澳洲~Australia",
+    "lat": -32.23,
+    "lng": 115.76,
+    "query": "Perth Seawater Desalination Plant Kwinana"
+  },
+  "sources": [
+    {
+      "key": "epa-plumes",
+      "title": "美國環保署羽流二點〇理論及手冊",
+      "titleEn": "PLUMES 2.0 Dilution Model: Model Theory and User Manual",
+      "publisher": "US EPA",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P101DSLB.TXT",
+      "sourceType": "primary",
+      "scope": "二〇二四年手冊支持近場、遠場與稀釋定義；需另核對負浮力與接觸海床時的子模型限制。",
+      "scopeEn": "The December 2024 manual supports near-field, far-field and dilution definitions; negative buoyancy and seabed contact require specific submodel-limit checks."
+    },
+    {
+      "key": "cal-desal",
+      "title": "加州海洋計畫海淡取排水資料",
+      "titleEn": "California Ocean Plan Desalination Provisions",
+      "publisher": "California State Water Resources Control Board",
+      "url": "https://water.waterboards.ca.gov/water_issues/programs/ocean/desalination/index.html",
+      "sourceType": "primary",
+      "scope": "核對二〇一五年修訂歷史及取水、鹵水與生態評估議題；本課不提供許可判定或外推加州法規。",
+      "scopeEn": "Verifies the 2015 amendment history and intake, brine and ecological-assessment topics; lessons provide no permit determination or export of California law."
+    },
+    {
+      "key": "wc-perth",
+      "title": "伯斯海水淡化廠業主資料",
+      "titleEn": "Perth Seawater Desalination Plant",
+      "publisher": "Water Corporation",
+      "url": "https://www.watercorporation.com.au/our-water/desalination/perth-seawater-desalination-plant",
+      "sourceType": "primary",
+      "scope": "核對奎那那廠於二〇〇六年開始產水及海域監測背景；業主生態敘述不是所有取排水設計的無影響證明。",
+      "scopeEn": "Verifies Kwinana production starting in 2006 and marine monitoring context; owner ecological statements do not prove zero impact for all intake/outfall designs."
+    },
+    {
+      "key": "wc-southern",
+      "title": "南部海水淡化廠業主資料",
+      "titleEn": "Southern Seawater Desalination Plant",
+      "publisher": "Water Corporation",
+      "url": "https://www.watercorporation.com.au/our-water/desalination/southern-seawater-desalination-plant",
+      "sourceType": "primary",
+      "scope": "核對賓寧納普廠於二〇一一年開始產水及供水系統連接；本課數值不是該廠運轉或排放資料。",
+      "scopeEn": "Verifies Binningup production beginning in 2011 and supply-system connections; lesson numbers are not plant operating or discharge data."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US EPA",
+      "nameEn": "US EPA",
+      "business": "水務管理、研究或工程技術資料提供機構",
+      "businessEn": "Water management, research or engineering-information institution",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P101DSLB.TXT",
+      "role": "本課來源及技術參照機構；未宣稱承包任何列名工程",
+      "roleEn": "Course source and technical reference; no contracting role in a named project is implied",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "Water Corporation",
+      "nameEn": "Water Corporation",
+      "business": "水務管理、研究或工程技術資料提供機構",
+      "businessEn": "Water management, research or engineering-information institution",
+      "url": "https://www.watercorporation.com.au/our-water/desalination/southern-seawater-desalination-plant",
+      "role": "本課來源及技術參照機構；未宣稱承包任何列名工程",
+      "roleEn": "Course source and technical reference; no contracting role in a named project is implied",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "facts": [
+    "原創教學假設算例，以下量值用於簡化機理比較：假設進水mf=1000 kg/s、產品mp=400 kg/s、進水鹽度Sf=35 g/kg且Sp=0，mb=600 kg/s，Sb=mfSf/mb=58.33 g/kg。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume feed mf=1000 kg/s, product mp=400 kg/s, feed Sf=35 g/kg and product Sp=0. Concentrate mb=600 kg/s and Sb=mfSf/mb=58.33 g/kg.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設排放Sb=60 g/kg、背景Sa=35 g/kg、質量稀釋D=10，混合Sm=Sa+(Sb−Sa)/D=37.5 g/kg。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume discharge Sb=60 g/kg, ambient Sa=35 g/kg and mass dilution D=10. Mixed Sm=Sa+(Sb−Sa)/D=37.5 g/kg.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設總Q=0.40 m³/s、孔數n=8、直徑d=0.15 m，單孔q=0.050 m³/s，v=q/(πd²/4)=2.829 m/s。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume total Q=0.40 m³/s, n=8 ports and diameter d=0.15 m. Each q=0.050 m³/s and v=q/(πd²/4)=2.829 m/s.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設排放ρb=1040 kg/m³、環境ρa=1025 kg/m³、g=9.81 m/s²，g′=g(ρb−ρa)/ρa=0.1436 m/s²。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume discharge ρb=1040 kg/m³, ambient ρa=1025 kg/m³ and g=9.81 m/s². Reduced-gravity magnitude g′=g(ρb−ρa)/ρa=0.1436 m/s².",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設噴速v=3.0 m/s、g′=0.15 m/s²、孔徑d=0.20 m，Fd=v/√(g′d)=17.32。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume jet speed v=3.0 m/s, g′=0.15 m/s² and diameter d=0.20 m. Densimetric Froude number Fd=v/√(g′d)=17.32.",
+    "原創教學假設算例，以下量值用於簡化機理比較：假設單孔ρ=1040 kg/m³、q=0.050 m³/s、v=3.0 m/s，動量力F=ρqv=156 N；運動學通量qv=0.150 m⁴/s²。~Original teaching example using hypothetical inputs to compare a simplified physical mechanism: Assume one port ρ=1040 kg/m³, q=0.050 m³/s and v=3.0 m/s. Momentum force F=ρqv=156 N; kinematic flux qv=0.150 m⁴/s²."
+  ],
+  "related": [
+    "b266",
+    "b289"
+  ],
+  "architectureNodes": [
+    [
+      "鹽量帳",
+      "Salt balance"
+    ],
+    [
+      "孔口動量",
+      "Port momentum"
+    ],
+    [
+      "負浮力近場",
+      "Dense near field"
+    ],
+    [
+      "海域交換",
+      "Basin exchange"
+    ],
+    [
+      "監測驗證",
+      "Monitoring verification"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ]
+  ]
+}

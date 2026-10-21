@@ -1,3 +1,4 @@
+import { expandLazyIndex } from './lazy-index-codec.js';
 /* V14: catalogue first; one immutable course and its resources on demand.
  * Protected lesson responses are never taken from a static cache. */
 const ID=/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/;
@@ -5,6 +6,9 @@ const validID=id=>typeof id==='string'&&ID.test(id)&&!['constructor','prototype'
 const own=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
 const LIMIT=32*1024*1024;
 const CORE=new Set(['catalog','featured','photos','release']);
+class CurriculumRequestError extends Error {
+  constructor(status,url){super(`Curriculum request failed (${status||'network'}): ${url}`);this.status=status;}
+}
 function clone(value){return typeof structuredClone==='function'?structuredClone(value):JSON.parse(JSON.stringify(value));}
 function validateIndex(value){
   if(value?.lazyVersion!==1||!Array.isArray(value.catalog)||!value.catalog.length||value.catalog.length>20000||!Array.isArray(value.photos)||!Array.isArray(value.guidedIds)||!value.courses||!value.resources||!value.auxiliary)throw Error('Invalid lazy curriculum index.');
@@ -45,7 +49,7 @@ export function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(..
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
     try{
       const response=await fetchImpl(url,{signal:controller.signal,credentials:'same-origin',redirect:'error',cache:cacheMode});
-      if(!response?.ok)throw Error(`Curriculum request failed (${response?.status||'network'}): ${url}`);
+      if(!response?.ok)throw new CurriculumRequestError(response?.status,url);
       const declared=response.headers?.get?.('content-length');if(declared&&Number(declared)>limit)throw Error('Curriculum response is too large.');
       let raw;
       if(response.body?.getReader){const reader=response.body.getReader(),chunks=[];let size=0;try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>limit){await reader.cancel();throw Error('Curriculum response is too large.');}chunks.push(value);}}finally{reader.releaseLock();}raw=new Uint8Array(size);let offset=0;for(const chunk of chunks){raw.set(chunk,offset);offset+=chunk.byteLength;}}
@@ -54,7 +58,19 @@ export function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(..
     }finally{clearTimeout(timer);}
   }
   function index(){
-    if(!indexPromise)indexPromise=(async()=>{if(view?.MG_LAZY_INDEX)return validateIndex(view.MG_LAZY_INDEX);if(location?.protocol==='file:')throw Error('Initial catalogue is missing. Extract the complete ZIP.');return validateIndex((await json('data/lazy/index.json',12*1024*1024,'no-cache')).value);})().catch(error=>{indexPromise=null;throw error;});
+    if(!indexPromise)indexPromise=(async()=>{
+      if(view?.MG_LAZY_INDEX)return validateIndex(view.MG_LAZY_INDEX);
+      if(location?.protocol==='file:')throw Error('Initial catalogue is missing. Extract the complete ZIP.');
+      let response;
+      try{response=await json('data/lazy/index.compact.json',12*1024*1024,'no-cache');}
+      catch(error){
+        // Older releases have only the expanded index. Never bypass a bad
+        // payload, an authorization failure, or a network error with fallback.
+        if(!(error instanceof CurriculumRequestError)||![404,410].includes(error.status))throw error;
+        response=await json('data/lazy/index.json',12*1024*1024,'no-cache');
+      }
+      return validateIndex(expandLazyIndex(response.value));
+    })().catch(error=>{indexPromise=null;throw error;});
     return indexPromise;
   }
   function script(descriptor){return new Promise((resolve,reject)=>{

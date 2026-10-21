@@ -9,6 +9,7 @@ import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { restoreFeatured } from './restore-featured.mjs';
+import { expandLazyIndex } from '../public/academy/lazy-index-codec.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicRoot = path.join(root, 'public/academy');
@@ -137,7 +138,13 @@ const auxiliary={};
 for(const [name,value] of Object.entries({...data,'source-usage':sourceUsage}))if(!['catalog','featured','photos','release'].includes(name))auxiliary[name]=chunk('data',name,value);
 const index={lazyVersion:1,guidedIds:data.featured.map(c=>c.id),catalog:fullCatalog.map(metadata),photos:data.photos,release:data.release,courses:courseFiles,resources:resourceFiles,auxiliary};
 const indexName='data/lazy/index.json';write(path.join(publicRoot,indexName),JSON.stringify(index)+'\n');generated.add(indexName);
-const preload=`/* Generated initial catalogue only; full lessons load on demand. */\nwindow.MG_LAZY_INDEX=${serialize(index)};\nwindow.MG_DATA={catalog:window.MG_LAZY_INDEX.catalog,featured:window.MG_LAZY_INDEX.guidedIds.map(id=>window.MG_LAZY_INDEX.catalog.find(c=>c.id===id)),photos:window.MG_LAZY_INDEX.photos,sources:[],release:window.MG_LAZY_INDEX.release};\nwindow.MG_DATA_FILES=[];\n`;
+// Lossless wire compaction removes repeated descriptor paths and step-object keys.
+// Keep the expanded index for diagnostics and older integration tooling.
+const compactDescriptors=entries=>Object.fromEntries(Object.entries(entries).map(([id,d])=>[id,[d.sha256,d.byteLength]]));
+const compactIndex={...index,compactVersion:1,catalog:index.catalog.map(c=>c.stages?{...c,stages:c.stages.map(s=>({...s,steps:s.steps.map(step=>step.id)}))}:c),courses:compactDescriptors(index.courses),resources:compactDescriptors(index.resources),auxiliary:compactDescriptors(index.auxiliary)};
+if(JSON.stringify(expandLazyIndex(compactIndex))!==JSON.stringify(index))throw Error('Compact catalogue round-trip is not lossless.');
+const compactName='data/lazy/index.compact.json';write(path.join(publicRoot,compactName),JSON.stringify(compactIndex)+'\n');generated.add(compactName);
+const preload=`/* Generated initial catalogue only; full lessons load on demand. */\nwindow.MG_LAZY_INDEX=(${expandLazyIndex.toString()})(${serialize(compactIndex)});\nwindow.MG_DATA={catalog:window.MG_LAZY_INDEX.catalog,featured:window.MG_LAZY_INDEX.guidedIds.map(id=>window.MG_LAZY_INDEX.catalog.find(c=>c.id===id)),photos:window.MG_LAZY_INDEX.photos,sources:[],release:window.MG_LAZY_INDEX.release};\nwindow.MG_DATA_FILES=[];\n`;
 new vm.Script(preload,{filename:'offline-data.js'});write(path.join(publicRoot,'offline-data.js'),preload);
 for(const name of fs.readdirSync(publicRoot).filter(n=>/^offline-data-\d+\.js$/.test(n)))fs.unlinkSync(path.join(publicRoot,name));
 // Remove superseded chunks only from the generated lazy directory.

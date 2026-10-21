@@ -1,0 +1,263 @@
+{
+  "id": "b247",
+  "title": "側槽式溢洪道~Side-channel spillways",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "focus": "以側向入流動量及沿程水面控制側槽~Controlling side channels through lateral inflow momentum and profiles",
+  "summary": "本課以以側向入流動量及沿程水面控制側槽為主線，先用沿程入流與累積與長堰流量與水頭界定水力與構造條件，再將出口臨界控制、波峰餘高與牆頂連結到模型守恆與驗證。側槽具有空間變流，示意分段平均不代替完整三維模型與沿程動量求解。 每單元以原創算例、量測與失效辨識共同檢查推論。~This course develops controlling side channels through lateral inflow momentum and profiles through Lateral inflow accumulation and Long crest discharge and head, then connects Critical outlet control and Wave allowance and wall crest to Model conservation and validation. Side channels have spatially varied flow; segmented averages do not replace three-dimensional modeling and longitudinal momentum analysis. Each unit combines original calculation, measurement and failure diagnosis to test the inference.",
+  "history": "本課所研究的以側向入流動量及沿程水面控制側槽，反映水工設計由單一尺寸選取走向水流、材料、施工與長期監測共同驗證的發展。側槽具有空間變流，示意分段平均不代替完整三維模型與沿程動量求解。 美國墾務局官方目錄列有1978年消能工專論、1980年水力試驗技術及1987年小壩設計，這些是技術文件出版年份，不是本課假想工程的啟用日期。所列具名工程只供公開原理與邊界比較，不主張取得其設計圖、現場紀錄或專有參數。~The focus on controlling side channels through lateral inflow momentum and profiles reflects development from isolated sizing toward joint verification of flow, materials, construction and long-term observations. Side channels have spatially varied flow; segmented averages do not replace three-dimensional modeling and longitudinal momentum analysis. The Reclamation catalog lists the 1978 energy-dissipator monograph, 1980 hydraulic laboratory techniques and 1987 small-dam manual. These are publication dates, not commissioning dates for a hypothetical project. Named works support comparisons of public principles and boundaries; this course claims no access to proprietary drawings, field records or project parameters.",
+  "example": "整合算例輸入全為教學假設，先檢查沿程入流與累積：Uniform lateral input=2 m2/s; channelLength=40 m; upstreamQ=0; outletQ=2*40=80 m3/s；再獨立檢查長堰流量與水頭：Assumed coefficient C=1.7 m0.5/s; crestLength=30 m; head=1.2 m; Q=1.7*30*1.2**1.5=67.0412 m3/s。敏感度：均勻側入流由每公尺2增至3m2/s且側槽長40m時，總流量由80增至120m3/s；若出口面積維持20m2，平均速度由4增為6m/s，動量與能量需求不只增加50%。 兩個結果須按各自量綱解釋，不能直接相加或當成完整設計。側槽具有空間變流，示意分段平均不代替完整三維模型與沿程動量求解。 將同步量測底板上下水頭並檢查排水出口淹沒時段作為獨立驗證，明確列出尚缺的現地輸入及其對結論的影響。~Every input in this integrated example is a teaching assumption. First examine Lateral inflow accumulation: Uniform lateral input=2 m2/s; channelLength=40 m; upstreamQ=0; outletQ=2*40=80 m3/s. Independently examine Long crest discharge and head: Assumed coefficient C=1.7 m0.5/s; crestLength=30 m; head=1.2 m; Q=1.7*30*1.2**1.5=67.0412 m3/s. Sensitivity: increasing uniform lateral inflow from2 to3m2/s along40m raises discharge from80 to120m3/s. At a fixed20m2 outlet area, velocity rises from4 to6m/s; momentum and energy demands grow faster than the50-percent discharge increase. Interpret each result in its own dimensions rather than adding them or treating them as a complete design. Side channels have spatially varied flow; segmented averages do not replace three-dimensional modeling and longitudinal momentum analysis. Use the following independent check: Measure heads above and below the floor together and identify outlet submergence periods. Identify missing field inputs and state which conclusions depend on them.",
+  "units": [
+    {
+      "anchor": "沿程入流與累積~Lateral inflow accumulation",
+      "title": "沿程入流與累積~Lateral inflow accumulation",
+      "mechanism": "側槽接收沿堰長分布的側向水流，流量沿下游增加，因此不能用一個固定流量套全槽。先把側入流分布積分，再檢查各段斷面與出口控制；堰上水頭不均或局部淹沒會破壞均勻入流假設。 驗證時應分段量測堰上水頭並將側入流累積量與出口流量比對，並辨識以下失效情境：局部堰頂淹沒會改變沿程入流分配。這有助於確認模型的水流、受力或量測邊界是否仍成立。~A side channel accumulates distributed lateral inflow, so discharge increases downstream. Integrate the inflow distribution before checking sections and outlet control rather than applying one discharge everywhere. Unequal crest heads or local submergence invalidate the uniform-inflow approximation and require segmented measurements. Test this interpretation with the following evidence: Measure crest head by segment and compare accumulated inflow with outlet discharge. In particular, distinguish this failure mechanism: Local crest submergence changes the longitudinal inflow distribution. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Uniform lateral input=2 m2/s; channelLength=40 m; upstreamQ=0; outletQ=2*40=80 m3/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Uniform lateral input=2 m2/s; channelLength=40 m; upstreamQ=0; outletQ=2*40=80 m3/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "分段量測堰上水頭並將側入流累積量與出口流量比對。應將原始量測與本單元模型的輸入條件對齊，並針對「局部堰頂淹沒會改變沿程入流分配」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure crest head by segment and compare accumulated inflow with outlet discharge. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Local crest submergence changes the longitudinal inflow distribution. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "局部堰頂淹沒會改變沿程入流分配。診斷時應採取以下查核：分段量測堰上水頭並將側入流累積量與出口流量比對，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Local crest submergence changes the longitudinal inflow distribution. Diagnose it by the following check: Measure crest head by segment and compare accumulated inflow with outlet discharge. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "側槽上游與下游的流量永遠完全相同~Discharge is always identical upstream and downstream in a side channel",
+      "practice": "交接時以分段量測堰上水頭並將側入流累積量與出口流量比對作為可追溯證據，保存對應材料、構形與工況版本。針對局部堰頂淹沒會改變沿程入流分配，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure crest head by segment and compare accumulated inflow with outlet discharge. Record material, geometry and operating-state versions. Address this scenario: Local crest submergence changes the longitudinal inflow distribution. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "長堰流量與水頭~Long crest discharge and head",
+      "title": "長堰流量與水頭~Long crest discharge and head",
+      "mechanism": "側槽可提供較長堰頂以降低特定流量所需水頭，但係數仍受入口形狀、接近流與淹沒控制。自由堰公式只適用所假設的係數與單位；堰長增加不保證出口通道有足夠容量，應聯合分析槽內回水。 驗證時應比較各堰段水頭與實測流量並標示淹沒工況，並辨識以下失效情境：只增加堰長但不檢查側槽容量可能使堰頂回水淹沒。這有助於確認模型的水流、受力或量測邊界是否仍成立。~A long crest can reduce the head needed for discharge, but coefficient, approach flow and submergence remain important. A free-weir equation applies only to its stated geometry and units. More crest length does not guarantee outlet capacity because channel backwater may suppress the intended inflow. Test this interpretation with the following evidence: Compare head and measured discharge for each crest segment and identify submergence. In particular, distinguish this failure mechanism: Increasing crest length without channel checks can submerge the crest through backwater. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Assumed coefficient C=1.7 m0.5/s; crestLength=30 m; head=1.2 m; Q=1.7*30*1.2**1.5=67.0412 m3/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Assumed coefficient C=1.7 m0.5/s; crestLength=30 m; head=1.2 m; Q=1.7*30*1.2**1.5=67.0412 m3/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較各堰段水頭與實測流量並標示淹沒工況。應將原始量測與本單元模型的輸入條件對齊，並針對「只增加堰長但不檢查側槽容量可能使堰頂回水淹沒」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare head and measured discharge for each crest segment and identify submergence. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Increasing crest length without channel checks can submerge the crest through backwater. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只增加堰長但不檢查側槽容量可能使堰頂回水淹沒。診斷時應採取以下查核：比較各堰段水頭與實測流量並標示淹沒工況，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Increasing crest length without channel checks can submerge the crest through backwater. Diagnose it by the following check: Compare head and measured discharge for each crest segment and identify submergence. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "堰頂加長就一定可無限制增加整體洩量~Lengthening the crest increases total system discharge without limit",
+      "practice": "交接時以比較各堰段水頭與實測流量並標示淹沒工況作為可追溯證據，保存對應材料、構形與工況版本。針對只增加堰長但不檢查側槽容量可能使堰頂回水淹沒，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare head and measured discharge for each crest segment and identify submergence. Record material, geometry and operating-state versions. Address this scenario: Increasing crest length without channel checks can submerge the crest through backwater. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "側入動量與轉向~Lateral momentum and turning",
+      "title": "側入動量與轉向~Lateral momentum and turning",
+      "mechanism": "垂直於槽軸的側入流需轉向後才沿槽輸送，其軸向初始動量可能很小，不能使用只含能量損失的普通渠道公式忽略混合作用。控制體應包含各入口速度向量、壁面反力與壓力力，簡化動量差只展示其中一項。 驗證時應以三維速度量測確認側入方向並核對控制體各面動量，並辨識以下失效情境：忽略側向混合會誤判沿程水深與壁面反力。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Lateral inflow must turn into the channel axis and may carry little initial axial momentum. Ordinary channel calculations that only add an energy-loss coefficient can miss mixing forces. A control volume needs inlet velocity vectors, wall reactions and pressure forces; a simplified momentum difference illustrates only one contribution. Test this interpretation with the following evidence: Measure three-dimensional velocity and reconcile momentum across every control-volume face. In particular, distinguish this failure mechanism: Ignoring lateral mixing misstates channel depth and wall reactions. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; axialOutflow=80 m3/s at4 m/s; lateral axial velocity=0; outgoingAxialMomentum=1000*80*4/1000=320 kN。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; axialOutflow=80 m3/s at4 m/s; lateral axial velocity=0; outgoingAxialMomentum=1000*80*4/1000=320 kN. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以三維速度量測確認側入方向並核對控制體各面動量。應將原始量測與本單元模型的輸入條件對齊，並針對「忽略側向混合會誤判沿程水深與壁面反力」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure three-dimensional velocity and reconcile momentum across every control-volume face. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Ignoring lateral mixing misstates channel depth and wall reactions. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "忽略側向混合會誤判沿程水深與壁面反力。診斷時應採取以下查核：以三維速度量測確認側入方向並核對控制體各面動量，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Ignoring lateral mixing misstates channel depth and wall reactions. Diagnose it by the following check: Measure three-dimensional velocity and reconcile momentum across every control-volume face. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "側向入流可當作早已沿槽流動的水量~Lateral inflow can be treated as water already moving along the channel",
+      "practice": "交接時以以三維速度量測確認側入方向並核對控制體各面動量作為可追溯證據，保存對應材料、構形與工況版本。針對忽略側向混合會誤判沿程水深與壁面反力，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure three-dimensional velocity and reconcile momentum across every control-volume face. Record material, geometry and operating-state versions. Address this scenario: Ignoring lateral mixing misstates channel depth and wall reactions. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "斷面速度與水深~Section velocity and depth",
+      "title": "斷面速度與水深~Section velocity and depth",
+      "mechanism": "側槽寬度和水深共同提供逐漸增加的通水面積，單純以平均速度限值配置寬度會漏掉回流與旋轉。連續方程可核對量測是否一致，但不能獨自決定水面線；需同時滿足動量、底坡與下游邊界。 驗證時應用分層流速剖面檢查平均速度及回流面積，並辨識以下失效情境：把回流區算成有效順流面積會低估主流速度。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Width and depth provide area for increasing downstream flow. A mean-velocity target alone misses recirculation and rotation. Continuity checks whether measurements agree but cannot determine the water profile independently of momentum, bed slope and the downstream boundary; use it as one equation within the system. Test this interpretation with the following evidence: Use layered velocity profiles to check mean speed and recirculating area. In particular, distinguish this failure mechanism: Counting recirculation as effective downstream area understates main-stream velocity. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Q=90 m3/s; width=8 m; depth=3 m; meanV=90/(8*3)=3.75 m/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Q=90 m3/s; width=8 m; depth=3 m; meanV=90/(8*3)=3.75 m/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "用分層流速剖面檢查平均速度及回流面積。應將原始量測與本單元模型的輸入條件對齊，並針對「把回流區算成有效順流面積會低估主流速度」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Use layered velocity profiles to check mean speed and recirculating area. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Counting recirculation as effective downstream area understates main-stream velocity. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把回流區算成有效順流面積會低估主流速度。診斷時應採取以下查核：用分層流速剖面檢查平均速度及回流面積，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Counting recirculation as effective downstream area understates main-stream velocity. Diagnose it by the following check: Use layered velocity profiles to check mean speed and recirculating area. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "連續方程單獨就能求出整條側槽水面線~Continuity alone determines the complete side-channel water profile",
+      "practice": "交接時以用分層流速剖面檢查平均速度及回流面積作為可追溯證據，保存對應材料、構形與工況版本。針對把回流區算成有效順流面積會低估主流速度，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Use layered velocity profiles to check mean speed and recirculating area. Record material, geometry and operating-state versions. Address this scenario: Counting recirculation as effective downstream area understates main-stream velocity. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "出口臨界控制~Critical outlet control",
+      "title": "出口臨界控制~Critical outlet control",
+      "mechanism": "出口收縮或跌水可能建立臨界控制並把回水影響傳回側槽，需將出口與側向堰頂聯合評估。矩形臨界深度只對指定單寬流量成立；若有含氣、斜交或非矩形斷面，需用適用水力深度及完整模型。 驗證時應量測出口附近水面線並檢查控制斷面是否隨流量遷移，並辨識以下失效情境：漏掉出口控制會低估側槽上游水位。這有助於確認模型的水流、受力或量測邊界是否仍成立。~An outlet contraction or drop may impose critical control and send backwater upstream toward the lateral crest. Evaluate the outlet and side weir jointly. Rectangular critical depth applies to a specified unit discharge; aeration, oblique approach or different geometry requires a more suitable formulation. Test this interpretation with the following evidence: Measure the outlet profile and determine whether the control section shifts with discharge. In particular, distinguish this failure mechanism: Missing outlet control underestimates upstream channel level. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Q=80 m3/s; outletWidth=8 m; q=10 m2/s; criticalDepth=(10**2/9.81)**(1/3)=2.16825 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Q=80 m3/s; outletWidth=8 m; q=10 m2/s; criticalDepth=(10**2/9.81)**(1/3)=2.16825 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "量測出口附近水面線並檢查控制斷面是否隨流量遷移。應將原始量測與本單元模型的輸入條件對齊，並針對「漏掉出口控制會低估側槽上游水位」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure the outlet profile and determine whether the control section shifts with discharge. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Missing outlet control underestimates upstream channel level. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "漏掉出口控制會低估側槽上游水位。診斷時應採取以下查核：量測出口附近水面線並檢查控制斷面是否隨流量遷移，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Missing outlet control underestimates upstream channel level. Diagnose it by the following check: Measure the outlet profile and determine whether the control section shifts with discharge. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "出口控制只影響出口不會影響側槽上游~Outlet control affects only the outlet and never the upstream side channel",
+      "practice": "交接時以量測出口附近水面線並檢查控制斷面是否隨流量遷移作為可追溯證據，保存對應材料、構形與工況版本。針對漏掉出口控制會低估側槽上游水位，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure the outlet profile and determine whether the control section shifts with discharge. Record material, geometry and operating-state versions. Address this scenario: Missing outlet control underestimates upstream channel level. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "橫向水位與彎流~Transverse level and curved flow",
+      "title": "橫向水位與彎流~Transverse level and curved flow",
+      "mechanism": "側流轉向與彎道可使橫向水位傾斜，平均縱向水面線不能代表外側牆邊最高水位。曲率平衡簡式以均勻速度和大半徑近似，回流與湍流時只能提供量級；需分別觀測內外側水位與波峰。 驗證時應同步量測內外側水位與波峰並對照轉彎速度場，並辨識以下失效情境：只在內側設水位計會漏掉外側越流。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Turning flow can tilt the transverse water surface, so a mean longitudinal profile does not capture the highest wall level. A curvature balance assumes approximately uniform velocity and gentle curvature; recirculating turbulent flow makes it only a scale estimate. Observe both banks and wave crests independently. Test this interpretation with the following evidence: Measure levels and crests at both walls simultaneously alongside turning velocities. In particular, distinguish this failure mechanism: A gauge only at the inner wall can miss outer-wall overtopping. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：V=4 m/s; width=6 m; curvatureRadius=30 m; levelDifference=4**2*6/(9.81*30)=0.326198 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: V=4 m/s; width=6 m; curvatureRadius=30 m; levelDifference=4**2*6/(9.81*30)=0.326198 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "同步量測內外側水位與波峰並對照轉彎速度場。應將原始量測與本單元模型的輸入條件對齊，並針對「只在內側設水位計會漏掉外側越流」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure levels and crests at both walls simultaneously alongside turning velocities. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: A gauge only at the inner wall can miss outer-wall overtopping. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只在內側設水位計會漏掉外側越流。診斷時應採取以下查核：同步量測內外側水位與波峰並對照轉彎速度場，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~A gauge only at the inner wall can miss outer-wall overtopping. Diagnose it by the following check: Measure levels and crests at both walls simultaneously alongside turning velocities. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "側槽同一斷面的水面必定完全水平~The water surface must be perfectly level across every side-channel section",
+      "practice": "交接時以同步量測內外側水位與波峰並對照轉彎速度場作為可追溯證據，保存對應材料、構形與工況版本。針對只在內側設水位計會漏掉外側越流，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure levels and crests at both walls simultaneously alongside turning velocities. Record material, geometry and operating-state versions. Address this scenario: A gauge only at the inner wall can miss outer-wall overtopping. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "波峰餘高與牆頂~Wave allowance and wall crest",
+      "title": "波峰餘高與牆頂~Wave allowance and wall crest",
+      "mechanism": "側入水舌的碰撞會產生交叉波與噴濺，牆頂核對需區分平均水深、波幅與測量不確定度。簡單加總只整理已選定工況的幾何餘量，不會自動提供完整可靠度；洪水歷線與短暫浪峰仍要在試驗中覆蓋。 驗證時應以高頻水位與影像核對最大浪峰是否集中於局部牆段，並辨識以下失效情境：時間平均水深會掩蓋短暫越頂噴流。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Colliding lateral jets generate cross-waves and splash. Separate mean depth, wave amplitude and measurement uncertainty when checking a wall crest. A simple sum organizes geometry for an assumed case rather than establishing reliability; test hydrographs and short-lived crests as part of the boundary coverage. Test this interpretation with the following evidence: Use rapid level records and imagery to locate concentrated wave crests along walls. In particular, distinguish this failure mechanism: Time-averaged depth conceals brief overtopping jets. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：wallHeight=5 m; meanDepth=3.6 m; waveCrestAboveMean=0.8 m; geometricClearance=5-3.6-0.8=0.60 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: wallHeight=5 m; meanDepth=3.6 m; waveCrestAboveMean=0.8 m; geometricClearance=5-3.6-0.8=0.60 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以高頻水位與影像核對最大浪峰是否集中於局部牆段。應將原始量測與本單元模型的輸入條件對齊，並針對「時間平均水深會掩蓋短暫越頂噴流」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Use rapid level records and imagery to locate concentrated wave crests along walls. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Time-averaged depth conceals brief overtopping jets. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "時間平均水深會掩蓋短暫越頂噴流。診斷時應採取以下查核：以高頻水位與影像核對最大浪峰是否集中於局部牆段，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Time-averaged depth conceals brief overtopping jets. Diagnose it by the following check: Use rapid level records and imagery to locate concentrated wave crests along walls. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "平均水面低於牆頂就保證不會越流~A mean water surface below the wall guarantees no overtopping",
+      "practice": "交接時以以高頻水位與影像核對最大浪峰是否集中於局部牆段作為可追溯證據，保存對應材料、構形與工況版本。針對時間平均水深會掩蓋短暫越頂噴流，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Use rapid level records and imagery to locate concentrated wave crests along walls. Record material, geometry and operating-state versions. Address this scenario: Time-averaged depth conceals brief overtopping jets. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "底板排水與回水~Floor drainage and backwater",
+      "title": "底板排水與回水~Floor drainage and backwater",
+      "mechanism": "側槽底板可能同時受地下水與表面變動壓力作用，排水出口若被下游水淹沒，原本自由排水條件會改變。淨水頭差應使用同時工況而非把不同洪水時刻的極值拼接；排水失效需與結構抗浮共同檢查。 驗證時應同步量測底板上下水頭並檢查排水出口淹沒時段，並辨識以下失效情境：下游回水使排水反灌可升高底板下壓力。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Groundwater and fluctuating surface pressure act on the floor together. A submerged drainage outlet changes the original free-drainage boundary. Use simultaneous states for differential head rather than combining incompatible extremes from different times, and evaluate drainage failure alongside structural uplift resistance. Test this interpretation with the following evidence: Measure heads above and below the floor together and identify outlet submergence periods. In particular, distinguish this failure mechanism: Downstream backwater can reverse drainage and raise subfloor pressure. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：underFloorHead=108 m; surfaceHead=105 m; gammaWater=9.81 kN/m3; netPressure=(108-105)*9.81=29.43 kPa。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: underFloorHead=108 m; surfaceHead=105 m; gammaWater=9.81 kN/m3; netPressure=(108-105)*9.81=29.43 kPa. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "同步量測底板上下水頭並檢查排水出口淹沒時段。應將原始量測與本單元模型的輸入條件對齊，並針對「下游回水使排水反灌可升高底板下壓力」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure heads above and below the floor together and identify outlet submergence periods. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Downstream backwater can reverse drainage and raise subfloor pressure. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "下游回水使排水反灌可升高底板下壓力。診斷時應採取以下查核：同步量測底板上下水頭並檢查排水出口淹沒時段，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Downstream backwater can reverse drainage and raise subfloor pressure. Diagnose it by the following check: Measure heads above and below the floor together and identify outlet submergence periods. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "排水孔存在就保證底板下沒有揚壓~The presence of drains guarantees no pressure beneath the floor",
+      "practice": "交接時以同步量測底板上下水頭並檢查排水出口淹沒時段作為可追溯證據，保存對應材料、構形與工況版本。針對下游回水使排水反灌可升高底板下壓力，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure heads above and below the floor together and identify outlet submergence periods. Record material, geometry and operating-state versions. Address this scenario: Downstream backwater can reverse drainage and raise subfloor pressure. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "漂流木與有效堰長~Debris and effective crest length",
+      "title": "漂流木與有效堰長~Debris and effective crest length",
+      "mechanism": "漂流木可能卡在堰口與局部支柱，使有效堰長減少並改變側向入流分布。若暫時假設係數不變，可用堰長比估流量變化，但真實堵塞也會改變接近流與局部水頭；應以不同堵塞位置而非單一比例驗證。 驗證時應以多種堵塞位置觀察槽內水位與入流分配改變，並辨識以下失效情境：相同堵塞比例位於出口附近可能造成更強局部回水。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Debris can reduce effective crest length and redistribute lateral inflow. A length-ratio estimate holds the coefficient and head fixed, while real blockage also changes approach flow and local head. Test different blockage locations rather than assuming one percentage completely describes the hydraulic consequence. Test this interpretation with the following evidence: Observe level and inflow redistribution for several debris-blockage locations. In particular, distinguish this failure mechanism: The same blockage fraction near the outlet can produce stronger local backwater. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：fixedHeadAndCoefficient; clearLength=40 m; blockedLength=10 m; remainingCapacityFraction=(40-10)/40=0.75。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: fixedHeadAndCoefficient; clearLength=40 m; blockedLength=10 m; remainingCapacityFraction=(40-10)/40=0.75. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以多種堵塞位置觀察槽內水位與入流分配改變。應將原始量測與本單元模型的輸入條件對齊，並針對「相同堵塞比例位於出口附近可能造成更強局部回水」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Observe level and inflow redistribution for several debris-blockage locations. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: The same blockage fraction near the outlet can produce stronger local backwater. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "相同堵塞比例位於出口附近可能造成更強局部回水。診斷時應採取以下查核：以多種堵塞位置觀察槽內水位與入流分配改變，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~The same blockage fraction near the outlet can produce stronger local backwater. Diagnose it by the following check: Observe level and inflow redistribution for several debris-blockage locations. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "堵塞百分比相同就代表水力影響完全相同~Equal blockage percentages always produce identical hydraulic effects",
+      "practice": "交接時以以多種堵塞位置觀察槽內水位與入流分配改變作為可追溯證據，保存對應材料、構形與工況版本。針對相同堵塞比例位於出口附近可能造成更強局部回水，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Observe level and inflow redistribution for several debris-blockage locations. Record material, geometry and operating-state versions. Address this scenario: The same blockage fraction near the outlet can produce stronger local backwater. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "模型守恆與驗證~Model conservation and validation",
+      "title": "模型守恆與驗證~Model conservation and validation",
+      "mechanism": "三維側槽試驗或數值模型需同時通過水量平衡與水面線比較，單一出口流量吻合不代表流場正確。用控制體殘差可找出量測或網格問題，但小殘差也可能伴隨錯誤的紊流與邊界設定；應另比較局部波動與速度。 驗證時應核對各入口總量與出口量並比較獨立水位測線，並辨識以下失效情境：只調參至流量守恆可能保留錯誤水面與流速分布。這有助於確認模型的水流、受力或量測邊界是否仍成立。~A three-dimensional side-channel model needs both mass balance and profile validation. Matching outlet discharge does not prove the flow field. A control-volume residual flags measurement or discretization issues, but a small residual can coexist with wrong turbulence or boundaries; compare local velocities and fluctuations independently. Test this interpretation with the following evidence: Reconcile all inlet and outlet flows and compare independent water-level transects. In particular, distinguish this failure mechanism: Tuning only for mass balance can preserve incorrect water-level and velocity distributions. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：MeasuredInflow=100 m3/s; measuredOutflow=98 m3/s; steady residual=(100-98)/100*100=2 percent。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: MeasuredInflow=100 m3/s; measuredOutflow=98 m3/s; steady residual=(100-98)/100*100=2 percent. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "核對各入口總量與出口量並比較獨立水位測線。應將原始量測與本單元模型的輸入條件對齊，並針對「只調參至流量守恆可能保留錯誤水面與流速分布」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Reconcile all inlet and outlet flows and compare independent water-level transects. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Tuning only for mass balance can preserve incorrect water-level and velocity distributions. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只調參至流量守恆可能保留錯誤水面與流速分布。診斷時應採取以下查核：核對各入口總量與出口量並比較獨立水位測線，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Tuning only for mass balance can preserve incorrect water-level and velocity distributions. Diagnose it by the following check: Reconcile all inlet and outlet flows and compare independent water-level transects. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "水量守恆通過就證明整個三維模型完全正確~Passing mass balance proves that the entire three-dimensional model is correct",
+      "practice": "交接時以核對各入口總量與出口量並比較獨立水位測線作為可追溯證據，保存對應材料、構形與工況版本。針對只調參至流量守恆可能保留錯誤水面與流速分布，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Reconcile all inlet and outlet flows and compare independent water-level transects. Record material, geometry and operating-state versions. Address this scenario: Tuning only for mass balance can preserve incorrect water-level and velocity distributions. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    }
+  ],
+  "facts": [
+    "教學假設：沿程入流與累積；Uniform lateral input=2 m2/s; channelLength=40 m; upstreamQ=0; outletQ=2*40=80 m3/s~Teaching assumption: Lateral inflow accumulation; Uniform lateral input=2 m2/s; channelLength=40 m; upstreamQ=0; outletQ=2*40=80 m3/s",
+    "教學假設：長堰流量與水頭；Assumed coefficient C=1.7 m0.5/s; crestLength=30 m; head=1.2 m; Q=1.7*30*1.2**1.5=67.0412 m3/s~Teaching assumption: Long crest discharge and head; Assumed coefficient C=1.7 m0.5/s; crestLength=30 m; head=1.2 m; Q=1.7*30*1.2**1.5=67.0412 m3/s",
+    "教學假設：側入動量與轉向；rho=1000 kg/m3; axialOutflow=80 m3/s at4 m/s; lateral axial velocity=0; outgoingAxialMomentum=1000*80*4/1000=320 kN~Teaching assumption: Lateral momentum and turning; rho=1000 kg/m3; axialOutflow=80 m3/s at4 m/s; lateral axial velocity=0; outgoingAxialMomentum=1000*80*4/1000=320 kN",
+    "教學假設：斷面速度與水深；Q=90 m3/s; width=8 m; depth=3 m; meanV=90/(8*3)=3.75 m/s~Teaching assumption: Section velocity and depth; Q=90 m3/s; width=8 m; depth=3 m; meanV=90/(8*3)=3.75 m/s",
+    "教學假設：出口臨界控制；Q=80 m3/s; outletWidth=8 m; q=10 m2/s; criticalDepth=(10**2/9.81)**(1/3)=2.16825 m~Teaching assumption: Critical outlet control; Q=80 m3/s; outletWidth=8 m; q=10 m2/s; criticalDepth=(10**2/9.81)**(1/3)=2.16825 m",
+    "教學假設：橫向水位與彎流；V=4 m/s; width=6 m; curvatureRadius=30 m; levelDifference=4**2*6/(9.81*30)=0.326198 m~Teaching assumption: Transverse level and curved flow; V=4 m/s; width=6 m; curvatureRadius=30 m; levelDifference=4**2*6/(9.81*30)=0.326198 m"
+  ],
+  "timeline": [
+    {
+      "year": "1978",
+      "event": "美國墾務局消能池與消能工專論修訂版出版~Reclamation publishes its revised stilling-basin and energy-dissipator monograph"
+    },
+    {
+      "year": "1980",
+      "event": "美國墾務局水力試驗技術手冊出版，提供試驗方法脈絡~Reclamation publishes Hydraulic Laboratory Techniques as a laboratory-method reference"
+    },
+    {
+      "year": "1987",
+      "event": "美國墾務局小壩設計第三版出版，整合水工設計經驗~Reclamation publishes the third edition of Design of Small Dams"
+    }
+  ],
+  "codes": [
+    "美國墾務局小壩設計第三版~Reclamation Design of Small Dams third edition",
+    "美國墾務局水力試驗技術手冊~Reclamation Hydraulic Laboratory Techniques"
+  ],
+  "landmarks": [
+    "方特內爾壩（側槽模型比較）~Fontenelle Dam (side-channel model comparison)",
+    "胡佛壩（水工系統比較）~Hoover Dam (hydraulic-system comparison)"
+  ],
+  "place": {
+    "name": "美國墾務局丹佛技術服務中心參照點~Reclamation Denver Technical Service Center reference",
+    "country": "美國~United States",
+    "lat": 39.719,
+    "lng": -105.129,
+    "query": "Bureau of Reclamation Technical Service Center Denver Federal Center"
+  },
+  "sources": [
+    {
+      "key": "usbr-manuals",
+      "title": "美國墾務局水工手冊與專論目錄",
+      "titleEn": "Reclamation hydraulic manuals and monographs",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方目錄核實 1978 消能工專論、1980 水力試驗技術、1987 小壩設計及1990氣蝕專論；目錄日期不是工程啟用年。",
+      "scopeEn": "Official catalog verifies the 1978 dissipator monograph, 1980 laboratory techniques, 1987 small-dam manual and 1990 cavitation monograph; publication dates are not project commissioning dates."
+    },
+    {
+      "key": "usbr-fontenelle-model",
+      "title": "方特內爾壩側槽水力模型報告",
+      "titleEn": "Fontenelle Dam spillway hydraulic model studies",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/HYD/HYD-486.pdf",
+      "sourceType": "primary",
+      "scope": "已取回1962年雙側槽、陡槽與消能池試驗報告，用於比較模型驗證流程，不移植其設計參數。",
+      "scopeEn": "Retrieved the 1962 double-side-channel, chute and basin study; used to compare validation methods without transplanting design parameters."
+    },
+    {
+      "key": "usace-spillway",
+      "title": "USACE 溢洪道水力設計手冊",
+      "titleEn": "USACE hydraulic design of spillways",
+      "publisher": "U.S. Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/31363033/",
+      "sourceType": "primary",
+      "scope": "官方索引核實EM1110-2-1603與1990年日期；直接頁面取回受限，不聲稱全文閱讀。",
+      "scopeEn": "Official index verifies EM1110-2-1603 and its 1990 date; direct retrieval was restricted, and full-text review is not claimed."
+    },
+    {
+      "key": "hoover-owner",
+      "title": "胡佛壩業主工程與歷史入口",
+      "titleEn": "Hoover Dam owner engineering and history portal",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/lc/hooverdam/",
+      "sourceType": "primary",
+      "scope": "業主公開工程、歷史及水務資料入口；本課以水工系統作比較，不主張每種工法在此使用。",
+      "scopeEn": "Owner portal for engineering, history and water operations; a hydraulic-system comparison, not an assertion that every method is used there."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Bureau of Reclamation（公開資料機構）",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究側入動量與轉向與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Lateral momentum and turning and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    },
+    {
+      "name": "U.S. Army Corps of Engineers（公開資料機構）",
+      "nameEn": "U.S. Army Corps of Engineers",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/31363033/",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究側入動量與轉向與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Lateral momentum and turning and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    }
+  ],
+  "related": [
+    "b248",
+    "b249"
+  ],
+  "architectureNodes": [
+    [
+      "沿程入流與累積",
+      "Lateral inflow accumulation"
+    ],
+    [
+      "側入動量與轉向",
+      "Lateral momentum and turning"
+    ],
+    [
+      "出口臨界控制",
+      "Critical outlet control"
+    ],
+    [
+      "波峰餘高與牆頂",
+      "Wave allowance and wall crest"
+    ],
+    [
+      "模型守恆與驗證",
+      "Model conservation and validation"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      0,
+      3
+    ]
+  ]
+}

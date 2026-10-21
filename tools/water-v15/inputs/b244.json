@@ -1,0 +1,273 @@
+{
+  "id": "b244",
+  "title": "溢洪道消能池~Stilling basins for spillways",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "focus": "由水躍共軛水深連結尾水底板與消能驗證~Connecting hydraulic-jump depths tailwater slabs and energy-dissipation verification",
+  "summary": "本課以由水躍共軛水深連結尾水底板與消能驗證為主線，先用單寬流量與入流與福祿數與流態界定水力與構造條件，再將尾水餘量與跳躍、墩塊動量作用連結到模型比例與尺度。只採矩形明渠及局部穩態示意；消能池型式與尺寸須依完整水理及結構試驗。 每單元以原創算例、量測與失效辨識共同檢查推論。~This course develops connecting hydraulic-jump depths tailwater slabs and energy-dissipation verification through Unit discharge and approach flow and Froude number and regime, then connects Tailwater margin and jump position and Baffle-block momentum action to Model ratios and scale effects. Rectangular-channel and locally steady examples do not select basin type or replace hydraulic and structural testing. Each unit combines original calculation, measurement and failure diagnosis to test the inference.",
+  "history": "本課所研究的由水躍共軛水深連結尾水底板與消能驗證，反映水工設計由單一尺寸選取走向水流、材料、施工與長期監測共同驗證的發展。只採矩形明渠及局部穩態示意；消能池型式與尺寸須依完整水理及結構試驗。 美國墾務局官方目錄列有1978年消能工專論、1980年水力試驗技術及1987年小壩設計，這些是技術文件出版年份，不是本課假想工程的啟用日期。所列具名工程只供公開原理與邊界比較，不主張取得其設計圖、現場紀錄或專有參數。~The focus on connecting hydraulic-jump depths tailwater slabs and energy-dissipation verification reflects development from isolated sizing toward joint verification of flow, materials, construction and long-term observations. Rectangular-channel and locally steady examples do not select basin type or replace hydraulic and structural testing. The Reclamation catalog lists the 1978 energy-dissipator monograph, 1980 hydraulic laboratory techniques and 1987 small-dam manual. These are publication dates, not commissioning dates for a hypothetical project. Named works support comparisons of public principles and boundaries; this course claims no access to proprietary drawings, field records or project parameters.",
+  "example": "整合算例輸入全為教學假設，先檢查單寬流量與入流：Q=240 m3/s; width=20 m; depth=1 m; meanVelocity=240/(20*1)=12 m/s；再獨立檢查福祿數與流態：V=12 m/s; y=1 m; g=9.81 m/s2; Fr=12/sqrt(9.81*1)=3.83131 dimensionless。敏感度：流速由12增為15m/s且入流水深維持1m，福祿數由3.831增為4.789，共軛水深由4.941增為6.291m；尾水需求不隨速度線性增加。 兩個結果須按各自量綱解釋，不能直接相加或當成完整設計。只採矩形明渠及局部穩態示意；消能池型式與尺寸須依完整水理及結構試驗。 將核對採樣頻率與抗混疊設定並比較相鄰壓力感測器的相干性作為獨立驗證，明確列出尚缺的現地輸入及其對結論的影響。~Every input in this integrated example is a teaching assumption. First examine Unit discharge and approach flow: Q=240 m3/s; width=20 m; depth=1 m; meanVelocity=240/(20*1)=12 m/s. Independently examine Froude number and regime: V=12 m/s; y=1 m; g=9.81 m/s2; Fr=12/sqrt(9.81*1)=3.83131 dimensionless. Sensitivity: increasing velocity from12 to15m/s at1m incoming depth changes Froude number from3.831 to4.789 and conjugate depth from4.941 to6.291m. Tailwater demand therefore does not scale linearly with velocity. Interpret each result in its own dimensions rather than adding them or treating them as a complete design. Rectangular-channel and locally steady examples do not select basin type or replace hydraulic and structural testing. Use the following independent check: Check sample rate and anti-alias filtering and compare coherence between adjacent pressure sensors. Identify missing field inputs and state which conclusions depend on them.",
+  "units": [
+    {
+      "anchor": "單寬流量與入流~Unit discharge and approach flow",
+      "title": "單寬流量與入流~Unit discharge and approach flow",
+      "mechanism": "消能池入流可能沿寬度不均，平均單寬流量只能作第一輪水力整理。槽末彎道、墩柱與收縮會讓局部速度高於平均，進而改變水躍位置與底板壓力。先核對有效過水寬及水深定義，再把全寬分布與整體流量相互核算。 驗證時應以橫向多點速度與水深積分核對總流量，並辨識以下失效情境：忽略局部高速帶會低估局部水躍與底板荷載。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Basin inflow may vary across the width, so mean unit discharge is an initial bookkeeping measure. Bends, piers and contraction can create local velocities above the mean and shift the jump and slab pressures. Check effective width and depth definitions, then reconcile cross-sectional distributions with total discharge. Test this interpretation with the following evidence: Integrate transverse velocity and depth measurements to check total discharge. In particular, distinguish this failure mechanism: Ignoring high-velocity strips underestimates local jump behavior and slab loading. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Q=240 m3/s; width=20 m; depth=1 m; meanVelocity=240/(20*1)=12 m/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Q=240 m3/s; width=20 m; depth=1 m; meanVelocity=240/(20*1)=12 m/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以橫向多點速度與水深積分核對總流量。應將原始量測與本單元模型的輸入條件對齊，並針對「忽略局部高速帶會低估局部水躍與底板荷載」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Integrate transverse velocity and depth measurements to check total discharge. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Ignoring high-velocity strips underestimates local jump behavior and slab loading. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "忽略局部高速帶會低估局部水躍與底板荷載。診斷時應採取以下查核：以橫向多點速度與水深積分核對總流量，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Ignoring high-velocity strips underestimates local jump behavior and slab loading. Diagnose it by the following check: Integrate transverse velocity and depth measurements to check total discharge. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "平均流速可以當作整個消能池最大流速~Mean velocity represents the maximum velocity throughout the basin",
+      "practice": "交接時以以橫向多點速度與水深積分核對總流量作為可追溯證據，保存對應材料、構形與工況版本。針對忽略局部高速帶會低估局部水躍與底板荷載，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Integrate transverse velocity and depth measurements to check total discharge. Record material, geometry and operating-state versions. Address this scenario: Ignoring high-velocity strips underestimates local jump behavior and slab loading. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "福祿數與流態~Froude number and regime",
+      "title": "福祿數與流態~Froude number and regime",
+      "mechanism": "福祿數比較慣性與重力作用，矩形斷面以水深作水力深度。超臨界入流需要透過水躍或其他機制轉換，但福祿數本身不能選定消能池完整構造；相同數值下，入流水層厚度、含氣量與尾水變動仍可能產生不同壓力波動。 驗證時應比較表面波傳播與實測水深速度並標示斷面形狀，並辨識以下失效情境：非矩形槽誤用總水深會算錯控制流態的水力深度。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Froude number compares inertia with gravity, using water depth as hydraulic depth in a rectangular section. Supercritical flow requires a transition mechanism, but the number alone does not select a complete basin design. Incoming layer thickness, aeration and tailwater variation can produce different pressure fluctuations at the same value. Test this interpretation with the following evidence: Compare surface-wave behavior with measured depth and velocity and identify section geometry. In particular, distinguish this failure mechanism: Using total depth in a nonrectangular channel misstates the hydraulic depth. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：V=12 m/s; y=1 m; g=9.81 m/s2; Fr=12/sqrt(9.81*1)=3.83131 dimensionless。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: V=12 m/s; y=1 m; g=9.81 m/s2; Fr=12/sqrt(9.81*1)=3.83131 dimensionless. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較表面波傳播與實測水深速度並標示斷面形狀。應將原始量測與本單元模型的輸入條件對齊，並針對「非矩形槽誤用總水深會算錯控制流態的水力深度」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare surface-wave behavior with measured depth and velocity and identify section geometry. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Using total depth in a nonrectangular channel misstates the hydraulic depth. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "非矩形槽誤用總水深會算錯控制流態的水力深度。診斷時應採取以下查核：比較表面波傳播與實測水深速度並標示斷面形狀，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Using total depth in a nonrectangular channel misstates the hydraulic depth. Diagnose it by the following check: Compare surface-wave behavior with measured depth and velocity and identify section geometry. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "福祿數相同就保證全部局部壓力相同~Equal Froude numbers guarantee equal local pressures everywhere",
+      "practice": "交接時以比較表面波傳播與實測水深速度並標示斷面形狀作為可追溯證據，保存對應材料、構形與工況版本。針對非矩形槽誤用總水深會算錯控制流態的水力深度，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare surface-wave behavior with measured depth and velocity and identify section geometry. Record material, geometry and operating-state versions. Address this scenario: Using total depth in a nonrectangular channel misstates the hydraulic depth. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "共軛水深與動量~Conjugate depth and momentum",
+      "title": "共軛水深與動量~Conjugate depth and momentum",
+      "mechanism": "短水躍可在忽略床面摩阻且壓力近靜水的前後斷面使用動量平衡，得到共軛水深。這不是能量守恆問題，因渦流會耗散機械能；若有強烈坡度、墩塊或淹沒效應，需將外力與邊界納入，而不能硬套水平矩形公式。 驗證時應在滾流區外量測上下游水深並核對尾水是否控制跳躍，並辨識以下失效情境：在紊亂滾流內取水深會破壞靜水壓斷面的假設。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Across a short jump, momentum balance between approximately hydrostatic sections gives conjugate depths when bed friction is neglected. Mechanical energy is dissipated, so energy conservation cannot replace momentum. Strong slope, appurtenance forces or submergence require additional boundary terms instead of unconditional use of the horizontal rectangular formula. Test this interpretation with the following evidence: Measure depths outside the roller and check whether tailwater controls jump position. In particular, distinguish this failure mechanism: Sampling depth inside the turbulent roller violates the hydrostatic-section assumption. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：y1=1 m; Fr1=12/sqrt(9.81); y2=0.5*y1*(sqrt(1+8*Fr1**2)-1)=4.94130 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: y1=1 m; Fr1=12/sqrt(9.81); y2=0.5*y1*(sqrt(1+8*Fr1**2)-1)=4.94130 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "在滾流區外量測上下游水深並核對尾水是否控制跳躍。應將原始量測與本單元模型的輸入條件對齊，並針對「在紊亂滾流內取水深會破壞靜水壓斷面的假設」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure depths outside the roller and check whether tailwater controls jump position. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Sampling depth inside the turbulent roller violates the hydrostatic-section assumption. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "在紊亂滾流內取水深會破壞靜水壓斷面的假設。診斷時應採取以下查核：在滾流區外量測上下游水深並核對尾水是否控制跳躍，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Sampling depth inside the turbulent roller violates the hydrostatic-section assumption. Diagnose it by the following check: Measure depths outside the roller and check whether tailwater controls jump position. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "水躍前後可用機械能相等直接求水深~Equal mechanical energy determines depths across a hydraulic jump",
+      "practice": "交接時以在滾流區外量測上下游水深並核對尾水是否控制跳躍作為可追溯證據，保存對應材料、構形與工況版本。針對在紊亂滾流內取水深會破壞靜水壓斷面的假設，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure depths outside the roller and check whether tailwater controls jump position. Record material, geometry and operating-state versions. Address this scenario: Sampling depth inside the turbulent roller violates the hydrostatic-section assumption. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "水躍能量損失~Hydraulic jump energy loss",
+      "title": "水躍能量損失~Hydraulic jump energy loss",
+      "mechanism": "矩形水躍的能量損失取決於共軛水深差，能量主要進入大渦、紊流與含氣混合，而不是全部變成可回收功。用每單位重量的水頭損失描述，才能與上游速度水頭一致比較；不應將水頭數字直接當作功率。 驗證時應比較上下游比能與流量並確認斷面遠離滾流區，並辨識以下失效情境：把量測壓力波動當靜水深可能造成假能量增益。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Energy loss in a rectangular jump depends on the conjugate-depth difference and feeds large eddies, turbulence and air mixing. Express it as head per unit weight for comparison with approach velocity head. Head is not power; conversion to an energy rate additionally requires density, gravity and discharge. Test this interpretation with the following evidence: Compare upstream and downstream specific energy and discharge outside the roller. In particular, distinguish this failure mechanism: Treating fluctuating pressure as hydrostatic depth can create an apparent energy gain. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Conjugate depths y1=1 m,y2=5 m; headLoss=(5-1)**3/(4*1*5)=3.20 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Conjugate depths y1=1 m,y2=5 m; headLoss=(5-1)**3/(4*1*5)=3.20 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較上下游比能與流量並確認斷面遠離滾流區。應將原始量測與本單元模型的輸入條件對齊，並針對「把量測壓力波動當靜水深可能造成假能量增益」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare upstream and downstream specific energy and discharge outside the roller. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Treating fluctuating pressure as hydrostatic depth can create an apparent energy gain. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把量測壓力波動當靜水深可能造成假能量增益。診斷時應採取以下查核：比較上下游比能與流量並確認斷面遠離滾流區，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Treating fluctuating pressure as hydrostatic depth can create an apparent energy gain. Diagnose it by the following check: Compare upstream and downstream specific energy and discharge outside the roller. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "消散的機械能會自動變成可利用電力~Dissipated mechanical energy automatically becomes usable electrical power",
+      "practice": "交接時以比較上下游比能與流量並確認斷面遠離滾流區作為可追溯證據，保存對應材料、構形與工況版本。針對把量測壓力波動當靜水深可能造成假能量增益，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare upstream and downstream specific energy and discharge outside the roller. Record material, geometry and operating-state versions. Address this scenario: Treating fluctuating pressure as hydrostatic depth can create an apparent energy gain. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "尾水餘量與跳躍~Tailwater margin and jump position",
+      "title": "尾水餘量與跳躍~Tailwater margin and jump position",
+      "mechanism": "尾水不足會使水躍向下游移動甚至掃出池外，過高尾水則可能造成淹沒與不同壓力型態。比較尾水和所需共軛水深的差值有助整理工況，但不構成單一安全準則；應對洪水歷線、河床變動及下游控制進行組合試驗。 驗證時應逐一比較流量與尾水配對下的水躍位置和出池流速，並辨識以下失效情境：只測最高洪水可能漏掉中流量尾水不足的工況。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Insufficient tailwater can move the jump downstream or sweep it out of the basin; excessive tailwater can submerge it and change pressures. The depth difference organizes operating cases but is not a universal safety criterion. Test flood hydrographs, bed changes and downstream controls in relevant combinations. Test this interpretation with the following evidence: Compare jump location and exit velocity for paired discharge and tailwater conditions. In particular, distinguish this failure mechanism: Testing only the largest flood can miss inadequate tailwater at intermediate discharge. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：ObservedTailwater=5.4 m; requiredConjugateDepth=5.0 m; depthMargin=5.4-5.0=0.40 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: ObservedTailwater=5.4 m; requiredConjugateDepth=5.0 m; depthMargin=5.4-5.0=0.40 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "逐一比較流量與尾水配對下的水躍位置和出池流速。應將原始量測與本單元模型的輸入條件對齊，並針對「只測最高洪水可能漏掉中流量尾水不足的工況」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare jump location and exit velocity for paired discharge and tailwater conditions. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Testing only the largest flood can miss inadequate tailwater at intermediate discharge. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只測最高洪水可能漏掉中流量尾水不足的工況。診斷時應採取以下查核：逐一比較流量與尾水配對下的水躍位置和出池流速，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Testing only the largest flood can miss inadequate tailwater at intermediate discharge. Diagnose it by the following check: Compare jump location and exit velocity for paired discharge and tailwater conditions. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "最大洪水必定是水躍位置最不利工況~The largest flood is always the worst jump-location condition",
+      "practice": "交接時以逐一比較流量與尾水配對下的水躍位置和出池流速作為可追溯證據，保存對應材料、構形與工況版本。針對只測最高洪水可能漏掉中流量尾水不足的工況，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare jump location and exit velocity for paired discharge and tailwater conditions. Record material, geometry and operating-state versions. Address this scenario: Testing only the largest flood can miss inadequate tailwater at intermediate discharge. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "底板揚壓與排水~Slab uplift and drainage",
+      "title": "底板揚壓與排水~Slab uplift and drainage",
+      "mechanism": "底板下滲透壓與板面脈動壓力共同決定淨向上作用，排水有效性可隨堵塞改變。以平均水頭差估揚力只處理靜態部分；接縫入壓、錨筋分配及板塊動態反應需另分析，不能用自重平衡取代完整疲勞與掀板評估。 驗證時應同步量測板面與板底壓力並檢查排水孔通暢與接縫狀態，並辨識以下失效情境：接縫高速入水可瞬間增加局部底板下壓力。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Subslab pressure and fluctuating surface pressure determine net uplift, while drain effectiveness can deteriorate through blockage. An average head difference estimates only a static component. Joint pressurization, anchor load distribution and slab dynamics require separate checks; simple deadweight balance does not replace fatigue or hydraulic-jacking assessment. Test this interpretation with the following evidence: Measure pressures above and below the slab simultaneously and inspect drains and joints. In particular, distinguish this failure mechanism: High-speed flow entering a joint can rapidly increase local subslab pressure. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; g=9.81 m/s2; netHead=2 m; slabArea=30 m2; uplift=1000*9.81*2*30/1000=588.6 kN。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; g=9.81 m/s2; netHead=2 m; slabArea=30 m2; uplift=1000*9.81*2*30/1000=588.6 kN. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "同步量測板面與板底壓力並檢查排水孔通暢與接縫狀態。應將原始量測與本單元模型的輸入條件對齊，並針對「接縫高速入水可瞬間增加局部底板下壓力」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure pressures above and below the slab simultaneously and inspect drains and joints. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: High-speed flow entering a joint can rapidly increase local subslab pressure. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "接縫高速入水可瞬間增加局部底板下壓力。診斷時應採取以下查核：同步量測板面與板底壓力並檢查排水孔通暢與接縫狀態，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~High-speed flow entering a joint can rapidly increase local subslab pressure. Diagnose it by the following check: Measure pressures above and below the slab simultaneously and inspect drains and joints. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "平均揚壓合格就排除了瞬時掀板風險~Acceptable mean uplift eliminates transient slab-lifting risk",
+      "practice": "交接時以同步量測板面與板底壓力並檢查排水孔通暢與接縫狀態作為可追溯證據，保存對應材料、構形與工況版本。針對接縫高速入水可瞬間增加局部底板下壓力，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure pressures above and below the slab simultaneously and inspect drains and joints. Record material, geometry and operating-state versions. Address this scenario: High-speed flow entering a joint can rapidly increase local subslab pressure. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "墩塊動量作用~Baffle-block momentum action",
+      "title": "墩塊動量作用~Baffle-block momentum action",
+      "mechanism": "墩塊以改變水流方向和速度承受動量作用，同時產生局部壓力脈動與渦流。集中動量估算只描述給定流束的平均作用，實際分配受旁通與三維流影響；墩塊基部、錨定與磨耗應按相同水力工況共同檢驗。 驗證時應用力計與高速水面影像核對受流範圍及作用方向，並辨識以下失效情境：流束偏移可能使單一墩塊承受遠高於平均的負荷。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Baffles redirect flow and absorb momentum while generating local pressure fluctuations and vortices. A concentrated-stream estimate describes mean action for a prescribed stream, but bypass and three-dimensional flow alter distribution. Check block bases, anchorage and abrasion under consistent hydraulic conditions rather than treating force alone as sufficient. Test this interpretation with the following evidence: Use force measurements and high-speed surface images to confirm intercepted flow and force direction. In particular, distinguish this failure mechanism: A displaced jet can load one baffle far above the average. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：CapturedQ=8 m3/s; velocityChange=7 m/s; rho=1000 kg/m3; meanForce=1000*8*7/1000=56 kN。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: CapturedQ=8 m3/s; velocityChange=7 m/s; rho=1000 kg/m3; meanForce=1000*8*7/1000=56 kN. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "用力計與高速水面影像核對受流範圍及作用方向。應將原始量測與本單元模型的輸入條件對齊，並針對「流束偏移可能使單一墩塊承受遠高於平均的負荷」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Use force measurements and high-speed surface images to confirm intercepted flow and force direction. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: A displaced jet can load one baffle far above the average. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "流束偏移可能使單一墩塊承受遠高於平均的負荷。診斷時應採取以下查核：用力計與高速水面影像核對受流範圍及作用方向，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~A displaced jet can load one baffle far above the average. Diagnose it by the following check: Use force measurements and high-speed surface images to confirm intercepted flow and force direction. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "總動量平均分攤就代表每個墩塊受力相同~Averaging total momentum proves equal force on every baffle",
+      "practice": "交接時以用力計與高速水面影像核對受流範圍及作用方向作為可追溯證據，保存對應材料、構形與工況版本。針對流束偏移可能使單一墩塊承受遠高於平均的負荷，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Use force measurements and high-speed surface images to confirm intercepted flow and force direction. Record material, geometry and operating-state versions. Address this scenario: A displaced jet can load one baffle far above the average. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "脈動壓力與頻譜~Fluctuating pressure and spectrum",
+      "title": "脈動壓力與頻譜~Fluctuating pressure and spectrum",
+      "mechanism": "紊流壓力的均方根反映波動強度，但極值與持續時間還依頻譜、空間相關與採樣率而異。單點量測不能直接代表整塊底板合力；應建立多點同步紀錄，分辨結構共振附近的頻率與一般寬頻湍流。 驗證時應核對採樣頻率與抗混疊設定並比較相鄰壓力感測器的相干性，並辨識以下失效情境：採樣過慢可把高頻壓力錯折成假的低頻共振。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Pressure RMS describes fluctuation intensity, while extremes and duration depend on spectrum, spatial correlation and sampling. One sensor does not define the resultant on a whole slab. Use synchronized arrays to distinguish excitation near structural resonance from broader turbulence and preserve the observation duration used for statistics. Test this interpretation with the following evidence: Check sample rate and anti-alias filtering and compare coherence between adjacent pressure sensors. In particular, distinguish this failure mechanism: Slow sampling can alias high-frequency pressure into false low-frequency resonance. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Zero-mean samples=-6,0,6 kPa; RMS=sqrt((36+0+36)/3)=4.89898 kPa。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Zero-mean samples=-6,0,6 kPa; RMS=sqrt((36+0+36)/3)=4.89898 kPa. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "核對採樣頻率與抗混疊設定並比較相鄰壓力感測器的相干性。應將原始量測與本單元模型的輸入條件對齊，並針對「採樣過慢可把高頻壓力錯折成假的低頻共振」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Check sample rate and anti-alias filtering and compare coherence between adjacent pressure sensors. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Slow sampling can alias high-frequency pressure into false low-frequency resonance. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "採樣過慢可把高頻壓力錯折成假的低頻共振。診斷時應採取以下查核：核對採樣頻率與抗混疊設定並比較相鄰壓力感測器的相干性，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Slow sampling can alias high-frequency pressure into false low-frequency resonance. Diagnose it by the following check: Check sample rate and anti-alias filtering and compare coherence between adjacent pressure sensors. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "壓力均方根就是底板最大設計壓力~Root-mean-square pressure equals the maximum slab design pressure",
+      "practice": "交接時以核對採樣頻率與抗混疊設定並比較相鄰壓力感測器的相干性作為可追溯證據，保存對應材料、構形與工況版本。針對採樣過慢可把高頻壓力錯折成假的低頻共振，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Check sample rate and anti-alias filtering and compare coherence between adjacent pressure sensors. Record material, geometry and operating-state versions. Address this scenario: Slow sampling can alias high-frequency pressure into false low-frequency resonance. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "滯留砂礫與磨耗~Retained sediment and abrasion",
+      "title": "滯留砂礫與磨耗~Retained sediment and abrasion",
+      "mechanism": "池內回流可反覆搬運砂礫，使磨耗集中於底板與角隅，即使總體能量消散良好也會損傷表面。質量盤點能辨認材料是否滯留，但磨耗速率還受硬度、粒徑與接觸速度控制；需將清淤前後地形與實際磨耗深度聯合分析。 驗證時應重測池底高程與砂礫粒徑並核對清淤稱重紀錄，並辨識以下失效情境：反覆滾動的少量硬礫也可能造成嚴重局部磨坑。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Recirculation can repeatedly move gravel against slabs and corners even when overall dissipation is effective. A mass balance identifies retention but does not determine abrasion rate, which also depends on hardness, size and contact velocity. Compare precleaning and postcleaning bathymetry with measured surface loss. Test this interpretation with the following evidence: Resurvey basin elevations and sediment sizes and reconcile weighed cleaning records. In particular, distinguish this failure mechanism: A small quantity of repeatedly circulating hard gravel can excavate deep local pits. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：IncomingSediment=18 t; outgoingSediment=11 t; removedByCleaning=2 t; retainedIncrease=18-11-2=5 t。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: IncomingSediment=18 t; outgoingSediment=11 t; removedByCleaning=2 t; retainedIncrease=18-11-2=5 t. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "重測池底高程與砂礫粒徑並核對清淤稱重紀錄。應將原始量測與本單元模型的輸入條件對齊，並針對「反覆滾動的少量硬礫也可能造成嚴重局部磨坑」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Resurvey basin elevations and sediment sizes and reconcile weighed cleaning records. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: A small quantity of repeatedly circulating hard gravel can excavate deep local pits. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "反覆滾動的少量硬礫也可能造成嚴重局部磨坑。診斷時應採取以下查核：重測池底高程與砂礫粒徑並核對清淤稱重紀錄，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~A small quantity of repeatedly circulating hard gravel can excavate deep local pits. Diagnose it by the following check: Resurvey basin elevations and sediment sizes and reconcile weighed cleaning records. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "池內殘留砂礫少就表示磨耗可以忽略~Little retained sediment means abrasion can be ignored",
+      "practice": "交接時以重測池底高程與砂礫粒徑並核對清淤稱重紀錄作為可追溯證據，保存對應材料、構形與工況版本。針對反覆滾動的少量硬礫也可能造成嚴重局部磨坑，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Resurvey basin elevations and sediment sizes and reconcile weighed cleaning records. Record material, geometry and operating-state versions. Address this scenario: A small quantity of repeatedly circulating hard gravel can excavate deep local pits. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "模型比例與尺度~Model ratios and scale effects",
+      "title": "模型比例與尺度~Model ratios and scale effects",
+      "mechanism": "重力主導的水躍通常採福祿相似，使速度比例為長度比平方根，流量比為長度比的二分之五次方。黏性、表面張力與含氣粒徑無法同時完全相似；模型流量正確不保證氣泡與局部脈壓已等比例重現。 驗證時應核對模型雷諾數與表面張力影響並以不同尺度重複關鍵工況，並辨識以下失效情境：過小模型可能壓低含氣量並扭曲壓力波動。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Gravity-dominated jumps commonly use Froude similarity, with velocity scaling as the square root of length and discharge as length to the five-halves power. Viscosity, surface tension and bubble size cannot all be matched simultaneously. Correct discharge scaling does not guarantee reproduction of aeration or local pressure fluctuations. Test this interpretation with the following evidence: Check model Reynolds and surface-tension effects and repeat critical cases at another scale. In particular, distinguish this failure mechanism: An excessively small model can suppress aeration and distort pressure fluctuations. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Prototype/model lengthRatio=25; prototypeQ=500 m3/s; modelQ=500/25**2.5=0.160 m3/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Prototype/model lengthRatio=25; prototypeQ=500 m3/s; modelQ=500/25**2.5=0.160 m3/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "核對模型雷諾數與表面張力影響並以不同尺度重複關鍵工況。應將原始量測與本單元模型的輸入條件對齊，並針對「過小模型可能壓低含氣量並扭曲壓力波動」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Check model Reynolds and surface-tension effects and repeat critical cases at another scale. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: An excessively small model can suppress aeration and distort pressure fluctuations. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "過小模型可能壓低含氣量並扭曲壓力波動。診斷時應採取以下查核：核對模型雷諾數與表面張力影響並以不同尺度重複關鍵工況，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~An excessively small model can suppress aeration and distort pressure fluctuations. Diagnose it by the following check: Check model Reynolds and surface-tension effects and repeat critical cases at another scale. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "福祿相似保證所有物理效應完全相似~Froude similarity guarantees similarity of every physical effect",
+      "practice": "交接時以核對模型雷諾數與表面張力影響並以不同尺度重複關鍵工況作為可追溯證據，保存對應材料、構形與工況版本。針對過小模型可能壓低含氣量並扭曲壓力波動，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Check model Reynolds and surface-tension effects and repeat critical cases at another scale. Record material, geometry and operating-state versions. Address this scenario: An excessively small model can suppress aeration and distort pressure fluctuations. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    }
+  ],
+  "facts": [
+    "教學假設：單寬流量與入流；Q=240 m3/s; width=20 m; depth=1 m; meanVelocity=240/(20*1)=12 m/s~Teaching assumption: Unit discharge and approach flow; Q=240 m3/s; width=20 m; depth=1 m; meanVelocity=240/(20*1)=12 m/s",
+    "教學假設：福祿數與流態；V=12 m/s; y=1 m; g=9.81 m/s2; Fr=12/sqrt(9.81*1)=3.83131 dimensionless~Teaching assumption: Froude number and regime; V=12 m/s; y=1 m; g=9.81 m/s2; Fr=12/sqrt(9.81*1)=3.83131 dimensionless",
+    "教學假設：共軛水深與動量；y1=1 m; Fr1=12/sqrt(9.81); y2=0.5*y1*(sqrt(1+8*Fr1**2)-1)=4.94130 m~Teaching assumption: Conjugate depth and momentum; y1=1 m; Fr1=12/sqrt(9.81); y2=0.5*y1*(sqrt(1+8*Fr1**2)-1)=4.94130 m",
+    "教學假設：水躍能量損失；Conjugate depths y1=1 m,y2=5 m; headLoss=(5-1)**3/(4*1*5)=3.20 m~Teaching assumption: Hydraulic jump energy loss; Conjugate depths y1=1 m,y2=5 m; headLoss=(5-1)**3/(4*1*5)=3.20 m",
+    "教學假設：尾水餘量與跳躍；ObservedTailwater=5.4 m; requiredConjugateDepth=5.0 m; depthMargin=5.4-5.0=0.40 m~Teaching assumption: Tailwater margin and jump position; ObservedTailwater=5.4 m; requiredConjugateDepth=5.0 m; depthMargin=5.4-5.0=0.40 m",
+    "教學假設：底板揚壓與排水；rho=1000 kg/m3; g=9.81 m/s2; netHead=2 m; slabArea=30 m2; uplift=1000*9.81*2*30/1000=588.6 kN~Teaching assumption: Slab uplift and drainage; rho=1000 kg/m3; g=9.81 m/s2; netHead=2 m; slabArea=30 m2; uplift=1000*9.81*2*30/1000=588.6 kN"
+  ],
+  "timeline": [
+    {
+      "year": "1978",
+      "event": "美國墾務局消能池與消能工專論修訂版出版~Reclamation publishes its revised stilling-basin and energy-dissipator monograph"
+    },
+    {
+      "year": "1980",
+      "event": "美國墾務局水力試驗技術手冊出版，提供試驗方法脈絡~Reclamation publishes Hydraulic Laboratory Techniques as a laboratory-method reference"
+    },
+    {
+      "year": "1987",
+      "event": "美國墾務局小壩設計第三版出版，整合水工設計經驗~Reclamation publishes the third edition of Design of Small Dams"
+    }
+  ],
+  "codes": [
+    "美國墾務局小壩設計第三版~Reclamation Design of Small Dams third edition",
+    "美國墾務局水力試驗技術手冊~Reclamation Hydraulic Laboratory Techniques"
+  ],
+  "landmarks": [
+    "胡佛壩（水工系統比較）~Hoover Dam (hydraulic-system comparison)",
+    "格倫峽谷壩（水工界面比較）~Glen Canyon Dam (hydraulic-interface comparison)"
+  ],
+  "place": {
+    "name": "美國墾務局丹佛技術服務中心參照點~Reclamation Denver Technical Service Center reference",
+    "country": "美國~United States",
+    "lat": 39.719,
+    "lng": -105.129,
+    "query": "Bureau of Reclamation Technical Service Center Denver Federal Center"
+  },
+  "sources": [
+    {
+      "key": "usbr-manuals",
+      "title": "美國墾務局水工手冊與專論目錄",
+      "titleEn": "Reclamation hydraulic manuals and monographs",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方目錄核實 1978 消能工專論、1980 水力試驗技術、1987 小壩設計及1990氣蝕專論；目錄日期不是工程啟用年。",
+      "scopeEn": "Official catalog verifies the 1978 dissipator monograph, 1980 laboratory techniques, 1987 small-dam manual and 1990 cavitation monograph; publication dates are not project commissioning dates."
+    },
+    {
+      "key": "usbr-standards",
+      "title": "美國墾務局設計標準官方入口",
+      "titleEn": "Reclamation design standards portal",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html",
+      "sourceType": "primary",
+      "scope": "官方章節目錄包括反濾、滲流、監測、地震及溢洪道；適用性仍需地方規範及專案評估。",
+      "scopeEn": "Official chapters include filters, seepage, monitoring, seismic design and spillways; applicability still requires local codes and project assessment."
+    },
+    {
+      "key": "usace-spillway",
+      "title": "USACE 溢洪道水力設計手冊",
+      "titleEn": "USACE hydraulic design of spillways",
+      "publisher": "U.S. Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/31363033/",
+      "sourceType": "primary",
+      "scope": "官方索引核實EM1110-2-1603與1990年日期；直接頁面取回受限，不聲稱全文閱讀。",
+      "scopeEn": "Official index verifies EM1110-2-1603 and its 1990 date; direct retrieval was restricted, and full-text review is not claimed."
+    },
+    {
+      "key": "hoover-owner",
+      "title": "胡佛壩業主工程與歷史入口",
+      "titleEn": "Hoover Dam owner engineering and history portal",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/lc/hooverdam/",
+      "sourceType": "primary",
+      "scope": "業主公開工程、歷史及水務資料入口；本課以水工系統作比較，不主張每種工法在此使用。",
+      "scopeEn": "Owner portal for engineering, history and water operations; a hydraulic-system comparison, not an assertion that every method is used there."
+    },
+    {
+      "key": "glen-owner",
+      "title": "格倫峽谷壩業主資料",
+      "titleEn": "Glen Canyon Dam owner information",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/uc/rm/crsp/gc/",
+      "sourceType": "primary",
+      "scope": "業主資料確認壩、進水、壓力管與溢洪道的系統脈絡；不採公開庫容當本課合成模型的輸入。",
+      "scopeEn": "Owner information confirms dam, intake, penstock and spillway context; public storage figures are not inputs to synthetic lesson models."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Bureau of Reclamation（公開資料機構）",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究共軛水深與動量與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Conjugate depth and momentum and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    },
+    {
+      "name": "U.S. Army Corps of Engineers（公開資料機構）",
+      "nameEn": "U.S. Army Corps of Engineers",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/31363033/",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究共軛水深與動量與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Conjugate depth and momentum and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    }
+  ],
+  "related": [
+    "b245",
+    "b246"
+  ],
+  "architectureNodes": [
+    [
+      "單寬流量與入流",
+      "Unit discharge and approach flow"
+    ],
+    [
+      "共軛水深與動量",
+      "Conjugate depth and momentum"
+    ],
+    [
+      "尾水餘量與跳躍",
+      "Tailwater margin and jump position"
+    ],
+    [
+      "墩塊動量作用",
+      "Baffle-block momentum action"
+    ],
+    [
+      "模型比例與尺度",
+      "Model ratios and scale effects"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      0,
+      3
+    ]
+  ]
+}

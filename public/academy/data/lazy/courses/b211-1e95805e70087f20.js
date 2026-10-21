@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b211-1e95805e70087f20.json"]={sha256:"1e95805e70087f2026226270423b675ae82e88daf7fa54cf40d6adbe1aa47fa0",value:{"id":"b211","title":"塔貝拉水壩","titleEn":"Tarbela Dam","category":"water","kind":"project","summary":"以「塔貝拉水壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Tarbela Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

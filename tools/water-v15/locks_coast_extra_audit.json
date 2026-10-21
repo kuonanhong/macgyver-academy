@@ -1,0 +1,1011 @@
+{
+  "date": "2026-10-21",
+  "status": "PASS",
+  "method": "Author arithmetic recalculation using separately written Python SI expressions, rounding-aware assertions, and explicit physical-boundary review; not independent engineering certification.",
+  "courses": {
+    "b256": {
+      "inputSha256": "8a68de52f8d03846d2ac7294bdf8bcc4042472ebba9dcb212c8adf83a5c8ca6c",
+      "modelsSha256": "bebe4deb33fc0ffade94f6222abc983b99b6b7449c0219e172e75e48be280fee",
+      "units": [
+        {
+          "unit": 1,
+          "modelSha256": "1d7a354f6cc29cee5f4094f8c089d4f834807573c863f20853819db02d8f5229",
+          "model": "原創教學假設，非操作設定。假設線性模態質量m=50000000kg、剛度k=2000000000N/m，ω=√(k/m)=6.325rad/s，T=2π/ω=0.9935s。~Original teaching assumptions, not operating settings. Assume linear modal mass50000000kg and stiffness2000000000N/m. ω=√(k/m)=6.325rad/s and T=2π/ω=0.9935s, for this generalized coordinate only.",
+          "checks": [
+            {
+              "expression": "sqrt(2e9/50e6)",
+              "recomputed": 6.324555320336759,
+              "published": 6.325,
+              "tolerance": 0.0005,
+              "unit": "rad/s",
+              "pass_": true
+            },
+            {
+              "expression": "2*pi*sqrt(50e6/2e9)",
+              "recomputed": 0.9934588265796102,
+              "published": 0.9935,
+              "tolerance": 5e-05,
+              "unit": "s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 2,
+          "modelSha256": "37a383a52b1d2860cc98ccd258c806aa6bf1bf5a57b884d86c80d920c73f3f01",
+          "model": "原創教學假設，非操作設定。假設所選質量50000000kg瞬時絕對加速度0.20g，F=ma=98.10MN；此數值不是由地表PGA自動得到的壩體反應。~Original teaching assumptions, not operating settings. Assume selected mass50000000kg has instantaneous absolute acceleration0.20g. F=ma=98.10MN, not a dam response automatically inferred from surface PGA.",
+          "checks": [
+            {
+              "expression": "50e6*.20*9.81/1e6",
+              "recomputed": 98.1,
+              "published": 98.1,
+              "tolerance": 0.005,
+              "unit": "MN",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 3,
+          "modelSha256": "2c5a8502b6248341038870349e73cee56b7191f793e447105f074de6e2eafaf1",
+          "model": "原創教學假設，非操作設定。假設m=50000000kg、k=2000000000N/m、ζ=0.05，c=2ζ√(km)=31622776.6N·s/m；只代表線性黏滯阻尼。~Original teaching assumptions, not operating settings. Assume m=50000000kg,k=2000000000N/m and ζ=0.05. c=2ζ√(km)=31622776.6N·s/m, representing linear viscous damping only.",
+          "checks": [
+            {
+              "expression": "2*.05*sqrt(2e9*50e6)",
+              "recomputed": 31622776.601683795,
+              "published": 31622776.6,
+              "tolerance": 0.05,
+              "unit": "N s/m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 4,
+          "modelSha256": "9ea12d9255250f8dfb46c919ae66e02b8362c0e505615590aa2c0c109281c6cc",
+          "model": "原創教學假設，非操作設定。假設線性受迫穩態、頻率比r=1、ζ=0.05，R=1/√[(1−r²)²+(2ζr)²]=10；非地震歷時放大保證。~Original teaching assumptions, not operating settings. Assume linear steady forced response with frequency ratio r=1 and ζ=0.05. R=1/√[(1−r²)²+(2ζr)²]=10, not an earthquake amplification guarantee.",
+          "checks": [
+            {
+              "expression": "1/sqrt((1-1**2)**2+(2*.05*1)**2)",
+              "recomputed": 10.0,
+              "published": 10,
+              "tolerance": 1e-10,
+              "unit": "dimensionless",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 5,
+          "modelSha256": "9e15cbb43cb6078f35a6cb44acf3283812024fe824aeeab226533be971b09b58",
+          "model": "原創教學假設，非操作設定。假設同一線性振子週期T=1s、擬譜加速度Sa=0.40g，Sd=Sa/(2π/T)²=0.09940m；阻尼定義保持一致。~Original teaching assumptions, not operating settings. Assume the same linear oscillator has T=1s and pseudo-spectral acceleration Sa=0.40g. Sd=Sa/(2π/T)²=0.09940m at consistently defined damping.",
+          "checks": [
+            {
+              "expression": ".4*9.81/(2*pi)**2",
+              "recomputed": 0.09939608115313336,
+              "published": 0.0994,
+              "tolerance": 5e-06,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 6,
+          "modelSha256": "e4c93ffd58460ae7deb02c3481aa7aed81f1ccddd28abaf199584877d5916342",
+          "model": "原創教學假設，非操作設定。假設兩模態1與3Hz均ζ=0.05，C=αM+βK得α=0.47124s⁻¹、β=0.0039789s；在2Hz時ζ=0.04375。~Original teaching assumptions, not operating settings. Assume target damping0.05 at1 and3Hz. C=αM+βK gives α=0.47124s⁻¹,β=0.0039789s; at2Hz the damping ratio is0.04375.",
+          "checks": [
+            {
+              "expression": "2*.05*(2*pi)*(6*pi)/(8*pi)",
+              "recomputed": 0.47123889803846897,
+              "published": 0.47124,
+              "tolerance": 5e-06,
+              "unit": "1/s",
+              "pass_": true
+            },
+            {
+              "expression": "2*.05/(8*pi)",
+              "recomputed": 0.0039788735772973835,
+              "published": 0.0039789,
+              "tolerance": 5e-08,
+              "unit": "s",
+              "pass_": true
+            },
+            {
+              "expression": "((2*.05*(2*pi)*(6*pi)/(8*pi))/(4*pi)+(2*.05/(8*pi))*(4*pi))/2",
+              "recomputed": 0.04375,
+              "published": 0.04375,
+              "tolerance": 1e-08,
+              "unit": "dimensionless",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 7,
+          "modelSha256": "e183fac5c0d5aabb7b827b2057fad6decf868825c7c79f6da55d2150781a1f22",
+          "model": "原創教學假設，非操作設定。假設原模態m=50000000kg、附加水質量20000000kg、k=2000000000N/m，T=2π√[(m+ma)/k]=1.1755s。~Original teaching assumptions, not operating settings. Assume modal mass50000000kg,added water mass20000000kg and unchanged stiffness2000000000N/m. T=2π√[(m+ma)/k]=1.1755s for this assumed approximation.",
+          "checks": [
+            {
+              "expression": "2*pi*sqrt(70e6/2e9)",
+              "recomputed": 1.1754763358538998,
+              "published": 1.1755,
+              "tolerance": 5e-05,
+              "unit": "s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 8,
+          "modelSha256": "8cf5fa15639f0e067c92841883d86532d6a2b8ecf04f89780acdce1a8b5e7fb4",
+          "model": "原創教學假設，非操作設定。假設同時刻沿接縫法向位移u1=12mm、u2=−8mm，相對張開u1−u2=20mm；不是各自峰值的非同步組合。~Original teaching assumptions, not operating settings. Assume simultaneous normal displacements u1=12mm and u2=−8mm. Relative opening is20mm, rather than a combination of nonconcurrent individual maxima.",
+          "checks": [
+            {
+              "expression": "12-(-8)",
+              "recomputed": 20,
+              "published": 20,
+              "tolerance": 1e-09,
+              "unit": "mm",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 9,
+          "modelSha256": "931528cf33370a8830b71160554574b9f625a4843db1540a64c03de3c4804f87",
+          "model": "原創教學假設，非操作設定。假設最短關注週期0.20s、積分步長0.005s，點數T/Δt=40；不能由此保證輸入頻寬或接觸反應已解析。~Original teaching assumptions, not operating settings. Assume the shortest relevant period0.20s and timestep0.005s. T/Δt=40points per cycle, without guaranteeing input bandwidth or resolved contact response.",
+          "checks": [
+            {
+              "expression": ".20/.005",
+              "recomputed": 40.0,
+              "published": 40,
+              "tolerance": 1e-09,
+              "unit": "points/cycle",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 10,
+          "modelSha256": "7b91876c1405e76f5472846b6834f1cf2d29a8118845e11add818620da565301",
+          "model": "原創教學假設，非操作設定。假設初有效垂直應力100kPa、總應力固定而超額孔壓增60kPa，ru=0.60，剩餘有效應力40kPa；非液化整體判定。~Original teaching assumptions, not operating settings. Assume initial effective vertical stress100kPa and excess pore-pressure rise60kPa at fixed total stress. ru=0.60 and remaining effective stress40kPa, not a global liquefaction verdict.",
+          "checks": [
+            {
+              "expression": "60/100",
+              "recomputed": 0.6,
+              "published": 0.6,
+              "tolerance": 1e-09,
+              "unit": "dimensionless",
+              "pass_": true
+            },
+            {
+              "expression": "100-60",
+              "recomputed": 40,
+              "published": 40,
+              "tolerance": 1e-09,
+              "unit": "kPa",
+              "pass_": true
+            }
+          ]
+        }
+      ],
+      "sensitivity": [
+        {
+          "expression": "2*pi*sqrt(50e6/2.2e9)",
+          "recomputed": 0.9472258250994829,
+          "published": 0.9472,
+          "tolerance": 5e-05,
+          "unit": "s",
+          "pass_": true
+        },
+        {
+          "expression": "(1/sqrt(1.1)-1)*100",
+          "recomputed": -4.6537410754407755,
+          "published": -4.65,
+          "tolerance": 0.005,
+          "unit": "%",
+          "pass_": true
+        }
+      ]
+    },
+    "b257": {
+      "inputSha256": "c0c39d4e5672753cd247f040a5c326b30d835d90eba99a0451a3ce19c3b07a02",
+      "modelsSha256": "6410e34ee1eed2af0441e8386dc994c94f048ee1902cc0052ef60a39a4ac5ffb",
+      "units": [
+        {
+          "unit": 1,
+          "modelSha256": "7a4e5ae89bdfdfd23a31c6f597ef1c80dcfafda9ac1f25046cc0fe5edd1cb41c",
+          "model": "原創教學假設，非操作設定。假設原型與模型長度比λL=40，原型水深8m及長80m，模型分別0.20m與2m；所有方向採同一比例。~Original teaching assumptions, not operating settings. Assume prototype-to-model length ratio40. Prototype depth8m and length80m become0.20m and2m, with the same ratio in every direction.",
+          "checks": [
+            {
+              "expression": "8/40",
+              "recomputed": 0.2,
+              "published": 0.2,
+              "tolerance": 1e-09,
+              "unit": "m",
+              "pass_": true
+            },
+            {
+              "expression": "80/40",
+              "recomputed": 2.0,
+              "published": 2,
+              "tolerance": 1e-09,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 2,
+          "modelSha256": "01974f95e1eb9193f89bfe341bf94b010f71f6455d3ba26dd6b9d518978fb777",
+          "model": "原創教學假設，非操作設定。假設λL=40且佛祿相似，原型速度8m/s，模型Vm=8/√40=1.2649m/s；不保證雷諾相似。~Original teaching assumptions, not operating settings. Assume length ratio40 and Froude similarity. Prototype velocity8m/s gives Vm=8/√40=1.2649m/s, without guaranteeing Reynolds similarity.",
+          "checks": [
+            {
+              "expression": "8/sqrt(40)",
+              "recomputed": 1.2649110640673518,
+              "published": 1.2649,
+              "tolerance": 5e-05,
+              "unit": "m/s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 3,
+          "modelSha256": "1dc83d8295baac05d0f845772748b0361b8081588aec29c1c4eb212cbeb9d98f",
+          "model": "原創教學假設，非操作設定。假設λL=40、原型總Q=1000m³/s，模型Qm=Qp/λL^(5/2)=0.09882m³/s；不是單位寬度流量比例。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype total discharge1000m³/s. Model Qm=Qp/λL^(5/2)=0.09882m³/s, distinct from unit-width discharge scaling.",
+          "checks": [
+            {
+              "expression": "1000/40**2.5",
+              "recomputed": 0.09882117688026185,
+              "published": 0.09882,
+              "tolerance": 5e-06,
+              "unit": "m3/s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 4,
+          "modelSha256": "fba3e0133f642a04f8397fc128c2140f64cdf69ed1fc95b9742b9a1ba29e48be",
+          "model": "原創教學假設，非操作設定。假設λL=40，原型事件120s，模型時間tm=120/√40=18.974s；只適用所選重力相似過程。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype duration120s. Model tm=120/√40=18.974s, applying only to the selected gravity-similar process.",
+          "checks": [
+            {
+              "expression": "120/sqrt(40)",
+              "recomputed": 18.973665961010276,
+              "published": 18.974,
+              "tolerance": 0.0005,
+              "unit": "s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 5,
+          "modelSha256": "5f1d93bf16a3a9cf70fa3a2cd5b1df820ad717d2c69e2a6204b99ace91545578",
+          "model": "原創教學假設，非操作設定。假設λL=40、同密度重力壓力原型60kPa，模型壓力1.50kPa；此為表壓重力尺度，不代表絕對氣壓也縮四十倍。~Original teaching assumptions, not operating settings. Assume length ratio40 and matched density. Prototype gravity gauge pressure60kPa scales to1.50kPa, without scaling ambient absolute air pressure fortyfold.",
+          "checks": [
+            {
+              "expression": "60/40",
+              "recomputed": 1.5,
+              "published": 1.5,
+              "tolerance": 1e-09,
+              "unit": "kPa",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 6,
+          "modelSha256": "4b3d51693a30a7add32b3fb7e52a23cc05c3a6d77362d0b47f99d5440f1f95af",
+          "model": "原創教學假設，非操作設定。假設λL=40、原型重力主導合力2MN，模型Fm=2000000/40³=31.25N；未處理感測器動態或氣泡衝擊。~Original teaching assumptions, not operating settings. Assume length ratio40 and prototype gravity-dominated force2MN. Model Fm=2000000/40³=31.25N, excluding sensor dynamics and air-impact scaling.",
+          "checks": [
+            {
+              "expression": "2e6/40**3",
+              "recomputed": 31.25,
+              "published": 31.25,
+              "tolerance": 1e-09,
+              "unit": "N",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 7,
+          "modelSha256": "bb2ca812ae56c0d142cfaf10cb5e3f4b672b4468348f474386997c12f406a5a7",
+          "model": "原創教學假設，非操作設定。假設ν=10⁻⁶m²/s，以水深為控制長度，模型V=8/√40m/s、h=0.20m，Re≈252982；原型V=8m/s、h=8m，Re=64000000。~Original teaching assumptions, not operating settings. Assumeν=10⁻⁶m²/s, using depth as the reference length. Model V=8/√40m/s,h=0.20m gives Re≈252982; prototype V=8m/s,h=8m gives Re=64000000.",
+          "checks": [
+            {
+              "expression": "(8/sqrt(40))*.2/1e-6",
+              "recomputed": 252982.2128134704,
+              "published": 252982,
+              "tolerance": 0.5,
+              "unit": "Re",
+              "pass_": true
+            },
+            {
+              "expression": "8*8/1e-6",
+              "recomputed": 64000000.0,
+              "published": 64000000,
+              "tolerance": 1e-08,
+              "unit": "Re",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 8,
+          "modelSha256": "f7ce8f458109ce0df48606b9e923ae0f7b9a072d87199aed28da93d2a74a186c",
+          "model": "原創教學假設，非操作設定。假設ρ=1000kg/m³、σ=0.072N/m、模型V²=1.6m²/s²、L=0.20m，We=ρV²L/σ=4444.4；原型值是其1600倍。~Original teaching assumptions, not operating settings. Assumeρ=1000kg/m³,σ=0.072N/m,model V²=1.6m²/s² and L=0.20m. We=4444.4; the corresponding prototype value is1600times larger.",
+          "checks": [
+            {
+              "expression": "1000*1.6*.2/.072",
+              "recomputed": 4444.444444444444,
+              "published": 4444.4,
+              "tolerance": 0.05,
+              "unit": "We",
+              "pass_": true
+            },
+            {
+              "expression": "40**2",
+              "recomputed": 1600,
+              "published": 1600,
+              "tolerance": 1e-09,
+              "unit": "ratio",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 9,
+          "modelSha256": "b4ff66988d5c4ee387fdd3fc2ba3cdc72a1b44715685f725f83672849e33e72b",
+          "model": "原創教學假設，非操作設定。假設模型水位標準不確定度0.0005m、λL=40且比例視為精確，原型相應標準不確定度0.020m；未含尺度本身誤差。~Original teaching assumptions, not operating settings. Assume model level standard uncertainty0.0005m and exact length ratio40. Prototype-equivalent uncertainty is0.020m, excluding uncertainty in the scale itself.",
+          "checks": [
+            {
+              "expression": ".0005*40",
+              "recomputed": 0.02,
+              "published": 0.02,
+              "tolerance": 1e-09,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 10,
+          "modelSha256": "703406918032632cc05b0ceb44372a2675582ad6f0deaeb671e37e1b89c32c2f",
+          "model": "原創教學假設，非操作設定。假設獨立流量結果0.098、0.100、0.102m³/s，平均0.100、樣本標準差0.002m³/s，變異係數2%；非全部工況不確定度。~Original teaching assumptions, not operating settings. Assume independent discharges0.098,0.100,0.102m³/s. Mean0.100 and sample deviation0.002m³/s give2% coefficient of variation, not uncertainty for all operating conditions.",
+          "checks": [
+            {
+              "expression": "statistics.mean([.098,.100,.102])",
+              "recomputed": 0.1,
+              "published": 0.1,
+              "tolerance": 1e-09,
+              "unit": "m3/s",
+              "pass_": true
+            },
+            {
+              "expression": "statistics.stdev([.098,.100,.102])",
+              "recomputed": 0.001999999999999995,
+              "published": 0.002,
+              "tolerance": 1e-09,
+              "unit": "m3/s",
+              "pass_": true
+            },
+            {
+              "expression": "statistics.stdev([.098,.100,.102])/statistics.mean([.098,.100,.102])*100",
+              "recomputed": 1.999999999999995,
+              "published": 2,
+              "tolerance": 1e-09,
+              "unit": "%",
+              "pass_": true
+            }
+          ]
+        }
+      ],
+      "sensitivity": [
+        {
+          "expression": "1000/44**2.5",
+          "recomputed": 0.07786966543847201,
+          "published": 0.07787,
+          "tolerance": 5e-06,
+          "unit": "m3/s",
+          "pass_": true
+        },
+        {
+          "expression": "((40/44)**2.5-1)*100",
+          "recomputed": -21.201438905322956,
+          "published": -21.2,
+          "tolerance": 0.005,
+          "unit": "%",
+          "pass_": true
+        }
+      ]
+    },
+    "b258": {
+      "inputSha256": "1d86af53a4a534b52ddd941127144955807619960f9ccade52e01f8c78fcdc2c",
+      "modelsSha256": "ca0914c0359c4f211e5e293ee6e9d99a6b7c06dc7c7315d280e28e7739eed033",
+      "units": [
+        {
+          "unit": 1,
+          "modelSha256": "db329fb911b714aa464b9780b1853d92b72b0cd25a3e67fe60a0432464147e66",
+          "model": "原創教學假設，非操作設定。假設無外部交換，發電流量100m³/s持續1800s，上庫減少180000m³、下庫增加同量，兩庫合計不變。~Original teaching assumptions, not operating settings. Assume no external exchange and generation flow100m³/s for1800s. Upper storage falls180000m³ while lower storage rises equally, preserving their combined volume.",
+          "checks": [
+            {
+              "expression": "100*1800",
+              "recomputed": 180000,
+              "published": 180000,
+              "tolerance": 1e-09,
+              "unit": "m3",
+              "pass_": true
+            },
+            {
+              "expression": "-100*1800+100*1800",
+              "recomputed": 0,
+              "published": 0,
+              "tolerance": 1e-09,
+              "unit": "m3 total change",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 2,
+          "modelSha256": "18c36b7f3c9d0f896f9026739fdb631f8c1a7c80c9b33fe8d26f6617706b4b6c",
+          "model": "原創教學假設，非操作設定。假設局部上庫面積600000m²恆定，抽入180000m³，Δz=ΔV/A=0.300m；大範圍水位需積分實際庫容曲線。~Original teaching assumptions, not operating settings. Assume locally constant upper area600000m² and inflow180000m³. Δz=ΔV/A=0.300m; broader changes require the actual integrated storage curve.",
+          "checks": [
+            {
+              "expression": "180000/600000",
+              "recomputed": 0.3,
+              "published": 0.3,
+              "tolerance": 1e-09,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 3,
+          "modelSha256": "771b37be08245bbe40e757a90232a07fe3a1a5d01a0994615a265f0f52f03085",
+          "model": "原創教學假設，非操作設定。假設上庫600m、下庫200m、發電水頭損失15m，淨水頭H=600−200−15=385m；未代表其他流量的損失。~Original teaching assumptions, not operating settings. Assume upper elevation600m, lower200m and generation loss15m. Net headH=600−200−15=385m, without prescribing losses at other discharges.",
+          "checks": [
+            {
+              "expression": "600-200-15",
+              "recomputed": 385,
+              "published": 385,
+              "tolerance": 1e-09,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 4,
+          "modelSha256": "ff091d768c9026615bdf9f5eae962468b2a511151dcd6dc83aa9c26088061317",
+          "model": "原創教學假設，非操作設定。假設單一工況ρ=1000kg/m³、Q=100m³/s、淨水頭385m、總效率0.90，P=ρgQHη=339.9165MW。~Original teaching assumptions, not operating settings. Assume density1000kg/m³, discharge100m³/s, net head385m and overall generating efficiency0.90. P=ρgQHη=339.9165MW at this stated operating point.",
+          "checks": [
+            {
+              "expression": "1000*9.81*100*385*.90/1e6",
+              "recomputed": 339.9165,
+              "published": 339.9165,
+              "tolerance": 5e-05,
+              "unit": "MW",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 5,
+          "modelSha256": "8e7fd77bf6511f05bc0e18a099d306d7c2e80cba4117574d2339fe548168ef70",
+          "model": "原創教學假設，非操作設定。假設抽水流量100m³/s、總揚程415m、電至水效率0.88，Pin=1000×9.81×100×415/0.88=462.631MW。~Original teaching assumptions, not operating settings. Assume pumping discharge100m³/s, total lift415m and electricity-to-water efficiency0.88. Pin=1000×9.81×100×415/0.88=462.631MW, excluding any separately modeled auxiliaries.",
+          "checks": [
+            {
+              "expression": "1000*9.81*100*415/.88/1e6",
+              "recomputed": 462.6306818181818,
+              "published": 462.631,
+              "tolerance": 0.0005,
+              "unit": "MW",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 6,
+          "modelSha256": "dd3f14475e0d664be82378ec35f8197f8bfe601d7031ee71c1f4db91acbeef4b",
+          "model": "原創教學假設，非操作設定。假設相同定水頭且起終庫存相同，抽水效率0.88、發電效率0.90，往返ηrt=0.88×0.90=0.792即79.2%。~Original teaching assumptions, not operating settings. Assume equal constant head and identical initial and final storage. Pumping efficiency0.88 and generating efficiency0.90 give round-tripηrt=0.792, or79.2%.",
+          "checks": [
+            {
+              "expression": ".88*.90",
+              "recomputed": 0.792,
+              "published": 0.792,
+              "tolerance": 1e-09,
+              "unit": "dimensionless",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 7,
+          "modelSha256": "de53f812efaeda5192a92390315b2a658dd31ef34bffd8cd872e64d4272b1010",
+          "model": "原創教學假設，非操作設定。假設已扣保留量的可移水量720000m³、定流量100m³/s，t=720000/100=7200s即2h；不保證定功率兩小時。~Original teaching assumptions, not operating settings. Assume transferable volume720000m³ after reservations and constant discharge100m³/s. Duration7200s equals2h, without guaranteeing constant electrical power throughout.",
+          "checks": [
+            {
+              "expression": "720000/100",
+              "recomputed": 7200.0,
+              "published": 7200,
+              "tolerance": 1e-09,
+              "unit": "s",
+              "pass_": true
+            },
+            {
+              "expression": "720000/100/3600",
+              "recomputed": 2.0,
+              "published": 2,
+              "tolerance": 1e-09,
+              "unit": "h",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 8,
+          "modelSha256": "025e09d5d9d0919e45ec2337a78c0eae765308ff4d38fc7d385b89fea15a3889",
+          "model": "原創教學假設，非操作設定。假設流量在300s內由0線性升至100m³/s，V=(0+100)×300/2=15000m³；此為水量積分而非水錘驗算。~Original teaching assumptions, not operating settings. Assume discharge rises linearly from0 to100m³/s in300s. Transferred V=15000m³ by trapezoidal integration, not a water-hammer assessment.",
+          "checks": [
+            {
+              "expression": "(0+100)*300/2",
+              "recomputed": 15000.0,
+              "published": 15000,
+              "tolerance": 1e-09,
+              "unit": "m3",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 9,
+          "modelSha256": "a2ddc15161c9313ca967f0b75f190e90601fa8ba9ea3972c9125d23a058fb55b",
+          "model": "原創教學假設，非操作設定。假設兩庫合計水面1000000m²、日蒸發0.004m，日損失4000m³；未計降雨與滲漏，不可稱封閉循環零耗水。~Original teaching assumptions, not operating settings. Assume combined surface area1000000m² and daily evaporation0.004m. Loss is4000m³/day, excluding rain and seepage; closed-loop does not mean zero water use.",
+          "checks": [
+            {
+              "expression": "1e6*.004",
+              "recomputed": 4000.0,
+              "published": 4000,
+              "tolerance": 1e-09,
+              "unit": "m3/day",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 10,
+          "modelSha256": "3f6b90204e9d6e5023451f82c89bcc78c0faf8ada062465b85dd3aece6099e57",
+          "model": "原創教學假設，非操作設定。假設上庫可用800000m³，其中預留200000m³，其他條件允許時最多移出600000m³；兩項服務不能重複使用同一預留量。~Original teaching assumptions, not operating settings. Assume upper usable storage800000m³ with200000m³ reserved. At most600000m³ is transferable if other constraints permit, without double-allocating the reservation.",
+          "checks": [
+            {
+              "expression": "800000-200000",
+              "recomputed": 600000,
+              "published": 600000,
+              "tolerance": 1e-09,
+              "unit": "m3",
+              "pass_": true
+            }
+          ]
+        }
+      ],
+      "sensitivity": [
+        {
+          "expression": "1000*9.81*100*423.5*.9/1e6",
+          "recomputed": 373.90815,
+          "published": 373.90815,
+          "tolerance": 5e-06,
+          "unit": "MW",
+          "pass_": true
+        },
+        {
+          "expression": "(423.5/385-1)*100",
+          "recomputed": 10.000000000000009,
+          "published": 10,
+          "tolerance": 1e-09,
+          "unit": "%",
+          "pass_": true
+        }
+      ]
+    },
+    "b259": {
+      "inputSha256": "6f85e3e3be948f69bb922a89838692ad0557842ee957b84e5b60496b127ec40e",
+      "modelsSha256": "c9962d09d44d5d119017509c64ce599bd788d7b9fb23c3a25e2f881e92f4837e",
+      "units": [
+        {
+          "unit": 1,
+          "modelSha256": "88c33e35ddf0248705081f261406b6282f25c9dffe8841116dcf46f163530094",
+          "model": "原創教學假設，非操作設定。假設薄壁圓管表壓p=2MPa、內徑D=2m、均勻壁厚t=0.020m，σh=pD/(2t)=100MPa；未含局部彎曲。~Original teaching assumptions, not operating settings. Assume thin circular pipe gauge pressure2MPa, inner diameter2m and uniform thickness0.020m. Hoopσh=pD/(2t)=100MPa, excluding local bending.",
+          "checks": [
+            {
+              "expression": "2*2/(2*.02)",
+              "recomputed": 100.0,
+              "published": 100,
+              "tolerance": 1e-09,
+              "unit": "MPa",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 2,
+          "modelSha256": "8d408d6ae277249d16abf6b14afba586d94ca02cd799df57ba3acc85ac0d7534",
+          "model": "原創教學假設，非操作設定。假設封閉端且軸向無外部約束，p=2MPa、D=2m、t=0.020m，σa=pD/(4t)=50MPa；固定管段需另建約束模型。~Original teaching assumptions, not operating settings. Assume closed ends and no external axial restraint, withp=2MPa,D=2m,t=0.020m. Axialσa=pD/(4t)=50MPa; restrained segments require another model.",
+          "checks": [
+            {
+              "expression": "2*2/(4*.02)",
+              "recomputed": 50.0,
+              "published": 50,
+              "tolerance": 1e-09,
+              "unit": "MPa",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 3,
+          "modelSha256": "68da01aab5176b291bcdcba83ed55957ba75ceb3d8e9b87f985078a309da2f85",
+          "model": "原創教學假設，非操作設定。假設等徑2m、兩端表壓2MPa、轉角90°且忽略動量及重量，F=2pA sin45°=8.8858MN，方向沿兩壓力向量合成。~Original teaching assumptions, not operating settings. Assume diameter2m, equal gauge pressure2MPa and90° turn, neglecting momentum and weight. F=2pA sin45°=8.8858MN along the pressure-vector resultant.",
+          "checks": [
+            {
+              "expression": "2*2e6*pi*math.sin(pi/4)/1e6",
+              "recomputed": 8.885765876316732,
+              "published": 8.8858,
+              "tolerance": 5e-05,
+              "unit": "MN",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 4,
+          "modelSha256": "e1eefc593e0f4d128d2678212a7710ef13f470306d6b869ffbb753e84952a112",
+          "model": "原創教學假設，非操作設定。假設均勻升溫30°C、α=12×10⁻⁶/°C、自由長度100m，ΔL=αLΔT=0.036m；未含溫度梯度與約束。~Original teaching assumptions, not operating settings. Assume uniform warming30°C, expansion coefficient12×10⁻⁶/°C and free length100m. ΔL=0.036m, excluding temperature gradients and restraint.",
+          "checks": [
+            {
+              "expression": "12e-6*100*30",
+              "recomputed": 0.036000000000000004,
+              "published": 0.036,
+              "tolerance": 1e-09,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 5,
+          "modelSha256": "e8b5c0b2a2d9a5927973530d67a50e0b4eb1c283774aa78b4ae23dc9ab706c2a",
+          "model": "原創教學假設，非操作設定。假設軸向完全固定、均勻升溫30°C、E=200GPa、α=12×10⁻⁶/°C，壓應力幅值EαΔT=72MPa，限線彈性。~Original teaching assumptions, not operating settings. Assume full axial restraint, uniform warming30°C,E=200GPa andα=12×10⁻⁶/°C. Compressive stress magnitudeEαΔT=72MPa in the linear-elastic idealization.",
+          "checks": [
+            {
+              "expression": "200e9*12e-6*30/1e6",
+              "recomputed": 72.0,
+              "published": 72,
+              "tolerance": 1e-09,
+              "unit": "MPa compression",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 6,
+          "modelSha256": "b4dfb0333db6a3b65ae7f983de6c702ca07fb18cd131fe7a325e31a02bd32f36",
+          "model": "原創教學假設，非操作設定。假設水平滿管內徑2m、外徑2.04m、鋼密度7850及水1000kg/m³，w=g[7850π(2.04²−2²)/4+1000π]=40.593kN/m。~Original teaching assumptions, not operating settings. Assume a horizontal full pipe with inner diameter2m, outer2.04m, steel density7850 and water1000kg/m³. Combined distributed weight is40.593kN/m.",
+          "checks": [
+            {
+              "expression": "9.81*(7850*pi/4*(2.04**2-2**2)+1000*pi)/1000",
+              "recomputed": 40.59296918142024,
+              "published": 40.593,
+              "tolerance": 0.0005,
+              "unit": "kN/m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 7,
+          "modelSha256": "58cde63d744a32c295f32d5cad8dc7677aea3220ffb027d4595d710e0102bcad",
+          "model": "原創教學假設，非操作設定。假設簡支跨距10m、均布荷載40kN/m，Mmax=wL²/8=500kNm，兩端反力各200kN；未評估鞍座局部殼應力。~Original teaching assumptions, not operating settings. Assume a simply supported10m span under uniform40kN/m. Maximum moment500kNm and reactions200kN each exclude local saddle shell stresses.",
+          "checks": [
+            {
+              "expression": "40*10**2/8",
+              "recomputed": 500.0,
+              "published": 500,
+              "tolerance": 1e-09,
+              "unit": "kNm",
+              "pass_": true
+            },
+            {
+              "expression": "40*10/2",
+              "recomputed": 200.0,
+              "published": 200,
+              "tolerance": 1e-09,
+              "unit": "kN each",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 8,
+          "modelSha256": "caf60c096879ab72fa55e26249ca76fa63cf29a95fe58e630a2e319d931679fa",
+          "model": "原創教學假設，非操作設定。假設接觸法向力400kN、庫侖摩擦係數0.15，摩擦上限μN=60kN；靜止時實際摩擦可小於此值。~Original teaching assumptions, not operating settings. Assume contact normal force400kN and Coulomb coefficient0.15. Limiting frictionμN=60kN; actual static friction may be smaller than this bound.",
+          "checks": [
+            {
+              "expression": ".15*400",
+              "recomputed": 60.0,
+              "published": 60,
+              "tolerance": 1e-09,
+              "unit": "kN limiting",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 9,
+          "modelSha256": "0d65351b8ea682845d56b26fbe28cd67869e0244f3fdb15a139ee636202de451",
+          "model": "原創教學假設，非操作設定。假設中心向下合力2MN作用於全接觸基底4m²，q=N/A=500kPa；不是地基允許承壓值且未計偏心。~Original teaching assumptions, not operating settings. Assume a centered downward resultant2MN on a fully contacting4m² base. Averageq=500kPa is not allowable bearing pressure and excludes eccentricity.",
+          "checks": [
+            {
+              "expression": "2e6/4/1000",
+              "recomputed": 500.0,
+              "published": 500,
+              "tolerance": 1e-09,
+              "unit": "kPa",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 10,
+          "modelSha256": "fafa8ba7bb7413cb0df5e4700f120ad218c8fc694656a8b7f85e251c7f5754d4",
+          "model": "原創教學假設，非操作設定。假設壓力及直徑不變、均勻厚度20mm降至18mm，環向應力100×20/18=111.11MPa，增加11.11%；未評局部坑蝕。~Original teaching assumptions, not operating settings. Assume unchanged pressure and diameter with uniform thickness falling20 to18mm. Hoop stress rises100×20/18=111.11MPa, an11.11% increase, excluding pitting assessment.",
+          "checks": [
+            {
+              "expression": "100*20/18",
+              "recomputed": 111.11111111111111,
+              "published": 111.11,
+              "tolerance": 0.005,
+              "unit": "MPa",
+              "pass_": true
+            },
+            {
+              "expression": "(20/18-1)*100",
+              "recomputed": 11.111111111111116,
+              "published": 11.11,
+              "tolerance": 0.005,
+              "unit": "%",
+              "pass_": true
+            }
+          ]
+        }
+      ],
+      "sensitivity": [
+        {
+          "expression": "2.2*2/(2*.02)",
+          "recomputed": 110.0,
+          "published": 110,
+          "tolerance": 1e-09,
+          "unit": "MPa",
+          "pass_": true
+        },
+        {
+          "expression": "(2.2/2-1)*100",
+          "recomputed": 10.000000000000009,
+          "published": 10,
+          "tolerance": 1e-09,
+          "unit": "%",
+          "pass_": true
+        }
+      ]
+    },
+    "b260": {
+      "inputSha256": "e8d9464ae58155e2620e832712b7fa84dd6aa314b1b6dd9bcdca79c733b3eb91",
+      "modelsSha256": "0d5502a4eb20d090d764293c52ce249021be797441df9bc8c957aa584b141442",
+      "units": [
+        {
+          "unit": 1,
+          "modelSha256": "f7fe5bfcb7aed7b92d989b8ef7e0d4bac0df6fa9f8819053384f7c2293b953da",
+          "model": "原創教學假設，非操作設定。假設K=2.2GPa、ρ=1000kg/m³、E=200GPa、D=2m、t=0.02m，管壁修正係數取1，a=√[K/ρ/(1+KD/Et)]=1023.53m/s。~Original teaching assumptions, not operating settings. AssumeK=2.2GPa,ρ=1000kg/m³,E=200GPa,D=2m,t=0.02m and wall-restraint factor1. Wave speeda=√[K/ρ/(1+KD/Et)]=1023.53m/s for this idealization.",
+          "checks": [
+            {
+              "expression": "sqrt(2.2e9/(1000*(1+2.2e9*2/(200e9*.02))))",
+              "recomputed": 1023.5326314383179,
+              "published": 1023.53,
+              "tolerance": 0.005,
+              "unit": "m/s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 2,
+          "modelSha256": "026be479a1a42ce010ef81a13bd3e322072e041469fe9f0fe55a425ddc3c4566",
+          "model": "原創教學假設，非操作設定。假設均勻管長L=1000m、波速a=1000m/s，往返時間2L/a=2s；只代表此單一路徑，不是允許關閉時間。~Original teaching assumptions, not operating settings. Assume uniform pipe length1000m and celerity1000m/s. Round-trip2L/a=2s describes only this path, not an allowable closing time.",
+          "checks": [
+            {
+              "expression": "2*1000/1000",
+              "recomputed": 2.0,
+              "published": 2,
+              "tolerance": 1e-09,
+              "unit": "s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 3,
+          "modelSha256": "d6340d140bf0e5e3d14457c9c134f4ee5ca61a57d5fc44bd35bf67a183acc74f",
+          "model": "原創教學假設，非操作設定。假設ρ=1000kg/m³、a=1000m/s，0.5s內減速1m/s且小於2s往返，Δp=ρaΔV=1MPa，ΔH=101.94m。~Original teaching assumptions, not operating settings. Assumeρ=1000kg/m³,a=1000m/s and velocity reduction1m/s in0.5s, shorter than2s round-trip. Initial pressure increment1MPa corresponds to101.94m head.",
+          "checks": [
+            {
+              "expression": "1000*1000*1/1e6",
+              "recomputed": 1.0,
+              "published": 1,
+              "tolerance": 1e-09,
+              "unit": "MPa",
+              "pass_": true
+            },
+            {
+              "expression": "1000*1/9.81",
+              "recomputed": 101.9367991845056,
+              "published": 101.94,
+              "tolerance": 0.005,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 4,
+          "modelSha256": "b37bde77e4d85414fc745a659e7b92a1b4ec44eec502b0a2425a7ceef6c3fc85",
+          "model": "原創教學假設，非操作設定。假設井面積100m²、瞬時流入20及流出5m³/s，dz/dt=(20−5)/100=0.15m/s；流量差不假定長期固定。~Original teaching assumptions, not operating settings. Assume shaft area100m² with instantaneous inflow20 and outflow5m³/s. Rise ratedz/dt=0.15m/s does not assume that imbalance persists.",
+          "checks": [
+            {
+              "expression": "(20-5)/100",
+              "recomputed": 0.15,
+              "published": 0.15,
+              "tolerance": 1e-09,
+              "unit": "m/s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 5,
+          "modelSha256": "0a78e2c68170aa9490580dd61e8ab76c8aa7449e8b0413f95b4a376c68e8613a",
+          "model": "原創教學假設，非操作設定。假設定水位上庫、均勻管L=1000m及Ap=10m²、井As=100m²，無摩擦小振幅且忽略井水慣性，T=2π√(LAs/gAp)=200.607s。~Original teaching assumptions, not operating settings. Assume fixed reservoir level, uniform conduitL=1000m,Ap=10m² and shaftAs=100m². Frictionless small oscillations neglecting shaft inertia haveT=200.607s.",
+          "checks": [
+            {
+              "expression": "2*pi*sqrt(1000*100/(9.81*10))",
+              "recomputed": 200.60666807106472,
+              "published": 200.607,
+              "tolerance": 0.0005,
+              "unit": "s",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 6,
+          "modelSha256": "4d940004686e2a153d197519f6db3f538b285594c7d3cef1da4ce3f96596b86a",
+          "model": "原創教學假設，非操作設定。假設初始井位等於固定庫位、L=1000m、Ap=10m²、As=100m²、V0=2m/s，瞬停下游且無損，zmax=V0√(LAp/gAs)=6.3855m。~Original teaching assumptions, not operating settings. Assume initial shaft level equals fixed reservoir level,L=1000m,Ap=10m²,As=100m²,V0=2m/s and instantaneous demand stop. Lossless rigid-columnzmax=6.3855m.",
+          "checks": [
+            {
+              "expression": "2*sqrt(1000*10/(9.81*100))",
+              "recomputed": 6.3855085681410095,
+              "published": 6.3855,
+              "tolerance": 5e-05,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 7,
+          "modelSha256": "d2bbbf4521bfab3d05df0f045ec6fefd8e11d517c00177758f35b0f0dc3245b0",
+          "model": "原創教學假設，非操作設定。假設Darcy摩擦係數0.02、管長1000m、直徑2m、速率2m/s，hf=f(L/D)V²/(2g)=2.0387m，僅為此工況準穩態損失。~Original teaching assumptions, not operating settings. Assume Darcy factor0.02,length1000m,diameter2m and speed2m/s. Quasi-steady loss hf=f(L/D)V²/(2g)=2.0387m at this condition.",
+          "checks": [
+            {
+              "expression": ".02*(1000/2)*2**2/(2*9.81)",
+              "recomputed": 2.038735983690112,
+              "published": 2.0387,
+              "tolerance": 5e-05,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 8,
+          "modelSha256": "34d994f75846f363d525b931cfd90d8282feafcc6bf8abfb37f42abfa43b1c9b",
+          "model": "原創教學假設，非操作設定。假設孔口Q=10m³/s、Cd=0.65、有效面積2m²，水頭差h=(Q/CdA)²/(2g)=3.0159m；未驗局部空化。~Original teaching assumptions, not operating settings. Assume orifice flow10m³/s, coefficient0.65 and effective area2m². Head differenceh=(Q/CdA)²/(2g)=3.0159m, without evaluating local cavitation.",
+          "checks": [
+            {
+              "expression": "(10/(.65*2))**2/(2*9.81)",
+              "recomputed": 3.01588163267768,
+              "published": 3.0159,
+              "tolerance": 5e-05,
+              "unit": "m",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 9,
+          "modelSha256": "3220af222eb69d74644e04a5980ca22eb5157929e0106c3865033b973262c200",
+          "model": "原創教學假設，非操作設定。假設大氣壓100kPa、表壓−80kPa、蒸氣壓2.34kPa，絕對壓20kPa，比蒸氣壓高17.66kPa；只代表該點該時刻。~Original teaching assumptions, not operating settings. Assume atmospheric100kPa,gauge−80kPa and vapor pressure2.34kPa. Absolute pressure20kPa exceeds vapor by17.66kPa only at that location and instant.",
+          "checks": [
+            {
+              "expression": "100-80",
+              "recomputed": 20,
+              "published": 20,
+              "tolerance": 1e-09,
+              "unit": "kPa absolute",
+              "pass_": true
+            },
+            {
+              "expression": "100-80-2.34",
+              "recomputed": 17.66,
+              "published": 17.66,
+              "tolerance": 1e-09,
+              "unit": "kPa difference",
+              "pass_": true
+            }
+          ]
+        },
+        {
+          "unit": 10,
+          "modelSha256": "ed3442e9b114df4343d9fa4a225f1ddc5bfba2c422fd773f1b7833c6c7e5c8d6",
+          "model": "原創教學假設，非操作設定。假設a=1000m/s、Δx=100m、Δt=0.10s，Courant數aΔt/Δx=1；只對此均勻網格特徵到點，不是完整精度證明。~Original teaching assumptions, not operating settings. Assumea=1000m/s,spacing100m and step0.10s. Courant number1 aligns characteristics on this uniform grid but does not prove full accuracy.",
+          "checks": [
+            {
+              "expression": "1000*.10/100",
+              "recomputed": 1.0,
+              "published": 1,
+              "tolerance": 1e-09,
+              "unit": "Courant",
+              "pass_": true
+            }
+          ]
+        }
+      ],
+      "sensitivity": [
+        {
+          "expression": "2*sqrt(1000*10/(9.81*110))",
+          "recomputed": 6.088343533029641,
+          "published": 6.0883,
+          "tolerance": 5e-05,
+          "unit": "m",
+          "pass_": true
+        },
+        {
+          "expression": "(1/sqrt(1.1)-1)*100",
+          "recomputed": -4.6537410754407755,
+          "published": -4.65,
+          "tolerance": 0.005,
+          "unit": "%",
+          "pass_": true
+        }
+      ]
+    }
+  },
+  "limits": [
+    "All numerical inputs are original synthetic teaching assumptions.",
+    "No calculation approves a field operating limit, component capacity or site design.",
+    "External sources support published methods and project context, not synthetic values."
+  ],
+  "unitModels": 50,
+  "numericAssertions": 75,
+  "physicalBoundaryReview": {
+    "b256": "Generalized mass and absolute acceleration distinguished; harmonic steady state is not earthquake response; pseudo spectrum and Rayleigh frequency dependence explicit; relative motion synchronous; fixed total stress required for pore-pressure increment.",
+    "b257": "Undistorted equal-density Froude scale uses Q ratio L^2.5, force L^3; Reynolds/Weber mismatch explicit; gauge/absolute pressure separated; uncertainty and repeatability not global validation.",
+    "b258": "Paired transfers conserve water; level needs storage curve; generation net head differs from pump lift; equal-head round trip and terminal storage explicit; ramp volume not water hammer; external weather exchange remains possible.",
+    "b259": "Thin-wall remote membrane only; closed-end freely extending axial boundary; equal-pressure elbow omits momentum/weight; thermal free versus restrained separated; full-water weight, static friction bound, centered full contact and uniform loss stated.",
+    "b260": "Specified wall factor for wave speed; single path round trip; rapid single-phase first increment not full envelope; rigid column excludes shaft inertia/friction/compressibility; zero initial level offset; Darcy convention, absolute pressure and grid convergence explicit."
+  }
+}

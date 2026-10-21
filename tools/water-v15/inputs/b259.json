@@ -1,0 +1,273 @@
+{
+  "id": "b259",
+  "focus": "追蹤壓力、重量與溫度荷載如何經鋼管傳到錨塊支承~Trace pressure, gravity and thermal loads through penstocks into anchors and supports",
+  "units": [
+    {
+      "anchor": "環向薄膜應力~Circumferential membrane stress",
+      "title": "環向薄膜應力~Circumferential membrane stress",
+      "mechanism": "圓管內壓使管壁承受環向拉力，薄壁公式可先估量級，但只描述遠離支承與接頭的膜應力。焊接缺陷、橢圓化和局部加勁會改變應力分布，外壓失穩又是另一機制；必須先辨明幾何與壓力方向，不能把一個平均值當成整根鋼管安全證明。 假設薄壁圓管表壓p=2MPa、內徑D=2m、均勻壁厚t=0.020m，σh=pD/(2t)=100MPa；未含局部彎曲。~Internal pressure creates circumferential tension, and a thin-wall estimate gives membrane stress away from supports and connections. Weld defects, ovality and local stiffening alter the distribution, while external-pressure buckling is a different mechanism. Establish geometry and pressure direction before treating a mean stress as evidence about the entire penstock’s structural behavior. Assume thin circular pipe gauge pressure2MPa, inner diameter2m and uniform thickness0.020m. Hoopσh=pD/(2t)=100MPa, excluding local bending.",
+      "model": "原創教學假設，非操作設定。假設薄壁圓管表壓p=2MPa、內徑D=2m、均勻壁厚t=0.020m，σh=pD/(2t)=100MPa；未含局部彎曲。~Original teaching assumptions, not operating settings. Assume thin circular pipe gauge pressure2MPa, inner diameter2m and uniform thickness0.020m. Hoopσh=pD/(2t)=100MPa, excluding local bending.",
+      "verify": "畫半圓自由體平衡，核對內徑、有效厚度及表壓使用方式，並計算厚徑比。將支座、分岔、焊縫與變厚位置另列局部分析範圍，保留材料和厚度量測資料而不只比較單一應力數字。~Draw a half-cylinder equilibrium diagram, checking inner diameter, effective thickness and gauge pressure and calculating thickness ratio. Flag supports, branches, welds and thickness transitions for local analysis and retain material and measurement evidence rather than comparing only one stress value.",
+      "practice": "畫半圓自由體平衡，核對內徑、有效厚度及表壓使用方式，並計算厚徑比。將支座、分岔、焊縫與變厚位置另列局部分析範圍，保留材料和厚度量測資料而不只比較單一應力數字。~Draw a half-cylinder equilibrium diagram, checking inner diameter, effective thickness and gauge pressure and calculating thickness ratio. Flag supports, branches, welds and thickness transitions for local analysis and retain material and measurement evidence rather than comparing only one stress value.",
+      "failure": "局部腐蝕孔與焊縫缺陷可能控制承載，平均厚度會掩蓋最弱位置。空管外部地下水形成的壓力方向相反，不能把內壓拉力公式直接用來證明抗屈曲能力。~Local pits and weld flaws may govern strength while mean thickness hides the weakest region. Groundwater acting on a drained pipe reverses pressure direction, so an internal-tension formula does not establish external-buckling resistance.",
+      "misconception": "平均環向應力低於某個數字就能證明所有支座與焊縫都安全。~A low average hoop stress proves every support and weld is structurally acceptable."
+    },
+    {
+      "anchor": "封閉端軸向作用~Closed-end axial action",
+      "title": "封閉端軸向作用~Closed-end axial action",
+      "mechanism": "封閉端的壓力合力需要由管壁或其他結構路徑平衡，軸向應力取決於端部約束與伸縮接頭。對可自由伸長的封閉薄壁管可以直接用端面平衡，但固定管線、泊松變形和錨塊分擔會改變答案；不能將教學圓筒公式無條件貼到埋設管。 假設封閉端且軸向無外部約束，p=2MPa、D=2m、t=0.020m，σa=pD/(4t)=50MPa；固定管段需另建約束模型。~Pressure on a closed end must be balanced through the wall or another structural path. Axial stress depends on end restraint and expansion joints. End equilibrium applies directly to a freely extending closed thin cylinder, but fixed pipelines, Poisson effects and anchor load sharing change that answer and require a consistent boundary model. Assume closed ends and no external axial restraint, withp=2MPa,D=2m,t=0.020m. Axialσa=pD/(4t)=50MPa; restrained segments require another model.",
+      "model": "原創教學假設，非操作設定。假設封閉端且軸向無外部約束，p=2MPa、D=2m、t=0.020m，σa=pD/(4t)=50MPa；固定管段需另建約束模型。~Original teaching assumptions, not operating settings. Assume closed ends and no external axial restraint, withp=2MPa,D=2m,t=0.020m. Axialσa=pD/(4t)=50MPa; restrained segments require another model.",
+      "verify": "沿管線標出固定點、滑動點與伸縮接頭，畫端部壓力進入管壁或錨塊的路徑。分開列自由伸長與完全固定的邊界情境，核對管壁軸力與外部反力是否共同滿足整體平衡。~Map fixed points, sliding supports and expansion joints and trace end pressure into wall or anchor reactions. Separate free-extension and fixed-boundary cases, checking that wall force and external reactions together satisfy equilibrium of the complete selected pipe segment.",
+      "practice": "沿管線標出固定點、滑動點與伸縮接頭，畫端部壓力進入管壁或錨塊的路徑。分開列自由伸長與完全固定的邊界情境，核對管壁軸力與外部反力是否共同滿足整體平衡。~Map fixed points, sliding supports and expansion joints and trace end pressure into wall or anchor reactions. Separate free-extension and fixed-boundary cases, checking that wall force and external reactions together satisfy equilibrium of the complete selected pipe segment.",
+      "failure": "若壓力推力已被錨塊承擔又完整加到管壁，會重複荷載；反之兩邊都忽略則遺失力。約束不清時即使公式算得精準，軸向設計仍可能根本錯位。~Assigning full pressure thrust to both wall and anchor double-counts load, while assigning it to neither loses equilibrium. Precise arithmetic cannot repair an axial design based on an undefined or inconsistent restraint condition.",
+      "misconception": "封閉端公式可直接代表任何固定、埋設或帶伸縮接頭管線的軸向應力。~The closed-end formula directly gives axial stress for every fixed, buried or expansion-jointed pipeline."
+    },
+    {
+      "anchor": "彎管壓力向量~Elbow pressure vectors",
+      "title": "彎管壓力向量~Elbow pressure vectors",
+      "mechanism": "管線轉向時兩端壓力力的向量差形成彎管合力，不能只把壓力乘單一截面就當成所有方向的錨定荷載。動量變化、水重、管重與支承反力還要在完整自由體另列；等壓靜態示例只幫助確認角度與方向，不代表實際組合荷載。 假設等徑2m、兩端表壓2MPa、轉角90°且忽略動量及重量，F=2pA sin45°=8.8858MN，方向沿兩壓力向量合成。~A change in direction produces a resultant from the pressure-force vectors at an elbow’s ends. Pressure times one area alone does not describe every anchorage component. Momentum flux, water and pipe weight and support reactions belong in the full free body; an equal-pressure static example checks orientation rather than replacing the actual load combination. Assume diameter2m, equal gauge pressure2MPa and90° turn, neglecting momentum and weight. F=2pA sin45°=8.8858MN along the pressure-vector resultant.",
+      "model": "原創教學假設，非操作設定。假設等徑2m、兩端表壓2MPa、轉角90°且忽略動量及重量，F=2pA sin45°=8.8858MN，方向沿兩壓力向量合成。~Original teaching assumptions, not operating settings. Assume diameter2m, equal gauge pressure2MPa and90° turn, neglecting momentum and weight. F=2pA sin45°=8.8858MN along the pressure-vector resultant.",
+      "verify": "在平面圖畫兩端法向及壓力箭頭，用分量法和向量模長各算一次，確認轉角定義。再加入流速動量、重力與管壁傳力，標註哪些項已由相鄰固定點吸收，避免重複或漏列。~Draw end normals and pressure arrows, calculating both components and resultant magnitude with a stated turn angle. Then add momentum, gravity and wall-force paths, marking loads transferred to adjacent fixed points to prevent omission or double counting.",
+      "practice": "在平面圖畫兩端法向及壓力箭頭，用分量法和向量模長各算一次，確認轉角定義。再加入流速動量、重力與管壁傳力，標註哪些項已由相鄰固定點吸收，避免重複或漏列。~Draw end normals and pressure arrows, calculating both components and resultant magnitude with a stated turn angle. Then add momentum, gravity and wall-force paths, marking loads transferred to adjacent fixed points to prevent omission or double counting.",
+      "failure": "把九十度誤認為兩箭頭之夾角可能改變符號，錯把單端推力當合力則低估需求。真實彎管若有不同管徑或壓力，等壓等面積捷徑便不再成立。~Confusing pipe turn with arrow orientation can reverse signs, and using one end thrust understates the resultant. Unequal diameters or pressures invalidate the equal-area, equal-pressure shortcut even if the elbow angle is unchanged.",
+      "misconception": "彎管的錨定合力永遠等於一端壓力乘截面積而與轉角無關。~Elbow anchorage force always equals one end pressure times area, regardless of the turn angle."
+    },
+    {
+      "anchor": "自由熱伸長~Free thermal expansion",
+      "title": "自由熱伸長~Free thermal expansion",
+      "mechanism": "暴露鋼管溫度改變會產生自由伸縮，支座與接頭必須提供與模型一致的運動空間。水溫、日照及安裝時溫度不必相同，沿線不均勻加熱還會造成彎曲；先算無約束伸長有助於辨認需求，但不能把這個位移視為固定管段也會自由發生。 假設均勻升溫30°C、α=12×10⁻⁶/°C、自由長度100m，ΔL=αLΔT=0.036m；未含溫度梯度與約束。~Exposed steel changes length with temperature, so supports and joints must permit the motion assumed by the model. Water temperature, solar heating and erection temperature differ, and nonuniform heating can induce bending. Computing unconstrained extension identifies movement demand without implying that a fixed segment can actually undergo the same free displacement. Assume uniform warming30°C, expansion coefficient12×10⁻⁶/°C and free length100m. ΔL=0.036m, excluding temperature gradients and restraint.",
+      "model": "原創教學假設，非操作設定。假設均勻升溫30°C、α=12×10⁻⁶/°C、自由長度100m，ΔL=αLΔT=0.036m；未含溫度梯度與約束。~Original teaching assumptions, not operating settings. Assume uniform warming30°C, expansion coefficient12×10⁻⁶/°C and free length100m. ΔL=0.036m, excluding temperature gradients and restraint.",
+      "verify": "以安裝溫度為基準記錄季節溫度範圍，核對自由長度兩端是否真能移動。將預測位移與接頭行程及滑動支座位置對照，並檢查沿管溫差是否需要分段積分而非使用單一平均溫度。~Reference the seasonal range to erection temperature and verify both ends of the free length can move as assumed. Compare predicted displacement with joint travel and sliding-support position, and assess whether varying temperature requires integration along separate pipe segments.",
+      "practice": "以安裝溫度為基準記錄季節溫度範圍，核對自由長度兩端是否真能移動。將預測位移與接頭行程及滑動支座位置對照，並檢查沿管溫差是否需要分段積分而非使用單一平均溫度。~Reference the seasonal range to erection temperature and verify both ends of the free length can move as assumed. Compare predicted displacement with joint travel and sliding-support position, and assess whether varying temperature requires integration along separate pipe segments.",
+      "failure": "接頭卡死會把本來的位移需求轉成內力，支座滑到行程端也會改變邊界。只用水溫估暴露管線，可能漏掉日照引起的上下壁溫差和彎曲。~A seized joint converts movement demand into internal force, and a support reaching its travel stop changes the boundary. Water temperature alone may miss solar differences between upper and lower pipe walls and associated bending.",
+      "misconception": "算出自由伸長後就可假定任何固定錨塊之間都會發生同樣位移。~Calculated free expansion occurs unchanged between any pair of fixed anchor blocks."
+    },
+    {
+      "anchor": "完全約束熱應力~Fully restrained thermal stress",
+      "title": "完全約束熱應力~Fully restrained thermal stress",
+      "mechanism": "熱伸縮被阻止時會產生軸向內力，其大小取決於管壁、錨塊與地基共同剛度。完全固定只是一個清楚的極端情境，實際支座滑移或混凝土變形會重新分配力；溫度循環還可能形成疲勞，因此不能僅檢查一次最大升溫的平均應力。 假設軸向完全固定、均勻升溫30°C、E=200GPa、α=12×10⁻⁶/°C，壓應力幅值EαΔT=72MPa，限線彈性。~Prevented thermal movement creates axial force governed by combined pipe, anchor and foundation stiffness. Full restraint is a defined limiting case; sliding and concrete deformation redistribute force in practice. Temperature cycling can also contribute to fatigue, so a single maximum-warming stress does not characterize the complete history or the response of every connection. Assume full axial restraint, uniform warming30°C,E=200GPa andα=12×10⁻⁶/°C. Compressive stress magnitudeEαΔT=72MPa in the linear-elastic idealization.",
+      "model": "原創教學假設，非操作設定。假設軸向完全固定、均勻升溫30°C、E=200GPa、α=12×10⁻⁶/°C，壓應力幅值EαΔT=72MPa，限線彈性。~Original teaching assumptions, not operating settings. Assume full axial restraint, uniform warming30°C,E=200GPa andα=12×10⁻⁶/°C. Compressive stress magnitudeEαΔT=72MPa in the linear-elastic idealization.",
+      "verify": "先說明固定是位移約束還是高剛度彈簧，分開計算完全自由與固定兩端情境。核對升溫造成壓縮、降溫造成拉伸的符號，再與壓力軸力及支承變形組合，保留各荷載的時間關係。~State whether restraint is a prescribed displacement or a stiff spring and compare free and fixed limiting cases. Check warming-compression and cooling-tension signs, then combine pressure force and support deformation while retaining the timing of each load contribution.",
+      "practice": "先說明固定是位移約束還是高剛度彈簧，分開計算完全自由與固定兩端情境。核對升溫造成壓縮、降溫造成拉伸的符號，再與壓力軸力及支承變形組合，保留各荷載的時間關係。~State whether restraint is a prescribed displacement or a stiff spring and compare free and fixed limiting cases. Check warming-compression and cooling-tension signs, then combine pressure force and support deformation while retaining the timing of each load contribution.",
+      "failure": "忽略錨塊位移可能高估平均熱力，但忽略局部卡阻又可能低估局部需求。若進入降伏或接頭滑移，線性完全固定公式便不能描述卸載後的殘餘變形。~Ignoring anchor movement can overstate average thermal force, while missing local seizure understates local demand. Yielding or joint slip invalidates the linear fully restrained model for residual deformation after unloading.",
+      "misconception": "完全固定熱應力公式能直接描述任何降伏、滑移與殘餘變形。~The fully restrained elastic formula directly describes yielding, sliding and all residual deformation."
+    },
+    {
+      "anchor": "管體與充水重量~Pipe and contained-water weight",
+      "title": "管體與充水重量~Pipe and contained-water weight",
+      "mechanism": "支承承受的不只有鋼殼重量，充水狀態通常還有大量水重，空管與滿管因而是不同荷載情境。斜管重量要分解到管軸與法向，包覆混凝土或外部浮力也需要獨立列項；不能把管內水的體積當成鋼材體積或忽略單位長度的定義。 假設水平滿管內徑2m、外徑2.04m、鋼密度7850及水1000kg/m³，w=g[7850π(2.04²−2²)/4+1000π]=40.593kN/m。~Supports carry both steel and contained water, making empty and full conditions distinct load cases. Inclined weight must be resolved axially and normally, while encasement or external buoyancy requires separate terms. Internal water volume is not steel volume, and the reference unit length must remain explicit before reactions are distributed between supports. Assume a horizontal full pipe with inner diameter2m, outer2.04m, steel density7850 and water1000kg/m³. Combined distributed weight is40.593kN/m.",
+      "model": "原創教學假設，非操作設定。假設水平滿管內徑2m、外徑2.04m、鋼密度7850及水1000kg/m³，w=g[7850π(2.04²−2²)/4+1000π]=40.593kN/m。~Original teaching assumptions, not operating settings. Assume a horizontal full pipe with inner diameter2m, outer2.04m, steel density7850 and water1000kg/m³. Combined distributed weight is40.593kN/m.",
+      "verify": "分別畫鋼環與水圓截面，以密度乘面積再乘重力計單位長度荷載，核對外徑減內徑的平方順序。比較空管和滿管，再按斜率分解重量，將外部水壓或混凝土支承另列清楚。~Draw steel annulus and water disk separately, multiplying density by area and gravity for each unit-length load. Check squared diameters, compare empty and full cases, resolve inclined weight and separately identify external pressure and any concrete support contribution.",
+      "practice": "分別畫鋼環與水圓截面，以密度乘面積再乘重力計單位長度荷載，核對外徑減內徑的平方順序。比較空管和滿管，再按斜率分解重量，將外部水壓或混凝土支承另列清楚。~Draw steel annulus and water disk separately, multiplying density by area and gravity for each unit-length load. Check squared diameters, compare empty and full cases, resolve inclined weight and separately identify external pressure and any concrete support contribution.",
+      "failure": "漏算水重會低估反力，將壁厚直接當成截面面積則量綱已錯。外部地下水作用於空管時可能有淨上浮，與滿管向下重量情境不能混為同一驗算。~Omitting water understates reactions, while using thickness as area is dimensionally wrong. Groundwater can produce net uplift on an empty conduit, which must not be conflated with the downward weight of the full-pipe case.",
+      "misconception": "管線支座只需要承受鋼材自重而不必考慮管內水重。~Penstock supports carry only the steel’s own weight and need not consider contained water."
+    },
+    {
+      "anchor": "跨距與梁式反力~Span and beam reactions",
+      "title": "跨距與梁式反力~Span and beam reactions",
+      "mechanism": "相鄰支座之間的管段可先用梁模型理解整體彎矩與反力，但鞍座附近的環向彎曲和殼體橢圓化不是梁公式能描述。連續支承、不同沉陷與壓力剛化也可能改變分配，因此必須把全跨分析與局部殼體查核分開，同時保持一致荷載路徑。 假設簡支跨距10m、均布荷載40kN/m，Mmax=wL²/8=500kNm，兩端反力各200kN；未評估鞍座局部殼應力。~A beam idealization helps interpret span moment and reactions, but it does not resolve circumferential bending and shell ovality near saddles. Continuity, differential settlement and pressure effects can change load distribution. Separate global span response from local shell assessment while keeping a consistent load path between the two analytical representations. Assume a simply supported10m span under uniform40kN/m. Maximum moment500kNm and reactions200kN each exclude local saddle shell stresses.",
+      "model": "原創教學假設，非操作設定。假設簡支跨距10m、均布荷載40kN/m，Mmax=wL²/8=500kNm，兩端反力各200kN；未評估鞍座局部殼應力。~Original teaching assumptions, not operating settings. Assume a simply supported10m span under uniform40kN/m. Maximum moment500kNm and reactions200kN each exclude local saddle shell stresses.",
+      "verify": "畫清支座轉動及平移自由度，以反力總和檢查荷載平衡，再比較連續梁或支座沉陷情境。把全跨彎矩傳入管壁應力分析，並另設鞍座接觸角、加勁環及局部變形檢核項目。~Define support rotational and translational freedoms and check reaction sum against total load, then compare continuity and settlement cases. Carry span moment into wall analysis while separately assessing saddle contact angle, stiffening rings and local shell distortion.",
+      "practice": "畫清支座轉動及平移自由度，以反力總和檢查荷載平衡，再比較連續梁或支座沉陷情境。把全跨彎矩傳入管壁應力分析，並另設鞍座接觸角、加勁環及局部變形檢核項目。~Define support rotational and translational freedoms and check reaction sum against total load, then compare continuity and settlement cases. Carry span moment into wall analysis while separately assessing saddle contact angle, stiffening rings and local shell distortion.",
+      "failure": "簡支假設若不符合實際固定程度會改變彎矩位置，單看跨中最大值也可能漏掉支座負彎矩。管殼局部壓扁即使總體梁應力不高，仍可能控制支承細節。~An incorrect simple-support assumption shifts moment distribution, and focusing on midspan misses support moments. Local flattening of the shell can govern saddle details even when the global beam stress appears modest.",
+      "misconception": "梁式跨中彎矩通過檢查就等於鞍座周圍殼體應力也已驗證。~A satisfactory beam midspan moment automatically verifies shell stresses around every saddle."
+    },
+    {
+      "anchor": "滑動摩擦與固定點~Sliding friction and fixed points",
+      "title": "滑動摩擦與固定點~Sliding friction and fixed points",
+      "mechanism": "滑動支座的目的通常是容許伸縮，但摩擦仍會把部分軸力傳到固定點。靜摩擦上限與實際動摩擦力不同，接觸壓力、鏽蝕及潤滑會改變參數；不能用名義摩擦係數保證永遠能滑動，也不能把所有支座最大摩擦同時同向當成必然情況。 假設接觸法向力400kN、庫侖摩擦係數0.15，摩擦上限μN=60kN；靜止時實際摩擦可小於此值。~Sliding supports permit movement while friction still transfers axial force to fixed points. Limiting static friction differs from actual sliding resistance, and contact pressure, corrosion and lubrication change the parameter. A nominal coefficient does not guarantee motion, nor does it establish that every support simultaneously mobilizes its maximum resistance in the same direction. Assume contact normal force400kN and Coulomb coefficient0.15. Limiting frictionμN=60kN; actual static friction may be smaller than this bound.",
+      "model": "原創教學假設，非操作設定。假設接觸法向力400kN、庫侖摩擦係數0.15，摩擦上限μN=60kN；靜止時實際摩擦可小於此值。~Original teaching assumptions, not operating settings. Assume contact normal force400kN and Coulomb coefficient0.15. Limiting frictionμN=60kN; actual static friction may be smaller than this bound.",
+      "verify": "先判斷支座處於黏著還是滑動狀態，對照位移紀錄、接觸面狀況與法向荷載。用摩擦上下界做反力敏感度，逐段檢查軸向平衡，不把極限值當成每個時刻都存在的固定外力。~Determine sticking or sliding from movement records, contact condition and normal load. Explore plausible friction bounds in reaction sensitivity and check axial equilibrium segment by segment rather than treating the limit as a constant force acting at all times.",
+      "practice": "先判斷支座處於黏著還是滑動狀態，對照位移紀錄、接觸面狀況與法向荷載。用摩擦上下界做反力敏感度，逐段檢查軸向平衡，不把極限值當成每個時刻都存在的固定外力。~Determine sticking or sliding from movement records, contact condition and normal load. Explore plausible friction bounds in reaction sensitivity and check axial equilibrium segment by segment rather than treating the limit as a constant force acting at all times.",
+      "failure": "支座鏽死時原先的滑動邊界可能變成固定點，熱力路徑隨之改變。摩擦方向也會在升降溫時反轉，忽略歷時便可能錯算錨塊反力及接頭行程。~A corroded seized support may become a fixed point and redirect thermal force. Friction reverses with movement direction, so neglecting the sequence can misstate anchor reaction and expansion-joint travel during temperature cycles.",
+      "misconception": "靜止滑動支座的實際摩擦力在任何時刻都必定等於摩擦係數乘法向力。~Actual friction at a stationary sliding support always equals coefficient times normal force."
+    },
+    {
+      "anchor": "錨塊基底平均壓力~Anchor base average pressure",
+      "title": "錨塊基底平均壓力~Anchor base average pressure",
+      "mechanism": "錨塊把管線荷載傳到地基，但平均基底壓力只適用於假設的接觸狀態，不能單獨評估抗滑或抗傾覆。偏心、基底張開及地基不均勻會改變壓力分布；應把力、力矩、排水及基礎剛度放在同一自由體中，再決定簡化均壓是否合理。 假設中心向下合力2MN作用於全接觸基底4m²，q=N/A=500kPa；不是地基允許承壓值且未計偏心。~An anchor transfers pipeline loads to the foundation, but average base pressure depends on the assumed contact state and does not establish sliding or overturning resistance. Eccentricity, uplifted contact and variable ground stiffness change the distribution. Include force, moment, drainage and foundation stiffness before deciding whether a uniform-pressure idealization is defensible. Assume a centered downward resultant2MN on a fully contacting4m² base. Averageq=500kPa is not allowable bearing pressure and excludes eccentricity.",
+      "model": "原創教學假設，非操作設定。假設中心向下合力2MN作用於全接觸基底4m²，q=N/A=500kPa；不是地基允許承壓值且未計偏心。~Original teaching assumptions, not operating settings. Assume a centered downward resultant2MN on a fully contacting4m² base. Averageq=500kPa is not allowable bearing pressure and excludes eccentricity.",
+      "verify": "對錨塊整體列垂直力與力矩平衡，核對是否有地下水上浮或水平管推力造成偏心。用接觸範圍和地基資料判斷均壓假設，再分別查抗滑、傾覆、沉陷與混凝土局部受力。~Check vertical-force and moment equilibrium, including groundwater uplift and eccentricity from horizontal pipe thrust. Use contact and ground evidence to assess uniform pressure, then examine sliding, overturning, settlement and local concrete actions as separate mechanisms.",
+      "practice": "對錨塊整體列垂直力與力矩平衡，核對是否有地下水上浮或水平管推力造成偏心。用接觸範圍和地基資料判斷均壓假設，再分別查抗滑、傾覆、沉陷與混凝土局部受力。~Check vertical-force and moment equilibrium, including groundwater uplift and eccentricity from horizontal pipe thrust. Use contact and ground evidence to assess uniform pressure, then examine sliding, overturning, settlement and local concrete actions as separate mechanisms.",
+      "failure": "將五百千帕誤寫成地基承載能力會倒置需求與抗力，偏心時平均值又會掩蓋最大壓力。基底部分脫離後，仍以原面積均分會低估剩餘接觸區需求。~Calling500kPa a foundation capacity reverses demand and resistance, while average pressure hides peaks under eccentricity. After partial loss of contact, dividing by the original area understates demand on the remaining bearing region.",
+      "misconception": "基底平均壓力算得出來就代表錨塊抗滑、傾覆與地基承載均已合格。~Calculating average base pressure proves acceptable sliding, overturning and foundation capacity."
+    },
+    {
+      "anchor": "減薄與剩餘厚度~Wall loss and remaining thickness",
+      "title": "減薄與剩餘厚度~Wall loss and remaining thickness",
+      "mechanism": "腐蝕造成的壁厚減少會提高相同內壓下的膜應力，但均勻減薄只是一種理想情境，局部坑蝕與裂縫需要不同評估。厚度量測的網格與位置應可追溯，不能用最容易量到的一點代表整段；塗層良好也不等於內外壁都沒有缺陷。 假設壓力及直徑不變、均勻厚度20mm降至18mm，環向應力100×20/18=111.11MPa，增加11.11%；未評局部坑蝕。~Wall loss raises membrane stress at the same internal pressure, but uniform thinning is only one idealization and pits or cracks require different assessment. Measurement grids and locations must be traceable; an easily accessible point cannot represent the whole segment. A sound coating also does not prove the absence of defects on either surface. Assume unchanged pressure and diameter with uniform thickness falling20 to18mm. Hoop stress rises100×20/18=111.11MPa, an11.11% increase, excluding pitting assessment.",
+      "model": "原創教學假設，非操作設定。假設壓力及直徑不變、均勻厚度20mm降至18mm，環向應力100×20/18=111.11MPa，增加11.11%；未評局部坑蝕。~Original teaching assumptions, not operating settings. Assume unchanged pressure and diameter with uniform thickness falling20 to18mm. Hoop stress rises100×20/18=111.11MPa, an11.11% increase, excluding pitting assessment.",
+      "verify": "將厚度圖與原始製造、焊縫和歷次量測對位，確認儀器校正與塗層修正。分辨均勻減薄、局部坑蝕和裂紋，再用相應方法評估，不以平均厚度或外觀照片取代最弱區域的證據。~Register thickness maps with fabrication, weld and prior inspection records, checking calibration and coating corrections. Distinguish uniform loss, pits and cracks and apply appropriate assessment methods rather than substituting average thickness or appearance for evidence at the weakest region.",
+      "practice": "將厚度圖與原始製造、焊縫和歷次量測對位，確認儀器校正與塗層修正。分辨均勻減薄、局部坑蝕和裂紋，再用相應方法評估，不以平均厚度或外觀照片取代最弱區域的證據。~Register thickness maps with fabrication, weld and prior inspection records, checking calibration and coating corrections. Distinguish uniform loss, pits and cracks and apply appropriate assessment methods rather than substituting average thickness or appearance for evidence at the weakest region.",
+      "failure": "量測點偏離最薄區會得到假安心，腐蝕速率也未必長期固定。單靠線性外推厚度可能漏掉局部加速或裂紋擴展，應保留測值不確定度與機制分類。~Measurements missing the thinnest area give false reassurance, and corrosion rate need not remain constant. Linear thickness extrapolation can miss local acceleration or crack growth, requiring retained uncertainty and a clear classification of damage mechanisms.",
+      "misconception": "壁厚減少百分之十時膜應力一定也只增加百分之十且不需檢查局部缺陷。~A ten-percent thickness loss raises stress by exactly ten percent and removes any need to check local defects."
+    }
+  ],
+  "title": "壓力鋼管錨定與支承~Penstock anchorage and supports",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "summary": "本課用完整荷載路徑理解壓力鋼管，而不只套一條薄壁應力公式。十個單元依序分辨環向與軸向力、彎管向量、熱伸縮、滿管重量、跨距反力、滑動摩擦、錨塊基底及減薄檢查，要求每個簡化模型先畫自由體與邊界，再說明未包含的局部殼體、基礎與疲勞問題。~This course follows the complete penstock load path rather than relying on one thin-wall formula. Ten units distinguish hoop and axial action, elbow vectors, thermal movement, full-pipe weight, span reactions, friction, anchor bearing and wall loss. Each simplified model begins with a free body and boundaries and identifies excluded shell, foundation and fatigue behavior.",
+  "history": "大型水力工程的鋼管需要把水壓與重量可靠地送到支承和地基，設計與後續檢查因此相互依賴。胡佛壩官方歷史描述壓力鋼管和錨定工程；埃克盧特納資料則記錄包覆鋼管、混凝土錨塊與地基鋼樁，提供不同配置的比較。墾務局鋼壓力管專論於一九四九年出版並在一九六六年修訂，二〇二二年八月的檢查手冊另強調維護證據。本課不把歷史案例的存在當成合成尺寸可直接施工的理由，亦不把舊專論替代場址適用的設計要求。~Large hydropower penstocks must transfer pressure and weight into supports and foundations, making design and inspection interdependent. Hoover’s official history describes penstocks and anchorage, while Eklutna documents encased steel, concrete anchor blocks and foundation piles as a contrasting configuration. Reclamation’s steel-penstock monograph was published in1949 and revised in1966; the August2022 inspection manual supplies a separate maintenance reference. These historical examples do not authorize construction from synthetic dimensions, and an older monograph is not substituted for applicable site design requirements.",
+  "example": "原創壓力敏感度：薄壁圓管內徑2m、均勻厚度0.020m，表壓2MPa時環向膜應力為100MPa。如果保持幾何及線彈性假設而壓力增加10%至2.2MPa，應力增為110MPa，增加10%。此線性關係不能證明材料、焊縫或支座仍有足夠餘量。學徒應再列端部軸力、彎管壓力向量和錨塊需求如何同時增加，並檢查壓力峰值是否出自水錘。若發生減薄、塑性或外壓屈曲，原先模型邊界已改變，不能以這個單一百分比概括所有失效機制。~Original pressure sensitivity: a thin circular pipe with inner diameter2m and uniform thickness0.020m has hoop membrane stress100MPa at gauge pressure2MPa. Holding geometry and linear-elastic assumptions fixed while increasing pressure10% to2.2MPa raises stress to110MPa, also10%. That proportionality does not demonstrate adequate material, weld or support margin. Apprentices should also trace increased end force, elbow pressure vectors and anchor demands and determine whether the peak is a water-hammer transient. Wall loss, plasticity or external-pressure buckling changes the original model boundary, so one percentage cannot summarize every failure mechanism.",
+  "facts": [
+    "原創教學假設，非操作設定。假設薄壁圓管表壓p=2MPa、內徑D=2m、均勻壁厚t=0.020m，σh=pD/(2t)=100MPa；未含局部彎曲。~Original teaching assumptions, not operating settings. Assume thin circular pipe gauge pressure2MPa, inner diameter2m and uniform thickness0.020m. Hoopσh=pD/(2t)=100MPa, excluding local bending.",
+    "原創教學假設，非操作設定。假設封閉端且軸向無外部約束，p=2MPa、D=2m、t=0.020m，σa=pD/(4t)=50MPa；固定管段需另建約束模型。~Original teaching assumptions, not operating settings. Assume closed ends and no external axial restraint, withp=2MPa,D=2m,t=0.020m. Axialσa=pD/(4t)=50MPa; restrained segments require another model.",
+    "原創教學假設，非操作設定。假設等徑2m、兩端表壓2MPa、轉角90°且忽略動量及重量，F=2pA sin45°=8.8858MN，方向沿兩壓力向量合成。~Original teaching assumptions, not operating settings. Assume diameter2m, equal gauge pressure2MPa and90° turn, neglecting momentum and weight. F=2pA sin45°=8.8858MN along the pressure-vector resultant.",
+    "原創教學假設，非操作設定。假設均勻升溫30°C、α=12×10⁻⁶/°C、自由長度100m，ΔL=αLΔT=0.036m；未含溫度梯度與約束。~Original teaching assumptions, not operating settings. Assume uniform warming30°C, expansion coefficient12×10⁻⁶/°C and free length100m. ΔL=0.036m, excluding temperature gradients and restraint.",
+    "原創教學假設，非操作設定。假設軸向完全固定、均勻升溫30°C、E=200GPa、α=12×10⁻⁶/°C，壓應力幅值EαΔT=72MPa，限線彈性。~Original teaching assumptions, not operating settings. Assume full axial restraint, uniform warming30°C,E=200GPa andα=12×10⁻⁶/°C. Compressive stress magnitudeEαΔT=72MPa in the linear-elastic idealization.",
+    "原創教學假設，非操作設定。假設水平滿管內徑2m、外徑2.04m、鋼密度7850及水1000kg/m³，w=g[7850π(2.04²−2²)/4+1000π]=40.593kN/m。~Original teaching assumptions, not operating settings. Assume a horizontal full pipe with inner diameter2m, outer2.04m, steel density7850 and water1000kg/m³. Combined distributed weight is40.593kN/m."
+  ],
+  "timeline": [
+    {
+      "year": "1949",
+      "event": "墾務局出版焊接鋼壓力管工程專論~Reclamation publishes its welded steel penstocks engineering monograph"
+    },
+    {
+      "year": "1966",
+      "event": "焊接鋼壓力管專論完成修訂版~Welded steel penstocks monograph receives its revised edition"
+    },
+    {
+      "year": "2022",
+      "event": "八月版鋼壓力管與壓力渠道檢查手冊列入官方清單~August steel penstock inspection manual appears in official listing"
+    }
+  ],
+  "codes": [
+    "工程專論第三號焊接鋼壓力管~Engineering Monograph3 Welded Steel Penstocks",
+    "FIST2-8鋼壓力管與壓力渠道檢查~FIST2-8 Inspection of Steel Penstocks and Pressure Conduits"
+  ],
+  "landmarks": [
+    "胡佛壩：鋼管錨定配置比較~Hoover Dam: penstock anchorage configuration comparison",
+    "埃克盧特納：包覆鋼管及錨塊~Eklutna: encased penstock and anchor block"
+  ],
+  "place": {
+    "name": "埃克盧特納公共工程背景區~Eklutna public project context",
+    "country": "美國~United States",
+    "lat": 61.467,
+    "lng": -149.15,
+    "query": "Eklutna Power Plant Alaska"
+  },
+  "sources": [
+    {
+      "key": "steel-penstocks",
+      "title": "焊接鋼壓力管專論",
+      "titleEn": "Engineering Monograph3: Welded Steel Penstocks",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方清單確認一九四九年專論及一九六六年修訂；用作鋼管荷載與支承背景，不將歷史方法當成現場驗收結論。",
+      "scopeEn": "Official list confirms the1949 monograph and1966 revision; used for steel-pipe load and support context, not as a current field acceptance decision."
+    },
+    {
+      "key": "penstock-inspection",
+      "title": "鋼壓力管與壓力渠道檢查",
+      "titleEn": "FIST2-8 Inspection of Steel Penstocks and Pressure Conduits",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/power/data/fist_pub.html",
+      "sourceType": "primary",
+      "scope": "官方清單列二〇二二年八月鋼管檢查手冊，支持厚度、支承及可追溯維護資料的查核；數值許用應力未由此推定。",
+      "scopeEn": "Official list dates the steel-conduit inspection manual to August2022, supporting traceable thickness, support and maintenance evidence; no allowable stress is inferred."
+    },
+    {
+      "key": "hoover-history",
+      "title": "胡佛壩建設歷程",
+      "titleEn": "Hoover Dam construction history",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/history/hoover.html",
+      "sourceType": "primary",
+      "scope": "官方歷史記錄混凝土壩、鋼管與錨定工程；本課僅作結構型式比較，不將合成動力參數宣稱為胡佛壩資料。",
+      "scopeEn": "Official history describes the concrete dam, penstocks and anchorage; used for structural-type comparison, not as the source of synthetic dynamic parameters."
+    },
+    {
+      "key": "eklutna-history",
+      "title": "埃克盧特納鋼管與調壓設施歷史",
+      "titleEn": "Eklutna Project construction history",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/history/eklutna.html",
+      "sourceType": "primary",
+      "scope": "官方歷史描述包覆鋼管、混凝土錨塊與調壓井施工；作真實配置案例，不把本課尺寸或瞬態參數當成其設計資料。",
+      "scopeEn": "Official history describes encased steel penstocks, concrete anchor blocks and surge-tank construction; synthetic dimensions and transient parameters are not site design data."
+    },
+    {
+      "key": "hydro-structures",
+      "title": "水力電廠結構規劃與設計",
+      "titleEn": "EM1110-2-3001 Planning and Design of Hydroelectric Power Plant Structures",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-3001.pdf",
+      "sourceType": "primary",
+      "scope": "官方目錄列二〇〇八年十月更新的水力電廠結構手冊，涵蓋壓力管與調壓設施；不是每座場址的操作規程。",
+      "scopeEn": "Official catalogue lists the October2008 update of hydroelectric structural guidance, including penstocks and surge facilities; it is not a site operating procedure."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Bureau of Reclamation",
+      "nameEn": "US Bureau of Reclamation",
+      "business": "發布相關水利方法、研究或公共工程資訊。",
+      "businessEn": "Publishes relevant water-engineering methods, research or public project information.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方清單確認一九四九年專論及一九六六年修訂；用作鋼管荷載與支承背景，不將歷史方法當成現場驗收結論。",
+      "roleEn": "Official list confirms the1949 monograph and1966 revision; used for steel-pipe load and support context, not as a current field acceptance decision."
+    },
+    {
+      "name": "US Army Corps of Engineers",
+      "nameEn": "US Army Corps of Engineers",
+      "business": "發布相關水利方法、研究或公共工程資訊。",
+      "businessEn": "Publishes relevant water-engineering methods, research or public project information.",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-3001.pdf",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方目錄列二〇〇八年十月更新的水力電廠結構手冊，涵蓋壓力管與調壓設施；不是每座場址的操作規程。",
+      "roleEn": "Official catalogue lists the October2008 update of hydroelectric structural guidance, including penstocks and surge facilities; it is not a site operating procedure."
+    }
+  ],
+  "related": [
+    "b258",
+    "b260"
+  ],
+  "architectureNodes": [
+    [
+      "環向薄膜應力",
+      "Circumferential membrane stress"
+    ],
+    [
+      "彎管壓力向量",
+      "Elbow pressure vectors"
+    ],
+    [
+      "完全約束熱應力",
+      "Fully restrained thermal stress"
+    ],
+    [
+      "滑動摩擦與固定點",
+      "Sliding friction and fixed points"
+    ],
+    [
+      "減薄與剩餘厚度",
+      "Wall loss and remaining thickness"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

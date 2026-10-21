@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b120-8c739d7d87d9283b.json"]={sha256:"8c739d7d87d9283bd818a37df1c2c2732f78513df588f2a3c593de2a4db36be5",value:{"id":"b120","title":"獅子洋隧道","titleEn":"Shiziyang Tunnel","category":"underground","kind":"project","summary":"以「獅子洋隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Shiziyang Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b230-d26d442d114ea124.json"]={sha256:"d26d442d114ea1242bf7f03569ffe99e5ed9089b4b8effbb9f981c85f6f04665",value:{"id":"b230","title":"荷蘭三角洲工程","titleEn":"Delta Works","category":"water","kind":"project","summary":"以「荷蘭三角洲工程」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Delta Works. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-delta"],"status":"roadmap"}};

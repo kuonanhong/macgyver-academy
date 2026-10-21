@@ -1,0 +1,62 @@
+{
+  "reviewer": "courses_support",
+  "role": "independent reviewer of root compaction change; author of narrowly approved HTTP fallback fix",
+  "date": "2026-10-21",
+  "status": "PASS_WITH_RESOLVED_FINDING",
+  "sourceHashes": {
+    "public/academy/lazy-index-codec.js": "34cbe23253f02e2df073b32359efdd8ee139e61aae6f7e6b160e527b3a58b691",
+    "tools/build-offline.mjs": "8642b172886bb60498f0736b603c99981cccb79960a9f44542d67005b85cc31d",
+    "public/academy/curriculum-loader.js": "33c1a7adc722ed52616317f0900cff92e962e910469da61674beb6700d823fe1",
+    "public/academy/bootstrap.js": "2d0a7fba167177bce410889d34cc1ee91c82d96a14f6f1bcdfcd94251ef018dd",
+    "public/academy/index.html": "a067595523ebf08d983a17137c94d02dd5d36635514a0fbcb86c70bbbf8f5aad",
+    "tools/test-lazy-index-fallback-v15.mjs": "0cd9b1d0b50079c9c3d65c448abef52e85394c2f954c755a48aee63e96af1a9c"
+  },
+  "comparison": "Sibling MacGyver_Engineering_Academy_v14",
+  "findings": [
+    {
+      "id": "SUPPORT-CODE-01",
+      "severity": "medium",
+      "location": "public/academy/curriculum-loader.js:index",
+      "original": "Only compact URL was requested; a valid V14 expanded index could not recover a missing compact file. Reproduced against actual V14 expanded index.",
+      "resolution": "Typed HTTP request error; fallback only on HTTP 404 or 410; validated expanded payload. All other errors fail closed.",
+      "status": "RESOLVED"
+    }
+  ],
+  "checks": [
+    "Build encoder preserves all existing metadata fields; step object keys removed only after metadata() has reduced each step to its ID. Runtime decoder restores exact descriptors and step objects. Build aborts if JSON round-trip differs.",
+    "All descriptor paths derive from bounded safe IDs and full hexadecimal digest; expanded loader retains exact path/size/hash validation. Response limit, no redirects, immutable payload checksum, retry, deduplication and protected no-store branches unchanged.",
+    "New codec is included in source manifest inputs and the app module bundle; standalone offline preload embeds its self-contained function without ES modules or fetch.",
+    "bootstrap.js and offline-runtime.js are byte-identical to V14. Existing HTML shell plus deferred bootstrap preserves home-first rendering; no claim of a newly added V15 boot mechanism.",
+    "File mode still preloads only expanded catalogue metadata, then loads individual course/resource/auxiliary classic scripts. Course payload generation is unchanged from V14; no teaching-body reduction is introduced by index compaction.",
+    "Expanded data/lazy/index.json remains generated for compatibility and diagnostics; compact version is also in generated output manifest."
+  ],
+  "executedTests": [
+    {
+      "command": "node tools/test-lazy-index-fallback-v15.mjs",
+      "cases": 20,
+      "status": "PASS",
+      "details": "normal compact/expanded; 404/410 fallback; 401/403/429/500/503 fail; network and forged status fail; malformed JSON/digest/catalogue/guided IDs and oversized response fail; unsafe fallback descriptor fail; retry after both missing; file missing/preloaded modes perform no fetch."
+    },
+    {
+      "command": "node tools/test-lazy-index-v15.mjs",
+      "status": "PASS",
+      "catalog": 2066,
+      "malformedCases": 8,
+      "lossless": true,
+      "expandedBytes": 4301680,
+      "compactBytes": 3573821,
+      "snapshotNote": "Existing generated snapshot before root final rebuild; size measurement is not a browser speed benchmark."
+    },
+    {
+      "command": "node --check public/academy/curriculum-loader.js",
+      "status": "PASS"
+    }
+  ],
+  "limits": [
+    "Did not rerun full offline build or full website tests because root owns final rebuild.",
+    "Read existing test-lazy-v14.mjs and test-offline.mjs coverage; did not represent those broad tests as newly executed.",
+    "No real browser layout or mobile performance measurement in this review.",
+    "Classic offline scripts retain V14 trust model: extracted JavaScript must be trusted; descriptor digest identity does not authenticate arbitrary modified local executable scripts."
+  ],
+  "preservedPeerReview": "peer_support.json and its supporting scripts were not modified."
+}

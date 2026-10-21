@@ -1,0 +1,273 @@
+{
+  "id": "b245",
+  "title": "滑雪跳台式消能工~Ski-jump spillway energy dissipation",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "focus": "追蹤挑流軌跡入水動量與岩床沖蝕邊界~Tracing flip-bucket trajectories impact momentum and rock-scour boundaries",
+  "summary": "本課以追蹤挑流軌跡入水動量與岩床沖蝕邊界為主線，先用挑流彈道與落點與落差與飛行時間界定水力與構造條件，再將射流功率與承受區、入水動量與方向連結到福祿尺度與表面張力。彈道忽略空氣阻力且以自由射流示意，水墊與岩床反應須另外驗證。 每單元以原創算例、量測與失效辨識共同檢查推論。~This course develops tracing flip-bucket trajectories impact momentum and rock-scour boundaries through Jet trajectory and landing point and Drop height and flight time, then connects Jet power and receiving zone and Impact momentum and direction to Froude scaling and surface tension. Ballistic examples neglect air resistance and describe free jets; plunge-pool and rock responses require separate verification. Each unit combines original calculation, measurement and failure diagnosis to test the inference.",
+  "history": "本課所研究的追蹤挑流軌跡入水動量與岩床沖蝕邊界，反映水工設計由單一尺寸選取走向水流、材料、施工與長期監測共同驗證的發展。彈道忽略空氣阻力且以自由射流示意，水墊與岩床反應須另外驗證。 美國墾務局官方目錄列有1978年消能工專論、1980年水力試驗技術及1987年小壩設計，這些是技術文件出版年份，不是本課假想工程的啟用日期。所列具名工程只供公開原理與邊界比較，不主張取得其設計圖、現場紀錄或專有參數。~The focus on tracing flip-bucket trajectories impact momentum and rock-scour boundaries reflects development from isolated sizing toward joint verification of flow, materials, construction and long-term observations. Ballistic examples neglect air resistance and describe free jets; plunge-pool and rock responses require separate verification. The Reclamation catalog lists the 1978 energy-dissipator monograph, 1980 hydraulic laboratory techniques and 1987 small-dam manual. These are publication dates, not commissioning dates for a hypothetical project. Named works support comparisons of public principles and boundaries; this course claims no access to proprietary drawings, field records or project parameters.",
+  "example": "整合算例輸入全為教學假設，先檢查挑流彈道與落點：Equal launch/landing elevation; V=20 m/s; angle=30 degrees; range=20**2*sin(60 degrees)/9.81=35.3119 m；再獨立檢查落差與飛行時間：UpwardVelocity=10 m/s; drop=8 m; g=9.81 m/s2; flightTime=(10+sqrt(10**2+2*9.81*8))/9.81=2.65341 s。敏感度：同高起落且挑角30度時，出口速度由20增至25m/s，理想射程由35.31增至55.17m，增加56.25%；射程隨速度平方變化但不代表沖刷深度同倍增加。 兩個結果須按各自量綱解釋，不能直接相加或當成完整設計。彈道忽略空氣阻力且以自由射流示意，水墊與岩床反應須另外驗證。 將以多點同步壓力量測比較面積平均與局部峰值作為獨立驗證，明確列出尚缺的現地輸入及其對結論的影響。~Every input in this integrated example is a teaching assumption. First examine Jet trajectory and landing point: Equal launch/landing elevation; V=20 m/s; angle=30 degrees; range=20**2*sin(60 degrees)/9.81=35.3119 m. Independently examine Drop height and flight time: UpwardVelocity=10 m/s; drop=8 m; g=9.81 m/s2; flightTime=(10+sqrt(10**2+2*9.81*8))/9.81=2.65341 s. Sensitivity: at equal launch and landing elevation and a30-degree angle, increasing exit velocity from20 to25m/s raises ideal range from35.31 to55.17m, a56.25 percent increase. Range scales with velocity squared, whereas scour depth does not follow the same rule. Interpret each result in its own dimensions rather than adding them or treating them as a complete design. Ballistic examples neglect air resistance and describe free jets; plunge-pool and rock responses require separate verification. Use the following independent check: Compare spatially averaged pressure with local peaks using synchronized pressure arrays. Identify missing field inputs and state which conclusions depend on them.",
+  "units": [
+    {
+      "anchor": "挑流彈道與落點~Jet trajectory and landing point",
+      "title": "挑流彈道與落點~Jet trajectory and landing point",
+      "mechanism": "挑流鼻坎把高速水舌拋向下游水墊，落點受出口速度、角度與落差控制。忽略阻力的質點彈道只估中心線，實際水舌會展寬、破碎與含氣；必須確認使用的是水舌離坎速度而非上游平均速度，且不能把單一落點當成整個沖擊區。 驗證時應由高速攝影追蹤水舌邊界並核對出口速度與實際尾水高程，並辨識以下失效情境：把高水位尾水仍當同高落點會誤判沖擊位置。這有助於確認模型的水流、受力或量測邊界是否仍成立。~A flip bucket throws a high-speed jet toward a downstream pool. Velocity, angle and elevation difference determine the ideal trajectory. A drag-free particle model estimates a centerline, while real jets spread, fragment and aerate; use launch velocity and distinguish the landing point from the entire impact footprint. Test this interpretation with the following evidence: Track jet boundaries with high-speed imaging and verify launch velocity and actual tailwater elevation. In particular, distinguish this failure mechanism: Assuming equal elevations despite high tailwater misplaces the impact region. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Equal launch/landing elevation; V=20 m/s; angle=30 degrees; range=20**2*sin(60 degrees)/9.81=35.3119 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Equal launch/landing elevation; V=20 m/s; angle=30 degrees; range=20**2*sin(60 degrees)/9.81=35.3119 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "由高速攝影追蹤水舌邊界並核對出口速度與實際尾水高程。應將原始量測與本單元模型的輸入條件對齊，並針對「把高水位尾水仍當同高落點會誤判沖擊位置」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Track jet boundaries with high-speed imaging and verify launch velocity and actual tailwater elevation. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Assuming equal elevations despite high tailwater misplaces the impact region. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把高水位尾水仍當同高落點會誤判沖擊位置。診斷時應採取以下查核：由高速攝影追蹤水舌邊界並核對出口速度與實際尾水高程，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Assuming equal elevations despite high tailwater misplaces the impact region. Diagnose it by the following check: Track jet boundaries with high-speed imaging and verify launch velocity and actual tailwater elevation. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "理想中心線落點就是完整水舌沖擊範圍~The ideal centerline landing point defines the complete jet footprint",
+      "practice": "交接時以由高速攝影追蹤水舌邊界並核對出口速度與實際尾水高程作為可追溯證據，保存對應材料、構形與工況版本。針對把高水位尾水仍當同高落點會誤判沖擊位置，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Track jet boundaries with high-speed imaging and verify launch velocity and actual tailwater elevation. Record material, geometry and operating-state versions. Address this scenario: Assuming equal elevations despite high tailwater misplaces the impact region. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "落差與飛行時間~Drop height and flight time",
+      "title": "落差與飛行時間~Drop height and flight time",
+      "mechanism": "水舌由較高出口落入低處水面時，垂直運動包含初始向上速度與重力加速，應取二次方程的正時間根。以同高公式代替會低估射程；水位波動與射流破碎使接觸面並非固定平面，仍需量測與模型確認。 驗證時應以同步影像核對離坎與入水時刻及水面平均高程，並辨識以下失效情境：選錯負時間根會產生看似有值但不具物理意義的軌跡。這有助於確認模型的水流、受力或量測邊界是否仍成立。~For a jet launched above the pool, vertical motion includes initial upward velocity and gravity. Use the positive time root rather than the equal-elevation shortcut, which underestimates range. Pool waves and jet fragmentation make the contact surface variable, so measurements must validate the idealized trajectory. Test this interpretation with the following evidence: Use synchronized images to verify launch and impact times and mean pool elevation. In particular, distinguish this failure mechanism: Selecting the negative time root produces a numerical but nonphysical trajectory. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：UpwardVelocity=10 m/s; drop=8 m; g=9.81 m/s2; flightTime=(10+sqrt(10**2+2*9.81*8))/9.81=2.65341 s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: UpwardVelocity=10 m/s; drop=8 m; g=9.81 m/s2; flightTime=(10+sqrt(10**2+2*9.81*8))/9.81=2.65341 s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以同步影像核對離坎與入水時刻及水面平均高程。應將原始量測與本單元模型的輸入條件對齊，並針對「選錯負時間根會產生看似有值但不具物理意義的軌跡」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Use synchronized images to verify launch and impact times and mean pool elevation. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Selecting the negative time root produces a numerical but nonphysical trajectory. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "選錯負時間根會產生看似有值但不具物理意義的軌跡。診斷時應採取以下查核：以同步影像核對離坎與入水時刻及水面平均高程，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Selecting the negative time root produces a numerical but nonphysical trajectory. Diagnose it by the following check: Use synchronized images to verify launch and impact times and mean pool elevation. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "有落差的挑流仍可沿用同高射程公式~A jet with elevation drop still obeys the equal-elevation range formula",
+      "practice": "交接時以以同步影像核對離坎與入水時刻及水面平均高程作為可追溯證據，保存對應材料、構形與工況版本。針對選錯負時間根會產生看似有值但不具物理意義的軌跡，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Use synchronized images to verify launch and impact times and mean pool elevation. Record material, geometry and operating-state versions. Address this scenario: Selecting the negative time root produces a numerical but nonphysical trajectory. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "鼻坎曲率與壓力~Bucket curvature and pressure",
+      "title": "鼻坎曲率與壓力~Bucket curvature and pressure",
+      "mechanism": "曲面使水流向上轉彎，需要向心加速度，底部壓力因此不只由靜水深決定。薄層近似可估曲率附加壓力，但水深與速度沿坎面並不一定均勻；過渡曲率突變還可能造成局部分離，須檢查沿程壓力而非只有出口角度。 驗證時應沿曲面布設壓力孔並將低壓區與曲率過渡位置對照，並辨識以下失效情境：曲率接續不平順可能引發分離與局部氣蝕。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Turning flow upward requires centripetal acceleration, so bucket pressure is not purely hydrostatic. A thin-layer approximation estimates added curvature pressure, but depth and velocity vary along the surface. Abrupt curvature transitions can produce separation; examine the pressure distribution instead of checking only the launch angle. Test this interpretation with the following evidence: Measure pressures along the bucket and compare low-pressure regions with curvature transitions. In particular, distinguish this failure mechanism: Abrupt curvature transitions can cause separation and local cavitation. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; V=22 m/s; flowDepth=0.8 m; radius=18 m; curvaturePressure=rho*V**2*flowDepth/radius/1000=21.5111 kPa (SI pressure in Pa divided by1000)。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; V=22 m/s; flowDepth=0.8 m; radius=18 m; curvaturePressure=rho*V**2*flowDepth/radius/1000=21.5111 kPa (SI pressure in Pa divided by1000). These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "沿曲面布設壓力孔並將低壓區與曲率過渡位置對照。應將原始量測與本單元模型的輸入條件對齊，並針對「曲率接續不平順可能引發分離與局部氣蝕」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure pressures along the bucket and compare low-pressure regions with curvature transitions. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Abrupt curvature transitions can cause separation and local cavitation. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "曲率接續不平順可能引發分離與局部氣蝕。診斷時應採取以下查核：沿曲面布設壓力孔並將低壓區與曲率過渡位置對照，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Abrupt curvature transitions can cause separation and local cavitation. Diagnose it by the following check: Measure pressures along the bucket and compare low-pressure regions with curvature transitions. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "鼻坎壓力只要用靜水深就能完整計算~Hydrostatic depth alone completely determines bucket pressure",
+      "practice": "交接時以沿曲面布設壓力孔並將低壓區與曲率過渡位置對照作為可追溯證據，保存對應材料、構形與工況版本。針對曲率接續不平順可能引發分離與局部氣蝕，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure pressures along the bucket and compare low-pressure regions with curvature transitions. Record material, geometry and operating-state versions. Address this scenario: Abrupt curvature transitions can cause separation and local cavitation. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "速度水頭與能量~Velocity head and jet energy",
+      "title": "速度水頭與能量~Velocity head and jet energy",
+      "mechanism": "離坎水流的速度水頭代表每單位重量所帶動能，挑流只是把能量移到下游空間消散，並未在鼻坎自動消除。出口高程、沿程損失與速度分布共同決定可用能量；要區分水頭、能量與功率，避免量綱混淆。 驗證時應核對入口至離坎的能量線並分別列出高程與速度水頭，並辨識以下失效情境：將射流離開混凝土視為已完全消能會漏掉下游沖擊。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Velocity head represents kinetic energy per unit weight. A flip bucket relocates dissipation downstream rather than eliminating energy at the lip. Elevation, approach losses and velocity distribution determine available energy; distinguish head from energy and power so that apparent dissipation is not a dimensional bookkeeping mistake. Test this interpretation with the following evidence: Check the energy line to the lip and list elevation and velocity heads separately. In particular, distinguish this failure mechanism: Treating departure from concrete as complete dissipation ignores downstream impact. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：V=24 m/s; g=9.81 m/s2; velocityHead=24**2/(2*9.81)=29.3578 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: V=24 m/s; g=9.81 m/s2; velocityHead=24**2/(2*9.81)=29.3578 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "核對入口至離坎的能量線並分別列出高程與速度水頭。應將原始量測與本單元模型的輸入條件對齊，並針對「將射流離開混凝土視為已完全消能會漏掉下游沖擊」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Check the energy line to the lip and list elevation and velocity heads separately. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Treating departure from concrete as complete dissipation ignores downstream impact. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "將射流離開混凝土視為已完全消能會漏掉下游沖擊。診斷時應採取以下查核：核對入口至離坎的能量線並分別列出高程與速度水頭，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Treating departure from concrete as complete dissipation ignores downstream impact. Diagnose it by the following check: Check the energy line to the lip and list elevation and velocity heads separately. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "水舌一離開鼻坎就已經失去全部動能~A jet loses all kinetic energy as soon as it leaves the bucket",
+      "practice": "交接時以核對入口至離坎的能量線並分別列出高程與速度水頭作為可追溯證據，保存對應材料、構形與工況版本。針對將射流離開混凝土視為已完全消能會漏掉下游沖擊，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Check the energy line to the lip and list elevation and velocity heads separately. Record material, geometry and operating-state versions. Address this scenario: Treating departure from concrete as complete dissipation ignores downstream impact. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "射流功率與承受區~Jet power and receiving zone",
+      "title": "射流功率與承受區~Jet power and receiving zone",
+      "mechanism": "水力功率將流量與可耗散水頭結合，描述下游需要處理的能量速率。相同功率可由不同流量與速度組合造成，而沖擊、含氣與岩塊拔出機制不同；因此功率只能作系統尺度指標，不能單獨轉成固定的水墊深度。 驗證時應以流量量測與能量線核對功率並繪製沖擊區分布，並辨識以下失效情境：把總功率均勻攤到全河床會低估集中沖擊強度。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Hydraulic power combines discharge and dissipatable head into an energy rate. Equal power can arise from different discharge and velocity combinations with different impact, aeration and rock-block removal behavior. Use power as a system-level indicator rather than converting it directly into a prescribed pool depth. Test this interpretation with the following evidence: Verify power from measured discharge and energy head and map the receiving footprint. In particular, distinguish this failure mechanism: Spreading total power uniformly over the whole bed understates concentrated impact. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; g=9.81 m/s2; Q=80 m3/s; H=40 m; power=1000*9.81*80*40/1e6=31.392 MW。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; g=9.81 m/s2; Q=80 m3/s; H=40 m; power=1000*9.81*80*40/1e6=31.392 MW. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以流量量測與能量線核對功率並繪製沖擊區分布。應將原始量測與本單元模型的輸入條件對齊，並針對「把總功率均勻攤到全河床會低估集中沖擊強度」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Verify power from measured discharge and energy head and map the receiving footprint. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Spreading total power uniformly over the whole bed understates concentrated impact. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把總功率均勻攤到全河床會低估集中沖擊強度。診斷時應採取以下查核：以流量量測與能量線核對功率並繪製沖擊區分布，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Spreading total power uniformly over the whole bed understates concentrated impact. Diagnose it by the following check: Verify power from measured discharge and energy head and map the receiving footprint. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "總水力功率可以單獨決定所需水墊深度~Total hydraulic power alone determines required plunge-pool depth",
+      "practice": "交接時以以流量量測與能量線核對功率並繪製沖擊區分布作為可追溯證據，保存對應材料、構形與工況版本。針對把總功率均勻攤到全河床會低估集中沖擊強度，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Verify power from measured discharge and energy head and map the receiving footprint. Record material, geometry and operating-state versions. Address this scenario: Spreading total power uniformly over the whole bed understates concentrated impact. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "含氣展寬與截面~Aeration spreading and jet area",
+      "title": "含氣展寬與截面~Aeration spreading and jet area",
+      "mechanism": "空氣捲入會增加水舌混合體積並改變外觀厚度，水量守恆應採液相體積而非混合總體積。均勻含氣率的示意只表達相分率，實際氣泡有滑移與非均勻分布；應同時量測水相流量、混合速度與含氣剖面。 驗證時應以含氣探針與影像量測展寬並核對液相流量守恆，並辨識以下失效情境：將混合截面全當水會高估液相質量與動量。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Entrained air expands the apparent jet thickness. Liquid continuity uses water volume, not total mixture volume. A uniform void-fraction model illustrates phase accounting, while real bubbles slip and concentrations vary across the jet. Measure liquid flow, mixture velocity and air profiles together before interpreting the visible envelope. Test this interpretation with the following evidence: Measure spreading with air probes and imaging and check liquid-phase continuity. In particular, distinguish this failure mechanism: Treating the entire mixture area as water overstates liquid mass and momentum. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：LiquidQ=40 m3/s; uniformAirVoidFraction=0.20; equal phase velocity=20 m/s; mixtureArea=40/((1-0.20)*20)=2.50 m2。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: LiquidQ=40 m3/s; uniformAirVoidFraction=0.20; equal phase velocity=20 m/s; mixtureArea=40/((1-0.20)*20)=2.50 m2. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以含氣探針與影像量測展寬並核對液相流量守恆。應將原始量測與本單元模型的輸入條件對齊，並針對「將混合截面全當水會高估液相質量與動量」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure spreading with air probes and imaging and check liquid-phase continuity. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Treating the entire mixture area as water overstates liquid mass and momentum. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "將混合截面全當水會高估液相質量與動量。診斷時應採取以下查核：以含氣探針與影像量測展寬並核對液相流量守恆，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Treating the entire mixture area as water overstates liquid mass and momentum. Diagnose it by the following check: Measure spreading with air probes and imaging and check liquid-phase continuity. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "水舌外觀變厚就保證液態流量已增加~A thicker visible jet guarantees increased liquid discharge",
+      "practice": "交接時以以含氣探針與影像量測展寬並核對液相流量守恆作為可追溯證據，保存對應材料、構形與工況版本。針對將混合截面全當水會高估液相質量與動量，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure spreading with air probes and imaging and check liquid-phase continuity. Record material, geometry and operating-state versions. Address this scenario: Treating the entire mixture area as water overstates liquid mass and momentum. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "入水動量與方向~Impact momentum and direction",
+      "title": "入水動量與方向~Impact momentum and direction",
+      "mechanism": "射流入水時的作用取決於速度向量變化，垂直與水平分量對池底與側壁的影響不同。只估完全消除一個分量的平均動量力，不含壓力回授與脈動放大；實際射流可能在水墊中轉向而保留部分動量。 驗證時應以速度剖面與池底壓力積分檢查垂直動量平衡，並辨識以下失效情境：忽略射流轉向後的流出動量會算錯合力方向。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Impact depends on vector velocity change, with vertical and horizontal components loading the pool bed and walls differently. A mean force for arresting one component omits pressure feedback and dynamic amplification. A real jet may turn within the pool and retain momentum rather than stopping completely. Test this interpretation with the following evidence: Check vertical momentum using velocity profiles and integrated bed pressures. In particular, distinguish this failure mechanism: Ignoring outgoing momentum after deflection misstates the resultant force direction. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; Q=30 m3/s; removedVerticalVelocity=18 m/s; meanVerticalForce=1000*30*18/1000=540 kN。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; Q=30 m3/s; removedVerticalVelocity=18 m/s; meanVerticalForce=1000*30*18/1000=540 kN. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以速度剖面與池底壓力積分檢查垂直動量平衡。應將原始量測與本單元模型的輸入條件對齊，並針對「忽略射流轉向後的流出動量會算錯合力方向」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Check vertical momentum using velocity profiles and integrated bed pressures. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Ignoring outgoing momentum after deflection misstates the resultant force direction. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "忽略射流轉向後的流出動量會算錯合力方向。診斷時應採取以下查核：以速度剖面與池底壓力積分檢查垂直動量平衡，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Ignoring outgoing momentum after deflection misstates the resultant force direction. Diagnose it by the following check: Check vertical momentum using velocity profiles and integrated bed pressures. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "只要流速大小相同沖擊方向也相同~Equal speed guarantees the same direction of impact",
+      "practice": "交接時以以速度剖面與池底壓力積分檢查垂直動量平衡作為可追溯證據，保存對應材料、構形與工況版本。針對忽略射流轉向後的流出動量會算錯合力方向，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Check vertical momentum using velocity profiles and integrated bed pressures. Record material, geometry and operating-state versions. Address this scenario: Ignoring outgoing momentum after deflection misstates the resultant force direction. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "衝擊面積與平均壓力~Impact area and average pressure",
+      "title": "衝擊面積與平均壓力~Impact area and average pressure",
+      "mechanism": "水墊使射流動量擴散至更大面積，但平均壓力與局部瞬時峰值差異很大。把已知合力除以指定作用面積可示範平均量，不能反推真實壓力分布；池底地形、含氣與射流擺動都可能形成偏心集中區。 驗證時應以多點同步壓力量測比較面積平均與局部峰值，並辨識以下失效情境：用全池面積平均會掩蓋水舌落點下的高壓區。這有助於確認模型的水流、受力或量測邊界是否仍成立。~A pool spreads jet momentum over an area, but mean pressure differs greatly from local instantaneous peaks. Dividing a prescribed force by a specified area illustrates only an average and cannot recover the distribution. Bed geometry, aeration and jet oscillation may create eccentric concentrated loading. Test this interpretation with the following evidence: Compare spatially averaged pressure with local peaks using synchronized pressure arrays. In particular, distinguish this failure mechanism: Averaging over the whole pool hides high pressure beneath the jet footprint. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：PrescribedMeanForce=600 kN; effectiveImpactArea=24 m2; meanPressure=600/24=25 kPa。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: PrescribedMeanForce=600 kN; effectiveImpactArea=24 m2; meanPressure=600/24=25 kPa. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以多點同步壓力量測比較面積平均與局部峰值。應將原始量測與本單元模型的輸入條件對齊，並針對「用全池面積平均會掩蓋水舌落點下的高壓區」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare spatially averaged pressure with local peaks using synchronized pressure arrays. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Averaging over the whole pool hides high pressure beneath the jet footprint. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "用全池面積平均會掩蓋水舌落點下的高壓區。診斷時應採取以下查核：以多點同步壓力量測比較面積平均與局部峰值，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Averaging over the whole pool hides high pressure beneath the jet footprint. Diagnose it by the following check: Compare spatially averaged pressure with local peaks using synchronized pressure arrays. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "平均壓力低就保證局部岩塊不會被拔起~Low mean pressure guarantees that no local rock block lifts",
+      "practice": "交接時以以多點同步壓力量測比較面積平均與局部峰值作為可追溯證據，保存對應材料、構形與工況版本。針對用全池面積平均會掩蓋水舌落點下的高壓區，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare spatially averaged pressure with local peaks using synchronized pressure arrays. Record material, geometry and operating-state versions. Address this scenario: Averaging over the whole pool hides high pressure beneath the jet footprint. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "岩節理揚力與抗力~Joint uplift and rock resistance",
+      "title": "岩節理揚力與抗力~Joint uplift and rock resistance",
+      "mechanism": "射流脈壓可沿節理傳入岩塊底面，使岩塊自重、浮力與節理抗力之間的平衡改變。簡化水下自重只提供一項抗力，不包含咬合與剪阻；需調查節理連通、開口與塊體尺寸，不能僅用完整岩石抗壓強度預測沖蝕。 驗證時應繪製節理網與塊體尺寸並同步量測節理內外壓差，並辨識以下失效情境：連通節理將脈壓送至塊底可能降低有效抗拔餘量。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Jet pressure can enter joints beneath rock blocks and alter the balance of weight, buoyancy and joint resistance. Submerged weight is only one resisting component and excludes interlock and shear. Investigate joint connectivity, aperture and block geometry; intact compressive strength alone cannot predict plucking or scour. Test this interpretation with the following evidence: Map joints and block sizes and measure pressure differences across connected joints. In particular, distinguish this failure mechanism: Connected joints transmit pulses beneath blocks and can reduce uplift resistance. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rockDensity=2650 kg/m3; waterDensity=1000 kg/m3; volume=2 m3; submergedWeight=(2650-1000)*9.81*2/1000=32.373 kN。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rockDensity=2650 kg/m3; waterDensity=1000 kg/m3; volume=2 m3; submergedWeight=(2650-1000)*9.81*2/1000=32.373 kN. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "繪製節理網與塊體尺寸並同步量測節理內外壓差。應將原始量測與本單元模型的輸入條件對齊，並針對「連通節理將脈壓送至塊底可能降低有效抗拔餘量」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Map joints and block sizes and measure pressure differences across connected joints. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Connected joints transmit pulses beneath blocks and can reduce uplift resistance. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "連通節理將脈壓送至塊底可能降低有效抗拔餘量。診斷時應採取以下查核：繪製節理網與塊體尺寸並同步量測節理內外壓差，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Connected joints transmit pulses beneath blocks and can reduce uplift resistance. Diagnose it by the following check: Map joints and block sizes and measure pressure differences across connected joints. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "完整岩石強度高就保證節理岩床不沖蝕~Strong intact rock guarantees a scour-proof jointed bed",
+      "practice": "交接時以繪製節理網與塊體尺寸並同步量測節理內外壓差作為可追溯證據，保存對應材料、構形與工況版本。針對連通節理將脈壓送至塊底可能降低有效抗拔餘量，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Map joints and block sizes and measure pressure differences across connected joints. Record material, geometry and operating-state versions. Address this scenario: Connected joints transmit pulses beneath blocks and can reduce uplift resistance. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "福祿尺度與表面張力~Froude scaling and surface tension",
+      "title": "福祿尺度與表面張力~Froude scaling and surface tension",
+      "mechanism": "挑流模型常以重力相似重現彈道，但細水舌的破碎與含氣受到表面張力影響，韋伯數可提示這種尺度偏差。相同水質的縮尺模型無法同時保持所有無因次數；應把落點驗證與氣泡破碎驗證分開報告。 驗證時應比較不同模型尺度的水舌破碎長度與無因次落點，並辨識以下失效情境：過細模型水舌受表面張力控制會偏離原型含氣機制。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Gravity similarity can reproduce trajectories while surface tension changes thin-jet breakup and aeration. Weber number highlights this scale effect. A reduced model using the same water cannot preserve every dimensionless group simultaneously; report trajectory validation separately from bubble and breakup fidelity instead of treating all observations as equally scalable. Test this interpretation with the following evidence: Compare breakup length and dimensionless landing position between model scales. In particular, distinguish this failure mechanism: An overly thin model jet becomes surface-tension controlled and misrepresents prototype aeration. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; modelV=2 m/s; modelThickness=0.020 m; surfaceTension=0.072 N/m; Weber=1000*2**2*0.020/0.072=1111.11。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; modelV=2 m/s; modelThickness=0.020 m; surfaceTension=0.072 N/m; Weber=1000*2**2*0.020/0.072=1111.11. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較不同模型尺度的水舌破碎長度與無因次落點。應將原始量測與本單元模型的輸入條件對齊，並針對「過細模型水舌受表面張力控制會偏離原型含氣機制」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare breakup length and dimensionless landing position between model scales. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: An overly thin model jet becomes surface-tension controlled and misrepresents prototype aeration. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "過細模型水舌受表面張力控制會偏離原型含氣機制。診斷時應採取以下查核：比較不同模型尺度的水舌破碎長度與無因次落點，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~An overly thin model jet becomes surface-tension controlled and misrepresents prototype aeration. Diagnose it by the following check: Compare breakup length and dimensionless landing position between model scales. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "彈道相似就代表破碎與含氣完全相似~Similar trajectories guarantee similar breakup and aeration",
+      "practice": "交接時以比較不同模型尺度的水舌破碎長度與無因次落點作為可追溯證據，保存對應材料、構形與工況版本。針對過細模型水舌受表面張力控制會偏離原型含氣機制，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare breakup length and dimensionless landing position between model scales. Record material, geometry and operating-state versions. Address this scenario: An overly thin model jet becomes surface-tension controlled and misrepresents prototype aeration. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    }
+  ],
+  "facts": [
+    "教學假設：挑流彈道與落點；Equal launch/landing elevation; V=20 m/s; angle=30 degrees; range=20**2*sin(60 degrees)/9.81=35.3119 m~Teaching assumption: Jet trajectory and landing point; Equal launch/landing elevation; V=20 m/s; angle=30 degrees; range=20**2*sin(60 degrees)/9.81=35.3119 m",
+    "教學假設：落差與飛行時間；UpwardVelocity=10 m/s; drop=8 m; g=9.81 m/s2; flightTime=(10+sqrt(10**2+2*9.81*8))/9.81=2.65341 s~Teaching assumption: Drop height and flight time; UpwardVelocity=10 m/s; drop=8 m; g=9.81 m/s2; flightTime=(10+sqrt(10**2+2*9.81*8))/9.81=2.65341 s",
+    "教學假設：鼻坎曲率與壓力；rho=1000 kg/m3; V=22 m/s; flowDepth=0.8 m; radius=18 m; curvaturePressure=rho*V**2*flowDepth/radius/1000=21.5111 kPa (SI pressure in Pa divided by1000)~Teaching assumption: Bucket curvature and pressure; rho=1000 kg/m3; V=22 m/s; flowDepth=0.8 m; radius=18 m; curvaturePressure=rho*V**2*flowDepth/radius/1000=21.5111 kPa (SI pressure in Pa divided by1000)",
+    "教學假設：速度水頭與能量；V=24 m/s; g=9.81 m/s2; velocityHead=24**2/(2*9.81)=29.3578 m~Teaching assumption: Velocity head and jet energy; V=24 m/s; g=9.81 m/s2; velocityHead=24**2/(2*9.81)=29.3578 m",
+    "教學假設：射流功率與承受區；rho=1000 kg/m3; g=9.81 m/s2; Q=80 m3/s; H=40 m; power=1000*9.81*80*40/1e6=31.392 MW~Teaching assumption: Jet power and receiving zone; rho=1000 kg/m3; g=9.81 m/s2; Q=80 m3/s; H=40 m; power=1000*9.81*80*40/1e6=31.392 MW",
+    "教學假設：含氣展寬與截面；LiquidQ=40 m3/s; uniformAirVoidFraction=0.20; equal phase velocity=20 m/s; mixtureArea=40/((1-0.20)*20)=2.50 m2~Teaching assumption: Aeration spreading and jet area; LiquidQ=40 m3/s; uniformAirVoidFraction=0.20; equal phase velocity=20 m/s; mixtureArea=40/((1-0.20)*20)=2.50 m2"
+  ],
+  "timeline": [
+    {
+      "year": "1978",
+      "event": "美國墾務局消能池與消能工專論修訂版出版~Reclamation publishes its revised stilling-basin and energy-dissipator monograph"
+    },
+    {
+      "year": "1980",
+      "event": "美國墾務局水力試驗技術手冊出版，提供試驗方法脈絡~Reclamation publishes Hydraulic Laboratory Techniques as a laboratory-method reference"
+    },
+    {
+      "year": "1987",
+      "event": "美國墾務局小壩設計第三版出版，整合水工設計經驗~Reclamation publishes the third edition of Design of Small Dams"
+    }
+  ],
+  "codes": [
+    "美國墾務局小壩設計第三版~Reclamation Design of Small Dams third edition",
+    "美國墾務局水力試驗技術手冊~Reclamation Hydraulic Laboratory Techniques"
+  ],
+  "landmarks": [
+    "胡佛壩（水工系統比較）~Hoover Dam (hydraulic-system comparison)",
+    "格倫峽谷壩（水工界面比較）~Glen Canyon Dam (hydraulic-interface comparison)"
+  ],
+  "place": {
+    "name": "美國墾務局丹佛技術服務中心參照點~Reclamation Denver Technical Service Center reference",
+    "country": "美國~United States",
+    "lat": 39.719,
+    "lng": -105.129,
+    "query": "Bureau of Reclamation Technical Service Center Denver Federal Center"
+  },
+  "sources": [
+    {
+      "key": "usbr-manuals",
+      "title": "美國墾務局水工手冊與專論目錄",
+      "titleEn": "Reclamation hydraulic manuals and monographs",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方目錄核實 1978 消能工專論、1980 水力試驗技術、1987 小壩設計及1990氣蝕專論；目錄日期不是工程啟用年。",
+      "scopeEn": "Official catalog verifies the 1978 dissipator monograph, 1980 laboratory techniques, 1987 small-dam manual and 1990 cavitation monograph; publication dates are not project commissioning dates."
+    },
+    {
+      "key": "usbr-standards",
+      "title": "美國墾務局設計標準官方入口",
+      "titleEn": "Reclamation design standards portal",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html",
+      "sourceType": "primary",
+      "scope": "官方章節目錄包括反濾、滲流、監測、地震及溢洪道；適用性仍需地方規範及專案評估。",
+      "scopeEn": "Official chapters include filters, seepage, monitoring, seismic design and spillways; applicability still requires local codes and project assessment."
+    },
+    {
+      "key": "usace-spillway",
+      "title": "USACE 溢洪道水力設計手冊",
+      "titleEn": "USACE hydraulic design of spillways",
+      "publisher": "U.S. Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/31363033/",
+      "sourceType": "primary",
+      "scope": "官方索引核實EM1110-2-1603與1990年日期；直接頁面取回受限，不聲稱全文閱讀。",
+      "scopeEn": "Official index verifies EM1110-2-1603 and its 1990 date; direct retrieval was restricted, and full-text review is not claimed."
+    },
+    {
+      "key": "hoover-owner",
+      "title": "胡佛壩業主工程與歷史入口",
+      "titleEn": "Hoover Dam owner engineering and history portal",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/lc/hooverdam/",
+      "sourceType": "primary",
+      "scope": "業主公開工程、歷史及水務資料入口；本課以水工系統作比較，不主張每種工法在此使用。",
+      "scopeEn": "Owner portal for engineering, history and water operations; a hydraulic-system comparison, not an assertion that every method is used there."
+    },
+    {
+      "key": "glen-owner",
+      "title": "格倫峽谷壩業主資料",
+      "titleEn": "Glen Canyon Dam owner information",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/uc/rm/crsp/gc/",
+      "sourceType": "primary",
+      "scope": "業主資料確認壩、進水、壓力管與溢洪道的系統脈絡；不採公開庫容當本課合成模型的輸入。",
+      "scopeEn": "Owner information confirms dam, intake, penstock and spillway context; public storage figures are not inputs to synthetic lesson models."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Bureau of Reclamation（公開資料機構）",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究鼻坎曲率與壓力與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Bucket curvature and pressure and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    },
+    {
+      "name": "U.S. Army Corps of Engineers（公開資料機構）",
+      "nameEn": "U.S. Army Corps of Engineers",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/31363033/",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究鼻坎曲率與壓力與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Bucket curvature and pressure and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    }
+  ],
+  "related": [
+    "b246",
+    "b247"
+  ],
+  "architectureNodes": [
+    [
+      "挑流彈道與落點",
+      "Jet trajectory and landing point"
+    ],
+    [
+      "鼻坎曲率與壓力",
+      "Bucket curvature and pressure"
+    ],
+    [
+      "射流功率與承受區",
+      "Jet power and receiving zone"
+    ],
+    [
+      "入水動量與方向",
+      "Impact momentum and direction"
+    ],
+    [
+      "福祿尺度與表面張力",
+      "Froude scaling and surface tension"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      0,
+      3
+    ]
+  ]
+}

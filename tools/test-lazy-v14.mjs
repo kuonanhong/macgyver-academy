@@ -21,7 +21,7 @@ for(const content of ['', 'abc','測試 SHA-256 '.repeat(300)]){const bytes=new 
 let requests=[],failOnce=false,corrupt=false;
 const fetcher=async(url)=>{requests.push(url);assert(!url.startsWith('/'),'static asset URLs retain GitHub Pages subdirectory');if(failOnce&&url.includes('/courses/')){failOnce=false;return new Response('',{status:503});}let bytes=fs.readFileSync(path.join(root,url));if(corrupt&&url.includes('/courses/')){corrupt=false;bytes=Buffer.from(bytes);bytes[bytes.indexOf(Buffer.from('semiconductor'))]^=1;}return new Response(bytes);};
 let loader=createCurriculumLoader({fetchImpl:fetcher,location:{protocol:'https:'},view:{},cryptoImpl:null});
-assert.equal((await loader.data('featured')).length,featured.length);assert.deepEqual(requests,['data/lazy/index.json'],'opening home never requests course bodies');
+assert.equal((await loader.data('featured')).length,featured.length);assert.deepEqual(requests,['data/lazy/index.compact.json'],'opening home never requests course bodies');
 const id=featured[0].id;const [c1,c2]=await Promise.all([loader.course(id),loader.course(id)]);assert.deepEqual(c1,full.get(id));assert.deepEqual(c2,c1);assert.notEqual(c1,c2,'returned courses do not share mutable protected hydration');assert.equal(requests.filter(u=>u.includes('/courses/')).length,1,'concurrent loads deduplicate');
 c1.stages=[];assert((await loader.course(id)).stages.length,'cached immutable payload survives local mutations');
 failOnce=true;loader=createCurriculumLoader({fetchImpl:fetcher,location:{protocol:'https:'},view:{}});await assert.rejects(loader.course(id),/request failed/);assert.equal((await loader.course(id)).id,id,'failed loads can retry');

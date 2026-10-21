@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/resources/b222-5303c7cf1b4016d2.json"]={sha256:"5303c7cf1b4016d24adc6c20a19a0bad21c3d929b00eb81f39dee2d5cb928ed9",value:{"sources":[{"id":"b-src-maeslant","title":"Deltawerk Maeslantkering","url":"https://www.rijkswaterstaat.nl/water/waterbeheer/bescherming-tegen-het-water/waterkeringen/deltawerken/maeslantkering","publisher":"Rijkswaterstaat","scope":"Project-specific primary overview for Maeslantkering."}],"media":{"courses":[]},"related":{"courses":[]},"places":{"courses":[]},"vendors":{"courses":[],"vendors":[]}}};

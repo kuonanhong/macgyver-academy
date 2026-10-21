@@ -1,0 +1,253 @@
+{
+  "id": "b280",
+  "title": "洪水預報與水庫聯合操作~Flood forecasting and coordinated reservoir operation",
+  "discipline": "water-rivers",
+  "family": "water",
+  "focus": "以集合預報、守恆與限制條件協調多水庫防洪~Coordinating reservoir flood operations using ensembles, conservation and constraints",
+  "summary": "將預報誤差、河道傳播時間、庫容與下游通洪能力放在同一個運算框架，練習集合機率、校準、預洩與衝突限制辨識。教材以兩座假想水庫展示聯合操作所需的狀態和責任邊界，計算結果只作方法教學，實際操作仍需正式規程與有權機關決策。~Place forecast uncertainty, routing time, storage and downstream capacity in one calculation framework. Exercises cover ensemble probabilities, calibration, prerelease and conflicting constraints. Two hypothetical reservoirs illustrate the states and responsibilities required for coordinated operation. Results teach methods rather than authorize releases; real decisions require approved operating rules, current observations and the responsible institutions.",
+  "history": "俄羅斯河預報知情操作研究自二〇一四年起發展，公開案例包括門多西諾湖與索諾瑪湖。另一地區的美國氣象局中大西洋河川預報中心於二〇一七年底開始試行集合水文產品，不能把兩者寫成同一計畫。HEC 水庫網路手冊提供水庫、河段、節點與出口的概念分類。本課引用這些不同來源建立方法脈絡，並以原創集合與庫容數字檢查預報如何進入可追溯的操作比較。~Russian River forecast informed operations research has developed since 2014, with Lake Mendocino and Lake Sonoma as named cases. In another region, the Mid Atlantic River Forecast Center began experimental ensemble products in late 2017. These are distinct programmes. The HEC reservoir network manual distinguishes reservoirs, reaches, junctions and outlets. Together the references establish methodological context, while original ensemble and storage numbers demonstrate how forecasts enter traceable comparisons of operating alternatives.",
+  "example": "本課先用「集合超越機率」建立原創假想基準，再以「分位數與有限成員」檢查另一個控制機制。第一組輸入及結果為 Ne=8 members above-threshold; N=20 equally-weighted-members; p=Ne/N=0.4 dimensionless；第二組為 ordered-flows=[80,100,120,140,160] m3/s; q=0.9 dimensionless; h=(5-1)*q=3.6 zero-based-rank; Qq=140+0.6*(160-140)=152 m3/s。學員需在同一張工作表分列量綱、時間、位置與適用範圍，先核對守恆，再解釋為何兩個得數不能互相代替。最後以第三單元提出的量測設計驗證假設，並將超出模型能力的水理、生態或治理問題列為待研究項目；這些示例並非所列案例的現場實測。敏感度重算：保持 N=20 個等權成員及同一流量門檻，把超越成員 Ne 從 8 增至 10，經驗比例由 0.4 增至 0.5，也就是增加十個百分點。這不是證明真實風險上升同樣幅度，仍須用獨立事件檢驗機率校準。~Begin with an original hypothetical baseline for Ensemble exceedance probability and examine another controlling mechanism through Quantiles with finite ensembles. The first inputs and result are Ne=8 members above-threshold; N=20 equally-weighted-members; p=Ne/N=0.4 dimensionless; the second are ordered-flows=[80,100,120,140,160] m3/s; q=0.9 dimensionless; h=(5-1)*q=3.6 zero-based-rank; Qq=140+0.6*(160-140)=152 m3/s. Keep dimensions, time, location and validity conditions in separate columns of the same working sheet. Check conservation before explaining why the two numerical results cannot substitute for one another. Use the third unit measurement design to test assumptions and identify hydraulic, ecological or governance questions that exceed the model. These examples are not field observations from the named reference cases. Sensitivity recalculation: Keep N=20 equally weighted members and the same flow threshold, increasing exceedances Ne from 8 to 10. The empirical fraction rises from 0.4 to 0.5, an increase of ten percentage points. This does not prove an equal change in true risk; probability calibration still requires independent events.",
+  "units": [
+    {
+      "anchor": "集合超越機率~Ensemble exceedance probability",
+      "title": "集合超越機率~Ensemble exceedance probability",
+      "mechanism": "集合預報用多個可能情境表達不確定性，超過指定流量門檻的成員比例可作經驗超越機率。這些成員不一定相互獨立，也可能共享降雨偏差，因此比例不是自然界真實機率的保證。門檻必須對應同一地點、時段與流量定義，瞬時峰值不能與日平均混用。操作比較應同時看後果與機率，並透過過往未參與校準的事件檢查可靠度，而不是只選最樂觀的成員作決策依據。~An ensemble expresses uncertainty through alternative scenarios, and the fraction exceeding a threshold gives an empirical exceedance probability. Members may be dependent or share rainfall bias, so the fraction is not a guarantee of nature's true probability. Match location, lead period and discharge definition; instantaneous peaks differ from daily means. Compare consequences as well as probabilities, and evaluate reliability on events excluded from calibration instead of basing decisions on the most optimistic member.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：Ne=8 members above-threshold; N=20 equally-weighted-members; p=Ne/N=0.4 dimensionless。適用邊界：等權情境的經驗比例，非已驗證校準之真實洪水機率。~Original hypothetical teaching inputs, not field design values or operating instructions: Ne=8 members above-threshold; N=20 equally-weighted-members; p=Ne/N=0.4 dimensionless. Applicable boundary: Empirical fraction of equally weighted scenarios, not a demonstrated calibrated probability of flooding.",
+      "verify": "固定預報發布時刻、有效時段與斷面門檻，逐一檢查成員是否超越。用獨立歷史預報回放分組比較預報機率和實際發生頻率，保留漏報與誤報紀錄，並確認沒有事後雨量被偷偷加入當時預報。~Fix issue time, valid period and section threshold before counting exceedances. Use independent forecast replays to compare probability groups with observed frequencies, retaining misses and false alarms and ensuring later rainfall observations were not inserted into earlier forecasts.",
+      "failure": "集合全部偏低時，即使成員看似一致也可能漏掉洪水。若只用集合範圍當絕對上下界，會掩蓋共同模式誤差，需以獨立事件檢查可靠度。~A consistently low ensemble can miss flooding despite strong member agreement. Treating its range as an absolute physical bound conceals shared model error, requiring reliability checks against independent observed events.",
+      "misconception": "集合中四成成員超越就保證真實洪水機率恰為四成~Forty percent ensemble exceedance guarantees the true flood probability is exactly forty percent",
+      "practice": "保持二十個等權成員，將超越數增加到十個重算比例。說明需要哪些歷史樣本才能檢查這個機率是否可靠，並列出成員相關可能造成的限制。~Keep twenty equally weighted members and increase exceedances to ten. Recalculate the fraction, identify historical samples needed to test reliability, and describe limitations caused by dependence between ensemble members across the forecast set."
+    },
+    {
+      "anchor": "分位數與有限成員~Quantiles with finite ensembles",
+      "title": "分位數與有限成員~Quantiles with finite ensembles",
+      "mechanism": "集合分位數把排序後的情境濃縮為可讀摘要，但小集合的高分位數會對插值規則及個別極端成員敏感。分位數描述預報分布的位置，不是平均值的信賴區間，也不是所有可能洪水的上限。比較不同系統時應保留相同分位數定義、權重與有效時段，並報告成員數。操作評估還需檢視完整歷線，因為單一峰值分位數可能無法代表水量和峰值到達時間之間的關係。~Ensemble quantiles summarize ordered scenarios, but high quantiles in a small set are sensitive to interpolation and individual extremes. A quantile locates a forecast distribution; it is neither a confidence interval for the mean nor a bound on every possible flood. Preserve definitions, weights and valid periods when comparing systems, and report member count. Examine complete hydrographs because a peak quantile alone may miss relationships between flood volume and arrival time that matter for storage decisions.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：ordered-flows=[80,100,120,140,160] m3/s; q=0.9 dimensionless; h=(5-1)*q=3.6 zero-based-rank; Qq=140+0.6*(160-140)=152 m3/s。適用邊界：指定線性插值經驗分位數，五個成員不能證明尾部分布校準。~Original hypothetical teaching inputs, not field design values or operating instructions: ordered-flows=[80,100,120,140,160] m3/s; q=0.9 dimensionless; h=(5-1)*q=3.6 zero-based-rank; Qq=140+0.6*(160-140)=152 m3/s. Applicable boundary: Specified linearly interpolated empirical quantile; five members do not establish tail calibration.",
+      "verify": "保存原始排序值與使用的插值規則，手算相鄰兩成員及權重，再與軟體結果比較。用另一種常見分位數定義做差異檢查，若高分位變動大，應報成員有限造成的不穩定，而不是隱藏選法。~Preserve sorted values and interpolation rules, manually checking neighbouring members and weights against software output. Compare an alternative quantile convention. Large high-quantile differences should be reported as finite-ensemble instability rather than concealed by an undocumented choice of method.",
+      "failure": "若把不同時刻的各自高分位拼成一條歷線，可能產生不存在於任何成員的水量與峰型組合。應標示此為摘要包絡，不能當成一個一致情境。~Joining pointwise high quantiles can create a volume and peak shape found in no individual member. Label such a curve as a summary envelope rather than treating it as one dynamically consistent forecast scenario.",
+      "misconception": "九成分位數就是所有可能洪水永遠不會超越的上限~The ninetieth percentile is an upper bound that every possible flood must obey",
+      "practice": "把最高成員改成每秒二百立方公尺重算同一分位數，其他值與定義不變。說明單一成員敏感度如何影響解讀，並保留原始情境供水量分析。~Change only the largest member to two hundred cubic metres per second and recompute the same quantile. Explain sensitivity to one member and retain complete scenarios for subsequent flood-volume analysis."
+    },
+    {
+      "anchor": "機率預報的布里爾分數~Brier score for probability forecasts",
+      "title": "機率預報的布里爾分數~Brier score for probability forecasts",
+      "mechanism": "布里爾分數以預報機率與二元觀測的平方差衡量機率誤差，數值較小通常表示較好的整體配對，但不直接說明每一次決策的損失。評估事件必須使用相同門檻與預報提前時間，並包含未發生洪水的情況，否則會扭曲分數。不同地區的基準發生率會影響比較，因此還需與適當參考預報對照。可靠度、辨識度及資料不足的問題應分開診斷，避免把一個平均分數當作完整風險認證。~The Brier score averages squared differences between probabilities and binary outcomes. Lower values generally indicate better matching but do not directly measure the loss from each decision. Use consistent thresholds and lead times and include non-events; selecting only floods distorts the score. Different base rates also affect comparisons, requiring an appropriate reference forecast. Diagnose reliability, discrimination and sample limitations separately rather than treating one average score as complete certification of operational risk or forecast quality.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：probabilities=[0.2,0.7,0.6,0.1] dimensionless; outcomes=[0,1,1,0] binary; BS=(0.2^2+(0.7-1)^2+(0.6-1)^2+0.1^2)/4=0.075 dimensionless。適用邊界：四筆獨立保留樣本的示範平均，不代表已完成長期服務驗證。~Original hypothetical teaching inputs, not field design values or operating instructions: probabilities=[0.2,0.7,0.6,0.1] dimensionless; outcomes=[0,1,1,0] binary; BS=(0.2^2+(0.7-1)^2+(0.6-1)^2+0.1^2)/4=0.075 dimensionless. Applicable boundary: Illustrative average for four held-out cases, not validation of a long-term forecasting service.",
+      "verify": "將預報檔案凍結在發布時刻，核對每一筆門檻與後來觀測，再逐項列平方誤差。另報事件數、非事件數及基準分數，分提前時間比較，避免把較容易的短期預報混入後宣稱長期能力改善。~Freeze forecasts at issue time and match thresholds to subsequent observations before listing each squared error. Report event and non-event counts with reference scores, separating lead times so easier short-range cases do not create a misleading claim of long-range improvement.",
+      "failure": "只挑曾經發生大洪水的日期會破壞原本機率樣本，使過度警報的系統看似合理。若評估資料由結果篩選，應重新建立完整發布紀錄。~Selecting only major-flood dates distorts the probability sample and can make frequent over-warning look reasonable. An outcome-selected evaluation needs rebuilding from the complete issue archive, including dates on which the event did not occur.",
+      "misconception": "只用發生洪水的日期評分就能公平驗證所有機率預報~Scoring only flood dates fairly validates every probabilistic forecast system",
+      "practice": "把第三筆機率從零點六改成零點八，其餘不變重算分數。說明這次改善為何不能保證所有未來事件都較好，並提出需增加的樣本分層方式。~Change the third probability from zero point six to zero point eight and recalculate. Explain why improvement on this case does not guarantee future performance, then propose additional strata for evaluating a larger sample."
+    },
+    {
+      "anchor": "水庫時段水量守恆~Reservoir interval water balance",
+      "title": "水庫時段水量守恆~Reservoir interval water balance",
+      "mechanism": "聯合操作必須先確保每座水庫的入流、出流與庫容變化閉合，否則優化可能在不存在的水量上作決策。時段兩端流量線性變化時可用梯形積分，若洪峰在中間突起，端點平均便可能漏算重要水量。蒸發、取水與溢流應依時間尺度決定是否列入，省略時需明示。庫容還必須透過現行水位容量曲線與觀測對照，不能把高程差直接當成體積差。~Coordinated operation first requires each reservoir's inflow, outflow and storage to balance; otherwise optimization acts on nonexistent water. Trapezoidal integration is appropriate for linearly changing endpoint flows, but can miss an interior peak. Include or explicitly neglect evaporation, withdrawals and spill according to the time scale. Compare storage with observations through a current stage-storage relation, because elevation change is not itself a volume change and sediment accumulation can alter that relation.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：I0=100 m3/s; I1=180 m3/s; O0=80 m3/s; O1=120 m3/s; dt=3600 s; dS=((I0+I1)-(O0+O1))*dt/2=144000 m3。適用邊界：時段流量線性變化且無其他水量項，僅求庫容增量。~Original hypothetical teaching inputs, not field design values or operating instructions: I0=100 m3/s; I1=180 m3/s; O0=80 m3/s; O1=120 m3/s; dt=3600 s; dS=((I0+I1)-(O0+O1))*dt/2=144000 m3. Applicable boundary: Linearly changing flows without other water terms; calculates storage increment only.",
+      "verify": "先統一流量時戳及單位，以較細時間資料檢查梯形近似，再用水位容量曲線估觀測增量。分列取水、洩漏及溢流，若殘差集中在洪峰時，應查取樣頻率與測站延遲，不先任意修改入流。~Align timestamps and units, test the trapezoidal approximation with finer records, and compare storage change inferred from the stage-storage curve. List withdrawals, leakage and spill. Peak-centred residuals require checking sampling and station delays before arbitrarily adjusting inflow.",
+      "failure": "流量資料以小時標記卻被當成秒積分，會造成巨大水量誤差；測站傳輸延遲也可能讓入出流錯配。應先做量綱與時間同步檢查。~Treating hourly labels as seconds creates major volume errors, while telemetry delays can pair mismatched inflow and outflow. Check dimensions and synchronized timing before interpreting apparent storage residuals as physical leakage.",
+      "misconception": "水庫水位增加一公尺就代表固定不變的一立方公尺庫容增加~A one-metre reservoir level rise always means a fixed one-cubic-metre storage increase",
+      "practice": "將時段縮短一半而保留相同端點流量假設，重算庫容增量並說明線性假設改變了什麼。再加入一個時段中間峰值，提出更適合的積分方式。~Halve the interval while retaining the endpoint-flow assumptions and recompute storage change, explaining the altered linear trajectory. Add an interior peak and propose an integration approach that can capture its volume."
+    },
+    {
+      "anchor": "匯流點的同步疊加~Aligned flows at a junction",
+      "title": "匯流點的同步疊加~Aligned flows at a junction",
+      "mechanism": "多水庫出流在下游匯流點相遇時，必須先經河道演算對齊到達時間，不能把不同水庫同一發布時刻的流量直接相加。支流洪峰可能與水庫洩流錯峰或疊峰，傳播過程也有蓄水與波形變化。本單元只在已演算到同一斷面同一時刻的流量上做守恆相加，明確把路由工作放在前置條件。操作比較應保存每股貢獻歷線，才能追溯下游超限來自哪個時段和來源。~Reservoir releases must be routed and aligned at the downstream junction before addition; flows issued at the same clock time upstream need not arrive together. Tributary peaks can coincide or separate, while channel storage changes timing and shape. This unit adds contributions already routed to one section and instant, explicitly treating routing as a prerequisite. Preserve each contribution hydrograph so a downstream exceedance can be traced to its source and release period rather than to a misleading simultaneous upstream sum.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：QAarr=120 m3/s; QBarr=80 m3/s; Qtarr=60 m3/s; Qj=QAarr+QBarr+Qtarr=260 m3/s。適用邊界：三股流量已演算至同一匯流斷面同一時刻，未在此假設原始洩流同步。~Original hypothetical teaching inputs, not field design values or operating instructions: QAarr=120 m3/s; QBarr=80 m3/s; Qtarr=60 m3/s; Qj=QAarr+QBarr+Qtarr=260 m3/s. Applicable boundary: All contributions are routed to the same junction and instant; upstream releases are not assumed simultaneous here.",
+      "verify": "以示蹤、事件歷線或校準路由模型檢查傳播時間，將各來源到達歷線放在共同時間軸。用匯流點實測流量核對合計，並保留河段儲水及側向流入項，避免把差額全歸成某座水庫計量誤差。~Check travel timing with tracers, event hydrographs or calibrated routing, and align arriving contributions on one timeline. Compare their sum with junction observations, retaining reach storage and lateral inputs instead of assigning every residual to one reservoir's meter error.",
+      "failure": "若忽略支流較早到達，可能在預計空窗內增加洩流卻與真正洪峰重疊。需查到達時間分布與預報誤差，而非只比較各水庫的最大出流值。~Ignoring earlier tributary arrival can place increased release inside an apparent window that actually overlaps the flood peak. Examine arrival-time uncertainty rather than comparing only the maximum outflow from each reservoir separately.",
+      "misconception": "同一時刻兩座水庫的出流必然在下游同時到達~Releases from two reservoirs at the same time necessarily arrive downstream together",
+      "practice": "將支流到達流量增加二十立方公尺每秒重算合計，再把其峰值提前一小時畫出歷線。說明沒有河道路由資料時，哪些聯合操作結論仍無法成立。~Increase arriving tributary flow by twenty cubic metres per second and recalculate the sum, then shift its peak one hour earlier on a hydrograph. Identify coordination conclusions that remain unsupported without routing information."
+    },
+    {
+      "anchor": "下游剩餘通洪額度~Residual downstream flow allowance",
+      "title": "下游剩餘通洪額度~Residual downstream flow allowance",
+      "mechanism": "下游斷面流量限制扣除已到達的支流與其他來源，可得到某一控制貢獻的剩餘額度，但這仍是斷面到達流量而非立即閘門設定。把它轉成水庫出流需要路由、設備能力與爬升限制，也要面對預報誤差。若其他來源已超過限制，負餘額代表該假設組合無法靠非負洩流解決，不能隨意截成零後宣稱安全。規則來源與權責必須清楚，教材僅比較假想限制的數學含義。~Subtracting arriving tributary and other flows from a downstream limit gives a residual allowance for one contribution, not an immediate gate setting. Routing, outlet capacity, ramp limits and forecast uncertainty intervene before converting it to release. If other sources already exceed the limit, a negative allowance signals infeasibility under the assumptions; clipping it to zero does not restore safety. Identify rule authority and provenance while treating the numerical limit here only as a hypothetical teaching condition.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：Qlim=300 m3/s; Qtrib=90 m3/s; Qother=70 m3/s; Qallow=Qlim-Qtrib-Qother=140 m3/s。適用邊界：給定假想斷面限制與同步到達流量，不是實際核准洩流量。~Original hypothetical teaching inputs, not field design values or operating instructions: Qlim=300 m3/s; Qtrib=90 m3/s; Qother=70 m3/s; Qallow=Qlim-Qtrib-Qother=140 m3/s. Applicable boundary: Hypothetical section limit with aligned arriving flows, not an authorized reservoir release.",
+      "verify": "查核限制對應的斷面、時段及流量定義，再把其他來源以共同時間軸列入。對預報支流做敏感度範圍，使用路由模型檢查水庫能否形成目標到達流量，並確認設備及正式操作規程是否允許。~Verify the limit's section, period and flow definition, align other contributions, and test tributary uncertainty. Use routing to examine whether a reservoir can produce the target arriving flow, then check equipment constraints and formally approved operating rules.",
+      "failure": "若把到達額度直接作成上游即時洩流，可能因傳播延遲在錯誤時段超限。限制也可能隨堤防或下游施工改變，必須確認版本與有效範圍。~Applying an arrival allowance directly as an upstream release can exceed the limit at the wrong time because of routing delay. Limits may also depend on current downstream conditions, requiring version and validity checks.",
+      "misconception": "下游剩餘流量額度可不經路由直接當成上游即時閘門指令~Residual downstream flow allowance can directly become an immediate upstream gate command without routing",
+      "practice": "將支流到達流量提高到每秒二百五十立方公尺，重算餘額並說明負值意義。列出應回報的限制衝突，而不是自行創造一個看似可行的非負數字。~Raise tributary arrival to two hundred fifty cubic metres per second and recompute the allowance. Explain a negative result and list the conflicting conditions to report rather than inventing an apparently feasible nonnegative value."
+    },
+    {
+      "anchor": "預洩所需時間窗~Time window for prerelease",
+      "title": "預洩所需時間窗~Time window for prerelease",
+      "mechanism": "預洩試算需區分原本既定出流與額外釋放所創造的庫容，否則會把同一股水重複計算。可用時間窗還受下游容量、設備爬升、環境要求與預報可靠度影響，不能只用目標體積除最大閘流量。若入流在窗口內增加，淨庫容形成速度會降低；若將來降雨落空，保留供水也有代價。教材以固定額外淨釋放量建立時間尺度，實際方案必須透過完整情境與授權規則比較。~Prerelease analysis distinguishes baseline outflow from additional net release that creates storage; otherwise the same water is counted twice. The available window depends on downstream capacity, ramping, environmental requirements and forecast reliability, not just maximum gate flow. Increasing inflow reduces net storage creation, while a missed storm creates water-supply tradeoffs. This example uses a fixed additional net release to establish a time scale; real alternatives require full scenarios and authorized rules, not direct execution of the arithmetic.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：Vtarget=1800000 m3; Qnetextra=50 m3/s; t=Vtarget/Qnetextra/3600=10 h。適用邊界：額外淨釋放已扣相對基準入流變化，假設可持續且無爬升時間。~Original hypothetical teaching inputs, not field design values or operating instructions: Vtarget=1800000 m3; Qnetextra=50 m3/s; t=Vtarget/Qnetextra/3600=10 h. Applicable boundary: Additional net release already accounts for inflow change relative to baseline, assuming sustained feasibility and no ramp time.",
+      "verify": "建立基準及預洩兩套水量帳，逐時比較新增庫容，而非只加總全部出流。核對窗口內下游條件與爬升限制，對降雨提前、延後或未發生情境分別演算，並保存決策使用的預報版本。~Build baseline and prerelease water ledgers and compare incremental storage hour by hour rather than summing all outflow. Check downstream conditions and ramps, replay early, late and absent rainfall scenarios, and preserve the forecast version used for comparison.",
+      "failure": "如果把最大出口能力當成可全程使用的額外淨釋放，會低估所需時間並漏掉下游限制。預報延後發布時，原先看似足夠的窗口也可能消失。~Treating maximum outlet capacity as sustained additional net release understates required time and ignores downstream constraints. A later forecast issue can also remove a previously available window, invalidating the earlier feasibility calculation.",
+      "misconception": "目標庫容除以最大閘流量就能保證預洩方案可執行~Target storage divided by maximum gate discharge guarantees an executable prerelease plan",
+      "practice": "將額外淨釋放降到每秒四十立方公尺重算時間，再加入兩小時逐步爬升。說明為何須積分實際增量歷線，並列出方案比較需要的正式限制。~Reduce additional net release to forty cubic metres per second and recalculate time, then introduce a two-hour ramp. Explain why the actual incremental hydrograph needs integration and list formal constraints required for comparing alternatives."
+    },
+    {
+      "anchor": "不相容操作限制~Incompatible operating constraints",
+      "title": "不相容操作限制~Incompatible operating constraints",
+      "mechanism": "多項規則可以轉成同一時段的出流上下界，最大下界若高於最小上界，數學上便沒有共同可行值。這個結果應揭露限制衝突，不能由程式默默刪除較難滿足的條件。某些規則可能有正式優先序或應變程序，但作者不能自行發明權限。模型需保留各限制的來源、有效時間與物理意義，分辨設備能力不足、下游容量衝突及資料錯誤，讓有權人員能檢查並作成可追溯決策。~Several rules can become release bounds for one interval. If the largest lower bound exceeds the smallest upper bound, no common feasible value exists. Report that conflict rather than silently discarding a difficult condition. Formal priorities or emergency procedures may apply, but a model author cannot invent authority. Retain each bound's source, valid period and physical meaning to distinguish equipment limits, downstream conflicts and data errors, enabling responsible personnel to make a traceable decision.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：L1=90 m3/s; L2=120 m3/s; U1=140 m3/s; U2=100 m3/s; gap=max(L1,L2)-min(U1,U2)=20 m3/s。適用邊界：正缺口表示所給同時限制無交集，未自動放寬任何規則。~Original hypothetical teaching inputs, not field design values or operating instructions: L1=90 m3/s; L2=120 m3/s; U1=140 m3/s; U2=100 m3/s; gap=max(L1,L2)-min(U1,U2)=20 m3/s. Applicable boundary: A positive gap means the simultaneous stated bounds have no intersection; no rule is automatically relaxed.",
+      "verify": "將每條限制附上來源、時段與適用水庫，先統一單位及符號，再計交集。若無解，檢查是否誤把不同時段或不同斷面限制混合，確認後輸出衝突清單及責任窗口，不以數值平滑掩蓋問題。~Attach source, interval and reservoir to every constraint, harmonize units and signs, then compute the intersection. For infeasibility, check mixed periods or sections before producing a conflict list and responsible review route rather than smoothing the numbers to hide it.",
+      "failure": "優化器若自行移除下游上限，可能回傳漂亮目標值卻已違反原問題。必須檢查求解狀態及每條限制殘差，不能只看目標函數有改善。~An optimizer that drops a downstream upper bound can return an attractive objective while violating the original problem. Inspect solver status and every constraint residual rather than judging success solely by an improved objective value.",
+      "misconception": "求解器有回傳數字就代表原本所有操作限制都已滿足~Any number returned by a solver proves that all original operating constraints are satisfied",
+      "practice": "把第二下界改成每秒九十五立方公尺，重新求交集並說明可行範圍。再列一個資料時段不一致造成假衝突的例子，設計能攔下它的前置檢查。~Change the second lower bound to ninety five cubic metres per second and find the feasible interval. Construct a false conflict caused by mismatched time periods and design a preprocessing check that would catch it."
+    },
+    {
+      "anchor": "情境違反率與風險~Scenario violation rate and risk",
+      "title": "情境違反率與風險~Scenario violation rate and risk",
+      "mechanism": "聯合操作方案可對每個預報情境計算是否超過下游或庫容限制，再統計違反比例。此比例取決於情境權重、代表性與相關性，不等於已知真實風險，也未描述超限幅度。少數很嚴重的失敗可能比多次輕微超限更重要，因此應同時報告頻率、最大值、持續時間及涉及對象。增加集合成員只改善抽樣解析度的一部分，若共同模型偏差未修正，風險估計仍會系統性失真。~A coordinated plan can be simulated under each forecast scenario to count downstream or storage violations. The fraction depends on weights, representativeness and dependence; it is not a known true risk and says nothing about severity. A few severe failures may matter more than many slight exceedances, so report frequency, magnitude, duration and affected receptors together. More members refine only part of sampling resolution and cannot by themselves remove shared model bias or an omitted failure mechanism.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：Nv=3 violating-scenarios; N=50 equally-weighted-scenarios; pv=Nv/N=0.06 dimensionless。適用邊界：等權情境違反比例，沒有將百分之六宣稱成核准風險或真實機率。~Original hypothetical teaching inputs, not field design values or operating instructions: Nv=3 violating-scenarios; N=50 equally-weighted-scenarios; pv=Nv/N=0.06 dimensionless. Applicable boundary: Equally weighted scenario violation fraction, not an approved risk level or established true probability.",
+      "verify": "對每個情境保存相同限制定義與完整結果，逐一核對超限時間和幅度。另檢查高後果但低頻情境是否被抽樣遺漏，以保留事件回放測試共同偏差，並明示若成員有權重時應改用加權比例。~Store identical constraint definitions and full results for every scenario, checking violation timing and magnitude individually. Examine omitted rare but consequential cases and replay held-out events for common bias. If members carry weights, explicitly replace the simple count with weighted probability.",
+      "failure": "把輕微超限與長時間嚴重超限都記成一，可能讓不同方案看似同風險。若只報比例而刪除歷線，決策者便無法辨認真正需要應變的後果。~Coding slight and prolonged severe exceedances identically can make very different plans appear equally risky. Reporting only the fraction while discarding hydrographs prevents reviewers from identifying consequences that require a distinct response.",
+      "misconception": "情境違反比例相同就代表兩個方案具有完全相同後果~Equal scenario violation fractions mean that two plans have identical consequences",
+      "practice": "保持三個違反情境但將集合增加到六十個重算比例，說明為何不能據此自動宣稱更安全。為三個情境補上不同超限幅度和時間，提出更完整比較表。~Keep three violating scenarios but enlarge the ensemble to sixty and recalculate the fraction without automatically claiming greater safety. Assign different magnitudes and durations to the three cases and construct a more informative comparison table."
+    },
+    {
+      "anchor": "預報改善與獨立驗證~Forecast improvement and independent validation",
+      "title": "預報改善與獨立驗證~Forecast improvement and independent validation",
+      "mechanism": "平均絕對誤差描述流量預報偏離觀測的平均幅度，與參考預報比較可形成相對改善尺度。不同事件、提前時間及流量大小必須公平配對，否則看似改善可能只是測試樣本更容易。校準與驗證要按時間或事件分開，避免同一場洪水的相鄰資料同時進入訓練與測試。平均指標還可能掩蓋洪峰時間或極端事件表現，因此應搭配事件分層與操作後果回放，才能判斷改善是否對聯合調度有用。~Mean absolute error describes average discharge discrepancy, and comparison with a reference forecast gives a relative improvement scale. Match events, lead times and flow regimes fairly; an easier test sample can mimic improvement. Separate calibration and validation by time or event so neighbouring records from one flood do not leak across sets. Average scores may hide peak-timing or extreme-event errors, requiring stratified evaluation and operational replays before claiming that better forecasting improves coordinated reservoir decisions.",
+      "model": "原創假想教材輸入，不是現地設計值或操作指令：model-errors=[12,8,20,4] m3/s; reference-errors=[20,15,25,12] m3/s; MAE=44/4=11 m3/s; MAEref=72/4=18 m3/s; skill=1-MAE/MAEref=0.388889 dimensionless。適用邊界：同四筆保留樣本與正參考誤差，改善尺度不等於風險降低百分比。~Original hypothetical teaching inputs, not field design values or operating instructions: model-errors=[12,8,20,4] m3/s; reference-errors=[20,15,25,12] m3/s; MAE=44/4=11 m3/s; MAEref=72/4=18 m3/s; skill=1-MAE/MAEref=0.388889 dimensionless. Applicable boundary: Same four held-out cases with positive reference error; skill is not a percentage reduction in operational risk.",
+      "verify": "保存訓練截止日與所有預報發布版本，確認參考和新模型使用相同可取得資料。逐筆列絕對誤差，再按洪峰、低流與提前時間分層；最後用相同規則回放操作，檢查誤差改善是否真正改變庫容或下游結果。~Preserve training cutoffs and issued forecast versions, ensuring reference and new models use equally available information. List absolute errors and stratify by peaks, low flows and lead time. Replay identical operating rules to test whether better scores actually change storage or downstream outcomes.",
+      "failure": "用事後修正雨量驗證即時預報會造成資訊洩漏，誤差看似降低卻無法在發布時重現。若模型只改善低流量，也可能未改善最關鍵洪峰操作。~Verifying a real-time forecast with later-corrected rainfall leaks future information and produces gains unavailable at issue time. Improvements concentrated in low flow may also leave the most consequential flood-peak decisions unchanged.",
+      "misconception": "預報平均誤差改善百分比必然等於下游洪災風險降低百分比~The percentage improvement in mean forecast error necessarily equals downstream flood-risk reduction",
+      "practice": "將模型第三筆誤差降到十二立方公尺每秒重算改善尺度，其他資料不變。說明仍需哪些峰值時序及操作回放結果，才能判定對防洪決策有實際幫助。~Reduce the third model error to twelve cubic metres per second and recompute skill with other values fixed. Identify peak-timing and operating-replay evidence still needed before judging whether the improvement benefits flood decisions."
+    }
+  ],
+  "facts": [
+    "俄羅斯河 FIRO 研究自 2014 年起發展與測試~Russian River FIRO research has developed and tested methods since 2014",
+    "MARFC 於 2017 年底開始試行集合預報，屬不同地區服務~MARFC began experimental ensemble products in late 2017 in a different region",
+    "教學假設：集合超越機率；Ne=8 members above-threshold; N=20 equally-weighted-members; p=Ne/N=0.4 dimensionless~Teaching assumption: Ensemble exceedance probability; Ne=8 members above-threshold; N=20 equally-weighted-members; p=Ne/N=0.4 dimensionless",
+    "教學假設：分位數與有限成員；ordered-flows=[80,100,120,140,160] m3/s; q=0.9 dimensionless; h=(5-1)*q=3.6 zero-based-rank; Qq=140+0.6*(160-140)=152 m3/s~Teaching assumption: Quantiles with finite ensembles; ordered-flows=[80,100,120,140,160] m3/s; q=0.9 dimensionless; h=(5-1)*q=3.6 zero-based-rank; Qq=140+0.6*(160-140)=152 m3/s",
+    "教學假設：機率預報的布里爾分數；probabilities=[0.2,0.7,0.6,0.1] dimensionless; outcomes=[0,1,1,0] binary; BS=(0.2^2+(0.7-1)^2+(0.6-1)^2+0.1^2)/4=0.075 dimensionless~Teaching assumption: Brier score for probability forecasts; probabilities=[0.2,0.7,0.6,0.1] dimensionless; outcomes=[0,1,1,0] binary; BS=(0.2^2+(0.7-1)^2+(0.6-1)^2+0.1^2)/4=0.075 dimensionless",
+    "教學假設：水庫時段水量守恆；I0=100 m3/s; I1=180 m3/s; O0=80 m3/s; O1=120 m3/s; dt=3600 s; dS=((I0+I1)-(O0+O1))*dt/2=144000 m3~Teaching assumption: Reservoir interval water balance; I0=100 m3/s; I1=180 m3/s; O0=80 m3/s; O1=120 m3/s; dt=3600 s; dS=((I0+I1)-(O0+O1))*dt/2=144000 m3"
+  ],
+  "timeline": [
+    {
+      "year": "2014",
+      "event": "俄羅斯河預報知情操作研究開始發展~Development begins on Russian River forecast informed reservoir operations"
+    },
+    {
+      "year": "2017",
+      "event": "MARFC 開始試行集合水文預報產品~MARFC begins experimental hydrologic ensemble forecast products"
+    },
+    {
+      "year": "2026",
+      "event": "教材來源核對與原創數值重算，屬編修事件而非工程完工~Source verification and original numerical recalculation, a curriculum event rather than project completion"
+    }
+  ],
+  "codes": [
+    "HEC ResSim 水庫網路官方使用手冊~HEC ResSim official reservoir network user documentation",
+    "NWS HEFS 集合水文預報方法官方說明~NWS HEFS official explanation of hydrologic ensemble methods"
+  ],
+  "landmarks": [
+    "門多西諾湖預報研究~Lake Mendocino forecasting reference",
+    "索諾瑪湖預報研究~Lake Sonoma forecasting reference"
+  ],
+  "place": {
+    "name": "門多西諾湖區域參照點~Lake Mendocino regional reference",
+    "country": "美國~United States",
+    "lat": 39.2,
+    "lng": -123.18,
+    "query": "Lake Mendocino FIRO"
+  },
+  "sources": [
+    {
+      "key": "hec-network",
+      "title": "水庫模擬網路官方手冊",
+      "titleEn": "Reservoir simulation network official manual",
+      "publisher": "US Army Corps of Engineers Hydrologic Engineering Center",
+      "url": "https://www.hec.usace.army.mil/confluence/ResSimDocs/rs4um/reservoir-networks",
+      "sourceType": "primary",
+      "scope": "讀網路元素與物理操作資料區分，僅作模型方法背景",
+      "scopeEn": "Reads network elements and separation of physical and operational data as modeling context"
+    },
+    {
+      "key": "nws-hefs",
+      "title": "集合水文預報官方問答",
+      "titleEn": "Hydrologic ensemble forecast official FAQ",
+      "publisher": "National Weather Service",
+      "url": "https://www.weather.gov/marfc/HEFS-FAQ",
+      "sourceType": "primary",
+      "scope": "讀集合預報、不確定性與二〇一七年試行背景，不將舊更新時程視為現行服務承諾",
+      "scopeEn": "Reads ensemble uncertainty and the 2017 experimental history; old update schedules are not current service commitments"
+    },
+    {
+      "key": "cw3e-firo",
+      "title": "俄羅斯河預報知情操作研究",
+      "titleEn": "Russian River forecast informed operations research",
+      "publisher": "UC San Diego Center for Western Weather and Water Extremes",
+      "url": "https://cw3e.ucsd.edu/firo_russian_river",
+      "sourceType": "primary",
+      "scope": "讀研究自二〇一四年發展與門多西諾及索諾瑪湖案例，未將教材方案當核准操作",
+      "scopeEn": "Reads development since 2014 and Lake Mendocino/Lake Sonoma context; teaching scenarios are not approved operations"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Army Corps of Engineers Hydrologic Engineering Center",
+      "nameEn": "US Army Corps of Engineers Hydrologic Engineering Center",
+      "business": "提供本課引用的公開方法文獻或案例研究。",
+      "businessEn": "Publishes the methodological reference or case evidence cited in this lesson.",
+      "url": "https://www.hec.usace.army.mil/confluence/ResSimDocs/rs4um/reservoir-networks",
+      "investorUrl": "",
+      "security": null,
+      "role": "資料及研究關聯機構，不據此宣稱為本例施工承包商。",
+      "roleEn": "Associated as a source or research institution, not asserted to be a construction contractor for the examples."
+    },
+    {
+      "name": "National Weather Service",
+      "nameEn": "National Weather Service",
+      "business": "提供本課引用的公開方法文獻或案例研究。",
+      "businessEn": "Publishes the methodological reference or case evidence cited in this lesson.",
+      "url": "https://www.weather.gov/marfc/HEFS-FAQ",
+      "investorUrl": "",
+      "security": null,
+      "role": "資料及研究關聯機構，不據此宣稱為本例施工承包商。",
+      "roleEn": "Associated as a source or research institution, not asserted to be a construction contractor for the examples."
+    }
+  ],
+  "related": [
+    "b276",
+    "b277"
+  ],
+  "architectureNodes": [
+    [
+      "集合超越機率",
+      "Ensemble exceedance probability"
+    ],
+    [
+      "機率預報的布里爾分數",
+      "Brier score for probability forecasts"
+    ],
+    [
+      "匯流點的同步疊加",
+      "Aligned flows at a junction"
+    ],
+    [
+      "預洩所需時間窗",
+      "Time window for prerelease"
+    ],
+    [
+      "預報改善與獨立驗證",
+      "Forecast improvement and independent validation"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "id": "b260",
+  "focus": "分開快速彈性壓力波與慢速調壓井振盪並檢查相互作用~Distinguish rapid elastic pressure waves from slower surge-shaft oscillations and check their interaction",
+  "units": [
+    {
+      "anchor": "彈性波速與管壁~Elastic wave speed and pipe wall",
+      "title": "彈性波速與管壁~Elastic wave speed and pipe wall",
+      "mechanism": "水錘傳播速度同時受水可壓縮性與管壁變形影響，不是把水視為完全剛性就能描述。管壁約束、材料模數與含氣量會改變波速，薄壁圓管公式需要明列修正係數；用一個假設波速計算的壓力峰值，必須隨參數不確定度重新檢查。 假設K=2.2GPa、ρ=1000kg/m³、E=200GPa、D=2m、t=0.02m，管壁修正係數取1，a=√[K/ρ/(1+KD/Et)]=1023.53m/s。~Water-hammer propagation depends on both fluid compressibility and pipe-wall deformation, so a rigid-water assumption cannot describe the wave. Restraint, material modulus and gas content affect celerity, and the thin circular-pipe expression requires an explicit restraint factor. Pressure estimates made with one assumed speed must be reconsidered when that parameter is uncertain. AssumeK=2.2GPa,ρ=1000kg/m³,E=200GPa,D=2m,t=0.02m and wall-restraint factor1. Wave speeda=√[K/ρ/(1+KD/Et)]=1023.53m/s for this idealization.",
+      "model": "原創教學假設，非操作設定。假設K=2.2GPa、ρ=1000kg/m³、E=200GPa、D=2m、t=0.02m，管壁修正係數取1，a=√[K/ρ/(1+KD/Et)]=1023.53m/s。~Original teaching assumptions, not operating settings. AssumeK=2.2GPa,ρ=1000kg/m³,E=200GPa,D=2m,t=0.02m and wall-restraint factor1. Wave speeda=√[K/ρ/(1+KD/Et)]=1023.53m/s for this idealization.",
+      "verify": "記錄流體與管材模數、厚度和軸向約束來源，確認管壁修正係數是否適用。用量測波到達時間比較估計波速，再測試含氣或厚度變動的敏感度，不藉調整波速掩蓋錯誤邊界。~Document fluid and wall moduli, thickness and axial-restraint evidence and check the chosen correction factor. Compare predicted speed with measured wave arrival, then test gas-content and wall variations rather than tuning celerity to conceal an incorrect boundary condition.",
+      "practice": "記錄流體與管材模數、厚度和軸向約束來源，確認管壁修正係數是否適用。用量測波到達時間比較估計波速，再測試含氣或厚度變動的敏感度，不藉調整波速掩蓋錯誤邊界。~Document fluid and wall moduli, thickness and axial-restraint evidence and check the chosen correction factor. Compare predicted speed with measured wave arrival, then test gas-content and wall variations rather than tuning celerity to conceal an incorrect boundary condition.",
+      "failure": "少量夾氣可能顯著改變可壓縮性，複合管或厚壁管也不符合簡式。把鋼材彈性模數當水體積模數，或漏掉帕與吉帕換算，會使壓力與時間尺度同時失真。~Entrained gas changes compressibility, and composite or thick walls fall outside this simple expression. Substituting steel modulus for water bulk modulus or confusing pascals and gigapascals distorts both pressure magnitude and wave timing.",
+      "misconception": "水錘波速只由水決定而完全不受管壁、約束或夾氣影響。~Water-hammer wave speed depends only on water and never on pipe walls, restraint or entrained gas."
+    },
+    {
+      "anchor": "往返時間與邊界~Round-trip time and boundaries",
+      "title": "往返時間與邊界~Round-trip time and boundaries",
+      "mechanism": "閥門動作與壓力波往返時間的比較，決定反射是否已在動作期間返回控制點。最簡水庫管閥系統只有一條明確路徑，但分岔、調壓井與不同波速管段會產生多重反射；時間尺度只是辨識模型的入口，不能據此直接宣布某個關閉時間安全。 假設均勻管長L=1000m、波速a=1000m/s，往返時間2L/a=2s；只代表此單一路徑，不是允許關閉時間。~Comparing actuator duration with wave round-trip time shows whether a reflection returns during the action. A reservoir-pipe-valve system has one simple path, whereas branches, shafts and segments with different celerity create multiple reflections. This time scale helps select the analysis and does not by itself approve a particular valve-closing duration. Assume uniform pipe length1000m and celerity1000m/s. Round-trip2L/a=2s describes only this path, not an allowable closing time.",
+      "model": "原創教學假設，非操作設定。假設均勻管長L=1000m、波速a=1000m/s，往返時間2L/a=2s；只代表此單一路徑，不是允許關閉時間。~Original teaching assumptions, not operating settings. Assume uniform pipe length1000m and celerity1000m/s. Round-trip2L/a=2s describes only this path, not an allowable closing time.",
+      "verify": "在系統圖標出反射邊界及每段長度波速，逐段累加單程時間，再與閥門實際流量變化歷時比較。遇到分岔或調壓接點就建立多路徑時間表，不能只取地圖上兩點直線距離。~Mark reflecting boundaries and each segment’s length and celerity, sum one-way travel times and compare with actual discharge-change histories. For branches and shaft junctions construct a multiple-path timing table instead of using the straight-line distance between map locations.",
+      "practice": "在系統圖標出反射邊界及每段長度波速，逐段累加單程時間，再與閥門實際流量變化歷時比較。遇到分岔或調壓接點就建立多路徑時間表，不能只取地圖上兩點直線距離。~Mark reflecting boundaries and each segment’s length and celerity, sum one-way travel times and compare with actual discharge-change histories. For branches and shaft junctions construct a multiple-path timing table instead of using the straight-line distance between map locations.",
+      "failure": "將單程時間當往返時間會改變快速與慢速的分類，忽略分岔反射則可能漏掉疊加峰值。即使動作很慢，長時間水位振盪或控制不穩定仍可能存在。~Confusing one-way with round-trip time changes the rapid-action classification, while omitted branch reflections can hide superposed peaks. Slow actuation can still produce long-period level oscillations or unstable control interactions.",
+      "misconception": "閥門動作時間大於單一往返時間就一定不會出現任何危險壓力。~An actuator duration longer than one round-trip time guarantees the absence of dangerous pressure."
+    },
+    {
+      "anchor": "快速變速壓力增量~Rapid velocity-change pressure",
+      "title": "快速變速壓力增量~Rapid velocity-change pressure",
+      "mechanism": "單相彈性管中的突然流速變化會形成壓力波，焦科夫斯基關係估第一個波前的壓力增量。它不是整段歷時的通用最大值，反射疊加、氣穴與控制器仍可能改變結果；應先區分增量和原有靜壓，再檢查是否仍滿足單相及快速動作假設。 假設ρ=1000kg/m³、a=1000m/s，0.5s內減速1m/s且小於2s往返，Δp=ρaΔV=1MPa，ΔH=101.94m。~A rapid velocity change in a single-phase elastic conduit generates a pressure wave, with the Joukowsky relation estimating the first-front increment. It is not a universal maximum for the entire history: reflections, cavities and control behavior can alter the result. Distinguish this increment from initial pressure and verify both the rapid-action and single-phase assumptions. Assumeρ=1000kg/m³,a=1000m/s and velocity reduction1m/s in0.5s, shorter than2s round-trip. Initial pressure increment1MPa corresponds to101.94m head.",
+      "model": "原創教學假設，非操作設定。假設ρ=1000kg/m³、a=1000m/s，0.5s內減速1m/s且小於2s往返，Δp=ρaΔV=1MPa，ΔH=101.94m。~Original teaching assumptions, not operating settings. Assumeρ=1000kg/m³,a=1000m/s and velocity reduction1m/s in0.5s, shorter than2s round-trip. Initial pressure increment1MPa corresponds to101.94m head.",
+      "verify": "明列初始壓力與增量的符號，核對減速與壓力上升的傳播方向。將第一波預估和完整瞬態歷時比較，另查後續反射最低壓力、局部空化及機組反應，不把首波算式視為完整包絡。~State initial pressure and increment signs and verify the propagation direction associated with deceleration. Compare the first-wave estimate with a full transient history and separately examine reflected minima, local cavitation and machine response rather than treating the first front as the complete envelope.",
+      "practice": "明列初始壓力與增量的符號，核對減速與壓力上升的傳播方向。將第一波預估和完整瞬態歷時比較，另查後續反射最低壓力、局部空化及機組反應，不把首波算式視為完整包絡。~State initial pressure and increment signs and verify the propagation direction associated with deceleration. Compare the first-wave estimate with a full transient history and separately examine reflected minima, local cavitation and machine response rather than treating the first front as the complete envelope.",
+      "failure": "把壓力增量當成總壓力會漏掉原有水頭，慢關閉時套完整瞬降公式又可能錯估反應。若發生水柱分離，重新閉合壓力不能靠原單相首波關係完整描述。~Treating the increment as total pressure omits the initial head, while applying instantaneous reduction to slow closure misrepresents the response. Column separation and rejoining cannot be fully described by the original single-phase first-wave relation.",
+      "misconception": "焦科夫斯基首波增量就是所有反射與氣穴情境下的完整最大總壓力。~The Joukowsky first-wave increment is the complete maximum total pressure for every reflection and cavitation scenario."
+    },
+    {
+      "anchor": "井內連續方程~Continuity within the shaft",
+      "title": "井內連續方程~Continuity within the shaft",
+      "mechanism": "調壓井提供暫時儲水空間，管內來水與下游取水不相等時便改變井內水位。這個體積平衡不需要先求水錘峰值，但流量差本身會隨水位與管內慣性變化；固定面積只能用在井身相應區段，不能把瞬時上升速率無限制外推。 假設井面積100m²、瞬時流入20及流出5m³/s，dz/dt=(20−5)/100=0.15m/s；流量差不假定長期固定。~A surge shaft temporarily stores the difference between conduit inflow and downstream demand. Volume continuity can be written before solving the pressure-wave peak, but that flow difference evolves with level and conduit inertia. Constant area applies only within the relevant shaft segment, and an instantaneous rise rate cannot be extrapolated indefinitely through the entire transient. Assume shaft area100m² with instantaneous inflow20 and outflow5m³/s. Rise ratedz/dt=0.15m/s does not assume that imbalance persists.",
+      "model": "原創教學假設，非操作設定。假設井面積100m²、瞬時流入20及流出5m³/s，dz/dt=(20−5)/100=0.15m/s；流量差不假定長期固定。~Original teaching assumptions, not operating settings. Assume shaft area100m² with instantaneous inflow20 and outflow5m³/s. Rise ratedz/dt=0.15m/s does not assume that imbalance persists.",
+      "verify": "將流入流出正方向畫在接點，核對井面積是否隨高程變化，並用短時間積分檢查水位增量。將算出的水位回饋到管路動量方程，不把指定流量差當成與井水位完全無關的邊界。~Draw flow signs at the junction, check whether shaft area changes with elevation and verify level increments by short-step integration. Feed the updated level back into conduit momentum rather than treating the imposed imbalance as independent of shaft water level.",
+      "practice": "將流入流出正方向畫在接點，核對井面積是否隨高程變化，並用短時間積分檢查水位增量。將算出的水位回饋到管路動量方程，不把指定流量差當成與井水位完全無關的邊界。~Draw flow signs at the junction, check whether shaft area changes with elevation and verify level increments by short-step integration. Feed the updated level back into conduit momentum rather than treating the imposed imbalance as independent of shaft water level.",
+      "failure": "面積使用直徑代替會破壞量綱，井身變截面時固定面積又會誤估上升速度。只積分入流不扣下游流量，會虛增儲水並製造不存在的溢井預測。~Substituting diameter for area breaks dimensional consistency, while changing shaft sections invalidate a fixed-area rate. Integrating inflow without subtracting downstream flow invents storage and can predict a shaft overflow that the stated balance does not support.",
+      "misconception": "瞬時水位上升速度可直接乘任意長時間而不必更新管內流量。~An instantaneous shaft rise rate can be multiplied by any duration without updating conduit flow."
+    },
+    {
+      "anchor": "剛性水柱振盪週期~Rigid-column oscillation period",
+      "title": "剛性水柱振盪週期~Rigid-column oscillation period",
+      "mechanism": "較慢的井水位振盪可在特定條件下用剛性水柱近似，水柱慣性與自由水面重力形成回復系統。這與快速彈性波不同，忽略摩擦與壓縮性只為得到可核對的基準週期；實際控制器、節流口及變截面會改變衰減與穩定性。 假設定水位上庫、均勻管L=1000m及Ap=10m²、井As=100m²，無摩擦小振幅且忽略井水慣性，T=2π√(LAs/gAp)=200.607s。~Slower shaft-level oscillation can be approximated by a rigid water column under defined conditions, with column inertia and free-surface gravity forming a restoring system. This differs from the fast elastic wave. Neglecting friction and compressibility gives a checkable reference period, while controls, throttles and variable geometry change damping and stability in the actual installation. Assume fixed reservoir level, uniform conduitL=1000m,Ap=10m² and shaftAs=100m². Frictionless small oscillations neglecting shaft inertia haveT=200.607s.",
+      "model": "原創教學假設，非操作設定。假設定水位上庫、均勻管L=1000m及Ap=10m²、井As=100m²，無摩擦小振幅且忽略井水慣性，T=2π√(LAs/gAp)=200.607s。~Original teaching assumptions, not operating settings. Assume fixed reservoir level, uniform conduitL=1000m,Ap=10m² and shaftAs=100m². Frictionless small oscillations neglecting shaft inertia haveT=200.607s.",
+      "verify": "將管內剛性水柱動量與井內連續方程聯立，核對係數量綱為時間平方。以小擾動數值解比較解析週期，再逐步加入摩擦、井水慣性與控制器，標註每次加入機制後的週期及衰減差異。~Couple rigid-column momentum with shaft continuity and check that the period coefficient has time-squared units. Compare an analytical period with a small-disturbance numerical solution, then add friction, shaft inertia and controls separately, recording changes in period and damping.",
+      "practice": "將管內剛性水柱動量與井內連續方程聯立，核對係數量綱為時間平方。以小擾動數值解比較解析週期，再逐步加入摩擦、井水慣性與控制器，標註每次加入機制後的週期及衰減差異。~Couple rigid-column momentum with shaft continuity and check that the period coefficient has time-squared units. Compare an analytical period with a small-disturbance numerical solution, then add friction, shaft inertia and controls separately, recording changes in period and damping.",
+      "failure": "用此長週期代替壓力波往返時間會漏掉早期水錘，忽略機組控制又可能看不到自激振盪。模型沒有耗散時持續振動是其假設結果，不能當成實際阻尼證據。~Using this long period in place of wave travel time misses early water hammer, and omitted machine control can hide self-excitation. Persistent motion in a lossless model follows its assumptions and does not measure real-system damping.",
+      "misconception": "調壓井剛性水柱週期與管路彈性壓力波往返時間必定完全相同。~The rigid-column surge period must equal the conduit’s elastic-wave round-trip time."
+    },
+    {
+      "anchor": "理想湧升能量界限~Ideal upsurge energy estimate",
+      "title": "理想湧升能量界限~Ideal upsurge energy estimate",
+      "mechanism": "突然停止下游取水後，管內水柱動能可轉為井中水位上升的位能，提供無損理想基準。必須把井位移相對於固定水庫水面定義，並說明初始水位偏差；忽略摩擦、井水慣性與壓力彈性能量時，結果不能視為實際溢流高度的完整設計包絡。 假設初始井位等於固定庫位、L=1000m、Ap=10m²、As=100m²、V0=2m/s，瞬停下游且無損，zmax=V0√(LAp/gAs)=6.3855m。~After downstream demand stops, conduit kinetic energy can become potential energy in a rising shaft, giving a lossless reference. Define displacement relative to the fixed reservoir surface and specify the initial level offset. When friction, shaft inertia and elastic-wave energy are omitted, the estimate cannot serve as a complete design envelope for actual overflow height. Assume initial shaft level equals fixed reservoir level,L=1000m,Ap=10m²,As=100m²,V0=2m/s and instantaneous demand stop. Lossless rigid-columnzmax=6.3855m.",
+      "model": "原創教學假設，非操作設定。假設初始井位等於固定庫位、L=1000m、Ap=10m²、As=100m²、V0=2m/s，瞬停下游且無損，zmax=V0√(LAp/gAs)=6.3855m。~Original teaching assumptions, not operating settings. Assume initial shaft level equals fixed reservoir level,L=1000m,Ap=10m²,As=100m²,V0=2m/s and instantaneous demand stop. Lossless rigid-columnzmax=6.3855m.",
+      "verify": "寫出初始水柱動能與井水位能的等式，確認上庫可視為定水位且初始井位偏差為零。再用動量連續方程數值解對照，另測非零初始偏差、損失和彈性波對最高及最低水位的影響。~Write initial column kinetic energy and shaft potential energy, checking fixed reservoir level and zero initial shaft offset. Compare with coupled momentum-continuity integration, then separately test nonzero initial offset, loss and elastic-wave effects on both maximum and minimum levels.",
+      "practice": "寫出初始水柱動能與井水位能的等式，確認上庫可視為定水位且初始井位偏差為零。再用動量連續方程數值解對照，另測非零初始偏差、損失和彈性波對最高及最低水位的影響。~Write initial column kinetic energy and shaft potential energy, checking fixed reservoir level and zero initial shaft offset. Compare with coupled momentum-continuity integration, then separately test nonzero initial offset, loss and elastic-wave effects on both maximum and minimum levels.",
+      "failure": "初始井水位若已因摩擦低於庫位，直接套零偏差公式會遺漏能量項。把無損湧升直接當允許井高也會忽略自由高、通氣與更複雜邊界造成的變化。~An initial shaft level depressed by friction requires an additional energy term. Treating the lossless rise as an allowable shaft height also omits freeboard, ventilation and changes caused by more complex boundaries.",
+      "misconception": "理想無損湧升數值就是任何真實調壓井所需的完整井高。~The ideal lossless rise directly gives the complete required height for every real surge shaft."
+    },
+    {
+      "anchor": "沿程摩擦與耗散~Distributed friction and dissipation",
+      "title": "沿程摩擦與耗散~Distributed friction and dissipation",
+      "mechanism": "管壁摩擦耗散能量並影響井水振盪衰減，穩態摩擦式可作第一層準穩態近似。反向流動時損失應反向抵抗速度，不能永遠沿固定坐標扣水頭；快速瞬態的非穩態摩擦則可能需要額外模型，不能只靠增大摩擦係數修正錯誤結果。 假設Darcy摩擦係數0.02、管長1000m、直徑2m、速率2m/s，hf=f(L/D)V²/(2g)=2.0387m，僅為此工況準穩態損失。~Wall friction dissipates energy and influences surge decay, with a steady relation serving as a first quasi-steady approximation. During flow reversal the loss must oppose velocity rather than remain fixed in one coordinate direction. Rapid transients may require unsteady friction, which should not be replaced by arbitrarily increasing a coefficient to compensate for an incorrect model. Assume Darcy factor0.02,length1000m,diameter2m and speed2m/s. Quasi-steady loss hf=f(L/D)V²/(2g)=2.0387m at this condition.",
+      "model": "原創教學假設，非操作設定。假設Darcy摩擦係數0.02、管長1000m、直徑2m、速率2m/s，hf=f(L/D)V²/(2g)=2.0387m，僅為此工況準穩態損失。~Original teaching assumptions, not operating settings. Assume Darcy factor0.02,length1000m,diameter2m and speed2m/s. Quasi-steady loss hf=f(L/D)V²/(2g)=2.0387m at this condition.",
+      "verify": "註明使用Darcy而非Fanning係數，從粗糙度與雷諾數核對假設範圍。將摩擦寫成抵抗流向的V乘絕對V形式，檢查流向反轉時仍耗能，再比較不同摩擦模型對衰減歷時的影響。~Identify the Darcy rather than Fanning convention and check roughness and Reynolds assumptions. Express directional friction using velocity times its magnitude, verify dissipation during reversal and compare how alternative friction representations change the decay history.",
+      "practice": "註明使用Darcy而非Fanning係數，從粗糙度與雷諾數核對假設範圍。將摩擦寫成抵抗流向的V乘絕對V形式，檢查流向反轉時仍耗能，再比較不同摩擦模型對衰減歷時的影響。~Identify the Darcy rather than Fanning convention and check roughness and Reynolds assumptions. Express directional friction using velocity times its magnitude, verify dissipation during reversal and compare how alternative friction representations change the decay history.",
+      "failure": "混淆兩種摩擦係數可造成四倍差異，流向反轉後符號不改更可能讓摩擦虛假供能。以強阻尼掩蓋時間步誤差，會讓看似平順的曲線失去物理可信度。~Confusing friction conventions introduces a factor-of-four error, and the wrong reversal sign can make friction supply energy. Artificial damping that hides time-step errors yields smooth-looking curves without reliable physical meaning.",
+      "misconception": "管路反向流動時摩擦仍應保持原方向並向水流提供能量。~During reversed flow friction keeps its original direction and supplies energy to the water."
+    },
+    {
+      "anchor": "節流孔與局部損失~Throttle opening and local loss",
+      "title": "節流孔與局部損失~Throttle opening and local loss",
+      "mechanism": "節流可改變井與主管之間的交換及耗散，但更大阻力不保證所有壓力峰值都下降。孔口附近的局部低壓、流向切換和收縮係數需要另外檢查；準穩態孔流關係只描述指定瞬間的流量水頭差，不能直接取代完整調壓設施的瞬態模型。 假設孔口Q=10m³/s、Cd=0.65、有效面積2m²，水頭差h=(Q/CdA)²/(2g)=3.0159m；未驗局部空化。~A throttle changes exchange and dissipation between shaft and conduit, but increased resistance does not guarantee lower pressure peaks everywhere. Local suction, reversal and contraction behavior require separate checks. A quasi-steady orifice relation describes one flow-head condition and cannot replace a transient model of the complete surge arrangement and its connected waterway. Assume orifice flow10m³/s, coefficient0.65 and effective area2m². Head differenceh=(Q/CdA)²/(2g)=3.0159m, without evaluating local cavitation.",
+      "model": "原創教學假設，非操作設定。假設孔口Q=10m³/s、Cd=0.65、有效面積2m²，水頭差h=(Q/CdA)²/(2g)=3.0159m；未驗局部空化。~Original teaching assumptions, not operating settings. Assume orifice flow10m³/s, coefficient0.65 and effective area2m². Head differenceh=(Q/CdA)²/(2g)=3.0159m, without evaluating local cavitation.",
+      "verify": "核對係數對應的幾何與流向，標明有效孔面積而非整個井面積。比較入井與出井的壓差資料，將孔口關係接入動量及連續方程，再檢查最低絕對壓力與反向流條件而非只看耗能增加。~Check the coefficient’s geometry and direction and use opening area rather than full shaft area. Compare inward and outward pressure differences, couple the opening relation to momentum and continuity and inspect minimum absolute pressure and reversal rather than only increased dissipation.",
+      "practice": "核對係數對應的幾何與流向，標明有效孔面積而非整個井面積。比較入井與出井的壓差資料，將孔口關係接入動量及連續方程，再檢查最低絕對壓力與反向流條件而非只看耗能增加。~Check the coefficient’s geometry and direction and use opening area rather than full shaft area. Compare inward and outward pressure differences, couple the opening relation to momentum and continuity and inspect minimum absolute pressure and reversal rather than only increased dissipation.",
+      "failure": "孔口太小可能限制快速交換而提高主管壓力，收縮區低壓也可能造成空化。直接用同一係數描述兩個方向，會漏掉非對稱構造引起的不同水頭損失。~An overly restrictive opening can hinder rapid exchange and raise conduit pressure, while a contracted jet can cavitate. Applying one coefficient to both directions misses asymmetric losses caused by the actual opening arrangement.",
+      "misconception": "節流孔越小就必定同時降低所有位置的最大與最小壓力風險。~A smaller throttle opening necessarily reduces every maximum- and minimum-pressure risk throughout the system."
+    },
+    {
+      "anchor": "絕對壓力與汽化~Absolute pressure and vapor formation",
+      "title": "絕對壓力與汽化~Absolute pressure and vapor formation",
+      "mechanism": "負表壓不等於汽化，必須加上當地大氣壓後與相應溫度的蒸氣壓比較。即使某測點高於蒸氣壓，附近收縮區或未量到的瞬態仍可能更低；水柱分離涉及兩相或氣穴模型，不能把單相計算得到的不合理低壓照單全收。 假設大氣壓100kPa、表壓−80kPa、蒸氣壓2.34kPa，絕對壓20kPa，比蒸氣壓高17.66kPa；只代表該點該時刻。~Negative gauge pressure is not itself vapor formation; add local atmospheric pressure and compare against vapor pressure at the relevant temperature. A measured point above vapor pressure does not exclude lower local or unresolved transient values. Column separation requires appropriate cavity or multiphase treatment rather than accepting physically impossible pressures from a single-phase computation. Assume atmospheric100kPa,gauge−80kPa and vapor pressure2.34kPa. Absolute pressure20kPa exceeds vapor by17.66kPa only at that location and instant.",
+      "model": "原創教學假設，非操作設定。假設大氣壓100kPa、表壓−80kPa、蒸氣壓2.34kPa，絕對壓20kPa，比蒸氣壓高17.66kPa；只代表該點該時刻。~Original teaching assumptions, not operating settings. Assume atmospheric100kPa,gauge−80kPa and vapor pressure2.34kPa. Absolute pressure20kPa exceeds vapor by17.66kPa only at that location and instant.",
+      "verify": "確認壓力感測器為表壓或絕對型，記錄大氣壓與水溫並統一基準。沿整條管線檢查最低壓力歷時及高點，對低於蒸氣壓的單相結果改用適當模型，並保留未解析局部區域的限制。~Verify gauge versus absolute instrumentation, record atmospheric pressure and temperature and align references. Inspect minimum histories and high points along the full conduit, replace invalid single-phase predictions with suitable models and retain limitations for unresolved local regions.",
+      "practice": "確認壓力感測器為表壓或絕對型，記錄大氣壓與水溫並統一基準。沿整條管線檢查最低壓力歷時及高點，對低於蒸氣壓的單相結果改用適當模型，並保留未解析局部區域的限制。~Verify gauge versus absolute instrumentation, record atmospheric pressure and temperature and align references. Inspect minimum histories and high points along the full conduit, replace invalid single-phase predictions with suitable models and retain limitations for unresolved local regions.",
+      "failure": "用海平面標準大氣壓代替高海拔實值會錯估餘量，稀疏取樣則可能漏掉短低壓。氣穴再閉合形成的壓力峰值也不會在只檢查原始高壓的流程中出現。~Using standard sea-level atmosphere at altitude misstates the margin, and sparse sampling can miss brief minima. Cavity rejoining can produce pressure peaks absent from a procedure that checks only the original high-pressure state.",
+      "misconception": "任何負表壓都立即代表汽化而正表壓則保證整條管線沒有空化。~Every negative gauge pressure means vaporization, while positive gauge pressure guarantees no cavitation anywhere."
+    },
+    {
+      "anchor": "特徵網格與收斂~Characteristic grid and convergence",
+      "title": "特徵網格與收斂~Characteristic grid and convergence",
+      "mechanism": "瞬態數值解需要把傳播速度、空間網格與時間步配合，否則波前可能被過度擴散或錯置。特徵線恰好落在網格點是便利條件，並不是邊界、摩擦或兩相處理都正確的證明；必須用可解析基準及細化比較檢查壓力峰值、到時和守恆。 假設a=1000m/s、Δx=100m、Δt=0.10s，Courant數aΔt/Δx=1；只對此均勻網格特徵到點，不是完整精度證明。~Transient calculations coordinate wave speed, spatial grid and time step to avoid misplaced or excessively diffused fronts. Characteristics landing on grid points is convenient, not proof that boundaries, friction and cavities are handled correctly. Analytical benchmarks and refinement comparisons must check peak pressure, arrival time and conservation as separate aspects of numerical credibility. Assumea=1000m/s,spacing100m and step0.10s. Courant number1 aligns characteristics on this uniform grid but does not prove full accuracy.",
+      "model": "原創教學假設，非操作設定。假設a=1000m/s、Δx=100m、Δt=0.10s，Courant數aΔt/Δx=1；只對此均勻網格特徵到點，不是完整精度證明。~Original teaching assumptions, not operating settings. Assumea=1000m/s,spacing100m and step0.10s. Courant number1 aligns characteristics on this uniform grid but does not prove full accuracy.",
+      "verify": "先用單管首波及已知反射時序作基準，將空間與時間步一起細化並比較峰值和到達時間。對各支管核對波速與網格，檢查質量殘差及邊界更新順序，記錄收斂而非只呈現平滑曲線。~Benchmark first-wave amplitude and known reflection timing, refine space and time together and compare peaks and arrival. Check every branch’s celerity and grid, mass residual and boundary-update sequence, documenting convergence rather than merely presenting smooth plots.",
+      "practice": "先用單管首波及已知反射時序作基準，將空間與時間步一起細化並比較峰值和到達時間。對各支管核對波速與網格，檢查質量殘差及邊界更新順序，記錄收斂而非只呈現平滑曲線。~Benchmark first-wave amplitude and known reflection timing, refine space and time together and compare peaks and arrival. Check every branch’s celerity and grid, mass residual and boundary-update sequence, documenting convergence rather than merely presenting smooth plots.",
+      "failure": "光滑曲線可能只是數值耗散抹掉了尖峰，Courant數正確也不能修復錯誤閥門邊界。若網格改變就讓峰值大幅移動，未收斂結果不應被包裝成確定的壓力包絡。~A smooth curve may reflect numerical damping that erased a peak, and correct Courant number cannot repair an incorrect valve boundary. Peaks that move materially under refinement indicate an unconverged result rather than a definitive pressure envelope.",
+      "misconception": "Courant數等於一就能保證任何邊界、空化與摩擦模型都完全正確。~A Courant number of one guarantees that every boundary, cavitation and friction model is correct."
+    }
+  ],
+  "title": "調壓井水錘控制~Surge-shaft control of water hammer",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "summary": "本課將快速彈性壓力波與較慢的調壓井自由水面振盪分開建模，再用共同邊界把兩者連起來。十個單元涵蓋波速、往返時間、首波增量、井內連續方程、剛性水柱週期、無損湧升、摩擦節流、汽化及數值收斂，所有算例都明定原創假設，不提供可直接套用的閥門動作規程。~This course models rapid elastic pressure waves separately from slower free-surface surge oscillations, then reconnects them through shared boundaries. Ten units cover celerity, travel time, first-wave increment, continuity, rigid-column period, ideal upsurge, friction, throttling, vapor formation and numerical convergence. All examples state original assumptions rather than prescribing transferable valve-operating procedures.",
+  "history": "調壓設施的作用是改變長引水路的動量交換與壓力邊界，並非讓水錘從此消失。埃克盧特納官方歷史記錄調壓井於一九五三年開挖、一九五四年襯砌，提供真實井式設施的背景。科切拉配水管網則出現在墾務局一九五四年的湧浪控制專論，其灌溉配水邊界不應直接等同水力機組。工兵團二〇〇八年更新的水力電廠結構手冊提供另一方法入口。本課把各文件年代保留為出版或施工事實，所有管長、流速、井面積和壓力則另設為教學算例。~Surge facilities change momentum exchange and pressure boundaries in long waterways rather than eliminating every transient. Eklutna’s official history records shaft excavation in1953 and lining in1954 as a genuine shaft context. The Coachella distribution network appears in Reclamation’s1954 surge-control monograph, but irrigation boundaries are not equated with turbine behavior. USACE’s2008 hydroelectric structural update provides another methodological entry point. Dates remain publication or construction facts; conduit length, velocity, shaft area and pressure are separately specified as synthetic teaching inputs throughout the lesson.",
+  "example": "原創井面積敏感度：定水位上庫、無損剛性水柱、初始井位與庫位相同，L=1000m、Ap=10m²、V0=2m/s且瞬停下游時，As=100m²得到zmax=6.3855m。將井面積增加10%至110m²而其他假設不變，湧升變為6.3855/√1.1≈6.0883m，降低約4.65%，並非10%。同時理想週期會乘√1.1而變長。學徒應比較較低湧升與較長振盪的不同效果，再加入摩擦、井水慣性、通氣及彈性管路，不把理想幅值減少誤稱所有壓力風險均以相同比例降低。~Original shaft-area sensitivity: assume a fixed reservoir, lossless rigid column, equal initial shaft and reservoir levels,L=1000m,Ap=10m²,V0=2m/s and instantaneous downstream demand stop. Shaft area100m² gives maximum rise6.3855m. Increasing area10% to110m² with all other assumptions fixed gives6.3855/√1.1≈6.0883m, about4.65% lower rather than10%. The ideal period simultaneously increases by√1.1. Apprentices compare lower rise with longer oscillation before adding friction, shaft inertia, ventilation and elastic waterways. A reduced ideal amplitude does not imply that every pressure risk declines by the same percentage across the full connected system.",
+  "facts": [
+    "原創教學假設，非操作設定。假設K=2.2GPa、ρ=1000kg/m³、E=200GPa、D=2m、t=0.02m，管壁修正係數取1，a=√[K/ρ/(1+KD/Et)]=1023.53m/s。~Original teaching assumptions, not operating settings. AssumeK=2.2GPa,ρ=1000kg/m³,E=200GPa,D=2m,t=0.02m and wall-restraint factor1. Wave speeda=√[K/ρ/(1+KD/Et)]=1023.53m/s for this idealization.",
+    "原創教學假設，非操作設定。假設均勻管長L=1000m、波速a=1000m/s，往返時間2L/a=2s；只代表此單一路徑，不是允許關閉時間。~Original teaching assumptions, not operating settings. Assume uniform pipe length1000m and celerity1000m/s. Round-trip2L/a=2s describes only this path, not an allowable closing time.",
+    "原創教學假設，非操作設定。假設ρ=1000kg/m³、a=1000m/s，0.5s內減速1m/s且小於2s往返，Δp=ρaΔV=1MPa，ΔH=101.94m。~Original teaching assumptions, not operating settings. Assumeρ=1000kg/m³,a=1000m/s and velocity reduction1m/s in0.5s, shorter than2s round-trip. Initial pressure increment1MPa corresponds to101.94m head.",
+    "原創教學假設，非操作設定。假設井面積100m²、瞬時流入20及流出5m³/s，dz/dt=(20−5)/100=0.15m/s；流量差不假定長期固定。~Original teaching assumptions, not operating settings. Assume shaft area100m² with instantaneous inflow20 and outflow5m³/s. Rise ratedz/dt=0.15m/s does not assume that imbalance persists.",
+    "原創教學假設，非操作設定。假設定水位上庫、均勻管L=1000m及Ap=10m²、井As=100m²，無摩擦小振幅且忽略井水慣性，T=2π√(LAs/gAp)=200.607s。~Original teaching assumptions, not operating settings. Assume fixed reservoir level, uniform conduitL=1000m,Ap=10m² and shaftAs=100m². Frictionless small oscillations neglecting shaft inertia haveT=200.607s.",
+    "原創教學假設，非操作設定。假設初始井位等於固定庫位、L=1000m、Ap=10m²、As=100m²、V0=2m/s，瞬停下游且無損，zmax=V0√(LAp/gAs)=6.3855m。~Original teaching assumptions, not operating settings. Assume initial shaft level equals fixed reservoir level,L=1000m,Ap=10m²,As=100m²,V0=2m/s and instantaneous demand stop. Lossless rigid-columnzmax=6.3855m."
+  ],
+  "timeline": [
+    {
+      "year": "1953",
+      "event": "埃克盧特納調壓井開始並完成開挖~Eklutna surge-tank excavation starts and reaches completion"
+    },
+    {
+      "year": "1954",
+      "event": "墾務局出版科切拉配水管網湧浪控制專論~Reclamation publishes Coachella distribution-system surge-control monograph"
+    },
+    {
+      "year": "2008",
+      "event": "工兵團更新水力電廠結構設計手冊~USACE updates hydroelectric power-plant structural design guidance"
+    }
+  ],
+  "codes": [
+    "工程專論第十七號科切拉配水管網湧浪控制~Engineering Monograph17 Surge Control on Coachella Distribution System",
+    "水力電廠結構規劃與設計EM1110-2-3001~EM1110-2-3001 hydroelectric structural planning and design"
+  ],
+  "landmarks": [
+    "埃克盧特納：調壓井實際配置背景~Eklutna: actual surge-shaft configuration context",
+    "科切拉配水管網：不同邊界湧浪比較~Coachella distribution system: contrasting surge boundaries"
+  ],
+  "place": {
+    "name": "埃克盧特納公共調壓工程背景~Eklutna public surge-facility context",
+    "country": "美國~United States",
+    "lat": 61.467,
+    "lng": -149.15,
+    "query": "Eklutna Hydroelectric Project Alaska"
+  },
+  "sources": [
+    {
+      "key": "hydro-structures",
+      "title": "水力電廠結構規劃與設計",
+      "titleEn": "EM1110-2-3001 Planning and Design of Hydroelectric Power Plant Structures",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-3001.pdf",
+      "sourceType": "primary",
+      "scope": "官方目錄列二〇〇八年十月更新的水力電廠結構手冊，涵蓋壓力管與調壓設施；不是每座場址的操作規程。",
+      "scopeEn": "Official catalogue lists the October2008 update of hydroelectric structural guidance, including penstocks and surge facilities; it is not a site operating procedure."
+    },
+    {
+      "key": "coachella-surge",
+      "title": "科切拉配水管網湧浪控制專論",
+      "titleEn": "Engineering Monograph17: Surge Control on the Coachella Pipe Distribution System",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方目錄確認一九五四年配水管網湧浪控制專論；與水力電廠調壓井比較邊界，不宣稱兩系統可沿用同一控制參數。",
+      "scopeEn": "Official catalogue confirms the1954 distribution-system surge-control monograph; its boundaries are compared with hydropower shafts without transferring operating parameters."
+    },
+    {
+      "key": "eklutna-history",
+      "title": "埃克盧特納鋼管與調壓設施歷史",
+      "titleEn": "Eklutna Project construction history",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/history/eklutna.html",
+      "sourceType": "primary",
+      "scope": "官方歷史描述包覆鋼管、混凝土錨塊與調壓井施工；作真實配置案例，不把本課尺寸或瞬態參數當成其設計資料。",
+      "scopeEn": "Official history describes encased steel penstocks, concrete anchor blocks and surge-tank construction; synthetic dimensions and transient parameters are not site design data."
+    },
+    {
+      "key": "coachella-project",
+      "title": "全美運河與科切拉配水工程",
+      "titleEn": "All-American Canal and Coachella distribution system",
+      "publisher": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/projects/index.php?id=514&lang=en",
+      "sourceType": "primary",
+      "scope": "官方歷史記錄科切拉配水工程與一九五四年完成背景；僅定位管網比較案例，不將開渠與壓力管瞬態混為相同方程。",
+      "scopeEn": "Official history records the Coachella distribution works and1954 completion context; used to locate the network comparison, not equate open-channel and pressure-pipe transients."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Army Corps of Engineers",
+      "nameEn": "US Army Corps of Engineers",
+      "business": "發布相關水利方法、研究或公共工程資訊。",
+      "businessEn": "Publishes relevant water-engineering methods, research or public project information.",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-3001.pdf",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方目錄列二〇〇八年十月更新的水力電廠結構手冊，涵蓋壓力管與調壓設施；不是每座場址的操作規程。",
+      "roleEn": "Official catalogue lists the October2008 update of hydroelectric structural guidance, including penstocks and surge facilities; it is not a site operating procedure."
+    },
+    {
+      "name": "US Bureau of Reclamation",
+      "nameEn": "US Bureau of Reclamation",
+      "business": "發布相關水利方法、研究或公共工程資訊。",
+      "businessEn": "Publishes relevant water-engineering methods, research or public project information.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方目錄確認一九五四年配水管網湧浪控制專論；與水力電廠調壓井比較邊界，不宣稱兩系統可沿用同一控制參數。",
+      "roleEn": "Official catalogue confirms the1954 distribution-system surge-control monograph; its boundaries are compared with hydropower shafts without transferring operating parameters."
+    }
+  ],
+  "related": [
+    "b258",
+    "b259"
+  ],
+  "architectureNodes": [
+    [
+      "彈性波速與管壁",
+      "Elastic wave speed and pipe wall"
+    ],
+    [
+      "快速變速壓力增量",
+      "Rapid velocity-change pressure"
+    ],
+    [
+      "剛性水柱振盪週期",
+      "Rigid-column oscillation period"
+    ],
+    [
+      "節流孔與局部損失",
+      "Throttle opening and local loss"
+    ],
+    [
+      "特徵網格與收斂",
+      "Characteristic grid and convergence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 一鍵上傳 / One-click upload — MacGyver Engineering Academy V14
+# 一鍵上傳 / One-click upload — MacGyver Engineering Academy V15
 #
 # 在解壓後的資料夾執行：  bash upload-all.sh
 #   ① 比對本機套件與 GitHub 網站倉庫（kuonanhong/macgyver-academy），只上傳新增與修改的檔案，

@@ -42,7 +42,7 @@ for MODEL_NAME in "${MODELS[@]}"; do
   if $DOWNLOAD; then
     ollama pull "$MODEL_NAME"
   elif ! ollama show "$MODEL_NAME" >/dev/null 2>&1; then
-    echo "尚未安裝 $MODEL_NAME。若同意下載權重，請加上 --download 後重跑本檔；目前未下載。" >&2
+    echo "尚未安裝 ${MODEL_NAME}。若同意下載權重，請加上 --download 後重跑本檔；目前未下載。" >&2
     exit 1
   fi
 done

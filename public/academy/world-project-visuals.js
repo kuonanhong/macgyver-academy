@@ -1,3 +1,4 @@
+import {waterMotifs,waterComponentMotif} from './water-diagram-motifs.js';
 import {undergroundMotifs,undergroundComponentMotif} from './underground-diagram-motifs.js';
 /* Original functional relationships drawn from course-authored components.
  * Not a vendor drawing, physical CAD, plant layout or as-built document. */
@@ -10,6 +11,7 @@ function wrapLabel(value){
 }
 export function worldVisualFamily(course={}){return course.architectureFamily||'';}
 function motif(family){
+ if(waterMotifs[family])return waterMotifs[family];
  if(undergroundMotifs[family])return undergroundMotifs[family];
  const optics={"telescope": "<path d=\"M-30 18L20-22M-24 26L26-14M20-22L26-14\"/><circle cx=\"-27\" cy=\"22\" r=\"5\"/><path d=\"M-6 6L-14 34M-6 6L4 34\"/>", "microscope": "<path d=\"M-6-34h12v10h-12zM0-24v26M-14 2h28M-10 2l-6 14h32l-6-14M-26 34h52M18 16q10 6 0 18\"/>", "laser": "<rect x=\"-34\" y=\"-12\" width=\"40\" height=\"24\" rx=\"3\"/><path d=\"M6 0H36M28-6L36 0L28 6M-26-12v-6M-14-12v-6\"/>", "accelerator": "<circle r=\"28\"/><circle r=\"20\" stroke-dasharray=\"4 4\"/><path d=\"M28 0l8-4v8z\"/><circle cx=\"-20\" cy=\"-20\" r=\"3\" fill=\"currentColor\"/>", "detector": "<rect x=\"-30\" y=\"-30\" width=\"60\" height=\"60\" rx=\"4\"/><path d=\"M-30-10H30M-30 10H30M-10-30V30M10-30V30\"/><path d=\"M-36 30L0 0\" stroke-dasharray=\"3 3\"/>", "spectrometer": "<path d=\"M-34 0H-12M-12 0L-4-14L4 0Z\"/><path d=\"M4 0L34-18M4 0L34-6M4 0L34 6M4 0L34 18\"/>", "interferometer": "<path d=\"M-30 0H30M0-30V30M-8-8L8 8\"/><rect x=\"26\" y=\"-6\" width=\"6\" height=\"12\"/><rect x=\"-6\" y=\"-34\" width=\"12\" height=\"6\"/>", "gw": "<path d=\"M-30 30H34M-30 30V-34\"/><circle cx=\"34\" cy=\"30\" r=\"4\"/><circle cx=\"-30\" cy=\"-34\" r=\"4\"/><path d=\"M-24 6q8-8 16 0t16 0 16 0\"/>", "radio": "<path d=\"M-30-10q30 50 60 0M0 14V34M-14 34h28M0 14V-20M-6-20h12\"/>", "vacuum": "<circle r=\"22\"/><path d=\"M-22 0h-12M22 0h12M0 22v12M-8 34h16\"/><circle r=\"8\" stroke-dasharray=\"2 3\"/>", "cryo": "<path d=\"M0-32V32M-28-16L28 16M-28 16L28-16M-6-26L0-32L6-26M-6 26L0 32L6 26\"/>", "coating": "<path d=\"M-32 18H32M-32 10H32M-32 2H32M-32-6H32M-20-34L-4-8M4-8L20-34\"/>", "lithography": "<ellipse cx=\"0\" cy=\"-24\" rx=\"24\" ry=\"6\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"18\" ry=\"5\"/><path d=\"M-30 24H30M-24 30H24\"/><path d=\"M-10-34L-2 20M10-34L2 20\" stroke-dasharray=\"3 3\"/>", "stage": "<rect x=\"-32\" y=\"-12\" width=\"64\" height=\"30\" rx=\"3\"/><rect x=\"-18\" y=\"-26\" width=\"36\" height=\"14\" rx=\"2\"/><path d=\"M-36 30H36M-20 18v12M20 18v12\"/>", "inertial": "<circle r=\"26\"/><ellipse rx=\"26\" ry=\"9\"/><circle r=\"4\" fill=\"currentColor\"/><path d=\"M26 0l6-6M26 0l6 6\"/>", "electron": "<path d=\"M-14-34h28l-6 14h-16zM-8-20v40M8-20v40M-20 24h40M-12-4h24M-12 8h24\"/>", "fabrication": "<path d=\"M-30 10q30-24 60 0M-30 10H30M0-16V-4\"/><circle cx=\"0\" cy=\"-24\" r=\"8\"/>", "modulator": "<rect x=\"-24\" y=\"-24\" width=\"48\" height=\"48\"/><path d=\"M-24-8H24M-24 8H24M-8-24V24M8-24V24M-36-30L-24-12M36 30L24 12\"/>", "imaging": "<path d=\"M0-30q14 30 0 60q-14-30 0-60z\"/><path d=\"M-34-10L0 0L34-10M-34 10L0 0L34 10\"/>"};
  if(optics[family])return optics[family];
@@ -27,6 +29,7 @@ function motif(family){
  return '<path d="M-35-23H-10V23H-35ZM10-23H35V23H10ZM-10-12H10M-10 12H10M-25-34V-23M25 23V34"/><path d="M-24-12q12 12 0 24M24-12q-12 12 0 24"/>';
 }
 function componentMotif(name,family){
+ const water=waterComponentMotif(name,family);if(water)return water;
  const underground=undergroundComponentMotif(name,family);if(underground)return underground;
  const n=String(name).toLowerCase();
  if(/monitor|diagnostic|readout|measurement|meter/.test(n))return '<rect x="-32" y="-25" width="64" height="43" rx="3"/><path d="M-25 0h11l7-13 13 23 8-10h11M0 18v12M-16 30h32"/>';

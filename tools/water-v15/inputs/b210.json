@@ -1,0 +1,263 @@
+{
+  "id": "b210",
+  "title": "阿斯旺高壩~Aswan High Dam",
+  "discipline": "water-dams",
+  "family": "water",
+  "focus": "以阿斯旺長期蓄水調節串連土石壩與尼羅河水量~Connecting Aswan long-term storage with embankment behavior and Nile water accounting",
+  "summary": "本課以以阿斯旺長期蓄水調節串連土石壩與尼羅河水量為主線，先用跨季庫容水量帳與大湖蒸發與面積界定水力與構造條件，再將核心沉陷與接觸、淤積量與乾密度連結到監測基線與異常。公開工程事實與假想算例分開；下列尺寸水量及材料參數均不是阿斯旺設計或操作資料。 每單元以原創算例、量測與失效辨識共同檢查推論。~This course develops connecting Aswan long-term storage with embankment behavior and Nile water accounting through Seasonal reservoir water balance and Lake evaporation and surface area, then connects Core settlement and interfaces and Sediment storage and dry density to Monitoring baseline and anomaly. Public project facts are separate from hypothetical calculations; dimensions flows and material parameters below are not Aswan design or operating data. Each unit combines original calculation, measurement and failure diagnosis to test the inference.",
+  "history": "阿斯旺高壩位於埃及尼羅河，水利部官方資料將其列為堆石壩，並記載1971年1月15日正式揭幕。此課以長期蓄水、灌溉輸配及水力發電之間的工程界面為主線，而非只以壩體尺寸衡量成就。不同官方頁面的壩長表述並不一致，因此本課不引用長度；河床以上高度也不當成運轉淨水頭。公開事實用於建立案例背景，全部單元數值、材料參數與水文序列另列為原創假設，不能當作阿斯旺現場紀錄或操作方案。~Aswan High Dam stands on the Nile in Egypt. The water ministry identifies it as a rockfill dam and records formal inauguration on15January1971. This course examines interfaces between long-term storage, irrigation delivery and generation. Conflicting official length descriptions are excluded, and structural height is not treated as operating head. Public facts establish context; every lesson quantity, material parameter and hydrological sequence is separately hypothetical and does not represent field records or an operating plan.",
+  "example": "整合算例輸入全為教學假設，先檢查跨季庫容水量帳：InitialStorage=8 km3; seasonalInflow=5 km3; releases=4 km3; netLoss=0.6 km3; finalStorage=8+5-4-0.6=8.4 km3；再獨立檢查大湖蒸發與面積：HypotheticalArea=500 km2; evaporationDepth=1.8 m/year; lossVolume=500e6*1.8/1e9=0.90 km3/year。敏感度：同面積500km2下年蒸發深度由1.8增至2.1m，水量損失由0.90增至1.05km3，增加0.15km3；實際湖面積會隨水位變化，故需逐時或逐月積分。 兩個結果須按各自量綱解釋，不能直接相加或當成完整設計。公開工程事實與假想算例分開；下列尺寸水量及材料參數均不是阿斯旺設計或操作資料。 將核對水庫出口用水端與回歸水的同時水量帳作為獨立驗證，明確列出尚缺的現地輸入及其對結論的影響。~Every input in this integrated example is a teaching assumption. First examine Seasonal reservoir water balance: InitialStorage=8 km3; seasonalInflow=5 km3; releases=4 km3; netLoss=0.6 km3; finalStorage=8+5-4-0.6=8.4 km3. Independently examine Lake evaporation and surface area: HypotheticalArea=500 km2; evaporationDepth=1.8 m/year; lossVolume=500e6*1.8/1e9=0.90 km3/year. Sensitivity: over a fixed500km2 surface, annual evaporation increasing from1.8 to2.1m changes loss from0.90 to1.05km3, an increase of0.15km3. Real surface area varies with stage and requires time integration. Interpret each result in its own dimensions rather than adding them or treating them as a complete design. Public project facts are separate from hypothetical calculations; dimensions flows and material parameters below are not Aswan design or operating data. Use the following independent check: Reconcile simultaneous volumes at release, delivery and return-flow boundaries. Identify missing field inputs and state which conclusions depend on them.",
+  "units": [
+    {
+      "anchor": "跨季庫容水量帳~Seasonal reservoir water balance",
+      "title": "跨季庫容水量帳~Seasonal reservoir water balance",
+      "mechanism": "阿斯旺案例凸顯長期蓄水必須追蹤入流、放流與損失，單一洪峰並不能描述跨季可靠度。用共同時間窗更新庫存可檢查調節邏輯，但不能忽略水位面積與可用庫容限制；每個水量來源應保留獨立觀測與不確定度。 驗證時應以庫水位容量曲線交叉核對同期流量積分的庫存變化，並辨識以下失效情境：把所有水量殘差當蒸發會掩蓋量測或漏列放流。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Aswan provides context for long-term storage accounting beyond a single flood peak. Update storage from inflow, release and losses over a common window. This bookkeeping does not remove stage-area or usable-storage limits, and each component needs independent observations and uncertainty rather than one balancing adjustment. Test this interpretation with the following evidence: Cross-check integrated flows against storage change from the stage-capacity curve. In particular, distinguish this failure mechanism: Assigning every residual to evaporation conceals measurement errors or omitted releases. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：InitialStorage=8 km3; seasonalInflow=5 km3; releases=4 km3; netLoss=0.6 km3; finalStorage=8+5-4-0.6=8.4 km3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: InitialStorage=8 km3; seasonalInflow=5 km3; releases=4 km3; netLoss=0.6 km3; finalStorage=8+5-4-0.6=8.4 km3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以庫水位容量曲線交叉核對同期流量積分的庫存變化。應將原始量測與本單元模型的輸入條件對齊，並針對「把所有水量殘差當蒸發會掩蓋量測或漏列放流」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Cross-check integrated flows against storage change from the stage-capacity curve. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Assigning every residual to evaporation conceals measurement errors or omitted releases. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把所有水量殘差當蒸發會掩蓋量測或漏列放流。診斷時應採取以下查核：以庫水位容量曲線交叉核對同期流量積分的庫存變化，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Assigning every residual to evaporation conceals measurement errors or omitted releases. Diagnose it by the following check: Cross-check integrated flows against storage change from the stage-capacity curve. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "只知道洪峰流量就能判定跨季供水可靠度~Peak flood discharge alone determines seasonal supply reliability",
+      "practice": "交接時以以庫水位容量曲線交叉核對同期流量積分的庫存變化作為可追溯證據，保存對應材料、構形與工況版本。針對把所有水量殘差當蒸發會掩蓋量測或漏列放流，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Cross-check integrated flows against storage change from the stage-capacity curve. Record material, geometry and operating-state versions. Address this scenario: Assigning every residual to evaporation conceals measurement errors or omitted releases. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "大湖蒸發與面積~Lake evaporation and surface area",
+      "title": "大湖蒸發與面積~Lake evaporation and surface area",
+      "mechanism": "乾燥地區的大湖蒸發涉及水面面積與能量交換，蒸發深度不能直接當成水庫降深。湖面積隨水位變動，風場與氣象站代表性也會影響估算；固定面積算例只能說明單位換算，長期水量帳需用一致時間解析度積分。 驗證時應比較湖面氣象與蒸發估法並依逐月水位更新面積，並辨識以下失效情境：直接以單一岸站蒸發量代表全湖可能形成系統偏差。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Large-lake evaporation in an arid setting depends on surface area and energy exchange. Evaporation depth is not automatically reservoir stage decline. Area changes with level and station representativeness matters; a fixed-area calculation illustrates conversion while long-term budgets need consistent temporal integration. Test this interpretation with the following evidence: Compare lake meteorology and evaporation methods and update area from monthly stage. In particular, distinguish this failure mechanism: Using one shore station for the entire lake can create systematic bias. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：HypotheticalArea=500 km2; evaporationDepth=1.8 m/year; lossVolume=500e6*1.8/1e9=0.90 km3/year。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: HypotheticalArea=500 km2; evaporationDepth=1.8 m/year; lossVolume=500e6*1.8/1e9=0.90 km3/year. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較湖面氣象與蒸發估法並依逐月水位更新面積。應將原始量測與本單元模型的輸入條件對齊，並針對「直接以單一岸站蒸發量代表全湖可能形成系統偏差」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare lake meteorology and evaporation methods and update area from monthly stage. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Using one shore station for the entire lake can create systematic bias. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "直接以單一岸站蒸發量代表全湖可能形成系統偏差。診斷時應採取以下查核：比較湖面氣象與蒸發估法並依逐月水位更新面積，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Using one shore station for the entire lake can create systematic bias. Diagnose it by the following check: Compare lake meteorology and evaporation methods and update area from monthly stage. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "蒸發一公尺就表示水庫水位必定下降一公尺~One metre of evaporation necessarily lowers reservoir level by one metre",
+      "practice": "交接時以比較湖面氣象與蒸發估法並依逐月水位更新面積作為可追溯證據，保存對應材料、構形與工況版本。針對直接以單一岸站蒸發量代表全湖可能形成系統偏差，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare lake meteorology and evaporation methods and update area from monthly stage. Record material, geometry and operating-state versions. Address this scenario: Using one shore station for the entire lake can create systematic bias. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "防滲核心串聯阻力~Core seepage resistance in series",
+      "title": "防滲核心串聯阻力~Core seepage resistance in series",
+      "mechanism": "大型土石壩的不同土區可形成串聯與並聯流路，不能將各層滲透係數直接算術平均。等面積一維串聯模型以厚度除導水率形成阻力，可顯示低滲層控制作用；裂縫或接觸繞流則可能讓此理想串聯失效。 驗證時應以分層孔壓分配核對主要水頭損失是否位於低滲區，並辨識以下失效情境：沿接觸面繞流可避開原本控制流量的低滲核心。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Different embankment zones create series and parallel paths, so arithmetic averaging of conductivity is generally inappropriate. Equal-area one-dimensional series resistance illustrates control by a low-permeability layer. Cracks and contact bypasses may defeat that idealization and must be checked independently of laboratory conductivity. Test this interpretation with the following evidence: Use layered piezometric heads to locate the dominant head loss. In particular, distinguish this failure mechanism: Contact bypass can avoid the low-permeability core that controls the ideal model. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Equal areaA=100 m2; deltaHead=40 m; layers L1=10 m,k1=1e-7 m/s; L2=20 m,k2=1e-5 m/s; Q=100*40/(10/1e-7+20/1e-5)=0.0000392157 m3/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Equal areaA=100 m2; deltaHead=40 m; layers L1=10 m,k1=1e-7 m/s; L2=20 m,k2=1e-5 m/s; Q=100*40/(10/1e-7+20/1e-5)=0.0000392157 m3/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以分層孔壓分配核對主要水頭損失是否位於低滲區。應將原始量測與本單元模型的輸入條件對齊，並針對「沿接觸面繞流可避開原本控制流量的低滲核心」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Use layered piezometric heads to locate the dominant head loss. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Contact bypass can avoid the low-permeability core that controls the ideal model. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "沿接觸面繞流可避開原本控制流量的低滲核心。診斷時應採取以下查核：以分層孔壓分配核對主要水頭損失是否位於低滲區，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Contact bypass can avoid the low-permeability core that controls the ideal model. Diagnose it by the following check: Use layered piezometric heads to locate the dominant head loss. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "串聯各層滲透係數可以直接算術平均~Conductivities of layers in series can be averaged arithmetically",
+      "practice": "交接時以以分層孔壓分配核對主要水頭損失是否位於低滲區作為可追溯證據，保存對應材料、構形與工況版本。針對沿接觸面繞流可避開原本控制流量的低滲核心，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Use layered piezometric heads to locate the dominant head loss. Record material, geometry and operating-state versions. Address this scenario: Contact bypass can avoid the low-permeability core that controls the ideal model. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "填築含水與乾密度~Placement moisture and dry density",
+      "title": "填築含水與乾密度~Placement moisture and dry density",
+      "mechanism": "土石壩填築品質需把含水量與乾密度連結，濕密度較高不一定代表骨架更密實，可能只是水較多。質量含水率的乾密度換算只核對試樣狀態，仍須依材料與試驗方法判定施工適用；層厚與壓實設備需共同驗證。 驗證時應將現地密度與同期含水樣品配對並核對分層位置，並辨識以下失效情境：濕土含水增加可能掩蓋乾密度不足。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Placement quality requires both moisture and dry density. Higher wet density may reflect more water rather than a denser skeleton. Conversion using mass water content checks sample state only; material-specific testing, lift thickness and compaction equipment still determine whether placement is suitable. Test this interpretation with the following evidence: Pair field density with simultaneous moisture samples and identify the placement lift. In particular, distinguish this failure mechanism: Increasing water content can conceal inadequate dry density. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：wetDensity=2100 kg/m3; waterMassContent=0.12; dryDensity=2100/(1+0.12)=1875 kg/m3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: wetDensity=2100 kg/m3; waterMassContent=0.12; dryDensity=2100/(1+0.12)=1875 kg/m3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "將現地密度與同期含水樣品配對並核對分層位置。應將原始量測與本單元模型的輸入條件對齊，並針對「濕土含水增加可能掩蓋乾密度不足」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Pair field density with simultaneous moisture samples and identify the placement lift. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Increasing water content can conceal inadequate dry density. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "濕土含水增加可能掩蓋乾密度不足。診斷時應採取以下查核：將現地密度與同期含水樣品配對並核對分層位置，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Increasing water content can conceal inadequate dry density. Diagnose it by the following check: Pair field density with simultaneous moisture samples and identify the placement lift. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "濕密度較高就必定代表壓實骨架更密~Higher wet density always proves a denser compacted skeleton",
+      "practice": "交接時以將現地密度與同期含水樣品配對並核對分層位置作為可追溯證據，保存對應材料、構形與工況版本。針對濕土含水增加可能掩蓋乾密度不足，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Pair field density with simultaneous moisture samples and identify the placement lift. Record material, geometry and operating-state versions. Address this scenario: Increasing water content can conceal inadequate dry density. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "核心沉陷與接觸~Core settlement and interfaces",
+      "title": "核心沉陷與接觸~Core settlement and interfaces",
+      "mechanism": "核心與壩殼的壓縮性差異會造成相對變形，剛性穿越構造附近尤其需要檢查接觸與反濾連續。相鄰沉陷差只能描述幾何需求，不能直接預測裂縫寬度；施工時序、材料非線性與三維約束會改變實際應變分布。 驗證時應比較跨土區沉陷測點與剛性構造接觸觀測，並辨識以下失效情境：差異沉陷集中於接觸面可能形成優先滲流路徑。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Different compressibility in core and shell creates relative movement, especially near rigid penetrations. Settlement difference describes geometric demand but does not directly predict crack aperture. Construction sequence, nonlinear material response and three-dimensional restraint govern the actual strain distribution and filter continuity. Test this interpretation with the following evidence: Compare settlement markers across zones with observations at rigid interfaces. In particular, distinguish this failure mechanism: Concentrated differential settlement at an interface can create preferential seepage. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：coreSettlement=0.32 m; shellSettlement=0.20 m; relativeSettlement=0.32-0.20=0.12 m。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: coreSettlement=0.32 m; shellSettlement=0.20 m; relativeSettlement=0.32-0.20=0.12 m. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較跨土區沉陷測點與剛性構造接觸觀測。應將原始量測與本單元模型的輸入條件對齊，並針對「差異沉陷集中於接觸面可能形成優先滲流路徑」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare settlement markers across zones with observations at rigid interfaces. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Concentrated differential settlement at an interface can create preferential seepage. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "差異沉陷集中於接觸面可能形成優先滲流路徑。診斷時應採取以下查核：比較跨土區沉陷測點與剛性構造接觸觀測，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Concentrated differential settlement at an interface can create preferential seepage. Diagnose it by the following check: Compare settlement markers across zones with observations at rigid interfaces. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "相鄰沉陷差就必定等於核心裂縫寬度~Settlement difference necessarily equals the width of a core crack",
+      "practice": "交接時以比較跨土區沉陷測點與剛性構造接觸觀測作為可追溯證據，保存對應材料、構形與工況版本。針對差異沉陷集中於接觸面可能形成優先滲流路徑，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare settlement markers across zones with observations at rigid interfaces. Record material, geometry and operating-state versions. Address this scenario: Concentrated differential settlement at an interface can create preferential seepage. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "發電淨水頭與出力~Net head and power output",
+      "title": "發電淨水頭與出力~Net head and power output",
+      "mechanism": "大型蓄水壩的發電能力由流量、淨水頭與效率共同控制，庫水位只是上游水頭的一部分。尾水上升與水路損失會降低淨落差，裝置容量也不等於任何時刻能達到的出力；應以一致工況的量測核對能量轉換。 驗證時應同步記錄上下游水位流量與機組功率並列水路損失，並辨識以下失效情境：只用壩高當發電水頭會高估可用能量。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Power depends on flow, net head and efficiency. Reservoir level is only one upstream contribution; tailwater and conveyance losses reduce usable head. Installed capacity is not guaranteed output at every stage, so compare energy conversion using measurements from the same operating condition. Test this interpretation with the following evidence: Record upstream and downstream levels, flow and unit power and itemize waterway losses. In particular, distinguish this failure mechanism: Using dam height as generating head overstates usable energy. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rho=1000 kg/m3; Q=180 m3/s; netHead=55 m; efficiency=0.90; power=1000*9.81*180*55*0.90/1e6=87.4071 MW。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rho=1000 kg/m3; Q=180 m3/s; netHead=55 m; efficiency=0.90; power=1000*9.81*180*55*0.90/1e6=87.4071 MW. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "同步記錄上下游水位流量與機組功率並列水路損失。應將原始量測與本單元模型的輸入條件對齊，並針對「只用壩高當發電水頭會高估可用能量」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Record upstream and downstream levels, flow and unit power and itemize waterway losses. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Using dam height as generating head overstates usable energy. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只用壩高當發電水頭會高估可用能量。診斷時應採取以下查核：同步記錄上下游水位流量與機組功率並列水路損失，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Using dam height as generating head overstates usable energy. Diagnose it by the following check: Record upstream and downstream levels, flow and unit power and itemize waterway losses. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "壩體高度就是所有水位下的機組淨水頭~Dam height equals turbine net head at every reservoir level",
+      "practice": "交接時以同步記錄上下游水位流量與機組功率並列水路損失作為可追溯證據，保存對應材料、構形與工況版本。針對只用壩高當發電水頭會高估可用能量，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Record upstream and downstream levels, flow and unit power and itemize waterway losses. Record material, geometry and operating-state versions. Address this scenario: Using dam height as generating head overstates usable energy. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "淤積量與乾密度~Sediment storage and dry density",
+      "title": "淤積量與乾密度~Sediment storage and dry density",
+      "mechanism": "水庫截留泥砂會改變容量與入流三角洲，乾砂質量轉體積需考慮壓密和粒徑分區。相同質量在不同乾密度下佔據不同庫容，不能把水樣固體體積直接當沉積總體積；需要重複測深與分層取樣建立長期變化。 驗證時應以測深差與分層乾密度交叉核算沉積質量，並辨識以下失效情境：忽略壓密會把容量變化誤讀成同量泥砂增減。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Trapped sediment changes storage and delta geometry. Converting dry mass to deposit volume requires compaction and grain-size zoning. Equal mass occupies different bulk volume at different dry densities; repeat bathymetry and layered samples rather than treating grain volume as total deposited volume. Test this interpretation with the following evidence: Cross-check bathymetric change and layered dry density against sediment mass. In particular, distinguish this failure mechanism: Ignoring consolidation confuses storage change with an equal change in sediment mass. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：AnnualTrappedDryMass=1.2e6 t; depositDryDensity=1.3 t/m3; depositedBulkVolume=1.2e6/1.3=923077 m3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: AnnualTrappedDryMass=1.2e6 t; depositDryDensity=1.3 t/m3; depositedBulkVolume=1.2e6/1.3=923077 m3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以測深差與分層乾密度交叉核算沉積質量。應將原始量測與本單元模型的輸入條件對齊，並針對「忽略壓密會把容量變化誤讀成同量泥砂增減」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Cross-check bathymetric change and layered dry density against sediment mass. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Ignoring consolidation confuses storage change with an equal change in sediment mass. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "忽略壓密會把容量變化誤讀成同量泥砂增減。診斷時應採取以下查核：以測深差與分層乾密度交叉核算沉積質量，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Ignoring consolidation confuses storage change with an equal change in sediment mass. Diagnose it by the following check: Cross-check bathymetric change and layered dry density against sediment mass. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "乾砂顆粒體積就是整層沉積物的總體積~Dry grain volume equals the total bulk deposit volume",
+      "practice": "交接時以以測深差與分層乾密度交叉核算沉積質量作為可追溯證據，保存對應材料、構形與工況版本。針對忽略壓密會把容量變化誤讀成同量泥砂增減，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Cross-check bathymetric change and layered dry density against sediment mass. Record material, geometry and operating-state versions. Address this scenario: Ignoring consolidation confuses storage change with an equal change in sediment mass. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "放流輸配與需水~Release conveyance and demand",
+      "title": "放流輸配與需水~Release conveyance and demand",
+      "mechanism": "水庫放流經輸配系統到達用水端，取水量與有效供水之間有蒸散、滲漏與回歸水等差異。簡化效率只定義特定邊界的比值，不能把所有損失都視為流域消耗；應先界定取用點與回歸路徑，再計算放流需求。 驗證時應核對水庫出口用水端與回歸水的同時水量帳，並辨識以下失效情境：把回歸水全當消耗會高估流域淨需水。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Released water passes through a conveyance system before reaching demand. A simplified efficiency belongs to a defined boundary and does not classify every loss as basin consumption; seepage or drainage may return elsewhere. Define delivery points and return paths before converting a service demand into release volume. Test this interpretation with the following evidence: Reconcile simultaneous volumes at release, delivery and return-flow boundaries. In particular, distinguish this failure mechanism: Treating all return water as consumption overstates basin net demand. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：TargetDeliveredVolume=60 million m3; definedConveyanceEfficiency=0.75; requiredRelease=60/0.75=80 million m3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: TargetDeliveredVolume=60 million m3; definedConveyanceEfficiency=0.75; requiredRelease=60/0.75=80 million m3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "核對水庫出口用水端與回歸水的同時水量帳。應將原始量測與本單元模型的輸入條件對齊，並針對「把回歸水全當消耗會高估流域淨需水」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Reconcile simultaneous volumes at release, delivery and return-flow boundaries. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Treating all return water as consumption overstates basin net demand. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把回歸水全當消耗會高估流域淨需水。診斷時應採取以下查核：核對水庫出口用水端與回歸水的同時水量帳，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Treating all return water as consumption overstates basin net demand. Diagnose it by the following check: Reconcile simultaneous volumes at release, delivery and return-flow boundaries. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "所有輸配損失都等於流域永久耗水~Every conveyance loss equals permanent basin water consumption",
+      "practice": "交接時以核對水庫出口用水端與回歸水的同時水量帳作為可追溯證據，保存對應材料、構形與工況版本。針對把回歸水全當消耗會高估流域淨需水，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Reconcile simultaneous volumes at release, delivery and return-flow boundaries. Record material, geometry and operating-state versions. Address this scenario: Treating all return water as consumption overstates basin net demand. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "枯水連續與備援~Drought sequence and reserve",
+      "title": "枯水連續與備援~Drought sequence and reserve",
+      "mechanism": "長期蓄水需要面對連續低入流，而非只看平均年供需。以累積短缺估算備援容量可展示序列效應，但假設需求、損失和初始庫容均已界定；實際可靠度還需多種水文序列、操作限制與不確定度分析。 驗證時應比較不同乾旱排列下的最低庫容並保留需求假設，並辨識以下失效情境：只用平均入流會忽略連年不足的累積效應。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Carryover storage responds to sequences of low inflow, not just average annual balance. Cumulative deficits illustrate reserve demand for defined demand, losses and initial storage. Reliability still requires multiple hydrological sequences, operating constraints and uncertainty rather than treating one synthetic drought as universal. Test this interpretation with the following evidence: Compare minimum storage under different drought sequences and retain demand assumptions. In particular, distinguish this failure mechanism: Mean inflow alone hides cumulative deficits over consecutive dry years. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Three annual deficits=0.4,0.7,0.3 km3; no intervening refill; cumulativeReserveDemand=0.4+0.7+0.3=1.4 km3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Three annual deficits=0.4,0.7,0.3 km3; no intervening refill; cumulativeReserveDemand=0.4+0.7+0.3=1.4 km3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較不同乾旱排列下的最低庫容並保留需求假設。應將原始量測與本單元模型的輸入條件對齊，並針對「只用平均入流會忽略連年不足的累積效應」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare minimum storage under different drought sequences and retain demand assumptions. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Mean inflow alone hides cumulative deficits over consecutive dry years. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只用平均入流會忽略連年不足的累積效應。診斷時應採取以下查核：比較不同乾旱排列下的最低庫容並保留需求假設，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Mean inflow alone hides cumulative deficits over consecutive dry years. Diagnose it by the following check: Compare minimum storage under different drought sequences and retain demand assumptions. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "平均年入流足夠就保證任何乾旱序列都供水無缺~Adequate mean inflow guarantees supply through every drought sequence",
+      "practice": "交接時以比較不同乾旱排列下的最低庫容並保留需求假設作為可追溯證據，保存對應材料、構形與工況版本。針對只用平均入流會忽略連年不足的累積效應，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare minimum storage under different drought sequences and retain demand assumptions. Record material, geometry and operating-state versions. Address this scenario: Mean inflow alone hides cumulative deficits over consecutive dry years. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "監測基線與異常~Monitoring baseline and anomaly",
+      "title": "監測基線與異常~Monitoring baseline and anomaly",
+      "mechanism": "大型壩監測應將庫水位與季節溫度造成的可逆反應和持續變化分開。基線殘差能提示不同於歷史關係的訊號，但資料漂移與工況外插也可能造成異常；應用獨立儀器與現場檢查確認，不以重新擬合消除警訊。 驗證時應比較鄰近獨立儀器與人工測量並核對基線適用水位範圍，並辨識以下失效情境：超出歷史水位範圍的外插可能被誤當結構劣化。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Monitoring separates reversible stage and seasonal effects from persistent change. A baseline residual flags departures from historical relations, but sensor drift and extrapolation also create anomalies. Confirm using independent measurements and inspection rather than erasing a new signal by refitting the baseline to it. Test this interpretation with the following evidence: Compare independent instruments and manual surveys and check the baseline stage range. In particular, distinguish this failure mechanism: Extrapolation beyond historical stages can be mistaken for structural deterioration. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：MeasuredMovement=14 mm; baselinePrediction=9 mm for same state; residual=14-9=5 mm。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: MeasuredMovement=14 mm; baselinePrediction=9 mm for same state; residual=14-9=5 mm. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "比較鄰近獨立儀器與人工測量並核對基線適用水位範圍。應將原始量測與本單元模型的輸入條件對齊，並針對「超出歷史水位範圍的外插可能被誤當結構劣化」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare independent instruments and manual surveys and check the baseline stage range. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Extrapolation beyond historical stages can be mistaken for structural deterioration. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "超出歷史水位範圍的外插可能被誤當結構劣化。診斷時應採取以下查核：比較鄰近獨立儀器與人工測量並核對基線適用水位範圍，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Extrapolation beyond historical stages can be mistaken for structural deterioration. Diagnose it by the following check: Compare independent instruments and manual surveys and check the baseline stage range. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "基線殘差不為零就必定代表壩體正在失效~Any nonzero baseline residual proves the dam is failing",
+      "practice": "交接時以比較鄰近獨立儀器與人工測量並核對基線適用水位範圍作為可追溯證據，保存對應材料、構形與工況版本。針對超出歷史水位範圍的外插可能被誤當結構劣化，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare independent instruments and manual surveys and check the baseline stage range. Record material, geometry and operating-state versions. Address this scenario: Extrapolation beyond historical stages can be mistaken for structural deterioration. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    }
+  ],
+  "facts": [
+    "公開事實：阿斯旺高壩於1971年正式揭幕~Public fact: Aswan High Dam was formally inaugurated in1971",
+    "公開事實：官方列示河床以上高度111m，非機組淨水頭~Public fact: the official111m height above riverbed is not turbine net head",
+    "教學假設：跨季庫容水量帳；InitialStorage=8 km3; seasonalInflow=5 km3; releases=4 km3; netLoss=0.6 km3; finalStorage=8+5-4-0.6=8.4 km3~Teaching assumption: Seasonal reservoir water balance; InitialStorage=8 km3; seasonalInflow=5 km3; releases=4 km3; netLoss=0.6 km3; finalStorage=8+5-4-0.6=8.4 km3",
+    "教學假設：大湖蒸發與面積；HypotheticalArea=500 km2; evaporationDepth=1.8 m/year; lossVolume=500e6*1.8/1e9=0.90 km3/year~Teaching assumption: Lake evaporation and surface area; HypotheticalArea=500 km2; evaporationDepth=1.8 m/year; lossVolume=500e6*1.8/1e9=0.90 km3/year",
+    "教學假設：防滲核心串聯阻力；Equal areaA=100 m2; deltaHead=40 m; layers L1=10 m,k1=1e-7 m/s; L2=20 m,k2=1e-5 m/s; Q=100*40/(10/1e-7+20/1e-5)=0.0000392157 m3/s~Teaching assumption: Core seepage resistance in series; Equal areaA=100 m2; deltaHead=40 m; layers L1=10 m,k1=1e-7 m/s; L2=20 m,k2=1e-5 m/s; Q=100*40/(10/1e-7+20/1e-5)=0.0000392157 m3/s",
+    "教學假設：填築含水與乾密度；wetDensity=2100 kg/m3; waterMassContent=0.12; dryDensity=2100/(1+0.12)=1875 kg/m3~Teaching assumption: Placement moisture and dry density; wetDensity=2100 kg/m3; waterMassContent=0.12; dryDensity=2100/(1+0.12)=1875 kg/m3"
+  ],
+  "timeline": [
+    {
+      "year": "1971",
+      "event": "阿斯旺高壩於一月十五日正式揭幕，依水利部資料~The water ministry records formal inauguration on15January1971"
+    },
+    {
+      "year": "1987",
+      "event": "小壩設計第三版出版，本課作通用原理比較~Design of Small Dams third edition appears as a general comparison guide"
+    },
+    {
+      "year": "2011",
+      "event": "反濾設計章節出版，提供材料試驗的現代對照~The protective-filter chapter is published as a modern material-testing comparison"
+    }
+  ],
+  "codes": [
+    "美國墾務局小壩設計第三版~Reclamation Design of Small Dams third edition",
+    "美國墾務局水力試驗技術手冊~Reclamation Hydraulic Laboratory Techniques"
+  ],
+  "landmarks": [
+    "阿斯旺高壩（長期調蓄案例）~Aswan High Dam (carryover-storage case)",
+    "塔貝拉壩（土石壩比較）~Tarbela Dam (embankment comparison)"
+  ],
+  "place": {
+    "name": "阿斯旺高壩公開案例位置~Aswan High Dam public case location",
+    "country": "埃及~Egypt",
+    "lat": 23.97,
+    "lng": 32.877,
+    "query": "Aswan High Dam Egypt"
+  },
+  "sources": [
+    {
+      "key": "usbr-manuals",
+      "title": "美國墾務局水工手冊與專論目錄",
+      "titleEn": "Reclamation hydraulic manuals and monographs",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方目錄核實 1978 消能工專論、1980 水力試驗技術、1987 小壩設計及1990氣蝕專論；目錄日期不是工程啟用年。",
+      "scopeEn": "Official catalog verifies the 1978 dissipator monograph, 1980 laboratory techniques, 1987 small-dam manual and 1990 cavitation monograph; publication dates are not project commissioning dates."
+    },
+    {
+      "key": "mwri-aswan",
+      "title": "埃及水利部阿斯旺高壩資料",
+      "titleEn": "Egypt water ministry Aswan High Dam information",
+      "publisher": "Egypt Ministry of Water Resources and Irrigation",
+      "url": "https://www.mwri.gov.eg/mwri2/?lang=en&page_id=33310",
+      "sourceType": "primary",
+      "scope": "官方搜尋摘要核實堆石壩型式、河床以上111m及1971年1月15日揭幕；直取頁面逾時，不採不同官方頁互有差異的長度。",
+      "scopeEn": "Official indexed text verifies rockfill type,111m above riverbed and inauguration on15January1971; direct retrieval timed out. Conflicting lengths across official pages are excluded."
+    },
+    {
+      "key": "wapda-tarbela",
+      "title": "巴基斯坦水電開發署塔貝拉壩",
+      "titleEn": "WAPDA Tarbela Dam owner information",
+      "publisher": "Water and Power Development Authority",
+      "url": "https://wapda.gov.pk/hydro-power-and-water-projects/tarbela-dam/",
+      "sourceType": "primary",
+      "scope": "已讀業主頁，核實印度河土石壩與河床以上143m；不將公開高度當教學運轉水頭，也不採變動的容量排名。",
+      "scopeEn": "Read the owner page verifying the Indus embankment dam and143m above riverbed; public height is not a teaching operating head and changing rankings are excluded."
+    },
+    {
+      "key": "usbr-filters",
+      "title": "土石壩反濾層設計標準",
+      "titleEn": "Embankment-dam protective-filter standard",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-5.pdf",
+      "sourceType": "primary",
+      "scope": "2011年官方索引及搜尋摘錄核實反濾功能分類；大型PDF超擷取限制，未聲稱全文取回，算例非規範允收值。",
+      "scopeEn": "The 2011 official index and indexed passages verify filter-function classes; the large PDF exceeded retrieval limits, so full-text access is not claimed. Examples are not acceptance criteria."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Bureau of Reclamation（公開資料機構）",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究防滲核心串聯阻力與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Core seepage resistance in series and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    },
+    {
+      "name": "Egypt Ministry of Water Resources and Irrigation（公開資料機構）",
+      "nameEn": "Egypt Ministry of Water Resources and Irrigation",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.mwri.gov.eg/mwri2/?lang=en&page_id=33310",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究防滲核心串聯阻力與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Core seepage resistance in series and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    }
+  ],
+  "related": [
+    "b211",
+    "b241"
+  ],
+  "architectureNodes": [
+    [
+      "跨季庫容水量帳",
+      "Seasonal reservoir water balance"
+    ],
+    [
+      "防滲核心串聯阻力",
+      "Core seepage resistance in series"
+    ],
+    [
+      "核心沉陷與接觸",
+      "Core settlement and interfaces"
+    ],
+    [
+      "淤積量與乾密度",
+      "Sediment storage and dry density"
+    ],
+    [
+      "監測基線與異常",
+      "Monitoring baseline and anomaly"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      0,
+      3
+    ]
+  ]
+}

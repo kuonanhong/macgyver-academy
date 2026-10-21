@@ -1,0 +1,336 @@
+{
+  "status": "PASS",
+  "startedAt": "2026-10-21T06:01:21.770Z",
+  "scope": "Actual slim static-export runtime smoke: homepage, target-only b296 loading, 40-step navigation and first workshop step; no full layout/language rerun.",
+  "exportRoot": "/workspace/scratch/79022019d85f/static-export-v15-validated",
+  "browser": {
+    "engine": "Chromium",
+    "version": "134.0.6998.35",
+    "headless": true
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 960
+  },
+  "simulatedViewport": true,
+  "omittedPaths": [
+    "data/featured.json",
+    "data/course-parts"
+  ],
+  "exportSourceHashes": {
+    "index.html": "a067595523ebf08d983a17137c94d02dd5d36635514a0fbcb86c70bbbf8f5aad",
+    "runtime-mode.js": "17b662329b570f63d12744aaeda2602656add7c145c48e9b7e7e8432dd99bb08",
+    "app.bundle.js": "2590ddd11c7b1a03864f597161a78e6079c0beb7645b4745fc2fe33a684872b9",
+    "offline-data.js": "7656195cc3f2d590e938f410917a32991fb649093adcc4d181ab481e8c7c857e",
+    "bootstrap.js": "2d0a7fba167177bce410889d34cc1ee91c82d96a14f6f1bcdfcd94251ef018dd",
+    "curriculum-loader.js": "33c1a7adc722ed52616317f0900cff92e962e910469da61674beb6700d823fe1",
+    "lazy-index-codec.js": "34cbe23253f02e2df073b32359efdd8ee139e61aae6f7e6b160e527b3a58b691",
+    "workspace-v12.css": "2eef5e5b8c3467e976a3a26b60986358858b4af1a0c9be5e00872d8b6b116b82",
+    "style.css": "bd41f495812b0745c82b2918ff44bf925e796ad649c6b9d7795e750589ff8c4d",
+    "data/lazy/index.compact.json": "641fdcac6ed5483cc32097d56838d3a7cc066a8a99f8e7afa1a37761253a4166",
+    "data/lazy/courses/b296-7e7c84de658d18bb.json": "7e7c84de658d18bb0457c63e6d9b22733313192ee6a7738f27d0787965e63f0c",
+    "data/lazy/courses/b296-7e7c84de658d18bb.js": "7b696b3008c80610bb804a18eceae43850dc79de7be7e96ecb44897943589a76",
+    "data/lazy/resources/b296-35d02444ce42e207.json": "35d02444ce42e2076bd3bbb6f3f20039deb625133f49913303c7c74535c1b468",
+    "data/lazy/resources/b296-35d02444ce42e207.js": "4aad36a824c8e40286f9147bd8124a1f48226efbf497d94de2b335486a519b77"
+  },
+  "scenarios": [
+    {
+      "mode": "HTTP",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Actual export home visibly offers 904 guided courses and preloads no course/resource body",
+          "status": "PASS"
+        },
+        {
+          "name": "All b296 40 step IDs match final exported data",
+          "status": "PASS"
+        },
+        {
+          "name": "First b296 workshop step actually visible",
+          "status": "PASS",
+          "title": "潮汐容積與高程面積曲線：機制與系統路徑"
+        },
+        {
+          "name": "Application fetched exactly target b296 course plus resources, using JSON payloads",
+          "status": "PASS",
+          "requests": [
+            "http://127.0.0.1:34529/data/lazy/courses/b296-7e7c84de658d18bb.json",
+            "http://127.0.0.1:34529/data/lazy/resources/b296-35d02444ce42e207.json"
+          ]
+        },
+        {
+          "name": "Neither omitted featured.json nor course-parts was requested",
+          "status": "PASS"
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:34529/index.html",
+        "http://127.0.0.1:34529/style.css",
+        "http://127.0.0.1:34529/media.css",
+        "http://127.0.0.1:34529/related.css",
+        "http://127.0.0.1:34529/places.css",
+        "http://127.0.0.1:34529/membership.css",
+        "http://127.0.0.1:34529/workspace-v10.css",
+        "http://127.0.0.1:34529/workspace-v12.css",
+        "http://127.0.0.1:34529/hero-icons.css",
+        "http://127.0.0.1:34529/vendors.css",
+        "http://127.0.0.1:34529/learning-map.css",
+        "http://127.0.0.1:34529/world-v11.css",
+        "http://127.0.0.1:34529/assets/brand/logo-static.svg",
+        "http://127.0.0.1:34529/bootstrap.js",
+        "http://127.0.0.1:34529/config.js",
+        "http://127.0.0.1:34529/runtime-mode.js",
+        "http://127.0.0.1:34529/offline-runtime.js",
+        "http://127.0.0.1:34529/app.bundle.js",
+        "http://127.0.0.1:34529/data/lazy/index.compact.json",
+        "http://127.0.0.1:34529/data/project-icons.json",
+        "http://127.0.0.1:34529/data/pricing.json",
+        "http://127.0.0.1:34529/api/billing/config",
+        "http://127.0.0.1:34529/assets/photos/wafers.jpg",
+        "http://127.0.0.1:34529/assets/photos/v3-lithography-stepper.jpg",
+        "http://127.0.0.1:34529/assets/photos/v3-chingkuo-cc.jpg",
+        "http://127.0.0.1:34529/assets/photos/v3-apache.jpg",
+        "http://127.0.0.1:34529/assets/photos/v3-haikun.jpg",
+        "http://127.0.0.1:34529/data/fx.json",
+        "http://127.0.0.1:34529/data/lazy/courses/b296-7e7c84de658d18bb.json",
+        "http://127.0.0.1:34529/data/lazy/resources/b296-35d02444ce42e207.json",
+        "http://127.0.0.1:34529/data/markets.json",
+        "http://127.0.0.1:34529/data/lazy/index.compact.json?qa=static-smoke-checksum",
+        "http://127.0.0.1:34529/data/lazy/courses/b296-7e7c84de658d18bb.json?qa=static-smoke-checksum",
+        "http://127.0.0.1:34529/data/lazy/resources/b296-35d02444ce42e207.json?qa=static-smoke-checksum"
+      ],
+      "pageErrors": [],
+      "rawFailedResources": [
+        {
+          "url": "http://127.0.0.1:34529/api/billing/config",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:34529/api/billing/config",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "networkFailures": [
+        {
+          "url": "http://127.0.0.1:34529/api/billing/config",
+          "requestId": "73.39",
+          "timestamp": 19589.794227,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ],
+      "blockedExternal": [],
+      "applicationPayloadRequests": [
+        "http://127.0.0.1:34529/data/lazy/courses/b296-7e7c84de658d18bb.json",
+        "http://127.0.0.1:34529/data/lazy/resources/b296-35d02444ce42e207.json"
+      ],
+      "omittedPathRequests": [],
+      "browserChecksums": [
+        {
+          "file": "data/lazy/index.compact.json",
+          "status": 200,
+          "byteLength": 3773201,
+          "sha256": "641fdcac6ed5483cc32097d56838d3a7cc066a8a99f8e7afa1a37761253a4166"
+        },
+        {
+          "file": "data/lazy/courses/b296-7e7c84de658d18bb.json",
+          "status": 200,
+          "byteLength": 241038,
+          "sha256": "7e7c84de658d18bb0457c63e6d9b22733313192ee6a7738f27d0787965e63f0c"
+        },
+        {
+          "file": "data/lazy/resources/b296-35d02444ce42e207.json",
+          "status": 200,
+          "byteLength": 54326,
+          "sha256": "35d02444ce42e2076bd3bbb6f3f20039deb625133f49913303c7c74535c1b468"
+        }
+      ],
+      "fetchStreams": [
+        {
+          "url": "http://127.0.0.1:34529/data/lazy/index.compact.json",
+          "status": 200,
+          "declaredBytes": 3773201,
+          "readBytes": 3773201,
+          "eof": true,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/api/billing/config",
+          "status": 404,
+          "declaredBytes": null,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/project-icons.json",
+          "status": 200,
+          "declaredBytes": 711877,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/pricing.json",
+          "status": 200,
+          "declaredBytes": 1676,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/fx.json",
+          "status": 200,
+          "declaredBytes": 2020,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/lazy/courses/b296-7e7c84de658d18bb.json",
+          "status": 200,
+          "declaredBytes": 241038,
+          "readBytes": 241038,
+          "eof": true,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/lazy/resources/b296-35d02444ce42e207.json",
+          "status": 200,
+          "declaredBytes": 54326,
+          "readBytes": 54326,
+          "eof": true,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/markets.json",
+          "status": 200,
+          "declaredBytes": 521,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/lazy/index.compact.json?qa=static-smoke-checksum",
+          "status": 200,
+          "declaredBytes": 3773201,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/lazy/courses/b296-7e7c84de658d18bb.json?qa=static-smoke-checksum",
+          "status": 200,
+          "declaredBytes": 241038,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:34529/data/lazy/resources/b296-35d02444ce42e207.json?qa=static-smoke-checksum",
+          "status": 200,
+          "declaredBytes": 54326,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        }
+      ],
+      "expectedBillingFailures": [
+        {
+          "url": "http://127.0.0.1:34529/api/billing/config",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:34529/api/billing/config",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "postReadCancellations": [],
+      "unexpectedFailures": []
+    },
+    {
+      "mode": "file://",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Actual export home visibly offers 904 guided courses and preloads no course/resource body",
+          "status": "PASS"
+        },
+        {
+          "name": "All b296 40 step IDs match final exported data",
+          "status": "PASS"
+        },
+        {
+          "name": "First b296 workshop step actually visible",
+          "status": "PASS",
+          "title": "潮汐容積與高程面積曲線：機制與系統路徑"
+        },
+        {
+          "name": "Application fetched exactly target b296 course plus resources, using classic JS payloads",
+          "status": "PASS",
+          "requests": [
+            "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/courses/b296-7e7c84de658d18bb.js",
+            "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/resources/b296-35d02444ce42e207.js"
+          ]
+        },
+        {
+          "name": "Neither omitted featured.json nor course-parts was requested",
+          "status": "PASS"
+        }
+      ],
+      "requests": [
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/index.html",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/style.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/media.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/related.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/places.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/membership.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/workspace-v10.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/workspace-v12.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/hero-icons.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/vendors.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/learning-map.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/world-v11.css",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/assets/brand/logo-static.svg",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/bootstrap.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/config.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/runtime-mode.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/offline-data.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/offline-runtime.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/app.bundle.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/data/project-icons-5a5cde0b52fd1514.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/data/pricing-622be61ccbf41b80.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/assets/photos/wafers.jpg",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/assets/photos/v3-lithography-stepper.jpg",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/assets/photos/v3-chingkuo-cc.jpg",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/assets/photos/v3-apache.jpg",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/assets/photos/v3-haikun.jpg",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/courses/b296-7e7c84de658d18bb.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/resources/b296-35d02444ce42e207.js"
+      ],
+      "pageErrors": [],
+      "rawFailedResources": [],
+      "networkFailures": [],
+      "blockedExternal": [],
+      "applicationPayloadRequests": [
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/courses/b296-7e7c84de658d18bb.js",
+        "file:///workspace/scratch/79022019d85f/static-export-v15-validated/data/lazy/resources/b296-35d02444ce42e207.js"
+      ],
+      "omittedPathRequests": [],
+      "fetchStreams": [],
+      "expectedBillingFailures": [],
+      "postReadCancellations": [],
+      "unexpectedFailures": []
+    }
+  ],
+  "testHarnessSha256": "9ec73e3775b36c6924ace1189c85c1f61df0709e6c60e3f1deb33c04b6390c6a",
+  "finishedAt": "2026-10-21T06:01:23.980Z",
+  "limitations": [
+    "Actual generated export tested locally via HTTP and file://; no live external deployment.",
+    "Desktop Chromium viewport simulation only for this smoke check; broader prior viewport report remains separate.",
+    "Diagnostic checksum downloads are separately recorded after target-only application-loading assertions.",
+    "Optional static billing 404 and strictly evidenced post-read transport diagnostics are retained; no zero-network-warning claim."
+  ]
+}

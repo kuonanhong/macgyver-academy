@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b220-6075109eb151c153.json"]={sha256:"6075109eb151c153ffa9fe19da4635b948c47a60a1fcce85069cc97f8654f3d5",value:{"id":"b220","title":"南化水庫大壩","titleEn":"Nanhua Dam","category":"water","kind":"project","summary":"以「南化水庫大壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Nanhua Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

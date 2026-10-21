@@ -1,0 +1,273 @@
+{
+  "id": "b254",
+  "title": "水庫異重流排砂~Density-current venting for reservoir sediment",
+  "discipline": "water-hydraulics",
+  "family": "water",
+  "focus": "以密度差潛入沉降與底孔捕捉解析異重流~Analyzing density currents through plunging settling and low-outlet capture",
+  "summary": "本課以以密度差潛入沉降與底孔捕捉解析異重流為主線，先用懸浮濃度與混合密度與約化重力與浮力界定水力與構造條件，再將沉降時間與粒徑、底孔捕捉與排出連結到底流質量帳與殘留。均勻兩層與稀懸浮算例只呈現尺度，實際異重流受分層地形紊混與粒徑演變控制。 每單元以原創算例、量測與失效辨識共同檢查推論。~This course develops analyzing density currents through plunging settling and low-outlet capture through Suspension concentration and mixture density and Reduced gravity and buoyancy, then connects Settling time and particle size and Low-outlet capture and export to Current mass budget and residual storage. Uniform two-layer dilute-suspension examples illustrate scales; real currents depend on stratification topography mixing and grain-size evolution. Each unit combines original calculation, measurement and failure diagnosis to test the inference.",
+  "history": "本課所研究的以密度差潛入沉降與底孔捕捉解析異重流，反映水工設計由單一尺寸選取走向水流、材料、施工與長期監測共同驗證的發展。均勻兩層與稀懸浮算例只呈現尺度，實際異重流受分層地形紊混與粒徑演變控制。 美國墾務局官方目錄列有1978年消能工專論、1980年水力試驗技術及1987年小壩設計，這些是技術文件出版年份，不是本課假想工程的啟用日期。所列具名工程只供公開原理與邊界比較，不主張取得其設計圖、現場紀錄或專有參數。~The focus on analyzing density currents through plunging settling and low-outlet capture reflects development from isolated sizing toward joint verification of flow, materials, construction and long-term observations. Uniform two-layer dilute-suspension examples illustrate scales; real currents depend on stratification topography mixing and grain-size evolution. The Reclamation catalog lists the 1978 energy-dissipator monograph, 1980 hydraulic laboratory techniques and 1987 small-dam manual. These are publication dates, not commissioning dates for a hypothetical project. Named works support comparisons of public principles and boundaries; this course claims no access to proprietary drawings, field records or project parameters.",
+  "example": "整合算例輸入全為教學假設，先檢查懸浮濃度與混合密度：rhoWater=1000 kg/m3; rhoSediment=2650 kg/m3; volumeFraction=0.01; rhoMix=(1-0.01)*1000+0.01*2650=1016.5 kg/m3；再獨立檢查約化重力與浮力：g=9.81 m/s2; currentDensity=1016.5 kg/m3; ambientDensity=1000 kg/m3; reducedG=9.81*(1016.5-1000)/1000=0.161865 m/s2。敏感度：水與顆粒密度不變時，體積濃度由0.005增至0.010使密度差與約化重力加倍；固定流深下重力速度尺度增加平方根2倍，並非速度必然加倍。 兩個結果須按各自量綱解釋，不能直接相加或當成完整設計。均勻兩層與稀懸浮算例只呈現尺度，實際異重流受分層地形紊混與粒徑演變控制。 將先聲明分母範圍再核對進出砂積分與延後排出量作為獨立驗證，明確列出尚缺的現地輸入及其對結論的影響。~Every input in this integrated example is a teaching assumption. First examine Suspension concentration and mixture density: rhoWater=1000 kg/m3; rhoSediment=2650 kg/m3; volumeFraction=0.01; rhoMix=(1-0.01)*1000+0.01*2650=1016.5 kg/m3. Independently examine Reduced gravity and buoyancy: g=9.81 m/s2; currentDensity=1016.5 kg/m3; ambientDensity=1000 kg/m3; reducedG=9.81*(1016.5-1000)/1000=0.161865 m/s2. Sensitivity: at fixed water and grain densities, raising volume concentration from0.005 to0.010 doubles density excess and reduced gravity. At fixed layer depth the gravity-velocity scale rises bysqrt(2), not by a factor of2. Interpret each result in its own dimensions rather than adding them or treating them as a complete design. Uniform two-layer dilute-suspension examples illustrate scales; real currents depend on stratification topography mixing and grain-size evolution. Use the following independent check: State the denominator scope and reconcile integrated arrival, export and delayed release. Identify missing field inputs and state which conclusions depend on them.",
+  "units": [
+    {
+      "anchor": "懸浮濃度與混合密度~Suspension concentration and mixture density",
+      "title": "懸浮濃度與混合密度~Suspension concentration and mixture density",
+      "mechanism": "含砂水因顆粒增加體積平均密度而可能沿庫底前進，但鹽度與溫度分層也會改變背景密度。體積濃度不同於每立方公尺混合水的乾砂質量濃度，換算須使用顆粒密度；判斷下潛前應同步量測清水背景與含砂水。 驗證時應同步採樣顆粒濃度水溫與背景密度並核對濃度定義，並辨識以下失效情境：忽略冷暖水密度差會誤判含砂流的浮沉方向。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Suspended particles raise mixture density and can drive a bottom current, while temperature and salinity alter ambient density. Volume fraction differs from dry sediment mass per mixture volume and requires grain density for conversion. Measure both ambient and incoming water before inferring plunging behavior. Test this interpretation with the following evidence: Measure sediment concentration, temperature and ambient density together and state concentration definitions. In particular, distinguish this failure mechanism: Ignoring thermal density contrast can misidentify whether sediment-laden inflow rises or sinks. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：rhoWater=1000 kg/m3; rhoSediment=2650 kg/m3; volumeFraction=0.01; rhoMix=(1-0.01)*1000+0.01*2650=1016.5 kg/m3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: rhoWater=1000 kg/m3; rhoSediment=2650 kg/m3; volumeFraction=0.01; rhoMix=(1-0.01)*1000+0.01*2650=1016.5 kg/m3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "同步採樣顆粒濃度水溫與背景密度並核對濃度定義。應將原始量測與本單元模型的輸入條件對齊，並針對「忽略冷暖水密度差會誤判含砂流的浮沉方向」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure sediment concentration, temperature and ambient density together and state concentration definitions. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Ignoring thermal density contrast can misidentify whether sediment-laden inflow rises or sinks. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "忽略冷暖水密度差會誤判含砂流的浮沉方向。診斷時應採取以下查核：同步採樣顆粒濃度水溫與背景密度並核對濃度定義，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Ignoring thermal density contrast can misidentify whether sediment-laden inflow rises or sinks. Diagnose it by the following check: Measure sediment concentration, temperature and ambient density together and state concentration definitions. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "只要有泥砂就保證入流一定比任何庫水更重~Any sediment load guarantees inflow denser than all reservoir water",
+      "practice": "交接時以同步採樣顆粒濃度水溫與背景密度並核對濃度定義作為可追溯證據，保存對應材料、構形與工況版本。針對忽略冷暖水密度差會誤判含砂流的浮沉方向，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure sediment concentration, temperature and ambient density together and state concentration definitions. Record material, geometry and operating-state versions. Address this scenario: Ignoring thermal density contrast can misidentify whether sediment-laden inflow rises or sinks. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "約化重力與浮力~Reduced gravity and buoyancy",
+      "title": "約化重力與浮力~Reduced gravity and buoyancy",
+      "mechanism": "約化重力以密度差相對背景密度縮放重力，表達異重流的浮力驅動尺度。分母選用哪個參考密度須一致，小密度差近似不能任意延伸至高濃度泥流；密度差沿程因捲吸與沉降變化，因此不是固定材料常數。 驗證時應沿庫底量測密度剖面並比較入流與壩前密度差，並辨識以下失效情境：把入口約化重力固定套全庫會忽略捲吸稀釋。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Reduced gravity scales gravitational acceleration by relative density excess. Use a consistent reference density and do not extend a small-density-difference approximation to dense debris flows. Entrainment and settling change the excess along the route, so reduced gravity is a changing flow property rather than a material constant. Test this interpretation with the following evidence: Measure density profiles along the bed and compare excess at inflow and near the dam. In particular, distinguish this failure mechanism: Using inlet reduced gravity throughout the reservoir ignores entrainment dilution. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：g=9.81 m/s2; currentDensity=1016.5 kg/m3; ambientDensity=1000 kg/m3; reducedG=9.81*(1016.5-1000)/1000=0.161865 m/s2。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: g=9.81 m/s2; currentDensity=1016.5 kg/m3; ambientDensity=1000 kg/m3; reducedG=9.81*(1016.5-1000)/1000=0.161865 m/s2. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "沿庫底量測密度剖面並比較入流與壩前密度差。應將原始量測與本單元模型的輸入條件對齊，並針對「把入口約化重力固定套全庫會忽略捲吸稀釋」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure density profiles along the bed and compare excess at inflow and near the dam. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Using inlet reduced gravity throughout the reservoir ignores entrainment dilution. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把入口約化重力固定套全庫會忽略捲吸稀釋。診斷時應採取以下查核：沿庫底量測密度剖面並比較入流與壩前密度差，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Using inlet reduced gravity throughout the reservoir ignores entrainment dilution. Diagnose it by the following check: Measure density profiles along the bed and compare excess at inflow and near the dam. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "約化重力是一旦決定就不會沿程改變的常數~Reduced gravity cannot change along the current once initially specified",
+      "practice": "交接時以沿庫底量測密度剖面並比較入流與壩前密度差作為可追溯證據，保存對應材料、構形與工況版本。針對把入口約化重力固定套全庫會忽略捲吸稀釋，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure density profiles along the bed and compare excess at inflow and near the dam. Record material, geometry and operating-state versions. Address this scenario: Using inlet reduced gravity throughout the reservoir ignores entrainment dilution. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "密度福祿數與流態~Densimetric Froude number and regime",
+      "title": "密度福祿數與流態~Densimetric Froude number and regime",
+      "mechanism": "密度福祿數比較流速與層內重力波尺度，有助整理潛入與底流工況。流層厚度須由密度或濃度剖面定義，不能直接用水庫總深；真實前緣與非均勻分層不一定符合均勻兩層模型，需要以觀測檢查。 驗證時應用密度剖面界定流層厚度並量測流速與前緣位置，並辨識以下失效情境：把全庫深當流層厚度會低估密度福祿數。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Densimetric Froude number compares current speed with an internal gravity-wave scale. Define layer thickness from density or concentration profiles rather than total reservoir depth. A real head and nonuniform stratification can depart from the uniform two-layer model, requiring observations before interpreting the number. Test this interpretation with the following evidence: Define layer depth from density profiles and measure speed and front position. In particular, distinguish this failure mechanism: Using total reservoir depth as current thickness understates densimetric Froude number. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：V=0.50 m/s; reducedG=0.16 m/s2; layerDepth=2 m; FrD=0.50/sqrt(0.16*2)=0.883883。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: V=0.50 m/s; reducedG=0.16 m/s2; layerDepth=2 m; FrD=0.50/sqrt(0.16*2)=0.883883. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "用密度剖面界定流層厚度並量測流速與前緣位置。應將原始量測與本單元模型的輸入條件對齊，並針對「把全庫深當流層厚度會低估密度福祿數」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Define layer depth from density profiles and measure speed and front position. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Using total reservoir depth as current thickness understates densimetric Froude number. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "把全庫深當流層厚度會低估密度福祿數。診斷時應採取以下查核：用密度剖面界定流層厚度並量測流速與前緣位置，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Using total reservoir depth as current thickness understates densimetric Froude number. Diagnose it by the following check: Define layer depth from density profiles and measure speed and front position. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "異重流厚度一定等於整個水庫的水深~Density-current thickness always equals total reservoir depth",
+      "practice": "交接時以用密度剖面界定流層厚度並量測流速與前緣位置作為可追溯證據，保存對應材料、構形與工況版本。針對把全庫深當流層厚度會低估密度福祿數，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Define layer depth from density profiles and measure speed and front position. Record material, geometry and operating-state versions. Address this scenario: Using total reservoir depth as current thickness understates densimetric Froude number. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "前緣行程與時窗~Front travel and timing window",
+      "title": "前緣行程與時窗~Front travel and timing window",
+      "mechanism": "底流前緣抵達壩前的時間受沿程坡度、捲吸及沉降改變，平均速度只提供第一輪時窗估算。它不是即時開門指令，實際需靠沿庫監測更新；應區分前緣速度與流層內平均速度，兩者不可直接互換。 驗證時應以多站濁度及密度到時比對前緣速度並更新抵達區間，並辨識以下失效情境：沿程速度改變會使固定時速外推偏離實際到達。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Front arrival depends on slope, entrainment and settling along the route. A mean-speed estimate supplies an initial time window rather than an operating command. Update it with distributed observations and distinguish front speed from mean velocity within the layer, which need not be equal. Test this interpretation with the following evidence: Compare arrival times at multiple turbidity and density stations and update the arrival interval. In particular, distinguish this failure mechanism: Changing speed along the route makes constant-speed arrival forecasts drift. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：TravelDistance=6000 m; prescribedMeanFrontSpeed=0.4 m/s; arrivalTime=6000/0.4/3600=4.16667 h。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: TravelDistance=6000 m; prescribedMeanFrontSpeed=0.4 m/s; arrivalTime=6000/0.4/3600=4.16667 h. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以多站濁度及密度到時比對前緣速度並更新抵達區間。應將原始量測與本單元模型的輸入條件對齊，並針對「沿程速度改變會使固定時速外推偏離實際到達」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Compare arrival times at multiple turbidity and density stations and update the arrival interval. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Changing speed along the route makes constant-speed arrival forecasts drift. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "沿程速度改變會使固定時速外推偏離實際到達。診斷時應採取以下查核：以多站濁度及密度到時比對前緣速度並更新抵達區間，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Changing speed along the route makes constant-speed arrival forecasts drift. Diagnose it by the following check: Compare arrival times at multiple turbidity and density stations and update the arrival interval. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "單一平均前緣速度就能精確決定開門時間~One mean front speed determines the exact gate-opening time",
+      "practice": "交接時以以多站濁度及密度到時比對前緣速度並更新抵達區間作為可追溯證據，保存對應材料、構形與工況版本。針對沿程速度改變會使固定時速外推偏離實際到達，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Compare arrival times at multiple turbidity and density stations and update the arrival interval. Record material, geometry and operating-state versions. Address this scenario: Changing speed along the route makes constant-speed arrival forecasts drift. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "沉降時間與粒徑~Settling time and particle size",
+      "title": "沉降時間與粒徑~Settling time and particle size",
+      "mechanism": "顆粒沉降會降低底流密度並改變可排出的粒徑組成，沉速受粒徑、形狀、絮凝及濃度影響。指定沉速的距離時間比只表示靜水尺度，紊流再懸浮會延長停留；不同粒徑不能共用一個沉速來預測全部排砂效率。 驗證時應採取分級粒徑與沉降試驗並比較沿程濃度剖面，並辨識以下失效情境：用單一細粒沉速代表粗砂會高估粗粒到壩比例。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Settling reduces density and changes the size distribution available for venting. Speed depends on size, shape, flocculation and concentration. Depth divided by prescribed settling speed is a still-water scale; turbulence can extend suspension, and one settling speed cannot represent the efficiency for all fractions. Test this interpretation with the following evidence: Test settling by size fraction and compare concentration profiles along the route. In particular, distinguish this failure mechanism: Using a fine-particle speed for coarse sand overestimates coarse arrival at the dam. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：LayerThickness=3 m; prescribedSettlingSpeed=0.002 m/s; stillWaterSettlingTime=3/0.002/60=25 min。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: LayerThickness=3 m; prescribedSettlingSpeed=0.002 m/s; stillWaterSettlingTime=3/0.002/60=25 min. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "採取分級粒徑與沉降試驗並比較沿程濃度剖面。應將原始量測與本單元模型的輸入條件對齊，並針對「用單一細粒沉速代表粗砂會高估粗粒到壩比例」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Test settling by size fraction and compare concentration profiles along the route. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Using a fine-particle speed for coarse sand overestimates coarse arrival at the dam. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "用單一細粒沉速代表粗砂會高估粗粒到壩比例。診斷時應採取以下查核：採取分級粒徑與沉降試驗並比較沿程濃度剖面，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Using a fine-particle speed for coarse sand overestimates coarse arrival at the dam. Diagnose it by the following check: Test settling by size fraction and compare concentration profiles along the route. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "所有粒徑泥砂都能用同一個沉降速度~Every sediment size can use the same settling velocity",
+      "practice": "交接時以採取分級粒徑與沉降試驗並比較沿程濃度剖面作為可追溯證據，保存對應材料、構形與工況版本。針對用單一細粒沉速代表粗砂會高估粗粒到壩比例，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Test settling by size fraction and compare concentration profiles along the route. Record material, geometry and operating-state versions. Address this scenario: Using a fine-particle speed for coarse sand overestimates coarse arrival at the dam. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "捲吸稀釋與濃度~Entrainment dilution and concentration",
+      "title": "捲吸稀釋與濃度~Entrainment dilution and concentration",
+      "mechanism": "底流捲吸上層清水會增加水量並降低濃度，在無沉降與再侵蝕的短段可用泥砂質量守恆估算。此式不是實際捲吸率模型，捲吸量須另有依據；若床面供砂或沉降顯著，就要補上來源與匯項。 驗證時應以沿程流量與濃度同步量測核對質量是否守恆，並辨識以下失效情境：忽略床面再侵蝕會把濃度維持誤解為完全沒有捲吸。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Entrainment increases water volume and dilutes concentration. Over a short reach without deposition or erosion, sediment conservation estimates the resulting concentration. It does not predict entrainment rate, which needs independent evidence; add source and sink terms when the bed exchanges sediment with the flow. Test this interpretation with the following evidence: Measure flow and concentration along the reach to check sediment mass conservation. In particular, distinguish this failure mechanism: Ignoring bed erosion can make sustained concentration look like absent entrainment. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：InitialQ=20 m3/s; initialSSC=5 kg/m3; entrainedClearWater=10 m3/s; mixedSSC=20*5/(20+10)=3.33333 kg/m3。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: InitialQ=20 m3/s; initialSSC=5 kg/m3; entrainedClearWater=10 m3/s; mixedSSC=20*5/(20+10)=3.33333 kg/m3. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以沿程流量與濃度同步量測核對質量是否守恆。應將原始量測與本單元模型的輸入條件對齊，並針對「忽略床面再侵蝕會把濃度維持誤解為完全沒有捲吸」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure flow and concentration along the reach to check sediment mass conservation. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Ignoring bed erosion can make sustained concentration look like absent entrainment. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "忽略床面再侵蝕會把濃度維持誤解為完全沒有捲吸。診斷時應採取以下查核：以沿程流量與濃度同步量測核對質量是否守恆，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Ignoring bed erosion can make sustained concentration look like absent entrainment. Diagnose it by the following check: Measure flow and concentration along the reach to check sediment mass conservation. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "濃度沒有下降就證明底流沒有捲吸清水~Unchanged concentration proves that the current entrains no clear water",
+      "practice": "交接時以以沿程流量與濃度同步量測核對質量是否守恆作為可追溯證據，保存對應材料、構形與工況版本。針對忽略床面再侵蝕會把濃度維持誤解為完全沒有捲吸，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure flow and concentration along the reach to check sediment mass conservation. Record material, geometry and operating-state versions. Address this scenario: Ignoring bed erosion can make sustained concentration look like absent entrainment. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "底孔捕捉與排出~Low-outlet capture and export",
+      "title": "底孔捕捉與排出~Low-outlet capture and export",
+      "mechanism": "底孔能否捕捉異重流取決於流層高度、入口位置及抽取範圍，開門流量大不一定全部來自高濃度底層。排出濃度需由水樣量測，不能直接代入壩前最高濃度；應把清水摻入與捕捉效率分開。 驗證時應同步量測壩前垂向濃度與出口濃度並檢查抽取層位，並辨識以下失效情境：入口過高可能主要抽出清水而非底部高濃度流。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Low-outlet capture depends on layer depth, inlet elevation and withdrawal geometry. A large release need not consist entirely of dense bottom water. Measure outlet concentration rather than substituting the maximum near-dam value, and distinguish clear-water dilution from capture efficiency. Test this interpretation with the following evidence: Measure vertical concentration near the dam and at the outlet to identify withdrawal depth. In particular, distinguish this failure mechanism: A high inlet may withdraw mostly clear water instead of the dense bottom layer. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：OutletQ=15 m3/s; measuredOutletSSC=4 kg/m3; exportedSedimentRate=15*4=60 kg/s。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: OutletQ=15 m3/s; measuredOutletSSC=4 kg/m3; exportedSedimentRate=15*4=60 kg/s. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "同步量測壩前垂向濃度與出口濃度並檢查抽取層位。應將原始量測與本單元模型的輸入條件對齊，並針對「入口過高可能主要抽出清水而非底部高濃度流」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure vertical concentration near the dam and at the outlet to identify withdrawal depth. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: A high inlet may withdraw mostly clear water instead of the dense bottom layer. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "入口過高可能主要抽出清水而非底部高濃度流。診斷時應採取以下查核：同步量測壩前垂向濃度與出口濃度並檢查抽取層位，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~A high inlet may withdraw mostly clear water instead of the dense bottom layer. Diagnose it by the following check: Measure vertical concentration near the dam and at the outlet to identify withdrawal depth. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "底孔開越大就保證每立方公尺排水含砂越高~A wider outlet guarantees more sediment in every cubic metre released",
+      "practice": "交接時以同步量測壩前垂向濃度與出口濃度並檢查抽取層位作為可追溯證據，保存對應材料、構形與工況版本。針對入口過高可能主要抽出清水而非底部高濃度流，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure vertical concentration near the dam and at the outlet to identify withdrawal depth. Record material, geometry and operating-state versions. Address this scenario: A high inlet may withdraw mostly clear water instead of the dense bottom layer. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "事件排砂效率~Event venting efficiency",
+      "title": "事件排砂效率~Event venting efficiency",
+      "mechanism": "排砂效率須明定分母是入庫總砂、抵達壩前底流砂或可捕捉粒徑砂，否則不同研究數值不可比較。事件質量積分比只適用相同起訖時間；殘留在庫底的砂與延後排出的部分需另外列帳，避免雙重計入。 驗證時應先聲明分母範圍再核對進出砂積分與延後排出量，並辨識以下失效情境：混用入庫砂與到壩砂分母會產生無意義的效率比較。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Define whether efficiency uses total incoming sediment, sediment reaching the dam or a capturable size fraction. These denominators produce different metrics. Integrate over matching time windows and separately record retained and delayed export to avoid comparing unlike studies or counting the same sediment twice. Test this interpretation with the following evidence: State the denominator scope and reconcile integrated arrival, export and delayed release. In particular, distinguish this failure mechanism: Mixing reservoir-inflow and dam-arrival denominators creates meaningless efficiency comparisons. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：Same-event arrivingCurrentSediment=900 t; exportedThroughOutlet=540 t; arrivalBasedEfficiency=540/900*100=60 percent。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: Same-event arrivingCurrentSediment=900 t; exportedThroughOutlet=540 t; arrivalBasedEfficiency=540/900*100=60 percent. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "先聲明分母範圍再核對進出砂積分與延後排出量。應將原始量測與本單元模型的輸入條件對齊，並針對「混用入庫砂與到壩砂分母會產生無意義的效率比較」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~State the denominator scope and reconcile integrated arrival, export and delayed release. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Mixing reservoir-inflow and dam-arrival denominators creates meaningless efficiency comparisons. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "混用入庫砂與到壩砂分母會產生無意義的效率比較。診斷時應採取以下查核：先聲明分母範圍再核對進出砂積分與延後排出量，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Mixing reservoir-inflow and dam-arrival denominators creates meaningless efficiency comparisons. Diagnose it by the following check: State the denominator scope and reconcile integrated arrival, export and delayed release. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "所有排砂效率百分比不需看分母就可互相比較~Every venting-efficiency percentage is comparable without inspecting its denominator",
+      "practice": "交接時以先聲明分母範圍再核對進出砂積分與延後排出量作為可追溯證據，保存對應材料、構形與工況版本。針對混用入庫砂與到壩砂分母會產生無意義的效率比較，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: State the denominator scope and reconcile integrated arrival, export and delayed release. Record material, geometry and operating-state versions. Address this scenario: Mixing reservoir-inflow and dam-arrival denominators creates meaningless efficiency comparisons. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "下游混合與溶氧~Downstream mixing and dissolved oxygen",
+      "title": "下游混合與溶氧~Downstream mixing and dissolved oxygen",
+      "mechanism": "底層水可能具有不同溶氧與溫度，排砂成效不能只用移除砂量衡量。瞬時完全混合可估保守水質盤點，但曝氣、耗氧與化學反應會改變下游值；實際應觀測近場與遠場，不能把混合平均當各位置都達標。 驗證時應沿下游斷面量測溶氧與溫度並比較混合前後變化，並辨識以下失效情境：只量遠場平均會漏掉出口附近低氧帶。這有助於確認模型的水流、受力或量測邊界是否仍成立。~Bottom water can differ in oxygen and temperature, so exported sediment is not the only outcome. Instantaneous complete mixing gives a bookkeeping estimate, while reaeration, demand and reactions alter downstream conditions. Observe near and far fields rather than treating the average as compliance everywhere. Test this interpretation with the following evidence: Measure oxygen and temperature across downstream sections before and after mixing. In particular, distinguish this failure mechanism: A far-field average can miss a low-oxygen plume near the outlet. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：No reaction: releaseQ=10 m3/s atDO=2 mg/L; riverQ=30 m3/s atDO=8 mg/L; mixedDO=(10*2+30*8)/40=6.5 mg/L。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: No reaction: releaseQ=10 m3/s atDO=2 mg/L; riverQ=30 m3/s atDO=8 mg/L; mixedDO=(10*2+30*8)/40=6.5 mg/L. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "沿下游斷面量測溶氧與溫度並比較混合前後變化。應將原始量測與本單元模型的輸入條件對齊，並針對「只量遠場平均會漏掉出口附近低氧帶」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Measure oxygen and temperature across downstream sections before and after mixing. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: A far-field average can miss a low-oxygen plume near the outlet. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "只量遠場平均會漏掉出口附近低氧帶。診斷時應採取以下查核：沿下游斷面量測溶氧與溫度並比較混合前後變化，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~A far-field average can miss a low-oxygen plume near the outlet. Diagnose it by the following check: Measure oxygen and temperature across downstream sections before and after mixing. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "混合平均溶氧合適就代表所有下游位置相同~An acceptable mixed oxygen average means every downstream location is identical",
+      "practice": "交接時以沿下游斷面量測溶氧與溫度並比較混合前後變化作為可追溯證據，保存對應材料、構形與工況版本。針對只量遠場平均會漏掉出口附近低氧帶，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Measure oxygen and temperature across downstream sections before and after mixing. Record material, geometry and operating-state versions. Address this scenario: A far-field average can miss a low-oxygen plume near the outlet. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    },
+    {
+      "anchor": "底流質量帳與殘留~Current mass budget and residual storage",
+      "title": "底流質量帳與殘留~Current mass budget and residual storage",
+      "mechanism": "異重流事件中沉降、再侵蝕與排出同時發生，剩餘質量需由共同時間窗的輸入輸出與床面變化核對。單一差額不會指出砂留在哪裡；需以測深、剖面及採樣確認，並把每項量測的不確定度傳入結果。 驗證時應以事件前後測深及乾密度核對差額並標記未量輸送，並辨識以下失效情境：將差額全部放在壩前會忽略沿庫分布沉積。這有助於確認模型的水流、受力或量測邊界是否仍成立。~During a current event, deposition, erosion and export occur together. Reconcile remaining mass using common-window inputs, outputs and bed change. A residual does not locate stored sediment; bathymetry, profiles and samples must establish where it remains, with uncertainty propagated from each measurement. Test this interpretation with the following evidence: Check the residual against before-and-after bathymetry and dry density and flag unmeasured transport. In particular, distinguish this failure mechanism: Assigning all residual sediment to the dam front ignores distributed deposition. That distinction determines whether the model boundary or measurement assumption remains valid.",
+      "model": "原創教學假設：incomingMass=1200 t; vented=650 t; otherExport=100 t; remainingNetStorage=1200-650-100=450 t。數值只檢查量綱與機制，不是實測資料、設計設定或允收門檻。~Original teaching assumptions: incomingMass=1200 t; vented=650 t; otherExport=100 t; remainingNetStorage=1200-650-100=450 t. These values check dimensions and mechanism, not measured data, design settings or acceptance thresholds.",
+      "verify": "以事件前後測深及乾密度核對差額並標記未量輸送。應將原始量測與本單元模型的輸入條件對齊，並針對「將差額全部放在壩前會忽略沿庫分布沉積」取得獨立證據；同時保留儀器校正、測點位置與時間，避免把不同工況的資料直接相減。~Check the residual against before-and-after bathymetry and dry density and flag unmeasured transport. Match raw observations to the input conditions of this unit and obtain independent evidence for this specific scenario: Assigning all residual sediment to the dam front ignores distributed deposition. Preserve calibration, location and timing so that unlike operating states are not directly subtracted.",
+      "failure": "將差額全部放在壩前會忽略沿庫分布沉積。診斷時應採取以下查核：以事件前後測深及乾密度核對差額並標記未量輸送，確認異常是否同時出現在相關量測；未釐清原因就調整門檻，會使真正的機制變化被資料處理掩蓋。~Assigning all residual sediment to the dam front ignores distributed deposition. Diagnose it by the following check: Check the residual against before-and-after bathymetry and dry density and flag unmeasured transport. Establish whether related measurements corroborate the anomaly; changing thresholds before identifying the cause can conceal a real change in the governing mechanism.",
+      "misconception": "質量差額可以直接指出沉積物的精確位置~A mass-budget residual directly identifies the exact deposit location",
+      "practice": "交接時以以事件前後測深及乾密度核對差額並標記未量輸送作為可追溯證據，保存對應材料、構形與工況版本。針對將差額全部放在壩前會忽略沿庫分布沉積，由負責工程師設定需補驗的項目與停留點，不能把教學結果當作現場操作許可。~At handover, use the following traceable evidence: Check the residual against before-and-after bathymetry and dry density and flag unmeasured transport. Record material, geometry and operating-state versions. Address this scenario: Assigning all residual sediment to the dam front ignores distributed deposition. The responsible engineer defines additional checks and hold points; the teaching result is not field operating authorization."
+    }
+  ],
+  "facts": [
+    "教學假設：懸浮濃度與混合密度；rhoWater=1000 kg/m3; rhoSediment=2650 kg/m3; volumeFraction=0.01; rhoMix=(1-0.01)*1000+0.01*2650=1016.5 kg/m3~Teaching assumption: Suspension concentration and mixture density; rhoWater=1000 kg/m3; rhoSediment=2650 kg/m3; volumeFraction=0.01; rhoMix=(1-0.01)*1000+0.01*2650=1016.5 kg/m3",
+    "教學假設：約化重力與浮力；g=9.81 m/s2; currentDensity=1016.5 kg/m3; ambientDensity=1000 kg/m3; reducedG=9.81*(1016.5-1000)/1000=0.161865 m/s2~Teaching assumption: Reduced gravity and buoyancy; g=9.81 m/s2; currentDensity=1016.5 kg/m3; ambientDensity=1000 kg/m3; reducedG=9.81*(1016.5-1000)/1000=0.161865 m/s2",
+    "教學假設：密度福祿數與流態；V=0.50 m/s; reducedG=0.16 m/s2; layerDepth=2 m; FrD=0.50/sqrt(0.16*2)=0.883883~Teaching assumption: Densimetric Froude number and regime; V=0.50 m/s; reducedG=0.16 m/s2; layerDepth=2 m; FrD=0.50/sqrt(0.16*2)=0.883883",
+    "教學假設：前緣行程與時窗；TravelDistance=6000 m; prescribedMeanFrontSpeed=0.4 m/s; arrivalTime=6000/0.4/3600=4.16667 h~Teaching assumption: Front travel and timing window; TravelDistance=6000 m; prescribedMeanFrontSpeed=0.4 m/s; arrivalTime=6000/0.4/3600=4.16667 h",
+    "教學假設：沉降時間與粒徑；LayerThickness=3 m; prescribedSettlingSpeed=0.002 m/s; stillWaterSettlingTime=3/0.002/60=25 min~Teaching assumption: Settling time and particle size; LayerThickness=3 m; prescribedSettlingSpeed=0.002 m/s; stillWaterSettlingTime=3/0.002/60=25 min",
+    "教學假設：捲吸稀釋與濃度；InitialQ=20 m3/s; initialSSC=5 kg/m3; entrainedClearWater=10 m3/s; mixedSSC=20*5/(20+10)=3.33333 kg/m3~Teaching assumption: Entrainment dilution and concentration; InitialQ=20 m3/s; initialSSC=5 kg/m3; entrainedClearWater=10 m3/s; mixedSSC=20*5/(20+10)=3.33333 kg/m3"
+  ],
+  "timeline": [
+    {
+      "year": "1978",
+      "event": "美國墾務局消能池與消能工專論修訂版出版~Reclamation publishes its revised stilling-basin and energy-dissipator monograph"
+    },
+    {
+      "year": "1980",
+      "event": "美國墾務局水力試驗技術手冊出版，提供試驗方法脈絡~Reclamation publishes Hydraulic Laboratory Techniques as a laboratory-method reference"
+    },
+    {
+      "year": "1987",
+      "event": "美國墾務局小壩設計第三版出版，整合水工設計經驗~Reclamation publishes the third edition of Design of Small Dams"
+    }
+  ],
+  "codes": [
+    "美國墾務局小壩設計第三版~Reclamation Design of Small Dams third edition",
+    "美國墾務局水力試驗技術手冊~Reclamation Hydraulic Laboratory Techniques"
+  ],
+  "landmarks": [
+    "魯德巴爾洛雷斯坦（排砂模型比較）~Rudbar-Lorestan (venting-model comparison)",
+    "美和壩（繞庫路徑比較）~Miwa Dam (bypass-path comparison)"
+  ],
+  "place": {
+    "name": "美國墾務局丹佛技術服務中心參照點~Reclamation Denver Technical Service Center reference",
+    "country": "美國~United States",
+    "lat": 39.719,
+    "lng": -105.129,
+    "query": "Bureau of Reclamation Technical Service Center Denver Federal Center"
+  },
+  "sources": [
+    {
+      "key": "usbr-manuals",
+      "title": "美國墾務局水工手冊與專論目錄",
+      "titleEn": "Reclamation hydraulic manuals and monographs",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "sourceType": "primary",
+      "scope": "官方目錄核實 1978 消能工專論、1980 水力試驗技術、1987 小壩設計及1990氣蝕專論；目錄日期不是工程啟用年。",
+      "scopeEn": "Official catalog verifies the 1978 dissipator monograph, 1980 laboratory techniques, 1987 small-dam manual and 1990 cavitation monograph; publication dates are not project commissioning dates."
+    },
+    {
+      "key": "epfl-venting",
+      "title": "洛桑聯邦理工異重流排砂研究",
+      "titleEn": "EPFL turbidity-current venting research",
+      "publisher": "EPFL",
+      "url": "https://infoscience.epfl.ch/entities/publication/73141485-744c-4dce-9040-5e8e21807c67",
+      "sourceType": "primary",
+      "scope": "官方典藏索引核實2016年異重流排砂原始研究；全文直取回傳429，未宣稱全文閱讀。",
+      "scopeEn": "Official repository index verifies the 2016 venting research; full-text retrieval returned429 and is not claimed."
+    },
+    {
+      "key": "epfl-timing",
+      "title": "異重流排砂操作時機原始研究",
+      "titleEn": "Original research on venting timing",
+      "publisher": "EPFL",
+      "url": "https://infoscience.epfl.ch/record/259178/files/2018-1275%20Chamoun_DeCesare_Schleiss_Influence%20of%20Operational%20Timing%20on%20the%20Efficiency%20of%20Venting%20Turbidity%20Currents.pdf",
+      "sourceType": "primary",
+      "scope": "官方典藏搜尋核實2018年時機與效率研究；直接PDF受限，僅據可見摘要及書目界定主題。",
+      "scopeEn": "Official repository search verifies the 2018 timing and efficiency study; direct PDF access was restricted, so only visible abstract and bibliographic scope are used."
+    },
+    {
+      "key": "epfl-rudbar",
+      "title": "魯德巴爾洛雷斯坦水庫排砂模型研究",
+      "titleEn": "Rudbar-Lorestan reservoir venting model study",
+      "publisher": "EPFL",
+      "url": "https://infoscience.epfl.ch/bitstreams/da9bfcaf-0693-44e1-a694-4391ff2edf7c/download",
+      "sourceType": "primary",
+      "scope": "官方典藏摘要核實具名水庫的異重流排砂研究，非實際運轉成效保證；直取全文受限。",
+      "scopeEn": "Official repository abstract verifies the named reservoir venting investigation, not guaranteed operational performance; full-text access was restricted."
+    },
+    {
+      "key": "mlit-miwa",
+      "title": "日本國土交通省美和壩繞庫排砂",
+      "titleEn": "MLIT Miwa Dam sediment bypass",
+      "publisher": "Ministry of Land Infrastructure Transport and Tourism",
+      "url": "https://www.cbr.mlit.go.jp/tendamu/dam/bypass/miwa.html",
+      "sourceType": "primary",
+      "scope": "官方原始頁核實美和繞庫隧道與試驗運轉歷程；僅用作排砂途徑比較，無工程參數移植。",
+      "scopeEn": "Official page verifies Miwa bypass and its trial-operation history; used for pathway comparison without transplanting parameters."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Bureau of Reclamation（公開資料機構）",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://www.usbr.gov/tsc/techreferences/hydraulics_lab/pubs/manuals_monographs.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究密度福祿數與流態與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Densimetric Froude number and regime and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    },
+    {
+      "name": "EPFL（公開資料機構）",
+      "nameEn": "EPFL",
+      "business": "提供水工技術文件、工程資料或監測研究。",
+      "businessEn": "Publishes hydraulic guidance, project information or monitoring research.",
+      "url": "https://infoscience.epfl.ch/entities/publication/73141485-744c-4dce-9040-5e8e21807c67",
+      "investorUrl": "",
+      "security": null,
+      "role": "可從公開資料研究密度福祿數與流態與證據界線，不表示承攬本課假想工程。",
+      "roleEn": "Study Densimetric Froude number and regime and evidence boundaries through public information; no role in a hypothetical project is asserted."
+    }
+  ],
+  "related": [
+    "b255",
+    "b256"
+  ],
+  "architectureNodes": [
+    [
+      "懸浮濃度與混合密度",
+      "Suspension concentration and mixture density"
+    ],
+    [
+      "密度福祿數與流態",
+      "Densimetric Froude number and regime"
+    ],
+    [
+      "沉降時間與粒徑",
+      "Settling time and particle size"
+    ],
+    [
+      "底孔捕捉與排出",
+      "Low-outlet capture and export"
+    ],
+    [
+      "底流質量帳與殘留",
+      "Current mass budget and residual storage"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      0,
+      3
+    ]
+  ]
+}

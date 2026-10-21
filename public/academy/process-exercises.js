@@ -270,13 +270,14 @@ Object.assign(observations,{
 });
 export function resolveExercise(course={},step={}){
  // Extension-only architecture: preserve every original course step and scene.
+ if(String(step.id).includes('-v15-')&&course.v15Architecture)course={...course,...course.v15Architecture};
  if(String(step.id).includes('-v14-')&&course.v14Architecture)course={...course,...course.v14Architecture};
  // V13: extended courses keep their own artwork; their new steps use the V13 architecture.
  if(String(step.id).includes('-v13-')&&!course.architectureFamily&&course.v13Architecture)course={...course,...course.v13Architecture};
  const expansion=resolveExpansionExercise(course,step);if(expansion)return expansion;
  if(first26[step.id])return first26[step.id]();
  if(firstPackage[step.id])return firstPackage[step.id]();
- if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-') || (String(step.id).includes('-v13-') && hasWorldVisual(course)) || (String(step.id).includes('-v14-') && hasWorldVisual(course)))){
+ if(((course.educationEdition===11 && (course.curriculumVersion>=11 || String(step.id).includes('-v11-')) && (COMPUTING_SUBJECTS[course.id] || hasWorldVisual(course))) || String(step.id).includes('-v12-') || (String(step.id).includes('-v13-') && hasWorldVisual(course)) || (String(step.id).includes('-v14-') && hasWorldVisual(course)) || (String(step.id).includes('-v15-') && hasWorldVisual(course)))){
   const n=Number(step.sequence)||1,quiz=step.quiz,validQuiz=quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)&&quiz.options.length===quiz.optionsEn.length&&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length;
   const decisions=validQuiz?quiz.options.map((v,i)=>opt('answer-'+i,v,quiz.optionsEn[i])):[opt('evidence',step.check,step.checkEn),opt('guess','未核對模型邊界便沿用另一個案例','Reuse a case without checking model boundaries'),opt('omit','跳過本步所需的證據','Skip the required evidence')];
   const offset=n%decisions.length,computing=!!COMPUTING_SUBJECTS[course.id];

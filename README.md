@@ -1,17 +1,32 @@
-# 馬蓋先工程學院 V14
+# 馬蓋先工程學院 V15
+
+V15 新增或擴充「水利與海岸工程」100 門，每門 10 個雙語技術單元、40 個步驟，合計新增 4,000 步與 300 個原創 SVG。保留 V14 全部既有課程階段後，共有 904 門逐步課程、28,274 步。三峽、胡佛壩與巴拿馬擴建船閘保留原課，再追加本次內容。
+
+首頁先顯示可見入口，索引採無損緊縮格式，完整課文、來源與關聯資料依路由載入。新增 12 個水理計算模型、6 個可離線執行的 Python 小實驗。課文完整原創版本為繁中與英文；79 種目標語言依瀏覽器偏好選擇，其餘全文由已設定的翻譯服務、本機模型或可用的瀏覽器翻譯器提供，不宣稱 79 份人工預譯。
+
+- 完整 ZIP 解壓一次，或下載全部 `part…of….zip` 並逐包解壓到同一目錄。分包是獨立 ZIP，不能用 `cat`／`copy /b` 串接；具體指令見 [下載與解壓縮](docs/V15_ZH.md#下載與解壓縮)。
+- 開啟完整套件的 `index.html` 即可閱讀。需要本機服務時執行 `bash run-local.sh`（Python 3.10+）；Windows 也可用 `run-local.bat`。既有相容 Python／Conda 環境可沿用。
+- 重建本次教材：`bash rebuild-water.sh`，需 Python 3.10+、Node.js 22.13+。已支援優先使用啟用中的 Conda Python，並修正 UTF-8 標點緊接 `$PY` 的未綁定變數問題。
+- 完整說明：[docs/V15_ZH.md](docs/V15_ZH.md)。原稿：`tools/water-v15/inputs/`；全部統計：`public/academy/data/release.json`。
+- 上傳前以 `bash macgyver.sh doctor` 檢查 Git／SSH 與同步環境，再用 `bash upload-all.sh --dry-run --skip-models` 比較差異。`bash upload-all.sh --skip-models --skip-data` 上傳網站並保留現有行情；省略 `--skip-data` 會更新行情，省略 `--skip-models` 會依私人設定準備並同步模型。工具不使用 force push，預設保留其他遠端另加檔案。
+- AI 師傅支援已配置的 OpenAI 相容、Claude、Gemini、Ollama 或瀏覽器本機模型；提供問題與課程脈絡給所選服務。API 金鑰、帳號資料庫及大型模型權重不包含在公開交付包。
+
+下列保留舊版功能紀錄；本次行為與限制以 V15 說明及驗證報告為準。教學算例與架構圖不是場址設計、原廠操作值或認證施工程序。
+
+## V14 功能紀錄
 
 V14 新增「隧道與地下工程」100 門深入逐步課程，每門 10 個技術單元、40 個新增步驟，合計新增 4,000 步；雪山、英法與哥達三門原課的既有步驟保留。每單元包含機制、定量算例、驗證與失效診斷，附中英教材、工程檔案、官方來源、地圖與原創示意圖。
 
 首頁先呈現入口，課文、來源及相關資料依路由延後載入。13 個透明互動模型與 6 個 Python 合成資料實驗可離線使用。79 種語言選項依瀏覽器偏好自動選擇；完整原創教材為繁中／英文，其餘全文須由已配置翻譯服務、已載入本機模型或瀏覽器翻譯器完成，介面會顯示完成範圍。
 
 - 啟動：`bash run-local.sh`（Windows 也可用 `run-local.bat`）。
-- 重建地下教材：`bash rebuild-underground.sh`，需 Python 3.10+ 與 Node.js 22.13+。
+- V14 歷史重建入口：`rebuild-underground.sh`。V15 請使用上方的 `rebuild-water.sh`，不要以舊版整合器覆寫本版成品。
 - 檢查差異：`bash upload-all.sh --dry-run --skip-models`。
 - 網站與自有權重同步：見 [docs/UPLOAD_AI_V14_ZH.md](docs/UPLOAD_AI_V14_ZH.md)。預設保留遠端未受同步工具管理的檔案；不使用 force push。
 - AI：OpenAI 相容、Claude、Gemini、Ollama 或明確載入的瀏覽器本機模型；金鑰與大型權重不包含在交付包。
 - 可重建的教材原稿：`tools/underground-v14/inputs/`；完整統計：`public/academy/data/release.json`；檢核：`tools/validate-underground-v14.py`。
 
-本包保留既有應用程式、HTML、離線資產、套件鎖檔與啟動／上傳工具。下方為先前版本功能紀錄；遇有語言、同步或模型行為差異，以 V14 文件為準。實際付費 API、外部 GitHub 推送與手機實機效能需在你的部署環境配置與確認。
+本包保留既有應用程式、HTML、離線資產、套件鎖檔與啟動／上傳工具。下方為先前版本功能紀錄；遇有語言、同步或模型行為差異，以 [V15 文件](docs/V15_ZH.md) 為準。實際付費 API、外部 GitHub 推送與手機實機效能需在你的部署環境配置與確認。
 
 ---
 
@@ -23,7 +38,7 @@ V14 新增「隧道與地下工程」100 門深入逐步課程，每門 10 個�
 
 **一鍵上傳：** `bash upload-all.sh`（網站＋模型，差異同步；V14預設保留未知遠端檔案）；分開執行：`bash macgyver.sh`（網站）、`bash macgyver.sh models`（模型）；先比對：`bash macgyver.sh compare`、`bash macgyver.sh models-compare`。見 `docs/UPLOAD_SYNC_V12_ZH.md`、`docs/AI_MODELS_V12_ZH.md`、`docs/PAYMENTS_V12_ZH.md`（檔名保留，內容已更新到 V13）。
 
-先開 `public/academy/help.html` 看入口與設定。橋樑與建築課程索引為 `public/academy/data/bridges-buildings-100.csv`；修改課程原稿 `tools/structures-v13/inputs/` 後執行 `bash rebuild-structures.sh`。實際統計見 `public/academy/data/release.json`。原始 V13 的私人收款設定筆記不納入 V14 可攜原始碼交付包。
+先開 `public/academy/help.html` 看入口與設定。橋樑與建築課程索引為 `public/academy/data/bridges-buildings-100.csv`；其 V13 原稿與 `rebuild-structures.sh` 保留作來源追溯，不用舊版整合器覆寫 V15 成品。實際統計見 `public/academy/data/release.json`。原始 V13 的私人收款設定筆記不納入可攜原始碼交付包。
 
 <details><summary>V12 摘要</summary>
 
@@ -39,13 +54,13 @@ V11 聚焦資訊與資安及世界工程：資訊與資安 100 門各增加 32 �
 
 ## 快速開始：直接開啟 HTML
 
-1. **完整解壓 ZIP**，保留所有資料夾，不要只抽出一個 HTML。
+1. **完整解壓 ZIP**；若使用分包，先下載全部獨立 ZIP，再逐包解壓到同一目的資料夾，合成同一個 `MacGyver_Engineering_Academy_v15/`。保留所有資料夾，不要只抽出一個 HTML，也不要串接 ZIP 二進位檔。
 2. 雙擊最外層 `index.html`。課程、照片、師傅示範、雙手控制與本機進度不需啟動伺服器。
 3. 使用當代 Chrome、Edge、Firefox 或 Safari。影片、外部來源、Google Maps 需要網路。
 4. 本機會員帳號（帳號、密碼、信箱、手機）只存在此瀏覽器，密碼以加鹽雜湊保存，可防止同一台裝置上的他人切換你的紀錄；它**不是跨裝置帳號**。請定期匯出 JSON，避免清除瀏覽器資料、改用另一瀏覽器或移動資料夾後遺失紀錄。
 5. 手機／平板優先使用 HTTPS 網站。檔案預覽器未必能執行 JavaScript；觸控學習不需要在手機安裝 Python。
 
-離線包已預先建好，不需安裝 npm 套件。修改原始碼或課程後，執行 `bash build-offline.sh` 重建；修改課程原稿後可執行 `bash rebuild-curriculum.sh` 整合與驗證。
+離線包已預先建好，不需安裝 npm 套件。修改前端原始碼後，以 Node.js 22.13+ 執行 `bash build-offline.sh`；修改 `tools/water-v15/inputs/` 的課程原稿後，以 Python 3.10+、Node.js 22.13+ 執行 `bash rebuild-water.sh`，完成教材整合、附件與離線建置。舊版 `rebuild-curriculum.sh` 僅供來源追溯，不是 V15 重建入口。
 
 `file://` 雙擊模式可學習，但不能可靠建立模型 worker，因此會在下載權重前提示改用 HTTPS 網站或可選本機 HTTP 服務。
 
@@ -71,7 +86,7 @@ V11 聚焦資訊與資安及世界工程：資訊與資安 100 門各增加 32 �
 
 左右手方向鍵、鍵盤與觸控長按、旋轉、升降、抓取／釋放、精調、吸附輔助、撤銷與重置均在工作台提供。按鍵區緊接在工作台下方，工程輔助及下一步狀態保持可見。師傅逐段講解、紅箭頭與語音示範可略過；觀看示範不直接算通過，學徒仍需完成操作證據及驗收。
 
-繁體中文／英文是隨套件提供的核心內容。介面有共 79 個語言選項，另外 77 種依設定的 AI 服務進行機器翻譯；**不是 79 種已完整人工翻譯的教材**。瀏覽器偏好用於選語言，GPS 不用來推斷語言。語音依裝置已安裝聲音，有文字講解備援；其他語言的翻譯與聲音均不保證每台裝置具備。
+繁體中文／英文是隨套件提供的完整原創教材。介面有共 79 個目標語言選項，另外 77 種全文依已設定的翻譯服務、適用本機模型或可用的瀏覽器翻譯器提供；**不是 79 種已完整人工翻譯的教材**。畫面顯示翻譯完成範圍。瀏覽器偏好用於選語言，GPS 不用來推斷語言。語音依裝置已安裝聲音，有文字講解備援；其他語言的翻譯與聲音均不保證每台裝置具備。
 
 ## 個人工作室、產業資訊與展示
 
@@ -156,12 +171,14 @@ PDF 需可選 pypdf，掃描 PDF 需先 OCR；文字、Markdown、CSV、JSON、P
 
 索引保存在 `portable/data/knowledge.json`，是該伺服器共用的管理者教材，不是每位學員的私人上傳區。V10 受保護付費模式中，私有文件檢索只提供有效付費會員；免費會員仍可詢問其提供的免費課程脈絡。帳號資料庫在 `portable/data/macgyver.sqlite3`，應另行備份，皆不提交公開 Git。
 
-## 整包 GitHub 推送與更新（V14）
+## 整包 GitHub 推送與更新（V15）
 
-**一鍵：** 在解壓後的資料夾執行 `bash upload-all.sh`。它會先比對本機套件與網站倉庫 `kuonanhong/macgyver-academy`，只上傳新增與修改的檔案，移除工具先前管理且本機已刪除的檔案；遠端其他檔案預設保留；再準備 AI 權重（Qwen3-0.6B 可直接從華佗學院四份 ZIP 匯入），比對私人倉庫 `kuonanhong/PRIVATE-MODELS`，只上傳雲端還沒有的 40 MiB 分片（只動 `projects/macgyver/`，不碰華佗學院的檔案）。
+**一鍵：** 在解壓後的資料夾執行 `bash upload-all.sh`。它會更新行情、重建需要更新的離線資產並驗證，再比對網站倉庫 `kuonanhong/macgyver-academy`，上傳新增與修改的檔案，移除工具先前管理且本機已刪除的檔案及過期產生分片；遠端其他檔案預設保留。接著按私人設定準備 AI 權重，比對私人倉庫 `kuonanhong/PRIVATE-MODELS`，只上傳需要的 40 MiB 分片（只動 `projects/macgyver/`，不碰華佗學院的檔案）。模型分片須用還原工具處理，與交付套件的獨立 ZIP 分包不同。修改水利課程原稿後，請先執行 `bash rebuild-water.sh`；上傳腳本不會代替此原稿整合流程。
 
 ```bash
-bash macgyver.sh doctor            # 第一次：檢查 git、Python、SSH、兩個倉庫與本機模型
+bash macgyver.sh doctor            # 上傳前：檢查 Git、Python、SSH、兩個倉庫與本機模型
+bash upload-all.sh --dry-run --skip-models  # 只比較網站，不更新行情或推送
+bash upload-all.sh --skip-models --skip-data # 只上傳網站，保留現有行情
 bash macgyver.sh compare           # 網站：新增 / 修改 / 刪除 / 相同（不上傳）
 bash macgyver.sh models-compare    # 模型：已存在 / 可引用 / 需上傳 / 將刪除（不上傳）
 bash upload-all.sh                 # 一鍵：網站＋模型
@@ -198,6 +215,7 @@ GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish sta
 | `public/academy/pricing.js` / `paywall.js` / `checkout.js` | V12 地區定價、第一節免費門禁、PayPal／綠界結帳 |
 | `supabase/002_accounts_commerce.sql` / `supabase/functions/` | V12 會員四欄位、訂單、通行證與金流驗證 |
 | `tools/optics-v12/` / `tools/integrate-optics-v12.py` | 光學與精密儀器 101 門原稿、建置與整合 |
+| `tools/water-v15/` / `tools/integrate-water-v15.py` | V15 水利與海岸 100 門原稿、研究來源、驗證、產生與整合 |
 | `tools/markets-v12/` / `.github/workflows/weekly-markets.yml` | 公司名單合併、每週股價匯率更新 |
 | `tools/sync-v12/sync_github.py` | 以 Git blob 指紋比對雲端並只上傳差異 |
 | `tools/model-proxy/` | 可選：私人模型倉庫的 Cloudflare Worker 代理 |
@@ -206,12 +224,13 @@ GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish sta
 | `tools/model-manifest.json` | 官方模型版本、檔名、大小、雜湊及授權 |
 | `portable/server.py` | Python／SQLite／伺服器 AI 可選後端 |
 | `app/api/`、`db/`、`drizzle/` | 原 Sites 代管後端 |
-| `build-offline.sh` / `rebuild-underground.sh` | 重建延後載入與離線程式；重建地下工程 100 門（V14） |
+| `build-offline.sh` / `rebuild-water.sh` | 重建延後載入與離線程式；V15 水利與海岸完整教材重建入口 |
+| `rebuild-underground.sh` | V14 歷史重建工具；不以舊版整合器覆寫 V15 成品 |
 | `rebuild-structures.sh` | 重建 V13 橋樑與建築（修改舊版內容後須明確更新版本保留基線） |
 | `rebuild-curriculum.sh` | 舊版各代課程重播（V12 原包起已無法完整跑完，僅供參考） |
 | `install-ai-models.sh` / `run-ai-llamacpp.sh` | 原生 CPU 權重下載與啟動 |
 | `run-ai-local.sh` / `.ps1` | Ollama 下載與本機網站啟動 |
-| `upload-all.sh` / `macgyver.sh` | V14 差異與分批同步，預設保留未知遠端檔案；比對、每週股價、排程 |
+| `upload-all.sh` / `macgyver.sh` | V15 差異與分批同步，預設保留其他遠端另加檔案；比對、每週股價、排程 |
 | `tools/sync-v13/models_sync.py` | 私人模型倉庫比對、只傳新分片、還原、從華佗 ZIP 匯入 |
 | `tools/structures-v13/` / `tools/integrate-structures-v13.py` | 橋樑與建築 100 門原稿、驗證、產生與整合 |
 | `publish-github.sh` | 隔離 GitHub 匯出（由上傳工具內部使用） |

@@ -34,6 +34,7 @@ import * as cloudSync from '../public/academy/cloud-sync.js';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../public/academy');
+const v15StepsOnly=process.argv.includes('--v15-steps-only');
 const data=Object.fromEntries(['catalog','featured','sources','photos'].map(k=>[k,JSON.parse(fs.readFileSync(path.join(root,'data',`${k}.json`),'utf8'))]));
 data.release=JSON.parse(fs.readFileSync(path.join(root,'data','release.json'),'utf8'));
 data.coursePlaces=JSON.parse(fs.readFileSync(path.join(root,'data','course-places.json'),'utf8'));
@@ -146,6 +147,7 @@ for(const language of ['zh-TW','en']){
   for(const c of data.featured){
     const steps=c.stages.flatMap(s=>s.steps);
     for(let i=0;i<steps.length;i++){
+      if(v15StepsOnly&&!steps[i].id.includes('-v15-'))continue;
       const prior=steps.slice(0,i).map(s=>s.id);
       run(`activeId=${JSON.stringify(c.id)};activeStep=${i};projects[activeId]={completed:${JSON.stringify(prior)},assembly:${JSON.stringify(prior)},notes:'',updatedAt:1};`);
       clean(run('renderWorkshop()'),`${language}/${c.id}/${i}`);assert.equal(run('activeStep'),i);stepRenders++;
@@ -169,6 +171,7 @@ for(const language of ['zh-TW','en']){
   console.error(`[frontend] ${language}: complete (${projectRenders} projects / ${stepRenders} steps cumulative)`);
 }
 
+if(v15StepsOnly)assert.equal(stepRenders,8000,'All 4000 V15 steps render in both authored languages');
 console.error('[frontend] checking catalogue, atlas and every guided-course entry');
 // The former home/catalog routes share one explorer with live coverage and filters.
 run("lang='en';location.hash='#home';render()");
@@ -380,7 +383,7 @@ for(let i=0;i<3;i++){
   assert.equal(run('activeStep'),i+1,'completion advances exactly one step');
   assert.equal(run('progressFor(course().id).completed.length'),i+1);
 }
-assert.deepEqual(taskModes,new Set(['assembly','inspect','process','measure']),'curriculum renders four meaningful task modes');
+assert.deepEqual(taskModes,new Set(v15StepsOnly?['inspect']:['assembly','inspect','process','measure']),v15StepsOnly?'every V15 extension renders its authored inspection task':'curriculum renders four meaningful task modes');
 assert.equal(run('demonstrationReady()'),false,'next step does not inherit the preceding step’s demo gate');
 run('goToStep(0)');assert.equal(run('demonstrationReady()'),true,'a completed step remains available when revisited');
 select('#demoReplay').onclick();assert.equal(run('gateState(course(),allSteps(course())[0]).ready'),true,'mentor replay never withdraws an earned completion');
@@ -578,4 +581,4 @@ paywall.configurePaywall({config:{paywall:{enabled:true,freeStagesPerCourse:1,ow
   assert(html.includes('paywallStep')&&!html.includes('id="quizSection"'),'paid step shows the membership card, not the lesson');
   run(`activeStep=${firstStage-1}`);assert(run('renderWorkshop()').includes('id="quizSection"'),'free first stage renders the full lesson');
 }
-console.log(JSON.stringify({passed:true,projectRenders,stepRenders,catalog:data.catalog.length,guidedCourses:data.featured.length,sources:data.sources.length,photos:data.photos.length,consecutiveStepsVerified:3,taskModes:[...taskModes],taskReloadVerified:true,oldCompletedProgressPreserved:true,controls:['grab','arrow XY','physical code','IME/non-Latin labels','dead-key code','focus activation','input/dialog exclusion','autorepeat','keyup after focus change','blur','two-hand touch','combined axes','precision','inferred Right Shift release','Shift-first undo','collision','undo','reset','pose reload'],migrationVerified:true,languagePreferenceVerified:true,synthetic520Verified:true,accountIsolationVerified:true,cloudAccountFormsVerified:true,optionalLocalEmailVerified:true,queuedConflictMergeVerified:true,queuedAccountSwitchIsolationVerified:true,accountInitRaceVerified:true,protectedDoubleClickAndSwitchVerified:true,realWorkspaceBootVerified:true,nonblockingMediaVerified:true,tutorContextVerified:true,maxTutorContextChars,narratedProcedureVerified:true,skipTourCannotCompleteStep:true,fullGuidanceRequiresEvidenceAndQuiz:true,guidancePauseAndFullUndoVerified:true,visibleNextActionVerified:true,allGuidedCoursesVisible:true,catalogCsvRows:data.catalog.length,domainCountsVerified:20,allAtlasEntriesVisible:true,atlasEntries:data.coursePlaces.courses.length,limitations:'Node VM checks HTML/data and handlers with mocked requests; no browser layout or real network/auth coverage.'},null,2));
+console.log(JSON.stringify({passed:true,stepScope:v15StepsOnly?'All real V15 extension steps in both languages':'All release steps in both languages',projectRenders,stepRenders,catalog:data.catalog.length,guidedCourses:data.featured.length,sources:data.sources.length,photos:data.photos.length,consecutiveStepsVerified:3,taskModes:[...taskModes],taskReloadVerified:true,oldCompletedProgressPreserved:true,controls:['grab','arrow XY','physical code','IME/non-Latin labels','dead-key code','focus activation','input/dialog exclusion','autorepeat','keyup after focus change','blur','two-hand touch','combined axes','precision','inferred Right Shift release','Shift-first undo','collision','undo','reset','pose reload'],migrationVerified:true,languagePreferenceVerified:true,synthetic520Verified:true,accountIsolationVerified:true,cloudAccountFormsVerified:true,optionalLocalEmailVerified:true,queuedConflictMergeVerified:true,queuedAccountSwitchIsolationVerified:true,accountInitRaceVerified:true,protectedDoubleClickAndSwitchVerified:true,realWorkspaceBootVerified:true,nonblockingMediaVerified:true,tutorContextVerified:true,maxTutorContextChars,narratedProcedureVerified:true,skipTourCannotCompleteStep:true,fullGuidanceRequiresEvidenceAndQuiz:true,guidancePauseAndFullUndoVerified:true,visibleNextActionVerified:true,allGuidedCoursesVisible:true,catalogCsvRows:data.catalog.length,domainCountsVerified:20,allAtlasEntriesVisible:true,atlasEntries:data.coursePlaces.courses.length,limitations:'Node VM checks HTML/data and handlers with mocked requests; no browser layout or real network/auth coverage.'},null,2));

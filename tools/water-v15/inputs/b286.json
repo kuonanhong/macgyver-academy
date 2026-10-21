@@ -1,0 +1,273 @@
+{
+  "id": "b286",
+  "focus": "連結潛堤越頂透射缺口流與海岸地形的相互作用~Connect submerged-breakwater transmission, gap currents and evolving coastal morphology",
+  "units": [
+    {
+      "anchor": "淹水深與共同基準~Submergence and shared datum",
+      "title": "淹水深與共同基準~Submergence and shared datum",
+      "mechanism": "潛堤是否淹水取決於堤頂與水位共同高程，不是海圖水深單獨決定。潮汐、增水與沉陷會改變相對淹水深，使同一結構在不同時段呈現不同透流狀態；越頂自由面和波浪運動仍須另行解析，不能把水下高度直接視為減波量。 假設水位2.0m、堤頂1.2m，淹水深0.8m；入射波高1.6m時相對淹水深0.50，非透射係數。 ~Submergence depends on crest and water elevations on one datum, not chart depth alone. Tide, surge and settlement change relative cover, so the same structure experiences different transmission states. The overtopping free surface and wave motion still need separate analysis; water cover cannot directly represent the amount of wave reduction or the resulting shoreline response. Assume water level2.0m and crest1.2m. Cover is0.8m; relative to incident height1.6m the ratio is0.50, not transmission. ",
+      "model": "教學假設，非操作設定或設計允收值。假設水位2.0m、堤頂1.2m，淹水深0.8m；入射波高1.6m時相對淹水深0.50，非透射係數。~Teaching assumptions, not operating settings or design acceptance limits. Assume water level2.0m and crest1.2m. Cover is0.8m; relative to incident height1.6m the ratio is0.50, not transmission.",
+      "verify": "將潮位、堤頂測量及海床資料轉到同一高程基準，保留每筆測量時間。分別列出高低水位時的覆水範圍，並檢查堤頂起伏，避免以平均值掩蓋局部深缺口。~Convert tide, crest and seabed observations to one vertical datum and retain timestamps. List cover at different levels and inspect crest irregularities, ensuring an average elevation does not conceal a locally deep notch or missing section. ",
+      "failure": "不同高程基準相混可能把實際淹沒堤頂算成出水，直接改變選用的水理機制。局部低點若未量到，也可能集中越頂流而造成後側沖刷。~Mixed elevation datums can turn a submerged crest into an apparently emerged one and select the wrong hydraulic mechanism. An unmeasured low point may also concentrate overtopping flow and cause localized scour behind the structure.",
+      "misconception": "相對淹水深等於波高透射係數且不受堤寬影響。~Relative submergence equals the wave-height transmission coefficient regardless of crest width.",
+      "practice": "將潮位、堤頂測量及海床資料轉到同一高程基準，保留每筆測量時間。分別列出高低水位時的覆水範圍，並檢查堤頂起伏，避免以平均值掩蓋局部深缺口。~Convert tide, crest and seabed observations to one vertical datum and retain timestamps. List cover at different levels and inspect crest irregularities, ensuring an average elevation does not conceal a locally deep notch or missing section."
+    },
+    {
+      "anchor": "波高與能量透射~Wave-height and energy transmission",
+      "title": "波高與能量透射~Wave-height and energy transmission",
+      "mechanism": "透射波高比描述振幅變化，能量通量還涉及群速度與水深，不能直接以相同百分比換算。量測必須分離入射反射及透射成分，兩側頻譜也可能因破波而改變；只有明定波型與能量定義後，才可比較堤前與堤後的水理量。 假設Hi=2m、Ht=0.8m，Kt=0.40；相同密度且群速比Cgt/Cgi=0.80時，能量通量比Kt²×0.80=0.128。 ~Wave-height transmission describes amplitude, whereas energy flux also depends on group velocity and depth. Measurements must separate incident, reflected and transmitted components, and breaking can change the spectrum. Only after defining wave type and energy consistently can measurements on either side be compared; an amplitude percentage is not automatically an energy percentage. Assume Hi=2m and Ht=0.8m, giving Kt=0.40. Equal density and group-speed ratio0.80 give energy-flux ratio Kt²×0.80=0.128. ",
+      "model": "教學假設，非操作設定或設計允收值。假設Hi=2m、Ht=0.8m，Kt=0.40；相同密度且群速比Cgt/Cgi=0.80時，能量通量比Kt²×0.80=0.128。~Teaching assumptions, not operating settings or design acceptance limits. Assume Hi=2m and Ht=0.8m, giving Kt=0.40. Equal density and group-speed ratio0.80 give energy-flux ratio Kt²×0.80=0.128.",
+      "verify": "配置可區分反射的多點波面量測，使用一致的分析時窗與頻譜定義。另求兩側群速度並說明水深假設，檢查高頻重分配，不能只比較兩支儀器顯示的最大峰值。~Use multiple wave gauges to separate reflection with consistent windows and spectral definitions. Determine group velocities on both sides and state depth assumptions, checking redistributed high-frequency energy rather than comparing only the maximum displayed by two sensors. ",
+      "failure": "把堤前駐波腹當成入射波高會低估透射係數，兩側群速差若被忽略則錯估能量。即使整體透射降低，缺口附近仍可能有局部高波。~Mistaking a standing-wave antinode for incident height understates transmission, and neglected group-speed differences distort energy estimates. Lower overall transmission can still coexist with locally high waves near a gap in the breakwater.",
+      "misconception": "波高減少六成就必然表示能量通量也只減少六成。~A sixty-percent reduction in wave height always means exactly sixty-percent less energy flux.",
+      "practice": "配置可區分反射的多點波面量測，使用一致的分析時窗與頻譜定義。另求兩側群速度並說明水深假設，檢查高頻重分配，不能只比較兩支儀器顯示的最大峰值。~Use multiple wave gauges to separate reflection with consistent windows and spectral definitions. Determine group velocities on both sides and state depth assumptions, checking redistributed high-frequency energy rather than comparing only the maximum displayed by two sensors."
+    },
+    {
+      "anchor": "破波水深尺度~Depth-limited breaking scale",
+      "title": "破波水深尺度~Depth-limited breaking scale",
+      "mechanism": "淺水破波受波陡、坡度與水深限制，常見破波指標只是特定資料範圍下的近似。潛堤頂部流速和波形會改變，短堤頂也未必達到平衡破波；教學比例應用於辨識量級，不能被當成任何不規則波條件下的固定上限。 假設選用破波指標γb=0.78、水深h=2m，Hb=γbh=1.56m；此係數非所有潛堤的通用設計值。 ~Shallow breaking depends on steepness, bed slope and depth, and a breaker index approximates a limited range of observations. Crest currents and wave shape change over a submerged structure, and a short crest may not develop equilibrium breaking. A teaching ratio establishes scale rather than a universal ceiling for every irregular-wave condition. Assume a selected breaker indexγb=0.78 at depth2m. Hb=γbh=1.56m; the index is not a universal submerged-breakwater design value. ",
+      "model": "教學假設，非操作設定或設計允收值。假設選用破波指標γb=0.78、水深h=2m，Hb=γbh=1.56m；此係數非所有潛堤的通用設計值。~Teaching assumptions, not operating settings or design acceptance limits. Assume a selected breaker indexγb=0.78 at depth2m. Hb=γbh=1.56m; the index is not a universal submerged-breakwater design value.",
+      "verify": "在示意剖面上標出實際水深定義，對比不同水位和波週期下的破波位置。保留試驗中未破波與碎波資料，說明所選指標的來源範圍，不把觀察外的海況直接外推。~Mark the depth definition on a section and compare breaking positions for different levels and periods. Retain both broken and unbroken observations, state the evidence range for the chosen index, and avoid extrapolating it directly to untested seas. ",
+      "failure": "水位升高可能使原先碎波的位置消失，波能穿過堤頂後才耗散。若一直使用同一破波位置和係數，後側波況與岸灘受力可能被系統性低估。~Rising water can remove a former breaking location so that energy dissipates only after crossing the crest. Keeping the same breaking point and coefficient can systematically understate lee-side waves and beach exposure during higher water.",
+      "misconception": "只要堤頂水深固定所有週期和波形都在同一高度破波。~At fixed crest depth every period and waveform breaks at exactly the same height.",
+      "practice": "在示意剖面上標出實際水深定義，對比不同水位和波週期下的破波位置。保留試驗中未破波與碎波資料，說明所選指標的來源範圍，不把觀察外的海況直接外推。~Mark the depth definition on a section and compare breaking positions for different levels and periods. Retain both broken and unbroken observations, state the evidence range for the chosen index, and avoid extrapolating it directly to untested seas."
+    },
+    {
+      "anchor": "缺口連續流量~Gap-flow continuity",
+      "title": "缺口連續流量~Gap-flow continuity",
+      "mechanism": "堤後水位抬升產生回流，缺口可能集中流量並形成局部沖刷或游泳風險。面積平均流速只能滿足連續方程，不代表最大紊流或近床速度；流向會隨潮波改變，分析需要把堤段越頂輸入與缺口排出放在同一收支框架。 假設穩定缺口流量30m³/s、有效過水面積20m²，平均v=Q/A=1.50m/s；不等於局部最大流速。 ~Setup behind a structure can drive return flow through gaps and concentrate scour or exposure. Section-mean velocity satisfies continuity but is not the maximum turbulent or near-bed velocity. Direction changes with tides and waves, so crest inflow and gap outflow must be evaluated within one water budget rather than as unrelated local observations. Assume steady gap discharge30m³/s through effective area20m². Mean v=Q/A=1.50m/s, not the local maximum velocity. ",
+      "model": "教學假設，非操作設定或設計允收值。假設穩定缺口流量30m³/s、有效過水面積20m²，平均v=Q/A=1.50m/s；不等於局部最大流速。~Teaching assumptions, not operating settings or design acceptance limits. Assume steady gap discharge30m³/s through effective area20m². Mean v=Q/A=1.50m/s, not the local maximum velocity.",
+      "verify": "沿缺口橫斷面量測速度與水深，積分流量並核對堤後水位變化。分別報告平均、近床和瞬時峰值，保存潮向與波況，避免把單點尖峰直接當成整斷面流量。~Measure velocity and depth across the gap, integrating discharge and comparing it with lee-side level change. Report means, near-bed values and peaks separately with tide and waves; one-point spikes cannot represent discharge over the entire section. ",
+      "failure": "斷面局部被砂堆堵塞時平均面積假設失效，剩餘通道流速可能增加。若儀器只放在緩流區，收支殘差會掩蓋真正的集中流和沖刷熱點。~Partial blockage by sediment invalidates the assumed area and can accelerate flow through the remaining opening. Instruments placed only in slow water conceal concentrated currents and scour hotspots behind apparently modest mean-flow observations.",
+      "misconception": "缺口平均流速可以直接當成每一個位置的瞬時最大流速。~The gap-average velocity directly gives the instantaneous maximum at every point.",
+      "practice": "沿缺口橫斷面量測速度與水深，積分流量並核對堤後水位變化。分別報告平均、近床和瞬時峰值，保存潮向與波況，避免把單點尖峰直接當成整斷面流量。~Measure velocity and depth across the gap, integrating discharge and comparing it with lee-side level change. Report means, near-bed values and peaks separately with tide and waves; one-point spikes cannot represent discharge over the entire section."
+    },
+    {
+      "anchor": "規則波能通量~Regular-wave energy flux",
+      "title": "規則波能通量~Regular-wave energy flux",
+      "mechanism": "波能公式必須說明波高代表規則波還是頻譜顯著波高，兩者係數不同。群速度傳遞能量而相速度描述波峰移動，混用會改變功率；入射角、反射和耗散也影響垂直結構方向的能流，單位寬度結果不能直接當成整座結構承受的總負荷。 假設規則線性波ρ=1025kg/m³、H=2m、Cg=5m/s，E=ρgH²/8=5027.6J/m²，P=ECg=25.138kW/m。 ~Wave-energy formulas must identify whether height is regular-wave height or spectral significant height because their coefficients differ. Group velocity transports energy while phase velocity follows crests. Incidence, reflection and dissipation also affect the normal energy flux, so a result per unit crest width does not directly describe total structural loading or impact pressure. Assume a regular linear wave:ρ=1025kg/m³, H=2m, Cg=5m/s. E=ρgH²/8=5027.6J/m² and P=25.138kW/m. ",
+      "model": "教學假設，非操作設定或設計允收值。假設規則線性波ρ=1025kg/m³、H=2m、Cg=5m/s，E=ρgH²/8=5027.6J/m²，P=ECg=25.138kW/m。~Teaching assumptions, not operating settings or design acceptance limits. Assume a regular linear wave:ρ=1025kg/m³, H=2m, Cg=5m/s. E=ρgH²/8=5027.6J/m² and P=25.138kW/m.",
+      "verify": "在計算表明列波高統計定義、密度及群速來源，確認每米寬度的方向。用能量收支比較反射透射與耗散；若改用顯著波高，重新選頻譜能量公式而不是保留原係數。~Record height convention, density and group-velocity derivation and define the direction of unit width. Compare reflected, transmitted and dissipated fluxes; when switching to significant height, select the corresponding spectral-energy formula instead of retaining the regular-wave coefficient. ",
+      "failure": "使用顯著波高卻套規則波係數會使能量差一倍，拿相速度代群速度又增加另一偏差。數值即使量綱正確，仍可能因統計定義不同而不可比較。~Using significant height in the regular-wave formula doubles the energy estimate, and substituting phase velocity adds another bias. Dimensionally correct numbers may still be incomparable because the underlying statistical definition is different.",
+      "misconception": "規則波高和顯著波高可直接代入同一能量係數而無差別。~Regular height and significant height can use the same energy coefficient without change.",
+      "practice": "在計算表明列波高統計定義、密度及群速來源，確認每米寬度的方向。用能量收支比較反射透射與耗散；若改用顯著波高，重新選頻譜能量公式而不是保留原係數。~Record height convention, density and group-velocity derivation and define the direction of unit width. Compare reflected, transmitted and dissipated fluxes; when switching to significant height, select the corresponding spectral-energy formula instead of retaining the regular-wave coefficient."
+    },
+    {
+      "anchor": "床面剪力無因次化~Dimensionless bed shear",
+      "title": "床面剪力無因次化~Dimensionless bed shear",
+      "mechanism": "潛堤改變波流剪力後可能引發近床輸砂，粒徑與相對密度決定顆粒重量尺度。希爾茲參數只把作用力無因次化，起動條件還受級配、床面形態與振盪流影響；不能由單一參數宣告侵蝕深度，亦不能跳過黏性細料與非黏性砂的不同機制。 假設τ=2Pa、ρs=2650、ρ=1025kg/m³、D=0.0005m，θ=τ/[(ρs−ρ)gD]=0.2509；未指定起動門檻。 ~Modified wave-current shear can mobilize sediment, with grain size and relative density setting the gravitational scale. The Shields parameter nondimensionalizes forcing; onset also depends on grading, bed form and oscillatory motion. One parameter does not give scour depth, and cohesive fines require a different treatment from the noncohesive grains assumed here. Assumeτ=2Pa,ρs=2650,ρ=1025kg/m³ and D=0.0005m. θ=τ/[(ρs−ρ)gD]=0.2509, without prescribing a motion threshold. ",
+      "model": "教學假設，非操作設定或設計允收值。假設τ=2Pa、ρs=2650、ρ=1025kg/m³、D=0.0005m，θ=τ/[(ρs−ρ)gD]=0.2509；未指定起動門檻。~Teaching assumptions, not operating settings or design acceptance limits. Assumeτ=2Pa,ρs=2650,ρ=1025kg/m³ and D=0.0005m. θ=τ/[(ρs−ρ)gD]=0.2509, without prescribing a motion threshold.",
+      "verify": "核對剪力是瞬時或週期平均以及粒徑代表值，對照原床級配與黏性。以床形和起動觀察檢驗假設，另做沖刷深度分析，不能把一個無因次比值直接換成挖深。~Check whether shear is instantaneous or cycle-averaged and identify representative size, grading and cohesion. Test assumptions against observed motion and bed form; analyze scour depth separately rather than converting one dimensionless ratio directly into an excavation depth. ",
+      "failure": "將黏土當成同粒徑砂會忽略顆粒間作用，僅取平均剪力又漏掉波峰短暫起動。錯誤起動判斷可能使原本穩定的基床保護假設突然失效。~Treating clay as sand of equal size omits interparticle forces, while mean shear can miss brief wave-driven motion. Incorrect onset interpretation may invalidate the assumed stability of the bed supporting or protecting the structure.",
+      "misconception": "希爾茲參數的數值本身就是預期海床沖刷深度。~The numerical Shields parameter directly equals the expected seabed scour depth.",
+      "practice": "核對剪力是瞬時或週期平均以及粒徑代表值，對照原床級配與黏性。以床形和起動觀察檢驗假設，另做沖刷深度分析，不能把一個無因次比值直接換成挖深。~Check whether shear is instantaneous or cycle-averaged and identify representative size, grading and cohesion. Test assumptions against observed motion and bed form; analyze scour depth separately rather than converting one dimensionless ratio directly into an excavation depth."
+    },
+    {
+      "anchor": "淺水傳播時間~Shallow-water propagation time",
+      "title": "淺水傳播時間~Shallow-water propagation time",
+      "mechanism": "長波相對水深很淺時，重力與水深控制傳播速度，可用來估計堤後區域的響應時間。這個近似不適用任意短波，亦未計底摩擦或水流影響；地形改變既影響速度也可能造成反射，因此傳播時間只是辨識訊號因果的一項線索。 假設線性淺水長波h=2m，c=√(gh)=4.429m/s；傳播100m約22.58s，需滿足水深遠小於波長。 ~For sufficiently long waves relative to depth, gravity and depth control propagation speed and give a response-time scale behind the structure. The approximation does not apply to arbitrary short waves and excludes friction and currents. Bathymetric changes affect speed and reflections, so travel time is only one clue for interpreting cause and effect in observations. Assume a linear shallow-water long wave at depth2m. c=√(gh)=4.429m/s;100m takes22.58s, requiring depth much smaller than wavelength. ",
+      "model": "教學假設，非操作設定或設計允收值。假設線性淺水長波h=2m，c=√(gh)=4.429m/s；傳播100m約22.58s，需滿足水深遠小於波長。~Teaching assumptions, not operating settings or design acceptance limits. Assume a linear shallow-water long wave at depth2m. c=√(gh)=4.429m/s;100m takes22.58s, requiring depth much smaller than wavelength.",
+      "verify": "使用觀測週期檢查淺水條件，再比較兩站訊號延遲與估算傳播時間。同步校正儀器時鐘並檢查流向，若延遲不符，先查反射與群波影響而非直接調整水深湊合。~Check the shallow-water condition using observed periods, then compare interstation delay with the estimate. Synchronize clocks and inspect current direction; investigate reflection and wave groups before changing assumed depth merely to force agreement with the recorded lag. ",
+      "failure": "儀器時間不同步會製造假的傳播速度，短波套長波公式則錯估延遲。把相關性峰值自動解釋為同一波列，還可能忽略反射訊號的替代來源。~Unsynchronized instruments create false travel speeds, and short waves modeled as long waves produce incorrect delays. Automatically interpreting a correlation peak as one traveling wave can also overlook reflections as an alternative signal source.",
+      "misconception": "所有海浪的傳播速度都只由水深決定而與波長無關。~Every ocean wave travels at a speed determined only by depth, regardless of wavelength.",
+      "practice": "使用觀測週期檢查淺水條件，再比較兩站訊號延遲與估算傳播時間。同步校正儀器時鐘並檢查流向，若延遲不符，先查反射與群波影響而非直接調整水深湊合。~Check the shallow-water condition using observed periods, then compare interstation delay with the estimate. Synchronize clocks and inspect current direction; investigate reflection and wave groups before changing assumed depth merely to force agreement with the recorded lag."
+    },
+    {
+      "anchor": "離岸幾何與岸線~Offshore geometry and shoreline response",
+      "title": "離岸幾何與岸線~Offshore geometry and shoreline response",
+      "mechanism": "堤長與離岸距離影響遮蔽區形狀，但岸線反應同時受波向、輸砂供應及缺口控制。幾何比例可以整理案例，不能直接預報連島砂洲或突出灘形成；功能比較還需確認結構淹水狀態及尺度，避免將出水防波堤經驗直接移植到潛堤。 假設堤長L=100m、離岸距X=200m，L/X=0.50；僅為幾何描述，不是連島砂洲必然形成的門檻。 ~Length and offshore distance influence the sheltered footprint, but wave direction, sediment supply and gaps also govern shoreline response. A geometric ratio organizes comparisons; it does not directly predict a salient or tombolo. Comparisons must account for submergence and scale rather than transferring emerged-breakwater experience directly to a submerged structure in a different sediment regime. Assume length100m and offshore distance200m. L/X=0.50 describes geometry only and is not a threshold guaranteeing tombolo formation. ",
+      "model": "教學假設，非操作設定或設計允收值。假設堤長L=100m、離岸距X=200m，L/X=0.50；僅為幾何描述，不是連島砂洲必然形成的門檻。~Teaching assumptions, not operating settings or design acceptance limits. Assume length100m and offshore distance200m. L/X=0.50 describes geometry only and is not a threshold guaranteeing tombolo formation.",
+      "verify": "在同一岸線基準下量堤長與距離，記錄波向分布、沿岸砂源和缺口位置。比較不同季節地形及鄰岸變化，將相似幾何但不同淹水條件的案例分開解讀。~Measure length and distance against a consistent shoreline reference and record directional waves, sediment supply and gaps. Compare seasonal and neighboring terrain, distinguishing geometrically similar cases whose submergence and transport conditions differ substantially from the site under study. ",
+      "failure": "某一波向下的堆砂可能在季風轉向後消失，上游攔砂也可能讓遮蔽區缺乏材料。只憑幾何比例許諾岸線效果，會忽略整段海岸的收支限制。~Accumulation under one wave direction may disappear after seasonal reversal, while updrift interception leaves little sand for the shelter. Geometry-only promises therefore ignore sediment-budget limitations across the wider coast and its changing wave climate.",
+      "misconception": "堤長與離岸距的比值足以唯一決定未來岸線形狀。~The length-to-offshore-distance ratio uniquely determines the future shoreline shape.",
+      "practice": "在同一岸線基準下量堤長與距離，記錄波向分布、沿岸砂源和缺口位置。比較不同季節地形及鄰岸變化，將相似幾何但不同淹水條件的案例分開解讀。~Measure length and distance against a consistent shoreline reference and record directional waves, sediment supply and gaps. Compare seasonal and neighboring terrain, distinguishing geometrically similar cases whose submergence and transport conditions differ substantially from the site under study."
+    },
+    {
+      "anchor": "堤頂沉陷與覆水~Crest settlement and water cover",
+      "title": "堤頂沉陷與覆水~Crest settlement and water cover",
+      "mechanism": "潛堤長期沉陷會增加覆水並改變波浪互動，不能只把沉陷看成材料方量問題。局部差異沉陷還形成優先過流通道，而透射對幾何的反應通常非線性；需要把結構監測、水位歷程與水理測試放在同一狀態描述中追蹤。 假設水位固定、原覆水0.8m，堤頂沉陷0.2m後覆水1.0m，增加25%；不能推論透射波高也增25%。 ~Settlement increases water cover and changes wave interaction rather than merely reducing material volume. Differential movement also creates preferred flow paths, while transmission often responds nonlinearly to geometry. Structural surveys, water-level history and hydraulic observations therefore need to describe the same evolving state; a percentage change in cover cannot determine an equal change in transmission. Assume fixed water level and original cover0.8m. Crest settlement0.2m raises cover to1.0m, a25% increase, not necessarily25% higher transmission. ",
+      "model": "教學假設，非操作設定或設計允收值。假設水位固定、原覆水0.8m，堤頂沉陷0.2m後覆水1.0m，增加25%；不能推論透射波高也增25%。~Teaching assumptions, not operating settings or design acceptance limits. Assume fixed water level and original cover0.8m. Crest settlement0.2m raises cover to1.0m, a25% increase, not necessarily25% higher transmission.",
+      "verify": "重測堤頂縱剖面並連結共同水位，分離均勻沉陷與局部凹槽。以相近波況比較前後透射，保留地基與構件位移紀錄，確認變化是否來自沉陷而非潮位差。~Resurvey the crest against a shared water datum, separating uniform settlement from local troughs. Compare transmission under similar waves and retain foundation and unit-movement records, checking whether the observed change results from settlement rather than different tidal levels. ",
+      "failure": "量測只追最高點會漏掉主要低槽，平均沉陷很小仍可能有集中水流。不同潮位的透射資料若直接比較，則可能把水位造成的差別誤認為結構損壞。~Tracking only crest high points misses controlling troughs, allowing concentrated flow despite small mean settlement. Comparing transmission at different tides can instead mistake a water-level effect for deterioration of the physical structure.",
+      "misconception": "覆水深度增加百分比必定等於透射波高增加百分比。~The percentage increase in water cover must equal the percentage increase in transmitted height.",
+      "practice": "重測堤頂縱剖面並連結共同水位，分離均勻沉陷與局部凹槽。以相近波況比較前後透射，保留地基與構件位移紀錄，確認變化是否來自沉陷而非潮位差。~Resurvey the crest against a shared water datum, separating uniform settlement from local troughs. Compare transmission under similar waves and retain foundation and unit-movement records, checking whether the observed change results from settlement rather than different tidal levels."
+    },
+    {
+      "anchor": "數值步長與收斂~Numerical timestep and convergence",
+      "title": "數值步長與收斂~Numerical timestep and convergence",
+      "mechanism": "地形整合模型需要同時考慮波流與泥沙的數值尺度，計算能運行不代表已收斂。特徵速度限制顯式步長，但邊界、乾濕轉換及所用格式可能更嚴；網格與步長應分別細化，並保持物理邊界一致，才能分辨數值擴散與真實地形平滑。 假設一維顯式淺水示意U=2m/s、h=2m、Δt=0.5s、Δx=5m，C=(U+√gh)Δt/Δx=0.6429；非穩定保證。 ~A morphology model must resolve wave-current and sediment scales, and successful execution does not establish convergence. Characteristic speed constrains an explicit timestep, while boundaries, wetting and drying or the selected scheme may be more restrictive. Refine space and time separately under unchanged physical boundaries to distinguish numerical diffusion from genuine smoothing of coastal terrain. Assume a one-dimensional explicit shallow-water illustration: U=2m/s,h=2m,Δt=0.5s,Δx=5m. C=(U+√gh)Δt/Δx=0.6429, not guaranteed stability. ",
+      "model": "教學假設，非操作設定或設計允收值。假設一維顯式淺水示意U=2m/s、h=2m、Δt=0.5s、Δx=5m，C=(U+√gh)Δt/Δx=0.6429；非穩定保證。~Teaching assumptions, not operating settings or design acceptance limits. Assume a one-dimensional explicit shallow-water illustration: U=2m/s,h=2m,Δt=0.5s,Δx=5m. C=(U+√gh)Δt/Δx=0.6429, not guaranteed stability.",
+      "verify": "逐區檢查最小網格、最大特徵速度與時間步長，確認採用格式的條件。另做網格和步長細化，核對水量與泥沙守恆殘差，保存未收斂區域而不只展示平滑的彩色圖。~Check local minimum spacing, maximum characteristic speed and timestep against the actual scheme. Refine grid and time separately, audit water and sediment residuals, and retain unconverged regions rather than displaying only smooth and visually persuasive contour maps. ",
+      "failure": "平均網格符合條件仍可能在小網格區失穩，過度數值擴散則可能掩蓋缺口流。圖像平滑不代表守恆正確，錯誤地形趨勢甚至可能看起來很合理。~A satisfactory average grid hides instability in smaller cells, while excessive diffusion conceals gap currents. Smooth graphics do not establish conservation, and an incorrect morphological trend can still appear visually plausible to an uncritical observer.",
+      "misconception": "模型圖形平滑且沒有報錯就代表網格與時間步長已收斂。~Smooth output without error messages proves that grid and timestep convergence is complete.",
+      "practice": "逐區檢查最小網格、最大特徵速度與時間步長，確認採用格式的條件。另做網格和步長細化，核對水量與泥沙守恆殘差，保存未收斂區域而不只展示平滑的彩色圖。~Check local minimum spacing, maximum characteristic speed and timestep against the actual scheme. Refine grid and time separately, audit water and sediment residuals, and retain unconverged regions rather than displaying only smooth and visually persuasive contour maps."
+    }
+  ],
+  "title": "離岸潛堤地形整合~Submerged-breakwater coastal integration",
+  "discipline": "water-coasts",
+  "family": "water",
+  "summary": "連結潛堤越頂透射缺口流與海岸地形的相互作用。課程從邊界辨識與資料整理走到水理量化、構造介面及驗證紀錄；每一步把計算結果連回可量測的證據。十個不同單元分別處理關鍵機制，不以名義尺寸或單一通過率代替整體工程判斷，並明列合成算例與現地資料的差別。~Connect submerged-breakwater transmission, gap currents and evolving coastal morphology. The course moves from boundary identification and evidence to hydraulic quantification, structural interfaces and verification records. Ten distinct units connect each calculated quantity to measurable evidence. Nominal geometry or a single pass rate does not establish whole-system performance, and synthetic teaching examples remain separate from field observations.",
+  "history": "潛堤教學需要同時閱讀結構水理與地形監測，而不能以單一工程照片代表因果。美國官方目錄列二〇〇二年海岸工程手冊，香港手冊另整理海事結構方法並持續公布勘誤。荷蘭二〇一一年沙引擎是自然砂移動的比較案例，不是假稱有本課潛堤。錫爾迪金二〇一三年報告記錄博斯工程後的剖面與鄰岸變化，可用來討論岩礁、補灘和觀測期之間的關聯。紐比金離岸防波堤只比較遮蔽功能，沒有宣稱與博斯具有相同淹水幾何。所有透射、流量與剪力值均為合成教學情境。~Submerged-breakwater teaching requires structural hydraulics together with morphology monitoring; one project photograph cannot establish causation. The official US catalogue lists its2002 coastal manual, while Hong Kong maintains maritime guidance and corrigenda. The2011 Sand Motor compares natural sediment movement and is not claimed to contain the submerged structure modeled here. Ceredigion’s2013 report records profiles and neighboring changes after Borth works, supporting discussion of reefs, nourishment and observation periods. Newbiggin provides a sheltering-function comparison, without claiming identical submergence geometry. Every transmission, discharge and shear value in these lessons is a synthetic teaching assumption.",
+  "example": "以下為原創合成算例，不是地標工程的實測或推薦操作值。教學假設，非操作設定或設計允收值。假設水位2.0m、堤頂1.2m，淹水深0.8m；入射波高1.6m時相對淹水深0.50，非透射係數。假設水位由2.0升至2.2m、堤頂仍1.2m，覆水0.8增至1.0m，增加25%；相同1.6m入射波的相對覆水由0.50變0.625，仍不能推出新的透射量。重新計算前先列固定條件、單位、適用尺度及可能失效的邊界。把模型敏感度與測量誤差分開，不能將單一參數變化直接當成工程風險或壽命比例。比較兩次結果後，記錄還需要哪些獨立證據，並由負責專業人員判斷適用性。~This original synthetic example is neither a landmark measurement nor a recommended operating value. Teaching assumptions, not operating settings or design acceptance limits. Assume water level2.0m and crest1.2m. Cover is0.8m; relative to incident height1.6m the ratio is0.50, not transmission. Raising level from2.0 to2.2m at fixed crest1.2m increases cover from0.8 to1.0m by25%. Relative cover at unchanged1.6m incident height changes from0.50 to0.625, without determining a new transmission coefficient. Before recalculating, list fixed conditions, units, applicable scale and boundaries that could fail. Separate model sensitivity from measurement uncertainty: a parameter change does not directly give a proportional change in engineering risk or service life. Compare the results, record independent evidence still needed, and have the responsible specialist determine applicability.",
+  "facts": [
+    "教學假設，非操作設定或設計允收值。假設水位2.0m、堤頂1.2m，淹水深0.8m；入射波高1.6m時相對淹水深0.50，非透射係數。~Teaching assumptions, not operating settings or design acceptance limits. Assume water level2.0m and crest1.2m. Cover is0.8m; relative to incident height1.6m the ratio is0.50, not transmission.",
+    "教學假設，非操作設定或設計允收值。假設Hi=2m、Ht=0.8m，Kt=0.40；相同密度且群速比Cgt/Cgi=0.80時，能量通量比Kt²×0.80=0.128。~Teaching assumptions, not operating settings or design acceptance limits. Assume Hi=2m and Ht=0.8m, giving Kt=0.40. Equal density and group-speed ratio0.80 give energy-flux ratio Kt²×0.80=0.128.",
+    "教學假設，非操作設定或設計允收值。假設選用破波指標γb=0.78、水深h=2m，Hb=γbh=1.56m；此係數非所有潛堤的通用設計值。~Teaching assumptions, not operating settings or design acceptance limits. Assume a selected breaker indexγb=0.78 at depth2m. Hb=γbh=1.56m; the index is not a universal submerged-breakwater design value.",
+    "教學假設，非操作設定或設計允收值。假設穩定缺口流量30m³/s、有效過水面積20m²，平均v=Q/A=1.50m/s；不等於局部最大流速。~Teaching assumptions, not operating settings or design acceptance limits. Assume steady gap discharge30m³/s through effective area20m². Mean v=Q/A=1.50m/s, not the local maximum velocity.",
+    "教學假設，非操作設定或設計允收值。假設規則線性波ρ=1025kg/m³、H=2m、Cg=5m/s，E=ρgH²/8=5027.6J/m²，P=ECg=25.138kW/m。~Teaching assumptions, not operating settings or design acceptance limits. Assume a regular linear wave:ρ=1025kg/m³, H=2m, Cg=5m/s. E=ρgH²/8=5027.6J/m² and P=25.138kW/m.",
+    "教學假設，非操作設定或設計允收值。假設τ=2Pa、ρs=2650、ρ=1025kg/m³、D=0.0005m，θ=τ/[(ρs−ρ)gD]=0.2509；未指定起動門檻。~Teaching assumptions, not operating settings or design acceptance limits. Assumeτ=2Pa,ρs=2650,ρ=1025kg/m³ and D=0.0005m. θ=τ/[(ρs−ρ)gD]=0.2509, without prescribing a motion threshold."
+  ],
+  "timeline": [
+    {
+      "year": "2002",
+      "event": "美國官方目錄列海岸過程與結構手冊~US official catalogue lists coastal-process and structure manuals"
+    },
+    {
+      "year": "2011",
+      "event": "荷蘭沙引擎建立自然泥沙再分布比較案例~The Dutch Sand Motor establishes a natural sediment-redistribution comparison"
+    },
+    {
+      "year": "2013",
+      "event": "錫爾迪金報告檢視博斯工程與鄰岸地形~Ceredigion monitoring examines Borth works and neighboring morphology"
+    }
+  ],
+  "codes": [
+    "香港海港工程設計手冊第四部，海堤與防波堤~Hong Kong Port Works Design Manual Part4, seawalls and breakwaters",
+    "海岸工程手冊EM1110-2-1100，海岸過程與結構分冊~Coastal Engineering Manual EM1110-2-1100, coastal-process and structure parts"
+  ],
+  "landmarks": [
+    "博斯海岸岩礁：潛堤地形比較~Borth coastal reef: submerged-structure comparison",
+    "紐比金離岸防波堤：功能比較~Newbiggin offshore breakwater: functional comparison"
+  ],
+  "place": {
+    "name": "博斯公共海岸地形背景區~Borth public coastal morphology context",
+    "country": "英國~United Kingdom",
+    "lat": 52.49,
+    "lng": -4.05,
+    "query": "Borth coastal reef Wales"
+  },
+  "sources": [
+    {
+      "key": "pwdm",
+      "title": "香港海港工程設計手冊",
+      "titleEn": "Hong Kong Port Works Design Manual",
+      "publisher": "Hong Kong CEDD",
+      "url": "https://www.cedd.gov.hk/eng/publications/ceo/pwdm/index.html",
+      "sourceType": "primary",
+      "scope": "官方列海堤防波堤、碼頭及海灘分冊和歷次勘誤；實際設計須核對相應最新版，算例不宣稱合規。",
+      "scopeEn": "Official index lists seawall/breakwater, pier and beach parts and corrigenda; actual design needs the applicable current issue and examples do not claim compliance."
+    },
+    {
+      "key": "cem",
+      "title": "海岸工程手冊官方書目",
+      "titleEn": "Coastal Engineering Manual official catalogue",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/636F617374616C20656E67696E656572696E67/",
+      "sourceType": "primary",
+      "scope": "官方索引列二〇〇二年分冊及海岸過程與設計範圍；直接頁面拒絕存取，未宣稱全文核閱。",
+      "scopeEn": "Official indexed catalogue lists 2002 parts and coastal-process/design scope; direct access was denied, so full-text review is not claimed."
+    },
+    {
+      "key": "borth-report",
+      "title": "錫爾迪金海灘剖面監測報告",
+      "titleEn": "Ceredigion Beach Profile Monitoring2012–2013",
+      "publisher": "Ceredigion County Council",
+      "url": "https://www.ceredigion.gov.uk/media/ke0fsyzz/ceredigion-beach-profile-monitoring-volume-2012-2013.pdf",
+      "sourceType": "primary",
+      "scope": "二〇一三年十月報告記錄博斯岩礁、補灘與鄰岸變化；只代表該調查期，不推稱現況。",
+      "scopeEn": "October2013 monitoring report describes Borth reef, nourishment and adjacent change; it represents that survey period, not present conditions."
+    },
+    {
+      "key": "sandmotor",
+      "title": "荷蘭沙引擎養灘工程",
+      "titleEn": "The Sand Motor",
+      "publisher": "Rijkswaterstaat",
+      "url": "https://www.rijkswaterstaat.nl/en/projects/iconic-structures/the-sand-motor",
+      "sourceType": "primary",
+      "scope": "主管機關確認二〇一一年沙引擎與自然搬運機制；不將單一案例效果普遍化。",
+      "scopeEn": "Owner confirms the 2011 Sand Motor and natural redistribution; outcomes from one project are not universalized."
+    },
+    {
+      "key": "newbiggin",
+      "title": "紐比金鄰里計畫海岸背景",
+      "titleEn": "Newbiggin Neighbourhood Plan coastal context",
+      "publisher": "Newbiggin by the Sea Town Council",
+      "url": "https://www.newbiggintowncouncil.gov.uk/wp-content/uploads/2023/02/01-Newbiggin-by-the-Sea-Submission-Draft-Plan.pdf",
+      "sourceType": "primary",
+      "scope": "地方主管機關說明補砂與離岸防波堤；用來比較海岸功能，不推定本課消波塊或沉箱實際用於此處。",
+      "scopeEn": "The authority describes sand recharge and an offshore breakwater; used for coastal-function comparison, without assuming course armour units or caissons were used there."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Hong Kong CEDD",
+      "nameEn": "Hong Kong CEDD",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.cedd.gov.hk/eng/publications/ceo/pwdm/index.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方列海堤防波堤、碼頭及海灘分冊和歷次勘誤；實際設計須核對相應最新版，算例不宣稱合規。",
+      "roleEn": "Official index lists seawall/breakwater, pier and beach parts and corrigenda; actual design needs the applicable current issue and examples do not claim compliance."
+    },
+    {
+      "name": "US Army Corps of Engineers",
+      "nameEn": "US Army Corps of Engineers",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.publications.usace.army.mil/USACE-Publications/Engineer-Manuals/u43544q/636F617374616C20656E67696E656572696E67/",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方索引列二〇〇二年分冊及海岸過程與設計範圍；直接頁面拒絕存取，未宣稱全文核閱。",
+      "roleEn": "Official indexed catalogue lists 2002 parts and coastal-process/design scope; direct access was denied, so full-text review is not claimed."
+    }
+  ],
+  "related": [
+    "b281",
+    "b285"
+  ],
+  "architectureNodes": [
+    [
+      "淹水深與共同基準",
+      "Submergence and shared datum"
+    ],
+    [
+      "破波水深尺度",
+      "Depth-limited breaking scale"
+    ],
+    [
+      "規則波能通量",
+      "Regular-wave energy flux"
+    ],
+    [
+      "淺水傳播時間",
+      "Shallow-water propagation time"
+    ],
+    [
+      "數值步長與收斂",
+      "Numerical timestep and convergence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -126,5 +126,24 @@
     "Third-party browser assets and dependency lockfiles are included; node_modules is installed from the lockfile.",
     "Engineering examples are synthetic teaching models with stated assumptions; arithmetic review is not site design or code-compliance certification."
   ],
-  "canonicalCurriculumSHA256": "154189df6d885eb2cfd0cbd3463c58aac62c6f9a824c9eff8225e5f87dac2ed5"
+  "canonicalCurriculumSHA256": "154189df6d885eb2cfd0cbd3463c58aac62c6f9a824c9eff8225e5f87dac2ed5",
+  "maintenanceFix": {
+    "date": "2026-10-21",
+    "id": "macgyver-python-detection-1",
+    "file": "macgyver.sh",
+    "cause": "doctor attempted an empty command when no Python 3.10+ interpreter was found",
+    "changes": [
+      "Guard model inventory when interpreter is unavailable",
+      "Prefer MACGYVER_PYTHON then active CONDA_PREFIX interpreter before PATH",
+      "Print selected interpreter version and path",
+      "Use configured MODEL_DIR for model inventory"
+    ],
+    "regressions": {
+      "command": "python3 -m unittest tests.test_macgyver_shell -v",
+      "tests": 7,
+      "status": "PASS",
+      "scope": "Isolated executable Bash subprocesses with local Git/SSH/Node mocks; no remote upload, physical Mac or Bash 3.2 claim"
+    },
+    "baselineGates": "Prior V14 curriculum, frontend, offline and independent review validations remain applicable; no app or curriculum data changed."
+  }
 }

@@ -1,0 +1,1086 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_WITH_TRANSPORT_DIAGNOSTIC",
+  "startedAt": "2026-10-21T05:43:09.380Z",
+  "test": "Actual headless Chromium browser; simulated viewports, not physical devices",
+  "limitations": [
+    "No physical phone/tablet, Safari or Firefox was tested.",
+    "Arabic checks cover bundled interface strings and RTL layout; course text may remain canonical English, not pretranslated Arabic.",
+    "AI entry and local lesson mode controls are checked; no model weights are downloaded and no generative service is invoked.",
+    "Local HTTP and file:// only; this is not a live deployment or network-performance benchmark.",
+    "Chromium emitted a post-read cancellation for one fully consumed, checksum-verified payload. Raw failed-resource and CDP diagnostics are retained; this report does not claim zero network warnings."
+  ],
+  "staticRuntime": "Loopback server serves runtime-mode.js with MG_STATIC_MODE=true, matching static export; source file remains untouched.",
+  "browser": {
+    "engine": "Chromium",
+    "version": "134.0.6998.35",
+    "headless": true,
+    "playwrightModule": "/workspace/scratch/79022019d85f/v15-browser-qa/node_modules/playwright/index.mjs",
+    "deviceMethod": "Playwright viewport/touch/mobile emulation; not physical hardware"
+  },
+  "sourceHashes": {
+    "app.bundle.js": "dfd80767acbe697f1d97f9095152930d976b256fdd917f05a6dc9f3d78c78741",
+    "offline-data.js": "496c84d15a9418065b3d9e476313618247de1eb1a5c08362dd5f5143ac355d03",
+    "bootstrap.js": "2d0a7fba167177bce410889d34cc1ee91c82d96a14f6f1bcdfcd94251ef018dd",
+    "curriculum-loader.js": "33c1a7adc722ed52616317f0900cff92e962e910469da61674beb6700d823fe1",
+    "lazy-index-codec.js": "34cbe23253f02e2df073b32359efdd8ee139e61aae6f7e6b160e527b3a58b691",
+    "workspace-v12.css": "2eef5e5b8c3467e976a3a26b60986358858b4af1a0c9be5e00872d8b6b116b82",
+    "style.css": "bd41f495812b0745c82b2918ff44bf925e796ad649c6b9d7795e750589ff8c4d",
+    "data/lazy/index.compact.json": "53420cba9f560412f52a8c56f2886e8240be6e237b87b0832eff14d7d1d1dca8"
+  },
+  "scenarios": [
+    {
+      "id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "isMobile": false,
+      "hasTouch": false,
+      "mode": "HTTP static",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Homepage entry clickable with index response held",
+          "status": "PASS"
+        },
+        {
+          "name": "Home loads zero course/resource bodies",
+          "status": "PASS",
+          "payloadRequests": 0
+        },
+        {
+          "name": "b296 target-only lazy loading and 40-step catalogue",
+          "status": "PASS",
+          "courseRequests": [
+            "http://127.0.0.1:35543/data/lazy/courses/b296-7e7c84de658d18bb.json"
+          ],
+          "resourceRequests": [
+            "http://127.0.0.1:35543/data/lazy/resources/b296-35d02444ce42e207.json"
+          ]
+        },
+        {
+          "name": "Workshop controls and quiz click/feedback",
+          "status": "PASS"
+        },
+        {
+          "name": "Traditional Chinese / English lesson headings and Arabic RTL interface",
+          "status": "PASS",
+          "arabicScope": "UI dictionary and layout; no claim of pretranslated Arabic lesson content"
+        },
+        {
+          "name": "AI mentor entry, mode selector and question control",
+          "status": "PASS",
+          "inference": "Not invoked; no model downloads"
+        }
+      ],
+      "layouts": [
+        {
+          "page": "delayed-index-home",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "",
+          "language": "zh-Hant",
+          "offenders": []
+        },
+        {
+          "page": "home-zh",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "b296-brief-zh",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-zh-TW",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-en",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        },
+        {
+          "page": "workshop-ar",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "rtl",
+          "language": "ar",
+          "offenders": []
+        },
+        {
+          "page": "AI-entry",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        }
+      ],
+      "screenshots": [
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-delayed-index-home.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-home-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-b296-brief-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-workshop-zh-TW.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-workshop-en.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-workshop-ar.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-AI-entry.png"
+      ],
+      "requests": [
+        "http://127.0.0.1:35543/index.html",
+        "http://127.0.0.1:35543/style.css",
+        "http://127.0.0.1:35543/media.css",
+        "http://127.0.0.1:35543/related.css",
+        "http://127.0.0.1:35543/places.css",
+        "http://127.0.0.1:35543/membership.css",
+        "http://127.0.0.1:35543/workspace-v10.css",
+        "http://127.0.0.1:35543/workspace-v12.css",
+        "http://127.0.0.1:35543/hero-icons.css",
+        "http://127.0.0.1:35543/vendors.css",
+        "http://127.0.0.1:35543/learning-map.css",
+        "http://127.0.0.1:35543/world-v11.css",
+        "http://127.0.0.1:35543/assets/brand/logo-static.svg",
+        "http://127.0.0.1:35543/bootstrap.js",
+        "http://127.0.0.1:35543/config.js",
+        "http://127.0.0.1:35543/runtime-mode.js",
+        "http://127.0.0.1:35543/offline-runtime.js",
+        "http://127.0.0.1:35543/app.bundle.js",
+        "http://127.0.0.1:35543/data/lazy/index.compact.json",
+        "http://127.0.0.1:35543/data/project-icons.json",
+        "http://127.0.0.1:35543/data/pricing.json",
+        "http://127.0.0.1:35543/api/billing/config",
+        "http://127.0.0.1:35543/assets/photos/wafers.jpg",
+        "http://127.0.0.1:35543/assets/photos/v3-lithography-stepper.jpg",
+        "http://127.0.0.1:35543/assets/photos/v3-chingkuo-cc.jpg",
+        "http://127.0.0.1:35543/assets/photos/v3-apache.jpg",
+        "http://127.0.0.1:35543/assets/photos/v3-haikun.jpg",
+        "http://127.0.0.1:35543/data/fx.json",
+        "http://127.0.0.1:35543/data/lazy/courses/b296-7e7c84de658d18bb.json",
+        "http://127.0.0.1:35543/data/lazy/resources/b296-35d02444ce42e207.json",
+        "http://127.0.0.1:35543/data/markets.json",
+        "http://127.0.0.1:35543/i18n/ar.js"
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failedResources": [
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "expectedResourceFailures": [
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "status": 404,
+          "reason": "Expected absence of optional billing API on a static export"
+        },
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "error": "net::ERR_ABORTED",
+          "reason": "Expected absence of optional billing API on a static export"
+        }
+      ],
+      "networkFailures": [
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "requestId": "65.39",
+          "timestamp": 18498.041012,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ],
+      "blockedExternal": [],
+      "unexpectedResourceFailures": []
+    },
+    {
+      "id": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "isMobile": true,
+      "hasTouch": true,
+      "mode": "HTTP static",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Homepage entry clickable with index response held",
+          "status": "PASS"
+        },
+        {
+          "name": "Home loads zero course/resource bodies",
+          "status": "PASS",
+          "payloadRequests": 0
+        },
+        {
+          "name": "b296 target-only lazy loading and 40-step catalogue",
+          "status": "PASS",
+          "courseRequests": [
+            "http://127.0.0.1:35543/data/lazy/courses/b296-7e7c84de658d18bb.json"
+          ],
+          "resourceRequests": [
+            "http://127.0.0.1:35543/data/lazy/resources/b296-35d02444ce42e207.json"
+          ]
+        },
+        {
+          "name": "Workshop controls and quiz click/feedback",
+          "status": "PASS"
+        },
+        {
+          "name": "Traditional Chinese / English lesson headings and Arabic RTL interface",
+          "status": "PASS",
+          "arabicScope": "UI dictionary and layout; no claim of pretranslated Arabic lesson content"
+        },
+        {
+          "name": "AI mentor entry, mode selector and question control",
+          "status": "PASS",
+          "inference": "Not invoked; no model downloads"
+        }
+      ],
+      "layouts": [
+        {
+          "page": "delayed-index-home",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "",
+          "language": "zh-Hant",
+          "offenders": []
+        },
+        {
+          "page": "home-zh",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "b296-brief-zh",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-zh-TW",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-en",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        },
+        {
+          "page": "workshop-ar",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "rtl",
+          "language": "ar",
+          "offenders": []
+        },
+        {
+          "page": "AI-entry",
+          "viewport": 390,
+          "width": 390,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        }
+      ],
+      "screenshots": [
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-delayed-index-home.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-home-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-b296-brief-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-workshop-zh-TW.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-workshop-en.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-workshop-ar.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-AI-entry.png"
+      ],
+      "requests": [
+        "http://127.0.0.1:35543/index.html",
+        "http://127.0.0.1:35543/style.css",
+        "http://127.0.0.1:35543/media.css",
+        "http://127.0.0.1:35543/related.css",
+        "http://127.0.0.1:35543/places.css",
+        "http://127.0.0.1:35543/membership.css",
+        "http://127.0.0.1:35543/workspace-v10.css",
+        "http://127.0.0.1:35543/workspace-v12.css",
+        "http://127.0.0.1:35543/hero-icons.css",
+        "http://127.0.0.1:35543/vendors.css",
+        "http://127.0.0.1:35543/learning-map.css",
+        "http://127.0.0.1:35543/world-v11.css",
+        "http://127.0.0.1:35543/assets/brand/logo-static.svg",
+        "http://127.0.0.1:35543/bootstrap.js",
+        "http://127.0.0.1:35543/config.js",
+        "http://127.0.0.1:35543/runtime-mode.js",
+        "http://127.0.0.1:35543/offline-runtime.js",
+        "http://127.0.0.1:35543/app.bundle.js",
+        "http://127.0.0.1:35543/data/lazy/index.compact.json",
+        "http://127.0.0.1:35543/data/project-icons.json",
+        "http://127.0.0.1:35543/data/pricing.json",
+        "http://127.0.0.1:35543/api/billing/config",
+        "http://127.0.0.1:35543/data/fx.json",
+        "http://127.0.0.1:35543/data/lazy/courses/b296-7e7c84de658d18bb.json",
+        "http://127.0.0.1:35543/data/lazy/resources/b296-35d02444ce42e207.json",
+        "http://127.0.0.1:35543/data/markets.json",
+        "http://127.0.0.1:35543/i18n/ar.js"
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failedResources": [
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "expectedResourceFailures": [
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "status": 404,
+          "reason": "Expected absence of optional billing API on a static export"
+        },
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "error": "net::ERR_ABORTED",
+          "reason": "Expected absence of optional billing API on a static export"
+        }
+      ],
+      "networkFailures": [
+        {
+          "url": "http://127.0.0.1:35543/api/billing/config",
+          "requestId": "82.39",
+          "timestamp": 18501.834913,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ],
+      "blockedExternal": [],
+      "unexpectedResourceFailures": []
+    },
+    {
+      "id": "tablet",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "isMobile": true,
+      "hasTouch": true,
+      "mode": "HTTP static",
+      "status": "PASS_WITH_TRANSPORT_DIAGNOSTIC",
+      "checks": [
+        {
+          "name": "Homepage entry clickable with index response held",
+          "status": "PASS"
+        },
+        {
+          "name": "Home loads zero course/resource bodies",
+          "status": "PASS",
+          "payloadRequests": 0
+        },
+        {
+          "name": "b296 target-only lazy loading and 40-step catalogue",
+          "status": "PASS",
+          "courseRequests": [
+            "http://127.0.0.1:42609/data/lazy/courses/b296-7e7c84de658d18bb.json"
+          ],
+          "resourceRequests": [
+            "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json"
+          ]
+        },
+        {
+          "name": "Workshop controls and quiz click/feedback",
+          "status": "PASS"
+        },
+        {
+          "name": "Traditional Chinese / English lesson headings and Arabic RTL interface",
+          "status": "PASS",
+          "arabicScope": "UI dictionary and layout; no claim of pretranslated Arabic lesson content"
+        },
+        {
+          "name": "AI mentor entry, mode selector and question control",
+          "status": "PASS",
+          "inference": "Not invoked; no model downloads"
+        }
+      ],
+      "layouts": [
+        {
+          "page": "delayed-index-home",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "",
+          "language": "zh-Hant",
+          "offenders": []
+        },
+        {
+          "page": "home-zh",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "b296-brief-zh",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-zh-TW",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-en",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        },
+        {
+          "page": "workshop-ar",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "rtl",
+          "language": "ar",
+          "offenders": []
+        },
+        {
+          "page": "AI-entry",
+          "viewport": 768,
+          "width": 768,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        }
+      ],
+      "screenshots": [
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-delayed-index-home.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-home-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-b296-brief-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-workshop-zh-TW.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-workshop-en.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-workshop-ar.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-AI-entry.png"
+      ],
+      "requests": [
+        "http://127.0.0.1:42609/index.html",
+        "http://127.0.0.1:42609/style.css",
+        "http://127.0.0.1:42609/media.css",
+        "http://127.0.0.1:42609/related.css",
+        "http://127.0.0.1:42609/places.css",
+        "http://127.0.0.1:42609/membership.css",
+        "http://127.0.0.1:42609/workspace-v10.css",
+        "http://127.0.0.1:42609/workspace-v12.css",
+        "http://127.0.0.1:42609/hero-icons.css",
+        "http://127.0.0.1:42609/vendors.css",
+        "http://127.0.0.1:42609/learning-map.css",
+        "http://127.0.0.1:42609/world-v11.css",
+        "http://127.0.0.1:42609/assets/brand/logo-static.svg",
+        "http://127.0.0.1:42609/bootstrap.js",
+        "http://127.0.0.1:42609/config.js",
+        "http://127.0.0.1:42609/runtime-mode.js",
+        "http://127.0.0.1:42609/offline-runtime.js",
+        "http://127.0.0.1:42609/app.bundle.js",
+        "http://127.0.0.1:42609/data/lazy/index.compact.json",
+        "http://127.0.0.1:42609/data/project-icons.json",
+        "http://127.0.0.1:42609/data/pricing.json",
+        "http://127.0.0.1:42609/api/billing/config",
+        "http://127.0.0.1:42609/data/fx.json",
+        "http://127.0.0.1:42609/data/lazy/courses/b296-7e7c84de658d18bb.json",
+        "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+        "http://127.0.0.1:42609/data/markets.json",
+        "http://127.0.0.1:42609/i18n/ar.js"
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failedResources": [
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "expectedResourceFailures": [
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "status": 404,
+          "reason": "Expected absence of optional billing API on a static export"
+        },
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "error": "net::ERR_ABORTED",
+          "reason": "Expected absence of optional billing API on a static export"
+        }
+      ],
+      "networkFailures": [
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "requestId": "62.39",
+          "timestamp": 18605.334207,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+          "requestId": "62.66",
+          "timestamp": 18605.706433,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true
+        }
+      ],
+      "blockedExternal": [],
+      "fetchStreams": [
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/index.compact.json",
+          "status": 200,
+          "declaredBytes": 3773196,
+          "readBytes": 3773196,
+          "eof": true,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "status": 404,
+          "declaredBytes": null,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/pricing.json",
+          "status": 200,
+          "declaredBytes": 1676,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/project-icons.json",
+          "status": 200,
+          "declaredBytes": 711877,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/fx.json",
+          "status": 200,
+          "declaredBytes": 2020,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/courses/b296-7e7c84de658d18bb.json",
+          "status": 200,
+          "declaredBytes": 241038,
+          "readBytes": 241038,
+          "eof": true,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+          "status": 200,
+          "declaredBytes": 54326,
+          "readBytes": 54326,
+          "eof": true,
+          "signalAborted": false
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/markets.json",
+          "status": 200,
+          "declaredBytes": 521,
+          "readBytes": 0,
+          "eof": false,
+          "signalAborted": false
+        }
+      ],
+      "unexpectedResourceFailures": [],
+      "postReadCancellations": [
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+          "error": "net::ERR_ABORTED",
+          "classification": "Chromium cancellation event after a fully consumed and application-verified target payload",
+          "readEvidence": {
+            "url": "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+            "status": 200,
+            "declaredBytes": 54326,
+            "readBytes": 54326,
+            "eof": true,
+            "signalAborted": false
+          },
+          "expectedSha256": "35d02444ce42e2076bd3bbb6f3f20039deb625133f49913303c7c74535c1b468",
+          "applicationChecksumEvidence": "The unchanged curriculum loader verifies exact bytes and SHA-256 before returning; b296 course, 40 step IDs, workshop and resources rendered successfully in this scenario."
+        }
+      ],
+      "initialStrictAssertion": "AssertionError [ERR_ASSERTION]: [{\"url\":\"http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json\",\"error\":\"net::ERR_ABORTED\"}]\n\n1 !== 0\n\n    at scenario (file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/tools/test-browser-v15.mjs:206:12)\n    at async file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/tools/test-browser-v15.mjs:232:73",
+      "rawFailedResources": [
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "status": 404
+        },
+        {
+          "url": "http://127.0.0.1:42609/api/billing/config",
+          "error": "net::ERR_ABORTED"
+        },
+        {
+          "url": "http://127.0.0.1:42609/data/lazy/resources/b296-35d02444ce42e207.json",
+          "error": "net::ERR_ABORTED"
+        }
+      ]
+    },
+    {
+      "id": "file-desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "isMobile": false,
+      "hasTouch": false,
+      "mode": "file://",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Root file launcher redirects to academy without a server",
+          "status": "PASS"
+        },
+        {
+          "name": "Home loads zero course/resource bodies",
+          "status": "PASS",
+          "payloadRequests": 0
+        },
+        {
+          "name": "b296 target-only lazy loading and 40-step catalogue",
+          "status": "PASS",
+          "courseRequests": [
+            "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/data/lazy/courses/b296-7e7c84de658d18bb.js"
+          ],
+          "resourceRequests": [
+            "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/data/lazy/resources/b296-35d02444ce42e207.js"
+          ]
+        },
+        {
+          "name": "Workshop controls and quiz click/feedback",
+          "status": "PASS"
+        },
+        {
+          "name": "Traditional Chinese / English lesson headings and Arabic RTL interface",
+          "status": "PASS",
+          "arabicScope": "UI dictionary and layout; no claim of pretranslated Arabic lesson content"
+        },
+        {
+          "name": "AI mentor entry, mode selector and question control",
+          "status": "PASS",
+          "inference": "Not invoked; no model downloads"
+        }
+      ],
+      "layouts": [
+        {
+          "page": "home-zh",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "b296-brief-zh",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-zh-TW",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "zh-TW",
+          "offenders": []
+        },
+        {
+          "page": "workshop-en",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        },
+        {
+          "page": "workshop-ar",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "rtl",
+          "language": "ar",
+          "offenders": []
+        },
+        {
+          "page": "AI-entry",
+          "viewport": 1440,
+          "width": 1440,
+          "overflow": 0,
+          "direction": "ltr",
+          "language": "en",
+          "offenders": []
+        }
+      ],
+      "screenshots": [
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-home-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-b296-brief-zh.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-workshop-zh-TW.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-workshop-en.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-workshop-ar.png",
+        "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-AI-entry.png"
+      ],
+      "requests": [
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/index.html",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/index.html",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/style.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/media.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/related.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/places.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/membership.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/workspace-v10.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/workspace-v12.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/hero-icons.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/vendors.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/learning-map.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/world-v11.css",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/assets/brand/logo-static.svg",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/bootstrap.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/config.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/runtime-mode.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/offline-data.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/offline-runtime.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/app.bundle.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/data/lazy/data/project-icons-5a5cde0b52fd1514.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/data/lazy/data/pricing-622be61ccbf41b80.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/assets/photos/wafers.jpg",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/assets/photos/v3-lithography-stepper.jpg",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/assets/photos/v3-chingkuo-cc.jpg",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/assets/photos/v3-apache.jpg",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/assets/photos/v3-haikun.jpg",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/data/lazy/courses/b296-7e7c84de658d18bb.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/data/lazy/resources/b296-35d02444ce42e207.js",
+        "file:///workspace/scratch/79022019d85f/rebuild/MacGyver_Engineering_Academy_v15/public/academy/i18n/ar.js"
+      ],
+      "pageErrors": [],
+      "consoleErrors": [],
+      "failedResources": [],
+      "expectedResourceFailures": [],
+      "networkFailures": [],
+      "blockedExternal": [],
+      "unexpectedResourceFailures": []
+    }
+  ],
+  "screenshots": [
+    {
+      "scenario": "desktop",
+      "name": "delayed-index-home",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-delayed-index-home.png",
+      "sha256": "cb81c48ca60827bf44f484dd712b4876d3caf1b3f1330867a67048dcf1844924"
+    },
+    {
+      "scenario": "desktop",
+      "name": "home-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-home-zh.png",
+      "sha256": "b2cdb5f60b1ec26b3000526dc4e0632d8b4ae1a07da06d9fd00c448708c97fc0"
+    },
+    {
+      "scenario": "desktop",
+      "name": "b296-brief-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-b296-brief-zh.png",
+      "sha256": "eb72599bb718cdc1968f7704e2a36eaccdcc4483d39123d4edcbc9b6504900ca"
+    },
+    {
+      "scenario": "desktop",
+      "name": "workshop-zh-TW",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-workshop-zh-TW.png",
+      "sha256": "a6f93963db1f893298242ce2f441b10cb2a849f789a0267eb69353c066e457f1"
+    },
+    {
+      "scenario": "desktop",
+      "name": "workshop-en",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-workshop-en.png",
+      "sha256": "52f7410a13943d01ada0476c878aee43345468df8bbe9bd9d2795c2ab4fd9cf2"
+    },
+    {
+      "scenario": "desktop",
+      "name": "workshop-ar",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-workshop-ar.png",
+      "sha256": "f4ba9e9b8824da3717a30c555e2b36134d8b67827d5ad2d2f360d22596c393be"
+    },
+    {
+      "scenario": "desktop",
+      "name": "AI-entry",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/desktop-AI-entry.png",
+      "sha256": "c6399bc33f286b204d5912215de0a0e0edb27efbcfe289e81d4c6668909f23ef"
+    },
+    {
+      "scenario": "mobile",
+      "name": "delayed-index-home",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-delayed-index-home.png",
+      "sha256": "b5cad6c9372e8c11a0ab0d5b864dd916d05ef867f89579863afef9e7b037d7cb"
+    },
+    {
+      "scenario": "mobile",
+      "name": "home-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-home-zh.png",
+      "sha256": "3d6792e600544fe6f7f4913e0041217ec4afa6052cd47cee52f27bdbf8f86e3c"
+    },
+    {
+      "scenario": "mobile",
+      "name": "b296-brief-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-b296-brief-zh.png",
+      "sha256": "a7babe2a276eed0923cceab407938916714b347e35fb516b0661ae6a75198316"
+    },
+    {
+      "scenario": "mobile",
+      "name": "workshop-zh-TW",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-workshop-zh-TW.png",
+      "sha256": "6ab1d35276bab8cdd216d4c50c1b7e2ce62d1ec1f00130b0a832837591cba397"
+    },
+    {
+      "scenario": "mobile",
+      "name": "workshop-en",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-workshop-en.png",
+      "sha256": "a0923425e36301a61a8f6d3afb46f295103f0ebc99234c3049dae8c59176cb07"
+    },
+    {
+      "scenario": "mobile",
+      "name": "workshop-ar",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-workshop-ar.png",
+      "sha256": "b97cc20f2b93156afd2aadd3cfec1c2231d5672e4eecf7b4656f235e8e942346"
+    },
+    {
+      "scenario": "mobile",
+      "name": "AI-entry",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/mobile-AI-entry.png",
+      "sha256": "6b9254b7c05eb79c81c5c878bb71f1945770fa7acb9eafb26c364f90b0a42f4f"
+    },
+    {
+      "scenario": "file-desktop",
+      "name": "home-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-home-zh.png",
+      "sha256": "b2cdb5f60b1ec26b3000526dc4e0632d8b4ae1a07da06d9fd00c448708c97fc0"
+    },
+    {
+      "scenario": "file-desktop",
+      "name": "b296-brief-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-b296-brief-zh.png",
+      "sha256": "0bf11eb7787a44b8bf7f6a307c4371ba2d53a5e306d46808bf629af5dc0c8dde"
+    },
+    {
+      "scenario": "file-desktop",
+      "name": "workshop-zh-TW",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-workshop-zh-TW.png",
+      "sha256": "a6f93963db1f893298242ce2f441b10cb2a849f789a0267eb69353c066e457f1"
+    },
+    {
+      "scenario": "file-desktop",
+      "name": "workshop-en",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-workshop-en.png",
+      "sha256": "52f7410a13943d01ada0476c878aee43345468df8bbe9bd9d2795c2ab4fd9cf2"
+    },
+    {
+      "scenario": "file-desktop",
+      "name": "workshop-ar",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-workshop-ar.png",
+      "sha256": "f4ba9e9b8824da3717a30c555e2b36134d8b67827d5ad2d2f360d22596c393be"
+    },
+    {
+      "scenario": "file-desktop",
+      "name": "AI-entry",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/file-desktop-AI-entry.png",
+      "sha256": "c6399bc33f286b204d5912215de0a0e0edb27efbcfe289e81d4c6668909f23ef"
+    },
+    {
+      "scenario": "tablet",
+      "name": "delayed-index-home",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-delayed-index-home.png",
+      "sha256": "62e0aa84f8e4f801ab83af0663a5cf139352a528f16999ebcb22b40778c3aa2f"
+    },
+    {
+      "scenario": "tablet",
+      "name": "home-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-home-zh.png",
+      "sha256": "c1998bec83caaf70bce42dea1b02e9b23cbbf6ffe6f6fd6bfb170ef1c7e3054d"
+    },
+    {
+      "scenario": "tablet",
+      "name": "b296-brief-zh",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-b296-brief-zh.png",
+      "sha256": "d0e65bbb7d32b1b20ebbb57308385e768dd345db21288f6163c71862e01ff31d"
+    },
+    {
+      "scenario": "tablet",
+      "name": "workshop-zh-TW",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-workshop-zh-TW.png",
+      "sha256": "654b9259fa45e5cf197cd55c81074ad9b1e4cc55df8f5f98dbc9db4f8219decb"
+    },
+    {
+      "scenario": "tablet",
+      "name": "workshop-en",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-workshop-en.png",
+      "sha256": "fffaae08092a01a88ca49ab23a0532fd6112f23ec2296428b9b092cccbf32c97"
+    },
+    {
+      "scenario": "tablet",
+      "name": "workshop-ar",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-workshop-ar.png",
+      "sha256": "634c8b2bd93711d42590485a27cfcef826576a476be685900f61205c8a7cc2da"
+    },
+    {
+      "scenario": "tablet",
+      "name": "AI-entry",
+      "path": "/workspace/scratch/79022019d85f/v15-browser-qa/screens/tablet-AI-entry.png",
+      "sha256": "617708f0960d19cb96b05ea8f359f17478415d70785c3eaea241ab92e8222d9e"
+    }
+  ],
+  "fatalErrors": [],
+  "rootFileLauncherSha256": "29f3a9bf0ad5461013816a0be0f03e8ff0a169013f01467273f678925bc077db",
+  "generatedSnapshot": {
+    "catalog": 2066,
+    "guidedCourses": 904,
+    "reviewedCourse": "b296",
+    "reviewedCourseSteps": 40
+  },
+  "finishedAt": "2026-10-21T05:43:24.070Z",
+  "followUp": {
+    "scope": "Tablet-only transport diagnostics; other three successful scenarios retained without rerunning layouts",
+    "report": "/workspace/scratch/79022019d85f/v15-browser-qa/diagnostics/tablet-stream-completion.json",
+    "sourceHashesIdentical": true,
+    "sameApplicationBuild": true,
+    "completedAt": "2026-10-21T05:45:00.836Z",
+    "reviewedClassification": "Exact requested course/resource URL only; HTTP 200, complete byte count, EOF, no AbortSignal cancellation, and successful application checksum plus rendered target UI. Index cancellations are not broadly waived."
+  },
+  "diagnosticPathsScope": "Absolute scratch screenshot and diagnostics paths describe this QA run and are not necessarily included in the delivered ZIP. The bundledScreenshots below are the delivered representative images.",
+  "bundledScreenshots": [
+    {
+      "path": "docs/qa-v15/desktop-home-zh.png",
+      "description": "1440×960 desktop home",
+      "sha256": "b2cdb5f60b1ec26b3000526dc4e0632d8b4ae1a07da06d9fd00c448708c97fc0",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "path": "docs/qa-v15/mobile-workshop-zh-TW.png",
+      "description": "390×844 mobile workshop",
+      "sha256": "6ab1d35276bab8cdd216d4c50c1b7e2ce62d1ec1f00130b0a832837591cba397",
+      "horizontalOverflowPx": 0
+    },
+    {
+      "path": "docs/qa-v15/tablet-workshop-en.png",
+      "description": "768×1024 tablet English workshop after topbar correction",
+      "sha256": "fffaae08092a01a88ca49ab23a0532fd6112f23ec2296428b9b092cccbf32c97",
+      "horizontalOverflowPx": 0
+    }
+  ],
+  "visualReview": {
+    "reviewer": "courses_support",
+    "method": "Opened actual PNG screenshots and visually inspected representative desktop/mobile/tablet, delayed-home, RTL, AI entry and file-mode images.",
+    "reviewedImages": [
+      "desktop-home-zh.png",
+      "desktop-delayed-index-home.png",
+      "mobile-delayed-index-home.png",
+      "mobile-home-zh.png",
+      "mobile-workshop-zh-TW.png",
+      "mobile-workshop-ar.png",
+      "mobile-AI-entry.png",
+      "tablet-workshop-en.png",
+      "tablet-workshop-ar.png",
+      "tablet-AI-entry.png",
+      "desktop-workshop-ar.png",
+      "file-desktop-workshop-en.png"
+    ],
+    "findings": [
+      {
+        "issue": "Tablet English header controls extended 67px beyond viewport",
+        "resolution": "At 701–980px hide repeated academy breadcrumb segments while retaining current page name and all controls",
+        "status": "RESOLVED; 0px horizontal overflow in subsequent browser run"
+      }
+    ]
+  },
+  "testHarnessAtFinalClassificationSha256": "6de5e9f1f47f19f71eae7523384cc979efd5dd08cec1700f5f31a534ec697777"
+}

@@ -9,6 +9,7 @@ const textFor = course => [course.title, course.titleEn, course.summary, course.
 
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
+  {id:'water',icon:'process',title:pair('水利與海岸工程','Water & coastal engineering'),description:pair('100門課串接世界水壩、河川防洪、輸配水、船閘、海岸與港灣。','100 courses connect world dams, flood management, conveyance, locks, coasts and ports.'),boundary:pair('分開教學假設與實測邊界；用守恆、量測與不確定度檢核水工模型。','Separate teaching assumptions from measured boundaries; verify hydraulic models through conservation, measurement and uncertainty.')},
   {id:'underground',icon:'bridge',title:pair('隧道與地下工程','Tunnels & underground engineering'),description:pair('100門課程串接世界隧道、地質調查、潛盾、支護、地下水與地盤改良。','100 courses connect landmark tunnels, investigation, TBMs, support, groundwater and ground improvement.'),boundary:pair('從公開原理與教學算例學習；施工參數必須依實測地層與審查另定。','Learn from public principles and teaching examples; field parameters require measured ground data and review.')},
   {id:'quantum', icon:'quantum', title:pair('量子電腦與 QPU','Quantum computers & QPUs'), description:pair('依物理實作、控制、讀出與錯誤處理比較量子門派。','Compare physical implementations, control, readout and error handling.'), boundary:pair('共同點是量子態準備、控制與量測；低溫、雷射、光損耗及錯誤模型各不相同。','State preparation, control and measurement are shared; cryogenics, lasers, optical loss and error models differ.')},
   {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('從神經網路到 GPU、TPU、資料流與推論服務。','From neural networks to GPUs, TPUs, dataflow and inference services.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
@@ -33,6 +34,12 @@ export const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 export const LEARNING_SUBDISCIPLINES = [
+  subdivision("water-dams","water","世界水壩與水庫","World dams and reservoirs",/water-dams/i),
+  subdivision("water-systems","water","防潮、航運與大壩施工","Tidal barriers, navigation and dam construction",/water-systems/i),
+  subdivision("water-hydraulics","water","壩工監測、溢洪與壓力水路","Dam monitoring, spillways and pressure waterways",/water-hydraulics/i),
+  subdivision("water-rivers","water","輸配水、河川與都市防洪","Water conveyance, rivers and urban flood protection",/water-rivers/i),
+  subdivision("water-coasts","water","海岸、港灣與水資源韌性","Coasts, ports and water-resource resilience",/water-coasts/i),
+
   subdivision("ug-landmarks","underground","世界隧道與地下巨作","World tunnels and underground landmarks",/ug-landmarks/i),
   subdivision("ug-investigation","underground","地質調查與變形監測","Ground investigation and deformation monitoring",/ug-investigation/i),
   subdivision("ug-tbm","underground","潛盾與掘進系統","Shield and tunnel-boring systems",/ug-tbm/i),
@@ -106,6 +113,12 @@ export const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 export const LEARNING_ROUTES = [
+  {"id": "water-landmarks", "title": ["世界水壩的受力與調度", "Forces and operations at world dams"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b231", "b233", "b235", "b241", "b244", "b202", "three-gorges", "b216"]},
+  {"id": "water-barriers", "title": ["防潮、船閘與水位控制", "Tidal barriers, locks and water-level control"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b250", "b251", "b221", "b222", "b223", "b224", "b225", "b226", "b227"]},
+  {"id": "water-hydraulics", "title": ["從水力相似到壩工驗證", "From hydraulic similarity to dam verification"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b257", "b244", "b249", "b242", "b253", "b254", "b256", "b260"]},
+  {"id": "water-river", "title": ["從輸配水到河川防洪", "From water conveyance to flood resilience"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b261", "b264", "b265", "b269", "b270", "b271", "b272", "b279", "b280"]},
+  {"id": "water-coast", "title": ["從波浪到港灣與海岸韌性", "From waves to ports and coastal resilience"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b257", "b281", "b282", "b283", "b285", "b288", "b295", "b296", "b300"]},
+
   {"id": "ug-investigate-bore", "title": ["從地質證據到潛盾監測", "From ground evidence to TBM monitoring"], "goal": ["先確認地層與觀測可信度，再比較開挖面、灌漿、導向與沉陷。", "Establish ground evidence and measurement quality before comparing face balance, grout, guidance and settlement."], "courses": ["b126", "b128", "b132", "b135", "b136", "b137", "b143", "b145", "hsuehshan"]},
   {"id": "ug-rock-support", "title": ["從岩體到支護與世界長隧道", "From rock masses to support and long tunnels"], "goal": ["比較節理與應力、開挖序列、能量耗散與支護驗證。", "Compare joints and stress, excavation sequence, energy dissipation and support verification."], "courses": ["b130", "b131", "b148", "b151", "b153", "b160", "b161", "b103", "b116"]},
   {"id": "ug-water-city", "title": ["從地下水到城市地下空間", "From groundwater to urban underground space"], "goal": ["串接防排水、明挖沉管、地盤改良與既有管線維護。", "Connect water control, cut-and-cover and immersed works, ground improvement and utility maintenance."], "courses": ["b163", "b164", "b166", "b168", "b170", "b179", "b186", "b190", "b196", "b199"]},
@@ -130,7 +143,7 @@ export const LEARNING_ROUTES = [
 
 const TRACK_IDS = new Set(LEARNING_TRACKS.map(track => track.id));
 const SUBDISCIPLINE_IDS = new Map(LEARNING_SUBDISCIPLINES.map(subdivision => [subdivision.id, subdivision]));
-const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'civil',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
+const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'water',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
 
 export function classifyLearningCourse(course = {}) {
   // Generic roadmap summaries mention security and testing in every category;

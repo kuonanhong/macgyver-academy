@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b109-7dfcf7b5c073b114.json"]={sha256:"7dfcf7b5c073b1143d2832d3f11265c79765ef41bb52ba24ca75f9d276e71457",value:{"id":"b109","title":"歐亞海底公路隧道","titleEn":"Eurasia Tunnel","category":"underground","kind":"project","summary":"以「歐亞海底公路隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Eurasia Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b204-19bb58a2a664d4e0.json"]={sha256:"19bb58a2a664d4e05a717b9c9a93673b738f9647570ebe74bc78379ad128a2dd",value:{"id":"b204","title":"伊泰普水壩","titleEn":"Itaipu Dam","category":"water","kind":"project","summary":"以「伊泰普水壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Itaipu Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

@@ -1,0 +1,273 @@
+{
+  "id": "b236",
+  "title": "瀝青混凝土心牆壩施工~Asphalt-core embankment-dam construction",
+  "discipline": "water-systems",
+  "family": "water",
+  "focus": "瀝青心牆的溫度依存、孔隙控制與界面變形~Temperature dependence, void control and interface deformation in asphalt cores",
+  "summary": "本課以瀝青混凝土心牆壩施工為入口，深入瀝青心牆的溫度依存、孔隙控制與界面變形。十個單元各自對應不同的荷載路徑、能量交換或監測問題，從守恆式建立量化估算，再檢查量測配置是否能辨認真正失效原因。工程史實只採用列明範圍的公開一手資料；所有模型輸入另標為教學假設，成果是可追溯的工程判讀紀錄。~Using Asphalt-core embankment-dam construction as its entry point, this course examines temperature dependence, void control and interface deformation in asphalt cores. Ten units address different load paths, energy exchanges or monitoring questions, starting with conservation-based estimates and testing whether observations distinguish failure causes. Historical statements use scoped primary evidence. Numerical model inputs are separately identified as teaching assumptions, producing a traceable engineering interpretation record.",
+  "example": "本課原創比較練習分兩個相互獨立的物理模型。教學假設，非地標實測值或操作設定：假設每100 kg礦料加入6 kg瀝青，按礦料為6%，按總重為6/106=5.6604%；僅分母換算，不是建議配比。教學假設，非地標實測值或操作設定：假設理論最大密度2500 kg/m³、實測體積密度2450 kg/m³，空隙率1−2450/2500=2%；非任何專案接受上限。先逐一圈出公式內的控制體、力方向或時間尺度，再把每項輸入的量綱換成一致單位。第二人只根據輸入重算結果，不抄第一人的中間數字。最後指出這兩個估算尚未包含的空間變化、非線性及量測誤差；若將結果用於另一座工程，必須重建其幾何、材料與邊界條件，不能挪用本練習的假設。 空隙率敏感度固定理論最大密度2500 kg/m³，只將體積密度2450提高至2475 kg/m³。空隙率100(1−ρb/ρmax)由2%降至1%，是降低1個百分點而非降低1%。比較假定材料組成和測定方法不變；它不設定施工壓實目標，也未據此證明瀝青心牆的抗滲或低溫變形性能。~This original comparison exercise uses two independent physical models. Teaching assumptions, not landmark measurements or operating settings: Assume six kilograms of bitumen per hundred kilograms of mineral material. Content is six percent of mineral mass but 5.6604 percent of total mass, a denominator conversion rather than a recommended mix. Teaching assumptions, not landmark measurements or operating settings: Assume theoretical maximum density 2500 kg/m³ and measured bulk density 2450 kg/m³. Air void content is two percent, not a project acceptance limit. First identify the control volume, force direction or time scale in each relation, then convert every input to consistent units. A second reviewer recalculates from the inputs without copying intermediate numbers. Finally identify spatial variability, nonlinear effects and measurement errors omitted by both estimates. Transfer to another structure requires rebuilding its geometry, material description and boundary conditions; the assumed classroom inputs are not transferable design or operating parameters. Hold theoretical maximum density at 2500 kg/m³ and change only bulk density from 2450 to 2475 kg/m³. Air-void content 100(1−ρb/ρmax) drops from 2% to 1%, one percentage point rather than a 1% relative decrease. Composition and measurement method remain fixed. This comparison neither sets a compaction target nor establishes permeability or cold-temperature deformation performance.",
+  "history": "瀝青心牆以低滲透且可變形的材料連接堆石承載體，材料比例、黏彈反應與施工接觸必須共同驗證，不能只以單一密度指標判斷。墾務局土石壩施工與設計章節更新，提供分區填築的一般背景。 瀝青心牆簡化材料模型研究出版，探討分析所需的材料描述。 曲學與照壁山心牆研究出版，分別報告設計表現及施工速率個案。這些年份是技術出版節點，不代表某座壩的施工年表。課程從公開工法建立原創算例，地標僅用於對照不同壩型與環境；每項材料參數、荷載和允許條件仍需依工程調查與專案設計重新確定。~An asphalt core combines low permeability with deformation capacity inside a rockfill support body. Mixture proportions, viscoelastic response and construction contacts require joint assessment rather than one density criterion. Reclamation updates embankment design and construction chapters, providing general zoned-placement context. A simplified asphalt-core material-model study is published, addressing descriptions needed for analysis. Quxue and Zhaobishan core studies are published, reporting design performance and a construction-rate case. These years mark technical publications rather than construction events at a particular dam. The course develops original calculations from public engineering principles. Landmarks compare dam types and settings; material parameters, loads and admissible conditions still require project investigations and specific design. The examples do not assert that an unverified technique was used at a named structure.",
+  "units": [
+    {
+      "anchor": "膠結料比例基準~Binder proportion basis",
+      "title": "膠結料比例基準~Binder proportion basis",
+      "mechanism": "瀝青含量可按礦料重量或混合料總重量表示，兩種百分比不能直接比較。配方必須先確認分母，再連結骨材表面覆蓋與孔隙填充，不能把道路配方直接移植到壩心牆。 假設每100 kg礦料加入6 kg瀝青，按礦料為6%，按總重為6/106=5.6604%；僅分母換算，不是建議配比。 把礦料百分比當總重百分比會系統性多加膠結料，反向誤用則可能缺料。即使含量相同，不同骨材形狀和細粉也會改變工作性與體積孔隙。~Bitumen content may use mineral mass or total mixture mass as denominator, making the percentages noninterchangeable. Mixture interpretation must establish the basis before relating coating and void filling, rather than copying road asphalt into dam cores. Assume six kilograms of bitumen per hundred kilograms of mineral material. Content is six percent of mineral mass but 5.6604 percent of total mass, a denominator conversion rather than a recommended mix. Using a mineral-basis percentage as total-basis content systematically adds too much binder, while reversing the error underdoses it. Equal content also does not ensure equal workability or voids for different aggregates.",
+      "model": "教學假設，非地標實測值或操作設定：假設每100 kg礦料加入6 kg瀝青，按礦料為6%，按總重為6/106=5.6604%；僅分母換算，不是建議配比。~Teaching assumptions, not landmark measurements or operating settings: Assume six kilograms of bitumen per hundred kilograms of mineral material. Content is six percent of mineral mass but 5.6604 percent of total mass, a denominator conversion rather than a recommended mix.",
+      "verify": "核對拌合紀錄、萃取試驗和報表的分母定義，用同一批樣品重算兩種比例；另查含水或細粉是否計入礦料重量，將配方版本和批次標籤一併保存以便追溯。核對空容器皮重。~Check denominator definitions in batch records, extraction tests and reports and recalculate both fractions for one sample. Verify moisture and filler treatment, retaining mixture versions and batch labels for traceability and consistent comparison. Verify empty-container tare independently.",
+      "failure": "把礦料百分比當總重百分比會系統性多加膠結料，反向誤用則可能缺料。即使含量相同，不同骨材形狀和細粉也會改變工作性與體積孔隙。~Using a mineral-basis percentage as total-basis content systematically adds too much binder, while reversing the error underdoses it. Equal content also does not ensure equal workability or voids for different aggregates.",
+      "misconception": "按礦料重量和按總混合料重量表示的瀝青百分比完全相同。~Bitumen percentages based on mineral mass and total mixture mass are identical.",
+      "practice": "以膠結料比例基準編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。核對拌合紀錄、萃取試驗和報表的分母定義，用同一批樣品重算兩種比例；另查含水或細粉是否計入礦料重量，將配方版本和批次標籤一併保存以便追溯。核對空容器皮重。~Prepare a reviewable evidence sheet for binder proportion basis, recording data time, units, model applicability and reviewer. Check denominator definitions in batch records, extraction tests and reports and recalculate both fractions for one sample. Verify moisture and filler treatment, retaining mixture versions and batch labels for traceability and consistent comparison. Verify empty-container tare independently."
+    },
+    {
+      "anchor": "體積孔隙與連通性~Air voids and connectivity",
+      "title": "體積孔隙與連通性~Air voids and connectivity",
+      "mechanism": "低孔隙是防滲的重要條件，但總孔隙量不等於連通孔隙量。密度法可檢查壓實狀態，仍須用滲透和界面檢驗排除連續缺陷。 假設理論最大密度2500 kg/m³、實測體積密度2450 kg/m³，空隙率1−2450/2500=2%；非任何專案接受上限。 少量連通孔隙可能比較多封閉孔隙更影響漏流，取芯損傷又可能製造人工裂縫。只看空隙百分比，無法分辨施工缺陷與取樣過程造成的通道。~Low void content supports impermeability, but total void volume differs from connected voids. Density checks compaction while permeability and interface evidence remain necessary to exclude continuous defects. Assume theoretical maximum density 2500 kg/m³ and measured bulk density 2450 kg/m³. Air void content is two percent, not a project acceptance limit. A small connected void fraction can transmit more flow than many isolated voids, and coring damage can create artificial cracks. Void percentage alone cannot distinguish construction defects from sampling-induced pathways.",
+      "model": "教學假設，非地標實測值或操作設定：假設理論最大密度2500 kg/m³、實測體積密度2450 kg/m³，空隙率1−2450/2500=2%；非任何專案接受上限。~Teaching assumptions, not landmark measurements or operating settings: Assume theoretical maximum density 2500 kg/m³ and measured bulk density 2450 kg/m³. Air void content is two percent, not a project acceptance limit.",
+      "verify": "對同配比樣品核對理論與實測密度，記錄取芯位置、溫度和體積量法；將滲透試驗與孔隙影像配對，檢查局部層間缺陷是否被全試體平均密度掩蓋。~Check theoretical and measured densities for the same mixture, recording core position, temperature and volume method. Pair permeability tests with void imaging and determine whether whole-specimen density conceals a local interlift defect or connected path.",
+      "failure": "少量連通孔隙可能比較多封閉孔隙更影響漏流，取芯損傷又可能製造人工裂縫。只看空隙百分比，無法分辨施工缺陷與取樣過程造成的通道。~A small connected void fraction can transmit more flow than many isolated voids, and coring damage can create artificial cracks. Void percentage alone cannot distinguish construction defects from sampling-induced pathways.",
+      "misconception": "總孔隙率很低就能證明心牆不存在任何連通漏水通道。~Low total void content proves that no connected leakage path exists in the core.",
+      "practice": "以體積孔隙與連通性編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。對同配比樣品核對理論與實測密度，記錄取芯位置、溫度和體積量法；將滲透試驗與孔隙影像配對，檢查局部層間缺陷是否被全試體平均密度掩蓋。~Prepare a reviewable evidence sheet for air voids and connectivity, recording data time, units, model applicability and reviewer. Check theoretical and measured densities for the same mixture, recording core position, temperature and volume method. Pair permeability tests with void imaging and determine whether whole-specimen density conceals a local interlift defect or connected path."
+    },
+    {
+      "anchor": "黏彈遲滯與載重時間~Viscoelastic lag and loading time",
+      "title": "黏彈遲滯與載重時間~Viscoelastic lag and loading time",
+      "mechanism": "瀝青混凝土的應變會隨載重時間與溫度發展，短時剛度不能直接代表長期變形。黏彈類比適合說明延遲反應，參數需由對應溫度和應力範圍試驗取得。 假設Kelvin-Voigt模型E=100 MPa、η=10⁹ Pa·s、恆應力0.1 MPa，時間常數10 s，t=20 s應變0.0008647；純教學小應變。 單一黏彈元件無法描述所有塑性與損傷，卸載殘餘應變可能超出模型。若把一個溫度下的模數永久固定，會錯估施工熱態與服役冷態的差異。~Asphalt-concrete strain develops with loading duration and temperature, so short-term stiffness does not represent long-term movement. A viscoelastic analogy illustrates delayed response but needs parameters tested at relevant temperatures and stresses. Assume Kelvin-Voigt E=100 MPa, η=10⁹ Pa·s and constant stress 0.1 MPa. Time constant is ten seconds and strain at twenty seconds is 0.0008647, a small-strain teaching model. One viscoelastic element cannot describe every plastic or damage mechanism, and residual strain may exceed it. Fixing modulus from one temperature misrepresents differences between warm construction and cool service conditions.",
+      "model": "教學假設，非地標實測值或操作設定：假設Kelvin-Voigt模型E=100 MPa、η=10⁹ Pa·s、恆應力0.1 MPa，時間常數10 s，t=20 s應變0.0008647；純教學小應變。~Teaching assumptions, not landmark measurements or operating settings: Assume Kelvin-Voigt E=100 MPa, η=10⁹ Pa·s and constant stress 0.1 MPa. Time constant is ten seconds and strain at twenty seconds is 0.0008647, a small-strain teaching model.",
+      "verify": "以多個載重持續時間量測蠕變和卸載回復，核對模型是否同時描述兩段；將試驗溫度、應變速率和圍壓寫在參數旁邊，另用未參與擬合的歷程驗證。再查卸載回復曲線。~Measure creep and unloading recovery over several durations and test whether one model fits both. Record temperature, strain rate and confinement beside parameters, then validate against a loading history excluded from calibration. Also compare recovery after removing the load.",
+      "failure": "單一黏彈元件無法描述所有塑性與損傷，卸載殘餘應變可能超出模型。若把一個溫度下的模數永久固定，會錯估施工熱態與服役冷態的差異。~One viscoelastic element cannot describe every plastic or damage mechanism, and residual strain may exceed it. Fixing modulus from one temperature misrepresents differences between warm construction and cool service conditions.",
+      "misconception": "短時間試驗得到的瀝青模數可以直接代表所有長期載重。~A short-duration asphalt modulus directly represents all long-term loading conditions.",
+      "practice": "以黏彈遲滯與載重時間編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。以多個載重持續時間量測蠕變和卸載回復，核對模型是否同時描述兩段；將試驗溫度、應變速率和圍壓寫在參數旁邊，另用未參與擬合的歷程驗證。再查卸載回復曲線。~Prepare a reviewable evidence sheet for viscoelastic lag and loading time, recording data time, units, model applicability and reviewer. Measure creep and unloading recovery over several durations and test whether one model fits both. Record temperature, strain rate and confinement beside parameters, then validate against a loading history excluded from calibration. Also compare recovery after removing the load."
+    },
+    {
+      "anchor": "熱收縮與相鄰材料~Thermal contraction and neighboring materials",
+      "title": "熱收縮與相鄰材料~Thermal contraction and neighboring materials",
+      "mechanism": "瀝青心牆冷卻時會收縮，而兩側過渡料限制其自由變形。變形相容與黏結同樣重要，不能只看心牆材料自身能承受多大拉應變。 假設有效長10 m、熱膨脹係數15×10⁻⁶/K、降溫20 K，自由收縮3 mm；材料係數為假設，不含黏彈鬆弛與拘束。 局部快速冷卻可能產生集中拉伸，而高溫黏性又會讓應力鬆弛。若直接用彈性拘束公式跨越整個溫度範圍，可能誇大或低估真正的接縫需求。~Cooling contracts the asphalt core while transition material restrains free movement. Compatibility and bonding matter alongside the material tensile strain capacity, especially where geometry changes or the core meets concrete. Assume length 10 m, expansion coefficient 15×10⁻⁶/K and cooling twenty kelvin. Free contraction is 3 mm, with assumed coefficient and no viscoelastic relaxation or restraint. Local rapid cooling concentrates tension, while warm viscous behavior relaxes stress. Applying one elastic restraint formula across the whole temperature range can either exaggerate or understate actual joint demand.",
+      "model": "教學假設，非地標實測值或操作設定：假設有效長10 m、熱膨脹係數15×10⁻⁶/K、降溫20 K，自由收縮3 mm；材料係數為假設，不含黏彈鬆弛與拘束。~Teaching assumptions, not landmark measurements or operating settings: Assume length 10 m, expansion coefficient 15×10⁻⁶/K and cooling twenty kelvin. Free contraction is 3 mm, with assumed coefficient and no viscoelastic relaxation or restraint.",
+      "verify": "同步記錄心牆與過渡料溫度和位移，以同時刻差值檢查相容；核對混合料熱性質試驗，再比較趾板接頭附近與壩中央區域的變形，確認自由收縮並未誤當實際張開。~Record core and transition temperatures and movements together and assess compatibility at matching times. Check mixture thermal tests and compare plinth-adjacent and central zones, ensuring free contraction is not mistaken for actual joint opening.",
+      "failure": "局部快速冷卻可能產生集中拉伸，而高溫黏性又會讓應力鬆弛。若直接用彈性拘束公式跨越整個溫度範圍，可能誇大或低估真正的接縫需求。~Local rapid cooling concentrates tension, while warm viscous behavior relaxes stress. Applying one elastic restraint formula across the whole temperature range can either exaggerate or understate actual joint demand.",
+      "misconception": "自由熱收縮量就是心牆接頭實際必然張開的寬度。~Free thermal contraction is exactly the opening that must occur at the core connection.",
+      "practice": "以熱收縮與相鄰材料編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。同步記錄心牆與過渡料溫度和位移，以同時刻差值檢查相容；核對混合料熱性質試驗，再比較趾板接頭附近與壩中央區域的變形，確認自由收縮並未誤當實際張開。~Prepare a reviewable evidence sheet for thermal contraction and neighboring materials, recording data time, units, model applicability and reviewer. Record core and transition temperatures and movements together and assess compatibility at matching times. Check mixture thermal tests and compare plinth-adjacent and central zones, ensuring free contraction is not mistaken for actual joint opening."
+    },
+    {
+      "anchor": "薄層供料與寬度~Lift supply and core width",
+      "title": "薄層供料與寬度~Lift supply and core width",
+      "mechanism": "心牆體積遠小於壩殼，但必須與過渡區同步上升，否則缺乏側向支承或造成施工等待。寬度連續性比每日總方量更能反映防滲屏障是否完整。 假設一層長200 m、寬0.6 m、厚0.25 m，材料體積30 m³；若寬度局部少0.05 m持續20 m，缺量0.25 m³，不能靠別處超寬抵銷。 材料側向擠入過渡料可使表面寬度看似足夠但有效核心變薄，局部冷料團也會破壞連續性。把整層平均寬度當最小厚度，會漏掉控制滲流的窄點。~Core volume is small relative to the shells but must rise compatibly with transitions to preserve support and avoid waiting. Width continuity reveals sealing integrity better than daily total material output alone. Assume lift length 200 m, width 0.6 m and thickness 0.25 m, giving 30 m³. A 0.05 m width deficit over 20 m loses 0.25 m³ and is not offset by excess elsewhere. Lateral intrusion into transition material can mask a thinner effective core, while cold clumps disrupt continuity. Treating mean width as minimum thickness misses narrow sections controlling seepage performance.",
+      "model": "教學假設，非地標實測值或操作設定：假設一層長200 m、寬0.6 m、厚0.25 m，材料體積30 m³；若寬度局部少0.05 m持續20 m，缺量0.25 m³，不能靠別處超寬抵銷。~Teaching assumptions, not landmark measurements or operating settings: Assume lift length 200 m, width 0.6 m and thickness 0.25 m, giving 30 m³. A 0.05 m width deficit over 20 m loses 0.25 m³ and is not offset by excess elsewhere.",
+      "verify": "逐段量測壓實後心牆寬度與中心線，將進料和過渡區高度對照；用位置化方量查出局部窄段，並保存每層熱態與冷態量測差異，避免只依供料清單驗收。~Measure compacted width and centerline by segment and compare delivery with transition height. Use spatial volume accounting to locate narrow sections, retaining warm and cooled dimensions rather than accepting the lift from delivery totals alone.",
+      "failure": "材料側向擠入過渡料可使表面寬度看似足夠但有效核心變薄，局部冷料團也會破壞連續性。把整層平均寬度當最小厚度，會漏掉控制滲流的窄點。~Lateral intrusion into transition material can mask a thinner effective core, while cold clumps disrupt continuity. Treating mean width as minimum thickness misses narrow sections controlling seepage performance.",
+      "misconception": "其他位置多鋪材料就能補償任何局部心牆寬度不足。~Extra material elsewhere compensates for every local deficiency in core width.",
+      "practice": "以薄層供料與寬度編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。逐段量測壓實後心牆寬度與中心線，將進料和過渡區高度對照；用位置化方量查出局部窄段，並保存每層熱態與冷態量測差異，避免只依供料清單驗收。~Prepare a reviewable evidence sheet for lift supply and core width, recording data time, units, model applicability and reviewer. Measure compacted width and centerline by segment and compare delivery with transition height. Use spatial volume accounting to locate narrow sections, retaining warm and cooled dimensions rather than accepting the lift from delivery totals alone."
+    },
+    {
+      "anchor": "層間黏結與剪切~Interlift bond and shear",
+      "title": "層間黏結與剪切~Interlift bond and shear",
+      "mechanism": "瀝青層之間的黏結受表面潔淨、熱歷程和壓實影響，整體材料延性不能補救未黏結界面。接縫試驗需保留載重方向與溫度條件。 假設接縫試體剪力峰值12 kN、面積0.02 m²，名義剪應力0.6 MPa；不含應力集中且只代表該溫度速率下試驗。 試體可能在完整材料先破壞而無法量得真正接縫能力，也可能因取芯熱損傷改變結果。若只報最大剪力不記錄破壞面，便無法判讀層間品質。~Asphalt interlift bonding depends on cleanliness, thermal history and compaction. Bulk ductility cannot repair an unbonded interface, and joint tests must preserve loading direction and temperature conditions. Assume joint specimen peak shear 12 kN over 0.02 m². Nominal shear stress is 0.6 MPa, excluding concentration and applying only at the tested temperature and rate. Failure in intact material may prevent measuring joint capacity, while coring heat can alter results. Reporting peak force without the failure surface leaves the interlift quality interpretation incomplete and potentially misleading.",
+      "model": "教學假設，非地標實測值或操作設定：假設接縫試體剪力峰值12 kN、面積0.02 m²，名義剪應力0.6 MPa；不含應力集中且只代表該溫度速率下試驗。~Teaching assumptions, not landmark measurements or operating settings: Assume joint specimen peak shear 12 kN over 0.02 m². Nominal shear stress is 0.6 MPa, excluding concentration and applying only at the tested temperature and rate.",
+      "verify": "把跨層芯樣與同層完整樣配對試驗，記錄破壞是在界面還是材料內；核對表面污染和溫度紀錄，再以滲透與顯微觀察確認剪力合格沒有掩蓋局部未黏結區。~Pair interface-crossing cores with intact specimens and record whether failure occurs at the joint or within material. Check contamination and temperature records and use permeability and microscopy to identify local unbonded areas hidden by acceptable peak strength.",
+      "failure": "試體可能在完整材料先破壞而無法量得真正接縫能力，也可能因取芯熱損傷改變結果。若只報最大剪力不記錄破壞面，便無法判讀層間品質。~Failure in intact material may prevent measuring joint capacity, while coring heat can alter results. Reporting peak force without the failure surface leaves the interlift quality interpretation incomplete and potentially misleading.",
+      "misconception": "瀝青材料具有延性就能保證所有施工層面完全黏結。~Ductile asphalt material guarantees complete bonding at every construction interface.",
+      "practice": "以層間黏結與剪切編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。把跨層芯樣與同層完整樣配對試驗，記錄破壞是在界面還是材料內；核對表面污染和溫度紀錄，再以滲透與顯微觀察確認剪力合格沒有掩蓋局部未黏結區。~Prepare a reviewable evidence sheet for interlift bond and shear, recording data time, units, model applicability and reviewer. Pair interface-crossing cores with intact specimens and record whether failure occurs at the joint or within material. Check contamination and temperature records and use permeability and microscopy to identify local unbonded areas hidden by acceptable peak strength."
+    },
+    {
+      "anchor": "趾板接觸與有效壓力~Plinth contact and effective pressure",
+      "title": "趾板接觸與有效壓力~Plinth contact and effective pressure",
+      "mechanism": "心牆與混凝土趾板需要在變形下維持密封，接觸壓力和水壓之差影響張開傾向。幾何粗糙、黏結與黏彈行為使此差值只能作初步指標。 假設總接觸壓力300 kPa、接面水壓220 kPa，差80 kPa；若變形降低接觸壓力100 kPa，差為−20 kPa，不直接判定必然失效。 接觸壓力下降可能只在小區域發生，平均土壓計會漏掉；黏結損傷也可在仍受壓時形成優先通道。單一壓差不能代表接頭完整的密封狀態。~The core-plinth connection must remain sealed during deformation. Contact compression minus water pressure indicates opening tendency, but roughness, bond and viscoelastic behavior make it only a preliminary measure. Assume contact compression 300 kPa and interface water pressure 220 kPa, leaving eighty kPa. A hundred-kPa reduction gives −20 kPa, without directly declaring inevitable failure. Loss of compression can be localized and missed by averaged pressure measurements, while damaged bond can create paths even under compression. One pressure difference cannot establish the complete sealing condition of the connection.",
+      "model": "教學假設，非地標實測值或操作設定：假設總接觸壓力300 kPa、接面水壓220 kPa，差80 kPa；若變形降低接觸壓力100 kPa，差為−20 kPa，不直接判定必然失效。~Teaching assumptions, not landmark measurements or operating settings: Assume contact compression 300 kPa and interface water pressure 220 kPa, leaving eighty kPa. A hundred-kPa reduction gives −20 kPa, without directly declaring inevitable failure.",
+      "verify": "核對接面位移、壓力和漏流在同一時段的關係，檢查儀器是否代表實際接觸區；利用接頭專屬試驗比較不同溫度和剪移路徑，避免以一般瀝青試體代替接面。檢查接觸面水壓是否均勻。~Compare interface movement, pressure and leakage over the same period and verify instrument representativeness. Use connection-specific tests across temperatures and shear paths instead of substituting generic asphalt specimens for the actual contact geometry. Check whether interface water pressure is spatially uniform.",
+      "failure": "接觸壓力下降可能只在小區域發生，平均土壓計會漏掉；黏結損傷也可在仍受壓時形成優先通道。單一壓差不能代表接頭完整的密封狀態。~Loss of compression can be localized and missed by averaged pressure measurements, while damaged bond can create paths even under compression. One pressure difference cannot establish the complete sealing condition of the connection.",
+      "misconception": "只要平均接觸壓力大於水壓，接頭就不可能存在漏流。~Mean contact pressure above water pressure makes leakage through the connection impossible.",
+      "practice": "以趾板接觸與有效壓力編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。核對接面位移、壓力和漏流在同一時段的關係，檢查儀器是否代表實際接觸區；利用接頭專屬試驗比較不同溫度和剪移路徑，避免以一般瀝青試體代替接面。檢查接觸面水壓是否均勻。~Prepare a reviewable evidence sheet for plinth contact and effective pressure, recording data time, units, model applicability and reviewer. Compare interface movement, pressure and leakage over the same period and verify instrument representativeness. Use connection-specific tests across temperatures and shear paths instead of substituting generic asphalt specimens for the actual contact geometry. Check whether interface water pressure is spatially uniform."
+    },
+    {
+      "anchor": "過渡區剪應變相容~Transition-zone shear compatibility",
+      "title": "過渡區剪應變相容~Transition-zone shear compatibility",
+      "mechanism": "心牆和相鄰粗粒材料沉降不同，界面會傳遞剪力並形成局部剪應變。相對位移除以代表厚度只是幾何估算，真正變形可能集中在更薄區域。 假設相對位移4 mm分布於0.5 m厚區，工程剪應變γ=0.004/0.5=0.008，即0.8%；均勻剪切假設，非容許值。 把整個過渡層厚度當剪切帶會低估局部應變，反向只用極薄帶又可能過度保守。若沒有位移分布資料，不能把任選厚度的計算稱作實測材料應變。~Differential settlement between core and coarse transition material transfers shear. Relative displacement divided by representative thickness is only geometric; actual deformation may localize within a much thinner band. Assume relative movement 4 mm distributed across thickness 0.5 m. Engineering shear strain is 0.008, or 0.8 percent, under uniform shear and not an allowable value. Using full transition thickness as a shear band understates local strain, while an arbitrarily thin band may be overly conservative. Without a displacement profile, the selected-width calculation is not a measured material strain.",
+      "model": "教學假設，非地標實測值或操作設定：假設相對位移4 mm分布於0.5 m厚區，工程剪應變γ=0.004/0.5=0.008，即0.8%；均勻剪切假設，非容許值。~Teaching assumptions, not landmark measurements or operating settings: Assume relative movement 4 mm distributed across thickness 0.5 m. Engineering shear strain is 0.008, or 0.8 percent, under uniform shear and not an allowable value.",
+      "verify": "設置跨界面多個位移點辨認變形分布，對照過渡料粒徑與心牆溫度；將平均剪應變和局部最大值分開，並用相同尺度的試驗檢查是否出現界面滑移。固定標記間的量測長度。~Use several displacement points across the interface to resolve deformation, comparing transition grading and core temperature. Separate mean and local maximum shear and test comparable scales for evidence of interface slip or localization. Keep the displacement gauge length explicitly defined.",
+      "failure": "把整個過渡層厚度當剪切帶會低估局部應變，反向只用極薄帶又可能過度保守。若沒有位移分布資料，不能把任選厚度的計算稱作實測材料應變。~Using full transition thickness as a shear band understates local strain, while an arbitrarily thin band may be overly conservative. Without a displacement profile, the selected-width calculation is not a measured material strain.",
+      "misconception": "相對位移除以任意過渡層厚度就能得到精確局部剪應變。~Relative movement divided by any chosen transition thickness gives exact local shear strain.",
+      "practice": "以過渡區剪應變相容編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。設置跨界面多個位移點辨認變形分布，對照過渡料粒徑與心牆溫度；將平均剪應變和局部最大值分開，並用相同尺度的試驗檢查是否出現界面滑移。固定標記間的量測長度。~Prepare a reviewable evidence sheet for transition-zone shear compatibility, recording data time, units, model applicability and reviewer. Use several displacement points across the interface to resolve deformation, comparing transition grading and core temperature. Separate mean and local maximum shear and test comparable scales for evidence of interface slip or localization. Keep the displacement gauge length explicitly defined."
+    },
+    {
+      "anchor": "品質抽樣漏檢機率~Sampling and missed defects",
+      "title": "品質抽樣漏檢機率~Sampling and missed defects",
+      "mechanism": "抽樣能提供品質證據但不能證明每處完美，漏檢機率取決於缺陷分布與樣本獨立性。沿同一路徑取樣可能高度相關，不能用樣本數誇大信心。 假設每個獨立樣本遇缺陷機率0.05，取20個仍全未遇到的機率0.95²⁰=0.35849；僅獨立均勻假設，不是抽樣計畫建議。 連續缺陷帶可被集中取樣完全避開，零缺陷樣本不等於零缺陷工程。若檢測方法本身靈敏度不足，增加相同測試次數也可能無法發現指定缺陷。~Sampling supplies evidence rather than proof of perfection. Miss probability depends on defect distribution and independence, while samples along one track can be highly correlated and overstate confidence. Assume independent defect probability 0.05 per sample. Twenty samples all miss defects with probability 0.95²⁰=0.35849, under uniform independence and not as a sampling-plan recommendation. Clustered samples can entirely avoid a continuous defect band, so zero observed defects do not establish zero actual defects. Limited detection sensitivity may persist even after repeating the same test many times.",
+      "model": "教學假設，非地標實測值或操作設定：假設每個獨立樣本遇缺陷機率0.05，取20個仍全未遇到的機率0.95²⁰=0.35849；僅獨立均勻假設，不是抽樣計畫建議。~Teaching assumptions, not landmark measurements or operating settings: Assume independent defect probability 0.05 per sample. Twenty samples all miss defects with probability 0.95²⁰=0.35849, under uniform independence and not as a sampling-plan recommendation.",
+      "verify": "把樣本分布畫到每層平面，核對是否涵蓋接縫、窄段和熱歷程異常區；將隨機樣本與針對性缺陷檢查分開統計，並說明空間相關會如何降低有效樣本數。另畫空間聚集分布圖。~Map sample coverage on every lift and include joints, narrow sections and thermal anomalies. Analyze random sampling separately from targeted defect checks and explain how spatial correlation reduces the effective number of independent observations. Also map spatial clustering of possible defects.",
+      "failure": "連續缺陷帶可被集中取樣完全避開，零缺陷樣本不等於零缺陷工程。若檢測方法本身靈敏度不足，增加相同測試次數也可能無法發現指定缺陷。~Clustered samples can entirely avoid a continuous defect band, so zero observed defects do not establish zero actual defects. Limited detection sensitivity may persist even after repeating the same test many times.",
+      "misconception": "連續二十個樣本沒有缺陷就能證明整個心牆完全無缺陷。~Twenty defect-free samples prove that the entire asphalt core is completely defect-free.",
+      "practice": "以品質抽樣漏檢機率編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。把樣本分布畫到每層平面，核對是否涵蓋接縫、窄段和熱歷程異常區；將隨機樣本與針對性缺陷檢查分開統計，並說明空間相關會如何降低有效樣本數。另畫空間聚集分布圖。~Prepare a reviewable evidence sheet for sampling and missed defects, recording data time, units, model applicability and reviewer. Map sample coverage on every lift and include joints, narrow sections and thermal anomalies. Analyze random sampling separately from targeted defect checks and explain how spatial correlation reduces the effective number of independent observations. Also map spatial clustering of possible defects."
+    },
+    {
+      "anchor": "材料老化與保留試樣~Material ageing and retained specimens",
+      "title": "材料老化與保留試樣~Material ageing and retained specimens",
+      "mechanism": "瀝青材料隨熱氧化與時間改變，硬化可能提高短時剛度卻降低延性。比較需使用相同試驗溫度和速率，不能把較高強度自動解讀為更好密封能力。 假設相同試驗條件下模數由120升到180 MPa，剛度比1.5；同時破壞應變由0.04降0.025，降低37.5%，不代表真實老化速率。 保留試樣的氧氣暴露可能與深埋心牆不同，不能直接把其老化年限當現地壽命。若只檢查峰值強度，延性降低與界面脆化可能被視為性能改善而漏判。~Asphalt changes with thermal oxidation and time. Hardening can raise short-term stiffness while reducing ductility, requiring comparisons at equal temperature and rate rather than treating higher strength as automatically better sealing. Assume modulus rises from 120 to 180 MPa under matched tests, a ratio 1.5, while failure strain falls from 0.04 to 0.025, a 37.5 percent reduction, not an actual ageing rate. Retained specimens may see different oxygen exposure from a buried core, preventing direct conversion to service life. Peak strength alone can make reduced ductility and interface embrittlement appear to be improved performance.",
+      "model": "教學假設，非地標實測值或操作設定：假設相同試驗條件下模數由120升到180 MPa，剛度比1.5；同時破壞應變由0.04降0.025，降低37.5%，不代表真實老化速率。~Teaching assumptions, not landmark measurements or operating settings: Assume modulus rises from 120 to 180 MPa under matched tests, a ratio 1.5, while failure strain falls from 0.04 to 0.025, a 37.5 percent reduction, not an actual ageing rate.",
+      "verify": "以保留試樣和取芯建立同條件比較，核對儲存環境、試驗溫度和載重速率；同時報告剛度、延性與滲透，並檢查差異來自材料老化還是不同取樣位置與壓實程度。~Compare retained and field-cored specimens under matched conditions, checking storage, test temperature and loading rate. Report stiffness, ductility and permeability together and distinguish ageing from different sample locations or compaction levels in the dam.",
+      "failure": "保留試樣的氧氣暴露可能與深埋心牆不同，不能直接把其老化年限當現地壽命。若只檢查峰值強度，延性降低與界面脆化可能被視為性能改善而漏判。~Retained specimens may see different oxygen exposure from a buried core, preventing direct conversion to service life. Peak strength alone can make reduced ductility and interface embrittlement appear to be improved performance.",
+      "misconception": "老化後模數提高就表示心牆密封能力與延性必定一起提高。~An ageing-related modulus increase necessarily improves both core sealing and ductility.",
+      "practice": "以材料老化與保留試樣編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。以保留試樣和取芯建立同條件比較，核對儲存環境、試驗溫度和載重速率；同時報告剛度、延性與滲透，並檢查差異來自材料老化還是不同取樣位置與壓實程度。~Prepare a reviewable evidence sheet for material ageing and retained specimens, recording data time, units, model applicability and reviewer. Compare retained and field-cored specimens under matched conditions, checking storage, test temperature and loading rate. Report stiffness, ductility and permeability together and distinguish ageing from different sample locations or compaction levels in the dam."
+    }
+  ],
+  "facts": [
+    "教學每100 kg礦料加6 kg瀝青，總質量占比5.6604%。~Teaching binder six kilograms per hundred kilograms mineral gives total-mass fraction 5.6604 percent.",
+    "教學密度2450與2500 kg/m³對應2%空隙率。~Teaching densities 2450 and 2500 kg/m³ give two-percent air voids.",
+    "教學黏彈階躍模型20 s應變0.0008647。~Teaching viscoelastic step model gives strain 0.0008647 at twenty seconds.",
+    "教學10 m材料自由降溫收縮3 mm。~Teaching ten-metre material contracts freely by 3 mm during cooling.",
+    "教學施工層長200 m、厚0.25 m、寬0.6 m，體積30 m³。~Teaching lift length 200 m, thickness 0.25 m and width 0.6 m give volume 30 m³.",
+    "教學隨機獨立抽樣20次漏檢5%缺陷區的機率35.85%。~Twenty independent teaching samples miss a five-percent defect fraction with probability 35.85 percent."
+  ],
+  "timeline": [
+    {
+      "year": "2012",
+      "event": "墾務局土石壩施工與設計章節更新，提供分區填築的一般背景。~Reclamation updates embankment design and construction chapters, providing general zoned-placement context."
+    },
+    {
+      "year": "2016",
+      "event": "瀝青心牆簡化材料模型研究出版，探討分析所需的材料描述。~A simplified asphalt-core material-model study is published, addressing descriptions needed for analysis."
+    },
+    {
+      "year": "2020",
+      "event": "曲學與照壁山心牆研究出版，分別報告設計表現及施工速率個案。~Quxue and Zhaobishan core studies are published, reporting design performance and a construction-rate case."
+    }
+  ],
+  "codes": [
+    "美國墾務局土石壩設計標準，第十三號第二章，2012~Reclamation Design Standards No. 13, Chapter 2: Embankment Design, 2012",
+    "美國墾務局土石壩施工標準，第十三號第十章，2012~Reclamation Design Standards No. 13, Chapter 10: Embankment Construction, 2012"
+  ],
+  "landmarks": [
+    "曲學壩：公開瀝青心牆研究個案~Quxue Dam: published asphalt-core study",
+    "照壁山壩：公開心牆施工速率個案~Zhaobishan Dam: published core-construction-rate case"
+  ],
+  "place": {
+    "name": "丹佛壩工技術教育參照點~Denver dam-engineering educational reference",
+    "country": "美國~United States",
+    "lat": 39.72,
+    "lng": -105.13,
+    "query": "Bureau of Reclamation Technical Service Center Denver Colorado"
+  },
+  "sources": [
+    {
+      "key": "asphalt-quxue",
+      "title": "曲學瀝青心牆堆石壩設計與表現",
+      "titleEn": "Design and performance of the Quxue asphalt-core rockfill dam",
+      "publisher": "Japanese Geotechnical Society / Elsevier",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0038080620336921",
+      "sourceType": "primary",
+      "scope": "二〇二〇年原研究公開摘要與檢索內容；一百七十四公尺壩與監測背景，不把個案性能保證推廣至全部心牆。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "asphalt-rate",
+      "title": "照壁山瀝青心牆施工速率個案",
+      "titleEn": "A case study on asphalt core construction rate for the Zhaobishan embankment dam",
+      "publisher": "Research authors / Case Studies in Construction Materials",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2214509520300905",
+      "sourceType": "primary",
+      "scope": "二〇二〇年原研究公開檢索全文片段；說明試驗區、配比與品質監控必須一起評估，未搬用施工溫度或配方。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "asphalt-model",
+      "title": "瀝青心牆簡化材料模型研究",
+      "titleEn": "Simplified material model for analysis of asphalt core in embankment dams",
+      "publisher": "Research authors / Construction and Building Materials",
+      "url": "https://www.sciencedirect.com/science/article/pii/S095006181631176X",
+      "sourceType": "primary",
+      "scope": "原研究公開摘要描述防滲、延性與應變速率依存性；教學黏彈模型為自訂假設。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "usbr-embankment",
+      "title": "土石壩設計標準第十三號第二章",
+      "titleEn": "Design Standards No. 13, Chapter 2: Embankment Design",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-2.pdf",
+      "sourceType": "primary",
+      "scope": "二〇一二年土石壩、分區堆石與混凝土面板的公開設計背景。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "usbr-construction",
+      "title": "土石壩施工標準第十章",
+      "titleEn": "Design Standards No. 13, Chapter 10: Embankment Construction",
+      "publisher": "Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-10.pdf",
+      "sourceType": "primary",
+      "scope": "二〇一二年填築、試填區、含水量、施工品質與導流章節。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Japanese Geotechnical Society / Elsevier",
+      "nameEn": "Japanese Geotechnical Society / Elsevier",
+      "business": "提供相關水工建設、設備或工程技術資料的機構。",
+      "businessEn": "Organization providing relevant hydraulic infrastructure, equipment or engineering information.",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0038080620336921",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作工程教育參照；不據此推定其他地標的承包關係。",
+      "roleEn": "Its public information is used for engineering education; no contractor relationship with other landmarks is inferred."
+    },
+    {
+      "name": "Bureau of Reclamation",
+      "nameEn": "Bureau of Reclamation",
+      "business": "提供相關水工建設、設備或工程技術資料的機構。",
+      "businessEn": "Organization providing relevant hydraulic infrastructure, equipment or engineering information.",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/finalds-pdfs/DS13-10.pdf",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作工程教育參照；不據此推定其他地標的承包關係。",
+      "roleEn": "Its public information is used for engineering education; no contractor relationship with other landmarks is inferred."
+    }
+  ],
+  "related": [
+    "b235",
+    "b237"
+  ],
+  "architectureNodes": [
+    [
+      "膠結料比例基準",
+      "Binder proportion basis"
+    ],
+    [
+      "黏彈遲滯與載重時間",
+      "Viscoelastic lag and loading time"
+    ],
+    [
+      "薄層供料與寬度",
+      "Lift supply and core width"
+    ],
+    [
+      "趾板接觸與有效壓力",
+      "Plinth contact and effective pressure"
+    ],
+    [
+      "材料老化與保留試樣",
+      "Material ageing and retained specimens"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

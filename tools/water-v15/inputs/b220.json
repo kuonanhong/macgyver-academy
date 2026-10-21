@@ -1,0 +1,253 @@
+{
+  "id": "b220",
+  "title": "南化水庫大壩~Nanhua Dam",
+  "discipline": "water-dams",
+  "family": "water",
+  "focus": "越域引水與公共原水供應韌性~Interbasin diversion and resilient raw water supply",
+  "summary": "南化課程以跨流域引水、庫容曲線、原水混合和聯通管線為核心，區分集水區產流與可成功導入水庫的水量。壩體超高、泥砂占容、乾旱需求和流量計不確定度接續形成供水風險帳。可靠度與漏水範例使用明示假設，保留共因失效及量測誤差的影響。~Nanhua focuses on interbasin diversion, storage curves, raw-water mixing and connecting pipelines, separating watershed runoff from water actually delivered to storage. Freeboard, sediment occupation, drought demand and meter uncertainty extend this into a supply-risk account. Reliability and leakage examples retain common-cause failures and measurement errors through explicitly stated assumptions.",
+  "history": "水利署歷史文章區分一九九三年七月開始蓄水、一九九四年三月主要工程完成與同年七月正式供水，並列出壩高八十七點五公尺的分區土石壩。甲仙越域引水是供水背景，不表示本課使用現行取水權限或時刻表。文章內當時預測的後續工程日期沒有當成已實現事件引用。課程使用墾務局公開索引作容量計算、滲流及量測研究入口；與黑部的比較只針對水量與能量的不同用途。~The WRA history separates initial impoundment in July 1993, completion of main works in March 1994 and formal supply in July 1994, and lists an 87.5 m zoned embankment. Jiaxian diversion establishes supply context without providing current abstraction permissions or schedules. Later predicted dates in that historical article are not represented as completed events. Public Reclamation indexes offer entry points for capacity, seepage and measurement study. Comparison with Kurobe concerns different uses of water and energy rather than equivalent operating conditions.",
+  "example": "假想一天本地入流五十萬立方公尺，越域進水三十萬、供水六十萬、其他損失四萬，蓄量增加十六萬立方公尺；若越域水源減半，增加量只剩一萬，不能把集水區降雨全部視為可取水。另用上下兩個高程的水面積四與五平方公里、相差兩公尺，以梯形法得區間庫容九百萬立方公尺。若面積曲線中點較線性插值高百分之十，辛普森估值為九百六十萬，提醒粗糙曲線可能低估而不是保證固定庫容。 核驗：Vlocal=500000 m3/day; Vimport=300000 m3/day; Vsupply=600000 m3/day; Vloss=40000 m3/day; dV=160000 m3/day。對齊本地入流、引水出口和供水流量計的累積時段，以庫水位曲線反推蓄量差核對。標記引水中斷或旅行時間跨日的區段，再將管路暫存補入帳，避免把延遲誤判為水量損失。~Assume daily local inflow of 0.5 million m3, diversion of 0.3 million, supply of 0.6 million and other losses of 0.04 million. Storage increases by 0.16 million m3; halving diversion leaves only 0.01 million. Catchment rainfall therefore cannot be counted directly as obtainable supply. Separately, water areas of 4 and 5 km2 separated by 2 m give 9 million m3 by trapezoidal integration. If midpoint area is ten percent above the linear midpoint, Simpson integration gives 9.6 million m3, illustrating sensitivity to the shape of the area curve. Verification: Align cumulative intervals for local inflow, diversion outlet and supply meters, then compare storage inferred from reservoir levels. Mark interruptions and transfers crossing a daily boundary, adding conveyance storage so travel delay is not misidentified as a water loss.",
+  "units": [
+    {
+      "anchor": "本地入流與越域供水~Local inflow and imported supply",
+      "title": "本地入流與越域供水~Local inflow and imported supply",
+      "mechanism": "南化的本地集水與甲仙越域引水屬不同來源，應分別記錄實際到庫水量，再與供水及損失相減。來源河川有水不代表全數都能引入，因為輸水能力、時段與其他用水需求各有限制。水量帳以清楚邊界避免重複計算，並保留入庫延遲，不能只用來源地降雨面積推定目的水庫已收到多少水。~Local catchment inflow and imported water are distinct sources and must be measured as volumes actually received before subtracting supply and losses. Water present in a source river is not necessarily transferable because capacity, timing and competing needs constrain delivery. Explicit boundaries and travel delay prevent double counting; rainfall over a source area cannot by itself establish how much water has already reached the destination reservoir.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：Vlocal=500000 m3/day; Vimport=300000 m3/day; Vsupply=600000 m3/day; Vloss=40000 m3/day; dV=160000 m3/day。適用邊界：同一日實收水量，損失合併表示，非目前實際供水或引水配額。~Original teaching assumptions, not project measurements or equipment settings: Vlocal=500000 m3/day; Vimport=300000 m3/day; Vsupply=600000 m3/day; Vloss=40000 m3/day; dV=160000 m3/day. Applicable boundary: Volumes received during one day with combined losses, not current supply or diversion allocations.",
+      "verify": "對齊本地入流、引水出口和供水流量計的累積時段，以庫水位曲線反推蓄量差核對。標記引水中斷或旅行時間跨日的區段，再將管路暫存補入帳，避免把延遲誤判為水量損失。~Align cumulative intervals for local inflow, diversion outlet and supply meters, then compare storage inferred from reservoir levels. Mark interruptions and transfers crossing a daily boundary, adding conveyance storage so travel delay is not misidentified as a water loss.",
+      "failure": "把來源河川流量直接當目的水庫入流會忽略未引走水量；若引水停止卻仍使用長期平均值，短期蓄量估算可能保持正值而實際已接近持平或下降。~Treating source-river flow as destination inflow ignores water not diverted. Retaining a long-term import average during an interruption can predict growing storage even when the short-term balance is nearly zero or negative.",
+      "misconception": "來源河川的全部流量都可直接列為水庫實收入流~All source-river discharge can be entered as water actually received by the reservoir",
+      "practice": "將越域水量減半並重算，再把一天拆成兩個時段分別設定引水中斷與恢復，檢查總量及時段最低蓄量，說明日平均可能隱藏的變化。~Halve imported volume and recalculate, then split the day into interruption and recovery intervals. Compare total volume and minimum interim storage to show what a daily average can conceal."
+    },
+    {
+      "anchor": "水面積曲線與區間庫容~Area curve and interval storage",
+      "title": "水面積曲線與區間庫容~Area curve and interval storage",
+      "mechanism": "庫容不是水面積乘整座壩高，而是面積隨高程積分。相鄰兩個水位的面積可用梯形近似區間體積，這隱含中間面積近似線性變化；若谷地擴寬不均或岸坡轉折，較密高程資料可改善估算。每次地形測量還應保留基準、邊界與淤積年代，否則不同版本差異未必全是沉積造成。~Storage is the integral of water area over elevation, not one area multiplied by total dam height. Trapezoidal integration between adjacent levels assumes approximately linear area variation. Abrupt valley widening or bank changes require finer elevation spacing. Survey datum, coverage and date must also remain explicit, because differences between capacity-curve versions do not necessarily arise entirely from deposited sediment or represent the same geometric boundary.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：A1=4000000 m2; A2=5000000 m2; dz=2 m; dV=(A1+A2)dz/2=9000000 m3。適用邊界：兩高程間面積線性近似，只求區間增量，不是水庫總容量。~Original teaching assumptions, not project measurements or equipment settings: A1=4000000 m2; A2=5000000 m2; dz=2 m; dV=(A1+A2)dz/2=9000000 m3. Applicable boundary: Linear area interpolation between two elevations; interval increment only, not total reservoir capacity.",
+      "verify": "將面積單位先統一成平方公尺，畫面積高程曲線並以圖形面積核對積分。加入中點面積後比較梯形與辛普森估值，再檢查水深測量基準是否一致，將幾何離散誤差與儀器誤差分開。~Convert areas to square metres, plot area against elevation and verify the integral geometrically. Add a midpoint area to compare trapezoidal and Simpson estimates, then check survey datums so discretization error remains separate from instrument error.",
+      "failure": "把兩個高程的面積差乘高差會漏掉主要體積；將高程基準不同的兩次庫容曲線直接相減，又可能把基準偏移誤認為整庫淤積，產生虛假的容量損失。~Multiplying area difference by elevation difference omits most of the volume. Subtracting curves referenced to different vertical datums can instead turn a survey offset into apparent reservoir-wide sedimentation and a false capacity loss.",
+      "misconception": "區間庫容等於上下水面積之差乘上高程差~Interval storage equals the difference in water areas times elevation difference",
+      "practice": "令中點面積比線性插值大百分之十，使用辛普森式重算並與九百萬立方公尺比較，解釋差異來自曲線形狀而不是新增入庫水量。~Set midpoint area ten percent above linear interpolation, use Simpson integration and compare with nine million cubic metres. Explain that the difference arises from curve shape rather than additional incoming water."
+    },
+    {
+      "anchor": "雙來源保守成分混合~Conservative mixing of two sources",
+      "title": "雙來源保守成分混合~Conservative mixing of two sources",
+      "mechanism": "越域與本地原水可能具有不同保守溶質濃度，混合結果由各股溶質質量率加總後除總水量求得。這可討論來源比例對取水水質的影響，但不代表濁度、消毒需求或會沉降反應的成分也必定線性。採樣時間須配合輸水旅行時間，否則即使公式正確也可能比較到不同水團。~Imported and local raw water may contain different concentrations of a conservative dissolved constituent. The blend follows summed solute mass flux divided by total flow. This illustrates source-proportion effects but does not guarantee linear mixing of turbidity, disinfectant demand or settling and reactive constituents. Sampling must account for travel time, otherwise a correct equation can be compared with measurements of different water parcels and appear inconsistent.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：Qlocal=2 m3/s; Clocal=18 mg/L; Qimport=1 m3/s; Cimport=42 mg/L; Cmix=26 mg/L。適用邊界：假想無反應溶質且充分混合，不是飲用水標準或濁度混合公式。~Original teaching assumptions, not project measurements or equipment settings: Qlocal=2 m3/s; Clocal=18 mg/L; Qimport=1 m3/s; Cimport=42 mg/L; Cmix=26 mg/L. Applicable boundary: A hypothetical nonreactive solute with complete mixing, not a drinking-water standard or turbidity relation.",
+      "verify": "將兩個來源的取樣時間移到同一水團抵達混合點的時刻，再用流量加權預測。下游應採多點樣本確認混勻，並檢查輸入輸出溶質質量率是否相符，不以單一濁度計直接代替保守成分濃度。~Shift source sampling times to represent parcels arriving together at the mixing point, then predict the flow-weighted blend. Use multiple downstream samples to verify mixing and compare solute fluxes, without substituting a single turbidity reading for conservative-solute concentration.",
+      "failure": "把兩來源濃度直接平均會在流量不等時偏差；若中間發生沉降或反應，質量不守恆的表象可能反映模型邊界漏掉過程，而非一定是流量計壞掉。~A simple arithmetic mean is biased when source flows differ. If settling or reaction occurs between samples, an apparent flux imbalance may indicate omitted processes rather than necessarily a failed flow meter.",
+      "misconception": "兩來源濃度可不管流量比例直接取算術平均~Two source concentrations can be averaged without considering their flow proportions",
+      "practice": "保持總流量三立方公尺每秒，把高濃度來源改為一半，再重算濃度並畫來源比例關係，指出哪些水質成分不適合用這條直線預測。~Keep total flow at three cubic metres per second, halve the high-concentration source contribution and recalculate the blend. Plot source fraction and identify water-quality variables that should not be predicted using this straight line."
+    },
+    {
+      "anchor": "聯通管輸水的抽水能源~Pumping energy in an intertie",
+      "title": "聯通管輸水的抽水能源~Pumping energy in an intertie",
+      "mechanism": "跨區聯通管線可增加供水路徑，但若需要抽升就必須付出位能與摩擦耗能。總揚程把地形高差與沿程局部損失加總，輸入電功率再除泵組效率求得。效率應明確包含哪些設備，不能把馬達、泵及變頻損失在不同位置重複扣除，也不能把輸水能耗誤認為實際水量全部被消耗。~A connecting pipeline adds a supply path but requires energy when water must be lifted against elevation and hydraulic losses. Total head combines static lift with distributed and local losses, and electrical input divides hydraulic power by pump-set efficiency. The efficiency boundary must identify included equipment so motor, pump and drive losses are not deducted twice, while energy consumption must remain distinct from physical water loss.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：rho=1000 kg/m3; g=9.81 m/s2; Q=1.8 m3/s; Hstatic=45 m; Hloss=12 m; eta=0.78; Pin=rho g Q(Hstatic+Hloss)/eta/1000=1290.39231 kW。適用邊界：穩定假想流量與總效率，不是南化既有管線設計或運轉資料。~Original teaching assumptions, not project measurements or equipment settings: rho=1000 kg/m3; g=9.81 m/s2; Q=1.8 m3/s; Hstatic=45 m; Hloss=12 m; eta=0.78; Pin=rho g Q(Hstatic+Hloss)/eta/1000=1290.39231 kW. Applicable boundary: Steady hypothetical flow and overall efficiency, not design or operating data for an existing Nanhua pipeline.",
+      "verify": "以吸入與排出總水頭差檢查揚程，核對電表是否含輔機，再用同一時段流量計求單位水耗能。比較不同流量下損失水頭的變化，避免只用固定高差解釋全部耗電差異。~Check head from suction and discharge total energy levels, identify auxiliary loads in the electrical meter and pair it with simultaneous flow for energy per delivered volume. Compare losses across flows rather than explaining every power change by static elevation alone.",
+      "failure": "只算地形高差會漏掉管路摩擦；把效率乘在水力功率上則得到低於理想需求的輸入值，違反能量方向，可能使備援電源容量評估失真。~Using static lift alone omits hydraulic losses. Multiplying hydraulic power by efficiency gives an input below the ideal requirement and reverses the energy relationship, distorting an illustrative backup-power assessment.",
+      "misconception": "抽水輸入功率應低於同流量揚程的理想水力功率~Pumping electrical input should be lower than the ideal hydraulic power at the same duty",
+      "practice": "將損失水頭增至十八公尺，保持流量與效率重算，再把效率降至零點七，分別比較兩種因素對耗電的影響，避免將所有變化歸因於泵老化。~Raise loss head to eighteen metres at unchanged flow and efficiency, then reduce efficiency to zero point seven. Compare the two effects separately rather than attributing every energy increase to pump aging."
+    },
+    {
+      "anchor": "備援路徑與共因失效~Backup paths and common cause failure",
+      "title": "備援路徑與共因失效~Backup paths and common cause failure",
+      "mechanism": "兩條供水路徑只有在失效近似獨立時，才可用失效率乘積估算同時失效。共同電源、同一河川污染或相同控制系統可能同時切斷兩路，使表面上的雙路備援效果下降。以條件機率把共因事件與獨立事件分開，可以檢查可靠度假設；數值不是歷史故障統計，也不是供水保證。~Two supply paths benefit from multiplying failure probabilities only when failures are approximately independent. Shared electricity, source contamination or control systems can disable both paths together and reduce apparent redundancy. A conditional-probability model separates a common-cause event from otherwise independent failures, exposing the assumption behind a reliability estimate. Its numbers are hypothetical, not historical outage statistics or a guarantee that supply will remain available during an actual event.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：pc=0.02; p1=0.05; p2=0.04; Pboth=pc+(1-pc)p1p2=0.02196。適用邊界：共因事件必使雙路失效；無共因時兩路條件獨立，機率同屬一時段。~Original teaching assumptions, not project measurements or equipment settings: pc=0.02; p1=0.05; p2=0.04; Pboth=pc+(1-pc)p1p2=0.02196. Applicable boundary: The common event disables both paths; otherwise failures are conditionally independent over the same time interval.",
+      "verify": "先畫共同電源與各自設備的故障樹，檢查事件是否重複包含，再把同時段事件紀錄整理成條件機率。比較有無共因的答案，並列出資料不足的相依事件，不能以路線數量直接當可靠度。~Draw a fault tree containing shared utilities and separate equipment, checking for duplicated events before estimating conditional probabilities from matching intervals. Compare results with and without common cause and identify unresolved dependencies rather than using route count as a reliability measure.",
+      "failure": "直接把兩條路的失效機率相乘會漏掉共因；反之將已含共同事件的總失效率再加入共因項，會重複計算，讓保守外觀掩蓋不一致的機率定義。~Multiplying route failure probabilities alone misses common cause. Conversely, adding common cause to route probabilities that already include it double counts events, producing a conservative-looking but internally inconsistent probability model.",
+      "misconception": "有兩條供水路徑就可以保證故障彼此獨立~Having two supply routes guarantees that their failures are independent",
+      "practice": "把共因機率減半重算，另把其中一路獨立失效機率減半比較改善幅度，說明為何先處理共用設備有時比再增加單一路徑可靠度更有效。~Halve common-cause probability and recalculate, then separately halve one route's independent failure probability. Compare improvements and explain why addressing a shared dependency can sometimes matter more than improving one individual path."
+    },
+    {
+      "anchor": "幾何超高與波浪餘量~Geometric freeboard and wave allowance",
+      "title": "幾何超高與波浪餘量~Geometric freeboard and wave allowance",
+      "mechanism": "土石壩壩頂與水面的高程差是幾何超高，但波浪上爬、風壅水與沉陷可能占用這段距離。把假想餘量逐項扣除可練習垂直基準與符號，不能把結果稱為現地允許水位或安全保證。各項未必同時達峰，實際組合需符合適用設計情境，而且壩頂局部低點比平均高程更相關。~Geometric freeboard is the elevation difference between crest and water, but wave runup, wind setup and settlement may use part of that distance. Subtracting assumed allowances teaches datum and sign conventions rather than establishing a permitted level or safety guarantee. Peaks need not coincide, actual combinations require an applicable design scenario, and local low crest points matter more than an average elevation when assessing possible overtopping.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：crest=108 m; water=103 m; runup=1.2 m; setup=0.3 m; settlement=0.4 m; margin=crest-water-runup-setup-settlement=3.1 m。適用邊界：同一高程基準的假想垂直餘量，波浪項不含重複計入，不是設計準則。~Original teaching assumptions, not project measurements or equipment settings: crest=108 m; water=103 m; runup=1.2 m; setup=0.3 m; settlement=0.4 m; margin=crest-water-runup-setup-settlement=3.1 m. Applicable boundary: Hypothetical vertical allowances sharing one datum, with wave terms not double counted; not a design criterion.",
+      "verify": "查明波浪上爬高度是否已包含風壅水，再核對壩頂量測採目前局部低點或設計高程。畫各項垂直距離並對齊基準，若使用未來沉陷預估，需清楚區分已發生沉陷與額外預留量。~Check whether runup already includes wind setup and whether crest data represent a current local low point or design elevation. Draw all vertical distances on one datum and distinguish settlement already observed from an additional future allowance.",
+      "failure": "將已反映在實測壩頂的沉陷再扣一次會重複保守；忽略局部低點則可能反向樂觀。只看算得正餘量而未說明波浪情境，無法支持任何真實超高判定。~Subtracting settlement already included in a measured crest double counts it, while ignoring local low points can be unconservative. A positive arithmetic remainder without a defined wave scenario cannot support a real freeboard conclusion.",
+      "misconception": "只要幾何壩頂高於靜水面就完全不必考慮波浪~A crest above still water never needs any wave consideration",
+      "practice": "將水面升高一公尺而壩頂不變，重算餘量，再比較波浪上爬增加與壩頂沉陷增加的同量效果，註明相同算術結果不代表相同發生機率。~Raise water level one metre at fixed crest, then compare equal increases in runup and settlement. Recalculate the margins and state why identical arithmetic effects do not imply identical occurrence probabilities."
+    },
+    {
+      "anchor": "集水區暴雨的逕流體積~Catchment storm runoff volume",
+      "title": "集水區暴雨的逕流體積~Catchment storm runoff volume",
+      "mechanism": "暴雨總雨量乘集水面積是降到地表的水量，還需扣除截留、入滲與暫存才成為逕流。簡化逕流係數把多種過程合併成比例，適合體積敏感度但不能直接給洪峰流量。南化背景下若土壤前期含水不同，同樣降雨可能產生不同逕流，因此係數不是不變材料常數，也不是可引入水庫的保證比例。~Rain depth times catchment area gives precipitation volume, while interception, infiltration and storage reduce runoff. A simplified runoff coefficient combines these processes for volume sensitivity but does not directly produce peak discharge. Antecedent soil moisture can make identical storms yield different runoff, so the coefficient is not an immutable material constant or a guaranteed fraction that can actually be diverted into the reservoir.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：P=0.12 m; A=40000000 m2; C=0.45; Vrunoff=P A C=2160000 m3。適用邊界：事件總體積且係數無因次，未描述洪峰、匯流歷時與取水限制。~Original teaching assumptions, not project measurements or equipment settings: P=0.12 m; A=40000000 m2; C=0.45; Vrunoff=P A C=2160000 m3. Applicable boundary: Event volume with a dimensionless coefficient, excluding peak flow, routing duration and abstraction constraints.",
+      "verify": "用面雨量而非單一雨量站代表整個集水區，記錄前期降雨與土壤狀態，再積分事件出流並扣除基流比較。將體積估算與洪峰量測分開，不可把總立方公尺直接標成每秒立方公尺。~Use areal rainfall rather than one gauge for the entire basin, record antecedent conditions and compare with integrated event discharge after separating baseflow. Keep volume and peak-flow measurements distinct; cubic metres cannot be relabeled as cubic metres per second.",
+      "failure": "把總逕流體積當作瞬時流量會遺失時間尺度；若忽略暴雨前土壤已飽和，固定係數可能低估產流，反之乾土情境又可能高估，必須保留假設方向。~Treating runoff volume as instantaneous discharge removes the timescale. A fixed coefficient may underestimate runoff after prior saturation or overestimate it for dry soil, so interpretation must retain the assumed antecedent condition.",
+      "misconception": "總逕流體積可直接當作暴雨洪峰流量~Total runoff volume can directly be treated as peak storm discharge",
+      "practice": "將係數設為零點三與零點六，求事件體積上下界，再指定不同匯流歷時畫兩條同體積歷線，說明同體積仍可能具有完全不同的洪峰。~Use coefficients of zero point three and zero point six to bracket event volume, then sketch equal-volume hydrographs with different durations. Explain how the same volume can accompany very different peak discharges."
+    },
+    {
+      "anchor": "淤積占容的名目年數~Nominal sediment occupation horizon",
+      "title": "淤積占容的名目年數~Nominal sediment occupation horizon",
+      "mechanism": "可用庫容除以每年淨淤積量得到名目占容年數，這只是固定速率下的比例尺，不是水庫壽命預報。侵蝕事件、壓密、排砂與供水最低水位都會改變可用空間與損失速率。南化背景的教學應把容量曲線年代與年淤積定義寫明，並區分總庫容消失、有效庫容不足及取水口受影響等不同問題。~Available storage divided by annual net deposition gives a nominal occupation horizon under constant rate, not a reservoir-life forecast. Erosion events, consolidation, sediment removal and minimum supply level change both usable space and loss rate. The storage-curve date and deposition definition must remain explicit, while loss of gross capacity, inadequate usable storage and interference with an intake are distinct outcomes rather than interchangeable meanings of reservoir lifetime.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：Vavailable=30000000 m3; Snet=600000 m3/year; T=Vavailable/Snet=50 year。適用邊界：固定假想淨淤積率的比例估算，沒有預測洪水事件或實際剩餘壽命。~Original teaching assumptions, not project measurements or equipment settings: Vavailable=30000000 m3; Snet=600000 m3/year; T=Vavailable/Snet=50 year. Applicable boundary: A ratio under constant hypothetical net deposition, without forecasting storm events or actual remaining service life.",
+      "verify": "使用同基準的重複水深測量求淨體積差，註明測區與取水高程，並將單次極端事件與多年背景分開。比較沉積乾容重變化和庫容曲線修訂，確認年損失不是量測覆蓋改變造成。~Use repeated surveys with a common datum to estimate net volume change, documenting coverage and intake elevation. Separate extreme-event deposits from background years and compare bulk-density change and curve revisions so apparent annual loss is not merely changed survey coverage.",
+      "failure": "把一場極端事件的淤積量當作每年固定值可能過度縮短名目年數；只看全庫剩餘體積又可能漏掉取水口附近局部埋積，讓總量充足掩蓋功能先受影響。~Repeating one extreme event every year can artificially shorten the nominal horizon. Conversely, adequate reservoir-wide volume may hide local accumulation near an intake, where function can be impaired before total storage becomes small.",
+      "misconception": "庫容除年淤積量就是確定無誤的水庫剩餘壽命~Storage divided by annual deposition is the exact remaining reservoir lifetime",
+      "practice": "將背景淤積率減半但每十年加入一次三百萬立方公尺事件，求二十年占容並與固定速率比較，指出事件發生時間還會影響短期供水功能。~Halve background deposition but add one three-million-cubic-metre event every ten years. Calculate twenty-year occupation, compare with a constant rate and explain why event timing can still affect short-term supply function."
+    },
+    {
+      "anchor": "乾旱需求調整與靜態續供~Demand adjustment and static supply duration",
+      "title": "乾旱需求調整與靜態續供~Demand adjustment and static supply duration",
+      "mechanism": "乾旱時以可用水量除每日需求可得到無入流的靜態續供時間，但水位下降可能使取水能力或水質改變，不能把這個商當作保證供水天數。需求削減也要區分可實現的節水與只是帳面假設。比較不同需求情境時應使用同一有效庫存邊界，保留不能動用的水量，而非把總庫容全部拿來相除。~Usable water divided by daily demand gives a no-inflow static duration, but falling level can change intake capacity or quality, so the quotient is not guaranteed supply time. Demand reduction must distinguish achievable savings from an accounting assumption. Scenarios need the same usable-storage boundary and should retain unavailable water rather than dividing gross reservoir capacity by demand and ignoring physical access constraints.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：Vusable=12000000 m3; Dbase=500000 m3/day; reduction=0.15; Dnew=Dbase(1-reduction); T=Vusable/Dnew=28.235294 day。適用邊界：無入流、無其他損失且削減比例可實現，僅作靜態比較。~Original teaching assumptions, not project measurements or equipment settings: Vusable=12000000 m3; Dbase=500000 m3/day; reduction=0.15; Dnew=Dbase(1-reduction); T=Vusable/Dnew=28.235294 day. Applicable boundary: No inflow or other losses and an achievable reduction fraction, for static comparison only.",
+      "verify": "先核對可用庫存是否已扣除無法取水的部分，再用實際日需求區間重算，不把單日低需求當長期平均。保留節水措施開始時間與執行率，將新入流或水質限制列為獨立敏感度項。~Verify whether usable storage excludes inaccessible water, then recalculate over observed daily-demand ranges rather than using one unusually low day as the long-term mean. Record the start and realization of savings and treat inflow and quality constraints as separate sensitivities.",
+      "failure": "把百分之十五節水誤讀成續供天數也增加百分之十五，忽略倒數關係；若實際需求沒有達標，仍用假設削減後需求外推，就會把政策目標當成已實現的供水能力。~A fifteen-percent demand reduction does not increase duration by exactly fifteen percent because duration is inversely related to demand. Using an unrealized reduction treats a policy target as achieved supply performance.",
+      "misconception": "需求降低百分之十五就使續供天數恰增加百分之十五~Reducing demand fifteen percent increases supply duration by exactly fifteen percent",
+      "practice": "比較零、百分之十五及百分之二十五削減情境的續供時間，再加入每日兩萬立方公尺其他損失，說明用水與損失邊界改變後為何需重算而非加固定天數。~Compare zero, fifteen and twenty-five percent reductions, then add twenty thousand cubic metres of other daily losses. Explain why changed demand and loss boundaries require recalculation rather than adding a fixed number of days."
+    },
+    {
+      "anchor": "管網水量差與誤差範圍~Network imbalance and uncertainty",
+      "title": "管網水量差與誤差範圍~Network imbalance and uncertainty",
+      "mechanism": "聯通管路進出水量之差可提示漏失或暫存，但量測誤差也能形成殘差。若兩個流量計誤差獨立，以平方和開根號合成不確定度，再將殘差除以該尺度可比較訊號大小。這個比值不是漏水機率；共同校準偏差、旅行延遲或管內儲水改變都可能破壞獨立假設，應先檢查再判讀。~The difference between pipeline input and output may indicate leakage or storage, but measurement error also creates residuals. Independent meter uncertainties combine by root sum of squares, allowing residual magnitude to be compared with an uncertainty scale. The ratio is not a leakage probability; shared calibration bias, travel delay and changing pipe storage can violate the assumptions and must be examined before interpreting the imbalance as physical loss.",
+      "model": "原創教學假設，以下數值不是本工程實測或設備設定：Qin=1.8 m3/s; Qout=1.74 m3/s; uin=0.02 m3/s; uout=0.018 m3/s; z=(Qin-Qout)/sqrt(uin2+uout2)=2.229882。適用邊界：兩標準不確定度獨立且流量同步穩態，無蓄量變化；比值不是機率。~Original teaching assumptions, not project measurements or equipment settings: Qin=1.8 m3/s; Qout=1.74 m3/s; uin=0.02 m3/s; uout=0.018 m3/s; z=(Qin-Qout)/sqrt(uin2+uout2)=2.229882. Applicable boundary: Independent standard uncertainties and synchronized steady flows with no storage change; the ratio is not a probability.",
+      "verify": "使用共同時鐘比較累積水量，先排除充水、排空及壓力改變造成的暫存，再檢查流量計校準是否共享偏差。以多日殘差趨勢搭配分段量測定位，不把一次超出誤差尺度直接當成漏水位置。~Compare cumulative volumes on a shared clock, excluding filling, draining and pressure-related storage before checking shared calibration bias. Combine multi-day residual trends with sectional measurements for localization rather than treating one large normalized residual as a leak location.",
+      "failure": "把比值二點多說成漏水機率百分之二點多，混淆無因次尺度與機率；若兩流量計誤差高度相關卻仍用獨立平方和，則不確定度可能被錯估，診斷信心隨之失真。~Interpreting a ratio near two as a two-percent leak probability confuses a scale with probability. Applying independent root-sum-square uncertainty to correlated meters can misstate uncertainty and distort confidence in the diagnosis.",
+      "misconception": "正規化水量差數值就是管線漏水的百分比機率~The normalized flow imbalance directly equals the percentage probability of leakage",
+      "practice": "把兩儀表標準不確定度各加倍，重算比值並保持水量差不變，再說明若共享系統偏差存在，應如何改寫變異數而非繼續套獨立公式。~Double both meter standard uncertainties while keeping imbalance fixed, recalculate the ratio and explain how a shared systematic component requires a covariance term rather than continued use of the independent-error formula."
+    }
+  ],
+  "facts": [
+    "歷史官方資料列出南化壩高 87.5 m~The official historical account lists Nanhua dam height 87.5 m",
+    "1994 年公開紀錄：南化主要工程三月完成，七月正式供水~1994 documented event: Nanhua main works finish in March and formal supply starts in July",
+    "教學假設：本地入流與越域供水；Vlocal=500000 m3/day; Vimport=300000 m3/day; Vsupply=600000 m3/day; Vloss=40000 m3/day; dV=160000 m3/day~Teaching assumption, Local inflow and imported supply: Vlocal=500000 m3/day; Vimport=300000 m3/day; Vsupply=600000 m3/day; Vloss=40000 m3/day; dV=160000 m3/day",
+    "教學假設：水面積曲線與區間庫容；A1=4000000 m2; A2=5000000 m2; dz=2 m; dV=(A1+A2)dz/2=9000000 m3~Teaching assumption, Area curve and interval storage: A1=4000000 m2; A2=5000000 m2; dz=2 m; dV=(A1+A2)dz/2=9000000 m3",
+    "教學假設：雙來源保守成分混合；Qlocal=2 m3/s; Clocal=18 mg/L; Qimport=1 m3/s; Cimport=42 mg/L; Cmix=26 mg/L~Teaching assumption, Conservative mixing of two sources: Qlocal=2 m3/s; Clocal=18 mg/L; Qimport=1 m3/s; Cimport=42 mg/L; Cmix=26 mg/L",
+    "教學假設：聯通管輸水的抽水能源；rho=1000 kg/m3; g=9.81 m/s2; Q=1.8 m3/s; Hstatic=45 m; Hloss=12 m; eta=0.78; Pin=rho g Q(Hstatic+Hloss)/eta/1000=1290.39231 kW~Teaching assumption, Pumping energy in an intertie: rho=1000 kg/m3; g=9.81 m/s2; Q=1.8 m3/s; Hstatic=45 m; Hloss=12 m; eta=0.78; Pin=rho g Q(Hstatic+Hloss)/eta/1000=1290.39231 kW"
+  ],
+  "timeline": [
+    {
+      "year": "1994",
+      "event": "南化主要工程三月完成，七月正式供水~Nanhua main works finish in March and formal supply starts in July"
+    },
+    {
+      "year": "2014",
+      "event": "美國墾務局設計標準索引列出滲流章一月版本，屬方法資料年代~The Reclamation standards index lists the January seepage chapter; this dates a methodological reference"
+    },
+    {
+      "year": "2026",
+      "event": "本教材核對公開資料並獨立重算假想示例，不是新增工程完工紀錄~The curriculum checks public evidence and independently recalculates hypothetical examples; this is not a new project completion"
+    }
+  ],
+  "codes": [
+    "美國墾務局設計標準十三：土石壩~Reclamation Design Standards No. 13: Embankment Dams",
+    "美國墾務局設計標準十四：水壩附屬構造物~Reclamation Design Standards No. 14: Appurtenant Structures for Dams"
+  ],
+  "landmarks": [
+    "南化水庫大壩~Nanhua Dam",
+    "黑部水壩~Kurobe Dam"
+  ],
+  "place": {
+    "name": "南化水庫大壩公開背景參照點~Nanhua Dam public context reference",
+    "country": "臺灣~Taiwan",
+    "lat": 23.0948,
+    "lng": 120.544,
+    "query": "Nanhua Reservoir Taiwan"
+  },
+  "sources": [
+    {
+      "key": "nanhua-history",
+      "title": "南化水庫完工歷史回顧",
+      "titleEn": "Nanhua completion retrospective",
+      "publisher": "Water Resources Agency, Taiwan",
+      "url": "https://www.wra.gov.tw/epaper/Article_Detail.aspx?n=30173&s=978",
+      "sourceType": "primary",
+      "scope": "引用歷史日期、土石壩尺度及甲仙越域引水概念；不使用文章內當時預測的後續工程完工日或當前供水量。",
+      "scopeEn": "Uses historical dates, embankment dimensions and Jiaxian diversion context; later predicted completion dates and historical supply rates are not treated as current facts."
+    },
+    {
+      "key": "usbr-design",
+      "title": "墾務局設計標準官方索引",
+      "titleEn": "Reclamation official design standards index",
+      "publisher": "U.S. Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html",
+      "sourceType": "primary",
+      "scope": "核對土石壩、滲流、濾層及附屬構造章名稱與版本日期；未宣稱完整審讀連結內所有手冊。",
+      "scopeEn": "The official index verifies chapter subjects and edition dates for embankments, seepage, filters and appurtenant structures; linked manuals were not all read in full."
+    },
+    {
+      "key": "usbr-manuals",
+      "title": "墾務局技術手冊索引",
+      "titleEn": "Reclamation technical manuals index",
+      "publisher": "U.S. Bureau of Reclamation",
+      "url": "https://www.usbr.gov/tsc/techreferences/mands/manuals.html",
+      "sourceType": "primary",
+      "scope": "官方索引提供庫容計算、水文測量及儀器手冊題名與年代；本課未冒稱使用其特定設計係數。",
+      "scopeEn": "The official index identifies capacity computation, surveying and instrumentation references; no particular design coefficient is attributed to unread manuals."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Water Resources Agency, Taiwan",
+      "nameEn": "Water Resources Agency, Taiwan",
+      "business": "提供本課相關工程背景或公開設計文獻的機構。",
+      "businessEn": "Institution providing relevant project context or public engineering references.",
+      "url": "https://www.wra.gov.tw/epaper/Article_Detail.aspx?n=30173&s=978",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作比較研究，不表示參與本教材或承攬所有列舉工項。",
+      "roleEn": "Public material is used for comparative study; this implies neither participation in the curriculum nor a contract for every listed work."
+    },
+    {
+      "name": "U.S. Bureau of Reclamation",
+      "nameEn": "U.S. Bureau of Reclamation",
+      "business": "提供本課相關工程背景或公開設計文獻的機構。",
+      "businessEn": "Institution providing relevant project context or public engineering references.",
+      "url": "https://www.usbr.gov/tsc/techreferences/designstandards-datacollectionguides/designstandards.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作比較研究，不表示參與本教材或承攬所有列舉工項。",
+      "roleEn": "Public material is used for comparative study; this implies neither participation in the curriculum nor a contract for every listed work."
+    }
+  ],
+  "related": [
+    "b215",
+    "b216"
+  ],
+  "architectureNodes": [
+    [
+      "本地入流與越域供水",
+      "Local inflow and imported supply"
+    ],
+    [
+      "雙來源保守成分混合",
+      "Conservative mixing of two sources"
+    ],
+    [
+      "備援路徑與共因失效",
+      "Backup paths and common cause failure"
+    ],
+    [
+      "集水區暴雨的逕流體積",
+      "Catchment storm runoff volume"
+    ],
+    [
+      "管網水量差與誤差範圍",
+      "Network imbalance and uncertainty"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

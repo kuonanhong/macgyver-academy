@@ -1,0 +1,273 @@
+{
+  "id": "b289",
+  "focus": "將回填土水壓船舶作用與地基變形連成沉箱碼頭受力路徑~Trace caisson-quay load paths through backfill, water, vessels and foundation deformation",
+  "units": [
+    {
+      "anchor": "主動土壓假設~Active earth-pressure assumptions",
+      "title": "主動土壓假設~Active earth-pressure assumptions",
+      "mechanism": "碼頭背填土會把側向作用傳入沉箱，但是否達到主動狀態取決於牆體位移及土體條件。簡單朗肯係數假設水平無黏性回填與光滑直立牆，與靜止土壓不同；港區受限位移、分層或密實施工時，不能僅憑摩擦角選一個較小係數。 假設水平無黏性回填、光滑直立牆且已達主動狀態，φ=30°，Ka=tan²(45°−φ/2)=0.3333；不適用靜止狀態。 ~Backfill transfers lateral action into a caisson, but mobilizing an active state requires compatible wall movement and soil conditions. The simple Rankine coefficient assumes level cohesionless backfill and a smooth vertical wall, distinct from at-rest pressure. Restricted deformation, layering or compaction means friction angle alone cannot justify selecting the smaller coefficient for every quay-wall condition. Assume level cohesionless fill, a smooth vertical wall and mobilized active conditions. Atφ=30°,Ka=tan²(45°−φ/2)=0.3333, not at-rest pressure. ",
+      "model": "教學假設，非操作設定或設計允收值。假設水平無黏性回填、光滑直立牆且已達主動狀態，φ=30°，Ka=tan²(45°−φ/2)=0.3333；不適用靜止狀態。~Teaching assumptions, not operating settings or design acceptance limits. Assume level cohesionless fill, a smooth vertical wall and mobilized active conditions. Atφ=30°,Ka=tan²(45°−φ/2)=0.3333, not at-rest pressure.",
+      "verify": "畫出背填坡面、牆背摩擦與可能位移方向，核對使用主動狀態是否有足夠變形依據。分開檢查施工壓密與服務期約束，用土樣與位移紀錄確認參數，不以單一公式取代狀態辨識。~Draw backfill geometry, wall interface and possible movement, checking evidence for mobilizing the active state. Review compaction and service constraints separately and use soil and displacement records to justify parameters rather than substituting one formula for identification of the stress state. ",
+      "failure": "剛性受限牆體未達主動位移卻採主動係數會低估側壓，黏性回填或坡面改變也使假設失效。施工時壓密設備可能留下高於單純自重理論的壓力。~Using active pressure for a restrained wall understates lateral action, and cohesive fill or altered slopes violate the assumptions. Compaction equipment may also leave pressures greater than predicted by a simple self-weight active model.",
+      "misconception": "所有碼頭背填土都不需牆體變形就會自動達到主動土壓。~Every quay backfill automatically reaches active pressure without any wall movement.",
+      "practice": "畫出背填坡面、牆背摩擦與可能位移方向，核對使用主動狀態是否有足夠變形依據。分開檢查施工壓密與服務期約束，用土樣與位移紀錄確認參數，不以單一公式取代狀態辨識。~Draw backfill geometry, wall interface and possible movement, checking evidence for mobilizing the active state. Review compaction and service constraints separately and use soil and displacement records to justify parameters rather than substituting one formula for identification of the stress state."
+    },
+    {
+      "anchor": "有效土壓積分~Effective earth-pressure integration",
+      "title": "有效土壓積分~Effective earth-pressure integration",
+      "mechanism": "水下回填的土骨架壓力與孔隙水壓必須分開，使用浮重度積分的是有效土壓而不是總側壓。深度線性分布只涵蓋均質填料自重，分層和地面堆載另列；將孔壓漏掉或重複計入都會破壞沉箱整體平衡與作用點判讀。 假設Ka=1/3、浮重度10kN/m³、高H=15m，Pa=Kaγ′H²/2=375kN/m，作用在底上5m；水壓另算。 ~Effective skeleton pressure in submerged fill must be separated from pore pressure. Integration with submerged unit weight gives effective soil action, not total lateral action. A linear distribution covers homogeneous self-weight only; layers and surcharges require separate terms. Omitting or double-counting water pressure corrupts both caisson equilibrium and interpretation of the resultant location along the wall. Assume Ka=1/3,submerged unit weight10kN/m³ and H=15m. Pa=375kN/m acts5m above base; pore-water pressure is separate. ",
+      "model": "教學假設，非操作設定或設計允收值。假設Ka=1/3、浮重度10kN/m³、高H=15m，Pa=Kaγ′H²/2=375kN/m，作用在底上5m；水壓另算。~Teaching assumptions, not operating settings or design acceptance limits. Assume Ka=1/3,submerged unit weight10kN/m³ and H=15m. Pa=375kN/m acts5m above base; pore-water pressure is separate.",
+      "verify": "逐層畫有效土壓和水壓圖，標明水位及每個三角形的作用點，積分後重建合力與力矩。核對浮重度來源，將船舶、堆載及地震作用分開，避免相同水壓被不同表格重複加入。~Plot effective-soil and water-pressure diagrams with levels and resultant locations, then reconstruct total force and moment. Verify submerged unit weight and keep vessel, surcharge and seismic terms separate so the same water action is not added twice in different tables. ",
+      "failure": "以飽和重度積分後又加完整水壓可能高估作用，僅用浮重度卻不加水壓則低估。合力數值碰巧相近時，錯誤作用點仍可能使傾覆力矩嚴重偏離。~Using saturated unit weight and then adding full water pressure can overcount action, while submerged weight alone omits water. Even coincidentally similar total forces can have incorrect resultant locations and materially wrong overturning moments.",
+      "misconception": "使用浮重度算出的有效土壓已經包含全部靜水壓力。~Effective earth pressure calculated with submerged unit weight already includes all hydrostatic pressure.",
+      "practice": "逐層畫有效土壓和水壓圖，標明水位及每個三角形的作用點，積分後重建合力與力矩。核對浮重度來源，將船舶、堆載及地震作用分開，避免相同水壓被不同表格重複加入。~Plot effective-soil and water-pressure diagrams with levels and resultant locations, then reconstruct total force and moment. Verify submerged unit weight and keep vessel, surcharge and seismic terms separate so the same water action is not added twice in different tables."
+    },
+    {
+      "anchor": "碼頭堆載側壓~Quay surcharge lateral action",
+      "title": "碼頭堆載側壓~Quay surcharge lateral action",
+      "mechanism": "港區堆載的位置與範圍影響牆背側壓，無限均布面載只是簡化情境。貨櫃堆、起重機輪壓及條形基礎不能直接視為同一面載，局部作用可能沿牆長擴散；需要將工況、荷載路徑及土體假設相連，不能把一項平均值永久套用所有作業。 假設無限均布q=30kPa、Ka=1/3、牆高15m，增量側壓Ka q=10kPa、合力150kN/m；不代表局部輪載。 ~Position and extent of terminal loading govern lateral response, with an infinite uniform surcharge only one idealization. Container stacks, crane wheels and strip foundations are different actions and can spread differently along the wall. Load cases, transfer paths and soil assumptions must be connected rather than assigning one average surcharge permanently to every possible terminal operation. Assume infinite uniform surcharge30kPa,Ka=1/3 and wall height15m. Incremental pressure is10kPa and resultant150kN/m, not a local wheel-load model. ",
+      "model": "教學假設，非操作設定或設計允收值。假設無限均布q=30kPa、Ka=1/3、牆高15m，增量側壓Ka q=10kPa、合力150kN/m；不代表局部輪載。~Teaching assumptions, not operating settings or design acceptance limits. Assume infinite uniform surcharge30kPa,Ka=1/3 and wall height15m. Incremental pressure is10kPa and resultant150kN/m, not a local wheel-load model.",
+      "verify": "在平面圖標出堆載邊界及距牆距離，確認荷載是否可近似無限均布。另畫集中與條形荷載的傳遞路徑，將實際作業組合連回允許配置，不以日平均貨量取代短期峰值。~Map loading limits and setback from the wall and test the infinite-uniform approximation. Trace concentrated and strip-load paths separately, linking operational combinations to reviewed layouts rather than substituting daily average cargo for short-duration peak loading conditions. ",
+      "failure": "起重機靠牆時局部應力可能高於全場平均，倉儲配置改變又會新增未評估的荷載組合。只沿用初始均布數值，容易漏掉沉箱接縫附近的集中需求。~A crane near the edge can create stresses above the terminal average, while changed storage layouts add unreviewed combinations. Retaining the original uniform value may miss concentrated demand near joints between adjacent quay caissons.",
+      "misconception": "全場平均堆載可以直接代表貼近岸壁的所有局部輪壓。~The terminal-average surcharge directly represents every concentrated wheel load near the quay edge.",
+      "practice": "在平面圖標出堆載邊界及距牆距離，確認荷載是否可近似無限均布。另畫集中與條形荷載的傳遞路徑，將實際作業組合連回允許配置，不以日平均貨量取代短期峰值。~Map loading limits and setback from the wall and test the infinite-uniform approximation. Trace concentrated and strip-load paths separately, linking operational combinations to reviewed layouts rather than substituting daily average cargo for short-duration peak loading conditions."
+    },
+    {
+      "anchor": "潮差與殘留水壓~Tidal difference and retained water",
+      "title": "潮差與殘留水壓~Tidal difference and retained water",
+      "mechanism": "退潮時回填內水位可能下降較慢，沉箱兩側水壓不同步，排水能力便成為整體受力的一部分。兩側同底面靜水三角形可以分別積分後相減，但滲流、波動和排水堵塞會改變實際分布；只用海面潮位不能確定回填孔壓。 假設同底面兩側靜水深5與3m、海水γ=10.05525kN/m³，淨水平力γ(5²−3²)/2=80.442kN/m；不含滲流動態。 ~During falling tide, backfill water may lag behind the harbor level, making drainage part of the overall load path. Hydrostatic triangles referenced to the same base can be integrated separately and subtracted, but seepage, waves and clogged drains alter the distribution. Sea level alone cannot establish the pore-pressure condition within the backfill during the same event. Assume hydrostatic depths5 and3m above one base and seawaterγ=10.05525kN/m³. Net horizontal force=80.442kN/m, excluding transient seepage. ",
+      "model": "教學假設，非操作設定或設計允收值。假設同底面兩側靜水深5與3m、海水γ=10.05525kN/m³，淨水平力γ(5²−3²)/2=80.442kN/m；不含滲流動態。~Teaching assumptions, not operating settings or design acceptance limits. Assume hydrostatic depths5 and3m above one base and seawaterγ=10.05525kN/m³. Net horizontal force=80.442kN/m, excluding transient seepage.",
+      "verify": "同步讀取海側潮位及回填孔壓，畫退潮時的水位差歷程，檢查排水出口是否暢通。以共同底面計算兩側合力並核對相位，另列不能用靜水三角形表達的滲流分量。~Synchronize harbor tide and backfill pressure records, plotting falling-tide lag and checking outlets. Integrate both sides above a common base and compare timing, separately identifying seepage contributions that cannot be represented by the two static pressure triangles. ",
+      "failure": "排水堵塞會在外海退潮後保留較高側壓，僅取兩側各自最高水位又可能拼出不存在的工況。忽略時間相位，會錯估最不利水平作用及其持續時間。~Blocked drains retain lateral pressure after the sea falls, while combining separate maximum levels can create a nonexistent load case. Ignoring phase misstates both the adverse horizontal action and how long it persists.",
+      "misconception": "回填內水位總是與外海潮位同步所以不必量測孔壓。~Backfill water always follows the harbor tide exactly, making pore-pressure measurements unnecessary.",
+      "practice": "同步讀取海側潮位及回填孔壓，畫退潮時的水位差歷程，檢查排水出口是否暢通。以共同底面計算兩側合力並核對相位，另列不能用靜水三角形表達的滲流分量。~Synchronize harbor tide and backfill pressure records, plotting falling-tide lag and checking outlets. Integrate both sides above a common base and compare timing, separately identifying seepage contributions that cannot be represented by the two static pressure triangles."
+    },
+    {
+      "anchor": "基底偏心壓力~Eccentric base pressure",
+      "title": "基底偏心壓力~Eccentric base pressure",
+      "mechanism": "沉箱基底反力同時由法向力與力矩決定，平均壓力不足以描述邊緣需求。矩形線彈性全接觸公式還要求地基不出現拉力，若有缺口或基床不平需改變接觸模型；幾何壓力分布也只是作用需求，不能單獨證明現地地基的極限承載力足夠。 假設每米N=3000kN、B=15m、e=1.5m，q=N/B(1±6e/B)，qmax=320kPa、qmin=80kPa，且e<B/6。 ~Normal force and moment jointly determine base reaction, so average pressure misses edge demand. The rectangular linear full-contact formula requires nonnegative contact; gaps or uneven bedding change the model. This geometric pressure distribution describes demand only, not adequate foundation capacity, and must be paired with independent information about ground behavior and actual contact conditions. Assume per-metre N=3000kN,B=15m and e=1.5m. q=N/B(1±6e/B) gives320 and80kPa, with e<B/6. ",
+      "model": "教學假設，非操作設定或設計允收值。假設每米N=3000kN、B=15m、e=1.5m，q=N/B(1±6e/B)，qmax=320kPa、qmin=80kPa，且e<B/6。~Teaching assumptions, not operating settings or design acceptance limits. Assume per-metre N=3000kN,B=15m and e=1.5m. q=N/B(1±6e/B) gives320 and80kPa, with e<B/6.",
+      "verify": "標明法向力是否已扣除揚壓，核對力矩參考點與偏心正負號。積分壓力圖回算原合力，再以基床平整、接觸與土體資料檢查全接觸假設，保留局部不適用區域。~State whether normal force already excludes uplift and check moment reference and eccentricity signs. Integrate the diagram back to the original resultant, then test full contact against bedding, interface and soil evidence, retaining locations where the assumption is unsupported. ",
+      "failure": "基床局部空洞會集中實際壓力，公式仍畫出平順分布卻不代表真接觸。若把尚未扣揚壓的重量當有效法向力，側壓與承載驗算會一起出現不一致。~A bedding void concentrates real pressure despite a smooth calculated diagram. Treating weight before uplift deduction as effective normal force also creates inconsistent contact and resistance calculations, even if each separate spreadsheet appears internally tidy.",
+      "misconception": "基底平均壓力不大就足以證明邊緣接觸與承載都沒有問題。~A modest mean base pressure proves that edge contact and foundation capacity are satisfactory.",
+      "practice": "標明法向力是否已扣除揚壓，核對力矩參考點與偏心正負號。積分壓力圖回算原合力，再以基床平整、接觸與土體資料檢查全接觸假設，保留局部不適用區域。~State whether normal force already excludes uplift and check moment reference and eccentricity signs. Integrate the diagram back to the original resultant, then test full contact against bedding, interface and soil evidence, retaining locations where the assumption is unsupported."
+    },
+    {
+      "anchor": "船舶靠泊動能~Vessel berthing energy",
+      "title": "船舶靠泊動能~Vessel berthing energy",
+      "mechanism": "靠泊作用從船舶法向運動能量傳至護舷與碼頭，速度對能量有平方影響。有效質量和偏心等係數需明確定義，不能將排水量直接當任意工況的質量；能量需求也不同於峰值力，必須透過護舷特性及接觸路徑連接兩者。 假設已含附加質量的有效質量20000000kg、法向速0.10m/s、選定合成係數0.80，E=0.5Mv²C=80kJ。 ~Normal vessel motion transfers energy to fenders and the quay, with velocity entering quadratically. Effective mass and correction factors need explicit definitions rather than treating displacement as the mass for every condition. Energy demand differs from peak force; the fender response and contact path connect them, so one kinetic-energy number cannot alone determine the resulting structural action. Assume effective mass20000000kg already includes added mass, normal speed0.10m/s and selected combined factor0.80. E=0.5Mv²C=80kJ, not an operating limit. ",
+      "model": "教學假設，非操作設定或設計允收值。假設已含附加質量的有效質量20000000kg、法向速0.10m/s、選定合成係數0.80，E=0.5Mv²C=80kJ。~Teaching assumptions, not operating settings or design acceptance limits. Assume effective mass20000000kg already includes added mass, normal speed0.10m/s and selected combined factor0.80. E=0.5Mv²C=80kJ, not an operating limit.",
+      "verify": "列出質量與各修正因子的定義，確定附加質量沒有重複加入，並核對速度是接觸法向分量。用多接觸點和護舷曲線檢查分配，保留船型、潮位與偏心條件，不將算例當操船指令。~Define mass and correction factors, avoiding duplicate added mass, and confirm that velocity is normal to contact. Review distribution across contact points using fender curves, retaining vessel, tide and eccentricity assumptions without treating the example as vessel-handling instructions. ",
+      "failure": "把總航速當成法向速度可能高估能量，忽略附加質量或偏心則可能低估特定工況。能量相同的兩種接觸可產生不同峰值力，不能只靠一個數字選結構。~Using total speed instead of the normal component can overstate energy, while omitted added mass or eccentricity understates particular cases. Equal-energy contacts can produce different peak forces, so one value does not determine structural demand.",
+      "misconception": "靠泊能量增加一倍就表示護舷峰值反力一定增加一倍。~Doubling berthing energy necessarily doubles the fender's peak reaction force.",
+      "practice": "列出質量與各修正因子的定義，確定附加質量沒有重複加入，並核對速度是接觸法向分量。用多接觸點和護舷曲線檢查分配，保留船型、潮位與偏心條件，不將算例當操船指令。~Define mass and correction factors, avoiding duplicate added mass, and confirm that velocity is normal to contact. Review distribution across contact points using fender curves, retaining vessel, tide and eccentricity assumptions without treating the example as vessel-handling instructions."
+    },
+    {
+      "anchor": "護舷曲線積分~Integrating fender response",
+      "title": "護舷曲線積分~Integrating fender response",
+      "mechanism": "護舷吸能是力與變形曲線下面積，不是峰值力直接當能量，材料又可能受溫度、速度及老化影響。線性示意有三角形面積，但實際橡膠護舷曲線常非線性；卸載回彈與耗散也不同，不能把可恢復儲能全部稱為永久吸收。 假設護舷載入反力從0線性增至1000kN、壓縮0.30m，載入功W=Fmaxδ/2=150kJ；卸載耗散未給定。 ~Fender work is the area under force versus displacement, not the numerical peak force. Temperature, loading rate and aging affect material response. A linear illustration gives triangular area, but real rubber curves are often nonlinear. Recoverable energy and dissipated energy also differ, so the complete loading work cannot automatically be labeled permanently absorbed impact energy. Assume reaction rises linearly from0 to1000kN over0.30m compression. Loading work is150kJ; unloading dissipation is not specified. ",
+      "model": "教學假設，非操作設定或設計允收值。假設護舷載入反力從0線性增至1000kN、壓縮0.30m，載入功W=Fmaxδ/2=150kJ；卸載耗散未給定。~Teaching assumptions, not operating settings or design acceptance limits. Assume reaction rises linearly from0 to1000kN over0.30m compression. Loading work is150kJ; unloading dissipation is not specified.",
+      "verify": "取得適用溫度與速度下的力變形曲線，積分載入和卸載並檢查量測單位。將峰值反力另傳到錨栓和沉箱模型，核對接觸面積與多護舷分擔，避免用吸能值取代力路徑。~Obtain response curves for applicable temperature and rate, integrating loading and unloading with consistent units. Transfer peak reaction separately to anchors and caisson, checking contact area and sharing among fenders rather than replacing the force path with an energy rating. ",
+      "failure": "護舷變硬可能在相同位移產生較大峰力，老化裂損也可能改變回彈。若只核對標稱吸能而忽略反力曲線，碼頭局部構件可能承受未被納入的需求。~A stiffer fender produces higher reaction at the same displacement, while aging cracks alter recovery. Checking nominal energy alone and ignoring the reaction curve can leave local quay components exposed to unexamined structural demands.",
+      "misconception": "護舷載入曲線下面積全部等於不可恢復的永久耗散能量。~All work under the fender loading curve is irreversibly dissipated energy.",
+      "practice": "取得適用溫度與速度下的力變形曲線，積分載入和卸載並檢查量測單位。將峰值反力另傳到錨栓和沉箱模型，核對接觸面積與多護舷分擔，避免用吸能值取代力路徑。~Obtain response curves for applicable temperature and rate, integrating loading and unloading with consistent units. Transfer peak reaction separately to anchors and caisson, checking contact area and sharing among fenders rather than replacing the force path with an energy rating."
+    },
+    {
+      "anchor": "簡化地震慣性~Simplified seismic inertia",
+      "title": "簡化地震慣性~Simplified seismic inertia",
+      "mechanism": "沉箱質量在地震中產生慣性作用，但實際反應還包括土水互制、接觸非線性及背填地震土壓。等效靜力示意只能追蹤一個質量的慣性量級，不可被當成完整地震設計；加速度係數必須說明用途，不能直接拿地表峰值代替所有構件反應。 假設每米參與質量300000kg、指定水平加速度0.20g，F=ma=588.6kN/m；僅此質量慣性，不含動水與土壓。 ~Caisson mass produces seismic inertia, but actual response includes soil-water interaction, nonlinear contact and dynamic backfill action. An equivalent-static illustration tracks one mass contribution only, not complete seismic design. The acceleration coefficient needs an explicit purpose rather than substituting peak ground acceleration directly for the response of every structural component and interacting material domain. Assume participating mass300000kg per metre and selected horizontal acceleration0.20g. F=ma=588.6kN/m includes only this mass inertia, not dynamic soil or water action. ",
+      "model": "教學假設，非操作設定或設計允收值。假設每米參與質量300000kg、指定水平加速度0.20g，F=ma=588.6kN/m；僅此質量慣性，不含動水與土壓。~Teaching assumptions, not operating settings or design acceptance limits. Assume participating mass300000kg per metre and selected horizontal acceleration0.20g. F=ma=588.6kN/m includes only this mass inertia, not dynamic soil or water action.",
+      "verify": "在自由體圖標出參與質量與施力位置，說明加速度是合成分析輸入而非現地建議值。另列動水、地基與背填作用，核對相位與組合方式，不將各自峰值任意相加。~Mark participating mass and force location on the free-body diagram and identify acceleration as a synthetic input. List water, foundation and backfill dynamics separately, checking phases and combination assumptions instead of arbitrarily adding unrelated peak values into one load case. ",
+      "failure": "只增加沉箱重量可能同時增加慣性需求，不能只看到抗滑增益。把土水作用漏掉或重複放入參與質量，都可能令整體地震反應和接觸壓力判讀失真。~Adding caisson weight can increase inertia as well as sliding resistance. Omitting soil-water action or counting it twice within participating mass can distort the interpreted overall seismic response and the associated distribution of contact pressure.",
+      "misconception": "加重沉箱只增加抵抗力而不會增加任何地震慣性需求。~Increasing caisson mass raises resistance without increasing any seismic inertia demand.",
+      "practice": "在自由體圖標出參與質量與施力位置，說明加速度是合成分析輸入而非現地建議值。另列動水、地基與背填作用，核對相位與組合方式，不將各自峰值任意相加。~Mark participating mass and force location on the free-body diagram and identify acceleration as a synthetic input. List water, foundation and backfill dynamics separately, checking phases and combination assumptions instead of arbitrarily adding unrelated peak values into one load case."
+    },
+    {
+      "anchor": "地基壓縮與軌道~Foundation compression and rails",
+      "title": "地基壓縮與軌道~Foundation compression and rails",
+      "mechanism": "碼頭地基沉陷影響岸壁和起重機軌道相對高程，均勻層壓縮只提供總沉陷的一個分量。有效應力增量、受壓層厚與拘束模數需對應同一排水狀態，另有分層和長期固結；服務功能往往由差異沉陷控制，不能只核對平均下沉值。 假設均勻層H=5m、有效應力增量100kPa、拘束模數M=10000kPa，一維s=Δσ′H/M=0.050m；非完整場址預測。 ~Foundation settlement changes quay and crane-rail elevations, while uniform layer compression gives only one contribution. Effective stress increment, thickness and constrained modulus must refer to compatible drainage conditions; layering and delayed consolidation add other effects. Serviceability is often controlled by differential movement, so an average settlement alone cannot establish the geometry required by the operational equipment. Assume uniform layer5m,effective stress increment100kPa and constrained modulus10000kPa. One-dimensional s=Δσ′H/M=0.050m, not a complete site prediction. ",
+      "model": "教學假設，非操作設定或設計允收值。假設均勻層H=5m、有效應力增量100kPa、拘束模數M=10000kPa，一維s=Δσ′H/M=0.050m；非完整場址預測。~Teaching assumptions, not operating settings or design acceptance limits. Assume uniform layer5m,effective stress increment100kPa and constrained modulus10000kPa. One-dimensional s=Δσ′H/M=0.050m, not a complete site prediction.",
+      "verify": "在剖面標出受壓層與排水邊界，用試驗說明模數對應應力範圍，核對是否適用線性近似。沿岸壁和軌道佈設共同基準觀測，分解整體沉陷與差異變形並記錄時間歷程。~Identify compressible layers and drainage boundaries, justifying modulus over the relevant stress range and checking linearity. Observe wall and rails against a common datum, separating overall settlement from differential deformation and retaining their evolution through time rather than only final readings. ",
+      "failure": "同一平均沉陷可能對應完全不同的軌道扭曲，地層厚度沿岸改變會放大局部差異。把短期量測當最終值，又可能漏掉仍在發展的排水固結。~Identical mean settlement can accompany very different rail distortion, and varying layer thickness amplifies local differences. Treating short-term observations as final movement can also miss consolidation still progressing as excess pore pressure dissipates.",
+      "misconception": "全碼頭平均沉陷不大即可保證起重機軌道不會扭曲。~Small average quay settlement guarantees that crane rails cannot distort.",
+      "practice": "在剖面標出受壓層與排水邊界，用試驗說明模數對應應力範圍，核對是否適用線性近似。沿岸壁和軌道佈設共同基準觀測，分解整體沉陷與差異變形並記錄時間歷程。~Identify compressible layers and drainage boundaries, justifying modulus over the relevant stress range and checking linearity. Observe wall and rails against a common datum, separating overall settlement from differential deformation and retaining their evolution through time rather than only final readings."
+    },
+    {
+      "anchor": "接縫位移與止水~Joint movement and sealing",
+      "title": "接縫位移與止水~Joint movement and sealing",
+      "mechanism": "相鄰沉箱接縫需要容納溫度、沉陷及水平變位，名義縫寬並不直接代表止水材料可用變形。軸向伸長應變只是幾何量，材料壓縮、剪切和黏結還要靠適用試驗；水密功能亦受水頭和缺陷控制，不能將應變計算當成漏水性能預測。 假設止水材料有效標距500mm、單軸伸長15mm，工程應變ε=15/500=0.030即3%；不含剪切或水密評估。 ~Joints between caissons accommodate temperature, settlement and horizontal movement, but nominal gap width is not the permissible movement of a seal. Axial strain is geometric; compression, shear and adhesion require relevant material tests. Watertightness also depends on head and defects, so a strain calculation cannot predict leakage performance or qualify a joint for all displacement combinations. Assume effective seal gauge length500mm and uniaxial extension15mm. Engineering strainε=0.030=3%, excluding shear and watertightness evaluation. ",
+      "model": "教學假設，非操作設定或設計允收值。假設止水材料有效標距500mm、單軸伸長15mm，工程應變ε=15/500=0.030即3%；不含剪切或水密評估。~Teaching assumptions, not operating settings or design acceptance limits. Assume effective seal gauge length500mm and uniaxial extension15mm. Engineering strainε=0.030=3%, excluding shear and watertightness evaluation.",
+      "verify": "標定止水有效變形段而非任意表面長度，同步量接縫開口、剪切及相對轉角。將量測路徑與材料試驗包絡比較，記錄水頭和漏水位置，保留不能由單軸模型代表的組合。~Identify the actual deforming gauge length and measure opening, shear and relative rotation together. Compare the observed movement path with material test envelopes, recording head and leakage location and retaining combinations that the uniaxial illustration does not represent. ",
+      "failure": "把整條埋入長度當成有效標距會低估局部應變，界面脫黏又可能在材料仍完整時形成水路。只有外觀縫寬資料，無法辨識隱藏的剪切和背面滲漏。~Using the entire embedded length as deforming gauge length understates local strain, while debonding creates a water path even with intact material. Visible gap width alone cannot identify hidden shear or leakage behind the joint.",
+      "misconception": "止水材料幾何應變不大就能證明所有水頭下都完全不漏水。~Small geometric seal strain proves complete watertightness under every water head.",
+      "practice": "標定止水有效變形段而非任意表面長度，同步量接縫開口、剪切及相對轉角。將量測路徑與材料試驗包絡比較，記錄水頭和漏水位置，保留不能由單軸模型代表的組合。~Identify the actual deforming gauge length and measure opening, shear and relative rotation together. Compare the observed movement path with material test envelopes, recording head and leakage location and retaining combinations that the uniaxial illustration does not represent."
+    }
+  ],
+  "title": "大型港口沉箱碼頭~Large-port caisson quay walls",
+  "discipline": "water-coasts",
+  "family": "water",
+  "summary": "將回填土水壓船舶作用與地基變形連成沉箱碼頭受力路徑。課程從邊界辨識與資料整理走到水理量化、構造介面及驗證紀錄；每一步把計算結果連回可量測的證據。十個不同單元分別處理關鍵機制，不以名義尺寸或單一通過率代替整體工程判斷，並明列合成算例與現地資料的差別。~Trace caisson-quay load paths through backfill, water, vessels and foundation deformation. The course moves from boundary identification and evidence to hydraulic quantification, structural interfaces and verification records. Ten distinct units connect each calculated quantity to measurable evidence. Nominal geometry or a single pass rate does not establish whole-system performance, and synthetic teaching examples remain separate from field observations.",
+  "history": "沉箱碼頭與沉箱防波堤共享大型製造及基床接觸問題，但背填、船舶和岸上設備形成不同受力路徑。新加坡主管機關列大士港第一期首座沉箱在二〇一六年安裝，二〇一九年完成最後一座，二〇二一年宣布第一期填海完成；這些里程碑不等於全港所有期別同時營運。香港手冊提供一般海事與岸壁背景，仍須核對適用勘誤。釜石只作海事沉箱功能比較，不能將防波堤海嘯受力移作碼頭背填模型。課程刻意分開土壓、水壓、護舷及地基作用，全部數值都是原創合成假設。~Caisson quays and breakwaters share fabrication and bedding questions but have different load paths from backfill, vessels and terminal equipment. Singapore records the first Phase1 Tuas caisson in2016, the last in2019 and completion of Phase1 reclamation in2021; these milestones do not imply simultaneous operation of every port phase. Hong Kong guidance supplies maritime and waterfront context subject to applicable corrigenda. Kamaishi serves only as a functional comparison of marine caissons, not a source for replacing quay backfill with tsunami loading. The course separates earth, water, fender and foundation actions using entirely synthetic numerical assumptions.",
+  "example": "以下為原創合成算例，不是地標工程的實測或推薦操作值。教學假設，非操作設定或設計允收值。假設水平無黏性回填、光滑直立牆且已達主動狀態，φ=30°，Ka=tan²(45°−φ/2)=0.3333；不適用靜止狀態。假設摩擦角由30增10%至33°，其他朗肯條件不變，Ka由0.3333降為0.2948，約減11.56%；不能推論整座碼頭風險同比下降。重新計算前先列固定條件、單位、適用尺度及可能失效的邊界。把模型敏感度與測量誤差分開，不能將單一參數變化直接當成工程風險或壽命比例。比較兩次結果後，記錄還需要哪些獨立證據，並由負責專業人員判斷適用性。~This original synthetic example is neither a landmark measurement nor a recommended operating value. Teaching assumptions, not operating settings or design acceptance limits. Assume level cohesionless fill, a smooth vertical wall and mobilized active conditions. Atφ=30°,Ka=tan²(45°−φ/2)=0.3333, not at-rest pressure. Increasing friction angle10% from30°to33° under unchanged Rankine assumptions reduces Ka from0.3333 to0.2948, approximately11.56%, without an equivalent reduction in whole-quay risk. Before recalculating, list fixed conditions, units, applicable scale and boundaries that could fail. Separate model sensitivity from measurement uncertainty: a parameter change does not directly give a proportional change in engineering risk or service life. Compare the results, record independent evidence still needed, and have the responsible specialist determine applicability.",
+  "facts": [
+    "教學假設，非操作設定或設計允收值。假設水平無黏性回填、光滑直立牆且已達主動狀態，φ=30°，Ka=tan²(45°−φ/2)=0.3333；不適用靜止狀態。~Teaching assumptions, not operating settings or design acceptance limits. Assume level cohesionless fill, a smooth vertical wall and mobilized active conditions. Atφ=30°,Ka=tan²(45°−φ/2)=0.3333, not at-rest pressure.",
+    "教學假設，非操作設定或設計允收值。假設Ka=1/3、浮重度10kN/m³、高H=15m，Pa=Kaγ′H²/2=375kN/m，作用在底上5m；水壓另算。~Teaching assumptions, not operating settings or design acceptance limits. Assume Ka=1/3,submerged unit weight10kN/m³ and H=15m. Pa=375kN/m acts5m above base; pore-water pressure is separate.",
+    "教學假設，非操作設定或設計允收值。假設無限均布q=30kPa、Ka=1/3、牆高15m，增量側壓Ka q=10kPa、合力150kN/m；不代表局部輪載。~Teaching assumptions, not operating settings or design acceptance limits. Assume infinite uniform surcharge30kPa,Ka=1/3 and wall height15m. Incremental pressure is10kPa and resultant150kN/m, not a local wheel-load model.",
+    "教學假設，非操作設定或設計允收值。假設同底面兩側靜水深5與3m、海水γ=10.05525kN/m³，淨水平力γ(5²−3²)/2=80.442kN/m；不含滲流動態。~Teaching assumptions, not operating settings or design acceptance limits. Assume hydrostatic depths5 and3m above one base and seawaterγ=10.05525kN/m³. Net horizontal force=80.442kN/m, excluding transient seepage.",
+    "教學假設，非操作設定或設計允收值。假設每米N=3000kN、B=15m、e=1.5m，q=N/B(1±6e/B)，qmax=320kPa、qmin=80kPa，且e<B/6。~Teaching assumptions, not operating settings or design acceptance limits. Assume per-metre N=3000kN,B=15m and e=1.5m. q=N/B(1±6e/B) gives320 and80kPa, with e<B/6.",
+    "教學假設，非操作設定或設計允收值。假設已含附加質量的有效質量20000000kg、法向速0.10m/s、選定合成係數0.80，E=0.5Mv²C=80kJ。~Teaching assumptions, not operating settings or design acceptance limits. Assume effective mass20000000kg already includes added mass, normal speed0.10m/s and selected combined factor0.80. E=0.5Mv²C=80kJ, not an operating limit."
+  ],
+  "timeline": [
+    {
+      "year": "2016",
+      "event": "大士港第一期首座沉箱安裝~The first caisson is installed for Tuas Port Phase1"
+    },
+    {
+      "year": "2019",
+      "event": "大士港第一期最後沉箱完成安裝~The final Phase1 caisson is installed at Tuas Port"
+    },
+    {
+      "year": "2021",
+      "event": "大士港第一期填海工程正式宣布完成~Completion of Tuas Port Phase1 reclamation is announced"
+    }
+  ],
+  "codes": [
+    "香港海港工程設計手冊第一部，一般海事設計~Hong Kong Port Works Design Manual Part1, general maritime design",
+    "香港海港工程設計手冊第四部，海堤與防波堤~Hong Kong Port Works Design Manual Part4, seawalls and breakwaters"
+  ],
+  "landmarks": [
+    "大士港第一期：沉箱式岸壁~Tuas Port Phase1: caisson quay walls",
+    "釜石防波堤：海事沉箱功能比較~Kamaishi breakwater: maritime-caisson functional comparison"
+  ],
+  "place": {
+    "name": "大士港公共專案背景區~Tuas Port public project context",
+    "country": "新加坡~Singapore",
+    "lat": 1.28,
+    "lng": 103.61,
+    "query": "Tuas Port Singapore"
+  },
+  "sources": [
+    {
+      "key": "pwdm",
+      "title": "香港海港工程設計手冊",
+      "titleEn": "Hong Kong Port Works Design Manual",
+      "publisher": "Hong Kong CEDD",
+      "url": "https://www.cedd.gov.hk/eng/publications/ceo/pwdm/index.html",
+      "sourceType": "primary",
+      "scope": "官方列海堤防波堤、碼頭及海灘分冊和歷次勘誤；實際設計須核對相應最新版，算例不宣稱合規。",
+      "scopeEn": "Official index lists seawall/breakwater, pier and beach parts and corrigenda; actual design needs the applicable current issue and examples do not claim compliance."
+    },
+    {
+      "key": "tuas-port",
+      "title": "大士港第一期填海完成",
+      "titleEn": "First Phase of Tuas Port Reclamation Works Completes",
+      "publisher": "Maritime and Port Authority of Singapore",
+      "url": "https://www.mpa.gov.sg/media-centre/details/first-phase-of-tuas-port-reclamation-works-completes",
+      "sourceType": "primary",
+      "scope": "已開啟二〇二一年十一月公告，確認第一期沉箱與地盤改良；不將不同期數或泊位營運日期混為一談。",
+      "scopeEn": "Opened November2021 release confirms Phase1 caissons and ground improvement; phases and operational milestones are kept distinct."
+    },
+    {
+      "key": "tuas-history",
+      "title": "大士港沉箱施工里程碑",
+      "titleEn": "Tuas Port caisson milestones",
+      "publisher": "Maritime and Port Authority of Singapore",
+      "url": "https://www.mpa.gov.sg/who-we-are/about-mpa/mpas-milestones",
+      "sourceType": "primary",
+      "scope": "官方里程碑列二〇一六年首座沉箱；專案日期與本課原創受力數據分開。",
+      "scopeEn": "Official milestones list the first caisson in2016; project dates are distinct from original synthetic load calculations."
+    },
+    {
+      "key": "tuas-last",
+      "title": "大士港第一期末座沉箱",
+      "titleEn": "Final Caisson Installed for Tuas Terminal Phase1",
+      "publisher": "Maritime and Port Authority of Singapore",
+      "url": "https://www.mpa.gov.sg/media-centre/details/final-caisson-installed-for-tuas-terminal-phase-1",
+      "sourceType": "primary",
+      "scope": "二〇一九年公告記錄第一期最後沉箱；不據此聲稱全港同年完工。",
+      "scopeEn": "The2019 release records the final Phase1 caisson, not completion of the entire port that year."
+    },
+    {
+      "key": "kamaishi",
+      "title": "釜石沉箱防波堤研究",
+      "titleEn": "Kamaishi breakwater failure-mechanism research",
+      "publisher": "Port and Airport Research Institute",
+      "url": "https://www.pari.go.jp/en/2012/03/20120315211424.html",
+      "sourceType": "primary",
+      "scope": "二〇一二年官方研究摘要作海事沉箱比較；防波堤海嘯機制不等同碼頭背填作用。",
+      "scopeEn": "The2012 official abstract supplies a caisson comparison; tsunami-breakwater mechanisms are distinct from quay backfill loading."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Hong Kong CEDD",
+      "nameEn": "Hong Kong CEDD",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.cedd.gov.hk/eng/publications/ceo/pwdm/index.html",
+      "investorUrl": "",
+      "security": null,
+      "role": "官方列海堤防波堤、碼頭及海灘分冊和歷次勘誤；實際設計須核對相應最新版，算例不宣稱合規。",
+      "roleEn": "Official index lists seawall/breakwater, pier and beach parts and corrigenda; actual design needs the applicable current issue and examples do not claim compliance."
+    },
+    {
+      "name": "Maritime and Port Authority of Singapore",
+      "nameEn": "Maritime and Port Authority of Singapore",
+      "business": "發布本課相關工程方法、研究或公共設施資訊。",
+      "businessEn": "Publishes relevant engineering methods, research or public infrastructure information.",
+      "url": "https://www.mpa.gov.sg/media-centre/details/first-phase-of-tuas-port-reclamation-works-completes",
+      "investorUrl": "",
+      "security": null,
+      "role": "已開啟二〇二一年十一月公告，確認第一期沉箱與地盤改良；不將不同期數或泊位營運日期混為一談。",
+      "roleEn": "Opened November2021 release confirms Phase1 caissons and ground improvement; phases and operational milestones are kept distinct."
+    }
+  ],
+  "related": [
+    "b283",
+    "b290"
+  ],
+  "architectureNodes": [
+    [
+      "主動土壓假設",
+      "Active earth-pressure assumptions"
+    ],
+    [
+      "碼頭堆載側壓",
+      "Quay surcharge lateral action"
+    ],
+    [
+      "基底偏心壓力",
+      "Eccentric base pressure"
+    ],
+    [
+      "護舷曲線積分",
+      "Integrating fender response"
+    ],
+    [
+      "接縫位移與止水",
+      "Joint movement and sealing"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

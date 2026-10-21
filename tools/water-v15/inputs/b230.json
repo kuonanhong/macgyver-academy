@@ -1,0 +1,273 @@
+{
+  "id": "b230",
+  "title": "荷蘭三角洲工程~Delta Works",
+  "discipline": "water-systems",
+  "family": "water",
+  "focus": "區域防洪網路、環境取捨與分期調適決策~Regional flood-defence networks, environmental tradeoffs and staged adaptation",
+  "summary": "本課以荷蘭三角洲工程為入口，深入區域防洪網路、環境取捨與分期調適決策。十個單元各自對應不同的荷載路徑、能量交換或監測問題，從守恆式建立量化估算，再檢查量測配置是否能辨認真正失效原因。工程史實只採用列明範圍的公開一手資料；所有模型輸入另標為教學假設，成果是可追溯的工程判讀紀錄。~Using Delta Works as its entry point, this course examines regional flood-defence networks, environmental tradeoffs and staged adaptation. Ten units address different load paths, energy exchanges or monitoring questions, starting with conservation-based estimates and testing whether observations distinguish failure causes. Historical statements use scoped primary evidence. Numerical model inputs are separately identified as teaching assumptions, producing a traceable engineering interpretation record.",
+  "example": "本課原創比較練習分兩個相互獨立的物理模型。教學假設，非地標實測值或操作設定：假設年超越機率p=0.001且各年獨立平穩，50年內至少一次為1−(1−p)⁵⁰=0.04879，約4.879%；非荷蘭現行標準。教學假設，非地標實測值或操作設定：假設三個必須全成功的區段年失效機率各0.001且獨立，系統失效1−0.999³=0.002997；不是把機率相乘成10⁻⁹。先逐一圈出公式內的控制體、力方向或時間尺度，再把每項輸入的量綱換成一致單位。第二人只根據輸入重算結果，不抄第一人的中間數字。最後指出這兩個估算尚未包含的空間變化、非線性及量測誤差；若將結果用於另一座工程，必須重建其幾何、材料與邊界條件，不能挪用本練習的假設。 風險敏感度保留50年期限與各年獨立、平穩假設，只將年超越機率p由0.001改為0.002。由100[1−(1−p)⁵⁰]計算，累積機率由4.8794%增為9.5253%，並非精確翻倍。此比較說明非線性的期間換算，不假定氣候、暴露或防護性能在真實未來50年必然不變。~This original comparison exercise uses two independent physical models. Teaching assumptions, not landmark measurements or operating settings: Assume annual exceedance p=0.001 with independent stationary years. At least one event in fifty years has probability 1−(1−p)⁵⁰=0.04879, or 4.879 percent, not a Dutch standard. Teaching assumptions, not landmark measurements or operating settings: Assume three essential segments each fail annually with probability 0.001 independently. System failure is 1−0.999³=0.002997, not the product 10⁻⁹. First identify the control volume, force direction or time scale in each relation, then convert every input to consistent units. A second reviewer recalculates from the inputs without copying intermediate numbers. Finally identify spatial variability, nonlinear effects and measurement errors omitted by both estimates. Transfer to another structure requires rebuilding its geometry, material description and boundary conditions; the assumed classroom inputs are not transferable design or operating parameters. Retain the fifty-year horizon and independent stationary years, changing only annual exceedance probability p from 0.001 to 0.002. The relation 100[1−(1−p)⁵⁰] changes cumulative probability from 4.8794% to 9.5253%, not exactly double. This illustrates nonlinear horizon conversion without asserting that climate, exposure or protection performance will actually remain stationary for fifty years.",
+  "history": "三角洲工程是多個防潮閘、水壩和堤防組成的區域系統，不是一座能代表所有功能的單體工程；後續三角洲計畫加入持續調適觀念。北海洪災促使荷蘭推動區域尺度的三角洲防洪工程。 十月二十二日荷蘭艾瑟爾防潮閘啟用，成為首項完成工程。 官方記錄多座防潮閘首次同時關閉，顯示系統共同面對海象。本課從公開構造辨認荷載、能量與功能之間的關係，另以自訂尺寸做守恆與極限算例。啟用、首次運轉和後續維護是不同里程碑；課程不將新聞日期當成施工日期，也不以比較用的地標暗示相同設備或相同操作規則。~The Delta Works form a regional system of barriers, dams and dykes rather than one structure representing every function. The later Delta Programme adds continuing adaptation. The North Sea flood prompts a regional Dutch Delta Works protection programme. The Hollandsche IJssel Barrier opens on October twenty-two as the first completed work. The owner records barriers closing simultaneously for the first time, illustrating shared storm exposure. The course uses published configurations to distinguish loads, energy and system function, with separately assumed dimensions for conservation and limit calculations. Opening, first operation and later maintenance are different milestones. Publication dates are not substituted for construction events, and comparison landmarks do not imply identical equipment or operating rules.",
+  "units": [
+    {
+      "anchor": "重現期與壽命風險~Return period and lifetime risk",
+      "title": "重現期與壽命風險~Return period and lifetime risk",
+      "mechanism": "年度超越機率描述每年的事件風險，不代表兩次洪水必須相隔固定年數。跨年累積需說明平穩與獨立假設，氣候及暴露變化可能使它們失效。 假設年超越機率p=0.001且各年獨立平穩，50年內至少一次為1−(1−p)⁵⁰=0.04879，約4.879%；非荷蘭現行標準。 重現期不是保固年限，同一年也可能出現多次高水事件。若把歷史氣候外推成固定未來機率，會讓長壽命設施的累積風險看似比實際更確定。~Annual exceedance probability does not impose a fixed interval between floods. Multi-year accumulation requires stationary and independent years, assumptions that climate and exposure changes can invalidate. Assume annual exceedance p=0.001 with independent stationary years. At least one event in fifty years has probability 1−(1−p)⁵⁰=0.04879, or 4.879 percent, not a Dutch standard. Return period is not a warranty, and several high-water events can occur within one year. Treating historical climate as fixed future probability makes lifetime risk appear more certain than the evidence supports.",
+      "model": "教學假設，非地標實測值或操作設定：假設年超越機率p=0.001且各年獨立平穩，50年內至少一次為1−(1−p)⁵⁰=0.04879，約4.879%；非荷蘭現行標準。~Teaching assumptions, not landmark measurements or operating settings: Assume annual exceedance p=0.001 with independent stationary years. At least one event in fifty years has probability 1−(1−p)⁵⁰=0.04879, or 4.879 percent, not a Dutch standard.",
+      "verify": "將事件定義和記錄年份寫清楚，核對統計是否把超越荷載與結構失效混淆；對變動年機率改用逐年生存機率乘積，再比較平穩近似偏差。另外說明年度超越事件和災損事件並非同義。~Define events and observation years, checking whether load exceedance is confused with structural failure. For changing probabilities use the product of annual survival probabilities and compare the stationary approximation. Explain separately why annual load exceedance and a damaging failure are not equivalent events.",
+      "failure": "重現期不是保固年限，同一年也可能出現多次高水事件。若把歷史氣候外推成固定未來機率，會讓長壽命設施的累積風險看似比實際更確定。~Return period is not a warranty, and several high-water events can occur within one year. Treating historical climate as fixed future probability makes lifetime risk appear more certain than the evidence supports.",
+      "misconception": "千年重現期代表一次洪水後至少一千年不會再發生。~A thousand-year return period prevents another flood for at least one thousand years.",
+      "practice": "以重現期與壽命風險編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。將事件定義和記錄年份寫清楚，核對統計是否把超越荷載與結構失效混淆；對變動年機率改用逐年生存機率乘積，再比較平穩近似偏差。~Prepare a reviewable evidence sheet for return period and lifetime risk, recording data time, units, model applicability and reviewer. Define events and observation years, checking whether load exceedance is confused with structural failure. For changing probabilities use the product of annual survival probabilities and compare the stationary approximation."
+    },
+    {
+      "anchor": "串聯防線薄弱節點~Weak links along a defence line",
+      "title": "串聯防線薄弱節點~Weak links along a defence line",
+      "mechanism": "保護區可能經由任一薄弱段淹入，完整防線的成功條件與平行備援不同。不同區段共受相同暴潮，獨立失效只能當教學近似。 假設三個必須全成功的區段年失效機率各0.001且獨立，系統失效1−0.999³=0.002997；不是把機率相乘成10⁻⁹。 把沿岸相鄰堤段當成互相備援會嚴重低估風險，一個缺口即可繞過其他完好區段。相反地，真正具有隔離功能的內堤又不能完全忽略。~Water may enter through any weak segment, so success of a continuous defence differs from parallel redundancy. Shared storm loading makes independent failures only a classroom approximation. Assume three essential segments each fail annually with probability 0.001 independently. System failure is 1−0.999³=0.002997, not the product 10⁻⁹. Treating adjacent bank segments as backups understates risk because one breach bypasses intact sections. Conversely, internal defences that genuinely isolate areas should not be omitted from the network model.",
+      "model": "教學假設，非地標實測值或操作設定：假設三個必須全成功的區段年失效機率各0.001且獨立，系統失效1−0.999³=0.002997；不是把機率相乘成10⁻⁹。~Teaching assumptions, not landmark measurements or operating settings: Assume three essential segments each fail annually with probability 0.001 independently. System failure is 1−0.999³=0.002997, not the product 10⁻⁹.",
+      "verify": "先繪出淹水可能路徑，確認哪些區段是串聯、哪些是真正替代防線；用共同水位與地基條件檢查相關性，避免只依設備數量畫失效樹。以任一區段失效是否形成完整淹水路徑作測試。~Map possible inundation routes and identify essential versus genuinely alternative defences. Check dependence through common water levels and ground conditions rather than drawing fault trees from equipment count alone. Test whether failure of each segment creates a complete inundation pathway.",
+      "failure": "把沿岸相鄰堤段當成互相備援會嚴重低估風險，一個缺口即可繞過其他完好區段。相反地，真正具有隔離功能的內堤又不能完全忽略。~Treating adjacent bank segments as backups understates risk because one breach bypasses intact sections. Conversely, internal defences that genuinely isolate areas should not be omitted from the network model.",
+      "misconception": "同一保護圈的多段堤防可以當成完全平行備援。~Several segments of one protection ring act as fully parallel backups.",
+      "practice": "以串聯防線薄弱節點編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。先繪出淹水可能路徑，確認哪些區段是串聯、哪些是真正替代防線；用共同水位與地基條件檢查相關性，避免只依設備數量畫失效樹。~Prepare a reviewable evidence sheet for weak links along a defence line, recording data time, units, model applicability and reviewer. Map possible inundation routes and identify essential versus genuinely alternative defences. Check dependence through common water levels and ground conditions rather than drawing fault trees from equipment count alone."
+    },
+    {
+      "anchor": "暴潮共同原因相關~Common storm dependence",
+      "title": "暴潮共同原因相關~Common storm dependence",
+      "mechanism": "不同屏障可能同時遭遇同一風場與海水位，聯合失效不一定等於各機率乘積。相關性須來自共同機制與資料，而不是為簡化計算而任意設定。 假設P(A)=0.02、P(B|A)=0.4，聯合P(A∩B)=0.008；若誤用P(B)=0.02獨立相乘，只得0.0004，相差20倍。 少數共同事件可能支配區域風險，分散地理位置不保證氣象獨立。若只保留單站最大值而刪除時間戳，就無法重建真正的聯合荷載。~Different barriers can face the same wind and sea level, so joint failure need not equal the product of individual probabilities. Dependence should come from shared mechanisms and evidence rather than computational convenience. Assume P(A)=0.02 and P(B|A)=0.4. Joint probability is 0.008; incorrectly using independent P(B)=0.02 gives 0.0004, twenty times smaller. A few shared events can dominate regional risk, and geographic separation does not guarantee meteorological independence. Deleting timestamps while retaining station maxima prevents reconstruction of actual joint loading.",
+      "model": "教學假設，非地標實測值或操作設定：假設P(A)=0.02、P(B|A)=0.4，聯合P(A∩B)=0.008；若誤用P(B)=0.02獨立相乘，只得0.0004，相差20倍。~Teaching assumptions, not landmark measurements or operating settings: Assume P(A)=0.02 and P(B|A)=0.4. Joint probability is 0.008; incorrectly using independent P(B)=0.02 gives 0.0004, twenty times smaller.",
+      "verify": "把共同風暴、供電和預報錯誤列成可追溯事件類別，核對兩站事件是否同時；比較條件與無條件機率的樣本量，報告稀少資料造成的區間。保留原始事件時間以便重建共同暴潮歷程。~Classify common storms, power and forecast errors as traceable events and check simultaneity. Compare sample sizes for conditional and unconditional probabilities and report uncertainty from sparse observations. Preserve original event times so the shared storm-surge history can be reconstructed.",
+      "failure": "少數共同事件可能支配區域風險，分散地理位置不保證氣象獨立。若只保留單站最大值而刪除時間戳，就無法重建真正的聯合荷載。~A few shared events can dominate regional risk, and geographic separation does not guarantee meteorological independence. Deleting timestamps while retaining station maxima prevents reconstruction of actual joint loading.",
+      "misconception": "兩座屏障距離遠就能直接假設風暴失效互相獨立。~Widely separated barriers can automatically be assumed independent under storm loading.",
+      "practice": "以暴潮共同原因相關編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。把共同風暴、供電和預報錯誤列成可追溯事件類別，核對兩站事件是否同時；比較條件與無條件機率的樣本量，報告稀少資料造成的區間。~Prepare a reviewable evidence sheet for common storm dependence, recording data time, units, model applicability and reviewer. Classify common storms, power and forecast errors as traceable events and check simultaneity. Compare sample sizes for conditional and unconditional probabilities and report uncertainty from sparse observations."
+    },
+    {
+      "anchor": "防洪與潮灘面積~Protection and tidal-flat area",
+      "title": "防洪與潮灘面積~Protection and tidal-flat area",
+      "mechanism": "海口改變會影響潮差和潮灘濕潤頻率，防洪效益不能只以封閉長度評價。簡化斜坡幾何可連結水位變化與棲地面積，但真實地形需要測量。 假設平直潮灘長10 km、橫坡1:1000、水位帶縮小0.2 m，水平寬度差200 m，面積差2 km²；純幾何，不預測生態品質。 面積相同的棲地可能有不同淹水時長、粒徑和食物供應，不能直接當作等值生態補償。地形隨侵蝕淤積改變時，固定坡度模型也會逐年偏離。~Inlet modification changes tidal range and intertidal wetting frequency, so protection benefits cannot be judged only by closure length. A simple slope connects level change to habitat area, while real terrain requires surveys. Assume straight tidal flat length 10 km, cross-slope 1:1000 and tidal-band reduction 0.2 m. Width changes 200 m and area 2 km², a geometric estimate rather than ecological quality. Equal habitat area can differ in inundation duration, grain size and food supply, preventing automatic ecological equivalence. Erosion and deposition also progressively invalidate a fixed-slope geometric model.",
+      "model": "教學假設，非地標實測值或操作設定：假設平直潮灘長10 km、橫坡1:1000、水位帶縮小0.2 m，水平寬度差200 m，面積差2 km²；純幾何，不預測生態品質。~Teaching assumptions, not landmark measurements or operating settings: Assume straight tidal flat length 10 km, cross-slope 1:1000 and tidal-band reduction 0.2 m. Width changes 200 m and area 2 km², a geometric estimate rather than ecological quality.",
+      "verify": "用同基準地形網格計算濕潤頻率曲線，對照底棲生物與沉積資料；將短期潮差變化和長期地形調整分開，核查斜坡假設的代表性。分別報告面積、濕潤時長和底質粒徑變化。~Calculate inundation-frequency curves from common-datum terrain and compare benthic and sediment data. Separate short-term tidal change from long-term morphological adjustment and test the representative-slope assumption. Report changes in area, inundation duration and bed grain size separately.",
+      "failure": "面積相同的棲地可能有不同淹水時長、粒徑和食物供應，不能直接當作等值生態補償。地形隨侵蝕淤積改變時，固定坡度模型也會逐年偏離。~Equal habitat area can differ in inundation duration, grain size and food supply, preventing automatic ecological equivalence. Erosion and deposition also progressively invalidate a fixed-slope geometric model.",
+      "misconception": "保留相同潮灘面積就一定保留相同生態功能。~Preserving equal tidal-flat area necessarily preserves identical ecological function.",
+      "practice": "以防洪與潮灘面積編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。用同基準地形網格計算濕潤頻率曲線，對照底棲生物與沉積資料；將短期潮差變化和長期地形調整分開，核查斜坡假設的代表性。~Prepare a reviewable evidence sheet for protection and tidal-flat area, recording data time, units, model applicability and reviewer. Calculate inundation-frequency curves from common-datum terrain and compare benthic and sediment data. Separate short-term tidal change from long-term morphological adjustment and test the representative-slope assumption."
+    },
+    {
+      "anchor": "沿岸砂量收支~Coastal sediment budget",
+      "title": "沿岸砂量收支~Coastal sediment budget",
+      "mechanism": "海岸維持取決於砂的來源、搬運與流失，而不只是某一斷面的寬度。補砂量應放進區域控制體，避免把移到鄰岸的砂全部當作消失。 假設每年沿岸輸入0.4 million m³、輸出0.7 million m³、補砂0.5 million m³，淨增加0.2 million m³；未含深水交換。 只量乾灘會把移到近岸沙洲的砂當成流失，忽略粒徑差又會誤估補砂持續時間。不同年代測量範圍不一致，可能產生不存在的體積增減。~Coastal maintenance depends on sediment sources, transport and loss rather than one beach width. Nourishment belongs in a regional control volume so sand moved to a neighboring reach is not all treated as lost. Assume annual input 0.4 million m³, output 0.7 million m³ and nourishment 0.5 million m³. Net gain is 0.2 million m³, excluding deep-water exchange. Dry-beach surveys alone mistake movement to nearshore bars for loss, while grain-size differences alter nourishment persistence. Inconsistent survey footprints can create fictitious volume gains or losses between years.",
+      "model": "教學假設，非地標實測值或操作設定：假設每年沿岸輸入0.4 million m³、輸出0.7 million m³、補砂0.5 million m³，淨增加0.2 million m³；未含深水交換。~Teaching assumptions, not landmark measurements or operating settings: Assume annual input 0.4 million m³, output 0.7 million m³ and nourishment 0.5 million m³. Net gain is 0.2 million m³, excluding deep-water exchange.",
+      "verify": "將海灘與近岸水下測量合成一致體積基準，核對補砂計量和側邊通量；以季節重複資料區分沿岸搬運、跨岸搬運與量測誤差。核對每次測量邊界是否包含同一近岸沙洲。~Combine beach and submerged-nearshore surveys on one volume reference and check nourishment accounting and boundary fluxes. Use seasonal repeats to distinguish alongshore transport, cross-shore exchange and measurement error. Verify that every survey boundary includes the same nearshore sandbar footprint.",
+      "failure": "只量乾灘會把移到近岸沙洲的砂當成流失，忽略粒徑差又會誤估補砂持續時間。不同年代測量範圍不一致，可能產生不存在的體積增減。~Dry-beach surveys alone mistake movement to nearshore bars for loss, while grain-size differences alter nourishment persistence. Inconsistent survey footprints can create fictitious volume gains or losses between years.",
+      "misconception": "離開乾灘的砂就一定永久離開整個海岸系統。~Sand leaving the dry beach has permanently left the entire coastal system.",
+      "practice": "以沿岸砂量收支編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。將海灘與近岸水下測量合成一致體積基準，核對補砂計量和側邊通量；以季節重複資料區分沿岸搬運、跨岸搬運與量測誤差。~Prepare a reviewable evidence sheet for coastal sediment budget, recording data time, units, model applicability and reviewer. Combine beach and submerged-nearshore surveys on one volume reference and check nourishment accounting and boundary fluxes. Use seasonal repeats to distinguish alongshore transport, cross-shore exchange and measurement error."
+    },
+    {
+      "anchor": "航運代價與關閉頻率~Navigation cost and closure frequency",
+      "title": "航運代價與關閉頻率~Navigation cost and closure frequency",
+      "mechanism": "防洪屏障的關閉影響航運時間，長期關閉頻率改變會使等待成本累積。每次平均代價不能代表尖峰供應鏈損失，須區分服務延遲和真實經濟損害。 假設每年12次關閉、每次8艘船各延遲2 h，總192 vessel-hours；假設時間成本1000 currency/h，對應192000 currency/year，非實際損失。 把所有港口延遲都歸於防洪會誇大代價，忽略關閉後隊列消散又會低估代價。若把假設時間價值當作業者實際損失，會產生不當精確感。~Barrier closures delay navigation and accumulate waiting as their frequency changes. Average event cost does not represent peak supply-chain consequences, requiring service delay to be separated from verified economic loss. Assume twelve closures annually, eight vessels per event and two hours delay each: 192 vessel-hours. At assumed cost 1000 currency/h this is 192000 currency/year, not measured loss. Attributing all port delays to defence exaggerates cost, while omitting post-closure queue recovery understates it. Presenting assumed time values as actual operator losses creates unjustified numerical precision.",
+      "model": "教學假設，非地標實測值或操作設定：假設每年12次關閉、每次8艘船各延遲2 h，總192 vessel-hours；假設時間成本1000 currency/h，對應192000 currency/year，非實際損失。~Teaching assumptions, not landmark measurements or operating settings: Assume twelve closures annually, eight vessels per event and two hours delay each: 192 vessel-hours. At assumed cost 1000 currency/h this is 192000 currency/year, not measured loss.",
+      "verify": "以匿名船舶時間戳核對延遲是否由屏障造成，扣除原有等待；將單船成本假設與資料來源分開，並對尖峰到達率和替代航路做敏感度。以關閉後隊列消散時間補足延遲統計範圍。~Use anonymous vessel timestamps to attribute delay to the barrier and remove pre-existing waiting. Separate assumed time values from evidence and test peak arrivals and alternative routes. Extend delay accounting through the post-closure period required to clear the queue.",
+      "failure": "把所有港口延遲都歸於防洪會誇大代價，忽略關閉後隊列消散又會低估代價。若把假設時間價值當作業者實際損失，會產生不當精確感。~Attributing all port delays to defence exaggerates cost, while omitting post-closure queue recovery understates it. Presenting assumed time values as actual operator losses creates unjustified numerical precision.",
+      "misconception": "只需關閉歷時乘船數就能精確得到全部經濟損失。~Closure duration times vessel count precisely gives all economic losses.",
+      "practice": "以航運代價與關閉頻率編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。以匿名船舶時間戳核對延遲是否由屏障造成，扣除原有等待；將單船成本假設與資料來源分開，並對尖峰到達率和替代航路做敏感度。~Prepare a reviewable evidence sheet for navigation cost and closure frequency, recording data time, units, model applicability and reviewer. Use anonymous vessel timestamps to attribute delay to the barrier and remove pre-existing waiting. Separate assumed time values from evidence and test peak arrivals and alternative routes."
+    },
+    {
+      "anchor": "維護組合與風險降低~Maintenance portfolio and risk reduction",
+      "title": "維護組合與風險降低~Maintenance portfolio and risk reduction",
+      "mechanism": "維護資源有限時，應比較失效機率、後果和措施效益，而不是只修最老設備。風險降低估算需要相同時間尺度及可核對的因果鏈。 假設年失效機率由0.01降至0.004、條件損失20 million currency，期望年損失降低0.006×20 million=120000 currency；非投資建議。 把所有故障都歸於老化會錯過共因與設計缺陷，維護也可能造成暫時停用風險。若效益和成本使用不同年度貨幣，排序會受到隱藏換算影響。~Limited maintenance resources require comparing probability, consequence and intervention effect rather than simply repairing the oldest asset. Estimated risk reduction needs a common time scale and a defensible causal link. Assume annual failure probability falls from 0.01 to 0.004 with conditional loss 20 million currency. Expected annual loss falls by 120000 currency, an educational estimate rather than investment advice. Attributing every failure to age misses common causes and design defects, while maintenance itself creates temporary outages. Comparing benefits and costs in different price years introduces hidden ranking distortions.",
+      "model": "教學假設，非地標實測值或操作設定：假設年失效機率由0.01降至0.004、條件損失20 million currency，期望年損失降低0.006×20 million=120000 currency；非投資建議。~Teaching assumptions, not landmark measurements or operating settings: Assume annual failure probability falls from 0.01 to 0.004 with conditional loss 20 million currency. Expected annual loss falls by 120000 currency, an educational estimate rather than investment advice.",
+      "verify": "逐項列出措施改變哪個失效模式，核對機率減少是否有試驗或歷史支持；以相同價格年和分析期間比較方案，保留不可量化後果。將維修期間新增的暫時風險列為獨立項目。~Identify the failure mode changed by each measure and check evidence supporting the probability reduction. Compare options with consistent price year and horizon while retaining consequences that cannot be credibly monetized. Include temporary additional risk during maintenance as a separate assessment item.",
+      "failure": "把所有故障都歸於老化會錯過共因與設計缺陷，維護也可能造成暫時停用風險。若效益和成本使用不同年度貨幣，排序會受到隱藏換算影響。~Attributing every failure to age misses common causes and design defects, while maintenance itself creates temporary outages. Comparing benefits and costs in different price years introduces hidden ranking distortions.",
+      "misconception": "設備年齡最高就一定具有最大的維護風險降低效益。~The oldest asset necessarily offers the greatest maintenance risk-reduction benefit.",
+      "practice": "以維護組合與風險降低編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。逐項列出措施改變哪個失效模式，核對機率減少是否有試驗或歷史支持；以相同價格年和分析期間比較方案，保留不可量化後果。~Prepare a reviewable evidence sheet for maintenance portfolio and risk reduction, recording data time, units, model applicability and reviewer. Identify the failure mode changed by each measure and check evidence supporting the probability reduction. Compare options with consistent price year and horizon while retaining consequences that cannot be credibly monetized."
+    },
+    {
+      "anchor": "內外防線蓄洪耦合~Coupled outer defence and storage",
+      "title": "內外防線蓄洪耦合~Coupled outer defence and storage",
+      "mechanism": "外海屏障降低暴潮進入，卻可能限制內河排水，內部蓄洪空間因此成為系統的一部分。把堤防與蓄水設施各自最佳化可能產生相互衝突。 假設外閘關閉4 h、內河淨入流500 m³/s，需暫存7.2 million m³；若允許平均升水0.3 m，理想有效面積24 km²。 名義庫容若被堤路隔開或入口狹窄，可能在洪峰前無法充分使用。把所有低地直接相加作可用面積，會低估局部最高水位和淹水轉移。~An outer barrier excludes surge but can restrict river drainage, making inland storage part of the defence system. Optimizing embankments and storage independently may create conflicting requirements. Assume outer closure four hours with net river inflow 500 m³/s, requiring storage 7.2 million m³. At allowed mean rise 0.3 m, ideal effective area is 24 km². Nominal storage separated by roads or narrow entrances may not fill before the peak. Adding all low ground as usable area understates local maximum levels and the redistribution of flooding.",
+      "model": "教學假設，非地標實測值或操作設定：假設外閘關閉4 h、內河淨入流500 m³/s，需暫存7.2 million m³；若允許平均升水0.3 m，理想有效面積24 km²。~Teaching assumptions, not landmark measurements or operating settings: Assume outer closure four hours with net river inflow 500 m³/s, requiring storage 7.2 million m³. At allowed mean rise 0.3 m, ideal effective area is 24 km².",
+      "verify": "同步列出海側閉合期間和河流入流歷線，將分區庫容與連通能力一起核對；用水位坡度檢查可用蓄洪面積是否真能在事件期間被利用。檢查連通口流量是否足以在洪峰前使用庫容。~Align outer-closure periods with river hydrographs, checking compartment storage and connectivity together. Use water-surface gradients to test whether nominal storage area is actually accessible during the event. Check whether connection capacity can make the storage accessible before the flood peak.",
+      "failure": "名義庫容若被堤路隔開或入口狹窄，可能在洪峰前無法充分使用。把所有低地直接相加作可用面積，會低估局部最高水位和淹水轉移。~Nominal storage separated by roads or narrow entrances may not fill before the peak. Adding all low ground as usable area understates local maximum levels and the redistribution of flooding.",
+      "misconception": "地圖上所有低窪面積都能立即提供相同蓄洪能力。~All low ground on a map immediately provides equal usable flood storage.",
+      "practice": "以內外防線蓄洪耦合編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。同步列出海側閉合期間和河流入流歷線，將分區庫容與連通能力一起核對；用水位坡度檢查可用蓄洪面積是否真能在事件期間被利用。~Prepare a reviewable evidence sheet for coupled outer defence and storage, recording data time, units, model applicability and reviewer. Align outer-closure periods with river hydrographs, checking compartment storage and connectivity together. Use water-surface gradients to test whether nominal storage area is actually accessible during the event."
+    },
+    {
+      "anchor": "調適門檻與提前量~Adaptation trigger and lead time",
+      "title": "調適門檻與提前量~Adaptation trigger and lead time",
+      "mechanism": "分期調適需要在功能不足前啟動設計施工，監測門檻因此必須包含實施提前量。看到水位達極限才開始準備，可能已錯過調整窗口。 假設剩餘功能裕度0.4 m、情境增加速率0.01 m/year，達限40 years；若實施需15 years，最晚應於25 years前啟動，限線性情境。 海平面加速或施工延期會縮短可用時間，單一速率估算不能當精確倒數。若監測指標與實際失效模式沒有關聯，提早量再長也可能觸發錯誤措施。~Staged adaptation must start design and construction before performance becomes inadequate, so monitoring triggers need implementation lead time. Waiting until the limit is reached can miss the available response window. Assume remaining performance margin 0.4 m and scenario change 0.01 m/year: limit in forty years. With fifteen years implementation, initiation is needed by year twenty-five under this linear scenario. Accelerating change or construction delay shortens available time, so one rate is not an exact countdown. A monitoring indicator disconnected from the failure mechanism may trigger the wrong measure despite ample lead time.",
+      "model": "教學假設，非地標實測值或操作設定：假設剩餘功能裕度0.4 m、情境增加速率0.01 m/year，達限40 years；若實施需15 years，最晚應於25 years前啟動，限線性情境。~Teaching assumptions, not landmark measurements or operating settings: Assume remaining performance margin 0.4 m and scenario change 0.01 m/year: limit in forty years. With fifteen years implementation, initiation is needed by year twenty-five under this linear scenario.",
+      "verify": "把功能門檻、監測指標和設計建造歷時各自列明，對速率加快與審批延遲做情境測試；定期回顧觸發條件而非把日期當成固定承諾。將決策日期與工程完成日期明確分開呈現。~Specify performance limit, monitored indicator and implementation duration separately. Test faster change and approval delays, periodically reviewing triggers rather than treating a scenario date as a fixed commitment. Present the decision initiation date separately from the eventual construction completion date.",
+      "failure": "海平面加速或施工延期會縮短可用時間，單一速率估算不能當精確倒數。若監測指標與實際失效模式沒有關聯，提早量再長也可能觸發錯誤措施。~Accelerating change or construction delay shortens available time, so one rate is not an exact countdown. A monitoring indicator disconnected from the failure mechanism may trigger the wrong measure despite ample lead time.",
+      "misconception": "只有監測值真的到達功能極限時才需要開始設計調適。~Adaptation design need only start once monitoring reaches the actual performance limit.",
+      "practice": "以調適門檻與提前量編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。把功能門檻、監測指標和設計建造歷時各自列明，對速率加快與審批延遲做情境測試；定期回顧觸發條件而非把日期當成固定承諾。~Prepare a reviewable evidence sheet for adaptation trigger and lead time, recording data time, units, model applicability and reviewer. Specify performance limit, monitored indicator and implementation duration separately. Test faster change and approval delays, periodically reviewing triggers rather than treating a scenario date as a fixed commitment."
+    },
+    {
+      "anchor": "多目標權重敏感度~Multi-objective weight sensitivity",
+      "title": "多目標權重敏感度~Multi-objective weight sensitivity",
+      "mechanism": "區域方案需比較防洪、生態、航運與成本，權重表達價值選擇而不是物理真理。加權分數只能在同尺度和明確方向下使用，必須測試排序是否穩健。 假設方案A防洪90生態50、B防洪75生態80，防洪權重0.6，A=74、B=77；兩方案相等時權重w=2/3，分數皆為教學假設。 以高生態分數補償不可接受的防洪失效可能不符合決策邊界，正規化方式也會改變排序。若只公布最終總分，會掩蓋價值取捨與資料不確定度。~Regional options balance protection, ecology, navigation and cost. Weights express value choices rather than physical truths, so weighted scores require common scales, consistent direction and ranking-sensitivity tests. Assume protection/ecology scores A=90/50 and B=75/80 with protection weight 0.6. Scores are A=74 and B=77; equality occurs at w=2/3, with all scores assumed. A high ecology score may not compensate for an unacceptable protection failure, and normalization can change rankings. Publishing only the total conceals value tradeoffs and uncertainty in the supporting evidence.",
+      "model": "教學假設，非地標實測值或操作設定：假設方案A防洪90生態50、B防洪75生態80，防洪權重0.6，A=74、B=77；兩方案相等時權重w=2/3，分數皆為教學假設。~Teaching assumptions, not landmark measurements or operating settings: Assume protection/ecology scores A=90/50 and B=75/80 with protection weight 0.6. Scores are A=74 and B=77; equality occurs at w=2/3, with all scores assumed.",
+      "verify": "先核對所有指標是越高越好或已完成一致轉換，再畫權重掃描下的排序；把評分證據、利害關係人權重與不能補償的底線分別保存。標出不允許被其他高分抵銷的最低功能限制。~Confirm that higher scores consistently mean better performance, then plot rankings across weights. Keep scoring evidence, stakeholder preferences and non-compensable limits as separate records. Mark minimum functional constraints that cannot be compensated by high scores elsewhere.",
+      "failure": "以高生態分數補償不可接受的防洪失效可能不符合決策邊界，正規化方式也會改變排序。若只公布最終總分，會掩蓋價值取捨與資料不確定度。~A high ecology score may not compensate for an unacceptable protection failure, and normalization can change rankings. Publishing only the total conceals value tradeoffs and uncertainty in the supporting evidence.",
+      "misconception": "加權總分最高的方案在任何權重與限制下都必然最佳。~The highest weighted score remains best under every weighting and constraint.",
+      "practice": "以多目標權重敏感度編製可交接的證據頁，註明資料時間、單位、模型適用範圍與審查者。先核對所有指標是越高越好或已完成一致轉換，再畫權重掃描下的排序；把評分證據、利害關係人權重與不能補償的底線分別保存。~Prepare a reviewable evidence sheet for multi-objective weight sensitivity, recording data time, units, model applicability and reviewer. Confirm that higher scores consistently mean better performance, then plot rankings across weights. Keep scoring evidence, stakeholder preferences and non-compensable limits as separate records."
+    }
+  ],
+  "facts": [
+    "官方三角洲工程包含13項主要工程。~The official Delta Works comprise 13 major works.",
+    "首項荷蘭艾瑟爾防潮閘於1958年啟用。~The first Hollandsche IJssel Barrier enters service in 1958.",
+    "教學年機率0.001的50年累積超越機率4.879%。~Teaching annual probability 0.001 gives fifty-year exceedance probability 4.879 percent.",
+    "教學三段串聯失效機率0.002997。~The teaching three-segment essential-chain failure probability is 0.002997.",
+    "教學內河暫存需求7.2 million m³。~The teaching inland temporary-storage demand is 7.2 million m³.",
+    "教學調適提前量分析要求第25年以前啟動。~The teaching adaptation lead-time analysis requires initiation by year 25."
+  ],
+  "timeline": [
+    {
+      "year": "1953",
+      "event": "北海洪災促使荷蘭推動區域尺度的三角洲防洪工程。~The North Sea flood prompts a regional Dutch Delta Works protection programme."
+    },
+    {
+      "year": "1958",
+      "event": "十月二十二日荷蘭艾瑟爾防潮閘啟用，成為首項完成工程。~The Hollandsche IJssel Barrier opens on October twenty-two as the first completed work."
+    },
+    {
+      "year": "2018",
+      "event": "官方記錄多座防潮閘首次同時關閉，顯示系統共同面對海象。~The owner records barriers closing simultaneously for the first time, illustrating shared storm exposure."
+    }
+  ],
+  "codes": [
+    "美國陸軍工兵團工程手冊：水工鋼結構設計，EM 1110-2-2107~USACE Design of Hydraulic Steel Structures, EM 1110-2-2107",
+    "美國陸軍工兵團土木工程機電設計手冊，EM 1110-2-2610，2025~USACE Mechanical and Electrical Design for Civil Works Structures, EM 1110-2-2610, 2025"
+  ],
+  "landmarks": [
+    "荷蘭艾瑟爾防潮閘：早期防線~Hollandsche IJssel Barrier: early-defence context",
+    "東斯海爾德防潮閘：生態取捨比較~Eastern Scheldt Barrier: ecological-tradeoff comparison"
+  ],
+  "place": {
+    "name": "澤蘭三角洲工程教育參照點~Zeeland Delta Works educational reference",
+    "country": "荷蘭~Netherlands",
+    "lat": 51.631,
+    "lng": 3.705,
+    "query": "Delta Works Neeltje Jans Netherlands"
+  },
+  "sources": [
+    {
+      "key": "rws-delta",
+      "title": "三角洲工程官方總覽",
+      "titleEn": "The Delta Works",
+      "publisher": "Rijkswaterstaat",
+      "url": "https://www.rijkswaterstaat.nl/water/waterbeheer/bescherming-tegen-het-water/waterkeringen/deltawerken",
+      "sourceType": "primary",
+      "scope": "一九五三洪災後十三項工程的歷史與系統背景。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "delta-adapt",
+      "title": "三角洲調適管理",
+      "titleEn": "Adaptive delta management",
+      "publisher": "Delta Programme Commissioner",
+      "url": "https://english.deltaprogramma.nl/delta-programme/what-is-the-delta-programme/adaptive-delta-management",
+      "sourceType": "primary",
+      "scope": "分期調適、長期情境與定期評估的官方方法背景。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "rws-first",
+      "title": "荷蘭艾瑟爾防潮閘六十五周年",
+      "titleEn": "Hollandsche IJssel Barrier turns sixty-five",
+      "publisher": "Rijkswaterstaat",
+      "url": "https://www.rijkswaterstaat.nl/nieuws/archief/2023/10/hollandsche-ijsselkering-bestaat-65-jaar",
+      "sourceType": "primary",
+      "scope": "一九五八年十月二十二日首項三角洲工程啟用。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "usace-steel",
+      "title": "水工鋼結構設計手冊",
+      "titleEn": "Design of Hydraulic Steel Structures, EM 1110-2-2107",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Users/182/86/2486/EM%201110-2-2107.pdf",
+      "sourceType": "primary",
+      "scope": "二〇二二年官方水工鋼結構設計指引；一般技術背景，非地標的適用法規。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    },
+    {
+      "key": "usace-mechanical",
+      "title": "土木工程機電設計手冊",
+      "titleEn": "Mechanical and Electrical Design for Civil Works Structures, EM 1110-2-2610",
+      "publisher": "US Army Corps of Engineers",
+      "url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM%201110-2-2610_FINAL_18Mar2025.pdf",
+      "sourceType": "primary",
+      "scope": "二〇二五年官方機電設計手冊書目與一般功能背景；非任何地標操作程序。",
+      "scopeEn": "Primary public background for the stated topic; original classroom calculations are not project measurements."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Rijkswaterstaat",
+      "nameEn": "Rijkswaterstaat",
+      "business": "提供相關水工建設、設備或工程技術資料的機構。",
+      "businessEn": "Organization providing relevant hydraulic infrastructure, equipment or engineering information.",
+      "url": "https://www.rijkswaterstaat.nl/water/waterbeheer/bescherming-tegen-het-water/waterkeringen/deltawerken",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作工程教育參照；不據此推定其他地標的承包關係。",
+      "roleEn": "Its public information is used for engineering education; no contractor relationship with other landmarks is inferred."
+    },
+    {
+      "name": "Delta Programme Commissioner",
+      "nameEn": "Delta Programme Commissioner",
+      "business": "提供相關水工建設、設備或工程技術資料的機構。",
+      "businessEn": "Organization providing relevant hydraulic infrastructure, equipment or engineering information.",
+      "url": "https://english.deltaprogramma.nl/delta-programme/what-is-the-delta-programme/adaptive-delta-management",
+      "investorUrl": "",
+      "security": null,
+      "role": "本課引用其公開資料作工程教育參照；不據此推定其他地標的承包關係。",
+      "roleEn": "Its public information is used for engineering education; no contractor relationship with other landmarks is inferred."
+    }
+  ],
+  "related": [
+    "b229",
+    "b231"
+  ],
+  "architectureNodes": [
+    [
+      "重現期與壽命風險",
+      "Return period and lifetime risk"
+    ],
+    [
+      "暴潮共同原因相關",
+      "Common storm dependence"
+    ],
+    [
+      "沿岸砂量收支",
+      "Coastal sediment budget"
+    ],
+    [
+      "維護組合與風險降低",
+      "Maintenance portfolio and risk reduction"
+    ],
+    [
+      "多目標權重敏感度",
+      "Multi-objective weight sensitivity"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

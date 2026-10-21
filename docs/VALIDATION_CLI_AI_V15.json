@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-21",
+  "status": "PASS",
+  "scope": "V15 CLI, AI adapter and HTTP route contracts, local RAG, translation, model integrity, private export and local Git dry-run regression. Course/offline rebuild validation is recorded separately.",
+  "environment": {
+    "os": "Linux",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "bash": "GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)"
+  },
+  "totals": {
+    "pythonTests": 46,
+    "pythonPassed": 46,
+    "nodeScripts": 7,
+    "nodePassed": 7,
+    "shellSyntaxScripts": 6,
+    "shellSyntaxPassed": 6
+  },
+  "commands": [
+    {
+      "command": "python -m unittest tests.test_macgyver_shell tests.test_launcher tests.test_ai_adapter tests.test_ai_routes tests.test_knowledge tests.test_model_download tests.test_models_sync tests.test_sync_v14 tests.test_github_export -v",
+      "exitCode": 0,
+      "result": "45 tests PASS after fixture correction; rerun completed in4.559s.",
+      "coverage": [
+        "Interpreter priority: MACGYVER_PYTHON, Conda path with spaces, PATH; Python3.9 rejected; no empty command or upload after missing interpreter.",
+        "Busy default local port advances without terminating other programs; explicitly requested busy port fails.",
+        "Claude native Messages, Gemini structured output without deprecated sampling keys, Ollama CPU image contract, bounded image containers, private error suppression, server-held keys.",
+        "Cloud consent checked before document retrieval/provider dispatch; unknown/text-only routes rejected; ordered nonempty translation output validation; long JSON not truncated.",
+        "Local Chinese/English document indexing, retrieval and reload; empty import preserves prior index; malformed shapes fail closed.",
+        "Tiny mocked model downloads check Range continuation, ignored-Range restart, complete SHA256, tamper rejection and reuse without network.",
+        "Local bare Git model chunks reused, stale MacGyver chunks pruned, HuaTuo path unchanged, restored bytes match source; private confirmation required.",
+        "Site push failures retry four times without force, empty remote recovers on rerun, owner-added remote content retained, managed deletion and idempotence checked.",
+        "Protected export rebuild strips owner sentinel from all lazy/offline payloads and fails closed without Node.",
+        "Export excludes secrets, local documents, databases and weights; credential/oversize/symlink/unknown-output boundaries; export dry-run creates no output or Git state."
+      ]
+    },
+    {
+      "command": "python -m unittest tests.test_cli_dry_run_v15 -v",
+      "exitCode": 0,
+      "result": "1 test PASS in27.709s.",
+      "coverage": [
+        "Actual bash macgyver.sh doctor and bash upload-all.sh --dry-run --skip-models --skip-data against a local bare Git repository.",
+        "GIT_ALLOW_PROTOCOL=file forbids external transports; a Git wrapper rejects any push after fixture seeding.",
+        "Remote references unchanged; owner-added.txt preserved; no model files downloaded; offline-build/app.bundle/markets/fx hashes unchanged."
+      ]
+    },
+    {
+      "command": "node tools/test-hosted-ai.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "node tools/test-translation-v14.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "node tools/test-locale.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "node tools/test-ai-accounts.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "node tools/test-tutor-panel.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "node tools/test-tutor-history.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "node tools/test-tutor-vision.mjs",
+      "exitCode": 0,
+      "result": "PASS; provider/runtime/DOM fixtures, no live service credentials."
+    },
+    {
+      "command": "for script in macgyver.sh upload-all.sh run-local.sh run-ai-local.sh run-ai-cloud.sh publish-github.sh; do bash -n \"$script\" || exit; done",
+      "exitCode": 0,
+      "result": "All6 Bash entrypoints parse successfully."
+    }
+  ],
+  "issuesResolved": [
+    {
+      "type": "test fixture",
+      "file": "tests/test_sync_v14.py",
+      "initialResult": "44/45 PASS; isolated protected-export fixture omitted public/academy/lazy-index-codec.js required by the V15 bundler.",
+      "change": "Copy the real codec into the isolated fixture. Product export already copies all public JavaScript modules.",
+      "verification": "Targeted test PASS, then full45-test selection PASS. No product limits weakened."
+    },
+    {
+      "type": "test environment",
+      "initialResult": "test-hosted-ai.mjs could not import the absent declared typescript dependency.",
+      "change": "Installed exact typescript5.9.3 with --ignore-scripts in an isolated temporary prefix and temporarily linked only that package for the test.",
+      "verification": "Hosted AI test PASS; temporary repository symlink removed. package.json and lockfiles unchanged."
+    }
+  ],
+  "newRegression": "tests/test_cli_dry_run_v15.py",
+  "limitations": [
+    "No actual OpenAI, Anthropic/Claude or Gemini API request was made; no API credentials were available or required. Provider requests/responses were mocked.",
+    "Ollama and browser CPU runtime contracts used controlled fixtures; no large language model was downloaded or benchmarked, and no real inference-quality claim is made.",
+    "No live GitHub push or external deployment occurred. All push/restore/retry checks used temporary local bare repositories and small synthetic weights, not multi-gigabyte production transfers.",
+    "Tests ran on Linux with Bash/Python/Node. They are not physical Mac Intel, Apple Silicon, Windows, phone or tablet device tests. Conda spaces and interpreter selection used executable fixtures.",
+    "Locale tests cover language negotiation, RTL logic, canonical text/cache/fallback/order/privacy contracts using controlled DOM fixtures. They do not establish human-reviewed accuracy for79 languages or real-browser typography.",
+    "The source curriculum was still being integrated during these software tests; course counts, final offline bundle, workbench and clean-rebuild validation belong to root’s separate final report."
+  ],
+  "fileSha256": {
+    "macgyver.sh": "bd36e479080462c983d3d3a9b49a65da6d9a4781292c1c7eb6803c221b381ecc",
+    "upload-all.sh": "eff424f984d9a68d0ed59c38a49831a3c112f4b0553d5ab67c8786a21c4f0e9e",
+    "run-local.sh": "16e7a7c5e1143a220207aa8821da6f0b24e44f2a207a9b269d3318a6fcae4d9b",
+    "run-ai-local.sh": "ae802307c5fd0b3b5de4a0e026534a337d1463db2a1115030afeb2c2a60cd8d4",
+    "run-ai-cloud.sh": "75f7683fac87bbd8f2720497e15fba007135ba969355e2437dece62193e94800",
+    "publish-github.sh": "74a5d256539bff713da7eec933d343372f391104739e5356db78af945a6dc627",
+    "tools/test-hosted-ai.mjs": "19c5eddac19cd29911ea8a4680280445f2946241959d89f55a724e713733b8f8",
+    "tools/test-translation-v14.mjs": "92b5077920a28c5a21157b9d598525a15b6cca5363050257ab72042596b6db95",
+    "tools/test-locale.mjs": "74c0ee10fc788936d4fadc1cc1bd68d4393af2d847369ae08096991125a78cea",
+    "tools/test-ai-accounts.mjs": "51e3a80256bb9d71e8bcce5d3c4101570a717c1595b8e44cd5895fa11abfed21",
+    "tools/test-tutor-panel.mjs": "4143a6e8c16bfe863cf4a5fe2501b26423190f757ffeb9addb6dedf55cae0441",
+    "tools/test-tutor-history.mjs": "817a160206460cd450580da92d9ad3d46249aae4e8de6d27a5a31d32d645fd2f",
+    "tools/test-tutor-vision.mjs": "91b5bfab26922f2860a4cd71eac2f122ac35129afe7bae269428a9e945dcb8e3",
+    "tests/test_sync_v14.py": "e34252d6bb7627f6451fd563cb94b62082ce3317420109ef6780e58b2eacb61a",
+    "tests/test_cli_dry_run_v15.py": "d3b54ad8f09b33a4cbf9ef1204e483bd5df97621752400930c7370d45d2da057",
+    "tests/test_macgyver_shell.py": "d8347fd2bde155669019c34bbe9b078117e145a72fddedad8bfbca89deed71a7",
+    "tests/test_launcher.py": "3163a77b013256dbd7ad46339e202c05f9c73eb9813559b9b00a96e8b4dff5a0",
+    "tests/test_ai_adapter.py": "06312bb53008225f3d48ed592f5f5b62bc8a82d95a3bcd7a340a635961ba4806",
+    "tests/test_ai_routes.py": "4404b0f98e0053d9d633462a79b323f13b2e885b73b8cffc43d49b990a22bea8",
+    "tests/test_knowledge.py": "ee3f3f5d570b5044f46dff76e8f3532a18ac39f89c85a83cd06166c2be224678",
+    "tests/test_model_download.py": "daa3130f7f7c780f34670f8c0c4abe771190637c590aab9ba6e9bef6f582c75a",
+    "tests/test_models_sync.py": "647112f1071e1457fa2f9ddb892991f2dada80e23e160f4c556740b5892e316d",
+    "tests/test_github_export.py": "0eae0cc51496243808778b060ab8ef87a28c1b43b051b861dfef773e2e7af3f7",
+    "tools/sync-v12/sync_github.py": "6910e1f28d7fe0a80e1656223f89c0a2c5eb80a2210a40149027b645d24b85ac",
+    "tools/sync-v13/models_sync.py": "9a502cdf86199eba05caf059d576e0d4d74819e40b75f9995caee81b1881b710",
+    "tools/export_github.py": "6fea969684cc4f4e339d129ca45adfd5e716a6316087a6b91bc50d2961929b04",
+    "lib/tutor-providers.ts": "0c3495f37050285dd457180939f60dcbb59ba925c4a1263623cc07f35a43ec95",
+    "public/academy/ai-client.js": "92854574c96e5c81e12e2c163fdcebf82744c2eb27cb364f9d66383770d7a091",
+    "public/academy/locale.js": "d7b3bca8c5343b21796f8eb1d1ac2496cb707bf1a197738217ebd571d2e17803",
+    "public/academy/tutor-panel.js": "b92d039d9f9ccaf2e4bc39958f71d87fa32ae7b6577251eeb935010a0b016e0f"
+  }
+}
