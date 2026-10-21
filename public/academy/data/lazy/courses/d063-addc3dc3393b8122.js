@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d063-addc3dc3393b8122.json"]={sha256:"addc3dc3393b812221f47080b0898556fd9f84ff6bc9262b7ed6191a3e830190",value:{"id":"d063","title":"熔鹽儲熱槽保溫與監測","titleEn":"Molten Salt Thermal Storage Insulation and Monitoring","category":"energy","kind":"craft","summary":"「熔鹽儲熱槽保溫與監測」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Molten Salt Thermal Storage Insulation and Monitoring: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

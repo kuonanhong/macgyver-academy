@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d439-4e44c2f3ccf98178.json"]={sha256:"4e44c2f3ccf981781e57e6641e15482671caa369bededed3477c2e09c28c88bd",value:{"id":"d439","title":"APS先進光子源","titleEn":"Advanced Photon Source APS","category":"megascience","kind":"project","summary":"「APS先進光子源」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Advanced Photon Source APS: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

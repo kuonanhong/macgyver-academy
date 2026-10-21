@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c412-26102177d606bebe.json"]={sha256:"26102177d606bebe1464de0520a6ab2a392e2394c0672ad45c90f96e6789ab81",value:{"title":"Boston Dynamics Spot 巡檢平台","titleEn":"Boston Dynamics Spot inspection platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：足式移動與感測載荷。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: legged mobility and sensing payloads. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c412"}};

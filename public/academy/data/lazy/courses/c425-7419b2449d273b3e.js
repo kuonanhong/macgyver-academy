@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c425-7419b2449d273b3e.json"]={sha256:"7419b2449d273b3ef9d96e9cea760f436a6aee6c56751f038c581ad17c4d04b1",value:{"title":"EOS M 290 金屬增材平台","titleEn":"EOS M 290 metal additive platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：粉床熔融與品質追溯。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: powder-bed fusion and quality traceability. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c425"}};

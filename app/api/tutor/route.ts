@@ -1,4 +1,4 @@
-import { aiRoutes, body, boundedText, completion, hostedGemini, enforceAiLimit, failure, HttpError, json, TUTOR_POLICY, userRequired } from "@/lib/backend";
+import { aiRoutes, body, boundedText, completion, hostedGemini, hostedClaude, enforceAiLimit, failure, HttpError, json, TUTOR_POLICY, userRequired } from "@/lib/backend";
 import { validateTutorImage, tutorHistory } from '@/lib/tutor-providers';
 export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     if(image && !route.supportsImages)throw new HttpError(400, 'This route accepts text only. Select a vision route.');
     await enforceAiLimit(user.userId);
     const prompt=JSON.stringify({language,question,reference_context:context,conversation_history:history});
-    const result = route.id==='gemini'?await hostedGemini(TUTOR_POLICY,prompt,image):await completion(TUTOR_POLICY,prompt);
+    const result = route.id==='gemini'?await hostedGemini(TUTOR_POLICY,prompt,image):route.id==='claude'?await hostedClaude(TUTOR_POLICY,prompt,image):await completion(TUTOR_POLICY,prompt);
     return json({ ...result, generated: true, route:route.id });
   } catch (e) { return failure(e); }
 }

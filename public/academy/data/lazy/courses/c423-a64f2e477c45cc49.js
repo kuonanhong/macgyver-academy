@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c423-a64f2e477c45cc49.json"]={sha256:"a64f2e477c45cc4922bb0e424457c9cef3ac36e3bb945839833fadbe611c0242",value:{"title":"FANUC ROBODRILL 鑽銑平台","titleEn":"FANUC ROBODRILL machining platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：高速換刀與加工節拍。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: rapid tool changes and machining cycles. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c423"}};

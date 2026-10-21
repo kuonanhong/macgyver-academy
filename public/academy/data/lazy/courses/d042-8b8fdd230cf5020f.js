@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d042-8b8fdd230cf5020f.json"]={sha256:"8b8fdd230cf5020f870d2ee3349f6d7e9bc722beea9e5a50966311f0e5bf11f8",value:{"id":"d042","title":"蘭斯潮汐發電站","titleEn":"La Rance Tidal Power Station","category":"energy","kind":"project","summary":"「蘭斯潮汐發電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for La Rance Tidal Power Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

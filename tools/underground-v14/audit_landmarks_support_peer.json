@@ -1,0 +1,2372 @@
+{
+  "reviewed": "2026-10-21",
+  "reviewer": "courses_support independent peer",
+  "scope": {
+    "courseIds": [
+      "hsuehshan",
+      "b102",
+      "b103",
+      "b104",
+      "b105",
+      "b106",
+      "b107",
+      "b108",
+      "b109",
+      "b110",
+      "b111",
+      "b112",
+      "b113",
+      "b114",
+      "b115",
+      "b116",
+      "b117",
+      "b118",
+      "b119",
+      "b120",
+      "b121",
+      "b122",
+      "b123",
+      "b124",
+      "b125"
+    ],
+    "models": 250,
+    "baseRecalculations": 250,
+    "sensitivityRecalculations": 250,
+    "displayComparisons": 250,
+    "physics": "All 39 implemented formula types read; all 250 kind/context allocations read; immersed-box, water-route, storage and head-direction mechanisms separately inspected.",
+    "limitations": "No source-project design acceptance certified. Public project-source scope rechecked for seven high-risk dimension boundaries; remaining historical metadata relies on separate metadata review."
+  },
+  "errors": [],
+  "issues": [
+    {
+      "id": "P1",
+      "severity": "clarification",
+      "scope": "all stress models",
+      "issue": "3*gamma*H is maximum tangential compression for the specified vertical uniaxial remote load, not stress at every wall position.",
+      "disposition": "Resolved: author rebuilt every stress model with sigma_theta,max, vertical loading, zero horizontal remote stress and sidewall maximum; peer rechecked final inputs."
+    },
+    {
+      "id": "P2",
+      "severity": "pedagogical",
+      "scope": "b125 unit 3",
+      "issue": "Hypothetical cover of 1220 m is explicit but remote from JTC project depth; a 120 m exercise is more context appropriate.",
+      "disposition": "Resolved: author changed hypothetical cover to 120 m and regenerated inputs/trace; peer recalculated 9.36 MPa maximum stress and +10 percent sensitivity 10.296 MPa."
+    }
+  ],
+  "sourceBoundaryChecks": [
+    {
+      "course": "b108",
+      "claim": "1387 m immersed portion, not the 76.3 km rail corridor",
+      "url": "https://holding.gama.com.tr/tr/proje/10273/"
+    },
+    {
+      "course": "b110",
+      "claim": "15.1 km whole Aqua-Line road; 1997-12 documented contract completion",
+      "url": "https://www.obayashi.co.jp/chronicle/works/d055.html"
+    },
+    {
+      "course": "b116",
+      "claim": "55 km base tunnel; 64 km connected underground route",
+      "url": "https://www.bbt-se.com/en/brenner-base-tunnel/project-overview/"
+    },
+    {
+      "course": "b117",
+      "claim": "6.5 km TBM middle drive within 16.5 km conveyance scope; June 2002 drive breakthrough",
+      "url": "https://service.taipower.com.tw/Collection/2009/2025/8709/"
+    },
+    {
+      "course": "b119",
+      "claim": "7 km rounded tunnel section, not immersed-only assertion",
+      "url": "https://www.hzmb.gov.hk/en/main-bridge.html"
+    },
+    {
+      "course": "b124",
+      "claim": "6300 m tunnel waterway",
+      "url": "https://www.ktr.mlit.go.jp/edogawa/study/sora/gaikaku/detail/zentai04.html"
+    },
+    {
+      "course": "b125",
+      "claim": "1.47 million m3 storage; 150 m below ground is separate from teaching head/cover",
+      "url": "https://www.jtc.gov.sg/find-space/jurong-rock-caverns"
+    }
+  ],
+  "checks": [
+    {
+      "courseId": "hsuehshan",
+      "unit": 1,
+      "kind": "darcy",
+      "base": 0.00039999999999999996,
+      "sensitivity": 0.00044,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 2,
+      "kind": "head",
+      "base": 304.11,
+      "sensitivity": 334.521,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 3,
+      "kind": "stress",
+      "base": 39.0,
+      "sensitivity": 42.9,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 4,
+      "kind": "spring",
+      "base": 240,
+      "sensitivity": 264.0,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 5,
+      "kind": "advance",
+      "base": 11.16,
+      "sensitivity": 12.276000000000002,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 6,
+      "kind": "logistics",
+      "base": 137.14285714285714,
+      "sensitivity": 124.67532467532466,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.037815467126543816,
+      "sensitivity": 0.04159701383919819,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 8,
+      "kind": "friction",
+      "base": 25.668750000000003,
+      "sensitivity": 31.059187500000004,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 9,
+      "kind": "sump",
+      "base": 25.0,
+      "sensitivity": 22.727272727272723,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "hsuehshan",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.0,
+      "sensitivity": 82.4,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 1,
+      "kind": "head",
+      "base": 333.54,
+      "sensitivity": 366.89400000000006,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 2,
+      "kind": "ring",
+      "base": 2.8342857142857145,
+      "sensitivity": 3.1177142857142863,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 3,
+      "kind": "joint",
+      "base": 13.6,
+      "sensitivity": 13.26,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 4,
+      "kind": "logistics",
+      "base": 152.72727272727272,
+      "sensitivity": 138.84297520661156,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 5,
+      "kind": "heat",
+      "base": 1186.7039999999997,
+      "sensitivity": 1305.3743999999997,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 6,
+      "kind": "dynamic",
+      "base": 1008.5999999999999,
+      "sensitivity": 1220.4060000000002,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 7,
+      "kind": "escape",
+      "base": 482.0,
+      "sensitivity": 522.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 8,
+      "kind": "sump",
+      "base": 28.07017543859649,
+      "sensitivity": 25.51834130781499,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.00012099999999999999,
+      "sensitivity": 0.00014641,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b102",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.15841584158416,
+      "sensitivity": 82.57425742574257,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 1,
+      "kind": "grade",
+      "base": 1216.44,
+      "sensitivity": 1338.0840000000003,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 2,
+      "kind": "stress",
+      "base": 43.68,
+      "sensitivity": 48.048,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 3,
+      "kind": "spring",
+      "base": 224,
+      "sensitivity": 246.40000000000003,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 4,
+      "kind": "ring",
+      "base": 3.2057142857142855,
+      "sensitivity": 3.5262857142857142,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 5,
+      "kind": "advance",
+      "base": 11.6064,
+      "sensitivity": 12.767040000000001,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 6,
+      "kind": "logistics",
+      "base": 150.85714285714286,
+      "sensitivity": 137.14285714285714,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.04084070449666732,
+      "sensitivity": 0.044924774946334046,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 8,
+      "kind": "heat",
+      "base": 1519.5599999999997,
+      "sensitivity": 1671.5159999999998,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 9,
+      "kind": "dynamic",
+      "base": 1058.3999999999999,
+      "sensitivity": 1280.664,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b103",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.31372549019608,
+      "sensitivity": 82.74509803921569,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 1,
+      "kind": "time",
+      "base": 13.2,
+      "sensitivity": 14.52,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 2,
+      "kind": "headway",
+      "base": 3.5294117647058822,
+      "sensitivity": 3.2432432432432434,
+      "units": "trains/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 3,
+      "kind": "grade",
+      "base": 1334.9448,
+      "sensitivity": 1468.4392800000003,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 4,
+      "kind": "head",
+      "base": 441.45000000000005,
+      "sensitivity": 485.5950000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 5,
+      "kind": "spring",
+      "base": 297,
+      "sensitivity": 326.7,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 6,
+      "kind": "logistics",
+      "base": 157.7142857142857,
+      "sensitivity": 143.37662337662337,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.04235332318172907,
+      "sensitivity": 0.046588655499901974,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 8,
+      "kind": "friction",
+      "base": 31.82925,
+      "sensitivity": 38.5133925,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 9,
+      "kind": "escape",
+      "base": 536.0,
+      "sensitivity": 581.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b104",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.46601941747574,
+      "sensitivity": 82.9126213592233,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 1,
+      "kind": "time",
+      "base": 13.6,
+      "sensitivity": 14.96,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 2,
+      "kind": "grade",
+      "base": 1305.9071999999999,
+      "sensitivity": 1436.4979200000002,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 3,
+      "kind": "darcy",
+      "base": 0.00264,
+      "sensitivity": 0.0029040000000000003,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 4,
+      "kind": "advance",
+      "base": 11.4696,
+      "sensitivity": 12.616560000000003,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 5,
+      "kind": "logistics",
+      "base": 169.41176470588235,
+      "sensitivity": 154.01069518716577,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 6,
+      "kind": "angle",
+      "base": 0.04217879025652963,
+      "sensitivity": 0.04639666928218259,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 7,
+      "kind": "dynamic",
+      "base": 1161.6,
+      "sensitivity": 1405.5360000000003,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 8,
+      "kind": "escape",
+      "base": 513.0,
+      "sensitivity": 555.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.00019600000000000002,
+      "sensitivity": 0.00023716000000000007,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b105",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.61538461538461,
+      "sensitivity": 83.07692307692307,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 1,
+      "kind": "time",
+      "base": 14.0,
+      "sensitivity": 15.400000000000002,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.0005250000000000001,
+      "sensitivity": 0.0005775000000000001,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 3,
+      "kind": "head",
+      "base": 510.12,
+      "sensitivity": 561.1320000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 4,
+      "kind": "flowreduction",
+      "base": 73.07692307692308,
+      "sensitivity": 70.38461538461537,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 5,
+      "kind": "spring",
+      "base": 315,
+      "sensitivity": 346.5,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 6,
+      "kind": "grade",
+      "base": 1530.36,
+      "sensitivity": 1683.3960000000004,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 7,
+      "kind": "dynamic",
+      "base": 1215.0,
+      "sensitivity": 1470.1500000000005,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 8,
+      "kind": "sump",
+      "base": 35.08771929824562,
+      "sensitivity": 31.897926634768737,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 9,
+      "kind": "escape",
+      "base": 540.0,
+      "sensitivity": 585.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b106",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.76190476190476,
+      "sensitivity": 83.23809523809524,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 1,
+      "kind": "time",
+      "base": 14.4,
+      "sensitivity": 15.84,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 2,
+      "kind": "beam",
+      "base": 32.248125,
+      "sensitivity": 39.02023125000001,
+      "units": "kN·m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 3,
+      "kind": "thermal",
+      "base": 6.500000000000001,
+      "sensitivity": 7.15,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 4,
+      "kind": "float",
+      "base": 3378.564,
+      "sensitivity": 14640.44400000002,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 5,
+      "kind": "settle",
+      "base": 0.04285714285714286,
+      "sensitivity": 0.047142857142857146,
+      "units": "mm/m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 6,
+      "kind": "joint",
+      "base": 14.0,
+      "sensitivity": 13.6,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.04689117923691433,
+      "sensitivity": 0.051580297160605755,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 8,
+      "kind": "diffusion",
+      "base": 40.1177965496611,
+      "sensitivity": 42.07589999037454,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 9,
+      "kind": "escape",
+      "base": 542.0,
+      "sensitivity": 587.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b107",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 84.90566037735849,
+      "sensitivity": 83.39622641509433,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 1,
+      "kind": "time",
+      "base": 14.8,
+      "sensitivity": 16.28,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 2,
+      "kind": "float",
+      "base": 3438.8955,
+      "sensitivity": 14901.88050000002,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 3,
+      "kind": "beam",
+      "base": 36.75375,
+      "sensitivity": 44.4720375,
+      "units": "kN·m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 4,
+      "kind": "settle",
+      "base": 0.05384615384615385,
+      "sensitivity": 0.05923076923076924,
+      "units": "mm/m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 5,
+      "kind": "joint",
+      "base": 15.2,
+      "sensitivity": 14.82,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 6,
+      "kind": "angle",
+      "base": 0.04654211338651546,
+      "sensitivity": 0.051196324725167,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 7,
+      "kind": "grade",
+      "base": 1630.0296,
+      "sensitivity": 1793.0325600000003,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 8,
+      "kind": "dynamic",
+      "base": 1325.3999999999999,
+      "sensitivity": 1603.7340000000002,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 9,
+      "kind": "escape",
+      "base": 544.0,
+      "sensitivity": 589.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b108",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.04672897196262,
+      "sensitivity": 83.55140186915888,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 1,
+      "kind": "time",
+      "base": 15.199999999999998,
+      "sensitivity": 16.72,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 2,
+      "kind": "head",
+      "base": 618.0300000000001,
+      "sensitivity": 679.8330000000002,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 3,
+      "kind": "advance",
+      "base": 11.6928,
+      "sensitivity": 12.862080000000002,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 4,
+      "kind": "ring",
+      "base": 4.337142857142857,
+      "sensitivity": 4.770857142857143,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 5,
+      "kind": "beam",
+      "base": 45.36,
+      "sensitivity": 54.88560000000001,
+      "units": "kN·m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 6,
+      "kind": "joint",
+      "base": 12.0,
+      "sensitivity": 11.6,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 7,
+      "kind": "friction",
+      "base": 39.852,
+      "sensitivity": 48.22092000000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 8,
+      "kind": "lighting",
+      "base": 8.250592249883855,
+      "sensitivity": 9.075651474872242,
+      "units": "cd/m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 9,
+      "kind": "escape",
+      "base": 546.0,
+      "sensitivity": 591.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b109",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.18518518518519,
+      "sensitivity": 83.7037037037037,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 1,
+      "kind": "time",
+      "base": 15.600000000000001,
+      "sensitivity": 17.16,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 2,
+      "kind": "head",
+      "base": 657.27,
+      "sensitivity": 722.9970000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 3,
+      "kind": "advance",
+      "base": 11.894400000000001,
+      "sensitivity": 13.083840000000002,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 4,
+      "kind": "void",
+      "base": 5.803307029343726,
+      "sensitivity": 6.383637732278099,
+      "units": "m³",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 5,
+      "kind": "ring",
+      "base": 4.662857142857143,
+      "sensitivity": 5.129142857142858,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 6,
+      "kind": "joint",
+      "base": 13.0,
+      "sensitivity": 12.6,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.051429035292099586,
+      "sensitivity": 0.056571938821309536,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 8,
+      "kind": "settle",
+      "base": 0.029411764705882353,
+      "sensitivity": 0.03235294117647059,
+      "units": "mm/m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 9,
+      "kind": "friction",
+      "base": 46.569,
+      "sensitivity": 56.34848999999999,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b110",
+      "unit": 10,
+      "kind": "diffusion",
+      "base": 34.629305508485146,
+      "sensitivity": 36.319522023286595,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 1,
+      "kind": "time",
+      "base": 16.0,
+      "sensitivity": 17.6,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 2,
+      "kind": "stress",
+      "base": 62.4,
+      "sensitivity": 68.64000000000001,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 3,
+      "kind": "spring",
+      "base": 280,
+      "sensitivity": 308.00000000000006,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 4,
+      "kind": "lighting",
+      "base": 7.321127382227186,
+      "sensitivity": 8.053240120449905,
+      "units": "cd/m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 5,
+      "kind": "friction",
+      "base": 39.01499999999999,
+      "sensitivity": 47.20815000000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 6,
+      "kind": "head",
+      "base": 735.75,
+      "sensitivity": 809.325,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 7,
+      "kind": "logistics",
+      "base": 200.0,
+      "sensitivity": 181.8181818181818,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 8,
+      "kind": "escape",
+      "base": 525.0,
+      "sensitivity": 567.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.0004,
+      "sensitivity": 0.0004840000000000001,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b111",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.45454545454545,
+      "sensitivity": 84.0,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 1,
+      "kind": "time",
+      "base": 16.4,
+      "sensitivity": 18.04,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.001302,
+      "sensitivity": 0.0014322,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 3,
+      "kind": "stress",
+      "base": 64.74,
+      "sensitivity": 71.21400000000001,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 4,
+      "kind": "spring",
+      "base": 328,
+      "sensitivity": 360.8,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 5,
+      "kind": "head",
+      "base": 765.1800000000001,
+      "sensitivity": 841.6980000000002,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 6,
+      "kind": "logistics",
+      "base": 212.57142857142856,
+      "sensitivity": 193.24675324675323,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.05445427266222309,
+      "sensitivity": 0.05989969992844539,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 8,
+      "kind": "friction",
+      "base": 48.257250000000006,
+      "sensitivity": 58.39127250000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 9,
+      "kind": "escape",
+      "base": 552.0,
+      "sensitivity": 597.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b112",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.58558558558559,
+      "sensitivity": 84.14414414414415,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 1,
+      "kind": "time",
+      "base": 16.8,
+      "sensitivity": 18.480000000000004,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 2,
+      "kind": "friction",
+      "base": 35.316750000000006,
+      "sensitivity": 42.73326750000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 3,
+      "kind": "lighting",
+      "base": 7.282930195885131,
+      "sensitivity": 8.011223215473645,
+      "units": "cd/m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 4,
+      "kind": "thermal",
+      "base": 5.500000000000001,
+      "sensitivity": 6.050000000000002,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 5,
+      "kind": "head",
+      "base": 804.4200000000001,
+      "sensitivity": 884.8620000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 6,
+      "kind": "diffusion",
+      "base": 21.75692993048422,
+      "sensitivity": 22.81886062010985,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 7,
+      "kind": "ring",
+      "base": 5.554285714285715,
+      "sensitivity": 6.109714285714287,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 8,
+      "kind": "escape",
+      "base": 529.0,
+      "sensitivity": 571.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.00048399999999999995,
+      "sensitivity": 0.00058564,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b113",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.71428571428571,
+      "sensitivity": 84.28571428571428,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 1,
+      "kind": "time",
+      "base": 17.2,
+      "sensitivity": 18.92,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 2,
+      "kind": "friction",
+      "base": 36.758250000000004,
+      "sensitivity": 44.47748250000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 3,
+      "kind": "thermal",
+      "base": 5.750000000000001,
+      "sensitivity": 6.325,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 4,
+      "kind": "ring",
+      "base": 5.28,
+      "sensitivity": 5.808000000000001,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 5,
+      "kind": "lighting",
+      "base": 8.097803504515635,
+      "sensitivity": 8.9075838549672,
+      "units": "cd/m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 6,
+      "kind": "escape",
+      "base": 481.0,
+      "sensitivity": 518.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 7,
+      "kind": "reliability",
+      "base": 0.000529,
+      "sensitivity": 0.0006400900000000002,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 8,
+      "kind": "sump",
+      "base": 49.12280701754386,
+      "sensitivity": 44.65709728867623,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 9,
+      "kind": "logistics",
+      "base": 208.42105263157896,
+      "sensitivity": 189.4736842105263,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b114",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.84070796460176,
+      "sensitivity": 84.42477876106194,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 1,
+      "kind": "time",
+      "base": 17.6,
+      "sensitivity": 19.360000000000003,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.00357,
+      "sensitivity": 0.003927,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 3,
+      "kind": "stress",
+      "base": 71.76,
+      "sensitivity": 78.93600000000002,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 4,
+      "kind": "spring",
+      "base": 352,
+      "sensitivity": 387.20000000000005,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 5,
+      "kind": "ring",
+      "base": 5.634285714285715,
+      "sensitivity": 6.197714285714287,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 6,
+      "kind": "friction",
+      "base": 48.693749999999994,
+      "sensitivity": 58.91943750000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 7,
+      "kind": "lighting",
+      "base": 8.938141604040842,
+      "sensitivity": 9.831955764444928,
+      "units": "cd/m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 8,
+      "kind": "escape",
+      "base": 533.0,
+      "sensitivity": 575.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.000576,
+      "sensitivity": 0.0006969600000000002,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b115",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 85.96491228070175,
+      "sensitivity": 84.56140350877193,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 1,
+      "kind": "time",
+      "base": 18.0,
+      "sensitivity": 19.8,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.000735,
+      "sensitivity": 0.0008085000000000001,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 3,
+      "kind": "head",
+      "base": 902.5200000000001,
+      "sensitivity": 992.772,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 4,
+      "kind": "stress",
+      "base": 74.1,
+      "sensitivity": 81.51,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 5,
+      "kind": "spring",
+      "base": 405,
+      "sensitivity": 445.5,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 6,
+      "kind": "advance",
+      "base": 15.21,
+      "sensitivity": 16.731,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 7,
+      "kind": "logistics",
+      "base": 233.33333333333334,
+      "sensitivity": 212.12121212121212,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 8,
+      "kind": "angle",
+      "base": 0.06283185307179587,
+      "sensitivity": 0.06911503837897547,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 9,
+      "kind": "grade",
+      "base": 1942.38,
+      "sensitivity": 2136.618,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b116",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.08695652173913,
+      "sensitivity": 84.69565217391305,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 1,
+      "kind": "advection",
+      "base": 22.22222222222222,
+      "sensitivity": 24.444444444444446,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.0015119999999999999,
+      "sensitivity": 0.0016632,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 3,
+      "kind": "head",
+      "base": 941.76,
+      "sensitivity": 1035.9360000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 4,
+      "kind": "advance",
+      "base": 14.0184,
+      "sensitivity": 15.42024,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 5,
+      "kind": "spring",
+      "base": 414,
+      "sensitivity": 455.40000000000003,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 6,
+      "kind": "waterfriction",
+      "base": 1.8348623853211008,
+      "sensitivity": 2.2201834862385326,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 7,
+      "kind": "ring",
+      "base": 6.377142857142857,
+      "sensitivity": 7.014857142857144,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 8,
+      "kind": "angle",
+      "base": 0.06440264939859076,
+      "sensitivity": 0.07084291433844986,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 9,
+      "kind": "logistics",
+      "base": 227.3684210526316,
+      "sensitivity": 206.6985645933014,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b117",
+      "unit": 10,
+      "kind": "balance",
+      "base": 49,
+      "sensitivity": 63.80000000000001,
+      "units": "m³/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 1,
+      "kind": "time",
+      "base": 18.8,
+      "sensitivity": 20.680000000000003,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.002331,
+      "sensitivity": 0.0025641,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 3,
+      "kind": "head",
+      "base": 981.0,
+      "sensitivity": 1079.1000000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 4,
+      "kind": "spring",
+      "base": 376,
+      "sensitivity": 413.6,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 5,
+      "kind": "logistics",
+      "base": 261.1764705882353,
+      "sensitivity": 237.43315508021388,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 6,
+      "kind": "angle",
+      "base": 0.06108652381980154,
+      "sensitivity": 0.06719517620178168,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 7,
+      "kind": "beam",
+      "base": 70.34625,
+      "sensitivity": 85.1189625,
+      "units": "kN·m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 8,
+      "kind": "friction",
+      "base": 60.578250000000004,
+      "sensitivity": 73.2996825,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 9,
+      "kind": "escape",
+      "base": 564.0,
+      "sensitivity": 609.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b118",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.32478632478633,
+      "sensitivity": 84.95726495726495,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 1,
+      "kind": "time",
+      "base": 19.2,
+      "sensitivity": 21.12,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 2,
+      "kind": "beam",
+      "base": 47.131874999999994,
+      "sensitivity": 57.02956875000001,
+      "units": "kN·m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 3,
+      "kind": "float",
+      "base": 4102.542,
+      "sensitivity": 17777.68200000002,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 4,
+      "kind": "settle",
+      "base": 0.046153846153846156,
+      "sensitivity": 0.050769230769230775,
+      "units": "mm/m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 5,
+      "kind": "joint",
+      "base": 14.2,
+      "sensitivity": 13.82,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 6,
+      "kind": "angle",
+      "base": 0.06254096486313016,
+      "sensitivity": 0.06879506134944316,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 7,
+      "kind": "thermal",
+      "base": 7.000000000000001,
+      "sensitivity": 7.700000000000002,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 8,
+      "kind": "diffusion",
+      "base": 40.1177965496611,
+      "sensitivity": 42.07589999037454,
+      "units": "mm",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 9,
+      "kind": "friction",
+      "base": 66.063,
+      "sensitivity": 79.93623,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b119",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.4406779661017,
+      "sensitivity": 85.08474576271186,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 1,
+      "kind": "time",
+      "base": 19.6,
+      "sensitivity": 21.560000000000002,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.004095,
+      "sensitivity": 0.0045045,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 3,
+      "kind": "head",
+      "base": 1059.48,
+      "sensitivity": 1165.428,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 4,
+      "kind": "advance",
+      "base": 14.655599999999998,
+      "sensitivity": 16.12116,
+      "units": "m/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 5,
+      "kind": "void",
+      "base": 6.086050368166806,
+      "sensitivity": 6.694655404983486,
+      "units": "m³",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 6,
+      "kind": "ring",
+      "base": 6.799999999999999,
+      "sensitivity": 7.48,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 7,
+      "kind": "angle",
+      "base": 0.06655522214271711,
+      "sensitivity": 0.07321074435698881,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 8,
+      "kind": "dynamic",
+      "base": 2088.6,
+      "sensitivity": 2527.2060000000006,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 9,
+      "kind": "escape",
+      "base": 568.0,
+      "sensitivity": 613.0,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b120",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.5546218487395,
+      "sensitivity": 85.21008403361344,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 1,
+      "kind": "time",
+      "base": 20.0,
+      "sensitivity": 22.0,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 2,
+      "kind": "darcy",
+      "base": 0.0008399999999999999,
+      "sensitivity": 0.0009240000000000001,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 3,
+      "kind": "spring",
+      "base": 350,
+      "sensitivity": 385.00000000000006,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 4,
+      "kind": "rate",
+      "base": 4.242424242424242,
+      "sensitivity": 4.666666666666668,
+      "units": "mm/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 5,
+      "kind": "head",
+      "base": 1118.3400000000001,
+      "sensitivity": 1230.1740000000002,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 6,
+      "kind": "friction",
+      "base": 59.71875,
+      "sensitivity": 72.25968750000001,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 7,
+      "kind": "logistics",
+      "base": 266.6666666666667,
+      "sensitivity": 242.4242424242424,
+      "units": "t/h",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 8,
+      "kind": "angle",
+      "base": 0.07068583470577035,
+      "sensitivity": 0.0777544181763474,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 9,
+      "kind": "grade",
+      "base": 2071.872,
+      "sensitivity": 2279.0592,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b121",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.66666666666667,
+      "sensitivity": 85.33333333333333,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 1,
+      "kind": "time",
+      "base": 20.4,
+      "sensitivity": 22.44,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 2,
+      "kind": "stress",
+      "base": 88.14,
+      "sensitivity": 96.954,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 3,
+      "kind": "darcy",
+      "base": 0.001804,
+      "sensitivity": 0.0019844000000000003,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 4,
+      "kind": "head",
+      "base": 1147.77,
+      "sensitivity": 1262.5470000000003,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 5,
+      "kind": "friction",
+      "base": 58.088999999999984,
+      "sensitivity": 70.28769,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 6,
+      "kind": "lighting",
+      "base": 9.708451528605616,
+      "sensitivity": 10.679296681466178,
+      "units": "cd/m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 7,
+      "kind": "spring",
+      "base": 561,
+      "sensitivity": 617.1,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 8,
+      "kind": "escape",
+      "base": 547.0,
+      "sensitivity": 589.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.0009609999999999999,
+      "sensitivity": 0.0011628100000000004,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b122",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.77685950413223,
+      "sensitivity": 85.45454545454545,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 1,
+      "kind": "time",
+      "base": 20.8,
+      "sensitivity": 22.880000000000003,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 2,
+      "kind": "head",
+      "base": 1167.39,
+      "sensitivity": 1284.1290000000001,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 3,
+      "kind": "darcy",
+      "base": 0.002772,
+      "sensitivity": 0.0030492000000000006,
+      "units": "m³/s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 4,
+      "kind": "flowreduction",
+      "base": 68.29268292682927,
+      "sensitivity": 65.1219512195122,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 5,
+      "kind": "spring",
+      "base": 468,
+      "sensitivity": 514.8000000000001,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 6,
+      "kind": "ring",
+      "base": 7.4,
+      "sensitivity": 8.14,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 7,
+      "kind": "sump",
+      "base": 68.51851851851852,
+      "sensitivity": 62.28956228956229,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 8,
+      "kind": "reliability",
+      "base": 0.001024,
+      "sensitivity": 0.00123904,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 9,
+      "kind": "friction",
+      "base": 74.72699999999999,
+      "sensitivity": 90.41966999999998,
+      "units": "Pa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b123",
+      "unit": 10,
+      "kind": "escape",
+      "base": 599.0,
+      "sensitivity": 646.5,
+      "units": "s",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 1,
+      "kind": "advection",
+      "base": 26.11111111111111,
+      "sensitivity": 28.72222222222222,
+      "units": "min",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 2,
+      "kind": "storage",
+      "base": 87600,
+      "sensitivity": 108360.00000000001,
+      "units": "m³",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 3,
+      "kind": "waterfriction",
+      "base": 2.1916411824668702,
+      "sensitivity": 2.651885830784914,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 4,
+      "kind": "hydropower",
+      "base": 5886.0,
+      "sensitivity": 6474.6,
+      "units": "kW",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 5,
+      "kind": "beam",
+      "base": 69.66000000000001,
+      "sensitivity": 84.28860000000002,
+      "units": "kN·m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 6,
+      "kind": "head",
+      "base": 1245.8700000000003,
+      "sensitivity": 1370.4570000000003,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 7,
+      "kind": "ring",
+      "base": 7.817142857142858,
+      "sensitivity": 8.598857142857144,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 8,
+      "kind": "levelbias",
+      "base": 75.0,
+      "sensitivity": 82.50000000000001,
+      "units": "m³",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 9,
+      "kind": "reliability",
+      "base": 0.0010890000000000001,
+      "sensitivity": 0.0013176900000000005,
+      "units": "probability",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b124",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 86.9918699186992,
+      "sensitivity": 85.6910569105691,
+      "units": "%",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 1,
+      "kind": "footprint",
+      "base": 5000.0,
+      "sensitivity": 4545.454545454545,
+      "units": "m²",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 2,
+      "kind": "wedge",
+      "base": 156.0,
+      "sensitivity": 171.60000000000002,
+      "units": "kN/anchor",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 3,
+      "kind": "stress",
+      "base": 9.36,
+      "sensitivity": 10.296,
+      "units": "MPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 4,
+      "kind": "spring",
+      "base": 432,
+      "sensitivity": 475.20000000000005,
+      "units": "kN",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 5,
+      "kind": "head",
+      "base": 1275.3,
+      "sensitivity": 1402.8300000000002,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 6,
+      "kind": "contain",
+      "base": 176.2,
+      "sensitivity": 215.44,
+      "units": "kPa",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 7,
+      "kind": "inventory",
+      "base": 27600,
+      "sensitivity": 20860.0,
+      "units": "m³",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 8,
+      "kind": "angle",
+      "base": 0.07696902001294993,
+      "sensitivity": 0.08466592201424496,
+      "units": "m",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 9,
+      "kind": "balance",
+      "base": 74,
+      "sensitivity": 91.20000000000002,
+      "units": "m³/day",
+      "numericResult": "pass"
+    },
+    {
+      "courseId": "b125",
+      "unit": 10,
+      "kind": "coverage",
+      "base": 87.09677419354838,
+      "sensitivity": 85.80645161290323,
+      "units": "%",
+      "numericResult": "pass"
+    }
+  ],
+  "inputSha256": {
+    "hsuehshan": "2fbec08e1880973447e8f10bb8e3b52fe7eb962c8e5eb3c0f02508a2ffec947d",
+    "b102": "72b2ec9216109f9b4ae3faf7b120a71c48fcc7253ed6fb2f0aefbbde359a58bf",
+    "b103": "24301cdd445a6857598140f4c8332c4e6f94a3a56978cad38d3fd53259e99343",
+    "b104": "3409807c406e747a5ae8fb06967145885db01e4ba1bbffe10bb4524f72ea49cb",
+    "b105": "1565e385648d1338ec5491f21f2653ecfcf3de9fe74cbf5882feb1ac8350bc5f",
+    "b106": "739661516ef5c529fd5afb5804d00b7b26deb900e151bc46aa0690f540059290",
+    "b107": "d79a186e579fb9ea807853b461c97dbfff333b37721d35c84594ed139af6b6e0",
+    "b108": "8127d7f073134e9fb58f9448b43e8a104ee4d7c7f64b8ea3f95012d686045757",
+    "b109": "7603f8f68408bd365dbc93e207ff5b39dbacd373eddfcb7170f64877a127c240",
+    "b110": "bc05f4ea065b44357b6fb3a7fe7a42fa813f5c94837124a3110e0edea8ddbda6",
+    "b111": "983b875cbf5ffe904adc7ac4a7a785aec12e2508d2d6fc6a8e4b62934f34a9a0",
+    "b112": "da306f5a5233a82b8e16f3c332600b747320c18ca465d080a0e1d5d50fe721e2",
+    "b113": "aa6685ca4b0e20011bb7d412185f5a5c7bb40e9c50af6bf635d065218f3db4a0",
+    "b114": "9251e7937e3d69da1da7df27bb0ede5ca55e831af34dc3b2d77962430ce9689f",
+    "b115": "d4638d98141813bf1e0e5b50c8a40121962fc8380940c86b0760ffe80e5f40ea",
+    "b116": "cf3e0504d29354069765356bbdfb21f38c70c723e0d8ff3d0c15bb6194a5877e",
+    "b117": "3b21d2ddab9eaa2eae6ac4d4dae0b31db3ea9936cfc46861bc21f24b4ba1bd25",
+    "b118": "e59b66fb6dac3f49d04c9b5b4947d35fcd5aca00170aaca63ac4647e11708901",
+    "b119": "c904ac10998ec606051ff1423452e0c3675cf5a45fdc94eb1fe2560cbcfbe4ad",
+    "b120": "d559606ef5df09f4ebb902c049c61a22eee0c0bb9ad53948c61d8349ba6f73ac",
+    "b121": "0a3c678b84341783a78a3d81be64328a9bf1ba15b11a7abe6a5bdc2ec7a487b0",
+    "b122": "592ef4ac56c489fbe717f5aacedd167b41c2d8d86a19874f9ee5a3a5b89a20ca",
+    "b123": "aa6c631849a24762b72124dc6f8ca60352fa2e5432ed71184b52d61b7d65baeb",
+    "b124": "0ddc51c607718a071ad83f2f1f56d4db69c3c5982254c5719932f0bb79a6941d",
+    "b125": "dcf64db210141fa84f035907fe06a2ec645be52c0f002fe8a4880164e9bb7973"
+  }
+}

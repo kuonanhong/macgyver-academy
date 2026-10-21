@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c003-e5b628e44d8613d1.json"]={sha256:"e5b628e44d8613d1270fd5720fcb7d5b15fa9821d9e8f72936971f4a4ee28ce7",value:{"title":"Airbus A320 飛控架構","titleEn":"Airbus A320 flight-control architecture","category":"aerospace","kind":"project","summary":"課程規劃主題：線傳飛控與冗餘觀念。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: fly-by-wire and redundancy concepts. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c003"}};

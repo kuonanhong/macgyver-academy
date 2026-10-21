@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d397-63e4b9b088684280.json"]={sha256:"63e4b9b088684280859150fa28980ae5a8b7488c9dcfde92cfe151f1c2722e09",value:{"id":"d397","title":"纖維回收脫墨系統","titleEn":"Recovered Fiber Deinking Systems","category":"process","kind":"craft","summary":"「纖維回收脫墨系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Recovered Fiber Deinking Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

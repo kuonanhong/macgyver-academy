@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c322-61b16a82a248074e.json"]={sha256:"61b16a82a248074ef8fb1b3b85aa6aed801959e22e7a71255367f11921e7b394",value:{"title":"PACE 海洋與大氣觀測","titleEn":"PACE ocean and atmosphere observatory","category":"space","kind":"project","summary":"課程規劃主題：海色光譜與氣膠量測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: ocean-color spectra and aerosol measurement. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c322"}};

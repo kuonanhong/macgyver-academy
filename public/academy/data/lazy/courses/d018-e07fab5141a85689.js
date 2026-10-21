@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d018-e07fab5141a85689.json"]={sha256:"e07fab5141a85689f9a39933243fdccf6209308860e3b2e7b3e376b50c12f6d2",value:{"id":"d018","title":"巴斯郡抽蓄水電站","titleEn":"Bath County Pumped Storage Station","category":"energy","kind":"project","summary":"「巴斯郡抽蓄水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Bath County Pumped Storage Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

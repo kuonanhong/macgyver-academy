@@ -31,13 +31,15 @@ import * as locale from '../public/academy/locale.js';
 import * as paywall from '../public/academy/paywall.js';
 import * as pricing from '../public/academy/pricing.js';
 import * as cloudSync from '../public/academy/cloud-sync.js';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../public/academy');
 const data=Object.fromEntries(['catalog','featured','sources','photos'].map(k=>[k,JSON.parse(fs.readFileSync(path.join(root,'data',`${k}.json`),'utf8'))]));
 data.release=JSON.parse(fs.readFileSync(path.join(root,'data','release.json'),'utf8'));
 data.coursePlaces=JSON.parse(fs.readFileSync(path.join(root,'data','course-places.json'),'utf8'));
 data.relatedSkills=JSON.parse(fs.readFileSync(path.join(root,'data','related-skills.json'),'utf8'));
+data.media=JSON.parse(fs.readFileSync(path.join(root,'data','media.json'),'utf8'));
+data.vendors=JSON.parse(fs.readFileSync(path.join(root,'data','vendors.json'),'utf8'));
 const guidedById=new Map(data.featured.map(c=>[c.id,c]));data.catalog=data.catalog.map(c=>guidedById.get(c.id)||c);
 assert.equal(data.catalog.length,data.release.topics);
 const originalCourseIds=['semiconductor','sub2nm','asml','idf','apache','submarine','danjiang','hsuehshan','cybersecurity','packaging','silicon-photonics','steam-locomotive','ferrari','tesla','starlink','three-gorges','metro'];
@@ -85,7 +87,10 @@ function element(id=''){
 }
 for(const id of ['main','toast','pageTitle','accountName','language','dialog','dialogTitle','dialogBody','preferencesButton','preferencesDialog'])fixed.set(id,element(id));
 function mount(html,group='main'){
-  if(group==='main'){elements=[];ids=new Map();}else{for(const el of elements.filter(el=>el.mountGroup===group))if(el.id)ids.delete(el.id);elements=elements.filter(el=>el.mountGroup!==group);}
+  // Main and dialog are independent siblings; atlas is a child of main.
+  const replaced=el=>el.mountGroup===group||(group==='main'&&el.mountGroup==='atlasContent');
+  for(const el of elements.filter(replaced))if(el.id&&ids.get(el.id)===el)ids.delete(el.id);
+  elements=elements.filter(el=>!replaced(el));
   const atlasStart=html.indexOf('id="atlasContent"');
   for(const match of html.matchAll(/<([a-z][\w-]*)\b([^>]*)>/gi)){
     const el=element();el.tagName=match[1].toUpperCase();el.mountGroup=group==='atlasContent'||(atlasStart>=0&&match.index>atlasStart)?'atlasContent':group;
@@ -101,18 +106,34 @@ const select=s=>s.startsWith('#')?(ids.get(s.slice(1))||fixed.get(s.slice(1))||n
 const selectAll=s=>{const m=s.match(/^\[data-([\w-]+)\]$/);if(!m)return[];const key=m[1].replace(/-([a-z])/g,(_,c)=>c.toUpperCase());return elements.filter(e=>key in e.dataset);};
 const storage=new Map();
 const context=vm.createContext({console,Date:TestDate,JSON,Set,URL,Blob,AbortController,NodeFilter:{SHOW_TEXT:4},setTimeout:schedule,clearTimeout:id=>timers.delete(id),setInterval:()=>1,clearInterval(){},...labResources,...computingPaths,...opticsPaths,...structuresPaths,...projectIcons,...learningMap,...quantumLab,...electronicsPaths,...paywall,...pricing,...cloudSync,...membership,...vendors,showcaseMarkup,bindMembership:()=>{},bindVendors:()=>{},bindShowcase:()=>{},createPersonalization:options=>createPersonalization({...options,document:context.document,environment:{localStorage:context.localStorage}}),...sourceLibrary,...packagingPaths,...projectIdentity,...researchPlans,...workshopModel,...locale,...labs,...exercises,...media,...demonstration,...relatedSkills,...mentorNarration,...coursePlaces,bindCoursePlaces:()=>Promise.resolve(),navigator:{languages:['en'],language:'en'},location:{hash:'#workshop'},window:{scrollTo(){}},document:{querySelector:select,querySelectorAll:selectAll,addEventListener(){},removeEventListener(){},getElementById:id=>select('#'+id),documentElement:{dataset:{}},get activeElement(){return activeElement;}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},fetch:async()=>{throw Error('Unexpected network request');},DATA:data});
-const script=fs.readFileSync(path.join(root,'app.js'),'utf8').replace(/^import .*?;\n/gm,'');
+const appSource=fs.readFileSync(path.join(root,'app.js'),'utf8');
+// Supply actual new dependencies and fail early for an unrecognized export.
+// Existing DOM adapter overrides remain intentional fixture implementations.
+for(const match of appSource.matchAll(/^import\s*\{([^}]+)\}\s*from\s*['"]([^'"]+)['"];?$/gm)){
+  const actual=await import(new URL(match[2],pathToFileURL(path.join(root,'app.js'))));
+  for(const item of match[1].split(',')){const [original,binding=original]=item.trim().split(/\s+as\s+/);if(!(binding in context))context[binding]=actual[original];assert.notEqual(context[binding],undefined,'VM fixture supplies '+binding);}
+}
+const script=appSource.replace(/^import .*?;\n/gm,'');
 assert(!/您提供的課程教材|Your course materials|data-show-materials|photos','materials/.test(script),'app no longer renders or loads user materials');
 const cutoff=script.indexOf("$('#preferencesButton').onclick");assert(cutoff>0,'startup boundary not found');
 vm.runInContext(script.slice(0,cutoff),context,{filename:'app.js'});
 vm.runInContext('({catalog,featured,sources,photos}=DATA)',context);
-vm.runInContext('setRelatedSkills(DATA.relatedSkills,catalog);setAtlasPlaces(DATA.coursePlaces)',context);
+// This suite exercises the fully loaded canonical release. Cold boot,
+// network/file loading and route races live in the dedicated lazy/offline tests.
+data.courseResources=new Map();
+const mediaById=new Map(data.media.courses.map(c=>[c.courseId,c])),relatedById=new Map(data.relatedSkills.courses.map(c=>[c.courseId,c])),placesById=new Map(data.coursePlaces.courses.map(c=>[c.courseId,c])),associations=new Map(data.vendors.courses.map(c=>[c.courseId,c])),vendorsById=new Map(data.vendors.vendors.map(v=>[v.id,v]));
+for(const c of data.catalog){const association=associations.get(c.id);data.courseResources.set(c.id,{sources:[],media:{courses:[mediaById.get(c.id)].filter(Boolean)},related:{courses:[relatedById.get(c.id)].filter(Boolean)},places:{courses:[placesById.get(c.id)].filter(Boolean)},vendors:{courses:[association].filter(Boolean),vendors:(association?.vendorIds||[]).map(id=>vendorsById.get(id)).filter(Boolean)}});}
+vm.runInContext('setLearningMedia(DATA.media);setVendors(DATA.vendors);setRelatedSkills(DATA.relatedSkills,catalog);setAtlasPlaces(DATA.coursePlaces);for(const [id,value]of DATA.courseResources)courseResourceCache.set(id,value);coreReady=true;accountReady=true;accountReadyPromise=Promise.resolve();sourcesReady=true;',context);
+assert.equal(vm.runInContext('courseResourceCache.size',context),data.catalog.length);
+assert.equal(vm.runInContext("routeDataGate('workshop',[],location.hash.slice(1))",context),false,'fully loaded workshop passes the real route gate');
+vm.runInContext('setLearningMedia(DATA.media);setVendors(DATA.vendors);setRelatedSkills(DATA.relatedSkills,catalog);setCoursePlaces(DATA.coursePlaces)',context);
 const run=s=>vm.runInContext(s,context);
 async function finishDemo(){if(run('mentorDemo.status')==='complete'&&run('demonstrationReady()'))return;if(!['waiting','speaking','paused'].includes(run('mentorGuide.status')))await run('mentorGuide.begin({voice:false})');let segments=0;while(run('mentorGuide.status')!=='complete'){assert(++segments<180,'narrated procedure must finish');run('mentorGuide.next()');advanceClock(600)}assert.equal(run('mentorDemo.status'),'complete');assert.equal(run('demonstrationReady()'),true);}
 function clean(html,label){assertRenderedData(html,label);}
 let projectRenders=0,stepRenders=0,maxTutorContextChars=0;
 const taskModes=new Set();
 for(const language of ['zh-TW','en']){
+  console.error(`[frontend] ${language}: ${data.catalog.length} projects / ${data.release.allSteps} steps`);
   run(`lang=${JSON.stringify(language)};projects={};`);
   for(const c of data.catalog){
     const html=run(`renderProject(${JSON.stringify(c.id)})`);clean(html,`${language}/${c.id}`);projectRenders++;
@@ -145,8 +166,10 @@ for(const language of ['zh-TW','en']){
   }
   for(const fn of ['renderHome','renderCatalog','renderProgress','renderMap'])clean(run(`${fn}()`),`${language}/${fn}`);
   for(const tab of ['official','photos']){run(`sourceTab=${JSON.stringify(tab)}`);clean(run('renderSources()'),`${language}/sources/${tab}`);}
+  console.error(`[frontend] ${language}: complete (${projectRenders} projects / ${stepRenders} steps cumulative)`);
 }
 
+console.error('[frontend] checking catalogue, atlas and every guided-course entry');
 // The former home/catalog routes share one explorer with live coverage and filters.
 run("lang='en';location.hash='#home';render()");
 assert.equal((fixed.get('main').innerHTML.match(/id="search"/g)||[]).length,1,'one merged search');assert.equal(run('renderHome()'),run('renderCatalog()'),'home/catalog share explorer');assert(!run('renderSources()').includes('Your course materials'),'removed materials section');
@@ -197,6 +220,7 @@ for(const c of data.featured){
   await select('#beginCourse').onclick();assert.equal(run('activeId'),c.id,'begin selects '+c.id);assert.equal(run("localStorage.getItem('mg-active')"),c.id,'active course survives reload');assert.equal(run('navStage'),-1);assert.equal(run('navQuery'),'');run("location.hash='#workshop';render()");assert(selectAll('[data-step]').length>0,'new course navigator is populated: '+c.id);assert.equal(run('course().id'),c.id);
 }
 
+console.error(`[frontend] ${data.featured.length} course entries passed; checking controls and persistence`);
 // Exercise actual handlers across three consecutive steps. No quiz or placement gate is bypassed.
 run("lang='en';projects={};quizPass.clear();activeId=featured[0].id;activeStep=0;location.hash='#workshop';currentPage='workshop';render();");
 assert.equal(select('#complete').dataset.ready,'false','initial completion gate remains closed');assert(!select('#complete').disabled,'next-action button remains usable');
@@ -483,6 +507,7 @@ run("location.hash='#map';render()");select('#mapFrame').isConnected=true;select
 selectAll('[data-place]')[1].onclick();select('#mapFrame').isConnected=true;const newlySelectedMap=select('#mapFrame'),newMapMarkup=newlySelectedMap.innerHTML;
 geoRequests[1].success({coords:{latitude:3,longitude:4}});assert.equal(newlySelectedMap.innerHTML,newMapMarkup,'old geolocation cannot overwrite a new selected place');
 select('#locate').onclick();select('#locate').onclick();geoRequests[2].success({coords:{latitude:5,longitude:6}});assert.equal(newlySelectedMap.innerHTML,newMapMarkup,'only the most recent location request may update the map');geoRequests[3].success({coords:{latitude:7,longitude:8}});assert(newlySelectedMap.innerHTML.includes('q=7,8'),'current map request still displays the requested location');
+console.error('[frontend] checking account forms, account races and protected completion');
 // Name/email local profiles and optional cloud auth forms remain distinct.
 let localCreated=null,cloudSignup=null,cloudLogin=null,cloudReset=null,cloudPassword=null,cloudUser=null;
 context.window.MacGyverOffline={storageAvailable:true,listProfiles:()=>[{id:'profile-one',name:'Local learner'}],activeProfile:()=>({id:'profile-one'}),createProfile:(name,email)=>{localCreated={name,email}},createMember:async value=>{localCreated=value},switchProfile:()=>{}};
@@ -498,7 +523,7 @@ context.window.MacGyverCloud={configured:true,getSession:async()=>cloudUser?{use
 await run('cloudAccountModal()');
 for(const id of ['#memberUsername','#memberPassword','#memberEmail','#memberPhone','#memberLogin'])assert(select(id),'cloud member form has '+id);
 select('#memberUsername').value='cloud_learner';select('#memberPassword').value='valid long password';select('#memberPassword2').value='valid long password';select('#memberEmail').value='learner@example.org';select('#memberPhone').value='+886912345678';select('#memberName').value='Cloud learner';select('#memberTerms').checked=true;
-await select('#memberSignUp').onsubmit({preventDefault(){},submitter:{value:'signup'}});assert.equal(cloudSignup.username,'cloud_learner');assert.equal(cloudSignup.phone,'+886912345678');assert.equal(cloudSignup.email,'learner@example.org');assert(select('#cloudAccountStatus').textContent.includes('verification'),'registration requests email verification instead of claiming login');
+await select('#memberSignUp').onsubmit({preventDefault(){},submitter:{value:'signup'}});assert.equal(cloudSignup.username,'cloud_learner');assert.equal(cloudSignup.phone,'+886912345678');assert.equal(cloudSignup.email,'learner@example.org');assert(select('#cloudAccountStatus').textContent.includes('verification'),'registration requests email verification instead of claiming login');assert.equal(fixed.get('dialog').open,true,'verification dialog remains open');assert(!fixed.get('main').innerHTML.includes('id="protectedAccountStatus"'),'unverified registration restores the background page');assert.equal(run('currentPage'),run("location.hash.slice(1).split('/')[0]"));
 select('#memberLogin').value='learner@example.org';await select('#memberSignIn').onsubmit({preventDefault(){},submitter:{value:'reset'}});assert.equal(cloudReset,'learner@example.org');
 select('#memberLogin').value='cloud_learner';select('#memberLoginPassword').value='valid long password';await select('#memberSignIn').onsubmit({preventDefault(){},submitter:{value:'signin'}});assert.equal(cloudLogin.login,'cloud_learner');assert.equal(run('authMode'),'supabase');assert.equal(run('user.id'),'cloud-one');
 await run('cloudAccountModal()');select('#cloudNewPassword').value='new valid long password';await select('#cloudPasswordForm').onsubmit({preventDefault(){}});assert.equal(cloudPassword,'new valid long password');await select('#cloudLogout').onclick();assert.equal(run('authMode'),'offline');assert.equal(run('user.id'),'profile-one','cloud sign-out returns to the local profile');

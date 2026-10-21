@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d392-1f658c9c22649239.json"]={sha256:"1f658c9c22649239effed340c39889e273b1e47271a4fae33a1afe7f85c81c90",value:{"id":"d392","title":"固液分離離心機","titleEn":"Solid Liquid Separation Centrifuges","category":"process","kind":"craft","summary":"「固液分離離心機」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Solid Liquid Separation Centrifuges: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

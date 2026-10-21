@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d227-cd87718fbfb2018b.json"]={sha256:"cd87718fbfb2018bfc0c4eb52af73ab951d212b9b57956cc4a5df3b1a0b50acf",value:{"id":"d227","title":"超音波波束形成電子學","titleEn":"Ultrasound Beamforming Electronics","category":"biomedical","kind":"craft","summary":"「超音波波束形成電子學」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ultrasound Beamforming Electronics: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d236-6756be2f822257c4.json"]={sha256:"6756be2f822257c4118da8aad0af6a57b7026afdbf14c703009935d996828f9c",value:{"id":"d236","title":"眼底攝影機光學系統","titleEn":"Fundus Camera Optical Systems","category":"biomedical","kind":"craft","summary":"「眼底攝影機光學系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Fundus Camera Optical Systems: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

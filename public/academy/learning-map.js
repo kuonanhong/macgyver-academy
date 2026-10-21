@@ -9,6 +9,7 @@ const textFor = course => [course.title, course.titleEn, course.summary, course.
 
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
+  {id:'underground',icon:'bridge',title:pair('隧道與地下工程','Tunnels & underground engineering'),description:pair('100門課程串接世界隧道、地質調查、潛盾、支護、地下水與地盤改良。','100 courses connect landmark tunnels, investigation, TBMs, support, groundwater and ground improvement.'),boundary:pair('從公開原理與教學算例學習；施工參數必須依實測地層與審查另定。','Learn from public principles and teaching examples; field parameters require measured ground data and review.')},
   {id:'quantum', icon:'quantum', title:pair('量子電腦與 QPU','Quantum computers & QPUs'), description:pair('依物理實作、控制、讀出與錯誤處理比較量子門派。','Compare physical implementations, control, readout and error handling.'), boundary:pair('共同點是量子態準備、控制與量測；低溫、雷射、光損耗及錯誤模型各不相同。','State preparation, control and measurement are shared; cryogenics, lasers, optical loss and error models differ.')},
   {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('從神經網路到 GPU、TPU、資料流與推論服務。','From neural networks to GPUs, TPUs, dataflow and inference services.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
   {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('處理器、儲存、叢集、機房與科學運算的系統觀。','A systems view of processors, storage, clusters, facilities and scientific computing.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
@@ -32,6 +33,15 @@ export const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 export const LEARNING_SUBDISCIPLINES = [
+  subdivision("ug-landmarks","underground","世界隧道與地下巨作","World tunnels and underground landmarks",/ug-landmarks/i),
+  subdivision("ug-investigation","underground","地質調查與變形監測","Ground investigation and deformation monitoring",/ug-investigation/i),
+  subdivision("ug-tbm","underground","潛盾與掘進系統","Shield and tunnel-boring systems",/ug-tbm/i),
+  subdivision("ug-excavation","underground","分部開挖與施工序列","Sequential excavation and construction stages",/ug-excavation/i),
+  subdivision("ug-support","underground","岩體支護與襯砌","Rock support and tunnel linings",/ug-support/i),
+  subdivision("ug-water","underground","地下水與防排水","Groundwater and waterproofing",/ug-water/i),
+  subdivision("ug-cutcover","underground","明挖逆打與沉管","Cut-and-cover, top-down and immersed tunnels",/ug-cutcover/i),
+  subdivision("ug-trenchless","underground","無開挖、豎井與岩洞","Trenchless works, shafts and caverns",/ug-trenchless/i),
+  subdivision("ug-ground","underground","地盤改良與地下維護","Ground improvement and underground maintenance",/ug-ground/i),
   subdivision('optics-lithography','optics','微影光學與精密定位','Lithography optics and precision positioning',/微影|lithograph|euv|asml|晶圓台|wafer.?stage/i),
   subdivision('optics-design-fabrication','optics','光學設計與精密加工','Optical design and precision fabrication',/透鏡|lens|非球面|asphere|freeform|自由曲面|退火|anneal|拋光|polish|修形|figuring/i),
   subdivision('optics-coatings-elements','optics','薄膜、繞射與微結構元件','Coatings, diffractive and structured elements',/鍍膜|coating|反射鏡|mirror|偏振|polariz|繞射|diffract|超穎|metalens|全像光學元件|holographic.?optical/i),
@@ -96,6 +106,10 @@ export const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 export const LEARNING_ROUTES = [
+  {"id": "ug-investigate-bore", "title": ["從地質證據到潛盾監測", "From ground evidence to TBM monitoring"], "goal": ["先確認地層與觀測可信度，再比較開挖面、灌漿、導向與沉陷。", "Establish ground evidence and measurement quality before comparing face balance, grout, guidance and settlement."], "courses": ["b126", "b128", "b132", "b135", "b136", "b137", "b143", "b145", "hsuehshan"]},
+  {"id": "ug-rock-support", "title": ["從岩體到支護與世界長隧道", "From rock masses to support and long tunnels"], "goal": ["比較節理與應力、開挖序列、能量耗散與支護驗證。", "Compare joints and stress, excavation sequence, energy dissipation and support verification."], "courses": ["b130", "b131", "b148", "b151", "b153", "b160", "b161", "b103", "b116"]},
+  {"id": "ug-water-city", "title": ["從地下水到城市地下空間", "From groundwater to urban underground space"], "goal": ["串接防排水、明挖沉管、地盤改良與既有管線維護。", "Connect water control, cut-and-cover and immersed works, ground improvement and utility maintenance."], "courses": ["b163", "b164", "b166", "b168", "b170", "b179", "b186", "b190", "b196", "b199"]},
+
   {id:'bridges-span',title:pair('從橋梁構件到跨海巨作','From bridge components to record spans'),goal:pair('先學支承、伸縮縫與主纜、斜索，再比較懸索橋、斜張橋與跨海通道。','Start with bearings, joints, main cables and stays, then compare suspension, cable-stayed and sea-crossing projects.'),courses:['b045','b044','b036','b037','b038','b040','b003','b004','b010','b011']},
   {id:'tall-buildings',title:pair('從高層結構系統到超高層巨作','From tall-building systems to supertall landmarks'),goal:pair('先學外伸臂、斜交網格、阻尼器與差異縮短，再比較台北 101、哈里發塔與上海中心大廈。','Learn outriggers, diagrids, dampers and differential shortening, then compare Taipei 101, Burj Khalifa and Shanghai Tower.'),courses:['b063','b064','b066','b068','b074','b075','b021','b022','b023','b026']},
   {id:'optics-imaging',title:pair('從透鏡設計到先進顯微','From lens design to advanced microscopy'),goal:pair('先學光學設計與加工、鍍膜，再進入顯微、光譜與精密量測。','Start with optical design, fabrication and coatings, then move to microscopy, spectroscopy and precision metrology.'),courses:['a405','a406','a407','a412','a426','a429','a430','a439']},
@@ -116,7 +130,7 @@ export const LEARNING_ROUTES = [
 
 const TRACK_IDS = new Set(LEARNING_TRACKS.map(track => track.id));
 const SUBDISCIPLINE_IDS = new Map(LEARNING_SUBDISCIPLINES.map(subdivision => [subdivision.id, subdivision]));
-const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'civil',water:'civil',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
+const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'civil',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
 
 export function classifyLearningCourse(course = {}) {
   // Generic roadmap summaries mention security and testing in every category;

@@ -1,0 +1,263 @@
+{
+  "focus": "校準雷達波速與定位誤差並保留地下管線判讀的不確定性~Calibrate radar velocity and location error while retaining buried utility interpretation uncertainty",
+  "units": [
+    {
+      "anchor": "介電常數與波速~Permittivity and wave speed",
+      "title": "介電常數與波速~Permittivity and wave speed",
+      "mechanism": "地中電磁波速度隨有效介電常數改變，含水率與填土差異因此影響深度換算。低損耗、非磁性近似讓公式容易理解，強導電土層則需考慮衰減與頻散而不能照套。取真空波速c=0.3m/ns、相對介電常數εr=9，v=c/√εr=0.100m/ns；這是均質低損耗假設，並非所有土層固定波速。若沿用乾燥地面的波速處理濕區，深度可能系統性偏大；圖面看似連續但誤差同向累積，後續開挖判斷會錯估管線上方的保護土層。~Electromagnetic speed varies with effective permittivity, making moisture and fill variation important to depth conversion. A low-loss, nonmagnetic approximation simplifies the relation; conductive ground requires attention to attenuation and dispersion before applying it. With c=0.3m/ns and relative permittivity εr=9, v=c/√εr=0.100m/ns. This assumes homogeneous low-loss ground, not a universal soil velocity. Applying dry-ground velocity in wet material can systematically overestimate depth. A visually continuous map may accumulate consistent error and misrepresent the cover protecting a utility during later excavation.",
+      "model": "教學假設，非現場設定值：取真空波速c=0.3m/ns、相對介電常數εr=9，v=c/√εr=0.100m/ns；這是均質低損耗假設，並非所有土層固定波速。~Teaching assumptions, not field settings: With c=0.3m/ns and relative permittivity εr=9, v=c/√εr=0.100m/ns. This assumes homogeneous low-loss ground, not a universal soil velocity.",
+      "verify": "以已知深度目標或適用的多偏移距量測校準速度，在不同含水區分別記錄。比較換算深度與獨立管線資料，未校準的區段須標明速度假設而非填入精確高程。同時排除以下干擾原因：若沿用乾燥地面的波速處理濕區，深度可能系統性偏大；圖面看似連續但誤差同向累積，後續開挖判斷會錯估管線上方的保護土層。~Calibrate velocity using a known-depth target or suitable multiple-offset observations, recording wet and dry zones separately. Compare depths with independent utility evidence and label uncalibrated sections with their assumed velocity rather than a precise elevation. Also rule out the following competing explanation: Applying dry-ground velocity in wet material can systematically overestimate depth. A visually continuous map may accumulate consistent error and misrepresent the cover protecting a utility during later excavation.",
+      "failure": "若沿用乾燥地面的波速處理濕區，深度可能系統性偏大；圖面看似連續但誤差同向累積，後續開挖判斷會錯估管線上方的保護土層。~Applying dry-ground velocity in wet material can systematically overestimate depth. A visually continuous map may accumulate consistent error and misrepresent the cover protecting a utility during later excavation.",
+      "misconception": "只要介電常數與波速符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for permittivity and wave speed removes the need to check boundaries and independent evidence.",
+      "practice": "交接介電常數與波速時保存原始紀錄、單位與基準。以已知深度目標或適用的多偏移距量測校準速度，在不同含水區分別記錄。比較換算深度與獨立管線資料，未校準的區段須標明速度假設而非填入精確高程。~When handing over permittivity and wave speed, retain original records, units and reference conditions. Calibrate velocity using a known-depth target or suitable multiple-offset observations, recording wet and dry zones separately. Compare depths with independent utility evidence and label uncalibrated sections with their assumed velocity rather than a precise elevation."
+    },
+    {
+      "anchor": "雙程時間換深度~Two way time to depth",
+      "title": "雙程時間換深度~Two way time to depth",
+      "mechanism": "雷達回波經過下行及回程兩段路徑，時間零點與天線間距需先確認。垂直入射平層模型是初步解讀，傾斜界面、近場與目標尺寸會讓簡單除二失去精度。取v=0.1m/ns、校正後雙程t=30ns，z=vt/2=1.5m；t已扣除儀器與空氣路徑偏移，並假設垂直反射。忘記雙程除二會將深度加倍；若零點漂移卻只修速度，淺目標與深目標可能呈現不同相對誤差，單點校準也會造成錯誤的信心。~An echo includes outgoing and returning paths, requiring a verified time zero and antenna geometry. Vertical incidence in a flat layer is a first interpretation; tilted interfaces, near-field effects and target size can limit the simple half-time relation. For v=0.1m/ns and corrected two-way t=30ns, z=vt/2=1.5m. Time already excludes instrument and air-path offsets, with vertical reflection assumed. Omitting the two-way divisor doubles depth. Correcting velocity for a drifting time zero gives different relative errors for shallow and deep targets, so one calibration point can create false confidence.",
+      "model": "教學假設，非現場設定值：取v=0.1m/ns、校正後雙程t=30ns，z=vt/2=1.5m；t已扣除儀器與空氣路徑偏移，並假設垂直反射。~Teaching assumptions, not field settings: For v=0.1m/ns and corrected two-way t=30ns, z=vt/2=1.5m. Time already excludes instrument and air-path offsets, with vertical reflection assumed.",
+      "verify": "保留原始雷達剖面與時間零點校正紀錄，選取同一反射相位作比較。已知深度點應分布於不同材質區，讓檢核能辨別固定時間偏移與速度誤差兩種來源。同時排除以下干擾原因：忘記雙程除二會將深度加倍；若零點漂移卻只修速度，淺目標與深目標可能呈現不同相對誤差，單點校準也會造成錯誤的信心。~Retain raw profiles and time-zero calibration, consistently picking the same reflected phase. Spread known-depth checks across material zones so verification can distinguish a fixed timing offset from velocity error. Also rule out the following competing explanation: Omitting the two-way divisor doubles depth. Correcting velocity for a drifting time zero gives different relative errors for shallow and deep targets, so one calibration point can create false confidence.",
+      "failure": "忘記雙程除二會將深度加倍；若零點漂移卻只修速度，淺目標與深目標可能呈現不同相對誤差，單點校準也會造成錯誤的信心。~Omitting the two-way divisor doubles depth. Correcting velocity for a drifting time zero gives different relative errors for shallow and deep targets, so one calibration point can create false confidence.",
+      "misconception": "只要雙程時間換深度符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for two way time to depth removes the need to check boundaries and independent evidence.",
+      "practice": "交接雙程時間換深度時保存原始紀錄、單位與基準。保留原始雷達剖面與時間零點校正紀錄，選取同一反射相位作比較。已知深度點應分布於不同材質區，讓檢核能辨別固定時間偏移與速度誤差兩種來源。~When handing over two way time to depth, retain original records, units and reference conditions. Retain raw profiles and time-zero calibration, consistently picking the same reflected phase. Spread known-depth checks across material zones so verification can distinguish a fixed timing offset from velocity error."
+    },
+    {
+      "anchor": "雙曲線目標幾何~Hyperbolic target geometry",
+      "title": "雙曲線目標幾何~Hyperbolic target geometry",
+      "mechanism": "點狀或細管目標在掃描剖面常形成雙曲線，但其寬度同時受深度、速度與掃描方向影響。用單一曲線推斷管徑與方位是非唯一問題，應保留可辨識參數的界限。均質地盤點散射模型t(x)=2√(z²+x²)/v；取z=1m、x=1m、v=0.1m/ns，t=28.28ns，約28.3ns。掃描線斜交管線時曲線變寬，若一律當成深度增加便會錯置管線；過度擬合雜訊還可能把相鄰兩根管線合併成不存在的大目標。~A point or thin pipe target often creates a hyperbola, whose width depends on depth, velocity and scan direction. Inferring diameter and orientation from one curve is nonunique, so state which parameters the observations actually constrain. For a homogeneous point-scatterer model t(x)=2√(z²+x²)/v, use z=1m, x=1m and v=0.1m/ns to obtain t=28.28ns, about28.3ns. An oblique crossing broadens the curve and can be misread as greater depth. Overfitting noise can also merge adjacent pipes into a nonexistent large buried target.",
+      "model": "教學假設，非現場設定值：均質地盤點散射模型t(x)=2√(z²+x²)/v；取z=1m、x=1m、v=0.1m/ns，t=28.28ns，約28.3ns。~Teaching assumptions, not field settings: For a homogeneous point-scatterer model t(x)=2√(z²+x²)/v, use z=1m, x=1m and v=0.1m/ns to obtain t=28.28ns, about28.3ns.",
+      "verify": "以互相交叉的掃描線比較頂點位置，檢查速度固定後能否同時配合兩側曲線。將可能斜交管線或多重反射列為替代模型，不應只挑最漂亮的一條擬合。同時排除以下干擾原因：掃描線斜交管線時曲線變寬，若一律當成深度增加便會錯置管線；過度擬合雜訊還可能把相鄰兩根管線合併成不存在的大目標。~Compare apex locations on crossing lines and check whether one fixed velocity fits both flanks. Treat oblique pipes and multiple reflections as alternative models instead of selecting only the most visually pleasing fit. Also rule out the following competing explanation: An oblique crossing broadens the curve and can be misread as greater depth. Overfitting noise can also merge adjacent pipes into a nonexistent large buried target.",
+      "failure": "掃描線斜交管線時曲線變寬，若一律當成深度增加便會錯置管線；過度擬合雜訊還可能把相鄰兩根管線合併成不存在的大目標。~An oblique crossing broadens the curve and can be misread as greater depth. Overfitting noise can also merge adjacent pipes into a nonexistent large buried target.",
+      "misconception": "只要雙曲線目標幾何符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for hyperbolic target geometry removes the need to check boundaries and independent evidence.",
+      "practice": "交接雙曲線目標幾何時保存原始紀錄、單位與基準。以互相交叉的掃描線比較頂點位置，檢查速度固定後能否同時配合兩側曲線。將可能斜交管線或多重反射列為替代模型，不應只挑最漂亮的一條擬合。~When handing over hyperbolic target geometry, retain original records, units and reference conditions. Compare apex locations on crossing lines and check whether one fixed velocity fits both flanks. Treat oblique pipes and multiple reflections as alternative models instead of selecting only the most visually pleasing fit."
+    },
+    {
+      "anchor": "頻率與波長尺度~Frequency and wavelength scale",
+      "title": "頻率與波長尺度~Frequency and wavelength scale",
+      "mechanism": "高頻通常提供較短波長，但較短波長不保證在所有地盤中達到更深穿透。辨識能力還依天線頻寬、脈衝、目標對比及噪聲，不能直接把波長當精確定位誤差。取速度v=1×10⁸m/s、頻率f=5×10⁸Hz即500MHz，λ=v/f=0.20m；實際解析度不是直接宣稱0.20m。使用高頻卻未檢查導電衰減可能只看到淺層，深部無回波不能證明沒有管線；影像看起來清晰也不代表深度轉換的速度已正確。~Higher frequency generally shortens wavelength but does not guarantee deeper penetration. Discrimination also depends on bandwidth, pulse shape, target contrast and noise; wavelength is not automatically a precise location-error bound. For v=1×10⁸m/s and f=5×10⁸Hz, or500MHz, λ=v/f=0.20m. This does not establish an actual resolution of0.20m. High frequency without an attenuation check may image only shallow layers. No deep echo does not prove no utility, and sharp images do not establish correct velocity for depth conversion.",
+      "model": "教學假設，非現場設定值：取速度v=1×10⁸m/s、頻率f=5×10⁸Hz即500MHz，λ=v/f=0.20m；實際解析度不是直接宣稱0.20m。~Teaching assumptions, not field settings: For v=1×10⁸m/s and f=5×10⁸Hz, or500MHz, λ=v/f=0.20m. This does not establish an actual resolution of0.20m.",
+      "verify": "在代表性土區用已知目標比對不同頻段的可辨識程度，保留增益與濾波設定。驗證目標分離是否重現於重複測線，避免把影像銳化造成的邊緣當真實尺寸。同時排除以下干擾原因：使用高頻卻未檢查導電衰減可能只看到淺層，深部無回波不能證明沒有管線；影像看起來清晰也不代表深度轉換的速度已正確。~Compare frequency bands on known targets in representative ground, retaining gain and filtering settings. Confirm target separation on repeated lines rather than treating sharpened image edges as actual dimensions. Also rule out the following competing explanation: High frequency without an attenuation check may image only shallow layers. No deep echo does not prove no utility, and sharp images do not establish correct velocity for depth conversion.",
+      "failure": "使用高頻卻未檢查導電衰減可能只看到淺層，深部無回波不能證明沒有管線；影像看起來清晰也不代表深度轉換的速度已正確。~High frequency without an attenuation check may image only shallow layers. No deep echo does not prove no utility, and sharp images do not establish correct velocity for depth conversion.",
+      "misconception": "只要頻率與波長尺度符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for frequency and wavelength scale removes the need to check boundaries and independent evidence.",
+      "practice": "交接頻率與波長尺度時保存原始紀錄、單位與基準。在代表性土區用已知目標比對不同頻段的可辨識程度，保留增益與濾波設定。驗證目標分離是否重現於重複測線，避免把影像銳化造成的邊緣當真實尺寸。~When handing over frequency and wavelength scale, retain original records, units and reference conditions. Compare frequency bands on known targets in representative ground, retaining gain and filtering settings. Confirm target separation on repeated lines rather than treating sharpened image edges as actual dimensions."
+    },
+    {
+      "anchor": "傳播衰減範圍~Propagation attenuation range",
+      "title": "傳播衰減範圍~Propagation attenuation range",
+      "mechanism": "導電與介電損耗會降低振幅，回波還有幾何擴散與反射損失。指數模型只隔離一個衰減機制，單程與雙程必須寫清楚，避免把影像增益誤當訊號真實恢復。假設振幅衰減係數α=2m⁻¹、單程z=1m，A/A0=e^(−αz)=e^(−2)=0.135；雙程同深度僅此項為e^(−4)=0.0183。自動增益同時放大雜訊，容易讓無訊號區出現似管線的條紋；反過來，過度濾波可抹去弱回波，使漏探被誤認為地層均勻。~Conductive and dielectric losses reduce amplitude, alongside geometric spreading and reflection losses. An exponential model isolates only one mechanism. State whether the path is one-way or round-trip so display gain is not mistaken for recovered physical signal. For amplitude attenuation coefficient α=2m⁻¹ and one-way z=1m, A/A0=e^(−αz)=0.135. The corresponding round-trip factor alone is e^(−4)=0.0183. Automatic gain amplifies noise as well as signal and may create pipe-like stripes. Aggressive filtering can erase weak echoes, turning missed detections into a false impression of uniform ground.",
+      "model": "教學假設，非現場設定值：假設振幅衰減係數α=2m⁻¹、單程z=1m，A/A0=e^(−αz)=e^(−2)=0.135；雙程同深度僅此項為e^(−4)=0.0183。~Teaching assumptions, not field settings: For amplitude attenuation coefficient α=2m⁻¹ and one-way z=1m, A/A0=e^(−αz)=0.135. The corresponding round-trip factor alone is e^(−4)=0.0183.",
+      "verify": "比較相同儀器設定下的振幅與噪聲底，將增益後圖像和原始波形並存。以已知目標確認有效探測深度，超出驗證深度的區域標記為未確認而非空白安全區。同時排除以下干擾原因：自動增益同時放大雜訊，容易讓無訊號區出現似管線的條紋；反過來，過度濾波可抹去弱回波，使漏探被誤認為地層均勻。~Compare amplitudes and noise under identical settings and retain both raw and gain-adjusted records. Use known targets to establish effective depth, marking deeper regions unconfirmed rather than blank safe zones. Also rule out the following competing explanation: Automatic gain amplifies noise as well as signal and may create pipe-like stripes. Aggressive filtering can erase weak echoes, turning missed detections into a false impression of uniform ground.",
+      "failure": "自動增益同時放大雜訊，容易讓無訊號區出現似管線的條紋；反過來，過度濾波可抹去弱回波，使漏探被誤認為地層均勻。~Automatic gain amplifies noise as well as signal and may create pipe-like stripes. Aggressive filtering can erase weak echoes, turning missed detections into a false impression of uniform ground.",
+      "misconception": "只要傳播衰減範圍符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for propagation attenuation range removes the need to check boundaries and independent evidence.",
+      "practice": "交接傳播衰減範圍時保存原始紀錄、單位與基準。比較相同儀器設定下的振幅與噪聲底，將增益後圖像和原始波形並存。以已知目標確認有效探測深度，超出驗證深度的區域標記為未確認而非空白安全區。~When handing over propagation attenuation range, retain original records, units and reference conditions. Compare amplitudes and noise under identical settings and retain both raw and gain-adjusted records. Use known targets to establish effective depth, marking deeper regions unconfirmed rather than blank safe zones."
+    },
+    {
+      "anchor": "介面反射對比~Interface reflection contrast",
+      "title": "介面反射對比~Interface reflection contrast",
+      "mechanism": "電磁阻抗差讓能量在介面反射，振幅與極性受材料、含水、導電性及幾何共同影響。簡式只適用法向入射的無損非磁性介質，不能用一個反射係數唯一識別材質。取兩側εr1=4、εr2=9，以對比指標C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20；符號須依電場定義校核。若把同樣振幅一律標成同材質，含水土界面可能被誤當塑膠管；只依顏色圖層決定施工方式，會把顯示比例造成的差異當物性差異。~Impedance contrast causes reflection, with amplitude and polarity affected by material, moisture, conductivity and geometry. The simple relation assumes normal incidence in lossless nonmagnetic media and cannot uniquely identify material from one coefficient. For εr1=4 and εr2=9, contrast index C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20. Check sign against the chosen electric-field convention. Equal displayed amplitudes need not imply equal materials; a wet-soil boundary can resemble a plastic pipe. Choosing work methods from colours alone mistakes display scaling for physical properties.",
+      "model": "教學假設，非現場設定值：取兩側εr1=4、εr2=9，以對比指標C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20；符號須依電場定義校核。~Teaching assumptions, not field settings: For εr1=4 and εr2=9, contrast index C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20. Check sign against the chosen electric-field convention.",
+      "verify": "保存天線極性與處理流程，用可確認的介面對照振幅及相位。把金屬定位、既有管圖與雷達共同判讀，對無法辨識材質的目標維持未知分類。同時排除以下干擾原因：若把同樣振幅一律標成同材質，含水土界面可能被誤當塑膠管；只依顏色圖層決定施工方式，會把顯示比例造成的差異當物性差異。~Retain antenna polarity and processing steps, comparing phase and amplitude on a confirmed interface. Interpret radar with electromagnetic location and existing records, keeping material classification unknown when evidence is insufficient. Also rule out the following competing explanation: Equal displayed amplitudes need not imply equal materials; a wet-soil boundary can resemble a plastic pipe. Choosing work methods from colours alone mistakes display scaling for physical properties.",
+      "failure": "若把同樣振幅一律標成同材質，含水土界面可能被誤當塑膠管；只依顏色圖層決定施工方式，會把顯示比例造成的差異當物性差異。~Equal displayed amplitudes need not imply equal materials; a wet-soil boundary can resemble a plastic pipe. Choosing work methods from colours alone mistakes display scaling for physical properties.",
+      "misconception": "只要介面反射對比符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for interface reflection contrast removes the need to check boundaries and independent evidence.",
+      "practice": "交接介面反射對比時保存原始紀錄、單位與基準。保存天線極性與處理流程，用可確認的介面對照振幅及相位。把金屬定位、既有管圖與雷達共同判讀，對無法辨識材質的目標維持未知分類。~When handing over interface reflection contrast, retain original records, units and reference conditions. Retain antenna polarity and processing steps, comparing phase and amplitude on a confirmed interface. Interpret radar with electromagnetic location and existing records, keeping material classification unknown when evidence is insufficient."
+    },
+    {
+      "anchor": "里程輪定位誤差~Distance wheel location error",
+      "title": "里程輪定位誤差~Distance wheel location error",
+      "mechanism": "里程輪把掃描時間轉成平面距離，打滑及坡面路徑會造成比例誤差。雷達深度再準確，也不能補償錯誤的平面坐標，因此定位需要獨立控制點與閉合檢核。已知路段實長10.0m，里程輪顯示10.2m，相對誤差=(10.2−10.0)/10.0=2%；若條件不變，顯示距離需乘10/10.2校正。泥濘表面打滑會造成非固定比例的距離失真，單一校正係數不一定有效；若忽略局部失真，交叉測線可能錯誤配對到不同管線。~The distance wheel converts acquisition timing to horizontal position, with slip and sloping travel introducing scale error. Accurate radar depth cannot repair wrong map coordinates, making independent control points and closure checks necessary. For a true10.0m line measured as10.2m, relative error=(10.2−10.0)/10.0=2%. Under unchanged conditions, displayed distance requires a10/10.2 correction factor. Wheel slip on mud can create nonlinear distance distortion that one factor cannot correct. Ignoring local distortion can make crossing profiles falsely identify different utilities as the same line.",
+      "model": "教學假設，非現場設定值：已知路段實長10.0m，里程輪顯示10.2m，相對誤差=(10.2−10.0)/10.0=2%；若條件不變，顯示距離需乘10/10.2校正。~Teaching assumptions, not field settings: For a true10.0m line measured as10.2m, relative error=(10.2−10.0)/10.0=2%. Under unchanged conditions, displayed distance requires a10/10.2 correction factor.",
+      "verify": "在已知基線做往返測試，記錄地表材質、輪徑與接觸狀況。將控制點與雷達測線同步，閉合差超過計畫容許值時重查定位而非只平移成果圖。同時排除以下干擾原因：泥濘表面打滑會造成非固定比例的距離失真，單一校正係數不一定有效；若忽略局部失真，交叉測線可能錯誤配對到不同管線。~Run forward and reverse checks on a known baseline, noting surface, wheel diameter and contact. Synchronize control points with profiles; excessive closure error requires revisiting positioning rather than merely shifting the finished map. Also rule out the following competing explanation: Wheel slip on mud can create nonlinear distance distortion that one factor cannot correct. Ignoring local distortion can make crossing profiles falsely identify different utilities as the same line.",
+      "failure": "泥濘表面打滑會造成非固定比例的距離失真，單一校正係數不一定有效；若忽略局部失真，交叉測線可能錯誤配對到不同管線。~Wheel slip on mud can create nonlinear distance distortion that one factor cannot correct. Ignoring local distortion can make crossing profiles falsely identify different utilities as the same line.",
+      "misconception": "只要里程輪定位誤差符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for distance wheel location error removes the need to check boundaries and independent evidence.",
+      "practice": "交接里程輪定位誤差時保存原始紀錄、單位與基準。在已知基線做往返測試，記錄地表材質、輪徑與接觸狀況。將控制點與雷達測線同步，閉合差超過計畫容許值時重查定位而非只平移成果圖。~When handing over distance wheel location error, retain original records, units and reference conditions. Run forward and reverse checks on a known baseline, noting surface, wheel diameter and contact. Synchronize control points with profiles; excessive closure error requires revisiting positioning rather than merely shifting the finished map."
+    },
+    {
+      "anchor": "速度誤差傳遞~Velocity error propagation",
+      "title": "速度誤差傳遞~Velocity error propagation",
+      "mechanism": "當回波時間固定時，換算深度和速度成正比，所以速度不確定性應隨深度一起交付。資料處理若只報厘米小數位而不報速度範圍，會誇大成果的可信度。在t固定且小變動近似下，Δz/z=Δv/v；取v=0.10m/ns、Δv=0.01m/ns，深度相對變動為10%。把每條測線獨立調速到符合舊圖，可能消除真正的空間差異；這種循環校準只證明符合先驗圖面，不能當作獨立管線位置驗證。~With fixed echo time, converted depth is proportional to velocity, so velocity uncertainty belongs with the depth result. Reporting centimetre decimals without a velocity range exaggerates confidence in the interpretation. With fixed t and a small-change approximation, Δz/z=Δv/v. For v=0.10m/ns and Δv=0.01m/ns, the relative depth variation is10%. Adjusting each line's velocity to match old drawings can erase real spatial variation. Such circular calibration establishes agreement with prior assumptions rather than independently verifying a utility location.",
+      "model": "教學假設，非現場設定值：在t固定且小變動近似下，Δz/z=Δv/v；取v=0.10m/ns、Δv=0.01m/ns，深度相對變動為10%。~Teaching assumptions, not field settings: With fixed t and a small-change approximation, Δz/z=Δv/v. For v=0.10m/ns and Δv=0.01m/ns, the relative depth variation is10%.",
+      "verify": "對速度建立有證據的上下界，將同一回波分別換算成深度範圍。比較不同測線與實際揭露點，若偏差隨深度增加，優先檢查速度而非任意移動所有目標。同時排除以下干擾原因：把每條測線獨立調速到符合舊圖，可能消除真正的空間差異；這種循環校準只證明符合先驗圖面，不能當作獨立管線位置驗證。~Establish evidence-based velocity bounds and convert each echo to a depth interval. Compare lines and exposed control points; depth-dependent disagreement should prompt a velocity review instead of arbitrary target shifts. Also rule out the following competing explanation: Adjusting each line's velocity to match old drawings can erase real spatial variation. Such circular calibration establishes agreement with prior assumptions rather than independently verifying a utility location.",
+      "failure": "把每條測線獨立調速到符合舊圖，可能消除真正的空間差異；這種循環校準只證明符合先驗圖面，不能當作獨立管線位置驗證。~Adjusting each line's velocity to match old drawings can erase real spatial variation. Such circular calibration establishes agreement with prior assumptions rather than independently verifying a utility location.",
+      "misconception": "只要速度誤差傳遞符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for velocity error propagation removes the need to check boundaries and independent evidence.",
+      "practice": "交接速度誤差傳遞時保存原始紀錄、單位與基準。對速度建立有證據的上下界，將同一回波分別換算成深度範圍。比較不同測線與實際揭露點，若偏差隨深度增加，優先檢查速度而非任意移動所有目標。~When handing over velocity error propagation, retain original records, units and reference conditions. Establish evidence-based velocity bounds and convert each echo to a depth interval. Compare lines and exposed control points; depth-dependent disagreement should prompt a velocity review instead of arbitrary target shifts."
+    },
+    {
+      "anchor": "深度合成不確定性~Combined depth uncertainty",
+      "title": "深度合成不確定性~Combined depth uncertainty",
+      "mechanism": "時間拾取與速度都有誤差，兩者獨立時可用一階傳遞合成標準不確定性。若同一校準造成相關性則需加入共變異，所得區間也不等於保證不會誤挖的保護距離。採一階獨立誤差傳遞，z=vt/2，取t=30ns、v=0.10m/ns、σv=0.01m/ns、σt=1ns且獨立，σz=√[(tσv/2)²+(vσt/2)²]=0.158m。遺漏速度系統偏差會讓統計誤差條看似很窄，卻整體偏離真值；即使不確定性算式正確，錯誤的介質模型仍可主導實際定位偏差。~Both timing picks and velocity carry uncertainty. Independent errors allow first-order combination, while shared calibration may require covariance. The resulting statistical interval is not a guaranteed clearance preventing a utility strike. Using first-order propagation for z=vt/2, t=30ns, v=0.10m/ns, σv=0.01m/ns and independent σt=1ns, σz=√[(tσv/2)²+(vσt/2)²]=0.158m. Omitted systematic velocity bias can produce narrow error bars centred on the wrong depth. Even correct uncertainty arithmetic cannot compensate for a wrong propagation-medium model.",
+      "model": "教學假設，非現場設定值：採一階獨立誤差傳遞，z=vt/2，取t=30ns、v=0.10m/ns、σv=0.01m/ns、σt=1ns且獨立，σz=√[(tσv/2)²+(vσt/2)²]=0.158m。~Teaching assumptions, not field settings: Using first-order propagation for z=vt/2, t=30ns, v=0.10m/ns, σv=0.01m/ns and independent σt=1ns, σz=√[(tσv/2)²+(vσt/2)²]=0.158m.",
+      "verify": "重複拾取回波評估時間散布，另以獨立校準估計速度變異，明列是否相關。成果表同時列深度、標準不確定性與模型限制，由管線協調人員規劃下一階段確認。同時排除以下干擾原因：遺漏速度系統偏差會讓統計誤差條看似很窄，卻整體偏離真值；即使不確定性算式正確，錯誤的介質模型仍可主導實際定位偏差。~Use repeated picks to assess timing scatter and independent calibration for velocity variation, explicitly stating correlation assumptions. Deliver depth, standard uncertainty and model limitations together so utility coordinators can plan subsequent confirmation. Also rule out the following competing explanation: Omitted systematic velocity bias can produce narrow error bars centred on the wrong depth. Even correct uncertainty arithmetic cannot compensate for a wrong propagation-medium model.",
+      "failure": "遺漏速度系統偏差會讓統計誤差條看似很窄，卻整體偏離真值；即使不確定性算式正確，錯誤的介質模型仍可主導實際定位偏差。~Omitted systematic velocity bias can produce narrow error bars centred on the wrong depth. Even correct uncertainty arithmetic cannot compensate for a wrong propagation-medium model.",
+      "misconception": "只要深度合成不確定性符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for combined depth uncertainty removes the need to check boundaries and independent evidence.",
+      "practice": "交接深度合成不確定性時保存原始紀錄、單位與基準。重複拾取回波評估時間散布，另以獨立校準估計速度變異，明列是否相關。成果表同時列深度、標準不確定性與模型限制，由管線協調人員規劃下一階段確認。~When handing over combined depth uncertainty, retain original records, units and reference conditions. Use repeated picks to assess timing scatter and independent calibration for velocity variation, explicitly stating correlation assumptions. Deliver depth, standard uncertainty and model limitations together so utility coordinators can plan subsequent confirmation."
+    },
+    {
+      "anchor": "管線證據分類~Utility evidence classification",
+      "title": "管線證據分類~Utility evidence classification",
+      "mechanism": "管線成果需區分已獨立確認、推測及尚未釐清的目標，避免把完整彩色地圖誤當完整地下清單。雷達與既有紀錄不一致時，應保留衝突而不是以多數票決定真實位置。教學假設24個候選目標中18個得到獨立確認，確認比例18/24=75%；其餘6個仍未解，不能解讀成75%的整體探測率。若把未確認目標刪掉以提高成果整潔度，接手者會誤認該區已排除危險；候選目標的確認率也無法揭示完全沒有回波的漏探管線。~Utility deliverables must distinguish independently confirmed, inferred and unresolved targets. A complete-looking colour map is not a complete underground inventory. Conflicts between radar and existing records should remain visible rather than being resolved by a majority vote. If18 of24 candidate targets have independent confirmation, the confirmation fraction is75%. Six remain unresolved; this is not a75% detection rate for all utilities. Deleting unresolved targets to tidy the map implies a hazard-free area to the next user. Confirmation among candidates also says nothing about utilities that produced no detectable echo at all.",
+      "model": "教學假設，非現場設定值：教學假設24個候選目標中18個得到獨立確認，確認比例18/24=75%；其餘6個仍未解，不能解讀成75%的整體探測率。~Teaching assumptions, not field settings: If18 of24 candidate targets have independent confirmation, the confirmation fraction is75%. Six remain unresolved; this is not a75% detection rate for all utilities.",
+      "verify": "逐目標保存測線、坐標、回波、速度假設與確認方法，並標示未調查區及無法探測深度。開挖前由權責管線單位與工程師審查衝突清單及必要的進一步確認。同時排除以下干擾原因：若把未確認目標刪掉以提高成果整潔度，接手者會誤認該區已排除危險；候選目標的確認率也無法揭示完全沒有回波的漏探管線。~For each target retain lines, coordinates, echoes, velocity assumptions and confirmation method. Mark uninvestigated areas and inaccessible depths; responsible utility owners and engineers review conflicts and further confirmation needs before excavation. Also rule out the following competing explanation: Deleting unresolved targets to tidy the map implies a hazard-free area to the next user. Confirmation among candidates also says nothing about utilities that produced no detectable echo at all.",
+      "failure": "若把未確認目標刪掉以提高成果整潔度，接手者會誤認該區已排除危險；候選目標的確認率也無法揭示完全沒有回波的漏探管線。~Deleting unresolved targets to tidy the map implies a hazard-free area to the next user. Confirmation among candidates also says nothing about utilities that produced no detectable echo at all.",
+      "misconception": "只要管線證據分類符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for utility evidence classification removes the need to check boundaries and independent evidence.",
+      "practice": "交接管線證據分類時保存原始紀錄、單位與基準。逐目標保存測線、坐標、回波、速度假設與確認方法，並標示未調查區及無法探測深度。開挖前由權責管線單位與工程師審查衝突清單及必要的進一步確認。~When handing over utility evidence classification, retain original records, units and reference conditions. For each target retain lines, coordinates, echoes, velocity assumptions and confirmation method. Mark uninvestigated areas and inaccessible depths; responsible utility owners and engineers review conflicts and further confirmation needs before excavation."
+    }
+  ],
+  "id": "b198",
+  "title": "地下管線探地雷達探測~Ground-penetrating radar for buried utilities",
+  "discipline": "ug-ground",
+  "family": "ground",
+  "summary": "本課聚焦校準雷達波速與定位誤差並保留地下管線判讀的不確定性。十個單元依序辨識作用機制、量化假設、驗證程序與故障徵兆，讓學徒追蹤從原始資料到工程判斷的每一環。每個算例都帶單位與限制，不把局部成功或單一比值當成完整系統合格。交接須保留基準、異常與權責工程師核准的條件。~This course focuses on calibrate radar velocity and location error while retaining buried utility interpretation uncertainty. Ten units connect mechanisms, numerical assumptions, verification procedures and failure symptoms so apprentices can trace each inference from evidence to judgment. Every example includes units and limitations; one successful observation or ratio does not establish system acceptance. Handover retains datums, anomalies and conditions approved by the responsible engineer.",
+  "example": "以下為原創教學算例，所有輸入均為假設，不是地標實測。教學假設，非現場設定值：取真空波速c=0.3m/ns、相對介電常數εr=9，v=c/√εr=0.100m/ns；這是均質低損耗假設，並非所有土層固定波速。假設介電常數由9增加10%至9.9，固定c=0.3m/ns，速度由0.100降為0.09535m/ns，約下降4.65%；若回波時間不變，換算深度也下降4.65%，不是下降10%。先列出符號、單位及固定條件，再以獨立計算器核算。敏感度只描述這個模型中的輸入改變；若邊界或物理機制改變，應重建模型而非線性外推。最後把計算值、量測不確定性及需進一步驗證的項目分列，由責任工程師決定能否支持下一階段。~The following original example uses assumptions rather than landmark measurements. Teaching assumptions, not field settings: With c=0.3m/ns and relative permittivity εr=9, v=c/√εr=0.100m/ns. This assumes homogeneous low-loss ground, not a universal soil velocity. Increasing assumed permittivity from9 to9.9 by10% at fixed c=0.3m/ns changes velocity from0.100 to0.09535m/ns, about4.65% lower. At fixed echo time, converted depth also falls4.65%, rather than10%. First tabulate symbols, units and fixed conditions, then check the arithmetic independently. Sensitivity describes an input change inside this model only. Changed boundaries or physical mechanisms require a new model rather than linear extrapolation. Finally distinguish the calculated result, measurement uncertainty and evidence still needed; the responsible engineer decides whether the conclusion supports a next stage.",
+  "history": "本課以公開工程研究與機構文件建立校準雷達波速與定位誤差並保留地下管線判讀的不確定性的背景。美國地質調查所發布金銀島跨孔雷達研究（2000）。研究作者公開試坑雷達與DepthNet方法（2020）。研究作者公開管線方向與半徑反演模型（2022）。兩個地標用來比較環境、量測與維護證據，並非宣稱本課每一教學構件都實際用於兩處。來源若只可讀摘要，適用範圍已另行註明；現場設計須重新確認規範版本與責任。本課只重建公開原理。~This course uses public research and institutional documents to establish context for calibrate radar velocity and location error while retaining buried utility interpretation uncertainty. USGS publishes the Treasure Island crosshole radar study (2000). Authors publish test-pit radar and DepthNet research (2020). Authors publish a pipe direction and radius inversion model (2022). The two landmarks compare environments, measurements and maintenance evidence; they do not imply that every teaching component was installed at both sites. Abstract-only access is declared in source scopes. Field design requires current applicability and responsible review. This course reconstructs public principles only.",
+  "facts": [
+    "教學假設，非現場設定值：取真空波速c=0.3m/ns、相對介電常數εr=9，v=c/√εr=0.100m/ns；這是均質低損耗假設，並非所有土層固定波速。~Teaching assumptions, not field settings: With c=0.3m/ns and relative permittivity εr=9, v=c/√εr=0.100m/ns. This assumes homogeneous low-loss ground, not a universal soil velocity.",
+    "教學假設，非現場設定值：取v=0.1m/ns、校正後雙程t=30ns，z=vt/2=1.5m；t已扣除儀器與空氣路徑偏移，並假設垂直反射。~Teaching assumptions, not field settings: For v=0.1m/ns and corrected two-way t=30ns, z=vt/2=1.5m. Time already excludes instrument and air-path offsets, with vertical reflection assumed.",
+    "教學假設，非現場設定值：均質地盤點散射模型t(x)=2√(z²+x²)/v；取z=1m、x=1m、v=0.1m/ns，t=28.28ns，約28.3ns。~Teaching assumptions, not field settings: For a homogeneous point-scatterer model t(x)=2√(z²+x²)/v, use z=1m, x=1m and v=0.1m/ns to obtain t=28.28ns, about28.3ns.",
+    "教學假設，非現場設定值：取速度v=1×10⁸m/s、頻率f=5×10⁸Hz即500MHz，λ=v/f=0.20m；實際解析度不是直接宣稱0.20m。~Teaching assumptions, not field settings: For v=1×10⁸m/s and f=5×10⁸Hz, or500MHz, λ=v/f=0.20m. This does not establish an actual resolution of0.20m.",
+    "教學假設，非現場設定值：假設振幅衰減係數α=2m⁻¹、單程z=1m，A/A0=e^(−αz)=e^(−2)=0.135；雙程同深度僅此項為e^(−4)=0.0183。~Teaching assumptions, not field settings: For amplitude attenuation coefficient α=2m⁻¹ and one-way z=1m, A/A0=e^(−αz)=0.135. The corresponding round-trip factor alone is e^(−4)=0.0183.",
+    "教學假設，非現場設定值：取兩側εr1=4、εr2=9，以對比指標C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20；符號須依電場定義校核。~Teaching assumptions, not field settings: For εr1=4 and εr2=9, contrast index C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20. Check sign against the chosen electric-field convention."
+  ],
+  "timeline": [
+    {
+      "year": "2000",
+      "event": "美國地質調查所發布金銀島跨孔雷達研究~USGS publishes the Treasure Island crosshole radar study"
+    },
+    {
+      "year": "2020",
+      "event": "研究作者公開試坑雷達與DepthNet方法~Authors publish test-pit radar and DepthNet research"
+    },
+    {
+      "year": "2022",
+      "event": "研究作者公開管線方向與半徑反演模型~Authors publish a pipe direction and radius inversion model"
+    }
+  ],
+  "codes": [
+    "香港岩土指南二：場地勘察指南~Hong Kong Geoguide 2: Guide to Site Investigation",
+    "美國地質調查所金銀島雷達研究，2000，研究方法參考~USGS Treasure Island radar study, 2000, research-method reference"
+  ],
+  "landmarks": [
+    "金銀島雷達試驗場：介質校準對照~Treasure Island radar test site: medium calibration comparison",
+    "GSSI混凝土試坑：管線影像研究~GSSI concrete test pit: utility-imaging research"
+  ],
+  "place": {
+    "name": "金銀島公開研究背景區~Treasure Island public research context",
+    "country": "美國~United States",
+    "lat": 37.825,
+    "lng": -122.373,
+    "query": "Treasure Island San Francisco California"
+  },
+  "sources": [
+    {
+      "key": "radar",
+      "title": "金銀島跨孔雷達研究",
+      "titleEn": "Treasure Island crosshole radar study",
+      "publisher": "US Geological Survey",
+      "url": "https://www.usgs.gov/publications/non-destructive-measurement-soil-liquefaction-density-change-crosshole-radar",
+      "sourceType": "primary",
+      "scope": "二〇〇〇年雷達與土體介電特性的原研究摘要；跨孔研究不是道路管線探測同一幾何。",
+      "scopeEn": "Original 2000 research abstract on radar and soil dielectric properties; crosshole geometry differs from surface utility surveys."
+    },
+    {
+      "key": "ellipse",
+      "title": "管線方向與半徑反演研究",
+      "titleEn": "Estimating the Direction and Radius of Pipe from GPR Image by Ellipse Inversion Model",
+      "publisher": "Zhou et al. / arXiv",
+      "url": "https://arxiv.org/abs/2201.10184",
+      "sourceType": "primary",
+      "scope": "二〇二二年作者預印本摘要；支援斜交測線造成管線判讀非唯一性的研究背景。",
+      "scopeEn": "Author preprint abstract from 2022; research context for ambiguous interpretation of oblique utility crossings."
+    },
+    {
+      "key": "depthnet",
+      "title": "雷達地下物體重建研究",
+      "titleEn": "GPR-based Subsurface Object Detection and Reconstruction Using Random Motion and DepthNet",
+      "publisher": "Feng et al. / arXiv",
+      "url": "https://arxiv.org/abs/2008.08731",
+      "sourceType": "primary",
+      "scope": "二〇二〇年作者摘要說明GSSI混凝土試坑資料；研究成效不外推為本課或任意場址精度。",
+      "scopeEn": "2020 author abstract identifies GSSI concrete test-pit data; reported performance is not generalized to this course or arbitrary sites."
+    },
+    {
+      "key": "geo2",
+      "title": "岩土指南二：場地勘察",
+      "titleEn": "Geoguide 2: Guide to Site Investigation",
+      "publisher": "Hong Kong CEDD",
+      "url": "https://www.cedd.gov.hk/eng/publications/geo/geoguides/geo-g2/",
+      "sourceType": "primary",
+      "scope": "二〇一七年更新出版頁；支援場地調查與證據紀錄的背景。",
+      "scopeEn": "2017 updated publication page; background for site investigation and evidence records."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "US Geological Survey",
+      "nameEn": "US Geological Survey",
+      "business": "提供本課相關的公開工程方法與驗證研究。",
+      "businessEn": "Provides public engineering methods and verification research relevant to this course.",
+      "url": "https://www.usgs.gov/publications/non-destructive-measurement-soil-liquefaction-density-change-crosshole-radar",
+      "investorUrl": "",
+      "security": null,
+      "role": "二〇〇〇年雷達與土體介電特性的原研究摘要；跨孔研究不是道路管線探測同一幾何。",
+      "roleEn": "Original 2000 research abstract on radar and soil dielectric properties; crosshole geometry differs from surface utility surveys."
+    },
+    {
+      "name": "Zhou et al. / arXiv",
+      "nameEn": "Zhou et al. / arXiv",
+      "business": "提供本課相關的公開工程方法與驗證研究。",
+      "businessEn": "Provides public engineering methods and verification research relevant to this course.",
+      "url": "https://arxiv.org/abs/2201.10184",
+      "investorUrl": "",
+      "security": null,
+      "role": "二〇二二年作者預印本摘要；支援斜交測線造成管線判讀非唯一性的研究背景。",
+      "roleEn": "Author preprint abstract from 2022; research context for ambiguous interpretation of oblique utility crossings."
+    }
+  ],
+  "related": [
+    "b126",
+    "b199"
+  ],
+  "architectureNodes": [
+    [
+      "介電常數與波速",
+      "Permittivity and wave speed"
+    ],
+    [
+      "雙曲線目標幾何",
+      "Hyperbolic target geometry"
+    ],
+    [
+      "傳播衰減範圍",
+      "Propagation attenuation range"
+    ],
+    [
+      "里程輪定位誤差",
+      "Distance wheel location error"
+    ],
+    [
+      "管線證據分類",
+      "Utility evidence classification"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      1
+    ]
+  ]
+}

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d117-23ee6b80ba08a600.json"]={sha256:"23ee6b80ba08a600564a938535ec99c2e519be2cc8265a07309d475d052dbb33",value:{"id":"d117","title":"冷軋薄板表面品質工程","titleEn":"Cold Rolled Sheet Surface Quality Engineering","category":"materials","kind":"craft","summary":"「冷軋薄板表面品質工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cold Rolled Sheet Surface Quality Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d437-2280634ac3c55dbb.json"]={sha256:"2280634ac3c55dbb91df4f696ba74d7c8fa0c1bbe95a9f905a940d2067568831",value:{"id":"d437","title":"臺灣光源TLS","titleEn":"Taiwan Light Source TLS","category":"megascience","kind":"project","summary":"「臺灣光源TLS」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Taiwan Light Source TLS: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

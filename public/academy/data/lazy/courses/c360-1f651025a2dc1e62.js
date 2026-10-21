@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c360-1f651025a2dc1e62.json"]={sha256:"1f651025a2dc1e62933960e078bd4d5bd37d80ce6b2186017f079125f547470f",value:{"title":"Mars Reconnaissance Orbiter","titleEn":"Mars Reconnaissance Orbiter","category":"space","kind":"project","summary":"課程規劃主題：高解析成像與中繼通訊。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: high-resolution imaging and relay communications. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c360"}};

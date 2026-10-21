@@ -25,7 +25,7 @@ output = pathlib.Path(sys.argv[2]).resolve()
 source = root / 'public' / 'academy'
 if not source.is_dir():
     source = root / 'portable' / 'public'
-required = ['index.html','bootstrap.js','app.bundle.js','offline-data.js','offline-runtime.js','offline-build.json','app.js','style.css','data/catalog.json','data/featured.json','data/sources.json','data/photos.json']
+required = ['index.html','bootstrap.js','app.bundle.js','offline-data.js','offline-runtime.js','offline-build.json','app.js','style.css','data/lazy/index.json','data/catalog.json','data/featured.json','data/sources.json','data/photos.json']
 missing = [p for p in required if not (source/p).is_file()]
 if missing:
     sys.exit('靜態素材尚未完整，缺少：' + ', '.join(missing))

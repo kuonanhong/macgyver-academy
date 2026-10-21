@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d088-4c1695265b81165f.json"]={sha256:"4c1695265b81165fe523a72746cf23d3f87a76d4a2122455cdc4266106a81f75",value:{"id":"d088","title":"鈉離子電池儲能架構","titleEn":"Sodium-Ion Battery Storage Architecture","category":"energy","kind":"craft","summary":"「鈉離子電池儲能架構」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sodium-Ion Battery Storage Architecture: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

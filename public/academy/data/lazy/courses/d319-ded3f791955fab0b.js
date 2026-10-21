@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d319-ded3f791955fab0b.json"]={sha256:"ded3f791955fab0be539621a02ea27dcd92792d99236fe312d45910ff63769ea",value:{"id":"d319","title":"溫室二氧化碳平衡模型","titleEn":"Greenhouse Carbon Dioxide Balance Models","category":"process","kind":"craft","summary":"「溫室二氧化碳平衡模型」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Greenhouse Carbon Dioxide Balance Models: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

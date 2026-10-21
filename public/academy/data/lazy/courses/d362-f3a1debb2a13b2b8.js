@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d362-f3a1debb2a13b2b8.json"]={sha256:"f3a1debb2a13b2b8c5b198e238d744a23873ea939cbd809724c479fb50d7116a",value:{"id":"d362","title":"食品加工線清洗驗證架構","titleEn":"Food Line Cleaning Verification Architecture","category":"process","kind":"craft","summary":"「食品加工線清洗驗證架構」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Food Line Cleaning Verification Architecture: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

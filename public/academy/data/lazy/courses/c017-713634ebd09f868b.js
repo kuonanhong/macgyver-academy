@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c017-713634ebd09f868b.json"]={sha256:"713634ebd09f868b7bb331f33410206e08b3aafa5b18a1877008d2e211f5c05e",value:{"title":"Gulfstream G650 長程公務機","titleEn":"Gulfstream G650 long-range business jet","category":"aerospace","kind":"project","summary":"課程規劃主題：高速巡航與客艙環境。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: high-speed cruise and cabin environment. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c017"}};

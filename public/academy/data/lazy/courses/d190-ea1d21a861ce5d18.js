@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d190-ea1d21a861ce5d18.json"]={sha256:"ea1d21a861ce5d18b96c6cec1c02fd32217caa4241c16cae5ac40065e779f542",value:{"id":"d190","title":"非晶金屬帶材製造","titleEn":"Amorphous Metal Ribbon Manufacturing","category":"materials","kind":"craft","summary":"「非晶金屬帶材製造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Amorphous Metal Ribbon Manufacturing: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

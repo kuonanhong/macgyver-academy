@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d189-8b5252cbd9297ddc.json"]={sha256:"8b5252cbd9297ddc97df13aab22884cebc716e4b67f1225f66085b60582042c4",value:{"id":"d189","title":"形狀記憶合金致動元件","titleEn":"Shape Memory Alloy Actuator Elements","category":"materials","kind":"craft","summary":"「形狀記憶合金致動元件」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Shape Memory Alloy Actuator Elements: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

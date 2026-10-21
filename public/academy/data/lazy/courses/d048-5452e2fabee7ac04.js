@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d048-5452e2fabee7ac04.json"]={sha256:"5452e2fabee7ac04849b689e1c0ae9c81d107644fd562e2dc8708643d7087cc6",value:{"id":"d048","title":"波夕市地熱區域供熱系統","titleEn":"Boise District Geothermal Heating System","category":"energy","kind":"project","summary":"「波夕市地熱區域供熱系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Boise District Geothermal Heating System: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

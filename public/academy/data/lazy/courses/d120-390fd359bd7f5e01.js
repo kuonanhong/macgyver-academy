@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d120-390fd359bd7f5e01.json"]={sha256:"390fd359bd7f5e011df5238c45e412affc4f1571323a1c9b588b85b602e883b7",value:{"id":"d120","title":"電渣重熔品質控制","titleEn":"Electroslag Remelting Quality Control","category":"materials","kind":"craft","summary":"「電渣重熔品質控制」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Electroslag Remelting Quality Control: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

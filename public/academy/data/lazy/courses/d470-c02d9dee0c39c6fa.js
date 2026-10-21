@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d470-c02d9dee0c39c6fa.json"]={sha256:"c02d9dee0c39c6fa9bdb5744271444b9cb52b58aa0c5212030d15a7c468b7fc6",value:{"id":"d470","title":"丹尼爾井上太陽望遠鏡","titleEn":"Daniel K. Inouye Solar Telescope","category":"megascience","kind":"project","summary":"「丹尼爾井上太陽望遠鏡」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Daniel K. Inouye Solar Telescope: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,188 @@
+{
+  "settlement": {
+    "input_sha256": "73834417f067d956e0dea6e350f7c4762a523de9a143e52e1eb4f7aeaf7032bf",
+    "synthetic": true,
+    "assumptions": "Greenfield Gaussian trough; no building interaction or groundwater settlement. Synthetic geometry; not a project prediction.",
+    "inputs": {
+      "diameter_m": 6,
+      "trough_width_m": 10,
+      "volume_loss_percent": 1
+    },
+    "results": {
+      "peak_settlement_mm": 11.279827235839504,
+      "lost_area_m2": 0.2827433388230814,
+      "integrated_trough_area_m2": 0.2827433382651792,
+      "relative_balance_error": 1.9731752876285e-09
+    }
+  },
+  "tbm": {
+    "input_sha256": "770d3a1d10ae5f80722f1b646e3dfd497041020168c7c9ac278e65bf7911fef5",
+    "synthetic": true,
+    "assumptions": "Constant active penetration and speed. Input cutting hours already exclude downtime. No logistics simulation or schedule guarantee.",
+    "inputs": {
+      "penetration_mm_per_rev": 5,
+      "rpm": 2,
+      "cutting_hours_per_day": [
+        10,
+        8,
+        0,
+        12,
+        10,
+        9,
+        7
+      ],
+      "ring_width_m": 1.5
+    },
+    "results": {
+      "daily_advance_m": [
+        6.0,
+        4.8,
+        0.0,
+        7.2,
+        6.0,
+        5.4,
+        4.2
+      ],
+      "total_advance_m": 33.6,
+      "complete_rings": 22,
+      "mean_calendar_advance_m_per_day": 4.8
+    }
+  },
+  "drainage": {
+    "input_sha256": "a68ec3c3a0ddb7f184b71daeb21a2a8fa68d00e34e2d7f2b8817c93bd8548598",
+    "synthetic": true,
+    "assumptions": "Homogeneous independent saturated paths, steady laminar flow, equal head difference. No fracture turbulence or 3-D excavation inflow.",
+    "inputs": {
+      "head_difference_m": 10,
+      "paths": [
+        {
+          "conductivity_m_per_s": 0.0001,
+          "area_m2": 20,
+          "length_m": 20
+        },
+        {
+          "conductivity_m_per_s": 2e-05,
+          "area_m2": 30,
+          "length_m": 10
+        }
+      ]
+    },
+    "results": {
+      "path_flows_m3_per_h": [
+        3.6,
+        2.16
+      ],
+      "total_flow_m3_per_h": 5.760000000000001,
+      "mass_flow_kg_per_s": 1.6,
+      "flow_shares": [
+        0.625,
+        0.375
+      ]
+    }
+  },
+  "ventilation": {
+    "input_sha256": "fa7fcd09d6d6dd92821a57d4dcaf35217fc6fe69494963e2c121e09a8452321a",
+    "synthetic": true,
+    "assumptions": "Synthetic fixed-speed fan and fixed incompressible system; no smoke-control, exposure or emergency design.",
+    "inputs": {
+      "fan_shutoff_pa": 1000,
+      "fan_curve_coefficient": 0.2,
+      "system_resistance": 0.2,
+      "efficiency": 0.8
+    },
+    "results": {
+      "operating_flow_m3_per_s": 50.0,
+      "system_pressure_pa": 500.0,
+      "shaft_power_kw": 31.25,
+      "curve_residual_pa": 0.0
+    }
+  },
+  "convergence": {
+    "input_sha256": "f05c7cd9679bce7c575a9045897f602842fda1a380ffc5ea203e3389b23a198c",
+    "synthetic": true,
+    "assumptions": "Synthetic exponential curve, grid tau 1–30 days. Extrapolation cannot diagnose stability or authorize excavation.",
+    "inputs": {
+      "observations": [
+        [
+          1,
+          3.625385
+        ],
+        [
+          2,
+          6.593599
+        ],
+        [
+          5,
+          12.642411
+        ],
+        [
+          10,
+          17.293294
+        ],
+        [
+          20,
+          19.633687
+        ]
+      ]
+    },
+    "results": {
+      "fitted_limit_mm": 19.99999971824564,
+      "fitted_tau_days": 5.0,
+      "rmse_mm": 6.961068316397992e-08,
+      "forecast_day30_mm": 19.950424675410712,
+      "at_search_boundary": false
+    }
+  },
+  "consolidation": {
+    "input_sha256": "0af6a3e1516c4593056689ace31ff4668cd08b5e8c70785a8cafa8f7cbd45b96",
+    "synthetic": true,
+    "assumptions": "Terzaghi 1-D, uniform initial excess pore pressure, constant cv, maximum drainage path H. No secondary compression.",
+    "inputs": {
+      "cv_m2_per_day": 0.01,
+      "drainage_path_m": 5,
+      "times_days": [
+        0,
+        100,
+        500,
+        1000,
+        2120,
+        5000
+      ]
+    },
+    "results": {
+      "t90_days": 2120.0000000000005,
+      "history": [
+        {
+          "time_days": 0,
+          "time_factor": 0.0,
+          "average_degree_percent": 0.0
+        },
+        {
+          "time_days": 100,
+          "time_factor": 0.04,
+          "average_degree_percent": 22.567583341898413
+        },
+        {
+          "time_days": 500,
+          "time_factor": 0.2,
+          "average_degree_percent": 50.40878202025485
+        },
+        {
+          "time_days": 1000,
+          "time_factor": 0.4,
+          "average_degree_percent": 69.78819062267267
+        },
+        {
+          "time_days": 2120,
+          "time_factor": 0.848,
+          "average_degree_percent": 89.9978924187683
+        },
+        {
+          "time_days": 5000,
+          "time_factor": 2.0,
+          "average_degree_percent": 99.41704789261604
+        }
+      ]
+    }
+  }
+}

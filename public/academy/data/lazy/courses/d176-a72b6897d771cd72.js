@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d176-a72b6897d771cd72.json"]={sha256:"a72b6897d771cd72c638db7963da62d456d14ff7d59b5c00ba4ee3c8040abd42",value:{"id":"d176","title":"彈性體疲勞與密封設計","titleEn":"Elastomer Fatigue and Seal Design","category":"materials","kind":"craft","summary":"「彈性體疲勞與密封設計」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Elastomer Fatigue and Seal Design: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

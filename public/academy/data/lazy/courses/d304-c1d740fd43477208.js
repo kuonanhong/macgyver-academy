@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d304-c1d740fd43477208.json"]={sha256:"c1d740fd43477208755dd7bebf044d56e66def2c1669d060da5c22e8b4d552e2",value:{"id":"d304","title":"新加坡NEWater回收水系統","titleEn":"Singapore NEWater Reclaimed Water System","category":"process","kind":"project","summary":"「新加坡NEWater回收水系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Singapore NEWater Reclaimed Water System: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

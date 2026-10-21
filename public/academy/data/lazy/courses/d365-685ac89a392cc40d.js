@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d365-685ac89a392cc40d.json"]={sha256:"685ac89a392cc40da52a4e484e2df9e9d13b1681a9122a2e05fb0feb811bdd5c",value:{"id":"d365","title":"食品包裝機伺服同步","titleEn":"Food Packaging Machine Servo Synchronization","category":"process","kind":"craft","summary":"「食品包裝機伺服同步」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Food Packaging Machine Servo Synchronization: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d374-fddf68d67b5260b7.json"]={sha256:"fddf68d67b5260b733407f75c588f7dd33f7b2e00e42ab9202963a31ca65c57b",value:{"id":"d374","title":"魚菜共生物質平衡","titleEn":"Aquaponic Material Balance","category":"process","kind":"craft","summary":"「魚菜共生物質平衡」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aquaponic Material Balance: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c356-d0df903ea3677fa1.json"]={sha256:"d0df903ea3677fa16485990625146a124f1dd12309cce6dc3db6f71468bb8a20",value:{"title":"Curiosity 火星科學實驗室","titleEn":"Curiosity Mars Science Laboratory","category":"space","kind":"project","summary":"課程規劃主題：移動實驗室與自主觀測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: mobile laboratories and autonomous observation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c356"}};

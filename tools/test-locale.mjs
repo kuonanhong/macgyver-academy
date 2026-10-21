@@ -186,3 +186,13 @@ console.log(JSON.stringify({
   ],
   limitations: 'Controlled DOM fixtures exercise controller behavior; browser layout and live AI are not covered.',
 }, null, 2));
+
+// V14: local empty output falls back to an injected server/model batch callback.
+let batches=0;
+globalThis.Translator={availability:async()=> 'available',create:async()=>({translate:async()=>'',destroy(){}})};
+const custom=createLocaleController({getLanguage:()=> 'es',getTranslationAvailable:()=>true,translateBatch:async({texts,language})=>{batches++;assert.equal(language,'es');return {translations:texts.map(x=>'ES '+x)};}});
+const specific=textNode('A distinct underground example');assert.equal((await custom.apply(root([specific]))).state,'translated');assert.equal(specific.nodeValue,'ES A distinct underground example');assert.equal(batches,1);
+const incomplete=createLocaleController({getLanguage:()=> 'it',getTranslationAvailable:()=>true,translateBatch:async()=>({translations:['']})});
+const keep=textNode('Original after invalid batch');assert.notEqual((await incomplete.apply(root([keep]))).state,'translated');assert.equal(keep.nodeValue,'Original after invalid batch');
+delete globalThis.Translator;
+console.log('PASS V14 locale: local empty output falls back to injected translator; invalid complete-batch output preserves source and never reports complete.');

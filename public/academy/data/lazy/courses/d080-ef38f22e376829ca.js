@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d080-ef38f22e376829ca.json"]={sha256:"ef38f22e376829ca31434013352a67e932f78cf4156bfe146b533c5c941f2dee",value:{"id":"d080","title":"有機朗肯循環餘熱發電","titleEn":"Organic Rankine Cycle Waste Heat Recovery","category":"energy","kind":"craft","summary":"「有機朗肯循環餘熱發電」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Organic Rankine Cycle Waste Heat Recovery: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

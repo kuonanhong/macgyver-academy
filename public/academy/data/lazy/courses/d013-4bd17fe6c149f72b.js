@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d013-4bd17fe6c149f72b.json"]={sha256:"4bd17fe6c149f72b9974103a07a78f4d4c7b73a53e86f11fce47ed943b09cb81",value:{"id":"d013","title":"德黑里水電站","titleEn":"Tehri Hydropower Plant","category":"energy","kind":"project","summary":"「德黑里水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Tehri Hydropower Plant: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

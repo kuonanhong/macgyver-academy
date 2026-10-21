@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d173-185144207ce4cf61.json"]={sha256:"185144207ce4cf61f7a47823b561f8aab71db0c8615b64525c9d956d95f2cc3e",value:{"id":"d173","title":"高分子薄膜雙軸延伸","titleEn":"Polymer Film Biaxial Stretching","category":"materials","kind":"craft","summary":"「高分子薄膜雙軸延伸」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Polymer Film Biaxial Stretching: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

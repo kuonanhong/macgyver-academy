@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c422-5d1a7505d7731f6c.json"]={sha256:"5d1a7505d7731f6c3a0ffa8e61feb56cb37ee04767fff66bb07ec9f987831374",value:{"title":"DMG MORI DMU 五軸加工平台","titleEn":"DMG MORI DMU five-axis machining platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：多軸運動與精度補償。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: multi-axis motion and accuracy compensation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c422"}};

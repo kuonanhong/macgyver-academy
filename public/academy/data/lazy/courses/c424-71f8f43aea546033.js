@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c424-71f8f43aea546033.json"]={sha256:"71f8f43aea5460336abe6078f503de58bb30965aa19c1c63cb69ab43d4661b50",value:{"title":"TRUMPF TruLaser 雷射切割平台","titleEn":"TRUMPF TruLaser laser-cutting platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：光束切割與板材物流。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: laser cutting and sheet logistics. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c424"}};

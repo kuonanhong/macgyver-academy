@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d325-05438b35159960b9.json"]={sha256:"05438b35159960b9d8c712302d20291be1fb598318cd8ed6783a9a7f2174ba44",value:{"id":"d325","title":"果實採摘視覺機器人","titleEn":"Vision Guided Fruit Picking Robots","category":"process","kind":"craft","summary":"「果實採摘視覺機器人」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Vision Guided Fruit Picking Robots: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c355-dc2016b69496815f.json"]={sha256:"dc2016b69496815fe16700d94b10ee0c9c6eafb909b9fdfc266dff30a9341649",value:{"title":"Mars Exploration Rovers 火星車","titleEn":"Mars Exploration Rovers","category":"space","kind":"project","summary":"課程規劃主題：移動機構與地質觀測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: mobility systems and geological observation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c355"}};

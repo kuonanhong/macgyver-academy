@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c400-a3770d58118f757e.json"]={sha256:"a3770d58118f757e49b2dd6841f5738621b431f175d92b6be7c51f20d6847c39",value:{"title":"航太任務系統需求管理","titleEn":"Space-mission requirements management","category":"space","kind":"craft","summary":"課程規劃主題：需求分解與驗證矩陣。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: requirements decomposition and verification matrices. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c400"}};

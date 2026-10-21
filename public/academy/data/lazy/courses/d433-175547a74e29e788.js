@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d433-175547a74e29e788.json"]={sha256:"175547a74e29e7889e3c9c3f7c1e488056d398c38c4c695af4cd882c16120537",value:{"id":"d433","title":"ESRF歐洲同步輻射光源","titleEn":"European Synchrotron Radiation Facility ESRF","category":"megascience","kind":"project","summary":"「ESRF歐洲同步輻射光源」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for European Synchrotron Radiation Facility ESRF: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

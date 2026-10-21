@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d270-6c57973cf75f14e1.json"]={sha256:"6c57973cf75f14e10f98d19574902201ee3ce0a5dc827d4276e206174468192b",value:{"id":"d270","title":"觸覺回饋義肢介面","titleEn":"Haptic Feedback Prosthetic Interfaces","category":"biomedical","kind":"craft","summary":"「觸覺回饋義肢介面」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Haptic Feedback Prosthetic Interfaces: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

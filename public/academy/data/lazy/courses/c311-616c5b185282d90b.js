@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c311-616c5b185282d90b.json"]={sha256:"616c5b185282d90b81e7db6545147481736223e3219cd694c5e8f5649bd3baa6",value:{"title":"Sentinel-2 多光譜觀測","titleEn":"Sentinel-2 multispectral observation","category":"space","kind":"project","summary":"課程規劃主題：光學地表觀測與影像處理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: optical land observation and image processing. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c311"}};

@@ -1,0 +1,253 @@
+{
+  "id": "b149",
+  "title": "隧道台階法施工~Bench excavation for tunnels",
+  "discipline": "ug-excavation",
+  "family": "excavation",
+  "focus": "台階開挖的拱腳承載、核心保留與仰拱閉合時序~Bench excavation, arch-foot bearing, retained core and invert-closure timing",
+  "summary": "台階法把上半斷面、下半斷面與仰拱分階段形成，各階段的支承位置和自由邊界都會改變。本課追蹤拱腳承載、保留核心、左右開挖與閉合距離的互相影響，再以幾何、物料、收斂及排水資料進行核對。所有算例服務於辨識荷載轉移與資料限制，不指定實際台階長度、開挖步距或拆除程序。~Bench excavation forms the upper section, lower section and invert in stages, changing support locations and free boundaries along the way. The course follows arch-foot bearing, retained core, left-right excavation and closure distance, checking their interaction through geometry, quantities, convergence and drainage evidence. Calculations identify load transfer and data limitations; they do not prescribe actual bench lengths, excavation increments or removal procedures.",
+  "history": "台階並不只是一種出碴方便的幾何安排，而是讓支護在不同時間和支承條件下工作的施工系統。Crossrail二〇一四年公開的設計論文回顧一九九二年Heathrow Express試驗隧道，Stepney Green原作者資料則展示上半斷面、台階和仰拱的分割背景。二〇〇九年FHWA手冊提供土建方法參照。本課使用這些公開脈絡比較施工邊界，並未把任何案例的實際尺寸或開挖許可移植給學員。~A bench is more than a convenient shape for muck removal; it is a system in which support operates at changing times and boundary conditions. Crossrail’s 2014 design paper reviews the 1992 Heathrow Express trial, while the Stepney Green authors describe upper, bench and invert subdivisions. The 2009 FHWA manual provides civil-method context. These public examples frame comparisons of construction boundaries; no actual project dimensions or excavation permissions are transferred to learners.",
+  "units": [
+    {
+      "title": "上半斷面與反力位置~Upper section and reaction locations",
+      "anchor": "上半斷面與反力位置~Upper section and reaction locations",
+      "mechanism": "上半支護形成後，拱部需求先傳到當時可用的拱腳與地層；下半部未開挖並不表示它沒有受力。簡化對稱反力只適合展示力平衡，傾斜地層和幾何不對稱都會改變左右分配。 假設垂直合力W=900 kN且對稱，左右反力各450 kN；若假設分配為60%與40%，則為540及360 kN，總和仍為900 kN。 一側拱腳較軟會使支護旋轉或重新分配反力，總位移平均值可能不大但局部彎矩上升；只核對總荷載會忽略支承差異所引起的細部需求。~After upper support forms, crown demand reaches the available arch feet and surrounding ground. An unexcavated lower section is still mechanically involved. Symmetric reactions illustrate equilibrium only; inclined strata and asymmetric geometry can alter left-right load sharing. Assume vertical resultant W=900 kN. Symmetry gives 450 kN at each side. A hypothetical 60/40 split instead gives 540 and 360 kN, still summing to 900 kN. A softer arch foot may rotate the lining or redistribute reactions. Average movement can remain modest while local bending increases. Checking total load alone therefore misses demands caused by unequal support conditions.",
+      "model": "教學假設，非現場設定或設計允收值。假設垂直合力W=900 kN且對稱，左右反力各450 kN；若假設分配為60%與40%，則為540及360 kN，總和仍為900 kN。~Teaching assumptions, not operating settings or design acceptance limits. Assume vertical resultant W=900 kN. Symmetry gives 450 kN at each side. A hypothetical 60/40 split instead gives 540 and 360 kN, still summing to 900 kN.",
+      "verify": "將拱腳位置、支護形狀與量測變形對到同一斷面，核對左右地層是否支持對稱假設；比較拱腳沉陷與上部收斂的關聯，若反應不對稱，保留偏載情境送設計者審查而非直接取平均。~Map arch-foot locations, support shape and measured movement onto one section. Check whether the ground supports symmetry. Compare foot settlement with upper convergence; if behavior is asymmetric, retain eccentric-load scenarios for designer review rather than replacing them with a mean.",
+      "failure": "一側拱腳較軟會使支護旋轉或重新分配反力，總位移平均值可能不大但局部彎矩上升；只核對總荷載會忽略支承差異所引起的細部需求。~A softer arch foot may rotate the lining or redistribute reactions. Average movement can remain modest while local bending increases. Checking total load alone therefore misses demands caused by unequal support conditions.",
+      "misconception": "總荷載不變就表示左右拱腳需求一定不變。~An unchanged total load means that demand at each arch foot must also remain unchanged.",
+      "practice": "每階段圖面標出當時有效支承而非最終支承，偏載假設與量測差異另列；下半開挖前由設計和現場技術負責人確認荷載路徑。~Stage drawings show currently effective supports rather than final ones. List eccentric-load assumptions and observational differences separately; design and site technical leads confirm the load path before lower excavation proceeds."
+    },
+    {
+      "title": "台階長度與暴露歷程~Bench length and exposure history",
+      "anchor": "台階長度與暴露歷程~Bench length and exposure history",
+      "mechanism": "上半掌子面到下半支護完成點的距離，代表不同斷面停留於開口狀態的時間歷程。進尺相同但中途停機不同，會形成不同暴露時間，因此台階長度不能單獨替代施工序列和地層時間效應。 假設兩作業點穩定相距12 m、同步平均推進2 m/day，一斷面等待時間12/2=6 days；加入3天停頓則為9 days，非允許等待期。 只追蹤掌子面距離會忽略停機期間的變形累積，長台階與時間相依地層疊加時尤其明顯；資料缺少時間戳便無法回溯何時偏離原假設。~The distance from the upper face to completed lower support represents a history of open-section exposure. Equal advance with different shutdown periods produces different exposure times. Bench length alone cannot replace a construction sequence or account for time-dependent ground behavior. Assume two work points remain 12 m apart while advancing at 2 m/day. A section waits 12/2=6 days; a three-day shutdown makes nine days. Neither is an allowable waiting period. Tracking face distance alone misses movement accumulating during shutdown, particularly when a long bench coincides with time-dependent ground. Without timestamps, investigators cannot reconstruct when conditions departed from the original assumptions.",
+      "model": "教學假設，非現場設定或設計允收值。假設兩作業點穩定相距12 m、同步平均推進2 m/day，一斷面等待時間12/2=6 days；加入3天停頓則為9 days，非允許等待期。~Teaching assumptions, not operating settings or design acceptance limits. Assume two work points remain 12 m apart while advancing at 2 m/day. A section waits 12/2=6 days; a three-day shutdown makes nine days. Neither is an allowable waiting period.",
+      "verify": "從各斷面的時間戳重建上半、下半與仰拱完成日期，特別保留停機而無進尺的區間；將這份歷程與收斂曲線比較，確認時間與距離效應是否混淆，不能用班平均進尺補掉長時間缺測。~Reconstruct upper, lower and invert completion dates for each section using timestamps, preserving stationary shutdown intervals. Compare this history with convergence and distinguish time from distance effects. Shift-average advance must not be used to fill long gaps in observations.",
+      "failure": "只追蹤掌子面距離會忽略停機期間的變形累積，長台階與時間相依地層疊加時尤其明顯；資料缺少時間戳便無法回溯何時偏離原假設。~Tracking face distance alone misses movement accumulating during shutdown, particularly when a long bench coincides with time-dependent ground. Without timestamps, investigators cannot reconstruct when conditions departed from the original assumptions.",
+      "misconception": "台階長度維持固定就代表每個斷面的受力歷程相同。~A fixed bench length means that every section experiences an identical loading history.",
+      "practice": "施工日誌以斷面編號連結日期和地層，不只保存累計公尺數；延長等待或調整台階時序須由核准審查程序評估，不以算例天數作排程許可。~Link dates and ground conditions to section identifiers, not just accumulated meters. Extended waiting or altered bench timing follows the approved review process; classroom durations are not scheduling authorization."
+    },
+    {
+      "title": "拱腳面積與接觸承壓~Arch-foot area and contact bearing",
+      "anchor": "拱腳面積與接觸承壓~Arch-foot area and contact bearing",
+      "mechanism": "拱腳把集中反力傳到地層或暫時基座，名義寬度不一定等於有效接觸寬度。接觸不平、偏心與局部軟弱層會改變壓力分布，平均承壓只能作為追問接觸機制的起點。 假設反力R=600 kN、有效接觸A=1.2 m²，平均q=500 kPa；若接觸降為0.8 m²，q=750 kPa，未檢查地層承載或沉陷。 基座局部沖刷或軟化使有效面積縮小，支護可能在總反力不變時產生額外沉陷；若外觀遮蔽接觸面，僅看上部襯砌會延後發現承載路徑的變化。~An arch foot transfers concentrated reaction to ground or a temporary base, and nominal width may differ from effective contact. Uneven seating, eccentricity and weak seams alter pressure distribution. Mean bearing is only the starting point for examining that mechanism. Assume reaction R=600 kN and effective contact A=1.2 m². Mean bearing q=500 kPa; with A=0.8 m² it becomes 750 kPa, without checking ground capacity or settlement. Local erosion or softening can reduce effective footing contact and cause settlement at unchanged total reaction. When the contact is hidden, inspecting only the upper lining delays recognition of the changed bearing path below it.",
+      "model": "教學假設，非現場設定或設計允收值。假設反力R=600 kN、有效接觸A=1.2 m²，平均q=500 kPa；若接觸降為0.8 m²，q=750 kPa，未檢查地層承載或沉陷。~Teaching assumptions, not operating settings or design acceptance limits. Assume reaction R=600 kN and effective contact A=1.2 m². Mean bearing q=500 kPa; with A=0.8 m² it becomes 750 kPa, without checking ground capacity or settlement.",
+      "verify": "核對竣工接觸尺寸、地層描述及拱腳沉陷，將偏心與接觸缺口畫在同一圖上；必要試驗須代表實際材料和受力方向，不能把其他位置的承載數字直接移用，異常由基礎與支護設計者審查。~Check as-built contact dimensions, ground descriptions and arch-foot settlement, mapping eccentricity and gaps together. Supporting tests must represent the actual material and loading direction. Do not transplant a capacity value from another location; foundation and support designers review anomalies.",
+      "failure": "基座局部沖刷或軟化使有效面積縮小，支護可能在總反力不變時產生額外沉陷；若外觀遮蔽接觸面，僅看上部襯砌會延後發現承載路徑的變化。~Local erosion or softening can reduce effective footing contact and cause settlement at unchanged total reaction. When the contact is hidden, inspecting only the upper lining delays recognition of the changed bearing path below it.",
+      "misconception": "名義拱腳寬度乘長度永遠等於有效接觸面積。~Nominal arch-foot width multiplied by length always equals the effective loaded contact area.",
+      "practice": "拱腳交接記錄包含接觸條件和地下水變化，未知面積以範圍呈現；支承處置由設計者核准，平均承壓計算不作現場加載依據。~Arch-foot handover records include contact conditions and groundwater changes, expressing uncertain area as a range. The designer approves support treatment; average-pressure calculations do not authorize field loading."
+    },
+    {
+      "title": "保留核心與幾何邊界~Retained core and geometric boundaries",
+      "anchor": "保留核心與幾何邊界~Retained core and geometric boundaries",
+      "mechanism": "保留核心可改變開挖面的幾何與約束，但其力學作用取決於材料連續性、含水和與周圍地層的連接。體積占比只是幾何指標，不能直接換算成支護力或穩定儲備。 假設整段面積60 m²、長4 m，總體積240 m³；保留核心面積12 m²同長，體積48 m³，占20%，未代表提供20%抗力。 核心受到鬆動或滲水侵蝕而失去連續性，外形仍可能維持；把外觀體積當成有效支護會忽略內部變質，後續移除時的荷載轉移也可能和原模型不同。~A retained core changes excavation geometry and restraint, but its mechanical contribution depends on continuity, water and connection to surrounding ground. Its volume fraction is a geometric indicator rather than a direct measure of support force or stability reserve. Assume total area 60 m² over 4 m, giving 240 m³. A retained core of 12 m² over the same length occupies 48 m³ or 20%, which does not mean it supplies 20% resistance. A core can lose continuity through disturbance or seepage while retaining its outline. Treating visible volume as effective support misses internal degradation, and the load transfer during later removal may differ from the original model.",
+      "model": "教學假設，非現場設定或設計允收值。假設整段面積60 m²、長4 m，總體積240 m³；保留核心面積12 m²同長，體積48 m³，占20%，未代表提供20%抗力。~Teaching assumptions, not operating settings or design acceptance limits. Assume total area 60 m² over 4 m, giving 240 m³. A retained core of 12 m² over the same length occupies 48 m³ or 20%, which does not mean it supplies 20% resistance.",
+      "verify": "將核心實際輪廓、裂隙及含水狀態與階段圖比對，核對是否有局部先行移除或被設備擾動；若幾何符合而材料明顯改變，仍需重新檢查作用假設，不能只憑剩餘土量宣稱支承有效。~Compare actual core geometry, fractures and moisture with stage drawings. Check for premature local removal or equipment disturbance. Even with correct geometry, changed material requires reassessment of its assumed function; retained quantity alone cannot demonstrate effective restraint.",
+      "failure": "核心受到鬆動或滲水侵蝕而失去連續性，外形仍可能維持；把外觀體積當成有效支護會忽略內部變質，後續移除時的荷載轉移也可能和原模型不同。~A core can lose continuity through disturbance or seepage while retaining its outline. Treating visible volume as effective support misses internal degradation, and the load transfer during later removal may differ from the original model.",
+      "misconception": "核心保留體積比例就是它提供的抗力比例。~The retained core volume percentage equals the percentage of resistance it provides.",
+      "practice": "核心記錄同時標示形狀與材料狀態，移除前列出替代支承及核准停點；由地工與施工技術主管確認條件，課堂體積比不構成拆除授權。~Core records show both shape and material condition. Before removal, list replacement restraint and the approved hold point. Geotechnical and construction leads confirm conditions; the classroom volume ratio does not authorize removal."
+    },
+    {
+      "title": "左右下挖與差異沉陷~Asymmetric lower excavation and settlement",
+      "anchor": "左右下挖與差異沉陷~Asymmetric lower excavation and settlement",
+      "mechanism": "左右下半開挖不同步會改變拱腳的支承與變形，差異沉陷可能令上部支護旋轉。小角度幾何能量化姿態差，卻沒有計入襯砌彎曲、地層再分配和接縫變形，需連結結構模型判讀。 假設左右拱腳相距6 m、沉陷差4 mm=0.004 m，剛體小轉角θ≈0.004/6=0.000667 rad=0.0382°，並非容許變形值。 一側拱腳在下挖時先失去原支承，差異沉陷可放大接縫開口；如果報表只保留左右平均值，旋轉和局部變形便被相互抵消而看不見。~Uneven progress on the lower sides changes arch-foot support and movement. Differential settlement can rotate the upper lining. Small-angle geometry quantifies attitude but omits lining bending, ground redistribution and joint deformation, which need structural interpretation. Assume feet are 6 m apart with differential settlement 4 mm=0.004 m. Rigid-body small rotation θ≈0.004/6=0.000667 rad=0.0382°, not an allowable deformation. If one foot loses its previous support first, differential settlement can enlarge joint openings. A report retaining only the left-right mean cancels the contrast numerically and hides rotation and localized deformation from review.",
+      "model": "教學假設，非現場設定或設計允收值。假設左右拱腳相距6 m、沉陷差4 mm=0.004 m，剛體小轉角θ≈0.004/6=0.000667 rad=0.0382°，並非容許變形值。~Teaching assumptions, not operating settings or design acceptance limits. Assume feet are 6 m apart with differential settlement 4 mm=0.004 m. Rigid-body small rotation θ≈0.004/6=0.000667 rad=0.0382°, not an allowable deformation.",
+      "verify": "使用共同穩定基準量測兩側高程與拱頂位置，對齊左右開挖和支護時間；比較剛體轉動預測與實際斷面畸變，若二者不符須檢討彎曲或接縫機制，不把所有差異都視為儀器誤差。~Measure both foot levels and crown position from a common stable reference, aligning left-right excavation and support times. Compare rigid rotation with actual section distortion. Differences require reviewing bending or joint mechanisms rather than assigning all disagreement to instrumentation.",
+      "failure": "一側拱腳在下挖時先失去原支承，差異沉陷可放大接縫開口；如果報表只保留左右平均值，旋轉和局部變形便被相互抵消而看不見。~If one foot loses its previous support first, differential settlement can enlarge joint openings. A report retaining only the left-right mean cancels the contrast numerically and hides rotation and localized deformation from review.",
+      "misconception": "左右沉陷平均不大就能排除偏轉與接縫問題。~A small average of left and right settlements rules out rotation and joint problems.",
+      "practice": "量測報表同時呈現左右值、差值與平均值，保留階段圖版本；任何非對稱序列變更須核對暫時支承，由結構與施工負責人共同核准。~Monitoring reports show left, right, difference and mean values alongside drawing versions. Any asymmetric sequence change requires review of temporary support and joint approval by structural and construction leads."
+    },
+    {
+      "title": "開挖與出碴質量帳~Excavation and muck mass accounting",
+      "anchor": "開挖與出碴質量帳~Excavation and muck mass accounting",
+      "mechanism": "台階分部工程量需以相同區間和體積基準對照出碴質量，含水量和密度變化會影響換算。物料帳可發現遺漏區段或超挖線索，但它不能獨立分辨掉塊、密度偏差與稱重誤差。 假設下半面積25 m²、進尺1.5 m、原位密度2400 kg/m³，質量25×1.5×2400=90000 kg=90 t；假設鬆方係數1.4時體積為52.5 m³。 混裝車次被重複計入上下台階，會誤報超挖並影響地層判讀；反之把未知差額當成密度變化扣掉，可能掩蓋真實輪廓超出和局部掉落。~Bench quantities must match muck mass over the same interval and volume basis. Moisture and density changes influence conversion. Material accounting can flag missing intervals or potential overbreak, but cannot by itself distinguish rock falls, density bias and weighing error. Assume lower area 25 m², advance 1.5 m and in-situ density 2400 kg/m³. Mass is 90000 kg=90 t. With assumed bulking factor 1.4, loose volume is 52.5 m³. Counting a mixed vehicle in both upper and lower records falsely reports overbreak and distorts ground interpretation. Conversely, assigning every unexplained difference to density may hide genuine profile excess and localized ground loss.",
+      "model": "教學假設，非現場設定或設計允收值。假設下半面積25 m²、進尺1.5 m、原位密度2400 kg/m³，質量25×1.5×2400=90000 kg=90 t；假設鬆方係數1.4時體積為52.5 m³。~Teaching assumptions, not operating settings or design acceptance limits. Assume lower area 25 m², advance 1.5 m and in-situ density 2400 kg/m³. Mass is 90000 kg=90 t. With assumed bulking factor 1.4, loose volume is 52.5 m³.",
+      "verify": "對齊斷面掃描、進尺與車次稱重，單獨扣列可辨識的其他物料及水分變化；檢查資料是否跨越上下台階混裝，未能分離時應標明估計範圍，不能用調整密度的方式強迫帳目相等。~Align section scans, advance and vehicle weights, separately accounting for identifiable other material and moisture changes. Check whether upper and lower muck was mixed. If separation is impossible, state an estimated range instead of adjusting density until the accounts agree.",
+      "failure": "混裝車次被重複計入上下台階，會誤報超挖並影響地層判讀；反之把未知差額當成密度變化扣掉，可能掩蓋真實輪廓超出和局部掉落。~Counting a mixed vehicle in both upper and lower records falsely reports overbreak and distorts ground interpretation. Conversely, assigning every unexplained difference to density may hide genuine profile excess and localized ground loss.",
+      "misconception": "出碴重量和幾何量不符時，只要修改密度就能解決。~Whenever muck mass and geometry disagree, changing the assumed density resolves the problem.",
+      "practice": "保留原始稱重與分部歸屬，未解差額由測量、地質和運輸人員共同追查；工程量結算與穩定判斷分開，避免為配平帳目而移除異常證據。~Retain original weights and subdivision assignments. Survey, geological and transport staff jointly investigate unresolved differences, separating quantity settlement from stability assessment so accounting adjustments do not erase anomaly evidence."
+    },
+    {
+      "title": "閉合追趕與相對速度~Closure catch-up and relative speed",
+      "anchor": "閉合追趕與相對速度~Closure catch-up and relative speed",
+      "mechanism": "仰拱若落後上半面，其追趕時間由兩者相對速度決定，不能只用仰拱自身速度除以落後距離。持續推進的上半面同時增加待閉合長度，因此產能與支護時序必須放在同一條里程軸上。 假設初始落後20 m，上半前進2 m/day、仰拱完成3 m/day，縮短速度1 m/day，理想追平需20 days；若兩者皆2 m/day則距離不縮小。 仰拱產能等於上半進尺時，看似每班都有閉合工作但落後距離永不縮小；若把累計完成量當成追趕成效，暴露長度會在報表中被錯誤隱藏。~If invert closure trails the upper face, catch-up depends on relative speed rather than closure speed alone. Continued upper advance adds open length at the same time. Production and support sequencing therefore need a shared chainage axis. Assume an initial 20 m gap, upper advance 2 m/day and invert completion 3 m/day. The gap shrinks at 1 m/day, requiring 20 days ideally; equal 2 m/day speeds never close it. When invert output matches upper advance, closure work occurs every shift but the gap never narrows. Treating cumulative completion as successful catch-up hides the persistent open length in production reporting.",
+      "model": "教學假設，非現場設定或設計允收值。假設初始落後20 m，上半前進2 m/day、仰拱完成3 m/day，縮短速度1 m/day，理想追平需20 days；若兩者皆2 m/day則距離不縮小。~Teaching assumptions, not operating settings or design acceptance limits. Assume an initial 20 m gap, upper advance 2 m/day and invert completion 3 m/day. The gap shrinks at 1 m/day, requiring 20 days ideally; equal 2 m/day speeds never close it.",
+      "verify": "每天量測上半與仰拱有效完成里程，仰拱須依傳力與品質條件認定完成而非只看外形；以兩條累計曲線之差檢查預測，停機和返工分別註記，不能用計畫速度代替實際可用進度。~Measure upper-face and effectively completed invert chainage daily. Completion requires load-transfer and quality conditions, not shape alone. Check forecasts against the difference between cumulative curves, marking shutdown and rework separately rather than substituting planned speeds for actual progress.",
+      "failure": "仰拱產能等於上半進尺時，看似每班都有閉合工作但落後距離永不縮小；若把累計完成量當成追趕成效，暴露長度會在報表中被錯誤隱藏。~When invert output matches upper advance, closure work occurs every shift but the gap never narrows. Treating cumulative completion as successful catch-up hides the persistent open length in production reporting.",
+      "misconception": "只要每天施工仰拱，最終一定會追上仍前進的掌子面。~Daily invert construction necessarily catches a face that continues advancing at any speed.",
+      "practice": "進度會議保留兩條里程曲線和相對速度，異常落後與品質返工另列；是否調整上半或仰拱節奏由設計與施工主管共同核准。~Progress reviews retain both chainage curves and relative speed, listing abnormal lag and quality rework separately. Design and construction leads jointly authorize any change to upper-face or invert timing."
+    },
+    {
+      "title": "測量閉合與基準誤差~Survey closure and reference uncertainty",
+      "anchor": "測量閉合與基準誤差~Survey closure and reference uncertainty",
+      "mechanism": "拱頂沉陷與兩側收斂使用不同幾何投影，必須維持可追溯的基準和符號定義。重複測量可降低獨立隨機誤差，但共用基準位移會同時影響全部讀值，不能藉平均消除。 假設四次獨立讀值各標準差1 mm，平均標準差1/√4=0.5 mm；若另有共用基準偏差2 mm，它仍為2 mm，不隨四次平均消失。 基準點在施工影響區內緩慢下沉，所有量測會低估真實沉陷而仍保持良好重複性；僅以標準差很小判定資料可靠，會錯把精密度當成正確度。~Crown settlement and side convergence use different geometric projections and need traceable references and sign conventions. Repetition can reduce independent random uncertainty, while movement of a shared reference biases every observation and cannot be removed by averaging. Assume four independent readings each with standard deviation 1 mm. Their mean has 1/√4=0.5 mm standard deviation. A shared 2 mm reference bias remains 2 mm despite averaging. A reference slowly settling inside the construction influence zone makes every observation understate true movement while remaining repeatable. A small standard deviation alone can therefore confuse measurement precision with accuracy and conceal systematic error.",
+      "model": "教學假設，非現場設定或設計允收值。假設四次獨立讀值各標準差1 mm，平均標準差1/√4=0.5 mm；若另有共用基準偏差2 mm，它仍為2 mm，不隨四次平均消失。~Teaching assumptions, not operating settings or design acceptance limits. Assume four independent readings each with standard deviation 1 mm. Their mean has 1/√4=0.5 mm standard deviation. A shared 2 mm reference bias remains 2 mm despite averaging.",
+      "verify": "以區外穩定控制點和閉合測量檢查基準，保存原始高程、儀器設站與時間；將獨立誤差和共同偏差分開列示，若多點同步跳變先查基準，再比較施工事件，不以刪除同日全部資料處理異常。~Use stable external control and closure measurements to check references, retaining original elevations, setups and times. Report independent uncertainty separately from common bias. If many points jump together, investigate the reference before comparing construction events; deleting the entire day is not a diagnosis.",
+      "failure": "基準點在施工影響區內緩慢下沉，所有量測會低估真實沉陷而仍保持良好重複性；僅以標準差很小判定資料可靠，會錯把精密度當成正確度。~A reference slowly settling inside the construction influence zone makes every observation understate true movement while remaining repeatable. A small standard deviation alone can therefore confuse measurement precision with accuracy and conceal systematic error.",
+      "misconception": "多量幾次取平均就能消除任何種類的測量誤差。~Repeating measurements and averaging removes every type of measurement error, including systematic bias.",
+      "practice": "監測交接含基準穩定證據及修正版本，任何整體位移修正需測量主管簽認；設計者使用數據前確認共同偏差未被重複讀值的精密度掩蓋。~Monitoring handover includes reference-stability evidence and correction versions. The survey lead approves any common-shift correction, and the designer confirms that repeated-reading precision has not concealed shared bias before using the data."
+    },
+    {
+      "title": "台階排水與滲流邊界~Bench drainage and seepage boundaries",
+      "anchor": "台階排水與滲流邊界~Bench drainage and seepage boundaries",
+      "mechanism": "下半開挖可能改變排水出口與水頭差，流量變化不一定等於滲透係數改變。Darcy一維模型要求飽和層流與明確流徑，實際節理集中流及開挖三維效應必須另行辨識。 假設k=0.0001 m/s、A=15 m²、Δh=8 m、L=12 m，Q=kAΔh/L=0.001 m³/s=3.6 m³/h；水頭差減半則Q減半。 排水出口下移可能增加水力梯度和細料流失，流量上升卻未必出現立即明顯變形；若只看抽排設備能否負荷，地層侵蝕的機制就可能被忽略。~Lower excavation can change drainage outlets and head differences, so altered flow need not mean altered conductivity. A one-dimensional Darcy model requires saturated laminar flow and a defined path; fracture concentration and three-dimensional excavation effects require separate interpretation. Assume k=0.0001 m/s, A=15 m², Δh=8 m and L=12 m. Q=kAΔh/L=0.001 m³/s=3.6 m³/h; halving head difference halves this ideal flow. Lowering an outlet can increase hydraulic gradient and fine-particle loss. Flow may rise before visible movement appears. Focusing only on pump capacity can therefore overlook an erosion mechanism affecting the ground and support beneath the bench.",
+      "model": "教學假設，非現場設定或設計允收值。假設k=0.0001 m/s、A=15 m²、Δh=8 m、L=12 m，Q=kAΔh/L=0.001 m³/s=3.6 m³/h；水頭差減半則Q減半。~Teaching assumptions, not operating settings or design acceptance limits. Assume k=0.0001 m/s, A=15 m², Δh=8 m and L=12 m. Q=kAΔh/L=0.001 m³/s=3.6 m³/h; halving head difference halves this ideal flow.",
+      "verify": "將量水、孔壓和出口高程同步記錄，確認開挖後水頭基準是否改變；比較流量與濁度的時間關係，集中裂隙流不能硬塞進均勻介質公式，異常須由水文地工人員檢查流徑與地層損失。~Record discharge, pore pressure and outlet elevation together, checking whether excavation changed the head reference. Compare flow and turbidity histories. Concentrated fracture flow cannot be forced into a homogeneous-medium formula; hydrogeotechnical specialists review anomalous pathways and possible ground loss.",
+      "failure": "排水出口下移可能增加水力梯度和細料流失，流量上升卻未必出現立即明顯變形；若只看抽排設備能否負荷，地層侵蝕的機制就可能被忽略。~Lowering an outlet can increase hydraulic gradient and fine-particle loss. Flow may rise before visible movement appears. Focusing only on pump capacity can therefore overlook an erosion mechanism affecting the ground and support beneath the bench.",
+      "misconception": "只要排水設備足夠大，增加湧水就不需要地工判讀。~Sufficient pumping capacity makes additional inflow irrelevant to geotechnical interpretation and support review.",
+      "practice": "交接排水路徑、孔壓趨勢和濁度異常，不只交泵浦運轉時數；任何改變水頭邊界的方案由水文與支護設計者核准，課堂流量不作抽排設定。~Hand over drainage paths, pressure trends and turbidity anomalies rather than pump hours alone. Hydraulic and support designers approve changes to head boundaries; the classroom discharge is not a pumping setting."
+    },
+    {
+      "title": "閉合後淨空與驗收餘量~Post-closure clearance and acceptance allowance",
+      "anchor": "閉合後淨空與驗收餘量~Post-closure clearance and acceptance allowance",
+      "mechanism": "襯砌變形、厚度與量測不確定度共同影響可交付淨空，名義設計線不等於竣工可用界面。淨空餘量計算必須使用同一坐標與方向，並保留未來允許變形和設備安裝需求的獨立項目。 假設實測高度5.20 m、所需高度5.05 m、保守量測扣減0.03 m，剩餘餘量5.20-5.05-0.03=0.12 m；未含未來變形預留。 局部噴層增厚或支架突出會侵入淨空，即使平均斷面符合也可能影響設備安裝；若交接前只檢查中心線高度，側牆與角隅的介面衝突可能延後才被發現。~Deformation, lining thickness and measurement uncertainty jointly determine deliverable clearance. A nominal design line is not the as-built usable interface. Allowance calculations require common coordinates and directions, with future permitted movement and installation needs listed separately. Assume measured height 5.20 m, required height 5.05 m and conservative measurement deduction 0.03 m. Remaining allowance is 0.12 m, before reserving future movement. Local thickening or brackets can intrude into clearance despite acceptable average dimensions. Checking only centerline height before handover leaves sidewall and corner conflicts to emerge later during equipment installation or maintenance planning.",
+      "model": "教學假設，非現場設定或設計允收值。假設實測高度5.20 m、所需高度5.05 m、保守量測扣減0.03 m，剩餘餘量5.20-5.05-0.03=0.12 m；未含未來變形預留。~Teaching assumptions, not operating settings or design acceptance limits. Assume measured height 5.20 m, required height 5.05 m and conservative measurement deduction 0.03 m. Remaining allowance is 0.12 m, before reserving future movement.",
+      "verify": "用同一坐標系的全斷面掃描檢查最小距離，確認局部凸出、排水和設備支架皆納入；將量測扣減與設計變形預留分開，剩餘餘量不足時送界面設計審查，不能以斷面平均高度代替最不利點。~Check minimum distances using full-section scans in a common coordinate system, including local protrusions, drainage and equipment brackets. Separate measurement deductions from design movement reserves. Inadequate remaining allowance needs interface review; mean section height cannot replace the adverse point.",
+      "failure": "局部噴層增厚或支架突出會侵入淨空，即使平均斷面符合也可能影響設備安裝；若交接前只檢查中心線高度，側牆與角隅的介面衝突可能延後才被發現。~Local thickening or brackets can intrude into clearance despite acceptable average dimensions. Checking only centerline height before handover leaves sidewall and corner conflicts to emerge later during equipment installation or maintenance planning.",
+      "misconception": "平均斷面尺寸合格就表示所有淨空介面都合格。~Acceptable average section dimensions guarantee that every clearance interface is acceptable.",
+      "practice": "將最不利點、坐標基準和扣減項目一併交接，保存掃描原檔；土建、設備及維護代表共同確認淨空責任界面後完成驗收。~Hand over adverse locations, coordinate references and deductions together with original scans. Civil, equipment and maintenance representatives jointly confirm responsibility for clearance interfaces before acceptance is completed."
+    }
+  ],
+  "example": "以下原創算例針對台階開挖的拱腳承載、核心保留與仰拱閉合時序，每個輸入都是教學假設而非地標實測資料。教學假設，非現場設定或設計允收值。假設垂直合力W=900 kN且對稱，左右反力各450 kN；若假設分配為60%與40%，則為540及360 kN，總和仍為900 kN。教學假設，非現場設定或設計允收值。假設兩作業點穩定相距12 m、同步平均推進2 m/day，一斷面等待時間12/2=6 days；加入3天停頓則為9 days，非允許等待期。兩式只回答各自所列的量與邊界，不應把單一平均結果當成整體穩定證明。請另以最不利的幾何、時間或接觸條件代入，分別標示量測誤差和模型偏差；交接記錄須保留原單位、資料日期以及未能確認的條件。~This original worked example examines bench excavation, arch-foot bearing, retained core and invert-closure timing. Every input is a teaching assumption, not a measured value from a landmark. Teaching assumptions, not operating settings or design acceptance limits. Assume vertical resultant W=900 kN. Symmetry gives 450 kN at each side. A hypothetical 60/40 split instead gives 540 and 360 kN, still summing to 900 kN. Teaching assumptions, not operating settings or design acceptance limits. Assume two work points remain 12 m apart while advancing at 2 m/day. A section waits 12/2=6 days; a three-day shutdown makes nine days. Neither is an allowable waiting period. Each relation answers only its stated quantity under its stated boundary conditions. A favorable mean value is not proof of overall stability. Recalculate with an adverse geometry, timing or contact condition, distinguishing measurement uncertainty from model error. The handover record must retain original units, observation dates and conditions that remain unverified; the responsible designer decides whether additional evidence is needed.",
+  "facts": [
+    "教學假設，非現場設定或設計允收值。假設垂直合力W=900 kN且對稱，左右反力各450 kN；若假設分配為60%與40%，則為540及360 kN，總和仍為900 kN。~Teaching assumptions, not operating settings or design acceptance limits. Assume vertical resultant W=900 kN. Symmetry gives 450 kN at each side. A hypothetical 60/40 split instead gives 540 and 360 kN, still summing to 900 kN.",
+    "教學假設，非現場設定或設計允收值。假設兩作業點穩定相距12 m、同步平均推進2 m/day，一斷面等待時間12/2=6 days；加入3天停頓則為9 days，非允許等待期。~Teaching assumptions, not operating settings or design acceptance limits. Assume two work points remain 12 m apart while advancing at 2 m/day. A section waits 12/2=6 days; a three-day shutdown makes nine days. Neither is an allowable waiting period.",
+    "教學假設，非現場設定或設計允收值。假設反力R=600 kN、有效接觸A=1.2 m²，平均q=500 kPa；若接觸降為0.8 m²，q=750 kPa，未檢查地層承載或沉陷。~Teaching assumptions, not operating settings or design acceptance limits. Assume reaction R=600 kN and effective contact A=1.2 m². Mean bearing q=500 kPa; with A=0.8 m² it becomes 750 kPa, without checking ground capacity or settlement.",
+    "教學假設，非現場設定或設計允收值。假設整段面積60 m²、長4 m，總體積240 m³；保留核心面積12 m²同長，體積48 m³，占20%，未代表提供20%抗力。~Teaching assumptions, not operating settings or design acceptance limits. Assume total area 60 m² over 4 m, giving 240 m³. A retained core of 12 m² over the same length occupies 48 m³ or 20%, which does not mean it supplies 20% resistance.",
+    "教學假設，非現場設定或設計允收值。假設左右拱腳相距6 m、沉陷差4 mm=0.004 m，剛體小轉角θ≈0.004/6=0.000667 rad=0.0382°，並非容許變形值。~Teaching assumptions, not operating settings or design acceptance limits. Assume feet are 6 m apart with differential settlement 4 mm=0.004 m. Rigid-body small rotation θ≈0.004/6=0.000667 rad=0.0382°, not an allowable deformation.",
+    "教學假設，非現場設定或設計允收值。假設下半面積25 m²、進尺1.5 m、原位密度2400 kg/m³，質量25×1.5×2400=90000 kg=90 t；假設鬆方係數1.4時體積為52.5 m³。~Teaching assumptions, not operating settings or design acceptance limits. Assume lower area 25 m², advance 1.5 m and in-situ density 2400 kg/m³. Mass is 90000 kg=90 t. With assumed bulking factor 1.4, loose volume is 52.5 m³."
+  ],
+  "timeline": [
+    {
+      "year": "1992",
+      "event": "Heathrow Express試驗隧道展示倫敦軟土噴凝土襯砌~The Heathrow Express trial tunnel demonstrates soft-ground sprayed lining in London"
+    },
+    {
+      "year": "2009",
+      "event": "美國聯邦公路管理局發布隧道土建技術手冊~FHWA issues its tunnel manual covering civil engineering elements"
+    },
+    {
+      "year": "2014",
+      "event": "Crossrail公開噴凝土設計與Stepney Green案例論文~Crossrail publishes sprayed-lining design and Stepney Green case papers"
+    }
+  ],
+  "codes": [
+    "美國聯邦公路管理局公路隧道土建技術手冊，2009~FHWA road tunnel civil-elements technical manual, 2009",
+    "Crossrail噴凝土襯砌設計論文，2014：案例指引~Crossrail sprayed-concrete lining design paper, 2014: case guidance"
+  ],
+  "landmarks": [
+    "倫敦Stepney Green洞室：側導坑案例~London Stepney Green caverns: side-drift case",
+    "倫敦Heathrow Express試驗隧道~London Heathrow Express trial tunnel"
+  ],
+  "place": {
+    "name": "倫敦Stepney Green洞室背景參照~London Stepney Green cavern context reference",
+    "country": "英國~United Kingdom",
+    "lat": 51.5195,
+    "lng": -0.044,
+    "query": "Stepney Green Crossrail caverns London"
+  },
+  "sources": [
+    {
+      "key": "crossrail-scl",
+      "title": "Crossrail噴凝土襯砌的設計觀點",
+      "titleEn": "Design of Sprayed Concrete Linings in Soft Ground: A Crossrail Perspective",
+      "publisher": "Crossrail Learning Legacy",
+      "url": "https://learninglegacy.crossrail.co.uk/documents/design-sprayed-concrete-linings-soft-ground%E2%94%80-crossrail-perspective/",
+      "sourceType": "primary",
+      "scope": "原作者技術論文，支援施工序列、地層互制與早齡襯砌之背景，算例另列為合成假設。",
+      "scopeEn": "Original authors technical paper supporting construction sequence, ground interaction and early-age lining context. Course calculations are separately identified as synthetic assumptions."
+    },
+    {
+      "key": "crossrail-stepney",
+      "title": "Stepney Green洞室襯砌設計與表現",
+      "titleEn": "Stepney Green Cavern: Design Concepts and Performance of SCL Lining",
+      "publisher": "Crossrail Learning Legacy",
+      "url": "https://learninglegacy.crossrail.co.uk/documents/stepney-green-cavern-design-concepts-and-performance-of-scl-lining/",
+      "sourceType": "primary",
+      "scope": "原作者公開側壁導坑與襯砌觀測案例；不把案例斷面與步距移植為本課施工處方。",
+      "scopeEn": "Original authors public side-drift and lining-monitoring case; its dimensions and advances are not transferred into a construction prescription."
+    },
+    {
+      "key": "fhwa-manual",
+      "title": "公路隧道設計施工土建技術手冊",
+      "titleEn": "Technical Manual for Design and Construction of Road Tunnels: Civil Elements",
+      "publisher": "FHWA / US Government Publishing Office",
+      "url": "https://www.govinfo.gov/app/details/GOVPUB-TD2-PURL-gpo93381",
+      "sourceType": "primary",
+      "scope": "二〇〇九年官方手冊書目；用作隧道土建設計參考來源，未聲稱此舊手冊是現行個案規範。",
+      "scopeEn": "Official 2009 manual record; a civil tunnel design reference, not a claim that an older manual is the current specification for a project."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Crossrail Learning Legacy",
+      "nameEn": "Crossrail Learning Legacy",
+      "business": "提供本課設備原理或隧道工程公開方法資料。",
+      "businessEn": "Provides public machine principles or tunnel engineering methodology.",
+      "url": "https://learninglegacy.crossrail.co.uk/documents/design-sprayed-concrete-linings-soft-ground%E2%94%80-crossrail-perspective/",
+      "investorUrl": "",
+      "security": null,
+      "role": "原作者技術論文，支援施工序列、地層互制與早齡襯砌之背景，算例另列為合成假設。",
+      "roleEn": "Original authors technical paper supporting construction sequence, ground interaction and early-age lining context. Course calculations are separately identified as synthetic assumptions."
+    },
+    {
+      "name": "FHWA / US Government Publishing Office",
+      "nameEn": "FHWA / US Government Publishing Office",
+      "business": "提供本課設備原理或隧道工程公開方法資料。",
+      "businessEn": "Provides public machine principles or tunnel engineering methodology.",
+      "url": "https://www.govinfo.gov/app/details/GOVPUB-TD2-PURL-gpo93381",
+      "investorUrl": "",
+      "security": null,
+      "role": "二〇〇九年官方手冊書目；用作隧道土建設計參考來源，未聲稱此舊手冊是現行個案規範。",
+      "roleEn": "Official 2009 manual record; a civil tunnel design reference, not a claim that an older manual is the current specification for a project."
+    }
+  ],
+  "related": [
+    "b148",
+    "b150"
+  ],
+  "architectureNodes": [
+    [
+      "上半斷面與反力位置",
+      "Upper section and reaction locations"
+    ],
+    [
+      "拱腳面積與接觸承壓",
+      "Arch-foot area and contact bearing"
+    ],
+    [
+      "左右下挖與差異沉陷",
+      "Asymmetric lower excavation and settlement"
+    ],
+    [
+      "閉合追趕與相對速度",
+      "Closure catch-up and relative speed"
+    ],
+    [
+      "閉合後淨空與驗收餘量",
+      "Post-closure clearance and acceptance allowance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      1
+    ]
+  ]
+}

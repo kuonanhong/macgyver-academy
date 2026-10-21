@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d263-51fd37d131e56c6b.json"]={sha256:"51fd37d131e56c6ba5edef8c0fc0a1ce13dafd64da425ff76c05ec0f26422596",value:{"id":"d263","title":"步態分析力板系統","titleEn":"Gait Analysis Force Plate Systems","category":"biomedical","kind":"craft","summary":"「步態分析力板系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gait Analysis Force Plate Systems: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

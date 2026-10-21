@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c103-a9202d54c327046b.json"]={sha256:"a9202d54c327046bdb4f281b035f4c98e700d1b3e6f4f39698e8b17737a019f7",value:{"title":"DEEPSEA CHALLENGER 深潛工程","titleEn":"DEEPSEA CHALLENGER deep-diving engineering","category":"marine","kind":"project","summary":"課程規劃主題：垂直配置與深海觀測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: vertical layout and deep-ocean observation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c103"}};

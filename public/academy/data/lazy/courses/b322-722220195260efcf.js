@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b322-722220195260efcf.json"]={sha256:"722220195260efcf0875380a8ba51e43241f3a4d588d74f9b351a0116f16418e",value:{"id":"b322","title":"巴黎 RER A 線","titleEn":"Paris RER Line A","category":"rail","kind":"project","summary":"以「巴黎 RER A 線」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Paris RER Line A. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

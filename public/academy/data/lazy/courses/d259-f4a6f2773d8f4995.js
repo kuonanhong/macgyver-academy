@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d259-f4a6f2773d8f4995.json"]={sha256:"f4a6f2773d8f4995b28200886f2b73cb0e8c27eeb8e019155617cfdc293ea709",value:{"id":"d259","title":"輪椅壓力分布量測座墊","titleEn":"Wheelchair Pressure Mapping Cushions","category":"biomedical","kind":"craft","summary":"「輪椅壓力分布量測座墊」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Wheelchair Pressure Mapping Cushions: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

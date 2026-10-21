@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d215-a73a2c5dc97e68cc.json"]={sha256:"a73a2c5dc97e68cca4cdf12b1eba9316528b227c47e5e9262f32652b461d0e81",value:{"id":"d215","title":"低場可攜式磁振成像","titleEn":"Low Field Portable Magnetic Resonance Imaging","category":"biomedical","kind":"craft","summary":"「低場可攜式磁振成像」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Low Field Portable Magnetic Resonance Imaging: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b121-9ffd1714e818741e.json"]={sha256:"9ffd1714e818741ebaeee47fc89660f555007db5265b1210cce4d3688ef09c68",value:{"id":"b121","title":"關角隧道","titleEn":"New Guanjiao Tunnel","category":"underground","kind":"project","summary":"以「關角隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: New Guanjiao Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

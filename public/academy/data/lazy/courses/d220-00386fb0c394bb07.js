@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d220-00386fb0c394bb07.json"]={sha256:"00386fb0c394bb0724fd35d1c68ec70a668cdfb9d1330e70d840178a68ace9b4",value:{"id":"d220","title":"斷層掃描器滑環與資料傳輸","titleEn":"Tomography Scanner Slip Rings and Data Transfer","category":"biomedical","kind":"craft","summary":"「斷層掃描器滑環與資料傳輸」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Tomography Scanner Slip Rings and Data Transfer: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

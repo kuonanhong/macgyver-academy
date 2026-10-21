@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d496-0dec1a8bf24147e7.json"]={sha256:"0dec1a8bf24147e7603a3ed1c56948a450df04b99c3fdf4d79e51a3ab07cf576",value:{"id":"d496","title":"超導加速器低溫分配系統","titleEn":"Superconducting Accelerator Cryogenic Distribution","category":"megascience","kind":"craft","summary":"「超導加速器低溫分配系統」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Superconducting Accelerator Cryogenic Distribution: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

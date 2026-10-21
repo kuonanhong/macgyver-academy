@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d209-4cbba0a38c263744.json"]={sha256:"4cbba0a38c2637443ae5de61d3b59a4c375ff6582848392f2bcd0c68dea0d287",value:{"id":"d209","title":"CyberKnife機械臂定位平台","titleEn":"CyberKnife Robotic Positioning Platform","category":"biomedical","kind":"project","summary":"「CyberKnife機械臂定位平台」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for CyberKnife Robotic Positioning Platform: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

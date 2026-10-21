@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d228-1b636a626a1f16b0.json"]={sha256:"1b636a626a1f16b07313ef2d4d349b6ad0229a2ada941d472da6d94733ee1431",value:{"id":"d228","title":"超音波彈性影像演算法","titleEn":"Ultrasound Elastography Algorithms","category":"biomedical","kind":"craft","summary":"「超音波彈性影像演算法」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ultrasound Elastography Algorithms: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

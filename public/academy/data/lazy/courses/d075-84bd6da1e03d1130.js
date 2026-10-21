@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d075-84bd6da1e03d1130.json"]={sha256:"84bd6da1e03d1130e918f507870ebf344034563786deff198aa475f3075e662b",value:{"id":"d075","title":"增強型地熱儲層監測概念","titleEn":"Enhanced Geothermal Reservoir Monitoring Concepts","category":"energy","kind":"craft","summary":"「增強型地熱儲層監測概念」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Enhanced Geothermal Reservoir Monitoring Concepts: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

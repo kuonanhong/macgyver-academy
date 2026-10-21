@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c058-6b3ba51a6c33f3ad.json"]={sha256:"6b3ba51a6c33f3adf1f899834be06cba2357737f9f86fa28bfcbf7a6061ba07b",value:{"title":"航空渦輪單晶葉片概念","titleEn":"Aerospace single-crystal blade concepts","category":"aerospace","kind":"craft","summary":"課程規劃主題：晶體方向與高溫材料。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: crystal orientation and high-temperature materials. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c058"}};

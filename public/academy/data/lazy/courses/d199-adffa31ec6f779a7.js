@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d199-adffa31ec6f779a7.json"]={sha256:"adffa31ec6f779a7bf5ecb5d0f01da79696d0f5216071110bbba8ea2f4f1f61a",value:{"id":"d199","title":"材料生命週期盤查系統","titleEn":"Material Life Cycle Inventory Systems","category":"materials","kind":"craft","summary":"「材料生命週期盤查系統」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Material Life Cycle Inventory Systems: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

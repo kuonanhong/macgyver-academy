@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d348-7a09606247ad20f2.json"]={sha256:"7a09606247ad20f21f678d8614e0e6edd37e99faf11326a02055b14ebd3cb9b0",value:{"id":"d348","title":"罐頭捲封品質量測","titleEn":"Food Can Seam Quality Metrology","category":"process","kind":"craft","summary":"「罐頭捲封品質量測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Food Can Seam Quality Metrology: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

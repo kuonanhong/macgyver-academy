@@ -23,68 +23,18 @@ const clone = value => JSON.parse(JSON.stringify(value));
 let calls = [];
 const offline = { featured: canonical };
 assert.equal(await loadCurriculumData('featured', { data: offline, fetchImpl: () => { throw Error('offline must not fetch'); } }), canonical); checks++;
-let running = 0, maximum = 0;
-const fetchGood = async (url, options) => {
-  calls.push({ url, options });
-  running++; maximum = Math.max(maximum, running);
-  await new Promise(resolve => setImmediate(resolve));
-  running--;
-  return content.has(url) ? response(content.get(url)) : new Response('', { status: 404 });
-};
-const hosted = await loadCurriculumData('featured', { data: null, fetchImpl: fetchGood });
-assert.deepEqual(hosted, canonical, 'HTTP parts preserve every field and canonical order');
-assert.deepEqual(hosted.map(c => c.id), index.parts.flatMap(p => p.courseIds));
-assert.equal(calls[0].options.cache, 'no-cache');
-assert(calls.every(c => !c.url.endsWith('/featured.json')), 'no oversize legacy fallback');
-assert(maximum <= 2 && maximum >= Math.min(2, index.parts.length)); checks++;
-assert.deepEqual(await loadCurriculumData('catalog', { data: null, fetchImpl: fetchGood }), JSON.parse(content.get('data/catalog.json'))); checks++;
-await assert.rejects(loadCurriculumData('../secrets', { data: {}, fetchImpl: fetchGood }), /Unknown curriculum/); checks++;
-
-async function rejectManifest(mutator, pattern) {
-  const invalid = clone(index); mutator(invalid);
-  const requests = [];
-  await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async url => {
-    requests.push(url);
-    if (url !== 'data/course-parts/index.json') throw Error('Unsafe manifest fetched a part');
-    return response(JSON.stringify(invalid));
-  }}), pattern);
-  assert.deepEqual(requests, ['data/course-parts/index.json']); checks++;
-}
-for (const unsafe of ['../featured.json', 'https://example.invalid/part.json', '//evil.test/part.json', 'part-0001-%2e%2e.json', 'part-0001-aaaaaaaaaaaaaaaa.json?x=1']) {
-  await rejectManifest(m => { m.parts[0].file = unsafe; }, /unsafe|Invalid/);
-}
-await rejectManifest(m => { m.courseCount++; }, /totals/);
-await rejectManifest(m => { m.parts[0].courseIds[1] = m.parts[0].courseIds[0]; }, /duplicate/);
-await rejectManifest(m => { m.parts[0].byteLength = 7 * 1024 * 1024 + 1; }, /descriptor/);
-await rejectManifest(m => {
-  const sample = m.parts[0];
-  m.parts = Array.from({ length: 40 }, (_, i) => ({ ...sample, file: `part-${String(i + 1).padStart(4, '0')}-${sample.sha256.slice(0, 16)}.json`, byteLength: 7 * 1024 * 1024, courseCount: 1, courseIds: [`sample-${i}`] }));
-  m.courseCount = 40;
-}, /totals/);
-
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async () => new Response('', { status: 404 }) }), /request failed/); checks++;
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async url => url.endsWith('index.json') ? response(content.get(url)) : new Response('', { status: 404 }) }), /request failed/); checks++;
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async () => response('<html>hosting error</html>') }), /Invalid curriculum JSON/); checks++;
-
-const firstURL = `data/course-parts/${index.parts[0].file}`;
-const wrongOrder = JSON.parse(content.get(firstURL)); [wrongOrder[0], wrongOrder[1]] = [wrongOrder[1], wrongOrder[0]];
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async url => response(url === firstURL ? JSON.stringify(wrongOrder) + '\n' : content.get(url)) }), /contents do not match/); checks++;
-const wrongTitle = JSON.parse(content.get(firstURL));
-wrongTitle[0].titleEn = wrongTitle[0].titleEn.replace(/[A-Za-z]/, letter => letter === 'Z' ? 'Y' : 'Z');
-const tampered = JSON.stringify(wrongTitle) + '\n';
-assert.equal(Buffer.byteLength(tampered), index.parts[0].byteLength, 'tamper retains size, IDs and count');
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async url => response(url === firstURL ? tampered : content.get(url)) }), /checksum mismatch/); checks++;
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async url => response(url === firstURL ? Buffer.concat([content.get(url), Buffer.from(' ')]) : content.get(url)) }), /size limit/); checks++;
-
-// A streaming response must enforce limits across chunks, not just Content-Length.
-await assert.rejects(loadCurriculumData('featured', { data: null, fetchImpl: async url => {
-  if (url !== firstURL) return response(content.get(url));
-  return response(new ReadableStream({ start(controller) { controller.enqueue(content.get(url)); controller.enqueue(new Uint8Array([32])); controller.close(); } }));
-}}), /size limit/); checks++;
-const aborter = new AbortController(); aborter.abort();
-await assert.rejects(loadCurriculumData('featured', { data: null, signal: aborter.signal, fetchImpl: async (url, options) => {
-  assert(options.signal.aborted); throw new DOMException('Aborted', 'AbortError');
-}}), /Aborted/); checks++;
+// V14 uses the lazy index at runtime; bounded course-parts remain the lossless
+// source restoration and hosted-build compatibility representation.
+const restored=[];
+for(const part of index.parts){const bytes=content.get(`data/course-parts/${part.file}`);assert(bytes.length<=7*1024*1024);assert.equal(bytes.length,part.byteLength);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),part.sha256);const courses=JSON.parse(bytes);assert.deepEqual(courses.map(c=>c.id),part.courseIds);restored.push(...courses);}
+assert.deepEqual(restored,canonical,'all compatibility parts preserve canonical fields and order');checks++;
+const lazy=JSON.parse(fs.readFileSync(path.join(dataDir,'lazy/index.json'),'utf8'));
+const fetchGood=async url=>response(fs.readFileSync(path.join(root,'public/academy',url)));
+const hosted=await loadCurriculumData('featured',{data:null,fetchImpl:fetchGood});
+assert.equal(hosted.length,canonical.length);assert.deepEqual(hosted.map(c=>c.id),canonical.map(c=>c.id));assert(hosted.every(c=>c._lazy));checks++;
+const initial=await loadCurriculumData('catalog',{data:null,fetchImpl:fetchGood});assert.equal(initial.length,lazy.catalog.length);checks++;
+await assert.rejects(loadCurriculumData('../secrets',{data:null,fetchImpl:fetchGood}),/Invalid/);checks++;
+const aborter=new AbortController();aborter.abort();await assert.rejects(loadCurriculumData('featured',{data:null,signal:aborter.signal,fetchImpl:()=>{throw Error('aborted caller must not fetch');}}),/Aborted/);checks++;
 
 const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'macgyver-hosted-test-'));
 try {
@@ -116,7 +66,7 @@ const privateCopy={featured:[{id:'paid',title:'Paid',stages:[{steps:[{id:'secret
 let protectedCalls=[];
 const publicMetadata=[{id:'paid',title:'Paid',locked:true,stages:[]}];
 const protectedResult=await loadCurriculumData('featured',{protected:true,data:privateCopy,fetchImpl:async(url,options)=>{protectedCalls.push(url);assert.equal(options.cache,'no-store');return response(JSON.stringify(publicMetadata))}});
-assert.deepEqual(protectedResult,publicMetadata);assert.deepEqual(protectedCalls,['/api/curriculum']);checks++;
+assert.deepEqual(protectedResult,publicMetadata);assert.deepEqual(protectedCalls,['/api/curriculum?index=1']);checks++;
 await assert.rejects(loadCurriculumData('featured',{protected:true,data:privateCopy,fetchImpl:async()=>new Response('',{status:401})}),/request failed/);checks++;
 await assert.rejects(loadCurriculumData('featured',{protected:true,data:privateCopy,fetchImpl:async()=>response(JSON.stringify([{id:'paid',locked:true,stages:[{steps:[]}]}]))}),/Invalid protected/);checks++;
 
@@ -139,4 +89,4 @@ try {
   assert.equal(events.length, 2, 'failed framework build prevents postbuild'); checks++;
 } finally { fs.rmSync(orchestration, { recursive: true, force: true }); }
 
-console.log(`PASS ${checks} curriculum-loader/build checks; ${hosted.length} courses in ${index.parts.length} bounded parts preserve canonical content and order.`);
+console.log(`PASS ${checks} curriculum compatibility/build checks; ${hosted.length} courses in ${index.parts.length} bounded parts preserve canonical content and order.`);

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c074-cfb10b02d4302edd.json"]={sha256:"cfb10b02d4302edd61296f2dc873cbdc4562b1bec7eac3997d75e9327a118734",value:{"title":"航電軟體需求追溯","titleEn":"Avionics software requirements traceability","category":"aerospace","kind":"craft","summary":"課程規劃主題：需求、驗證與組態管理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: requirements, verification and configuration control. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c074"}};

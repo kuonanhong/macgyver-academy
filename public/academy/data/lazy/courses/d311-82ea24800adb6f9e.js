@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d311-82ea24800adb6f9e.json"]={sha256:"82ea24800adb6f9e0e047a87139bd5328cb4fdd3250323559f0927c3325a73ed",value:{"id":"d311","title":"精密滴灌壓力補償系統","titleEn":"Precision Drip Irrigation Pressure Compensation","category":"process","kind":"craft","summary":"「精密滴灌壓力補償系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Precision Drip Irrigation Pressure Compensation: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

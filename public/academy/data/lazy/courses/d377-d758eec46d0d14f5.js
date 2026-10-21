@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d377-d758eec46d0d14f5.json"]={sha256:"d758eec46d0d14f5e7f492a553f29d4abf94a4d4cbb13704e7def5666ab145a3",value:{"id":"d377","title":"膜式水處理壓差監測","titleEn":"Membrane Water Treatment Differential Pressure Monitoring","category":"process","kind":"craft","summary":"「膜式水處理壓差監測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Membrane Water Treatment Differential Pressure Monitoring: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

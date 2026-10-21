@@ -1,6 +1,7 @@
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const url=v=>typeof v==='string'&&/^https:\/\//.test(v)?v:'';
 let registry={vendors:[],courses:[]},loading=null;
+export function setVendors(data){registry={vendors:Array.isArray(data?.vendors)?data.vendors:[],courses:Array.isArray(data?.courses)?data.courses:[]};}
 export async function loadVendors(){
  if(loading)return loading;
  loading=(async()=>{try{const data=globalThis.window?.MG_DATA?.vendors||await fetch('data/vendors.json',{signal:AbortSignal.timeout(12000)}).then(r=>{if(!r.ok)throw Error('Vendor data unavailable');return r.json();});if(Array.isArray(data?.vendors)&&Array.isArray(data?.courses))registry=data;}catch{}return registry;})();return loading;

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c214-a4bfd5cc705869ee.json"]={sha256:"a4bfd5cc705869ee69c32061984f018c9024a9a45e1388a2cb1089072a3e5b1f",value:{"title":"Honda Insight 輕量油電車","titleEn":"Honda Insight lightweight hybrid car","category":"automotive","kind":"project","summary":"課程規劃主題：輕量車體與電力輔助。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: lightweight bodies and electric assistance. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c214"}};

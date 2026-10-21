@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d073-2a6dff91c3d473b5.json"]={sha256:"2a6dff91c3d473b5a988b8d7cb4634c4beb1b9ae404c78a52e5e126232a75eda",value:{"id":"d073","title":"地熱井完整性監測","titleEn":"Geothermal Well Integrity Monitoring","category":"energy","kind":"craft","summary":"「地熱井完整性監測」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Geothermal Well Integrity Monitoring: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

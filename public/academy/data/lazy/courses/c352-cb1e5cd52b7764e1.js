@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c352-cb1e5cd52b7764e1.json"]={sha256:"cb1e5cd52b7764e1df2c423b08bb2f5e0b453dbe928e47951859acad2b56b217",value:{"title":"Venus Express 金星大氣探測","titleEn":"Venus Express atmospheric mission","category":"space","kind":"project","summary":"課程規劃主題：大氣光譜與熱控制。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: atmospheric spectroscopy and thermal control. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c352"}};

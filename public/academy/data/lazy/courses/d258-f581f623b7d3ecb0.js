@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d258-f581f623b7d3ecb0.json"]={sha256:"f581f623b7d3ecb039f1339d65886f42cf542b78d3aece0812b717180fe3e3a1",value:{"id":"d258","title":"電動輪椅控制系統","titleEn":"Powered Wheelchair Control Systems","category":"biomedical","kind":"craft","summary":"「電動輪椅控制系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Powered Wheelchair Control Systems: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

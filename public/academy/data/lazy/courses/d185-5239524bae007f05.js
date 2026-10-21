@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d185-5239524bae007f05.json"]={sha256:"5239524bae007f053491f89242775cd11b883e59381c0e8fcff883cc2baa1dd7",value:{"id":"d185","title":"電池電極漿料流變量測","titleEn":"Battery Electrode Slurry Rheology","category":"materials","kind":"craft","summary":"「電池電極漿料流變量測」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Battery Electrode Slurry Rheology: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

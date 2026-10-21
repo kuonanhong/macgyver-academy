@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d139-36f6ffd5cdaf8b11.json"]={sha256:"36f6ffd5cdaf8b118763fd8d5fa12615b4f1ed81739633f8d60225d6aa24801f",value:{"id":"d139","title":"大型鑄件超音波檢測","titleEn":"Ultrasonic Inspection of Large Castings","category":"materials","kind":"craft","summary":"「大型鑄件超音波檢測」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ultrasonic Inspection of Large Castings: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d116-c8b421a94f5968d9.json"]={sha256:"c8b421a94f5968d95c90deb68697302620ec3ba09060b77f71773c239d7e7eb0",value:{"id":"d116","title":"鋼板熱軋板形控制","titleEn":"Hot Rolled Steel Strip Shape Control","category":"materials","kind":"craft","summary":"「鋼板熱軋板形控制」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hot Rolled Steel Strip Shape Control: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

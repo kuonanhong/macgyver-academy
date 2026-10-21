@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d432-c84e43ab0601e510.json"]={sha256:"c84e43ab0601e5100e13ad4773e5250db02a3c157ab3465c56f6e13f1f0c203b",value:{"id":"d432","title":"PAL-XFEL自由電子雷射","titleEn":"PAL-XFEL Free Electron Laser","category":"megascience","kind":"project","summary":"「PAL-XFEL自由電子雷射」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for PAL-XFEL Free Electron Laser: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

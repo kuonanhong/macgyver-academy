@@ -37,6 +37,20 @@ class RouteAdapterTests(unittest.TestCase):
         with patch.dict(os.environ, {**ENV, 'OLLAMA_BASE_URL': 'https://remote.example', 'GEMINI_API_KEY': ''}, clear=True):
             self.assertEqual(server.ai_routes(), [])
 
+    def test_claude_native_key_and_image_contract(self):
+        env={**ENV,'ANTHROPIC_API_KEY':'fake-claude-key','ANTHROPIC_MODEL':'claude-test-model'}
+        with patch.dict(os.environ,env,clear=True),patch.object(server,'build_opener') as factory:
+            factory.return_value.open.return_value=provider_reply({'content':[{'type':'thinking','text':'private reasoning'},{'type':'text','text':'Public explanation'}]})
+            result=server.routed_completion(server.select_ai_route('claude'),'System',{'question':'Explain'},IMAGE)
+            request=factory.return_value.open.call_args.args[0];payload=json.loads(request.data)
+            self.assertEqual(request.full_url,'https://api.anthropic.com/v1/messages')
+            self.assertEqual(request.get_header('X-api-key'),'fake-claude-key')
+            self.assertEqual(payload['system'],'System')
+            self.assertEqual(payload['messages'][0]['content'][1]['source']['data'],IMAGE['data'])
+            self.assertNotIn('fake-claude-key',request.data.decode())
+            self.assertEqual(result,'Public explanation')
+            self.assertEqual(len(server.TRANSLATION_LANGUAGES),79)
+
     def test_images_type_dimensions_and_encoding(self):
         self.assertEqual(server.validate_image(IMAGE), IMAGE)
         for invalid in ({'mimeType': 'image/svg+xml', 'data': IMAGE['data']}, {'mimeType': 'image/jpeg', 'data': IMAGE['data']}, {'mimeType': 'image/png', 'data': 'data:image/png;base64,' + IMAGE['data']}, {'mimeType': 'image/png', 'data': '%%%'}):
@@ -87,6 +101,9 @@ class RouteAdapterTests(unittest.TestCase):
             payload = json.loads(factory.return_value.open.call_args.args[0].data)
             self.assertEqual(payload['generationConfig']['responseMimeType'], 'application/json')
             self.assertEqual(payload['generationConfig']['maxOutputTokens'], 8192)
+            self.assertNotIn('temperature', payload['generationConfig'])
+            self.assertNotIn('topP', payload['generationConfig'])
+            self.assertNotIn('topK', payload['generationConfig'])
             self.assertEqual(json.loads(answer)['translations'][2], 'c' * 10000)
 
     def test_provider_errors_do_not_echo_private_response(self):
@@ -174,6 +191,14 @@ class TutorRouteHTTPTests(unittest.TestCase):
             self.assertEqual(result['translations'], ['熱應力'])
             self.assertEqual(adapter.call_args.args[0]['id'], 'gemini')
             self.assertTrue(adapter.call_args.kwargs['json_output'])
+
+    def test_translation_rejects_empty_or_missing_outputs(self):
+        for translations in ([],[''],['ok','extra']):
+            with patch.object(server,'routed_completion',return_value=json.dumps({'translations':translations})):
+                status,_,_=self.call('POST','/api/translate',{'texts':['Thermal stress'],'language':'fr'},self.cookie)
+                self.assertEqual(status,502)
+        status,_,_=self.call('POST','/api/translate',{'texts':['Thermal stress'],'language':'not-a-language'},self.cookie)
+        self.assertEqual(status,400)
 
     def test_config_and_me_never_return_key(self):
         for path in ('/api/config', '/api/me'):

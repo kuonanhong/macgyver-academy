@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d011-328b3aa03b987c4e.json"]={sha256:"328b3aa03b987c4e45087ba03e0dc0f58d44f56418e876a538524aa73daad8e2",value:{"id":"d011","title":"丹江口水電站","titleEn":"Danjiangkou Hydropower Station","category":"energy","kind":"project","summary":"「丹江口水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Danjiangkou Hydropower Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

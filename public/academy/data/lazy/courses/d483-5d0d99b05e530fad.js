@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d483-5d0d99b05e530fad.json"]={sha256:"5d0d99b05e530fad52f3040b6a47708f7d51279d20f7ff7af39318bfdfec8a1a",value:{"id":"d483","title":"印度巴拉蒂南極研究站","titleEn":"Bharati Antarctic Research Station","category":"megascience","kind":"project","summary":"「印度巴拉蒂南極研究站」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Bharati Antarctic Research Station: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

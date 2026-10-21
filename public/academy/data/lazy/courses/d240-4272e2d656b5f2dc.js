@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d240-4272e2d656b5f2dc.json"]={sha256:"4272e2d656b5f2dc5c85fd4ab8e944e9e9bfd991d6689a03a9d2449a68a4c0be",value:{"id":"d240","title":"醫療影像品質測試假體","titleEn":"Medical Image Quality Test Phantoms","category":"biomedical","kind":"craft","summary":"「醫療影像品質測試假體」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Image Quality Test Phantoms: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

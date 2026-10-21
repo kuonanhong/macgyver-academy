@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d057-f849fdda803cadd7.json"]={sha256:"f849fdda803cadd7748abc5dc76122e5ce3dc53761d6da817c0f2799b7ef4082",value:{"id":"d057","title":"魚類友善水輪機工程","titleEn":"Fish-Friendly Hydropower Turbine Engineering","category":"energy","kind":"craft","summary":"「魚類友善水輪機工程」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Fish-Friendly Hydropower Turbine Engineering: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

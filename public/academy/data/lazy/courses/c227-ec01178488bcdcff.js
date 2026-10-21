@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c227-ec01178488bcdcff.json"]={sha256:"ec01178488bcdcffe78fc0977963156d8785418c128b01ceabfde9a404d270ea",value:{"title":"Toyota Land Cruiser 越野平台","titleEn":"Toyota Land Cruiser off-road platform","category":"automotive","kind":"project","summary":"課程規劃主題：耐久性與崎嶇地形懸吊。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: durability and rough-terrain suspension. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c227"}};

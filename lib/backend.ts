@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import { getChatGPTUser } from "@/app/chatgpt-auth";
-import { hostedRoutes, geminiCompletion } from "./tutor-providers";
+import { hostedRoutes, geminiCompletion, claudeCompletion } from "./tutor-providers";
 
 export class HttpError extends Error {
   constructor(public status: number, message: string) { super(message); }
@@ -55,12 +55,16 @@ export function ids(value: unknown, name: string): string[] {
   return [...new Set(value)];
 }
 
-type AIEnvironment = { AI_BASE_URL?: string; AI_API_KEY?: string; AI_MODEL?: string; GEMINI_API_KEY?: string; GEMINI_MODEL?: string };
+type AIEnvironment = { AI_BASE_URL?: string; AI_API_KEY?: string; AI_MODEL?: string; GEMINI_API_KEY?: string; GEMINI_MODEL?: string; ANTHROPIC_API_KEY?: string; ANTHROPIC_MODEL?: string };
 const config = () => env as typeof env & AIEnvironment;
 export function aiRoutes() { return hostedRoutes(config()); }
 export function aiAvailable() { return aiRoutes().length > 0; }
 export function hostedGemini(system: string, prompt: string, image?: {mimeType:string;data:string}, jsonOutput = false) {
   return geminiCompletion(config(), system, prompt, image, jsonOutput);
+}
+
+export function hostedClaude(system: string, prompt: string, image?: {mimeType:string;data:string}, jsonOutput = false) {
+  return claudeCompletion(config(), system, prompt, image, jsonOutput);
 }
 
 export async function enforceAiLimit(userId: string) {
@@ -75,7 +79,7 @@ export async function enforceAiLimit(userId: string) {
 export async function completion(system: string, prompt: string, jsonOutput = false) {
   const e = config();
   if (!aiAvailable()) throw new HttpError(503, "Generative AI is not configured. Source-based learning remains available.");
-  if (!(e.AI_BASE_URL && e.AI_MODEL && e.AI_API_KEY)) return hostedGemini(system, prompt, undefined, jsonOutput);
+  if (!(e.AI_BASE_URL && e.AI_MODEL && e.AI_API_KEY)) return e.GEMINI_API_KEY ? hostedGemini(system, prompt, undefined, jsonOutput) : hostedClaude(system, prompt, undefined, jsonOutput);
   let base: URL;
   try { base = new URL(e.AI_BASE_URL!); } catch { throw new HttpError(503, "AI endpoint configuration is invalid."); }
   // Only the administrator-configured destination is used. Client URLs are never accepted.

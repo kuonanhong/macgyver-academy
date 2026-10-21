@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c204-81c7514063656472.json"]={sha256:"81c75140636564723b52d6cc15db68af25cc3b68dbf0ca0776558ccec97dd4d1",value:{"title":"Mini 橫置引擎前驅平台","titleEn":"Mini transverse-engine front-drive platform","category":"automotive","kind":"project","summary":"課程規劃主題：空間利用與傳動整合。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: space efficiency and drivetrain integration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c204"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d321-6b34ffa74b0aeb21.json"]={sha256:"6b34ffa74b0aeb2157089fdbbbe3524fc61c9e2238e4784e6a6343d5c88b8067",value:{"id":"d321","title":"垂直農場空調除濕整合","titleEn":"Vertical Farm HVAC and Dehumidification Integration","category":"process","kind":"craft","summary":"「垂直農場空調除濕整合」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Vertical Farm HVAC and Dehumidification Integration: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

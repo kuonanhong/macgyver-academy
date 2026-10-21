@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d359-8852fe19e59cb409.json"]={sha256:"8852fe19e59cb409965f55ee42ffc8de6cdcced3f44b430f1dfcc9983f43764e",value:{"id":"d359","title":"蔬果光譜品質分選","titleEn":"Fruit and Vegetable Spectral Quality Sorting","category":"process","kind":"craft","summary":"「蔬果光譜品質分選」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Fruit and Vegetable Spectral Quality Sorting: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

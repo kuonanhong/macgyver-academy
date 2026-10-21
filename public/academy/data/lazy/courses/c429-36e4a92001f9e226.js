@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c429-36e4a92001f9e226.json"]={sha256:"36e4a92001f9e226fd4019a141d59bdbe58dc46837157a5fdf7e947c56101fc6",value:{"title":"Heidelberg Speedmaster 印刷機","titleEn":"Heidelberg Speedmaster printing press","category":"manufacturing","kind":"project","summary":"課程規劃主題：紙張傳送與多色套準。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: sheet transport and color registration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c429"}};

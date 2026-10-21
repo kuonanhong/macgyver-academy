@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d103-3f4e9544ec39ee18.json"]={sha256:"3f4e9544ec39ee18b0d8184b9d33ff8a70e1505f62c936ec495aad239123ffb3",value:{"id":"d103","title":"浦項整合鋼廠","titleEn":"Pohang Integrated Steelworks","category":"materials","kind":"project","summary":"「浦項整合鋼廠」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Pohang Integrated Steelworks: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

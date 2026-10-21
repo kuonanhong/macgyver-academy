@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d174-3a02b199fc5371c0.json"]={sha256:"3a02b199fc5371c0b71b2739ca5827933d269ced65f2a9cda378934f54502cbf",value:{"id":"d174","title":"多層共擠阻隔膜","titleEn":"Multilayer Coextruded Barrier Films","category":"materials","kind":"craft","summary":"「多層共擠阻隔膜」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Multilayer Coextruded Barrier Films: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

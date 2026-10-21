@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d040-82e2e398ca8acce5.json"]={sha256:"82e2e398ca8acce59b760a0c749ff97c820bb8c0622a1e360e14354c70ee8b6b",value:{"id":"d040","title":"金卡丁浮式風電場","titleEn":"Kincardine Floating Offshore Wind Farm","category":"energy","kind":"project","summary":"「金卡丁浮式風電場」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Kincardine Floating Offshore Wind Farm: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

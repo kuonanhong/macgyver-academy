@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b106-107bde7ce2b4b8b5.json"]={sha256:"107bde7ce2b4b8b55938049a8ee3d5dabc0f92ebe85cfae234d51439e0fb0ce3",value:{"id":"b106","title":"青函隧道","titleEn":"Seikan Tunnel","category":"underground","kind":"project","summary":"以「青函隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Seikan Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

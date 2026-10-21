@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c030-0f4070af649541eb.json"]={sha256:"0f4070af649541ebd0fa297dee7b5aef5d8cc071971a92c92cbe580cbfdd5722",value:{"title":"Sikorsky S-92 海上運輸直升機","titleEn":"Sikorsky S-92 offshore transport helicopter","category":"aerospace","kind":"project","summary":"課程規劃主題：海事運作與故障容錯。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: maritime operations and fault tolerance. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c030"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d082-303cf43c398758d3.json"]={sha256:"303cf43c398758d369a8edddec0fe0976034bdaeb05737c17195f58cc6d00891",value:{"id":"d082","title":"燃氣複循環熱回收鍋爐","titleEn":"Combined Cycle Heat Recovery Steam Generators","category":"energy","kind":"craft","summary":"「燃氣複循環熱回收鍋爐」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Combined Cycle Heat Recovery Steam Generators: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

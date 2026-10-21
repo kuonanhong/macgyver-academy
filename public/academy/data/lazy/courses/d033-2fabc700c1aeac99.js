@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d033-2fabc700c1aeac99.json"]={sha256:"2fabc700c1aeac9925f0789bbc50d33c23aebd87de2f363ec7798e676db08139",value:{"id":"d033","title":"騰格里沙漠太陽能園區","titleEn":"Tengger Desert Solar Park","category":"energy","kind":"project","summary":"「騰格里沙漠太陽能園區」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Tengger Desert Solar Park: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

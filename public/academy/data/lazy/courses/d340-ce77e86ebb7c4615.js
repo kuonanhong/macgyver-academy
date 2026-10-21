@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d340-ce77e86ebb7c4615.json"]={sha256:"ce77e86ebb7c4615050ff4a1a4d5d6ab8d2eabd66a1c9b71bb620c4c69174632",value:{"id":"d340","title":"糖業結晶與離心分離","titleEn":"Sugar Crystallization and Centrifugal Separation","category":"process","kind":"craft","summary":"「糖業結晶與離心分離」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sugar Crystallization and Centrifugal Separation: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d413-4f4e338a529916e9.json"]={sha256:"4f4e338a529916e9984ff1c2ea490847b56b4e70ed7ae05c3475b9aa0cdc6483",value:{"id":"d413","title":"SuperKEKB電子正子對撞機","titleEn":"SuperKEKB Electron Positron Collider","category":"megascience","kind":"project","summary":"「SuperKEKB電子正子對撞機」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for SuperKEKB Electron Positron Collider: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

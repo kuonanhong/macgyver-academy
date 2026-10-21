@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d330-22a8f5a7b9ff937c.json"]={sha256:"22a8f5a7b9ff937c44aa35b393f1acdfc1781ade96389252aff6b5bd8706e1ea",value:{"id":"d330","title":"穀物收穫損失感測","titleEn":"Grain Harvest Loss Sensing","category":"process","kind":"craft","summary":"「穀物收穫損失感測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Grain Harvest Loss Sensing: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

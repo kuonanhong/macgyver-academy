@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d488-292da01be3d80451.json"]={sha256:"292da01be3d804517114c6c1118ca2f157267a9238e35dd4a94761a522e565eb",value:{"id":"d488","title":"決心號海洋鑽探船","titleEn":"JOIDES Resolution Ocean Drilling Vessel","category":"megascience","kind":"project","summary":"「決心號海洋鑽探船」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for JOIDES Resolution Ocean Drilling Vessel: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

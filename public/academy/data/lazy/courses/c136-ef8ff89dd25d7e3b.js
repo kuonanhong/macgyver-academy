@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c136-ef8ff89dd25d7e3b.json"]={sha256:"ef8ff89dd25d7e3b82203354d1ba747637d89902956f567683317ad48d57b636",value:{"title":"Viking Grace 替代燃料渡輪","titleEn":"Viking Grace alternative-fuel ferry","category":"marine","kind":"project","summary":"課程規劃主題：燃料系統與旅客船配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: fuel systems and passenger-vessel layout. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c136"}};

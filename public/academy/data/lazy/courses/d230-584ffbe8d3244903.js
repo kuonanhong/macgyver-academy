@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d230-584ffbe8d3244903.json"]={sha256:"584ffbe8d3244903105239591f487f765f26cf3824c293600fd2ebe0d4e06baf",value:{"id":"d230","title":"光學同調斷層掃描儀","titleEn":"Optical Coherence Tomography Instruments","category":"biomedical","kind":"craft","summary":"「光學同調斷層掃描儀」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Optical Coherence Tomography Instruments: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

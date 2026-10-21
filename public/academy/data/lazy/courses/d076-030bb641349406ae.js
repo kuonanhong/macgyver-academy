@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d076-030bb641349406ae.json"]={sha256:"030bb641349406ae5a5ed91f6e8b1f30edf1758c609017835569a440cfef6778",value:{"id":"d076","title":"海水溫差發電熱交換器","titleEn":"Ocean Thermal Energy Conversion Heat Exchangers","category":"energy","kind":"craft","summary":"「海水溫差發電熱交換器」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ocean Thermal Energy Conversion Heat Exchangers: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

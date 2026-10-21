@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d115-e6bb5c70a0d78da0.json"]={sha256:"e6bb5c70a0d78da0ac0672bea16087f596d3526212639f59e48888d3c4b40321",value:{"id":"d115","title":"薄板坯連鑄連軋整合","titleEn":"Thin Slab Continuous Casting and Rolling Integration","category":"materials","kind":"craft","summary":"「薄板坯連鑄連軋整合」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Thin Slab Continuous Casting and Rolling Integration: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

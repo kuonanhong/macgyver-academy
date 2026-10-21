@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d125-73aaceaeb0de9e77.json"]={sha256:"73aaceaeb0de9e7790e0bf620fa8010f9525833e34b4f1abfc80574fd9fe9786",value:{"id":"d125","title":"鎂合金成形與防蝕工程","titleEn":"Magnesium Alloy Forming and Corrosion Protection","category":"materials","kind":"craft","summary":"「鎂合金成形與防蝕工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Magnesium Alloy Forming and Corrosion Protection: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

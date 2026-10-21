@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d068-a335d7682edca355.json"]={sha256:"a335d7682edca35596065ad8e18746ab570fb46531580d01c56bd1052f053f47",value:{"id":"d068","title":"風機偏航系統與控制","titleEn":"Wind Turbine Yaw Systems and Control","category":"energy","kind":"craft","summary":"「風機偏航系統與控制」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Wind Turbine Yaw Systems and Control: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

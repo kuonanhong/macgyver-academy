@@ -7,9 +7,16 @@ from portable import server
 
 
 class LauncherTests(unittest.TestCase):
+    def public_fixture(self, directory):
+        root = Path(directory)
+        (root / 'index.html').write_text('test')
+        (root / 'data').mkdir()
+        (root / 'data/featured.json').write_text('[]\n')
+        return root
+
     def test_busy_default_port_moves_and_updates_origin(self):
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory); (root / 'index.html').write_text('test')
+            root = self.public_fixture(directory)
             addresses = []
             class FakeServer:
                 def __init__(self, address, handler):
@@ -26,6 +33,7 @@ class LauncherTests(unittest.TestCase):
 
     def test_explicit_busy_port_never_changes(self):
         with tempfile.TemporaryDirectory() as directory:
+            self.public_fixture(directory)
             argv = ['server.py', '--public', directory, '--port', '8010']
             with patch.dict(server.os.environ, {}, clear=True), patch.object(server, 'read_dotenv'), patch.object(server.sys, 'argv', argv), patch.object(server, 'ThreadingHTTPServer', side_effect=OSError(errno.EADDRINUSE, 'busy')) as factory:
                 with self.assertRaises(SystemExit): server.main()

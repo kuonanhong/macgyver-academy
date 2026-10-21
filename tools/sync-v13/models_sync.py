@@ -48,6 +48,7 @@ import subprocess
 import sys
 import tempfile
 import zipfile
+import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -58,14 +59,16 @@ CHUNK_MIB = 40
 MAX_CHUNK = 48 * 1024 * 1024
 WEIGHT_EXT = {'.gguf', '.safetensors', '.onnx', '.bin', '.pt', '.pth', '.model'}
 SIDE_EXT = {'.json', '.txt', '.md', '.tiktoken', '.vocab', '.merges'}
-BATCH_BYTES = 400 * 1024 * 1024  # push every ≈400 MiB so an interrupted upload resumes
+BATCH_BYTES = 120 * 1024 * 1024  # small commit checkpoints; an interrupted pack may retransmit
 GIT_ENV = dict(os.environ, GIT_TERMINAL_PROMPT='0')
+GIT_ENV.setdefault('GIT_SSH_COMMAND','ssh -o BatchMode=yes -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=3')
 
 
 def chunk_bytes() -> int:
     """40 MiB in production; tests with a local file:// remote may use small chunks."""
     test = os.environ.get('MACGYVER_MODELS_TEST_CHUNK_BYTES', '')
     if os.environ.get('MACGYVER_MODELS_TEST_REMOTE') == '1' and test.isdigit():
+        if not 1<=int(test)<=MAX_CHUNK:raise ValueError('Invalid test chunk size')
         return int(test)
     return CHUNK_MIB * 1024 * 1024
 SSH_URL = re.compile(r'^(?:git@github\.com:|ssh://git@github\.com/)([A-Za-z0-9-]+)/([A-Za-z0-9._-]+?)(?:\.git)?/?$')
@@ -211,9 +214,12 @@ def build_manifest(plans) -> dict:
 def summarize(plans, tree: dict[str, str], old: dict | None):
     blobs = set(tree.values())
     need, have_path, have_blob = [], 0, 0
+    seen=set()
     for p in plans:
         for x in p['parts']:
             full = f'{PREFIX}/{x["path"]}'
+            if full in seen:continue
+            seen.add(full)
             if tree.get(full) == x['blob']:
                 have_path += 1
             elif x['blob'] in blobs:
@@ -264,6 +270,7 @@ def commit_and_push(work: Path, parent: str | None, index: Path, message: str, b
         if r.returncode == 0:
             return commit
         say(f'  第 {attempt} 次上傳中斷，稍後重試（已上傳的批次會保留）…')
+        if attempt<4:time.sleep(2**attempt)
     raise SystemExit('上傳未完成。請檢查網路後重跑同一命令，會從已完成的批次接續。')
 
 
@@ -305,7 +312,7 @@ def cmd_push(a) -> int:
         git(work, 'update-index', '--add', '--cacheinfo', f'100644,{oid},{PREFIX}/{x["path"]}', env=env)
         if new:
             batch += 1; batch_bytes += x['size']; done += 1
-        if new and batch_bytes >= BATCH_BYTES:
+        if new and batch_bytes >= a.batch_mib*1024*1024:
             say(f'  上傳分片批次 {done}/{total_new}…')
             parent = commit_and_push(work, parent, index, f'MacGyver models: upload chunks {done}/{total_new}', a.branch)
             batch, batch_bytes = 0, 0
@@ -336,6 +343,7 @@ def cmd_restore(a) -> int:
         if rel.is_absolute() or '..' in rel.parts:
             raise SystemExit('清單路徑不安全：' + item['path'])
         target = dest / rel
+        if not target.resolve().is_relative_to(dest):raise SystemExit('Restore target escapes destination')
         target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists() and target.stat().st_size == item['size'] and sha256_file(target) == item['sha256']:
             say(f'已驗證：{rel}'); continue
@@ -353,7 +361,7 @@ def cmd_restore(a) -> int:
                     tmp.write(data); whole.update(data)
             except BaseException:
                 temporary.unlink(missing_ok=True); raise
-        if whole.hexdigest() != item['sha256']:
+        if temporary.stat().st_size != item['size'] or whole.hexdigest() != item['sha256']:
             temporary.unlink(); raise SystemExit('整檔 SHA-256 不符：' + item['path'])
         os.replace(temporary, target)
         say(f'已還原並驗證：{rel}')
@@ -432,6 +440,7 @@ def main() -> int:
         if name == 'compare':
             s.add_argument('--json-report', type=Path)
         if name == 'push':
+            s.add_argument('--batch-mib',type=int,default=120,choices=range(40,1025),metavar='40..1024')
             s.add_argument('--private-confirmed', action='store_true')
             s.add_argument('--prune-legacy-root', action='store_true', help='also remove V12 root-level parts/ and weights-manifest.json')
             s.add_argument('--message', default='MacGyver Academy V13 model manifest')
@@ -441,9 +450,10 @@ def main() -> int:
     s.add_argument('--search', action='append', default=[], help='folder holding the HuaTuo ZIPs or HuaTuo package (repeatable)')
     s.add_argument('--to', type=Path, default=ROOT / 'models')
     a = ap.parse_args()
+    if hasattr(a,'branch') and subprocess.run(['git','check-ref-format','--branch',a.branch],capture_output=True).returncode:ap.error('Invalid Git branch')
     if hasattr(a, 'state'):
         a.state = a.state.expanduser().resolve()
-        if a.state == ROOT or ROOT in a.state.parents:
+        if a.state == ROOT or ROOT in a.state.parents or a.state in ROOT.parents:
             raise SystemExit('--state 必須在專案資料夾之外。')
     return {'compare': cmd_compare, 'push': cmd_push, 'restore': cmd_restore, 'import-huatuo': cmd_import_huatuo}[a.cmd](a)
 

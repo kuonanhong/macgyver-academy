@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d412-949aef2a51233fbb.json"]={sha256:"949aef2a51233fbb295c3fb77b8517013d603112ce0fb3c98ab93a1dcdff8e4c",value:{"id":"d412","title":"RHIC相對論重離子對撞機","titleEn":"Relativistic Heavy Ion Collider RHIC","category":"megascience","kind":"project","summary":"「RHIC相對論重離子對撞機」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Relativistic Heavy Ion Collider RHIC: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

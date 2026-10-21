@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c148-f0d0827a4102439f.json"]={sha256:"f0d0827a4102439fe5c1c991ba5396d92d7fc618e022d4848bea58595ac3732b",value:{"title":"Hywind Scotland 浮式風電","titleEn":"Hywind Scotland floating wind project","category":"marine","kind":"project","summary":"課程規劃主題：浮體、繫泊與動態海纜。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: floaters, moorings and dynamic cables. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c148"}};

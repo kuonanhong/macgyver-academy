@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d262-ed1c58f30abfbb8c.json"]={sha256:"ed1c58f30abfbb8ccbae4010054668d741ac4144c4a1ed641818acb316f375dc",value:{"id":"d262","title":"復健外骨骼感測融合","titleEn":"Rehabilitation Exoskeleton Sensor Fusion","category":"biomedical","kind":"craft","summary":"「復健外骨骼感測融合」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Rehabilitation Exoskeleton Sensor Fusion: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

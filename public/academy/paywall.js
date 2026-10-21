@@ -14,7 +14,15 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '
 let settings = {enabled: true, freeStagesPerCourse: 1, ownerPreviewOnFile: true};
 let state = {mode: 'local', active: false, expiresAt: null, planId: '', checked: false, error: ''};
 let deps = {billing: () => ({}), cloud: () => null};
-const contentCache = new Map();
+const contentCache = new Map(), hydratedCourses = new Map();
+let contentEpoch=0,accessEpoch=0;
+/** Called before any account switch: restore public stubs and discard private data. */
+export function resetProtectedContent(){
+  contentEpoch++;accessEpoch++;contentCache.clear();
+  for(const [course,stages]of hydratedCourses)course.stages=stages;
+  hydratedCourses.clear();
+  state={mode:modeNow(),active:false,expiresAt:null,planId:'',checked:false,error:''};
+}
 
 export function configurePaywall({config = globalThis.MG_CONFIG || {}, freeStages = 1, billing, cloud} = {}) {
   const c = config.paywall || {};
@@ -53,56 +61,34 @@ export function firstLockedIndex(course, steps) { return steps.findIndex(s => st
 
 /** Refresh entitlement. Never throws; failures keep the course locked. */
 export async function refreshAccess({user = null} = {}) {
-  const mode = modeNow();
-  state = {...state, mode, checked: true, error: ''};
+  const generation=++accessEpoch,epoch=contentEpoch,mode=modeNow();
+  const next={mode,active:false,expiresAt:null,planId:'',checked:true,error:''};
   try {
-    if (mode === 'server') {
-      const billing = deps.billing() || {};
-      state.active = !!billing.entitlement?.active;
-      state.expiresAt = billing.entitlement?.expiresAt || null;
-      if (user && globalThis.fetch) {
-        const r = await fetch('/api/billing/me', {credentials: 'same-origin', cache: 'no-store'});
-        if (r.ok) {
-          const data = await r.json(), now = Date.now() / 1000;
-          const live = (data.entitlements || []).filter(e => !e.revokedAt && Number(e.expiresAt) > now && Number(e.startsAt || 0) <= now);
-          state.active = live.length > 0;
-          state.expiresAt = live.length ? Math.max(...live.map(e => Number(e.expiresAt))) * 1000 : null;
-        }
-      }
-    } else if (mode === 'cloud') {
-      const cloud = deps.cloud();
-      if (!user || !cloud?.myAccess) { state.active = false; state.expiresAt = null; }
-      else {
-        const access = await cloud.myAccess();
-        state.active = access?.active === true;
-        state.expiresAt = access?.expiresAt ? Date.parse(access.expiresAt) || null : null;
-        state.planId = access?.planId || '';
-      }
-    } else {
-      state.active = false; state.expiresAt = null;
-    }
-  } catch (error) {
-    state.active = false; state.error = String(error?.message || error);
-  }
+    if(mode==='server'){
+      const billing=deps.billing()||{};next.active=!!billing.entitlement?.active;next.expiresAt=billing.entitlement?.expiresAt||null;
+      if(user&&globalThis.fetch){const r=await fetch('/api/billing/me',{credentials:'same-origin',cache:'no-store'});if(r.ok){const data=await r.json(),now=Date.now()/1000;const live=(data.entitlements||[]).filter(e=>!e.revokedAt&&Number(e.expiresAt)>now&&Number(e.startsAt||0)<=now);next.active=live.length>0;next.expiresAt=live.length?Math.max(...live.map(e=>Number(e.expiresAt)))*1000:null;}}
+    }else if(mode==='cloud'&&user&&deps.cloud()?.myAccess){const access=await deps.cloud().myAccess();next.active=access?.active===true;next.expiresAt=access?.expiresAt?Date.parse(access.expiresAt)||null:null;next.planId=access?.planId||'';}
+  }catch(error){next.active=false;next.error=String(error?.message||error);}
+  if(generation===accessEpoch&&epoch===contentEpoch)state=next;
   return accessState();
 }
 
 /** Replace stub stages with protected content from Supabase when entitled. */
 export async function hydrateProtectedStages(course) {
-  const cloud = deps.cloud();
-  if (!course?.stages || modeNow() !== 'cloud' || !state.active || !cloud?.loadCourseContent) return course;
-  const stubs = course.stages.some((stage, i) => !stageIsFree(i) && stage.steps?.some(s => s.locked === true));
-  if (!stubs) return course;
-  const key = course.id;
-  if (!contentCache.has(key)) contentCache.set(key, cloud.loadCourseContent(course.id).catch(error => { contentCache.delete(key); throw error; }));
-  const rows = await contentCache.get(key);
-  const byIndex = new Map((rows || []).map(row => [Number(row.stage_index), row.payload]));
-  course.stages = course.stages.map((stage, i) => {
-    const full = byIndex.get(i);
-    if (!full || full.id !== stage.id || !Array.isArray(full.steps)) return stage;
-    const ids = stage.steps.map(s => s.id).join('|');
-    return full.steps.map(s => s.id).join('|') === ids ? full : stage;
-  });
+  const cloud=deps.cloud(),epoch=contentEpoch;
+  if(!course?.stages||modeNow()!=='cloud'||!state.active||!cloud?.loadCourseContent)return course;
+  if(!course.stages.some((stage,i)=>!stageIsFree(i)&&stage.steps?.some(s=>s.locked===true)))return course;
+  const key=course.id;
+  if(!contentCache.has(key)){
+    const pending=Promise.resolve().then(()=>cloud.loadCourseContent(key)).catch(error=>{if(contentCache.get(key)===pending)contentCache.delete(key);throw error;});contentCache.set(key,pending);
+  }
+  const rows=await contentCache.get(key);
+  if(epoch!==contentEpoch||cloud!==deps.cloud()||modeNow()!=='cloud'||!state.active)return course;
+  const byIndex=new Map((rows||[]).map(row=>[Number(row.stage_index),row.payload]));
+  const stages=course.stages.map((stage,i)=>{if(stageIsFree(i))return stage;const full=byIndex.get(i);if(!full||full.id!==stage.id||!Array.isArray(full.steps))return stage;return full.steps.map(s=>s.id).join('|')===stage.steps.map(s=>s.id).join('|')?full:stage;});
+  if(stages.some((stage,i)=>!stageIsFree(i)&&stage.steps.some(step=>step.locked===true&&!step.instruction&&!step.objective))){contentCache.delete(key);throw Error('Member course content is incomplete. Retry after the course has been published.');}
+  if(!hydratedCourses.has(course))hydratedCourses.set(course,course.stages);
+  course.stages=stages;
   return course;
 }
 

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d390-7b6594ac0f5232a7.json"]={sha256:"7b6594ac0f5232a74b9104cb5d90815db1c951173a2cf1f1bbb475032350e1f4",value:{"id":"d390","title":"蒸餾塔能量整合概念","titleEn":"Distillation Column Energy Integration Concepts","category":"process","kind":"craft","summary":"「蒸餾塔能量整合概念」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Distillation Column Energy Integration Concepts: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

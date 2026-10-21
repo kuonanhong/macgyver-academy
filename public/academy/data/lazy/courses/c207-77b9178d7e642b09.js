@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c207-77b9178d7e642b09.json"]={sha256:"77b9178d7e642b09695c68adf075096665fe99d8c6c4d8e312f2d3cabbfc4eea",value:{"title":"Ferrari F40 複材跑車工程","titleEn":"Ferrari F40 composite sports-car engineering","category":"automotive","kind":"project","summary":"課程規劃主題：複材車體與動力散熱。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: composite bodywork and powertrain cooling. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c207"}};

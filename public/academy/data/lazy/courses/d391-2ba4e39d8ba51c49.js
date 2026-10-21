@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d391-2ba4e39d8ba51c49.json"]={sha256:"2ba4e39d8ba51c49abc36e21f8878f31e3b9fdbe028f4dd1f862942d2706c34f",value:{"id":"d391","title":"工業結晶器粒徑控制","titleEn":"Industrial Crystallizer Particle Size Control","category":"process","kind":"craft","summary":"「工業結晶器粒徑控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Industrial Crystallizer Particle Size Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

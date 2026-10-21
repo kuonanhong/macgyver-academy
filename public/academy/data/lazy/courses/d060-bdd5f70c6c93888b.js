@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d060-bdd5f70c6c93888b.json"]={sha256:"bdd5f70c6c93888b973164e4874a9c7b630f72e17fe1501c25e8ac72d4b25abf",value:{"id":"d060","title":"太陽能追日機構與控制","titleEn":"Solar Tracker Mechanisms and Control","category":"energy","kind":"craft","summary":"「太陽能追日機構與控制」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Solar Tracker Mechanisms and Control: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

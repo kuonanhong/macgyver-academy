@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d150-ee8de965f07d6113.json"]={sha256:"ee8de965f07d6113d28b5b8ab81eb7dc77a6a781efec4de2d86692b24df4e0b7",value:{"id":"d150","title":"複合材料界面破壞分析","titleEn":"Composite Interface Fracture Analysis","category":"materials","kind":"craft","summary":"「複合材料界面破壞分析」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Composite Interface Fracture Analysis: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

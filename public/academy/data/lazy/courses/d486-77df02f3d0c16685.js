@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d486-77df02f3d0c16685.json"]={sha256:"77df02f3d0c166856ea706505c5861545dc2a0bcc0a16c983f621da0d895b4c0",value:{"id":"d486","title":"國際大洋發現計畫海洋鑽探","titleEn":"International Ocean Discovery Program Drilling","category":"megascience","kind":"project","summary":"「國際大洋發現計畫海洋鑽探」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for International Ocean Discovery Program Drilling: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

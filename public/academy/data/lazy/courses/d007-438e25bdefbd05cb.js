@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d007-438e25bdefbd05cb.json"]={sha256:"438e25bdefbd05cbd7383f70976e673db43f3d578ebdae5dfd03a4eb43da1178",value:{"id":"d007","title":"烏東德水電站","titleEn":"Wudongde Hydropower Station","category":"energy","kind":"project","summary":"「烏東德水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Wudongde Hydropower Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

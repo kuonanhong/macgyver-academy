@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 馬蓋先 MacGyver Engineering Academy V13 — one-click maintenance.
+# 馬蓋先 MacGyver Engineering Academy V14 — one-click maintenance.
 #
 #   bash macgyver.sh              same as "deploy"
 #   bash macgyver.sh all          deploy the website AND upload new model weights (one click for both repos)
@@ -29,6 +29,9 @@ MODELS_REPO='git@github.com:kuonanhong/PRIVATE-MODELS.git'
 BRANCH='main'
 MODELS='qwen25-05b qwen3-06b'
 HUATUO_DIR=''
+MODEL_DIR="$ROOT/models"
+MODEL_BATCH_MIB=120
+SKIP_DATA=0
 PROTECT_CONTENT=0
 STATE="$(dirname "$ROOT")/MacGyver_GitHub_Sync_State"
 # shellcheck disable=SC1090
@@ -44,15 +47,9 @@ done
 
 save_conf(){
   umask 077
-  cat > "$CONF" <<EOF
-SITE_REPO='$SITE_REPO'
-MODELS_REPO='$MODELS_REPO'
-BRANCH='$BRANCH'
-MODELS='$MODELS'
-HUATUO_DIR='$HUATUO_DIR'
-PROTECT_CONTENT=$PROTECT_CONTENT
-STATE='$STATE'
-EOF
+  { for key in SITE_REPO MODELS_REPO BRANCH MODELS HUATUO_DIR MODEL_DIR MODEL_BATCH_MIB PROTECT_CONTENT STATE; do
+      printf '%s=%q\n' "$key" "${!key}"
+    done; } > "$CONF"
   say "設定已存到 $CONF"
 }
 
@@ -60,7 +57,7 @@ doctor(){
   local ok=1
   command -v git >/dev/null || { warn '缺少 git（macOS：xcode-select --install）'; ok=0; }
   [[ -n "$PY" ]] || { warn '缺少 Python 3.10+（macOS：brew install python 或 conda create -n macgyver python=3.12）'; ok=0; }
-  if command -v node >/dev/null; then say "Node $(node --version)（重建網站用）"; else warn '未安裝 Node.js 18+：改程式後無法重建 app.bundle.js（只更新資料仍可）'; fi
+  if command -v node >/dev/null; then say "Node $(node --version)（重建網站用）"; else warn '未安裝 Node.js 22.13+：改程式後無法重建 app.bundle.js（只更新資料仍可）'; fi
   for k in user.name user.email; do [[ -n "$(git config --global --get $k || true)" ]] || { warn "請先執行 git config --global $k \"…\""; ok=0; }; done
   if [[ "$SITE_REPO" == git@* ]]; then
     local out; out="$(ssh -o BatchMode=yes -o ConnectTimeout=10 -T git@github.com 2>&1 || true)"
@@ -92,7 +89,7 @@ rebuild(){
     say '重建離線套件與網站程式'
     node "$ROOT/tools/build-offline.mjs" --if-needed
   else
-    "$PY" "$ROOT/tools/check-offline.py" || die '程式已修改但沒有 Node.js 可重建；請安裝 Node.js 18+。'
+    "$PY" "$ROOT/tools/check-offline.py" || die '程式已修改但沒有 Node.js 可重建；請安裝 Node.js 22.13+。'
   fi
   say '驗證課程資料'
   "$PY" "$ROOT/tools/validate-data.py" >/dev/null || die '課程資料驗證失敗，未上傳。'
@@ -144,7 +141,7 @@ unschedule(){
 }
 
 models_prepare(){
-  local dir="$ROOT/models" id kind file
+  local dir="$MODEL_DIR" id kind file
   mkdir -p "$dir"
   for id in $MODELS; do
     kind="$("$PY" -c "import json,sys;m={x['id']:x for x in json.load(open(sys.argv[1]))['models']};x=m.get(sys.argv[2]);print((x or {}).get('kind','?'),(x or {}).get('file',''))" "$ROOT/tools/model-manifest.json" "$id")"
@@ -165,7 +162,7 @@ models(){
   models_prepare
   say "比對並上傳權重到私人倉庫 $MODELS_REPO（40 MiB 分片，只傳雲端還沒有的部分；不會改動華佗學院的檔案）"
   warn '請確認該倉庫在 GitHub 上是 Private。'
-  "$PY" "$ROOT/tools/sync-v13/models_sync.py" push --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$ROOT/models" --state "$STATE" --private-confirmed "$@"
+  "$PY" "$ROOT/tools/sync-v13/models_sync.py" push --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$MODEL_DIR" --state "$STATE" --private-confirmed --batch-mib "$MODEL_BATCH_MIB" "$@"
 }
 
 cmd="${1:-deploy}"; shift || true
@@ -180,24 +177,42 @@ case "$cmd" in
       save_conf
     fi ;;
   compare) [[ -n "$PY" ]] || die '需要 Python 3.10+'; sync "$@" ;;
-  models-compare) [[ -n "$PY" ]] || die '需要 Python 3.10+'; "$PY" "$ROOT/tools/sync-v13/models_sync.py" compare --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$ROOT/models" --state "$STATE" ;;
+  models-compare) [[ -n "$PY" ]] || die '需要 Python 3.10+'; "$PY" "$ROOT/tools/sync-v13/models_sync.py" compare --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$MODEL_DIR" --state "$STATE" ;;
   restore-models) [[ -n "$PY" ]] || die '需要 Python 3.10+'; "$PY" "$ROOT/tools/sync-v13/models_sync.py" restore --repo "$MODELS_REPO" --branch "$BRANCH" --state "$STATE" --to "${1:-$ROOT/models}" ;;
   deploy)
     [[ -n "$PY" ]] || die '需要 Python 3.10+'
     [[ -f "$CONF" ]] || save_conf
-    update_data; rebuild
-    say '比較本機套件與 GitHub，只上傳新增與修改的檔案，並刪除雲端多餘檔案'
-    sync --push --message "${MESSAGE:-MacGyver Academy V13 update $(date +%F)}" "$@"
-    say '完成。GitHub Pages 通常 1–3 分鐘後更新：https://kuonanhong.github.io/macgyver-academy/' ;;
+    ((SKIP_DATA)) || update_data; rebuild
+    say '比較本機套件與 GitHub，只上傳新增與修改的檔案，清理已管理的舊分片；保留遠端另加檔案'
+    sync --push --message "${MESSAGE:-MacGyver Academy V14 update $(date +%F)}" "$@"
+    say '上傳完成；請在 GitHub Actions 確認建置與 Pages 狀態：https://kuonanhong.github.io/macgyver-academy/' ;;
   all)
     [[ -n "$PY" ]] || die '需要 Python 3.10+'
-    [[ -f "$CONF" ]] || save_conf
-    update_data; rebuild
-    say '① 網站：只上傳新增與修改的檔案，刪除雲端多餘檔案'
-    sync --push --message "${MESSAGE:-MacGyver Academy V13 update $(date +%F)}"
-    say '② 模型：只上傳私人倉庫還沒有的權重分片'
-    models
-    say '全部完成。網站：https://kuonanhong.github.io/macgyver-academy/  模型：'"$MODELS_REPO" ;;
+    dry_run=0; skip_models=0; sync_extra=()
+    while (($#)); do
+      case "$1" in
+        --dry-run) dry_run=1 ;;
+        --skip-models) skip_models=1 ;;
+        --skip-data) SKIP_DATA=1 ;;
+        --models-dir) [[ $# -ge 2 ]] || die '--models-dir 需要目錄'; MODEL_DIR="$2"; shift ;;
+        --batch-mib) [[ $# -ge 2 ]] || die '--batch-mib 需要 40..1024'; MODEL_BATCH_MIB="$2"; shift ;;
+        --no-delete|--prune) sync_extra+=("$1") ;;
+        --help|-h) printf '%s\n' 'bash upload-all.sh [--dry-run] [--skip-models] [--skip-data] [--models-dir DIR] [--batch-mib 40..1024] [--no-delete|--prune]'; exit 0 ;;
+        *) die "未知上傳選項：$1" ;;
+      esac
+      shift
+    done
+    if ((dry_run)); then
+      sync ${sync_extra[@]+"${sync_extra[@]}"}
+      if ((!skip_models)); then "$PY" "$ROOT/tools/sync-v13/models_sync.py" compare --repo "$MODELS_REPO" --branch "$BRANCH" --models-dir "$MODEL_DIR" --state "$STATE"; fi
+    else
+      [[ -f "$CONF" ]] || save_conf
+      ((SKIP_DATA)) || update_data; rebuild
+      say '① 網站：差異上傳；未知遠端檔案預設保留'
+      sync --push --message "${MESSAGE:-MacGyver Academy V14 update $(date +%F)}" ${sync_extra[@]+"${sync_extra[@]}"}
+      if ((!skip_models)); then say '② 模型：分片與提交檢查點'; models; fi
+      say '上傳完成。請到 GitHub Actions 確認網站建置與 Pages 狀態。'
+    fi ;;
   stocks)
     [[ -n "$PY" ]] || die '需要 Python 3.10+'
     update_data

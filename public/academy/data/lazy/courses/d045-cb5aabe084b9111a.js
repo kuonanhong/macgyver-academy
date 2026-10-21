@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d045-cb5aabe084b9111a.json"]={sha256:"cb5aabe084b9111a8677704d71a29b735d84da4b2c5963358458b23304b2bcdf",value:{"id":"d045","title":"莫斯蘭丁儲能系統","titleEn":"Moss Landing Energy Storage Facility","category":"energy","kind":"project","summary":"「莫斯蘭丁儲能系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Moss Landing Energy Storage Facility: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

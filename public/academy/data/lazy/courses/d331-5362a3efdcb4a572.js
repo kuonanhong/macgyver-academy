@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d331-5362a3efdcb4a572.json"]={sha256:"5362a3efdcb4a572838350280a090427ec7ace8ce12631573518b5a97801aaf7",value:{"id":"d331","title":"穀物乾燥塔熱質傳","titleEn":"Grain Drying Tower Heat and Mass Transfer","category":"process","kind":"craft","summary":"「穀物乾燥塔熱質傳」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Grain Drying Tower Heat and Mass Transfer: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

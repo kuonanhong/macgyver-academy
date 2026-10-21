@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d335-c898be77ddb548e8.json"]={sha256:"c898be77ddb548e838926e75ce62f3119b268c3c5004b0f9fc36ff679a427eb1",value:{"id":"d335","title":"種子精密分級與追溯","titleEn":"Seed Precision Grading and Traceability","category":"process","kind":"craft","summary":"「種子精密分級與追溯」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Seed Precision Grading and Traceability: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

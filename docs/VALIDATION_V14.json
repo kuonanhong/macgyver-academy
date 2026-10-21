@@ -1,0 +1,130 @@
+{
+  "status": "PASS",
+  "version": "14.0.0",
+  "date": "2026-10-21",
+  "baseline": {
+    "uploadedV13FilesHashVerified": 2479,
+    "originalGuidedCourses": 710,
+    "preservedOriginalSteps": 20274,
+    "stageHashes": "tools/underground-v14/v13-preservation.json",
+    "githubEvidence": "docs/V14_BASELINE_PROVENANCE.json"
+  },
+  "curriculum": {
+    "catalogTopics": 2066,
+    "guidedCourses": 807,
+    "allSteps": 24274,
+    "knowledgePoints": 53440,
+    "sources": 2151,
+    "undergroundCourses": 100,
+    "authoredBilingualUnits": 1000,
+    "newUndergroundSteps": 4000,
+    "undergroundStepsIncludingOriginal": 4054,
+    "originalSVGFiles": 300,
+    "interactiveModels": 13,
+    "newPythonMiniLabs": 6
+  },
+  "gates": [
+    {
+      "name": "Strict authored depth, bilingual fields, data references and V13 stage preservation",
+      "status": "PASS",
+      "commands": [
+        "python3 tools/underground-v14/validate_input.py",
+        "python3 tools/validate-underground-v14.py",
+        "python3 tools/validate-data.py"
+      ]
+    },
+    {
+      "name": "Independent calculation and metadata review snapshots",
+      "status": "PASS",
+      "models": 1000,
+      "metadataCourses": 100,
+      "report": "docs/REVIEW_SNAPSHOTS_V14.json"
+    },
+    {
+      "name": "Python automated suite",
+      "status": "PASS",
+      "tests": 68,
+      "command": "python3 -m unittest discover -s tests -p test_*.py -q",
+      "note": "Two outdated launcher fixtures were corrected to include minimal curriculum data; the full 68-test suite was rerun and passed."
+    },
+    {
+      "name": "13 interactive model references, units, domains, scaling and stale-result UI",
+      "status": "PASS",
+      "command": "node tools/test-underground-calculators-v14.mjs"
+    },
+    {
+      "name": "Six executable mini labs, conservation, scaling and bounds",
+      "status": "PASS",
+      "command": "python3 public/academy/assets/labs/v14/run-underground-labs.py --check"
+    },
+    {
+      "name": "Complete bilingual frontend render and interaction sweep",
+      "status": "PASS",
+      "report": "docs/FRONTEND_VALIDATION_V14.json",
+      "projectRenders": 4132,
+      "stepRenders": 48548
+    },
+    {
+      "name": "Lazy loading, account transitions, integrity, file mode and legacy exercises",
+      "status": "PASS",
+      "report": "docs/LAZY_VALIDATION_V14.json"
+    },
+    {
+      "name": "Two complete consecutive curriculum rebuilds",
+      "status": "PASS",
+      "report": "docs/IDEMPOTENCE_V14.json"
+    },
+    {
+      "name": "Two isolated restores without canonical curriculum or generated outputs",
+      "status": "PASS",
+      "report": "docs/CLEAN_REBUILD_V14.json",
+      "outputsCheckedPerBuild": 8302
+    },
+    {
+      "name": "Actual Bash launcher and loopback HTTP app",
+      "status": "PASS",
+      "report": "docs/HTTP_LAUNCH_V14.json"
+    },
+    {
+      "name": "SVG XML validation and visual export samples",
+      "status": "PASS",
+      "report": "docs/SVG_VALIDATION_V14.json"
+    },
+    {
+      "name": "Bash syntax",
+      "status": "PASS",
+      "scripts": 16,
+      "report": "docs/BASH_VALIDATION_V14.json"
+    }
+  ],
+  "loading": {
+    "initialHTMLBytes": 5031,
+    "initialCatalogScriptBytes": 4213068,
+    "completeCurriculumBytes": 130092461,
+    "boundedCompatibilityParts": 18,
+    "scope": "HTML intro and navigation precede the catalogue; course bodies and resources are loaded on request. Byte counts are not measured network latency."
+  },
+  "languages": {
+    "targets": 79,
+    "completeAuthoredLocales": [
+      "zh-TW",
+      "en"
+    ],
+    "otherLocales": "Configured cloud translation, loaded local model or supported browser translator; errors and incomplete coverage remain visible."
+  },
+  "aiAndSync": {
+    "routes": "Configurable OpenAI-compatible, Claude Messages, Gemini, Ollama and loaded browser CPU text model",
+    "evidence": "docs/AI_SYNC_VALIDATION_V14.json; Python full suite; tools/test-translation-v14.mjs including updated Gemini sampling-contract check",
+    "providerTesting": "Mocks only; no live API billing or model-answer quality assertion",
+    "transferTesting": "Local bare Git repositories and small synthetic GGUF files; retries, dedupe, hashes, unknown-file retention and restore verified",
+    "remoteChangesMade": false
+  },
+  "limitations": [
+    "No physical-device or real-browser layout/performance certification.",
+    "No live cloud provider, production identity provider, payment or external deployment validation.",
+    "Large model weights, API keys, runtime account databases and owner-private notes are excluded.",
+    "Third-party browser assets and dependency lockfiles are included; node_modules is installed from the lockfile.",
+    "Engineering examples are synthetic teaching models with stated assumptions; arithmetic review is not site design or code-compliance certification."
+  ],
+  "canonicalCurriculumSHA256": "154189df6d885eb2cfd0cbd3463c58aac62c6f9a824c9eff8225e5f87dac2ed5"
+}

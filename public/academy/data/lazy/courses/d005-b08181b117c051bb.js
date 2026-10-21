@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d005-b08181b117c051bb.json"]={sha256:"b08181b117c051bbd90b6eed63bde070647b31e50ccf22c4bc21d7ba69082561",value:{"id":"d005","title":"白鶴灘水電站","titleEn":"Baihetan Hydropower Station","category":"energy","kind":"project","summary":"「白鶴灘水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Baihetan Hydropower Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c405-24f80e52f6eaadca.json"]={sha256:"24f80e52f6eaadca518c66f6e95b2ab9914e9edcfe150c287b09d616f7e5c23e",value:{"title":"KUKA KR QUANTEC 工業手臂","titleEn":"KUKA KR QUANTEC industrial arm","category":"manufacturing","kind":"project","summary":"課程規劃主題：工作包絡與工站整合。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: work envelopes and workcell integration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c405"}};

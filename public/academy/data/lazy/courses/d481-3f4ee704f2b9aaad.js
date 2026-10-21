@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d481-3f4ee704f2b9aaad.json"]={sha256:"3f4ee704f2b9aaad797fd1f7588e1c0e71f6af5d9f7b03654a6ed6ce03293803",value:{"id":"d481","title":"麥克默多南極站","titleEn":"McMurdo Antarctic Station","category":"megascience","kind":"project","summary":"「麥克默多南極站」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for McMurdo Antarctic Station: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

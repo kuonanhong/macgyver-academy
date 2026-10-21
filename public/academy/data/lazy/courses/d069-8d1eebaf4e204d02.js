@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d069-8d1eebaf4e204d02.json"]={sha256:"8d1eebaf4e204d02e80f266405688b703340932f9b8f1c47f69484ec7a679d26",value:{"id":"d069","title":"風機齒輪箱狀態監測","titleEn":"Wind Turbine Gearbox Condition Monitoring","category":"energy","kind":"craft","summary":"「風機齒輪箱狀態監測」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Wind Turbine Gearbox Condition Monitoring: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

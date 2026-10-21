@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c492-0ea9fe66994545b8.json"]={sha256:"0ea9fe66994545b840a761149dfd32df820c60fbe41c7668f70e7499a0821480",value:{"title":"三次元量床校準","titleEn":"Coordinate-measuring machine calibration","category":"manufacturing","kind":"craft","summary":"課程規劃主題：幾何誤差與探針補償。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: geometric errors and probe compensation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c492"}};

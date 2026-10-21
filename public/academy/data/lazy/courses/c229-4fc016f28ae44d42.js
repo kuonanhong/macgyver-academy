@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c229-4fc016f28ae44d42.json"]={sha256:"4fc016f28ae44d42e48c9593eef92657db0f34a0624fdfffb5c08dd021d92347",value:{"title":"Caterpillar 797 礦山運輸車","titleEn":"Caterpillar 797 mining truck","category":"automotive","kind":"project","summary":"課程規劃主題：重載結構與維修通達性。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: heavy-load structures and maintenance access. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c229"}};

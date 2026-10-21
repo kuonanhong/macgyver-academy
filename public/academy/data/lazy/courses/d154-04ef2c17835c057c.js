@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d154-04ef2c17835c057c.json"]={sha256:"04ef2c17835c057c37ee7baae31455fe458ad23a6c6fbc089a9c01f8d71ad555",value:{"id":"d154","title":"氧化鋯增韌陶瓷","titleEn":"Zirconia Toughened Ceramics","category":"materials","kind":"craft","summary":"「氧化鋯增韌陶瓷」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Zirconia Toughened Ceramics: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

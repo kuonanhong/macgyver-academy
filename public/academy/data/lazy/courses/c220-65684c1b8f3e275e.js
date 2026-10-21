@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c220-65684c1b8f3e275e.json"]={sha256:"65684c1b8f3e275ee56be8928822dfb0eda815ce52ce6df7b3c63eec3ce6d79f",value:{"title":"BMW i3 碳纖維電動車","titleEn":"BMW i3 carbon-fiber electric car","category":"automotive","kind":"project","summary":"課程規劃主題：複材乘員艙與輕量化。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: composite passenger cells and lightweighting. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c220"}};

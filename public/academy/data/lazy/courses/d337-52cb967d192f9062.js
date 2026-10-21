@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d337-52cb967d192f9062.json"]={sha256:"52cb967d192f90627b1896ed27dee05e603c929454280a31f09e085a5da7503f",value:{"id":"d337","title":"咖啡烘焙熱傳與控制","titleEn":"Coffee Roasting Heat Transfer and Control","category":"process","kind":"craft","summary":"「咖啡烘焙熱傳與控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Coffee Roasting Heat Transfer and Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

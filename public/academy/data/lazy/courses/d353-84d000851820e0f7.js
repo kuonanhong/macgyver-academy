@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d353-84d000851820e0f7.json"]={sha256:"84d000851820e0f770594df23c32ed91e3dc0b9119f7cd4c92a952a43c2bf6e2",value:{"id":"d353","title":"食品冷凍乾燥設備","titleEn":"Food Freeze Drying Equipment","category":"process","kind":"craft","summary":"「食品冷凍乾燥設備」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Food Freeze Drying Equipment: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

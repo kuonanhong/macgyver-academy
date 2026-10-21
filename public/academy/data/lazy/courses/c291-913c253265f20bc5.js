@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c291-913c253265f20bc5.json"]={sha256:"913c253265f20bc50115f8b43c832382dce726d7f7f38379397b24bc75bd9d2c",value:{"title":"軌道輪對製造與檢驗","titleEn":"Railway wheelset manufacture and inspection","category":"automotive","kind":"craft","summary":"課程規劃主題：壓裝配合與無損檢測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: press fits and nondestructive testing. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c291"}};

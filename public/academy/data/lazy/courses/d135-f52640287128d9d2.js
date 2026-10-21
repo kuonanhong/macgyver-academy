@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d135-f52640287128d9d2.json"]={sha256:"f52640287128d9d2c7b592143ce20aaf3c0ee043aeb2863adbcd6fdbb391918e",value:{"id":"d135","title":"金屬薄箔超音波增材製造","titleEn":"Ultrasonic Additive Manufacturing of Metal Foils","category":"materials","kind":"craft","summary":"「金屬薄箔超音波增材製造」教學路線圖：固態薄箔接合、層間品質、嵌入式元件與尺寸量測。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ultrasonic Additive Manufacturing of Metal Foils: solid state foil bonding, interlayer quality, embedded components, and dimensional metrology. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d049-4f0701aa494408f4.json"]={sha256:"4f0701aa494408f4c851ba59e2151a9f869f072b706a827c5c3a4227b64d71de",value:{"id":"d049","title":"德雷克蘭丁太陽能社區","titleEn":"Drake Landing Solar Community","category":"energy","kind":"project","summary":"「德雷克蘭丁太陽能社區」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Drake Landing Solar Community: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

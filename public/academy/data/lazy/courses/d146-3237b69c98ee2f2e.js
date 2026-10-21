@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d146-3237b69c98ee2f2e.json"]={sha256:"3237b69c98ee2f2e6afaf23bdea4d9a0c38a227750486ac6332ee330b7427458",value:{"id":"d146","title":"複合材料真空灌注","titleEn":"Composite Vacuum Infusion","category":"materials","kind":"craft","summary":"「複合材料真空灌注」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Composite Vacuum Infusion: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

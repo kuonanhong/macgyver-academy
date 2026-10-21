@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d008-026ea764ca67c904.json"]={sha256:"026ea764ca67c9044860f20e08c3a0dbd7187cc2abf091a0eff309ba0632d67e",value:{"id":"d008","title":"羅伯特布拉薩水電站","titleEn":"Robert-Bourassa Generating Station","category":"energy","kind":"project","summary":"「羅伯特布拉薩水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Robert-Bourassa Generating Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

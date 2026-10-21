@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d328-d66d1ad3508b0e5f.json"]={sha256:"d66d1ad3508b0e5f06649549107eaccb4a1eff75bc202cef2787029e5b6182d8",value:{"id":"d328","title":"農業車輛自動導航","titleEn":"Agricultural Vehicle Autonomous Navigation","category":"process","kind":"craft","summary":"「農業車輛自動導航」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Agricultural Vehicle Autonomous Navigation: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

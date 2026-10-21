@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d260-41106a47b54c4db7.json"]={sha256:"41106a47b54c4db751dff62dfa99dc116ba90a2607db70305c0050c5e72a37d0",value:{"id":"d260","title":"智慧義肢手肌電控制","titleEn":"Smart Prosthetic Hand Myoelectric Control","category":"biomedical","kind":"craft","summary":"「智慧義肢手肌電控制」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Smart Prosthetic Hand Myoelectric Control: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

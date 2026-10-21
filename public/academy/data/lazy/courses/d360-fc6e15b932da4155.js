@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d360-fc6e15b932da4155.json"]={sha256:"fc6e15b932da415554d3cf6a6e6f9639387d83f24b8a5dfd1a3399c20e5f624a",value:{"id":"d360","title":"食品異物X光檢測","titleEn":"Food Foreign Object X-Ray Inspection","category":"process","kind":"craft","summary":"「食品異物X光檢測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Food Foreign Object X-Ray Inspection: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

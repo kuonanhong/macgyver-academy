@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d093-10c899cc0c00cc51.json"]={sha256:"10c899cc0c00cc51d1d52c2449cbfa08ca11df40dc675c6c28b0c843e7c9f924",value:{"id":"d093","title":"超級電容模組均衡設計","titleEn":"Supercapacitor Module Balancing Design","category":"energy","kind":"craft","summary":"「超級電容模組均衡設計」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Supercapacitor Module Balancing Design: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d487-76f14974d53e6ea2.json"]={sha256:"76f14974d53e6ea205dc4de1b7118dff214ffbd6270ff2e22844c64f5da902d8",value:{"id":"d487","title":"地球號深海科學鑽探船","titleEn":"Chikyu Scientific Ocean Drilling Vessel","category":"megascience","kind":"project","summary":"「地球號深海科學鑽探船」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Chikyu Scientific Ocean Drilling Vessel: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

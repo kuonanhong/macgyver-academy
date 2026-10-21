@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d030-656634caac43fe64.json"]={sha256:"656634caac43fe64c09507bb71ef66ce7ce8a32928eec7b065b0980d553f1550",value:{"id":"d030","title":"傑馬索拉熔鹽太陽能電廠","titleEn":"Gemasolar Solar Thermal Power Plant","category":"energy","kind":"project","summary":"「傑馬索拉熔鹽太陽能電廠」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gemasolar Solar Thermal Power Plant: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

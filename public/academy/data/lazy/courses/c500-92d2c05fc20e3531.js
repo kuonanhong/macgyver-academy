@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c500-92d2c05fc20e3531.json"]={sha256:"92d2c05fc20e3531798f9038b7aea5e43d38f3c7d680ddf3345d9c32d88f7c7c",value:{"title":"工業設備再製造","titleEn":"Industrial equipment remanufacturing","category":"manufacturing","kind":"craft","summary":"課程規劃主題：拆解、檢驗與性能恢復。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: disassembly, inspection and performance restoration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c500"}};

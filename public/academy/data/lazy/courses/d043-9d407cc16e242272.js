@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d043-9d407cc16e242272.json"]={sha256:"9d407cc16e24227264a45abd72bc26757593e910aab72d1e29a11309365386fb",value:{"id":"d043","title":"梅根潮流能陣列","titleEn":"MeyGen Tidal Stream Array","category":"energy","kind":"project","summary":"「梅根潮流能陣列」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for MeyGen Tidal Stream Array: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

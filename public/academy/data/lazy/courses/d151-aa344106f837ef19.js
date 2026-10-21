@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d151-aa344106f837ef19.json"]={sha256:"aa344106f837ef19a58e5701302121e3b0ddb115d1fcf761858e0924d2e49198",value:{"id":"d151","title":"高純氧化鋁陶瓷成形","titleEn":"High Purity Alumina Ceramic Forming","category":"materials","kind":"craft","summary":"「高純氧化鋁陶瓷成形」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Purity Alumina Ceramic Forming: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

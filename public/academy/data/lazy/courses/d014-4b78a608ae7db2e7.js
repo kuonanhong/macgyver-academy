@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d014-4b78a608ae7db2e7.json"]={sha256:"4b78a608ae7db2e763c1b248baa4f40c59cb6deca45bfb23b836ff6257fc20c5",value:{"id":"d014","title":"拉格朗德複合水電系統","titleEn":"La Grande Hydroelectric Complex","category":"energy","kind":"project","summary":"「拉格朗德複合水電系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for La Grande Hydroelectric Complex: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d225-353f892a3b84e07f.json"]={sha256:"353f892a3b84e07f78a48ef3e101e6c1569d41089c51a62eed12e9d5e2879f4d",value:{"id":"d225","title":"乳房斷層攝影機械定位","titleEn":"Breast Tomosynthesis Mechanical Positioning","category":"biomedical","kind":"craft","summary":"「乳房斷層攝影機械定位」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Breast Tomosynthesis Mechanical Positioning: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

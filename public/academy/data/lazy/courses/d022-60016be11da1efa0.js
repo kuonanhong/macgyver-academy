@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d022-60016be11da1efa0.json"]={sha256:"60016be11da1efa07ff475641b444b5f1d84a764fffe1e7e18784a674517fda5",value:{"id":"d022","title":"林塔爾抽蓄水電工程","titleEn":"Linthal Pumped Storage Project","category":"energy","kind":"project","summary":"「林塔爾抽蓄水電工程」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Linthal Pumped Storage Project: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

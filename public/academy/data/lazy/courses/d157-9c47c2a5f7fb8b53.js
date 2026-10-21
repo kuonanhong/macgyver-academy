@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d157-9c47c2a5f7fb8b53.json"]={sha256:"9c47c2a5f7fb8b530200c3572b6e8df6fd8a0e7fe7906c322a40a5b39dfa99af",value:{"id":"d157","title":"低溫共燒陶瓷模組","titleEn":"Low Temperature Cofired Ceramic Modules","category":"materials","kind":"craft","summary":"「低溫共燒陶瓷模組」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Low Temperature Cofired Ceramic Modules: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

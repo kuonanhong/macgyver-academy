@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c078-92113285a3bede76.json"]={sha256:"92113285a3bede765395c51181336b58c1e24dbc71f4b78341b1c9dce580b23f",value:{"title":"航空維修數位工卡","titleEn":"Digital aircraft maintenance work cards","category":"aerospace","kind":"craft","summary":"課程規劃主題：工序簽核與部件追溯。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: work-step sign-off and component traceability. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c078"}};

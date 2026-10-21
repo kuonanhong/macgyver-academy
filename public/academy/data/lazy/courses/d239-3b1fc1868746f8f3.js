@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d239-3b1fc1868746f8f3.json"]={sha256:"3b1fc1868746f8f3fdd3b86d41f474595bb884229edeae289daf7f67442c2473",value:{"id":"d239","title":"醫院PACS影像儲存系統","titleEn":"Hospital PACS Image Archives","category":"biomedical","kind":"craft","summary":"「醫院PACS影像儲存系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hospital PACS Image Archives: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

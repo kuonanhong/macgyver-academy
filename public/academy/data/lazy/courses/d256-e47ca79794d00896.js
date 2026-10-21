@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d256-e47ca79794d00896.json"]={sha256:"e47ca79794d0089636ca66077216fcf8cd41c98a6deeac66c84ae2e40fbee514",value:{"id":"d256","title":"病床機電升降與負載測試","titleEn":"Hospital Bed Lifting Mechanisms and Load Testing","category":"biomedical","kind":"craft","summary":"「病床機電升降與負載測試」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hospital Bed Lifting Mechanisms and Load Testing: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

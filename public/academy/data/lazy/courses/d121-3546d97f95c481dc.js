@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d121-3546d97f95c481dc.json"]={sha256:"3546d97f95c481dc046ee80e82e382adf86cffc0ba1d03bdf3e9c706c966fb2c",value:{"id":"d121","title":"粉末冶金高溫合金製程概念","titleEn":"Powder Metallurgy Superalloy Process Concepts","category":"materials","kind":"craft","summary":"「粉末冶金高溫合金製程概念」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Powder Metallurgy Superalloy Process Concepts: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

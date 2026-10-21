@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c010-351b9cbaa9cc22c9.json"]={sha256:"351b9cbaa9cc22c99340fd237232c6d642b28cd48fac8d5d3c378906e3e8f438",value:{"title":"de Havilland Comet 增壓疲勞案例","titleEn":"de Havilland Comet pressurization fatigue case","category":"aerospace","kind":"project","summary":"課程規劃主題：裂紋成長與疲勞教訓。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: crack growth and fatigue lessons. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c010"}};

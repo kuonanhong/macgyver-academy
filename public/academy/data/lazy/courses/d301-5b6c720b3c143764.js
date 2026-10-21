@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d301-5b6c720b3c143764.json"]={sha256:"5b6c720b3c1437648df63807af5c690524ba5cb5028bc8fa98cd1e1cbe61907d",value:{"id":"d301","title":"荷蘭Westland溫室園藝系統","titleEn":"Westland Greenhouse Horticulture Systems","category":"process","kind":"project","summary":"「荷蘭Westland溫室園藝系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Westland Greenhouse Horticulture Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d355-8633c1e4e911b5ca.json"]={sha256:"8633c1e4e911b5ca25c99fcdfa4a55a5d45ae84da673f9c55ac9d56226a83000",value:{"id":"d355","title":"冷鏈倉儲節能調度","titleEn":"Cold Chain Warehouse Energy Scheduling","category":"process","kind":"craft","summary":"「冷鏈倉儲節能調度」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cold Chain Warehouse Energy Scheduling: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

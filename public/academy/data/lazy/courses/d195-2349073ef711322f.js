@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d195-2349073ef711322f.json"]={sha256:"2349073ef711322f74304db7fe9b8333455227944af7d7e8c0f88da4e93b72c6",value:{"id":"d195","title":"鑽石熱擴散片材料表徵","titleEn":"Diamond Heat Spreader Material Characterization","category":"materials","kind":"craft","summary":"「鑽石熱擴散片材料表徵」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Diamond Heat Spreader Material Characterization: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

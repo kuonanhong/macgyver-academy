@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d159-bcd340a51dc8fb49.json"]={sha256:"bcd340a51dc8fb493be9771aeee4c34cb15eb3172819d57e01309c0d487b3854",value:{"id":"d159","title":"固態電解質陶瓷界面","titleEn":"Solid Electrolyte Ceramic Interfaces","category":"materials","kind":"craft","summary":"「固態電解質陶瓷界面」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Solid Electrolyte Ceramic Interfaces: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

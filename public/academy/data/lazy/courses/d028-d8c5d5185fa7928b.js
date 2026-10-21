@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d028-d8c5d5185fa7928b.json"]={sha256:"d8c5d5185fa7928b044b72e5ba1bd95ec5035e962906057149a6d3c8261ae19b",value:{"id":"d028","title":"諾爾瓦爾扎扎特太陽能複合園區","titleEn":"Noor Ouarzazate Solar Complex","category":"energy","kind":"project","summary":"「諾爾瓦爾扎扎特太陽能複合園區」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Noor Ouarzazate Solar Complex: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

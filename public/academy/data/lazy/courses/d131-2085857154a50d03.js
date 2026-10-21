@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d131-2085857154a50d03.json"]={sha256:"2085857154a50d03a7a667776d6c5243afcc4c669c908d1dde96b6d80664c37f",value:{"id":"d131","title":"鋁合金摩擦攪拌接合","titleEn":"Aluminium Friction Stir Welding","category":"materials","kind":"craft","summary":"「鋁合金摩擦攪拌接合」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aluminium Friction Stir Welding: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

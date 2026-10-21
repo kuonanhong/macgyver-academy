@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d386-8a989d0ea0569a06.json"]={sha256:"8a989d0ea0569a06d92d5a6789d22a9e570598bd180d9808e445e05dfd7aa0d9",value:{"id":"d386","title":"工業冷卻水循環系統","titleEn":"Industrial Cooling Water Circulation Systems","category":"process","kind":"craft","summary":"「工業冷卻水循環系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Industrial Cooling Water Circulation Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

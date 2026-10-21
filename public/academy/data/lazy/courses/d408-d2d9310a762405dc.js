@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d408-d2d9310a762405dc.json"]={sha256:"d2d9310a762405dc0e11fa8c614741af0d059b42a6c31c068945ed615819b77a",value:{"id":"d408","title":"BESSY II軟X光同步輻射設施","titleEn":"BESSY II Soft X-Ray Synchrotron Facility","category":"megascience","kind":"project","summary":"「BESSY II軟X光同步輻射設施」教學路線圖：電子儲存環、軟X光束線、磁體與束流診斷。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for BESSY II Soft X-Ray Synchrotron Facility: electron storage rings, soft X-ray beamlines, magnets, and beam diagnostics. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c277-0c31f13ac8d38432.json"]={sha256:"0c31f13ac8d384320f9626fd2d04af306410d65b080f0f76d1586e11a0587615",value:{"title":"駕駛輔助攝影機校準","titleEn":"Driver-assistance camera calibration","category":"automotive","kind":"craft","summary":"課程規劃主題：相機幾何與量測不確定度。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: camera geometry and measurement uncertainty. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c277"}};

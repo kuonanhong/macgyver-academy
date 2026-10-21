@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d453-052b6cbb78fa8612.json"]={sha256:"052b6cbb78fa861280033a5ef9b353d2236ec230ff72e03cdc51290543aa467c",value:{"id":"d453","title":"甚大望遠鏡VLT","titleEn":"Very Large Telescope VLT","category":"megascience","kind":"project","summary":"「甚大望遠鏡VLT」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Very Large Telescope VLT: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

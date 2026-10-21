@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d253-0daf3f96add43e6c.json"]={sha256:"0daf3f96add43e6cf1d8f3d092279fc7560d7bc2805d8787d9d5e9462e50b7e0",value:{"id":"d253","title":"醫療氧氣濃縮設備架構","titleEn":"Medical Oxygen Concentrator Architecture","category":"biomedical","kind":"craft","summary":"「醫療氧氣濃縮設備架構」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Oxygen Concentrator Architecture: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

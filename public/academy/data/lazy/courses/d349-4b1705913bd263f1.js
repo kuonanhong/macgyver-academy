@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d349-4b1705913bd263f1.json"]={sha256:"4b1705913bd263f14f86fbf6d08d1274726fbaf2e26013107f4f87dae6949a8c",value:{"id":"d349","title":"高壓食品加工設備概念","titleEn":"High Pressure Food Processing Equipment Concepts","category":"process","kind":"craft","summary":"「高壓食品加工設備概念」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Pressure Food Processing Equipment Concepts: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

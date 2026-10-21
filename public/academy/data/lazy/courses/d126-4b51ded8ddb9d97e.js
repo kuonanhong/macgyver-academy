@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d126-4b51ded8ddb9d97e.json"]={sha256:"4b51ded8ddb9d97e82b3825390c5f3c63da311f4dba6459cd67f6e939b203a35",value:{"id":"d126","title":"銅合金連續擠製","titleEn":"Copper Alloy Continuous Extrusion","category":"materials","kind":"craft","summary":"「銅合金連續擠製」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Copper Alloy Continuous Extrusion: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

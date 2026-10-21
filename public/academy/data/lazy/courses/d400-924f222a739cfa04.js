@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d400-924f222a739cfa04.json"]={sha256:"924f222a739cfa04cf8d331543848e1ae0cd3fd8a6dc955aa5614d8604b6bfe4",value:{"id":"d400","title":"工業園區水能資源整合","titleEn":"Industrial Park Water and Energy Integration","category":"process","kind":"craft","summary":"「工業園區水能資源整合」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Industrial Park Water and Energy Integration: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

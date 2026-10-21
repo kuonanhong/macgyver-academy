@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c496-f9300e26d78fc6d0.json"]={sha256:"f9300e26d78fc6d0df18741f88a997f5589f8ac6da4d606d6dfe5f2fa298da63",value:{"title":"製造執行系統整合","titleEn":"Manufacturing execution-system integration","category":"manufacturing","kind":"craft","summary":"課程規劃主題：工單、追溯與設備資料。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: work orders, traceability and machine data. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c496"}};

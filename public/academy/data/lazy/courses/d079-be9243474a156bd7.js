@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d079-be9243474a156bd7.json"]={sha256:"be9243474a156bd745c59d6cf27586c294ada15a727fa840b3a36f61ca3524c2",value:{"id":"d079","title":"潮流渦輪機海床固定系統","titleEn":"Tidal Turbine Seabed Mounting Systems","category":"energy","kind":"craft","summary":"「潮流渦輪機海床固定系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Tidal Turbine Seabed Mounting Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

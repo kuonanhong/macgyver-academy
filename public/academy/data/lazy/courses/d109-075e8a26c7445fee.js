@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d109-075e8a26c7445fee.json"]={sha256:"075e8a26c7445fee659bfc851dd20783b3930f7820a5b684a9b4b09e3989a430",value:{"id":"d109","title":"基提馬特鋁冶煉現代化工程","titleEn":"Kitimat Aluminium Smelter Modernization","category":"materials","kind":"project","summary":"「基提馬特鋁冶煉現代化工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Kitimat Aluminium Smelter Modernization: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c130-4767c34343ef2c2b.json"]={sha256:"4767c34343ef2c2b7192509d2d5987313036a1f4b6b2ef6e10c4672b6df70d14",value:{"title":"Ever Given 超大型貨櫃船案例","titleEn":"Ever Given ultra-large container-ship case","category":"marine","kind":"project","summary":"課程規劃主題：水道限制與航行風險。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: channel constraints and navigation risk. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c130"}};

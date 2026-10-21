@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c077-b12bd69fbf838a99.json"]={sha256:"b12bd69fbf838a991871d11fa0f03b006f15675ce13a5da17f7aec790dcfbeb3",value:{"title":"全動式飛行模擬器視景","titleEn":"Full-flight simulator visual systems","category":"aerospace","kind":"craft","summary":"課程規劃主題：視角、延遲與場景同步。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: field of view, latency and scene synchronization. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c077"}};

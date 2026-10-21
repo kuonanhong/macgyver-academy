@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c019-c1c4251c279e7efd.json"]={sha256:"c1c4251c279e7efdaae72b1b29040f4fdeb869908236e02f4d94a307c885ce3d",value:{"title":"Pilatus PC-12 多用途飛機","titleEn":"Pilatus PC-12 utility aircraft","category":"aerospace","kind":"project","summary":"課程規劃主題：單發渦槳與貨艙配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: single-engine turboprop and cargo arrangements. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c019"}};

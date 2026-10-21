@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d371-fcfc15fb194f5ea7.json"]={sha256:"fcfc15fb194f5ea7f0f01f5704796f759b3349a4d4eb3eae745549dc3fd74edb",value:{"id":"d371","title":"循環水養殖水質控制","titleEn":"Recirculating Aquaculture Water Quality Control","category":"process","kind":"craft","summary":"「循環水養殖水質控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Recirculating Aquaculture Water Quality Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

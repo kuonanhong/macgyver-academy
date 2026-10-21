@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d381-704df4bfcb24101d.json"]={sha256:"704df4bfcb24101d2d5fef7da5d438b980dbe6f9abb206dc5e31332750d03457",value:{"id":"d381","title":"膜生物反應器曝氣優化","titleEn":"Membrane Bioreactor Aeration Optimization","category":"process","kind":"craft","summary":"「膜生物反應器曝氣優化」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Membrane Bioreactor Aeration Optimization: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

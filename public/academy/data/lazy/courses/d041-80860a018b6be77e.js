@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d041-80860a018b6be77e.json"]={sha256:"80860a018b6be77efce98cccd0fae1410a902677223055d1c4f307d3f33b4d4b",value:{"id":"d041","title":"錫赫瓦潮汐發電站","titleEn":"Sihwa Lake Tidal Power Station","category":"energy","kind":"project","summary":"「錫赫瓦潮汐發電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sihwa Lake Tidal Power Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

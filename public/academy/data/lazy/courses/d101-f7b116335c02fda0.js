@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d101-f7b116335c02fda0.json"]={sha256:"f7b116335c02fda0d90f026cbb951dc925110c95ca8a53cd52aca45420f08a67",value:{"id":"d101","title":"林茲LD轉爐煉鋼工程","titleEn":"Linz LD Steelmaking Engineering","category":"materials","kind":"project","summary":"「林茲LD轉爐煉鋼工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Linz LD Steelmaking Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

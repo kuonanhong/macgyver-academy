@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c420-3d993fdedb3c8668.json"]={sha256:"3d993fdedb3c8668760c72f7ef1f6011c8e2dbb5286b7c16532556038cc690b1",value:{"title":"CMU CHIMP 災害應變機器人","titleEn":"CMU CHIMP disaster-response robot","category":"manufacturing","kind":"project","summary":"課程規劃主題：混合移動與遠端操作。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: hybrid mobility and remote operation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c420"}};

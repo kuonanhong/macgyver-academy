@@ -1,3 +1,4 @@
+import {UNDERGROUND_LABS,undergroundLabKind,calculateUndergroundLab,undergroundLabDetail} from './underground-calculators.js';
 import { COMPUTING_LABS, COMPUTING_COURSE_LABS, computingLabKind, calculateComputingLab, computingLabDetail } from './computing-visuals.js';
 import { WORLD_LABS, worldLabKind, calculateWorldLab, worldLabDetail } from './world-project-labs.js';
 import {PACKAGING_LABS,packagingLabKind,calculatePackagingLab,packagingLabDetail} from './packaging-calculators.js';
@@ -7,6 +8,7 @@ import {ELECTRONICS_LABS,ELECTRONICS_COURSE_LABS,electronicsLabKind,calculateEle
 const e = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const choose = (pair, zh) => pair[zh ? 0 : 1];
 export function labKind(course, step) {
+  const underground=undergroundLabKind(course,step);if(underground)return underground;
   if(COMPUTING_COURSE_LABS[course.id])return computingLabKind(course,step);
   const world=worldLabKind(course);if(world)return world;
   if(ELECTRONICS_COURSE_LABS[course.id])return electronicsLabKind(course,step);
@@ -69,6 +71,7 @@ export const LABS = {
   },
 };
 export function calculateLab(kind, v) {
+  const underground=calculateUndergroundLab(kind,v);if(underground!==null)return underground;
   const computing=calculateComputingLab(kind,v);if(computing!==null)return computing;
   const world=calculateWorldLab(kind,v);if(world!==null)return world;
   const electronicsValue=calculateElectronicsLab(kind,v);if(electronicsValue!==null)return electronicsValue;
@@ -82,7 +85,7 @@ export function calculateLab(kind, v) {
   if (kind === 'overlay') return Math.hypot(v.stage, v.mark, v.distortion);
   return 0;
 }
-Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS);
+Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS,UNDERGROUND_LABS);
 export function labMarkup(course, step, zh) {
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return '';
   return `<section class="lesson-card engineering-lab" id="engineeringLab" data-kind="${kind}"><div class="eyebrow">EXPLORE / ${zh?'互動工程算例':'INTERACTIVE ENGINEERING'}</div><h3>${choose(lab.title,zh)}</h3><p><code>${e(lab.formula)}</code></p>${kind==='lithography'?`<label class="field">${zh?'光學情境預設':'Optical scenario'}<select id="labPreset"><option value="duv">ArF immersion · 193 nm · NA 1.35</option><option value="euv">EUV · 13.5 nm · NA 0.33</option><option value="highna">High-NA EUV · 13.5 nm · NA 0.55</option></select></label>`:''}<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">${lab.params.map(([id,label,min,max,delta,value,unit])=>`<label class="field" for="lab-${id}">${e(choose(label,zh))} <output id="lab-value-${id}">${value}</output> ${e(unit)}<input id="lab-${id}" data-lab-input="${id}" type="range" min="${min}" max="${max}" step="${delta}" value="${value}" style="width:100%;min-height:42px;accent-color:#245443"></label>`).join('')}</div><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:20px 0"><output id="labResult" aria-live="polite" style="font-size:32px;font-weight:700;color:#245443"></output><span id="labDetail"></span></div><div id="labChart" aria-hidden="true"></div><p id="labScenarioNote" class="muted"></p><p class="notice">${e(choose(lab.note,zh))}</p><p><strong>${zh?'試著推理：':'Reason it through: '}</strong>${e(choose(lab.question,zh))}</p>${lab.source?`<a href="${e(lab.source)}" target="_blank" rel="noopener noreferrer">${zh?'公式／假設延伸閱讀':'Formula / assumptions reference'} ↗</a>`:''}</section>`;
@@ -95,12 +98,20 @@ export function bindLab(course, step, zh) {
   const update=()=>{
     const values=Object.fromEntries(inputs.map(input=>[input.dataset.labInput,Number(input.value)]));
     inputs.forEach(input=>{const output=root.querySelector('#lab-value-'+input.dataset.labInput);if(output)output.textContent=input.value;});
-    const result=calculateLab(kind,values),resultNode=root.querySelector('#labResult');
+    const resultNode=root.querySelector('#labResult');let result;
+    try {result=calculateLab(kind,values);if(!Number.isFinite(result))throw new RangeError('Non-finite result');}
+    catch(error){
+      if(resultNode)resultNode.textContent=zh?'輸入超出模型範圍':'Inputs outside model domain';
+      const detail=root.querySelector('#labDetail');if(detail)detail.textContent=error.message;
+      const chart=root.querySelector('#labChart');if(chart)chart.innerHTML='';
+      const note=root.querySelector('#labScenarioNote');if(note)note.textContent='';
+      return;
+    }
     if(resultNode)resultNode.textContent=`${result.toFixed(result<1?3:2)} ${lab.unit}`;
-    const detail=root.querySelector('#labDetail');if(detail)detail.textContent=computingLabDetail(kind,values,zh)||worldLabDetail(kind,values,zh)||electronicsLabDetail(kind,values,zh)||packagingLabDetail(kind,values,zh)||(kind==='thermal'?`R_th = ${(result/values.power).toFixed(3)} K/W`:kind==='yield'?`D₀ A = ${(values.density*values.area/100).toFixed(3)}`:'');
+    const detail=root.querySelector('#labDetail');if(detail)detail.textContent=undergroundLabDetail(kind,values,zh)||computingLabDetail(kind,values,zh)||worldLabDetail(kind,values,zh)||electronicsLabDetail(kind,values,zh)||packagingLabDetail(kind,values,zh)||(kind==='thermal'?`R_th = ${(result/values.power).toFixed(3)} K/W`:kind==='yield'?`D₀ A = ${(values.density*values.area/100).toFixed(3)}`:'');
     const note=root.querySelector('#labScenarioNote');if(note)note.textContent=kind==='lithography'&&(values.wavelength<20&&values.na>.55)?(zh?'此組合超出本教學列出的 EUV 情境；數學結果不代表已有此設備。':'This combination exceeds the EUV scenarios supplied here; the mathematical result does not imply such a tool exists.') : kind==='lithography'&&(values.wavelength<20)?(zh?'EUV 情境使用反射光學；NA 不是可任意改動的機台設定。':'EUV scenarios use reflective optics; NA is not an arbitrary machine setting.') : '';
-    const varying=lab.params[0],pts=[];for(let i=0;i<=40;i++){const sample=varying[2]+(varying[3]-varying[2])*i/40,x=(kind==='pkgN1'||kind==='elAdc'||kind==='elQuant'||kind==='elSettle'||kind==='elPll')||varying[4]>=1?Math.round(sample):sample;pts.push([x,calculateLab(kind,{...values,[varying[0]]:x})]);}
-    const low=Math.min(0,...pts.map(p=>p[1])),high=Math.max(0,...pts.map(p=>p[1]),low+.001),span=high-low,path=pts.map((p,i)=>`${i?'L':'M'}${30+i*9} ${(115-95*(p[1]-low)/span).toFixed(2)}`).join(' '),chart=root.querySelector('#labChart');
+    const varying=lab.params[0],pts=[];for(let i=0;i<=40;i++){const sample=varying[2]+(varying[3]-varying[2])*i/40,x=(kind==='pkgN1'||kind==='elAdc'||kind==='elQuant'||kind==='elSettle'||kind==='elPll')||varying[4]>=1?Math.round(sample):sample;try{const y=calculateLab(kind,{...values,[varying[0]]:x});pts.push(Number.isFinite(y)?[x,y]:null);}catch{pts.push(null);}}
+    const valid=pts.filter(Boolean),low=Math.min(0,...valid.map(p=>p[1])),high=Math.max(0,...valid.map(p=>p[1]),low+.001),span=high-low;let connected=false;const path=pts.map((p,i)=>{if(!p){connected=false;return '';}const command=connected?'L':'M';connected=true;return `${command}${30+i*9} ${(115-95*(p[1]-low)/span).toFixed(2)}`;}).join(' '),chart=root.querySelector('#labChart');
     if(chart)chart.innerHTML=`<svg viewBox="0 0 420 150" style="width:100%;max-width:580px"><path d="M30 10V115H390M30 ${115-95*(0-low)/span}H390" stroke="#8da18b" fill="none"/><path d="${path}" stroke="#dd8a44" stroke-width="3" fill="none"/><text x="30" y="141" font-size="11" fill="#52694e">${e(choose(varying[1],zh))} → (${e(varying[6])})</text><text x="330" y="18" font-size="11" fill="#52694e">${high.toFixed(1)} ${e(lab.unit)}</text><text x="330" y="127" font-size="11" fill="#52694e">${low.toFixed(1)} ${e(lab.unit)}</text></svg>`;
   };
   inputs.forEach(input=>input.oninput=update);

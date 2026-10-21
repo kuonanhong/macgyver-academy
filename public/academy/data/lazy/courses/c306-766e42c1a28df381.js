@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c306-766e42c1a28df381.json"]={sha256:"766e42c1a28df3819fa27f1a9568e79c388f80987202ec9e2e8ce58ffb37269a",value:{"title":"Syncom 同步通訊衛星","titleEn":"Syncom synchronous communications satellites","category":"space","kind":"project","summary":"課程規劃主題：同步軌道與通訊概念。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: synchronous orbits and communications concepts. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c306"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d257-251e5a987a8d13b3.json"]={sha256:"251e5a987a8d13b3608f699ff635fe5d95bb76f94d995def7be9eccefd289ac7",value:{"id":"d257","title":"醫療吊升輔具機構","titleEn":"Medical Patient Lift Mechanisms","category":"biomedical","kind":"craft","summary":"「醫療吊升輔具機構」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Patient Lift Mechanisms: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d072-b466067b1eb13108.json"]={sha256:"b466067b1eb131085bbbf161ad28a8a951d8246acee39a6b18e069c18e68233d",value:{"id":"d072","title":"浮式風機動態電纜設計","titleEn":"Floating Wind Dynamic Cable Design","category":"energy","kind":"craft","summary":"「浮式風機動態電纜設計」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Floating Wind Dynamic Cable Design: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

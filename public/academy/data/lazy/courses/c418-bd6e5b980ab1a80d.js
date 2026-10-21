@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c418-bd6e5b980ab1a80d.json"]={sha256:"bd6e5b980ab1a80d3fb746837191522d36bbe080e0b44d219aa5e0495c499455",value:{"title":"NASA Robonaut 太空機器人","titleEn":"NASA Robonaut space robot","category":"manufacturing","kind":"project","summary":"課程規劃主題：靈巧操作與太空人協作。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: dexterous manipulation and astronaut collaboration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c418"}};

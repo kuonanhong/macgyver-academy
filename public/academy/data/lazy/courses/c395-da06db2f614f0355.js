@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c395-da06db2f614f0355.json"]={sha256:"da06db2f614f035544a9511c26e00a7006227a62e2cb031e61a941b49f8ce788",value:{"title":"太空級電子抗輻射概念","titleEn":"Space-electronics radiation tolerance concepts","category":"space","kind":"craft","summary":"課程規劃主題：單粒子效應與設計裕量。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: single-event effects and design margins. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c395"}};

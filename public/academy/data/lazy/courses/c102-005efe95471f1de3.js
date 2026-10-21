@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c102-005efe95471f1de3.json"]={sha256:"005efe95471f1de38ff616f1bc66bec3e64338ae6e623ca4ef79e410faacf54a",value:{"title":"Trieste 深海潛器工程史","titleEn":"Trieste bathyscaphe engineering history","category":"marine","kind":"project","summary":"課程規劃主題：浮力系統與深海壓力。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: buoyancy systems and deep-ocean pressure. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c102"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d092-ed0b0c6009ee8dc0.json"]={sha256:"ed0b0c6009ee8dc0c0eff081e5d7ff3400f9588d2d04108fa3c502dcbfc45f6d",value:{"id":"d092","title":"飛輪儲能磁軸承系統","titleEn":"Flywheel Energy Storage Magnetic Bearing Systems","category":"energy","kind":"craft","summary":"「飛輪儲能磁軸承系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Flywheel Energy Storage Magnetic Bearing Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

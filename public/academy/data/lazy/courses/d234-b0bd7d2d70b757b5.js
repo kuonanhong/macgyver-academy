@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d234-b0bd7d2d70b757b5.json"]={sha256:"b0bd7d2d70b757b505b2de5c26c6bd9a6311b2d402dc15c899c2a62d572d5b26",value:{"id":"d234","title":"手術顯微鏡立體光學","titleEn":"Surgical Microscope Stereoscopic Optics","category":"biomedical","kind":"craft","summary":"「手術顯微鏡立體光學」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Surgical Microscope Stereoscopic Optics: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

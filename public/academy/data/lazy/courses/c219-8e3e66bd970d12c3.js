@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c219-8e3e66bd970d12c3.json"]={sha256:"8e3e66bd970d12c3b26f3a4aba8f32b9272eaa4004d53fac44dd42ef3c904422",value:{"title":"Nissan Leaf 大眾電動車","titleEn":"Nissan Leaf mass-market electric car","category":"automotive","kind":"project","summary":"課程規劃主題：電動化量產與充電介面。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: mass-production electrification and charging interfaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c219"}};

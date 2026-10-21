@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d382-72c7ecd17dcfe125.json"]={sha256:"72c7ecd17dcfe125e14813dddf6e4a63ee3a4927653bbaad9d4ee6bc3e78b87e",value:{"id":"d382","title":"污泥脫水與輸送系統","titleEn":"Sludge Dewatering and Conveying Systems","category":"process","kind":"craft","summary":"「污泥脫水與輸送系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sludge Dewatering and Conveying Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

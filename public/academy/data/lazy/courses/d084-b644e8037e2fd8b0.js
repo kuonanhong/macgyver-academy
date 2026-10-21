@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d084-b644e8037e2fd8b0.json"]={sha256:"b644e8037e2fd8b092a449ed83578c9b5330e0eb86f894de8c6465ba1029d1a7",value:{"id":"d084","title":"汽輪機凝汽器與真空系統","titleEn":"Steam Turbine Condensers and Vacuum Systems","category":"energy","kind":"craft","summary":"「汽輪機凝汽器與真空系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Steam Turbine Condensers and Vacuum Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

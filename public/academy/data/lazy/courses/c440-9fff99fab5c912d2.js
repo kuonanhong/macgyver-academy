@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c440-9fff99fab5c912d2.json"]={sha256:"9fff99fab5c912d23af3a0314fd3aec25edecef0bb94dbc8a0b3996ee3633868",value:{"title":"難切削材料冷卻加工","titleEn":"Difficult-material machining and cooling","category":"manufacturing","kind":"craft","summary":"課程規劃主題：熱管理與表面完整性。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: thermal management and surface integrity. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c440"}};

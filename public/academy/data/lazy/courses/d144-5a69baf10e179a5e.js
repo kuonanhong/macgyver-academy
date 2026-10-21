@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d144-5a69baf10e179a5e.json"]={sha256:"5a69baf10e179a5edfc978243e21dc30143a730480a43f3935217034857cc902",value:{"id":"d144","title":"複合材料樹脂轉注成形","titleEn":"Composite Resin Transfer Molding","category":"materials","kind":"craft","summary":"「複合材料樹脂轉注成形」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Composite Resin Transfer Molding: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b365-1a319a489d6b5b83.json"]={sha256:"1a319a489d6b5b8304a85185d44f034dcf478d5875477260e9d68ccf99f65815",value:{"id":"b365","title":"軌道輪軌摩擦調節與潤滑系統","titleEn":"Rail Wheel Contact Friction Management and Lubrication","category":"rail","kind":"craft","summary":"「軌道輪軌摩擦調節與潤滑系統」教學路線圖：摩擦係數、塗佈位置、耗損監測與噪音量測。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Rail Wheel Contact Friction Management and Lubrication: friction coefficients, application location, wear monitoring, and acoustic measurements. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

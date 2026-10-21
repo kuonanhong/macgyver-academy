@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d425-c6b29f0272044717.json"]={sha256:"c6b29f0272044717d53cb84265120eb74273cc56065010f55b8fec612b8e33cc",value:{"id":"d425","title":"錦屏地下實驗室","titleEn":"China Jinping Underground Laboratory","category":"megascience","kind":"project","summary":"「錦屏地下實驗室」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for China Jinping Underground Laboratory: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

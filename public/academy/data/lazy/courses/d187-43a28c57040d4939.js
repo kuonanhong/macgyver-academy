@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d187-43a28c57040d4939.json"]={sha256:"43a28c57040d49394191fde9b64be08920a7606ed1947b25f5ac83e606d373d5",value:{"id":"d187","title":"電池隔膜孔隙與強度評估","titleEn":"Battery Separator Porosity and Strength Evaluation","category":"materials","kind":"craft","summary":"「電池隔膜孔隙與強度評估」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Battery Separator Porosity and Strength Evaluation: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

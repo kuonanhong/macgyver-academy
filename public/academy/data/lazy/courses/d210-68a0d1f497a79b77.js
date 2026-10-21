@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d210-68a0d1f497a79b77.json"]={sha256:"68a0d1f497a79b7701da9553e0c2690d8c8c88bb3f38932423c816acc5ccada1",value:{"id":"d210","title":"IBA Proteus質子設備工程","titleEn":"IBA Proteus Proton Equipment Engineering","category":"biomedical","kind":"project","summary":"「IBA Proteus質子設備工程」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for IBA Proteus Proton Equipment Engineering: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

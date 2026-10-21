@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d467-7ee3ab5c9077233c.json"]={sha256:"7ee3ab5c9077233c138f930318787c31a6aca9a4f50cc22abefd61523aff43bd",value:{"id":"d467","title":"帕克斯電波望遠鏡","titleEn":"Parkes Radio Telescope","category":"megascience","kind":"project","summary":"「帕克斯電波望遠鏡」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Parkes Radio Telescope: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

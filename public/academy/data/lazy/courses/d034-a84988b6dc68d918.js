@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d034-a84988b6dc68d918.json"]={sha256:"a84988b6dc68d918d35eaa4f39294d6f6700e0d063a11ff7e375b40055668d93",value:{"id":"d034","title":"穆罕默德本拉希德太陽能園區","titleEn":"Mohammed bin Rashid Al Maktoum Solar Park","category":"energy","kind":"project","summary":"「穆罕默德本拉希德太陽能園區」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Mohammed bin Rashid Al Maktoum Solar Park: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

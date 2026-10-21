@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d177-4735feb423fe0ded.json"]={sha256:"4735feb423fe0ded2dc9df0365169dcb8250c249bd1dc7400c7f5d05719f74d8",value:{"id":"d177","title":"生質可分解聚合物包裝","titleEn":"Biobased Biodegradable Polymer Packaging","category":"materials","kind":"craft","summary":"「生質可分解聚合物包裝」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Biobased Biodegradable Polymer Packaging: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

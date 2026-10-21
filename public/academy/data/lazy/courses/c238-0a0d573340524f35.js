@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c238-0a0d573340524f35.json"]={sha256:"0a0d573340524f35f0b090bf1bd1666c1542e4fbe598079cad34cfa0af66133e",value:{"title":"TGV 高速動力集中列車","titleEn":"TGV power-car high-speed train","category":"automotive","kind":"project","summary":"課程規劃主題：動力車、制動與車間連接。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: power cars, braking and vehicle articulation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c238"}};

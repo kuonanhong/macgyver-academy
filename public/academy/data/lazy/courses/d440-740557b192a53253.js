@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d440-740557b192a53253.json"]={sha256:"740557b192a5325363aa6ee069cc3263b7467b4caf1d1096b466fa4f42605d8f",value:{"id":"d440","title":"上海光源SSRF","titleEn":"Shanghai Synchrotron Radiation Facility","category":"megascience","kind":"project","summary":"「上海光源SSRF」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Shanghai Synchrotron Radiation Facility: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

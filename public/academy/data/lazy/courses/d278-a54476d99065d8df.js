@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d278-a54476d99065d8df.json"]={sha256:"a54476d99065d8df145cd8272cf7318fa21854686d8e918b60d958672c7a0aee",value:{"id":"d278","title":"醫療器材風險管理檔案","titleEn":"Medical Device Risk Management Files","category":"biomedical","kind":"craft","summary":"「醫療器材風險管理檔案」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Device Risk Management Files: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

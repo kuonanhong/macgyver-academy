@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d372-824a3f46f8eb1c26.json"]={sha256:"824a3f46f8eb1c268af2a78f3bfc5d5457f7b22daeb2c28f44ad3a736e7fc38c",value:{"id":"d372","title":"養殖池智慧投餌系統","titleEn":"Aquaculture Smart Feeding Systems","category":"process","kind":"craft","summary":"「養殖池智慧投餌系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aquaculture Smart Feeding Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

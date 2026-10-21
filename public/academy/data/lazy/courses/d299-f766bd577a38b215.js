@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d299-f766bd577a38b215.json"]={sha256:"f766bd577a38b215d369607034b4fbb52e99e1d1ea0a682c9d11e62f96a3445f",value:{"id":"d299","title":"無菌包裝密封完整性測試","titleEn":"Sterile Packaging Seal Integrity Testing","category":"biomedical","kind":"craft","summary":"「無菌包裝密封完整性測試」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sterile Packaging Seal Integrity Testing: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

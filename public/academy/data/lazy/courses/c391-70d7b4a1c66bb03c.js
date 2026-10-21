@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c391-70d7b4a1c66bb03c.json"]={sha256:"70d7b4a1c66bb03c8ca32d3c97d68b7bafa4a03411b7c4ea1b57fec7c530466c",value:{"title":"CubeSat 小衛星系統工程","titleEn":"CubeSat small-satellite systems engineering","category":"space","kind":"craft","summary":"課程規劃主題：預算分配與模組介面。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: resource budgets and module interfaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c391"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d066-9551ce57b50fb8d0.json"]={sha256:"9551ce57b50fb8d09c4d57d3db1399b623e1e985d147f08103a4ba36230db75a",value:{"id":"d066","title":"大型風機複合材料葉片製造","titleEn":"Large Wind Turbine Composite Blade Manufacturing","category":"energy","kind":"craft","summary":"「大型風機複合材料葉片製造」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Large Wind Turbine Composite Blade Manufacturing: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

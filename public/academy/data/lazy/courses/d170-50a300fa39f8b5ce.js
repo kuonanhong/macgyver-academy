@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d170-50a300fa39f8b5ce.json"]={sha256:"50a300fa39f8b5ce07206b99f0c8171dc3df82a129d819f1edee9a252127b5b1",value:{"id":"d170","title":"氣凝膠隔熱材料工程","titleEn":"Aerogel Insulation Material Engineering","category":"materials","kind":"craft","summary":"「氣凝膠隔熱材料工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aerogel Insulation Material Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d320-26d50b0021f4f3d6.json"]={sha256:"26d50b0021f4f3d62116450157be17cdaeb05aa7f371dbbe67e220fe2b7fd9fa",value:{"id":"d320","title":"人工光植物工廠照明","titleEn":"Artificial Light Plant Factory Lighting","category":"process","kind":"craft","summary":"「人工光植物工廠照明」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Artificial Light Plant Factory Lighting: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d384-f43542cf4fad0554.json"]={sha256:"f43542cf4fad05541675192d794d47565c2d66a62fc76bfb5ed14579f4754c75",value:{"id":"d384","title":"水再生紫外線設備量測","titleEn":"Water Reuse Ultraviolet Equipment Metrology","category":"process","kind":"craft","summary":"「水再生紫外線設備量測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Water Reuse Ultraviolet Equipment Metrology: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

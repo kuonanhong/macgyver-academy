@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d465-b921fd83bb5aa13f.json"]={sha256:"b921fd83bb5aa13fe5a9763295c3db03c0ae793079f34d08545969c1725b529b",value:{"id":"d465","title":"事件視界望遠鏡EHT","titleEn":"Event Horizon Telescope EHT","category":"megascience","kind":"project","summary":"「事件視界望遠鏡EHT」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Event Horizon Telescope EHT: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d476-3b2dc8e5db4479a7.json"]={sha256:"3b2dc8e5db4479a7fa11190f632ef57b50017d3433175903156bd19312768714",value:{"id":"d476","title":"韋伯太空望遠鏡低溫測試","titleEn":"James Webb Space Telescope Cryogenic Testing","category":"megascience","kind":"project","summary":"「韋伯太空望遠鏡低溫測試」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for James Webb Space Telescope Cryogenic Testing: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

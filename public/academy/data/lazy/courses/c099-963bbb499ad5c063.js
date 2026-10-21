@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c099-963bbb499ad5c063.json"]={sha256:"963bbb499ad5c06343add2aa34d550d1fbd127ccdea559dfa50e8ad72442b919",value:{"title":"航空引擎短艙降噪襯層","titleEn":"Aircraft engine-nacelle acoustic liners","category":"aerospace","kind":"craft","summary":"課程規劃主題：聲學阻抗與吸聲結構。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: acoustic impedance and sound-absorbing structures. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c099"}};

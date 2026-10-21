@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b189-599890bf9286e227.json"]={sha256:"599890bf9286e227d3c022ed7c410e3b3dc14ba64a189675bc9bd6f5282f4310",value:{"id":"b189","title":"地盤壓密灌漿","titleEn":"Compaction grouting","category":"underground","kind":"craft","summary":"以「地盤壓密灌漿」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Compaction grouting. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

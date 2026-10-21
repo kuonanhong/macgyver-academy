@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d184-0b16cb3b5ada0abd.json"]={sha256:"0b16cb3b5ada0abd28d2ba988ec1b7e1e4f5cd892a8a5b7fbb0087a3712a30a5",value:{"id":"d184","title":"高選擇性分子篩分離膜","titleEn":"High Selectivity Molecular Sieve Membranes","category":"materials","kind":"craft","summary":"「高選擇性分子篩分離膜」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Selectivity Molecular Sieve Membranes: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

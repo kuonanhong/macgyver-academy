@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d254-d33f266564a55c1f.json"]={sha256:"d33f266564a55c1fa39bb5f396e7f681f9651863224647f4a1c591d3acd31507",value:{"id":"d254","title":"嬰兒保溫箱熱流模擬","titleEn":"Infant Incubator Thermal Flow Modeling","category":"biomedical","kind":"craft","summary":"「嬰兒保溫箱熱流模擬」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Infant Incubator Thermal Flow Modeling: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d083-a9837e2e6e31898d.json"]={sha256:"a9837e2e6e31898d80684f9450e2831fc0f0713c2815d7d02c125bc562cc38ee",value:{"id":"d083","title":"燃氣渦輪機熱障塗層系統","titleEn":"Gas Turbine Thermal Barrier Coating Systems","category":"energy","kind":"craft","summary":"「燃氣渦輪機熱障塗層系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gas Turbine Thermal Barrier Coating Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

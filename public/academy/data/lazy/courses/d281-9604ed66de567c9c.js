@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d281-9604ed66de567c9c.json"]={sha256:"9604ed66de567c9c024fb957d2c5f069fa900a2547f29b6d4a87786ee3e36f50",value:{"id":"d281","title":"實驗室液體處理機器人","titleEn":"Laboratory Liquid Handling Robots","category":"biomedical","kind":"craft","summary":"「實驗室液體處理機器人」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Laboratory Liquid Handling Robots: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

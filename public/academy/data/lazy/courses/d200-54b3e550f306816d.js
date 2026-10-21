@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d200-54b3e550f306816d.json"]={sha256:"54b3e550f306816d2accd171eb430535d3e27414227a830c8d78630978350872",value:{"id":"d200","title":"材料資料庫與可追溯量測","titleEn":"Materials Databases and Traceable Metrology","category":"materials","kind":"craft","summary":"「材料資料庫與可追溯量測」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Materials Databases and Traceable Metrology: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

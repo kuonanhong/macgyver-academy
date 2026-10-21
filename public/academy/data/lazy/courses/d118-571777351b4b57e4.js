@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d118-571777351b4b57e4.json"]={sha256:"571777351b4b57e4b3bfd4bd050493d938717b794d901230825af25586632c65",value:{"id":"d118","title":"電磁攪拌與凝固組織控制","titleEn":"Electromagnetic Stirring and Solidification Control","category":"materials","kind":"craft","summary":"「電磁攪拌與凝固組織控制」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Electromagnetic Stirring and Solidification Control: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

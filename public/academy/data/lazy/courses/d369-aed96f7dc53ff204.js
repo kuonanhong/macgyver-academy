@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d369-aed96f7dc53ff204.json"]={sha256:"aed96f7dc53ff204cbf3fbcaab791f6a0aed6ee8658d9e4c5fc6525f7d9b6435",value:{"id":"d369","title":"乳牛自動擠乳機器人","titleEn":"Robotic Dairy Milking Systems","category":"process","kind":"craft","summary":"「乳牛自動擠乳機器人」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Robotic Dairy Milking Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

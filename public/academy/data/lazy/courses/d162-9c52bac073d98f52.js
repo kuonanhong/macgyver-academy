@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d162-9c52bac073d98f52.json"]={sha256:"9c52bac073d98f52747363148b2b7e45be7f58163e1f55032a3110a1f8783a0f",value:{"id":"d162","title":"光學玻璃退火與均質化","titleEn":"Optical Glass Annealing and Homogenization","category":"materials","kind":"craft","summary":"「光學玻璃退火與均質化」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Optical Glass Annealing and Homogenization: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

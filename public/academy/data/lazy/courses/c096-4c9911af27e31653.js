@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c096-4c9911af27e31653.json"]={sha256:"4c9911af27e31653d4d97f26719e3af40fcd9d34a8bfd1b3bf4cb18e2f429bd2",value:{"title":"航空可持續燃料相容性","titleEn":"Sustainable aviation fuel compatibility","category":"aerospace","kind":"craft","summary":"課程規劃主題：燃料性質與材料相容性。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: fuel properties and material compatibility. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c096"}};

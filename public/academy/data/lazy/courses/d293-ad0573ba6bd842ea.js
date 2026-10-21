@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d293-ad0573ba6bd842ea.json"]={sha256:"ad0573ba6bd842ea979d1707408758316ca9d101d5740eefe450a4cf724e5e67",value:{"id":"d293","title":"生醫鈦合金多孔結構","titleEn":"Biomedical Titanium Porous Structures","category":"biomedical","kind":"craft","summary":"「生醫鈦合金多孔結構」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Biomedical Titanium Porous Structures: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

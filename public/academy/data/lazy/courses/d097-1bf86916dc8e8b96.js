@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d097-1bf86916dc8e8b96.json"]={sha256:"1bf86916dc8e8b9689f980d782563ecb35d1aa5f9386344014493f32428fc0bc",value:{"id":"d097","title":"冰水蓄冷與尖峰負載移轉","titleEn":"Ice Thermal Storage and Peak Load Shifting","category":"energy","kind":"craft","summary":"「冰水蓄冷與尖峰負載移轉」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ice Thermal Storage and Peak Load Shifting: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

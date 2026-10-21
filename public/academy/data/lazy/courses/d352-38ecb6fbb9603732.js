@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d352-38ecb6fbb9603732.json"]={sha256:"38ecb6fbb9603732e3578efef3ce0c4066a63dae0c053b626bddb010b8d74acd",value:{"id":"d352","title":"冷凍食品個別急速冷凍","titleEn":"Individual Quick Freezing of Foods","category":"process","kind":"craft","summary":"「冷凍食品個別急速冷凍」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Individual Quick Freezing of Foods: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

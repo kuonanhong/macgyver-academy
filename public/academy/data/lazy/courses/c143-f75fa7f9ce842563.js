@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c143-f75fa7f9ce842563.json"]={sha256:"f75fa7f9ce842563e46155ff7a876ee567ecd470cae64d065cc138a1faf22ed5",value:{"title":"Seven Borealis 海上工程船","titleEn":"Seven Borealis offshore construction vessel","category":"marine","kind":"project","summary":"課程規劃主題：鋪管與吊裝系統介面。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: pipelaying and lifting-system interfaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c143"}};

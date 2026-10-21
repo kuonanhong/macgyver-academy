@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d242-638bc0549b5a012d.json"]={sha256:"638bc0549b5a012d871ec1aa900eb48e8a7421368fdcb6dda61cdf0616163013",value:{"id":"d242","title":"心室輔助幫浦流場模擬","titleEn":"Ventricular Assist Pump Flow Modeling","category":"biomedical","kind":"craft","summary":"「心室輔助幫浦流場模擬」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ventricular Assist Pump Flow Modeling: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c242-fb4709861fb77a11.json"]={sha256:"fb4709861fb77a1113137f52b1a29ca86d6a84343b202e9cfb25ebb77acfee2d",value:{"title":"倫敦地鐵深層隧道列車","titleEn":"London Underground deep-tube trains","category":"automotive","kind":"project","summary":"課程規劃主題：限界、通風與乘客流動。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: loading gauge, ventilation and passenger flow. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c242"}};

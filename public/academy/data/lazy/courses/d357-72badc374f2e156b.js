@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d357-72badc374f2e156b.json"]={sha256:"72badc374f2e156bdb4f0e9adb8d988164a087834a1fabaab3d343da5596a30c",value:{"id":"d357","title":"肉品加工機器視覺分級","titleEn":"Meat Processing Machine Vision Grading","category":"process","kind":"craft","summary":"「肉品加工機器視覺分級」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Meat Processing Machine Vision Grading: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

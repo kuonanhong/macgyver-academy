@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c012-9181a6a786f26f9e.json"]={sha256:"9181a6a786f26f9e73ec4ab81574c309c3ef562278b098c75c3f1c51491be434",value:{"title":"ATR 72 渦槳客機系統","titleEn":"ATR 72 turboprop aircraft systems","category":"aerospace","kind":"project","summary":"課程規劃主題：螺槳效率與區域航線需求。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: propeller efficiency and regional-route requirements. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c012"}};

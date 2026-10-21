@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d046-abdebf302833c8e6.json"]={sha256:"abdebf302833c8e62bc1b9e6e38d38e56593cc0e9b162cc5af02cb0095796f8d",value:{"id":"d046","title":"昂斯特壓縮空氣儲能電站","titleEn":"Huntorf Compressed Air Energy Storage Plant","category":"energy","kind":"project","summary":"「昂斯特壓縮空氣儲能電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Huntorf Compressed Air Energy Storage Plant: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

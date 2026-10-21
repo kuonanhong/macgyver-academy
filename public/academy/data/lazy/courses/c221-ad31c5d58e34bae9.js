@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c221-ad31c5d58e34bae9.json"]={sha256:"ad31c5d58e34bae913a58487fa32386b5d559ac590ed2e4825d18981b2acf090",value:{"title":"Chevrolet Volt 增程式電動車","titleEn":"Chevrolet Volt extended-range electric car","category":"automotive","kind":"project","summary":"課程規劃主題：續航增程與能源管理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: range extension and energy management. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c221"}};

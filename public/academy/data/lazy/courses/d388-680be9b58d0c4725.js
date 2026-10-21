@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d388-680be9b58d0c4725.json"]={sha256:"680be9b58d0c47250192dab562ea67d38391e0726dedd14bd98e3960263bacbc",value:{"id":"d388","title":"工業蒸汽凝結水回收","titleEn":"Industrial Steam Condensate Recovery","category":"process","kind":"craft","summary":"「工業蒸汽凝結水回收」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Industrial Steam Condensate Recovery: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

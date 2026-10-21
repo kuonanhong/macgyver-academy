@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d012-beae139e48e0905e.json"]={sha256:"beae139e48e0905ee8ca93200137307e4ec346c2383c70c532c45312157baeed",value:{"id":"d012","title":"多瑙河鐵門水電站","titleEn":"Iron Gate Hydropower Station","category":"energy","kind":"project","summary":"「多瑙河鐵門水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Iron Gate Hydropower Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d398-b7a713bd6fafc252.json"]={sha256:"b7a713bd6fafc252b326cef8a30e414ef51a26a2c896eb7d0eafe1eea31e7be4",value:{"id":"d398","title":"紡織染整廢熱回收","titleEn":"Textile Finishing Waste Heat Recovery","category":"process","kind":"craft","summary":"「紡織染整廢熱回收」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Textile Finishing Waste Heat Recovery: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

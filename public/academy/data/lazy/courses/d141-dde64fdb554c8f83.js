@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d141-dde64fdb554c8f83.json"]={sha256:"dde64fdb554c8f8320818611642da8e91fcf54723837aee1c0579f337de8bfc7",value:{"id":"d141","title":"碳纖維前驅物與纖維化概念","titleEn":"Carbon Fiber Precursor and Fiber Formation Concepts","category":"materials","kind":"craft","summary":"「碳纖維前驅物與纖維化概念」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Carbon Fiber Precursor and Fiber Formation Concepts: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

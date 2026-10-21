@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c237-225393f2833d3245.json"]={sha256:"225393f2833d3245068fe4d64a3ae4df80968239c5e7b7b21c2c2700e78bdfa1",value:{"title":"Shinkansen 0 系高速列車","titleEn":"Shinkansen Series 0 high-speed train","category":"automotive","kind":"project","summary":"課程規劃主題：高速轉向架與列車系統。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: high-speed bogies and train systems. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c237"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d091-d62d40f5a0a9dc9b.json"]={sha256:"d62d40f5a0a9dc9b7653af39b7c264cd8a9529fd3ce1f30f4450cf97d74a70ab",value:{"id":"d091","title":"液態空氣儲能冷熱整合","titleEn":"Liquid Air Energy Storage Heat and Cold Integration","category":"energy","kind":"craft","summary":"「液態空氣儲能冷熱整合」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Liquid Air Energy Storage Heat and Cold Integration: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

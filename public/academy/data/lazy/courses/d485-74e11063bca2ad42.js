@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d485-74e11063bca2ad42.json"]={sha256:"74e11063bca2ad4234e19cc646563a3a3536c4cd7578a5a9d138ad4d236488d6",value:{"id":"d485","title":"格陵蘭NEEM冰芯鑽探工程","titleEn":"Greenland NEEM Ice Core Drilling Project","category":"megascience","kind":"project","summary":"「格陵蘭NEEM冰芯鑽探工程」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Greenland NEEM Ice Core Drilling Project: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

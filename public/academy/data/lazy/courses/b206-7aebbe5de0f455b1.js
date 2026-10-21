@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b206-7aebbe5de0f455b1.json"]={sha256:"7aebbe5de0f455b1cfb80932e3a34fc945cee892303630e0d6e63f45ff0603c6",value:{"id":"b206","title":"小灣水壩","titleEn":"Xiaowan Dam","category":"water","kind":"project","summary":"以「小灣水壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Xiaowan Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

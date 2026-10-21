@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d414-433681c24a1d0ab4.json"]={sha256:"433681c24a1d0ab49f4f6e5660755f99c69a4b3d8d500baaa97e7d165190f4ee",value:{"id":"d414","title":"北京正負電子對撞機BEPCII","titleEn":"Beijing Electron Positron Collider BEPCII","category":"megascience","kind":"project","summary":"「北京正負電子對撞機BEPCII」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Beijing Electron Positron Collider BEPCII: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

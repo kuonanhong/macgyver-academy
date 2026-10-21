@@ -1,0 +1,273 @@
+{
+  "focus": "連結負孔壓傳遞、排水能力與卸載回彈判斷真空壓密~Relate suction transfer, drainage capacity and unloading rebound to vacuum consolidation",
+  "units": [
+    {
+      "anchor": "有效應力增量~Effective stress increment",
+      "title": "有效應力增量~Effective stress increment",
+      "mechanism": "真空預壓透過降低孔隙水壓增加有效應力，不需要把相同荷載全由堆載重量提供。必須先說清楚所選土點的總應力是否保持不變，並區分抽氣系統壓力與土中孔壓。教學假設總應力固定、孔壓變化Δu=−60kPa，Δσ′=−Δu=60kPa；此式不代表任何深度都收到相同負壓。若把泵浦端負壓直接當深層孔壓，會高估深層改良；表面沉陷可能來自上層，尚未壓密的深層土在完工載重後仍會持續沉陷。~Vacuum preloading increases effective stress by reducing pore pressure rather than supplying all loading through fill weight. Specify whether total stress stays fixed at the selected soil point and distinguish pump pressure from soil pore pressure. At fixed total stress and pore-pressure change Δu=−60kPa, Δσ′=−Δu=60kPa. The relation does not imply equal suction at every depth. Substituting pump suction for deep pore pressure overstates treatment at depth. Surface settlement may occur mainly in upper layers while untreated deeper soil continues settling under the completed structure.",
+      "model": "教學假設，非現場設定值：教學假設總應力固定、孔壓變化Δu=−60kPa，Δσ′=−Δu=60kPa；此式不代表任何深度都收到相同負壓。~Teaching assumptions, not field settings: At fixed total stress and pore-pressure change Δu=−60kPa, Δσ′=−Δu=60kPa. The relation does not imply equal suction at every depth.",
+      "verify": "同步量測土中孔壓、地表荷載及沉陷，將每個測點換到相同高程基準。確認負孔壓感測能力與飽和狀態，讓有效應力推論有可追溯的原始資料。同時排除以下干擾原因：若把泵浦端負壓直接當深層孔壓，會高估深層改良；表面沉陷可能來自上層，尚未壓密的深層土在完工載重後仍會持續沉陷。~Synchronize soil pressure, surface loading and settlement on a common elevation datum. Check sensor saturation and negative-pressure capability so the effective-stress inference rests on traceable observations. Also rule out the following competing explanation: Substituting pump suction for deep pore pressure overstates treatment at depth. Surface settlement may occur mainly in upper layers while untreated deeper soil continues settling under the completed structure.",
+      "failure": "若把泵浦端負壓直接當深層孔壓，會高估深層改良；表面沉陷可能來自上層，尚未壓密的深層土在完工載重後仍會持續沉陷。~Substituting pump suction for deep pore pressure overstates treatment at depth. Surface settlement may occur mainly in upper layers while untreated deeper soil continues settling under the completed structure.",
+      "misconception": "只要有效應力增量符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for effective stress increment removes the need to check boundaries and independent evidence.",
+      "practice": "交接有效應力增量時保存原始紀錄、單位與基準。同步量測土中孔壓、地表荷載及沉陷，將每個測點換到相同高程基準。確認負孔壓感測能力與飽和狀態，讓有效應力推論有可追溯的原始資料。~When handing over effective stress increment, retain original records, units and reference conditions. Synchronize soil pressure, surface loading and settlement on a common elevation datum. Check sensor saturation and negative-pressure capability so the effective-stress inference rests on traceable observations."
+    },
+    {
+      "anchor": "深度負壓傳遞~Suction transfer with depth",
+      "title": "深度負壓傳遞~Suction transfer with depth",
+      "mechanism": "排水板阻力、邊界漏氣與透水夾層會降低深部可獲得的真空效果。傳遞比值是一項診斷量，不是固定材料常數，也不能直接當平均壓密度。假設泵端負壓幅值75kPa、深部45kPa，幅值傳遞比45/75=0.60；比較須同時刻且同一基準。在同一圖上混合不同時間的最大負壓可製造虛假的均勻性；若透水夾層不斷補水，深部可能長期維持較低有效應力而不易從泵表發現。~Drain resistance, air leaks and permeable lenses reduce deep vacuum effectiveness. A transfer ratio helps diagnose the system but is neither a material constant nor a direct measure of average consolidation. With pump suction magnitude75kPa and deep magnitude45kPa, the transfer ratio is45/75=0.60. Compare simultaneous observations on the same reference basis. Combining maxima from different times creates false uniformity. A permeable lens can continuously recharge deep soil and maintain low effective stress without an obvious change on the pump gauge.",
+      "model": "教學假設，非現場設定值：假設泵端負壓幅值75kPa、深部45kPa，幅值傳遞比45/75=0.60；比較須同時刻且同一基準。~Teaching assumptions, not field settings: With pump suction magnitude75kPa and deep magnitude45kPa, the transfer ratio is45/75=0.60. Compare simultaneous observations on the same reference basis.",
+      "verify": "沿排水板不同深度配置測點，將啟動後的時間反應與分區比較。若深部幅值偏低，先查連通、滲漏與感測器，而不是直接增加上部堆載補償。同時排除以下干擾原因：在同一圖上混合不同時間的最大負壓可製造虛假的均勻性；若透水夾層不斷補水，深部可能長期維持較低有效應力而不易從泵表發現。~Observe different drain depths and compare time responses across zones. Low deep suction calls for checking continuity, leakage and sensors before attempting compensation by adding surface surcharge. Also rule out the following competing explanation: Combining maxima from different times creates false uniformity. A permeable lens can continuously recharge deep soil and maintain low effective stress without an obvious change on the pump gauge.",
+      "failure": "在同一圖上混合不同時間的最大負壓可製造虛假的均勻性；若透水夾層不斷補水，深部可能長期維持較低有效應力而不易從泵表發現。~Combining maxima from different times creates false uniformity. A permeable lens can continuously recharge deep soil and maintain low effective stress without an obvious change on the pump gauge.",
+      "misconception": "只要深度負壓傳遞符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for suction transfer with depth removes the need to check boundaries and independent evidence.",
+      "practice": "交接深度負壓傳遞時保存原始紀錄、單位與基準。沿排水板不同深度配置測點，將啟動後的時間反應與分區比較。若深部幅值偏低，先查連通、滲漏與感測器，而不是直接增加上部堆載補償。~When handing over suction transfer with depth, retain original records, units and reference conditions. Observe different drain depths and compare time responses across zones. Low deep suction calls for checking continuity, leakage and sensors before attempting compensation by adding surface surcharge."
+    },
+    {
+      "anchor": "漏氣與抽氣平衡~Air leakage balance",
+      "title": "漏氣與抽氣平衡~Air leakage balance",
+      "mechanism": "真空系統的可用抽氣能力必須大於進氣，且抽氣量受工作壓力影響。固定流量差只提供控制體的瞬時平衡，不能用額定自由空氣流量替代負壓工況能力。假設相同參考壓溫下抽氣0.020m³/s、漏入0.002m³/s，淨排氣0.018m³/s；兩流量必須使用相同狀態。漏氣若集中於接頭，泵浦持續運轉仍可能無法建立目標負壓；以不同壓力基準的流量相減會錯估餘裕，延誤發現膜下系統的持續失效。~Available pumping must exceed incoming air and depends on operating pressure. A flow difference is an instantaneous control-volume balance; rated free-air delivery is not necessarily capacity at the working vacuum. At the same reference pressure and temperature, extraction0.020m³/s minus leakage0.002m³/s gives net0.018m³/s. Both flows require a common state. A concentrated joint leak can prevent required suction despite continuous pumping. Subtracting flows referenced to different pressures misstates reserve and delays recognition of persistent failure beneath the membrane.",
+      "model": "教學假設，非現場設定值：假設相同參考壓溫下抽氣0.020m³/s、漏入0.002m³/s，淨排氣0.018m³/s；兩流量必須使用相同狀態。~Teaching assumptions, not field settings: At the same reference pressure and temperature, extraction0.020m³/s minus leakage0.002m³/s gives net0.018m³/s. Both flows require a common state.",
+      "verify": "依核准方法分區檢查膜面、封邊與穿透接頭，記錄工作壓力下的流量及功率。比較維修前後壓力恢復，不以單次聽不到漏氣聲作驗收。同時排除以下干擾原因：漏氣若集中於接頭，泵浦持續運轉仍可能無法建立目標負壓；以不同壓力基準的流量相減會錯估餘裕，延誤發現膜下系統的持續失效。~Check membrane, perimeter and penetrations by approved procedures, recording flow and power at working pressure. Compare recovery before and after repair rather than accepting solely because no leak can be heard. Also rule out the following competing explanation: A concentrated joint leak can prevent required suction despite continuous pumping. Subtracting flows referenced to different pressures misstates reserve and delays recognition of persistent failure beneath the membrane.",
+      "failure": "漏氣若集中於接頭，泵浦持續運轉仍可能無法建立目標負壓；以不同壓力基準的流量相減會錯估餘裕，延誤發現膜下系統的持續失效。~A concentrated joint leak can prevent required suction despite continuous pumping. Subtracting flows referenced to different pressures misstates reserve and delays recognition of persistent failure beneath the membrane.",
+      "misconception": "只要漏氣與抽氣平衡符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for air leakage balance removes the need to check boundaries and independent evidence.",
+      "practice": "交接漏氣與抽氣平衡時保存原始紀錄、單位與基準。依核准方法分區檢查膜面、封邊與穿透接頭，記錄工作壓力下的流量及功率。比較維修前後壓力恢復，不以單次聽不到漏氣聲作驗收。~When handing over air leakage balance, retain original records, units and reference conditions. Check membrane, perimeter and penetrations by approved procedures, recording flow and power at working pressure. Compare recovery before and after repair rather than accepting solely because no leak can be heard."
+    },
+    {
+      "anchor": "透水夾層補注~Recharge through permeable lenses",
+      "title": "透水夾層補注~Recharge through permeable lenses",
+      "mechanism": "透水砂層可把區外水引進真空區，消耗排水能力並改變負壓分布。達西估算用於辨識補注量級，需先確認連通面積與水力梯度，不把平均土壤滲透係數當局部夾層值。取k=1×10⁻⁵m/s、連通面積A=20m²、梯度i=3，Q=kiA=0.0006m³/s；假設飽和層流與均質通道。若把持續出水誤當土體正在快速壓密，可能實際只是在抽區外補注水；沉陷速率與孔壓不相符時，累計水量不能證明深層有效應力已提高。~A permeable lens can feed water from outside the treatment zone and consume capacity. Darcy flow estimates its scale only after connectivity, area and gradient are established; average soil permeability is not the lens permeability. With k=1×10⁻⁵m/s, connected A=20m² and i=3, Q=kiA=0.0006m³/s, assuming saturated laminar flow through a uniform path. Persistent discharge can be external recharge rather than rapid consolidation. When settlement and pressure disagree, cumulative water volume cannot prove increased effective stress in the treated soil.",
+      "model": "教學假設，非現場設定值：取k=1×10⁻⁵m/s、連通面積A=20m²、梯度i=3，Q=kiA=0.0006m³/s；假設飽和層流與均質通道。~Teaching assumptions, not field settings: With k=1×10⁻⁵m/s, connected A=20m² and i=3, Q=kiA=0.0006m³/s, assuming saturated laminar flow through a uniform path.",
+      "verify": "對照鑽探夾層位置、區內外水位與流量變化，檢查補注是否集中於特定深度。隔斷或排水修改須由設計工程師評估周邊沉陷與水文影響後核定。同時排除以下干擾原因：若把持續出水誤當土體正在快速壓密，可能實際只是在抽區外補注水；沉陷速率與孔壓不相符時，累計水量不能證明深層有效應力已提高。~Compare logged lenses with internal and external heads and flow changes to identify depth-specific recharge. The designer must review neighbouring settlement and groundwater effects before approving cutoff or drainage changes. Also rule out the following competing explanation: Persistent discharge can be external recharge rather than rapid consolidation. When settlement and pressure disagree, cumulative water volume cannot prove increased effective stress in the treated soil.",
+      "failure": "若把持續出水誤當土體正在快速壓密，可能實際只是在抽區外補注水；沉陷速率與孔壓不相符時，累計水量不能證明深層有效應力已提高。~Persistent discharge can be external recharge rather than rapid consolidation. When settlement and pressure disagree, cumulative water volume cannot prove increased effective stress in the treated soil.",
+      "misconception": "只要透水夾層補注符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for recharge through permeable lenses removes the need to check boundaries and independent evidence.",
+      "practice": "交接透水夾層補注時保存原始紀錄、單位與基準。對照鑽探夾層位置、區內外水位與流量變化，檢查補注是否集中於特定深度。隔斷或排水修改須由設計工程師評估周邊沉陷與水文影響後核定。~When handing over recharge through permeable lenses, retain original records, units and reference conditions. Compare logged lenses with internal and external heads and flow changes to identify depth-specific recharge. The designer must review neighbouring settlement and groundwater effects before approving cutoff or drainage changes."
+    },
+    {
+      "anchor": "排水板水頭損失~Drain head loss",
+      "title": "排水板水頭損失~Drain head loss",
+      "mechanism": "排水板內部流阻會沿長度消耗負壓，折曲、側向壓力及細料污染都可能降低導水能力。簡化導水係數把流量和水頭差連結，其適用狀態必須與試驗環境一致。假設排水流量Q=0.0002m³/s、整段水力導通係數C=0.0001m²/s，Δh=Q/C=2m；C不是土壤滲透係數。排水板壓扁時地表管路仍可能正常抽水，深部負壓卻不能維持；只驗地表排水量會把內部通路瓶頸掩蓋為土層本身壓密較慢。~Resistance inside a drain dissipates suction along its length. Folding, confinement and fines reduce flow capacity. A simplified conductance relates flow to head loss only under conditions consistent with the test used to establish it. For Q=0.0002m³/s and whole-drain hydraulic conductance C=0.0001m²/s, Δh=Q/C=2m. Conductance is not soil hydraulic conductivity. A flattened drain can limit deep suction while surface plumbing still discharges. Surface flow alone conceals an internal bottleneck and may wrongly attribute delayed treatment to slow soil consolidation.",
+      "model": "教學假設，非現場設定值：假設排水流量Q=0.0002m³/s、整段水力導通係數C=0.0001m²/s，Δh=Q/C=2m；C不是土壤滲透係數。~Teaching assumptions, not field settings: For Q=0.0002m³/s and whole-drain hydraulic conductance C=0.0001m²/s, Δh=Q/C=2m. Conductance is not soil hydraulic conductivity.",
+      "verify": "檢查排水板在預期側壓、彎曲及土粒條件下的通水試驗，對照深淺孔壓差。把長度與接頭納入流阻模型，避免只採未受壓新品的目錄數值。同時排除以下干擾原因：排水板壓扁時地表管路仍可能正常抽水，深部負壓卻不能維持；只驗地表排水量會把內部通路瓶頸掩蓋為土層本身壓密較慢。~Review flow tests under representative confinement, bending and fines, comparing deep and shallow pressures. Include length and connections instead of relying solely on catalogue values for an unconfined new drain. Also rule out the following competing explanation: A flattened drain can limit deep suction while surface plumbing still discharges. Surface flow alone conceals an internal bottleneck and may wrongly attribute delayed treatment to slow soil consolidation.",
+      "failure": "排水板壓扁時地表管路仍可能正常抽水，深部負壓卻不能維持；只驗地表排水量會把內部通路瓶頸掩蓋為土層本身壓密較慢。~A flattened drain can limit deep suction while surface plumbing still discharges. Surface flow alone conceals an internal bottleneck and may wrongly attribute delayed treatment to slow soil consolidation.",
+      "misconception": "只要排水板水頭損失符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for drain head loss removes the need to check boundaries and independent evidence.",
+      "practice": "交接排水板水頭損失時保存原始紀錄、單位與基準。檢查排水板在預期側壓、彎曲及土粒條件下的通水試驗，對照深淺孔壓差。把長度與接頭納入流阻模型，避免只採未受壓新品的目錄數值。~When handing over drain head loss, retain original records, units and reference conditions. Review flow tests under representative confinement, bending and fines, comparing deep and shallow pressures. Include length and connections instead of relying solely on catalogue values for an unconfined new drain."
+    },
+    {
+      "anchor": "堆載真空疊加~Surcharge and vacuum combination",
+      "title": "堆載真空疊加~Surcharge and vacuum combination",
+      "mechanism": "堆載增加總應力，真空降低孔壓，兩者必須用同一測點與同一時刻相加。堆載也可能暫時產生正超額孔壓，因此不能把泵端負壓與填土荷載直接無條件相加。假設該土點Δσ=40kPa、實測淨Δu=−50kPa，Δσ′=Δσ−Δu=90kPa；此孔壓已包含當時各效應。若重複扣除真空或忽略加載產生的正孔壓，會高估有效應力與強度；表面沈陷正在加速時，也可能伴隨側向不穩定而非安全壓密。~Surcharge raises total stress while vacuum lowers pore pressure; combine them at one location and time. Filling can also generate positive excess pressure, so pump suction and fill loading cannot be added unconditionally. At a soil point with Δσ=40kPa and measured net Δu=−50kPa, Δσ′=90kPa. The pressure change already includes the combined effects at that time. Double-counting suction or ignoring surcharge-generated pressure overestimates effective stress and strength. Accelerating surface settlement can accompany lateral instability rather than stable, controlled consolidation.",
+      "model": "教學假設，非現場設定值：假設該土點Δσ=40kPa、實測淨Δu=−50kPa，Δσ′=Δσ−Δu=90kPa；此孔壓已包含當時各效應。~Teaching assumptions, not field settings: At a soil point with Δσ=40kPa and measured net Δu=−50kPa, Δσ′=90kPa. The pressure change already includes the combined effects at that time.",
+      "verify": "將分期填築重量、孔壓及側向位移畫在同一時間軸，辨別即時反應與排水後狀態。任何加載轉換由岩土工程師依監測及穩定分析批准，避免只看沉陷快慢。同時排除以下干擾原因：若重複扣除真空或忽略加載產生的正孔壓，會高估有效應力與強度；表面沈陷正在加速時，也可能伴隨側向不穩定而非安全壓密。~Plot staged fill weight, pore pressure and lateral movement on one timeline, distinguishing immediate and drained states. The geotechnical engineer approves transitions using monitoring and stability analysis, not settlement speed alone. Also rule out the following competing explanation: Double-counting suction or ignoring surcharge-generated pressure overestimates effective stress and strength. Accelerating surface settlement can accompany lateral instability rather than stable, controlled consolidation.",
+      "failure": "若重複扣除真空或忽略加載產生的正孔壓，會高估有效應力與強度；表面沈陷正在加速時，也可能伴隨側向不穩定而非安全壓密。~Double-counting suction or ignoring surcharge-generated pressure overestimates effective stress and strength. Accelerating surface settlement can accompany lateral instability rather than stable, controlled consolidation.",
+      "misconception": "只要堆載真空疊加符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for surcharge and vacuum combination removes the need to check boundaries and independent evidence.",
+      "practice": "交接堆載真空疊加時保存原始紀錄、單位與基準。將分期填築重量、孔壓及側向位移畫在同一時間軸，辨別即時反應與排水後狀態。任何加載轉換由岩土工程師依監測及穩定分析批准，避免只看沉陷快慢。~When handing over surcharge and vacuum combination, retain original records, units and reference conditions. Plot staged fill weight, pore pressure and lateral movement on one timeline, distinguishing immediate and drained states. The geotechnical engineer approves transitions using monitoring and stability analysis, not settlement speed alone."
+    },
+    {
+      "anchor": "沉陷壓密比例~Settlement based consolidation ratio",
+      "title": "沉陷壓密比例~Settlement based consolidation ratio",
+      "mechanism": "用沉陷推估壓密度需要可靠的最終沉陷及相同荷載歷程。次壓密、地表填土壓縮與量測基準變化會污染此比例，應和孔壓消散一起判讀。假設僅主要壓密沉陷S=0.24m、預測最終S∞=0.30m，U=S/S∞=0.80；不是任一沉陷讀值都可代入。若最終沉陷估得太小，計算可能提早達到百分之百；卸載後再加永久荷載時，深層未完成的壓密仍會出現，造成路面及鄰接構造差異沉陷。~Settlement-based consolidation requires a credible final settlement for the same loading history. Secondary compression, fill compression and datum changes can contaminate the ratio, so interpret it together with pore-pressure dissipation. For primary-consolidation settlement S=0.24m and predicted final S∞=0.30m, U=0.80. Not every observed settlement component is suitable for this ratio. An underestimated final settlement makes the calculated degree reach full consolidation prematurely. Later permanent loading can expose unfinished deep consolidation and differential settlement at pavements and adjacent structures.",
+      "model": "教學假設，非現場設定值：假設僅主要壓密沉陷S=0.24m、預測最終S∞=0.30m，U=S/S∞=0.80；不是任一沉陷讀值都可代入。~Teaching assumptions, not field settings: For primary-consolidation settlement S=0.24m and predicted final S∞=0.30m, U=0.80. Not every observed settlement component is suitable for this ratio.",
+      "verify": "使用深層沉陷分層與孔壓紀錄核對土層貢獻，並檢查最終沉陷預測是否隨新資料更新。卸載條件須同時包含殘餘沉陷及使用需求，由責任工程師核定。同時排除以下干擾原因：若最終沉陷估得太小，計算可能提早達到百分之百；卸載後再加永久荷載時，深層未完成的壓密仍會出現，造成路面及鄰接構造差異沉陷。~Reconcile layer contributions using depth settlement and pressure records, updating the predicted final value as evidence develops. The engineer sets unloading conditions using residual settlement and service requirements together. Also rule out the following competing explanation: An underestimated final settlement makes the calculated degree reach full consolidation prematurely. Later permanent loading can expose unfinished deep consolidation and differential settlement at pavements and adjacent structures.",
+      "failure": "若最終沉陷估得太小，計算可能提早達到百分之百；卸載後再加永久荷載時，深層未完成的壓密仍會出現，造成路面及鄰接構造差異沉陷。~An underestimated final settlement makes the calculated degree reach full consolidation prematurely. Later permanent loading can expose unfinished deep consolidation and differential settlement at pavements and adjacent structures.",
+      "misconception": "只要沉陷壓密比例符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for settlement based consolidation ratio removes the need to check boundaries and independent evidence.",
+      "practice": "交接沉陷壓密比例時保存原始紀錄、單位與基準。使用深層沉陷分層與孔壓紀錄核對土層貢獻，並檢查最終沉陷預測是否隨新資料更新。卸載條件須同時包含殘餘沉陷及使用需求，由責任工程師核定。~When handing over settlement based consolidation ratio, retain original records, units and reference conditions. Reconcile layer contributions using depth settlement and pressure records, updating the predicted final value as evidence develops. The engineer sets unloading conditions using residual settlement and service requirements together."
+    },
+    {
+      "anchor": "真空中斷恢復~Pressure recovery after interruption",
+      "title": "真空中斷恢復~Pressure recovery after interruption",
+      "mechanism": "停機後孔壓回升速度反映漏氣、補注及土體排水的組合，不等於單一材料常數。短期線性斜率可診斷，但不得外推為全部深度的恢復時間。假設孔壓由−60kPa於3h回到0kPa，平均恢復率=[0−(−60)]/3=20kPa/h；零點為同一參考狀態。感測管內漏氣可造成快速回零而非土體真實恢復；若未分辨儀器故障便估計全區負壓消失，可能觸發錯誤決策或掩蓋較慢的深部異常。~Pressure recovery after shutdown reflects leakage, recharge and drainage together, not one material property. A short-window linear slope can support diagnosis but does not establish recovery time at every depth. If pressure recovers from−60kPa to0kPa in3h, the mean rate is20kPa/h, using a common pressure reference. Air leaking into a sensor line can produce rapid zero recovery without real soil response. Misreading it as treatment-wide suction loss can trigger wrong decisions or conceal slower deep anomalies.",
+      "model": "教學假設，非現場設定值：假設孔壓由−60kPa於3h回到0kPa，平均恢復率=[0−(−60)]/3=20kPa/h；零點為同一參考狀態。~Teaching assumptions, not field settings: If pressure recovers from−60kPa to0kPa in3h, the mean rate is20kPa/h, using a common pressure reference.",
+      "verify": "分析已核准停機或實際故障的多深度時間序列，同時記錄抽氣、排水與邊界狀態。試驗必須有獨立監測及復原條件，不因教學斜率自行安排停機。同時排除以下干擾原因：感測管內漏氣可造成快速回零而非土體真實恢復；若未分辨儀器故障便估計全區負壓消失，可能觸發錯誤決策或掩蓋較慢的深部異常。~Analyse approved interruptions or actual faults using multidepth records alongside pump, water-flow and boundary conditions. Tests need independent monitoring and recovery criteria; the teaching slope does not authorize a shutdown. Also rule out the following competing explanation: Air leaking into a sensor line can produce rapid zero recovery without real soil response. Misreading it as treatment-wide suction loss can trigger wrong decisions or conceal slower deep anomalies.",
+      "failure": "感測管內漏氣可造成快速回零而非土體真實恢復；若未分辨儀器故障便估計全區負壓消失，可能觸發錯誤決策或掩蓋較慢的深部異常。~Air leaking into a sensor line can produce rapid zero recovery without real soil response. Misreading it as treatment-wide suction loss can trigger wrong decisions or conceal slower deep anomalies.",
+      "misconception": "只要真空中斷恢復符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for pressure recovery after interruption removes the need to check boundaries and independent evidence.",
+      "practice": "交接真空中斷恢復時保存原始紀錄、單位與基準。分析已核准停機或實際故障的多深度時間序列，同時記錄抽氣、排水與邊界狀態。試驗必須有獨立監測及復原條件，不因教學斜率自行安排停機。~When handing over pressure recovery after interruption, retain original records, units and reference conditions. Analyse approved interruptions or actual faults using multidepth records alongside pump, water-flow and boundary conditions. Tests need independent monitoring and recovery criteria; the teaching slope does not authorize a shutdown."
+    },
+    {
+      "anchor": "周界水平收縮~Perimeter horizontal contraction",
+      "title": "周界水平收縮~Perimeter horizontal contraction",
+      "mechanism": "真空改善可伴隨向內水平位移，周界附近管線與道路需單獨評估。平均應變只反映兩點距離變化，局部裂縫及轉折可能比平均值更具破壞性。假設水平相對位移5mm、觀測基距10m，εh=0.005/10=0.0005，即0.05%；符號與方向須另行記錄。以改良區內樁點當固定基準會低估外部設施變形；平滑平均收縮也可能掩蓋在穿越封邊處集中的開裂，讓管線接頭提早失效。~Vacuum treatment can induce inward lateral movement, requiring separate assessment of perimeter pipes and roads. Average strain describes separation between two points, while local cracks and transitions can be more damaging than the mean suggests. For relative horizontal movement5mm over10m, εh=0.005/10=0.0005, or0.05%. Record sign and direction separately. Using a moving control inside the treatment zone understates external deformation. Smooth average contraction may also hide cracking concentrated at a perimeter crossing and cause premature pipe-joint failure.",
+      "model": "教學假設，非現場設定值：假設水平相對位移5mm、觀測基距10m，εh=0.005/10=0.0005，即0.05%；符號與方向須另行記錄。~Teaching assumptions, not field settings: For relative horizontal movement5mm over10m, εh=0.005/10=0.0005, or0.05%. Record sign and direction separately.",
+      "verify": "用穩定區外的測量控制點監測周界及鄰近設施，將軸向位移與接頭容許值比較。檢查基準點是否隨改良區一起移動，避免相對讀值掩蓋整體位移。同時排除以下干擾原因：以改良區內樁點當固定基準會低估外部設施變形；平滑平均收縮也可能掩蓋在穿越封邊處集中的開裂，讓管線接頭提早失效。~Monitor the perimeter and nearby facilities from stable external controls, comparing axial movement with joint limits. Check that reference points do not move with the treatment zone and conceal overall displacement. Also rule out the following competing explanation: Using a moving control inside the treatment zone understates external deformation. Smooth average contraction may also hide cracking concentrated at a perimeter crossing and cause premature pipe-joint failure.",
+      "failure": "以改良區內樁點當固定基準會低估外部設施變形；平滑平均收縮也可能掩蓋在穿越封邊處集中的開裂，讓管線接頭提早失效。~Using a moving control inside the treatment zone understates external deformation. Smooth average contraction may also hide cracking concentrated at a perimeter crossing and cause premature pipe-joint failure.",
+      "misconception": "只要周界水平收縮符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for perimeter horizontal contraction removes the need to check boundaries and independent evidence.",
+      "practice": "交接周界水平收縮時保存原始紀錄、單位與基準。用穩定區外的測量控制點監測周界及鄰近設施，將軸向位移與接頭容許值比較。檢查基準點是否隨改良區一起移動，避免相對讀值掩蓋整體位移。~When handing over perimeter horizontal contraction, retain original records, units and reference conditions. Monitor the perimeter and nearby facilities from stable external controls, comparing axial movement with joint limits. Check that reference points do not move with the treatment zone and conceal overall displacement."
+    },
+    {
+      "anchor": "卸載回彈預估~Unloading rebound estimate",
+      "title": "卸載回彈預估~Unloading rebound estimate",
+      "mechanism": "移除真空或超載會降低有效應力並產生回彈，不能將所有累積沉陷都當作永久改善量。線彈性重壓模數只描述局部應力範圍，超出範圍或含次壓密需另算。假設卸載幅值Δσ′=30kPa、層厚H=8m、重壓模數M=12000kPa，回彈S=Δσ′H/M=0.020m。若把初次壓縮模數拿來估回彈，結果可能偏差很大；過早結束監測又會漏掉回彈後再壓縮，使完工高程與長期服務性判定失去依據。~Removing vacuum or surcharge reduces effective stress and causes rebound, so accumulated settlement is not all permanent improvement. A linear reloading modulus represents a limited stress range; other paths or secondary compression need separate treatment. For unloading magnitude Δσ′=30kPa, layer H=8m and reloading modulus M=12000kPa, rebound S=Δσ′H/M=0.020m. Using virgin compression stiffness for rebound can give substantial error. Ending monitoring early misses subsequent recompression and undermines the basis for finished elevation and long-term serviceability decisions.",
+      "model": "教學假設，非現場設定值：假設卸載幅值Δσ′=30kPa、層厚H=8m、重壓模數M=12000kPa，回彈S=Δσ′H/M=0.020m。~Teaching assumptions, not field settings: For unloading magnitude Δσ′=30kPa, layer H=8m and reloading modulus M=12000kPa, rebound S=Δσ′H/M=0.020m.",
+      "verify": "以卸載回載試驗選定相應模數，對照分層回彈與孔壓恢復。交接文件列出永久載重、剩餘沉陷及監測延續期間，卸載時點由設計者而非單次表面讀值決定。同時排除以下干擾原因：若把初次壓縮模數拿來估回彈，結果可能偏差很大；過早結束監測又會漏掉回彈後再壓縮，使完工高程與長期服務性判定失去依據。~Select modulus from relevant unload-reload tests and compare layer rebound with pressure recovery. Handover states permanent loading, residual settlement and continued monitoring; the designer determines unloading, not one surface reading. Also rule out the following competing explanation: Using virgin compression stiffness for rebound can give substantial error. Ending monitoring early misses subsequent recompression and undermines the basis for finished elevation and long-term serviceability decisions.",
+      "failure": "若把初次壓縮模數拿來估回彈，結果可能偏差很大；過早結束監測又會漏掉回彈後再壓縮，使完工高程與長期服務性判定失去依據。~Using virgin compression stiffness for rebound can give substantial error. Ending monitoring early misses subsequent recompression and undermines the basis for finished elevation and long-term serviceability decisions.",
+      "misconception": "只要卸載回彈預估符合名義數值，就能略過邊界條件與獨立驗證。~A nominal result for unloading rebound estimate removes the need to check boundaries and independent evidence.",
+      "practice": "交接卸載回彈預估時保存原始紀錄、單位與基準。以卸載回載試驗選定相應模數，對照分層回彈與孔壓恢復。交接文件列出永久載重、剩餘沉陷及監測延續期間，卸載時點由設計者而非單次表面讀值決定。~When handing over unloading rebound estimate, retain original records, units and reference conditions. Select modulus from relevant unload-reload tests and compare layer rebound with pressure recovery. Handover states permanent loading, residual settlement and continued monitoring; the designer determines unloading, not one surface reading."
+    }
+  ],
+  "id": "b191",
+  "title": "真空預壓軟土改良~Vacuum consolidation of soft soil",
+  "discipline": "ug-ground",
+  "family": "ground",
+  "summary": "本課聚焦連結負孔壓傳遞、排水能力與卸載回彈判斷真空壓密。十個單元依序辨識作用機制、量化假設、驗證程序與故障徵兆，讓學徒追蹤從原始資料到工程判斷的每一環。每個算例都帶單位與限制，不把局部成功或單一比值當成完整系統合格。交接須保留基準、異常與權責工程師核准的條件。~This course focuses on relate suction transfer, drainage capacity and unloading rebound to vacuum consolidation. Ten units connect mechanisms, numerical assumptions, verification procedures and failure symptoms so apprentices can trace each inference from evidence to judgment. Every example includes units and limitations; one successful observation or ratio does not establish system acceptance. Handover retains datums, anomalies and conditions approved by the responsible engineer.",
+  "example": "以下為原創教學算例，所有輸入均為假設，不是地標實測。教學假設，非現場設定值：教學假設總應力固定、孔壓變化Δu=−60kPa，Δσ′=−Δu=60kPa；此式不代表任何深度都收到相同負壓。假設總應力固定，孔壓降幅由60增為66kPa，增加10%，有效應力增量也由60增為66kPa；這不能推論沉陷或強度同增10%，因壓縮性及應力路徑可能非線性。先列出符號、單位及固定條件，再以獨立計算器核算。敏感度只描述這個模型中的輸入改變；若邊界或物理機制改變，應重建模型而非線性外推。最後把計算值、量測不確定性及需進一步驗證的項目分列，由責任工程師決定能否支持下一階段。~The following original example uses assumptions rather than landmark measurements. Teaching assumptions, not field settings: At fixed total stress and pore-pressure change Δu=−60kPa, Δσ′=−Δu=60kPa. The relation does not imply equal suction at every depth. At fixed total stress, increasing assumed pore-pressure reduction from60 to66kPa by10% raises effective-stress gain from60 to66kPa. Settlement or strength does not necessarily rise10%, because compressibility and stress paths may be nonlinear. First tabulate symbols, units and fixed conditions, then check the arithmetic independently. Sensitivity describes an input change inside this model only. Changed boundaries or physical mechanisms require a new model rather than linear extrapolation. Finally distinguish the calculated result, measurement uncertainty and evidence still needed; the responsible engineer decides whether the conclusion supports a next stage.",
+  "history": "本課以公開工程研究與機構文件建立連結負孔壓傳遞、排水能力與卸載回彈判斷真空壓密的背景。布里斯本港工程採用真空預壓系統（2009）。原研究作者出版港區排水與真空比較（2013）。美國聯邦公路管理局列出地盤改良參考手冊（2017）。兩個地標用來比較環境、量測與維護證據，並非宣稱本課每一教學構件都實際用於兩處。來源若只可讀摘要，適用範圍已另行註明；現場設計須重新確認規範版本與責任。本課只重建公開原理。~This course uses public research and institutional documents to establish context for relate suction transfer, drainage capacity and unloading rebound to vacuum consolidation. The Port of Brisbane case uses vacuum consolidation (2009). Researchers publish a port drainage and vacuum comparison (2013). FHWA lists its ground modification reference manual (2017). The two landmarks compare environments, measurements and maintenance evidence; they do not imply that every teaching component was installed at both sites. Abstract-only access is declared in source scopes. Field design requires current applicability and responsible review. This course reconstructs public principles only.",
+  "facts": [
+    "教學假設，非現場設定值：教學假設總應力固定、孔壓變化Δu=−60kPa，Δσ′=−Δu=60kPa；此式不代表任何深度都收到相同負壓。~Teaching assumptions, not field settings: At fixed total stress and pore-pressure change Δu=−60kPa, Δσ′=−Δu=60kPa. The relation does not imply equal suction at every depth.",
+    "教學假設，非現場設定值：假設泵端負壓幅值75kPa、深部45kPa，幅值傳遞比45/75=0.60；比較須同時刻且同一基準。~Teaching assumptions, not field settings: With pump suction magnitude75kPa and deep magnitude45kPa, the transfer ratio is45/75=0.60. Compare simultaneous observations on the same reference basis.",
+    "教學假設，非現場設定值：假設相同參考壓溫下抽氣0.020m³/s、漏入0.002m³/s，淨排氣0.018m³/s；兩流量必須使用相同狀態。~Teaching assumptions, not field settings: At the same reference pressure and temperature, extraction0.020m³/s minus leakage0.002m³/s gives net0.018m³/s. Both flows require a common state.",
+    "教學假設，非現場設定值：取k=1×10⁻⁵m/s、連通面積A=20m²、梯度i=3，Q=kiA=0.0006m³/s；假設飽和層流與均質通道。~Teaching assumptions, not field settings: With k=1×10⁻⁵m/s, connected A=20m² and i=3, Q=kiA=0.0006m³/s, assuming saturated laminar flow through a uniform path.",
+    "教學假設，非現場設定值：假設排水流量Q=0.0002m³/s、整段水力導通係數C=0.0001m²/s，Δh=Q/C=2m；C不是土壤滲透係數。~Teaching assumptions, not field settings: For Q=0.0002m³/s and whole-drain hydraulic conductance C=0.0001m²/s, Δh=Q/C=2m. Conductance is not soil hydraulic conductivity.",
+    "教學假設，非現場設定值：假設該土點Δσ=40kPa、實測淨Δu=−50kPa，Δσ′=Δσ−Δu=90kPa；此孔壓已包含當時各效應。~Teaching assumptions, not field settings: At a soil point with Δσ=40kPa and measured net Δu=−50kPa, Δσ′=90kPa. The pressure change already includes the combined effects at that time."
+  ],
+  "timeline": [
+    {
+      "year": "2009",
+      "event": "布里斯本港工程採用真空預壓系統~The Port of Brisbane case uses vacuum consolidation"
+    },
+    {
+      "year": "2013",
+      "event": "原研究作者出版港區排水與真空比較~Researchers publish a port drainage and vacuum comparison"
+    },
+    {
+      "year": "2017",
+      "event": "美國聯邦公路管理局列出地盤改良參考手冊~FHWA lists its ground modification reference manual"
+    }
+  ],
+  "codes": [
+    "美國聯邦公路管理局GEC13地盤改良方法第一冊，2017~FHWA GEC13 Ground Modification Methods Volume I, 2017",
+    "香港岩土指南二：場地勘察，2017更新~Hong Kong Geoguide 2: Site Investigation, 2017 update"
+  ],
+  "landmarks": [
+    "布里斯本港：真空壓密案例~Port of Brisbane: vacuum consolidation case",
+    "樟宜機場：排水板組合比較~Changi Airport: combined-drain comparison"
+  ],
+  "place": {
+    "name": "布里斯本港公共背景區~Port of Brisbane public context",
+    "country": "澳洲~Australia",
+    "lat": -27.379,
+    "lng": 153.171,
+    "query": "Port of Brisbane Fisherman Islands"
+  },
+  "sources": [
+    {
+      "key": "brisbane-research",
+      "title": "布里斯本港排水板與真空研究",
+      "titleEn": "Ground improvement at Port of Brisbane using vertical drains and vacuum",
+      "publisher": "University of Wollongong / Indraratna et al.",
+      "url": "https://ro.uow.edu.au/articles/chapter/Ground_improvement_at_the_Port_of_Brisbane_Australia_using_vertical_drains_and_vacuum_assisted_preloading/27706284",
+      "sourceType": "primary",
+      "scope": "二〇一三年原作者研究之官方典藏搜尋摘要，含沉陷、孔壓與側移；直接開啟被拒，未宣稱讀完整付費文。",
+      "scopeEn": "Official repository search abstract of the 2013 authors study includes settlement, pressure and lateral movement; direct access was denied and full paid text is not claimed."
+    },
+    {
+      "key": "brisbane",
+      "title": "布里斯本港真空預壓案例",
+      "titleEn": "Port of Brisbane vacuum consolidation case",
+      "publisher": "Menard",
+      "url": "https://www.menard-group.com/soil-expert-portfolio/fisherman-island-port-of-brisbane-queensland-australia/",
+      "sourceType": "primary",
+      "scope": "施工者公開二〇〇九年案例，支援夾層隔斷與真空系統背景；不採行銷紀錄當本課性能保證。",
+      "scopeEn": "Contractor account of the 2009 case supports cutoff and system context; marketing claims are not course performance guarantees."
+    },
+    {
+      "key": "changi",
+      "title": "樟宜機場地盤改良案例",
+      "titleEn": "Changi Airport ground improvement",
+      "publisher": "Menard",
+      "url": "https://www.menard-group.com/soil-expert-portfolio/changi-airport-singapore/",
+      "sourceType": "primary",
+      "scope": "施工者公開第二跑道動力夯實與排水板組合；不將排水板深度當夯實改善深度。",
+      "scopeEn": "Contractor account of combined dynamic compaction and drains for the second runway; drain depth is not treated as compaction depth."
+    },
+    {
+      "key": "ground-guide",
+      "title": "地盤改良工程官方導引",
+      "titleEn": "Ground Improvement Guidance",
+      "publisher": "Federal Highway Administration",
+      "url": "https://www.fhwa.dot.gov/engineering/geotech/improvement/",
+      "sourceType": "primary",
+      "scope": "官方方法範圍及二〇一七年GEC13書目；包含排水、深層夯實與粒料柱，不替代個案試驗。",
+      "scopeEn": "Official method scope and 2017 GEC13 records cover drains, deep compaction and aggregate columns, without replacing project trials."
+    },
+    {
+      "key": "geo2",
+      "title": "岩土指南二：場地勘察",
+      "titleEn": "Geoguide 2: Guide to Site Investigation",
+      "publisher": "Hong Kong CEDD",
+      "url": "https://www.cedd.gov.hk/eng/publications/geo/geoguides/geo-g2/",
+      "sourceType": "primary",
+      "scope": "二〇一七年更新出版頁；支援場地調查與證據紀錄的背景。",
+      "scopeEn": "2017 updated publication page; background for site investigation and evidence records."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "University of Wollongong / Indraratna et al.",
+      "nameEn": "University of Wollongong / Indraratna et al.",
+      "business": "提供本課相關的公開工程方法與驗證研究。",
+      "businessEn": "Provides public engineering methods and verification research relevant to this course.",
+      "url": "https://ro.uow.edu.au/articles/chapter/Ground_improvement_at_the_Port_of_Brisbane_Australia_using_vertical_drains_and_vacuum_assisted_preloading/27706284",
+      "investorUrl": "",
+      "security": null,
+      "role": "二〇一三年原作者研究之官方典藏搜尋摘要，含沉陷、孔壓與側移；直接開啟被拒，未宣稱讀完整付費文。",
+      "roleEn": "Official repository search abstract of the 2013 authors study includes settlement, pressure and lateral movement; direct access was denied and full paid text is not claimed."
+    },
+    {
+      "name": "Menard",
+      "nameEn": "Menard",
+      "business": "提供本課相關的公開工程方法與驗證研究。",
+      "businessEn": "Provides public engineering methods and verification research relevant to this course.",
+      "url": "https://www.menard-group.com/soil-expert-portfolio/fisherman-island-port-of-brisbane-queensland-australia/",
+      "investorUrl": "",
+      "security": null,
+      "role": "施工者公開二〇〇九年案例，支援夾層隔斷與真空系統背景；不採行銷紀錄當本課性能保證。",
+      "roleEn": "Contractor account of the 2009 case supports cutoff and system context; marketing claims are not course performance guarantees."
+    }
+  ],
+  "related": [
+    "b190",
+    "b196"
+  ],
+  "architectureNodes": [
+    [
+      "有效應力增量",
+      "Effective stress increment"
+    ],
+    [
+      "漏氣與抽氣平衡",
+      "Air leakage balance"
+    ],
+    [
+      "排水板水頭損失",
+      "Drain head loss"
+    ],
+    [
+      "沉陷壓密比例",
+      "Settlement based consolidation ratio"
+    ],
+    [
+      "卸載回彈預估",
+      "Unloading rebound estimate"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      1
+    ]
+  ]
+}

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c133-deea8ff657ed2a0e.json"]={sha256:"deea8ff657ed2a0e3b7733f9b91a211a580e12d1390e471f4d7b52f32b1c7f46",value:{"title":"Yara Birkeland 電動貨船","titleEn":"Yara Birkeland electric cargo ship","category":"marine","kind":"project","summary":"課程規劃主題：電池推進與岸端物流。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: battery propulsion and shoreside logistics. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c133"}};

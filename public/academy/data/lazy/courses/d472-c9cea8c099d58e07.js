@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d472-c9cea8c099d58e07.json"]={sha256:"c9cea8c099d58e077c7846d6b20d68118e77346362410503eeb2f608f3451f77",value:{"id":"d472","title":"HAWC高海拔水切連科夫天文台","titleEn":"High Altitude Water Cherenkov Observatory HAWC","category":"megascience","kind":"project","summary":"「HAWC高海拔水切連科夫天文台」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Altitude Water Cherenkov Observatory HAWC: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

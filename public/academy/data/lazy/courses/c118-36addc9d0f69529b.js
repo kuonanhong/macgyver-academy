@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c118-36addc9d0f69529b.json"]={sha256:"36addc9d0f69529beab9a7da45ddd4934729c57705d6b98c882d10c1a27a21df",value:{"title":"RRS Sir David Attenborough 極地船","titleEn":"RRS Sir David Attenborough polar vessel","category":"marine","kind":"project","summary":"課程規劃主題：極地物流與科學設備。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: polar logistics and science equipment. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c118"}};

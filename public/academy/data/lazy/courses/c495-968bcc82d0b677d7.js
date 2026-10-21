@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c495-968bcc82d0b677d7.json"]={sha256:"968bcc82d0b677d745ef9242690d7623554d99feadec5fbab8c27828024e1787",value:{"title":"工業設備預知保養","titleEn":"Industrial predictive maintenance","category":"manufacturing","kind":"craft","summary":"課程規劃主題：振動、溫度與劣化模型。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: vibration, temperature and degradation models. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c495"}};

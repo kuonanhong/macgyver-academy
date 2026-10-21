@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d086-47c96d66aaf17c15.json"]={sha256:"47c96d66aaf17c15924550967ed205c43ddf735c9160d6dbd3ad5a0ad4b452ba",value:{"id":"d086","title":"鋰離子電池模組熱管理","titleEn":"Lithium-Ion Battery Module Thermal Management","category":"energy","kind":"craft","summary":"「鋰離子電池模組熱管理」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Lithium-Ion Battery Module Thermal Management: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

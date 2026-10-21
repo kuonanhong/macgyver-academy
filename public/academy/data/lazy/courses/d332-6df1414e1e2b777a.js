@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d332-6df1414e1e2b777a.json"]={sha256:"6df1414e1e2b777a7d4bbcd8c976fb9a18c12dcd8b81c3e8ebb345836a262607",value:{"id":"d332","title":"穀倉通風與結露預測","titleEn":"Grain Silo Ventilation and Condensation Prediction","category":"process","kind":"craft","summary":"「穀倉通風與結露預測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Grain Silo Ventilation and Condensation Prediction: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

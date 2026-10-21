@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d402-5dc52537d55872ed.json"]={sha256:"5dc52537d55872ed7ed95b58114b2ad2a6bc8dc1d46cd890b118ff2c3d53df25",value:{"id":"d402","title":"高亮度大型強子對撞機","titleEn":"High Luminosity Large Hadron Collider","category":"megascience","kind":"project","summary":"「高亮度大型強子對撞機」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Luminosity Large Hadron Collider: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

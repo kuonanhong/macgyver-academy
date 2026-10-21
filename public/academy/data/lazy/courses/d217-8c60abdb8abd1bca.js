@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d217-8c60abdb8abd1bca.json"]={sha256:"8c60abdb8abd1bca66fde4660a39a0c0069087d4f895aff371fd067e03b8b039",value:{"id":"d217","title":"電腦斷層旋轉機架","titleEn":"Computed Tomography Rotating Gantries","category":"biomedical","kind":"craft","summary":"「電腦斷層旋轉機架」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Computed Tomography Rotating Gantries: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

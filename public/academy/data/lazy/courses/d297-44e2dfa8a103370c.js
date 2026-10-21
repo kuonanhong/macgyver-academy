@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d297-44e2dfa8a103370c.json"]={sha256:"44e2dfa8a103370c32f9ae5141b26f515c58682ba6192ce09169d74fa5913ca6",value:{"id":"d297","title":"手術機器人力覺感測","titleEn":"Surgical Robot Force Sensing","category":"biomedical","kind":"craft","summary":"「手術機器人力覺感測」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Surgical Robot Force Sensing: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

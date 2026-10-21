@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d231-b49242405fb2a864.json"]={sha256:"b49242405fb2a86499eacbeecaa17b6380b5a2045c3283a5427551ddc096efe2",value:{"id":"d231","title":"共軛焦內視鏡成像模組","titleEn":"Confocal Endomicroscopy Imaging Modules","category":"biomedical","kind":"craft","summary":"「共軛焦內視鏡成像模組」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Confocal Endomicroscopy Imaging Modules: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

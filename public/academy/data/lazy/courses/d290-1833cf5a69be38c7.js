@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d290-1833cf5a69be38c7.json"]={sha256:"1833cf5a69be38c7fb36407cc1e132411bbceea8affbbfff17c4691832bf0e36",value:{"id":"d290","title":"自動化樣本追溯與條碼","titleEn":"Automated Sample Traceability and Barcoding","category":"biomedical","kind":"craft","summary":"「自動化樣本追溯與條碼」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Automated Sample Traceability and Barcoding: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

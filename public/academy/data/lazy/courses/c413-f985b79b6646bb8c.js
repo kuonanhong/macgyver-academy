@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c413-f985b79b6646bb8c.json"]={sha256:"f985b79b6646bb8c65a73e3899e4587050f0abaee9594bdbd60b72df609891ab",value:{"title":"Boston Dynamics Stretch 搬箱系統","titleEn":"Boston Dynamics Stretch box-handling system","category":"manufacturing","kind":"project","summary":"課程規劃主題：貨箱辨識與倉儲流程。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: box perception and warehouse workflows. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c413"}};

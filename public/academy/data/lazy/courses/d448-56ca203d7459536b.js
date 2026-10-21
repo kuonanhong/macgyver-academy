@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d448-56ca203d7459536b.json"]={sha256:"56ca203d7459536bc4fef9a85088d863930ed23451220498ea907aaf191d6b7b",value:{"id":"d448","title":"J-PARC研究加速器園區","titleEn":"Japan Proton Accelerator Research Complex J-PARC","category":"megascience","kind":"project","summary":"「J-PARC研究加速器園區」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Japan Proton Accelerator Research Complex J-PARC: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

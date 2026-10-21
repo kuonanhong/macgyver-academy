@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d407-86e1b290ac73c961.json"]={sha256:"86e1b290ac73c961f29e2cbd3ae2ef8589562c2c730496c7bce1a1985432f599",value:{"id":"d407","title":"超級質子同步加速器SPS","titleEn":"Super Proton Synchrotron SPS","category":"megascience","kind":"project","summary":"「超級質子同步加速器SPS」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Super Proton Synchrotron SPS: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

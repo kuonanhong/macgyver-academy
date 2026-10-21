@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d479-a4941b77e57b6b5f.json"]={sha256:"a4941b77e57b6b5f97ea919415aa67f1cdfe715ad6905efc1bba746c40c06404",value:{"id":"d479","title":"羅瑟拉南極研究站","titleEn":"Rothera Antarctic Research Station","category":"megascience","kind":"project","summary":"「羅瑟拉南極研究站」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Rothera Antarctic Research Station: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

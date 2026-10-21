@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d351-0cc4cafa35b212e5.json"]={sha256:"0cc4cafa35b212e58c7854b3696c5d38832c127c40830c27c770bf84d4ef92ec",value:{"id":"d351","title":"連續烘焙隧道爐控制","titleEn":"Continuous Baking Tunnel Oven Control","category":"process","kind":"craft","summary":"「連續烘焙隧道爐控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Continuous Baking Tunnel Oven Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

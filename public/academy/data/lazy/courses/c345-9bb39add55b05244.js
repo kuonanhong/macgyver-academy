@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c345-9bb39add55b05244.json"]={sha256:"9bb39add55b05244bcee7971e66c9b90085704912e8a910e3e7f45b724736c2f",value:{"title":"Cassini-Huygens 土星探測","titleEn":"Cassini-Huygens Saturn mission","category":"space","kind":"project","summary":"課程規劃主題：軌道探測與大氣下降。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: orbital observation and atmospheric descent. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c345"}};

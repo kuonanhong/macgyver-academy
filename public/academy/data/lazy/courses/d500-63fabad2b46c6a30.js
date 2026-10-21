@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d500-63fabad2b46c6a30.json"]={sha256:"63fabad2b46c6a30995a3296cccbe8eae3cc08e11b9b0da15769dcc09a2704e7",value:{"id":"d500","title":"深海科學儀器耐壓封裝","titleEn":"Deep Ocean Scientific Instrument Pressure Packaging","category":"megascience","kind":"craft","summary":"「深海科學儀器耐壓封裝」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Deep Ocean Scientific Instrument Pressure Packaging: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

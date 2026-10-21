@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d143-166319bc749074f0.json"]={sha256:"166319bc749074f010636dda4baf34433d15491967dcfc24c95af3115a2e69e4",value:{"id":"d143","title":"複合材料自動鋪纖","titleEn":"Composite Automated Fiber Placement","category":"materials","kind":"craft","summary":"「複合材料自動鋪纖」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Composite Automated Fiber Placement: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

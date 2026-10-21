@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d090-5949dd5eec52b021.json"]={sha256:"5949dd5eec52b02151c15847ee0556a8a03de77b20e7d2924b0b1ae867311ffa",value:{"id":"d090","title":"鋅溴液流電池循環系統","titleEn":"Zinc-Bromine Flow Battery Circulation Systems","category":"energy","kind":"craft","summary":"「鋅溴液流電池循環系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Zinc-Bromine Flow Battery Circulation Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

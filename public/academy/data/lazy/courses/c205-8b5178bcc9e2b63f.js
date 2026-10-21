@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c205-8b5178bcc9e2b63f.json"]={sha256:"8b5178bcc9e2b63fc692ddce8144de1f56c8fa2b1104a78d736d360c37cec20c",value:{"title":"Mercedes-Benz 300 SL 管架車體","titleEn":"Mercedes-Benz 300 SL spaceframe car","category":"automotive","kind":"project","summary":"課程規劃主題：輕量結構與車門配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: lightweight structures and door configuration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c205"}};

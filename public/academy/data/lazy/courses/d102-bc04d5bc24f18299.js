@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d102-bc04d5bc24f18299.json"]={sha256:"bc04d5bc24f18299914fb7c5c55e755b395192fb8b2ce864811cf16791532bf4",value:{"id":"d102","title":"敦克爾克整合鋼廠","titleEn":"Dunkirk Integrated Steelworks","category":"materials","kind":"project","summary":"「敦克爾克整合鋼廠」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Dunkirk Integrated Steelworks: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

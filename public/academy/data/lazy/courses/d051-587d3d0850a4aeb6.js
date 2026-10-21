@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d051-587d3d0850a4aeb6.json"]={sha256:"587d3d0850a4aeb6e078785299d4f22a2bb61cd1e4f0ebb2555fc08f4bcfc1ba",value:{"id":"d051","title":"法蘭西斯水輪機水力設計","titleEn":"Francis Turbine Hydraulic Design","category":"energy","kind":"craft","summary":"「法蘭西斯水輪機水力設計」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Francis Turbine Hydraulic Design: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

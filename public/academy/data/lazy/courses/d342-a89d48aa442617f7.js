@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d342-a89d48aa442617f7.json"]={sha256:"a89d48aa442617f71146d687c5f6da936f2ae523e57c87e5fd28dd48ed0357d1",value:{"id":"d342","title":"乳品連續殺菌熱交換","titleEn":"Dairy Continuous Pasteurization Heat Exchange","category":"process","kind":"craft","summary":"「乳品連續殺菌熱交換」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Dairy Continuous Pasteurization Heat Exchange: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

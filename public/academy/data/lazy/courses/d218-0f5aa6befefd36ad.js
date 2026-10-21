@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d218-0f5aa6befefd36ad.json"]={sha256:"0f5aa6befefd36ad1ce03bff8f80857eb5ffd03f518f6acbdd8365e63481b09a",value:{"id":"d218","title":"光子計數電腦斷層偵測器","titleEn":"Photon Counting Computed Tomography Detectors","category":"biomedical","kind":"craft","summary":"「光子計數電腦斷層偵測器」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Photon Counting Computed Tomography Detectors: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

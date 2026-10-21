@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d223-065f72441ee50313.json"]={sha256:"065f72441ee50313cbfce5b56e6a0f41463ba1d1fb743fb4533279e4e62f35e2",value:{"id":"d223","title":"單光子斷層準直器設計","titleEn":"SPECT Collimator Design","category":"biomedical","kind":"craft","summary":"「單光子斷層準直器設計」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for SPECT Collimator Design: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

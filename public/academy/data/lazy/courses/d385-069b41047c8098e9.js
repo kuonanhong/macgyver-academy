@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d385-069b41047c8098e9.json"]={sha256:"069b41047c8098e921938d9d587cd633a7a6d5f5e2486129328110b951eeb1cf",value:{"id":"d385","title":"海水淡化取排水擴散系統","titleEn":"Desalination Intake and Outfall Diffusers","category":"process","kind":"craft","summary":"「海水淡化取排水擴散系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Desalination Intake and Outfall Diffusers: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

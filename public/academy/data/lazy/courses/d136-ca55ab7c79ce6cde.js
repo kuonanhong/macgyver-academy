@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d136-ca55ab7c79ce6cde.json"]={sha256:"ca55ab7c79ce6cdef054b22ec5c12beeaf86f506c763c7cede5076d0dd1a07ef",value:{"id":"d136","title":"金屬冷噴塗修復工程","titleEn":"Metal Cold Spray Repair Engineering","category":"materials","kind":"craft","summary":"「金屬冷噴塗修復工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Metal Cold Spray Repair Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

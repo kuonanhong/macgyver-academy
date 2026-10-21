@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d052-b82b26825c276a0b.json"]={sha256:"b82b26825c276a0b0966b69b171f6e05b7f36ddfd195624f20ad9a2fc16a2115",value:{"id":"d052","title":"卡普蘭水輪機葉片調節機構","titleEn":"Kaplan Turbine Blade Regulation Mechanism","category":"energy","kind":"craft","summary":"「卡普蘭水輪機葉片調節機構」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Kaplan Turbine Blade Regulation Mechanism: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

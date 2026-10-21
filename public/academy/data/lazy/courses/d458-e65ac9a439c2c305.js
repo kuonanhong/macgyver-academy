@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d458-e65ac9a439c2c305.json"]={sha256:"e65ac9a439c2c3051d90d45d197e77ea06c1c1920bd86fbaafd198b691986d88",value:{"id":"d458","title":"雙子座天文台","titleEn":"Gemini Observatory","category":"megascience","kind":"project","summary":"「雙子座天文台」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gemini Observatory: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

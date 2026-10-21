@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d375-0d2d69808b2844f4.json"]={sha256:"0d2d69808b2844f4bb953af089348d9e25069a9599fe16d3b7fc523714e9c907",value:{"id":"d375","title":"微藻培養光生物反應器","titleEn":"Microalgae Photobioreactors","category":"process","kind":"craft","summary":"「微藻培養光生物反應器」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Microalgae Photobioreactors: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

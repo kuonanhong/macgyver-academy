@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d058-e51ba8e21a34f2cc.json"]={sha256:"e51ba8e21a34f2cc3be3ef36d4e34e3aa217422c5a6a32cfce0a8b24fc435a01",value:{"id":"d058","title":"浮式太陽能電站繫泊設計","titleEn":"Floating Solar Plant Mooring Design","category":"energy","kind":"craft","summary":"「浮式太陽能電站繫泊設計」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Floating Solar Plant Mooring Design: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

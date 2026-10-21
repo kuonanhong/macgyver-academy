@@ -97,17 +97,22 @@ export function buildMentorSegments({ course = {}, step = {}, spec = {}, frames 
 }
 
 /** Optional authenticated translation of public teaching text. Nothing is rehosted. */
-export async function translateMentorSegments({ segments, language, signal, fetchImpl = globalThis.fetch } = {}) {
-  if (typeof fetchImpl !== 'function') throw new Error('Translation unavailable');
+export async function translateMentorSegments({ segments, language, signal, fetchImpl = globalThis.fetch, translateBatch = null } = {}) {
+  if (typeof fetchImpl !== 'function' && typeof translateBatch !== 'function') throw new Error('Translation unavailable');
   const pieces = (segments || []).flatMap(segment => splitMentorText(segment.text, 1800).map(text => ({id:segment.id,text})));
   const translated = new Map();
   for (let offset = 0; offset < pieces.length;) {
     if (signal?.aborted) throw new Error('Translation cancelled');
     const batch = []; let length = 0;
     while (offset < pieces.length && batch.length < 12 && length + pieces[offset].text.length <= 4000) { const part = pieces[offset++]; batch.push(part); length += part.text.length; }
-    const response = await fetchImpl('/api/translate', {method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({language,texts:batch.map(item=>item.text)}),signal});
-    if (!response.ok) throw new Error('Narration translation unavailable');
-    const result = await response.json();
+    let result;
+    if(typeof translateBatch==='function') result=await translateBatch({language,texts:batch.map(item=>item.text),signal});
+    else {
+      const response = await fetchImpl('/api/translate', {method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({language,texts:batch.map(item=>item.text)}),signal});
+      if (!response.ok) throw new Error('Narration translation unavailable');
+      result = await response.json();
+    }
+    if(signal?.aborted)throw new Error('Translation cancelled');
     if (!Array.isArray(result.translations) || result.translations.length !== batch.length || result.translations.some(text => typeof text !== 'string' || !text.trim() || text.length > 12000)) throw new Error('Incomplete narration translation');
     result.translations.forEach((text,index) => translated.set(batch[index].id, [...(translated.get(batch[index].id) || []), text.trim()]));
   }

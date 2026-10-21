@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d158-e32d3526d9170d17.json"]={sha256:"e32d3526d9170d178642e004e4950f88f47f13a8eb3490b91ce9438a7149427c",value:{"id":"d158","title":"壓電陶瓷元件製造品質","titleEn":"Piezoelectric Ceramic Manufacturing Quality","category":"materials","kind":"craft","summary":"「壓電陶瓷元件製造品質」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Piezoelectric Ceramic Manufacturing Quality: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

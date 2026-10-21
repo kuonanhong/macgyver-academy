@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d417-abd2674397b46678.json"]={sha256:"abd2674397b46678f7e63385d3761312605368c23299be17a642daabac0dfdd8",value:{"id":"d417","title":"超級神岡水契忍可夫偵測器","titleEn":"Super-Kamiokande Water Cherenkov Detector","category":"megascience","kind":"project","summary":"「超級神岡水契忍可夫偵測器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Super-Kamiokande Water Cherenkov Detector: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

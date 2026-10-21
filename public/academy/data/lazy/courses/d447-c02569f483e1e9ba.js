@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d447-c02569f483e1e9ba.json"]={sha256:"c02569f483e1e9ba9136d23061e0c5236226e401fb60f62be2ee5994e9b4031a",value:{"id":"d447","title":"ISIS中子與緲子光源","titleEn":"ISIS Neutron and Muon Source","category":"megascience","kind":"project","summary":"「ISIS中子與緲子光源」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for ISIS Neutron and Muon Source: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

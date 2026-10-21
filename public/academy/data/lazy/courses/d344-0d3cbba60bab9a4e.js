@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d344-0d3cbba60bab9a4e.json"]={sha256:"0d3cbba60bab9a4edeffaf76569b343934e6a3b5654c4563ea38a379a03d8925",value:{"id":"d344","title":"起司生產線水分監控","titleEn":"Cheese Production Moisture Monitoring","category":"process","kind":"craft","summary":"「起司生產線水分監控」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cheese Production Moisture Monitoring: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

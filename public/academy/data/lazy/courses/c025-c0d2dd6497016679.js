@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c025-c0d2dd6497016679.json"]={sha256:"c0d2dd64970166798cc31d2609d8b20828ca15abc7ea10d37bc98c2bc4d27faa",value:{"title":"Airbus BelugaXL 運輸機","titleEn":"Airbus BelugaXL transport aircraft","category":"aerospace","kind":"project","summary":"課程規劃主題：超大型貨艙與物流介面。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: oversized cargo holds and logistics interfaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c025"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d110-627fb3ace9270f0f.json"]={sha256:"627fb3ace9270f0f41afbc2e4445fbf2c2048bb1802b235346ff36fe602c6132",value:{"id":"d110","title":"卡達卡塔倫鋁冶煉系統","titleEn":"Qatalum Aluminium Smelting System","category":"materials","kind":"project","summary":"「卡達卡塔倫鋁冶煉系統」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Qatalum Aluminium Smelting System: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

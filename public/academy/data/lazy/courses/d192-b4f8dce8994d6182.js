@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d192-b4f8dce8994d6182.json"]={sha256:"b4f8dce8994d618247a41fdfc97bc2d0f88660c12dfdcec71dc25d6ff036858c",value:{"id":"d192","title":"軟磁粉芯與渦電流損耗","titleEn":"Soft Magnetic Powder Cores and Eddy Current Losses","category":"materials","kind":"craft","summary":"「軟磁粉芯與渦電流損耗」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Soft Magnetic Powder Cores and Eddy Current Losses: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

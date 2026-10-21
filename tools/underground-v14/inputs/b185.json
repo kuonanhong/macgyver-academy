@@ -1,0 +1,281 @@
+{
+  "id": "b185",
+  "title": "微型樁托底補強~Micropile underpinning",
+  "discipline": "ug-ground",
+  "family": "ground",
+  "focus": "既有基礎荷載移交與微型樁複合承載~Existing-foundation load transfer and composite micropile resistance",
+  "summary": "微型樁托底的關鍵不只是把樁打到深處，而是建立既有柱、承台、連接件與地層之間可驗證的新力流。本課逐步檢查鋼材與黏結承載、預載移交、樁群剛度、無側限段挫屈與低淨高接頭，最後用長期沉陷判讀新舊基礎是否確實共同工作。~Micropile underpinning requires a verified new load path from existing columns through caps and connectors into ground. The course examines steel and bond resistance, preloaded transfer, group stiffness, buckling in unsupported zones and low-headroom joints, then interprets long-term settlement to establish interaction between old and new foundations.",
+  "units": [
+    {
+      "anchor": "既有荷載清冊~Existing-load inventory",
+      "title": "既有荷載清冊的機理與驗證~Existing-load inventory mechanism and verification",
+      "mechanism": "托底設計須先辨識目前柱力與未來增載，不能把原設計圖的基礎反力直接當成現況。使用變更、加建及設備集中載重會改變分配，施工期間的臨時支承也需單獨列出，才能決定新樁要接管多少力與何時接管。直接相加只描述本例同時服務荷載，沒有套用設計分項係數；不同作用組合及既有基礎可分擔比例需另行建立。~Underpinning starts with current column forces and future additions rather than assuming original foundation reactions still apply. Changes of use, extensions and concentrated equipment alter load distribution, and temporary support requires a separate case. These distinctions determine how much load new piles must take and when transfer occurs. Direct addition describes simultaneous service loads in this example only; design factors, combinations and the share retained by existing foundations require separate definition.",
+      "model": "原創教學假設：假設現有柱力800 kN、增建250 kN、設備150 kN，服務荷載合計P=800+250+150=1200 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For existing column force 800 kN, extension 250 kN and equipment 150 kN, combined service load P=1200 kN. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "核對現況尺寸、使用荷載及裂縫沉陷紀錄，將不同時期荷載分列，與上部結構模型交叉核查。荷載清冊應由上部結構與基礎設計者共同簽認；施工階段和最終使用階段不可混用未標示的力值。~Check existing dimensions, imposed loads and cracking-settlement records, separating load stages and cross-checking them against the superstructure model. Superstructure and foundation designers jointly sign the load inventory; construction and final-use forces must not be mixed without explicit stage labels.",
+      "failure": "漏列新增設備或移除原支承，會使微型樁承擔超出假設的荷載，造成移交後持續沉陷。直接相加只描述本例同時服務荷載，沒有套用設計分項係數；不同作用組合及既有基礎可分擔比例需另行建立。~Omitted equipment loads or removed original support can impose more load than assumed, causing continued settlement after transfer. Direct addition describes simultaneous service loads in this example only; design factors, combinations and the share retained by existing foundations require separate definition.",
+      "misconception": "新樁容量只要大於原設計柱力，就不用查目前用途。~New-pile capacity above the original column force makes current use irrelevant.",
+      "practice": "荷載清冊應由上部結構與基礎設計者共同簽認；施工階段和最終使用階段不可混用未標示的力值。直接相加只描述本例同時服務荷載，沒有套用設計分項係數；不同作用組合及既有基礎可分擔比例需另行建立。~Superstructure and foundation designers jointly sign the load inventory; construction and final-use forces must not be mixed without explicit stage labels. Direct addition describes simultaneous service loads in this example only; design factors, combinations and the share retained by existing foundations require separate definition."
+    },
+    {
+      "anchor": "鋼材軸應力~Steel axial stress",
+      "title": "鋼材軸應力的機理與驗證~Steel axial stress mechanism and verification",
+      "mechanism": "微型樁的鋼套管或鋼筋與水泥漿共同傳遞軸力，鋼材分擔比例取決於剛度及接頭連續性。先把全部力分配給鋼材可作特定保守假設，但不代表漿體永遠不參與；腐蝕餘量、套管接頭與局部挫屈也不能靠平均應力取代。這是指定分力下的平均應力，不是微型樁整體承載力；鋼材、漿體、連接及地層黏結需依相容荷載路徑分別檢查。~Steel casing or bars share axial force with grout according to stiffness and continuity. Assigning all force to steel may be a specified conservative assumption, but does not imply grout never participates. Corrosion allowance, casing joints and local buckling also require checks beyond an average axial stress. This is mean stress under an assigned force, not total micropile capacity; steel, grout, connections and ground bond require separate checks on a compatible load path.",
+      "model": "原創教學假設：假設鋼材獨自承受P=600 kN、有效鋼面積As=0.004 m²，σs=P/As=150 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: If steel alone carries P=600 kN over effective area As=0.004 m², σs=P/As=150 MPa. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "核對鋼材證書、實際壁厚與接頭型式，將載重試驗應變比較鋼漿共同作用假設。竣工資料需保留鋼材批號、套管長度及接頭位置；結構設計者確認有效截面後才能接受材料替代。~Verify steel certificates, actual thickness and connection type, comparing load-test strains with the assumed steel-grout composite action. Retain steel batches, casing lengths and joint positions; the structural designer confirms effective sections before accepting material substitutions.",
+      "failure": "把名目壁厚當有效面積可能忽略腐蝕或螺紋減弱，接頭也可能先於完整鋼管失效。這是指定分力下的平均應力，不是微型樁整體承載力；鋼材、漿體、連接及地層黏結需依相容荷載路徑分別檢查。~Using nominal thickness can ignore corrosion or thread reductions, and connections may fail before an intact casing section. This is mean stress under an assigned force, not total micropile capacity; steel, grout, connections and ground bond require separate checks on a compatible load path.",
+      "misconception": "微型樁平均鋼應力不高，就不用檢查接頭與局部挫屈。~Low mean steel stress removes the need for connection and local-buckling checks.",
+      "practice": "竣工資料需保留鋼材批號、套管長度及接頭位置；結構設計者確認有效截面後才能接受材料替代。這是指定分力下的平均應力，不是微型樁整體承載力；鋼材、漿體、連接及地層黏結需依相容荷載路徑分別檢查。~Retain steel batches, casing lengths and joint positions; the structural designer confirms effective sections before accepting material substitutions. This is mean stress under an assigned force, not total micropile capacity; steel, grout, connections and ground bond require separate checks on a compatible load path."
+    },
+    {
+      "anchor": "地層黏結承載~Ground-bond resistance",
+      "title": "地層黏結承載的機理與驗證~Ground-bond resistance mechanism and verification",
+      "mechanism": "樁端進入良好地層後，軸力沿漿土界面的剪力逐步傳出，荷載傳遞不一定均勻。注漿方式與地層條件影響有效直徑及黏結能力，不能把灌入量直接換成可靠樁徑；承載驗證需要代表性試驗及鑽孔紀錄共同支持。本式假設均勻平均剪力且有效直徑可信，未含群體作用與長期效應；試驗允收還需同時檢查位移和潛變。~Axial force transfers progressively through grout-ground shear in the competent stratum and is not necessarily uniform along the bond. Grouting and ground conditions affect effective diameter and bond resistance, but injected volume does not directly establish a reliable diameter. Representative testing and bore records jointly support resistance assessment. The expression assumes uniform mean shear and credible diameter, excluding group and long-term effects; test acceptance must also address displacement and creep.",
+      "model": "原創教學假設：假設D=0.2 m、黏結長L=8 m、平均可用剪應力τ=150 kPa，R=πDLτ=754 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For D=0.2 m, bond length L=8 m and assumed usable mean shear τ=150 kPa, R=πDLτ=754 kN. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "將鑽孔地層、注漿回流及試驗曲線按樁號連結，檢查錨固層是否連續並比較不同樁的移動趨勢。黏結參數及驗證樁位置需由地工設計者核准；任何異常回流或地層變更都要保留追查紀錄。~Link bore geology, grout returns and load-test curves by pile identifier, checking continuity of the bond stratum and comparing movement trends between piles. The geotechnical designer approves bond parameters and verification-pile locations; abnormal returns or changed strata retain traceable investigation records.",
+      "failure": "黏結段跨入軟弱夾層或漿體不連續會使力集中，可能出現漸進滑移而非鋼材先降伏。本式假設均勻平均剪力且有效直徑可信，未含群體作用與長期效應；試驗允收還需同時檢查位移和潛變。~Weak interbeds or discontinuous grout concentrate transfer and can produce progressive slip before steel yielding. The expression assumes uniform mean shear and credible diameter, excluding group and long-term effects; test acceptance must also address displacement and creep.",
+      "misconception": "注漿量很多就必然得到較大且完整的黏結直徑。~High grout volume necessarily creates a larger continuous bond diameter.",
+      "practice": "黏結參數及驗證樁位置需由地工設計者核准；任何異常回流或地層變更都要保留追查紀錄。本式假設均勻平均剪力且有效直徑可信，未含群體作用與長期效應；試驗允收還需同時檢查位移和潛變。~The geotechnical designer approves bond parameters and verification-pile locations; abnormal returns or changed strata retain traceable investigation records. The expression assumes uniform mean shear and credible diameter, excluding group and long-term effects; test acceptance must also address displacement and creep."
+    },
+    {
+      "anchor": "承台連接~Cap connection",
+      "title": "承台連接的機理與驗證~Cap connection mechanism and verification",
+      "mechanism": "新微型樁必須透過承台、剪力環或其他核定連接把力接入舊基礎，單樁有容量不等於既有柱力已找到新路徑。舊混凝土品質、邊距及鋼筋位置會控制局部承壓與劈裂，施工擾動也可能削弱原有基礎的剩餘能力。平均承壓不包含局部劈裂、沖切及錨定需求，舊材料強度亦可能不均；完整節點驗算不能由此單式取代。~New micropiles need a cap, shear rings or another approved connector to receive load from the old foundation. Pile capacity alone does not establish a new path for column force. Existing concrete quality, edge distance and reinforcement govern local bearing and splitting, while construction disturbance may reduce residual foundation capacity. Mean bearing excludes splitting, punching and anchorage, and existing strength may vary; this single equation cannot replace complete node analysis.",
+      "model": "原創教學假設：假設連接傳力P=400 kN、有效承壓面A=0.08 m²，p=P/A=5 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For transferred connection force P=400 kN and effective bearing area A=0.08 m², p=P/A=5 MPa. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "以探測及局部取樣確認舊基礎，核對連接面與鋼筋淨距，將實際傳力方向放入節點模型。連接細部應在現況調查後核定；舊構件切削與新增孔洞由既有結構設計者確認剩餘力流再施工。~Investigate the existing foundation with scanning and justified sampling, verify connection faces and reinforcement clearance, and model the actual force direction. Finalize connections after existing-condition investigation; the existing-structure designer confirms remaining load paths before cutting or drilling new openings.",
+      "failure": "舊混凝土劈裂或接面滑移會使新樁未能接管，即使單樁載重試驗合格，柱仍持續下沉。平均承壓不包含局部劈裂、沖切及錨定需求，舊材料強度亦可能不均；完整節點驗算不能由此單式取代。~Splitting of old concrete or interface slip can prevent takeover despite a successful pile load test, leaving the column settling. Mean bearing excludes splitting, punching and anchorage, and existing strength may vary; this single equation cannot replace complete node analysis.",
+      "misconception": "微型樁試驗合格就代表與舊基礎的連接也合格。~A successful micropile load test proves the old-foundation connection is adequate.",
+      "practice": "連接細部應在現況調查後核定；舊構件切削與新增孔洞由既有結構設計者確認剩餘力流再施工。平均承壓不包含局部劈裂、沖切及錨定需求，舊材料強度亦可能不均；完整節點驗算不能由此單式取代。~Finalize connections after existing-condition investigation; the existing-structure designer confirms remaining load paths before cutting or drilling new openings. Mean bearing excludes splitting, punching and anchorage, and existing strength may vary; this single equation cannot replace complete node analysis."
+    },
+    {
+      "anchor": "預載荷載移交~Preloaded transfer",
+      "title": "預載荷載移交的機理與驗證~Preloaded transfer mechanism and verification",
+      "mechanism": "新樁若沒有預先接觸或預載，往往要等舊基礎再沉陷才逐步動員，不能假設施工完成即分擔設計荷載。預載的目的在控制接管路徑及位移，但過大推力也可能抬升上部結構；須同時監測力與柱、承台的相對移動。剛度位移式假設接觸已建立且線性，未含原始間隙與舊基礎塑性；本例不提供現場頂升程序或施力目標。~Without established contact or preload, a new pile may need further old-foundation settlement before it mobilizes. Completion alone does not mean it carries the intended share. Preload controls transfer and movement, but excessive force can lift the structure, requiring simultaneous force and relative column-cap displacement monitoring. The stiffness relation assumes established linear contact and excludes initial gaps and old-foundation plasticity; it does not prescribe jacking procedures or field force targets.",
+      "model": "原創教學假設：假設需移交ΔP=300 kN、等效剛度k=100 kN/mm，彈性位移δ=ΔP/k=3 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For transfer increment ΔP=300 kN and equivalent stiffness k=100 kN/mm, elastic movement δ=ΔP/k=3 mm. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "比對新樁力、舊基礎沉陷與連接間隙，確認接管過程沒有造成局部抬升或未知支承卸載。荷載移交須設結構及地工共同停留點；核定力位移範圍後，才可解除原有臨時支承。~Compare new-pile force, old-foundation settlement and connection gaps to confirm that transfer causes neither local uplift nor unintended unloading elsewhere. Load transfer requires a joint structural-geotechnical hold point; original temporary support is released only after approved force-displacement conditions are demonstrated.",
+      "failure": "只看施加荷重而不看位移，可能在接管前先抬升樓板，損傷既有脆性接縫。剛度位移式假設接觸已建立且線性，未含原始間隙與舊基礎塑性；本例不提供現場頂升程序或施力目標。~Monitoring applied force without movement can lift slabs before intended transfer and damage existing brittle joints. The stiffness relation assumes established linear contact and excludes initial gaps and old-foundation plasticity; it does not prescribe jacking procedures or field force targets.",
+      "misconception": "新樁完工後會立刻自然承擔所有設計荷載比例。~Completed new piles immediately carry every intended design load share naturally.",
+      "practice": "荷載移交須設結構及地工共同停留點；核定力位移範圍後，才可解除原有臨時支承。剛度位移式假設接觸已建立且線性，未含原始間隙與舊基礎塑性；本例不提供現場頂升程序或施力目標。~Load transfer requires a joint structural-geotechnical hold point; original temporary support is released only after approved force-displacement conditions are demonstrated. The stiffness relation assumes established linear contact and excludes initial gaps and old-foundation plasticity; it does not prescribe jacking procedures or field force targets."
+    },
+    {
+      "anchor": "新舊樁群分力~Pile-group load sharing",
+      "title": "新舊樁群分力的機理與驗證~Pile-group load sharing mechanism and verification",
+      "mechanism": "共用承台下不同樁的剛度與初始接觸決定荷載分配，並非單純按樁數平均。新樁與舊基礎可能有不同沉陷歷史與端承條件；等位移模型有助說明剛度比例，但需要承台近似剛性且沒有額外轉動才成立。並聯彈簧模型未含土體群效與非線性，單組剛度應對應相同荷載區間；舊樁歷史力不能直接重新平均。~Relative stiffness and initial contact govern load sharing beneath a common cap rather than pile count alone. New piles and old foundations have different settlement histories and toe conditions. An equal-displacement model illustrates stiffness sharing only when the cap is sufficiently rigid and additional rotation is absent. Parallel springs exclude group-soil interaction and nonlinearity; stiffnesses must correspond to the same load range, and historical force in old piles cannot simply be redistributed by averaging.",
+      "model": "原創教學假設：假設兩組剛度k₁=200、k₂=100 MN/m，共承P=1200 kN且等位移，P₁=Pk₁/(k₁+k₂)=800 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For groups k₁=200 and k₂=100 MN/m sharing P=1200 kN at equal displacement, P₁=Pk₁/(k₁+k₂)=800 kN. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "量測承台轉角與代表樁軸力，核對是否等位移，將不同樁的載重試驗剛度用於比較。分力模型應納入承台轉動與初始荷載；基礎設計者用試驗及監測修正後，再核定最終移交狀態。~Measure cap rotation and representative pile forces to test equal displacement, using individual load-test stiffnesses for comparison. Include cap rotation and initial loading in sharing models; the foundation designer updates them with tests and monitoring before approving final transfer.",
+      "failure": "把剛度不同的樁平均分力，可能讓較硬新樁提前超載，較軟支承卻尚未有效參與。並聯彈簧模型未含土體群效與非線性，單組剛度應對應相同荷載區間；舊樁歷史力不能直接重新平均。~Equal-force allocation between unequal stiffnesses can overload the stiff new group before softer supports contribute effectively. Parallel springs exclude group-soil interaction and nonlinearity; stiffnesses must correspond to the same load range, and historical force in old piles cannot simply be redistributed by averaging.",
+      "misconception": "同一承台下所有微型樁一定平均分擔柱力。~Every micropile under one cap necessarily shares column load equally.",
+      "practice": "分力模型應納入承台轉動與初始荷載；基礎設計者用試驗及監測修正後，再核定最終移交狀態。並聯彈簧模型未含土體群效與非線性，單組剛度應對應相同荷載區間；舊樁歷史力不能直接重新平均。~Include cap rotation and initial loading in sharing models; the foundation designer updates them with tests and monitoring before approving final transfer. Parallel springs exclude group-soil interaction and nonlinearity; stiffnesses must correspond to the same load range, and historical force in old piles cannot simply be redistributed by averaging."
+    },
+    {
+      "anchor": "無側限段挫屈~Unsupported-length buckling",
+      "title": "無側限段挫屈的機理與驗證~Unsupported-length buckling mechanism and verification",
+      "mechanism": "微型樁通常受到周圍地層側向約束，但穿越空洞、極軟層或施工開挖區時可能形成無側限長度。鋼套管的挫屈能力便成為重要限制，不能因樁很深就假設全長都有連續支承；接頭偏心與腐蝕也會放大不利影響。歐拉荷重是理想彈性上限，不是允許工作荷載；實際承載需考慮初彎、接頭、塑性與有效端部拘束。~Ground normally restrains micropiles laterally, but voids, very soft layers or excavation can create unsupported lengths. Casing buckling then becomes critical; depth does not guarantee continuous support. Joint eccentricity and corrosion amplify the vulnerability and require checking the actual restrained length rather than assuming full confinement. Euler load is an ideal elastic limit, not working-load permission; actual resistance includes bow, joints, plasticity and effective end restraint.",
+      "model": "原創教學假設：理想鉸接段L=4 m、E=200 GPa、I=1×10⁻⁵ m⁴，Pcr=π²EI/L²=1.23 MN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For an ideal pinned unsupported segment L=4 m, E=200 GPa and I=1×10⁻⁵ m⁴, Pcr=π²EI/L²=1.23 MN. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "依鑽孔與開挖紀錄界定無側限區，核對套管接頭位置與直線度，檢查橫向地層彈簧可信度。無側限區與套管需求應明列於施工圖；地層流失或新增開挖發現後，設計者須重新核對穩定。~Define unsupported zones from drilling and excavation records, check casing-joint locations and straightness, and assess credibility of lateral ground springs. Show unsupported zones and casing requirements on drawings; the designer reassesses stability when ground loss or additional excavation occurs.",
+      "failure": "隱藏空洞使有效長度增加，可能在軸應力仍低時發生挫屈，造成托底支承突然失效。歐拉荷重是理想彈性上限，不是允許工作荷載；實際承載需考慮初彎、接頭、塑性與有效端部拘束。~A hidden void increases effective length and may trigger buckling at low axial stress, abruptly compromising underpinning support. Euler load is an ideal elastic limit, not working-load permission; actual resistance includes bow, joints, plasticity and effective end restraint.",
+      "misconception": "微型樁埋在地下，所以任何位置都不需要挫屈檢查。~A buried micropile never requires buckling checks anywhere along its length.",
+      "practice": "無側限區與套管需求應明列於施工圖；地層流失或新增開挖發現後，設計者須重新核對穩定。歐拉荷重是理想彈性上限，不是允許工作荷載；實際承載需考慮初彎、接頭、塑性與有效端部拘束。~Show unsupported zones and casing requirements on drawings; the designer reassesses stability when ground loss or additional excavation occurs. Euler load is an ideal elastic limit, not working-load permission; actual resistance includes bow, joints, plasticity and effective end restraint."
+    },
+    {
+      "anchor": "偏心樁群反力~Eccentric group reactions",
+      "title": "偏心樁群反力的機理與驗證~Eccentric group reactions mechanism and verification",
+      "mechanism": "柱中心與新樁群中心不一致時，除了總軸力還會產生力矩，承台需透過不同樁反力或拉壓偶抵抗。若只把總力平均分到樁上，邊樁需求會被低估；既有基礎是否仍接觸也會改變可用的反力分布。力偶式只給兩反力線的增量，不是每樁總力；須加上平均軸力並檢查承台剛度及拉力傳遞是否成立。~An offset between column and new pile-group centres creates moment in addition to total axial load. The cap resists it through unequal reactions or a tension-compression couple. Averaging total force underestimates edge-pile demand, while continued contact with the original foundation changes the available reaction distribution. The couple equation gives the increment on two reaction lines, not total force per pile; add mean axial load and verify cap stiffness and tensile transfer.",
+      "model": "原創教學假設：假設需抵抗力矩M=300 kN·m、兩反力線距s=2 m，力偶增量ΔP=M/s=150 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For moment M=300 kN·m and reaction-line spacing s=2 m, couple-force increment ΔP=M/s=150 kN. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "核對柱樁中心與實際樁位，量測承台轉角及邊樁力，將接觸或離縫狀態納入模型。群樁設計應列垂直力及雙向彎矩組合；樁位超差須由基礎設計者核准重新分力後才驗收。~Check actual column and pile centres, measure cap rotation and edge forces, and include contact or separation in the model. Group design includes vertical force and biaxial moment combinations; the foundation designer redistributes forces and approves out-of-position piles before acceptance.",
+      "failure": "邊樁可能受拉而原設計只查受壓，接頭與舊承台因此可能先裂開，形成非預期荷載重分配。力偶式只給兩反力線的增量，不是每樁總力；須加上平均軸力並檢查承台剛度及拉力傳遞是否成立。~An edge pile may enter tension although only compression was checked, cracking connections or the old cap and redistributing load unexpectedly. The couple equation gives the increment on two reaction lines, not total force per pile; add mean axial load and verify cap stiffness and tensile transfer.",
+      "misconception": "柱力是向下的，就不可能讓任何托底樁受到拉力。~A downward column load can never put an underpinning pile in tension.",
+      "practice": "群樁設計應列垂直力及雙向彎矩組合；樁位超差須由基礎設計者核准重新分力後才驗收。力偶式只給兩反力線的增量，不是每樁總力；須加上平均軸力並檢查承台剛度及拉力傳遞是否成立。~Group design includes vertical force and biaxial moment combinations; the foundation designer redistributes forces and approves out-of-position piles before acceptance. The couple equation gives the increment on two reaction lines, not total force per pile; add mean axial load and verify cap stiffness and tensile transfer."
+    },
+    {
+      "anchor": "低淨高接頭~Low-headroom splices",
+      "title": "低淨高接頭的機理與驗證~Low-headroom splices mechanism and verification",
+      "mechanism": "受限空間的微型樁需以短節鋼材連接，接頭數增加就增加製造、安裝與檢查界面。每個接頭必須傳遞設計軸力及可能的彎曲，螺紋有效截面與套管同軸度也影響承載；施工方便不能取代接合性能證明。節數計算假設有效長度已扣除接合損失，並非加工切割清單；實際端部、接頭搭接與設備淨高需另外協調。~Restricted headroom requires short steel sections, increasing fabrication, installation and inspection interfaces. Every splice must transfer design axial force and possible bending, while thread-root area and casing alignment affect resistance. Ease of installation cannot substitute for evidence that the connection performs under the required force combinations. The section count assumes effective lengths already exclude connection loss and is not a fabrication cut list; ends, overlap and equipment headroom require separate coordination.",
+      "model": "原創教學假設：假設總長L=18 m、每節有效長l=1.5 m，需n=ceil(L/l)=12節，通常有11個節間接頭。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total length L=18 m and effective section length l=1.5 m, n=ceil(L/l)=12 sections, normally with eleven inter-section joints. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "核對每節長度、接頭序號與安裝證據，對照實際接頭深度及高彎曲或腐蝕區，查漏裝與錯件。接頭型式、檢驗方法及追溯編碼須由結構設計者核准；未完成接合檢查的鋼節不得以後續注漿取代驗證。~Verify section lengths, splice identifiers and installation evidence against actual depths and high-bending or corrosion zones, checking missing or mismatched parts. The structural designer approves splice type, inspection and traceability; later grouting cannot replace verification of an unaccepted steel connection.",
+      "failure": "接頭未完全接合或軸線偏移會降低有效容量，深埋後難以直接檢查，可能成為長期薄弱點。節數計算假設有效長度已扣除接合損失，並非加工切割清單；實際端部、接頭搭接與設備淨高需另外協調。~Incomplete engagement or misalignment reduces effective resistance and can become a long-term weak point that is difficult to inspect after burial. The section count assumes effective lengths already exclude connection loss and is not a fabrication cut list; ends, overlap and equipment headroom require separate coordination.",
+      "misconception": "接頭越多只會影響速度，不會影響樁的受力品質。~More splices affect speed only and never structural quality.",
+      "practice": "接頭型式、檢驗方法及追溯編碼須由結構設計者核准；未完成接合檢查的鋼節不得以後續注漿取代驗證。節數計算假設有效長度已扣除接合損失，並非加工切割清單；實際端部、接頭搭接與設備淨高需另外協調。~The structural designer approves splice type, inspection and traceability; later grouting cannot replace verification of an unaccepted steel connection. The section count assumes effective lengths already exclude connection loss and is not a fabrication cut list; ends, overlap and equipment headroom require separate coordination."
+    },
+    {
+      "anchor": "移交後沉陷~Post-transfer settlement",
+      "title": "移交後沉陷的機理與驗證~Post-transfer settlement mechanism and verification",
+      "mechanism": "托底後的沉陷可能來自新樁動員、舊土層壓密或連接變形，不應只以短期試驗合格結束觀察。長期趨勢需與荷載使用、地下水及季節變化一起判讀，固定基準與測點位置則是區分真變形與量測漂移的前提。平均速率可能掩蓋階段性加速，且本數值不是通用合格值；應以資產容許差異變形及量測解析度制定判據。~Post-underpinning settlement may reflect new-pile mobilization, consolidation of old soils or connection movement, so short-term test acceptance should not end observation. Long-term trends require load-use, groundwater and seasonal context, with stable references and fixed measurement locations to distinguish actual deformation from instrumental drift. The mean rate can conceal episodic acceleration and is not a universal acceptance value; criteria depend on tolerable differential movement and measurement resolution.",
+      "model": "原創教學假設：假設沉陷由3 mm增至4 mm、間隔6 month，平均速率v=(4−3)/6=0.167 mm/month。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For settlement increasing from 3 mm to 4 mm over six months, mean rate v=(4−3)/6=0.167 mm/month. This calculation checks scale and units; it is not a site acceptance limit.",
+      "verify": "將柱、承台及相鄰未托底基礎同步水準測量，對照使用荷載及水位，檢查差異而非只看單點。交接列出監測期限、終止條件及使用變更通報；異常速率由地工與既有結構設計者共同判讀。~Level columns, caps and adjacent untreated foundations together, comparing loads and groundwater and examining differences rather than one isolated point. Handover defines monitoring duration, closure criteria and change-of-use reporting; geotechnical and existing-structure designers jointly interpret abnormal movement rates.",
+      "failure": "停止追蹤可能漏掉連接逐步滑移，直到門窗卡住或新裂縫出現才發現托底尚未穩定。平均速率可能掩蓋階段性加速，且本數值不是通用合格值；應以資產容許差異變形及量測解析度制定判據。~Stopping observations can miss progressive connection slip until doors bind or new cracks reveal that underpinning performance has not stabilized. The mean rate can conceal episodic acceleration and is not a universal acceptance value; criteria depend on tolerable differential movement and measurement resolution.",
+      "misconception": "載重試驗通過後，既有建物不需要再做沉陷監測。~Passing a load test removes the need for further building-settlement monitoring.",
+      "practice": "交接列出監測期限、終止條件及使用變更通報；異常速率由地工與既有結構設計者共同判讀。平均速率可能掩蓋階段性加速，且本數值不是通用合格值；應以資產容許差異變形及量測解析度制定判據。~Handover defines monitoring duration, closure criteria and change-of-use reporting; geotechnical and existing-structure designers jointly interpret abnormal movement rates. The mean rate can conceal episodic acceleration and is not a universal acceptance value; criteria depend on tolerable differential movement and measurement resolution."
+    }
+  ],
+  "example": "原創教學例：現有柱力800 kN、增建250 kN、設備150 kN，在本例同時使用情境下合計1200 kN。若只增加現有柱力10%至880 kN，其他兩項維持不變，合計變成1280 kN，總需求增加80 kN或6.67%，而不是10%。還須按上部結構規範建立荷載組合，並確定新舊基礎如何分力。此加總不代表每根新樁平均分擔，也不證明承台連接或荷載移交完成；應以樁力、承台位移及現況調查共同驗證。~Original teaching example: an existing column carries 800 kN, an extension adds 250 kN and equipment adds 150 kN, giving 1200 kN in this simultaneous-use scenario. Increase only the existing-column component by 10% to 880 kN while holding the others fixed: total demand becomes 1280 kN, up 80 kN or 6.67%, not 10%. Appropriate structural load combinations and new-old foundation sharing remain necessary. This sum implies neither equal sharing by new piles nor completed cap connection and load transfer. Verify those using pile forces, cap movement and existing-condition investigation.",
+  "history": "微型樁托底的關鍵不只是把樁打到深處，而是建立既有柱、承台、連接件與地層之間可驗證的新力流。本課逐步檢查鋼材與黏結承載、預載移交、樁群剛度、無側限段挫屈與低淨高接頭，最後用長期沉陷判讀新舊基礎是否確實共同工作。公開資料沿革以指南出版及資料覆核為準，不冒充個別工程施工史。2005年：美國聯邦公路管理局發布微型樁設計施工參考手冊，整合檢驗與載重試驗；2017年：香港地盤勘察指南二提供二〇一七年更新版本，作為調查證據背景。比較案例僅說明工程用途與界面差異，未核對的工法不作實績聲稱。本課重建公開原理及原創教學算例，不代表任何專案設計文件。~Micropile underpinning requires a verified new load path from existing columns through caps and connectors into ground. The course examines steel and bond resistance, preloaded transfer, group stiffness, buckling in unsupported zones and low-headroom joints, then interprets long-term settlement to establish interaction between old and new foundations. The source chronology records guide publication and evidence review rather than inventing a project construction history. 2005: FHWA publishes the micropile design and construction reference including inspection and load testing; 2017: CEDD provides the 2017 updated Geoguide 2 as an investigation reference. Named comparisons illustrate functions and interfaces without attributing unverified methods. This course reconstructs public principles with original educational calculations, not the design documents of any project.",
+  "facts": [
+    "合成教學假設：假設現有柱力800 kN、增建250 kN、設備150 kN，服務荷載合計P=800+250+150=1200 kN~Synthetic teaching assumptions: For existing column force 800 kN, extension 250 kN and equipment 150 kN, combined service load P=1200 kN",
+    "合成教學假設：假設鋼材獨自承受P=600 kN、有效鋼面積As=0.004 m²，σs=P/As=150 MPa~Synthetic teaching assumptions: If steel alone carries P=600 kN over effective area As=0.004 m², σs=P/As=150 MPa",
+    "合成教學假設：假設D=0.2 m、黏結長L=8 m、平均可用剪應力τ=150 kPa，R=πDLτ=754 kN~Synthetic teaching assumptions: For D=0.2 m, bond length L=8 m and assumed usable mean shear τ=150 kPa, R=πDLτ=754 kN",
+    "合成教學假設：假設連接傳力P=400 kN、有效承壓面A=0.08 m²，p=P/A=5 MPa~Synthetic teaching assumptions: For transferred connection force P=400 kN and effective bearing area A=0.08 m², p=P/A=5 MPa",
+    "合成教學假設：假設需移交ΔP=300 kN、等效剛度k=100 kN/mm，彈性位移δ=ΔP/k=3 mm~Synthetic teaching assumptions: For transfer increment ΔP=300 kN and equivalent stiffness k=100 kN/mm, elastic movement δ=ΔP/k=3 mm",
+    "合成教學假設：假設兩組剛度k₁=200、k₂=100 MN/m，共承P=1200 kN且等位移，P₁=Pk₁/(k₁+k₂)=800 kN~Synthetic teaching assumptions: For groups k₁=200 and k₂=100 MN/m sharing P=1200 kN at equal displacement, P₁=Pk₁/(k₁+k₂)=800 kN"
+  ],
+  "timeline": [
+    {
+      "year": "2005",
+      "event": "美國聯邦公路管理局發布微型樁設計施工參考手冊，整合檢驗與載重試驗~FHWA publishes the micropile design and construction reference including inspection and load testing"
+    },
+    {
+      "year": "2017",
+      "event": "香港地盤勘察指南二提供二〇一七年更新版本，作為調查證據背景~CEDD provides the 2017 updated Geoguide 2 as an investigation reference"
+    },
+    {
+      "year": "2026",
+      "event": "本教材重算原創帶單位算例及敏感度，明確區分公開事實與教學假設~This curriculum recalculates original unit-bearing examples and sensitivity, separating public facts from teaching assumptions"
+    }
+  ],
+  "codes": [
+    "美國聯邦公路管理局：微型樁設計施工手冊~FHWA: Micropile Design and Construction, FHWA-NHI-05-039",
+    "土木工程拓展署：岩土指南二地盤勘察~CEDD: Geoguide 2, Guide to Site Investigation"
+  ],
+  "landmarks": [
+    "倫敦哈利街一四一號：低淨高樁施工比較~141 Harley Street: low-headroom piling comparison",
+    "倫敦國家美術館：受限空間樁施工比較~National Gallery, London: restricted-access piling comparison"
+  ],
+  "place": {
+    "name": "香港土木工程拓展署地工資料參照點~Hong Kong CEDD geotechnical information reference point",
+    "country": "香港~Hong Kong",
+    "lat": 22.297,
+    "lng": 114.172,
+    "query": "Civil Engineering and Development Department Hong Kong"
+  },
+  "sources": [
+    {
+      "key": "fhwa-micro",
+      "title": "美國聯邦公路管理局：微型樁設計施工手冊",
+      "titleEn": "FHWA: Micropile Design and Construction, FHWA-NHI-05-039",
+      "publisher": "Federal Highway Administration / National Transportation Library",
+      "url": "https://rosap.ntl.bts.gov/view/dot/50231",
+      "sourceType": "primary",
+      "scope": "確認二〇〇五年手冊與基礎托底、結構設計、檢驗和載重試驗範圍。",
+      "scopeEn": "Confirms the 2005 manual and its foundation-support, structural-design, inspection and load-testing scope."
+    },
+    {
+      "key": "keller-micro",
+      "title": "凱勒：微型樁技術",
+      "titleEn": "Keller: Micropiles",
+      "publisher": "Keller Group",
+      "url": "https://www.keller.com/expertise/techniques/micropiles",
+      "sourceType": "primary",
+      "scope": "公開微型樁、受限空間及基礎托底的用途；不把廠商最大能力當成本課設計值。",
+      "scopeEn": "Public micropile, restricted-access and underpinning applications; vendor maximum capability is not used as a design value."
+    },
+    {
+      "key": "geo-site",
+      "title": "土木工程拓展署：岩土指南二地盤勘察",
+      "titleEn": "CEDD: Geoguide 2, Guide to Site Investigation",
+      "publisher": "Geotechnical Engineering Office, CEDD",
+      "url": "https://www.cedd.gov.hk/eng/publications/geo/geoguides/geo-g2/",
+      "sourceType": "primary",
+      "scope": "確認二〇一七年版本與勘察範圍；課內數值為原創教學假設，不是本指南的工程實測。",
+      "scopeEn": "Confirms the 2017 edition and investigation scope; numerical exercises are original assumptions, not field data from this guide."
+    },
+    {
+      "key": "keller-harley",
+      "title": "凱勒：倫敦哈利街一四一號",
+      "titleEn": "Keller: 141 Harley Street",
+      "publisher": "Keller UK",
+      "url": "https://www.keller.co.uk/projects/141-harley-street",
+      "sourceType": "primary",
+      "scope": "承包商確認受限淨高微型樁及咬合樁工程；其他課程僅比較空間及資產界面，不宣稱使用未核對工法。",
+      "scopeEn": "Contractor confirms restricted-headroom mini and secant piling; other courses compare space and asset interfaces without unverified method attribution."
+    },
+    {
+      "key": "keller-gallery",
+      "title": "凱勒：倫敦國家美術館",
+      "titleEn": "Keller: National Gallery",
+      "publisher": "Keller UK",
+      "url": "https://www.keller.co.uk/projects/national-gallery",
+      "sourceType": "primary",
+      "scope": "承包商確認受限空間小直徑咬合樁施工，僅比較設備及幾何約束。",
+      "scopeEn": "Contractor confirms restricted-access secant minipiling, used only to compare equipment and geometric constraints."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Federal Highway Administration / National Transportation Library（公開資料機構）",
+      "nameEn": "Federal Highway Administration / National Transportation Library",
+      "business": "提供本課相關的公開技術資料，角色是工程知識來源而非工程性能背書。",
+      "businessEn": "Provides relevant public technical information as an engineering knowledge source, not an endorsement of performance.",
+      "url": "https://rosap.ntl.bts.gov/view/dot/50231",
+      "investorUrl": "",
+      "security": null,
+      "role": "研究既有基礎荷載移交與微型樁複合承載的公開技術範圍與證據限制",
+      "roleEn": "Study the public technical scope and evidence limits for existing-foundation load transfer and composite micropile resistance"
+    },
+    {
+      "name": "Keller Group（公開資料機構）",
+      "nameEn": "Keller Group",
+      "business": "提供本課相關的公開技術資料，角色是工程知識來源而非工程性能背書。",
+      "businessEn": "Provides relevant public technical information as an engineering knowledge source, not an endorsement of performance.",
+      "url": "https://www.keller.com/expertise/techniques/micropiles",
+      "investorUrl": "",
+      "security": null,
+      "role": "研究既有基礎荷載移交與微型樁複合承載的公開技術範圍與證據限制",
+      "roleEn": "Study the public technical scope and evidence limits for existing-foundation load transfer and composite micropile resistance"
+    }
+  ],
+  "related": [
+    "b184",
+    "b186"
+  ],
+  "architectureNodes": [
+    [
+      "既有荷載清冊",
+      "Existing-load inventory"
+    ],
+    [
+      "鋼材軸應力",
+      "Steel axial stress"
+    ],
+    [
+      "承台連接",
+      "Cap connection"
+    ],
+    [
+      "無側限段挫屈",
+      "Unsupported-length buckling"
+    ],
+    [
+      "低淨高接頭",
+      "Low-headroom splices"
+    ],
+    [
+      "移交後沉陷",
+      "Post-transfer settlement"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      3,
+      0
+    ]
+  ]
+}

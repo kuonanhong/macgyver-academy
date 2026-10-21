@@ -1,0 +1,48 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import {fileURLToPath} from 'node:url';
+import {configurePaywall,refreshAccess,accessState,resetProtectedContent,hydrateProtectedStages,publicStubCourse} from '../public/academy/paywall.js';
+const defer=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return{promise,resolve,reject};};
+const flush=async()=>{for(let i=0;i<30;i++)await Promise.resolve();};
+const sample={id:'test',title:'Public',stages:[{id:'free',steps:[{id:'f',objective:'Free'}]},{id:'paid',steps:[{id:'p',objective:'PRIVATE_BODY'}]}]};
+let access=defer(),content=defer();const cloud={configured:true,myAccess:()=>access.promise,loadCourseContent:()=>content.promise};
+configurePaywall({config:{paywall:{enabled:true,freeStagesPerCourse:1}},cloud:()=>cloud,billing:()=>({protected:false})});
+const oldAccess=refreshAccess({user:{id:'A'}});resetProtectedContent();access.resolve({active:true});await oldAccess;assert.equal(accessState().active,false,'late A entitlement cannot authorize B');
+access=defer();const newAccess=refreshAccess({user:{id:'B'}});access.resolve({active:true});await newAccess;
+let course=publicStubCourse(sample);const pending=hydrateProtectedStages(course);await flush();resetProtectedContent();content.resolve([{stage_index:1,payload:sample.stages[1]}]);await pending;assert(!JSON.stringify(course).includes('PRIVATE_BODY'),'late content cannot populate logged-out course');
+access=defer();const entitled=refreshAccess({user:{id:'C'}});access.resolve({active:true});await entitled;content=defer();course=publicStubCourse(sample);const current=hydrateProtectedStages(course);await flush();content.resolve([{stage_index:1,payload:sample.stages[1]}]);await current;assert(JSON.stringify(course).includes('PRIVATE_BODY'));resetProtectedContent();assert(!JSON.stringify(course).includes('PRIVATE_BODY'),'already hydrated courses revert to their public stubs on account change');
+// An entitlement with missing private rows must fail once and permit a real retry.
+access=defer();const available=refreshAccess({user:{id:'D'}});access.resolve({active:true});await available;
+course=publicStubCourse(sample);content=defer();const incomplete=hydrateProtectedStages(course);await flush();content.resolve([]);await assert.rejects(incomplete,/incomplete/);assert(!JSON.stringify(course).includes('PRIVATE_BODY'));
+content=defer();const retried=hydrateProtectedStages(course);await flush();content.resolve([{stage_index:1,payload:sample.stages[1]}]);await retried;assert(JSON.stringify(course).includes('PRIVATE_BODY'));resetProtectedContent();
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../public/academy');const source=fs.readFileSync(path.join(root,'app.js'),'utf8');
+const begin=source.indexOf('// Catalogue-only state'),end=source.indexOf('const blank=',begin);assert(begin>=0&&end>begin);
+const one=id=>({id,title:id,_lazy:true,stages:[{id:'s',steps:[{id:'one'},{id:'two'}]}]});
+let catalog=['a','b','c'].map(one),featured=catalog.slice(),requests=new Map(),rendered=[];
+const main={innerHTML:''},retry={};const context={console,Map,Set,WeakMap,Promise,catalog,featured,sources:[],projects:{a:{completed:['one'],assembly:['one']}},activeId:'a',accountGeneration:0,stepCache:new WeakMap(),location:{hash:'#project/a'},currentPage:'project',isZh:()=>false,esc:String,t:String,$:s=>s==='#main'?main:retry,$$:()=>[],setLearningMedia(){},setRelatedSkills(){},setCoursePlaces(){},setVendors(){},bindVendors(){},vendorsMarkup:()=>'',applyLanguage(){},billingState:()=>({protected:false}),loadCourseOnDemand:id=>{const pending=defer();requests.set(id,pending);return pending.promise;},loadCourseResources:async()=>({sources:[],media:{},related:{},places:{},vendors:{}}),loadAuxiliaryData:async()=>[],render:()=>rendered.push(context.location.hash)};
+vm.createContext(context);vm.runInContext(source.slice(begin,end),context);const run=s=>vm.runInContext(s,context);run('coreReady=true;accountReady=true;accountReadyPromise=Promise.resolve()');
+run("routeDataGate('project',['project','a'],'project/a')");context.location.hash='#project/b';run("routeDataGate('project',['project','b'],'project/b')");
+requests.get('a').resolve({...one('a'),_lazy:false});await flush();assert.deepEqual(rendered,[],'old route cannot render over new route');requests.get('b').resolve({...one('b'),_lazy:false});await flush();assert.deepEqual(rendered,['#project/b']);
+context.location.hash='#project/c';run("routeDataGate('project',['project','c'],'project/c')");context.accountGeneration++;requests.get('c').resolve({...one('c'),_lazy:false,private:'A'});await flush();assert.equal(context.catalog.find(c=>c.id==='c').private,undefined,'old account course reply never commits');assert.deepEqual(rendered,['#project/b']);
+context.location.hash='#project/c';run("routeDataGate('project',['project','c'],'project/c')");requests.get('c').reject(Error('temporary'));await flush();assert(main.innerHTML.includes('retryLazyPage'),'failed route has retry control');retry.onclick();assert.deepEqual(rendered,['#project/b','#project/c'],'retry requests a new render');
+const model=source.slice(source.indexOf('const stepCache='),source.indexOf('\n',source.indexOf('const stepCache=')))+source.slice(source.indexOf('const blank='),source.indexOf('\n',source.indexOf('const blank=')));
+const progressContext={featured:[one('a')],activeId:'a',projects:{a:{completed:['one'],assembly:[]}},Date};vm.createContext(progressContext);vm.runInContext(model,progressContext);assert.equal(vm.runInContext("percent('a')",progressContext),50,'unloaded course progress uses complete step IDs');
+// Execute the actual locked renderer: missing rows must not create a render loop.
+const lockedFunction=source.slice(source.indexOf('function renderLockedStep('),source.indexOf('\nfunction bindLockedWorkshop'));
+let memberRequests=0,memberRenders=0;const lockedCourse={id:'locked',title:'Locked'},lockedStep={id:'p',stageIndex:1,stage:{}};
+const lockedContext={Promise,WeakMap,accountGeneration:1,memberLoads:new WeakMap(),hasFullAccess:()=>true,location:{hash:'#workshop'},hydrateProtectedStages:async()=>{memberRequests++;},stepCache:new WeakMap(),stepLocked:()=>true,allSteps:()=>[lockedStep],currentPage:'workshop',course:()=>lockedCourse,render:()=>{memberRenders++;},featured:[lockedCourse],esc:String,txt:x=>x.title||'',t:String,isZh:()=>false,renderNavigator:()=>'',activeStep:0,lockedStepMarkup:()=>'',priceFromText:()=>'',user:null,C:lockedCourse,S:lockedStep};
+vm.createContext(lockedContext);vm.runInContext(lockedFunction,lockedContext);const lockedRun=code=>vm.runInContext(code,lockedContext);
+lockedRun('renderLockedStep(C,[S],S,{})');await flush();assert.equal(memberRenders,1);assert(lockedRun('renderLockedStep(C,[S],S,{})').includes('retryMemberContent'));await flush();assert.equal(memberRequests,1,'failed member content stays retryable without infinite rerender');
+lockedRun('memberLoads.delete(C);renderLockedStep(C,[S],S,{})');await flush();assert.equal(memberRequests,2,'explicit retry attempts hydration again');
+lockedContext.hydrateProtectedStages=()=>{memberRequests++;return new Promise(resolve=>{lockedContext.releaseMember=resolve;});};lockedRun('memberLoads.delete(C);renderLockedStep(C,[S],S,{})');await flush();lockedContext.accountGeneration++;lockedContext.releaseMember();await flush();assert.equal(memberRenders,2,'old account response cannot rerender');
+// Global tutor access must not expand placeholders or locked/expired lesson bodies.
+const tutorFunction=source.slice(source.indexOf('function currentTutorContext('),source.indexOf('\nfunction openTutor'));
+let tutorDetails=0;const tutorCourse={id:'tutor',title:'Public title',summary:'Public summary',stages:[]};
+const tutorFixture={currentPage:'workshop',catalog:[tutorCourse],shownProjectId:'tutor',course:()=>tutorCourse,allSteps:()=>[{id:'paid',objective:'PRIVATE_DETAIL'}],activeStep:0,stepLocked:()=>true,tutorContext:()=>{tutorDetails++;return {objective:'PRIVATE_DETAIL'};},txt:(o,key='title')=>o[key]||'',sources:[]};
+vm.createContext(tutorFixture);vm.runInContext(tutorFunction,tutorFixture);const tutorRun=()=>vm.runInContext('currentTutorContext()',tutorFixture);
+assert(!JSON.stringify(tutorRun()).includes('PRIVATE_DETAIL'));assert.equal(tutorDetails,0,'locked or expired step never enters detailed tutor context');
+tutorCourse._lazy=true;tutorFixture.stepLocked=()=>false;assert(!JSON.stringify(tutorRun()).includes('PRIVATE_DETAIL'));assert.equal(tutorDetails,0,'lazy ID-only step never enters exercise context');
+delete tutorCourse._lazy;assert.equal(tutorRun().objective,'PRIVATE_DETAIL');assert.equal(tutorDetails,1,'available unlocked lesson still supplies detailed context');
+console.log('PASS lazy access: stale entitlements, stale private content, restored public stubs, rapid navigation, account-switch replies, retry UI, unloaded-course progress.');

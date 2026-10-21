@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d499-7c6efbccd37e9b6e.json"]={sha256:"7c6efbccd37e9b6e790c8c2da7af3deaf560cfc546ae59d0dc7ea3ba3675ec41",value:{"id":"d499","title":"極地設施模組化生命維持","titleEn":"Polar Facility Modular Life Support","category":"megascience","kind":"craft","summary":"「極地設施模組化生命維持」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Polar Facility Modular Life Support: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

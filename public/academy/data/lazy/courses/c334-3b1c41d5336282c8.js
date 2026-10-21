@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c334-3b1c41d5336282c8.json"]={sha256:"3b1c41d5336282c8412c942f0a51ae34462a3bcab187e0f8fcdbcb13d2a8e44d",value:{"title":"WMAP 微波異向性探測","titleEn":"WMAP microwave-anisotropy probe","category":"space","kind":"project","summary":"課程規劃主題：微波差分量測與系統誤差。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: differential microwave measurement and systematic error. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c334"}};

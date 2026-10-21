@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d145-7f39573230749e35.json"]={sha256:"7f39573230749e35db5798a54a0df1d5d5dcfd4cc4b5b3d1d5499fd113f35f93",value:{"id":"d145","title":"複合材料三維織造預成形體","titleEn":"Three Dimensional Woven Composite Preforms","category":"materials","kind":"craft","summary":"「複合材料三維織造預成形體」教學路線圖：纖維交織、厚向補強、織造張力與缺陷辨識。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Three Dimensional Woven Composite Preforms: fiber interlacing, through thickness reinforcement, weaving tension, and defect identification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

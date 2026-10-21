@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c484-9447ac8d9d9d0c17.json"]={sha256:"9447ac8d9d9d0c17059fffa507040eb02992ba0a9c660219f38643756d106aad",value:{"title":"協作機器人應用驗證","titleEn":"Collaborative-robot application validation","category":"manufacturing","kind":"craft","summary":"課程規劃主題：接觸風險與作業邊界。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: contact risks and operational boundaries. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c484"}};

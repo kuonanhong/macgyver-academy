@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b310-ac1f747048fa5639.json"]={sha256:"ac1f747048fa5639b25363aff1b3245524958b8f2e81df96bc0aba44ce5a6754",value:{"id":"b310","title":"法國東南高速鐵路","titleEn":"LGV Sud-Est","category":"rail","kind":"project","summary":"以「法國東南高速鐵路」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: LGV Sud-Est. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

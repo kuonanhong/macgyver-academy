@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c121-0a63c45d3ab136bb.json"]={sha256:"0a63c45d3ab136bbd9151524b5c37020c5db1f0147dbb4018dbbb781c371e0ad",value:{"title":"JOIDES Resolution 科學鑽探船","titleEn":"JOIDES Resolution scientific drillship","category":"marine","kind":"project","summary":"課程規劃主題：岩芯採集與實驗室物流。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: core recovery and laboratory logistics. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c121"}};

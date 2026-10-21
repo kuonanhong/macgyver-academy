@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c248-143241ab68a4ef62.json"]={sha256:"143241ab68a4ef62731093a09e2e7a027214b8b9300ce61dd68801cf6333bec4",value:{"title":"臺鐵 CK124 蒸汽機車保存","titleEn":"TRA CK124 steam-locomotive preservation","category":"automotive","kind":"project","summary":"課程規劃主題：歷史機械修復與運轉檢查。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: historic machinery restoration and operational checks. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c248"}};

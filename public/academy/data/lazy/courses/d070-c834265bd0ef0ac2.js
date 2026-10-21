@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d070-c834265bd0ef0ac2.json"]={sha256:"c834265bd0ef0ac23f55e2a2fe327d3d43ef469f0dd4f952a05b6a463bad45f8",value:{"id":"d070","title":"直驅永磁風力發電機","titleEn":"Direct Drive Permanent Magnet Wind Generators","category":"energy","kind":"craft","summary":"「直驅永磁風力發電機」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Direct Drive Permanent Magnet Wind Generators: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

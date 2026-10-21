@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d409-59eb5882b0f1891c.json"]={sha256:"59eb5882b0f1891c464d9515688e2177ae30ad8e0f09d6d79f0d6b41c1d3dcc7",value:{"id":"d409","title":"SOLEIL法國同步輻射設施","titleEn":"SOLEIL French Synchrotron Facility","category":"megascience","kind":"project","summary":"「SOLEIL法國同步輻射設施」教學路線圖：注入鏈、光束線介面、儲存環穩定性與實驗站。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for SOLEIL French Synchrotron Facility: injector chains, beamline interfaces, storage ring stability, and experimental stations. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

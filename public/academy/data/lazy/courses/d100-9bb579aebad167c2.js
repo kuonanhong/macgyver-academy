@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d100-9bb579aebad167c2.json"]={sha256:"9bb579aebad167c2bddce23d34d376513655896cae16f668014df2e13a6128fc",value:{"id":"d100","title":"儲能電站故障隔離與調度","titleEn":"Energy Storage Fault Isolation and Dispatch","category":"energy","kind":"craft","summary":"「儲能電站故障隔離與調度」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Energy Storage Fault Isolation and Dispatch: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

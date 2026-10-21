@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d153-4f304736bd7fb25c.json"]={sha256:"4f304736bd7fb25c1fcfc918fcc97854f42d537bf60b92414a92915245ea167b",value:{"id":"d153","title":"碳化矽陶瓷鏡面基材","titleEn":"Silicon Carbide Ceramic Mirror Substrates","category":"materials","kind":"craft","summary":"「碳化矽陶瓷鏡面基材」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Silicon Carbide Ceramic Mirror Substrates: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d205-d355e83bba3fddba.json"]={sha256:"d355e83bba3fddba3e1cae8725605b2a7be27ab60bad1e200c81adc72ac0093f",value:{"id":"d205","title":"GE SIGNA PET MR整合系統","titleEn":"GE SIGNA PET MR Integrated System","category":"biomedical","kind":"project","summary":"「GE SIGNA PET MR整合系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for GE SIGNA PET MR Integrated System: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

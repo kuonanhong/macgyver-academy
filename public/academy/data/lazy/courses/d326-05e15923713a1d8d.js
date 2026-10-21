@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d326-05e15923713a1d8d.json"]={sha256:"05e15923713a1d8d0f46286e5f33e38a8598839d9a39db70a0356341a5228de8",value:{"id":"d326","title":"農業移植機精密定位","titleEn":"Agricultural Transplanter Precision Positioning","category":"process","kind":"craft","summary":"「農業移植機精密定位」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Agricultural Transplanter Precision Positioning: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

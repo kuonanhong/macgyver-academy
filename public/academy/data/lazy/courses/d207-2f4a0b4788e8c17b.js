@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d207-2f4a0b4788e8c17b.json"]={sha256:"2f4a0b4788e8c17beb802b8cc8e8e6917bada65297bb0d2f40a5b0c9a63fa508",value:{"id":"d207","title":"Varian Halcyon放射設備架構","titleEn":"Varian Halcyon Radiation Equipment Architecture","category":"biomedical","kind":"project","summary":"「Varian Halcyon放射設備架構」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Varian Halcyon Radiation Equipment Architecture: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

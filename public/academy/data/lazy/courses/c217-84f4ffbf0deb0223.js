@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c217-84f4ffbf0deb0223.json"]={sha256:"84f4ffbf0deb022369cc32c972b574c6f3b81f85661106467002decd0949f5e8",value:{"title":"Tesla Model S 電動平台","titleEn":"Tesla Model S electric platform","category":"automotive","kind":"project","summary":"課程規劃主題：底盤電池與整車軟體。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: underfloor batteries and vehicle software. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c217"}};

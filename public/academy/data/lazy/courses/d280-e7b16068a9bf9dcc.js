@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d280-e7b16068a9bf9dcc.json"]={sha256:"e7b16068a9bf9dcccc5efc5269dbb50192a1252043a7dfbf2c2339622bad14dd",value:{"id":"d280","title":"醫療設備資安更新架構","titleEn":"Medical Equipment Security Update Architecture","category":"biomedical","kind":"craft","summary":"「醫療設備資安更新架構」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Equipment Security Update Architecture: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

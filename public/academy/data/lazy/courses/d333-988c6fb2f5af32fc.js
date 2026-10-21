@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d333-988c6fb2f5af32fc.json"]={sha256:"988c6fb2f5af32fc7c2c7be09703350b8834866d7b0dd0ceff961f8fb16e457f",value:{"id":"d333","title":"稻米碾製與光學色選","titleEn":"Rice Milling and Optical Sorting","category":"process","kind":"craft","summary":"「稻米碾製與光學色選」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Rice Milling and Optical Sorting: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

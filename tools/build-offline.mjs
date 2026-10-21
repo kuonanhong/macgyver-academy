@@ -32,7 +32,7 @@ const currentInputs = inputs();
 function fresh() {
   try {
     const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-    return manifest.version === 1 && JSON.stringify(manifest.inputs) === JSON.stringify(currentInputs) && Object.entries(manifest.outputs).every(([name, digest]) => hash(fs.readFileSync(path.join(root, name))) === digest);
+    return manifest.version === 1 && manifest.lazyVersion === 1 && JSON.stringify(manifest.inputs) === JSON.stringify(currentInputs) && Object.entries(manifest.outputs).every(([name, digest]) => hash(fs.readFileSync(path.join(root, name))) === digest);
   } catch { return false; }
 }
 if (args.has('--check')) {
@@ -92,18 +92,56 @@ for(const course of data.featured){
   batch.push(course);bytes+=length;
 }
 if(batch.length)parts.push(batch);
-const partNames=parts.map((_,i)=>`offline-data-${String(i+1).padStart(2,'0')}.js`);
-const preload = `/* Generated public curriculum only. No private documents or model weights. */\nwindow.MG_DATA=${serialize({...data,featured:[]})};\nwindow.MG_DATA_FILES=${serialize(partNames)};\n`;
-new vm.Script(preload, { filename: 'offline-data.js' });
-function write(file, value) { const temp = `${file}.tmp`; fs.writeFileSync(temp, value); fs.renameSync(temp, file); }
+function write(file, value) { const temp = `${file}.tmp`; fs.mkdirSync(path.dirname(file),{recursive:true}); fs.writeFileSync(temp, value); fs.renameSync(temp, file); }
 write(path.join(publicRoot, 'app.bundle.js'), bundle);
-write(path.join(publicRoot, 'offline-data.js'), preload);
-for(let i=0;i<parts.length;i++){
-  const code=`/* Generated course part ${i+1}/${parts.length}. */\nwindow.MG_DATA.featured.push(...${serialize(parts[i])});\n`;
-  new vm.Script(code,{filename:partNames[i]});
-  write(path.join(publicRoot,partNames[i]),code);generated.add(partNames[i]);
+// Only catalogue metadata and step IDs are required for home, filters and saved
+// progress. Lesson bodies and supporting material live in immutable single-course files.
+const lazyRoot=path.join(publicRoot,'data/lazy');
+const metadataKeys=['id','title','titleEn','category','subcategory','subcategoryTitle','subcategoryTitleEn','summary','summaryEn','status','kind','stepCount','estimatedMinutes','diagram','flowDiagram','photoId','educationEdition','enrichmentVersion','curriculumVersion','contentStatus','depth','languageCoverage','learningTrack','learningSubdiscipline','learningTags','tags','architectureFamily','architectureNodes','architectureEdges'];
+const metadata=c=>{
+  const result=Object.fromEntries(metadataKeys.filter(k=>c[k]!==undefined).map(k=>[k,c[k]]));
+  if(Array.isArray(c.stages)){result._lazy=true;result.stages=c.stages.map(s=>({id:s.id,title:s.title,titleEn:s.titleEn,order:s.order,steps:s.steps.map(step=>({id:step.id}))}));}
+  else result._lazyTopic=true;
+  return result;
+};
+const guided=new Map(data.featured.map(c=>[c.id,c]));
+const fullCatalog=data.catalog.map(c=>guided.get(c.id)||c);
+function chunk(group,id,value){
+  if(!/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/.test(id))throw Error('Unsafe lazy data ID: '+id);
+  const content=JSON.stringify(value)+'\n',sha256=hash(content),name=`data/lazy/${group}/${id}-${sha256.slice(0,16)}.json`,script=name.replace(/\.json$/,'.js');
+  const code=`/* Generated on-demand data. */\nwindow.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);\nwindow.MG_LAZY_DATA[${JSON.stringify(name)}]={sha256:${JSON.stringify(sha256)},value:${serialize(value)}};\n`;
+  write(path.join(publicRoot,name),content);write(path.join(publicRoot,script),code);
+  generated.add(name);generated.add(script);
+  return {file:name,script,sha256,byteLength:Buffer.byteLength(content)};
 }
-for(const name of fs.readdirSync(publicRoot).filter(n=>/^offline-data-\d+\.js$/.test(n)&&!generated.has(n)))fs.unlinkSync(path.join(publicRoot,name));
+const sourcesById=new Map(data.sources.map(s=>[s.id,s]));
+const byCourse=name=>new Map((data[name]?.courses||[]).map(c=>[c.courseId,c]));
+const mediaById=byCourse('media'),relatedById=byCourse('related-skills'),placesById=byCourse('course-places'),vendorsByCourse=byCourse('vendors');
+const vendorsById=new Map((data.vendors?.vendors||[]).map(v=>[v.id,v]));
+const courseFiles={},resourceFiles={};
+for(const c of fullCatalog){
+  courseFiles[c.id]=chunk('courses',c.id,c);
+  const sourceIds=new Set(c.sourceIds||[]);
+  for(const stage of c.stages||[]){for(const id of stage.sourceIds||[])sourceIds.add(id);for(const step of stage.steps||[]){for(const id of step.sourceIds||[])sourceIds.add(id);for(const k of step.knowledge||[])for(const id of k.sourceIds||[])sourceIds.add(id);}}
+  const association=vendorsByCourse.get(c.id);
+  resourceFiles[c.id]=chunk('resources',c.id,{sources:[...sourceIds].map(id=>sourcesById.get(id)).filter(Boolean),media:{courses:[mediaById.get(c.id)].filter(Boolean)},related:{courses:[relatedById.get(c.id)].filter(Boolean)},places:{courses:[placesById.get(c.id)].filter(Boolean)},vendors:{courses:[association].filter(Boolean),vendors:(association?.vendorIds||[]).map(id=>vendorsById.get(id)).filter(Boolean)}});
+}
+const sourceUsage=data.featured.map(c=>({
+  ...metadata(c),sourceIds:c.sourceIds||[],
+  stages:c.stages.map(stage=>({
+    sourceIds:stage.sourceIds||[],
+    steps:stage.steps.map(step=>({id:step.id,sourceIds:step.sourceIds||[],photoId:step.photoId,knowledge:(step.knowledge||[]).map(k=>({sourceIds:k.sourceIds||[]}))}))
+  }))
+}));
+const auxiliary={};
+for(const [name,value] of Object.entries({...data,'source-usage':sourceUsage}))if(!['catalog','featured','photos','release'].includes(name))auxiliary[name]=chunk('data',name,value);
+const index={lazyVersion:1,guidedIds:data.featured.map(c=>c.id),catalog:fullCatalog.map(metadata),photos:data.photos,release:data.release,courses:courseFiles,resources:resourceFiles,auxiliary};
+const indexName='data/lazy/index.json';write(path.join(publicRoot,indexName),JSON.stringify(index)+'\n');generated.add(indexName);
+const preload=`/* Generated initial catalogue only; full lessons load on demand. */\nwindow.MG_LAZY_INDEX=${serialize(index)};\nwindow.MG_DATA={catalog:window.MG_LAZY_INDEX.catalog,featured:window.MG_LAZY_INDEX.guidedIds.map(id=>window.MG_LAZY_INDEX.catalog.find(c=>c.id===id)),photos:window.MG_LAZY_INDEX.photos,sources:[],release:window.MG_LAZY_INDEX.release};\nwindow.MG_DATA_FILES=[];\n`;
+new vm.Script(preload,{filename:'offline-data.js'});write(path.join(publicRoot,'offline-data.js'),preload);
+for(const name of fs.readdirSync(publicRoot).filter(n=>/^offline-data-\d+\.js$/.test(n)))fs.unlinkSync(path.join(publicRoot,name));
+// Remove superseded chunks only from the generated lazy directory.
+for(const group of ['courses','resources','data'])for(const name of fs.readdirSync(path.join(lazyRoot,group)))if(!generated.has(`data/lazy/${group}/${name}`))fs.unlinkSync(path.join(lazyRoot,group,name));
 // HTTP clients load the same ordered courses from bounded, immutable JSON
 // parts. Keep featured.json as canonical authoring and portable-package data.
 const hostedDir = path.join(publicRoot, 'data/course-parts');
@@ -124,5 +162,5 @@ for (const name of fs.readdirSync(hostedDir)) {
 }
 for (const name of hostedFiles) generated.add(`data/course-parts/${name}`);
 const outputs = Object.fromEntries([...generated].map(name => [relative(path.join(publicRoot, name)), hash(fs.readFileSync(path.join(publicRoot, name)))]));
-write(manifestPath, JSON.stringify({ version: 1, dataSets: Object.keys(data), offlineParts:partNames, modules: [...modules.keys()], inputs: currentInputs, outputs }, null, 2) + '\n');
-console.log(`Offline bundle built: ${modules.size} modules, ${Object.keys(data).length} complete JSON data sets, ${parts.length} bounded course parts; no npm dependencies required.`);
+write(manifestPath, JSON.stringify({ version: 1, dataSets: Object.keys(data), lazyVersion:1,initialBytes:Buffer.byteLength(preload),offlineParts:[], modules: [...modules.keys()], inputs: currentInputs, outputs }, null, 2) + '\n');
+console.log(`Offline bundle built: ${modules.size} modules, ${Object.keys(data).length} data sets, ${data.featured.length} lazy guided courses; initial catalogue ${Buffer.byteLength(preload)} bytes. Compatibility parts: ${parts.length}.`);

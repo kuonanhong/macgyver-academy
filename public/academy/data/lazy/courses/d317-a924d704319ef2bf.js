@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d317-a924d704319ef2bf.json"]={sha256:"a924d704319ef2bf20661bd7ff09028cbf589e1b0cba14ce9b2f039fa868884e",value:{"id":"d317","title":"溫室氣候多變量控制","titleEn":"Greenhouse Multivariable Climate Control","category":"process","kind":"craft","summary":"「溫室氣候多變量控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Greenhouse Multivariable Climate Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

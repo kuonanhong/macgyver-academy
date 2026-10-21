@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d364-a123b1d6c233aa88.json"]={sha256:"a123b1d6c233aa880eb59a426d2536f3de7505e7c369d13214d22a0921cd0d51",value:{"id":"d364","title":"食品工廠物料追溯系統","titleEn":"Food Factory Material Traceability Systems","category":"process","kind":"craft","summary":"「食品工廠物料追溯系統」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Food Factory Material Traceability Systems: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

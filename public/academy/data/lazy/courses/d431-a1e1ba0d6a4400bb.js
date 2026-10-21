@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d431-a1e1ba0d6a4400bb.json"]={sha256:"a1e1ba0d6a4400bb1d3b88e9731ced9f2132bbf22f437ba7219cf5092e992f8a",value:{"id":"d431","title":"SACLA X光自由電子雷射","titleEn":"SACLA X-Ray Free Electron Laser","category":"megascience","kind":"project","summary":"「SACLA X光自由電子雷射」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for SACLA X-Ray Free Electron Laser: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

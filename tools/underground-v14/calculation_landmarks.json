@@ -1,0 +1,7240 @@
+[
+  {
+    "courseId": "hsuehshan",
+    "unit": 1,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 1e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.0,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 200,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.00039999999999999996,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.00044,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 2,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 31,
+        "unit": "m"
+      }
+    ],
+    "result": 304.11,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 334.521,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 3,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 500,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 39.0,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 42.9,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 4,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 30,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 8,
+        "unit": "mm"
+      }
+    ],
+    "result": 240,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 264.0,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 5,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.5,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.31,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 11.16,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 12.276000000000002,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 6,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 20,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 35,
+        "unit": "min"
+      }
+    ],
+    "result": 137.14285714285714,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 124.67532467532467,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 3000,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.03781546712654381,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.04159701383919819,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 8,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 500,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.7,
+        "unit": "m/s"
+      }
+    ],
+    "result": 25.668750000000003,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 31.059187500000004,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 9,
+    "model": "sump",
+    "inputs": [
+      {
+        "label": "usable reserve",
+        "labelZh": "有效剩餘容積",
+        "value": 300,
+        "unit": "m³"
+      },
+      {
+        "label": "net inflow",
+        "labelZh": "淨入流",
+        "value": 0.2,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 25.0,
+    "unitLabel": "min",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 22.727272727272727,
+    "formula": "t=V/Q/60",
+    "boundary": "Constant inflow during outage, excluding alarm delay and inflow surges"
+  },
+  {
+    "courseId": "hsuehshan",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 100,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.0,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 82.4,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b102",
+    "unit": 1,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 34,
+        "unit": "m"
+      }
+    ],
+    "result": 333.54,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 366.89400000000006,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b102",
+    "unit": 2,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.32,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.1,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 2.834285714285715,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 3.1177142857142863,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b102",
+    "unit": 3,
+    "model": "joint",
+    "inputs": [
+      {
+        "label": "initial compression",
+        "labelZh": "初始壓縮",
+        "value": 19,
+        "unit": "mm"
+      },
+      {
+        "label": "opening",
+        "labelZh": "張開量",
+        "value": 3.4,
+        "unit": "mm"
+      },
+      {
+        "label": "tolerance",
+        "labelZh": "幾何公差",
+        "value": 2,
+        "unit": "mm"
+      }
+    ],
+    "result": 13.6,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 13.26,
+    "formula": "c_res=c0−opening−tolerance",
+    "boundary": "One-direction geometric reserve, not contact pressure or proof of watertightness"
+  },
+  {
+    "courseId": "b102",
+    "unit": 4,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 21,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 33,
+        "unit": "min"
+      }
+    ],
+    "result": 152.72727272727272,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 138.84297520661156,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b102",
+    "unit": 5,
+    "model": "heat",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "volume flow",
+        "labelZh": "體積風量",
+        "value": 82,
+        "unit": "m³/s"
+      },
+      {
+        "label": "specific heat",
+        "labelZh": "定壓比熱",
+        "value": 1.005,
+        "unit": "kJ/(kg·K)"
+      },
+      {
+        "label": "temperature rise",
+        "labelZh": "溫升",
+        "value": 12,
+        "unit": "K"
+      }
+    ],
+    "result": 1186.7039999999997,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1305.3743999999997,
+    "formula": "Q=ρVcpΔT",
+    "boundary": "Sensible air heat only, excluding latent heat and rock transients"
+  },
+  {
+    "courseId": "b102",
+    "unit": 6,
+    "model": "dynamic",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "train speed",
+        "labelZh": "列車速度",
+        "value": 41,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1008.5999999999999,
+    "unitLabel": "Pa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1220.4060000000002,
+    "formula": "q=ρv²/2",
+    "boundary": "Incompressible dynamic-pressure scale, not a compressible train pressure-wave solution"
+  },
+  {
+    "courseId": "b102",
+    "unit": 7,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 82,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 320,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 482.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 522.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b102",
+    "unit": 8,
+    "model": "sump",
+    "inputs": [
+      {
+        "label": "usable reserve",
+        "labelZh": "有效剩餘容積",
+        "value": 320,
+        "unit": "m³"
+      },
+      {
+        "label": "net inflow",
+        "labelZh": "淨入流",
+        "value": 0.19,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 28.07017543859649,
+    "unitLabel": "min",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 25.51834130781499,
+    "formula": "t=V/Q/60",
+    "boundary": "Constant inflow during outage, excluding alarm delay and inflow surges"
+  },
+  {
+    "courseId": "b102",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.011,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.00012099999999999999,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.00014641,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b102",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 101,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.15841584158416,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 82.57425742574257,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b103",
+    "unit": 1,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1240000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.005,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1216.44,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1338.0840000000003,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b103",
+    "unit": 2,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 560,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 43.68,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 48.048,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b103",
+    "unit": 3,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 32,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 7,
+        "unit": "mm"
+      }
+    ],
+    "result": 224,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 246.40000000000003,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b103",
+    "unit": 4,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.33999999999999997,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.3,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 3.2057142857142855,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 3.5262857142857142,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b103",
+    "unit": 5,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.56,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.31,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 11.606399999999999,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 12.76704,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b103",
+    "unit": 6,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 22,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 35,
+        "unit": "min"
+      }
+    ],
+    "result": 150.85714285714286,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 137.14285714285714,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b103",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 3240,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.04084070449666731,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.044924774946334046,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b103",
+    "unit": 8,
+    "model": "heat",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "volume flow",
+        "labelZh": "體積風量",
+        "value": 84,
+        "unit": "m³/s"
+      },
+      {
+        "label": "specific heat",
+        "labelZh": "定壓比熱",
+        "value": 1.005,
+        "unit": "kJ/(kg·K)"
+      },
+      {
+        "label": "temperature rise",
+        "labelZh": "溫升",
+        "value": 15,
+        "unit": "K"
+      }
+    ],
+    "result": 1519.5599999999997,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1671.5159999999998,
+    "formula": "Q=ρVcpΔT",
+    "boundary": "Sensible air heat only, excluding latent heat and rock transients"
+  },
+  {
+    "courseId": "b103",
+    "unit": 9,
+    "model": "dynamic",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "train speed",
+        "labelZh": "列車速度",
+        "value": 42,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1058.3999999999999,
+    "unitLabel": "Pa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1280.664,
+    "formula": "q=ρv²/2",
+    "boundary": "Incompressible dynamic-pressure scale, not a compressible train pressure-wave solution"
+  },
+  {
+    "courseId": "b103",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 102,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.31372549019608,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 82.74509803921569,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b104",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 13.2,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 13.2,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 14.52,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b104",
+    "unit": 2,
+    "model": "headway",
+    "inputs": [
+      {
+        "label": "occupation",
+        "labelZh": "區段占用",
+        "value": 15,
+        "unit": "min"
+      },
+      {
+        "label": "clearance",
+        "labelZh": "清空餘裕",
+        "value": 2,
+        "unit": "min"
+      }
+    ],
+    "result": 3.5294117647058822,
+    "unitLabel": "trains/h",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 3.2432432432432434,
+    "formula": "C=60/(tocc+tclear)",
+    "boundary": "One-direction theoretical capacity without opposing conflicts, delay or maintenance"
+  },
+  {
+    "courseId": "b104",
+    "unit": 3,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1260000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.0054,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1334.9448,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1468.4392800000003,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b104",
+    "unit": 4,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 45,
+        "unit": "m"
+      }
+    ],
+    "result": 441.45,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 485.5950000000001,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b104",
+    "unit": 5,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 33,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 9,
+        "unit": "mm"
+      }
+    ],
+    "result": 297,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 326.7,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b104",
+    "unit": 6,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 23,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 35,
+        "unit": "min"
+      }
+    ],
+    "result": 157.71428571428572,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 143.37662337662337,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b104",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 3360,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.04235332318172907,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.046588655499901974,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b104",
+    "unit": 8,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 620,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.7,
+        "unit": "m/s"
+      }
+    ],
+    "result": 31.82925,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 38.5133925,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b104",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 86,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 536.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 581.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b104",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 103,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.46601941747574,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 82.9126213592233,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b105",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 13.6,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 13.6,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 14.96,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b105",
+    "unit": 2,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1280000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.0052,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1305.9071999999999,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1436.4979200000002,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b105",
+    "unit": 3,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 4.9999999999999996e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.2,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 240,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.00264,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0029040000000000003,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b105",
+    "unit": 4,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.62,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.295,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 11.4696,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 12.616560000000002,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b105",
+    "unit": 5,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 24,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 34,
+        "unit": "min"
+      }
+    ],
+    "result": 169.41176470588235,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 154.01069518716577,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b105",
+    "unit": 6,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 3480,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.5,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.04217879025652963,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.04639666928218259,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b105",
+    "unit": 7,
+    "model": "dynamic",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "train speed",
+        "labelZh": "列車速度",
+        "value": 44,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1161.6,
+    "unitLabel": "Pa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1405.5360000000003,
+    "formula": "q=ρv²/2",
+    "boundary": "Incompressible dynamic-pressure scale, not a compressible train pressure-wave solution"
+  },
+  {
+    "courseId": "b105",
+    "unit": 8,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 88,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 340,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 513.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 555.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b105",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.014,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.00019600000000000002,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.00023716000000000007,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b105",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 104,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.61538461538461,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 83.07692307692308,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b106",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 14.0,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 14.0,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 15.400000000000002,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b106",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 1e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 250,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.000525,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0005775000000000001,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b106",
+    "unit": 3,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 52,
+        "unit": "m"
+      }
+    ],
+    "result": 510.12,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 561.132,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b106",
+    "unit": 4,
+    "model": "flowreduction",
+    "inputs": [
+      {
+        "label": "flow before at equal pressure",
+        "labelZh": "試前同壓流量",
+        "value": 0.013000000000000001,
+        "unit": "m³/s"
+      },
+      {
+        "label": "flow after at equal pressure",
+        "labelZh": "試後同壓流量",
+        "value": 0.0035,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 73.07692307692308,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 70.38461538461539,
+    "formula": "r=100(Qbefore−Qafter)/Qbefore",
+    "boundary": "Flow reduction at equal head and test interval, not whole-rock sealing efficiency or long-term assurance"
+  },
+  {
+    "courseId": "b106",
+    "unit": 5,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 35,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 9,
+        "unit": "mm"
+      }
+    ],
+    "result": 315,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 346.5,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b106",
+    "unit": 6,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1300000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.006,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1530.36,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1683.3960000000004,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b106",
+    "unit": 7,
+    "model": "dynamic",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "train speed",
+        "labelZh": "列車速度",
+        "value": 45,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1215.0,
+    "unitLabel": "Pa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1470.1500000000005,
+    "formula": "q=ρv²/2",
+    "boundary": "Incompressible dynamic-pressure scale, not a compressible train pressure-wave solution"
+  },
+  {
+    "courseId": "b106",
+    "unit": 8,
+    "model": "sump",
+    "inputs": [
+      {
+        "label": "usable reserve",
+        "labelZh": "有效剩餘容積",
+        "value": 400,
+        "unit": "m³"
+      },
+      {
+        "label": "net inflow",
+        "labelZh": "淨入流",
+        "value": 0.19,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 35.08771929824561,
+    "unitLabel": "min",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 31.897926634768737,
+    "formula": "t=V/Q/60",
+    "boundary": "Constant inflow during outage, excluding alarm delay and inflow surges"
+  },
+  {
+    "courseId": "b106",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 90,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 540.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 585.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b106",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 105,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.76190476190476,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 83.23809523809524,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b107",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 14.4,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 14.4,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 15.840000000000002,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b107",
+    "unit": 2,
+    "model": "beam",
+    "inputs": [
+      {
+        "label": "line load",
+        "labelZh": "單位長載重",
+        "value": 26,
+        "unit": "kN/m"
+      },
+      {
+        "label": "span",
+        "labelZh": "跨距",
+        "value": 3.15,
+        "unit": "m"
+      }
+    ],
+    "result": 32.248125,
+    "unitLabel": "kN·m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 39.02023125000001,
+    "formula": "M=qL²/8",
+    "boundary": "Uniformly loaded simply supported strip; frame continuity and plate action need separate checks"
+  },
+  {
+    "courseId": "b107",
+    "unit": 3,
+    "model": "thermal",
+    "inputs": [
+      {
+        "label": "expansion coefficient",
+        "labelZh": "線膨脹係數",
+        "value": 1e-05,
+        "unit": "K⁻¹"
+      },
+      {
+        "label": "temperature difference",
+        "labelZh": "溫差",
+        "value": 26,
+        "unit": "K"
+      },
+      {
+        "label": "elastic modulus",
+        "labelZh": "彈性模數",
+        "value": 25,
+        "unit": "GPa"
+      }
+    ],
+    "result": 6.500000000000001,
+    "unitLabel": "MPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 7.15,
+    "formula": "σ=EαΔT, GPa→MPa ×1000",
+    "boundary": "Fully restrained linear-elastic scale without creep, cracking or restraint relaxation"
+  },
+  {
+    "courseId": "b107",
+    "unit": 4,
+    "model": "float",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1025,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "displacement",
+        "labelZh": "排水體積",
+        "value": 11200,
+        "unit": "m³"
+      },
+      {
+        "label": "mass",
+        "labelZh": "總質量",
+        "value": 11135600.0,
+        "unit": "kg"
+      }
+    ],
+    "result": 3378.564,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 14640.44400000002,
+    "formula": "R=(ρV−m)g/1000, g=9.81 m/s²",
+    "boundary": "Still-water buoyancy reserve, not heel stability or free-surface verification"
+  },
+  {
+    "courseId": "b107",
+    "unit": 5,
+    "model": "settle",
+    "inputs": [
+      {
+        "label": "differential settlement",
+        "labelZh": "差異沉陷",
+        "value": 6,
+        "unit": "mm"
+      },
+      {
+        "label": "baseline",
+        "labelZh": "基線長度",
+        "value": 140,
+        "unit": "m"
+      }
+    ],
+    "result": 0.04285714285714286,
+    "unitLabel": "mm/m",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.047142857142857146,
+    "formula": "β=Δs/L",
+    "boundary": "Small-deformation angular-distortion indicator, not a consolidation solution"
+  },
+  {
+    "courseId": "b107",
+    "unit": 6,
+    "model": "joint",
+    "inputs": [
+      {
+        "label": "initial compression",
+        "labelZh": "初始壓縮",
+        "value": 20,
+        "unit": "mm"
+      },
+      {
+        "label": "opening",
+        "labelZh": "張開量",
+        "value": 4.0,
+        "unit": "mm"
+      },
+      {
+        "label": "tolerance",
+        "labelZh": "幾何公差",
+        "value": 2,
+        "unit": "mm"
+      }
+    ],
+    "result": 14.0,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 13.6,
+    "formula": "c_res=c0−opening−tolerance",
+    "boundary": "One-direction geometric reserve, not contact pressure or proof of watertightness"
+  },
+  {
+    "courseId": "b107",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 3720,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.04689117923691432,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.05158029716060575,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b107",
+    "unit": 8,
+    "model": "diffusion",
+    "inputs": [
+      {
+        "label": "diffusivity",
+        "labelZh": "擴散係數",
+        "value": 3e-12,
+        "unit": "m²/s"
+      },
+      {
+        "label": "exposure",
+        "labelZh": "暴露時間",
+        "value": 17,
+        "unit": "year"
+      }
+    ],
+    "result": 40.1177965496611,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 42.07589999037454,
+    "formula": "ℓ=√(Dt); 1 year=365.25×86400 s; m→mm ×1000",
+    "boundary": "Characteristic length, not corrosion-initiation life or chloride-threshold depth"
+  },
+  {
+    "courseId": "b107",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 92,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 542.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 587.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b107",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 106,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 84.90566037735849,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 83.39622641509433,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b108",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 14.8,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 14.8,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 16.28,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b108",
+    "unit": 2,
+    "model": "float",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1025,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "displacement",
+        "labelZh": "排水體積",
+        "value": 11400,
+        "unit": "m³"
+      },
+      {
+        "label": "mass",
+        "labelZh": "總質量",
+        "value": 11334450.0,
+        "unit": "kg"
+      }
+    ],
+    "result": 3438.8955,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 14901.88050000002,
+    "formula": "R=(ρV−m)g/1000, g=9.81 m/s²",
+    "boundary": "Still-water buoyancy reserve, not heel stability or free-surface verification"
+  },
+  {
+    "courseId": "b108",
+    "unit": 3,
+    "model": "beam",
+    "inputs": [
+      {
+        "label": "line load",
+        "labelZh": "單位長載重",
+        "value": 27,
+        "unit": "kN/m"
+      },
+      {
+        "label": "span",
+        "labelZh": "跨距",
+        "value": 3.3,
+        "unit": "m"
+      }
+    ],
+    "result": 36.75375,
+    "unitLabel": "kN·m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 44.4720375,
+    "formula": "M=qL²/8",
+    "boundary": "Uniformly loaded simply supported strip; frame continuity and plate action need separate checks"
+  },
+  {
+    "courseId": "b108",
+    "unit": 4,
+    "model": "settle",
+    "inputs": [
+      {
+        "label": "differential settlement",
+        "labelZh": "差異沉陷",
+        "value": 7,
+        "unit": "mm"
+      },
+      {
+        "label": "baseline",
+        "labelZh": "基線長度",
+        "value": 130,
+        "unit": "m"
+      }
+    ],
+    "result": 0.05384615384615385,
+    "unitLabel": "mm/m",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.05923076923076924,
+    "formula": "β=Δs/L",
+    "boundary": "Small-deformation angular-distortion indicator, not a consolidation solution"
+  },
+  {
+    "courseId": "b108",
+    "unit": 5,
+    "model": "joint",
+    "inputs": [
+      {
+        "label": "initial compression",
+        "labelZh": "初始壓縮",
+        "value": 21,
+        "unit": "mm"
+      },
+      {
+        "label": "opening",
+        "labelZh": "張開量",
+        "value": 3.8,
+        "unit": "mm"
+      },
+      {
+        "label": "tolerance",
+        "labelZh": "幾何公差",
+        "value": 2,
+        "unit": "mm"
+      }
+    ],
+    "result": 15.2,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 14.82,
+    "formula": "c_res=c0−opening−tolerance",
+    "boundary": "One-direction geometric reserve, not contact pressure or proof of watertightness"
+  },
+  {
+    "courseId": "b108",
+    "unit": 6,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 3840,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.5,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.046542113386515455,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.05119632472516699,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b108",
+    "unit": 7,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1340000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.006200000000000001,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1630.0296,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1793.0325600000003,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b108",
+    "unit": 8,
+    "model": "dynamic",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "train speed",
+        "labelZh": "列車速度",
+        "value": 47,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1325.3999999999999,
+    "unitLabel": "Pa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1603.7340000000002,
+    "formula": "q=ρv²/2",
+    "boundary": "Incompressible dynamic-pressure scale, not a compressible train pressure-wave solution"
+  },
+  {
+    "courseId": "b108",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 94,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 544.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 589.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b108",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 107,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.04672897196262,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 83.55140186915888,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b109",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 15.2,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 15.2,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 16.72,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b109",
+    "unit": 2,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 63,
+        "unit": "m"
+      }
+    ],
+    "result": 618.03,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 679.8330000000001,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b109",
+    "unit": 3,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.74,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.28,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 11.6928,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 12.862080000000002,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b109",
+    "unit": 4,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.45999999999999996,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.3,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 4.337142857142857,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 4.770857142857143,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b109",
+    "unit": 5,
+    "model": "beam",
+    "inputs": [
+      {
+        "label": "line load",
+        "labelZh": "單位長載重",
+        "value": 28,
+        "unit": "kN/m"
+      },
+      {
+        "label": "span",
+        "labelZh": "跨距",
+        "value": 3.6,
+        "unit": "m"
+      }
+    ],
+    "result": 45.36,
+    "unitLabel": "kN·m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 54.88560000000001,
+    "formula": "M=qL²/8",
+    "boundary": "Uniformly loaded simply supported strip; frame continuity and plate action need separate checks"
+  },
+  {
+    "courseId": "b109",
+    "unit": 6,
+    "model": "joint",
+    "inputs": [
+      {
+        "label": "initial compression",
+        "labelZh": "初始壓縮",
+        "value": 18,
+        "unit": "mm"
+      },
+      {
+        "label": "opening",
+        "labelZh": "張開量",
+        "value": 4.0,
+        "unit": "mm"
+      },
+      {
+        "label": "tolerance",
+        "labelZh": "幾何公差",
+        "value": 2,
+        "unit": "mm"
+      }
+    ],
+    "result": 12.0,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 11.6,
+    "formula": "c_res=c0−opening−tolerance",
+    "boundary": "One-direction geometric reserve, not contact pressure or proof of watertightness"
+  },
+  {
+    "courseId": "b109",
+    "unit": 7,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 820,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.6,
+        "unit": "m/s"
+      }
+    ],
+    "result": 39.852,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 48.22092000000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b109",
+    "unit": 8,
+    "model": "lighting",
+    "inputs": [
+      {
+        "label": "illuminance",
+        "labelZh": "照度",
+        "value": 96,
+        "unit": "lx"
+      },
+      {
+        "label": "reflectance",
+        "labelZh": "反射率",
+        "value": 0.27,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 8.250592249883855,
+    "unitLabel": "cd/m²",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 9.075651474872242,
+    "formula": "L=ρE/π",
+    "boundary": "Ideal Lambertian reflection, not actual wet-road luminance"
+  },
+  {
+    "courseId": "b109",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 96,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 546.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 591.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b109",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 108,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.18518518518519,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 83.70370370370371,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b110",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 15.6,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 15.6,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 17.16,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b110",
+    "unit": 2,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 67,
+        "unit": "m"
+      }
+    ],
+    "result": 657.27,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 722.997,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b110",
+    "unit": 3,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.77,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.28,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 11.894400000000003,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 13.083840000000004,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b110",
+    "unit": 4,
+    "model": "void",
+    "inputs": [
+      {
+        "label": "excavated diameter",
+        "labelZh": "開挖外徑",
+        "value": 8.36,
+        "unit": "m"
+      },
+      {
+        "label": "lining diameter",
+        "labelZh": "襯砌外徑",
+        "value": 8.06,
+        "unit": "m"
+      },
+      {
+        "label": "ring length",
+        "labelZh": "環長",
+        "value": 1.5,
+        "unit": "m"
+      }
+    ],
+    "result": 5.803307029343714,
+    "unitLabel": "m³",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 6.383637732278086,
+    "formula": "V=π(De²−Dl²)L/4",
+    "boundary": "Concentric geometric void, not actual grout demand or proof of completion"
+  },
+  {
+    "courseId": "b110",
+    "unit": 5,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.48,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.4,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 4.662857142857143,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 5.129142857142858,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b110",
+    "unit": 6,
+    "model": "joint",
+    "inputs": [
+      {
+        "label": "initial compression",
+        "labelZh": "初始壓縮",
+        "value": 19,
+        "unit": "mm"
+      },
+      {
+        "label": "opening",
+        "labelZh": "張開量",
+        "value": 4.0,
+        "unit": "mm"
+      },
+      {
+        "label": "tolerance",
+        "labelZh": "幾何公差",
+        "value": 2,
+        "unit": "mm"
+      }
+    ],
+    "result": 13.0,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 12.6,
+    "formula": "c_res=c0−opening−tolerance",
+    "boundary": "One-direction geometric reserve, not contact pressure or proof of watertightness"
+  },
+  {
+    "courseId": "b110",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 4080,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.05142903529209957,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.056571938821309536,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b110",
+    "unit": 8,
+    "model": "settle",
+    "inputs": [
+      {
+        "label": "differential settlement",
+        "labelZh": "差異沉陷",
+        "value": 5,
+        "unit": "mm"
+      },
+      {
+        "label": "baseline",
+        "labelZh": "基線長度",
+        "value": 170,
+        "unit": "m"
+      }
+    ],
+    "result": 0.029411764705882353,
+    "unitLabel": "mm/m",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.03235294117647059,
+    "formula": "β=Δs/L",
+    "boundary": "Small-deformation angular-distortion indicator, not a consolidation solution"
+  },
+  {
+    "courseId": "b110",
+    "unit": 9,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 860,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 46.569,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 56.34848999999999,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b110",
+    "unit": 10,
+    "model": "diffusion",
+    "inputs": [
+      {
+        "label": "diffusivity",
+        "labelZh": "擴散係數",
+        "value": 2e-12,
+        "unit": "m²/s"
+      },
+      {
+        "label": "exposure",
+        "labelZh": "暴露時間",
+        "value": 19,
+        "unit": "year"
+      }
+    ],
+    "result": 34.629305508485146,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 36.3195220232866,
+    "formula": "ℓ=√(Dt); 1 year=365.25×86400 s; m→mm ×1000",
+    "boundary": "Characteristic length, not corrosion-initiation life or chloride-threshold depth"
+  },
+  {
+    "courseId": "b111",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 16.0,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 16.0,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 17.6,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b111",
+    "unit": 2,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 800,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 62.4,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 68.64000000000001,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b111",
+    "unit": 3,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 40,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 7,
+        "unit": "mm"
+      }
+    ],
+    "result": 280,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 308.00000000000006,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b111",
+    "unit": 4,
+    "model": "lighting",
+    "inputs": [
+      {
+        "label": "illuminance",
+        "labelZh": "照度",
+        "value": 100,
+        "unit": "lx"
+      },
+      {
+        "label": "reflectance",
+        "labelZh": "反射率",
+        "value": 0.23,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 7.321127382227186,
+    "unitLabel": "cd/m²",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 8.053240120449905,
+    "formula": "L=ρE/π",
+    "boundary": "Ideal Lambertian reflection, not actual wet-road luminance"
+  },
+  {
+    "courseId": "b111",
+    "unit": 5,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 900,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.4,
+        "unit": "m/s"
+      }
+    ],
+    "result": 39.01499999999999,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 47.20815000000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b111",
+    "unit": 6,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 75,
+        "unit": "m"
+      }
+    ],
+    "result": 735.75,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 809.325,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b111",
+    "unit": 7,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 30,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 36,
+        "unit": "min"
+      }
+    ],
+    "result": 200.0,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 181.8181818181818,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b111",
+    "unit": 8,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 100,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 340,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 525.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 567.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b111",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.02,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.0004,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0004840000000000001,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b111",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 110,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.45454545454545,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.0,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b112",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 16.4,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 16.4,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 18.04,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b112",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 2e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 310,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.0013019999999999998,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0014322000000000002,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b112",
+    "unit": 3,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 830,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 64.74,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 71.21400000000001,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b112",
+    "unit": 4,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 41,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 8,
+        "unit": "mm"
+      }
+    ],
+    "result": 328,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 360.8,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b112",
+    "unit": 5,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 78,
+        "unit": "m"
+      }
+    ],
+    "result": 765.18,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 841.6980000000001,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b112",
+    "unit": 6,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 31,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 35,
+        "unit": "min"
+      }
+    ],
+    "result": 212.57142857142858,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 193.24675324675326,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b112",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 4320,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.05445427266222308,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.059899699928445384,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b112",
+    "unit": 8,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 940,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.7,
+        "unit": "m/s"
+      }
+    ],
+    "result": 48.257250000000006,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 58.39127250000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b112",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 102,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 552.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 597.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b112",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 111,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.58558558558559,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.14414414414415,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b113",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 16.8,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 16.8,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 18.480000000000004,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b113",
+    "unit": 2,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 980,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.1,
+        "unit": "m/s"
+      }
+    ],
+    "result": 35.316750000000006,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 42.73326750000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b113",
+    "unit": 3,
+    "model": "lighting",
+    "inputs": [
+      {
+        "label": "illuminance",
+        "labelZh": "照度",
+        "value": 104,
+        "unit": "lx"
+      },
+      {
+        "label": "reflectance",
+        "labelZh": "反射率",
+        "value": 0.22,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 7.282930195885131,
+    "unitLabel": "cd/m²",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 8.011223215473645,
+    "formula": "L=ρE/π",
+    "boundary": "Ideal Lambertian reflection, not actual wet-road luminance"
+  },
+  {
+    "courseId": "b113",
+    "unit": 4,
+    "model": "thermal",
+    "inputs": [
+      {
+        "label": "expansion coefficient",
+        "labelZh": "線膨脹係數",
+        "value": 1e-05,
+        "unit": "K⁻¹"
+      },
+      {
+        "label": "temperature difference",
+        "labelZh": "溫差",
+        "value": 22,
+        "unit": "K"
+      },
+      {
+        "label": "elastic modulus",
+        "labelZh": "彈性模數",
+        "value": 25,
+        "unit": "GPa"
+      }
+    ],
+    "result": 5.500000000000001,
+    "unitLabel": "MPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 6.050000000000002,
+    "formula": "σ=EαΔT, GPa→MPa ×1000",
+    "boundary": "Fully restrained linear-elastic scale without creep, cracking or restraint relaxation"
+  },
+  {
+    "courseId": "b113",
+    "unit": 5,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 82,
+        "unit": "m"
+      }
+    ],
+    "result": 804.42,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 884.862,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b113",
+    "unit": 6,
+    "model": "diffusion",
+    "inputs": [
+      {
+        "label": "diffusivity",
+        "labelZh": "擴散係數",
+        "value": 1e-12,
+        "unit": "m²/s"
+      },
+      {
+        "label": "exposure",
+        "labelZh": "暴露時間",
+        "value": 15,
+        "unit": "year"
+      }
+    ],
+    "result": 21.75692993048422,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 22.81886062010985,
+    "formula": "ℓ=√(Dt); 1 year=365.25×86400 s; m→mm ×1000",
+    "boundary": "Characteristic length, not corrosion-initiation life or chloride-threshold depth"
+  },
+  {
+    "courseId": "b113",
+    "unit": 7,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.54,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.6,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 5.554285714285715,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 6.109714285714287,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b113",
+    "unit": 8,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 104,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 340,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 529.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 571.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b113",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.022,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.00048399999999999995,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.00058564,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b113",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 112,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.71428571428571,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.28571428571429,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b114",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 17.2,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 17.2,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 18.92,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b114",
+    "unit": 2,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1020,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.1,
+        "unit": "m/s"
+      }
+    ],
+    "result": 36.758250000000004,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 44.47748250000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b114",
+    "unit": 3,
+    "model": "thermal",
+    "inputs": [
+      {
+        "label": "expansion coefficient",
+        "labelZh": "線膨脹係數",
+        "value": 1e-05,
+        "unit": "K⁻¹"
+      },
+      {
+        "label": "temperature difference",
+        "labelZh": "溫差",
+        "value": 23,
+        "unit": "K"
+      },
+      {
+        "label": "elastic modulus",
+        "labelZh": "彈性模數",
+        "value": 25,
+        "unit": "GPa"
+      }
+    ],
+    "result": 5.75,
+    "unitLabel": "MPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 6.325000000000001,
+    "formula": "σ=EαΔT, GPa→MPa ×1000",
+    "boundary": "Fully restrained linear-elastic scale without creep, cracking or restraint relaxation"
+  },
+  {
+    "courseId": "b114",
+    "unit": 4,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.56,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.3,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 5.28,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 5.808000000000002,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b114",
+    "unit": 5,
+    "model": "lighting",
+    "inputs": [
+      {
+        "label": "illuminance",
+        "labelZh": "照度",
+        "value": 106,
+        "unit": "lx"
+      },
+      {
+        "label": "reflectance",
+        "labelZh": "反射率",
+        "value": 0.24000000000000002,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 8.097803504515635,
+    "unitLabel": "cd/m²",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 8.9075838549672,
+    "formula": "L=ρE/π",
+    "boundary": "Ideal Lambertian reflection, not actual wet-road luminance"
+  },
+  {
+    "courseId": "b114",
+    "unit": 6,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 106,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 300,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 481.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 518.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b114",
+    "unit": 7,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.023,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.000529,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0006400900000000002,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b114",
+    "unit": 8,
+    "model": "sump",
+    "inputs": [
+      {
+        "label": "usable reserve",
+        "labelZh": "有效剩餘容積",
+        "value": 560,
+        "unit": "m³"
+      },
+      {
+        "label": "net inflow",
+        "labelZh": "淨入流",
+        "value": 0.19,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 49.12280701754386,
+    "unitLabel": "min",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 44.65709728867623,
+    "formula": "t=V/Q/60",
+    "boundary": "Constant inflow during outage, excluding alarm delay and inflow surges"
+  },
+  {
+    "courseId": "b114",
+    "unit": 9,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 33,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 38,
+        "unit": "min"
+      }
+    ],
+    "result": 208.42105263157896,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 189.4736842105263,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b114",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 113,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.84070796460178,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.42477876106194,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b115",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 17.6,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 17.6,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 19.360000000000003,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b115",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 4.9999999999999996e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 340,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.00357,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.003927,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b115",
+    "unit": 3,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 920,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 71.76,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 78.93600000000002,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b115",
+    "unit": 4,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 44,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 8,
+        "unit": "mm"
+      }
+    ],
+    "result": 352,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 387.20000000000005,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b115",
+    "unit": 5,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.5800000000000001,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.4,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 5.634285714285715,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 6.197714285714287,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b115",
+    "unit": 6,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1060,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.5,
+        "unit": "m/s"
+      }
+    ],
+    "result": 48.693749999999994,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 58.91943750000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b115",
+    "unit": 7,
+    "model": "lighting",
+    "inputs": [
+      {
+        "label": "illuminance",
+        "labelZh": "照度",
+        "value": 108,
+        "unit": "lx"
+      },
+      {
+        "label": "reflectance",
+        "labelZh": "反射率",
+        "value": 0.26,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 8.938141604040842,
+    "unitLabel": "cd/m²",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 9.831955764444928,
+    "formula": "L=ρE/π",
+    "boundary": "Ideal Lambertian reflection, not actual wet-road luminance"
+  },
+  {
+    "courseId": "b115",
+    "unit": 8,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 108,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 340,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 533.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 575.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b115",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.024,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.000576,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0006969600000000002,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b115",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 114,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 85.96491228070175,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.56140350877193,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b116",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 18.0,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 18.0,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 19.8,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b116",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 1e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 350,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.000735,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0008085000000000001,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b116",
+    "unit": 3,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 92,
+        "unit": "m"
+      }
+    ],
+    "result": 902.52,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 992.772,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b116",
+    "unit": 4,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 950,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 74.1,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 81.51,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b116",
+    "unit": 5,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 45,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 9,
+        "unit": "mm"
+      }
+    ],
+    "result": 405,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 445.5,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b116",
+    "unit": 6,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.95,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.325,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 15.209999999999999,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 16.731,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b116",
+    "unit": 7,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 35,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 36,
+        "unit": "min"
+      }
+    ],
+    "result": 233.33333333333334,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 212.12121212121212,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b116",
+    "unit": 8,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 4800,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.7,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.06283185307179585,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.06911503837897547,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b116",
+    "unit": 9,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1500000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.0066,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1942.38,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 2136.618,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b116",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 115,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.08695652173913,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.69565217391305,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b117",
+    "unit": 1,
+    "model": "advection",
+    "inputs": [
+      {
+        "label": "reach length",
+        "labelZh": "水路長度",
+        "value": 2000,
+        "unit": "m"
+      },
+      {
+        "label": "water velocity",
+        "labelZh": "水體速度",
+        "value": 1.5,
+        "unit": "m/s"
+      }
+    ],
+    "result": 22.22222222222222,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 24.444444444444446,
+    "formula": "t=L/v/60",
+    "boundary": "Constant-speed water advection, not flood-wave celerity or complete routing"
+  },
+  {
+    "courseId": "b117",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 2e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 360,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.0015119999999999999,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0016632000000000003,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b117",
+    "unit": 3,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 96,
+        "unit": "m"
+      }
+    ],
+    "result": 941.76,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1035.9360000000001,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b117",
+    "unit": 4,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 1.98,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.295,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 14.018399999999998,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 15.42024,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b117",
+    "unit": 5,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 46,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 9,
+        "unit": "mm"
+      }
+    ],
+    "result": 414,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 455.40000000000003,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b117",
+    "unit": 6,
+    "model": "waterfriction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.02,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 1800,
+        "unit": "m"
+      },
+      {
+        "label": "diameter",
+        "labelZh": "直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "velocity",
+        "labelZh": "流速",
+        "value": 2,
+        "unit": "m/s"
+      }
+    ],
+    "result": 1.8348623853211008,
+    "unitLabel": "m",
+    "changedIndex": 3,
+    "changedBy": 1.1,
+    "changedResult": 2.2201834862385326,
+    "formula": "hf=f(L/D)v²/(2g), g=9.81 m/s²",
+    "boundary": "Steady full-pipe friction, excluding water hammer and local loss"
+  },
+  {
+    "courseId": "b117",
+    "unit": 7,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.62,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.6,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 6.377142857142858,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 7.014857142857143,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b117",
+    "unit": 8,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 4920,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.7,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.06440264939859076,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.07084291433844986,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b117",
+    "unit": 9,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 36,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 38,
+        "unit": "min"
+      }
+    ],
+    "result": 227.3684210526316,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 206.69856459330143,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b117",
+    "unit": 10,
+    "model": "balance",
+    "inputs": [
+      {
+        "label": "inflow",
+        "labelZh": "流入",
+        "value": 148,
+        "unit": "m³/day"
+      },
+      {
+        "label": "outflow",
+        "labelZh": "流出",
+        "value": 79,
+        "unit": "m³/day"
+      },
+      {
+        "label": "other loss",
+        "labelZh": "其他損失",
+        "value": 20,
+        "unit": "m³/day"
+      }
+    ],
+    "result": 49,
+    "unitLabel": "m³/day",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 63.80000000000001,
+    "formula": "ΔS=I−O−loss",
+    "boundary": "Daily balance in a stated boundary, not causal proof or aquifer-parameter identification"
+  },
+  {
+    "courseId": "b118",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 18.8,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 18.8,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 20.680000000000003,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b118",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 3e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 370,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.002331,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0025641,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b118",
+    "unit": 3,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 100,
+        "unit": "m"
+      }
+    ],
+    "result": 981.0,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1079.1000000000001,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b118",
+    "unit": 4,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 47,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 8,
+        "unit": "mm"
+      }
+    ],
+    "result": 376,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 413.6,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b118",
+    "unit": 5,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 37,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 34,
+        "unit": "min"
+      }
+    ],
+    "result": 261.1764705882353,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 237.43315508021388,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b118",
+    "unit": 6,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 5040,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.5,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.061086523819801536,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.06719517620178168,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b118",
+    "unit": 7,
+    "model": "beam",
+    "inputs": [
+      {
+        "label": "line load",
+        "labelZh": "單位長載重",
+        "value": 37,
+        "unit": "kN/m"
+      },
+      {
+        "label": "span",
+        "labelZh": "跨距",
+        "value": 3.9,
+        "unit": "m"
+      }
+    ],
+    "result": 70.34625,
+    "unitLabel": "kN·m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.1189625,
+    "formula": "M=qL²/8",
+    "boundary": "Uniformly loaded simply supported strip; frame continuity and plate action need separate checks"
+  },
+  {
+    "courseId": "b118",
+    "unit": 8,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1180,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.7,
+        "unit": "m/s"
+      }
+    ],
+    "result": 60.578250000000004,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 73.2996825,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b118",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 114,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 564.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 609.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b118",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 117,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.32478632478633,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.95726495726495,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b119",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 19.2,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 19.2,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 21.12,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b119",
+    "unit": 2,
+    "model": "beam",
+    "inputs": [
+      {
+        "label": "line load",
+        "labelZh": "單位長載重",
+        "value": 38,
+        "unit": "kN/m"
+      },
+      {
+        "label": "span",
+        "labelZh": "跨距",
+        "value": 3.15,
+        "unit": "m"
+      }
+    ],
+    "result": 47.131874999999994,
+    "unitLabel": "kN·m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 57.02956875000001,
+    "formula": "M=qL²/8",
+    "boundary": "Uniformly loaded simply supported strip; frame continuity and plate action need separate checks"
+  },
+  {
+    "courseId": "b119",
+    "unit": 3,
+    "model": "float",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1025,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "displacement",
+        "labelZh": "排水體積",
+        "value": 13600,
+        "unit": "m³"
+      },
+      {
+        "label": "mass",
+        "labelZh": "總質量",
+        "value": 13521800.0,
+        "unit": "kg"
+      }
+    ],
+    "result": 4102.542,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 17777.68200000002,
+    "formula": "R=(ρV−m)g/1000, g=9.81 m/s²",
+    "boundary": "Still-water buoyancy reserve, not heel stability or free-surface verification"
+  },
+  {
+    "courseId": "b119",
+    "unit": 4,
+    "model": "settle",
+    "inputs": [
+      {
+        "label": "differential settlement",
+        "labelZh": "差異沉陷",
+        "value": 6,
+        "unit": "mm"
+      },
+      {
+        "label": "baseline",
+        "labelZh": "基線長度",
+        "value": 130,
+        "unit": "m"
+      }
+    ],
+    "result": 0.046153846153846156,
+    "unitLabel": "mm/m",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.050769230769230775,
+    "formula": "β=Δs/L",
+    "boundary": "Small-deformation angular-distortion indicator, not a consolidation solution"
+  },
+  {
+    "courseId": "b119",
+    "unit": 5,
+    "model": "joint",
+    "inputs": [
+      {
+        "label": "initial compression",
+        "labelZh": "初始壓縮",
+        "value": 20,
+        "unit": "mm"
+      },
+      {
+        "label": "opening",
+        "labelZh": "張開量",
+        "value": 3.8,
+        "unit": "mm"
+      },
+      {
+        "label": "tolerance",
+        "labelZh": "幾何公差",
+        "value": 2,
+        "unit": "mm"
+      }
+    ],
+    "result": 14.2,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 13.82,
+    "formula": "c_res=c0−opening−tolerance",
+    "boundary": "One-direction geometric reserve, not contact pressure or proof of watertightness"
+  },
+  {
+    "courseId": "b119",
+    "unit": 6,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 5160,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.5,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.06254096486313014,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.06879506134944316,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b119",
+    "unit": 7,
+    "model": "thermal",
+    "inputs": [
+      {
+        "label": "expansion coefficient",
+        "labelZh": "線膨脹係數",
+        "value": 1e-05,
+        "unit": "K⁻¹"
+      },
+      {
+        "label": "temperature difference",
+        "labelZh": "溫差",
+        "value": 28,
+        "unit": "K"
+      },
+      {
+        "label": "elastic modulus",
+        "labelZh": "彈性模數",
+        "value": 25,
+        "unit": "GPa"
+      }
+    ],
+    "result": 7.000000000000001,
+    "unitLabel": "MPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 7.700000000000001,
+    "formula": "σ=EαΔT, GPa→MPa ×1000",
+    "boundary": "Fully restrained linear-elastic scale without creep, cracking or restraint relaxation"
+  },
+  {
+    "courseId": "b119",
+    "unit": 8,
+    "model": "diffusion",
+    "inputs": [
+      {
+        "label": "diffusivity",
+        "labelZh": "擴散係數",
+        "value": 3e-12,
+        "unit": "m²/s"
+      },
+      {
+        "label": "exposure",
+        "labelZh": "暴露時間",
+        "value": 17,
+        "unit": "year"
+      }
+    ],
+    "result": 40.1177965496611,
+    "unitLabel": "mm",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 42.07589999037454,
+    "formula": "ℓ=√(Dt); 1 year=365.25×86400 s; m→mm ×1000",
+    "boundary": "Characteristic length, not corrosion-initiation life or chloride-threshold depth"
+  },
+  {
+    "courseId": "b119",
+    "unit": 9,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1220,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 66.063,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 79.93623,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b119",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 118,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.44067796610169,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.08474576271186,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b120",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 19.6,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 19.6,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 21.560000000000002,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b120",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 4.9999999999999996e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 390,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.004095,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0045045,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b120",
+    "unit": 3,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 108,
+        "unit": "m"
+      }
+    ],
+    "result": 1059.48,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1165.428,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b120",
+    "unit": 4,
+    "model": "advance",
+    "inputs": [
+      {
+        "label": "active penetration",
+        "labelZh": "切削速率",
+        "value": 2.07,
+        "unit": "m/h"
+      },
+      {
+        "label": "utilisation",
+        "labelZh": "有效利用率",
+        "value": 0.295,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 14.655599999999996,
+    "unitLabel": "m/day",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 16.12116,
+    "formula": "D=24vu",
+    "boundary": "Mean-cycle model without ground transitions or downtime distribution"
+  },
+  {
+    "courseId": "b120",
+    "unit": 5,
+    "model": "void",
+    "inputs": [
+      {
+        "label": "excavated diameter",
+        "labelZh": "開挖外徑",
+        "value": 8.76,
+        "unit": "m"
+      },
+      {
+        "label": "lining diameter",
+        "labelZh": "襯砌外徑",
+        "value": 8.46,
+        "unit": "m"
+      },
+      {
+        "label": "ring length",
+        "labelZh": "環長",
+        "value": 1.5,
+        "unit": "m"
+      }
+    ],
+    "result": 6.086050368166807,
+    "unitLabel": "m³",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 6.694655404983488,
+    "formula": "V=π(De²−Dl²)L/4",
+    "boundary": "Concentric geometric void, not actual grout demand or proof of completion"
+  },
+  {
+    "courseId": "b120",
+    "unit": 6,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.6799999999999999,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.5,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 6.8,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 7.48,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b120",
+    "unit": 7,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 5280,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.6,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.0665552221427171,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.07321074435698882,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b120",
+    "unit": 8,
+    "model": "dynamic",
+    "inputs": [
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "train speed",
+        "labelZh": "列車速度",
+        "value": 59,
+        "unit": "m/s"
+      }
+    ],
+    "result": 2088.6,
+    "unitLabel": "Pa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 2527.2060000000006,
+    "formula": "q=ρv²/2",
+    "boundary": "Incompressible dynamic-pressure scale, not a compressible train pressure-wave solution"
+  },
+  {
+    "courseId": "b120",
+    "unit": 9,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 118,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 360,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 568.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 613.0,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b120",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 119,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.5546218487395,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.21008403361344,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b121",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 20.0,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 20.0,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 22.0,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b121",
+    "unit": 2,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 1e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.1,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 400,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.0008399999999999999,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0009240000000000001,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b121",
+    "unit": 3,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 50,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 7,
+        "unit": "mm"
+      }
+    ],
+    "result": 350,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 385.00000000000006,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b121",
+    "unit": 4,
+    "model": "rate",
+    "inputs": [
+      {
+        "label": "movement increment",
+        "labelZh": "位移增量",
+        "value": 14.0,
+        "unit": "mm"
+      },
+      {
+        "label": "interval",
+        "labelZh": "時間間隔",
+        "value": 3.3,
+        "unit": "day"
+      }
+    ],
+    "result": 4.242424242424242,
+    "unitLabel": "mm/day",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 4.666666666666668,
+    "formula": "v=Δu/Δt",
+    "boundary": "Mean between two readings, not unobserved short-term peaks"
+  },
+  {
+    "courseId": "b121",
+    "unit": 5,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 114,
+        "unit": "m"
+      }
+    ],
+    "result": 1118.34,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1230.174,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b121",
+    "unit": 6,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1300,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.5,
+        "unit": "m/s"
+      }
+    ],
+    "result": 59.71875,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 72.25968750000001,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b121",
+    "unit": 7,
+    "model": "logistics",
+    "inputs": [
+      {
+        "label": "vehicles",
+        "labelZh": "車輛數",
+        "value": 4,
+        "unit": "count"
+      },
+      {
+        "label": "payload",
+        "labelZh": "每車載量",
+        "value": 40,
+        "unit": "t"
+      },
+      {
+        "label": "cycle",
+        "labelZh": "往返週期",
+        "value": 36,
+        "unit": "min"
+      }
+    ],
+    "result": 266.6666666666667,
+    "unitLabel": "t/h",
+    "changedIndex": 2,
+    "changedBy": 1.1,
+    "changedResult": 242.4242424242424,
+    "formula": "C=N payload 60/T",
+    "boundary": "Ideal cycle without queues, not actual shared-route production"
+  },
+  {
+    "courseId": "b121",
+    "unit": 8,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 5400,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.7,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.07068583470577036,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.0777544181763474,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b121",
+    "unit": 9,
+    "model": "grade",
+    "inputs": [
+      {
+        "label": "train mass",
+        "labelZh": "列車質量",
+        "value": 1600000.0,
+        "unit": "kg"
+      },
+      {
+        "label": "grade",
+        "labelZh": "縱坡",
+        "value": 0.0066,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 20,
+        "unit": "m/s"
+      }
+    ],
+    "result": 2071.872,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 2279.0592,
+    "formula": "P=mgiv/1000, g=9.81 m/s²",
+    "boundary": "Grade resistance only, excluding rolling, aerodynamic, acceleration and efficiency losses"
+  },
+  {
+    "courseId": "b121",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 120,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.66666666666667,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.33333333333333,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b122",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 20.4,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 20.4,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 22.44,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b122",
+    "unit": 2,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 1130,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 88.14,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 96.954,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b122",
+    "unit": 3,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 2e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.2,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 410,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.001804,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0019844000000000003,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b122",
+    "unit": 4,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 117,
+        "unit": "m"
+      }
+    ],
+    "result": 1147.77,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1262.5470000000003,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b122",
+    "unit": 5,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1340,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.4,
+        "unit": "m/s"
+      }
+    ],
+    "result": 58.088999999999984,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 70.28769,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b122",
+    "unit": 6,
+    "model": "lighting",
+    "inputs": [
+      {
+        "label": "illuminance",
+        "labelZh": "照度",
+        "value": 122,
+        "unit": "lx"
+      },
+      {
+        "label": "reflectance",
+        "labelZh": "反射率",
+        "value": 0.25,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 9.708451528605616,
+    "unitLabel": "cd/m²",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 10.679296681466178,
+    "formula": "L=ρE/π",
+    "boundary": "Ideal Lambertian reflection, not actual wet-road luminance"
+  },
+  {
+    "courseId": "b122",
+    "unit": 7,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 51,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 11,
+        "unit": "mm"
+      }
+    ],
+    "result": 561,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 617.1,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b122",
+    "unit": 8,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 122,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 340,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 547.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 589.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b122",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.031,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.0009609999999999999,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0011628100000000004,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b122",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 121,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.77685950413223,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.45454545454545,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b123",
+    "unit": 1,
+    "model": "time",
+    "inputs": [
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 20.8,
+        "unit": "km"
+      },
+      {
+        "label": "speed",
+        "labelZh": "速度",
+        "value": 60,
+        "unit": "km/h"
+      }
+    ],
+    "result": 20.8,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 22.880000000000003,
+    "formula": "t=60L/v",
+    "boundary": "Hypothetical transport journey excluding acceleration, queues and the real timetable"
+  },
+  {
+    "courseId": "b123",
+    "unit": 2,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 119,
+        "unit": "m"
+      }
+    ],
+    "result": 1167.39,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1284.129,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b123",
+    "unit": 3,
+    "model": "darcy",
+    "inputs": [
+      {
+        "label": "conductivity",
+        "labelZh": "滲透係數",
+        "value": 3e-06,
+        "unit": "m/s"
+      },
+      {
+        "label": "hydraulic gradient",
+        "labelZh": "水力坡降",
+        "value": 2.2,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "flow area",
+        "labelZh": "通水面積",
+        "value": 420,
+        "unit": "m²"
+      }
+    ],
+    "result": 0.002772,
+    "unitLabel": "m³/s",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0030492,
+    "formula": "Q=k i A",
+    "boundary": "Homogeneous saturated Darcy flow, not concentrated fracture flow"
+  },
+  {
+    "courseId": "b123",
+    "unit": 4,
+    "model": "flowreduction",
+    "inputs": [
+      {
+        "label": "flow before at equal pressure",
+        "labelZh": "試前同壓流量",
+        "value": 0.0164,
+        "unit": "m³/s"
+      },
+      {
+        "label": "flow after at equal pressure",
+        "labelZh": "試後同壓流量",
+        "value": 0.0052,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 68.29268292682927,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 65.12195121951221,
+    "formula": "r=100(Qbefore−Qafter)/Qbefore",
+    "boundary": "Flow reduction at equal head and test interval, not whole-rock sealing efficiency or long-term assurance"
+  },
+  {
+    "courseId": "b123",
+    "unit": 5,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 52,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 9,
+        "unit": "mm"
+      }
+    ],
+    "result": 468,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 514.8000000000001,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b123",
+    "unit": 6,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.74,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.5,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 7.4,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 8.14,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b123",
+    "unit": 7,
+    "model": "sump",
+    "inputs": [
+      {
+        "label": "usable reserve",
+        "labelZh": "有效剩餘容積",
+        "value": 740,
+        "unit": "m³"
+      },
+      {
+        "label": "net inflow",
+        "labelZh": "淨入流",
+        "value": 0.18,
+        "unit": "m³/s"
+      }
+    ],
+    "result": 68.51851851851852,
+    "unitLabel": "min",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 62.289562289562284,
+    "formula": "t=V/Q/60",
+    "boundary": "Constant inflow during outage, excluding alarm delay and inflow surges"
+  },
+  {
+    "courseId": "b123",
+    "unit": 8,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.032,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.001024,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.00123904,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b123",
+    "unit": 9,
+    "model": "friction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.025,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "duct length",
+        "labelZh": "風道長度",
+        "value": 1380,
+        "unit": "m"
+      },
+      {
+        "label": "hydraulic diameter",
+        "labelZh": "水力直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "air density",
+        "labelZh": "空氣密度",
+        "value": 1.2,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "mean velocity",
+        "labelZh": "平均風速",
+        "value": 3.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 74.72699999999999,
+    "unitLabel": "Pa",
+    "changedIndex": 4,
+    "changedBy": 1.1,
+    "changedResult": 90.41966999999998,
+    "formula": "Δp=f(L/D)ρv²/2",
+    "boundary": "Constant-density straight-duct friction; local loss and external wind are separate"
+  },
+  {
+    "courseId": "b123",
+    "unit": 10,
+    "model": "escape",
+    "inputs": [
+      {
+        "label": "pre-movement time",
+        "labelZh": "前置時間",
+        "value": 124,
+        "unit": "s"
+      },
+      {
+        "label": "travel distance",
+        "labelZh": "行走距離",
+        "value": 380,
+        "unit": "m"
+      },
+      {
+        "label": "walking speed",
+        "labelZh": "行走速度",
+        "value": 0.8,
+        "unit": "m/s"
+      }
+    ],
+    "result": 599.0,
+    "unitLabel": "s",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 646.5,
+    "formula": "RSET=tpre+d/v",
+    "boundary": "One group at fixed speed without queues, smoke or mobility differences; not a safety conclusion"
+  },
+  {
+    "courseId": "b124",
+    "unit": 1,
+    "model": "advection",
+    "inputs": [
+      {
+        "label": "reach length",
+        "labelZh": "水路長度",
+        "value": 2350,
+        "unit": "m"
+      },
+      {
+        "label": "water velocity",
+        "labelZh": "水體速度",
+        "value": 1.5,
+        "unit": "m/s"
+      }
+    ],
+    "result": 26.11111111111111,
+    "unitLabel": "min",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 28.72222222222222,
+    "formula": "t=L/v/60",
+    "boundary": "Constant-speed water advection, not flood-wave celerity or complete routing"
+  },
+  {
+    "courseId": "b124",
+    "unit": 2,
+    "model": "storage",
+    "inputs": [
+      {
+        "label": "inflow",
+        "labelZh": "入流",
+        "value": 173,
+        "unit": "m³/s"
+      },
+      {
+        "label": "outflow",
+        "labelZh": "出流",
+        "value": 100,
+        "unit": "m³/s"
+      },
+      {
+        "label": "interval",
+        "labelZh": "時間段",
+        "value": 20,
+        "unit": "min"
+      }
+    ],
+    "result": 87600,
+    "unitLabel": "m³",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 108360.00000000001,
+    "formula": "ΔV=(Qin−Qout)Δt×60",
+    "boundary": "One rectangular-hydrograph interval; real floods need time integration and level constraints"
+  },
+  {
+    "courseId": "b124",
+    "unit": 3,
+    "model": "waterfriction",
+    "inputs": [
+      {
+        "label": "Darcy factor",
+        "labelZh": "達西因子",
+        "value": 0.02,
+        "unit": "dimensionless"
+      },
+      {
+        "label": "length",
+        "labelZh": "長度",
+        "value": 2150,
+        "unit": "m"
+      },
+      {
+        "label": "diameter",
+        "labelZh": "直徑",
+        "value": 4,
+        "unit": "m"
+      },
+      {
+        "label": "velocity",
+        "labelZh": "流速",
+        "value": 2,
+        "unit": "m/s"
+      }
+    ],
+    "result": 2.1916411824668702,
+    "unitLabel": "m",
+    "changedIndex": 3,
+    "changedBy": 1.1,
+    "changedResult": 2.651885830784914,
+    "formula": "hf=f(L/D)v²/(2g), g=9.81 m/s²",
+    "boundary": "Steady full-pipe friction, excluding water hammer and local loss"
+  },
+  {
+    "courseId": "b124",
+    "unit": 4,
+    "model": "hydropower",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "flow",
+        "labelZh": "流量",
+        "value": 20,
+        "unit": "m³/s"
+      },
+      {
+        "label": "drop",
+        "labelZh": "跌水高度",
+        "value": 30,
+        "unit": "m"
+      }
+    ],
+    "result": 5886.0,
+    "unitLabel": "kW",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 6474.6,
+    "formula": "P=ρgQH/1000, g=9.81 m/s²",
+    "boundary": "Potential-energy flux, not shaft-wall pressure or electrical output"
+  },
+  {
+    "courseId": "b124",
+    "unit": 5,
+    "model": "beam",
+    "inputs": [
+      {
+        "label": "line load",
+        "labelZh": "單位長載重",
+        "value": 43,
+        "unit": "kN/m"
+      },
+      {
+        "label": "span",
+        "labelZh": "跨距",
+        "value": 3.6,
+        "unit": "m"
+      }
+    ],
+    "result": 69.66000000000001,
+    "unitLabel": "kN·m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 84.28860000000002,
+    "formula": "M=qL²/8",
+    "boundary": "Uniformly loaded simply supported strip; frame continuity and plate action need separate checks"
+  },
+  {
+    "courseId": "b124",
+    "unit": 6,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 127,
+        "unit": "m"
+      }
+    ],
+    "result": 1245.87,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1370.4570000000003,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b124",
+    "unit": 7,
+    "model": "ring",
+    "inputs": [
+      {
+        "label": "uniform external pressure",
+        "labelZh": "均勻外壓",
+        "value": 0.76,
+        "unit": "MPa"
+      },
+      {
+        "label": "radius",
+        "labelZh": "半徑",
+        "value": 3.6,
+        "unit": "m"
+      },
+      {
+        "label": "thickness",
+        "labelZh": "厚度",
+        "value": 0.35,
+        "unit": "m"
+      }
+    ],
+    "result": 7.8171428571428585,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 8.598857142857144,
+    "formula": "σθ=pr/t",
+    "boundary": "Thin circular-ring membrane stress, not a joint, uneven-load or rectangular-frame solution"
+  },
+  {
+    "courseId": "b124",
+    "unit": 8,
+    "model": "levelbias",
+    "inputs": [
+      {
+        "label": "local plan area",
+        "labelZh": "局部平面面積",
+        "value": 3000,
+        "unit": "m²"
+      },
+      {
+        "label": "level zero offset",
+        "labelZh": "水位零點偏移",
+        "value": 0.025,
+        "unit": "m"
+      }
+    ],
+    "result": 75.0,
+    "unitLabel": "m³",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 82.50000000000001,
+    "formula": "ΔV=AΔh",
+    "boundary": "First-order constant-area volume bias; varying width and compartments are separate"
+  },
+  {
+    "courseId": "b124",
+    "unit": 9,
+    "model": "reliability",
+    "inputs": [
+      {
+        "label": "single-unit unavailability",
+        "labelZh": "單機不可用率",
+        "value": 0.033,
+        "unit": "dimensionless"
+      }
+    ],
+    "result": 0.0010890000000000001,
+    "unitLabel": "probability",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 0.0013176900000000005,
+    "formula": "Uparallel=U²",
+    "boundary": "Independent parallel units with perfect transfer, excluding common failures"
+  },
+  {
+    "courseId": "b124",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 123,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 86.99186991869918,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.6910569105691,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  },
+  {
+    "courseId": "b125",
+    "unit": 1,
+    "model": "footprint",
+    "inputs": [
+      {
+        "label": "storage volume",
+        "labelZh": "儲存容積",
+        "value": 100000,
+        "unit": "m³"
+      },
+      {
+        "label": "equivalent height",
+        "labelZh": "等效高度",
+        "value": 20,
+        "unit": "m"
+      }
+    ],
+    "result": 5000.0,
+    "unitLabel": "m²",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 4545.454545454545,
+    "formula": "A=V/H",
+    "boundary": "Hypothetical uniform-section plan area, not actual surface land saving"
+  },
+  {
+    "courseId": "b125",
+    "unit": 2,
+    "model": "wedge",
+    "inputs": [
+      {
+        "label": "block volume",
+        "labelZh": "岩塊體積",
+        "value": 36,
+        "unit": "m³"
+      },
+      {
+        "label": "unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      },
+      {
+        "label": "sharing anchors",
+        "labelZh": "分擔構件數",
+        "value": 6,
+        "unit": "count"
+      }
+    ],
+    "result": 156.0,
+    "unitLabel": "kN/anchor",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 171.60000000000002,
+    "formula": "T=γV/N",
+    "boundary": "Equal self-weight sharing only, excluding sliding, anchor angle and design factors"
+  },
+  {
+    "courseId": "b125",
+    "unit": 3,
+    "model": "stress",
+    "inputs": [
+      {
+        "label": "cover",
+        "labelZh": "覆土深度",
+        "value": 120,
+        "unit": "m"
+      },
+      {
+        "label": "rock unit weight",
+        "labelZh": "岩體單位重",
+        "value": 26,
+        "unit": "kN/m³"
+      }
+    ],
+    "result": 9.36,
+    "unitLabel": "MPa",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 10.296,
+    "formula": "σθ,max=3γH/1000",
+    "boundary": "Maximum tangential compression at the sidewalls of an unsupported elastic circular hole under vertical uniaxial remote loading with zero horizontal remote stress; not stress at any point or the complete three-dimensional in-situ state"
+  },
+  {
+    "courseId": "b125",
+    "unit": 4,
+    "model": "spring",
+    "inputs": [
+      {
+        "label": "local stiffness",
+        "labelZh": "局部剛度",
+        "value": 54,
+        "unit": "kN/mm"
+      },
+      {
+        "label": "movement",
+        "labelZh": "位移",
+        "value": 8,
+        "unit": "mm"
+      }
+    ],
+    "result": 432,
+    "unitLabel": "kN",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 475.20000000000005,
+    "formula": "F=ku",
+    "boundary": "Local linear spring without yielding or time effects"
+  },
+  {
+    "courseId": "b125",
+    "unit": 5,
+    "model": "head",
+    "inputs": [
+      {
+        "label": "water density",
+        "labelZh": "水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "head",
+        "labelZh": "水頭",
+        "value": 130,
+        "unit": "m"
+      }
+    ],
+    "result": 1275.3,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 1402.83,
+    "formula": "p=ρgh/1000, g=9.81 m/s²",
+    "boundary": "Hydrostatic gauge pressure, not total earth pressure or an in-situ measurement"
+  },
+  {
+    "courseId": "b125",
+    "unit": 6,
+    "model": "contain",
+    "inputs": [
+      {
+        "label": "external water density",
+        "labelZh": "外側水密度",
+        "value": 1000,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "external head",
+        "labelZh": "外側水頭",
+        "value": 40,
+        "unit": "m"
+      },
+      {
+        "label": "product density",
+        "labelZh": "產品密度",
+        "value": 800,
+        "unit": "kg/m³"
+      },
+      {
+        "label": "product head",
+        "labelZh": "產品液柱",
+        "value": 25,
+        "unit": "m"
+      },
+      {
+        "label": "gas gauge pressure",
+        "labelZh": "氣相表壓",
+        "value": 20,
+        "unit": "kPa"
+      }
+    ],
+    "result": 176.2,
+    "unitLabel": "kPa",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 215.44,
+    "formula": "Δp=(ρwghw−ρpghp)/1000−pgas, g=9.81 m/s²",
+    "boundary": "Hypothetical pressure difference at one elevation; positive means local inward gradient, not whole-cavern containment"
+  },
+  {
+    "courseId": "b125",
+    "unit": 7,
+    "model": "inventory",
+    "inputs": [
+      {
+        "label": "gross volume",
+        "labelZh": "總容積",
+        "value": 100000,
+        "unit": "m³"
+      },
+      {
+        "label": "existing stock",
+        "labelZh": "既有庫存",
+        "value": 67400,
+        "unit": "m³"
+      },
+      {
+        "label": "reserve",
+        "labelZh": "保留空間",
+        "value": 5000,
+        "unit": "m³"
+      }
+    ],
+    "result": 27600,
+    "unitLabel": "m³",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 20860.0,
+    "formula": "Vavailable=Vgross−Vstock−Vreserve",
+    "boundary": "Hypothetical same-temperature cavern balance, not Jurong operating limits"
+  },
+  {
+    "courseId": "b125",
+    "unit": 8,
+    "model": "angle",
+    "inputs": [
+      {
+        "label": "control length",
+        "labelZh": "控制長度",
+        "value": 5880,
+        "unit": "m"
+      },
+      {
+        "label": "orientation error",
+        "labelZh": "方向偏角",
+        "value": 2.7,
+        "unit": "arcsec"
+      }
+    ],
+    "result": 0.07696902001294995,
+    "unitLabel": "m",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 0.08466592201424493,
+    "formula": "e=Lθπ/(180×3600)",
+    "boundary": "Small-angle orientation error without network correlation or refraction"
+  },
+  {
+    "courseId": "b125",
+    "unit": 9,
+    "model": "balance",
+    "inputs": [
+      {
+        "label": "inflow",
+        "labelZh": "流入",
+        "value": 172,
+        "unit": "m³/day"
+      },
+      {
+        "label": "outflow",
+        "labelZh": "流出",
+        "value": 78,
+        "unit": "m³/day"
+      },
+      {
+        "label": "other loss",
+        "labelZh": "其他損失",
+        "value": 20,
+        "unit": "m³/day"
+      }
+    ],
+    "result": 74,
+    "unitLabel": "m³/day",
+    "changedIndex": 0,
+    "changedBy": 1.1,
+    "changedResult": 91.20000000000002,
+    "formula": "ΔS=I−O−loss",
+    "boundary": "Daily balance in a stated boundary, not causal proof or aquifer-parameter identification"
+  },
+  {
+    "courseId": "b125",
+    "unit": 10,
+    "model": "coverage",
+    "inputs": [
+      {
+        "label": "asset count",
+        "labelZh": "設備總數",
+        "value": 124,
+        "unit": "count"
+      },
+      {
+        "label": "missing records",
+        "labelZh": "缺紀錄數",
+        "value": 16,
+        "unit": "count"
+      }
+    ],
+    "result": 87.09677419354838,
+    "unitLabel": "%",
+    "changedIndex": 1,
+    "changedBy": 1.1,
+    "changedResult": 85.80645161290323,
+    "formula": "coverage=100(N−missing)/N",
+    "boundary": "Record completeness, not safety or reliability; perturbation is continuous sensitivity while actual counts are integers"
+  }
+]

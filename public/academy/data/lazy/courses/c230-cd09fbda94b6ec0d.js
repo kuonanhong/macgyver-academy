@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c230-cd09fbda94b6ec0d.json"]={sha256:"cd09fbda94b6ec0d2fb020e459eeda241883c720842900c36c758107df096555",value:{"title":"Komatsu 930E 電傳動礦車","titleEn":"Komatsu 930E electric-drive haul truck","category":"automotive","kind":"project","summary":"課程規劃主題：柴油電傳動與重載制動。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: diesel-electric drive and heavy-load braking. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c230"}};

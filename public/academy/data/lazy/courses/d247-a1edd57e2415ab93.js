@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d247-a1edd57e2415ab93.json"]={sha256:"a1edd57e2415ab93042fbb5d40f358aeebf12982bfb19436dbf0103627f771e2",value:{"id":"d247","title":"血液透析機流體系統","titleEn":"Hemodialysis Machine Fluid Systems","category":"biomedical","kind":"craft","summary":"「血液透析機流體系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hemodialysis Machine Fluid Systems: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c218-3639d4045c827394.json"]={sha256:"3639d4045c8273943484a24c8888fc939d7dd863a88d7a3422e77f28c1d66257",value:{"title":"Tesla Semi 電動重型卡車","titleEn":"Tesla Semi electric heavy truck","category":"automotive","kind":"project","summary":"課程規劃主題：重載能源與充電物流。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: heavy-duty energy and charging logistics. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c218"}};

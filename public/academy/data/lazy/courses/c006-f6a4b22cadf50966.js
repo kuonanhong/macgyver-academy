@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c006-f6a4b22cadf50966.json"]={sha256:"f6a4b22cadf5096633436e65d9f3b63f80fac25db0bfbefa75ca09e6e2d2e50d",value:{"title":"Boeing 747 大型客機工程","titleEn":"Boeing 747 widebody airliner engineering","category":"aerospace","kind":"project","summary":"課程規劃主題：翼身結構與總裝規劃。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: wing-body structures and final assembly planning. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c006"}};

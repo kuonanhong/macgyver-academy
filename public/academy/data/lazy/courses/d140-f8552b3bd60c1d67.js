@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d140-f8552b3bd60c1d67.json"]={sha256:"f8552b3bd60c1d67a6081f6f41fb447a6b38a3a6f7f2fa55964aa5c89d25351e",value:{"id":"d140","title":"工業電腦斷層材料缺陷分析","titleEn":"Industrial Computed Tomography for Material Defects","category":"materials","kind":"craft","summary":"「工業電腦斷層材料缺陷分析」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Industrial Computed Tomography for Material Defects: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d032-341be1ab48b87a0b.json"]={sha256:"341be1ab48b87a0b9387fdbe3bf329e73ab76ea8de37f2a8a6e0ea12e6f3d115",value:{"id":"d032","title":"巴德拉太陽能園區","titleEn":"Bhadla Solar Park","category":"energy","kind":"project","summary":"「巴德拉太陽能園區」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Bhadla Solar Park: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

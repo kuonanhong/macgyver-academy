@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d142-de92c10f67c802ed.json"]={sha256:"de92c10f67c802ed6f2e83c288df2962a8a53b690bb3c5595a2f5320e40bf7bd",value:{"id":"d142","title":"碳纖維預浸布製造品質","titleEn":"Carbon Fiber Prepreg Manufacturing Quality","category":"materials","kind":"craft","summary":"「碳纖維預浸布製造品質」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Carbon Fiber Prepreg Manufacturing Quality: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

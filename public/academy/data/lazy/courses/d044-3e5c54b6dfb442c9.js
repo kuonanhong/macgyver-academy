@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d044-3e5c54b6dfb442c9.json"]={sha256:"3e5c54b6dfb442c9b6a3eff4b5bf59e9c936245b1d46cdd6e7baf746f5bf38a0",value:{"id":"d044","title":"霍恩斯代爾儲能電站","titleEn":"Hornsdale Power Reserve","category":"energy","kind":"project","summary":"「霍恩斯代爾儲能電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hornsdale Power Reserve: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

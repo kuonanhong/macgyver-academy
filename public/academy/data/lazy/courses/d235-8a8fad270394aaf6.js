@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d235-8a8fad270394aaf6.json"]={sha256:"8a8fad270394aaf6e4622ce295c1c2aadb58e1bcc52517d1b614d83457110073",value:{"id":"d235","title":"數位病理玻片掃描器","titleEn":"Digital Pathology Slide Scanners","category":"biomedical","kind":"craft","summary":"「數位病理玻片掃描器」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Digital Pathology Slide Scanners: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

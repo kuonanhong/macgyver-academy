@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d498-2c1fe5e3e85f8152.json"]={sha256:"2c1fe5e3e85f81527b6cdc2cb31bfd444b9802bf3ce6584778688cb5fba2db38",value:{"id":"d498","title":"大型望遠鏡主動光學校準","titleEn":"Large Telescope Active Optics Calibration","category":"megascience","kind":"craft","summary":"「大型望遠鏡主動光學校準」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Large Telescope Active Optics Calibration: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

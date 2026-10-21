@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c028-bf0b0ae2e928c8b9.json"]={sha256:"bf0b0ae2e928c8b96ed94dc3d4c8d1901ada3a164397d01c224e53797b9ba13b",value:{"title":"Solar Impulse 太陽能飛機","titleEn":"Solar Impulse solar aircraft","category":"aerospace","kind":"project","summary":"課程規劃主題：能量預算與輕量結構。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: energy budgets and lightweight structures. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c028"}};

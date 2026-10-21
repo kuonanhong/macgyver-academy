@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b217-e17dc41883b7e97f.json"]={sha256:"e17dc41883b7e97f0d9bd01e25d97ac6a027127e65866df9367c9c7bcfa83f08",value:{"id":"b217","title":"石門水庫大壩","titleEn":"Shihmen Dam","category":"water","kind":"project","summary":"以「石門水庫大壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Shihmen Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

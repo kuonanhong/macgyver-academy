@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c116-204042379f44f15e.json"]={sha256:"204042379f44f15e824c18838c90ee566d8d9303ed25a9e35b747860d9c43072",value:{"title":"RV Investigator 海洋研究船","titleEn":"RV Investigator research vessel","category":"marine","kind":"project","summary":"課程規劃主題：聲學調查與科學採樣。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: acoustic surveys and scientific sampling. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c116"}};

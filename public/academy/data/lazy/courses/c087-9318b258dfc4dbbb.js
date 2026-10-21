@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c087-9318b258dfc4dbbb.json"]={sha256:"9318b258dfc4dbbb99f8f195773d28fb8e5718a7958005b12cbc3fad7368129c",value:{"title":"直升機旋翼追蹤與平衡","titleEn":"Helicopter rotor tracking and balancing","category":"aerospace","kind":"craft","summary":"課程規劃主題：振動診斷與維護量測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: vibration diagnostics and maintenance measurements. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c087"}};

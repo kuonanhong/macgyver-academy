@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b215-6d46e9a807f60132.json"]={sha256:"6d46e9a807f60132f98c73c7babe6d9940a843d862c04096a3909f20251fc77b",value:{"id":"b215","title":"黑部水壩","titleEn":"Kurobe Dam","category":"water","kind":"project","summary":"以「黑部水壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Kurobe Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

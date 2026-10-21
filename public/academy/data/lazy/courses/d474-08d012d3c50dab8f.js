@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d474-08d012d3c50dab8f.json"]={sha256:"08d012d3c50dab8f1296c12b9987851dd25abeb2d2eff72df013335a2479d62e",value:{"id":"d474","title":"皮耶奧傑宇宙線觀測站","titleEn":"Pierre Auger Observatory","category":"megascience","kind":"project","summary":"「皮耶奧傑宇宙線觀測站」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Pierre Auger Observatory: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

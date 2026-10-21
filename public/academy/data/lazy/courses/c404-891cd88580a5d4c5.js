@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c404-891cd88580a5d4c5.json"]={sha256:"891cd88580a5d4c507e56298b2964d686c9ff4981a5f661615d8d82a82c93e05",value:{"title":"ABB YuMi 雙臂協作平台","titleEn":"ABB YuMi dual-arm collaborative platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：雙臂配合與小件裝配。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: dual-arm coordination and small-part assembly. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c404"}};

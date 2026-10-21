@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c033-b4e47dd1ba74b8da.json"]={sha256:"b4e47dd1ba74b8dae256daf9eac8fe0fe7645a54872950e521be2f216e47be42",value:{"title":"Robinson R44 活塞直升機","titleEn":"Robinson R44 piston helicopter","category":"aerospace","kind":"project","summary":"課程規劃主題：輕型機結構與飛行安全。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: lightweight structures and flight safety. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c033"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c338-f033ffa799c2a0bc.json"]={sha256:"f033ffa799c2a0bc98ec6eb9d7f6b6652350e6ffe91332d6c8007d2363ea123b",value:{"title":"IXPE X 射線偏振探測","titleEn":"IXPE X-ray polarimetry explorer","category":"space","kind":"project","summary":"課程規劃主題：偏振量測與高能儀器。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: polarization measurement and high-energy instruments. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c338"}};

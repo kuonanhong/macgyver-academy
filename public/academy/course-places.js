@@ -1,11 +1,12 @@
 /* Public engineering geography. Loading a map is always an explicit action. */
 let places = new Map();
-let pending = null;
+let pending = null, initialized=false;
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const field = (value, key, zh) => value?.[zh ? key : `${key}En`] || value?.[key] || '';
 const array = value => Array.isArray(value) ? value : [];
 function https(value) { try { const u = new URL(value); return u.protocol === 'https:' && !u.username && !u.password ? u.href : ''; } catch { return ''; } }
 export function setCoursePlaces(data) {
+  initialized=true;
   places = new Map(array(data?.courses).filter(c => typeof c?.courseId === 'string' && c.place && Number.isFinite(c.place.lat) && Math.abs(c.place.lat)<=90 && Number.isFinite(c.place.lng) && Math.abs(c.place.lng)<=180).map(c => [c.courseId,c]));
 }
 export function placeForCourse(id) { return places.get(id) || null; }
@@ -41,7 +42,7 @@ export function coursePlacesMarkup(course,{zh=true,compact=false}={}) {
   return `<section class="course-place task-card${compact?' compact':''}" data-course-place="${escape(id)}" data-place-compact="${compact}"><h3>${zh?'工程地點與歷史故事':'Engineering places and stories'}</h3><p role="status">${zh?'正在載入本工程的地點與故事…':'Loading this project’s location and history…'}</p></section>`;
 }
 async function loadPlaces() {
-  if(places.size) return;
+  if(initialized) return;
   if(globalThis.window?.MG_DATA?.['course-places']) {setCoursePlaces(window.MG_DATA['course-places']);return;}
   if(!pending) pending=(async()=>{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),6000);try{const response=await fetch('data/course-places.json',{signal:controller.signal});if(!response.ok)throw new Error('Places unavailable');setCoursePlaces(await response.json());}finally{clearTimeout(timer);}})().finally(()=>{pending=null;});
   await pending;

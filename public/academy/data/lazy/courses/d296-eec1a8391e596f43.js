@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d296-eec1a8391e596f43.json"]={sha256:"eec1a8391e596f43aeb0daf98de2055ed8e816f620daf23bec859d4568886879",value:{"id":"d296","title":"醫療導管擠製品質量測","titleEn":"Medical Catheter Extrusion Quality Metrology","category":"biomedical","kind":"craft","summary":"「醫療導管擠製品質量測」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Catheter Extrusion Quality Metrology: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

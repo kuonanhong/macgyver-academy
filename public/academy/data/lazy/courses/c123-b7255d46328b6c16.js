@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c123-b7255d46328b6c16.json"]={sha256:"b7255d46328b6c1658dc69bd3db51ebb6f7bcd1fcad84e57b3c7c5a8c3d79086",value:{"title":"Queen Mary 2 遠洋郵輪工程","titleEn":"Queen Mary 2 ocean-liner engineering","category":"marine","kind":"project","summary":"課程規劃主題：船體耐海性與旅客系統。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: seakeeping hulls and passenger systems. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c123"}};

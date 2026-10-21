@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c393-0d2194c296c8fc9e.json"]={sha256:"0d2194c296c8fc9ef8cb12f94fdae725cc54f911f87df71718e155f764ae3252",value:{"title":"太空儀器熱真空試驗","titleEn":"Space-instrument thermal-vacuum testing","category":"space","kind":"craft","summary":"課程規劃主題：環境模擬與量測紀錄。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: environmental simulation and measurement records. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c393"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d113-d47d349835ec000e.json"]={sha256:"d47d349835ec000ea0386987c108820c4ae9777887c2e0f04cec6964924ec1fa",value:{"id":"d113","title":"超大型鋼錠潔淨冶金","titleEn":"Ultra-Large Steel Ingot Clean Metallurgy","category":"materials","kind":"craft","summary":"「超大型鋼錠潔淨冶金」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ultra-Large Steel Ingot Clean Metallurgy: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b114-118c98ac190ccf52.json"]={sha256:"118c98ac190ccf5278b8aec50cdb57a3c098688209e7015eefb1021d90ed673f",value:{"id":"b114","title":"蒙布朗隧道","titleEn":"Mont Blanc Tunnel","category":"underground","kind":"project","summary":"以「蒙布朗隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Mont Blanc Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

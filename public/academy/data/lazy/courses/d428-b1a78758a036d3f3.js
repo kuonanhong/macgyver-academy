@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d428-b1a78758a036d3f3.json"]={sha256:"b1a78758a036d3f325e337fe6a669da9b2a2fae6591400f5eb57a092bcc8d558",value:{"id":"d428","title":"KAGRA地下重力波望遠鏡","titleEn":"KAGRA Underground Gravitational Wave Telescope","category":"megascience","kind":"project","summary":"「KAGRA地下重力波望遠鏡」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for KAGRA Underground Gravitational Wave Telescope: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

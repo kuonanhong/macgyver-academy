@@ -15,7 +15,7 @@ assert.equal(checked.status, 0, checked.stdout + checked.stderr);
 const manifest = JSON.parse(fs.readFileSync(path.join(publicRoot, 'offline-build.json'), 'utf8'));
 // markets.json and fx.json are refreshed weekly and fetched at runtime (not embedded).
 const expectedData = fs.readdirSync(path.join(publicRoot, 'data')).filter(n => n.endsWith('.json') && !['markets.json', 'fx.json'].includes(n)).map(n => n.slice(0, -5)).sort();
-assert.deepEqual(manifest.dataSets, expectedData, 'every public JSON is embedded');
+assert.deepEqual(manifest.dataSets, expectedData, 'every public JSON has a generated offline representation');
 assert(!fs.readFileSync(path.join(publicRoot, 'index.html'), 'utf8').includes('type="module"'), 'file entry must use classic scripts');
 assert(!fs.readFileSync(path.join(root, 'index.html'), 'utf8').includes('<iframe'), 'root launcher must not trap keyboard focus in an iframe');
 
@@ -84,7 +84,9 @@ async function boot(options) {
   const instance = browser(options);
   instance.run(fs.readFileSync(path.join(publicRoot, 'bootstrap.js'), 'utf8'));
   await flush();
-  assert.deepEqual(instance.scripts, ['config.js', 'runtime-mode.js', 'offline-data.js', ...manifest.offlineParts, 'offline-runtime.js', 'app.bundle.js']);
+  assert.deepEqual(instance.scripts.slice(0,5), ['config.js', 'runtime-mode.js', 'offline-data.js', 'offline-runtime.js', 'app.bundle.js']);
+  assert(!instance.scripts.some(src=>/data\/lazy\/(courses|resources)\//.test(src)),'homepage never preloads a course or course resources');
+  assert.deepEqual(manifest.offlineParts,[],'whole-curriculum script parts are no longer boot dependencies');
   const html = instance.fixed.get('main').innerHTML;
   assert(/class="[^"]*\bexplorer-hero\b[^"]*"/.test(html) && html.includes('data-catalog-route="ready"') && !html.includes('Unable to load curriculum'), 'the complete classic bundle renders the merged explorer: ' + html.slice(0, 900));
   assert.equal(instance.nativeRequests, 0);
@@ -98,7 +100,8 @@ const me = await (await app.context.fetch('/api/me')).json();
 assert.equal(me.authMode, 'offline'); assert.equal(me.aiAvailable, false); assert.equal(me.user.id, first.id);
 assert.equal(app.context.MG_DATA.catalog.length, app.context.MG_DATA.release.topics); assert.equal(app.context.MG_DATA.featured.length, app.context.MG_DATA.release.guidedCourses);
 assert(!Object.hasOwn(app.context.MG_DATA, 'materials'), 'removed private-material index is absent from the offline bundle');
-for (const key of expectedData) assert.deepEqual(JSON.parse(JSON.stringify(app.context.MG_DATA[key])), JSON.parse(fs.readFileSync(path.join(publicRoot, 'data', `${key}.json`), 'utf8')));
+for (const key of expectedData.filter(key=>!['catalog','featured'].includes(key))) {const value=['photos','release'].includes(key)?app.context.MG_DATA[key]:await app.context.MG_LOAD_AUXILIARY(key);assert.deepEqual(JSON.parse(JSON.stringify(value)),JSON.parse(fs.readFileSync(path.join(publicRoot,'data',`${key}.json`),'utf8')),'offline data preserved: '+key);}
+assert(app.context.MG_DATA.featured.every(c=>c._lazy&&c.stages.every(stage=>stage.steps.every(step=>!step.instruction))),'initial curriculum contains step IDs without lesson text');
 const put = async body => app.context.fetch('/api/progress', { method: 'PUT', body: JSON.stringify(body) });
 const payload = { projectId: 'semiconductor', completed: ['sc-001'], assembly: ['sc-001'], notes: 'Offline evidence <script>literal</script>', baseUpdatedAt: null };
 let response = await put(payload); assert.equal(response.status, 200); const saved = await response.json();
@@ -147,4 +150,4 @@ const hosted = browser({ protocol: 'https:' }); const native = hosted.context.fe
 hosted.run(fs.readFileSync(path.join(publicRoot, 'offline-runtime.js'), 'utf8'));
 assert.equal(hosted.context.fetch, native, 'hosted authentication and APIs remain untouched');
 assert.equal(hosted.context.MacGyverOffline, undefined);
-console.log(`PASS offline: ${expectedData.length} complete embedded data sets, classic full-app home/workbench boot, zero native fetches, 3 isolated profiles, reload, backup restore, CAS, invalid inputs, denied-storage fallback, hosted no-op.`);
+console.log(`PASS offline: ${expectedData.length} on-demand data sets, classic full-app home/workbench boot, zero native fetches, 3 isolated profiles, reload, backup restore, CAS, invalid inputs, denied-storage fallback, hosted no-op.`);

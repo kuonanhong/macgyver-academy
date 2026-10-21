@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c129-11093ea10fccbdda.json"]={sha256:"11093ea10fccbddaa5e3a5ba9c2c0256d3994490e58822ffff2f6d242baf1dea",value:{"title":"Maersk Triple-E 貨櫃船級","titleEn":"Maersk Triple-E container-ship class","category":"marine","kind":"project","summary":"課程規劃主題：容量、能效與港口介面。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: capacity, efficiency and port interfaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c129"}};

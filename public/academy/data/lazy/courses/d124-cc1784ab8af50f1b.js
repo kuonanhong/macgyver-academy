@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d124-cc1784ab8af50f1b.json"]={sha256:"cc1784ab8af50f1b71851de934b7080217227b5ca7d8919e2263826426e5a9af",value:{"id":"d124","title":"汽車鋁合金高壓鑄造","titleEn":"Automotive Aluminium High Pressure Die Casting","category":"materials","kind":"craft","summary":"「汽車鋁合金高壓鑄造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Automotive Aluminium High Pressure Die Casting: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

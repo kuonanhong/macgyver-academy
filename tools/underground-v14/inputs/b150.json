@@ -1,0 +1,253 @@
+{
+  "id": "b150",
+  "title": "大斷面隧道雙側壁導坑法~Side-drift excavation for large tunnels",
+  "discipline": "ug-excavation",
+  "family": "excavation",
+  "focus": "雙側導坑的暫時中隔牆、非對稱受力與拆除荷載轉移~Temporary walls, asymmetry and removal load transfer in side-drift excavation",
+  "summary": "大斷面側導坑把開挖空間分割成較小區域，但暫時中隔牆及其連接會形成施工期特有的受力系統。本課比較跨度、偏載、牆體剛度與拆除前後的荷載分配，再用測量誤差、階段模型與防水交接檢查推論。課堂的梁、彈簧和壓力算例均不提供拆牆順序或安全許可，學員需辨識何種證據必須由設計者核准。~Side drifts divide a large excavation into smaller regions, while temporary walls and their connections create a construction-specific structural system. This course compares spans, eccentric loading, wall stiffness and load sharing before and after removal, then checks interpretations through survey uncertainty, staged models and waterproofing handover. Beam, spring and pressure examples prescribe neither a removal sequence nor permission; learners identify evidence requiring designer approval.",
+  "history": "Stepney Green原作者在二〇一四年公開側壁導坑與襯砌表現的研究，可用來辨識暫時構件如何改變大型地下斷面的分析。另一篇Crossrail設計論文回顧一九九二年Heathrow Express試驗背景，二〇〇九年FHWA手冊則提供土建參考。這些資料顯示施工序列需與地層互制一起考慮；本課特別把側導坑形成期間、中央區開挖與中隔牆移除視為不同結構狀態，不把完工模型倒套所有階段。~The Stepney Green authors published their side-drift and lining-performance study in 2014, providing a context for how temporary members change large-section analysis. A companion Crossrail paper reviews the 1992 Heathrow Express trial, and the 2009 FHWA manual supplies civil context. These references place construction sequence alongside ground interaction. This course treats side-drift formation, central excavation and wall removal as distinct structural states instead of applying the completed-system model retrospectively to every stage.",
+  "units": [
+    {
+      "title": "分割跨度與梁式比較~Subdivided span and beam comparison",
+      "anchor": "分割跨度與梁式比較~Subdivided span and beam comparison",
+      "mechanism": "側導坑降低某些施工階段的開放跨度，同時引入暫時支承和接縫。簡支梁均布荷載可展示跨度平方對彎矩的影響，但真實洞室的三維拱效應與地層互制不能由這個比例直接取代。 假設q=30 kN/m、L=8 m，M=qL²/8=240 kN·m；將理想跨度減為4 m則M=60 kN·m，僅適用相同均布與簡支邊界。 暫時支承未有效連接而被當成簡支點，會把計算跨度縮得過小並低估彎矩；完工斷面看似合理也不能補救施工期支承假設的缺口。~Side drifts reduce certain open spans while introducing temporary supports and joints. A uniformly loaded simple beam illustrates the squared dependence of moment on span, but the ratio does not replace three-dimensional arching or ground interaction in an actual cavern. Assume q=30 kN/m and L=8 m. M=qL²/8=240 kN·m; an ideal 4 m span gives 60 kN·m, under the same uniform loading and simple-support boundaries only. Treating an unconnected temporary member as an effective simple support artificially shortens the calculated span and understates moment. A plausible completed section does not repair that missing support assumption during construction.",
+      "model": "教學假設，非現場設定或設計允收值。假設q=30 kN/m、L=8 m，M=qL²/8=240 kN·m；將理想跨度減為4 m則M=60 kN·m，僅適用相同均布與簡支邊界。~Teaching assumptions, not operating settings or design acceptance limits. Assume q=30 kN/m and L=8 m. M=qL²/8=240 kN·m; an ideal 4 m span gives 60 kN·m, under the same uniform loading and simple-support boundaries only.",
+      "verify": "將每個施工階段的實際開放範圍與暫時牆位置畫出，檢查支承是否已具備傳力能力；若荷載與支承同時改變，必須重新分析而非只套跨度平方比，由洞室設計者審查模型適用性。~Draw the actual open region and temporary-wall position at each stage, checking whether the support can already transfer load. When loading and support change together, reanalyze instead of using the squared-span ratio alone; the cavern designer reviews model applicability.",
+      "failure": "暫時支承未有效連接而被當成簡支點，會把計算跨度縮得過小並低估彎矩；完工斷面看似合理也不能補救施工期支承假設的缺口。~Treating an unconnected temporary member as an effective simple support artificially shortens the calculated span and understates moment. A plausible completed section does not repair that missing support assumption during construction.",
+      "misconception": "跨度減半就代表整個地下工程的風險必然減為四分之一。~Halving a span necessarily reduces the risk of the whole underground work to one quarter.",
+      "practice": "階段圖註明每個支點的完成與驗證條件，沒有證據的支承不可默認有效；任何分割變更交由設計者核准，梁式比例只用於敏感度說明。~Stage drawings state completion and verification conditions for every support. Unsupported assumptions cannot count as effective restraints. The designer approves subdivision changes; the beam ratio is only a sensitivity illustration."
+    },
+    {
+      "title": "左右偏載與合力位置~Left-right loading and resultant position",
+      "anchor": "左右偏載與合力位置~Left-right loading and resultant position",
+      "mechanism": "左右導坑進度或地層不同，可能使合力偏離整體中心並產生額外力矩。將荷載乘其力臂可定位合力，卻不代表襯砌各點反力已知；暫時牆和外環的剛度仍控制內力分配。 假設截面寬12 m，向下力600 kN位於x=2 m、400 kN位於x=10 m，合力位置x=(600×2+400×10)/1000=5.2 m，偏中心0.8 m。 左右資料被分開存檔或時間錯位，會將真實非對稱誤看成兩組正常反應；因此中隔牆的側向需求和外環偏心可能未在施工期模型中被捕捉。~Different side-drift progress or ground conditions can shift the resultant away from the section center, creating additional moment. Force times lever arm locates the resultant but does not determine every lining reaction; wall and outer-ring stiffness still control distribution. Assume a 12 m section with downward forces 600 kN at x=2 m and 400 kN at x=10 m. Resultant x=(600×2+400×10)/1000=5.2 m, 0.8 m from center. Separately stored or mistimed left-right records can make genuine asymmetry look like two normal responses. Temporary-wall lateral demand and outer-ring eccentricity may then be absent from the construction-stage interpretation.",
+      "model": "教學假設，非現場設定或設計允收值。假設截面寬12 m，向下力600 kN位於x=2 m、400 kN位於x=10 m，合力位置x=(600×2+400×10)/1000=5.2 m，偏中心0.8 m。~Teaching assumptions, not operating settings or design acceptance limits. Assume a 12 m section with downward forces 600 kN at x=2 m and 400 kN at x=10 m. Resultant x=(600×2+400×10)/1000=5.2 m, 0.8 m from center.",
+      "verify": "以一致坐標標出左右地層、施工進度與量測反應，確認合力方向和力臂定義；對比偏載情境的預測與拱頂側移，不可用總沉陷較小消除偏載疑慮，需結構與地工人員共同判斷。~Use common coordinates for left-right ground, construction progress and measured response, checking force directions and lever arms. Compare eccentric-load predictions with crown lateral movement. Modest total settlement does not eliminate eccentricity concerns; structural and geotechnical reviewers interpret them jointly.",
+      "failure": "左右資料被分開存檔或時間錯位，會將真實非對稱誤看成兩組正常反應；因此中隔牆的側向需求和外環偏心可能未在施工期模型中被捕捉。~Separately stored or mistimed left-right records can make genuine asymmetry look like two normal responses. Temporary-wall lateral demand and outer-ring eccentricity may then be absent from the construction-stage interpretation.",
+      "misconception": "左右總荷載加總正確就不必檢查合力的位置。~Correctly adding the left and right forces removes the need to check resultant location.",
+      "practice": "左右觀測採共同時鐘與坐標，報告保留合力和偏心而非只有總量；不對稱施工變更須連同暫時牆受力送設計審查。~Use a common clock and coordinates for both sides, reporting resultant and eccentricity rather than total load alone. An asymmetric construction change goes to design review together with its implications for temporary-wall forces."
+    },
+    {
+      "title": "暫時牆細長與理想屈曲~Temporary-wall slenderness and ideal buckling",
+      "anchor": "暫時牆細長與理想屈曲~Temporary-wall slenderness and ideal buckling",
+      "mechanism": "暫時牆受壓時的穩定性取決於有效高度、側向拘束與材料剛度，不只取決於壓應力。Euler式只描述理想直桿的彈性屈曲，可用來看高度敏感度，不能當作有裂縫噴凝土牆的完整容量。 假設兩端鉸接、EI=20000 kN·m²、有效H=6 m，Pcr=π²EI/H²=5483 kN；H增至9 m則2437 kN，未含初始缺陷或非彈性。 一個側向接點尚未成形或先被解除，會增加有效長度而降低穩定性；即使平均壓應力不變，牆體仍可能出現側彎與二階效應，不能靠壓應力檢核排除。~Temporary-wall stability depends on effective height, lateral restraint and stiffness, not compressive stress alone. Euler's relation describes ideal elastic buckling of a straight member and illustrates height sensitivity; it is not the complete capacity of a cracked sprayed-concrete wall. Assume pinned ends, EI=20000 kN·m² and effective H=6 m. Pcr=π²EI/H²=5483 kN; at H=9 m it is 2437 kN, excluding imperfections and inelastic behavior. A lateral connection that is unfinished or released early increases effective length and reduces stability. Mean compression may remain unchanged while lateral bending and second-order effects develop, so a stress-only check cannot exclude the problem.",
+      "model": "教學假設，非現場設定或設計允收值。假設兩端鉸接、EI=20000 kN·m²、有效H=6 m，Pcr=π²EI/H²=5483 kN；H增至9 m則2437 kN，未含初始缺陷或非彈性。~Teaching assumptions, not operating settings or design acceptance limits. Assume pinned ends, EI=20000 kN·m² and effective H=6 m. Pcr=π²EI/H²=5483 kN; at H=9 m it is 2437 kN, excluding imperfections and inelastic behavior.",
+      "verify": "核對牆高、側向接點和竣工垂直度，檢查接點是否能提供模型假定的拘束；將裂縫及早齡材料資料加入評估，若有效高度有爭議應呈現多種邊界，而非只選得到最大容量的一組。~Check wall height, lateral connections and as-built verticality, verifying that connections supply assumed restraint. Include cracking and early-age material evidence. When effective height is uncertain, show multiple boundaries rather than choosing only the one producing the largest capacity.",
+      "failure": "一個側向接點尚未成形或先被解除，會增加有效長度而降低穩定性；即使平均壓應力不變，牆體仍可能出現側彎與二階效應，不能靠壓應力檢核排除。~A lateral connection that is unfinished or released early increases effective length and reduces stability. Mean compression may remain unchanged while lateral bending and second-order effects develop, so a stress-only check cannot exclude the problem.",
+      "misconception": "暫時牆壓應力低於材料強度就不會發生失穩。~A temporary wall cannot become unstable while compressive stress remains below material strength.",
+      "practice": "接點狀態列入每階段核查表，任何拘束改變由暫時工程設計者審查；課堂Euler數值僅示範尺度，不能作拆除接點或加載依據。~Include connection status in each stage checklist and refer every restraint change to the temporary-works designer. Classroom Euler values illustrate scale; they do not authorize removal of a connection or additional loading."
+    },
+    {
+      "title": "中隔牆偏心與拉壓邊緣~Wall eccentricity and edge stresses",
+      "anchor": "中隔牆偏心與拉壓邊緣~Wall eccentricity and edge stresses",
+      "mechanism": "軸力偏離中隔牆中心會產生彎矩，兩側邊緣可能一側壓縮一側受拉。線彈性未裂截面可揭示平均值掩蓋的差異，但開裂後必須重新檢討有效剛度與力流，不可直接延用同一分布。 假設單位寬N=500 kN、e=0.10 m、t=0.30 m，M=50 kN·m；σ=N/t±6M/t²=1.667±3.333 MPa，兩緣5與-1.667 MPa。 施工偏差把力流推向牆邊，可能在名義平均壓力可接受時造成拉裂與局部壓碎；如果只量一側，還可能把彎曲誤判為均勻軸向受力。~An axial force offset from the temporary-wall center creates bending, potentially compressing one edge and tensioning the other. An uncracked elastic section exposes differences hidden by the mean. Once cracking occurs, effective stiffness and load transfer need reassessment rather than unchanged extrapolation. For a 1 m strip assume N=500 kN, eccentricity e=0.10 m and thickness t=0.30 m. M=50 kN·m; σ=N/t±6M/t²=1.667±3.333 MPa, giving 5 and -1.667 MPa at the edges. Construction deviation may move the load path toward an edge, producing tension or crushing despite a modest nominal mean. Measuring only one side can further misclassify bending as uniform axial loading across the section.",
+      "model": "教學假設，非現場設定或設計允收值。假設單位寬N=500 kN、e=0.10 m、t=0.30 m，M=50 kN·m；σ=N/t±6M/t²=1.667±3.333 MPa，兩緣5與-1.667 MPa。~Teaching assumptions, not operating settings or design acceptance limits. For a 1 m strip assume N=500 kN, eccentricity e=0.10 m and thickness t=0.30 m. M=50 kN·m; σ=N/t±6M/t²=1.667±3.333 MPa, giving 5 and -1.667 MPa at the edges.",
+      "verify": "以實測牆體輪廓、接點偏移與裂縫圖核對偏心方向，兩側應變需扣除溫度與初始讀值差；若拉側反應顯著，應檢查開裂模型和連接條件，不把單側感測值代表整個牆截面。~Use measured wall profiles, connection offsets and crack maps to check eccentricity direction. Correct opposite-side strains for temperature and initial offsets. Significant tensile response requires checking cracking and connections; one sensor cannot represent the full wall section.",
+      "failure": "施工偏差把力流推向牆邊，可能在名義平均壓力可接受時造成拉裂與局部壓碎；如果只量一側，還可能把彎曲誤判為均勻軸向受力。~Construction deviation may move the load path toward an edge, producing tension or crushing despite a modest nominal mean. Measuring only one side can further misclassify bending as uniform axial loading across the section.",
+      "misconception": "中隔牆只承擔軸向壓力，所以不需要考慮偏心彎矩。~A temporary dividing wall carries axial compression only, so eccentric bending need not be considered.",
+      "practice": "交接同時保存牆厚、偏心來源和兩側量測，不將平均應力替代邊緣檢查；異常裂縫由暫時工程與襯砌設計者共同評估。~Retain wall thickness, eccentricity sources and observations on both sides at handover. Mean stress does not replace edge checks; temporary-works and lining designers jointly assess anomalous cracking."
+    },
+    {
+      "title": "支承剛度與荷載重分配~Support stiffness and load redistribution",
+      "anchor": "支承剛度與荷載重分配~Support stiffness and load redistribution",
+      "mechanism": "中央區形成後，不同支承可共同承載；在理想剛性橫梁下，各支承分得的荷載與剛度成比例。移除其中一項會改變位移和剩餘需求，即使外荷載不變，也不能沿用拆除前的內力。 假設總F=1000 kN、並聯k1=20及k2=30 kN/mm，位移20 mm、分力400與600 kN；移除k1後位移1000/30=33.33 mm。 剩餘支承較柔或已有損傷，重新分配後的位移可能比原預測大，並引發額外偏心；若只確認被拆牆本身可移除，會漏掉承接荷載的系統需求。~After the central region forms, supports may share load. Under an ideal rigid cross-member their shares are proportional to stiffness. Removing one changes displacement and remaining demand even at unchanged external load, so pre-removal internal forces cannot simply be retained. Assume total F=1000 kN and parallel stiffnesses k1=20 and k2=30 kN/mm. Displacement is 20 mm and forces are 400 and 600 kN. Removing k1 gives 1000/30=33.33 mm. If the remaining support is flexible or damaged, redistribution can produce greater movement and additional eccentricity than expected. Checking only that the wall itself can be removed misses the demands on the system taking over its load.",
+      "model": "教學假設，非現場設定或設計允收值。假設總F=1000 kN、並聯k1=20及k2=30 kN/mm，位移20 mm、分力400與600 kN；移除k1後位移1000/30=33.33 mm。~Teaching assumptions, not operating settings or design acceptance limits. Assume total F=1000 kN and parallel stiffnesses k1=20 and k2=30 kN/mm. Displacement is 20 mm and forces are 400 and 600 kN. Removing k1 gives 1000/30=33.33 mm.",
+      "verify": "核對模型是否真能視為共同位移的並聯支承，再比較移除前後的位移和內力資料；材料齡期、接縫與地層接觸改變須分別建模，不能只把被移除構件從圖上刪去而保持其他內力不變。~Check whether shared displacement really supports a parallel-spring idealization, then compare pre- and post-change movements and force evidence. Model material age, joints and changed ground contact separately. Erasing a removed member from the drawing while retaining all other forces is not analysis.",
+      "failure": "剩餘支承較柔或已有損傷，重新分配後的位移可能比原預測大，並引發額外偏心；若只確認被拆牆本身可移除，會漏掉承接荷載的系統需求。~If the remaining support is flexible or damaged, redistribution can produce greater movement and additional eccentricity than expected. Checking only that the wall itself can be removed misses the demands on the system taking over its load.",
+      "misconception": "外荷載不變就表示拆除一個支承後其他構件內力不變。~Unchanged external loading means that removing one support cannot change forces in the others.",
+      "practice": "拆除審查須指明由誰承接每個力分量，附替代系統的齡期與驗證證據；設計者核准後才有正式程序，本課彈簧例不提供拆除順序。~A removal review identifies the recipient of each force component and includes age and verification evidence for the replacement system. Formal procedures follow designer approval; this spring example specifies no removal sequence."
+    },
+    {
+      "title": "暫時構件減少與需求缺口~Temporary-member reduction and demand gap",
+      "anchor": "暫時構件減少與需求缺口~Temporary-member reduction and demand gap",
+      "mechanism": "受力構件數量減少時，總可用抗力與個別需求都可能改變；將額定值簡單相加只是一個理想上限，實際分配受剛度、偏心及連接控制。即使這個理想上限不足，也不應靠平均分攤掩蓋缺口。 假設四個獨立同向支承各有200 kN已給定能力，總800 kN；少一個後僅600 kN，對假設需求700 kN差100 kN，未含分項與群體效應。 若構件尚未達齡期或接點未完成卻被算入可用數量，能力表會高估實際系統；逐項少算需求又可能讓總表看似平衡，掩蓋某一關鍵施工階段的缺口。~Reducing load-carrying members can change both available resistance and individual demand. Adding nominal values is only an ideal upper bound because stiffness, eccentricity and connections govern distribution. If even that upper bound is insufficient, averaging cannot remove the gap. Assume four independent supports with supplied same-direction resistance 200 kN each, totaling 800 kN. With one absent, 600 kN remains against assumed demand 700 kN, leaving a 100 kN gap before factors or group effects. Counting members before adequate age or connection completion overstates the available system. Understating separate demands can then make the totals appear balanced while concealing a gap at a critical construction stage.",
+      "model": "教學假設，非現場設定或設計允收值。假設四個獨立同向支承各有200 kN已給定能力，總800 kN；少一個後僅600 kN，對假設需求700 kN差100 kN，未含分項與群體效應。~Teaching assumptions, not operating settings or design acceptance limits. Assume four independent supports with supplied same-direction resistance 200 kN each, totaling 800 kN. With one absent, 600 kN remains against assumed demand 700 kN, leaving a 100 kN gap before factors or group effects.",
+      "verify": "建立每階段支承清單與方向圖，核對能力是否有可追溯設計依據以及構件是否實際有效；先查總量平衡，再查個別分配和連接，任何需求缺口須由設計者明確處理，不能靠修改報表平均值消失。~Build stage-specific support inventories and force-direction diagrams, checking traceable resistance assumptions and actual availability. Review total equilibrium before individual distribution and connections. The designer must explicitly address any demand gap; changing an average in a report cannot remove it.",
+      "failure": "若構件尚未達齡期或接點未完成卻被算入可用數量，能力表會高估實際系統；逐項少算需求又可能讓總表看似平衡，掩蓋某一關鍵施工階段的缺口。~Counting members before adequate age or connection completion overstates the available system. Understating separate demands can then make the totals appear balanced while concealing a gap at a critical construction stage.",
+      "misconception": "只要平均分到各支承的力不大，缺少構件就沒有影響。~Missing members have no effect as long as the average force per support looks modest.",
+      "practice": "構件清單分開列已完成、已驗證與待核准狀態，禁止把計畫構件當成現有支承；暫時工程主管和結構設計者共同簽認每階段力流。~Distinguish completed, verified and pending members in the inventory. Planned members cannot count as existing support. The temporary-works lead and structural designer jointly approve the load path at each stage."
+    },
+    {
+      "title": "共同基準與相關誤差~Shared reference and correlated uncertainty",
+      "anchor": "共同基準與相關誤差~Shared reference and correlated uncertainty",
+      "mechanism": "左右導坑量測常共用基準，因此誤差可能相關；平方和只適用獨立分量。若要比較組合量，必須依加減方向包含共變異數，不然資料看似精密也可能低估或高估實際不確定度。 假設相加量兩項標準差2與3 mm、相關係數ρ=0.5，σ=√(2²+3²+2×0.5×2×3)=4.36 mm；若獨立則3.61 mm。 把共用基準的資料當完全獨立會錯估合成不確定度，導致異常判定過度敏感或不夠敏感；若正負號也混淆，左右差異甚至可能被錯誤放大。~Measurements in both drifts may share a reference, creating correlated errors. Root-sum-square applies only to independent components. For a combined quantity, covariance must follow the chosen addition or subtraction; otherwise apparent precision can understate or overstate uncertainty. For a sum, assume standard deviations 2 and 3 mm and correlation ρ=0.5. σ=√(2²+3²+2×0.5×2×3)=4.36 mm; independence would give 3.61 mm. Treating shared-reference data as independent misstates combined uncertainty and can make anomaly detection too sensitive or too insensitive. Confusing signs adds another error and may exaggerate a left-right difference that the observations do not support.",
+      "model": "教學假設，非現場設定或設計允收值。假設相加量兩項標準差2與3 mm、相關係數ρ=0.5，σ=√(2²+3²+2×0.5×2×3)=4.36 mm；若獨立則3.61 mm。~Teaching assumptions, not operating settings or design acceptance limits. For a sum, assume standard deviations 2 and 3 mm and correlation ρ=0.5. σ=√(2²+3²+2×0.5×2×3)=4.36 mm; independence would give 3.61 mm.",
+      "verify": "核對兩組量測是否共用設站、控制點或氣象修正，先定義比較量是和還是差；從重複觀測估計相關性時保留樣本限制，基準偏差另行調查，不以套入相關係數掩蓋未查明的系統誤差。~Check shared setup, control and atmospheric correction, first defining whether the comparison is a sum or difference. Retain sample limitations when estimating correlation from repetitions. Investigate reference bias separately rather than inserting a coefficient to conceal an unexplained systematic error.",
+      "failure": "把共用基準的資料當完全獨立會錯估合成不確定度，導致異常判定過度敏感或不夠敏感；若正負號也混淆，左右差異甚至可能被錯誤放大。~Treating shared-reference data as independent misstates combined uncertainty and can make anomaly detection too sensitive or too insensitive. Confusing signs adds another error and may exaggerate a left-right difference that the observations do not support.",
+      "misconception": "任何兩項量測不確定度都可直接平方和開根號。~Any two measurement uncertainties can always be combined by root-sum-square without further checks.",
+      "practice": "量測報告保留坐標、組合公式與共用誤差來源，相關性不明時提供情境範圍；監測主管與設計者確認後，才用於施工階段比較。~Reports retain coordinates, combination formulas and shared-error sources. Where correlation is unknown, provide scenario bounds. Monitoring and design leads confirm the treatment before using it to compare construction stages."
+    },
+    {
+      "title": "階段模型與保留驗證~Staged model and withheld validation",
+      "anchor": "階段模型與保留驗證~Staged model and withheld validation",
+      "mechanism": "階段模型必須依實際完成狀態啟用構件，才有可能對照量測；總誤差很小不代表每個階段都合理。保留未用於校準的觀測能檢查外推能力，殘差的時間方向比單一誤差數字更有資訊。 假設三個保留觀測為4、7、10 mm，預測為5、7、8 mm，誤差為1、0、-2 mm，RMSE=√[(1²+0²+2²)/3]=1.29 mm。 把驗證資料回填校準後再稱為獨立驗證，會製造過度樂觀的準確度；模型在拆除後系統性低估時，平均誤差可能仍被前期良好吻合稀釋。~A staged model activates members according to actual completion before it can be compared with observations. Small total error does not make every stage credible. Withheld observations test predictive performance, and the temporal pattern of residuals often matters more than one summary metric. Assume withheld observations 4, 7 and 10 mm with predictions 5, 7 and 8 mm. Errors are 1, 0 and -2 mm; RMSE=√[(1²+0²+2²)/3]=1.29 mm. Reusing validation observations for calibration and still calling them independent creates optimistic accuracy. Systematic underprediction after removal can also be diluted by good early fits when only a whole-history average is reported.",
+      "model": "教學假設，非現場設定或設計允收值。假設三個保留觀測為4、7、10 mm，預測為5、7、8 mm，誤差為1、0、-2 mm，RMSE=√[(1²+0²+2²)/3]=1.29 mm。~Teaching assumptions, not operating settings or design acceptance limits. Assume withheld observations 4, 7 and 10 mm with predictions 5, 7 and 8 mm. Errors are 1, 0 and -2 mm; RMSE=√[(1²+0²+2²)/3]=1.29 mm.",
+      "verify": "檢查校準與驗證資料是否真正分離，將殘差對照中隔牆狀態與開挖時序；若後期持續低估，須檢討構件啟用、剛度及荷載邊界，不能只用全期RMSE較小便宣稱下一階段已驗證。~Verify that calibration and validation data are separate, comparing residuals with wall status and excavation chronology. Persistent late underprediction requires reviewing member activation, stiffness and load boundaries. A small whole-history RMSE does not validate the next stage automatically.",
+      "failure": "把驗證資料回填校準後再稱為獨立驗證，會製造過度樂觀的準確度；模型在拆除後系統性低估時，平均誤差可能仍被前期良好吻合稀釋。~Reusing validation observations for calibration and still calling them independent creates optimistic accuracy. Systematic underprediction after removal can also be diluted by good early fits when only a whole-history average is reported.",
+      "misconception": "模型全期平均誤差很小便表示每一次構件變更都可靠。~A small whole-history average error makes every modeled member change reliable and validated.",
+      "practice": "模型版本記錄每個構件的啟用日期與校準資料集，保留後期驗證不回填；拆除相關預測與實際差異由模型和暫時工程負責人共同審查。~Model versions record activation dates and calibration datasets, keeping later validation genuinely separate. Modeling and temporary-works leads jointly review differences between removal-related predictions and observations."
+    },
+    {
+      "title": "拆牆介面與水壓路徑~Wall-removal interfaces and water-pressure paths",
+      "anchor": "拆牆介面與水壓路徑~Wall-removal interfaces and water-pressure paths",
+      "mechanism": "中隔牆移除後，原接觸和施工縫會成為必須確認的防水介面；外部水頭不會因牆被拆除而消失。局部平面水壓合力可顯示需求尺度，但接縫滲漏與結構傳力要分別驗證。 假設淡水水頭18 m，p=9.81×18=176.58 kPa；在假設平面面積1.5 m²上F=264.87 kN，未代表整個曲面襯砌的合力。 拆除留下的凹槽或施工縫若未完成相容處置，可能形成沿界面的滲流路徑；早期沒有漏水不代表耐久可靠，後續水頭改變才可能暴露缺陷。~After a dividing wall is removed, former contacts and construction joints become interfaces requiring waterproofing verification. External head does not disappear with wall removal. A local planar pressure resultant illustrates scale, while leakage paths and structural transfer need separate checks. Assume freshwater head 18 m: p=9.81×18=176.58 kPa. On an ideal plane area 1.5 m², F=264.87 kN; this is not the resultant over the whole curved lining. A recess or construction joint left without compatible treatment can form an interface seepage path. Lack of early leakage does not establish durability, because a later head change may be what exposes the defect.",
+      "model": "教學假設，非現場設定或設計允收值。假設淡水水頭18 m，p=9.81×18=176.58 kPa；在假設平面面積1.5 m²上F=264.87 kN，未代表整個曲面襯砌的合力。~Teaching assumptions, not operating settings or design acceptance limits. Assume freshwater head 18 m: p=9.81×18=176.58 kPa. On an ideal plane area 1.5 m², F=264.87 kN; this is not the resultant over the whole curved lining.",
+      "verify": "將拆牆後暴露的接縫、修補與防水連續性定位記錄，核對外水頭與排水設計是否一致；以核准品質試驗確認介面，乾燥表面不能排除未來水頭增加，需由防水及結構負責人共同核查。~Locate exposed joints, repairs and waterproof continuity after removal, checking consistency between external head and drainage design. Approved quality tests verify interfaces. A dry surface does not exclude future head increase, so waterproofing and structural leads review the conditions together.",
+      "failure": "拆除留下的凹槽或施工縫若未完成相容處置，可能形成沿界面的滲流路徑；早期沒有漏水不代表耐久可靠，後續水頭改變才可能暴露缺陷。~A recess or construction joint left without compatible treatment can form an interface seepage path. Lack of early leakage does not establish durability, because a later head change may be what exposes the defect.",
+      "misconception": "暫時牆拆掉後，其原接縫就不再影響永久襯砌。~Once a temporary wall is removed, its former joints no longer affect the permanent lining.",
+      "practice": "防水交接另列原中隔牆介面及修補版本，保留覆蓋前證據與維護定位；未閉合項須由相應設計責任人處理，不以無漏水照片取代核准。~Waterproofing handover identifies former wall interfaces and repair versions, retaining pre-covering evidence and maintenance locations. Responsible designers resolve open items; a photograph without leakage is not a substitute for approval."
+    },
+    {
+      "title": "施工狀態清單與交接~Construction-state register and handover",
+      "anchor": "施工狀態清單與交接~Construction-state register and handover",
+      "mechanism": "大型洞室交接需要知道哪些暫時構件已移除、哪些永久介面已驗證，僅有完工外觀圖會遺失施工歷程。清單完成率是資料管理指標，關鍵未閉合項的風險仍需個別決策。 假設交接列80項界面，已核准76項，完成率76/80=95%；剩餘4項若含荷載轉移驗證，即使比例只有5%也不能自動結案。 暫時狀態未更新會讓後續人員以為仍有某個支承，或誤認已完成防水修補；這類文件錯誤可能使維護決策建立在不存在的構件或未驗證的介面上。~Cavern handover needs the status of removed temporary members and verified permanent interfaces. An as-finished view alone loses construction history. Register completion is a data-management measure; critical unresolved items still require individual engineering decisions. Assume 80 interface items with 76 approved: completion is 76/80=95%. If the remaining four include load-transfer verification, their 5% share does not justify automatic closure. An outdated temporary-state record can make later staff assume a support remains or a waterproof repair is complete. Maintenance decisions may then rely on a nonexistent member or an interface whose condition has never been verified.",
+      "model": "教學假設，非現場設定或設計允收值。假設交接列80項界面，已核准76項，完成率76/80=95%；剩餘4項若含荷載轉移驗證，即使比例只有5%也不能自動結案。~Teaching assumptions, not operating settings or design acceptance limits. Assume 80 interface items with 76 approved: completion is 76/80=95%. If the remaining four include load-transfer verification, their 5% share does not justify automatic closure.",
+      "verify": "逐項抽查清單能否連到圖面版本、原始量測與核准記錄，特別檢查拆除前後狀態是否一致；將待辦項依機制和責任分列，不能只交一個總完成百分比，維護單位也須能定位永久介面。~Audit whether each register item links to drawing versions, original observations and approvals, especially consistency before and after removal. Classify open items by mechanism and responsibility rather than handing over one percentage. Maintenance staff must also be able to locate permanent interfaces.",
+      "failure": "暫時狀態未更新會讓後續人員以為仍有某個支承，或誤認已完成防水修補；這類文件錯誤可能使維護決策建立在不存在的構件或未驗證的介面上。~An outdated temporary-state record can make later staff assume a support remains or a waterproof repair is complete. Maintenance decisions may then rely on a nonexistent member or an interface whose condition has never been verified.",
+      "misconception": "交接完成率夠高就能把所有剩餘項目視為行政細節。~A high completion percentage makes every remaining handover item merely an administrative detail.",
+      "practice": "保留施工狀態歷程與永久資產清單的對應，未閉合項指定責任人及核准條件；設計、施工、品質和維護代表共同確認後完成交接。~Preserve the link between construction-state history and the permanent asset register, assigning owners and approval conditions to unresolved items. Design, construction, quality and maintenance representatives jointly confirm the record before handover closes."
+    }
+  ],
+  "example": "以下原創算例針對雙側導坑的暫時中隔牆、非對稱受力與拆除荷載轉移，每個輸入都是教學假設而非地標實測資料。教學假設，非現場設定或設計允收值。假設q=30 kN/m、L=8 m，M=qL²/8=240 kN·m；將理想跨度減為4 m則M=60 kN·m，僅適用相同均布與簡支邊界。教學假設，非現場設定或設計允收值。假設截面寬12 m，向下力600 kN位於x=2 m、400 kN位於x=10 m，合力位置x=(600×2+400×10)/1000=5.2 m，偏中心0.8 m。兩式只回答各自所列的量與邊界，不應把單一平均結果當成整體穩定證明。請另以最不利的幾何、時間或接觸條件代入，分別標示量測誤差和模型偏差；交接記錄須保留原單位、資料日期以及未能確認的條件。~This original worked example examines temporary walls, asymmetry and removal load transfer in side-drift excavation. Every input is a teaching assumption, not a measured value from a landmark. Teaching assumptions, not operating settings or design acceptance limits. Assume q=30 kN/m and L=8 m. M=qL²/8=240 kN·m; an ideal 4 m span gives 60 kN·m, under the same uniform loading and simple-support boundaries only. Teaching assumptions, not operating settings or design acceptance limits. Assume a 12 m section with downward forces 600 kN at x=2 m and 400 kN at x=10 m. Resultant x=(600×2+400×10)/1000=5.2 m, 0.8 m from center. Each relation answers only its stated quantity under its stated boundary conditions. A favorable mean value is not proof of overall stability. Recalculate with an adverse geometry, timing or contact condition, distinguishing measurement uncertainty from model error. The handover record must retain original units, observation dates and conditions that remain unverified; the responsible designer decides whether additional evidence is needed.",
+  "facts": [
+    "教學假設，非現場設定或設計允收值。假設q=30 kN/m、L=8 m，M=qL²/8=240 kN·m；將理想跨度減為4 m則M=60 kN·m，僅適用相同均布與簡支邊界。~Teaching assumptions, not operating settings or design acceptance limits. Assume q=30 kN/m and L=8 m. M=qL²/8=240 kN·m; an ideal 4 m span gives 60 kN·m, under the same uniform loading and simple-support boundaries only.",
+    "教學假設，非現場設定或設計允收值。假設截面寬12 m，向下力600 kN位於x=2 m、400 kN位於x=10 m，合力位置x=(600×2+400×10)/1000=5.2 m，偏中心0.8 m。~Teaching assumptions, not operating settings or design acceptance limits. Assume a 12 m section with downward forces 600 kN at x=2 m and 400 kN at x=10 m. Resultant x=(600×2+400×10)/1000=5.2 m, 0.8 m from center.",
+    "教學假設，非現場設定或設計允收值。假設兩端鉸接、EI=20000 kN·m²、有效H=6 m，Pcr=π²EI/H²=5483 kN；H增至9 m則2437 kN，未含初始缺陷或非彈性。~Teaching assumptions, not operating settings or design acceptance limits. Assume pinned ends, EI=20000 kN·m² and effective H=6 m. Pcr=π²EI/H²=5483 kN; at H=9 m it is 2437 kN, excluding imperfections and inelastic behavior.",
+    "教學假設，非現場設定或設計允收值。假設單位寬N=500 kN、e=0.10 m、t=0.30 m，M=50 kN·m；σ=N/t±6M/t²=1.667±3.333 MPa，兩緣5與-1.667 MPa。~Teaching assumptions, not operating settings or design acceptance limits. For a 1 m strip assume N=500 kN, eccentricity e=0.10 m and thickness t=0.30 m. M=50 kN·m; σ=N/t±6M/t²=1.667±3.333 MPa, giving 5 and -1.667 MPa at the edges.",
+    "教學假設，非現場設定或設計允收值。假設總F=1000 kN、並聯k1=20及k2=30 kN/mm，位移20 mm、分力400與600 kN；移除k1後位移1000/30=33.33 mm。~Teaching assumptions, not operating settings or design acceptance limits. Assume total F=1000 kN and parallel stiffnesses k1=20 and k2=30 kN/mm. Displacement is 20 mm and forces are 400 and 600 kN. Removing k1 gives 1000/30=33.33 mm.",
+    "教學假設，非現場設定或設計允收值。假設四個獨立同向支承各有200 kN已給定能力，總800 kN；少一個後僅600 kN，對假設需求700 kN差100 kN，未含分項與群體效應。~Teaching assumptions, not operating settings or design acceptance limits. Assume four independent supports with supplied same-direction resistance 200 kN each, totaling 800 kN. With one absent, 600 kN remains against assumed demand 700 kN, leaving a 100 kN gap before factors or group effects."
+  ],
+  "timeline": [
+    {
+      "year": "1992",
+      "event": "Heathrow Express試驗隧道展示倫敦軟土噴凝土襯砌~The Heathrow Express trial tunnel demonstrates soft-ground sprayed lining in London"
+    },
+    {
+      "year": "2009",
+      "event": "美國聯邦公路管理局發布隧道土建技術手冊~FHWA issues its tunnel manual covering civil engineering elements"
+    },
+    {
+      "year": "2014",
+      "event": "Crossrail公開噴凝土設計與Stepney Green案例論文~Crossrail publishes sprayed-lining design and Stepney Green case papers"
+    }
+  ],
+  "codes": [
+    "美國聯邦公路管理局公路隧道土建技術手冊，2009~FHWA road tunnel civil-elements technical manual, 2009",
+    "Crossrail噴凝土襯砌設計論文，2014：案例指引~Crossrail sprayed-concrete lining design paper, 2014: case guidance"
+  ],
+  "landmarks": [
+    "倫敦Stepney Green洞室：側導坑案例~London Stepney Green caverns: side-drift case",
+    "倫敦Heathrow Express試驗隧道~London Heathrow Express trial tunnel"
+  ],
+  "place": {
+    "name": "倫敦Stepney Green洞室背景參照~London Stepney Green cavern context reference",
+    "country": "英國~United Kingdom",
+    "lat": 51.5195,
+    "lng": -0.044,
+    "query": "Stepney Green Crossrail caverns London"
+  },
+  "sources": [
+    {
+      "key": "crossrail-scl",
+      "title": "Crossrail噴凝土襯砌的設計觀點",
+      "titleEn": "Design of Sprayed Concrete Linings in Soft Ground: A Crossrail Perspective",
+      "publisher": "Crossrail Learning Legacy",
+      "url": "https://learninglegacy.crossrail.co.uk/documents/design-sprayed-concrete-linings-soft-ground%E2%94%80-crossrail-perspective/",
+      "sourceType": "primary",
+      "scope": "原作者技術論文，支援施工序列、地層互制與早齡襯砌之背景，算例另列為合成假設。",
+      "scopeEn": "Original authors technical paper supporting construction sequence, ground interaction and early-age lining context. Course calculations are separately identified as synthetic assumptions."
+    },
+    {
+      "key": "crossrail-stepney",
+      "title": "Stepney Green洞室襯砌設計與表現",
+      "titleEn": "Stepney Green Cavern: Design Concepts and Performance of SCL Lining",
+      "publisher": "Crossrail Learning Legacy",
+      "url": "https://learninglegacy.crossrail.co.uk/documents/stepney-green-cavern-design-concepts-and-performance-of-scl-lining/",
+      "sourceType": "primary",
+      "scope": "原作者公開側壁導坑與襯砌觀測案例；不把案例斷面與步距移植為本課施工處方。",
+      "scopeEn": "Original authors public side-drift and lining-monitoring case; its dimensions and advances are not transferred into a construction prescription."
+    },
+    {
+      "key": "fhwa-manual",
+      "title": "公路隧道設計施工土建技術手冊",
+      "titleEn": "Technical Manual for Design and Construction of Road Tunnels: Civil Elements",
+      "publisher": "FHWA / US Government Publishing Office",
+      "url": "https://www.govinfo.gov/app/details/GOVPUB-TD2-PURL-gpo93381",
+      "sourceType": "primary",
+      "scope": "二〇〇九年官方手冊書目；用作隧道土建設計參考來源，未聲稱此舊手冊是現行個案規範。",
+      "scopeEn": "Official 2009 manual record; a civil tunnel design reference, not a claim that an older manual is the current specification for a project."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Crossrail Learning Legacy",
+      "nameEn": "Crossrail Learning Legacy",
+      "business": "提供本課設備原理或隧道工程公開方法資料。",
+      "businessEn": "Provides public machine principles or tunnel engineering methodology.",
+      "url": "https://learninglegacy.crossrail.co.uk/documents/design-sprayed-concrete-linings-soft-ground%E2%94%80-crossrail-perspective/",
+      "investorUrl": "",
+      "security": null,
+      "role": "原作者技術論文，支援施工序列、地層互制與早齡襯砌之背景，算例另列為合成假設。",
+      "roleEn": "Original authors technical paper supporting construction sequence, ground interaction and early-age lining context. Course calculations are separately identified as synthetic assumptions."
+    },
+    {
+      "name": "FHWA / US Government Publishing Office",
+      "nameEn": "FHWA / US Government Publishing Office",
+      "business": "提供本課設備原理或隧道工程公開方法資料。",
+      "businessEn": "Provides public machine principles or tunnel engineering methodology.",
+      "url": "https://www.govinfo.gov/app/details/GOVPUB-TD2-PURL-gpo93381",
+      "investorUrl": "",
+      "security": null,
+      "role": "二〇〇九年官方手冊書目；用作隧道土建設計參考來源，未聲稱此舊手冊是現行個案規範。",
+      "roleEn": "Official 2009 manual record; a civil tunnel design reference, not a claim that an older manual is the current specification for a project."
+    }
+  ],
+  "related": [
+    "b149",
+    "b151"
+  ],
+  "architectureNodes": [
+    [
+      "分割跨度與梁式比較",
+      "Subdivided span and beam comparison"
+    ],
+    [
+      "暫時牆細長與理想屈曲",
+      "Temporary-wall slenderness and ideal buckling"
+    ],
+    [
+      "支承剛度與荷載重分配",
+      "Support stiffness and load redistribution"
+    ],
+    [
+      "共同基準與相關誤差",
+      "Shared reference and correlated uncertainty"
+    ],
+    [
+      "施工狀態清單與交接",
+      "Construction-state register and handover"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      1
+    ]
+  ]
+}

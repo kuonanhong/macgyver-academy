@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c428-adc600f100939aa2.json"]={sha256:"adc600f100939aa2b1c64beeb568b22c844ae3c9997e32eebe50599f3d90bc14",value:{"title":"Arburg Allrounder 注塑平台","titleEn":"Arburg Allrounder injection-molding platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：閉模控制與聚合物流動。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: clamp control and polymer flow. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c428"}};

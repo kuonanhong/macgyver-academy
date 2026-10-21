@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d322-8251800763395490.json"]={sha256:"8251800763395490b1d678e9d6a707f50341d7499caad4b14b3b894e02380819",value:{"id":"d322","title":"水耕營養液循環監測","titleEn":"Hydroponic Nutrient Circulation Monitoring","category":"process","kind":"craft","summary":"「水耕營養液循環監測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hydroponic Nutrient Circulation Monitoring: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

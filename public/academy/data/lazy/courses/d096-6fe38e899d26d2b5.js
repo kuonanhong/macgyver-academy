@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d096-6fe38e899d26d2b5.json"]={sha256:"6fe38e899d26d2b5abf70407ee229923226280c33470691c0bbcd7c412d0f432",value:{"id":"d096","title":"鑽孔蓄熱場熱傳模擬","titleEn":"Borehole Thermal Energy Storage Modeling","category":"energy","kind":"craft","summary":"「鑽孔蓄熱場熱傳模擬」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Borehole Thermal Energy Storage Modeling: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

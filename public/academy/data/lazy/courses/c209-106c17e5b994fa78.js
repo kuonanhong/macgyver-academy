@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c209-106c17e5b994fa78.json"]={sha256:"106c17e5b994fa782f8b4859034de074b3310032947c0410f8d327ab767c97d3",value:{"title":"McLaren F1 中央駕駛跑車","titleEn":"McLaren F1 central-driving-position car","category":"automotive","kind":"project","summary":"課程規劃主題：碳纖維座艙與人體工學。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: carbon-fiber cabins and ergonomics. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c209"}};

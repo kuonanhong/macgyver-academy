@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c401-65db2f46f44d6404.json"]={sha256:"65db2f46f44d6404b5582e718a0cebff333d40cbd87db8354bd3a33eaeddd628",value:{"title":"Unimate 工業機器人工程史","titleEn":"Unimate industrial-robot engineering history","category":"manufacturing","kind":"project","summary":"課程規劃主題：早期自動化與工件搬運。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: early automation and workpiece handling. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c401"}};

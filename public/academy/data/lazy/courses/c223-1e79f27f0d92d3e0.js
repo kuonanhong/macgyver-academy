@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c223-1e79f27f0d92d3e0.json"]={sha256:"1e79f27f0d92d3e08e4bd1b87eebaea3162366a76a67f1fe5ce26f198d197844",value:{"title":"Lucid Air 高效率電動車","titleEn":"Lucid Air efficient electric car","category":"automotive","kind":"project","summary":"課程規劃主題：電驅整合與能耗管理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: integrated electric drives and energy-use management. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c223"}};

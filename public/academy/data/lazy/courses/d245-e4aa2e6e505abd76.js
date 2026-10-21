@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d245-e4aa2e6e505abd76.json"]={sha256:"e4aa2e6e505abd76102d2842894022d9daf7758b3a60b9b933c906a3729aefd7",value:{"id":"d245","title":"植入式設備無線充電概念","titleEn":"Implantable Device Wireless Charging Concepts","category":"biomedical","kind":"craft","summary":"「植入式設備無線充電概念」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Implantable Device Wireless Charging Concepts: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

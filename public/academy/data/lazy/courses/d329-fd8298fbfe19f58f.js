@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d329-fd8298fbfe19f58f.json"]={sha256:"fd8298fbfe19f58fc429454cd2fb339d9f4675dbfe3edbc88e3cfadaaae158b0",value:{"id":"d329","title":"農機機具通訊整合","titleEn":"Agricultural Implement Communication Integration","category":"process","kind":"craft","summary":"「農機機具通訊整合」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Agricultural Implement Communication Integration: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

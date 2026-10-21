@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d492-cd700f3a82517a28.json"]={sha256:"cd700f3a82517a286098956419d6625082838961260953d821a8025e478327df",value:{"id":"d492","title":"限深因子全海深潛器","titleEn":"Limiting Factor Full Ocean Depth Submersible","category":"megascience","kind":"project","summary":"「限深因子全海深潛器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Limiting Factor Full Ocean Depth Submersible: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

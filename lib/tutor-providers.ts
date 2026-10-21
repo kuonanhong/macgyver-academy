@@ -1,10 +1,11 @@
 // Provider keys and URLs come only from server configuration, never the client.
-type Config = { AI_BASE_URL?:string; AI_API_KEY?:string; AI_MODEL?:string; GEMINI_API_KEY?:string; GEMINI_MODEL?:string };
+type Config = { AI_BASE_URL?:string; AI_API_KEY?:string; AI_MODEL?:string; GEMINI_API_KEY?:string; GEMINI_MODEL?:string; ANTHROPIC_API_KEY?:string; ANTHROPIC_MODEL?:string };
 export type TutorImage = {mimeType:string; data:string};
 export function hostedRoutes(config:Config) {
   const routes = [];
   if(config.AI_BASE_URL && config.AI_API_KEY && config.AI_MODEL) routes.push({id:'default', label:'Configured AI service', model:config.AI_MODEL, supportsImages:false, cloud:true, destination:'Administrator-configured AI provider'});
   if(config.GEMINI_API_KEY) routes.push({id:'gemini',label:'Gemini · text + image',model:config.GEMINI_MODEL || 'gemini-3.5-flash-lite',supportsImages:true,cloud:true,destination:'Google Gemini API'});
+  if(config.ANTHROPIC_API_KEY && /^[a-zA-Z0-9._-]{1,100}$/.test(config.ANTHROPIC_MODEL||"")) routes.push({id:"claude",label:"Claude · text + image",model:config.ANTHROPIC_MODEL!,supportsImages:true,cloud:true,destination:"Anthropic Claude API"});
   return routes;
 }
 export function validateTutorImage(value:unknown):TutorImage|undefined {
@@ -55,11 +56,28 @@ export async function geminiCompletion(config:Config, system:string, prompt:stri
   const response=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{
     method:'POST',redirect:'error',signal:AbortSignal.timeout(35000),
     headers:{'Content-Type':'application/json','x-goog-api-key':config.GEMINI_API_KEY},
-    body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:[{role:'user',parts:[{text:prompt},...(image?[{inlineData:image}]:[])]}],generationConfig:{temperature:0.2,maxOutputTokens:jsonOutput?8192:3000,...(jsonOutput?{responseMimeType:'application/json'}:{})}})
+    body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:[{role:'user',parts:[{text:prompt},...(image?[{inlineData:image}]:[])]}],generationConfig:{maxOutputTokens:jsonOutput?8192:3000,...(jsonOutput?{responseMimeType:'application/json'}:{})}})
   });
   if(!response.ok)throw new Error('Gemini rejected the request.');
   const result=await response.json() as {candidates?:{content?:{parts?:{text?:string;thought?:boolean}[]}}[]};
   const answer=result.candidates?.[0]?.content?.parts?.filter(p=>typeof p.text==='string' && !p.thought).map(p=>p.text).join('') || '';
   if(!answer.trim() || answer.length>100000)throw new Error('Gemini returned an invalid response.');
+  return {answer:jsonOutput?answer:answer.slice(0,24000),model};
+}
+
+export async function claudeCompletion(config:Config, system:string, prompt:string, image?:TutorImage, jsonOutput=false) {
+  const model=config.ANTHROPIC_MODEL||'';
+  if(!config.ANTHROPIC_API_KEY || !/^[a-zA-Z0-9._-]{1,100}$/.test(model))throw new Error('Claude is not configured.');
+  const content:unknown[]=[{type:'text',text:prompt}];
+  if(image)content.push({type:'image',source:{type:'base64',media_type:image.mimeType,data:image.data}});
+  const response=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',redirect:'error',signal:AbortSignal.timeout(35000),
+    headers:{'Content-Type':'application/json','x-api-key':config.ANTHROPIC_API_KEY,'anthropic-version':'2023-06-01'},
+    body:JSON.stringify({model,system,messages:[{role:'user',content}],max_tokens:jsonOutput?8192:3000,temperature:0.2})
+  });
+  if(!response.ok)throw new Error('Claude rejected the request.');
+  const result=await response.json() as {content?:{type?:string;text?:string}[]};
+  const answer=result.content?.filter(p=>p.type==='text'&&typeof p.text==='string').map(p=>p.text).join('\n')||'';
+  if(!answer.trim()||answer.length>100000)throw new Error('Claude returned an invalid response.');
   return {answer:jsonOutput?answer:answer.slice(0,24000),model};
 }

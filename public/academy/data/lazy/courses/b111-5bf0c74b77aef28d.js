@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b111-5bf0c74b77aef28d.json"]={sha256:"5bf0c74b77aef28daac2d2352786c41606b38822800f72d300c527fb88203685",value:{"id":"b111","title":"拉爾達隧道","titleEn":"Laerdal Tunnel","category":"underground","kind":"project","summary":"以「拉爾達隧道」為研究主題，規劃拆解地質風險、開挖支護、防水與變形監測。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Laerdal Tunnel. Planned coverage includes geological risks, excavation support, waterproofing and deformation monitoring. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-underground","b-src-geotech"],"status":"roadmap"}};

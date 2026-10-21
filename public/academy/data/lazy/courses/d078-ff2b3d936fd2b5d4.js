@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d078-ff2b3d936fd2b5d4.json"]={sha256:"ff2b3d936fd2b5d40352a0da59587b00d8e2830252fadb66e7be70e203cc6e9f",value:{"id":"d078","title":"點吸收式波浪能轉換器","titleEn":"Point Absorber Wave Energy Converters","category":"energy","kind":"craft","summary":"「點吸收式波浪能轉換器」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Point Absorber Wave Energy Converters: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

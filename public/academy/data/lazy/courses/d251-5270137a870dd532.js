@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d251-5270137a870dd532.json"]={sha256:"5270137a870dd532ae58309e8e09c950de3d78384e9b19ae67a4679ce6453442",value:{"id":"d251","title":"輸液幫浦流量驗證","titleEn":"Infusion Pump Flow Verification","category":"biomedical","kind":"craft","summary":"「輸液幫浦流量驗證」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Infusion Pump Flow Verification: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

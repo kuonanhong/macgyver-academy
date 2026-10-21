@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c109-220fe27a054a00e9.json"]={sha256:"220fe27a054a00e973eff8d87bfb26291d5a89c31ed5dcea7c3425692cea5f60",value:{"title":"Nereid Under Ice 水下研究系統","titleEn":"Nereid Under Ice research system","category":"marine","kind":"project","summary":"課程規劃主題：冰下通訊與科學採樣。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: under-ice communications and scientific sampling. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c109"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b307-3430f58e0f6d9c44.json"]={sha256:"3430f58e0f6d9c44bb9c10660199b1d77d145f96fa39c89b09f4e08e9b9b60f8",value:{"id":"b307","title":"山陽新幹線","titleEn":"Sanyo Shinkansen","category":"rail","kind":"project","summary":"以「山陽新幹線」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Sanyo Shinkansen. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

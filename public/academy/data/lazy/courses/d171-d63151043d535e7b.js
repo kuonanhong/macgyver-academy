@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d171-d63151043d535e7b.json"]={sha256:"d63151043d535e7bee57e698386911063f7e19f1490cccce8a8ed5edbfd132d5",value:{"id":"d171","title":"聚合物射出成形流動模擬","titleEn":"Polymer Injection Molding Flow Simulation","category":"materials","kind":"craft","summary":"「聚合物射出成形流動模擬」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Polymer Injection Molding Flow Simulation: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

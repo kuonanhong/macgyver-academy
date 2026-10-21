@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d416-5c38fe9c76c72c08.json"]={sha256:"5c38fe9c76c72c084df887c8ed30f09d9139d470e9e34b9849eb9f3f72ffe8a6",value:{"id":"d416","title":"江門中微子實驗JUNO","titleEn":"Jiangmen Underground Neutrino Observatory JUNO","category":"megascience","kind":"project","summary":"「江門中微子實驗JUNO」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Jiangmen Underground Neutrino Observatory JUNO: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

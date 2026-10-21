@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d411-bdaefe22ce6f1819.json"]={sha256:"bdaefe22ce6f1819a82606ffa6003c0410c86ca981f64508f73093b40e77e9db",value:{"id":"d411","title":"Tevatron對撞機工程史","titleEn":"Tevatron Collider Engineering History","category":"megascience","kind":"project","summary":"「Tevatron對撞機工程史」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Tevatron Collider Engineering History: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -198,9 +198,17 @@ class Commerce:
     def free_step(self, course, step_id):
         return step_id in {s["id"] for st in course.get("stages", [])[:FREE_STAGES] for s in st.get("steps", [])}
 
-    def curriculum(self, user_id):
+    def curriculum(self, user_id, course_id=None, index=False):
         entitled = not self.protected or bool(self.entitlement(user_id))
-        return [self.visible_course(course, entitled) for course in self.load_courses().values()]
+        courses=self.load_courses()
+        if course_id is not None:
+            return self.visible_course(self.course(course_id), entitled)
+        result=[self.visible_course(course, entitled) for course in courses.values()]
+        if not index:return result
+        keys=('id','title','titleEn','category','subcategory','subcategoryTitle','subcategoryTitleEn','summary','summaryEn','status','kind','stepCount','estimatedMinutes','diagram','flowDiagram','photoId','educationEdition','enrichmentVersion','curriculumVersion','contentStatus','depth','languageCoverage','locked','paid','partial')
+        return [{**{k:c[k] for k in keys if k in c},'_lazy':True,'stages':[
+            {**{k:stage[k] for k in ('id','title','titleEn','order') if k in stage},'steps':[{'id':step['id']} for step in stage.get('steps',[])]}
+            for stage in c.get('stages',[])]} for c in result]
 
     def static_allowed(self, target):
         """An allowlist applied to the resolved path prevents aliases/traversal."""
@@ -208,6 +216,14 @@ class Commerce:
             return True
         relative = target.relative_to(self.app.public)
         name = relative.as_posix()
+        if name=='data/lazy/index.json':return True
+        if name.startswith('data/lazy/resources/') and target.suffix in ('.json','.js'):return True
+        if name.startswith('data/lazy/courses/'):
+            match=re.fullmatch(r'(.+)-[0-9a-f]{16}\.(?:json|js)',target.name)
+            return bool(match and match[1] not in self.load_courses())
+        if name.startswith('data/lazy/data/'):
+            match=re.fullmatch(r'(.+)-[0-9a-f]{16}\.(?:json|js)',target.name)
+            return bool(match and match[1] in ('sources','source-usage','media','release','related-skills','course-places','vendors','learning-map'))
         if len(relative.parts) == 1:
             return (target.suffix in (".css", ".js", ".html", ".svg") and
                     not target.name.startswith("offline-data") and target.name not in ("offline-build.json",))
@@ -477,7 +493,12 @@ def dispatch_commerce(handler, path):
     elif method == "GET" and path == "/api/billing/me":
         handler.send_json(commerce.account(handler.user(True)["id"]))
     elif method == "GET" and path == "/api/curriculum":
-        handler.send_json(commerce.curriculum((handler.user() or {}).get("id")))
+        query=parse_qsl(urlsplit(handler.path).query,keep_blank_values=True)
+        if len(query)>1 or any(k not in ('courseId','index') for k,v in query):raise commerce.error(400,'Invalid curriculum query.')
+        values=dict(query)
+        if 'index' in values and values['index']!='1':raise commerce.error(400,'index must be 1.')
+        if 'courseId' in values and not re.fullmatch(r'[a-z0-9]+(?:[-_][a-z0-9]+)*',values['courseId']):raise commerce.error(400,'Invalid courseId.')
+        handler.send_json(commerce.curriculum((handler.user() or {}).get('id'),course_id=values.get('courseId'),index=values.get('index')=='1'))
     elif method == "GET" and path.startswith("/api/courses/"):
         uid = (handler.user() or {}).get("id")
         handler.send_json(commerce.visible_course(commerce.course(path.removeprefix("/api/courses/")), commerce.can_access(path.removeprefix("/api/courses/"), uid)))

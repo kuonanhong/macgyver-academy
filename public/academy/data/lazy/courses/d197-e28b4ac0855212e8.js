@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d197-e28b4ac0855212e8.json"]={sha256:"e28b4ac0855212e858d54a45b5680e245344ffcd24b46b2154c6c972f58f2ee8",value:{"id":"d197","title":"原子層沉積功能薄膜","titleEn":"Atomic Layer Deposition Functional Thin Films","category":"materials","kind":"craft","summary":"「原子層沉積功能薄膜」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Atomic Layer Deposition Functional Thin Films: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

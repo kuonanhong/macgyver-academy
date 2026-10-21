@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d180-6d80730ee55f6d6c.json"]={sha256:"6d80730ee55f6d6cdee10714a51c22d602f30d93dbd801ec45198751a77b5181",value:{"id":"d180","title":"高分子膜分離材料表徵","titleEn":"Polymer Separation Membrane Characterization","category":"materials","kind":"craft","summary":"「高分子膜分離材料表徵」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Polymer Separation Membrane Characterization: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

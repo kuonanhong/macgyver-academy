@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d288-337162009d629d11.json"]={sha256:"337162009d629d11d2f7d2fa2635b108d130bb3f87dc48cb407d336e69548adc",value:{"id":"d288","title":"數位聚合酶鏈反應儀量測架構","titleEn":"Digital PCR Instrument Measurement Architecture","category":"biomedical","kind":"craft","summary":"「數位聚合酶鏈反應儀量測架構」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Digital PCR Instrument Measurement Architecture: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

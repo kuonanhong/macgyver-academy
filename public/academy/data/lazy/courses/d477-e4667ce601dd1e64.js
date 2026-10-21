@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d477-e4667ce601dd1e64.json"]={sha256:"e4667ce601dd1e64cb315372f5059a4a385d3886b4c2f949b2d8c991f027b9f6",value:{"id":"d477","title":"阿蒙森史考特南極站","titleEn":"Amundsen-Scott South Pole Station","category":"megascience","kind":"project","summary":"「阿蒙森史考特南極站」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Amundsen-Scott South Pole Station: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d132-29a4df36c4e6cba5.json"]={sha256:"29a4df36c4e6cba5d01563ee86ec5a59ab1f6bad9cae59adafdd9e12cc6c6362",value:{"id":"d132","title":"異種金屬接合界面工程","titleEn":"Dissimilar Metal Joint Interface Engineering","category":"materials","kind":"craft","summary":"「異種金屬接合界面工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Dissimilar Metal Joint Interface Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

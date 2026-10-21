@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d163-911a674fb2e3ee0d.json"]={sha256:"911a674fb2e3ee0db2719cea27221311b71d6233818ae6fc188fae7e306ae9b3",value:{"id":"d163","title":"大型玻璃鏡坯精密成形","titleEn":"Large Glass Mirror Blank Precision Forming","category":"materials","kind":"craft","summary":"「大型玻璃鏡坯精密成形」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Large Glass Mirror Blank Precision Forming: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

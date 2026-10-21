@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d074-624c61baa4f8bf8c.json"]={sha256:"624c61baa4f8bf8c179869aba4d1e127ec5eac4327af83cb9101cce0eb144344",value:{"id":"d074","title":"雙循環地熱發電系統","titleEn":"Binary Cycle Geothermal Power Systems","category":"energy","kind":"craft","summary":"「雙循環地熱發電系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Binary Cycle Geothermal Power Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

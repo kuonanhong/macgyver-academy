@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c406-7bb692ebfcd153b5.json"]={sha256:"7bb692ebfcd153b5feb3a62f58d3899e7102a58455c07f99eb11a0f9ff5d0d72",value:{"title":"FANUC LR Mate 小型工業手臂","titleEn":"FANUC LR Mate compact industrial arm","category":"manufacturing","kind":"project","summary":"課程規劃主題：緊湊工站與取放作業。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: compact workcells and pick-and-place operations. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c406"}};

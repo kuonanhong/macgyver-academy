@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b306-8a62be83ea09a0e4.json"]={sha256:"8a62be83ea09a0e407da8fce851190e30f177d10d01ac2f0e5148d0b0c02da96",value:{"id":"b306","title":"東海道新幹線","titleEn":"Tokaido Shinkansen","category":"rail","kind":"project","summary":"以「東海道新幹線」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Tokaido Shinkansen. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

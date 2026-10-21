@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c240-971911e0714fb06a.json"]={sha256:"971911e0714fb06ac2a0e7ccd9cb8468c4496493a7514a2d85ebdec884b15960",value:{"title":"臺灣高鐵 700T 列車","titleEn":"Taiwan High Speed Rail 700T train","category":"automotive","kind":"project","summary":"課程規劃主題：高速運行與在地維護。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: high-speed operation and local maintenance. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c240"}};

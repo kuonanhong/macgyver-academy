@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c068-659e21004a50926b.json"]={sha256:"659e21004a50926b17d963ea528c63cdbf8577ad6c84b591c18d716adc50fa2d",value:{"title":"航空線束製造與追溯","titleEn":"Aircraft wiring-harness manufacturing","category":"aerospace","kind":"craft","summary":"課程規劃主題：接頭、線路識別與追溯。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: connectors, wire identification and traceability. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c068"}};

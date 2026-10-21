@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c250-dc1ca53eb2c57eed.json"]={sha256:"dc1ca53eb2c57eed137ab13206c547322b11ff862432a18ebfe8d0d8174d574e",value:{"title":"Siemens Vectron 電力機車","titleEn":"Siemens Vectron electric locomotive","category":"automotive","kind":"project","summary":"課程規劃主題：多供電制式與模組化。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: multiple electrification systems and modularity. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c250"}};

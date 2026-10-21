@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d148-3afa85ea403acebd.json"]={sha256:"3afa85ea403acebda591683735df6e8089f35c65ab89d30c8e2ea188bdbf2106",value:{"id":"d148","title":"夾層蜂巢結構製造","titleEn":"Honeycomb Sandwich Structure Manufacturing","category":"materials","kind":"craft","summary":"「夾層蜂巢結構製造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Honeycomb Sandwich Structure Manufacturing: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

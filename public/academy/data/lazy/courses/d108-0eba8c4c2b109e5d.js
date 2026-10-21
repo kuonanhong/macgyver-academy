@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d108-0eba8c4c2b109e5d.json"]={sha256:"0eba8c4c2b109e5ddc4f8711c581a1ffceaef91cb4ef02380dd63be489ede634",value:{"id":"d108","title":"海德魯卡爾默伊鋁冶煉廠","titleEn":"Hydro Karmoy Aluminium Smelter","category":"materials","kind":"project","summary":"「海德魯卡爾默伊鋁冶煉廠」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hydro Karmoy Aluminium Smelter: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

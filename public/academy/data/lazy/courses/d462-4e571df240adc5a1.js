@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d462-4e571df240adc5a1.json"]={sha256:"4e571df240adc5a1cde6257962f9f5cacfdceb2dbd4139edf60cb2119245b53a",value:{"id":"d462","title":"MeerKAT電波陣列","titleEn":"MeerKAT Radio Telescope Array","category":"megascience","kind":"project","summary":"「MeerKAT電波陣列」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for MeerKAT Radio Telescope Array: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

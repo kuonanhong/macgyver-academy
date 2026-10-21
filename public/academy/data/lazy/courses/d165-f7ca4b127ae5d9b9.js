@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d165-f7ca4b127ae5d9b9.json"]={sha256:"f7ca4b127ae5d9b982e88e5c4418fcfa59e97b8f998eb4d36112e3613b1caaf3",value:{"id":"d165","title":"光纖拉絲塔與幾何控制","titleEn":"Optical Fiber Draw Towers and Geometry Control","category":"materials","kind":"craft","summary":"「光纖拉絲塔與幾何控制」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Optical Fiber Draw Towers and Geometry Control: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

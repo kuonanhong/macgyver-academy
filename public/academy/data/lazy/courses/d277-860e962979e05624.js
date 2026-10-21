@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d277-860e962979e05624.json"]={sha256:"860e962979e0562470099a05a44557cb9559fd8f9f3165e00b50e53c39868fa1",value:{"id":"d277","title":"醫療裝置人因工程驗證","titleEn":"Medical Device Human Factors Verification","category":"biomedical","kind":"craft","summary":"「醫療裝置人因工程驗證」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Device Human Factors Verification: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

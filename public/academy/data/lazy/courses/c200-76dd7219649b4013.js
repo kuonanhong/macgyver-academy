@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c200-76dd7219649b4013.json"]={sha256:"76dd7219649b40136a248a9fcd273618849ddbe46616458ba2c623a4ec6caf77",value:{"title":"船舶拆解材料回收","titleEn":"Ship dismantling and material recovery","category":"marine","kind":"craft","summary":"課程規劃主題：物料盤點與環境管理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: material inventories and environmental management. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c200"}};

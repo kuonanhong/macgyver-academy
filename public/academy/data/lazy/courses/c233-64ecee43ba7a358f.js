@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c233-64ecee43ba7a358f.json"]={sha256:"64ecee43ba7a358ffe3e297ed05649f86e1e8a9dafaea627fb9f9c04459cf5a1",value:{"title":"London Routemaster 雙層巴士","titleEn":"London Routemaster double-decker bus","category":"automotive","kind":"project","summary":"課程規劃主題：車體結構與城市載客服務。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: body structures and urban passenger service. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c233"}};

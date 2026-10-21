@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d435-a7b58141ebdc07dd.json"]={sha256:"a7b58141ebdc07ddabd11e6498e8c8e43d701c2a20b2d52755f3be5b00285d74",value:{"id":"d435","title":"SPring-8同步輻射設施","titleEn":"SPring-8 Synchrotron Radiation Facility","category":"megascience","kind":"project","summary":"「SPring-8同步輻射設施」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for SPring-8 Synchrotron Radiation Facility: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

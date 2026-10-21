@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d238-4df8356df60cb151.json"]={sha256:"4df8356df60cb151e3e14b781d544b647957570d4269c8743f612934117aaaa0",value:{"id":"d238","title":"醫療影像DICOM資料平台","titleEn":"Medical Imaging DICOM Platforms","category":"biomedical","kind":"craft","summary":"「醫療影像DICOM資料平台」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Imaging DICOM Platforms: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

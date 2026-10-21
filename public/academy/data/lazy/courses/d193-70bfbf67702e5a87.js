@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d193-70bfbf67702e5a87.json"]={sha256:"70bfbf67702e5a87916a9629701fd64b644c26fad3daef1ae501aed1e39cb941",value:{"id":"d193","title":"高溫超導帶材層狀結構","titleEn":"High Temperature Superconducting Tape Structures","category":"materials","kind":"craft","summary":"「高溫超導帶材層狀結構」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Temperature Superconducting Tape Structures: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

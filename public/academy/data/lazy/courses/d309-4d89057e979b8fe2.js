@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d309-4d89057e979b8fe2.json"]={sha256:"4d89057e979b8fe252205d2fd67d99a7d7e762d91419087317915d268a61646c",value:{"id":"d309","title":"香辛料低溫研磨與香氣保留","titleEn":"Spice Cryogenic Milling and Aroma Retention","category":"process","kind":"craft","summary":"「香辛料低溫研磨與香氣保留」教學路線圖：顆粒破碎、冷卻能耗、揮發物留存與品質量測。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Spice Cryogenic Milling and Aroma Retention: particle fracture, cooling energy, volatile compound retention, and quality metrology. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

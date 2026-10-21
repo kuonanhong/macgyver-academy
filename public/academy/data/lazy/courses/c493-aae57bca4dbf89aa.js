@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c493-aae57bca4dbf89aa.json"]={sha256:"aae57bca4dbf89aae313527c5d79d02ee3dc76c3bbf2f6374b2c81db17c67ff9",value:{"title":"雷射追蹤儀大尺寸量測","titleEn":"Laser-tracker large-volume metrology","category":"manufacturing","kind":"craft","summary":"課程規劃主題：座標網與量測不確定度。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: coordinate networks and measurement uncertainty. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c493"}};

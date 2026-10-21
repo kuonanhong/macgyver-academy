@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d261-78b01828b5a57859.json"]={sha256:"78b01828b5a57859146c1524b595cc61cb27e070777340bcd8e99e11b3655c64",value:{"id":"d261","title":"機電義膝步態台架","titleEn":"Mechatronic Prosthetic Knee Gait Test Rigs","category":"biomedical","kind":"craft","summary":"「機電義膝步態台架」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Mechatronic Prosthetic Knee Gait Test Rigs: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

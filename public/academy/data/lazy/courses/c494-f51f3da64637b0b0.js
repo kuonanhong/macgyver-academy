@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c494-f51f3da64637b0b0.json"]={sha256:"f51f3da64637b0b0fa75b47bbea091b0436d36768e529b081f76064f8d99511b",value:{"title":"工業斷層掃描檢測","titleEn":"Industrial computed-tomography inspection","category":"manufacturing","kind":"craft","summary":"課程規劃主題：內部缺陷與重建誤差。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: internal defects and reconstruction errors. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c494"}};

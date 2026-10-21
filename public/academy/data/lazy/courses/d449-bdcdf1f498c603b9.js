@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d449-bdcdf1f498c603b9.json"]={sha256:"bdcdf1f498c603b91a9eaa4b634de1050c0f9d0746680f05f09293eeb19f6f32",value:{"id":"d449","title":"中國散裂中子源CSNS","titleEn":"China Spallation Neutron Source CSNS","category":"megascience","kind":"project","summary":"「中國散裂中子源CSNS」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for China Spallation Neutron Source CSNS: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

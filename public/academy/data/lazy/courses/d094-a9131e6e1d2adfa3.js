@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d094-a9131e6e1d2adfa3.json"]={sha256:"a9131e6e1d2adfa3336131ae7e29aaea80b435cfd67a9feac9cb17c4def279b5",value:{"id":"d094","title":"重力儲能吊升與制動系統","titleEn":"Gravity Storage Hoisting and Braking Systems","category":"energy","kind":"craft","summary":"「重力儲能吊升與制動系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gravity Storage Hoisting and Braking Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

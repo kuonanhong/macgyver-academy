@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d273-0501497020efdef4.json"]={sha256:"0501497020efdef4993f69e90a7c84d527e86eb9b8a735eb93c3d3fb2d756220",value:{"id":"d273","title":"連續生理訊號資料平台","titleEn":"Continuous Physiological Signal Data Platforms","category":"biomedical","kind":"craft","summary":"「連續生理訊號資料平台」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Continuous Physiological Signal Data Platforms: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

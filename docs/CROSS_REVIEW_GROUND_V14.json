@@ -1,0 +1,2285 @@
+{
+  "arithmeticPassed": true,
+  "courses": 25,
+  "units": 250,
+  "boundaryReview": {
+    "176": "Effective/total stress separated; thick-ring and strip assumptions explicit.",
+    "177": "Hoisting and cutting capacities share in-situ basis only in the bottleneck comparison.",
+    "178": "Projection, wedge geometry and joint pressure remain explicit; area ratio is not a strength ratio.",
+    "179": "Thermal diffusion and outage reserve are scales, not permits. Thaw strain requires one-dimensional boundary.",
+    "180": "Slurry-water pressure difference is not total stability; high gradient is not an allowable gradient.",
+    "181": "Overlap and nominal geometry do not prove watertightness; independent errors are explicitly assumed.",
+    "182": "Euler/Rankine idealizations, dry-side water pressure and common datum are explicit.",
+    "183": "Thermal restraint, real contact and unloading stiffness boundaries are specified.",
+    "184": "Stable-zone geometry is distinguished from bond capacity; group efficiency is assumed.",
+    "185": "Steel-only stress, unsupported Euler segment, equal-displacement groups and connection moment couples are explicit.",
+    "186": "Dry-binder mass balance, unequal ground/column stress and dimensionless hydraulic gradient are separated; pressure head requires an added length.",
+    "187": "Equal-strain stiffness is distinguished from constrained modulus; rotations per metre are not mixing energy or a quality guarantee.",
+    "188": "Gaussian trough geometry is not a grout prescription; volume efficiency and gain are explicitly local synthetic assumptions; curvature excludes discrete joints.",
+    "189": "Isotropic undrained pore pressure is not a general shear rule; ideal grout geometry is not a treatment radius; surveyed heave and cavity fill are not all retained grout. Volume strain and vertical layer strain are distinguished.",
+    "190": "Diffusion length scaling explicitly holds dimensionless parameters fixed; actual drain spacing changes geometric ratio, smear and well resistance. Horizontal diffusion coefficient units, equivalent perimeter diameter, normally consolidated one-dimensional settlement and matched-gradient clogging comparison are explicit.",
+    "191": "Vacuum observations share pressure/state reference; total stress and combined net pore-pressure increments are separated.",
+    "192": "Empirical depth coefficient units, energy loss and nonuniform delivery are stated.",
+    "193": "Darcy applicability, toe/head load difference and unit-cell versus global effects are stated.",
+    "194": "Compatible CRR/CSR, one-dimensional strain and dragload accounting are stated.",
+    "195": "Wave direction, strain allocation, material curves and joint movement components are separated.",
+    "196": "Units 6 and 9 were corrected after review: underside uplift at fixed upper pressure is distinguished explicitly from constant net buoyancy of a fully submerged sealed fixed-volume box.",
+    "197": "Projection and friction exclude separate anchor effects; geometric criteria do not prove stability.",
+    "198": "Two-way timing, calibrated velocity, attenuation path and confirmation-versus-detection fractions are explicit.",
+    "199": "Ideal free-ring buckling, short/long-term modulus and full uniform Manning flow boundaries explicit.",
+    "200": "IR drop versus polarization and electrochemical efficiency versus material utilization are separated."
+  },
+  "pendingCourses": [],
+  "calculations": [
+    {
+      "course": "b176",
+      "unit": 1,
+      "expression": "900-300",
+      "computed": 600,
+      "published": 600,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：同一方向總應力 σ=900 kPa、孔壓 u=300 kPa，σ′=σ−u=600 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total stress σ=900 kPa and pore pressure u=300 kPa in the same direction, σ′=σ−u=600 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 2,
+      "expression": ".4*4/.5",
+      "computed": 3.2,
+      "published": 3.2,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：外壓 p=0.4 MPa、半徑 R=4 m、厚度 t=0.5 m，N=pR=1.6 MN/m，平均 σ=N/t=3.2 MPa；本厚徑比須再以厚壁或數值模型檢查。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With p=0.4 MPa, R=4 m and t=0.5 m, N=pR=1.6 MN/m and mean σ=N/t=3.2 MPa; this thickness ratio also requires a thick-wall or numerical check. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 3,
+      "expression": "-2*.4*25/(25-16)",
+      "computed": -2.2222222222222223,
+      "published": -2.22,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：內半徑 a=4 m、外半徑 b=5 m、均勻外壓 p=0.4 MPa且內壓為零，σθ(a)=−2pb²/(b²−a²)=−2.22 MPa，負號代表受壓。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a=4 m, b=5 m, external p=0.4 MPa and zero internal pressure, σθ(a)=−2pb²/(b²−a²)=−2.22 MPa, with compression negative. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 4,
+      "expression": "24*pi*(4.5**2-4**2)*3",
+      "computed": 961.3273519984766,
+      "published": 961,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：混凝土單位重 γ=24 kN/m³、內外半徑4與4.5 m、段高 h=3 m，自重 W=γπ(4.5²−4²)h=961 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For γ=24 kN/m³, radii 4 and 4.5 m and lift height h=3 m, W=γπ(4.5²−4²)h=961 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 5,
+      "expression": "1000*9.81*60/1000",
+      "computed": 588.6,
+      "published": 589,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：水密設計教學水頭 h=60 m、水密度ρ=1000 kg/m³、g=9.81 m/s²，p=ρgh=588600 Pa=589 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For teaching head h=60 m, water density ρ=1000 kg/m³ and g=9.81 m/s², p=ρgh=588600 Pa=589 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 6,
+      "expression": "20000*1e-5*15",
+      "computed": 3.0,
+      "published": 3,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設完全拘束、E=20 GPa、α=1×10⁻⁵/K、降溫ΔT=15 K，σ=EαΔT=3 MPa；未含潛變鬆弛。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: Assuming full restraint, E=20 GPa, α=1×10⁻⁵/K and cooling ΔT=15 K, σ=EαΔT=3 MPa; creep relaxation is excluded. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 7,
+      "expression": "40*2**2/8",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：單位寬板帶均布載重 w=40 kN/m、假設簡支缺口 L=2 m，M=wL²/8=20 kN·m/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a unit-width strip with w=40 kN/m and a hypothetical simply supported gap L=2 m, M=wL²/8=20 kN·m per metre of lining width. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 8,
+      "expression": "500-60-20/2",
+      "computed": 430.0,
+      "published": 430,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：襯砌厚 h=500 mm、受拉側保護層 c=60 mm、主筋直徑φ=20 mm，d=h−c−φ/2=430 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For lining thickness h=500 mm, tension-face cover c=60 mm and bar diameter φ=20 mm, d=h−c−φ/2=430 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 9,
+      "expression": "1000*9.81*20/1000",
+      "computed": 196.2,
+      "published": 196,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：外部水頭增加 Δh=20 m、ρ=1000 kg/m³、g=9.81 m/s²且內水位不變，Δp=ρgΔh=196200 Pa=196 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For external recovery Δh=20 m, ρ=1000 kg/m³, g=9.81 m/s² and unchanged internal level, Δp=ρgΔh=196200 Pa=196 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b176",
+      "unit": 10,
+      "expression": "(.30-.20)/2",
+      "computed": 0.04999999999999999,
+      "published": 0.05,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：固定測點裂縫由 w₀=0.20 mm增至w₁=0.30 mm，間隔Δt=2 year，平均成長率(w₁−w₀)/Δt=0.05 mm/year。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: At a fixed point, width changes from w₀=0.20 mm to w₁=0.30 mm over Δt=2 year, giving mean growth (w₁−w₀)/Δt=0.05 mm/year. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 1,
+      "expression": "pi*10**2/4",
+      "computed": 78.53981633974483,
+      "published": 78.54,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：直徑D=10 m、進尺h=1 m，原位體積V=πD²h/4=78.54 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For diameter D=10 m and advance h=1 m, in-situ volume V=πD²h/4=78.54 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 2,
+      "expression": "20*.02*1000",
+      "computed": 400.0,
+      "published": 400,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：有效比能e=20 MJ/m³、原位切削率Q=0.02 m³/s，P=eQ=0.4 MW=400 kW。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For useful specific energy e=20 MJ/m³ and in-situ cutting rate Q=0.02 m³/s, P=eQ=0.4 MW=400 kW. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 3,
+      "expression": "8*3600/240",
+      "computed": 120.0,
+      "published": 120,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設每循環有效鬆方Vb=8 m³、完整循環t=240 s，Qh=Vb×3600/t=120 m³/h。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With useful loose volume Vb=8 m³ and full cycle t=240 s, hoisting rate Qh=Vb×3600/t=120 m³/h. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 4,
+      "expression": "800/4",
+      "computed": 200.0,
+      "published": 200,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設總垂直荷重W=800 kN、4個相同且對稱支點，平均R=W/4=200 kN/支點。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total vertical load W=800 kN and four identical symmetric supports, mean reaction R=W/4=200 kN per support. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 5,
+      "expression": "300*.001",
+      "computed": 0.3,
+      "published": 0.3,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：深度L=300 m、假設恆定小角誤差θ=0.001 rad，偏移δ≈Lθ=0.30 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For depth L=300 m and constant small angular error θ=0.001 rad, offset δ≈Lθ=0.30 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 6,
+      "expression": ".4*5",
+      "computed": 2.0,
+      "published": 2,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設等速進尺v=0.4 m/h，支護完成延遲t=5 h，裸露長度L=vt=2 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: At constant advance v=0.4 m/h and support delay t=5 h, exposed length L=vt=2 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 7,
+      "expression": "10*.8",
+      "computed": 8.0,
+      "published": 8,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設平均管速v=10 m/s、有效截面A=0.8 m²，Q=vA=8 m³/s。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With mean duct velocity v=10 m/s and effective area A=0.8 m², Q=vA=8 m³/s. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 8,
+      "expression": ".06*600",
+      "computed": 36.0,
+      "published": 36,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設停泵期間恆定流入Q=0.06 m³/s、停機t=600 s，新增水量V=Qt=36 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For constant inflow Q=0.06 m³/s during an outage t=600 s, accumulated volume V=Qt=36 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 9,
+      "expression": "80/(80+8)",
+      "computed": 0.9090909090909091,
+      "published": 0.909,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設平均運轉至故障MTBF=80 h、平均修復MTTR=8 h，A=MTBF/(MTBF+MTTR)=0.909。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With mean time between failures MTBF=80 h and mean repair time MTTR=8 h, A=MTBF/(MTBF+MTTR)=0.909. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b177",
+      "unit": 10,
+      "expression": "min(90,120,70)",
+      "computed": 70,
+      "published": 70,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：全部換成原位等值後，切削90、提升120、支護70 m³/h，理想穩態Q=min(90,120,70)=70 m³/h。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: On one in-situ-equivalent basis, cutting, hoisting and support capacities are 90, 120 and 70 m³/h; ideal steady Q=min(90,120,70)=70 m³/h. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 1,
+      "expression": "26*12",
+      "computed": 312,
+      "published": 312,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：岩石單位重γ=26 kN/m³、假設楔塊體積V=12 m³，W=γV=312 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With rock unit weight γ=26 kN/m³ and assumed wedge volume V=12 m³, W=γV=312 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 2,
+      "expression": "26*100/1000",
+      "computed": 2.6,
+      "published": 2.6,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設均質覆岩γ=26 kN/m³、深度H=100 m，垂直應力σv=γH=2600 kPa=2.6 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For homogeneous overburden γ=26 kN/m³ and depth H=100 m, vertical stress σv=γH=2600 kPa=2.6 MPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 3,
+      "expression": "(24/18)**2",
+      "computed": 1.7777777777777777,
+      "published": 1.78,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：僅作等載重簡支梁比較，L₁=18 m、L₂=24 m，M₂/M₁=(L₂/L₁)²=(24/18)²=1.78。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: Only for equal-load simple-beam comparison, L₁=18 m and L₂=24 m give M₂/M₁=(L₂/L₁)²=(24/18)²=1.78. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 4,
+      "expression": "4*150*cos(pi/6)",
+      "computed": 519.6152422706632,
+      "published": 520,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：4支錨索各T=150 kN、與抗落方向夾角θ=30°，有效分力R=4Tcosθ=520 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For four cables each carrying T=150 kN at θ=30° to the resisting direction, R=4Tcosθ=520 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 5,
+      "expression": "20/4",
+      "computed": 5.0,
+      "published": 5,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設局部岩塊荷重W=20 kN、分配面板面積A=4 m²，平均q=W/A=5 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For local block load W=20 kN distributed over panel area A=4 m², mean q=W/A=5 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 6,
+      "expression": "20000*50e-6",
+      "computed": 1.0,
+      "published": 1,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設已扣除溫度與收縮、E=20 GPa、機械應變ε=50 με=50×10⁻⁶，Δσ=Eε=1 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: After temperature and shrinkage correction, assume E=20 GPa and mechanical ε=50 με=50×10⁻⁶; Δσ=Eε=1 MPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 7,
+      "expression": "12/60",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設交叉開口Aopen=12 m²、參考牆面Aref=60 m²，幾何開口率r=Aopen/Aref=0.20。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For opening area Aopen=12 m² and reference wall area Aref=60 m², geometric opening ratio r=Aopen/Aref=0.20. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 8,
+      "expression": "500/5",
+      "computed": 100.0,
+      "published": 100,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設對應荷載增量ΔF=500 kN、位移增量Δu=5 mm，等效k=ΔF/Δu=100 kN/mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For corresponding increments ΔF=500 kN and Δu=5 mm, equivalent stiffness k=ΔF/Δu=100 kN/mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 9,
+      "expression": ".15*312",
+      "computed": 46.8,
+      "published": 46.8,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設楔塊重量W=312 kN、水平擬靜力係數kh=0.15，Fh=khW=46.8 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For wedge weight W=312 kN and horizontal pseudo-static coefficient kh=0.15, Fh=khW=46.8 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b178",
+      "unit": 10,
+      "expression": "500-100*2",
+      "computed": 300,
+      "published": 300,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：法向總力N=500 kN、均勻節理水壓u=100 kPa、面積A=2 m²，N′=N−uA=300 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With total normal force N=500 kN, uniform joint pressure u=100 kPa and area A=2 m², N′=N−uA=300 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 1,
+      "expression": "1000*334",
+      "computed": 334000,
+      "published": 334000,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設需要相變的水質量m=1000 kg、潛熱Lf=334 kJ/kg，Q=mLf=334000 kJ。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For water mass m=1000 kg undergoing phase change and latent heat Lf=334 kJ/kg, Q=mLf=334000 kJ. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 2,
+      "expression": "1.2-2*.65",
+      "computed": -0.10000000000000009,
+      "published": -0.1,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設兩管中心距s=1.2 m、各凍結半徑r=0.65 m，幾何間隙g=s−2r=−0.10 m，表示重疊0.10 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For spacing s=1.2 m and equal freezing radius r=0.65 m, gap g=s−2r=−0.10 m, indicating 0.10 m geometric overlap. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 3,
+      "expression": "1000*4.18*.001*10",
+      "computed": 41.8,
+      "published": 41.8,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：水密度ρ=1000 kg/m³、比熱c=4.18 kJ/(kg·K)、流量q=0.001 m³/s、降溫ΔT=10 K，P=ρcqΔT=41.8 kW。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For ρ=1000 kg/m³, c=4.18 kJ/(kg·K), q=0.001 m³/s and ΔT=10 K, P=ρcqΔT=41.8 kW. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 4,
+      "expression": ".5**2/1e-6/86400",
+      "computed": 2.8935185185185186,
+      "published": 2.89,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：傳熱距離L=0.5 m、熱擴散率α=1×10⁻⁶ m²/s，t*=L²/α=250000 s=2.89 day。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For thermal length L=0.5 m and diffusivity α=1×10⁻⁶ m²/s, t*=L²/α=250000 s=2.89 day. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 5,
+      "expression": "1200/4",
+      "computed": 300.0,
+      "published": 300,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設凍土受壓力N=1200 kN、有效面積A=4 m²，平均σ=N/A=300 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For frozen-ground compression N=1200 kN over effective area A=4 m², mean σ=N/A=300 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 6,
+      "expression": "1e-8*20*5",
+      "computed": 1e-06,
+      "published": 1e-06,
+      "decimalPlaces": 6,
+      "model": "原創教學假設：假設k=1×10⁻⁸ m/s、滲流面積A=20 m²、水力坡降i=5，Q=kAi=1×10⁻⁶ m³/s。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For k=1×10⁻⁸ m/s, seepage area A=20 m² and gradient i=5, Q=kAi=1×10⁻⁶ m³/s. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 7,
+      "expression": "6/12000",
+      "computed": 0.0005,
+      "published": 0.0005,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：兩點差異抬升Δs=6 mm、間距L=12 m=12000 mm，角變形β=Δs/L=0.0005 rad。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For differential heave Δs=6 mm over L=12 m=12000 mm, angular distortion β=Δs/L=0.0005 rad. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 8,
+      "expression": "3600/.1/3600",
+      "computed": 10.0,
+      "published": 10,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設到指定警戒溫度的可用熱緩衝E=3600 MJ、持續熱流P=0.1 MW=0.1 MJ/s，t=E/P=36000 s=10 h。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With usable reserve E=3600 MJ to a specified warning temperature and heat inflow P=0.1 MW=0.1 MJ/s, t=E/P=36000 s=10 h. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 9,
+      "expression": ".02*3*1000",
+      "computed": 60.0,
+      "published": 60,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設受影響層厚H=3 m、平均融沉應變εv=0.02，s=εvH=0.06 m=60 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For affected thickness H=3 m and mean thaw-settlement strain εv=0.02, s=εvH=0.06 m=60 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b179",
+      "unit": 10,
+      "expression": "9.81*15*8",
+      "computed": 1177.2,
+      "published": 1177,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設外部水頭h=15 m、受浮投影面積A=8 m²、γw=9.81 kN/m³，U=γwhA=1177 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For external head h=15 m, uplift plan area A=8 m² and γw=9.81 kN/m³, U=γwhA=1177 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 1,
+      "expression": "(11-9.81)*20",
+      "computed": 23.79999999999999,
+      "published": 23.8,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設液面相同、穩定液γs=11 kN/m³、水γw=9.81 kN/m³、深度z=20 m，Δp=(γs−γw)z=23.8 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With equal fluid levels, γs=11 kN/m³, γw=9.81 kN/m³ and z=20 m, Δp=(γs−γw)z=23.8 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 2,
+      "expression": "1e-9*10/.005",
+      "computed": 2e-06,
+      "published": 2e-06,
+      "decimalPlaces": 6,
+      "model": "原創教學假設：假設濾餅k=1×10⁻⁹ m/s、水頭差Δh=10 m、厚度t=0.005 m，達西流速v=kΔh/t=2×10⁻⁶ m/s。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For cake permeability k=1×10⁻⁹ m/s, head difference Δh=10 m and thickness t=0.005 m, Darcy flux v=kΔh/t=2×10⁻⁶ m/s. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 3,
+      "expression": "6/30",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設槽段長L=6 m、深H=30 m，幾何比L/H=0.20。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For panel length L=6 m and depth H=30 m, the geometric ratio L/H=0.20. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 4,
+      "expression": "40*.5",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設均布附加載重q=40 kPa、側壓係數K=0.5，增量Δσh=Kq=20 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For uniform surcharge q=40 kPa and lateral coefficient K=0.5, incremental pressure Δσh=Kq=20 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 5,
+      "expression": "40*.005",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：深度H=40 m、假設偏斜比i=0.005，底部偏移δ=Hi=0.20 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For depth H=40 m and assumed inclination ratio i=0.005, toe offset δ=Hi=0.20 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 6,
+      "expression": "6*1*.08",
+      "computed": 0.48,
+      "published": 0.48,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：槽底長L=6 m、寬B=1 m、平均沉渣厚t=0.08 m，V=L B t=0.48 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For base length L=6 m, width B=1 m and mean sediment thickness t=0.08 m, V=L B t=0.48 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 7,
+      "expression": "11*3",
+      "computed": 33,
+      "published": 33,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：穩定液γs=11 kN/m³、假設總排液體積V=3 m³，浮力B=γsV=33 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With support-fluid unit weight γs=11 kN/m³ and total displaced volume V=3 m³, buoyancy B=γsV=33 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 8,
+      "expression": "(210-180)/180*100",
+      "computed": 16.666666666666664,
+      "published": 16.7,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：理論體積Vt=180 m³、實際投入Va=210 m³，超量率(Va−Vt)/Vt=16.7%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For theoretical volume Vt=180 m³ and placed volume Va=210 m³, excess ratio (Va−Vt)/Vt=16.7%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 9,
+      "expression": "10/.5",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設水頭差Δh=10 m、有效滲流路長L=0.5 m，水力坡降i=Δh/L=20，無因次。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For head difference Δh=10 m and effective seepage length L=0.5 m, hydraulic gradient i=Δh/L=20, dimensionless. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b180",
+      "unit": 10,
+      "expression": "4/8000",
+      "computed": 0.0005,
+      "published": 0.0005,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：兩測點差異沉陷Δs=4 mm、距離L=8 m=8000 mm，β=Δs/L=0.0005 rad。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For differential settlement Δs=4 mm over L=8 m=8000 mm, β=Δs/L=0.0005 rad. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 1,
+      "expression": "1-.8",
+      "computed": 0.19999999999999996,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設相同樁徑D=1.0 m、中心距s=0.8 m，名目咬合o=D−s=0.20 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For equal pile diameter D=1.0 m and spacing s=0.8 m, nominal overlap o=D−s=0.20 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 2,
+      "expression": "96-24",
+      "computed": 72,
+      "published": 72,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設先行樁澆置完成t₁=24 h、次樁切入t₂=96 h，相對齡期Δt=t₂−t₁=72 h。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For primary completion t₁=24 h and secondary cutting t₂=96 h on one clock, elapsed age Δt=72 h. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 3,
+      "expression": "pi/64",
+      "computed": 0.04908738521234052,
+      "published": 0.0491,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：假設完整實心圓截面D=1 m，毛截面I=πD⁴/64=0.0491 m⁴。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a complete solid circular section D=1 m, gross second moment I=πD⁴/64=0.0491 m⁴. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 4,
+      "expression": "400*3/4",
+      "computed": 300.0,
+      "published": 300,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設簡支冠梁跨L=3 m、跨中集中力P=400 kN，Mmax=PL/4=300 kN·m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a simply supported cap span L=3 m and central force P=400 kN, Mmax=PL/4=300 kN·m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 5,
+      "expression": "sqrt(4*15**2)",
+      "computed": 30.0,
+      "published": 30,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設4項獨立零均值誤差各標準差σ=15 mm，合成σtot=√(4σ²)=30 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For four independent zero-mean errors each with standard deviation σ=15 mm, combined σtot=√(4σ²)=30 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 6,
+      "expression": "500*2",
+      "computed": 1000,
+      "published": 1000,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設每米牆長的反力R=500 kN/m、對開挖底的力臂z=2 m，抗力矩M=Rz=1000 kN·m/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For reaction R=500 kN per metre of wall and lever arm z=2 m about excavation level, resisting moment M=Rz=1000 kN·m/m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 7,
+      "expression": "1e-6*.5*10",
+      "computed": 4.9999999999999996e-06,
+      "published": 5e-06,
+      "decimalPlaces": 6,
+      "model": "原創教學假設：假設缺口等效k=1×10⁻⁶ m/s、A=0.5 m²、i=10，Q=kAi=5×10⁻⁶ m³/s。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For equivalent defect permeability k=1×10⁻⁶ m/s, area A=0.5 m² and gradient i=10, Q=kAi=5×10⁻⁶ m³/s. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 8,
+      "expression": "20*.04*1000",
+      "computed": 800.0,
+      "published": 800,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設線彈性截面模數Z=0.04 m³、彎曲應力增量Δσ=20 MPa，ΔM=ΔσZ=0.8 MN·m=800 kN·m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For elastic section modulus Z=0.04 m³ and bending-stress increment Δσ=20 MPa, ΔM=ΔσZ=0.8 MN·m=800 kN·m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 9,
+      "expression": ".2-2*.06",
+      "computed": 0.08000000000000002,
+      "published": 0.08,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：名目咬合o=0.20 m、兩樁各向外偏移δ=0.06 m，最小線性餘量omin=o−2δ=0.08 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For nominal overlap o=0.20 m and outward deviation δ=0.06 m for each pile, minimum linear reserve omin=o−2δ=0.08 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b181",
+      "unit": 10,
+      "expression": "12/6",
+      "computed": 2.0,
+      "published": 2,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設收集漏水V=12 L、時間t=6 h，平均Q=V/t=2 L/h。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For collected leakage V=12 L over t=6 h, mean discharge Q=V/t=2 L/h. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 1,
+      "expression": "9.81*6**2/2",
+      "computed": 176.58,
+      "published": 176.6,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：外側水深H=6 m、內側乾燥、γw=9.81 kN/m³，每米牆合力P=γwH²/2=176.6 kN/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For external depth H=6 m, a dry inside and γw=9.81 kN/m³, force per wall metre P=γwH²/2=176.6 kN/m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 2,
+      "expression": "80*3**2/8",
+      "computed": 90.0,
+      "published": 90,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設簡支圍檁均布w=80 kN/m、跨距L=3 m，M=wL²/8=90 kN·m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a simply supported waler with w=80 kN/m and span L=3 m, M=wL²/8=90 kN·m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 3,
+      "expression": "pi**2*200e9*.0002/8**2/1e6",
+      "computed": 6.168502750680849,
+      "published": 6.17,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設鉸接有效長L=8 m、E=200 GPa、I=0.0002 m⁴，Pcr=π²EI/L²=6.17 MN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For pinned effective length L=8 m, E=200 GPa and I=0.0002 m⁴, Pcr=π²EI/L²=6.17 MN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 4,
+      "expression": "20*.3",
+      "computed": 6.0,
+      "published": 6,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設20處鎖口各漏q=0.3 L/min，總Q=20q=6 L/min。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For twenty interlocks each leaking q=0.3 L/min, total flow Q=20q=6 L/min. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 5,
+      "expression": "(2.65-1)/(1+.65)",
+      "computed": 1.0,
+      "published": 1,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設土粒比重Gs=2.65、孔隙比e=0.65，理想臨界坡降icr=(Gs−1)/(1+e)=1.0。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For grain specific gravity Gs=2.65 and void ratio e=0.65, ideal critical gradient icr=(Gs−1)/(1+e)=1.0. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 6,
+      "expression": ".5*3*10*3**2",
+      "computed": 135.0,
+      "published": 135,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設有效單位重γ′=10 kN/m³、Kp=3、嵌深d=3 m，理想Pp=0.5Kpγ′d²=135 kN/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For effective unit weight γ′=10 kN/m³, Kp=3 and embedment d=3 m, ideal Pp=0.5Kpγ′d²=135 kN/m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 7,
+      "expression": "9.81*(6**2-4**2)/2",
+      "computed": 98.10000000000001,
+      "published": 98.1,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：僅比較同底部的三角形水壓合力，水深H₁=6 m與H₂=4 m，ΔP=9.81(H₁²−H₂²)/2=98.1 kN/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: Comparing triangular pressure resultants with one common base at depths H₁=6 m and H₂=4 m, ΔP=9.81(H₁²−H₂²)/2=98.1 kN/m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 8,
+      "expression": "500*.15",
+      "computed": 75.0,
+      "published": 75,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設支撐力P=500 kN、偏心距e=0.15 m，附加扭矩T=Pe=75 kN·m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For brace force P=500 kN and eccentricity e=0.15 m, additional torque T=Pe=75 kN·m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 9,
+      "expression": ".5*1000*1.2*10*2**2/1000",
+      "computed": 24.0,
+      "published": 24,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設ρ=1000 kg/m³、Cd=1.2、投影面積A=10 m²、流速v=2 m/s，F=0.5ρCdAv²=24000 N=24 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For ρ=1000 kg/m³, Cd=1.2, projected area A=10 m² and v=2 m/s, F=0.5ρCdAv²=24000 N=24 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b182",
+      "unit": 10,
+      "expression": "(5/3)**2",
+      "computed": 2.777777777777778,
+      "published": 2.78,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：僅比較等均布載重簡支梁，原跨L₁=3 m、拆撐後L₂=5 m，M₂/M₁=(5/3)²=2.78。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For equal uniform load on simple beams, changing span from L₁=3 m to L₂=5 m gives M₂/M₁=(5/3)²=2.78. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 1,
+      "expression": "600/200",
+      "computed": 3.0,
+      "published": 3,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設接觸後等效剛度k=200 kN/mm、力增量ΔP=600 kN，彈性縮短δ=ΔP/k=3 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For post-contact equivalent stiffness k=200 kN/mm and force increment ΔP=600 kN, elastic shortening δ=ΔP/k=3 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 2,
+      "expression": "200e9*.02/20/1e6",
+      "computed": 200.0,
+      "published": 200,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設E=200 GPa、A=0.02 m²、L=20 m，k=EA/L=200 MN/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For E=200 GPa, A=0.02 m² and L=20 m, k=EA/L=200 MN/m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 3,
+      "expression": "200e9*.02*12e-6*10/1000",
+      "computed": 480.0,
+      "published": 480,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：完全拘束下E=200 GPa、A=0.02 m²、α=12×10⁻⁶/K、ΔT=10 K，ΔP=EAαΔT=480 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: Under full restraint, E=200 GPa, A=0.02 m², α=12×10⁻⁶/K and ΔT=10 K give ΔP=EAαΔT=480 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 4,
+      "expression": "800/.04/1000",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設力P=800 kN、有效接觸A=0.04 m²，平均p=P/A=20000 kPa=20 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For force P=800 kN over effective contact A=0.04 m², mean p=P/A=20000 kPa=20 MPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 5,
+      "expression": "(800-680)/800*100",
+      "computed": 15.0,
+      "published": 15,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設施加P₀=800 kN、同溫鎖定後P₁=680 kN，損失比(P₀−P₁)/P₀=15%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For applied P₀=800 kN and same-temperature retained P₁=680 kN, loss ratio (P₀−P₁)/P₀=15%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 6,
+      "expression": "100-60",
+      "computed": 40,
+      "published": 40,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設本支撐增加ΔP₁=100 kN、鄰支撐減少60 kN，兩支合計增量ΔΣP=100−60=40 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: If one strut gains ΔP₁=100 kN and its neighbour loses 60 kN, their combined increment is ΔΣP=100−60=40 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 7,
+      "expression": "1000*(.02+.01)",
+      "computed": 30.0,
+      "published": 30,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設P=1000 kN、初偏心e₀=0.02 m、追加側移Δ=0.01 m，M=P(e₀+Δ)=30 kN·m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For P=1000 kN, initial eccentricity e₀=0.02 m and additional deflection Δ=0.01 m, M=P(e₀+Δ)=30 kN·m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 8,
+      "expression": "20*.04*1000",
+      "computed": 800.0,
+      "published": 800,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設有效差壓p=20 MPa、有效活塞面積A=0.04 m²，F=pA=0.8 MN=800 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For effective differential pressure p=20 MPa and piston area A=0.04 m², F=pA=0.8 MN=800 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 9,
+      "expression": "(8-5)/6",
+      "computed": 0.5,
+      "published": 0.5,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設位移由5 mm增至8 mm，間隔Δt=6 h，平均速率v=(8−5)/6=0.5 mm/h。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For displacement increasing from 5 mm to 8 mm over Δt=6 h, mean rate v=(8−5)/6=0.5 mm/h. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b183",
+      "unit": 10,
+      "expression": "600/(150*1000)*1000",
+      "computed": 4.0,
+      "published": 4,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設釋放力ΔP=600 kN、等效卸載剛度k=150 MN/m，回彈δ=ΔP/k=0.004 m=4 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For released force ΔP=600 kN and unloading stiffness k=150 MN/m, rebound δ=ΔP/k=0.004 m=4 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 1,
+      "expression": "600e3*12/(195e9*.001)*1000",
+      "computed": 36.92307692307693,
+      "published": 36.9,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設P=600 kN、自由長Lf=12 m、E=195 GPa、鋼面積A=0.001 m²，δ=PLf/(EA)=0.0369 m=36.9 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For P=600 kN, free length Lf=12 m, E=195 GPa and steel area A=0.001 m², δ=PLf/(EA)=0.0369 m=36.9 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 2,
+      "expression": "600/(pi*.15*8)",
+      "computed": 159.15494309189535,
+      "published": 159,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設P=600 kN、漿體直徑D=0.15 m、錨碇長Lb=8 m，平均τ=P/(πDLb)=159 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For P=600 kN, grout diameter D=0.15 m and bond length Lb=8 m, mean τ=P/(πDLb)=159 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 3,
+      "expression": "36.9+3",
+      "computed": 39.9,
+      "published": 39.9,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設自由段伸長δf=36.9 mm、座頭變形δh=3.0 mm且無其他變形，δtotal=δf+δh=39.9 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: With free extension δf=36.9 mm, head deformation δh=3.0 mm and no other movement, δtotal=δf+δh=39.9 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 4,
+      "expression": "22-16",
+      "computed": 6,
+      "published": 6,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設沿錨軸滑面交點距頭部16 m、錨碇末端22 m，滑面後長度L=22−16=6 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: If a slip surface intersects the anchor axis 16 m from the head and the bond end is at 22 m, length beyond the surface is 6 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 5,
+      "expression": "600*cos(25*pi/180)",
+      "computed": 543.7846722219899,
+      "published": 544,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：張力T=600 kN、對水平夾角θ=25°，H=Tcosθ=544 kN，V=Tsinθ=254 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For tension T=600 kN at θ=25° below horizontal, H=Tcosθ=544 kN and V=Tsinθ=254 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 6,
+      "expression": "(2.1-1.2)/log10(10/1)",
+      "computed": 0.9000000000000001,
+      "published": 0.9,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設t₁=1 min時δ₁=1.2 mm、t₂=10 min時δ₂=2.1 mm，斜率α=(δ₂−δ₁)/log₁₀(t₂/t₁)=0.9 mm/對數週期。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For δ₁=1.2 mm at t₁=1 min and δ₂=2.1 mm at t₂=10 min, α=(δ₂−δ₁)/log₁₀(t₂/t₁)=0.9 mm per logarithmic cycle. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 7,
+      "expression": ".9**2",
+      "computed": 0.81,
+      "published": 0.81,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設圓鋼直徑剩原值90%，面積比A₂/A₁=(0.90)²=0.81，均勻面積損失19%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: If a circular bar retains 90% of original diameter, A₂/A₁=(0.90)²=0.81, representing 19% uniform area loss. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 8,
+      "expression": ".8*4*600",
+      "computed": 1920.0,
+      "published": 1920,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設4支各R=600 kN、合成群體效率η=0.8，Rgroup=η×4R=1920 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For four anchors each with R=600 kN and assumed group efficiency η=0.8, Rgroup=η×4R=1920 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 9,
+      "expression": "195e9*.001*.002/12/1000",
+      "computed": 32.5,
+      "published": 32.5,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：E=195 GPa、A=0.001 m²、自由長Lf=12 m、座入s=0.002 m，ΔP=EAs/Lf=32.5 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For E=195 GPa, A=0.001 m², Lf=12 m and seating s=0.002 m, ΔP=EAs/Lf=32.5 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b184",
+      "unit": 10,
+      "expression": "48/50*100",
+      "computed": 96.0,
+      "published": 96,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設應有50支地錨完整紀錄、已確認48支，文件覆蓋率48/50=96%，仍有2支未解決。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: If complete records are required for fifty anchors and forty-eight are confirmed, coverage is 48/50=96%, leaving two unresolved. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 1,
+      "expression": "800+250+150",
+      "computed": 1200,
+      "published": 1200,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設現有柱力800 kN、增建250 kN、設備150 kN，服務荷載合計P=800+250+150=1200 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For existing column force 800 kN, extension 250 kN and equipment 150 kN, combined service load P=1200 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 2,
+      "expression": "600/.004/1000",
+      "computed": 150.0,
+      "published": 150,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設鋼材獨自承受P=600 kN、有效鋼面積As=0.004 m²，σs=P/As=150 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: If steel alone carries P=600 kN over effective area As=0.004 m², σs=P/As=150 MPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 3,
+      "expression": "pi*.2*8*150",
+      "computed": 753.9822368615503,
+      "published": 754,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設D=0.2 m、黏結長L=8 m、平均可用剪應力τ=150 kPa，R=πDLτ=754 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For D=0.2 m, bond length L=8 m and assumed usable mean shear τ=150 kPa, R=πDLτ=754 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 4,
+      "expression": "400/.08/1000",
+      "computed": 5.0,
+      "published": 5,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設連接傳力P=400 kN、有效承壓面A=0.08 m²，p=P/A=5 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For transferred connection force P=400 kN and effective bearing area A=0.08 m², p=P/A=5 MPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 5,
+      "expression": "300/100",
+      "computed": 3.0,
+      "published": 3,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設需移交ΔP=300 kN、等效剛度k=100 kN/mm，彈性位移δ=ΔP/k=3 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For transfer increment ΔP=300 kN and equivalent stiffness k=100 kN/mm, elastic movement δ=ΔP/k=3 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 6,
+      "expression": "1200*200/(200+100)",
+      "computed": 800.0,
+      "published": 800,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設兩組剛度k₁=200、k₂=100 MN/m，共承P=1200 kN且等位移，P₁=Pk₁/(k₁+k₂)=800 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For groups k₁=200 and k₂=100 MN/m sharing P=1200 kN at equal displacement, P₁=Pk₁/(k₁+k₂)=800 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 7,
+      "expression": "pi**2*200e9*1e-5/4**2/1e6",
+      "computed": 1.23370055013617,
+      "published": 1.23,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：理想鉸接段L=4 m、E=200 GPa、I=1×10⁻⁵ m⁴，Pcr=π²EI/L²=1.23 MN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For an ideal pinned unsupported segment L=4 m, E=200 GPa and I=1×10⁻⁵ m⁴, Pcr=π²EI/L²=1.23 MN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 8,
+      "expression": "300/2",
+      "computed": 150.0,
+      "published": 150,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設需抵抗力矩M=300 kN·m、兩反力線距s=2 m，力偶增量ΔP=M/s=150 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For moment M=300 kN·m and reaction-line spacing s=2 m, couple-force increment ΔP=M/s=150 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 9,
+      "expression": "18/1.5",
+      "computed": 12.0,
+      "published": 12,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設總長L=18 m、每節有效長l=1.5 m，需n=ceil(L/l)=12節，通常有11個節間接頭。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total length L=18 m and effective section length l=1.5 m, n=ceil(L/l)=12 sections, normally with eleven inter-section joints. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b185",
+      "unit": 10,
+      "expression": "(4-3)/6",
+      "computed": 0.16666666666666666,
+      "published": 0.167,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設沉陷由3 mm增至4 mm、間隔6 month，平均速率v=(4−3)/6=0.167 mm/month。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For settlement increasing from 3 mm to 4 mm over six months, mean rate v=(4−3)/6=0.167 mm/month. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 1,
+      "expression": "1e-8*100*2",
+      "computed": 2e-06,
+      "published": 2e-06,
+      "decimalPlaces": 6,
+      "model": "原創教學假設：假設k=1×10⁻⁸ m/s、面積A=100 m²、坡降i=2，Q=kAi=2×10⁻⁶ m³/s。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For k=1×10⁻⁸ m/s, area A=100 m² and gradient i=2, Q=kAi=2×10⁻⁶ m³/s. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 2,
+      "expression": "1.5-1.2",
+      "computed": 0.30000000000000004,
+      "published": 0.3,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設有效直徑D=1.5 m、中心距s=1.2 m，名目咬合o=D−s=0.3 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For effective diameter D=1.5 m and centre spacing s=1.2 m, nominal overlap o=D−s=0.3 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 3,
+      "expression": "1000-250",
+      "computed": 750,
+      "published": 750,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設注入乾膠結材Min=1000 kg、返漿帶出同材Mout=250 kg，留存Mret=Min−Mout=750 kg。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For injected dry binder Min=1000 kg and the same binder recovered in returns Mout=250 kg, retained Mret=750 kg. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 4,
+      "expression": "(1.4/1)**2",
+      "computed": 1.9599999999999997,
+      "published": 1.96,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設圓截面直徑由D₁=1.0 m增至D₂=1.4 m，面積比A₂/A₁=(D₂/D₁)²=1.96。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For circular diameters D₁=1.0 m and D₂=1.4 m, area ratio A₂/A₁=(D₂/D₁)²=1.96. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 5,
+      "expression": "4-3.2",
+      "computed": 0.7999999999999998,
+      "published": 0.8,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設注入Vin=4 m³、量得返出Vout=3.2 m³，未平衡體積ΔV=0.8 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For input Vin=4 m³ and measured returns Vout=3.2 m³, unbalanced volume ΔV=0.8 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 6,
+      "expression": "2.4/1.2",
+      "computed": 2.0,
+      "published": 2.0,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設同類試體早期qu₁=1.2 MPa、後期qu₂=2.4 MPa，強度比qu₂/qu₁=2.0。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For comparable specimens with early qu₁=1.2 MPa and later qu₂=2.4 MPa, strength ratio qu₂/qu₁=2.0. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 7,
+      "expression": "100/(.3+(1-.3)/5)",
+      "computed": 227.2727272727273,
+      "published": 227,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設平均q=100 kPa、面積比a=0.3、柱土剛度比n=5且等應變，σc=q/[a+(1−a)/n]=227 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For mean q=100 kPa, area ratio a=0.3 and stiffness ratio n=5 under equal strain, σc=q/[a+(1−a)/n]=227 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 8,
+      "expression": "20*.01",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設深度H=20 m、恆定偏斜比i=0.01，底部偏移δ=Hi=0.20 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For depth H=20 m and constant inclination ratio i=0.01, toe offset δ=Hi=0.20 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 9,
+      "expression": ".6/2",
+      "computed": 0.3,
+      "published": 0.3,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設強度平均μ=2.0 MPa、標準差s=0.6 MPa，CV=s/μ=0.30。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For strength mean μ=2.0 MPa and standard deviation s=0.6 MPa, CV=s/μ=0.30. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b186",
+      "unit": 10,
+      "expression": "1e-5/(1e-7*100)",
+      "computed": 1.0000000000000002,
+      "published": 1,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設Q=1×10⁻⁵ m³/s、k=1×10⁻⁷ m/s、A=100 m²，i=Q/(kA)=1；若另假設L=1 m才有Δh=iL=1 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For Q=1×10⁻⁵ m³/s, k=1×10⁻⁷ m/s and A=100 m², i=Q/(kA)=1; only with additional L=1 m does Δh=iL=1 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 1,
+      "expression": "60/100",
+      "computed": 0.6,
+      "published": 0.6,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設水質量Mw=60 kg、乾土Ms=100 kg，含水比w=Mw/Ms=0.60=60%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For water mass Mw=60 kg and dry soil mass Ms=100 kg, water content w=Mw/Ms=0.60=60%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 2,
+      "expression": "150*20",
+      "computed": 3000,
+      "published": 3000,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設乾膠結材用量b=150 kg/m³、原土體積V=20 m³，需求質量M=bV=3000 kg。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For dry binder dosage b=150 kg/m³ and native-ground volume V=20 m³, mass M=bV=3000 kg. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 3,
+      "expression": "30/.5",
+      "computed": 60.0,
+      "published": 60,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設轉速n=30 rev/min、升速v=0.5 m/min，每米轉數n/v=60 rev/m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For rotation n=30 rev/min and vertical speed v=0.5 m/min, exposure n/v=60 rev/m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 4,
+      "expression": "pi*.8**2*15/4",
+      "computed": 7.539822368615504,
+      "published": 7.54,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設圓柱D=0.8 m、L=15 m，V=πD²L/4=7.54 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a circular column D=0.8 m and L=15 m, V=πD²L/4=7.54 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 5,
+      "expression": ".8-.6",
+      "computed": 0.20000000000000007,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設有效D=0.8 m、中心距s=0.6 m，名目交疊o=D−s=0.20 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For effective D=0.8 m and spacing s=0.6 m, nominal overlap o=D−s=0.20 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 6,
+      "expression": ".25*100+.75*10",
+      "computed": 32.5,
+      "published": 32.5,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設面積比a=0.25、柱模數Ec=100 MPa、原土Es=10 MPa，Eeq=aEc+(1−a)Es=32.5 MPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For area ratio a=0.25, Ec=100 MPa and Es=10 MPa, Eeq=aEc+(1−a)Es=32.5 MPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 7,
+      "expression": ".8/2",
+      "computed": 0.4,
+      "published": 0.4,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設峰值qu=2 MPa、相應大應變殘餘qr=0.8 MPa，比值qr/qu=0.40。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For peak qu=2 MPa and residual qr=0.8 MPa at a defined large strain, qr/qu=0.40. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 8,
+      "expression": ".4/1.6",
+      "computed": 0.25,
+      "published": 0.25,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設同一族群μ=1.6 MPa、標準差s=0.4 MPa，CV=s/μ=0.25。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For one population with μ=1.6 MPa and standard deviation s=0.4 MPa, CV=s/μ=0.25. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 9,
+      "expression": "5-4.2",
+      "computed": 0.7999999999999998,
+      "published": 0.8,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設注入Vin=5 m³、回收Vout=4.2 m³，體積差ΔV=0.8 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For injected Vin=5 m³ and recovered Vout=4.2 m³, volume imbalance ΔV=0.8 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b187",
+      "unit": 10,
+      "expression": "100*10/32500",
+      "computed": 0.03076923076923077,
+      "published": 0.0308,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：假設均勻附加q=100 kPa、層厚H=10 m、相應一維模數M=32500 kPa，s=qH/M=0.0308 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For uniform increment q=100 kPa, thickness H=10 m and corresponding constrained modulus M=32500 kPa, s=qH/M=0.0308 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 1,
+      "expression": "20*exp(-10**2/(2*10**2))",
+      "computed": 12.130613194252668,
+      "published": 12.1,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設smax=20 mm、槽寬參數i=10 m、位置x=10 m，s=smax exp[−x²/(2i²)]=12.1 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For smax=20 mm, trough parameter i=10 m and x=10 m, s=smax exp[−x²/(2i²)]=12.1 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 2,
+      "expression": ".6/2",
+      "computed": 0.3,
+      "published": 0.3,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設估算抬升體積Vh=0.6 m³、注入Vg=2 m³，表觀效率η=Vh/Vg=0.30。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For inferred heave volume Vh=0.6 m³ and injection Vg=2 m³, apparent efficiency η=Vh/Vg=0.30. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 3,
+      "expression": "20*sin(pi/180)",
+      "computed": 0.34904812874567026,
+      "published": 0.349,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設管長L=20 m、方向誤差θ=1°，側向偏移δ=Lsinθ=0.349 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For pipe length L=20 m and angular error θ=1°, lateral offset δ=Lsinθ=0.349 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 4,
+      "expression": "180-80",
+      "computed": 100,
+      "published": 100,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設同一方向總應力σ=180 kPa、土中孔壓u=80 kPa，σ′=σ−u=100 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total stress σ=180 kPa and soil pore pressure u=80 kPa in the same direction, σ′=σ−u=100 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 5,
+      "expression": "5+3+12",
+      "computed": 20,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設感測5 s、傳輸3 s、判讀與反應12 s，總延遲τ=5+3+12=20 s。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For sensing 5 s, transmission 3 s and interpretation-response 12 s, total delay τ=20 s. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 6,
+      "expression": "3/6000",
+      "computed": 0.0005,
+      "published": 0.0005,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：假設差異位移Δs=3 mm、測點距L=6 m=6000 mm，β=Δs/L=0.0005 rad。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For differential movement Δs=3 mm over L=6 m=6000 mm, β=Δs/L=0.0005 rad. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 7,
+      "expression": ".45/.30",
+      "computed": 1.5,
+      "published": 1.5,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設初期效率η₁=0.30、後期η₂=0.45，倍率η₂/η₁=1.5。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For initial efficiency η₁=0.30 and later η₂=0.45, response-efficiency ratio η₂/η₁=1.5. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 8,
+      "expression": ".002/4",
+      "computed": 0.0005,
+      "published": 0.0005,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：假設轉角差Δθ=0.002 rad、間距L=4 m，κ≈Δθ/L=0.0005 m⁻¹。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For rotation difference Δθ=0.002 rad over L=4 m, κ≈Δθ/L=0.0005 m⁻¹. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 9,
+      "expression": "2*.5",
+      "computed": 1.0,
+      "published": 1,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：純合成控制示例假設局部增益g=2 mm/L、微小輸入ΔV=0.5 L，預測Δs=gΔV=1 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: In a purely synthetic control example, local gain g=2 mm/L and small input ΔV=0.5 L give Δs=gΔV=1 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b188",
+      "unit": 10,
+      "expression": "(1.4-1)/4",
+      "computed": 0.09999999999999998,
+      "published": 0.1,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設停注後位移由1.0 mm至1.4 mm、間隔4 day，平均變化率v=0.4/4=0.1 mm/day。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For post-injection movement from 1.0 mm to 1.4 mm over four days, mean rate v=0.4/4=0.1 mm/day. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 1,
+      "expression": ".9*100",
+      "computed": 90.0,
+      "published": 90,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設等向不排水增量Δσ=100 kPa、Skempton係數B=0.9，Δu=BΔσ=90 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For an isotropic undrained increment Δσ=100 kPa and Skempton coefficient B=0.9, Δu=BΔσ=90 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 2,
+      "expression": "(.8-.7)/(1+.8)*100",
+      "computed": 5.55555555555556,
+      "published": 5.56,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設e₀=0.8、e₁=0.7且固體體積不變，壓縮應變εv=(e₀−e₁)/(1+e₀)=0.0556=5.56%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For e₀=0.8 and e₁=0.7 at constant solid volume, compressive strain εv=(e₀−e₁)/(1+e₀)=0.0556=5.56%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 3,
+      "expression": "(3*.5/(4*pi))**(1/3)",
+      "computed": 0.4923725109213483,
+      "published": 0.492,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設漿體積V=0.5 m³且理想球形，r=(3V/(4π))^(1/3)=0.492 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For grout volume V=0.5 m³ in an ideal sphere, r=(3V/(4π))^(1/3)=0.492 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 4,
+      "expression": "pi*.5**2/1.2**2",
+      "computed": 0.545415391248228,
+      "published": 0.545,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設影響半徑r=0.5 m、正方形網格s=1.2 m，面積比a=πr²/s²=0.545。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For influence radius r=0.5 m and square spacing s=1.2 m, area ratio a=πr²/s²=0.545. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 5,
+      "expression": ".2*2**2/1e-7/86400",
+      "computed": 92.59259259259261,
+      "published": 92.6,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設Tv=0.2、有效排水長Hdr=2 m、cv=1×10⁻⁷ m²/s，t=Tv Hdr²/cv=8×10⁶ s=92.6 day。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For Tv=0.2, effective drainage path Hdr=2 m and cv=1×10⁻⁷ m²/s, t=Tv Hdr²/cv=8×10⁶ s=92.6 day. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 6,
+      "expression": "100*.005",
+      "computed": 0.5,
+      "published": 0.5,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設觀測面積A=100 m²、平均隆起h=0.005 m，Vh=Ah=0.5 m³。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For observed area A=100 m² and mean heave h=0.005 m, Vh=Ah=0.5 m³. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 7,
+      "expression": "2/3*100",
+      "computed": 66.66666666666666,
+      "published": 66.7,
+      "decimalPlaces": 1,
+      "model": "原創教學假設：假設總注入V=3 m³，其中可證明填空Vvoid=2 m³，填空比例Vvoid/V=66.7%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total injection V=3 m³ with verified cavity filling Vvoid=2 m³, the filling fraction is 66.7%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 8,
+      "expression": "200e6*.002/1000",
+      "computed": 400.0,
+      "published": 400,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設資產等效剛度k=200 MN/m、強迫位移δ=0.002 m，F=kδ=0.4 MN=400 kN。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For asset stiffness k=200 MN/m and imposed movement δ=0.002 m, F=kδ=0.4 MN=400 kN. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 9,
+      "expression": "(8-5)/5*100",
+      "computed": 60.0,
+      "published": 60,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設相應地層qc由5 MPa增至8 MPa，相對增加(8−5)/5=60%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For comparable cone resistance increasing from qc=5 MPa to 8 MPa, relative gain (8−5)/5=60%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b189",
+      "unit": 10,
+      "expression": "5*.002+3*.01",
+      "computed": 0.04,
+      "published": 0.04,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設兩層H₁=5 m、ε₁=0.002；H₂=3 m、ε₂=0.01，s=ε₁H₁+ε₂H₂=0.04 m=40 mm。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For layers H₁=5 m, ε₁=0.002 and H₂=3 m, ε₂=0.01, s=ε₁H₁+ε₂H₂=0.04 m=40 mm. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 1,
+      "expression": "(1/5)**2",
+      "computed": 0.04000000000000001,
+      "published": 0.04,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：僅在相同無因次幾何與材料參數的擴散尺度比較，L₁=5 m、L₂=1 m，t₂/t₁=(L₂/L₁)²=0.04。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: Only for diffusion scaling with identical dimensionless geometry and material parameters, L₁=5 m and L₂=1 m give t₂/t₁=(L₂/L₁)²=0.04. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 2,
+      "expression": "1.05*1.2",
+      "computed": 1.26,
+      "published": 1.26,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：三角形網格假設間距s=1.2 m，等效影響直徑de≈1.05s=1.26 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For a triangular grid with spacing s=1.2 m, equivalent influence diameter de≈1.05s=1.26 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 3,
+      "expression": "2*(.10+.004)/pi",
+      "computed": 0.06620845632622847,
+      "published": 0.0662,
+      "decimalPlaces": 4,
+      "model": "原創教學假設：假設帶寬b=0.10 m、厚t=0.004 m，等周長等效dw=2(b+t)/π=0.0662 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For width b=0.10 m and thickness t=0.004 m, perimeter-equivalent dw=2(b+t)/π=0.0662 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 4,
+      "expression": ".01*100/1.26**2",
+      "computed": 0.6298815822625345,
+      "published": 0.63,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設ch=0.01 m²/day、t=100 day、de=1.26 m，Tr=ch t/de²=0.630，無因次。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For ch=0.01 m²/day, t=100 day and de=1.26 m, Tr=ch t/de²=0.630, dimensionless. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 5,
+      "expression": "1e-9/5e-9",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "原創教學假設：假設塗抹區ks=1×10⁻⁹ m/s、未擾動kh=5×10⁻⁹ m/s，比值ks/kh=0.20。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For smear permeability ks=1×10⁻⁹ m/s and undisturbed kh=5×10⁻⁹ m/s, ks/kh=0.20. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 6,
+      "expression": "2/.0001",
+      "computed": 20000.0,
+      "published": 20000,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設水頭損失Δh=2 m、流量Q=0.0001 m³/s，等效水力阻力R=Δh/Q=20000 s/m²。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For head loss Δh=2 m and discharge Q=0.0001 m³/s, hydraulic resistance R=Δh/Q=20000 s/m². This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 7,
+      "expression": "80-30",
+      "computed": 50,
+      "published": 50,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設總應力增量Δσ=80 kPa、殘餘超額孔壓Δu=30 kPa，Δσ′=Δσ−Δu=50 kPa。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For total-stress increment Δσ=80 kPa and remaining excess pressure Δu=30 kPa, effective increment Δσ′=Δσ−Δu=50 kPa. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 8,
+      "expression": ".3*10/(1+1)*log10(150/100)",
+      "computed": 0.26413688858352186,
+      "published": 0.264,
+      "decimalPlaces": 3,
+      "model": "原創教學假設：假設Cc=0.3、H=10 m、e₀=1.0、σ′₀=100 kPa、σ′f=150 kPa，s=CcH/(1+e₀) log₁₀(σ′f/σ′₀)=0.264 m。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For Cc=0.3, H=10 m, e₀=1.0, σ′₀=100 kPa and σ′f=150 kPa, s=CcH/(1+e₀) log₁₀(σ′f/σ′₀)=0.264 m. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 9,
+      "expression": "(100-70)/100*100",
+      "computed": 30.0,
+      "published": 30,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：在相同試驗條件下，通水量Q₀=100 L/h降至Q₁=70 L/h，衰減(Q₀−Q₁)/Q₀=30%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: Under identical test conditions, discharge falls from Q₀=100 L/h to Q₁=70 L/h, giving deterioration of 30%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b190",
+      "unit": 10,
+      "expression": "240/300*100",
+      "computed": 80.0,
+      "published": 80,
+      "decimalPlaces": 0,
+      "model": "原創教學假設：假設已發生主要壓密沉陷s=240 mm、估計終值s∞=300 mm，Us=s/s∞=0.80=80%。此式用於量級與單位檢查，並非現場允收值。~Original teaching assumptions: For measured primary settlement s=240 mm and estimated ultimate s∞=300 mm, Us=s/s∞=0.80=80%. This calculation checks scale and units; it is not a site acceptance limit."
+    },
+    {
+      "course": "b191",
+      "unit": 1,
+      "expression": "-(-60)",
+      "computed": 60,
+      "published": 60,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：教學假設總應力固定、孔壓變化Δu=−60kPa，Δσ′=−Δu=60kPa；此式不代表任何深度都收到相同負壓。~Teaching assumptions, not field settings: At fixed total stress and pore-pressure change Δu=−60kPa, Δσ′=−Δu=60kPa. The relation does not imply equal suction at every depth."
+    },
+    {
+      "course": "b191",
+      "unit": 2,
+      "expression": "45/75",
+      "computed": 0.6,
+      "published": 0.6,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設泵端負壓幅值75kPa、深部45kPa，幅值傳遞比45/75=0.60；比較須同時刻且同一基準。~Teaching assumptions, not field settings: With pump suction magnitude75kPa and deep magnitude45kPa, the transfer ratio is45/75=0.60. Compare simultaneous observations on the same reference basis."
+    },
+    {
+      "course": "b191",
+      "unit": 3,
+      "expression": ".020-.002",
+      "computed": 0.018000000000000002,
+      "published": 0.018,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設相同參考壓溫下抽氣0.020m³/s、漏入0.002m³/s，淨排氣0.018m³/s；兩流量必須使用相同狀態。~Teaching assumptions, not field settings: At the same reference pressure and temperature, extraction0.020m³/s minus leakage0.002m³/s gives net0.018m³/s. Both flows require a common state."
+    },
+    {
+      "course": "b191",
+      "unit": 4,
+      "expression": "1e-5*20*3",
+      "computed": 0.0006000000000000001,
+      "published": 0.0006,
+      "decimalPlaces": 4,
+      "model": "教學假設，非現場設定值：取k=1×10⁻⁵m/s、連通面積A=20m²、梯度i=3，Q=kiA=0.0006m³/s；假設飽和層流與均質通道。~Teaching assumptions, not field settings: With k=1×10⁻⁵m/s, connected A=20m² and i=3, Q=kiA=0.0006m³/s, assuming saturated laminar flow through a uniform path."
+    },
+    {
+      "course": "b191",
+      "unit": 5,
+      "expression": ".0002/.0001",
+      "computed": 2.0,
+      "published": 2,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設排水流量Q=0.0002m³/s、整段水力導通係數C=0.0001m²/s，Δh=Q/C=2m；C不是土壤滲透係數。~Teaching assumptions, not field settings: For Q=0.0002m³/s and whole-drain hydraulic conductance C=0.0001m²/s, Δh=Q/C=2m. Conductance is not soil hydraulic conductivity."
+    },
+    {
+      "course": "b191",
+      "unit": 6,
+      "expression": "40-(-50)",
+      "computed": 90,
+      "published": 90,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設該土點Δσ=40kPa、實測淨Δu=−50kPa，Δσ′=Δσ−Δu=90kPa；此孔壓已包含當時各效應。~Teaching assumptions, not field settings: At a soil point with Δσ=40kPa and measured net Δu=−50kPa, Δσ′=90kPa. The pressure change already includes the combined effects at that time."
+    },
+    {
+      "course": "b191",
+      "unit": 7,
+      "expression": ".24/.30",
+      "computed": 0.8,
+      "published": 0.8,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設僅主要壓密沉陷S=0.24m、預測最終S∞=0.30m，U=S/S∞=0.80；不是任一沉陷讀值都可代入。~Teaching assumptions, not field settings: For primary-consolidation settlement S=0.24m and predicted final S∞=0.30m, U=0.80. Not every observed settlement component is suitable for this ratio."
+    },
+    {
+      "course": "b191",
+      "unit": 8,
+      "expression": "(0-(-60))/3",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設孔壓由−60kPa於3h回到0kPa，平均恢復率=[0−(−60)]/3=20kPa/h；零點為同一參考狀態。~Teaching assumptions, not field settings: If pressure recovers from−60kPa to0kPa in3h, the mean rate is20kPa/h, using a common pressure reference."
+    },
+    {
+      "course": "b191",
+      "unit": 9,
+      "expression": ".005/10",
+      "computed": 0.0005,
+      "published": 0.0005,
+      "decimalPlaces": 4,
+      "model": "教學假設，非現場設定值：假設水平相對位移5mm、觀測基距10m，εh=0.005/10=0.0005，即0.05%；符號與方向須另行記錄。~Teaching assumptions, not field settings: For relative horizontal movement5mm over10m, εh=0.005/10=0.0005, or0.05%. Record sign and direction separately."
+    },
+    {
+      "course": "b191",
+      "unit": 10,
+      "expression": "30*8/12000",
+      "computed": 0.02,
+      "published": 0.02,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設卸載幅值Δσ′=30kPa、層厚H=8m、重壓模數M=12000kPa，回彈S=Δσ′H/M=0.020m。~Teaching assumptions, not field settings: For unloading magnitude Δσ′=30kPa, layer H=8m and reloading modulus M=12000kPa, rebound S=Δσ′H/M=0.020m."
+    },
+    {
+      "course": "b192",
+      "unit": 1,
+      "expression": "15000*9.81*15/1e6",
+      "computed": 2.20725,
+      "published": 2.20725,
+      "decimalPlaces": 5,
+      "model": "教學假設，非現場設定值：假設質量m=15000kg、落高h=15m，在理想條件下E=mgh=15000×9.81×15=2207250J=2.20725MJ，約2.21MJ。~Teaching assumptions, not field settings: For mass m=15000kg and height h=15m, E=mgh=2207250J=2.20725MJ, approximately2.21MJ, before impact losses."
+    },
+    {
+      "course": "b192",
+      "unit": 2,
+      "expression": "2.21*10/25",
+      "computed": 0.884,
+      "published": 0.884,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設每擊取四捨五入E=2.21MJ、同一25m²單元共10擊，EA=10×2.21/25=0.884MJ/m²；非均勻能量場的保證。~Teaching assumptions, not field settings: Using rounded E=2.21MJ per impact, ten impacts over a25m² cell give EA=0.884MJ/m², without guaranteeing uniform spatial delivery."
+    },
+    {
+      "course": "b192",
+      "unit": 3,
+      "expression": ".5*sqrt(15*15)",
+      "computed": 7.5,
+      "published": 7.5,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：約定D以m、W以t、H以m，D=n√(WH)；選定經驗n=0.5、W=15t、H=15m得D=7.5m，不是保證改善深度。~Teaching assumptions, not field settings: With D in metres, W in tonnes and H in metres, D=n√(WH). A calibrated-unit coefficient n=0.5, W=15t and H=15m give7.5m, not a guaranteed treatment depth."
+    },
+    {
+      "course": "b192",
+      "unit": 4,
+      "expression": "60/80",
+      "computed": 0.75,
+      "published": 0.75,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設超額孔壓Δu=60kPa、初始有效垂直應力σ′v0=80kPa，ru=Δu/σ′v0=0.75；分母為初始有效應力而非總應力。~Teaching assumptions, not field settings: For excess Δu=60kPa and initial effective vertical stress σ′v0=80kPa, ru=0.75. The denominator is initial effective stress, not total stress."
+    },
+    {
+      "course": "b192",
+      "unit": 5,
+      "expression": "8*(20/40)**1.5",
+      "computed": 2.8284271247461903,
+      "published": 2.83,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設已校準PPV(r)=8mm/s×(20m/r)^1.5，r=40m時PPV=2.83mm/s；指數1.5為選定擬合值，非普遍規律。~Teaching assumptions, not field settings: For calibrated PPV(r)=8mm/s×(20m/r)^1.5, r=40m gives2.83mm/s. The exponent1.5 is a selected fit, not a universal law."
+    },
+    {
+      "course": "b192",
+      "unit": 6,
+      "expression": "pi*1.5**2*.6/3",
+      "computed": 1.413716694115407,
+      "published": 1.414,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設圓錐坑半徑r=1.5m、深h=0.6m，V=πr²h/3=1.414m³，約1.41m³；不代表相同體積的密實量。~Teaching assumptions, not field settings: For an ideal conical crater with r=1.5m and h=0.6m, V=πr²h/3=1.414m³, about1.41m³, not the same volume of densification."
+    },
+    {
+      "course": "b192",
+      "unit": 7,
+      "expression": "1800/1",
+      "computed": 1800.0,
+      "published": 1800,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設乾土質量Md=1800kg、體積V=1m³，ρd=Md/V=1800kg/m³；若量得濕質量，必須先按含水率換算。~Teaching assumptions, not field settings: For dry mass Md=1800kg and volume V=1m³, ρd=1800kg/m³. A measured wet mass must first be corrected using water content."
+    },
+    {
+      "course": "b192",
+      "unit": 8,
+      "expression": "200/.010/1000",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設壓力q=200kPa、沉陷s=0.010m，k=q/s=20000kPa/m=20MPa/m；單位為壓力除長度，非MPa。~Teaching assumptions, not field settings: For q=200kPa and s=0.010m, k=q/s=20000kPa/m=20MPa/m. Its unit is pressure per length, not MPa."
+    },
+    {
+      "course": "b192",
+      "unit": 9,
+      "expression": "1000/2",
+      "computed": 500.0,
+      "published": 500,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設設備垂直荷載P=1000kN、總有效接觸A=2m²，q=P/A=500kPa；此為靜態平均值，不是平台許可壓力。~Teaching assumptions, not field settings: For vertical equipment load P=1000kN over effective A=2m², q=500kPa. This is static average pressure, not allowable platform bearing pressure."
+    },
+    {
+      "course": "b192",
+      "unit": 10,
+      "expression": "12/6",
+      "computed": 2.0,
+      "published": 2,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設同層可比較錐阻力qc由6MPa增至12MPa，比值12/6=2；兩倍錐阻力不是兩倍承載力或所有土層合格。~Teaching assumptions, not field settings: For comparable same-layer cone resistance rising from6MPa to12MPa, the ratio is2. Doubled cone resistance is not doubled bearing capacity or acceptance of all strata."
+    },
+    {
+      "course": "b193",
+      "unit": 1,
+      "expression": "pi*.8**2/(4*2**2)",
+      "computed": 0.12566370614359174,
+      "published": 0.1257,
+      "decimalPlaces": 4,
+      "model": "教學假設，非現場設定值：假設圓樁直徑D=0.8m、方格間距s=2m，a=πD²/(4s²)=0.1257，約12.6%；只適用完整方格單元。~Teaching assumptions, not field settings: For circular D=0.8m and square spacing s=2m, a=πD²/(4s²)=0.1257, about12.6%, for a complete square unit cell."
+    },
+    {
+      "course": "b193",
+      "unit": 2,
+      "expression": "(1+sin(40*pi/180))/(1-sin(40*pi/180))",
+      "computed": 4.598909932113389,
+      "published": 4.6,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設黏聚c=0、摩擦角φ=40°，理想三軸破壞比σ1′/σ3′=(1+sinφ)/(1−sinφ)=4.60；使用有效主應力。~Teaching assumptions, not field settings: For c=0 and φ=40°, the ideal triaxial failure ratio σ1′/σ3′=(1+sinφ)/(1−sinφ)=4.60, using effective principal stresses."
+    },
+    {
+      "course": "b193",
+      "unit": 3,
+      "expression": "100/(1+.2*(4-1))",
+      "computed": 62.5,
+      "published": 62.5,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：假設平均壓力q=100kPa、置換a=0.20、應力比n=σc/σs=4，σs=q/[1+a(n−1)]=62.5kPa，σc=250kPa。~Teaching assumptions, not field settings: For mean q=100kPa, a=0.20 and stress ratio n=σc/σs=4, σs=q/[1+a(n−1)]=62.5kPa and σc=250kPa."
+    },
+    {
+      "course": "b193",
+      "unit": 4,
+      "expression": ".01*.5*.2",
+      "computed": 0.001,
+      "published": 0.001,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設柱材k=0.01m/s、有效A=0.5m²、梯度i=0.2，Q=kiA=0.001m³/s；假設此流速下可採達西關係。~Teaching assumptions, not field settings: For k=0.01m/s, effective A=0.5m² and i=0.2, Q=0.001m³/s, assuming Darcy behaviour at the relevant velocity."
+    },
+    {
+      "course": "b193",
+      "unit": 5,
+      "expression": "pi*.8**2*10/4",
+      "computed": 5.026548245743669,
+      "published": 5.027,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設D=0.8m、L=10m且等截面，V=πD²L/4=5.027m³，約5.03m³；此為成柱幾何體積，不是鬆散供料量。~Teaching assumptions, not field settings: For uniform D=0.8m and L=10m, V=πD²L/4=5.027m³, about5.03m³, representing geometric column volume rather than loose delivery."
+    },
+    {
+      "course": "b193",
+      "unit": 6,
+      "expression": "100*6/15000",
+      "computed": 0.04,
+      "published": 0.04,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設平均新增q=100kPa、改良層H=6m、有效拘束模數M=15000kPa，s=qH/M=0.040m；未含下層與次壓密。~Teaching assumptions, not field settings: For mean added q=100kPa, H=6m and effective constrained modulus M=15000kPa, s=qH/M=0.040m, excluding deeper layers and secondary compression."
+    },
+    {
+      "course": "b193",
+      "unit": 7,
+      "expression": "1**2/.05",
+      "computed": 20.0,
+      "published": 20,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設特徵路徑L=1m、擴散係數c=0.05m²/s，t≈L²/c=20s；只是量級，不證明地震期間已充分排水。~Teaching assumptions, not field settings: For characteristic L=1m and diffusion coefficient c=0.05m²/s, t≈L²/c=20s. This scale does not establish adequate drainage during an earthquake."
+    },
+    {
+      "course": "b193",
+      "unit": 8,
+      "expression": "300/(pi*.8**2/4)",
+      "computed": 596.8310365946074,
+      "published": 596.8,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：假設抵達柱端P=300kN、D=0.8m，qt=P/(πD²/4)=596.8kPa，約597kPa；P不是整根柱頂載重的必然值。~Teaching assumptions, not field settings: For toe load P=300kN and D=0.8m, qt=P/(πD²/4)=596.8kPa, about597kPa. Toe load need not equal the column-head load."
+    },
+    {
+      "course": "b193",
+      "unit": 9,
+      "expression": "240/300",
+      "computed": 0.8,
+      "published": 0.8,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設可比較沉陷下邊柱載重Pedge=240kN、內柱Pinner=300kN，比值=0.80；這是試驗比較，不是通用邊柱折減係數。~Teaching assumptions, not field settings: At comparable settlement, hypothetical edge load240kN and interior load300kN give a ratio0.80. This is a test comparison, not a universal edge reduction factor."
+    },
+    {
+      "course": "b193",
+      "unit": 10,
+      "expression": "9.81*2",
+      "computed": 19.62,
+      "published": 19.62,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設局部排水水頭增加Δh=2m，Δu=γwΔh=9.81×2=19.62kPa，約19.6kPa；未改變總應力時有效應力同量下降。~Teaching assumptions, not field settings: For a local head increase Δh=2m, Δu=9.81×2=19.62kPa, about19.6kPa. Effective stress falls by the same amount if total stress is unchanged."
+    },
+    {
+      "course": "b194",
+      "unit": 1,
+      "expression": "150-100",
+      "computed": 50,
+      "published": 50,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設總垂直應力σv=150kPa、孔壓u=100kPa，σ′v=σv−u=50kPa；此為指定深度的初始狀態，不是液化判定。~Teaching assumptions, not field settings: At a selected depth with σv=150kPa and u=100kPa, σ′v=50kPa. This is an initial state, not a liquefaction determination."
+    },
+    {
+      "course": "b194",
+      "unit": 2,
+      "expression": ".65*.30*2*.90",
+      "computed": 0.35100000000000003,
+      "published": 0.351,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設amax/g=0.30、σv/σ′v=2、rd=0.90，CSR=0.65(amax/g)(σv/σ′v)rd=0.351；各因子都採用無因次比值。~Teaching assumptions, not field settings: For amax/g=0.30, σv/σ′v=2 and rd=0.90, CSR=0.65×0.30×2×0.90=0.351; all factors are dimensionless."
+    },
+    {
+      "course": "b194",
+      "unit": 3,
+      "expression": ".40/.351",
+      "computed": 1.1396011396011396,
+      "published": 1.14,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設已相容修正CRR=0.40、CSR=0.351，FS=CRR/CSR=1.14；數值是教學比值，不作現地驗收門檻。~Teaching assumptions, not field settings: With compatibly corrected CRR=0.40 and CSR=0.351, FS=1.14. This teaching ratio is not a field acceptance threshold."
+    },
+    {
+      "course": "b194",
+      "unit": 4,
+      "expression": "95/100",
+      "computed": 0.95,
+      "published": 0.95,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設初始σ′v0=100kPa、循環增加Δu=95kPa，ru=Δu/σ′v0=0.95；若總應力近似固定，殘餘有效應力約5kPa。~Teaching assumptions, not field settings: For initial σ′v0=100kPa and cyclic Δu=95kPa, ru=0.95. Approximately fixed total stress leaves about5kPa effective stress."
+    },
+    {
+      "course": "b194",
+      "unit": 5,
+      "expression": ".02*3+.01*4",
+      "computed": 0.1,
+      "published": 0.1,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設兩層厚H1=3m、H2=4m，震後體積應變εv1=0.02、εv2=0.01，S=Σ εviHi=0.02×3+0.01×4=0.10m。~Teaching assumptions, not field settings: For H1=3m, H2=4m, εv1=0.02 and εv2=0.01, S=Σ εviHi=0.10m, assuming predominantly vertical, one-dimensional reconsolidation of both layers."
+    },
+    {
+      "course": "b194",
+      "unit": 6,
+      "expression": ".30/5",
+      "computed": 0.06,
+      "published": 0.06,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設兩側相對永久位移Δ=0.30m、變形帶寬L=5m，γ≈Δ/L=0.06即6%；這不是由震級直接推算的位移。~Teaching assumptions, not field settings: For relative permanent movement Δ=0.30m across L=5m, γ≈0.06, or6%. This assumed movement is not derived directly from earthquake magnitude."
+    },
+    {
+      "course": "b194",
+      "unit": 7,
+      "expression": ".45/.30",
+      "computed": 1.5,
+      "published": 1.5,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設相容CRRold=0.30、CRRnew=0.45，抗力比0.45/0.30=1.50；只有CSR相同時觸發比值才同比增加。~Teaching assumptions, not field settings: For compatible CRRold=0.30 and CRRnew=0.45, resistance gain is1.50. The triggering ratio increases proportionally only if CSR stays unchanged."
+    },
+    {
+      "course": "b194",
+      "unit": 8,
+      "expression": "pi*1*8*20",
+      "computed": 502.6548245743669,
+      "published": 502.7,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：假設樁徑D=1m、受負摩阻長L=8m、平均τ=20kPa，Qdrag=πDLτ=502.7kN，約503kN；不得與同段正摩阻重複計入。~Teaching assumptions, not field settings: For D=1m, downdrag length L=8m and mean τ=20kPa, Qdrag=πDLτ=502.7kN, about503kN. Do not also credit positive friction over that segment."
+    },
+    {
+      "course": "b194",
+      "unit": 9,
+      "expression": "900/1000*100",
+      "computed": 90.0,
+      "published": 90,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設目標面積1000m²、符合既定證據要求900m²，覆蓋率=900/1000=90%；剩餘100m²不因平均比例高而自動合格。~Teaching assumptions, not field settings: For a1000m² target and900m² meeting predefined evidence requirements, coverage is90%. The remaining100m² is not automatically acceptable because the overall fraction is high."
+    },
+    {
+      "course": "b194",
+      "unit": 10,
+      "expression": ".40/.30",
+      "computed": 1.3333333333333335,
+      "published": 1.33,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：固定教學CRR=0.40時，CSR=0.30得FS=1.33，CSR=0.40得FS=1.00；需求提高會降低同基準抗力比。~Teaching assumptions, not field settings: At fixed teaching CRR=0.40, CSR=0.30 gives FS=1.33, while CSR=0.40 gives FS=1.00. Higher demand lowers the consistently referenced ratio."
+    },
+    {
+      "course": "b195",
+      "unit": 1,
+      "expression": ".50/500",
+      "computed": 0.001,
+      "published": 0.001,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設沿隧道方向的適用平面波粒子速度v=0.50m/s、對應波速c=500m/s，ε=v/c=0.001；不能代入任意方向的總峰值。~Teaching assumptions, not field settings: For an appropriate plane wave along the tunnel, particle velocity v=0.50m/s and corresponding c=500m/s give ε=0.001. An arbitrary total peak is unsuitable."
+    },
+    {
+      "course": "b195",
+      "unit": 2,
+      "expression": ".001*20",
+      "computed": 0.02,
+      "published": 0.02,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設ε=0.001均勻作用於L=20m且這段變形分配給所查接頭，Δ=εL=0.020m即20mm；實際分配另算。~Teaching assumptions, not field settings: If ε=0.001 acts uniformly over L=20m and that segment's deformation is allocated to the checked joint, Δ=0.020m, or20mm; real sharing needs analysis."
+    },
+    {
+      "course": "b195",
+      "unit": 3,
+      "expression": "50*.010",
+      "computed": 0.5,
+      "published": 0.5,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設剪切剛度k=50MN/m、相對位移Δ=0.010m，V=kΔ=0.50MN；此為線性範圍的力，不是接頭剪力容量。~Teaching assumptions, not field settings: For shear stiffness k=50MN/m and Δ=0.010m, V=kΔ=0.50MN. This is linear-range demand, not joint shear capacity."
+    },
+    {
+      "course": "b195",
+      "unit": 4,
+      "expression": ".002*4*1000",
+      "computed": 8.0,
+      "published": 8,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設轉角θ=0.002rad、距旋轉軸R=4m，邊緣位移Δedge≈θR=0.008m即8mm；正負端方向相反。~Teaching assumptions, not field settings: For θ=0.002rad and distance R=4m from the rotation axis, Δedge≈θR=0.008m, or8mm, with opposite signs on opposite edges."
+    },
+    {
+      "course": "b195",
+      "unit": 5,
+      "expression": "30-12",
+      "computed": 18,
+      "published": 18,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設初始壓縮c0=30mm、接頭張開Δ=12mm，cres=c0−Δ=18mm；沒有材料曲線不能算接觸壓或保證不漏水。~Teaching assumptions, not field settings: For initial compression c0=30mm and opening Δ=12mm, cres=18mm. Without a material curve this cannot determine contact pressure or guarantee watertightness."
+    },
+    {
+      "course": "b195",
+      "unit": 6,
+      "expression": "2/200",
+      "computed": 0.01,
+      "published": 0.01,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設連接件有效長L=200mm、伸長Δ=2mm，ε=Δ/L=0.010即1%；是否彈性須另看材料與接頭構造。~Teaching assumptions, not field settings: For effective length L=200mm and extension Δ=2mm, ε=0.010, or1%. Elasticity depends separately on material and connection details."
+    },
+    {
+      "course": "b195",
+      "unit": 7,
+      "expression": ".50/20",
+      "computed": 0.025,
+      "published": 0.025,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設相對錯距Δ=0.50m、分布寬L=20m，平均γ=Δ/L=0.025即2.5%；並非斷層位移的預測公式。~Teaching assumptions, not field settings: For assumed offset Δ=0.50m distributed across L=20m, mean γ=0.025, or2.5%. This is not a formula predicting fault displacement."
+    },
+    {
+      "course": "b195",
+      "unit": 8,
+      "expression": "1/(1/100+1/50)",
+      "computed": 33.333333333333336,
+      "published": 33.3,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：假設k1=100MN/m、k2=50MN/m串聯，keq=(1/k1+1/k2)⁻¹=33.3MN/m；不適用直接並聯相加。~Teaching assumptions, not field settings: For series k1=100MN/m and k2=50MN/m, keq=(1/k1+1/k2)⁻¹=33.3MN/m, unlike a parallel stiffness sum."
+    },
+    {
+      "course": "b195",
+      "unit": 9,
+      "expression": "9.81*8",
+      "computed": 78.48,
+      "published": 78.48,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設外側水頭增加Δh=8m，Δu=γwΔh=9.81×8=78.48kPa，約78.5kPa；此為增加值而非總設計水壓。~Teaching assumptions, not field settings: For an external head increase Δh=8m, Δu=78.48kPa, about78.5kPa. This is added pressure, not total design pressure."
+    },
+    {
+      "course": "b195",
+      "unit": 10,
+      "expression": "40-25",
+      "computed": 15,
+      "published": 15,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設同一方向相同試驗條件的容量40mm、需求25mm，餘量40−25=15mm；未包含旋轉、剪切及公差互制。~Teaching assumptions, not field settings: For capacity40mm and demand25mm in the same direction and test conditions, reserve is15mm, excluding rotation, shear and tolerance interaction."
+    },
+    {
+      "course": "b196",
+      "unit": 1,
+      "expression": "9.81*500",
+      "computed": 4905.0,
+      "published": 4905,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：取水重度γw=9.81kN/m³及外包排水體積V=500m³，U=γwV=4905kN；此處假設箱體封閉且完全浸沒，並非混凝土重量。~Teaching assumptions, not field settings: With water unit weight γw=9.81kN/m³ and displaced envelope V=500m³, U=γwV=4905kN. The box is assumed sealed and fully submerged; this is not concrete weight."
+    },
+    {
+      "course": "b196",
+      "unit": 2,
+      "expression": "9.81*8",
+      "computed": 78.48,
+      "published": 78.48,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：水頭h=8m且靜水條件下，p=γwh=9.81×8=78.48kPa，約78.5kPa；水頭須從底板外側所選測點起算。~Teaching assumptions, not field settings: For h=8m under hydrostatic conditions, p=γwh=9.81×8=78.48kPa, about78.5kPa. Measure pressure head above the selected point on the external slab face."
+    },
+    {
+      "course": "b196",
+      "unit": 3,
+      "expression": "4000/4905",
+      "computed": 0.8154943934760448,
+      "published": 0.815,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設當期重量W=4000kN、浮力U=4905kN，未乘分項係數的比值W/U=0.815；小於1表示此理想平衡已不足，不能視為法規安全係數。~Teaching assumptions, not field settings: Assume current weight W=4000kN and uplift U=4905kN. The unfactored ratio W/U=0.815 is below unity, indicating deficient ideal equilibrium; it is not a code safety factor."
+    },
+    {
+      "course": "b196",
+      "unit": 4,
+      "expression": "(6000-4000)/10",
+      "computed": 200.0,
+      "published": 200,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：若U=6000kN、已存在重量W=4000kN且10支樁理想均分，T=(U−W)/10=200kN/樁；實際各樁須由相容變形與群樁分析確認。~Teaching assumptions, not field settings: For U=6000kN, existing W=4000kN and ten ideally equal piles, T=(U−W)/10=200kN per pile. Actual forces require compatible deformations and group analysis."
+    },
+    {
+      "course": "b196",
+      "unit": 5,
+      "expression": "15*100",
+      "computed": 1500,
+      "published": 1500,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設已證明可動員的平均剪應力τ=15kPa、接觸面積A=100m²，R=τA=1500kN；尚未驗證的接觸面不可直接套此抗力。~Teaching assumptions, not field settings: If mobilizable average shear stress τ=15kPa is demonstrated over A=100m², R=τA=1500kN. An unverified interface must not automatically receive this resistance."
+    },
+    {
+      "course": "b196",
+      "unit": 6,
+      "expression": "9.81*200*3",
+      "computed": 5886.0,
+      "published": 5886,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設均勻增加水頭Δh=3m、底面A=200m²，ΔU=γwAΔh=9.81×200×3=5886kN；此為底板上表面乾燥或壓力固定時的上浮合力增量；不適用於外包體積固定且完全浸沒封閉箱體的淨浮力，後者仍為γwV。~Teaching assumptions, not field settings: For uniform Δh=3m over A=200m², ΔU=γwAΔh=5886kN assumes the upper slab face remains dry or at fixed pressure. A sealed, fully submerged box of fixed volume retains net buoyancy γwV instead."
+    },
+    {
+      "course": "b196",
+      "unit": 7,
+      "expression": "80*4**2/8",
+      "computed": 160.0,
+      "published": 160,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：取淨上向壓力p=80kPa、跨L=4m與1m板帶，線荷載w=80kN/m，M=wL²/8=160kN·m每米板寬；簡支假設不含連續板負彎矩。~Teaching assumptions, not field settings: For net upward p=80kPa, span L=4m and a one-metre strip, w=80kN/m and M=wL²/8=160kN·m per metre width. Simple supports omit continuity moments."
+    },
+    {
+      "course": "b196",
+      "unit": 8,
+      "expression": "5000*.5",
+      "computed": 2500.0,
+      "published": 2500,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：若浮力U=5000kN偏心e=0.5m，附加力矩M=Ue=2500kN·m；它必須與重量、支承反力在同一參考點取矩平衡。~Teaching assumptions, not field settings: If U=5000kN acts at eccentricity e=0.5m, M=Ue=2500kN·m. Balance it with weight and support reactions about the same reference point."
+    },
+    {
+      "course": "b196",
+      "unit": 9,
+      "expression": "9.81*300",
+      "computed": 2943.0,
+      "published": 2943,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：取A=300m²且作用面積固定，dU/dh=γwA=9.81×300=2943kN/m；假設底板上表面乾燥或壓力固定，水位每增加1m，底板上浮合力增加2943kN；固定體積完全浸沒封閉箱體的淨浮力γwV不隨此水位上升增加。~Teaching assumptions, not field settings: With fixed A=300m², dU/dh=γwA=9.81×300=2943kN/m. Assuming the upper slab face is dry or at fixed pressure, a one-metre rise adds2943kN to slab uplift. Net buoyancy γwV of a fully submerged sealed box of fixed volume does not increase with this water-level rise."
+    },
+    {
+      "course": "b196",
+      "unit": 10,
+      "expression": "7000+1000-7500",
+      "computed": 500,
+      "published": 500,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設同一可相容工況W=7000kN、額外抗力R=1000kN、U=7500kN，未分項餘量W+R−U=500kN；正餘量本身不等於通過所有規範。~Teaching assumptions, not field settings: For one compatible scenario with W=7000kN, additional R=1000kN and U=7500kN, the unfactored margin W+R−U=500kN. A positive margin alone is not full code compliance."
+    },
+    {
+      "course": "b197",
+      "unit": 1,
+      "expression": "65-40",
+      "computed": 25,
+      "published": 25,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設坡面傾角65°、節理傾角40°且傾向一致，幾何角差65−40=25°；此角差不是安全係數，也未檢查楔形或傾倒機制。~Teaching assumptions, not field settings: Assume a65° face and40° joint with matching dip direction. The angular difference is65−40=25°. It is not a safety factor and does not test wedge sliding or toppling."
+    },
+    {
+      "course": "b197",
+      "unit": 2,
+      "expression": "1000*cos(pi/6)-200",
+      "computed": 666.0254037844387,
+      "published": 666.0,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：W=1000kN、滑面角30°、法向水壓合力U=200kN時，N′=Wcos30°−U=666.0kN；正值只表示此模型仍保持壓縮接觸。~Teaching assumptions, not field settings: For W=1000kN, plane angle30° and normal water thrust U=200kN, N′=Wcos30°−U=666.0kN. A positive result only indicates compressive contact in this model."
+    },
+    {
+      "course": "b197",
+      "unit": 3,
+      "expression": "666*tan(pi/6)",
+      "computed": 384.5152792802907,
+      "published": 384.5,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：取N′=666kN、摩擦角φ=30°且c=0，R=N′tanφ=384.5kN，約385kN；此為單一滑面摩擦項，不含錨索與其他外力。~Teaching assumptions, not field settings: With N′=666kN, friction angle φ=30° and c=0, R=N′tanφ=384.5kN, about385kN. This is one plane's friction term, excluding anchors and other forces."
+    },
+    {
+      "course": "b197",
+      "unit": 4,
+      "expression": "200*cos(20*pi/180)",
+      "computed": 187.9385241571817,
+      "published": 187.9,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：T=200kN與反滑動方向夾角20°時，直接分量Tcos20°=187.9kN，約188kN；額外摩擦項在本式未計。~Teaching assumptions, not field settings: For T=200kN at20° to the direction opposing sliding, direct resistance Tcos20°=187.9kN, about188kN. This expression excludes any additional friction term."
+    },
+    {
+      "course": "b197",
+      "unit": 5,
+      "expression": "18-12",
+      "computed": 6,
+      "published": 6,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設沿錨孔量得總長18m、至不穩定區末端12m，候選穩定區長度18−12=6m；這6m只是可供檢核的長度，不是已證明的黏結容量。~Teaching assumptions, not field settings: If total bore length is18m and the moving zone ends at12m along that bore, the candidate stable-zone length is18−12=6m. This is available geometry, not demonstrated bond capacity."
+    },
+    {
+      "course": "b197",
+      "unit": 6,
+      "expression": "1000*9.81*20/1000",
+      "computed": 196.2,
+      "published": 196.2,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：岩塊質量m=1000kg、落差h=20m，Ep=mgh=1000×9.81×20=196200J=196.2kJ；未扣除沿途能量損失，也未算衝擊峰值力。~Teaching assumptions, not field settings: For mass m=1000kg and drop h=20m, Ep=mgh=196200J=196.2kJ. The estimate omits energy loss along the path and does not give peak impact force."
+    },
+    {
+      "course": "b197",
+      "unit": 7,
+      "expression": "100*tan(pi/6)",
+      "computed": 57.735026918962575,
+      "published": 57.7,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：假設水壓合力減少ΔU=100kN、φ=30°且其餘荷載不變，ΔR=ΔUtanφ=57.7kN；未計新增黏聚或錨索作用。~Teaching assumptions, not field settings: If water thrust falls by ΔU=100kN at φ=30° with other loads fixed, ΔR=ΔUtanφ=57.7kN. No added cohesion or anchor force is included."
+    },
+    {
+      "course": "b197",
+      "unit": 8,
+      "expression": "5/cos(pi/3)",
+      "computed": 9.999999999999998,
+      "published": 10,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設真位移方向與感測軸夾60°、量測投影5mm，d=5/cos60°=10mm；方向已知且剛體移動是此簡化的前提。~Teaching assumptions, not field settings: With a known60° angle between movement and sensor axis and measured projection5mm, d=5/cos60°=10mm. The calculation assumes a known direction and rigid-block movement."
+    },
+    {
+      "course": "b197",
+      "unit": 9,
+      "expression": "3/6",
+      "computed": 0.5,
+      "published": 0.5,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：假設6h內真位移增加3mm，平均速率v=3/6=0.5mm/h；這不是瞬時速率，也不能直接預測剩餘失穩時間。~Teaching assumptions, not field settings: If displacement increases3mm over6h, average velocity v=3/6=0.5mm/h. This is not instantaneous velocity and cannot directly predict time to failure."
+    },
+    {
+      "course": "b197",
+      "unit": 10,
+      "expression": "(250-220)/250*100",
+      "computed": 12.0,
+      "published": 12,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設可比較的錨索力由250kN降至220kN，損失率=(250−220)/250=12%；比例僅描述量測變化，不能單獨決定是否重新張拉。~Teaching assumptions, not field settings: Comparable force readings falling from250kN to220kN give loss=(250−220)/250=12%. This ratio describes change and does not alone authorize retensioning."
+    },
+    {
+      "course": "b198",
+      "unit": 1,
+      "expression": ".3/sqrt(9)",
+      "computed": 0.09999999999999999,
+      "published": 0.1,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：取真空波速c=0.3m/ns、相對介電常數εr=9，v=c/√εr=0.100m/ns；這是均質低損耗假設，並非所有土層固定波速。~Teaching assumptions, not field settings: With c=0.3m/ns and relative permittivity εr=9, v=c/√εr=0.100m/ns. This assumes homogeneous low-loss ground, not a universal soil velocity."
+    },
+    {
+      "course": "b198",
+      "unit": 2,
+      "expression": ".1*30/2",
+      "computed": 1.5,
+      "published": 1.5,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：取v=0.1m/ns、校正後雙程t=30ns，z=vt/2=1.5m；t已扣除儀器與空氣路徑偏移，並假設垂直反射。~Teaching assumptions, not field settings: For v=0.1m/ns and corrected two-way t=30ns, z=vt/2=1.5m. Time already excludes instrument and air-path offsets, with vertical reflection assumed."
+    },
+    {
+      "course": "b198",
+      "unit": 3,
+      "expression": "2*sqrt(1**2+1**2)/.1",
+      "computed": 28.284271247461902,
+      "published": 28.28,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：均質地盤點散射模型t(x)=2√(z²+x²)/v；取z=1m、x=1m、v=0.1m/ns，t=28.28ns，約28.3ns。~Teaching assumptions, not field settings: For a homogeneous point-scatterer model t(x)=2√(z²+x²)/v, use z=1m, x=1m and v=0.1m/ns to obtain t=28.28ns, about28.3ns."
+    },
+    {
+      "course": "b198",
+      "unit": 4,
+      "expression": "1e8/5e8",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：取速度v=1×10⁸m/s、頻率f=5×10⁸Hz即500MHz，λ=v/f=0.20m；實際解析度不是直接宣稱0.20m。~Teaching assumptions, not field settings: For v=1×10⁸m/s and f=5×10⁸Hz, or500MHz, λ=v/f=0.20m. This does not establish an actual resolution of0.20m."
+    },
+    {
+      "course": "b198",
+      "unit": 5,
+      "expression": "exp(-2)",
+      "computed": 0.1353352832366127,
+      "published": 0.135,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：假設振幅衰減係數α=2m⁻¹、單程z=1m，A/A0=e^(−αz)=e^(−2)=0.135；雙程同深度僅此項為e^(−4)=0.0183。~Teaching assumptions, not field settings: For amplitude attenuation coefficient α=2m⁻¹ and one-way z=1m, A/A0=e^(−αz)=0.135. The corresponding round-trip factor alone is e^(−4)=0.0183."
+    },
+    {
+      "course": "b198",
+      "unit": 6,
+      "expression": "(sqrt(9)-sqrt(4))/(sqrt(9)+sqrt(4))",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：取兩側εr1=4、εr2=9，以對比指標C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20；符號須依電場定義校核。~Teaching assumptions, not field settings: For εr1=4 and εr2=9, contrast index C=(√εr2−√εr1)/(√εr2+√εr1)=(3−2)/(3+2)=0.20. Check sign against the chosen electric-field convention."
+    },
+    {
+      "course": "b198",
+      "unit": 7,
+      "expression": "(10.2-10)/10*100",
+      "computed": 1.9999999999999927,
+      "published": 2,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：已知路段實長10.0m，里程輪顯示10.2m，相對誤差=(10.2−10.0)/10.0=2%；若條件不變，顯示距離需乘10/10.2校正。~Teaching assumptions, not field settings: For a true10.0m line measured as10.2m, relative error=(10.2−10.0)/10.0=2%. Under unchanged conditions, displayed distance requires a10/10.2 correction factor."
+    },
+    {
+      "course": "b198",
+      "unit": 8,
+      "expression": ".01/.10*100",
+      "computed": 10.0,
+      "published": 10,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：在t固定且小變動近似下，Δz/z=Δv/v；取v=0.10m/ns、Δv=0.01m/ns，深度相對變動為10%。~Teaching assumptions, not field settings: With fixed t and a small-change approximation, Δz/z=Δv/v. For v=0.10m/ns and Δv=0.01m/ns, the relative depth variation is10%."
+    },
+    {
+      "course": "b198",
+      "unit": 9,
+      "expression": "sqrt((30*.01/2)**2+(.10*1/2)**2)",
+      "computed": 0.15811388300841897,
+      "published": 0.158,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：採一階獨立誤差傳遞，z=vt/2，取t=30ns、v=0.10m/ns、σv=0.01m/ns、σt=1ns且獨立，σz=√[(tσv/2)²+(vσt/2)²]=0.158m。~Teaching assumptions, not field settings: Using first-order propagation for z=vt/2, t=30ns, v=0.10m/ns, σv=0.01m/ns and independent σt=1ns, σz=√[(tσv/2)²+(vσt/2)²]=0.158m."
+    },
+    {
+      "course": "b198",
+      "unit": 10,
+      "expression": "18/24*100",
+      "computed": 75.0,
+      "published": 75,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：教學假設24個候選目標中18個得到獨立確認，確認比例18/24=75%；其餘6個仍未解，不能解讀成75%的整體探測率。~Teaching assumptions, not field settings: If18 of24 candidate targets have independent confirmation, the confirmation fraction is75%. Six remain unresolved; this is not a75% detection rate for all utilities."
+    },
+    {
+      "course": "b199",
+      "unit": 1,
+      "expression": "6/10",
+      "computed": 0.6,
+      "published": 0.6,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設量得有效厚度6mm、參照原厚10mm，保留比例6/10=0.60即60%；這不是保留60%承載力，也不代表滿足最小設計厚度。~Teaching assumptions, not field settings: An effective measured thickness6mm against a10mm reference gives6/10=0.60, or60% retention. This is not60% retained capacity or proof of minimum design thickness."
+    },
+    {
+      "course": "b199",
+      "unit": 2,
+      "expression": "2*3000/(1-.3**2)*.01**3*1000",
+      "computed": 6.593406593406594,
+      "published": 6.59,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設E=3000MPa、ν=0.30、t/D=0.01，pcr=2E/(1−ν²)(t/D)³=0.00659MPa=6.59kPa；這不是實際管線的許可外壓。~Teaching assumptions, not field settings: For E=3000MPa, ν=0.30 and t/D=0.01, pcr=2E/(1−ν²)(t/D)³=0.00659MPa=6.59kPa. This is not an allowable field external pressure."
+    },
+    {
+      "course": "b199",
+      "unit": 3,
+      "expression": ".6*.3/(2*.006)",
+      "computed": 15.0,
+      "published": 15,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：取內壓p=0.6MPa、直徑D=0.3m、厚t=0.006m，σθ=pD/(2t)=15MPa；需使用一致長度單位，並另查材料長期允許應力。~Teaching assumptions, not field settings: For p=0.6MPa, D=0.3m and t=0.006m, σθ=pD/(2t)=15MPa. Use consistent length units and separately establish long-term allowable material stress."
+    },
+    {
+      "course": "b199",
+      "unit": 4,
+      "expression": "(5/6)**3",
+      "computed": 0.5787037037037038,
+      "published": 0.579,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：同材料其他條件固定時，厚度由6mm降為5mm，彎曲剛度比Dnew/Dold=(5/6)³=0.579，即約保留57.9%；D在此指板彎曲剛度。~Teaching assumptions, not field settings: With material and other conditions fixed, reducing thickness from6mm to5mm gives bending-stiffness ratio Dnew/Dold=(5/6)³=0.579, or57.9% retention. Here D denotes plate flexural rigidity."
+    },
+    {
+      "course": "b199",
+      "unit": 5,
+      "expression": "1-20/200",
+      "computed": 0.9,
+      "published": 0.9,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設未固化總反應焓Htotal=200J/g、試片殘餘焓Hres=20J/g，轉化率α=1−Hres/Htotal=0.90；兩者須同配方及相容測試程序。~Teaching assumptions, not field settings: For total uncured reaction enthalpy Htotal=200J/g and residual Hres=20J/g, conversion α=1−Hres/Htotal=0.90. Both must use the same formulation and compatible test procedures."
+    },
+    {
+      "course": "b199",
+      "unit": 6,
+      "expression": "1500/3000",
+      "computed": 0.5,
+      "published": 0.5,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設短期模數Eshort=3000MPa、對應設計時間的長期模數Elong=1500MPa，比例Elong/Eshort=0.50；這不是適用所有內襯的固定係數。~Teaching assumptions, not field settings: If Eshort=3000MPa and Elong=1500MPa at the relevant design duration, Elong/Eshort=0.50. This is not a universal reduction factor for all liners."
+    },
+    {
+      "course": "b199",
+      "unit": 7,
+      "expression": "1.5*.96**(8/3)",
+      "computed": 1.3452857661889068,
+      "published": 1.345,
+      "decimalPlaces": 3,
+      "model": "教學假設，非現場設定值：固定坡度與滿流下Qnew/Qold=(nold/nnew)(Dnew/Dold)^(8/3)；取粗糙度比1.5、管徑比0.96，得1.5×0.96^(8/3)=1.345，約1.35。~Teaching assumptions, not field settings: For full uniform flow at fixed slope, Qnew/Qold=(nold/nnew)(Dnew/Dold)^(8/3). Ratios1.5 and0.96 give1.345, approximately1.35."
+    },
+    {
+      "course": "b199",
+      "unit": 8,
+      "expression": "pi*.1**2/4",
+      "computed": 0.007853981633974483,
+      "published": 0.00785,
+      "decimalPlaces": 5,
+      "model": "教學假設，非現場設定值：假設圓形支管直徑d=0.10m，開口面積A=πd²/4=0.00785m²；不能把此面積直接當切割尺寸或最小通流保證。~Teaching assumptions, not field settings: For a circular lateral diameter d=0.10m, opening area A=πd²/4=0.00785m². This is neither a cutting instruction nor a guaranteed minimum flow area."
+    },
+    {
+      "course": "b199",
+      "unit": 9,
+      "expression": ".02*1800",
+      "computed": 36.0,
+      "published": 36,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設入流Q=0.02m³/s、停機t=1800s且無出流，V=Qt=36m³；此為累積需求，不能直接推成安全撤離時間或容許停機時間。~Teaching assumptions, not field settings: For Q=0.02m³/s, t=1800s and no outflow, V=Qt=36m³. This is accumulated demand, not an allowable shutdown or evacuation time."
+    },
+    {
+      "course": "b199",
+      "unit": 10,
+      "expression": "19/20*100",
+      "computed": 95.0,
+      "published": 95,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設20段內襯中19段有完整可追溯鏈，比例19/20=95%；剩餘1段必須保持未結案，不能以整體比例豁免其驗收。~Teaching assumptions, not field settings: If19 of20 sections have complete traceability, the fraction is95%. The remaining section stays unresolved; the overall percentage cannot waive its acceptance requirements."
+    },
+    {
+      "course": "b200",
+      "unit": 1,
+      "expression": "2/10",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設有效驅動電壓V=2V、等效電阻R=10Ω，I=V/R=0.20A；R在此工況固定，不能當不同土壤或時間的通用值。~Teaching assumptions, not field settings: For effective driving voltage V=2V and equivalent R=10Ω, I=V/R=0.20A. Resistance is fixed for this scenario, not universal across soil or time."
+    },
+    {
+      "course": "b200",
+      "unit": 2,
+      "expression": ".02*1000*.01",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設裸露電流密度i=0.02A/m²、總面積A=1000m²、缺陷比例fd=0.01無因次，I=iAfd=0.20A；未考慮屏蔽及電流不均。~Teaching assumptions, not field settings: For bare-surface density i=0.02A/m², total A=1000m² and dimensionless defect fraction fd=0.01, I=iAfd=0.20A. Shielding and uneven distribution are excluded."
+    },
+    {
+      "course": "b200",
+      "unit": 3,
+      "expression": "2*pi*1*20",
+      "computed": 125.66370614359172,
+      "published": 125.7,
+      "decimalPlaces": 1,
+      "model": "教學假設，非現場設定值：等間距a=1m、量得V/I=R=20Ω且電極埋深遠小於a時，ρa=2πaR=125.7Ω·m；分層或深埋電極需要修正。~Teaching assumptions, not field settings: For spacing a=1m, measured V/I=R=20Ω and electrode depth much smaller than a, ρa=2πaR=125.7Ω·m. Layering or deep electrodes requires correction."
+    },
+    {
+      "course": "b200",
+      "unit": 4,
+      "expression": "20*780*.85/(.20*8760)",
+      "computed": 7.568493150684931,
+      "published": 7.57,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設M=20kg、Ceff=780Ah/kg已含電化學效率、材料利用率u=0.85、I=0.20A，L=MCeffu/(I×8760h/year)=7.57years。~Teaching assumptions, not field settings: With M=20kg, Ceff=780Ah/kg already including electrochemical efficiency, material utilization u=0.85 and I=0.20A, L=MCeffu/(I×8760h/year)=7.57years."
+    },
+    {
+      "course": "b200",
+      "unit": 5,
+      "expression": "12*3",
+      "computed": 36,
+      "published": 36,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設直流輸出V=12V、I=3A，P=VI=36W；這是輸出端電功率，不含整流器效率或交流輸入功率因數。~Teaching assumptions, not field settings: For DC output V=12V and I=3A, P=VI=36W. This is terminal output power, excluding rectifier efficiency and AC input power factor."
+    },
+    {
+      "course": "b200",
+      "unit": 6,
+      "expression": ".20*2",
+      "computed": 0.4,
+      "published": 0.4,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：若量測路徑電流I=0.20A、等效土壤路徑R=2Ω，IRdrop=0.40V；此項不是金屬極化電位，也不是可通用扣除的常數。~Teaching assumptions, not field settings: For path current I=0.20A and equivalent soil-path R=2Ω, IRdrop=0.40V. This is not metal polarization potential or a universally removable constant."
+    },
+    {
+      "course": "b200",
+      "unit": 7,
+      "expression": ".10*3600",
+      "computed": 360.0,
+      "published": 360,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設同方向雜散電流I=0.10A持續t=3600s，Q=It=360C；正負交替需分方向積分，不可只用帶符號淨值推估局部腐蝕。~Teaching assumptions, not field settings: For same-direction stray current I=0.10A over t=3600s, Q=It=360C. Alternating directions need separate integration; signed net charge alone cannot estimate local corrosion."
+    },
+    {
+      "course": "b200",
+      "unit": 8,
+      "expression": "1/5",
+      "computed": 0.2,
+      "published": 0.2,
+      "decimalPlaces": 2,
+      "model": "教學假設，非現場設定值：假設旁路兩端V=1V、R=5Ω，Ibypass=V/R=0.20A；此電流未必到達需要保護的裸露金屬，不可全部計作有效保護。~Teaching assumptions, not field settings: For V=1V across bypass R=5Ω, Ibypass=V/R=0.20A. It may not reach exposed metal needing protection and cannot all be credited as effective current."
+    },
+    {
+      "course": "b200",
+      "unit": 9,
+      "expression": ".60/.20",
+      "computed": 2.9999999999999996,
+      "published": 3,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設可比較工況需求由0.20A升到0.60A，比值Inew/Iold=3；此三倍僅表示需求變化，不表示防蝕能力或安全程度提高三倍。~Teaching assumptions, not field settings: If comparable demand rises from0.20A to0.60A, Inew/Iold=3. This describes demand, not a tripling of protection effectiveness or safety."
+    },
+    {
+      "course": "b200",
+      "unit": 10,
+      "expression": ".20*8760",
+      "computed": 1752.0,
+      "published": 1752,
+      "decimalPlaces": 0,
+      "model": "教學假設，非現場設定值：假設非閏年8760h內I=0.20A恆定，Qyear=I×8760h=1752Ah；這是一年累積電量，若稱年度率才寫1752Ah/year。~Teaching assumptions, not field settings: For constant I=0.20A over a nonleap year of8760h, Qyear=1752Ah. This is accumulated annual charge;1752Ah/year denotes an annual rate instead."
+    }
+  ]
+}

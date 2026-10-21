@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d204-ae598e68bc670a94.json"]={sha256:"ae598e68bc670a94da0d28ba4f12923335739259476a8c6929c6694aceb17412",value:{"id":"d204","title":"飛利浦Ingenia磁振系統","titleEn":"Philips Ingenia MRI System","category":"biomedical","kind":"project","summary":"「飛利浦Ingenia磁振系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Philips Ingenia MRI System: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

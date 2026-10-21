@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d306-c56120b86b663e8a.json"]={sha256:"c56120b86b663e8a1e078c2c0397122a5a67a3dcfb2cdbede6bee4b33d779d93",value:{"id":"d306","title":"以色列Sorek海水淡化廠","titleEn":"Sorek Desalination Plant","category":"process","kind":"project","summary":"「以色列Sorek海水淡化廠」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sorek Desalination Plant: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

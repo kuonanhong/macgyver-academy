@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d376-668ae85808600270.json"]={sha256:"668ae85808600270fcbbcd2d2e10abcd77f1df363fcf911c1882ce602d580b07",value:{"id":"d376","title":"工業發酵槽攪拌量測","titleEn":"Industrial Fermentation Vessel Mixing Metrology","category":"process","kind":"craft","summary":"「工業發酵槽攪拌量測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Industrial Fermentation Vessel Mixing Metrology: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

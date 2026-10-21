@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d081-0f67eb1e46ff3c81.json"]={sha256:"0f67eb1e46ff3c8184b7a51d63035685309fb11f163bb4bd54c78a011ffcdc1f",value:{"id":"d081","title":"超臨界二氧化碳發電循環","titleEn":"Supercritical Carbon Dioxide Power Cycles","category":"energy","kind":"craft","summary":"「超臨界二氧化碳發電循環」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Supercritical Carbon Dioxide Power Cycles: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

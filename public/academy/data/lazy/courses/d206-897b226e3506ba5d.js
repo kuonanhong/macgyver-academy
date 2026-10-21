@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d206-897b226e3506ba5d.json"]={sha256:"897b226e3506ba5d78e258ce51fd9a6f177b1e74934161832d9776fab6e5ace4",value:{"id":"d206","title":"Elekta Unity磁振導引平台","titleEn":"Elekta Unity MR Guided Platform","category":"biomedical","kind":"project","summary":"「Elekta Unity磁振導引平台」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Elekta Unity MR Guided Platform: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

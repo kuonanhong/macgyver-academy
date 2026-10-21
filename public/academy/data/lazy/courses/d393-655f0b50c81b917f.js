@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d393-655f0b50c81b917f.json"]={sha256:"655f0b50c81b917fc5093f23aff3b5e63584fdf1c03ea7cc7bde36ba1ba12b95",value:{"id":"d393","title":"氣固分離旋風集塵器","titleEn":"Gas Solid Separation Cyclones","category":"process","kind":"craft","summary":"「氣固分離旋風集塵器」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gas Solid Separation Cyclones: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

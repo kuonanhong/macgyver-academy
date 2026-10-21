@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d019-4985dd856b78c86f.json"]={sha256:"4985dd856b78c86f2a9e2207d7a5c07ea83d4176667455d4de37d1e8b0c37870",value:{"id":"d019","title":"迪諾威格抽蓄水電站","titleEn":"Dinorwig Pumped Storage Power Station","category":"energy","kind":"project","summary":"「迪諾威格抽蓄水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Dinorwig Pumped Storage Power Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

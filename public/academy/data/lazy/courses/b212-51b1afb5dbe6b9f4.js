@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b212-51b1afb5dbe6b9f4.json"]={sha256:"51b1afb5dbe6b9f4f043bc6de9f7940729bb156482ded9395b2fdf5aadea86c7",value:{"id":"b212","title":"卡里巴水壩","titleEn":"Kariba Dam","category":"water","kind":"project","summary":"以「卡里巴水壩」為研究主題，規劃拆解水理條件、結構介面、施工順序與運轉驗證。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Kariba Dam. Planned coverage includes hydraulic conditions, structural interfaces, construction sequence and operational verification. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-water","b-src-water-manuals"],"status":"roadmap"}};

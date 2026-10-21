@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d098-b7342ccfa544cc87.json"]={sha256:"b7342ccfa544cc8751aa81136e30705f9a02ce5ec726a9dc516b0103b7154177",value:{"id":"d098","title":"相變材料蓄熱模組設計","titleEn":"Phase Change Material Thermal Storage Modules","category":"energy","kind":"craft","summary":"「相變材料蓄熱模組設計」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Phase Change Material Thermal Storage Modules: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

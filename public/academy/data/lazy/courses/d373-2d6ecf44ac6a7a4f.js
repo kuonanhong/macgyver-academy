@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d373-2d6ecf44ac6a7a4f.json"]={sha256:"2d6ecf44ac6a7a4f5cb76a63d5351faddabdacd084fac7929626fe39d67a9eb9",value:{"id":"d373","title":"海上養殖網箱結構監測","titleEn":"Offshore Aquaculture Cage Structural Monitoring","category":"process","kind":"craft","summary":"「海上養殖網箱結構監測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Offshore Aquaculture Cage Structural Monitoring: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

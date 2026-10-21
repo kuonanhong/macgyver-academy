@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d065-4aa187e0668f0610.json"]={sha256:"4aa187e0668f0610ea4bdefb0b6374d9d8beadc49837cf96a20785d605f050a8",value:{"id":"d065","title":"陸域風機塔筒與基礎耦合","titleEn":"Onshore Wind Turbine Tower and Foundation Coupling","category":"energy","kind":"craft","summary":"「陸域風機塔筒與基礎耦合」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Onshore Wind Turbine Tower and Foundation Coupling: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

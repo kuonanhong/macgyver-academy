@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d303-999455441f4df9df.json"]={sha256:"999455441f4df9df34ccd70d91fa2fa7b834538e8f9aebb4a0f97645d1e29611",value:{"id":"d303","title":"桑德朋斯沙漠溫室工程","titleEn":"Sundrop Farms Desert Greenhouse Engineering","category":"process","kind":"project","summary":"「桑德朋斯沙漠溫室工程」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sundrop Farms Desert Greenhouse Engineering: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

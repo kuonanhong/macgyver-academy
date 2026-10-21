@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d345-2efd58753e1d933b.json"]={sha256:"2efd58753e1d933bfca6808eb2c30aa26e27dd9c8a9e35655c31ad2f89595c76",value:{"id":"d345","title":"發酵食品製程感測","titleEn":"Fermented Food Process Sensing","category":"process","kind":"craft","summary":"「發酵食品製程感測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Fermented Food Process Sensing: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

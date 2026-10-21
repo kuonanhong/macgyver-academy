@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d300-68a76203d09772b4.json"]={sha256:"68a76203d09772b4a458b5d4ffd22c60f930d31ed4e3c109080b770e621c53f8",value:{"id":"d300","title":"醫療設備維護與校正系統","titleEn":"Medical Equipment Maintenance and Calibration Systems","category":"biomedical","kind":"craft","summary":"「醫療設備維護與校正系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Equipment Maintenance and Calibration Systems: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

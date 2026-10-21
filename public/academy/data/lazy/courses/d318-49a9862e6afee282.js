@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d318-49a9862e6afee282.json"]={sha256:"49a9862e6afee2829f369500129d10460ee15ecc2663425c3bcb4222c999976c",value:{"id":"d318","title":"溫室遮陽與保溫幕機構","titleEn":"Greenhouse Shading and Thermal Screen Mechanisms","category":"process","kind":"craft","summary":"「溫室遮陽與保溫幕機構」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Greenhouse Shading and Thermal Screen Mechanisms: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

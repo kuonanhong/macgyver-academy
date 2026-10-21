@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d237-a3668733f9db04ed.json"]={sha256:"a3668733f9db04ed36267d2d19b37810a38697ca6216766e60f23182305a7cec",value:{"id":"d237","title":"眼科像差量測儀","titleEn":"Ophthalmic Aberrometry Instruments","category":"biomedical","kind":"craft","summary":"「眼科像差量測儀」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ophthalmic Aberrometry Instruments: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d010-82c1792e3ccdcc84.json"]={sha256:"82c1792e3ccdcc845edd29181dee31e6eb92eb4e2b3d54d38f7624158abaffc0",value:{"id":"d010","title":"努列克水電站","titleEn":"Nurek Hydropower Plant","category":"energy","kind":"project","summary":"「努列克水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Nurek Hydropower Plant: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

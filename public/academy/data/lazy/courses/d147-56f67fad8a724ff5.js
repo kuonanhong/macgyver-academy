@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d147-56f67fad8a724ff5.json"]={sha256:"56f67fad8a724ff5185b1cb8f017141213fe2e78fe5887a3cbcd81fa65695eb3",value:{"id":"d147","title":"熱塑性複合材料焊接","titleEn":"Thermoplastic Composite Welding","category":"materials","kind":"craft","summary":"「熱塑性複合材料焊接」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Thermoplastic Composite Welding: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

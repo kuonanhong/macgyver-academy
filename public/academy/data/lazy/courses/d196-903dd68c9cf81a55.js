@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d196-903dd68c9cf81a55.json"]={sha256:"903dd68c9cf81a55b11bd1c42675d4094ab5aded943018cd9f27ae482dfbd659",value:{"id":"d196","title":"表面物理氣相沉積鍍層","titleEn":"Physical Vapor Deposition Surface Coatings","category":"materials","kind":"craft","summary":"「表面物理氣相沉積鍍層」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Physical Vapor Deposition Surface Coatings: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

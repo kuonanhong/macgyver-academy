@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d378-b3178b97034fac19.json"]={sha256:"b3178b97034fac19fb071ea7d2459186938eaac3272fd046d267290d6e195a2b",value:{"id":"d378","title":"逆滲透海水淡化能量回收","titleEn":"Reverse Osmosis Desalination Energy Recovery","category":"process","kind":"craft","summary":"「逆滲透海水淡化能量回收」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Reverse Osmosis Desalination Energy Recovery: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

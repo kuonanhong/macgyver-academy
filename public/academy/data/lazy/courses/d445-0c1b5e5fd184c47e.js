@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d445-0c1b5e5fd184c47e.json"]={sha256:"0c1b5e5fd184c47e7f1c9e460571e04655928845b195e4917041f23b2cbf6420",value:{"id":"d445","title":"ESS歐洲散裂中子源","titleEn":"European Spallation Source ESS","category":"megascience","kind":"project","summary":"「ESS歐洲散裂中子源」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for European Spallation Source ESS: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

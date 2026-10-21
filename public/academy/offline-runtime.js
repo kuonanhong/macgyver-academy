@@ -142,6 +142,7 @@
     const method = String(options.method || input?.method || 'GET').toUpperCase();
     const dataName = url.pathname.match(/\/data\/([a-zA-Z0-9_-]+)\.json$/)?.[1];
     if (method === 'GET' && dataName && own(window.MG_DATA || {}, dataName)) return response(window.MG_DATA[dataName]);
+    if (directFile && method === 'GET' && dataName && window.MG_LOAD_AUXILIARY) {try{return response(await window.MG_LOAD_AUXILIARY(dataName));}catch{return response({error:'Optional offline data unavailable.'},404);}}
     const api = url.pathname.match(/\/api\/([a-z-]+)$/)?.[1];
     const profile = activeProfile();
     if (api === 'me' && method === 'GET') return response({ user: { ...profile }, aiAvailable: false, authMode: 'offline', deviceOnly: true, storageAvailable: persistent });

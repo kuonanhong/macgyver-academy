@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d380-1b923f1333a2ed11.json"]={sha256:"1b923f1333a2ed1112c4b8a74e798bdf89a0e975d59a847bd16b643b4c81c07a",value:{"id":"d380","title":"市政污水生物處理控制","titleEn":"Municipal Wastewater Biological Treatment Control","category":"process","kind":"craft","summary":"「市政污水生物處理控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Municipal Wastewater Biological Treatment Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

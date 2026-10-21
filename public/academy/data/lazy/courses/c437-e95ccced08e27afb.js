@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c437-e95ccced08e27afb.json"]={sha256:"e95ccced08e27afb1da7fcd10cdaf11513118ba19396cef38f15c80dd39da9c2",value:{"title":"精密加工熱變形補償","titleEn":"Precision-machining thermal compensation","category":"manufacturing","kind":"craft","summary":"課程規劃主題：溫度量測與誤差模型。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: temperature measurement and error models. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c437"}};

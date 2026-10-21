@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d130-a202a1fdbc8c2f9c.json"]={sha256:"a202a1fdbc8c2f9c83a6d29de9bbcd992b4e21ed9331d0e7f8dccf6b5d0e60ca",value:{"id":"d130","title":"鈦合金擴散接合","titleEn":"Titanium Alloy Diffusion Bonding","category":"materials","kind":"craft","summary":"「鈦合金擴散接合」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Titanium Alloy Diffusion Bonding: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

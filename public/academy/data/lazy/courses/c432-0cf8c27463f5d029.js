@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c432-0cf8c27463f5d029.json"]={sha256:"0cf8c27463f5d029b82aa472ff28f6b66d662d20b0a317207f1de4b2c87da8a6",value:{"title":"五軸工具機運動學校準","titleEn":"Five-axis machine-tool kinematic calibration","category":"manufacturing","kind":"craft","summary":"課程規劃主題：旋轉軸與空間誤差。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: rotary axes and volumetric errors. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c432"}};

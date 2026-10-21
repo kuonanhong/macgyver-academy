@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d490-584a2f2e39389a10.json"]={sha256:"584a2f2e39389a10dafb287a25bc38428b70d4fde4cb1aaf23d2d8e7623ad041",value:{"id":"d490","title":"Icefin冰下科學探測機器人","titleEn":"Icefin Under Ice Scientific Robot","category":"megascience","kind":"project","summary":"「Icefin冰下科學探測機器人」教學路線圖：窄孔部署、海洋感測、聲學導航與極地資料採集。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Icefin Under Ice Scientific Robot: borehole deployment, ocean sensing, acoustic navigation, and polar data acquisition. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

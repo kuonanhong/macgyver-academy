@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d436-68d83fb3a7c8d8f7.json"]={sha256:"68d83fb3a7c8d8f722e29cd2ecf42a48436f828881868fe531b732657515d6e7",value:{"id":"d436","title":"臺灣光子源TPS","titleEn":"Taiwan Photon Source TPS","category":"megascience","kind":"project","summary":"「臺灣光子源TPS」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Taiwan Photon Source TPS: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

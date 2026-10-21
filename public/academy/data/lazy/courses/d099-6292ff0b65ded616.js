@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d099-6292ff0b65ded616.json"]={sha256:"6292ff0b65ded616f53003b11ae9408d55758082a1b7e802d8d2e2821fda60b0",value:{"id":"d099","title":"電網儲能電池管理系統","titleEn":"Grid Storage Battery Management Systems","category":"energy","kind":"craft","summary":"「電網儲能電池管理系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Grid Storage Battery Management Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

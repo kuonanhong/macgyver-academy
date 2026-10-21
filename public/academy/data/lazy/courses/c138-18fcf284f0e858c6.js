@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c138-18fcf284f0e858c6.json"]={sha256:"18fcf284f0e858c6e718b67db92b25f5fa1bcc733041919c6e4a15f0db6ad4c3",value:{"title":"Suiso Frontier 液氫運輸船","titleEn":"Suiso Frontier liquefied-hydrogen carrier","category":"marine","kind":"project","summary":"課程規劃主題：低溫儲存與海運介面。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: cryogenic storage and shipping interfaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c138"}};

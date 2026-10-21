@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d123-9e4e752c3ad325c5.json"]={sha256:"9e4e752c3ad325c5c1301952b6c815a0195cc8102f99c162402ecfc6e8666a0e",value:{"id":"d123","title":"鋁合金擠型模具設計","titleEn":"Aluminium Extrusion Die Design","category":"materials","kind":"craft","summary":"「鋁合金擠型模具設計」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aluminium Extrusion Die Design: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

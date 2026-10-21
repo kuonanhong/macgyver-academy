@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d368-068acd45198566a9.json"]={sha256:"068acd45198566a96690754c82d67e5bc08eb6133baac2630d908ec97ec15964",value:{"id":"d368","title":"畜舍通風與熱壓力感測","titleEn":"Livestock Housing Ventilation and Heat Stress Sensing","category":"process","kind":"craft","summary":"「畜舍通風與熱壓力感測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Livestock Housing Ventilation and Heat Stress Sensing: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d243-0e067f9ab07c13b9.json"]={sha256:"0e067f9ab07c13b95d730ef4897bfad41fc6d47ce79b1d39ab3941ab4502f74a",value:{"id":"d243","title":"人工心臟磁懸浮轉子","titleEn":"Artificial Heart Magnetically Levitated Rotors","category":"biomedical","kind":"craft","summary":"「人工心臟磁懸浮轉子」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Artificial Heart Magnetically Levitated Rotors: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c234-ae50a20156cdcb71.json"]={sha256:"ae50a20156cdcb7133998d4e70bbdecfeb1e04e29ee7fab4721657c9a8f1046e",value:{"title":"Vespa 速克達製造工程","titleEn":"Vespa scooter manufacturing engineering","category":"automotive","kind":"project","summary":"課程規劃主題：一體式車架與傳動配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: monocoque frames and drivetrain layout. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c234"}};

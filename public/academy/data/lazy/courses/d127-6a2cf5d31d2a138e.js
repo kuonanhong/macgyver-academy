@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d127-6a2cf5d31d2a138e.json"]={sha256:"6a2cf5d31d2a138e2f00b17ee68e0287a5781bb7b482dd39f0b606148ea5ceb4",value:{"id":"d127","title":"高強度鋼熱處理建模","titleEn":"High Strength Steel Heat Treatment Modeling","category":"materials","kind":"craft","summary":"「高強度鋼熱處理建模」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Strength Steel Heat Treatment Modeling: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

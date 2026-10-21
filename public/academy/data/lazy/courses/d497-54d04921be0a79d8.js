@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d497-54d04921be0a79d8.json"]={sha256:"54d04921be0a79d870f49a58109f07056519a0b0ecaef0557324ad2fc34c0ba7",value:{"id":"d497","title":"粒子束位置監測與回授","titleEn":"Particle Beam Position Monitoring and Feedback","category":"megascience","kind":"craft","summary":"「粒子束位置監測與回授」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Particle Beam Position Monitoring and Feedback: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c216-ed515c83ec1daf1f.json"]={sha256:"ed515c83ec1daf1fae1a5ac29b240046f9afabbdf2ecdf617b63c6104de39b25",value:{"title":"Tesla Roadster 電動跑車工程","titleEn":"Tesla Roadster electric sports-car engineering","category":"automotive","kind":"project","summary":"課程規劃主題：電池整合與電驅動。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: battery integration and electric drive. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c216"}};

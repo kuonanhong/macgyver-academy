@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d313-34c9bf691c127439.json"]={sha256:"34c9bf691c1274396dd5b2d493a0ebefc84c157d071456761757f7858d1843e7",value:{"id":"d313","title":"中樞旋轉灌溉機械","titleEn":"Center Pivot Irrigation Machinery","category":"process","kind":"craft","summary":"「中樞旋轉灌溉機械」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Center Pivot Irrigation Machinery: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

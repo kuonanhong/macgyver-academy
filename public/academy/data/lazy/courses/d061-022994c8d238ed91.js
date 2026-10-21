@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d061-022994c8d238ed91.json"]={sha256:"022994c8d238ed914af1d3625f99c7ca3b38bf23d76f4a5b863560d294634116",value:{"id":"d061","title":"光伏逆變器最大功率追蹤","titleEn":"Photovoltaic Inverter Maximum Power Point Tracking","category":"energy","kind":"craft","summary":"「光伏逆變器最大功率追蹤」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Photovoltaic Inverter Maximum Power Point Tracking: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

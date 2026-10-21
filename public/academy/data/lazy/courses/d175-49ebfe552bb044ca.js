@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d175-49ebfe552bb044ca.json"]={sha256:"49ebfe552bb044ca3f0fb4b21270128bfbfb4295706c3e398fdebe71aa82a980",value:{"id":"d175","title":"工程塑膠結晶與翹曲控制","titleEn":"Engineering Polymer Crystallization and Warpage Control","category":"materials","kind":"craft","summary":"「工程塑膠結晶與翹曲控制」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Engineering Polymer Crystallization and Warpage Control: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

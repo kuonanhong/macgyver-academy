@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c315-e8a50d85ccbf9078.json"]={sha256:"e8a50d85ccbf9078c87504a09462155bbfcb6fcbbd764ab56f6e0cc12ef84d4d",value:{"title":"Aura 大氣化學衛星","titleEn":"Aura atmospheric-chemistry satellite","category":"space","kind":"project","summary":"課程規劃主題：光譜量測與大氣成分。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: spectral measurements and atmospheric composition. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c315"}};

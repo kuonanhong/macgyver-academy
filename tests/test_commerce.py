@@ -48,6 +48,17 @@ class CommerceTests(unittest.TestCase):
             self.token = "A" * 64
             db.execute("INSERT INTO sessions VALUES(?,?,?)", (hashlib.sha256(self.token.encode()).hexdigest(), "alice", int(time.time()) + 10000))
 
+    def test_lazy_curriculum_preserves_authority(self):
+        index=self.billing.curriculum(None,index=True)
+        self.assertTrue(index[0]['_lazy'])
+        self.assertEqual(index[0]['stages'][1]['steps'],[{'id':'s2'}])
+        self.assertNotIn('Private second lesson',json.dumps(index))
+        course=self.billing.curriculum(None,course_id='paid-course')
+        self.assertTrue(course['stages'][1]['steps'][0]['locked'])
+        self.assertNotIn('Private second lesson',json.dumps(course))
+        for name,allowed in [('data/lazy/index.json',True),('data/lazy/courses/paid-course-0123456789abcdef.json',False),('data/lazy/resources/paid-course-0123456789abcdef.json',True),('data/lazy/data/featured-0123456789abcdef.js',False)]:
+            self.assertEqual(self.billing.static_allowed(self.public/name),allowed,name)
+
     def tearDown(self):
         self.server.shutdown()
         self.server.server_close()

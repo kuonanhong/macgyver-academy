@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c018-e5f8027c8f0946ae.json"]={sha256:"e5f8027c8f0946ae521b25cdcd0bd721288268531219e706c6d2f9eeb7bda57d",value:{"title":"Dassault Falcon 7X 三發公務機","titleEn":"Dassault Falcon 7X trijet business aircraft","category":"aerospace","kind":"project","summary":"課程規劃主題：系統整合與飛控概念。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: system integration and flight-control concepts. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c018"}};

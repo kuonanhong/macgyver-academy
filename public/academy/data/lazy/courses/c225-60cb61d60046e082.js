@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c225-60cb61d60046e082.json"]={sha256:"60cb61d60046e082357624abfeccfd68294bbf8c070efc39e68d528644c79a1c",value:{"title":"Toyota Mirai 燃料電池汽車","titleEn":"Toyota Mirai fuel-cell car","category":"automotive","kind":"project","summary":"課程規劃主題：燃料電池與儲能協同。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: fuel cells and energy-storage coordination. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c225"}};

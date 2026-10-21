@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d356-e85ab3e342297cfb.json"]={sha256:"e85ab3e342297cfb121648cb4fc9ef1ed2bcb44c353d51315d4f54254095b63a",value:{"id":"d356","title":"冷藏貨櫃遠端監測","titleEn":"Refrigerated Container Remote Monitoring","category":"process","kind":"craft","summary":"「冷藏貨櫃遠端監測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Refrigerated Container Remote Monitoring: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

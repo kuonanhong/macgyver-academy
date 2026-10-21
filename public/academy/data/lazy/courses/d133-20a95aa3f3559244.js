@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d133-20a95aa3f3559244.json"]={sha256:"20a95aa3f35592442119780709c2081493a64f7f69be50b80325543970ae7c22",value:{"id":"d133","title":"雷射金屬增材製造","titleEn":"Laser Metal Additive Manufacturing","category":"materials","kind":"craft","summary":"「雷射金屬增材製造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Laser Metal Additive Manufacturing: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

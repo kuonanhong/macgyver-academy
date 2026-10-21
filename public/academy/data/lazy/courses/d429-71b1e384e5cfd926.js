@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d429-71b1e384e5cfd926.json"]={sha256:"71b1e384e5cfd92672bb771764735673964dd91a0af9a84642f9625f5d076afb",value:{"id":"d429","title":"歐洲XFEL自由電子雷射","titleEn":"European XFEL Free Electron Laser","category":"megascience","kind":"project","summary":"「歐洲XFEL自由電子雷射」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for European XFEL Free Electron Laser: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

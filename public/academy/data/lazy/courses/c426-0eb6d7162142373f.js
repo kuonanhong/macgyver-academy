@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c426-0eb6d7162142373f.json"]={sha256:"0eb6d7162142373ff45be2b119d1a99607a3ed37ec5ea51ff7db0e48be8defe9",value:{"title":"Stratasys FDM 熱塑成形平台","titleEn":"Stratasys FDM thermoplastic printing platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：擠出路徑與層間結合。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: extrusion paths and interlayer bonding. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c426"}};

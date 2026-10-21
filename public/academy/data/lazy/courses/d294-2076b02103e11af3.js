@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d294-2076b02103e11af3.json"]={sha256:"2076b02103e11af3f34decda7f6f10571f057cb1c558189cfef3658b30408028",value:{"id":"d294","title":"植入式材料生物相容性資料管理","titleEn":"Implant Material Biocompatibility Data Management","category":"biomedical","kind":"craft","summary":"「植入式材料生物相容性資料管理」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Implant Material Biocompatibility Data Management: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

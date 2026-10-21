@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d275-5e86b8407c41a085.json"]={sha256:"5e86b8407c41a085885531d42a980d0c60244817f6f06bd19fa93d2f5702613c",value:{"id":"d275","title":"數位聽診器降噪系統","titleEn":"Digital Stethoscope Noise Reduction Systems","category":"biomedical","kind":"craft","summary":"「數位聽診器降噪系統」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Digital Stethoscope Noise Reduction Systems: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

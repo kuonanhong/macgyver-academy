@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d406-1fe4ba1a426a55aa.json"]={sha256:"1fe4ba1a426a55aae925ef691ddee9484ebe885f5a4b1c6393bbc4b574d441d6",value:{"id":"d406","title":"LHCb粒子偵測器","titleEn":"LHCb Particle Detector","category":"megascience","kind":"project","summary":"「LHCb粒子偵測器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for LHCb Particle Detector: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

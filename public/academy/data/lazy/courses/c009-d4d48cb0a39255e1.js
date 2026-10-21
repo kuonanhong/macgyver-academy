@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c009-d4d48cb0a39255e1.json"]={sha256:"d4d48cb0a39255e166395ef9a38abdad379ab2ce60df6d4941db09445a514038",value:{"title":"Douglas DC-3 金屬客機工程史","titleEn":"Douglas DC-3 metal airliner engineering history","category":"aerospace","kind":"project","summary":"課程規劃主題：全金屬機體與可維修性。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: all-metal airframes and maintainability. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c009"}};

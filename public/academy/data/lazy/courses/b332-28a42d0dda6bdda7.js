@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/b332-28a42d0dda6bdda7.json"]={sha256:"28a42d0dda6bdda75453977fc7d36f9927e475f6b4a3e81bf2bf84931170bcb0",value:{"id":"b332","title":"利雅德地鐵","titleEn":"Riyadh Metro","category":"rail","kind":"project","summary":"以「利雅德地鐵」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Riyadh Metro. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

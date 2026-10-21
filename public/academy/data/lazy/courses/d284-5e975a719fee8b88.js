@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d284-5e975a719fee8b88.json"]={sha256:"5e975a719fee8b88b122d28a700dae125bd05ad2bf1d142d7d9deebdb6ec18af",value:{"id":"d284","title":"細胞培養環境監測儀","titleEn":"Cell Culture Environment Monitors","category":"biomedical","kind":"craft","summary":"「細胞培養環境監測儀」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cell Culture Environment Monitors: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

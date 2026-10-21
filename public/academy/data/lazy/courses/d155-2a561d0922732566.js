@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d155-2a561d0922732566.json"]={sha256:"2a561d0922732566e8b68d5234968d0283eb11c4ab67dd58e2164f785e2682b0",value:{"id":"d155","title":"透明陶瓷製程與光學品質","titleEn":"Transparent Ceramic Processing and Optical Quality","category":"materials","kind":"craft","summary":"「透明陶瓷製程與光學品質」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Transparent Ceramic Processing and Optical Quality: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

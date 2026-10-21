@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c416-96232e7d48d54a96.json"]={sha256:"96232e7d48d54a9601aa4894ccc9016deae8b6ae7675a5f4fb081832da6fad7a",value:{"title":"Intuitive da Vinci 手術平台概覽","titleEn":"Intuitive da Vinci surgical platform overview","category":"manufacturing","kind":"project","summary":"課程規劃主題：遙操作介面與臨床設備驗證。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: teleoperation interfaces and medical-device validation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c416"}};

@@ -19,10 +19,7 @@
       window.MG_STATIC_MODE = true;
       if (location.protocol === 'file:') {
         await load('offline-data.js');
-        for(const part of window.MG_DATA_FILES || []) {
-          if(!/^offline-data-\d+\.js$/.test(part)) throw new Error('Invalid course part');
-          await load(part);
-        }
+
       }
       await load('offline-runtime.js');
     }

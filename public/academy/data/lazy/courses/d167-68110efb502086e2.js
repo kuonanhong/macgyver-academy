@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d167-68110efb502086e2.json"]={sha256:"68110efb502086e2e5a5810f74f708bf9121fcf777a2c9fb65daf4879b61a2d1",value:{"id":"d167","title":"顯示器薄玻璃強化工程","titleEn":"Display Thin Glass Strengthening Engineering","category":"materials","kind":"craft","summary":"「顯示器薄玻璃強化工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Display Thin Glass Strengthening Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

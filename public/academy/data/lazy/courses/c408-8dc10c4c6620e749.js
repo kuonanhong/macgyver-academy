@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c408-8dc10c4c6620e749.json"]={sha256:"8dc10c4c6620e749ac9c4edfe2bc37687fb257aafdb4bcca8d105748e5aee2b3",value:{"title":"Rethink Baxter 雙臂機器人","titleEn":"Rethink Baxter dual-arm robot","category":"manufacturing","kind":"project","summary":"課程規劃主題：人機互動與彈性生產。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: human-robot interaction and flexible production. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c408"}};

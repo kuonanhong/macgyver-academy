@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d137-3514fee15a4edff3.json"]={sha256:"3514fee15a4edff3dc22b7c2ffbafe4b0646a1e5c1e0c1fdf2eac0cf4c09ca6a",value:{"id":"d137","title":"電弧線材增材製造","titleEn":"Wire Arc Additive Manufacturing","category":"materials","kind":"craft","summary":"「電弧線材增材製造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Wire Arc Additive Manufacturing: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

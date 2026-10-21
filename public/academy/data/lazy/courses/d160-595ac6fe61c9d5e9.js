@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d160-595ac6fe61c9d5e9.json"]={sha256:"595ac6fe61c9d5e979888530855a6510ecb8be4c1a2d0393cbdb4ec091ee8be7",value:{"id":"d160","title":"陶瓷增材製造與燒結收縮","titleEn":"Ceramic Additive Manufacturing and Sintering Shrinkage","category":"materials","kind":"craft","summary":"「陶瓷增材製造與燒結收縮」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ceramic Additive Manufacturing and Sintering Shrinkage: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

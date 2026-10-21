@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c464-19d16b61f05ecba3.json"]={sha256:"19d16b61f05ecba392b5628f2095345b0cdae439441202a0270988c934dc2d5b",value:{"title":"粉末冶金齒輪製造","titleEn":"Powder-metallurgy gear manufacturing","category":"manufacturing","kind":"craft","summary":"課程規劃主題：壓製、燒結與尺寸控制。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: compaction, sintering and dimensional control. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c464"}};

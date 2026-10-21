@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d403-cb19edd23a741c3f.json"]={sha256:"cb19edd23a741c3f0f8e589096e68fb577274ebe15bfaf617f964f0253639cc5",value:{"id":"d403","title":"ATLAS粒子偵測器","titleEn":"ATLAS Particle Detector","category":"megascience","kind":"project","summary":"「ATLAS粒子偵測器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for ATLAS Particle Detector: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

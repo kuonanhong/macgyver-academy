@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d491-f08906826c8acd2d.json"]={sha256:"f08906826c8acd2ddfca2f0b37bcf0e7ca1f2ae36de25ef8507c948a780effca",value:{"id":"d491","title":"蛟龍號深海科學潛器","titleEn":"Jiaolong Research Submersible","category":"megascience","kind":"project","summary":"「蛟龍號深海科學潛器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Jiaolong Research Submersible: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

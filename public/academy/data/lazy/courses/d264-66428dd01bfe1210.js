@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d264-66428dd01bfe1210.json"]={sha256:"66428dd01bfe1210aaa93935b7717250535bac56f001471b5558daa166b0a4b0",value:{"id":"d264","title":"可穿戴平衡量測裝置","titleEn":"Wearable Balance Measurement Devices","category":"biomedical","kind":"craft","summary":"「可穿戴平衡量測裝置」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Wearable Balance Measurement Devices: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

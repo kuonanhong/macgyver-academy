@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d198-c9a8de68e092064f.json"]={sha256:"c9a8de68e092064f588c8fd6a539ce1062955bef9641b5cc44f045db51f0d1b9",value:{"id":"d198","title":"腐蝕環境材料壽命建模","titleEn":"Material Life Modeling in Corrosive Environments","category":"materials","kind":"craft","summary":"「腐蝕環境材料壽命建模」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Material Life Modeling in Corrosive Environments: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c243-d17e06b9de1ce33e.json"]={sha256:"d17e06b9de1ce33e1675919d432ab14f6bb153968ce13913e008875acfd73925",value:{"title":"Alstom Coradia iLint 氫能列車","titleEn":"Alstom Coradia iLint hydrogen train","category":"automotive","kind":"project","summary":"課程規劃主題：燃料電池與軌道營運。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: fuel cells and railway operations. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c243"}};

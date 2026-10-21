@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d106-569183de874fedbf.json"]={sha256:"569183de874fedbf5957f0b236db70af1d2a973444e59a484ff41674207a6e87",value:{"id":"d106","title":"杜伊斯堡鋼鐵製造基地","titleEn":"Duisburg Steel Manufacturing Complex","category":"materials","kind":"project","summary":"「杜伊斯堡鋼鐵製造基地」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Duisburg Steel Manufacturing Complex: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

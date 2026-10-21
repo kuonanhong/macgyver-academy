@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d418-e05bc78f9c80796b.json"]={sha256:"e05bc78f9c80796bcd9b47e6bc0332481f24528943ad19293df0a3165d02f56b",value:{"id":"d418","title":"Hyper-Kamiokande科學設施","titleEn":"Hyper-Kamiokande Research Facility","category":"megascience","kind":"project","summary":"「Hyper-Kamiokande科學設施」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hyper-Kamiokande Research Facility: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c411-9b62ea638597e294.json"]={sha256:"9b62ea638597e294ea264be2c7a3daa291dd7ae2f137235c0d34fad980230b90",value:{"title":"ABB FlexPicker 並聯機器人","titleEn":"ABB FlexPicker parallel robot","category":"manufacturing","kind":"project","summary":"課程規劃主題：輕量連桿與高速分揀。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: lightweight links and rapid sorting. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c411"}};

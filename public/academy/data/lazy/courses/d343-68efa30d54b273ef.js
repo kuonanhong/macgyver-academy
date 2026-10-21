@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d343-68efa30d54b273ef.json"]={sha256:"68efa30d54b273ef3e5c4be60e8173e24ba7e941a4c6a40725c55ae59674eb87",value:{"id":"d343","title":"乳粉噴霧乾燥塔","titleEn":"Milk Powder Spray Drying Towers","category":"process","kind":"craft","summary":"「乳粉噴霧乾燥塔」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Milk Powder Spray Drying Towers: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

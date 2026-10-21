@@ -1,0 +1,275 @@
+{
+  "id": "b171",
+  "title": "箱涵頂進施工~Box-jacking construction",
+  "discipline": "ug-trenchless",
+  "family": "pipe",
+  "focus": "箱涵頂進的力鏈、地層損失與營運界面~Box-jacking load paths, ground loss and operating interfaces",
+  "summary": "本課以箱涵頂進的力鏈、地層損失與營運界面為主線，從箱涵自重與滑移界面與油壓推力與後座反力建立系統邊界，再把刃口接觸與局部承壓、姿態修正與曲線相容連到封鎖窗口與恢復證據。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 十單元以可核算的模型和可追溯證據逐步判讀不同失效。~This course focuses on box-jacking load paths, ground loss and operating interfaces. It begins with Box weight and sliding interfaces and Hydraulic thrust and reaction-wall force, links Cutting-edge contact and local bearing and Attitude correction and path compatibility, and ends with Possession windows and restoration evidence. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. Ten units use reproducible models and traceable evidence to distinguish failure mechanisms.",
+  "units": [
+    {
+      "anchor": "箱涵自重與滑移界面~Box weight and sliding interfaces",
+      "title": "箱涵自重與滑移界面~Box weight and sliding interfaces",
+      "mechanism": "箱涵混凝土截面由外框扣除內孔得到，但附屬設備、臨時構件與積水仍需另計。自重決定底面接觸的部分法向力，浮力和地層反力則會改變分布；把外包體積全部視為實心會高估重量並扭曲推力預估。 判別這個機制時，應觀察逐項核對外內尺寸、附加重量及底面實際接觸區；若出現錯把中空箱涵當實心，造成重量與摩阻模型系統偏差，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Subtract the internal void from the outer rectangle to obtain concrete area, while accounting separately for equipment, temporary works and water. Weight contributes to base normal force, modified by buoyancy and soil reactions. Treating the bounding volume as solid overstates mass and distorts thrust estimates. Use the following check to discriminate the mechanism: Reconcile outer and inner dimensions, additional weight and actual base contact zones. If treating a hollow box as solid biases weight and friction models systematically, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：Ac=8 m*5 m-7 m*4 m=12 m2; W=24 kN/m3*12 m2*20 m=5760 kN。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: Ac=8 m*5 m-7 m*4 m=12 m2; W=24 kN/m3*12 m2*20 m=5760 kN. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "逐項核對外內尺寸、附加重量及底面實際接觸區。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「錯把中空箱涵當實心，造成重量與摩阻模型系統偏差」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Reconcile outer and inner dimensions, additional weight and actual base contact zones. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Treating a hollow box as solid biases weight and friction models systematically. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "錯把中空箱涵當實心，造成重量與摩阻模型系統偏差。相似表徵也可能由量測偏差造成，因此應回到逐項核對外內尺寸、附加重量及底面實際接觸區，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Treating a hollow box as solid biases weight and friction models systematically. Similar symptoms can arise from measurement bias: return to reconcile outer and inner dimensions, additional weight and actual base contact zones to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "箱涵外框長寬高相乘就等於全部混凝土體積~Multiplying outer box dimensions gives the total concrete volume",
+      "practice": "將逐項核對外內尺寸、附加重量及底面實際接觸區列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現錯把中空箱涵當實心，造成重量與摩阻模型系統偏差，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Reconcile outer and inner dimensions, additional weight and actual base contact zones. Link results to location, material batch and interpretation version. If treating a hollow box as solid biases weight and friction models systematically, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "油壓推力與後座反力~Hydraulic thrust and reaction-wall force",
+      "title": "油壓推力與後座反力~Hydraulic thrust and reaction-wall force",
+      "mechanism": "千斤頂壓力透過有效活塞面積變成力，後座牆和地層必須提供相反反力。油封摩擦、回油壓及不同缸位使表壓總和不是精確合力；推力能力與後座可承力是不同限制，不能因油壓未滿就判斷可繼續增加負載。 判別這個機制時，應觀察比對有效缸面積、校正荷重與後座位移及裂縫；若出現後座地層先變形，油壓增加只擴大後退而非有效前進，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Jack pressure produces force over effective piston area, requiring equal reaction from the thrust wall and ground. Seal friction, return pressure and cylinder states affect the result. Hydraulic capability and reaction-wall capacity are separate constraints; unused pressure capacity does not establish permission to increase load. Use the following check to discriminate the mechanism: Compare effective piston area, calibrated load and reaction-wall displacement and cracks. If reaction ground deforms first and increased pressure causes retreat rather than useful advance, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：idealThrust=p*A=25 MPa*0.12 m2=3.0 MN。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: idealThrust=p*A=25 MPa*0.12 m2=3.0 MN. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "比對有效缸面積、校正荷重與後座位移及裂縫。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「後座地層先變形，油壓增加只擴大後退而非有效前進」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Compare effective piston area, calibrated load and reaction-wall displacement and cracks. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Reaction ground deforms first and increased pressure causes retreat rather than useful advance. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "後座地層先變形，油壓增加只擴大後退而非有效前進。相似表徵也可能由量測偏差造成，因此應回到比對有效缸面積、校正荷重與後座位移及裂縫，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Reaction ground deforms first and increased pressure causes retreat rather than useful advance. Similar symptoms can arise from measurement bias: return to compare effective piston area, calibrated load and reaction-wall displacement and cracks to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "千斤頂額定推力就是後座地層必然能承受的推力~Rated jack thrust is automatically the thrust the reaction ground can sustain",
+      "practice": "將比對有效缸面積、校正荷重與後座位移及裂縫列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現後座地層先變形，油壓增加只擴大後退而非有效前進，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Compare effective piston area, calibrated load and reaction-wall displacement and cracks. Link results to location, material batch and interpretation version. If reaction ground deforms first and increased pressure causes retreat rather than useful advance, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "底面摩擦與潤滑變異~Base friction and lubrication variability",
+      "title": "底面摩擦與潤滑變異~Base friction and lubrication variability",
+      "mechanism": "滑移界面摩阻隨有效法向力、材料接觸與潤滑狀態改變，啟動阻力可能高於穩定滑移。庫倫模型只表示一個假設狀態，不能把同一係數套到乾濕區、停機時間及側面土壓；推力歷程需按工況分段解讀。 判別這個機制時，應觀察比較啟動與穩態推力、停機時長及潤滑覆蓋證據；若出現局部失潤滑造成推力尖峰，被誤判成全面硬地層，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Sliding friction depends on effective normal force, contact materials and lubrication, with breakaway potentially above steady motion. A Coulomb model describes an assumed state, not one coefficient valid across dry zones, waiting periods and side earth pressure. Interpret thrust histories by operating condition. Use the following check to discriminate the mechanism: Compare breakaway and steady thrust, stoppage duration and lubrication coverage evidence. If local lubrication loss creates a thrust spike mistaken for uniformly hard ground, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：baseFriction=mu*W=0.15*5760 kN=864 kN。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: baseFriction=mu*W=0.15*5760 kN=864 kN. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "比較啟動與穩態推力、停機時長及潤滑覆蓋證據。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「局部失潤滑造成推力尖峰，被誤判成全面硬地層」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Compare breakaway and steady thrust, stoppage duration and lubrication coverage evidence. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Local lubrication loss creates a thrust spike mistaken for uniformly hard ground. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "局部失潤滑造成推力尖峰，被誤判成全面硬地層。相似表徵也可能由量測偏差造成，因此應回到比較啟動與穩態推力、停機時長及潤滑覆蓋證據，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Local lubrication loss creates a thrust spike mistaken for uniformly hard ground. Similar symptoms can arise from measurement bias: return to compare breakaway and steady thrust, stoppage duration and lubrication coverage evidence to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "量到一次低摩擦係數就可套用所有後續頂進階段~One low measured friction coefficient applies to every later jacking stage",
+      "practice": "將比較啟動與穩態推力、停機時長及潤滑覆蓋證據列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現局部失潤滑造成推力尖峰，被誤判成全面硬地層，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Compare breakaway and steady thrust, stoppage duration and lubrication coverage evidence. Link results to location, material batch and interpretation version. If local lubrication loss creates a thrust spike mistaken for uniformly hard ground, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "頂板框架與施工支承~Roof-frame action and construction support",
+      "title": "頂板框架與施工支承~Roof-frame action and construction support",
+      "mechanism": "箱涵頂板和側牆形成框架，角部轉動限制使彎矩不同於獨立簡支梁。條帶模型可用來核對量級，但頂進時前緣懸伸、地面交通與覆土拱效應又改變支承；應逐階段標出荷載路徑和拉力側。 判別這個機制時，應觀察將框架邊界、頂板應變及前緣懸伸狀態共同比對；若出現把固定角部當鉸接，遺漏角隅負彎矩與裂縫需求，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~The roof and walls form a frame, with corner restraint changing moments from those of an isolated simple beam. A strip check estimates scale only; front overhang, surface traffic and soil arching alter support during jacking. Identify load paths and tension faces separately for each stage. Use the following check to discriminate the mechanism: Compare frame restraints, roof strains and leading-edge overhang state. If treating restrained corners as hinges misses negative corner moment and cracking demand, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：idealStripMoment=q*L^2/8=50 kN/m*(7 m)^2/8=306.25 kNm for a 1 m strip。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: idealStripMoment=q*L^2/8=50 kN/m*(7 m)^2/8=306.25 kNm for a 1 m strip. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "將框架邊界、頂板應變及前緣懸伸狀態共同比對。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「把固定角部當鉸接，遺漏角隅負彎矩與裂縫需求」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Compare frame restraints, roof strains and leading-edge overhang state. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Treating restrained corners as hinges misses negative corner moment and cracking demand. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "把固定角部當鉸接，遺漏角隅負彎矩與裂縫需求。相似表徵也可能由量測偏差造成，因此應回到將框架邊界、頂板應變及前緣懸伸狀態共同比對，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Treating restrained corners as hinges misses negative corner moment and cracking demand. Similar symptoms can arise from measurement bias: return to compare frame restraints, roof strains and leading-edge overhang state to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "頂板當作簡支梁計算就涵蓋所有框架受力~A simple-beam roof calculation covers every frame action",
+      "practice": "將將框架邊界、頂板應變及前緣懸伸狀態共同比對列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現把固定角部當鉸接，遺漏角隅負彎矩與裂縫需求，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Compare frame restraints, roof strains and leading-edge overhang state. Link results to location, material batch and interpretation version. If treating restrained corners as hinges misses negative corner moment and cracking demand, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "刃口接觸與局部承壓~Cutting-edge contact and local bearing",
+      "title": "刃口接觸與局部承壓~Cutting-edge contact and local bearing",
+      "mechanism": "刃口將前緣阻力傳入箱涵，局部硬塊和偏斜會縮小實際接觸面。平均壓力不能代表刃角峰值，背後混凝土還需承受剪力與劈裂；不均勻切削也可能改變行進方向，應把局部受力和姿態聯合判讀。 判別這個機制時，應觀察比較刃口磨耗、分區推力與前端姿態變化；若出現一側硬塊集中受力使刃口局部損傷並帶偏箱涵，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~The cutting edge transfers face resistance into the box, while hard inclusions and skew reduce active contact area. Mean pressure misses corner peaks and the backing concrete must resist shear and splitting. Uneven cutting can also steer the box, linking local load evidence with attitude monitoring. Use the following check to discriminate the mechanism: Compare edge wear, zonal thrust and leading-end attitude changes. If a hard inclusion concentrates force on one side, damaging the edge and steering the box, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：averageContact=600 kN/2 m2=300 kPa。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: averageContact=600 kN/2 m2=300 kPa. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "比較刃口磨耗、分區推力與前端姿態變化。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「一側硬塊集中受力使刃口局部損傷並帶偏箱涵」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Compare edge wear, zonal thrust and leading-end attitude changes. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: A hard inclusion concentrates force on one side, damaging the edge and steering the box. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "一側硬塊集中受力使刃口局部損傷並帶偏箱涵。相似表徵也可能由量測偏差造成，因此應回到比較刃口磨耗、分區推力與前端姿態變化，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~A hard inclusion concentrates force on one side, damaging the edge and steering the box. Similar symptoms can arise from measurement bias: return to compare edge wear, zonal thrust and leading-end attitude changes to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "刃口總面積夠大就不會產生任何局部壓碎~A sufficiently large total edge area prevents every local crushing mechanism",
+      "practice": "將比較刃口磨耗、分區推力與前端姿態變化列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現一側硬塊集中受力使刃口局部損傷並帶偏箱涵，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Compare edge wear, zonal thrust and leading-end attitude changes. Link results to location, material batch and interpretation version. If a hard inclusion concentrates force on one side, damaging the edge and steering the box, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "推力偏心與箱身應力~Eccentric thrust and box stress",
+      "title": "推力偏心與箱身應力~Eccentric thrust and box stress",
+      "mechanism": "推力中心偏離承壓截面中心會同時引入軸壓與彎曲，局部頂塊接觸也不必均勻。線彈性疊加只適用未開裂及已知截面幾何，不能替代箱涵角部和開孔分析；多缸推力應與實際力臂一起核對。 判別這個機制時，應觀察核對各缸荷重與力臂，對照箱身兩側應變；若出現總推力正常但分配偏心，箱身一側裂縫持續擴大，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Thrust eccentricity combines compression and bending, and thrust-block contact need not be uniform. Linear superposition requires an uncracked section with known properties and cannot replace corner or opening analysis. Reconcile individual jack forces with their actual lever arms rather than summing magnitudes alone. Use the following check to discriminate the mechanism: Check individual jack loads and arms against opposite-side box strains. If normal total thrust conceals eccentric distribution and growing cracks on one side, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：M=3000 kN*0.05 m=150 kNm; sigmaMax=N/A+M/Z=3000/1+150/0.2=3750 kPa (A=1 m2,Z=0.2 m3)。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: M=3000 kN*0.05 m=150 kNm; sigmaMax=N/A+M/Z=3000/1+150/0.2=3750 kPa (A=1 m2,Z=0.2 m3). Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "核對各缸荷重與力臂，對照箱身兩側應變。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「總推力正常但分配偏心，箱身一側裂縫持續擴大」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Check individual jack loads and arms against opposite-side box strains. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Normal total thrust conceals eccentric distribution and growing cracks on one side. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "總推力正常但分配偏心，箱身一側裂縫持續擴大。相似表徵也可能由量測偏差造成，因此應回到核對各缸荷重與力臂，對照箱身兩側應變，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Normal total thrust conceals eccentric distribution and growing cracks on one side. Similar symptoms can arise from measurement bias: return to check individual jack loads and arms against opposite-side box strains to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "只要總推力沒超限就不用關心各千斤頂分配~If total thrust stays below its limit jack-force distribution does not matter",
+      "practice": "將核對各缸荷重與力臂，對照箱身兩側應變列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現總推力正常但分配偏心，箱身一側裂縫持續擴大，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Check individual jack loads and arms against opposite-side box strains. Link results to location, material batch and interpretation version. If normal total thrust conceals eccentric distribution and growing cracks on one side, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "姿態修正與曲線相容~Attitude correction and path compatibility",
+      "title": "姿態修正與曲線相容~Attitude correction and path compatibility",
+      "mechanism": "箱涵姿態由前後位置共同決定，短距偏移不等於沿全長均勻轉角。剛體小角度可識別量級，實際修正受地層、導板與框架變形限制；突然集中修正可能增加側壓和摩阻，不能把幾何誤差直接轉為操作命令。 判別這個機制時，應觀察以共同基準比較前後測點與導板接觸痕跡；若出現單點修正造成尾部擠壓，前端改善但全體摩阻上升，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Front and rear positions jointly determine box attitude, and a local offset is not uniform rotation along the whole length. Small-angle geometry estimates scale, while soil, guides and frame deformation constrain correction. Concentrated correction can increase lateral pressure and friction, so geometric error is not an operating command. Use the following check to discriminate the mechanism: Compare front and rear survey points and guide-contact marks in a common datum. If single-point correction pinches the rear, improving the front while raising overall friction, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：smallAngle=offset/baseline=0.040 m/20 m=0.002 rad。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: smallAngle=offset/baseline=0.040 m/20 m=0.002 rad. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "以共同基準比較前後測點與導板接觸痕跡。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「單點修正造成尾部擠壓，前端改善但全體摩阻上升」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Compare front and rear survey points and guide-contact marks in a common datum. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Single-point correction pinches the rear, improving the front while raising overall friction. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "單點修正造成尾部擠壓，前端改善但全體摩阻上升。相似表徵也可能由量測偏差造成，因此應回到以共同基準比較前後測點與導板接觸痕跡，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Single-point correction pinches the rear, improving the front while raising overall friction. Similar symptoms can arise from measurement bias: return to compare front and rear survey points and guide-contact marks in a common datum to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "前端位置回到線上就代表整個箱涵姿態正確~A leading end back on line proves the entire box attitude is correct",
+      "practice": "將以共同基準比較前後測點與導板接觸痕跡列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現單點修正造成尾部擠壓，前端改善但全體摩阻上升，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Compare front and rear survey points and guide-contact marks in a common datum. Link results to location, material batch and interpretation version. If single-point correction pinches the rear, improving the front while raising overall friction, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "超挖體積與地層損失~Overbreak volume and ground loss",
+      "title": "超挖體積與地層損失~Overbreak volume and ground loss",
+      "mechanism": "箱體周邊超挖、面前流失與潤滑空隙閉合都可能造成地表位移，土量平衡須區分原位和鬆方體積。簡化損失比例不能直接給出某建物沉陷，因為傳播受埋深及地層影響；應連結出土、間隙與地面監測。 判別這個機制時，應觀察將原位換算出土量、周邊間隙及地表沉陷按里程對齊；若出現鬆方出土量未換算就與原位相比，掩蓋實際地層流失，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Overbreak, face loss and closure of lubricated gaps can all move the ground; volume balance must distinguish in-situ and loose spoil. A loss fraction does not directly predict a particular building settlement because depth and geology control propagation. Connect spoil, gap and surface monitoring records. Use the following check to discriminate the mechanism: Align in-situ-equivalent spoil, peripheral gaps and surface settlement by chainage. If comparing loose spoil directly with in-situ volume conceals real ground loss, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：excavatedPrism=40 m2*20 m=800 m3; assumedLoss=0.005*800 m3=4 m3。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: excavatedPrism=40 m2*20 m=800 m3; assumedLoss=0.005*800 m3=4 m3. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "將原位換算出土量、周邊間隙及地表沉陷按里程對齊。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「鬆方出土量未換算就與原位相比，掩蓋實際地層流失」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Align in-situ-equivalent spoil, peripheral gaps and surface settlement by chainage. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Comparing loose spoil directly with in-situ volume conceals real ground loss. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "鬆方出土量未換算就與原位相比，掩蓋實際地層流失。相似表徵也可能由量測偏差造成，因此應回到將原位換算出土量、周邊間隙及地表沉陷按里程對齊，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Comparing loose spoil directly with in-situ volume conceals real ground loss. Similar symptoms can arise from measurement bias: return to align in-situ-equivalent spoil, peripheral gaps and surface settlement by chainage to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "超挖百分比可以直接當作地表最大沉陷百分比~An overbreak percentage directly equals the maximum surface-settlement percentage",
+      "practice": "將將原位換算出土量、周邊間隙及地表沉陷按里程對齊列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現鬆方出土量未換算就與原位相比，掩蓋實際地層流失，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Align in-situ-equivalent spoil, peripheral gaps and surface settlement by chainage. Link results to location, material batch and interpretation version. If comparing loose spoil directly with in-situ volume conceals real ground loss, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "鐵路介面與差異沉陷~Rail interface and differential settlement",
+      "title": "鐵路介面與差異沉陷~Rail interface and differential settlement",
+      "mechanism": "跨越營運線時，軌道幾何關心相鄰點的差異及變化速度，而非只有平均沉陷。兩點沉陷差除距離僅為平均沉陷坡度，仍含整體剛體傾斜；不能直接當作已扣除傾斜的角變形或規範軌道扭曲，也不能取代道床支承和營運標準；監測需分開頂進、回填與恢復交通後的再壓密。 判別這個機制時，應觀察比較兩軌高程、相鄰測點差及恢復交通後趨勢；若出現平均沉陷小但局部差異大，軌道幾何仍不符合營運需求，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~Operating rail interfaces depend on differential movement and rate, not mean settlement alone. Settlement difference over distance is a mean settlement slope that still includes rigid-body tilt. It is not automatically tilt-corrected angular distortion or code-defined track twist and does not replace ballast-support or operating criteria. Distinguish jacking, backfill and post-reopening densification when interpreting monitoring histories. Use the following check to discriminate the mechanism: Compare both rail elevations, neighboring differences and post-reopening trends. If small mean settlement conceals local differentials that compromise required track geometry, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：meanSettlementSlope=8 mm/10000 mm=0.0008 rad; rigid-body tilt has not been removed and this is not track twist。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: meanSettlementSlope=8 mm/10000 mm=0.0008 rad; rigid-body tilt has not been removed and this is not track twist. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "比較兩軌高程、相鄰測點差及恢復交通後趨勢。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「平均沉陷小但局部差異大，軌道幾何仍不符合營運需求」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Compare both rail elevations, neighboring differences and post-reopening trends. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Small mean settlement conceals local differentials that compromise required track geometry. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "平均沉陷小但局部差異大，軌道幾何仍不符合營運需求。相似表徵也可能由量測偏差造成，因此應回到比較兩軌高程、相鄰測點差及恢復交通後趨勢，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Small mean settlement conceals local differentials that compromise required track geometry. Similar symptoms can arise from measurement bias: return to compare both rail elevations, neighboring differences and post-reopening trends to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "平均沉陷足夠小就代表所有鐵路幾何必定合格~Sufficiently small average settlement guarantees all railway geometry is acceptable",
+      "practice": "將比較兩軌高程、相鄰測點差及恢復交通後趨勢列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現平均沉陷小但局部差異大，軌道幾何仍不符合營運需求，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Compare both rail elevations, neighboring differences and post-reopening trends. Link results to location, material batch and interpretation version. If small mean settlement conceals local differentials that compromise required track geometry, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    },
+    {
+      "anchor": "封鎖窗口與恢復證據~Possession windows and restoration evidence",
+      "title": "封鎖窗口與恢復證據~Possession windows and restoration evidence",
+      "mechanism": "施工窗口需容納頂進、檢查、回填和系統恢復，工序之間的相依不能以單一速度估算取代。剩餘時間只顯示排程餘裕，並不是遇到異常可壓縮驗證的理由；放行資料必須能追溯到最後實際構形。 判別這個機制時，應觀察核對相依工序實際時間與恢復後的檢查簽認；若出現為追趕窗口跳過恢復檢查，留下未驗證的軌道或回填狀態，便須重新檢查原先假設的接觸、力或水的傳遞邊界，而不能只調整計算結果。~A possession window includes jacking, inspection, backfill and system restoration, with dependencies beyond a single advance rate. Remaining time indicates schedule reserve and does not justify compressing verification after an anomaly. Release evidence must trace to the final actual configuration rather than the planned one. Use the following check to discriminate the mechanism: Reconcile dependent activities with actual times and post-restoration inspection signoffs. If skipping restoration checks to recover time leaves track or backfill condition unverified, revisit the assumed contact, force or water-transfer boundary rather than merely adjusting the calculated result.",
+      "model": "原創教學假設：timeReserve=720 min-600 min=120 min; reserveFraction=120/720=16.7 percent。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 此結果僅用來核對量綱及模型敏感度，不是專案設計值、實測紀錄或現場允收門檻。~Original teaching assumptions: timeReserve=720 min-600 min=120 min; reserveFraction=120/720=16.7 percent. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. This checks dimensions and model sensitivity; it is neither measured project data nor a design or acceptance value.",
+      "verify": "核對相依工序實際時間與恢復後的檢查簽認。量測須保存位置、時間及基準，讓同條件的重複結果可比較；並特別檢查「為追趕窗口跳過恢復檢查，留下未驗證的軌道或回填狀態」是否能由這組資料區分。儀器校核與誤差估計應先於判讀，由負責技師核定該項試驗的允收和停留點。~Reconcile dependent activities with actual times and post-restoration inspection signoffs. Retain position, time and datums for comparable repeats, specifically distinguishing this scenario: Skipping restoration checks to recover time leaves track or backfill condition unverified. Instrument checks and uncertainty estimates precede interpretation; the responsible engineer sets acceptance and hold points for this test.",
+      "failure": "為追趕窗口跳過恢復檢查，留下未驗證的軌道或回填狀態。相似表徵也可能由量測偏差造成，因此應回到核對相依工序實際時間與恢復後的檢查簽認，以獨立證據判別原因；只修補可見症狀將留下原本的傳力或滲流問題。~Skipping restoration checks to recover time leaves track or backfill condition unverified. Similar symptoms can arise from measurement bias: return to reconcile dependent activities with actual times and post-restoration inspection signoffs to discriminate the cause. Treating visible symptoms alone leaves the original transfer or seepage problem unresolved.",
+      "misconception": "窗口還有剩餘時間就代表工程品質已經獲得保證~Remaining possession time proves construction quality has already been assured",
+      "practice": "將核對相依工序實際時間與恢復後的檢查簽認列為該構件的交接證據，連結到施工位置、材料批次及判讀版本。若發現為追趕窗口跳過恢復檢查，留下未驗證的軌道或回填狀態，先保留原始紀錄並由負責技師確認處置，不能以本課算例替代核定作業計畫。~Apply the following check at handover: Reconcile dependent activities with actual times and post-restoration inspection signoffs. Link results to location, material batch and interpretation version. If skipping restoration checks to recover time leaves track or backfill condition unverified, retain original records and obtain the responsible engineer's disposition; this example does not replace an approved work plan."
+    }
+  ],
+  "example": "整合算例所有輸入均為教學假設。首先檢查箱涵自重與滑移界面：Ac=8 m*5 m-7 m*4 m=12 m2; W=24 kN/m3*12 m2*20 m=5760 kN；再獨立檢查油壓推力與後座反力：idealThrust=p*A=25 MPa*0.12 m2=3.0 MN。假設摩擦係數從 0.15 增至 0.25，自重 5760 kN 對應的底面摩擦由 864 增至 1440 kN；未含側摩阻及切口阻力。 兩個結果不能自動組成完整設計，因為矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 將將原位換算出土量、周邊間隙及地表沉陷按里程對齊作為模型以外的驗證證據，並保留原始紀錄與尚待確認的邊界。~All inputs in this integrated example are teaching assumptions. First check Box weight and sliding interfaces: Ac=8 m*5 m-7 m*4 m=12 m2; W=24 kN/m3*12 m2*20 m=5760 kN. Independently check Hydraulic thrust and reaction-wall force: idealThrust=p*A=25 MPa*0.12 m2=3.0 MN. Increasing assumed friction from 0.15 to 0.25 raises base friction for 5760 kN weight from 864 to 1440 kN, excluding side friction and cutting resistance. The two results are not a complete design because rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. Use align in-situ-equivalent spoil, peripheral gaps and surface settlement by chainage as evidence independent of the calculation, retaining raw records and unverified boundaries.",
+  "history": "本課討論的箱涵頂進的力鏈、地層損失與營運界面，反映地下工程由單一構件強度走向地層、施工時序與維護共同驗證的發展。矩形箱涵需按框架與施工階段分析；簡支條帶、摩擦與體積模型只分離個別機制，不代替完整設計。 1992 年 CEDD 岩洞指南初版、2009 年 FHWA 隧道土木手冊及 2018 年岩洞指南第二版提供公開閱讀脈絡。FHWA 公開章節區分 HDD、頂管與微型隧道，PJA 資料提供管列荷載與公差的閱讀脈絡；城市管線走廊為假想場景，本課不主張取得其專有圖說或現場數據，只重建公開原理。~The focus on box-jacking load paths, ground loss and operating interfaces reflects the development from isolated member strength toward combined ground, sequence and maintenance verification. Rectangular boxes require frame and construction-stage analysis; simple strips, friction and volume models isolate mechanisms rather than constitute a complete design. The 1992 first CEDD cavern guide, 2009 FHWA civil tunnel manual and 2018 second cavern-guide edition provide public context. FHWA distinguishes HDD, pipe jacking and microtunneling; PJA provides reading context for pipe loads and tolerances. The urban utility corridor is a hypothetical setting. This course claims no proprietary drawings or field data and reconstructs public principles.",
+  "facts": [
+    "假想檢核 1：箱涵自重與滑移界面；Ac=8 m*5 m-7 m*4 m=12 m2; W=24 kN/m3*12 m2*20 m=5760 kN~Assumed check 1: Box weight and sliding interfaces; Ac=8 m*5 m-7 m*4 m=12 m2; W=24 kN/m3*12 m2*20 m=5760 kN",
+    "假想檢核 2：油壓推力與後座反力；idealThrust=p*A=25 MPa*0.12 m2=3.0 MN~Assumed check 2: Hydraulic thrust and reaction-wall force; idealThrust=p*A=25 MPa*0.12 m2=3.0 MN",
+    "假想檢核 3：底面摩擦與潤滑變異；baseFriction=mu*W=0.15*5760 kN=864 kN~Assumed check 3: Base friction and lubrication variability; baseFriction=mu*W=0.15*5760 kN=864 kN",
+    "假想檢核 4：頂板框架與施工支承；idealStripMoment=q*L^2/8=50 kN/m*(7 m)^2/8=306.25 kNm for a 1 m strip~Assumed check 4: Roof-frame action and construction support; idealStripMoment=q*L^2/8=50 kN/m*(7 m)^2/8=306.25 kNm for a 1 m strip",
+    "假想檢核 5：刃口接觸與局部承壓；averageContact=600 kN/2 m2=300 kPa~Assumed check 5: Cutting-edge contact and local bearing; averageContact=600 kN/2 m2=300 kPa",
+    "假想檢核 6：推力偏心與箱身應力；M=3000 kN*0.05 m=150 kNm; sigmaMax=N/A+M/Z=3000/1+150/0.2=3750 kPa (A=1 m2,Z=0.2 m3)~Assumed check 6: Eccentric thrust and box stress; M=3000 kN*0.05 m=150 kNm; sigmaMax=N/A+M/Z=3000/1+150/0.2=3750 kPa (A=1 m2,Z=0.2 m3)",
+    "CEDD 岩洞指南第二版出版於 2018 年，並非本課的實測報告~CEDD issued its second cavern guide in 2018; it is not a measurement report for these examples",
+    "FHWA 官方典藏將隧道土木手冊出版日期記為 2009 年~The FHWA official archive dates the civil tunnel manual to 2009"
+  ],
+  "timeline": [
+    {
+      "year": "1992",
+      "event": "CEDD 出版岩洞工程指南第一版，建立公開技術框架~CEDD publishes its first cavern-engineering guide as a public technical framework"
+    },
+    {
+      "year": "2009",
+      "event": "FHWA 隧道土木手冊彙整多類開挖及襯砌工法~The FHWA civil tunnel manual consolidates excavation and lining methods"
+    },
+    {
+      "year": "2021",
+      "event": "Network Rail 公開威靈頓曲線箱涵頂進與導向隧道紀錄~Network Rail publishes its Werrington curved-box jacking and guide-tunnel account"
+    }
+  ],
+  "codes": [
+    "FHWA 道路隧道設計與施工土木技術手冊~FHWA Technical Manual for Design and Construction of Road Tunnels - Civil Elements",
+    "CEDD 岩土指南第四冊：岩洞工程第二版~CEDD Geoguide 4: Guide to Cavern Engineering second edition"
+  ],
+  "landmarks": [
+    "威靈頓鐵路下穿（箱涵與管線界面比較）~Werrington railway underpass (box and pipeline interface comparison)",
+    "一般城市管線走廊（教學場景，非指定工程）~Generic urban utility corridor (teaching scenario, not a named project)"
+  ],
+  "place": {
+    "name": "威靈頓鐵路下穿公開參照點~Werrington railway underpass public reference",
+    "country": "英國~United Kingdom",
+    "lat": 52.62,
+    "lng": -0.286,
+    "query": "Werrington dive under Peterborough Network Rail"
+  },
+  "sources": [
+    {
+      "key": "fhwa-road",
+      "title": "FHWA 道路隧道土木手冊官方典藏",
+      "titleEn": "FHWA road-tunnel civil manual official archive",
+      "publisher": "Federal Highway Administration",
+      "url": "https://rosap.ntl.bts.gov/view/dot/50019",
+      "scope": "官方典藏確認 2009 年、作者及涵蓋工法；本課原創計算不是手冊的專案實測資料。",
+      "scopeEn": "Official archive verifies 2009, authorship and method scope; original course calculations are not measured project data from the manual.",
+      "sourceType": "primary"
+    },
+    {
+      "key": "cedd-g4",
+      "title": "CEDD 岩洞工程指南第二版",
+      "titleEn": "CEDD Guide to Cavern Engineering second edition",
+      "publisher": "Civil Engineering and Development Department",
+      "url": "https://www.cedd.gov.hk/filemanager/eng/content_112/eg4_20180102.pdf",
+      "scope": "2018 年第二版公開岩洞工程指引，涵蓋地質、岩栓、噴凝土、拱架、地下水與豎井；本課只重建原理。",
+      "scopeEn": "The 2018 second edition covers geology, bolts, shotcrete, ribs, groundwater and shafts; the course reconstructs principles only.",
+      "sourceType": "primary"
+    },
+    {
+      "key": "pja",
+      "title": "PJA 頂管與微型隧道出版品",
+      "titleEn": "PJA pipe-jacking and microtunnelling publications",
+      "publisher": "Pipe Jacking Association",
+      "url": "https://www.pipejacking.org/publications",
+      "scope": "協會官方索引涵蓋地調、管節、荷載、公差與良好實務；課程算例非指南專案數據。",
+      "scopeEn": "Association index covers investigation, pipes, loads, tolerances and good practice; course examples are not project data from the guides.",
+      "sourceType": "primary"
+    },
+    {
+      "key": "fhwa-trenchless",
+      "title": "FHWA 非開挖工法與導向",
+      "titleEn": "FHWA trenchless methods and guidance",
+      "publisher": "Federal Highway Administration",
+      "url": "https://www.fhwa.dot.gov/utilities/utilitycuts/man04.cfm?device=c",
+      "scope": "官方章節說明 HDD、頂管與微型隧道及導向干擾；歷史設備範圍不當作現行能力上限。",
+      "scopeEn": "Official chapter covers HDD, pipe jacking, microtunneling and guidance interference; historical equipment ranges are not treated as current capability limits.",
+      "sourceType": "primary"
+    },
+    {
+      "key": "werrington",
+      "title": "Network Rail 威靈頓箱涵頂進紀錄",
+      "titleEn": "Network Rail Werrington box-jacking account",
+      "publisher": "Network Rail",
+      "url": "https://www.networkrail.co.uk/stories/how-did-we-build-a-tunnel-within-a-tunnel-and-why/",
+      "scope": "2021 年業主紀錄確認曲線箱涵、導向隧道及鐵路施工界面；本課尺寸與荷載均另設假想。",
+      "scopeEn": "The 2021 owner account confirms curved-box jacking, guide tunnels and rail interfaces; course dimensions and loads are separately assumed.",
+      "sourceType": "primary"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Civil Engineering and Development Department（公開資料機構）",
+      "nameEn": "Civil Engineering and Development Department",
+      "business": "提供地下工程公開技術指引與系統分類。",
+      "businessEn": "Provides public underground-engineering guidance and system classification.",
+      "url": "https://www.cedd.gov.hk/filemanager/eng/content_112/eg4_20180102.pdf",
+      "investorUrl": "",
+      "security": null,
+      "role": "以其資料研究底面摩擦與潤滑變異與驗證證據，不表示承攬本課假想案例。",
+      "roleEn": "Study Base friction and lubrication variability and verification evidence through its publications; no role in hypothetical projects is implied."
+    },
+    {
+      "name": "Network Rail（公開資料機構）",
+      "nameEn": "Network Rail",
+      "business": "提供地下工程公開技術指引與系統分類。",
+      "businessEn": "Provides public underground-engineering guidance and system classification.",
+      "url": "https://www.networkrail.co.uk/stories/how-did-we-build-a-tunnel-within-a-tunnel-and-why/",
+      "investorUrl": "",
+      "security": null,
+      "role": "以其資料研究底面摩擦與潤滑變異與驗證證據，不表示承攬本課假想案例。",
+      "roleEn": "Study Base friction and lubrication variability and verification evidence through its publications; no role in hypothetical projects is implied."
+    }
+  ],
+  "related": [
+    "b172",
+    "b173"
+  ],
+  "architectureNodes": [
+    [
+      "箱涵自重與滑移界面",
+      "Box weight and sliding interfaces"
+    ],
+    [
+      "底面摩擦與潤滑變異",
+      "Base friction and lubrication variability"
+    ],
+    [
+      "刃口接觸與局部承壓",
+      "Cutting-edge contact and local bearing"
+    ],
+    [
+      "姿態修正與曲線相容",
+      "Attitude correction and path compatibility"
+    ],
+    [
+      "封鎖窗口與恢復證據",
+      "Possession windows and restoration evidence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      0,
+      3
+    ]
+  ]
+}

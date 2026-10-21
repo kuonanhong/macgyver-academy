@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d059-791575bcc1a670ee.json"]={sha256:"791575bcc1a670ee852cbe3815a0eaf47a9736e8da3c980704429cd2d9c4a43a",value:{"id":"d059","title":"太陽能模組封裝與耐候測試","titleEn":"Photovoltaic Module Encapsulation and Weathering Tests","category":"energy","kind":"craft","summary":"「太陽能模組封裝與耐候測試」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Photovoltaic Module Encapsulation and Weathering Tests: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d463-7519db79c29eda57.json"]={sha256:"7519db79c29eda57fe37a5003f7a1a7cd7a88ef75de9c90a8bd33ef696ef36b4",value:{"id":"d463","title":"平方公里陣列SKA","titleEn":"Square Kilometre Array SKA","category":"megascience","kind":"project","summary":"「平方公里陣列SKA」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Square Kilometre Array SKA: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

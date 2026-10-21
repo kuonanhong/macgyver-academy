@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c316-f48df14d94ede3b4.json"]={sha256:"f48df14d94ede3b4172245118833ddfcd52416c6fe7c9b54f5697552478fd63a",value:{"title":"Suomi NPP 氣象環境衛星","titleEn":"Suomi NPP weather and environment satellite","category":"space","kind":"project","summary":"課程規劃主題：感測器交叉校準與連續觀測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: sensor cross-calibration and continuous observation. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c316"}};

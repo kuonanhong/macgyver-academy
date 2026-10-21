@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d208-3e0e9f9b4bb03c5b.json"]={sha256:"3e0e9f9b4bb03c5b1cd5f381fcbb7c6a0be738a3b50bf0bd0a597bde1a02bdca",value:{"id":"d208","title":"達文西機械手臂平台工程","titleEn":"Da Vinci Robotic Platform Engineering","category":"biomedical","kind":"project","summary":"「達文西機械手臂平台工程」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Da Vinci Robotic Platform Engineering: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

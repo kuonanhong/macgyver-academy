@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d441-f92dbfa3c72e354d.json"]={sha256:"f92dbfa3c72e354dd9d433017e589d8c78b4be9523439099fbedad138c3cd655",value:{"id":"d441","title":"SESAME中東同步輻射光源","titleEn":"SESAME Synchrotron Light Source","category":"megascience","kind":"project","summary":"「SESAME中東同步輻射光源」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for SESAME Synchrotron Light Source: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

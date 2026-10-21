@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d350-1730fb6153d9d1a3.json"]={sha256:"1730fb6153d9d1a3f42d676e8d9f7bafbe85b3480d0ebc08bfe48c4cd8ad005a",value:{"id":"d350","title":"食品脈衝電場設備概念","titleEn":"Pulsed Electric Field Food Equipment Concepts","category":"process","kind":"craft","summary":"「食品脈衝電場設備概念」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Pulsed Electric Field Food Equipment Concepts: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

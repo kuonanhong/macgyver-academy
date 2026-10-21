@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d169-3a2d8dc39d93a283.json"]={sha256:"3a2d8dc39d93a2836bdaed9c67bd9230658bcc8e6a6a1561378cedc0ebd1e3f2",value:{"id":"d169","title":"智慧變色玻璃多層結構","titleEn":"Smart Electrochromic Glass Multilayer Structures","category":"materials","kind":"craft","summary":"「智慧變色玻璃多層結構」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Smart Electrochromic Glass Multilayer Structures: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

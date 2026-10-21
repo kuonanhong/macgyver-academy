@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d114-e2b0b90a0d31c2d9.json"]={sha256:"e2b0b90a0d31c2d9030ff1a7b3750d67aad02afb17d28f9fd221f8f83aa8e7fb",value:{"id":"d114","title":"連續鑄鋼結晶器控制","titleEn":"Continuous Steel Casting Mold Control","category":"materials","kind":"craft","summary":"「連續鑄鋼結晶器控制」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Continuous Steel Casting Mold Control: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d119-d08a1afcad13ec10.json"]={sha256:"d08a1afcad13ec10c195f115cec9a967e5923cc6db4202a926164707193084ae",value:{"id":"d119","title":"真空感應熔煉系統","titleEn":"Vacuum Induction Melting Systems","category":"materials","kind":"craft","summary":"「真空感應熔煉系統」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Vacuum Induction Melting Systems: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c249-b71ce57eabfafece.json"]={sha256:"b71ce57eabfafece8ba6b7d25b0da29d94e8f9dc3eb6ffa92bc387242ccb0418",value:{"title":"GE Evolution 柴電機車","titleEn":"GE Evolution diesel-electric locomotive","category":"automotive","kind":"project","summary":"課程規劃主題：柴油發電與牽引馬達。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: diesel generation and traction motors. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c249"}};

@@ -1,6 +1,7 @@
 // Execute the real initAccount function with deferred HTTP/service responses.
 // Focused account-transition regression test; no full curriculum render loop.
 import assert from 'node:assert/strict';
+import {resetProtectedContent,refreshAccess} from '../public/academy/paywall.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -30,7 +31,7 @@ function harness({curriculum, evidence} = {}) {
   let session = 'A', curriculumCalls = 0, evidenceCalls = 0, mapDisposals = 0;
   const storage = new Map(), main = {innerHTML:'A previously rendered private lesson'}, status = {textContent:''};
   const context = {
-    Map, Set, JSON, accountGeneration:0, user:null, authMode:'local',
+    Map, Set, JSON, resetProtectedContent,refreshAccess,stepCache:new WeakMap(),window:{},translationAvailable:false,accountGeneration:0, user:null, authMode:'local',
     aiAvailable:false, aiRoutes:[], serverVersions:{}, projects:{}, saveState:'',
     activeId:'semiconductor', featured:[], catalog:[course('initial')], sourceIndex:null,
     currentPage:'workshop', isZh:() => false,
@@ -87,6 +88,17 @@ function harness({curriculum, evidence} = {}) {
     get evidenceCalls() {return evidenceCalls;},
     get mapDisposals() {return mapDisposals;}
   };
+}
+
+// Public home/catalog remains visible during slow background account verification.
+for(const page of ['home','catalog']){
+  const delayed=deferred(),app=harness({curriculum:()=>delayed.promise});
+  app.context.currentPage=page;app.main.innerHTML='PUBLIC CATALOGUE READY';
+  const pending=app.login('A');await until(()=>app.curriculumCalls===1);
+  assert.equal(app.main.innerHTML,'PUBLIC CATALOGUE READY','background account checks must not hide '+page);
+  assert.equal(app.context.currentPage,page);
+  delayed.resolve([course('A')]);await pending;
+  assert.equal(app.main.innerHTML,'PUBLIC CATALOGUE READY');
 }
 
 // A failed verification request from A cannot clear B's verified completion.
@@ -193,4 +205,4 @@ function harness({curriculum, evidence} = {}) {
   assert.equal(app.context.projects.semiconductor.notes, 'A notes');
 }
 
-console.log('PASS 6 account-transition checks: stale verification/curriculum responses, fail-closed account change/logout, synchronous learning-map disposal and inert old callbacks, retry recovery, and current-owner verification failure; exact initAccount/helper in Node VM, no real network.');
+console.log('PASS 8 account-transition checks: public homepage/catalogue stays visible during delayed account verification, stale verification/curriculum responses, fail-closed account change/logout, synchronous learning-map disposal and inert old callbacks, retry recovery, and current-owner verification failure; exact initAccount/helper in Node VM, no real network.');

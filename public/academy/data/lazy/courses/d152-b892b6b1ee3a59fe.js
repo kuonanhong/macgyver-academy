@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d152-b892b6b1ee3a59fe.json"]={sha256:"b892b6b1ee3a59fe87f5509b6555562af25598ab87420e99c0217ba2e3ba0eeb",value:{"id":"d152","title":"氮化矽結構陶瓷工程","titleEn":"Silicon Nitride Structural Ceramic Engineering","category":"materials","kind":"craft","summary":"「氮化矽結構陶瓷工程」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Silicon Nitride Structural Ceramic Engineering: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d054-ba5e99de52802804.json"]={sha256:"ba5e99de5280280493468468983e8d3915130fe9f0af4e6ce622dadd5a9e9854",value:{"id":"d054","title":"水力發電調速器與水錘模擬","titleEn":"Hydropower Governors and Water Hammer Modeling","category":"energy","kind":"craft","summary":"「水力發電調速器與水錘模擬」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hydropower Governors and Water Hammer Modeling: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d450-11eb50b3b4f6d7e8.json"]={sha256:"11eb50b3b4f6d7e87f371fed1561d5097d7b8907da4076911e68cf534ecef797",value:{"id":"d450","title":"勞厄朗之萬研究所中子儀器","titleEn":"Institut Laue-Langevin Neutron Instruments","category":"megascience","kind":"project","summary":"「勞厄朗之萬研究所中子儀器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Institut Laue-Langevin Neutron Instruments: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

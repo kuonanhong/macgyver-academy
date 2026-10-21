@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d087-90548203734db6e9.json"]={sha256:"90548203734db6e9987d27a77cd576db2bad872be52af7e0fa32236a4d92e226",value:{"id":"d087","title":"磷酸鐵鋰儲能電站系統整合","titleEn":"Lithium Iron Phosphate Storage Plant Integration","category":"energy","kind":"craft","summary":"「磷酸鐵鋰儲能電站系統整合」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Lithium Iron Phosphate Storage Plant Integration: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

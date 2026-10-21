@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d404-efc2e66c141ecc02.json"]={sha256:"efc2e66c141ecc02a00d16567b73e0f5cebecfadde55335c5b5b1f5d5ce935dc",value:{"id":"d404","title":"CMS粒子偵測器","titleEn":"CMS Particle Detector","category":"megascience","kind":"project","summary":"「CMS粒子偵測器」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for CMS Particle Detector: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d347-e6dc2b00b6f188cf.json"]={sha256:"e6dc2b00b6f188cf54adc1f09afaadae487bdc04e079a4030f8f7fa3d453f61d",value:{"id":"d347","title":"瓶裝飲料容器檢測","titleEn":"Bottled Beverage Container Inspection","category":"process","kind":"craft","summary":"「瓶裝飲料容器檢測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Bottled Beverage Container Inspection: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

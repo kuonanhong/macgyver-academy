@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d394-910dd61ff56f0f6f.json"]={sha256:"910dd61ff56f0f6ff0b6a01679124fc836991d1d05d2cf64d9badd7c7a0b5f09",value:{"id":"d394","title":"袋式集塵與壓差診斷","titleEn":"Baghouse Filtration and Pressure Drop Diagnostics","category":"process","kind":"craft","summary":"「袋式集塵與壓差診斷」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Baghouse Filtration and Pressure Drop Diagnostics: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

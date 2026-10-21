@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d289-dce9fcd5235a9d3b.json"]={sha256:"dce9fcd5235a9d3bf4fc65030ef3464a82382201bc0323f317ccde9df20d8130",value:{"id":"d289","title":"生物樣品低溫保存監測","titleEn":"Biological Sample Cryostorage Monitoring","category":"biomedical","kind":"craft","summary":"「生物樣品低溫保存監測」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Biological Sample Cryostorage Monitoring: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,12 +1,29 @@
+# 馬蓋先工程學院 V14
+
+V14 新增「隧道與地下工程」100 門深入逐步課程，每門 10 個技術單元、40 個新增步驟，合計新增 4,000 步；雪山、英法與哥達三門原課的既有步驟保留。每單元包含機制、定量算例、驗證與失效診斷，附中英教材、工程檔案、官方來源、地圖與原創示意圖。
+
+首頁先呈現入口，課文、來源及相關資料依路由延後載入。13 個透明互動模型與 6 個 Python 合成資料實驗可離線使用。79 種語言選項依瀏覽器偏好自動選擇；完整原創教材為繁中／英文，其餘全文須由已配置翻譯服務、已載入本機模型或瀏覽器翻譯器完成，介面會顯示完成範圍。
+
+- 啟動：`bash run-local.sh`（Windows 也可用 `run-local.bat`）。
+- 重建地下教材：`bash rebuild-underground.sh`，需 Python 3.10+ 與 Node.js 22.13+。
+- 檢查差異：`bash upload-all.sh --dry-run --skip-models`。
+- 網站與自有權重同步：見 [docs/UPLOAD_AI_V14_ZH.md](docs/UPLOAD_AI_V14_ZH.md)。預設保留遠端未受同步工具管理的檔案；不使用 force push。
+- AI：OpenAI 相容、Claude、Gemini、Ollama 或明確載入的瀏覽器本機模型；金鑰與大型權重不包含在交付包。
+- 可重建的教材原稿：`tools/underground-v14/inputs/`；完整統計：`public/academy/data/release.json`；檢核：`tools/validate-underground-v14.py`。
+
+本包保留既有應用程式、HTML、離線資產、套件鎖檔與啟動／上傳工具。下方為先前版本功能紀錄；遇有語言、同步或模型行為差異，以 V14 文件為準。實際付費 API、外部 GitHub 推送與手機實機效能需在你的部署環境配置與確認。
+
+---
+
 # 馬蓋先 · MacGyver Engineering Academy
 
 以總工程師的視角，把複雜工程拆為「專案 → 階段 → 工序 → 知識點」。學徒在左側操作，師傅在右側示範；看示範、閱讀原理、操作教具、完成驗收，依學員與專案保存進度。
 
 **V13（2026-10-15）：** 新增「橋樑與建築」100 門逐步課程：96 門新課各 **5 階段 × 8 步 = 40 步**，淡江大橋、明石海峽大橋、舊金山金門大橋、台北 101 四門延伸 40 步且舊步驟 ID 不變。每門附工程檔案（關鍵數據、年代時間軸、規範與標準、代表工程比較）、原創結構架構圖、地圖與歷史、相關公司與股價。全站 2,066 選題中 **710 門逐步課程、20,274 步、45,440 個知識點**、2,028 個公開來源、693 家公司（394 家上市）。收費：每門課只開放**第一節免費**（沒有整門免費的課程），通行證 30 天 NT$299／365 天 NT$2,490，**依觀看者語系推定幣別、乘以最新匯率（12 小時快取）並進位到當地慣用價位**（參考華佗學院做法），伺服器重新計價後才收款。模型：`bash macgyver.sh models` 與華佗學院共用私人倉庫 PRIVATE-MODELS，只傳新分片。一鍵：`bash upload-all.sh`。介面 77 種語言字典已含 V13 新字串。詳見 `docs/UPGRADE_V13_ZH.md`。
 
-**一鍵上傳：** `bash upload-all.sh`（網站＋模型，只傳差異並刪除雲端多餘檔案）；分開執行：`bash macgyver.sh`（網站）、`bash macgyver.sh models`（模型）；先比對：`bash macgyver.sh compare`、`bash macgyver.sh models-compare`。見 `docs/UPLOAD_SYNC_V12_ZH.md`、`docs/AI_MODELS_V12_ZH.md`、`docs/PAYMENTS_V12_ZH.md`（檔名保留，內容已更新到 V13）。
+**一鍵上傳：** `bash upload-all.sh`（網站＋模型，差異同步；V14預設保留未知遠端檔案）；分開執行：`bash macgyver.sh`（網站）、`bash macgyver.sh models`（模型）；先比對：`bash macgyver.sh compare`、`bash macgyver.sh models-compare`。見 `docs/UPLOAD_SYNC_V12_ZH.md`、`docs/AI_MODELS_V12_ZH.md`、`docs/PAYMENTS_V12_ZH.md`（檔名保留，內容已更新到 V13）。
 
-先開 `public/academy/help.html` 看入口與設定。橋樑與建築課程索引為 `public/academy/data/bridges-buildings-100.csv`；修改課程原稿 `tools/structures-v13/inputs/` 後執行 `bash rebuild-structures.sh`。實際統計見 `public/academy/data/release.json`。**此完整 ZIP 是給擁有者的原始碼／離線教材包（含 `owner-private/` 收款設定筆記，不會上傳到 GitHub），請勿公開散布。**
+先開 `public/academy/help.html` 看入口與設定。橋樑與建築課程索引為 `public/academy/data/bridges-buildings-100.csv`；修改課程原稿 `tools/structures-v13/inputs/` 後執行 `bash rebuild-structures.sh`。實際統計見 `public/academy/data/release.json`。原始 V13 的私人收款設定筆記不納入 V14 可攜原始碼交付包。
 
 <details><summary>V12 摘要</summary>
 
@@ -124,7 +141,7 @@ bash run-ai-llamacpp.sh
 - 本機文字＋視覺：先啟動 Ollama，再 `bash run-ai-local.sh --both --download`；之後只需 `bash run-ai-local.sh --both`。Qwen3-VL 2B 官方標示約 1.9 GB，CPU 速度依裝置而異。
 - Gemini：在後端環境或私人 `.env` 設定 `GEMINI_API_KEY`，再執行 `bash run-ai-gemini.sh`。預設 `gemini-3.5-flash-lite`；可用 `GEMINI_MODEL` 指定官方仍提供的其他型號。每次送出需明確同意提供問題、課程脈絡、近期對話及圖片。
 - Sites 代管後端同樣附 Gemini 介接；尚未提供金鑰的服務會保持不可用。GitHub Pages 不會執行 Python，不能把秘密金鑰放到 `config.js`。
-- 模型、配額與價格由供應者決定；本次未使用私人金鑰或下載大型權重做正式推論。完整四路線操作見 `docs/AI_ROUTES_V81_ZH.md`。
+- 模型、配額與價格由供應者決定；本次未使用私人金鑰或下載大型權重做正式推論。V14 路線與設定見 `docs/UPLOAD_AI_V14_ZH.md`；早期四路線紀錄見 `docs/AI_ROUTES_V81_ZH.md`。
 
 ## 加入自己的教材供 AI 查詢
 
@@ -139,9 +156,9 @@ PDF 需可選 pypdf，掃描 PDF 需先 OCR；文字、Markdown、CSV、JSON、P
 
 索引保存在 `portable/data/knowledge.json`，是該伺服器共用的管理者教材，不是每位學員的私人上傳區。V10 受保護付費模式中，私有文件檢索只提供有效付費會員；免費會員仍可詢問其提供的免費課程脈絡。帳號資料庫在 `portable/data/macgyver.sqlite3`，應另行備份，皆不提交公開 Git。
 
-## 整包 GitHub 推送與更新（V13）
+## 整包 GitHub 推送與更新（V14）
 
-**一鍵：** 在解壓後的資料夾執行 `bash upload-all.sh`。它會先比對本機套件與網站倉庫 `kuonanhong/macgyver-academy`，只上傳新增與修改的檔案並刪除雲端多餘的舊檔；再準備 AI 權重（Qwen3-0.6B 可直接從華佗學院四份 ZIP 匯入），比對私人倉庫 `kuonanhong/PRIVATE-MODELS`，只上傳雲端還沒有的 40 MiB 分片（只動 `projects/macgyver/`，不碰華佗學院的檔案）。
+**一鍵：** 在解壓後的資料夾執行 `bash upload-all.sh`。它會先比對本機套件與網站倉庫 `kuonanhong/macgyver-academy`，只上傳新增與修改的檔案，移除工具先前管理且本機已刪除的檔案；遠端其他檔案預設保留；再準備 AI 權重（Qwen3-0.6B 可直接從華佗學院四份 ZIP 匯入），比對私人倉庫 `kuonanhong/PRIVATE-MODELS`，只上傳雲端還沒有的 40 MiB 分片（只動 `projects/macgyver/`，不碰華佗學院的檔案）。
 
 ```bash
 bash macgyver.sh doctor            # 第一次：檢查 git、Python、SSH、兩個倉庫與本機模型
@@ -184,17 +201,17 @@ GitHub **Settings → Pages → GitHub Actions**，再手動執行 **Publish sta
 | `tools/markets-v12/` / `.github/workflows/weekly-markets.yml` | 公司名單合併、每週股價匯率更新 |
 | `tools/sync-v12/sync_github.py` | 以 Git blob 指紋比對雲端並只上傳差異 |
 | `tools/model-proxy/` | 可選：私人模型倉庫的 Cloudflare Worker 代理 |
-| `owner-private/` | 站長私人筆記（收款帳戶），永不上傳 |
 | `portable/commerce.py` / `commerce_admin.py` | 可另部署的受保護金流、權限與證書 |
 | `run-commerce.sh` / `examples/commerce-*` | 付費後端啟動與設定範本，預設不收款 |
 | `tools/model-manifest.json` | 官方模型版本、檔名、大小、雜湊及授權 |
 | `portable/server.py` | Python／SQLite／伺服器 AI 可選後端 |
 | `app/api/`、`db/`、`drizzle/` | 原 Sites 代管後端 |
-| `build-offline.sh` / `rebuild-structures.sh` | 重建離線程式；重建橋樑與建築 100 門（V13） |
+| `build-offline.sh` / `rebuild-underground.sh` | 重建延後載入與離線程式；重建地下工程 100 門（V14） |
+| `rebuild-structures.sh` | 重建 V13 橋樑與建築（修改舊版內容後須明確更新版本保留基線） |
 | `rebuild-curriculum.sh` | 舊版各代課程重播（V12 原包起已無法完整跑完，僅供參考） |
 | `install-ai-models.sh` / `run-ai-llamacpp.sh` | 原生 CPU 權重下載與啟動 |
 | `run-ai-local.sh` / `.ps1` | Ollama 下載與本機網站啟動 |
-| `upload-all.sh` / `macgyver.sh` | V13 一鍵：網站與模型都只上傳差異、刪除多餘檔案；比對、每週股價、排程 |
+| `upload-all.sh` / `macgyver.sh` | V14 差異與分批同步，預設保留未知遠端檔案；比對、每週股價、排程 |
 | `tools/sync-v13/models_sync.py` | 私人模型倉庫比對、只傳新分片、還原、從華佗 ZIP 匯入 |
 | `tools/structures-v13/` / `tools/integrate-structures-v13.py` | 橋樑與建築 100 門原稿、驗證、產生與整合 |
 | `publish-github.sh` | 隔離 GitHub 匯出（由上傳工具內部使用） |

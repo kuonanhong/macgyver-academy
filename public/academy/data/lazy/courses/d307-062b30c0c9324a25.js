@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d307-062b30c0c9324a25.json"]={sha256:"062b30c0c9324a253486858aad6f8b4571360409bfb34d344a38f650f6734817",value:{"id":"d307","title":"阿什凱隆海水淡化廠","titleEn":"Ashkelon Desalination Plant","category":"process","kind":"project","summary":"「阿什凱隆海水淡化廠」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Ashkelon Desalination Plant: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

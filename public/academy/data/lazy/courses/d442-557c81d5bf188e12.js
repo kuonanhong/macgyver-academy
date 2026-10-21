@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d442-557c81d5bf188e12.json"]={sha256:"557c81d5bf188e1233ffeaa38af7e711414341e6e55c703526a0d0eb77c2e90b",value:{"id":"d442","title":"巴西Sirius同步輻射光源","titleEn":"Sirius Synchrotron Light Source","category":"megascience","kind":"project","summary":"「巴西Sirius同步輻射光源」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Sirius Synchrotron Light Source: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

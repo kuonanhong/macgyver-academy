@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d265-e9596873851bbd9e.json"]={sha256:"e9596873851bbd9ec975e8fc8fef2041e6671d0b43388aa90e9f0cbea7f16300",value:{"id":"d265","title":"人工耳蝸電極封裝概念","titleEn":"Cochlear Implant Electrode Packaging Concepts","category":"biomedical","kind":"craft","summary":"「人工耳蝸電極封裝概念」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cochlear Implant Electrode Packaging Concepts: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

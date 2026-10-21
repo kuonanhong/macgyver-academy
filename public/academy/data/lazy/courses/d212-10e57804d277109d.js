@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d212-10e57804d277109d.json"]={sha256:"10e57804d277109dea6a2626589c41bdef7fca4fe1083c9005c356aa52208342",value:{"id":"d212","title":"磁振造影梯度線圈散熱","titleEn":"MRI Gradient Coil Cooling","category":"biomedical","kind":"craft","summary":"「磁振造影梯度線圈散熱」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for MRI Gradient Coil Cooling: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d095-2a75902fdcd83e99.json"]={sha256:"2a75902fdcd83e99b4d7d5c19871b903c3945de6833b4818a7dd8a0bb28577e4",value:{"id":"d095","title":"地下含水層季節儲熱","titleEn":"Aquifer Seasonal Thermal Energy Storage","category":"energy","kind":"craft","summary":"「地下含水層季節儲熱」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aquifer Seasonal Thermal Energy Storage: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

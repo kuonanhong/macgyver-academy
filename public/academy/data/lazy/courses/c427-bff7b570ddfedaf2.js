@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c427-bff7b570ddfedaf2.json"]={sha256:"bff7b570ddfedaf23e4d0c473a34bb5dfaa3cf86d21564d4964ffc8f6b117850",value:{"title":"HP Multi Jet Fusion 製造平台","titleEn":"HP Multi Jet Fusion manufacturing platform","category":"manufacturing","kind":"project","summary":"課程規劃主題：粉末成形與批次後處理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: powder processing and batch finishing. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c427"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c224-656d399e51fc2d5b.json"]={sha256:"656d399e51fc2d5b1982a6b58a2f0207f06fc3e6db804ba937fce49d6adee7c8",value:{"title":"Rivian R1T 電動皮卡","titleEn":"Rivian R1T electric pickup","category":"automotive","kind":"project","summary":"課程規劃主題：底盤保護與多馬達概念。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: underbody protection and multi-motor concepts. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c224"}};

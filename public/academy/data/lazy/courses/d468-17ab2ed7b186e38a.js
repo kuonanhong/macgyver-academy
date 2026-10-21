@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d468-17ab2ed7b186e38a.json"]={sha256:"17ab2ed7b186e38a71f88ec9bd41695281eeb9b1e35b8064402ac946b6d19ed9",value:{"id":"d468","title":"格林班克電波望遠鏡","titleEn":"Green Bank Telescope","category":"megascience","kind":"project","summary":"「格林班克電波望遠鏡」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Green Bank Telescope: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

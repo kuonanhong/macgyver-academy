@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d194-b4ca9dd6ca6adc29.json"]={sha256:"b4ca9dd6ca6adc2999e2b882e8b2ac7e754ee86b8549c436dc78f12bba0cc9fb",value:{"id":"d194","title":"高導熱石墨片製造品質","titleEn":"High Conductivity Graphite Sheet Manufacturing Quality","category":"materials","kind":"craft","summary":"「高導熱石墨片製造品質」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Conductivity Graphite Sheet Manufacturing Quality: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d224-1b82f439b29d36ce.json"]={sha256:"1b82f439b29d36ce2714b1fb9f877931ee9345a615f49ebde7422bc6edddeedc",value:{"id":"d224","title":"數位平板X光偵測器","titleEn":"Digital Flat Panel X-Ray Detectors","category":"biomedical","kind":"craft","summary":"「數位平板X光偵測器」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Digital Flat Panel X-Ray Detectors: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d399-88d9a1c2da6b70ed.json"]={sha256:"88d9a1c2da6b70ed340e963c0dfccefa309bb9ef7d3cec43fc92d416f59839fd",value:{"id":"d399","title":"水泥窯製程量測與熱平衡","titleEn":"Cement Kiln Process Measurement and Heat Balance","category":"process","kind":"craft","summary":"「水泥窯製程量測與熱平衡」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cement Kiln Process Measurement and Heat Balance: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

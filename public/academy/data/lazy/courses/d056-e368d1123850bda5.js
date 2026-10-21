@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d056-e368d1123850bda5.json"]={sha256:"e368d1123850bda5d3f379e30c7f6a00a839e819129b5888baeb68196aaeadbc",value:{"id":"d056","title":"可逆抽蓄機組模式切換","titleEn":"Reversible Pump Turbine Mode Switching","category":"energy","kind":"craft","summary":"「可逆抽蓄機組模式切換」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Reversible Pump Turbine Mode Switching: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

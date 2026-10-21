@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d339-81a46e13f4c1c067.json"]={sha256:"81a46e13f4c1c067c391e99f41474be09b3ab8eef783e546f9513dab2afa5f8b",value:{"id":"d339","title":"食用油壓榨與品質感測","titleEn":"Edible Oil Pressing and Quality Sensing","category":"process","kind":"craft","summary":"「食用油壓榨與品質感測」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Edible Oil Pressing and Quality Sensing: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c024-1aca2c0fa88d14d9.json"]={sha256:"1aca2c0fa88d14d9df0dd060c5334b22e4fe4da5a6c15ad64fb8e748b13c3db9",value:{"title":"Canadair CL-415 消防水陸飛機","titleEn":"Canadair CL-415 firefighting amphibian","category":"aerospace","kind":"project","summary":"課程規劃主題：水上運作與載重管理。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: water operations and payload management. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c024"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d233-089740d0d19d235b.json"]={sha256:"089740d0d19d235bee5be217fbdb3c93fa6003abf1fa5d8d3a97707286ac1338",value:{"id":"d233","title":"膠囊內視鏡電源與傳輸","titleEn":"Capsule Endoscope Power and Telemetry","category":"biomedical","kind":"craft","summary":"「膠囊內視鏡電源與傳輸」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Capsule Endoscope Power and Telemetry: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

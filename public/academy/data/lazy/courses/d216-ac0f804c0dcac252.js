@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d216-ac0f804c0dcac252.json"]={sha256:"ac0f804c0dcac252e50753ee9535dc3cc7d8ebbbc48e79601f2df7f80bcee4ca",value:{"id":"d216","title":"磁振影像重建計算管線","titleEn":"Magnetic Resonance Reconstruction Pipelines","category":"biomedical","kind":"craft","summary":"「磁振影像重建計算管線」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Magnetic Resonance Reconstruction Pipelines: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

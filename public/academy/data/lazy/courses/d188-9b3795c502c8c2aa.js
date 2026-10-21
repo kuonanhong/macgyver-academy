@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d188-9b3795c502c8c2aa.json"]={sha256:"9b3795c502c8c2aaf8ffd9e1941183828bfec68318cf288ce31e6d0585a1b9e3",value:{"id":"d188","title":"高熵合金組織設計","titleEn":"High Entropy Alloy Microstructure Design","category":"materials","kind":"craft","summary":"「高熵合金組織設計」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for High Entropy Alloy Microstructure Design: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

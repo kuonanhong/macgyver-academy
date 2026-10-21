@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c295-2a44f953b07da663.json"]={sha256:"2a44f953b07da663713eac11f46301676a613830c66a980be4dc14705644a2c7",value:{"title":"捷運車門與月臺門協同","titleEn":"Metro train and platform-door coordination","category":"automotive","kind":"craft","summary":"課程規劃主題：關門驗證與乘客安全。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: closure verification and passenger safety. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c295"}};

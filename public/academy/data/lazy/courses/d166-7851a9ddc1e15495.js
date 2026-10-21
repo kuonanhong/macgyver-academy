@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d166-7851a9ddc1e15495.json"]={sha256:"7851a9ddc1e15495cf7d4a173914bfb07ab279f59e99d7102246b2fb14d593d0",value:{"id":"d166","title":"光纖預製棒品質量測","titleEn":"Optical Fiber Preform Quality Metrology","category":"materials","kind":"craft","summary":"「光纖預製棒品質量測」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Optical Fiber Preform Quality Metrology: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

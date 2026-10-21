@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d434-6003fb36a2ed5d80.json"]={sha256:"6003fb36a2ed5d8005e5e4a2732b7229e9cce967603778b7efa67e7dc58ac77e",value:{"id":"d434","title":"ALBA西班牙同步輻射設施","titleEn":"ALBA Spanish Synchrotron Facility","category":"megascience","kind":"project","summary":"「ALBA西班牙同步輻射設施」教學路線圖：加速器、光學束線、站控整合與光源量測。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for ALBA Spanish Synchrotron Facility: accelerators, optical beamlines, station control integration, and source metrology. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

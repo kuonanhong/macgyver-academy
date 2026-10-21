@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c011-0860b37aff4e4662.json"]={sha256:"0860b37aff4e4662fd236d4460bf9a281e30aeb5630ee5ff4ff638ea99e115c1",value:{"title":"Lockheed Constellation 客機工程史","titleEn":"Lockheed Constellation airliner engineering history","category":"aerospace","kind":"project","summary":"課程規劃主題：活塞動力與增壓客艙。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: piston power and pressurized cabins. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c011"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d138-6618913724cf40be.json"]={sha256:"6618913724cf40be6e1cf939aa8f02792095cc87a498895921679447b60b46aa",value:{"id":"d138","title":"增材製造殘留應力測量","titleEn":"Additive Manufacturing Residual Stress Measurement","category":"materials","kind":"craft","summary":"「增材製造殘留應力測量」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Additive Manufacturing Residual Stress Measurement: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

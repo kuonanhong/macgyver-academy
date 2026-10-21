@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d426-cae11d21bc083765.json"]={sha256:"cae11d21bc08376599c2780e72430be5b2dfd3062ba82938a4c6d8d4ae02de2c",value:{"id":"d426","title":"LIGO重力波干涉儀","titleEn":"LIGO Gravitational Wave Interferometers","category":"megascience","kind":"project","summary":"「LIGO重力波干涉儀」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for LIGO Gravitational Wave Interferometers: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c239-e13ec96338b0b1de.json"]={sha256:"e13ec96338b0b1dec7f281593debae9935fd5117527f8883249805daf3fb6bd9",value:{"title":"ICE 3 分散動力高速列車","titleEn":"ICE 3 distributed-power high-speed train","category":"automotive","kind":"project","summary":"課程規劃主題：牽引分配與車下設備。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: traction distribution and underfloor equipment. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c239"}};

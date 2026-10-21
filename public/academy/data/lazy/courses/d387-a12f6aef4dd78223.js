@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d387-a12f6aef4dd78223.json"]={sha256:"a12f6aef4dd78223b02841d6d35a1720d901780a4db74fdc02a9eea99a30a1c9",value:{"id":"d387","title":"冷卻水塔填料與漂水控制","titleEn":"Cooling Tower Fill and Drift Control","category":"process","kind":"craft","summary":"「冷卻水塔填料與漂水控制」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Cooling Tower Fill and Drift Control: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

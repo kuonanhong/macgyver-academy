@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d055-86a13adb6e57155d.json"]={sha256:"86a13adb6e57155d55dc4ab5fbd7ac20d05789524d0e8ca2fd879da625ea9f70",value:{"id":"d055","title":"水輪發電機定子製造","titleEn":"Hydrogenerator Stator Manufacturing","category":"energy","kind":"craft","summary":"「水輪發電機定子製造」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hydrogenerator Stator Manufacturing: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c131-e3b33f902fa14272.json"]={sha256:"e3b33f902fa142724ceee8e7d9709c23785e0d1e97c0fe70d9d03d006c28d298",value:{"title":"CMA CGM Jacques Saade 貨櫃船","titleEn":"CMA CGM Jacques Saade container ship","category":"marine","kind":"project","summary":"課程規劃主題：替代燃料與貨櫃船整合。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: alternative fuels and container-ship integration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c131"}};

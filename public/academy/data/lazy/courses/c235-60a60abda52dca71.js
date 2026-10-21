@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c235-60a60abda52dca71.json"]={sha256:"60a60abda52dca71323b1fcd9c04842cd7d8091170445a2aba0fdee287941e18",value:{"title":"Honda Super Cub 機車工程","titleEn":"Honda Super Cub motorcycle engineering","category":"automotive","kind":"project","summary":"課程規劃主題：大規模可靠製造與人因。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: reliable mass production and ergonomics. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c235"}};

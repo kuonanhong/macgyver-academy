@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d363-676ec1d7f8e5a198.json"]={sha256:"676ec1d7f8e5a198543718f12821d1e8700f6da630e2d437e7b8334c9c5b9373",value:{"id":"d363","title":"衛生級管路與閥組設計","titleEn":"Hygienic Piping and Valve Cluster Design","category":"process","kind":"craft","summary":"「衛生級管路與閥組設計」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Hygienic Piping and Valve Cluster Design: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

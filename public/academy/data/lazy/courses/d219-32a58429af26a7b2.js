@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d219-32a58429af26a7b2.json"]={sha256:"32a58429af26a7b27a1240f681800d2f978980cbf862a191de46009c689e5f32",value:{"id":"d219","title":"雙能量電腦斷層資料處理","titleEn":"Dual Energy Computed Tomography Data Processing","category":"biomedical","kind":"craft","summary":"「雙能量電腦斷層資料處理」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Dual Energy Computed Tomography Data Processing: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d179-4085cd0ff7f5c47d.json"]={sha256:"4085cd0ff7f5c47da4ea094c0f76da638e46847d4aa2cbfe51a9faec47f81976",value:{"id":"d179","title":"纖維補強熱塑性材料回收","titleEn":"Fiber Reinforced Thermoplastic Recycling","category":"materials","kind":"craft","summary":"「纖維補強熱塑性材料回收」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Fiber Reinforced Thermoplastic Recycling: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

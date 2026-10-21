@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c273-2890f7a473121a2c.json"]={sha256:"2890f7a473121a2c2236d1a1bdec63fb12e9a09a94a59315885f3665f6934d50",value:{"title":"車輛功能安全開發概念","titleEn":"Vehicle functional-safety development concepts","category":"automotive","kind":"craft","summary":"課程規劃主題：危害分析與安全需求。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: hazard analysis and safety requirements. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c273"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d071-962c92412f4a8eef.json"]={sha256:"962c92412f4a8eef95146c6762e8d2afed064942a68f6303062295ea5cf4cd40",value:{"id":"d071","title":"離岸風電海纜登陸工程","titleEn":"Offshore Wind Export Cable Landfall Engineering","category":"energy","kind":"craft","summary":"「離岸風電海纜登陸工程」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Offshore Wind Export Cable Landfall Engineering: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

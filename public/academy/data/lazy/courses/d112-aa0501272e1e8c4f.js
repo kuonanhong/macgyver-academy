@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d112-aa0501272e1e8c4f.json"]={sha256:"aa0501272e1e8c4f683b67130b328737a1154c596727003d572487082cfeb180",value:{"id":"d112","title":"航空鈦合金等溫鍛造","titleEn":"Aerospace Titanium Alloy Isothermal Forging","category":"materials","kind":"craft","summary":"「航空鈦合金等溫鍛造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Aerospace Titanium Alloy Isothermal Forging: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

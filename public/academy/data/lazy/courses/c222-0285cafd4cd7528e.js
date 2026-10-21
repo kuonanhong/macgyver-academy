@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c222-0285cafd4cd7528e.json"]={sha256:"0285cafd4cd7528e552c8cded6bec621725bb5e90cc28fcaf5b3bb64cbbc3d75",value:{"title":"Hyundai Ioniq 5 電動平台","titleEn":"Hyundai Ioniq 5 electric platform","category":"automotive","kind":"project","summary":"課程規劃主題：高壓充電與空間配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: high-voltage charging and space layout. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c222"}};

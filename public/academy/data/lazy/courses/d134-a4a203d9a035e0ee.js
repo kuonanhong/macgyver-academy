@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d134-a4a203d9a035e0ee.json"]={sha256:"a4a203d9a035e0ee0b7fbba22b9ed43550216e97ec320e5337594dc100a2442e",value:{"id":"d134","title":"電子束金屬增材製造","titleEn":"Electron Beam Metal Additive Manufacturing","category":"materials","kind":"craft","summary":"「電子束金屬增材製造」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Electron Beam Metal Additive Manufacturing: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d020-444f204daeb97f43.json"]={sha256:"444f204daeb97f4385d20d0ad56cdaadeb120d6b8392045642e311aaebea84af",value:{"id":"d020","title":"豐寧抽蓄水電站","titleEn":"Fengning Pumped Storage Power Station","category":"energy","kind":"project","summary":"「豐寧抽蓄水電站」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Fengning Pumped Storage Power Station: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

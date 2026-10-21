@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c093-940f80acde000d75.json"]={sha256:"940f80acde000d75abddc74bfd2f14d9940a9eed04ebcb6fdd07fdd7912db497",value:{"title":"民航無人機失效返航概念","titleEn":"Civil-drone loss-link return concepts","category":"aerospace","kind":"craft","summary":"課程規劃主題：失聯處置與預先風險規劃。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: loss-link handling and prior risk planning. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c093"}};

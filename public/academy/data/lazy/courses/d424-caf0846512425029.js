@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d424-caf0846512425029.json"]={sha256:"caf0846512425029f1eff9c3b3c07fc20b5551b6d90d5e20206be92b8ff7c3f4",value:{"id":"d424","title":"格蘭薩索地下實驗室","titleEn":"Gran Sasso Underground Laboratory","category":"megascience","kind":"project","summary":"「格蘭薩索地下實驗室」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Gran Sasso Underground Laboratory: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

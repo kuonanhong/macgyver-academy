@@ -5,9 +5,9 @@ def load(n):return json.loads((base/'data'/f'{n}.json').read_text())
 cs=load('catalog');fs=load('featured');ss=load('sources');ps=load('photos')
 release=load('release')
 assert len(cs)==release['topics'] and len(fs)==release['guidedCourses']
-assert len(fs)==({'13':710,'12':614,'11':515}.get(release['version'].split('.')[0],338))
-if release['version'].split('.')[0] in ('12','13'):assert len([c for c in fs if c['category']=='instruments'])==101 and all(c.get('status')=='guided' for c in cs if c['category']=='instruments')
-if release['version'].startswith('13.'):
+assert len(fs)==({'14':807,'13':710,'12':614,'11':515}.get(release['version'].split('.')[0],338))
+if release['version'].split('.')[0] in ('12','13','14'):assert len([c for c in fs if c['category']=='instruments'])==101 and all(c.get('status')=='guided' for c in cs if c['category']=='instruments')
+if release['version'].split('.')[0] in ('13','14'):
  st=[c for c in fs if c['category']=='structures'];assert len(st)==100 and all(c.get('status')=='guided' for c in cs if c['category']=='structures'),'V13: 100 guided bridges & buildings courses'
  for c in st:
   v13=[x for x in c['stages'] if '-v13-' in x['id']];assert len(v13)==5 and all(len(x['steps'])==8 for x in v13),c['id']
@@ -60,6 +60,6 @@ for p in ps:
  assert p['author'] and p['license'] and p['licenseUrl'] and p['sourceUrl']
 assert not (base/'data/materials.json').exists(), 'Removed user-material index must not be shipped'
 assert stepcount==release['allSteps'] and knowledge==release['knowledgePoints']
-assert stepcount==({'13':13042+3232+4000,'12':13042+3232,'11':13042}.get(release['version'].split('.')[0],8882))
+assert stepcount==({'14':24274,'13':13042+3232+4000,'12':13042+3232,'11':13042}.get(release['version'].split('.')[0],8882))
 assert len([c for c in fs if c['category']=='electronics'])==100
 print(json.dumps({'topics':len(cs),'guided':len(fs),'steps':stepcount,'knowledge':knowledge,'sources':len(ss),'photos':len(ps),'materials':0,'status':'PASS'}))

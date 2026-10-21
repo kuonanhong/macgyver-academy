@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c107-8e9c1d40ec21eb5e.json"]={sha256:"8e9c1d40ec21eb5e21b52f8072aded3b5cc5b36e88e5a1c9e77cc949605165d4",value:{"title":"Sentry 自主水下機器人","titleEn":"Sentry autonomous underwater vehicle","category":"marine","kind":"project","summary":"課程規劃主題：海床測繪與自主科學任務。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: seafloor mapping and autonomous science missions. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c107"}};

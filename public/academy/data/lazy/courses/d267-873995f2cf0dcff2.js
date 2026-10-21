@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d267-873995f2cf0dcff2.json"]={sha256:"873995f2cf0dcff2fd1b3c808a854b83fde8543b4532fb3567841f490e6b7d15",value:{"id":"d267","title":"眼控輔助溝通裝置","titleEn":"Eye Tracking Assistive Communication Devices","category":"biomedical","kind":"craft","summary":"「眼控輔助溝通裝置」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Eye Tracking Assistive Communication Devices: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

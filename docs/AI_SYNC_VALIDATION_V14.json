@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-21",
+  "checks": [
+    {
+      "command": "python -m unittest tests.test_ai_routes tests.test_commerce tests.test_models_sync tests.test_github_export -q",
+      "result": "PASS, 45 tests; provider contracts, bounded translation, entitlement/static protection, chunk reuse/prune/restore/hash, public snapshot boundaries"
+    },
+    {
+      "command": "python -m unittest tests.test_sync_v14 -q",
+      "result": "PASS, 2 tests; four simulated failed pushes then rerun against empty remote, remote unknown preserved, managed deletion, unchanged no commit, stripped lazy/offline export and fail closed without Node"
+    },
+    {
+      "command": "node tools/test-ai-accounts.mjs",
+      "result": "PASS; CPU adapter/consent/integrity/account isolation"
+    },
+    {
+      "command": "node tools/test-tutor-panel.mjs",
+      "result": "PASS; model lifecycle and tutor controls"
+    },
+    {
+      "command": "node tools/test-tutor-history.mjs",
+      "result": "PASS; history bounds and course/account separation"
+    },
+    {
+      "command": "node tools/test-tutor-vision.mjs",
+      "result": "PASS; image validation, explicit cloud consent, cancellation"
+    },
+    {
+      "command": "node tools/test-mentor-guide.mjs",
+      "result": "PASS; 13 controlled narration/translation checks"
+    },
+    {
+      "command": "node tools/test-locale.mjs",
+      "result": "PASS; regional language/RTL/cache/privacy/stale/partial and local failure callback regression"
+    },
+    {
+      "command": "node tools/test-translation-v14.mjs",
+      "result": "PASS; loaded CPU ordered translation and malformed rejection; native Claude mock headers/image/response"
+    },
+    {
+      "command": "python -m py_compile portable/server.py portable/commerce.py tools/sync-v12/sync_github.py tools/sync-v13/models_sync.py",
+      "result": "PASS"
+    },
+    {
+      "command": "bash -n macgyver.sh upload-all.sh run-ai-cloud.sh",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Mock providers; no real API key, billing, live model response or quality claims.",
+    "Small synthetic GGUF bytes test integrity and transfers, not model inference.",
+    "Local bare Git repositories only; no external push or deploy.",
+    "Controlled DOM tests do not establish physical device/browser performance.",
+    "79 supported targets do not imply 79 human-reviewed or complete offline translations."
+  ]
+}

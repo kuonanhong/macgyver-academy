@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d077-a792981abd7cac76.json"]={sha256:"a792981abd7cac7644abb1fae3b8ef93da64774d7deeb1810969de76d0c0bff9",value:{"id":"d077","title":"振盪水柱波浪發電系統","titleEn":"Oscillating Water Column Wave Energy Systems","category":"energy","kind":"craft","summary":"「振盪水柱波浪發電系統」教學路線圖：能量轉換、機電介面、控制與可靠度驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Oscillating Water Column Wave Energy Systems: energy conversion, electromechanical interfaces, control, and reliability verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

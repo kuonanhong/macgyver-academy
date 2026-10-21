@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d460-bac02340588a8b16.json"]={sha256:"bac02340588a8b1611982e1a31608a5e5f09e0262ada1965a861ca634364de0c",value:{"id":"d460","title":"FAST五百公尺球面電波望遠鏡","titleEn":"Five Hundred Meter Aperture Spherical Telescope FAST","category":"megascience","kind":"project","summary":"「FAST五百公尺球面電波望遠鏡」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Five Hundred Meter Aperture Spherical Telescope FAST: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

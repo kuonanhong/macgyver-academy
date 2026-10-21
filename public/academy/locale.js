@@ -96,8 +96,7 @@ function hiddenOrExcluded(element, attributes = false) {
   return false;
 }
 
-/* V12: bundled UI dictionaries (i18n/<lang>.js, human-reviewed machine
- * translations of the interface chrome) and Chrome's on-device Translator API
+/* V12: bundled UI dictionaries (i18n/<lang>.js, machine translations of the interface chrome; not a guarantee of human review) and Chrome's on-device Translator API
  * for course content. Neither sends page text to this site's servers. */
 const dictionaryPromises = new Map();
 export function loadDictionary(language) {
@@ -143,7 +142,7 @@ export function lookupDictionary(dict, source) {
   if (source.includes(' · ')) {
     const parts = source.split(' · ');
     const out = parts.map(part => one(part));
-    if (out.some(v => v !== undefined)) return parts.map((part, i) => out[i] ?? part).join(' · ');
+    if (out.every(v => typeof v === 'string' && v.trim())) return parts.map((part, i) => out[i] ?? part).join(' · ');
   }
   return undefined;
 }
@@ -164,7 +163,7 @@ export async function onDeviceTranslator(language, {source = 'en', userActivated
     return translators.get(key);
   } catch { return null; }
 }
-export function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
+export function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
   const attributeSources = new WeakMap();
   const cache = new Map();
@@ -257,7 +256,7 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
     const translations = new Map();
     if (!core) for (const source of texts) {
       const value = get(keyFor(language, source));
-      if (value !== undefined) translations.set(source, value);
+      if (typeof value === 'string' && value.trim() && value.length <= 12000) translations.set(source, value);
     }
     let dictionary = null;
     if (!core) {
@@ -268,7 +267,7 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
       if (dictionary) for (const source of texts) {
         if (translations.has(source)) continue;
         const value = lookupDictionary(dictionary, source);
-        if (value !== undefined) translations.set(source, value);
+        if (typeof value === 'string' && value.trim() && value.length <= 12000) translations.set(source, value);
       }
     }
     const cached = translations.size;
@@ -301,23 +300,32 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
     };
     write();
     if (core) return report('core');
-    const missing = texts.filter(source => !translations.has(source));
+    let missing = texts.filter(source => !translations.has(source));
     if (!missing.length) return report(cached ? 'cached' : 'translated');
     const local = globalThis.Translator ? await onDeviceTranslator(language) : null;
     if (local && !cancelled()) {
       report('translating');
       for (const source of missing) {
         if (cancelled()) return { ...latestStatus, state: 'cancelled' };
+        let timeout;
         try {
-          const value = String(await local.translate(source) || '').trim();
-          if (value) { translations.set(source, value); put(keyFor(language, source), value); }
-        } catch { failed++; }
+          const value = await Promise.race([local.translate(source),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error('Local translation timed out.')),TIMEOUT_MS)})]);
+          if (cancelled()) return { ...latestStatus, state: 'cancelled' };
+          if (typeof value !== 'string' || !value.trim() || value.length>12000)throw Error('Incomplete local translation.');
+          translations.set(source, value.trim()); put(keyFor(language, source), value.trim());
+        } catch { /* Retain original and try the configured batch service below. */ }
+        finally {clearTimeout(timeout);}
         if (translations.size % 20 === 0) write();
       }
       persist(); write();
-      return report(failed ? 'partial' : 'translated');
+      missing=texts.filter(source=>!translations.has(source));
+      if(!missing.length)return report('translated');
     }
-    if (!getAIAvailable()) return report(dictionary ? 'dictionary' : 'unavailable', dictionary ? 'Interface translated with the bundled dictionary. Course content stays in English unless this browser offers on-device translation (Chrome) or the site owner configures a translation service.' : 'Translation requires a signed-in account and a configured AI service. Cached translations remain available.');
+    if (cancelled()) return {...latestStatus,state:'cancelled'};
+    if (!getTranslationAvailable()) {
+      failed=missing.length;
+      return report(translations.size?'partial':'unavailable','Only the available dictionary/cache text has been translated. Remaining course text needs a loaded local model, supported browser translator, or configured translation service. Machine translation requires review.');
+    }
 
     report('translating');
     let cursor = 0;
@@ -334,13 +342,17 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
       const timeout = setTimeout(() => { timedOut = true; controller.abort(); }, TIMEOUT_MS);
       try {
         requests++;
-        const response = await fetch('/api/translate', {
-          method: 'POST', credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ language, texts: batch }), signal: controller.signal,
-        });
-        if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? 'Sign in to translate new content.' : response.status === 429 ? 'Translation limit reached. Cached translations remain available; try again later.' : `Translation service unavailable (${response.status}).`);
-        const result = await response.json();
+        let result;
+        if(typeof translateBatch==='function')result=await translateBatch({language,texts:batch,signal:controller.signal});
+        else {
+          const response = await fetch('/api/translate', {
+            method: 'POST', credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ language, texts: batch }), signal: controller.signal,
+          });
+          if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? 'Sign in to translate new content.' : response.status === 429 ? 'Translation limit reached. Cached translations remain available; try again later.' : `Translation service unavailable (${response.status}).`);
+          result = await response.json();
+        }
         if (cancelled()) return { ...latestStatus, state: 'cancelled' };
         if (!Array.isArray(result.translations) || result.translations.length !== batch.length || result.translations.some(value => typeof value !== 'string' || !value.trim() || value.length > 12000)) throw new Error('The translation service returned an incomplete response. Original text remains visible.');
         result.translations.forEach((value, index) => {
@@ -361,7 +373,8 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
         if (activeRequest === controller) activeRequest = null;
       }
     }
-    return cancelled() ? { ...latestStatus, state: 'cancelled' } : report('translated');
+    failed=texts.length-translations.size;
+    return cancelled() ? { ...latestStatus, state: 'cancelled' } : report(failed?'partial':'translated');
   }
 
   return {

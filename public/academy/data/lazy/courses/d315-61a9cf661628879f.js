@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d315-61a9cf661628879f.json"]={sha256:"61a9cf661628879f785eb1a09b3f3e065c65e10ab16513594ff590a2283efc3d",value:{"id":"d315","title":"灌溉渠道自動閘門","titleEn":"Irrigation Canal Automated Gates","category":"process","kind":"craft","summary":"「灌溉渠道自動閘門」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Irrigation Canal Automated Gates: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

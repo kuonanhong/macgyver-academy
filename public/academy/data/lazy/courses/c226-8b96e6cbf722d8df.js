@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c226-8b96e6cbf722d8df.json"]={sha256:"8b96e6cbf722d8dfaf83f1c2ee41f057aa19c70fbaae8844be2db9970e493715",value:{"title":"Honda Clarity 燃料電池平台","titleEn":"Honda Clarity fuel-cell platform","category":"automotive","kind":"project","summary":"課程規劃主題：系統小型化與車輛配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: system miniaturization and vehicle packaging. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c226"}};

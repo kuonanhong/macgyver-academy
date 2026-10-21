@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d182-ce1c507a75eb48fb.json"]={sha256:"ce1c507a75eb48fbd99dbed9ba2316427997d8662b596199718b1981e32b814f",value:{"id":"d182","title":"多孔沸石吸附材料設計","titleEn":"Porous Zeolite Adsorbent Design","category":"materials","kind":"craft","summary":"「多孔沸石吸附材料設計」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Porous Zeolite Adsorbent Design: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c206-d67cee893ceecaaf.json"]={sha256:"d67cee893ceecaaf1e8eb0c6044aa21310f1f43776c81816ae742bdc22091cd6",value:{"title":"Porsche 911 後置引擎跑車","titleEn":"Porsche 911 rear-engine sports car","category":"automotive","kind":"project","summary":"課程規劃主題：質量配置與底盤演進。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: mass distribution and chassis evolution. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c206"}};

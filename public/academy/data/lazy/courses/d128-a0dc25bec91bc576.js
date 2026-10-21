@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d128-a0dc25bec91bc576.json"]={sha256:"a0dc25bec91bc576ec59ee9dba7a4b32d4b5cf2926f6e7bbf78d236fe995b4a1",value:{"id":"d128","title":"不鏽鋼鈍化膜表徵","titleEn":"Stainless Steel Passive Film Characterization","category":"materials","kind":"craft","summary":"「不鏽鋼鈍化膜表徵」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Stainless Steel Passive Film Characterization: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

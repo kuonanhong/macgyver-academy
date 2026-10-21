@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/c298-c53e70f18b234170.json"]={sha256:"c53e70f18b2341705d32ad2740c9ab04b18ca9622486cda1f0a716e2374e650a",value:{"title":"蒸汽機車鍋爐保存檢驗概念","titleEn":"Steam-locomotive boiler preservation inspection","category":"automotive","kind":"craft","summary":"課程規劃主題：歷史壓力設備與合格檢驗。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: historic pressure equipment and qualified inspection. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c298"}};

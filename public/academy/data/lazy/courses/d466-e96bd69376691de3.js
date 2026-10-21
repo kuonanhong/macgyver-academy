@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d466-e96bd69376691de3.json"]={sha256:"e96bd69376691de3d5cca946fd02404e46e6c917a432090a133b0cb24c7917e0",value:{"id":"d466","title":"阿雷西博天文台工程史","titleEn":"Arecibo Observatory Engineering History","category":"megascience","kind":"project","summary":"「阿雷西博天文台工程史」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Arecibo Observatory Engineering History: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

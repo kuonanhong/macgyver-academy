@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d255-805f99e325d67b18.json"]={sha256:"805f99e325d67b184cdc7c3dfb8ba2165b9b203574e2532cd4bf166d29a69d2d",value:{"id":"d255","title":"醫用冷鏈溫度記錄器","titleEn":"Medical Cold Chain Temperature Loggers","category":"biomedical","kind":"craft","summary":"「醫用冷鏈溫度記錄器」教學路線圖：裝置架構、感測與致動、台架測試和品質管理；不含臨床操作指示。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Medical Cold Chain Temperature Loggers: device architecture, sensing and actuation, bench testing, and quality management; no clinical operating instructions. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

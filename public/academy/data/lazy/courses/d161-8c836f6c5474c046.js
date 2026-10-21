@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d161-8c836f6c5474c046.json"]={sha256:"8c836f6c5474c0468ad6847e452dc5d570421e79ae0a7fb4dbeeb348031a2bd0",value:{"id":"d161","title":"浮式平板玻璃生產線","titleEn":"Float Glass Production Lines","category":"materials","kind":"craft","summary":"「浮式平板玻璃生產線」教學路線圖：材料結構、製程設備、品質量測與可追溯性。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Float Glass Production Lines: material structure, processing equipment, quality metrology, and traceability. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

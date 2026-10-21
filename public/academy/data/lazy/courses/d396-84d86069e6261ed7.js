@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d396-84d86069e6261ed7.json"]={sha256:"84d86069e6261ed76cdce545669624402d14aa27cd7ece32251cc9bfbb64a0df",value:{"id":"d396","title":"紙機乾燥部熱回收","titleEn":"Paper Machine Dryer Heat Recovery","category":"process","kind":"craft","summary":"「紙機乾燥部熱回收」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Paper Machine Dryer Heat Recovery: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

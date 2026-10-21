@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d427-74a987efb417ec70.json"]={sha256:"74a987efb417ec705ea6d7460a5f28c5340ed49d3d20444665cf4b9f284ecac7",value:{"id":"d427","title":"Virgo重力波干涉儀","titleEn":"Virgo Gravitational Wave Interferometer","category":"megascience","kind":"project","summary":"「Virgo重力波干涉儀」教學路線圖：科學目標、子系統介面、精密量測與整合驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Virgo Gravitational Wave Interferometer: scientific objectives, subsystem interfaces, precision metrology, and integration verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};

@@ -1,0 +1,3 @@
+/* Generated on-demand data. */
+window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
+window.MG_LAZY_DATA["data/lazy/courses/d395-8b201d7c5094f974.json"]={sha256:"8b201d7c5094f9747c1a0a9ec5447425204aba0d53d9c3e484d769d1fb2fa7fc",value:{"id":"d395","title":"造紙網部與濕紙壓榨","titleEn":"Papermaking Wire Sections and Wet Pressing","category":"process","kind":"craft","summary":"「造紙網部與濕紙壓榨」教學路線圖：物料與能量平衡、設備整合、監測控制和品質驗證。專案級來源與工序細節待查證。","summaryEn":"Learning roadmap for Papermaking Wire Sections and Wet Pressing: material and energy balances, equipment integration, monitoring, and quality verification. Project-specific sources and work steps require verification.","sourceIds":[],"status":"roadmap"}};
