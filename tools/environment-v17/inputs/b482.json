@@ -1,0 +1,307 @@
+{
+  "id": "b482",
+  "title": "焚化飛灰穩定化~Stabilization of incinerator fly ash",
+  "focus": "分辨飛灰污染總量、固定化效能與長期浸出證據~Distinguish fly-ash inventory, immobilization performance and long-term leaching evidence",
+  "discipline": "environment-waste",
+  "summary": "本課以「分辨飛灰污染總量、固定化效能與長期浸出證據」為主軸，依序處理飛灰與防制殘渣界定、乾基添加量、固定介質容量概念、洗液與污染轉移、穩定化能耗比較。十個單元各包含機制、算例、量測驗證及失效診斷；數值均為明示的原創教學假設，不能直接用作工程設計、排放限值或設備設定。~This course focuses on Distinguish fly-ash inventory, immobilization performance and long-term leaching evidence, progressing through Fly ash and control-residue identification, Dry-basis amendment quantity, Immobilizing-media capacity, Wash water and contaminant transfer, Stabilization energy comparison. Ten units each address mechanism, worked calculation, measurement verification and failure diagnosis. Numbers are explicit original teaching assumptions, not design values, emission limits or equipment settings.",
+  "history": "這項技術的學習脈絡由單一設備處理，逐步擴展至物質與能量收支、監測品質和生命週期比較。本課將官方方法文件作為查核入口，並以獨立編寫的假想數據練習；參考文件的年代與地區不代表其規範在所有場址適用。~The learning progression expands from individual treatment equipment to mass and energy balances, monitoring quality and lifecycle comparison. Official method documents provide verification starting points while independently authored hypothetical data support practice; a document date or jurisdiction does not establish applicability to every site.",
+  "place": {
+    "name": "教學參考區域：美國北卡羅來納研究三角園區（非本課實拍場址）",
+    "nameEn": "Reference region: Research Triangle Park, North Carolina (not a photographed course facility)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 35.9,
+    "lon": -78.9,
+    "scope": "Approximate institutional reference region; not a facility entrance, installation location or visitor permission."
+  },
+  "architectureNodes": [
+    "飛灰與防制殘渣界定~Fly ash and control-residue identification",
+    "乾基添加量~Dry-basis amendment quantity",
+    "固定介質容量概念~Immobilizing-media capacity",
+    "洗液與污染轉移~Wash water and contaminant transfer",
+    "穩定化能耗比較~Stabilization energy comparison",
+    "證據與交接~Evidence and handoff"
+  ],
+  "sources": [
+    {
+      "id": "v17s-waste-wi",
+      "title": "歐盟 JRC 廢棄物焚化 BREF（2019）",
+      "titleEn": "JRC Waste Incineration BREF (2019)",
+      "url": "https://publications.jrc.ec.europa.eu/repository/handle/JRC118637",
+      "organization": "European Commission Joint Research Centre",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-tclp",
+      "title": "EPA SW-846 方法 1311：TCLP",
+      "titleEn": "EPA SW-846 Method 1311: TCLP",
+      "url": "https://www.epa.gov/hw-sw846/sw-846-test-method-1311-toxicity-characteristic-leaching-procedure",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-sw846",
+      "title": "EPA SW-846 方法彙編",
+      "titleEn": "EPA SW-846 Compendium",
+      "url": "https://www.epa.gov/hw-sw846/sw-846-compendium",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-remedy",
+      "title": "EPA 污染場址整治技術說明",
+      "titleEn": "EPA Remediation Technology Descriptions",
+      "url": "https://www.epa.gov/remedytech/remediation-technology-descriptions-cleaning-contaminated-sites",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "units": [
+    {
+      "title": "飛灰與防制殘渣界定~Fly ash and control-residue identification",
+      "mechanism": "不同捕集點產生不同鹽分、金屬和碳含量，混樣前必須保留來源。 分率必須以同一濕基或乾基定義；總質量乘分率才是該成分的質量。~Different collection points yield different salts, metals and carbon; preserve provenance before compositing. Fractions require a consistent wet or dry basis; multiplying total mass by its fraction gives component mass.",
+      "model": "原創教學假設，非現場操作值：總進料 m=1000 kg；目標成分質量分率 f=0.18。公式 m_target=m*f，計算得 180 kg。適用邊界：批次均勻且分樣具代表性；不把質量分率當體積分率。~Original teaching assumptions, not field operating values: Total feed m=1000 kg; target-component mass fraction f=0.18. Formula m_target=m*f gives 180 kg. Applicability: A homogeneous batch and representative sampling; mass fraction is not volume fraction.",
+      "verify": "針對「飛灰與防制殘渣界定」，秤總樣與分離後成分，保存含水率與分樣方式，檢查回收率。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Fly ash and control-residue identification, Weigh the bulk sample and separated fraction; retain moisture basis and sampling procedure and check recovery. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "濕基與乾基混用會令回收物或負荷被高估。 在「飛灰與防制殘渣界定」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Mixing wet and dry bases overstates recovered material or loading. Mark where this error can enter the Fly ash and control-residue identification flow and name a measurement that distinguishes causes.",
+      "misconception": "相同百分比不論濕基或乾基都代表相同質量。~The same percentage gives the same mass on wet and dry bases.",
+      "practice": "只將 f 改成 0.22，其餘輸入固定。重算結果應由 180 變成 220 kg。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only f to 0.22, holding all other inputs fixed. Recalculation changes 180 to 220 kg. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "fraction"
+    },
+    {
+      "title": "粒徑與均質分樣~Particle size and representative splitting",
+      "mechanism": "細粒與團聚物可能分層，取樣和縮分須避免只取得表面鬆散粉體。 粒徑分級先改變後續處理對象；篩孔名目尺寸不等於每顆粒都能通過的保證。~Fines and agglomerates can segregate; sampling and splitting must avoid selecting only loose surface powder. Size classification changes the downstream feed; nominal aperture is not a guarantee that every smaller particle passes.",
+      "model": "原創教學假設，非現場操作值：進料 m=1000 kg；細粒比例 f=0.30；細粒捕集率 r=0.90。公式 mf=m*f*r，計算得 270 kg。適用邊界：只算細粒回收，不含粗粒誤入及顆粒團聚。~Original teaching assumptions, not field operating values: Feed m=1000 kg; fines fraction f=0.30; fines capture r=0.90. Formula mf=m*f*r gives 270 kg. Applicability: Fines recovery only; coarse misplacement and agglomeration are omitted.",
+      "verify": "針對「粒徑與均質分樣」，分別量進料與兩出口的粒徑分布，檢查堵孔、含水與旁通。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Particle size and representative splitting, Measure feed and both outlet size distributions, checking blinded apertures, moisture and bypass. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "濕料結團讓可回收細粒留在粗料中。 在「粒徑與均質分樣」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Wet agglomeration retains recoverable fines in the coarse stream. Mark where this error can enter the Particle size and representative splitting flow and name a measurement that distinguishes causes.",
+      "misconception": "篩孔大小可以完全決定所有顆粒的分離結果。~Aperture size completely determines the separation of every particle.",
+      "practice": "只將 r 改成 0.70，其餘輸入固定。重算結果應由 270 變成 210 kg。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only capture r to 0.70, holding all other inputs fixed. Recalculation changes 270 to 210 kg. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "screen"
+    },
+    {
+      "title": "乾基添加量~Dry-basis amendment quantity",
+      "mechanism": "固定化與固化不是同一機制，添加物需按乾基記帳並經獨立試驗選擇。 劑量需指明相對乾料還是總混合料；添加增加體積與質量，不等於污染物消失。~Stabilization and solidification differ; record additives on a dry basis and select them through independent testing. State whether dose refers to dry feed or final mix; addition increases mass and volume but does not make contaminants disappear.",
+      "model": "原創教學假設，非現場操作值：乾料 m=1000 kg；假設添加比 d=0.12 kg/kg。公式 m_add=m*d，計算得 120 kg。適用邊界：紙上質量配比，不是藥劑配方；效能須另以小試和浸出試驗驗證。~Original teaching assumptions, not field operating values: Dry feed m=1000 kg; assumed additive ratio d=0.12 kg/kg. Formula m_add=m*d gives 120 kg. Applicability: A paper mass ratio, not a reagent recipe; efficacy requires treatability and leaching tests.",
+      "verify": "針對「乾基添加量」，核對秤重及乾基換算，保留試樣批次並比較不同劑量的性能。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Dry-basis amendment quantity, Check weighing and dry-basis conversion, retain batch IDs and compare performance across doses. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "靠稀釋降低總濃度不等於化學固定或長期穩定。 在「乾基添加量」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Dilution of total concentration is not chemical immobilization or long-term stability. Mark where this error can enter the Dry-basis amendment quantity flow and name a measurement that distinguishes causes.",
+      "misconception": "加入穩定劑後總濃度降低就證明污染物已被消滅。~Lower total concentration after amendment proves the contaminant was destroyed.",
+      "practice": "只將 d 改成 0.15 kg/kg，其餘輸入固定。重算結果應由 120 變成 150 kg。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only d to 0.15 kg/kg, holding all other inputs fixed. Recalculation changes 120 to 150 kg. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "dose"
+    },
+    {
+      "title": "混合含水與成形~Blend moisture and forming",
+      "mechanism": "水參與反應與成形，過多水也可能增加孔隙或產生滲出，需保留水收支。 水分率的分母包含新增水，故從乾料反求加水量需除以一減水分率。~Water supports reactions and forming, while excess may increase pores or drainage; retain the water balance. The moisture denominator includes added water, so calculating water from dry solids requires division by one minus the water fraction.",
+      "model": "原創教學假設，非現場操作值：乾混料 md=100 kg；假想濕基含水分率 w=0.20。公式 mw=md*w/(1-w)，計算得 25 kg water。適用邊界：乾料起始無水、無反應耗水與蒸發；純質量換算，不是穩定化配方或現場加水建議。~Original teaching assumptions, not field operating values: Dry blend md=100 kg; hypothetical wet-basis water fraction w=0.20. Formula mw=md*w/(1-w) gives 25 kg water. Applicability: Initially dry solids with no reaction consumption or evaporation; a mass-conversion example, not a stabilization recipe or field water dose.",
+      "verify": "針對「混合含水與成形」，分開記錄原料自帶水與外加水，量混合後濕乾重量並檢查反應消耗和滲液。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Blend moisture and forming, Record inherent and added water separately, measure wet and dry blend masses and check reaction consumption and drainage. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把濕基百分比直接乘乾料重會低估水量。 在「混合含水與成形」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Multiplying a wet-basis percentage directly by dry mass understates water. Mark where this error can enter the Blend moisture and forming flow and name a measurement that distinguishes causes.",
+      "misconception": "20% 濕基水分必然等於每 100 kg 乾料加 20 kg 水。~Twenty percent wet-basis moisture always means adding 20 kg water per 100 kg dry solids.",
+      "practice": "只將假想 w 改成 0.25，其餘輸入固定。重算結果應由 25 變成 33.3333 kg water。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only hypothetical w to 0.25, holding all other inputs fixed. Recalculation changes 25 to 33.3333 kg water. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "forming_water"
+    },
+    {
+      "title": "固定介質容量概念~Immobilizing-media capacity",
+      "mechanism": "以抽象吸附容量模型說明有限反應能力；實際飛灰需考慮 pH 和競爭離子。 容量除以污染負荷給名目耗盡時間；傳質、競爭離子及不可逆鈍化通常降低可用容量。~Use an abstract sorption-capacity model to explain finite capacity; real ash also requires pH and competing-ion analysis. Capacity divided by load gives nominal exhaustion time; mass transfer, competition and passivation often lower usable capacity.",
+      "model": "原創教學假設，非現場操作值：介質質量 m=1000 kg；假設可用容量 a=0.02 kg/kg；污染輸入 L=0.25 kg/d。公式 t=m*a/L，計算得 80 d。適用邊界：固定負荷與已驗證可用容量，不推定真實突破日期。~Original teaching assumptions, not field operating values: Media mass m=1000 kg; assumed usable capacity a=0.02 kg/kg; pollutant loading L=0.25 kg/d. Formula t=m*a/L gives 80 d. Applicability: Constant loading and validated usable capacity; no real breakthrough date is implied.",
+      "verify": "針對「固定介質容量概念」，做突破曲線並記錄流量、濃度與介質狀態，將可用容量與總化學容量分開。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Immobilizing-media capacity, Measure breakthrough with flow, concentration and media condition; distinguish usable from total chemical capacity. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只用理論反應容量會高估介質壽命。 在「固定介質容量概念」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Using theoretical reaction capacity alone overestimates media life. Mark where this error can enter the Immobilizing-media capacity flow and name a measurement that distinguishes causes.",
+      "misconception": "介質總質量相同時，不同水質下的使用壽命必定相同。~Equal media mass guarantees equal life in different water chemistry.",
+      "practice": "只將 L 改成 0.40 kg/d，其餘輸入固定。重算結果應由 80 變成 50 d。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only loading L to 0.40 kg/d, holding all other inputs fixed. Recalculation changes 80 to 50 d. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "capacity"
+    },
+    {
+      "title": "浸出方法與液固比~Leaching method and liquid-solid ratio",
+      "mechanism": "方法選擇決定試驗邊界，單次萃取不能替代所有環境暴露。 浸出質量可由液體濃度和體積換算，但不能把此值當成樣品總含量。~The test method defines its boundary; one extraction does not represent every environmental exposure. Released mass follows liquid concentration and volume, but is not the specimen total content.",
+      "model": "原創教學假設，非現場操作值：浸出液濃度 C=2 mg/L；液體體積 V=2 L；試樣乾質量 m=0.10 kg。公式 released=C*V/m，計算得 40 mg/kg dry sample。適用邊界：以單次均勻浸出作教學換算；不同方法的液固比、pH 和時間不可混用。~Original teaching assumptions, not field operating values: Leachate concentration C=2 mg/L; liquid volume V=2 L; dry specimen m=0.10 kg. Formula released=C*V/m gives 40 mg/kg dry sample. Applicability: A single homogeneous extraction for teaching conversion; do not mix liquid/solid ratios, pH or duration across methods.",
+      "verify": "針對「浸出方法與液固比」，記錄方法、空白、液固比和乾重，將浸出 mg/L 與換算 mg/kg 分欄呈現。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Leaching method and liquid-solid ratio, Record method, blanks, liquid/solid ratio and dry mass; display leachate mg/L separately from converted mg/kg. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "浸出液 mg/L 誤標成固體 mg/kg 會改變結論。 在「浸出方法與液固比」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Labelling leachate mg/L as solid mg/kg changes the interpretation. Mark where this error can enter the Leaching method and liquid-solid ratio flow and name a measurement that distinguishes causes.",
+      "misconception": "一次浸出試驗能直接得到樣品的所有污染物總含量。~One leaching test directly gives all total contaminant content.",
+      "practice": "只將 C 改成 3 mg/L，其餘輸入固定。重算結果應由 40 變成 60 mg/kg dry sample。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only C to 3 mg/L, holding all other inputs fixed. Recalculation changes 40 to 60 mg/kg dry sample. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "leach"
+    },
+    {
+      "title": "洗液與污染轉移~Wash water and contaminant transfer",
+      "mechanism": "若流程含預洗，鹽與污染物會進入水相，必須把洗液處理納入整體方案。 流量與濃度共同決定質量負荷；mg/L 乘 m³/d 後除以 1000 得 kg/d。~If pretreatment includes washing, salts and contaminants enter water; include wash-water treatment in the system. Flow and concentration jointly determine mass loading; divide mg/L times m³/d by 1000 to obtain kg/d.",
+      "model": "原創教學假設，非現場操作值：流量 Q=120 m³/d；濃度 C=250 mg/L。公式 load=Q*C/1000，計算得 30 kg/d。適用邊界：流量與樣品代表同一時間窗；單點濃度不能代替流量加權平均。~Original teaching assumptions, not field operating values: Flow Q=120 m³/d; concentration C=250 mg/L. Formula load=Q*C/1000 gives 30 kg/d. Applicability: Flow and concentration represent the same time window; a grab value does not replace a flow-weighted mean.",
+      "verify": "針對「洗液與污染轉移」，對齊流量計與採樣時間，以分時段 Q×C 加總，核對總量與單位。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Wash water and contaminant transfer, Align flow-meter and sampling timestamps; sum interval Q×C and check totals and units. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只比較濃度會把稀釋當成污染質量已移除。 在「洗液與污染轉移」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A concentration-only comparison can mistake dilution for pollutant removal. Mark where this error can enter the Wash water and contaminant transfer flow and name a measurement that distinguishes causes.",
+      "misconception": "出流水濃度下降就代表污染總量一定下降。~A lower effluent concentration always means a lower total pollutant load.",
+      "practice": "只將 Q 改成 150 m³/d，其餘輸入固定。重算結果應由 30 變成 37.5 kg/d。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Q to 150 m³/d, holding all other inputs fixed. Recalculation changes 30 to 37.5 kg/d. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "massflow"
+    },
+    {
+      "title": "批次品質與採樣格~Batch quality and sampling coverage",
+      "mechanism": "用批次與空間標記規劃樣點，避免單一合格樣品替整批背書。 網格數需向上取整；空間覆蓋與熱點偵測機率是不同的採樣設計問題。~Plan samples by batch and location rather than allowing one passing specimen to represent the entire lot. Grid counts round upward; spatial coverage and hotspot detection probability are different sampling-design questions.",
+      "model": "原創教學假設，非現場操作值：抽樣區域 A=10000 m²；每格面積 a=400 m²。公式 N=ceil(A/a)，計算得 25 sample cells。適用邊界：規則平面網格計數，未指定法規採樣密度或統計信賴。~Original teaching assumptions, not field operating values: Survey area A=10000 m²; grid-cell area a=400 m². Formula N=ceil(A/a) gives 25 sample cells. Applicability: Regular planar-grid counting, not a regulatory density or statistical confidence claim.",
+      "verify": "針對「批次品質與採樣格」，將網格覆在地形與歷史活動圖上，保留障礙區與針對性樣本的理由。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Batch quality and sampling coverage, Overlay the grid on terrain and historical activities; document inaccessible cells and targeted samples. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "規則網格漏掉小型污染熱點，需與歷史與現場證據合併。 在「批次品質與採樣格」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A regular grid may miss small hotspots and must be combined with history and field evidence. Mark where this error can enter the Batch quality and sampling coverage flow and name a measurement that distinguishes causes.",
+      "misconception": "樣本平均值低就代表每個未採樣位置也都低。~A low sample mean proves every unsampled location is also low.",
+      "practice": "只將 a 改成 300 m²，其餘輸入固定。重算結果應由 25 變成 34 sample cells。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only cell area a to 300 m², holding all other inputs fixed. Recalculation changes 25 to 34 sample cells. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "sampling"
+    },
+    {
+      "title": "穩定化能耗比較~Stabilization energy comparison",
+      "mechanism": "比較混拌、養護與後續處置的邊界，不能只報添加物用量忽略額外負荷。 活動量乘排放係數給指定邊界的影響，係數需匹配地區、年度與電力方法。~Compare mixing, curing and disposal boundaries rather than reporting additive mass while omitting added burdens. Activity multiplied by a factor gives impact for a specified boundary; factors must match region, year and electricity-accounting method.",
+      "model": "原創教學假設，非現場操作值：用電 E=200 kWh/t；假設電力排放係數 f=0.4 kg CO₂e/kWh。公式 impact=E*f，計算得 80 kg CO₂e/t。適用邊界：f 是教學假設而非任何國家即時係數；只含用電項。~Original teaching assumptions, not field operating values: Electricity E=200 kWh/t; assumed grid factor f=0.4 kg CO₂e/kWh. Formula impact=E*f gives 80 kg CO₂e/t. Applicability: f is a teaching assumption, not a current national factor; only electricity is included.",
+      "verify": "針對「穩定化能耗比較」，保存電表邊界、產量與係數版本，對替代電力情境作敏感度分析。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Stabilization energy comparison, Record metering boundary, output and factor version; test alternative electricity scenarios. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把不同年份或系統邊界的係數混用會產生假比較。 在「穩定化能耗比較」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Mixing factors across years or boundaries creates misleading comparisons. Mark where this error can enter the Stabilization energy comparison flow and name a measurement that distinguishes causes.",
+      "misconception": "同樣 kWh 用電量在世界任何地方都有相同碳排。~Equal kWh causes identical carbon emissions everywhere.",
+      "practice": "只將 f 改成 0.2 kg CO₂e/kWh，其餘輸入固定。重算結果應由 80 變成 40 kg CO₂e/t。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only grid factor f to 0.2 kg CO₂e/kWh, holding all other inputs fixed. Recalculation changes 80 to 40 kg CO₂e/t. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "lca_energy"
+    },
+    {
+      "title": "不確定度與長期證據~Uncertainty and long-term evidence",
+      "mechanism": "將批次差異、分析誤差與試驗條件分開，長期表現需另有老化與不同暴露證據。 獨立乘積量的相對方差近似相加；有共同校正來源時需加入共變異。~Separate batch variability, analytical uncertainty and test conditions; long-term performance needs ageing and exposure evidence. Relative variances of independent product quantities approximately add; common calibration sources require covariance.",
+      "model": "原創教學假設，非現場操作值：獨立相對標準不確定度：流量 uQ=0.04、濃度 uC=0.06。公式 u=sqrt(uQ²+uC²)，計算得 0.072111 relative standard uncertainty。適用邊界：小誤差一階傳播與獨立性假設；標準不確定度不等於 95% 區間。~Original teaching assumptions, not field operating values: Independent relative standard uncertainties: flow uQ=0.04, concentration uC=0.06. Formula u=sqrt(uQ²+uC²) gives 0.072111 relative standard uncertainty. Applicability: Small-error first-order propagation and independence; standard uncertainty is not a 95% interval.",
+      "verify": "針對「不確定度與長期證據」，建立每項不確定度來源表，將重複性、校正和代表性分開，檢查相關性。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Uncertainty and long-term evidence, Build an uncertainty budget separating repeatability, calibration and representativeness; inspect correlations. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "增加同偏差的重複測量不能消除系統性誤差。 在「不確定度與長期證據」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Repeating measurements with the same bias does not remove systematic error. Mark where this error can enter the Uncertainty and long-term evidence flow and name a measurement that distinguishes causes.",
+      "misconception": "重複量測次數越多，所有系統性誤差都會自動消失。~More repeats automatically eliminate every systematic error.",
+      "practice": "只將 uC 改成 0.03，其餘輸入固定。重算結果應由 0.072111 變成 0.05 relative standard uncertainty。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only uC to 0.03, holding all other inputs fixed. Recalculation changes 0.072111 to 0.05 relative standard uncertainty. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "uncertainty"
+    }
+  ],
+  "modelChecks": [
+    {
+      "expression": "1000*0.18",
+      "expected": 180.0,
+      "unit": "kg",
+      "description": "b482 unit 1 baseline: Fly ash and control-residue identification",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.22",
+      "expected": 220.0,
+      "unit": "kg",
+      "description": "b482 unit 1 sensitivity: Fly ash and control-residue identification",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.3*0.9",
+      "expected": 270.0,
+      "unit": "kg",
+      "description": "b482 unit 2 baseline: Particle size and representative splitting",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.3*0.7",
+      "expected": 210.0,
+      "unit": "kg",
+      "description": "b482 unit 2 sensitivity: Particle size and representative splitting",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.12",
+      "expected": 120.0,
+      "unit": "kg",
+      "description": "b482 unit 3 baseline: Dry-basis amendment quantity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.15",
+      "expected": 150.0,
+      "unit": "kg",
+      "description": "b482 unit 3 sensitivity: Dry-basis amendment quantity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "100*0.20/(1-0.20)",
+      "expected": 25.0,
+      "unit": "kg water",
+      "description": "b482 unit 4 baseline: Blend moisture and forming",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "100*0.25/(1-0.25)",
+      "expected": 33.333333333333336,
+      "unit": "kg water",
+      "description": "b482 unit 4 sensitivity: Blend moisture and forming",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.02/0.25",
+      "expected": 80.0,
+      "unit": "d",
+      "description": "b482 unit 5 baseline: Immobilizing-media capacity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.02/0.40",
+      "expected": 50.0,
+      "unit": "d",
+      "description": "b482 unit 5 sensitivity: Immobilizing-media capacity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2*2/0.1",
+      "expected": 40.0,
+      "unit": "mg/kg dry sample",
+      "description": "b482 unit 6 baseline: Leaching method and liquid-solid ratio",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "3*2/0.1",
+      "expected": 60.0,
+      "unit": "mg/kg dry sample",
+      "description": "b482 unit 6 sensitivity: Leaching method and liquid-solid ratio",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120*250/1000",
+      "expected": 30.0,
+      "unit": "kg/d",
+      "description": "b482 unit 7 baseline: Wash water and contaminant transfer",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "150*250/1000",
+      "expected": 37.5,
+      "unit": "kg/d",
+      "description": "b482 unit 7 sensitivity: Wash water and contaminant transfer",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "ceil(10000/400)",
+      "expected": 25,
+      "unit": "sample cells",
+      "description": "b482 unit 8 baseline: Batch quality and sampling coverage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "ceil(10000/300)",
+      "expected": 34,
+      "unit": "sample cells",
+      "description": "b482 unit 8 sensitivity: Batch quality and sampling coverage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "200*0.4",
+      "expected": 80.0,
+      "unit": "kg CO₂e/t",
+      "description": "b482 unit 9 baseline: Stabilization energy comparison",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "200*0.2",
+      "expected": 40.0,
+      "unit": "kg CO₂e/t",
+      "description": "b482 unit 9 sensitivity: Stabilization energy comparison",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "sqrt(0.04**2+0.06**2)",
+      "expected": 0.07211102550927978,
+      "unit": "relative standard uncertainty",
+      "description": "b482 unit 10 baseline: Uncertainty and long-term evidence",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "sqrt(0.04**2+0.03**2)",
+      "expected": 0.05,
+      "unit": "relative standard uncertainty",
+      "description": "b482 unit 10 sensitivity: Uncertainty and long-term evidence",
+      "relativeTolerance": 1e-09
+    }
+  ],
+  "facts": [
+    "所有算例的輸入均為教學假設；官方來源支援方法脈絡，不代表其公開數據。~All numerical inputs are teaching assumptions; official sources support methodological context, not those hypothetical observations.",
+    "原始資料、單位、時間窗與不確定度必須一併保存。~Preserve raw data, units, time windows and uncertainty together."
+  ]
+}

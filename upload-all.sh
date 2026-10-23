@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# V16 compatibility alias: incremental upload of the website and existing assets.
+# V17 compatibility alias: incremental website upload; --with-assets includes existing private assets.
 # No rebuild, market refresh, automatic model download, deletion or force push.
 # Preview: bash upload-all.sh --dry-run
 set -euo pipefail

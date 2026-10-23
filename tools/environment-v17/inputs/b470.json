@@ -1,0 +1,200 @@
+{
+  "id": "b470",
+  "title": "廢紙脫墨處理~Deinking of recovered paper",
+  "focus": "纖維解離、油墨浮選與水循環~Fiber liberation, ink flotation and water circulation",
+  "discipline": "environment-recycling",
+  "summary": "以「纖維解離、油墨浮選與水循環」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow fiber liberation, ink flotation and water circulation through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "進料乾纖維基準~Dry-fiber feed basis",
+      "mechanism": "含水廢紙質量需換成乾固體基準，否則不同批次收率不可比。~Convert wet recovered-paper mass to dry solids for comparable yields.",
+      "model": "原創假想教學算例：dry mass=wet mass*(1-moisture);1000*(1-0.1)；計算 1000*(1-0.1) = 900 kg。適用限制：濕基含水率。~Original hypothetical teaching example: dry mass=wet mass*(1-moisture);1000*(1-0.1); calculation 1000*(1-0.1) = 900 kg. Applicability: Wet-basis moisture.",
+      "verify": "比較含水10%與20%的同重進料。~Compare equal wet feed at10% and20% moisture.",
+      "failure": "以濕重計產率會把水分當纖維。~Wet-mass yield counts water as fiber.",
+      "misconception": "回收紙重量越大就一定含有越多乾纖維。~Heavier recovered paper always contains more dry fiber.",
+      "practice": "在「進料乾纖維基準」的教學模型或試算表中先重現 900 kg，再依驗證任務改動一個輸入、保留其餘條件。對照「以濕重計產率會把水分當纖維。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for dry-fiber feed basis, first reproduce 900 kg, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Wet-mass yield counts water as fiber.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "碎漿濃度~Pulping consistency",
+      "mechanism": "碎漿濃度是乾固體占漿液質量，影響混合、能耗與纖維解離。~Consistency is dry solids over slurry mass and affects mixing, energy and fiber liberation.",
+      "model": "原創假想教學算例：consistency=Mdry/Mslurry;900/15000；計算 900/15000 = 0.06 fraction。適用限制：質量分率，不是體積分率。~Original hypothetical teaching example: consistency=Mdry/Mslurry;900/15000; calculation 900/15000 = 0.06 fraction. Applicability: Mass fraction, not volume fraction.",
+      "verify": "保持乾纖維量，增加水量比較濃度。~Keep dry fiber fixed and add water to compare consistency.",
+      "failure": "將百分濃度直接代入分率公式會差100倍。~Using percent as fraction introduces a hundredfold error.",
+      "misconception": "6%濃度在計算中應填6而非0.06。~6% consistency should be entered as6 rather than0.06.",
+      "practice": "在「碎漿濃度」的教學模型或試算表中先重現 0.06 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「將百分濃度直接代入分率公式會差100倍。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for pulping consistency, first reproduce 0.06 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using percent as fraction introduces a hundredfold error.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "解離能量與纖維保護~Liberation energy and fiber protection",
+      "mechanism": "機械能促進紙張解離，但過度作用會增加纖維損傷與細料。~Mechanical energy liberates paper but excessive action increases fiber damage and fines.",
+      "model": "原創假想教學算例：specific energy=E/Mdry;90kWh/0.9tonne；計算 90/0.9 = 100 kWh/tonne dry。適用限制：假想碎漿電耗。~Original hypothetical teaching example: specific energy=E/Mdry;90kWh/0.9tonne; calculation 90/0.9 = 100 kWh/tonne dry. Applicability: Hypothetical pulping electricity.",
+      "verify": "比較兩種處理時間下未解離片與纖維長度。~Compare unliberated flakes and fiber length at two durations.",
+      "failure": "只追求無紙片可能犧牲纖維強度。~Eliminating every flake may sacrifice fiber strength.",
+      "misconception": "碎漿時間越長就永遠越有利。~Longer pulping is always better.",
+      "practice": "在「解離能量與纖維保護」的教學模型或試算表中先重現 100 kWh/tonne dry，再依驗證任務改動一個輸入、保留其餘條件。對照「只追求無紙片可能犧牲纖維強度。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for liberation energy and fiber protection, first reproduce 100 kWh/tonne dry, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Eliminating every flake may sacrifice fiber strength.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "粗篩與黏著污染~Coarse screening and stickies",
+      "mechanism": "篩選分離大雜質，黏著污染可能變形穿過；溫度和剪切會改變形態。~Screens remove large contaminants; deformable stickies may pass and change with temperature and shear.",
+      "model": "原創假想教學算例：reject mass=feed solids*reject fraction;900*0.04；計算 900*0.04 = 36 kg。適用限制：乾固體排渣量。~Original hypothetical teaching example: reject mass=feed solids*reject fraction;900*0.04; calculation 900*0.04 = 36 kg. Applicability: Dry-solids reject mass.",
+      "verify": "比較排渣中的纖維與塑膠比例。~Compare fiber and plastic fractions in rejects.",
+      "failure": "排渣率提高可能增加纖維損失而非只去雜質。~More rejects can mean more fiber loss, not just contaminant removal.",
+      "misconception": "排渣越多就代表成品品質一定越好。~More rejects necessarily mean better product.",
+      "practice": "在「粗篩與黏著污染」的教學模型或試算表中先重現 36 kg，再依驗證任務改動一個輸入、保留其餘條件。對照「排渣率提高可能增加纖維損失而非只去雜質。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for coarse screening and stickies, first reproduce 36 kg, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"More rejects can mean more fiber loss, not just contaminant removal.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "油墨疏水性與氣泡~Ink hydrophobicity and bubbles",
+      "mechanism": "浮選以油墨顆粒附著氣泡上浮，選擇性取決於表面化學、顆粒與氣泡尺度。~Ink attaches to rising bubbles; selectivity depends on surface chemistry and particle/bubble size.",
+      "model": "原創假想教學算例：bubble surface per gas volume=6/d;d=0.001m；計算 6/0.001 = 6000 m2/m3。適用限制：單一直徑球泡，忽略合併。~Original hypothetical teaching example: bubble surface per gas volume=6/d;d=0.001m; calculation 6/0.001 = 6000 m2/m3. Applicability: Monodisperse spherical bubbles without coalescence.",
+      "verify": "比較兩種氣泡尺寸並討論表面積與夾帶。~Compare two bubble sizes and discuss area and entrainment.",
+      "failure": "氣泡過小並非無條件更好，可能增加水與纖維夾帶。~Smaller bubbles are not unconditionally better and may increase entrainment.",
+      "misconception": "氣泡越小就一定完全沒有纖維損失。~Smaller bubbles guarantee no fiber loss.",
+      "practice": "在「油墨疏水性與氣泡」的教學模型或試算表中先重現 6000 m2/m3，再依驗證任務改動一個輸入、保留其餘條件。對照「氣泡過小並非無條件更好，可能增加水與纖維夾帶。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for ink hydrophobicity and bubbles, first reproduce 6000 m2/m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Smaller bubbles are not unconditionally better and may increase entrainment.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "油墨去除與有效速率~Ink removal and effective rate",
+      "mechanism": "簡化一級模型可比較實驗，但速率會受氣量、化學與進料改變。~A simple first-order model compares tests, but rate depends on air, chemistry and feed.",
+      "model": "原創假想教學算例：remaining fraction=exp(-k t);k=0.4/min;t=3min；計算 exp(-0.4*3) = 0.301194 fraction。適用限制：假想有效速率，非設備保證。~Original hypothetical teaching example: remaining fraction=exp(-k t);k=0.4/min;t=3min; calculation exp(-0.4*3) = 0.301194 fraction. Applicability: Hypothetical effective rate, not equipment guarantee.",
+      "verify": "在相同進料改變氣量，重新估計k。~Vary air at fixed feed and re-estimate k.",
+      "failure": "沿用不同油墨的k會錯估去除。~Using k from another ink misestimates removal.",
+      "misconception": "所有印刷油墨具有同一浮選速率。~Every printing ink has the same flotation rate.",
+      "practice": "在「油墨去除與有效速率」的教學模型或試算表中先重現 0.301194 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「沿用不同油墨的k會錯估去除。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for ink removal and effective rate, first reproduce 0.301194 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using k from another ink misestimates removal.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "浮渣纖維損失~Fiber loss in froth",
+      "mechanism": "泡沫帶走油墨也可能帶走纖維；去墨率和纖維回收需同時量測。~Froth removes ink but can carry fiber; measure ink removal and fiber recovery together.",
+      "model": "原創假想教學算例：fiber yield=(900-45)/900；計算 (900-45)/900 = 0.95 fraction。適用限制：假想乾纖維收支。~Original hypothetical teaching example: fiber yield=(900-45)/900; calculation (900-45)/900 = 0.95 fraction. Applicability: Hypothetical dry-fiber balance.",
+      "verify": "秤量浮渣乾固體並分析其中纖維。~Weigh dry froth solids and determine fiber content.",
+      "failure": "將所有浮渣都當油墨會高估選擇性。~Treating all froth solids as ink overstates selectivity.",
+      "misconception": "浮渣內不可能含有可用纖維。~Froth cannot contain usable fiber.",
+      "practice": "在「浮渣纖維損失」的教學模型或試算表中先重現 0.95 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「將所有浮渣都當油墨會高估選擇性。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for fiber loss in froth, first reproduce 0.95 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Treating all froth solids as ink overstates selectivity.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "洗滌濃縮與水耗~Washing, thickening and water use",
+      "mechanism": "洗滌能移除細小油墨與溶解物，但濾液循環會回帶污染。~Washing removes fine ink and solubles, but recycled filtrate can return contaminants.",
+      "model": "原創假想教學算例：makeup=circulation-purge return;10-7；計算 10-7 = 3 m3/h。適用限制：簡化等體積補水帳目。~Original hypothetical teaching example: makeup=circulation-purge return;10-7; calculation 10-7 = 3 m3/h. Applicability: Simplified equal-volume makeup balance.",
+      "verify": "比較開放與閉合水循環的導電度和白度。~Compare conductivity and brightness in open and closed water loops.",
+      "failure": "只降低新水量可能使溶解污染累積。~Lower freshwater alone can accumulate dissolved contaminants.",
+      "misconception": "水循環越封閉就永遠不需處理溶解污染。~A closed water loop never needs dissolved-contaminant treatment.",
+      "practice": "在「洗滌濃縮與水耗」的教學模型或試算表中先重現 3 m3/h，再依驗證任務改動一個輸入、保留其餘條件。對照「只降低新水量可能使溶解污染累積。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for washing, thickening and water use, first reproduce 3 m3/h, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Lower freshwater alone can accumulate dissolved contaminants.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "白度與殘墨~Brightness and residual ink",
+      "mechanism": "白度受纖維、填料和油墨共同影響，需搭配殘墨與強度測試。~Brightness depends on fiber, fillers and ink and needs residual-ink and strength tests.",
+      "model": "原創假想教學算例：brightness change=after-before;68-60；計算 68-60 = 8 instrument units。適用限制：儀器指標差，不等於百分去墨率。~Original hypothetical teaching example: brightness change=after-before;68-60; calculation 68-60 = 8 instrument units. Applicability: Instrument-index difference, not ink-removal percentage.",
+      "verify": "對同一樣品同時測白度、殘墨與抗張強度。~Measure brightness, residual ink and tensile strength on the same sample.",
+      "failure": "漂白變亮不代表所有油墨已被分離。~Brighter bleaching does not mean ink has been physically separated.",
+      "misconception": "白度增加8點就等於去除8%油墨。~An8-point brightness rise means8% ink removal.",
+      "practice": "在「白度與殘墨」的教學模型或試算表中先重現 8 instrument units，再依驗證任務改動一個輸入、保留其餘條件。對照「漂白變亮不代表所有油墨已被分離。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for brightness and residual ink, first reproduce 8 instrument units, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Brighter bleaching does not mean ink has been physically separated.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "總收率與流程最佳化~Overall yield and process optimization",
+      "mechanism": "串聯各段收率相乘，不能相加；目標是在品質要求下保留最多有用纖維。~Multiply serial yields rather than adding them; preserve useful fiber while meeting quality requirements.",
+      "model": "原創假想教學算例：overall yield=0.96*0.95*0.98；計算 0.96*0.95*0.98 = 0.89376 fraction。適用限制：相同乾纖維基準、串聯無旁通。~Original hypothetical teaching example: overall yield=0.96*0.95*0.98; calculation 0.96*0.95*0.98 = 0.89376 fraction. Applicability: Same dry-fiber basis in serial stages without bypass.",
+      "verify": "將某段收率提高但品質下降的情境納入比較。~Compare a higher-yield stage that worsens quality.",
+      "failure": "只最佳化一段可能把負擔轉移到後段。~Optimizing one stage can shift the burden downstream.",
+      "misconception": "各段收率90%相加即可得到全廠收率。~Adding90% stage yields gives overall plant yield.",
+      "practice": "在「總收率與流程最佳化」的教學模型或試算表中先重現 0.89376 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「只最佳化一段可能把負擔轉移到後段。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for overall yield and process optimization, first reproduce 0.89376 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Optimizing one stage can shift the burden downstream.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-flotation",
+      "title": "廢紙浮選脫墨",
+      "titleEn": "Flotation",
+      "url": "https://www.voith.com/corp-en/papermaking___flotation.html",
+      "organization": "Voith",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-dip",
+      "title": "廢紙回收製漿流程",
+      "titleEn": "BlueLine DIP-process",
+      "url": "https://www.voith.com/corp-en/papermaking/blueline-dip-process.html",
+      "organization": "Voith",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "廢紙分級~Paper grading",
+    "碎漿~Pulping",
+    "篩選除渣~Screening and cleaning",
+    "浮選~Flotation",
+    "洗滌濃縮~Washing and thickening",
+    "白水循環~Process-water loop"
+  ],
+  "place": {
+    "name": "Voith海登海姆資料與研發場域：方法資料來源機構（非實廠）",
+    "nameEn": "Voith source and research location, Heidenheim: methodology source institution (not a process plant)",
+    "country": "德國",
+    "countryEn": "Germany",
+    "lat": 48.68,
+    "lon": 10.15,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.voith.com/corp-en/about-us/markets-locations/germany/heidenheim.html",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "1000*(1-0.1)",
+      "expected": 900,
+      "unit": "kg",
+      "description": "進料乾纖維基準~Dry-fiber feed basis"
+    },
+    {
+      "expression": "900/15000",
+      "expected": 0.06,
+      "unit": "fraction",
+      "description": "碎漿濃度~Pulping consistency"
+    },
+    {
+      "expression": "90/0.9",
+      "expected": 100,
+      "unit": "kWh/tonne dry",
+      "description": "解離能量與纖維保護~Liberation energy and fiber protection"
+    },
+    {
+      "expression": "900*0.04",
+      "expected": 36,
+      "unit": "kg",
+      "description": "粗篩與黏著污染~Coarse screening and stickies"
+    },
+    {
+      "expression": "6/0.001",
+      "expected": 6000,
+      "unit": "m2/m3",
+      "description": "油墨疏水性與氣泡~Ink hydrophobicity and bubbles"
+    },
+    {
+      "expression": "exp(-0.4*3)",
+      "expected": 0.301194212,
+      "unit": "fraction",
+      "description": "油墨去除與有效速率~Ink removal and effective rate"
+    },
+    {
+      "expression": "(900-45)/900",
+      "expected": 0.95,
+      "unit": "fraction",
+      "description": "浮渣纖維損失~Fiber loss in froth"
+    },
+    {
+      "expression": "10-7",
+      "expected": 3,
+      "unit": "m3/h",
+      "description": "洗滌濃縮與水耗~Washing, thickening and water use"
+    },
+    {
+      "expression": "68-60",
+      "expected": 8,
+      "unit": "instrument units",
+      "description": "白度與殘墨~Brightness and residual ink"
+    },
+    {
+      "expression": "0.96*0.95*0.98",
+      "expected": 0.89376,
+      "unit": "fraction",
+      "description": "總收率與流程最佳化~Overall yield and process optimization"
+    }
+  ]
+}

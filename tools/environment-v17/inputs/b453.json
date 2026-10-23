@@ -1,0 +1,200 @@
+{
+  "id": "b453",
+  "title": "再生水水質障壁驗證~Water-reuse treatment-barrier validation",
+  "focus": "獨立障壁、量測界限與事件追溯~Independent barriers, measurement limits and event traceability",
+  "discipline": "environment-water",
+  "summary": "以「獨立障壁、量測界限與事件追溯」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow independent barriers, measurement limits and event traceability through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "危害與用途分開~Separate hazards and uses",
+      "mechanism": "先列用途、暴露途徑與污染類型，再決定驗證指標；濁度不能代表所有化學與病原危害。~Define use, exposure route and contaminant classes before selecting validation measures; turbidity does not represent every chemical or microbial hazard.",
+      "model": "原創假想教學算例：coverage=assessed hazards/identified hazards; 8/10；計算 8/10 = 0.8 fraction。適用限制：僅清單覆蓋率，不是安全機率。~Original hypothetical teaching example: coverage=assessed hazards/identified hazards; 8/10; calculation 8/10 = 0.8 fraction. Applicability: Checklist coverage only, not a safety probability.",
+      "verify": "新增一項化學危害並重新檢查指標覆蓋。~Add a chemical hazard and reassess indicator coverage.",
+      "failure": "用一項出流水指標替代所有危害會造成盲區。~One effluent indicator leaves blind spots for other hazards.",
+      "misconception": "濁度低即可證明所有危害均被控制。~Low turbidity proves control of all hazards.",
+      "practice": "在「危害與用途分開」的教學模型或試算表中先重現 0.8 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「用一項出流水指標替代所有危害會造成盲區。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for separate hazards and uses, first reproduce 0.8 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"One effluent indicator leaves blind spots for other hazards.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "對數去除值~Log-removal value",
+      "mechanism": "LRV是進出濃度比的常用對數；必須有可比較樣品和分析範圍。~LRV is the base-ten logarithm of the inlet/outlet ratio; samples and analytical ranges must be comparable.",
+      "model": "原創假想教學算例：LRV=log10(Cin/Cout); Cin=10000; Cout=10 counts/L；計算 log10(10000/10) = 3 log10。適用限制：同一可量測指標與流態。~Original hypothetical teaching example: LRV=log10(Cin/Cout); Cin=10000; Cout=10 counts/L; calculation log10(10000/10) = 3 log10. Applicability: Same measurable indicator and flow regime.",
+      "verify": "把出水濃度增加十倍並比較LRV下降。~Increase outlet concentration tenfold and compare the LRV reduction.",
+      "failure": "把百分比去除相加會錯估多障壁效果。~Adding percentage removals misestimates multiple barriers.",
+      "misconception": "99%去除就是3-log去除。~99% removal is3-log removal.",
+      "practice": "在「對數去除值」的教學模型或試算表中先重現 3 log10，再依驗證任務改動一個輸入、保留其餘條件。對照「把百分比去除相加會錯估多障壁效果。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for log-removal value, first reproduce 3 log10, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Adding percentage removals misestimates multiple barriers.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "檢出下限形成下界~Detection limit creates a bound",
+      "mechanism": "未檢出只能給濃度上界；由此得到的是LRV下界，不能宣稱無限去除。~Non-detection gives an upper concentration bound and hence a lower LRV bound, not infinite removal.",
+      "model": "原創假想教學算例：LRV_lower=log10(Cin/LOD); Cin=1000; LOD=1；計算 log10(1000/1) = 3 log10 lower bound。適用限制：LOD需用本次方法和基質驗證。~Original hypothetical teaching example: LRV_lower=log10(Cin/LOD); Cin=1000; LOD=1; calculation log10(1000/1) = 3 log10 lower bound. Applicability: LOD must be established for the method and matrix.",
+      "verify": "將LOD降為0.1，重新寫出不等式而非點估計。~Lower LOD to0.1 and rewrite the inequality rather than a point estimate.",
+      "failure": "把未檢出填零會讓對數運算與風險判斷失真。~Entering zero for non-detection corrupts log calculations and interpretation.",
+      "misconception": "未檢出等於濃度精確為零。~Non-detection means concentration is exactly zero.",
+      "practice": "在「檢出下限形成下界」的教學模型或試算表中先重現 3 log10 lower bound，再依驗證任務改動一個輸入、保留其餘條件。對照「把未檢出填零會讓對數運算與風險判斷失真。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for detection limit creates a bound, first reproduce 3 log10 lower bound, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Entering zero for non-detection corrupts log calculations and interpretation.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "串聯障壁的條件~Conditions for serial barriers",
+      "mechanism": "在無旁通且各段驗證範圍成立時，濃度比可相乘、LRV可相加；共因失效須另算。~With no bypass and validated stage conditions, concentration ratios multiply and LRVs add; common-cause failures require separate treatment.",
+      "model": "原創假想教學算例：LRV_total=2+3+1；計算 2+3+1 = 6 log10。適用限制：不含共因失效與未驗證操作區間。~Original hypothetical teaching example: LRV_total=2+3+1; calculation 2+3+1 = 6 log10. Applicability: Excludes common-cause failure and unvalidated conditions.",
+      "verify": "加入一條旁通路徑再比較相加法。~Introduce bypass and compare against simple addition.",
+      "failure": "共用電源失效時，名目獨立障壁可能同時失效。~A shared power failure can disable nominally independent barriers together.",
+      "misconception": "任何三項標稱LRV都能無條件相加。~Any three nominal LRVs may be added unconditionally.",
+      "practice": "在「串聯障壁的條件」的教學模型或試算表中先重現 6 log10，再依驗證任務改動一個輸入、保留其餘條件。對照「共用電源失效時，名目獨立障壁可能同時失效。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for conditions for serial barriers, first reproduce 6 log10, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A shared power failure can disable nominally independent barriers together.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "旁通控制的極限~Bypass-limited performance",
+      "mechanism": "少量未處理旁通會支配最後濃度，即使主要處理線去除極佳。~A small untreated bypass can dominate final concentration even when the main treatment line performs well.",
+      "model": "原創假想教學算例：Cout/Cin=f+(1-f)*r; f=0.001;r=0.000001；計算 0.001+(1-0.001)*0.000001 = 0.001001 fraction。適用限制：完全混合的兩路流，忽略再生長。~Original hypothetical teaching example: Cout/Cin=f+(1-f)*r; f=0.001;r=0.000001; calculation 0.001+(1-0.001)*0.000001 = 0.001001 fraction. Applicability: Two completely mixed streams without regrowth.",
+      "verify": "把旁通率增加十倍，計算總LRV。~Increase bypass tenfold and calculate overall LRV.",
+      "failure": "只測主線出水會漏掉閥件或管路旁通。~Sampling only the main outlet misses valve or pipe bypass.",
+      "misconception": "主線高LRV足以抵銷任意旁通。~High main-line LRV compensates for arbitrary bypass.",
+      "practice": "在「旁通控制的極限」的教學模型或試算表中先重現 0.001001 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「只測主線出水會漏掉閥件或管路旁通。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for bypass-limited performance, first reproduce 0.001001 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Sampling only the main outlet misses valve or pipe bypass.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "代理指標與挑戰試驗~Surrogates and challenge tests",
+      "mechanism": "代理指標需與受控危害建立關係；挑戰試驗的粒徑、表面性質與水質會影響外推。~Relate surrogates to the controlled hazard; challenge-particle size, surface properties and matrix affect extrapolation.",
+      "model": "原創假想教學算例：recovery=measured spike/added spike; 85/100；計算 85/100 = 0.85 fraction。適用限制：分析回收率不等於處理去除率。~Original hypothetical teaching example: recovery=measured spike/added spike; 85/100; calculation 85/100 = 0.85 fraction. Applicability: Analytical recovery is not treatment removal.",
+      "verify": "在空白水與實際基質各做一次加標回收。~Run spike recovery in blank water and process matrix.",
+      "failure": "未修正分析損失會把假去除當障壁能力。~Unaccounted analytical loss looks like barrier removal.",
+      "misconception": "代理物在所有水質下必定與病原完全相同。~A surrogate always behaves identically to the pathogen in every matrix.",
+      "practice": "在「代理指標與挑戰試驗」的教學模型或試算表中先重現 0.85 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「未修正分析損失會把假去除當障壁能力。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for surrogates and challenge tests, first reproduce 0.85 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Unaccounted analytical loss looks like barrier removal.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "監測延遲與隔離容積~Monitoring delay and isolation volume",
+      "mechanism": "分析、通訊與閥切換延遲累積成未確認水量；需追蹤水團位置。~Analysis, communication and valve delays accumulate into unverified volume; track the water parcel.",
+      "model": "原創假想教學算例：V=Q(t_analysis+t_valve); Q=0.04 m3/s; times=60,10 s；計算 0.04*(60+10) = 2.8 m3。適用限制：不含管線與儲槽既有混合水。~Original hypothetical teaching example: V=Q(t_analysis+t_valve); Q=0.04 m3/s; times=60,10 s; calculation 0.04*(60+10) = 2.8 m3. Applicability: Excludes existing mixed inventory in pipes and tanks.",
+      "verify": "延長分析時間並查明哪些水團需隔離。~Extend analysis delay and identify parcels requiring isolation.",
+      "failure": "只計閥門動作時間會低估未確認體積。~Using valve time alone understates unverified volume.",
+      "misconception": "感測器警報沒有任何時間延遲。~Sensor alarms have no time delay.",
+      "practice": "在「監測延遲與隔離容積」的教學模型或試算表中先重現 2.8 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「只計閥門動作時間會低估未確認體積。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for monitoring delay and isolation volume, first reproduce 2.8 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using valve time alone understates unverified volume.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "資料可用率與缺測~Availability and missing data",
+      "mechanism": "完整性需區分正常、校正、缺測與無效狀態；缺測不能自動視為合格。~Separate normal, calibration, missing and invalid states; missing data cannot automatically be accepted.",
+      "model": "原創假想教學算例：availability=valid minutes/total minutes; 1380/1440；計算 1380/1440 = 0.958333 fraction。適用限制：僅資料可用率，不是供水可用率。~Original hypothetical teaching example: availability=valid minutes/total minutes; 1380/1440; calculation 1380/1440 = 0.958333 fraction. Applicability: Data availability only, not water-service availability.",
+      "verify": "將校正時段標為獨立狀態並重算有效資料率。~Mark calibration separately and recalculate valid-data fraction.",
+      "failure": "插值跨越失效事件可能掩蓋警報。~Interpolation across a failure event can conceal an alarm.",
+      "misconception": "只要補值完整，就等於所有原始資料都有效。~A fully imputed series means all original observations were valid.",
+      "practice": "在「資料可用率與缺測」的教學模型或試算表中先重現 0.958333 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「插值跨越失效事件可能掩蓋警報。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for availability and missing data, first reproduce 0.958333 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Interpolation across a failure event can conceal an alarm.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "共同原因與故障樹~Common causes and fault trees",
+      "mechanism": "若兩個障壁共用電源或校正偏差，乘上單獨失效率會高估可靠度。~Shared power or calibration bias invalidates multiplication of independent failure probabilities.",
+      "model": "原創假想教學算例：P_both_independent=p1*p2; p1=0.01;p2=0.02；計算 0.01*0.02 = 0.0002 probability。適用限制：僅獨立假設的比較基準，非真實失效預測。~Original hypothetical teaching example: P_both_independent=p1*p2; p1=0.01;p2=0.02; calculation 0.01*0.02 = 0.0002 probability. Applicability: Independent baseline only, not a real failure forecast.",
+      "verify": "另加共因事件，畫出事件樹並避免重複計數。~Add a common-cause event and draw an event tree without double counting.",
+      "failure": "共用控制器故障可能讓兩條監測線同時報正常。~A shared controller fault can make two monitoring lines falsely report normal.",
+      "misconception": "有兩個感測器就代表失效一定獨立。~Two sensors necessarily fail independently.",
+      "practice": "在「共同原因與故障樹」的教學模型或試算表中先重現 0.0002 probability，再依驗證任務改動一個輸入、保留其餘條件。對照「共用控制器故障可能讓兩條監測線同時報正常。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for common causes and fault trees, first reproduce 0.0002 probability, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A shared controller fault can make two monitoring lines falsely report normal.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "驗證紀錄與變更管理~Validation records and change control",
+      "mechanism": "更換膜、演算法或量測方法可能超出原驗證範圍；證據需綁定版本與操作條件。~A changed membrane, algorithm or method may exceed the validated envelope; bind evidence to versions and conditions.",
+      "model": "原創假想教學算例：traceability=linked records/required records; 18/20；計算 18/20 = 0.9 fraction。適用限制：文件完整性量，不代替水質證據。~Original hypothetical teaching example: traceability=linked records/required records; 18/20; calculation 18/20 = 0.9 fraction. Applicability: Documentation completeness, not water-quality evidence.",
+      "verify": "移除一筆校正版本資料，說明哪些結論不能再追溯。~Remove one calibration-version record and identify conclusions that lose traceability.",
+      "failure": "舊版試驗結果不能無條件證明新設備效能。~Old tests do not unconditionally demonstrate new equipment performance.",
+      "misconception": "只要設備名稱相同就不必評估任何變更。~An unchanged equipment name makes change review unnecessary.",
+      "practice": "在「驗證紀錄與變更管理」的教學模型或試算表中先重現 0.9 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「舊版試驗結果不能無條件證明新設備效能。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for validation records and change control, first reproduce 0.9 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Old tests do not unconditionally demonstrate new equipment performance.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-reusebarrier",
+      "title": "飲用再生水的多重處理障壁",
+      "titleEn": "Potable Water Reuse and Drinking Water",
+      "url": "https://www.epa.gov/ground-water-and-drinking-water/potable-water-reuse-and-drinking-water",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-reuse",
+      "title": "再生水指引與技術架構",
+      "titleEn": "Guidelines for Water Reuse",
+      "url": "https://www.epa.gov/waterreuse/guidelines-water-reuse",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "來源風險~Source risks",
+    "處理鏈~Treatment train",
+    "障壁試驗~Barrier tests",
+    "即時監測~Online monitoring",
+    "隔離儲存~Isolation storage",
+    "證據台帳~Evidence ledger"
+  ],
+  "place": {
+    "name": "美國EPA總部：方法資料來源機構（非實廠）",
+    "nameEn": "US EPA headquarters: methodology source institution (not a process plant)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8941,
+    "lon": -77.0298,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.epa.gov/aboutepa/visiting-epa-headquarters",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "8/10",
+      "expected": 0.8,
+      "unit": "fraction",
+      "description": "危害與用途分開~Separate hazards and uses"
+    },
+    {
+      "expression": "log10(10000/10)",
+      "expected": 3,
+      "unit": "log10",
+      "description": "對數去除值~Log-removal value"
+    },
+    {
+      "expression": "log10(1000/1)",
+      "expected": 3,
+      "unit": "log10 lower bound",
+      "description": "檢出下限形成下界~Detection limit creates a bound"
+    },
+    {
+      "expression": "2+3+1",
+      "expected": 6,
+      "unit": "log10",
+      "description": "串聯障壁的條件~Conditions for serial barriers"
+    },
+    {
+      "expression": "0.001+(1-0.001)*0.000001",
+      "expected": 0.001000999,
+      "unit": "fraction",
+      "description": "旁通控制的極限~Bypass-limited performance"
+    },
+    {
+      "expression": "85/100",
+      "expected": 0.85,
+      "unit": "fraction",
+      "description": "代理指標與挑戰試驗~Surrogates and challenge tests"
+    },
+    {
+      "expression": "0.04*(60+10)",
+      "expected": 2.8,
+      "unit": "m3",
+      "description": "監測延遲與隔離容積~Monitoring delay and isolation volume"
+    },
+    {
+      "expression": "1380/1440",
+      "expected": 0.958333333,
+      "unit": "fraction",
+      "description": "資料可用率與缺測~Availability and missing data"
+    },
+    {
+      "expression": "0.01*0.02",
+      "expected": 0.0002,
+      "unit": "probability",
+      "description": "共同原因與故障樹~Common causes and fault trees"
+    },
+    {
+      "expression": "18/20",
+      "expected": 0.9,
+      "unit": "fraction",
+      "description": "驗證紀錄與變更管理~Validation records and change control"
+    }
+  ]
+}

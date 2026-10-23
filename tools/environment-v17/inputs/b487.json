@@ -1,0 +1,299 @@
+{
+  "id": "b487",
+  "title": "掩埋場滲出水收集~Landfill-leachate collection",
+  "focus": "以水量、排水路徑和污染負荷設計滲出水收集的教學模型~Model leachate collection through water balance, drainage paths and pollutant loading",
+  "discipline": "environment-waste",
+  "summary": "本課以「以水量、排水路徑和污染負荷設計滲出水收集的教學模型」為主軸，依序處理滲出水產生與水量邊界、穿孔管有效通流、泵送揚程與輸送、有機與鹽分輸出負荷、液位與流量感測校正。十個單元各包含機制、算例、量測驗證及失效診斷；數值均為明示的原創教學假設，不能直接用作工程設計、排放限值或設備設定。~This course focuses on Model leachate collection through water balance, drainage paths and pollutant loading, progressing through Leachate generation and water boundary, Perforated-pipe conveyance, Pumping head and transfer, Organic and salt export load, Level and flow calibration. Ten units each address mechanism, worked calculation, measurement verification and failure diagnosis. Numbers are explicit original teaching assumptions, not design values, emission limits or equipment settings.",
+  "history": "這項技術的學習脈絡由單一設備處理，逐步擴展至物質與能量收支、監測品質和生命週期比較。本課將官方方法文件作為查核入口，並以獨立編寫的假想數據練習；參考文件的年代與地區不代表其規範在所有場址適用。~The learning progression expands from individual treatment equipment to mass and energy balances, monitoring quality and lifecycle comparison. Official method documents provide verification starting points while independently authored hypothetical data support practice; a document date or jurisdiction does not establish applicability to every site.",
+  "place": {
+    "name": "教學參考區域：美國北卡羅來納研究三角園區（非本課實拍場址）",
+    "nameEn": "Reference region: Research Triangle Park, North Carolina (not a photographed course facility)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 35.9,
+    "lon": -78.9,
+    "scope": "Approximate institutional reference region; not a facility entrance, installation location or visitor permission."
+  },
+  "architectureNodes": [
+    "滲出水產生與水量邊界~Leachate generation and water boundary",
+    "穿孔管有效通流~Perforated-pipe conveyance",
+    "泵送揚程與輸送~Pumping head and transfer",
+    "有機與鹽分輸出負荷~Organic and salt export load",
+    "液位與流量感測校正~Level and flow calibration",
+    "證據與交接~Evidence and handoff"
+  ],
+  "sources": [
+    {
+      "id": "v17s-waste-landfill",
+      "title": "EPA 都市固體廢棄物掩埋場",
+      "titleEn": "EPA Municipal Solid Waste Landfills",
+      "url": "https://www.epa.gov/landfills/municipal-solid-waste-landfills",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-landfaq",
+      "title": "EPA 掩埋場常見問題",
+      "titleEn": "EPA Frequent Questions about Landfills",
+      "url": "https://www.epa.gov/landfills/frequent-questions-about-landfills",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-remedyguidance",
+      "title": "EPA 土壤、地下水與空氣清理指引",
+      "titleEn": "EPA Guidance for Cleaning Up Groundwater, Soil and Air",
+      "url": "https://www.epa.gov/hw/guidance-cleaning-groundwater-soil-and-air-hazardous-waste-cleanup-facilities",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "units": [
+    {
+      "title": "滲出水產生與水量邊界~Leachate generation and water boundary",
+      "mechanism": "雨水、廢棄物初始含水與生物產水來源不同，先定義計算期間再估入流。 水量平衡以降雨扣除蒸散、逕流及儲量變化估剩餘向下通量。~Rain, initial waste moisture and biological water differ; define the accounting period before estimating inflow. A water balance estimates residual downward flux after evapotranspiration, runoff and storage change.",
+      "model": "原創教學假設，非現場操作值：面積 A=10000 m²；期間雨量 P=0.08 m；蒸散 ET=0.025 m；逕流 R=0.03 m；儲量增加 ΔS=0.005 m。公式 V=A*(P-ET-R-dS)，計算得 200 m³。適用邊界：同一時間窗與面積；每項均為教學輸入，不含橫向地下水。~Original teaching assumptions, not field operating values: Area A=10000 m²; rainfall P=0.08 m; evapotranspiration ET=0.025 m; runoff R=0.03 m; storage increase ΔS=0.005 m. Formula V=A*(P-ET-R-dS) gives 200 m³. Applicability: One time window and area; all terms are teaching inputs and lateral groundwater is excluded.",
+      "verify": "針對「滲出水產生與水量邊界」，將雨量、量測排水與含水變化對齊，對未知項給區間而非強制零殘差。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Leachate generation and water boundary, Align rainfall, measured drainage and moisture change; bound unknown terms rather than forcing zero residual. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "忽略儲水變化會把短期蓄水誤認為永久減滲。 在「滲出水產生與水量邊界」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Ignoring storage change mistakes short-term retention for permanent seepage reduction. Mark where this error can enter the Leachate generation and water boundary flow and name a measurement that distinguishes causes.",
+      "misconception": "沒有立即排水就代表所有降雨永遠不會下滲。~No immediate drainage means none of the rainfall will ever percolate.",
+      "practice": "只將 P 改成 0.10 m，其餘輸入固定。重算結果應由 200 變成 400 m³。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only P to 0.10 m, holding all other inputs fixed. Recalculation changes 200 to 400 m³. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "rain_balance"
+    },
+    {
+      "title": "集排水層坡向~Collection-layer grades",
+      "mechanism": "排水層需導向集水點，局部反坡會增加水頭與積存。 坡度影響重力排水方向；沉陷可改變原有坡向並產生積水。~The drainage layer must lead to sumps; reverse grades increase head and hold-up. Slope controls gravity-drainage direction; settlement can reverse grades and create ponding.",
+      "model": "原創教學假設，非現場操作值：落差 Δz=1.5 m；水平長度 L=50 m。公式 slope=dz/L*100，計算得 3 %。適用邊界：幾何坡度計算，不推定滑動穩定或排水容量。~Original teaching assumptions, not field operating values: Elevation drop Δz=1.5 m; horizontal run L=50 m. Formula slope=dz/L*100 gives 3 %. Applicability: Geometric slope only; slope stability and drainage capacity are not determined.",
+      "verify": "針對「集排水層坡向」，用固定基準點重測縱橫斷面，找出局部反坡而非只量兩端。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Collection-layer grades, Resurvey longitudinal and transverse sections against stable benchmarks to detect local reverse grades. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "端點高差正確仍可能在中間存在窪地。 在「集排水層坡向」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Correct endpoint elevations can still conceal a depression between them. Mark where this error can enter the Collection-layer grades flow and name a measurement that distinguishes causes.",
+      "misconception": "兩端坡度合格即可證明全段沒有積水區。~Acceptable endpoint slope proves there are no ponding zones along the route.",
+      "practice": "只將 Δz 改成 1.0 m，其餘輸入固定。重算結果應由 3 變成 2 %。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Δz to 1.0 m, holding all other inputs fixed. Recalculation changes 3 to 2 %. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "slope"
+    },
+    {
+      "title": "穿孔管有效通流~Perforated-pipe conveyance",
+      "mechanism": "管壁開孔收集與管內輸送是不同環節，平均管速不能證明所有開孔通暢。 滿管平均速度由流量除截面積；結垢縮小內徑可同時增加速度和阻力。~Collection through openings differs from internal conveyance; mean pipe velocity does not prove clear perforations. Full-pipe mean velocity is flow divided by area; scale reduces diameter and can increase both velocity and resistance.",
+      "model": "原創教學假設，非現場操作值：圓管內徑 D=0.10 m；流量 Q=0.005 m³/s。公式 v=4*Q/(pi*D²)，計算得 0.63662 m/s。適用邊界：圓形滿管、無滑移平均值；未計部分充滿、泥砂和非牛頓特性。~Original teaching assumptions, not field operating values: Circular pipe internal diameter D=0.10 m; flow Q=0.005 m³/s. Formula v=4*Q/(pi*D²) gives 0.63662 m/s. Applicability: Circular full pipe and mean velocity; partly full flow, sediment and non-Newtonian behaviour are excluded.",
+      "verify": "針對「穿孔管有效通流」，核對真實內徑與流量，再觀察沖洗前後壓力、固體沉積和流量恢復。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Perforated-pipe conveyance, Verify actual internal diameter and flow, then compare pressure, deposits and flow recovery before and after cleaning. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "使用外徑或名目尺寸代替有效內徑會低估速度。 在「穿孔管有效通流」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Using outer or nominal diameter instead of effective inner diameter understates velocity. Mark where this error can enter the Perforated-pipe conveyance flow and name a measurement that distinguishes causes.",
+      "misconception": "管壁結垢不影響管內流速或水力阻力。~Scale on pipe walls cannot affect velocity or hydraulic resistance.",
+      "practice": "只將內徑 D 改成 0.08 m，其餘輸入固定。重算結果應由 0.63662 變成 0.994718 m/s。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only internal diameter D to 0.08 m, holding all other inputs fixed. Recalculation changes 0.63662 to 0.994718 m/s. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pipe_velocity"
+    },
+    {
+      "title": "集水槽尖峰暫存~Peak sump storage",
+      "mechanism": "將暴雨短時入流與泵送能力重播，找出最高液位而不只看日平均。 儲量變化等於流入減流出的時間積分；尖峰可能超過平均設計流量。~Replay storm-peak inflow against pumping capacity to identify maximum level rather than daily means. Storage change is the time integral of inflow minus outflow; peaks can exceed average design flow.",
+      "model": "原創教學假設，非現場操作值：流入 Qin=30 m³/h；排出 Qout=20 m³/h；持續 t=4 h。公式 dV=(Qin-Qout)*t，計算得 40 m³。適用邊界：固定流量時段與已知初始儲量，不含蒸發或滲漏。~Original teaching assumptions, not field operating values: Inflow Qin=30 m³/h; outflow Qout=20 m³/h; duration t=4 h. Formula dV=(Qin-Qout)*t gives 40 m³. Applicability: Constant flows over the interval and known initial storage; evaporation and leaks are omitted.",
+      "verify": "針對「集水槽尖峰暫存」，比較液位曲線導出的儲量與泵流量積分，測試假想停泵事件的容量餘裕。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Peak sump storage, Compare level-derived storage with integrated pump flows and test capacity margin under a hypothetical pump outage. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只用日平均流量會忽略短時暴雨造成的積存。 在「集水槽尖峰暫存」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Daily mean flow misses storage needed during short storm peaks. Mark where this error can enter the Peak sump storage flow and name a measurement that distinguishes causes.",
+      "misconception": "日平均流入小於日平均排出就保證任何時刻都不溢流。~Lower mean inflow than outflow guarantees no overflow at any time.",
+      "practice": "只將 Qin 改成 40 m³/h，其餘輸入固定。重算結果應由 40 變成 80 m³。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Qin to 40 m³/h, holding all other inputs fixed. Recalculation changes 40 to 80 m³. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "storage"
+    },
+    {
+      "title": "泵送揚程與輸送~Pumping head and transfer",
+      "mechanism": "把集水深度、管損與末端高程列入總揚程，再核對實際泵點。 泵功率需包含靜揚程、摩擦和局部損失的總揚程；效率隨運轉點變動。~Include sump depth, line losses and discharge elevation in total head, then verify the pump operating point. Pump duty uses total head including static lift, friction and local losses; efficiency varies with operating point.",
+      "model": "原創教學假設，非現場操作值：水量 Q=0.01 m³/s；總揚程 H=15 m；ρ=1000 kg/m³；g=9.81 m/s²；η=0.65。公式 P=rho*g*Q*H/eta/1000，計算得 2.26385 kW。適用邊界：清水密度與固定效率概念估算，不替代含固體泵選型或防爆設計。~Original teaching assumptions, not field operating values: Water flow Q=0.01 m³/s; total head H=15 m; ρ=1000 kg/m³; g=9.81 m/s²; η=0.65. Formula P=rho*g*Q*H/eta/1000 gives 2.26385 kW. Applicability: A water-density, fixed-efficiency estimate, not solids-pump selection or hazardous-area design.",
+      "verify": "針對「泵送揚程與輸送」，同時讀取液位、流量、壓力和電力，核對實際工作點。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Pumping head and transfer, Read levels, flow, pressure and power together to verify the actual operating point. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "管道堵塞會提高阻力，固定額定功率不代表固定流量。 在「泵送揚程與輸送」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Pipe blockage raises resistance; a fixed motor rating does not imply fixed flow. Mark where this error can enter the Pumping head and transfer flow and name a measurement that distinguishes causes.",
+      "misconception": "馬達額定功率相同的泵在任何管線都提供相同流量。~Pumps with the same motor rating deliver the same flow through any pipe system.",
+      "practice": "只將 H 改成 20 m，其餘輸入固定。重算結果應由 2.26385 變成 3.01846 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only H to 20 m, holding all other inputs fixed. Recalculation changes 2.26385 to 3.01846 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pump"
+    },
+    {
+      "title": "堵塞與差壓診斷~Clogging and pressure diagnosis",
+      "mechanism": "沉積、生物膜與結垢可能共同堵塞，壓差變化須連同流量判讀。 差壓反映測點間總阻力，須配合同時的流量與氣體狀態判讀。~Sediment, biofilm and scaling can combine to block drainage; interpret pressure changes with flow. Differential pressure reflects resistance between taps and needs concurrent flow and gas-condition data.",
+      "model": "原創教學假設，非現場操作值：量測前壓 p1=1800 Pa；後壓 p2=600 Pa。公式 dp=p1-p2，計算得 1200 Pa。適用邊界：相同基準壓力與測點；單一差壓不能區分所有堵塞或洩漏原因。~Original teaching assumptions, not field operating values: Upstream pressure p1=1800 Pa; downstream pressure p2=600 Pa. Formula dp=p1-p2 gives 1200 Pa. Applicability: Common pressure reference and specified taps; one differential cannot identify every blockage or leak.",
+      "verify": "針對「堵塞與差壓診斷」，檢查導壓管、零點和測點位置，再把差壓與流量趨勢一起畫出。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Clogging and pressure diagnosis, Inspect impulse lines, zero and tap locations, then plot pressure drop with flow. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "導壓管堵塞可能被誤判為設備阻塞。 在「堵塞與差壓診斷」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A blocked impulse line can be mistaken for equipment blockage. Mark where this error can enter the Clogging and pressure diagnosis flow and name a measurement that distinguishes causes.",
+      "misconception": "只要差壓上升，就能確定濾材一定破損。~A higher differential pressure proves the filter medium is damaged.",
+      "practice": "只將 p1 改成 2200 Pa，其餘輸入固定。重算結果應由 1200 變成 1600 Pa。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only p1 to 2200 Pa, holding all other inputs fixed. Recalculation changes 1200 to 1600 Pa. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pressure"
+    },
+    {
+      "title": "有機與鹽分輸出負荷~Organic and salt export load",
+      "mechanism": "高濃度小水量與低濃度大水量可能有相同負荷，後段處理需知道兩者。 流量與濃度共同決定質量負荷；mg/L 乘 m³/d 後除以 1000 得 kg/d。~A small concentrated flow and a large dilute flow can carry equal load; downstream treatment needs both quantities. Flow and concentration jointly determine mass loading; divide mg/L times m³/d by 1000 to obtain kg/d.",
+      "model": "原創教學假設，非現場操作值：流量 Q=120 m³/d；濃度 C=250 mg/L。公式 load=Q*C/1000，計算得 30 kg/d。適用邊界：流量與樣品代表同一時間窗；單點濃度不能代替流量加權平均。~Original teaching assumptions, not field operating values: Flow Q=120 m³/d; concentration C=250 mg/L. Formula load=Q*C/1000 gives 30 kg/d. Applicability: Flow and concentration represent the same time window; a grab value does not replace a flow-weighted mean.",
+      "verify": "針對「有機與鹽分輸出負荷」，對齊流量計與採樣時間，以分時段 Q×C 加總，核對總量與單位。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Organic and salt export load, Align flow-meter and sampling timestamps; sum interval Q×C and check totals and units. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只比較濃度會把稀釋當成污染質量已移除。 在「有機與鹽分輸出負荷」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A concentration-only comparison can mistake dilution for pollutant removal. Mark where this error can enter the Organic and salt export load flow and name a measurement that distinguishes causes.",
+      "misconception": "出流水濃度下降就代表污染總量一定下降。~A lower effluent concentration always means a lower total pollutant load.",
+      "practice": "只將 Q 改成 150 m³/d，其餘輸入固定。重算結果應由 30 變成 37.5 kg/d。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Q to 150 m³/d, holding all other inputs fixed. Recalculation changes 30 to 37.5 kg/d. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "massflow"
+    },
+    {
+      "title": "調勻池停留與混合~Equalization residence and mixing",
+      "mechanism": "調勻可降低波動但不自動去除污染，沉積和死區需有額外觀察。 名目停留時間由有效體積除以通過流量；短流、死區及固液停留差異不在單一平均值內。~Equalization reduces variability but does not automatically remove pollutants; sediment and dead zones need separate observation. Nominal residence time is effective volume divided by flow; short circuits, dead zones and separate solids retention are not represented by one mean.",
+      "model": "原創教學假設，非現場操作值：有效體積 V=600 m³；平均流量 Q=30 m³/d。公式 HRT=V/Q，計算得 20 d。適用邊界：穩態平均流量及單相有效體積近似，不預測停留時間分布。~Original teaching assumptions, not field operating values: Effective volume V=600 m³; mean flow Q=30 m³/d. Formula HRT=V/Q gives 20 d. Applicability: Steady mean flow and a single effective volume; no residence-time distribution is predicted.",
+      "verify": "針對「調勻池停留與混合」，先扣除無效空間，再用示蹤或批次記錄核對停留時間是否分散。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Equalization residence and mixing, Subtract inactive volume, then compare tracer or batch records to detect a broad residence-time distribution. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把幾何容積當有效容積，會掩蓋短流與未處理區。 在「調勻池停留與混合」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Using geometric volume as effective volume hides short-circuiting and untreated zones. Mark where this error can enter the Equalization residence and mixing flow and name a measurement that distinguishes causes.",
+      "misconception": "有相同平均停留時間的設備，其所有粒子停留時間都相同。~Equal mean residence times imply identical residence times for every particle.",
+      "practice": "只將 Q 改成 40 m³/d，其餘輸入固定。重算結果應由 20 變成 15 d。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Q to 40 m³/d, holding all other inputs fixed. Recalculation changes 20 to 15 d. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "retention"
+    },
+    {
+      "title": "液位與流量感測校正~Level and flow calibration",
+      "mechanism": "液位漂移可能掩蓋泵故障，需用獨立量測確認儀表零點與量程。 零點誤差與斜率誤差對不同濃度的影響不同，單點校正不能分開識別兩者。~Level drift can conceal pump faults; independent measurement checks offset and range. Offset and slope errors affect different concentrations differently; a single calibration point cannot identify both.",
+      "model": "原創教學假設，非現場操作值：參考濃度 C=50；儀器響應 y=1.08*C+2。公式 bias=y-C，計算得 6 concentration units。適用邊界：假想線性響應，濃度單位前後一致；不外推至非線性量程。~Original teaching assumptions, not field operating values: Reference concentration C=50; instrument response y=1.08*C+2. Formula bias=y-C gives 6 concentration units. Applicability: Hypothetical linear response with common concentration units; do not extrapolate into nonlinear ranges.",
+      "verify": "針對「液位與流量感測校正」，用空白及至少兩個非零參考點檢查殘差，保留獨立查核樣。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Level and flow calibration, Use blanks and at least two nonzero references to inspect residuals, retaining an independent check standard. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只修正零點會留下隨濃度增加的斜率偏差。 在「液位與流量感測校正」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Correcting offset alone leaves concentration-dependent slope error. Mark where this error can enter the Level and flow calibration flow and name a measurement that distinguishes causes.",
+      "misconception": "零點校正正確就保證所有量程的讀值都正確。~A correct zero guarantees correct readings across the whole range.",
+      "practice": "只將 C 改成 100，其餘輸入固定。重算結果應由 6 變成 10 concentration units。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only reference C to 100, holding all other inputs fixed. Recalculation changes 6 to 10 concentration units. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "calibration"
+    },
+    {
+      "title": "備援與長期維護~Backup and long-term maintenance",
+      "mechanism": "模擬單泵失效並記錄備援切換、清洗和有效服務時間。 可用率描述指定期間能工作的時間比例，並不等於合格產出率。~Simulate one-pump failure and document backup switching, cleaning and effective service time. Availability is the working-time fraction over a specified period, not the compliant-output fraction.",
+      "model": "原創教學假設，非現場操作值：總計畫時數 T=1000 h；停機 t=60 h。公式 availability=(T-t)/T*100，計算得 94 %。適用邊界：明確定義計畫時間與停機分類；未納入性能降額或品質不合格。~Original teaching assumptions, not field operating values: Scheduled time T=1000 h; downtime t=60 h. Formula availability=(T-t)/T*100 gives 94 %. Applicability: Defined scheduled time and downtime categories; derating and rejected output are excluded.",
+      "verify": "針對「備援與長期維護」，對照事件紀錄、備援切換和品質資料，分開統計不可用及不合格時間。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Backup and long-term maintenance, Compare event logs, backup switching and quality data, separating unavailable and nonconforming periods. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "設備在線但數據失效或處理不合格時，不能當作完整有效服務。 在「備援與長期維護」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~An online unit with invalid data or nonconforming treatment is not fully effective service. Mark where this error can enter the Backup and long-term maintenance flow and name a measurement that distinguishes causes.",
+      "misconception": "可用率 100% 就能保證所有產出或量測都合格。~One hundred percent availability guarantees all output and measurements conform.",
+      "practice": "只將 t 改成 90 h，其餘輸入固定。重算結果應由 94 變成 91 %。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only downtime to 90 h, holding all other inputs fixed. Recalculation changes 94 to 91 %. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "availability"
+    }
+  ],
+  "modelChecks": [
+    {
+      "expression": "10000*(0.08-0.025-0.03-0.005)",
+      "expected": 200.0,
+      "unit": "m³",
+      "description": "b487 unit 1 baseline: Leachate generation and water boundary",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10000*(0.10-0.025-0.03-0.005)",
+      "expected": 400.00000000000017,
+      "unit": "m³",
+      "description": "b487 unit 1 sensitivity: Leachate generation and water boundary",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1.5/50*100",
+      "expected": 3.0,
+      "unit": "%",
+      "description": "b487 unit 2 baseline: Collection-layer grades",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1/50*100",
+      "expected": 2.0,
+      "unit": "%",
+      "description": "b487 unit 2 sensitivity: Collection-layer grades",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "4*0.005/(pi*0.1**2)",
+      "expected": 0.6366197723675813,
+      "unit": "m/s",
+      "description": "b487 unit 3 baseline: Perforated-pipe conveyance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "4*0.005/(pi*0.08**2)",
+      "expected": 0.994718394324346,
+      "unit": "m/s",
+      "description": "b487 unit 3 sensitivity: Perforated-pipe conveyance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(30-20)*4",
+      "expected": 40,
+      "unit": "m³",
+      "description": "b487 unit 4 baseline: Peak sump storage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(40-20)*4",
+      "expected": 80,
+      "unit": "m³",
+      "description": "b487 unit 4 sensitivity: Peak sump storage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*9.81*0.01*15/0.65/1000",
+      "expected": 2.263846153846154,
+      "unit": "kW",
+      "description": "b487 unit 5 baseline: Pumping head and transfer",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*9.81*0.01*20/0.65/1000",
+      "expected": 3.0184615384615388,
+      "unit": "kW",
+      "description": "b487 unit 5 sensitivity: Pumping head and transfer",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1800-600",
+      "expected": 1200,
+      "unit": "Pa",
+      "description": "b487 unit 6 baseline: Clogging and pressure diagnosis",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2200-600",
+      "expected": 1600,
+      "unit": "Pa",
+      "description": "b487 unit 6 sensitivity: Clogging and pressure diagnosis",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120*250/1000",
+      "expected": 30.0,
+      "unit": "kg/d",
+      "description": "b487 unit 7 baseline: Organic and salt export load",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "150*250/1000",
+      "expected": 37.5,
+      "unit": "kg/d",
+      "description": "b487 unit 7 sensitivity: Organic and salt export load",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "600/30",
+      "expected": 20.0,
+      "unit": "d",
+      "description": "b487 unit 8 baseline: Equalization residence and mixing",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "600/40",
+      "expected": 15.0,
+      "unit": "d",
+      "description": "b487 unit 8 sensitivity: Equalization residence and mixing",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(1.08*50+2)-50",
+      "expected": 6.0,
+      "unit": "concentration units",
+      "description": "b487 unit 9 baseline: Level and flow calibration",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(1.08*100+2)-100",
+      "expected": 10.0,
+      "unit": "concentration units",
+      "description": "b487 unit 9 sensitivity: Level and flow calibration",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(1000-60)/1000*100",
+      "expected": 94.0,
+      "unit": "%",
+      "description": "b487 unit 10 baseline: Backup and long-term maintenance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(1000-90)/1000*100",
+      "expected": 91.0,
+      "unit": "%",
+      "description": "b487 unit 10 sensitivity: Backup and long-term maintenance",
+      "relativeTolerance": 1e-09
+    }
+  ],
+  "facts": [
+    "所有算例的輸入均為教學假設；官方來源支援方法脈絡，不代表其公開數據。~All numerical inputs are teaching assumptions; official sources support methodological context, not those hypothetical observations.",
+    "原始資料、單位、時間窗與不確定度必須一併保存。~Preserve raw data, units, time windows and uncertainty together."
+  ]
+}

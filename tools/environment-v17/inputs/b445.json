@@ -1,0 +1,291 @@
+{
+  "id": "b445",
+  "title": "飲用水混凝膠凝~Drinking-water coagulation and flocculation",
+  "focus": "原水特性、瓶杯試驗、混凝與絮體成長~Raw-water characteristics, jar tests, coagulation and floc growth",
+  "summary": "本課以原水特性、瓶杯試驗、混凝與絮體成長為主線，從原水變化與處理目的、瓶杯試驗比較設計、活性成分與投加質量、儲液與計量泵換算進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops raw-water characteristics, jar tests, coagulation and floc growth through ten connected units, beginning with source variability and treatment goals, jar-test comparison design, active ingredient and dosing mass, solution and metering-pump conversion. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "原水變化與處理目的~Source variability and treatment goals",
+      "mechanism": "分開濁度、色度、天然有機物、pH 與鹼度；同一濁度不代表相同凝聚需求。~Separate turbidity, color, natural organic matter, pH and alkalinity; equal turbidity does not imply equal coagulation demand.",
+      "model": "原創教學假設：Q=2000 m³/d；DOC=6 mg C/L。模型 LC=Q×DOC/1000，代入得到 12 kg C/d。適用邊界：溶解有機碳負荷，不是濁度換算，也不單獨決定混凝藥量。~Original teaching assumptions: Q=2000 m³/d; DOC=6 mg C/L. Model LC=Q×DOC/1000 gives 12 kg C/d. Applicability: Dissolved-organic-carbon loading, not a turbidity conversion or a stand-alone coagulation-dose predictor.",
+      "verify": "在離線工作台先選取「原水變化與處理目的」的觀測點。以過濾樣本量 DOC，並同步量原水濁度、鹼度及 pH。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for source variability and treatment goals. Measure DOC in filtered samples with concurrent source turbidity, alkalinity and pH. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只依原水濁度線性決定藥量。診斷與介入：重測 DOC 與原水特性，經瓶杯試驗判讀需求而非直接線性投藥。~Dose is determined only by a linear turbidity relationship. Diagnostic response: Remeasure DOC/source properties and assess demand with jar tests rather than direct linear dosing.",
+      "misconception": "濁度是顆粒質量的通用直接換算。~Turbidity universally converts directly to particle mass.",
+      "practice": "只改變 DOC:6→8 mg C/L，其餘假設固定；結果應由 12 變為 16 kg C/d。用「原水變化與處理目的」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only DOC:6→8 mg C/L, holding the other assumptions fixed; the result changes from 12 to 16 kg C/d. Explain the direction using source variability and treatment goals, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "瓶杯試驗比較設計~Jar-test comparison design",
+      "mechanism": "用同批原水控制混合與沉降時間，只改一項劑量或條件，並量殘濁及溶解有機物。~Use one source-water batch with controlled mixing/settling, vary one dose or condition, and measure residual turbidity and dissolved organics.",
+      "model": "原創教學假設：原水濁度=50 NTU；沉降後=5 NTU。模型 ηT=(T0-T)/T0，代入得到 0.9 fraction。適用邊界：濁度指標不是污染物質量或病原去除率。~Original teaching assumptions: Raw turbidity=50 NTU; settled turbidity=5 NTU. Model ηT=(T0-T)/T0 gives 0.9 fraction. Applicability: Turbidity reduction is not contaminant mass or pathogen removal.",
+      "verify": "在離線工作台先選取「瓶杯試驗比較設計」的觀測點。所有杯使用相同攪拌、沉降時間並同時量 pH。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for jar-test comparison design. Use matching mixing/settling times across jars and measure pH. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "同時改藥劑、pH 與時間而宣稱單因素效果。診斷與介入：重做同批原水平行試驗，分開藥量、剪切與時間的影響。~Reagent, pH and time are changed together but interpreted as one-factor effects. Diagnostic response: Repeat parallel tests on one water batch, separating dose, shear and time effects.",
+      "misconception": "最大的可見絮體必定是最佳條件。~The largest visible flocs always indicate the best condition.",
+      "practice": "只改變 T:5→8 NTU，其餘假設固定；結果應由 0.9 變為 0.84 fraction。用「瓶杯試驗比較設計」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only T:5→8 NTU, holding the other assumptions fixed; the result changes from 0.9 to 0.84 fraction. Explain the direction using jar-test comparison design, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "活性成分與投加質量~Active ingredient and dosing mass",
+      "mechanism": "把瓶杯試驗的活性成分濃度轉為質量需求，再確認商用藥液濃度，避免元素與產品基準混用。~Convert active-ingredient concentration to mass demand, then check commercial solution strength without mixing elemental and product bases.",
+      "model": "原創教學假設：Q=2000 m³/d；假設活性成分 D=5 mg/L。模型 M=QD/1000，代入得到 10 kg active/d。適用邊界：僅單位換算示例，不是推薦劑量；藥液濃度須另換算。~Original teaching assumptions: Q=2000 m³/d; assumed active-component dose D=5 mg/L. Model M=QD/1000 gives 10 kg active/d. Applicability: Unit-conversion example only, not a recommended dose; solution concentration requires separate conversion.",
+      "verify": "在離線工作台先選取「活性成分與投加質量」的觀測點。以藥液消耗稱重與處理水量交叉核對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for active ingredient and dosing mass. Cross-check weighed reagent consumption against treated flow. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把標示溶液重量當活性成分重量。診斷與介入：核對活性成分、流量和投加量換算，避免把示例作為推薦設定。~Solution mass is mistaken for active-ingredient mass. Diagnostic response: Check active strength, flow and dosing conversion; do not use the example as a recommended setting.",
+      "misconception": "相同 mg/L 的不同藥品代表相同化學作用。~Equal mg/L of different products means identical chemistry.",
+      "practice": "只改變 Q:2000→2500 m³/d，其餘假設固定；結果應由 10 變為 12.5 kg active/d。用「活性成分與投加質量」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:2000→2500 m³/d, holding the other assumptions fixed; the result changes from 10 to 12.5 kg active/d. Explain the direction using active ingredient and dosing mass, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "儲液與計量泵換算~Solution and metering-pump conversion",
+      "mechanism": "藥液質量分率、密度與泵標定共同決定體積供應；計算後還要用實測消耗驗證。~Mass fraction, density and pump calibration determine solution volume; verify the calculation against measured consumption.",
+      "model": "原創教學假設：活性藥劑=10 kg/d；質量分率=0.20；密度=1.2 kg/L。模型 Vsol=M/(wρ)，代入得到 41.666667 L/d。適用邊界：確認標示為質量分率而非體積分率；密度受溫度影響。~Original teaching assumptions: Active chemical=10 kg/d; mass fraction=0.20; density=1.2 kg/L. Model Vsol=M/(wρ) gives 41.666667 L/d. Applicability: Confirm mass rather than volume fraction; density depends on temperature.",
+      "verify": "在離線工作台先選取「儲液與計量泵換算」的觀測點。核對供應商分析證明與實測密度、泵標定。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for solution and metering-pump conversion. Check certificate of analysis, measured density and pump calibration. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "換了濃度卻沿用原體積設定。診斷與介入：重新確認濃度標示、密度與計量泵實測出量。~A changed solution strength retains the old volumetric setting. Diagnostic response: Reconfirm concentration labeling, density and measured pump delivery.",
+      "misconception": "泵轉速百分比直接等於活性藥量百分比。~Pump-speed percentage directly equals active-dose percentage.",
+      "practice": "只改變 w:0.20→0.25，其餘假設固定；結果應由 41.666667 變為 33.333333 L/d。用「儲液與計量泵換算」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only w:0.20→0.25, holding the other assumptions fixed; the result changes from 41.666667 to 33.333333 L/d. Explain the direction using solution and metering-pump conversion, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "快混分散與局部剪切~Rapid dispersion and local shear",
+      "mechanism": "快速分散讓水解及電荷中和在適當位置發生；平均 G 不顯示短路與局部極端剪切。~Rapid dispersion places hydrolysis/charge neutralization appropriately; mean G does not reveal bypass or local shear extremes.",
+      "model": "原創教學假設：P=100 W；μ=0.001 Pa·s；V=10 m³。模型 G=sqrt(P/(μV))，代入得到 100 s⁻¹。適用邊界：耗散功率平均值，不等於馬達銘牌功率或局部剪切。~Original teaching assumptions: P=100 W; viscosity=0.001 Pa·s; V=10 m³. Model G=sqrt(P/(μV)) gives 100 s⁻¹. Applicability: Mean dissipated power, not nameplate motor power or local shear.",
+      "verify": "在離線工作台先選取「快混分散與局部剪切」的觀測點。校正軸功率、黏度與有效槽容，觀察局部絮體破碎。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for rapid dispersion and local shear. Check shaft power, viscosity and effective volume and observe local floc breakage. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "以平均功率足夠就忽略藥點混合死角。診斷與介入：查實際傳入水中功率、黏度與死角，觀察絮體而非只看電表。~Adequate mean power hides dead zones near injection. Diagnostic response: Check power delivered to water, viscosity and dead zones, observing flocs rather than electricity alone.",
+      "misconception": "攪拌器功率越大越能無限制改善混凝。~More mixer power improves coagulation without limit.",
+      "practice": "只改變 P:100→64 W，其餘假設固定；結果應由 100 變為 80 s⁻¹。用「快混分散與局部剪切」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only P:100→64 W, holding the other assumptions fixed; the result changes from 100 to 80 s⁻¹. Explain the direction using rapid dispersion and local shear, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "膠凝碰撞與停留~Flocculation collisions and residence",
+      "mechanism": "適度碰撞使失穩粒子成長，G 與時間應一起看，同時觀察絮體強度和分級混合。~Controlled collisions grow destabilized particles; assess G and time together with floc strength and staged mixing.",
+      "model": "原創教學假設：G=40 s⁻¹；t=1200 s。模型 Gt=G×t，代入得到 48000 dimensionless。適用邊界：平均剪切指標，不含局部過度剪切與絮體破碎；非單獨驗收標準。~Original teaching assumptions: G=40 s⁻¹; t=1200 s. Model Gt=G×t gives 48000 dimensionless. Applicability: Mean shear exposure, excluding local overshear and floc breakage; not a sole acceptance criterion.",
+      "verify": "在離線工作台先選取「膠凝碰撞與停留」的觀測點。觀察絮體尺寸、沉降性與攪拌功率。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for flocculation collisions and residence. Observe floc size, settleability and mixing power. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只延長時間而忽略後段剪切破碎。診斷與介入：同時比較絮體破碎、沉降和殘濁，離線修正混合分段。~Longer time is assumed beneficial despite downstream breakup. Diagnostic response: Compare breakup, settling and residual turbidity while revising mixing stages offline.",
+      "misconception": "相同 Gt 必定產生相同絮體。~Equal Gt necessarily produces identical flocs.",
+      "practice": "只改變 t:1200→900 s，其餘假設固定；結果應由 48000 變為 36000 dimensionless。用「膠凝碰撞與停留」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only t:1200→900 s, holding the other assumptions fixed; the result changes from 48000 to 36000 dimensionless. Explain the direction using flocculation collisions and residence, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "輸送破碎與復原~Transfer breakup and recovery",
+      "mechanism": "絮凝後彎頭、泵或跌水可能破壞絮體；用相同水樣比較前後沉降與過濾結果。~Bends, pumps or drops after flocculation may break flocs; compare settling/filtering before and after transfer using matched water.",
+      "model": "原創教學假設：原水濁度=50 NTU；沉降後=5 NTU。模型 ηT=(T0-T)/T0，代入得到 0.9 fraction。適用邊界：濁度指標不是污染物質量或病原去除率。~Original teaching assumptions: Raw turbidity=50 NTU; settled turbidity=5 NTU. Model ηT=(T0-T)/T0 gives 0.9 fraction. Applicability: Turbidity reduction is not contaminant mass or pathogen removal.",
+      "verify": "在離線工作台先選取「輸送破碎與復原」的觀測點。所有杯使用相同攪拌、沉降時間並同時量 pH。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for transfer breakup and recovery. Use matching mixing/settling times across jars and measure pH. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "瓶杯試驗很好便忽略實廠輸送剪切。診斷與介入：重做同批原水平行試驗，分開藥量、剪切與時間的影響。~Good jar results lead to ignoring full-scale transfer shear. Diagnostic response: Repeat parallel tests on one water batch, separating dose, shear and time effects.",
+      "misconception": "絮體一旦生成就不受後續流動影響。~Once formed, flocs are unaffected by downstream hydraulics.",
+      "practice": "只改變 T:5→8 NTU，其餘假設固定；結果應由 0.9 變為 0.84 fraction。用「輸送破碎與復原」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only T:5→8 NTU, holding the other assumptions fixed; the result changes from 0.9 to 0.84 fraction. Explain the direction using transfer breakup and recovery, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "澄清負荷與沉降~Clarifier loading and settling",
+      "mechanism": "絮體必須在有限水力時間內分離；表面負荷與沉降試驗共同界定澄清表現。~Flocs must separate within available hydraulics; overflow loading and settling tests jointly describe clarification.",
+      "model": "原創教學假設：Q=3000 m³/d；A=120 m²。模型 SOR=Q/A，代入得到 25 m/d。適用邊界：表面溢流率只是一個水力指標，不能單獨決定絮凝沉降效率。~Original teaching assumptions: Q=3000 m³/d; A=120 m². Model SOR=Q/A gives 25 m/d. Applicability: Surface overflow rate is a hydraulic metric, not a complete predictor of flocculent settling.",
+      "verify": "在離線工作台先選取「澄清負荷與沉降」的觀測點。將流量、池面積與沉降柱結果一起比較。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for clarifier loading and settling. Compare flow and plan area with settling-column observations. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只追求化學去除而忽略池體短流。診斷與介入：比較分池流量及沉降測試，先評估配流是否失衡。~Chemical removal is optimized while hydraulic bypass is ignored. Diagnostic response: Compare cell flows and settling tests, first checking distribution imbalance.",
+      "misconception": "成功混凝就代表沉澱池一定成功。~Successful coagulation guarantees successful clarification.",
+      "practice": "只改變 Q:3000→4200 m³/d，其餘假設固定；結果應由 25 變為 35 m/d。用「澄清負荷與沉降」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:3000→4200 m³/d, holding the other assumptions fixed; the result changes from 25 to 35 m/d. Explain the direction using clarifier loading and settling, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "後續過濾連結~Link to downstream filtration",
+      "mechanism": "澄清殘留顆粒會影響濾程、濁度與反洗量；最佳混凝方案要看完整處理鏈。~Residual clarified particles affect filter run length, turbidity and backwashing; assess coagulation across the whole treatment chain.",
+      "model": "原創教學假設：Q=100 m³/h；濾池面積=20 m²。模型 v=Q/A，代入得到 5 m/h。適用邊界：表觀過濾速度不等於孔隙水速；實際受濾料與水質限制。~Original teaching assumptions: Q=100 m³/h; filter area=20 m². Model v=Q/A gives 5 m/h. Applicability: Superficial filtration velocity differs from pore velocity and is constrained by media and water quality.",
+      "verify": "在離線工作台先選取「後續過濾連結」的觀測點。逐池量流量與水頭損失，檢查分配不均。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for link to downstream filtration. Measure each filter flow/head loss and check maldistribution. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只以澄清池出水最低濁度判定整廠最優。診斷與介入：扣掉停用面積重算濾速，核對各池流量與水質。~Lowest clarifier turbidity alone is used to identify the plant optimum. Diagnostic response: Recalculate using online area and check cell flows/quality.",
+      "misconception": "濾池可無限補救上游絮凝不足。~Filters can indefinitely compensate for inadequate flocculation.",
+      "practice": "只改變 Q:100→120 m³/h，其餘假設固定；結果應由 5 變為 6 m/h。用「後續過濾連結」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:100→120 m³/h, holding the other assumptions fixed; the result changes from 5 to 6 m/h. Explain the direction using link to downstream filtration, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "殘餘物與驗證報告~Residuals and verification report",
+      "mechanism": "把水相成分、污泥及庫存列入收支，確認去除是移到殘餘物而非物質消失。~Account for aqueous constituents, sludge and inventory to show that removal transfers material to residuals rather than making it disappear.",
+      "model": "原創教學假設：進入=15、出流水=2、排泥=12 kg/d。模型 ε=Min-Mwater-Msludge，代入得到 1 kg/d。適用邊界：殘差可能來自儲存、漏算旁流與量測誤差，不能自動當作反應。~Original teaching assumptions: Input=15, effluent=2, sludge=12 kg/d. Model ε=Min-Mwater-Msludge gives 1 kg/d. Applicability: Residual can reflect storage, omitted side streams or measurement error, not automatically a reaction.",
+      "verify": "在離線工作台先選取「殘餘物與驗證報告」的觀測點。畫出所有邊界流股，分列不確定度及庫存變化。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for residuals and verification report. Draw every boundary stream and separate uncertainty from inventory change. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "忽略污泥增加與處置需求。診斷與介入：補列回流、庫存與採樣不確定度，保留無法解釋的差額。~Additional sludge and residual management are omitted. Diagnostic response: Add recycle, inventory and sampling uncertainty, retaining unexplained differences.",
+      "misconception": "水清了就不必追蹤凝聚污泥。~Clear water removes the need to track coagulation sludge.",
+      "practice": "只改變 Msludge:12→12.5 kg/d，其餘假設固定；結果應由 1 變為 0.5 kg/d。用「殘餘物與驗證報告」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Msludge:12→12.5 kg/d, holding the other assumptions fixed; the result changes from 1 to 0.5 kg/d. Explain the direction using residuals and verification report, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-coag",
+      "title": "混凝、膠凝與澄清手冊（2002）",
+      "titleEn": "Coagulation, Flocculation and Clarification Manual (2002)",
+      "url": "https://www.epa.ie/publications/compliance--enforcement/drinking-water/advice--guidance/water-treatment-manuals---coagulation-flocculation--clarification.php",
+      "organization": "Environmental Protection Agency, Ireland",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-filter",
+      "title": "飲用水過濾手冊（2020）",
+      "titleEn": "Water Treatment Manual: Filtration (2020)",
+      "url": "https://www.epa.ie/publications/compliance--enforcement/drinking-water/advice--guidance/epa-water-treatment-manual-filtration.php",
+      "organization": "Environmental Protection Agency, Ireland",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-dwtech",
+      "title": "飲用水處理技術總覽",
+      "titleEn": "Overview of Drinking Water Treatment Technologies",
+      "url": "https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "原水分析~Raw-water analysis",
+    "藥劑計量~Reagent metering",
+    "快速混合~Rapid mixing",
+    "膠凝~Flocculation",
+    "澄清~Clarification",
+    "後續過濾~Downstream filtration",
+    "污泥與出水驗證~Residual and effluent verification"
+  ],
+  "modelChecks": [
+    {
+      "expression": "2000*6/1000",
+      "expected": 12.0,
+      "unit": "kg C/d",
+      "description": "b445 unit 1 docload baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000*8/1000",
+      "expected": 16.0,
+      "unit": "kg C/d",
+      "description": "b445 unit 1 docload perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(50-5)/50",
+      "expected": 0.9,
+      "unit": "fraction",
+      "description": "b445 unit 2 jar baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(50-8)/50",
+      "expected": 0.84,
+      "unit": "fraction",
+      "description": "b445 unit 2 jar perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000*5/1000",
+      "expected": 10.0,
+      "unit": "kg active/d",
+      "description": "b445 unit 3 dose baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2500*5/1000",
+      "expected": 12.5,
+      "unit": "kg active/d",
+      "description": "b445 unit 3 dose perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "10/(.2*1.2)",
+      "expected": 41.66666666666667,
+      "unit": "L/d",
+      "description": "b445 unit 4 solution baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "10/(.25*1.2)",
+      "expected": 33.333333333333336,
+      "unit": "L/d",
+      "description": "b445 unit 4 solution perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "sqrt(100/(.001*10))",
+      "expected": 100.0,
+      "unit": "s⁻¹",
+      "description": "b445 unit 5 mixpower baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "sqrt(64/(.001*10))",
+      "expected": 80.0,
+      "unit": "s⁻¹",
+      "description": "b445 unit 5 mixpower perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "40*1200",
+      "expected": 48000,
+      "unit": "dimensionless",
+      "description": "b445 unit 6 gt baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "40*900",
+      "expected": 36000,
+      "unit": "dimensionless",
+      "description": "b445 unit 6 gt perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(50-5)/50",
+      "expected": 0.9,
+      "unit": "fraction",
+      "description": "b445 unit 7 jar baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(50-8)/50",
+      "expected": 0.84,
+      "unit": "fraction",
+      "description": "b445 unit 7 jar perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "3000/120",
+      "expected": 25.0,
+      "unit": "m/d",
+      "description": "b445 unit 8 sor baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "4200/120",
+      "expected": 35.0,
+      "unit": "m/d",
+      "description": "b445 unit 8 sor perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "100/20",
+      "expected": 5.0,
+      "unit": "m/h",
+      "description": "b445 unit 9 rate baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "120/20",
+      "expected": 6.0,
+      "unit": "m/h",
+      "description": "b445 unit 9 rate perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12",
+      "expected": 1,
+      "unit": "kg/d",
+      "description": "b445 unit 10 residual baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12.5",
+      "expected": 0.5,
+      "unit": "kg/d",
+      "description": "b445 unit 10 residual perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

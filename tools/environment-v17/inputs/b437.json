@@ -1,0 +1,290 @@
+{
+  "id": "b437",
+  "title": "污水曝氣能耗最佳化~Aeration-energy optimization",
+  "focus": "溶氧需求、傳質效率與鼓風系統最佳化~Oxygen demand, transfer efficiency and blower optimization",
+  "summary": "本課以溶氧需求、傳質效率與鼓風系統最佳化為主線，從能耗量測邊界、硝化氧需求盤點、污水修正係數、溶氧驅動差進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops oxygen demand, transfer efficiency and blower optimization through ten connected units, beginning with energy-metering boundary, nitrification oxygen demand, wastewater correction factor, oxygen driving difference. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "能耗量測邊界~Energy-metering boundary",
+      "mechanism": "先分開曝氣、混合及其他用電，建立相同水質要求下的基準。~Separate aeration, mixing and other electricity at matching treatment requirements.",
+      "model": "原創教學假設：電力 E=960 kWh/d；處理量 Q=3000 m³/d。模型 SEC=E/Q，代入得到 0.32 kWh/m³。適用邊界：同一系統邊界與同一日；需同時滿足出流水品質。~Original teaching assumptions: Electricity E=960 kWh/d; flow Q=3000 m³/d. Model SEC=E/Q gives 0.32 kWh/m³. Applicability: Use identical system boundaries and days; effluent quality must also be satisfied.",
+      "verify": "在離線工作台先選取「能耗量測邊界」的觀測點。同步讀取電表、流量計與水質趨勢。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for energy-metering boundary. Synchronize electricity, flow and water-quality trends. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "用全廠電表推論單台鼓風機改善。診斷與介入：配對相同流量與出水品質再比較能耗，列出附屬設備。~A whole-plant meter cannot isolate one blower improvement. Diagnostic response: Compare energy at matched flow/quality and list auxiliary equipment.",
+      "misconception": "只看總電量即可比較曝氣效率。~Total electricity alone compares aeration efficiency.",
+      "practice": "只改變 E:960→840 kWh/d，其餘假設固定；結果應由 0.32 變為 0.28 kWh/m³。用「能耗量測邊界」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only E:960→840 kWh/d, holding the other assumptions fixed; the result changes from 0.32 to 0.28 kWh/m³. Explain the direction using energy-metering boundary, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "硝化氧需求盤點~Nitrification oxygen demand",
+      "mechanism": "氨氮轉化需氧與碳氧化需氧分列，避免把出水惡化當需求降低。~Separate nitrification/carbon demands and do not mistake degraded effluent for lower demand.",
+      "model": "原創教學假設：硝化 NH4-N=40 kg/d；理論 O2/N=4.57。模型 O2=4.57×N，代入得到 182.8 kg O2/d。適用邊界：完全氧化至硝酸鹽的理論需氧；異營與內源耗氧另外列。~Original teaching assumptions: Nitrified NH4-N=40 kg/d; theoretical O2/N=4.57. Model O2=4.57×N gives 182.8 kg O2/d. Applicability: Theoretical complete nitrification demand; heterotrophic and endogenous oxygen demand are separate.",
+      "verify": "在離線工作台先選取「硝化氧需求盤點」的觀測點。把氨氮轉化量與耗氧率作質量配對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for nitrification oxygen demand. Pair ammonium conversion with oxygen-uptake measurements. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "省電同時氨氮上升卻未報告。診斷與介入：分列有機與硝化需氧，用氮轉化量交叉核對。~Energy savings are reported while ammonium rises. Diagnostic response: Separate carbonaceous/nitrification demand and cross-check N conversion.",
+      "misconception": "少送氧必定代表效率提升。~Less oxygen delivery always means higher efficiency.",
+      "practice": "只改變 N:40→50 kg/d，其餘假設固定；結果應由 182.8 變為 228.5 kg O2/d。用「硝化氧需求盤點」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only N:40→50 kg/d, holding the other assumptions fixed; the result changes from 182.8 to 228.5 kg O2/d. Explain the direction using nitrification oxygen demand, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "污水修正係數~Wastewater correction factor",
+      "mechanism": "污水界面活性成分會改變傳質，清水額定值須經現場修正。~Wastewater constituents alter transfer, requiring correction of clean-water ratings.",
+      "model": "原創教學假設：清水 kLa=5 h⁻¹；假設 α=0.60。模型 kLaWW=α kLaCW，代入得到 3 h⁻¹。適用邊界：僅污水修正因子，溫度、鹽度、污染老化另需處理。~Original teaching assumptions: Clean-water kLa=5 h⁻¹; assumed α=0.60. Model kLaWW=α kLaCW gives 3 h⁻¹. Applicability: Wastewater correction only; temperature, salinity and diffuser aging remain separate.",
+      "verify": "在離線工作台先選取「污水修正係數」的觀測點。以相同工況比較清水試驗與污水尾氣資料。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for wastewater correction factor. Compare clean-water testing with wastewater off-gas data at matched conditions. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "將清水效率直接用於高固體污水。診斷與介入：由污水條件與實測傳氧辨識係數，查曝氣器污堵。~Clean-water efficiency is applied directly to high-solids wastewater. Diagnostic response: Identify the coefficient using wastewater transfer measurements and inspect diffuser fouling.",
+      "misconception": "清水和污水的 kLa 永遠相同。~Clean-water and wastewater kLa are always identical.",
+      "practice": "只改變 α:0.60→0.45，其餘假設固定；結果應由 3 變為 2.25 h⁻¹。用「污水修正係數」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only α:0.60→0.45, holding the other assumptions fixed; the result changes from 3 to 2.25 h⁻¹. Explain the direction using wastewater correction factor, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "溶氧驅動差~Oxygen driving difference",
+      "mechanism": "DO 過高減小飽和濃度與水中濃度差，會降低同條件的傳質驅動力。~Excess DO reduces the saturation-to-liquid difference and the transfer driving force.",
+      "model": "原創教學假設：kLa=4 h⁻¹；C*=8 mg/L；C=2 mg/L；V=1000 m³。模型 OTR=kLa(C*-C)V/1000，代入得到 24 kg O2/h。適用邊界：等溫、均勻混合的簡化傳質；kLa 已假設為污水條件。~Original teaching assumptions: kLa=4 h⁻¹; C*=8 mg/L; C=2 mg/L; V=1000 m³. Model OTR=kLa(C*-C)V/1000 gives 24 kg O2/h. Applicability: Isothermal mixed-tank transfer; kLa is assumed to represent wastewater conditions.",
+      "verify": "在離線工作台先選取「溶氧驅動差」的觀測點。比對溶氧剖面、耗氧率與尾氣推估。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for oxygen driving difference. Compare DO profiles, oxygen-uptake rate and off-gas estimates. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把高 DO 當作唯一良好控制指標。診斷與介入：比對不同位置 DO 與耗氧率，區分需求改變和傳氧退化。~High DO is treated as the only good-control indicator. Diagnostic response: Compare spatial DO and oxygen uptake to separate demand changes from transfer deterioration.",
+      "misconception": "DO 越高同一 kLa 的轉氧越快。~Higher DO increases transfer at the same kLa.",
+      "practice": "只改變 C:2→3 mg/L，其餘假設固定；結果應由 24 變為 20 kg O2/h。用「溶氧驅動差」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only C:2→3 mg/L, holding the other assumptions fixed; the result changes from 24 to 20 kg O2/h. Explain the direction using oxygen driving difference, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "空氣需求~Air requirement",
+      "mechanism": "氧需求要經含氧量及傳移效率換算成氣量，不能直接把公斤當立方米。~Convert oxygen mass through air oxygen content and transfer efficiency to air volume.",
+      "model": "原創教學假設：需轉移 O2=24 kg/h；空氣含氧=0.28 kg/m³；轉移效率=0.15。模型 Qair=O2/(cO2η)，代入得到 571.42857 m³ air/h。適用邊界：空氣體積須對應所選標準狀態；效率是假設，非製造商保證。~Original teaching assumptions: Transferred O2=24 kg/h; oxygen in air=0.28 kg/m³; transfer efficiency=0.15. Model Qair=O2/(cO2η) gives 571.42857 m³ air/h. Applicability: Air volume uses the specified reference condition; efficiency is assumed, not manufacturer-guaranteed.",
+      "verify": "在離線工作台先選取「空氣需求」的觀測點。以尾氣量測校正轉移效率，再比較鼓風機流量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for air requirement. Calibrate transfer efficiency using off-gas measurements and compare blower flow. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "空氣標準狀態沒有一致化。診斷與介入：更新氧需求與實測傳氧效率，核對配氣均勻性。~Air reference conditions are not harmonized. Diagnostic response: Update oxygen demand/measured transfer efficiency and check air distribution.",
+      "misconception": "一公斤氧需求就是一立方米空氣。~One kilogram of oxygen demand equals one cubic meter of air.",
+      "practice": "只改變 η:0.15→0.12，其餘假設固定；結果應由 571.42857 變為 714.28571 m³ air/h。用「空氣需求」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only η:0.15→0.12, holding the other assumptions fixed; the result changes from 571.42857 to 714.28571 m³ air/h. Explain the direction using air requirement, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "DO 感測可信度~Credible DO measurement",
+      "mechanism": "探頭偏差影響供氣指令，先排除污染與校正問題再調控制。~Sensor bias changes air commands; eliminate fouling/calibration problems before retuning.",
+      "model": "原創教學假設：參考濃度 x1=0、x2=8 mg/L；儀器讀值 y1=0.2、y2=7.8。模型 slope=(y2-y1)/(x2-x1)，代入得到 0.95 ratio。適用邊界：二點線性校正不能驗證全量程非線性；另留獨立檢查點。~Original teaching assumptions: Reference x1=0, x2=8 mg/L; readings y1=0.2, y2=7.8. Model slope=(y2-y1)/(x2-x1) gives 0.95 ratio. Applicability: Two-point calibration does not validate full-range nonlinearity; reserve an independent check point.",
+      "verify": "在離線工作台先選取「DO 感測可信度」的觀測點。用第三個參考點比較校正殘差與容許誤差。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for credible do measurement. Compare a third reference point with calibration residual and required tolerance. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "補償錯誤探頭造成長期過曝氣。診斷與介入：清潔並依方法校正感測器，以獨立檢查點驗證。~Compensating a biased probe causes chronic over-aeration. Diagnostic response: Clean/calibrate by the relevant method and verify using an independent point.",
+      "misconception": "自動控制能自動修正所有量測錯誤。~Automatic control fixes every measurement error.",
+      "practice": "只改變 y2:7.8→8.2 mg/L，其餘假設固定；結果應由 0.95 變為 1 ratio。用「DO 感測可信度」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only y2:7.8→8.2 mg/L, holding the other assumptions fixed; the result changes from 0.95 to 1 ratio. Explain the direction using credible do measurement, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "轉氧比能率~Oxygen-transfer energy efficiency",
+      "mechanism": "比較單位電力真正轉入的氧，並將控制效果與設備效率分開。~Compare oxygen actually transferred per electricity and separate control effects from equipment efficiency.",
+      "model": "原創教學假設：實際轉氧=480 kg O2/d；用電=400 kWh/d。模型 SAE=O2/E，代入得到 1.2 kg O2/kWh。適用邊界：現場比能率須共同量測與水質約束，不能只看清水額定值。~Original teaching assumptions: Actual oxygen transfer=480 kg O2/d; electricity=400 kWh/d. Model SAE=O2/E gives 1.2 kg O2/kWh. Applicability: Field efficiency needs matched measurements and water-quality constraints, not clean-water ratings alone.",
+      "verify": "在離線工作台先選取「轉氧比能率」的觀測點。把轉氧、負荷與用電放入同一時間窗。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for oxygen-transfer energy efficiency. Place oxygen transfer, loading and electricity in the same interval. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只看鼓風量而沒有轉氧證據。診斷與介入：把氧轉移估算和電力邊界對齊，確認出水品質。~Airflow is compared without oxygen-transfer evidence. Diagnostic response: Align oxygen-transfer/electricity boundaries and verify effluent quality.",
+      "misconception": "送風量越多代表比能率越好。~More airflow means better energy efficiency.",
+      "practice": "只改變 E:400→360 kWh/d，其餘假設固定；結果應由 1.2 變為 1.3333333 kg O2/kWh。用「轉氧比能率」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only E:400→360 kWh/d, holding the other assumptions fixed; the result changes from 1.2 to 1.3333333 kg O2/kWh. Explain the direction using oxygen-transfer energy efficiency, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "分區回流與混合~Zonal recycle and mixing",
+      "mechanism": "回流攜氧可侵入缺氧段；降低曝氣也不能犧牲必要的混合。~Recycle oxygen can enter anoxic zones; reduced aeration must not sacrifice necessary mixing.",
+      "model": "原創教學假設：回流 Qr=6000 m³/d；進流 Q=3000 m³/d。模型 R=Qr/Q，代入得到 2 ratio。適用邊界：回流提高物質交換也帶回溶氧；比值不是脫氮率。~Original teaching assumptions: Recycle Qr=6000 m³/d; influent Q=3000 m³/d. Model R=Qr/Q gives 2 ratio. Applicability: Recycle improves exchange but also carries oxygen; the ratio is not nitrogen-removal efficiency.",
+      "verify": "在離線工作台先選取「分區回流與混合」的觀測點。量回流支線流量、DO 與 NO3-N，避免只讀泵轉速。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for zonal recycle and mixing. Measure recycle flow, DO and nitrate instead of using pump speed alone. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把混合所需動力全部當浪費。診斷與介入：量支線流量及 DO，離線比較回流與攜氧折衷。~All mixing power is incorrectly labeled waste. Diagnostic response: Measure branch flow/DO and compare recycle/oxygen-carryover trade-offs offline.",
+      "misconception": "降低所有混合動力總是有益。~Reducing all mixing power is always beneficial.",
+      "practice": "只改變 Qr:6000→7500 m³/d，其餘假設固定；結果應由 2 變為 2.5 ratio。用「分區回流與混合」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Qr:6000→7500 m³/d, holding the other assumptions fixed; the result changes from 2 to 2.5 ratio. Explain the direction using zonal recycle and mixing, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "尖峰與低負荷情境~Peak and low-load scenarios",
+      "mechanism": "鼓風設備調節範圍須涵蓋負荷變動，平均工況不能代表全天。~Blower turndown must span loading changes; average conditions do not describe a day.",
+      "model": "原創教學假設：峰流=6000 m³/d；平均流=3000 m³/d。模型 PF=Qpeak/Qmean，代入得到 2 ratio。適用邊界：平均、瞬時峰與設計事件尺度須標明，不能用日平均代替尖峰。~Original teaching assumptions: Peak flow=6000 m³/d; mean flow=3000 m³/d. Model PF=Qpeak/Qmean gives 2 ratio. Applicability: State averaging and event scales; a daily mean cannot replace a short-term peak.",
+      "verify": "在離線工作台先選取「尖峰與低負荷情境」的觀測點。比較分鐘流量序列與每日累積水量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for peak and low-load scenarios. Compare minute-scale flow with daily total volume. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "低負荷依舊固定高供氣。診斷與介入：用實際峰值歷線重播，查瞬時水位及下游能力。~High fixed air persists during low loading. Diagnostic response: Replay actual peak hydrographs and check instantaneous levels/downstream capacity.",
+      "misconception": "平均需氧足以決定全天供氣。~Average oxygen demand determines all-day air supply.",
+      "practice": "只改變 Qpeak:6000→7500 m³/d，其餘假設固定；結果應由 2 變為 2.5 ratio。用「尖峰與低負荷情境」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Qpeak:6000→7500 m³/d, holding the other assumptions fixed; the result changes from 2 to 2.5 ratio. Explain the direction using peak and low-load scenarios, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "節能驗收~Energy-saving acceptance",
+      "mechanism": "驗收同時比較出水、污泥與能源，使用可重播的前後相近負荷時段。~Accept savings using comparable replayable periods and checking effluent, sludge and energy.",
+      "model": "原創教學假設：電力 E=960 kWh/d；處理量 Q=3000 m³/d。模型 SEC=E/Q，代入得到 0.32 kWh/m³。適用邊界：同一系統邊界與同一日；需同時滿足出流水品質。~Original teaching assumptions: Electricity E=960 kWh/d; flow Q=3000 m³/d. Model SEC=E/Q gives 0.32 kWh/m³. Applicability: Use identical system boundaries and days; effluent quality must also be satisfied.",
+      "verify": "在離線工作台先選取「節能驗收」的觀測點。同步讀取電表、流量計與水質趨勢。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for energy-saving acceptance. Synchronize electricity, flow and water-quality trends. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "前後水量不同使每度電比較失真。診斷與介入：配對相同流量與出水品質再比較能耗，列出附屬設備。~Different before/after flows distort electricity comparisons. Diagnostic response: Compare energy at matched flow/quality and list auxiliary equipment.",
+      "misconception": "電費降低即可證明處理改善。~A lower bill proves improved treatment.",
+      "practice": "只改變 E:960→840 kWh/d，其餘假設固定；結果應由 0.32 變為 0.28 kWh/m³。用「節能驗收」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only E:960→840 kWh/d, holding the other assumptions fixed; the result changes from 0.32 to 0.28 kWh/m³. Explain the direction using energy-saving acceptance, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-energy",
+      "title": "水務能源效率",
+      "titleEn": "Energy Efficiency for Water Utilities",
+      "url": "https://www.epa.gov/sustainable-water-infrastructure/energy-efficiency-water-utilities",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-ontario",
+      "title": "污水設施能源節約方法",
+      "titleEn": "Energy Conservation Measures for Sewage Works",
+      "url": "https://www.ontario.ca/document/water-and-energy-conservation-guidance-manual-sewage-works/energy-conservation-measures",
+      "organization": "Government of Ontario",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-nutrient",
+      "title": "營養鹽控制設計手冊（2010）",
+      "titleEn": "Nutrient Control Design Manual (2010)",
+      "url": "https://www.epa.gov/sustainable-water-infrastructure/nutrient-control-design-manual",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "有機及氮負荷~Organic and nitrogen loading",
+    "氧需求估計~Oxygen-demand estimate",
+    "鼓風與配氣~Blowers and air distribution",
+    "氣液傳氧~Gas-liquid oxygen transfer",
+    "溶氧及水質回饋~DO and quality feedback",
+    "能耗驗證~Energy verification"
+  ],
+  "modelChecks": [
+    {
+      "expression": "960/3000",
+      "expected": 0.32,
+      "unit": "kWh/m³",
+      "description": "b437 unit 1 energy baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "840/3000",
+      "expected": 0.28,
+      "unit": "kWh/m³",
+      "description": "b437 unit 1 energy perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "4.57*40",
+      "expected": 182.8,
+      "unit": "kg O2/d",
+      "description": "b437 unit 2 nito2 baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "4.57*50",
+      "expected": 228.5,
+      "unit": "kg O2/d",
+      "description": "b437 unit 2 nito2 perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".60*5",
+      "expected": 3.0,
+      "unit": "h⁻¹",
+      "description": "b437 unit 3 alpha baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".45*5",
+      "expected": 2.25,
+      "unit": "h⁻¹",
+      "description": "b437 unit 3 alpha perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "4*(8-2)*1000/1000",
+      "expected": 24.0,
+      "unit": "kg O2/h",
+      "description": "b437 unit 4 otr baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "4*(8-3)*1000/1000",
+      "expected": 20.0,
+      "unit": "kg O2/h",
+      "description": "b437 unit 4 otr perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "24/(.28*.15)",
+      "expected": 571.4285714285714,
+      "unit": "m³ air/h",
+      "description": "b437 unit 5 airreq baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "24/(.28*.12)",
+      "expected": 714.2857142857142,
+      "unit": "m³ air/h",
+      "description": "b437 unit 5 airreq perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(7.8-.2)/8",
+      "expected": 0.95,
+      "unit": "ratio",
+      "description": "b437 unit 6 calib baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(8.2-.2)/8",
+      "expected": 0.9999999999999999,
+      "unit": "ratio",
+      "description": "b437 unit 6 calib perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "480/400",
+      "expected": 1.2,
+      "unit": "kg O2/kWh",
+      "description": "b437 unit 7 oxygenenergy baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "480/360",
+      "expected": 1.3333333333333333,
+      "unit": "kg O2/kWh",
+      "description": "b437 unit 7 oxygenenergy perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6000/3000",
+      "expected": 2.0,
+      "unit": "ratio",
+      "description": "b437 unit 8 recycle baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "7500/3000",
+      "expected": 2.5,
+      "unit": "ratio",
+      "description": "b437 unit 8 recycle perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6000/3000",
+      "expected": 2.0,
+      "unit": "ratio",
+      "description": "b437 unit 9 peakratio baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "7500/3000",
+      "expected": 2.5,
+      "unit": "ratio",
+      "description": "b437 unit 9 peakratio perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "960/3000",
+      "expected": 0.32,
+      "unit": "kWh/m³",
+      "description": "b437 unit 10 energy baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "840/3000",
+      "expected": 0.28,
+      "unit": "kWh/m³",
+      "description": "b437 unit 10 energy perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "id": "b456",
+  "title": "屋頂綠化排水與防水~Green-roof drainage and waterproofing",
+  "focus": "綠屋頂的水、重量與防水界面~Water, weight and waterproofing interfaces in green roofs",
+  "discipline": "environment-urban",
+  "summary": "以「綠屋頂的水、重量與防水界面」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow water, weight and waterproofing interfaces in green roofs through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "屋面集水邊界~Roof catchment boundary",
+      "mechanism": "依分水坡度定義每一排水口的集水面積；不得把相鄰區域重複計入或漏掉。~Define each outlet catchment from roof slopes without omissions or double counting.",
+      "model": "原創假想教學算例：V=P A;P=0.025 m;A=200 m2；計算 0.025*200 = 5 m3。適用限制：一場均勻降雨，未扣截留。~Original hypothetical teaching example: V=P A;P=0.025 m;A=200 m2; calculation 0.025*200 = 5 m3. Applicability: One uniform storm before interception losses.",
+      "verify": "沿屋面坡向標示200m2的集水邊界。~Map the200m2 catchment along roof slopes.",
+      "failure": "排水分區錯置會低估個別排水口流量。~Incorrect drainage zoning understates individual outlet flows.",
+      "misconception": "整棟屋頂只有總面積重要，各口分區可忽略。~Only total roof area matters; outlet catchments can be ignored.",
+      "practice": "在「屋面集水邊界」的教學模型或試算表中先重現 5 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「排水分區錯置會低估個別排水口流量。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for roof catchment boundary, first reproduce 5 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Incorrect drainage zoning understates individual outlet flows.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "飽和載重~Saturated loading",
+      "mechanism": "植物、介質與滯留水都增加屋頂重量；乾介質重量不能代表暴雨後載重。~Vegetation, substrate and retained water add roof weight; dry substrate does not represent post-storm loading.",
+      "model": "原創假想教學算例：mass per area=rho_sat d;rho_sat=1200 kg/m3;d=0.12 m；計算 1200*0.12 = 144 kg/m2。適用限制：只計介質，其他層與活載另列。~Original hypothetical teaching example: mass per area=rho_sat d;rho_sat=1200 kg/m3;d=0.12 m; calculation 1200*0.12 = 144 kg/m2. Applicability: Substrate only; other layers and live loads separate.",
+      "verify": "列出各層飽和質量，與結構設計資料對照。~List saturated layer masses and compare with structural design data.",
+      "failure": "以乾密度檢核結構會漏掉蓄水重量。~Checking with dry density omits stored-water mass.",
+      "misconception": "植物越輕就代表整個綠屋頂沒有額外荷重。~Light vegetation means the entire green roof has no extra load.",
+      "practice": "在「飽和載重」的教學模型或試算表中先重現 144 kg/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「以乾密度檢核結構會漏掉蓄水重量。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for saturated loading, first reproduce 144 kg/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Checking with dry density omits stored-water mass.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "可用蓄水量~Available storage",
+      "mechanism": "可用水容積取決於初始含水率與可達含水率差；同一屋頂在連續雨天容量不同。~Available storage depends on the gap between initial and attainable moisture; successive storms have different capacity.",
+      "model": "原創假想教學算例：S=A d DeltaTheta;A=200;d=0.12;DeltaTheta=0.15；計算 200*0.12*0.15 = 3.6 m3。適用限制：均勻介質且忽略優先流。~Original hypothetical teaching example: S=A d DeltaTheta;A=200;d=0.12;DeltaTheta=0.15; calculation 200*0.12*0.15 = 3.6 m3. Applicability: Uniform medium without preferential flow.",
+      "verify": "把初始含水率提高，重算剩餘容量。~Raise initial moisture and recalculate remaining storage.",
+      "failure": "連續降雨時沿用乾屋頂容量會高估滯洪。~Using dry-roof capacity during repeated storms overstates retention.",
+      "misconception": "每場雨開始前屋頂都會自動恢復乾燥。~The roof automatically dries before every storm.",
+      "practice": "在「可用蓄水量」的教學模型或試算表中先重現 3.6 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「連續降雨時沿用乾屋頂容量會高估滯洪。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for available storage, first reproduce 3.6 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using dry-roof capacity during repeated storms overstates retention.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "排水與溢流分流~Drainage and overflow routing",
+      "mechanism": "主排水和緊急溢流需有不同故障路徑；植栽層不能遮住檢修口。~Primary drainage and emergency overflow need distinct failure paths; planting must not obstruct access.",
+      "model": "原創假想教學算例：Qnet=Qrain-Qdrain;Qrain=4;Qdrain=2.5 L/s；計算 4-2.5 = 1.5 L/s。適用限制：假想瞬時收支，不能代替管徑設計。~Original hypothetical teaching example: Qnet=Qrain-Qdrain;Qrain=4;Qdrain=2.5 L/s; calculation 4-2.5 = 1.5 L/s. Applicability: Hypothetical instantaneous balance, not pipe sizing.",
+      "verify": "封閉一個教學排水口，觀察水位與溢流路徑。~Close one simulated outlet and observe ponding and overflow.",
+      "failure": "主排水堵塞而溢流同樣受阻會造成積水增重。~Blocking both primary drain and overflow adds ponded load.",
+      "misconception": "有綠化層就不需要緊急溢流。~A vegetated layer removes the need for emergency overflow.",
+      "practice": "在「排水與溢流分流」的教學模型或試算表中先重現 1.5 L/s，再依驗證任務改動一個輸入、保留其餘條件。對照「主排水堵塞而溢流同樣受阻會造成積水增重。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for drainage and overflow routing, first reproduce 1.5 L/s, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Blocking both primary drain and overflow adds ponded load.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "防水搭接與穿孔~Waterproofing joints and penetrations",
+      "mechanism": "滲漏常沿穿孔、收頭或搭接界面發生；水停留越久，缺陷曝露越長。~Leaks often follow penetrations, terminations or joints; longer ponding extends defect exposure.",
+      "model": "原創假想教學算例：hydrostatic pressure=rho g h;rho=1000;g=9.81;h=0.08 m；計算 1000*9.81*0.08 = 784.8 Pa。適用限制：靜水壓，非防水層合格門檻。~Original hypothetical teaching example: hydrostatic pressure=rho g h;rho=1000;g=9.81;h=0.08 m; calculation 1000*9.81*0.08 = 784.8 Pa. Applicability: Hydrostatic pressure, not a waterproofing acceptance threshold.",
+      "verify": "在模型標記穿孔並比較不同水深的壓力。~Mark penetrations in the model and compare pressures at different depths.",
+      "failure": "看不到室內滴水不代表防水層沒有局部受損。~No indoor dripping does not prove the membrane is intact.",
+      "misconception": "介質可以取代連續防水層。~Growing medium can replace continuous waterproofing.",
+      "practice": "在「防水搭接與穿孔」的教學模型或試算表中先重現 784.8 Pa，再依驗證任務改動一個輸入、保留其餘條件。對照「看不到室內滴水不代表防水層沒有局部受損。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for waterproofing joints and penetrations, first reproduce 784.8 Pa, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"No indoor dripping does not prove the membrane is intact.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "過濾層與介質流失~Filter layer and media loss",
+      "mechanism": "過濾層需同時保留細粒並允許排水；過密或破損都會改變水路。~A filter must retain fines while allowing drainage; excessive tightness or tears change flow paths.",
+      "model": "原創假想教學算例：fines export=C V;C=0.02 kg/m3;V=5 m3；計算 0.02*5 = 0.1 kg。適用限制：假想單場出流水固體負荷。~Original hypothetical teaching example: fines export=C V;C=0.02 kg/m3;V=5 m3; calculation 0.02*5 = 0.1 kg. Applicability: Hypothetical solids export for one storm.",
+      "verify": "採集排水測懸浮固體，對照介質表面沉陷。~Measure solids in drainage and compare surface settlement.",
+      "failure": "濾層堵塞會造成上方積水，破損則使介質流失。~A clogged filter ponds water; a torn filter loses media.",
+      "misconception": "過濾層孔隙越小永遠越好。~Smaller filter pores are always better.",
+      "practice": "在「過濾層與介質流失」的教學模型或試算表中先重現 0.1 kg，再依驗證任務改動一個輸入、保留其餘條件。對照「濾層堵塞會造成上方積水，破損則使介質流失。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for filter layer and media loss, first reproduce 0.1 kg, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A clogged filter ponds water; a torn filter loses media.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "蒸散恢復容量~Evapotranspiration restores capacity",
+      "mechanism": "蒸散在乾燥間隔恢復部分容量，但受植物、氣候和水分限制。~Evapotranspiration restores part of storage during dry intervals but is limited by plants, weather and moisture.",
+      "model": "原創假想教學算例：V_ET=ET A days;ET=0.003 m/day;A=200;days=2；計算 0.003*200*2 = 1.2 m3。適用限制：固定日蒸散的簡化估算。~Original hypothetical teaching example: V_ET=ET A days;ET=0.003 m/day;A=200;days=2; calculation 0.003*200*2 = 1.2 m3. Applicability: Simplified constant daily evapotranspiration.",
+      "verify": "比較一天與三天乾燥間隔的下場雨容量。~Compare next-storm capacity after one versus three dry days.",
+      "failure": "將潛在蒸散當實際值會高估乾燥恢復。~Using potential as actual evapotranspiration overstates recovery.",
+      "misconception": "任何氣候下蒸散都固定不變。~Evapotranspiration is constant in every climate.",
+      "practice": "在「蒸散恢復容量」的教學模型或試算表中先重現 1.2 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「將潛在蒸散當實際值會高估乾燥恢復。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for evapotranspiration restores capacity, first reproduce 1.2 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using potential as actual evapotranspiration overstates recovery.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "土壤濕度感測~Substrate moisture sensing",
+      "mechanism": "感測器需對介質校正；有機質與鹽分會影響介電讀值。~Calibrate sensors to the substrate; organic content and salts affect dielectric readings.",
+      "model": "原創假想教學算例：water depth=theta d;theta=0.25;d=0.12 m；計算 0.25*0.12*1000 = 30 mm。適用限制：均勻體積含水率。~Original hypothetical teaching example: water depth=theta d;theta=0.25;d=0.12 m; calculation 0.25*0.12*1000 = 30 mm. Applicability: Uniform volumetric moisture.",
+      "verify": "用秤重法與感測值在三種含水率下比較。~Compare gravimetric and sensor estimates at three moisture levels.",
+      "failure": "使用礦質土校正於輕質介質可能有系統偏差。~Using mineral-soil calibration for lightweight substrate introduces bias.",
+      "misconception": "任何土壤濕度感測器出廠後都不需介質校正。~Factory calibration is sufficient for every substrate.",
+      "practice": "在「土壤濕度感測」的教學模型或試算表中先重現 30 mm，再依驗證任務改動一個輸入、保留其餘條件。對照「使用礦質土校正於輕質介質可能有系統偏差。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for substrate moisture sensing, first reproduce 30 mm, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using mineral-soil calibration for lightweight substrate introduces bias.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "降雨削峰與時間步長~Peak attenuation and time step",
+      "mechanism": "削峰要比較時間對齊的進出流量；總截留量不能代替峰值分析。~Compare time-aligned inflow and outflow for peak attenuation; retention volume is not a peak metric.",
+      "model": "原創假想教學算例：peak reduction=(Qin_peak-Qout_peak)/Qin_peak;5,3；計算 (5-3)/5 = 0.4 fraction。適用限制：同一場事件和採樣頻率。~Original hypothetical teaching example: peak reduction=(Qin_peak-Qout_peak)/Qin_peak;5,3; calculation (5-3)/5 = 0.4 fraction. Applicability: Same event and sampling frequency.",
+      "verify": "以1分鐘及15分鐘資料比較峰值遺失程度。~Compare peak loss using one- and15-minute data.",
+      "failure": "低頻平均值可能把真正的排水尖峰抹平。~Low-frequency averaging can erase actual drainage peaks.",
+      "misconception": "截留40%雨量必定代表削峰40%。~Retaining40% of rainfall necessarily cuts peak flow40%.",
+      "practice": "在「降雨削峰與時間步長」的教學模型或試算表中先重現 0.4 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「低頻平均值可能把真正的排水尖峰抹平。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for peak attenuation and time step, first reproduce 0.4 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Low-frequency averaging can erase actual drainage peaks.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "檢修台帳與季節巡查~Inspection ledger and seasonal checks",
+      "mechanism": "排水口、植栽覆蓋、防水收頭需分項紀錄；修補後要追蹤事件表現。~Record outlets, vegetation cover and membrane terminations separately and monitor events after repair.",
+      "model": "原創假想教學算例：coverage=checked outlets/total;11/12；計算 11/12 = 0.916667 fraction。適用限制：巡查覆蓋率，非防水可靠度。~Original hypothetical teaching example: coverage=checked outlets/total;11/12; calculation 11/12 = 0.916667 fraction. Applicability: Inspection coverage, not waterproofing reliability.",
+      "verify": "把未檢查的排水口列成待辦並保留位置照片。~Track unchecked outlets as tasks with location photos.",
+      "failure": "以外觀綠意判定排水良好會漏掉隱蔽堵塞。~Green appearance can conceal blocked drains.",
+      "misconception": "植物長得好就能證明防水和排水都正常。~Healthy vegetation proves both waterproofing and drainage are sound.",
+      "practice": "在「檢修台帳與季節巡查」的教學模型或試算表中先重現 0.916667 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「以外觀綠意判定排水良好會漏掉隱蔽堵塞。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for inspection ledger and seasonal checks, first reproduce 0.916667 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Green appearance can conceal blocked drains.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-green",
+      "title": "綠色基礎設施類型",
+      "titleEn": "Types of Green Infrastructure",
+      "url": "https://www.epa.gov/green-infrastructure/types-green-infrastructure",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-swmm",
+      "title": "暴雨逕流與低衝擊開發模型",
+      "titleEn": "Storm Water Management Model (SWMM)",
+      "url": "https://www.epa.gov/water-research/storm-water-management-model-swmm",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "屋面結構~Roof structure",
+    "防水與阻根~Waterproofing and root barrier",
+    "排水層~Drainage layer",
+    "介質~Growing medium",
+    "植栽~Vegetation",
+    "溢流與檢修~Overflow and inspection"
+  ],
+  "place": {
+    "name": "美國EPA總部：方法資料來源機構（非實廠）",
+    "nameEn": "US EPA headquarters: methodology source institution (not a process plant)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8941,
+    "lon": -77.0298,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.epa.gov/aboutepa/visiting-epa-headquarters",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "0.025*200",
+      "expected": 5,
+      "unit": "m3",
+      "description": "屋面集水邊界~Roof catchment boundary"
+    },
+    {
+      "expression": "1200*0.12",
+      "expected": 144,
+      "unit": "kg/m2",
+      "description": "飽和載重~Saturated loading"
+    },
+    {
+      "expression": "200*0.12*0.15",
+      "expected": 3.6,
+      "unit": "m3",
+      "description": "可用蓄水量~Available storage"
+    },
+    {
+      "expression": "4-2.5",
+      "expected": 1.5,
+      "unit": "L/s",
+      "description": "排水與溢流分流~Drainage and overflow routing"
+    },
+    {
+      "expression": "1000*9.81*0.08",
+      "expected": 784.8,
+      "unit": "Pa",
+      "description": "防水搭接與穿孔~Waterproofing joints and penetrations"
+    },
+    {
+      "expression": "0.02*5",
+      "expected": 0.1,
+      "unit": "kg",
+      "description": "過濾層與介質流失~Filter layer and media loss"
+    },
+    {
+      "expression": "0.003*200*2",
+      "expected": 1.2,
+      "unit": "m3",
+      "description": "蒸散恢復容量~Evapotranspiration restores capacity"
+    },
+    {
+      "expression": "0.25*0.12*1000",
+      "expected": 30,
+      "unit": "mm",
+      "description": "土壤濕度感測~Substrate moisture sensing"
+    },
+    {
+      "expression": "(5-3)/5",
+      "expected": 0.4,
+      "unit": "fraction",
+      "description": "降雨削峰與時間步長~Peak attenuation and time step"
+    },
+    {
+      "expression": "11/12",
+      "expected": 0.916666667,
+      "unit": "fraction",
+      "description": "檢修台帳與季節巡查~Inspection ledger and seasonal checks"
+    }
+  ]
+}

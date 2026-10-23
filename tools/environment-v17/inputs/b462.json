@@ -1,0 +1,200 @@
+{
+  "id": "b462",
+  "title": "都市風廊與通風模擬~Urban ventilation-corridor simulation",
+  "focus": "城市幾何、風場邊界與可驗證CFD~Urban geometry, wind boundaries and verifiable CFD",
+  "discipline": "environment-urban",
+  "summary": "以「城市幾何、風場邊界與可驗證CFD」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow urban geometry, wind boundaries and verifiable cfd through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "風向與暴露情境~Wind directions and exposure cases",
+      "mechanism": "城市通風需要多風向與代表氣象頻率；單一風向不能代表全年。~Urban ventilation requires multiple directions and representative frequencies; one direction does not represent a year.",
+      "model": "原創假想教學算例：weighted speed=sum(p U);0.5*1+0.3*2+0.2*0.5；計算 0.5*1+0.3*2+0.2*0.5 = 1.2 m/s。適用限制：假想三風向權重，非風舒適標準。~Original hypothetical teaching example: weighted speed=sum(p U);0.5*1+0.3*2+0.2*0.5; calculation 0.5*1+0.3*2+0.2*0.5 = 1.2 m/s. Applicability: Hypothetical three-direction weights, not a comfort standard.",
+      "verify": "改變風向權重，觀察平均風速與低風區。~Change directional weights and examine mean speed and stagnant areas.",
+      "failure": "選有利風向可能掩蓋常見弱通風情境。~Choosing a favorable direction hides frequent weak-ventilation cases.",
+      "misconception": "一個風向模擬即可證明全年通風良好。~One simulated wind direction proves good year-round ventilation.",
+      "practice": "在「風向與暴露情境」的教學模型或試算表中先重現 1.2 m/s，再依驗證任務改動一個輸入、保留其餘條件。對照「選有利風向可能掩蓋常見弱通風情境。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for wind directions and exposure cases, first reproduce 1.2 m/s, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Choosing a favorable direction hides frequent weak-ventilation cases.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "相對風速~Velocity ratio",
+      "mechanism": "以共同參考高度的風速歸一化，才能比較建物方案而不混入來流強弱。~Normalize by a common reference-height speed to compare schemes without confounding inflow strength.",
+      "model": "原創假想教學算例：VR=Uped/Uref;Uped=1.2;Uref=4；計算 1.2/4 = 0.3 ratio。適用限制：相同參考高度與來流定義。~Original hypothetical teaching example: VR=Uped/Uref;Uped=1.2;Uref=4; calculation 1.2/4 = 0.3 ratio. Applicability: Same reference height and inflow definition.",
+      "verify": "把參考風速改變，檢查不同方案是否使用一致分母。~Change reference speed and check consistent denominators across schemes.",
+      "failure": "每個方案選不同參考點會製造假改善。~Different reference points create artificial improvements.",
+      "misconception": "不同參考高度的VR可不經說明直接比較。~VRs using different reference heights can be compared without qualification.",
+      "practice": "在「相對風速」的教學模型或試算表中先重現 0.3 ratio，再依驗證任務改動一個輸入、保留其餘條件。對照「每個方案選不同參考點會製造假改善。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for velocity ratio, first reproduce 0.3 ratio, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Different reference points create artificial improvements.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "街谷幾何~Street-canyon geometry",
+      "mechanism": "高寬比影響回流與天空開口，但相同高寬比仍可能有不同沿街通道和熱浮力。~Height-width ratio affects recirculation and sky opening, but equal ratios can have different along-street channels and buoyancy.",
+      "model": "原創假想教學算例：aspect ratio=H/W;H=30;W=20；計算 30/20 = 1.5 ratio。適用限制：幾何指標不是完整流動解。~Original hypothetical teaching example: aspect ratio=H/W;H=30;W=20; calculation 30/20 = 1.5 ratio. Applicability: Geometric indicator, not a full flow solution.",
+      "verify": "比較同高寬比但不同街道方向的配置。~Compare equal aspect ratios with different street orientations.",
+      "failure": "僅用H/W預測所有風速會忽略三維端部效應。~Using H/W alone misses three-dimensional end effects.",
+      "misconception": "高寬比相同的街谷風場必定完全相同。~Equal aspect ratios guarantee identical canyon wind fields.",
+      "practice": "在「街谷幾何」的教學模型或試算表中先重現 1.5 ratio，再依驗證任務改動一個輸入、保留其餘條件。對照「僅用H/W預測所有風速會忽略三維端部效應。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for street-canyon geometry, first reproduce 1.5 ratio, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using H/W alone misses three-dimensional end effects.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "連續方程與通量~Continuity and flux",
+      "mechanism": "不可壓流的進出質量應平衡；殘差下降仍需檢查全域通量。~Incompressible inflow and outflow mass must balance; residual reduction still requires a global flux check.",
+      "model": "原創假想教學算例：relative imbalance=abs(Qin-Qout)/Qin;100,99；計算 abs(100-99)/100 = 0.01 fraction。適用限制：全域流量收支示例。~Original hypothetical teaching example: relative imbalance=abs(Qin-Qout)/Qin;100,99; calculation abs(100-99)/100 = 0.01 fraction. Applicability: Illustrative global volume balance.",
+      "verify": "列出所有開放邊界通量並計總和。~Tabulate fluxes on every open boundary and sum them.",
+      "failure": "只看求解器殘差小可能漏掉邊界設定錯誤。~Small solver residuals can hide incorrect boundaries.",
+      "misconception": "殘差小就不必再檢查質量守恆。~Small residuals make mass-conservation checks unnecessary.",
+      "practice": "在「連續方程與通量」的教學模型或試算表中先重現 0.01 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「只看求解器殘差小可能漏掉邊界設定錯誤。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for continuity and flux, first reproduce 0.01 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Small solver residuals can hide incorrect boundaries.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "來流剖面與地表粗糙~Inflow profile and roughness",
+      "mechanism": "平均速度與紊流邊界需和地表粗糙處理一致，不一致會在到達建物前改變流場。~Mean velocity and turbulence boundaries must match roughness treatment or the flow changes before reaching buildings.",
+      "model": "原創假想教學算例：log-profile ratio=ln(z2/z0)/ln(z1/z0);z2=20;z1=10;z0=0.5；計算 log(20/0.5)/log(10/0.5) = 1.23138 ratio。適用限制：中性、對數層的教學近似。~Original hypothetical teaching example: log-profile ratio=ln(z2/z0)/ln(z1/z0);z2=20;z1=10;z0=0.5; calculation log(20/0.5)/log(10/0.5) = 1.23138 ratio. Applicability: Teaching approximation in a neutral logarithmic layer.",
+      "verify": "用空場模型檢查剖面是否沿程保持。~Use an empty-domain model to check profile preservation.",
+      "failure": "入口給對數剖面但地面用不相容壁函數會造成假剪切。~An incompatible wall treatment creates artificial shear.",
+      "misconception": "入口剖面一旦指定就不會受地面模型影響。~A specified inlet profile is unaffected by the ground model.",
+      "practice": "在「來流剖面與地表粗糙」的教學模型或試算表中先重現 1.23138 ratio，再依驗證任務改動一個輸入、保留其餘條件。對照「入口給對數剖面但地面用不相容壁函數會造成假剪切。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for inflow profile and roughness, first reproduce 1.23138 ratio, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"An incompatible wall treatment creates artificial shear.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "網格敏感度~Mesh sensitivity",
+      "mechanism": "細化需檢查關鍵測點與流動特徵，不只增加總格數；尖角與狹縫要有解析度。~Refine key probes and flow features, not merely total cell count; resolve corners and narrow gaps.",
+      "model": "原創假想教學算例：relative change=abs(Ufine-Umed)/Ufine;1.02,1.00；計算 abs(1.02-1.00)/1.02 = 0.0196078 fraction。適用限制：兩網格比較，不等於正式離散誤差估計。~Original hypothetical teaching example: relative change=abs(Ufine-Umed)/Ufine;1.02,1.00; calculation abs(1.02-1.00)/1.02 = 0.0196078 fraction. Applicability: Two-grid comparison, not a formal discretization-error estimate.",
+      "verify": "在三層網格比較同一行人測點。~Compare the same pedestrian probe across three meshes.",
+      "failure": "只在高風處檢查可能漏掉低風回流區不收斂。~Checking only fast zones misses unresolved recirculation.",
+      "misconception": "網格數多就自動保證結果準確。~Many cells automatically guarantee accuracy.",
+      "practice": "在「網格敏感度」的教學模型或試算表中先重現 0.0196078 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「只在高風處檢查可能漏掉低風回流區不收斂。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for mesh sensitivity, first reproduce 0.0196078 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Checking only fast zones misses unresolved recirculation.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "雷諾數與縮尺~Reynolds number and scale",
+      "mechanism": "風洞與數值模型需評估相似條件；幾何縮尺並不自動維持雷諾數。~Assess similarity for wind-tunnel and numerical models; geometric scaling does not automatically preserve Reynolds number.",
+      "model": "原創假想教學算例：Re=U L/nu;U=2;L=20;nu=1.5e-5；計算 2*20/1.5e-5 = 2.66667e+06 dimensionless。適用限制：單一特徵長度的量級估算。~Original hypothetical teaching example: Re=U L/nu;U=2;L=20;nu=1.5e-5; calculation 2*20/1.5e-5 = 2.66667e+06 dimensionless. Applicability: Order-of-magnitude estimate using one characteristic length.",
+      "verify": "把模型長度縮小100倍並比較Re。~Reduce model length100-fold and compare Re.",
+      "failure": "把縮尺速度不變視為所有物理相似會漏掉尺度效應。~Unchanged model speed does not preserve all physics.",
+      "misconception": "任何幾何縮尺都保持所有無因次數不變。~Any geometric scale change preserves every dimensionless number.",
+      "practice": "在「雷諾數與縮尺」的教學模型或試算表中先重現 2.66667e+06 dimensionless，再依驗證任務改動一個輸入、保留其餘條件。對照「把縮尺速度不變視為所有物理相似會漏掉尺度效應。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for reynolds number and scale, first reproduce 2.66667e+06 dimensionless, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Unchanged model speed does not preserve all physics.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "污染稀釋與通風~Pollutant dilution and ventilation",
+      "mechanism": "較大平均風速不必然降低每一點濃度，污染源位置與回流決定暴露。~Higher average speed does not necessarily lower concentration everywhere; source placement and recirculation govern exposure.",
+      "model": "原創假想教學算例：well-mixed concentration=S/Q;S=20 mg/s;Q=100 m3/s；計算 20/100 = 0.2 mg/m3。適用限制：完全混合箱模型，非街谷CFD結果。~Original hypothetical teaching example: well-mixed concentration=S/Q;S=20 mg/s;Q=100 m3/s; calculation 20/100 = 0.2 mg/m3. Applicability: Well-mixed box model, not a street-canyon CFD result.",
+      "verify": "移動污染源至背風面，觀察局部濃度差異。~Move a source to the leeward side and inspect local concentration.",
+      "failure": "用箱模型平均濃度代替行人局部峰值會低估曝露。~A box average can understate local pedestrian peaks.",
+      "misconception": "風速平均增加就代表所有測點污染濃度都下降。~Higher mean wind speed means lower pollution at every point.",
+      "practice": "在「污染稀釋與通風」的教學模型或試算表中先重現 0.2 mg/m3，再依驗證任務改動一個輸入、保留其餘條件。對照「用箱模型平均濃度代替行人局部峰值會低估曝露。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for pollutant dilution and ventilation, first reproduce 0.2 mg/m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A box average can understate local pedestrian peaks.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "方案比較與開口~Scheme comparison and openings",
+      "mechanism": "開口、退縮與架空層改變通道，但需確認改善是否把不利風移到其他區域。~Openings, setbacks and void decks redirect flow; check whether improvement shifts adverse wind elsewhere.",
+      "model": "原創假想教學算例：improvement=(VRnew-VRold)/VRold;0.36,0.30；計算 (0.36-0.30)/0.30 = 0.2 fraction。適用限制：同參考風速的局部變化。~Original hypothetical teaching example: improvement=(VRnew-VRold)/VRold;0.36,0.30; calculation (0.36-0.30)/0.30 = 0.2 fraction. Applicability: Local change under the same reference speed.",
+      "verify": "畫出全區差值圖而非只報最佳測點。~Map differences over the whole area rather than the best probe.",
+      "failure": "單點改善可能伴隨另一處停滯或加速。~One improved probe can accompany stagnation or acceleration elsewhere.",
+      "misconception": "最佳測點改善就等於全區都改善。~Improvement at the best point means improvement everywhere.",
+      "practice": "在「方案比較與開口」的教學模型或試算表中先重現 0.2 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「單點改善可能伴隨另一處停滯或加速。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for scheme comparison and openings, first reproduce 0.2 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"One improved probe can accompany stagnation or acceleration elsewhere.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "實測驗證與模型限制~Measurement validation and limits",
+      "mechanism": "以風洞或現地資料檢查可觀測量並保留模型差異；計算流場不是經校正數位孿生的自動證明。~Validate observables against wind-tunnel or field data and retain discrepancies; computed flow alone does not establish a calibrated digital twin.",
+      "model": "原創假想教學算例：MAE=(abs(1.1-1)+abs(0.7-0.8)+abs(1.4-1.2))/3；計算 (abs(1.1-1)+abs(0.7-0.8)+abs(1.4-1.2))/3 = 0.133333 m/s。適用限制：三個假想配對測點。~Original hypothetical teaching example: MAE=(abs(1.1-1)+abs(0.7-0.8)+abs(1.4-1.2))/3; calculation (abs(1.1-1)+abs(0.7-0.8)+abs(1.4-1.2))/3 = 0.133333 m/s. Applicability: Three hypothetical paired probes.",
+      "verify": "將風向誤差和速度誤差分開報告。~Report directional and speed errors separately.",
+      "failure": "只展示流線動畫而無量測比較會隱藏模型不確定度。~Streamline animation without measured comparison hides uncertainty.",
+      "misconception": "流場動畫寫實就代表預測已被驗證。~Realistic flow animation means the prediction is validated.",
+      "practice": "在「實測驗證與模型限制」的教學模型或試算表中先重現 0.133333 m/s，再依驗證任務改動一個輸入、保留其餘條件。對照「只展示流線動畫而無量測比較會隱藏模型不確定度。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for measurement validation and limits, first reproduce 0.133333 m/s, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Streamline animation without measured comparison hides uncertainty.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-ava",
+      "title": "香港空氣流通評估技術通告",
+      "titleEn": "Air Ventilation Assessment technical circulars",
+      "url": "https://www.devb.gov.hk/en/publications_and_press_releases/technical_circulars/planning_and_lands_technical_circular/index.html",
+      "organization": "Hong Kong Development Bureau",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-avaresearch",
+      "title": "高密度都市的空氣流通評估研究",
+      "titleEn": "Policies and technical guidelines for urban planning of high-density cities: AVA of Hong Kong",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7117041/",
+      "organization": "Edward Ng, Building and Environment",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "地形與建物~Terrain and buildings",
+    "來流剖面~Inflow profile",
+    "網格~Mesh",
+    "流場求解~Flow solution",
+    "行人測點~Pedestrian probes",
+    "風洞比對~Wind-tunnel comparison"
+  ],
+  "place": {
+    "name": "香港發展局添馬辦公室：方法資料來源機構（非實廠）",
+    "nameEn": "Hong Kong Development Bureau, Tamar: methodology source institution (not a process plant)",
+    "country": "中國香港",
+    "countryEn": "Hong Kong, China",
+    "lat": 22.28,
+    "lon": 114.17,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.devb.gov.hk/en/contactus/index.html",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "0.5*1+0.3*2+0.2*0.5",
+      "expected": 1.2,
+      "unit": "m/s",
+      "description": "風向與暴露情境~Wind directions and exposure cases"
+    },
+    {
+      "expression": "1.2/4",
+      "expected": 0.3,
+      "unit": "ratio",
+      "description": "相對風速~Velocity ratio"
+    },
+    {
+      "expression": "30/20",
+      "expected": 1.5,
+      "unit": "ratio",
+      "description": "街谷幾何~Street-canyon geometry"
+    },
+    {
+      "expression": "abs(100-99)/100",
+      "expected": 0.01,
+      "unit": "fraction",
+      "description": "連續方程與通量~Continuity and flux"
+    },
+    {
+      "expression": "log(20/0.5)/log(10/0.5)",
+      "expected": 1.231378213,
+      "unit": "ratio",
+      "description": "來流剖面與地表粗糙~Inflow profile and roughness"
+    },
+    {
+      "expression": "abs(1.02-1.00)/1.02",
+      "expected": 0.019607843,
+      "unit": "fraction",
+      "description": "網格敏感度~Mesh sensitivity"
+    },
+    {
+      "expression": "2*20/1.5e-5",
+      "expected": 2666666.6667,
+      "unit": "dimensionless",
+      "description": "雷諾數與縮尺~Reynolds number and scale"
+    },
+    {
+      "expression": "20/100",
+      "expected": 0.2,
+      "unit": "mg/m3",
+      "description": "污染稀釋與通風~Pollutant dilution and ventilation"
+    },
+    {
+      "expression": "(0.36-0.30)/0.30",
+      "expected": 0.2,
+      "unit": "fraction",
+      "description": "方案比較與開口~Scheme comparison and openings"
+    },
+    {
+      "expression": "(abs(1.1-1)+abs(0.7-0.8)+abs(1.4-1.2))/3",
+      "expected": 0.133333333,
+      "unit": "m/s",
+      "description": "實測驗證與模型限制~Measurement validation and limits"
+    }
+  ]
+}

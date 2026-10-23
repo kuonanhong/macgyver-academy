@@ -1,0 +1,257 @@
+{
+  "id": "b420",
+  "title": "鹿特丹 Benthemplein 水廣場~Rotterdam Benthemplein water square",
+  "focus": "乾天公共空間與雨天調蓄的切換~Switching between dry-weather public use and storm storage",
+  "summary": "Benthemplein把城市活動空間兼作暴雨調蓄。學徒由屋頂集水走到入口、分池、出流與乾天恢復，辨認容量足夠但入口堵塞或下游頂托的失敗情境。~Benthemplein combines civic activity with storm storage. Follow roof catchments, inlets, basins, outlets and recovery, identifying failure despite sufficient volume when inlets block or downstream backwater occurs.",
+  "discipline": "environment-urban",
+  "units": [
+    {
+      "title": "屋頂與鋪面集水：集水面積與逕流量~Roof/pavement catchment: Catchment area and runoff volume",
+      "mechanism": "降雨量乘面積提供總水量，以逕流係數近似扣除入滲與其他損失；該係數隨土壤與前期濕度而變。本單元在「屋頂與鋪面集水」觀察此因果關係。~Rain depth times area gives total water; a runoff coefficient approximates infiltration and other losses and varies with soil and antecedent moisture. Examine this relationship at roof/pavement catchment.",
+      "model": "明示假設的教學子模型，非場址量測：雨深P=30 mm、集水面積A=10000 m²、C=0.75。公式 V=CPA/1000；代入 0.75*30*10000/1000 = 225 m³。適用邊界：事件總量近似，不能推得尖峰流率或管線容量。~Explicitly hypothetical teaching submodel, not site measurements: rainP=30 mm, catchmentA=10000 m² andC=0.75. Formula V=CPA/1000; substitution 0.75*30*10000/1000 = 225 m³. Boundary: Event-volume approximation; does not predict peak flow or pipe capacity.",
+      "verify": "畫屋頂、路面與綠地分區，分別加權C並核對雨量站。在離線場景為「屋頂與鋪面集水」建立證據表，把原始值、單位、時戳及修正值分開保留。~Map roofs, pavement and vegetation, weight C separately and check rainfall data. Build an offline evidence table for roof/pavement catchment; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "把mm直接乘m²而未除1000會造成千倍錯誤。在場景中標出故障點及其影響的上下游證據。~Multiplying mm bym² without dividing by1000 gives a thousandfold error. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "總雨量相同就保證尖峰淹水風險相同。~Equal storm totals guarantee equal peak flood risk.",
+      "practice": "先點選「屋頂與鋪面集水」量測點並重現基準算例；接著只把C降成0.50，其他條件不變，預測後重算得到 150 m³。與基準 225 m³比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the roof/pavement catchment measurement point and reproduce the baseline; then reduce only C to0.50 with other inputs fixed. Predict and recompute 150 m³. Compare with baseline 225 m³ and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "入口攔污與旁通：入口截留與旁通體積~Inlet debris and bypass: Inlet capture and bypass volume",
+      "mechanism": "地表逕流不一定全進入儲水空間；入口攔污、坡向與旁通共同決定實際捕獲量，缺少入口維護會使容積閒置仍淹水。本單元在「入口攔污與旁通」觀察此因果關係。~Surface runoff does not all enter storage; inlet debris, slope and bypass determine capture, so neglected inlets can cause flooding while storage remains empty. Examine this relationship at inlet debris and bypass.",
+      "model": "明示假設的教學子模型，非場址量測：入流事件300 m³、假設捕獲比例0.85。公式 Vbypass=Vin(1-fcapture)；代入 300*(1-0.85) = 45 m³。適用邊界：捕獲比例為事件平均假設；實際值需依水深、入口形狀和堵塞校準。~Explicitly hypothetical teaching submodel, not site measurements: event inflow300 m³ and assumed capture fraction0.85. Formula Vbypass=Vin(1-fcapture); substitution 300*(1-0.85) = 45 m³. Boundary: Event-average capture is assumed; actual values require depth-, geometry- and blockage-dependent calibration.",
+      "verify": "比較上游逕流、入口與旁通流，雨後記錄攔污覆蓋率及清理前後差異。在離線場景為「入口攔污與旁通」建立證據表，把原始值、單位、時戳及修正值分開保留。~Compare upstream runoff, inlet capture and bypass; document debris coverage and pre/post-cleaning differences. Build an offline evidence table for inlet debris and bypass; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "只擴大池體卻不處理入口阻塞無法提高捕獲；先查流路。在場景中標出故障點及其影響的上下游證據。~Enlarging storage without clearing a blocked inlet does not improve capture; inspect the route first. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "地圖上落在集水區內的雨水都必定進入水廣場。~All rainfall mapped in the catchment necessarily enters the watersquare.",
+      "practice": "先點選「入口攔污與旁通」量測點並重現基準算例；接著只把捕獲比例降成0.60，其他條件不變，預測後重算得到 120 m³。與基準 45 m³比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the inlet debris and bypass measurement point and reproduce the baseline; then reduce only capture fraction to0.60 with other inputs fixed. Predict and recompute 120 m³. Compare with baseline 45 m³ and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "地表導水溝：流速與通水斷面~Surface conveyance gutter: Velocity and flow area",
+      "mechanism": "連續方程 Q=Av 將流量連到平均流速；局部收縮與阻塞提高流速及水頭損失。本單元在「地表導水溝」觀察此因果關係。~Continuity Q=Av links discharge to mean velocity; local contraction and blockage increase velocity and head loss. Examine this relationship at surface conveyance gutter.",
+      "model": "明示假設的教學子模型，非場址量測：流量 Q=0.9 m³/s、有效面積 A=0.6 m²。公式 v=Q/A；代入 0.9/0.6 = 1.5 m/s。適用邊界：均勻平均流；不能用平均流速判定局部沖刷或人員安全。~Explicitly hypothetical teaching submodel, not site measurements: flow Q=0.9 m³/s and clear area A=0.6 m². Formula v=Q/A; substitution 0.9/0.6 = 1.5 m/s. Boundary: Uniform mean flow; local scour or human safety cannot be inferred from mean velocity alone.",
+      "verify": "比較水位、流量與有效面積，再以斷面多點量測查偏流。在離線場景為「地表導水溝」建立證據表，把原始值、單位、時戳及修正值分開保留。~Compare level, flow and clear area, then inspect nonuniformity with multiple section measurements. Build an offline evidence table for surface conveyance gutter; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "只使用名目斷面會忽略攔污物或沉積造成的縮減。在場景中標出故障點及其影響的上下游證據。~Nominal area misses reductions caused by debris or sediment. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "阻塞不會改變同一流量下的流速。~Blockage cannot change velocity at the same flow.",
+      "practice": "先點選「地表導水溝」量測點並重現基準算例；接著只把有效面積減至0.45 m²，其他條件不變，預測後重算得到 2 m/s。與基準 1.5 m/s比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the surface conveyance gutter measurement point and reproduce the baseline; then reduce only clear area to0.45 m² with other inputs fixed. Predict and recompute 2 m/s. Compare with baseline 1.5 m/s and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "各池事件前可用容積：總容積、保留量與可用調蓄~Pre-event available basin volumes: Gross, occupied and available storage",
+      "mechanism": "可用調蓄是幾何容積扣除既存水量與不可用空間；模型必須把公共使用、沉積和事件前水位放進同一邊界。本單元在「各池事件前可用容積」觀察此因果關係。~Available storage is geometric volume less existing water and unusable space; public use, sediment and pre-event water level must share one accounting boundary. Examine this relationship at pre-event available basin volumes.",
+      "model": "明示假設的教學子模型，非場址量測：總容積500 m³、已有水120 m³、不可用容積30 m³。公式 Vavailable=Vgross-Vexisting-Vunusable；代入 500-120-30 = 350 m³。適用邊界：單一時間點幾何帳；不能取代事件水力或溢流路徑分析。~Explicitly hypothetical teaching submodel, not site measurements: gross volume500 m³, existing water120 m³ and unusable volume30 m³. Formula Vavailable=Vgross-Vexisting-Vunusable; substitution 500-120-30 = 350 m³. Boundary: A geometric snapshot, not event routing or overflow-path analysis.",
+      "verify": "用現況地形與水位重建水位—容積表，實測沉積厚度。在離線場景為「各池事件前可用容積」建立證據表，把原始值、單位、時戳及修正值分開保留。~Rebuild the stage-storage table from surveyed geometry and level, measuring sediment thickness. Build an offline evidence table for pre-event available basin volumes; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "把前場雨殘水當零會高估下一場能力；更新初始條件。在場景中標出故障點及其影響的上下游證據。~Assuming zero residual water overstates next-event capacity; update initial conditions. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "圖面總容積就是每次下雨時的可用容量。~Drawing capacity equals available capacity at every storm.",
+      "practice": "先點選「各池事件前可用容積」量測點並重現基準算例；接著只把已有水量升為200 m³，其他條件不變，預測後重算得到 270 m³。與基準 350 m³比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the pre-event available basin volumes measurement point and reproduce the baseline; then increase only existing water to200 m³ with other inputs fixed. Predict and recompute 270 m³. Compare with baseline 350 m³ and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "暴雨分池水量帳：調蓄與連續方程~Storm basin-routing ledger: Storage and continuity",
+      "mechanism": "調蓄量隨入流減出流累積；容積夠大仍須確認退水能力，否則下一場雨開始時未必為空。本單元在「暴雨分池水量帳」觀察此因果關係。~Storage accumulates inflow minus outflow; sufficient geometric volume is not enough if drawdown leaves it occupied before the next storm. Examine this relationship at storm basin-routing ledger.",
+      "model": "明示假設的教學子模型，非場址量測：一小時內 Qin=2.0 m³/s、Qout=0.6 m³/s。公式 ΔV=(Qin-Qout)Δt；代入 (2.0-0.6)*3600 = 5040 m³。適用邊界：矩形單一歷線且無滲漏；真實設計必須積分完整降雨歷線。~Explicitly hypothetical teaching submodel, not site measurements: over one hour Qin=2.0 m³/s and Qout=0.6 m³/s. Formula ΔV=(Qin-Qout)Δt; substitution (2.0-0.6)*3600 = 5040 m³. Boundary: One rectangular hydrograph without leakage; real design must integrate the full event hydrograph.",
+      "verify": "以五分鐘資料逐步積分，再與水位—容積曲線核對。在離線場景為「暴雨分池水量帳」建立證據表，把原始值、單位、時戳及修正值分開保留。~Integrate five-minute data and compare with the stage-storage curve. Build an offline evidence table for storm basin-routing ledger; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "水位計零點漂移會看似增加儲量，需獨立水尺確認。在場景中標出故障點及其影響的上下游證據。~Level-sensor zero drift can mimic storage gain; confirm with an independent staff gauge. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "最大容積等於每場雨都可用的容積。~Maximum volume equals the available volume for every storm.",
+      "practice": "先點選「暴雨分池水量帳」量測點並重現基準算例；接著只把出流提高到0.8 m³/s，其他條件不變，預測後重算得到 4320 m³。與基準 5040 m³比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the storm basin-routing ledger measurement point and reproduce the baseline; then increase only outflow to0.8 m³/s with other inputs fixed. Predict and recompute 4320 m³. Compare with baseline 5040 m³ and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "孔口與尾水條件：出流孔口與水頭變化~Outlet and tailwater conditions: Outlet orifice and changing head",
+      "mechanism": "孔口流量近似與水頭平方根成正比，因此退水末期會變慢；固定流量估算只能是另有控制時的簡化。本單元在「孔口與尾水條件」觀察此因果關係。~Orifice flow is approximately proportional to the square root of head, so late drawdown slows; constant discharge is a simplification requiring separate control. Examine this relationship at outlet and tailwater conditions.",
+      "model": "明示假設的教學子模型，非場址量測：流量係數Cd=0.62、孔口面積0.02 m²、孔心水頭h=0.5 m。公式 Q=Cd A sqrt(2gh)；代入 0.62*0.02*(2*9.81*0.5)**0.5 = 0.03883794 m³/s。適用邊界：自由出流、穩態近似、無尾水淹沒或堵塞；係數為教學假定。~Explicitly hypothetical teaching submodel, not site measurements: Cd=0.62, outlet area0.02 m² and head above outlet center h=0.5 m. Formula Q=Cd A sqrt(2gh); substitution 0.62*0.02*(2*9.81*0.5)**0.5 = 0.03883794 m³/s. Boundary: Quasi-steady free discharge without submergence or blockage; the coefficient is hypothetical.",
+      "verify": "量測上游水位與下游尾水，再以容積變化核對流量。在離線場景為「孔口與尾水條件」建立證據表，把原始值、單位、時戳及修正值分開保留。~Measure upstream level and tailwater, then verify discharge from volume change. Build an offline evidence table for outlet and tailwater conditions; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "下游管網頂托時自由出流式不再適用；切換淹沒邊界並保留溢流路徑。在場景中標出故障點及其影響的上下游證據。~Sewer backwater invalidates free discharge; use a submerged boundary and retain overflow routing. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "水頭降低一半時孔口流量也必然降低一半。~Halving head necessarily halves orifice discharge.",
+      "practice": "先點選「孔口與尾水條件」量測點並重現基準算例；接著只把水頭降為0.125 m，其他條件不變，預測後重算得到 0.01941897 m³/s。與基準 0.03883794 m³/s比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the outlet and tailwater conditions measurement point and reproduce the baseline; then reduce only head to0.125 m with other inputs fixed. Predict and recompute 0.01941897 m³/s. Compare with baseline 0.03883794 m³/s and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "雨後公共使用恢復：退水時間與恢復使用~Post-storm public-use recovery: Drawdown time and return to use",
+      "mechanism": "暫存水需在下次事件前排空並確認使用條件；退水時間由可用排水流量決定。本單元在「雨後公共使用恢復」觀察此因果關係。~Stored water needs drawdown before the next event and a check before public use; available discharge governs drawdown time. Examine this relationship at post-storm public-use recovery.",
+      "model": "明示假設的教學子模型，非場址量測：待排水V=180 m³、定流量Q=15 m³/h。公式 t=V/Q；代入 180/15 = 12 h。適用邊界：固定出流示範；孔口出流隨水頭下降須積分計算。~Explicitly hypothetical teaching submodel, not site measurements: stored waterV=180 m³ and constant dischargeQ=15 m³/h. Formula t=V/Q; substitution 180/15 = 12 h. Boundary: Constant-flow illustration; orifice discharge declining with head needs integration.",
+      "verify": "以水位記錄核對退水曲線，巡查積水與污物後才恢復場地。在離線場景為「雨後公共使用恢復」建立證據表，把原始值、單位、時戳及修正值分開保留。~Check the drawdown curve against level data and inspect standing water and debris before reopening. Build an offline evidence table for post-storm public-use recovery; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "出水口被落葉堵塞會延長不可用時間。在場景中標出故障點及其影響的上下游證據。~Leaf-blocked outlets lengthen unavailable time. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "雨停後場地一定立刻可安全使用。~A space is necessarily ready for safe use immediately when rain stops.",
+      "practice": "先點選「雨後公共使用恢復」量測點並重現基準算例；接著只把Q降成10 m³/h，其他條件不變，預測後重算得到 18 h。與基準 12 h比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the post-storm public-use recovery measurement point and reproduce the baseline; then reduce only Q to10 m³/h with other inputs fixed. Predict and recompute 18 h. Compare with baseline 12 h and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "導水溝沉積粗糙度：重力輸送與粗糙度~Gutter sediment roughness: Gravity conveyance and roughness",
+      "mechanism": "Manning 模型以水力半徑、坡度與粗糙度表示明渠平均輸送能力；加粗表面會降低同水位的流量。本單元在「導水溝沉積粗糙度」觀察此因果關係。~The Manning model relates open-channel capacity to hydraulic radius, slope and roughness; greater roughness reduces discharge at the same depth. Examine this relationship at gutter sediment roughness.",
+      "model": "明示假設的教學子模型，非場址量測：A=4 m²、R=0.8 m、S=0.001、n=0.015。公式 Q=(A/n)R^(2/3)S^(1/2)；代入 (4/0.015)*0.8**(2/3)*0.001**0.5 = 7.267115 m³/s。適用邊界：穩定均勻明渠近似；滿管壓力、回水與跌水需另建模。~Explicitly hypothetical teaching submodel, not site measurements: A=4 m², R=0.8 m, S=0.001 and n=0.015. Formula Q=(A/n)R^(2/3)S^(1/2); substitution (4/0.015)*0.8**(2/3)*0.001**0.5 = 7.267115 m³/s. Boundary: Steady uniform open-channel approximation; pressure flow, backwater and drops require separate models.",
+      "verify": "量測縱坡與斷面，校準不同水位的流量曲線。在離線場景為「導水溝沉積粗糙度」建立證據表，把原始值、單位、時戳及修正值分開保留。~Measure slope and section and calibrate the discharge curve at several depths. Build an offline evidence table for gutter sediment roughness; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "沉積與生物膜改變粗糙度，沿用初建值可能高估能力。在場景中標出故障點及其影響的上下游證據。~Sediment and biofilm alter roughness; an as-built value may overestimate capacity. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "同一斷面輸送能力與粗糙度無關。~Capacity of the same section is independent of roughness.",
+      "practice": "先點選「導水溝沉積粗糙度」量測點並重現基準算例；接著只把 n 改成0.020，其他條件不變，預測後重算得到 5.450337 m³/s。與基準 7.267115 m³/s比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the gutter sediment roughness measurement point and reproduce the baseline; then change only n to0.020 with other inputs fixed. Predict and recompute 5.450337 m³/s. Compare with baseline 7.267115 m³/s and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "池水位與降雨紀錄：感測器偏移校正~Basin level/rainfall records: Sensor offset calibration",
+      "mechanism": "參考標準可辨識偏移；一點校正只能處理固定偏移，斜率誤差須多點標準確認。本單元在「池水位與降雨紀錄」觀察此因果關係。~A reference reveals offset; one-point correction handles only a constant offset, whereas gain error needs several standards. Examine this relationship at basin level/rainfall records.",
+      "model": "明示假設的教學子模型，非場址量測：參考值10.0、感測器10.8、樣品原讀值14.2，單位一致。公式 Ccorrected=Craw-(Cstandard_read-Creference)；代入 14.2-(10.8-10.0) = 13.4 sensor unit。適用邊界：假設偏移固定且量程線性；不代替多點校正與漂移追蹤。~Explicitly hypothetical teaching submodel, not site measurements: reference10.0, sensor10.8 and raw sample14.2 in the same units. Formula Ccorrected=Craw-(Cstandard_read-Creference); substitution 14.2-(10.8-10.0) = 13.4 sensor unit. Boundary: Constant offset and linear range assumed; multi-point calibration and drift tracking remain necessary.",
+      "verify": "用第二標準獨立驗證校正後殘差並記錄日期與溫度。在離線場景為「池水位與降雨紀錄」建立證據表，把原始值、單位、時戳及修正值分開保留。~Use a second standard to verify corrected residuals independently and record date and temperature. Build an offline evidence table for basin level/rainfall records; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "以同一標準建立又驗證模型會隱藏校正偏差。在場景中標出故障點及其影響的上下游證據。~Calibrating and validating with the same standard hides bias. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "單點校正可以證明整個量程都沒有誤差。~One-point calibration proves the entire range is error-free.",
+      "practice": "先點選「池水位與降雨紀錄」量測點並重現基準算例；接著只把樣品原讀值改成16.2，其他條件不變，預測後重算得到 15.4 sensor unit。與基準 13.4 sensor unit比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the basin level/rainfall records measurement point and reproduce the baseline; then change only raw sample to16.2 with other inputs fixed. Predict and recompute 15.4 sensor unit. Compare with baseline 13.4 sensor unit and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "淹水改善與鄰近對照：前後與對照地點比較~Flood improvement and nearby control: Before-after and control comparison",
+      "mechanism": "干預前後差異還可能包含天氣與背景趨勢；前後—對照差分可分離共同變化但仍須檢查可比性。本單元在「淹水改善與鄰近對照」觀察此因果關係。~Before-after changes include weather and background trends; difference-in-differences removes common changes but still needs comparable sites. Examine this relationship at flood improvement and nearby control.",
+      "model": "明示假設的教學子模型，非場址量測：處理地由30降至27，對照地由29降至28，同一指標。公式 effect=(Tafter-Tbefore)-(Cafter-Cbefore)；代入 (27-30)-(28-29) = -2 indicator unit。適用邊界：假設共同背景趨勢；不是隨機試驗或完全因果證明。~Explicitly hypothetical teaching submodel, not site measurements: treated site30 to27 and control site29 to28 for the same indicator. Formula effect=(Tafter-Tbefore)-(Cafter-Cbefore); substitution (27-30)-(28-29) = -2 indicator unit. Boundary: Common background trend assumed; not a randomized trial or complete causal proof.",
+      "verify": "採同期多日資料並檢查前期趨勢，不選只對結果有利的一天。在離線場景為「淹水改善與鄰近對照」建立證據表，把原始值、單位、時戳及修正值分開保留。~Use simultaneous multi-day data, inspect pre-trends and avoid selecting a favorable day. Build an offline evidence table for flood improvement and nearby control; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "處理地同時換交通流量會讓單一干預歸因失真。在場景中標出故障點及其影響的上下游證據。~Concurrent traffic changes at the treated site confound attribution. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "前後改變全都必定由這一項工程造成。~Every before-after change must be caused by this project.",
+      "practice": "先點選「淹水改善與鄰近對照」量測點並重現基準算例；接著只把對照地事後值改成27，其他條件不變，預測後重算得到 -1 indicator unit。與基準 -2 indicator unit比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the flood improvement and nearby control measurement point and reproduce the baseline; then change only control-after to27 with other inputs fixed. Predict and recompute -1 indicator unit. Compare with baseline -2 indicator unit and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-lm-benthem",
+      "title": "鹿特丹Benthemplein水廣場",
+      "titleEn": "Benthemplein Watersquare, Rotterdam",
+      "url": "https://www.urbanisten.nl/work/benthemplein",
+      "organization": "De Urbanisten (project designer)",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-lm-watersquares",
+      "title": "水廣場設計原理",
+      "titleEn": "Watersquare design principles",
+      "url": "https://www.urbanisten.nl/work/watersquares",
+      "organization": "De Urbanisten",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "鹿特丹代表點",
+    "nameEn": "Rotterdam reference point",
+    "country": "荷蘭",
+    "countryEn": "Netherlands",
+    "lat": 51.92,
+    "lon": 4.48,
+    "coordinateScope": "approximate-city-reference; not a facility entrance"
+  },
+  "history": "De Urbanisten的專案記錄把水廣場定位為公共空間與雨水調蓄的結合，並以不同池體與表面水路讓水循環可見。~De Urbanisten describes the watersquare as combined public space and stormwater storage, with basins and surface routes making the water cycle visible.",
+  "architectureNodes": [
+    "屋頂鋪面~Roofs/pavement",
+    "導水入口~Inlets",
+    "淺池~Shallow basins",
+    "深池~Deep basin",
+    "控制出流~Controlled outlet",
+    "公共空間恢復~Public-use recovery"
+  ],
+  "modelChecks": [
+    {
+      "expression": "0.75*30*10000/1000",
+      "expected": 225.0,
+      "unit": "m³",
+      "description": "單元1基準：屋頂與鋪面集水~Unit1 baseline: roof/pavement catchment"
+    },
+    {
+      "expression": "0.50*30*10000/1000",
+      "expected": 150.0,
+      "unit": "m³",
+      "description": "單元1變量實驗：只把C降成0.50~Unit1 changed-input experiment: reduce only C to0.50"
+    },
+    {
+      "expression": "300*(1-0.85)",
+      "expected": 45.00000000000001,
+      "unit": "m³",
+      "description": "單元2基準：入口攔污與旁通~Unit2 baseline: inlet debris and bypass"
+    },
+    {
+      "expression": "300*(1-0.60)",
+      "expected": 120.0,
+      "unit": "m³",
+      "description": "單元2變量實驗：只把捕獲比例降成0.60~Unit2 changed-input experiment: reduce only capture fraction to0.60"
+    },
+    {
+      "expression": "0.9/0.6",
+      "expected": 1.5,
+      "unit": "m/s",
+      "description": "單元3基準：地表導水溝~Unit3 baseline: surface conveyance gutter"
+    },
+    {
+      "expression": "0.9/0.45",
+      "expected": 2.0,
+      "unit": "m/s",
+      "description": "單元3變量實驗：只把有效面積減至0.45 m²~Unit3 changed-input experiment: reduce only clear area to0.45 m²"
+    },
+    {
+      "expression": "500-120-30",
+      "expected": 350,
+      "unit": "m³",
+      "description": "單元4基準：各池事件前可用容積~Unit4 baseline: pre-event available basin volumes"
+    },
+    {
+      "expression": "500-200-30",
+      "expected": 270,
+      "unit": "m³",
+      "description": "單元4變量實驗：只把已有水量升為200 m³~Unit4 changed-input experiment: increase only existing water to200 m³"
+    },
+    {
+      "expression": "(2.0-0.6)*3600",
+      "expected": 5040.0,
+      "unit": "m³",
+      "description": "單元5基準：暴雨分池水量帳~Unit5 baseline: storm basin-routing ledger"
+    },
+    {
+      "expression": "(2.0-0.8)*3600",
+      "expected": 4320.0,
+      "unit": "m³",
+      "description": "單元5變量實驗：只把出流提高到0.8 m³/s~Unit5 changed-input experiment: increase only outflow to0.8 m³/s"
+    },
+    {
+      "expression": "0.62*0.02*(2*9.81*0.5)**0.5",
+      "expected": 0.038837940213147244,
+      "unit": "m³/s",
+      "description": "單元6基準：孔口與尾水條件~Unit6 baseline: outlet and tailwater conditions"
+    },
+    {
+      "expression": "0.62*0.02*(2*9.81*0.125)**0.5",
+      "expected": 0.019418970106573622,
+      "unit": "m³/s",
+      "description": "單元6變量實驗：只把水頭降為0.125 m~Unit6 changed-input experiment: reduce only head to0.125 m"
+    },
+    {
+      "expression": "180/15",
+      "expected": 12.0,
+      "unit": "h",
+      "description": "單元7基準：雨後公共使用恢復~Unit7 baseline: post-storm public-use recovery"
+    },
+    {
+      "expression": "180/10",
+      "expected": 18.0,
+      "unit": "h",
+      "description": "單元7變量實驗：只把Q降成10 m³/h~Unit7 changed-input experiment: reduce only Q to10 m³/h"
+    },
+    {
+      "expression": "(4/0.015)*0.8**(2/3)*0.001**0.5",
+      "expected": 7.267115403284921,
+      "unit": "m³/s",
+      "description": "單元8基準：導水溝沉積粗糙度~Unit8 baseline: gutter sediment roughness"
+    },
+    {
+      "expression": "(4/0.020)*0.8**(2/3)*0.001**0.5",
+      "expected": 5.45033655246369,
+      "unit": "m³/s",
+      "description": "單元8變量實驗：只把 n 改成0.020~Unit8 changed-input experiment: change only n to0.020"
+    },
+    {
+      "expression": "14.2-(10.8-10.0)",
+      "expected": 13.399999999999999,
+      "unit": "sensor unit",
+      "description": "單元9基準：池水位與降雨紀錄~Unit9 baseline: basin level/rainfall records"
+    },
+    {
+      "expression": "16.2-(10.8-10.0)",
+      "expected": 15.399999999999999,
+      "unit": "sensor unit",
+      "description": "單元9變量實驗：只把樣品原讀值改成16.2~Unit9 changed-input experiment: change only raw sample to16.2"
+    },
+    {
+      "expression": "(27-30)-(28-29)",
+      "expected": -2,
+      "unit": "indicator unit",
+      "description": "單元10基準：淹水改善與鄰近對照~Unit10 baseline: flood improvement and nearby control"
+    },
+    {
+      "expression": "(27-30)-(27-29)",
+      "expected": -1,
+      "unit": "indicator unit",
+      "description": "單元10變量實驗：只把對照地事後值改成27~Unit10 changed-input experiment: change only control-after to27"
+    }
+  ]
+}

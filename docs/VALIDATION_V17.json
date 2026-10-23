@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "version": "17.0.0",
+  "catalogTopics": 2066,
+  "guidedCourses": 1102,
+  "steps": 36274,
+  "environmentCourses": 100,
+  "newSteps": 4000,
+  "oldStepsPreservedExactly": 32274,
+  "numericChecks": 1750,
+  "imageAssets": 156,
+  "tests": [
+    {
+      "command": "node tools/environment-v17/test-workbench-v17.mjs",
+      "exitCode": 0,
+      "output": "{\"passed\":true,\"partial\":false,\"courses\":100,\"newStepDemonstrations\":4000,\"visibleArchitectureArrows\":500,\"rendererChecks\":400}\n",
+      "error": ""
+    },
+    {
+      "command": "node tools/scene-v17/test-scene-v17.mjs",
+      "exitCode": 0,
+      "output": "{\n  \"status\": \"PASS\",\n  \"tests\": 20,\n  \"models\": [\n    \"removal\",\n    \"runoff\",\n    \"sorting\",\n    \"emission\",\n    \"acoustic\",\n    \"heatflow\",\n    \"fluidpower\",\n    \"calibration\"\n  ],\n  \"checks\": [\n    \"All 20 categories use distinctive equipment and valid quantitative defaults\",\n    \"All 100 environment topics have finite teaching-model defaults\",\n    \"Water treatment conserves incoming pollutant mass and converts mg/L correctly\",\n    \"Stormwater storage neither creates water nor permits negative overflow\",\n    \"Sorting distinguishes recovery and purity with complete mass accounting\",\n    \"Emission model converts mg to kg and maintains a common volumetric basis\",\n    \"Acoustic sources add energetically and background limits attenuation\",\n    \"Out-of-range and nonfinite values are rejected for every environment model\",\n    \"All 100 environment courses have explicit reviewed mappings rather than ID ranges\",\n    \"Sensible-heat warm-up has consistent kJ/s units and excludes biological kinetics\",\n    \"Transport input power is fluid power divided by efficiency, with losses conserved\",\n    \"Calibration inverts gain and offset and reconstructs the original reading\",\n    \"First-person camera has fixed operator position while inspection orbits\",\n    \"Panorama coordinates wrap horizontally and clamp poles\",\n    \"A 2-to-1 ordinary photograph is never silently relabelled a 360 panorama\",\n    \"Workflow assistance completes only one phase and cannot skip record prerequisites\",\n    \"Restored history is bounded and excludes another model or invalid values\",\n    \"Author supplied bilingual process nodes are retained and unsafe edges filtered\",\n    \"Markup escapes all external strings and exposes full keyboard-equivalent controls\",\n    \"Real asset manifest covers 20 categories and carries verified panorama dimensions\"\n  ]\n}\n",
+      "error": ""
+    },
+    {
+      "command": "node tools/scene-v17/test-workshop-assist-v17.mjs",
+      "exitCode": 0,
+      "output": "{\"passed\":true,\"scenarios\":14,\"actualTimeline\":true,\"actualExerciseEvaluator\":true,\"coverage\":\"single-step, cancellation, retry, duplicate click, access gates, stale course/account/route, assisted provenance\"}\n",
+      "error": ""
+    },
+    {
+      "command": "node tools/test-account-race-v10.mjs",
+      "exitCode": 0,
+      "output": "PASS 8 account-transition checks: public homepage/catalogue stays visible during delayed account verification, stale verification/curriculum responses, fail-closed account change/logout, synchronous learning-map disposal and inert old callbacks, retry recovery, and current-owner verification failure; exact initAccount/helper in Node VM, no real network.\n",
+      "error": ""
+    },
+    {
+      "command": "node --test tools/environment-v17/test-unit-lab.mjs",
+      "exitCode": 0,
+      "output": "✔ operator precedence, unary signs and scientific notation (2.968461ms)\n✔ invalid values and program text never execute (1.532384ms)\n✔ all authored environment arithmetic runs in the actual browser interpreter (44.359599ms)\n✔ new lesson markup escapes authored content and omits unrelated steps (1.725965ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 309.83491\n",
+      "error": ""
+    },
+    {
+      "command": "python3 tools/check-offline.py",
+      "exitCode": 0,
+      "output": "離線套件與目前程式和教材相符 / Offline bundle is current.\n",
+      "error": ""
+    }
+  ],
+  "browser": {
+    "status": "PASS",
+    "date": "2026-10-23",
+    "environment": "Managed local HTTP preview; cloud Chromium",
+    "checks": [
+      "Homepage original 20-domain campus visible; responsive viewport 375px iframe / 360px content has no horizontal overflow",
+      "V17 scene loads authorized local photos and per-course architecture without runtime error",
+      "Four scene assist clicks each complete exactly one phase; one assisted mass-balance observation persisted",
+      "First, second inspection and third overview camera controls operate",
+      "Powerplant genuine panorama selection uses correctly labeled flat panorama fallback when WebGL is unavailable",
+      "New b451 authored project renders 40 steps, map reference, related lessons and sources",
+      "b451 calculator baseline 20*1.5=30kg/h, changed input 30*1.5=45kg/h, delta15; saved into notes",
+      "b451 one-step assistance completes 1/40; visible assisted status and explanation note; does not advance automatically",
+      "Chinese and English lesson, controls and calculator labels switch successfully"
+    ],
+    "limitations": [
+      "No physical iOS, Android, macOS or Windows device testing",
+      "WebGL sphere rendering could not be exercised in this browser; fallback and projection eligibility tested",
+      "No real model inference or production deployment performed"
+    ]
+  },
+  "uploadValidation": "docs/VALIDATION_UPLOAD_V17.json",
+  "limitations": [
+    "Chinese and English authored; other language course translations require configured translation.",
+    "Seven fixed-view panoramas; no per-course surveyed digital twin.",
+    "No real cloud AI inference, GitHub push or production deployment performed."
+  ]
+}

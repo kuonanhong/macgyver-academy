@@ -1,0 +1,265 @@
+{
+  "id": "b401",
+  "title": "新加坡新生水系統~Singapore NEWater System",
+  "focus": "從膜分離到回用需求的多重障壁~Multiple barriers from membrane separation to reuse demand",
+  "summary": "以新生水為觀察案例，學徒扮演水質工程師，沿進水、膜列、消毒、儲水與需求端追蹤水和污染物。~Using NEWater as the reference, the learner acts as a water-quality engineer following water and contaminants through feed, membrane trains, disinfection, storage and demand.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "二級處理出水採樣站：污染負荷與採樣邊界~Secondary-effluent sampling station: Pollutant load and sampling boundary",
+      "mechanism": "污染負荷是流量與濃度的乘積；瞬間低濃度可能只是雨水稀釋，不能單憑濃度推論污染總量下降。本單元在「二級處理出水採樣站」觀察此因果關係。~Pollutant load is flow times concentration; a low concentration can result from rainwater dilution without a decrease in mass. Examine this relationship at secondary-effluent sampling station.",
+      "model": "明示假設的教學子模型，非場址量測：日流量 Q=1200 m³/d、流量加權濃度 C=180 mg/L。公式 L=QC/1000；代入 1200*180/1000 = 216 kg/d。適用邊界：採樣與流量必須涵蓋相同時窗；未包括管線內累積。~Explicitly hypothetical teaching submodel, not site measurements: daily flow Q=1200 m³/d and flow-weighted concentration C=180 mg/L. Formula L=QC/1000; substitution 1200*180/1000 = 216 kg/d. Boundary: Sampling and flow must cover the same time interval; accumulation in the sewer is omitted.",
+      "verify": "將同一總時窗切成三段，以各段平均流率 Qi（m³/d）、濃度 Ci（mg/L）與時長 Δti（d）算質量 Mi=QiCiΔti/1000（kg）；加總質量後除以總時長，得到平均負荷率（kg/d），再與相同總時窗的流量加權混合樣比對。在離線場景為「二級處理出水採樣站」建立證據表，把原始值、單位、時戳及修正值分開保留。~Split the same total sampling window into three intervals. For each interval use mean flow Qi (m³/d), concentration Ci (mg/L) and duration Δti (d) to calculate mass Mi=QiCiΔti/1000 (kg). Sum the masses and divide by total duration to obtain mean loading (kg/d), then compare with a flow-weighted composite covering that same total window. Build an offline evidence table for secondary-effluent sampling station; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "等時間採樣遇到尖峰流量會低估負荷，先檢查採樣權重。在場景中標出故障點及其影響的上下游證據。~Equal-time sampling during a flow peak can understate loading; inspect sampling weights first. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "濃度較低就表示污染質量一定較少。~Lower concentration necessarily means less pollutant mass.",
+      "practice": "先點選「二級處理出水採樣站」量測點並重現基準算例；接著只把流量改成1500 m³/d，其他條件不變，預測後重算得到 270 kg/d。與基準 216 kg/d比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the secondary-effluent sampling station measurement point and reproduce the baseline; then change only flow to1500 m³/d with other inputs fixed. Predict and recompute 270 kg/d. Compare with baseline 216 kg/d and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "前處理膜列：膜通量與有效膜面積~Pretreatment membrane train: Membrane flux and effective area",
+      "mechanism": "膜通量是單位膜面積的產水速率；產水流量固定時，增加可用膜面積可降低通量負擔。本單元在「前處理膜列」觀察此因果關係。~Membrane flux is permeate flow per area; additional available membrane area reduces flux loading at fixed production. Examine this relationship at pretreatment membrane train.",
+      "model": "明示假設的教學子模型，非場址量測：產水 Qp=96 m³/h、膜面積 A=2400 m²。公式 J=1000Qp/A；代入 1000*96/2400 = 40 L/(m²·h)。適用邊界：淨產水通量；應另扣反洗停機，非任何膜產品允許值。~Explicitly hypothetical teaching submodel, not site measurements: permeate Qp=96 m³/h and membrane area A=2400 m². Formula J=1000Qp/A; substitution 1000*96/2400 = 40 L/(m²·h). Boundary: Net production flux; backwash downtime is separate and this is not a membrane product limit.",
+      "verify": "以產水總表與各膜列面積核對，另記反洗時間。在離線場景為「前處理膜列」建立證據表，把原始值、單位、時戳及修正值分開保留。~Reconcile total permeate with each train area and separately log backwash time. Build an offline evidence table for pretreatment membrane train; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "未扣停用膜列會低估剩餘膜列的真實通量。在場景中標出故障點及其影響的上下游證據。~Counting offline trains understates flux on the remaining membranes. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "膜面積減半但產水不變時通量不變。~Flux stays unchanged when membrane area halves at constant production.",
+      "practice": "先點選「前處理膜列」量測點並重現基準算例；接著只把可用膜面積降成1920 m²，其他條件不變，預測後重算得到 50 L/(m²·h)。與基準 40 L/(m²·h)比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the pretreatment membrane train measurement point and reproduce the baseline; then reduce only active membrane area to1920 m² with other inputs fixed. Predict and recompute 50 L/(m²·h). Compare with baseline 40 L/(m²·h) and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "壓差與溫度儀表盤：跨膜壓差與比通量~Pressure and temperature panel: Transmembrane pressure and permeability",
+      "mechanism": "相同溫度下，通量除以跨膜壓差可作為表觀水力透過率；降低代表阻力增加，但未直接指出污染種類。本單元在「壓差與溫度儀表盤」觀察此因果關係。~At the same temperature, flux divided by transmembrane pressure gives apparent permeability; a decrease indicates more resistance but not its chemical cause. Examine this relationship at pressure and temperature panel.",
+      "model": "明示假設的教學子模型，非場址量測：J=30 L/(m²·h)、TMP=0.15 bar。公式 Lp=J/TMP；代入 30/0.15 = 200 L/(m²·h·bar)。適用邊界：先做溫度校正；僅為操作趨勢，不是膜材本徵常數。~Explicitly hypothetical teaching submodel, not site measurements: J=30 L/(m²·h) and TMP=0.15 bar. Formula Lp=J/TMP; substitution 30/0.15 = 200 L/(m²·h·bar). Boundary: Apply temperature correction first; an operational trend, not an intrinsic material constant.",
+      "verify": "比較相同溫度與流量的前後資料，測壓點須一致。在離線場景為「壓差與溫度儀表盤」建立證據表，把原始值、單位、時戳及修正值分開保留。~Compare before/after data at equal temperature and flow with identical pressure taps. Build an offline evidence table for pressure and temperature panel; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "堵塞與水溫下降都會降低比通量，先分離兩種原因。在場景中標出故障點及其影響的上下游證據。~Fouling and colder water both lower permeability; distinguish these causes first. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "跨膜壓差越大必定代表膜更乾淨。~Higher transmembrane pressure always means a cleaner membrane.",
+      "practice": "先點選「壓差與溫度儀表盤」量測點並重現基準算例；接著只把 TMP升成0.20 bar，其他條件不變，預測後重算得到 150 L/(m²·h·bar)。與基準 200 L/(m²·h·bar)比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the pressure and temperature panel measurement point and reproduce the baseline; then increase only TMP to0.20 bar with other inputs fixed. Predict and recompute 150 L/(m²·h·bar). Compare with baseline 200 L/(m²·h·bar) and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "逆滲透產濃水分流：逆滲透水回收率~RO permeate/concentrate split: Reverse-osmosis water recovery",
+      "mechanism": "回收率把進水分為產水與濃水；提高回收通常也提高濃水鹽度與結垢風險，不能只追求產水百分比。本單元在「逆滲透產濃水分流」觀察此因果關係。~Recovery divides feed into permeate and concentrate; higher recovery usually raises concentrate salinity and scaling risk, so production percentage alone is insufficient. Examine this relationship at RO permeate/concentrate split.",
+      "model": "明示假設的教學子模型，非場址量測：進水 Qf=100 m³/h、產水 Qp=75 m³/h。公式 Y=100Qp/Qf；代入 100*75/100 = 75 %。適用邊界：穩態體積流量且忽略微小密度差；未預測結垢。~Explicitly hypothetical teaching submodel, not site measurements: feed Qf=100 m³/h and permeate Qp=75 m³/h. Formula Y=100Qp/Qf; substitution 100*75/100 = 75 %. Boundary: Steady volumetric flow with small density differences neglected; scaling is not predicted.",
+      "verify": "校核Qf=Qp+Qc，檢查三支流量表的時間同步。在離線場景為「逆滲透產濃水分流」建立證據表，把原始值、單位、時戳及修正值分開保留。~Check Qf=Qp+Qc and synchronize the three flow meters. Build an offline evidence table for RO permeate/concentrate split; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "濃水表偏低會製造虛假的高回收，須做總水量平衡。在場景中標出故障點及其影響的上下游證據。~An under-reading concentrate meter creates false high recovery; close the water balance. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "回收率越接近百分之百就一定越好。~Recovery closer to one hundred percent is always preferable.",
+      "practice": "先點選「逆滲透產濃水分流」量測點並重現基準算例；接著只把產水量改成80 m³/h，其他條件不變，預測後重算得到 80 %。與基準 75 %比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the RO permeate/concentrate split measurement point and reproduce the baseline; then change only permeate to80 m³/h with other inputs fixed. Predict and recompute 80 %. Compare with baseline 75 % and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "產水導電度檢驗台：鹽分截留與導電度指標~Permeate conductivity bench: Salt rejection and conductivity indicators",
+      "mechanism": "截留率比較進水與產水的同一溶質；導電度是混合離子指標，不能證明所有微量有機物均被截留。本單元在「產水導電度檢驗台」觀察此因果關係。~Rejection compares the same solute in feed and permeate; conductivity reflects mixed ions and does not prove retention of every trace organic. Examine this relationship at permeate conductivity bench.",
+      "model": "明示假設的教學子模型，非場址量測：同一溶質Cf=500 mg/L、Cp=5 mg/L。公式 R=100(1-Cp/Cf)；代入 100*(1-5/500) = 99 %。適用邊界：示範單一溶質與配對採樣；離子組成改變需校正導電度解釋。~Explicitly hypothetical teaching submodel, not site measurements: same solute Cf=500 mg/L and Cp=5 mg/L. Formula R=100(1-Cp/Cf); substitution 100*(1-5/500) = 99 %. Boundary: One solute and paired sampling; changed ionic composition requires reinterpretation of conductivity.",
+      "verify": "以標準液校正導電度，並用實驗室分析驗證目標溶質。在離線場景為「產水導電度檢驗台」建立證據表，把原始值、單位、時戳及修正值分開保留。~Calibrate conductivity with standards and verify the target solute with laboratory analysis. Build an offline evidence table for permeate conductivity bench; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "膜破損、密封旁通與探頭漂移都可能使產水讀值上升。在場景中標出故障點及其影響的上下游證據。~Membrane damage, seal bypass and sensor drift can all raise the permeate reading. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "高鹽截留率等同所有污染物百分之百去除。~High salt rejection means complete removal of every pollutant.",
+      "practice": "先點選「產水導電度檢驗台」量測點並重現基準算例；接著只把Cp改成10 mg/L，其他條件不變，預測後重算得到 98 %。與基準 99 %比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the permeate conductivity bench measurement point and reproduce the baseline; then change only Cp to10 mg/L with other inputs fixed. Predict and recompute 98 %. Compare with baseline 99 % and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "濃水去向管線：濃水鹽分收支~Concentrate disposal route: Concentrate salt balance",
+      "mechanism": "被截留的鹽須從濃水排出；水量與鹽量兩條守恆式共同決定濃水濃度。本單元在「濃水去向管線」觀察此因果關係。~Rejected salt exits in concentrate; conservation of both water and salt determines concentrate concentration. Examine this relationship at concentrate disposal route.",
+      "model": "明示假設的教學子模型，非場址量測：Qf=100、Qp=75 m³/h；Cf=500、Cp=5 mg/L。公式 Cc=(QfCf-QpCp)/(Qf-Qp)；代入 (100*500-75*5)/(100-75) = 1985 mg/L。適用邊界：穩態無沉澱及吸附；若鹽析出，此式不能描述固相。~Explicitly hypothetical teaching submodel, not site measurements: Qf=100 and Qp=75 m³/h; Cf=500 and Cp=5 mg/L. Formula Cc=(QfCf-QpCp)/(Qf-Qp); substitution (100*500-75*5)/(100-75) = 1985 mg/L. Boundary: Steady flow without precipitation or adsorption; precipitated solids require another balance.",
+      "verify": "以進水、產水與濃水三點配對樣核對鹽負荷。在離線場景為「濃水去向管線」建立證據表，把原始值、單位、時戳及修正值分開保留。~Use paired samples of feed, permeate and concentrate to check salt loads. Build an offline evidence table for concentrate disposal route; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "只計產水品質而不計濃水，會把污染轉移誤認成消失。在場景中標出故障點及其影響的上下游證據。~Checking only permeate quality mistakes transferred pollution for disappearance. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "膜截留的鹽會在系統內自動消失。~Salt rejected by the membrane disappears automatically.",
+      "practice": "先點選「濃水去向管線」量測點並重現基準算例；接著只把Qp改成80 m³/h，Cp固定，其他條件不變，預測後重算得到 2480 mg/L。與基準 1985 mg/L比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the concentrate disposal route measurement point and reproduce the baseline; then change only Qp to80 m³/h while holding Cp fixed with other inputs fixed. Predict and recompute 2480 mg/L. Compare with baseline 1985 mg/L and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "高壓泵電力表：高壓分離比能耗~High-pressure pump energy meter: Specific energy of pressure separation",
+      "mechanism": "壓力功等於壓差乘流量；折算成每立方米產水時，回收率與效率都進入分母。本單元在「高壓泵電力表」觀察此因果關係。~Pressure work equals pressure difference times flow; recovery and efficiency both enter the denominator when normalized per cubic metre of permeate. Examine this relationship at high-pressure pump energy meter.",
+      "model": "明示假設的教學子模型，非場址量測：壓差Δp=10 bar、η=0.80、回收率Y=0.75。公式 SEC=Δp/(36ηY)；代入 10/(36*0.80*0.75) = 0.462963 kWh/m³。適用邊界：未含能量回收、預處理與其他廠用電；不是整廠能耗。~Explicitly hypothetical teaching submodel, not site measurements: pressure differenceΔp=10 bar,η=0.80 and recoveryY=0.75. Formula SEC=Δp/(36ηY); substitution 10/(36*0.80*0.75) = 0.462963 kWh/m³. Boundary: Excludes energy recovery, pretreatment and auxiliary loads; not whole-plant consumption.",
+      "verify": "把高壓泵電表與產水體積在相同時窗相除，再列其他負載。在離線場景為「高壓泵電力表」建立證據表，把原始值、單位、時戳及修正值分開保留。~Divide high-pressure pump energy by permeate volume over the same interval and list other loads separately. Build an offline evidence table for high-pressure pump energy meter; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "用進水體積當分母會低估每單位產水能耗。在場景中標出故障點及其影響的上下游證據。~Using feed volume as the denominator understates energy per unit product. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "泵壓力功就是整廠總用電。~Pump pressure work equals total plant electricity.",
+      "practice": "先點選「高壓泵電力表」量測點並重現基準算例；接著只把壓差增成12 bar，其他條件不變，預測後重算得到 0.5555556 kWh/m³。與基準 0.462963 kWh/m³比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the high-pressure pump energy meter measurement point and reproduce the baseline; then increase only pressure difference to12 bar with other inputs fixed. Predict and recompute 0.5555556 kWh/m³. Compare with baseline 0.462963 kWh/m³ and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "紫外線接觸區：紫外線光量概念~UV exposure zone: Ultraviolet fluence concept",
+      "mechanism": "均勻光場下光量為強度乘照射時間；真實反應器須考慮水質透光率、遮蔽與停留分布。本單元在「紫外線接觸區」觀察此因果關係。~In a uniform field, fluence equals intensity times exposure time; real reactors require transmittance, shadowing and residence distributions. Examine this relationship at UV exposure zone.",
+      "model": "明示假設的教學子模型，非場址量測：假想均勻強度I=2 mW/cm²、照射t=15 s。公式 H=It；代入 2*15 = 30 mJ/cm²。適用邊界：僅單位換算練習，不是病原體認證劑量或飲用水安全判準。~Explicitly hypothetical teaching submodel, not site measurements: hypothetical uniform intensity I=2 mW/cm² and exposuret=15 s. Formula H=It; substitution 2*15 = 30 mJ/cm². Boundary: Unit-conversion exercise only; not a validated pathogen dose or drinking-water safety criterion.",
+      "verify": "比較燈強度、透光率與流量，指出單一探頭代表不了所有流線。在離線場景為「紫外線接觸區」建立證據表，把原始值、單位、時戳及修正值分開保留。~Compare lamp intensity, transmittance and flow, explaining why one sensor does not represent all streamlines. Build an offline evidence table for UV exposure zone; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "套管結垢與水中懸浮物可同時降低有效光量。在場景中標出故障點及其影響的上下游證據。~Sleeve fouling and suspended particles can both reduce effective fluence. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "燈亮著就表示所有水都接受相同且足夠的光量。~An illuminated lamp means every parcel receives the same sufficient fluence.",
+      "practice": "先點選「紫外線接觸區」量測點並重現基準算例；接著只把假想強度降成1.5 mW/cm²，其他條件不變，預測後重算得到 22.5 mJ/cm²。與基準 30 mJ/cm²比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the UV exposure zone measurement point and reproduce the baseline; then reduce only hypothetical intensity to1.5 mW/cm² with other inputs fixed. Predict and recompute 22.5 mJ/cm². Compare with baseline 30 mJ/cm² and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "障壁驗證紀錄：多重障壁與對數去除~Barrier-validation record: Multiple barriers and log reduction",
+      "mechanism": "對數去除以濃度比表示，不同障壁只有在適用同一目標且經驗證時才可合併計分。本單元在「障壁驗證紀錄」觀察此因果關係。~Log reduction expresses a concentration ratio; barrier credits combine only for the same target under validated conditions. Examine this relationship at barrier-validation record.",
+      "model": "明示假設的教學子模型，非場址量測：假想指標Nin=100000、Nout=100 每單位體積。公式 LRV=log10(Nin/Nout)；代入 log10(100000/100) = 3 log10。適用邊界：純數學示範，檢出限及實際核准信用未包含。~Explicitly hypothetical teaching submodel, not site measurements: hypothetical indicator Nin=100000 and Nout=100 per unit volume. Formula LRV=log10(Nin/Nout); substitution log10(100000/100) = 3 log10. Boundary: Mathematical demonstration only; detection limits and approved treatment credits are excluded.",
+      "verify": "紀錄檢出限，區分未檢出與零；檢查共同失效是否影響多個障壁。在離線場景為「障壁驗證紀錄」建立證據表，把原始值、單位、時戳及修正值分開保留。~Record detection limits, distinguish non-detect from zero, and inspect common failures across barriers. Build an offline evidence table for barrier-validation record; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "把未檢出當零會算出無限去除，失去可驗證性。在場景中標出故障點及其影響的上下游證據。~Treating non-detect as zero gives infinite removal and is unverifiable. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "兩個未驗證障壁的標稱數值可以直接當認證效果。~Nominal values for two unvalidated barriers can be treated as certified performance.",
+      "practice": "先點選「障壁驗證紀錄」量測點並重現基準算例；接著只把Nout改成1000，其他條件不變，預測後重算得到 2 log10。與基準 3 log10比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the barrier-validation record measurement point and reproduce the baseline; then change only Nout to1000 with other inputs fixed. Predict and recompute 2 log10. Compare with baseline 3 log10 and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "工業回用需求端：回用水混合與需求配對~Industrial reuse demand: Reuse blending and demand matching",
+      "mechanism": "混合濃度由各水流的質量加權，而不是簡單平均；不同用途的需求與品質應分別核對。本單元在「工業回用需求端」觀察此因果關係。~Blended concentration is mass weighted rather than a simple average; quality and demand must be checked separately for each reuse. Examine this relationship at industrial reuse demand.",
+      "model": "明示假設的教學子模型，非場址量測：Q1=80、Q2=20 m³/h；C1=5、C2=100 mg/L。公式 Cmix=(Q1C1+Q2C2)/(Q1+Q2)；代入 (80*5+20*100)/(80+20) = 24 mg/L。適用邊界：同一可加成保守溶質；微生物風險與化學相容性不能僅靠此式判斷。~Explicitly hypothetical teaching submodel, not site measurements: Q1=80 and Q2=20 m³/h; C1=5 and C2=100 mg/L. Formula Cmix=(Q1C1+Q2C2)/(Q1+Q2); substitution (80*5+20*100)/(80+20) = 24 mg/L. Boundary: One additive conservative solute; microbial risk and chemical compatibility cannot be established by this formula.",
+      "verify": "檢查流量權重與採樣位置，再用混合後樣品驗證。在離線場景為「工業回用需求端」建立證據表，把原始值、單位、時戳及修正值分開保留。~Inspect flow weights and sampling locations and verify with a downstream mixed sample. Build an offline evidence table for industrial reuse demand; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "混合未完全就採樣會得到隨位置不同的濃度。在場景中標出故障點及其影響的上下游證據。~Sampling before complete mixing yields position-dependent concentrations. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "兩股不同流量的濃度總可直接取平均。~Concentrations of unequal flows can always be averaged directly.",
+      "practice": "先點選「工業回用需求端」量測點並重現基準算例；接著只把Q2改成40 m³/h，其他條件不變，預測後重算得到 36.66667 mg/L。與基準 24 mg/L比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the industrial reuse demand measurement point and reproduce the baseline; then change only Q2 to40 m³/h with other inputs fixed. Predict and recompute 36.66667 mg/L. Compare with baseline 24 mg/L and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-lm-reuse",
+      "title": "NEWater水質與多重處理",
+      "titleEn": "NEWater quality and treatment barriers",
+      "url": "https://www.pub.gov.sg/Public/WaterLoop/Water-Quality/NEWater",
+      "organization": "PUB Singapore",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-lm-newaterstory",
+      "title": "新生水的處理程序",
+      "titleEn": "NEWater treatment processes",
+      "url": "https://www.pub.gov.sg/Resources/News-Room/Featured-Stories/2021/5-things-about-NEWater",
+      "organization": "PUB Singapore",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-lm-nutrient",
+      "title": "營養鹽控制設計手冊（2010）",
+      "titleEn": "Nutrient Control Design Manual (2010)",
+      "url": "https://www.epa.gov/sites/default/files/2019-08/documents/nutrient_control_design_manual.pdf",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "新加坡",
+    "nameEn": "Singapore",
+    "country": "新加坡",
+    "countryEn": "Singapore",
+    "lat": 1.35,
+    "lon": 103.82,
+    "coordinateScope": "approximate-city-reference; not a facility entrance"
+  },
+  "history": "PUB的新生水流程以膜處理和紫外線建立多重障壁；本課以公開流程重建教學模型，不複製任何廠的操作配方。~PUB describes a multi-barrier process using membrane treatment and ultraviolet light; this lesson reconstructs an educational model without copying an operating recipe.",
+  "architectureNodes": [
+    "進水界定~Feed boundary",
+    "前處理膜~Pretreatment membrane",
+    "逆滲透~Reverse osmosis",
+    "紫外線~Ultraviolet",
+    "品質監測~Quality monitoring",
+    "回用需求~Reuse demand"
+  ],
+  "modelChecks": [
+    {
+      "expression": "1200*180/1000",
+      "expected": 216.0,
+      "unit": "kg/d",
+      "description": "單元1基準：二級處理出水採樣站~Unit1 baseline: secondary-effluent sampling station"
+    },
+    {
+      "expression": "1500*180/1000",
+      "expected": 270.0,
+      "unit": "kg/d",
+      "description": "單元1變量實驗：只把流量改成1500 m³/d~Unit1 changed-input experiment: change only flow to1500 m³/d"
+    },
+    {
+      "expression": "1000*96/2400",
+      "expected": 40.0,
+      "unit": "L/(m²·h)",
+      "description": "單元2基準：前處理膜列~Unit2 baseline: pretreatment membrane train"
+    },
+    {
+      "expression": "1000*96/1920",
+      "expected": 50.0,
+      "unit": "L/(m²·h)",
+      "description": "單元2變量實驗：只把可用膜面積降成1920 m²~Unit2 changed-input experiment: reduce only active membrane area to1920 m²"
+    },
+    {
+      "expression": "30/0.15",
+      "expected": 200.0,
+      "unit": "L/(m²·h·bar)",
+      "description": "單元3基準：壓差與溫度儀表盤~Unit3 baseline: pressure and temperature panel"
+    },
+    {
+      "expression": "30/0.20",
+      "expected": 150.0,
+      "unit": "L/(m²·h·bar)",
+      "description": "單元3變量實驗：只把 TMP升成0.20 bar~Unit3 changed-input experiment: increase only TMP to0.20 bar"
+    },
+    {
+      "expression": "100*75/100",
+      "expected": 75.0,
+      "unit": "%",
+      "description": "單元4基準：逆滲透產濃水分流~Unit4 baseline: RO permeate/concentrate split"
+    },
+    {
+      "expression": "100*80/100",
+      "expected": 80.0,
+      "unit": "%",
+      "description": "單元4變量實驗：只把產水量改成80 m³/h~Unit4 changed-input experiment: change only permeate to80 m³/h"
+    },
+    {
+      "expression": "100*(1-5/500)",
+      "expected": 99.0,
+      "unit": "%",
+      "description": "單元5基準：產水導電度檢驗台~Unit5 baseline: permeate conductivity bench"
+    },
+    {
+      "expression": "100*(1-10/500)",
+      "expected": 98.0,
+      "unit": "%",
+      "description": "單元5變量實驗：只把Cp改成10 mg/L~Unit5 changed-input experiment: change only Cp to10 mg/L"
+    },
+    {
+      "expression": "(100*500-75*5)/(100-75)",
+      "expected": 1985.0,
+      "unit": "mg/L",
+      "description": "單元6基準：濃水去向管線~Unit6 baseline: concentrate disposal route"
+    },
+    {
+      "expression": "(100*500-80*5)/(100-80)",
+      "expected": 2480.0,
+      "unit": "mg/L",
+      "description": "單元6變量實驗：只把Qp改成80 m³/h，Cp固定~Unit6 changed-input experiment: change only Qp to80 m³/h while holding Cp fixed"
+    },
+    {
+      "expression": "10/(36*0.80*0.75)",
+      "expected": 0.4629629629629629,
+      "unit": "kWh/m³",
+      "description": "單元7基準：高壓泵電力表~Unit7 baseline: high-pressure pump energy meter"
+    },
+    {
+      "expression": "12/(36*0.80*0.75)",
+      "expected": 0.5555555555555555,
+      "unit": "kWh/m³",
+      "description": "單元7變量實驗：只把壓差增成12 bar~Unit7 changed-input experiment: increase only pressure difference to12 bar"
+    },
+    {
+      "expression": "2*15",
+      "expected": 30,
+      "unit": "mJ/cm²",
+      "description": "單元8基準：紫外線接觸區~Unit8 baseline: UV exposure zone"
+    },
+    {
+      "expression": "1.5*15",
+      "expected": 22.5,
+      "unit": "mJ/cm²",
+      "description": "單元8變量實驗：只把假想強度降成1.5 mW/cm²~Unit8 changed-input experiment: reduce only hypothetical intensity to1.5 mW/cm²"
+    },
+    {
+      "expression": "log10(100000/100)",
+      "expected": 3.0,
+      "unit": "log10",
+      "description": "單元9基準：障壁驗證紀錄~Unit9 baseline: barrier-validation record"
+    },
+    {
+      "expression": "log10(100000/1000)",
+      "expected": 2.0,
+      "unit": "log10",
+      "description": "單元9變量實驗：只把Nout改成1000~Unit9 changed-input experiment: change only Nout to1000"
+    },
+    {
+      "expression": "(80*5+20*100)/(80+20)",
+      "expected": 24.0,
+      "unit": "mg/L",
+      "description": "單元10基準：工業回用需求端~Unit10 baseline: industrial reuse demand"
+    },
+    {
+      "expression": "(80*5+40*100)/(80+40)",
+      "expected": 36.666666666666664,
+      "unit": "mg/L",
+      "description": "單元10變量實驗：只把Q2改成40 m³/h~Unit10 changed-input experiment: change only Q2 to40 m³/h"
+    }
+  ]
+}

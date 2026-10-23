@@ -31,11 +31,11 @@ function harness({curriculum, evidence} = {}) {
   let session = 'A', curriculumCalls = 0, evidenceCalls = 0, mapDisposals = 0;
   const storage = new Map(), main = {innerHTML:'A previously rendered private lesson'}, status = {textContent:''};
   const context = {
-    Map, Set, JSON, resetProtectedContent,refreshAccess,stepCache:new WeakMap(),window:{},translationAvailable:false,accountGeneration:0, user:null, authMode:'local',
+    Map, Set, JSON, resetProtectedContent,refreshAccess,stepCache:new WeakMap(),courseResourceCache:new Map(),setLearningMedia:()=>{},window:{},translationAvailable:false,accountGeneration:0, user:null, authMode:'local',
     aiAvailable:false, aiRoutes:[], serverVersions:{}, projects:{}, saveState:'',
     activeId:'semiconductor', featured:[], catalog:[course('initial')], sourceIndex:null,
     currentPage:'workshop', isZh:() => false,
-    learningMapController:null,
+    learningMapController:null,sceneMountSerial:0,immersiveDispose:null,
     $:selector => selector === '#main' ? main : selector === '#protectedAccountStatus' ? status : null,
     captureNotes:() => {}, stopDemonstration:() => {}, deactivateWorkshopKeyboard:() => {},
     tutorPanel:{close() {}}, localeController:{invalidate() {}}, disposeLearningMedia:() => {},

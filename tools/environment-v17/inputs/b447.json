@@ -1,0 +1,290 @@
+{
+  "id": "b447",
+  "title": "慢砂濾池建造~Slow-sand filter construction",
+  "focus": "慢砂構造、級配、生物成熟與刮砂復原~Slow-sand construction, grading, biological ripening and scraping recovery",
+  "summary": "本課以慢砂構造、級配、生物成熟與刮砂復原為主線，從原水適用性與前處理、池體尺寸與材料數量、篩分析與級配驗收、承托與集水均勻性進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops slow-sand construction, grading, biological ripening and scraping recovery through ten connected units, beginning with source suitability and pretreatment, cell geometry and material quantities, sieve analysis and grading acceptance, support and collection uniformity. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "原水適用性與前處理~Source suitability and pretreatment",
+      "mechanism": "慢砂依賴水力與生物作用，原水顆粒、溫度與有機物波動會改變堵塞與成熟狀態。~Slow sand combines hydraulic and biological processes; particles, temperature and organics affect clogging and ripening.",
+      "model": "原創教學假設：Q=120 m³/d；面積=40 m²。模型 v=Q/(24A)，代入得到 0.125 m/h。適用邊界：慢砂濾池表觀負荷示例，不含成熟度與低溫生物影響。~Original teaching assumptions: Q=120 m³/d; area=40 m². Model v=Q/(24A) gives 0.125 m/h. Applicability: Slow-sand superficial-load example, excluding maturity and low-temperature biological effects.",
+      "verify": "在離線工作台先選取「原水適用性與前處理」的觀測點。比較水頭、濁度與生物層成熟期的水質趨勢。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for source suitability and pretreatment. Compare head, turbidity and water quality through biological-layer maturation. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "高濁事件仍假設平日負荷與濾程。診斷與介入：以成熟且在線的實際面積核算，維護時重新比較負荷。~A high-turbidity event is assumed to have normal loading and run length. Diagnostic response: Use actually mature, online area and reassess loading during maintenance.",
+      "misconception": "慢砂可在任何原水下維持相同表現。~Slow sand performs identically with any source water.",
+      "practice": "只改變 Q:120→144 m³/d，其餘假設固定；結果應由 0.125 變為 0.15 m/h。用「原水適用性與前處理」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:120→144 m³/d, holding the other assumptions fixed; the result changes from 0.125 to 0.15 m/h. Explain the direction using source suitability and pretreatment, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "池體尺寸與材料數量~Cell geometry and material quantities",
+      "mechanism": "先確認有效濾面、可維護性與備援，再由砂深估材料幾何體積；這不等於結構設計。~Establish active area, maintainability and redundancy before estimating geometric sand volume; this is not structural design.",
+      "model": "原創教學假設：平面面積=40 m²；砂床厚度=0.8 m。模型 Vsand=A×L，代入得到 32 m³ bulk media。適用邊界：幾何體積不等於採購質量；壓實、含水、級配及補充庫存另列。~Original teaching assumptions: Plan area=40 m²; sand depth=0.8 m. Model Vsand=A×L gives 32 m³ bulk media. Applicability: Geometric volume is not procurement mass; allow separately for packing, moisture, grading and replenishment.",
+      "verify": "在離線工作台先選取「池體尺寸與材料數量」的觀測點。量完成面積與多點砂深，並核對材料檢驗紀錄。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for cell geometry and material quantities. Measure finished plan area and sand depth at multiple locations and check material-test records. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只按砂體積建造而未留出排水與維護空間。診斷與介入：多點量實際砂深，另列承托層、孔隙與施工餘量。~Construction follows sand volume alone without drainage or maintenance space. Diagnostic response: Measure sand depth at several positions and separately list support layers, voids and construction allowances.",
+      "misconception": "算出砂量就完成整座濾池工程設計。~Calculating sand volume completes the filter engineering design.",
+      "practice": "只改變 L:0.8→0.9 m，其餘假設固定；結果應由 32 變為 36 m³ bulk media。用「池體尺寸與材料數量」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only L:0.8→0.9 m, holding the other assumptions fixed; the result changes from 32 to 36 m³ bulk media. Explain the direction using cell geometry and material quantities, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "篩分析與級配驗收~Sieve analysis and grading acceptance",
+      "mechanism": "由完整通過曲線讀 D10、D60，確認材料一致性；均勻係數不能取代全部規格。~Read D10/D60 from the full passing curve to check consistency; uniformity coefficient does not replace the full specification.",
+      "model": "原創教學假設：D60=0.45 mm；D10=0.20 mm。模型 UC=D60/D10，代入得到 2.25 ratio。適用邊界：粒徑為累積通過曲線讀值；UC 不是孔徑，更不是病原阻擋尺寸。~Original teaching assumptions: D60=0.45 mm; D10=0.20 mm. Model UC=D60/D10 gives 2.25 ratio. Applicability: Grain diameters come from cumulative passing curves; UC is neither pore size nor pathogen-cutoff size.",
+      "verify": "在離線工作台先選取「篩分析與級配驗收」的觀測點。重畫篩分析曲線並以插值核對 D10、D60。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for sieve analysis and grading acceptance. Replot sieve results and check interpolated D10 and D60. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只比一個粒徑平均值。診斷與介入：查完整篩分析曲線與材料一致性，不能只比 UC。~Only a mean grain size is compared. Diagnostic response: Check the full sieve curve and consistency rather than UC alone.",
+      "misconception": "砂粒直徑就是濾水孔徑。~Grain diameter equals filtration pore diameter.",
+      "practice": "只改變 D60:0.45→0.50 mm，其餘假設固定；結果應由 2.25 變為 2.5 ratio。用「篩分析與級配驗收」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only D60:0.45→0.50 mm, holding the other assumptions fixed; the result changes from 2.25 to 2.5 ratio. Explain the direction using sieve analysis and grading acceptance, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "承托與集水均勻性~Support and collection uniformity",
+      "mechanism": "承托層與集水系統須避免細砂流失及局部短路，完工檢查應結合分區水頭與流量。~Support layers/underdrains should prevent sand loss and bypass; commissioning compares zonal head and flow.",
+      "model": "原創教學假設：濾速=0.1 m/h；砂深=0.8 m；假想 K=0.4 m/h。模型 Δh=vL/K，代入得到 0.2 m。適用邊界：乾淨飽和床層的 Darcy 近似，表面生物膜阻力及非均勻堵塞未包含。~Original teaching assumptions: Velocity=0.1 m/h; sand depth=0.8 m; hypothetical K=0.4 m/h. Model Δh=vL/K gives 0.2 m. Applicability: Darcy approximation for a clean saturated bed, excluding surface-biofilm resistance and uneven clogging.",
+      "verify": "在離線工作台先選取「承托與集水均勻性」的觀測點。以多層測壓資料區分表面及深床壓損。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for support and collection uniformity. Use multi-level piezometry to distinguish surface and deep-bed head loss. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "總出水正常卻忽略局部集中通流。診斷與介入：使用多層測壓區分表層生物膜與深床阻力。~Normal total output hides localized flow concentration. Diagnostic response: Use multi-level piezometry to separate surface-biofilm from deep-bed resistance.",
+      "misconception": "總流量合格就代表底部配水完全均勻。~Passing total flow proves uniform underdrain distribution.",
+      "practice": "只改變 K:0.4→0.25 m/h，其餘假設固定；結果應由 0.2 變為 0.32 m。用「承托與集水均勻性」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only K:0.4→0.25 m/h, holding the other assumptions fixed; the result changes from 0.2 to 0.32 m. Explain the direction using support and collection uniformity, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "水層與孔隙停留~Water layer and pore residence",
+      "mechanism": "維持床層條件要辨識上覆水與孔隙水，名義停留量化接觸機會，不能預測生物成熟。~Distinguish supernatant and pore water; nominal residence describes contact opportunity, not biological maturity.",
+      "model": "原創教學假設：孔隙率 ε=0.40；床深 L=0.8 m；表觀速度 v=0.1 m/h。模型 tp=εL/v，代入得到 3.2 h。適用邊界：一維均勻飽和流；不代表所有水粒子停留一樣久。~Original teaching assumptions: Porosity ε=0.40; depth L=0.8 m; superficial velocity v=0.1 m/h. Model tp=εL/v gives 3.2 h. Applicability: One-dimensional uniform saturated flow; individual water parcels need not share this time.",
+      "verify": "在離線工作台先選取「水層與孔隙停留」的觀測點。用示蹤比較平均孔隙停留與早期突破。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for water layer and pore residence. Use a tracer to compare mean pore residence with early breakthrough. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把池內全部水量當成均等的有效生物接觸。診斷與介入：核對孔隙率、砂深及示蹤分布，另驗證生物成熟。~All water volume is treated as equally effective biological contact. Diagnostic response: Check porosity, sand depth and tracer distribution and verify maturity separately.",
+      "misconception": "增加水深就能立即補足未成熟的生物層。~Greater water depth instantly compensates for an immature biological layer.",
+      "practice": "只改變 v:0.1→0.15 m/h，其餘假設固定；結果應由 3.2 變為 2.1333333 h。用「水層與孔隙停留」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only v:0.1→0.15 m/h, holding the other assumptions fixed; the result changes from 3.2 to 2.1333333 h. Explain the direction using water layer and pore residence, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "生物層建立與證據~Biofilm establishment and evidence",
+      "mechanism": "表層生物群落會隨原水與環境建立；應用連續水質證據判讀成熟，而非只等固定日數。~Surface communities develop with source water and environment; assess ripening from sustained quality evidence, not a fixed waiting period alone.",
+      "model": "原創教學假設：Nin=100000；Nout=100（相同計數單位）。模型 LRV=log10(Nin/Nout)，代入得到 3 log10。適用邊界：需檢測限與回收率；未檢出不能當零。~Original teaching assumptions: Nin=100000; Nout=100 in matching count units. Model LRV=log10(Nin/Nout) gives 3 log10. Applicability: Requires detection limits and recovery; nondetect is not zero.",
+      "verify": "在離線工作台先選取「生物層建立與證據」的觀測點。列出方法回收率、重複樣本與未檢出上限。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for biofilm establishment and evidence. Record method recovery, replicates and nondetect upper bounds. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "新建或刮砂後直接沿用成熟濾床表現。診斷與介入：核對檢出限及水力配對，對未檢出結果使用可支持的下限。~A new or scraped bed is assumed to retain mature-bed performance. Diagnostic response: Check detection limits/hydraulic pairing and use supportable lower bounds for nondetection.",
+      "misconception": "達到某個日數就一定成熟且可安全供水。~A fixed number of days guarantees maturity and safe supply.",
+      "practice": "只改變 Nout:100→1000，其餘假設固定；結果應由 3 變為 2 log10。用「生物層建立與證據」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Nout:100→1000, holding the other assumptions fixed; the result changes from 3 to 2 log10. Explain the direction using biofilm establishment and evidence, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "緩慢增阻與水力限制~Progressive resistance and hydraulic limits",
+      "mechanism": "用多層水頭判別表面污堵與深床改變，濾速變化必須與水質及可用水頭一起看。~Use multi-level heads to distinguish surface clogging from deeper changes, assessing rate alongside quality and available head.",
+      "model": "原創教學假設：濾速=0.1 m/h；砂深=0.8 m；假想 K=0.4 m/h。模型 Δh=vL/K，代入得到 0.2 m。適用邊界：乾淨飽和床層的 Darcy 近似，表面生物膜阻力及非均勻堵塞未包含。~Original teaching assumptions: Velocity=0.1 m/h; sand depth=0.8 m; hypothetical K=0.4 m/h. Model Δh=vL/K gives 0.2 m. Applicability: Darcy approximation for a clean saturated bed, excluding surface-biofilm resistance and uneven clogging.",
+      "verify": "在離線工作台先選取「緩慢增阻與水力限制」的觀測點。以多層測壓資料區分表面及深床壓損。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for progressive resistance and hydraulic limits. Use multi-level piezometry to distinguish surface and deep-bed head loss. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只增加水頭掩蓋堵塞趨勢。診斷與介入：使用多層測壓區分表層生物膜與深床阻力。~Increasing head conceals clogging trends. Diagnostic response: Use multi-level piezometry to separate surface-biofilm from deep-bed resistance.",
+      "misconception": "可用水頭越多就可無限制延長濾程。~More available head extends a run without limit.",
+      "practice": "只改變 K:0.4→0.25 m/h，其餘假設固定；結果應由 0.2 變為 0.32 m。用「緩慢增阻與水力限制」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only K:0.4→0.25 m/h, holding the other assumptions fixed; the result changes from 0.2 to 0.32 m. Explain the direction using progressive resistance and hydraulic limits, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "刮砂與材料庫存~Scraping and media inventory",
+      "mechanism": "維護只在適用程序下移除表層；記錄移除深度與剩餘砂深，計算補砂需求。~Approved maintenance removes the surface layer where appropriate; track removed and remaining depths to estimate replacement needs.",
+      "model": "原創教學假設：濾池面積=40 m²；刮除深度=0.01 m。模型 Vremoved=Aδ，代入得到 0.4 m³ sand。適用邊界：幾何移除量示例，不是指定刮除厚度；剩餘濾層與成熟狀態須重新評估。~Original teaching assumptions: Filter area=40 m²; scraping depth=0.01 m. Model Vremoved=Aδ gives 0.4 m³ sand. Applicability: Geometric example, not a specified scraping depth; remaining bed and maturation need reassessment.",
+      "verify": "在離線工作台先選取「刮砂與材料庫存」的觀測點。記錄刮除前後標高與剩餘砂深。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for scraping and media inventory. Record pre/post-scrape levels and remaining sand depth. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "多次刮砂後仍使用初始砂深建模。診斷與介入：逐次記錄刮砂及剩餘深度，以水質證據判讀復原。~The initial bed depth remains in the model after repeated scraping. Diagnostic response: Record each scraping/remaining depth and assess recovery using quality evidence.",
+      "misconception": "刮去越多表砂就越容易恢復最佳效能。~Removing more surface sand always improves recovery.",
+      "practice": "只改變 δ:0.01→0.015 m，其餘假設固定；結果應由 0.4 變為 0.6 m³ sand。用「刮砂與材料庫存」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only δ:0.01→0.015 m, holding the other assumptions fixed; the result changes from 0.4 to 0.6 m³ sand. Explain the direction using scraping and media inventory, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "復原期與出水去向~Recovery period and water routing",
+      "mechanism": "刮砂擾動生物與顆粒條件，復原期間以監測判定去向與備援需求，而非由遊戲代替許可。~Scraping disturbs biology and particles; monitored recovery determines routing and reserve needs, not authorization from the game.",
+      "model": "原創教學假設：Nin=100000；Nout=100（相同計數單位）。模型 LRV=log10(Nin/Nout)，代入得到 3 log10。適用邊界：需檢測限與回收率；未檢出不能當零。~Original teaching assumptions: Nin=100000; Nout=100 in matching count units. Model LRV=log10(Nin/Nout) gives 3 log10. Applicability: Requires detection limits and recovery; nondetect is not zero.",
+      "verify": "在離線工作台先選取「復原期與出水去向」的觀測點。列出方法回收率、重複樣本與未檢出上限。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for recovery period and water routing. Record method recovery, replicates and nondetect upper bounds. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "壓損恢復便忽略生物去除能力。診斷與介入：核對檢出限及水力配對，對未檢出結果使用可支持的下限。~Restored head loss is mistaken for restored biological removal. Diagnostic response: Check detection limits/hydraulic pairing and use supportable lower bounds for nondetection.",
+      "misconception": "水流順暢即代表所有處理作用已恢復。~Free-flowing water means all treatment functions have recovered.",
+      "practice": "只改變 Nout:100→1000，其餘假設固定；結果應由 3 變為 2 log10。用「復原期與出水去向」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Nout:100→1000, holding the other assumptions fixed; the result changes from 3 to 2 log10. Explain the direction using recovery period and water routing, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "分池備援與長期記錄~Multiple-cell redundancy and long-term records",
+      "mechanism": "一池維護時用實際在線面積重算濾速，再核對水質、成熟度與砂層變化。~Recalculate loading from online area during maintenance and check quality, maturity and changing media depth.",
+      "model": "原創教學假設：Q=120 m³/d；面積=40 m²。模型 v=Q/(24A)，代入得到 0.125 m/h。適用邊界：慢砂濾池表觀負荷示例，不含成熟度與低溫生物影響。~Original teaching assumptions: Q=120 m³/d; area=40 m². Model v=Q/(24A) gives 0.125 m/h. Applicability: Slow-sand superficial-load example, excluding maturity and low-temperature biological effects.",
+      "verify": "在離線工作台先選取「分池備援與長期記錄」的觀測點。比較水頭、濁度與生物層成熟期的水質趨勢。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for multiple-cell redundancy and long-term records. Compare head, turbidity and water quality through biological-layer maturation. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "維護造成在線面積減少卻仍按全池容量供水。診斷與介入：以成熟且在線的實際面積核算，維護時重新比較負荷。~Reduced online area during maintenance is ignored in supply planning. Diagnostic response: Use actually mature, online area and reassess loading during maintenance.",
+      "misconception": "同一總面積可以不考慮各池成熟與停用狀態。~Total area makes individual cell maturity and downtime irrelevant.",
+      "practice": "只改變 Q:120→144 m³/d，其餘假設固定；結果應由 0.125 變為 0.15 m/h。用「分池備援與長期記錄」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:120→144 m³/d, holding the other assumptions fixed; the result changes from 0.125 to 0.15 m/h. Explain the direction using multiple-cell redundancy and long-term records, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-filter",
+      "title": "飲用水過濾手冊（2020）",
+      "titleEn": "Water Treatment Manual: Filtration (2020)",
+      "url": "https://www.epa.ie/publications/compliance--enforcement/drinking-water/advice--guidance/epa-water-treatment-manual-filtration.php",
+      "organization": "Environmental Protection Agency, Ireland",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-dwtech",
+      "title": "飲用水處理技術總覽",
+      "titleEn": "Overview of Drinking Water Treatment Technologies",
+      "url": "https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-training",
+      "title": "水與污水操作訓練模組",
+      "titleEn": "Water and Wastewater Operator Training Modules",
+      "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules",
+      "organization": "Pennsylvania DEP",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "適用原水與前處理~Suitable source and pretreatment",
+    "上覆水層~Supernatant",
+    "生物活性表層~Biologically active surface",
+    "砂層~Sand bed",
+    "承托與集水~Support and underdrain",
+    "出水與復原驗證~Effluent and recovery verification"
+  ],
+  "modelChecks": [
+    {
+      "expression": "120/(24*40)",
+      "expected": 0.125,
+      "unit": "m/h",
+      "description": "b447 unit 1 slowrate baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "144/(24*40)",
+      "expected": 0.15,
+      "unit": "m/h",
+      "description": "b447 unit 1 slowrate perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "40*.8",
+      "expected": 32.0,
+      "unit": "m³ bulk media",
+      "description": "b447 unit 2 sandvolume baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "40*.9",
+      "expected": 36.0,
+      "unit": "m³ bulk media",
+      "description": "b447 unit 2 sandvolume perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".45/.20",
+      "expected": 2.25,
+      "unit": "ratio",
+      "description": "b447 unit 3 grading baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".50/.20",
+      "expected": 2.5,
+      "unit": "ratio",
+      "description": "b447 unit 3 grading perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".1*.8/.4",
+      "expected": 0.20000000000000004,
+      "unit": "m",
+      "description": "b447 unit 4 slowhead baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".1*.8/.25",
+      "expected": 0.32000000000000006,
+      "unit": "m",
+      "description": "b447 unit 4 slowhead perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".4*.8/.1",
+      "expected": 3.2000000000000006,
+      "unit": "h",
+      "description": "b447 unit 5 poretime baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".4*.8/.15",
+      "expected": 2.1333333333333337,
+      "unit": "h",
+      "description": "b447 unit 5 poretime perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "log10(100000/100)",
+      "expected": 3.0,
+      "unit": "log10",
+      "description": "b447 unit 6 logrem baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "log10(100000/1000)",
+      "expected": 2.0,
+      "unit": "log10",
+      "description": "b447 unit 6 logrem perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".1*.8/.4",
+      "expected": 0.20000000000000004,
+      "unit": "m",
+      "description": "b447 unit 7 slowhead baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".1*.8/.25",
+      "expected": 0.32000000000000006,
+      "unit": "m",
+      "description": "b447 unit 7 slowhead perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "40*.01",
+      "expected": 0.4,
+      "unit": "m³ sand",
+      "description": "b447 unit 8 scrape baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "40*.015",
+      "expected": 0.6,
+      "unit": "m³ sand",
+      "description": "b447 unit 8 scrape perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "log10(100000/100)",
+      "expected": 3.0,
+      "unit": "log10",
+      "description": "b447 unit 9 logrem baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "log10(100000/1000)",
+      "expected": 2.0,
+      "unit": "log10",
+      "description": "b447 unit 9 logrem perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "120/(24*40)",
+      "expected": 0.125,
+      "unit": "m/h",
+      "description": "b447 unit 10 slowrate baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "144/(24*40)",
+      "expected": 0.15,
+      "unit": "m/h",
+      "description": "b447 unit 10 slowrate perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

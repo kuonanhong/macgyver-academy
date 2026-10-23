@@ -1,0 +1,200 @@
+{
+  "id": "b454",
+  "title": "水質線上感測校正~Online water-quality sensor calibration",
+  "focus": "從校正標準到可追溯水質時序~From calibration standards to traceable water-quality series",
+  "discipline": "environment-water",
+  "summary": "以「從校正標準到可追溯水質時序」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow from calibration standards to traceable water-quality series through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "位置與樣品代表性~Location and sample representativeness",
+      "mechanism": "感測器讀到的是局部水團；流速、分層和旁流管延遲會改變代表性。~The sensor measures a local parcel; velocity, stratification and bypass delay affect representativeness.",
+      "model": "原創假想教學算例：delay=V/Q; V=2 L; Q=0.5 L/min；計算 2/0.5 = 4 min。適用限制：理想旁流平均時間。~Original hypothetical teaching example: delay=V/Q; V=2 L; Q=0.5 L/min; calculation 2/0.5 = 4 min. Applicability: Ideal mean bypass residence time.",
+      "verify": "變更旁流量並比較事件到達時間。~Vary bypass flow and compare event arrival time.",
+      "failure": "停滯旁流管可能讓感測值落後於主流。~A stagnant bypass can lag the main stream.",
+      "misconception": "感測器放在哪裡都會得到同一條時序。~Sensor location never changes the time series.",
+      "practice": "在「位置與樣品代表性」的教學模型或試算表中先重現 4 min，再依驗證任務改動一個輸入、保留其餘條件。對照「停滯旁流管可能讓感測值落後於主流。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for location and sample representativeness, first reproduce 4 min, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A stagnant bypass can lag the main stream.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "兩點校正斜率~Two-point calibration slope",
+      "mechanism": "斜率校正把輸出尺度連回已知標準；零點與斜率必須分開估計。~Slope calibration ties output scale to known standards; estimate offset and slope separately.",
+      "model": "原創假想教學算例：m=(y2-y1)/(x2-x1); y1=1.1,y2=5.3;x1=1,x2=5；計算 (5.3-1.1)/(5-1) = 1.05 output/input。適用限制：線性區間的兩點估計。~Original hypothetical teaching example: m=(y2-y1)/(x2-x1); y1=1.1,y2=5.3;x1=1,x2=5; calculation (5.3-1.1)/(5-1) = 1.05 output/input. Applicability: Two-point estimate within a linear range.",
+      "verify": "增加第三個獨立標準檢查線性殘差。~Use a third independent standard to check linearity residual.",
+      "failure": "用兩點完全擬合不能證明全範圍線性。~Exact two-point fitting does not prove full-range linearity.",
+      "misconception": "兩點校正即可證明所有濃度都沒有偏差。~Two-point calibration proves zero bias at every concentration.",
+      "practice": "在「兩點校正斜率」的教學模型或試算表中先重現 1.05 output/input，再依驗證任務改動一個輸入、保留其餘條件。對照「用兩點完全擬合不能證明全範圍線性。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for two-point calibration slope, first reproduce 1.05 output/input, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Exact two-point fitting does not prove full-range linearity.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "反算濃度與零點~Invert concentration and offset",
+      "mechanism": "已知y=mx+b時，應先扣b再除m；順序錯誤會留下系統偏差。~For y=mx+b subtract b before dividing by m; reversing the order leaves bias.",
+      "model": "原創假想教學算例：x=(y-b)/m; y=3.2;b=0.05;m=1.05；計算 (3.2-0.05)/1.05 = 3 input unit。適用限制：線性模型且本次校正有效。~Original hypothetical teaching example: x=(y-b)/m; y=3.2;b=0.05;m=1.05; calculation (3.2-0.05)/1.05 = 3 input unit. Applicability: Linear model with valid current calibration.",
+      "verify": "對三筆模擬讀值套用正反轉換並比對。~Apply forward and inverse transforms to three simulated readings.",
+      "failure": "只乘修正係數而漏掉零點，低濃度誤差特別大。~A scale-only correction misses offset, especially at low concentration.",
+      "misconception": "零點偏差可以一律用百分比修正。~Offset bias can always be corrected by a percentage.",
+      "practice": "在「反算濃度與零點」的教學模型或試算表中先重現 3 input unit，再依驗證任務改動一個輸入、保留其餘條件。對照「只乘修正係數而漏掉零點，低濃度誤差特別大。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for invert concentration and offset, first reproduce 3 input unit, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A scale-only correction misses offset, especially at low concentration.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "溫度補償的基準~Reference temperature compensation",
+      "mechanism": "導電度隨溫度變化；補償係數需符合水質與溫區，不能當所有感測器的通用公式。~Conductivity varies with temperature; its compensation coefficient depends on water and range and is not a universal sensor formula.",
+      "model": "原創假想教學算例：EC25=ECT/[1+alpha(T-25)]; ECT=1100;alpha=0.02;T=30；計算 1100/(1+0.02*(30-25)) = 1000 microS/cm。適用限制：示範線性導電度補償。~Original hypothetical teaching example: EC25=ECT/[1+alpha(T-25)]; ECT=1100;alpha=0.02;T=30; calculation 1100/(1+0.02*(30-25)) = 1000 microS/cm. Applicability: Illustrative linear conductivity compensation.",
+      "verify": "固定鹽度，在兩個溫度檢查補償後是否一致。~Hold salinity fixed and compare compensated readings at two temperatures.",
+      "failure": "把補償後讀值再補償一次會重複修正。~Compensating an already corrected value applies the correction twice.",
+      "misconception": "所有水質參數都可用同一溫度係數。~Every water-quality parameter uses the same temperature coefficient.",
+      "practice": "在「溫度補償的基準」的教學模型或試算表中先重現 1000 microS/cm，再依驗證任務改動一個輸入、保留其餘條件。對照「把補償後讀值再補償一次會重複修正。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for reference temperature compensation, first reproduce 1000 microS/cm, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Compensating an already corrected value applies the correction twice.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "清潔前後區分污損~Separate fouling using cleaning checks",
+      "mechanism": "保留清潔前、清潔後與標準液讀值，可區分污損與儀器漂移。~Retain pre-cleaning, post-cleaning and standard readings to separate fouling from instrument drift.",
+      "model": "原創假想教學算例：fouling shift=before-after; 8.4-8.0；計算 8.4-8.0 = 0.4 measurement unit。適用限制：僅本次檢查差值，需結合時間序列判斷。~Original hypothetical teaching example: fouling shift=before-after; 8.4-8.0; calculation 8.4-8.0 = 0.4 measurement unit. Applicability: Single-check difference requiring time-series context.",
+      "verify": "先記錄再清潔，將差值放回最近維護區間。~Record before cleaning and map the difference onto the maintenance interval.",
+      "failure": "先清潔再讀值會遺失污損證據。~Cleaning before recording loses evidence of fouling.",
+      "misconception": "清潔後正常即可證明之前所有讀值都正常。~A normal post-cleaning reading proves all earlier readings were normal.",
+      "practice": "在「清潔前後區分污損」的教學模型或試算表中先重現 0.4 measurement unit，再依驗證任務改動一個輸入、保留其餘條件。對照「先清潔再讀值會遺失污損證據。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for separate fouling using cleaning checks, first reproduce 0.4 measurement unit, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Cleaning before recording loses evidence of fouling.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "漂移率與時間插值~Drift rate and time interpolation",
+      "mechanism": "線性漂移修正僅在有證據支持時使用；突發故障不能用直線跨過。~Use linear drift correction only when supported; do not interpolate a line across an abrupt failure.",
+      "model": "原創假想教學算例：drift rate=(end-start)/days; (0.3-0.1)/10；計算 (0.3-0.1)/10 = 0.02 unit/day。適用限制：假設平滑線性漂移。~Original hypothetical teaching example: drift rate=(end-start)/days; (0.3-0.1)/10; calculation (0.3-0.1)/10 = 0.02 unit/day. Applicability: Assumes smooth linear drift.",
+      "verify": "加入一次跳變，說明線性校正何處失效。~Insert a step change and identify where linear correction fails.",
+      "failure": "沒有維護紀錄的回溯直線可能製造假趨勢。~A retrospective line without maintenance records can create a false trend.",
+      "misconception": "所有漂移都一定是線性的。~Every drift is linear.",
+      "practice": "在「漂移率與時間插值」的教學模型或試算表中先重現 0.02 unit/day，再依驗證任務改動一個輸入、保留其餘條件。對照「沒有維護紀錄的回溯直線可能製造假趨勢。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for drift rate and time interpolation, first reproduce 0.02 unit/day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A retrospective line without maintenance records can create a false trend.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "重複性與平均的不確定度~Repeatability and uncertainty of the mean",
+      "mechanism": "重複量測可估隨機變動，但多次讀取同一偏移不會消除系統誤差。~Repeated measurements estimate random variation; repeated readings of one bias do not remove systematic error.",
+      "model": "原創假想教學算例：u_mean=s/sqrt(n); s=0.2;n=16；計算 0.2/sqrt(16) = 0.05 unit。適用限制：獨立同分布量測，非高度自相關串流。~Original hypothetical teaching example: u_mean=s/sqrt(n); s=0.2;n=16; calculation 0.2/sqrt(16) = 0.05 unit. Applicability: Independent identically distributed readings, not strongly autocorrelated streams.",
+      "verify": "比較連續密集讀值與間隔取樣的自相關。~Compare autocorrelation of dense readings and spaced samples.",
+      "failure": "把高度自相關的100筆視為100個獨立樣本會低估誤差。~Treating100 autocorrelated readings as100 independent samples understates uncertainty.",
+      "misconception": "重複次數夠多就能消除任何校正偏差。~Enough repeats eliminate any calibration bias.",
+      "practice": "在「重複性與平均的不確定度」的教學模型或試算表中先重現 0.05 unit，再依驗證任務改動一個輸入、保留其餘條件。對照「把高度自相關的100筆視為100個獨立樣本會低估誤差。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for repeatability and uncertainty of the mean, first reproduce 0.05 unit, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Treating100 autocorrelated readings as100 independent samples understates uncertainty.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "響應時間與低通效應~Response time and low-pass behaviour",
+      "mechanism": "感測器的時間常數會平滑短事件；慢感測器的低峰值不等於污染峰不存在。~A sensor time constant smooths brief events; a lower peak from a slow sensor does not prove the event was absent.",
+      "model": "原創假想教學算例：fraction=1-exp(-t/tau);t=30 s;tau=10 s；計算 1-exp(-30/10) = 0.950213 fraction。適用限制：一階階躍響應。~Original hypothetical teaching example: fraction=1-exp(-t/tau);t=30 s;tau=10 s; calculation 1-exp(-30/10) = 0.950213 fraction. Applicability: First-order step response.",
+      "verify": "用10秒脈衝與長階躍比較可觀測峰值。~Compare a10-second pulse with a sustained step.",
+      "failure": "只用穩態校正忽略動態誤差會錯過短脈衝。~Steady calibration alone misses dynamic error in short pulses.",
+      "misconception": "穩態校正通過就代表短事件讀值完全正確。~Passing static calibration guarantees accurate short-event readings.",
+      "practice": "在「響應時間與低通效應」的教學模型或試算表中先重現 0.950213 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「只用穩態校正忽略動態誤差會錯過短脈衝。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for response time and low-pass behaviour, first reproduce 0.950213 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Steady calibration alone misses dynamic error in short pulses.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "離群值旗標與原始保留~Flag outliers and retain raw data",
+      "mechanism": "超界、維護與斷線屬不同原因；保留原始值、修正值與理由，使人工審核可重現。~Range errors, maintenance and disconnection are different causes; preserve raw values, corrected values and reasons for reproducible review.",
+      "model": "原創假想教學算例：flagged fraction=12/288；計算 12/288 = 0.0416667 fraction。適用限制：五分鐘採樣一天的示例。~Original hypothetical teaching example: flagged fraction=12/288; calculation 12/288 = 0.0416667 fraction. Applicability: Illustrative day of five-minute sampling.",
+      "verify": "將校正時段和真正尖峰使用不同旗標。~Assign separate flags to calibration periods and genuine spikes.",
+      "failure": "自動刪掉所有尖峰可能刪除真實事件。~Automatically deleting all spikes can remove real events.",
+      "misconception": "凡是偏離平均的資料都應刪除。~Every value far from the mean should be deleted.",
+      "practice": "在「離群值旗標與原始保留」的教學模型或試算表中先重現 0.0416667 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「自動刪掉所有尖峰可能刪除真實事件。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for flag outliers and retain raw data, first reproduce 0.0416667 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Automatically deleting all spikes can remove real events.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "版本化與交接~Versioning and handover",
+      "mechanism": "校正係數、標準批號與維護日期需要和資料版本一起保存；輸出不能只留平滑後曲線。~Store calibration coefficients, standard batch and maintenance date with the data version; retain more than a smoothed output curve.",
+      "model": "原創假想教學算例：audit completeness=19/20；計算 19/20 = 0.95 fraction。適用限制：證據完整性而非準確度。~Original hypothetical teaching example: audit completeness=19/20; calculation 19/20 = 0.95 fraction. Applicability: Evidence completeness rather than accuracy.",
+      "verify": "從一個報表點追溯到原始讀值與當時係數。~Trace one report point to the raw reading and contemporaneous coefficients.",
+      "failure": "使用最新係數改寫所有歷史資料會改變過去的量測基準。~Applying the latest coefficients to all history changes the historical measurement basis.",
+      "misconception": "只存最後校正係數就足以重現所有歷史結果。~Keeping only the latest coefficients reproduces every historical result.",
+      "practice": "在「版本化與交接」的教學模型或試算表中先重現 0.95 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「使用最新係數改寫所有歷史資料會改變過去的量測基準。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for versioning and handover, first reproduce 0.95 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Applying the latest coefficients to all history changes the historical measurement basis.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-usgs",
+      "title": "連續水質監測的校正與資料處理",
+      "titleEn": "Guidelines and Standard Procedures for Continuous Water-Quality Monitors",
+      "url": "https://pubs.usgs.gov/tm/2006/tm1D3/",
+      "organization": "USGS",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-usgsaudit",
+      "title": "水質時序資料的檢查與修正",
+      "titleEn": "Procedure for Analyzing, Approving and Auditing Water-Quality Records",
+      "url": "https://water.usgs.gov/osw/time-series-guidance/AAA_WQ.pdf",
+      "organization": "USGS",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "代表性取樣~Representative sampling",
+    "參考標準~Reference standards",
+    "感測器~Sensors",
+    "清潔與校正~Cleaning and calibration",
+    "修正與旗標~Corrections and flags",
+    "資料審核~Data review"
+  ],
+  "place": {
+    "name": "USGS雷斯頓總部：方法資料來源機構（非實廠）",
+    "nameEn": "USGS headquarters in Reston: methodology source institution (not a process plant)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.95,
+    "lon": -77.37,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.usgs.gov/",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "2/0.5",
+      "expected": 4,
+      "unit": "min",
+      "description": "位置與樣品代表性~Location and sample representativeness"
+    },
+    {
+      "expression": "(5.3-1.1)/(5-1)",
+      "expected": 1.05,
+      "unit": "output/input",
+      "description": "兩點校正斜率~Two-point calibration slope"
+    },
+    {
+      "expression": "(3.2-0.05)/1.05",
+      "expected": 3,
+      "unit": "input unit",
+      "description": "反算濃度與零點~Invert concentration and offset"
+    },
+    {
+      "expression": "1100/(1+0.02*(30-25))",
+      "expected": 1000,
+      "unit": "microS/cm",
+      "description": "溫度補償的基準~Reference temperature compensation"
+    },
+    {
+      "expression": "8.4-8.0",
+      "expected": 0.4,
+      "unit": "measurement unit",
+      "description": "清潔前後區分污損~Separate fouling using cleaning checks"
+    },
+    {
+      "expression": "(0.3-0.1)/10",
+      "expected": 0.02,
+      "unit": "unit/day",
+      "description": "漂移率與時間插值~Drift rate and time interpolation"
+    },
+    {
+      "expression": "0.2/sqrt(16)",
+      "expected": 0.05,
+      "unit": "unit",
+      "description": "重複性與平均的不確定度~Repeatability and uncertainty of the mean"
+    },
+    {
+      "expression": "1-exp(-30/10)",
+      "expected": 0.950212932,
+      "unit": "fraction",
+      "description": "響應時間與低通效應~Response time and low-pass behaviour"
+    },
+    {
+      "expression": "12/288",
+      "expected": 0.041666667,
+      "unit": "fraction",
+      "description": "離群值旗標與原始保留~Flag outliers and retain raw data"
+    },
+    {
+      "expression": "19/20",
+      "expected": 0.95,
+      "unit": "fraction",
+      "description": "版本化與交接~Versioning and handover"
+    }
+  ]
+}

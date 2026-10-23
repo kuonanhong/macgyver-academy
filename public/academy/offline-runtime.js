@@ -122,7 +122,7 @@
     if(legacy && typeof legacy==='object' && !Array.isArray(legacy))for(const [id,row] of Object.entries(legacy).slice(0,2000)) {
       try {
         if(!/^[a-zA-Z0-9_-]{1,100}$/.test(id)||['__proto__','constructor','prototype'].includes(id)||!row||typeof row.notes!=='string'||row.notes.length>20000)continue;
-        migrated[id]={completed:idList(row.completed||[]),assembly:idList(row.assembly||[]),notes:row.notes,updatedAt:Number.isSafeInteger(row.updatedAt)&&row.updatedAt>=0?row.updatedAt:Date.now()};
+        migrated[id]={completed:idList(row.completed||[]),assembly:idList(row.assembly||[]),assisted:idList(row.assisted||[]).filter(id=>(row.completed||[]).includes(id)),notes:row.notes,updatedAt:Number.isSafeInteger(row.updatedAt)&&row.updatedAt>=0?row.updatedAt:Date.now()};
       } catch { /* Keep invalid legacy entries in their original backup. */ }
     }
     if(Object.keys(migrated).length)safeStorage.setItem(`mg-offline-records-${activeProfile().id}`,JSON.stringify(migrated));
@@ -155,13 +155,13 @@
         if (body?.ownerId && body.ownerId !== profile.id) return response({error:'Learning profile changed. Reload the selected profile before saving.'},401);
         if (!body || typeof body !== 'object' || Array.isArray(body) || typeof body.projectId !== 'string' || !/^[a-zA-Z0-9_-]{1,100}$/.test(body.projectId) || ['__proto__', 'constructor', 'prototype'].includes(body.projectId)) throw new Error('Invalid projectId.');
         if (typeof body.notes !== 'string' || body.notes.length > 20000) throw new Error('Notes must contain at most 20,000 characters.');
-        const completed = idList(body.completed), assembly = idList(body.assembly);
+        const completed = idList(body.completed), assembly = idList(body.assembly), assisted = idList(body.assisted || []).filter(id=>completed.includes(id));
         const base = body.baseUpdatedAt ?? null;
         if (base !== null && (!Number.isSafeInteger(base) || base < 0)) throw new Error('Invalid baseUpdatedAt.');
         const all = records(profile.id), current = own(all, body.projectId) ? all[body.projectId] : null;
         if ((current && base !== current.updatedAt) || (!current && base !== null)) return response({ error: 'Progress changed in another window', current }, 409);
         if (!current && Object.keys(all).length >= 2000) throw new Error('Maximum 2,000 saved projects per profile.');
-        const row = { completed, assembly, notes: body.notes, updatedAt: Math.max(Date.now(), (current?.updatedAt || 0) + 1) };
+        const row = { completed, assembly, assisted, notes: body.notes, updatedAt: Math.max(Date.now(), (current?.updatedAt || 0) + 1) };
         all[body.projectId] = row;
         safeStorage.setItem(`mg-offline-records-${profile.id}`, JSON.stringify(all));
         return response({ projectId: body.projectId, ...row, deviceOnly: true, storageAvailable: persistent });

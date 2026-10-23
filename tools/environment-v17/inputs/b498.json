@@ -1,0 +1,291 @@
+{
+  "id": "b498",
+  "title": "環境噪音屏障設計~Environmental noise-barrier design",
+  "focus": "從聲能、頻率與繞射幾何到屏障插入損失驗證~Connect acoustic energy, frequency and diffraction geometry with verified barrier insertion loss",
+  "discipline": "environment-monitoring",
+  "summary": "本課以「從聲能、頻率與繞射幾何到屏障插入損失驗證」為主軸，依序處理聲源盤查與分貝加總、距離衰減與聲源幾何、頂部繞射與路徑差、板材穿透與開口漏聲、背景聲與效果上限。十個單元各包含機制、算例、量測驗證及失效診斷；數值均為明示的原創教學假設，不能直接用作工程設計、排放限值或設備設定。~This course focuses on Connect acoustic energy, frequency and diffraction geometry with verified barrier insertion loss, progressing through Source inventory and decibel addition, Distance loss and source geometry, Top-edge diffraction and path difference, Panel transmission and opening leakage, Background sound and performance floor. Ten units each address mechanism, worked calculation, measurement verification and failure diagnosis. Numbers are explicit original teaching assumptions, not design values, emission limits or equipment settings.",
+  "history": "這項技術的學習脈絡由單一設備處理，逐步擴展至物質與能量收支、監測品質和生命週期比較。本課將官方方法文件作為查核入口，並以獨立編寫的假想數據練習；參考文件的年代與地區不代表其規範在所有場址適用。~The learning progression expands from individual treatment equipment to mass and energy balances, monitoring quality and lifecycle comparison. Official method documents provide verification starting points while independently authored hypothetical data support practice; a document date or jurisdiction does not establish applicability to every site.",
+  "place": {
+    "name": "教學參考區域：美國北卡羅來納研究三角園區（非本課實拍場址）",
+    "nameEn": "Reference region: Research Triangle Park, North Carolina (not a photographed course facility)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 35.9,
+    "lon": -78.9,
+    "scope": "Approximate institutional reference region; not a facility entrance, installation location or visitor permission."
+  },
+  "architectureNodes": [
+    "聲源盤查與分貝加總~Source inventory and decibel addition",
+    "距離衰減與聲源幾何~Distance loss and source geometry",
+    "頂部繞射與路徑差~Top-edge diffraction and path difference",
+    "板材穿透與開口漏聲~Panel transmission and opening leakage",
+    "背景聲與效果上限~Background sound and performance floor",
+    "證據與交接~Evidence and handoff"
+  ],
+  "sources": [
+    {
+      "id": "v17s-waste-noise",
+      "title": "FHWA 公路噪音屏障設計手冊",
+      "titleEn": "FHWA Highway Noise Barrier Design Handbook",
+      "url": "https://www.fhwa.dot.gov/Environment/noise/noise_barriers/design_construction/design/design01.cfm",
+      "organization": "Federal Highway Administration",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-noisepack",
+      "title": "FHWA 噪音屏障設計套件",
+      "titleEn": "FHWA Noise Barrier Design Package",
+      "url": "https://www.fhwa.dot.gov/Environment/noise/noise_barriers/design_construction/pack_mem.cfm",
+      "organization": "Federal Highway Administration",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "units": [
+    {
+      "title": "聲源盤查與分貝加總~Source inventory and decibel addition",
+      "mechanism": "在道路與設備場景分離多個不相關音源，先轉線性能量再加總，保留頻帶與加權方式。 分貝是對數量，需先加線性能量；相干音源和相位干涉需另處理。~Separate uncorrelated road and equipment sources, add linear energies and preserve frequency bands and weighting. Decibels are logarithmic, so add linear energies first; coherent sources and phase interference require separate treatment.",
+      "model": "原創教學假設，非現場操作值：兩個互不相關聲源 L1=60 dB、L2=60 dB。公式 L=10*log10(10^(L1/10)+10^(L2/10))，計算得 63.0103 dB。適用邊界：相同頻帶、時間與加權的互不相關聲源。~Original teaching assumptions, not field operating values: Two uncorrelated sources L1=60 dB, L2=60 dB. Formula L=10*log10(10^(L1/10)+10^(L2/10)) gives 63.0103 dB. Applicability: Uncorrelated sources with the same band, duration and weighting.",
+      "verify": "針對「聲源盤查與分貝加總」，保持量測位置和背景條件一致，分別量聲源與合成聲，記錄頻譜。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Source inventory and decibel addition, Keep position and background consistent, measure separate and combined sources, and retain spectra. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "直接相加 dB 會嚴重高估總噪音。 在「聲源盤查與分貝加總」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Adding dB arithmetically severely overstates combined sound. Mark where this error can enter the Source inventory and decibel addition flow and name a measurement that distinguishes causes.",
+      "misconception": "兩個 60 dB 聲源相加就是 120 dB。~Two 60 dB sources sum to 120 dB.",
+      "practice": "只將 L2 改成 55 dB，其餘輸入固定。重算結果應由 63.0103 變成 61.1933 dB。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only L2 to 55 dB, holding all other inputs fixed. Recalculation changes 63.0103 to 61.1933 dB. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "logsum"
+    },
+    {
+      "title": "基線聲級與時間尺度~Baseline level and time scale",
+      "mechanism": "把交通尖峰和離峰按實際時長合併，不使用聲級數值的算術平均。 等效聲級是能量隨時間的平均，短時高聲級可能主導結果。~Combine peak and off-peak traffic using actual durations rather than arithmetic averaging of decibel levels. Equivalent level is a time average of acoustic energy; short high-level periods can dominate.",
+      "model": "原創教學假設，非現場操作值：時段一 L1=70 dB、t1=1 h；時段二 L2=60 dB、t2=3 h。公式 Leq=10*log10((t1*10^(L1/10)+t2*10^(L2/10))/(t1+t2))，計算得 65.1188 dB。適用邊界：同一聲學加權、無重複時段；不是 dB 數值的算術平均。~Original teaching assumptions, not field operating values: Interval one L1=70 dB, t1=1 h; interval two L2=60 dB, t2=3 h. Formula Leq=10*log10((t1*10^(L1/10)+t2*10^(L2/10))/(t1+t2)) gives 65.1188 dB. Applicability: Common weighting with nonoverlapping intervals; not an arithmetic dB average.",
+      "verify": "針對「基線聲級與時間尺度」，保留時段長度與完整聲級記錄，對齊交通或設備運轉事件。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Baseline level and time scale, Retain durations and full level records, aligned with traffic or equipment events. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把每個時段視為等長會偏誤整段評估。 在「基線聲級與時間尺度」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Treating intervals of different duration as equal biases the assessment. Mark where this error can enter the Baseline level and time scale flow and name a measurement that distinguishes causes.",
+      "misconception": "不同時長的聲級可以直接取平均得到 Leq。~Levels over unequal durations can be directly averaged to obtain Leq.",
+      "practice": "只將高噪音時段 t1 改為 2 h，其餘輸入固定。重算結果應由 65.1188 變成 66.6276 dB。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only high-noise duration t1 to 2 h, holding all other inputs fixed. Recalculation changes 65.1188 to 66.6276 dB. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "energyavg"
+    },
+    {
+      "title": "距離衰減與聲源幾何~Distance loss and source geometry",
+      "mechanism": "用孤立設備的點源例建立概念，接著指出長道路是延伸聲源，不能直接沿用點源尺度。 球面擴散令強度按距離平方降低；線聲源、公路與反射環境不能直接套相同衰減。~Develop intuition with an isolated point-source machine, then identify a long road as an extended source requiring different scaling. Spherical spreading reduces intensity with distance squared; line sources, highways and reflective environments need different treatment.",
+      "model": "原創教學假設，非現場操作值：自由場點音源參考距離 r1=10 m；接收距離 r2=20 m。公式 deltaL=20*log10(r2/r1)，計算得 6.0206 dB reduction。適用邊界：無反射、無屏障、遠場點源；僅為與屏障作用比較的基線。~Original teaching assumptions, not field operating values: Free-field point-source reference distance r1=10 m; receiver distance r2=20 m. Formula deltaL=20*log10(r2/r1) gives 6.0206 dB reduction. Applicability: Unobstructed reflection-free far-field point source; a baseline for comparison with barriers only.",
+      "verify": "針對「距離衰減與聲源幾何」，確認聲源幾何與背景聲，沿多距離點量測並檢查是否符合點源假設。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Distance loss and source geometry, Check source geometry and background and measure at multiple distances to test point-source assumptions. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把長道路當孤立點音源會高估距離衰減。 在「距離衰減與聲源幾何」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Treating a long road as one point source overstates distance attenuation. Mark where this error can enter the Distance loss and source geometry flow and name a measurement that distinguishes causes.",
+      "misconception": "任何道路噪音只要距離加倍就一定降低同一固定分貝值。~Every road-noise case loses the same fixed decibel amount when distance doubles.",
+      "practice": "只將 r2 改成 30 m，其餘輸入固定。重算結果應由 6.0206 變成 9.54243 dB reduction。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only r2 to 30 m, holding all other inputs fixed. Recalculation changes 6.0206 to 9.54243 dB reduction. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "spreading"
+    },
+    {
+      "title": "頻帶與波長~Frequency bands and wavelength",
+      "mechanism": "同一屏障對不同頻率的效果不同，先用波長與屏障高度、縫隙尺寸比較。 低頻波長較長，屏障與開口相對波長的尺寸決定繞射重要性。~Compare wavelength with barrier height and gap dimensions because performance varies across frequency. Lower frequencies have longer wavelengths; barrier and opening size relative to wavelength governs diffraction importance.",
+      "model": "原創教學假設，非現場操作值：聲速 c=343 m/s；頻率 f=500 Hz。公式 lambda=c/f，計算得 0.686 m。適用邊界：均勻靜止空氣、固定聲速，忽略溫度梯度和風折射。~Original teaching assumptions, not field operating values: Sound speed c=343 m/s; frequency f=500 Hz. Formula lambda=c/f gives 0.686 m. Applicability: Uniform stationary air and fixed sound speed, excluding temperature-gradient and wind refraction.",
+      "verify": "針對「頻帶與波長」，以倍頻帶量聲音而非只看總 dB，對照幾何尺寸。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Frequency bands and wavelength, Measure octave-band levels rather than only total dB and compare with geometry. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只用高頻效果估低頻衰減會過度樂觀。 在「頻帶與波長」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Extrapolating high-frequency performance to low frequencies overstates attenuation. Mark where this error can enter the Frequency bands and wavelength flow and name a measurement that distinguishes causes.",
+      "misconception": "聲波頻率降低時，其波長也跟著變短。~Lower sound frequency produces a shorter wavelength.",
+      "practice": "只將 f 改成 125 Hz，其餘輸入固定。重算結果應由 0.686 變成 2.744 m。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only f to 125 Hz, holding all other inputs fixed. Recalculation changes 0.686 to 2.744 m. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "wavelength"
+    },
+    {
+      "title": "頂部繞射與路徑差~Top-edge diffraction and path difference",
+      "mechanism": "拖曳教學聲源、屏障和接收點，量兩段繞射路徑；路徑差只是衰減模型的輸入。 路徑差描述繞過屏障頂端比直達路徑多走多少，還需配合波長理解繞射。~Drag the teaching source, barrier and receiver and measure both diffracted segments; path difference is an attenuation-model input only. Path difference measures extra travel over a barrier top relative to direct sound and must be interpreted with wavelength.",
+      "model": "原創教學假設，非現場操作值：繞射路徑兩段 a=12 m、b=10 m；直達距離 d=20 m。公式 delta=a+b-d，計算得 2 m。適用邊界：二維單邊緣幾何，未直接算實場衰減。~Original teaching assumptions, not field operating values: Diffracted path segments a=12 m, b=10 m; direct distance d=20 m. Formula delta=a+b-d gives 2 m. Applicability: Two-dimensional single-edge geometry, not a direct field attenuation calculation.",
+      "verify": "針對「頂部繞射與路徑差」，量聲源、屏障和接收點位置，逐頻帶比較路徑差與波長。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Top-edge diffraction and path difference, Survey source, edge and receiver locations and compare path difference with wavelength by frequency band. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "低頻波長長，即使視線被擋仍可能明顯繞射。 在「頂部繞射與路徑差」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Long-wavelength low-frequency sound can diffract even with line of sight blocked. Mark where this error can enter the Top-edge diffraction and path difference flow and name a measurement that distinguishes causes.",
+      "misconception": "擋住視線就代表任何頻率的聲音都完全消失。~Blocking line of sight eliminates sound at every frequency.",
+      "practice": "只將 a 改成 13 m，其餘輸入固定。重算結果應由 2 變成 3 m。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only path a to 13 m, holding all other inputs fixed. Recalculation changes 2 to 3 m. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pathdiff"
+    },
+    {
+      "title": "端部與有限長度效應~Ends and finite-length effects",
+      "mechanism": "把接收點移向屏障端部，另畫側向繞射路徑，不能只檢查中央剖面。 路徑差描述繞過屏障頂端比直達路徑多走多少，還需配合波長理解繞射。~Move the receiver toward an end and draw the lateral diffraction path instead of checking only the central section. Path difference measures extra travel over a barrier top relative to direct sound and must be interpreted with wavelength.",
+      "model": "原創教學假設，非現場操作值：繞射路徑兩段 a=12 m、b=10 m；直達距離 d=20 m。公式 delta=a+b-d，計算得 2 m。適用邊界：二維單邊緣幾何，未直接算實場衰減。~Original teaching assumptions, not field operating values: Diffracted path segments a=12 m, b=10 m; direct distance d=20 m. Formula delta=a+b-d gives 2 m. Applicability: Two-dimensional single-edge geometry, not a direct field attenuation calculation.",
+      "verify": "針對「端部與有限長度效應」，量聲源、屏障和接收點位置，逐頻帶比較路徑差與波長。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Ends and finite-length effects, Survey source, edge and receiver locations and compare path difference with wavelength by frequency band. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "低頻波長長，即使視線被擋仍可能明顯繞射。 在「端部與有限長度效應」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Long-wavelength low-frequency sound can diffract even with line of sight blocked. Mark where this error can enter the Ends and finite-length effects flow and name a measurement that distinguishes causes.",
+      "misconception": "擋住視線就代表任何頻率的聲音都完全消失。~Blocking line of sight eliminates sound at every frequency.",
+      "practice": "只將 a 改成 13 m，其餘輸入固定。重算結果應由 2 變成 3 m。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only path a to 13 m, holding all other inputs fixed. Recalculation changes 2 to 3 m. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pathdiff"
+    },
+    {
+      "title": "板材穿透與開口漏聲~Panel transmission and opening leakage",
+      "mechanism": "在理想板面加入接縫與開口，觀察能量穿透率的面積加權；同時保留繞射造成的另一條路。 平行穿透路徑的能量按面積加權，少量無阻隔開口即可主導穿透。~Add joints and openings to an ideal panel and examine area-weighted transmission while retaining diffraction as a separate path. Energy through parallel transmission paths is area weighted; small unblocked openings can dominate transmission.",
+      "model": "原創教學假設，非現場操作值：總面積 A=100 m²；開口 Ag=1 m²；板材能量穿透率 τp=0.001；開口 τg=1。公式 TL=-10*log10(((A-Ag)*tau_p+Ag*tau_g)/A)，計算得 19.59 dB composite transmission loss。適用邊界：均勻入射的理想面積平均，不含繞射與反射；此穿透損失不同於現地插入損失。~Original teaching assumptions, not field operating values: Total area A=100 m²; opening Ag=1 m²; panel energy transmission τp=0.001; opening τg=1. Formula TL=-10*log10(((A-Ag)*tau_p+Ag*tau_g)/A) gives 19.59 dB composite transmission loss. Applicability: Ideal area averaging under uniform incidence, excluding diffraction and reflection; transmission loss differs from field insertion loss.",
+      "verify": "針對「板材穿透與開口漏聲」，檢查門縫、排水孔與板間接縫，將透射與繞射分開建模。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Panel transmission and opening leakage, Inspect door gaps, drains and joints and model transmission separately from diffraction. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只採用板材實驗室數據會忽略現地開口造成的漏聲。 在「板材穿透與開口漏聲」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Panel laboratory data alone overlooks field openings and leakage. Mark where this error can enter the Panel transmission and opening leakage flow and name a measurement that distinguishes causes.",
+      "misconception": "使用高隔音板材就能忽略所有接縫和開口。~High-transmission-loss panels make every joint and opening irrelevant.",
+      "practice": "只將 Ag 改成 2 m²，其餘輸入固定。重算結果應由 19.59 變成 16.7819 dB composite transmission loss。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only opening area to 2 m², holding all other inputs fixed. Recalculation changes 19.59 to 16.7819 dB composite transmission loss. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "gap_transmission"
+    },
+    {
+      "title": "現地插入損失~Field insertion loss",
+      "mechanism": "屏障前後都用同一接收點並用參考麥克風校正聲源差異，將天氣變化列入紀錄。 插入損失比較同一接收點與相同聲源、氣象基準的前後差。~Use the same receiver before and after, a reference microphone for source changes and a weather record. Insertion loss compares before and after at the same receiver with matched source and meteorological conditions.",
+      "model": "原創教學假設，非現場操作值：同條件屏障前 Lbefore=72 dB；屏障後 Lafter=64 dB。公式 IL=Lbefore-Lafter，計算得 8 dB。適用邊界：背景、交通量與量測條件已匹配；不是聲壓振幅百分比。~Original teaching assumptions, not field operating values: Matched before-barrier level Lbefore=72 dB; after level Lafter=64 dB. Formula IL=Lbefore-Lafter gives 8 dB. Applicability: Matched background, traffic and measurement conditions; this is not a pressure-amplitude percentage.",
+      "verify": "針對「現地插入損失」，加入參考麥克風校正聲源變動，記錄車流、風向與頻帶。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Field insertion loss, Use a reference microphone to correct source variation and record traffic, wind and frequency bands. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "車流減少造成的下降可能被錯歸因於屏障。 在「現地插入損失」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A traffic decrease may be wrongly credited to the barrier. Mark where this error can enter the Field insertion loss flow and name a measurement that distinguishes causes.",
+      "misconception": "不同車流下量到的前後差都可全部算作屏障效果。~Any before-after difference at different traffic levels is entirely barrier performance.",
+      "practice": "只將 Lafter 改成 66 dB，其餘輸入固定。重算結果應由 8 變成 6 dB。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only after level to 66 dB, holding all other inputs fixed. Recalculation changes 8 to 6 dB. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "insertion"
+    },
+    {
+      "title": "背景聲與效果上限~Background sound and performance floor",
+      "mechanism": "當目標聲源降低後，未被屏障遮住的背景聲可能主導總聲級，不能期待總值無限制下降。 分貝是對數量，需先加線性能量；相干音源和相位干涉需另處理。~As the target source falls, unshielded background may dominate the total and limit observed improvement. Decibels are logarithmic, so add linear energies first; coherent sources and phase interference require separate treatment.",
+      "model": "原創教學假設，非現場操作值：兩個互不相關聲源 L1=60 dB、L2=60 dB。公式 L=10*log10(10^(L1/10)+10^(L2/10))，計算得 63.0103 dB。適用邊界：相同頻帶、時間與加權的互不相關聲源。~Original teaching assumptions, not field operating values: Two uncorrelated sources L1=60 dB, L2=60 dB. Formula L=10*log10(10^(L1/10)+10^(L2/10)) gives 63.0103 dB. Applicability: Uncorrelated sources with the same band, duration and weighting.",
+      "verify": "針對「背景聲與效果上限」，保持量測位置和背景條件一致，分別量聲源與合成聲，記錄頻譜。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Background sound and performance floor, Keep position and background consistent, measure separate and combined sources, and retain spectra. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "直接相加 dB 會嚴重高估總噪音。 在「背景聲與效果上限」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Adding dB arithmetically severely overstates combined sound. Mark where this error can enter the Background sound and performance floor flow and name a measurement that distinguishes causes.",
+      "misconception": "兩個 60 dB 聲源相加就是 120 dB。~Two 60 dB sources sum to 120 dB.",
+      "practice": "只將 L2 改成 55 dB，其餘輸入固定。重算結果應由 63.0103 變成 61.1933 dB。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only L2 to 55 dB, holding all other inputs fixed. Recalculation changes 63.0103 to 61.1933 dB. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "logsum"
+    },
+    {
+      "title": "整體方案與驗證交接~Integrated proposal and verification handoff",
+      "mechanism": "交付頻帶結果、量測幾何與前後對照，另列排水、視距、結構及維修需求由對應專業驗證。 插入損失比較同一接收點與相同聲源、氣象基準的前後差。~Handoff frequency-band results, surveyed geometry and matched comparisons, while routing drainage, visibility, structure and maintenance to the appropriate professional checks. Insertion loss compares before and after at the same receiver with matched source and meteorological conditions.",
+      "model": "原創教學假設，非現場操作值：同條件屏障前 Lbefore=72 dB；屏障後 Lafter=64 dB。公式 IL=Lbefore-Lafter，計算得 8 dB。適用邊界：背景、交通量與量測條件已匹配；不是聲壓振幅百分比。~Original teaching assumptions, not field operating values: Matched before-barrier level Lbefore=72 dB; after level Lafter=64 dB. Formula IL=Lbefore-Lafter gives 8 dB. Applicability: Matched background, traffic and measurement conditions; this is not a pressure-amplitude percentage.",
+      "verify": "針對「整體方案與驗證交接」，加入參考麥克風校正聲源變動，記錄車流、風向與頻帶。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Integrated proposal and verification handoff, Use a reference microphone to correct source variation and record traffic, wind and frequency bands. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "車流減少造成的下降可能被錯歸因於屏障。 在「整體方案與驗證交接」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A traffic decrease may be wrongly credited to the barrier. Mark where this error can enter the Integrated proposal and verification handoff flow and name a measurement that distinguishes causes.",
+      "misconception": "不同車流下量到的前後差都可全部算作屏障效果。~Any before-after difference at different traffic levels is entirely barrier performance.",
+      "practice": "只將 Lafter 改成 66 dB，其餘輸入固定。重算結果應由 8 變成 6 dB。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only after level to 66 dB, holding all other inputs fixed. Recalculation changes 8 to 6 dB. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "insertion"
+    }
+  ],
+  "modelChecks": [
+    {
+      "expression": "10*log10(10**6+10**6)",
+      "expected": 63.01029995663981,
+      "unit": "dB",
+      "description": "b498 unit 1 baseline: Source inventory and decibel addition",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10*log10(10**6+10**5.5)",
+      "expected": 61.19331048066095,
+      "unit": "dB",
+      "description": "b498 unit 1 sensitivity: Source inventory and decibel addition",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10*log10((1*10**7+3*10**6)/4)",
+      "expected": 65.11883360978874,
+      "unit": "dB",
+      "description": "b498 unit 2 baseline: Baseline level and time scale",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10*log10((2*10**7+3*10**6)/5)",
+      "expected": 66.62757831681574,
+      "unit": "dB",
+      "description": "b498 unit 2 sensitivity: Baseline level and time scale",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "20*log10(20/10)",
+      "expected": 6.020599913279624,
+      "unit": "dB reduction",
+      "description": "b498 unit 3 baseline: Distance loss and source geometry",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "20*log10(30/10)",
+      "expected": 9.542425094393248,
+      "unit": "dB reduction",
+      "description": "b498 unit 3 sensitivity: Distance loss and source geometry",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "343/500",
+      "expected": 0.686,
+      "unit": "m",
+      "description": "b498 unit 4 baseline: Frequency bands and wavelength",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "343/125",
+      "expected": 2.744,
+      "unit": "m",
+      "description": "b498 unit 4 sensitivity: Frequency bands and wavelength",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "12+10-20",
+      "expected": 2,
+      "unit": "m",
+      "description": "b498 unit 5 baseline: Top-edge diffraction and path difference",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "13+10-20",
+      "expected": 3,
+      "unit": "m",
+      "description": "b498 unit 5 sensitivity: Top-edge diffraction and path difference",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "12+10-20",
+      "expected": 2,
+      "unit": "m",
+      "description": "b498 unit 6 baseline: Ends and finite-length effects",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "13+10-20",
+      "expected": 3,
+      "unit": "m",
+      "description": "b498 unit 6 sensitivity: Ends and finite-length effects",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "-10*log10(((100-1)*0.001+1)/100)",
+      "expected": 19.590023075765096,
+      "unit": "dB composite transmission loss",
+      "description": "b498 unit 7 baseline: Panel transmission and opening leakage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "-10*log10(((100-2)*0.001+2)/100)",
+      "expected": 16.78194516142461,
+      "unit": "dB composite transmission loss",
+      "description": "b498 unit 7 sensitivity: Panel transmission and opening leakage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "72-64",
+      "expected": 8,
+      "unit": "dB",
+      "description": "b498 unit 8 baseline: Field insertion loss",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "72-66",
+      "expected": 6,
+      "unit": "dB",
+      "description": "b498 unit 8 sensitivity: Field insertion loss",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10*log10(10**6+10**6)",
+      "expected": 63.01029995663981,
+      "unit": "dB",
+      "description": "b498 unit 9 baseline: Background sound and performance floor",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10*log10(10**6+10**5.5)",
+      "expected": 61.19331048066095,
+      "unit": "dB",
+      "description": "b498 unit 9 sensitivity: Background sound and performance floor",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "72-64",
+      "expected": 8,
+      "unit": "dB",
+      "description": "b498 unit 10 baseline: Integrated proposal and verification handoff",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "72-66",
+      "expected": 6,
+      "unit": "dB",
+      "description": "b498 unit 10 sensitivity: Integrated proposal and verification handoff",
+      "relativeTolerance": 1e-09
+    }
+  ],
+  "facts": [
+    "所有算例的輸入均為教學假設；官方來源支援方法脈絡，不代表其公開數據。~All numerical inputs are teaching assumptions; official sources support methodological context, not those hypothetical observations.",
+    "原始資料、單位、時間窗與不確定度必須一併保存。~Preserve raw data, units, time windows and uncertainty together."
+  ]
+}

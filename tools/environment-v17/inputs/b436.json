@@ -1,0 +1,283 @@
+{
+  "id": "b436",
+  "title": "消化氣淨化與利用~Digester-gas upgrading and utilization",
+  "focus": "沼氣污染物分離、甲烷回收與淨能源~Biogas contaminant separation, methane recovery and net energy",
+  "summary": "本課以沼氣污染物分離、甲烷回收與淨能源為主線，從乾基氣量與甲烷分率、水分與冷凝、硫化氫吸附床、矽氧烷與設備沉積進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops biogas contaminant separation, methane recovery and net energy through ten connected units, beginning with dry-gas volume and methane fraction, moisture and condensation, hydrogen-sulfide sorbent bed, siloxanes and equipment deposition. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "乾基氣量與甲烷分率~Dry-gas volume and methane fraction",
+      "mechanism": "先統一乾濕基、溫度與壓力，再把總沼氣換成甲烷量。~Normalize moisture, temperature and pressure before converting biogas to methane volume.",
+      "model": "原創教學假設：乾沼氣=500 m³/d；CH4 體積分率=0.60。模型 VCH4=Vgas xCH4，代入得到 300 m³ CH4/d。適用邊界：同一乾基與溫壓；CO2 去除會改變分率而不必然增加甲烷量。~Original teaching assumptions: Dry biogas=500 m³/d; CH4 volume fraction=0.60. Model VCH4=Vgas xCH4 gives 300 m³ CH4/d. Applicability: Common dry basis and temperature/pressure; CO2 removal can raise the fraction without increasing methane quantity.",
+      "verify": "在離線工作台先選取「乾基氣量與甲烷分率」的觀測點。使用氣體分析器與標準化流量計配對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for dry-gas volume and methane fraction. Pair gas composition with normalized volumetric flow. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "不同標準狀態的流量被直接相加。診斷與介入：以溫壓一致的甲烷組成分析重算，確認乾濕基準。~Flows at different reference states are added directly. Diagnostic response: Recalculate from same-condition methane analysis and verify wet/dry basis.",
+      "misconception": "任何條件的氣體體積都可直接比較。~Gas volumes are comparable at any condition.",
+      "practice": "只改變 xCH4:0.60→0.55，其餘假設固定；結果應由 300 變為 275 m³ CH4/d。用「乾基氣量與甲烷分率」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only xCH4:0.60→0.55, holding the other assumptions fixed; the result changes from 300 to 275 m³ CH4/d. Explain the direction using dry-gas volume and methane fraction, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "水分與冷凝~Moisture and condensation",
+      "mechanism": "冷凝降低含濕量，但露點必須以出口壓力及溫度驗證。~Condensation lowers moisture, but validate dew point at outlet pressure/temperature.",
+      "model": "原創教學假設：入口水蒸氣負荷=20 kg/d；冷凝去除=15 kg/d。模型 Mremain=Min-Mcond，代入得到 5 kg water/d。適用邊界：水分收支不等於露點合格；還須氣壓、氣溫及含濕量。~Original teaching assumptions: Inlet water-vapor load=20 kg/d; condensed removal=15 kg/d. Model Mremain=Min-Mcond gives 5 kg water/d. Applicability: A water balance does not prove dew-point compliance; gas pressure, temperature and humidity are needed.",
+      "verify": "在離線工作台先選取「水分與冷凝」的觀測點。量冷凝水並以露點儀確認乾燥器出口。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for moisture and condensation. Measure condensate and check dryer outlet with a dew-point instrument. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "排出冷凝水就宣稱完全乾燥。診斷與介入：另測露點與含濕，檢查排水及下游相容性。~Collected condensate does not prove complete drying. Diagnostic response: Measure dew point/moisture separately and check drainage/downstream compatibility.",
+      "misconception": "看到冷凝水就代表出口露點合格。~Visible condensate proves acceptable outlet dew point.",
+      "practice": "只改變 Mcond:15→17 kg/d，其餘假設固定；結果應由 5 變為 3 kg water/d。用「水分與冷凝」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Mcond:15→17 kg/d, holding the other assumptions fixed; the result changes from 5 to 3 kg water/d. Explain the direction using moisture and condensation, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "硫化氫吸附床~Hydrogen-sulfide sorbent bed",
+      "mechanism": "介質容量與傳質區共同影響突破，床前後分析比固定更換日數可靠。~Capacity and mass-transfer zones govern breakthrough; inlet/outlet analysis outperforms a fixed calendar.",
+      "model": "原創教學假設：介質=100 kg；假設有效容量=0.10 kg污染物/kg；負荷=0.5 kg/d。模型 tlife=Mq/L，代入得到 20 d。適用邊界：理想容量概估，未包含濕度競爭與傳質區；須以突破監測控制。~Original teaching assumptions: Media=100 kg; assumed effective capacity=0.10 kg contaminant/kg; load=0.5 kg/d. Model tlife=Mq/L gives 20 d. Applicability: Ideal capacity estimate excluding humidity competition and mass-transfer zones; breakthrough monitoring is required.",
+      "verify": "在離線工作台先選取「硫化氫吸附床」的觀測點。分別採床前後濃度並以累積負荷比對突破。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for hydrogen-sulfide sorbent bed. Sample before/after the bed and compare breakthrough against cumulative loading. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只依介質名義容量估壽命。診斷與介入：加密床前後取樣與累積負荷圖，確認穿透而非只按日曆。~Nominal capacity alone overpredicts service life. Diagnostic response: Increase bed inlet/outlet sampling and cumulative-load tracking instead of calendar-only replacement.",
+      "misconception": "吸附床在容量用完前絕不會突破。~An adsorber cannot break through before its nominal capacity is used.",
+      "practice": "只改變 L:0.5→0.8 kg/d，其餘假設固定；結果應由 20 變為 12.5 d。用「硫化氫吸附床」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only L:0.5→0.8 kg/d, holding the other assumptions fixed; the result changes from 20 to 12.5 d. Explain the direction using hydrogen-sulfide sorbent bed, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "矽氧烷與設備沉積~Siloxanes and equipment deposition",
+      "mechanism": "矽氧烷污染須用適當分析確認，不能由甲烷純度推論已去除。~Verify siloxanes analytically; methane purity does not establish their removal.",
+      "model": "原創教學假設：介質=100 kg；假設有效容量=0.10 kg污染物/kg；負荷=0.5 kg/d。模型 tlife=Mq/L，代入得到 20 d。適用邊界：理想容量概估，未包含濕度競爭與傳質區；須以突破監測控制。~Original teaching assumptions: Media=100 kg; assumed effective capacity=0.10 kg contaminant/kg; load=0.5 kg/d. Model tlife=Mq/L gives 20 d. Applicability: Ideal capacity estimate excluding humidity competition and mass-transfer zones; breakthrough monitoring is required.",
+      "verify": "在離線工作台先選取「矽氧烷與設備沉積」的觀測點。分別採床前後濃度並以累積負荷比對突破。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for siloxanes and equipment deposition. Sample before/after the bed and compare breakthrough against cumulative loading. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只量 H2S 就忽略矽氧烷。診斷與介入：加密床前後取樣與累積負荷圖，確認穿透而非只按日曆。~Measuring H2S alone misses siloxanes. Diagnostic response: Increase bed inlet/outlet sampling and cumulative-load tracking instead of calendar-only replacement.",
+      "misconception": "甲烷純度高就不需要查微量污染物。~High methane purity removes the need for trace-contaminant tests.",
+      "practice": "只改變 L:0.5→0.8 kg/d，其餘假設固定；結果應由 20 變為 12.5 d。用「矽氧烷與設備沉積」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only L:0.5→0.8 kg/d, holding the other assumptions fixed; the result changes from 20 to 12.5 d. Explain the direction using siloxanes and equipment deposition, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "二氧化碳分離~Carbon-dioxide separation",
+      "mechanism": "去除 CO2 提升甲烷比例，但不會創造新的甲烷分子。~Removing CO2 raises methane fraction without creating methane molecules.",
+      "model": "原創教學假設：乾沼氣=500 m³/d；CH4 體積分率=0.60。模型 VCH4=Vgas xCH4，代入得到 300 m³ CH4/d。適用邊界：同一乾基與溫壓；CO2 去除會改變分率而不必然增加甲烷量。~Original teaching assumptions: Dry biogas=500 m³/d; CH4 volume fraction=0.60. Model VCH4=Vgas xCH4 gives 300 m³ CH4/d. Applicability: Common dry basis and temperature/pressure; CO2 removal can raise the fraction without increasing methane quantity.",
+      "verify": "在離線工作台先選取「二氧化碳分離」的觀測點。使用氣體分析器與標準化流量計配對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for carbon-dioxide separation. Pair gas composition with normalized volumetric flow. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "用產品氣純度上升宣稱甲烷產量同幅增加。診斷與介入：以溫壓一致的甲烷組成分析重算，確認乾濕基準。~Higher product purity is mistaken for equal methane-production growth. Diagnostic response: Recalculate from same-condition methane analysis and verify wet/dry basis.",
+      "misconception": "去除 CO2 就會增加甲烷總質量。~Removing CO2 increases total methane mass.",
+      "practice": "只改變 xCH4:0.60→0.55，其餘假設固定；結果應由 300 變為 275 m³ CH4/d。用「二氧化碳分離」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only xCH4:0.60→0.55, holding the other assumptions fixed; the result changes from 300 to 275 m³ CH4/d. Explain the direction using carbon-dioxide separation, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "甲烷滑漏~Methane slip",
+      "mechanism": "尾氣中的甲烷損失影響回收率與排放，需跟產品純度分開報告。~Methane in tail gas affects recovery/emissions and must be reported separately from purity.",
+      "model": "原創教學假設：進入 CH4=300 m³/d；排放損失=6 m³/d。模型 ηCH4=1-Vloss/Vin，代入得到 0.98 fraction。適用邊界：產品純度與甲烷回收率不同；排放不可只以總氣體估計。~Original teaching assumptions: CH4 input=300 m³/d; vent loss=6 m³/d. Model ηCH4=1-Vloss/Vin gives 0.98 fraction. Applicability: Product purity differs from methane recovery; vented total gas alone is insufficient.",
+      "verify": "在離線工作台先選取「甲烷滑漏」的觀測點。量產品、尾氣及洩漏的 CH4 質量，閉合收支。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for methane slip. Measure methane in product, tail gas and leaks to close the balance. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只公布純度而隱藏尾氣流量。診斷與介入：補測尾氣與溶解甲烷，區分產品純度和回收率。~Purity-only reporting hides tail-gas losses. Diagnostic response: Measure tail-gas/dissolved methane and distinguish purity from recovery.",
+      "misconception": "產品純度高等於甲烷回收率高。~High purity equals high methane recovery.",
+      "practice": "只改變 Vloss:6→12 m³/d，其餘假設固定；結果應由 0.98 變為 0.96 fraction。用「甲烷滑漏」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Vloss:6→12 m³/d, holding the other assumptions fixed; the result changes from 0.98 to 0.96 fraction. Explain the direction using methane slip, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "儲氣與用氣配對~Storage and demand matching",
+      "mechanism": "產氣與用氣時間不同，儲氣及安全去向決定可利用程度。~Different generation/demand timing makes storage and safe alternative routing decisive.",
+      "model": "原創教學假設：假想產氣=30、用氣=20 m³/h；時段=2 h。模型 ΔV=(Qprod-Quse)t，代入得到 20 m³ reference gas。適用邊界：同一參考溫壓下的累積氣量差；不能直接當儲氣設備實際幾何容量或容許壓力。~Original teaching assumptions: Hypothetical production=30, demand=20 m³/h; interval=2 h. Model ΔV=(Qprod-Quse)t gives 20 m³ reference gas. Applicability: Accumulated gas-volume difference at one reference condition; not vessel geometric capacity or permitted pressure.",
+      "verify": "在離線工作台先選取「儲氣與用氣配對」的觀測點。量產用氣歷線、溫壓與其他氣體去向，逐時累積收支。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for storage and demand matching. Measure production/demand traces, temperature/pressure and other destinations, then integrate hourly balances. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "將日產氣全當同時可供發電。診斷與介入：逐時閉合產用氣，確認其他氣體去向與儲存參考狀態。~Daily gas total is treated as instantly available. Diagnostic response: Close hourly production/demand and confirm other gas destinations and storage reference conditions.",
+      "misconception": "日產氣量足夠就不必檢查時間匹配。~Adequate daily gas eliminates timing concerns.",
+      "practice": "只改變 Quse:20→25 m³/h，其餘假設固定；結果應由 20 變為 10 m³ reference gas。用「儲氣與用氣配對」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Quse:20→25 m³/h, holding the other assumptions fixed; the result changes from 20 to 10 m³ reference gas. Explain the direction using storage and demand matching, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "發電熱值基準~Generation heating-value basis",
+      "mechanism": "把標準化甲烷能量乘轉換效率，並避免高低熱值混用。~Apply conversion efficiency to normalized methane energy without mixing higher/lower heating values.",
+      "model": "原創教學假設：CH4=300 m³/d；假設熱值=35.8 MJ/m³；電效率=0.35。模型 Ee=V LHV η/3.6，代入得到 1044.1667 kWh/d。適用邊界：氣體須同溫壓、乾基；未扣設備寄生用電與停機。~Original teaching assumptions: CH4=300 m³/d; assumed heating value=35.8 MJ/m³; electric efficiency=0.35. Model Ee=V LHV η/3.6 gives 1044.1667 kWh/d. Applicability: Gas must share temperature/pressure and dry basis; parasitic power and downtime are not deducted.",
+      "verify": "在離線工作台先選取「發電熱值基準」的觀測點。比對標準化甲烷流量與發電機電表。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for generation heating-value basis. Compare normalized methane flow with the generator meter. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "效率與熱值採不同基準而虛增收益。診斷與介入：確認甲烷體積及熱值基準，分開發電、回熱與自用。~Mismatched efficiency/heating-value bases inflate benefits. Diagnostic response: Confirm methane volume/heating-value bases and separate electricity, heat and internal demand.",
+      "misconception": "用高熱值或低熱值都不影響效率比較。~Higher versus lower heating value does not affect efficiency comparisons.",
+      "practice": "只改變 η:0.35→0.30，其餘假設固定；結果應由 1044.1667 變為 895 kWh/d。用「發電熱值基準」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only η:0.35→0.30, holding the other assumptions fixed; the result changes from 1044.1667 to 895 kWh/d. Explain the direction using generation heating-value basis, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "輔機與淨能源~Auxiliaries and net energy",
+      "mechanism": "壓縮、乾燥與循環泵消耗部分回收能源，分表才能知道淨收益。~Compression, drying and circulation consume recovered energy; submeter to determine net benefit.",
+      "model": "原創教學假設：毛發電=1000 kWh/d；壓縮、乾燥與輔機=180 kWh/d。模型 Enet=Egross-Eaux，代入得到 820 kWh/d。適用邊界：同一系統邊界；熱回收收益不可重複算入電量。~Original teaching assumptions: Gross generation=1000 kWh/d; compression, drying and auxiliaries=180 kWh/d. Model Enet=Egross-Eaux gives 820 kWh/d. Applicability: Use one system boundary; recovered heat must not be double-counted as electricity.",
+      "verify": "在離線工作台先選取「輔機與淨能源」的觀測點。用分表列出每一輔機與可用餘熱。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for auxiliaries and net energy. Submeter each auxiliary and report usable waste heat separately. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "用毛發電替代可輸出淨電。診斷與介入：核對每個附屬電表與能源邊界，分列熱能和電能。~Gross generation is mistaken for net export. Diagnostic response: Check auxiliary meters/energy boundaries and separate heat from electricity.",
+      "misconception": "發電機電表就是整套系統淨發電。~The generator meter equals whole-system net generation.",
+      "practice": "只改變 Eaux:180→240 kWh/d，其餘假設固定；結果應由 820 變為 760 kWh/d。用「輔機與淨能源」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Eaux:180→240 kWh/d, holding the other assumptions fixed; the result changes from 820 to 760 kWh/d. Explain the direction using auxiliaries and net energy, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "成分及維護交接~Composition and maintenance handoff",
+      "mechanism": "交接紀錄包含水分、H2S、矽氧烷、甲烷純度與滑漏的分析方法。~Handoff records include methods for moisture, H2S, siloxanes, methane purity and slip.",
+      "model": "原創教學假設：入口 C0=100 mg/m³；出口 C=10 mg/m³。模型 B=C/C0，代入得到 0.1 fraction。適用邊界：同溫壓同成分的氣相穿透比，不是職業暴露或燃氣品質合格判定。~Original teaching assumptions: Inlet C0=100 mg/m³; outlet C=10 mg/m³. Model B=C/C0 gives 0.1 fraction. Applicability: Gas breakthrough ratio for the same species and volume basis, not occupational-exposure or fuel-quality compliance.",
+      "verify": "在離線工作台先選取「成分及維護交接」的觀測點。比對床前床後同時採樣與氣體分析校正。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for composition and maintenance handoff. Compare simultaneous upstream/downstream samples and gas-analyzer calibration. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "以一次合格樣本替代長期突破監測。診斷與介入：同步測入口與出口氣體成分，另檢查環境暴露監測。~One passing sample replaces long-term breakthrough monitoring. Diagnostic response: Measure matching inlet/outlet gases and separately check ambient-exposure monitoring.",
+      "misconception": "一次樣本可證明吸附床永久有效。~One sample proves permanent adsorber performance.",
+      "practice": "只改變 C:10→25 mg/m³，其餘假設固定；結果應由 0.1 變為 0.25 fraction。用「成分及維護交接」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only C:10→25 mg/m³, holding the other assumptions fixed; the result changes from 0.1 to 0.25 fraction. Explain the direction using composition and maintenance handoff, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-gas",
+      "title": "厭氧消化與沼氣操作指南",
+      "titleEn": "Anaerobic Digester/Biogas System Operator Guidebook",
+      "url": "https://www.epa.gov/agstar/anaerobic-digesterbiogas-system-operator-guidebook",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-digestion",
+      "title": "多階段厭氧消化技術資料",
+      "titleEn": "Multi-Stage Anaerobic Digestion Fact Sheet",
+      "url": "https://www.epa.gov/biosolids/fact-sheet-multi-stage-anaerobic-digestion",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "原沼氣~Raw biogas",
+    "冷凝除水~Condensate removal",
+    "硫與矽氧烷控制~Sulfur and siloxane control",
+    "二氧化碳分離~CO2 separation",
+    "產品氣驗證~Product-gas verification",
+    "尾氣與甲烷損失~Tail-gas and methane loss",
+    "能源利用~Energy use"
+  ],
+  "modelChecks": [
+    {
+      "expression": "500*.60",
+      "expected": 300.0,
+      "unit": "m³ CH4/d",
+      "description": "b436 unit 1 methanefrac baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*.55",
+      "expected": 275.0,
+      "unit": "m³ CH4/d",
+      "description": "b436 unit 1 methanefrac perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "20-15",
+      "expected": 5,
+      "unit": "kg water/d",
+      "description": "b436 unit 2 dew baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "20-17",
+      "expected": 3,
+      "unit": "kg water/d",
+      "description": "b436 unit 2 dew perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "100*.10/.5",
+      "expected": 20.0,
+      "unit": "d",
+      "description": "b436 unit 3 adsorb baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "100*.10/.8",
+      "expected": 12.5,
+      "unit": "d",
+      "description": "b436 unit 3 adsorb perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "100*.10/.5",
+      "expected": 20.0,
+      "unit": "d",
+      "description": "b436 unit 4 adsorb baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "100*.10/.8",
+      "expected": 12.5,
+      "unit": "d",
+      "description": "b436 unit 4 adsorb perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*.60",
+      "expected": 300.0,
+      "unit": "m³ CH4/d",
+      "description": "b436 unit 5 methanefrac baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*.55",
+      "expected": 275.0,
+      "unit": "m³ CH4/d",
+      "description": "b436 unit 5 methanefrac perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1-6/300",
+      "expected": 0.98,
+      "unit": "fraction",
+      "description": "b436 unit 6 gasloss baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1-12/300",
+      "expected": 0.96,
+      "unit": "fraction",
+      "description": "b436 unit 6 gasloss perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(30-20)*2",
+      "expected": 20,
+      "unit": "m³ reference gas",
+      "description": "b436 unit 7 gasstorage baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(30-25)*2",
+      "expected": 10,
+      "unit": "m³ reference gas",
+      "description": "b436 unit 7 gasstorage perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "300*35.8*.35/3.6",
+      "expected": 1044.1666666666665,
+      "unit": "kWh/d",
+      "description": "b436 unit 8 gasenergy baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "300*35.8*.30/3.6",
+      "expected": 895.0,
+      "unit": "kWh/d",
+      "description": "b436 unit 8 gasenergy perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000-180",
+      "expected": 820,
+      "unit": "kWh/d",
+      "description": "b436 unit 9 chpnet baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000-240",
+      "expected": 760,
+      "unit": "kWh/d",
+      "description": "b436 unit 9 chpnet perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "10/100",
+      "expected": 0.1,
+      "unit": "fraction",
+      "description": "b436 unit 10 gasbreak baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "25/100",
+      "expected": 0.25,
+      "unit": "fraction",
+      "description": "b436 unit 10 gasbreak perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

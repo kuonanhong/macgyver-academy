@@ -1,0 +1,200 @@
+{
+  "id": "b455",
+  "title": "人工濕地水質淨化~Constructed-wetland water treatment",
+  "focus": "水力停留、氧化還原與季節性淨化~Hydraulic residence, redox and seasonal treatment",
+  "discipline": "environment-water",
+  "summary": "以「水力停留、氧化還原與季節性淨化」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow hydraulic residence, redox and seasonal treatment through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "負荷與功能定位~Load and treatment function",
+      "mechanism": "人工濕地是受水力與污染負荷限制的處理單元；面積綠化不能直接代表淨化能力。~A treatment wetland is constrained by hydraulic and pollutant loading; green area alone does not establish treatment capacity.",
+      "model": "原創假想教學算例：organic load=Q C/1000;Q=100 m3/day;C=80 mg/L；計算 100*80/1000 = 8 kg/day。適用限制：進料BOD示例，不預設去除率。~Original hypothetical teaching example: organic load=Q C/1000;Q=100 m3/day;C=80 mg/L; calculation 100*80/1000 = 8 kg/day. Applicability: Illustrative influent BOD load without assumed removal.",
+      "verify": "保持濃度，將流量加倍比較負荷。~Keep concentration fixed and double flow to compare loading.",
+      "failure": "只依面積比例增加進水可能超出氧與水力能力。~Increasing feed by area ratio alone can exceed oxygen or hydraulic capacity.",
+      "misconception": "濕地只要有植物就能處理任意污染負荷。~Vegetation alone enables any pollutant load.",
+      "practice": "在「負荷與功能定位」的教學模型或試算表中先重現 8 kg/day，再依驗證任務改動一個輸入、保留其餘條件。對照「只依面積比例增加進水可能超出氧與水力能力。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for load and treatment function, first reproduce 8 kg/day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Increasing feed by area ratio alone can exceed oxygen or hydraulic capacity.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "孔隙水有效容積~Effective pore-water volume",
+      "mechanism": "地下流濕地的有效水量由介質孔隙率與飽和深度決定，不等於挖方總體積。~Water volume in a subsurface wetland depends on porosity and saturated depth, not total excavation volume.",
+      "model": "原創假想教學算例：Vw=A d n;A=500 m2;d=0.6 m;n=0.35；計算 500*0.6*0.35 = 105 m3。適用限制：均一飽和介質，未考慮死區。~Original hypothetical teaching example: Vw=A d n;A=500 m2;d=0.6 m;n=0.35; calculation 500*0.6*0.35 = 105 m3. Applicability: Uniform saturated media without dead zones.",
+      "verify": "改變孔隙率並比較停留時間。~Vary porosity and compare residence time.",
+      "failure": "以總體積代替孔隙水體積會高估接觸時間。~Using bulk volume overstates contact time.",
+      "misconception": "介質中的石頭體積也算可流動水量。~Solid media volume counts as mobile water.",
+      "practice": "在「孔隙水有效容積」的教學模型或試算表中先重現 105 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「以總體積代替孔隙水體積會高估接觸時間。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for effective pore-water volume, first reproduce 105 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using bulk volume overstates contact time.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "水力停留與短流~Residence time and short circuiting",
+      "mechanism": "名目停留時間需由示蹤分布檢查；配水不均會造成局部高流速通道。~Check nominal residence time against tracer distribution; poor distribution creates fast preferential channels.",
+      "model": "原創假想教學算例：t=Vw/Q;105 m3/35 m3/day；計算 105/35 = 3 day。適用限制：名目平均值，非最短水團時間。~Original hypothetical teaching example: t=Vw/Q;105 m3/35 m3/day; calculation 105/35 = 3 day. Applicability: Nominal mean, not minimum parcel travel time.",
+      "verify": "比較多個出水口示蹤峰值與回收量。~Compare tracer peaks and recovery at several outlets.",
+      "failure": "單點採樣可能漏掉高濃度短流。~A single sample may miss concentrated short-circuit flow.",
+      "misconception": "平均停留三天代表每個水分子都停三天。~A three-day mean means every molecule stays exactly three days.",
+      "practice": "在「水力停留與短流」的教學模型或試算表中先重現 3 day，再依驗證任務改動一個輸入、保留其餘條件。對照「單點採樣可能漏掉高濃度短流。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for residence time and short circuiting, first reproduce 3 day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A single sample may miss concentrated short-circuit flow.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "面積負荷與經驗模型~Areal loading and empirical models",
+      "mechanism": "面積反應係數把複雜機制濃縮成經驗參數，需對應污染物、溫度與流態。~An areal coefficient summarizes complex mechanisms empirically and depends on pollutant, temperature and flow regime.",
+      "model": "原創假想教學算例：Cout=Cin exp(-kA A/Q);Cin=40 mg/L;kA=0.05 m/day;A=500;Q=50；計算 40*exp(-0.05*500/50) = 24.2612 mg/L。適用限制：無背景濃度的教學栓流模型。~Original hypothetical teaching example: Cout=Cin exp(-kA A/Q);Cin=40 mg/L;kA=0.05 m/day;A=500;Q=50; calculation 40*exp(-0.05*500/50) = 24.2612 mg/L. Applicability: Teaching plug-flow model with zero background concentration.",
+      "verify": "比較面積加倍與流量減半的模型結果。~Compare doubled area with halved flow in the model.",
+      "failure": "將另一氣候的係數直接搬用會失去校正依據。~Transferring a coefficient from another climate loses calibration support.",
+      "misconception": "同一個kA可用於所有污染物和季節。~One kA applies to every pollutant and season.",
+      "practice": "在「面積負荷與經驗模型」的教學模型或試算表中先重現 24.2612 mg/L，再依驗證任務改動一個輸入、保留其餘條件。對照「將另一氣候的係數直接搬用會失去校正依據。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for areal loading and empirical models, first reproduce 24.2612 mg/L, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Transferring a coefficient from another climate loses calibration support.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "達西流與水位差~Darcy flow and head difference",
+      "mechanism": "介質導水性與坡降決定可通過水量；堵塞後即使污染負荷不變也會回水。~Conductivity and gradient determine flow capacity; clogging can cause backing-up even at unchanged pollutant load.",
+      "model": "原創假想教學算例：Q=K Aflow i;K=100 m/day;Aflow=3 m2;i=0.01；計算 100*3*0.01 = 3 m3/day。適用限制：飽和均質介質的達西近似。~Original hypothetical teaching example: Q=K Aflow i;K=100 m/day;Aflow=3 m2;i=0.01; calculation 100*3*0.01 = 3 m3/day. Applicability: Darcy approximation for saturated homogeneous media.",
+      "verify": "將導水係數減半並估所需水位差。~Halve conductivity and estimate required head difference.",
+      "failure": "忽略堵塞造成的K下降會低估水位。~Ignoring a clogging-induced reduction in K understates water level.",
+      "misconception": "濕地介質的導水係數永遠不會改變。~Wetland-media conductivity never changes.",
+      "practice": "在「達西流與水位差」的教學模型或試算表中先重現 3 m3/day，再依驗證任務改動一個輸入、保留其餘條件。對照「忽略堵塞造成的K下降會低估水位。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for darcy flow and head difference, first reproduce 3 m3/day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Ignoring a clogging-induced reduction in K understates water level.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "氮轉化與氧需求~Nitrogen conversion and oxygen demand",
+      "mechanism": "硝化需氧而反硝化需電子供體與缺氧區；兩者不能僅靠種植物保證。~Nitrification needs oxygen while denitrification needs an electron donor and anoxic zones; vegetation alone guarantees neither.",
+      "model": "原創假想教學算例：O2 demand=4.57 mNH4N; mNH4N=2 kgN/day；計算 4.57*2 = 9.14 kgO2/day。適用限制：理想化硝化化學計量，忽略生物合成。~Original hypothetical teaching example: O2 demand=4.57 mNH4N; mNH4N=2 kgN/day; calculation 4.57*2 = 9.14 kgO2/day. Applicability: Idealized nitrification stoichiometry excluding biomass synthesis.",
+      "verify": "比較氧供給與氨氮負荷，找出限制環節。~Compare oxygen supply with ammonia load to identify the limiting step.",
+      "failure": "將總氮降低全歸因植物吸收會忽略微生物路徑。~Attributing all nitrogen loss to plant uptake ignores microbial pathways.",
+      "misconception": "所有濕地都同時具有無限硝化和反硝化能力。~Every wetland has unlimited nitrification and denitrification capacity.",
+      "practice": "在「氮轉化與氧需求」的教學模型或試算表中先重現 9.14 kgO2/day，再依驗證任務改動一個輸入、保留其餘條件。對照「將總氮降低全歸因植物吸收會忽略微生物路徑。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for nitrogen conversion and oxygen demand, first reproduce 9.14 kgO2/day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Attributing all nitrogen loss to plant uptake ignores microbial pathways.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "介質吸附容量~Media sorption capacity",
+      "mechanism": "磷等物質可能被介質暫存，容量耗盡後會突破；短期去除不等於永久移除。~Media may temporarily retain phosphorus; exhaustion causes breakthrough, so short-term removal is not permanent elimination.",
+      "model": "原創假想教學算例：capacity=M q;M=2000 kg;q=0.5 g/kg；計算 2000*0.5/1000 = 1 kg。適用限制：假想可利用容量，需批次與柱試驗確認。~Original hypothetical teaching example: capacity=M q;M=2000 kg;q=0.5 g/kg; calculation 2000*0.5/1000 = 1 kg. Applicability: Hypothetical usable capacity requiring batch and column tests.",
+      "verify": "用累積負荷估容量使用比例並比較出水突破。~Estimate capacity use from cumulative load and compare outlet breakthrough.",
+      "failure": "以初期高去除外推多年會漏掉飽和。~Extrapolating high startup removal for years misses saturation.",
+      "misconception": "吸附介質的容量永遠不會用盡。~Sorption-media capacity never runs out.",
+      "practice": "在「介質吸附容量」的教學模型或試算表中先重現 1 kg，再依驗證任務改動一個輸入、保留其餘條件。對照「以初期高去除外推多年會漏掉飽和。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for media sorption capacity, first reproduce 1 kg, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Extrapolating high startup removal for years misses saturation.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "蒸散與降雨收支~Evapotranspiration and rainfall balance",
+      "mechanism": "降雨、蒸散和滲漏都會改變出水量；濃度變高可能源自水分流失而非污染增加。~Rainfall, evapotranspiration and leakage alter outflow; higher concentration may result from water loss rather than increased pollutant mass.",
+      "model": "原創假想教學算例：Qout=Qin+P A-ET A;Qin=50;P=0.002;ET=0.005;A=500；計算 50+0.002*500-0.005*500 = 48.5 m3/day。適用限制：無儲水變動、無滲漏的日平均。~Original hypothetical teaching example: Qout=Qin+P A-ET A;Qin=50;P=0.002;ET=0.005;A=500; calculation 50+0.002*500-0.005*500 = 48.5 m3/day. Applicability: Daily mean without storage change or leakage.",
+      "verify": "把乾季與雨季水量及質量收支分開。~Separate dry-season and wet-season water and mass balances.",
+      "failure": "只比較進出濃度會誤判稀釋或濃縮。~Concentration-only comparison misreads dilution or concentration.",
+      "misconception": "濃度下降必定等於污染物質量被移除。~Lower concentration necessarily means pollutant mass was removed.",
+      "practice": "在「蒸散與降雨收支」的教學模型或試算表中先重現 48.5 m3/day，再依驗證任務改動一個輸入、保留其餘條件。對照「只比較進出濃度會誤判稀釋或濃縮。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for evapotranspiration and rainfall balance, first reproduce 48.5 m3/day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Concentration-only comparison misreads dilution or concentration.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "沉積與維護週期~Sediment accumulation and maintenance",
+      "mechanism": "前處理攔住顆粒可延緩根區堵塞；維護依沉積與水位趨勢安排。~Pretreatment intercepts solids and delays root-zone clogging; schedule maintenance from sediment and head trends.",
+      "model": "原創假想教學算例：deposited volume=M/rho;M=600 kg;rho=1200 kg/m3；計算 600/1200 = 0.5 m3。適用限制：沉積乾質量與假想堆積密度。~Original hypothetical teaching example: deposited volume=M/rho;M=600 kg;rho=1200 kg/m3; calculation 600/1200 = 0.5 m3. Applicability: Dry sediment mass with assumed bulk density.",
+      "verify": "比較前處理去除率改變後的累積沉積量。~Compare sediment accumulation when pretreatment removal changes.",
+      "failure": "堵塞後才清理可能迫使系統旁通。~Waiting for blockage can force system bypass.",
+      "misconception": "人工濕地建好後完全不需要維護。~A constructed wetland requires no maintenance after construction.",
+      "practice": "在「沉積與維護週期」的教學模型或試算表中先重現 0.5 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「堵塞後才清理可能迫使系統旁通。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for sediment accumulation and maintenance, first reproduce 0.5 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Waiting for blockage can force system bypass.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "季節驗證與生態目標~Seasonal validation and ecological goals",
+      "mechanism": "生物處理、棲地與排放功能須分別量測；單次晴天樣品不能代表全年。~Measure treatment, habitat and discharge functions separately; one dry-weather sample cannot represent a year.",
+      "model": "原創假想教學算例：seasonal coverage=sampled months/12;9/12；計算 9/12 = 0.75 fraction。適用限制：採樣覆蓋率，不是處理達標率。~Original hypothetical teaching example: seasonal coverage=sampled months/12;9/12; calculation 9/12 = 0.75 fraction. Applicability: Sampling coverage, not treatment compliance.",
+      "verify": "設計跨季節與暴雨事件採樣表，保留空缺原因。~Design seasonal and storm-event sampling with reasons for gaps.",
+      "failure": "以夏季最佳表現作全年保證會忽略低溫與暴雨。~Using summer best performance as an annual guarantee ignores cold and storm periods.",
+      "misconception": "一次出水合格即可證明全年所有條件都合格。~One acceptable effluent sample proves acceptability under all annual conditions.",
+      "practice": "在「季節驗證與生態目標」的教學模型或試算表中先重現 0.75 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「以夏季最佳表現作全年保證會忽略低溫與暴雨。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for seasonal validation and ecological goals, first reproduce 0.75 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using summer best performance as an annual guarantee ignores cold and storm periods.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-wetlands",
+      "title": "人工濕地技術資料",
+      "titleEn": "Constructed Wetlands",
+      "url": "https://www.epa.gov/wetlands/constructed-wetlands",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-wetlandmanual",
+      "title": "人工濕地手冊",
+      "titleEn": "A Handbook of Constructed Wetlands",
+      "url": "https://www.epa.gov/sites/default/files/2015-10/documents/constructed-wetlands-handbook.pdf",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "沉砂前處理~Pretreatment",
+    "均勻配水~Flow distribution",
+    "介質與根區~Media and root zone",
+    "集水排放~Collection",
+    "採樣井~Sampling wells",
+    "維護~Maintenance"
+  ],
+  "place": {
+    "name": "美國EPA總部：方法資料來源機構（非實廠）",
+    "nameEn": "US EPA headquarters: methodology source institution (not a process plant)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8941,
+    "lon": -77.0298,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.epa.gov/aboutepa/visiting-epa-headquarters",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "100*80/1000",
+      "expected": 8,
+      "unit": "kg/day",
+      "description": "負荷與功能定位~Load and treatment function"
+    },
+    {
+      "expression": "500*0.6*0.35",
+      "expected": 105,
+      "unit": "m3",
+      "description": "孔隙水有效容積~Effective pore-water volume"
+    },
+    {
+      "expression": "105/35",
+      "expected": 3,
+      "unit": "day",
+      "description": "水力停留與短流~Residence time and short circuiting"
+    },
+    {
+      "expression": "40*exp(-0.05*500/50)",
+      "expected": 24.26122639,
+      "unit": "mg/L",
+      "description": "面積負荷與經驗模型~Areal loading and empirical models"
+    },
+    {
+      "expression": "100*3*0.01",
+      "expected": 3,
+      "unit": "m3/day",
+      "description": "達西流與水位差~Darcy flow and head difference"
+    },
+    {
+      "expression": "4.57*2",
+      "expected": 9.14,
+      "unit": "kgO2/day",
+      "description": "氮轉化與氧需求~Nitrogen conversion and oxygen demand"
+    },
+    {
+      "expression": "2000*0.5/1000",
+      "expected": 1,
+      "unit": "kg",
+      "description": "介質吸附容量~Media sorption capacity"
+    },
+    {
+      "expression": "50+0.002*500-0.005*500",
+      "expected": 48.5,
+      "unit": "m3/day",
+      "description": "蒸散與降雨收支~Evapotranspiration and rainfall balance"
+    },
+    {
+      "expression": "600/1200",
+      "expected": 0.5,
+      "unit": "m3",
+      "description": "沉積與維護週期~Sediment accumulation and maintenance"
+    },
+    {
+      "expression": "9/12",
+      "expected": 0.75,
+      "unit": "fraction",
+      "description": "季節驗證與生態目標~Seasonal validation and ecological goals"
+    }
+  ]
+}

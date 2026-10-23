@@ -1,0 +1,282 @@
+{
+  "id": "b433",
+  "title": "污泥離心脫水~Centrifugal sludge dewatering",
+  "focus": "離心場、相對螺旋速度與固體捕集~Centrifugal field, differential scroll speed and solids capture",
+  "summary": "本課以離心場、相對螺旋速度與固體捕集為主線，從乾固體進料、離心加速度、螺旋相對速度、聚合物乾基換算進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops centrifugal field, differential scroll speed and solids capture through ten connected units, beginning with dry-solids feed, centrifugal acceleration, scroll differential speed, dry-basis polymer conversion. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "乾固體進料~Dry-solids feed",
+      "mechanism": "脫水負荷以乾固體而非單看液體流量計，否則濃度變動被漏掉。~Use dry-solids loading, not liquid flow alone, so concentration changes are visible.",
+      "model": "原創教學假設：污泥 Q=50 m³/d；ρ=1000 kg/m³；TS=0.04。模型 MDS=QρTS，代入得到 2000 kg DS/d。適用邊界：TS 是濕基質量分率，密度在本例近似水。~Original teaching assumptions: Sludge Q=50 m³/d; density=1000 kg/m³; TS=0.04. Model MDS=QρTS gives 2000 kg DS/d. Applicability: TS is a wet-basis mass fraction; density is approximated as water.",
+      "verify": "在離線工作台先選取「乾固體進料」的觀測點。由體積、密度與烘乾固體三個獨立量測建質量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for dry-solids feed. Build mass from independent volume, density and oven-dry solids measurements. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "相同流量但含固率升高造成超負荷。診斷與介入：用代表性含固樣本重算乾量，避免濕重混用。~Equal flow with higher solids can overload separation. Diagnostic response: Recalculate dry mass from representative solids samples, without mixing wet mass.",
+      "misconception": "固定體積流量等於固定固體負荷。~Fixed volumetric flow fixes solids load.",
+      "practice": "只改變 TS:0.04→0.05，其餘假設固定；結果應由 2000 變為 2500 kg DS/d。用「乾固體進料」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TS:0.04→0.05, holding the other assumptions fixed; the result changes from 2000 to 2500 kg DS/d. Explain the direction using dry-solids feed, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "離心加速度~Centrifugal acceleration",
+      "mechanism": "離心加速度隨半徑及轉速平方改變，並不直接等於脫水效率。~Centrifugal acceleration scales with radius and speed squared, not directly with dewatering efficiency.",
+      "model": "原創教學假設：轉速 n=2000 rpm；半徑 r=20 cm。模型 RCF=1.118×10^-5 r n²，代入得到 894.4 g。適用邊界：剛體旋轉離心加速度，不含固體沉降阻力；不是設備轉速指令。~Original teaching assumptions: Speed n=2000 rpm; radius r=20 cm. Model RCF=1.118×10^-5 r n² gives 894.4 g. Applicability: Rigid-rotation centrifugal acceleration, excluding settling resistance; not a machine-speed command.",
+      "verify": "在離線工作台先選取「離心加速度」的觀測點。在停機模型上核對有效半徑與轉速紀錄。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for centrifugal acceleration. Check effective radius and logged speed on the offline model. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "忽略半徑卻比較兩種機型 rpm。診斷與介入：核對有效半徑、轉速及振動證據，實機設定依核准設備文件。~Comparing rpm across machines while ignoring radius misleads. Diagnostic response: Check effective radius, speed and vibration evidence; equipment settings follow approved documents.",
+      "misconception": "相同 rpm 必有相同離心加速度。~Identical rpm gives identical acceleration.",
+      "practice": "只改變 n:2000→1800 rpm，其餘假設固定；結果應由 894.4 變為 724.464 g。用「離心加速度」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only n:2000→1800 rpm, holding the other assumptions fixed; the result changes from 894.4 to 724.464 g. Explain the direction using centrifugal acceleration, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "螺旋相對速度~Scroll differential speed",
+      "mechanism": "相對速度控制固體輸送與停留，需與扭矩及液相品質共同判斷。~Differential speed governs transport/residence and must be interpreted with torque and centrate quality.",
+      "model": "原創教學假設：轉鼓 n=2000 rpm；螺旋 n=1995 rpm。模型 Δn=nbowl-nscroll，代入得到 5 rpm。適用邊界：兩者相對速度只作運動學示例，實際扭矩與排泥能力非線性。~Original teaching assumptions: Bowl n=2000 rpm; scroll n=1995 rpm. Model Δn=nbowl-nscroll gives 5 rpm. Applicability: Relative-speed kinematics only; torque and solids transport are nonlinear.",
+      "verify": "在離線工作台先選取「螺旋相對速度」的觀測點。把相對轉速、扭矩、泥餅與濾液紀錄一起比對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for scroll differential speed. Compare differential speed, torque, cake and centrate records. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "一味減速導致固體堆積與扭矩升高。診斷與介入：將相對速度和扭矩、固體負荷及泥餅一併比較。~Reducing speed indiscriminately accumulates solids and torque. Diagnostic response: Compare differential speed with torque, solids loading and cake condition.",
+      "misconception": "相對速度越低泥餅一定越好。~Lower differential speed always improves cake.",
+      "practice": "只改變 nscroll:1995→1992 rpm，其餘假設固定；結果應由 5 變為 8 rpm。用「螺旋相對速度」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only nscroll:1995→1992 rpm, holding the other assumptions fixed; the result changes from 5 to 8 rpm. Explain the direction using scroll differential speed, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "聚合物乾基換算~Dry-basis polymer conversion",
+      "mechanism": "將藥液還原為活性聚合物每噸乾固體，才可比較不同稀釋比。~Normalize to active polymer per dry tonne before comparing dilutions.",
+      "model": "原創教學假設：DS=2000 kg/d；假設用量=4 kg active/t DS。模型 Mpoly=MDS D/1000，代入得到 8 kg active/d。適用邊界：只示範乾基換算；最佳用量須由污泥試驗判定。~Original teaching assumptions: DS=2000 kg/d; assumed dose=4 kg active/t DS. Model Mpoly=MDS D/1000 gives 8 kg active/d. Applicability: Dry-basis conversion only; appropriate dose requires sludge testing.",
+      "verify": "在離線工作台先選取「聚合物乾基換算」的觀測點。把稀釋藥液量還原成活性聚合物，觀察絮體與濾液。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for dry-basis polymer conversion. Convert solution use to active polymer and observe floc and filtrate. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "用藥液公升數比較未校正濃度。診斷與介入：校核有效聚合物乾基，將藥耗與泥餅及濾液表現比較。~Comparing solution liters without concentration correction fails. Diagnostic response: Check active polymer on a dry-solids basis and compare consumption with cake/filtrate performance.",
+      "misconception": "稀釋藥液用量越多代表活性藥量越多。~More diluted solution always means more active chemical.",
+      "practice": "只改變 D:4→5 kg/t DS，其餘假設固定；結果應由 8 變為 10 kg active/d。用「聚合物乾基換算」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only D:4→5 kg/t DS, holding the other assumptions fixed; the result changes from 8 to 10 kg active/d. Explain the direction using dry-basis polymer conversion, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "固體捕集與濾液~Capture and centrate",
+      "mechanism": "泥餅變乾和捕集率提高不是同一件事，液相固體流失須獨立量測。~Drier cake differs from better capture; measure centrate solids loss independently.",
+      "model": "原創教學假設：進料固體=2000 kg/d；液相流失=100 kg/d。模型 η=(Min-Mloss)/Min，代入得到 0.95 fraction。適用邊界：穩態乾固體收支；不可用清澈外觀代替液相 TSS。~Original teaching assumptions: Feed solids=2000 kg/d; liquid-phase loss=100 kg/d. Model η=(Min-Mloss)/Min gives 0.95 fraction. Applicability: Steady dry-solids balance; clear appearance is not a substitute for liquid-phase TSS.",
+      "verify": "在離線工作台先選取「固體捕集與濾液」的觀測點。量回流水量與 TSS，與泥餅 DS 相互驗證。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for capture and centrate. Measure return-liquid flow/TSS and cross-check cake dry solids. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "外觀清澈仍可能有可量測固體負荷。診斷與介入：重新量進料、濾液及泥餅固體，查回流水漏項。~Clear-looking centrate can still carry solids load. Diagnostic response: Remeasure feed, filtrate and cake solids and check omitted returns.",
+      "misconception": "泥餅乾就代表捕集率高。~Dry cake proves high capture.",
+      "practice": "只改變 Mloss:100→160 kg/d，其餘假設固定；結果應由 0.95 變為 0.92 fraction。用「固體捕集與濾液」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Mloss:100→160 kg/d, holding the other assumptions fixed; the result changes from 0.95 to 0.92 fraction. Explain the direction using capture and centrate, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "泥餅濕重與運輸~Wet cake and transport",
+      "mechanism": "以乾固體除泥餅固體分率估算濕重，連結運輸量與含水率。~Divide dry solids by cake fraction to connect wet transport mass with moisture.",
+      "model": "原創教學假設：DS=2000 kg/d；泥餅 TS=0.25。模型 Mcake=MDS/TS，代入得到 8000 kg wet cake/d。適用邊界：假定乾固體完全進入泥餅；實際需校正捕集率。~Original teaching assumptions: DS=2000 kg/d; cake TS=0.25. Model Mcake=MDS/TS gives 8000 kg wet cake/d. Applicability: Assumes all dry solids enter the cake; correct for actual capture.",
+      "verify": "在離線工作台先選取「泥餅濕重與運輸」的觀測點。稱泥餅並分析含固率，與進料 DS 閉合。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for wet cake and transport. Weigh cake, analyze solids fraction and close against feed DS. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把含固率加成當濕重同比下降。診斷與介入：同步量乾固體與泥餅重量，查固體回收率是否變化。~A solids-percent increase is not an equal wet-mass decrease. Diagnostic response: Measure dry solids and wet cake together and check capture changes.",
+      "misconception": "含固率提升五個百分點就減重五成。~Five percentage points more solids halves cake mass.",
+      "practice": "只改變 TS:0.25→0.30，其餘假設固定；結果應由 8000 變為 6666.6667 kg wet cake/d。用「泥餅濕重與運輸」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TS:0.25→0.30, holding the other assumptions fixed; the result changes from 8000 to 6666.6667 kg wet cake/d. Explain the direction using wet cake and transport, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "回流水氨負荷~Centrate ammonium load",
+      "mechanism": "消化污泥離心液常把溶解氮送回水線，排放時間影響尖峰。~Centrate from digested sludge returns soluble nitrogen, with timing affecting peaks.",
+      "model": "原創教學假設：回流水 Q=80 m³/d；NH4-N=600 mg/L。模型 LN=QCN/1000，代入得到 48 kg N/d。適用邊界：日平均回流負荷；瞬時排放會造成更高的時段尖峰。~Original teaching assumptions: Return liquid Q=80 m³/d; NH4-N=600 mg/L. Model LN=QCN/1000 gives 48 kg N/d. Applicability: Daily mean recycle load; batch discharge causes larger short-term peaks.",
+      "verify": "在離線工作台先選取「回流水氨負荷」的觀測點。記錄脫水運行時段、回流量與氨氮。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for centrate ammonium load. Record dewatering hours, recycle flow and ammonium. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "每日平均遮住短時氨峰值。診斷與介入：將側流量與氨氮同步採樣，納入主流水線負荷。~Daily means hide short ammonium peaks. Diagnostic response: Sample sidestream flow/ammonium synchronously and include them in mainstream load.",
+      "misconception": "濾液量少可忽略氮負荷。~Small centrate flow makes its nitrogen load negligible.",
+      "practice": "只改變 Q:80→100 m³/d，其餘假設固定；結果應由 48 變為 60 kg N/d。用「回流水氨負荷」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:80→100 m³/d, holding the other assumptions fixed; the result changes from 48 to 60 kg N/d. Explain the direction using centrate ammonium load, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "比能耗邊界~Specific-energy boundary",
+      "mechanism": "分別記錄主轉鼓、螺旋與進料輔機，避免不同邊界的機型比較。~Meter bowl, scroll and feed auxiliaries separately before comparing machines.",
+      "model": "原創教學假設：脫水用電=400 kWh/d；乾固體處理量=2000 kg DS/d。模型 SEC=E/MDS，代入得到 0.2 kWh/kg DS。適用邊界：包含相同的進料、主機及附屬設備邊界；同時比較泥餅與固體回收率。~Original teaching assumptions: Dewatering electricity=400 kWh/d; dry solids processed=2000 kg DS/d. Model SEC=E/MDS gives 0.2 kWh/kg DS. Applicability: Use identical feed, machine and auxiliary boundaries; compare cake dryness and solids capture too.",
+      "verify": "在離線工作台先選取「比能耗邊界」的觀測點。同步讀電表、乾固體進料與泥餅含固率。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for specific-energy boundary. Synchronize electricity, dry-solids feed and cake solids measurements. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只用馬達額定值當實際用電。診斷與介入：核對乾固體處理量及主機附屬電力，配對泥餅與回收率。~Nameplate power is substituted for measured energy. Diagnostic response: Check dry-solids throughput and machine/auxiliary electricity alongside cake and capture.",
+      "misconception": "主機銘牌功率就是每日耗電。~Nameplate power equals daily electricity use.",
+      "practice": "只改變 E:400→350 kWh/d，其餘假設固定；結果應由 0.2 變為 0.175 kWh/kg DS。用「比能耗邊界」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only E:400→350 kWh/d, holding the other assumptions fixed; the result changes from 0.2 to 0.175 kWh/kg DS. Explain the direction using specific-energy boundary, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "進料混合穩定~Feed-blend stability",
+      "mechanism": "初沉與剩餘污泥比例改變會影響絮凝與沉降，先穩定進料再比較參數。~Primary/waste-sludge blending affects flocculation and separation; stabilize feed before comparing settings.",
+      "model": "原創教學假設：Q1=1000、Q2=500 m³/d；C1=20、C2=80 mg/L。模型 Cm=(Q1C1+Q2C2)/(Q1+Q2)，代入得到 40 mg/L。適用邊界：無反應、同一成分與相同濃度基準；不可直接套用 pH。~Original teaching assumptions: Q1=1000, Q2=500 m³/d; C1=20, C2=80 mg/L. Model Cm=(Q1C1+Q2C2)/(Q1+Q2) gives 40 mg/L. Applicability: No reaction and the same species/concentration basis; do not directly average pH this way.",
+      "verify": "在離線工作台先選取「進料混合穩定」的觀測點。量兩股流量與成分，再在混合充分的位置採樣。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for feed-blend stability. Measure both flows and concentrations, then sample after adequate mixing. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "前後樣本組成不同卻歸因於轉速。診斷與介入：核對兩股流量及同成分分析，避免以簡單平均混合。~Changed sludge composition is wrongly attributed to speed. Diagnostic response: Check both flows and same-species analyses rather than arithmetic averaging.",
+      "misconception": "只要機台相同進料差異可忽略。~The same machine makes feed differences irrelevant.",
+      "practice": "只改變 Q2:500→750 m³/d，其餘假設固定；結果應由 40 變為 45.714286 mg/L。用「進料混合穩定」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q2:500→750 m³/d, holding the other assumptions fixed; the result changes from 40 to 45.714286 mg/L. Explain the direction using feed-blend stability, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "整機質量閉合~Machine mass closure",
+      "mechanism": "進料、泥餅、濾液三端乾固體應閉合，剩餘差額指向庫存或量測問題。~Close dry solids across feed, cake and centrate; residuals indicate inventory or measurement issues.",
+      "model": "原創教學假設：進入=15、出流水=2、排泥=12 kg/d。模型 ε=Min-Mwater-Msludge，代入得到 1 kg/d。適用邊界：殘差可能來自儲存、漏算旁流與量測誤差，不能自動當作反應。~Original teaching assumptions: Input=15, effluent=2, sludge=12 kg/d. Model ε=Min-Mwater-Msludge gives 1 kg/d. Applicability: Residual can reflect storage, omitted side streams or measurement error, not automatically a reaction.",
+      "verify": "在離線工作台先選取「整機質量閉合」的觀測點。畫出所有邊界流股，分列不確定度及庫存變化。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for machine mass closure. Draw every boundary stream and separate uncertainty from inventory change. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只量進料與泥餅而遺漏濾液。診斷與介入：補列回流、庫存與採樣不確定度，保留無法解釋的差額。~Omitting centrate leaves the balance incomplete. Diagnostic response: Add recycle, inventory and sampling uncertainty, retaining unexplained differences.",
+      "misconception": "離心機可讓固體質量憑空消失。~A centrifuge makes solids mass disappear.",
+      "practice": "只改變 Msludge:12→12.5 kg/d，其餘假設固定；結果應由 1 變為 0.5 kg/d。用「整機質量閉合」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Msludge:12→12.5 kg/d, holding the other assumptions fixed; the result changes from 1 to 0.5 kg/d. Explain the direction using machine mass closure, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-centrifuge",
+      "title": "離心濃縮與脫水技術資料",
+      "titleEn": "Centrifuge Thickening and Dewatering Fact Sheet",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=901U0S00.TXT",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-sludge",
+      "title": "污泥管理技術資源",
+      "titleEn": "Technical Resources for Sewage Sludge Managers",
+      "url": "https://www.epa.gov/biosolids/technical-resources-sewage-sludge-managers",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "均質污泥~Homogenized sludge",
+    "聚合物調理~Polymer conditioning",
+    "離心分離~Centrifugal separation",
+    "泥餅~Cake",
+    "離心液回流~Centrate return",
+    "固體與能源閉合~Solids and energy closure"
+  ],
+  "modelChecks": [
+    {
+      "expression": "50*1000*.04",
+      "expected": 2000.0,
+      "unit": "kg DS/d",
+      "description": "b433 unit 1 feedsolids baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "50*1000*.05",
+      "expected": 2500.0,
+      "unit": "kg DS/d",
+      "description": "b433 unit 1 feedsolids perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1.118e-5*20*2000**2",
+      "expected": 894.4,
+      "unit": "g",
+      "description": "b433 unit 2 rcf baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1.118e-5*20*1800**2",
+      "expected": 724.4639999999999,
+      "unit": "g",
+      "description": "b433 unit 2 rcf perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000-1995",
+      "expected": 5,
+      "unit": "rpm",
+      "description": "b433 unit 3 diffspeed baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000-1992",
+      "expected": 8,
+      "unit": "rpm",
+      "description": "b433 unit 3 diffspeed perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000*4/1000",
+      "expected": 8.0,
+      "unit": "kg active/d",
+      "description": "b433 unit 4 polymer baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000*5/1000",
+      "expected": 10.0,
+      "unit": "kg active/d",
+      "description": "b433 unit 4 polymer perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2000-100)/2000",
+      "expected": 0.95,
+      "unit": "fraction",
+      "description": "b433 unit 5 capture baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2000-160)/2000",
+      "expected": 0.92,
+      "unit": "fraction",
+      "description": "b433 unit 5 capture perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000/.25",
+      "expected": 8000.0,
+      "unit": "kg wet cake/d",
+      "description": "b433 unit 6 cake baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000/.30",
+      "expected": 6666.666666666667,
+      "unit": "kg wet cake/d",
+      "description": "b433 unit 6 cake perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "80*600/1000",
+      "expected": 48.0,
+      "unit": "kg N/d",
+      "description": "b433 unit 7 returnn baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "100*600/1000",
+      "expected": 60.0,
+      "unit": "kg N/d",
+      "description": "b433 unit 7 returnn perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "400/2000",
+      "expected": 0.2,
+      "unit": "kWh/kg DS",
+      "description": "b433 unit 8 dewaterenergy baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "350/2000",
+      "expected": 0.175,
+      "unit": "kWh/kg DS",
+      "description": "b433 unit 8 dewaterenergy perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(1000*20+500*80)/(1000+500)",
+      "expected": 40.0,
+      "unit": "mg/L",
+      "description": "b433 unit 9 mix baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(1000*20+750*80)/(1000+750)",
+      "expected": 45.714285714285715,
+      "unit": "mg/L",
+      "description": "b433 unit 9 mix perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12",
+      "expected": 1,
+      "unit": "kg/d",
+      "description": "b433 unit 10 residual baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12.5",
+      "expected": 0.5,
+      "unit": "kg/d",
+      "description": "b433 unit 10 residual perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "id": "b466",
+  "title": "垃圾自動真空收集~Automated vacuum waste collection",
+  "focus": "進料排程、氣固輸送與封閉收集~Inlet scheduling, gas-solid transport and enclosed collection",
+  "discipline": "environment-recycling",
+  "summary": "以「進料排程、氣固輸送與封閉收集」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow inlet scheduling, gas-solid transport and enclosed collection through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "住戶投料與尖峰~Household input and peaks",
+      "mechanism": "垃圾產生量與投入口事件須分開；一天總量不能直接決定單次管路輸送需求。~Separate generated mass from inlet events; daily totals do not determine a single transport batch.",
+      "model": "原創假想教學算例：daily mass=N m;N=200 households;m=2 kg/day；計算 200*2 = 400 kg/day。適用限制：假想住戶負荷。~Original hypothetical teaching example: daily mass=N m;N=200 households;m=2 kg/day; calculation 200*2 = 400 kg/day. Applicability: Hypothetical household load.",
+      "verify": "比較分散投料與晚間集中投料。~Compare distributed and evening-clustered disposal.",
+      "failure": "以平均值排程可能在投料尖峰滿槽。~Average-based schedules can overflow storage at peaks.",
+      "misconception": "日平均負荷足夠就代表任何尖峰都能處理。~Adequate daily average capacity handles every peak.",
+      "practice": "在「住戶投料與尖峰」的教學模型或試算表中先重現 400 kg/day，再依驗證任務改動一個輸入、保留其餘條件。對照「以平均值排程可能在投料尖峰滿槽。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for household input and peaks, first reproduce 400 kg/day, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Average-based schedules can overflow storage at peaks.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "入口暫存容積~Inlet storage volume",
+      "mechanism": "暫存把不連續投料與分批輸送解耦；容積取決於堆積密度和容許填充。~Storage decouples intermittent disposal from batch transport; volume depends on bulk density and usable fill.",
+      "model": "原創假想教學算例：V=M/rho;M=80kg;rho=100kg/m3；計算 80/100 = 0.8 m3。適用限制：未壓實垃圾的假想密度。~Original hypothetical teaching example: V=M/rho;M=80kg;rho=100kg/m3; calculation 80/100 = 0.8 m3. Applicability: Hypothetical uncompacted bulk density.",
+      "verify": "加入蓬鬆紙箱情境，保持質量但降低密度。~Add bulky-cardboard conditions at equal mass and lower density.",
+      "failure": "只用重量監測可能漏掉低密度垃圾塞滿入口。~Mass-only monitoring can miss volume blockage by light waste.",
+      "misconception": "同樣重量垃圾一定占相同容積。~Equal waste mass always occupies equal volume.",
+      "practice": "在「入口暫存容積」的教學模型或試算表中先重現 0.8 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「只用重量監測可能漏掉低密度垃圾塞滿入口。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for inlet storage volume, first reproduce 0.8 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Mass-only monitoring can miss volume blockage by light waste.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "管內氣流速度~Air speed in the pipe",
+      "mechanism": "輸送以空氣拖曳和壓差移動物料；速度需與管徑、物料形狀和載荷共同考慮。~Air drag and pressure move waste; assess speed with diameter, shape and loading.",
+      "model": "原創假想教學算例：v=Q/A;Q=2m3/s;D=0.4m;A=pi D^2/4；計算 2/(pi*0.4**2/4) = 15.9155 m/s。適用限制：單點實際體積流率，未做全程可壓縮解。~Original hypothetical teaching example: v=Q/A;Q=2m3/s;D=0.4m;A=pi D^2/4; calculation 2/(pi*0.4**2/4) = 15.9155 m/s. Applicability: Actual local flow rate, not a full compressible solution.",
+      "verify": "改變管徑並觀察速度與可輸送物尺寸限制。~Vary diameter and inspect speed and item-size constraints.",
+      "failure": "把風機標況流量直接當每處實際流量會偏估速度。~Using standardized fan flow as local actual flow misestimates speed.",
+      "misconception": "管路各處的標準體積流量與實際體積流量完全相同。~Standardized and actual volume flow are identical everywhere.",
+      "practice": "在「管內氣流速度」的教學模型或試算表中先重現 15.9155 m/s，再依驗證任務改動一個輸入、保留其餘條件。對照「把風機標況流量直接當每處實際流量會偏估速度。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for air speed in the pipe, first reproduce 15.9155 m/s, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using standardized fan flow as local actual flow misestimates speed.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "支路壓降與彎管~Branch losses and bends",
+      "mechanism": "彎管、閥與固體加速增加壓損；清氣管路式只能提供部分基準。~Bends, valves and solid acceleration add losses; clean-air equations provide only a partial baseline.",
+      "model": "原創假想教學算例：minor loss=K rho v^2/2;K=2;rho=1.2;v=15；計算 2*1.2*15**2/2 = 270 Pa。適用限制：清氣局部損失示例，不含氣固兩相效應。~Original hypothetical teaching example: minor loss=K rho v^2/2;K=2;rho=1.2;v=15; calculation 2*1.2*15**2/2 = 270 Pa. Applicability: Clean-air local-loss example excluding two-phase effects.",
+      "verify": "比較有無彎管的教學壓差並標出模型缺項。~Compare teaching pressure drops with/without a bend and list missing physics.",
+      "failure": "以清氣壓降當載料總壓降會低估風機需求。~Clean-air pressure loss understates loaded transport demand.",
+      "misconception": "垃圾加入氣流後完全不影響壓降。~Adding waste to airflow does not affect pressure loss.",
+      "practice": "在「支路壓降與彎管」的教學模型或試算表中先重現 270 Pa，再依驗證任務改動一個輸入、保留其餘條件。對照「以清氣壓降當載料總壓降會低估風機需求。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for branch losses and bends, first reproduce 270 Pa, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Clean-air pressure loss understates loaded transport demand.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "批次調度與互斥~Batch scheduling and mutual exclusion",
+      "mechanism": "同一管段的多入口需要排程，避免同時放料超過可輸送負荷。~Schedule inlets sharing a pipe to prevent simultaneous release beyond transport capacity.",
+      "model": "原創假想教學算例：utilization=active time/window;8*45/600；計算 8*45/600 = 0.6 fraction。適用限制：八批各45秒的假想排程。~Original hypothetical teaching example: utilization=active time/window;8*45/600; calculation 8*45/600 = 0.6 fraction. Applicability: Hypothetical eight batches of45 seconds.",
+      "verify": "加上一批延遲，檢查衝突與剩餘裕度。~Add one delayed batch and check conflicts and margin.",
+      "failure": "只依入口各自需求啟動可能造成共享管段過載。~Independent inlet triggers can overload shared pipe segments.",
+      "misconception": "每個入口都能同時全開而互不影響。~Every inlet can fully open simultaneously without interaction.",
+      "practice": "在「批次調度與互斥」的教學模型或試算表中先重現 0.6 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「只依入口各自需求啟動可能造成共享管段過載。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for batch scheduling and mutual exclusion, first reproduce 0.6 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Independent inlet triggers can overload shared pipe segments.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "漏氣與風量損失~Leaks and lost air capacity",
+      "mechanism": "漏氣占用風機流量，降低有效輸送；以隔離支路比較壓力可定位。~Leaks consume fan capacity and reduce useful transport; isolate branches and compare pressure.",
+      "model": "原創假想教學算例：useful air=Qfan-Qleak;2.0-0.3；計算 2.0-0.3 = 1.7 m3/s。適用限制：同一測點狀態的體積收支。~Original hypothetical teaching example: useful air=Qfan-Qleak;2.0-0.3; calculation 2.0-0.3 = 1.7 m3/s. Applicability: Volume balance at the same thermodynamic state.",
+      "verify": "逐段隔離教學閥門並記錄壓力恢復。~Isolate simulated valves sequentially and record pressure recovery.",
+      "failure": "漏氣可能讓風機耗電正常卻輸送失敗。~Leaks can cause failed transport despite apparently normal fan power.",
+      "misconception": "風機有轉就代表管網一定沒有漏氣。~A running fan proves the network is airtight.",
+      "practice": "在「漏氣與風量損失」的教學模型或試算表中先重現 1.7 m3/s，再依驗證任務改動一個輸入、保留其餘條件。對照「漏氣可能讓風機耗電正常卻輸送失敗。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for leaks and lost air capacity, first reproduce 1.7 m3/s, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Leaks can cause failed transport despite apparently normal fan power.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "分離器與排氣~Separator and exhaust",
+      "mechanism": "固氣分離保護風機與排氣品質；分離器壓差、集料重量和濾材狀態需聯合判讀。~Separation protects the fan and exhaust quality; interpret pressure, collected mass and filter condition together.",
+      "model": "原創假想教學算例：capture=collected/inlet solids;98/100；計算 98/100 = 0.98 fraction。適用限制：總固體捕集示例，未代表細粉性能。~Original hypothetical teaching example: capture=collected/inlet solids;98/100; calculation 98/100 = 0.98 fraction. Applicability: Total-solids capture example, not fine-particle performance.",
+      "verify": "將粗垃圾和粉塵分開做質量收支。~Balance coarse waste and fine dust separately.",
+      "failure": "高總捕集率可能掩蓋細粉穿透。~High bulk capture can hide fine-particle penetration.",
+      "misconception": "捕住大件垃圾就代表排氣沒有細粉。~Capturing large waste proves dust-free exhaust.",
+      "practice": "在「分離器與排氣」的教學模型或試算表中先重現 0.98 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「高總捕集率可能掩蓋細粉穿透。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for separator and exhaust, first reproduce 0.98 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"High bulk capture can hide fine-particle penetration.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "風機電耗邊界~Fan electricity boundary",
+      "mechanism": "壓差乘氣量是小壓差近似的流體功；壓縮效應與效率需在詳算納入。~Pressure difference times flow approximates fluid power at small pressure ratios; detailed work includes compression and efficiency.",
+      "model": "原創假想教學算例：P=DeltaP Q/eta;DeltaP=10000Pa;Q=2;eta=0.65；計算 10000*2/0.65/1000 = 30.7692 kW。適用限制：小壓比量級估算，非風機選型。~Original hypothetical teaching example: P=DeltaP Q/eta;DeltaP=10000Pa;Q=2;eta=0.65; calculation 10000*2/0.65/1000 = 30.7692 kW. Applicability: Low-pressure-ratio estimate, not fan selection.",
+      "verify": "保持質量輸送任務比較兩種批次長度的電量。~Compare electricity for two batch durations at equal transported mass.",
+      "failure": "只看額定功率而忽略運轉時數會誤判能耗。~Rated power without operating hours misjudges energy.",
+      "misconception": "風機功率較小就必定有較低每噸電耗。~A lower-power fan always has lower energy per tonne.",
+      "practice": "在「風機電耗邊界」的教學模型或試算表中先重現 30.7692 kW，再依驗證任務改動一個輸入、保留其餘條件。對照「只看額定功率而忽略運轉時數會誤判能耗。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for fan electricity boundary, first reproduce 30.7692 kW, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Rated power without operating hours misjudges energy.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "堵塞診斷與隔離~Blockage diagnosis and isolation",
+      "mechanism": "壓力突變、輸送時間和到站重量可區分缺料、漏氣和堵塞；操作僅在隔離教學模型進行。~Pressure changes, travel time and arrival mass distinguish empty feed, leaks and blockages; act only in the isolated teaching model.",
+      "model": "原創假想教學算例：unarrived mass=sent-arrived;50-42；計算 50-42 = 8 kg。適用限制：忽略秤重誤差的診斷線索。~Original hypothetical teaching example: unarrived mass=sent-arrived;50-42; calculation 50-42 = 8 kg. Applicability: Diagnostic clue neglecting weighing error.",
+      "verify": "加入一個假想堵塞，觀察壓差和質量差是否同時變化。~Inject a simulated blockage and compare pressure and mass residuals.",
+      "failure": "未確認隔離就增加輸送次數可能加劇堵塞。~Repeated transport without diagnosis can worsen a blockage.",
+      "misconception": "任何輸送異常都應直接加大風機速度。~Every transport fault should be solved by higher fan speed.",
+      "practice": "在「堵塞診斷與隔離」的教學模型或試算表中先重現 8 kg，再依驗證任務改動一個輸入、保留其餘條件。對照「未確認隔離就增加輸送次數可能加劇堵塞。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for blockage diagnosis and isolation, first reproduce 8 kg, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Repeated transport without diagnosis can worsen a blockage.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "物流終端與效益比較~Terminal logistics and comparison",
+      "mechanism": "真空收集把部分路面物流移到終端，仍需容器搬運、電力與維護；邊界需一致。~Pneumatic collection shifts some surface logistics to a terminal but still needs container handling, power and maintenance; compare equal boundaries.",
+      "model": "原創假想教學算例：specific energy=E/mass;120kWh/4tonne；計算 120/4 = 30 kWh/tonne。適用限制：假想運行資料，非任何廠商性能保證。~Original hypothetical teaching example: specific energy=E/mass;120kWh/4tonne; calculation 120/4 = 30 kWh/tonne. Applicability: Hypothetical operation, not a vendor guarantee.",
+      "verify": "納入終端車輛與風機後比較相同收集量。~Include terminal vehicles and fans for equal collected mass.",
+      "failure": "只比較路邊車次會漏掉地下系統耗能。~Roadside truck counts alone omit underground-system energy.",
+      "misconception": "沒有路邊垃圾車就代表收集系統零能耗。~No curbside truck means zero collection energy.",
+      "practice": "在「物流終端與效益比較」的教學模型或試算表中先重現 30 kWh/tonne，再依驗證任務改動一個輸入、保留其餘條件。對照「只比較路邊車次會漏掉地下系統耗能。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for terminal logistics and comparison, first reproduce 30 kWh/tonne, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Roadside truck counts alone omit underground-system energy.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-envac",
+      "title": "固定式真空垃圾收集系統",
+      "titleEn": "Stationary Pneumatic Waste Collection",
+      "url": "https://www.envacgroup.com/discover-the-envac-system/systems-and-solutions/stationary-pneumatic/",
+      "organization": "Envac",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-ita",
+      "title": "地下氣力垃圾收集系統",
+      "titleEn": "Underground Pneumatic Waste",
+      "url": "https://tunnel.ita-aites.org/en/use-of-underground-spaces/energy-and-water/urban-utilities/underground-pneumatic-waste",
+      "organization": "ITA-AITES",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "投入口~Waste inlet",
+    "暫存閥~Storage valve",
+    "地下管網~Pipe network",
+    "分離器~Separator",
+    "風機~Fan",
+    "壓實容器~Compaction container"
+  ],
+  "place": {
+    "name": "Envac斯德哥爾摩總部：方法資料來源機構（非實廠）",
+    "nameEn": "Envac global headquarters, Stockholm: methodology source institution (not a process plant)",
+    "country": "瑞典",
+    "countryEn": "Sweden",
+    "lat": 59.33,
+    "lon": 18.05,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.envacgroup.com/contact/",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "200*2",
+      "expected": 400,
+      "unit": "kg/day",
+      "description": "住戶投料與尖峰~Household input and peaks"
+    },
+    {
+      "expression": "80/100",
+      "expected": 0.8,
+      "unit": "m3",
+      "description": "入口暫存容積~Inlet storage volume"
+    },
+    {
+      "expression": "2/(pi*0.4**2/4)",
+      "expected": 15.91549431,
+      "unit": "m/s",
+      "description": "管內氣流速度~Air speed in the pipe"
+    },
+    {
+      "expression": "2*1.2*15**2/2",
+      "expected": 270,
+      "unit": "Pa",
+      "description": "支路壓降與彎管~Branch losses and bends"
+    },
+    {
+      "expression": "8*45/600",
+      "expected": 0.6,
+      "unit": "fraction",
+      "description": "批次調度與互斥~Batch scheduling and mutual exclusion"
+    },
+    {
+      "expression": "2.0-0.3",
+      "expected": 1.7,
+      "unit": "m3/s",
+      "description": "漏氣與風量損失~Leaks and lost air capacity"
+    },
+    {
+      "expression": "98/100",
+      "expected": 0.98,
+      "unit": "fraction",
+      "description": "分離器與排氣~Separator and exhaust"
+    },
+    {
+      "expression": "10000*2/0.65/1000",
+      "expected": 30.76923077,
+      "unit": "kW",
+      "description": "風機電耗邊界~Fan electricity boundary"
+    },
+    {
+      "expression": "50-42",
+      "expected": 8,
+      "unit": "kg",
+      "description": "堵塞診斷與隔離~Blockage diagnosis and isolation"
+    },
+    {
+      "expression": "120/4",
+      "expected": 30,
+      "unit": "kWh/tonne",
+      "description": "物流終端與效益比較~Terminal logistics and comparison"
+    }
+  ]
+}

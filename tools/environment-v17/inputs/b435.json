@@ -1,0 +1,291 @@
+{
+  "id": "b435",
+  "title": "污泥乾燥與熱回收~Sludge drying and heat recovery",
+  "focus": "水分蒸發、熱回收與乾燥系統邊界~Evaporation, heat recovery and dryer system boundaries",
+  "summary": "本課以水分蒸發、熱回收與乾燥系統邊界為主線，從濕乾基分辨、蒸發水量、汽化潛熱、進料與產品顯熱進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops evaporation, heat recovery and dryer system boundaries through ten connected units, beginning with wet and dry bases, evaporated-water balance, latent-heat requirement, feed and product sensible heat. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "濕乾基分辨~Wet and dry bases",
+      "mechanism": "先固定乾固體庫存，再用進出含固率計算需移除的水。~Fix dry-solids inventory before calculating water removal from inlet/outlet solids fractions.",
+      "model": "原創教學假設：污泥 Q=50 m³/d；ρ=1000 kg/m³；TS=0.04。模型 MDS=QρTS，代入得到 2000 kg DS/d。適用邊界：TS 是濕基質量分率，密度在本例近似水。~Original teaching assumptions: Sludge Q=50 m³/d; density=1000 kg/m³; TS=0.04. Model MDS=QρTS gives 2000 kg DS/d. Applicability: TS is a wet-basis mass fraction; density is approximated as water.",
+      "verify": "在離線工作台先選取「濕乾基分辨」的觀測點。由體積、密度與烘乾固體三個獨立量測建質量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for wet and dry bases. Build mass from independent volume, density and oven-dry solids measurements. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把濕基含水率直接當乾基含水比。診斷與介入：用代表性含固樣本重算乾量，避免濕重混用。~Wet-basis moisture is mistaken for dry-basis moisture ratio. Diagnostic response: Recalculate dry mass from representative solids samples, without mixing wet mass.",
+      "misconception": "含水率與含固率可不註明基準。~Moisture and solids fractions need no basis.",
+      "practice": "只改變 TS:0.04→0.05，其餘假設固定；結果應由 2000 變為 2500 kg DS/d。用「濕乾基分辨」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TS:0.04→0.05, holding the other assumptions fixed; the result changes from 2000 to 2500 kg DS/d. Explain the direction using wet and dry bases, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "蒸發水量~Evaporated-water balance",
+      "mechanism": "乾燥主要減少水而非乾固體，產品濕重隨含固率非線性變化。~Drying primarily removes water, not dry solids; wet mass changes nonlinearly with solids fraction.",
+      "model": "原創教學假設：乾固體=1000 kg；進料 TS=0.25；產品 TS=0.90。模型 Mevap=MDS(1/TSin-1/TSout)，代入得到 2888.8889 kg water。適用邊界：假定乾固體無損失；揮發有機物與粉塵另列。~Original teaching assumptions: Dry solids=1000 kg; feed TS=0.25; product TS=0.90. Model Mevap=MDS(1/TSin-1/TSout) gives 2888.8889 kg water. Applicability: Assumes conserved dry solids; volatile organics and dust require separate terms.",
+      "verify": "在離線工作台先選取「蒸發水量」的觀測點。由進料、產品及冷凝水重量重建水分收支。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for evaporated-water balance. Rebuild the water balance from feed, product and condensate masses. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "未列粉塵與揮發損失就宣稱固體全守恆。診斷與介入：先由乾固體收支確認需去除水量，再比較熱負荷。~Ignoring dust/volatile losses overstates exact solids conservation. Diagnostic response: Confirm water removal through the dry-solids balance before comparing heat demand.",
+      "misconception": "產品減重全部等於有機物分解。~All product mass loss is organic decomposition.",
+      "practice": "只改變 TSin:0.25→0.30，其餘假設固定；結果應由 2888.8889 變為 2222.2222 kg water。用「蒸發水量」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TSin:0.25→0.30, holding the other assumptions fixed; the result changes from 2888.8889 to 2222.2222 kg water. Explain the direction using evaporated-water balance, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "汽化潛熱~Latent-heat requirement",
+      "mechanism": "把蒸發潛熱與升溫顯熱分開，才知道熱回收改善哪一部分。~Separate evaporation latent heat from sensible heating to locate heat-recovery benefits.",
+      "model": "原創教學假設：蒸發水=1000 kg；假設有效汽化潛熱=2.3 MJ/kg。模型 Qlat=mλ，代入得到 2300 MJ。適用邊界：僅潛熱；實際需加顯熱、尾氣、設備與散熱。~Original teaching assumptions: Evaporated water=1000 kg; assumed effective latent heat=2.3 MJ/kg. Model Qlat=mλ gives 2300 MJ. Applicability: Latent heat only; sensible heat, exhaust, equipment and losses are additional.",
+      "verify": "在離線工作台先選取「汽化潛熱」的觀測點。比較水量收支與燃料／蒸汽能量表，列出未回收熱。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for latent-heat requirement. Compare water balance with fuel/steam energy and list unrecovered heat. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只算顯熱會大幅漏掉乾燥熱需求。診斷與介入：另加顯熱與熱損，避免潛熱單項被當總能源。~Sensible heat alone misses much of drying demand. Diagnostic response: Add sensible heat and losses rather than treating latent heat as total energy.",
+      "misconception": "把水加熱到目標溫度就不需汽化熱。~Reaching target temperature removes the need for latent heat.",
+      "practice": "只改變 m:1000→1200 kg，其餘假設固定；結果應由 2300 變為 2760 MJ。用「汽化潛熱」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only m:1000→1200 kg, holding the other assumptions fixed; the result changes from 2300 to 2760 MJ. Explain the direction using latent-heat requirement, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "進料與產品顯熱~Feed and product sensible heat",
+      "mechanism": "進料、固體及設備的升溫都影響能耗，濕污泥可先用等效熱容估計。~Feed, solids and equipment heating affect demand; use an effective heat capacity for a first estimate.",
+      "model": "原創教學假設：污泥質量 m=1000 kg；cp=4 kJ/(kg·K)；ΔT=20 K。模型 Q=m cp ΔT，代入得到 80 MJ。適用邊界：顯熱近似，不含散熱、相變與容器升溫。~Original teaching assumptions: Sludge mass m=1000 kg; cp=4 kJ/(kg·K); ΔT=20 K. Model Q=m cp ΔT gives 80 MJ. Applicability: Sensible-heat approximation, excluding heat losses, phase change and vessel heating.",
+      "verify": "在離線工作台先選取「進料與產品顯熱」的觀測點。對照進出口溫度、質量及熱媒供應量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for feed and product sensible heat. Compare inlet/outlet temperatures, mass and heating-medium supply. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把所有物質熱容當水且不揭露假設。診斷與介入：更新進料量、含水率和溫度，再核對熱損及回收。~Assuming every heat capacity equals water without disclosure is misleading. Diagnostic response: Update feed, moisture and temperature and check heat loss/recovery.",
+      "misconception": "顯熱永遠可以忽略。~Sensible heat is always negligible.",
+      "practice": "只改變 ΔT:20→25 K，其餘假設固定；結果應由 80 變為 100 MJ。用「進料與產品顯熱」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only ΔT:20→25 K, holding the other assumptions fixed; the result changes from 80 to 100 MJ. Explain the direction using feed and product sensible heat, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "熱回收溫位~Heat-recovery temperature grade",
+      "mechanism": "冷凝熱可預熱進料，但其溫位可能不足以直接驅動高溫乾燥。~Condensation heat can preheat feed but may be too low-grade for direct high-temperature drying.",
+      "model": "原創教學假設：可回收熱源=400 MJ；假設回收率=0.65。模型 Qrec=Qη，代入得到 260 MJ。適用邊界：只按能量回收率，不包含溫位與換熱最小溫差限制。~Original teaching assumptions: Available heat=400 MJ; assumed recovery fraction=0.65. Model Qrec=Qη gives 260 MJ. Applicability: Energy-fraction estimate only; temperature grade and minimum approach are omitted.",
+      "verify": "在離線工作台先選取「熱回收溫位」的觀測點。畫出冷熱物流溫度區間，確認回收熱仍有可用溫差。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for heat-recovery temperature grade. Plot hot/cold temperature ranges and check usable driving temperature difference. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "回收熱重複抵扣兩個單元。診斷與介入：核對熱源與熱需求溫位，避免把低溫回熱全算可用。~Crediting the same recovered heat twice exaggerates savings. Diagnostic response: Check source/demand temperature grades before counting recovered heat as usable.",
+      "misconception": "回收的每一 MJ 都可完全替代高溫燃料熱。~Every recovered MJ fully replaces high-temperature fuel heat.",
+      "practice": "只改變 η:0.65→0.75，其餘假設固定；結果應由 260 變為 300 MJ。用「熱回收溫位」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only η:0.65→0.75, holding the other assumptions fixed; the result changes from 260 to 300 MJ. Explain the direction using heat-recovery temperature grade, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "單位蒸發能耗~Energy per water evaporated",
+      "mechanism": "以每公斤蒸發水比較效能，並固定進出含固率與供熱邊界。~Compare per kilogram evaporated at matching solids fractions and heat boundaries.",
+      "model": "原創教學假設：總供熱=3000 MJ；蒸發水=1000 kg。模型 SEC=Q/Mevap，代入得到 3 MJ/kg water。適用邊界：相同進出含固率與熱邊界才可比較。~Original teaching assumptions: Total heat supplied=3000 MJ; water evaporated=1000 kg. Model SEC=Q/Mevap gives 3 MJ/kg water. Applicability: Compare only at identical inlet/outlet solids and heat boundaries.",
+      "verify": "在離線工作台先選取「單位蒸發能耗」的觀測點。同時計量水分移除與外購、回收熱。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for energy per water evaporated. Meter water removal and imported/recovered heat simultaneously. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "以每噸濕污泥比較不同含水率。診斷與介入：同步量實際蒸發水及整套熱輸入，核對相同邊界。~Per-wet-tonne comparisons across different moisture contents mislead. Diagnostic response: Measure actual evaporation and whole-system heat input at the same boundary.",
+      "misconception": "不同含水污泥的每噸能耗可直接比較。~Energy per wet tonne is directly comparable for any moisture.",
+      "practice": "只改變 Q:3000→2700 MJ，其餘假設固定；結果應由 3 變為 2.7 MJ/kg water。用「單位蒸發能耗」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:3000→2700 MJ, holding the other assumptions fixed; the result changes from 3 to 2.7 MJ/kg water. Explain the direction using energy per water evaporated, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "預脫水的熱效益~Thermal benefit of pre-dewatering",
+      "mechanism": "機械去水通常先降低後段蒸發量，但也須計入機械用電與聚合物。~Mechanical dewatering reduces later evaporation, while electricity and polymer remain part of the balance.",
+      "model": "原創教學假設：乾固體=1000 kg；進料 TS=0.25；產品 TS=0.90。模型 Mevap=MDS(1/TSin-1/TSout)，代入得到 2888.8889 kg water。適用邊界：假定乾固體無損失；揮發有機物與粉塵另列。~Original teaching assumptions: Dry solids=1000 kg; feed TS=0.25; product TS=0.90. Model Mevap=MDS(1/TSin-1/TSout) gives 2888.8889 kg water. Applicability: Assumes conserved dry solids; volatile organics and dust require separate terms.",
+      "verify": "在離線工作台先選取「預脫水的熱效益」的觀測點。由進料、產品及冷凝水重量重建水分收支。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for thermal benefit of pre-dewatering. Rebuild the water balance from feed, product and condensate masses. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只看乾燥機而漏掉前段改善。診斷與介入：先由乾固體收支確認需去除水量，再比較熱負荷。~A dryer-only view misses upstream improvement. Diagnostic response: Confirm water removal through the dry-solids balance before comparing heat demand.",
+      "misconception": "進料含固率不影響乾燥需熱。~Feed solids fraction does not affect heat demand.",
+      "practice": "只改變 TSin:0.25→0.30，其餘假設固定；結果應由 2888.8889 變為 2222.2222 kg water。用「預脫水的熱效益」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TSin:0.25→0.30, holding the other assumptions fixed; the result changes from 2888.8889 to 2222.2222 kg water. Explain the direction using thermal benefit of pre-dewatering, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "沼氣熱值邊界~Biogas heating-value basis",
+      "mechanism": "熱供應取決於甲烷份額與標準化體積，總氣量不能直接當燃料能量。~Heat supply depends on methane fraction and normalized volume, not total gas volume alone.",
+      "model": "原創教學假設：乾沼氣=500 m³/d；CH4 體積分率=0.60。模型 VCH4=Vgas xCH4，代入得到 300 m³ CH4/d。適用邊界：同一乾基與溫壓；CO2 去除會改變分率而不必然增加甲烷量。~Original teaching assumptions: Dry biogas=500 m³/d; CH4 volume fraction=0.60. Model VCH4=Vgas xCH4 gives 300 m³ CH4/d. Applicability: Common dry basis and temperature/pressure; CO2 removal can raise the fraction without increasing methane quantity.",
+      "verify": "在離線工作台先選取「沼氣熱值邊界」的觀測點。使用氣體分析器與標準化流量計配對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for biogas heating-value basis. Pair gas composition with normalized volumetric flow. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "濕氣量未校正即估熱值。診斷與介入：以溫壓一致的甲烷組成分析重算，確認乾濕基準。~Uncorrected wet-gas volume distorts energy. Diagnostic response: Recalculate from same-condition methane analysis and verify wet/dry basis.",
+      "misconception": "總沼氣均可當純甲烷估熱。~All biogas can be treated as pure methane.",
+      "practice": "只改變 xCH4:0.60→0.55，其餘假設固定；結果應由 300 變為 275 m³ CH4/d。用「沼氣熱值邊界」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only xCH4:0.60→0.55, holding the other assumptions fixed; the result changes from 300 to 275 m³ CH4/d. Explain the direction using biogas heating-value basis, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "凝結水與尾氣~Condensate and exhaust",
+      "mechanism": "水離開固體後進入凝結水或尾氣，仍須追蹤污染物與回流負荷。~Removed water enters condensate/exhaust; contaminants and recycle loading still need tracking.",
+      "model": "原創教學假設：入口水蒸氣負荷=20 kg/d；冷凝去除=15 kg/d。模型 Mremain=Min-Mcond，代入得到 5 kg water/d。適用邊界：水分收支不等於露點合格；還須氣壓、氣溫及含濕量。~Original teaching assumptions: Inlet water-vapor load=20 kg/d; condensed removal=15 kg/d. Model Mremain=Min-Mcond gives 5 kg water/d. Applicability: A water balance does not prove dew-point compliance; gas pressure, temperature and humidity are needed.",
+      "verify": "在離線工作台先選取「凝結水與尾氣」的觀測點。量冷凝水並以露點儀確認乾燥器出口。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for condensate and exhaust. Measure condensate and check dryer outlet with a dew-point instrument. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "把蒸發當作污染物全部消除。診斷與介入：另測露點與含濕，檢查排水及下游相容性。~Evaporation is incorrectly equated with pollutant destruction. Diagnostic response: Measure dew point/moisture separately and check drainage/downstream compatibility.",
+      "misconception": "乾燥後所有污染物都消失。~Drying destroys all pollutants.",
+      "practice": "只改變 Mcond:15→17 kg/d，其餘假設固定；結果應由 5 變為 3 kg water/d。用「凝結水與尾氣」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Mcond:15→17 kg/d, holding the other assumptions fixed; the result changes from 5 to 3 kg water/d. Explain the direction using condensate and exhaust, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "能源、品質與防護交接~Energy, quality and protection handoff",
+      "mechanism": "完整方案同時列淨能源、產品品質與粉塵／熱設備防護，數值練習僅在離線模型進行。~The handoff covers net energy, product quality and dust/thermal safeguards; numerical exercises stay offline.",
+      "model": "原創教學假設：毛發電=1000 kWh/d；壓縮、乾燥與輔機=180 kWh/d。模型 Enet=Egross-Eaux，代入得到 820 kWh/d。適用邊界：同一系統邊界；熱回收收益不可重複算入電量。~Original teaching assumptions: Gross generation=1000 kWh/d; compression, drying and auxiliaries=180 kWh/d. Model Enet=Egross-Eaux gives 820 kWh/d. Applicability: Use one system boundary; recovered heat must not be double-counted as electricity.",
+      "verify": "在離線工作台先選取「能源、品質與防護交接」的觀測點。用分表列出每一輔機與可用餘熱。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for energy, quality and protection handoff. Submeter each auxiliary and report usable waste heat separately. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只提高乾度卻忽略產品粉塵與系統能耗。診斷與介入：核對每個附屬電表與能源邊界，分列熱能和電能。~Maximizing dryness overlooks dust and total energy. Diagnostic response: Check auxiliary meters/energy boundaries and separate heat from electricity.",
+      "misconception": "最乾產品必定是所有目的的最佳方案。~The driest product is optimal for every purpose.",
+      "practice": "只改變 Eaux:180→240 kWh/d，其餘假設固定；結果應由 820 變為 760 kWh/d。用「能源、品質與防護交接」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Eaux:180→240 kWh/d, holding the other assumptions fixed; the result changes from 820 to 760 kWh/d. Explain the direction using energy, quality and protection handoff, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-dry",
+      "title": "熱乾燥技術資料",
+      "titleEn": "Heat Drying Fact Sheet",
+      "url": "https://www.epa.gov/biosolids/fact-sheet-heat-drying",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-gas",
+      "title": "厭氧消化與沼氣操作指南",
+      "titleEn": "Anaerobic Digester/Biogas System Operator Guidebook",
+      "url": "https://www.epa.gov/agstar/anaerobic-digesterbiogas-system-operator-guidebook",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-sludge",
+      "title": "污泥管理技術資源",
+      "titleEn": "Technical Resources for Sewage Sludge Managers",
+      "url": "https://www.epa.gov/biosolids/technical-resources-sewage-sludge-managers",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "預脫水污泥~Pre-dewatered sludge",
+    "熱量供應~Heat supply",
+    "乾燥與蒸發~Drying and evaporation",
+    "乾燥產品~Dried product",
+    "尾氣與冷凝水~Off-gas and condensate",
+    "熱回收~Heat recovery",
+    "能量及品質閉合~Energy and quality closure"
+  ],
+  "modelChecks": [
+    {
+      "expression": "50*1000*.04",
+      "expected": 2000.0,
+      "unit": "kg DS/d",
+      "description": "b435 unit 1 feedsolids baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "50*1000*.05",
+      "expected": 2500.0,
+      "unit": "kg DS/d",
+      "description": "b435 unit 1 feedsolids perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*(1/.25-1/.90)",
+      "expected": 2888.8888888888887,
+      "unit": "kg water",
+      "description": "b435 unit 2 evap baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*(1/.30-1/.90)",
+      "expected": 2222.222222222222,
+      "unit": "kg water",
+      "description": "b435 unit 2 evap perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*2.3",
+      "expected": 2300.0,
+      "unit": "MJ",
+      "description": "b435 unit 3 latent baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1200*2.3",
+      "expected": 2760.0,
+      "unit": "MJ",
+      "description": "b435 unit 3 latent perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*4*20/1000",
+      "expected": 80.0,
+      "unit": "MJ",
+      "description": "b435 unit 4 heat baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*4*25/1000",
+      "expected": 100.0,
+      "unit": "MJ",
+      "description": "b435 unit 4 heat perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "400*.65",
+      "expected": 260.0,
+      "unit": "MJ",
+      "description": "b435 unit 5 recoverheat baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "400*.75",
+      "expected": 300.0,
+      "unit": "MJ",
+      "description": "b435 unit 5 recoverheat perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "3000/1000",
+      "expected": 3.0,
+      "unit": "MJ/kg water",
+      "description": "b435 unit 6 dryersec baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2700/1000",
+      "expected": 2.7,
+      "unit": "MJ/kg water",
+      "description": "b435 unit 6 dryersec perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*(1/.25-1/.90)",
+      "expected": 2888.8888888888887,
+      "unit": "kg water",
+      "description": "b435 unit 7 evap baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000*(1/.30-1/.90)",
+      "expected": 2222.222222222222,
+      "unit": "kg water",
+      "description": "b435 unit 7 evap perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*.60",
+      "expected": 300.0,
+      "unit": "m³ CH4/d",
+      "description": "b435 unit 8 methanefrac baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*.55",
+      "expected": 275.0,
+      "unit": "m³ CH4/d",
+      "description": "b435 unit 8 methanefrac perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "20-15",
+      "expected": 5,
+      "unit": "kg water/d",
+      "description": "b435 unit 9 dew baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "20-17",
+      "expected": 3,
+      "unit": "kg water/d",
+      "description": "b435 unit 9 dew perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000-180",
+      "expected": 820,
+      "unit": "kWh/d",
+      "description": "b435 unit 10 chpnet baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "1000-240",
+      "expected": 760,
+      "unit": "kWh/d",
+      "description": "b435 unit 10 chpnet perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

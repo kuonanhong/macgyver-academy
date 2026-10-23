@@ -1,0 +1,200 @@
+{
+  "id": "b461",
+  "title": "都市熱島降溫鋪面~Cool pavements for urban heat mitigation",
+  "focus": "鋪面能量收支與行人熱曝露~Pavement energy balance and pedestrian heat exposure",
+  "discipline": "environment-urban",
+  "summary": "以「鋪面能量收支與行人熱曝露」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow pavement energy balance and pedestrian heat exposure through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "表面與氣溫指標~Surface and air-temperature measures",
+      "mechanism": "表面熱島與空氣熱島量測高度、時間和物理量不同；必須先定義比較對象。~Surface and air heat-island metrics differ in height, timing and quantity; define the comparison first.",
+      "model": "原創假想教學算例：surface contrast=Ts_urban-Ts_reference;48-35；計算 48-35 = 13 K。適用限制：同時同天候表面溫差。~Original hypothetical teaching example: surface contrast=Ts_urban-Ts_reference;48-35; calculation 48-35 = 13 K. Applicability: Simultaneous surface-temperature contrast under equal weather.",
+      "verify": "並列地表與遮陽氣溫，避免混用兩種溫差。~Plot surface and shielded air temperature separately.",
+      "failure": "紅外影像顯示降溫不能直接當成人體氣溫降幅。~Infrared surface cooling is not directly an air-temperature reduction.",
+      "misconception": "表面降低10度就代表行人氣溫也降低10度。~A10-degree surface reduction means a10-degree pedestrian air reduction.",
+      "practice": "在「表面與氣溫指標」的教學模型或試算表中先重現 13 K，再依驗證任務改動一個輸入、保留其餘條件。對照「紅外影像顯示降溫不能直接當成人體氣溫降幅。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for surface and air-temperature measures, first reproduce 13 K, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Infrared surface cooling is not directly an air-temperature reduction.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "短波反射與吸收~Shortwave reflection and absorption",
+      "mechanism": "反照率增加可降低鋪面吸收，但增加的反射光可能照到人或牆面。~Higher albedo reduces pavement absorption but may direct more reflected radiation toward people or walls.",
+      "model": "原創假想教學算例：Qabs=(1-alpha)G;alpha=0.35;G=800 W/m2；計算 (1-0.35)*800 = 520 W/m2。適用限制：忽略透射的不透明表面。~Original hypothetical teaching example: Qabs=(1-alpha)G;alpha=0.35;G=800 W/m2; calculation (1-0.35)*800 = 520 W/m2. Applicability: Opaque surface with negligible transmission.",
+      "verify": "把反照率由0.15改為0.35，核對吸收差值。~Change albedo from0.15 to0.35 and check absorbed-flux difference.",
+      "failure": "只量表面溫度可能漏掉行人反射短波負荷。~Surface temperature alone misses reflected shortwave load on pedestrians.",
+      "misconception": "反照率提高必定降低所有方向的輻射負荷。~Higher albedo reduces radiation load in every direction.",
+      "practice": "在「短波反射與吸收」的教學模型或試算表中先重現 520 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「只量表面溫度可能漏掉行人反射短波負荷。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for shortwave reflection and absorption, first reproduce 520 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Surface temperature alone misses reflected shortwave load on pedestrians.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "熱容量與升溫~Heat capacity and warming",
+      "mechanism": "厚度、密度與比熱控制短時間儲熱；相同熱通量不代表相同升溫。~Thickness, density and heat capacity control transient storage; equal flux does not imply equal warming.",
+      "model": "原創假想教學算例：DeltaT=q t/(rho c d);q=200;t=3600;rho=2200;c=900;d=0.1；計算 200*3600/(2200*900*0.1) = 3.63636 K。適用限制：忽略散熱、均溫薄層近似。~Original hypothetical teaching example: DeltaT=q t/(rho c d);q=200;t=3600;rho=2200;c=900;d=0.1; calculation 200*3600/(2200*900*0.1) = 3.63636 K. Applicability: Uniform-layer approximation neglecting heat losses.",
+      "verify": "比較厚度加倍與比熱加倍的結果。~Compare doubled thickness with doubled specific heat.",
+      "failure": "把吸收通量全部長期存入薄層會造成不實高溫。~Storing all absorbed energy indefinitely in a thin layer produces unrealistic temperatures.",
+      "misconception": "熱容量對白天升溫完全沒有影響。~Heat capacity has no effect on daytime warming.",
+      "practice": "在「熱容量與升溫」的教學模型或試算表中先重現 3.63636 K，再依驗證任務改動一個輸入、保留其餘條件。對照「把吸收通量全部長期存入薄層會造成不實高溫。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for heat capacity and warming, first reproduce 3.63636 K, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Storing all absorbed energy indefinitely in a thin layer produces unrealistic temperatures.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "對流換熱~Convective heat transfer",
+      "mechanism": "風速和表面形態會改變對流係數；係數不是所有街谷共用常數。~Wind and surface geometry change convection; the coefficient is not universal across streets.",
+      "model": "原創假想教學算例：q=h(Ts-Ta);h=12;Ts=45;Ta=32；計算 12*(45-32) = 156 W/m2。適用限制：假想平均換熱係數。~Original hypothetical teaching example: q=h(Ts-Ta);h=12;Ts=45;Ta=32; calculation 12*(45-32) = 156 W/m2. Applicability: Hypothetical mean coefficient.",
+      "verify": "在相同日射下比較有風與無風時段。~Compare windy and calm periods at similar solar input.",
+      "failure": "把風速改變造成的降溫全歸因塗層會錯判效益。~Attributing wind-driven cooling entirely to coating misjudges benefit.",
+      "misconception": "同一塗層在任何風速下表現完全相同。~A coating performs identically at every wind speed.",
+      "practice": "在「對流換熱」的教學模型或試算表中先重現 156 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「把風速改變造成的降溫全歸因塗層會錯判效益。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for convective heat transfer, first reproduce 156 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Attributing wind-driven cooling entirely to coating misjudges benefit.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "長波放射與天空~Longwave exchange with the sky",
+      "mechanism": "長波放射依絕對溫度四次方與放射率計算，天空有效溫度亦影響夜間散熱。~Longwave emission depends on the fourth power of absolute temperature and emissivity; effective sky temperature affects night cooling.",
+      "model": "原創假想教學算例：q=epsilon sigma(Ts^4-Tsky^4);eps=0.9;sigma=5.67e-8;Ts=315K;Tsky=290K；計算 0.9*5.67e-8*(315**4-290**4) = 141.496 W/m2。適用限制：以有效天空溫度代表長波環境。~Original hypothetical teaching example: q=epsilon sigma(Ts^4-Tsky^4);eps=0.9;sigma=5.67e-8;Ts=315K;Tsky=290K; calculation 0.9*5.67e-8*(315**4-290**4) = 141.496 W/m2. Applicability: Effective sky temperature represents the longwave environment.",
+      "verify": "以開闊天空與遮蔽街谷比較可見天空比例。~Compare sky-view fractions in open and shaded canyons.",
+      "failure": "以攝氏代入四次方公式會得到錯誤熱通量。~Using Celsius in the fourth-power formula gives incorrect flux.",
+      "misconception": "史蒂芬—波茲曼式可直接使用攝氏溫度。~Stefan-Boltzmann calculations can directly use Celsius.",
+      "practice": "在「長波放射與天空」的教學模型或試算表中先重現 141.496 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「以攝氏代入四次方公式會得到錯誤熱通量。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for longwave exchange with the sky, first reproduce 141.496 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using Celsius in the fourth-power formula gives incorrect flux.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "蒸發冷卻用水~Evaporative cooling and water",
+      "mechanism": "蒸發移走潛熱但需可用水與質傳；供水不足時效益會衰退。~Evaporation removes latent heat but requires available water and mass transfer; cooling fades when water is exhausted.",
+      "model": "原創假想教學算例：q=m_dot L;mdot=0.00005 kg/m2/s;L=2450000 J/kg；計算 0.00005*2450000 = 122.5 W/m2。適用限制：假想穩態蒸發率。~Original hypothetical teaching example: q=m_dot L;mdot=0.00005 kg/m2/s;L=2450000 J/kg; calculation 0.00005*2450000 = 122.5 W/m2. Applicability: Hypothetical steady evaporation rate.",
+      "verify": "同步量測失水量與表面溫度。~Measure water loss and surface temperature together.",
+      "failure": "僅記灑水後瞬間溫度會高估全天效益。~A temperature immediately after watering overstates all-day benefit.",
+      "misconception": "蒸發冷卻完全不需消耗水。~Evaporative cooling consumes no water.",
+      "practice": "在「蒸發冷卻用水」的教學模型或試算表中先重現 122.5 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「僅記灑水後瞬間溫度會高估全天效益。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for evaporative cooling and water, first reproduce 122.5 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A temperature immediately after watering overstates all-day benefit.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "夜間釋熱~Nighttime heat release",
+      "mechanism": "白天吸收的能量可能延後釋放；材料降溫評估要包含日夜週期。~Daytime storage may be released later; assess a day-night cycle.",
+      "model": "原創假想教學算例：mean nocturnal flux=stored energy/night duration;3.6e6 J/m2/36000s；計算 3.6e6/36000 = 100 W/m2。適用限制：假設整段均勻釋放。~Original hypothetical teaching example: mean nocturnal flux=stored energy/night duration;3.6e6 J/m2/36000s; calculation 3.6e6/36000 = 100 W/m2. Applicability: Assumes uniform release over the interval.",
+      "verify": "比較日間峰值與夜間累積釋熱。~Compare daytime peaks with accumulated night release.",
+      "failure": "只評午後一小時會漏掉夜間熱負荷。~Evaluating one afternoon hour misses nighttime load.",
+      "misconception": "白天表面較冷就一定代表夜間釋熱較少。~A cooler daytime surface necessarily releases less heat at night.",
+      "practice": "在「夜間釋熱」的教學模型或試算表中先重現 100 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「只評午後一小時會漏掉夜間熱負荷。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for nighttime heat release, first reproduce 100 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Evaluating one afternoon hour misses nighttime load.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "人體輻射視角~Human radiation view factors",
+      "mechanism": "行人接收天空、路面與牆面的綜合輻射，表面改善不能單獨代表熱舒適。~Pedestrians receive radiation from sky, pavement and walls; one surface does not define comfort.",
+      "model": "原創假想教學算例：weighted added shortwave=F alpha G;F=0.2;DeltaAlpha=0.2;G=800；計算 0.2*0.2*800 = 32 W/m2。適用限制：簡化幾何加權，不是人體舒適指標。~Original hypothetical teaching example: weighted added shortwave=F alpha G;F=0.2;DeltaAlpha=0.2;G=800; calculation 0.2*0.2*800 = 32 W/m2. Applicability: Simplified geometric weighting, not a comfort index.",
+      "verify": "比較遮陽下與無遮陽的輻射量測。~Compare radiative measurements in shade and sun.",
+      "failure": "高反射鋪面可能降低表面溫度卻增加局部反射曝露。~Reflective pavement may cool its surface while increasing local reflected exposure.",
+      "misconception": "只看路面溫度就能算出完整人體熱舒適。~Pavement temperature alone determines complete thermal comfort.",
+      "practice": "在「人體輻射視角」的教學模型或試算表中先重現 32 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「高反射鋪面可能降低表面溫度卻增加局部反射曝露。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for human radiation view factors, first reproduce 32 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Reflective pavement may cool its surface while increasing local reflected exposure.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "老化、髒污與反照率~Aging, soiling and albedo",
+      "mechanism": "表面磨耗與髒污改變反射率；初期性能需要長期追蹤。~Wear and soiling alter reflectance; track initial performance over time.",
+      "model": "原創假想教學算例：absorbed increase=(alpha_new-alpha_old)G;(0.35-0.25)*800；計算 (0.35-0.25)*800 = 80 W/m2。適用限制：固定日射的反射變化比較。~Original hypothetical teaching example: absorbed increase=(alpha_new-alpha_old)G;(0.35-0.25)*800; calculation (0.35-0.25)*800 = 80 W/m2. Applicability: Reflectance comparison at fixed solar input.",
+      "verify": "在相同量測角度比較清洗前後反照率。~Compare albedo before/after cleaning at matched geometry.",
+      "failure": "引用新材反照率代表多年使用會高估效益。~Using new-material albedo for aged pavement overstates benefit.",
+      "misconception": "鋪面反照率在全壽命期間都不變。~Pavement albedo remains constant throughout its life.",
+      "practice": "在「老化、髒污與反照率」的教學模型或試算表中先重現 80 W/m2，再依驗證任務改動一個輸入、保留其餘條件。對照「引用新材反照率代表多年使用會高估效益。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for aging, soiling and albedo, first reproduce 80 W/m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Using new-material albedo for aged pavement overstates benefit.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "配對現地試驗~Matched field comparison",
+      "mechanism": "比較區需控制日射、風、遮蔭和交通；用配對差值降低天候混淆。~Control sun, wind, shade and traffic; paired differences reduce weather confounding.",
+      "model": "原創假想教學算例：difference-in-differences=(after_test-before_test)-(after_control-before_control);(40-46)-(44-48)；計算 (40-46)-(44-48) = -2 K。適用限制：示例差異中的差異，未含統計顯著性。~Original hypothetical teaching example: difference-in-differences=(after_test-before_test)-(after_control-before_control);(40-46)-(44-48); calculation (40-46)-(44-48) = -2 K. Applicability: Illustrative difference-in-differences without significance inference.",
+      "verify": "先定義比較時段與排除維護事件規則。~Define comparison periods and maintenance exclusions in advance.",
+      "failure": "不同日天候直接比較會把氣象差異當材料效益。~Comparing different-weather days confuses meteorology with material benefit.",
+      "misconception": "任何兩天的最高溫都能直接比較材料效果。~Any two daily maxima directly compare material effects.",
+      "practice": "在「配對現地試驗」的教學模型或試算表中先重現 -2 K，再依驗證任務改動一個輸入、保留其餘條件。對照「不同日天候直接比較會把氣象差異當材料效益。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for matched field comparison, first reproduce -2 K, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Comparing different-weather days confuses meteorology with material benefit.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-cool",
+      "title": "降溫鋪面原理與評估",
+      "titleEn": "Using Cool Pavements to Reduce Heat Islands",
+      "url": "https://www.epa.gov/heatislands/using-cool-pavements-reduce-heat-islands",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-coolreport",
+      "title": "都市熱島策略：鋪面章節",
+      "titleEn": "Reducing Urban Heat Islands: Cool Pavements",
+      "url": "https://www.epa.gov/sites/default/files/2017-05/documents/reducing_urban_heat_islands_ch_5.pdf",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "日射~Solar radiation",
+    "表面光學~Surface optics",
+    "熱儲存~Heat storage",
+    "對流與輻射~Convection and radiation",
+    "蒸發~Evaporation",
+    "行人量測~Pedestrian measurements"
+  ],
+  "place": {
+    "name": "美國EPA總部：方法資料來源機構（非實廠）",
+    "nameEn": "US EPA headquarters: methodology source institution (not a process plant)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8941,
+    "lon": -77.0298,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.epa.gov/aboutepa/visiting-epa-headquarters",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "48-35",
+      "expected": 13,
+      "unit": "K",
+      "description": "表面與氣溫指標~Surface and air-temperature measures"
+    },
+    {
+      "expression": "(1-0.35)*800",
+      "expected": 520,
+      "unit": "W/m2",
+      "description": "短波反射與吸收~Shortwave reflection and absorption"
+    },
+    {
+      "expression": "200*3600/(2200*900*0.1)",
+      "expected": 3.636363636,
+      "unit": "K",
+      "description": "熱容量與升溫~Heat capacity and warming"
+    },
+    {
+      "expression": "12*(45-32)",
+      "expected": 156,
+      "unit": "W/m2",
+      "description": "對流換熱~Convective heat transfer"
+    },
+    {
+      "expression": "0.9*5.67e-8*(315**4-290**4)",
+      "expected": 141.495505594,
+      "unit": "W/m2",
+      "description": "長波放射與天空~Longwave exchange with the sky"
+    },
+    {
+      "expression": "0.00005*2450000",
+      "expected": 122.5,
+      "unit": "W/m2",
+      "description": "蒸發冷卻用水~Evaporative cooling and water"
+    },
+    {
+      "expression": "3.6e6/36000",
+      "expected": 100,
+      "unit": "W/m2",
+      "description": "夜間釋熱~Nighttime heat release"
+    },
+    {
+      "expression": "0.2*0.2*800",
+      "expected": 32,
+      "unit": "W/m2",
+      "description": "人體輻射視角~Human radiation view factors"
+    },
+    {
+      "expression": "(0.35-0.25)*800",
+      "expected": 80,
+      "unit": "W/m2",
+      "description": "老化、髒污與反照率~Aging, soiling and albedo"
+    },
+    {
+      "expression": "(40-46)-(44-48)",
+      "expected": -2,
+      "unit": "K",
+      "description": "配對現地試驗~Matched field comparison"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "b440",
+  "title": "雨污合流溢流截流~Combined-sewer overflow interception",
+  "focus": "降雨入流、截流調蓄與事件質量~Rain inflow, interception, storage and event mass",
+  "summary": "本課以降雨入流、截流調蓄與事件質量為主線，從雨污合流邊界、集水面積與雨量、截流與儲槽收支、峰值與事件時間進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops rain inflow, interception, storage and event mass through ten connected units, beginning with combined-sewer boundary, catchment and rainfall, interception and storage balance, peak and event timescale. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "雨污合流邊界~Combined-sewer boundary",
+      "mechanism": "分開旱天污水與降雨逕流，才可辨識截流、儲存及處理的共同限制。~Separate dry-weather wastewater and runoff to identify interception, storage and treatment constraints.",
+      "model": "原創教學假設：Q1=1000、Q2=500 m³/d；C1=20、C2=80 mg/L。模型 Cm=(Q1C1+Q2C2)/(Q1+Q2)，代入得到 40 mg/L。適用邊界：無反應、同一成分與相同濃度基準；不可直接套用 pH。~Original teaching assumptions: Q1=1000, Q2=500 m³/d; C1=20, C2=80 mg/L. Model Cm=(Q1C1+Q2C2)/(Q1+Q2) gives 40 mg/L. Applicability: No reaction and the same species/concentration basis; do not directly average pH this way.",
+      "verify": "在離線工作台先選取「雨污合流邊界」的觀測點。量兩股流量與成分，再在混合充分的位置採樣。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for combined-sewer boundary. Measure both flows and concentrations, then sample after adequate mixing. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "將雨天稀釋當作沒有污染負荷。診斷與介入：核對兩股流量及同成分分析，避免以簡單平均混合。~Wet-weather dilution is mistaken for no pollution load. Diagnostic response: Check both flows and same-species analyses rather than arithmetic averaging.",
+      "misconception": "雨水混入後就只剩乾淨水。~Adding rain leaves only clean water.",
+      "practice": "只改變 Q2:500→750 m³/d，其餘假設固定；結果應由 40 變為 45.714286 mg/L。用「雨污合流邊界」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q2:500→750 m³/d, holding the other assumptions fixed; the result changes from 40 to 45.714286 mg/L. Explain the direction using combined-sewer boundary, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "集水面積與雨量~Catchment and rainfall",
+      "mechanism": "先用事件雨深估總量，再用歷線描述進流時間；總量與峰值不可混同。~Estimate event volume from rain depth, then use hydrographs for timing; volume is not peak flow.",
+      "model": "原創教學假設：雨深=20 mm；面積=10000 m²；假設逕流係數=0.70。模型 V=C P A/1000，代入得到 140 m³。適用邊界：事件總量近似，未計滲透時變與管網旅行時間。~Original teaching assumptions: Rain depth=20 mm; area=10000 m²; assumed runoff coefficient=0.70. Model V=C P A/1000 gives 140 m³. Applicability: Event-volume approximation without time-varying infiltration or sewer travel time.",
+      "verify": "在離線工作台先選取「集水面積與雨量」的觀測點。對照雨量計與事件入流，檢查初始濕潤差異。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for catchment and rainfall. Compare rainfall with event inflow and check initial wetness differences. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "單一逕流係數跨乾濕條件不變。診斷與介入：改用事件雨量與濕潤條件校正，將峰值歷線另建模。~One runoff coefficient is assumed for all wetness states. Diagnostic response: Calibrate to event rainfall/wetness and model peak hydrographs separately.",
+      "misconception": "相同雨量必有相同峰值流量。~Equal rainfall depth gives identical peak flow.",
+      "practice": "只改變 P:20→30 mm，其餘假設固定；結果應由 140 變為 210 m³。用「集水面積與雨量」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only P:20→30 mm, holding the other assumptions fixed; the result changes from 140 to 210 m³. Explain the direction using catchment and rainfall, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "截流與儲槽收支~Interception and storage balance",
+      "mechanism": "累積進出流量差決定儲量，截流增加也受下游處理限制。~Accumulated inflow-outflow difference sets storage; interception remains constrained downstream.",
+      "model": "原創教學假設：Qin=0.8 m³/s；Qout=0.5 m³/s；持續=1800 s。模型 ΔV=(Qin-Qout)t，代入得到 540 m³。適用邊界：矩形入流事件與固定出流；真實事件須逐時積分。~Original teaching assumptions: Qin=0.8 m³/s; Qout=0.5 m³/s; duration=1800 s. Model ΔV=(Qin-Qout)t gives 540 m³. Applicability: Rectangular inflow event and fixed discharge; real events require time integration.",
+      "verify": "在離線工作台先選取「截流與儲槽收支」的觀測點。用流量歷線積分並對照水位容積曲線。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for interception and storage balance. Integrate hydrographs and compare with the stage-volume curve. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "截流管加大但下游處理無法承接。診斷與介入：累積量測進出流量並核對水位，列入沉積占容。~Larger interception overwhelms downstream treatment. Diagnostic response: Integrate measured flows, check level and account for sediment volume.",
+      "misconception": "截流越多就不必考慮處理能力。~More interception removes the need to check treatment capacity.",
+      "practice": "只改變 Qin:0.8→1.0 m³/s，其餘假設固定；結果應由 540 變為 900 m³。用「截流與儲槽收支」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Qin:0.8→1.0 m³/s, holding the other assumptions fixed; the result changes from 540 to 900 m³. Explain the direction using interception and storage balance, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "峰值與事件時間~Peak and event timescale",
+      "mechanism": "短時峰可能超過管渠與泵能力，即使一天總量仍有餘裕。~Brief peaks can exceed sewer/pump capacity despite spare daily volume.",
+      "model": "原創教學假設：峰流=6000 m³/d；平均流=3000 m³/d。模型 PF=Qpeak/Qmean，代入得到 2 ratio。適用邊界：平均、瞬時峰與設計事件尺度須標明，不能用日平均代替尖峰。~Original teaching assumptions: Peak flow=6000 m³/d; mean flow=3000 m³/d. Model PF=Qpeak/Qmean gives 2 ratio. Applicability: State averaging and event scales; a daily mean cannot replace a short-term peak.",
+      "verify": "在離線工作台先選取「峰值與事件時間」的觀測點。比較分鐘流量序列與每日累積水量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for peak and event timescale. Compare minute-scale flow with daily total volume. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "日平均掩蓋短時間溢流。診斷與介入：用實際峰值歷線重播，查瞬時水位及下游能力。~Daily averaging hides brief overflows. Diagnostic response: Replay actual peak hydrographs and check instantaneous levels/downstream capacity.",
+      "misconception": "日平均不超量就不會溢流。~Acceptable daily mean prevents overflow.",
+      "practice": "只改變 Qpeak:6000→7500 m³/d，其餘假設固定；結果應由 2 變為 2.5 ratio。用「峰值與事件時間」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Qpeak:6000→7500 m³/d, holding the other assumptions fixed; the result changes from 2 to 2.5 ratio. Explain the direction using peak and event timescale, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "污染初期與採樣~First-flush behavior and sampling",
+      "mechanism": "初期沖刷需由時間序列驗證，不可假設每個事件都相同。~Verify first-flush behavior from time series rather than assuming it for every event.",
+      "model": "原創教學假設：事件排放體積=500 m³；流量加權 C=60 mg/L。模型 M=VC/1000，代入得到 30 kg/event。適用邊界：單次事件質量，不等於年度負荷或生態風險。~Original teaching assumptions: Event discharge=500 m³; flow-weighted C=60 mg/L. Model M=VC/1000 gives 30 kg/event. Applicability: One-event mass, not an annual load or ecological-risk result.",
+      "verify": "在離線工作台先選取「污染初期與採樣」的觀測點。以多時點採樣配對流量，估計未採到尖峰的誤差。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for first-flush behavior and sampling. Pair multi-time sampling with flow and estimate missed-peak uncertainty. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只有雨後樣本漏掉污染尖峰。診斷與介入：以事件時序流量加權採樣，保留未採到的尖峰不確定度。~Post-storm-only samples miss pollutant peaks. Diagnostic response: Use event flow-weighted sampling and retain uncertainty from unsampled peaks.",
+      "misconception": "第一場雨的一個樣本可代表所有事件。~One first-storm sample represents all events.",
+      "practice": "只改變 C:60→90 mg/L，其餘假設固定；結果應由 30 變為 45 kg/event。用「污染初期與採樣」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only C:60→90 mg/L, holding the other assumptions fixed; the result changes from 30 to 45 kg/event. Explain the direction using first-flush behavior and sampling, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "暫存後排空~Post-event drawdown",
+      "mechanism": "排空速度要與持續進流及下游能力相配，避免把溢流轉移到下一處。~Match drawdown to continuing inflow/downstream capacity to avoid moving the overflow elsewhere.",
+      "model": "原創教學假設：有效儲槽 V=600 m³；淨排空 Q=0.10 m³/s。模型 t=V/(3600Q)，代入得到 1.6666667 h。適用邊界：淨出流須先扣持續進流；受下游處理能力約束。~Original teaching assumptions: Effective storage V=600 m³; net drawdown flow Q=0.10 m³/s. Model t=V/(3600Q) gives 1.6666667 h. Applicability: Net discharge must deduct continuing inflow and respect downstream treatment capacity.",
+      "verify": "在離線工作台先選取「暫存後排空」的觀測點。核對水位下降與淨流量，確認下游負荷未超出事件計畫。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for post-event drawdown. Compare falling level with net flow and check downstream event loading. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "排空過快造成處理廠新峰值。診斷與介入：查持續入流和下游能力，離線比較排空時序。~Rapid emptying creates a new plant peak. Diagnostic response: Check continuing inflow/downstream capacity and compare drawdown timing offline.",
+      "misconception": "儲槽越快排空永遠越好。~Faster storage emptying is always better.",
+      "practice": "只改變 Q:0.10→0.08 m³/s，其餘假設固定；結果應由 1.6666667 變為 2.0833333 h。用「暫存後排空」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Q:0.10→0.08 m³/s, holding the other assumptions fixed; the result changes from 1.6666667 to 2.0833333 h. Explain the direction using post-event drawdown, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "固體沉積與清理~Deposits and cleaning",
+      "mechanism": "調蓄降低流速也會沉積固體，有效儲量隨沉積而減少。~Storage slows flow and deposits solids, reducing usable volume.",
+      "model": "原創教學假設：粒子沉速=1.2 m/h；池深=3 m。模型 ts=H/vs，代入得到 2.5 h。適用邊界：單一離散粒子示例；實際絮凝與阻礙沉降不服從固定沉速。~Original teaching assumptions: Particle settling velocity=1.2 m/h; depth=3 m. Model ts=H/vs gives 2.5 h. Applicability: Single discrete-particle example; flocculent/hindered settling has no fixed velocity.",
+      "verify": "在離線工作台先選取「固體沉積與清理」的觀測點。用沉降柱畫界面高度與時間，不以單點判定。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for deposits and cleaning. Plot settling-column interface height against time rather than using one point. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "以完工容積當多年後有效容積。診斷與介入：用沉降曲線與有效水深核對，檢查短流及再懸浮。~As-built volume is treated as current usable storage. Diagnostic response: Check settling curves/effective depth and investigate bypass/resuspension.",
+      "misconception": "調蓄槽容積永遠不會改變。~Storage usable volume never changes.",
+      "practice": "只改變 vs:1.2→0.8 m/h，其餘假設固定；結果應由 2.5 變為 3.75 h。用「固體沉積與清理」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only vs:1.2→0.8 m/h, holding the other assumptions fixed; the result changes from 2.5 to 3.75 h. Explain the direction using deposits and cleaning, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "控制閘門情境~Gate-control scenarios",
+      "mechanism": "離線重播閘門延遲與感測偏差，檢查上下游水位而非只看本地量。~Replay gate delay/sensor bias offline and inspect upstream/downstream levels, not just local readings.",
+      "model": "原創教學假設：參考水位=0、2 m；讀值=0.05、1.95 m。模型 slope=(y2-y1)/(x2-x1)，代入得到 0.95 ratio。適用邊界：二點線性水位校正，不代表全量程或波動水面皆準確；須保留獨立驗證點。~Original teaching assumptions: Reference levels=0, 2 m; readings=0.05, 1.95 m. Model slope=(y2-y1)/(x2-x1) gives 0.95 ratio. Applicability: Two-point linear level calibration does not establish full-range or fluctuating-surface accuracy; retain an independent check point.",
+      "verify": "在離線工作台先選取「控制閘門情境」的觀測點。核對高程基準、第三水位點與事件時間戳。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for gate-control scenarios. Check the elevation datum, a third level point and event timestamps. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "改善本地水位卻造成上游回堵。診斷與介入：核對高程基準並以獨立水位驗證，重新播放感測偏差情境。~Local improvement creates upstream surcharge. Diagnostic response: Check elevation datum against an independent level and replay the sensor-bias scenario.",
+      "misconception": "本地水位下降就代表全網改善。~Lower local level proves network improvement.",
+      "practice": "只改變 y2:1.95→2.05 m，其餘假設固定；結果應由 0.95 變為 1 ratio。用「控制閘門情境」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only y2:1.95→2.05 m, holding the other assumptions fixed; the result changes from 0.95 to 1 ratio. Explain the direction using gate-control scenarios, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "溢流質量與成效~Overflow mass and effectiveness",
+      "mechanism": "以溢流體積及流量加權濃度算事件負荷，事件數減少不必然等於質量等比減少。~Calculate event load from volume and weighted concentration; fewer events need not mean proportional mass reduction.",
+      "model": "原創教學假設：事件排放體積=500 m³；流量加權 C=60 mg/L。模型 M=VC/1000，代入得到 30 kg/event。適用邊界：單次事件質量，不等於年度負荷或生態風險。~Original teaching assumptions: Event discharge=500 m³; flow-weighted C=60 mg/L. Model M=VC/1000 gives 30 kg/event. Applicability: One-event mass, not an annual load or ecological-risk result.",
+      "verify": "在離線工作台先選取「溢流質量與成效」的觀測點。以多時點採樣配對流量，估計未採到尖峰的誤差。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for overflow mass and effectiveness. Pair multi-time sampling with flow and estimate missed-peak uncertainty. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只以事件次數宣稱全部污染減幅。診斷與介入：以事件時序流量加權採樣，保留未採到的尖峰不確定度。~Event counts alone are used to claim mass reduction. Diagnostic response: Use event flow-weighted sampling and retain uncertainty from unsampled peaks.",
+      "misconception": "溢流次數減半就必定減少一半污染質量。~Halving event count halves pollutant mass.",
+      "practice": "只改變 C:60→90 mg/L，其餘假設固定；結果應由 30 變為 45 kg/event。用「溢流質量與成效」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only C:60→90 mg/L, holding the other assumptions fixed; the result changes from 30 to 45 kg/event. Explain the direction using overflow mass and effectiveness, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "聯合驗證與維護~Integrated validation and maintenance",
+      "mechanism": "比較雨量、截流量、儲槽水位、排放與下游出水，保留所有未量測項。~Compare rainfall, interception, storage level, discharge and downstream effluent, retaining unmeasured terms.",
+      "model": "原創教學假設：進入=15、出流水=2、排泥=12 kg/d。模型 ε=Min-Mwater-Msludge，代入得到 1 kg/d。適用邊界：殘差可能來自儲存、漏算旁流與量測誤差，不能自動當作反應。~Original teaching assumptions: Input=15, effluent=2, sludge=12 kg/d. Model ε=Min-Mwater-Msludge gives 1 kg/d. Applicability: Residual can reflect storage, omitted side streams or measurement error, not automatically a reaction.",
+      "verify": "在離線工作台先選取「聯合驗證與維護」的觀測點。畫出所有邊界流股，分列不確定度及庫存變化。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for integrated validation and maintenance. Draw every boundary stream and separate uncertainty from inventory change. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "儲量差額被當作自動去污。診斷與介入：補列回流、庫存與採樣不確定度，保留無法解釋的差額。~Unclosed storage is mistaken for pollutant treatment. Diagnostic response: Add recycle, inventory and sampling uncertainty, retaining unexplained differences.",
+      "misconception": "存進儲槽就已完成污染物去除。~Stored water has already had pollutants removed.",
+      "practice": "只改變 Msludge:12→12.5 kg/d，其餘假設固定；結果應由 1 變為 0.5 kg/d。用「聯合驗證與維護」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Msludge:12→12.5 kg/d, holding the other assumptions fixed; the result changes from 1 to 0.5 kg/d. Explain the direction using integrated validation and maintenance, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-cso",
+      "title": "雨污合流溢流",
+      "titleEn": "Combined Sewer Overflows",
+      "url": "https://www.epa.gov/npdes/combined-sewer-overflows-csos",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-csoreport",
+      "title": "合流與污水溢流影響與控制報告",
+      "titleEn": "Report to Congress on CSO and SSO Impacts and Control (2004)",
+      "url": "https://www.epa.gov/sites/default/files/2015-10/documents/csossortc2004_full.pdf",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "降雨與旱天污水~Rain and dry-weather sewage",
+    "合流管渠~Combined sewers",
+    "截流設施~Interception",
+    "事件調蓄~Event storage",
+    "排空與下游處理~Drawdown and downstream treatment",
+    "溢流監測~Overflow monitoring",
+    "事件收支~Event balance"
+  ],
+  "modelChecks": [
+    {
+      "expression": "(1000*20+500*80)/(1000+500)",
+      "expected": 40.0,
+      "unit": "mg/L",
+      "description": "b440 unit 1 mix baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(1000*20+750*80)/(1000+750)",
+      "expected": 45.714285714285715,
+      "unit": "mg/L",
+      "description": "b440 unit 1 mix perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".7*20*10000/1000",
+      "expected": 140.0,
+      "unit": "m³",
+      "description": "b440 unit 2 runoff baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": ".7*30*10000/1000",
+      "expected": 210.0,
+      "unit": "m³",
+      "description": "b440 unit 2 runoff perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(.8-.5)*1800",
+      "expected": 540.0000000000001,
+      "unit": "m³",
+      "description": "b440 unit 3 storage baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(1-.5)*1800",
+      "expected": 900.0,
+      "unit": "m³",
+      "description": "b440 unit 3 storage perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6000/3000",
+      "expected": 2.0,
+      "unit": "ratio",
+      "description": "b440 unit 4 peakratio baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "7500/3000",
+      "expected": 2.5,
+      "unit": "ratio",
+      "description": "b440 unit 4 peakratio perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*60/1000",
+      "expected": 30.0,
+      "unit": "kg/event",
+      "description": "b440 unit 5 eventload baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*90/1000",
+      "expected": 45.0,
+      "unit": "kg/event",
+      "description": "b440 unit 5 eventload perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "600/(3600*.1)",
+      "expected": 1.6666666666666667,
+      "unit": "h",
+      "description": "b440 unit 6 drawdown baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "600/(3600*.08)",
+      "expected": 2.0833333333333335,
+      "unit": "h",
+      "description": "b440 unit 6 drawdown perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "3/1.2",
+      "expected": 2.5,
+      "unit": "h",
+      "description": "b440 unit 7 settle baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "3/.8",
+      "expected": 3.75,
+      "unit": "h",
+      "description": "b440 unit 7 settle perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(1.95-.05)/2",
+      "expected": 0.95,
+      "unit": "ratio",
+      "description": "b440 unit 8 levelcalib baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2.05-.05)/2",
+      "expected": 0.9999999999999999,
+      "unit": "ratio",
+      "description": "b440 unit 8 levelcalib perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*60/1000",
+      "expected": 30.0,
+      "unit": "kg/event",
+      "description": "b440 unit 9 eventload baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "500*90/1000",
+      "expected": 45.0,
+      "unit": "kg/event",
+      "description": "b440 unit 9 eventload perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12",
+      "expected": 1,
+      "unit": "kg/d",
+      "description": "b440 unit 10 residual baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12.5",
+      "expected": 0.5,
+      "unit": "kg/d",
+      "description": "b440 unit 10 residual perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

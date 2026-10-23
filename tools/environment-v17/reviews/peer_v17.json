@@ -1,0 +1,122 @@
+{
+  "reviewer": "immersive_v17 peer review",
+  "reviewedAt": "2026-10-23T16:31:28.401828+00:00",
+  "status": "PASS_FINAL_INPUTS_AND_BUILT_INTEGRATION",
+  "counts": {
+    "inputCourses": 100,
+    "bilingualUnits": 1000,
+    "arithmeticChecks": 1750,
+    "generatedQuizAnswerChecks": 4000,
+    "previouslyComparedV16Steps": 32274,
+    "changedV16StepsInComparedSnapshot": 0
+  },
+  "allInputStructureAndMathErrors": [],
+  "sampledCoursesByAuthor": {
+    "landmarks": [
+      "b401",
+      "b410"
+    ],
+    "water": [
+      "b429",
+      "b440"
+    ],
+    "urban": [
+      "b451",
+      "b467"
+    ],
+    "waste": [
+      "b480",
+      "b490"
+    ]
+  },
+  "samplingScope": "All ten units in each sampled course reviewed for mechanism, calculation/units, verification and diagnosis. All inputs checked for bilingual fields, number of units, scalar arithmetic, quiz rotation and coordinates. This is not an independent validation of every external source or field-operating condition.",
+  "findings": [
+    {
+      "id": "PEER-01",
+      "severity": "blocking",
+      "status": "fixed_and_final_built_integration_passed",
+      "finding": "Related entry omitted references; curated reader dereferenced references.length/map and would throw. Related exercise string did not match practice/practiceEn arrays.",
+      "fix": "Root added entry references and three-step bilingual practice arrays."
+    },
+    {
+      "id": "PEER-02",
+      "severity": "high",
+      "status": "fixed_and_input_rechecked",
+      "finding": "Landmarks misconception values contained the correct instruction to challenge a false claim; first mechanism sentence was merely an observe instruction.",
+      "fix": "Author rewrote misconception to a false proposition and moved actual mechanism/verification first. No original instruction wrappers remain."
+    },
+    {
+      "id": "PEER-03",
+      "severity": "high",
+      "status": "fixed_and_final_built_integration_passed",
+      "finding": "V17 steps missed the authored evidence branch in resolveExercise and used a generic legacy model.",
+      "fix": "Added only the -v17- plus hasWorldVisual condition. Added test-workbench-v17.mjs to assert dedicated quiz semantics and playable demo for all new steps."
+    },
+    {
+      "id": "PEER-04",
+      "severity": "high",
+      "status": "fixed_and_final_built_integration_passed",
+      "finding": "Object/string-ID architectureEdges were dropped by world-project-visuals, which requires integer pairs.",
+      "fix": "Root changed builder edges to index pairs, also accepted by immersive scene reader."
+    },
+    {
+      "id": "PEER-05",
+      "severity": "high",
+      "status": "fixed_and_input_rechecked",
+      "finding": "b467 unit7 added actuation latency to transport delay, rather than subtracting it from command wait.",
+      "fix": "Model now L/v - communication - valve = .35 s; nonnegative wait and calibrated delays explicit."
+    },
+    {
+      "id": "PEER-06",
+      "severity": "medium",
+      "status": "fixed_and_input_rechecked",
+      "finding": "b451 divided pressure-flow power by efficiency but labeled hydraulic power; stack supply losses were included but labeled DC-stack-only.",
+      "fix": "Corrected pump input/wire-to-water and stack supply input definitions."
+    },
+    {
+      "id": "PEER-07",
+      "severity": "medium",
+      "status": "fixed_and_input_rechecked",
+      "finding": "b490 dry contaminant inventory and wet/dry mass lessons used unrelated generic bulk fraction/compost-blend models; b480 energy uncertainty used concentration variables.",
+      "fix": "b490 now wet-to-dry mass and mg/kg inventory; b480 uses steam mass flow and enthalpy uncertainty."
+    },
+    {
+      "id": "PEER-08",
+      "severity": "medium",
+      "status": "fixed_scene_tests_pass",
+      "finding": "Broad ID ranges selected water load for incinerators and sorting for digestion/composting.",
+      "fix": "Explicit all100 course-to-model map, three dimensionally checked warm-ups added: sensible heat flow, low-pressure transport input power, linear calibration. Scope labels distinguish warm-up from full reaction, steam, wind-field or compliance model. Twenty scene tests pass."
+    },
+    {
+      "id": "PEER-09",
+      "severity": "medium",
+      "status": "fixed_integer17_builder_and_final_data",
+      "finding": "educationEdition string v17 fails existing numeric >=11 checks.",
+      "fix": "Use integer17 in builder."
+    },
+    {
+      "id": "PEER-10",
+      "severity": "low",
+      "status": "fixed_and_input_rechecked",
+      "finding": "Load-verification prose describes summing Q*C across intervals without explicit interval-duration weighting. Baseline scalar load math is correct.",
+      "fix": "Author made interval duration weighting and total-time conversion explicit in Chinese and English."
+    },
+    {
+      "id": "PEER-11",
+      "severity": "medium",
+      "status": "fixed_in_builder_rechecked",
+      "finding": "Four facets used one generic question and diagnosis selected mechanism as answer; calculation did not test its number.",
+      "fix": "Root added facet-specific questions, numeric baseline/unit alternatives for calculation, and failure first sentence for diagnosis; all4000 answer indices checked."
+    }
+  ],
+  "nextValidation": "Completed: scene20 tests; final built100 courses/4000 demos;400 bilingual renderer checks; all original V16 steps preserved.",
+  "legacyChangedSteps": [],
+  "builtIntegration": {
+    "passed": true,
+    "courses": 100,
+    "newStepDemonstrations": 4000,
+    "visibleArchitectureArrows": 500,
+    "rendererChecks": 400,
+    "command": "node tools/environment-v17/test-workbench-v17.mjs"
+  }
+}

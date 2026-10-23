@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "version": "17.0.0",
+  "scope": "V17 uploader, standalone installer, package scripts; local fixtures only",
+  "checks": {
+    "bashSyntax": "PASS",
+    "uploaderHelp": "PASS",
+    "installerHelp": "PASS",
+    "packagerHelp": "PASS",
+    "localGitTests": {
+      "passed": 18,
+      "failed": 0
+    },
+    "installerAndPackageFixtureTests": {
+      "passed": 12,
+      "failed": 0
+    },
+    "genericV17Aliases": "PASS",
+    "bothLaunchersAcceptWithAssetsAndExternalDirectories": "PASS",
+    "defaultWebsiteOnly": "PASS",
+    "sourcePolicyAndCredentialScan": {
+      "status": "PASS",
+      "filesScanned": 21460,
+      "note": "Pre-package source snapshot. Final package reruns the scan and archive file hashes after all edits."
+    }
+  },
+  "realRemoteContacted": false,
+  "realRemotePushed": false,
+  "releaseArchivesCreated": false,
+  "fixtureArchivesCreated": true,
+  "platformValidation": {
+    "Linux": "Executed tests",
+    "macOS Bash 3.2": "Compatible shell constructs; not executed on macOS",
+    "Windows Git Bash or WSL": "Compatible paths and non-signalling Windows lock check; not executed on Windows"
+  },
+  "commands": [
+    "bash -n Upload_MacGyver_v17_SSH.sh Install_and_Upload_MacGyver_v17.sh macgyver.sh upload-all.sh",
+    "bash Upload_MacGyver_v17_SSH.sh --help",
+    "bash Install_and_Upload_MacGyver_v17.sh --help",
+    "python tools/package-v17.py --help",
+    "python tools/upload-v17/test_upload.py",
+    "python tools/upload-v17/test_installer.py",
+    "bash Upload_MacGyver_v17_SSH.sh --with-assets --help",
+    "bash Install_and_Upload_MacGyver_v17.sh --with-assets --help",
+    "bash upload-all.sh --help"
+  ],
+  "files": [
+    {
+      "path": "Upload_MacGyver_v17_SSH.sh",
+      "sha256": "8d7bd024b0e410fb0ce3fbf7527c6cbc112d22ee95829bcea93ec0094ab2d47d",
+      "bytes": 882
+    },
+    {
+      "path": "Install_and_Upload_MacGyver_v17.sh",
+      "sha256": "bb6f561f5b2e4472ba7bb97455e867a820e03553d9e06dc7add7210200edde9d",
+      "bytes": 13274
+    },
+    {
+      "path": "macgyver.sh",
+      "sha256": "bd75c542c0e6265659bd200ae4e2b46a4ffd01ef8cc92100c85d850f080ce6ea",
+      "bytes": 1857
+    },
+    {
+      "path": "upload-all.sh",
+      "sha256": "a5823f7c4aa10f1ee0c857fe8fc7fa0ed8dfa22937762a08e2a3b86adb494a0f",
+      "bytes": 372
+    },
+    {
+      "path": "README.md",
+      "sha256": "f01aace116fd24967fcc1b152268a0802682f8fbe23f37ec1c3b6b7d0b307feb",
+      "bytes": 1654
+    },
+    {
+      "path": "tools/upload-v17/upload.py",
+      "sha256": "8593234303396fd515a6e18920fefdb042d8cfa2115a13593b2ba0c1399299c0",
+      "bytes": 22939
+    },
+    {
+      "path": "tools/upload-v17/site_sync.py",
+      "sha256": "0cbbca13582d38c64c7c7203678f41d5be5afb443f27c589a42ce38edc37dfc1",
+      "bytes": 2441
+    },
+    {
+      "path": "tools/upload-v17/test_upload.py",
+      "sha256": "78699c8f2d7176a470d4a9ba7a641734823e522107e5aa5aeaadbf5fa4f4af99",
+      "bytes": 15489
+    },
+    {
+      "path": "tools/upload-v17/test_installer.py",
+      "sha256": "43d9104ad25b6b6b8600d3d9f635ec16ad4fe9972fd7ad262aeb1bc2341f6bc7",
+      "bytes": 10674
+    },
+    {
+      "path": "tools/package-v17.py",
+      "sha256": "d40e6c3917eb5e2c9d9f0cd7c105e4fac6e3d88638d022fef27e626f5b704b76",
+      "bytes": 11956
+    },
+    {
+      "path": "docs/UPLOAD_V17_ZH.md",
+      "sha256": "13225aa4c928209039d72d1e415c470ea207d7b3300ff13bb19ad3edceece8ea",
+      "bytes": 6389
+    }
+  ]
+}

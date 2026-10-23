@@ -1,0 +1,257 @@
+{
+  "id": "b413",
+  "title": "台北北投垃圾焚化廠~Taipei Beitou Refuse Incineration Plant",
+  "focus": "垃圾焚化的物質、能源與排放帳~Material, energy and emission ledgers of incineration",
+  "summary": "北投課程以進料秤重到灰渣出廠的整條物流為主線，加入中央控制室判讀與環境教育，要求學徒說清每一股副產物去向。~The Beitou course follows material from weighbridge to ash exit, adding control-room interpretation and environmental education; every residual stream must have a stated destination.",
+  "discipline": "environment-waste",
+  "units": [
+    {
+      "title": "進出廠秤重：地磅淨重與物流配對~Entry/exit weighing: Weighbridge net mass and matched consignments",
+      "mechanism": "同一車次總重減空車重得到淨入料；班次總量需以唯一車次編號去重，才能與灰渣、儲坑庫存及能源帳相連。本單元在「進出廠秤重」觀察此因果關係。~Gross minus tare mass for one consignment gives net feed; deduplicated trip IDs connect shift totals to ash, bunker inventory and energy ledgers. Examine this relationship at entry/exit weighing.",
+      "model": "明示假設的教學子模型，非場址量測：同一車次總重18.6 t、空車重7.4 t。公式 mnet=mgross-mtare；代入 18.6-7.4 = 11.2 t。適用邊界：僅適用同一車輛及相容含水狀態；燃料、乘員與附著水變化另計。~Explicitly hypothetical teaching submodel, not site measurements: gross mass18.6 t and tare7.4 t for the same trip. Formula mnet=mgross-mtare; substitution 18.6-7.4 = 11.2 t. Boundary: The same vehicle and compatible moisture basis are required; fuel, occupants and retained water changes are separate.",
+      "verify": "核對車次編號、兩次秤重時間與零點檢查，再比對儲坑日末庫存。在離線場景為「進出廠秤重」建立證據表，把原始值、單位、時戳及修正值分開保留。~Match trip ID, both weighing times and zero checks, then reconcile closing bunker stock. Build an offline evidence table for entry/exit weighing; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "重複匯入車次或使用不同車輛空重會虛增進料；先封存原始票據再重算。在場景中標出故障點及其影響的上下游證據。~Duplicate trips or the wrong vehicle tare inflate feed; preserve raw tickets and recompute. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "所有垃圾車的空車重都可用一個常數。~One constant tare applies to every collection vehicle.",
+      "practice": "先點選「進出廠秤重」量測點並重現基準算例；接著只把總重改成20.1 t，其他條件不變，預測後重算得到 12.7 t。與基準 11.2 t比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the entry/exit weighing measurement point and reproduce the baseline; then change only gross mass to20.1 t with other inputs fixed. Predict and recompute 12.7 t. Compare with baseline 11.2 t and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "垃圾混合熱值：垃圾熱值與熱輸入~Mixed-waste heating value: Waste heating value and heat input",
+      "mechanism": "熱輸入由垃圾質量流率及低位熱值決定；水分、惰性物與可燃成分會使同噸數產生不同熱量。本單元在「垃圾混合熱值」觀察此因果關係。~Heat input depends on waste mass flow and lower heating value; moisture, inert material and combustibles change energy at the same tonnage. Examine this relationship at mixed-waste heating value.",
+      "model": "明示假設的教學子模型，非場址量測：m=10 t/h、LHV=8 MJ/kg。公式 Pthermal=m LHV/3.6；代入 10*8/3.6 = 22.22222 MW。適用邊界：熱輸入示範，不是爐體操作限值或爐排設計。~Explicitly hypothetical teaching submodel, not site measurements: m=10 t/h andLHV=8 MJ/kg. Formula Pthermal=m LHV/3.6; substitution 10*8/3.6 = 22.22222 MW. Boundary: Heat-input example, not a furnace operating limit or grate design.",
+      "verify": "以代表性混合樣估熱值，核對秤重與蒸汽生成趨勢。在離線場景為「垃圾混合熱值」建立證據表，把原始值、單位、時戳及修正值分開保留。~Estimate heating value from representative composite samples and compare weighbridge and steam trends. Build an offline evidence table for mixed-waste heating value; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "高含水垃圾可使熱值下降；只依噸數預測發電會偏差。在場景中標出故障點及其影響的上下游證據。~Wet waste reduces heating value; tonnage alone mispredicts power. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "相同垃圾噸數必定產生相同熱量。~Equal waste tonnage always provides equal heat.",
+      "practice": "先點選「垃圾混合熱值」量測點並重現基準算例；接著只把LHV改成6 MJ/kg，其他條件不變，預測後重算得到 16.66667 MW。與基準 22.22222 MW比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the mixed-waste heating value measurement point and reproduce the baseline; then change only LHV to6 MJ/kg with other inputs fixed. Predict and recompute 16.66667 MW. Compare with baseline 22.22222 MW and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "鍋爐蒸汽生成：蒸汽焓差與鍋爐熱量~Boiler steam generation: Steam enthalpy rise and boiler duty",
+      "mechanism": "鍋爐將水的焓提高到蒸汽狀態；應用焓差而不是單靠出口溫度計算熱量。本單元在「鍋爐蒸汽生成」觀察此因果關係。~A boiler raises feedwater enthalpy to steam conditions; use enthalpy difference rather than outlet temperature alone. Examine this relationship at boiler steam generation.",
+      "model": "明示假設的教學子模型，非場址量測：蒸汽流率5 kg/s、蒸汽與給水焓差2400 kJ/kg。公式 Psteam=m Δh/1000；代入 5*2400/1000 = 12 MW。適用邊界：假想查表焓值已給定；未含排污、蒸汽品質與非穩態。~Explicitly hypothetical teaching submodel, not site measurements: steam flow5 kg/s and steam-to-feedwater enthalpy rise2400 kJ/kg. Formula Psteam=m Δh/1000; substitution 5*2400/1000 = 12 MW. Boundary: Hypothetical tabulated enthalpy difference supplied; blowdown, quality and transients excluded.",
+      "verify": "使用同時壓力、溫度與流量，從蒸汽表核對焓狀態。在離線場景為「鍋爐蒸汽生成」建立證據表，把原始值、單位、時戳及修正值分開保留。~Use concurrent pressure, temperature and flow and check enthalpy states in steam tables. Build an offline evidence table for boiler steam generation; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "將飽和與過熱蒸汽混用會算錯能量。在場景中標出故障點及其影響的上下游證據。~Mixing saturated and superheated states gives an incorrect energy balance. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "蒸汽溫度相同就表示焓與功率也相同。~Equal steam temperature implies equal enthalpy and power.",
+      "practice": "先點選「鍋爐蒸汽生成」量測點並重現基準算例；接著只把蒸汽流率改成4 kg/s，其他條件不變，預測後重算得到 9.6 MW。與基準 12 MW比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the boiler steam generation measurement point and reproduce the baseline; then change only steam flow to4 kg/s with other inputs fixed. Predict and recompute 9.6 MW. Compare with baseline 12 MW and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "總發電與廠用電：淨發電效率~Gross power and auxiliaries: Net electrical efficiency",
+      "mechanism": "效率必須明確寫出有用輸出與能量輸入；電效率與含供熱的總效率不可直接比較。本單元在「總發電與廠用電」觀察此因果關係。~Efficiency needs explicit useful-output and energy-input definitions; electrical and heat-inclusive efficiencies are not directly comparable. Examine this relationship at gross power and auxiliaries.",
+      "model": "明示假設的教學子模型，非場址量測：熱輸入30 MW、總發電8 MW、廠用1 MW。公式 ηnet=100(Pgross-Paux)/Pfuel；代入 100*(8-1)/30 = 23.33333 %。適用邊界：穩態低位熱值基準；不含供熱信用與生命週期排放。~Explicitly hypothetical teaching submodel, not site measurements: thermal input30 MW, gross electricity8 MW and auxiliaries1 MW. Formula ηnet=100(Pgross-Paux)/Pfuel; substitution 100*(8-1)/30 = 23.33333 %. Boundary: Steady lower-heating-value basis; heat credit and life-cycle emissions excluded.",
+      "verify": "以共同時窗核對燃料熱值、總發電與廠用負載。在離線場景為「總發電與廠用電」建立證據表，把原始值、單位、時戳及修正值分開保留。~Reconcile fuel heating value, gross generation and auxiliaries over one interval. Build an offline evidence table for gross power and auxiliaries; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "用高位熱值輸入搭配低位熱值比較值會錯置效率。在場景中標出故障點及其影響的上下游證據。~Mixing higher- and lower-heating-value bases distorts comparisons. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "總發電量就是淨輸出電量。~Gross generation equals net electricity output.",
+      "practice": "先點選「總發電與廠用電」量測點並重現基準算例；接著只把廠用改成1.5 MW，其他條件不變，預測後重算得到 21.66667 %。與基準 23.33333 %比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the gross power and auxiliaries measurement point and reproduce the baseline; then change only auxiliaries to1.5 MW with other inputs fixed. Predict and recompute 21.66667 %. Compare with baseline 23.33333 % and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "煙氣除塵模組：袋濾器氣布比~Flue-gas dust module: Fabric-filter air-to-cloth ratio",
+      "mechanism": "氣布比是體積流量除以濾布面積；積塵層能提高捕集但也增加壓差。本單元在「煙氣除塵模組」觀察此因果關係。~Air-to-cloth ratio is gas flow divided by fabric area; a dust cake improves capture while increasing pressure drop. Examine this relationship at flue-gas dust module.",
+      "model": "明示假設的教學子模型，非場址量測：實際氣量Q=60000 m³/h、有效濾布A=1000 m²。公式 v=Q/(60A)；代入 60000/(60*1000) = 1 m/min。適用邊界：採實際溫度氣量，不可直接把Nm³當m³；非設備選型限值。~Explicitly hypothetical teaching submodel, not site measurements: actual gasQ=60000 m³/h and active clothA=1000 m². Formula v=Q/(60A); substitution 60000/(60*1000) = 1 m/min. Boundary: Use actual-temperature gas volume, not Nm³ directly; not a filter sizing limit.",
+      "verify": "按隔室紀錄壓差、脈衝與排放趨勢，查破袋或離線面積。在離線場景為「煙氣除塵模組」建立證據表，把原始值、單位、時戳及修正值分開保留。~Log compartment pressure drop, pulses and emissions and check broken bags or offline area. Build an offline evidence table for flue-gas dust module; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "濾袋破損可能讓壓差下降同時排放上升。在場景中標出故障點及其影響的上下游證據。~A torn bag can lower pressure drop while increasing emissions. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "壓差越低就保證除塵越好。~Lower pressure drop guarantees better dust capture.",
+      "practice": "先點選「煙氣除塵模組」量測點並重現基準算例；接著只把有效濾布降成800 m²，其他條件不變，預測後重算得到 1.25 m/min。與基準 1 m/min比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the flue-gas dust module measurement point and reproduce the baseline; then reduce only active cloth to800 m² with other inputs fixed. Predict and recompute 1.25 m/min. Compare with baseline 1 m/min and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "控制室排放判讀：煙氣濃度與排放質量~Control-room emission reading: Flue-gas concentration and emission mass",
+      "mechanism": "排放質量率取決於濃度乘氣體體積流率；濕乾基、氧校正與標準狀態必須一致。本單元在「控制室排放判讀」觀察此因果關係。~Emission mass rate is concentration times gas flow; wet/dry basis, oxygen correction and standard conditions must agree. Examine this relationship at control-room emission reading.",
+      "model": "明示假設的教學子模型，非場址量測：C=20 mg/Nm³、乾基Q=100000 Nm³/h，兩者同基準。公式 M=CQ/1000000；代入 20*100000/1000000 = 2 kg/h。適用邊界：同基準的示範排放帳；不是任何地區法定排放限值。~Explicitly hypothetical teaching submodel, not site measurements: C=20 mg/Nm³ and dryQ=100000 Nm³/h on the same basis. Formula M=CQ/1000000; substitution 20*100000/1000000 = 2 kg/h. Boundary: Same-basis illustrative emissions ledger, not a statutory limit.",
+      "verify": "同步氣量、濃度與氧含量，查校正狀態及無效資料標記。在離線場景為「控制室排放判讀」建立證據表，把原始值、單位、時戳及修正值分開保留。~Synchronize gas flow, concentration and oxygen while checking calibration and invalid-data flags. Build an offline evidence table for control-room emission reading; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "稀釋煙氣可降濃度卻不降污染質量。在場景中標出故障點及其影響的上下游證據。~Diluting flue gas lowers concentration without lowering pollutant mass. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "只要濃度下降，排放總質量必定下降。~Lower concentration necessarily means lower emitted mass.",
+      "practice": "先點選「控制室排放判讀」量測點並重現基準算例；接著只把氣量改成120000 Nm³/h，其他條件不變，預測後重算得到 2.4 kg/h。與基準 2 kg/h比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the control-room emission reading measurement point and reproduce the baseline; then change only gas flow to120000 Nm³/h with other inputs fixed. Predict and recompute 2.4 kg/h. Compare with baseline 2 kg/h and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "底渣飛灰分帳：灰渣分流與質量帳~Separate ash ledgers: Ash-stream separation and mass balance",
+      "mechanism": "底渣與飛灰來源、污染物分布及處置需求不同，必須分流記錄；金屬回收不等於殘渣自動合格。本單元在「底渣飛灰分帳」觀察此因果關係。~Bottom ash and fly ash differ in origin, contaminant distribution and management needs; keep separate ledgers, and metal recovery does not automatically certify residues. Examine this relationship at separate ash ledgers.",
+      "model": "明示假設的教學子模型，非場址量測：垃圾100 t/d、假想底渣分率0.20、飛灰分率0.03。公式 Mash=Mw(fbottom+ffly)；代入 100*(0.20+0.03) = 23 t/d。適用邊界：假想濕乾基一致的分率，非實際廠產率；須另考慮添加劑與水分。~Explicitly hypothetical teaching submodel, not site measurements: waste100 t/d, assumed bottom-ash fraction0.20 and fly-ash fraction0.03. Formula Mash=Mw(fbottom+ffly); substitution 100*(0.20+0.03) = 23 t/d. Boundary: Hypothetical consistent moisture basis, not actual plant yield; additives and moisture require separate entries.",
+      "verify": "各物流秤重並採代表性樣品，維持處置聯單與品質資料。在離線場景為「底渣飛灰分帳」建立證據表，把原始值、單位、時戳及修正值分開保留。~Weigh each stream, take representative samples and retain disposal and quality records. Build an offline evidence table for separate ash ledgers; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "混合底渣飛灰會失去追蹤與適切處理的依據。在場景中標出故障點及其影響的上下游證據。~Mixing bottom and fly ash loses traceability and treatment distinctions. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "焚化後所有固體都消失，不需後續管理。~Incineration eliminates all solids and subsequent management.",
+      "practice": "先點選「底渣飛灰分帳」量測點並重現基準算例；接著只把垃圾量改成120 t/d，其他條件不變，預測後重算得到 27.6 t/d。與基準 23 t/d比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the separate ash ledgers measurement point and reproduce the baseline; then change only waste to120 t/d with other inputs fixed. Predict and recompute 27.6 t/d. Compare with baseline 23 t/d and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "廠內熱回收：熱水迴路的有效供熱~Internal heat recovery: Useful heat in a hot-water loop",
+      "mechanism": "供回水溫差與水流量共同決定輸出熱功率；高供水溫度若沒有實際流量或可用負載，就不等於交付熱量。本單元在「廠內熱回收」觀察此因果關係。~Water flow and supply-return temperature difference determine delivered heat; a high supply temperature without flow or useful demand does not constitute heat delivery. Examine this relationship at internal heat recovery.",
+      "model": "明示假設的教學子模型，非場址量測：水質量流率20 kg/s、比熱4.18 kJ/(kg·K)、供回水差20 K。公式 Pheat=mdot cp ΔT；代入 20*4.18*20 = 1672 kW。適用邊界：單相水穩態近似；需在相同交付邊界量測，未扣管網散熱。~Explicitly hypothetical teaching submodel, not site measurements: water mass flow20 kg/s, heat capacity4.18 kJ/(kg·K) and supply-return difference20 K. Formula Pheat=mdot cp ΔT; substitution 20*4.18*20 = 1672 kW. Boundary: Steady single-phase water approximation with measurements at one delivery boundary; distribution losses are not deducted.",
+      "verify": "用配對溫度探頭和流量表同步積分，與用戶熱量表比較。在離線場景為「廠內熱回收」建立證據表，把原始值、單位、時戳及修正值分開保留。~Integrate synchronized matched temperature sensors and flow, then compare with the customer heat meter. Build an offline evidence table for internal heat recovery; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "回水短路會縮小有效溫差；檢查旁通與負載，而非只提高供水溫度。在場景中標出故障點及其影響的上下游證據。~A return-water shortcut reduces useful temperature difference; inspect bypasses and demand before changing supply temperature. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "發電量和供熱量可以直接相加成電效率。~Electricity and heat can be added directly as electrical efficiency.",
+      "practice": "先點選「廠內熱回收」量測點並重現基準算例；接著只把溫差改成15 K，其他條件不變，預測後重算得到 1254 kW。與基準 1672 kW比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the internal heat recovery measurement point and reproduce the baseline; then change only temperature difference to15 K with other inputs fixed. Predict and recompute 1254 kW. Compare with baseline 1672 kW and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "連續監測校正：感測器偏移校正~Continuous-monitor calibration: Sensor offset calibration",
+      "mechanism": "參考標準可辨識偏移；一點校正只能處理固定偏移，斜率誤差須多點標準確認。本單元在「連續監測校正」觀察此因果關係。~A reference reveals offset; one-point correction handles only a constant offset, whereas gain error needs several standards. Examine this relationship at continuous-monitor calibration.",
+      "model": "明示假設的教學子模型，非場址量測：參考值10.0、感測器10.8、樣品原讀值14.2，單位一致。公式 Ccorrected=Craw-(Cstandard_read-Creference)；代入 14.2-(10.8-10.0) = 13.4 sensor unit。適用邊界：假設偏移固定且量程線性；不代替多點校正與漂移追蹤。~Explicitly hypothetical teaching submodel, not site measurements: reference10.0, sensor10.8 and raw sample14.2 in the same units. Formula Ccorrected=Craw-(Cstandard_read-Creference); substitution 14.2-(10.8-10.0) = 13.4 sensor unit. Boundary: Constant offset and linear range assumed; multi-point calibration and drift tracking remain necessary.",
+      "verify": "用第二標準獨立驗證校正後殘差並記錄日期與溫度。在離線場景為「連續監測校正」建立證據表，把原始值、單位、時戳及修正值分開保留。~Use a second standard to verify corrected residuals independently and record date and temperature. Build an offline evidence table for continuous-monitor calibration; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "以同一標準建立又驗證模型會隱藏校正偏差。在場景中標出故障點及其影響的上下游證據。~Calibrating and validating with the same standard hides bias. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "單點校正可以證明整個量程都沒有誤差。~One-point calibration proves the entire range is error-free.",
+      "practice": "先點選「連續監測校正」量測點並重現基準算例；接著只把樣品原讀值改成16.2，其他條件不變，預測後重算得到 15.4 sensor unit。與基準 13.4 sensor unit比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the continuous-monitor calibration measurement point and reproduce the baseline; then change only raw sample to16.2 with other inputs fixed. Predict and recompute 15.4 sensor unit. Compare with baseline 13.4 sensor unit and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    },
+    {
+      "title": "設備維護與暫存：備援與共同失效~Maintenance and storage: Redundancy and common failures",
+      "mechanism": "平行備援可降低獨立停機造成的服務中斷，但共同電源、進水或控制器會破壞獨立假設。本單元在「設備維護與暫存」觀察此因果關係。~Parallel redundancy reduces outages from independent failures, but common power, feed or controllers invalidate independence. Examine this relationship at maintenance and storage.",
+      "model": "明示假設的教學子模型，非場址量測：兩列各自可用率A=0.95且任一列足以供應示範負載。公式 Asys=1-(1-A)^2；代入 1-(1-0.95)**2 = 0.9975 fraction。適用邊界：僅兩列獨立且容量足夠；不含共同失效或修復時間分布。~Explicitly hypothetical teaching submodel, not site measurements: two trains each have availabilityA=0.95 and either meets the hypothetical load. Formula Asys=1-(1-A)^2; substitution 1-(1-0.95)**2 = 0.9975 fraction. Boundary: Two independent adequate-capacity trains only; common failures and repair-time distributions are excluded.",
+      "verify": "畫故障樹並標出共享設備，測試單列退出時的完整流程。在離線場景為「設備維護與暫存」建立證據表，把原始值、單位、時戳及修正值分開保留。~Draw a fault tree marking shared assets and replay the process with one train unavailable. Build an offline evidence table for maintenance and storage; retain raw values, units, timestamps and corrected values separately.",
+      "failure": "兩列共用一個關鍵閥門，該閥失效仍會同時停產。在場景中標出故障點及其影響的上下游證據。~A shared critical valve can stop both trains together. Mark the fault and the upstream/downstream evidence it affects in the scene.",
+      "misconception": "設備數量加倍就能消除所有停機。~Doubling equipment eliminates every outage.",
+      "practice": "先點選「設備維護與暫存」量測點並重現基準算例；接著只把各列A改成0.90，其他條件不變，預測後重算得到 0.99 fraction。與基準 0.9975 fraction比較，說明改變的機制；若現場資料不符，依驗證項檢查假設，不能直接套用成設備設定。~Select the maintenance and storage measurement point and reproduce the baseline; then change only each train availability to0.90 with other inputs fixed. Predict and recompute 0.99 fraction. Compare with baseline 0.9975 fraction and explain the mechanism; if observations disagree, check the stated assumptions rather than converting the example directly into equipment settings."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-lm-beitou",
+      "title": "北投焚化廠環境教育與處理流程",
+      "titleEn": "Beitou incinerator education and treatment process",
+      "url": "https://www.ptrip.gov.taipei/cp.aspx?n=5B6A51C709F6384F",
+      "organization": "Taipei Beitou Refuse Incineration Plant",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-lm-wte",
+      "title": "都市垃圾燃燒能源回收",
+      "titleEn": "Energy recovery from combustion of municipal solid waste",
+      "url": "https://www.epa.gov/smm/energy-recovery-combustion-municipal-solid-waste-msw",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "臺北都會區",
+    "nameEn": "Taipei metropolitan area",
+    "country": "臺灣",
+    "countryEn": "Taiwan",
+    "lat": 25.04,
+    "lon": 121.52,
+    "coordinateScope": "approximate-city-reference; not a facility entrance"
+  },
+  "history": "北投焚化廠的官方環教介紹使用流程模型、語音與指示燈解說，並強調廢水、煙氣、底渣與飛灰的後續處理。~Beitou official education uses process models, narration and indicators and explains wastewater, flue gas, bottom ash and fly ash treatment.",
+  "architectureNodes": [
+    "過磅~Weighing",
+    "垃圾坑~Waste bunker",
+    "燃燒~Combustion",
+    "鍋爐~Boiler",
+    "煙氣處理~Gas treatment",
+    "灰渣~Ash streams"
+  ],
+  "modelChecks": [
+    {
+      "expression": "18.6-7.4",
+      "expected": 11.200000000000001,
+      "unit": "t",
+      "description": "單元1基準：進出廠秤重~Unit1 baseline: entry/exit weighing"
+    },
+    {
+      "expression": "20.1-7.4",
+      "expected": 12.700000000000001,
+      "unit": "t",
+      "description": "單元1變量實驗：只把總重改成20.1 t~Unit1 changed-input experiment: change only gross mass to20.1 t"
+    },
+    {
+      "expression": "10*8/3.6",
+      "expected": 22.22222222222222,
+      "unit": "MW",
+      "description": "單元2基準：垃圾混合熱值~Unit2 baseline: mixed-waste heating value"
+    },
+    {
+      "expression": "10*6/3.6",
+      "expected": 16.666666666666668,
+      "unit": "MW",
+      "description": "單元2變量實驗：只把LHV改成6 MJ/kg~Unit2 changed-input experiment: change only LHV to6 MJ/kg"
+    },
+    {
+      "expression": "5*2400/1000",
+      "expected": 12.0,
+      "unit": "MW",
+      "description": "單元3基準：鍋爐蒸汽生成~Unit3 baseline: boiler steam generation"
+    },
+    {
+      "expression": "4*2400/1000",
+      "expected": 9.6,
+      "unit": "MW",
+      "description": "單元3變量實驗：只把蒸汽流率改成4 kg/s~Unit3 changed-input experiment: change only steam flow to4 kg/s"
+    },
+    {
+      "expression": "100*(8-1)/30",
+      "expected": 23.333333333333332,
+      "unit": "%",
+      "description": "單元4基準：總發電與廠用電~Unit4 baseline: gross power and auxiliaries"
+    },
+    {
+      "expression": "100*(8-1.5)/30",
+      "expected": 21.666666666666668,
+      "unit": "%",
+      "description": "單元4變量實驗：只把廠用改成1.5 MW~Unit4 changed-input experiment: change only auxiliaries to1.5 MW"
+    },
+    {
+      "expression": "60000/(60*1000)",
+      "expected": 1.0,
+      "unit": "m/min",
+      "description": "單元5基準：煙氣除塵模組~Unit5 baseline: flue-gas dust module"
+    },
+    {
+      "expression": "60000/(60*800)",
+      "expected": 1.25,
+      "unit": "m/min",
+      "description": "單元5變量實驗：只把有效濾布降成800 m²~Unit5 changed-input experiment: reduce only active cloth to800 m²"
+    },
+    {
+      "expression": "20*100000/1000000",
+      "expected": 2.0,
+      "unit": "kg/h",
+      "description": "單元6基準：控制室排放判讀~Unit6 baseline: control-room emission reading"
+    },
+    {
+      "expression": "20*120000/1000000",
+      "expected": 2.4,
+      "unit": "kg/h",
+      "description": "單元6變量實驗：只把氣量改成120000 Nm³/h~Unit6 changed-input experiment: change only gas flow to120000 Nm³/h"
+    },
+    {
+      "expression": "100*(0.20+0.03)",
+      "expected": 23.0,
+      "unit": "t/d",
+      "description": "單元7基準：底渣飛灰分帳~Unit7 baseline: separate ash ledgers"
+    },
+    {
+      "expression": "120*(0.20+0.03)",
+      "expected": 27.6,
+      "unit": "t/d",
+      "description": "單元7變量實驗：只把垃圾量改成120 t/d~Unit7 changed-input experiment: change only waste to120 t/d"
+    },
+    {
+      "expression": "20*4.18*20",
+      "expected": 1672.0,
+      "unit": "kW",
+      "description": "單元8基準：廠內熱回收~Unit8 baseline: internal heat recovery"
+    },
+    {
+      "expression": "20*4.18*15",
+      "expected": 1254.0,
+      "unit": "kW",
+      "description": "單元8變量實驗：只把溫差改成15 K~Unit8 changed-input experiment: change only temperature difference to15 K"
+    },
+    {
+      "expression": "14.2-(10.8-10.0)",
+      "expected": 13.399999999999999,
+      "unit": "sensor unit",
+      "description": "單元9基準：連續監測校正~Unit9 baseline: continuous-monitor calibration"
+    },
+    {
+      "expression": "16.2-(10.8-10.0)",
+      "expected": 15.399999999999999,
+      "unit": "sensor unit",
+      "description": "單元9變量實驗：只把樣品原讀值改成16.2~Unit9 changed-input experiment: change only raw sample to16.2"
+    },
+    {
+      "expression": "1-(1-0.95)**2",
+      "expected": 0.9974999999999999,
+      "unit": "fraction",
+      "description": "單元10基準：設備維護與暫存~Unit10 baseline: maintenance and storage"
+    },
+    {
+      "expression": "1-(1-0.90)**2",
+      "expected": 0.99,
+      "unit": "fraction",
+      "description": "單元10變量實驗：只把各列A改成0.90~Unit10 changed-input experiment: change only each train availability to0.90"
+    }
+  ]
+}

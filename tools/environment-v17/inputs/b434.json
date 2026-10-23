@@ -1,0 +1,283 @@
+{
+  "id": "b434",
+  "title": "污泥帶濾式脫水~Belt-filter sludge dewatering",
+  "focus": "重力排水、楔形壓榨與帶面負荷~Gravity drainage, wedge pressing and belt loading",
+  "summary": "本課以重力排水、楔形壓榨與帶面負荷為主線，從進料乾固體、調理與藥劑活性、重力排水接觸、帶寬固體負荷進入十個相連的技術單元。每單元依機制、數量模型、驗證與失效辨識逐步操作，最後完成包含單位、敏感度及邊界的工程工作單。數值均為原創教學假設，不是特定設施實測或現場操作設定。~This course develops gravity drainage, wedge pressing and belt loading through ten connected units, beginning with feed dry solids, conditioning and active polymer, gravity-drainage contact, solids per belt width. Each unit moves through mechanism, quantitative model, verification and failure diagnosis, ending in a worksheet with units, sensitivity and applicability. All example numbers are original teaching assumptions, not facility measurements or live operating settings.",
+  "discipline": "environment-water",
+  "units": [
+    {
+      "title": "進料乾固體~Feed dry solids",
+      "mechanism": "液體與固體流量都要量，才能計算每米帶寬承受的負荷。~Measure liquid and solids flow before evaluating load per belt width.",
+      "model": "原創教學假設：污泥 Q=50 m³/d；ρ=1000 kg/m³；TS=0.04。模型 MDS=QρTS，代入得到 2000 kg DS/d。適用邊界：TS 是濕基質量分率，密度在本例近似水。~Original teaching assumptions: Sludge Q=50 m³/d; density=1000 kg/m³; TS=0.04. Model MDS=QρTS gives 2000 kg DS/d. Applicability: TS is a wet-basis mass fraction; density is approximated as water.",
+      "verify": "在離線工作台先選取「進料乾固體」的觀測點。由體積、密度與烘乾固體三個獨立量測建質量。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for feed dry solids. Build mass from independent volume, density and oven-dry solids measurements. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "低濃度大流量淹沒重力段。診斷與介入：用代表性含固樣本重算乾量，避免濕重混用。~Large dilute flow floods the gravity zone. Diagnostic response: Recalculate dry mass from representative solids samples, without mixing wet mass.",
+      "misconception": "只看乾固體量即可忽略液體水力。~Dry-solids loading makes hydraulic flow irrelevant.",
+      "practice": "只改變 TS:0.04→0.05，其餘假設固定；結果應由 2000 變為 2500 kg DS/d。用「進料乾固體」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TS:0.04→0.05, holding the other assumptions fixed; the result changes from 2000 to 2500 kg DS/d. Explain the direction using feed dry solids, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "調理與藥劑活性~Conditioning and active polymer",
+      "mechanism": "聚合物促進絮凝與自由水釋出，效果取決於污泥而非固定通用劑量。~Polymer promotes flocculation and free-water release; performance depends on sludge, not a universal dose.",
+      "model": "原創教學假設：DS=2000 kg/d；假設用量=4 kg active/t DS。模型 Mpoly=MDS D/1000，代入得到 8 kg active/d。適用邊界：只示範乾基換算；最佳用量須由污泥試驗判定。~Original teaching assumptions: DS=2000 kg/d; assumed dose=4 kg active/t DS. Model Mpoly=MDS D/1000 gives 8 kg active/d. Applicability: Dry-basis conversion only; appropriate dose requires sludge testing.",
+      "verify": "在離線工作台先選取「調理與藥劑活性」的觀測點。把稀釋藥液量還原成活性聚合物，觀察絮體與濾液。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for conditioning and active polymer. Convert solution use to active polymer and observe floc and filtrate. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "過量聚合物可能黏帶而非改善排水。診斷與介入：校核有效聚合物乾基，將藥耗與泥餅及濾液表現比較。~Excess polymer can blind the belt instead of improving drainage. Diagnostic response: Check active polymer on a dry-solids basis and compare consumption with cake/filtrate performance.",
+      "misconception": "聚合物越多濾液一定越清。~More polymer always clarifies filtrate.",
+      "practice": "只改變 D:4→5 kg/t DS，其餘假設固定；結果應由 8 變為 10 kg active/d。用「調理與藥劑活性」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only D:4→5 kg/t DS, holding the other assumptions fixed; the result changes from 8 to 10 kg active/d. Explain the direction using conditioning and active polymer, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "重力排水接觸~Gravity-drainage contact",
+      "mechanism": "重力段先排自由水，後段壓力無法完全補救進料過厚與絮體破壞。~Drain free water first; later pressing cannot fully repair thick feed or damaged floc.",
+      "model": "原創教學假設：有效帶長=6 m；帶速=1 m/min。模型 t=L/v，代入得到 6 min。適用邊界：幾何停留估計，不能單憑延長時間預測最終含固率。~Original teaching assumptions: Effective belt length=6 m; belt speed=1 m/min. Model t=L/v gives 6 min. Applicability: Geometric residence estimate; time alone does not predict final solids fraction.",
+      "verify": "在離線工作台先選取「重力排水接觸」的觀測點。對照帶速紀錄、重力段排水與泥餅含固率。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for gravity-drainage contact. Compare belt speed, gravity-zone drainage and cake solids. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "過快帶速縮短初始排水時間。診斷與介入：以實際速度和有效長度重算，配對濾液及泥餅資料。~Excess belt speed shortens initial drainage. Diagnostic response: Recalculate with actual speed/effective length and pair with filtrate/cake data.",
+      "misconception": "所有水都可留到高壓段才去除。~All water can be removed only at the pressure stage.",
+      "practice": "只改變 v:1→1.5 m/min，其餘假設固定；結果應由 6 變為 4 min。用「重力排水接觸」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only v:1→1.5 m/min, holding the other assumptions fixed; the result changes from 6 to 4 min. Explain the direction using gravity-drainage contact, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "帶寬固體負荷~Solids per belt width",
+      "mechanism": "負荷需沿帶寬均分，側邊堆積會先漏泥。~Distribute loading across belt width; edge accumulation causes early leakage.",
+      "model": "原創教學假設：DS=200 kg/h；帶寬=2 m。模型 Lb=MDS/b，代入得到 100 kg DS/(m·h)。適用邊界：每米帶寬平均負荷；分布不均時局部會高於平均。~Original teaching assumptions: DS=200 kg/h; belt width=2 m. Model Lb=MDS/b gives 100 kg DS/(m·h). Applicability: Mean dry-solids loading per belt width; maldistribution creates larger local loading.",
+      "verify": "在離線工作台先選取「帶寬固體負荷」的觀測點。在帶面分格觀察厚度與側向漏泥。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for solids per belt width. Observe thickness across belt segments and side leakage. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "平均負荷合格但局部堆積仍失敗。診斷與介入：重新量在線帶寬及乾固體量，排查邊緣偏料。~Acceptable mean loading can hide local overload. Diagnostic response: Remeasure active width/dry-solids load and check uneven edge feeding.",
+      "misconception": "平均帶負荷即可代表所有位置。~Mean belt loading represents every point.",
+      "practice": "只改變 MDS:200→240 kg/h，其餘假設固定；結果應由 100 變為 120 kg DS/(m·h)。用「帶寬固體負荷」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only MDS:200→240 kg/h, holding the other assumptions fixed; the result changes from 100 to 120 kg DS/(m·h). Explain the direction using solids per belt width, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "楔形段漸進加壓~Progressive wedge loading",
+      "mechanism": "逐步加壓讓絮體保持透水結構，突加壓可能使泥從側邊擠出。~Progressive pressure preserves drainage structure; abrupt loading can squeeze sludge sideways.",
+      "model": "原創教學假設：進料固體=2000 kg/d；液相流失=100 kg/d。模型 η=(Min-Mloss)/Min，代入得到 0.95 fraction。適用邊界：穩態乾固體收支；不可用清澈外觀代替液相 TSS。~Original teaching assumptions: Feed solids=2000 kg/d; liquid-phase loss=100 kg/d. Model η=(Min-Mloss)/Min gives 0.95 fraction. Applicability: Steady dry-solids balance; clear appearance is not a substitute for liquid-phase TSS.",
+      "verify": "在離線工作台先選取「楔形段漸進加壓」的觀測點。量回流水量與 TSS，與泥餅 DS 相互驗證。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for progressive wedge loading. Measure return-liquid flow/TSS and cross-check cake dry solids. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "絮體尚未排水就進入高壓區。診斷與介入：重新量進料、濾液及泥餅固體，查回流水漏項。~Poorly drained floc enters the high-pressure zone. Diagnostic response: Remeasure feed, filtrate and cake solids and check omitted returns.",
+      "misconception": "起始壓力越大脫水一定越好。~Higher initial pressure always improves dewatering.",
+      "practice": "只改變 Mloss:100→160 kg/d，其餘假設固定；結果應由 0.95 變為 0.92 fraction。用「楔形段漸進加壓」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Mloss:100→160 kg/d, holding the other assumptions fixed; the result changes from 0.95 to 0.92 fraction. Explain the direction using progressive wedge loading, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "輥輪與泥餅濕重~Rollers and cake mass",
+      "mechanism": "泥餅含固率與產量共同決定後續運輸，不可只追求表面乾燥。~Cake solids and production together determine transport, not surface dryness alone.",
+      "model": "原創教學假設：DS=2000 kg/d；泥餅 TS=0.25。模型 Mcake=MDS/TS，代入得到 8000 kg wet cake/d。適用邊界：假定乾固體完全進入泥餅；實際需校正捕集率。~Original teaching assumptions: DS=2000 kg/d; cake TS=0.25. Model Mcake=MDS/TS gives 8000 kg wet cake/d. Applicability: Assumes all dry solids enter the cake; correct for actual capture.",
+      "verify": "在離線工作台先選取「輥輪與泥餅濕重」的觀測點。稱泥餅並分析含固率，與進料 DS 閉合。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for rollers and cake mass. Weigh cake, analyze solids fraction and close against feed DS. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "表面乾內部濕造成採樣偏差。診斷與介入：同步量乾固體與泥餅重量，查固體回收率是否變化。~A dry surface over wet material biases samples. Diagnostic response: Measure dry solids and wet cake together and check capture changes.",
+      "misconception": "只刮表面即可代表整片泥餅。~Surface scraping represents the full cake.",
+      "practice": "只改變 TS:0.25→0.30，其餘假設固定；結果應由 8000 變為 6666.6667 kg wet cake/d。用「輥輪與泥餅濕重」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only TS:0.25→0.30, holding the other assumptions fixed; the result changes from 8000 to 6666.6667 kg wet cake/d. Explain the direction using rollers and cake mass, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "洗帶用水~Belt washing water",
+      "mechanism": "清洗維持通透，但洗水回流增加水線負荷，需計入水量。~Cleaning maintains permeability but its return flow loads the water line.",
+      "model": "原創教學假設：沖洗水流量=2 m³/h；每日沖洗運轉=8 h。模型 Vwash=Qt，代入得到 16 m³/d。適用邊界：只有水量收支，不是噴嘴壓力或衛生保證；回流水負荷仍需採樣。~Original teaching assumptions: Wash-water flow=2 m³/h; daily washing operation=8 h. Model Vwash=Qt gives 16 m³/d. Applicability: Water balance only, not nozzle-pressure or hygienic assurance; sample return-stream loads separately.",
+      "verify": "在離線工作台先選取「洗帶用水」的觀測點。以獨立沖洗支線水表與運轉紀錄交叉核對。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for belt washing water. Cross-check a dedicated wash-water meter with operating logs. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "洗水漏列使淨產水量高估。診斷與介入：獨立量沖洗用水和回流負荷，確認噴嘴及濾帶狀態。~Omitted washwater overstates net water output. Diagnostic response: Meter wash water and return loads separately and inspect nozzles/belt condition.",
+      "misconception": "洗帶水不影響全廠水量收支。~Belt washwater does not affect the plant water balance.",
+      "practice": "只改變 t:8→10 h，其餘假設固定；結果應由 16 變為 20 m³/d。用「洗帶用水」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only t:8→10 h, holding the other assumptions fixed; the result changes from 16 to 20 m³/d. Explain the direction using belt washing water, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "帶速與停留~Belt speed and residence",
+      "mechanism": "降低帶速延長停留但可能提高單位面積污泥厚度，須同時調整進料比較。~Slower belts extend residence but can increase sludge thickness; compare with controlled feed.",
+      "model": "原創教學假設：有效帶長=6 m；帶速=1 m/min。模型 t=L/v，代入得到 6 min。適用邊界：幾何停留估計，不能單憑延長時間預測最終含固率。~Original teaching assumptions: Effective belt length=6 m; belt speed=1 m/min. Model t=L/v gives 6 min. Applicability: Geometric residence estimate; time alone does not predict final solids fraction.",
+      "verify": "在離線工作台先選取「帶速與停留」的觀測點。對照帶速紀錄、重力段排水與泥餅含固率。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for belt speed and residence. Compare belt speed, gravity-zone drainage and cake solids. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "只改帶速卻把厚度效應誤當時間效應。診斷與介入：以實際速度和有效長度重算，配對濾液及泥餅資料。~Changing speed confounds thickness with time. Diagnostic response: Recalculate with actual speed/effective length and pair with filtrate/cake data.",
+      "misconception": "帶速減半必定讓泥餅乾度加倍。~Half belt speed doubles cake dryness.",
+      "practice": "只改變 v:1→1.5 m/min，其餘假設固定；結果應由 6 變為 4 min。用「帶速與停留」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only v:1→1.5 m/min, holding the other assumptions fixed; the result changes from 6 to 4 min. Explain the direction using belt speed and residence, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "液相固體捕集~Liquid-phase capture",
+      "mechanism": "濾液的 TSS 與流量共同決定回流固體，不可只看色澤。~Filtrate TSS and flow determine returned solids; color alone is insufficient.",
+      "model": "原創教學假設：進料固體=2000 kg/d；液相流失=100 kg/d。模型 η=(Min-Mloss)/Min，代入得到 0.95 fraction。適用邊界：穩態乾固體收支；不可用清澈外觀代替液相 TSS。~Original teaching assumptions: Feed solids=2000 kg/d; liquid-phase loss=100 kg/d. Model η=(Min-Mloss)/Min gives 0.95 fraction. Applicability: Steady dry-solids balance; clear appearance is not a substitute for liquid-phase TSS.",
+      "verify": "在離線工作台先選取「液相固體捕集」的觀測點。量回流水量與 TSS，與泥餅 DS 相互驗證。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for liquid-phase capture. Measure return-liquid flow/TSS and cross-check cake dry solids. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "稀釋清洗水讓濾液看似清澈卻仍高負荷。診斷與介入：重新量進料、濾液及泥餅固體，查回流水漏項。~Dilution makes filtrate look clearer without removing its mass. Diagnostic response: Remeasure feed, filtrate and cake solids and check omitted returns.",
+      "misconception": "濾液濃度降低就一定降低固體回流。~Lower filtrate concentration always lowers return solids.",
+      "practice": "只改變 Mloss:100→160 kg/d，其餘假設固定；結果應由 0.95 變為 0.92 fraction。用「液相固體捕集」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Mloss:100→160 kg/d, holding the other assumptions fixed; the result changes from 0.95 to 0.92 fraction. Explain the direction using liquid-phase capture, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    },
+    {
+      "title": "整體穩態交接~Whole-system steady-state handoff",
+      "mechanism": "用同一污泥批次比較藥量、帶速、捕集率、含固率與清洗水。~Compare polymer, belt speed, capture, cake solids and washwater on the same sludge batch.",
+      "model": "原創教學假設：進入=15、出流水=2、排泥=12 kg/d。模型 ε=Min-Mwater-Msludge，代入得到 1 kg/d。適用邊界：殘差可能來自儲存、漏算旁流與量測誤差，不能自動當作反應。~Original teaching assumptions: Input=15, effluent=2, sludge=12 kg/d. Model ε=Min-Mwater-Msludge gives 1 kg/d. Applicability: Residual can reflect storage, omitted side streams or measurement error, not automatically a reaction.",
+      "verify": "在離線工作台先選取「整體穩態交接」的觀測點。畫出所有邊界流股，分列不確定度及庫存變化。保留原始數值、單位與時間，將模型預測和量測分欄；偏差未釐清前不把模擬視為現場驗證。~In the offline workbench, select the observation point for whole-system steady-state handoff. Draw every boundary stream and separate uncertainty from inventory change. Retain raw values, units and times, separate predictions from observations, and resolve discrepancies before treating a simulation as field validation.",
+      "failure": "跨污泥種類比較單一乾度造成錯誤選型。診斷與介入：補列回流、庫存與採樣不確定度，保留無法解釋的差額。~Comparing cake solids across different sludges misguides selection. Diagnostic response: Add recycle, inventory and sampling uncertainty, retaining unexplained differences.",
+      "misconception": "泥餅最乾的機型永遠總成本最低。~The driest-cake machine always has lowest total cost.",
+      "practice": "只改變 Msludge:12→12.5 kg/d，其餘假設固定；結果應由 1 變為 0.5 kg/d。用「整體穩態交接」的機制解釋方向，再提出一項可區分模型失效與儀器偏差的量測。工程輔助可示範此計算，但完成紀錄應標示使用輔助。~Change only Msludge:12→12.5 kg/d, holding the other assumptions fixed; the result changes from 1 to 0.5 kg/d. Explain the direction using whole-system steady-state handoff, then propose a measurement separating model failure from instrument bias. Engineering assistance may demonstrate this calculation; mark assisted completion in the record."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-water-belt",
+      "title": "帶濾壓榨技術資料",
+      "titleEn": "Belt Filter Press Fact Sheet",
+      "url": "https://www.epa.gov/biosolids/fact-sheet-belt-filter-press",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-water-sludge",
+      "title": "污泥管理技術資源",
+      "titleEn": "Technical Resources for Sewage Sludge Managers",
+      "url": "https://www.epa.gov/biosolids/technical-resources-sewage-sludge-managers",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "place": {
+    "name": "公開技術來源參照：美國環境保護署（非設備現場）",
+    "nameEn": "Public technical-source reference: US EPA (not an equipment site)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8938,
+    "lon": -77.0281,
+    "scope": "機構近似座標，不是本課設備位置或參訪入口。",
+    "scopeEn": "Approximate institutional reference, not the equipment location or visitor access."
+  },
+  "history": "本課以公開技術手冊建立方法背景；來源出版年代不代表此程序首次發明的年代。舊版文件僅提供原理與歷史脈絡，現場工作仍須確認當地現行規定與設備文件。~Public technical manuals establish the methodological background; publication dates do not identify the invention date. Older documents provide principles and historical context, while real work still requires current local requirements and equipment documentation.",
+  "facts": [
+    "生物、物理與化學處理都必須以同一邊界的質量及能量收支檢核。~Biological, physical and chemical treatment must be checked through mass and energy balances with consistent boundaries.",
+    "本課示例的源水、污泥、感測與藥劑數字均明確列為假設，不宣稱為工程設計或許可值。~All water, sludge, sensor and reagent numbers in these examples are explicit assumptions, not design or permit values."
+  ],
+  "architectureNodes": [
+    "污泥進料~Sludge feed",
+    "聚合物調理~Polymer conditioning",
+    "重力排水~Gravity drainage",
+    "楔形壓濾~Wedge pressing",
+    "輥輪壓榨~Roller pressing",
+    "泥餅與濾液~Cake and filtrate",
+    "濾帶清洗~Belt washing"
+  ],
+  "modelChecks": [
+    {
+      "expression": "50*1000*.04",
+      "expected": 2000.0,
+      "unit": "kg DS/d",
+      "description": "b434 unit 1 feedsolids baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "50*1000*.05",
+      "expected": 2500.0,
+      "unit": "kg DS/d",
+      "description": "b434 unit 1 feedsolids perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000*4/1000",
+      "expected": 8.0,
+      "unit": "kg active/d",
+      "description": "b434 unit 2 polymer baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000*5/1000",
+      "expected": 10.0,
+      "unit": "kg active/d",
+      "description": "b434 unit 2 polymer perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6/1",
+      "expected": 6.0,
+      "unit": "min",
+      "description": "b434 unit 3 beltcontact baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6/1.5",
+      "expected": 4.0,
+      "unit": "min",
+      "description": "b434 unit 3 beltcontact perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "200/2",
+      "expected": 100.0,
+      "unit": "kg DS/(m·h)",
+      "description": "b434 unit 4 beltload baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "240/2",
+      "expected": 120.0,
+      "unit": "kg DS/(m·h)",
+      "description": "b434 unit 4 beltload perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2000-100)/2000",
+      "expected": 0.95,
+      "unit": "fraction",
+      "description": "b434 unit 5 capture baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2000-160)/2000",
+      "expected": 0.92,
+      "unit": "fraction",
+      "description": "b434 unit 5 capture perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000/.25",
+      "expected": 8000.0,
+      "unit": "kg wet cake/d",
+      "description": "b434 unit 6 cake baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2000/.30",
+      "expected": 6666.666666666667,
+      "unit": "kg wet cake/d",
+      "description": "b434 unit 6 cake perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2*8",
+      "expected": 16,
+      "unit": "m³/d",
+      "description": "b434 unit 7 beltwater baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "2*10",
+      "expected": 20,
+      "unit": "m³/d",
+      "description": "b434 unit 7 beltwater perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6/1",
+      "expected": 6.0,
+      "unit": "min",
+      "description": "b434 unit 8 beltcontact baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "6/1.5",
+      "expected": 4.0,
+      "unit": "min",
+      "description": "b434 unit 8 beltcontact perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2000-100)/2000",
+      "expected": 0.95,
+      "unit": "fraction",
+      "description": "b434 unit 9 capture baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "(2000-160)/2000",
+      "expected": 0.92,
+      "unit": "fraction",
+      "description": "b434 unit 9 capture perturbation",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12",
+      "expected": 1,
+      "unit": "kg/d",
+      "description": "b434 unit 10 residual baseline",
+      "relativeTolerance": 1e-07
+    },
+    {
+      "expression": "15-2-12.5",
+      "expected": 0.5,
+      "unit": "kg/d",
+      "description": "b434 unit 10 residual perturbation",
+      "relativeTolerance": 1e-07
+    }
+  ]
+}

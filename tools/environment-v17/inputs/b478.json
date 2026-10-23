@@ -1,0 +1,299 @@
+{
+  "id": "b478",
+  "title": "條垛堆肥通風控制~Windrow-composting aeration control",
+  "focus": "用空間氧氣、水分與溫度資料調整條垛堆肥通風~Use spatial oxygen, moisture and temperature evidence to assess windrow aeration",
+  "discipline": "environment-waste",
+  "summary": "本課以「用空間氧氣、水分與溫度資料調整條垛堆肥通風」為主軸，依序處理條垛原料碳氮分層、翻堆與可通氣孔隙、強制通風能耗、冬夏顯熱交換、露天雨水與滲出水收支。十個單元各包含機制、算例、量測驗證及失效診斷；數值均為明示的原創教學假設，不能直接用作工程設計、排放限值或設備設定。~This course focuses on Use spatial oxygen, moisture and temperature evidence to assess windrow aeration, progressing through Windrow carbon-nitrogen heterogeneity, Turning and aeratable porosity, Forced-aeration energy, Seasonal sensible-heat exchange, Outdoor rainfall and leachate balance. Ten units each address mechanism, worked calculation, measurement verification and failure diagnosis. Numbers are explicit original teaching assumptions, not design values, emission limits or equipment settings.",
+  "history": "這項技術的學習脈絡由單一設備處理，逐步擴展至物質與能量收支、監測品質和生命週期比較。本課將官方方法文件作為查核入口，並以獨立編寫的假想數據練習；參考文件的年代與地區不代表其規範在所有場址適用。~The learning progression expands from individual treatment equipment to mass and energy balances, monitoring quality and lifecycle comparison. Official method documents provide verification starting points while independently authored hypothetical data support practice; a document date or jurisdiction does not establish applicability to every site.",
+  "place": {
+    "name": "教學參考區域：美國北卡羅來納研究三角園區（非本課實拍場址）",
+    "nameEn": "Reference region: Research Triangle Park, North Carolina (not a photographed course facility)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 35.9,
+    "lon": -78.9,
+    "scope": "Approximate institutional reference region; not a facility entrance, installation location or visitor permission."
+  },
+  "architectureNodes": [
+    "條垛原料碳氮分層~Windrow carbon-nitrogen heterogeneity",
+    "翻堆與可通氣孔隙~Turning and aeratable porosity",
+    "強制通風能耗~Forced-aeration energy",
+    "冬夏顯熱交換~Seasonal sensible-heat exchange",
+    "露天雨水與滲出水收支~Outdoor rainfall and leachate balance",
+    "證據與交接~Evidence and handoff"
+  ],
+  "sources": [
+    {
+      "id": "v17s-waste-compost",
+      "title": "EPA 堆肥原理與方法",
+      "titleEn": "EPA Composting",
+      "url": "https://www.epa.gov/sustainable-management-food/composting",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-odor",
+      "title": "EPA 污泥管理臭味控制事實表",
+      "titleEn": "EPA Odor Control in Biosolids Management",
+      "url": "https://www.epa.gov/biosolids/fact-sheet-odor-control-biosolids-management",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-warmdocs",
+      "title": "EPA WARM 模型文件",
+      "titleEn": "EPA WARM Documentation",
+      "url": "https://www.epa.gov/waste-reduction-model/documentation-waste-reduction-model",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "units": [
+    {
+      "title": "條垛原料碳氮分層~Windrow carbon-nitrogen heterogeneity",
+      "mechanism": "條垛不是均質容器，混料紀錄應保留各區原料比例，避免平均比值掩蓋局部差異。 混合碳氮比由碳總質量除以氮總質量；各原料碳氮比的算術平均一般不成立。~A windrow is not a homogeneous vessel; retain local blend records so averages do not conceal heterogeneity. A blend C:N ratio is total carbon divided by total nitrogen; an arithmetic mean of feedstock ratios is generally invalid.",
+      "model": "原創教學假設，非現場操作值：原料 A：C=30 kg、N=2 kg；原料 B：C=50 kg、N=0.5 kg。公式 C_to_N=(CA+CB)/(NA+NB)，計算得 32 kg C/kg N。適用邊界：元素總量基準，未區分可生物利用性；數值不是配方建議。~Original teaching assumptions, not field operating values: Feed A: C=30 kg, N=2 kg; feed B: C=50 kg, N=0.5 kg. Formula C_to_N=(CA+CB)/(NA+NB) gives 32 kg C/kg N. Applicability: Total elemental basis, without bioavailability; the values are not a recipe recommendation.",
+      "verify": "針對「條垛原料碳氮分層」，用原料乾質量與元素分析求 C、N 質量，再檢查混合樣。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Windrow carbon-nitrogen heterogeneity, Use dry feed mass and elemental analysis to calculate C and N masses, then check the blend. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "相同總 C:N 仍可能因木質素或抑制物而有不同分解速度。 在「條垛原料碳氮分層」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~The same total C:N can yield different degradation rates because of lignin or inhibitors. Mark where this error can enter the Windrow carbon-nitrogen heterogeneity flow and name a measurement that distinguishes causes.",
+      "misconception": "兩種原料混合後的碳氮比永遠是兩個比值的平均。~A blend C:N ratio is always the average of the two feed ratios.",
+      "practice": "只將 B 的 N 改成 1 kg，其餘輸入固定。重算結果應由 32 變成 26.6667 kg C/kg N。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only B nitrogen to 1 kg, holding all other inputs fixed. Recalculation changes 32 to 26.6667 kg C/kg N. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "cn"
+    },
+    {
+      "title": "雨後含水調整~Moisture after rainfall",
+      "mechanism": "雨水可增加表層含水，核心仍可能偏乾；採樣位置需隨深度記錄。 以水質量守恆求混料量；混合後總重量也改變，所以不能直接相減含水率。~Rain wets surface layers while cores may remain dry; record sampling depth and position. Use water-mass conservation to size a blend; total mass also changes, so subtracting moisture percentages is insufficient.",
+      "model": "原創教學假設，非現場操作值：濕料 m=1000 kg；含水率 w=0.70；調理料含水率 wb=0.20；目標 wt=0.55。公式 m_b=m*(w-wt)/(wt-wb)，計算得 428.571 kg。適用邊界：無蒸發、無反應、濕基分率；兩種原料混合，不代表實際最佳堆肥含水率。~Original teaching assumptions, not field operating values: Wet feed m=1000 kg; moisture w=0.70; bulking-agent moisture wb=0.20; target wt=0.55. Formula m_b=m*(w-wt)/(wt-wb) gives 428.571 kg. Applicability: No evaporation or reaction, wet-basis fractions and two feedstocks; the target is not an operational compost optimum.",
+      "verify": "針對「雨後含水調整」，對原料與混合樣作同一乾燥法量測，核對預測值與不同位置樣本。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Moisture after rainfall, Measure both feeds and blend by the same drying method; compare prediction with spatial subsamples. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "調理料本身很濕，卻仍用乾料假設計算，會低估需要量。 在「雨後含水調整」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Treating a wet bulking agent as dry underestimates required addition. Mark where this error can enter the Moisture after rainfall flow and name a measurement that distinguishes causes.",
+      "misconception": "加多少調理料只取決於原料的含水率差，不受調理料自身含水率影響。~Bulking demand depends only on the feed moisture gap, not on bulking-agent moisture.",
+      "practice": "只將調理料 wb 改成 0.30，其餘輸入固定。重算結果應由 428.571 變成 599 kg。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only bulking-agent wb to 0.30, holding all other inputs fixed. Recalculation changes 428.571 to 599 kg. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "moisture"
+    },
+    {
+      "title": "翻堆與可通氣孔隙~Turning and aeratable porosity",
+      "mechanism": "翻堆會重新配置顆粒與孔隙，改善暫時配流但不能代替後續氧氣監測。 空氣孔隙是總體積扣除固體和水；總孔隙高不代表可供氣體通過的連通孔隙高。~Turning rearranges particles and pores, temporarily improving distribution without replacing subsequent oxygen monitoring. Air-filled porosity is bulk volume less solids and water; high total porosity does not ensure connected gas pathways.",
+      "model": "原創教學假設，非現場操作值：堆體體積 V=10 m³；固體體積 Vs=3.0 m³；液體體積 Vw=2.5 m³。公式 air_fraction=(V-Vs-Vw)/V，計算得 0.45 m³ air/m³ bulk。適用邊界：體積可加的簡化；未計壓縮、粒徑分布與連通性。~Original teaching assumptions, not field operating values: Bulk volume V=10 m³; solid volume Vs=3.0 m³; water volume Vw=2.5 m³. Formula air_fraction=(V-Vs-Vw)/V gives 0.45 m³ air/m³ bulk. Applicability: Additive-volume approximation without compression, particle-size distribution or connectivity.",
+      "verify": "針對「翻堆與可通氣孔隙」，測堆積密度、含水量和壓降，分辨孔隙不足與氣流短路。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Turning and aeratable porosity, Measure bulk density, moisture and pressure drop to distinguish insufficient porosity from gas bypass. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "過度壓實或積水會關閉氣道，讓平均送風量失去代表性。 在「翻堆與可通氣孔隙」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Compaction or waterlogging closes gas paths, making mean airflow unrepresentative. Mark where this error can enter the Turning and aeratable porosity flow and name a measurement that distinguishes causes.",
+      "misconception": "只要總孔隙率高，氣體一定能均勻流過每個位置。~High total porosity guarantees uniform airflow everywhere.",
+      "practice": "只將 Vw 改成 3.5 m³，其餘輸入固定。重算結果應由 0.45 變成 0.35 m³ air/m³ bulk。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only water volume Vw to 3.5 m³, holding all other inputs fixed. Recalculation changes 0.45 to 0.35 m³ air/m³ bulk. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "porosity"
+    },
+    {
+      "title": "需氧估計與區域供氣~Oxygen estimation and zoned air",
+      "mechanism": "比較表層、核心與底部的氧濃度，辨認供氣量不足和氣流繞行兩種原因。 所需空氣量受到氧含量和有效利用率限制；供氣量不是微生物實際吸收氧量。~Compare surface, core and base oxygen to distinguish insufficient supply from bypass flow. Air demand depends on oxygen fraction and effective utilization; supplied air is not the oxygen actually consumed by microbes.",
+      "model": "原創教學假設，非現場操作值：氧需求 D=12 kg O₂/h；空氣氧質量分率 x=0.232；假設利用率 η=0.35。公式 m_air=D/(x*eta)，計算得 147.783 kg air/h。適用邊界：以氧質量收支近似，不是送風機操作設定；未計熱量與水分控制。~Original teaching assumptions, not field operating values: Oxygen demand D=12 kg O₂/h; oxygen mass fraction in air x=0.232; assumed utilization η=0.35. Formula m_air=D/(x*eta) gives 147.783 kg air/h. Applicability: An oxygen mass-balance approximation, not a blower setting; heat and moisture control are excluded.",
+      "verify": "針對「需氧估計與區域供氣」，在進出口量氧濃度與流量，觀察不同位置氧剖面而非只讀總管。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Oxygen estimation and zoned air, Measure inlet and outlet oxygen and flow; inspect spatial oxygen profiles rather than only the main header. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "旁通氣流增加時總送風上升，但反應區仍可能缺氧。 在「需氧估計與區域供氣」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Increasing bypass airflow can raise total supply while reactive zones remain oxygen-limited. Mark where this error can enter the Oxygen estimation and zoned air flow and name a measurement that distinguishes causes.",
+      "misconception": "送入的每一公斤氧都必定被微生物消耗。~Every kilogram of supplied oxygen is necessarily consumed by microbes.",
+      "practice": "只將 η 改成 0.25，其餘輸入固定。重算結果應由 147.783 變成 206.897 kg air/h。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only η to 0.25, holding all other inputs fixed. Recalculation changes 147.783 to 206.897 kg air/h. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "oxygen"
+    },
+    {
+      "title": "強制通風能耗~Forced-aeration energy",
+      "mechanism": "調整送風時同時看風機功率和氧氣分布，避免把高電耗當成高處理能力。 風機軸功率近似流量乘壓升再除效率；阻力增加時不能假設風量與效率都不受影響。~When changing aeration, examine both fan power and oxygen distribution rather than equating power with treatment capacity. Fan shaft power is approximately flow times pressure rise divided by efficiency; increasing resistance may also change flow and efficiency.",
+      "model": "原創教學假設，非現場操作值：風量 Q=1.5 m³/s；壓升 Δp=1200 Pa；假設效率 η=0.60。公式 P=Q*dp/eta/1000，計算得 3 kW。適用邊界：不可壓縮、固定效率的比較，不是風機曲線選型。~Original teaching assumptions, not field operating values: Airflow Q=1.5 m³/s; pressure rise Δp=1200 Pa; assumed efficiency η=0.60. Formula P=Q*dp/eta/1000 gives 3 kW. Applicability: An incompressible fixed-efficiency comparison, not fan-curve selection.",
+      "verify": "針對「強制通風能耗」，量測風量、差壓與輸入功率，在同一運轉點核對效率。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Forced-aeration energy, Measure airflow, differential pressure and input power at the same operating point. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "堵塞使壓降上升，若只提高風機轉速可能增加能耗而不解決配流。 在「強制通風能耗」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Blockage raises pressure drop; speed increases may waste energy without correcting distribution. Mark where this error can enter the Forced-aeration energy flow and name a measurement that distinguishes causes.",
+      "misconception": "風機功率只與風量有關，與管路阻力無關。~Fan power depends only on flow and not on duct resistance.",
+      "practice": "只將 Δp 改成 1800 Pa，其餘輸入固定。重算結果應由 3 變成 4.5 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Δp to 1800 Pa, holding all other inputs fixed. Recalculation changes 3 to 4.5 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "blower"
+    },
+    {
+      "title": "配氣管與堆體阻力~Distribution pipes and pile resistance",
+      "mechanism": "在主管與分支量差壓，分辨管路堵塞和堆體局部壓實。 差壓反映測點間總阻力，須配合同時的流量與氣體狀態判讀。~Measure main-header and branch differentials to distinguish duct blockage from local pile compaction. Differential pressure reflects resistance between taps and needs concurrent flow and gas-condition data.",
+      "model": "原創教學假設，非現場操作值：量測前壓 p1=1800 Pa；後壓 p2=600 Pa。公式 dp=p1-p2，計算得 1200 Pa。適用邊界：相同基準壓力與測點；單一差壓不能區分所有堵塞或洩漏原因。~Original teaching assumptions, not field operating values: Upstream pressure p1=1800 Pa; downstream pressure p2=600 Pa. Formula dp=p1-p2 gives 1200 Pa. Applicability: Common pressure reference and specified taps; one differential cannot identify every blockage or leak.",
+      "verify": "針對「配氣管與堆體阻力」，檢查導壓管、零點和測點位置，再把差壓與流量趨勢一起畫出。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Distribution pipes and pile resistance, Inspect impulse lines, zero and tap locations, then plot pressure drop with flow. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "導壓管堵塞可能被誤判為設備阻塞。 在「配氣管與堆體阻力」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A blocked impulse line can be mistaken for equipment blockage. Mark where this error can enter the Distribution pipes and pile resistance flow and name a measurement that distinguishes causes.",
+      "misconception": "只要差壓上升，就能確定濾材一定破損。~A higher differential pressure proves the filter medium is damaged.",
+      "practice": "只將 p1 改成 2200 Pa，其餘輸入固定。重算結果應由 1200 變成 1600 Pa。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only p1 to 2200 Pa, holding all other inputs fixed. Recalculation changes 1200 to 1600 Pa. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pressure"
+    },
+    {
+      "title": "冬夏顯熱交換~Seasonal sensible-heat exchange",
+      "mechanism": "相同送風量在不同氣溫下有不同冷卻能力，通風策略需保留氣象條件。 顯熱依質量流率、比熱與溫差線性變動；相變潛熱必須另外計入。~Equal airflow has different cooling effects at different ambient temperatures, so retain meteorological conditions. Sensible heat changes with mass flow, heat capacity and temperature difference; latent heat requires a separate term.",
+      "model": "原創教學假設，非現場操作值：質量流率 m=2 kg/s；比熱 cp=1.5 kJ/(kg·K)；溫差 ΔT=40 K。公式 P=m*cp*dT，計算得 120 kW。適用邊界：固定比熱、無相變、定常流；不可代替完整設備熱平衡。~Original teaching assumptions, not field operating values: Mass flow m=2 kg/s; heat capacity cp=1.5 kJ/(kg·K); temperature difference ΔT=40 K. Formula P=m*cp*dT gives 120 kW. Applicability: Constant heat capacity, no phase change and steady flow; not a complete equipment heat balance.",
+      "verify": "針對「冬夏顯熱交換」，在同一時段讀取流量與上下游溫度，加入散熱項後檢查能量殘差。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Seasonal sensible-heat exchange, Record flow and upstream/downstream temperatures over one interval; include losses and check the energy residual. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "忽略水分蒸發會把熱量全部誤算為升溫。 在「冬夏顯熱交換」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Ignoring evaporation incorrectly assigns all heat to temperature rise. Mark where this error can enter the Seasonal sensible-heat exchange flow and name a measurement that distinguishes causes.",
+      "misconception": "水分蒸發的能量已完全包含在固定比熱乘溫差內。~Evaporation energy is fully included in constant heat capacity times temperature rise.",
+      "practice": "只將 ΔT 改成 50 K，其餘輸入固定。重算結果應由 120 變成 150 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only ΔT to 50 K, holding all other inputs fixed. Recalculation changes 120 to 150 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "sensible"
+    },
+    {
+      "title": "通風乾燥與蒸發~Ventilation drying and evaporation",
+      "mechanism": "高風量可能快速帶走水分而抑制反應，不能只以溫度下降當成改善。 相變將熱轉為水蒸氣焓；潮濕材料處理中，蒸發可能比顯熱更耗能。~High airflow can remove moisture and inhibit activity; cooling alone is not evidence of improvement. Phase change transfers heat into water-vapour enthalpy; evaporation can dominate sensible heating in wet-material processing.",
+      "model": "原創教學假設，非現場操作值：蒸發水量 m=100 kg/h；假設潛熱 hfg=2257 kJ/kg。公式 P=m*hfg/3600，計算得 62.6944 kW。適用邊界：潛熱值只代表近常壓沸點示例，不模擬其他溫壓下的完整乾燥。~Original teaching assumptions, not field operating values: Evaporated water m=100 kg/h; assumed latent heat hfg=2257 kJ/kg. Formula P=m*hfg/3600 gives 62.6944 kW. Applicability: The latent heat represents a near-atmospheric boiling example, not full drying at other conditions.",
+      "verify": "針對「通風乾燥與蒸發」，做乾物質與水分收支，核對排氣含濕量及冷凝水。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Ventilation drying and evaporation, Close dry-solids and water balances, checking exhaust humidity and condensate. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把材料減重全當作有機物破壞，會混淆乾燥與反應。 在「通風乾燥與蒸發」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Treating all weight loss as organic destruction confuses drying with reaction. Mark where this error can enter the Ventilation drying and evaporation flow and name a measurement that distinguishes causes.",
+      "misconception": "濕料減重表示同樣質量的有機物已被分解。~A wet-material mass decrease means the same mass of organics was degraded.",
+      "practice": "只將 m 改成 130 kg/h，其餘輸入固定。重算結果應由 62.6944 變成 81.5028 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only m to 130 kg/h, holding all other inputs fixed. Recalculation changes 62.6944 to 81.5028 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "evaporation"
+    },
+    {
+      "title": "露天雨水與滲出水收支~Outdoor rainfall and leachate balance",
+      "mechanism": "把條垛場地逕流、蓄水與滲出液分開，避免雨量直接轉成污染水量。 水量平衡以降雨扣除蒸散、逕流及儲量變化估剩餘向下通量。~Separate runoff, storage and leachate across the windrow pad instead of converting all rainfall directly into contaminated drainage. A water balance estimates residual downward flux after evapotranspiration, runoff and storage change.",
+      "model": "原創教學假設，非現場操作值：面積 A=10000 m²；期間雨量 P=0.08 m；蒸散 ET=0.025 m；逕流 R=0.03 m；儲量增加 ΔS=0.005 m。公式 V=A*(P-ET-R-dS)，計算得 200 m³。適用邊界：同一時間窗與面積；每項均為教學輸入，不含橫向地下水。~Original teaching assumptions, not field operating values: Area A=10000 m²; rainfall P=0.08 m; evapotranspiration ET=0.025 m; runoff R=0.03 m; storage increase ΔS=0.005 m. Formula V=A*(P-ET-R-dS) gives 200 m³. Applicability: One time window and area; all terms are teaching inputs and lateral groundwater is excluded.",
+      "verify": "針對「露天雨水與滲出水收支」，將雨量、量測排水與含水變化對齊，對未知項給區間而非強制零殘差。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Outdoor rainfall and leachate balance, Align rainfall, measured drainage and moisture change; bound unknown terms rather than forcing zero residual. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "忽略儲水變化會把短期蓄水誤認為永久減滲。 在「露天雨水與滲出水收支」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Ignoring storage change mistakes short-term retention for permanent seepage reduction. Mark where this error can enter the Outdoor rainfall and leachate balance flow and name a measurement that distinguishes causes.",
+      "misconception": "沒有立即排水就代表所有降雨永遠不會下滲。~No immediate drainage means none of the rainfall will ever percolate.",
+      "practice": "只將 P 改成 0.10 m，其餘輸入固定。重算結果應由 200 變成 400 m³。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only P to 0.10 m, holding all other inputs fixed. Recalculation changes 200 to 400 m³. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "rain_balance"
+    },
+    {
+      "title": "空間監測與缺測管理~Spatial monitoring and missingness",
+      "mechanism": "感測器失聯可能集中在高溫潮濕區；保留地點和時間缺測圖，再評估通風一致性。 完整率追蹤有效資料覆蓋；缺值可能集中在尖峰事件，不能只看比例。~Sensor outages may cluster in hot, wet zones; retain spatial and temporal gap maps before evaluating aeration uniformity. Completeness tracks valid coverage; gaps may cluster during peaks, so percentage alone is insufficient.",
+      "model": "原創教學假設，非現場操作值：應有時段 N=1440；有效時段 n=1320。公式 coverage=n/N*100，計算得 91.6667 %。適用邊界：明確時間格與有效性規則；本題不宣稱任何法規有效率門檻。~Original teaching assumptions, not field operating values: Expected intervals N=1440; valid intervals n=1320. Formula coverage=n/N*100 gives 91.6667 %. Applicability: Explicit interval grid and validity rules; no regulatory completeness threshold is claimed.",
+      "verify": "針對「空間監測與缺測管理」，畫出缺值時間軸並保留校正、維護與通訊錯誤旗標，禁止把缺值填成零。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Spatial monitoring and missingness, Plot missing intervals with calibration, maintenance and communication flags; never replace missing values with zero. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "高污染時停機造成選擇性缺值，可偏低估平均污染。 在「空間監測與缺測管理」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Outages during high pollution cause selective missingness and can bias the average downward. Mark where this error can enter the Spatial monitoring and missingness flow and name a measurement that distinguishes causes.",
+      "misconception": "缺測資料填成零不會影響污染平均值。~Replacing missing data with zero does not affect mean pollution.",
+      "practice": "只將 n 改成 1200，其餘輸入固定。重算結果應由 91.6667 變成 83.3333 %。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only valid intervals n to 1200, holding all other inputs fixed. Recalculation changes 91.6667 to 83.3333 %. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "coverage"
+    }
+  ],
+  "modelChecks": [
+    {
+      "expression": "(30+50)/(2+0.5)",
+      "expected": 32.0,
+      "unit": "kg C/kg N",
+      "description": "b478 unit 1 baseline: Windrow carbon-nitrogen heterogeneity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(30+50)/(2+1)",
+      "expected": 26.666666666666668,
+      "unit": "kg C/kg N",
+      "description": "b478 unit 1 sensitivity: Windrow carbon-nitrogen heterogeneity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*(0.7-0.55)/(0.55-0.2)",
+      "expected": 428.57142857142827,
+      "unit": "kg",
+      "description": "b478 unit 2 baseline: Moisture after rainfall",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*(0.7-0.55)/(0.55-0.3)",
+      "expected": 599.9999999999995,
+      "unit": "kg",
+      "description": "b478 unit 2 sensitivity: Moisture after rainfall",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(10-3-2.5)/10",
+      "expected": 0.45,
+      "unit": "m³ air/m³ bulk",
+      "description": "b478 unit 3 baseline: Turning and aeratable porosity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(10-3-3.5)/10",
+      "expected": 0.35,
+      "unit": "m³ air/m³ bulk",
+      "description": "b478 unit 3 sensitivity: Turning and aeratable porosity",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "12/(0.232*0.35)",
+      "expected": 147.78325123152712,
+      "unit": "kg air/h",
+      "description": "b478 unit 4 baseline: Oxygen estimation and zoned air",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "12/(0.232*0.25)",
+      "expected": 206.8965517241379,
+      "unit": "kg air/h",
+      "description": "b478 unit 4 sensitivity: Oxygen estimation and zoned air",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1.5*1200/0.6/1000",
+      "expected": 3.0,
+      "unit": "kW",
+      "description": "b478 unit 5 baseline: Forced-aeration energy",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1.5*1800/0.6/1000",
+      "expected": 4.5,
+      "unit": "kW",
+      "description": "b478 unit 5 sensitivity: Forced-aeration energy",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1800-600",
+      "expected": 1200,
+      "unit": "Pa",
+      "description": "b478 unit 6 baseline: Distribution pipes and pile resistance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2200-600",
+      "expected": 1600,
+      "unit": "Pa",
+      "description": "b478 unit 6 sensitivity: Distribution pipes and pile resistance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2*1.5*40",
+      "expected": 120.0,
+      "unit": "kW",
+      "description": "b478 unit 7 baseline: Seasonal sensible-heat exchange",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2*1.5*50",
+      "expected": 150.0,
+      "unit": "kW",
+      "description": "b478 unit 7 sensitivity: Seasonal sensible-heat exchange",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "100*2257/3600",
+      "expected": 62.69444444444444,
+      "unit": "kW",
+      "description": "b478 unit 8 baseline: Ventilation drying and evaporation",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "130*2257/3600",
+      "expected": 81.50277777777778,
+      "unit": "kW",
+      "description": "b478 unit 8 sensitivity: Ventilation drying and evaporation",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10000*(0.08-0.025-0.03-0.005)",
+      "expected": 200.0,
+      "unit": "m³",
+      "description": "b478 unit 9 baseline: Outdoor rainfall and leachate balance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "10000*(0.10-0.025-0.03-0.005)",
+      "expected": 400.00000000000017,
+      "unit": "m³",
+      "description": "b478 unit 9 sensitivity: Outdoor rainfall and leachate balance",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1320/1440*100",
+      "expected": 91.66666666666666,
+      "unit": "%",
+      "description": "b478 unit 10 baseline: Spatial monitoring and missingness",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1200/1440*100",
+      "expected": 83.33333333333334,
+      "unit": "%",
+      "description": "b478 unit 10 sensitivity: Spatial monitoring and missingness",
+      "relativeTolerance": 1e-09
+    }
+  ],
+  "facts": [
+    "所有算例的輸入均為教學假設；官方來源支援方法脈絡，不代表其公開數據。~All numerical inputs are teaching assumptions; official sources support methodological context, not those hypothetical observations.",
+    "原始資料、單位、時間窗與不確定度必須一併保存。~Preserve raw data, units, time windows and uncertainty together."
+  ]
+}

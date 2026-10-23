@@ -1,0 +1,299 @@
+{
+  "id": "b500",
+  "title": "資源回收設施生命週期評估~Life-cycle assessment of recycling facilities",
+  "focus": "用功能單位、物料收支與替代情境比較資源回收生命週期~Compare recycling lifecycles through functional units, material balances and substitution scenarios",
+  "discipline": "environment-waste",
+  "summary": "本課以「用功能單位、物料收支與替代情境比較資源回收生命週期」為主軸，依序處理決策目的與功能單位、合格產出與品質差異、運輸噸公里與回程、替代生產與避免負荷、情境敏感度與排序反轉。十個單元各包含機制、算例、量測驗證及失效診斷；數值均為明示的原創教學假設，不能直接用作工程設計、排放限值或設備設定。~This course focuses on Compare recycling lifecycles through functional units, material balances and substitution scenarios, progressing through Decision purpose and functional unit, Qualified output and quality differences, Transport tonne-kilometres and return trips, Displaced production and avoided burden, Scenario sensitivity and ranking reversal. Ten units each address mechanism, worked calculation, measurement verification and failure diagnosis. Numbers are explicit original teaching assumptions, not design values, emission limits or equipment settings.",
+  "history": "這項技術的學習脈絡由單一設備處理，逐步擴展至物質與能量收支、監測品質和生命週期比較。本課將官方方法文件作為查核入口，並以獨立編寫的假想數據練習；參考文件的年代與地區不代表其規範在所有場址適用。~The learning progression expands from individual treatment equipment to mass and energy balances, monitoring quality and lifecycle comparison. Official method documents provide verification starting points while independently authored hypothetical data support practice; a document date or jurisdiction does not establish applicability to every site.",
+  "place": {
+    "name": "教學參考區域：美國北卡羅來納研究三角園區（非本課實拍場址）",
+    "nameEn": "Reference region: Research Triangle Park, North Carolina (not a photographed course facility)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 35.9,
+    "lon": -78.9,
+    "scope": "Approximate institutional reference region; not a facility entrance, installation location or visitor permission."
+  },
+  "architectureNodes": [
+    "決策目的與功能單位~Decision purpose and functional unit",
+    "合格產出與品質差異~Qualified output and quality differences",
+    "運輸噸公里與回程~Transport tonne-kilometres and return trips",
+    "替代生產與避免負荷~Displaced production and avoided burden",
+    "情境敏感度與排序反轉~Scenario sensitivity and ranking reversal",
+    "證據與交接~Evidence and handoff"
+  ],
+  "sources": [
+    {
+      "id": "v17s-waste-warm",
+      "title": "EPA 廢棄物減量模型",
+      "titleEn": "EPA Waste Reduction Model",
+      "url": "https://www.epa.gov/waste-reduction-model",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-warmdocs",
+      "title": "EPA WARM 模型文件",
+      "titleEn": "EPA WARM Documentation",
+      "url": "https://www.epa.gov/waste-reduction-model/documentation-waste-reduction-model",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-wi",
+      "title": "歐盟 JRC 廢棄物焚化 BREF（2019）",
+      "titleEn": "JRC Waste Incineration BREF (2019)",
+      "url": "https://publications.jrc.ec.europa.eu/repository/handle/JRC118637",
+      "organization": "European Commission Joint Research Centre",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "units": [
+    {
+      "title": "決策目的與功能單位~Decision purpose and functional unit",
+      "mechanism": "先決定比較一噸廢棄物處理服務，還是一噸符合品質的再生材料，兩者分母不同不能混用。 功能單位決定分母；按投入計算與按合格產品計算會因損失率而不同。~First choose between one tonne of waste-treatment service and one tonne of qualified recycled material; their denominators cannot be mixed. The functional unit sets the denominator; input-based and qualified-product-based values differ with losses.",
+      "model": "原創教學假設，非現場操作值：每噸投入耗電 E=120 kWh；合格產出率 y=0.75 t/t。公式 Eproduct=E/y，計算得 160 kWh/t qualified output。適用邊界：單一產品且固定投入能耗，未分配其他副產品；不是產品效能完全等價的證明。~Original teaching assumptions, not field operating values: Electricity per input tonne E=120 kWh; qualified yield y=0.75 t/t. Formula Eproduct=E/y gives 160 kWh/t qualified output. Applicability: One product and fixed input energy, without coproduct allocation; this does not prove equivalent product performance.",
+      "verify": "針對「決策目的與功能單位」，量合格品、次品與殘渣，明確寫出比較是廢棄物處理服務還是材料供應服務。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Decision purpose and functional unit, Measure qualified output, rejects and residues and specify whether comparison concerns waste-treatment or material-supply service. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "比較不同分母的數值會使低產率程序看似省能。 在「決策目的與功能單位」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Comparing different denominators can make a low-yield process appear efficient. Mark where this error can enter the Decision purpose and functional unit flow and name a measurement that distinguishes causes.",
+      "misconception": "每噸進料與每噸合格再生料的指標一定相同。~Per-tonne-input and per-tonne-qualified-recycled-product indicators are always identical.",
+      "practice": "只將 y 改成 0.60 t/t，其餘輸入固定。重算結果應由 160 變成 200 kWh/t qualified output。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only qualified yield to 0.60 t/t, holding all other inputs fixed. Recalculation changes 160 to 200 kWh/t qualified output. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "functional_output"
+    },
+    {
+      "title": "邊界、清單與回收率~Boundary, inventory and recovery yield",
+      "mechanism": "畫出收運、分類、再加工和殘渣出口，保存進料成分與回收率，避免把所有進料都視為再生品。 回收率衡量原料目標物有多少進入產品；純度則看產品中有多少是目標物，兩者不同。~Map collection, sorting, reprocessing and residue outlets and retain composition and recovery yield instead of treating all input as product. Recovery measures how much feed target reaches product; purity measures target fraction within product. They differ.",
+      "model": "原創教學假設，非現場操作值：進料 m=1000 kg；目標金屬分率 x=0.08；分選回收率 r=0.75。公式 m_metal=m*x*r，計算得 60 kg。適用邊界：已知原料成分、單一分選步驟；未計附著物或後續精製。~Original teaching assumptions, not field operating values: Feed m=1000 kg; target metal fraction x=0.08; separation recovery r=0.75. Formula m_metal=m*x*r gives 60 kg. Applicability: Known feed composition and one separator; adhering material and downstream refining are excluded.",
+      "verify": "針對「邊界、清單與回收率」，對進料、產品及尾料分別秤重化驗，求回收率與純度並關閉金屬收支。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Boundary, inventory and recovery yield, Weigh and assay feed, product and tailings; calculate recovery and purity and close the metal balance. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "提高產品總重量可能只是混入更多非金屬。 在「邊界、清單與回收率」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A heavier product may merely contain more non-metal contamination. Mark where this error can enter the Boundary, inventory and recovery yield flow and name a measurement that distinguishes causes.",
+      "misconception": "產品越重就代表金屬回收率與純度都越高。~A heavier product always means both greater metal recovery and purity.",
+      "practice": "只將 r 改成 0.85，其餘輸入固定。重算結果應由 60 變成 68 kg。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only recovery r to 0.85, holding all other inputs fixed. Recalculation changes 60 to 68 kg. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "recovery"
+    },
+    {
+      "title": "合格產出與品質差異~Qualified output and quality differences",
+      "mechanism": "低純度再生料可能不能一比一替代原生料，合格率與材料功能需獨立驗證。 功能單位決定分母；按投入計算與按合格產品計算會因損失率而不同。~Low-purity recycled material may not displace virgin material one-for-one; qualified yield and material function need separate verification. The functional unit sets the denominator; input-based and qualified-product-based values differ with losses.",
+      "model": "原創教學假設，非現場操作值：每噸投入耗電 E=120 kWh；合格產出率 y=0.75 t/t。公式 Eproduct=E/y，計算得 160 kWh/t qualified output。適用邊界：單一產品且固定投入能耗，未分配其他副產品；不是產品效能完全等價的證明。~Original teaching assumptions, not field operating values: Electricity per input tonne E=120 kWh; qualified yield y=0.75 t/t. Formula Eproduct=E/y gives 160 kWh/t qualified output. Applicability: One product and fixed input energy, without coproduct allocation; this does not prove equivalent product performance.",
+      "verify": "針對「合格產出與品質差異」，量合格品、次品與殘渣，明確寫出比較是廢棄物處理服務還是材料供應服務。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Qualified output and quality differences, Measure qualified output, rejects and residues and specify whether comparison concerns waste-treatment or material-supply service. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "比較不同分母的數值會使低產率程序看似省能。 在「合格產出與品質差異」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Comparing different denominators can make a low-yield process appear efficient. Mark where this error can enter the Qualified output and quality differences flow and name a measurement that distinguishes causes.",
+      "misconception": "每噸進料與每噸合格再生料的指標一定相同。~Per-tonne-input and per-tonne-qualified-recycled-product indicators are always identical.",
+      "practice": "只將 y 改成 0.60 t/t，其餘輸入固定。重算結果應由 160 變成 200 kWh/t qualified output。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only qualified yield to 0.60 t/t, holding all other inputs fixed. Recalculation changes 160 to 200 kWh/t qualified output. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "functional_output"
+    },
+    {
+      "title": "廠內電力與地域係數~Plant electricity and regional factors",
+      "mechanism": "將用電量與係數年份、地域和方法配對，所有教學係數明示是假想。 活動量乘排放係數給指定邊界的影響，係數需匹配地區、年度與電力方法。~Match electricity with factor year, region and accounting method and explicitly label all teaching factors hypothetical. Activity multiplied by a factor gives impact for a specified boundary; factors must match region, year and electricity-accounting method.",
+      "model": "原創教學假設，非現場操作值：用電 E=200 kWh/t；假設電力排放係數 f=0.4 kg CO₂e/kWh。公式 impact=E*f，計算得 80 kg CO₂e/t。適用邊界：f 是教學假設而非任何國家即時係數；只含用電項。~Original teaching assumptions, not field operating values: Electricity E=200 kWh/t; assumed grid factor f=0.4 kg CO₂e/kWh. Formula impact=E*f gives 80 kg CO₂e/t. Applicability: f is a teaching assumption, not a current national factor; only electricity is included.",
+      "verify": "針對「廠內電力與地域係數」，保存電表邊界、產量與係數版本，對替代電力情境作敏感度分析。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Plant electricity and regional factors, Record metering boundary, output and factor version; test alternative electricity scenarios. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把不同年份或系統邊界的係數混用會產生假比較。 在「廠內電力與地域係數」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Mixing factors across years or boundaries creates misleading comparisons. Mark where this error can enter the Plant electricity and regional factors flow and name a measurement that distinguishes causes.",
+      "misconception": "同樣 kWh 用電量在世界任何地方都有相同碳排。~Equal kWh causes identical carbon emissions everywhere.",
+      "practice": "只將 f 改成 0.2 kg CO₂e/kWh，其餘輸入固定。重算結果應由 80 變成 40 kg CO₂e/t。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only grid factor f to 0.2 kg CO₂e/kWh, holding all other inputs fixed. Recalculation changes 80 to 40 kg CO₂e/t. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "lca_energy"
+    },
+    {
+      "title": "運輸噸公里與回程~Transport tonne-kilometres and return trips",
+      "mechanism": "追蹤原料、再生品和殘渣的運輸路徑，將空車回程放在一致邊界中避免遺漏或重算。 噸公里乘係數建立運輸清單，載重、空車回程與運具須在係數或活動量中一致處理。~Track transport of inputs, products and residues and handle empty returns consistently to avoid omission or duplication. Tonne-kilometres multiplied by a factor create transport inventory; payload, empty return and mode must be handled consistently.",
+      "model": "原創教學假設，非現場操作值：運輸質量 m=1 t；距離 d=80 km；假想係數 f=0.08 kg CO₂e/(t·km)。公式 I=m*d*f，計算得 6.4 kg CO₂e。適用邊界：係數完全是假設，不對應實際車隊；未另計入已包含於係數的活動以免重複。~Original teaching assumptions, not field operating values: Transport mass m=1 t; distance d=80 km; hypothetical factor f=0.08 kg CO₂e/(t·km). Formula I=m*d*f gives 6.4 kg CO₂e. Applicability: The factor is hypothetical and represents no actual fleet; do not separately count activities already included in it.",
+      "verify": "針對「運輸噸公里與回程」，記錄重量、路程、運具與回程邊界，檢查 t、kg、km 的換算。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Transport tonne-kilometres and return trips, Record mass, distance, mode and return-trip boundary and verify t, kg and km conversions. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把一噸投入與一噸合格產出視為同一功能單位會忽略損失。 在「運輸噸公里與回程」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Equating one tonne input with one tonne qualified output ignores losses. Mark where this error can enter the Transport tonne-kilometres and return trips flow and name a measurement that distinguishes causes.",
+      "misconception": "運輸距離較短就保證整個回收生命週期影響較低。~A shorter haul guarantees lower impact across the entire recycling lifecycle.",
+      "practice": "只將 d 改成 140 km，其餘輸入固定。重算結果應由 6.4 變成 11.2 kg CO₂e。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only distance to 140 km, holding all other inputs fixed. Recalculation changes 6.4 to 11.2 kg CO₂e. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "transport_lca"
+    },
+    {
+      "title": "多產品共同負荷分配~Shared-burden allocation among products",
+      "mechanism": "一條線產出多種材料時，公開選擇質量或其他分配法的理由，並檢查分配後總量守恆。 分配規則將共同負荷拆到多個產品；質量分配只是選項，需說明適用理由。~For multiple outputs, disclose the rationale for mass or another allocation and check total-burden conservation. Allocation partitions shared burdens among products; mass allocation is one choice whose rationale must be justified.",
+      "model": "原創教學假設，非現場操作值：共同負荷 B=100 kg CO₂e；產品 A=60 kg、B=40 kg。公式 allocated_A=B*mA/(mA+mB)，計算得 60 kg CO₂e。適用邊界：兩個產品、質量分配，未反映市場價格或因果物理關係。~Original teaching assumptions, not field operating values: Shared burden B=100 kg CO₂e; product A=60 kg, product B=40 kg. Formula allocated_A=B*mA/(mA+mB) gives 60 kg CO₂e. Applicability: Two products and mass allocation, without market prices or causal physical relationships.",
+      "verify": "針對「多產品共同負荷分配」，比較質量、經濟與系統擴張情境，保留總負荷守恆檢查。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Shared-burden allocation among products, Compare mass, economic and system-expansion scenarios while checking conservation of total burden. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只挑最有利分配方式而不揭露，會誤導技術比較。 在「多產品共同負荷分配」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Undisclosed selection of the most favourable allocation misleads comparisons. Mark where this error can enter the Shared-burden allocation among products flow and name a measurement that distinguishes causes.",
+      "misconception": "分配方法改變不可能影響產品的生命週期結果。~Changing allocation cannot affect product lifecycle results.",
+      "practice": "只將 A 改成 50 kg，其餘輸入固定。重算結果應由 60 變成 55.5556 kg CO₂e。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only A to 50 kg, holding all other inputs fixed. Recalculation changes 60 to 55.5556 kg CO₂e. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "allocation"
+    },
+    {
+      "title": "替代生產與避免負荷~Displaced production and avoided burden",
+      "mechanism": "把實際處理負荷與假設替代信用分欄，再比較基準情境；負淨值不代表廠房沒有排放。 系統擴張將避免的替代生產列為信用；負值代表相對基準的淨減量，並非沒有排放。~Separate physical treatment burdens from assumed displacement credits before baseline comparison; negative net impact does not mean a plant emits nothing. System expansion credits avoided production; a negative result means reduction relative to a baseline, not absence of emissions.",
+      "model": "原創教學假設，非現場操作值：處理負荷 B=120 kg CO₂e/t；假設替代材料信用 C=180 kg CO₂e/t。公式 net=B-C，計算得 -60 kg CO₂e/t。適用邊界：功能單位相同、替代品質已假定；不是產品碳足跡認證。~Original teaching assumptions, not field operating values: Treatment burden B=120 kg CO₂e/t; assumed displaced-material credit C=180 kg CO₂e/t. Formula net=B-C gives -60 kg CO₂e/t. Applicability: Same functional unit and assumed substitution quality; not a certified product footprint.",
+      "verify": "針對「替代生產與避免負荷」，把直接排放與信用分欄，改變替代率與回收品質檢查排序是否反轉。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Displaced production and avoided burden, Report direct burdens and credits separately and vary substitution and quality to test ranking reversals. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把信用同時分配給廢棄者和再生品使用者會重複計算。 在「替代生產與避免負荷」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Assigning the same credit to both waste producer and recycled-material user double-counts benefits. Mark where this error can enter the Displaced production and avoided burden flow and name a measurement that distinguishes causes.",
+      "misconception": "生命週期結果為負值表示設備實際完全不排放。~A negative lifecycle result means the equipment physically emits nothing.",
+      "practice": "只將替代信用 C 改成 100，其餘輸入固定。重算結果應由 -60 變成 20 kg CO₂e/t。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only displacement credit C to 100, holding all other inputs fixed. Recalculation changes -60 to 20 kg CO₂e/t. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "lca_net"
+    },
+    {
+      "title": "殘渣、損失與邊界閉合~Residues, losses and boundary closure",
+      "mechanism": "補入不可回收殘渣的處理與損失，透過質量收支檢查有沒有只計好產品而忽略廢棄出口。 分率必須以同一濕基或乾基定義；總質量乘分率才是該成分的質量。~Include treatment of unrecoverable residues and losses and use mass balance to detect product-only accounting that omits waste outlets. Fractions require a consistent wet or dry basis; multiplying total mass by its fraction gives component mass.",
+      "model": "原創教學假設，非現場操作值：總進料 m=1000 kg；目標成分質量分率 f=0.18。公式 m_target=m*f，計算得 180 kg。適用邊界：批次均勻且分樣具代表性；不把質量分率當體積分率。~Original teaching assumptions, not field operating values: Total feed m=1000 kg; target-component mass fraction f=0.18. Formula m_target=m*f gives 180 kg. Applicability: A homogeneous batch and representative sampling; mass fraction is not volume fraction.",
+      "verify": "針對「殘渣、損失與邊界閉合」，秤總樣與分離後成分，保存含水率與分樣方式，檢查回收率。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Residues, losses and boundary closure, Weigh the bulk sample and separated fraction; retain moisture basis and sampling procedure and check recovery. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "濕基與乾基混用會令回收物或負荷被高估。 在「殘渣、損失與邊界閉合」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Mixing wet and dry bases overstates recovered material or loading. Mark where this error can enter the Residues, losses and boundary closure flow and name a measurement that distinguishes causes.",
+      "misconception": "相同百分比不論濕基或乾基都代表相同質量。~The same percentage gives the same mass on wet and dry bases.",
+      "practice": "只將 f 改成 0.22，其餘輸入固定。重算結果應由 180 變成 220 kg。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only f to 0.22, holding all other inputs fixed. Recalculation changes 180 to 220 kg. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "fraction"
+    },
+    {
+      "title": "情境敏感度與排序反轉~Scenario sensitivity and ranking reversal",
+      "mechanism": "改變替代率、品質和電力條件，辨識哪一個假設會使方案排序改變，而非只報單一最佳數字。 系統擴張將避免的替代生產列為信用；負值代表相對基準的淨減量，並非沒有排放。~Vary displacement, quality and electricity conditions to identify assumptions that reverse rankings rather than reporting one favourable number. System expansion credits avoided production; a negative result means reduction relative to a baseline, not absence of emissions.",
+      "model": "原創教學假設，非現場操作值：處理負荷 B=120 kg CO₂e/t；假設替代材料信用 C=180 kg CO₂e/t。公式 net=B-C，計算得 -60 kg CO₂e/t。適用邊界：功能單位相同、替代品質已假定；不是產品碳足跡認證。~Original teaching assumptions, not field operating values: Treatment burden B=120 kg CO₂e/t; assumed displaced-material credit C=180 kg CO₂e/t. Formula net=B-C gives -60 kg CO₂e/t. Applicability: Same functional unit and assumed substitution quality; not a certified product footprint.",
+      "verify": "針對「情境敏感度與排序反轉」，把直接排放與信用分欄，改變替代率與回收品質檢查排序是否反轉。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Scenario sensitivity and ranking reversal, Report direct burdens and credits separately and vary substitution and quality to test ranking reversals. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把信用同時分配給廢棄者和再生品使用者會重複計算。 在「情境敏感度與排序反轉」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Assigning the same credit to both waste producer and recycled-material user double-counts benefits. Mark where this error can enter the Scenario sensitivity and ranking reversal flow and name a measurement that distinguishes causes.",
+      "misconception": "生命週期結果為負值表示設備實際完全不排放。~A negative lifecycle result means the equipment physically emits nothing.",
+      "practice": "只將替代信用 C 改成 100，其餘輸入固定。重算結果應由 -60 變成 20 kg CO₂e/t。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only displacement credit C to 100, holding all other inputs fixed. Recalculation changes -60 to 20 kg CO₂e/t. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "lca_net"
+    },
+    {
+      "title": "資料品質與比較結論~Data quality and comparative interpretation",
+      "mechanism": "把資料版本、邊界、方法及未涵蓋影響交給下一位玩家；本課算例只示範碳清單，不能代表所有環境影響。 活動量乘排放係數給指定邊界的影響，係數需匹配地區、年度與電力方法。~Handoff data versions, boundaries, methods and omitted impacts; these carbon-inventory examples do not represent every environmental impact category. Activity multiplied by a factor gives impact for a specified boundary; factors must match region, year and electricity-accounting method.",
+      "model": "原創教學假設，非現場操作值：用電 E=200 kWh/t；假設電力排放係數 f=0.4 kg CO₂e/kWh。公式 impact=E*f，計算得 80 kg CO₂e/t。適用邊界：f 是教學假設而非任何國家即時係數；只含用電項。~Original teaching assumptions, not field operating values: Electricity E=200 kWh/t; assumed grid factor f=0.4 kg CO₂e/kWh. Formula impact=E*f gives 80 kg CO₂e/t. Applicability: f is a teaching assumption, not a current national factor; only electricity is included.",
+      "verify": "針對「資料品質與比較結論」，保存電表邊界、產量與係數版本，對替代電力情境作敏感度分析。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Data quality and comparative interpretation, Record metering boundary, output and factor version; test alternative electricity scenarios. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把不同年份或系統邊界的係數混用會產生假比較。 在「資料品質與比較結論」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Mixing factors across years or boundaries creates misleading comparisons. Mark where this error can enter the Data quality and comparative interpretation flow and name a measurement that distinguishes causes.",
+      "misconception": "同樣 kWh 用電量在世界任何地方都有相同碳排。~Equal kWh causes identical carbon emissions everywhere.",
+      "practice": "只將 f 改成 0.2 kg CO₂e/kWh，其餘輸入固定。重算結果應由 80 變成 40 kg CO₂e/t。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only grid factor f to 0.2 kg CO₂e/kWh, holding all other inputs fixed. Recalculation changes 80 to 40 kg CO₂e/t. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "lca_energy"
+    }
+  ],
+  "modelChecks": [
+    {
+      "expression": "120/0.75",
+      "expected": 160.0,
+      "unit": "kWh/t qualified output",
+      "description": "b500 unit 1 baseline: Decision purpose and functional unit",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120/0.60",
+      "expected": 200.0,
+      "unit": "kWh/t qualified output",
+      "description": "b500 unit 1 sensitivity: Decision purpose and functional unit",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.08*0.75",
+      "expected": 60.0,
+      "unit": "kg",
+      "description": "b500 unit 2 baseline: Boundary, inventory and recovery yield",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.08*0.85",
+      "expected": 68.0,
+      "unit": "kg",
+      "description": "b500 unit 2 sensitivity: Boundary, inventory and recovery yield",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120/0.75",
+      "expected": 160.0,
+      "unit": "kWh/t qualified output",
+      "description": "b500 unit 3 baseline: Qualified output and quality differences",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120/0.60",
+      "expected": 200.0,
+      "unit": "kWh/t qualified output",
+      "description": "b500 unit 3 sensitivity: Qualified output and quality differences",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "200*0.4",
+      "expected": 80.0,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 4 baseline: Plant electricity and regional factors",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "200*0.2",
+      "expected": 40.0,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 4 sensitivity: Plant electricity and regional factors",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1*80*0.08",
+      "expected": 6.4,
+      "unit": "kg CO₂e",
+      "description": "b500 unit 5 baseline: Transport tonne-kilometres and return trips",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1*140*0.08",
+      "expected": 11.200000000000001,
+      "unit": "kg CO₂e",
+      "description": "b500 unit 5 sensitivity: Transport tonne-kilometres and return trips",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "100*60/(60+40)",
+      "expected": 60.0,
+      "unit": "kg CO₂e",
+      "description": "b500 unit 6 baseline: Shared-burden allocation among products",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "100*50/(50+40)",
+      "expected": 55.55555555555556,
+      "unit": "kg CO₂e",
+      "description": "b500 unit 6 sensitivity: Shared-burden allocation among products",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120-180",
+      "expected": -60,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 7 baseline: Displaced production and avoided burden",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120-100",
+      "expected": 20,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 7 sensitivity: Displaced production and avoided burden",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.18",
+      "expected": 180.0,
+      "unit": "kg",
+      "description": "b500 unit 8 baseline: Residues, losses and boundary closure",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*0.22",
+      "expected": 220.0,
+      "unit": "kg",
+      "description": "b500 unit 8 sensitivity: Residues, losses and boundary closure",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120-180",
+      "expected": -60,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 9 baseline: Scenario sensitivity and ranking reversal",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "120-100",
+      "expected": 20,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 9 sensitivity: Scenario sensitivity and ranking reversal",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "200*0.4",
+      "expected": 80.0,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 10 baseline: Data quality and comparative interpretation",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "200*0.2",
+      "expected": 40.0,
+      "unit": "kg CO₂e/t",
+      "description": "b500 unit 10 sensitivity: Data quality and comparative interpretation",
+      "relativeTolerance": 1e-09
+    }
+  ],
+  "facts": [
+    "所有算例的輸入均為教學假設；官方來源支援方法脈絡，不代表其公開數據。~All numerical inputs are teaching assumptions; official sources support methodological context, not those hypothetical observations.",
+    "原始資料、單位、時間窗與不確定度必須一併保存。~Preserve raw data, units, time windows and uncertainty together."
+  ]
+}

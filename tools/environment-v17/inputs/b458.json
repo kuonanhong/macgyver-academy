@@ -1,0 +1,200 @@
+{
+  "id": "b458",
+  "title": "透水鋪面孔隙維護~Pervious-pavement pore maintenance",
+  "focus": "孔隙堵塞、清掃復原與承載排水協調~Pore clogging, cleaning recovery and structural drainage",
+  "discipline": "environment-urban",
+  "summary": "以「孔隙堵塞、清掃復原與承載排水協調」為主線，依序完成十個專題單元。學徒在場景中辨識設備、列出邊界、重算明示的教學算例、比較量測與模型，最後診斷故障並交付證據。每一單元保留機制、算例、驗證與失效四種學習任務。~Follow pore clogging, cleaning recovery and structural drainage through ten technical units. Identify equipment in the scene, define boundaries, reproduce explicitly hypothetical examples, compare measurements with models, and diagnose faults before handing over evidence. Each unit contains mechanism, calculation, verification and failure tasks.",
+  "units": [
+    {
+      "title": "有效透水面積~Effective permeable area",
+      "mechanism": "只有連通且未被覆蓋的面積參與入滲；施工封閉、塗層和補丁需單獨標示。~Only connected uncovered area infiltrates; map closures, coatings and patches separately.",
+      "model": "原創假想教學算例：Aeff=A(1-fblocked);A=500;fblocked=0.08；計算 500*(1-0.08) = 460 m2。適用限制：面積帳目，不表示入滲能力均一。~Original hypothetical teaching example: Aeff=A(1-fblocked);A=500;fblocked=0.08; calculation 500*(1-0.08) = 460 m2. Applicability: Area accounting does not imply uniform infiltration.",
+      "verify": "標出停車格補丁並更新有效面積。~Map parking-space patches and update effective area.",
+      "failure": "把不透水補丁仍算透水面會高估排水。~Counting impermeable patches overstates drainage.",
+      "misconception": "所有標為透水鋪面的面積都永遠有效。~Every area labeled permeable pavement remains effective forever.",
+      "practice": "在「有效透水面積」的教學模型或試算表中先重現 460 m2，再依驗證任務改動一個輸入、保留其餘條件。對照「把不透水補丁仍算透水面會高估排水。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for effective permeable area, first reproduce 460 m2, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Counting impermeable patches overstates drainage.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "現場入滲測試~Field infiltration testing",
+      "mechanism": "控制試水範圍、預濕和水頭，才能比較維護前後；水量除面積時間得平均速率。~Control test area, prewetting and head for comparisons; volume over area and time gives average rate.",
+      "model": "原創假想教學算例：f=V/(A t);V=0.01 m3;A=0.1 m2;t=0.1 h；計算 0.01/(0.1*0.1) = 1 m/h。適用限制：局部測試，不能直接代表全場。~Original hypothetical teaching example: f=V/(A t);V=0.01 m3;A=0.1 m2;t=0.1 h; calculation 0.01/(0.1*0.1) = 1 m/h. Applicability: Local test, not automatically site-wide.",
+      "verify": "在車輪帶與非車輪帶分別重複測試。~Repeat tests in wheel tracks and non-wheel areas.",
+      "failure": "只挑最乾淨位置會掩蓋高負荷區堵塞。~Testing the cleanest spot hides loaded-area clogging.",
+      "misconception": "一個測點就能代表整個停車場。~One test point represents the entire parking area.",
+      "practice": "在「現場入滲測試」的教學模型或試算表中先重現 1 m/h，再依驗證任務改動一個輸入、保留其餘條件。對照「只挑最乾淨位置會掩蓋高負荷區堵塞。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for field infiltration testing, first reproduce 1 m/h, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Testing the cleanest spot hides loaded-area clogging.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "儲水底層容量~Base storage capacity",
+      "mechanism": "碎石底層用空隙暫存雨水；容量受厚度、有效孔隙與地下水占用影響。~Aggregate-base voids temporarily store rain; thickness, effective porosity and groundwater occupancy constrain capacity.",
+      "model": "原創假想教學算例：V=A d n;A=500;d=0.25;n=0.3；計算 500*0.25*0.3 = 37.5 m3。適用限制：未被地下水占用。~Original hypothetical teaching example: V=A d n;A=500;d=0.25;n=0.3; calculation 500*0.25*0.3 = 37.5 m3. Applicability: No groundwater occupancy.",
+      "verify": "提高地下水位使可用厚度減半。~Raise groundwater so available thickness halves.",
+      "failure": "地下水已淹入底層時仍報全部容量會重複計算。~Reporting full capacity in a flooded base double counts occupied storage.",
+      "misconception": "石層總體積全部都能儲水。~The entire aggregate-base volume stores water.",
+      "practice": "在「儲水底層容量」的教學模型或試算表中先重現 37.5 m3，再依驗證任務改動一個輸入、保留其餘條件。對照「地下水已淹入底層時仍報全部容量會重複計算。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for base storage capacity, first reproduce 37.5 m3, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Reporting full capacity in a flooded base double counts occupied storage.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "細粒輸入與孔喉~Fine-particle loading and pore throats",
+      "mechanism": "細粒可卡在孔喉或深入底層；質量很小也可能優先封住關鍵通路。~Fines lodge in pore throats or migrate downward; small masses can block critical pathways.",
+      "model": "原創假想教學算例：annual solids=load area;load=0.2 kg/m2/year;area=500；計算 0.2*500 = 100 kg/year。適用限制：假想平均沉積量。~Original hypothetical teaching example: annual solids=load area;load=0.2 kg/m2/year;area=500; calculation 0.2*500 = 100 kg/year. Applicability: Hypothetical mean deposition.",
+      "verify": "比較入口邊緣與中間區的粒徑分布。~Compare particle-size distributions at edges and the centre.",
+      "failure": "泥沙由鄰地持續流入會讓清掃效果短暫。~Continuing sediment inflow makes cleaning gains temporary.",
+      "misconception": "只要總泥沙質量不大就不會堵塞。~A small total sediment mass cannot cause clogging.",
+      "practice": "在「細粒輸入與孔喉」的教學模型或試算表中先重現 100 kg/year，再依驗證任務改動一個輸入、保留其餘條件。對照「泥沙由鄰地持續流入會讓清掃效果短暫。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for fine-particle loading and pore throats, first reproduce 100 kg/year, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Continuing sediment inflow makes cleaning gains temporary.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "串聯水力阻力~Hydraulic resistance in series",
+      "mechanism": "表層、底層與土基共同限制通量；改善表層不保證土基能接收更多水。~Surface, base and subgrade constrain flow together; a cleaner surface does not guarantee greater subgrade acceptance.",
+      "model": "原創假想教學算例：Rtot=Rsurface+Rbase+Rsoil;2+1+7；計算 2+1+7 = 10 relative resistance。適用限制：相同截面線性阻力示意。~Original hypothetical teaching example: Rtot=Rsurface+Rbase+Rsoil;2+1+7; calculation 2+1+7 = 10 relative resistance. Applicability: Equal-area linear resistance illustration.",
+      "verify": "將表層阻力減半並比較總阻力變化。~Halve surface resistance and compare total resistance.",
+      "failure": "忽略最慢土基會把表面恢復誤認全系統恢復。~Ignoring the slow subgrade confuses surface recovery with system recovery.",
+      "misconception": "表面入滲變快就代表所有下層都變快。~Faster surface infiltration makes every lower layer faster.",
+      "practice": "在「串聯水力阻力」的教學模型或試算表中先重現 10 relative resistance，再依驗證任務改動一個輸入、保留其餘條件。對照「忽略最慢土基會把表面恢復誤認全系統恢復。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for hydraulic resistance in series, first reproduce 10 relative resistance, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Ignoring the slow subgrade confuses surface recovery with system recovery.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "真空清掃復原率~Vacuum-cleaning recovery",
+      "mechanism": "復原率應以同一位置、同一測試方法的入滲數據衡量，而不是只看清掃後外觀。~Assess recovery using matched location and method, not appearance alone.",
+      "model": "原創假想教學算例：recovery=f_after/f_initial;f_after=0.6;f_initial=0.8；計算 0.6/0.8 = 0.75 fraction。適用限制：初始值為同一測點。~Original hypothetical teaching example: recovery=f_after/f_initial;f_after=0.6;f_initial=0.8; calculation 0.6/0.8 = 0.75 fraction. Applicability: Initial value from the same location.",
+      "verify": "比較清掃前0.2、後0.6和初始0.8的差異。~Compare pre-clean0.2, post-clean0.6 and initial0.8.",
+      "failure": "外觀乾淨但深層細粒仍在，入滲未必全復原。~A clean appearance can leave deeply trapped fines.",
+      "misconception": "清掃一次必定恢復100%初始透水能力。~One cleaning always restores100% of initial permeability.",
+      "practice": "在「真空清掃復原率」的教學模型或試算表中先重現 0.75 fraction，再依驗證任務改動一個輸入、保留其餘條件。對照「外觀乾淨但深層細粒仍在，入滲未必全復原。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for vacuum-cleaning recovery, first reproduce 0.75 fraction, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"A clean appearance can leave deeply trapped fines.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "含水與承載~Moisture and bearing performance",
+      "mechanism": "透水功能與車載承載需共同設計；持續飽和可能改變土基剛度與變形。~Design infiltration and traffic support together; prolonged saturation can change subgrade stiffness and deformation.",
+      "model": "原創假想教學算例：stress=wheel force/contact area;F=20000 N;A=0.04 m2；計算 20000/0.04/1000 = 500 kPa。適用限制：接觸平均應力，非深度應力或承載驗算。~Original hypothetical teaching example: stress=wheel force/contact area;F=20000 N;A=0.04 m2; calculation 20000/0.04/1000 = 500 kPa. Applicability: Mean contact stress, not subsurface stress or capacity verification.",
+      "verify": "比較乾濕情境下的教學撓度資料。~Compare teaching deflection data in dry and wet cases.",
+      "failure": "只追求高孔隙而不驗結構會增加車轍風險。~Pursuing porosity without structural checks increases rutting risk.",
+      "misconception": "透水率越高就一定越耐重車。~Higher permeability always gives better heavy-vehicle support.",
+      "practice": "在「含水與承載」的教學模型或試算表中先重現 500 kPa，再依驗證任務改動一個輸入、保留其餘條件。對照「只追求高孔隙而不驗結構會增加車轍風險。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for moisture and bearing performance, first reproduce 500 kPa, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Pursuing porosity without structural checks increases rutting risk.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "底排失效辨識~Underdrain fault diagnosis",
+      "mechanism": "底層水位和出流需聯合量測；高水位可能來自堵塞、土基飽和或下游頂托。~Use base water level and outlet flow together; high level can arise from blockage, saturation or tailwater.",
+      "model": "原創假想教學算例：net head=0.35-0.25；計算 0.35-0.25 = 0.1 m。適用限制：兩測點同高程基準。~Original hypothetical teaching example: net head=0.35-0.25; calculation 0.35-0.25 = 0.1 m. Applicability: Common elevation datum for both points.",
+      "verify": "同時量測上游水位與出口尾水。~Measure upstream and tailwater levels simultaneously.",
+      "failure": "只看到無出流就判定土壤吸收全部水量可能錯誤。~No discharge does not prove all water infiltrated into soil.",
+      "misconception": "底排無出水永遠代表入滲成效很好。~No underdrain outflow always means excellent infiltration.",
+      "practice": "在「底排失效辨識」的教學模型或試算表中先重現 0.1 m，再依驗證任務改動一個輸入、保留其餘條件。對照「只看到無出流就判定土壤吸收全部水量可能錯誤。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for underdrain fault diagnosis, first reproduce 0.1 m, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"No discharge does not prove all water infiltrated into soil.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "污染滯留與去向~Pollutant retention and fate",
+      "mechanism": "滯留的金屬與粒子仍留在系統內；清掃廢料與換料需記錄質量和去向。~Retained metals and particles remain in the system; record mass and destination of cleaning residues and replacement media.",
+      "model": "原創假想教學算例：retained mass=Min-Mout;Min=12;Mout=3 g；計算 12-3 = 9 g/event。適用限制：事件質量收支。~Original hypothetical teaching example: retained mass=Min-Mout;Min=12;Mout=3 g; calculation 12-3 = 9 g/event. Applicability: Event mass balance.",
+      "verify": "比較截留量與清掃收集量，追蹤未回收部分。~Compare retention with collected cleaning residue and track the remainder.",
+      "failure": "把滯留當分解會遺失污染存量管理。~Treating retention as destruction loses inventory control.",
+      "misconception": "孔隙截住污染物就代表它已完全消失。~A trapped pollutant has completely disappeared.",
+      "practice": "在「污染滯留與去向」的教學模型或試算表中先重現 9 g/event，再依驗證任務改動一個輸入、保留其餘條件。對照「把滯留當分解會遺失污染存量管理。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for pollutant retention and fate, first reproduce 9 g/event, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Treating retention as destruction loses inventory control.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    },
+    {
+      "title": "分區維護優先序~Prioritize maintenance zones",
+      "mechanism": "用入滲衰減、積水頻率和泥沙來源排序，而不是全場固定同頻率清掃。~Prioritize infiltration decline, ponding frequency and sediment sources rather than uniform cleaning schedules.",
+      "model": "原創假想教學算例：risk score=frequency*consequence;3*4；計算 3*4 = 12 ordinal score。適用限制：僅相對排序，序位分數不是失效機率。~Original hypothetical teaching example: risk score=frequency*consequence;3*4; calculation 3*4 = 12 ordinal score. Applicability: Relative ranking only; ordinal scores are not failure probabilities.",
+      "verify": "對三個分區排序並說明資料不足處。~Rank three zones and note data gaps.",
+      "failure": "只依面積大者優先可能漏掉關鍵出入口。~Area-only priority can miss critical entrances.",
+      "misconception": "序位風險12代表12%的失效機率。~An ordinal risk score of12 means12% failure probability.",
+      "practice": "在「分區維護優先序」的教學模型或試算表中先重現 12 ordinal score，再依驗證任務改動一個輸入、保留其餘條件。對照「只依面積大者優先可能漏掉關鍵出入口。」的異常情境，提交基準與變更後數值、單位及一項能區分兩者的量測。~In the teaching model or spreadsheet for prioritize maintenance zones, first reproduce 12 ordinal score, then vary one input following the verification task while holding other conditions fixed. Contrast the fault scenario \"Area-only priority can miss critical entrances.\" and submit baseline and changed values, units, and one measurement that distinguishes them."
+    }
+  ],
+  "sources": [
+    {
+      "id": "v17s-urban-green",
+      "title": "綠色基礎設施類型",
+      "titleEn": "Types of Green Infrastructure",
+      "url": "https://www.epa.gov/green-infrastructure/types-green-infrastructure",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-urban-swmm",
+      "title": "暴雨逕流與低衝擊開發模型",
+      "titleEn": "Storm Water Management Model (SWMM)",
+      "url": "https://www.epa.gov/water-research/storm-water-management-model-swmm",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "architectureNodes": [
+    "表面孔隙~Surface pores",
+    "面層~Surface layer",
+    "儲水底層~Storage base",
+    "土基~Subgrade",
+    "底排~Underdrain",
+    "真空清掃~Vacuum cleaning"
+  ],
+  "place": {
+    "name": "美國EPA總部：方法資料來源機構（非實廠）",
+    "nameEn": "US EPA headquarters: methodology source institution (not a process plant)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 38.8941,
+    "lon": -77.0298,
+    "coordinateScope": "近似機構所在區域位置；依公開地址作教材地圖代表點，非建物入口、實廠、實測或導航位置。",
+    "coordinateScopeEn": "Approximate institution-area location inferred from its public address for the teaching map; not a building entrance, process plant, surveyed point or navigation coordinate.",
+    "locationSourceUrl": "https://www.epa.gov/aboutepa/visiting-epa-headquarters",
+    "locationVerified": "2026-10-23"
+  },
+  "history": "本課以來源所列的技術指引與研究為閱讀脈絡，並非重建某一設施的工程沿革；算例、數據與場景參數皆為原創教學假設。比較舊方法與感測、控制、資源回收整合的方法時，先固定處理功能及系統邊界，再評估效率與可靠度。~The cited technical guidance and research provide a reading pathway, not the engineering history of a particular facility. Examples, data and scene parameters are original teaching assumptions. When comparing conventional methods with integrated sensing, control and resource recovery, hold the treatment function and system boundary fixed before assessing efficiency and reliability.",
+  "modelChecks": [
+    {
+      "expression": "500*(1-0.08)",
+      "expected": 460,
+      "unit": "m2",
+      "description": "有效透水面積~Effective permeable area"
+    },
+    {
+      "expression": "0.01/(0.1*0.1)",
+      "expected": 1,
+      "unit": "m/h",
+      "description": "現場入滲測試~Field infiltration testing"
+    },
+    {
+      "expression": "500*0.25*0.3",
+      "expected": 37.5,
+      "unit": "m3",
+      "description": "儲水底層容量~Base storage capacity"
+    },
+    {
+      "expression": "0.2*500",
+      "expected": 100,
+      "unit": "kg/year",
+      "description": "細粒輸入與孔喉~Fine-particle loading and pore throats"
+    },
+    {
+      "expression": "2+1+7",
+      "expected": 10,
+      "unit": "relative resistance",
+      "description": "串聯水力阻力~Hydraulic resistance in series"
+    },
+    {
+      "expression": "0.6/0.8",
+      "expected": 0.75,
+      "unit": "fraction",
+      "description": "真空清掃復原率~Vacuum-cleaning recovery"
+    },
+    {
+      "expression": "20000/0.04/1000",
+      "expected": 500,
+      "unit": "kPa",
+      "description": "含水與承載~Moisture and bearing performance"
+    },
+    {
+      "expression": "0.35-0.25",
+      "expected": 0.1,
+      "unit": "m",
+      "description": "底排失效辨識~Underdrain fault diagnosis"
+    },
+    {
+      "expression": "12-3",
+      "expected": 9,
+      "unit": "g/event",
+      "description": "污染滯留與去向~Pollutant retention and fate"
+    },
+    {
+      "expression": "3*4",
+      "expected": 12,
+      "unit": "ordinal score",
+      "description": "分區維護優先序~Prioritize maintenance zones"
+    }
+  ]
+}

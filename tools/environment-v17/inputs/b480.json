@@ -1,0 +1,299 @@
+{
+  "id": "b480",
+  "title": "焚化餘熱鍋爐整合~Waste-heat boiler integration for incinerators",
+  "focus": "連結焚化熱輸入、傳熱阻力與蒸汽循環的能量平衡~Connect incinerator heat input, thermal resistance and the steam cycle",
+  "discipline": "environment-waste",
+  "summary": "本課以「連結焚化熱輸入、傳熱阻力與蒸汽循環的能量平衡」為主軸，依序處理焚化熱輸入基準、給水與蒸汽焓差、煙側差壓與堵塞診斷、循環泵與給水輔機、量測誤差與能量閉合。十個單元各包含機制、算例、量測驗證及失效診斷；數值均為明示的原創教學假設，不能直接用作工程設計、排放限值或設備設定。~This course focuses on Connect incinerator heat input, thermal resistance and the steam cycle, progressing through Incineration heat-input basis, Feedwater-to-steam enthalpy rise, Gas-side pressure drop and blockage, Circulation and feedwater auxiliaries, Measurement error and energy closure. Ten units each address mechanism, worked calculation, measurement verification and failure diagnosis. Numbers are explicit original teaching assumptions, not design values, emission limits or equipment settings.",
+  "history": "這項技術的學習脈絡由單一設備處理，逐步擴展至物質與能量收支、監測品質和生命週期比較。本課將官方方法文件作為查核入口，並以獨立編寫的假想數據練習；參考文件的年代與地區不代表其規範在所有場址適用。~The learning progression expands from individual treatment equipment to mass and energy balances, monitoring quality and lifecycle comparison. Official method documents provide verification starting points while independently authored hypothetical data support practice; a document date or jurisdiction does not establish applicability to every site.",
+  "place": {
+    "name": "教學參考區域：美國北卡羅來納研究三角園區（非本課實拍場址）",
+    "nameEn": "Reference region: Research Triangle Park, North Carolina (not a photographed course facility)",
+    "country": "美國",
+    "countryEn": "United States",
+    "lat": 35.9,
+    "lon": -78.9,
+    "scope": "Approximate institutional reference region; not a facility entrance, installation location or visitor permission."
+  },
+  "architectureNodes": [
+    "焚化熱輸入基準~Incineration heat-input basis",
+    "給水與蒸汽焓差~Feedwater-to-steam enthalpy rise",
+    "煙側差壓與堵塞診斷~Gas-side pressure drop and blockage",
+    "循環泵與給水輔機~Circulation and feedwater auxiliaries",
+    "量測誤差與能量閉合~Measurement error and energy closure",
+    "證據與交接~Evidence and handoff"
+  ],
+  "sources": [
+    {
+      "id": "v17s-waste-wi",
+      "title": "歐盟 JRC 廢棄物焚化 BREF（2019）",
+      "titleEn": "JRC Waste Incineration BREF (2019)",
+      "url": "https://publications.jrc.ec.europa.eu/repository/handle/JRC118637",
+      "organization": "European Commission Joint Research Centre",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-control",
+      "title": "EPA 空氣污染防制成本手冊",
+      "titleEn": "EPA Air Pollution Control Cost Manual",
+      "url": "https://www.epa.gov/economic-and-cost-analysis-air-pollution-regulations/cost-reports-and-guidance-air-pollution",
+      "organization": "US EPA",
+      "accessed": "2026-10-23"
+    },
+    {
+      "id": "v17s-waste-wiindex",
+      "title": "歐盟廢棄物焚化技術參考入口",
+      "titleEn": "EU Waste Incineration reference",
+      "url": "https://bureau-industrial-transformation.jrc.ec.europa.eu/reference/waste-incineration-0",
+      "organization": "European Commission Joint Research Centre",
+      "accessed": "2026-10-23"
+    }
+  ],
+  "units": [
+    {
+      "title": "焚化熱輸入基準~Incineration heat-input basis",
+      "mechanism": "先固定濕基低位熱值與進料時間窗，再討論鍋爐的熱回收比例。 燃料熱輸入由濕基進料量與對應低位熱值決定；相同噸數可能帶入不同熱量。~Fix wet-basis lower heating value and feed interval before discussing boiler heat recovery. Fuel heat input is wet feed multiplied by its corresponding lower heating value; equal tonnage can carry different heat input.",
+      "model": "原創教學假設，非現場操作值：濕基進料 m=2000 kg/h；假設低位熱值 LHV=8 MJ/kg。公式 P=m*LHV/3600，計算得 4.44444 MW。適用邊界：平均熱值與穩態完全燃燒上限；不包含未燃損失及輔助燃料。~Original teaching assumptions, not field operating values: Wet-feed rate m=2000 kg/h; assumed lower heating value LHV=8 MJ/kg. Formula P=m*LHV/3600 gives 4.44444 MW. Applicability: Mean heating value and a steady complete-combustion input estimate; unburned losses and auxiliary fuel are excluded.",
+      "verify": "針對「焚化熱輸入基準」，依代表性分樣求含水與熱值，和料重、蒸汽負荷及未燃分交叉檢查。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Incineration heat-input basis, Use representative samples for moisture and heating value, cross-checking feed mass, steam load and unburned residue. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只控制質量流率而忽略含水與熱值，會造成熱負荷波動。 在「焚化熱輸入基準」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Mass-flow control alone misses heat-load changes caused by moisture and heating value. Mark where this error can enter the Incineration heat-input basis flow and name a measurement that distinguishes causes.",
+      "misconception": "每天處理噸數相同就代表爐內熱輸入完全相同。~Equal daily tonnage guarantees identical furnace heat input.",
+      "practice": "只將 LHV 改成 6 MJ/kg，其餘輸入固定。重算結果應由 4.44444 變成 3.33333 MW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only LHV to 6 MJ/kg, holding all other inputs fixed. Recalculation changes 4.44444 to 3.33333 MW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "fuelheat"
+    },
+    {
+      "title": "煙氣顯熱曲線~Flue-gas sensible-heat curve",
+      "mechanism": "用各受熱面前後溫度建立能量梯度，辨認熱量移除的主要區段。 顯熱依質量流率、比熱與溫差線性變動；相變潛熱必須另外計入。~Use temperatures across heating surfaces to map energy gradients and identify major heat-removal sections. Sensible heat changes with mass flow, heat capacity and temperature difference; latent heat requires a separate term.",
+      "model": "原創教學假設，非現場操作值：質量流率 m=2 kg/s；比熱 cp=1.5 kJ/(kg·K)；溫差 ΔT=40 K。公式 P=m*cp*dT，計算得 120 kW。適用邊界：固定比熱、無相變、定常流；不可代替完整設備熱平衡。~Original teaching assumptions, not field operating values: Mass flow m=2 kg/s; heat capacity cp=1.5 kJ/(kg·K); temperature difference ΔT=40 K. Formula P=m*cp*dT gives 120 kW. Applicability: Constant heat capacity, no phase change and steady flow; not a complete equipment heat balance.",
+      "verify": "針對「煙氣顯熱曲線」，在同一時段讀取流量與上下游溫度，加入散熱項後檢查能量殘差。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Flue-gas sensible-heat curve, Record flow and upstream/downstream temperatures over one interval; include losses and check the energy residual. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "忽略水分蒸發會把熱量全部誤算為升溫。 在「煙氣顯熱曲線」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Ignoring evaporation incorrectly assigns all heat to temperature rise. Mark where this error can enter the Flue-gas sensible-heat curve flow and name a measurement that distinguishes causes.",
+      "misconception": "水分蒸發的能量已完全包含在固定比熱乘溫差內。~Evaporation energy is fully included in constant heat capacity times temperature rise.",
+      "practice": "只將 ΔT 改成 50 K，其餘輸入固定。重算結果應由 120 變成 150 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only ΔT to 50 K, holding all other inputs fixed. Recalculation changes 120 to 150 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "sensible"
+    },
+    {
+      "title": "給水與蒸汽焓差~Feedwater-to-steam enthalpy rise",
+      "mechanism": "過熱、汽化與給水加熱需以焓統一計算，不能只比溫度。 蒸汽產率由熱功率除以比焓提升；壓力、溫度和給水狀態都影響焓差。~Unify superheating, vaporization and feedwater heating through enthalpy rather than temperature alone. Steam rate is heat duty divided by specific enthalpy rise; pressure, temperature and feedwater condition determine that rise.",
+      "model": "原創教學假設，非現場操作值：有效熱功率 P=5 MW；給水至蒸汽比焓差 Δh=2500 kJ/kg。公式 msteam=P*1000/dh，計算得 2 kg/s。適用邊界：Δh 為假想狀態表輸入，忽略排污與熱損失；不是鍋爐操作條件。~Original teaching assumptions, not field operating values: Useful heat P=5 MW; feedwater-to-steam enthalpy rise Δh=2500 kJ/kg. Formula msteam=P*1000/dh gives 2 kg/s. Applicability: Δh is a hypothetical property-table input; blowdown and losses are omitted and no boiler operating condition is specified.",
+      "verify": "針對「給水與蒸汽焓差」，從同一熱力狀態表記錄入口出口焓，再核對蒸汽流量與熱輸入。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Feedwater-to-steam enthalpy rise, Record inlet and outlet enthalpies from one property basis and cross-check steam flow and heat input. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只用溫差估蒸汽生成會漏掉汽化潛熱。 在「給水與蒸汽焓差」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Temperature difference alone misses vaporization enthalpy in steam generation. Mark where this error can enter the Feedwater-to-steam enthalpy rise flow and name a measurement that distinguishes causes.",
+      "misconception": "產生蒸汽只需計算水的顯熱，不需要焓差。~Steam generation needs only liquid sensible heat, not enthalpy rise.",
+      "practice": "只將 Δh 改成 2700 kJ/kg，其餘輸入固定。重算結果應由 2 變成 1.85185 kg/s。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Δh to 2700 kJ/kg, holding all other inputs fixed. Recalculation changes 2 to 1.85185 kg/s. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "steam"
+    },
+    {
+      "title": "積灰造成的總熱阻~Overall resistance from deposits",
+      "mechanism": "比較清潔與積灰工況的有效傳熱係數，並將煙氣溫度變化與熱值變動分開。 傳熱能力由總熱阻與面積控制，積灰增加熱阻而降低有效 U。~Compare effective coefficients for clean and fouled conditions, separating gas-temperature changes from fuel variations. Heat transfer depends on overall thermal resistance and area; deposits add resistance and reduce effective U.",
+      "model": "原創教學假設，非現場操作值：傳熱係數 U=40 W/(m²·K)；面積 A=200 m²；假設平均溫差 ΔT=150 K。公式 P=U*A*dT/1000，計算得 1200 kW。適用邊界：給定平均溫差、固定物性，不解局部熱點與腐蝕。~Original teaching assumptions, not field operating values: Heat-transfer coefficient U=40 W/(m²·K); area A=200 m²; assumed mean driving temperature ΔT=150 K. Formula P=U*A*dT/1000 gives 1200 kW. Applicability: Specified mean temperature driving force and fixed properties; local hot spots and corrosion are not resolved.",
+      "verify": "針對「積灰造成的總熱阻」，用熱側與冷側能量收支反推 U，對照積灰前後差壓及熱像。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Overall resistance from deposits, Infer U from hot- and cold-side balances and compare pressure drop and thermal images before and after fouling. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "煙溫升高可能來自傳熱面積灰，而不一定是熱值增加。 在「積灰造成的總熱阻」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Higher flue temperature can indicate fouling rather than higher fuel heating value. Mark where this error can enter the Overall resistance from deposits flow and name a measurement that distinguishes causes.",
+      "misconception": "傳熱面積不變時，積灰不會影響熱回收功率。~Fouling cannot change heat recovery when surface area is unchanged.",
+      "practice": "只將 U 改成 30 W/(m²·K)，其餘輸入固定。重算結果應由 1200 變成 900 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only U to 30 W/(m²·K), holding all other inputs fixed. Recalculation changes 1200 to 900 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "ua"
+    },
+    {
+      "title": "煙側差壓與堵塞診斷~Gas-side pressure drop and blockage",
+      "mechanism": "熱傳下降與差壓上升同時出現，較能支持積灰假說；單一訊號不足以確診。 差壓反映測點間總阻力，須配合同時的流量與氣體狀態判讀。~Concurrent heat-transfer decline and pressure-drop rise better support fouling than either signal alone. Differential pressure reflects resistance between taps and needs concurrent flow and gas-condition data.",
+      "model": "原創教學假設，非現場操作值：量測前壓 p1=1800 Pa；後壓 p2=600 Pa。公式 dp=p1-p2，計算得 1200 Pa。適用邊界：相同基準壓力與測點；單一差壓不能區分所有堵塞或洩漏原因。~Original teaching assumptions, not field operating values: Upstream pressure p1=1800 Pa; downstream pressure p2=600 Pa. Formula dp=p1-p2 gives 1200 Pa. Applicability: Common pressure reference and specified taps; one differential cannot identify every blockage or leak.",
+      "verify": "針對「煙側差壓與堵塞診斷」，檢查導壓管、零點和測點位置，再把差壓與流量趨勢一起畫出。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Gas-side pressure drop and blockage, Inspect impulse lines, zero and tap locations, then plot pressure drop with flow. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "導壓管堵塞可能被誤判為設備阻塞。 在「煙側差壓與堵塞診斷」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~A blocked impulse line can be mistaken for equipment blockage. Mark where this error can enter the Gas-side pressure drop and blockage flow and name a measurement that distinguishes causes.",
+      "misconception": "只要差壓上升，就能確定濾材一定破損。~A higher differential pressure proves the filter medium is damaged.",
+      "practice": "只將 p1 改成 2200 Pa，其餘輸入固定。重算結果應由 1200 變成 1600 Pa。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only p1 to 2200 Pa, holding all other inputs fixed. Recalculation changes 1200 to 1600 Pa. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pressure"
+    },
+    {
+      "title": "進料水分的潛熱代價~Latent-heat cost of feed moisture",
+      "mechanism": "原料中的水分隨排氣離開時攜帶能量，冷凝回收情境須另處理腐蝕與水質。 相變將熱轉為水蒸氣焓；潮濕材料處理中，蒸發可能比顯熱更耗能。~Water leaving with exhaust carries energy; condensing-recovery scenarios require separate corrosion and water-quality treatment. Phase change transfers heat into water-vapour enthalpy; evaporation can dominate sensible heating in wet-material processing.",
+      "model": "原創教學假設，非現場操作值：蒸發水量 m=100 kg/h；假設潛熱 hfg=2257 kJ/kg。公式 P=m*hfg/3600，計算得 62.6944 kW。適用邊界：潛熱值只代表近常壓沸點示例，不模擬其他溫壓下的完整乾燥。~Original teaching assumptions, not field operating values: Evaporated water m=100 kg/h; assumed latent heat hfg=2257 kJ/kg. Formula P=m*hfg/3600 gives 62.6944 kW. Applicability: The latent heat represents a near-atmospheric boiling example, not full drying at other conditions.",
+      "verify": "針對「進料水分的潛熱代價」，做乾物質與水分收支，核對排氣含濕量及冷凝水。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Latent-heat cost of feed moisture, Close dry-solids and water balances, checking exhaust humidity and condensate. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "把材料減重全當作有機物破壞，會混淆乾燥與反應。 在「進料水分的潛熱代價」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Treating all weight loss as organic destruction confuses drying with reaction. Mark where this error can enter the Latent-heat cost of feed moisture flow and name a measurement that distinguishes causes.",
+      "misconception": "濕料減重表示同樣質量的有機物已被分解。~A wet-material mass decrease means the same mass of organics was degraded.",
+      "practice": "只將 m 改成 130 kg/h，其餘輸入固定。重算結果應由 62.6944 變成 81.5028 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only m to 130 kg/h, holding all other inputs fixed. Recalculation changes 62.6944 to 81.5028 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "evaporation"
+    },
+    {
+      "title": "循環泵與給水輔機~Circulation and feedwater auxiliaries",
+      "mechanism": "把泵送揚程與流量連回循環需求，避免淨發電評估遺漏輔機。 泵功率需包含靜揚程、摩擦和局部損失的總揚程；效率隨運轉點變動。~Relate pumping head and flow to cycle demand so net-generation assessment includes auxiliaries. Pump duty uses total head including static lift, friction and local losses; efficiency varies with operating point.",
+      "model": "原創教學假設，非現場操作值：水量 Q=0.01 m³/s；總揚程 H=15 m；ρ=1000 kg/m³；g=9.81 m/s²；η=0.65。公式 P=rho*g*Q*H/eta/1000，計算得 2.26385 kW。適用邊界：清水密度與固定效率概念估算，不替代含固體泵選型或防爆設計。~Original teaching assumptions, not field operating values: Water flow Q=0.01 m³/s; total head H=15 m; ρ=1000 kg/m³; g=9.81 m/s²; η=0.65. Formula P=rho*g*Q*H/eta/1000 gives 2.26385 kW. Applicability: A water-density, fixed-efficiency estimate, not solids-pump selection or hazardous-area design.",
+      "verify": "針對「循環泵與給水輔機」，同時讀取液位、流量、壓力和電力，核對實際工作點。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Circulation and feedwater auxiliaries, Read levels, flow, pressure and power together to verify the actual operating point. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "管道堵塞會提高阻力，固定額定功率不代表固定流量。 在「循環泵與給水輔機」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Pipe blockage raises resistance; a fixed motor rating does not imply fixed flow. Mark where this error can enter the Circulation and feedwater auxiliaries flow and name a measurement that distinguishes causes.",
+      "misconception": "馬達額定功率相同的泵在任何管線都提供相同流量。~Pumps with the same motor rating deliver the same flow through any pipe system.",
+      "practice": "只將 H 改成 20 m，其餘輸入固定。重算結果應由 2.26385 變成 3.01846 kW。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only H to 20 m, holding all other inputs fixed. Recalculation changes 2.26385 to 3.01846 kW. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "pump"
+    },
+    {
+      "title": "淨電力與熱利用邊界~Net electricity and useful-heat boundary",
+      "mechanism": "發電、供熱與廠內自用要分項記帳，聯產效率不能重複計入。 淨輸出必須扣除系統內輔機；邊界決定哪些用電應納入。~Account separately for electricity, useful heat and internal consumption without double-counting cogeneration. Net output subtracts internal auxiliaries; the chosen system boundary determines which loads belong in the account.",
+      "model": "原創教學假設，非現場操作值：毛發電 Eg=1200 kWh/d；風機 Ef=160 kWh/d；泵 Ep=90 kWh/d。公式 Enet=Eg-Ef-Ep，計算得 950 kWh/d。適用邊界：同一日與同一電表邊界，未計外購熱和建造能耗。~Original teaching assumptions, not field operating values: Gross generation Eg=1200 kWh/d; fans Ef=160 kWh/d; pumps Ep=90 kWh/d. Formula Enet=Eg-Ef-Ep gives 950 kWh/d. Applicability: Same day and metering boundary; purchased heat and embodied construction energy are excluded.",
+      "verify": "針對「淨電力與熱利用邊界」，用分表與主表核對電量和，避免把外部用戶用電算作設備損失。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Net electricity and useful-heat boundary, Reconcile submeters with the main meter and avoid charging external users to equipment losses. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "只報毛發電會掩蓋高阻力、低效率輔機的影響。 在「淨電力與熱利用邊界」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Reporting gross generation hides energy penalties from high-resistance, inefficient auxiliaries. Mark where this error can enter the Net electricity and useful-heat boundary flow and name a measurement that distinguishes causes.",
+      "misconception": "毛發電量就是可售出的淨電量。~Gross generation equals net electricity available for export.",
+      "practice": "只將 Ef 改成 220 kWh/d，其餘輸入固定。重算結果應由 950 變成 890 kWh/d。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only Ef to 220 kWh/d, holding all other inputs fixed. Recalculation changes 950 to 890 kWh/d. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "netpower"
+    },
+    {
+      "title": "量測誤差與能量閉合~Measurement error and energy closure",
+      "mechanism": "同時核對燃料熱輸入、蒸汽流量和焓差，找出能量殘差是否超過量測不確定度。 熱功率 P=mdot*Δh；獨立小誤差時，相對方差近似相加，焓差需由壓力、溫度與狀態資料求得。~Reconcile fuel heat, steam flow and enthalpy rise and test whether the residual exceeds measurement uncertainty. Thermal power P=mdot*Δh; relative variances approximately add for independent small errors, and enthalpy rise requires pressure, temperature and state data.",
+      "model": "原創教學假設，非現場操作值：蒸汽質量流率相對標準不確定度 um=0.04；比焓差相對標準不確定度 uh=0.06。公式 uP=sqrt(um²+uh²)，計算得 0.072111 relative standard uncertainty of thermal power。適用邊界：質量流率和焓差相互獨立的一階傳播；若共享感測器或校正則需共變異，不是完整鍋爐效率不確定度。~Original teaching assumptions, not field operating values: Relative standard uncertainty in steam mass flow um=0.04 and specific-enthalpy rise uh=0.06. Formula uP=sqrt(um²+uh²) gives 0.072111 relative standard uncertainty of thermal power. Applicability: First-order propagation for independent mass flow and enthalpy rise; shared sensors or calibration require covariance, and this is not total boiler-efficiency uncertainty.",
+      "verify": "針對「量測誤差與能量閉合」，把流量計、壓溫感測與蒸汽表狀態模型的不確定來源分開，核對時間窗與焓基準。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Measurement error and energy closure, Separate uncertainty from flowmeter, pressure/temperature sensors and steam-state model and check time windows and enthalpy reference. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "忽略濕蒸汽狀態或把總焓當焓差會形成系統偏差，重複量測不會自動消除。 在「量測誤差與能量閉合」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~Ignoring wet-steam state or substituting absolute enthalpy for enthalpy rise creates systematic bias that repetitions do not remove. Mark where this error can enter the Measurement error and energy closure flow and name a measurement that distinguishes causes.",
+      "misconception": "蒸汽流量量得準就能保證回收熱功率也完全準確。~Accurate steam flow alone guarantees fully accurate recovered thermal power.",
+      "practice": "只將焓差不確定度 uh 改成 0.03，其餘輸入固定。重算結果應由 0.072111 變成 0.05 relative standard uncertainty of thermal power。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only enthalpy-rise uncertainty uh to 0.03, holding all other inputs fixed. Recalculation changes 0.072111 to 0.05 relative standard uncertainty of thermal power. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "thermal_uncertainty"
+    },
+    {
+      "title": "清灰維護與長期產能~Cleaning maintenance and long-term output",
+      "mechanism": "比較延後維護造成的降額和安排停機時間，將單日高產量放回年度尺度。 可用率描述指定期間能工作的時間比例，並不等於合格產出率。~Compare derating from delayed maintenance with planned downtime and place daily output in an annual context. Availability is the working-time fraction over a specified period, not the compliant-output fraction.",
+      "model": "原創教學假設，非現場操作值：總計畫時數 T=1000 h；停機 t=60 h。公式 availability=(T-t)/T*100，計算得 94 %。適用邊界：明確定義計畫時間與停機分類；未納入性能降額或品質不合格。~Original teaching assumptions, not field operating values: Scheduled time T=1000 h; downtime t=60 h. Formula availability=(T-t)/T*100 gives 94 %. Applicability: Defined scheduled time and downtime categories; derating and rejected output are excluded.",
+      "verify": "針對「清灰維護與長期產能」，對照事件紀錄、備援切換和品質資料，分開統計不可用及不合格時間。 保存原始資料、單位與校正日期，以本步模型和另一種可能原因比較。~For Cleaning maintenance and long-term output, Compare event logs, backup switching and quality data, separating unavailable and nonconforming periods. Retain raw data, units and calibration date; compare the model with one alternative explanation.",
+      "failure": "設備在線但數據失效或處理不合格時，不能當作完整有效服務。 在「清灰維護與長期產能」的流程圖圈出錯誤可能進入的位置，再指定能區分原因的量測。~An online unit with invalid data or nonconforming treatment is not fully effective service. Mark where this error can enter the Cleaning maintenance and long-term output flow and name a measurement that distinguishes causes.",
+      "misconception": "可用率 100% 就能保證所有產出或量測都合格。~One hundred percent availability guarantees all output and measurements conform.",
+      "practice": "只將 t 改成 90 h，其餘輸入固定。重算結果應由 94 變成 91 %。先預測方向，再核對單位與假設；用離線模擬或已提供資料完成，不操作現場設備。~Change only downtime to 90 h, holding all other inputs fixed. Recalculation changes 94 to 91 %. Predict the direction first, then check units and assumptions; use offline simulation or supplied data without operating field equipment.",
+      "modelType": "availability"
+    }
+  ],
+  "modelChecks": [
+    {
+      "expression": "2000*8/3600",
+      "expected": 4.444444444444445,
+      "unit": "MW",
+      "description": "b480 unit 1 baseline: Incineration heat-input basis",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2000*6/3600",
+      "expected": 3.3333333333333335,
+      "unit": "MW",
+      "description": "b480 unit 1 sensitivity: Incineration heat-input basis",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2*1.5*40",
+      "expected": 120.0,
+      "unit": "kW",
+      "description": "b480 unit 2 baseline: Flue-gas sensible-heat curve",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2*1.5*50",
+      "expected": 150.0,
+      "unit": "kW",
+      "description": "b480 unit 2 sensitivity: Flue-gas sensible-heat curve",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "5*1000/2500",
+      "expected": 2.0,
+      "unit": "kg/s",
+      "description": "b480 unit 3 baseline: Feedwater-to-steam enthalpy rise",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "5*1000/2700",
+      "expected": 1.8518518518518519,
+      "unit": "kg/s",
+      "description": "b480 unit 3 sensitivity: Feedwater-to-steam enthalpy rise",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "40*200*150/1000",
+      "expected": 1200.0,
+      "unit": "kW",
+      "description": "b480 unit 4 baseline: Overall resistance from deposits",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "30*200*150/1000",
+      "expected": 900.0,
+      "unit": "kW",
+      "description": "b480 unit 4 sensitivity: Overall resistance from deposits",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1800-600",
+      "expected": 1200,
+      "unit": "Pa",
+      "description": "b480 unit 5 baseline: Gas-side pressure drop and blockage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "2200-600",
+      "expected": 1600,
+      "unit": "Pa",
+      "description": "b480 unit 5 sensitivity: Gas-side pressure drop and blockage",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "100*2257/3600",
+      "expected": 62.69444444444444,
+      "unit": "kW",
+      "description": "b480 unit 6 baseline: Latent-heat cost of feed moisture",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "130*2257/3600",
+      "expected": 81.50277777777778,
+      "unit": "kW",
+      "description": "b480 unit 6 sensitivity: Latent-heat cost of feed moisture",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*9.81*0.01*15/0.65/1000",
+      "expected": 2.263846153846154,
+      "unit": "kW",
+      "description": "b480 unit 7 baseline: Circulation and feedwater auxiliaries",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1000*9.81*0.01*20/0.65/1000",
+      "expected": 3.0184615384615388,
+      "unit": "kW",
+      "description": "b480 unit 7 sensitivity: Circulation and feedwater auxiliaries",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1200-160-90",
+      "expected": 950,
+      "unit": "kWh/d",
+      "description": "b480 unit 8 baseline: Net electricity and useful-heat boundary",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "1200-220-90",
+      "expected": 890,
+      "unit": "kWh/d",
+      "description": "b480 unit 8 sensitivity: Net electricity and useful-heat boundary",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "sqrt(0.04**2+0.06**2)",
+      "expected": 0.07211102550927978,
+      "unit": "relative standard uncertainty of thermal power",
+      "description": "b480 unit 9 baseline: Measurement error and energy closure",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "sqrt(0.04**2+0.03**2)",
+      "expected": 0.05,
+      "unit": "relative standard uncertainty of thermal power",
+      "description": "b480 unit 9 sensitivity: Measurement error and energy closure",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(1000-60)/1000*100",
+      "expected": 94.0,
+      "unit": "%",
+      "description": "b480 unit 10 baseline: Cleaning maintenance and long-term output",
+      "relativeTolerance": 1e-09
+    },
+    {
+      "expression": "(1000-90)/1000*100",
+      "expected": 91.0,
+      "unit": "%",
+      "description": "b480 unit 10 sensitivity: Cleaning maintenance and long-term output",
+      "relativeTolerance": 1e-09
+    }
+  ],
+  "facts": [
+    "所有算例的輸入均為教學假設；官方來源支援方法脈絡，不代表其公開數據。~All numerical inputs are teaching assumptions; official sources support methodological context, not those hypothetical observations.",
+    "原始資料、單位、時間窗與不確定度必須一併保存。~Preserve raw data, units, time windows and uncertainty together."
+  ]
+}

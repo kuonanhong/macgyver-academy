@@ -1,0 +1,35 @@
+V17 scene integration
+
+Keep public/academy/immersive-v16.js: scene-v17-core.js imports its 10 validated warm-up model implementations.
+Load immersive-v17.js and immersive-v17.css only when entering the scene route.
+Use module.mountImmersiveScene(host, course, options) with:
+  en: boolean
+  step: currently selected course step (optional)
+  sceneAssets: data/scene-assets-v17.json (new photo/panorama manifest)
+  scenePhotos, photos: existing V16 photo data (fallback)
+  storageOwner: user.id or guest; separates browser scene observations by owner
+  onPractice({courseId,stepId}): enter the existing workshop route
+  onExplore({courseId,equipment|component,kind,assisted}) optional
+  onObservation({courseId,stepId,at,kind,values,value,unit,detail,formula,scope,assisted}) optional
+
+Returned function disposes listeners, Resize/Intersection observers, pending frames and WebGL resources.
+Returned function.getState() exposes QA state, phase, values, observations, active panorama and assetId.
+No canvas, photo download, animation or network access occurs during module import.
+Images load only on mounted scene / explicit selection. Remote-only imagery requires explicit selection.
+All computations and completion controls remain usable when WebGL or Canvas2D is unavailable.
+Canvas2D provides original inspectable equipment for 20 categories; WebGL provides spherical rendering
+only for explicit real-panorama, equirectangular, 2:1 images. The sphere is a fixed photo viewpoint,
+not photogrammetric translation. Thirdperson equipment geometry is an unregistered teaching model.
+The four-phase assist button completes one phase per click, marks the action assisted and saves
+observations separately from independent workbench proficiency. It does not bypass member access.
+
+Validation: node tools/scene-v17/test-scene-v17.mjs
+
+V17 final environment coverage: every b401–b500 ID has an explicit warm-up model mapping.
+Eight environment models cover constituent mass, event runoff/storage, binary sorting, gas
+mass rate, incoherent acoustic levels, sensible heat flow, low-pressure transport input
+power and linear calibration. They do not replace the 1,000 authored unit calculations.
+
+Additional validation:
+  node tools/scene-v17/test-workshop-assist-v17.mjs
+  node tools/environment-v17/test-workbench-v17.mjs
