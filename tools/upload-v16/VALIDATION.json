@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "scope": "V16 one-command SSH uploader; local bare Git fixtures only",
+  "uploader_tests": 15,
+  "legacy_sync_tests": 2,
+  "final_regression_tests": 2,
+  "syntax": {
+    "bash": "PASS",
+    "python_ast": "PASS"
+  },
+  "checks": [
+    "dry-run never changes either remote",
+    "only added/modified website files; no deletion or force",
+    "Unicode public paths remain unchanged on rerun",
+    "unknown remote files preserved",
+    "private assets absent from public source commit",
+    "existing arbitrary custom model weights supported",
+    "no model downloads",
+    "local missing private files retained remotely",
+    "credential/password/hash and Office-content checks",
+    "owner-private/portable-data excluded",
+    "private visibility fails closed",
+    "unowned state folder never reset",
+    "content-addressed chunk checkpoint interruption and resume",
+    "private assets restore with per-part and whole-file SHA-256",
+    "four attempts without force push",
+    "V16 owner-index/owner-courses/owner-resources excluded from protected export",
+    "V16 macgyver.sh compare and upload-all.sh --dry-run accept legacy --skip-data without changing either remote"
+  ],
+  "limits": [
+    "No external GitHub push was performed",
+    "No authenticated GitHub API request was performed; visibility branches covered with mocks",
+    "No real macOS/Windows hardware execution",
+    "Secret checks are pattern-based and do not provide OCR or complete DLP",
+    "Known uploaded chunks resume; an interrupted Git pack may retransmit"
+  ],
+  "files": {
+    "Upload_MacGyver_v16_SSH.sh": "a7d0888fa79901233f66b38dac10eeca5eec68154b6adcf8d0843b0d968201e0",
+    "tools/upload-v16/upload.py": "d5cb7fb21570aba54c6b50b6a11d9d5226cb0f27f9c3e783526b416e5619a712",
+    "tools/upload-v16/test_upload.py": "d678dbeaea0f5e45bfffbaeee86b461b67c80a011bca1426eb012f3910e40ec5",
+    "tools/upload-v16/README_ZH.md": "a9f532297c7e1fc0e8f3e49b4ca91dd6f953a16735568c7819fc43ac2042b942",
+    "tools/sync-v12/sync_github.py": "7fce1ca1441a201677f6223ebb99b6018eb518e2a0f6f3558f6e52704282368e",
+    "tests/test_sync_v14.py": "0b8ab0ac6849378bff9b38095ef785d0a1ea14724e206750cf8cdab6c4dd17d9",
+    "macgyver.sh": "0f5c0c05b71bcedc5280fb16c128e83463808896ce2379c0cc83bcff02613c22",
+    "macgyver-legacy-v15.sh": "bd36e479080462c983d3d3a9b49a65da6d9a4781292c1c7eb6803c221b381ecc",
+    "upload-all.sh": "6366820ec9c9975e90d7ce3620e07976981f6b6f36db1754ed89b36920fe6ef7"
+  },
+  "log_sha256": {
+    "uploader": "2ea687bbb9cbece8d4d3c3ceeb14e6b6ceb5c25bab53756e3e2cd1647c1d5dba",
+    "legacy_sync": "dedfdcb8a0f56ba783ea662ed8dac0533526091435469f1ef9aeb9f9ce6e9824",
+    "final_regression": "015615240aa48ccbf6c707bd7218a261e2a53efffb99c2b269cf567e9d2b5356",
+    "launch_regression": "8286a73356991e3fb523cbf3529c952d4261a401a76ecec650f7c4343785266a"
+  },
+  "launch_regression_tests": 15
+}

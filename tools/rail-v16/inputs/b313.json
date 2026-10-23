@@ -1,0 +1,279 @@
+{
+  "id": "b313",
+  "title": "馬德里—塞維亞高速鐵路~Madrid–Seville high-speed railway",
+  "discipline": "rail-highspeed",
+  "family": "rail",
+  "focus": "炎熱地區高速線軌溫供電與更新~Hot region high speed rail temperature power and renewal",
+  "summary": "以馬德里至塞維亞高速鐵路的營運及更新背景，建立夏季高溫與設備改造並行的案例。學徒要分開鋼軌溫度、車廂熱負載和牽引電流，檢查更換控制或供電設備時舊系統與新系統能否用可驗證介面銜接。~Use the operation and renewal of the Madrid–Seville line to construct a case combining summer heat with equipment replacement. Separate rail temperature, carriage thermal load and traction current. Check whether renewed control or supply equipment can interface with the remaining system through verifiable conditions, rather than assuming a component upgrade automatically improves the complete railway.",
+  "example": "整合原創算例：單元 1 得 compression=76.0725 MPa；單元 2 得 air_rise=13.0597 K；單元 3 得 loss=39.69 kW。上述三個結果使用各單元明示的不同邊界，不能任意相加或視為實際工程實測值。以第一單元 deltaT 的擾動測試，結果改為 83.67975 MPa；學徒需先比較單位、敏感度和假設，再決定是否要細化模型。以馬德里至塞維亞高速鐵路的營運及更新背景，建立夏季高溫與設備改造並行的案例。學徒要分開鋼軌溫度、車廂熱負載和牽引電流，檢查更換控制或供電設備時舊系統與新系統能否用可驗證介面銜接。 最終交付應保留原始輸入、測點時間戳、誤差範圍與無法由簡化式證明的結論。~Integrated original exercise: unit 1 gives compression=76.0725 MPa; unit 2 gives air_rise=13.0597 K; unit 3 gives loss=39.69 kW. These three results use different explicit boundaries and must not be added or presented as measurements of the real railway. Perturbing deltaT in the first unit changes its result to 83.67975 MPa. Compare units, sensitivity and assumptions before deciding which model needs refinement. Use the operation and renewal of the Madrid–Seville line to construct a case combining summer heat with equipment replacement. Separate rail temperature, carriage thermal load and traction current. Check whether renewed control or supply equipment can interface with the remaining system through verifiable conditions, rather than assuming a component upgrade automatically improves the complete railway. The final submission should retain original inputs, measurement timestamps, uncertainty ranges and conclusions that the simplified expressions cannot establish.",
+  "history": "公開工程與出版時間線：1992 年：馬德里至塞維亞高速鐵路開始商業營運；2025 年：IEC 發布新版鐵道 RAMS 第一部分通用程序。這些事件由下列機構來源提供背景，不表示來源公開了本課程所有設計數據。以馬德里至塞維亞高速鐵路的營運及更新背景，建立夏季高溫與設備改造並行的案例。學徒要分開鋼軌溫度、車廂熱負載和牽引電流，檢查更換控制或供電設備時舊系統與新系統能否用可驗證介面銜接。 本課程另以可靠度、可用度、可維修度與安全方法整理需求、證據和變更邊界；歷史年份屬可查證事項，數學模型的輸入則是明示的教學假設。~Public engineering and publication chronology: 1992: The Madrid–Seville high-speed railway began commercial service; 2025: IEC published the revised railway RAMS Part 1 generic process. The institutional sources below establish this background; they do not imply publication of every design input in this course. Use the operation and renewal of the Madrid–Seville line to construct a case combining summer heat with equipment replacement. Separate rail temperature, carriage thermal load and traction current. Check whether renewed control or supply equipment can interface with the remaining system through verifiable conditions, rather than assuming a component upgrade automatically improves the complete railway. The course separately uses reliability, availability, maintainability and safety reasoning to organise requirements, evidence and change boundaries. Historical dates are verifiable facts, whereas numerical model inputs are explicitly declared teaching assumptions.",
+  "units": [
+    {
+      "anchor": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "title": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "mechanism": "自由鋼軌升溫會伸長，完全拘束的理想鋼軌則把熱應變轉成壓應力。鎖定軌溫決定應力零點而空氣溫度不等於鋼軌溫度；實際扣件滑移與軌道側向阻力還會改變穩定問題。 溫差應相對於鋼軌實際無應力狀態，而非任意室溫。完全拘束估算給出軸向應力尺度；當扣件滑移或軌道彎曲出現時，需要位移相容和側向穩定分析。 把日照下鋼軌溫度與陰影氣溫分開量測，建立熱應力基準。~A free rail expands on heating, while an ideally restrained rail converts thermal strain into compression. Stress-free rail temperature defines the reference and differs from air temperature. Fastener slip and lateral track resistance additionally govern stability, beyond the one-dimensional thermal-stress estimate. Temperature change must reference the rail’s actual stress-free state, not an arbitrary room temperature. Full restraint gives an axial stress scale. Fastener slip or track curvature requires displacement compatibility and lateral stability analysis beyond this expression. Measure sunlit rail temperature separately from shaded air temperature to establish a thermal-stress reference.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：E=210000 MPa; alpha=1.15e-05 1/K; deltaT=31.5 K；計算：compression=E*alpha*deltaT=76.0725 MPa。敏感度：deltaT 單獨增加百分之十至 34.65 K，其餘固定，結果為 83.67975 MPa。模型邊界：完全軸向拘束與線彈性；不計挫曲、初彎、殘留應力及塑性。~Original hypothetical exercise; none of these inputs are operating parameters of this project: E=210000 MPa; alpha=1.15e-05 1/K; deltaT=31.5 K; calculation: compression=E*alpha*deltaT=76.0725 MPa. Sensitivity: deltaT, increase this input alone by ten percent, to 34.65 K, with all other inputs fixed, gives 83.67975 MPa. Model boundary: Full axial restraint and linear elasticity; buckling, initial curvature, residual stress and plasticity are excluded.",
+      "verify": "量鋼軌本體溫度與縱向應變，記錄鎖定狀態和扣件維修歷程，用不同位置感測器區分局部溫差與整段受限變形。 以鋼軌接觸式溫度計校驗遙測值，核對應變零點，並保留日夜循環的升降溫路徑。~Measure rail temperature and longitudinal strain, record the fastening and maintenance history, and use spatially separated sensors to distinguish local heating from restrained segment behaviour. Calibrate remote readings against a contact rail thermometer, verify strain zero, and retain heating and cooling paths across the daily cycle.",
+      "failure": "把氣溫直接當成鋼軌溫度會錯估熱荷載；扣件鬆動可能降低局部軸力卻增加位移，不能據此宣稱整體穩定性改善。 需查鎖定軌溫紀錄，不能以當天最低氣溫當無應力點。~Substituting air temperature misstates thermal loading; loose fasteners may reduce local force while increasing displacement, which does not prove improved overall stability. Check stress-free-temperature records rather than using the day’s minimum air temperature as the reference.",
+      "misconception": "完全拘束的鋼軌升溫仍會無應力地自由伸長~A fully restrained rail still expands freely without stress when heated.",
+      "practice": "畫出自由、部分拘束與完全拘束三種邊界，重算熱變形或應力，標明哪些輸入必須由鋼軌溫度及扣件試驗取得。 再以本單元 deltaT 的對照值重算 compression，提交含單位、輸入來源和模型不適用條件的結果表。~Draw free, partial and full restraint boundaries, recalculate expansion or stress, and identify inputs requiring rail-temperature measurements and fastener tests. Also recalculate compression for the alternative deltaT value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "通風散熱與設備溫升~Ventilation cooling and equipment heat",
+      "title": "通風散熱與設備溫升~Ventilation cooling and equipment heat",
+      "mechanism": "流動空氣帶走的顯熱與質量流率和溫升相乘，風量不足會提高排氣溫度。設備房還存在短路循環和局部熱點，平均送排風溫差不能保證所有電子模組都在同樣環境中。 顯熱負載決定溫度改變需求，但高濕環境還有潛熱除濕與新風處理。冷卻量和耗電量也不同，兩者需要效率或性能係數連結，不能把熱量數字當作電表讀值。 比較滿載車廂和低載車廂的顯熱需求，保留新風條件。~Air removes sensible heat through mass flow and temperature rise. Insufficient flow raises exhaust temperature. Equipment rooms also contain recirculation and hot spots, so an average supply-to-exhaust difference does not guarantee identical conditions around every electronic module. Sensible load describes temperature-related demand, while humidity introduces latent dehumidification and outdoor-air treatment. Cooling delivered and electricity consumed are different quantities, connected through efficiency or a performance coefficient rather than treated as identical meter readings. Compare sensible cooling demand in full and lightly loaded cars while retaining ventilation conditions.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：heat=18900 W; density=1.2 kg/m^3; cp=1005 J/(kg*K); flow=1.2 m^3/s；計算：air_rise=heat/(density*cp*flow)=13.0597 K。敏感度：heat 單獨增加百分之十至 20790 W，其餘固定，結果為 14.36567 K。模型邊界：穩態顯熱且混合均勻；不含潛熱、輻射與空調循環效率。~Original hypothetical exercise; none of these inputs are operating parameters of this project: heat=18900 W; density=1.2 kg/m^3; cp=1005 J/(kg*K); flow=1.2 m^3/s; calculation: air_rise=heat/(density*cp*flow)=13.0597 K. Sensitivity: heat, increase this input alone by ten percent, to 20790 W, with all other inputs fixed, gives 14.36567 K. Model boundary: Steady sensible heat and uniform mixing; latent heat, radiation and refrigeration-cycle efficiency are excluded.",
+      "verify": "同時量送風量、進出口溫度和設備用電，沿機櫃高度布置測點，確認冷風沒有直接繞過設備流回出口。 同步量測進出風溫度、流量和耗電，另記濕度與新風比例，確認顯熱邊界一致。~Measure supply flow, inlet and outlet temperatures and electrical load together, instrument cabinet height, and check that cold air does not bypass the equipment. Measure inlet and outlet air temperature, airflow and electricity together, separately recording humidity and outdoor-air fraction to confirm consistent sensible boundaries.",
+      "failure": "濾網堵塞或風道短路會降低有效冷卻，即使總風機轉速正常；散熱器積塵也可能提高晶片溫度而房間平均值不變。 濕度升高仍可能需要更多冷量，即使乾球溫度沒有改變。~A blocked filter or airflow bypass reduces effective cooling despite normal fan speed; dusty heat sinks can raise chip temperature without changing the room average. Rising humidity can require more cooling even if the dry-bulb temperature has not changed.",
+      "misconception": "風機轉速正常就能保證機櫃內每個設備都有足夠散熱~Normal fan speed guarantees adequate cooling for every device in the cabinet.",
+      "practice": "比較降低風量與增加設備負載兩種情況，建立溫升敏感度表，再選出能辨別旁通流和真正熱負荷增加的測點。 再以本單元 heat 的對照值重算 air_rise，提交含單位、輸入來源和模型不適用條件的結果表。~Compare reduced flow with increased equipment load, tabulate temperature sensitivity, and choose sensors distinguishing bypass flow from a genuine load increase. Also recalculate air_rise for the alternative heat value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "電流平方損耗與散熱~Current-squared losses and cooling",
+      "title": "電流平方損耗與散熱~Current-squared losses and cooling",
+      "mechanism": "導體與接點的焦耳熱與電流平方成正比，短時高電流可能主導熱循環而平均電流看不出來。散熱取決於環境與接觸表面，電氣損耗量不能直接當成最終溫升。 此式是導體焦耳熱，並不是列車全部耗電。電阻會隨溫度改變，而並聯饋電使電流重新分配；比較兩方案時應保持相同功率交付邊界，避免只移轉損失位置。 以同時加速列車造成的尖峰電流檢查饋線損失。~Joule heating in conductors and joints scales with current squared, so short current peaks can dominate thermal cycling even when mean current looks moderate. Heat rejection depends on environment and contact surfaces; electrical loss alone is not a final temperature prediction. The expression represents conductor Joule heat, not all train consumption. Resistance changes with temperature, and parallel feeding redistributes current. Compare schemes at the same delivered-power boundary to avoid reporting loss relocation as an actual reduction. Check feeder losses against peak current from trains accelerating simultaneously.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：current=1260 A; resistance=0.025 ohm；計算：loss=current*current*resistance/1000=39.69 kW。敏感度：current 單獨增加百分之十至 1386 A，其餘固定，結果為 48.0249 kW。模型邊界：恆定電阻且直流或等效均方根電流；不含散熱暫態。~Original hypothetical exercise; none of these inputs are operating parameters of this project: current=1260 A; resistance=0.025 ohm; calculation: loss=current*current*resistance/1000=39.69 kW. Sensitivity: current, increase this input alone by ten percent, to 1386 A, with all other inputs fixed, gives 48.0249 kW. Model boundary: Constant resistance with direct or equivalent RMS current; transient cooling is excluded.",
+      "verify": "以均方根電流而非算術平均電流求熱負荷，同步記錄接頭溫度及環境；停電隔離後才由合格人員檢查接點。 由電流時間歷程積分損失，量測導體溫度以校正電阻，並比對兩端功率差。~Use RMS rather than arithmetic-mean current for thermal loading, log joint and ambient temperatures, and restrict physical inspection to qualified staff after isolation. Integrate losses over the current history, measure conductor temperature to correct resistance, and compare with the difference between terminal powers.",
+      "failure": "鬆動接點會增加電阻並使熱量集中；熱像單次讀值偏低也可能只是量測時負載不高，不能否定間歇性過熱。 尖峰電流不能用平均電流取代，否則平方項損失被低估。~Loose joints increase resistance and concentrate heating; a cool one-time thermal image may simply coincide with low load and cannot rule out intermittent overheating. Peak current cannot be replaced by mean current without understating losses from the squared term.",
+      "misconception": "用平均電流代入平方損耗公式總能得到正確熱負荷~Squaring average current always gives the correct resistive heat load.",
+      "practice": "比較固定電流與同平均值脈衝電流的均方根，計算兩種損耗，寫出溫度監測與電流紀錄需要同步的原因。 再以本單元 current 的對照值重算 loss，提交含單位、輸入來源和模型不適用條件的結果表。~Compare constant and pulsed currents with equal means, calculate their RMS losses, and explain why current and temperature records must be time-aligned. Also recalculate loss for the alternative current value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "接觸線張力波速~Contact-wire tension wave speed",
+      "title": "接觸線張力波速~Contact-wire tension wave speed",
+      "mechanism": "受電弓擾動會沿接觸線傳播，張力提高使橫波速度上升而線密度增加使波速下降。波速與列車速度的比值提供動態風險線索，但多跨懸掛、吊弦和接觸非線性不能由單根弦模型取代。 線密度決定單位長度的慣性，張力提供恢復作用，因此波速平方與張力成正比。提高張力也改變支承受力；波速裕度只能作篩檢，不能推定接觸力必然均勻。 在高溫接觸線張力改變時檢查波速和受電量測。~Pantograph disturbances propagate along the contact wire. Greater tension raises transverse wave speed, whereas greater mass per length lowers it. The ratio to train speed offers a dynamic clue, but multispan suspension, droppers and contact nonlinearity cannot be replaced by a single-string model. Linear density represents inertia per unit length and tension supplies restoring force, so squared wave speed scales with tension. Higher tension also changes support loading. A wave-speed margin is a screening measure, not proof of uniform contact force. Check wave speed and current-collection measurements as contact-wire tension changes with heat.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：tension=21000 N; density=1.1 kg/m；計算：wave_speed=(tension/density)**0.5=138.1699 m/s。敏感度：tension 單獨增加百分之十至 23100 N，其餘固定，結果為 144.9138 m/s。模型邊界：無彎曲剛度的均勻張弦；不是受流合格判定或允許車速。~Original hypothetical exercise; none of these inputs are operating parameters of this project: tension=21000 N; density=1.1 kg/m; calculation: wave_speed=(tension/density)**0.5=138.1699 m/s. Sensitivity: tension, increase this input alone by ten percent, to 23100 N, with all other inputs fixed, gives 144.9138 m/s. Model boundary: Uniform tensioned string without bending stiffness; not a current-collection acceptance rule or permitted train speed.",
+      "verify": "核對補償裝置行程、線溫與張力紀錄，再量測受電弓接觸力統計及離線事件，辨別平均值正常但峰值異常。 核對接觸線張力、單位長度質量及量測位置，並用接觸力和離線事件檢查動態品質。~Check compensation travel, wire temperature and tension, then examine contact-force statistics and loss-of-contact events to distinguish acceptable means from abnormal peaks. Verify contact-wire tension, mass per unit length and measurement location, then examine contact force and loss-of-contact events for dynamic quality.",
+      "failure": "補償裝置卡滯會讓溫度變化改變張力，吊弦鬆弛又會改變局部動態剛度；只讀取靜態高度難以辨識。 波速符合估算仍可能離線，需查看接觸力的時間歷程。~A sticking tensioning device lets temperature change tension, while slack droppers change local dynamic stiffness; static wire height alone cannot identify either mechanism. Agreement in wave-speed estimates does not rule out contact loss; inspect contact-force histories.",
+      "misconception": "只要靜態接觸線高度正確就能保證高速受流品質~Correct static contact-wire height alone guarantees good current collection at high speed.",
+      "practice": "將張力降低一成和線密度增加一成分別計算波速，列出尚需哪些接觸力量測才能討論動態受流品質。 再以本單元 tension 的對照值重算 wave_speed，提交含單位、輸入來源和模型不適用條件的結果表。~Reduce tension and increase wire mass density separately by ten percent, calculate wave speed, and identify the contact-force measurements still needed to assess dynamic collection. Also recalculate wave_speed for the alternative tension value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "無電區惰行與速度損失~Coasting through an unpowered section",
+      "title": "無電區惰行與速度損失~Coasting through an unpowered section",
+      "mechanism": "列車通過無電區時需依靠動能克服阻力，簡化恆阻力模型把阻力做功從初始動能扣除。區段長度、初速與坡度決定剩餘速度，供電切換邏輯和防誤合閘仍需獨立驗證。 無牽引不等於無運動，列車以動能克服所宣告的阻力。若距離超過此阻力下的可滑行距離，平方根將無實數解，表示通過情境不成立而非計算器錯誤。 計算分相區滑行的速度下降，避免假定列車瞬間失速。~A train coasting through an unpowered section uses kinetic energy to overcome resistance. A constant-resistance model subtracts work from initial kinetic energy. Length, entry speed and gradient determine remaining speed, while switching logic and prevention of inappropriate re-energisation require separate verification. No traction does not mean no motion: kinetic energy overcomes the declared resistance. If the section exceeds the available coasting distance, the square root has no real solution, indicating an infeasible passage case rather than a calculator malfunction. Calculate speed reduction through a neutral section without assuming an instantaneous loss of motion.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：v=50 m/s; force=15750 N; length=500 m; mass=250000 kg；計算：exit_speed=(v*v-2*force*length/mass)**0.5=49.36598 m/s。敏感度：force 單獨增加百分之十至 17325 N，其餘固定，結果為 49.30213 m/s。模型邊界：水平路線且恆阻力，根號內必須非負；不含低速停車及切換暫態。~Original hypothetical exercise; none of these inputs are operating parameters of this project: v=50 m/s; force=15750 N; length=500 m; mass=250000 kg; calculation: exit_speed=(v*v-2*force*length/mass)**0.5=49.36598 m/s. Sensitivity: force, increase this input alone by ten percent, to 17325 N, with all other inputs fixed, gives 49.30213 m/s. Model boundary: Level track and constant resistance with a nonnegative radicand; stopping within the section and switching transients are excluded.",
+      "verify": "同步記錄受電電壓、主斷路器狀態和列車速度，確認無電區邊界與里程一致，再核對惰行能量差。 以入口和出口獨立速度對照滑行距離，核對斷電區時間戳及坡度是否被模型排除。~Synchronise line voltage, main-breaker status and speed, align electrical boundaries with distance coordinates, and check the coasting energy difference. Compare independently measured entry and exit speeds with coasting distance, checking power-off timestamps and whether gradient is excluded.",
+      "failure": "邊界定位誤差可能使主斷路器切換時機錯誤；把坡度阻力遺漏會低估上坡無電區的速度下降。 若計算顯示無法通過，不能把負根號截成零後繼續排程。~Boundary-position error can mistime breaker switching; omitting gradient resistance understates speed loss in an uphill unpowered section. If passage is infeasible, do not clamp a negative radicand to zero and continue scheduling.",
+      "misconception": "無電區長度改變不會影響列車離開時的速度~Changing the length of an unpowered section cannot change exit speed.",
+      "practice": "在相同初速下增加區段長度，檢查能量是否足夠通過，再列出電氣切換與機械惰行模型各自需要的驗證資料。 再以本單元 force 的對照值重算 exit_speed，提交含單位、輸入來源和模型不適用條件的結果表。~Increase section length at fixed entry speed, test whether energy remains sufficient, and list separate evidence for electrical switching and mechanical coasting models. Also recalculate exit_speed for the alternative force value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "速度限制轉換與預告距離~Speed-limit transition and warning distance",
+      "title": "速度限制轉換與預告距離~Speed-limit transition and warning distance",
+      "mechanism": "進入較低速區前需把速度差轉成足夠的減速距離，能量式包含初速與目標速度的平方差。此處用明示減速度得到教學距離，真正保護曲線還需加入定位誤差、坡度、制動建立及車輛差異。 目標速度不一定是零，進入較低速區也需要保護距離。計算使用同一距離基準與速度單位，並把定位誤差和延遲裕度分開，才能避免重複或漏加安全邊界。 讓改造前後控制系統使用相同的目標速度測試資料。~Before entering a lower-speed section, the train needs distance to remove the difference in kinetic energy. The expression contains the difference of squared initial and target speeds. A teaching deceleration gives one distance; a real protection curve additionally needs position uncertainty, gradient, brake build-up and vehicle variation. The target speed need not be zero: entry into a lower-speed section also requires protection distance. Use one distance reference and consistent speed units. Keep localisation uncertainty and delay margins separate to prevent duplicated or omitted boundaries. Use identical target-speed test data for control systems before and after renewal.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：initial=73.5 m/s; target=40 m/s; a=0.65 m/s^2；計算：transition=(initial**2-target**2)/(2*a)=2924.808 m。敏感度：initial 單獨增加百分之十至 80.85 m/s，其餘固定，結果為 3797.479 m。模型邊界：初速大於目標速度且定減速度；沒有通訊延遲與安全裕度。~Original hypothetical exercise; none of these inputs are operating parameters of this project: initial=73.5 m/s; target=40 m/s; a=0.65 m/s^2; calculation: transition=(initial**2-target**2)/(2*a)=2924.808 m. Sensitivity: initial, increase this input alone by ten percent, to 80.85 m/s, with all other inputs fixed, gives 3797.479 m. Model boundary: Initial speed above target and constant deceleration; communication delay and safety margins are excluded.",
+      "verify": "重播速度剖面並檢查每個限制點的里程基準，將定位誤差和煞車建立時間分別加入，不以單次成功停準代替整個包絡驗證。 以已知初速與目標速度重播控制資料，核對速度單位、里程方向及列車前端參考位置。~Replay speed profiles with a common distance datum, add positioning error and brake build-up separately, and do not substitute one successful stop for verification of the full envelope. Replay control data at known initial and target speeds, checking speed units, chainage direction and the reference position of the train front.",
+      "failure": "限制點座標偏移或單位錯誤會使制動開始過晚；過度依賴平均減速度則可能漏掉低黏著條件下的長制動距離。 若目標速度高於初速，此減速模型的工況設定便不成立。~A shifted restriction coordinate or unit error causes late braking, while reliance on mean deceleration can miss long stopping distances under low adhesion. If target speed exceeds initial speed, the stated deceleration case no longer applies.",
+      "misconception": "降低目標速度時可忽略初速與目標速度的平方差~Reducing target speed allows the squared-speed difference to be ignored.",
+      "practice": "對同一初速設定兩個目標速度，重算轉換距離，畫出能量差並說明為何不能按速度差線性縮放距離。 再以本單元 initial 的對照值重算 transition，提交含單位、輸入來源和模型不適用條件的結果表。~Use two target speeds at one initial speed, recalculate transition distance, plot the energy differences, and explain why distance cannot scale linearly with the speed difference. Also recalculate transition for the alternative initial value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "互斥進路與真值驗證~Conflicting routes and truth-table verification",
+      "title": "互斥進路與真值驗證~Conflicting routes and truth-table verification",
+      "mechanism": "聯鎖的核心是明確禁止衝突進路同時成立，安全條件需要由占用、道岔鎖閉和列車完整通過共同決定。狀態數隨布林輸入快速增加，真值表可檢查邏輯完整性，但不能代替時序與硬體故障分析。 布林組合數表示測試狀態空間的大小，並不代表每個狀態在現場都可達或安全。應把占用、道岔鎖閉和授權的邏輯關係明列，逐項證明危險組合會被拒絕。 在新舊控制邊界注入不一致狀態，檢查進路是否保持禁止。~Interlocking explicitly excludes simultaneous conflicting routes. Occupancy, locked points and complete train passage jointly determine permissive conditions. Boolean input combinations grow rapidly; a truth table checks logical coverage but does not replace timing analysis or hardware fault assessment. The Boolean count describes the size of a test state space, not that every state is reachable or safe in service. Explicitly state relations among occupation, point locking and authority, and demonstrate that hazardous combinations are rejected. Inject inconsistent states at an old-new control boundary and check that the route remains prohibited.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：inputs=6 Boolean inputs；計算：combinations=2**inputs=64 states。敏感度：inputs 增加 1 個布林輸入至 7 Boolean inputs，其餘固定，結果為 128 states。模型邊界：有限個獨立二值輸入的完整枚舉；不代表實際聯鎖軟體測試已完成。~Original hypothetical exercise; none of these inputs are operating parameters of this project: inputs=6 Boolean inputs; calculation: combinations=2**inputs=64 states. Sensitivity: inputs, add one Boolean input, to 7 Boolean inputs, with all other inputs fixed, gives 128 states. Model boundary: Complete enumeration of independent binary inputs; not a claim that real interlocking software has been tested.",
+      "verify": "把每個允許輸出對應到必要條件，逐項加入反例測試；再檢查占用訊號失效或道岔未鎖閉時是否回到禁止狀態。 從真值表逐列執行故障注入，記錄預期拒絕與實際輸出，並覆核非法狀態不可授權。~Map every permissive output to its necessary conditions, add counterexample tests, and check that occupancy failure or unlocked points leads to a restrictive state. Execute fault injection row by row from the truth table, recording expected refusal and actual output, and verify that illegal states receive no authority.",
+      "failure": "只測正常進路順序會漏掉同時請求和殘留狀態；感測器卡在允許值也可能使紙上正確的邏輯收到錯誤輸入。 狀態覆蓋率高仍可能缺少危險轉移，須查事件先後。~Testing only the normal route sequence misses simultaneous requests and residual states; a sensor stuck permissive can feed wrong inputs to otherwise correct logic. High state coverage can still miss a hazardous transition; inspect event ordering as well.",
+      "misconception": "聯鎖只要正常路徑通過測試就不需要檢查衝突請求~Passing normal route tests removes the need to test conflicting requests.",
+      "practice": "為兩條衝突進路建立真值表，標記禁止組合，再加入先占用後解鎖的事件序列，說明組合邏輯和時序邏輯的差異。 再以本單元 inputs 的對照值重算 combinations，提交含單位、輸入來源和模型不適用條件的結果表。~Build a truth table for two conflicting routes, mark forbidden combinations, then add occupancy and release event sequences to distinguish combinational from temporal logic. Also recalculate combinations for the alternative inputs value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "重複荷載與線性損傷帳~Repeated loading and linear damage account",
+      "title": "重複荷載與線性損傷帳~Repeated loading and linear damage account",
+      "mechanism": "疲勞取決於應力範圍與循環次數，線性累積把各級循環數除以對應壽命後相加。此帳務能比較荷載譜，卻忽略順序效應、腐蝕與裂紋成長，損傷和為一不是對任何構件的通用失效保證。 線性累積損傷不保留載重順序，也不能自行描述腐蝕、裂紋閉合和超載效應。疲勞曲線的適用材料與應力定義必須一致，否則算出的壽命比例沒有可比性。 對更新後構件區分已累積循環和新設備的起算點。~Fatigue depends on stress range and cycle count. Linear accumulation sums the fraction of life consumed at each level. This accounting compares load spectra but omits sequence effects, corrosion and crack growth; a sum of one is not a universal failure guarantee for every component. Linear cumulative damage does not retain load order and cannot independently describe corrosion, crack closure or overload effects. The fatigue curve must match the material and stress definition; otherwise calculated life fractions are not comparable. Distinguish accumulated cycles in retained components from the starting point of new equipment.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：n1=210000 cycles; N1=1000000 cycles; n2=50000 cycles; N2=250000 cycles；計算：damage_index=n1/N1+n2/N2=0.41 1。敏感度：n1 將整數計數增加到 231001至 231001 cycles，其餘固定，結果為 0.431001 1。模型邊界：兩級循環的Miner帳務且壽命輸入已假設；不外推真實剩餘壽命。~Original hypothetical exercise; none of these inputs are operating parameters of this project: n1=210000 cycles; N1=1000000 cycles; n2=50000 cycles; N2=250000 cycles; calculation: damage_index=n1/N1+n2/N2=0.41 1. Sensitivity: n1, increase the integer count to 231001, to 231001 cycles, with all other inputs fixed, gives 0.431001 1. Model boundary: Two-level Miner accounting with assumed life values; no real residual-life prediction is made.",
+      "verify": "以雨流計數整理應變歷程，核對儀器零漂與列車通過事件，保留應力轉換和材料曲線的來源與適用範圍。 從原始應變檢查應力換算與循環計數，核對各級距的次數總和及疲勞曲線來源。~Count strain histories using rainflow analysis, check sensor drift against train passages, and retain the source and applicability of stress conversion and material curves. Check stress conversion and cycle counting from raw strain, verifying total counts across bins and the source of the fatigue curve.",
+      "failure": "漏記少量大應力循環可能比漏記大量小循環更嚴重；焊趾局部應力也不能直接由遠處名義應變代表。 若應力級距漏計，累積損傷偏低不能證明構件仍完好。~Missing a few large cycles can matter more than missing many small ones; nominal strain away from a weld cannot directly represent local weld-toe stress. Understated damage caused by omitted stress bins is not evidence that the component remains sound.",
+      "misconception": "疲勞損傷只取決於通過列車總數而不受應力幅影響~Fatigue damage depends only on train count and is independent of stress range.",
+      "practice": "保持總循環數不變，將部分低應力循環移到高應力級，重算損傷帳並說明需要何種檢測來支持剩餘壽命判讀。 再以本單元 n1 的對照值重算 damage_index，提交含單位、輸入來源和模型不適用條件的結果表。~Keep total cycles fixed while moving some cycles to the higher-stress level, recalculate damage, and identify inspections needed to support any remaining-life interpretation. Also recalculate damage_index for the alternative n1 value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "施工窗口與可完成工作量~Possession window and achievable work",
+      "title": "施工窗口與可完成工作量~Possession window and achievable work",
+      "mechanism": "夜間施工窗口需先扣除封鎖確認、隔離、運入及恢復測試時間，剩餘時間才可進行實際工作。提高施工速度不一定提高總產出，若撤場與驗收成為關鍵路徑，必須先調整作業協調。 可施工時間等於總窗口扣掉保護設置、測試及還路等必要活動。這些活動可能有不可重疊的安全依賴；趕工不能直接刪除，應以資源和先後順序改變排程。 把夜間施工窗口拆成保護、作業、檢查與還路時間。~A night possession must allow for protection, isolation, access and restoration testing before productive work begins. Higher work rate does not always increase output if clearance and acceptance dominate the critical path. Coordination of dependencies may matter more than nominal production speed. Usable work time equals the possession window minus protection, testing and handback activities. These can have nonoverlapping safety dependencies and cannot simply be deleted to accelerate work. Change scheduling through resources and legitimate task order. Split an overnight possession into protection, work, inspection and handback time.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：window=240 min; setup=47.25 min; restore=55 min; rate=4 m/min；計算：work_length=(window-setup-restore)*rate=551 m。敏感度：setup 單獨增加百分之十至 51.975 min，其餘固定，結果為 532.1 m。模型邊界：固定速度與確定性窗口；不含返工、設備故障和分段驗收。~Original hypothetical exercise; none of these inputs are operating parameters of this project: window=240 min; setup=47.25 min; restore=55 min; rate=4 m/min; calculation: work_length=(window-setup-restore)*rate=551 m. Sensitivity: setup, increase this input alone by ten percent, to 51.975 min, with all other inputs fixed, gives 532.1 m. Model boundary: Fixed production rate and deterministic window; rework, equipment failure and phased acceptance are excluded.",
+      "verify": "按事件紀錄封鎖、確認隔離、進場、工作結束與試驗完成時間，用實際有效工作時間計算產率。 逐項記錄窗口開始、保護完成、施工完成與還路時刻，核對前置條件及實際資源。~Log possession, isolation confirmation, access, work completion and final testing, then calculate productivity from actual effective work time. Log possession start, protection completion, work completion and handback times, checking mandatory prerequisites and resources actually available.",
+      "failure": "壓縮恢復測試時間可能掩蓋未完成檢查；低估撤場時間會造成延誤，不能把安全確認當成可任意削減的冗餘。 施工完成不等於可還路，需保留檢查測試與解除保護時間。~Compressing restoration tests can hide incomplete checks, while underestimated clearance causes delay; safety confirmation cannot be treated as arbitrary slack. Work completion is not readiness for handback; retain inspection, testing and protection-removal time.",
+      "misconception": "施工窗口全長都可以直接乘以施工速度當成可完成量~The entire possession duration can be multiplied by work rate to obtain achievable production.",
+      "practice": "增加前置作業時間並加入一次返工，重畫關鍵路徑，區分可平行任務與必須完成後才可開放的檢查。 再以本單元 setup 的對照值重算 work_length，提交含單位、輸入來源和模型不適用條件的結果表。~Increase setup time and add one rework event, redraw the critical path, and distinguish parallel tasks from checks that must finish before reopening. Also recalculate work_length for the alternative setup value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "可用度與修復時間~Availability and repair time",
+      "title": "可用度與修復時間~Availability and repair time",
+      "mechanism": "在簡化更新過程中，可用度是平均故障間隔占故障間隔加修復時間的比例。這個指標不能替代安全性，因為快速恢復服務可能仍保留危險失效；備品、交通與診斷都會影響實際修復時間。 平均故障間隔和平均修復時間必須使用相同服務邊界；備件等待與到場時間若被排除，數字就不能描述旅客看到的中斷。短期樣本也應報告事件數與觀測時間。 把計畫性停機與非預期故障分列，避免混用可用性口徑。~In a simplified renewal process, availability is mean time between failures divided by that time plus mean repair time. It does not replace safety: rapidly restoring service may leave a hazardous failure unresolved. Spares, travel and diagnosis all affect actual restoration time. Mean time between failures and mean repair time require a common service boundary. Excluding spare-part waiting or travel time prevents the figure from describing passenger-visible interruption. Short samples should also report event count and observation duration. Separate planned outages from unexpected faults rather than mixing availability definitions.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mtbf=1260 h; mttr=4 h；計算：availability=mtbf/(mtbf+mttr)=0.9968354 1。敏感度：mtbf 單獨增加百分之十至 1386 h，其餘固定，結果為 0.9971223 1。模型邊界：兩狀態穩態平均模型；不含計畫維修、共同原因與降級服務品質。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mtbf=1260 h; mttr=4 h; calculation: availability=mtbf/(mtbf+mttr)=0.9968354 1. Sensitivity: mtbf, increase this input alone by ten percent, to 1386 h, with all other inputs fixed, gives 0.9971223 1. Model boundary: Two-state steady-state mean model; planned maintenance, common causes and degraded service quality are excluded.",
+      "verify": "將故障開始、到場、診斷、修復及恢復服務分段記錄，明確定義可用狀態，避免把降級運轉與完整服務混算。 逐項對照故障開始、服務恢復與維修完成時間，公開排除項，並核對總觀測時數。~Record failure onset, arrival, diagnosis, repair and service restoration separately, define the available state, and avoid mixing degraded operation with full service. Cross-check fault start, service restoration and repair completion for each event, disclose exclusions, and verify total observed hours.",
+      "failure": "只縮短更換時間但備品仍缺貨，可用度未必改善；將延後報修時間排除也會讓數字看似漂亮卻失去代表性。 修好設備和恢復服務可能不同時，須分別記錄終點。~Shorter replacement time may not improve availability when spare parts remain unavailable; excluding reporting delays can also create an unrepresentative figure. Equipment repair and service restoration may occur at different times; record both endpoints.",
+      "misconception": "設備可用度高就表示所有安全風險一定很低~High equipment availability necessarily means every safety risk is low.",
+      "practice": "比較提高故障間隔與縮短修復時間兩種措施，用同一故障定義重算，並列出可用度之外需要追蹤的危險失效指標。 再以本單元 mtbf 的對照值重算 availability，提交含單位、輸入來源和模型不適用條件的結果表。~Compare increasing failure interval with reducing repair time under one failure definition, and list hazardous-failure measures that must be tracked separately from availability. Also recalculate availability for the alternative mtbf value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    }
+  ],
+  "facts": [
+    "已查證背景：1992 年，馬德里至塞維亞高速鐵路開始商業營運。~Verified background: 1992, The Madrid–Seville high-speed railway began commercial service.",
+    "教學假設，單元 1：deltaT=31.5 K，計算 compression=76.0725 MPa；非實測性能。~Teaching assumption, unit 1: deltaT=31.5 K, calculated compression=76.0725 MPa; not measured performance.",
+    "教學假設，單元 2：heat=18900 W，計算 air_rise=13.0597 K；非實測性能。~Teaching assumption, unit 2: heat=18900 W, calculated air_rise=13.0597 K; not measured performance.",
+    "教學假設，單元 3：current=1260 A，計算 loss=39.69 kW；非實測性能。~Teaching assumption, unit 3: current=1260 A, calculated loss=39.69 kW; not measured performance.",
+    "教學假設，單元 4：tension=21000 N，計算 wave_speed=138.1699 m/s；非實測性能。~Teaching assumption, unit 4: tension=21000 N, calculated wave_speed=138.1699 m/s; not measured performance.",
+    "教學假設，單元 5：force=15750 N，計算 exit_speed=49.36598 m/s；非實測性能。~Teaching assumption, unit 5: force=15750 N, calculated exit_speed=49.36598 m/s; not measured performance."
+  ],
+  "timeline": [
+    {
+      "year": "1992",
+      "event": "馬德里至塞維亞高速鐵路開始商業營運~The Madrid–Seville high-speed railway began commercial service"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第一部分通用程序~IEC published the revised railway RAMS Part 1 generic process"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第二部分安全系統方法~IEC published the revised railway RAMS Part 2 systems approach to safety"
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025，鐵道 RAMS 通用程序；方法參考，不等同本案合約要求~IEC 62278-1:2025, railway RAMS generic process; methodological reference, not a project contract requirement",
+    "IEC 62278-2:2025，鐵道安全系統方法；應另查現地適用規範~IEC 62278-2:2025, systems approach to railway safety; local applicable rules require separate checking"
+  ],
+  "landmarks": [
+    "馬德里—塞維亞高速鐵路~Madrid–Seville high-speed railway",
+    "北京—上海高速鐵路~Beijing–Shanghai high-speed railway"
+  ],
+  "place": {
+    "name": "塞維亞聖胡斯塔站周邊~Seville Santa Justa station area",
+    "country": "西班牙~Spain",
+    "lat": 37.392,
+    "lng": -5.976,
+    "query": "Seville Santa Justa station area"
+  },
+  "sources": [
+    {
+      "key": "b313-history",
+      "title": "專案官方歷史與路網背景",
+      "titleEn": "Official project history and network context",
+      "publisher": "ADIF Alta Velocidad",
+      "url": "https://www.adifaltavelocidad.es/w/lav-madrid-sevilla-historia",
+      "sourceType": "primary",
+      "scope": "支援已標示的公開歷史事件；不提供本課程假想數值，也不證實所有模型適用於現地。",
+      "scopeEn": "Supports stated public historical events; does not supply invented numerical inputs or validate all models for the actual site."
+    },
+    {
+      "key": "b313-iec-rams-1",
+      "title": "鐵道 RAMS 第一部分通用程序",
+      "titleEn": "Railway RAMS Part 1 generic process",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "IEC 62278-1:2025 書目與通用程序範圍；作為需求及證據整理參考，不宣稱本案採用特定條款。",
+      "scopeEn": "Bibliographic edition and generic process scope of IEC 62278-1:2025; a requirements and evidence reference, not a claim about project-specific clauses."
+    },
+    {
+      "key": "b313-iec-rams-2",
+      "title": "鐵道 RAMS 第二部分安全系統方法",
+      "titleEn": "Railway RAMS Part 2 systems approach to safety",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/79793",
+      "sourceType": "primary",
+      "scope": "IEC 62278-2:2025 書目與安全系統方法範圍；不重製付費標準條文。",
+      "scopeEn": "Bibliographic edition and systems approach scope of IEC 62278-2:2025; no reproduction of paid standard text."
+    },
+    {
+      "key": "b313-background",
+      "title": "機構專案與工程背景補充",
+      "titleEn": "Institutional project and engineering background supplement",
+      "publisher": "Primary institution at www.adifaltavelocidad.es",
+      "url": "https://www.adifaltavelocidad.es/modernizacion-lav-madrid-sevilla",
+      "sourceType": "primary",
+      "scope": "補充時間線與路網介面背景；詳細設計參數仍以原始工程文件為準。",
+      "scopeEn": "Additional chronology and network-interface context; detailed design parameters remain subject to original project documentation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "鐵道車輛與基礎設施技術",
+      "businessEn": "Rail vehicles and infrastructure technology",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail.html",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "阿爾斯通",
+      "nameEn": "Alstom",
+      "business": "鐵道車輛與號誌技術",
+      "businessEn": "Rail vehicles and signalling technology",
+      "url": "https://www.alstom.com/solutions",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "related": [
+    "b314",
+    "b320"
+  ],
+  "architectureNodes": [
+    [
+      "路線與土建",
+      "Alignment and civil works"
+    ],
+    [
+      "車輛與接觸",
+      "Vehicle and contact"
+    ],
+    [
+      "牽引供電",
+      "Traction supply"
+    ],
+    [
+      "行車控制",
+      "Movement control"
+    ],
+    [
+      "車站與旅客",
+      "Stations and passengers"
+    ],
+    [
+      "監測與維護",
+      "Monitoring and maintenance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

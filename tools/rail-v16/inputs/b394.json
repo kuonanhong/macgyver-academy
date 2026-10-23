@@ -1,0 +1,271 @@
+{
+  "id": "b394",
+  "title": "鐵路連續焊軌應變監測~Strain monitoring of continuously welded rail",
+  "discipline": "rail-integration",
+  "family": "track",
+  "focus": "以溫度補償和獨立基準追蹤連續焊軌應變~Temperature compensation and independent references for continuous-welded-rail strain",
+  "summary": "本課聚焦以溫度補償和獨立基準追蹤連續焊軌應變。從完全拘束的熱應力量級建立物理或資訊邊界，接著把隨機量測不確定度與溫度與應變時間對齊連成可驗證的介面，最後以監測校驗與追溯計畫整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies temperature compensation and independent references for continuous-welded-rail strain. Start with thermal stress under full restraint to define physical or information boundaries, connect random measurement uncertainty with aligning temperature and strain records as verifiable interfaces, and organize evidence through calibration effort and traceability. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：2008 年長焊鋼軌縱向應力監測研究報告出版。；2010 年連續焊軌應力自動量測報告出版。；2021 年長焊鋼軌計畫方法指引於該年更新。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對以溫度補償和獨立基準追蹤連續焊軌應變而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用自由伸長對照試件及零異常資料的推論界限連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 2008: Research on monitoring longitudinal rail stress was published. 2010: An automated continuous-welded-rail stress measurement report was published. 2021: Guidance for continuous-welded-rail plans was updated that year. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For temperature compensation and independent references for continuous-welded-rail strain, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through free-expansion reference specimen and limits of anomaly-free data. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究完全拘束的熱應力量級。原創假想教學輸入：彈性模數 E=210000 MPa；線膨脹係數 alpha=1.2e-05 1/K；相對無應力溫差 dT=25 K。公式 y=E*alpha*dT，代入得 y=63 MPa。邊界：線彈性、單軸完全拘束且均勻溫升；未分析軌道挫屈或接頭。敏感度只改 dT=25 至 27.5 K，輸出變為 69.3 MPa；離散計數採整數變化。再獨立研究自由伸長對照試件：原創假想教學輸入：構件長度 L=30 m；膨脹係數 alpha=1.2e-05 1/K；溫度變化 dT=20 K。公式 y=L*alpha*dT*1000，代入得 y=7.2 mm。邊界：均勻溫度與自由伸長；不包含熱梯度引起的彎曲。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。先把鋼軌的無應力溫度與當前溫度分開，標明加熱時壓應力的方向。再比較完全拘束模型與可滑移現場的差異，避免把簡化量級當成挫屈判定。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate thermal stress under full restraint. Original hypothetical teaching inputs: Young modulus E=210000 MPa; thermal expansion coefficient alpha=1.2e-05 1/K; change from stress-free temperature dT=25 K. Formula y=E*alpha*dT gives y=63 MPa. Boundary: Linear-elastic fully restrained uniaxial uniform heating; track buckling and joints are not analysed. For sensitivity, change only dT=25 to 27.5 K; the output becomes 69.3 MPa. Discrete counts use whole-number steps. Independently investigate free-expansion reference specimen: Original hypothetical teaching inputs: member length L=30 m; expansion coefficient alpha=1.2e-05 1/K; temperature change dT=20 K. Formula y=L*alpha*dT*1000 gives y=7.2 mm. Boundary: Uniform temperature and free expansion; thermal-gradient bending is omitted. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Separate stress-free and current rail temperatures and identify compression during heating. Compare full restraint with possible field slip without treating this scale calculation as a buckling decision. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "完全拘束的熱應力量級~Thermal stress under full restraint",
+      "title": "完全拘束的熱應力量級~Thermal stress under full restraint",
+      "mechanism": "先把鋼軌的無應力溫度與當前溫度分開，標明加熱時壓應力的方向。再比較完全拘束模型與可滑移現場的差異，避免把簡化量級當成挫屈判定。完全軸向拘束的熱應力大小由彈性模數、膨脹係數與溫差相乘得到，加熱時是壓應力。實際鋼軌可能滑移並透過扣件與道床重新分配作用；量得總應變必須分離熱應變與機械應變，才能推論應力。解釋前先固定模型適用範圍：線彈性、單軸完全拘束且均勻溫升；未分析軌道挫屈或接頭。~Separate stress-free and current rail temperatures and identify compression during heating. Compare full restraint with possible field slip without treating this scale calculation as a buckling decision. The magnitude of thermal stress under complete axial restraint is modulus times expansion coefficient times temperature change; heating produces compression. Real rail can slip and redistribute force through fasteners and ballast. Total measured strain must be separated into thermal and mechanical components before inferring stress. Before interpreting the result, fix its domain: Linear-elastic fully restrained uniaxial uniform heating; track buckling and joints are not analysed.",
+      "model": "原創假想教學輸入：彈性模數 E=210000 MPa；線膨脹係數 alpha=1.2e-05 1/K；相對無應力溫差 dT=25 K。公式 y=E*alpha*dT，代入得 y=63 MPa。邊界：線彈性、單軸完全拘束且均勻溫升；未分析軌道挫屈或接頭。~Original hypothetical teaching inputs: Young modulus E=210000 MPa; thermal expansion coefficient alpha=1.2e-05 1/K; change from stress-free temperature dT=25 K. Formula y=E*alpha*dT gives y=63 MPa. Boundary: Linear-elastic fully restrained uniaxial uniform heating; track buckling and joints are not analysed.",
+      "verify": "同步量測軌溫與應變，使用獨立參考方法或已知拘束試件檢查溫度補償與零點。以「完全拘束的熱應力量級」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record rail temperature and strain together and use an independent reference or known-restraint specimen to check thermal compensation and zero. For thermal stress under full restraint, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把總應變直接乘彈性模數可能把自由熱膨脹誤當機械應力，感測器脫膠則會低估變化。回到「完全拘束的熱應力量級」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Multiplying total strain by modulus can misinterpret free thermal expansion as mechanical stress; sensor debonding can suppress the response. Trace the input chain for thermal stress under full restraint. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "任何溫度造成的總應變都可以直接乘彈性模數求應力~Any total thermally induced strain can be multiplied directly by modulus to obtain stress.",
+      "practice": "只把相對無應力溫差 dT 從 25 改成 27.5 K（增加百分之十），其餘輸入固定。重算結果應由 63 變為 69.3 MPa。先說明「完全拘束的熱應力量級」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only change from stress-free temperature dT from 25 to 27.5 K (increase by ten percent), holding other inputs fixed. Recalculate 63 to 69.3 MPa. Explain the causal direction for thermal stress under full restraint, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "自由伸長對照試件~Free-expansion reference specimen",
+      "title": "自由伸長對照試件~Free-expansion reference specimen",
+      "mechanism": "以同材質自由試件建立溫差對伸長的基準，再對照受拘束鋼軌的反應。端點位移很小可能意味拘束增加，不代表沒有熱作用。自由熱伸長與原長、膨脹係數及溫差成正比，但受拘束後伸長會被轉成內力。接縫、支承與鄰接構件共同決定這種轉換；因此同一個溫差可能在自由端表現為位移，在固定端表現為應力，不能用一種量測代替另一種。解釋前先固定模型適用範圍：均勻溫度與自由伸長；不包含熱梯度引起的彎曲。~Use an unrestrained specimen of the same material to establish expansion versus temperature before comparing restrained rail. Small end movement may indicate stronger restraint rather than absent thermal action. Free thermal expansion scales with length, coefficient and temperature change, while restraint converts some expansion into force. Joints, supports and adjoining members govern that conversion. The same temperature change can produce movement at a free end and stress at a restrained end, so one measurement cannot replace the other. Before interpreting the result, fix its domain: Uniform temperature and free expansion; thermal-gradient bending is omitted.",
+      "model": "原創假想教學輸入：構件長度 L=30 m；膨脹係數 alpha=1.2e-05 1/K；溫度變化 dT=20 K。公式 y=L*alpha*dT*1000，代入得 y=7.2 mm。邊界：均勻溫度與自由伸長；不包含熱梯度引起的彎曲。~Original hypothetical teaching inputs: member length L=30 m; expansion coefficient alpha=1.2e-05 1/K; temperature change dT=20 K. Formula y=L*alpha*dT*1000 gives y=7.2 mm. Boundary: Uniform temperature and free expansion; thermal-gradient bending is omitted.",
+      "verify": "以多點溫度檢查均勻假設，再對照端點位移與支承狀態，分辨自由與拘束行為。以「自由伸長對照試件」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Check temperature uniformity at several points and compare end movement with support condition to distinguish free and restrained behaviour. For free-expansion reference specimen, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "支承卡住可能讓位移很小但內力增加，日照溫差又可能造成彎曲而非單純伸長。回到「自由伸長對照試件」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A seized support can suppress movement while increasing force; solar gradients may cause bending rather than simple extension. Trace the input chain for free-expansion reference specimen. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "量不到熱伸長就表示構件完全沒有熱應力~No measured thermal expansion means that a member has no thermal stress.",
+      "practice": "只把構件長度 L 從 30 改成 33 m（增加百分之十），其餘輸入固定。重算結果應由 7.2 變為 7.92 mm。先說明「自由伸長對照試件」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only member length L from 30 to 33 m (increase by ten percent), holding other inputs fixed. Recalculate 7.2 to 7.92 mm. Explain the causal direction for free-expansion reference specimen, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "橋路輸出與機械應變~Bridge output and mechanical strain",
+      "title": "橋路輸出與機械應變~Bridge output and mechanical strain",
+      "mechanism": "在溫度補償後才把機械應變帶入四分之一橋的小訊號式，並保留激勵電壓紀錄。以分流校驗核對量測鏈，避免將放大器漂移當成鋼軌應力改變。四分之一橋路的小訊號輸出與激勵、應變規係數及應變成正比。導線電阻、溫度與黏貼品質都會改變零點或靈敏度；量測微小訊號時，需要分開檢查橋路、放大器和構件本身，避免把儀器漂移當成鋼軌應變。解釋前先固定模型適用範圍：理想四分之一橋小應變近似，輸入已是分離後的機械應變。~Insert mechanical strain into the small-signal quarter-bridge relation only after thermal compensation and retain excitation records. Use shunt calibration to distinguish measurement-chain drift from rail-stress change. Small-signal quarter-bridge output is proportional to excitation, gauge factor and strain. Lead resistance, temperature and bonding affect zero and sensitivity. Small-signal measurement requires separate checks of bridge, amplifier and structure so instrument drift is not mistaken for rail strain. Before interpreting the result, fix its domain: Ideal small-strain quarter bridge with already separated mechanical strain.",
+      "model": "原創假想教學輸入：機械應變 strain=400 microstrain；應變規係數 GF=2.1 1；橋路激勵 V=5 V。公式 y=V*GF*strain*1e-6/4*1000，代入得 y=1.05 mV。邊界：理想四分之一橋小應變近似，輸入已是分離後的機械應變。~Original hypothetical teaching inputs: mechanical strain strain=400 microstrain; gauge factor GF=2.1 1; bridge excitation V=5 V. Formula y=V*GF*strain*1e-6/4*1000 gives y=1.05 mV. Boundary: Ideal small-strain quarter bridge with already separated mechanical strain.",
+      "verify": "用電阻分流校驗核對整條量測鏈，再以無載溫度循環檢查表觀應變。以「橋路輸出與機械應變」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Use a shunt calibration to check the complete measurement chain, then an unloaded thermal cycle to examine apparent strain. For bridge output and mechanical strain, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "激勵電壓漂移會按比例改變輸出，黏貼層鬆脫則可能讓訊號幅度下降而噪音增加。回到「橋路輸出與機械應變」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Excitation drift scales output, while a failing bond can reduce response amplitude and increase noise. Trace the input chain for bridge output and mechanical strain. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "橋路輸出變化一定全都來自被測鋼軌的機械應變~Every bridge-output change necessarily comes from mechanical rail strain.",
+      "practice": "只把橋路激勵 V 從 5 改成 5.5 V（增加百分之十），其餘輸入固定。重算結果應由 1.05 變為 1.155 mV。先說明「橋路輸出與機械應變」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only bridge excitation V from 5 to 5.5 V (increase by ten percent), holding other inputs fixed. Recalculate 1.05 to 1.155 mV. Explain the causal direction for bridge output and mechanical strain, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "隨機量測不確定度~Random measurement uncertainty",
+      "title": "隨機量測不確定度~Random measurement uncertainty",
+      "mechanism": "先辨認哪些誤差具有獨立重複量測依據，再合成標準差。固定溫度偏差與共同基準偏移另列，不能藉平方和開根號把它們縮小。獨立零均值誤差的變異數可以相加，因此標準差以平方和開根號合成。這個做法不適合直接合併最大容差或共同偏差；一旦共享基準造成相關性，協方差項就必須回到計算中，不能繼續假裝量測彼此獨立。解釋前先固定模型適用範圍：獨立隨機應變標準差，不包含共同溫度偏差或無應力溫度的不確定度。~Identify errors supported by independent repeat measurements before combining standard deviations. Keep fixed temperature bias and shared-reference offsets separate rather than reducing them through root-sum-square arithmetic. Variances of independent zero-mean errors add, giving a root-sum-square standard deviation. This is not a way to combine maximum tolerances or common bias. When a shared datum creates correlation, covariance terms belong in the calculation rather than assuming continued independence. Before interpreting the result, fix its domain: Independent random strain standard deviations, excluding common temperature bias and uncertainty in stress-free temperature.",
+      "model": "原創假想教學輸入：獨立應變通道一標準差 s1=3 microstrain；獨立應變通道二標準差 s2=4 microstrain。公式 y=sqrt(s1*s1+s2*s2)，代入得 y=5 microstrain。邊界：獨立隨機應變標準差，不包含共同溫度偏差或無應力溫度的不確定度。~Original hypothetical teaching inputs: first independent strain standard deviation s1=3 microstrain; second independent strain standard deviation s2=4 microstrain. Formula y=sqrt(s1*s1+s2*s2) gives y=5 microstrain. Boundary: Independent random strain standard deviations, excluding common temperature bias and uncertainty in stress-free temperature.",
+      "verify": "以重複量測估計標準差與相關係數，將固定偏差另列，再核對合成殘差。以「隨機量測不確定度」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Estimate standard deviations and correlation from repeated observations, separate fixed bias, and compare combined residuals. For random measurement uncertainty, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "共同基準誤差會使所有讀值同向偏移，重複次數增加也無法把這種偏差平均掉。回到「隨機量測不確定度」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A common datum error shifts readings together, and additional repetition cannot average away that shared bias. Trace the input chain for random measurement uncertainty. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "任何兩個誤差都可以不問相關性直接平方和開根號~Any two errors can be combined by root-sum-square without considering correlation.",
+      "practice": "只把獨立應變通道一標準差 s1 從 3 改成 3.3 microstrain（增加百分之十），其餘輸入固定。重算結果應由 5 變為 5.18556 microstrain。先說明「隨機量測不確定度」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only first independent strain standard deviation s1 from 3 to 3.3 microstrain (increase by ten percent), holding other inputs fixed. Recalculate 5 to 5.18556 microstrain. Explain the causal direction for random measurement uncertainty, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "感測位置與測量基準~Sensor positions and survey datums",
+      "title": "感測位置與測量基準~Sensor positions and survey datums",
+      "mechanism": "應變事件需要能回到同一鋼軌位置，長視線的角度誤差會放大定位差。以不同站點閉合核對位置，避免重複讀值一致卻共同使用偏移的基準。小角度方向誤差會隨視線距離放大成橫向位置誤差，長視線不一定帶來更準的幾何控制。基準網、折光、儀器對中與目標安裝都會影響結果；同一站多次讀值一致，仍可能共同受到基準偏移影響。解釋前先固定模型適用範圍：小角近似與單一方向誤差，未含完整測量網平差。~Strain events must map back to the same rail location, and angular error grows with sight distance. Check positions from independent stations so repeatability cannot hide a displaced shared datum. A small angular error becomes transverse position error proportional to sight distance, so a longer sight is not automatically more accurate. Control networks, refraction, centring and target mounting all matter. Repeated agreement from one station can still share a common datum error. Before interpreting the result, fix its domain: Small-angle approximation for one direction error, not a complete survey-network adjustment.",
+      "model": "原創假想教學輸入：視線距離 distance=40 m；小角誤差 angle=2.5e-05 rad。公式 y=distance*angle*1000，代入得 y=1 mm。邊界：小角近似與單一方向誤差，未含完整測量網平差。~Original hypothetical teaching inputs: sight distance distance=40 m; small angular error angle=2.5e-05 rad. Formula y=distance*angle*1000 gives y=1 mm. Boundary: Small-angle approximation for one direction error, not a complete survey-network adjustment.",
+      "verify": "用不同站位與往返觀測交叉核對，將角度誤差、對中誤差與基準移動分列。以「感測位置與測量基準」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Cross-check from different stations and reciprocal observations, separating angular error, centring and datum movement. For sensor positions and survey datums, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "儀器重複性良好可能掩蓋穩定的對中偏差，熱折光則使日夜結果有系統差異。回到「感測位置與測量基準」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Good repeatability can conceal stable centring bias; thermal refraction can create systematic day-night differences. Trace the input chain for sensor positions and survey datums. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "同一站位重複量測完全一致就能保證絕對位置正確~Identical repeated observations from one station guarantee correct absolute position.",
+      "practice": "只把視線距離 distance 從 40 改成 44 m（增加百分之十），其餘輸入固定。重算結果應由 1 變為 1.1 mm。先說明「感測位置與測量基準」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only sight distance distance from 40 to 44 m (increase by ten percent), holding other inputs fixed. Recalculate 1 to 1.1 mm. Explain the causal direction for sensor positions and survey datums, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "移動檢測的空間取樣~Spatial sampling during mobile inspection",
+      "title": "移動檢測的空間取樣~Spatial sampling during mobile inspection",
+      "mechanism": "將移動檢測車的速度與取樣率換成空間間距，另行說明固定式應變計不使用這個移動假設。比較不同車速下的特徵保留，避免把取樣間距直接宣稱為缺陷解析度。固定時間取樣在移動系統中對應空間間隔，速度越高相同頻率越容易漏過狹窄特徵。時間戳抖動會讓空間取樣不均勻；提高取樣率仍需足夠感測頻寬與抗混疊處理，不能只增加資料列數。解釋前先固定模型適用範圍：等速與等時間取樣的間距，不代表可以解析同樣大小的最小缺陷。~Convert inspection-vehicle speed and sampling rate into spacing while distinguishing fixed gauges from this moving assumption. Compare feature retention across speeds without equating sample spacing with defect resolution. Time sampling in a moving system corresponds to spatial spacing; at higher speed, the same rate can miss narrow features. Timestamp jitter makes spatial samples nonuniform. A higher rate still requires adequate sensor bandwidth and anti-alias filtering, rather than merely more rows of data. Before interpreting the result, fix its domain: Spacing for constant speed and uniform sampling; it is not automatically the smallest resolvable defect size.",
+      "model": "原創假想教學輸入：移動速度 v=25 m/s；取樣頻率 f=20 Hz。公式 y=v/f，代入得 y=1.25 m/sample。邊界：等速與等時間取樣的間距，不代表可以解析同樣大小的最小缺陷。~Original hypothetical teaching inputs: motion speed v=25 m/s; sampling frequency f=20 Hz. Formula y=v/f gives y=1.25 m/sample. Boundary: Spacing for constant speed and uniform sampling; it is not automatically the smallest resolvable defect size.",
+      "verify": "對已知長度特徵以不同速度重播，檢查事件是否保留並比較位置內插誤差。以「移動檢測的空間取樣」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Replay a known-length feature at different speeds, check event retention, and compare position-interpolation error. For spatial sampling during mobile inspection, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "高頻振動混疊成低頻漂移可能被誤判為幾何偏差，遺失時間戳也會破壞空間重建。回到「移動檢測的空間取樣」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~High-frequency vibration can alias into apparent low-frequency geometry drift; missing timestamps also corrupt spatial reconstruction. Trace the input chain for spatial sampling during mobile inspection. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "取樣頻率固定時不同速度的空間解析度也一定相同~Fixed sampling frequency gives identical spatial resolution at every speed.",
+      "practice": "只把移動速度 v 從 25 改成 27.5 m/s（增加百分之十），其餘輸入固定。重算結果應由 1.25 變為 1.375 m/sample。先說明「移動檢測的空間取樣」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only motion speed v from 25 to 27.5 m/s (increase by ten percent), holding other inputs fixed. Recalculate 1.25 to 1.375 m/sample. Explain the causal direction for spatial sampling during mobile inspection, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "溫度與應變時間對齊~Aligning temperature and strain records",
+      "title": "溫度與應變時間對齊~Aligning temperature and strain records",
+      "mechanism": "軌溫與應變若不同步，日照快速改變時可能形成假的相位或遲滯。用共同時間基準核對漂移，再判斷曲線差異是否來自真實材料與拘束反應。時鐘頻率偏差會隨時間累積成時間差，校時瞬間的偏移與之不同。多系統事件排序若依不同時鐘，可能把因果順序顛倒；校時跳變又會使量測區間長度失真，所以需記錄時鐘品質與校正事件。解釋前先固定模型適用範圍：固定頻率偏差的線性累積，忽略溫度漂移與校時伺服動態。~Unsynchronized temperature and strain can create false phase shifts during rapid solar heating. Check clock drift before attributing curve differences to material or restraint behaviour. Clock frequency error accumulates into time offset and differs from initial synchronization offset. Ordering multisystem events on different clocks can reverse apparent causality. Synchronization jumps can distort interval lengths, so clock quality and correction events must be recorded. Before interpreting the result, fix its domain: Linear accumulation at fixed frequency offset; temperature drift and synchronization-servo dynamics are omitted.",
+      "model": "原創假想教學輸入：時鐘頻率偏差 drift=20 ppm；未校時期間 duration=3600 s。公式 y=drift*1e-6*duration，代入得 y=0.072 s。邊界：固定頻率偏差的線性累積，忽略溫度漂移與校時伺服動態。~Original hypothetical teaching inputs: clock frequency offset drift=20 ppm; unsynchronized interval duration=3600 s. Formula y=drift*1e-6*duration gives y=0.072 s. Boundary: Linear accumulation at fixed frequency offset; temperature drift and synchronization-servo dynamics are omitted.",
+      "verify": "用獨立時間基準比較多個時刻的偏移，從斜率分辨頻率誤差與一次性跳變。以「溫度與應變時間對齊」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Compare offsets at several times against an independent reference, using slope to distinguish frequency error from a one-time jump. For aligning temperature and strain records, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只對齊開始時刻卻忽略頻率漂移，會讓長測試中的事件逐漸錯位，並誤判通訊延遲。回到「溫度與應變時間對齊」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Aligning only the initial instant leaves frequency drift uncorrected, progressively misaligning events and suggesting false network delay. Trace the input chain for aligning temperature and strain records. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試開始時時鐘一致就能保證整天時間戳都一致~Clocks aligned at test start remain aligned for the entire day.",
+      "practice": "只把未校時期間 duration 從 3600 改成 3960 s（增加百分之十），其餘輸入固定。重算結果應由 0.072 變為 0.0792 s。先說明「溫度與應變時間對齊」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only unsynchronized interval duration from 3600 to 3960 s (increase by ten percent), holding other inputs fixed. Recalculate 0.072 to 0.0792 s. Explain the causal direction for aligning temperature and strain records, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "季節與拘束狀態案例~Seasonal and restraint-state cases",
+      "title": "季節與拘束狀態案例~Seasonal and restraint-state cases",
+      "mechanism": "把溫度範圍、支承狀態與感測黏貼品質分開列成案例，避免只在穩定天氣驗證。每個結論都要連回已測條件，未涵蓋的滑移或局部加熱需保留限制。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Separate temperature range, support condition and sensor bonding in the test matrix rather than validating only steady weather. Tie conclusions to tested conditions and retain limits for untested slip or local heating. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「季節與拘束狀態案例」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For seasonal and restraint-state cases, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「季節與拘束狀態案例」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for seasonal and restraint-state cases. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「季節與拘束狀態案例」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for seasonal and restraint-state cases, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "零異常資料的推論界限~Limits of anomaly-free data",
+      "title": "零異常資料的推論界限~Limits of anomaly-free data",
+      "mechanism": "連續紀錄多筆資料常具有時間相關性，不能直接當成相同數量的獨立試驗。先定義獨立採樣單位，再解讀零異常的上界，不由此宣告鋼軌絕對安全。零次觀察到失效不代表真實失效機率為零。獨立伯努利試驗可由全數成功的機率反推單側上界，試驗數增加才會縮小界限；相關測試或只選容易案例會使這個統計推論不再成立，也不能由此宣告達到安全完整性等級。解釋前先固定模型適用範圍：獨立同分布二元試驗且觀察零失效，非每小時失效率。~Consecutive samples are often correlated and cannot automatically count as independent trials. Define independent sampling units before interpreting an anomaly-free bound, without declaring unconditional rail safety. Zero observed failures does not imply zero true failure probability. Independent Bernoulli trials allow a one-sided upper bound from the probability of all successes, which decreases with sample count. Correlated or selectively easy cases invalidate this inference and cannot establish a safety-integrity level. Before interpreting the result, fix its domain: Independent identical binary trials with zero observed failures, not an hourly failure rate.",
+      "model": "原創假想教學輸入：獨立試驗次數 tests=300 independent trials；單側信賴水準 confidence=0.95 1。公式 y=1-(1-confidence)**(1/tests)，代入得 y=0.00993608 failure probability。邊界：獨立同分布二元試驗且觀察零失效，非每小時失效率。~Original hypothetical teaching inputs: independent trial count tests=300 independent trials; one-sided confidence level confidence=0.95 1. Formula y=1-(1-confidence)**(1/tests) gives y=0.00993608 failure probability. Boundary: Independent identical binary trials with zero observed failures, not an hourly failure rate.",
+      "verify": "核對案例獨立性與抽樣範圍，保留所有失敗紀錄，再說明統計界限對哪一類情境有效。以「零異常資料的推論界限」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Audit independence and sampling scope, retain all failures, and state the scenario population to which the bound applies. For limits of anomaly-free data, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "反覆重跑相同狀態可能沒有增加獨立證據，刪去失敗案例則直接破壞零失效假設。回到「零異常資料的推論界限」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Repeated identical states may add no independent evidence, while deleting failures invalidates the zero-failure assumption. Trace the input chain for limits of anomaly-free data. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "完成很多次沒有故障的測試就能證明故障機率為零~Many failure-free tests prove that the failure probability is zero.",
+      "practice": "只把獨立試驗次數 tests 從 300 改成 301 independent trials（增加一個可計數單位），其餘輸入固定。重算結果應由 0.00993608 變為 0.00990324 failure probability。先說明「零異常資料的推論界限」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only independent trial count tests from 300 to 301 independent trials (increase by one whole count), holding other inputs fixed. Recalculate 0.00993608 to 0.00990324 failure probability. Explain the causal direction for limits of anomaly-free data, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "監測校驗與追溯計畫~Calibration effort and traceability",
+      "title": "監測校驗與追溯計畫~Calibration effort and traceability",
+      "mechanism": "校驗工時要包含參考溫度穩定、橋路檢查與資料同步確認，不能只計讀取數值時間。建立更換感測器後的重驗項目，讓跨季節比較保有相同基準。測試工時包含案例執行與環境設定、資料復原及證據整理。平行化只有在資源和狀態真正獨立時有效；把多個會修改同一狀態的測試同時執行，可能造成結果不可重現，表面節省時間卻增加診斷成本。解釋前先固定模型適用範圍：確定平均案例時間的串行估算，未含故障重測與資源衝突。~Include temperature stabilization, bridge checks and synchronization in calibration effort rather than only reading time. Define rechecks after sensor replacement so seasonal comparisons retain a consistent reference. Test effort includes case execution, setup, state restoration and evidence handling. Parallelism helps only when resources and state are genuinely independent. Concurrent tests modifying one shared state can become irreproducible, apparently saving execution time while increasing diagnostic cost. Before interpreting the result, fix its domain: Serial estimate with deterministic mean case time; failure reruns and resource conflicts are excluded.",
+      "model": "原創假想教學輸入：測試案例數 cases=120 cases；平均案例時間 minutes=8 min/case；設定與恢復時間 setup=180 min。公式 y=(cases*minutes+setup)/60，代入得 y=19 h。邊界：確定平均案例時間的串行估算，未含故障重測與資源衝突。~Original hypothetical teaching inputs: test cases cases=120 cases; mean case duration minutes=8 min/case; setup and recovery time setup=180 min. Formula y=(cases*minutes+setup)/60 gives y=19 h. Boundary: Serial estimate with deterministic mean case time; failure reruns and resource conflicts are excluded.",
+      "verify": "逐案記錄前置狀態、執行時間與復原時間，分開列出正常完成和失敗重測。以「監測校驗與追溯計畫」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record preconditions, execution and restoration for every case, separating normal completion from failure reruns. For calibration effort and traceability, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "省略復原步驟會讓前案狀態污染後案，僅報告成功案例時間則低估總測試成本。回到「監測校驗與追溯計畫」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Omitted restoration contaminates later tests with earlier state; reporting only successful durations understates total effort. Trace the input chain for calibration effort and traceability. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "所有整合測試都可以同時執行而完全不影響結果~All integration tests can run simultaneously without affecting results.",
+      "practice": "只把測試案例數 cases 從 120 改成 121 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 19 變為 19.1333 h。先說明「監測校驗與追溯計畫」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only test cases cases from 120 to 121 cases (increase by one whole count), holding other inputs fixed. Recalculate 19 to 19.1333 h. Explain the causal direction for calibration effort and traceability, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：完全拘束的熱應力量級採 E=210000 MPa；本課公式結果 63 MPa，非現場額定值。~Teaching assumption for thermal stress under full restraint: E=210000 MPa; this model gives 63 MPa, not a field rating.",
+    "教學假設：自由伸長對照試件採 L=30 m；本課公式結果 7.2 mm，非現場額定值。~Teaching assumption for free-expansion reference specimen: L=30 m; this model gives 7.2 mm, not a field rating.",
+    "教學假設：橋路輸出與機械應變採 strain=400 microstrain；本課公式結果 1.05 mV，非現場額定值。~Teaching assumption for bridge output and mechanical strain: strain=400 microstrain; this model gives 1.05 mV, not a field rating.",
+    "教學假設：隨機量測不確定度採 s1=3 microstrain；本課公式結果 5 microstrain，非現場額定值。~Teaching assumption for random measurement uncertainty: s1=3 microstrain; this model gives 5 microstrain, not a field rating.",
+    "教學假設：感測位置與測量基準採 distance=40 m；本課公式結果 1 mm，非現場額定值。~Teaching assumption for sensor positions and survey datums: distance=40 m; this model gives 1 mm, not a field rating.",
+    "教學假設：移動檢測的空間取樣採 v=25 m/s；本課公式結果 1.25 m/sample，非現場額定值。~Teaching assumption for spatial sampling during mobile inspection: v=25 m/s; this model gives 1.25 m/sample, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "2008",
+      "event": "長焊鋼軌縱向應力監測研究報告出版。~Research on monitoring longitudinal rail stress was published."
+    },
+    {
+      "year": "2010",
+      "event": "連續焊軌應力自動量測報告出版。~An automated continuous-welded-rail stress measurement report was published."
+    },
+    {
+      "year": "2021",
+      "event": "長焊鋼軌計畫方法指引於該年更新。~Guidance for continuous-welded-rail plans was updated that year."
+    }
+  ],
+  "codes": [
+    "FRA 長焊鋼軌通用計畫指引，2021 年版，美國適用背景~FRA continuous-welded-rail generic plan guidance, 2021 edition, United States context",
+    "IEC 62278-1:2025 鐵路可靠度與安全方法，監測證據範圍須確認~IEC 62278-1:2025 railway RAMS methodology; establish the scope of monitoring evidence"
+  ],
+  "landmarks": [
+    "聖哥達基線隧道~Gotthard Base Tunnel",
+    "倫敦伊莉莎白線~London Elizabeth line"
+  ],
+  "place": {
+    "name": "聖哥達南側示意地點~Gotthard southern reference area",
+    "country": "瑞士~Switzerland",
+    "lat": 46.375,
+    "lng": 8.967,
+    "query": "Gotthard Base Tunnel Switzerland"
+  },
+  "sources": [
+    {
+      "key": "cwr-2008",
+      "title": "長焊鋼軌應力超音波研究",
+      "titleEn": "Ultrasonic investigation of longitudinal rail stress",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/sites/fra.dot.gov/files/fra_net/2086/rr0805.pdf",
+      "sourceType": "primary",
+      "scope": "支持應力量測方法的研究歷史；彈性熱應力算例是本課自行設定。",
+      "scopeEn": "Supports the research history of stress measurement; elastic thermal-stress examples are original."
+    },
+    {
+      "key": "cwr-2010",
+      "title": "鋼軌應力自動量測研究",
+      "titleEn": "Automated measurement of rail stress",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://rosap.ntl.bts.gov/view/dot/40238",
+      "sourceType": "primary",
+      "scope": "支持自動量測與無應力溫度研究脈絡，不提供現場放散程序。",
+      "scopeEn": "Supports automated measurement and neutral-temperature context, not field destressing procedures."
+    },
+    {
+      "key": "cwr-2021",
+      "title": "長焊鋼軌計畫方法指引",
+      "titleEn": "Guidance for continuous-welded-rail plans",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/sites/fra.dot.gov/files/2021-08/FRA%20CWR%20Generic%20Plan%20-%20Effective_July%202021%5B67%5D.pdf",
+      "sourceType": "primary",
+      "scope": "支持計畫方法指引更新年代；本課模型不是核准計畫。",
+      "scopeEn": "Supports the guidance update year; this model is not an approved plan."
+    },
+    {
+      "key": "gotthard-reference",
+      "title": "瑞士列車防護系統背景",
+      "titleEn": "Swiss train-protection reference",
+      "publisher": "SBB",
+      "url": "https://company.sbb.ch/en/railway-development/services-rus/railway-environment/railway-environment/etcs.html",
+      "sourceType": "primary",
+      "scope": "支持聖哥達代表工程與列控背景；課程數值均非該隧道設定。",
+      "scopeEn": "Supports Gotthard as a reference and train-control context; course values are not tunnel settings."
+    },
+    {
+      "key": "rams-2025",
+      "title": "鐵路可靠度安全方法分冊",
+      "titleEn": "Railway RAMS specification part one",
+      "publisher": "IEC",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "支持方法分冊的出版年代與範圍；不複製條文或宣稱教材為合規論證。",
+      "scopeEn": "Supports edition year and scope; clauses are not reproduced and the lessons do not establish compliance."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "國際電工委員會",
+      "nameEn": "IEC",
+      "business": "電工與鐵路方法標準",
+      "businessEn": "Electrical and railway methodological standards",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "role": "方法出版機構，非本課設備供應商",
+      "roleEn": "Methodology publisher, not a supplier to the fictional lesson",
+      "security": null
+    },
+    {
+      "name": "歐洲鐵路局",
+      "nameEn": "European Union Agency for Railways",
+      "business": "鐵路互通規格與技術協調",
+      "businessEn": "Railway interoperability specifications and coordination",
+      "url": "https://www.era.europa.eu/",
+      "role": "官方規格資訊機構，不推論任何個別設備採購",
+      "roleEn": "Official specification information, with no claim about individual procurement",
+      "security": null
+    }
+  ],
+  "related": [
+    "b393",
+    "b395"
+  ],
+  "architectureNodes": [
+    [
+      "鋼軌溫度",
+      "Rail temperature"
+    ],
+    [
+      "拘束條件",
+      "Restraint condition"
+    ],
+    [
+      "應變感測",
+      "Strain sensing"
+    ],
+    [
+      "基準校正",
+      "Reference calibration"
+    ],
+    [
+      "監測證據",
+      "Monitoring evidence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

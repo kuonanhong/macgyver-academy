@@ -1,0 +1,261 @@
+{
+  "id": "b359",
+  "title": "軌旁落石與異物偵測~Trackside rockfall and obstruction detection",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "異物偵測覆蓋延遲與誤報漏報~Obstruction coverage latency false alarms and missed events",
+  "summary": "軌旁落石與異物偵測以「異物偵測覆蓋延遲與誤報漏報」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。軌旁異物偵測要把感測範圍、事件判定與列車防護動作連接，警報延遲和漏檢比漂亮影像更重要，正常訊號不能直接視為安全許可。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops obstruction coverage latency false alarms and missed events through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Trackside obstruction detection connects sensing coverage, event decisions and train protection; latency and missed events matter more than attractive images, and a normal signal is not automatically movement permission. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把軌旁落石與異物偵測放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。軌旁異物偵測要把感測範圍、事件判定與列車防護動作連接，警報延遲和漏檢比漂亮影像更重要，正常訊號不能直接視為安全許可。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Trackside rockfall and obstruction detection in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Trackside obstruction detection connects sensing coverage, event decisions and train protection; latency and missed events matter more than attractive images, and a normal signal is not automatically movement permission. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：h=20 m, g=9.81 m/s2；y=sqrt(2*h/g)=2.01928 s。只把 h 增加百分之十，y=2.11783 s。模型邊界：無初速無阻力垂落；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：sense=0.1 s, comm=0.2 s, logic=0.05 s；y=sense+comm+logic=0.35 s。只把 sense 增加百分之十，y=0.36 s。模型邊界：順序處理無重疊；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: h=20 m, g=9.81 m/s2; y=sqrt(2*h/g)=2.01928 s. Increasing only h with a ten-percent increase gives y=2.11783 s. Boundary: Vertical fall without initial speed or drag; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: sense=0.1 s, comm=0.2 s, logic=0.05 s; y=sense+comm+logic=0.35 s. Increasing only sense with a ten-percent increase gives y=0.36 s. Boundary: Sequential processing without overlap; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "落體到達時間~Falling-object arrival time",
+      "title": "落體到達時間~Falling-object arrival time",
+      "mechanism": "理想自由落體時間只是事件時間尺度。本模型把 h 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 2.11783 s。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。無初速無阻力垂落。使用合成物體軌跡作量測證據，才能檢查方程是否對應此處的實際物理量；碰撞反彈與坡面滑動改變到達時間，因此應把該原因與量測偏差分開。~Ideal free-fall time is only an event timescale. In this model, h is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 2.11783 s. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Vertical fall without initial speed or drag. Use synthetic object trajectory as measurement evidence that the equation represents the intended physical quantity. Bounces and slope sliding alter arrival time; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：h=20 m, g=9.81 m/s2；y=sqrt(2*h/g)=2.01928 s。只把 h 增加百分之十，y=2.11783 s。模型邊界：無初速無阻力垂落；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: h=20 m, g=9.81 m/s2; y=sqrt(2*h/g)=2.01928 s. Increasing only h with a ten-percent increase gives y=2.11783 s. Boundary: Vertical fall without initial speed or drag; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以合成物體軌跡區分模型與觀察，先用合成高速影格與時鐘建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「落體到達時間」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use synthetic object trajectory to distinguish the model from observation in this unit. Establish a baseline using synthetic high-speed frames and clock, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Falling-object arrival time. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "碰撞反彈與坡面滑動改變到達時間。這個失效與「落體到達時間」的量測偏差可能產生相似表象，因此必須同時檢查合成物體軌跡，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Bounces and slope sliding alter arrival time. This failure and a measurement bias in Falling-object arrival time can produce similar symptoms. Cross-check synthetic object trajectory rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：碰撞反彈與坡面滑動改變到達時間~This unit cannot exhibit the following failure: Bounces and slope sliding alter arrival time.",
+      "practice": "重算「落體到達時間」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出無初速無阻力垂落如何限制結論。接著設計一組符合模型及一組由碰撞反彈與坡面滑動改變到達時間造成偏離的合成觀察，以合成物體軌跡說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Falling-object arrival time, plot the input-output relationship, and explain the limiting assumption: Vertical fall without initial speed or drag. Construct one synthetic observation consistent with the model and another affected by this failure: Bounces and slope sliding alter arrival time. Explain which evidence in synthetic object trajectory distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "警報總延遲~Total alarm latency",
+      "title": "警報總延遲~Total alarm latency",
+      "mechanism": "順序鏈延遲相加且需另查最壞抖動。本模型把 sense 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.36 s。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。順序處理無重疊。使用端到端時間戳作量測證據，才能檢查方程是否對應此處的實際物理量；平均網路延遲不能保證最壞反應，因此應把該原因與量測偏差分開。~Sequential delays add, with worst-case jitter checked separately. In this model, sense is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.36 s. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Sequential processing without overlap. Use end-to-end timestamps as measurement evidence that the equation represents the intended physical quantity. Mean network latency cannot guarantee worst response; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：sense=0.1 s, comm=0.2 s, logic=0.05 s；y=sense+comm+logic=0.35 s。只把 sense 增加百分之十，y=0.36 s。模型邊界：順序處理無重疊；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: sense=0.1 s, comm=0.2 s, logic=0.05 s; y=sense+comm+logic=0.35 s. Increasing only sense with a ten-percent increase gives y=0.36 s. Boundary: Sequential processing without overlap; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以端到端時間戳區分模型與觀察，先用共同時鐘事件記錄器建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「警報總延遲」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use end-to-end timestamps to distinguish the model from observation in this unit. Establish a baseline using common-clock event logger, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Total alarm latency. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "平均網路延遲不能保證最壞反應。這個失效與「警報總延遲」的量測偏差可能產生相似表象，因此必須同時檢查端到端時間戳，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Mean network latency cannot guarantee worst response. This failure and a measurement bias in Total alarm latency can produce similar symptoms. Cross-check end-to-end timestamps rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：平均網路延遲不能保證最壞反應~This unit cannot exhibit the following failure: Mean network latency cannot guarantee worst response.",
+      "practice": "重算「警報總延遲」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出順序處理無重疊如何限制結論。接著設計一組符合模型及一組由平均網路延遲不能保證最壞反應造成偏離的合成觀察，以端到端時間戳說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Total alarm latency, plot the input-output relationship, and explain the limiting assumption: Sequential processing without overlap. Construct one synthetic observation consistent with the model and another affected by this failure: Mean network latency cannot guarantee worst response. Explain which evidence in end-to-end timestamps distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "延遲列車前進量~Train travel during latency",
+      "title": "延遲列車前進量~Train travel during latency",
+      "mechanism": "警報鏈延遲消耗可用距離。本模型把 v 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 15.4 m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。延遲期間等速。使用列車速度和警報時間作量測證據，才能檢查方程是否對應此處的實際物理量；忽略延遲會高估保護距離，因此應把該原因與量測偏差分開。~Alarm-chain delay consumes available distance. In this model, v is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 15.4 m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Constant speed during latency. Use train speed and alarm time as measurement evidence that the equation represents the intended physical quantity. Ignoring delay overstates protection distance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：v=40 m/s, t=0.35 s；y=v*t=14 m。只把 v 增加百分之十，y=15.4 m。模型邊界：延遲期間等速；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: v=40 m/s, t=0.35 s; y=v*t=14 m. Increasing only v with a ten-percent increase gives y=15.4 m. Boundary: Constant speed during latency; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以列車速度和警報時間區分模型與觀察，先用合成速度與警報紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「延遲列車前進量」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use train speed and alarm time to distinguish the model from observation in this unit. Establish a baseline using synthetic speed and alarm records, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Train travel during latency. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "忽略延遲會高估保護距離。這個失效與「延遲列車前進量」的量測偏差可能產生相似表象，因此必須同時檢查列車速度和警報時間，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Ignoring delay overstates protection distance. This failure and a measurement bias in Train travel during latency can produce similar symptoms. Cross-check train speed and alarm time rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：忽略延遲會高估保護距離~This unit cannot exhibit the following failure: Ignoring delay overstates protection distance.",
+      "practice": "重算「延遲列車前進量」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出延遲期間等速如何限制結論。接著設計一組符合模型及一組由忽略延遲會高估保護距離造成偏離的合成觀察，以列車速度和警報時間說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Train travel during latency, plot the input-output relationship, and explain the limiting assumption: Constant speed during latency. Construct one synthetic observation consistent with the model and another affected by this failure: Ignoring delay overstates protection distance. Explain which evidence in train speed and alarm time distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "辨識召回率~Detection recall estimate",
+      "title": "辨識召回率~Detection recall estimate",
+      "mechanism": "召回率需要包含未被系統報出的真事件。本模型把 TP 當成主動改變的輸入，其餘輸入固定；當它增加一個整數單位，輸出增加為 90.1961 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。具代表性的替代計數資料集，擾動時總樣本數可變。使用盲測真值集作量測證據，才能檢查方程是否對應此處的實際物理量；只收集警報影片無法估漏檢，因此應把該原因與量測偏差分開。~Recall includes true events the system failed to report. In this model, TP is deliberately changed while every other input is held fixed. An increase of one whole unit means the output increases to 90.1961 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Representative alternative count datasets whose total may change under perturbation. Use blinded ground-truth set as measurement evidence that the equation represents the intended physical quantity. Alarm clips alone cannot estimate misses; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：TP=45 count, FN=5 count；y=TP/(TP+FN)*100=90 percent。只把 TP 增加一個整數單位，y=90.1961 percent。模型邊界：具代表性的替代計數資料集，擾動時總樣本數可變；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: TP=45 count, FN=5 count; y=TP/(TP+FN)*100=90 percent. Increasing only TP with an increase of one whole unit gives y=90.1961 percent. Boundary: Representative alternative count datasets whose total may change under perturbation; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以盲測真值集區分模型與觀察，先用人工標註與事件配對建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「辨識召回率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use blinded ground-truth set to distinguish the model from observation in this unit. Establish a baseline using manual labels and event matching, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Detection recall estimate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只收集警報影片無法估漏檢。這個失效與「辨識召回率」的量測偏差可能產生相似表象，因此必須同時檢查盲測真值集，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Alarm clips alone cannot estimate misses. This failure and a measurement bias in Detection recall estimate can produce similar symptoms. Cross-check blinded ground-truth set rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只收集警報影片無法估漏檢~This unit cannot exhibit the following failure: Alarm clips alone cannot estimate misses.",
+      "practice": "重算「辨識召回率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出具代表性的替代計數資料集，擾動時總樣本數可變如何限制結論。接著設計一組符合模型及一組由只收集警報影片無法估漏檢造成偏離的合成觀察，以盲測真值集說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Detection recall estimate, plot the input-output relationship, and explain the limiting assumption: Representative alternative count datasets whose total may change under perturbation. Construct one synthetic observation consistent with the model and another affected by this failure: Alarm clips alone cannot estimate misses. Explain which evidence in blinded ground-truth set distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "警報精確率~Alarm precision estimate",
+      "title": "警報精確率~Alarm precision estimate",
+      "mechanism": "精確率描述警報中真事件比例。本模型把 TP 當成主動改變的輸入，其餘輸入固定；當它增加一個整數單位，輸出增加為 75.4098 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。固定事件定義的替代計數資料集，擾動時警報總數可變。使用全部警報與複核結果作量測證據，才能檢查方程是否對應此處的實際物理量；高召回可伴隨過多誤報，因此應把該原因與量測偏差分開。~Precision describes the true-event fraction among alarms. In this model, TP is deliberately changed while every other input is held fixed. An increase of one whole unit means the output increases to 75.4098 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Alternative count datasets with a fixed event definition and variable alarm totals. Use all alarms and review outcomes as measurement evidence that the equation represents the intended physical quantity. High recall can coexist with excessive false alarms; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：TP=45 count, FP=15 count；y=TP/(TP+FP)*100=75 percent。只把 TP 增加一個整數單位，y=75.4098 percent。模型邊界：固定事件定義的替代計數資料集，擾動時警報總數可變；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: TP=45 count, FP=15 count; y=TP/(TP+FP)*100=75 percent. Increasing only TP with an increase of one whole unit gives y=75.4098 percent. Boundary: Alternative count datasets with a fixed event definition and variable alarm totals; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以全部警報與複核結果區分模型與觀察，先用盲測複核表建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「警報精確率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use all alarms and review outcomes to distinguish the model from observation in this unit. Establish a baseline using blinded adjudication table, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Alarm precision estimate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "高召回可伴隨過多誤報。這個失效與「警報精確率」的量測偏差可能產生相似表象，因此必須同時檢查全部警報與複核結果，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~High recall can coexist with excessive false alarms. This failure and a measurement bias in Alarm precision estimate can produce similar symptoms. Cross-check all alarms and review outcomes rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：高召回可伴隨過多誤報~This unit cannot exhibit the following failure: High recall can coexist with excessive false alarms.",
+      "practice": "重算「警報精確率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出固定事件定義的替代計數資料集，擾動時警報總數可變如何限制結論。接著設計一組符合模型及一組由高召回可伴隨過多誤報造成偏離的合成觀察，以全部警報與複核結果說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Alarm precision estimate, plot the input-output relationship, and explain the limiting assumption: Alternative count datasets with a fixed event definition and variable alarm totals. Construct one synthetic observation consistent with the model and another affected by this failure: High recall can coexist with excessive false alarms. Explain which evidence in all alarms and review outcomes distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "稀有事件基率~Rare-event predictive value",
+      "title": "稀有事件基率~Rare-event predictive value",
+      "mechanism": "罕見事件下誤報可主導警報總數。本模型把 p 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.0947073 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。機率穩定且測試集具代表性。使用事件基率與正常樣本作量測證據，才能檢查方程是否對應此處的實際物理量；只報正確率會掩蓋低警報可信度，因此應把該原因與量測偏差分開。~False alarms can dominate when true events are rare. In this model, p is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.0947073 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Stable probabilities and representative samples. Use event prevalence and normal examples as measurement evidence that the equation represents the intended physical quantity. Accuracy alone hides low alarm credibility; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：p=0.001 1, recall=0.95 1, fpr=0.01 1；y=p*recall/(p*recall+(1-p)*fpr)=0.0868373 1。只把 p 增加百分之十，y=0.0947073 1。模型邊界：機率穩定且測試集具代表性；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: p=0.001 1, recall=0.95 1, fpr=0.01 1; y=p*recall/(p*recall+(1-p)*fpr)=0.0868373 1. Increasing only p with a ten-percent increase gives y=0.0947073 1. Boundary: Stable probabilities and representative samples; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以事件基率與正常樣本區分模型與觀察，先用分層事件統計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「稀有事件基率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use event prevalence and normal examples to distinguish the model from observation in this unit. Establish a baseline using stratified event statistics, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Rare-event predictive value. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只報正確率會掩蓋低警報可信度。這個失效與「稀有事件基率」的量測偏差可能產生相似表象，因此必須同時檢查事件基率與正常樣本，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Accuracy alone hides low alarm credibility. This failure and a measurement bias in Rare-event predictive value can produce similar symptoms. Cross-check event prevalence and normal examples rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只報正確率會掩蓋低警報可信度~This unit cannot exhibit the following failure: Accuracy alone hides low alarm credibility.",
+      "practice": "重算「稀有事件基率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出機率穩定且測試集具代表性如何限制結論。接著設計一組符合模型及一組由只報正確率會掩蓋低警報可信度造成偏離的合成觀察，以事件基率與正常樣本說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Rare-event predictive value, plot the input-output relationship, and explain the limiting assumption: Stable probabilities and representative samples. Construct one synthetic observation consistent with the model and another affected by this failure: Accuracy alone hides low alarm credibility. Explain which evidence in event prevalence and normal examples distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "相機地面像素尺度~Camera ground-pixel scale",
+      "title": "相機地面像素尺度~Camera ground-pixel scale",
+      "mechanism": "地面尺度與視野位置相關，平面近似需標定。本模型把 width 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 6.875 mm/pixel。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。同一平面均勻尺度近似。使用已知尺寸標靶作量測證據，才能檢查方程是否對應此處的實際物理量；透視使遠端小物體像素減少，因此應把該原因與量測偏差分開。~Ground scale varies across the view and needs calibration. In this model, width is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 6.875 mm/pixel. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform-scale approximation on one plane. Use targets of known size as measurement evidence that the equation represents the intended physical quantity. Perspective reduces pixels on distant objects; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：width=12 m, pixels=1920 count；y=width/pixels*1000=6.25 mm/pixel。只把 width 增加百分之十，y=6.875 mm/pixel。模型邊界：同一平面均勻尺度近似；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: width=12 m, pixels=1920 count; y=width/pixels*1000=6.25 mm/pixel. Increasing only width with a ten-percent increase gives y=6.875 mm/pixel. Boundary: Uniform-scale approximation on one plane; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以已知尺寸標靶區分模型與觀察，先用標定板及影像座標建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「相機地面像素尺度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use targets of known size to distinguish the model from observation in this unit. Establish a baseline using calibration board and image coordinates, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Camera ground-pixel scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "透視使遠端小物體像素減少。這個失效與「相機地面像素尺度」的量測偏差可能產生相似表象，因此必須同時檢查已知尺寸標靶，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Perspective reduces pixels on distant objects. This failure and a measurement bias in Camera ground-pixel scale can produce similar symptoms. Cross-check targets of known size rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：透視使遠端小物體像素減少~This unit cannot exhibit the following failure: Perspective reduces pixels on distant objects.",
+      "practice": "重算「相機地面像素尺度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出同一平面均勻尺度近似如何限制結論。接著設計一組符合模型及一組由透視使遠端小物體像素減少造成偏離的合成觀察，以已知尺寸標靶說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Camera ground-pixel scale, plot the input-output relationship, and explain the limiting assumption: Uniform-scale approximation on one plane. Construct one synthetic observation consistent with the model and another affected by this failure: Perspective reduces pixels on distant objects. Explain which evidence in targets of known size distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "感測盲區比例~Sensor blind-area fraction",
+      "title": "感測盲區比例~Sensor blind-area fraction",
+      "mechanism": "面積覆蓋不是事件檢出率。本模型把 blind 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 13.2 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。二維固定視場。使用可視區與遮擋圖作量測證據，才能檢查方程是否對應此處的實際物理量；植物生長可增加盲區，因此應把該原因與量測偏差分開。~Area coverage is not event detection probability. In this model, blind is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 13.2 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Fixed two-dimensional field of view. Use visibility and occlusion map as measurement evidence that the equation represents the intended physical quantity. Vegetation growth increases blind areas; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：blind=12 m2, total=100 m2；y=blind/total*100=12 percent。只把 blind 增加百分之十，y=13.2 percent。模型邊界：二維固定視場；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: blind=12 m2, total=100 m2; y=blind/total*100=12 percent. Increasing only blind with a ten-percent increase gives y=13.2 percent. Boundary: Fixed two-dimensional field of view; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以可視區與遮擋圖區分模型與觀察，先用視線掃描與遮擋標註建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「感測盲區比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use visibility and occlusion map to distinguish the model from observation in this unit. Establish a baseline using line-of-sight scans and occlusion labels, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Sensor blind-area fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "植物生長可增加盲區。這個失效與「感測盲區比例」的量測偏差可能產生相似表象，因此必須同時檢查可視區與遮擋圖，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Vegetation growth increases blind areas. This failure and a measurement bias in Sensor blind-area fraction can produce similar symptoms. Cross-check visibility and occlusion map rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：植物生長可增加盲區~This unit cannot exhibit the following failure: Vegetation growth increases blind areas.",
+      "practice": "重算「感測盲區比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出二維固定視場如何限制結論。接著設計一組符合模型及一組由植物生長可增加盲區造成偏離的合成觀察，以可視區與遮擋圖說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Sensor blind-area fraction, plot the input-output relationship, and explain the limiting assumption: Fixed two-dimensional field of view. Construct one synthetic observation consistent with the model and another affected by this failure: Vegetation growth increases blind areas. Explain which evidence in visibility and occlusion map distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "定期心跳超時~Heartbeat timeout scale",
+      "title": "定期心跳超時~Heartbeat timeout scale",
+      "mechanism": "無事件與無通訊必須分成不同狀態。本模型把 period 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 6.6 s。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。固定週期且無額外抖動。使用心跳序號與接收時刻作量測證據，才能檢查方程是否對應此處的實際物理量；斷線被當正常會形成靜默失效，因此應把該原因與量測偏差分開。~No event and no communication must be separate states. In this model, period is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 6.6 s. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Fixed period without additional jitter. Use heartbeat sequence and arrival time as measurement evidence that the equation represents the intended physical quantity. Treating disconnection as normal creates silent failure; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：period=2 s, missed=3 count；y=period*missed=6 s。只把 period 增加百分之十，y=6.6 s。模型邊界：固定週期且無額外抖動；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: period=2 s, missed=3 count; y=period*missed=6 s. Increasing only period with a ten-percent increase gives y=6.6 s. Boundary: Fixed period without additional jitter; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以心跳序號與接收時刻區分模型與觀察，先用通訊故障注入建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「定期心跳超時」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use heartbeat sequence and arrival time to distinguish the model from observation in this unit. Establish a baseline using communication fault injection, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Heartbeat timeout scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "斷線被當正常會形成靜默失效。這個失效與「定期心跳超時」的量測偏差可能產生相似表象，因此必須同時檢查心跳序號與接收時刻，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Treating disconnection as normal creates silent failure. This failure and a measurement bias in Heartbeat timeout scale can produce similar symptoms. Cross-check heartbeat sequence and arrival time rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：斷線被當正常會形成靜默失效~This unit cannot exhibit the following failure: Treating disconnection as normal creates silent failure.",
+      "practice": "重算「定期心跳超時」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出固定週期且無額外抖動如何限制結論。接著設計一組符合模型及一組由斷線被當正常會形成靜默失效造成偏離的合成觀察，以心跳序號與接收時刻說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Heartbeat timeout scale, plot the input-output relationship, and explain the limiting assumption: Fixed period without additional jitter. Construct one synthetic observation consistent with the model and another affected by this failure: Treating disconnection as normal creates silent failure. Explain which evidence in heartbeat sequence and arrival time distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "測試誤報頻率~Test false-alarm rate",
+      "title": "測試誤報頻率~Test false-alarm rate",
+      "mechanism": "每小時誤報率需附環境條件與測試時間。本模型把 false 當成主動改變的輸入，其餘輸入固定；當它增加一個整數單位，輸出增加為 0.025 alarms/h。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。指定測試環境平均。使用天候分層運行紀錄作量測證據，才能檢查方程是否對應此處的實際物理量；晴天測試不能代表雨霧條件，因此應把該原因與量測偏差分開。~False alarms per hour require conditions and exposure duration. In this model, false is deliberately changed while every other input is held fixed. An increase of one whole unit means the output increases to 0.025 alarms/h. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Mean in the specified test environment. Use weather-stratified operating records as measurement evidence that the equation represents the intended physical quantity. Clear-weather tests do not represent rain and fog; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：false=4 count, hours=200 h；y=false/hours=0.02 alarms/h。只把 false 增加一個整數單位，y=0.025 alarms/h。模型邊界：指定測試環境平均；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: false=4 count, hours=200 h; y=false/hours=0.02 alarms/h. Increasing only false with an increase of one whole unit gives y=0.025 alarms/h. Boundary: Mean in the specified test environment; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以天候分層運行紀錄區分模型與觀察，先用事件與天候時間序列建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「測試誤報頻率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use weather-stratified operating records to distinguish the model from observation in this unit. Establish a baseline using event and weather time series, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Test false-alarm rate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "晴天測試不能代表雨霧條件。這個失效與「測試誤報頻率」的量測偏差可能產生相似表象，因此必須同時檢查天候分層運行紀錄，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Clear-weather tests do not represent rain and fog. This failure and a measurement bias in Test false-alarm rate can produce similar symptoms. Cross-check weather-stratified operating records rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：晴天測試不能代表雨霧條件~This unit cannot exhibit the following failure: Clear-weather tests do not represent rain and fog.",
+      "practice": "重算「測試誤報頻率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出指定測試環境平均如何限制結論。接著設計一組符合模型及一組由晴天測試不能代表雨霧條件造成偏離的合成觀察，以天候分層運行紀錄說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Test false-alarm rate, plot the input-output relationship, and explain the limiting assumption: Mean in the specified test environment. Construct one synthetic observation consistent with the model and another affected by this failure: Clear-weather tests do not represent rain and fog. Explain which evidence in weather-stratified operating records distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：h=20 m, g=9.81 m/s2；y=sqrt(2*h/g)=2.01928 s~Teaching unit 1 baseline scale: Original assumed example, not field operating values: h=20 m, g=9.81 m/s2; y=sqrt(2*h/g)=2.01928 s.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：sense=0.1 s, comm=0.2 s, logic=0.05 s；y=sense+comm+logic=0.35 s~Teaching unit 2 baseline scale: Original assumed example, not field operating values: sense=0.1 s, comm=0.2 s, logic=0.05 s; y=sense+comm+logic=0.35 s.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：v=40 m/s, t=0.35 s；y=v*t=14 m~Teaching unit 3 baseline scale: Original assumed example, not field operating values: v=40 m/s, t=0.35 s; y=v*t=14 m.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：TP=45 count, FN=5 count；y=TP/(TP+FN)*100=90 percent~Teaching unit 4 baseline scale: Original assumed example, not field operating values: TP=45 count, FN=5 count; y=TP/(TP+FN)*100=90 percent.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：TP=45 count, FP=15 count；y=TP/(TP+FP)*100=75 percent~Teaching unit 5 baseline scale: Original assumed example, not field operating values: TP=45 count, FP=15 count; y=TP/(TP+FP)*100=75 percent.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：p=0.001 1, recall=0.95 1, fpr=0.01 1；y=p*recall/(p*recall+(1-p)*fpr)=0.0868373 1~Teaching unit 6 baseline scale: Original assumed example, not field operating values: p=0.001 1, recall=0.95 1, fpr=0.01 1; y=p*recall/(p*recall+(1-p)*fpr)=0.0868373 1."
+  ],
+  "timeline": [
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布整合基礎設施互通規範第一二九九號法規。~The EU issued Regulation 1299/2014 for the infrastructure interoperability specification."
+    },
+    {
+      "year": "2019",
+      "event": "科學報告期刊出版落石監測原始研究，作為偵測方法比較。~Scientific Reports published original rockfall-monitoring research for detection-method comparison."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "美國聯邦法規第四十九篇第二百十三部分：軌道比較閱讀。~US 49 CFR Part 213: comparative reading on track requirements."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-rock2019",
+      "title": "落石偵測原始研究",
+      "titleEn": "Monitoring and early warning method for a rockfall along railways based on vibration signal characteristics",
+      "publisher": "Scientific Reports / research authors",
+      "url": "https://www.nature.com/articles/s41598-019-43146-1",
+      "sourceType": "primary",
+      "scope": "二零一九年原始研究用於比較偵測證據，不宣稱軌道系統已獲安全認證。",
+      "scopeEn": "Original 2019 research for comparing detection evidence, without claiming railway safety certification."
+    },
+    {
+      "key": "track-sbb-monitor",
+      "title": "瑞士鐵路列車監測設備",
+      "titleEn": "SBB train-monitoring measuring systems",
+      "publisher": "Swiss Federal Railways",
+      "url": "https://company.sbb.ch/en/railway-development/services-rus/railway-environment/train-monitoring-systems/measuring-systems.html",
+      "sourceType": "primary",
+      "scope": "營運者公開的監測設備分類，並非本課合成分類器的效能背書。",
+      "scopeEn": "Operator-published monitoring-system categories, not endorsement of the synthetic classifier."
+    },
+    {
+      "key": "track-tsi",
+      "title": "歐洲鐵路基礎設施互通規範入口",
+      "titleEn": "Infrastructure TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/infrastructure-tsi_en",
+      "sourceType": "primary",
+      "scope": "基礎設施互通要求的官方入口；教材算例不是規範限值。",
+      "scopeEn": "Official infrastructure interoperability entry point; teaching calculations are not regulatory limits."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b360",
+    "b335"
+  ],
+  "architectureNodes": [
+    [
+      "環境異物",
+      "Environmental obstruction"
+    ],
+    [
+      "感測視場",
+      "Sensor field"
+    ],
+    [
+      "事件判定",
+      "Event decision"
+    ],
+    [
+      "警報通訊",
+      "Alarm communication"
+    ],
+    [
+      "防護回讀",
+      "Protection feedback"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

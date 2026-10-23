@@ -1,0 +1,251 @@
+{
+  "id": "b339",
+  "title": "預鑄軌道板精調~Precision alignment of precast track slabs",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "多點測量調整閉合與誤差傳播~Multi-point survey adjustment closure and uncertainty propagation",
+  "summary": "預鑄軌道板精調以「多點測量調整閉合與誤差傳播」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。軌道板精調把控制網、板體剛體位姿與扣件調整串接；若控制點與板上測點的座標基準不一致，精密讀值仍會導致錯誤的實際位置。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops multi-point survey adjustment closure and uncertainty propagation through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Slab alignment connects a control network, rigid-body pose and fastening adjustment; precision readings still give the wrong physical position when control and slab coordinates use different datums. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把預鑄軌道板精調放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。軌道板精調把控制網、板體剛體位姿與扣件調整串接；若控制點與板上測點的座標基準不一致，精密讀值仍會導致錯誤的實際位置。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Precision alignment of precast track slabs in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Slab alignment connects a control network, rigid-body pose and fastening adjustment; precision readings still give the wrong physical position when control and slab coordinates use different datums. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：dx=3 mm, dy=4 mm；y=sqrt(dx**2+dy**2)=5 mm。只把 dx 增加百分之十，y=5.18556 mm。模型邊界：二維歐氏距離，不包含座標基準誤差；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：dy=2 mm, L=5 m；y=dy/(L*1000)*1000=0.4 mrad。只把 dy 增加百分之十，y=0.44 mrad。模型邊界：小角度剛體偏轉，不含板體彎曲；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: dx=3 mm, dy=4 mm; y=sqrt(dx**2+dy**2)=5 mm. Increasing only dx with a ten-percent increase gives y=5.18556 mm. Boundary: Two-dimensional Euclidean distance excluding datum error; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: dy=2 mm, L=5 m; y=dy/(L*1000)*1000=0.4 mrad. Increasing only dy with a ten-percent increase gives y=0.44 mrad. Boundary: Small-angle rigid yaw excluding slab bending; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "平移偏差合成~Translation-error magnitude",
+      "title": "平移偏差合成~Translation-error magnitude",
+      "mechanism": "平面偏差是向量，兩方向符號決定修正方向而長度描述誤差量級。本模型把 dx 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 5.18556 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。二維歐氏距離，不包含座標基準誤差。使用東北向殘差與控制點作量測證據，才能檢查方程是否對應此處的實際物理量；只看誤差長度而丟失方向會使調整走錯方向，因此應把該原因與量測偏差分開。~Plan error is a vector: component signs define correction direction while magnitude describes scale. In this model, dx is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 5.18556 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Two-dimensional Euclidean distance excluding datum error. Use east-north residuals and control points as measurement evidence that the equation represents the intended physical quantity. Discarding direction while retaining magnitude can reverse an adjustment; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：dx=3 mm, dy=4 mm；y=sqrt(dx**2+dy**2)=5 mm。只把 dx 增加百分之十，y=5.18556 mm。模型邊界：二維歐氏距離，不包含座標基準誤差；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: dx=3 mm, dy=4 mm; y=sqrt(dx**2+dy**2)=5 mm. Increasing only dx with a ten-percent increase gives y=5.18556 mm. Boundary: Two-dimensional Euclidean distance excluding datum error; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以東北向殘差與控制點區分模型與觀察，先用同基準全站儀座標建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「平移偏差合成」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use east-north residuals and control points to distinguish the model from observation in this unit. Establish a baseline using total-station coordinates on one datum, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Translation-error magnitude. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只看誤差長度而丟失方向會使調整走錯方向。這個失效與「平移偏差合成」的量測偏差可能產生相似表象，因此必須同時檢查東北向殘差與控制點，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Discarding direction while retaining magnitude can reverse an adjustment. This failure and a measurement bias in Translation-error magnitude can produce similar symptoms. Cross-check east-north residuals and control points rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只看誤差長度而丟失方向會使調整走錯方向~This unit cannot exhibit the following failure: Discarding direction while retaining magnitude can reverse an adjustment.",
+      "practice": "重算「平移偏差合成」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出二維歐氏距離，不包含座標基準誤差如何限制結論。接著設計一組符合模型及一組由只看誤差長度而丟失方向會使調整走錯方向造成偏離的合成觀察，以東北向殘差與控制點說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Translation-error magnitude, plot the input-output relationship, and explain the limiting assumption: Two-dimensional Euclidean distance excluding datum error. Construct one synthetic observation consistent with the model and another affected by this failure: Discarding direction while retaining magnitude can reverse an adjustment. Explain which evidence in east-north residuals and control points distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "板端偏轉估算~Slab yaw from endpoint offsets",
+      "title": "板端偏轉估算~Slab yaw from endpoint offsets",
+      "mechanism": "兩端橫向差除板長近似偏轉角，角度不是兩端位移的平均。本模型把 dy 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.44 mrad。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。小角度剛體偏轉，不含板體彎曲。使用前後測點橫向差作量測證據，才能檢查方程是否對應此處的實際物理量；平移與轉角未分離會讓一端修正另一端惡化，因此應把該原因與量測偏差分開。~Endpoint lateral difference divided by length approximates yaw; it is not the mean endpoint translation. In this model, dy is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.44 mrad. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Small-angle rigid yaw excluding slab bending. Use lateral difference between front and rear targets as measurement evidence that the equation represents the intended physical quantity. Confusing translation with rotation improves one end while worsening the other; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：dy=2 mm, L=5 m；y=dy/(L*1000)*1000=0.4 mrad。只把 dy 增加百分之十，y=0.44 mrad。模型邊界：小角度剛體偏轉，不含板體彎曲；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: dy=2 mm, L=5 m; y=dy/(L*1000)*1000=0.4 mrad. Increasing only dy with a ten-percent increase gives y=0.44 mrad. Boundary: Small-angle rigid yaw excluding slab bending; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以前後測點橫向差區分模型與觀察，先用板前後棱鏡橫向座標建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「板端偏轉估算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use lateral difference between front and rear targets to distinguish the model from observation in this unit. Establish a baseline using lateral coordinates of front and rear slab prisms, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Slab yaw from endpoint offsets. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "平移與轉角未分離會讓一端修正另一端惡化。這個失效與「板端偏轉估算」的量測偏差可能產生相似表象，因此必須同時檢查前後測點橫向差，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Confusing translation with rotation improves one end while worsening the other. This failure and a measurement bias in Slab yaw from endpoint offsets can produce similar symptoms. Cross-check lateral difference between front and rear targets rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：平移與轉角未分離會讓一端修正另一端惡化~This unit cannot exhibit the following failure: Confusing translation with rotation improves one end while worsening the other.",
+      "practice": "重算「板端偏轉估算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出小角度剛體偏轉，不含板體彎曲如何限制結論。接著設計一組符合模型及一組由平移與轉角未分離會讓一端修正另一端惡化造成偏離的合成觀察，以前後測點橫向差說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Slab yaw from endpoint offsets, plot the input-output relationship, and explain the limiting assumption: Small-angle rigid yaw excluding slab bending. Construct one synthetic observation consistent with the model and another affected by this failure: Confusing translation with rotation improves one end while worsening the other. Explain which evidence in lateral difference between front and rear targets distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "板體俯仰估算~Slab pitch estimate",
+      "title": "板體俯仰估算~Slab pitch estimate",
+      "mechanism": "縱向高差形成俯仰，應先扣除設計縱坡再判斷誤差。本模型把 dz 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.33 mrad。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。已扣設計縱坡的小角度俯仰。使用設計高程與實測高程差作量測證據，才能檢查方程是否對應此處的實際物理量；把設計坡度當板體誤差會破壞路線縱面，因此應把該原因與量測偏差分開。~Longitudinal level difference produces pitch; subtract the design gradient before identifying error. In this model, dz is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.33 mrad. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Small-angle pitch after subtracting design gradient. Use differences between design and measured levels as measurement evidence that the equation represents the intended physical quantity. Treating design gradient as slab error damages the vertical alignment; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：dz=1.5 mm, L=5 m；y=dz/(L*1000)*1000=0.3 mrad。只把 dz 增加百分之十，y=0.33 mrad。模型邊界：已扣設計縱坡的小角度俯仰；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: dz=1.5 mm, L=5 m; y=dz/(L*1000)*1000=0.3 mrad. Increasing only dz with a ten-percent increase gives y=0.33 mrad. Boundary: Small-angle pitch after subtracting design gradient; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以設計高程與實測高程差區分模型與觀察，先用板兩端水準與設計高程建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「板體俯仰估算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use differences between design and measured levels to distinguish the model from observation in this unit. Establish a baseline using endpoint levelling and design elevations, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Slab pitch estimate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把設計坡度當板體誤差會破壞路線縱面。這個失效與「板體俯仰估算」的量測偏差可能產生相似表象，因此必須同時檢查設計高程與實測高程差，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Treating design gradient as slab error damages the vertical alignment. This failure and a measurement bias in Slab pitch estimate can produce similar symptoms. Cross-check differences between design and measured levels rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把設計坡度當板體誤差會破壞路線縱面~This unit cannot exhibit the following failure: Treating design gradient as slab error damages the vertical alignment.",
+      "practice": "重算「板體俯仰估算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出已扣設計縱坡的小角度俯仰如何限制結論。接著設計一組符合模型及一組由把設計坡度當板體誤差會破壞路線縱面造成偏離的合成觀察，以設計高程與實測高程差說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Slab pitch estimate, plot the input-output relationship, and explain the limiting assumption: Small-angle pitch after subtracting design gradient. Construct one synthetic observation consistent with the model and another affected by this failure: Treating design gradient as slab error damages the vertical alignment. Explain which evidence in differences between design and measured levels distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "調整螺距位移~Adjustment screw displacement",
+      "title": "調整螺距位移~Adjustment screw displacement",
+      "mechanism": "螺距與轉角決定位移，但間隙與受力回彈使實際變化需回測。本模型把 pitch 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.77 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。理想螺距且無間隙或受力回彈。使用單向逼近與回程差作量測證據，才能檢查方程是否對應此處的實際物理量；反覆換向會把螺紋間隙誤當板體不穩，因此應把該原因與量測偏差分開。~Pitch and turns determine nominal travel, but backlash and elastic recovery require remeasurement. In this model, pitch is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.77 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Ideal thread pitch without backlash or elastic recovery. Use one-direction approach and reverse-travel difference as measurement evidence that the equation represents the intended physical quantity. Repeated direction reversal can mistake thread backlash for slab instability; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：pitch=2 mm/turn, turn=0.35 turn；y=pitch*turn=0.7 mm。只把 pitch 增加百分之十，y=0.77 mm。模型邊界：理想螺距且無間隙或受力回彈；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: pitch=2 mm/turn, turn=0.35 turn; y=pitch*turn=0.7 mm. Increasing only pitch with a ten-percent increase gives y=0.77 mm. Boundary: Ideal thread pitch without backlash or elastic recovery; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以單向逼近與回程差區分模型與觀察，先用螺桿角度標記與位移計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「調整螺距位移」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use one-direction approach and reverse-travel difference to distinguish the model from observation in this unit. Establish a baseline using screw-angle marks and displacement gauge, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Adjustment screw displacement. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "反覆換向會把螺紋間隙誤當板體不穩。這個失效與「調整螺距位移」的量測偏差可能產生相似表象，因此必須同時檢查單向逼近與回程差，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Repeated direction reversal can mistake thread backlash for slab instability. This failure and a measurement bias in Adjustment screw displacement can produce similar symptoms. Cross-check one-direction approach and reverse-travel difference rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：反覆換向會把螺紋間隙誤當板體不穩~This unit cannot exhibit the following failure: Repeated direction reversal can mistake thread backlash for slab instability.",
+      "practice": "重算「調整螺距位移」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出理想螺距且無間隙或受力回彈如何限制結論。接著設計一組符合模型及一組由反覆換向會把螺紋間隙誤當板體不穩造成偏離的合成觀察，以單向逼近與回程差說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Adjustment screw displacement, plot the input-output relationship, and explain the limiting assumption: Ideal thread pitch without backlash or elastic recovery. Construct one synthetic observation consistent with the model and another affected by this failure: Repeated direction reversal can mistake thread backlash for slab instability. Explain which evidence in one-direction approach and reverse-travel difference distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "測站角度投影~Station angle projection",
+      "title": "測站角度投影~Station angle projection",
+      "mechanism": "角度誤差沿視距放大成橫向誤差，長視距不一定更精確。本模型把 R 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.88 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。小角度橫向投影，不含距離誤差。使用視距與重複角度觀測作量測證據，才能檢查方程是否對應此處的實際物理量；忽略視距放大會低估遠端點誤差，因此應把該原因與量測偏差分開。~Angular error grows into transverse error with sight distance, so a longer sight is not necessarily more precise. In this model, R is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.88 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Small-angle transverse projection excluding range error. Use sight distance and repeated angular observations as measurement evidence that the equation represents the intended physical quantity. Ignoring distance amplification understates far-target error; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：R=40 m, theta=0.00002 rad；y=R*theta*1000=0.8 mm。只把 R 增加百分之十，y=0.88 mm。模型邊界：小角度橫向投影，不含距離誤差；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: R=40 m, theta=0.00002 rad; y=R*theta*1000=0.8 mm. Increasing only R with a ten-percent increase gives y=0.88 mm. Boundary: Small-angle transverse projection excluding range error; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以視距與重複角度觀測區分模型與觀察，先用全站儀角度與視距建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「測站角度投影」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use sight distance and repeated angular observations to distinguish the model from observation in this unit. Establish a baseline using total-station angle and sight distance, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Station angle projection. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "忽略視距放大會低估遠端點誤差。這個失效與「測站角度投影」的量測偏差可能產生相似表象，因此必須同時檢查視距與重複角度觀測，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Ignoring distance amplification understates far-target error. This failure and a measurement bias in Station angle projection can produce similar symptoms. Cross-check sight distance and repeated angular observations rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：忽略視距放大會低估遠端點誤差~This unit cannot exhibit the following failure: Ignoring distance amplification understates far-target error.",
+      "practice": "重算「測站角度投影」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出小角度橫向投影，不含距離誤差如何限制結論。接著設計一組符合模型及一組由忽略視距放大會低估遠端點誤差造成偏離的合成觀察，以視距與重複角度觀測說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Station angle projection, plot the input-output relationship, and explain the limiting assumption: Small-angle transverse projection excluding range error. Construct one synthetic observation consistent with the model and another affected by this failure: Ignoring distance amplification understates far-target error. Explain which evidence in sight distance and repeated angular observations distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "棱鏡常數偏差~Prism-constant bias",
+      "title": "棱鏡常數偏差~Prism-constant bias",
+      "mechanism": "棱鏡常數是系統修正，不能藉增加相同觀測次數消除。本模型把 measured 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 32998 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。單一固定量距偏差，符號按校正定義。使用不同棱鏡互換與基線作量測證據，才能檢查方程是否對應此處的實際物理量；錯誤常數會平移整批量測，因此應把該原因與量測偏差分開。~A prism constant is a systematic correction and cannot be removed by repeating the same observation. In this model, measured is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 32998 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. One fixed range bias with sign defined by calibration. Use prism interchange and a reference baseline as measurement evidence that the equation represents the intended physical quantity. An incorrect constant shifts the entire measurement batch; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：measured=30 m, bias=2 mm；y=measured*1000-bias=29998 mm。只把 measured 增加百分之十，y=32998 mm。模型邊界：單一固定量距偏差，符號按校正定義；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: measured=30 m, bias=2 mm; y=measured*1000-bias=29998 mm. Increasing only measured with a ten-percent increase gives y=32998 mm. Boundary: One fixed range bias with sign defined by calibration; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以不同棱鏡互換與基線區分模型與觀察，先用基線量測與棱鏡互換建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「棱鏡常數偏差」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use prism interchange and a reference baseline to distinguish the model from observation in this unit. Establish a baseline using baseline measurement and prism interchange, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Prism-constant bias. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "錯誤常數會平移整批量測。這個失效與「棱鏡常數偏差」的量測偏差可能產生相似表象，因此必須同時檢查不同棱鏡互換與基線，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~An incorrect constant shifts the entire measurement batch. This failure and a measurement bias in Prism-constant bias can produce similar symptoms. Cross-check prism interchange and a reference baseline rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：錯誤常數會平移整批量測~This unit cannot exhibit the following failure: An incorrect constant shifts the entire measurement batch.",
+      "practice": "重算「棱鏡常數偏差」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出單一固定量距偏差，符號按校正定義如何限制結論。接著設計一組符合模型及一組由錯誤常數會平移整批量測造成偏離的合成觀察，以不同棱鏡互換與基線說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Prism-constant bias, plot the input-output relationship, and explain the limiting assumption: One fixed range bias with sign defined by calibration. Construct one synthetic observation consistent with the model and another affected by this failure: An incorrect constant shifts the entire measurement batch. Explain which evidence in prism interchange and a reference baseline distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "水準閉合分配~Levelling closure allocation",
+      "title": "水準閉合分配~Levelling closure allocation",
+      "mechanism": "按長度分配閉合差只是一種模型，需先排除粗差再調整。本模型把 closure 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.66 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。已排除粗差後按路線長度分配。使用往返高差及分段長度作量測證據，才能檢查方程是否對應此處的實際物理量；直接分配粗差會把錯誤散布到全部控制點，因此應把該原因與量測偏差分開。~Allocating closure by length is one adjustment model; blunders must be excluded first. In this model, closure is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.66 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Length-weighted allocation after excluding blunders. Use forward-back level differences and segment lengths as measurement evidence that the equation represents the intended physical quantity. Distributing a blunder spreads error across all control points; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：closure=2.4 mm, length=200 m, total=800 m；y=closure*length/total=0.6 mm。只把 closure 增加百分之十，y=0.66 mm。模型邊界：已排除粗差後按路線長度分配；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: closure=2.4 mm, length=200 m, total=800 m; y=closure*length/total=0.6 mm. Increasing only closure with a ten-percent increase gives y=0.66 mm. Boundary: Length-weighted allocation after excluding blunders; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以往返高差及分段長度區分模型與觀察，先用往返水準閉合與分段距離建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「水準閉合分配」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use forward-back level differences and segment lengths to distinguish the model from observation in this unit. Establish a baseline using forward-back levelling closure and segment distances, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Levelling closure allocation. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "直接分配粗差會把錯誤散布到全部控制點。這個失效與「水準閉合分配」的量測偏差可能產生相似表象，因此必須同時檢查往返高差及分段長度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Distributing a blunder spreads error across all control points. This failure and a measurement bias in Levelling closure allocation can produce similar symptoms. Cross-check forward-back level differences and segment lengths rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：直接分配粗差會把錯誤散布到全部控制點~This unit cannot exhibit the following failure: Distributing a blunder spreads error across all control points.",
+      "practice": "重算「水準閉合分配」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出已排除粗差後按路線長度分配如何限制結論。接著設計一組符合模型及一組由直接分配粗差會把錯誤散布到全部控制點造成偏離的合成觀察，以往返高差及分段長度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Levelling closure allocation, plot the input-output relationship, and explain the limiting assumption: Length-weighted allocation after excluding blunders. Construct one synthetic observation consistent with the model and another affected by this failure: Distributing a blunder spreads error across all control points. Explain which evidence in forward-back level differences and segment lengths distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "三點高程平均~Three-point elevation mean",
+      "title": "三點高程平均~Three-point elevation mean",
+      "mechanism": "等權平均適用相近精度的獨立觀測，不適用共同基準偏差。本模型把 z1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 2.03333 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。等權獨立觀測，不含共同系統偏差。使用點位精度與殘差作量測證據，才能檢查方程是否對應此處的實際物理量；平均值可能掩蓋板體扭曲，因此應把該原因與量測偏差分開。~Equal-weight averaging suits independent observations of similar precision, not shared datum bias. In this model, z1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 2.03333 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Equal-weight independent observations without shared bias. Use point precision and residuals as measurement evidence that the equation represents the intended physical quantity. A mean can hide slab distortion; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：z1=1 mm, z2=2 mm, z3=3 mm；y=(z1+z2+z3)/3=2 mm。只把 z1 增加百分之十，y=2.03333 mm。模型邊界：等權獨立觀測，不含共同系統偏差；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: z1=1 mm, z2=2 mm, z3=3 mm; y=(z1+z2+z3)/3=2 mm. Increasing only z1 with a ten-percent increase gives y=2.03333 mm. Boundary: Equal-weight independent observations without shared bias; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以點位精度與殘差區分模型與觀察，先用三個獨立板面高程點建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「三點高程平均」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use point precision and residuals to distinguish the model from observation in this unit. Establish a baseline using three independent slab elevation points, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Three-point elevation mean. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "平均值可能掩蓋板體扭曲。這個失效與「三點高程平均」的量測偏差可能產生相似表象，因此必須同時檢查點位精度與殘差，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A mean can hide slab distortion. This failure and a measurement bias in Three-point elevation mean can produce similar symptoms. Cross-check point precision and residuals rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：平均值可能掩蓋板體扭曲~This unit cannot exhibit the following failure: A mean can hide slab distortion.",
+      "practice": "重算「三點高程平均」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出等權獨立觀測，不含共同系統偏差如何限制結論。接著設計一組符合模型及一組由平均值可能掩蓋板體扭曲造成偏離的合成觀察，以點位精度與殘差說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Three-point elevation mean, plot the input-output relationship, and explain the limiting assumption: Equal-weight independent observations without shared bias. Construct one synthetic observation consistent with the model and another affected by this failure: A mean can hide slab distortion. Explain which evidence in point precision and residuals distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "相鄰板接縫差~Adjacent slab joint step",
+      "title": "相鄰板接縫差~Adjacent slab joint step",
+      "mechanism": "兩板各自偏差很小仍可能在接縫形成不利相對高差。本模型把 end1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 2.12 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。共同基準上的兩個接縫端點。使用接縫兩側同時高程作量測證據，才能檢查方程是否對應此處的實際物理量；分別使用不同基準驗收會漏掉接縫跳差，因此應把該原因與量測偏差分開。~Two small individual slab errors can still create an unfavorable relative step at a joint. In this model, end1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 2.12 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Two joint endpoints on one common datum. Use simultaneous levels on both sides of the joint as measurement evidence that the equation represents the intended physical quantity. Separate acceptance against different datums misses the joint step; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：end1=1.2 mm, end2=-0.8 mm；y=end1-end2=2 mm。只把 end1 增加百分之十，y=2.12 mm。模型邊界：共同基準上的兩個接縫端點；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: end1=1.2 mm, end2=-0.8 mm; y=end1-end2=2 mm. Increasing only end1 with a ten-percent increase gives y=2.12 mm. Boundary: Two joint endpoints on one common datum; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以接縫兩側同時高程區分模型與觀察，先用同次水準測量的接縫兩側讀值建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「相鄰板接縫差」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use simultaneous levels on both sides of the joint to distinguish the model from observation in this unit. Establish a baseline using readings on both sides of the joint in one levelling run, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Adjacent slab joint step. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "分別使用不同基準驗收會漏掉接縫跳差。這個失效與「相鄰板接縫差」的量測偏差可能產生相似表象，因此必須同時檢查接縫兩側同時高程，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Separate acceptance against different datums misses the joint step. This failure and a measurement bias in Adjacent slab joint step can produce similar symptoms. Cross-check simultaneous levels on both sides of the joint rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：分別使用不同基準驗收會漏掉接縫跳差~This unit cannot exhibit the following failure: Separate acceptance against different datums misses the joint step.",
+      "practice": "重算「相鄰板接縫差」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出共同基準上的兩個接縫端點如何限制結論。接著設計一組符合模型及一組由分別使用不同基準驗收會漏掉接縫跳差造成偏離的合成觀察，以接縫兩側同時高程說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Adjacent slab joint step, plot the input-output relationship, and explain the limiting assumption: Two joint endpoints on one common datum. Construct one synthetic observation consistent with the model and another affected by this failure: Separate acceptance against different datums misses the joint step. Explain which evidence in simultaneous levels on both sides of the joint distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "重測平均不確定度~Repeated-survey mean uncertainty",
+      "title": "重測平均不確定度~Repeated-survey mean uncertainty",
+      "mechanism": "獨立隨機誤差的平均不確定度隨樣本數平方根下降，系統偏差不隨之下降。本模型把 sigma 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.44 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。獨立同分布隨機誤差，無自相關。使用不同測站而非同站重讀作量測證據，才能檢查方程是否對應此處的實際物理量；把同一基準的相關觀測當獨立會誇大精度，因此應把該原因與量測偏差分開。~Mean uncertainty of independent random error decreases with square-root sample count, while systematic bias remains. In this model, sigma is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.44 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Independent identically distributed random errors without autocorrelation. Use independent stations rather than repeated display readings as measurement evidence that the equation represents the intended physical quantity. Treating correlated readings as independent exaggerates precision; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：sigma=1.2 mm, n=9 count；y=sigma/sqrt(n)=0.4 mm。只把 sigma 增加百分之十，y=0.44 mm。模型邊界：獨立同分布隨機誤差，無自相關；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: sigma=1.2 mm, n=9 count; y=sigma/sqrt(n)=0.4 mm. Increasing only sigma with a ten-percent increase gives y=0.44 mm. Boundary: Independent identically distributed random errors without autocorrelation; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以不同測站而非同站重讀區分模型與觀察，先用不同測站重測結果建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「重測平均不確定度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use independent stations rather than repeated display readings to distinguish the model from observation in this unit. Establish a baseline using repeat observations from independent stations, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Repeated-survey mean uncertainty. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把同一基準的相關觀測當獨立會誇大精度。這個失效與「重測平均不確定度」的量測偏差可能產生相似表象，因此必須同時檢查不同測站而非同站重讀，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Treating correlated readings as independent exaggerates precision. This failure and a measurement bias in Repeated-survey mean uncertainty can produce similar symptoms. Cross-check independent stations rather than repeated display readings rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把同一基準的相關觀測當獨立會誇大精度~This unit cannot exhibit the following failure: Treating correlated readings as independent exaggerates precision.",
+      "practice": "重算「重測平均不確定度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出獨立同分布隨機誤差，無自相關如何限制結論。接著設計一組符合模型及一組由把同一基準的相關觀測當獨立會誇大精度造成偏離的合成觀察，以不同測站而非同站重讀說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Repeated-survey mean uncertainty, plot the input-output relationship, and explain the limiting assumption: Independent identically distributed random errors without autocorrelation. Construct one synthetic observation consistent with the model and another affected by this failure: Treating correlated readings as independent exaggerates precision. Explain which evidence in independent stations rather than repeated display readings distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：dx=3 mm, dy=4 mm；y=sqrt(dx**2+dy**2)=5 mm~Teaching unit 1 baseline scale: Original assumed example, not field operating values: dx=3 mm, dy=4 mm; y=sqrt(dx**2+dy**2)=5 mm.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：dy=2 mm, L=5 m；y=dy/(L*1000)*1000=0.4 mrad~Teaching unit 2 baseline scale: Original assumed example, not field operating values: dy=2 mm, L=5 m; y=dy/(L*1000)*1000=0.4 mrad.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：dz=1.5 mm, L=5 m；y=dz/(L*1000)*1000=0.3 mrad~Teaching unit 3 baseline scale: Original assumed example, not field operating values: dz=1.5 mm, L=5 m; y=dz/(L*1000)*1000=0.3 mrad.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：pitch=2 mm/turn, turn=0.35 turn；y=pitch*turn=0.7 mm~Teaching unit 4 baseline scale: Original assumed example, not field operating values: pitch=2 mm/turn, turn=0.35 turn; y=pitch*turn=0.7 mm.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：R=40 m, theta=0.00002 rad；y=R*theta*1000=0.8 mm~Teaching unit 5 baseline scale: Original assumed example, not field operating values: R=40 m, theta=0.00002 rad; y=R*theta*1000=0.8 mm.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：measured=30 m, bias=2 mm；y=measured*1000-bias=29998 mm~Teaching unit 6 baseline scale: Original assumed example, not field operating values: measured=30 m, bias=2 mm; y=measured*1000-bias=29998 mm."
+  ],
+  "timeline": [
+    {
+      "year": "2006-10",
+      "event": "運輸研究委員會發布軌道過渡段比較研究摘要。~TRB published its comparative research digest on track transitions."
+    },
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布整合基礎設施互通規範第一二九九號法規。~The EU issued Regulation 1299/2014 for the infrastructure interoperability specification."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "美國聯邦法規第四十九篇第二百十三部分：軌道比較閱讀。~US 49 CFR Part 213: comparative reading on track requirements."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-trans",
+      "title": "軌道過渡段研究報告",
+      "titleEn": "Design of Track Transitions, Research Results Digest 79",
+      "publisher": "Transportation Research Board / FRA",
+      "url": "https://railroads.dot.gov/sites/fra.dot.gov/files/fra_net/14977/Research%20Results%20Digest%2079%20Design%20of%20Track%20Transitions.pdf",
+      "sourceType": "primary",
+      "scope": "過渡段比較研究入口；本課數值是另行設定的縮減模型。",
+      "scopeEn": "Entry point for transition research; numerical values in this course belong to separately assumed reduced models."
+    },
+    {
+      "key": "track-tsi",
+      "title": "歐洲鐵路基礎設施互通規範入口",
+      "titleEn": "Infrastructure TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/infrastructure-tsi_en",
+      "sourceType": "primary",
+      "scope": "基礎設施互通要求的官方入口；教材算例不是規範限值。",
+      "scopeEn": "Official infrastructure interoperability entry point; teaching calculations are not regulatory limits."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b340",
+    "b348"
+  ],
+  "architectureNodes": [
+    [
+      "控制網基準",
+      "Control datum"
+    ],
+    [
+      "軌道板定位",
+      "Slab placement"
+    ],
+    [
+      "精調支點",
+      "Adjustment points"
+    ],
+    [
+      "灌漿層",
+      "Grout layer"
+    ],
+    [
+      "相鄰接縫",
+      "Adjacent joints"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

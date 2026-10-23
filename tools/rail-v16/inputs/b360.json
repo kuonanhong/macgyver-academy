@@ -1,0 +1,261 @@
+{
+  "id": "b360",
+  "title": "架空電車線懸掛系統~Overhead contact-line suspension systems",
+  "discipline": "rail-power",
+  "family": "power",
+  "focus": "接觸線懸掛張力垂度與溫度補償~Contact-wire suspension tension sag and thermal compensation",
+  "summary": "架空電車線懸掛系統以「接觸線懸掛張力垂度與溫度補償」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。架空電車線同時是導電路徑與受拉結構，跨距、張力和支承彈性共同決定受流幾何，靜態高度並不能代表列車通過的動態接觸。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops contact-wire suspension tension sag and thermal compensation through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. An overhead contact line is both a conductor and a tension structure; span, tension and support flexibility determine current-collection geometry, while static height does not establish dynamic contact. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把架空電車線懸掛系統放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。架空電車線同時是導電路徑與受拉結構，跨距、張力和支承彈性共同決定受流幾何，靜態高度並不能代表列車通過的動態接觸。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Overhead contact-line suspension systems in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. An overhead contact line is both a conductor and a tension structure; span, tension and support flexibility determine current-collection geometry, while static height does not establish dynamic contact. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：w=10 N/m, L=50 m, T=15000 N；y=w*L**2/(8*T)=0.208333 m。只把 w 增加百分之十，y=0.229167 m。模型邊界：均勻載重小垂度弦；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：T=15000 N, mu=1.35 kg/m；y=sqrt(T/mu)=105.409 m/s。只把 T 增加百分之十，y=110.554 m/s。模型邊界：均勻柔弦無彎曲剛度；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: w=10 N/m, L=50 m, T=15000 N; y=w*L**2/(8*T)=0.208333 m. Increasing only w with a ten-percent increase gives y=0.229167 m. Boundary: Uniformly loaded small-sag string; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: T=15000 N, mu=1.35 kg/m; y=sqrt(T/mu)=105.409 m/s. Increasing only T with a ten-percent increase gives y=110.554 m/s. Boundary: Uniform flexible string without bending rigidity; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "跨中垂度近似~Midspan sag approximation",
+      "title": "跨中垂度近似~Midspan sag approximation",
+      "mechanism": "小垂度近似中跨距平方放大垂度。本模型把 w 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.229167 m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻載重小垂度弦。使用張力與跨中高度作量測證據，才能檢查方程是否對應此處的實際物理量；張力下降會改變靜態接觸高度，因此應把該原因與量測偏差分開。~Span squared amplifies sag in the small-sag approximation. In this model, w is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.229167 m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniformly loaded small-sag string. Use tension and midspan level as measurement evidence that the equation represents the intended physical quantity. Loss of tension changes static contact height; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：w=10 N/m, L=50 m, T=15000 N；y=w*L**2/(8*T)=0.208333 m。只把 w 增加百分之十，y=0.229167 m。模型邊界：均勻載重小垂度弦；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: w=10 N/m, L=50 m, T=15000 N; y=w*L**2/(8*T)=0.208333 m. Increasing only w with a ten-percent increase gives y=0.229167 m. Boundary: Uniformly loaded small-sag string; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以張力與跨中高度區分模型與觀察，先用模型張力計與高度尺建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「跨中垂度近似」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use tension and midspan level to distinguish the model from observation in this unit. Establish a baseline using model tensiometer and height gauge, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Midspan sag approximation. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "張力下降會改變靜態接觸高度。這個失效與「跨中垂度近似」的量測偏差可能產生相似表象，因此必須同時檢查張力與跨中高度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Loss of tension changes static contact height. This failure and a measurement bias in Midspan sag approximation can produce similar symptoms. Cross-check tension and midspan level rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：張力下降會改變靜態接觸高度~This unit cannot exhibit the following failure: Loss of tension changes static contact height.",
+      "practice": "重算「跨中垂度近似」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻載重小垂度弦如何限制結論。接著設計一組符合模型及一組由張力下降會改變靜態接觸高度造成偏離的合成觀察，以張力與跨中高度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Midspan sag approximation, plot the input-output relationship, and explain the limiting assumption: Uniformly loaded small-sag string. Construct one synthetic observation consistent with the model and another affected by this failure: Loss of tension changes static contact height. Explain which evidence in tension and midspan level distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "弦波傳播速度~String wave speed",
+      "title": "弦波傳播速度~String wave speed",
+      "mechanism": "橫波速度由張力與線密度比決定。本模型把 T 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 110.554 m/s。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻柔弦無彎曲剛度。使用脈衝傳播時間作量測證據，才能檢查方程是否對應此處的實際物理量；局部附加質量會改變波傳，因此應把該原因與量測偏差分開。~Transverse wave speed depends on tension-to-line-density ratio. In this model, T is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 110.554 m/s. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform flexible string without bending rigidity. Use pulse propagation time as measurement evidence that the equation represents the intended physical quantity. Local added mass changes wave propagation; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：T=15000 N, mu=1.35 kg/m；y=sqrt(T/mu)=105.409 m/s。只把 T 增加百分之十，y=110.554 m/s。模型邊界：均勻柔弦無彎曲剛度；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: T=15000 N, mu=1.35 kg/m; y=sqrt(T/mu)=105.409 m/s. Increasing only T with a ten-percent increase gives y=110.554 m/s. Boundary: Uniform flexible string without bending rigidity; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以脈衝傳播時間區分模型與觀察，先用兩點位移與高速時間戳建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「弦波傳播速度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use pulse propagation time to distinguish the model from observation in this unit. Establish a baseline using two-point displacement and fast timestamps, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by String wave speed. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "局部附加質量會改變波傳。這個失效與「弦波傳播速度」的量測偏差可能產生相似表象，因此必須同時檢查脈衝傳播時間，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Local added mass changes wave propagation. This failure and a measurement bias in String wave speed can produce similar symptoms. Cross-check pulse propagation time rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：局部附加質量會改變波傳~This unit cannot exhibit the following failure: Local added mass changes wave propagation.",
+      "practice": "重算「弦波傳播速度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻柔弦無彎曲剛度如何限制結論。接著設計一組符合模型及一組由局部附加質量會改變波傳造成偏離的合成觀察，以脈衝傳播時間說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for String wave speed, plot the input-output relationship, and explain the limiting assumption: Uniform flexible string without bending rigidity. Construct one synthetic observation consistent with the model and another affected by this failure: Local added mass changes wave propagation. Explain which evidence in pulse propagation time distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "接觸線熱伸長~Contact-wire thermal expansion",
+      "title": "接觸線熱伸長~Contact-wire thermal expansion",
+      "mechanism": "長導線的熱伸長需要張力補償行程。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.561 m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均溫自由熱伸長。使用線溫與補償位置作量測證據，才能檢查方程是否對應此處的實際物理量；補償卡阻會讓熱伸長轉為張力變化，因此應把該原因與量測偏差分開。~Thermal growth of a long conductor consumes compensation travel. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.561 m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform-temperature free expansion. Use wire temperature and compensator position as measurement evidence that the equation represents the intended physical quantity. A stuck compensator converts expansion into tension change; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.000017 1/K, L=1000 m, dT=30 K；y=alpha*L*dT=0.51 m。只把 alpha 增加百分之十，y=0.561 m。模型邊界：均溫自由熱伸長；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.000017 1/K, L=1000 m, dT=30 K; y=alpha*L*dT=0.51 m. Increasing only alpha with a ten-percent increase gives y=0.561 m. Boundary: Uniform-temperature free expansion; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以線溫與補償位置區分模型與觀察，先用線溫計與補償行程尺建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「接觸線熱伸長」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use wire temperature and compensator position to distinguish the model from observation in this unit. Establish a baseline using wire thermometer and compensator travel gauge, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Contact-wire thermal expansion. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "補償卡阻會讓熱伸長轉為張力變化。這個失效與「接觸線熱伸長」的量測偏差可能產生相似表象，因此必須同時檢查線溫與補償位置，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A stuck compensator converts expansion into tension change. This failure and a measurement bias in Contact-wire thermal expansion can produce similar symptoms. Cross-check wire temperature and compensator position rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：補償卡阻會讓熱伸長轉為張力變化~This unit cannot exhibit the following failure: A stuck compensator converts expansion into tension change.",
+      "practice": "重算「接觸線熱伸長」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均溫自由熱伸長如何限制結論。接著設計一組符合模型及一組由補償卡阻會讓熱伸長轉為張力變化造成偏離的合成觀察，以線溫與補償位置說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Contact-wire thermal expansion, plot the input-output relationship, and explain the limiting assumption: Uniform-temperature free expansion. Construct one synthetic observation consistent with the model and another affected by this failure: A stuck compensator converts expansion into tension change. Explain which evidence in wire temperature and compensator position distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "吊弦名義間距~Nominal dropper spacing",
+      "title": "吊弦名義間距~Nominal dropper spacing",
+      "mechanism": "間距分配需區分吊點數與區間數。本模型把 L 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 5.5 m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。等間距教學配置。使用吊點里程清單作量測證據，才能檢查方程是否對應此處的實際物理量；點數與間隔數混淆造成定位誤差，因此應把該原因與量測偏差分開。~Spacing requires distinguishing support count from interval count. In this model, L is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 5.5 m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Equally spaced teaching layout. Use dropper chainage list as measurement evidence that the equation represents the intended physical quantity. Confusing points and intervals causes placement error; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：L=50 m, intervals=10 count；y=L/intervals=5 m。只把 L 增加百分之十，y=5.5 m。模型邊界：等間距教學配置；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: L=50 m, intervals=10 count; y=L/intervals=5 m. Increasing only L with a ten-percent increase gives y=5.5 m. Boundary: Equally spaced teaching layout; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以吊點里程清單區分模型與觀察，先用尺度模型與里程尺建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「吊弦名義間距」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use dropper chainage list to distinguish the model from observation in this unit. Establish a baseline using scale model and chainage ruler, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Nominal dropper spacing. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "點數與間隔數混淆造成定位誤差。這個失效與「吊弦名義間距」的量測偏差可能產生相似表象，因此必須同時檢查吊點里程清單，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Confusing points and intervals causes placement error. This failure and a measurement bias in Nominal dropper spacing can produce similar symptoms. Cross-check dropper chainage list rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：點數與間隔數混淆造成定位誤差~This unit cannot exhibit the following failure: Confusing points and intervals causes placement error.",
+      "practice": "重算「吊弦名義間距」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出等間距教學配置如何限制結論。接著設計一組符合模型及一組由點數與間隔數混淆造成定位誤差造成偏離的合成觀察，以吊點里程清單說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Nominal dropper spacing, plot the input-output relationship, and explain the limiting assumption: Equally spaced teaching layout. Construct one synthetic observation consistent with the model and another affected by this failure: Confusing points and intervals causes placement error. Explain which evidence in dropper chainage list distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "張力補償機械比~Compensator force ratio",
+      "title": "張力補償機械比~Compensator force ratio",
+      "mechanism": "理想滑輪比改變力與行程的交換。本模型把 weight 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 16500 N。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。無摩擦準靜態滑輪。使用重錘位移與線端位移作量測證據，才能檢查方程是否對應此處的實際物理量；摩擦使實際張力不同於理想值，因此應把該原因與量測偏差分開。~Ideal pulley ratio trades force against travel. In this model, weight is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 16500 N. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Frictionless quasistatic pulley. Use counterweight and wire-end movements as measurement evidence that the equation represents the intended physical quantity. Friction separates actual tension from ideal tension; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：weight=5000 N, ratio=3 1；y=weight*ratio=15000 N。只把 weight 增加百分之十，y=16500 N。模型邊界：無摩擦準靜態滑輪；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: weight=5000 N, ratio=3 1; y=weight*ratio=15000 N. Increasing only weight with a ten-percent increase gives y=16500 N. Boundary: Frictionless quasistatic pulley; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以重錘位移與線端位移區分模型與觀察，先用低載滑輪與力計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「張力補償機械比」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use counterweight and wire-end movements to distinguish the model from observation in this unit. Establish a baseline using low-load pulley and force gauge, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Compensator force ratio. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "摩擦使實際張力不同於理想值。這個失效與「張力補償機械比」的量測偏差可能產生相似表象，因此必須同時檢查重錘位移與線端位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Friction separates actual tension from ideal tension. This failure and a measurement bias in Compensator force ratio can produce similar symptoms. Cross-check counterweight and wire-end movements rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：摩擦使實際張力不同於理想值~This unit cannot exhibit the following failure: Friction separates actual tension from ideal tension.",
+      "practice": "重算「張力補償機械比」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出無摩擦準靜態滑輪如何限制結論。接著設計一組符合模型及一組由摩擦使實際張力不同於理想值造成偏離的合成觀察，以重錘位移與線端位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Compensator force ratio, plot the input-output relationship, and explain the limiting assumption: Frictionless quasistatic pulley. Construct one synthetic observation consistent with the model and another affected by this failure: Friction separates actual tension from ideal tension. Explain which evidence in counterweight and wire-end movements distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "導線直流電阻~Conductor DC resistance",
+      "title": "導線直流電阻~Conductor DC resistance",
+      "mechanism": "電阻由材料電阻率與長度面積比決定。本模型把 rho 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.157667 ohm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均溫直流均勻斷面。使用導線溫度與四線電阻作量測證據，才能檢查方程是否對應此處的實際物理量；磨耗減面積會提高電阻，因此應把該原因與量測偏差分開。~Resistance depends on resistivity and length-to-area ratio. In this model, rho is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.157667 ohm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform-temperature DC conductor with constant area. Use wire temperature and four-terminal resistance as measurement evidence that the equation represents the intended physical quantity. Wear-reduced area raises resistance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：rho=0.0000000172 ohm*m, L=1000 m, A=0.00012 m2；y=rho*L/A=0.143333 ohm。只把 rho 增加百分之十，y=0.157667 ohm。模型邊界：均溫直流均勻斷面；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: rho=0.0000000172 ohm*m, L=1000 m, A=0.00012 m2; y=rho*L/A=0.143333 ohm. Increasing only rho with a ten-percent increase gives y=0.157667 ohm. Boundary: Uniform-temperature DC conductor with constant area; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以導線溫度與四線電阻區分模型與觀察，先用隔離低壓四線量測建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「導線直流電阻」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use wire temperature and four-terminal resistance to distinguish the model from observation in this unit. Establish a baseline using isolated low-voltage four-wire measurement, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Conductor DC resistance. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "磨耗減面積會提高電阻。這個失效與「導線直流電阻」的量測偏差可能產生相似表象，因此必須同時檢查導線溫度與四線電阻，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Wear-reduced area raises resistance. This failure and a measurement bias in Conductor DC resistance can produce similar symptoms. Cross-check wire temperature and four-terminal resistance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：磨耗減面積會提高電阻~This unit cannot exhibit the following failure: Wear-reduced area raises resistance.",
+      "practice": "重算「導線直流電阻」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均溫直流均勻斷面如何限制結論。接著設計一組符合模型及一組由磨耗減面積會提高電阻造成偏離的合成觀察，以導線溫度與四線電阻說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Conductor DC resistance, plot the input-output relationship, and explain the limiting assumption: Uniform-temperature DC conductor with constant area. Construct one synthetic observation consistent with the model and another affected by this failure: Wear-reduced area raises resistance. Explain which evidence in wire temperature and four-terminal resistance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "導線焦耳損耗~Conductor Joule loss",
+      "title": "導線焦耳損耗~Conductor Joule loss",
+      "mechanism": "電流平方造成導線熱損耗。本模型把 I 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 19.36 kW。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。固定電阻與有效值電流。使用電流均方與電阻作量測證據，才能檢查方程是否對應此處的實際物理量；脈動電流用平均值會低估損耗，因此應把該原因與量測偏差分開。~Current squared produces conductor heating. In this model, I is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 19.36 kW. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Fixed resistance and RMS current. Use mean-square current and resistance as measurement evidence that the equation represents the intended physical quantity. Average current understates loss under ripple; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：I=400 A, R=0.1 ohm；y=I**2*R/1000=16 kW。只把 I 增加百分之十，y=19.36 kW。模型邊界：固定電阻與有效值電流；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: I=400 A, R=0.1 ohm; y=I**2*R/1000=16 kW. Increasing only I with a ten-percent increase gives y=19.36 kW. Boundary: Fixed resistance and RMS current; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以電流均方與電阻區分模型與觀察，先用合成有效值電流記錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「導線焦耳損耗」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use mean-square current and resistance to distinguish the model from observation in this unit. Establish a baseline using synthetic RMS current record, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Conductor Joule loss. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "脈動電流用平均值會低估損耗。這個失效與「導線焦耳損耗」的量測偏差可能產生相似表象，因此必須同時檢查電流均方與電阻，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Average current understates loss under ripple. This failure and a measurement bias in Conductor Joule loss can produce similar symptoms. Cross-check mean-square current and resistance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：脈動電流用平均值會低估損耗~This unit cannot exhibit the following failure: Average current understates loss under ripple.",
+      "practice": "重算「導線焦耳損耗」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出固定電阻與有效值電流如何限制結論。接著設計一組符合模型及一組由脈動電流用平均值會低估損耗造成偏離的合成觀察，以電流均方與電阻說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Conductor Joule loss, plot the input-output relationship, and explain the limiting assumption: Fixed resistance and RMS current. Construct one synthetic observation consistent with the model and another affected by this failure: Average current understates loss under ripple. Explain which evidence in mean-square current and resistance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "風載橫向位移~Wind-load lateral displacement",
+      "title": "風載橫向位移~Wind-load lateral displacement",
+      "mechanism": "小位移下橫風分布力使導線偏移。本模型把 q 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.183333 m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。靜態均布橫載小位移。使用風速與橫向位置作量測證據，才能檢查方程是否對應此處的實際物理量；陣風動態不可只用靜態偏移，因此應把該原因與量測偏差分開。~Distributed crosswind force displaces the wire at small deflection. In this model, q is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.183333 m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Static uniform lateral load at small displacement. Use wind speed and lateral position as measurement evidence that the equation represents the intended physical quantity. Gust dynamics cannot be reduced to static displacement; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：q=8 N/m, L=50 m, T=15000 N；y=q*L**2/(8*T)=0.166667 m。只把 q 增加百分之十，y=0.183333 m。模型邊界：靜態均布橫載小位移；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: q=8 N/m, L=50 m, T=15000 N; y=q*L**2/(8*T)=0.166667 m. Increasing only q with a ten-percent increase gives y=0.183333 m. Boundary: Static uniform lateral load at small displacement; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以風速與橫向位置區分模型與觀察，先用模型橫載與位移尺建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「風載橫向位移」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use wind speed and lateral position to distinguish the model from observation in this unit. Establish a baseline using model lateral load and displacement gauge, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Wind-load lateral displacement. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "陣風動態不可只用靜態偏移。這個失效與「風載橫向位移」的量測偏差可能產生相似表象，因此必須同時檢查風速與橫向位置，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Gust dynamics cannot be reduced to static displacement. This failure and a measurement bias in Wind-load lateral displacement can produce similar symptoms. Cross-check wind speed and lateral position rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：陣風動態不可只用靜態偏移~This unit cannot exhibit the following failure: Gust dynamics cannot be reduced to static displacement.",
+      "practice": "重算「風載橫向位移」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出靜態均布橫載小位移如何限制結論。接著設計一組符合模型及一組由陣風動態不可只用靜態偏移造成偏離的合成觀察，以風速與橫向位置說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Wind-load lateral displacement, plot the input-output relationship, and explain the limiting assumption: Static uniform lateral load at small displacement. Construct one synthetic observation consistent with the model and another affected by this failure: Gust dynamics cannot be reduced to static displacement. Explain which evidence in wind speed and lateral position distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "受流相對速度比~Collection speed ratio",
+      "title": "受流相對速度比~Collection speed ratio",
+      "mechanism": "列車速度接近波速時動態耦合更需細查。本模型把 v 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.733333 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻弦特徵速度比較。使用車速與獨立波速估計作量測證據，才能檢查方程是否對應此處的實際物理量；單一速度比不能保證受流合格，因此應把該原因與量測偏差分開。~Dynamic coupling needs closer study as train speed approaches wave speed. In this model, v is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.733333 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Characteristic-speed comparison for a uniform string. Use train speed and independent wave-speed estimate as measurement evidence that the equation represents the intended physical quantity. One speed ratio cannot certify collection performance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：v=80 m/s, c=120 m/s；y=v/c=0.666667 1。只把 v 增加百分之十，y=0.733333 1。模型邊界：均勻弦特徵速度比較；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: v=80 m/s, c=120 m/s; y=v/c=0.666667 1. Increasing only v with a ten-percent increase gives y=0.733333 1. Boundary: Characteristic-speed comparison for a uniform string; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以車速與獨立波速估計區分模型與觀察，先用合成速度與弦脈衝紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「受流相對速度比」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use train speed and independent wave-speed estimate to distinguish the model from observation in this unit. Establish a baseline using synthetic speed and string-pulse records, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Collection speed ratio. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "單一速度比不能保證受流合格。這個失效與「受流相對速度比」的量測偏差可能產生相似表象，因此必須同時檢查車速與獨立波速估計，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~One speed ratio cannot certify collection performance. This failure and a measurement bias in Collection speed ratio can produce similar symptoms. Cross-check train speed and independent wave-speed estimate rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：單一速度比不能保證受流合格~This unit cannot exhibit the following failure: One speed ratio cannot certify collection performance.",
+      "practice": "重算「受流相對速度比」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻弦特徵速度比較如何限制結論。接著設計一組符合模型及一組由單一速度比不能保證受流合格造成偏離的合成觀察，以車速與獨立波速估計說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Collection speed ratio, plot the input-output relationship, and explain the limiting assumption: Characteristic-speed comparison for a uniform string. Construct one synthetic observation consistent with the model and another affected by this failure: One speed ratio cannot certify collection performance. Explain which evidence in train speed and independent wave-speed estimate distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "懸掛點彈性位移~Suspension-point elastic movement",
+      "title": "懸掛點彈性位移~Suspension-point elastic movement",
+      "mechanism": "支承點彈性會參與接觸線高度變化。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 5.5 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。線性單點支承。使用支點力位移作量測證據，才能檢查方程是否對應此處的實際物理量；把支點視為完全固定會低估動態位移，因此應把該原因與量測偏差分開。~Support elasticity contributes to contact-wire height change. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 5.5 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Linear single-point support. Use support force-displacement as measurement evidence that the equation represents the intended physical quantity. Perfectly fixed supports can understate dynamic movement; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=100 N, k=20000 N/m；y=F/k*1000=5 mm。只把 F 增加百分之十，y=5.5 mm。模型邊界：線性單點支承；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=100 N, k=20000 N/m; y=F/k*1000=5 mm. Increasing only F with a ten-percent increase gives y=5.5 mm. Boundary: Linear single-point support; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以支點力位移區分模型與觀察，先用模型彈簧與位移計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「懸掛點彈性位移」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use support force-displacement to distinguish the model from observation in this unit. Establish a baseline using model spring and displacement gauge, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Suspension-point elastic movement. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把支點視為完全固定會低估動態位移。這個失效與「懸掛點彈性位移」的量測偏差可能產生相似表象，因此必須同時檢查支點力位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Perfectly fixed supports can understate dynamic movement. This failure and a measurement bias in Suspension-point elastic movement can produce similar symptoms. Cross-check support force-displacement rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把支點視為完全固定會低估動態位移~This unit cannot exhibit the following failure: Perfectly fixed supports can understate dynamic movement.",
+      "practice": "重算「懸掛點彈性位移」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出線性單點支承如何限制結論。接著設計一組符合模型及一組由把支點視為完全固定會低估動態位移造成偏離的合成觀察，以支點力位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Suspension-point elastic movement, plot the input-output relationship, and explain the limiting assumption: Linear single-point support. Construct one synthetic observation consistent with the model and another affected by this failure: Perfectly fixed supports can understate dynamic movement. Explain which evidence in support force-displacement distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：w=10 N/m, L=50 m, T=15000 N；y=w*L**2/(8*T)=0.208333 m~Teaching unit 1 baseline scale: Original assumed example, not field operating values: w=10 N/m, L=50 m, T=15000 N; y=w*L**2/(8*T)=0.208333 m.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：T=15000 N, mu=1.35 kg/m；y=sqrt(T/mu)=105.409 m/s~Teaching unit 2 baseline scale: Original assumed example, not field operating values: T=15000 N, mu=1.35 kg/m; y=sqrt(T/mu)=105.409 m/s.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：alpha=0.000017 1/K, L=1000 m, dT=30 K；y=alpha*L*dT=0.51 m~Teaching unit 3 baseline scale: Original assumed example, not field operating values: alpha=0.000017 1/K, L=1000 m, dT=30 K; y=alpha*L*dT=0.51 m.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：L=50 m, intervals=10 count；y=L/intervals=5 m~Teaching unit 4 baseline scale: Original assumed example, not field operating values: L=50 m, intervals=10 count; y=L/intervals=5 m.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：weight=5000 N, ratio=3 1；y=weight*ratio=15000 N~Teaching unit 5 baseline scale: Original assumed example, not field operating values: weight=5000 N, ratio=3 1; y=weight*ratio=15000 N.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：rho=0.0000000172 ohm*m, L=1000 m, A=0.00012 m2；y=rho*L/A=0.143333 ohm~Teaching unit 6 baseline scale: Original assumed example, not field operating values: rho=0.0000000172 ohm*m, L=1000 m, A=0.00012 m2; y=rho*L/A=0.143333 ohm."
+  ],
+  "timeline": [
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布能源子系統互通規範第一三零一號法規。~The EU issued Regulation 1301/2014 for energy-subsystem interoperability."
+    },
+    {
+      "year": "2019-05-16",
+      "event": "歐盟第七七六號修訂更新能源等鐵路互通規範。~EU Regulation 2019/776 amended energy and other railway interoperability specifications."
+    },
+    {
+      "year": "2023-12-20",
+      "event": "歐洲鐵路署發布二零二三版能源互通規範應用指南。~ERA issued the 2023 application guide for the Energy TSI."
+    }
+  ],
+  "codes": [
+    "歐洲能源子系統互通技術規範：確認當地適用性與完整版本。~European Energy TSI: confirm local applicability and complete applicable edition.",
+    "歐洲鐵路署二零二三年能源互通規範應用指南：供解讀及界面比較。~ERA 2023 Energy TSI application guide: interpretation and interface comparison."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-energy",
+      "title": "能源子系統互通規範",
+      "titleEn": "Energy TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/energy-tsi_en",
+      "sourceType": "primary",
+      "scope": "牽引供電固定設施與受流介面的規範入口及歷次修訂。",
+      "scopeEn": "Regulatory entry point and amendments for fixed traction-energy installations and current-collection interfaces."
+    },
+    {
+      "key": "track-energy-guide",
+      "title": "能源互通規範應用指南",
+      "titleEn": "Guide for the application of the ENE TSI, 2023",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/system/files/2023-12/ENE_TSI_Guide.pdf",
+      "sourceType": "primary",
+      "scope": "二零二三年指南的適用範圍與條文解讀背景，不複製條文。",
+      "scopeEn": "Scope and interpretation context of the 2023 guide without reproducing clauses."
+    },
+    {
+      "key": "track-ole",
+      "title": "鐵路電氣化工程介紹",
+      "titleEn": "Electrification",
+      "publisher": "Network Rail",
+      "url": "https://www.networkrail.co.uk/our-work/living-by-the-railway/electrification/",
+      "sourceType": "primary",
+      "scope": "架空電車線工程與相鄰構造物的背景。",
+      "scopeEn": "Context for overhead-line works and surrounding structures."
+    },
+    {
+      "key": "track-elsafe",
+      "title": "鐵路電氣安全架構",
+      "titleEn": "Electrical Safety",
+      "publisher": "Network Rail",
+      "url": "https://safety.networkrail.co.uk/safety/electrical-safety/",
+      "sourceType": "primary",
+      "scope": "電氣工作授權與風險管理入口；教學模型僅使用隔離低壓。",
+      "scopeEn": "Electrical-work authorisation and risk management; teaching models use isolated low voltage only."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "交流與直流鐵路牽引供電設備。",
+      "businessEn": "AC and DC railway traction-power equipment.",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail-infrastructure/electrification.html",
+      "role": "供電設備範圍比較，不宣稱承攬本課工程。",
+      "roleEn": "Supply-equipment scope comparison without claiming a contract for this course.",
+      "security": null
+    },
+    {
+      "name": "日立能源",
+      "nameEn": "Hitachi Energy",
+      "business": "鐵路變壓器與電氣化技術。",
+      "businessEn": "Railway transformers and electrification technology.",
+      "url": "https://www.hitachienergy.com/us/en/markets/transportation/rail",
+      "role": "電力設備延伸閱讀，不把產品額定值當教材輸入。",
+      "roleEn": "Power-equipment further reading without treating ratings as teaching inputs.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b361",
+    "b336"
+  ],
+  "architectureNodes": [
+    [
+      "支柱吊點",
+      "Supports and droppers"
+    ],
+    [
+      "張力補償",
+      "Tension compensation"
+    ],
+    [
+      "接觸導線",
+      "Contact conductor"
+    ],
+    [
+      "受電弓力",
+      "Pantograph force"
+    ],
+    [
+      "波動幾何",
+      "Wave geometry"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

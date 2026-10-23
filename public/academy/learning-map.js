@@ -9,6 +9,7 @@ const textFor = course => [course.title, course.titleEn, course.summary, course.
 
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
+  {id:'rail',icon:'motion',title:pair('鐵道與交通','Rail & transport'),description:pair('100門課串接高速鐵路、捷運貨運、軌道、供電、號誌與系統整合。','100 courses connect high-speed rail, metro and freight, track, power, signalling and integration.'),boundary:pair('用可核算的假想數據理解工程原理；實際運行參數須另依路線、車輛與適用規範驗證。','Use reproducible hypothetical data to understand principles; real operating parameters require route, vehicle and applicable-code validation.')},
   {id:'water',icon:'process',title:pair('水利與海岸工程','Water & coastal engineering'),description:pair('100門課串接世界水壩、河川防洪、輸配水、船閘、海岸與港灣。','100 courses connect world dams, flood management, conveyance, locks, coasts and ports.'),boundary:pair('分開教學假設與實測邊界；用守恆、量測與不確定度檢核水工模型。','Separate teaching assumptions from measured boundaries; verify hydraulic models through conservation, measurement and uncertainty.')},
   {id:'underground',icon:'bridge',title:pair('隧道與地下工程','Tunnels & underground engineering'),description:pair('100門課程串接世界隧道、地質調查、潛盾、支護、地下水與地盤改良。','100 courses connect landmark tunnels, investigation, TBMs, support, groundwater and ground improvement.'),boundary:pair('從公開原理與教學算例學習；施工參數必須依實測地層與審查另定。','Learn from public principles and teaching examples; field parameters require measured ground data and review.')},
   {id:'quantum', icon:'quantum', title:pair('量子電腦與 QPU','Quantum computers & QPUs'), description:pair('依物理實作、控制、讀出與錯誤處理比較量子門派。','Compare physical implementations, control, readout and error handling.'), boundary:pair('共同點是量子態準備、控制與量測；低溫、雷射、光損耗及錯誤模型各不相同。','State preparation, control and measurement are shared; cryogenics, lasers, optical loss and error models differ.')},
@@ -34,6 +35,13 @@ export const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 export const LEARNING_SUBDISCIPLINES = [
+  subdivision("rail-highspeed","rail","高速鐵路系統","High-speed railway systems",/rail-highspeed/i),
+  subdivision("rail-metro","rail","都會捷運與貨運","Metro and freight",/rail-metro/i),
+  subdivision("rail-track","rail","軌道與土建工程","Track and civil engineering",/rail-track/i),
+  subdivision("rail-power","rail","牽引供電與受流","Traction power and current collection",/rail-power/i),
+  subdivision("rail-control","rail","號誌與營運控制","Signalling and operations",/rail-control/i),
+  subdivision("rail-integration","rail","車站機廠與系統整合","Stations, depots and integration",/rail-integration/i),
+
   subdivision("water-dams","water","世界水壩與水庫","World dams and reservoirs",/water-dams/i),
   subdivision("water-systems","water","防潮、航運與大壩施工","Tidal barriers, navigation and dam construction",/water-systems/i),
   subdivision("water-hydraulics","water","壩工監測、溢洪與壓力水路","Dam monitoring, spillways and pressure waterways",/water-hydraulics/i),
@@ -113,6 +121,10 @@ export const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 export const LEARNING_ROUTES = [
+  {"id": "rail-fundamentals", "title": ["從車輪到高速路線", "From wheel contact to high-speed routes"], "goal": ["沿接口比較假設、可觀察量與驗證證據。", "Compare assumptions, observables and validation evidence across interfaces."], "courses": ["b336", "b337", "b338", "b340", "b301", "b310", "b320"]},
+  {"id": "rail-power", "title": ["從牽引供電到再生制動", "From traction supply to regenerative braking"], "goal": ["沿接口比較假設、可觀察量與驗證證據。", "Compare assumptions, observables and validation evidence across interfaces."], "courses": ["b360", "b361", "b362", "b363", "b364", "b366", "b396"]},
+  {"id": "rail-control", "title": ["從閉塞到列車控制", "From blocks to train control"], "goal": ["沿接口比較假設、可觀察量與驗證證據。", "Compare assumptions, observables and validation evidence across interfaces."], "courses": ["b367", "b368", "b369", "b370", "b371", "b374", "b380"]},
+  {"id": "rail-integration", "title": ["從車站到系統驗證", "From stations to system validation"], "goal": ["沿接口比較假設、可觀察量與驗證證據。", "Compare assumptions, observables and validation evidence across interfaces."], "courses": ["b381", "b384", "b387", "b391", "b394", "b397", "b400"]},
   {"id": "water-landmarks", "title": ["世界水壩的受力與調度", "Forces and operations at world dams"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b231", "b233", "b235", "b241", "b244", "b202", "three-gorges", "b216"]},
   {"id": "water-barriers", "title": ["防潮、船閘與水位控制", "Tidal barriers, locks and water-level control"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b250", "b251", "b221", "b222", "b223", "b224", "b225", "b226", "b227"]},
   {"id": "water-hydraulics", "title": ["從水力相似到壩工驗證", "From hydraulic similarity to dam verification"], "goal": ["沿順序比較原理、代表工程與監測證據；各課的數值假設須重新核對。", "Compare principles, landmarks and monitoring evidence in sequence; reassess numerical assumptions for each course."], "courses": ["b257", "b244", "b249", "b242", "b253", "b254", "b256", "b260"]},
@@ -143,7 +155,7 @@ export const LEARNING_ROUTES = [
 
 const TRACK_IDS = new Set(LEARNING_TRACKS.map(track => track.id));
 const SUBDISCIPLINE_IDS = new Map(LEARNING_SUBDISCIPLINES.map(subdivision => [subdivision.id, subdivision]));
-const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'water',environment:'civil',manufacturing:'mobility',rail:'mobility',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
+const categoryTrack = {semiconductor:'semiconductor',packaging:'packaging',electronics:'electronics',computing:'foundation',energy:'energy',structures:'civil',underground:'underground',water:'water',environment:'civil',manufacturing:'mobility',rail:'rail',aerospace:'mobility',marine:'mobility',automotive:'mobility',space:'mobility',materials:'materials',megascience:'science',instruments:'science',biomedical:'process',process:'process',quantum:'quantum',ai:'ai',servers:'servers',resources:'resources',cyber:'cyber',cybersecurity:'cyber',networks:'networks'};
 
 export function classifyLearningCourse(course = {}) {
   // Generic roadmap summaries mention security and testing in every category;

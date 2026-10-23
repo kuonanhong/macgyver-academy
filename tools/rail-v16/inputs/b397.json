@@ -1,0 +1,271 @@
+{
+  "id": "b397",
+  "title": "跨座式單軌導梁~Straddle-monorail guideway beams",
+  "discipline": "rail-integration",
+  "family": "track",
+  "focus": "跨座導梁的彎扭變形幾何與車輛動態介面~Bending, torsion, geometry and vehicle dynamics of straddle-monorail beams",
+  "summary": "本課聚焦跨座導梁的彎扭變形幾何與車輛動態介面。從導梁彎曲的量級檢查建立物理或資訊邊界，接著把導梁伸縮與支承活動與導梁波長與行車激振連成可驗證的介面，最後以彎扭溫度整合案例整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies bending, torsion, geometry and vehicle dynamics of straddle-monorail beams. Start with scale check of guideway bending to define physical or information boundaries, connect thermal movement and support travel with guideway wavelength and running excitation as verifiable interfaces, and organize evidence through combined bending, torsion and temperature cases. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：2001 年小型單軌系統的技術論文出版。；2008 年整合單軌系統的技術論文出版。；2025 年鐵路可靠度與安全方法第一分冊發布。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對跨座導梁的彎扭變形幾何與車輛動態介面而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用偏心輪載與導梁扭轉及導梁車輛與月台界面連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 2001: A technical paper on small monorail systems was published. 2008: A technical paper on integrated monorail systems was published. 2025: A new first part of railway RAMS was published. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For bending, torsion, geometry and vehicle dynamics of straddle-monorail beams, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through eccentric wheel loads and beam twist and guideway, vehicle and platform interface. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究導梁彎曲的量級檢查。原創假想教學輸入：跨中集中力 P=80000 N；簡支跨度 L=20 m；彈性模數 E=3.5e+10 Pa；截面慣性矩 I=0.5 m4。公式 y=P*L**3/(48*E*I)*1000，代入得 y=0.761905 mm。邊界：小撓度等截面歐拉梁，簡支與單一跨中力，忽略剪切及扭轉。敏感度只改 L=20 至 22 m，輸出變為 1.0141 mm；離散計數採整數變化。再獨立研究偏心輪載與導梁扭轉：原創假想教學輸入：扭矩 T=120000 N*m；構件長度 L=15 m；剪切模數 G=1.4e+10 Pa；等效扭轉常數 J=0.3 m4。公式 y=T*L/(G*J)*1000，代入得 y=0.428571 mrad。邊界：均勻聖維南扭轉與已知等效扭轉常數，未含翹曲拘束。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。以簡支跨中力建立導梁撓度基準，觀察跨度三次方對變形的影響。真實輪載分布和支承條件另列，避免將單一教學梁當成整條導梁驗收。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate scale check of guideway bending. Original hypothetical teaching inputs: central point load P=80000 N; simply supported span L=20 m; Young modulus E=3.5e+10 Pa; second moment of area I=0.5 m4. Formula y=P*L**3/(48*E*I)*1000 gives y=0.761905 mm. Boundary: Small-deflection uniform Euler beam with simple supports and one central load; shear and torsion are omitted. For sensitivity, change only L=20 to 22 m; the output becomes 1.0141 mm. Discrete counts use whole-number steps. Independently investigate eccentric wheel loads and beam twist: Original hypothetical teaching inputs: torque T=120000 N*m; member length L=15 m; shear modulus G=1.4e+10 Pa; equivalent torsion constant J=0.3 m4. Formula y=T*L/(G*J)*1000 gives y=0.428571 mrad. Boundary: Uniform Saint-Venant torsion with a known equivalent torsion constant; restrained warping is excluded. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Use a simply supported central-load beam as a deflection reference and examine cubic span sensitivity. Retain real wheel distribution and supports as separate conditions rather than accepting a full guideway through one beam model. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "導梁彎曲的量級檢查~Scale check of guideway bending",
+      "title": "導梁彎曲的量級檢查~Scale check of guideway bending",
+      "mechanism": "以簡支跨中力建立導梁撓度基準，觀察跨度三次方對變形的影響。真實輪載分布和支承條件另列，避免將單一教學梁當成整條導梁驗收。簡支梁跨中集中荷載的撓度隨跨度三次方增加，與彎曲剛度成反比。跨座導梁的車輛輪載並非真正集中於單點，支承與扭轉也會參與；概念梁模型適合量級檢查，但不能直接作為完整導梁的行車驗收。解釋前先固定模型適用範圍：小撓度等截面歐拉梁，簡支與單一跨中力，忽略剪切及扭轉。~Use a simply supported central-load beam as a deflection reference and examine cubic span sensitivity. Retain real wheel distribution and supports as separate conditions rather than accepting a full guideway through one beam model. Midspan deflection of a simply supported beam under a central point load scales with span cubed and inversely with flexural rigidity. Monorail wheel loads are distributed and involve supports and torsion. The beam model is useful for scale checks, not complete guideway acceptance. Before interpreting the result, fix its domain: Small-deflection uniform Euler beam with simple supports and one central load; shear and torsion are omitted.",
+      "model": "原創假想教學輸入：跨中集中力 P=80000 N；簡支跨度 L=20 m；彈性模數 E=3.5e+10 Pa；截面慣性矩 I=0.5 m4。公式 y=P*L**3/(48*E*I)*1000，代入得 y=0.761905 mm。邊界：小撓度等截面歐拉梁，簡支與單一跨中力，忽略剪切及扭轉。~Original hypothetical teaching inputs: central point load P=80000 N; simply supported span L=20 m; Young modulus E=3.5e+10 Pa; second moment of area I=0.5 m4. Formula y=P*L**3/(48*E*I)*1000 gives y=0.761905 mm. Boundary: Small-deflection uniform Euler beam with simple supports and one central load; shear and torsion are omitted.",
+      "verify": "量跨中與支承位移並扣除支承沉陷，以不同載重檢查線性比例及卸載回復。以「導梁彎曲的量級檢查」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure midspan and support movement, subtract support settlement, and test load proportionality and unloading recovery. For scale check of guideway bending, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "未扣支承沉陷會把基礎移動當成梁撓度，裂縫或接頭滑移則使載重關係不再線性。回到「導梁彎曲的量級檢查」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Unremoved support settlement appears as beam deflection; cracking or joint slip can make the load relation nonlinear. Trace the input chain for scale check of guideway bending. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "跨度加倍時其他條件相同的梁撓度也只增加一倍~Doubling span with other conditions fixed merely doubles beam deflection.",
+      "practice": "只把簡支跨度 L 從 20 改成 22 m（增加百分之十），其餘輸入固定。重算結果應由 0.761905 變為 1.0141 mm。先說明「導梁彎曲的量級檢查」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only simply supported span L from 20 to 22 m (increase by ten percent), holding other inputs fixed. Recalculate 0.761905 to 1.0141 mm. Explain the causal direction for scale check of guideway bending, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "偏心輪載與導梁扭轉~Eccentric wheel loads and beam twist",
+      "title": "偏心輪載與導梁扭轉~Eccentric wheel loads and beam twist",
+      "mechanism": "跨座車輛偏心載重會使導梁兩側產生相對轉角，即使中心線撓度仍小。以成對高程量測檢查扭轉，區分剛體轉動、支承沉陷與截面變形。偏心輪載會扭轉導梁，扭角由扭矩、長度與扭轉剛度控制。兩側輪道相對高差會影響導向輪接觸，即使跨中垂直撓度很小仍可能存在明顯扭轉；開口截面與翹曲拘束的行為不能用單純圓軸公式概括。解釋前先固定模型適用範圍：均勻聖維南扭轉與已知等效扭轉常數，未含翹曲拘束。~Eccentric monorail loading can twist opposite guide surfaces despite small centreline deflection. Use paired elevation measurements to distinguish twist, rigid rotation and support settlement. Eccentric wheel loading twists a guideway, with angle governed by torque, length and torsional rigidity. Relative rail-surface height affects guide-wheel contact even when vertical deflection is small. Open sections and restrained warping cannot be represented fully by a simple shaft analogy. Before interpreting the result, fix its domain: Uniform Saint-Venant torsion with a known equivalent torsion constant; restrained warping is excluded.",
+      "model": "原創假想教學輸入：扭矩 T=120000 N*m；構件長度 L=15 m；剪切模數 G=1.4e+10 Pa；等效扭轉常數 J=0.3 m4。公式 y=T*L/(G*J)*1000，代入得 y=0.428571 mrad。邊界：均勻聖維南扭轉與已知等效扭轉常數，未含翹曲拘束。~Original hypothetical teaching inputs: torque T=120000 N*m; member length L=15 m; shear modulus G=1.4e+10 Pa; equivalent torsion constant J=0.3 m4. Formula y=T*L/(G*J)*1000 gives y=0.428571 mrad. Boundary: Uniform Saint-Venant torsion with a known equivalent torsion constant; restrained warping is excluded.",
+      "verify": "在兩側同斷面量高程差，將剛體轉動與支承沉陷分離，再比較偏心載重方向反轉。以「偏心輪載與導梁扭轉」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure opposite-side elevations at common sections, separate rigid rotation and settlement, and reverse eccentric loading for comparison. For eccentric wheel loads and beam twist, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只量梁中心線會漏掉扭轉，左右感測器不同基準則可能製造假的扭角。回到「偏心輪載與導梁扭轉」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Centreline-only measurements miss torsion; mismatched sensor datums can create an artificial twist angle. Trace the input chain for eccentric wheel loads and beam twist. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "導梁中心線沒有明顯下沉就表示不可能發生扭轉~Little guideway-centreline settlement proves that torsion cannot occur.",
+      "practice": "只把扭矩 T 從 120000 改成 132000 N*m（增加百分之十），其餘輸入固定。重算結果應由 0.428571 變為 0.471429 mrad。先說明「偏心輪載與導梁扭轉」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only torque T from 120000 to 132000 N*m (increase by ten percent), holding other inputs fixed. Recalculate 0.428571 to 0.471429 mrad. Explain the causal direction for eccentric wheel loads and beam twist, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "曲線速度與側向需求~Curve speed and lateral demand",
+      "title": "曲線速度與側向需求~Curve speed and lateral demand",
+      "mechanism": "將曲線半徑和車速換成側向加速度量級，觀察車速平方的影響。導向輪力仍取決於車體和懸吊分配，不可把集中質點結果直接當成單輪荷載。曲線向心加速度與速度平方成正比、與半徑成反比，導向輪與懸吊需共同提供相應作用。傾斜或超高可改變乘客感受的側向分量，但不會消除車輛轉彎所需的向心加速度；轉折處的變化率亦影響舒適。解釋前先固定模型適用範圍：平面定速圓曲線，不含超高、傾斜與過渡曲線。~Convert curve radius and speed into a lateral-acceleration scale and examine the square-speed effect. Guide-wheel forces still depend on vehicle and suspension distribution, so a point-mass result is not a single-wheel load. Centripetal acceleration scales with speed squared and inverse radius, supplied through guidance and suspension forces. Tilt or banking changes the lateral component felt by passengers but does not remove the acceleration needed to turn. Its rate of change through transitions also affects comfort. Before interpreting the result, fix its domain: Constant-speed planar circular curve, excluding cant, tilt and transition geometry.",
+      "model": "原創假想教學輸入：速度 v=12 m/s；曲線半徑 R=150 m。公式 y=v*v/R，代入得 y=0.96 m/s2。邊界：平面定速圓曲線，不含超高、傾斜與過渡曲線。~Original hypothetical teaching inputs: speed v=12 m/s; curve radius R=150 m. Formula y=v*v/R gives y=0.96 m/s2. Boundary: Constant-speed planar circular curve, excluding cant, tilt and transition geometry.",
+      "verify": "同步比較速度、曲率及車體側向加速度，先轉換感測器座標再討論乘坐感受。以「曲線速度與側向需求」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Compare synchronized speed, curvature and body lateral acceleration after transforming sensor coordinates. For curve speed and lateral demand, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "感測器未扣重力投影會把傾斜誤當側向動態，曲率定位錯位則使模型峰值位置偏移。回到「曲線速度與側向需求」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Unremoved gravity projection can mimic lateral dynamics; misregistered curvature shifts the predicted peak location. Trace the input chain for curve speed and lateral demand. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "速度加倍但半徑不變時側向加速度也只增加一倍~Doubling speed at unchanged radius merely doubles lateral acceleration.",
+      "practice": "只把速度 v 從 12 改成 13.2 m/s（增加百分之十），其餘輸入固定。重算結果應由 0.96 變為 1.1616 m/s2。先說明「曲線速度與側向需求」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only speed v from 12 to 13.2 m/s (increase by ten percent), holding other inputs fixed. Recalculate 0.96 to 1.1616 m/s2. Explain the causal direction for curve speed and lateral demand, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "導梁伸縮與支承活動~Thermal movement and support travel",
+      "title": "導梁伸縮與支承活動~Thermal movement and support travel",
+      "mechanism": "先用自由伸長估計均勻溫差下的位移需求，再比較固定與活動支承如何改變反應。日照熱梯度和支承卡滯不在此簡式內，須另保留量測證據。自由熱伸長與原長、膨脹係數及溫差成正比，但受拘束後伸長會被轉成內力。接縫、支承與鄰接構件共同決定這種轉換；因此同一個溫差可能在自由端表現為位移，在固定端表現為應力，不能用一種量測代替另一種。解釋前先固定模型適用範圍：均勻溫度與自由伸長；不包含熱梯度引起的彎曲。~Estimate uniform-temperature free movement before comparing fixed and sliding support responses. Solar gradients and seized bearings lie outside the simple relation and need separate measurement evidence. Free thermal expansion scales with length, coefficient and temperature change, while restraint converts some expansion into force. Joints, supports and adjoining members govern that conversion. The same temperature change can produce movement at a free end and stress at a restrained end, so one measurement cannot replace the other. Before interpreting the result, fix its domain: Uniform temperature and free expansion; thermal-gradient bending is omitted.",
+      "model": "原創假想教學輸入：構件長度 L=30 m；膨脹係數 alpha=1.2e-05 1/K；溫度變化 dT=20 K。公式 y=L*alpha*dT*1000，代入得 y=7.2 mm。邊界：均勻溫度與自由伸長；不包含熱梯度引起的彎曲。~Original hypothetical teaching inputs: member length L=30 m; expansion coefficient alpha=1.2e-05 1/K; temperature change dT=20 K. Formula y=L*alpha*dT*1000 gives y=7.2 mm. Boundary: Uniform temperature and free expansion; thermal-gradient bending is omitted.",
+      "verify": "以多點溫度檢查均勻假設，再對照端點位移與支承狀態，分辨自由與拘束行為。以「導梁伸縮與支承活動」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Check temperature uniformity at several points and compare end movement with support condition to distinguish free and restrained behaviour. For thermal movement and support travel, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "支承卡住可能讓位移很小但內力增加，日照溫差又可能造成彎曲而非單純伸長。回到「導梁伸縮與支承活動」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A seized support can suppress movement while increasing force; solar gradients may cause bending rather than simple extension. Trace the input chain for thermal movement and support travel. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "量不到熱伸長就表示構件完全沒有熱應力~No measured thermal expansion means that a member has no thermal stress.",
+      "practice": "只把構件長度 L 從 30 改成 33 m（增加百分之十），其餘輸入固定。重算結果應由 7.2 變為 7.92 mm。先說明「導梁伸縮與支承活動」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only member length L from 30 to 33 m (increase by ten percent), holding other inputs fixed. Recalculate 7.2 to 7.92 mm. Explain the causal direction for thermal movement and support travel, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "導向面幾何控制網~Survey control for guide surfaces",
+      "title": "導向面幾何控制網~Survey control for guide surfaces",
+      "mechanism": "車輛接觸的導向面必須與控制網建立可重複的幾何關係，長視線會放大角度誤差。以閉合觀測檢查基準一致性，不用單站重複性代替全線準確度。小角度方向誤差會隨視線距離放大成橫向位置誤差，長視線不一定帶來更準的幾何控制。基準網、折光、儀器對中與目標安裝都會影響結果；同一站多次讀值一致，仍可能共同受到基準偏移影響。解釋前先固定模型適用範圍：小角近似與單一方向誤差，未含完整測量網平差。~Tie contact guide surfaces reproducibly to the control network because angular error grows with sight distance. Use closure checks rather than substituting repeated readings at one station for network accuracy. A small angular error becomes transverse position error proportional to sight distance, so a longer sight is not automatically more accurate. Control networks, refraction, centring and target mounting all matter. Repeated agreement from one station can still share a common datum error. Before interpreting the result, fix its domain: Small-angle approximation for one direction error, not a complete survey-network adjustment.",
+      "model": "原創假想教學輸入：視線距離 distance=40 m；小角誤差 angle=2.5e-05 rad。公式 y=distance*angle*1000，代入得 y=1 mm。邊界：小角近似與單一方向誤差，未含完整測量網平差。~Original hypothetical teaching inputs: sight distance distance=40 m; small angular error angle=2.5e-05 rad. Formula y=distance*angle*1000 gives y=1 mm. Boundary: Small-angle approximation for one direction error, not a complete survey-network adjustment.",
+      "verify": "用不同站位與往返觀測交叉核對，將角度誤差、對中誤差與基準移動分列。以「導向面幾何控制網」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Cross-check from different stations and reciprocal observations, separating angular error, centring and datum movement. For survey control for guide surfaces, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "儀器重複性良好可能掩蓋穩定的對中偏差，熱折光則使日夜結果有系統差異。回到「導向面幾何控制網」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Good repeatability can conceal stable centring bias; thermal refraction can create systematic day-night differences. Trace the input chain for survey control for guide surfaces. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "同一站位重複量測完全一致就能保證絕對位置正確~Identical repeated observations from one station guarantee correct absolute position.",
+      "practice": "只把視線距離 distance 從 40 改成 44 m（增加百分之十），其餘輸入固定。重算結果應由 1 變為 1.1 mm。先說明「導向面幾何控制網」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only sight distance distance from 40 to 44 m (increase by ten percent), holding other inputs fixed. Recalculate 1 to 1.1 mm. Explain the causal direction for survey control for guide surfaces, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "幾何量測隨機成分~Random components of geometry measurement",
+      "title": "幾何量測隨機成分~Random components of geometry measurement",
+      "mechanism": "將獨立儀器讀值的標準差與共同基準偏差分開，再決定能否平方和合成。若左右導向面共用同一基準，必須保留相關性而非盲目縮小誤差。獨立零均值誤差的變異數可以相加，因此標準差以平方和開根號合成。這個做法不適合直接合併最大容差或共同偏差；一旦共享基準造成相關性，協方差項就必須回到計算中，不能繼續假裝量測彼此獨立。解釋前先固定模型適用範圍：獨立隨機標準差，不代表確定的最大偏移界。~Separate independent-reading standard deviations from common datum bias before root-sum-square combination. Retain correlations when both guide surfaces share a reference rather than automatically shrinking the uncertainty. Variances of independent zero-mean errors add, giving a root-sum-square standard deviation. This is not a way to combine maximum tolerances or common bias. When a shared datum creates correlation, covariance terms belong in the calculation rather than assuming continued independence. Before interpreting the result, fix its domain: Independent random standard deviations, not a deterministic maximum displacement bound.",
+      "model": "原創假想教學輸入：獨立誤差一標準差 s1=3 mm；獨立誤差二標準差 s2=4 mm。公式 y=sqrt(s1*s1+s2*s2)，代入得 y=5 mm。邊界：獨立隨機標準差，不代表確定的最大偏移界。~Original hypothetical teaching inputs: first independent standard deviation s1=3 mm; second independent standard deviation s2=4 mm. Formula y=sqrt(s1*s1+s2*s2) gives y=5 mm. Boundary: Independent random standard deviations, not a deterministic maximum displacement bound.",
+      "verify": "以重複量測估計標準差與相關係數，將固定偏差另列，再核對合成殘差。以「幾何量測隨機成分」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Estimate standard deviations and correlation from repeated observations, separate fixed bias, and compare combined residuals. For random components of geometry measurement, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "共同基準誤差會使所有讀值同向偏移，重複次數增加也無法把這種偏差平均掉。回到「幾何量測隨機成分」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A common datum error shifts readings together, and additional repetition cannot average away that shared bias. Trace the input chain for random components of geometry measurement. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "任何兩個誤差都可以不問相關性直接平方和開根號~Any two errors can be combined by root-sum-square without considering correlation.",
+      "practice": "只把獨立誤差一標準差 s1 從 3 改成 3.3 mm（增加百分之十），其餘輸入固定。重算結果應由 5 變為 5.18556 mm。先說明「幾何量測隨機成分」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only first independent standard deviation s1 from 3 to 3.3 mm (increase by ten percent), holding other inputs fixed. Recalculate 5 to 5.18556 mm. Explain the causal direction for random components of geometry measurement, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "導梁波長與行車激振~Guideway wavelength and running excitation",
+      "title": "導梁波長與行車激振~Guideway wavelength and running excitation",
+      "mechanism": "相同幾何波長在不同車速下形成不同時間頻率，因此只看最大偏差會漏掉動態資訊。將量測波長與車速並列，找出需要車輛模型進一步分析的組合。固定空間波長在移動車輛上轉換成時間激振頻率，因此同一幾何不平順在不同速度下可能接近不同振動模態。只看最大偏差會漏掉波長資訊；導梁精度控制需要把幾何頻譜、車速與車輛動態連結，而非只追求單點誤差最小。解釋前先固定模型適用範圍：定速通過單一正弦空間成分，未計車輛傳遞函數。~The same geometric wavelength produces different temporal frequencies at different speeds, so peak deviation alone misses dynamic information. Pair wavelength with speed to identify combinations needing a vehicle-response model. A spatial wavelength becomes a temporal excitation frequency on a moving vehicle, so the same geometry can excite different modes at different speeds. Maximum deviation alone loses wavelength information. Guideway precision therefore links geometry spectra, speed and vehicle dynamics rather than only minimizing point errors. Before interpreting the result, fix its domain: Constant-speed passage over one sinusoidal spatial component; the vehicle transfer function is not included.",
+      "model": "原創假想教學輸入：運行速度 speed=40 m/s；幾何波長 wavelength=20 m。公式 y=speed/wavelength，代入得 y=2 Hz。邊界：定速通過單一正弦空間成分，未計車輛傳遞函數。~Original hypothetical teaching inputs: running speed speed=40 m/s; geometric wavelength wavelength=20 m. Formula y=speed/wavelength gives y=2 Hz. Boundary: Constant-speed passage over one sinusoidal spatial component; the vehicle transfer function is not included.",
+      "verify": "將幾何資料按里程頻譜分析，再用速度轉換頻率，與車上加速度頻譜比較。以「導梁波長與行車激振」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Analyse geometry by spatial frequency, transform using speed, and compare with onboard acceleration spectra. For guideway wavelength and running excitation, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "里程軸不均勻會扭曲頻譜，忽略車輛模態又可能把所有波長視為同樣重要。回到「導梁波長與行車激振」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Uneven distance sampling distorts spectra; ignoring vehicle modes incorrectly treats every wavelength as equally important. Trace the input chain for guideway wavelength and running excitation. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "幾何最大誤差一樣時所有波長的乘坐影響一定一樣~Equal maximum geometry error gives identical ride effects at every wavelength.",
+      "practice": "只把運行速度 speed 從 40 改成 44 m/s（增加百分之十），其餘輸入固定。重算結果應由 2 變為 2.2 Hz。先說明「導梁波長與行車激振」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only running speed speed from 40 to 44 m/s (increase by ten percent), holding other inputs fixed. Recalculate 2 to 2.2 Hz. Explain the causal direction for guideway wavelength and running excitation, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "剛度質量與模態概念~Stiffness, mass and modal interpretation",
+      "title": "剛度質量與模態概念~Stiffness, mass and modal interpretation",
+      "mechanism": "先用單自由度模型理解剛度和質量如何改變固有頻率，再比較來自導梁幾何的激振。模型沒有阻尼與多模態，不能只憑頻率相近就估計真實放大量。單自由度固有頻率由剛度與質量比的平方根決定。提高剛度可能移開一個激振頻率，也可能移近另一個頻率；阻尼控制峰值而不只改變頻率，因此僅比較靜態變形不能預測動態放大。解釋前先固定模型適用範圍：線性無阻尼單自由度頻率，未含多模態與輪軌或磁路耦合。~Use one degree of freedom to understand stiffness and mass effects before comparing guideway excitation. With damping and multiple modes absent, frequency proximity alone cannot determine actual amplification. A single-degree natural frequency follows the square root of stiffness-to-mass ratio. Stiffening can move away from one excitation yet toward another. Damping controls the resonant peak as well as frequency effects, so static deflection alone cannot predict dynamic amplification. Before interpreting the result, fix its domain: Linear undamped single-degree frequency without multimode, wheel-rail or magnetic coupling.",
+      "model": "原創假想教學輸入：等效剛度 k=1.8e+06 N/m；等效質量 m=12000 kg。公式 y=sqrt(k/m)/(2*pi)，代入得 y=1.94924 Hz。邊界：線性無阻尼單自由度頻率，未含多模態與輪軌或磁路耦合。~Original hypothetical teaching inputs: equivalent stiffness k=1.8e+06 N/m; equivalent mass m=12000 kg. Formula y=sqrt(k/m)/(2*pi) gives y=1.94924 Hz. Boundary: Linear undamped single-degree frequency without multimode, wheel-rail or magnetic coupling.",
+      "verify": "用低能量掃頻或自由衰減試驗量頻率與阻尼，對照載重改變後的模態移動。以「剛度質量與模態概念」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure frequency and damping with low-energy sweep or free decay, then compare modal shifts after changing load. For stiffness, mass and modal interpretation, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只增加剛度而忽略激振頻帶可能使振動更大，感測器裝在節點則可能漏掉主要模態。回到「剛度質量與模態概念」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Stiffening without considering excitation bands can increase vibration; a sensor at a node may miss the dominant mode. Trace the input chain for stiffness, mass and modal interpretation. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "結構越硬就能保證任何速度下振動都一定更小~A stiffer structure always guarantees smaller vibration at every speed.",
+      "practice": "只把等效剛度 k 從 1.8e+06 改成 1.98e+06 N/m（增加百分之十），其餘輸入固定。重算結果應由 1.94924 變為 2.04438 Hz。先說明「剛度質量與模態概念」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only equivalent stiffness k from 1.8e+06 to 1.98e+06 N/m (increase by ten percent), holding other inputs fixed. Recalculate 1.94924 to 2.04438 Hz. Explain the causal direction for stiffness, mass and modal interpretation, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "導梁車輛與月台界面~Guideway, vehicle and platform interface",
+      "title": "導梁車輛與月台界面~Guideway, vehicle and platform interface",
+      "mechanism": "將導梁位置、懸吊移動和月台測量放到同一間隙預算，避免土建與車輛各自合格卻介面衝突。明確區分有界容差與隨機標準差，不能互換合成方法。月台與車體介面的間隙預算需分開列入軌道幾何、懸吊移動與測量誤差。保守界限可直接相加，而隨機誤差合成必須有分布與相關性證據；只在空車靜止狀態量一個間隙，無法代表載重與動態情境。解釋前先固定模型適用範圍：三項同向有界誤差的保守和，不是法定間隙允收值。~Combine guideway position, suspension movement and platform survey in one gap budget to expose interface conflicts between separately acceptable disciplines. Distinguish bounded tolerances from random standard deviations when combining them. A platform-vehicle gap budget separates track geometry, suspension movement and survey error. Conservative bounds can be summed, while stochastic combination requires evidence for distributions and correlation. One stationary empty-vehicle measurement cannot represent loaded and dynamic conditions. Before interpreting the result, fix its domain: Conservative sum of three same-direction bounded errors, not a statutory gap allowance.",
+      "model": "原創假想教學輸入：軌道偏移界 track=8 mm；車體位移界 body=10 mm；測量誤差界 survey=3 mm。公式 y=track+body+survey，代入得 y=21 mm。邊界：三項同向有界誤差的保守和，不是法定間隙允收值。~Original hypothetical teaching inputs: track offset bound track=8 mm; body displacement bound body=10 mm; survey error bound survey=3 mm. Formula y=track+body+survey gives y=21 mm. Boundary: Conservative sum of three same-direction bounded errors, not a statutory gap allowance.",
+      "verify": "建立共同座標，對空載、載重及不同車型分別量測，並保留各誤差來源的符號。以「導梁車輛與月台界面」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Establish one coordinate system, measure empty and loaded vehicles of each type, and retain signs of individual error sources. For guideway, vehicle and platform interface, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把最大值當成標準差再作均方根合成會失去保守性，基準點沉陷也會造成整排讀值偏移。回到「導梁車輛與月台界面」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Treating maxima as standard deviations and applying root-sum-square loses conservatism; datum settlement can bias the whole measurement row. Trace the input chain for guideway, vehicle and platform interface. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "三個最大誤差都可直接用均方根方式縮小總界限~Three maximum error bounds may always be reduced through root-sum-square combination.",
+      "practice": "只把車體位移界 body 從 10 改成 11 mm（增加百分之十），其餘輸入固定。重算結果應由 21 變為 22 mm。先說明「導梁車輛與月台界面」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only body displacement bound body from 10 to 11 mm (increase by ten percent), holding other inputs fixed. Recalculate 21 to 22 mm. Explain the causal direction for guideway, vehicle and platform interface, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "彎扭溫度整合案例~Combined bending, torsion and temperature cases",
+      "title": "彎扭溫度整合案例~Combined bending, torsion and temperature cases",
+      "mechanism": "把載重位置、溫度條件與支承狀態分成可追溯案例，確認檢測不只涵蓋正中靜載。保留各模型未處理的耦合項，交付時指出仍需更完整分析的邊界。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Trace load location, temperature and support state through cases that extend beyond centred static loading. Retain omitted coupling mechanisms and identify boundaries requiring fuller analysis at handover. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「彎扭溫度整合案例」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For combined bending, torsion and temperature cases, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「彎扭溫度整合案例」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for combined bending, torsion and temperature cases. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「彎扭溫度整合案例」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for combined bending, torsion and temperature cases, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：導梁彎曲的量級檢查採 P=80000 N；本課公式結果 0.761905 mm，非現場額定值。~Teaching assumption for scale check of guideway bending: P=80000 N; this model gives 0.761905 mm, not a field rating.",
+    "教學假設：偏心輪載與導梁扭轉採 T=120000 N*m；本課公式結果 0.428571 mrad，非現場額定值。~Teaching assumption for eccentric wheel loads and beam twist: T=120000 N*m; this model gives 0.428571 mrad, not a field rating.",
+    "教學假設：曲線速度與側向需求採 v=12 m/s；本課公式結果 0.96 m/s2，非現場額定值。~Teaching assumption for curve speed and lateral demand: v=12 m/s; this model gives 0.96 m/s2, not a field rating.",
+    "教學假設：導梁伸縮與支承活動採 L=30 m；本課公式結果 7.2 mm，非現場額定值。~Teaching assumption for thermal movement and support travel: L=30 m; this model gives 7.2 mm, not a field rating.",
+    "教學假設：導向面幾何控制網採 distance=40 m；本課公式結果 1 mm，非現場額定值。~Teaching assumption for survey control for guide surfaces: distance=40 m; this model gives 1 mm, not a field rating.",
+    "教學假設：幾何量測隨機成分採 s1=3 mm；本課公式結果 5 mm，非現場額定值。~Teaching assumption for random components of geometry measurement: s1=3 mm; this model gives 5 mm, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "2001",
+      "event": "小型單軌系統的技術論文出版。~A technical paper on small monorail systems was published."
+    },
+    {
+      "year": "2008",
+      "event": "整合單軌系統的技術論文出版。~A technical paper on integrated monorail systems was published."
+    },
+    {
+      "year": "2025",
+      "event": "鐵路可靠度與安全方法第一分冊發布。~A new first part of railway RAMS was published."
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025 鐵路可靠度與安全方法；適用範圍須依專案確認~IEC 62278-1:2025 railway RAMS methodology; project applicability requires assessment",
+    "IEC 62278:2002 歷史版方法參考，不宣稱仍為現行要求~IEC 62278:2002 historical methodological reference, without claiming current mandatory status"
+  ],
+  "landmarks": [
+    "東京單軌電車~Tokyo Monorail",
+    "重慶跨座式單軌~Chongqing straddle monorail"
+  ],
+  "place": {
+    "name": "東京單軌示意地點~Tokyo monorail reference area",
+    "country": "日本~Japan",
+    "lat": 35.655,
+    "lng": 139.757,
+    "query": "Tokyo Monorail Hamamatsucho"
+  },
+  "sources": [
+    {
+      "key": "hitachi-2001",
+      "title": "小型單軌系統技術論文",
+      "titleEn": "Small-type monorail engineering paper",
+      "publisher": "Hitachi",
+      "url": "https://www.hitachi.com/content/dam/hitachi/global/en/insights/media/hitachihyoron/2001/r2001_04/r2001_04_104.pdf",
+      "sourceType": "primary",
+      "scope": "支持單軌系統工程研究的出版年代與主題，不提供本課假想梁截面。",
+      "scopeEn": "Supports publication year and monorail engineering topic, not hypothetical beam sections."
+    },
+    {
+      "key": "hitachi-2008",
+      "title": "整合單軌系統技術論文",
+      "titleEn": "Integrated monorail systems engineering paper",
+      "publisher": "Hitachi",
+      "url": "https://www.hitachi.com/content/dam/hitachi/global/en/insights/media/hitachihyoron/2008/r2008_01/r2008_01_009.pdf",
+      "sourceType": "primary",
+      "scope": "支持單軌整合研究背景，不把跨座式系統當成懸掛式系統。",
+      "scopeEn": "Supports monorail integration context without conflating straddle and suspended systems."
+    },
+    {
+      "key": "rams-2025",
+      "title": "鐵路可靠度安全方法分冊",
+      "titleEn": "Railway RAMS specification part one",
+      "publisher": "IEC",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "支持方法分冊的出版年代與範圍；不複製條文或宣稱教材為合規論證。",
+      "scopeEn": "Supports edition year and scope; clauses are not reproduced and the lessons do not establish compliance."
+    },
+    {
+      "key": "monorail-reference",
+      "title": "東京單軌官方產品背景",
+      "titleEn": "Official Tokyo monorail reference",
+      "publisher": "Hitachi Rail",
+      "url": "https://www.hitachirail.com/products-and-solutions/rolling-stock/monorail-solutions/tokyo-monorail/",
+      "sourceType": "primary",
+      "scope": "支持東京單軌代表工程背景，不將公開產品數據作成本課梁設計。",
+      "scopeEn": "Supports Tokyo monorail context without turning public product data into the beam design used here."
+    },
+    {
+      "key": "chongqing-reference",
+      "title": "重慶單軌歷史工程公告",
+      "titleEn": "Historical Chongqing monorail announcement",
+      "publisher": "Hitachi",
+      "url": "https://www.hitachi.com/New/cnews/E/2002/1107/index.html",
+      "sourceType": "primary",
+      "scope": "僅支持重慶跨座式單軌代表工程背景，未延伸推論其他設備合約。",
+      "scopeEn": "Supports Chongqing straddle-monorail context only, without inferring other equipment contracts."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "日立鐵道",
+      "nameEn": "Hitachi Rail",
+      "business": "單軌與軌道系統產品",
+      "businessEn": "Monorail and railway systems",
+      "url": "https://www.hitachirail.com/products-and-solutions/rolling-stock/monorail-solutions/",
+      "role": "公開技術背景，課程梁截面並非其設計",
+      "roleEn": "Public technology context; the teaching section is not its design",
+      "security": null
+    },
+    {
+      "name": "國際電工委員會",
+      "nameEn": "IEC",
+      "business": "鐵路可靠度與安全方法",
+      "businessEn": "Railway RAMS methodology",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "role": "方法出版機構，非本課工程供應關係",
+      "roleEn": "Method publisher, without a lesson-project supply claim",
+      "security": null
+    }
+  ],
+  "related": [
+    "b396",
+    "b398"
+  ],
+  "architectureNodes": [
+    [
+      "車輪載重",
+      "Wheel load"
+    ],
+    [
+      "導梁彎曲",
+      "Beam bending"
+    ],
+    [
+      "導梁扭轉",
+      "Beam torsion"
+    ],
+    [
+      "溫度變形",
+      "Thermal movement"
+    ],
+    [
+      "幾何驗證",
+      "Geometry verification"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -2,6 +2,13 @@
 # Native CPU alternative for Intel Mac / Linux / Windows Git Bash or WSL.
 set -euo pipefail
 TASK_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+for TASK_ARGUMENT in "$@"; do
+  case "$TASK_ARGUMENT" in
+    -h|--help)
+      printf '%s\n' 'Usage: bash run-ai-llamacpp.sh [server arguments]' 'Uses an existing GGUF model and installed llama-server; does not download.' 'Optional: MACGYVER_GGUF, MACGYVER_AI_PORT, MACGYVER_CPU_THREADS.' 'Python priority: MACGYVER_PYTHON, active Conda, python3, python.'
+      exit 0 ;;
+  esac
+done
 MODEL_FILE="${MACGYVER_GGUF:-$TASK_ROOT/models/Qwen3-1.7B-Q8_0.gguf}"
 MODEL_PORT="${MACGYVER_AI_PORT:-8383}"
 THREADS="${MACGYVER_CPU_THREADS:-8}"
@@ -9,10 +16,12 @@ THREADS="${MACGYVER_CPU_THREADS:-8}"
 command -v llama-server >/dev/null 2>&1 || { echo '需要 llama.cpp 的 llama-server；安裝或 CPU 編譯步驟見 docs/LOCAL_AI_V8_ZH.md。' >&2; exit 1; }
 [[ "$MODEL_PORT" =~ ^[0-9]+$ && "$THREADS" =~ ^[0-9]+$ ]] || { echo '埠與執行緒數必須是整數。' >&2; exit 2; }
 TASK_PYTHON=''
-for candidate in python3 python; do
+for candidate in "${MACGYVER_PYTHON:-}" "${CONDA_PREFIX:+${CONDA_PREFIX}/bin/python}" python3 python; do
+ [[ -n "$candidate" ]] || continue
  if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c 'import sys;sys.exit(sys.version_info<(3,10))' 2>/dev/null; then TASK_PYTHON="$candidate"; break; fi
 done
 [[ -n "$TASK_PYTHON" ]] || { echo '需要 Python 3.10+。' >&2; exit 1; }
+export MACGYVER_PYTHON="$TASK_PYTHON"
 "$TASK_PYTHON" - "$MODEL_PORT" <<'PY'
 import socket,sys
 port=int(sys.argv[1])

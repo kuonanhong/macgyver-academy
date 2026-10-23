@@ -189,8 +189,8 @@ export function mountHeroIconWall(root, catalog, { zh = true, icons, reducedMoti
     tile.setAttribute('href', `#project/${encodeURIComponent(String(p.id))}`);
     tile.setAttribute('title', title);
     tile.setAttribute('data-project-id', String(p.id));
-    tile.setAttribute('data-glyph-source', entry && entry.s === 'm' ? 'm' : 't');
-    tile.innerHTML = projectGlyph(entry) + `<span class="icon-tile-label">${esc(title)}</span>`;
+    tile.setAttribute('data-glyph-source','original-v16');
+    tile.innerHTML = `<img src="assets/icons-v16/projects/${encodeURIComponent(String(p.id))}.svg" alt="" width="64" height="64" loading="lazy" decoding="async"><span class="icon-tile-label">${esc(title)}</span>`;
   }
 
   function announce(itemIndex) {

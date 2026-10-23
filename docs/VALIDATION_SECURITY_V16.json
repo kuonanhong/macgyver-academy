@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "scope": "Independent V16 protected HTTP/static-preview security integration review",
+  "tests": {
+    "owner_http": 10,
+    "preview_export": 13,
+    "commerce_regression": 21,
+    "total": 44
+  },
+  "fixed": [
+    "Protected server denies authoring data/media.json containing full member guides",
+    "Guest resource API strips real nested media.courses[].guides and legacy flat media.guides",
+    "V15 full resource/auxiliary media files cannot bypass authorization via static routes",
+    "V16 public courses/resources/scene/pricing/icon auxiliary assets require current descriptor binding and verified JSON/classic-script pairing",
+    "Directory index.html symlinks cannot escape the public root",
+    "V16 launcher enforces protected mode despite stale demo environment; example defaults protected",
+    "Preview export verifies compact/expanded index agreement and metadata-only catalogue",
+    "Preview export regenerates offline bootstrap from the checked public index",
+    "Preview export verifies JSON/classic-script identity and rejects owner bodies, English fields, quiz text, auxiliary guides, extra free stages, path escapes and output symlinks"
+  ],
+  "reviewed_no_new_issue": [
+    "Protected curriculum-loader requests use no-store and do not share private response promises/cache",
+    "App course/resource installation checks accountGeneration; reset clears private UI/resource/media state",
+    "Owner full-course access through authenticated server remains separate from member payments"
+  ],
+  "limits": [
+    "No external push, payment or provider call",
+    "Synthetic real local HTTP and actual miniature builder fixtures; full final release build/export is the root integration gate",
+    "Public source repository/history remains readable and is not a security boundary",
+    "Already received course content cannot be recalled from a visitor device"
+  ],
+  "files": {
+    "tools/export-preview-v16.py": "9d4eba2f6e50d5f42b7534f14ef164d6fa2ef2a6cbaa5327a1c0a57cf75271ba",
+    "portable/server.py": "5b23c0dbed69174e735ec2c093f95d26c1bfeb164a0dfc15a335aacb48fd4ffb",
+    "portable/commerce.py": "ebb613e4b6860bafff4439c162254cbe487fd55878974d7d830a1ad14dea4697",
+    "portable/launch_v16.py": "6dfee62a2a741d860d6ce5d1fb0a9d790bef1e551fad28480b1cf6fdffb4c49a",
+    ".env.example": "967a16f3ea238f7dc1f3cf0b51efdc6fcf0316dd6592f8a8c73d57a57756ee28",
+    "tests/test_owner_access_v16.py": "572b6834963395c475e6eec15a4db00411f2bb6f8a237494105c5a65119be7c5",
+    "tests/test_preview_export_v16.py": "78d52e7a300574f694bbe7e4009d0afc0440ab1206b61575182cf374fe1b859b",
+    "tests/test_commerce.py": "639f74568b365db6969afe13d8b7d227bcc558995368c06c6846585dd16f1730"
+  },
+  "logs": {
+    "owner": "bd0ccf3110cf380c3dfb13d7fbd5012307beee3e8b2f2ab88324d63687ccc7e8",
+    "commerce": "c1955b96d3bb04fd1459b4e76b4eab73f0497e7e57836fd2d07cdf096eae5768",
+    "previewPrevious11Tests": "0e159f09eeaf2886c65fc35e242202282843c88452f66789868b7c8511ec6d58"
+  },
+  "finalExportRegression": {
+    "status": "PASS",
+    "tests": 13,
+    "command": "python3 -m unittest discover -s tests -p test_preview_export_v16.py",
+    "reason": "Final rail diagrams add flowDiagramEn and a strictly bounded public v16Architecture map; nested lesson fields and path traversal remain rejected."
+  }
+}

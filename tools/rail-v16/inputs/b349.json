@@ -1,0 +1,251 @@
+{
+  "id": "b349",
+  "title": "鋼軌超音波探傷~Ultrasonic rail-flaw detection",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "聲程折射耦合盲區與缺陷證據~Sound paths refraction coupling blind zones and defect evidence",
+  "summary": "鋼軌超音波探傷以「聲程折射耦合盲區與缺陷證據」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。超音波探傷以聲束與缺陷交互作用取得間接證據，耦合、角度和鋼軌幾何會改變回波；沒有回波不能獨立證明沒有裂紋。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops sound paths refraction coupling blind zones and defect evidence through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Ultrasonic testing obtains indirect evidence from beam-defect interaction; coupling, angle and rail geometry alter echoes, so absence of an echo alone does not prove absence of a crack. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把鋼軌超音波探傷放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。超音波探傷以聲束與缺陷交互作用取得間接證據，耦合、角度和鋼軌幾何會改變回波；沒有回波不能獨立證明沒有裂紋。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Ultrasonic rail-flaw detection in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Ultrasonic testing obtains indirect evidence from beam-defect interaction; coupling, angle and rail geometry alter echoes, so absence of an echo alone does not prove absence of a crack. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：c=5900 m/s, t=0.00002 s；y=c*t/2*1000=59 mm。只把 c 增加百分之十，y=64.9 mm。模型邊界：聲速均勻、垂直往返聲程且零時已扣除；反射體單一；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：depth=50 mm, theta=0.7853981633974483 rad；y=depth/cos(theta)=70.7107 mm。只把 depth 增加百分之十，y=77.7817 mm。模型邊界：角度在材料內相對法線定義；只計單程直線聲路；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: c=5900 m/s, t=0.00002 s; y=c*t/2*1000=59 mm. Increasing only c with a ten-percent increase gives y=64.9 mm. Boundary: Uniform wave speed, normal round-trip path and corrected time zero; one reflector; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: depth=50 mm, theta=0.7853981633974483 rad; y=depth/cos(theta)=70.7107 mm. Increasing only depth with a ten-percent increase gives y=77.7817 mm. Boundary: Angle is measured inside the material from the normal; one straight one-way path is calculated; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "垂直回波深度~Normal echo depth",
+      "title": "垂直回波深度~Normal echo depth",
+      "mechanism": "脈衝回波飛行時間包含往返兩程。本模型把 c 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 64.9 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。聲速均勻、垂直往返聲程且零時已扣除；反射體單一。使用已知厚度試塊的回波時間作量測證據，才能檢查方程是否對應此處的實際物理量；忘記除二會把缺陷深度加倍，因此應把該原因與量測偏差分開。~Pulse-echo flight time includes outgoing and returning paths. In this model, c is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 64.9 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform wave speed, normal round-trip path and corrected time zero; one reflector. Use echo time from a block of known thickness as measurement evidence that the equation represents the intended physical quantity. Omitting the factor of two doubles inferred depth; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：c=5900 m/s, t=0.00002 s；y=c*t/2*1000=59 mm。只把 c 增加百分之十，y=64.9 mm。模型邊界：聲速均勻、垂直往返聲程且零時已扣除；反射體單一；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: c=5900 m/s, t=0.00002 s; y=c*t/2*1000=59 mm. Increasing only c with a ten-percent increase gives y=64.9 mm. Boundary: Uniform wave speed, normal round-trip path and corrected time zero; one reflector; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以已知厚度試塊的回波時間區分模型與觀察，先用已知厚度教學試塊、零時校準及完整回波波形建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「垂直回波深度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use echo time from a block of known thickness to distinguish the model from observation in this unit. Establish a baseline using known-thickness teaching block, time-zero calibration and full echo waveform, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Normal echo depth. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "忘記除二會把缺陷深度加倍。這個失效與「垂直回波深度」的量測偏差可能產生相似表象，因此必須同時檢查已知厚度試塊的回波時間，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Omitting the factor of two doubles inferred depth. This failure and a measurement bias in Normal echo depth can produce similar symptoms. Cross-check echo time from a block of known thickness rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：忘記除二會把缺陷深度加倍~This unit cannot exhibit the following failure: Omitting the factor of two doubles inferred depth.",
+      "practice": "重算「垂直回波深度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出聲速均勻、垂直往返聲程且零時已扣除；反射體單一如何限制結論。接著設計一組符合模型及一組由忘記除二會把缺陷深度加倍造成偏離的合成觀察，以已知厚度試塊的回波時間說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Normal echo depth, plot the input-output relationship, and explain the limiting assumption: Uniform wave speed, normal round-trip path and corrected time zero; one reflector. Construct one synthetic observation consistent with the model and another affected by this failure: Omitting the factor of two doubles inferred depth. Explain which evidence in echo time from a block of known thickness distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "斜入射聲程~Oblique sound path",
+      "title": "斜入射聲程~Oblique sound path",
+      "mechanism": "斜聲束聲程大於垂向深度。本模型把 depth 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 77.7817 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。角度在材料內相對法線定義；只計單程直線聲路。使用折射角與反射體位置作量測證據，才能檢查方程是否對應此處的實際物理量；把聲程直接當深度會錯定位，因此應把該原因與量測偏差分開。~An oblique beam travels farther than the vertical depth. In this model, depth is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 77.7817 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Angle is measured inside the material from the normal; one straight one-way path is calculated. Use refracted angle and reflector location as measurement evidence that the equation represents the intended physical quantity. Treating sound path as depth mislocates the reflector; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：depth=50 mm, theta=0.7853981633974483 rad；y=depth/cos(theta)=70.7107 mm。只把 depth 增加百分之十，y=77.7817 mm。模型邊界：角度在材料內相對法線定義；只計單程直線聲路；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: depth=50 mm, theta=0.7853981633974483 rad; y=depth/cos(theta)=70.7107 mm. Increasing only depth with a ten-percent increase gives y=77.7817 mm. Boundary: Angle is measured inside the material from the normal; one straight one-way path is calculated; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以折射角與反射體位置區分模型與觀察，先用模型折射角、試塊反射體深度及聲程回波建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「斜入射聲程」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use refracted angle and reflector location to distinguish the model from observation in this unit. Establish a baseline using model refracted angle, block-reflector depth and path-time echo, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Oblique sound path. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把聲程直接當深度會錯定位。這個失效與「斜入射聲程」的量測偏差可能產生相似表象，因此必須同時檢查折射角與反射體位置，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Treating sound path as depth mislocates the reflector. This failure and a measurement bias in Oblique sound path can produce similar symptoms. Cross-check refracted angle and reflector location rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把聲程直接當深度會錯定位~This unit cannot exhibit the following failure: Treating sound path as depth mislocates the reflector.",
+      "practice": "重算「斜入射聲程」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出角度在材料內相對法線定義；只計單程直線聲路如何限制結論。接著設計一組符合模型及一組由把聲程直接當深度會錯定位造成偏離的合成觀察，以折射角與反射體位置說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Oblique sound path, plot the input-output relationship, and explain the limiting assumption: Angle is measured inside the material from the normal; one straight one-way path is calculated. Construct one synthetic observation consistent with the model and another affected by this failure: Treating sound path as depth mislocates the reflector. Explain which evidence in refracted angle and reflector location distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "水平定位偏距~Horizontal reflector offset",
+      "title": "水平定位偏距~Horizontal reflector offset",
+      "mechanism": "反射體水平位置由聲程方向與深度共同決定。本模型把 depth 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 55 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。材料內直線聲束與平面幾何；正負方向由探頭朝向另定。使用探頭座標及折射角作量測證據，才能檢查方程是否對應此處的實際物理量；探頭方向標記錯誤會把缺陷投到另一側，因此應把該原因與量測偏差分開。~Horizontal reflector position depends on beam direction and depth. In this model, depth is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 55 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Straight internal beam with planar geometry; probe orientation separately defines the offset sign. Use probe coordinate and refracted angle as measurement evidence that the equation represents the intended physical quantity. An incorrect probe orientation projects a defect to the wrong side; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：depth=50 mm, theta=0.7853981633974483 rad；y=depth*sin(theta)/cos(theta)=50 mm。只把 depth 增加百分之十，y=55 mm。模型邊界：材料內直線聲束與平面幾何；正負方向由探頭朝向另定；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: depth=50 mm, theta=0.7853981633974483 rad; y=depth*sin(theta)/cos(theta)=50 mm. Increasing only depth with a ten-percent increase gives y=55 mm. Boundary: Straight internal beam with planar geometry; probe orientation separately defines the offset sign; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以探頭座標及折射角區分模型與觀察，先用探頭固定座標、朝向標記及已知反射體位置建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「水平定位偏距」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use probe coordinate and refracted angle to distinguish the model from observation in this unit. Establish a baseline using fixed probe coordinates, orientation markers and known reflector position, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Horizontal reflector offset. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "探頭方向標記錯誤會把缺陷投到另一側。這個失效與「水平定位偏距」的量測偏差可能產生相似表象，因此必須同時檢查探頭座標及折射角，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~An incorrect probe orientation projects a defect to the wrong side. This failure and a measurement bias in Horizontal reflector offset can produce similar symptoms. Cross-check probe coordinate and refracted angle rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：探頭方向標記錯誤會把缺陷投到另一側~This unit cannot exhibit the following failure: An incorrect probe orientation projects a defect to the wrong side.",
+      "practice": "重算「水平定位偏距」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出材料內直線聲束與平面幾何；正負方向由探頭朝向另定如何限制結論。接著設計一組符合模型及一組由探頭方向標記錯誤會把缺陷投到另一側造成偏離的合成觀察，以探頭座標及折射角說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Horizontal reflector offset, plot the input-output relationship, and explain the limiting assumption: Straight internal beam with planar geometry; probe orientation separately defines the offset sign. Construct one synthetic observation consistent with the model and another affected by this failure: An incorrect probe orientation projects a defect to the wrong side. Explain which evidence in probe coordinate and refracted angle distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "頻率波長換算~Frequency-wavelength conversion",
+      "title": "頻率波長換算~Frequency-wavelength conversion",
+      "mechanism": "波長影響散射與解析度但不是最小必檢裂紋尺寸。本模型把 c 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 1.4212 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。聲速與頻率屬同一波型；忽略色散與寬頻效應。使用頻譜中心與材料聲速作量測證據，才能檢查方程是否對應此處的實際物理量；把波長當檢出保證會高估能力，因此應把該原因與量測偏差分開。~Wavelength affects scattering and resolution but is not the minimum guaranteed detectable crack size. In this model, c is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 1.4212 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Speed and frequency describe the same wave mode; dispersion and broadband effects are omitted. Use spectral centre and material wave speed as measurement evidence that the equation represents the intended physical quantity. Treating wavelength as a detection guarantee overstates capability; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：c=3230 m/s, f=2500000 Hz；y=c/f*1000=1.292 mm。只把 c 增加百分之十，y=1.4212 mm。模型邊界：聲速與頻率屬同一波型；忽略色散與寬頻效應；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: c=3230 m/s, f=2500000 Hz; y=c/f*1000=1.292 mm. Increasing only c with a ten-percent increase gives y=1.4212 mm. Boundary: Speed and frequency describe the same wave mode; dispersion and broadband effects are omitted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以頻譜中心與材料聲速區分模型與觀察，先用已知材料波速、發射接收頻譜與波型標記建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「頻率波長換算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use spectral centre and material wave speed to distinguish the model from observation in this unit. Establish a baseline using known material wave speed, transmit-receive spectra and wave-mode labels, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Frequency-wavelength conversion. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把波長當檢出保證會高估能力。這個失效與「頻率波長換算」的量測偏差可能產生相似表象，因此必須同時檢查頻譜中心與材料聲速，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Treating wavelength as a detection guarantee overstates capability. This failure and a measurement bias in Frequency-wavelength conversion can produce similar symptoms. Cross-check spectral centre and material wave speed rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把波長當檢出保證會高估能力~This unit cannot exhibit the following failure: Treating wavelength as a detection guarantee overstates capability.",
+      "practice": "重算「頻率波長換算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出聲速與頻率屬同一波型；忽略色散與寬頻效應如何限制結論。接著設計一組符合模型及一組由把波長當檢出保證會高估能力造成偏離的合成觀察，以頻譜中心與材料聲速說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Frequency-wavelength conversion, plot the input-output relationship, and explain the limiting assumption: Speed and frequency describe the same wave mode; dispersion and broadband effects are omitted. Construct one synthetic observation consistent with the model and another affected by this failure: Treating wavelength as a detection guarantee overstates capability. Explain which evidence in spectral centre and material wave speed distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "聲幅分貝比較~Echo-amplitude decibel comparison",
+      "title": "聲幅分貝比較~Echo-amplitude decibel comparison",
+      "mechanism": "相同量測鏈下幅值比才可作有意義比較。本模型把 A 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 -13.1515 dB。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。兩幅值使用相同接收鏈且參考非零；比較振幅而非能量。使用參考反射體與接收增益作量測證據，才能檢查方程是否對應此處的實際物理量；改變增益卻未記錄會形成假缺陷變化，因此應把該原因與量測偏差分開。~Amplitude ratios are comparable only within a matched measurement chain. In this model, A is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to -13.1515 dB. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Amplitudes use the same receive chain with nonzero reference; amplitude rather than energy is compared. Use reference reflector and receiver gain as measurement evidence that the equation represents the intended physical quantity. Unrecorded gain changes mimic defect growth; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：A=0.2 1, ref=1 1；y=20*log(A/ref)/log(10)=-13.9794 dB。只把 A 增加百分之十，y=-13.1515 dB。模型邊界：兩幅值使用相同接收鏈且參考非零；比較振幅而非能量；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: A=0.2 1, ref=1 1; y=20*log(A/ref)/log(10)=-13.9794 dB. Increasing only A with a ten-percent increase gives y=-13.1515 dB. Boundary: Amplitudes use the same receive chain with nonzero reference; amplitude rather than energy is compared; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以參考反射體與接收增益區分模型與觀察，先用參考反射體、增益紀錄與未飽和原始回波建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「聲幅分貝比較」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use reference reflector and receiver gain to distinguish the model from observation in this unit. Establish a baseline using reference reflector, gain log and unsaturated raw echoes, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Echo-amplitude decibel comparison. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "改變增益卻未記錄會形成假缺陷變化。這個失效與「聲幅分貝比較」的量測偏差可能產生相似表象，因此必須同時檢查參考反射體與接收增益，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Unrecorded gain changes mimic defect growth. This failure and a measurement bias in Echo-amplitude decibel comparison can produce similar symptoms. Cross-check reference reflector and receiver gain rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：改變增益卻未記錄會形成假缺陷變化~This unit cannot exhibit the following failure: Unrecorded gain changes mimic defect growth.",
+      "practice": "重算「聲幅分貝比較」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出兩幅值使用相同接收鏈且參考非零；比較振幅而非能量如何限制結論。接著設計一組符合模型及一組由改變增益卻未記錄會形成假缺陷變化造成偏離的合成觀察，以參考反射體與接收增益說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Echo-amplitude decibel comparison, plot the input-output relationship, and explain the limiting assumption: Amplitudes use the same receive chain with nonzero reference; amplitude rather than energy is compared. Construct one synthetic observation consistent with the model and another affected by this failure: Unrecorded gain changes mimic defect growth. Explain which evidence in reference reflector and receiver gain distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "衰減補償量級~Attenuation compensation scale",
+      "title": "衰減補償量級~Attenuation compensation scale",
+      "mechanism": "均勻衰減近似中總衰減隨聲程增加。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 3.3 dB。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。衰減係數固定，聲程為完整傳播總長；不另計幾何擴散。使用不同距離參考反射體作量測證據，才能檢查方程是否對應此處的實際物理量；忽略材質差異會過度補償雜訊，因此應把該原因與量測偏差分開。~Under uniform attenuation the loss grows with path length. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 3.3 dB. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Attenuation coefficient is constant and path is the total traveled distance; geometric spreading is separate. Use reference reflectors at different distances as measurement evidence that the equation represents the intended physical quantity. Ignoring material differences can amplify noise excessively; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.02 dB/mm, path=150 mm；y=alpha*path=3 dB。只把 alpha 增加百分之十，y=3.3 dB。模型邊界：衰減係數固定，聲程為完整傳播總長；不另計幾何擴散；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.02 dB/mm, path=150 mm; y=alpha*path=3 dB. Increasing only alpha with a ten-percent increase gives y=3.3 dB. Boundary: Attenuation coefficient is constant and path is the total traveled distance; geometric spreading is separate; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以不同距離參考反射體區分模型與觀察，先用多聲程參考反射體、同增益回波及傳播路徑圖建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「衰減補償量級」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use reference reflectors at different distances to distinguish the model from observation in this unit. Establish a baseline using reference reflectors at several paths, equal-gain echoes and propagation-path diagram, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Attenuation compensation scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "忽略材質差異會過度補償雜訊。這個失效與「衰減補償量級」的量測偏差可能產生相似表象，因此必須同時檢查不同距離參考反射體，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Ignoring material differences can amplify noise excessively. This failure and a measurement bias in Attenuation compensation scale can produce similar symptoms. Cross-check reference reflectors at different distances rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：忽略材質差異會過度補償雜訊~This unit cannot exhibit the following failure: Ignoring material differences can amplify noise excessively.",
+      "practice": "重算「衰減補償量級」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出衰減係數固定，聲程為完整傳播總長；不另計幾何擴散如何限制結論。接著設計一組符合模型及一組由忽略材質差異會過度補償雜訊造成偏離的合成觀察，以不同距離參考反射體說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Attenuation compensation scale, plot the input-output relationship, and explain the limiting assumption: Attenuation coefficient is constant and path is the total traveled distance; geometric spreading is separate. Construct one synthetic observation consistent with the model and another affected by this failure: Ignoring material differences can amplify noise excessively. Explain which evidence in reference reflectors at different distances distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "掃描點距估算~Ultrasonic scan spacing",
+      "title": "掃描點距估算~Ultrasonic scan spacing",
+      "mechanism": "脈衝重複頻率決定沿掃描方向的名義點距。本模型把 v 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 2.75 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。掃描速度與有效脈衝取得率固定；不含漏觸發及聲束寬度。使用速度編碼器與脈衝時序作量測證據，才能檢查方程是否對應此處的實際物理量；打滑會造成漏掃區段，因此應把該原因與量測偏差分開。~Pulse repetition frequency determines nominal along-scan spacing. In this model, v is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 2.75 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Scan speed and effective pulse-acquisition rate are fixed; missed triggers and beam width are excluded. Use speed encoder and pulse timing as measurement evidence that the equation represents the intended physical quantity. Slip can leave an uninspected section; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：v=5 m/s, prf=2000 Hz；y=v/prf*1000=2.5 mm。只把 v 增加百分之十，y=2.75 mm。模型邊界：掃描速度與有效脈衝取得率固定；不含漏觸發及聲束寬度；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: v=5 m/s, prf=2000 Hz; y=v/prf*1000=2.5 mm. Increasing only v with a ten-percent increase gives y=2.75 mm. Boundary: Scan speed and effective pulse-acquisition rate are fixed; missed triggers and beam width are excluded; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以速度編碼器與脈衝時序區分模型與觀察，先用逐脈衝時間戳、編碼器位置及成功取得回波計數建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「掃描點距估算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use speed encoder and pulse timing to distinguish the model from observation in this unit. Establish a baseline using per-pulse timestamps, encoder positions and successful echo-acquisition counts, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Ultrasonic scan spacing. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "打滑會造成漏掃區段。這個失效與「掃描點距估算」的量測偏差可能產生相似表象，因此必須同時檢查速度編碼器與脈衝時序，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Slip can leave an uninspected section. This failure and a measurement bias in Ultrasonic scan spacing can produce similar symptoms. Cross-check speed encoder and pulse timing rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：打滑會造成漏掃區段~This unit cannot exhibit the following failure: Slip can leave an uninspected section.",
+      "practice": "重算「掃描點距估算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出掃描速度與有效脈衝取得率固定；不含漏觸發及聲束寬度如何限制結論。接著設計一組符合模型及一組由打滑會造成漏掃區段造成偏離的合成觀察，以速度編碼器與脈衝時序說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Ultrasonic scan spacing, plot the input-output relationship, and explain the limiting assumption: Scan speed and effective pulse-acquisition rate are fixed; missed triggers and beam width are excluded. Construct one synthetic observation consistent with the model and another affected by this failure: Slip can leave an uninspected section. Explain which evidence in speed encoder and pulse timing distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "死區相對比例~Dead-zone fraction",
+      "title": "死區相對比例~Dead-zone fraction",
+      "mechanism": "近表面死區是幾何範圍而非缺陷機率。本模型把 dead 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 3.66667 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。死區與總檢測範圍沿同一方向；比例不是缺陷風險。使用近表面人工反射體作量測證據，才能檢查方程是否對應此處的實際物理量；未列盲區會把未檢範圍當作已合格，因此應把該原因與量測偏差分開。~Near-surface dead zone is a geometric extent, not defect probability. In this model, dead is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 3.66667 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Dead zone and total inspected extent share one direction; the fraction is not defect risk. Use near-surface artificial reflectors as measurement evidence that the equation represents the intended physical quantity. Unreported blind zones make uninspected regions appear accepted; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：dead=5 mm, total=150 mm；y=dead/total*100=3.33333 percent。只把 dead 增加百分之十，y=3.66667 percent。模型邊界：死區與總檢測範圍沿同一方向；比例不是缺陷風險；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: dead=5 mm, total=150 mm; y=dead/total*100=3.33333 percent. Increasing only dead with a ten-percent increase gives y=3.66667 percent. Boundary: Dead zone and total inspected extent share one direction; the fraction is not defect risk; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以近表面人工反射體區分模型與觀察，先用不同近表面深度的人工反射體與聲束配置建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「死區相對比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use near-surface artificial reflectors to distinguish the model from observation in this unit. Establish a baseline using artificial reflectors at different near-surface depths and beam configuration, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Dead-zone fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "未列盲區會把未檢範圍當作已合格。這個失效與「死區相對比例」的量測偏差可能產生相似表象，因此必須同時檢查近表面人工反射體，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Unreported blind zones make uninspected regions appear accepted. This failure and a measurement bias in Dead-zone fraction can produce similar symptoms. Cross-check near-surface artificial reflectors rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：未列盲區會把未檢範圍當作已合格~This unit cannot exhibit the following failure: Unreported blind zones make uninspected regions appear accepted.",
+      "practice": "重算「死區相對比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出死區與總檢測範圍沿同一方向；比例不是缺陷風險如何限制結論。接著設計一組符合模型及一組由未列盲區會把未檢範圍當作已合格造成偏離的合成觀察，以近表面人工反射體說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Dead-zone fraction, plot the input-output relationship, and explain the limiting assumption: Dead zone and total inspected extent share one direction; the fraction is not defect risk. Construct one synthetic observation consistent with the model and another affected by this failure: Unreported blind zones make uninspected regions appear accepted. Explain which evidence in near-surface artificial reflectors distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "耦合訊號監測~Coupling signal ratio",
+      "title": "耦合訊號監測~Coupling signal ratio",
+      "mechanism": "背壁回波可協助監測耦合但也受幾何與材質影響。本模型把 back 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.66 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。基準與目前回波使用相同幾何、增益及材質；比例不是單獨耦合真值。使用背壁回波與表面狀況作量測證據，才能檢查方程是否對應此處的實際物理量；耦合流失會使缺陷與背壁回波同時減弱，因此應把該原因與量測偏差分開。~Backwall echoes help monitor coupling but also depend on geometry and material. In this model, back is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.66 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Baseline and current echoes share geometry, gain and material; the ratio is not independent coupling truth. Use backwall echo and surface condition as measurement evidence that the equation represents the intended physical quantity. Coupling loss weakens defect and backwall echoes together; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：back=0.6 1, baseline=1 1；y=back/baseline=0.6 1。只把 back 增加百分之十，y=0.66 1。模型邊界：基準與目前回波使用相同幾何、增益及材質；比例不是單獨耦合真值；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: back=0.6 1, baseline=1 1; y=back/baseline=0.6 1. Increasing only back with a ten-percent increase gives y=0.66 1. Boundary: Baseline and current echoes share geometry, gain and material; the ratio is not independent coupling truth; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以背壁回波與表面狀況區分模型與觀察，先用背壁回波、表面條件影像及另一參考反射體建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「耦合訊號監測」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use backwall echo and surface condition to distinguish the model from observation in this unit. Establish a baseline using backwall echoes, surface-condition images and another reference reflector, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Coupling signal ratio. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "耦合流失會使缺陷與背壁回波同時減弱。這個失效與「耦合訊號監測」的量測偏差可能產生相似表象，因此必須同時檢查背壁回波與表面狀況，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Coupling loss weakens defect and backwall echoes together. This failure and a measurement bias in Coupling signal ratio can produce similar symptoms. Cross-check backwall echo and surface condition rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：耦合流失會使缺陷與背壁回波同時減弱~This unit cannot exhibit the following failure: Coupling loss weakens defect and backwall echoes together.",
+      "practice": "重算「耦合訊號監測」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出基準與目前回波使用相同幾何、增益及材質；比例不是單獨耦合真值如何限制結論。接著設計一組符合模型及一組由耦合流失會使缺陷與背壁回波同時減弱造成偏離的合成觀察，以背壁回波與表面狀況說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Coupling signal ratio, plot the input-output relationship, and explain the limiting assumption: Baseline and current echoes share geometry, gain and material; the ratio is not independent coupling truth. Construct one synthetic observation consistent with the model and another affected by this failure: Coupling loss weakens defect and backwall echoes together. Explain which evidence in backwall echo and surface condition distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "盲測漏檢比例~Blind-test miss fraction",
+      "title": "盲測漏檢比例~Blind-test miss fraction",
+      "mechanism": "有已知真值的盲測才能估計樣本漏檢比例。本模型把 misses 當成主動改變的輸入，其餘輸入固定；當它增加一個整數單位，輸出增加為 13.3333 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。所有真缺陷樣本皆列入且判定規則固定；不外推為通用檢出率。使用盲測反射體清單與報告作量測證據，才能檢查方程是否對應此處的實際物理量；只保留成功案例會使績效失真，因此應把該原因與量測偏差分開。~A blinded set with known truth is required to estimate sample miss fraction. In this model, misses is deliberately changed while every other input is held fixed. An increase of one whole unit means the output increases to 13.3333 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. All true-defect samples are included with fixed decision rules; no universal detection rate is inferred. Use blinded reflector inventory and test report as measurement evidence that the equation represents the intended physical quantity. Keeping only successful cases distorts performance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：misses=3 count, total=30 count；y=misses/total*100=10 percent。只把 misses 增加一個整數單位，y=13.3333 percent。模型邊界：所有真缺陷樣本皆列入且判定規則固定；不外推為通用檢出率；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: misses=3 count, total=30 count; y=misses/total*100=10 percent. Increasing only misses with an increase of one whole unit gives y=13.3333 percent. Boundary: All true-defect samples are included with fixed decision rules; no universal detection rate is inferred; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以盲測反射體清單與報告區分模型與觀察，先用盲測樣本編碼、已知反射體清單及逐件報告建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「盲測漏檢比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use blinded reflector inventory and test report to distinguish the model from observation in this unit. Establish a baseline using blinded sample codes, known-reflector inventory and specimen-level reports, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Blind-test miss fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只保留成功案例會使績效失真。這個失效與「盲測漏檢比例」的量測偏差可能產生相似表象，因此必須同時檢查盲測反射體清單與報告，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Keeping only successful cases distorts performance. This failure and a measurement bias in Blind-test miss fraction can produce similar symptoms. Cross-check blinded reflector inventory and test report rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只保留成功案例會使績效失真~This unit cannot exhibit the following failure: Keeping only successful cases distorts performance.",
+      "practice": "重算「盲測漏檢比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出所有真缺陷樣本皆列入且判定規則固定；不外推為通用檢出率如何限制結論。接著設計一組符合模型及一組由只保留成功案例會使績效失真造成偏離的合成觀察，以盲測反射體清單與報告說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Blind-test miss fraction, plot the input-output relationship, and explain the limiting assumption: All true-defect samples are included with fixed decision rules; no universal detection rate is inferred. Construct one synthetic observation consistent with the model and another affected by this failure: Keeping only successful cases distorts performance. Explain which evidence in blinded reflector inventory and test report distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：c=5900 m/s, t=0.00002 s；y=c*t/2*1000=59 mm~Teaching unit 1 baseline scale: Original assumed example, not field operating values: c=5900 m/s, t=0.00002 s; y=c*t/2*1000=59 mm.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：depth=50 mm, theta=0.7853981633974483 rad；y=depth/cos(theta)=70.7107 mm~Teaching unit 2 baseline scale: Original assumed example, not field operating values: depth=50 mm, theta=0.7853981633974483 rad; y=depth/cos(theta)=70.7107 mm.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：depth=50 mm, theta=0.7853981633974483 rad；y=depth*sin(theta)/cos(theta)=50 mm~Teaching unit 3 baseline scale: Original assumed example, not field operating values: depth=50 mm, theta=0.7853981633974483 rad; y=depth*sin(theta)/cos(theta)=50 mm.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：c=3230 m/s, f=2500000 Hz；y=c/f*1000=1.292 mm~Teaching unit 4 baseline scale: Original assumed example, not field operating values: c=3230 m/s, f=2500000 Hz; y=c/f*1000=1.292 mm.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：A=0.2 1, ref=1 1；y=20*log(A/ref)/log(10)=-13.9794 dB~Teaching unit 5 baseline scale: Original assumed example, not field operating values: A=0.2 1, ref=1 1; y=20*log(A/ref)/log(10)=-13.9794 dB.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：alpha=0.02 dB/mm, path=150 mm；y=alpha*path=3 dB~Teaching unit 6 baseline scale: Original assumed example, not field operating values: alpha=0.02 dB/mm, path=150 mm; y=alpha*path=3 dB."
+  ],
+  "timeline": [
+    {
+      "year": "2020",
+      "event": "日本鐵道總研公布空氣超音波偵測鋼軌開口的研究成果。~RTRI reported research on detecting rail openings using aerial ultrasound."
+    },
+    {
+      "year": "2024-03",
+      "event": "國際標準組織發布在役鋼軌超音波檢測第一部分。~ISO published Part 1 of its ultrasonic testing standard for installed rails."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "ISO 5735-1:2024：在役鋼軌連續超音波檢測範圍，非焊廠生產驗收規範。~ISO 5735-1:2024: continuous testing of installed rails, not a production-plant weld acceptance code."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-ultra",
+      "title": "鋼軌超音波檢測國際標準範圍",
+      "titleEn": "ISO 5735-1:2024 ultrasonic rail testing",
+      "publisher": "International Organization for Standardization",
+      "url": "https://www.iso.org/standard/82194.html",
+      "sourceType": "primary",
+      "scope": "標準適用範圍與名稱；未複製付費條文或判退門檻。",
+      "scopeEn": "Standard identity and scope, without reproducing paid clauses or rejection thresholds."
+    },
+    {
+      "key": "track-rtri",
+      "title": "非接觸鋼軌開口超音波研究",
+      "titleEn": "Non-contact detection of rail openings using aerial ultrasonic waves",
+      "publisher": "Railway Technical Research Institute",
+      "url": "https://www.rtri.or.jp/eng/rd/seika/2020/05-26.html",
+      "sourceType": "primary",
+      "scope": "研究例說明耦合與雜訊需驗證；不把試驗展示當成通用合格證明。",
+      "scopeEn": "Research example illustrating coupling and noise verification; a demonstration is not universal certification."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b350",
+    "b358"
+  ],
+  "architectureNodes": [
+    [
+      "超音波源",
+      "Ultrasonic source"
+    ],
+    [
+      "耦合路徑",
+      "Coupling path"
+    ],
+    [
+      "鋼軌反射",
+      "Rail reflection"
+    ],
+    [
+      "回波時間",
+      "Echo timing"
+    ],
+    [
+      "缺陷證據",
+      "Flaw evidence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

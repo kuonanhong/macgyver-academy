@@ -1,0 +1,251 @@
+{
+  "id": "b357",
+  "title": "列車—軌道耦合振動分析~Coupled vehicle–track vibration analysis",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "車軌接觸模態耦合取樣與穩定性~Vehicle-track contact modal coupling sampling and stability",
+  "summary": "列車—軌道耦合振動分析以「車軌接觸模態耦合取樣與穩定性」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。車輛與軌道透過輪軌接觸互相交換作用力，車體舒適與輪軌力峰值不是同一輸出，模型必須分清質量層次與接觸條件。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops vehicle-track contact modal coupling sampling and stability through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Vehicle and track exchange forces through wheel contact; carbody comfort and peak contact force are different outputs, and the model must distinguish mass levels and contact conditions. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把列車—軌道耦合振動分析放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。車輛與軌道透過輪軌接觸互相交換作用力，車體舒適與輪軌力峰值不是同一輸出，模型必須分清質量層次與接觸條件。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Coupled vehicle–track vibration analysis in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Vehicle and track exchange forces through wheel contact; carbody comfort and peak contact force are different outputs, and the model must distinguish mass levels and contact conditions. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：k=1200000 N/m, m=1500 kg；y=sqrt(k/m)/(2*pi)=4.50158 Hz。只把 k 增加百分之十，y=4.7213 Hz。模型邊界：單質量線性彈簧；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：m1=1500 kg, m2=3000 kg；y=m1*m2/(m1+m2)=1000 kg。只把 m1 增加百分之十，y=1064.52 kg。模型邊界：兩個自由質量間相對運動；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: k=1200000 N/m, m=1500 kg; y=sqrt(k/m)/(2*pi)=4.50158 Hz. Increasing only k with a ten-percent increase gives y=4.7213 Hz. Boundary: Single mass and linear spring; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: m1=1500 kg, m2=3000 kg; y=m1*m2/(m1+m2)=1000 kg. Increasing only m1 with a ten-percent increase gives y=1064.52 kg. Boundary: Relative motion between two free masses; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "單質量固有頻率~Single-mass natural frequency",
+      "title": "單質量固有頻率~Single-mass natural frequency",
+      "mechanism": "質量層次選擇決定模態的物理意義。本模型把 k 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 4.7213 Hz。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。單質量線性彈簧。使用自由衰減頻率作量測證據，才能檢查方程是否對應此處的實際物理量；把車體質量代入輪對模態會錯配尺度，因此應把該原因與量測偏差分開。~Chosen mass level determines the physical meaning of the mode. In this model, k is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 4.7213 Hz. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Single mass and linear spring. Use free-decay frequency as measurement evidence that the equation represents the intended physical quantity. Using carbody mass for a wheelset mode mismatches scale; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k=1200000 N/m, m=1500 kg；y=sqrt(k/m)/(2*pi)=4.50158 Hz。只把 k 增加百分之十，y=4.7213 Hz。模型邊界：單質量線性彈簧；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k=1200000 N/m, m=1500 kg; y=sqrt(k/m)/(2*pi)=4.50158 Hz. Increasing only k with a ten-percent increase gives y=4.7213 Hz. Boundary: Single mass and linear spring; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以自由衰減頻率區分模型與觀察，先用加速度計與模型質量建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「單質量固有頻率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use free-decay frequency to distinguish the model from observation in this unit. Establish a baseline using accelerometer and model mass, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Single-mass natural frequency. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把車體質量代入輪對模態會錯配尺度。這個失效與「單質量固有頻率」的量測偏差可能產生相似表象，因此必須同時檢查自由衰減頻率，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Using carbody mass for a wheelset mode mismatches scale. This failure and a measurement bias in Single-mass natural frequency can produce similar symptoms. Cross-check free-decay frequency rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把車體質量代入輪對模態會錯配尺度~This unit cannot exhibit the following failure: Using carbody mass for a wheelset mode mismatches scale.",
+      "practice": "重算「單質量固有頻率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出單質量線性彈簧如何限制結論。接著設計一組符合模型及一組由把車體質量代入輪對模態會錯配尺度造成偏離的合成觀察，以自由衰減頻率說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Single-mass natural frequency, plot the input-output relationship, and explain the limiting assumption: Single mass and linear spring. Construct one synthetic observation consistent with the model and another affected by this failure: Using carbody mass for a wheelset mode mismatches scale. Explain which evidence in free-decay frequency distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "輪軌約化質量~Wheel-track reduced mass",
+      "title": "輪軌約化質量~Wheel-track reduced mass",
+      "mechanism": "相對運動的約化質量不同於總質量。本模型把 m1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 1064.52 kg。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。兩個自由質量間相對運動。使用兩質量相對位移作量測證據，才能檢查方程是否對應此處的實際物理量；直接使用總質量會低估相對模態頻率，因此應把該原因與量測偏差分開。~Reduced mass of relative motion differs from total mass. In this model, m1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 1064.52 kg. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Relative motion between two free masses. Use relative displacement of two masses as measurement evidence that the equation represents the intended physical quantity. Using total mass understates the relative-mode frequency; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：m1=1500 kg, m2=3000 kg；y=m1*m2/(m1+m2)=1000 kg。只把 m1 增加百分之十，y=1064.52 kg。模型邊界：兩個自由質量間相對運動；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: m1=1500 kg, m2=3000 kg; y=m1*m2/(m1+m2)=1000 kg. Increasing only m1 with a ten-percent increase gives y=1064.52 kg. Boundary: Relative motion between two free masses; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以兩質量相對位移區分模型與觀察，先用雙位移與已知質量建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「輪軌約化質量」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use relative displacement of two masses to distinguish the model from observation in this unit. Establish a baseline using paired displacements and known masses, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Wheel-track reduced mass. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "直接使用總質量會低估相對模態頻率。這個失效與「輪軌約化質量」的量測偏差可能產生相似表象，因此必須同時檢查兩質量相對位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Using total mass understates the relative-mode frequency. This failure and a measurement bias in Wheel-track reduced mass can produce similar symptoms. Cross-check relative displacement of two masses rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：直接使用總質量會低估相對模態頻率~This unit cannot exhibit the following failure: Using total mass understates the relative-mode frequency.",
+      "practice": "重算「輪軌約化質量」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出兩個自由質量間相對運動如何限制結論。接著設計一組符合模型及一組由直接使用總質量會低估相對模態頻率造成偏離的合成觀察，以兩質量相對位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Wheel-track reduced mass, plot the input-output relationship, and explain the limiting assumption: Relative motion between two free masses. Construct one synthetic observation consistent with the model and another affected by this failure: Using total mass understates the relative-mode frequency. Explain which evidence in relative displacement of two masses distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "接觸線性化剛度~Linearized contact stiffness",
+      "title": "接觸線性化剛度~Linearized contact stiffness",
+      "mechanism": "赫茲力律的切線剛度依接觸壓縮量改變。本模型把 C 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 1.65e+09 N/m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。赫茲力律在正壓縮附近線性化。使用靜態預載與小擾動力作量測證據，才能檢查方程是否對應此處的實際物理量；固定接觸剛度無法描述大幅卸載，因此應把該原因與量測偏差分開。~Tangent stiffness of the Hertz law depends on compression. In this model, C is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 1.65e+09 N/m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Hertz law linearized around positive compression. Use static preload and small perturbation force as measurement evidence that the equation represents the intended physical quantity. Fixed contact stiffness cannot describe large unloading; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：C=100000000000 N/m1.5, delta=0.0001 m；y=1.5*C*sqrt(delta)=1.5e+09 N/m。只把 C 增加百分之十，y=1.65e+09 N/m。模型邊界：赫茲力律在正壓縮附近線性化；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: C=100000000000 N/m1.5, delta=0.0001 m; y=1.5*C*sqrt(delta)=1.5e+09 N/m. Increasing only C with a ten-percent increase gives y=1.65e+09 N/m. Boundary: Hertz law linearized around positive compression; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以靜態預載與小擾動力區分模型與觀察，先用低載接觸試體與位移建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「接觸線性化剛度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use static preload and small perturbation force to distinguish the model from observation in this unit. Establish a baseline using low-load contact specimen and displacement, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Linearized contact stiffness. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "固定接觸剛度無法描述大幅卸載。這個失效與「接觸線性化剛度」的量測偏差可能產生相似表象，因此必須同時檢查靜態預載與小擾動力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Fixed contact stiffness cannot describe large unloading. This failure and a measurement bias in Linearized contact stiffness can produce similar symptoms. Cross-check static preload and small perturbation force rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：固定接觸剛度無法描述大幅卸載~This unit cannot exhibit the following failure: Fixed contact stiffness cannot describe large unloading.",
+      "practice": "重算「接觸線性化剛度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出赫茲力律在正壓縮附近線性化如何限制結論。接著設計一組符合模型及一組由固定接觸剛度無法描述大幅卸載造成偏離的合成觀察，以靜態預載與小擾動力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Linearized contact stiffness, plot the input-output relationship, and explain the limiting assumption: Hertz law linearized around positive compression. Construct one synthetic observation consistent with the model and another affected by this failure: Fixed contact stiffness cannot describe large unloading. Explain which evidence in static preload and small perturbation force distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "速度波長激振~Speed-wavelength excitation",
+      "title": "速度波長激振~Speed-wavelength excitation",
+      "mechanism": "相同不平順在不同速度激發不同頻率。本模型把 v 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 22 Hz。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。等速通過正弦不平順。使用速度掃描與頻譜作量測證據，才能檢查方程是否對應此處的實際物理量；單一速度測試會漏掉共振區，因此應把該原因與量測偏差分開。~The same irregularity excites different frequencies at different speeds. In this model, v is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 22 Hz. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Constant-speed sinusoidal irregularity passage. Use speed sweep and spectrum as measurement evidence that the equation represents the intended physical quantity. One test speed can miss resonance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：v=60 m/s, lam=3 m；y=v/lam=20 Hz。只把 v 增加百分之十，y=22 Hz。模型邊界：等速通過正弦不平順；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: v=60 m/s, lam=3 m; y=v/lam=20 Hz. Increasing only v with a ten-percent increase gives y=22 Hz. Boundary: Constant-speed sinusoidal irregularity passage; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以速度掃描與頻譜區分模型與觀察，先用合成幾何輸入與加速度建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「速度波長激振」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use speed sweep and spectrum to distinguish the model from observation in this unit. Establish a baseline using synthetic geometry input and acceleration, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Speed-wavelength excitation. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "單一速度測試會漏掉共振區。這個失效與「速度波長激振」的量測偏差可能產生相似表象，因此必須同時檢查速度掃描與頻譜，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~One test speed can miss resonance. This failure and a measurement bias in Speed-wavelength excitation can produce similar symptoms. Cross-check speed sweep and spectrum rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：單一速度測試會漏掉共振區~This unit cannot exhibit the following failure: One test speed can miss resonance.",
+      "practice": "重算「速度波長激振」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出等速通過正弦不平順如何限制結論。接著設計一組符合模型及一組由單一速度測試會漏掉共振區造成偏離的合成觀察，以速度掃描與頻譜說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Speed-wavelength excitation, plot the input-output relationship, and explain the limiting assumption: Constant-speed sinusoidal irregularity passage. Construct one synthetic observation consistent with the model and another affected by this failure: One test speed can miss resonance. Explain which evidence in speed sweep and spectrum distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "阻尼對衰減影響~Damping decay scale",
+      "title": "阻尼對衰減影響~Damping decay scale",
+      "mechanism": "欠阻尼包絡隨阻尼比與固有頻率衰減。本模型把 zeta 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出減少為 0.177661 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。線性欠阻尼自由振動。使用多週期峰值包絡作量測證據，才能檢查方程是否對應此處的實際物理量；受迫振動不可直接當自由衰減，因此應把該原因與量測偏差分開。~Underdamped envelope decays with damping ratio and natural frequency. In this model, zeta is deliberately changed while every other input is held fixed. A ten-percent increase means the output decreases to 0.177661 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Linear underdamped free vibration. Use multi-cycle peak envelope as measurement evidence that the equation represents the intended physical quantity. Forced response cannot be treated as free decay; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：zeta=0.05 1, fn=5 Hz, t=1 s；y=exp(-zeta*2*pi*fn*t)=0.20788 1。只把 zeta 增加百分之十，y=0.177661 1。模型邊界：線性欠阻尼自由振動；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: zeta=0.05 1, fn=5 Hz, t=1 s; y=exp(-zeta*2*pi*fn*t)=0.20788 1. Increasing only zeta with a ten-percent increase gives y=0.177661 1. Boundary: Linear underdamped free vibration; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以多週期峰值包絡區分模型與觀察，先用停止激振後峰值紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「阻尼對衰減影響」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use multi-cycle peak envelope to distinguish the model from observation in this unit. Establish a baseline using peaks after excitation stops, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Damping decay scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "受迫振動不可直接當自由衰減。這個失效與「阻尼對衰減影響」的量測偏差可能產生相似表象，因此必須同時檢查多週期峰值包絡，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Forced response cannot be treated as free decay. This failure and a measurement bias in Damping decay scale can produce similar symptoms. Cross-check multi-cycle peak envelope rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：受迫振動不可直接當自由衰減~This unit cannot exhibit the following failure: Forced response cannot be treated as free decay.",
+      "practice": "重算「阻尼對衰減影響」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出線性欠阻尼自由振動如何限制結論。接著設計一組符合模型及一組由受迫振動不可直接當自由衰減造成偏離的合成觀察，以多週期峰值包絡說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Damping decay scale, plot the input-output relationship, and explain the limiting assumption: Linear underdamped free vibration. Construct one synthetic observation consistent with the model and another affected by this failure: Forced response cannot be treated as free decay. Explain which evidence in multi-cycle peak envelope distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "積分時間步長~Integration time-step scale",
+      "title": "積分時間步長~Integration time-step scale",
+      "mechanism": "每週期點數是精度設定而非普遍穩定保證。本模型把 fmax 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出減少為 0.113636 ms。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。指定最高解析頻率。使用時間步收斂結果作量測證據，才能檢查方程是否對應此處的實際物理量；只滿足取樣條件不保證數值積分穩定，因此應把該原因與量測偏差分開。~Points per cycle is an accuracy setting, not universal stability assurance. In this model, fmax is deliberately changed while every other input is held fixed. A ten-percent increase means the output decreases to 0.113636 ms. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Specified highest resolved frequency. Use time-step convergence results as measurement evidence that the equation represents the intended physical quantity. Sampling adequacy does not prove numerical integration stability; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：fmax=200 Hz, points=40 count；y=1/(fmax*points)*1000=0.125 ms。只把 fmax 增加百分之十，y=0.113636 ms。模型邊界：指定最高解析頻率；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: fmax=200 Hz, points=40 count; y=1/(fmax*points)*1000=0.125 ms. Increasing only fmax with a ten-percent increase gives y=0.113636 ms. Boundary: Specified highest resolved frequency; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以時間步收斂結果區分模型與觀察，先用半步長重算及能量帳建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「積分時間步長」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use time-step convergence results to distinguish the model from observation in this unit. Establish a baseline using half-step rerun and energy balance, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Integration time-step scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只滿足取樣條件不保證數值積分穩定。這個失效與「積分時間步長」的量測偏差可能產生相似表象，因此必須同時檢查時間步收斂結果，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Sampling adequacy does not prove numerical integration stability. This failure and a measurement bias in Integration time-step scale can produce similar symptoms. Cross-check time-step convergence results rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只滿足取樣條件不保證數值積分穩定~This unit cannot exhibit the following failure: Sampling adequacy does not prove numerical integration stability.",
+      "practice": "重算「積分時間步長」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出指定最高解析頻率如何限制結論。接著設計一組符合模型及一組由只滿足取樣條件不保證數值積分穩定造成偏離的合成觀察，以時間步收斂結果說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Integration time-step scale, plot the input-output relationship, and explain the limiting assumption: Specified highest resolved frequency. Construct one synthetic observation consistent with the model and another affected by this failure: Sampling adequacy does not prove numerical integration stability. Explain which evidence in time-step convergence results distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "接觸卸載比例~Contact unloading fraction",
+      "title": "接觸卸載比例~Contact unloading fraction",
+      "mechanism": "卸載比例需保留最小輪重而非只看平均。本模型把 Q0 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.772727 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。正接觸力區間的比值。使用最小與平均接觸力作量測證據，才能檢查方程是否對應此處的實際物理量；平均正常可能掩蓋短時失去接觸，因此應把該原因與量測偏差分開。~Unloading requires minimum wheel load, not only its mean. In this model, Q0 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.772727 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Ratio within positive contact-force range. Use minimum and mean contact force as measurement evidence that the equation represents the intended physical quantity. A normal mean can hide momentary contact loss; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：Q0=80 kN, Qmin=20 kN；y=(Q0-Qmin)/Q0=0.75 1。只把 Q0 增加百分之十，y=0.772727 1。模型邊界：正接觸力區間的比值；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: Q0=80 kN, Qmin=20 kN; y=(Q0-Qmin)/Q0=0.75 1. Increasing only Q0 with a ten-percent increase gives y=0.772727 1. Boundary: Ratio within positive contact-force range; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以最小與平均接觸力區分模型與觀察，先用合成接觸力時間序列建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「接觸卸載比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use minimum and mean contact force to distinguish the model from observation in this unit. Establish a baseline using synthetic contact-force time series, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Contact unloading fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "平均正常可能掩蓋短時失去接觸。這個失效與「接觸卸載比例」的量測偏差可能產生相似表象，因此必須同時檢查最小與平均接觸力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A normal mean can hide momentary contact loss. This failure and a measurement bias in Contact unloading fraction can produce similar symptoms. Cross-check minimum and mean contact force rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：平均正常可能掩蓋短時失去接觸~This unit cannot exhibit the following failure: A normal mean can hide momentary contact loss.",
+      "practice": "重算「接觸卸載比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出正接觸力區間的比值如何限制結論。接著設計一組符合模型及一組由平均正常可能掩蓋短時失去接觸造成偏離的合成觀察，以最小與平均接觸力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Contact unloading fraction, plot the input-output relationship, and explain the limiting assumption: Ratio within positive contact-force range. Construct one synthetic observation consistent with the model and another affected by this failure: A normal mean can hide momentary contact loss. Explain which evidence in minimum and mean contact force distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "隔振位移傳遞率~Displacement transmissibility",
+      "title": "隔振位移傳遞率~Displacement transmissibility",
+      "mechanism": "基礎激振位移傳遞與頻率比及阻尼有關。本模型把 r 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出減少為 0.307513 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。單自由度穩態基礎激振。使用基礎與質量位移作量測證據，才能檢查方程是否對應此處的實際物理量；位移隔振不等於所有接觸力都降低，因此應把該原因與量測偏差分開。~Base-excited displacement transmission depends on frequency ratio and damping. In this model, r is deliberately changed while every other input is held fixed. A ten-percent increase means the output decreases to 0.307513 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Steady single-degree base excitation. Use base and mass displacement as measurement evidence that the equation represents the intended physical quantity. Displacement isolation does not reduce every contact force; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：r=2 1, zeta=0.15 1；y=sqrt(1+(2*zeta*r)**2)/sqrt((1-r**2)**2+(2*zeta*r)**2)=0.381181 1。只把 r 增加百分之十，y=0.307513 1。模型邊界：單自由度穩態基礎激振；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: r=2 1, zeta=0.15 1; y=sqrt(1+(2*zeta*r)**2)/sqrt((1-r**2)**2+(2*zeta*r)**2)=0.381181 1. Increasing only r with a ten-percent increase gives y=0.307513 1. Boundary: Steady single-degree base excitation; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以基礎與質量位移區分模型與觀察，先用同步雙位移計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「隔振位移傳遞率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use base and mass displacement to distinguish the model from observation in this unit. Establish a baseline using synchronized paired displacement gauges, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Displacement transmissibility. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "位移隔振不等於所有接觸力都降低。這個失效與「隔振位移傳遞率」的量測偏差可能產生相似表象，因此必須同時檢查基礎與質量位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Displacement isolation does not reduce every contact force. This failure and a measurement bias in Displacement transmissibility can produce similar symptoms. Cross-check base and mass displacement rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：位移隔振不等於所有接觸力都降低~This unit cannot exhibit the following failure: Displacement isolation does not reduce every contact force.",
+      "practice": "重算「隔振位移傳遞率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出單自由度穩態基礎激振如何限制結論。接著設計一組符合模型及一組由位移隔振不等於所有接觸力都降低造成偏離的合成觀察，以基礎與質量位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Displacement transmissibility, plot the input-output relationship, and explain the limiting assumption: Steady single-degree base excitation. Construct one synthetic observation consistent with the model and another affected by this failure: Displacement isolation does not reduce every contact force. Explain which evidence in base and mass displacement distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "模型能量殘差~Model energy residual",
+      "title": "模型能量殘差~Model energy residual",
+      "mechanism": "能量殘差可暴露數值或漏項問題。本模型把 input 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 17 J。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。相同時窗與系統邊界。使用全時段輸入儲存耗散帳作量測證據，才能檢查方程是否對應此處的實際物理量；邊界作功漏列會產生假能量，因此應把該原因與量測偏差分開。~Energy residual can expose numerical errors or omitted terms. In this model, input is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 17 J. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Same time window and system boundary. Use full-window input, storage and dissipation accounts as measurement evidence that the equation represents the intended physical quantity. Omitted boundary work creates apparent energy imbalance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：input=120 J, stored=40 J, lost=75 J；y=input-stored-lost=5 J。只把 input 增加百分之十，y=17 J。模型邊界：相同時窗與系統邊界；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: input=120 J, stored=40 J, lost=75 J; y=input-stored-lost=5 J. Increasing only input with a ten-percent increase gives y=17 J. Boundary: Same time window and system boundary; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以全時段輸入儲存耗散帳區分模型與觀察，先用力速度積分與狀態能量建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「模型能量殘差」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use full-window input, storage and dissipation accounts to distinguish the model from observation in this unit. Establish a baseline using force-velocity integration and state energy, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Model energy residual. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "邊界作功漏列會產生假能量。這個失效與「模型能量殘差」的量測偏差可能產生相似表象，因此必須同時檢查全時段輸入儲存耗散帳，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Omitted boundary work creates apparent energy imbalance. This failure and a measurement bias in Model energy residual can produce similar symptoms. Cross-check full-window input, storage and dissipation accounts rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：邊界作功漏列會產生假能量~This unit cannot exhibit the following failure: Omitted boundary work creates apparent energy imbalance.",
+      "practice": "重算「模型能量殘差」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出相同時窗與系統邊界如何限制結論。接著設計一組符合模型及一組由邊界作功漏列會產生假能量造成偏離的合成觀察，以全時段輸入儲存耗散帳說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Model energy residual, plot the input-output relationship, and explain the limiting assumption: Same time window and system boundary. Construct one synthetic observation consistent with the model and another affected by this failure: Omitted boundary work creates apparent energy imbalance. Explain which evidence in full-window input, storage and dissipation accounts distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "輸出頻譜解析度~Output spectral resolution",
+      "title": "輸出頻譜解析度~Output spectral resolution",
+      "mechanism": "記錄長度決定頻率格距，補零不提高實際分辨能力。本模型把 T 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出減少為 0.0909091 Hz。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。矩形觀察窗基本格距。使用原始時窗與頻譜格點作量測證據，才能檢查方程是否對應此處的實際物理量；短紀錄可能把鄰近模態混成一峰，因此應把該原因與量測偏差分開。~Record duration sets frequency spacing; zero padding adds no true resolving power. In this model, T is deliberately changed while every other input is held fixed. A ten-percent increase means the output decreases to 0.0909091 Hz. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Basic spacing for a finite observation window. Use original window and spectral bins as measurement evidence that the equation represents the intended physical quantity. Short records can merge neighboring modes; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：T=10 s；y=1/T=0.1 Hz。只把 T 增加百分之十，y=0.0909091 Hz。模型邊界：矩形觀察窗基本格距；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: T=10 s; y=1/T=0.1 Hz. Increasing only T with a ten-percent increase gives y=0.0909091 Hz. Boundary: Basic spacing for a finite observation window; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以原始時窗與頻譜格點區分模型與觀察，先用保留原始時間紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「輸出頻譜解析度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use original window and spectral bins to distinguish the model from observation in this unit. Establish a baseline using retained original time record, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Output spectral resolution. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "短紀錄可能把鄰近模態混成一峰。這個失效與「輸出頻譜解析度」的量測偏差可能產生相似表象，因此必須同時檢查原始時窗與頻譜格點，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Short records can merge neighboring modes. This failure and a measurement bias in Output spectral resolution can produce similar symptoms. Cross-check original window and spectral bins rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：短紀錄可能把鄰近模態混成一峰~This unit cannot exhibit the following failure: Short records can merge neighboring modes.",
+      "practice": "重算「輸出頻譜解析度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出矩形觀察窗基本格距如何限制結論。接著設計一組符合模型及一組由短紀錄可能把鄰近模態混成一峰造成偏離的合成觀察，以原始時窗與頻譜格點說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Output spectral resolution, plot the input-output relationship, and explain the limiting assumption: Basic spacing for a finite observation window. Construct one synthetic observation consistent with the model and another affected by this failure: Short records can merge neighboring modes. Explain which evidence in original window and spectral bins distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：k=1200000 N/m, m=1500 kg；y=sqrt(k/m)/(2*pi)=4.50158 Hz~Teaching unit 1 baseline scale: Original assumed example, not field operating values: k=1200000 N/m, m=1500 kg; y=sqrt(k/m)/(2*pi)=4.50158 Hz.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：m1=1500 kg, m2=3000 kg；y=m1*m2/(m1+m2)=1000 kg~Teaching unit 2 baseline scale: Original assumed example, not field operating values: m1=1500 kg, m2=3000 kg; y=m1*m2/(m1+m2)=1000 kg.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：C=100000000000 N/m1.5, delta=0.0001 m；y=1.5*C*sqrt(delta)=1.5e+09 N/m~Teaching unit 3 baseline scale: Original assumed example, not field operating values: C=100000000000 N/m1.5, delta=0.0001 m; y=1.5*C*sqrt(delta)=1.5e+09 N/m.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：v=60 m/s, lam=3 m；y=v/lam=20 Hz~Teaching unit 4 baseline scale: Original assumed example, not field operating values: v=60 m/s, lam=3 m; y=v/lam=20 Hz.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：zeta=0.05 1, fn=5 Hz, t=1 s；y=exp(-zeta*2*pi*fn*t)=0.20788 1~Teaching unit 5 baseline scale: Original assumed example, not field operating values: zeta=0.05 1, fn=5 Hz, t=1 s; y=exp(-zeta*2*pi*fn*t)=0.20788 1.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：fmax=200 Hz, points=40 count；y=1/(fmax*points)*1000=0.125 ms~Teaching unit 6 baseline scale: Original assumed example, not field operating values: fmax=200 Hz, points=40 count; y=1/(fmax*points)*1000=0.125 ms."
+  ],
+  "timeline": [
+    {
+      "year": "2006-10",
+      "event": "運輸研究委員會發布軌道過渡段比較研究摘要。~TRB published its comparative research digest on track transitions."
+    },
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布整合基礎設施互通規範第一二九九號法規。~The EU issued Regulation 1299/2014 for the infrastructure interoperability specification."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "美國聯邦法規第四十九篇第二百十三部分：軌道比較閱讀。~US 49 CFR Part 213: comparative reading on track requirements."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-trans",
+      "title": "軌道過渡段研究報告",
+      "titleEn": "Design of Track Transitions, Research Results Digest 79",
+      "publisher": "Transportation Research Board / FRA",
+      "url": "https://railroads.dot.gov/sites/fra.dot.gov/files/fra_net/14977/Research%20Results%20Digest%2079%20Design%20of%20Track%20Transitions.pdf",
+      "sourceType": "primary",
+      "scope": "過渡段比較研究入口；本課數值是另行設定的縮減模型。",
+      "scopeEn": "Entry point for transition research; numerical values in this course belong to separately assumed reduced models."
+    },
+    {
+      "key": "track-tsi",
+      "title": "歐洲鐵路基礎設施互通規範入口",
+      "titleEn": "Infrastructure TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/infrastructure-tsi_en",
+      "sourceType": "primary",
+      "scope": "基礎設施互通要求的官方入口；教材算例不是規範限值。",
+      "scopeEn": "Official infrastructure interoperability entry point; teaching calculations are not regulatory limits."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b358",
+    "b366"
+  ],
+  "architectureNodes": [
+    [
+      "車體與輪對",
+      "Body and wheelset"
+    ],
+    [
+      "懸吊阻尼",
+      "Suspension damping"
+    ],
+    [
+      "輪軌接觸",
+      "Wheel contact"
+    ],
+    [
+      "軌道支承",
+      "Track support"
+    ],
+    [
+      "時域驗證",
+      "Time-domain verification"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

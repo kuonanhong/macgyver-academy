@@ -1,4 +1,4 @@
-"""Real V15 launchers against local bare Git, without external uploads or rebuilds."""
+"""Preserved V15 advanced CLI against local bare Git; no external uploads."""
 import hashlib
 import json
 import os
@@ -65,7 +65,7 @@ class LauncherDryRunTests(unittest.TestCase):
                                     capture_output=True, text=True, timeout=30)
             self.assertEqual(doctor.returncode, 0, doctor.stdout + doctor.stderr)
             self.assertIn('環境檢查通過', doctor.stdout)
-            preview = subprocess.run([BASH, 'upload-all.sh', '--dry-run', '--skip-models', '--skip-data'],
+            preview = subprocess.run([BASH, 'macgyver-legacy-v15.sh', 'all', '--dry-run', '--skip-models', '--skip-data'],
                                      cwd=ROOT, env=env, capture_output=True, text=True, timeout=120)
             self.assertEqual(preview.returncode, 0, preview.stdout + preview.stderr)
             self.assertIn('只比較，未上傳', preview.stdout)

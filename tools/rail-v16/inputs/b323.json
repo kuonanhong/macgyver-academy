@@ -1,0 +1,279 @@
+{
+  "id": "b323",
+  "title": "香港機場快綫~Hong Kong Airport Express",
+  "discipline": "rail-metro",
+  "family": "station",
+  "focus": "機場快線長橋與航廈處理介面~Airport express long bridges and terminal processing",
+  "summary": "以香港機場快綫的城市與機場連接為背景，建立長橋通過、行李服務與航廈步行相連的旅程。學徒要區分列車時間、報到排隊與到登機口的移動，並在側風或服務中斷情境下分析乘客如何累積與轉移。~Use Hong Kong Airport Express to frame a journey linking long-bridge passage, baggage processing and terminal walking. Distinguish train time from check-in queues and movement toward a departure gate. Under crosswind restrictions or interrupted service, analyse passenger accumulation and redistribution without assuming that the scheduled train journey represents the complete airport access time.",
+  "example": "整合原創算例：單元 1 得 moment=68.85675 kN*m；單元 2 得 deflection=0.9451403 mm；單元 3 得 equivalent_demand=197.6 equivalent persons。上述三個結果使用各單元明示的不同邊界，不能任意相加或視為實際工程實測值。以第一單元 wind 的擾動測試，結果改為 83.31667 kN*m；學徒需先比較單位、敏感度和假設，再決定是否要細化模型。以香港機場快綫的城市與機場連接為背景，建立長橋通過、行李服務與航廈步行相連的旅程。學徒要區分列車時間、報到排隊與到登機口的移動，並在側風或服務中斷情境下分析乘客如何累積與轉移。 最終交付應保留原始輸入、測點時間戳、誤差範圍與無法由簡化式證明的結論。~Integrated original exercise: unit 1 gives moment=68.85675 kN*m; unit 2 gives deflection=0.9451403 mm; unit 3 gives equivalent_demand=197.6 equivalent persons. These three results use different explicit boundaries and must not be added or presented as measurements of the real railway. Perturbing wind in the first unit changes its result to 83.31667 kN*m. Compare units, sensitivity and assumptions before deciding which model needs refinement. Use Hong Kong Airport Express to frame a journey linking long-bridge passage, baggage processing and terminal walking. Distinguish train time from check-in queues and movement toward a departure gate. Under crosswind restrictions or interrupted service, analyse passenger accumulation and redistribution without assuming that the scheduled train journey represents the complete airport access time. The final submission should retain original inputs, measurement timestamps, uncertainty ranges and conclusions that the simplified expressions cannot establish.",
+  "history": "公開工程與出版時間線：1998 年：香港機場快綫配合新機場啟用投入服務；2005 年：機場快綫延伸至亞洲國際博覽館站。這些事件由下列機構來源提供背景，不表示來源公開了本課程所有設計數據。以香港機場快綫的城市與機場連接為背景，建立長橋通過、行李服務與航廈步行相連的旅程。學徒要區分列車時間、報到排隊與到登機口的移動，並在側風或服務中斷情境下分析乘客如何累積與轉移。 本課程另以可靠度、可用度、可維修度與安全方法整理需求、證據和變更邊界；歷史年份屬可查證事項，數學模型的輸入則是明示的教學假設。~Public engineering and publication chronology: 1998: Hong Kong Airport Express entered service with the new airport; 2005: Airport Express was extended to AsiaWorld-Expo station. The institutional sources below establish this background; they do not imply publication of every design input in this course. Use Hong Kong Airport Express to frame a journey linking long-bridge passage, baggage processing and terminal walking. Distinguish train time from check-in queues and movement toward a departure gate. Under crosswind restrictions or interrupted service, analyse passenger accumulation and redistribution without assuming that the scheduled train journey represents the complete airport access time. The course separately uses reliability, availability, maintainability and safety reasoning to organise requirements, evidence and change boundaries. Historical dates are verifiable facts, whereas numerical model inputs are explicitly declared teaching assumptions.",
+  "units": [
+    {
+      "anchor": "側風力與翻覆力矩~Crosswind force and overturning moment",
+      "title": "側風力與翻覆力矩~Crosswind force and overturning moment",
+      "mechanism": "側風作用可由動壓乘有效側向面積估算，再乘作用高度形成翻覆力矩。車輛質量、重心、風向及橋面遮蔽同時影響輪重分配，單一靜態力矩只能提供比較而非營運風速門檻。 橫向力依側風分量平方變化，列車姿態和地形會改變受風面積及係數。此力尺度不直接給出傾覆門檻；還需重心、輪重減載、懸吊和陣風時間歷程。 在跨海暴露段將陣風與平均風分開，檢查側向作用尺度。~Crosswind force can be estimated from dynamic pressure and effective lateral area, then multiplied by application height for an overturning moment. Mass, centre of gravity, wind direction and shielding affect wheel loading together; one static moment only supports comparison, not an operational wind threshold. Lateral force varies with squared crosswind component, while vehicle attitude and terrain change exposed area and coefficients. The force scale does not directly yield an overturning threshold; centre of gravity, wheel unloading, suspension and gust history remain necessary. Separate gust and mean wind on an exposed crossing when checking lateral-force scale.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：rho=1.2 kg/m^3; wind=25.25 m/s; side_area=90 m^2; coefficient=1 1; height=2 m；計算：moment=0.5*rho*wind**2*side_area*coefficient*height/1000=68.85675 kN*m。敏感度：wind 單獨增加百分之十至 27.775 m/s，其餘固定，結果為 83.31667 kN*m。模型邊界：定常橫風與已假設氣動係數；不含陣風、列車運動與動態輪重減載。~Original hypothetical exercise; none of these inputs are operating parameters of this project: rho=1.2 kg/m^3; wind=25.25 m/s; side_area=90 m^2; coefficient=1 1; height=2 m; calculation: moment=0.5*rho*wind**2*side_area*coefficient*height/1000=68.85675 kN*m. Sensitivity: wind, increase this input alone by ten percent, to 27.775 m/s, with all other inputs fixed, gives 83.31667 kN*m. Model boundary: Steady crosswind and assumed aerodynamic coefficient; gusts, train motion and dynamic unloading are excluded.",
+      "verify": "同步記錄沿線風速、風向、列車速度及車體側滾，檢查風速站是否受地形遮蔽，再用多點資料評估代表性。 核對風速計高度與方向，保存陣風時序，將列車姿態與側向加速度放在同一時間軸。~Synchronise wind speed, direction, train speed and carbody roll, inspect terrain shielding at the anemometer, and assess representativeness with multiple locations. Verify anemometer height and orientation, retain gust histories, and align vehicle attitude with lateral acceleration on one timeline.",
+      "failure": "受遮蔽的風速計可能低估橋上曝露，空載與滿載車又具有不同抗翻覆力矩；不能只用最近測站單一讀值。 日平均風速會掩蓋陣風，需檢查量測平均時間與峰值。~A sheltered anemometer can understate exposure on a viaduct, and empty versus loaded vehicles have different restoring moments; the nearest sensor alone is insufficient. Daily mean wind hides gusts; inspect averaging duration and the recorded peaks.",
+      "misconception": "側風翻覆力矩只和風速成正比而不涉及車體高度~Crosswind overturning moment is linear in wind speed and independent of vehicle height.",
+      "practice": "把風速與作用高度各增加一成，對比力矩敏感度，提出能區分地形加速與儀器誤差的多點量測配置。 再以本單元 wind 的對照值重算 moment，提交含單位、輸入來源和模型不適用條件的結果表。~Increase wind speed and load height separately by ten percent, compare moment sensitivity, and propose measurements distinguishing terrain acceleration from instrument error. Also recalculate moment for the alternative wind value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "橋梁撓度與跨長敏感度~Bridge deflection and span sensitivity",
+      "title": "橋梁撓度與跨長敏感度~Bridge deflection and span sensitivity",
+      "mechanism": "簡支梁在均布荷載下的撓度對跨長有四次方敏感度，截面慣性矩與材料剛度共同抵抗彎曲。鐵道橋還需要動態與軌道相互作用檢查，靜態梁算例只用來辨認參數量級。 跨長四次方使幾何誤差特別重要，但只有在相同支承、均布荷載及截面條件下才可比較。將毫米轉成公尺後再核對剛度，可避免把量測位移誤差變成材料性能判斷。 以橋跨與支點位移分別檢查車軌幾何變化的來源。~For a simply supported beam under uniform load, deflection scales with the fourth power of span. Section inertia and material stiffness jointly resist bending. A railway bridge also requires dynamic and track-interaction checks; this static beam exercise only reveals parameter magnitudes. Fourth-power span dependence makes geometry important, but comparison requires the same support, uniform-load and section assumptions. Convert millimetres and metres consistently before checking stiffness, so a displacement-unit error does not become a false conclusion about material properties. Use span and support movements separately to identify sources of changing track geometry.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：w=50000 N/m; L=25.25 m; E=3.5e+10 Pa; I=8 m^4；計算：deflection=5*w*L**4/(384*E*I)*1000=0.9451403 mm。敏感度：L 單獨增加百分之十至 27.775 m，其餘固定，結果為 1.38378 mm。模型邊界：簡支Euler梁、小撓度、靜態均布荷載；不代表列車移動荷載。~Original hypothetical exercise; none of these inputs are operating parameters of this project: w=50000 N/m; L=25.25 m; E=3.5e+10 Pa; I=8 m^4; calculation: deflection=5*w*L**4/(384*E*I)*1000=0.9451403 mm. Sensitivity: L, increase this input alone by ten percent, to 27.775 m, with all other inputs fixed, gives 1.38378 mm. Model boundary: Simply supported Euler beam, small deflection and static uniform load; not a moving train-load analysis.",
+      "verify": "在已知載重位置量測跨中和支點位移，扣除支承沉陷後對照彎矩圖，並用卸載後讀值檢查是否存在殘留變形。 先以已知荷載校對位移計量程與零點，分別記錄載入卸載路徑及支點運動。~Measure midspan and support movement under known loading, subtract support settlement, compare with the moment diagram, and inspect residual displacement after unloading. Check displacement-sensor range and zero under known loading, recording loading and unloading paths separately from support movement.",
+      "failure": "支承鬆動或局部開裂可能改變有效剛度，若把所有位移都當成梁彎曲，校準出的彈性模數就會失真。 若卸載後仍有位移，須區分基座滑移與構件殘留變形。~Loose supports and local cracking alter effective stiffness; interpreting all displacement as beam bending produces a misleading calibrated elastic modulus. Residual displacement after unloading requires distinguishing fixture slip from permanent structural deformation.",
+      "misconception": "橋梁跨長增加一成其彈性撓度最多只增加一成~Increasing bridge span by ten percent increases elastic deflection by at most ten percent.",
+      "practice": "保持截面不變增加跨長，再比較提高慣性矩的補償幅度，說明靜態位移符合預期為何仍不能取代動態驗證。 再以本單元 L 的對照值重算 deflection，提交含單位、輸入來源和模型不適用條件的結果表。~Increase span while keeping the section fixed, calculate the compensating inertia change, and explain why agreement in static deflection cannot replace dynamic verification. Also recalculate deflection for the alternative L value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "行李旅客與等效交換需求~Luggage and effective passenger exchange",
+      "title": "行李旅客與等效交換需求~Luggage and effective passenger exchange",
+      "mechanism": "機場旅客攜帶行李時占用更大空間且上下車較慢，可先以等效旅客係數整理交換需求。係數應由觀察校準而非固定刻板印象；門寬、坡差與同行群體又會改變通過時間。 等效需求把攜行李旅客依宣告係數換算為普通旅客負荷，不是把人數真的增加。係數需對應車門交換、通道占用等指定用途，不能拿一個值同時代表所有服務時間。 以行李旅客的等效交換需求比較市區站和航廈站負荷。~Passengers with luggage often occupy more space and take longer to board, so an equivalent-passenger factor can organise exchange demand. It must be calibrated from observation rather than stereotypes. Door width, level differences and travelling groups also alter passage time. Equivalent demand converts baggage travellers into ordinary-passenger load using a declared factor; it does not create additional people. The factor must correspond to a specified purpose such as door exchange or space occupation, not represent all service times simultaneously. Compare city and terminal station loads through equivalent exchange demand from baggage passengers.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：plain=100 persons; luggage=61 persons; factor=1.6 equivalent/person；計算：equivalent_demand=plain+luggage*factor=197.6 equivalent persons。敏感度：luggage 將整數計數增加到 68至 68 persons，其餘固定，結果為 208.8 equivalent persons。模型邊界：線性加權的教學需求指標；不是正式容量標準或特定旅客評分。~Original hypothetical exercise; none of these inputs are operating parameters of this project: plain=100 persons; luggage=61 persons; factor=1.6 equivalent/person; calculation: equivalent_demand=plain+luggage*factor=197.6 equivalent persons. Sensitivity: luggage, increase the integer count to 68, to 68 persons, with all other inputs fixed, gives 208.8 equivalent persons. Model boundary: Linear teaching demand index; not a formal capacity standard or a rating of individual passengers.",
+      "verify": "匿名觀察不同門口的通過時間與行李尺寸群組，保留空間配置差異，避免把環境障礙全歸因於旅客行為。 分別計數一般旅客與行李旅客，以實測交換時間或占用面積校準係數，保留用途與區間。~Observe door passage times and luggage-size groups anonymously, retain layout differences, and avoid attributing environmental barriers entirely to passenger behaviour. Count ordinary and baggage passengers separately, calibrate the factor against exchange time or occupied area, and retain its purpose and range.",
+      "failure": "行李集中在少數車門會使全列停站時間由局部控制；同樣人數但不同分布可能造成完全不同的交換效率。 相同人數可能有不同負荷，需保留行李比例而非只報總人數。~Luggage clustering at a few doors can control whole-train dwell; the same passenger total with a different distribution can have very different exchange efficiency. Equal headcounts can impose different loads; retain baggage proportions rather than reporting total people only.",
+      "misconception": "機場列車只要乘客總數相同就一定具有相同停站需求~Airport trains with equal passenger totals necessarily have equal dwell demand.",
+      "practice": "比較集中行李區與分散行李區的等效需求，提出無障礙與一般旅客都可使用的導引方式，並列出需要實測校準的係數。 再以本單元 luggage 的對照值重算 equivalent_demand，提交含單位、輸入來源和模型不適用條件的結果表。~Compare concentrated and distributed luggage areas, propose guidance usable by passengers with different access needs, and list coefficients requiring measurement-based calibration. Also recalculate equivalent_demand for the alternative luggage value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "到站變異與平均等候~Arrival variability and mean waiting",
+      "title": "到站變異與平均等候~Arrival variability and mean waiting",
+      "mechanism": "當旅客隨機到站且不受容量限制時，平均等待與班距平方的期望值有關，長班距被更多旅客遇到。兩組平均班距相同的服務仍可能有不同等待時間，因此準點與均勻性具有獨立價值。 隨機到站旅客更容易遇到較長班距，因為長區間占較多時間，因此平均等候與班距變異數有關。公式假定旅客到達獨立於班表且每班可上車，不能表示服務櫃台或容量不足的隊列。 比較規則與不規則機場列車班距對隨機到站旅客的等候。~With random passenger arrivals and no capacity constraint, mean waiting depends on the expected squared headway. More passengers encounter longer gaps. Services with identical mean headway can therefore have different waiting times, giving regularity a value separate from the average frequency. Random arrivals encounter longer headways more often because those intervals occupy more time. Mean waiting therefore depends on headway variance. The formula assumes arrivals independent of the timetable and successful boarding on every train; it does not model counters or capacity-constrained queues. Compare random-arrival waiting under regular and irregular airport-train headways.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mean=181.8 s; sd=60 s；計算：wait=(mean**2+sd**2)/(2*mean)=100.801 s。敏感度：mean 單獨增加百分之十至 199.98 s，其餘固定，結果為 108.9909 s。模型邊界：獨立隨機旅客到達、穩態班距且皆可登車；不含時刻表配合到站。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mean=181.8 s; sd=60 s; calculation: wait=(mean**2+sd**2)/(2*mean)=100.801 s. Sensitivity: mean, increase this input alone by ten percent, to 199.98 s, with all other inputs fixed, gives 108.9909 s. Model boundary: Random independent passenger arrivals, stationary headways and no denied boarding; timetable-aware arrivals are excluded.",
+      "verify": "從連續到站紀錄計算班距平均與變異數，再用匿名旅客到站時刻重播等待，檢查是否存在容量不足或非隨機到站。 從逐列到站時間重建班距平均與標準差，將旅客隨機到達事件重播，核對等候樣本平均。~Calculate headway mean and variance from consecutive arrivals, replay waiting with anonymous passenger arrival times, and check for capacity limits or nonrandom arrivals. Reconstruct mean and standard deviation from successive train arrivals, replay random passenger arrivals, and compare the sampled mean waiting time.",
+      "failure": "只報平均班距會低估不規則服務的等待；旅客配合時刻表到站時又不能直接套用隨機到站公式。 若滿載造成無法上車，需額外追蹤留下隊列而不能沿用公式。~Reporting only mean headway understates waiting under irregular service, while timetable-aware arrivals invalidate the random-arrival formula. When full trains prevent boarding, track the remaining queue separately instead of reusing this formula.",
+      "misconception": "兩組平均班距相同就一定有相同平均等候時間~Two services with equal mean headway necessarily have equal mean passenger waiting time.",
+      "practice": "保持平均班距不變，把標準差減半後重算等待，並用一組確定性到站時間說明公式假設何時失效。 再以本單元 mean 的對照值重算 wait，提交含單位、輸入來源和模型不適用條件的結果表。~Hold mean headway fixed and halve its standard deviation, recalculate waiting, then use deterministic arrivals to show when the formula assumptions fail. Also recalculate wait for the alternative mean value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "轉乘步行與銜接餘裕~Transfer walking and connection margin",
+      "title": "轉乘步行與銜接餘裕~Transfer walking and connection margin",
+      "mechanism": "轉乘能否銜接取決於實際可用時間扣除下車、步行、垂直動線與候車需求。最短路徑不一定最快，因為樓梯、閘門與人流交會造成等待；無障礙路徑需要獨立列出而非套用同一速度。 距離除速度只表示行走或移動時間，等待列車、排隊和辨識路徑應另列。使用單一平均速度會掩蓋行李、行動能力和雙向干擾，應以分段分群資料檢查。 把車站出口至航廈目的地的垂直及水平移動分段。~A connection depends on available time after alighting, walking, vertical circulation and boarding needs. The shortest route is not always fastest because stairs, gates and crossing streams cause waiting. Accessible routes need their own timing rather than an assumed common walking speed. Distance divided by speed represents movement only; train waiting, queueing and wayfinding need separate terms. One mean speed hides baggage, mobility differences and opposing flow. Check the result with segmented measurements for relevant passenger groups. Separate vertical and horizontal travel from station exit to the terminal destination.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：available=300 s; distance=181.8 m; speed=1 m/s; vertical=45 s；計算：margin=available-distance/speed-vertical=73.2 s。敏感度：distance 單獨增加百分之十至 199.98 m，其餘固定，結果為 55.02 s。模型邊界：固定步速與額外時間；不包含動態排隊或旅客個別差異分布。~Original hypothetical exercise; none of these inputs are operating parameters of this project: available=300 s; distance=181.8 m; speed=1 m/s; vertical=45 s; calculation: margin=available-distance/speed-vertical=73.2 s. Sensitivity: distance, increase this input alone by ten percent, to 199.98 m, with all other inputs fixed, gives 55.02 s. Model boundary: Fixed walking speed and additional time; dynamic queues and individual variability distributions are excluded.",
+      "verify": "以匿名實測旅程時間分位數比較路徑，記錄電梯等待及閘門排隊，檢查轉乘圖的距離是否包含所有垂直動線。 在路徑起終點對時，逐段記錄水平、垂直與等待時間，核對是否漏計驗票或排隊。~Compare route-time quantiles from anonymous observations, record lift and gate waits, and check that route distances include every vertical circulation segment. Synchronise route endpoints, record horizontal movement, vertical movement and waiting separately, and check for omitted gate processing or queues.",
+      "failure": "只用最快步行者校準會低估多數人的轉乘時間；電梯停機又可能使唯一無障礙路徑失去連續性。 旅客走錯路會改變實際距離，需比較引導前後的路徑。~Calibrating to the fastest walkers understates many passengers’ transfer time; a failed lift can also break the only continuous accessible route. Wrong turns change actual distance; compare observed routes before and after guidance changes.",
+      "misconception": "轉乘路線距離最短就一定適合所有旅客最快銜接~The shortest transfer route necessarily gives every passenger the fastest connection.",
+      "practice": "比較一般與無障礙兩條路徑的餘裕，加入一台電梯停機情境，說明時刻表調整與空間導引分別能改善哪一段。 再以本單元 distance 的對照值重算 margin，提交含單位、輸入來源和模型不適用條件的結果表。~Compare connection margins for ordinary and accessible routes, add one unavailable lift, and distinguish improvements from timetable changes versus spatial guidance. Also recalculate margin for the alternative distance value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "車門交換與停站時間~Door exchange and dwell time",
+      "title": "車門交換與停站時間~Door exchange and dwell time",
+      "mechanism": "停站時間由車門開關、旅客交換與確認安全三部分組成。把旅客平均分到所有車門只是基準，樓梯位置會使某幾扇門超載；最慢的門組可能控制全列發車，因此不能只用平均流率。 均分模型是檢查單位和量級的起點；真實發車須等最後必要門組完成。上車和下車方向互相干擾時，應用分階段或逐門事件模型重新識別流率。 用大件行李群組上車測試車門交換尾端。~Dwell time comprises door movement, passenger exchange and confirmation before departure. Equal distribution across doors is only a baseline: stair placement can overload selected doors. The slowest door group may govern departure of the entire train, so average flow alone is insufficient. Uniform allocation is a starting point for units and scale, while actual departure waits for the last required door group. If boarding and alighting interfere, use phased or door-by-door event models to identify the relevant exchange rates. Test door-exchange tails with groups boarding alongside large baggage.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：exchange=242 persons; doors=24 doors; rate=0.8 persons/(door*s); fixed=12 s；計算：dwell=exchange/(doors*rate)+fixed=24.60417 s。敏感度：exchange 將整數計數增加到 267至 267 persons，其餘固定，結果為 25.90625 s。模型邊界：均勻分配旅客與固定單門流率；不含對向人流衝突。~Original hypothetical exercise; none of these inputs are operating parameters of this project: exchange=242 persons; doors=24 doors; rate=0.8 persons/(door*s); fixed=12 s; calculation: dwell=exchange/(doors*rate)+fixed=24.60417 s. Sensitivity: exchange, increase the integer count to 267, to 267 persons, with all other inputs fixed, gives 25.90625 s. Model boundary: Uniform passenger distribution and fixed per-door flow; opposing-flow conflicts are excluded.",
+      "verify": "逐門標註下車、上車與關門事件，檢查樓梯附近門組是否偏慢，再以各門最大完成時間對照整列停站時間。 以影片事件時間和門控紀錄交叉對時，分別統計交換完成與發車確認的尾端分布。~Annotate alighting, boarding and closure at each door, check slow groups near stairs, and compare the latest completion time with whole-train dwell. Synchronise video event times with door-controller logs and separately report the tails of exchange completion and departure confirmation.",
+      "failure": "行李卡門或乘客集中會讓均勻模型低估尾端；延長關門提示可能改善秩序，也可能提高固定停站時間。 先核對門口人數，避免把旅客集中誤診為門機速度下降。~Luggage obstruction and clustered passengers make the uniform model underestimate the tail; a longer closing warning may improve order while increasing the fixed dwell component. Check doorway demand before misdiagnosing passenger concentration as slower door machinery.",
+      "misconception": "每扇門的平均流率相同就能忽略乘客分布差異~Equal average door flow rates make passenger distribution irrelevant to dwell time.",
+      "practice": "將一半上車需求集中在四分之一車門，重算最慢門組；提出導引與月台配置改進並區分其對固定時間和交換時間的作用。 再以本單元 exchange 的對照值重算 dwell，提交含單位、輸入來源和模型不適用條件的結果表。~Concentrate half the demand at one quarter of the doors, recalculate the slowest group, and distinguish guidance changes affecting fixed time from those affecting exchange time. Also recalculate dwell for the alternative exchange value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "周轉時間與車隊需求~Round-trip time and fleet size",
+      "title": "周轉時間與車隊需求~Round-trip time and fleet size",
+      "mechanism": "維持固定班距所需列車數取決於完整周轉時間除班距並向上取整，周轉包含兩端折返與停站。備用車和維修車需另列；只用單程行車時間會把車隊需求低估接近一半。 循環時間除以班距後必須向上取整，半列車不能提供完整班次。此數量是投入循環的最低值，維修備用、延誤緩衝與不同分支運轉仍需額外配置。 把航廈端與市區端折返時間都納入完整循環。~Fleet requirement for fixed headway is round-trip cycle time divided by headway, rounded upward. The cycle includes terminal turnbacks and stops. Spares and maintenance vehicles are additional; using only one-way running time can underestimate the requirement by nearly half. Divide cycle time by headway and round upward because a fraction of a train cannot provide a full departure. This is the minimum circulating requirement; maintenance spares, delay buffers and branch-specific operation need additional allocation. Include both airport-terminal and city-terminal turnarounds in the complete cycle.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：cycle=5454 s; headway=180 s；計算：fleet=ceil(cycle/headway)=31 trains。敏感度：cycle 單獨增加百分之十至 5999.4 s，其餘固定，結果為 34 trains。模型邊界：固定周轉與班距、無延誤；不含備用率和維修排程。~Original hypothetical exercise; none of these inputs are operating parameters of this project: cycle=5454 s; headway=180 s; calculation: fleet=ceil(cycle/headway)=31 trains. Sensitivity: cycle, increase this input alone by ten percent, to 5999.4 s, with all other inputs fixed, gives 34 trains. Model boundary: Fixed cycle and headway without delays; reserve ratio and maintenance scheduling are excluded.",
+      "verify": "逐列串接實際到發時間檢查周轉，將折返與等待分開，並對尖峰班距需求與可出車數建立同一時點的清單。 核對往返與折返時間使用同一單位，以逐列時刻表重播，檢查每次發車是否有車可用。~Join actual arrival and departure logs by train, separate turnback from waiting, and compare peak headway requirements with trains available at the same time. Verify consistent units for round-trip and turnaround times, replay a train-by-train timetable, and check vehicle availability at every departure.",
+      "failure": "列車數足夠仍可能因機廠出入路徑受限而無法準時上線；忽略維修週期則會讓紙上車隊數不可持續。 循環時間稍增可能跨過整數門檻，不能只比較百分比。~Sufficient fleet count may still fail when depot access restricts insertion; ignoring maintenance cycles makes the paper fleet unsustainable. A small cycle-time increase can cross an integer fleet threshold; percentages alone are insufficient.",
+      "misconception": "車隊需求可以只用單程時間除以班距決定~Fleet requirement can be determined using one-way time divided by headway alone.",
+      "practice": "增加一端折返時間後重算車隊，檢查向上取整造成的跳變，再提出維修備用與臨時故障應如何另列。 再以本單元 cycle 的對照值重算 fleet，提交含單位、輸入來源和模型不適用條件的結果表。~Increase one terminal turnback time, recalculate fleet and examine rounding jumps, then explain separate allowances for maintenance reserve and unexpected failures. Also recalculate fleet for the alternative cycle value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "牽引饋線壓降~Traction feeder voltage drop",
+      "title": "牽引饋線壓降~Traction feeder voltage drop",
+      "mechanism": "牽引電流經導體與回流路徑產生壓降，電壓下降又可能讓定功率列車要求更大電流，形成非線性負荷互動。單一電阻模型先隔離線路損耗，再逐步引入雙端供電和多列車位置。 回路電阻必須包含饋電與回流路徑，還需說明是否納入接頭和變電站等效阻抗。電流固定是簡化；實際定功率負載在電壓降低時可能增加電流並擴大壓降。 對長距離受電路徑建立回路電阻和受電電壓估算。~Current through the feeder and return path creates voltage drop. A constant-power train may draw more current as voltage falls, creating nonlinear load interaction. A single resistance model first isolates line loss before adding two-ended supply and multiple train positions. Loop resistance must include supply and return paths, with joints and substation equivalent impedance explicitly included or excluded. Fixed current is a simplification: a constant-power load can draw more current as voltage falls and thereby increase the drop. Estimate loop resistance and receiving voltage for a long supply path.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：current=1515 A; resistance=0.06 ohm；計算：drop=current*resistance=90.9 V。敏感度：current 單獨增加百分之十至 1666.5 A，其餘固定，結果為 99.99 V。模型邊界：固定電流與集中等效電阻；不含回生、功率因數與暫態。~Original hypothetical exercise; none of these inputs are operating parameters of this project: current=1515 A; resistance=0.06 ohm; calculation: drop=current*resistance=90.9 V. Sensitivity: current, increase this input alone by ten percent, to 1666.5 A, with all other inputs fixed, gives 99.99 V. Model boundary: Fixed current and lumped equivalent resistance; regeneration, power factor and transients are excluded.",
+      "verify": "同步量測變電所與列車端電壓及電流，記錄列車位置，將接頭接觸電阻與導體溫度造成的變化分別辨識。 同步量測供電端與受電端電壓及回路電流，核對接線極性和設備接頭的額外壓降。~Synchronise substation and train voltage and current measurements, log train position, and distinguish joint contact resistance from conductor-temperature changes. Measure supply voltage, receiving voltage and loop current synchronously, checking polarity and extra voltage drops across equipment connections.",
+      "failure": "高阻接頭可能在總壓降看似可接受時局部過熱；把導體長度和回流路徑計算一半會系統性低估損耗。 需核對回流路徑，否則可能把接頭故障藏在錯估電阻中。~A high-resistance joint may overheat while total drop looks modest; omitting part of the return path systematically understates resistance and losses. Verify the return path so a faulty connection is not hidden inside an incorrect resistance estimate.",
+      "misconception": "量到變電所輸出電壓正常就代表所有列車端電壓正常~Normal substation output voltage proves that every train receives normal voltage.",
+      "practice": "加入第二列同時加速的列車，畫出共享與非共享饋線段，分段重算壓降並說明何時需改用完整潮流分析。 再以本單元 current 的對照值重算 drop，提交含單位、輸入來源和模型不適用條件的結果表。~Add a second accelerating train, distinguish shared and separate feeder sections, recalculate each drop, and explain when a complete load-flow analysis becomes necessary. Also recalculate drop for the alternative current value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "延遲與制動距離~Delay and braking distance",
+      "title": "延遲與制動距離~Delay and braking distance",
+      "mechanism": "列車在控制命令傳遞與煞車建立期間仍向前行駛，減速段才把動能耗散；因此停車距離包含延遲距離與減速距離。速度平方項說明高速時少量速度誤差會被放大，固定減速度只能作第一輪界限估算。 延遲項與速度成正比，減速項與速度平方成正比；把兩項分開後，才能選擇改善控制延遲或增加有效制動的方案。若存在坡度，應另加沿坡重力，不能只改總距離。 在受風降速後重新比較停止距離與原班表的裕度。~A train continues moving while the command propagates and brake force builds. Only the deceleration phase removes kinetic energy, so stopping distance includes both a delay term and a braking term. The squared speed dependence amplifies speed uncertainty; constant deceleration is only an initial bounding approximation. The delay term is linear in speed and the deceleration term is quadratic. Separating them reveals whether control latency or effective braking deserves attention. A gradient requires an added gravitational component, not an arbitrary adjustment to the final distance. Recompare stopping distance and timetable margin after wind-related speed restriction.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：v=23 m/s; delay=2.5 s; a=0.7 m/s^2；計算：distance=v*delay+v*v/(2*a)=435.3571 m。敏感度：v 單獨增加百分之十至 25.3 m/s，其餘固定，結果為 520.4571 m。模型邊界：水平直線、定減速、無風；沒有建立黏著分布與煞車熱衰退。~Original hypothetical exercise; none of these inputs are operating parameters of this project: v=23 m/s; delay=2.5 s; a=0.7 m/s^2; calculation: distance=v*delay+v*v/(2*a)=435.3571 m. Sensitivity: v, increase this input alone by ten percent, to 25.3 m/s, with all other inputs fixed, gives 520.4571 m. Model boundary: Level straight track and constant deceleration; adhesion variation and thermal fade are excluded.",
+      "verify": "對齊速度、煞車缸壓力與里程的時間戳，分開辨識命令延遲及穩態減速度，再以積分速度的距離交叉檢查。 用獨立里程或地速核對輪速積分，報告濕乾軌差異及停車距離的重複試驗範圍。~Align speed, brake-cylinder pressure and distance timestamps. Identify command delay separately from steady deceleration and cross-check distance by integrating measured speed. Check integrated wheel speed against independent distance or ground speed, and report wet-dry differences and repeated stopping-distance ranges.",
+      "failure": "輪滑保護介入與濕軌會降低實際減速度；感測時間不同步也能製造假延遲，須以第二個時鐘和輪速紀錄區分。 應比較壓力建立與地速下降先後，避免誤判煞車故障。~Wheel-slide protection and wet rails can reduce deceleration; unsynchronised sensors can imitate a delay, requiring an independent clock and wheel-speed records. Compare pressure build-up with ground-speed decay before diagnosing a brake fault.",
+      "misconception": "速度增加一成時制動距離必定也只增加一成~A ten percent speed increase must increase braking distance by only ten percent.",
+      "practice": "分別增加延遲與初速，畫出兩條停車曲線；寫出哪個區段對各參數敏感，以及需要哪些現場資料才可建立保護曲線。 再以本單元 v 的對照值重算 distance，提交含單位、輸入來源和模型不適用條件的結果表。~Increase delay and initial speed separately, plot both stopping curves, identify the sensitive phase, and list the field evidence needed before defining a protection curve. Also recalculate distance for the alternative v value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "可用度與修復時間~Availability and repair time",
+      "title": "可用度與修復時間~Availability and repair time",
+      "mechanism": "在簡化更新過程中，可用度是平均故障間隔占故障間隔加修復時間的比例。這個指標不能替代安全性，因為快速恢復服務可能仍保留危險失效；備品、交通與診斷都會影響實際修復時間。 平均故障間隔和平均修復時間必須使用相同服務邊界；備件等待與到場時間若被排除，數字就不能描述旅客看到的中斷。短期樣本也應報告事件數與觀測時間。 把報到系統可用性與列車系統可用性分別呈現。~In a simplified renewal process, availability is mean time between failures divided by that time plus mean repair time. It does not replace safety: rapidly restoring service may leave a hazardous failure unresolved. Spares, travel and diagnosis all affect actual restoration time. Mean time between failures and mean repair time require a common service boundary. Excluding spare-part waiting or travel time prevents the figure from describing passenger-visible interruption. Short samples should also report event count and observation duration. Present check-in system availability separately from train-system availability.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mtbf=1212 h; mttr=4 h；計算：availability=mtbf/(mtbf+mttr)=0.9967105 1。敏感度：mtbf 單獨增加百分之十至 1333.2 h，其餘固定，結果為 0.9970087 1。模型邊界：兩狀態穩態平均模型；不含計畫維修、共同原因與降級服務品質。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mtbf=1212 h; mttr=4 h; calculation: availability=mtbf/(mtbf+mttr)=0.9967105 1. Sensitivity: mtbf, increase this input alone by ten percent, to 1333.2 h, with all other inputs fixed, gives 0.9970087 1. Model boundary: Two-state steady-state mean model; planned maintenance, common causes and degraded service quality are excluded.",
+      "verify": "將故障開始、到場、診斷、修復及恢復服務分段記錄，明確定義可用狀態，避免把降級運轉與完整服務混算。 逐項對照故障開始、服務恢復與維修完成時間，公開排除項，並核對總觀測時數。~Record failure onset, arrival, diagnosis, repair and service restoration separately, define the available state, and avoid mixing degraded operation with full service. Cross-check fault start, service restoration and repair completion for each event, disclose exclusions, and verify total observed hours.",
+      "failure": "只縮短更換時間但備品仍缺貨，可用度未必改善；將延後報修時間排除也會讓數字看似漂亮卻失去代表性。 修好設備和恢復服務可能不同時，須分別記錄終點。~Shorter replacement time may not improve availability when spare parts remain unavailable; excluding reporting delays can also create an unrepresentative figure. Equipment repair and service restoration may occur at different times; record both endpoints.",
+      "misconception": "設備可用度高就表示所有安全風險一定很低~High equipment availability necessarily means every safety risk is low.",
+      "practice": "比較提高故障間隔與縮短修復時間兩種措施，用同一故障定義重算，並列出可用度之外需要追蹤的危險失效指標。 再以本單元 mtbf 的對照值重算 availability，提交含單位、輸入來源和模型不適用條件的結果表。~Compare increasing failure interval with reducing repair time under one failure definition, and list hazardous-failure measures that must be tracked separately from availability. Also recalculate availability for the alternative mtbf value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    }
+  ],
+  "facts": [
+    "已查證背景：1998 年，香港機場快綫配合新機場啟用投入服務。~Verified background: 1998, Hong Kong Airport Express entered service with the new airport.",
+    "教學假設，單元 1：wind=25.25 m/s，計算 moment=68.85675 kN*m；非實測性能。~Teaching assumption, unit 1: wind=25.25 m/s, calculated moment=68.85675 kN*m; not measured performance.",
+    "教學假設，單元 2：L=25.25 m，計算 deflection=0.9451403 mm；非實測性能。~Teaching assumption, unit 2: L=25.25 m, calculated deflection=0.9451403 mm; not measured performance.",
+    "教學假設，單元 3：luggage=61 persons，計算 equivalent_demand=197.6 equivalent persons；非實測性能。~Teaching assumption, unit 3: luggage=61 persons, calculated equivalent_demand=197.6 equivalent persons; not measured performance.",
+    "教學假設，單元 4：mean=181.8 s，計算 wait=100.801 s；非實測性能。~Teaching assumption, unit 4: mean=181.8 s, calculated wait=100.801 s; not measured performance.",
+    "教學假設，單元 5：distance=181.8 m，計算 margin=73.2 s；非實測性能。~Teaching assumption, unit 5: distance=181.8 m, calculated margin=73.2 s; not measured performance."
+  ],
+  "timeline": [
+    {
+      "year": "1998",
+      "event": "香港機場快綫配合新機場啟用投入服務~Hong Kong Airport Express entered service with the new airport"
+    },
+    {
+      "year": "2005",
+      "event": "機場快綫延伸至亞洲國際博覽館站~Airport Express was extended to AsiaWorld-Expo station"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第二部分安全系統方法~IEC published the revised railway RAMS Part 2 systems approach to safety"
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025，鐵道 RAMS 通用程序；方法參考，不等同本案合約要求~IEC 62278-1:2025, railway RAMS generic process; methodological reference, not a project contract requirement",
+    "IEC 62278-2:2025，鐵道安全系統方法；應另查現地適用規範~IEC 62278-2:2025, systems approach to railway safety; local applicable rules require separate checking"
+  ],
+  "landmarks": [
+    "香港機場快綫~Hong Kong Airport Express",
+    "新加坡東北地鐵線~Singapore North East Line"
+  ],
+  "place": {
+    "name": "香港九龍站周邊~Hong Kong Kowloon station area",
+    "country": "香港~Hong Kong",
+    "lat": 22.304,
+    "lng": 114.161,
+    "query": "Hong Kong Kowloon station area"
+  },
+  "sources": [
+    {
+      "key": "b323-history",
+      "title": "專案官方歷史與路網背景",
+      "titleEn": "Official project history and network context",
+      "publisher": "Hong Kong Highways Department",
+      "url": "https://www.hyd.gov.hk/en/road_and_railway/railway_network/ael/index.html",
+      "sourceType": "primary",
+      "scope": "支援已標示的公開歷史事件；不提供本課程假想數值，也不證實所有模型適用於現地。",
+      "scopeEn": "Supports stated public historical events; does not supply invented numerical inputs or validate all models for the actual site."
+    },
+    {
+      "key": "b323-iec-rams-1",
+      "title": "鐵道 RAMS 第一部分通用程序",
+      "titleEn": "Railway RAMS Part 1 generic process",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "IEC 62278-1:2025 書目與通用程序範圍；作為需求及證據整理參考，不宣稱本案採用特定條款。",
+      "scopeEn": "Bibliographic edition and generic process scope of IEC 62278-1:2025; a requirements and evidence reference, not a claim about project-specific clauses."
+    },
+    {
+      "key": "b323-iec-rams-2",
+      "title": "鐵道 RAMS 第二部分安全系統方法",
+      "titleEn": "Railway RAMS Part 2 systems approach to safety",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/79793",
+      "sourceType": "primary",
+      "scope": "IEC 62278-2:2025 書目與安全系統方法範圍；不重製付費標準條文。",
+      "scopeEn": "Bibliographic edition and systems approach scope of IEC 62278-2:2025; no reproduction of paid standard text."
+    },
+    {
+      "key": "b323-background",
+      "title": "機構專案與工程背景補充",
+      "titleEn": "Institutional project and engineering background supplement",
+      "publisher": "Primary institution at www.mtr.com.hk",
+      "url": "https://www.mtr.com.hk/en/customer/services/airport_express_index.html",
+      "sourceType": "primary",
+      "scope": "補充時間線與路網介面背景；詳細設計參數仍以原始工程文件為準。",
+      "scopeEn": "Additional chronology and network-interface context; detailed design parameters remain subject to original project documentation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "鐵道車輛與基礎設施技術",
+      "businessEn": "Rail vehicles and infrastructure technology",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail.html",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "阿爾斯通",
+      "nameEn": "Alstom",
+      "business": "鐵道車輛與號誌技術",
+      "businessEn": "Rail vehicles and signalling technology",
+      "url": "https://www.alstom.com/solutions",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "related": [
+    "b324",
+    "b330"
+  ],
+  "architectureNodes": [
+    [
+      "路線與土建",
+      "Alignment and civil works"
+    ],
+    [
+      "車輛與接觸",
+      "Vehicle and contact"
+    ],
+    [
+      "牽引供電",
+      "Traction supply"
+    ],
+    [
+      "行車控制",
+      "Movement control"
+    ],
+    [
+      "車站與旅客",
+      "Stations and passengers"
+    ],
+    [
+      "監測與維護",
+      "Monitoring and maintenance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

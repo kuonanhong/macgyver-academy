@@ -1,0 +1,19 @@
+[Unit]
+Description=MacGyver Academy V16 protected backend
+After=network.target
+
+[Service]
+Type=simple
+User=macgyver
+Group=macgyver
+WorkingDirectory=/opt/macgyver
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /opt/macgyver/portable/launch_v16.py --host 127.0.0.1 --port 8010
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

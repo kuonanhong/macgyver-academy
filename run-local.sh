@@ -21,4 +21,4 @@ if [[ -z "$PYTHON_EXE" ]]; then
   exit 1
 fi
 "$PYTHON_EXE" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) else "需要 Python 3.10+")'
-exec "$PYTHON_EXE" "$TASK_ROOT/portable/server.py" "$@"
+exec "$PYTHON_EXE" "$TASK_ROOT/portable/launch_v16.py" "$@"

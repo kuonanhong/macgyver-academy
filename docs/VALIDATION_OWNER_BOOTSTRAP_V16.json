@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "Actual private owner bootstrap and full V16 source via isolated loopback HTTP server",
+  "entryPoint": "portable.launch_v16.main -> portable.server.main",
+  "database": "temporary; removed after verification",
+  "bind": "127.0.0.1, ephemeral port",
+  "checks": {
+    "launcherForcesProtectedMode": true,
+    "actualPrivateBootstrapImported": true,
+    "guestFirstStageOnly": true,
+    "rawOwnerCourseDenied": true,
+    "actualOwnerPasswordLogin": true,
+    "ownerFullB301BothEndpoints": true,
+    "ownerAccessWithoutPayment": true,
+    "logoutRevokesAuthorityAndRestoresPreview": true,
+    "restartPreservesExistingOwnerPasswordAndSession": true
+  },
+  "externalCalls": false,
+  "secretsInReport": false,
+  "curriculumModified": false,
+  "course": {
+    "id": "b301",
+    "stages": 8,
+    "fullSteps": 52,
+    "previewSteps": 4
+  }
+}

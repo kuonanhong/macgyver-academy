@@ -38,7 +38,7 @@ class MacGyverShellTests(unittest.TestCase):
         self.bin.mkdir()
         self.log = self.base / 'commands.log'
         self.conf = self.base / 'settings.conf'
-        for name in ('macgyver.sh', 'upload-all.sh'):
+        for name in ('macgyver.sh', 'macgyver-legacy-v15.sh', 'upload-all.sh', 'Upload_MacGyver_v16_SSH.sh'):
             shutil.copy2(SOURCE / name, self.root / name)
         (self.root / 'tools').mkdir()
         (self.root / 'tools/model-manifest.json').write_text(json.dumps({

@@ -1,0 +1,251 @@
+{
+  "id": "b346",
+  "title": "浮動式道床減振~Floating-slab track vibration isolation",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "浮動道床隔振共振及附加質量效應~Floating-slab isolation resonance and added-mass effects",
+  "summary": "浮動式道床減振以「浮動道床隔振共振及附加質量效應」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。浮動式道床利用彈性支承把軌道質量與基礎分開，低頻共振與高頻隔振同時存在；隔振效果必須指定輸入位置、輸出位置與頻率範圍。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops floating-slab isolation resonance and added-mass effects through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Floating slabs separate track mass from the foundation through resilient supports, creating both low-frequency resonance and high-frequency isolation; performance needs specified input and output positions and frequency range. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把浮動式道床減振放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。浮動式道床利用彈性支承把軌道質量與基礎分開，低頻共振與高頻隔振同時存在；隔振效果必須指定輸入位置、輸出位置與頻率範圍。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Floating-slab track vibration isolation in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Floating slabs separate track mass from the foundation through resilient supports, creating both low-frequency resonance and high-frequency isolation; performance needs specified input and output positions and frequency range. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：k=4000000 N/m, m=10000 kg；y=sqrt(k/m)/(2*pi)=3.1831 Hz。只把 k 增加百分之十，y=3.33846 Hz。模型邊界：線性單自由度且基礎固定；計算無阻尼固有頻率；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：m=10000 kg, g=9.81 m/s2, k=4000000 N/m；y=m*g/k*1000=24.525 mm。只把 m 增加百分之十，y=26.9775 mm。模型邊界：重力載荷平均且支承線性；不含動載與限位接觸；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: k=4000000 N/m, m=10000 kg; y=sqrt(k/m)/(2*pi)=3.1831 Hz. Increasing only k with a ten-percent increase gives y=3.33846 Hz. Boundary: Linear single-degree system with a fixed base; the calculated frequency is undamped; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: m=10000 kg, g=9.81 m/s2, k=4000000 N/m; y=m*g/k*1000=24.525 mm. Increasing only m with a ten-percent increase gives y=26.9775 mm. Boundary: Gravity load is steady and support linear; dynamic load and travel-stop contact are excluded; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "隔振固有頻率~Isolation natural frequency",
+      "title": "隔振固有頻率~Isolation natural frequency",
+      "mechanism": "固有頻率由剛度質量比的平方根決定。本模型把 k 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 3.33846 Hz。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。線性單自由度且基礎固定；計算無阻尼固有頻率。使用自由衰減頻率作量測證據，才能檢查方程是否對應此處的實際物理量；支承硬化會提高固有頻率，因此應把該原因與量測偏差分開。~Natural frequency follows the square root of stiffness-to-mass ratio. In this model, k is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 3.33846 Hz. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Linear single-degree system with a fixed base; the calculated frequency is undamped. Use free-decay frequency as measurement evidence that the equation represents the intended physical quantity. Support hardening raises natural frequency; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k=4000000 N/m, m=10000 kg；y=sqrt(k/m)/(2*pi)=3.1831 Hz。只把 k 增加百分之十，y=3.33846 Hz。模型邊界：線性單自由度且基礎固定；計算無阻尼固有頻率；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k=4000000 N/m, m=10000 kg; y=sqrt(k/m)/(2*pi)=3.1831 Hz. Increasing only k with a ten-percent increase gives y=3.33846 Hz. Boundary: Linear single-degree system with a fixed base; the calculated frequency is undamped; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以自由衰減頻率區分模型與觀察，先用模型質量、靜剛度與經阻尼修正的自由衰減頻率建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「隔振固有頻率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use free-decay frequency to distinguish the model from observation in this unit. Establish a baseline using model mass, static stiffness and damping-corrected free-decay frequency, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Isolation natural frequency. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "支承硬化會提高固有頻率。這個失效與「隔振固有頻率」的量測偏差可能產生相似表象，因此必須同時檢查自由衰減頻率，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Support hardening raises natural frequency. This failure and a measurement bias in Isolation natural frequency can produce similar symptoms. Cross-check free-decay frequency rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：支承硬化會提高固有頻率~This unit cannot exhibit the following failure: Support hardening raises natural frequency.",
+      "practice": "重算「隔振固有頻率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出線性單自由度且基礎固定；計算無阻尼固有頻率如何限制結論。接著設計一組符合模型及一組由支承硬化會提高固有頻率造成偏離的合成觀察，以自由衰減頻率說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Isolation natural frequency, plot the input-output relationship, and explain the limiting assumption: Linear single-degree system with a fixed base; the calculated frequency is undamped. Construct one synthetic observation consistent with the model and another affected by this failure: Support hardening raises natural frequency. Explain which evidence in free-decay frequency distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "靜載壓縮量~Static support compression",
+      "title": "靜載壓縮量~Static support compression",
+      "mechanism": "靜壓縮提供剛度量級檢查，但不能直接證明動態隔振。本模型把 m 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 26.9775 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。重力載荷平均且支承線性；不含動載與限位接觸。使用靜態高度與總載重作量測證據，才能檢查方程是否對應此處的實際物理量；支承到底會使線性隔振失效，因此應把該原因與量測偏差分開。~Static compression checks stiffness scale but does not establish dynamic isolation. In this model, m is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 26.9775 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Gravity load is steady and support linear; dynamic load and travel-stop contact are excluded. Use static height and total load as measurement evidence that the equation represents the intended physical quantity. Bottoming out invalidates linear isolation; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：m=10000 kg, g=9.81 m/s2, k=4000000 N/m；y=m*g/k*1000=24.525 mm。只把 m 增加百分之十，y=26.9775 mm。模型邊界：重力載荷平均且支承線性；不含動載與限位接觸；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: m=10000 kg, g=9.81 m/s2, k=4000000 N/m; y=m*g/k*1000=24.525 mm. Increasing only m with a ten-percent increase gives y=26.9775 mm. Boundary: Gravity load is steady and support linear; dynamic load and travel-stop contact are excluded; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以靜態高度與總載重區分模型與觀察，先用模型總重、各支承高度及靜態載入卸載建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「靜載壓縮量」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use static height and total load to distinguish the model from observation in this unit. Establish a baseline using model total weight, individual support heights and static loading-unloading, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Static support compression. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "支承到底會使線性隔振失效。這個失效與「靜載壓縮量」的量測偏差可能產生相似表象，因此必須同時檢查靜態高度與總載重，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Bottoming out invalidates linear isolation. This failure and a measurement bias in Static support compression can produce similar symptoms. Cross-check static height and total load rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：支承到底會使線性隔振失效~This unit cannot exhibit the following failure: Bottoming out invalidates linear isolation.",
+      "practice": "重算「靜載壓縮量」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出重力載荷平均且支承線性；不含動載與限位接觸如何限制結論。接著設計一組符合模型及一組由支承到底會使線性隔振失效造成偏離的合成觀察，以靜態高度與總載重說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Static support compression, plot the input-output relationship, and explain the limiting assumption: Gravity load is steady and support linear; dynamic load and travel-stop contact are excluded. Construct one synthetic observation consistent with the model and another affected by this failure: Bottoming out invalidates linear isolation. Explain which evidence in static height and total load distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "阻尼比估算~Damping ratio estimate",
+      "title": "阻尼比估算~Damping ratio estimate",
+      "mechanism": "阻尼比將黏性阻尼相對於臨界阻尼正規化。本模型把 c 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.0825 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。黏性阻尼與線性剛度已知；不把庫侖摩擦視為固定黏性阻尼。使用衰減包絡與頻率作量測證據，才能檢查方程是否對應此處的實際物理量；摩擦阻尼不一定可由固定黏性係數表示，因此應把該原因與量測偏差分開。~Damping ratio normalizes viscous damping by critical damping. In this model, c is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.0825 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Viscous damping and linear stiffness are known; Coulomb friction is not treated as constant viscous damping. Use decay envelope and frequency as measurement evidence that the equation represents the intended physical quantity. Friction damping need not match a fixed viscous coefficient; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：c=30000 Ns/m, k=4000000 N/m, m=10000 kg；y=c/(2*sqrt(k*m))=0.075 1。只把 c 增加百分之十，y=0.0825 1。模型邊界：黏性阻尼與線性剛度已知；不把庫侖摩擦視為固定黏性阻尼；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: c=30000 Ns/m, k=4000000 N/m, m=10000 kg; y=c/(2*sqrt(k*m))=0.075 1. Increasing only c with a ten-percent increase gives y=0.0825 1. Boundary: Viscous damping and linear stiffness are known; Coulomb friction is not treated as constant viscous damping; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以衰減包絡與頻率區分模型與觀察，先用模型自由衰減包絡、多振幅試驗及頻率估計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「阻尼比估算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use decay envelope and frequency to distinguish the model from observation in this unit. Establish a baseline using model free-decay envelopes, several vibration amplitudes and frequency estimates, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Damping ratio estimate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "摩擦阻尼不一定可由固定黏性係數表示。這個失效與「阻尼比估算」的量測偏差可能產生相似表象，因此必須同時檢查衰減包絡與頻率，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Friction damping need not match a fixed viscous coefficient. This failure and a measurement bias in Damping ratio estimate can produce similar symptoms. Cross-check decay envelope and frequency rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：摩擦阻尼不一定可由固定黏性係數表示~This unit cannot exhibit the following failure: Friction damping need not match a fixed viscous coefficient.",
+      "practice": "重算「阻尼比估算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出黏性阻尼與線性剛度已知；不把庫侖摩擦視為固定黏性阻尼如何限制結論。接著設計一組符合模型及一組由摩擦阻尼不一定可由固定黏性係數表示造成偏離的合成觀察，以衰減包絡與頻率說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Damping ratio estimate, plot the input-output relationship, and explain the limiting assumption: Viscous damping and linear stiffness are known; Coulomb friction is not treated as constant viscous damping. Construct one synthetic observation consistent with the model and another affected by this failure: Friction damping need not match a fixed viscous coefficient. Explain which evidence in decay envelope and frequency distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "頻率比辨認~Frequency-ratio identification",
+      "title": "頻率比辨認~Frequency-ratio identification",
+      "mechanism": "激振與固有頻率的比值比任一頻率單獨更有判讀力。本模型把 f 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 8.59375 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。激振為單一頻率且固有頻率採同一工況。使用輸入頻譜與模態頻率作量測證據，才能檢查方程是否對應此處的實際物理量；只看峰值幅度會漏掉共振移動，因此應把該原因與量測偏差分開。~The forcing-to-natural frequency ratio is more informative than either frequency alone. In this model, f is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 8.59375 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Excitation has one frequency and natural frequency uses the same operating condition. Use input spectrum and modal frequency as measurement evidence that the equation represents the intended physical quantity. Amplitude alone can miss a shifted resonance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：f=25 Hz, fn=3.2 Hz；y=f/fn=7.8125 1。只把 f 增加百分之十，y=8.59375 1。模型邊界：激振為單一頻率且固有頻率採同一工況；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: f=25 Hz, fn=3.2 Hz; y=f/fn=7.8125 1. Increasing only f with a ten-percent increase gives y=8.59375 1. Boundary: Excitation has one frequency and natural frequency uses the same operating condition; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以輸入頻譜與模態頻率區分模型與觀察，先用合成輸入力頻譜、模態試驗與相同載重紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「頻率比辨認」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use input spectrum and modal frequency to distinguish the model from observation in this unit. Establish a baseline using synthetic input-force spectrum, modal test and matched loading records, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Frequency-ratio identification. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只看峰值幅度會漏掉共振移動。這個失效與「頻率比辨認」的量測偏差可能產生相似表象，因此必須同時檢查輸入頻譜與模態頻率，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Amplitude alone can miss a shifted resonance. This failure and a measurement bias in Frequency-ratio identification can produce similar symptoms. Cross-check input spectrum and modal frequency rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只看峰值幅度會漏掉共振移動~This unit cannot exhibit the following failure: Amplitude alone can miss a shifted resonance.",
+      "practice": "重算「頻率比辨認」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出激振為單一頻率且固有頻率採同一工況如何限制結論。接著設計一組符合模型及一組由只看峰值幅度會漏掉共振移動造成偏離的合成觀察，以輸入頻譜與模態頻率說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Frequency-ratio identification, plot the input-output relationship, and explain the limiting assumption: Excitation has one frequency and natural frequency uses the same operating condition. Construct one synthetic observation consistent with the model and another affected by this failure: Amplitude alone can miss a shifted resonance. Explain which evidence in input spectrum and modal frequency distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "力傳遞率估算~Force transmissibility estimate",
+      "title": "力傳遞率估算~Force transmissibility estimate",
+      "mechanism": "線性力傳遞率含共振分母與阻尼路徑。本模型把 r 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出減少為 0.12088 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。諧波力作用在質塊、基礎固定且線性穩態；不是任意基礎激振公式。使用輸入力與基礎反力作量測證據，才能檢查方程是否對應此處的實際物理量；過大阻尼在高頻可增加傳遞，因此應把該原因與量測偏差分開。~Linear force transmissibility contains a resonance denominator and damping path. In this model, r is deliberately changed while every other input is held fixed. A ten-percent increase means the output decreases to 0.12088 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Harmonic force acts on the mass with a fixed base in linear steady state; not a formula for arbitrary base excitation. Use input force and foundation reaction as measurement evidence that the equation represents the intended physical quantity. Excess damping can increase high-frequency transmission; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：r=3 1, zeta=0.1 1；y=sqrt(1+(2*zeta*r)**2)/sqrt((1-r**2)**2+(2*zeta*r)**2)=0.145366 1。只把 r 增加百分之十，y=0.12088 1。模型邊界：諧波力作用在質塊、基礎固定且線性穩態；不是任意基礎激振公式；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: r=3 1, zeta=0.1 1; y=sqrt(1+(2*zeta*r)**2)/sqrt((1-r**2)**2+(2*zeta*r)**2)=0.145366 1. Increasing only r with a ten-percent increase gives y=0.12088 1. Boundary: Harmonic force acts on the mass with a fixed base in linear steady state; not a formula for arbitrary base excitation; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以輸入力與基礎反力區分模型與觀察，先用模型輸入力與基礎反力的同步幅值及相位建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「力傳遞率估算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use input force and foundation reaction to distinguish the model from observation in this unit. Establish a baseline using synchronized model input-force and base-reaction amplitudes and phases, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Force transmissibility estimate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "過大阻尼在高頻可增加傳遞。這個失效與「力傳遞率估算」的量測偏差可能產生相似表象，因此必須同時檢查輸入力與基礎反力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Excess damping can increase high-frequency transmission. This failure and a measurement bias in Force transmissibility estimate can produce similar symptoms. Cross-check input force and foundation reaction rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：過大阻尼在高頻可增加傳遞~This unit cannot exhibit the following failure: Excess damping can increase high-frequency transmission.",
+      "practice": "重算「力傳遞率估算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出諧波力作用在質塊、基礎固定且線性穩態；不是任意基礎激振公式如何限制結論。接著設計一組符合模型及一組由過大阻尼在高頻可增加傳遞造成偏離的合成觀察，以輸入力與基礎反力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Force transmissibility estimate, plot the input-output relationship, and explain the limiting assumption: Harmonic force acts on the mass with a fixed base in linear steady state; not a formula for arbitrary base excitation. Construct one synthetic observation consistent with the model and another affected by this failure: Excess damping can increase high-frequency transmission. Explain which evidence in input force and foundation reaction distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "支承數量分力~Load per isolator",
+      "title": "支承數量分力~Load per isolator",
+      "mechanism": "均勻分力只適用對稱幾何與重心位置。本模型把 m 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 13.4887 kN。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。支承對稱、剛度相同且重心居中；只算靜載。使用各支承壓縮與反力作量測證據，才能檢查方程是否對應此處的實際物理量；重心偏移使單支承過載，因此應把該原因與量測偏差分開。~Equal support load requires symmetric geometry and centre of mass. In this model, m is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 13.4887 kN. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Supports are symmetric, equally stiff and centered beneath the mass; static load only. Use compression and reaction at each support as measurement evidence that the equation represents the intended physical quantity. A shifted centre of mass overloads individual supports; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：m=10000 kg, g=9.81 m/s2, n=8 count；y=m*g/n/1000=12.2625 kN。只把 m 增加百分之十，y=13.4887 kN。模型邊界：支承對稱、剛度相同且重心居中；只算靜載；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: m=10000 kg, g=9.81 m/s2, n=8 count; y=m*g/n/1000=12.2625 kN. Increasing only m with a ten-percent increase gives y=13.4887 kN. Boundary: Supports are symmetric, equally stiff and centered beneath the mass; static load only; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以各支承壓縮與反力區分模型與觀察，先用各支承模型力計、壓縮量及重心位置建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「支承數量分力」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use compression and reaction at each support to distinguish the model from observation in this unit. Establish a baseline using individual model support force gauges, compression and center-of-mass location, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Load per isolator. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "重心偏移使單支承過載。這個失效與「支承數量分力」的量測偏差可能產生相似表象，因此必須同時檢查各支承壓縮與反力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A shifted centre of mass overloads individual supports. This failure and a measurement bias in Load per isolator can produce similar symptoms. Cross-check compression and reaction at each support rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：重心偏移使單支承過載~This unit cannot exhibit the following failure: A shifted centre of mass overloads individual supports.",
+      "practice": "重算「支承數量分力」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出支承對稱、剛度相同且重心居中；只算靜載如何限制結論。接著設計一組符合模型及一組由重心偏移使單支承過載造成偏離的合成觀察，以各支承壓縮與反力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Load per isolator, plot the input-output relationship, and explain the limiting assumption: Supports are symmetric, equally stiff and centered beneath the mass; static load only. Construct one synthetic observation consistent with the model and another affected by this failure: A shifted centre of mass overloads individual supports. Explain which evidence in compression and reaction at each support distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "剛度不均分力~Unequal-stiffness force share",
+      "title": "剛度不均分力~Unequal-stiffness force share",
+      "mechanism": "同位移支承中較硬者承受較大力。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 66 kN。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。剛性板保持兩支承同位移且無轉動；兩者皆接觸。使用支承高度與剛度作量測證據，才能檢查方程是否對應此處的實際物理量；只檢查總剛度會漏掉局部過載，因此應把該原因與量測偏差分開。~The stiffer support carries more force when displacement is shared. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 66 kN. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. A rigid plate maintains identical support displacement without rotation; both supports remain in contact. Use support height and stiffness as measurement evidence that the equation represents the intended physical quantity. Checking total stiffness alone misses local overload; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=100 kN, k1=30 kN/mm, k2=20 kN/mm；y=F*k1/(k1+k2)=60 kN。只把 F 增加百分之十，y=66 kN。模型邊界：剛性板保持兩支承同位移且無轉動；兩者皆接觸；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=100 kN, k1=30 kN/mm, k2=20 kN/mm; y=F*k1/(k1+k2)=60 kN. Increasing only F with a ten-percent increase gives y=66 kN. Boundary: A rigid plate maintains identical support displacement without rotation; both supports remain in contact; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以支承高度與剛度區分模型與觀察，先用兩支承分力、共同位移及板體轉角建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「剛度不均分力」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use support height and stiffness to distinguish the model from observation in this unit. Establish a baseline using separate support forces, shared displacement and plate rotation, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Unequal-stiffness force share. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只檢查總剛度會漏掉局部過載。這個失效與「剛度不均分力」的量測偏差可能產生相似表象，因此必須同時檢查支承高度與剛度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Checking total stiffness alone misses local overload. This failure and a measurement bias in Unequal-stiffness force share can produce similar symptoms. Cross-check support height and stiffness rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只檢查總剛度會漏掉局部過載~This unit cannot exhibit the following failure: Checking total stiffness alone misses local overload.",
+      "practice": "重算「剛度不均分力」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出剛性板保持兩支承同位移且無轉動；兩者皆接觸如何限制結論。接著設計一組符合模型及一組由只檢查總剛度會漏掉局部過載造成偏離的合成觀察，以支承高度與剛度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Unequal-stiffness force share, plot the input-output relationship, and explain the limiting assumption: A rigid plate maintains identical support displacement without rotation; both supports remain in contact. Construct one synthetic observation consistent with the model and another affected by this failure: Checking total stiffness alone misses local overload. Explain which evidence in support height and stiffness distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "間隙餘量檢查~Clearance reserve",
+      "title": "間隙餘量檢查~Clearance reserve",
+      "mechanism": "靜壓縮與動態振幅都消耗同一間隙。本模型把 gap 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 14 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。動態量是朝限位方向的峰值位移；與靜壓縮共用同一基準。使用最小間隙與峰值位移作量測證據，才能檢查方程是否對應此處的實際物理量；異物橋接會旁路隔振支承，因此應把該原因與量測偏差分開。~Static compression and dynamic amplitude consume the same clearance. In this model, gap is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 14 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Dynamic motion is peak displacement toward the stop and shares a datum with static compression. Use minimum clearance and peak displacement as measurement evidence that the equation represents the intended physical quantity. Foreign material can bridge and bypass the isolation support; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：gap=40 mm, static=24 mm, dynamic=6 mm；y=gap-static-dynamic=10 mm。只把 gap 增加百分之十，y=14 mm。模型邊界：動態量是朝限位方向的峰值位移；與靜壓縮共用同一基準；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: gap=40 mm, static=24 mm, dynamic=6 mm; y=gap-static-dynamic=10 mm. Increasing only gap with a ten-percent increase gives y=14 mm. Boundary: Dynamic motion is peak displacement toward the stop and shares a datum with static compression; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以最小間隙與峰值位移區分模型與觀察，先用模型最小淨距、靜壓縮及同步動態峰值建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「間隙餘量檢查」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use minimum clearance and peak displacement to distinguish the model from observation in this unit. Establish a baseline using model minimum clearance, static compression and synchronous dynamic peaks, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Clearance reserve. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "異物橋接會旁路隔振支承。這個失效與「間隙餘量檢查」的量測偏差可能產生相似表象，因此必須同時檢查最小間隙與峰值位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Foreign material can bridge and bypass the isolation support. This failure and a measurement bias in Clearance reserve can produce similar symptoms. Cross-check minimum clearance and peak displacement rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：異物橋接會旁路隔振支承~This unit cannot exhibit the following failure: Foreign material can bridge and bypass the isolation support.",
+      "practice": "重算「間隙餘量檢查」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出動態量是朝限位方向的峰值位移；與靜壓縮共用同一基準如何限制結論。接著設計一組符合模型及一組由異物橋接會旁路隔振支承造成偏離的合成觀察，以最小間隙與峰值位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Clearance reserve, plot the input-output relationship, and explain the limiting assumption: Dynamic motion is peak displacement toward the stop and shares a datum with static compression. Construct one synthetic observation consistent with the model and another affected by this failure: Foreign material can bridge and bypass the isolation support. Explain which evidence in minimum clearance and peak displacement distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "積水附加質量~Water added mass",
+      "title": "積水附加質量~Water added mass",
+      "mechanism": "排水不良會增加質量且改變固有頻率。本模型把 rho 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 660 kg。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。水深及面積均勻且水全隨板體運動；不含流動與晃動。使用水位與模態頻率作量測證據，才能檢查方程是否對應此處的實際物理量；積水也可能形成額外接觸阻尼，因此應把該原因與量測偏差分開。~Poor drainage adds mass and changes natural frequency. In this model, rho is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 660 kg. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Water depth and area are uniform and water moves fully with the slab; flow and sloshing are excluded. Use water depth and modal frequency as measurement evidence that the equation represents the intended physical quantity. Standing water can create additional contact damping; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：rho=1000 kg/m3, A=20 m2, h=0.03 m；y=rho*A*h=600 kg。只把 rho 增加百分之十，y=660 kg。模型邊界：水深及面積均勻且水全隨板體運動；不含流動與晃動；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: rho=1000 kg/m3, A=20 m2, h=0.03 m; y=rho*A*h=600 kg. Increasing only rho with a ten-percent increase gives y=660 kg. Boundary: Water depth and area are uniform and water moves fully with the slab; flow and sloshing are excluded; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以水位與模態頻率區分模型與觀察，先用模型積水深度網格、總水量及振動頻率建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「積水附加質量」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use water depth and modal frequency to distinguish the model from observation in this unit. Establish a baseline using model water-depth grid, total water volume and vibration frequency, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Water added mass. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "積水也可能形成額外接觸阻尼。這個失效與「積水附加質量」的量測偏差可能產生相似表象，因此必須同時檢查水位與模態頻率，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Standing water can create additional contact damping. This failure and a measurement bias in Water added mass can produce similar symptoms. Cross-check water depth and modal frequency rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：積水也可能形成額外接觸阻尼~This unit cannot exhibit the following failure: Standing water can create additional contact damping.",
+      "practice": "重算「積水附加質量」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出水深及面積均勻且水全隨板體運動；不含流動與晃動如何限制結論。接著設計一組符合模型及一組由積水也可能形成額外接觸阻尼造成偏離的合成觀察，以水位與模態頻率說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Water added mass, plot the input-output relationship, and explain the limiting assumption: Water depth and area are uniform and water moves fully with the slab; flow and sloshing are excluded. Construct one synthetic observation consistent with the model and another affected by this failure: Standing water can create additional contact damping. Explain which evidence in water depth and modal frequency distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "頻率降低敏感度~Frequency reduction sensitivity",
+      "title": "頻率降低敏感度~Frequency reduction sensitivity",
+      "mechanism": "增加質量會降低頻率，但也增加靜態壓縮。本模型把 k 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 3.1831 Hz。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。附加質量剛接於原質塊且剛度不變；支承仍在線性行程內。使用載重前後頻率與高度作量測證據，才能檢查方程是否對應此處的實際物理量；只追求低頻會忽略剩餘行程不足，因此應把該原因與量測偏差分開。~Added mass lowers frequency while increasing static compression. In this model, k is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 3.1831 Hz. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Added mass is rigidly attached and stiffness unchanged; supports remain within linear travel. Use frequency and height before and after added load as measurement evidence that the equation represents the intended physical quantity. Pursuing low frequency alone ignores insufficient travel reserve; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k=4000000 N/m, m=10000 kg, dm=1000 kg；y=sqrt(k/(m+dm))/(2*pi)=3.03497 Hz。只把 k 增加百分之十，y=3.1831 Hz。模型邊界：附加質量剛接於原質塊且剛度不變；支承仍在線性行程內；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k=4000000 N/m, m=10000 kg, dm=1000 kg; y=sqrt(k/(m+dm))/(2*pi)=3.03497 Hz. Increasing only k with a ten-percent increase gives y=3.1831 Hz. Boundary: Added mass is rigidly attached and stiffness unchanged; supports remain within linear travel; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以載重前後頻率與高度區分模型與觀察，先用模型加重前後質量、靜態高度與模態頻率建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「頻率降低敏感度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use frequency and height before and after added load to distinguish the model from observation in this unit. Establish a baseline using model masses, static heights and modal frequencies before and after added load, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Frequency reduction sensitivity. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只追求低頻會忽略剩餘行程不足。這個失效與「頻率降低敏感度」的量測偏差可能產生相似表象，因此必須同時檢查載重前後頻率與高度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Pursuing low frequency alone ignores insufficient travel reserve. This failure and a measurement bias in Frequency reduction sensitivity can produce similar symptoms. Cross-check frequency and height before and after added load rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只追求低頻會忽略剩餘行程不足~This unit cannot exhibit the following failure: Pursuing low frequency alone ignores insufficient travel reserve.",
+      "practice": "重算「頻率降低敏感度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出附加質量剛接於原質塊且剛度不變；支承仍在線性行程內如何限制結論。接著設計一組符合模型及一組由只追求低頻會忽略剩餘行程不足造成偏離的合成觀察，以載重前後頻率與高度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Frequency reduction sensitivity, plot the input-output relationship, and explain the limiting assumption: Added mass is rigidly attached and stiffness unchanged; supports remain within linear travel. Construct one synthetic observation consistent with the model and another affected by this failure: Pursuing low frequency alone ignores insufficient travel reserve. Explain which evidence in frequency and height before and after added load distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：k=4000000 N/m, m=10000 kg；y=sqrt(k/m)/(2*pi)=3.1831 Hz~Teaching unit 1 baseline scale: Original assumed example, not field operating values: k=4000000 N/m, m=10000 kg; y=sqrt(k/m)/(2*pi)=3.1831 Hz.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：m=10000 kg, g=9.81 m/s2, k=4000000 N/m；y=m*g/k*1000=24.525 mm~Teaching unit 2 baseline scale: Original assumed example, not field operating values: m=10000 kg, g=9.81 m/s2, k=4000000 N/m; y=m*g/k*1000=24.525 mm.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：c=30000 Ns/m, k=4000000 N/m, m=10000 kg；y=c/(2*sqrt(k*m))=0.075 1~Teaching unit 3 baseline scale: Original assumed example, not field operating values: c=30000 Ns/m, k=4000000 N/m, m=10000 kg; y=c/(2*sqrt(k*m))=0.075 1.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：f=25 Hz, fn=3.2 Hz；y=f/fn=7.8125 1~Teaching unit 4 baseline scale: Original assumed example, not field operating values: f=25 Hz, fn=3.2 Hz; y=f/fn=7.8125 1.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：r=3 1, zeta=0.1 1；y=sqrt(1+(2*zeta*r)**2)/sqrt((1-r**2)**2+(2*zeta*r)**2)=0.145366 1~Teaching unit 5 baseline scale: Original assumed example, not field operating values: r=3 1, zeta=0.1 1; y=sqrt(1+(2*zeta*r)**2)/sqrt((1-r**2)**2+(2*zeta*r)**2)=0.145366 1.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：m=10000 kg, g=9.81 m/s2, n=8 count；y=m*g/n/1000=12.2625 kN~Teaching unit 6 baseline scale: Original assumed example, not field operating values: m=10000 kg, g=9.81 m/s2, n=8 count; y=m*g/n/1000=12.2625 kN."
+  ],
+  "timeline": [
+    {
+      "year": "2006-10",
+      "event": "運輸研究委員會發布軌道過渡段比較研究摘要。~TRB published its comparative research digest on track transitions."
+    },
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布整合基礎設施互通規範第一二九九號法規。~The EU issued Regulation 1299/2014 for the infrastructure interoperability specification."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "美國聯邦法規第四十九篇第二百十三部分：軌道比較閱讀。~US 49 CFR Part 213: comparative reading on track requirements."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-trans",
+      "title": "軌道過渡段研究報告",
+      "titleEn": "Design of Track Transitions, Research Results Digest 79",
+      "publisher": "Transportation Research Board / FRA",
+      "url": "https://railroads.dot.gov/sites/fra.dot.gov/files/fra_net/14977/Research%20Results%20Digest%2079%20Design%20of%20Track%20Transitions.pdf",
+      "sourceType": "primary",
+      "scope": "過渡段比較研究入口；本課數值是另行設定的縮減模型。",
+      "scopeEn": "Entry point for transition research; numerical values in this course belong to separately assumed reduced models."
+    },
+    {
+      "key": "track-tsi",
+      "title": "歐洲鐵路基礎設施互通規範入口",
+      "titleEn": "Infrastructure TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/infrastructure-tsi_en",
+      "sourceType": "primary",
+      "scope": "基礎設施互通要求的官方入口；教材算例不是規範限值。",
+      "scopeEn": "Official infrastructure interoperability entry point; teaching calculations are not regulatory limits."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b347",
+    "b355"
+  ],
+  "architectureNodes": [
+    [
+      "輪軌激振",
+      "Wheel-rail excitation"
+    ],
+    [
+      "浮置板質量",
+      "Floating mass"
+    ],
+    [
+      "隔振支承",
+      "Isolation support"
+    ],
+    [
+      "基礎反應",
+      "Foundation response"
+    ],
+    [
+      "位移行程",
+      "Displacement travel"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

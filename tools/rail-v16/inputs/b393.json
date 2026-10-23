@@ -1,0 +1,271 @@
+{
+  "id": "b393",
+  "title": "貨櫃鐵路場站吊運~Container handling in intermodal rail terminals",
+  "discipline": "rail-integration",
+  "family": "depot",
+  "focus": "貨櫃吊運載重分配擺動與場站節拍~Load distribution, sway and terminal throughput in intermodal lifting",
+  "summary": "本課聚焦貨櫃吊運載重分配擺動與場站節拍。從總重量與吊點均分建立物理或資訊邊界，接著把完整吊運循環率與吊具車輛與作業區交接連成可驗證的介面，最後以場站整合試驗工時整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies load distribution, sway and terminal throughput in intermodal lifting. Start with total load and mean lifting-point reaction to define physical or information boundaries, connect complete handling-cycle rate with spreader, vehicle and work-zone handoff as verifiable interfaces, and organize evidence through terminal integration-test effort. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：2010 年機械風險評估方法的該版標準發布。；2015 年品質管理方法的二零一五版發布。；2023 年機械安全控制設計方法更新版發布。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對貨櫃吊運載重分配擺動與場站節拍而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用偏心貨載與支承反力及貨櫃型式與介面覆蓋連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 2010: This edition of machinery risk-assessment guidance was published. 2015: The twenty-fifteen edition of quality-management requirements was published. 2023: An updated machinery safety-control design edition was published. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For load distribution, sway and terminal throughput in intermodal lifting, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through eccentric cargo and support reactions and container-type and interface coverage. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究總重量與吊點均分。原創假想教學輸入：總吊升質量 m=18000 kg；重力加速度 g=9.81 m/s2；承載點數 points=4 points；教學動態倍率 factor=1.15 1。公式 y=m*g*factor/points/1000，代入得 y=50.7667 kN/point。邊界：對稱均分載重與假想動態倍率，非吊裝方案或設備額定能力。敏感度只改 m=18000 至 19800 kg，輸出變為 55.8434 kN/point；離散計數採整數變化。再獨立研究偏心貨載與支承反力：原創假想教學輸入：總載重 W=200 kN；支承間距 L=4 m；重心偏心 e=0.4 m。公式 y=W*(0.5+e/L)，代入得 y=120 kN。邊界：剛體兩簡支靜力模型且兩支承保持接觸，忽略動態擺動。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。先將貨櫃與吊具質量放進同一載重邊界，再計算對稱教學模型的平均吊點反力。將這個平均量與最不利吊點分開，不能由總能力足夠推論每點都有餘裕。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate total load and mean lifting-point reaction. Original hypothetical teaching inputs: lifted mass m=18000 kg; gravity g=9.81 m/s2; support count points=4 points; teaching dynamic factor factor=1.15 1. Formula y=m*g*factor/points/1000 gives y=50.7667 kN/point. Boundary: Symmetric equal load sharing with an assumed dynamic factor, not a lifting plan or equipment rating. For sensitivity, change only m=18000 to 19800 kg; the output becomes 55.8434 kN/point. Discrete counts use whole-number steps. Independently investigate eccentric cargo and support reactions: Original hypothetical teaching inputs: total load W=200 kN; support spacing L=4 m; centre-of-gravity eccentricity e=0.4 m. Formula y=W*(0.5+e/L) gives y=120 kN. Boundary: Rigid body on two simple supports that remain in contact, neglecting dynamic swing. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Include container and spreader mass within one load boundary before calculating symmetric mean reactions. Keep that mean distinct from the worst support; adequate total capacity does not prove margin at every point. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "總重量與吊點均分~Total load and mean lifting-point reaction",
+      "title": "總重量與吊點均分~Total load and mean lifting-point reaction",
+      "mechanism": "先將貨櫃與吊具質量放進同一載重邊界，再計算對稱教學模型的平均吊點反力。將這個平均量與最不利吊點分開，不能由總能力足夠推論每點都有餘裕。平均吊點反力來自總重量分配，但實際分力受重心位置、支承剛度與同步誤差控制。動態倍率只是概念帳項，不能取代設備認證；把總能力除以吊點數也無法證明最不利吊點仍有足夠承載餘裕。解釋前先固定模型適用範圍：對稱均分載重與假想動態倍率，非吊裝方案或設備額定能力。~Include container and spreader mass within one load boundary before calculating symmetric mean reactions. Keep that mean distinct from the worst support; adequate total capacity does not prove margin at every point. Mean lifting reaction follows total load distribution, while actual reactions depend on centre of gravity, support stiffness and synchronization error. A dynamic factor is a conceptual accounting term, not equipment certification. Dividing total rating by support count does not establish margin at the most heavily loaded point. Before interpreting the result, fix its domain: Symmetric equal load sharing with an assumed dynamic factor, not a lifting plan or equipment rating.",
+      "model": "原創假想教學輸入：總吊升質量 m=18000 kg；重力加速度 g=9.81 m/s2；承載點數 points=4 points；教學動態倍率 factor=1.15 1。公式 y=m*g*factor/points/1000，代入得 y=50.7667 kN/point。邊界：對稱均分載重與假想動態倍率，非吊裝方案或設備額定能力。~Original hypothetical teaching inputs: lifted mass m=18000 kg; gravity g=9.81 m/s2; support count points=4 points; teaching dynamic factor factor=1.15 1. Formula y=m*g*factor/points/1000 gives y=50.7667 kN/point. Boundary: Symmetric equal load sharing with an assumed dynamic factor, not a lifting plan or equipment rating.",
+      "verify": "在縮尺或空載試驗台核對各點高度與負載，逐步施加偏心以觀察反力重新分配。以「總重量與吊點均分」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~On a scale or unloaded test rig, compare support heights and loads, then introduce eccentricity to observe reaction redistribution. For total load and mean lifting-point reaction, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "一個吊點不同步會把載重移往其他支承，總載重不變也可能局部超載並扭曲貨櫃或吊具。回到「總重量與吊點均分」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A lagging support transfers load to others; unchanged total weight can still produce local overload and container or spreader distortion. Trace the input chain for total load and mean lifting-point reaction. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "總起重能力足夠就能保證每個吊點都不會超載~Adequate total lifting capacity guarantees that no individual support is overloaded.",
+      "practice": "只把總吊升質量 m 從 18000 改成 19800 kg（增加百分之十），其餘輸入固定。重算結果應由 50.7667 變為 55.8434 kN/point。先說明「總重量與吊點均分」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only lifted mass m from 18000 to 19800 kg (increase by ten percent), holding other inputs fixed. Recalculate 50.7667 to 55.8434 kN/point. Explain the causal direction for total load and mean lifting-point reaction, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "偏心貨載與支承反力~Eccentric cargo and support reactions",
+      "title": "偏心貨載與支承反力~Eccentric cargo and support reactions",
+      "mechanism": "貨物偏向一側會改變兩支承反力，即使總重量完全相同。用已知偏心的縮尺載具核對力與力矩平衡，觀察幾何中心和重心並非同一點。兩支承反力由力與力矩平衡同時決定。重心偏向一側時，該側反力增加而另一側減少，總和仍不變；平均反力看似充足不能掩蓋單側限制，支承接觸若脫離還會改變原先的邊界條件。解釋前先固定模型適用範圍：剛體兩簡支靜力模型且兩支承保持接觸，忽略動態擺動。~An off-centre load changes support reactions even when total weight is unchanged. Check force and moment balance on a scale load and distinguish geometric centre from centre of gravity. Two support reactions follow both force and moment equilibrium. Moving the centre of gravity toward one support raises that reaction while reducing the other without changing the total. Adequate mean reaction cannot hide a local limit, and loss of contact changes the assumed boundary conditions. Before interpreting the result, fix its domain: Rigid body on two simple supports that remain in contact, neglecting dynamic swing.",
+      "model": "原創假想教學輸入：總載重 W=200 kN；支承間距 L=4 m；重心偏心 e=0.4 m。公式 y=W*(0.5+e/L)，代入得 y=120 kN。邊界：剛體兩簡支靜力模型且兩支承保持接觸，忽略動態擺動。~Original hypothetical teaching inputs: total load W=200 kN; support spacing L=4 m; centre-of-gravity eccentricity e=0.4 m. Formula y=W*(0.5+e/L) gives y=120 kN. Boundary: Rigid body on two simple supports that remain in contact, neglecting dynamic swing.",
+      "verify": "核對兩反力之和與各自力矩，再以已知小偏心移動驗證量測方向與零點。以「偏心貨載與支承反力」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Check the reaction sum and moments, then apply a known small eccentricity to verify sensor direction and zero. For eccentric cargo and support reactions, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把幾何中心當成重心會錯估分力，支承沉陷或接觸鬆脫又可能使靜力模型失效。回到「偏心貨載與支承反力」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Confusing geometric centre with centre of gravity misallocates load; settlement or loose contact can invalidate the static model. Trace the input chain for eccentric cargo and support reactions. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "總重量不變時左右支承的載重也一定不變~Unchanged total weight guarantees unchanged load at each support.",
+      "practice": "只把重心偏心 e 從 0.4 改成 0.44 m（增加百分之十），其餘輸入固定。重算結果應由 120 變為 122 kN。先說明「偏心貨載與支承反力」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only centre-of-gravity eccentricity e from 0.4 to 0.44 m (increase by ten percent), holding other inputs fixed. Recalculate 120 to 122 kN. Explain the causal direction for eccentric cargo and support reactions, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "吊具定位液壓鏈~Hydraulic positioning in the spreader",
+      "title": "吊具定位液壓鏈~Hydraulic positioning in the spreader",
+      "mechanism": "將定位油缸的推力與結構保持能力分開，壓力達到目標不代表鎖定已被證實。以隔離教具同時觀察行程與壓力，辨認背壓或摩擦造成的差異。液壓推力由壓力乘有效活塞面積決定，回程側面積與背壓可能不同。壓力達標並不保證位移同步，漏油、氣泡和摩擦會改變動作；安全承載還需獨立機械保持機制與設備規定，不能只依賴壓力表。解釋前先固定模型適用範圍：單一活塞準靜態推力，未含背壓、管路瞬變與額定安全係數。~Separate positioning-cylinder thrust from structural holding capability; a pressure reading does not prove locking. Observe travel and pressure on an isolated rig to distinguish back-pressure and friction effects. Hydraulic force follows pressure times effective piston area, with different return-side area and back pressure possible. Target pressure does not guarantee synchronized movement because leakage, air and friction affect motion. Safe support also requires specified holding mechanisms rather than dependence on a pressure gauge alone. Before interpreting the result, fix its domain: Quasistatic force of one piston; back pressure, line transients and rated safety factors are excluded.",
+      "model": "原創假想教學輸入：油壓 p=12 MPa；活塞面積 A=0.008 m2；力傳遞效率 eta=0.9 1。公式 y=p*1e6*A*eta/1000，代入得 y=86.4 kN。邊界：單一活塞準靜態推力，未含背壓、管路瞬變與額定安全係數。~Original hypothetical teaching inputs: hydraulic pressure p=12 MPa; piston area A=0.008 m2; force-transfer efficiency eta=0.9 1. Formula y=p*1e6*A*eta/1000 gives y=86.4 kN. Boundary: Quasistatic force of one piston; back pressure, line transients and rated safety factors are excluded.",
+      "verify": "以獨立力感測器核對壓力推算，並記錄停留時的位移漂移與油溫變化。以「吊具定位液壓鏈」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Compare pressure-derived force with an independent load cell and record displacement drift and oil temperature during holding. For hydraulic positioning in the spreader, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "內洩漏可造成保持位置下降但壓力讀值短時正常，空氣混入則可能使動作變軟並延遲。回到「吊具定位液壓鏈」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Internal leakage can cause sag despite temporarily normal pressure, while entrained air makes motion compliant and delayed. Trace the input chain for hydraulic positioning in the spreader. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "油壓讀值正常就能單獨保證負載永遠保持原位~A normal hydraulic pressure reading alone guarantees that the load remains fixed indefinitely.",
+      "practice": "只把油壓 p 從 12 改成 13.2 MPa（增加百分之十），其餘輸入固定。重算結果應由 86.4 變為 95.04 kN。先說明「吊具定位液壓鏈」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only hydraulic pressure p from 12 to 13.2 MPa (increase by ten percent), holding other inputs fixed. Recalculate 86.4 to 95.04 kN. Explain the causal direction for hydraulic positioning in the spreader, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "完整吊運循環率~Complete handling-cycle rate",
+      "title": "完整吊運循環率~Complete handling-cycle rate",
+      "mechanism": "將起吊、橫移、下降和對位全部計入單次作業，先建立串行節拍基準。再列出空返與等待所占時間，說明理想循環率為何高於實際場站吞吐。吊運節拍需包含吊升、移動、下降與對位等完整工作，而不是只看最快的馬達行程。部分動作可以重疊，但前提是設備允許且不增加碰撞或擺動；空返、等待車輛與查驗也可能使實際吞吐低於理想循環率。解釋前先固定模型適用範圍：單設備串行理想循環，未含等待、空返或安全聯鎖延遲。~Include hoisting, travel, lowering and alignment in a serial reference cycle. Then account for empty returns and waiting to explain why ideal machine cycles exceed achieved terminal throughput. Handling cycle time includes hoisting, travel, lowering and alignment rather than the fastest motor movement alone. Some motions can overlap only when permitted and without increasing collision or sway. Empty returns, vehicle waiting and inspections can reduce throughput below the ideal cycle rate. Before interpreting the result, fix its domain: Ideal serial cycle for one machine, excluding waiting, empty returns and interlock delays.",
+      "model": "原創假想教學輸入：吊升時間 lift=35 s；橫移時間 travel=50 s；下降時間 lower=30 s；對位時間 align=25 s。公式 y=3600/(lift+travel+lower+align)，代入得 y=25.7143 moves/h。邊界：單設備串行理想循環，未含等待、空返或安全聯鎖延遲。~Original hypothetical teaching inputs: hoisting time lift=35 s; travel time travel=50 s; lowering time lower=30 s; alignment time align=25 s. Formula y=3600/(lift+travel+lower+align) gives y=25.7143 moves/h. Boundary: Ideal serial cycle for one machine, excluding waiting, empty returns and interlock delays.",
+      "verify": "逐動作記錄起訖與等待原因，把理想循環率和整班實際完成量分開報告。以「完整吊運循環率」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Timestamp every motion and waiting cause, reporting ideal cycle rate separately from completed moves over a shift. For complete handling-cycle rate, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "忽略空返會高估吞吐，作業區交通互相阻塞則使設備利用率高但有效完成量低。回到「完整吊運循環率」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Ignoring empty returns overstates throughput; yard traffic conflicts can yield high equipment utilization with low useful completion. Trace the input chain for complete handling-cycle rate. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "吊車馬達速度提高一倍場站吞吐就必定提高一倍~Doubling crane motor speed necessarily doubles terminal throughput.",
+      "practice": "只把對位時間 align 從 25 改成 27.5 s（增加百分之十），其餘輸入固定。重算結果應由 25.7143 變為 25.2632 moves/h。先說明「完整吊運循環率」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only alignment time align from 25 to 27.5 s (increase by ten percent), holding other inputs fixed. Recalculate 25.7143 to 25.2632 moves/h. Explain the causal direction for complete handling-cycle rate, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "吊索長度與殘餘擺動~Suspension length and residual sway",
+      "title": "吊索長度與殘餘擺動~Suspension length and residual sway",
+      "mechanism": "比較相同貨重在不同吊索長度下的擺動週期，將質量與週期的角色分清楚。設備橫移停止後仍要觀察殘餘角度，不能用速度歸零代表吊具已穩定。小角度吊重擺動近似單擺，週期主要受吊索長度影響而非質量。移動命令若與擺動相位不合，停止後仍會持續擺盪；反擺控制需知道有效長度和感測延遲，不能只把速度降到零就視為吊具已穩定。解釋前先固定模型適用範圍：質點、無阻尼、小角度單擺，不含雙擺與柔性吊具。~Compare sway periods at different suspension lengths for the same cargo mass. Observe residual angle after travel stops because zero machine speed does not establish a stable suspended load. Small-angle suspended-load sway approximates a pendulum, with period governed mainly by suspension length rather than mass. Poorly phased travel commands leave residual sway after stopping. Anti-sway control needs effective length and sensing delay; zero travel speed does not mean a stable load. Before interpreting the result, fix its domain: Undamped small-angle point-mass pendulum without double-pendulum or flexible-spreader effects.",
+      "model": "原創假想教學輸入：吊索有效長度 length=8 m；重力加速度 g=9.81 m/s2。公式 y=2*pi*sqrt(length/g)，代入得 y=5.67401 s。邊界：質點、無阻尼、小角度單擺，不含雙擺與柔性吊具。~Original hypothetical teaching inputs: effective suspension length length=8 m; gravity g=9.81 m/s2. Formula y=2*pi*sqrt(length/g) gives y=5.67401 s. Boundary: Undamped small-angle point-mass pendulum without double-pendulum or flexible-spreader effects.",
+      "verify": "在縮尺吊具量測停止後的擺動週期，改變長度而保持其他條件比較平方根關係。以「吊索長度與殘餘擺動」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure residual-sway period on a scale rig, varying length while holding other conditions fixed to test square-root scaling. For suspension length and residual sway, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "吊索長度估錯會讓抑擺脈衝相位偏移，雙擺模態則可能讓單一週期辨識不足。回到「吊索長度與殘餘擺動」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Incorrect suspension length misphases anti-sway pulses; double-pendulum modes can defeat a single-period estimate. Trace the input chain for suspension length and residual sway. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "吊重質量加倍就一定使小角度單擺週期加倍~Doubling suspended mass necessarily doubles the small-angle pendulum period.",
+      "practice": "只把吊索有效長度 length 從 8 改成 8.8 m（增加百分之十），其餘輸入固定。重算結果應由 5.67401 變為 5.95096 s。先說明「吊索長度與殘餘擺動」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only effective suspension length length from 8 to 8.8 m (increase by ten percent), holding other inputs fixed. Recalculate 5.67401 to 5.95096 s. Explain the causal direction for suspension length and residual sway, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "吊機需求與服務負荷~Crane demand and service utilization",
+      "title": "吊機需求與服務負荷~Crane demand and service utilization",
+      "mechanism": "以每小時到達作業數和可服務作業數建立同一系統邊界，不能混用不同吊機群。再比較平均利用率與列車集中到達的尖峰，指出等待仍會在平均有餘裕時發生。利用率比較需求與服務能力，是穩定性檢查而非等待時間的完整答案。平均需求小於平均容量仍可能出現短暫尖峰與排隊；若排程把所有時段填滿，任何變異都只能向後傳播，缺乏讓系統恢復的空間。解釋前先固定模型適用範圍：固定平均率且單一服務通道；實際批次、優先權與休息中斷須另建模。~Use arrivals and service jobs per hour for the same crane group rather than mixing boundaries. Compare mean utilization with concentrated train arrivals to show why queues persist despite average spare capacity. Utilization compares demand with service capacity; it is a stability check rather than a complete waiting-time answer. Mean demand below mean capacity still permits bursts and queues. When every interval is fully occupied, variability propagates downstream because no recovery space remains. Before interpreting the result, fix its domain: Fixed mean rates and one service channel; batches, priorities and interruptions require separate modelling.",
+      "model": "原創假想教學輸入：平均到達率 arrival=8 jobs/h；單通道服務率 service=12 jobs/h。公式 y=arrival/service，代入得 y=0.666667 1。邊界：固定平均率且單一服務通道；實際批次、優先權與休息中斷須另建模。~Original hypothetical teaching inputs: mean arrival rate arrival=8 jobs/h; single-channel service rate service=12 jobs/h. Formula y=arrival/service gives y=0.666667 1. Boundary: Fixed mean rates and one service channel; batches, priorities and interruptions require separate modelling.",
+      "verify": "以不同時間窗統計到達與完成數，檢查平均值是否掩蓋短時過載，並保留未完成工作。以「吊機需求與服務負荷」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Count arrivals and completions over several windows, test for hidden bursts, and retain unfinished work in the accounting. For crane demand and service utilization, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只統計完成案件會漏掉被延後或放棄者，使負荷被低估；設備停機又會降低可用服務率。回到「吊機需求與服務負荷」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Counting only completed jobs omits deferred or abandoned demand and understates loading; downtime also reduces available service rate. Trace the input chain for crane demand and service utilization. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "平均利用率低於百分之百就保證完全不會排隊~Mean utilization below one hundred percent guarantees that no queue ever forms.",
+      "practice": "只把平均到達率 arrival 從 8 改成 8.8 jobs/h（增加百分之十），其餘輸入固定。重算結果應由 0.666667 變為 0.733333 1。先說明「吊機需求與服務負荷」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only mean arrival rate arrival from 8 to 8.8 jobs/h (increase by ten percent), holding other inputs fixed. Recalculate 0.666667 to 0.733333 1. Explain the causal direction for crane demand and service utilization, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "吊具車輛與作業區交接~Spreader, vehicle and work-zone handoff",
+      "title": "吊具車輛與作業區交接~Spreader, vehicle and work-zone handoff",
+      "mechanism": "把吊具位置、載具到位與作業區清空各自當成獨立狀態，不讓一項確認代替其他條件。以桌面狀態圖檢查矛盾組合，保留未知和中止而不自動猜測完成。布林狀態組合隨變數個數指數成長，這說明逐一人工檢查很快失去效率。可達性約束能排除不可能組合，但刪除條件必須有證據；安全性質通常針對所有可達狀態，而非幾個畫面上看起來合理的狀態。解釋前先固定模型適用範圍：未限制的布林笛卡兒積；實際可達狀態通常較少，但需另證明。~Represent spreader position, vehicle presence and work-zone clearance as separate states. Check conflicting combinations in a desktop graph and retain unknown or interrupted states instead of inferring completion. Boolean combinations grow exponentially with variable count, explaining why manual enumeration soon becomes ineffective. Reachability constraints can eliminate impossible combinations, but each exclusion needs justification. Safety properties normally concern every reachable state rather than a few states that look plausible on a display. Before interpreting the result, fix its domain: Unconstrained Boolean Cartesian product; actual reachability can be smaller but must be established separately.",
+      "model": "原創假想教學輸入：布林變數數量 bits=8 bits。公式 y=2**bits，代入得 y=256 states。邊界：未限制的布林笛卡兒積；實際可達狀態通常較少，但需另證明。~Original hypothetical teaching inputs: number of Boolean state variables bits=8 bits. Formula y=2**bits gives y=256 states. Boundary: Unconstrained Boolean Cartesian product; actual reachability can be smaller but must be established separately.",
+      "verify": "用小型模型列舉轉移，再與需求允許的轉移表比較，對被排除狀態留下理由。以「吊具車輛與作業區交接」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Enumerate transitions in a small model, compare against the required transition table, and document reasons for excluded states. For spreader, vehicle and work-zone handoff, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把感測器故障狀態預先刪掉會讓證明失去關鍵邊界，狀態抽象過粗也可能隱藏時序競爭。回到「吊具車輛與作業區交接」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Excluding sensor-fault states can remove the crucial boundary from a proof; overly coarse abstraction may hide timing races. Trace the input chain for spreader, vehicle and work-zone handoff. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "狀態變數多一個只會多出一種狀態組合~Adding one Boolean state variable creates only one additional combination.",
+      "practice": "只把布林變數數量 bits 從 8 改成 9 bits（增加一個可計數單位），其餘輸入固定。重算結果應由 256 變為 512 states。先說明「吊具車輛與作業區交接」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only number of Boolean state variables bits from 8 to 9 bits (increase by one whole count), holding other inputs fixed. Recalculate 256 to 512 states. Explain the causal direction for spreader, vehicle and work-zone handoff, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "設備停機與貨櫃積壓~Equipment outages and container backlog",
+      "title": "設備停機與貨櫃積壓~Equipment outages and container backlog",
+      "mechanism": "區分吊機故障時間、降級服務和修復等待，避免只統計更換零件的工時。比較同可用度下不同停機分布，評估貨櫃存量與轉乘班次受到的影響。可用度描述長時間內能提供服務的比例，故障頻率與修復速度都會影響它。相同可用度可能來自頻繁短停或罕見長停，對旅客與維修資源的影響不同；更不能把高可用度直接解讀為故障發生時一定安全。解釋前先固定模型適用範圍：可修復二狀態穩態模型，未含共同原因故障、預防保養與供應鏈等待。~Distinguish crane failure, degraded service and repair waiting rather than counting only hands-on repair. Compare outage patterns at equal availability and examine container inventory and connection effects. Availability describes the fraction of long-run time during which service is possible; both failure frequency and repair duration matter. The same value can arise from frequent brief outages or rare long ones with different passenger and maintenance consequences. High availability does not itself establish safe behaviour during failure. Before interpreting the result, fix its domain: Repairable two-state steady model; common-cause failures, planned maintenance and supply-chain waiting are excluded.",
+      "model": "原創假想教學輸入：平均故障間隔 mtbf=2000 h；平均修復時間 mttr=4 h。公式 y=mtbf/(mtbf+mttr)，代入得 y=0.998004 1。邊界：可修復二狀態穩態模型，未含共同原因故障、預防保養與供應鏈等待。~Original hypothetical teaching inputs: mean time between failures mtbf=2000 h; mean repair time mttr=4 h. Formula y=mtbf/(mtbf+mttr) gives y=0.998004 1. Boundary: Repairable two-state steady model; common-cause failures, planned maintenance and supply-chain waiting are excluded.",
+      "verify": "分別核對故障起點、服務恢復及完全修復時間，避免把部分恢復誤列為全功能。以「設備停機與貨櫃積壓」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Audit failure onset, service restoration and full repair separately rather than counting degraded service as full functionality. For equipment outages and container backlog, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "刪除長停機紀錄會扭曲平均修復時間；重複報修同一缺陷則會錯估故障頻率。回到「設備停機與貨櫃積壓」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Removing long outages distorts mean repair time, while duplicate reports of one defect distort failure frequency. Trace the input chain for equipment outages and container backlog. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "系統可用度很高就能直接證明所有故障都是安全的~High system availability directly proves that every failure is safe.",
+      "practice": "只把平均修復時間 mttr 從 4 改成 4.4 h（增加百分之十），其餘輸入固定。重算結果應由 0.998004 變為 0.997805 1。先說明「設備停機與貨櫃積壓」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only mean repair time mttr from 4 to 4.4 h (increase by ten percent), holding other inputs fixed. Recalculate 0.998004 to 0.997805 1. Explain the causal direction for equipment outages and container backlog, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "貨櫃型式與介面覆蓋~Container-type and interface coverage",
+      "title": "貨櫃型式與介面覆蓋~Container-type and interface coverage",
+      "mechanism": "建立不同尺寸、偏心情況與載具對位的案例矩陣，對每案保留量測與判定依據。重跑同一尺寸不能增加型式覆蓋，未測的吊具介面應明確列出。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Build a matrix of sizes, eccentricity and vehicle alignment with measurement and decision evidence for each case. Repeating one size does not cover additional types; list untested spreader interfaces explicitly. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「貨櫃型式與介面覆蓋」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For container-type and interface coverage, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「貨櫃型式與介面覆蓋」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for container-type and interface coverage. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「貨櫃型式與介面覆蓋」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for container-type and interface coverage, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "場站整合試驗工時~Terminal integration-test effort",
+      "title": "場站整合試驗工時~Terminal integration-test effort",
+      "mechanism": "將設定環境、執行作業和恢復設備分開估算，避免只以最快吊運時間安排驗證。追蹤失敗案例的重測成本，使設備、車輛與人員時間可以一起核對。測試工時包含案例執行與環境設定、資料復原及證據整理。平行化只有在資源和狀態真正獨立時有效；把多個會修改同一狀態的測試同時執行，可能造成結果不可重現，表面節省時間卻增加診斷成本。解釋前先固定模型適用範圍：確定平均案例時間的串行估算，未含故障重測與資源衝突。~Budget setup, execution and restoration separately rather than scheduling validation by the fastest lift. Track rerun costs after failures so equipment, vehicle and personnel time can be reconciled. Test effort includes case execution, setup, state restoration and evidence handling. Parallelism helps only when resources and state are genuinely independent. Concurrent tests modifying one shared state can become irreproducible, apparently saving execution time while increasing diagnostic cost. Before interpreting the result, fix its domain: Serial estimate with deterministic mean case time; failure reruns and resource conflicts are excluded.",
+      "model": "原創假想教學輸入：測試案例數 cases=120 cases；平均案例時間 minutes=8 min/case；設定與恢復時間 setup=180 min。公式 y=(cases*minutes+setup)/60，代入得 y=19 h。邊界：確定平均案例時間的串行估算，未含故障重測與資源衝突。~Original hypothetical teaching inputs: test cases cases=120 cases; mean case duration minutes=8 min/case; setup and recovery time setup=180 min. Formula y=(cases*minutes+setup)/60 gives y=19 h. Boundary: Serial estimate with deterministic mean case time; failure reruns and resource conflicts are excluded.",
+      "verify": "逐案記錄前置狀態、執行時間與復原時間，分開列出正常完成和失敗重測。以「場站整合試驗工時」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record preconditions, execution and restoration for every case, separating normal completion from failure reruns. For terminal integration-test effort, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "省略復原步驟會讓前案狀態污染後案，僅報告成功案例時間則低估總測試成本。回到「場站整合試驗工時」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Omitted restoration contaminates later tests with earlier state; reporting only successful durations understates total effort. Trace the input chain for terminal integration-test effort. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "所有整合測試都可以同時執行而完全不影響結果~All integration tests can run simultaneously without affecting results.",
+      "practice": "只把測試案例數 cases 從 120 改成 121 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 19 變為 19.1333 h。先說明「場站整合試驗工時」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only test cases cases from 120 to 121 cases (increase by one whole count), holding other inputs fixed. Recalculate 19 to 19.1333 h. Explain the causal direction for terminal integration-test effort, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：總重量與吊點均分採 m=18000 kg；本課公式結果 50.7667 kN/point，非現場額定值。~Teaching assumption for total load and mean lifting-point reaction: m=18000 kg; this model gives 50.7667 kN/point, not a field rating.",
+    "教學假設：偏心貨載與支承反力採 W=200 kN；本課公式結果 120 kN，非現場額定值。~Teaching assumption for eccentric cargo and support reactions: W=200 kN; this model gives 120 kN, not a field rating.",
+    "教學假設：吊具定位液壓鏈採 p=12 MPa；本課公式結果 86.4 kN，非現場額定值。~Teaching assumption for hydraulic positioning in the spreader: p=12 MPa; this model gives 86.4 kN, not a field rating.",
+    "教學假設：完整吊運循環率採 lift=35 s；本課公式結果 25.7143 moves/h，非現場額定值。~Teaching assumption for complete handling-cycle rate: lift=35 s; this model gives 25.7143 moves/h, not a field rating.",
+    "教學假設：吊索長度與殘餘擺動採 length=8 m；本課公式結果 5.67401 s，非現場額定值。~Teaching assumption for suspension length and residual sway: length=8 m; this model gives 5.67401 s, not a field rating.",
+    "教學假設：吊機需求與服務負荷採 arrival=8 jobs/h；本課公式結果 0.666667 1，非現場額定值。~Teaching assumption for crane demand and service utilization: arrival=8 jobs/h; this model gives 0.666667 1, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "2010",
+      "event": "機械風險評估方法的該版標準發布。~This edition of machinery risk-assessment guidance was published."
+    },
+    {
+      "year": "2015",
+      "event": "品質管理方法的二零一五版發布。~The twenty-fifteen edition of quality-management requirements was published."
+    },
+    {
+      "year": "2023",
+      "event": "機械安全控制設計方法更新版發布。~An updated machinery safety-control design edition was published."
+    }
+  ],
+  "codes": [
+    "ISO 12100:2010 機械風險評估與降低方法，非設備額定證明~ISO 12100:2010 machinery risk assessment and reduction, not equipment rating certification",
+    "ISO 13849-1:2023 安全相關控制設計，教材不宣告性能等級~ISO 13849-1:2023 safety-related control design, with no performance-level claim for this lesson"
+  ],
+  "landmarks": [
+    "臺北捷運北投機廠~Taipei Metro Beitou Depot",
+    "香港港鐵八鄉機廠~Hong Kong MTR Pat Heung Depot"
+  ],
+  "place": {
+    "name": "北投機廠示意地點~Beitou depot reference area",
+    "country": "臺灣~Taiwan",
+    "lat": 25.138,
+    "lng": 121.484,
+    "query": "Beitou Depot Taipei"
+  },
+  "sources": [
+    {
+      "key": "iso-risk",
+      "title": "機械風險評估方法",
+      "titleEn": "Machinery risk-assessment methodology",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/cms/live/live/en/sites/isoorg/contents/data/standard/05/15/51528.html?browse=tc",
+      "sourceType": "primary",
+      "scope": "支持機械風險方法與出版年代；不提供特定設備額定能力或作業許可。",
+      "scopeEn": "Supports machinery-risk methodology and edition year, not equipment ratings or work authorization."
+    },
+    {
+      "key": "iso-quality",
+      "title": "品質管理方法歷史版",
+      "titleEn": "Historical quality-management edition",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/62085.html?iframeView=true",
+      "sourceType": "primary",
+      "scope": "僅支持歷史版出版與品質管理主題，不把歷史版宣稱為所有地區最新要求。",
+      "scopeEn": "Supports historical edition and quality-management topic, without claiming universal current applicability."
+    },
+    {
+      "key": "iso-control",
+      "title": "機械安全控制設計方法",
+      "titleEn": "Machinery safety-related control design",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/73481.html",
+      "sourceType": "primary",
+      "scope": "支持安全相關控制設計的標準範圍；本課沒有宣稱達成特定性能等級。",
+      "scopeEn": "Supports the scope of safety-related control design; no particular performance level is claimed."
+    },
+    {
+      "key": "beitou-reference",
+      "title": "北投維修組織官方背景",
+      "titleEn": "Official Beitou maintenance reference",
+      "publisher": "Taipei Rapid Transit Corporation",
+      "url": "https://www.metro.taipei/cp.aspx?n=195274F164A8EE0B&s=EAC107016EAB69E7",
+      "sourceType": "primary",
+      "scope": "支持北投維修工程背景，不聲稱特定機具或供應合約。",
+      "scopeEn": "Supports Beitou maintenance context, without asserting particular machines or supply contracts."
+    },
+    {
+      "key": "pat-heung-reference",
+      "title": "港鐵機廠官方背景",
+      "titleEn": "Official MTR depot reference",
+      "publisher": "MTR Corporation",
+      "url": "https://www.mtr.com.hk/en/corporate/operations/detail_depots.html",
+      "sourceType": "primary",
+      "scope": "支持八鄉機廠作為維修工程參考，不聲稱使用任何特定算例設備。",
+      "scopeEn": "Supports Pat Heung as a maintenance reference without claiming use of any particular exercise equipment."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "海根賽特",
+      "nameEn": "Hegenscheidt",
+      "business": "輪對加工與鐵路維修設備",
+      "businessEn": "Wheelset machining and railway maintenance equipment",
+      "url": "https://www.hegenscheidt.com/en/",
+      "role": "產品角色參考，不宣稱供應本課列出的任何機廠",
+      "roleEn": "Product-role reference; no claim of supplying any listed depot",
+      "security": null
+    },
+    {
+      "name": "國際標準化組織",
+      "nameEn": "ISO",
+      "business": "機械風險與品質方法標準",
+      "businessEn": "Machinery-risk and quality methodology standards",
+      "url": "https://www.iso.org/standard/73481.html",
+      "role": "標準出版機構而非設備認證結論",
+      "roleEn": "Standards publisher, not an equipment-certification conclusion",
+      "security": null
+    }
+  ],
+  "related": [
+    "b392",
+    "b394"
+  ],
+  "architectureNodes": [
+    [
+      "貨櫃重心",
+      "Container centre of gravity"
+    ],
+    [
+      "吊具支承",
+      "Spreader support"
+    ],
+    [
+      "起升驅動",
+      "Hoist drive"
+    ],
+    [
+      "擺動位移",
+      "Sway displacement"
+    ],
+    [
+      "交接定位",
+      "Handoff alignment"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

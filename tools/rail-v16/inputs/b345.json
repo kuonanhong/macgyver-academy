@@ -1,0 +1,261 @@
+{
+  "id": "b345",
+  "title": "軌道扣件彈性設計~Resilient rail-fastening design",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "扣件預壓彈性絕緣與疲勞的共同設計~Fastener preload resilience insulation and fatigue design",
+  "summary": "軌道扣件彈性設計以「扣件預壓彈性絕緣與疲勞的共同設計」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。扣件同時控制鋼軌位置、提供彈性支承與維持電氣條件，增加夾持力並不保證所有性能改善；墊片、彈條與錨定件的路徑需分開辨認。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops fastener preload resilience insulation and fatigue design through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Fastenings locate the rail, provide resilient support and maintain electrical conditions; increasing clamping force does not improve every property, so pads, clips and anchors need separate load-path interpretation. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把軌道扣件彈性設計放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。扣件同時控制鋼軌位置、提供彈性支承與維持電氣條件，增加夾持力並不保證所有性能改善；墊片、彈條與錨定件的路徑需分開辨認。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Resilient rail-fastening design in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Fastenings locate the rail, provide resilient support and maintain electrical conditions; increasing clamping force does not improve every property, so pads, clips and anchors need separate load-path interpretation. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：F=60 kN, d=1.5 mm；y=F/d=40 kN/mm。只把 F 增加百分之十，y=44 kN/mm。模型邊界：從明確零點取得割線剛度；固定溫度及載入速率；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：k1=25 kN/mm, k2=35 kN/mm；y=k1+k2=60 kN/mm。只把 k1 增加百分之十，y=62.5 kN/mm。模型邊界：兩支承保持接觸且位移相同；各元件線彈性；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: F=60 kN, d=1.5 mm; y=F/d=40 kN/mm. Increasing only F with a ten-percent increase gives y=44 kN/mm. Boundary: Secant stiffness is measured from a defined origin at fixed temperature and loading rate; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: k1=25 kN/mm, k2=35 kN/mm; y=k1+k2=60 kN/mm. Increasing only k1 with a ten-percent increase gives y=62.5 kN/mm. Boundary: Both supports stay in contact with identical displacement; each component is linearly elastic; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "墊片壓縮剛度~Pad compression stiffness",
+      "title": "墊片壓縮剛度~Pad compression stiffness",
+      "mechanism": "剛度應由指定載重區間的力位移關係定義。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 44 kN/mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。從明確零點取得割線剛度；固定溫度及載入速率。使用載入卸載斜率作量測證據，才能檢查方程是否對應此處的實際物理量；非線性墊片用單一剛度會漏掉載重依賴，因此應把該原因與量測偏差分開。~Stiffness should be defined over a specified loading interval. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 44 kN/mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Secant stiffness is measured from a defined origin at fixed temperature and loading rate. Use loading and unloading slopes as measurement evidence that the equation represents the intended physical quantity. One stiffness misses load dependence in a nonlinear pad; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=60 kN, d=1.5 mm；y=F/d=40 kN/mm。只把 F 增加百分之十，y=44 kN/mm。模型邊界：從明確零點取得割線剛度；固定溫度及載入速率；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=60 kN, d=1.5 mm; y=F/d=40 kN/mm. Increasing only F with a ten-percent increase gives y=44 kN/mm. Boundary: Secant stiffness is measured from a defined origin at fixed temperature and loading rate; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以載入卸載斜率區分模型與觀察，先用低載模型分級力位移、預壓零點及卸載回復建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「墊片壓縮剛度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use loading and unloading slopes to distinguish the model from observation in this unit. Establish a baseline using low-load model stepwise force-displacement, preload origin and unloading recovery, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Pad compression stiffness. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "非線性墊片用單一剛度會漏掉載重依賴。這個失效與「墊片壓縮剛度」的量測偏差可能產生相似表象，因此必須同時檢查載入卸載斜率，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~One stiffness misses load dependence in a nonlinear pad. This failure and a measurement bias in Pad compression stiffness can produce similar symptoms. Cross-check loading and unloading slopes rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：非線性墊片用單一剛度會漏掉載重依賴~This unit cannot exhibit the following failure: One stiffness misses load dependence in a nonlinear pad.",
+      "practice": "重算「墊片壓縮剛度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出從明確零點取得割線剛度；固定溫度及載入速率如何限制結論。接著設計一組符合模型及一組由非線性墊片用單一剛度會漏掉載重依賴造成偏離的合成觀察，以載入卸載斜率說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Pad compression stiffness, plot the input-output relationship, and explain the limiting assumption: Secant stiffness is measured from a defined origin at fixed temperature and loading rate. Construct one synthetic observation consistent with the model and another affected by this failure: One stiffness misses load dependence in a nonlinear pad. Explain which evidence in loading and unloading slopes distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "平行支承合成~Parallel support stiffness",
+      "title": "平行支承合成~Parallel support stiffness",
+      "mechanism": "同位移的平行支承剛度相加。本模型把 k1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 62.5 kN/mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。兩支承保持接觸且位移相同；各元件線彈性。使用共同位移與分力作量測證據，才能檢查方程是否對應此處的實際物理量；支承不接觸時不能仍視為平行有效元件，因此應把該原因與量測偏差分開。~Parallel supports sharing displacement have additive stiffness. In this model, k1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 62.5 kN/mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Both supports stay in contact with identical displacement; each component is linearly elastic. Use common displacement and force sharing as measurement evidence that the equation represents the intended physical quantity. A support out of contact cannot remain an active parallel element; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k1=25 kN/mm, k2=35 kN/mm；y=k1+k2=60 kN/mm。只把 k1 增加百分之十，y=62.5 kN/mm。模型邊界：兩支承保持接觸且位移相同；各元件線彈性；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k1=25 kN/mm, k2=35 kN/mm; y=k1+k2=60 kN/mm. Increasing only k1 with a ten-percent increase gives y=62.5 kN/mm. Boundary: Both supports stay in contact with identical displacement; each component is linearly elastic; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以共同位移與分力區分模型與觀察，先用共同位移、兩支承分力與初始間隙建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「平行支承合成」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use common displacement and force sharing to distinguish the model from observation in this unit. Establish a baseline using common displacement, separate support forces and initial gaps, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Parallel support stiffness. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "支承不接觸時不能仍視為平行有效元件。這個失效與「平行支承合成」的量測偏差可能產生相似表象，因此必須同時檢查共同位移與分力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A support out of contact cannot remain an active parallel element. This failure and a measurement bias in Parallel support stiffness can produce similar symptoms. Cross-check common displacement and force sharing rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：支承不接觸時不能仍視為平行有效元件~This unit cannot exhibit the following failure: A support out of contact cannot remain an active parallel element.",
+      "practice": "重算「平行支承合成」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出兩支承保持接觸且位移相同；各元件線彈性如何限制結論。接著設計一組符合模型及一組由支承不接觸時不能仍視為平行有效元件造成偏離的合成觀察，以共同位移與分力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Parallel support stiffness, plot the input-output relationship, and explain the limiting assumption: Both supports stay in contact with identical displacement; each component is linearly elastic. Construct one synthetic observation consistent with the model and another affected by this failure: A support out of contact cannot remain an active parallel element. Explain which evidence in common displacement and force sharing distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "串聯支承合成~Series support stiffness",
+      "title": "串聯支承合成~Series support stiffness",
+      "mechanism": "同力的串聯元件位移相加，因此總剛度小於各元件。本模型把 k1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 28.3871 kN/mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。兩元件承受相同力；不另有旁路支承或滑移。使用各層位移分量作量測證據，才能檢查方程是否對應此處的實際物理量；把串聯當平行會高估支承剛度，因此應把該原因與量測偏差分開。~Series elements share force and add displacement, giving a stiffness below either element. In this model, k1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 28.3871 kN/mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Both components carry the same force; no bypass support or slip is present. Use displacement in each layer as measurement evidence that the equation represents the intended physical quantity. Treating series support as parallel overestimates stiffness; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k1=40 kN/mm, k2=80 kN/mm；y=k1*k2/(k1+k2)=26.6667 kN/mm。只把 k1 增加百分之十，y=28.3871 kN/mm。模型邊界：兩元件承受相同力；不另有旁路支承或滑移；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k1=40 kN/mm, k2=80 kN/mm; y=k1*k2/(k1+k2)=26.6667 kN/mm. Increasing only k1 with a ten-percent increase gives y=28.3871 kN/mm. Boundary: Both components carry the same force; no bypass support or slip is present; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以各層位移分量區分模型與觀察，先用每層位移、共同力及總位移閉合差建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「串聯支承合成」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use displacement in each layer to distinguish the model from observation in this unit. Establish a baseline using individual layer displacement, common force and total-displacement closure, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Series support stiffness. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把串聯當平行會高估支承剛度。這個失效與「串聯支承合成」的量測偏差可能產生相似表象，因此必須同時檢查各層位移分量，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Treating series support as parallel overestimates stiffness. This failure and a measurement bias in Series support stiffness can produce similar symptoms. Cross-check displacement in each layer rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把串聯當平行會高估支承剛度~This unit cannot exhibit the following failure: Treating series support as parallel overestimates stiffness.",
+      "practice": "重算「串聯支承合成」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出兩元件承受相同力；不另有旁路支承或滑移如何限制結論。接著設計一組符合模型及一組由把串聯當平行會高估支承剛度造成偏離的合成觀察，以各層位移分量說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Series support stiffness, plot the input-output relationship, and explain the limiting assumption: Both components carry the same force; no bypass support or slip is present. Construct one synthetic observation consistent with the model and another affected by this failure: Treating series support as parallel overestimates stiffness. Explain which evidence in displacement in each layer distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "夾持力平均壓力~Clamping mean pressure",
+      "title": "夾持力平均壓力~Clamping mean pressure",
+      "mechanism": "平均壓力描述名義接觸區，彈條接觸邊緣可更高。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 11 MPa。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。接觸面積與夾持合力已知；忽略局部邊緣峰值。使用接觸印跡與力作量測證據，才能檢查方程是否對應此處的實際物理量；偏斜安裝造成局部壓力集中，因此應把該原因與量測偏差分開。~Mean pressure describes nominal contact while clip-contact edges can carry more. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 11 MPa. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Contact area and clamp resultant are known; local edge peaks are omitted. Use contact imprint and force as measurement evidence that the equation represents the intended physical quantity. Skew installation concentrates local pressure; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=20 kN, A=2000 mm2；y=F*1000/A=10 MPa。只把 F 增加百分之十，y=11 MPa。模型邊界：接觸面積與夾持合力已知；忽略局部邊緣峰值；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=20 kN, A=2000 mm2; y=F*1000/A=10 MPa. Increasing only F with a ten-percent increase gives y=11 MPa. Boundary: Contact area and clamp resultant are known; local edge peaks are omitted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以接觸印跡與力區分模型與觀察，先用模型夾持力、壓敏印跡及偏心位置建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「夾持力平均壓力」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use contact imprint and force to distinguish the model from observation in this unit. Establish a baseline using model clamp force, pressure-sensitive imprint and eccentricity, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Clamping mean pressure. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "偏斜安裝造成局部壓力集中。這個失效與「夾持力平均壓力」的量測偏差可能產生相似表象，因此必須同時檢查接觸印跡與力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Skew installation concentrates local pressure. This failure and a measurement bias in Clamping mean pressure can produce similar symptoms. Cross-check contact imprint and force rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：偏斜安裝造成局部壓力集中~This unit cannot exhibit the following failure: Skew installation concentrates local pressure.",
+      "practice": "重算「夾持力平均壓力」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出接觸面積與夾持合力已知；忽略局部邊緣峰值如何限制結論。接著設計一組符合模型及一組由偏斜安裝造成局部壓力集中造成偏離的合成觀察，以接觸印跡與力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Clamping mean pressure, plot the input-output relationship, and explain the limiting assumption: Contact area and clamp resultant are known; local edge peaks are omitted. Construct one synthetic observation consistent with the model and another affected by this failure: Skew installation concentrates local pressure. Explain which evidence in contact imprint and force distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "彈條位移能量~Clip elastic energy",
+      "title": "彈條位移能量~Clip elastic energy",
+      "mechanism": "線性彈簧儲能與位移平方相關。本模型把 k 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 2.2 J。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。無預載的線性彈簧且變形可回復；不含塑性與摩擦耗散。使用卸載回復曲線作量測證據，才能檢查方程是否對應此處的實際物理量；塑性變形使能量不再完全可回復，因此應把該原因與量測偏差分開。~Linear spring energy depends on displacement squared. In this model, k is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 2.2 J. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. An initially unloaded linear spring with recoverable deformation; plasticity and frictional loss are excluded. Use unloading recovery trace as measurement evidence that the equation represents the intended physical quantity. Plastic deformation makes stored work partly irrecoverable; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k=1000 N/mm, d=2 mm；y=0.5*k*d**2/1000=2 J。只把 k 增加百分之十，y=2.2 J。模型邊界：無預載的線性彈簧且變形可回復；不含塑性與摩擦耗散；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k=1000 N/mm, d=2 mm; y=0.5*k*d**2/1000=2 J. Increasing only k with a ten-percent increase gives y=2.2 J. Boundary: An initially unloaded linear spring with recoverable deformation; plasticity and frictional loss are excluded; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以卸載回復曲線區分模型與觀察，先用模型載入卸載曲線、殘餘變形及能量積分建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「彈條位移能量」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use unloading recovery trace to distinguish the model from observation in this unit. Establish a baseline using model loading-unloading curves, residual deformation and energy integration, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Clip elastic energy. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "塑性變形使能量不再完全可回復。這個失效與「彈條位移能量」的量測偏差可能產生相似表象，因此必須同時檢查卸載回復曲線，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Plastic deformation makes stored work partly irrecoverable. This failure and a measurement bias in Clip elastic energy can produce similar symptoms. Cross-check unloading recovery trace rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：塑性變形使能量不再完全可回復~This unit cannot exhibit the following failure: Plastic deformation makes stored work partly irrecoverable.",
+      "practice": "重算「彈條位移能量」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出無預載的線性彈簧且變形可回復；不含塑性與摩擦耗散如何限制結論。接著設計一組符合模型及一組由塑性變形使能量不再完全可回復造成偏離的合成觀察，以卸載回復曲線說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Clip elastic energy, plot the input-output relationship, and explain the limiting assumption: An initially unloaded linear spring with recoverable deformation; plasticity and frictional loss are excluded. Construct one synthetic observation consistent with the model and another affected by this failure: Plastic deformation makes stored work partly irrecoverable. Explain which evidence in unloading recovery trace distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "橫向剪切變形~Lateral shear displacement",
+      "title": "橫向剪切變形~Lateral shear displacement",
+      "mechanism": "橫向剛度與垂向剛度是不同參數。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 1.65 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。使用橫向集中剛度且保持接觸；不以垂向剛度替代。使用橫向載入位移作量測證據，才能檢查方程是否對應此處的實際物理量；沿用垂向剛度會誤估軌距變化，因此應把該原因與量測偏差分開。~Lateral and vertical stiffness are distinct parameters. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 1.65 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Lateral lumped stiffness is used with maintained contact; vertical stiffness is not substituted. Use displacement under lateral loading as measurement evidence that the equation represents the intended physical quantity. Using vertical stiffness misestimates gauge movement; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=12 kN, k=8 kN/mm；y=F/k=1.5 mm。只把 F 增加百分之十，y=1.65 mm。模型邊界：使用橫向集中剛度且保持接觸；不以垂向剛度替代；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=12 kN, k=8 kN/mm; y=F/k=1.5 mm. Increasing only F with a ten-percent increase gives y=1.65 mm. Boundary: Lateral lumped stiffness is used with maintained contact; vertical stiffness is not substituted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以橫向載入位移區分模型與觀察，先用模型橫向力、相對滑移與軌距方向位移建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「橫向剪切變形」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use displacement under lateral loading to distinguish the model from observation in this unit. Establish a baseline using model lateral force, relative slip and gauge-direction displacement, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Lateral shear displacement. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "沿用垂向剛度會誤估軌距變化。這個失效與「橫向剪切變形」的量測偏差可能產生相似表象，因此必須同時檢查橫向載入位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Using vertical stiffness misestimates gauge movement. This failure and a measurement bias in Lateral shear displacement can produce similar symptoms. Cross-check displacement under lateral loading rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：沿用垂向剛度會誤估軌距變化~This unit cannot exhibit the following failure: Using vertical stiffness misestimates gauge movement.",
+      "practice": "重算「橫向剪切變形」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出使用橫向集中剛度且保持接觸；不以垂向剛度替代如何限制結論。接著設計一組符合模型及一組由沿用垂向剛度會誤估軌距變化造成偏離的合成觀察，以橫向載入位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Lateral shear displacement, plot the input-output relationship, and explain the limiting assumption: Lateral lumped stiffness is used with maintained contact; vertical stiffness is not substituted. Construct one synthetic observation consistent with the model and another affected by this failure: Using vertical stiffness misestimates gauge movement. Explain which evidence in displacement under lateral loading distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "絕緣電阻量級~Insulation resistance scale",
+      "title": "絕緣電阻量級~Insulation resistance scale",
+      "mechanism": "低壓電阻檢查可比較濕乾狀態但不證明高壓絕緣能力。本模型把 V 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 660 kohm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。隔離低壓直流穩態量測；結果不證明高壓耐受能力。使用同電壓下乾濕漏電流作量測證據，才能檢查方程是否對應此處的實際物理量；表面污染會形成旁路導電，因此應把該原因與量測偏差分開。~Low-voltage resistance compares wet and dry states but does not certify high-voltage insulation. In this model, V is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 660 kohm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Isolated low-voltage steady DC measurement; the result does not certify high-voltage withstand. Use dry and wet leakage current at equal voltage as measurement evidence that the equation represents the intended physical quantity. Surface contamination creates a conductive bypass; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：V=12 V, I=0.00002 A；y=V/I/1000=600 kohm。只把 V 增加百分之十，y=660 kohm。模型邊界：隔離低壓直流穩態量測；結果不證明高壓耐受能力；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: V=12 V, I=0.00002 A; y=V/I/1000=600 kohm. Increasing only V with a ten-percent increase gives y=660 kohm. Boundary: Isolated low-voltage steady DC measurement; the result does not certify high-voltage withstand; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以同電壓下乾濕漏電流區分模型與觀察，先用安全低壓電源、校準電流表與乾濕表面條件建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「絕緣電阻量級」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use dry and wet leakage current at equal voltage to distinguish the model from observation in this unit. Establish a baseline using safe low-voltage source, calibrated current meter and dry-wet surface conditions, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Insulation resistance scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "表面污染會形成旁路導電。這個失效與「絕緣電阻量級」的量測偏差可能產生相似表象，因此必須同時檢查同電壓下乾濕漏電流，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Surface contamination creates a conductive bypass. This failure and a measurement bias in Insulation resistance scale can produce similar symptoms. Cross-check dry and wet leakage current at equal voltage rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：表面污染會形成旁路導電~This unit cannot exhibit the following failure: Surface contamination creates a conductive bypass.",
+      "practice": "重算「絕緣電阻量級」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出隔離低壓直流穩態量測；結果不證明高壓耐受能力如何限制結論。接著設計一組符合模型及一組由表面污染會形成旁路導電造成偏離的合成觀察，以同電壓下乾濕漏電流說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Insulation resistance scale, plot the input-output relationship, and explain the limiting assumption: Isolated low-voltage steady DC measurement; the result does not certify high-voltage withstand. Construct one synthetic observation consistent with the model and another affected by this failure: Surface contamination creates a conductive bypass. Explain which evidence in dry and wet leakage current at equal voltage distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "溫度膨脹相容~Thermal expansion compatibility",
+      "title": "溫度膨脹相容~Thermal expansion compatibility",
+      "mechanism": "聚合物元件熱伸長須與金屬夾持幾何一起檢查。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.396 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻溫升及自由聚合物伸長；約束後的預壓變化另建模。使用溫度與夾持間隙作量測證據，才能檢查方程是否對應此處的實際物理量；熱膨脹差可能改變預壓，因此應把該原因與量測偏差分開。~Polymer expansion must be checked against metal-clamping geometry. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.396 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform heating and free polymer expansion; restrained preload changes require another model. Use temperature and clamping clearance as measurement evidence that the equation represents the intended physical quantity. Differential thermal expansion can change preload; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.00008 1/K, L=150 mm, dT=30 K；y=alpha*L*dT=0.36 mm。只把 alpha 增加百分之十，y=0.396 mm。模型邊界：均勻溫升及自由聚合物伸長；約束後的預壓變化另建模；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.00008 1/K, L=150 mm, dT=30 K; y=alpha*L*dT=0.36 mm. Increasing only alpha with a ten-percent increase gives y=0.396 mm. Boundary: Uniform heating and free polymer expansion; restrained preload changes require another model; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以溫度與夾持間隙區分模型與觀察，先用模型聚合物與金屬溫度、長度及夾持間隙建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「溫度膨脹相容」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use temperature and clamping clearance to distinguish the model from observation in this unit. Establish a baseline using model polymer and metal temperatures, lengths and clamp clearance, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Thermal expansion compatibility. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "熱膨脹差可能改變預壓。這個失效與「溫度膨脹相容」的量測偏差可能產生相似表象，因此必須同時檢查溫度與夾持間隙，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Differential thermal expansion can change preload. This failure and a measurement bias in Thermal expansion compatibility can produce similar symptoms. Cross-check temperature and clamping clearance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：熱膨脹差可能改變預壓~This unit cannot exhibit the following failure: Differential thermal expansion can change preload.",
+      "practice": "重算「溫度膨脹相容」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻溫升及自由聚合物伸長；約束後的預壓變化另建模如何限制結論。接著設計一組符合模型及一組由熱膨脹差可能改變預壓造成偏離的合成觀察，以溫度與夾持間隙說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Thermal expansion compatibility, plot the input-output relationship, and explain the limiting assumption: Uniform heating and free polymer expansion; restrained preload changes require another model. Construct one synthetic observation consistent with the model and another affected by this failure: Differential thermal expansion can change preload. Explain which evidence in temperature and clamping clearance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "循環損傷指標~Cycle damage index",
+      "title": "循環損傷指標~Cycle damage index",
+      "mechanism": "線性累積損傷是教學近似而非普遍壽命定律。本模型把 n1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.21 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。各級壽命值已另給且採線性累積；忽略載入順序與交互作用。使用載重幅值分組與循環數作量測證據，才能檢查方程是否對應此處的實際物理量；忽略載入順序與腐蝕會低估實際疲勞，因此應把該原因與量測偏差分開。~Linear damage accumulation is a teaching approximation, not a universal life law. In this model, n1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.21 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Life values for each amplitude are supplied separately and damage accumulates linearly; sequence and interaction are omitted. Use load-amplitude groups and cycle counts as measurement evidence that the equation represents the intended physical quantity. Ignoring load sequence and corrosion understates actual fatigue; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：n1=100000 cycles, N1=1000000 cycles, n2=200000 cycles, N2=2000000 cycles；y=n1/N1+n2/N2=0.2 1。只把 n1 增加百分之十，y=0.21 1。模型邊界：各級壽命值已另給且採線性累積；忽略載入順序與交互作用；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: n1=100000 cycles, N1=1000000 cycles, n2=200000 cycles, N2=2000000 cycles; y=n1/N1+n2/N2=0.2 1. Increasing only n1 with a ten-percent increase gives y=0.21 1. Boundary: Life values for each amplitude are supplied separately and damage accumulates linearly; sequence and interaction are omitted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以載重幅值分組與循環數區分模型與觀察，先用合成載荷幅值直方圖、循環數與各級壽命曲線建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「循環損傷指標」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use load-amplitude groups and cycle counts to distinguish the model from observation in this unit. Establish a baseline using synthetic load-amplitude histogram, cycle counts and amplitude-specific life curves, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Cycle damage index. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "忽略載入順序與腐蝕會低估實際疲勞。這個失效與「循環損傷指標」的量測偏差可能產生相似表象，因此必須同時檢查載重幅值分組與循環數，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Ignoring load sequence and corrosion understates actual fatigue. This failure and a measurement bias in Cycle damage index can produce similar symptoms. Cross-check load-amplitude groups and cycle counts rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：忽略載入順序與腐蝕會低估實際疲勞~This unit cannot exhibit the following failure: Ignoring load sequence and corrosion understates actual fatigue.",
+      "practice": "重算「循環損傷指標」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出各級壽命值已另給且採線性累積；忽略載入順序與交互作用如何限制結論。接著設計一組符合模型及一組由忽略載入順序與腐蝕會低估實際疲勞造成偏離的合成觀察，以載重幅值分組與循環數說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Cycle damage index, plot the input-output relationship, and explain the limiting assumption: Life values for each amplitude are supplied separately and damage accumulates linearly; sequence and interaction are omitted. Construct one synthetic observation consistent with the model and another affected by this failure: Ignoring load sequence and corrosion understates actual fatigue. Explain which evidence in load-amplitude groups and cycle counts distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "剛度劣化比例~Stiffness degradation fraction",
+      "title": "剛度劣化比例~Stiffness degradation fraction",
+      "mechanism": "前後比較須保持溫度與載重區間一致。本模型把 k0 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 27.2727 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。前後採相同載荷區間、溫度及測試速率；初始剛度非零。使用同條件基準與複測作量測證據，才能檢查方程是否對應此處的實際物理量；溫度軟化可能被誤認為永久老化，因此應把該原因與量測偏差分開。~Before-after comparison requires matched temperature and loading range. In this model, k0 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 27.2727 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Before-after load interval, temperature and test rate match; initial stiffness is nonzero. Use baseline and repeat tests under matched conditions as measurement evidence that the equation represents the intended physical quantity. Temperature softening can be mistaken for permanent ageing; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：k0=40 kN/mm, k1=32 kN/mm；y=(k0-k1)/k0*100=20 percent。只把 k0 增加百分之十，y=27.2727 percent。模型邊界：前後採相同載荷區間、溫度及測試速率；初始剛度非零；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: k0=40 kN/mm, k1=32 kN/mm; y=(k0-k1)/k0*100=20 percent. Increasing only k0 with a ten-percent increase gives y=27.2727 percent. Boundary: Before-after load interval, temperature and test rate match; initial stiffness is nonzero; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以同條件基準與複測區分模型與觀察，先用配對力位移曲線、試件溫度及重複測試誤差建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「剛度劣化比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use baseline and repeat tests under matched conditions to distinguish the model from observation in this unit. Establish a baseline using paired force-displacement curves, specimen temperature and repeat-test error, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Stiffness degradation fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "溫度軟化可能被誤認為永久老化。這個失效與「剛度劣化比例」的量測偏差可能產生相似表象，因此必須同時檢查同條件基準與複測，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Temperature softening can be mistaken for permanent ageing. This failure and a measurement bias in Stiffness degradation fraction can produce similar symptoms. Cross-check baseline and repeat tests under matched conditions rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：溫度軟化可能被誤認為永久老化~This unit cannot exhibit the following failure: Temperature softening can be mistaken for permanent ageing.",
+      "practice": "重算「剛度劣化比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出前後採相同載荷區間、溫度及測試速率；初始剛度非零如何限制結論。接著設計一組符合模型及一組由溫度軟化可能被誤認為永久老化造成偏離的合成觀察，以同條件基準與複測說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Stiffness degradation fraction, plot the input-output relationship, and explain the limiting assumption: Before-after load interval, temperature and test rate match; initial stiffness is nonzero. Construct one synthetic observation consistent with the model and another affected by this failure: Temperature softening can be mistaken for permanent ageing. Explain which evidence in baseline and repeat tests under matched conditions distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：F=60 kN, d=1.5 mm；y=F/d=40 kN/mm~Teaching unit 1 baseline scale: Original assumed example, not field operating values: F=60 kN, d=1.5 mm; y=F/d=40 kN/mm.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：k1=25 kN/mm, k2=35 kN/mm；y=k1+k2=60 kN/mm~Teaching unit 2 baseline scale: Original assumed example, not field operating values: k1=25 kN/mm, k2=35 kN/mm; y=k1+k2=60 kN/mm.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：k1=40 kN/mm, k2=80 kN/mm；y=k1*k2/(k1+k2)=26.6667 kN/mm~Teaching unit 3 baseline scale: Original assumed example, not field operating values: k1=40 kN/mm, k2=80 kN/mm; y=k1*k2/(k1+k2)=26.6667 kN/mm.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：F=20 kN, A=2000 mm2；y=F*1000/A=10 MPa~Teaching unit 4 baseline scale: Original assumed example, not field operating values: F=20 kN, A=2000 mm2; y=F*1000/A=10 MPa.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：k=1000 N/mm, d=2 mm；y=0.5*k*d**2/1000=2 J~Teaching unit 5 baseline scale: Original assumed example, not field operating values: k=1000 N/mm, d=2 mm; y=0.5*k*d**2/1000=2 J.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：F=12 kN, k=8 kN/mm；y=F/k=1.5 mm~Teaching unit 6 baseline scale: Original assumed example, not field operating values: F=12 kN, k=8 kN/mm; y=F/k=1.5 mm."
+  ],
+  "timeline": [
+    {
+      "year": "2006-10",
+      "event": "運輸研究委員會發布軌道過渡段比較研究摘要。~TRB published its comparative research digest on track transitions."
+    },
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布整合基礎設施互通規範第一二九九號法規。~The EU issued Regulation 1299/2014 for the infrastructure interoperability specification."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "美國聯邦法規第四十九篇第二百十三部分：軌道比較閱讀。~US 49 CFR Part 213: comparative reading on track requirements."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-fast",
+      "title": "鋼軌扣件系統",
+      "titleEn": "Rail fastening systems",
+      "publisher": "Vossloh",
+      "url": "https://www.vossloh.com/en-us/fastening-systems",
+      "sourceType": "primary",
+      "scope": "扣件產品範圍及後續查證入口，不提供專利設計圖。",
+      "scopeEn": "Fastening product scope and follow-up reference, without proprietary drawings."
+    },
+    {
+      "key": "track-trans",
+      "title": "軌道過渡段研究報告",
+      "titleEn": "Design of Track Transitions, Research Results Digest 79",
+      "publisher": "Transportation Research Board / FRA",
+      "url": "https://railroads.dot.gov/sites/fra.dot.gov/files/fra_net/14977/Research%20Results%20Digest%2079%20Design%20of%20Track%20Transitions.pdf",
+      "sourceType": "primary",
+      "scope": "過渡段比較研究入口；本課數值是另行設定的縮減模型。",
+      "scopeEn": "Entry point for transition research; numerical values in this course belong to separately assumed reduced models."
+    },
+    {
+      "key": "track-tsi",
+      "title": "歐洲鐵路基礎設施互通規範入口",
+      "titleEn": "Infrastructure TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/infrastructure-tsi_en",
+      "sourceType": "primary",
+      "scope": "基礎設施互通要求的官方入口；教材算例不是規範限值。",
+      "scopeEn": "Official infrastructure interoperability entry point; teaching calculations are not regulatory limits."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b346",
+    "b354"
+  ],
+  "architectureNodes": [
+    [
+      "鋼軌載入",
+      "Rail loading"
+    ],
+    [
+      "彈條扣壓",
+      "Clip force"
+    ],
+    [
+      "墊板彈性",
+      "Pad elasticity"
+    ],
+    [
+      "錨固支承",
+      "Anchored support"
+    ],
+    [
+      "縱向阻力",
+      "Longitudinal resistance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

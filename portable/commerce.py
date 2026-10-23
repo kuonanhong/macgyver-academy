@@ -4,6 +4,7 @@ Standard library only. Defaults to disabled. The author/source distribution is
 not a paywall: a protected deployment must serve every path through server.py.
 """
 from datetime import datetime, timedelta, timezone
+from collections import OrderedDict
 import hashlib
 import hmac
 import html
@@ -12,6 +13,7 @@ import os
 import re
 import secrets
 import time
+import threading
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, quote_plus, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
@@ -116,14 +118,20 @@ class Commerce:
         self.key = os.environ.get("ECPAY_HASH_KEY", "")
         self.iv = os.environ.get("ECPAY_HASH_IV", "")
         self.courses = None
+        self.course_descriptors = {}
+        self.public_course_descriptors = {}
+        self.course_asset_prefix = "data/lazy/courses"
+        self.resource_descriptors = {}
+        self.auxiliary_descriptors = {}
+        self.owner_resource_descriptors = {}
+        self.full_courses = OrderedDict()
+        self.course_lock = threading.RLock()
         self.revisions = {}
         self.reason = "Billing is disabled. This is the complete owner/demo edition."
         if self.protected:
             self.reason = "Paid access is protected; checkout is not configured."
-            source = app.public / "data/featured.json"
-            if not source.is_file():
-                raise ValueError("Protected deployment requires the private canonical data/featured.json.")
-            self.courses = {c["id"]: c for c in json.loads(source.read_text(encoding="utf-8"))}
+            if not (app.public / "data/lazy/index.json").is_file() and not (app.public / "data/featured.json").is_file():
+                raise ValueError("Protected deployment requires the private curriculum index/chunks or canonical data/featured.json.")
         origin = urlsplit(app.origin)
         https_public = origin.scheme == "https" and origin.hostname not in ("localhost", "127.0.0.1", "::1") and origin.port in (None, 443)
         configured = bool(re.fullmatch(r"[0-9]{5,10}", self.merchant) and len(self.key) >= 16 and len(self.iv) >= 16)
@@ -143,12 +151,73 @@ class Commerce:
                 "certificateType": "server-recorded-quiz-completion" if self.protected else "local-learning-statement"}
 
     def load_courses(self):
-        if self.courses is None:
-            path = self.app.public / "data/featured.json"
-            if not path.is_file():
-                raise self.error(503, "Curriculum is not configured.")
-            self.courses = {c["id"]: c for c in json.loads(path.read_text(encoding="utf-8"))}
-        return self.courses
+        # The homepage/index must not parse hundreds of megabytes of lesson
+        # bodies. Retain compact metadata and load a verified course on demand.
+        with self.course_lock:
+            if self.courses is None:
+                index = self.app.public / "data/lazy/index.json"
+                if index.is_file():
+                    if index.stat().st_size > 16 * 1024 * 1024:
+                        raise self.error(503, "Curriculum index exceeds its size limit.")
+                    data = json.loads(index.read_text(encoding="utf-8"))
+                    self.courses = {c["id"]: c for c in data["catalog"] if isinstance(c.get("stages"), list)}
+                    self.public_course_descriptors = data.get("courses", {})
+                    self.resource_descriptors = data.get("resources", {})
+                    self.auxiliary_descriptors = data.get("auxiliary", {})
+                    owner_index = self.app.public / "data/lazy/owner-index.json"
+                    if owner_index.is_file():
+                        if owner_index.stat().st_size > 16 * 1024 * 1024:
+                            raise self.error(503, "Private curriculum index exceeds its size limit.")
+                        owner_data = json.loads(owner_index.read_text(encoding="utf-8"))
+                        self.course_descriptors = owner_data["courses"]
+                        self.owner_resource_descriptors = owner_data.get("resources", {})
+                        self.course_asset_prefix = "data/lazy/owner-courses"
+                    else:
+                        # Compatibility with V15: full data used the courses/
+                        # directory. V16 separates it from public previews.
+                        self.course_descriptors = data["courses"]
+                else:
+                    path = self.app.public / "data/featured.json"
+                    if not path.is_file():
+                        raise self.error(503, "Curriculum is not configured.")
+                    self.courses = {c["id"]: c for c in json.loads(path.read_text(encoding="utf-8"))}
+            return self.courses
+
+    def read_descriptor(self, descriptor, identifier, prefix):
+        digest = descriptor.get("sha256", "")
+        name = descriptor.get("file", "")
+        size = descriptor.get("byteLength", 0)
+        if not re.fullmatch(r"[0-9a-f]{64}", digest) or name != f"{prefix}/{identifier}-{digest[:16]}.json" or type(size) is not int or not 2 <= size <= 32 * 1024 * 1024:
+            raise self.error(503, "Invalid curriculum descriptor.")
+        path = (self.app.public / name).resolve()
+        if not path.is_relative_to(self.app.public) or not path.is_file() or path.stat().st_size != size:
+            raise self.error(503, "Curriculum file is missing or incomplete.")
+        raw = path.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != digest:
+            raise self.error(503, "Curriculum checksum mismatch.")
+        return json.loads(raw)
+
+    def resources(self, course_id, user_id):
+        if not isinstance(course_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", course_id):
+            raise self.error(400, "Invalid course ID.")
+        self.load_courses()
+        if course_id not in self.resource_descriptors:
+            raise self.error(404, "Course resources not found.")
+        entitled = self.can_access(course_id, user_id)
+        if entitled and course_id in self.owner_resource_descriptors:
+            descriptor, prefix = self.owner_resource_descriptors[course_id], "data/lazy/owner-resources"
+        else:
+            descriptor, prefix = self.resource_descriptors[course_id], "data/lazy/resources"
+        value = self.read_descriptor(descriptor, course_id, prefix)
+        if not isinstance(value, dict):
+            raise self.error(503, "Invalid resource data.")
+        if not entitled and isinstance(value.get("media"), dict):
+            # V15/V16 actually nest guide bodies under media.courses[].
+            # Keep the legacy flat shape safe as well; do not mutate caches.
+            media = value["media"]
+            value = {**value, "media": {**media, "guides": [], "courses": [
+                {**course, "guides": []} for course in media.get("courses", []) if isinstance(course, dict)]}}
+        return value
 
     def course(self, course_id):
         if not isinstance(course_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", course_id):
@@ -156,7 +225,21 @@ class Commerce:
         course = self.load_courses().get(course_id)
         if not course:
             raise self.error(404, "Guided course not found.")
-        return course
+        if not self.course_descriptors:
+            return course
+        with self.course_lock:
+            if course_id in self.full_courses:
+                self.full_courses.move_to_end(course_id)
+                return self.full_courses[course_id]
+            value = self.read_descriptor(self.course_descriptors.get(course_id, {}), course_id, self.course_asset_prefix)
+            if value.get("id") != course_id or not isinstance(value.get("stages"), list):
+                raise self.error(503, "Private curriculum identity mismatch.")
+            if value.get("publicStub") is True or value.get("partial") is True or any(s.get("locked") is True for stage in value["stages"] for s in stage.get("steps", [])):
+                raise self.error(503, "Only public preview content is installed. Install the private owner curriculum on this learning server.")
+            self.full_courses[course_id] = value
+            while len(self.full_courses) > 24:
+                self.full_courses.popitem(last=False)
+            return value
 
     def course_revision(self, course):
         if course["id"] not in self.revisions:
@@ -174,7 +257,7 @@ class Commerce:
         return dict(row) if row else None
 
     def can_access(self, course_id, user_id):
-        return not self.protected or course_id in FREE_COURSES or bool(self.entitlement(user_id))
+        return not self.protected or course_id in FREE_COURSES or self.app.is_owner(user_id) or bool(self.entitlement(user_id))
 
     def require_access(self, course_id, user_id):
         course = self.course(course_id)
@@ -199,13 +282,14 @@ class Commerce:
         return step_id in {s["id"] for st in course.get("stages", [])[:FREE_STAGES] for s in st.get("steps", [])}
 
     def curriculum(self, user_id, course_id=None, index=False):
-        entitled = not self.protected or bool(self.entitlement(user_id))
+        entitled = not self.protected or self.app.is_owner(user_id) or bool(self.entitlement(user_id))
         courses=self.load_courses()
         if course_id is not None:
             return self.visible_course(self.course(course_id), entitled)
-        result=[self.visible_course(course, entitled) for course in courses.values()]
-        if not index:return result
-        keys=('id','title','titleEn','category','subcategory','subcategoryTitle','subcategoryTitleEn','summary','summaryEn','status','kind','stepCount','estimatedMinutes','diagram','flowDiagram','photoId','educationEdition','enrichmentVersion','curriculumVersion','contentStatus','depth','languageCoverage','locked','paid','partial')
+        if not index:
+            return [self.visible_course(self.course(course_id), entitled) for course_id in courses]
+        result = courses.values()
+        keys=('id','title','titleEn','category','subcategory','subcategoryTitle','subcategoryTitleEn','summary','summaryEn','status','kind','stepCount','estimatedMinutes','diagram','flowDiagram','photoId','icon','iconPath','educationEdition','enrichmentVersion','curriculumVersion','contentStatus','depth','languageCoverage','locked','paid','partial')
         return [{**{k:c[k] for k in keys if k in c},'_lazy':True,'stages':[
             {**{k:stage[k] for k in ('id','title','titleEn','order') if k in stage},'steps':[{'id':step['id']} for step in stage.get('steps',[])]}
             for stage in c.get('stages',[])]} for c in result]
@@ -216,22 +300,65 @@ class Commerce:
             return True
         relative = target.relative_to(self.app.public)
         name = relative.as_posix()
-        if name=='data/lazy/index.json':return True
-        if name.startswith('data/lazy/resources/') and target.suffix in ('.json','.js'):return True
+        if name.startswith('data/lazy/owner-'):
+            return False
+        if name in ('data/lazy/index.json', 'data/lazy/index.compact.json'):return True
+        if name.startswith('data/lazy/resources/'):
+            self.load_courses()
+            # V15 resources include complete guides. They must go through the
+            # account-scoped API; V16's public descriptors contain no guides.
+            if self.course_asset_prefix != 'data/lazy/owner-courses':return False
+            return self.public_descriptor_allowed(target, self.resource_descriptors, 'data/lazy/resources', resource=True)
         if name.startswith('data/lazy/courses/'):
             match=re.fullmatch(r'(.+)-[0-9a-f]{16}\.(?:json|js)',target.name)
-            return bool(match and match[1] not in self.load_courses())
+            courses = self.load_courses()
+            if not match:return False
+            if self.course_asset_prefix == 'data/lazy/owner-courses':
+                # A historical full lesson with another hash is not public.
+                return self.public_descriptor_allowed(target,self.public_course_descriptors,'data/lazy/courses')
+            return match[1] not in courses
         if name.startswith('data/lazy/data/'):
             match=re.fullmatch(r'(.+)-[0-9a-f]{16}\.(?:json|js)',target.name)
-            return bool(match and match[1] in ('sources','source-usage','media','release','related-skills','course-places','vendors','learning-map'))
+            allowed={'sources','source-usage','media','release','related-skills','course-places','vendors','learning-map','pricing','project-icons','icon-manifest-v16','scene-photos-v16'}
+            if not match or match[1] not in allowed:return False
+            self.load_courses()
+            if match[1]=='media' and self.course_asset_prefix != 'data/lazy/owner-courses':return False
+            return self.public_descriptor_allowed(target,self.auxiliary_descriptors,'data/lazy/data',resource=match[1]=='media')
         if len(relative.parts) == 1:
             return (target.suffix in (".css", ".js", ".html", ".svg") and
                     not target.name.startswith("offline-data") and target.name not in ("offline-build.json",))
         if relative.parts[0] in ("assets", "vendor"):
             return target.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp", ".avif", ".gif", ".svg", ".css", ".js", ".wasm", ".woff", ".woff2", ".txt")
-        return name in {f"data/{item}.json" for item in ("catalog", "photos", "sources", "media", "release", "related-skills", "course-places", "vendors")}
+        # data/media.json is an authoring copy with complete member guides.
+        # The public lazy media descriptor above is its sanitized substitute.
+        return name in {f"data/{item}.json" for item in ("catalog", "photos", "sources", "release", "related-skills", "course-places", "vendors")}
+
+    def public_descriptor_allowed(self, target, descriptors, prefix, resource=False):
+        """Only exact, verified public JSON and its bound classic script qualify."""
+        name=target.relative_to(self.app.public).as_posix()
+        match=re.fullmatch(r'(.+)-[0-9a-f]{16}\.(?:json|js)',target.name)
+        if not match:return False
+        identifier=match[1];descriptor=descriptors.get(identifier,{})
+        if name not in (descriptor.get('file'),descriptor.get('script')):return False
+        value=self.read_descriptor(descriptor,identifier,prefix)
+        if resource:
+            media=value.get('media',value) if isinstance(value,dict) else {}
+            if media.get('guides') or any(c.get('guides') for c in media.get('courses',[]) if isinstance(c,dict)):return False
+        if prefix=='data/lazy/courses' and isinstance(value.get('stages'),list):
+            if value.get('previewOnly') is not True:return False
+            for stage in value['stages'][1:]:
+                for step in stage.get('steps',[]):
+                    if step.get('locked') is not True or any(step.get(k) for k in ('instruction','instructionEn','objective','objectiveEn','observation','observationEn','failure','failureEn','check','checkEn','knowledge')):return False
+        if target.suffix=='.js':
+            raw=(self.app.public/descriptor['file']).read_text('utf-8').strip()
+            serialized=raw.replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
+            expected='/* Generated on-demand data. */\nwindow.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);\nwindow.MG_LAZY_DATA['+json.dumps(descriptor['file'])+']={sha256:'+json.dumps(descriptor['sha256'])+',value:'+serialized+'};\n'
+            if not target.is_file() or target.read_text('utf-8')!=expected:return False
+        return True
 
     def checkout(self, user_id, payload):
+        if self.app.is_owner(user_id):
+            raise self.error(409, "The site owner already has permanent access to every course; no payment is needed.")
         if not self.available:
             raise self.error(503, self.reason)
         plan = next((p for p in PLANS if p["id"] == payload.get("planId")), None)
@@ -365,7 +492,10 @@ class Commerce:
         with self.app.db() as db:
             entitlements = [dict(r) for r in db.execute("SELECT order_id AS orderId,mode,starts_at AS startsAt,expires_at AS expiresAt,revoked_at AS revokedAt FROM commerce_entitlements WHERE user_id=? ORDER BY expires_at DESC LIMIT 100", (user_id,))]
             orders = [dict(r) for r in db.execute("SELECT id,plan_id AS planId,amount AS amountTwd,mode,status,created_at AS createdAt,paid_at AS paidAt FROM commerce_orders WHERE user_id=? ORDER BY created_at DESC LIMIT 100", (user_id,))]
-        return {"entitlements": entitlements, "orders": orders, "active": bool(self.entitlement(user_id))}
+        owner = self.app.is_owner(user_id)
+        return {"entitlements": entitlements, "orders": orders, "owner": owner,
+                "active": owner or bool(self.entitlement(user_id)),
+                "accessType": "owner" if owner else "member" if self.entitlement(user_id) else "preview"}
 
     def evidence(self, user_id, payload):
         if not self.protected:
@@ -445,7 +575,7 @@ class Commerce:
                 certificate_id = old["id"]
             else:
                 entitlement = self.entitlement(user["id"], db) if course["id"] not in FREE_COURSES else None
-                if course["id"] not in FREE_COURSES and not entitlement:
+                if course["id"] not in FREE_COURSES and not entitlement and not self.app.is_owner(user["id"], db):
                     raise self.error(402, "An active course pass is required.")
                 certificate_id = secrets.token_hex(20)
                 public_name = user["name"] if payload.get("publishName") is True else "Learner"
@@ -494,11 +624,16 @@ def dispatch_commerce(handler, path):
         handler.send_json(commerce.account(handler.user(True)["id"]))
     elif method == "GET" and path == "/api/curriculum":
         query=parse_qsl(urlsplit(handler.path).query,keep_blank_values=True)
-        if len(query)>1 or any(k not in ('courseId','index') for k,v in query):raise commerce.error(400,'Invalid curriculum query.')
+        if len(query)>1 or any(k not in ('courseId','index','resources') for k,v in query):raise commerce.error(400,'Invalid curriculum query.')
         values=dict(query)
         if 'index' in values and values['index']!='1':raise commerce.error(400,'index must be 1.')
-        if 'courseId' in values and not re.fullmatch(r'[a-z0-9]+(?:[-_][a-z0-9]+)*',values['courseId']):raise commerce.error(400,'Invalid courseId.')
-        handler.send_json(commerce.curriculum((handler.user() or {}).get('id'),course_id=values.get('courseId'),index=values.get('index')=='1'))
+        for key in ('courseId','resources'):
+            if key in values and not re.fullmatch(r'[a-z0-9]+(?:[-_][a-z0-9]+)*',values[key]):raise commerce.error(400,'Invalid courseId.')
+        user_id = (handler.user() or {}).get('id')
+        if 'resources' in values:
+            handler.send_json(commerce.resources(values['resources'], user_id))
+        else:
+            handler.send_json(commerce.curriculum(user_id,course_id=values.get('courseId'),index=values.get('index')=='1'))
     elif method == "GET" and path.startswith("/api/courses/"):
         uid = (handler.user() or {}).get("id")
         handler.send_json(commerce.visible_course(commerce.course(path.removeprefix("/api/courses/")), commerce.can_access(path.removeprefix("/api/courses/"), uid)))

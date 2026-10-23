@@ -96,17 +96,13 @@ const hash=value=>{let n=2166136261;for(const c of String(value)){n^=c.codePoint
 const titleFor=(course,en)=>en?(course.titleEn||course.title||course.id):(course.title||course.titleEn||course.id);
 const motif=category=>(disciplines[category]||disciplines.manufacturing)[1];
 export function domainIconSvg(category,{title='',decorative=false}={}) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="domain-icon" ${decorative?'aria-hidden="true"':`role="img" aria-label="${escape(title||category)}"`}><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${motif(category)}</g></svg>`;
+  const key=Object.prototype.hasOwnProperty.call(disciplines,category)?category:'manufacturing';
+  return `<img class="domain-icon" src="assets/icons-v16/categories/${key}.svg" width="64" height="64" loading="lazy" decoding="async" alt="${decorative?'':escape(title||category)}" ${decorative?'aria-hidden="true"':''}>`;
 }
 export function projectIconSvg(course,{en=false}={}) {
-  if(COMPUTING_SUBJECTS[course.id]) return renderComputingIcon(course.id,{en,zh:!en});
-  if(hasWorldVisual(course)) return renderWorldIcon(course,{en});
-  if(ELECTRONICS_SUBJECTS[course.id]) return renderElectronicsIcon(course.id,{en});
-  if(PACKAGING_SUBJECTS[course.id]) return renderPackagingIcon(course.id,{en});
-  if(SEMICONDUCTOR_SUBJECTS[course.id]) return renderSemiconductorIcon(course.id,{en});
-  const id=String(course.id||'project'),n=hash(id),hue=hues[Math.max(0,keys.indexOf(course.category))];
-  const points=Array.from({length:12},(_,i)=>{const angle=(i*30-90)*Math.PI/180,r=35+(n>>>(i%24)&1)*4;return `${(44+Math.cos(angle)*r).toFixed(2)},${(44+Math.sin(angle)*r).toFixed(2)}`}).join(' ');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 104" class="project-icon" role="img" aria-label="${escape(titleFor(course,en))} · ${en?'original project emblem':'原創專案識別'}" data-project-icon="${escape(id)}" data-subject-art="${subjects[id]?escape(id):'domain-identity'}"><polygon points="${points}" fill="${identityColor(hue,25,93)}" stroke="${identityColor(hue,28,38)}" stroke-width="1.5"/><g transform="translate(20 18) scale(.75)" fill="none" stroke="#315344" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${subjectMotif(course)}</g><text x="44" y="98" text-anchor="middle" font-family="ui-monospace,monospace" font-size="${id.length>14?6:8}" fill="#244a36">${escape(id.toUpperCase())}</text></svg>`;
+  const id=String(course.id||'');
+  if(!/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/.test(id))return domainIconSvg(course.category,{title:titleFor(course,en)});
+  return `<img class="project-icon" src="assets/icons-v16/projects/${id}.svg" width="88" height="88" loading="lazy" decoding="async" data-project-icon="${escape(id)}" alt="${escape(titleFor(course,en))}">`;
 }
 export function projectIdentitySvg(course,{en=false}={}) {
   if(COMPUTING_SUBJECTS[course.id]) return renderComputingVisual(course.id,{zh:!en}).replace('class="computing-subject-visual"','class="computing-subject-visual project-identity"').replace('<svg ','<svg data-project-identity="'+escape(course.id)+'" data-subject-art="'+escape(course.id)+'" ');
@@ -119,13 +115,8 @@ export function projectIdentitySvg(course,{en=false}={}) {
   const spokes=Array.from({length:12},(_,j)=>{const a=(j*30+(n%19))*Math.PI/180,r=84+(n>>>(j%24)&1)*9;return `<path d="M${(260+Math.cos(a)*79).toFixed(2)} ${(130+Math.sin(a)*79).toFixed(2)}L${(260+Math.cos(a)*r).toFixed(2)} ${(130+Math.sin(a)*r).toFixed(2)}"/>`}).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 270" class="project-identity" role="img" aria-label="${escape(titleFor(course,en))} · ${en?'original catalog illustration, not an engineering drawing':'原創目錄插畫，非工程圖'}" data-project-identity="${escape(id)}" data-subject-art="${subjects[id]?escape(id):'domain-identity'}"><rect width="520" height="270" fill="${identityColor(hue,24,94)}"/><path d="M0 54h520M0 216h520M104 0v270M416 0v270" stroke="#8ba48b" stroke-opacity=".15"/><circle cx="260" cy="130" r="95" fill="none" stroke="#9eaf96" stroke-width=".8"/><circle cx="260" cy="130" r="75" fill="${identityColor(hue,27,87)}"/><g stroke="#597657" stroke-width="2">${spokes}</g><g transform="translate(196 66) scale(2)" fill="none" stroke="#315344" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${subjectMotif(course)}</g><text x="26" y="30" font-family="ui-monospace,monospace" font-size="12" letter-spacing="2" fill="#315344">${escape(code)} / ${escape(id.toUpperCase())}</text><text x="490" y="31" text-anchor="end" font-family="ui-monospace,monospace" font-size="10" fill="#52694d">MACGYVER</text>${cells}<text x="493" y="247" text-anchor="end" font-family="ui-monospace,monospace" font-size="9" letter-spacing="1" fill="#52694d">${en?'ORIGINAL PROJECT IDENTITY':'原創專案識別插畫'}</text></svg>`;
 }
-export function domainIdentitySvg(category,{title=category,en=false}={}) {
-  return projectIdentitySvg({id:category,category,title,titleEn:title},{en})
-    .replace('data-project-identity=', 'data-domain-identity=')
-    .replace('original catalog illustration, not an engineering drawing','original discipline illustration, not an engineering drawing')
-    .replace('原創目錄插畫，非工程圖','原創領域插畫，非工程圖')
-    .replace('ORIGINAL PROJECT IDENTITY','ORIGINAL DISCIPLINE IDENTITY')
-    .replace('原創專案識別插畫','原創領域識別插畫');
+export function domainIdentitySvg(category,{title=category}={}) {
+  return domainIconSvg(category,{title}).replace('class="domain-icon"','class="domain-identity"');
 }
 export function projectMediaMarkup(course,{photo=null,en=false,compact=false}={}) {
   const label=photo?(en?'Licensed reference photo':'授權參考照片'):(course.educationEdition>=11?(en?'Original educational architecture':'原創教學架構圖'):(en?'Original identity illustration':'原創識別插畫'));

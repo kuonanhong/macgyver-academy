@@ -44,7 +44,7 @@ function waitFor(start,signal){
   return new Promise((resolve,reject)=>{const abort=()=>reject(new DOMException('Aborted','AbortError'));signal.addEventListener('abort',abort,{once:true});promise.then(resolve,reject).finally(()=>signal.removeEventListener('abort',abort));});
 }
 export function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(...args),view=globalThis.window,document=globalThis.document,location=globalThis.location,cryptoImpl=globalThis.crypto,timeoutMs=30000}={}){
-  let indexPromise=null;const pending=new Map(),cache=new Map();
+  let indexPromise=null,ownerIndexPromise=null;const pending=new Map(),cache=new Map();
   async function json(url,limit=LIMIT,cacheMode='default'){
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);
     try{
@@ -80,9 +80,7 @@ export function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(..
     const finish=(error)=>{if(settled)return;settled=true;clearTimeout(timer);node.remove?.();const result=view.MG_LAZY_DATA?.[descriptor.file];if(error)reject(error);else if(result?.sha256!==descriptor.sha256)reject(Error('Offline data does not match its index.'));else resolve(result.value);};
     node.src=descriptor.script;node.async=true;node.onload=()=>finish();node.onerror=()=>finish(Error('Offline data failed to load. Extract all files and retry.'));timer=setTimeout(()=>finish(Error('Offline data request timed out.')),timeoutMs);document.head.appendChild(node);
   });}
-  async function chunk(group,id){
-    if(!validID(id))throw Error('Invalid course or data ID.');
-    const manifest=await index(),d=own(manifest[group]||{},id)?manifest[group][id]:null;if(!d)throw Error('Course or data is not in this release.');
+  async function readDescriptor(d){
     if(cache.has(d.file))return cache.get(d.file);
     if(!pending.has(d.file))pending.set(d.file,(async()=>{
       let value;
@@ -92,11 +90,36 @@ export function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(..
     })().finally(()=>pending.delete(d.file)));
     return pending.get(d.file);
   }
-  async function course(id,{protected:protectedMode=false}={}){
+  async function chunk(group,id){
+    if(!validID(id))throw Error('Invalid course or data ID.');
+    const manifest=await index(),d=own(manifest[group]||{},id)?manifest[group][id]:null;if(!d)throw Error('Course or data is not in this release.');
+    return readDescriptor(d);
+  }
+  // Complete owner content is never selected by a visitor-facing HTTP flag.
+  // Direct files are the explicitly distributed owner package, not authentication.
+  async function ownerChunk(group,id){
+    if(location?.protocol!=='file:'||!validID(id))throw Error('Owner files require the complete local package.');
+    if(!ownerIndexPromise)ownerIndexPromise=new Promise((resolve,reject)=>{
+      if(view?.MG_OWNER_INDEX){resolve(view.MG_OWNER_INDEX);return;}
+      const node=document.createElement('script');let settled=false;
+      const finish=error=>{if(settled)return;settled=true;clearTimeout(timer);node.remove?.();error?reject(error):resolve(view.MG_OWNER_INDEX);};
+      const timer=setTimeout(()=>finish(Error('Owner index timed out.')),timeoutMs);
+      node.src='data/lazy/owner-index.js';node.onload=()=>finish();node.onerror=()=>finish(Error('Extract the complete owner ZIP to read member content offline.'));document.head.appendChild(node);
+    }).catch(error=>{ownerIndexPromise=null;throw error;});
+    const manifest=await ownerIndexPromise,d=own(manifest?.[group]||{},id)?manifest[group][id]:null;
+    if(manifest?.version!==16||!d||!/^[a-f0-9]{64}$/.test(d.sha256)||!Number.isSafeInteger(d.byteLength)||d.byteLength<2||d.byteLength>LIMIT||d.file!==`data/lazy/owner-${group}/${id}-${d.sha256.slice(0,16)}.json`||d.script!==d.file.replace(/\.json$/,'.js'))throw Error('Invalid owner content descriptor.');
+    return readDescriptor(d);
+  }
+  async function course(id,{protected:protectedMode=false,owner=false}={}){
     if(!validID(id))throw Error('Invalid course ID.');
     // No shared promise/cache here: two identities cannot share private content.
-    const value=protectedMode?(await json('/api/curriculum?courseId='+encodeURIComponent(id),LIMIT,'no-store')).value:await chunk('courses',id);
+    const value=protectedMode?(await json('/api/curriculum?courseId='+encodeURIComponent(id),LIMIT,'no-store')).value:owner&&location?.protocol==='file:'?await ownerChunk('courses',id):await chunk('courses',id);
     if(!value||value.id!==id||typeof value.title!=='string')throw Error('Course contents do not match the request.');
+    return clone(value);
+  }
+  async function resources(id,{protected:protectedMode=false,owner=false}={}){
+    if(!validID(id))throw Error('Invalid course ID.');
+    const value=protectedMode?(await json('/api/curriculum?resources='+encodeURIComponent(id),LIMIT,'no-store')).value:owner&&location?.protocol==='file:'?await ownerChunk('resources',id):await chunk('resources',id);
     return clone(value);
   }
   async function data(name,options={}){
@@ -104,12 +127,12 @@ export function createCurriculumLoader({fetchImpl=(...args)=>globalThis.fetch(..
     if(CORE.has(name)){const value=await index();return name==='featured'?value.guidedIds.map(id=>value.catalog.find(c=>c.id===id)):value[name];}
     return chunk('auxiliary',name);
   }
-  return {index,data:(name,options={})=>waitFor(()=>data(name,options),options.signal),course:(id,options={})=>waitFor(()=>course(id,options),options.signal),resources:id=>chunk('resources',id),auxiliary:name=>chunk('auxiliary',name)};
+  return {index,data:(name,options={})=>waitFor(()=>data(name,options),options.signal),course:(id,options={})=>waitFor(()=>course(id,options),options.signal),resources:(id,options={})=>waitFor(()=>resources(id,options),options.signal),auxiliary:name=>chunk('auxiliary',name)};
 }
 let defaultLoader;
 function loader(){if(!defaultLoader){defaultLoader=createCurriculumLoader();if(globalThis.window)globalThis.window.MG_LOAD_AUXILIARY=name=>defaultLoader.auxiliary(name);}return defaultLoader;}
 export function loadCurriculumIndex(){return loader().index();}
 export function loadCurriculumData(name,options={}){if(options.data&&Object.prototype.hasOwnProperty.call(options.data,name)&&!options.protected)return Promise.resolve(options.data[name]);return (options.fetchImpl?createCurriculumLoader({fetchImpl:options.fetchImpl,view:options.data===null?{}:globalThis.window}):loader()).data(name,options);}
 export function loadCourseOnDemand(id,options={}){return loader().course(id,options);}
-export function loadCourseResources(id){return loader().resources(id);}
+export function loadCourseResources(id,options={}){return loader().resources(id,options);}
 export function loadAuxiliaryData(name){return loader().auxiliary(name);}

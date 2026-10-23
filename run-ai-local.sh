@@ -48,4 +48,5 @@ for MODEL_NAME in "${MODELS[@]}"; do
 done
 echo '本機 AI 路線已設定；請使用接下來顯示的本機網站，註冊／登入本機帳號。'
 echo 'CPU 推論可能需要數分鐘；網站的路線清單顯示設定，不代表已實測模型品質。'
-exec bash "$TASK_ROOT/run-local.sh" "${SERVER_ARGS[@]}"
+# Bash 3.2 treats an empty array as unset under nounset.
+exec bash "$TASK_ROOT/run-local.sh" ${SERVER_ARGS[@]+"${SERVER_ARGS[@]}"}

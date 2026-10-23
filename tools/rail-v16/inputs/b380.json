@@ -1,0 +1,251 @@
+{
+  "id": "b380",
+  "title": "鐵路平交道警報聯動~Railway grade-crossing warning coordination",
+  "discipline": "rail-control",
+  "family": "control",
+  "focus": "平交道警示時序道路清空與界面整合~Crossing-warning timing road clearance and interface integration",
+  "summary": "本課聚焦平交道警示時序道路清空與界面整合。從道路使用者反應距離建立物理或資訊邊界，接著把路口回堵累積與區段偵測有效性連成可驗證的介面，最後以路鐵整合情境矩陣整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies crossing-warning timing road clearance and interface integration. Start with road-user reaction distance to define physical or information boundaries, connect queue spillback toward the crossing with validity of section detection as verifiable interfaces, and organize evidence through road–rail integration scenario matrix. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：2006 年公路鐵路交會處的人因指引報告出版。；2019 年公路鐵路平交道手冊第三版出版。；2025 年鐵路可靠度與安全方法第一分冊發布。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對平交道警示時序道路清空與界面整合而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用道路車輛停止距離及警示失效原因樹連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 2006: Human-factors guidance for highway–rail intersections was published. 2019: The third highway–rail crossing handbook edition was published. 2025: A new first part of railway RAMS was published. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For crossing-warning timing road clearance and interface integration, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through stopping distance of road vehicles and fault causes for warning failure. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究道路使用者反應距離。原創假想教學輸入：接近速度 v=16 m/s；假想反應時間 reaction=2.5 s。公式 y=v*reaction，代入得 y=40 m。邊界：等速反應距離的原創假設，不是道路或鐵道的正式設計視距。敏感度只改 reaction=2.5 至 2.75 s，輸出變為 44 m；離散計數採整數變化。再獨立研究道路車輛停止距離：原創假想教學輸入：初速 v=20 m/s；定減速度大小 a=0.8 m/s2；反應時間 tau=1.5 s。公式 y=v*tau+v*v/(2*a)，代入得 y=280 m。邊界：平直路線、定減速度、無輪滑；未含坡度、黏著變動或制動建立曲線。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。本單元以假想道路接近速度分析察覺到反應的移動距離，保留不同視線與能力群體的差異。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate road-user reaction distance. Original hypothetical teaching inputs: approach speed v=16 m/s; assumed reaction time reaction=2.5 s. Formula y=v*reaction gives y=40 m. Boundary: Constant-speed reaction-distance teaching assumption, not an official road or railway sight-distance requirement. For sensitivity, change only reaction=2.5 to 2.75 s; the output becomes 44 m. Discrete counts use whole-number steps. Independently investigate stopping distance of road vehicles: Original hypothetical teaching inputs: initial speed v=20 m/s; constant deceleration magnitude a=0.8 m/s2; response time tau=1.5 s. Formula y=v*tau+v*v/(2*a) gives y=280 m. Boundary: Level track, constant deceleration and no slip; gradients, adhesion variation and brake build-up curves are excluded. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Use an assumed road-approach speed to analyse travel between detection and response, retaining differences in visibility and user capability. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "道路使用者反應距離~Road-user reaction distance",
+      "title": "道路使用者反應距離~Road-user reaction distance",
+      "mechanism": "本單元以假想道路接近速度分析察覺到反應的移動距離，保留不同視線與能力群體的差異。反應期間移動距離由速度乘反應時間決定，這段距離在任何制動能力發揮前已經消耗。察覺、理解與動作不是同一時刻，介面可讀性和預期程度會改變反應；把受訓受試者的最佳表現當作所有人的固定值會低估需求。解釋前先固定模型適用範圍：等速反應距離的原創假設，不是道路或鐵道的正式設計視距。~Use an assumed road-approach speed to analyse travel between detection and response, retaining differences in visibility and user capability. Distance during reaction is speed times reaction time and is consumed before braking can take effect. Detection, interpretation and action are separate moments influenced by readability and expectation. The best performance of a trained participant is not a fixed value applicable to everyone. Before interpreting the result, fix its domain: Constant-speed reaction-distance teaching assumption, not an official road or railway sight-distance requirement.",
+      "model": "原創假想教學輸入：接近速度 v=16 m/s；假想反應時間 reaction=2.5 s。公式 y=v*reaction，代入得 y=40 m。邊界：等速反應距離的原創假設，不是道路或鐵道的正式設計視距。~Original hypothetical teaching inputs: approach speed v=16 m/s; assumed reaction time reaction=2.5 s. Formula y=v*reaction gives y=40 m. Boundary: Constant-speed reaction-distance teaching assumption, not an official road or railway sight-distance requirement.",
+      "verify": "以安全桌面重播分別量察覺與動作時間，呈現分布與不確定度，而非只報最快一次。以「道路使用者反應距離」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Use safe desktop replay to separate detection and action times, reporting distributions and uncertainty rather than only the fastest attempt. For road-user reaction distance, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "事先告知事件時刻會使反應異常快速，視線遮蔽則可能讓訊號亮起到被察覺之間增加延誤。回到「道路使用者反應距離」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Announcing event timing produces unusually fast responses; occlusion adds delay between signal activation and detection. Trace the input chain for road-user reaction distance. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "制動性能很好就可以完全忽略人員反應期間的距離~Good braking performance allows reaction distance to be ignored completely.",
+      "practice": "只把假想反應時間 reaction 從 2.5 改成 2.75 s（增加百分之十），其餘輸入固定。重算結果應由 40 變為 44 m。先說明「道路使用者反應距離」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only assumed reaction time reaction from 2.5 to 2.75 s (increase by ten percent), holding other inputs fixed. Recalculate 40 to 44 m. Explain the causal direction for road-user reaction distance, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "道路車輛停止距離~Stopping distance of road vehicles",
+      "title": "道路車輛停止距離~Stopping distance of road vehicles",
+      "mechanism": "本單元將道路車輛反應距離與制動距離分開計算，強調此練習不是實際平交道設計視距。停止距離由反應期間的等速前進與制動期間的動能消散相加。速度增加會同時增加兩項，而減速度只影響第二項；把控制命令發出時間當成制動力建立時間會漏掉一段距離。解釋前先固定模型適用範圍：平直路線、定減速度、無輪滑；未含坡度、黏著變動或制動建立曲線。~Calculate reaction and braking distances separately for a road vehicle, emphasizing that the exercise is not an actual crossing sight-distance design. Stopping distance combines constant-speed travel during response with kinetic-energy removal during braking. Speed changes both contributions, whereas deceleration changes only the second. A command timestamp is not the instant at which the full braking force becomes available. Before interpreting the result, fix its domain: Level track, constant deceleration and no slip; gradients, adhesion variation and brake build-up curves are excluded.",
+      "model": "原創假想教學輸入：初速 v=20 m/s；定減速度大小 a=0.8 m/s2；反應時間 tau=1.5 s。公式 y=v*tau+v*v/(2*a)，代入得 y=280 m。邊界：平直路線、定減速度、無輪滑；未含坡度、黏著變動或制動建立曲線。~Original hypothetical teaching inputs: initial speed v=20 m/s; constant deceleration magnitude a=0.8 m/s2; response time tau=1.5 s. Formula y=v*tau+v*v/(2*a) gives y=280 m. Boundary: Level track, constant deceleration and no slip; gradients, adhesion variation and brake build-up curves are excluded.",
+      "verify": "以同一時基記錄速度、制動命令與加速度，分別積分反應段及減速段，再與實際位移比較。以「道路車輛停止距離」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record speed, brake command and acceleration on one clock, integrate response and deceleration separately, and compare their sum with measured displacement. For stopping distance of road vehicles, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "減速度偏低與反應延遲都會使停車超出目標，但速度曲線的起始轉折可以區分兩種原因。回到「道路車輛停止距離」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Weak deceleration and delayed response both cause an overrun, but the onset of the speed-curve change distinguishes these causes. Trace the input chain for stopping distance of road vehicles. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "速度提高一成時停止距離也必定只增加一成~Increasing speed by ten percent always increases stopping distance by exactly ten percent.",
+      "practice": "只把初速 v 從 20 改成 22 m/s（增加百分之十），其餘輸入固定。重算結果應由 280 變為 335.5 m。先說明「道路車輛停止距離」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only initial speed v from 20 to 22 m/s (increase by ten percent), holding other inputs fixed. Recalculate 280 to 335.5 m. Explain the causal direction for stopping distance of road vehicles, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "車輛清空所需時間~Time required for vehicle clearance",
+      "title": "車輛清空所需時間~Time required for vehicle clearance",
+      "mechanism": "本單元以低速穿越距離和等待觀察清空時間，分開長車尾端離開與車頭通過的時刻。道路車輛清空時間從開始等待到車尾完全離開衝突區計算，距離必須包含車長而不能只看車頭的位置。定速度估算只展示等待與移動兩部分，長車起步、轉彎和下游阻塞可能改變速度；鄰近號誌的放行並不保證車尾已有足夠可用空間。解釋前先固定模型適用範圍：定車速與固定起步等待的桌面教學模型，未含加速、坡度、轉彎或現場警示設定。~Use low-speed crossing distance and waiting to study clearance time, distinguishing the rear leaving the conflict area from the front merely passing through. Road-vehicle clearance runs from initial waiting until the rear leaves the conflict area, so the distance must include vehicle length rather than front position alone. Constant speed separates waiting and movement conceptually. Long-vehicle acceleration, turning and downstream blockage alter speed; a nearby green indication does not establish adequate space for the vehicle rear. Before interpreting the result, fix its domain: Desktop constant-speed model with fixed startup waiting, excluding acceleration, gradient, turning and field-warning settings.",
+      "model": "原創假想教學輸入：車尾需行進的清空距離 distance=30 m；假想定車速 speed=2 m/s；起步等待 wait=4 s。公式 y=distance/speed+wait，代入得 y=19 s。邊界：定車速與固定起步等待的桌面教學模型，未含加速、坡度、轉彎或現場警示設定。~Original hypothetical teaching inputs: rear-end clearance travel distance=30 m; assumed constant vehicle speed speed=2 m/s; startup waiting wait=4 s. Formula y=distance/speed+wait gives y=19 s. Boundary: Desktop constant-speed model with fixed startup waiting, excluding acceleration, gradient, turning and field-warning settings.",
+      "verify": "在桌面交通模型標記車頭與車尾事件，分別計算等待與移動；以不同車長重播並核對清空定義完全一致。以「車輛清空所需時間」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Mark front and rear events in a desktop traffic model, measure waiting and motion separately, and replay different vehicle lengths with one consistent clearance definition. For time required for vehicle clearance, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "用車頭通過代替車尾清空會低估占用時間，下游排隊還可能讓正常起步的車輛停在衝突區內。回到「車輛清空所需時間」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Using front passage instead of rear clearance understates occupation; downstream queues can stop a vehicle inside the conflict area after an otherwise normal start. Trace the input chain for time required for vehicle clearance. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "車頭通過平交道出口就表示整輛長車已完全清空~The front passing the crossing exit means that the entire long vehicle is clear.",
+      "practice": "只把假想定車速 speed 從 2 改成 2.2 m/s（增加百分之十），其餘輸入固定。重算結果應由 19 變為 17.6364 s。先說明「車輛清空所需時間」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only assumed constant vehicle speed speed from 2 to 2.2 m/s (increase by ten percent), holding other inputs fixed. Recalculate 19 to 17.6364 s. Explain the causal direction for time required for vehicle clearance, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "路口回堵累積~Queue spillback toward the crossing",
+      "title": "路口回堵累積~Queue spillback toward the crossing",
+      "mechanism": "本單元直接追蹤鄰近路口車輛到達與離開率，說明下游服務不足如何造成車數累積，並將車列長度另列為幾何限制。道路車列的新增存量來自到達與離開流率差乘時間，計數邊界必須在同一車道群。這是預期流量的連續近似，實際車輛是離散事件；回堵是否到達平交道還取決於車長、車間距和可儲存道路長度，僅有平均服務率無法證明衝突區不被占用。解釋前先固定模型適用範圍：固定平均流率且佇列持續存在的增量模型，未計初始車數、儲車長度或離散到達。~Track vehicle arrival and departure rates directly at the adjacent junction, showing how insufficient downstream service accumulates vehicles while treating physical queue length as a separate geometric constraint. New road-queue occupancy is the difference between arrival and departure rates times duration, measured over one lane group. This is a continuous approximation to expected flow while actual vehicles are discrete events. Whether spillback reaches a crossing also depends on vehicle lengths, gaps and storage distance; average service rate alone cannot prove that the conflict area remains clear. Before interpreting the result, fix its domain: Increment under fixed mean flows with a persistent queue, excluding initial occupancy, storage length and discrete arrivals.",
+      "model": "原創假想教學輸入：道路到達率 arrival=0.4 vehicles/s；下游離開率 service=0.3 vehicles/s；觀察期間 duration=90 s。公式 y=(arrival-service)*duration，代入得 y=9 vehicles。邊界：固定平均流率且佇列持續存在的增量模型，未計初始車數、儲車長度或離散到達。~Original hypothetical teaching inputs: road-vehicle arrival rate arrival=0.4 vehicles/s; downstream departure rate service=0.3 vehicles/s; observation duration duration=90 s. Formula y=(arrival-service)*duration gives y=9 vehicles. Boundary: Increment under fixed mean flows with a persistent queue, excluding initial occupancy, storage length and discrete arrivals.",
+      "verify": "用桌面道路模型核對同一邊界的進出車數與內部存量，再以不同車長重播，將車數與實際排隊長度分開量測。以「路口回堵累積」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Reconcile arrivals, departures and internal occupancy in a desktop road model, replay different vehicle lengths, and measure vehicle count separately from physical queue length. For queue spillback toward the crossing, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只看路口出口放行量會漏掉上游車列增長，長車比例提高又可能在車數不變時使排隊尾端更接近平交道。回到「路口回堵累積」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Exit discharge alone misses upstream queue growth, while a greater proportion of long vehicles can move the queue tail toward the crossing at unchanged vehicle count. Trace the input chain for queue spillback toward the crossing. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "下游每分鐘放行車數穩定就能證明上游不會回堵~Stable downstream vehicle discharge per minute proves that upstream spillback cannot occur.",
+      "practice": "只把觀察期間 duration 從 90 改成 99 s（增加百分之十），其餘輸入固定。重算結果應由 9 變為 9.9 vehicles。先說明「路口回堵累積」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only observation duration duration from 90 to 99 s (increase by ten percent), holding other inputs fixed. Recalculate 9 to 9.9 vehicles. Explain the causal direction for queue spillback toward the crossing, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "警示聯動時序~Timing of coordinated warnings",
+      "title": "警示聯動時序~Timing of coordinated warnings",
+      "mechanism": "本單元將列車接近偵測、介面傳遞與道路警示動作分段記錄，避免漏掉交接時間。端到端延遲由量測、通訊、運算與致動串接而成。改善最快的一段通常影響有限，且平均延遲不能代表最壞尾端；定義一致的起訖事件，才能避免子系統都量到好看的數值卻漏掉交接等待。解釋前先固定模型適用範圍：各階段串行且時間確定，沒有平行重疊或隨機尾端。~Record train-approach detection, interface transfer and road-warning action as separate stages, avoiding omitted handoff time. End-to-end delay spans sensing, communication, computation and actuation. Improving the fastest stage often yields little benefit, and mean latency does not represent its worst tail. Consistent start and end events prevent subsystems from reporting attractive numbers while overlooking handoff queues. Before interpreting the result, fix its domain: Deterministic serial stages without overlap or random latency tails.",
+      "model": "原創假想教學輸入：量測時間 sense=0.03 s；網路時間 network=0.08 s；運算時間 compute=0.02 s；致動時間 actuate=0.12 s。公式 y=sense+network+compute+actuate，代入得 y=0.25 s。邊界：各階段串行且時間確定，沒有平行重疊或隨機尾端。~Original hypothetical teaching inputs: sensing time sense=0.03 s; network time network=0.08 s; computation time compute=0.02 s; actuation time actuate=0.12 s. Formula y=sense+network+compute+actuate gives y=0.25 s. Boundary: Deterministic serial stages without overlap or random latency tails.",
+      "verify": "沿同一事件編號串接時間戳，檢查每一段邊界是否重疊或漏算，並注入負載重測。以「警示聯動時序」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Follow one event identifier through timestamps, check stage boundaries for overlap or gaps, and repeat under injected load. For timing of coordinated warnings, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "時間基準不同可造成負延遲假象；漏記排隊會使快速單元測試無法預測整合表現。回到「警示聯動時序」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Different clock references can create apparently negative delays; omitted queues prevent fast unit tests from predicting integrated performance. Trace the input chain for timing of coordinated warnings. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "每個子系統平均很快就代表整體最壞延遲一定很短~Fast average subsystems guarantee a short worst-case end-to-end delay.",
+      "practice": "只把網路時間 network 從 0.08 改成 0.088 s（增加百分之十），其餘輸入固定。重算結果應由 0.25 變為 0.258 s。先說明「警示聯動時序」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only network time network from 0.08 to 0.088 s (increase by ten percent), holding other inputs fixed. Recalculate 0.25 to 0.258 s. Explain the causal direction for timing of coordinated warnings, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "道路與鐵道事件對齊~Aligning road and rail events",
+      "title": "道路與鐵道事件對齊~Aligning road and rail events",
+      "mechanism": "本單元核對道路控制器與鐵道紀錄的時基，讓事件重建能可靠區分先因後果。時鐘頻率偏差會隨時間累積成時間差，校時瞬間的偏移與之不同。多系統事件排序若依不同時鐘，可能把因果順序顛倒；校時跳變又會使量測區間長度失真，所以需記錄時鐘品質與校正事件。解釋前先固定模型適用範圍：固定頻率偏差的線性累積，忽略溫度漂移與校時伺服動態。~Check road-controller and railway-log timebases so event reconstruction can distinguish cause and consequence reliably. Clock frequency error accumulates into time offset and differs from initial synchronization offset. Ordering multisystem events on different clocks can reverse apparent causality. Synchronization jumps can distort interval lengths, so clock quality and correction events must be recorded. Before interpreting the result, fix its domain: Linear accumulation at fixed frequency offset; temperature drift and synchronization-servo dynamics are omitted.",
+      "model": "原創假想教學輸入：時鐘頻率偏差 drift=20 ppm；未校時期間 duration=3600 s。公式 y=drift*1e-6*duration，代入得 y=0.072 s。邊界：固定頻率偏差的線性累積，忽略溫度漂移與校時伺服動態。~Original hypothetical teaching inputs: clock frequency offset drift=20 ppm; unsynchronized interval duration=3600 s. Formula y=drift*1e-6*duration gives y=0.072 s. Boundary: Linear accumulation at fixed frequency offset; temperature drift and synchronization-servo dynamics are omitted.",
+      "verify": "用獨立時間基準比較多個時刻的偏移，從斜率分辨頻率誤差與一次性跳變。以「道路與鐵道事件對齊」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Compare offsets at several times against an independent reference, using slope to distinguish frequency error from a one-time jump. For aligning road and rail events, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只對齊開始時刻卻忽略頻率漂移，會讓長測試中的事件逐漸錯位，並誤判通訊延遲。回到「道路與鐵道事件對齊」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Aligning only the initial instant leaves frequency drift uncorrected, progressively misaligning events and suggesting false network delay. Trace the input chain for aligning road and rail events. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試開始時時鐘一致就能保證整天時間戳都一致~Clocks aligned at test start remain aligned for the entire day.",
+      "practice": "只把未校時期間 duration 從 3600 改成 3960 s（增加百分之十），其餘輸入固定。重算結果應由 0.072 變為 0.0792 s。先說明「道路與鐵道事件對齊」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only unsynchronized interval duration from 3600 to 3960 s (increase by ten percent), holding other inputs fixed. Recalculate 0.072 to 0.0792 s. Explain the causal direction for aligning road and rail events, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "區段偵測有效性~Validity of section detection",
+      "title": "區段偵測有效性~Validity of section detection",
+      "mechanism": "本單元以離線計數模型檢查接近區段的占用資訊，保留感測故障與未知狀態。計軸占用利用邊界流入與流出守恆，計數差不是列車位置量測。差值為零仍需邊界感測器、方向判斷與狀態可信度成立；未知或故障狀態不能僅因兩個數字相等就自動宣告清空。解釋前先固定模型適用範圍：離線整數守恆模型，不含任何現場重置或解鎖程序。~Use an offline counting model to check approach-section occupancy information while retaining sensor-failure and unknown states. Axle counting applies conservation at section boundaries; the count difference is not a position measurement. A zero difference is useful only when boundary sensing, direction and state validity are trustworthy. Unknown or failed states cannot be declared clear merely because two numbers match. Before interpreting the result, fix its domain: Offline integer-conservation model without any real reset or release procedure.",
+      "model": "原創假想教學輸入：進入軸數 enter=48 axles；離開軸數 leave=44 axles。公式 y=enter-leave，代入得 y=4 axles。邊界：離線整數守恆模型，不含任何現場重置或解鎖程序。~Original hypothetical teaching inputs: entering axles enter=48 axles; leaving axles leave=44 axles. Formula y=enter-leave gives y=4 axles. Boundary: Offline integer-conservation model without any real reset or release procedure.",
+      "verify": "以標記輪對的玩具車雙向重播，對照人工真值、事件順序與感測器有效旗標。以「區段偵測有效性」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Replay a marked model vehicle in both directions and compare manual truth, event ordering and sensor-validity flags. For validity of section detection, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "漏計與多計可能互相抵消形成假零值，方向錯誤則會讓計數增減的符號顛倒。回到「區段偵測有效性」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Missed and extra counts can cancel into a false zero, while direction errors reverse the signs of increments. Trace the input chain for validity of section detection. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "進出計數剛好相同就能無條件證明區段無車~Equal entry and exit counts unconditionally prove that a section is empty.",
+      "practice": "只把進入軸數 enter 從 48 改成 49 axles（增加一個可計數單位），其餘輸入固定。重算結果應由 4 變為 5 axles。先說明「區段偵測有效性」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only entering axles enter from 48 to 49 axles (increase by one whole count), holding other inputs fixed. Recalculate 4 to 5 axles. Explain the causal direction for validity of section detection, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "警示備援電源~Backup energy for warnings",
+      "title": "警示備援電源~Backup energy for warnings",
+      "mechanism": "本單元估算警示設備斷電後的能量需求，另檢查閃光器與致動器啟動時的電壓下降。電池續航以可用能量除以負載估算，容量不能只看安培小時而忽略電壓。溫度、老化、放電速率與截止電壓都影響可用比例；緊急供電還需檢查負載啟動尖峰，平均能量充足不代表瞬間電壓不會崩落。解釋前先固定模型適用範圍：定電壓定負載近似，未含電池非線性放電與溫度效應。~Estimate energy demand after warning-system supply loss and separately check voltage sag during lamp and actuator startup. Battery duration divides usable energy by load, so ampere-hours alone are insufficient without voltage. Temperature, ageing, discharge rate and cutoff affect usable fraction. Emergency supply must also handle starting surges; sufficient average energy does not guarantee stable instantaneous voltage. Before interpreting the result, fix its domain: Constant-voltage constant-load approximation; nonlinear discharge and temperature effects are excluded.",
+      "model": "原創假想教學輸入：額定容量 capacity=80 Ah；標稱電壓 voltage=24 V；可用比例 fraction=0.7 1；固定負載 load=350 W。公式 y=capacity*voltage*fraction/load，代入得 y=3.84 h。邊界：定電壓定負載近似，未含電池非線性放電與溫度效應。~Original hypothetical teaching inputs: rated capacity capacity=80 Ah; nominal voltage voltage=24 V; usable fraction fraction=0.7 1; constant load load=350 W. Formula y=capacity*voltage*fraction/load gives y=3.84 h. Boundary: Constant-voltage constant-load approximation; nonlinear discharge and temperature effects are excluded.",
+      "verify": "量測完整負載曲線與最低端電壓，分別核對連續能量及啟動瞬間壓降。以「警示備援電源」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure the load profile and minimum terminal voltage, checking continuous energy and startup sag separately. For backup energy for warnings, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "老化電池可能保有部分容量但內阻升高，啟動負載時掉壓使設備提早中止。回到「警示備援電源」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~An aged battery may retain some capacity while internal resistance rises, causing early shutdown during a starting load. Trace the input chain for backup energy for warnings. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "只要安培小時數相同任何兩種電池續航就一定相同~Equal ampere-hour ratings guarantee equal runtime for any two batteries.",
+      "practice": "只把固定負載 load 從 350 改成 385 W（增加百分之十），其餘輸入固定。重算結果應由 3.84 變為 3.49091 h。先說明「警示備援電源」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only constant load load from 350 to 385 W (increase by ten percent), holding other inputs fixed. Recalculate 3.84 to 3.49091 h. Explain the causal direction for backup energy for warnings, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "警示失效原因樹~Fault causes for warning failure",
+      "title": "警示失效原因樹~Fault causes for warning failure",
+      "mechanism": "本單元將供電、通訊和顯示器異常分開列入原因樹，要求每個候選原因有可區分的量測。只要任一支路失效就產生頂事件時，需計算聯集而不是把兩機率相乘。獨立假設允許扣掉交集的乘積，若共享電源、環境或軟體則交集另有結構；事件樹和失效樹必須保持同一任務時間。解釋前先固定模型適用範圍：兩事件獨立且機率屬同一任務期間，並非每小時危險失效率。~Separate supply, communication and display faults in a cause tree, requiring discriminating measurements for each candidate cause. When either branch can trigger the top event, the relevant probability is a union rather than a product. Independence permits the intersection to be written as a product; shared power, environment or software changes that intersection. Event and fault trees must use the same mission duration. Before interpreting the result, fix its domain: Two independent events over one mission interval, not a dangerous-failure rate per hour.",
+      "model": "原創假想教學輸入：事件一機率 p1=0.001 1；事件二機率 p2=0.002 1。公式 y=p1+p2-p1*p2，代入得 y=0.002998 1。邊界：兩事件獨立且機率屬同一任務期間，並非每小時危險失效率。~Original hypothetical teaching inputs: event one probability p1=0.001 1; event two probability p2=0.002 1. Formula y=p1+p2-p1*p2 gives y=0.002998 1. Boundary: Two independent events over one mission interval, not a dangerous-failure rate per hour.",
+      "verify": "先畫頂事件邏輯再代機率，明列共享資源並檢查事件時間窗是否一致。以「警示失效原因樹」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Draw top-event logic before inserting probabilities, list shared resources, and check consistent time windows. For fault causes for warning failure, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把聯集誤寫成交集會低估危險；混合年度機率與每小時機率則使結果失去量綱意義。回到「警示失效原因樹」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Confusing a union with an intersection understates risk; mixing annual and hourly probabilities destroys the intended meaning. Trace the input chain for fault causes for warning failure. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "任一支路故障即失效時總機率等於兩機率相乘~If either branch failure is sufficient, total failure probability equals their product.",
+      "practice": "只把事件一機率 p1 從 0.001 改成 0.0011 1（增加百分之十），其餘輸入固定。重算結果應由 0.002998 變為 0.0030978 1。先說明「警示失效原因樹」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only event one probability p1 from 0.001 to 0.0011 1 (increase by ten percent), holding other inputs fixed. Recalculate 0.002998 to 0.0030978 1. Explain the causal direction for fault causes for warning failure, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "路鐵整合情境矩陣~Road–rail integration scenario matrix",
+      "title": "路鐵整合情境矩陣~Road–rail integration scenario matrix",
+      "mechanism": "本單元以桌面重播檢查長車、回堵、失電和資訊延遲，完整保留測試條件與未涵蓋限制。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Use desktop replay for long vehicles, spillback, power loss and delayed information, preserving conditions and limits not covered by the test set. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「路鐵整合情境矩陣」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For road–rail integration scenario matrix, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「路鐵整合情境矩陣」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for road–rail integration scenario matrix. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「路鐵整合情境矩陣」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for road–rail integration scenario matrix, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：道路使用者反應距離採 v=16 m/s；本課公式結果 40 m，非現場額定值。~Teaching assumption for road-user reaction distance: v=16 m/s; this model gives 40 m, not a field rating.",
+    "教學假設：道路車輛停止距離採 v=20 m/s；本課公式結果 280 m，非現場額定值。~Teaching assumption for stopping distance of road vehicles: v=20 m/s; this model gives 280 m, not a field rating.",
+    "教學假設：車輛清空所需時間採 distance=30 m；本課公式結果 19 s，非現場額定值。~Teaching assumption for time required for vehicle clearance: distance=30 m; this model gives 19 s, not a field rating.",
+    "教學假設：路口回堵累積採 arrival=0.4 vehicles/s；本課公式結果 9 vehicles，非現場額定值。~Teaching assumption for queue spillback toward the crossing: arrival=0.4 vehicles/s; this model gives 9 vehicles, not a field rating.",
+    "教學假設：警示聯動時序採 sense=0.03 s；本課公式結果 0.25 s，非現場額定值。~Teaching assumption for timing of coordinated warnings: sense=0.03 s; this model gives 0.25 s, not a field rating.",
+    "教學假設：道路與鐵道事件對齊採 drift=20 ppm；本課公式結果 0.072 s，非現場額定值。~Teaching assumption for aligning road and rail events: drift=20 ppm; this model gives 0.072 s, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "2006",
+      "event": "公路鐵路交會處的人因指引報告出版。~Human-factors guidance for highway–rail intersections was published."
+    },
+    {
+      "year": "2019",
+      "event": "公路鐵路平交道手冊第三版出版。~The third highway–rail crossing handbook edition was published."
+    },
+    {
+      "year": "2025",
+      "event": "鐵路可靠度與安全方法第一分冊發布。~A new first part of railway RAMS was published."
+    }
+  ],
+  "codes": [
+    "FHWA 公路鐵路平交道手冊第三版，2019 年，美國方法背景~FHWA Highway–Rail Crossing Handbook, third edition, 2019, United States methodological context",
+    "FRA 平交道人因指引，2006 年研究報告，非現場控制設定~FRA human-factors guidance for highway–rail intersections, 2006 research report, not field control settings"
+  ],
+  "landmarks": [
+    "洛杉磯佛農大道行人平交道~Los Angeles Vernon Avenue pedestrian crossing",
+    "馬里蘭提莫尼姆道路輕軌平交道~Maryland Timonium Road light-rail crossing"
+  ],
+  "place": {
+    "name": "提莫尼姆道路平交道示意~Timonium Road crossing reference",
+    "country": "美國~United States",
+    "lat": 39.438,
+    "lng": -76.628,
+    "query": "Timonium Road light rail crossing Maryland"
+  },
+  "sources": [
+    {
+      "key": "crossing-human",
+      "title": "平交道人因設計研究",
+      "titleEn": "Human factors at highway–rail intersections",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/human-factors-guidance-intelligent-transportation-systems-highway-rail-intersection",
+      "sourceType": "primary",
+      "scope": "支持人因與警示介面研究背景；不把假想反應時間宣稱為普遍人員能力。",
+      "scopeEn": "Supports human-factors and warning-interface context, not universal human-response times."
+    },
+    {
+      "key": "crossing-handbook",
+      "title": "公路鐵路平交道手冊第三版",
+      "titleEn": "Highway–rail crossing handbook third edition",
+      "publisher": "Federal Highway Administration",
+      "url": "https://highways.dot.gov/safety/hsip/xings/highway-rail-crossing-handbook-third-edition",
+      "sourceType": "primary",
+      "scope": "支持道路與鐵路界面安全的手冊脈絡；教學時序不可直接作為現場控制設定。",
+      "scopeEn": "Supports road–rail interface context; teaching timings are not field control settings."
+    },
+    {
+      "key": "rams-2025",
+      "title": "鐵路可靠度安全方法分冊",
+      "titleEn": "Railway RAMS specification part one",
+      "publisher": "IEC",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "支持方法分冊的出版年代與範圍；不複製條文或宣稱教材為合規論證。",
+      "scopeEn": "Supports edition year and scope; clauses are not reproduced and the lessons do not establish compliance."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "國際電工委員會",
+      "nameEn": "IEC",
+      "business": "電工與鐵路方法標準",
+      "businessEn": "Electrical and railway methodological standards",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "role": "方法出版機構，非本課設備供應商",
+      "roleEn": "Methodology publisher, not a supplier to the fictional lesson",
+      "security": null
+    },
+    {
+      "name": "歐洲鐵路局",
+      "nameEn": "European Union Agency for Railways",
+      "business": "鐵路互通規格與技術協調",
+      "businessEn": "Railway interoperability specifications and coordination",
+      "url": "https://www.era.europa.eu/",
+      "role": "官方規格資訊機構，不推論任何個別設備採購",
+      "roleEn": "Official specification information, with no claim about individual procurement",
+      "security": null
+    }
+  ],
+  "related": [
+    "b379",
+    "b381"
+  ],
+  "architectureNodes": [
+    [
+      "列車偵測",
+      "Train detection"
+    ],
+    [
+      "道路需求",
+      "Road demand"
+    ],
+    [
+      "警示介面",
+      "Warning interface"
+    ],
+    [
+      "衝突區域",
+      "Conflict area"
+    ],
+    [
+      "桌面重播",
+      "Desktop replay"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

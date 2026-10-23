@@ -56,7 +56,9 @@ class CommerceTests(unittest.TestCase):
         course=self.billing.curriculum(None,course_id='paid-course')
         self.assertTrue(course['stages'][1]['steps'][0]['locked'])
         self.assertNotIn('Private second lesson',json.dumps(course))
-        for name,allowed in [('data/lazy/index.json',True),('data/lazy/courses/paid-course-0123456789abcdef.json',False),('data/lazy/resources/paid-course-0123456789abcdef.json',True),('data/lazy/data/featured-0123456789abcdef.js',False)]:
+        # Legacy resources can contain full paid guides; only verified V16
+        # public resource descriptors may be downloaded as static files.
+        for name,allowed in [('data/lazy/index.json',True),('data/lazy/courses/paid-course-0123456789abcdef.json',False),('data/lazy/resources/paid-course-0123456789abcdef.json',False),('data/lazy/data/featured-0123456789abcdef.js',False)]:
             self.assertEqual(self.billing.static_allowed(self.public/name),allowed,name)
 
     def tearDown(self):

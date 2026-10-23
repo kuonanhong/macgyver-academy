@@ -1,0 +1,261 @@
+{
+  "id": "b365",
+  "title": "軌道輪軌摩擦調節與潤滑系統~Rail Wheel Contact Friction Management and Lubrication",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "輪緣與軌頂摩擦位置管理及黏著取捨~Location-specific flange and railhead friction management",
+  "summary": "軌道輪軌摩擦調節與潤滑系統以「輪緣與軌頂摩擦位置管理及黏著取捨」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。輪緣潤滑與軌頂摩擦調節作用位置及目標不同，減少磨耗不能以犧牲牽引制動黏著為代價，需同時追蹤摩擦、磨耗與材料散布。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops location-specific flange and railhead friction management through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Flange lubrication and top-of-rail friction management act at different locations with different aims; wear reduction must be evaluated alongside traction/braking adhesion and material carryover. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把軌道輪軌摩擦調節與潤滑系統放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。輪緣潤滑與軌頂摩擦調節作用位置及目標不同，減少磨耗不能以犧牲牽引制動黏著為代價，需同時追蹤摩擦、磨耗與材料散布。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Rail Wheel Contact Friction Management and Lubrication in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Flange lubrication and top-of-rail friction management act at different locations with different aims; wear reduction must be evaluated alongside traction/braking adhesion and material carryover. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：mu=0.25 1, N=100 kN；y=mu*N=25 kN。只把 mu 增加百分之十，y=27.5 kN。模型邊界：簡化庫侖上限；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：v=20 m/s, mu=0.15 1, g=9.81 m/s2；y=v**2/(2*mu*g)=135.916 m。只把 v 增加百分之十，y=164.458 m。模型邊界：水平常摩擦且無建立延遲；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: mu=0.25 1, N=100 kN; y=mu*N=25 kN. Increasing only mu with a ten-percent increase gives y=27.5 kN. Boundary: Simplified Coulomb ceiling; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: v=20 m/s, mu=0.15 1, g=9.81 m/s2; y=v**2/(2*mu*g)=135.916 m. Increasing only v with a ten-percent increase gives y=164.458 m. Boundary: Level track with constant friction and no build-up delay; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "黏著牽引上限~Adhesion traction ceiling",
+      "title": "黏著牽引上限~Adhesion traction ceiling",
+      "mechanism": "摩擦係數與法向力限制可傳遞切向力。本模型把 mu 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 27.5 kN。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。簡化庫侖上限。使用切向力及法向力作量測證據，才能檢查方程是否對應此處的實際物理量；過量潤滑可能降低牽引可用力，因此應把該原因與量測偏差分開。~Friction coefficient and normal force limit transferable tangential force. In this model, mu is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 27.5 kN. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Simplified Coulomb ceiling. Use tangential and normal force as measurement evidence that the equation represents the intended physical quantity. Excess lubrication may reduce available traction; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：mu=0.25 1, N=100 kN；y=mu*N=25 kN。只把 mu 增加百分之十，y=27.5 kN。模型邊界：簡化庫侖上限；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: mu=0.25 1, N=100 kN; y=mu*N=25 kN. Increasing only mu with a ten-percent increase gives y=27.5 kN. Boundary: Simplified Coulomb ceiling; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以切向力及法向力區分模型與觀察，先用低載摩擦滑台與荷重元建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「黏著牽引上限」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use tangential and normal force to distinguish the model from observation in this unit. Establish a baseline using low-load friction sled and load cells, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Adhesion traction ceiling. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "過量潤滑可能降低牽引可用力。這個失效與「黏著牽引上限」的量測偏差可能產生相似表象，因此必須同時檢查切向力及法向力，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Excess lubrication may reduce available traction. This failure and a measurement bias in Adhesion traction ceiling can produce similar symptoms. Cross-check tangential and normal force rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：過量潤滑可能降低牽引可用力~This unit cannot exhibit the following failure: Excess lubrication may reduce available traction.",
+      "practice": "重算「黏著牽引上限」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出簡化庫侖上限如何限制結論。接著設計一組符合模型及一組由過量潤滑可能降低牽引可用力造成偏離的合成觀察，以切向力及法向力說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Adhesion traction ceiling, plot the input-output relationship, and explain the limiting assumption: Simplified Coulomb ceiling. Construct one synthetic observation consistent with the model and another affected by this failure: Excess lubrication may reduce available traction. Explain which evidence in tangential and normal force distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "制動黏著距離~Adhesion-limited braking scale",
+      "title": "制動黏著距離~Adhesion-limited braking scale",
+      "mechanism": "黏著限制減速度時停距隨摩擦降低而增長。本模型把 v 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 164.458 m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。水平常摩擦且無建立延遲。使用減速度與摩擦條件作量測證據，才能檢查方程是否對應此處的實際物理量；乾燥摩擦外推濕污會低估停距，因此應把該原因與量測偏差分開。~When adhesion limits deceleration, stopping distance grows as friction falls. In this model, v is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 164.458 m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Level track with constant friction and no build-up delay. Use deceleration and friction condition as measurement evidence that the equation represents the intended physical quantity. Dry-friction extrapolation understates wet/contaminated stopping distance; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：v=20 m/s, mu=0.15 1, g=9.81 m/s2；y=v**2/(2*mu*g)=135.916 m。只把 v 增加百分之十，y=164.458 m。模型邊界：水平常摩擦且無建立延遲；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: v=20 m/s, mu=0.15 1, g=9.81 m/s2; y=v**2/(2*mu*g)=135.916 m. Increasing only v with a ten-percent increase gives y=164.458 m. Boundary: Level track with constant friction and no build-up delay; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以減速度與摩擦條件區分模型與觀察，先用紙上制動模型與合成速度建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「制動黏著距離」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use deceleration and friction condition to distinguish the model from observation in this unit. Establish a baseline using paper braking model and synthetic speed, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Adhesion-limited braking scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "乾燥摩擦外推濕污會低估停距。這個失效與「制動黏著距離」的量測偏差可能產生相似表象，因此必須同時檢查減速度與摩擦條件，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Dry-friction extrapolation understates wet/contaminated stopping distance. This failure and a measurement bias in Adhesion-limited braking scale can produce similar symptoms. Cross-check deceleration and friction condition rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：乾燥摩擦外推濕污會低估停距~This unit cannot exhibit the following failure: Dry-friction extrapolation understates wet/contaminated stopping distance.",
+      "practice": "重算「制動黏著距離」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出水平常摩擦且無建立延遲如何限制結論。接著設計一組符合模型及一組由乾燥摩擦外推濕污會低估停距造成偏離的合成觀察，以減速度與摩擦條件說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Adhesion-limited braking scale, plot the input-output relationship, and explain the limiting assumption: Level track with constant friction and no build-up delay. Construct one synthetic observation consistent with the model and another affected by this failure: Dry-friction extrapolation understates wet/contaminated stopping distance. Explain which evidence in deceleration and friction condition distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "滑移速度~Relative sliding speed",
+      "title": "滑移速度~Relative sliding speed",
+      "mechanism": "輪周速度和列車速度之差描述縱向滑移。本模型把 wheel 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 2.22 m/s。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。直線單一有效輪徑。使用輪速及獨立車速作量測證據，才能檢查方程是否對應此處的實際物理量；輪徑誤差會偽造滑移，因此應把該原因與量測偏差分開。~Wheel peripheral speed minus train speed describes longitudinal slip. In this model, wheel is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 2.22 m/s. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Straight travel with one effective wheel radius. Use wheel speed and independent vehicle speed as measurement evidence that the equation represents the intended physical quantity. Wheel-diameter error can mimic slip; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：wheel=20.2 m/s, train=20 m/s；y=wheel-train=0.2 m/s。只把 wheel 增加百分之十，y=2.22 m/s。模型邊界：直線單一有效輪徑；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: wheel=20.2 m/s, train=20 m/s; y=wheel-train=0.2 m/s. Increasing only wheel with a ten-percent increase gives y=2.22 m/s. Boundary: Straight travel with one effective wheel radius; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以輪速及獨立車速區分模型與觀察，先用合成編碼器與獨立速度資料建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「滑移速度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use wheel speed and independent vehicle speed to distinguish the model from observation in this unit. Establish a baseline using synthetic encoder and independent speed data, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Relative sliding speed. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "輪徑誤差會偽造滑移。這個失效與「滑移速度」的量測偏差可能產生相似表象，因此必須同時檢查輪速及獨立車速，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Wheel-diameter error can mimic slip. This failure and a measurement bias in Relative sliding speed can produce similar symptoms. Cross-check wheel speed and independent vehicle speed rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：輪徑誤差會偽造滑移~This unit cannot exhibit the following failure: Wheel-diameter error can mimic slip.",
+      "practice": "重算「滑移速度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出直線單一有效輪徑如何限制結論。接著設計一組符合模型及一組由輪徑誤差會偽造滑移造成偏離的合成觀察，以輪速及獨立車速說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Relative sliding speed, plot the input-output relationship, and explain the limiting assumption: Straight travel with one effective wheel radius. Construct one synthetic observation consistent with the model and another affected by this failure: Wheel-diameter error can mimic slip. Explain which evidence in wheel speed and independent vehicle speed distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "縱向蠕滑率~Longitudinal creepage",
+      "title": "縱向蠕滑率~Longitudinal creepage",
+      "mechanism": "蠕滑以相對速度對行車速度正規化，低速須另定義。本模型把 wheel 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 11.1 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。明定非零車速的符號慣例。使用速度差與輪徑校正作量測證據，才能檢查方程是否對應此處的實際物理量；分母接近零時比率變得不穩定，因此應把該原因與量測偏差分開。~Creepage normalizes relative speed by travel speed and needs a separate low-speed convention. In this model, wheel is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 11.1 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Defined sign convention at nonzero vehicle speed. Use speed difference and radius calibration as measurement evidence that the equation represents the intended physical quantity. The ratio becomes unstable near zero speed; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：wheel=20.2 m/s, train=20 m/s；y=(wheel-train)/train*100=1 percent。只把 wheel 增加百分之十，y=11.1 percent。模型邊界：明定非零車速的符號慣例；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: wheel=20.2 m/s, train=20 m/s; y=(wheel-train)/train*100=1 percent. Increasing only wheel with a ten-percent increase gives y=11.1 percent. Boundary: Defined sign convention at nonzero vehicle speed; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以速度差與輪徑校正區分模型與觀察，先用離線速度資料工作表建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「縱向蠕滑率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use speed difference and radius calibration to distinguish the model from observation in this unit. Establish a baseline using offline speed-data worksheet, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Longitudinal creepage. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "分母接近零時比率變得不穩定。這個失效與「縱向蠕滑率」的量測偏差可能產生相似表象，因此必須同時檢查速度差與輪徑校正，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~The ratio becomes unstable near zero speed. This failure and a measurement bias in Longitudinal creepage can produce similar symptoms. Cross-check speed difference and radius calibration rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：分母接近零時比率變得不穩定~This unit cannot exhibit the following failure: The ratio becomes unstable near zero speed.",
+      "practice": "重算「縱向蠕滑率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出明定非零車速的符號慣例如何限制結論。接著設計一組符合模型及一組由分母接近零時比率變得不穩定造成偏離的合成觀察，以速度差與輪徑校正說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Longitudinal creepage, plot the input-output relationship, and explain the limiting assumption: Defined sign convention at nonzero vehicle speed. Construct one synthetic observation consistent with the model and another affected by this failure: The ratio becomes unstable near zero speed. Explain which evidence in speed difference and radius calibration distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "摩擦耗散功率~Friction dissipation power",
+      "title": "摩擦耗散功率~Friction dissipation power",
+      "mechanism": "接觸摩擦耗能取決於切向力與相對滑移而非行車速度。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 220 W。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。同向定力與定滑移。使用切向力與相對運動作量測證據，才能檢查方程是否對應此處的實際物理量；用行車速度代替滑移會高估局部發熱，因此應把該原因與量測偏差分開。~Friction dissipation uses tangential force and relative sliding speed rather than train speed. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 220 W. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Constant resisting force and sliding speed. Use tangential force and relative motion as measurement evidence that the equation represents the intended physical quantity. Substituting train speed for slip overstates local heating; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=1000 N, slip=0.2 m/s；y=F*slip=200 W。只把 F 增加百分之十，y=220 W。模型邊界：同向定力與定滑移；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=1000 N, slip=0.2 m/s; y=F*slip=200 W. Increasing only F with a ten-percent increase gives y=220 W. Boundary: Constant resisting force and sliding speed; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以切向力與相對運動區分模型與觀察，先用低載滑台力與速度建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「摩擦耗散功率」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use tangential force and relative motion to distinguish the model from observation in this unit. Establish a baseline using low-load sled force and speed, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Friction dissipation power. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "用行車速度代替滑移會高估局部發熱。這個失效與「摩擦耗散功率」的量測偏差可能產生相似表象，因此必須同時檢查切向力與相對運動，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Substituting train speed for slip overstates local heating. This failure and a measurement bias in Friction dissipation power can produce similar symptoms. Cross-check tangential force and relative motion rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：用行車速度代替滑移會高估局部發熱~This unit cannot exhibit the following failure: Substituting train speed for slip overstates local heating.",
+      "practice": "重算「摩擦耗散功率」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出同向定力與定滑移如何限制結論。接著設計一組符合模型及一組由用行車速度代替滑移會高估局部發熱造成偏離的合成觀察，以切向力與相對運動說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Friction dissipation power, plot the input-output relationship, and explain the limiting assumption: Constant resisting force and sliding speed. Construct one synthetic observation consistent with the model and another affected by this failure: Substituting train speed for slip overstates local heating. Explain which evidence in tangential force and relative motion distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "簡化阿查德磨耗~Simplified Archard wear",
+      "title": "簡化阿查德磨耗~Simplified Archard wear",
+      "mechanism": "磨耗係數依材料與環境而變，不能當普遍常數。本模型把 K 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 1.1 mm3。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。固定係數輕微磨耗區間。使用體積損失與載入距離作量測證據，才能檢查方程是否對應此處的實際物理量；不同磨耗機制轉換會使線性外推失效，因此應把該原因與量測偏差分開。~Wear coefficient varies with material and environment rather than being universal. In this model, K is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 1.1 mm3. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Mild-wear interval with fixed coefficient. Use volume loss and loaded sliding distance as measurement evidence that the equation represents the intended physical quantity. A change of wear mechanism invalidates linear extrapolation; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：K=0.00001 1, N=1000 N, s=100 m, H=1000000000 Pa；y=K*N*s/H*1e9=1 mm3。只把 K 增加百分之十，y=1.1 mm3。模型邊界：固定係數輕微磨耗區間；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: K=0.00001 1, N=1000 N, s=100 m, H=1000000000 Pa; y=K*N*s/H*1e9=1 mm3. Increasing only K with a ten-percent increase gives y=1.1 mm3. Boundary: Mild-wear interval with fixed coefficient; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以體積損失與載入距離區分模型與觀察，先用低載試片輪廓與質量建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「簡化阿查德磨耗」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use volume loss and loaded sliding distance to distinguish the model from observation in this unit. Establish a baseline using low-load specimen profiles and mass, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Simplified Archard wear. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "不同磨耗機制轉換會使線性外推失效。這個失效與「簡化阿查德磨耗」的量測偏差可能產生相似表象，因此必須同時檢查體積損失與載入距離，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A change of wear mechanism invalidates linear extrapolation. This failure and a measurement bias in Simplified Archard wear can produce similar symptoms. Cross-check volume loss and loaded sliding distance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：不同磨耗機制轉換會使線性外推失效~This unit cannot exhibit the following failure: A change of wear mechanism invalidates linear extrapolation.",
+      "practice": "重算「簡化阿查德磨耗」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出固定係數輕微磨耗區間如何限制結論。接著設計一組符合模型及一組由不同磨耗機制轉換會使線性外推失效造成偏離的合成觀察，以體積損失與載入距離說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Simplified Archard wear, plot the input-output relationship, and explain the limiting assumption: Mild-wear interval with fixed coefficient. Construct one synthetic observation consistent with the model and another affected by this failure: A change of wear mechanism invalidates linear extrapolation. Explain which evidence in volume loss and loaded sliding distance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "材料面密度~Applied-material areal density",
+      "title": "材料面密度~Applied-material areal density",
+      "mechanism": "平均面密度不表示每一處都有相同膜厚。本模型把 mass 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.275 g/m2。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。僅惰性模型材料的面積平均。使用面積分布與質量帳作量測證據，才能檢查方程是否對應此處的實際物理量；局部堆積與空白區可共存於相同平均，因此應把該原因與量測偏差分開。~Mean areal density does not imply uniform film thickness. In this model, mass is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.275 g/m2. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Area average for inert model material only. Use spatial distribution and mass balance as measurement evidence that the equation represents the intended physical quantity. Local accumulation and bare areas can share one mean; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：mass=0.5 g, area=2 m2；y=mass/area=0.25 g/m2。只把 mass 增加百分之十，y=0.275 g/m2。模型邊界：僅惰性模型材料的面積平均；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: mass=0.5 g, area=2 m2; y=mass/area=0.25 g/m2. Increasing only mass with a ten-percent increase gives y=0.275 g/m2. Boundary: Area average for inert model material only; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以面積分布與質量帳區分模型與觀察，先用染色紙面模型與天平建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「材料面密度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use spatial distribution and mass balance to distinguish the model from observation in this unit. Establish a baseline using dyed paper model and balance, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Applied-material areal density. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "局部堆積與空白區可共存於相同平均。這個失效與「材料面密度」的量測偏差可能產生相似表象，因此必須同時檢查面積分布與質量帳，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Local accumulation and bare areas can share one mean. This failure and a measurement bias in Applied-material areal density can produce similar symptoms. Cross-check spatial distribution and mass balance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：局部堆積與空白區可共存於相同平均~This unit cannot exhibit the following failure: Local accumulation and bare areas can share one mean.",
+      "practice": "重算「材料面密度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出僅惰性模型材料的面積平均如何限制結論。接著設計一組符合模型及一組由局部堆積與空白區可共存於相同平均造成偏離的合成觀察，以面積分布與質量帳說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Applied-material areal density, plot the input-output relationship, and explain the limiting assumption: Area average for inert model material only. Construct one synthetic observation consistent with the model and another affected by this failure: Local accumulation and bare areas can share one mean. Explain which evidence in spatial distribution and mass balance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "分布衰減量級~Carryover decay scale",
+      "title": "分布衰減量級~Carryover decay scale",
+      "mechanism": "指數衰減是待驗證的分布模型，不是固定產品性能。本模型把 initial 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.315155 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。固定衰減尺度的一維模型。使用沿程惰性標記濃度作量測證據，才能檢查方程是否對應此處的實際物理量；天候與交通改變衰減尺度，因此應把該原因與量測偏差分開。~Exponential decay is a distribution hypothesis rather than fixed product performance. In this model, initial is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.315155 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. One-dimensional model with fixed decay length. Use inert tracer concentration with distance as measurement evidence that the equation represents the intended physical quantity. Weather and traffic change the decay scale; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：initial=1 1, distance=100 m, scale=80 m；y=initial*exp(-distance/scale)=0.286505 1。只把 initial 增加百分之十，y=0.315155 1。模型邊界：固定衰減尺度的一維模型；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: initial=1 1, distance=100 m, scale=80 m; y=initial*exp(-distance/scale)=0.286505 1. Increasing only initial with a ten-percent increase gives y=0.315155 1. Boundary: One-dimensional model with fixed decay length; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以沿程惰性標記濃度區分模型與觀察，先用紙上模型及惰性標記資料建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「分布衰減量級」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use inert tracer concentration with distance to distinguish the model from observation in this unit. Establish a baseline using paper model and inert tracer data, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Carryover decay scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "天候與交通改變衰減尺度。這個失效與「分布衰減量級」的量測偏差可能產生相似表象，因此必須同時檢查沿程惰性標記濃度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Weather and traffic change the decay scale. This failure and a measurement bias in Carryover decay scale can produce similar symptoms. Cross-check inert tracer concentration with distance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：天候與交通改變衰減尺度~This unit cannot exhibit the following failure: Weather and traffic change the decay scale.",
+      "practice": "重算「分布衰減量級」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出固定衰減尺度的一維模型如何限制結論。接著設計一組符合模型及一組由天候與交通改變衰減尺度造成偏離的合成觀察，以沿程惰性標記濃度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Carryover decay scale, plot the input-output relationship, and explain the limiting assumption: One-dimensional model with fixed decay length. Construct one synthetic observation consistent with the model and another affected by this failure: Weather and traffic change the decay scale. Explain which evidence in inert tracer concentration with distance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "摩擦係數量測~Measured friction coefficient",
+      "title": "摩擦係數量測~Measured friction coefficient",
+      "mechanism": "比值需明定靜摩擦峰或穩態動摩擦。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.264 1。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。定法向力穩態滑動。使用力位移曲線與滑動狀態作量測證據，才能檢查方程是否對應此處的實際物理量；混用靜態峰值和動態均值會誤判調節效果，因此應把該原因與量測偏差分開。~The ratio must distinguish a static peak from steady sliding friction. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.264 1. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Steady sliding at constant normal force. Use force-displacement curve and sliding state as measurement evidence that the equation represents the intended physical quantity. Mixing static peaks and dynamic means misidentifies treatment effect; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=12 N, N=50 N；y=F/N=0.24 1。只把 F 增加百分之十，y=0.264 1。模型邊界：定法向力穩態滑動；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=12 N, N=50 N; y=F/N=0.24 1. Increasing only F with a ten-percent increase gives y=0.264 1. Boundary: Steady sliding at constant normal force; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以力位移曲線與滑動狀態區分模型與觀察，先用低載摩擦台同步力計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「摩擦係數量測」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use force-displacement curve and sliding state to distinguish the model from observation in this unit. Establish a baseline using synchronized force gauges on a low-load friction rig, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Measured friction coefficient. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "混用靜態峰值和動態均值會誤判調節效果。這個失效與「摩擦係數量測」的量測偏差可能產生相似表象，因此必須同時檢查力位移曲線與滑動狀態，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Mixing static peaks and dynamic means misidentifies treatment effect. This failure and a measurement bias in Measured friction coefficient can produce similar symptoms. Cross-check force-displacement curve and sliding state rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：混用靜態峰值和動態均值會誤判調節效果~This unit cannot exhibit the following failure: Mixing static peaks and dynamic means misidentifies treatment effect.",
+      "practice": "重算「摩擦係數量測」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出定法向力穩態滑動如何限制結論。接著設計一組符合模型及一組由混用靜態峰值和動態均值會誤判調節效果造成偏離的合成觀察，以力位移曲線與滑動狀態說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Measured friction coefficient, plot the input-output relationship, and explain the limiting assumption: Steady sliding at constant normal force. Construct one synthetic observation consistent with the model and another affected by this failure: Mixing static peaks and dynamic means misidentifies treatment effect. Explain which evidence in force-displacement curve and sliding state distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "磨耗改善比例~Wear-reduction fraction",
+      "title": "磨耗改善比例~Wear-reduction fraction",
+      "mechanism": "磨耗減幅只在相同荷載距離與材料條件下可比。本模型把 base 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 36.3636 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。配對試驗且同一體積測法。使用對照組與重複樣本作量測證據，才能檢查方程是否對應此處的實際物理量；磨耗降低仍可能伴隨黏著不足，因此應把該原因與量測偏差分開。~Wear reduction is comparable only at matched load, distance and material conditions. In this model, base is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 36.3636 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Paired tests with the same volume method. Use control group and repeat specimens as measurement evidence that the equation represents the intended physical quantity. Reduced wear can coexist with inadequate adhesion; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：base=10 mm3, managed=7 mm3；y=(base-managed)/base*100=30 percent。只把 base 增加百分之十，y=36.3636 percent。模型邊界：配對試驗且同一體積測法；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: base=10 mm3, managed=7 mm3; y=(base-managed)/base*100=30 percent. Increasing only base with a ten-percent increase gives y=36.3636 percent. Boundary: Paired tests with the same volume method; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以對照組與重複樣本區分模型與觀察，先用低載試片與盲測輪廓建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「磨耗改善比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use control group and repeat specimens to distinguish the model from observation in this unit. Establish a baseline using low-load specimens and blinded profiles, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Wear-reduction fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "磨耗降低仍可能伴隨黏著不足。這個失效與「磨耗改善比例」的量測偏差可能產生相似表象，因此必須同時檢查對照組與重複樣本，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Reduced wear can coexist with inadequate adhesion. This failure and a measurement bias in Wear-reduction fraction can produce similar symptoms. Cross-check control group and repeat specimens rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：磨耗降低仍可能伴隨黏著不足~This unit cannot exhibit the following failure: Reduced wear can coexist with inadequate adhesion.",
+      "practice": "重算「磨耗改善比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出配對試驗且同一體積測法如何限制結論。接著設計一組符合模型及一組由磨耗降低仍可能伴隨黏著不足造成偏離的合成觀察，以對照組與重複樣本說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Wear-reduction fraction, plot the input-output relationship, and explain the limiting assumption: Paired tests with the same volume method. Construct one synthetic observation consistent with the model and another affected by this failure: Reduced wear can coexist with inadequate adhesion. Explain which evidence in control group and repeat specimens distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：mu=0.25 1, N=100 kN；y=mu*N=25 kN~Teaching unit 1 baseline scale: Original assumed example, not field operating values: mu=0.25 1, N=100 kN; y=mu*N=25 kN.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：v=20 m/s, mu=0.15 1, g=9.81 m/s2；y=v**2/(2*mu*g)=135.916 m~Teaching unit 2 baseline scale: Original assumed example, not field operating values: v=20 m/s, mu=0.15 1, g=9.81 m/s2; y=v**2/(2*mu*g)=135.916 m.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：wheel=20.2 m/s, train=20 m/s；y=wheel-train=0.2 m/s~Teaching unit 3 baseline scale: Original assumed example, not field operating values: wheel=20.2 m/s, train=20 m/s; y=wheel-train=0.2 m/s.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：wheel=20.2 m/s, train=20 m/s；y=(wheel-train)/train*100=1 percent~Teaching unit 4 baseline scale: Original assumed example, not field operating values: wheel=20.2 m/s, train=20 m/s; y=(wheel-train)/train*100=1 percent.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：F=1000 N, slip=0.2 m/s；y=F*slip=200 W~Teaching unit 5 baseline scale: Original assumed example, not field operating values: F=1000 N, slip=0.2 m/s; y=F*slip=200 W.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：K=0.00001 1, N=1000 N, s=100 m, H=1000000000 Pa；y=K*N*s/H*1e9=1 mm3~Teaching unit 6 baseline scale: Original assumed example, not field operating values: K=0.00001 1, N=1000 N, s=100 m, H=1000000000 Pa; y=K*N*s/H*1e9=1 mm3."
+  ],
+  "timeline": [
+    {
+      "year": "2012-11-01",
+      "event": "鐵道總研期刊出版濕潤輪軌黏著影響因素原始研究。~Quarterly Report of RTRI published original research on wet wheel-rail adhesion factors."
+    },
+    {
+      "year": "2014",
+      "event": "鐵道總研濕潤黏著技術頁引用同年研究作為機制說明。~RTRI wet-adhesion technical guidance cites research from this year to explain mechanisms."
+    },
+    {
+      "year": "2017-01-01",
+      "event": "內華達大學軌頂摩擦調節研究計畫開始，預定持續至二零一九年底。~The UNLV top-of-rail lubricity project began, with a scheduled end in December 2019."
+    }
+  ],
+  "codes": [
+    "美國軌道與構造物檢查手冊：維護與檢查制度背景。~FRA Track and Structures Compliance Manual: maintenance and inspection framework.",
+    "鐵道總研濕潤輪軌黏著技術解說：研究指引而非施藥處方。~RTRI wet wheel-rail adhesion technical guidance: research guidance, not an application prescription."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-wet2012",
+      "title": "濕潤輪軌黏著影響因素研究",
+      "titleEn": "Influential Factors on Adhesion between Wheel and Rail under Wet Conditions",
+      "publisher": "Railway Technical Research Institute",
+      "url": "https://www.jstage.jst.go.jp/article/rtriqr/53/4/53_223/_article/-char/en",
+      "sourceType": "primary",
+      "scope": "二零一二年原始研究，說明水膜與表面條件需分別驗證。",
+      "scopeEn": "Original 2012 research motivating separate verification of water-film and surface conditions."
+    },
+    {
+      "key": "track-wet2014",
+      "title": "濕潤條件輪軌黏著機制",
+      "titleEn": "Wheel-rail adhesion mechanisms under wet conditions",
+      "publisher": "Railway Technical Research Institute",
+      "url": "https://www.rtri.or.jp/rd/division/rd50/rd5030/rd50300111.html",
+      "sourceType": "primary",
+      "scope": "研究所技術解說與二零一四年研究參考；算例摩擦值為另設假設。",
+      "scopeEn": "Institute technical explanation and 2014 research references; example coefficients are independent assumptions."
+    },
+    {
+      "key": "track-tor2017",
+      "title": "軌頂摩擦調節研究計畫",
+      "titleEn": "Determination of TOR lubricity",
+      "publisher": "University of Nevada, Las Vegas",
+      "url": "https://www.unlv.edu/railteam/research/determination-of-tor-lubricity",
+      "sourceType": "primary",
+      "scope": "研究計畫期間二零一七至二零一九年，作為摩擦調節與量測背景。",
+      "scopeEn": "The 2017–2019 project supplies context for friction management and measurement."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "英國鐵路網公司",
+      "nameEn": "Network Rail",
+      "business": "鐵路基礎設施管理與電氣化工程公開資訊。",
+      "businessEn": "Public information on railway infrastructure management and electrification.",
+      "url": "https://www.networkrail.co.uk/our-work/living-by-the-railway/electrification/",
+      "role": "牽引供電與維護背景閱讀，不宣稱其參與本課假想工程。",
+      "roleEn": "Traction-power and maintenance background, without claiming involvement in the assumed course project.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b366",
+    "b341"
+  ],
+  "architectureNodes": [
+    [
+      "輪軌法向力",
+      "Normal contact load"
+    ],
+    [
+      "切向蠕滑",
+      "Tangential creepage"
+    ],
+    [
+      "摩擦材料",
+      "Friction material"
+    ],
+    [
+      "磨耗熱量",
+      "Wear and heat"
+    ],
+    [
+      "黏著驗證",
+      "Adhesion verification"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

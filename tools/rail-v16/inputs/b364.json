@@ -1,0 +1,261 @@
+{
+  "id": "b364",
+  "title": "鐵路回流與雜散電流控制~Rail-return and stray-current control",
+  "discipline": "rail-power",
+  "family": "power",
+  "focus": "回路電位分流與雜散電荷控制~Return potential current division and stray-charge control",
+  "summary": "鐵路回流與雜散電流控制以「回路電位分流與雜散電荷控制」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。牽引回流、軌地電位與雜散電流是不同量；減少一處電位可能把電流轉向其他路徑，需用完整網路及時間電荷帳判斷。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops return potential current division and stray-charge control through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Traction return current, rail-earth potential and stray current are distinct; reducing voltage at one point can divert current elsewhere, requiring a complete network and time-integrated charge. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把鐵路回流與雜散電流控制放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。牽引回流、軌地電位與雜散電流是不同量；減少一處電位可能把電流轉向其他路徑，需用完整網路及時間電荷帳判斷。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Rail-return and stray-current control in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Traction return current, rail-earth potential and stray current are distinct; reducing voltage at one point can divert current elsewhere, requiring a complete network and time-integrated charge. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：I=1000 A, R=0.015 ohm；y=I*R=15 V。只把 I 增加百分之十，y=16.5 V。模型邊界：穩態單一路徑；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：It=1000 A, Rrail=0.02 ohm, Rcable=0.01 ohm；y=It*Rcable/(Rrail+Rcable)=333.333 A。只把 It 增加百分之十，y=366.667 A。模型邊界：兩個純電阻並聯；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: I=1000 A, R=0.015 ohm; y=I*R=15 V. Increasing only I with a ten-percent increase gives y=16.5 V. Boundary: Steady single return path; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: It=1000 A, Rrail=0.02 ohm, Rcable=0.01 ohm; y=It*Rcable/(Rrail+Rcable)=333.333 A. Increasing only It with a ten-percent increase gives y=366.667 A. Boundary: Two purely resistive parallel paths; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "鋼軌回流壓降~Rail-return voltage drop",
+      "title": "鋼軌回流壓降~Rail-return voltage drop",
+      "mechanism": "回流鋼軌有限電阻產生沿程電位差。本模型把 I 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 16.5 V。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。穩態單一路徑。使用回流電流與兩點軌電位作量測證據，才能檢查方程是否對應此處的實際物理量；接續線劣化會增加局部壓降，因此應把該原因與量測偏差分開。~Finite return-rail resistance produces longitudinal potential difference. In this model, I is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 16.5 V. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Steady single return path. Use return current and rail potentials at two points as measurement evidence that the equation represents the intended physical quantity. A degraded bond increases local voltage drop; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：I=1000 A, R=0.015 ohm；y=I*R=15 V。只把 I 增加百分之十，y=16.5 V。模型邊界：穩態單一路徑；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: I=1000 A, R=0.015 ohm; y=I*R=15 V. Increasing only I with a ten-percent increase gives y=16.5 V. Boundary: Steady single return path; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以回流電流與兩點軌電位區分模型與觀察，先用低壓電阻鏈與差動電表建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「鋼軌回流壓降」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use return current and rail potentials at two points to distinguish the model from observation in this unit. Establish a baseline using low-voltage resistor chain and differential voltmeter, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Rail-return voltage drop. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "接續線劣化會增加局部壓降。這個失效與「鋼軌回流壓降」的量測偏差可能產生相似表象，因此必須同時檢查回流電流與兩點軌電位，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A degraded bond increases local voltage drop. This failure and a measurement bias in Rail-return voltage drop can produce similar symptoms. Cross-check return current and rail potentials at two points rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：接續線劣化會增加局部壓降~This unit cannot exhibit the following failure: A degraded bond increases local voltage drop.",
+      "practice": "重算「鋼軌回流壓降」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出穩態單一路徑如何限制結論。接著設計一組符合模型及一組由接續線劣化會增加局部壓降造成偏離的合成觀察，以回流電流與兩點軌電位說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Rail-return voltage drop, plot the input-output relationship, and explain the limiting assumption: Steady single return path. Construct one synthetic observation consistent with the model and another affected by this failure: A degraded bond increases local voltage drop. Explain which evidence in return current and rail potentials at two points distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "平行回流分配~Parallel return sharing",
+      "title": "平行回流分配~Parallel return sharing",
+      "mechanism": "平行路徑以相同端電壓按電阻反比分流。本模型把 It 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 366.667 A。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。兩個純電阻並聯。使用鋼軌與回流線電流作量測證據，才能檢查方程是否對應此處的實際物理量；一路中斷會重分配全回路電流，因此應把該原因與量測偏差分開。~Parallel paths share terminal voltage and divide current inversely with resistance. In this model, It is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 366.667 A. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Two purely resistive parallel paths. Use rail and return-cable currents as measurement evidence that the equation represents the intended physical quantity. Opening one path redistributes total return current; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：It=1000 A, Rrail=0.02 ohm, Rcable=0.01 ohm；y=It*Rcable/(Rrail+Rcable)=333.333 A。只把 It 增加百分之十，y=366.667 A。模型邊界：兩個純電阻並聯；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: It=1000 A, Rrail=0.02 ohm, Rcable=0.01 ohm; y=It*Rcable/(Rrail+Rcable)=333.333 A. Increasing only It with a ten-percent increase gives y=366.667 A. Boundary: Two purely resistive parallel paths; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以鋼軌與回流線電流區分模型與觀察，先用隔離低壓支路電流量測建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「平行回流分配」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use rail and return-cable currents to distinguish the model from observation in this unit. Establish a baseline using isolated low-voltage branch-current measurements, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Parallel return sharing. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "一路中斷會重分配全回路電流。這個失效與「平行回流分配」的量測偏差可能產生相似表象，因此必須同時檢查鋼軌與回流線電流，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Opening one path redistributes total return current. This failure and a measurement bias in Parallel return sharing can produce similar symptoms. Cross-check rail and return-cable currents rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：一路中斷會重分配全回路電流~This unit cannot exhibit the following failure: Opening one path redistributes total return current.",
+      "practice": "重算「平行回流分配」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出兩個純電阻並聯如何限制結論。接著設計一組符合模型及一組由一路中斷會重分配全回路電流造成偏離的合成觀察，以鋼軌與回流線電流說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Parallel return sharing, plot the input-output relationship, and explain the limiting assumption: Two purely resistive parallel paths. Construct one synthetic observation consistent with the model and another affected by this failure: Opening one path redistributes total return current. Explain which evidence in rail and return-cable currents distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "軌地漏流導納~Rail-earth leakage conductance",
+      "title": "軌地漏流導納~Rail-earth leakage conductance",
+      "mechanism": "分布導納乘長度與電位得到均勻漏流近似。本模型把 V 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.44 A。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻電位與導納。使用軌地電位及分段導納作量測證據，才能檢查方程是否對應此處的實際物理量；軌電位不均時不可用單點代表整段，因此應把該原因與量測偏差分開。~Distributed conductance times length and potential approximates uniform leakage. In this model, V is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.44 A. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform potential and conductance. Use rail-earth potential and segmented conductance as measurement evidence that the equation represents the intended physical quantity. Nonuniform potential cannot be represented by one point; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：V=10 V, G=0.02 S/km, L=2 km；y=V*G*L=0.4 A。只把 V 增加百分之十，y=0.44 A。模型邊界：均勻電位與導納；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: V=10 V, G=0.02 S/km, L=2 km; y=V*G*L=0.4 A. Increasing only V with a ten-percent increase gives y=0.44 A. Boundary: Uniform potential and conductance; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以軌地電位及分段導納區分模型與觀察，先用低壓梯形電阻網路建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「軌地漏流導納」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use rail-earth potential and segmented conductance to distinguish the model from observation in this unit. Establish a baseline using low-voltage ladder-resistor network, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Rail-earth leakage conductance. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "軌電位不均時不可用單點代表整段。這個失效與「軌地漏流導納」的量測偏差可能產生相似表象，因此必須同時檢查軌地電位及分段導納，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Nonuniform potential cannot be represented by one point. This failure and a measurement bias in Rail-earth leakage conductance can produce similar symptoms. Cross-check rail-earth potential and segmented conductance rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：軌電位不均時不可用單點代表整段~This unit cannot exhibit the following failure: Nonuniform potential cannot be represented by one point.",
+      "practice": "重算「軌地漏流導納」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻電位與導納如何限制結論。接著設計一組符合模型及一組由軌電位不均時不可用單點代表整段造成偏離的合成觀察，以軌地電位及分段導納說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Rail-earth leakage conductance, plot the input-output relationship, and explain the limiting assumption: Uniform potential and conductance. Construct one synthetic observation consistent with the model and another affected by this failure: Nonuniform potential cannot be represented by one point. Explain which evidence in rail-earth potential and segmented conductance distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "漏流時間電荷~Leakage charge accumulation",
+      "title": "漏流時間電荷~Leakage charge accumulation",
+      "mechanism": "腐蝕相關量需按電流方向與時間積分。本模型把 I 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 6336 C。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。固定方向常電流。使用電流正負與持續時間作量測證據，才能檢查方程是否對應此處的實際物理量；用絕對電流積分會混淆陽極與陰極時段，因此應把該原因與量測偏差分開。~Corrosion-related accounting needs current direction integrated over time. In this model, I is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 6336 C. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Constant current with a fixed direction. Use current sign and duration as measurement evidence that the equation represents the intended physical quantity. Integrating absolute current confuses anodic and cathodic periods; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：I=0.2 A, hours=8 h；y=I*hours*3600=5760 C。只把 I 增加百分之十，y=6336 C。模型邊界：固定方向常電流；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: I=0.2 A, hours=8 h; y=I*hours*3600=5760 C. Increasing only I with a ten-percent increase gives y=6336 C. Boundary: Constant current with a fixed direction; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以電流正負與持續時間區分模型與觀察，先用合成有號電流時間序列建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「漏流時間電荷」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use current sign and duration to distinguish the model from observation in this unit. Establish a baseline using synthetic signed current time series, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Leakage charge accumulation. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "用絕對電流積分會混淆陽極與陰極時段。這個失效與「漏流時間電荷」的量測偏差可能產生相似表象，因此必須同時檢查電流正負與持續時間，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Integrating absolute current confuses anodic and cathodic periods. This failure and a measurement bias in Leakage charge accumulation can produce similar symptoms. Cross-check current sign and duration rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：用絕對電流積分會混淆陽極與陰極時段~This unit cannot exhibit the following failure: Integrating absolute current confuses anodic and cathodic periods.",
+      "practice": "重算「漏流時間電荷」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出固定方向常電流如何限制結論。接著設計一組符合模型及一組由用絕對電流積分會混淆陽極與陰極時段造成偏離的合成觀察，以電流正負與持續時間說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Leakage charge accumulation, plot the input-output relationship, and explain the limiting assumption: Constant current with a fixed direction. Construct one synthetic observation consistent with the model and another affected by this failure: Integrating absolute current confuses anodic and cathodic periods. Explain which evidence in current sign and duration distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "理想法拉第質量~Ideal Faraday mass",
+      "title": "理想法拉第質量~Ideal Faraday mass",
+      "mechanism": "電荷依價數與莫耳質量換算理想溶解量。本模型把 Q 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 1.83362 g。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。假定鐵二價且百分百電流效率。使用陽極電荷與材料狀態作量測證據，才能檢查方程是否對應此處的實際物理量；電流效率與局部反應使真實損失不同，因此應把該原因與量測偏差分開。~Charge converts to ideal dissolution mass through valence and molar mass. In this model, Q is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 1.83362 g. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Assumed divalent iron at one hundred percent current efficiency. Use anodic charge and material condition as measurement evidence that the equation represents the intended physical quantity. Current efficiency and local reactions change real material loss; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：Q=5760 C, M=55.845 g/mol, z=2 1, F=96485 C/mol；y=Q*M/(z*F)=1.66693 g。只把 Q 增加百分之十，y=1.83362 g。模型邊界：假定鐵二價且百分百電流效率；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: Q=5760 C, M=55.845 g/mol, z=2 1, F=96485 C/mol; y=Q*M/(z*F)=1.66693 g. Increasing only Q with a ten-percent increase gives y=1.83362 g. Boundary: Assumed divalent iron at one hundred percent current efficiency; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以陽極電荷與材料狀態區分模型與觀察，先用紙上電荷帳與材料假設建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「理想法拉第質量」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use anodic charge and material condition to distinguish the model from observation in this unit. Establish a baseline using paper charge ledger and material assumptions, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Ideal Faraday mass. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "電流效率與局部反應使真實損失不同。這個失效與「理想法拉第質量」的量測偏差可能產生相似表象，因此必須同時檢查陽極電荷與材料狀態，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Current efficiency and local reactions change real material loss. This failure and a measurement bias in Ideal Faraday mass can produce similar symptoms. Cross-check anodic charge and material condition rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：電流效率與局部反應使真實損失不同~This unit cannot exhibit the following failure: Current efficiency and local reactions change real material loss.",
+      "practice": "重算「理想法拉第質量」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出假定鐵二價且百分百電流效率如何限制結論。接著設計一組符合模型及一組由電流效率與局部反應使真實損失不同造成偏離的合成觀察，以陽極電荷與材料狀態說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Ideal Faraday mass, plot the input-output relationship, and explain the limiting assumption: Assumed divalent iron at one hundred percent current efficiency. Construct one synthetic observation consistent with the model and another affected by this failure: Current efficiency and local reactions change real material loss. Explain which evidence in anodic charge and material condition distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "接續電阻增加~Bond-resistance increase",
+      "title": "接續電阻增加~Bond-resistance increase",
+      "mechanism": "相對增幅應與絕對電阻及量測解析度一起讀。本模型把 Rnew 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 340 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。相同溫度的電阻比較。使用接續四線電阻與溫度作量測證據，才能檢查方程是否對應此處的實際物理量；接觸探針電阻會偽造劣化趨勢，因此應把該原因與量測偏差分開。~Relative increase needs absolute resistance and measurement resolution. In this model, Rnew is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 340 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Resistance comparison at matched temperature. Use four-terminal bond resistance and temperature as measurement evidence that the equation represents the intended physical quantity. Probe contact resistance can mimic degradation; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：Rnew=0.8 mohm, Rbase=0.2 mohm；y=(Rnew-Rbase)/Rbase*100=300 percent。只把 Rnew 增加百分之十，y=340 percent。模型邊界：相同溫度的電阻比較；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: Rnew=0.8 mohm, Rbase=0.2 mohm; y=(Rnew-Rbase)/Rbase*100=300 percent. Increasing only Rnew with a ten-percent increase gives y=340 percent. Boundary: Resistance comparison at matched temperature; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以接續四線電阻與溫度區分模型與觀察，先用低壓四線比較量測建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「接續電阻增加」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use four-terminal bond resistance and temperature to distinguish the model from observation in this unit. Establish a baseline using low-voltage four-terminal comparison, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Bond-resistance increase. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "接觸探針電阻會偽造劣化趨勢。這個失效與「接續電阻增加」的量測偏差可能產生相似表象，因此必須同時檢查接續四線電阻與溫度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Probe contact resistance can mimic degradation. This failure and a measurement bias in Bond-resistance increase can produce similar symptoms. Cross-check four-terminal bond resistance and temperature rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：接觸探針電阻會偽造劣化趨勢~This unit cannot exhibit the following failure: Probe contact resistance can mimic degradation.",
+      "practice": "重算「接續電阻增加」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出相同溫度的電阻比較如何限制結論。接著設計一組符合模型及一組由接觸探針電阻會偽造劣化趨勢造成偏離的合成觀察，以接續四線電阻與溫度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Bond-resistance increase, plot the input-output relationship, and explain the limiting assumption: Resistance comparison at matched temperature. Construct one synthetic observation consistent with the model and another affected by this failure: Probe contact resistance can mimic degradation. Explain which evidence in four-terminal bond resistance and temperature distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "收集回路比例~Collection-circuit current fraction",
+      "title": "收集回路比例~Collection-circuit current fraction",
+      "mechanism": "收集比例只描述定義邊界內的電流帳。本模型把 collected 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 79.2 percent。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。同時窗閉合電流帳。使用收集與未收集分流作量測證據，才能檢查方程是否對應此處的實際物理量；漏流估計漏項會高估收集效果，因此應把該原因與量測偏差分開。~Collection fraction describes current accounting within a defined boundary. In this model, collected is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 79.2 percent. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Closed current balance over one time window. Use collected and uncollected branches as measurement evidence that the equation represents the intended physical quantity. Omitted leakage paths overstate collection effectiveness; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：collected=0.18 A, leakage=0.25 A；y=collected/leakage*100=72 percent。只把 collected 增加百分之十，y=79.2 percent。模型邊界：同時窗閉合電流帳；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: collected=0.18 A, leakage=0.25 A; y=collected/leakage*100=72 percent. Increasing only collected with a ten-percent increase gives y=79.2 percent. Boundary: Closed current balance over one time window; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以收集與未收集分流區分模型與觀察，先用分支低壓電流表建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「收集回路比例」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use collected and uncollected branches to distinguish the model from observation in this unit. Establish a baseline using branch low-voltage ammeters, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Collection-circuit current fraction. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "漏流估計漏項會高估收集效果。這個失效與「收集回路比例」的量測偏差可能產生相似表象，因此必須同時檢查收集與未收集分流，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Omitted leakage paths overstate collection effectiveness. This failure and a measurement bias in Collection-circuit current fraction can produce similar symptoms. Cross-check collected and uncollected branches rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：漏流估計漏項會高估收集效果~This unit cannot exhibit the following failure: Omitted leakage paths overstate collection effectiveness.",
+      "practice": "重算「收集回路比例」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出同時窗閉合電流帳如何限制結論。接著設計一組符合模型及一組由漏流估計漏項會高估收集效果造成偏離的合成觀察，以收集與未收集分流說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Collection-circuit current fraction, plot the input-output relationship, and explain the limiting assumption: Closed current balance over one time window. Construct one synthetic observation consistent with the model and another affected by this failure: Omitted leakage paths overstate collection effectiveness. Explain which evidence in collected and uncollected branches distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "土壤均勻電阻~Uniform soil-path resistance",
+      "title": "土壤均勻電阻~Uniform soil-path resistance",
+      "mechanism": "土壤電阻率需幾何路徑才能換成電阻。本模型把 rho 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 22 ohm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。僅均勻等截面教學路徑。使用土壤含水及電極幾何作量測證據，才能檢查方程是否對應此處的實際物理量；真實擴散電流不能套等截面直棒幾何，因此應把該原因與量測偏差分開。~Soil resistivity needs path geometry before becoming resistance. In this model, rho is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 22 ohm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform constant-area teaching path only. Use soil moisture and electrode geometry as measurement evidence that the equation represents the intended physical quantity. Real spreading current does not follow constant-area bar geometry; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：rho=100 ohm*m, L=2 m, A=10 m2；y=rho*L/A=20 ohm。只把 rho 增加百分之十，y=22 ohm。模型邊界：僅均勻等截面教學路徑；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: rho=100 ohm*m, L=2 m, A=10 m2; y=rho*L/A=20 ohm. Increasing only rho with a ten-percent increase gives y=22 ohm. Boundary: Uniform constant-area teaching path only; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以土壤含水及電極幾何區分模型與觀察，先用電阻率資料與紙上幾何建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「土壤均勻電阻」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use soil moisture and electrode geometry to distinguish the model from observation in this unit. Establish a baseline using resistivity data and paper geometry, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Uniform soil-path resistance. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "真實擴散電流不能套等截面直棒幾何。這個失效與「土壤均勻電阻」的量測偏差可能產生相似表象，因此必須同時檢查土壤含水及電極幾何，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Real spreading current does not follow constant-area bar geometry. This failure and a measurement bias in Uniform soil-path resistance can produce similar symptoms. Cross-check soil moisture and electrode geometry rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：真實擴散電流不能套等截面直棒幾何~This unit cannot exhibit the following failure: Real spreading current does not follow constant-area bar geometry.",
+      "practice": "重算「土壤均勻電阻」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出僅均勻等截面教學路徑如何限制結論。接著設計一組符合模型及一組由真實擴散電流不能套等截面直棒幾何造成偏離的合成觀察，以土壤含水及電極幾何說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Uniform soil-path resistance, plot the input-output relationship, and explain the limiting assumption: Uniform constant-area teaching path only. Construct one synthetic observation consistent with the model and another affected by this failure: Real spreading current does not follow constant-area bar geometry. Explain which evidence in soil moisture and electrode geometry distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "參考電極偏移~Reference-electrode offset",
+      "title": "參考電極偏移~Reference-electrode offset",
+      "mechanism": "參考電極自身偏差會平移所有量測電位。本模型把 measured 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.73 V。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。已知固定加性偏差。使用獨立參考與校正作量測證據，才能檢查方程是否對應此處的實際物理量；使用同一偏移參考重測不會消除偏差，因此應把該原因與量測偏差分開。~Reference-electrode bias shifts every measured potential. In this model, measured is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.73 V. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Known fixed additive bias. Use independent reference and calibration as measurement evidence that the equation represents the intended physical quantity. Repeating with the same shifted reference does not remove bias; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：measured=0.8 V, offset=0.15 V；y=measured-offset=0.65 V。只把 measured 增加百分之十，y=0.73 V。模型邊界：已知固定加性偏差；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: measured=0.8 V, offset=0.15 V; y=measured-offset=0.65 V. Increasing only measured with a ten-percent increase gives y=0.73 V. Boundary: Known fixed additive bias; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以獨立參考與校正區分模型與觀察，先用低壓參考源與差動電表建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「參考電極偏移」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use independent reference and calibration to distinguish the model from observation in this unit. Establish a baseline using low-voltage reference source and differential meter, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Reference-electrode offset. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "使用同一偏移參考重測不會消除偏差。這個失效與「參考電極偏移」的量測偏差可能產生相似表象，因此必須同時檢查獨立參考與校正，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Repeating with the same shifted reference does not remove bias. This failure and a measurement bias in Reference-electrode offset can produce similar symptoms. Cross-check independent reference and calibration rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：使用同一偏移參考重測不會消除偏差~This unit cannot exhibit the following failure: Repeating with the same shifted reference does not remove bias.",
+      "practice": "重算「參考電極偏移」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出已知固定加性偏差如何限制結論。接著設計一組符合模型及一組由使用同一偏移參考重測不會消除偏差造成偏離的合成觀察，以獨立參考與校正說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Reference-electrode offset, plot the input-output relationship, and explain the limiting assumption: Known fixed additive bias. Construct one synthetic observation consistent with the model and another affected by this failure: Repeating with the same shifted reference does not remove bias. Explain which evidence in independent reference and calibration distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "時間取樣電荷~Sampled charge estimate",
+      "title": "時間取樣電荷~Sampled charge estimate",
+      "mechanism": "梯形積分假定兩樣本間電流線性變化。本模型把 I1 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 12.3 C。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。兩樣本線性插值。使用更密集取樣電流作量測證據，才能檢查方程是否對應此處的實際物理量；稀疏取樣會漏掉短時高電流，因此應把該原因與量測偏差分開。~Trapezoidal integration assumes linear current variation between samples. In this model, I1 is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 12.3 C. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Linear interpolation between two samples. Use more densely sampled current as measurement evidence that the equation represents the intended physical quantity. Sparse sampling misses brief high-current intervals; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：I1=0.1 A, I2=0.3 A, dt=60 s；y=(I1+I2)/2*dt=12 C。只把 I1 增加百分之十，y=12.3 C。模型邊界：兩樣本線性插值；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: I1=0.1 A, I2=0.3 A, dt=60 s; y=(I1+I2)/2*dt=12 C. Increasing only I1 with a ten-percent increase gives y=12.3 C. Boundary: Linear interpolation between two samples; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以更密集取樣電流區分模型與觀察，先用合成電流與降採樣比較建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「時間取樣電荷」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use more densely sampled current to distinguish the model from observation in this unit. Establish a baseline using synthetic current and downsampling comparison, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Sampled charge estimate. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "稀疏取樣會漏掉短時高電流。這個失效與「時間取樣電荷」的量測偏差可能產生相似表象，因此必須同時檢查更密集取樣電流，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Sparse sampling misses brief high-current intervals. This failure and a measurement bias in Sampled charge estimate can produce similar symptoms. Cross-check more densely sampled current rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：稀疏取樣會漏掉短時高電流~This unit cannot exhibit the following failure: Sparse sampling misses brief high-current intervals.",
+      "practice": "重算「時間取樣電荷」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出兩樣本線性插值如何限制結論。接著設計一組符合模型及一組由稀疏取樣會漏掉短時高電流造成偏離的合成觀察，以更密集取樣電流說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Sampled charge estimate, plot the input-output relationship, and explain the limiting assumption: Linear interpolation between two samples. Construct one synthetic observation consistent with the model and another affected by this failure: Sparse sampling misses brief high-current intervals. Explain which evidence in more densely sampled current distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：I=1000 A, R=0.015 ohm；y=I*R=15 V~Teaching unit 1 baseline scale: Original assumed example, not field operating values: I=1000 A, R=0.015 ohm; y=I*R=15 V.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：It=1000 A, Rrail=0.02 ohm, Rcable=0.01 ohm；y=It*Rcable/(Rrail+Rcable)=333.333 A~Teaching unit 2 baseline scale: Original assumed example, not field operating values: It=1000 A, Rrail=0.02 ohm, Rcable=0.01 ohm; y=It*Rcable/(Rrail+Rcable)=333.333 A.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：V=10 V, G=0.02 S/km, L=2 km；y=V*G*L=0.4 A~Teaching unit 3 baseline scale: Original assumed example, not field operating values: V=10 V, G=0.02 S/km, L=2 km; y=V*G*L=0.4 A.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：I=0.2 A, hours=8 h；y=I*hours*3600=5760 C~Teaching unit 4 baseline scale: Original assumed example, not field operating values: I=0.2 A, hours=8 h; y=I*hours*3600=5760 C.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：Q=5760 C, M=55.845 g/mol, z=2 1, F=96485 C/mol；y=Q*M/(z*F)=1.66693 g~Teaching unit 5 baseline scale: Original assumed example, not field operating values: Q=5760 C, M=55.845 g/mol, z=2 1, F=96485 C/mol; y=Q*M/(z*F)=1.66693 g.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：Rnew=0.8 mohm, Rbase=0.2 mohm；y=(Rnew-Rbase)/Rbase*100=300 percent~Teaching unit 6 baseline scale: Original assumed example, not field operating values: Rnew=0.8 mohm, Rbase=0.2 mohm; y=(Rnew-Rbase)/Rbase*100=300 percent."
+  ],
+  "timeline": [
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布能源子系統互通規範第一三零一號法規。~The EU issued Regulation 1301/2014 for energy-subsystem interoperability."
+    },
+    {
+      "year": "2019-05-16",
+      "event": "歐盟第七七六號修訂更新能源等鐵路互通規範。~EU Regulation 2019/776 amended energy and other railway interoperability specifications."
+    },
+    {
+      "year": "2023-12-20",
+      "event": "歐洲鐵路署發布二零二三版能源互通規範應用指南。~ERA issued the 2023 application guide for the Energy TSI."
+    }
+  ],
+  "codes": [
+    "歐洲能源子系統互通技術規範：確認當地適用性與完整版本。~European Energy TSI: confirm local applicability and complete applicable edition.",
+    "歐洲鐵路署二零二三年能源互通規範應用指南：供解讀及界面比較。~ERA 2023 Energy TSI application guide: interpretation and interface comparison."
+  ],
+  "landmarks": [
+    "倫敦地下鐵~London Underground",
+    "台北捷運~Taipei Metro"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-energy",
+      "title": "能源子系統互通規範",
+      "titleEn": "Energy TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/energy-tsi_en",
+      "sourceType": "primary",
+      "scope": "牽引供電固定設施與受流介面的規範入口及歷次修訂。",
+      "scopeEn": "Regulatory entry point and amendments for fixed traction-energy installations and current-collection interfaces."
+    },
+    {
+      "key": "track-energy-guide",
+      "title": "能源互通規範應用指南",
+      "titleEn": "Guide for the application of the ENE TSI, 2023",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/system/files/2023-12/ENE_TSI_Guide.pdf",
+      "sourceType": "primary",
+      "scope": "二零二三年指南的適用範圍與條文解讀背景，不複製條文。",
+      "scopeEn": "Scope and interpretation context of the 2023 guide without reproducing clauses."
+    },
+    {
+      "key": "track-ole",
+      "title": "鐵路電氣化工程介紹",
+      "titleEn": "Electrification",
+      "publisher": "Network Rail",
+      "url": "https://www.networkrail.co.uk/our-work/living-by-the-railway/electrification/",
+      "sourceType": "primary",
+      "scope": "架空電車線工程與相鄰構造物的背景。",
+      "scopeEn": "Context for overhead-line works and surrounding structures."
+    },
+    {
+      "key": "track-elsafe",
+      "title": "鐵路電氣安全架構",
+      "titleEn": "Electrical Safety",
+      "publisher": "Network Rail",
+      "url": "https://safety.networkrail.co.uk/safety/electrical-safety/",
+      "sourceType": "primary",
+      "scope": "電氣工作授權與風險管理入口；教學模型僅使用隔離低壓。",
+      "scopeEn": "Electrical-work authorisation and risk management; teaching models use isolated low voltage only."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "交流與直流鐵路牽引供電設備。",
+      "businessEn": "AC and DC railway traction-power equipment.",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail-infrastructure/electrification.html",
+      "role": "供電設備範圍比較，不宣稱承攬本課工程。",
+      "roleEn": "Supply-equipment scope comparison without claiming a contract for this course.",
+      "security": null
+    },
+    {
+      "name": "日立能源",
+      "nameEn": "Hitachi Energy",
+      "business": "鐵路變壓器與電氣化技術。",
+      "businessEn": "Railway transformers and electrification technology.",
+      "url": "https://www.hitachienergy.com/us/en/markets/transportation/rail",
+      "role": "電力設備延伸閱讀，不把產品額定值當教材輸入。",
+      "roleEn": "Power-equipment further reading without treating ratings as teaching inputs.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b365",
+    "b340"
+  ],
+  "architectureNodes": [
+    [
+      "列車回流",
+      "Train return"
+    ],
+    [
+      "鋼軌接續",
+      "Rail bonds"
+    ],
+    [
+      "軌地導納",
+      "Rail-earth conductance"
+    ],
+    [
+      "收集路徑",
+      "Collection path"
+    ],
+    [
+      "地電位參考",
+      "Earth-potential reference"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      0
+    ]
+  ]
+}

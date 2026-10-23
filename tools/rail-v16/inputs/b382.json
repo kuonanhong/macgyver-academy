@@ -1,0 +1,271 @@
+{
+  "id": "b382",
+  "title": "車站旅客流量模擬~Station passenger-flow simulation",
+  "discipline": "rail-integration",
+  "family": "station",
+  "focus": "旅客守恆局部密度與離散事件模擬~Passenger conservation local density and discrete-event simulation",
+  "summary": "本課聚焦旅客守恆局部密度與離散事件模擬。從尖峰到達累積建立物理或資訊邊界，接著把局部群聚網格與非常態需求與出口連成可驗證的介面，最後以模擬成功外推界限整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies passenger conservation local density and discrete-event simulation. Start with accumulation under peak arrivals to define physical or information boundaries, connect spatial cells for local clustering with exceptional demand and exits as verifiable interfaces, and organize evidence through limits of successful simulation runs. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：1991 年一九八五年緊急整備指南於該年重印。；2015 年地下車站旅客流研究報告於該年出版。；2025 年臺灣鐵道車站概念設計指引函頒。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對旅客守恆局部密度與離散事件模擬而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用平均停留與存量及需求群體情境矩陣連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 1991: The rail-transit emergency guide originally published in nineteen eighty-five was reprinted. 2015: A study of underground-station passenger flow was published. 2025: Taiwan issued guidance for conceptual railway-station design. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For passenger conservation local density and discrete-event simulation, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through mean residence and occupancy and population and demand scenario matrix. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究尖峰到達累積。原創假想教學輸入：到達流率 arrival=3.2 persons/s；離開流率 service=2.6 persons/s；觀察時間 duration=120 s。公式 y=(arrival-service)*duration，代入得 y=72 persons。邊界：固定流率、初始無排隊且流入大於流出；不含放棄、繞行及密度回饋。敏感度只改 duration=120 至 132 s，輸出變為 79.2 persons；離散計數採整數變化。再獨立研究平均停留與存量：原創假想教學輸入：平均到達率 arrival=2 persons/s；平均停留時間 waiting=45 s。公式 y=arrival*waiting，代入得 y=90 persons。邊界：穩態同一人群與同一系統邊界的長時間平均。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。本單元從列車到站帶來的需求波開始記錄，將進出站人數與區內存量放在相同時間窗。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate accumulation under peak arrivals. Original hypothetical teaching inputs: arrival flow arrival=3.2 persons/s; departure flow service=2.6 persons/s; observation duration duration=120 s. Formula y=(arrival-service)*duration gives y=72 persons. Boundary: Constant flows, initially empty queue and inflow above outflow; abandonment, rerouting and density feedback are excluded. For sensitivity, change only duration=120 to 132 s; the output becomes 79.2 persons. Discrete counts use whole-number steps. Independently investigate mean residence and occupancy: Original hypothetical teaching inputs: mean arrival rate arrival=2 persons/s; mean residence time waiting=45 s. Formula y=arrival*waiting gives y=90 persons. Boundary: Long-run averages of the same population within one steady system boundary. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Start with the demand wave created by a train arrival, measuring entries, exits and internal occupancy over the same time window. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "尖峰到達累積~Accumulation under peak arrivals",
+      "title": "尖峰到達累積~Accumulation under peak arrivals",
+      "mechanism": "本單元從列車到站帶來的需求波開始記錄，將進出站人數與區內存量放在相同時間窗。排隊人數依流入減流出的守恆關係累積。平均服務能力若只略高於平均需求，瞬間車潮仍會形成等待；人群不能被無限壓縮，所以排隊長度會回堵上游樓梯或月台，改變原先假設的到達方式。解釋前先固定模型適用範圍：固定流率、初始無排隊且流入大於流出；不含放棄、繞行及密度回饋。~Start with the demand wave created by a train arrival, measuring entries, exits and internal occupancy over the same time window. A queue accumulates according to inflow minus outflow. Even service capacity slightly above mean demand can be overwhelmed by a train-arrival pulse. People cannot be compressed indefinitely, so a growing queue can block upstream stairs or platforms and alter the assumed arrival process. Before interpreting the result, fix its domain: Constant flows, initially empty queue and inflow above outflow; abandonment, rerouting and density feedback are excluded.",
+      "model": "原創假想教學輸入：到達流率 arrival=3.2 persons/s；離開流率 service=2.6 persons/s；觀察時間 duration=120 s。公式 y=(arrival-service)*duration，代入得 y=72 persons。邊界：固定流率、初始無排隊且流入大於流出；不含放棄、繞行及密度回饋。~Original hypothetical teaching inputs: arrival flow arrival=3.2 persons/s; departure flow service=2.6 persons/s; observation duration duration=120 s. Formula y=(arrival-service)*duration gives y=72 persons. Boundary: Constant flows, initially empty queue and inflow above outflow; abandonment, rerouting and density feedback are excluded.",
+      "verify": "同時數進入、離開與區內存量，以影像匿名計數或人工抽樣核對人數守恆。以「尖峰到達累積」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Count entries, exits and occupancy together, using anonymous image counts or manual samples to verify conservation. For accumulation under peak arrivals, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只量出口通過量會看不到後方累積，感測器漏計還可能讓看似平衡的流率掩蓋真實回堵。回到「尖峰到達累積」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Exit throughput alone misses upstream accumulation; missed detections can hide real spillback behind apparently balanced flows. Trace the input chain for accumulation under peak arrivals. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "出口每秒通過人數穩定就能證明站內沒有排隊~Stable exit throughput proves that no queue is forming inside the station.",
+      "practice": "只把觀察時間 duration 從 120 改成 132 s（增加百分之十），其餘輸入固定。重算結果應由 72 變為 79.2 persons。先說明「尖峰到達累積」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only observation duration duration from 120 to 132 s (increase by ten percent), holding other inputs fixed. Recalculate 72 to 79.2 persons. Explain the causal direction for accumulation under peak arrivals, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "平均停留與存量~Mean residence and occupancy",
+      "title": "平均停留與存量~Mean residence and occupancy",
+      "mechanism": "本單元比較大廳平均人數與旅客停留時間，檢查觀察時段是否仍在累積而不符合穩態解讀。穩態平均存量等於平均到達率乘平均停留時間，這是流量與庫存的連結，不需要先指定排隊分布。它不能描述單一尖峰時刻，也不會告訴人群在空間上如何分布；量測窗若仍在快速累積，就不宜直接套用穩態關係。解釋前先固定模型適用範圍：穩態同一人群與同一系統邊界的長時間平均。~Compare mean concourse occupancy with passenger residence time, checking whether the observation period is still accumulating and therefore unsuitable for steady-state interpretation. Mean occupancy equals mean arrival rate times mean residence time in steady flow. This connects throughput and inventory without requiring a specific queue distribution. It does not describe one peak instant or spatial distribution, and a rapidly accumulating observation window does not satisfy the steady-state interpretation. Before interpreting the result, fix its domain: Long-run averages of the same population within one steady system boundary.",
+      "model": "原創假想教學輸入：平均到達率 arrival=2 persons/s；平均停留時間 waiting=45 s。公式 y=arrival*waiting，代入得 y=90 persons。邊界：穩態同一人群與同一系統邊界的長時間平均。~Original hypothetical teaching inputs: mean arrival rate arrival=2 persons/s; mean residence time waiting=45 s. Formula y=arrival*waiting gives y=90 persons. Boundary: Long-run averages of the same population within one steady system boundary.",
+      "verify": "使用一致進出邊界估計流率與停留時間，並與獨立區內人數平均值比對。以「平均停留與存量」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Estimate flow and residence time using consistent boundaries and compare with an independent mean occupancy count. For mean residence and occupancy, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把包含站外等待的停留時間乘上站內流率會混用邊界，造成存量高估或低估。回到「平均停留與存量」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Combining residence time that includes an outside queue with an inside flow rate mixes boundaries and biases occupancy. Trace the input chain for mean residence and occupancy. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "平均人數關係能直接預測任何瞬間的最大擁擠程度~A mean occupancy relation directly predicts the maximum crowding at every instant.",
+      "practice": "只把平均停留時間 waiting 從 45 改成 49.5 s（增加百分之十），其餘輸入固定。重算結果應由 90 變為 99 persons。先說明「平均停留與存量」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only mean residence time waiting from 45 to 49.5 s (increase by ten percent), holding other inputs fixed. Recalculate 90 to 99 persons. Explain the causal direction for mean residence and occupancy, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "閘門後共同瓶頸~Shared bottlenecks beyond gates",
+      "title": "閘門後共同瓶頸~Shared bottlenecks beyond gates",
+      "mechanism": "本單元將多個閘門與共同出口連成服務網路，避免把各設備銘牌通量直接相加成全站容量。通道容量與有效淨寬有關，但扶手、門扇、行李及靠邊避讓會減少可用寬度。單位寬流率是情境參數，受方向、坡度與群體能力影響；多條通道的容量只有在下游沒有共同瓶頸時才能直接相加。解釋前先固定模型適用範圍：均勻單向流的教學係數，不是法定疏散容量或規範值。~Connect multiple gates to their shared exit as a service network instead of adding individual nameplate flows into a station-wide capacity. Passage capacity depends on effective clear width, reduced by rails, door leaves, luggage and edge avoidance. Specific flow is scenario dependent and varies with direction, slope and user capability. Parallel passage capacities may be added only when they do not share a downstream bottleneck. Before interpreting the result, fix its domain: Teaching coefficient for uniform one-way flow, not a statutory evacuation capacity or code value.",
+      "model": "原創假想教學輸入：有效淨寬 width=2.4 m；假想單位寬流率 specific=1.1 persons/(m*s)。公式 y=width*specific，代入得 y=2.64 persons/s。邊界：均勻單向流的教學係數，不是法定疏散容量或規範值。~Original hypothetical teaching inputs: effective clear width width=2.4 m; hypothetical specific flow specific=1.1 persons/(m*s). Formula y=width*specific gives y=2.64 persons/s. Boundary: Teaching coefficient for uniform one-way flow, not a statutory evacuation capacity or code value.",
+      "verify": "量測最窄位置的有效淨寬，將各方向流量分開統計，檢查下游是否出現排隊。以「閘門後共同瓶頸」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure clear width at the narrowest section, count each travel direction separately, and inspect downstream queues. For shared bottlenecks beyond gates, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "以建築軸線寬度代替淨寬會高估容量，出口匯流也可能讓上游兩條通道互相阻塞。回到「閘門後共同瓶頸」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Using structural width instead of clear width overstates capacity; merging exits can make two upstream passages obstruct each other. Trace the input chain for shared bottlenecks beyond gates. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "兩條走道接到同一狹窄出口時容量仍可直接相加~Two corridors feeding one narrow exit always have directly additive capacity.",
+      "practice": "只把有效淨寬 width 從 2.4 改成 2.64 m（增加百分之十），其餘輸入固定。重算結果應由 2.64 變為 2.904 persons/s。先說明「閘門後共同瓶頸」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only effective clear width width from 2.4 to 2.64 m (increase by ten percent), holding other inputs fixed. Recalculate 2.64 to 2.904 persons/s. Explain the causal direction for shared bottlenecks beyond gates, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "局部群聚網格~Spatial cells for local clustering",
+      "title": "局部群聚網格~Spatial cells for local clustering",
+      "mechanism": "本單元在樓梯口與月台門前建立小網格，對照全站平均與局部峰值以辨認模型空間解析度需求。平均密度是人數除以可用面積，設備、柱體與危險邊緣應從面積中扣除。相同平均密度可以包含完全不同的局部群聚；門口、扶梯出口與轉角的局部高密度，常比整個大廳平均值更能解釋行走速度下降。解釋前先固定模型適用範圍：靜態平均密度，不是擠壓力或個別人的安全風險模型。~Create small spatial cells at stairs and platform doors, comparing global means with local peaks to determine required model resolution. Mean density divides people by usable area after excluding equipment, columns and unsafe edges. The same average can conceal very different local clustering. High density at doors, escalator landings or corners often explains reduced walking speed better than the average across a large concourse. Before interpreting the result, fix its domain: Static mean density, not a crowd-pressure or individual-risk model.",
+      "model": "原創假想教學輸入：區內人數 people=180 persons；可站立面積 area=90 m2。公式 y=people/area，代入得 y=2 persons/m2。邊界：靜態平均密度，不是擠壓力或個別人的安全風險模型。~Original hypothetical teaching inputs: occupants people=180 persons; usable standing area area=90 m2. Formula y=people/area gives y=2 persons/m2. Boundary: Static mean density, not a crowd-pressure or individual-risk model.",
+      "verify": "用網格分區計數比較平均與局部尖峰，記錄可用面積隨設備或圍籬變動的情況。以「局部群聚網格」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Count occupants in spatial cells, compare mean and local peaks, and record changes in usable area from equipment or barriers. For spatial cells for local clustering, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "將封閉區域算入面積會低估密度，遮蔽導致漏計又可能恰好發生在最擁擠的地方。回到「局部群聚網格」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Including closed areas understates density; occlusion-related undercounting can be worst precisely where crowding is greatest. Trace the input chain for spatial cells for local clustering. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "整個大廳平均密度低就能保證每個出口都不擁擠~A low concourse-average density guarantees that every exit is uncrowded.",
+      "practice": "只把可站立面積 area 從 90 改成 99 m2（增加百分之十），其餘輸入固定。重算結果應由 2 變為 1.81818 persons/m2。先說明「局部群聚網格」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only usable standing area area from 90 to 99 m2 (increase by ten percent), holding other inputs fixed. Recalculate 2 to 1.81818 persons/m2. Explain the causal direction for spatial cells for local clustering, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "轉乘路徑與等待~Transfer paths and waiting",
+      "title": "轉乘路徑與等待~Transfer paths and waiting",
+      "mechanism": "本單元把步行段、辨識方向與排隊段分開，檢查最短距離路徑是否也是不同能力群體的最短時間。總旅行時間應同時計入移動與等待，不能只比較平面上的最短距離。坡道、門扇與轉乘決策都可能造成停頓；對行動受限旅客而言，較遠但連續可達的路徑往往比短而不連續的路徑更可用。解釋前先固定模型適用範圍：定步速與固定等待的概念估算，未含煙氣、擁擠及協助需求分布。~Separate walking, wayfinding and queuing to test whether the shortest-distance route also gives the shortest time for different user capabilities. Travel time includes movement and waiting rather than plan distance alone. Ramps, doors and transfer decisions can introduce pauses. For a mobility-limited traveller, a longer continuously accessible route can be more usable than a shorter route containing an inaccessible interruption. Before interpreting the result, fix its domain: Constant speed and fixed waiting; smoke, crowd interaction and distribution of assistance needs are omitted.",
+      "model": "原創假想教學輸入：行走距離 distance=120 m；假想步速 speed=0.8 m/s；等待時間 wait=35 s。公式 y=distance/speed+wait，代入得 y=185 s。邊界：定步速與固定等待的概念估算，未含煙氣、擁擠及協助需求分布。~Original hypothetical teaching inputs: walking distance distance=120 m; assumed walking speed speed=0.8 m/s; waiting time wait=35 s. Formula y=distance/speed+wait gives y=185 s. Boundary: Constant speed and fixed waiting; smoke, crowd interaction and distribution of assistance needs are omitted.",
+      "verify": "分段記錄行走與等待，不以最快受試者代表所有旅客，並對照不同能力群體。以「轉乘路徑與等待」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record movement and waiting separately, avoid representing everyone by the fastest participant, and compare groups with different abilities. For transfer paths and waiting, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只量無人環境步行時間會低估轉乘負擔，電梯等待與路徑中斷可能主導總時間。回到「轉乘路徑與等待」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Uncrowded walking tests understate transfer burden when elevator waits or route interruptions dominate total time. Trace the input chain for transfer paths and waiting. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "平面圖上最短的路徑一定是每位旅客最快的路徑~The shortest route on a plan is always the fastest route for every passenger.",
+      "practice": "只把假想步速 speed 從 0.8 改成 0.88 m/s（增加百分之十），其餘輸入固定。重算結果應由 185 變為 171.364 s。先說明「轉乘路徑與等待」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only assumed walking speed speed from 0.8 to 0.88 m/s (increase by ten percent), holding other inputs fixed. Recalculate 185 to 171.364 s. Explain the causal direction for transfer paths and waiting, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "月台交換耦合~Coupling platform exchange to dwell",
+      "title": "月台交換耦合~Coupling platform exchange to dwell",
+      "mechanism": "本單元將上車需求回饋到列車停站時間，再讓停站變化影響後續到達波，形成可觀察的閉迴路。停站時間包含人流服務與固定開關門程序。各門均分旅客時可用總服務率估算，但熱門樓梯旁的門通常更壅塞；瓶頸門完成時間控制發車，平均流率因此不能保證最忙車門也能按時結束。解釋前先固定模型適用範圍：均勻單向登車，沒有下車逆流、行李阻塞或門重開。~Feed boarding demand into train dwell and then let dwell variation affect subsequent arrival waves, creating an observable feedback loop. Dwell includes passenger service and fixed door sequences. Dividing by total service rate assumes an even passenger distribution, yet doors near popular stairs are often more crowded. The busiest door governs completion, so average flow cannot guarantee timely clearance at that door. Before interpreting the result, fix its domain: Uniform one-way boarding without alighting counterflow, luggage blockage or door reopening.",
+      "model": "原創假想教學輸入：登車人數 N=180 persons；有效門數 doors=12 doors；每門流率 rate=0.8 persons/(s*door)；固定程序時間 fixed=12 s。公式 y=N/(doors*rate)+fixed，代入得 y=30.75 s。邊界：均勻單向登車，沒有下車逆流、行李阻塞或門重開。~Original hypothetical teaching inputs: boarding passengers N=180 persons; effective doors doors=12 doors; flow per door rate=0.8 persons/(s*door); fixed procedure time fixed=12 s. Formula y=N/(doors*rate)+fixed gives y=30.75 s. Boundary: Uniform one-way boarding without alighting counterflow, luggage blockage or door reopening.",
+      "verify": "逐門記錄開始與結束時間，將固定程序從人流時間中扣除，再比較最忙門與平均門。以「月台交換耦合」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record start and finish at each door, subtract fixed procedure time, and compare the busiest door with the mean. For coupling platform exchange to dwell, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "平均人數正常但單門集中仍會延誤；門故障與旅客逆流都可能造成相似的總停站時間。回到「月台交換耦合」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A normal average load can hide a concentrated door queue; mechanical faults and passenger counterflow can produce similar total dwell. Trace the input chain for coupling platform exchange to dwell. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "總旅客數相同就代表每次停站時間一定相同~Equal total passenger counts always produce equal dwell times.",
+      "practice": "只把登車人數 N 從 180 改成 181 persons（增加一個可計數單位），其餘輸入固定。重算結果應由 30.75 變為 30.8542 s。先說明「月台交換耦合」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only boarding passengers N from 180 to 181 persons (increase by one whole count), holding other inputs fixed. Recalculate 30.75 to 30.8542 s. Explain the causal direction for coupling platform exchange to dwell, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "非常態需求與出口~Exceptional demand and exits",
+      "title": "非常態需求與出口~Exceptional demand and exits",
+      "mechanism": "本單元用原創串行算例比較出口不可用情境，將正常營運客流校準與火災生命安全論證分開。疏散估算需把察覺反應、移動與出口服務分開。此處串接估算保守地把行走和排隊相加，實際兩者可重疊；火災分析還要比較可用安全時間、煙氣與群體差異，不能只由一個清空時間判定生命安全。解釋前先固定模型適用範圍：原創串行教學模型，非規範認可疏散驗證，也未估可用安全疏散時間。~Use an original serial example to compare unavailable exits, separating normal-service flow calibration from a fire life-safety argument. Evacuation estimates separate recognition/response, movement and exit service. This serial estimate conservatively adds travel and queuing, which can overlap in reality. Fire assessment must also consider available safe time, smoke and population differences; one clearance time cannot establish life safety. Before interpreting the result, fix its domain: Original serial teaching model, not code-approved egress verification; available safe egress time is not estimated.",
+      "model": "原創假想教學輸入：待疏散人數 people=600 persons；有效出口寬 width=2.5 m；假想比流率 flow=0.9 persons/(m*s)；代表行走時間 travel=110 s；反應時間 response=45 s。公式 y=response+travel+people/(width*flow)，代入得 y=421.667 s。邊界：原創串行教學模型，非規範認可疏散驗證，也未估可用安全疏散時間。~Original hypothetical teaching inputs: evacuating population people=600 persons; effective exit width width=2.5 m; assumed specific flow flow=0.9 persons/(m*s); representative travel time travel=110 s; response time response=45 s. Formula y=response+travel+people/(width*flow) gives y=421.667 s. Boundary: Original serial teaching model, not code-approved egress verification; available safe egress time is not estimated.",
+      "verify": "以不造成擁擠的受控演練校對各時間段，逐項保留行動受限者與協助程序的差異。以「非常態需求與出口」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Use controlled non-crowding exercises to check timing components and retain differences for assisted and mobility-limited users. For exceptional demand and exits, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把預先知道演練的反應時間套到真實事件會低估延誤，忽略封閉出口又會高估容量。回到「非常態需求與出口」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Using reaction times from announced drills understates real-event delay; ignoring an unavailable exit overstates capacity. Trace the input chain for exceptional demand and exits. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "算出疏散清空時間就足以單獨證明火災時絕對安全~A calculated evacuation clearance time alone proves absolute fire safety.",
+      "practice": "只把待疏散人數 people 從 600 改成 601 persons（增加一個可計數單位），其餘輸入固定。重算結果應由 421.667 變為 422.111 s。先說明「非常態需求與出口」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only evacuating population people from 600 to 601 persons (increase by one whole count), holding other inputs fixed. Recalculate 421.667 to 422.111 s. Explain the causal direction for exceptional demand and exits, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "人流資料取樣尺度~Sampling scale for flow data",
+      "title": "人流資料取樣尺度~Sampling scale for flow data",
+      "mechanism": "本單元用低密度步行軌跡的固定時間取樣建立空間間距，檢查時間步長是否漏掉短暫停頓與交會。行人軌跡在固定時間間隔取樣時，相鄰位置的距離隨步速增加而變大。較密的資料點能保留短暫停頓，但追蹤器遮蔽、身分配對及位置誤差仍可能主導結果；取樣頻率提高不會自動改善定位精度，也不能以均勻步速替代門口交互避讓的動態。解釋前先固定模型適用範圍：定步速與規則取樣的教學幾何，不含人群互動、遮蔽及定位誤差。~Use fixed-time observations of low-density walking trajectories to calculate spatial spacing, checking whether the time step misses brief pauses or interactions. Fixed-time trajectory sampling produces wider spatial gaps at higher walking speed. Denser samples can preserve brief pauses, but occlusion, identity matching and position errors may still dominate. Increasing sample rate does not automatically improve localization accuracy, and uniform walking speed cannot represent the interactions and avoidance movements near a doorway. Before interpreting the result, fix its domain: Teaching geometry at constant walking speed with regular samples, excluding crowd interaction, occlusion and position error.",
+      "model": "原創假想教學輸入：假想行走速度 v=1.2 m/s；軌跡取樣頻率 f=10 Hz。公式 y=v/f，代入得 y=0.12 m/sample。邊界：定步速與規則取樣的教學幾何，不含人群互動、遮蔽及定位誤差。~Original hypothetical teaching inputs: assumed walking speed v=1.2 m/s; trajectory sampling rate f=10 Hz. Formula y=v/f gives y=0.12 m/sample. Boundary: Teaching geometry at constant walking speed with regular samples, excluding crowd interaction, occlusion and position error.",
+      "verify": "使用標記地面的低密度步行教具，同步保留影像時間與獨立位置刻度，抽查轉彎、停頓及遮蔽前後的軌跡。以「人流資料取樣尺度」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Use a marked-floor low-density walking exercise, retain image times and independent position scales, and inspect trajectories around turns, pauses and occlusion. For sampling scale for flow data, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "追蹤器身分交換會製造不合理跳躍，影格遺失則可能被內插掩蓋；應回到原始影像區分演算法與真實移動。回到「人流資料取樣尺度」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Identity swaps create implausible jumps, while interpolation can conceal dropped frames; return to raw imagery to distinguish algorithmic artefacts from real movement. Trace the input chain for sampling scale for flow data. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "只要軌跡取樣頻率提高就必定得到更準確的行人位置~Increasing trajectory sample rate always produces more accurate pedestrian positions.",
+      "practice": "只把假想行走速度 v 從 1.2 改成 1.32 m/s（增加百分之十），其餘輸入固定。重算結果應由 0.12 變為 0.132 m/sample。先說明「人流資料取樣尺度」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only assumed walking speed v from 1.2 to 1.32 m/s (increase by ten percent), holding other inputs fixed. Recalculate 0.12 to 0.132 m/sample. Explain the causal direction for sampling scale for flow data, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "需求群體情境矩陣~Population and demand scenario matrix",
+      "title": "需求群體情境矩陣~Population and demand scenario matrix",
+      "mechanism": "本單元分別測試攜帶行李、協助需求與單向尖峰，保留未校準的群體而不以平均旅客取代所有人。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Test luggage, assistance needs and directional peaks separately, retaining uncalibrated populations rather than replacing everyone with an average traveller. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「需求群體情境矩陣」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For population and demand scenario matrix, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「需求群體情境矩陣」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for population and demand scenario matrix. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「需求群體情境矩陣」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for population and demand scenario matrix, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "模擬成功外推界限~Limits of successful simulation runs",
+      "title": "模擬成功外推界限~Limits of successful simulation runs",
+      "mechanism": "本單元檢查無壅塞結果是否依賴相同隨機種子及固定需求，將可重現性與獨立抽樣明確區分。零次觀察到失效不代表真實失效機率為零。獨立伯努利試驗可由全數成功的機率反推單側上界，試驗數增加才會縮小界限；相關測試或只選容易案例會使這個統計推論不再成立，也不能由此宣告達到安全完整性等級。解釋前先固定模型適用範圍：獨立同分布二元試驗且觀察零失效，非每小時失效率。~Check whether congestion-free results depend on one random seed and fixed demand, distinguishing reproducibility from independent sampling. Zero observed failures does not imply zero true failure probability. Independent Bernoulli trials allow a one-sided upper bound from the probability of all successes, which decreases with sample count. Correlated or selectively easy cases invalidate this inference and cannot establish a safety-integrity level. Before interpreting the result, fix its domain: Independent identical binary trials with zero observed failures, not an hourly failure rate.",
+      "model": "原創假想教學輸入：獨立試驗次數 tests=300 independent trials；單側信賴水準 confidence=0.95 1。公式 y=1-(1-confidence)**(1/tests)，代入得 y=0.00993608 failure probability。邊界：獨立同分布二元試驗且觀察零失效，非每小時失效率。~Original hypothetical teaching inputs: independent trial count tests=300 independent trials; one-sided confidence level confidence=0.95 1. Formula y=1-(1-confidence)**(1/tests) gives y=0.00993608 failure probability. Boundary: Independent identical binary trials with zero observed failures, not an hourly failure rate.",
+      "verify": "核對案例獨立性與抽樣範圍，保留所有失敗紀錄，再說明統計界限對哪一類情境有效。以「模擬成功外推界限」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Audit independence and sampling scope, retain all failures, and state the scenario population to which the bound applies. For limits of successful simulation runs, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "反覆重跑相同狀態可能沒有增加獨立證據，刪去失敗案例則直接破壞零失效假設。回到「模擬成功外推界限」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Repeated identical states may add no independent evidence, while deleting failures invalidates the zero-failure assumption. Trace the input chain for limits of successful simulation runs. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "完成很多次沒有故障的測試就能證明故障機率為零~Many failure-free tests prove that the failure probability is zero.",
+      "practice": "只把獨立試驗次數 tests 從 300 改成 301 independent trials（增加一個可計數單位），其餘輸入固定。重算結果應由 0.00993608 變為 0.00990324 failure probability。先說明「模擬成功外推界限」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only independent trial count tests from 300 to 301 independent trials (increase by one whole count), holding other inputs fixed. Recalculate 0.00993608 to 0.00990324 failure probability. Explain the causal direction for limits of successful simulation runs, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：尖峰到達累積採 arrival=3.2 persons/s；本課公式結果 72 persons，非現場額定值。~Teaching assumption for accumulation under peak arrivals: arrival=3.2 persons/s; this model gives 72 persons, not a field rating.",
+    "教學假設：平均停留與存量採 arrival=2 persons/s；本課公式結果 90 persons，非現場額定值。~Teaching assumption for mean residence and occupancy: arrival=2 persons/s; this model gives 90 persons, not a field rating.",
+    "教學假設：閘門後共同瓶頸採 width=2.4 m；本課公式結果 2.64 persons/s，非現場額定值。~Teaching assumption for shared bottlenecks beyond gates: width=2.4 m; this model gives 2.64 persons/s, not a field rating.",
+    "教學假設：局部群聚網格採 people=180 persons；本課公式結果 2 persons/m2，非現場額定值。~Teaching assumption for spatial cells for local clustering: people=180 persons; this model gives 2 persons/m2, not a field rating.",
+    "教學假設：轉乘路徑與等待採 distance=120 m；本課公式結果 185 s，非現場額定值。~Teaching assumption for transfer paths and waiting: distance=120 m; this model gives 185 s, not a field rating.",
+    "教學假設：月台交換耦合採 N=180 persons；本課公式結果 30.75 s，非現場額定值。~Teaching assumption for coupling platform exchange to dwell: N=180 persons; this model gives 30.75 s, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "1991",
+      "event": "一九八五年緊急整備指南於該年重印。~The rail-transit emergency guide originally published in nineteen eighty-five was reprinted."
+    },
+    {
+      "year": "2015",
+      "event": "地下車站旅客流研究報告於該年出版。~A study of underground-station passenger flow was published."
+    },
+    {
+      "year": "2025",
+      "event": "臺灣鐵道車站概念設計指引函頒。~Taiwan issued guidance for conceptual railway-station design."
+    }
+  ],
+  "codes": [
+    "FTA 軌道緊急整備指南，1985 原版及 1991 重印之歷史方法~FTA rail emergency-preparedness guide, original 1985 and 1991 reprint as historical methodology",
+    "臺灣鐵道車站概念設計指引，2025 年版，非跨國統一法規~Taiwan railway-station conceptual-design guidance, 2025 edition, not a universal international code"
+  ],
+  "landmarks": [
+    "臺北車站轉乘系統~Taipei Main Station interchange",
+    "倫敦國王十字車站改建~London Kings Cross station redevelopment"
+  ],
+  "place": {
+    "name": "臺北車站示意地點~Taipei Main Station reference",
+    "country": "臺灣~Taiwan",
+    "lat": 25.0478,
+    "lng": 121.517,
+    "query": "Taipei Main Station"
+  },
+  "sources": [
+    {
+      "key": "fta-emergency",
+      "title": "軌道運輸緊急整備指南",
+      "titleEn": "Rail-transit emergency-preparedness guide",
+      "publisher": "Federal Transit Administration",
+      "url": "https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/repg_rts.pdf",
+      "sourceType": "primary",
+      "scope": "提供緊急整備的歷史方法脈絡；本課數值不是指南的法定疏散限值。",
+      "scopeEn": "Historical emergency-preparedness context; exercise values are not statutory egress limits from the guide."
+    },
+    {
+      "key": "passenger-flow",
+      "title": "地下車站與月台旅客流研究",
+      "titleEn": "Passenger flow in stations and platforms",
+      "publisher": "Mineta Transportation Institute / USDOT repository",
+      "url": "https://rosap.ntl.bts.gov/view/dot/28885",
+      "sourceType": "primary",
+      "scope": "支持旅客流研究的背景與方法方向；所有流率及步速均為原創教學假設。",
+      "scopeEn": "Supports passenger-flow research context; all flow rates and walking speeds are original assumptions."
+    },
+    {
+      "key": "rb-station",
+      "title": "鐵道車站概念設計指引",
+      "titleEn": "Rail-station conceptual-design guidance",
+      "publisher": "交通部鐵道局",
+      "url": "https://www.rb.gov.tw/zh-TW/main/main_71/main_80/main_115/20250916_113536/",
+      "sourceType": "primary",
+      "scope": "支持車站整合設計的官方文件與函頒年代，不宣稱本課簡化算例已符合其全部要求。",
+      "scopeEn": "Supports official station-design guidance and issue year, without claiming complete compliance by simplified exercises."
+    },
+    {
+      "key": "taipei-main-reference",
+      "title": "臺北車站官方資訊圖",
+      "titleEn": "Official Taipei Main Station information map",
+      "publisher": "Taipei Rapid Transit Corporation",
+      "url": "https://web.metro.taipei/img/ALL/INFOPDF/051.pdf",
+      "sourceType": "primary",
+      "scope": "支持車站存在及轉乘背景，不複製圖像或宣稱本課為實際車站模型。",
+      "scopeEn": "Supports station identity and interchange context; the map is not copied and this is not an actual station model."
+    },
+    {
+      "key": "kings-cross-reference",
+      "title": "國王十字車站官方歷史",
+      "titleEn": "Official history of Kings Cross station",
+      "publisher": "Network Rail",
+      "url": "https://www.networkrail.co.uk/who-we-are/our-history/iconic-infrastructure/the-history-of-london-kings-cross-station/",
+      "sourceType": "primary",
+      "scope": "支持車站整合與改建工程背景，不引用客流量或允收值。",
+      "scopeEn": "Supports station integration and redevelopment context, without importing passenger flows or acceptance limits."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "臺北捷運公司",
+      "nameEn": "Taipei Rapid Transit Corporation",
+      "business": "捷運車站與列車營運",
+      "businessEn": "Metro station and train operation",
+      "url": "https://www.metro.taipei/",
+      "role": "營運工程參考機構，未宣稱本課是其設計",
+      "roleEn": "Operating reference organization; this is not represented as its design",
+      "security": null
+    },
+    {
+      "name": "英國鐵路網公司",
+      "nameEn": "Network Rail",
+      "business": "鐵路基礎設施與車站",
+      "businessEn": "Railway infrastructure and stations",
+      "url": "https://www.networkrail.co.uk/",
+      "role": "車站整合背景，無本課虛構採購關係",
+      "roleEn": "Station-integration context with no fictional procurement claim",
+      "security": null
+    }
+  ],
+  "related": [
+    "b381",
+    "b383"
+  ],
+  "architectureNodes": [
+    [
+      "到達人流",
+      "Passenger arrivals"
+    ],
+    [
+      "通道網路",
+      "Passage network"
+    ],
+    [
+      "局部存量",
+      "Local occupancy"
+    ],
+    [
+      "列車交換",
+      "Train exchange"
+    ],
+    [
+      "模擬證據",
+      "Simulation evidence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

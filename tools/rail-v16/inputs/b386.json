@@ -1,0 +1,271 @@
+{
+  "id": "b386",
+  "title": "地下車站活塞風控制~Piston-wind control in underground stations",
+  "discipline": "rail-integration",
+  "family": "station",
+  "focus": "列車活塞效應旁通開口與壓力瞬變~Train piston effects bypass openings and pressure transients",
+  "summary": "本課聚焦列車活塞效應旁通開口與壓力瞬變。從列車誘導壓力量級建立物理或資訊邊界，接著把風機與活塞作用疊合與壓力量測誤差合成連成可驗證的介面，最後以不同列車通過情境整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies train piston effects bypass openings and pressure transients. Start with scale of train-induced pressure to define physical or information boundaries, connect fans interacting with piston effects with combining pressure measurement uncertainty as verifiable interfaces, and organize evidence through scenarios for different train passages. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：1991 年一九八五年緊急整備指南於該年重印。；2015 年地下車站旅客流研究報告於該年出版。；2025 年臺灣鐵道車站概念設計指引函頒。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對列車活塞效應旁通開口與壓力瞬變而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用活塞風斷面積分及通風模式相容狀態連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 1991: The rail-transit emergency guide originally published in nineteen eighty-five was reprinted. 2015: A study of underground-station passenger flow was published. 2025: Taiwan issued guidance for conceptual railway-station design. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For train piston effects bypass openings and pressure transients, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through section integration of piston airflow and compatibility of ventilation modes. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究列車誘導壓力量級。原創假想教學輸入：空氣密度 rho=1.2 kg/m3；代表風速 v=15 m/s。公式 y=0.5*rho*v*v，代入得 y=135 Pa。邊界：低馬赫數局部量級估算，不是全隧道壓力波解。敏感度只改 v=15 至 16.5 m/s，輸出變為 163.35 Pa；離散計數採整數變化。再獨立研究活塞風斷面積分：原創假想教學輸入：體積流量 Q=32 m3/s；有效通風面積 A=16 m2。公式 y=Q/A，代入得 y=2 m/s。邊界：不可壓縮均勻截面平均，未求解火災浮力、毒性或能見度。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。本單元以局部風速平方比較壓力量級，保留列車阻塞率與波反射尚未求解的差異。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate scale of train-induced pressure. Original hypothetical teaching inputs: air density rho=1.2 kg/m3; representative air speed v=15 m/s. Formula y=0.5*rho*v*v gives y=135 Pa. Boundary: Local low-Mach-number scale estimate, not a tunnel-wide pressure-wave solution. For sensitivity, change only v=15 to 16.5 m/s; the output becomes 163.35 Pa. Discrete counts use whole-number steps. Independently investigate section integration of piston airflow: Original hypothetical teaching inputs: volume flow Q=32 m3/s; effective airflow area A=16 m2. Formula y=Q/A gives y=2 m/s. Boundary: Incompressible cross-section mean; fire buoyancy, toxicity and visibility are not solved. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Compare pressure scales using local air-speed squared, retaining the unsolved influence of train blockage and wave reflection. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "列車誘導壓力量級~Scale of train-induced pressure",
+      "title": "列車誘導壓力量級~Scale of train-induced pressure",
+      "mechanism": "本單元以局部風速平方比較壓力量級，保留列車阻塞率與波反射尚未求解的差異。動壓與風速平方成正比，這有助判斷列車活塞作用與門扇負載的量級。實際瞬變壓力仍受隧道阻塞率、旁通開口與波傳反射影響；動壓不是任何測點必定出現的靜壓差，兩者不能直接等同。解釋前先固定模型適用範圍：低馬赫數局部量級估算，不是全隧道壓力波解。~Compare pressure scales using local air-speed squared, retaining the unsolved influence of train blockage and wave reflection. Dynamic pressure scales with speed squared, helping estimate the magnitude of train-induced airflow and door loading. Actual transients also depend on blockage, bypass openings and wave reflections. Dynamic pressure is not automatically the static pressure difference measured at a particular location. Before interpreting the result, fix its domain: Local low-Mach-number scale estimate, not a tunnel-wide pressure-wave solution.",
+      "model": "原創假想教學輸入：空氣密度 rho=1.2 kg/m3；代表風速 v=15 m/s。公式 y=0.5*rho*v*v，代入得 y=135 Pa。邊界：低馬赫數局部量級估算，不是全隧道壓力波解。~Original hypothetical teaching inputs: air density rho=1.2 kg/m3; representative air speed v=15 m/s. Formula y=0.5*rho*v*v gives y=135 Pa. Boundary: Local low-Mach-number scale estimate, not a tunnel-wide pressure-wave solution.",
+      "verify": "同步量測列車速度、局部風速與兩側靜壓，觀察峰值時刻及符號是否相符。以「列車誘導壓力量級」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Synchronize train speed, local air speed and static pressure on both sides, comparing peak timing and sign. For scale of train-induced pressure, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把測壓管朝向流動形成的總壓誤當靜壓會高估門扇負載，時間平均又可能掩蓋短暫峰值。回到「列車誘導壓力量級」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A probe facing the flow can measure total rather than static pressure and overstate door loading; time averaging can hide transient peaks. Trace the input chain for scale of train-induced pressure. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "風速加倍時動壓也只會跟著加倍~Doubling air speed merely doubles dynamic pressure.",
+      "practice": "只把代表風速 v 從 15 改成 16.5 m/s（增加百分之十），其餘輸入固定。重算結果應由 135 變為 163.35 Pa。先說明「列車誘導壓力量級」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only representative air speed v from 15 to 16.5 m/s (increase by ten percent), holding other inputs fixed. Recalculate 135 to 163.35 Pa. Explain the causal direction for scale of train-induced pressure, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "活塞風斷面積分~Section integration of piston airflow",
+      "title": "活塞風斷面積分~Section integration of piston airflow",
+      "mechanism": "本單元在列車進出站期間量測有正負號的速度，防止正反流動被平均後誤判為持續單向送風。平均風速是流量除以有效斷面，局部阻塞與流場分離可讓同一平均值對應很不均勻的速度。風向與煙氣來源位置同樣重要；正常通風的舒適性目標和火災時的煙流控制目標不能共用一個數字就視為完成驗證。解釋前先固定模型適用範圍：不可壓縮均勻截面平均，未求解火災浮力、毒性或能見度。~Measure signed velocity during train entry and departure, preventing reversing flow from being mistaken for sustained one-way ventilation. Mean air speed is flow divided by effective area, but obstruction and separation can produce highly nonuniform fields at the same mean. Direction and smoke-source location also matter. Normal comfort ventilation and emergency smoke control cannot be validated by one shared number alone. Before interpreting the result, fix its domain: Incompressible cross-section mean; fire buoyancy, toxicity and visibility are not solved.",
+      "model": "原創假想教學輸入：體積流量 Q=32 m3/s；有效通風面積 A=16 m2。公式 y=Q/A，代入得 y=2 m/s。邊界：不可壓縮均勻截面平均，未求解火災浮力、毒性或能見度。~Original hypothetical teaching inputs: volume flow Q=32 m3/s; effective airflow area A=16 m2. Formula y=Q/A gives y=2 m/s. Boundary: Incompressible cross-section mean; fire buoyancy, toxicity and visibility are not solved.",
+      "verify": "在斷面多點量測速度與方向，積分得到流量，再檢查門開閉或列車位置變化。以「活塞風斷面積分」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure velocity and direction at several section points, integrate flow, and repeat for changed door or train positions. For section integration of piston airflow, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "單點風速可剛好量到高速射流而高估全斷面流量，反向區域也可能被平均抵消。回到「活塞風斷面積分」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~One sensor may sample a fast jet and overstate total flow; reverse-flow regions can disappear in an unsigned average. Trace the input chain for section integration of piston airflow. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "一個測點風速符合目標就能證明整個煙流場符合需求~One velocity reading at target proves that the entire smoke-flow field meets requirements.",
+      "practice": "只把有效通風面積 A 從 16 改成 17.6 m2（增加百分之十），其餘輸入固定。重算結果應由 2 變為 1.81818 m/s。先說明「活塞風斷面積分」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only effective airflow area A from 16 to 17.6 m2 (increase by ten percent), holding other inputs fixed. Recalculate 2 to 1.81818 m/s. Explain the causal direction for section integration of piston airflow, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "旁通開口壓差流量~Pressure-driven bypass flow",
+      "title": "旁通開口壓差流量~Pressure-driven bypass flow",
+      "mechanism": "本單元比較旁通面積增加對流量的影響，另外追蹤煙流模式是否因新增連通路徑而改變。開口通風量由壓差驅動，受面積與縮流損失共同控制。流量和壓差平方根成正比，不是線性比例；旁通開口增加可能減輕壓力卻同時改變煙氣路徑，因此開口位置和通風模式必須一起討論。解釋前先固定模型適用範圍：固定流量係數的不可壓縮孔口近似，未含雙向分層流。~Compare the effect of increased bypass area on flow and separately track whether the added connection changes smoke-control paths. Pressure difference drives opening flow, with area and contraction losses jointly controlling it. Flow scales with the square root of pressure rather than linearly. Adding a bypass can relieve pressure while changing smoke paths, so location and ventilation mode must be considered together. Before interpreting the result, fix its domain: Incompressible orifice approximation with fixed coefficient; bidirectional stratified flow is excluded.",
+      "model": "原創假想教學輸入：流量係數 Cd=0.65 1；開口面積 A=4 m2；兩側壓差 dp=80 Pa；空氣密度 rho=1.2 kg/m3。公式 y=Cd*A*sqrt(2*dp/rho)，代入得 y=30.0222 m3/s。邊界：固定流量係數的不可壓縮孔口近似，未含雙向分層流。~Original hypothetical teaching inputs: discharge coefficient Cd=0.65 1; opening area A=4 m2; pressure difference dp=80 Pa; air density rho=1.2 kg/m3. Formula y=Cd*A*sqrt(2*dp/rho) gives y=30.0222 m3/s. Boundary: Incompressible orifice approximation with fixed coefficient; bidirectional stratified flow is excluded.",
+      "verify": "量測開口兩側壓差與斷面流量，將不同開度下的結果畫成流量對壓差平方根。以「旁通開口壓差流量」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure pressure difference and section flow, then plot flow against square-root pressure for several openings. For pressure-driven bypass flow, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "格柵堵塞會改變有效面積與損失係數，僅看風門命令開度可能誤判實際旁通能力。回到「旁通開口壓差流量」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Blocked grilles alter effective area and loss coefficient; commanded damper opening can misrepresent actual bypass capacity. Trace the input chain for pressure-driven bypass flow. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "開口壓差增加四倍時流量一定增加四倍~Quadrupling pressure difference necessarily quadruples opening flow.",
+      "practice": "只把兩側壓差 dp 從 80 改成 88 Pa（增加百分之十），其餘輸入固定。重算結果應由 30.0222 變為 31.4876 m3/s。先說明「旁通開口壓差流量」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only pressure difference dp from 80 to 88 Pa (increase by ten percent), holding other inputs fixed. Recalculate 30.0222 to 31.4876 m3/s. Explain the causal direction for pressure-driven bypass flow, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "風機與活塞作用疊合~Fans interacting with piston effects",
+      "title": "風機與活塞作用疊合~Fans interacting with piston effects",
+      "mechanism": "本單元以穩態功率帳作基準，再標記列車通過造成的工作點偏移，避免假設風機流量始終固定。風機輸入功率由流量乘壓升再除效率估算。壓力不足與流路阻力增加都會改變工作點，不能把銘牌額定流量視為任何風道中都能達成；備援風機還可能共享同一阻塞路徑而無法提供預想的獨立能力。解釋前先固定模型適用範圍：單一穩態工作點，未含風機曲線、失速或高溫效率變動。~Use a steady power balance as a reference, then mark operating-point shifts during train passage instead of assuming constant fan flow. Fan input power is flow times pressure rise divided by efficiency. Inadequate pressure and increased duct resistance shift the operating point; nameplate flow is not guaranteed in every duct. Redundant fans may also share a blocked path and fail to provide the expected independent capability. Before interpreting the result, fix its domain: One steady operating point without fan-curve shape, stall or high-temperature efficiency change.",
+      "model": "原創假想教學輸入：流量 Q=40 m3/s；總壓升 dp=600 Pa；總效率 eta=0.7 1。公式 y=Q*dp/eta/1000，代入得 y=34.2857 kW。邊界：單一穩態工作點，未含風機曲線、失速或高溫效率變動。~Original hypothetical teaching inputs: flow Q=40 m3/s; total pressure rise dp=600 Pa; overall efficiency eta=0.7 1. Formula y=Q*dp/eta/1000 gives y=34.2857 kW. Boundary: One steady operating point without fan-curve shape, stall or high-temperature efficiency change.",
+      "verify": "同時量測流量、前後壓差與電功率，對照風門位置並檢查各項能量是否一致。以「風機與活塞作用疊合」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure flow, pressure rise and electrical power together, correlate with damper position, and check energy consistency. For fans interacting with piston effects, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "風門位置回授正常但機械連桿脫落會形成錯誤狀態，僅看馬達運轉訊號無法證明有足夠送風。回到「風機與活塞作用疊合」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A detached damper linkage can coexist with apparently normal position feedback; a motor-running signal does not prove adequate airflow. Trace the input chain for fans interacting with piston effects. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "風機馬達正在轉動就表示所需通風量一定已達成~A running fan motor proves that the required airflow has been achieved.",
+      "practice": "只把總壓升 dp 從 600 改成 660 Pa（增加百分之十），其餘輸入固定。重算結果應由 34.2857 變為 37.7143 kW。先說明「風機與活塞作用疊合」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only total pressure rise dp from 600 to 660 Pa (increase by ten percent), holding other inputs fixed. Recalculate 34.2857 to 37.7143 kW. Explain the causal direction for fans interacting with piston effects, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "壓力峰值取樣解析~Sampling resolution for pressure peaks",
+      "title": "壓力峰值取樣解析~Sampling resolution for pressure peaks",
+      "mechanism": "本單元由壓力取樣頻率直接計算相鄰時間間隔，檢查感測頻寬、濾波及取樣是否會漏掉門負載的短暫峰值。壓力時間序列的相鄰樣點間隔由取樣頻率倒數決定，短於此間隔的事件可能完全落在兩點之間。提高頻率仍需要適當感測頻寬與抗混疊濾波，資料記錄器和感測器中較慢的一環會限制真實解析度；只增加輸出的資料筆數不會補回已被濾掉的峰值。解釋前先固定模型適用範圍：等間隔時間取樣，未代表感測器頻寬或峰值重建精度。~Calculate time intervals directly from pressure sampling frequency and examine whether sensor bandwidth, filtering or sampling misses brief door-load peaks. The interval between pressure samples is the reciprocal of sampling frequency, so an event shorter than that interval can fall entirely between observations. A higher rate still needs appropriate sensor bandwidth and anti-alias filtering. The slower part of the sensor-recorder chain limits actual resolution; producing more output rows cannot restore an already filtered peak. Before interpreting the result, fix its domain: Equally spaced temporal samples, not sensor bandwidth or peak-reconstruction accuracy.",
+      "model": "原創假想教學輸入：壓力取樣頻率 f=20 Hz。公式 y=1000/f，代入得 y=50 ms。邊界：等間隔時間取樣，未代表感測器頻寬或峰值重建精度。~Original hypothetical teaching inputs: pressure sampling frequency f=20 Hz. Formula y=1000/f gives y=50 ms. Boundary: Equally spaced temporal samples, not sensor bandwidth or peak-reconstruction accuracy.",
+      "verify": "以校正器產生已知持續時間的低壓脈衝，對照獨立高頻記錄，保留濾波設定並比較峰值與脈衝面積。以「壓力峰值取樣解析」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Generate a calibrated low-pressure pulse of known duration, compare with an independent faster recorder, retain filter settings and compare peak and pulse area. For sampling resolution for pressure peaks, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "資料內插會讓曲線平順卻沒有新增觀測，未經抗混疊的高頻擾動也可能折回低頻形成虛假活塞風特徵。回到「壓力峰值取樣解析」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Interpolation smooths a curve without adding observations, while unfiltered high-frequency disturbance can alias into an apparent low-frequency piston-flow feature. Trace the input chain for sampling resolution for pressure peaks. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "把相鄰壓力資料內插成更多點就能恢復任何短暫峰值~Interpolating extra points between pressure observations can recover every brief pressure peak.",
+      "practice": "只把壓力取樣頻率 f 從 20 改成 22 Hz（增加百分之十），其餘輸入固定。重算結果應由 50 變為 45.4545 ms。先說明「壓力峰值取樣解析」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only pressure sampling frequency f from 20 to 22 Hz (increase by ten percent), holding other inputs fixed. Recalculate 50 to 45.4545 ms. Explain the causal direction for sampling resolution for pressure peaks, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "列車風壓事件同步~Synchronizing train and pressure events",
+      "title": "列車風壓事件同步~Synchronizing train and pressure events",
+      "mechanism": "本單元把列車位置、風速與壓力記錄對齊，確保觀察到的先後關係來自流場而不是時鐘漂移。時鐘頻率偏差會隨時間累積成時間差，校時瞬間的偏移與之不同。多系統事件排序若依不同時鐘，可能把因果順序顛倒；校時跳變又會使量測區間長度失真，所以需記錄時鐘品質與校正事件。解釋前先固定模型適用範圍：固定頻率偏差的線性累積，忽略溫度漂移與校時伺服動態。~Align train position, air velocity and pressure logs so observed sequencing reflects the flow field rather than clock drift. Clock frequency error accumulates into time offset and differs from initial synchronization offset. Ordering multisystem events on different clocks can reverse apparent causality. Synchronization jumps can distort interval lengths, so clock quality and correction events must be recorded. Before interpreting the result, fix its domain: Linear accumulation at fixed frequency offset; temperature drift and synchronization-servo dynamics are omitted.",
+      "model": "原創假想教學輸入：時鐘頻率偏差 drift=20 ppm；未校時期間 duration=3600 s。公式 y=drift*1e-6*duration，代入得 y=0.072 s。邊界：固定頻率偏差的線性累積，忽略溫度漂移與校時伺服動態。~Original hypothetical teaching inputs: clock frequency offset drift=20 ppm; unsynchronized interval duration=3600 s. Formula y=drift*1e-6*duration gives y=0.072 s. Boundary: Linear accumulation at fixed frequency offset; temperature drift and synchronization-servo dynamics are omitted.",
+      "verify": "用獨立時間基準比較多個時刻的偏移，從斜率分辨頻率誤差與一次性跳變。以「列車風壓事件同步」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Compare offsets at several times against an independent reference, using slope to distinguish frequency error from a one-time jump. For synchronizing train and pressure events, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只對齊開始時刻卻忽略頻率漂移，會讓長測試中的事件逐漸錯位，並誤判通訊延遲。回到「列車風壓事件同步」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Aligning only the initial instant leaves frequency drift uncorrected, progressively misaligning events and suggesting false network delay. Trace the input chain for synchronizing train and pressure events. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試開始時時鐘一致就能保證整天時間戳都一致~Clocks aligned at test start remain aligned for the entire day.",
+      "practice": "只把未校時期間 duration 從 3600 改成 3960 s（增加百分之十），其餘輸入固定。重算結果應由 0.072 變為 0.0792 s。先說明「列車風壓事件同步」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only unsynchronized interval duration from 3600 to 3960 s (increase by ten percent), holding other inputs fixed. Recalculate 0.072 to 0.0792 s. Explain the causal direction for synchronizing train and pressure events, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "壓力量測誤差合成~Combining pressure measurement uncertainty",
+      "title": "壓力量測誤差合成~Combining pressure measurement uncertainty",
+      "mechanism": "本單元以帕斯卡為單位合成兩個獨立壓力通道的標準差，另列共用參考壓力與校正偏差以避免低估不確定度。獨立零均值誤差的變異數可以相加，因此標準差以平方和開根號合成。這個做法不適合直接合併最大容差或共同偏差；一旦共享基準造成相關性，協方差項就必須回到計算中，不能繼續假裝量測彼此獨立。解釋前先固定模型適用範圍：獨立隨機壓力標準差，不是最大門負荷或確定壓差界限。~Combine standard deviations of two independent pressure channels in pascals, separately retaining common reference-pressure and calibration biases to avoid understated uncertainty. Variances of independent zero-mean errors add, giving a root-sum-square standard deviation. This is not a way to combine maximum tolerances or common bias. When a shared datum creates correlation, covariance terms belong in the calculation rather than assuming continued independence. Before interpreting the result, fix its domain: Independent random pressure standard deviations, not maximum door load or a deterministic pressure-difference bound.",
+      "model": "原創假想教學輸入：獨立壓力通道一標準差 s1=3 Pa；獨立壓力通道二標準差 s2=4 Pa。公式 y=sqrt(s1*s1+s2*s2)，代入得 y=5 Pa。邊界：獨立隨機壓力標準差，不是最大門負荷或確定壓差界限。~Original hypothetical teaching inputs: first independent pressure standard deviation s1=3 Pa; second independent pressure standard deviation s2=4 Pa. Formula y=sqrt(s1*s1+s2*s2) gives y=5 Pa. Boundary: Independent random pressure standard deviations, not maximum door load or a deterministic pressure-difference bound.",
+      "verify": "以重複量測估計標準差與相關係數，將固定偏差另列，再核對合成殘差。以「壓力量測誤差合成」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Estimate standard deviations and correlation from repeated observations, separate fixed bias, and compare combined residuals. For combining pressure measurement uncertainty, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "共同基準誤差會使所有讀值同向偏移，重複次數增加也無法把這種偏差平均掉。回到「壓力量測誤差合成」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~A common datum error shifts readings together, and additional repetition cannot average away that shared bias. Trace the input chain for combining pressure measurement uncertainty. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "任何兩個誤差都可以不問相關性直接平方和開根號~Any two errors can be combined by root-sum-square without considering correlation.",
+      "practice": "只把獨立壓力通道一標準差 s1 從 3 改成 3.3 Pa（增加百分之十），其餘輸入固定。重算結果應由 5 變為 5.18556 Pa。先說明「壓力量測誤差合成」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only first independent pressure standard deviation s1 from 3 to 3.3 Pa (increase by ten percent), holding other inputs fixed. Recalculate 5 to 5.18556 Pa. Explain the causal direction for combining pressure measurement uncertainty, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "風門反應時間鏈~Damper-response timing chain",
+      "title": "風門反應時間鏈~Damper-response timing chain",
+      "mechanism": "本單元分開通訊命令、致動器移動和壓力實際變化，避免以風門已收到命令推論壓力已被抑制。端到端延遲由量測、通訊、運算與致動串接而成。改善最快的一段通常影響有限，且平均延遲不能代表最壞尾端；定義一致的起訖事件，才能避免子系統都量到好看的數值卻漏掉交接等待。解釋前先固定模型適用範圍：各階段串行且時間確定，沒有平行重疊或隨機尾端。~Separate command delivery, actuator movement and actual pressure change; command reception does not establish that the pressure transient has been reduced. End-to-end delay spans sensing, communication, computation and actuation. Improving the fastest stage often yields little benefit, and mean latency does not represent its worst tail. Consistent start and end events prevent subsystems from reporting attractive numbers while overlooking handoff queues. Before interpreting the result, fix its domain: Deterministic serial stages without overlap or random latency tails.",
+      "model": "原創假想教學輸入：量測時間 sense=0.03 s；網路時間 network=0.08 s；運算時間 compute=0.02 s；致動時間 actuate=0.12 s。公式 y=sense+network+compute+actuate，代入得 y=0.25 s。邊界：各階段串行且時間確定，沒有平行重疊或隨機尾端。~Original hypothetical teaching inputs: sensing time sense=0.03 s; network time network=0.08 s; computation time compute=0.02 s; actuation time actuate=0.12 s. Formula y=sense+network+compute+actuate gives y=0.25 s. Boundary: Deterministic serial stages without overlap or random latency tails.",
+      "verify": "沿同一事件編號串接時間戳，檢查每一段邊界是否重疊或漏算，並注入負載重測。以「風門反應時間鏈」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Follow one event identifier through timestamps, check stage boundaries for overlap or gaps, and repeat under injected load. For damper-response timing chain, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "時間基準不同可造成負延遲假象；漏記排隊會使快速單元測試無法預測整合表現。回到「風門反應時間鏈」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Different clock references can create apparently negative delays; omitted queues prevent fast unit tests from predicting integrated performance. Trace the input chain for damper-response timing chain. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "每個子系統平均很快就代表整體最壞延遲一定很短~Fast average subsystems guarantee a short worst-case end-to-end delay.",
+      "practice": "只把網路時間 network 從 0.08 改成 0.088 s（增加百分之十），其餘輸入固定。重算結果應由 0.25 變為 0.258 s。先說明「風門反應時間鏈」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only network time network from 0.08 to 0.088 s (increase by ten percent), holding other inputs fixed. Recalculate 0.25 to 0.258 s. Explain the causal direction for damper-response timing chain, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "通風模式相容狀態~Compatibility of ventilation modes",
+      "title": "通風模式相容狀態~Compatibility of ventilation modes",
+      "mechanism": "本單元檢查正常舒適通風與緊急煙控的模式交接，列出相互矛盾的風門組合而不提供現場操作順序。布林狀態組合隨變數個數指數成長，這說明逐一人工檢查很快失去效率。可達性約束能排除不可能組合，但刪除條件必須有證據；安全性質通常針對所有可達狀態，而非幾個畫面上看起來合理的狀態。解釋前先固定模型適用範圍：未限制的布林笛卡兒積；實際可達狀態通常較少，但需另證明。~Check handover between comfort ventilation and emergency smoke control, listing contradictory damper states without giving field operating sequences. Boolean combinations grow exponentially with variable count, explaining why manual enumeration soon becomes ineffective. Reachability constraints can eliminate impossible combinations, but each exclusion needs justification. Safety properties normally concern every reachable state rather than a few states that look plausible on a display. Before interpreting the result, fix its domain: Unconstrained Boolean Cartesian product; actual reachability can be smaller but must be established separately.",
+      "model": "原創假想教學輸入：布林變數數量 bits=8 bits。公式 y=2**bits，代入得 y=256 states。邊界：未限制的布林笛卡兒積；實際可達狀態通常較少，但需另證明。~Original hypothetical teaching inputs: number of Boolean state variables bits=8 bits. Formula y=2**bits gives y=256 states. Boundary: Unconstrained Boolean Cartesian product; actual reachability can be smaller but must be established separately.",
+      "verify": "用小型模型列舉轉移，再與需求允許的轉移表比較，對被排除狀態留下理由。以「通風模式相容狀態」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Enumerate transitions in a small model, compare against the required transition table, and document reasons for excluded states. For compatibility of ventilation modes, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把感測器故障狀態預先刪掉會讓證明失去關鍵邊界，狀態抽象過粗也可能隱藏時序競爭。回到「通風模式相容狀態」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Excluding sensor-fault states can remove the crucial boundary from a proof; overly coarse abstraction may hide timing races. Trace the input chain for compatibility of ventilation modes. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "狀態變數多一個只會多出一種狀態組合~Adding one Boolean state variable creates only one additional combination.",
+      "practice": "只把布林變數數量 bits 從 8 改成 9 bits（增加一個可計數單位），其餘輸入固定。重算結果應由 256 變為 512 states。先說明「通風模式相容狀態」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only number of Boolean state variables bits from 8 to 9 bits (increase by one whole count), holding other inputs fixed. Recalculate 256 to 512 states. Explain the causal direction for compatibility of ventilation modes, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "不同列車通過情境~Scenarios for different train passages",
+      "title": "不同列車通過情境~Scenarios for different train passages",
+      "mechanism": "本單元分別比較停站、通過與對向列車事件，將車門和旁通開口狀態保留為獨立測試因素。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Compare stopping, through-running and opposing-train events, retaining door and bypass states as independent test factors. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「不同列車通過情境」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For scenarios for different train passages, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「不同列車通過情境」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for scenarios for different train passages. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「不同列車通過情境」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for scenarios for different train passages, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：列車誘導壓力量級採 rho=1.2 kg/m3；本課公式結果 135 Pa，非現場額定值。~Teaching assumption for scale of train-induced pressure: rho=1.2 kg/m3; this model gives 135 Pa, not a field rating.",
+    "教學假設：活塞風斷面積分採 Q=32 m3/s；本課公式結果 2 m/s，非現場額定值。~Teaching assumption for section integration of piston airflow: Q=32 m3/s; this model gives 2 m/s, not a field rating.",
+    "教學假設：旁通開口壓差流量採 Cd=0.65 1；本課公式結果 30.0222 m3/s，非現場額定值。~Teaching assumption for pressure-driven bypass flow: Cd=0.65 1; this model gives 30.0222 m3/s, not a field rating.",
+    "教學假設：風機與活塞作用疊合採 Q=40 m3/s；本課公式結果 34.2857 kW，非現場額定值。~Teaching assumption for fans interacting with piston effects: Q=40 m3/s; this model gives 34.2857 kW, not a field rating.",
+    "教學假設：壓力峰值取樣解析採 f=20 Hz；本課公式結果 50 ms，非現場額定值。~Teaching assumption for sampling resolution for pressure peaks: f=20 Hz; this model gives 50 ms, not a field rating.",
+    "教學假設：列車風壓事件同步採 drift=20 ppm；本課公式結果 0.072 s，非現場額定值。~Teaching assumption for synchronizing train and pressure events: drift=20 ppm; this model gives 0.072 s, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "1991",
+      "event": "一九八五年緊急整備指南於該年重印。~The rail-transit emergency guide originally published in nineteen eighty-five was reprinted."
+    },
+    {
+      "year": "2015",
+      "event": "地下車站旅客流研究報告於該年出版。~A study of underground-station passenger flow was published."
+    },
+    {
+      "year": "2025",
+      "event": "臺灣鐵道車站概念設計指引函頒。~Taiwan issued guidance for conceptual railway-station design."
+    }
+  ],
+  "codes": [
+    "FTA 軌道緊急整備指南，1985 原版及 1991 重印之歷史方法~FTA rail emergency-preparedness guide, original 1985 and 1991 reprint as historical methodology",
+    "臺灣鐵道車站概念設計指引，2025 年版，非跨國統一法規~Taiwan railway-station conceptual-design guidance, 2025 edition, not a universal international code"
+  ],
+  "landmarks": [
+    "臺北車站轉乘系統~Taipei Main Station interchange",
+    "倫敦國王十字車站改建~London Kings Cross station redevelopment"
+  ],
+  "place": {
+    "name": "臺北車站示意地點~Taipei Main Station reference",
+    "country": "臺灣~Taiwan",
+    "lat": 25.0478,
+    "lng": 121.517,
+    "query": "Taipei Main Station"
+  },
+  "sources": [
+    {
+      "key": "fta-emergency",
+      "title": "軌道運輸緊急整備指南",
+      "titleEn": "Rail-transit emergency-preparedness guide",
+      "publisher": "Federal Transit Administration",
+      "url": "https://www.transit.dot.gov/sites/fta.dot.gov/files/docs/repg_rts.pdf",
+      "sourceType": "primary",
+      "scope": "提供緊急整備的歷史方法脈絡；本課數值不是指南的法定疏散限值。",
+      "scopeEn": "Historical emergency-preparedness context; exercise values are not statutory egress limits from the guide."
+    },
+    {
+      "key": "passenger-flow",
+      "title": "地下車站與月台旅客流研究",
+      "titleEn": "Passenger flow in stations and platforms",
+      "publisher": "Mineta Transportation Institute / USDOT repository",
+      "url": "https://rosap.ntl.bts.gov/view/dot/28885",
+      "sourceType": "primary",
+      "scope": "支持旅客流研究的背景與方法方向；所有流率及步速均為原創教學假設。",
+      "scopeEn": "Supports passenger-flow research context; all flow rates and walking speeds are original assumptions."
+    },
+    {
+      "key": "rb-station",
+      "title": "鐵道車站概念設計指引",
+      "titleEn": "Rail-station conceptual-design guidance",
+      "publisher": "交通部鐵道局",
+      "url": "https://www.rb.gov.tw/zh-TW/main/main_71/main_80/main_115/20250916_113536/",
+      "sourceType": "primary",
+      "scope": "支持車站整合設計的官方文件與函頒年代，不宣稱本課簡化算例已符合其全部要求。",
+      "scopeEn": "Supports official station-design guidance and issue year, without claiming complete compliance by simplified exercises."
+    },
+    {
+      "key": "taipei-main-reference",
+      "title": "臺北車站官方資訊圖",
+      "titleEn": "Official Taipei Main Station information map",
+      "publisher": "Taipei Rapid Transit Corporation",
+      "url": "https://web.metro.taipei/img/ALL/INFOPDF/051.pdf",
+      "sourceType": "primary",
+      "scope": "支持車站存在及轉乘背景，不複製圖像或宣稱本課為實際車站模型。",
+      "scopeEn": "Supports station identity and interchange context; the map is not copied and this is not an actual station model."
+    },
+    {
+      "key": "kings-cross-reference",
+      "title": "國王十字車站官方歷史",
+      "titleEn": "Official history of Kings Cross station",
+      "publisher": "Network Rail",
+      "url": "https://www.networkrail.co.uk/who-we-are/our-history/iconic-infrastructure/the-history-of-london-kings-cross-station/",
+      "sourceType": "primary",
+      "scope": "支持車站整合與改建工程背景，不引用客流量或允收值。",
+      "scopeEn": "Supports station integration and redevelopment context, without importing passenger flows or acceptance limits."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "臺北捷運公司",
+      "nameEn": "Taipei Rapid Transit Corporation",
+      "business": "捷運車站與列車營運",
+      "businessEn": "Metro station and train operation",
+      "url": "https://www.metro.taipei/",
+      "role": "營運工程參考機構，未宣稱本課是其設計",
+      "roleEn": "Operating reference organization; this is not represented as its design",
+      "security": null
+    },
+    {
+      "name": "英國鐵路網公司",
+      "nameEn": "Network Rail",
+      "business": "鐵路基礎設施與車站",
+      "businessEn": "Railway infrastructure and stations",
+      "url": "https://www.networkrail.co.uk/",
+      "role": "車站整合背景，無本課虛構採購關係",
+      "roleEn": "Station-integration context with no fictional procurement claim",
+      "security": null
+    }
+  ],
+  "related": [
+    "b385",
+    "b387"
+  ],
+  "architectureNodes": [
+    [
+      "列車通過",
+      "Train passage"
+    ],
+    [
+      "隧道空氣",
+      "Tunnel air"
+    ],
+    [
+      "旁通開口",
+      "Bypass opening"
+    ],
+    [
+      "月台門壓力",
+      "Platform door pressure"
+    ],
+    [
+      "同步量測",
+      "Synchronized measurement"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "id": "b340",
+  "title": "長焊鋼軌應力放散~Stress neutralization of continuously welded rail",
+  "discipline": "rail-track",
+  "family": "track",
+  "focus": "連續焊軌中性溫度約束與位移證據~Neutral temperature restraint and displacement evidence in welded rail",
+  "summary": "長焊鋼軌應力放散以「連續焊軌中性溫度約束與位移證據」為主線，將十個物理或系統問題拆成機制、計算、驗證與診斷。連續鋼軌的熱伸縮被扣件與道床約束，軌溫與應力自由溫度的差才是熱力判斷的起點；軌道橫向阻力及初始不整也影響穩定性。每個單元附帶可重算的假想數據與敏感度，學員需提交帶單位的工作表、可區分失效的證據及模型邊界。~This course develops neutral temperature restraint and displacement evidence in welded rail through ten physical or systems questions, each studied through mechanism, calculation, verification and diagnosis. Fastenings and ballast restrain thermal rail movement; the difference between rail temperature and stress-free temperature starts the force assessment, while lateral resistance and initial misalignment also govern stability. Every unit contains reproducible assumed inputs and a sensitivity calculation. Learners submit a worksheet with units, discriminating evidence for failures, and explicit model boundaries.",
+  "history": "本課把長焊鋼軌應力放散放在可追溯的技術演進脈絡中，不把機構研究、規範出版與個別路線通車混為一談。連續鋼軌的熱伸縮被扣件與道床約束，軌溫與應力自由溫度的差才是熱力判斷的起點；軌道橫向阻力及初始不整也影響穩定性。下列年代欄是工程事件、相關研究或規範出版節點；除明確標明實際工程事件者外，並非本專題設備的製造或投入營運日期。工程改進的判準是能否以量測區分假說，不能只依新舊設備外觀判斷。~The course places Stress neutralization of continuously welded rail in a traceable engineering context and distinguishes institutional research, standards publication and the opening of individual lines. Fastenings and ballast restrain thermal rail movement; the difference between rail temperature and stress-free temperature starts the force assessment, while lateral resistance and initial misalignment also govern stability. The timeline identifies engineering events, relevant research and standards-publication milestones. Unless explicitly labelled as a project event, a date is not the manufacture or commissioning date of the equipment. Improvement is assessed by whether measurements distinguish hypotheses, rather than by the apparent age of machinery.",
+  "example": "以下為跨單元的原創假想工作表。先用第一單元定義邊界與單位，再以第二單元檢查另一個控制量，最後用第三單元提出前兩式未涵蓋的另一個檢查問題。原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, L=100 m, dT=20 K；y=alpha*L*dT*1000=23 mm。只把 alpha 增加百分之十，y=25.3 mm。模型邊界：均勻軌溫、定熱膨脹係數及無軸向約束；忽略溫度梯度；上式只代表本單元明列項，不把它視為完整驗證。 原創假想算例，輸入不是現場操作值：E=210 GPa, alpha=0.0000115 1/K, dT=25 K；y=E*1000*alpha*dT=60.375 MPa。只把 E 增加百分之十，y=66.4125 MPa。模型邊界：線彈性桿完全軸向約束；結果為應力大小，升溫為壓縮、降溫為拉伸；上式只代表本單元明列項，不把它視為完整驗證。把兩個算例的單一輸入敏感度放在同一張決策表，說明哪個變化最值得先量測；不可把不同物理量的裸數字直接比較，也不可把任一結果當成實際設備的設計、施工或營運許可。~This original worksheet connects the first three units using assumed inputs. Establish boundaries and units with the first unit, examine another controlling quantity with the second, and use the third to pose a separate check outside the first two equations. Original assumed example, not field operating values: alpha=0.0000115 1/K, L=100 m, dT=20 K; y=alpha*L*dT*1000=23 mm. Increasing only alpha with a ten-percent increase gives y=25.3 mm. Boundary: Uniform rail temperature, constant expansion coefficient and no axial restraint; temperature gradients are omitted; this equation represents only the explicitly listed term and is not a complete verification. Original assumed example, not field operating values: E=210 GPa, alpha=0.0000115 1/K, dT=25 K; y=E*1000*alpha*dT=60.375 MPa. Increasing only E with a ten-percent increase gives y=66.4125 MPa. Boundary: A fully axially restrained elastic bar; the result is stress magnitude, compressive for heating and tensile for cooling; this equation represents only the explicitly listed term and is not a complete verification.Put both single-input sensitivities in one decision table and explain which change most deserves measurement. Do not compare bare numbers with different physical dimensions, and do not treat any result as design approval, a construction procedure or operating permission.",
+  "units": [
+    {
+      "anchor": "自由鋼軌伸長~Free rail expansion",
+      "title": "自由鋼軌伸長~Free rail expansion",
+      "mechanism": "無約束鋼軌可以以長度變化釋放熱應變。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 25.3 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻軌溫、定熱膨脹係數及無軸向約束；忽略溫度梯度。使用軌溫和端部位移作量測證據，才能檢查方程是否對應此處的實際物理量；局部卡阻會破壞自由伸長假設，因此應把該原因與量測偏差分開。~Unrestrained rail releases thermal strain through a change in length. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 25.3 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform rail temperature, constant expansion coefficient and no axial restraint; temperature gradients are omitted. Use rail temperature and endpoint displacement as measurement evidence that the equation represents the intended physical quantity. Local binding invalidates free-expansion behavior; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, L=100 m, dT=20 K；y=alpha*L*dT*1000=23 mm。只把 alpha 增加百分之十，y=25.3 mm。模型邊界：均勻軌溫、定熱膨脹係數及無軸向約束；忽略溫度梯度；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.0000115 1/K, L=100 m, dT=20 K; y=alpha*L*dT*1000=23 mm. Increasing only alpha with a ten-percent increase gives y=25.3 mm. Boundary: Uniform rail temperature, constant expansion coefficient and no axial restraint; temperature gradients are omitted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以軌溫和端部位移區分模型與觀察，先用模型鋼條兩端位移計、標距及多點溫度紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「自由鋼軌伸長」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use rail temperature and endpoint displacement to distinguish the model from observation in this unit. Establish a baseline using model-bar endpoint displacement gauges, gauge length and distributed temperature records, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Free rail expansion. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "局部卡阻會破壞自由伸長假設。這個失效與「自由鋼軌伸長」的量測偏差可能產生相似表象，因此必須同時檢查軌溫和端部位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Local binding invalidates free-expansion behavior. This failure and a measurement bias in Free rail expansion can produce similar symptoms. Cross-check rail temperature and endpoint displacement rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：局部卡阻會破壞自由伸長假設~This unit cannot exhibit the following failure: Local binding invalidates free-expansion behavior.",
+      "practice": "重算「自由鋼軌伸長」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻軌溫、定熱膨脹係數及無軸向約束；忽略溫度梯度如何限制結論。接著設計一組符合模型及一組由局部卡阻會破壞自由伸長假設造成偏離的合成觀察，以軌溫和端部位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Free rail expansion, plot the input-output relationship, and explain the limiting assumption: Uniform rail temperature, constant expansion coefficient and no axial restraint; temperature gradients are omitted. Construct one synthetic observation consistent with the model and another affected by this failure: Local binding invalidates free-expansion behavior. Explain which evidence in rail temperature and endpoint displacement distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "全約束熱應力~Fully restrained thermal stress",
+      "title": "全約束熱應力~Fully restrained thermal stress",
+      "mechanism": "完全約束下軸向熱應變轉成應力。本模型把 E 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 66.4125 MPa。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。線彈性桿完全軸向約束；結果為應力大小，升溫為壓縮、降溫為拉伸。使用軌溫與可追溯應變作量測證據，才能檢查方程是否對應此處的實際物理量；中性溫度估錯會讓應力估計整體偏移，因此應把該原因與量測偏差分開。~Full axial restraint converts thermal strain into stress. In this model, E is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 66.4125 MPa. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. A fully axially restrained elastic bar; the result is stress magnitude, compressive for heating and tensile for cooling. Use rail temperature and traceable strain as measurement evidence that the equation represents the intended physical quantity. Incorrect neutral temperature shifts the full stress estimate; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：E=210 GPa, alpha=0.0000115 1/K, dT=25 K；y=E*1000*alpha*dT=60.375 MPa。只把 E 增加百分之十，y=66.4125 MPa。模型邊界：線彈性桿完全軸向約束；結果為應力大小，升溫為壓縮、降溫為拉伸；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: E=210 GPa, alpha=0.0000115 1/K, dT=25 K; y=E*1000*alpha*dT=60.375 MPa. Increasing only E with a ten-percent increase gives y=66.4125 MPa. Boundary: A fully axially restrained elastic bar; the result is stress magnitude, compressive for heating and tensile for cooling; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以軌溫與可追溯應變區分模型與觀察，先用合成約束力、截面面積、補償應變與軌溫時間序列建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「全約束熱應力」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use rail temperature and traceable strain to distinguish the model from observation in this unit. Establish a baseline using synthetic restraint force, area, compensated strain and rail-temperature histories, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Fully restrained thermal stress. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "中性溫度估錯會讓應力估計整體偏移。這個失效與「全約束熱應力」的量測偏差可能產生相似表象，因此必須同時檢查軌溫與可追溯應變，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Incorrect neutral temperature shifts the full stress estimate. This failure and a measurement bias in Fully restrained thermal stress can produce similar symptoms. Cross-check rail temperature and traceable strain rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：中性溫度估錯會讓應力估計整體偏移~This unit cannot exhibit the following failure: Incorrect neutral temperature shifts the full stress estimate.",
+      "practice": "重算「全約束熱應力」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出線彈性桿完全軸向約束；結果為應力大小，升溫為壓縮、降溫為拉伸如何限制結論。接著設計一組符合模型及一組由中性溫度估錯會讓應力估計整體偏移造成偏離的合成觀察，以軌溫與可追溯應變說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Fully restrained thermal stress, plot the input-output relationship, and explain the limiting assumption: A fully axially restrained elastic bar; the result is stress magnitude, compressive for heating and tensile for cooling. Construct one synthetic observation consistent with the model and another affected by this failure: Incorrect neutral temperature shifts the full stress estimate. Explain which evidence in rail temperature and traceable strain distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "熱軸力換算~Thermal axial-force conversion",
+      "title": "熱軸力換算~Thermal axial-force conversion",
+      "mechanism": "軸力等於平均應力乘有效斷面，左右兩軌須分別核對。本模型把 sigma 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 501.6 kN。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。應力沿有效斷面均勻；只算單根鋼軌的軸力。使用斷面損耗與軸向應變作量測證據，才能檢查方程是否對應此處的實際物理量；磨耗斷面仍沿用新軌面積會誤算軸力，因此應把該原因與量測偏差分開。~Axial force equals mean stress times effective area, with each rail checked separately. In this model, sigma is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 501.6 kN. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Stress is uniform over the effective section; force is for one rail only. Use section loss and axial strain as measurement evidence that the equation represents the intended physical quantity. Using new-rail area for worn rail miscalculates force; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：sigma=60 MPa, A=7600 mm2；y=sigma*A/1000=456 kN。只把 sigma 增加百分之十，y=501.6 kN。模型邊界：應力沿有效斷面均勻；只算單根鋼軌的軸力；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: sigma=60 MPa, A=7600 mm2; y=sigma*A/1000=456 kN. Increasing only sigma with a ten-percent increase gives y=501.6 kN. Boundary: Stress is uniform over the effective section; force is for one rail only; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以斷面損耗與軸向應變區分模型與觀察，先用模型截面尺寸、磨耗面積及多位置軸向應變建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「熱軸力換算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use section loss and axial strain to distinguish the model from observation in this unit. Establish a baseline using model section dimensions, worn area and axial strain at multiple locations, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Thermal axial-force conversion. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "磨耗斷面仍沿用新軌面積會誤算軸力。這個失效與「熱軸力換算」的量測偏差可能產生相似表象，因此必須同時檢查斷面損耗與軸向應變，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Using new-rail area for worn rail miscalculates force. This failure and a measurement bias in Thermal axial-force conversion can produce similar symptoms. Cross-check section loss and axial strain rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：磨耗斷面仍沿用新軌面積會誤算軸力~This unit cannot exhibit the following failure: Using new-rail area for worn rail miscalculates force.",
+      "practice": "重算「熱軸力換算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出應力沿有效斷面均勻；只算單根鋼軌的軸力如何限制結論。接著設計一組符合模型及一組由磨耗斷面仍沿用新軌面積會誤算軸力造成偏離的合成觀察，以斷面損耗與軸向應變說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Thermal axial-force conversion, plot the input-output relationship, and explain the limiting assumption: Stress is uniform over the effective section; force is for one rail only. Construct one synthetic observation consistent with the model and another affected by this failure: Using new-rail area for worn rail miscalculates force. Explain which evidence in section loss and axial strain distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "軌溫量測誤差~Rail-temperature error propagation",
+      "title": "軌溫量測誤差~Rail-temperature error propagation",
+      "mechanism": "溫度誤差經彈性係數直接傳到熱應力估計。本模型把 E 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 5.313 MPa。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。只傳播軌溫誤差；彈性係數、熱膨脹係數及約束皆視為已知。使用兩種接觸式溫度量測作量測證據，才能檢查方程是否對應此處的實際物理量；單側日照造成的溫差會讓表面溫度失去代表性，因此應把該原因與量測偏差分開。~Temperature error propagates through stiffness into thermal-stress estimation. In this model, E is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 5.313 MPa. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Only rail-temperature error is propagated; modulus, expansion coefficient and restraint are treated as known. Use two contact-temperature measurements as measurement evidence that the equation represents the intended physical quantity. One-sided sunshine makes a surface temperature unrepresentative; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：E=210 GPa, alpha=0.0000115 1/K, uT=2 K；y=E*1000*alpha*uT=4.83 MPa。只把 E 增加百分之十，y=5.313 MPa。模型邊界：只傳播軌溫誤差；彈性係數、熱膨脹係數及約束皆視為已知；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: E=210 GPa, alpha=0.0000115 1/K, uT=2 K; y=E*1000*alpha*uT=4.83 MPa. Increasing only E with a ten-percent increase gives y=5.313 MPa. Boundary: Only rail-temperature error is propagated; modulus, expansion coefficient and restraint are treated as known; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以兩種接觸式溫度量測區分模型與觀察，先用同步雙溫度計、溫度校準紀錄及合成應力估計建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「軌溫量測誤差」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use two contact-temperature measurements to distinguish the model from observation in this unit. Establish a baseline using paired synchronous thermometers, calibration records and synthetic stress estimates, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Rail-temperature error propagation. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "單側日照造成的溫差會讓表面溫度失去代表性。這個失效與「軌溫量測誤差」的量測偏差可能產生相似表象，因此必須同時檢查兩種接觸式溫度量測，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~One-sided sunshine makes a surface temperature unrepresentative. This failure and a measurement bias in Rail-temperature error propagation can produce similar symptoms. Cross-check two contact-temperature measurements rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：單側日照造成的溫差會讓表面溫度失去代表性~This unit cannot exhibit the following failure: One-sided sunshine makes a surface temperature unrepresentative.",
+      "practice": "重算「軌溫量測誤差」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出只傳播軌溫誤差；彈性係數、熱膨脹係數及約束皆視為已知如何限制結論。接著設計一組符合模型及一組由單側日照造成的溫差會讓表面溫度失去代表性造成偏離的合成觀察，以兩種接觸式溫度量測說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Rail-temperature error propagation, plot the input-output relationship, and explain the limiting assumption: Only rail-temperature error is propagated; modulus, expansion coefficient and restraint are treated as known. Construct one synthetic observation consistent with the model and another affected by this failure: One-sided sunshine makes a surface temperature unrepresentative. Explain which evidence in two contact-temperature measurements distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "扣件阻力累積~Fastening resistance accumulation",
+      "title": "扣件阻力累積~Fastening resistance accumulation",
+      "mechanism": "均勻分布縱向阻力積分後形成可傳遞軸力的量級。本模型把 r 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 264 kN。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。全長均勻且已動員的縱向阻力；不是未滑移狀態的彈性剛度。使用沿線相對滑移作量測證據，才能檢查方程是否對應此處的實際物理量；把滑動後阻力視為初始彈性剛度會混淆機制，因此應把該原因與量測偏差分開。~Integrating uniform longitudinal resistance gives a transferable-force scale. In this model, r is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 264 kN. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Uniform longitudinal resistance is fully mobilized along the length; it is not pre-slip elastic stiffness. Use relative slip along the line as measurement evidence that the equation represents the intended physical quantity. Confusing post-slip resistance with initial elastic stiffness mixes mechanisms; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：r=8 kN/m, L=30 m；y=r*L=240 kN。只把 r 增加百分之十，y=264 kN。模型邊界：全長均勻且已動員的縱向阻力；不是未滑移狀態的彈性剛度；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: r=8 kN/m, L=30 m; y=r*L=240 kN. Increasing only r with a ten-percent increase gives y=264 kN. Boundary: Uniform longitudinal resistance is fully mobilized along the length; it is not pre-slip elastic stiffness; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以沿線相對滑移區分模型與觀察，先用多段模型滑移量與相對應縱向反力建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「扣件阻力累積」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use relative slip along the line to distinguish the model from observation in this unit. Establish a baseline using segment-by-segment model slip and corresponding longitudinal reactions, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Fastening resistance accumulation. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "把滑動後阻力視為初始彈性剛度會混淆機制。這個失效與「扣件阻力累積」的量測偏差可能產生相似表象，因此必須同時檢查沿線相對滑移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Confusing post-slip resistance with initial elastic stiffness mixes mechanisms. This failure and a measurement bias in Fastening resistance accumulation can produce similar symptoms. Cross-check relative slip along the line rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：把滑動後阻力視為初始彈性剛度會混淆機制~This unit cannot exhibit the following failure: Confusing post-slip resistance with initial elastic stiffness mixes mechanisms.",
+      "practice": "重算「扣件阻力累積」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出全長均勻且已動員的縱向阻力；不是未滑移狀態的彈性剛度如何限制結論。接著設計一組符合模型及一組由把滑動後阻力視為初始彈性剛度會混淆機制造成偏離的合成觀察，以沿線相對滑移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Fastening resistance accumulation, plot the input-output relationship, and explain the limiting assumption: Uniform longitudinal resistance is fully mobilized along the length; it is not pre-slip elastic stiffness. Construct one synthetic observation consistent with the model and another affected by this failure: Confusing post-slip resistance with initial elastic stiffness mixes mechanisms. Explain which evidence in relative slip along the line distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "溫差等效位移~Temperature-equivalent displacement",
+      "title": "溫差等效位移~Temperature-equivalent displacement",
+      "mechanism": "等效熱位移只能在指定長度與邊界下解讀。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 12.144 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。同一已知標距的自由熱位移；不把它視為有約束鋼軌的實際位移。使用標距及基準端點作量測證據，才能檢查方程是否對應此處的實際物理量；標距縮短後沿用原位移會放大推算溫差，因此應把該原因與量測偏差分開。~Equivalent thermal movement is meaningful only for the stated length and boundaries. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 12.144 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Free thermal movement over a known gauge length; it is not actual movement of a restrained rail. Use gauge length and reference endpoints as measurement evidence that the equation represents the intended physical quantity. Using the old displacement with a shorter gauge exaggerates inferred temperature change; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, L=80 m, dT=12 K；y=alpha*L*dT*1000=11.04 mm。只把 alpha 增加百分之十，y=12.144 mm。模型邊界：同一已知標距的自由熱位移；不把它視為有約束鋼軌的實際位移；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.0000115 1/K, L=80 m, dT=12 K; y=alpha*L*dT*1000=11.04 mm. Increasing only alpha with a ten-percent increase gives y=12.144 mm. Boundary: Free thermal movement over a known gauge length; it is not actual movement of a restrained rail; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以標距及基準端點區分模型與觀察，先用固定基準標記、模型標距及平均鋼條溫度建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「溫差等效位移」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use gauge length and reference endpoints to distinguish the model from observation in this unit. Establish a baseline using fixed reference markers, model gauge length and mean bar temperature, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Temperature-equivalent displacement. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "標距縮短後沿用原位移會放大推算溫差。這個失效與「溫差等效位移」的量測偏差可能產生相似表象，因此必須同時檢查標距及基準端點，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Using the old displacement with a shorter gauge exaggerates inferred temperature change. This failure and a measurement bias in Temperature-equivalent displacement can produce similar symptoms. Cross-check gauge length and reference endpoints rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：標距縮短後沿用原位移會放大推算溫差~This unit cannot exhibit the following failure: Using the old displacement with a shorter gauge exaggerates inferred temperature change.",
+      "practice": "重算「溫差等效位移」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出同一已知標距的自由熱位移；不把它視為有約束鋼軌的實際位移如何限制結論。接著設計一組符合模型及一組由標距縮短後沿用原位移會放大推算溫差造成偏離的合成觀察，以標距及基準端點說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Temperature-equivalent displacement, plot the input-output relationship, and explain the limiting assumption: Free thermal movement over a known gauge length; it is not actual movement of a restrained rail. Construct one synthetic observation consistent with the model and another affected by this failure: Using the old displacement with a shorter gauge exaggerates inferred temperature change. Explain which evidence in gauge length and reference endpoints distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "中性溫差反算~Neutral-temperature difference inversion",
+      "title": "中性溫差反算~Neutral-temperature difference inversion",
+      "mechanism": "應變反算溫差必須先分離機械與熱補償項。本模型把 strain 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 11 K。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。應變是已分離機械載重的熱等效大小；只能反算溫差大小，不能單獨定出中性溫度。使用補償應變計與獨立溫度作量測證據，才能檢查方程是否對應此處的實際物理量；儀器熱漂移會被誤認為中性溫度改變，因此應把該原因與量測偏差分開。~Inferring temperature difference from strain requires separating mechanical strain and temperature compensation. In this model, strain is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 11 K. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Strain is an isolated thermal-equivalent magnitude; inversion yields a temperature-difference magnitude, not neutral temperature by itself. Use compensated strain gauges and independent temperature as measurement evidence that the equation represents the intended physical quantity. Instrument thermal drift can resemble a neutral-temperature change; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：strain=0.000115 1, alpha=0.0000115 1/K；y=strain/alpha=10 K。只把 strain 增加百分之十，y=11 K。模型邊界：應變是已分離機械載重的熱等效大小；只能反算溫差大小，不能單獨定出中性溫度；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: strain=0.000115 1, alpha=0.0000115 1/K; y=strain/alpha=10 K. Increasing only strain with a ten-percent increase gives y=11 K. Boundary: Strain is an isolated thermal-equivalent magnitude; inversion yields a temperature-difference magnitude, not neutral temperature by itself; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以補償應變計與獨立溫度區分模型與觀察，先用已知約束的合成應變、獨立溫度及熱漂移零點紀錄建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「中性溫差反算」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use compensated strain gauges and independent temperature to distinguish the model from observation in this unit. Establish a baseline using synthetic strain with known restraint, independent temperature and thermal-drift zero records, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Neutral-temperature difference inversion. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "儀器熱漂移會被誤認為中性溫度改變。這個失效與「中性溫差反算」的量測偏差可能產生相似表象，因此必須同時檢查補償應變計與獨立溫度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Instrument thermal drift can resemble a neutral-temperature change. This failure and a measurement bias in Neutral-temperature difference inversion can produce similar symptoms. Cross-check compensated strain gauges and independent temperature rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：儀器熱漂移會被誤認為中性溫度改變~This unit cannot exhibit the following failure: Instrument thermal drift can resemble a neutral-temperature change.",
+      "practice": "重算「中性溫差反算」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出應變是已分離機械載重的熱等效大小；只能反算溫差大小，不能單獨定出中性溫度如何限制結論。接著設計一組符合模型及一組由儀器熱漂移會被誤認為中性溫度改變造成偏離的合成觀察，以補償應變計與獨立溫度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Neutral-temperature difference inversion, plot the input-output relationship, and explain the limiting assumption: Strain is an isolated thermal-equivalent magnitude; inversion yields a temperature-difference magnitude, not neutral temperature by itself. Construct one synthetic observation consistent with the model and another affected by this failure: Instrument thermal drift can resemble a neutral-temperature change. Explain which evidence in compensated strain gauges and independent temperature distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "截面溫度梯度~Cross-section temperature curvature",
+      "title": "截面溫度梯度~Cross-section temperature curvature",
+      "mechanism": "線性溫度梯度可形成自由熱曲率，平均溫度不含這項資訊。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 0.000595294 1/m。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。軌高方向線性溫差、均勻材料且自由彎曲；忽略軸向及彎曲約束。使用軌頭與軌底溫度作量測證據，才能檢查方程是否對應此處的實際物理量；平均溫度正常仍可能有差異熱彎曲，因此應把該原因與量測偏差分開。~A linear thermal gradient creates free thermal curvature that mean temperature does not describe. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 0.000595294 1/m. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Linear temperature difference through rail height, uniform material and free bending; axial and bending restraints are omitted. Use rail-head and rail-foot temperatures as measurement evidence that the equation represents the intended physical quantity. A normal mean temperature can coexist with differential thermal bending; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, dT=8 K, h=0.17 m；y=alpha*dT/h=0.000541176 1/m。只把 alpha 增加百分之十，y=0.000595294 1/m。模型邊界：軌高方向線性溫差、均勻材料且自由彎曲；忽略軸向及彎曲約束；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.0000115 1/K, dT=8 K, h=0.17 m; y=alpha*dT/h=0.000541176 1/m. Increasing only alpha with a ten-percent increase gives y=0.000595294 1/m. Boundary: Linear temperature difference through rail height, uniform material and free bending; axial and bending restraints are omitted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以軌頭與軌底溫度區分模型與觀察，先用模型軌頭軌底溫度對及彎曲形狀量測建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「截面溫度梯度」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use rail-head and rail-foot temperatures to distinguish the model from observation in this unit. Establish a baseline using paired model head-foot temperatures and measured curvature profile, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Cross-section temperature curvature. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "平均溫度正常仍可能有差異熱彎曲。這個失效與「截面溫度梯度」的量測偏差可能產生相似表象，因此必須同時檢查軌頭與軌底溫度，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A normal mean temperature can coexist with differential thermal bending. This failure and a measurement bias in Cross-section temperature curvature can produce similar symptoms. Cross-check rail-head and rail-foot temperatures rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：平均溫度正常仍可能有差異熱彎曲~This unit cannot exhibit the following failure: A normal mean temperature can coexist with differential thermal bending.",
+      "practice": "重算「截面溫度梯度」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出軌高方向線性溫差、均勻材料且自由彎曲；忽略軸向及彎曲約束如何限制結論。接著設計一組符合模型及一組由平均溫度正常仍可能有差異熱彎曲造成偏離的合成觀察，以軌頭與軌底溫度說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Cross-section temperature curvature, plot the input-output relationship, and explain the limiting assumption: Linear temperature difference through rail height, uniform material and free bending; axial and bending restraints are omitted. Construct one synthetic observation consistent with the model and another affected by this failure: A normal mean temperature can coexist with differential thermal bending. Explain which evidence in rail-head and rail-foot temperatures distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "彈性釋放位移~Elastic release displacement",
+      "title": "彈性釋放位移~Elastic release displacement",
+      "mechanism": "軸向彈性位移由軸力、長度與軸向剛度共同決定。本模型把 F 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 10.3383 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。均勻線彈性桿及固定面積；位移不含支承滑移、塑性或裂縫。使用模型載入卸載位移作量測證據，才能檢查方程是否對應此處的實際物理量；支承滑移會使量到的位移不再全是彈性伸長，因此應把該原因與量測偏差分開。~Axial elastic movement depends on force, length and axial rigidity. In this model, F is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 10.3383 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. A uniform elastic bar with constant area; displacement excludes support slip, plasticity and cracking. Use loading-unloading movement in the model as measurement evidence that the equation represents the intended physical quantity. Support slip means measured movement is not wholly elastic; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：F=300 kN, L=50 m, E=210 GPa, A=7600 mm2；y=F*1000*L/(E*1e9*A*1e-6)*1000=9.3985 mm。只把 F 增加百分之十，y=10.3383 mm。模型邊界：均勻線彈性桿及固定面積；位移不含支承滑移、塑性或裂縫；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: F=300 kN, L=50 m, E=210 GPa, A=7600 mm2; y=F*1000*L/(E*1e9*A*1e-6)*1000=9.3985 mm. Increasing only F with a ten-percent increase gives y=10.3383 mm. Boundary: A uniform elastic bar with constant area; displacement excludes support slip, plasticity and cracking; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以模型載入卸載位移區分模型與觀察，先用低載模型力計、兩端相對位移及卸載回復曲線建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「彈性釋放位移」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use loading-unloading movement in the model to distinguish the model from observation in this unit. Establish a baseline using low-load model force gauge, relative endpoint displacement and unloading recovery, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Elastic release displacement. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "支承滑移會使量到的位移不再全是彈性伸長。這個失效與「彈性釋放位移」的量測偏差可能產生相似表象，因此必須同時檢查模型載入卸載位移，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~Support slip means measured movement is not wholly elastic. This failure and a measurement bias in Elastic release displacement can produce similar symptoms. Cross-check loading-unloading movement in the model rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：支承滑移會使量到的位移不再全是彈性伸長~This unit cannot exhibit the following failure: Support slip means measured movement is not wholly elastic.",
+      "practice": "重算「彈性釋放位移」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出均勻線彈性桿及固定面積；位移不含支承滑移、塑性或裂縫如何限制結論。接著設計一組符合模型及一組由支承滑移會使量到的位移不再全是彈性伸長造成偏離的合成觀察，以模型載入卸載位移說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Elastic release displacement, plot the input-output relationship, and explain the limiting assumption: A uniform elastic bar with constant area; displacement excludes support slip, plasticity and cracking. Construct one synthetic observation consistent with the model and another affected by this failure: Support slip means measured movement is not wholly elastic. Explain which evidence in loading-unloading movement in the model distinguishes them, keeping units and justified significant figures throughout."
+    },
+    {
+      "anchor": "軌斷缺口量級~Broken-rail gap scale",
+      "title": "軌斷缺口量級~Broken-rail gap scale",
+      "mechanism": "釋放長度與溫差共同決定簡化缺口量級。本模型把 alpha 當成主動改變的輸入，其餘輸入固定；當它增加百分之十，輸出增加為 15.18 mm。這個比較描述明列方程的局部敏感度，不能把相關變數也一起改變後仍稱為相同測試。長度是缺口兩側的總等效釋放長度；忽略分布摩擦與斷裂動態。使用缺口附近位移剖面作量測證據，才能檢查方程是否對應此處的實際物理量；只以缺口大小推算整條線軌應力並不唯一，因此應把該原因與量測偏差分開。~Released length and temperature difference jointly determine a reduced gap scale. In this model, alpha is deliberately changed while every other input is held fixed. A ten-percent increase means the output increases to 15.18 mm. This comparison describes the sensitivity of the stated equation; changing correlated variables at the same time would be a different experiment. Length is the total effective released length on both sides of a gap; distributed friction and fracture dynamics are omitted. Use displacement profile near a gap as measurement evidence that the equation represents the intended physical quantity. A gap size does not uniquely determine stress along an entire line; separate that causal mechanism from bias in the measurement chain.",
+      "model": "原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, L=40 m, dT=30 K；y=alpha*L*dT*1000=13.8 mm。只把 alpha 增加百分之十，y=15.18 mm。模型邊界：長度是缺口兩側的總等效釋放長度；忽略分布摩擦與斷裂動態；上式只代表本單元明列項，不把它視為完整驗證。~Original assumed example, not field operating values: alpha=0.0000115 1/K, L=40 m, dT=30 K; y=alpha*L*dT*1000=13.8 mm. Increasing only alpha with a ten-percent increase gives y=15.18 mm. Boundary: Length is the total effective released length on both sides of a gap; distributed friction and fracture dynamics are omitted; this equation represents only the explicitly listed term and is not a complete verification.",
+      "verify": "本單元以缺口附近位移剖面區分模型與觀察，先用合成缺口位移剖面、溫差及明列的兩側有效長度建立基準，再保留相同量測位置與工況重複比較。將輸入表與輸出表分開保存，記下校正、解析度及時間戳記；至少改變一個輸入並保持其餘條件，檢查結果方向是否符合「軌斷缺口量級」的方程。殘差超出事先設定的教學容差時，先查單位與量測鏈，再查省略的物理項。~Use displacement profile near a gap to distinguish the model from observation in this unit. Establish a baseline using synthetic gap-displacement profile, temperature difference and declared effective lengths on both sides, then repeat at the same locations and conditions. Keep input and output records separate, recording calibration, resolution and timestamps. Change one input while holding others fixed and check the trend predicted by Broken-rail gap scale. When residuals exceed a predefined teaching tolerance, examine units and the measurement chain before attributing the difference to omitted physics.",
+      "failure": "只以缺口大小推算整條線軌應力並不唯一。這個失效與「軌斷缺口量級」的量測偏差可能產生相似表象，因此必須同時檢查缺口附近位移剖面，不能只靠一個合成指標判定原因。若資料無法區分兩種假說，結論應保留未確定狀態，並提出下一項可推翻假說的獨立測試。~A gap size does not uniquely determine stress along an entire line. This failure and a measurement bias in Broken-rail gap scale can produce similar symptoms. Cross-check displacement profile near a gap rather than diagnosing from one aggregate score. If the available observations cannot distinguish the hypotheses, retain an unresolved conclusion and specify an independent test that could falsify one explanation. Repeating the same biased sensor is not independent confirmation.",
+      "misconception": "本單元絕不可能出現這種失效：只以缺口大小推算整條線軌應力並不唯一~This unit cannot exhibit the following failure: A gap size does not uniquely determine stress along an entire line.",
+      "practice": "重算「軌斷缺口量級」的基準與所列單一輸入變動案例，畫出輸入至輸出的關係，並寫出長度是缺口兩側的總等效釋放長度；忽略分布摩擦與斷裂動態如何限制結論。接著設計一組符合模型及一組由只以缺口大小推算整條線軌應力並不唯一造成偏離的合成觀察，以缺口附近位移剖面說明哪個證據能分辨兩者，保留單位及有效位數。~Recalculate the baseline and specified single-input perturbation for Broken-rail gap scale, plot the input-output relationship, and explain the limiting assumption: Length is the total effective released length on both sides of a gap; distributed friction and fracture dynamics are omitted. Construct one synthetic observation consistent with the model and another affected by this failure: A gap size does not uniquely determine stress along an entire line. Explain which evidence in displacement profile near a gap distinguishes them, keeping units and justified significant figures throughout."
+    }
+  ],
+  "facts": [
+    "教學單元1的基準量級：原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, L=100 m, dT=20 K；y=alpha*L*dT*1000=23 mm~Teaching unit 1 baseline scale: Original assumed example, not field operating values: alpha=0.0000115 1/K, L=100 m, dT=20 K; y=alpha*L*dT*1000=23 mm.",
+    "教學單元2的基準量級：原創假想算例，輸入不是現場操作值：E=210 GPa, alpha=0.0000115 1/K, dT=25 K；y=E*1000*alpha*dT=60.375 MPa~Teaching unit 2 baseline scale: Original assumed example, not field operating values: E=210 GPa, alpha=0.0000115 1/K, dT=25 K; y=E*1000*alpha*dT=60.375 MPa.",
+    "教學單元3的基準量級：原創假想算例，輸入不是現場操作值：sigma=60 MPa, A=7600 mm2；y=sigma*A/1000=456 kN~Teaching unit 3 baseline scale: Original assumed example, not field operating values: sigma=60 MPa, A=7600 mm2; y=sigma*A/1000=456 kN.",
+    "教學單元4的基準量級：原創假想算例，輸入不是現場操作值：E=210 GPa, alpha=0.0000115 1/K, uT=2 K；y=E*1000*alpha*uT=4.83 MPa~Teaching unit 4 baseline scale: Original assumed example, not field operating values: E=210 GPa, alpha=0.0000115 1/K, uT=2 K; y=E*1000*alpha*uT=4.83 MPa.",
+    "教學單元5的基準量級：原創假想算例，輸入不是現場操作值：r=8 kN/m, L=30 m；y=r*L=240 kN~Teaching unit 5 baseline scale: Original assumed example, not field operating values: r=8 kN/m, L=30 m; y=r*L=240 kN.",
+    "教學單元6的基準量級：原創假想算例，輸入不是現場操作值：alpha=0.0000115 1/K, L=80 m, dT=12 K；y=alpha*L*dT*1000=11.04 mm~Teaching unit 6 baseline scale: Original assumed example, not field operating values: alpha=0.0000115 1/K, L=80 m, dT=12 K; y=alpha*L*dT*1000=11.04 mm."
+  ],
+  "timeline": [
+    {
+      "year": "2009-08-25",
+      "event": "美國鐵路管理局發布連續焊接鋼軌規則修訂。~FRA published its continuous welded rail final rule amendment."
+    },
+    {
+      "year": "2014-11-18",
+      "event": "歐盟公布整合基礎設施互通規範第一二九九號法規。~The EU issued Regulation 1299/2014 for the infrastructure interoperability specification."
+    },
+    {
+      "year": "2026-03-04",
+      "event": "美國鐵路管理局發布新版軌道與構造物檢查手冊。~FRA issued its updated Track and Structures Compliance Manual."
+    }
+  ],
+  "codes": [
+    "歐洲基礎設施互通技術規範：依地區與適用版本核對。~European Infrastructure TSI: verify jurisdiction and applicable edition.",
+    "美國連續焊軌最終規則及現行四十九篇法規：分清歷史與現行要求。~US CWR final rule and current 49 CFR rules: distinguish historical and current requirements."
+  ],
+  "landmarks": [
+    "台灣高速鐵路工程~Taiwan High Speed Rail",
+    "東海道新幹線工程~Tokaido Shinkansen"
+  ],
+  "place": {
+    "name": "鐵道綜合技術研究所國立研究基地~RTRI Kunitachi research campus",
+    "country": "日本~Japan",
+    "lat": 35.7074,
+    "lng": 139.4446,
+    "query": "Railway Technical Research Institute Kunitachi Japan"
+  },
+  "sources": [
+    {
+      "key": "track-cwr",
+      "title": "連續焊接鋼軌規則歷史資料",
+      "titleEn": "Continuous Welded Rail final rule",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-safety-standards-continuous-welded-rail-cwr",
+      "sourceType": "primary",
+      "scope": "連續焊軌維護與檢查制度背景，非現場放散指令。",
+      "scopeEn": "Background to welded-rail maintenance and inspection governance, not field destressing instructions."
+    },
+    {
+      "key": "track-tsi",
+      "title": "歐洲鐵路基礎設施互通規範入口",
+      "titleEn": "Infrastructure TSI",
+      "publisher": "European Union Agency for Railways",
+      "url": "https://www.era.europa.eu/domains/technical-specifications-interoperability/infrastructure-tsi_en",
+      "sourceType": "primary",
+      "scope": "基礎設施互通要求的官方入口；教材算例不是規範限值。",
+      "scopeEn": "Official infrastructure interoperability entry point; teaching calculations are not regulatory limits."
+    },
+    {
+      "key": "track-fra",
+      "title": "美國鐵路管理局軌道檢查架構",
+      "titleEn": "FRA Track and Structures Compliance Manual 2026",
+      "publisher": "Federal Railroad Administration",
+      "url": "https://railroads.dot.gov/elibrary/track-and-structures-compliance-manual-2026",
+      "sourceType": "primary",
+      "scope": "美國軌道檢查與維護的比較框架；不把美國條文當成其他地區的允收值。",
+      "scopeEn": "Comparative US track inspection framework; no US limit is presented as a universal acceptance value."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "福斯羅",
+      "nameEn": "Vossloh",
+      "business": "鋼軌扣件、道岔與軌道生命週期服務；僅為延伸閱讀對象。",
+      "businessEn": "Fastenings, switches and rail lifecycle services; a further-reading entity only.",
+      "url": "https://www.vossloh.com/en/company",
+      "role": "軌道構件與維護技術延伸閱讀，並非本課指定承包商。",
+      "roleEn": "Further reading on track components and maintenance, not a nominated course contractor.",
+      "security": null
+    },
+    {
+      "name": "普拉塞與陶依爾",
+      "nameEn": "Plasser & Theurer",
+      "business": "軌道施工與維護機械，教材不採用其未公開操作設定。",
+      "businessEn": "Track construction and maintenance machines; undisclosed machine settings are not used.",
+      "url": "https://www.plassertheurer.com/en/machine/technologies/overview",
+      "role": "量測與維護設備技術比較，並非合作或採購推薦。",
+      "roleEn": "Technical comparison of measurement and maintenance equipment, without partnership or purchasing recommendation.",
+      "security": null
+    }
+  ],
+  "related": [
+    "b341",
+    "b349"
+  ],
+  "architectureNodes": [
+    [
+      "軌溫量測",
+      "Rail temperature"
+    ],
+    [
+      "自由伸縮",
+      "Free expansion"
+    ],
+    [
+      "縱向約束",
+      "Longitudinal restraint"
+    ],
+    [
+      "中性狀態",
+      "Neutral state"
+    ],
+    [
+      "軌道穩定",
+      "Track stability"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

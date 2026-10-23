@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "scope": "Three final build-dependent release gates, run after final 100-course V16 build",
+  "commands": [
+    {
+      "command": "python3 tools/check-offline.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "v16-final-check-offline.log",
+      "logSha256": "0393cb8b549241722ae4f2e3914a96f44dd36337568e11e7eae75d86db76fc7c",
+      "verifiedAfterFinalUILabelCorrection": true
+    },
+    {
+      "command": "python3 tools/validate-release-v16.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "v16-final-validate-release.log",
+      "logSha256": "1420ca5a200132c60781969db351b36016c3829cd7af07c65adb6ebdb4030184"
+    },
+    {
+      "command": "node tools/test-lazy-v16.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "log": "v16-final-test-lazy.log",
+      "logSha256": "f2eca54a1fc93a22eeb526c154acdd89912cc485e90521cd9d7bf2e9ed08e3d0"
+    }
+  ],
+  "counts": {
+    "topics": 2066,
+    "guidedCourses": 1003,
+    "allSteps": 32274,
+    "preservedV15Courses": 904,
+    "preservedV15Steps": 28274,
+    "railCourses": 100,
+    "authoredRailUnits": 1000,
+    "newRailSteps": 4000,
+    "newGuidedCourses": 99,
+    "railDiagramFiles": 200,
+    "dataSets": 13,
+    "appModules": 57,
+    "sceneModules": 1,
+    "initialCatalogBootstrapBytes": 3351707,
+    "checkedBuildInputs": 96,
+    "checkedBuildOutputs": 14455
+  },
+  "releaseChecks": {
+    "baselineStageHashesMatch": true,
+    "uniqueStepIds": true,
+    "publicFirstStageOnly": true,
+    "ownerPayloadsExact": true
+  },
+  "lazyRuntimeChecks": {
+    "passed": true,
+    "publicPreviewOnly": true,
+    "ownerFullPayloadsPreserved": true,
+    "httpOwnerFlagCannotBypass": true,
+    "allCoursePayloadsPreserved": true,
+    "exactSourceUsage": true,
+    "dedupe": true,
+    "retry": true,
+    "checksum": true,
+    "sha256HttpFallback": true,
+    "protectedUncached": true,
+    "fileScripts": true
+  },
+  "buildManifestSha256": "ab59da93845f8f7335bb0d8f65abaa1f1baad07bffde8ab4afc8ec0349e6b8a6",
+  "limits": [
+    "Static export, actual owner credentials and browser checks are recorded separately.",
+    "Earlier security, uploader and shell suites were not repeated by this gate.",
+    "No external upload, provider request or model download was performed.",
+    "After the final vendors.js fallback-label correction and rebuild, only check-offline.py was rerun; prior release and lazy-loader PASS results are retained."
+  ],
+  "finalUILabelCorrection": {
+    "file": "public/academy/vendors.js",
+    "change": "Fallback label wording only",
+    "rebuilt": true,
+    "offlineBundleCurrentGate": "PASS",
+    "sourceSha256": "911adccbe9fb6de595a751125f3176aec6844595a99bbfd74ebd713a4c02a118",
+    "unrelatedSuitesRepeated": false
+  }
+}

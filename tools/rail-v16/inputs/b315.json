@@ -1,0 +1,279 @@
+{
+  "id": "b315",
+  "title": "武漢—廣州高速鐵路~Wuhan–Guangzhou high-speed railway",
+  "discipline": "rail-highspeed",
+  "family": "rail",
+  "focus": "濕熱山地高速線排水與高速氣動~Humid mountain high speed drainage and aerodynamics",
+  "summary": "以武漢至廣州高速鐵路為背景，設計跨越濕熱平原和山地區段的教學走廊。課程將暴雨排水、隧道壓力和長坡牽引連結，要求在設備受潮、黏著下降與列車降速時重算能量、制動與班表影響。~Use Wuhan–Guangzhou high-speed rail to construct a teaching corridor crossing humid plains and mountain sections. Connect storm drainage, tunnel pressure and sustained climbing. Recalculate energy, braking and timetable consequences when equipment becomes damp, adhesion falls and speed is restricted, retaining explicit boundaries between a hydraulic runoff estimate and a complete flood-protection design.",
+  "example": "整合原創算例：單元 1 得 flow=0.306 m^3/s；單元 2 得 travel=7.352941 s；單元 3 得 climbing=2354.4 kW。上述三個結果使用各單元明示的不同邊界，不能任意相加或視為實際工程實測值。以第一單元 rain 的擾動測試，結果改為 0.3366 m^3/s；學徒需先比較單位、敏感度和假設，再決定是否要細化模型。以武漢至廣州高速鐵路為背景，設計跨越濕熱平原和山地區段的教學走廊。課程將暴雨排水、隧道壓力和長坡牽引連結，要求在設備受潮、黏著下降與列車降速時重算能量、制動與班表影響。 最終交付應保留原始輸入、測點時間戳、誤差範圍與無法由簡化式證明的結論。~Integrated original exercise: unit 1 gives flow=0.306 m^3/s; unit 2 gives travel=7.352941 s; unit 3 gives climbing=2354.4 kW. These three results use different explicit boundaries and must not be added or presented as measurements of the real railway. Perturbing rain in the first unit changes its result to 0.3366 m^3/s. Compare units, sensitivity and assumptions before deciding which model needs refinement. Use Wuhan–Guangzhou high-speed rail to construct a teaching corridor crossing humid plains and mountain sections. Connect storm drainage, tunnel pressure and sustained climbing. Recalculate energy, braking and timetable consequences when equipment becomes damp, adhesion falls and speed is restricted, retaining explicit boundaries between a hydraulic runoff estimate and a complete flood-protection design. The final submission should retain original inputs, measurement timestamps, uncertainty ranges and conclusions that the simplified expressions cannot establish.",
+  "history": "公開工程與出版時間線：2009 年：武漢至廣州高速鐵路於十二月開通營運；2019 年：世界銀行發布中國高速鐵路發展研究報告。這些事件由下列機構來源提供背景，不表示來源公開了本課程所有設計數據。以武漢至廣州高速鐵路為背景，設計跨越濕熱平原和山地區段的教學走廊。課程將暴雨排水、隧道壓力和長坡牽引連結，要求在設備受潮、黏著下降與列車降速時重算能量、制動與班表影響。 本課程另以可靠度、可用度、可維修度與安全方法整理需求、證據和變更邊界；歷史年份屬可查證事項，數學模型的輸入則是明示的教學假設。~Public engineering and publication chronology: 2009: The Wuhan–Guangzhou high-speed railway opened in December; 2019: The World Bank published its study of Chinese high-speed rail development. The institutional sources below establish this background; they do not imply publication of every design input in this course. Use Wuhan–Guangzhou high-speed rail to construct a teaching corridor crossing humid plains and mountain sections. Connect storm drainage, tunnel pressure and sustained climbing. Recalculate energy, braking and timetable consequences when equipment becomes damp, adhesion falls and speed is restricted, retaining explicit boundaries between a hydraulic runoff estimate and a complete flood-protection design. The course separately uses reliability, availability, maintainability and safety reasoning to organise requirements, evidence and change boundaries. Historical dates are verifiable facts, whereas numerical model inputs are explicitly declared teaching assumptions.",
+  "units": [
+    {
+      "anchor": "集水與排水容量~Catchment inflow and drainage capacity",
+      "title": "集水與排水容量~Catchment inflow and drainage capacity",
+      "mechanism": "短時逕流可先以降雨強度、集水面積和逕流係數估計，但設施排水還受入口阻塞、管線坡度與下游水位影響。鐵路集水範圍若只算軌道面，會漏掉坡面與站區流入。 合理化流量法假定雨強與集流條件相符，面積及逕流係數也須明確。它估算峰值流率而非完整洪水歷線；抽水或蓄水設計還需對時間積分和出口條件。 把山坡逕流與線路集水面積分開估算，檢查雨強時間尺度。~A first runoff estimate combines rainfall intensity, catchment area and runoff coefficient. Actual drainage also depends on inlet blockage, pipe slope and downstream water level. Counting only track surface can omit inflow from adjacent slopes and station areas. The rational estimate assumes rainfall intensity compatible with catchment response and explicit area and runoff coefficient. It gives a peak rate, not a complete hydrograph. Pumping or storage design additionally requires time integration and outlet conditions. Estimate hillside runoff and railway catchment separately and check rainfall-intensity duration.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：coefficient=0.85 1; rain=2e-05 m/s; area=18000 m^2；計算：flow=coefficient*rain*area=0.306 m^3/s。敏感度：rain 單獨增加百分之十至 2.2e-05 m/s，其餘固定，結果為 0.3366 m^3/s。模型邊界：均勻降雨的合理化法概念；不含集流時間、水文頻率分析或蓄滯。~Original hypothetical exercise; none of these inputs are operating parameters of this project: coefficient=0.85 1; rain=2e-05 m/s; area=18000 m^2; calculation: flow=coefficient*rain*area=0.306 m^3/s. Sensitivity: rain, increase this input alone by ten percent, to 2.2e-05 m/s, with all other inputs fixed, gives 0.3366 m^3/s. Model boundary: Uniform-rainfall rational-method concept; concentration time, frequency analysis and storage are excluded.",
+      "verify": "現地核對集水分界和入口標高，以雨量、液位與泵浦運轉紀錄檢查水量收支，分開分析正常排放和下游頂托。 核對雨量單位和有效集水邊界，量測泵浦出流與集水井水位變化，以體積守恆互證。~Check catchment boundaries and inlet elevations, use rainfall, water-level and pump logs for a balance, and distinguish normal outflow from downstream backwater. Verify rainfall units and catchment boundaries, measure pump outflow and sump-level change, and cross-check them through volume conservation.",
+      "failure": "垃圾堵塞入口會讓理論管徑容量無法發揮；下游水位上升又可能使出口排量下降，僅加大泵浦不能解決所有原因。 排水堵塞改變有效出流，不能只用較大泵浦銘牌值補償。~Blocked inlets can prevent nominal pipe capacity from being used, while rising tailwater reduces outflow; a larger pump does not resolve every cause. Blocked drainage changes effective outflow and cannot be compensated merely by a larger pump nameplate rating.",
+      "misconception": "排水管截面夠大就不需要檢查入口堵塞及下游水位~A sufficiently large drain eliminates the need to check blocked inlets and tailwater.",
+      "practice": "將部分入口視為堵塞，建立地表暫存與排出的水量表；比較增加入口和增加泵量對不同瓶頸的效果。 再以本單元 rain 的對照值重算 flow，提交含單位、輸入來源和模型不適用條件的結果表。~Block selected inlets in the scenario, tabulate surface storage and discharge, and compare additional inlets with additional pumping for different bottlenecks. Also recalculate flow for the alternative rain value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "隧道壓力波傳遞~Tunnel pressure-wave travel",
+      "title": "隧道壓力波傳遞~Tunnel pressure-wave travel",
+      "mechanism": "列車鼻部入隧道產生壓縮擾動，壓力波以接近音速傳播而不是跟著列車速度前進。入口緩衝設計影響波形上升率，波到達出口的時間與車身到達時間屬不同問題，須分開建立量測觸發。 波傳時間由傳播距離除以聲速決定，與列車走完整段的時間不同。此式只預測到達時序而不預測波幅；洞口形狀、列車頭型和反射決定的壓力變化須用其他流動模型。 在連續隧道與洞口測點之間比較聲波傳播時間和列車通過時間，另列波幅問題。~A train nose entering a tunnel creates a compression disturbance whose propagation speed is close to acoustic speed rather than train speed. Entrance treatments affect the rise of the waveform. Wave arrival and train arrival are different events and require separate measurement triggers. Wave travel time is propagation distance divided by sound speed, not the time for the train to traverse the section. This expression predicts arrival timing, not amplitude. Portal geometry, train-nose shape and reflections require additional flow models to predict pressure changes. Compare acoustic travel time with train-passage time between tunnel and portal sensors, treating wave amplitude as a separate problem.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：length=2500 m; sound=340 m/s；計算：travel=length/sound=7.352941 s。敏感度：length 單獨增加百分之十至 2750 m，其餘固定，結果為 8.088235 s。模型邊界：一維線性聲學且音速均勻；不預測波幅、微壓波峰值或反射耗散。~Original hypothetical exercise; none of these inputs are operating parameters of this project: length=2500 m; sound=340 m/s; calculation: travel=length/sound=7.352941 s. Sensitivity: length, increase this input alone by ten percent, to 2750 m, with all other inputs fixed, gives 8.088235 s. Model boundary: One-dimensional linear acoustics with uniform sound speed; amplitude, micro-pressure-wave peaks and reflection losses are not predicted.",
+      "verify": "在入口與出口配置同步壓力計，用互相關估計傳遞時間，並用溫度估算音速；列車里程觸發另存一條通道。 在洞口與洞內配置同步壓力測點，對照列車頭部通過時刻，分辨首波與後續反射。~Use synchronised pressure sensors at both portals, estimate travel time by cross-correlation and sound speed from temperature, and retain train-position triggering separately. Synchronise pressure sensors at the portal and inside the tunnel with nose-passage time, distinguishing the first wave from later reflections.",
+      "failure": "時間戳誤差會被誤認為波速變化；長隧道的反射波與多車事件也可能讓互相關找到錯誤的峰。 單點峰值不足以判別首波，須檢查測點間傳遞時差。~Timestamp error can imitate a wave-speed change, while reflected waves and multiple train events can make cross-correlation select the wrong peak. A single peak cannot identify the first wave; inspect propagation delay between sensors.",
+      "misconception": "隧道壓力波必定與列車以相同速度到達出口~A tunnel pressure wave necessarily reaches the portal at the same speed as the train.",
+      "practice": "比較壓力波與列車兩種到達時間，加入一次端部反射畫出事件圖，說明單一延遲量無法判斷出口微壓波是否超標。 再以本單元 length 的對照值重算 travel，提交含單位、輸入來源和模型不適用條件的結果表。~Compare wave and train arrival times, add one end reflection to the event diagram, and explain why travel time alone cannot establish compliance of portal micro-pressure waves. Also recalculate travel for the alternative length value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "坡度阻力與爬坡功率~Gradient resistance and climbing power",
+      "title": "坡度阻力與爬坡功率~Gradient resistance and climbing power",
+      "mechanism": "列車爬坡需提高重力位能，坡度小時沿線重力分量約等於重量乘坡度。功率還與速度相乘，因此相同牽引力下高速爬坡更耗功率；下坡則需處理持續制動能量而非僅一次停車。 坡度以升高量除以水平距離表示，百分比與小數不可混用。此項只表示重力位能增加的速率，總牽引功率還要加上加速、滾動、氣動及轉換損失。 對長坡計算持續重力功率，另列加速與空氣阻力需求。~Climbing raises gravitational potential energy. For small gradients, the along-track gravity force is approximately weight times gradient. Multiplication by speed gives power, making faster climbing more demanding at equal force; descending requires continuous energy management rather than merely one stopping event. Gradient is rise divided by horizontal distance, so percentage and decimal representations must not be mixed. This term only gives the rate of gravitational potential-energy increase. Total traction demand also includes acceleration, rolling resistance, aerodynamics and conversion losses. Calculate sustained gravitational power on a long climb and separately list acceleration and drag demand.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mass=300000 kg; gradient=0.02 1; v=40 m/s；計算：climbing=mass*9.81*gradient*v/1000=2354.4 kW。敏感度：mass 單獨增加百分之十至 330000 kg，其餘固定，結果為 2589.84 kW。模型邊界：小坡度且定速；不含空阻、輪阻、加速與傳動損失。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mass=300000 kg; gradient=0.02 1; v=40 m/s; calculation: climbing=mass*9.81*gradient*v/1000=2354.4 kW. Sensitivity: mass, increase this input alone by ten percent, to 330000 kg, with all other inputs fixed, gives 2589.84 kW. Model boundary: Small gradient and constant speed; aerodynamic drag, rolling resistance, acceleration and drive losses are excluded.",
+      "verify": "以路線縱斷面和列車速度重建位能變化，對照受電功率積分；坡度資料與里程基準必須一致。 由高程剖面核對坡度，使用同一時間窗比對速度與牽引功率，另列非重力負載。~Reconstruct potential-energy change from the vertical alignment and train speed, compare it with integrated line power, and keep gradient and distance datums consistent. Check gradient from the elevation profile, compare speed and traction power over one time window, and list non-gravitational loads separately.",
+      "failure": "忽略長下坡持續熱負荷會把短時煞車能力誤當連續能力；坡度正負號錯誤則會把耗能段當成回收段。 功率不足時須分辨坡度阻力與黏著限制，不能只加大電流。~Ignoring sustained downhill heat confuses short-term braking capability with continuous rating; a gradient-sign error can mislabel an energy-consuming section as regenerative. When power is insufficient, distinguish gradient resistance from adhesion limits rather than only increasing current.",
+      "misconception": "長下坡只需通過一次緊急停車試驗就能驗證持續制動~One emergency stop test verifies continuous braking capability on a long descent.",
+      "practice": "用相同高差設計長緩坡與短陡坡，對比理想位能和峰值功率，指出兩者為何不能用同一項設備額定值評估。 再以本單元 mass 的對照值重算 climbing，提交含單位、輸入來源和模型不適用條件的結果表。~Design a long gentle and short steep climb with equal height gain, compare ideal energy and peak power, and explain why one equipment rating cannot evaluate both. Also recalculate climbing for the alternative mass value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "黏著限制與可用牽引力~Adhesion limit and usable traction",
+      "title": "黏著限制與可用牽引力~Adhesion limit and usable traction",
+      "mechanism": "牽引力需要透過接觸斑傳到軌道，簡化上限與黏著係數及動輪法向力相乘。電機能提供更大扭矩不代表輪軌能傳遞；雨水、落葉與速度都會改變接觸狀態，使固定係數模型失去精度。 法向荷重應只取實際驅動接觸點的總量，不能自動使用整列重量。此上限也不描述黏著峰後的滑移控制；若輪重轉移，就要以每個接觸點重新分配。 把降雨前後輪軌接觸分組，避免用乾軌係數代表濕軌。~Traction reaches the track through contact patches. A simple upper bound multiplies adhesion coefficient by normal force on driven wheels. More motor torque does not guarantee more transmitted force; rain, leaves and speed alter contact conditions and limit the accuracy of a fixed coefficient. Normal load must include only the driven contacts, not automatically the weight of the whole train. This bound does not describe slip control beyond the adhesion peak. Wheel-load transfer requires a new allocation across individual contact points. Group contact conditions before and after rainfall instead of representing wet rails with a dry coefficient.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mu=0.18 1; weight=900000 N；計算：traction=mu*weight/1000=162 kN。敏感度：mu 單獨增加百分之十至 0.198 1，其餘固定，結果為 178.2 kN。模型邊界：準靜態庫倫上限與均勻輪重；未建模蠕滑曲線及動態減載。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mu=0.18 1; weight=900000 N; calculation: traction=mu*weight/1000=162 kN. Sensitivity: mu, increase this input alone by ten percent, to 0.198 1, with all other inputs fixed, gives 178.2 kN. Model boundary: Quasi-static Coulomb bound with uniform wheel load; creep curves and dynamic unloading are not modelled.",
+      "verify": "比較輪速、列車獨立速度與牽引電流，找出滑轉開始點；濕乾條件必須分組，不能用全日平均係數掩蓋低黏著尾端。 以獨立地速校對輪周速度，核實輪徑設定，再按乾濕條件與軸荷分類比對。~Compare wheel speed, independently measured train speed and traction current to locate slip onset, separating wet and dry conditions rather than hiding low-adhesion tails in a daily mean. Calibrate wheel-periphery speed against independent ground speed, verify wheel-diameter settings, and compare results by wetness condition and axle load.",
+      "failure": "只提高扭矩可能觸發滑轉並降低可控牽引；輪徑設定誤差也會製造假的滑差，需以獨立地速判別。 先查輪徑與地速誤差，避免把量測偏差當成真滑轉。~Increasing torque can trigger slip and reduce controllable traction; an incorrect wheel diameter also creates apparent slip, requiring independent ground-speed evidence. Check diameter and ground-speed errors before interpreting measurement bias as actual wheel slip.",
+      "misconception": "電機額定扭矩夠大就不需要考慮輪軌黏著~A sufficiently large rated motor torque eliminates the need to consider wheel-rail adhesion.",
+      "practice": "把黏著係數減半並比較動輪荷重調整，計算牽引上限，解釋為何撒砂或控制策略的效果需用試驗而不能只看馬達功率。 再以本單元 mu 的對照值重算 traction，提交含單位、輸入來源和模型不適用條件的結果表。~Halve adhesion and compare a change in driven-wheel load, calculate traction bounds, and explain why sanding or control performance requires tests rather than motor-power data alone. Also recalculate traction for the alternative mu value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "振動隔離與頻率比~Vibration isolation and frequency ratio",
+      "title": "振動隔離與頻率比~Vibration isolation and frequency ratio",
+      "mechanism": "浮動道床可用彈簧質量阻尼器理解，其隔振效果取決於激振頻率與固有頻率的比值。接近共振時柔軟支承反而會放大響應，超過隔振區後才可能衰減；靜態撓度與動態效果需要同時檢查。 此式描述單自由度線性隔振系統的力傳遞率，頻率比是激振頻率除以固有頻率。增加阻尼有助於抑制共振，但在高頻隔振區不一定降低傳遞；必須先辨認工況所在區域。 在隧道設備基座檢查振動隔離的頻率比，區分共振與高頻隔振。~A floating track slab can be understood as a spring-mass-damper system whose isolation depends on excitation-to-natural-frequency ratio. Soft support can amplify response near resonance before attenuating higher frequencies. Static deflection and dynamic performance therefore need to be checked together. This expression describes force transmissibility of a linear single-degree-of-freedom isolator. Frequency ratio is excitation frequency divided by natural frequency. Added damping suppresses resonance but need not reduce transmission in the high-frequency isolation region, so identify the operating region first. Check frequency ratio for a tunnel-equipment isolator and distinguish resonance from high-frequency isolation.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：ratio=3 1; zeta=0.12 1；計算：transmissibility=((1+(2*zeta*ratio)**2)/((1-ratio**2)**2+(2*zeta*ratio)**2))**0.5=0.1534092 1。敏感度：ratio 單獨增加百分之十至 3.3 1，其餘固定，結果為 0.1285715 1。模型邊界：線性單自由度力傳遞率；不含土層波傳、側向耦合及建築響應。~Original hypothetical exercise; none of these inputs are operating parameters of this project: ratio=3 1; zeta=0.12 1; calculation: transmissibility=((1+(2*zeta*ratio)**2)/((1-ratio**2)**2+(2*zeta*ratio)**2))**0.5=0.1534092 1. Sensitivity: ratio, increase this input alone by ten percent, to 3.3 1, with all other inputs fixed, gives 0.1285715 1. Model boundary: Linear single-degree-of-freedom force transmissibility; soil propagation, lateral coupling and building response are excluded.",
+      "verify": "同步量測軌道、道床與鄰近結構振動，使用頻譜比值而非只比較總加速度，並記錄列車速度與載重。 同步量測基座與支承反力頻譜，核對激振頻率、固有頻率和阻尼，檢查兩測點相位。~Measure rail, slab and neighbouring-structure vibration synchronously, compare spectra rather than only overall acceleration, and retain train speed and load. Measure base and transmitted-force spectra synchronously, verifying excitation frequency, natural frequency and damping while checking phase between measurement points.",
+      "failure": "隔振墊硬化會提高固有頻率，局部短路接觸則繞過彈性路徑；兩者都可能讓預期隔振頻段失效。 阻尼器劣化與剛度改變會有不同頻譜，須分開辨識。~Pad hardening raises natural frequency, while a rigid local contact bypasses the elastic path; either can remove the intended isolation band. Damper deterioration and stiffness change produce different spectral effects and must be identified separately.",
+      "misconception": "支承越柔軟所有頻率的振動就一定越小~Softer supports necessarily reduce vibration at every frequency.",
+      "practice": "計算接近共振與高頻兩種頻率比，畫出傳遞率趨勢，提出能辨別材料硬化與剛性短路的量測位置。 再以本單元 ratio 的對照值重算 transmissibility，提交含單位、輸入來源和模型不適用條件的結果表。~Calculate near-resonant and high-frequency ratios, plot the transmission trend, and propose sensor locations distinguishing material hardening from a rigid bypass. Also recalculate transmissibility for the alternative ratio value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "延遲與制動距離~Delay and braking distance",
+      "title": "延遲與制動距離~Delay and braking distance",
+      "mechanism": "列車在控制命令傳遞與煞車建立期間仍向前行駛，減速段才把動能耗散；因此停車距離包含延遲距離與減速距離。速度平方項說明高速時少量速度誤差會被放大，固定減速度只能作第一輪界限估算。 延遲項與速度成正比，減速項與速度平方成正比；把兩項分開後，才能選擇改善控制延遲或增加有效制動的方案。若存在坡度，應另加沿坡重力，不能只改總距離。 對低黏著降速情境重算停車距離與命令延遲。~A train continues moving while the command propagates and brake force builds. Only the deceleration phase removes kinetic energy, so stopping distance includes both a delay term and a braking term. The squared speed dependence amplifies speed uncertainty; constant deceleration is only an initial bounding approximation. The delay term is linear in speed and the deceleration term is quadratic. Separating them reveals whether control latency or effective braking deserves attention. A gradient requires an added gravitational component, not an arbitrary adjustment to the final distance. Recalculate stopping distance and command delay for a low-adhesion restricted-speed condition.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：v=70 m/s; delay=2.5 s; a=0.7 m/s^2；計算：distance=v*delay+v*v/(2*a)=3675 m。敏感度：v 單獨增加百分之十至 77 m/s，其餘固定，結果為 4427.5 m。模型邊界：水平直線、定減速、無風；沒有建立黏著分布與煞車熱衰退。~Original hypothetical exercise; none of these inputs are operating parameters of this project: v=70 m/s; delay=2.5 s; a=0.7 m/s^2; calculation: distance=v*delay+v*v/(2*a)=3675 m. Sensitivity: v, increase this input alone by ten percent, to 77 m/s, with all other inputs fixed, gives 4427.5 m. Model boundary: Level straight track and constant deceleration; adhesion variation and thermal fade are excluded.",
+      "verify": "對齊速度、煞車缸壓力與里程的時間戳，分開辨識命令延遲及穩態減速度，再以積分速度的距離交叉檢查。 用獨立里程或地速核對輪速積分，報告濕乾軌差異及停車距離的重複試驗範圍。~Align speed, brake-cylinder pressure and distance timestamps. Identify command delay separately from steady deceleration and cross-check distance by integrating measured speed. Check integrated wheel speed against independent distance or ground speed, and report wet-dry differences and repeated stopping-distance ranges.",
+      "failure": "輪滑保護介入與濕軌會降低實際減速度；感測時間不同步也能製造假延遲，須以第二個時鐘和輪速紀錄區分。 應比較壓力建立與地速下降先後，避免誤判煞車故障。~Wheel-slide protection and wet rails can reduce deceleration; unsynchronised sensors can imitate a delay, requiring an independent clock and wheel-speed records. Compare pressure build-up with ground-speed decay before diagnosing a brake fault.",
+      "misconception": "速度增加一成時制動距離必定也只增加一成~A ten percent speed increase must increase braking distance by only ten percent.",
+      "practice": "分別增加延遲與初速，畫出兩條停車曲線；寫出哪個區段對各參數敏感，以及需要哪些現場資料才可建立保護曲線。 再以本單元 v 的對照值重算 distance，提交含單位、輸入來源和模型不適用條件的結果表。~Increase delay and initial speed separately, plot both stopping curves, identify the sensitive phase, and list the field evidence needed before defining a protection curve. Also recalculate distance for the alternative v value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "煞車熱量與溫升~Brake heat and temperature rise",
+      "title": "煞車熱量與溫升~Brake heat and temperature rise",
+      "mechanism": "未回收的動能會在摩擦煞車與阻力路徑中轉成熱，平均溫升由分配到構件的能量除以熱容量決定。短時平均模型無法描述表面熱點、對流冷卻或熱裂紋，需要把能量分配與熱擴散分開。 有效受熱質量可以小於構件總質量，短時接觸表面的熱量也未必已傳到內部。能量平衡應先界定摩擦分配比例，再評估對流、輻射和間歇冷卻是否可忽略。 在長下坡減速後估算煞車平均溫升並辨認熱點風險。~Unrecovered kinetic energy becomes heat through friction brakes and resistance paths. Average temperature rise is allocated energy divided by thermal capacity. A short-duration lumped model cannot describe surface hot spots, cooling or thermal cracks; energy allocation and thermal diffusion are separate questions. The effective heated mass can be smaller than total component mass, and short-duration surface heat may not reach the interior. First define frictional energy allocation, then assess whether convection, radiation and cooling between events can be neglected. Estimate mean brake temperature rise after descending deceleration and identify hot-spot risk.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：energy=1.2e+07 J; mass=220 kg; cp=460 J/(kg*K)；計算：rise=energy/(mass*cp)=118.5771 K。敏感度：energy 單獨增加百分之十至 1.32e+07 J，其餘固定，結果為 130.4348 K。模型邊界：均勻溫度且無散熱、常數比熱；不推定摩擦材極限。~Original hypothetical exercise; none of these inputs are operating parameters of this project: energy=1.2e+07 J; mass=220 kg; cp=460 J/(kg*K); calculation: rise=energy/(mass*cp)=118.5771 K. Sensitivity: energy, increase this input alone by ten percent, to 1.32e+07 J, with all other inputs fixed, gives 130.4348 K. Model boundary: Uniform temperature without heat loss and with constant heat capacity; no friction-material limit is inferred.",
+      "verify": "以熱電偶與紅外量測交叉檢查溫升，記錄煞車能量、環境溫度與冷卻時間，並校正紅外放射率。 在不同深度保留溫度曲線並核對感測器反應時間，用初末能量平衡檢查平均溫升。~Cross-check temperature rise with thermocouples and infrared measurements, record braking energy, ambient temperature and cooling time, and calibrate infrared emissivity. Retain temperature histories at different depths, verify sensor response time, and use initial-to-final energy balance to check mean temperature rise.",
+      "failure": "局部接觸不均會產生熱點，即使平均溫升不高仍可能形成熱裂紋；錯誤放射率也會掩蓋真實表面溫度。 若表面與內部溫差很大，集中熱容量假設便不足。~Uneven contact can create hot spots and thermal cracks despite a modest mean rise; incorrect emissivity can also conceal the actual surface temperature. A large surface-to-core temperature difference indicates that the lumped thermal-capacity assumption is insufficient.",
+      "misconception": "煞車盤平均溫度低就能保證局部沒有熱點~A low mean brake-disc temperature guarantees the absence of local hot spots.",
+      "practice": "將同一能量分給兩種有效熱容量，計算平均溫升後設計能辨認熱點的量測網格，說明集中參數模型缺少哪些資訊。 再以本單元 energy 的對照值重算 rise，提交含單位、輸入來源和模型不適用條件的結果表。~Allocate equal energy to two effective thermal capacities, calculate average rise, and design a measurement grid for hot spots while identifying information missing from the lumped model. Also recalculate rise for the alternative energy value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "濾網壓差與通風功率~Filter pressure drop and fan power",
+      "title": "濾網壓差與通風功率~Filter pressure drop and fan power",
+      "mechanism": "風機必須克服風道與濾網壓差才能輸送空氣，輸入功率近似為壓差乘體積流率再除效率。積塵提高阻力但工作點會沿風機曲線改變，因此固定風量假設只是一種受控比較。 風機功率等於壓力差乘體積流率再除以宣告效率，壓力與流量必須使用同一工作點。積塵使阻力和風機工作點共同改變，固定流量算例不能預測未控制風量時的耗電。 檢查濕濾材造成的壓差是否隨風量變動而改變判讀。~A fan must overcome duct and filter pressure losses to move air. Input power is approximately pressure rise times volume flow divided by efficiency. Dust raises resistance but shifts the operating point on the fan curve, so fixed flow is only a controlled comparison. Fan power equals pressure difference times volume flow divided by the declared efficiency. Pressure and flow must refer to one operating point. Dust changes resistance and the fan operating point together, so a fixed-flow example cannot predict consumption without airflow control. Check whether changing airflow confounds interpretation of pressure drop across wet filter media.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：pressure=350 Pa; flow=2.5 m^3/s; eta=0.6 1；計算：fan_power=pressure*flow/eta=1458.333 W。敏感度：pressure 單獨增加百分之十至 385 Pa，其餘固定，結果為 1604.167 W。模型邊界：固定風量與總效率；不包含風機曲線移動和馬達熱限制。~Original hypothetical exercise; none of these inputs are operating parameters of this project: pressure=350 Pa; flow=2.5 m^3/s; eta=0.6 1; calculation: fan_power=pressure*flow/eta=1458.333 W. Sensitivity: pressure, increase this input alone by ten percent, to 385 Pa, with all other inputs fixed, gives 1604.167 W. Model boundary: Fixed flow and overall efficiency; fan-curve shifts and motor thermal limits are excluded.",
+      "verify": "同時量濾網前後壓差、實際風量和電功率，用乾淨濾網建立基準，並記錄沙塵、濕度與維修時間。 校正取壓點與風量計，同步量測電功率，核對效率是否包含馬達與驅動器損失。~Measure differential pressure, actual flow and input power together, establish a clean-filter baseline, and record dust exposure, humidity and maintenance timing. Calibrate pressure taps and airflow measurement, record electric power simultaneously, and check whether efficiency includes motor and drive losses.",
+      "failure": "旁路漏氣可能讓壓差降低但過濾品質變差；只以壓差低判定良好，會忽略濾網破損和密封失效。 壓差很低也可能是旁通，須核對濾材密封及實際風量。~Bypass leakage may lower pressure drop while worsening filtration; a low drop alone can therefore hide a damaged filter or failed seal. Very low pressure drop can indicate bypass; check filter sealing and actual airflow.",
+      "misconception": "濾網壓差越低就一定表示過濾狀況越好~Lower filter pressure drop always means better filtration condition.",
+      "practice": "對堵塞與旁路兩個情境列出壓差、風量和粒子濃度的預期方向，設計三項量測共同判斷而非只靠單一數字。 再以本單元 pressure 的對照值重算 fan_power，提交含單位、輸入來源和模型不適用條件的結果表。~Predict pressure drop, airflow and particle concentration for clogging and bypass scenarios, then design a three-measurement diagnosis instead of relying on one number. Also recalculate fan_power for the alternative pressure value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "電流平方損耗與散熱~Current-squared losses and cooling",
+      "title": "電流平方損耗與散熱~Current-squared losses and cooling",
+      "mechanism": "導體與接點的焦耳熱與電流平方成正比，短時高電流可能主導熱循環而平均電流看不出來。散熱取決於環境與接觸表面，電氣損耗量不能直接當成最終溫升。 此式是導體焦耳熱，並不是列車全部耗電。電阻會隨溫度改變，而並聯饋電使電流重新分配；比較兩方案時應保持相同功率交付邊界，避免只移轉損失位置。 在長距離供電段比較不同電流造成的線路熱損失。~Joule heating in conductors and joints scales with current squared, so short current peaks can dominate thermal cycling even when mean current looks moderate. Heat rejection depends on environment and contact surfaces; electrical loss alone is not a final temperature prediction. The expression represents conductor Joule heat, not all train consumption. Resistance changes with temperature, and parallel feeding redistributes current. Compare schemes at the same delivered-power boundary to avoid reporting loss relocation as an actual reduction. Compare line heating losses under different current levels in a long supply section.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：current=1200 A; resistance=0.025 ohm；計算：loss=current*current*resistance/1000=36 kW。敏感度：current 單獨增加百分之十至 1320 A，其餘固定，結果為 43.56 kW。模型邊界：恆定電阻且直流或等效均方根電流；不含散熱暫態。~Original hypothetical exercise; none of these inputs are operating parameters of this project: current=1200 A; resistance=0.025 ohm; calculation: loss=current*current*resistance/1000=36 kW. Sensitivity: current, increase this input alone by ten percent, to 1320 A, with all other inputs fixed, gives 43.56 kW. Model boundary: Constant resistance with direct or equivalent RMS current; transient cooling is excluded.",
+      "verify": "以均方根電流而非算術平均電流求熱負荷，同步記錄接頭溫度及環境；停電隔離後才由合格人員檢查接點。 由電流時間歷程積分損失，量測導體溫度以校正電阻，並比對兩端功率差。~Use RMS rather than arithmetic-mean current for thermal loading, log joint and ambient temperatures, and restrict physical inspection to qualified staff after isolation. Integrate losses over the current history, measure conductor temperature to correct resistance, and compare with the difference between terminal powers.",
+      "failure": "鬆動接點會增加電阻並使熱量集中；熱像單次讀值偏低也可能只是量測時負載不高，不能否定間歇性過熱。 尖峰電流不能用平均電流取代，否則平方項損失被低估。~Loose joints increase resistance and concentrate heating; a cool one-time thermal image may simply coincide with low load and cannot rule out intermittent overheating. Peak current cannot be replaced by mean current without understating losses from the squared term.",
+      "misconception": "用平均電流代入平方損耗公式總能得到正確熱負荷~Squaring average current always gives the correct resistive heat load.",
+      "practice": "比較固定電流與同平均值脈衝電流的均方根，計算兩種損耗，寫出溫度監測與電流紀錄需要同步的原因。 再以本單元 current 的對照值重算 loss，提交含單位、輸入來源和模型不適用條件的結果表。~Compare constant and pulsed currents with equal means, calculate their RMS losses, and explain why current and temperature records must be time-aligned. Also recalculate loss for the alternative current value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "可用度與修復時間~Availability and repair time",
+      "title": "可用度與修復時間~Availability and repair time",
+      "mechanism": "在簡化更新過程中，可用度是平均故障間隔占故障間隔加修復時間的比例。這個指標不能替代安全性，因為快速恢復服務可能仍保留危險失效；備品、交通與診斷都會影響實際修復時間。 平均故障間隔和平均修復時間必須使用相同服務邊界；備件等待與到場時間若被排除，數字就不能描述旅客看到的中斷。短期樣本也應報告事件數與觀測時間。 把防水維修時間與正常設備修復分別納入停機紀錄。~In a simplified renewal process, availability is mean time between failures divided by that time plus mean repair time. It does not replace safety: rapidly restoring service may leave a hazardous failure unresolved. Spares, travel and diagnosis all affect actual restoration time. Mean time between failures and mean repair time require a common service boundary. Excluding spare-part waiting or travel time prevents the figure from describing passenger-visible interruption. Short samples should also report event count and observation duration. Record waterproofing maintenance separately from normal equipment repair in downtime records.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mtbf=1200 h; mttr=4 h；計算：availability=mtbf/(mtbf+mttr)=0.9966777 1。敏感度：mtbf 單獨增加百分之十至 1320 h，其餘固定，結果為 0.9969789 1。模型邊界：兩狀態穩態平均模型；不含計畫維修、共同原因與降級服務品質。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mtbf=1200 h; mttr=4 h; calculation: availability=mtbf/(mtbf+mttr)=0.9966777 1. Sensitivity: mtbf, increase this input alone by ten percent, to 1320 h, with all other inputs fixed, gives 0.9969789 1. Model boundary: Two-state steady-state mean model; planned maintenance, common causes and degraded service quality are excluded.",
+      "verify": "將故障開始、到場、診斷、修復及恢復服務分段記錄，明確定義可用狀態，避免把降級運轉與完整服務混算。 逐項對照故障開始、服務恢復與維修完成時間，公開排除項，並核對總觀測時數。~Record failure onset, arrival, diagnosis, repair and service restoration separately, define the available state, and avoid mixing degraded operation with full service. Cross-check fault start, service restoration and repair completion for each event, disclose exclusions, and verify total observed hours.",
+      "failure": "只縮短更換時間但備品仍缺貨，可用度未必改善；將延後報修時間排除也會讓數字看似漂亮卻失去代表性。 修好設備和恢復服務可能不同時，須分別記錄終點。~Shorter replacement time may not improve availability when spare parts remain unavailable; excluding reporting delays can also create an unrepresentative figure. Equipment repair and service restoration may occur at different times; record both endpoints.",
+      "misconception": "設備可用度高就表示所有安全風險一定很低~High equipment availability necessarily means every safety risk is low.",
+      "practice": "比較提高故障間隔與縮短修復時間兩種措施，用同一故障定義重算，並列出可用度之外需要追蹤的危險失效指標。 再以本單元 mtbf 的對照值重算 availability，提交含單位、輸入來源和模型不適用條件的結果表。~Compare increasing failure interval with reducing repair time under one failure definition, and list hazardous-failure measures that must be tracked separately from availability. Also recalculate availability for the alternative mtbf value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    }
+  ],
+  "facts": [
+    "已查證背景：2009 年，武漢至廣州高速鐵路於十二月開通營運。~Verified background: 2009, The Wuhan–Guangzhou high-speed railway opened in December.",
+    "教學假設，單元 1：rain=2e-05 m/s，計算 flow=0.306 m^3/s；非實測性能。~Teaching assumption, unit 1: rain=2e-05 m/s, calculated flow=0.306 m^3/s; not measured performance.",
+    "教學假設，單元 2：length=2500 m，計算 travel=7.352941 s；非實測性能。~Teaching assumption, unit 2: length=2500 m, calculated travel=7.352941 s; not measured performance.",
+    "教學假設，單元 3：mass=300000 kg，計算 climbing=2354.4 kW；非實測性能。~Teaching assumption, unit 3: mass=300000 kg, calculated climbing=2354.4 kW; not measured performance.",
+    "教學假設，單元 4：mu=0.18 1，計算 traction=162 kN；非實測性能。~Teaching assumption, unit 4: mu=0.18 1, calculated traction=162 kN; not measured performance.",
+    "教學假設，單元 5：ratio=3 1，計算 transmissibility=0.1534092 1；非實測性能。~Teaching assumption, unit 5: ratio=3 1, calculated transmissibility=0.1534092 1; not measured performance."
+  ],
+  "timeline": [
+    {
+      "year": "2009",
+      "event": "武漢至廣州高速鐵路於十二月開通營運~The Wuhan–Guangzhou high-speed railway opened in December"
+    },
+    {
+      "year": "2019",
+      "event": "世界銀行發布中國高速鐵路發展研究報告~The World Bank published its study of Chinese high-speed rail development"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第二部分安全系統方法~IEC published the revised railway RAMS Part 2 systems approach to safety"
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025，鐵道 RAMS 通用程序；方法參考，不等同本案合約要求~IEC 62278-1:2025, railway RAMS generic process; methodological reference, not a project contract requirement",
+    "IEC 62278-2:2025，鐵道安全系統方法；應另查現地適用規範~IEC 62278-2:2025, systems approach to railway safety; local applicable rules require separate checking"
+  ],
+  "landmarks": [
+    "武漢—廣州高速鐵路~Wuhan–Guangzhou high-speed railway",
+    "青藏鐵路凍土地段~Qinghai–Tibet Railway permafrost sections"
+  ],
+  "place": {
+    "name": "廣州南站周邊~Guangzhou South station area",
+    "country": "中國~China",
+    "lat": 22.989,
+    "lng": 113.269,
+    "query": "Guangzhou South station area"
+  },
+  "sources": [
+    {
+      "key": "b315-history",
+      "title": "專案官方歷史與路網背景",
+      "titleEn": "Official project history and network context",
+      "publisher": "China Railway Group",
+      "url": "https://cqtz.crec.cn/zgztywz/core_business/infrastructure_construction/railways/index.html",
+      "sourceType": "primary",
+      "scope": "支援已標示的公開歷史事件；不提供本課程假想數值，也不證實所有模型適用於現地。",
+      "scopeEn": "Supports stated public historical events; does not supply invented numerical inputs or validate all models for the actual site."
+    },
+    {
+      "key": "b315-iec-rams-1",
+      "title": "鐵道 RAMS 第一部分通用程序",
+      "titleEn": "Railway RAMS Part 1 generic process",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "IEC 62278-1:2025 書目與通用程序範圍；作為需求及證據整理參考，不宣稱本案採用特定條款。",
+      "scopeEn": "Bibliographic edition and generic process scope of IEC 62278-1:2025; a requirements and evidence reference, not a claim about project-specific clauses."
+    },
+    {
+      "key": "b315-iec-rams-2",
+      "title": "鐵道 RAMS 第二部分安全系統方法",
+      "titleEn": "Railway RAMS Part 2 systems approach to safety",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/79793",
+      "sourceType": "primary",
+      "scope": "IEC 62278-2:2025 書目與安全系統方法範圍；不重製付費標準條文。",
+      "scopeEn": "Bibliographic edition and systems approach scope of IEC 62278-2:2025; no reproduction of paid standard text."
+    },
+    {
+      "key": "b315-background",
+      "title": "機構專案與工程背景補充",
+      "titleEn": "Institutional project and engineering background supplement",
+      "publisher": "Primary institution at documents1.worldbank.org",
+      "url": "https://documents1.worldbank.org/curated/en/933411559841476316/pdf/China-High-Speed-Rail-Development.pdf",
+      "sourceType": "primary",
+      "scope": "補充時間線與路網介面背景；詳細設計參數仍以原始工程文件為準。",
+      "scopeEn": "Additional chronology and network-interface context; detailed design parameters remain subject to original project documentation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "鐵道車輛與基礎設施技術",
+      "businessEn": "Rail vehicles and infrastructure technology",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail.html",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "阿爾斯通",
+      "nameEn": "Alstom",
+      "business": "鐵道車輛與號誌技術",
+      "businessEn": "Rail vehicles and signalling technology",
+      "url": "https://www.alstom.com/solutions",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "related": [
+    "b316",
+    "b322"
+  ],
+  "architectureNodes": [
+    [
+      "路線與土建",
+      "Alignment and civil works"
+    ],
+    [
+      "車輛與接觸",
+      "Vehicle and contact"
+    ],
+    [
+      "牽引供電",
+      "Traction supply"
+    ],
+    [
+      "行車控制",
+      "Movement control"
+    ],
+    [
+      "車站與旅客",
+      "Stations and passengers"
+    ],
+    [
+      "監測與維護",
+      "Monitoring and maintenance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

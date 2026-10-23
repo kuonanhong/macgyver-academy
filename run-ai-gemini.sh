@@ -2,11 +2,20 @@
 # Reads server-side environment/.env only; never accepts a key as a CLI argument.
 set -euo pipefail
 TASK_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+for TASK_ARGUMENT in "$@"; do
+  case "$TASK_ARGUMENT" in
+    -h|--help)
+      printf '%s\n' 'Usage: bash run-ai-gemini.sh [server arguments]' 'Set GEMINI_API_KEY in the private .env or environment.' 'Python priority: MACGYVER_PYTHON, active Conda, python3, python.'
+      exit 0 ;;
+  esac
+done
 TASK_PYTHON=''
-for candidate in python3 python; do
+for candidate in "${MACGYVER_PYTHON:-}" "${CONDA_PREFIX:+${CONDA_PREFIX}/bin/python}" python3 python; do
+  [[ -n "$candidate" ]] || continue
   if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c 'import sys;sys.exit(sys.version_info<(3,10))' 2>/dev/null; then TASK_PYTHON="$candidate"; break; fi
 done
 [[ -n "$TASK_PYTHON" ]] || { echo '需要 Python 3.10+；pip 不能升級 Python。' >&2; exit 1; }
+export MACGYVER_PYTHON="$TASK_PYTHON"
 "$TASK_PYTHON" - "$TASK_ROOT" <<'PY'
 import os,sys
 from pathlib import Path

@@ -34,13 +34,22 @@ class SyncTests(unittest.TestCase):
    root=Path(tmp);public=root/'public/academy';data=public/'data';data.mkdir(parents=True);(root/'tools').mkdir()
    for name in ('build-offline.mjs','restore-featured.mjs'):shutil.copyfile(ROOT/'tools'/name,root/'tools'/name)
    (public/'app.js').write_text('console.log("fixture");')
+   (public/'immersive-v16.js').write_text('export function openScene(){return null;}')
    shutil.copyfile(ROOT/'public/academy/lazy-index-codec.js',public/'lazy-index-codec.js')
+   shutil.copyfile(ROOT/'public/academy/paywall.js',public/'paywall.js')
+   (data/'pricing.json').write_text('{"freeStagesPerCourse":1}')
    (data/'sources.json').write_text('[]');(data/'photos.json').write_text('[]');(data/'release.json').write_text('{}')
    course={'id':'b101','title':'fixture','stages':[{'id':'free','steps':[{'id':'first','instruction':'free body'}]},{'id':'paid','steps':[{'id':'second','instruction':'OWNER_PRIVATE_SENTINEL'}]}]}
    (data/'featured.json').write_text(json.dumps([course]));(data/'catalog.json').write_text(json.dumps([course]))
-   files={'public/academy/data/lazy/courses/old.json':b'OWNER_PRIVATE_SENTINEL','public/academy/offline-data.js':b'OWNER_PRIVATE_SENTINEL'}
+   files={'public/academy/data/lazy/courses/old.json':b'OWNER_PRIVATE_SENTINEL','public/academy/offline-data.js':b'OWNER_PRIVATE_SENTINEL',
+          'public/academy/data/lazy/owner-courses/old.json':b'OWNER_PRIVATE_SENTINEL',
+          'public/academy/data/lazy/owner-resources/old.json':b'OWNER_PRIVATE_SENTINEL',
+          'public/academy/data/lazy/owner-index.json':b'OWNER_PRIVATE_SENTINEL'}
    with patch.object(sync,'ROOT',root):
     result=sync.stub_paid_stages(files,free_stages=1)
     self.assertTrue(any('data/lazy/courses/' in k for k in result));self.assertFalse(any(b'OWNER_PRIVATE_SENTINEL' in v for v in result.values()))
+    self.assertFalse(any(k.startswith('public/academy/data/lazy/owner-') for k in result))
+    manifest=json.loads(result['public/academy/offline-build.json'])
+    self.assertTrue(manifest['protectedExport']);self.assertFalse(any(k.startswith('public/academy/data/lazy/owner-') for k in manifest['outputs']))
     with patch.object(sync.shutil,'which',lambda _:None):self.assertRaises(ValueError,sync.stub_paid_stages,files)
 if __name__=='__main__':unittest.main()

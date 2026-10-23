@@ -1,0 +1,279 @@
+{
+  "id": "b308",
+  "title": "東北新幹線~Tohoku Shinkansen",
+  "discipline": "rail-highspeed",
+  "family": "rail",
+  "focus": "寒冷地區高速列車降雪側風與偵測~Cold region high speed snow crosswind and detection",
+  "summary": "以東北新幹線向日本北部延伸的歷史為背景，設計積雪、低溫與側風並存的教學工況。分析防雪、黏著、道床熱量與輪軌監測之間的取捨，要求每項氣候假設均對應可量測的環境量。~Use the northward development of the Tohoku Shinkansen to frame a teaching scenario combining snow, low temperature and crosswind. Examine tradeoffs among snow management, adhesion, thermal demand and wheel-rail monitoring. Every weather assumption must correspond to a measurable environmental quantity, and a successful single-condition test must be distinguished from validation across a winter operating envelope.",
+  "example": "整合原創算例：單元 1 得 melt_power=13.36 kW；單元 2 得 traction=162 kN；單元 3 得 moment=67.5 kN*m。上述三個結果使用各單元明示的不同邊界，不能任意相加或視為實際工程實測值。以第一單元 snow 的擾動測試，結果改為 14.696 kW；學徒需先比較單位、敏感度和假設，再決定是否要細化模型。以東北新幹線向日本北部延伸的歷史為背景，設計積雪、低溫與側風並存的教學工況。分析防雪、黏著、道床熱量與輪軌監測之間的取捨，要求每項氣候假設均對應可量測的環境量。 最終交付應保留原始輸入、測點時間戳、誤差範圍與無法由簡化式證明的結論。~Integrated original exercise: unit 1 gives melt_power=13.36 kW; unit 2 gives traction=162 kN; unit 3 gives moment=67.5 kN*m. These three results use different explicit boundaries and must not be added or presented as measurements of the real railway. Perturbing snow in the first unit changes its result to 14.696 kW. Compare units, sensitivity and assumptions before deciding which model needs refinement. Use the northward development of the Tohoku Shinkansen to frame a teaching scenario combining snow, low temperature and crosswind. Examine tradeoffs among snow management, adhesion, thermal demand and wheel-rail monitoring. Every weather assumption must correspond to a measurable environmental quantity, and a successful single-condition test must be distinguished from validation across a winter operating envelope. The final submission should retain original inputs, measurement timestamps, uncertainty ranges and conclusions that the simplified expressions cannot establish.",
+  "history": "公開工程與出版時間線：1982 年：東北新幹線初期區間開始營運服務；2011 年：東日本旅客鐵道導入 E5 系隼號服務。這些事件由下列機構來源提供背景，不表示來源公開了本課程所有設計數據。以東北新幹線向日本北部延伸的歷史為背景，設計積雪、低溫與側風並存的教學工況。分析防雪、黏著、道床熱量與輪軌監測之間的取捨，要求每項氣候假設均對應可量測的環境量。 本課程另以可靠度、可用度、可維修度與安全方法整理需求、證據和變更邊界；歷史年份屬可查證事項，數學模型的輸入則是明示的教學假設。~Public engineering and publication chronology: 1982: The initial Tohoku Shinkansen sections entered passenger service; 2011: JR East introduced E5 Hayabusa passenger services. The institutional sources below establish this background; they do not imply publication of every design input in this course. Use the northward development of the Tohoku Shinkansen to frame a teaching scenario combining snow, low temperature and crosswind. Examine tradeoffs among snow management, adhesion, thermal demand and wheel-rail monitoring. Every weather assumption must correspond to a measurable environmental quantity, and a successful single-condition test must be distinguished from validation across a winter operating envelope. The course separately uses reliability, availability, maintainability and safety reasoning to organise requirements, evidence and change boundaries. Historical dates are verifiable facts, whereas numerical model inputs are explicitly declared teaching assumptions.",
+  "units": [
+    {
+      "anchor": "融雪熱量與補給率~Snow-melting heat and supply rate",
+      "title": "融雪熱量與補給率~Snow-melting heat and supply rate",
+      "mechanism": "把積雪融化需要先加熱到熔點再供應潛熱，若雪已在熔點則主要負荷是融化潛熱。積雪落在轉轍器附近會妨礙動作，融化後排水若再凍結也可能重新形成阻塞。 融雪至少要提供冰融化所需潛熱；若初溫低於冰點，還須先加熱到融點。此式僅算宣告的能量項，不能把理想加熱功率直接當成現場融雪產能。 把待融積雪質量與融雪能源分開量測，保留新雪補入量。~Melting snow requires heating it to the melting point and supplying latent heat; snow already at that temperature mainly requires latent heat. Snow near point mechanisms can obstruct movement, while meltwater that refreezes may create another obstruction even after initial melting succeeds. Melting requires latent heat; snow initially below freezing must first be heated to the melting point. This expression includes only declared energy terms, so ideal heater power cannot be equated directly with field snow-removal capacity. Measure snow mass and melting energy separately while recording newly deposited snow.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：snow=0.04 kg/s; latent=334000 J/kg；計算：melt_power=snow*latent/1000=13.36 kW。敏感度：snow 單獨增加百分之十至 0.044 kg/s，其餘固定，結果為 14.696 kW。模型邊界：雪初溫為熔點且無環境散熱；僅理論潛熱功率。~Original hypothetical exercise; none of these inputs are operating parameters of this project: snow=0.04 kg/s; latent=334000 J/kg; calculation: melt_power=snow*latent/1000=13.36 kW. Sensitivity: snow, increase this input alone by ten percent, to 0.044 kg/s, with all other inputs fixed, gives 14.696 kW. Model boundary: Snow initially at melting point with no environmental losses; latent-heat power only.",
+      "verify": "量測進雪質量、融水流率及加熱電功率，記錄周圍溫度與風速，檢查能量帳和排水是否一致。 先稱量積雪並量測初溫，核對加熱時間與電量，另記融水、散熱及持續降雪。~Measure snow mass input, meltwater flow and electrical heating power, log ambient temperature and wind, and check consistency of both the energy balance and drainage. Weigh the snow and measure its initial temperature, verify heating time and electricity, and separately record meltwater, heat loss and continuing snowfall.",
+      "failure": "加熱器正常卻排水結冰時仍可能阻塞道岔；只量加熱器溫度不能確認冰雪已從關鍵間隙移除。 新增降雪和散熱未計入時，融雪速度必然偏向理想值。~A working heater can coexist with frozen drainage and obstructed points; heater temperature alone does not prove snow has cleared the critical gap. Omitting new snowfall and heat loss biases the melting-rate estimate toward ideal conditions.",
+      "misconception": "只要加熱器表面很熱就表示道岔冰雪問題已解決~A hot heater surface proves that snow and ice obstruction at the points is resolved.",
+      "practice": "加入初始低於冰點的顯熱與散熱兩項需求，重新列出能量收支，並為排水再凍結設計獨立的觀察點。 再以本單元 snow 的對照值重算 melt_power，提交含單位、輸入來源和模型不適用條件的結果表。~Add sensible heating below freezing and environmental losses to the balance, then design an independent observation point for drainage refreezing. Also recalculate melt_power for the alternative snow value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "黏著限制與可用牽引力~Adhesion limit and usable traction",
+      "title": "黏著限制與可用牽引力~Adhesion limit and usable traction",
+      "mechanism": "牽引力需要透過接觸斑傳到軌道，簡化上限與黏著係數及動輪法向力相乘。電機能提供更大扭矩不代表輪軌能傳遞；雨水、落葉與速度都會改變接觸狀態，使固定係數模型失去精度。 法向荷重應只取實際驅動接觸點的總量，不能自動使用整列重量。此上限也不描述黏著峰後的滑移控制；若輪重轉移，就要以每個接觸點重新分配。 用濕軌與雪後工況比較可用牽引力，保留輪重分布。~Traction reaches the track through contact patches. A simple upper bound multiplies adhesion coefficient by normal force on driven wheels. More motor torque does not guarantee more transmitted force; rain, leaves and speed alter contact conditions and limit the accuracy of a fixed coefficient. Normal load must include only the driven contacts, not automatically the weight of the whole train. This bound does not describe slip control beyond the adhesion peak. Wheel-load transfer requires a new allocation across individual contact points. Compare traction bounds on wet and post-snow track while retaining wheel-load distribution.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mu=0.18 1; weight=900000 N；計算：traction=mu*weight/1000=162 kN。敏感度：mu 單獨增加百分之十至 0.198 1，其餘固定，結果為 178.2 kN。模型邊界：準靜態庫倫上限與均勻輪重；未建模蠕滑曲線及動態減載。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mu=0.18 1; weight=900000 N; calculation: traction=mu*weight/1000=162 kN. Sensitivity: mu, increase this input alone by ten percent, to 0.198 1, with all other inputs fixed, gives 178.2 kN. Model boundary: Quasi-static Coulomb bound with uniform wheel load; creep curves and dynamic unloading are not modelled.",
+      "verify": "比較輪速、列車獨立速度與牽引電流，找出滑轉開始點；濕乾條件必須分組，不能用全日平均係數掩蓋低黏著尾端。 以獨立地速校對輪周速度，核實輪徑設定，再按乾濕條件與軸荷分類比對。~Compare wheel speed, independently measured train speed and traction current to locate slip onset, separating wet and dry conditions rather than hiding low-adhesion tails in a daily mean. Calibrate wheel-periphery speed against independent ground speed, verify wheel-diameter settings, and compare results by wetness condition and axle load.",
+      "failure": "只提高扭矩可能觸發滑轉並降低可控牽引；輪徑設定誤差也會製造假的滑差，需以獨立地速判別。 先查輪徑與地速誤差，避免把量測偏差當成真滑轉。~Increasing torque can trigger slip and reduce controllable traction; an incorrect wheel diameter also creates apparent slip, requiring independent ground-speed evidence. Check diameter and ground-speed errors before interpreting measurement bias as actual wheel slip.",
+      "misconception": "電機額定扭矩夠大就不需要考慮輪軌黏著~A sufficiently large rated motor torque eliminates the need to consider wheel-rail adhesion.",
+      "practice": "把黏著係數減半並比較動輪荷重調整，計算牽引上限，解釋為何撒砂或控制策略的效果需用試驗而不能只看馬達功率。 再以本單元 mu 的對照值重算 traction，提交含單位、輸入來源和模型不適用條件的結果表。~Halve adhesion and compare a change in driven-wheel load, calculate traction bounds, and explain why sanding or control performance requires tests rather than motor-power data alone. Also recalculate traction for the alternative mu value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "側風力與翻覆力矩~Crosswind force and overturning moment",
+      "title": "側風力與翻覆力矩~Crosswind force and overturning moment",
+      "mechanism": "側風作用可由動壓乘有效側向面積估算，再乘作用高度形成翻覆力矩。車輛質量、重心、風向及橋面遮蔽同時影響輪重分配，單一靜態力矩只能提供比較而非營運風速門檻。 橫向力依側風分量平方變化，列車姿態和地形會改變受風面積及係數。此力尺度不直接給出傾覆門檻；還需重心、輪重減載、懸吊和陣風時間歷程。 把側風平均值與陣風峰值分開，檢查兩種量測時間尺度。~Crosswind force can be estimated from dynamic pressure and effective lateral area, then multiplied by application height for an overturning moment. Mass, centre of gravity, wind direction and shielding affect wheel loading together; one static moment only supports comparison, not an operational wind threshold. Lateral force varies with squared crosswind component, while vehicle attitude and terrain change exposed area and coefficients. The force scale does not directly yield an overturning threshold; centre of gravity, wheel unloading, suspension and gust history remain necessary. Separate mean crosswind and gust peaks and examine their different measurement timescales.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：rho=1.2 kg/m^3; wind=25 m/s; side_area=90 m^2; coefficient=1 1; height=2 m；計算：moment=0.5*rho*wind**2*side_area*coefficient*height/1000=67.5 kN*m。敏感度：wind 單獨增加百分之十至 27.5 m/s，其餘固定，結果為 81.675 kN*m。模型邊界：定常橫風與已假設氣動係數；不含陣風、列車運動與動態輪重減載。~Original hypothetical exercise; none of these inputs are operating parameters of this project: rho=1.2 kg/m^3; wind=25 m/s; side_area=90 m^2; coefficient=1 1; height=2 m; calculation: moment=0.5*rho*wind**2*side_area*coefficient*height/1000=67.5 kN*m. Sensitivity: wind, increase this input alone by ten percent, to 27.5 m/s, with all other inputs fixed, gives 81.675 kN*m. Model boundary: Steady crosswind and assumed aerodynamic coefficient; gusts, train motion and dynamic unloading are excluded.",
+      "verify": "同步記錄沿線風速、風向、列車速度及車體側滾，檢查風速站是否受地形遮蔽，再用多點資料評估代表性。 核對風速計高度與方向，保存陣風時序，將列車姿態與側向加速度放在同一時間軸。~Synchronise wind speed, direction, train speed and carbody roll, inspect terrain shielding at the anemometer, and assess representativeness with multiple locations. Verify anemometer height and orientation, retain gust histories, and align vehicle attitude with lateral acceleration on one timeline.",
+      "failure": "受遮蔽的風速計可能低估橋上曝露，空載與滿載車又具有不同抗翻覆力矩；不能只用最近測站單一讀值。 日平均風速會掩蓋陣風，需檢查量測平均時間與峰值。~A sheltered anemometer can understate exposure on a viaduct, and empty versus loaded vehicles have different restoring moments; the nearest sensor alone is insufficient. Daily mean wind hides gusts; inspect averaging duration and the recorded peaks.",
+      "misconception": "側風翻覆力矩只和風速成正比而不涉及車體高度~Crosswind overturning moment is linear in wind speed and independent of vehicle height.",
+      "practice": "把風速與作用高度各增加一成，對比力矩敏感度，提出能區分地形加速與儀器誤差的多點量測配置。 再以本單元 wind 的對照值重算 moment，提交含單位、輸入來源和模型不適用條件的結果表。~Increase wind speed and load height separately by ten percent, compare moment sensitivity, and propose measurements distinguishing terrain acceleration from instrument error. Also recalculate moment for the alternative wind value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "隧道壓力波傳遞~Tunnel pressure-wave travel",
+      "title": "隧道壓力波傳遞~Tunnel pressure-wave travel",
+      "mechanism": "列車鼻部入隧道產生壓縮擾動，壓力波以接近音速傳播而不是跟著列車速度前進。入口緩衝設計影響波形上升率，波到達出口的時間與車身到達時間屬不同問題，須分開建立量測觸發。 波傳時間由傳播距離除以聲速決定，與列車走完整段的時間不同。此式只預測到達時序而不預測波幅；洞口形狀、列車頭型和反射決定的壓力變化須用其他流動模型。 在連續隧道與洞口測點之間比較聲波傳播時間和列車通過時間，另列波幅問題。~A train nose entering a tunnel creates a compression disturbance whose propagation speed is close to acoustic speed rather than train speed. Entrance treatments affect the rise of the waveform. Wave arrival and train arrival are different events and require separate measurement triggers. Wave travel time is propagation distance divided by sound speed, not the time for the train to traverse the section. This expression predicts arrival timing, not amplitude. Portal geometry, train-nose shape and reflections require additional flow models to predict pressure changes. Compare acoustic travel time with train-passage time between tunnel and portal sensors, treating wave amplitude as a separate problem.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：length=2500 m; sound=340 m/s；計算：travel=length/sound=7.352941 s。敏感度：length 單獨增加百分之十至 2750 m，其餘固定，結果為 8.088235 s。模型邊界：一維線性聲學且音速均勻；不預測波幅、微壓波峰值或反射耗散。~Original hypothetical exercise; none of these inputs are operating parameters of this project: length=2500 m; sound=340 m/s; calculation: travel=length/sound=7.352941 s. Sensitivity: length, increase this input alone by ten percent, to 2750 m, with all other inputs fixed, gives 8.088235 s. Model boundary: One-dimensional linear acoustics with uniform sound speed; amplitude, micro-pressure-wave peaks and reflection losses are not predicted.",
+      "verify": "在入口與出口配置同步壓力計，用互相關估計傳遞時間，並用溫度估算音速；列車里程觸發另存一條通道。 在洞口與洞內配置同步壓力測點，對照列車頭部通過時刻，分辨首波與後續反射。~Use synchronised pressure sensors at both portals, estimate travel time by cross-correlation and sound speed from temperature, and retain train-position triggering separately. Synchronise pressure sensors at the portal and inside the tunnel with nose-passage time, distinguishing the first wave from later reflections.",
+      "failure": "時間戳誤差會被誤認為波速變化；長隧道的反射波與多車事件也可能讓互相關找到錯誤的峰。 單點峰值不足以判別首波，須檢查測點間傳遞時差。~Timestamp error can imitate a wave-speed change, while reflected waves and multiple train events can make cross-correlation select the wrong peak. A single peak cannot identify the first wave; inspect propagation delay between sensors.",
+      "misconception": "隧道壓力波必定與列車以相同速度到達出口~A tunnel pressure wave necessarily reaches the portal at the same speed as the train.",
+      "practice": "比較壓力波與列車兩種到達時間，加入一次端部反射畫出事件圖，說明單一延遲量無法判斷出口微壓波是否超標。 再以本單元 length 的對照值重算 travel，提交含單位、輸入來源和模型不適用條件的結果表。~Compare wave and train arrival times, add one end reflection to the event diagram, and explain why travel time alone cannot establish compliance of portal micro-pressure waves. Also recalculate travel for the alternative length value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "地震偵測提前量~Seismic detection lead time",
+      "title": "地震偵測提前量~Seismic detection lead time",
+      "mechanism": "地震警報的可用提前量來自較快波到達感測點與較慢強震波到達設施之間的差，再扣掉傳輸和判定延遲。距離太近時提前量可能為負，警報並不能讓列車瞬間停止。 此處以相同距離比較兩種波速，屬簡化幾何模型。實際感測站可能不在線路與震源之間；可用時間還包括資料品質檢查及保護命令發送，不能只比較波速。 在警報訊號鏈加入低溫設備延遲，與波到達時間比較。~Usable seismic lead time is the difference between faster-wave detection and slower damaging-wave arrival, less communication and decision delay. A nearby source may leave negative lead time. An alarm therefore cannot make a moving train stop instantaneously, even when the detection itself works correctly. The exercise compares two wave speeds over the same distance and therefore uses simplified geometry. A real sensor may not lie between the source and railway. Available time also includes data-quality checks and protection-command delivery, not only wave propagation. Add cold-equipment delay to the alarm chain and compare it with wave-arrival time.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：distance=100000 m; vp=6000 m/s; vs=3500 m/s; latency=2 s；計算：lead=distance/vs-distance/vp-latency=9.904762 s。敏感度：distance 單獨增加百分之十至 110000 m，其餘固定，結果為 11.09524 s。模型邊界：共線源站幾何與固定波速；不預測震度或實際地震動。~Original hypothetical exercise; none of these inputs are operating parameters of this project: distance=100000 m; vp=6000 m/s; vs=3500 m/s; latency=2 s; calculation: lead=distance/vs-distance/vp-latency=9.904762 s. Sensitivity: distance, increase this input alone by ten percent, to 110000 m, with all other inputs fixed, gives 11.09524 s. Model boundary: Collinear source-station geometry and constant wave speeds; neither intensity nor actual ground motion is predicted.",
+      "verify": "用歷史或合成波形重播整條訊號鏈，記錄偵測、判定、通訊及列車接收時間，量出漏警、誤警和延遲分布。 以完整訊號重播核對每個時間戳，將總延遲分解成判定、網路與列車端處理。~Replay historical or synthetic waveforms through the complete chain, log detection, decision, communication and train receipt times, and measure missed alarms, false alarms and latency distribution. Use full-chain signal replay to verify every timestamp and separate total delay into decision, network and train-side processing components.",
+      "failure": "只驗證感測器觸發而不驗證下游通訊，可能高估提前量；設備共用電源也可能讓兩條名義獨立通道同時失效。 感測成功不等於制動成功，須查列車收到命令後的動作。~Testing the sensor without downstream communication overestimates lead time; a shared power supply can also defeat nominally independent channels simultaneously. Successful detection is not successful braking; inspect the train response after command receipt.",
+      "misconception": "地震預警成功觸發就代表列車必能在強震前完全停下~A successfully triggered earthquake warning guarantees a complete stop before strong shaking.",
+      "practice": "將震源距離縮短並把通訊延遲加倍，計算剩餘提前量；與制動時間比較，提出只在模型範圍內成立的結論。 再以本單元 distance 的對照值重算 lead，提交含單位、輸入來源和模型不適用條件的結果表。~Shorten source distance and double communication delay, calculate remaining lead time, and compare it with braking time without extending the conclusion beyond the model. Also recalculate lead for the alternative distance value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "title": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "mechanism": "自由鋼軌升溫會伸長，完全拘束的理想鋼軌則把熱應變轉成壓應力。鎖定軌溫決定應力零點而空氣溫度不等於鋼軌溫度；實際扣件滑移與軌道側向阻力還會改變穩定問題。 溫差應相對於鋼軌實際無應力狀態，而非任意室溫。完全拘束估算給出軸向應力尺度；當扣件滑移或軌道彎曲出現時，需要位移相容和側向穩定分析。 檢查寒冬鋼軌降溫時應力方向與夏季熱壓縮的差別。~A free rail expands on heating, while an ideally restrained rail converts thermal strain into compression. Stress-free rail temperature defines the reference and differs from air temperature. Fastener slip and lateral track resistance additionally govern stability, beyond the one-dimensional thermal-stress estimate. Temperature change must reference the rail’s actual stress-free state, not an arbitrary room temperature. Full restraint gives an axial stress scale. Fastener slip or track curvature requires displacement compatibility and lateral stability analysis beyond this expression. Examine the stress sign during winter cooling and contrast it with summer compression.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：E=210000 MPa; alpha=1.15e-05 1/K; deltaT=30 K；計算：compression=E*alpha*deltaT=72.45 MPa。敏感度：deltaT 單獨增加百分之十至 33 K，其餘固定，結果為 79.695 MPa。模型邊界：完全軸向拘束與線彈性；不計挫曲、初彎、殘留應力及塑性。~Original hypothetical exercise; none of these inputs are operating parameters of this project: E=210000 MPa; alpha=1.15e-05 1/K; deltaT=30 K; calculation: compression=E*alpha*deltaT=72.45 MPa. Sensitivity: deltaT, increase this input alone by ten percent, to 33 K, with all other inputs fixed, gives 79.695 MPa. Model boundary: Full axial restraint and linear elasticity; buckling, initial curvature, residual stress and plasticity are excluded.",
+      "verify": "量鋼軌本體溫度與縱向應變，記錄鎖定狀態和扣件維修歷程，用不同位置感測器區分局部溫差與整段受限變形。 以鋼軌接觸式溫度計校驗遙測值，核對應變零點，並保留日夜循環的升降溫路徑。~Measure rail temperature and longitudinal strain, record the fastening and maintenance history, and use spatially separated sensors to distinguish local heating from restrained segment behaviour. Calibrate remote readings against a contact rail thermometer, verify strain zero, and retain heating and cooling paths across the daily cycle.",
+      "failure": "把氣溫直接當成鋼軌溫度會錯估熱荷載；扣件鬆動可能降低局部軸力卻增加位移，不能據此宣稱整體穩定性改善。 需查鎖定軌溫紀錄，不能以當天最低氣溫當無應力點。~Substituting air temperature misstates thermal loading; loose fasteners may reduce local force while increasing displacement, which does not prove improved overall stability. Check stress-free-temperature records rather than using the day’s minimum air temperature as the reference.",
+      "misconception": "完全拘束的鋼軌升溫仍會無應力地自由伸長~A fully restrained rail still expands freely without stress when heated.",
+      "practice": "畫出自由、部分拘束與完全拘束三種邊界，重算熱變形或應力，標明哪些輸入必須由鋼軌溫度及扣件試驗取得。 再以本單元 deltaT 的對照值重算 compression，提交含單位、輸入來源和模型不適用條件的結果表。~Draw free, partial and full restraint boundaries, recalculate expansion or stress, and identify inputs requiring rail-temperature measurements and fastener tests. Also recalculate compression for the alternative deltaT value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "空間波長與量測取樣~Spatial wavelength and sampling",
+      "title": "空間波長與量測取樣~Spatial wavelength and sampling",
+      "mechanism": "移動量測車把軌道空間波長轉成時間頻率，速度除波長得到激振頻率。要避免混疊，取樣率需高於訊號頻寬兩倍並搭配抗混疊濾波；提高取樣率本身不能修正輪滑造成的里程誤差。 取樣頻率超過訊號最高頻率兩倍是重建的必要起點，仍需要抗混疊濾波及足夠振幅精度。尖峰與非平穩事件的要求不同，應從量測目的回推頻寬與記錄長度。 用列車通過雪害監測點的訊號決定所需取樣頻率。~A moving inspection vehicle converts track wavelength into temporal frequency through speed divided by wavelength. Avoiding aliasing requires a sampling rate above twice the signal bandwidth and an antialias filter. A higher sample rate alone cannot correct distance errors caused by wheel slip. Sampling above twice the highest signal frequency is a starting condition for reconstruction, but anti-alias filtering and amplitude accuracy remain necessary. Peaks and nonstationary events have different needs; derive bandwidth and recording duration from the measurement objective. Use passage signals at a snow-monitoring point to determine the required sampling frequency.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：speed=50 m/s; wavelength=2 m；計算：nyquist_lower_bound=2*speed/wavelength=50 samples/s。敏感度：speed 單獨增加百分之十至 55 m/s，其餘固定，結果為 55 samples/s。模型邊界：單一最短波長的理想Nyquist下界；實務需留濾波與取樣裕度。~Original hypothetical exercise; none of these inputs are operating parameters of this project: speed=50 m/s; wavelength=2 m; calculation: nyquist_lower_bound=2*speed/wavelength=50 samples/s. Sensitivity: speed, increase this input alone by ten percent, to 55 m/s, with all other inputs fixed, gives 55 samples/s. Model boundary: Ideal Nyquist lower bound for one shortest wavelength; practical filters and sampling need additional margin.",
+      "verify": "用已知波長的校驗訊號檢查量測鏈，對照獨立里程基準，並在不同車速下比較空間頻譜是否一致。 用已知頻率訊號測試整條量測鏈，檢查抗混疊濾波器、時鐘誤差與遺漏樣本。~Check the chain with a known-wavelength reference, compare an independent distance datum, and inspect whether spatial spectra agree at different vehicle speeds. Test the complete measurement chain with a known-frequency signal, checking anti-alias filtering, clock error and missing samples.",
+      "failure": "不足取樣會把短波缺陷偽裝成長波，里程跳動又會改變重採樣位置；兩者需分別診斷。 降低取樣率後出現新低頻峰值，應先查混疊而非機械故障。~Undersampling disguises short-wave defects as long waves, while distance jumps alter resampling positions; the two mechanisms require separate diagnosis. A new low-frequency peak after downsampling requires checking aliasing before diagnosing a mechanical fault.",
+      "misconception": "量測車速度提高時仍可永遠沿用原本取樣率~The original sampling rate remains sufficient at every increased inspection speed.",
+      "practice": "把速度提高一成並把最短波長減半，計算取樣率需求，繪出混疊示意後提出抗混疊濾波的頻寬要求。 再以本單元 speed 的對照值重算 nyquist_lower_bound，提交含單位、輸入來源和模型不適用條件的結果表。~Increase speed by ten percent and halve the shortest wavelength, calculate sampling needs, illustrate aliasing, and specify the required antialias-filter bandwidth. Also recalculate nyquist_lower_bound for the alternative speed value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "軸承故障頻率與轉速~Bearing signatures and rotational speed",
+      "title": "軸承故障頻率與轉速~Bearing signatures and rotational speed",
+      "mechanism": "滾動軸承幾何決定故障衝擊相對轉速的頻率倍率，教學以已假設倍率乘轉速辨認階次。車速變動時固定頻率譜會展寬，階次追蹤可保留與轉速同步的訊號，但仍需排除輪軌激振。 幾何故障頻率是理想滾動關係，實際滑移會移動頻率或展寬峰值。量測頻譜需和當時轉速一起解讀，不能把固定頻率峰直接指派給某個故障部位。 把低溫黏度與軸承頻率特徵分開，避免直接由振幅推論損傷。~Bearing geometry determines fault-impact orders relative to rotational speed. Multiplying an assumed order by rotation frequency illustrates diagnosis. Variable speed smears fixed-frequency spectra; order tracking retains speed-synchronous signatures but must still distinguish wheel-rail excitation from bearing faults. Geometric defect frequencies assume ideal rolling; slip can shift or broaden peaks. Interpret the measured spectrum together with contemporaneous rotation speed instead of assigning a fixed peak directly to a defect location. Separate low-temperature lubrication effects from bearing frequency features instead of inferring damage from amplitude alone.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：rpm=600 rev/min; order=4.5 cycles/rev；計算：signature=rpm/60*order=45 Hz。敏感度：rpm 單獨增加百分之十至 660 rev/min，其餘固定，結果為 49.5 Hz。模型邊界：已知故障階次且轉速穩定；不代表某型軸承真實幾何。~Original hypothetical exercise; none of these inputs are operating parameters of this project: rpm=600 rev/min; order=4.5 cycles/rev; calculation: signature=rpm/60*order=45 Hz. Sensitivity: rpm, increase this input alone by ten percent, to 660 rev/min, with all other inputs fixed, gives 49.5 Hz. Model boundary: Assumed fault order and steady rotation; not the geometry of a particular bearing type.",
+      "verify": "同步量測振動與轉速脈波，對比負載改變後的階次峰，並用溫度與潤滑紀錄作獨立佐證。 以獨立轉速計核對每段資料，保留頻譜解析度和窗函數，並比較不同轉速的階次。~Synchronise vibration and tachometer pulses, compare order peaks under changing load, and use temperature and lubrication records as independent corroboration. Verify each data segment with an independent tachometer, retain spectral resolution and window function, and compare orders across rotation speeds.",
+      "failure": "輪扁或軌道接縫也能產生週期衝擊，單一頻譜峰不能唯一定位軸承損傷；速度估計錯誤則會使階次偏移。 速度改變後峰值若不隨階次移動，須檢查其他激振來源。~Wheel flats and track joints also create periodic impacts, so one spectral peak cannot uniquely identify bearing damage; wrong speed estimates shift calculated orders. If a peak does not track rotational order as speed changes, inspect other excitation sources.",
+      "misconception": "頻譜中出現一個週期峰就一定證明軸承已損壞~One periodic spectral peak necessarily proves that a bearing is damaged.",
+      "practice": "用兩種轉速檢查同一峰是否維持固定階次，再加入輪軌接縫頻率，比較哪些特徵能區分故障來源。 再以本單元 rpm 的對照值重算 signature，提交含單位、輸入來源和模型不適用條件的結果表。~Use two speeds to test whether a peak maintains constant order, add a rail-joint excitation frequency, and compare features that distinguish the sources. Also recalculate signature for the alternative rpm value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "延遲與制動距離~Delay and braking distance",
+      "title": "延遲與制動距離~Delay and braking distance",
+      "mechanism": "列車在控制命令傳遞與煞車建立期間仍向前行駛，減速段才把動能耗散；因此停車距離包含延遲距離與減速距離。速度平方項說明高速時少量速度誤差會被放大，固定減速度只能作第一輪界限估算。 延遲項與速度成正比，減速項與速度平方成正比；把兩項分開後，才能選擇改善控制延遲或增加有效制動的方案。若存在坡度，應另加沿坡重力，不能只改總距離。 對降雪後低黏著情境重新估算制動距離的保守界限。~A train continues moving while the command propagates and brake force builds. Only the deceleration phase removes kinetic energy, so stopping distance includes both a delay term and a braking term. The squared speed dependence amplifies speed uncertainty; constant deceleration is only an initial bounding approximation. The delay term is linear in speed and the deceleration term is quadratic. Separating them reveals whether control latency or effective braking deserves attention. A gradient requires an added gravitational component, not an arbitrary adjustment to the final distance. Re-estimate a conservative braking-distance bound for reduced adhesion after snowfall.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：v=70 m/s; delay=2.5 s; a=0.7 m/s^2；計算：distance=v*delay+v*v/(2*a)=3675 m。敏感度：v 單獨增加百分之十至 77 m/s，其餘固定，結果為 4427.5 m。模型邊界：水平直線、定減速、無風；沒有建立黏著分布與煞車熱衰退。~Original hypothetical exercise; none of these inputs are operating parameters of this project: v=70 m/s; delay=2.5 s; a=0.7 m/s^2; calculation: distance=v*delay+v*v/(2*a)=3675 m. Sensitivity: v, increase this input alone by ten percent, to 77 m/s, with all other inputs fixed, gives 4427.5 m. Model boundary: Level straight track and constant deceleration; adhesion variation and thermal fade are excluded.",
+      "verify": "對齊速度、煞車缸壓力與里程的時間戳，分開辨識命令延遲及穩態減速度，再以積分速度的距離交叉檢查。 用獨立里程或地速核對輪速積分，報告濕乾軌差異及停車距離的重複試驗範圍。~Align speed, brake-cylinder pressure and distance timestamps. Identify command delay separately from steady deceleration and cross-check distance by integrating measured speed. Check integrated wheel speed against independent distance or ground speed, and report wet-dry differences and repeated stopping-distance ranges.",
+      "failure": "輪滑保護介入與濕軌會降低實際減速度；感測時間不同步也能製造假延遲，須以第二個時鐘和輪速紀錄區分。 應比較壓力建立與地速下降先後，避免誤判煞車故障。~Wheel-slide protection and wet rails can reduce deceleration; unsynchronised sensors can imitate a delay, requiring an independent clock and wheel-speed records. Compare pressure build-up with ground-speed decay before diagnosing a brake fault.",
+      "misconception": "速度增加一成時制動距離必定也只增加一成~A ten percent speed increase must increase braking distance by only ten percent.",
+      "practice": "分別增加延遲與初速，畫出兩條停車曲線；寫出哪個區段對各參數敏感，以及需要哪些現場資料才可建立保護曲線。 再以本單元 v 的對照值重算 distance，提交含單位、輸入來源和模型不適用條件的結果表。~Increase delay and initial speed separately, plot both stopping curves, identify the sensitive phase, and list the field evidence needed before defining a protection curve. Also recalculate distance for the alternative v value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "濾網壓差與通風功率~Filter pressure drop and fan power",
+      "title": "濾網壓差與通風功率~Filter pressure drop and fan power",
+      "mechanism": "風機必須克服風道與濾網壓差才能輸送空氣，輸入功率近似為壓差乘體積流率再除效率。積塵提高阻力但工作點會沿風機曲線改變，因此固定風量假設只是一種受控比較。 風機功率等於壓力差乘體積流率再除以宣告效率，壓力與流量必須使用同一工作點。積塵使阻力和風機工作點共同改變，固定流量算例不能預測未控制風量時的耗電。 比較進氣濾材積雪前後壓差，檢查量測是否受風量改變干擾。~A fan must overcome duct and filter pressure losses to move air. Input power is approximately pressure rise times volume flow divided by efficiency. Dust raises resistance but shifts the operating point on the fan curve, so fixed flow is only a controlled comparison. Fan power equals pressure difference times volume flow divided by the declared efficiency. Pressure and flow must refer to one operating point. Dust changes resistance and the fan operating point together, so a fixed-flow example cannot predict consumption without airflow control. Compare intake-filter pressure drop before and after snow accumulation and control for airflow changes.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：pressure=350 Pa; flow=2.5 m^3/s; eta=0.6 1；計算：fan_power=pressure*flow/eta=1458.333 W。敏感度：pressure 單獨增加百分之十至 385 Pa，其餘固定，結果為 1604.167 W。模型邊界：固定風量與總效率；不包含風機曲線移動和馬達熱限制。~Original hypothetical exercise; none of these inputs are operating parameters of this project: pressure=350 Pa; flow=2.5 m^3/s; eta=0.6 1; calculation: fan_power=pressure*flow/eta=1458.333 W. Sensitivity: pressure, increase this input alone by ten percent, to 385 Pa, with all other inputs fixed, gives 1604.167 W. Model boundary: Fixed flow and overall efficiency; fan-curve shifts and motor thermal limits are excluded.",
+      "verify": "同時量濾網前後壓差、實際風量和電功率，用乾淨濾網建立基準，並記錄沙塵、濕度與維修時間。 校正取壓點與風量計，同步量測電功率，核對效率是否包含馬達與驅動器損失。~Measure differential pressure, actual flow and input power together, establish a clean-filter baseline, and record dust exposure, humidity and maintenance timing. Calibrate pressure taps and airflow measurement, record electric power simultaneously, and check whether efficiency includes motor and drive losses.",
+      "failure": "旁路漏氣可能讓壓差降低但過濾品質變差；只以壓差低判定良好，會忽略濾網破損和密封失效。 壓差很低也可能是旁通，須核對濾材密封及實際風量。~Bypass leakage may lower pressure drop while worsening filtration; a low drop alone can therefore hide a damaged filter or failed seal. Very low pressure drop can indicate bypass; check filter sealing and actual airflow.",
+      "misconception": "濾網壓差越低就一定表示過濾狀況越好~Lower filter pressure drop always means better filtration condition.",
+      "practice": "對堵塞與旁路兩個情境列出壓差、風量和粒子濃度的預期方向，設計三項量測共同判斷而非只靠單一數字。 再以本單元 pressure 的對照值重算 fan_power，提交含單位、輸入來源和模型不適用條件的結果表。~Predict pressure drop, airflow and particle concentration for clogging and bypass scenarios, then design a three-measurement diagnosis instead of relying on one number. Also recalculate fan_power for the alternative pressure value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    }
+  ],
+  "facts": [
+    "已查證背景：1982 年，東北新幹線初期區間開始營運服務。~Verified background: 1982, The initial Tohoku Shinkansen sections entered passenger service.",
+    "教學假設，單元 1：snow=0.04 kg/s，計算 melt_power=13.36 kW；非實測性能。~Teaching assumption, unit 1: snow=0.04 kg/s, calculated melt_power=13.36 kW; not measured performance.",
+    "教學假設，單元 2：mu=0.18 1，計算 traction=162 kN；非實測性能。~Teaching assumption, unit 2: mu=0.18 1, calculated traction=162 kN; not measured performance.",
+    "教學假設，單元 3：wind=25 m/s，計算 moment=67.5 kN*m；非實測性能。~Teaching assumption, unit 3: wind=25 m/s, calculated moment=67.5 kN*m; not measured performance.",
+    "教學假設，單元 4：length=2500 m，計算 travel=7.352941 s；非實測性能。~Teaching assumption, unit 4: length=2500 m, calculated travel=7.352941 s; not measured performance.",
+    "教學假設，單元 5：distance=100000 m，計算 lead=9.904762 s；非實測性能。~Teaching assumption, unit 5: distance=100000 m, calculated lead=9.904762 s; not measured performance."
+  ],
+  "timeline": [
+    {
+      "year": "1982",
+      "event": "東北新幹線初期區間開始營運服務~The initial Tohoku Shinkansen sections entered passenger service"
+    },
+    {
+      "year": "2011",
+      "event": "東日本旅客鐵道導入 E5 系隼號服務~JR East introduced E5 Hayabusa passenger services"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第二部分安全系統方法~IEC published the revised railway RAMS Part 2 systems approach to safety"
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025，鐵道 RAMS 通用程序；方法參考，不等同本案合約要求~IEC 62278-1:2025, railway RAMS generic process; methodological reference, not a project contract requirement",
+    "IEC 62278-2:2025，鐵道安全系統方法；應另查現地適用規範~IEC 62278-2:2025, systems approach to railway safety; local applicable rules require separate checking"
+  ],
+  "landmarks": [
+    "東北新幹線~Tohoku Shinkansen",
+    "九州新幹線~Kyushu Shinkansen"
+  ],
+  "place": {
+    "name": "仙台新幹線站周邊~Sendai Shinkansen station area",
+    "country": "日本~Japan",
+    "lat": 38.261,
+    "lng": 140.882,
+    "query": "Sendai Shinkansen station area"
+  },
+  "sources": [
+    {
+      "key": "b308-history",
+      "title": "專案官方歷史與路網背景",
+      "titleEn": "Official project history and network context",
+      "publisher": "East Japan Railway Company",
+      "url": "https://www.jreast.co.jp/en/multi/routemaps/tohokushinkansen.html",
+      "sourceType": "primary",
+      "scope": "支援已標示的公開歷史事件；不提供本課程假想數值，也不證實所有模型適用於現地。",
+      "scopeEn": "Supports stated public historical events; does not supply invented numerical inputs or validate all models for the actual site."
+    },
+    {
+      "key": "b308-iec-rams-1",
+      "title": "鐵道 RAMS 第一部分通用程序",
+      "titleEn": "Railway RAMS Part 1 generic process",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "IEC 62278-1:2025 書目與通用程序範圍；作為需求及證據整理參考，不宣稱本案採用特定條款。",
+      "scopeEn": "Bibliographic edition and generic process scope of IEC 62278-1:2025; a requirements and evidence reference, not a claim about project-specific clauses."
+    },
+    {
+      "key": "b308-iec-rams-2",
+      "title": "鐵道 RAMS 第二部分安全系統方法",
+      "titleEn": "Railway RAMS Part 2 systems approach to safety",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/79793",
+      "sourceType": "primary",
+      "scope": "IEC 62278-2:2025 書目與安全系統方法範圍；不重製付費標準條文。",
+      "scopeEn": "Bibliographic edition and systems approach scope of IEC 62278-2:2025; no reproduction of paid standard text."
+    },
+    {
+      "key": "b308-background",
+      "title": "機構專案與工程背景補充",
+      "titleEn": "Institutional project and engineering background supplement",
+      "publisher": "Primary institution at www.jreast.co.jp",
+      "url": "https://www.jreast.co.jp/e/press/20101101/",
+      "sourceType": "primary",
+      "scope": "補充時間線與路網介面背景；詳細設計參數仍以原始工程文件為準。",
+      "scopeEn": "Additional chronology and network-interface context; detailed design parameters remain subject to original project documentation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "鐵道車輛與基礎設施技術",
+      "businessEn": "Rail vehicles and infrastructure technology",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail.html",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "阿爾斯通",
+      "nameEn": "Alstom",
+      "business": "鐵道車輛與號誌技術",
+      "businessEn": "Rail vehicles and signalling technology",
+      "url": "https://www.alstom.com/solutions",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "related": [
+    "b309",
+    "b315"
+  ],
+  "architectureNodes": [
+    [
+      "路線與土建",
+      "Alignment and civil works"
+    ],
+    [
+      "車輛與接觸",
+      "Vehicle and contact"
+    ],
+    [
+      "牽引供電",
+      "Traction supply"
+    ],
+    [
+      "行車控制",
+      "Movement control"
+    ],
+    [
+      "車站與旅客",
+      "Stations and passengers"
+    ],
+    [
+      "監測與維護",
+      "Monitoring and maintenance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

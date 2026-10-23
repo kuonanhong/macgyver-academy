@@ -102,9 +102,14 @@ def stub_paid_stages(files: dict[str, bytes], free_stages: int = 1) -> dict[str,
         (public/'data/catalog.json').write_bytes(out['public/academy/data/catalog.json'])
         subprocess.run([node,str(build/'tools/build-offline.mjs')],check=True,capture_output=True,text=True)
         manifest=json.loads((public/'offline-build.json').read_text())
+        # V16 builds separate owner payloads even from a stripped input. They
+        # belong only to the owner's full package, never to a protected export.
+        manifest['outputs']={name:digest for name,digest in manifest['outputs'].items()
+                             if not name.startswith('public/academy/data/lazy/owner-')}
+        manifest['protectedExport']=True
         for name in manifest['outputs']:
             out[name]=(build/name).read_bytes()
-        out['public/academy/offline-build.json']=(public/'offline-build.json').read_bytes()
+        out['public/academy/offline-build.json']=(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n').encode()
     out.pop('public/academy/data/featured.json',None)
     return out
 
@@ -161,7 +166,10 @@ def main() -> int:
             git(work, 'init', '-q'); git(work, 'symbolic-ref', 'HEAD', f'refs/heads/{a.branch}'); git(work, 'remote', 'add', 'origin', repo)
     remote = {}
     if git(work, 'rev-parse', '--verify', '-q', 'HEAD', check=False):
-        for line in git(work, 'ls-tree', '-r', '--full-tree', 'HEAD').splitlines():
+        # NUL records preserve Unicode, tabs and newlines without Git's C quoting.
+        for line in git(work, 'ls-tree', '-rz', '--full-tree', 'HEAD').split('\0'):
+            if not line:
+                continue
             meta, path = line.split('\t', 1)
             remote[path] = meta.split()[2]
     previous={}

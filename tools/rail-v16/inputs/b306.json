@@ -1,0 +1,269 @@
+{
+  "id": "b306",
+  "title": "東海道新幹線~Tokaido Shinkansen",
+  "discipline": "rail-highspeed",
+  "family": "rail",
+  "focus": "高速成熟走廊密集班表與車輛動力~Dense mature high speed timetables and vehicle dynamics",
+  "summary": "以東海道新幹線的成熟高速走廊為背景，建立服務密度高且有快慢停站差異的教學班表。將空氣阻力、受電弓、制動及車輛懸吊與運能相連，檢查提高速度後是否反而減少維護或恢復裕度。~Use the mature Tokaido corridor to construct a dense high-speed timetable with different stopping patterns. Connect aerodynamic resistance, current collection, braking and suspension to delivered capacity. Investigate whether raising speed consumes maintenance or recovery margins, and require an explicit distinction between historical project facts and the invented vehicle parameters used in the exercises.",
+  "example": "整合原創算例：單元 1 得 power=2382.392 kW；單元 2 得 wave_speed=138.1699 m/s；單元 3 得 distance=4042.5 m。上述三個結果使用各單元明示的不同邊界，不能任意相加或視為實際工程實測值。以第一單元 v 的擾動測試，結果改為 3170.964 kW；學徒需先比較單位、敏感度和假設，再決定是否要細化模型。以東海道新幹線的成熟高速走廊為背景，建立服務密度高且有快慢停站差異的教學班表。將空氣阻力、受電弓、制動及車輛懸吊與運能相連，檢查提高速度後是否反而減少維護或恢復裕度。 最終交付應保留原始輸入、測點時間戳、誤差範圍與無法由簡化式證明的結論。~Integrated original exercise: unit 1 gives power=2382.392 kW; unit 2 gives wave_speed=138.1699 m/s; unit 3 gives distance=4042.5 m. These three results use different explicit boundaries and must not be added or presented as measurements of the real railway. Perturbing v in the first unit changes its result to 3170.964 kW. Compare units, sensitivity and assumptions before deciding which model needs refinement. Use the mature Tokaido corridor to construct a dense high-speed timetable with different stopping patterns. Connect aerodynamic resistance, current collection, braking and suspension to delivered capacity. Investigate whether raising speed consumes maintenance or recovery margins, and require an explicit distinction between historical project facts and the invented vehicle parameters used in the exercises. The final submission should retain original inputs, measurement timestamps, uncertainty ranges and conclusions that the simplified expressions cannot establish.",
+  "history": "公開工程與出版時間線：1964 年：東海道新幹線於十月開始營運服務；2024 年：營運者年度報告回顧東海道新幹線六十年。這些事件由下列機構來源提供背景，不表示來源公開了本課程所有設計數據。以東海道新幹線的成熟高速走廊為背景，建立服務密度高且有快慢停站差異的教學班表。將空氣阻力、受電弓、制動及車輛懸吊與運能相連，檢查提高速度後是否反而減少維護或恢復裕度。 本課程另以可靠度、可用度、可維修度與安全方法整理需求、證據和變更邊界；歷史年份屬可查證事項，數學模型的輸入則是明示的教學假設。~Public engineering and publication chronology: 1964: The Tokaido Shinkansen began passenger service in October; 2024: The operator annual report reviewed sixty years of the Tokaido Shinkansen. The institutional sources below establish this background; they do not imply publication of every design input in this course. Use the mature Tokaido corridor to construct a dense high-speed timetable with different stopping patterns. Connect aerodynamic resistance, current collection, braking and suspension to delivered capacity. Investigate whether raising speed consumes maintenance or recovery margins, and require an explicit distinction between historical project facts and the invented vehicle parameters used in the exercises. The course separately uses reliability, availability, maintainability and safety reasoning to organise requirements, evidence and change boundaries. Historical dates are verifiable facts, whereas numerical model inputs are explicitly declared teaching assumptions.",
+  "units": [
+    {
+      "anchor": "空氣阻力與牽引功率~Aerodynamic drag and traction power",
+      "title": "空氣阻力與牽引功率~Aerodynamic drag and traction power",
+      "mechanism": "高速列車的空氣阻力與速度平方成正比，而克服此阻力所需功率再乘一次速度，形成三次方敏感度。有效阻力面積包含外形與附屬物影響；會車、隧道及側風會使定常自由場模型失效。 阻力是速度平方關係，而牽引功率還要乘一次速度。把逆風納入時應使用相對空氣速度；滾動阻力與坡度功率是另外的能量途徑，不能被此氣動項取代。 比較速度提升帶來的空氣阻力功率與節省的行車時間。~Aerodynamic drag scales with speed squared, and the power needed to overcome it adds another speed factor. Effective drag area includes shape and attachments. Passing trains, tunnels and crosswinds can invalidate the steady open-air approximation even when the nominal speed remains unchanged. Drag varies with squared speed, while traction power introduces another speed factor. Headwind requires relative air speed. Rolling resistance and gradient power are separate energy paths and cannot be replaced by this aerodynamic term. Compare aerodynamic power growth with the running time saved by a higher speed.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：rho=1.2 kg/m^3; CdA=10 m^2; v=73.5 m/s；計算：power=0.5*rho*CdA*v**3/1000=2382.392 kW。敏感度：v 單獨增加百分之十至 80.85 m/s，其餘固定，結果為 3170.964 kW。模型邊界：定常靜風且阻力面積固定；僅空氣阻力功率，不含輪軌阻力與效率。~Original hypothetical exercise; none of these inputs are operating parameters of this project: rho=1.2 kg/m^3; CdA=10 m^2; v=73.5 m/s; calculation: power=0.5*rho*CdA*v**3/1000=2382.392 kW. Sensitivity: v, increase this input alone by ten percent, to 80.85 m/s, with all other inputs fixed, gives 3170.964 kW. Model boundary: Steady still air and constant drag area; aerodynamic power only, excluding rolling resistance and conversion losses.",
+      "verify": "在相同編組與天候下做不同速度的惰行分析，記錄風速方向與車頭迎角，避免把坡度造成的加速度誤判成空阻。 同步紀錄風向風速與地速，將穩速段牽引功率扣除可辨識的坡度和輔助負載。~Compare coast-down observations across speeds with the same consist, log wind speed and direction, and separate gradient acceleration from aerodynamic resistance. Record wind vector and ground speed together, then remove identifiable gradient and auxiliary loads from steady-running traction power.",
+      "failure": "車底設備改變或側風會改變有效阻力面積；若只以單一速度校準，仍可能在另一速度得到錯誤牽引需求。 需核對風向，避免把順風和逆風的相對速度互換。~Underbody changes and crosswinds alter effective drag area; fitting one speed can still produce a wrong traction requirement at another speed. Check wind direction to avoid reversing the relative-speed treatment of headwind and tailwind.",
+      "misconception": "速度增加一成時克服空氣阻力的功率只增加一成~A ten percent speed increase raises aerodynamic power by only ten percent.",
+      "practice": "對速度增加一成與阻力面積減少一成各算一次，對比功率節省，並把輪軌阻力另列以避免誇大整列節能比例。 再以本單元 v 的對照值重算 power，提交含單位、輸入來源和模型不適用條件的結果表。~Calculate a ten percent speed increase and a ten percent drag-area reduction separately, compare power changes, and keep rolling resistance separate from whole-train energy savings. Also recalculate power for the alternative v value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "接觸線張力波速~Contact-wire tension wave speed",
+      "title": "接觸線張力波速~Contact-wire tension wave speed",
+      "mechanism": "受電弓擾動會沿接觸線傳播，張力提高使橫波速度上升而線密度增加使波速下降。波速與列車速度的比值提供動態風險線索，但多跨懸掛、吊弦和接觸非線性不能由單根弦模型取代。 線密度決定單位長度的慣性，張力提供恢復作用，因此波速平方與張力成正比。提高張力也改變支承受力；波速裕度只能作篩檢，不能推定接觸力必然均勻。 把接觸線波速裕度與高速受電的動態量測連結。~Pantograph disturbances propagate along the contact wire. Greater tension raises transverse wave speed, whereas greater mass per length lowers it. The ratio to train speed offers a dynamic clue, but multispan suspension, droppers and contact nonlinearity cannot be replaced by a single-string model. Linear density represents inertia per unit length and tension supplies restoring force, so squared wave speed scales with tension. Higher tension also changes support loading. A wave-speed margin is a screening measure, not proof of uniform contact force. Connect contact-wire wave-speed margin to dynamic current-collection measurements.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：tension=21000 N; density=1.1 kg/m；計算：wave_speed=(tension/density)**0.5=138.1699 m/s。敏感度：tension 單獨增加百分之十至 23100 N，其餘固定，結果為 144.9138 m/s。模型邊界：無彎曲剛度的均勻張弦；不是受流合格判定或允許車速。~Original hypothetical exercise; none of these inputs are operating parameters of this project: tension=21000 N; density=1.1 kg/m; calculation: wave_speed=(tension/density)**0.5=138.1699 m/s. Sensitivity: tension, increase this input alone by ten percent, to 23100 N, with all other inputs fixed, gives 144.9138 m/s. Model boundary: Uniform tensioned string without bending stiffness; not a current-collection acceptance rule or permitted train speed.",
+      "verify": "核對補償裝置行程、線溫與張力紀錄，再量測受電弓接觸力統計及離線事件，辨別平均值正常但峰值異常。 核對接觸線張力、單位長度質量及量測位置，並用接觸力和離線事件檢查動態品質。~Check compensation travel, wire temperature and tension, then examine contact-force statistics and loss-of-contact events to distinguish acceptable means from abnormal peaks. Verify contact-wire tension, mass per unit length and measurement location, then examine contact force and loss-of-contact events for dynamic quality.",
+      "failure": "補償裝置卡滯會讓溫度變化改變張力，吊弦鬆弛又會改變局部動態剛度；只讀取靜態高度難以辨識。 波速符合估算仍可能離線，需查看接觸力的時間歷程。~A sticking tensioning device lets temperature change tension, while slack droppers change local dynamic stiffness; static wire height alone cannot identify either mechanism. Agreement in wave-speed estimates does not rule out contact loss; inspect contact-force histories.",
+      "misconception": "只要靜態接觸線高度正確就能保證高速受流品質~Correct static contact-wire height alone guarantees good current collection at high speed.",
+      "practice": "將張力降低一成和線密度增加一成分別計算波速，列出尚需哪些接觸力量測才能討論動態受流品質。 再以本單元 tension 的對照值重算 wave_speed，提交含單位、輸入來源和模型不適用條件的結果表。~Reduce tension and increase wire mass density separately by ten percent, calculate wave speed, and identify the contact-force measurements still needed to assess dynamic collection. Also recalculate wave_speed for the alternative tension value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "延遲與制動距離~Delay and braking distance",
+      "title": "延遲與制動距離~Delay and braking distance",
+      "mechanism": "列車在控制命令傳遞與煞車建立期間仍向前行駛，減速段才把動能耗散；因此停車距離包含延遲距離與減速距離。速度平方項說明高速時少量速度誤差會被放大，固定減速度只能作第一輪界限估算。 延遲項與速度成正比，減速項與速度平方成正比；把兩項分開後，才能選擇改善控制延遲或增加有效制動的方案。若存在坡度，應另加沿坡重力，不能只改總距離。 檢查高速進站前的速度誤差如何放大停車位置誤差。~A train continues moving while the command propagates and brake force builds. Only the deceleration phase removes kinetic energy, so stopping distance includes both a delay term and a braking term. The squared speed dependence amplifies speed uncertainty; constant deceleration is only an initial bounding approximation. The delay term is linear in speed and the deceleration term is quadratic. Separating them reveals whether control latency or effective braking deserves attention. A gradient requires an added gravitational component, not an arbitrary adjustment to the final distance. Examine how speed error before a high-speed approach magnifies stopping-position error.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：v=73.5 m/s; delay=2.5 s; a=0.7 m/s^2；計算：distance=v*delay+v*v/(2*a)=4042.5 m。敏感度：v 單獨增加百分之十至 80.85 m/s，其餘固定，結果為 4871.213 m。模型邊界：水平直線、定減速、無風；沒有建立黏著分布與煞車熱衰退。~Original hypothetical exercise; none of these inputs are operating parameters of this project: v=73.5 m/s; delay=2.5 s; a=0.7 m/s^2; calculation: distance=v*delay+v*v/(2*a)=4042.5 m. Sensitivity: v, increase this input alone by ten percent, to 80.85 m/s, with all other inputs fixed, gives 4871.213 m. Model boundary: Level straight track and constant deceleration; adhesion variation and thermal fade are excluded.",
+      "verify": "對齊速度、煞車缸壓力與里程的時間戳，分開辨識命令延遲及穩態減速度，再以積分速度的距離交叉檢查。 用獨立里程或地速核對輪速積分，報告濕乾軌差異及停車距離的重複試驗範圍。~Align speed, brake-cylinder pressure and distance timestamps. Identify command delay separately from steady deceleration and cross-check distance by integrating measured speed. Check integrated wheel speed against independent distance or ground speed, and report wet-dry differences and repeated stopping-distance ranges.",
+      "failure": "輪滑保護介入與濕軌會降低實際減速度；感測時間不同步也能製造假延遲，須以第二個時鐘和輪速紀錄區分。 應比較壓力建立與地速下降先後，避免誤判煞車故障。~Wheel-slide protection and wet rails can reduce deceleration; unsynchronised sensors can imitate a delay, requiring an independent clock and wheel-speed records. Compare pressure build-up with ground-speed decay before diagnosing a brake fault.",
+      "misconception": "速度增加一成時制動距離必定也只增加一成~A ten percent speed increase must increase braking distance by only ten percent.",
+      "practice": "分別增加延遲與初速，畫出兩條停車曲線；寫出哪個區段對各參數敏感，以及需要哪些現場資料才可建立保護曲線。 再以本單元 v 的對照值重算 distance，提交含單位、輸入來源和模型不適用條件的結果表。~Increase delay and initial speed separately, plot both stopping curves, identify the sensitive phase, and list the field evidence needed before defining a protection curve. Also recalculate distance for the alternative v value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "懸吊固有頻率與激振~Suspension frequency and excitation",
+      "title": "懸吊固有頻率與激振~Suspension frequency and excitation",
+      "mechanism": "彈簧與質量的組合決定垂向固有頻率，增加質量降低頻率而提高剛度使頻率升高。軌道不平順被車速轉換成時間激振；因此相同軌道波長在不同速度下可能接近或遠離共振。 固有頻率和振幅不是同一資訊，阻尼主要影響峰值和衰減。空車與滿載質量不同時，軌道某一波長可能落在不同激振頻率比，應同時考慮速度與載重。 將同一軌道波長轉成不同速度下的懸吊激振頻率。~Spring stiffness and supported mass determine vertical natural frequency. Added mass lowers frequency, while increased stiffness raises it. Train speed converts spatial track irregularity into temporal excitation, so the same wavelength may approach or leave resonance as speed changes. Natural frequency and amplitude contain different information; damping primarily affects peaks and decay. Empty and loaded masses can place one track wavelength at different excitation-frequency ratios. Speed and loading therefore need to be considered together. Convert one track-irregularity wavelength into suspension excitation frequencies at different speeds.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：k=900000 N/m; mass=12600 kg；計算：frequency=(k/mass)**0.5/(2*3.141592653589793)=1.345105 Hz。敏感度：mass 單獨增加百分之十至 13860 kg，其餘固定，結果為 1.282507 Hz。模型邊界：單自由度無阻尼模型；不含俯仰、側滾與輪軌接觸。~Original hypothetical exercise; none of these inputs are operating parameters of this project: k=900000 N/m; mass=12600 kg; calculation: frequency=(k/mass)**0.5/(2*3.141592653589793)=1.345105 Hz. Sensitivity: mass, increase this input alone by ten percent, to 13860 kg, with all other inputs fixed, gives 1.282507 Hz. Model boundary: Undamped single-degree-of-freedom model; pitch, roll and wheel-rail contact are excluded.",
+      "verify": "量測已知質量下的自由衰減與頻率響應，對照不同載客狀態；同步記錄軌道波長和速度，避免混淆激振頻率與固有頻率。 由自由衰減同時辨識頻率及衰減率，檢查感測器是否位於同一振型的有效位置。~Measure free decay and frequency response at known mass, repeat for different passenger loading, and log track wavelength and speed to distinguish excitation from natural frequency. Identify frequency and decay rate together from free decay, and verify that sensors occupy useful positions for the same vibration mode.",
+      "failure": "只調剛度追求低頻隔振可能增加行程需求；阻尼器失效可能保持固有頻率近似不變，卻大幅增加共振振幅。 需量測衰減率，不能以峰值頻率不變排除阻尼故障。~Softening springs for low-frequency isolation increases travel demand; a failed damper may barely change natural frequency while greatly increasing resonant amplitude. Measure decay rate; an unchanged peak frequency cannot exclude a damping fault.",
+      "misconception": "量到固有頻率不變就能證明阻尼器沒有劣化~An unchanged natural frequency proves that the damper has not deteriorated.",
+      "practice": "比較空車與滿載頻率，計算一個指定波長對應的激振速度，並列出阻尼與行程限制對判斷的影響。 再以本單元 mass 的對照值重算 frequency，提交含單位、輸入來源和模型不適用條件的結果表。~Compare empty and loaded frequencies, calculate the speed corresponding to one irregularity wavelength, and explain the influence of damping and suspension travel limits. Also recalculate frequency for the alternative mass value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "快慢車追及與待避~Fast-slow train catch-up",
+      "title": "快慢車追及與待避~Fast-slow train catch-up",
+      "mechanism": "快車在同一路段追上慢車的時間取決於初始間距除相對速度。這個簡單關係能辨認待避需求，但實際時刻表還需加入停站、進路鎖閉與加減速；追及點不是允許兩車接近的安全距離。 追趕時間取決於起始間隔和兩列相對速度，不能只看快車速度。若兩列會停站或受訊號限制，速度必須改成分段函數，並把進路占用放回事件圖。 在不停站與多停站列車之間追蹤追趕與待避時間。~Catch-up time on a shared section is initial separation divided by relative speed. This relation identifies the need for overtaking opportunities, but real timetables also include stops, route locking and acceleration. The meeting point is not a permitted safe separation between trains. Catch-up time depends on starting separation and relative speed, not only the faster train’s speed. If either train stops or encounters signalling constraints, use piecewise speed functions and restore route occupation to the event diagram. Track catch-up and passing time between nonstop and multi-stop services.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：gap=12600 m; fast=60 m/s; slow=40 m/s；計算：catch_time=gap/(fast-slow)=630 s。敏感度：gap 單獨增加百分之十至 13860 m，其餘固定，結果為 693 s。模型邊界：同向恆速且快車較快；不含號誌保護和停站。~Original hypothetical exercise; none of these inputs are operating parameters of this project: gap=12600 m; fast=60 m/s; slow=40 m/s; calculation: catch_time=gap/(fast-slow)=630 s. Sensitivity: gap, increase this input alone by ten percent, to 13860 m, with all other inputs fixed, gives 693 s. Model boundary: Same-direction constant speeds with a faster following train; signalling protection and stops are excluded.",
+      "verify": "用列車運行圖標出快慢車路徑與停站，把相交位置對照可待避地點，並核對道岔與站台實際占用時間。 以逐站到發時刻重建距離時間圖，核對起始間隔和各段速度，並標示待避占用。~Plot fast and slow trajectories including stops, compare intersections with overtaking locations, and verify actual point and platform occupation times. Rebuild a distance-time diagram from station arrivals and departures, verifying initial separation and segment speeds and marking passing occupation.",
+      "failure": "只看區間平均速度可能把追及位置判錯；慢車停站時間波動會改變待避窗口並將延誤傳給快車。 快慢車速度相同時不能用追趕公式分母，須重設工況。~Using section-average speed can misplace the catch-up location; variable stopping time shifts overtaking windows and passes delay to the fast train. Equal train speeds invalidate the catch-up denominator; redefine the operating case.",
+      "misconception": "快慢車平均速度不同也不會影響同線時刻表容量~Different fast and slow train speeds do not affect shared-line timetable capacity.",
+      "practice": "增加慢車停站與快車出發延後各一個情境，畫出時空圖，討論待避線能解決的衝突與仍存在的交叉進路限制。 再以本單元 gap 的對照值重算 catch_time，提交含單位、輸入來源和模型不適用條件的結果表。~Add a slow-train stop and a delayed fast departure as separate cases, draw time-distance diagrams, and distinguish conflicts solved by a loop from remaining crossing-route restrictions. Also recalculate catch_time for the alternative gap value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "班距與有效運能~Headway and usable capacity",
+      "title": "班距與有效運能~Headway and usable capacity",
+      "mechanism": "每小時運能由列車可用容量與通過頻率共同決定，平均班距縮短不代表每個車站都能吸收人流。車門交換、轉乘尖峰與不均勻到站會讓理論運能無法實現，容量計算應同時報告負載分布。 此式計算的是通過指定斷面的名目服務率，不能表示月台能容納多少人。需求在空間或時間上集中時，某站可以過載，即使整條線的平均載客率仍低。 對高密度班表保留逐列負載，避免只看小時平均。~Hourly capacity combines usable train capacity with passage frequency. A shorter average headway does not ensure every station can absorb the passenger flow. Door exchange, transfer surges and irregular arrivals can prevent the theoretical rate from being realised, so occupancy distribution must accompany the capacity estimate. This expression estimates a nominal service rate across a specified section, not how many people a platform can hold. Concentrated demand can overload one station even when average occupancy across the complete line remains relatively low. Retain individual train loads in a dense timetable rather than only an hourly average.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：people=900 persons/train; headway=189 s/train；計算：capacity=3600*people/headway=17142.86 persons/hour。敏感度：headway 單獨增加百分之十至 207.9 s/train，其餘固定，結果為 15584.42 persons/hour。模型邊界：固定班距且每列都能使用指定容量；不包含站台壅塞及服務波動。~Original hypothetical exercise; none of these inputs are operating parameters of this project: people=900 persons/train; headway=189 s/train; calculation: capacity=3600*people/headway=17142.86 persons/hour. Sensitivity: headway, increase this input alone by ten percent, to 207.9 s/train, with all other inputs fixed, gives 15584.42 persons/hour. Model boundary: Fixed headway with the stated usable capacity on every train; platform congestion and service variability are excluded.",
+      "verify": "以連續列車的實際到站時間與逐車廂乘載量重算，將未登車人數保留在隊列，不以列車額定容量代替實際服務量。 逐列核對上車、下車與留下人數的守恆，並以同一計數時間窗比較需求和服務量。~Recalculate from consecutive arrival times and individual car loads. Carry passengers unable to board into the queue instead of treating rated capacity as delivered service. Check conservation of boarding, alighting and remaining passengers for every train, using identical counting windows for demand and delivered service.",
+      "failure": "某一列延誤會使後車追近而前方隊列累積；只看小時平均會漏掉最擁擠列車與長等待尾端。 應查驗未登車隊列，避免把滿載通過當成需求已服務。~A delayed train lets following trains bunch while the upstream queue grows; an hourly mean hides both the fullest train and the long-wait tail. Inspect passengers left behind instead of interpreting a full passing train as demand served.",
+      "misconception": "只要平均班距減半所有乘客的等待時間就一定減半~Halving average headway necessarily halves the waiting time of every passenger.",
+      "practice": "用一組規則班距與一組相同平均值的不規則班距，追蹤每班留下的人數，解釋理論容量與可用容量的差距。 再以本單元 headway 的對照值重算 capacity，提交含單位、輸入來源和模型不適用條件的結果表。~Compare regular and irregular headways with the same mean, track passengers left behind after each departure, and explain the gap between theoretical and usable capacity. Also recalculate capacity for the alternative headway value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "title": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "mechanism": "自由鋼軌升溫會伸長，完全拘束的理想鋼軌則把熱應變轉成壓應力。鎖定軌溫決定應力零點而空氣溫度不等於鋼軌溫度；實際扣件滑移與軌道側向阻力還會改變穩定問題。 溫差應相對於鋼軌實際無應力狀態，而非任意室溫。完全拘束估算給出軸向應力尺度；當扣件滑移或軌道彎曲出現時，需要位移相容和側向穩定分析。 比較曝曬軌段和維修後鎖定軌段的熱應力零點。~A free rail expands on heating, while an ideally restrained rail converts thermal strain into compression. Stress-free rail temperature defines the reference and differs from air temperature. Fastener slip and lateral track resistance additionally govern stability, beyond the one-dimensional thermal-stress estimate. Temperature change must reference the rail’s actual stress-free state, not an arbitrary room temperature. Full restraint gives an axial stress scale. Fastener slip or track curvature requires displacement compatibility and lateral stability analysis beyond this expression. Compare the thermal-stress reference for exposed track and track after maintenance locking.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：E=210000 MPa; alpha=1.15e-05 1/K; deltaT=31.5 K；計算：compression=E*alpha*deltaT=76.0725 MPa。敏感度：deltaT 單獨增加百分之十至 34.65 K，其餘固定，結果為 83.67975 MPa。模型邊界：完全軸向拘束與線彈性；不計挫曲、初彎、殘留應力及塑性。~Original hypothetical exercise; none of these inputs are operating parameters of this project: E=210000 MPa; alpha=1.15e-05 1/K; deltaT=31.5 K; calculation: compression=E*alpha*deltaT=76.0725 MPa. Sensitivity: deltaT, increase this input alone by ten percent, to 34.65 K, with all other inputs fixed, gives 83.67975 MPa. Model boundary: Full axial restraint and linear elasticity; buckling, initial curvature, residual stress and plasticity are excluded.",
+      "verify": "量鋼軌本體溫度與縱向應變，記錄鎖定狀態和扣件維修歷程，用不同位置感測器區分局部溫差與整段受限變形。 以鋼軌接觸式溫度計校驗遙測值，核對應變零點，並保留日夜循環的升降溫路徑。~Measure rail temperature and longitudinal strain, record the fastening and maintenance history, and use spatially separated sensors to distinguish local heating from restrained segment behaviour. Calibrate remote readings against a contact rail thermometer, verify strain zero, and retain heating and cooling paths across the daily cycle.",
+      "failure": "把氣溫直接當成鋼軌溫度會錯估熱荷載；扣件鬆動可能降低局部軸力卻增加位移，不能據此宣稱整體穩定性改善。 需查鎖定軌溫紀錄，不能以當天最低氣溫當無應力點。~Substituting air temperature misstates thermal loading; loose fasteners may reduce local force while increasing displacement, which does not prove improved overall stability. Check stress-free-temperature records rather than using the day’s minimum air temperature as the reference.",
+      "misconception": "完全拘束的鋼軌升溫仍會無應力地自由伸長~A fully restrained rail still expands freely without stress when heated.",
+      "practice": "畫出自由、部分拘束與完全拘束三種邊界，重算熱變形或應力，標明哪些輸入必須由鋼軌溫度及扣件試驗取得。 再以本單元 deltaT 的對照值重算 compression，提交含單位、輸入來源和模型不適用條件的結果表。~Draw free, partial and full restraint boundaries, recalculate expansion or stress, and identify inputs requiring rail-temperature measurements and fastener tests. Also recalculate compression for the alternative deltaT value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "重複荷載與線性損傷帳~Repeated loading and linear damage account",
+      "title": "重複荷載與線性損傷帳~Repeated loading and linear damage account",
+      "mechanism": "疲勞取決於應力範圍與循環次數，線性累積把各級循環數除以對應壽命後相加。此帳務能比較荷載譜，卻忽略順序效應、腐蝕與裂紋成長，損傷和為一不是對任何構件的通用失效保證。 線性累積損傷不保留載重順序，也不能自行描述腐蝕、裂紋閉合和超載效應。疲勞曲線的適用材料與應力定義必須一致，否則算出的壽命比例沒有可比性。 將不同載重循環分組，檢查少量高應力事件的影響。~Fatigue depends on stress range and cycle count. Linear accumulation sums the fraction of life consumed at each level. This accounting compares load spectra but omits sequence effects, corrosion and crack growth; a sum of one is not a universal failure guarantee for every component. Linear cumulative damage does not retain load order and cannot independently describe corrosion, crack closure or overload effects. The fatigue curve must match the material and stress definition; otherwise calculated life fractions are not comparable. Group different loading cycles and inspect the influence of a small number of high-stress events.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：n1=210000 cycles; N1=1000000 cycles; n2=50000 cycles; N2=250000 cycles；計算：damage_index=n1/N1+n2/N2=0.41 1。敏感度：n1 將整數計數增加到 231001至 231001 cycles，其餘固定，結果為 0.431001 1。模型邊界：兩級循環的Miner帳務且壽命輸入已假設；不外推真實剩餘壽命。~Original hypothetical exercise; none of these inputs are operating parameters of this project: n1=210000 cycles; N1=1000000 cycles; n2=50000 cycles; N2=250000 cycles; calculation: damage_index=n1/N1+n2/N2=0.41 1. Sensitivity: n1, increase the integer count to 231001, to 231001 cycles, with all other inputs fixed, gives 0.431001 1. Model boundary: Two-level Miner accounting with assumed life values; no real residual-life prediction is made.",
+      "verify": "以雨流計數整理應變歷程，核對儀器零漂與列車通過事件，保留應力轉換和材料曲線的來源與適用範圍。 從原始應變檢查應力換算與循環計數，核對各級距的次數總和及疲勞曲線來源。~Count strain histories using rainflow analysis, check sensor drift against train passages, and retain the source and applicability of stress conversion and material curves. Check stress conversion and cycle counting from raw strain, verifying total counts across bins and the source of the fatigue curve.",
+      "failure": "漏記少量大應力循環可能比漏記大量小循環更嚴重；焊趾局部應力也不能直接由遠處名義應變代表。 若應力級距漏計，累積損傷偏低不能證明構件仍完好。~Missing a few large cycles can matter more than missing many small ones; nominal strain away from a weld cannot directly represent local weld-toe stress. Understated damage caused by omitted stress bins is not evidence that the component remains sound.",
+      "misconception": "疲勞損傷只取決於通過列車總數而不受應力幅影響~Fatigue damage depends only on train count and is independent of stress range.",
+      "practice": "保持總循環數不變，將部分低應力循環移到高應力級，重算損傷帳並說明需要何種檢測來支持剩餘壽命判讀。 再以本單元 n1 的對照值重算 damage_index，提交含單位、輸入來源和模型不適用條件的結果表。~Keep total cycles fixed while moving some cycles to the higher-stress level, recalculate damage, and identify inspections needed to support any remaining-life interpretation. Also recalculate damage_index for the alternative n1 value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "軸承故障頻率與轉速~Bearing signatures and rotational speed",
+      "title": "軸承故障頻率與轉速~Bearing signatures and rotational speed",
+      "mechanism": "滾動軸承幾何決定故障衝擊相對轉速的頻率倍率，教學以已假設倍率乘轉速辨認階次。車速變動時固定頻率譜會展寬，階次追蹤可保留與轉速同步的訊號，但仍需排除輪軌激振。 幾何故障頻率是理想滾動關係，實際滑移會移動頻率或展寬峰值。量測頻譜需和當時轉速一起解讀，不能把固定頻率峰直接指派給某個故障部位。 以軸承頻譜與轉速比對建立狀態監測的頻率基準。~Bearing geometry determines fault-impact orders relative to rotational speed. Multiplying an assumed order by rotation frequency illustrates diagnosis. Variable speed smears fixed-frequency spectra; order tracking retains speed-synchronous signatures but must still distinguish wheel-rail excitation from bearing faults. Geometric defect frequencies assume ideal rolling; slip can shift or broaden peaks. Interpret the measured spectrum together with contemporaneous rotation speed instead of assigning a fixed peak directly to a defect location. Use bearing spectra and rotation speed together to establish condition-monitoring frequency references.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：rpm=630 rev/min; order=4.5 cycles/rev；計算：signature=rpm/60*order=47.25 Hz。敏感度：rpm 單獨增加百分之十至 693 rev/min，其餘固定，結果為 51.975 Hz。模型邊界：已知故障階次且轉速穩定；不代表某型軸承真實幾何。~Original hypothetical exercise; none of these inputs are operating parameters of this project: rpm=630 rev/min; order=4.5 cycles/rev; calculation: signature=rpm/60*order=47.25 Hz. Sensitivity: rpm, increase this input alone by ten percent, to 693 rev/min, with all other inputs fixed, gives 51.975 Hz. Model boundary: Assumed fault order and steady rotation; not the geometry of a particular bearing type.",
+      "verify": "同步量測振動與轉速脈波，對比負載改變後的階次峰，並用溫度與潤滑紀錄作獨立佐證。 以獨立轉速計核對每段資料，保留頻譜解析度和窗函數，並比較不同轉速的階次。~Synchronise vibration and tachometer pulses, compare order peaks under changing load, and use temperature and lubrication records as independent corroboration. Verify each data segment with an independent tachometer, retain spectral resolution and window function, and compare orders across rotation speeds.",
+      "failure": "輪扁或軌道接縫也能產生週期衝擊，單一頻譜峰不能唯一定位軸承損傷；速度估計錯誤則會使階次偏移。 速度改變後峰值若不隨階次移動，須檢查其他激振來源。~Wheel flats and track joints also create periodic impacts, so one spectral peak cannot uniquely identify bearing damage; wrong speed estimates shift calculated orders. If a peak does not track rotational order as speed changes, inspect other excitation sources.",
+      "misconception": "頻譜中出現一個週期峰就一定證明軸承已損壞~One periodic spectral peak necessarily proves that a bearing is damaged.",
+      "practice": "用兩種轉速檢查同一峰是否維持固定階次，再加入輪軌接縫頻率，比較哪些特徵能區分故障來源。 再以本單元 rpm 的對照值重算 signature，提交含單位、輸入來源和模型不適用條件的結果表。~Use two speeds to test whether a peak maintains constant order, add a rail-joint excitation frequency, and compare features that distinguish the sources. Also recalculate signature for the alternative rpm value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "可用度與修復時間~Availability and repair time",
+      "title": "可用度與修復時間~Availability and repair time",
+      "mechanism": "在簡化更新過程中，可用度是平均故障間隔占故障間隔加修復時間的比例。這個指標不能替代安全性，因為快速恢復服務可能仍保留危險失效；備品、交通與診斷都會影響實際修復時間。 平均故障間隔和平均修復時間必須使用相同服務邊界；備件等待與到場時間若被排除，數字就不能描述旅客看到的中斷。短期樣本也應報告事件數與觀測時間。 將列車故障修復與檢修窗口分開，檢查服務可用性。~In a simplified renewal process, availability is mean time between failures divided by that time plus mean repair time. It does not replace safety: rapidly restoring service may leave a hazardous failure unresolved. Spares, travel and diagnosis all affect actual restoration time. Mean time between failures and mean repair time require a common service boundary. Excluding spare-part waiting or travel time prevents the figure from describing passenger-visible interruption. Short samples should also report event count and observation duration. Separate fault repair from maintenance windows when examining delivered service availability.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：mtbf=1260 h; mttr=4 h；計算：availability=mtbf/(mtbf+mttr)=0.9968354 1。敏感度：mtbf 單獨增加百分之十至 1386 h，其餘固定，結果為 0.9971223 1。模型邊界：兩狀態穩態平均模型；不含計畫維修、共同原因與降級服務品質。~Original hypothetical exercise; none of these inputs are operating parameters of this project: mtbf=1260 h; mttr=4 h; calculation: availability=mtbf/(mtbf+mttr)=0.9968354 1. Sensitivity: mtbf, increase this input alone by ten percent, to 1386 h, with all other inputs fixed, gives 0.9971223 1. Model boundary: Two-state steady-state mean model; planned maintenance, common causes and degraded service quality are excluded.",
+      "verify": "將故障開始、到場、診斷、修復及恢復服務分段記錄，明確定義可用狀態，避免把降級運轉與完整服務混算。 逐項對照故障開始、服務恢復與維修完成時間，公開排除項，並核對總觀測時數。~Record failure onset, arrival, diagnosis, repair and service restoration separately, define the available state, and avoid mixing degraded operation with full service. Cross-check fault start, service restoration and repair completion for each event, disclose exclusions, and verify total observed hours.",
+      "failure": "只縮短更換時間但備品仍缺貨，可用度未必改善；將延後報修時間排除也會讓數字看似漂亮卻失去代表性。 修好設備和恢復服務可能不同時，須分別記錄終點。~Shorter replacement time may not improve availability when spare parts remain unavailable; excluding reporting delays can also create an unrepresentative figure. Equipment repair and service restoration may occur at different times; record both endpoints.",
+      "misconception": "設備可用度高就表示所有安全風險一定很低~High equipment availability necessarily means every safety risk is low.",
+      "practice": "比較提高故障間隔與縮短修復時間兩種措施，用同一故障定義重算，並列出可用度之外需要追蹤的危險失效指標。 再以本單元 mtbf 的對照值重算 availability，提交含單位、輸入來源和模型不適用條件的結果表。~Compare increasing failure interval with reducing repair time under one failure definition, and list hazardous-failure measures that must be tracked separately from availability. Also recalculate availability for the alternative mtbf value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    }
+  ],
+  "facts": [
+    "已查證背景：1964 年，東海道新幹線於十月開始營運服務。~Verified background: 1964, The Tokaido Shinkansen began passenger service in October.",
+    "教學假設，單元 1：v=73.5 m/s，計算 power=2382.392 kW；非實測性能。~Teaching assumption, unit 1: v=73.5 m/s, calculated power=2382.392 kW; not measured performance.",
+    "教學假設，單元 2：tension=21000 N，計算 wave_speed=138.1699 m/s；非實測性能。~Teaching assumption, unit 2: tension=21000 N, calculated wave_speed=138.1699 m/s; not measured performance.",
+    "教學假設，單元 3：v=73.5 m/s，計算 distance=4042.5 m；非實測性能。~Teaching assumption, unit 3: v=73.5 m/s, calculated distance=4042.5 m; not measured performance.",
+    "教學假設，單元 4：mass=12600 kg，計算 frequency=1.345105 Hz；非實測性能。~Teaching assumption, unit 4: mass=12600 kg, calculated frequency=1.345105 Hz; not measured performance.",
+    "教學假設，單元 5：gap=12600 m，計算 catch_time=630 s；非實測性能。~Teaching assumption, unit 5: gap=12600 m, calculated catch_time=630 s; not measured performance."
+  ],
+  "timeline": [
+    {
+      "year": "1964",
+      "event": "東海道新幹線於十月開始營運服務~The Tokaido Shinkansen began passenger service in October"
+    },
+    {
+      "year": "2024",
+      "event": "營運者年度報告回顧東海道新幹線六十年~The operator annual report reviewed sixty years of the Tokaido Shinkansen"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第二部分安全系統方法~IEC published the revised railway RAMS Part 2 systems approach to safety"
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025，鐵道 RAMS 通用程序；方法參考，不等同本案合約要求~IEC 62278-1:2025, railway RAMS generic process; methodological reference, not a project contract requirement",
+    "IEC 62278-2:2025，鐵道安全系統方法；應另查現地適用規範~IEC 62278-2:2025, systems approach to railway safety; local applicable rules require separate checking"
+  ],
+  "landmarks": [
+    "東海道新幹線~Tokaido Shinkansen",
+    "山陽新幹線~Sanyo Shinkansen"
+  ],
+  "place": {
+    "name": "東京新幹線車站周邊~Tokyo Shinkansen station area",
+    "country": "日本~Japan",
+    "lat": 35.681,
+    "lng": 139.767,
+    "query": "Tokyo Shinkansen station area"
+  },
+  "sources": [
+    {
+      "key": "b306-history",
+      "title": "專案官方歷史與路網背景",
+      "titleEn": "Official project history and network context",
+      "publisher": "Central Japan Railway Company",
+      "url": "https://global.jr-central.co.jp/en/company/ir/annualreport/_pdf/annualreport2024-13.pdf",
+      "sourceType": "primary",
+      "scope": "支援已標示的公開歷史事件；不提供本課程假想數值，也不證實所有模型適用於現地。",
+      "scopeEn": "Supports stated public historical events; does not supply invented numerical inputs or validate all models for the actual site."
+    },
+    {
+      "key": "b306-iec-rams-1",
+      "title": "鐵道 RAMS 第一部分通用程序",
+      "titleEn": "Railway RAMS Part 1 generic process",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "IEC 62278-1:2025 書目與通用程序範圍；作為需求及證據整理參考，不宣稱本案採用特定條款。",
+      "scopeEn": "Bibliographic edition and generic process scope of IEC 62278-1:2025; a requirements and evidence reference, not a claim about project-specific clauses."
+    },
+    {
+      "key": "b306-iec-rams-2",
+      "title": "鐵道 RAMS 第二部分安全系統方法",
+      "titleEn": "Railway RAMS Part 2 systems approach to safety",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/79793",
+      "sourceType": "primary",
+      "scope": "IEC 62278-2:2025 書目與安全系統方法範圍；不重製付費標準條文。",
+      "scopeEn": "Bibliographic edition and systems approach scope of IEC 62278-2:2025; no reproduction of paid standard text."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "鐵道車輛與基礎設施技術",
+      "businessEn": "Rail vehicles and infrastructure technology",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail.html",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "阿爾斯通",
+      "nameEn": "Alstom",
+      "business": "鐵道車輛與號誌技術",
+      "businessEn": "Rail vehicles and signalling technology",
+      "url": "https://www.alstom.com/solutions",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "related": [
+    "b307",
+    "b313"
+  ],
+  "architectureNodes": [
+    [
+      "路線與土建",
+      "Alignment and civil works"
+    ],
+    [
+      "車輛與接觸",
+      "Vehicle and contact"
+    ],
+    [
+      "牽引供電",
+      "Traction supply"
+    ],
+    [
+      "行車控制",
+      "Movement control"
+    ],
+    [
+      "車站與旅客",
+      "Stations and passengers"
+    ],
+    [
+      "監測與維護",
+      "Monitoring and maintenance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

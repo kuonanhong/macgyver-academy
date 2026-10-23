@@ -1,0 +1,279 @@
+{
+  "id": "b325",
+  "title": "杜拜地鐵紅線~Dubai Metro Red Line",
+  "discipline": "rail-metro",
+  "family": "station",
+  "focus": "沙漠都市自動捷運熱管理與高架介面~Desert urban automated metro thermal and elevated interfaces",
+  "summary": "以杜拜地鐵紅線為背景，建立高架路段、空調車站與自動列車組成的教學系統。學徒需在砂塵、強日照與尖峰旅客並存時辨認冷卻及濾材維護瓶頸，並檢查旅客轉乘路徑和緊急供電對服務恢復的影響。~Use Dubai Metro Red Line to construct a teaching system with elevated sections, conditioned stations and automated trains. Under dust, intense sunlight and peak arrivals, identify cooling and filter-maintenance bottlenecks. Examine how transfer paths and emergency power affect service restoration, keeping outdoor weather observations separate from measured equipment and rail temperatures.",
+  "example": "整合原創算例：單元 1 得 air_rise=12.81095 K；單元 2 得 deposit=3.55968 kg；單元 3 得 fan_power=1502.083 W。上述三個結果使用各單元明示的不同邊界，不能任意相加或視為實際工程實測值。以第一單元 heat 的擾動測試，結果改為 14.09204 K；學徒需先比較單位、敏感度和假設，再決定是否要細化模型。以杜拜地鐵紅線為背景，建立高架路段、空調車站與自動列車組成的教學系統。學徒需在砂塵、強日照與尖峰旅客並存時辨認冷卻及濾材維護瓶頸，並檢查旅客轉乘路徑和緊急供電對服務恢復的影響。 最終交付應保留原始輸入、測點時間戳、誤差範圍與無法由簡化式證明的結論。~Integrated original exercise: unit 1 gives air_rise=12.81095 K; unit 2 gives deposit=3.55968 kg; unit 3 gives fan_power=1502.083 W. These three results use different explicit boundaries and must not be added or presented as measurements of the real railway. Perturbing heat in the first unit changes its result to 14.09204 K. Compare units, sensitivity and assumptions before deciding which model needs refinement. Use Dubai Metro Red Line to construct a teaching system with elevated sections, conditioned stations and automated trains. Under dust, intense sunlight and peak arrivals, identify cooling and filter-maintenance bottlenecks. Examine how transfer paths and emergency power affect service restoration, keeping outdoor weather observations separate from measured equipment and rail temperatures. The final submission should retain original inputs, measurement timestamps, uncertainty ranges and conclusions that the simplified expressions cannot establish.",
+  "history": "公開工程與出版時間線：2009 年：杜拜地鐵紅線於九月開始旅客服務；2021 年：杜拜地鐵與電車營運維護交由新營運團隊。這些事件由下列機構來源提供背景，不表示來源公開了本課程所有設計數據。以杜拜地鐵紅線為背景，建立高架路段、空調車站與自動列車組成的教學系統。學徒需在砂塵、強日照與尖峰旅客並存時辨認冷卻及濾材維護瓶頸，並檢查旅客轉乘路徑和緊急供電對服務恢復的影響。 本課程另以可靠度、可用度、可維修度與安全方法整理需求、證據和變更邊界；歷史年份屬可查證事項，數學模型的輸入則是明示的教學假設。~Public engineering and publication chronology: 2009: Dubai Metro Red Line began passenger service in September; 2021: A new operating team took over Dubai Metro and Tram operations and maintenance. The institutional sources below establish this background; they do not imply publication of every design input in this course. Use Dubai Metro Red Line to construct a teaching system with elevated sections, conditioned stations and automated trains. Under dust, intense sunlight and peak arrivals, identify cooling and filter-maintenance bottlenecks. Examine how transfer paths and emergency power affect service restoration, keeping outdoor weather observations separate from measured equipment and rail temperatures. The course separately uses reliability, availability, maintainability and safety reasoning to organise requirements, evidence and change boundaries. Historical dates are verifiable facts, whereas numerical model inputs are explicitly declared teaching assumptions.",
+  "units": [
+    {
+      "anchor": "通風散熱與設備溫升~Ventilation cooling and equipment heat",
+      "title": "通風散熱與設備溫升~Ventilation cooling and equipment heat",
+      "mechanism": "流動空氣帶走的顯熱與質量流率和溫升相乘，風量不足會提高排氣溫度。設備房還存在短路循環和局部熱點，平均送排風溫差不能保證所有電子模組都在同樣環境中。 顯熱負載決定溫度改變需求，但高濕環境還有潛熱除濕與新風處理。冷卻量和耗電量也不同，兩者需要效率或性能係數連結，不能把熱量數字當作電表讀值。 比較月台、連通道和車廂的顯熱邊界，不以一個溫度代表全部區域。~Air removes sensible heat through mass flow and temperature rise. Insufficient flow raises exhaust temperature. Equipment rooms also contain recirculation and hot spots, so an average supply-to-exhaust difference does not guarantee identical conditions around every electronic module. Sensible load describes temperature-related demand, while humidity introduces latent dehumidification and outdoor-air treatment. Cooling delivered and electricity consumed are different quantities, connected through efficiency or a performance coefficient rather than treated as identical meter readings. Compare sensible-heat boundaries for platforms, links and cars rather than using one temperature for every zone.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：heat=18540 W; density=1.2 kg/m^3; cp=1005 J/(kg*K); flow=1.2 m^3/s；計算：air_rise=heat/(density*cp*flow)=12.81095 K。敏感度：heat 單獨增加百分之十至 20394 W，其餘固定，結果為 14.09204 K。模型邊界：穩態顯熱且混合均勻；不含潛熱、輻射與空調循環效率。~Original hypothetical exercise; none of these inputs are operating parameters of this project: heat=18540 W; density=1.2 kg/m^3; cp=1005 J/(kg*K); flow=1.2 m^3/s; calculation: air_rise=heat/(density*cp*flow)=12.81095 K. Sensitivity: heat, increase this input alone by ten percent, to 20394 W, with all other inputs fixed, gives 14.09204 K. Model boundary: Steady sensible heat and uniform mixing; latent heat, radiation and refrigeration-cycle efficiency are excluded.",
+      "verify": "同時量送風量、進出口溫度和設備用電，沿機櫃高度布置測點，確認冷風沒有直接繞過設備流回出口。 同步量測進出風溫度、流量和耗電，另記濕度與新風比例，確認顯熱邊界一致。~Measure supply flow, inlet and outlet temperatures and electrical load together, instrument cabinet height, and check that cold air does not bypass the equipment. Measure inlet and outlet air temperature, airflow and electricity together, separately recording humidity and outdoor-air fraction to confirm consistent sensible boundaries.",
+      "failure": "濾網堵塞或風道短路會降低有效冷卻，即使總風機轉速正常；散熱器積塵也可能提高晶片溫度而房間平均值不變。 濕度升高仍可能需要更多冷量，即使乾球溫度沒有改變。~A blocked filter or airflow bypass reduces effective cooling despite normal fan speed; dusty heat sinks can raise chip temperature without changing the room average. Rising humidity can require more cooling even if the dry-bulb temperature has not changed.",
+      "misconception": "風機轉速正常就能保證機櫃內每個設備都有足夠散熱~Normal fan speed guarantees adequate cooling for every device in the cabinet.",
+      "practice": "比較降低風量與增加設備負載兩種情況，建立溫升敏感度表，再選出能辨別旁通流和真正熱負荷增加的測點。 再以本單元 heat 的對照值重算 air_rise，提交含單位、輸入來源和模型不適用條件的結果表。~Compare reduced flow with increased equipment load, tabulate temperature sensitivity, and choose sensors distinguishing bypass flow from a genuine load increase. Also recalculate air_rise for the alternative heat value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "砂塵沉積與清理週期~Dust deposition and cleaning interval",
+      "title": "砂塵沉積與清理週期~Dust deposition and cleaning interval",
+      "mechanism": "沉積質量可由有效集塵面積、入射質量通量與時間估算，防砂構造改變局部風場也會改變沉積位置。清理週期應依累積量與功能影響決定，而不是把全年平均濃度當成每次沙塵事件。 沉積通量乘接收面積與時間得到積砂質量，通量已是單位面積的到達率。它不同於空氣中的濃度；要從濃度推回沉積，還需風速、粒徑及捕集機制。 把設備表面積砂通量與接收面積相乘，估算一個維修週期的沉積。~Deposited mass can be estimated from effective collection area, incident mass flux and time. Wind barriers alter local airflow and deposition location. Cleaning intervals should follow accumulation and functional impact rather than treating annual mean concentration as a description of every dust event. Deposition flux times receiving area and time gives accumulated sand mass. Flux is already an arrival rate per unit area and differs from airborne concentration. Deriving deposition from concentration also requires wind, particle size and a capture mechanism. Multiply surface deposition flux by receiving area to estimate accumulation over a maintenance interval.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：flux=8.24e-05 kg/(m^2*s); area=12 m^2; duration=3600 s；計算：deposit=flux*area*duration=3.55968 kg。敏感度：flux 單獨增加百分之十至 9.064e-05 kg/(m^2*s)，其餘固定，結果為 3.915648 kg。模型邊界：固定沉積通量與面積；不含再懸浮、顆粒分徑和風向變化。~Original hypothetical exercise; none of these inputs are operating parameters of this project: flux=8.24e-05 kg/(m^2*s); area=12 m^2; duration=3600 s; calculation: deposit=flux*area*duration=3.55968 kg. Sensitivity: flux, increase this input alone by ten percent, to 9.064e-05 kg/(m^2*s), with all other inputs fixed, gives 3.915648 kg. Model boundary: Fixed deposition flux and area; resuspension, particle-size distribution and changing wind direction are excluded.",
+      "verify": "在不同高度和背風位置配置集塵盤，對照風速風向與設備故障紀錄，量出事件累積量而非只取單點濃度。 用已知面積收集盤在指定時間稱重，保留風向與取樣位置，並檢查再懸浮和散失。~Place deposition trays at different heights and sheltered locations, correlate with wind and equipment records, and measure event accumulation rather than one concentration reading. Weigh collection trays of known area over a stated interval, retain wind direction and sampling location, and inspect resuspension and losses.",
+      "failure": "防風牆可能把沉積集中到設備附近，清理不到的角落會比平均面積更快受堵；濕砂還可能附著於絕緣表面。 平均沉積通量可能漏掉局部堆砂，須比較不同設備位置。~A wind barrier may concentrate deposits near equipment, inaccessible corners can clog faster than the mean, and wet dust can adhere to insulating surfaces. Mean deposition flux can hide local drifts; compare different equipment locations.",
+      "misconception": "防風牆一旦設置就必定讓所有位置的砂塵沉積同時下降~Installing a wind barrier necessarily reduces dust deposition at every location.",
+      "practice": "比較同總入砂量的均勻與集中沉積，設計清理頻率表，說明為何要保留風向與設備位置而不能只報總重量。 再以本單元 flux 的對照值重算 deposit，提交含單位、輸入來源和模型不適用條件的結果表。~Compare uniform and concentrated deposition at equal total input, design a cleaning-interval table, and explain why wind direction and equipment location matter beyond total mass. Also recalculate deposit for the alternative flux value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "濾網壓差與通風功率~Filter pressure drop and fan power",
+      "title": "濾網壓差與通風功率~Filter pressure drop and fan power",
+      "mechanism": "風機必須克服風道與濾網壓差才能輸送空氣，輸入功率近似為壓差乘體積流率再除效率。積塵提高阻力但工作點會沿風機曲線改變，因此固定風量假設只是一種受控比較。 風機功率等於壓力差乘體積流率再除以宣告效率，壓力與流量必須使用同一工作點。積塵使阻力和風機工作點共同改變，固定流量算例不能預測未控制風量時的耗電。 在固定風量下比較積塵前後壓差，檢查濾材狀態。~A fan must overcome duct and filter pressure losses to move air. Input power is approximately pressure rise times volume flow divided by efficiency. Dust raises resistance but shifts the operating point on the fan curve, so fixed flow is only a controlled comparison. Fan power equals pressure difference times volume flow divided by the declared efficiency. Pressure and flow must refer to one operating point. Dust changes resistance and the fan operating point together, so a fixed-flow example cannot predict consumption without airflow control. Compare pressure drop before and after loading at fixed airflow to assess filter condition.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：pressure=360.5 Pa; flow=2.5 m^3/s; eta=0.6 1；計算：fan_power=pressure*flow/eta=1502.083 W。敏感度：pressure 單獨增加百分之十至 396.55 Pa，其餘固定，結果為 1652.292 W。模型邊界：固定風量與總效率；不包含風機曲線移動和馬達熱限制。~Original hypothetical exercise; none of these inputs are operating parameters of this project: pressure=360.5 Pa; flow=2.5 m^3/s; eta=0.6 1; calculation: fan_power=pressure*flow/eta=1502.083 W. Sensitivity: pressure, increase this input alone by ten percent, to 396.55 Pa, with all other inputs fixed, gives 1652.292 W. Model boundary: Fixed flow and overall efficiency; fan-curve shifts and motor thermal limits are excluded.",
+      "verify": "同時量濾網前後壓差、實際風量和電功率，用乾淨濾網建立基準，並記錄沙塵、濕度與維修時間。 校正取壓點與風量計，同步量測電功率，核對效率是否包含馬達與驅動器損失。~Measure differential pressure, actual flow and input power together, establish a clean-filter baseline, and record dust exposure, humidity and maintenance timing. Calibrate pressure taps and airflow measurement, record electric power simultaneously, and check whether efficiency includes motor and drive losses.",
+      "failure": "旁路漏氣可能讓壓差降低但過濾品質變差；只以壓差低判定良好，會忽略濾網破損和密封失效。 壓差很低也可能是旁通，須核對濾材密封及實際風量。~Bypass leakage may lower pressure drop while worsening filtration; a low drop alone can therefore hide a damaged filter or failed seal. Very low pressure drop can indicate bypass; check filter sealing and actual airflow.",
+      "misconception": "濾網壓差越低就一定表示過濾狀況越好~Lower filter pressure drop always means better filtration condition.",
+      "practice": "對堵塞與旁路兩個情境列出壓差、風量和粒子濃度的預期方向，設計三項量測共同判斷而非只靠單一數字。 再以本單元 pressure 的對照值重算 fan_power，提交含單位、輸入來源和模型不適用條件的結果表。~Predict pressure drop, airflow and particle concentration for clogging and bypass scenarios, then design a three-measurement diagnosis instead of relying on one number. Also recalculate fan_power for the alternative pressure value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "title": "長軌溫升與受限熱應力~Long-rail temperature and restrained stress",
+      "mechanism": "自由鋼軌升溫會伸長，完全拘束的理想鋼軌則把熱應變轉成壓應力。鎖定軌溫決定應力零點而空氣溫度不等於鋼軌溫度；實際扣件滑移與軌道側向阻力還會改變穩定問題。 溫差應相對於鋼軌實際無應力狀態，而非任意室溫。完全拘束估算給出軸向應力尺度；當扣件滑移或軌道彎曲出現時，需要位移相容和側向穩定分析。 以日照鋼軌本體溫度計算受限熱應力，不直接套用氣溫。~A free rail expands on heating, while an ideally restrained rail converts thermal strain into compression. Stress-free rail temperature defines the reference and differs from air temperature. Fastener slip and lateral track resistance additionally govern stability, beyond the one-dimensional thermal-stress estimate. Temperature change must reference the rail’s actual stress-free state, not an arbitrary room temperature. Full restraint gives an axial stress scale. Fastener slip or track curvature requires displacement compatibility and lateral stability analysis beyond this expression. Calculate restrained thermal stress from sunlit rail temperature rather than directly from air temperature.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：E=210000 MPa; alpha=1.15e-05 1/K; deltaT=30.9 K；計算：compression=E*alpha*deltaT=74.6235 MPa。敏感度：deltaT 單獨增加百分之十至 33.99 K，其餘固定，結果為 82.08585 MPa。模型邊界：完全軸向拘束與線彈性；不計挫曲、初彎、殘留應力及塑性。~Original hypothetical exercise; none of these inputs are operating parameters of this project: E=210000 MPa; alpha=1.15e-05 1/K; deltaT=30.9 K; calculation: compression=E*alpha*deltaT=74.6235 MPa. Sensitivity: deltaT, increase this input alone by ten percent, to 33.99 K, with all other inputs fixed, gives 82.08585 MPa. Model boundary: Full axial restraint and linear elasticity; buckling, initial curvature, residual stress and plasticity are excluded.",
+      "verify": "量鋼軌本體溫度與縱向應變，記錄鎖定狀態和扣件維修歷程，用不同位置感測器區分局部溫差與整段受限變形。 以鋼軌接觸式溫度計校驗遙測值，核對應變零點，並保留日夜循環的升降溫路徑。~Measure rail temperature and longitudinal strain, record the fastening and maintenance history, and use spatially separated sensors to distinguish local heating from restrained segment behaviour. Calibrate remote readings against a contact rail thermometer, verify strain zero, and retain heating and cooling paths across the daily cycle.",
+      "failure": "把氣溫直接當成鋼軌溫度會錯估熱荷載；扣件鬆動可能降低局部軸力卻增加位移，不能據此宣稱整體穩定性改善。 需查鎖定軌溫紀錄，不能以當天最低氣溫當無應力點。~Substituting air temperature misstates thermal loading; loose fasteners may reduce local force while increasing displacement, which does not prove improved overall stability. Check stress-free-temperature records rather than using the day’s minimum air temperature as the reference.",
+      "misconception": "完全拘束的鋼軌升溫仍會無應力地自由伸長~A fully restrained rail still expands freely without stress when heated.",
+      "practice": "畫出自由、部分拘束與完全拘束三種邊界，重算熱變形或應力，標明哪些輸入必須由鋼軌溫度及扣件試驗取得。 再以本單元 deltaT 的對照值重算 compression，提交含單位、輸入來源和模型不適用條件的結果表。~Draw free, partial and full restraint boundaries, recalculate expansion or stress, and identify inputs requiring rail-temperature measurements and fastener tests. Also recalculate compression for the alternative deltaT value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "停準誤差與月台門對位~Stopping error and platform-door alignment",
+      "title": "停準誤差與月台門對位~Stopping error and platform-door alignment",
+      "mechanism": "列車停準與月台門對位由列車位置、門中心距和控制容差共同決定。多個獨立誤差可用平方和開根號描述標準差，但系統偏差須另加；幾何對位也不能代替障礙物偵測和關門互鎖。 停車、測量與門位置三個獨立零均值誤差以變異數相加，再取平方根得到合成標準差。這不是最大偏移保證，也不含共同系統偏差；機械淨空及容許對位範圍須另外核對。 在熱變形情境下分開列車停準、門位和測量對位誤差。~Train-to-platform door alignment combines stopping position, door spacing and control tolerances. Independent random errors can be combined by root-sum-square, but systematic offsets must be added separately. Geometric alignment does not replace obstruction detection or the door-closure interlock. Three independent zero-mean errors in stopping, surveying and door position combine through summed variances. The square root gives a standard deviation, not a guaranteed maximum offset. Shared bias is excluded, and mechanical clearance and permitted alignment ranges require separate checks. Separate stopping, door-position and survey alignment errors in a thermal-movement scenario.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：stop_sigma=0.0824 m; survey_sigma=0.02 m; door_sigma=0.015 m；計算：combined_sigma=(stop_sigma**2+survey_sigma**2+door_sigma**2)**0.5=0.086109 m。敏感度：stop_sigma 單獨增加百分之十至 0.09064 m，其餘固定，結果為 0.09402452 m。模型邊界：獨立零均值誤差；不是最大誤差界限，也未給允收公差。~Original hypothetical exercise; none of these inputs are operating parameters of this project: stop_sigma=0.0824 m; survey_sigma=0.02 m; door_sigma=0.015 m; calculation: combined_sigma=(stop_sigma**2+survey_sigma**2+door_sigma**2)**0.5=0.086109 m. Sensitivity: stop_sigma, increase this input alone by ten percent, to 0.09064 m, with all other inputs fixed, gives 0.09402452 m. Model boundary: Independent zero-mean errors; not a maximum bound and no acceptance tolerance is specified.",
+      "verify": "以固定月台基準量車門中心偏差，區分重複性與平均偏移，並在載重、方向和制動條件改變時重複測試。 以獨立基準重複量測停準與門位，檢查各誤差平均值、相關性和單位，再核對合成分布。~Measure door-centre offset against fixed platform datums, separate repeatability from mean bias, and repeat with changes in load, direction and braking conditions. Repeat stopping and door-position measurements against an independent reference, check each mean, correlation and unit, and compare the combined distribution.",
+      "failure": "定位偏差和站台測量偏差可能同向累積，僅看標準差會漏掉系統偏移；門對準也不代表夾物偵測有效。 若共同定位偏差存在，平方和模型會低估實際對位偏移。~Position and survey biases may accumulate in the same direction and escape a standard-deviation check; aligned doors also do not prove obstruction detection works. A shared positioning bias makes the root-sum-square model understate actual alignment offset.",
+      "misconception": "停準誤差標準差小就代表不可能出現固定方向偏移~A small stopping-error standard deviation rules out a persistent directional offset.",
+      "practice": "把隨機誤差和固定偏移分開做誤差預算，畫出不同載重的停準分布，列出對位與互鎖需分別驗證的證據。 再以本單元 stop_sigma 的對照值重算 combined_sigma，提交含單位、輸入來源和模型不適用條件的結果表。~Build separate random-error and fixed-bias budgets, plot stopping distributions at different loads, and list distinct evidence for alignment and interlocking. Also recalculate combined_sigma for the alternative stop_sigma value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "月台暫存與隊列守恆~Platform storage and queue conservation",
+      "title": "月台暫存與隊列守恆~Platform storage and queue conservation",
+      "mechanism": "月台人數是進入、登車與離開人數的累積差，短時尖峰會使隊列成長，即使全天總運能足夠。可用面積應扣除樓梯口、設備與安全帶；密度只能描述平均狀態，不能單獨代表行人動態風險。 密度是人數除以有效面積，不直接描述人群流速或推擠力。設備、柱子及候車線會減少可用空間；安全通道應另列，不能為了降低平均密度而計入不可占用區域。 把旅客批次到達配置到車門附近不同候車區域。~Platform population accumulates from arrivals minus boarding and exits. A short surge can grow a queue despite sufficient daily capacity. Usable area excludes stairs, equipment and safety strips. Density describes an average state but does not alone represent dynamic pedestrian risk. Density divides occupancy by usable area but does not directly describe walking speed or crowd pressure. Equipment, columns and waiting boundaries reduce usable space. Reserved circulation must be accounted separately, not included merely to lower the reported average density. Distribute batch passenger arrivals among different waiting zones near train doors.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：people=433 persons; usable_area=350 m^2；計算：density=people/usable_area=1.237143 persons/m^2。敏感度：people 將整數計數增加到 477至 477 persons，其餘固定，結果為 1.362857 persons/m^2。模型邊界：均勻平均密度；未含局部擠壓、行李和對向人流。~Original hypothetical exercise; none of these inputs are operating parameters of this project: people=433 persons; usable_area=350 m^2; calculation: density=people/usable_area=1.237143 persons/m^2. Sensitivity: people, increase the integer count to 477, to 477 persons, with all other inputs fixed, gives 1.362857 persons/m^2. Model boundary: Uniform average density; local compression, luggage and opposing streams are excluded.",
+      "verify": "用匿名計數器核對入口、出口與登車量，分區觀察月台密度，保留列車延誤時間以辨認隊列成長來源。 以分區影片計數核對總人數，量測淨面積，並同時記錄局部瓶頸及進出流量。~Reconcile anonymous counts at entrances, exits and train doors, observe density by zone, and retain train-delay times to identify why queues grow. Cross-check total occupancy with zonal video counts, measure net area, and record local bottlenecks and entry-exit flows simultaneously.",
+      "failure": "平均密度低仍可能在樓梯出口形成局部瓶頸；計數器漏記同行群體也會使守恆帳不閉合。 總平均密度低仍可能局部壅塞，須查看門口與樓梯區域。~A low mean density can coexist with a bottleneck at a stair exit; missed group entries can also prevent the passenger balance from closing. Low overall mean density can coexist with local crowding; inspect doorway and stair zones.",
+      "misconception": "只要月台平均密度低就不會在任何局部出現壅塞~Low average platform density prevents congestion at every local point.",
+      "practice": "模擬一列取消後兩個班距內的人數變化，扣除不能站立的面積，提出分流措施並比較它們改變的是流量還是暫存容量。 再以本單元 people 的對照值重算 density，提交含單位、輸入來源和模型不適用條件的結果表。~Simulate population for two headways after one cancellation, subtract unusable area, and compare whether proposed controls change flow rate or storage capacity. Also recalculate density for the alternative people value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "垂直動線有效輸送率~Vertical circulation throughput",
+      "title": "垂直動線有效輸送率~Vertical circulation throughput",
+      "mechanism": "電扶梯的理論輸送率可由速度、梯級間距及每級人數估算，實際值還受入口遲疑、行李和站立習慣限制。多台設備不一定能線性相加，因為共用入口或出口可能先形成瓶頸。 階梯間距與速度決定理論階梯通過率，每階占用率則把機械運動轉成載客量。旅客猶豫、行李及出口壅塞會降低實際通過率，不能以理論值直接證明疏散能力。 比較步行與電扶梯速度對跨越道路連通道的轉乘時間。~Escalator theoretical throughput follows speed, step pitch and occupants per step. Hesitation, luggage and standing habits limit actual use. Several escalators do not necessarily add linearly when a shared entrance or exit becomes the earlier bottleneck. Step pitch and speed determine theoretical step passage, while occupancy per step converts mechanical motion into passenger flow. Hesitation, luggage and blocked exits reduce delivery, so the theoretical rate cannot directly demonstrate evacuation capacity. Compare walking and escalator speed effects on transfer time across road-spanning links.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：speed=0.515 m/s; pitch=0.4 m/step; occupants=1.2 persons/step；計算：throughput=3600*speed/pitch*occupants=5562 persons/hour。敏感度：speed 單獨增加百分之十至 0.5665 m/s，其餘固定，結果為 6118.2 persons/hour。模型邊界：穩定速度和平均梯級占用；不含出入口匯流與無障礙替代路徑。~Original hypothetical exercise; none of these inputs are operating parameters of this project: speed=0.515 m/s; pitch=0.4 m/step; occupants=1.2 persons/step; calculation: throughput=3600*speed/pitch*occupants=5562 persons/hour. Sensitivity: speed, increase this input alone by ten percent, to 0.5665 m/s, with all other inputs fixed, gives 6118.2 persons/hour. Model boundary: Steady speed and mean step occupancy; entrance merging and accessible alternative routes are excluded.",
+      "verify": "逐時段計數入口和出口，記錄空梯級比例與行李比例，並在共用平台量隊列長度，避免把額定值當現場值。 核對階梯間距與帶速，以入口及出口計數比較乘客流量，另記停頓和空階比例。~Count entrance and exit flow by interval, record empty-step and luggage fractions, and measure the shared-landing queue rather than substituting rated throughput. Verify step pitch and belt speed, compare entry and exit passenger counts, and separately record stoppages and empty-step proportions.",
+      "failure": "出口暫停會造成回堵並影響整段動線；一台設備停機時，另一台的入口可能無法吸收全部轉移人流。 出口堵塞時提高帶速可能加劇累積，需先檢查出口容量。~A pause at the exit causes spillback through the circulation path; when one escalator is unavailable, the other entrance may not accept all diverted passengers. Increasing belt speed can worsen accumulation at a blocked outlet; inspect outlet capacity first.",
+      "misconception": "兩台電扶梯的實際總輸送率必定等於單台額定值兩倍~Two escalators necessarily deliver twice the rated throughput of one escalator.",
+      "practice": "比較一台停機與出口縮窄兩種情境，畫出瓶頸位置，提出電梯與樓梯的替代動線並記錄不同旅客所需時間。 再以本單元 speed 的對照值重算 throughput，提交含單位、輸入來源和模型不適用條件的結果表。~Compare one failed escalator with a narrowed exit, map the bottleneck, and propose lift and stair alternatives while recording journey times for different passenger needs. Also recalculate throughput for the alternative speed value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "通訊延遲與位置陳舊量~Communication delay and stale position",
+      "title": "通訊延遲與位置陳舊量~Communication delay and stale position",
+      "mechanism": "移動列車在訊息傳遞期間繼續前進，最簡單的陳舊位置上界是速度乘延遲。封包延遲、遺失與時鐘偏差應分開，平均延遲不能代表最壞情況，也不能直接替代列車保護的安全論證。 傳輸時間不是訊息年齡的全部，排隊、重送及接收端處理也可能占主要比例。安全邏輯應明確定義逾時後的狀態；成功收到舊封包不能當成最新授權。 在通訊延遲情境中保留安全狀態，不以成功連線等同允許發車。~A moving train advances while a message is in transit. Speed times delay gives the simplest stale-position bound. Packet delay, loss and clock bias must be separated; mean latency neither represents a worst case nor replaces a safety argument for train protection. Transmission time is not the entire message age; queueing, retransmission and receiver processing may dominate. Safety logic needs an explicit state after timeout. Successful receipt of an old packet is not equivalent to a fresh movement authority. Retain a safe state under delayed communication rather than treating connection success as departure permission.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：v=25 m/s; latency=0.309 s；計算：stale_distance=v*latency=7.725 m。敏感度：latency 單獨增加百分之十至 0.3399 s，其餘固定，結果為 8.4975 m。模型邊界：固定速度且單次訊息延遲；未含加速度、連續遺失及協定重試。~Original hypothetical exercise; none of these inputs are operating parameters of this project: v=25 m/s; latency=0.309 s; calculation: stale_distance=v*latency=7.725 m. Sensitivity: latency, increase this input alone by ten percent, to 0.3399 s, with all other inputs fixed, gives 8.4975 m. Model boundary: Constant speed and one delayed message; acceleration, consecutive losses and protocol retries are excluded.",
+      "verify": "以送出和接收兩端的同步時間戳量延遲分布，注入延遲及封包遺失，確認過期訊息被辨識而非繼續當成即時位置。 以發送與接收端同步時鐘核對端到端延遲，記錄重送次數、封包遺失及最長連續中斷。~Measure latency distribution using synchronised transmit and receive timestamps, inject delay and packet loss, and confirm stale messages are identified rather than treated as current position. Use synchronised sender and receiver clocks to check end-to-end delay, recording retries, packet loss and the longest continuous interruption.",
+      "failure": "時鐘漂移可能讓過期訊息被誤判為新資料；只測低負載網路會漏掉交接區、干擾和突發流量造成的延遲尾端。 先檢查序號與時間戳，避免把重播封包誤認為狀態恢復。~Clock drift can make stale data appear fresh; low-load tests miss latency tails caused by handover, interference and burst traffic. Check sequence numbers and timestamps before interpreting a replayed packet as state recovery.",
+      "misconception": "平均網路延遲很低就足以證明所有控制訊息都及時到達~A low average network delay proves that every control message arrives on time.",
+      "practice": "把速度與延遲各提高一成，比較位置陳舊量；設計含連續遺失的重播案例，列出接收端需要保留的時間與序號資訊。 再以本單元 latency 的對照值重算 stale_distance，提交含單位、輸入來源和模型不適用條件的結果表。~Increase speed and delay separately, compare stale distance, and design a replay with consecutive losses listing the timestamps and sequence information required at the receiver. Also recalculate stale_distance for the alternative latency value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "牽引饋線壓降~Traction feeder voltage drop",
+      "title": "牽引饋線壓降~Traction feeder voltage drop",
+      "mechanism": "牽引電流經導體與回流路徑產生壓降，電壓下降又可能讓定功率列車要求更大電流，形成非線性負荷互動。單一電阻模型先隔離線路損耗，再逐步引入雙端供電和多列車位置。 回路電阻必須包含饋電與回流路徑，還需說明是否納入接頭和變電站等效阻抗。電流固定是簡化；實際定功率負載在電壓降低時可能增加電流並擴大壓降。 檢查高溫輔助負載與列車加速同時發生時的受電壓降。~Current through the feeder and return path creates voltage drop. A constant-power train may draw more current as voltage falls, creating nonlinear load interaction. A single resistance model first isolates line loss before adding two-ended supply and multiple train positions. Loop resistance must include supply and return paths, with joints and substation equivalent impedance explicitly included or excluded. Fixed current is a simplification: a constant-power load can draw more current as voltage falls and thereby increase the drop. Check receiving voltage when heat-related auxiliary load coincides with train acceleration.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：current=1545 A; resistance=0.06 ohm；計算：drop=current*resistance=92.7 V。敏感度：current 單獨增加百分之十至 1699.5 A，其餘固定，結果為 101.97 V。模型邊界：固定電流與集中等效電阻；不含回生、功率因數與暫態。~Original hypothetical exercise; none of these inputs are operating parameters of this project: current=1545 A; resistance=0.06 ohm; calculation: drop=current*resistance=92.7 V. Sensitivity: current, increase this input alone by ten percent, to 1699.5 A, with all other inputs fixed, gives 101.97 V. Model boundary: Fixed current and lumped equivalent resistance; regeneration, power factor and transients are excluded.",
+      "verify": "同步量測變電所與列車端電壓及電流，記錄列車位置，將接頭接觸電阻與導體溫度造成的變化分別辨識。 同步量測供電端與受電端電壓及回路電流，核對接線極性和設備接頭的額外壓降。~Synchronise substation and train voltage and current measurements, log train position, and distinguish joint contact resistance from conductor-temperature changes. Measure supply voltage, receiving voltage and loop current synchronously, checking polarity and extra voltage drops across equipment connections.",
+      "failure": "高阻接頭可能在總壓降看似可接受時局部過熱；把導體長度和回流路徑計算一半會系統性低估損耗。 需核對回流路徑，否則可能把接頭故障藏在錯估電阻中。~A high-resistance joint may overheat while total drop looks modest; omitting part of the return path systematically understates resistance and losses. Verify the return path so a faulty connection is not hidden inside an incorrect resistance estimate.",
+      "misconception": "量到變電所輸出電壓正常就代表所有列車端電壓正常~Normal substation output voltage proves that every train receives normal voltage.",
+      "practice": "加入第二列同時加速的列車，畫出共享與非共享饋線段，分段重算壓降並說明何時需改用完整潮流分析。 再以本單元 current 的對照值重算 drop，提交含單位、輸入來源和模型不適用條件的結果表。~Add a second accelerating train, distinguish shared and separate feeder sections, recalculate each drop, and explain when a complete load-flow analysis becomes necessary. Also recalculate drop for the alternative current value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    },
+    {
+      "anchor": "備援電池與可維持時間~Backup battery endurance",
+      "title": "備援電池與可維持時間~Backup battery endurance",
+      "mechanism": "備援電池可供負載使用的能量由額定容量、允許放電深度和轉換效率相乘，除負載功率得到理想時間。低溫、老化及啟動電流會縮短可用時間；額定安時也不能直接當成瓦時。 可用電量應扣除允許放電深度與轉換損失，負載也可能隨時間變化。銘牌容量的測試溫度和放電倍率會影響實際結果，續航計算不能取代受控放電驗證。 分別估算疏散照明和乘客資訊的備援時間，保留負載優先序。~Usable backup energy combines rated energy, permitted discharge fraction and conversion efficiency. Dividing by load gives ideal endurance. Cold temperature, ageing and start-up current can shorten it; an ampere-hour rating must not be mistaken directly for watt-hours. Usable energy must account for permitted discharge depth and conversion losses, while load may vary over time. Test temperature and discharge rate influence rated capacity, so an endurance calculation cannot replace controlled discharge verification. Estimate backup duration for egress lighting and passenger information separately and retain load priorities.",
+      "model": "原創假想算例，全部輸入均非本工程操作參數：energy=20.6 kWh; usable=0.8 1; eta=0.9 1; load=4 kW；計算：endurance=energy*usable*eta/load=3.708 h。敏感度：energy 單獨增加百分之十至 22.66 kWh，其餘固定，結果為 4.0788 h。模型邊界：固定負載與額定能量；不含電池倍率效應、溫度與容量衰退。~Original hypothetical exercise; none of these inputs are operating parameters of this project: energy=20.6 kWh; usable=0.8 1; eta=0.9 1; load=4 kW; calculation: endurance=energy*usable*eta/load=3.708 h. Sensitivity: energy, increase this input alone by ten percent, to 22.66 kWh, with all other inputs fixed, gives 4.0788 h. Model boundary: Constant load and nominal energy; rate effects, temperature and capacity degradation are excluded.",
+      "verify": "定期以已知負載做受控放電，量端電壓、電流及溫度，核對控制器切離點與真正可用能量。 以受控負載記錄電池電壓、電流與溫度，積分可用電量，核對低壓切斷時刻。~Perform controlled discharges into a known load, measure voltage, current and temperature, and compare controller cutoff with actually delivered energy. Record battery voltage, current and temperature under controlled load, integrate usable energy, and verify the low-voltage cut-off time.",
+      "failure": "老化電池可能有正常開路電壓卻無法承受負載；共用充電器故障也可能同時耗盡兩組名義備援。 電池電壓正常不代表容量足夠，需檢查負載下放電曲線。~An aged battery may show normal open-circuit voltage yet fail under load; a shared charger fault can also deplete two nominally redundant banks. Normal open-circuit voltage does not prove sufficient capacity; inspect the loaded discharge curve.",
+      "misconception": "備援電池開路電壓正常就能保證額定支援時間~Normal open-circuit battery voltage guarantees the rated backup duration.",
+      "practice": "將負載增加一成並把可用容量降為老化假設值，重新計算時間，提出量測端電壓以外必須保留的證據。 再以本單元 energy 的對照值重算 endurance，提交含單位、輸入來源和模型不適用條件的結果表。~Increase load and reduce usable capacity for an ageing case, recalculate endurance, and identify evidence required beyond terminal-voltage readings. Also recalculate endurance for the alternative energy value in this unit, submitting units, input provenance and conditions under which the model is inapplicable."
+    }
+  ],
+  "facts": [
+    "已查證背景：2009 年，杜拜地鐵紅線於九月開始旅客服務。~Verified background: 2009, Dubai Metro Red Line began passenger service in September.",
+    "教學假設，單元 1：heat=18540 W，計算 air_rise=12.81095 K；非實測性能。~Teaching assumption, unit 1: heat=18540 W, calculated air_rise=12.81095 K; not measured performance.",
+    "教學假設，單元 2：flux=8.24e-05 kg/(m^2*s)，計算 deposit=3.55968 kg；非實測性能。~Teaching assumption, unit 2: flux=8.24e-05 kg/(m^2*s), calculated deposit=3.55968 kg; not measured performance.",
+    "教學假設，單元 3：pressure=360.5 Pa，計算 fan_power=1502.083 W；非實測性能。~Teaching assumption, unit 3: pressure=360.5 Pa, calculated fan_power=1502.083 W; not measured performance.",
+    "教學假設，單元 4：deltaT=30.9 K，計算 compression=74.6235 MPa；非實測性能。~Teaching assumption, unit 4: deltaT=30.9 K, calculated compression=74.6235 MPa; not measured performance.",
+    "教學假設，單元 5：stop_sigma=0.0824 m，計算 combined_sigma=0.086109 m；非實測性能。~Teaching assumption, unit 5: stop_sigma=0.0824 m, calculated combined_sigma=0.086109 m; not measured performance."
+  ],
+  "timeline": [
+    {
+      "year": "2009",
+      "event": "杜拜地鐵紅線於九月開始旅客服務~Dubai Metro Red Line began passenger service in September"
+    },
+    {
+      "year": "2021",
+      "event": "杜拜地鐵與電車營運維護交由新營運團隊~A new operating team took over Dubai Metro and Tram operations and maintenance"
+    },
+    {
+      "year": "2025",
+      "event": "IEC 發布新版鐵道 RAMS 第二部分安全系統方法~IEC published the revised railway RAMS Part 2 systems approach to safety"
+    }
+  ],
+  "codes": [
+    "IEC 62278-1:2025，鐵道 RAMS 通用程序；方法參考，不等同本案合約要求~IEC 62278-1:2025, railway RAMS generic process; methodological reference, not a project contract requirement",
+    "IEC 62278-2:2025，鐵道安全系統方法；應另查現地適用規範~IEC 62278-2:2025, systems approach to railway safety; local applicable rules require separate checking"
+  ],
+  "landmarks": [
+    "杜拜地鐵紅線~Dubai Metro Red Line",
+    "哥本哈根地鐵環狀線~Copenhagen Cityringen"
+  ],
+  "place": {
+    "name": "杜拜聯合車站周邊~Dubai Union station area",
+    "country": "阿拉伯聯合大公國~United Arab Emirates",
+    "lat": 25.266,
+    "lng": 55.314,
+    "query": "Dubai Union station area"
+  },
+  "sources": [
+    {
+      "key": "b325-history",
+      "title": "專案官方歷史與路網背景",
+      "titleEn": "Official project history and network context",
+      "publisher": "Dubai Roads and Transport Authority",
+      "url": "https://rta.ae/wps/portal/rta/ae/home/news-and-media/all-news/NewsDetails/2.4-billion-riders-carried-by-dubai-metro-over-15-years",
+      "sourceType": "primary",
+      "scope": "支援已標示的公開歷史事件；不提供本課程假想數值，也不證實所有模型適用於現地。",
+      "scopeEn": "Supports stated public historical events; does not supply invented numerical inputs or validate all models for the actual site."
+    },
+    {
+      "key": "b325-iec-rams-1",
+      "title": "鐵道 RAMS 第一部分通用程序",
+      "titleEn": "Railway RAMS Part 1 generic process",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/68933",
+      "sourceType": "primary",
+      "scope": "IEC 62278-1:2025 書目與通用程序範圍；作為需求及證據整理參考，不宣稱本案採用特定條款。",
+      "scopeEn": "Bibliographic edition and generic process scope of IEC 62278-1:2025; a requirements and evidence reference, not a claim about project-specific clauses."
+    },
+    {
+      "key": "b325-iec-rams-2",
+      "title": "鐵道 RAMS 第二部分安全系統方法",
+      "titleEn": "Railway RAMS Part 2 systems approach to safety",
+      "publisher": "International Electrotechnical Commission",
+      "url": "https://webstore.iec.ch/en/publication/79793",
+      "sourceType": "primary",
+      "scope": "IEC 62278-2:2025 書目與安全系統方法範圍；不重製付費標準條文。",
+      "scopeEn": "Bibliographic edition and systems approach scope of IEC 62278-2:2025; no reproduction of paid standard text."
+    },
+    {
+      "key": "b325-background",
+      "title": "機構專案與工程背景補充",
+      "titleEn": "Institutional project and engineering background supplement",
+      "publisher": "Primary institution at rta.ae",
+      "url": "https://rta.ae/wps/portal/rta/ae/home/news-and-media/all-news/NewsDetails/rta-announces-taking-over-of-dubai-metro-and-tram-operation-and-maintenance-by-keolis-mhi-llc?lang=ar",
+      "sourceType": "primary",
+      "scope": "補充時間線與路網介面背景；詳細設計參數仍以原始工程文件為準。",
+      "scopeEn": "Additional chronology and network-interface context; detailed design parameters remain subject to original project documentation."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "西門子交通",
+      "nameEn": "Siemens Mobility",
+      "business": "鐵道車輛與基礎設施技術",
+      "businessEn": "Rail vehicles and infrastructure technology",
+      "url": "https://www.mobility.siemens.com/global/en/portfolio/rail.html",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    },
+    {
+      "name": "阿爾斯通",
+      "nameEn": "Alstom",
+      "business": "鐵道車輛與號誌技術",
+      "businessEn": "Rail vehicles and signalling technology",
+      "url": "https://www.alstom.com/solutions",
+      "role": "供比較研究的產業技術入口；不宣稱為本專案供應商或承包商。",
+      "roleEn": "Industry reference for comparative study; no project-specific supply or contract role is asserted.",
+      "investorUrl": "",
+      "security": null
+    }
+  ],
+  "related": [
+    "b326",
+    "b332"
+  ],
+  "architectureNodes": [
+    [
+      "路線與土建",
+      "Alignment and civil works"
+    ],
+    [
+      "車輛與接觸",
+      "Vehicle and contact"
+    ],
+    [
+      "牽引供電",
+      "Traction supply"
+    ],
+    [
+      "行車控制",
+      "Movement control"
+    ],
+    [
+      "車站與旅客",
+      "Stations and passengers"
+    ],
+    [
+      "監測與維護",
+      "Monitoring and maintenance"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      3
+    ]
+  ]
+}

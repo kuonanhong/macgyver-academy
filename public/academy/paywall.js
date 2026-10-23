@@ -12,7 +12,7 @@
  */
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 let settings = {enabled: true, freeStagesPerCourse: 1, ownerPreviewOnFile: true};
-let state = {mode: 'local', active: false, expiresAt: null, planId: '', checked: false, error: ''};
+let state = {mode: 'local', active: false, owner: false, expiresAt: null, planId: '', checked: false, error: ''};
 let deps = {billing: () => ({}), cloud: () => null};
 const contentCache = new Map(), hydratedCourses = new Map();
 let contentEpoch=0,accessEpoch=0;
@@ -21,7 +21,7 @@ export function resetProtectedContent(){
   contentEpoch++;accessEpoch++;contentCache.clear();
   for(const [course,stages]of hydratedCourses)course.stages=stages;
   hydratedCourses.clear();
-  state={mode:modeNow(),active:false,expiresAt:null,planId:'',checked:false,error:''};
+  state={mode:modeNow(),active:false,owner:false,expiresAt:null,planId:'',checked:false,error:''};
 }
 
 export function configurePaywall({config = globalThis.MG_CONFIG || {}, freeStages = 1, billing, cloud} = {}) {
@@ -62,11 +62,11 @@ export function firstLockedIndex(course, steps) { return steps.findIndex(s => st
 /** Refresh entitlement. Never throws; failures keep the course locked. */
 export async function refreshAccess({user = null} = {}) {
   const generation=++accessEpoch,epoch=contentEpoch,mode=modeNow();
-  const next={mode,active:false,expiresAt:null,planId:'',checked:true,error:''};
+  const next={mode,active:false,owner:false,expiresAt:null,planId:'',checked:true,error:''};
   try {
     if(mode==='server'){
-      const billing=deps.billing()||{};next.active=!!billing.entitlement?.active;next.expiresAt=billing.entitlement?.expiresAt||null;
-      if(user&&globalThis.fetch){const r=await fetch('/api/billing/me',{credentials:'same-origin',cache:'no-store'});if(r.ok){const data=await r.json(),now=Date.now()/1000;const live=(data.entitlements||[]).filter(e=>!e.revokedAt&&Number(e.expiresAt)>now&&Number(e.startsAt||0)<=now);next.active=live.length>0;next.expiresAt=live.length?Math.max(...live.map(e=>Number(e.expiresAt)))*1000:null;}}
+      // Only the authenticated server response grants owner/member access.
+      if(user&&globalThis.fetch){const r=await fetch('/api/billing/me',{credentials:'same-origin',cache:'no-store'});if(r.ok){const data=await r.json(),now=Date.now()/1000;const live=(data.entitlements||[]).filter(e=>!e.revokedAt&&Number(e.expiresAt)>now&&Number(e.startsAt||0)<=now&&e.mode===(deps.billing()?.mode));next.owner=data.owner===true&&data.active===true;next.active=next.owner||live.length>0;next.planId=next.owner?'owner':'';next.expiresAt=next.owner?null:live.length?Math.max(...live.map(e=>Number(e.expiresAt)))*1000:null;}}
     }else if(mode==='cloud'&&user&&deps.cloud()?.myAccess){const access=await deps.cloud().myAccess();next.active=access?.active===true;next.expiresAt=access?.expiresAt?Date.parse(access.expiresAt)||null:null;next.planId=access?.planId||'';}
   }catch(error){next.active=false;next.error=String(error?.message||error);}
   if(generation===accessEpoch&&epoch===contentEpoch)state=next;
@@ -106,6 +106,7 @@ export function courseAccessSummary(course, {zh = true, priceText = ''} = {}) {
   const paid = Math.max(0, total - free);
   let status;
   if (mode === 'owner-preview') status = pick('擁有者離線預覽：此版本可看全部內容；正式網站只開放第一節免費。', 'Owner offline preview: everything is visible here; the public site keeps only the first section free.');
+  else if (state.owner && state.active) status = pick('管理員權限：全部免費與會員課程皆已開放，無需付款。', 'Site owner access: all free and member lessons are available without payment.');
   else if (state.active) status = pick('你的學習通行證有效，可學習全部階段。', 'Your learning pass is active; every stage is unlocked.') + (state.expiresAt ? ` ${pick('到期：', 'Expires: ')}${new Date(state.expiresAt).toLocaleDateString(zh ? 'zh-TW' : undefined)}` : '');
   let price = '';
   if (mode !== 'owner-preview' && !state.active) {

@@ -1,0 +1,271 @@
+{
+  "id": "b388",
+  "title": "鐵路機廠檢修動線~Maintenance-depot workflow planning",
+  "discipline": "rail-integration",
+  "family": "depot",
+  "focus": "機廠資源配置檢修節拍與安全動線~Depot resources maintenance cycles and safe movement paths",
+  "summary": "本課聚焦機廠資源配置檢修節拍與安全動線。從檢修工位利用率建立物理或資訊邊界，接著把車輛工位狀態管理與檢查面照明分布連成可驗證的介面，最後以維修品質抽樣推論整理證據。學徒逐一完成機制推導、數值算例、失效辨識及參數實驗，所有練習限定在離線模型或隔離教具，保留假設與量測的不確定度。~This course studies depot resources maintenance cycles and safe movement paths. Start with utilization of maintenance bays to define physical or information boundaries, connect vehicle and bay state management with lighting on inspection surfaces as verifiable interfaces, and organize evidence through sampling inference for maintenance quality. Each unit develops a mechanism, numerical example, failure diagnosis and parameter experiment in an offline model or isolated teaching rig, retaining assumptions and measurement uncertainty.",
+  "history": "本課以可查核的工程與方法出版歷程建立背景：2010 年機械風險評估方法的該版標準發布。；2015 年品質管理方法的二零一五版發布。；2023 年機械安全控制設計方法更新版發布。這些日期分別是工程事件、指南重印或標準研究出版，並非宣稱本課系統在該年問世。對機廠資源配置檢修節拍與安全動線而言，歷史脈絡的價值是理解需求如何從單一設備擴展到跨介面證據。本課再用車輛移交完整週期及檢修驗證工時計畫連結這些方法；代表工程僅提供觀察方向，假想參數不冒充現場資料，歷史版規範也不自動等於當地現行要求。~The background uses checkable project events and methodological publication history. 2010: This edition of machinery risk-assessment guidance was published. 2015: The twenty-fifteen edition of quality-management requirements was published. 2023: An updated machinery safety-control design edition was published. These dates identify project events, guide reprints, or standards and research publications, rather than claiming that the lesson system first appeared then. For depot resources maintenance cycles and safe movement paths, the useful historical perspective is the expansion from individual equipment to evidence across interfaces. The course connects that perspective through complete vehicle-handoff cycle and planning maintenance verification effort. Reference projects guide observation only: hypothetical parameters are not field data, and historical editions do not automatically establish current local requirements.",
+  "example": "原創整合工作單，所有輸入均為教學假設而非代表工程實測：先研究檢修工位利用率。原創假想教學輸入：平均到達率 arrival=8 jobs/h；單通道服務率 service=12 jobs/h。公式 y=arrival/service，代入得 y=0.666667 1。邊界：固定平均率且單一服務通道；實際批次、優先權與休息中斷須另建模。敏感度只改 arrival=8 至 8.8 jobs/h，輸出變為 0.733333 1；離散計數採整數變化。再獨立研究車輛移交完整週期：原創假想教學輸入：接車確認 receive=120 s；假想檢查工作 inspect=900 s；工位間移動 move=180 s；驗證交回 handoff=240 s。公式 y=3600/(receive+inspect+move+handoff)，代入得 y=2.5 jobs/h。邊界：單工位無重疊的串行假想作業，未包含備品等待與返工分布。兩個結果不能因同一課程就任意相加，必須先確認單位、因果順序及共同邊界。本單元將車輛到達需求和可用工位分開，檢查平均利用率相同時尖峰排隊仍可能完全不同。最後提出一項量測能區分模型假設失效與儀器偏差，將輸入表、重算結果和適用限制一併交付。~Original integrated worksheet; every input is a teaching assumption rather than a measurement from a reference project. First investigate utilization of maintenance bays. Original hypothetical teaching inputs: mean arrival rate arrival=8 jobs/h; single-channel service rate service=12 jobs/h. Formula y=arrival/service gives y=0.666667 1. Boundary: Fixed mean rates and one service channel; batches, priorities and interruptions require separate modelling. For sensitivity, change only arrival=8 to 8.8 jobs/h; the output becomes 0.733333 1. Discrete counts use whole-number steps. Independently investigate complete vehicle-handoff cycle: Original hypothetical teaching inputs: receiving confirmation receive=120 s; hypothetical inspection inspect=900 s; movement between bays move=180 s; verified handoff handoff=240 s. Formula y=3600/(receive+inspect+move+handoff) gives y=2.5 jobs/h. Boundary: Hypothetical non-overlapping serial work in one bay, excluding spares waiting and rework distributions. Results cannot be added merely because they belong to the same course: check units, causal sequence and shared boundaries first. Separate vehicle arrival demand from available bays, checking why identical mean utilization can still produce very different peak queues. Propose one measurement distinguishing a failed model assumption from instrument bias, and deliver the input table, recomputed results and applicability limits together.",
+  "units": [
+    {
+      "anchor": "檢修工位利用率~Utilization of maintenance bays",
+      "title": "檢修工位利用率~Utilization of maintenance bays",
+      "mechanism": "本單元將車輛到達需求和可用工位分開，檢查平均利用率相同時尖峰排隊仍可能完全不同。利用率比較需求與服務能力，是穩定性檢查而非等待時間的完整答案。平均需求小於平均容量仍可能出現短暫尖峰與排隊；若排程把所有時段填滿，任何變異都只能向後傳播，缺乏讓系統恢復的空間。解釋前先固定模型適用範圍：固定平均率且單一服務通道；實際批次、優先權與休息中斷須另建模。~Separate vehicle arrival demand from available bays, checking why identical mean utilization can still produce very different peak queues. Utilization compares demand with service capacity; it is a stability check rather than a complete waiting-time answer. Mean demand below mean capacity still permits bursts and queues. When every interval is fully occupied, variability propagates downstream because no recovery space remains. Before interpreting the result, fix its domain: Fixed mean rates and one service channel; batches, priorities and interruptions require separate modelling.",
+      "model": "原創假想教學輸入：平均到達率 arrival=8 jobs/h；單通道服務率 service=12 jobs/h。公式 y=arrival/service，代入得 y=0.666667 1。邊界：固定平均率且單一服務通道；實際批次、優先權與休息中斷須另建模。~Original hypothetical teaching inputs: mean arrival rate arrival=8 jobs/h; single-channel service rate service=12 jobs/h. Formula y=arrival/service gives y=0.666667 1. Boundary: Fixed mean rates and one service channel; batches, priorities and interruptions require separate modelling.",
+      "verify": "以不同時間窗統計到達與完成數，檢查平均值是否掩蓋短時過載，並保留未完成工作。以「檢修工位利用率」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Count arrivals and completions over several windows, test for hidden bursts, and retain unfinished work in the accounting. For utilization of maintenance bays, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只統計完成案件會漏掉被延後或放棄者，使負荷被低估；設備停機又會降低可用服務率。回到「檢修工位利用率」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Counting only completed jobs omits deferred or abandoned demand and understates loading; downtime also reduces available service rate. Trace the input chain for utilization of maintenance bays. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "平均利用率低於百分之百就保證完全不會排隊~Mean utilization below one hundred percent guarantees that no queue ever forms.",
+      "practice": "只把平均到達率 arrival 從 8 改成 8.8 jobs/h（增加百分之十），其餘輸入固定。重算結果應由 0.666667 變為 0.733333 1。先說明「檢修工位利用率」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only mean arrival rate arrival from 8 to 8.8 jobs/h (increase by ten percent), holding other inputs fixed. Recalculate 0.666667 to 0.733333 1. Explain the causal direction for utilization of maintenance bays, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "車輛移交完整週期~Complete vehicle-handoff cycle",
+      "title": "車輛移交完整週期~Complete vehicle-handoff cycle",
+      "mechanism": "本單元把接車、檢查、移動與交回的工作分段，將完整節拍直接對應檢修物流並保留驗證交回時間。檢修物流的完整週期從接車確認開始，到驗證交回才結束，不能只計工具接觸車輛的時間。各階段若串行使用同一資源，其持續時間需要相加；平行工位可改變整體吞吐，但共用移車通道、量測儀器或簽核人員仍可能成為瓶頸，需在資源圖上明確表示。解釋前先固定模型適用範圍：單工位無重疊的串行假想作業，未包含備品等待與返工分布。~Break receiving, inspection, movement and return into stages, mapping the complete cycle directly to depot logistics and retaining verified handoff time. The maintenance logistics cycle begins at receiving confirmation and ends at verified handoff rather than counting only tool contact. Durations add when stages serially use one resource. Parallel bays can alter throughput, but shared movement paths, instruments or release personnel may remain bottlenecks that must appear explicitly in the resource graph. Before interpreting the result, fix its domain: Hypothetical non-overlapping serial work in one bay, excluding spares waiting and rework distributions.",
+      "model": "原創假想教學輸入：接車確認 receive=120 s；假想檢查工作 inspect=900 s；工位間移動 move=180 s；驗證交回 handoff=240 s。公式 y=3600/(receive+inspect+move+handoff)，代入得 y=2.5 jobs/h。邊界：單工位無重疊的串行假想作業，未包含備品等待與返工分布。~Original hypothetical teaching inputs: receiving confirmation receive=120 s; hypothetical inspection inspect=900 s; movement between bays move=180 s; verified handoff handoff=240 s. Formula y=3600/(receive+inspect+move+handoff) gives y=2.5 jobs/h. Boundary: Hypothetical non-overlapping serial work in one bay, excluding spares waiting and rework distributions.",
+      "verify": "以工單與獨立事件觀察核對四階段起訖，記錄等待原因和返工次數，避免電子完成時間早於實際移交。以「車輛移交完整週期」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Cross-check four stage boundaries using work orders and independent event observation, recording wait causes and reruns so electronic completion cannot precede physical handoff. For complete vehicle-handoff cycle, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只統計檢查時間會高估工位吞吐，交回前文件缺失可能讓車輛占位卻被系統標示為已完成。回到「車輛移交完整週期」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Inspection-only accounting overstates bay throughput; missing release evidence can keep a vehicle occupying a bay after software has labelled the task complete. Trace the input chain for complete vehicle-handoff cycle. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "檢查工具停止作業就代表整個機廠工位週期已完成~The maintenance-bay cycle is complete as soon as inspection tools stop working.",
+      "practice": "只把假想檢查工作 inspect 從 900 改成 990 s（增加百分之十），其餘輸入固定。重算結果應由 2.5 變為 2.35294 jobs/h。先說明「車輛移交完整週期」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only hypothetical inspection inspect from 900 to 990 s (increase by ten percent), holding other inputs fixed. Recalculate 2.5 to 2.35294 jobs/h. Explain the causal direction for complete vehicle-handoff cycle, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "人員與備料路徑~Staff and material-preparation routes",
+      "title": "人員與備料路徑~Staff and material-preparation routes",
+      "mechanism": "本單元量測人員往返備品區的步行與等待，檢查縮短距離是否造成車輛動線交叉與額外停頓。總旅行時間應同時計入移動與等待，不能只比較平面上的最短距離。坡道、門扇與轉乘決策都可能造成停頓；對行動受限旅客而言，較遠但連續可達的路徑往往比短而不連續的路徑更可用。解釋前先固定模型適用範圍：定步速與固定等待的概念估算，未含煙氣、擁擠及協助需求分布。~Measure staff walking and waiting to reach spares, checking whether a shorter route creates vehicle-path crossings and additional pauses. Travel time includes movement and waiting rather than plan distance alone. Ramps, doors and transfer decisions can introduce pauses. For a mobility-limited traveller, a longer continuously accessible route can be more usable than a shorter route containing an inaccessible interruption. Before interpreting the result, fix its domain: Constant speed and fixed waiting; smoke, crowd interaction and distribution of assistance needs are omitted.",
+      "model": "原創假想教學輸入：行走距離 distance=120 m；假想步速 speed=0.8 m/s；等待時間 wait=35 s。公式 y=distance/speed+wait，代入得 y=185 s。邊界：定步速與固定等待的概念估算，未含煙氣、擁擠及協助需求分布。~Original hypothetical teaching inputs: walking distance distance=120 m; assumed walking speed speed=0.8 m/s; waiting time wait=35 s. Formula y=distance/speed+wait gives y=185 s. Boundary: Constant speed and fixed waiting; smoke, crowd interaction and distribution of assistance needs are omitted.",
+      "verify": "分段記錄行走與等待，不以最快受試者代表所有旅客，並對照不同能力群體。以「人員與備料路徑」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record movement and waiting separately, avoid representing everyone by the fastest participant, and compare groups with different abilities. For staff and material-preparation routes, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "只量無人環境步行時間會低估轉乘負擔，電梯等待與路徑中斷可能主導總時間。回到「人員與備料路徑」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Uncrowded walking tests understate transfer burden when elevator waits or route interruptions dominate total time. Trace the input chain for staff and material-preparation routes. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "平面圖上最短的路徑一定是每位旅客最快的路徑~The shortest route on a plan is always the fastest route for every passenger.",
+      "practice": "只把假想步速 speed 從 0.8 改成 0.88 m/s（增加百分之十），其餘輸入固定。重算結果應由 185 變為 171.364 s。先說明「人員與備料路徑」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only assumed walking speed speed from 0.8 to 0.88 m/s (increase by ten percent), holding other inputs fixed. Recalculate 185 to 171.364 s. Explain the causal direction for staff and material-preparation routes, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "車輛工位狀態管理~Vehicle and bay state management",
+      "title": "車輛工位狀態管理~Vehicle and bay state management",
+      "mechanism": "本單元分開待檢、作業中、驗證與可交車狀態，避免工具收回就被誤認為所有維修證據已完成。布林狀態組合隨變數個數指數成長，這說明逐一人工檢查很快失去效率。可達性約束能排除不可能組合，但刪除條件必須有證據；安全性質通常針對所有可達狀態，而非幾個畫面上看起來合理的狀態。解釋前先固定模型適用範圍：未限制的布林笛卡兒積；實際可達狀態通常較少，但需另證明。~Separate awaiting inspection, work in progress, verification and release readiness; removal of tools does not establish completion of maintenance evidence. Boolean combinations grow exponentially with variable count, explaining why manual enumeration soon becomes ineffective. Reachability constraints can eliminate impossible combinations, but each exclusion needs justification. Safety properties normally concern every reachable state rather than a few states that look plausible on a display. Before interpreting the result, fix its domain: Unconstrained Boolean Cartesian product; actual reachability can be smaller but must be established separately.",
+      "model": "原創假想教學輸入：布林變數數量 bits=8 bits。公式 y=2**bits，代入得 y=256 states。邊界：未限制的布林笛卡兒積；實際可達狀態通常較少，但需另證明。~Original hypothetical teaching inputs: number of Boolean state variables bits=8 bits. Formula y=2**bits gives y=256 states. Boundary: Unconstrained Boolean Cartesian product; actual reachability can be smaller but must be established separately.",
+      "verify": "用小型模型列舉轉移，再與需求允許的轉移表比較，對被排除狀態留下理由。以「車輛工位狀態管理」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Enumerate transitions in a small model, compare against the required transition table, and document reasons for excluded states. For vehicle and bay state management, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "把感測器故障狀態預先刪掉會讓證明失去關鍵邊界，狀態抽象過粗也可能隱藏時序競爭。回到「車輛工位狀態管理」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Excluding sensor-fault states can remove the crucial boundary from a proof; overly coarse abstraction may hide timing races. Trace the input chain for vehicle and bay state management. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "狀態變數多一個只會多出一種狀態組合~Adding one Boolean state variable creates only one additional combination.",
+      "practice": "只把布林變數數量 bits 從 8 改成 9 bits（增加一個可計數單位），其餘輸入固定。重算結果應由 256 變為 512 states。先說明「車輛工位狀態管理」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only number of Boolean state variables bits from 8 to 9 bits (increase by one whole count), holding other inputs fixed. Recalculate 256 to 512 states. Explain the causal direction for vehicle and bay state management, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "檢修需求追溯~Tracing maintenance requirements",
+      "title": "檢修需求追溯~Tracing maintenance requirements",
+      "mechanism": "本單元將缺陷、工項和驗證紀錄連到同一車輛識別，檢查重複工單是否掩蓋未完成需求。測試覆蓋率只對已定義的分母有意義。需求、狀態、轉移與危害各有不同分母，執行很多正常案例仍可能漏掉罕見但重要的交接；同一案例重跑多次不會自動增加獨立需求的覆蓋。解釋前先固定模型適用範圍：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Link defect, work item and verification record to one vehicle identity, checking whether duplicate work orders conceal incomplete requirements. Coverage is meaningful only relative to its defined denominator. Requirements, states, transitions and hazards have different denominators. Many normal cases can still omit a rare but important handoff, and repeating one case does not automatically cover additional independent requirements. Before interpreting the result, fix its domain: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "model": "原創假想教學輸入：已執行案例 tested=72 cases；已定義案例 total=90 cases。公式 y=tested/total，代入得 y=0.8 1。邊界：計數式已知案例覆蓋，不是失效機率或安全完整性量化。~Original hypothetical teaching inputs: executed cases tested=72 cases; defined cases total=90 cases. Formula y=tested/total gives y=0.8 1. Boundary: Count-based coverage of known cases, not a probability of failure or a safety-integrity measure.",
+      "verify": "建立需求到案例的一對多追溯表，將未測、失敗與不適用分開，抽查原始證據。以「檢修需求追溯」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Build requirement-to-case traceability, separate untested, failed and inapplicable cases, and sample raw evidence. For tracing maintenance requirements, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "縮小分母可讓覆蓋率看似提高，重複案例也可能掩蓋邊界狀態根本未被執行。回到「檢修需求追溯」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Shrinking the denominator makes coverage look better; duplicate cases can hide boundary states that were never exercised. Trace the input chain for tracing maintenance requirements. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "測試覆蓋率達到百分之百就等於零故障風險~One hundred percent test coverage means zero failure risk.",
+      "practice": "只把已執行案例 tested 從 72 改成 73 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 0.8 變為 0.811111 1。先說明「檢修需求追溯」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only executed cases tested from 72 to 73 cases (increase by one whole count), holding other inputs fixed. Recalculate 0.8 to 0.811111 1. Explain the causal direction for tracing maintenance requirements, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "設備停機與備品等待~Equipment outages and spares waiting",
+      "title": "設備停機與備品等待~Equipment outages and spares waiting",
+      "mechanism": "本單元分開機具修復和等待備品的時間，讓維修排程能辨認真正造成工位停用的因素。可用度描述長時間內能提供服務的比例，故障頻率與修復速度都會影響它。相同可用度可能來自頻繁短停或罕見長停，對旅客與維修資源的影響不同；更不能把高可用度直接解讀為故障發生時一定安全。解釋前先固定模型適用範圍：可修復二狀態穩態模型，未含共同原因故障、預防保養與供應鏈等待。~Separate repair time from waiting for spares so maintenance planning can identify what actually keeps a bay unavailable. Availability describes the fraction of long-run time during which service is possible; both failure frequency and repair duration matter. The same value can arise from frequent brief outages or rare long ones with different passenger and maintenance consequences. High availability does not itself establish safe behaviour during failure. Before interpreting the result, fix its domain: Repairable two-state steady model; common-cause failures, planned maintenance and supply-chain waiting are excluded.",
+      "model": "原創假想教學輸入：平均故障間隔 mtbf=2000 h；平均修復時間 mttr=4 h。公式 y=mtbf/(mtbf+mttr)，代入得 y=0.998004 1。邊界：可修復二狀態穩態模型，未含共同原因故障、預防保養與供應鏈等待。~Original hypothetical teaching inputs: mean time between failures mtbf=2000 h; mean repair time mttr=4 h. Formula y=mtbf/(mtbf+mttr) gives y=0.998004 1. Boundary: Repairable two-state steady model; common-cause failures, planned maintenance and supply-chain waiting are excluded.",
+      "verify": "分別核對故障起點、服務恢復及完全修復時間，避免把部分恢復誤列為全功能。以「設備停機與備品等待」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Audit failure onset, service restoration and full repair separately rather than counting degraded service as full functionality. For equipment outages and spares waiting, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "刪除長停機紀錄會扭曲平均修復時間；重複報修同一缺陷則會錯估故障頻率。回到「設備停機與備品等待」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Removing long outages distorts mean repair time, while duplicate reports of one defect distort failure frequency. Trace the input chain for equipment outages and spares waiting. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "系統可用度很高就能直接證明所有故障都是安全的~High system availability directly proves that every failure is safe.",
+      "practice": "只把平均修復時間 mttr 從 4 改成 4.4 h（增加百分之十），其餘輸入固定。重算結果應由 0.998004 變為 0.997805 1。先說明「設備停機與備品等待」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only mean repair time mttr from 4 to 4.4 h (increase by ten percent), holding other inputs fixed. Recalculate 0.998004 to 0.997805 1. Explain the causal direction for equipment outages and spares waiting, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "檢查面照明分布~Lighting on inspection surfaces",
+      "title": "檢查面照明分布~Lighting on inspection surfaces",
+      "mechanism": "本單元比較車底陰影與一般作業面照度，檢查局部視線受阻是否使平均明亮的工位仍難以辨認缺陷。平均照度由到達工作面的光通量除以面積估算，但光學分布決定暗點是否存在。煙氣、污損與電池老化可能同時降低可見性；指示方向、對比與旅客視力也會影響辨識，不能只用燈具是否亮著作為完成檢核。解釋前先固定模型適用範圍：均勻平均照度估算，未模擬煙氣散射或法定最低照度。~Compare underbody shadows with normal work-surface lighting, checking whether local obstruction makes defects hard to recognize despite a bright bay average. Mean illuminance divides useful luminous flux by area, but optical distribution determines dark spots. Smoke, dirt and battery ageing can reduce visibility together. Directional cues, contrast and eyesight affect recognition, so a lamp being on is not a complete verification. Before interpreting the result, fix its domain: Uniform mean-illuminance estimate without smoke scattering or statutory minimum values.",
+      "model": "原創假想教學輸入：光通量 flux=2400 lm；利用係數 util=0.45 1；受照面積 area=24 m2。公式 y=flux*util/area，代入得 y=45 lx。邊界：均勻平均照度估算，未模擬煙氣散射或法定最低照度。~Original hypothetical teaching inputs: luminous flux flux=2400 lm; utilization factor util=0.45 1; illuminated area area=24 m2. Formula y=flux*util/area gives y=45 lx. Boundary: Uniform mean-illuminance estimate without smoke scattering or statutory minimum values.",
+      "verify": "以網格量測平面照度並尋找最低點，對照電池放電前後與不同觀看方向。以「檢查面照明分布」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Measure illuminance on a grid, identify minima, and compare before/after battery discharge and different viewing directions. For lighting on inspection surfaces, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "亮度集中在燈具下方可能留下暗區，指示牌反光也可降低遠距離的有效對比。回到「檢查面照明分布」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Light concentrated beneath fixtures leaves dark regions; sign glare can also reduce effective contrast at a distance. Trace the input chain for lighting on inspection surfaces. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "照明平均值足夠就保證所有角落都能清楚辨識出口~Adequate mean lighting guarantees clear exit recognition at every corner.",
+      "practice": "只把光通量 flux 從 2400 改成 2640 lm（增加百分之十），其餘輸入固定。重算結果應由 45 變為 49.5 lx。先說明「檢查面照明分布」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only luminous flux flux from 2400 to 2640 lm (increase by ten percent), holding other inputs fixed. Recalculate 45 to 49.5 lx. Explain the causal direction for lighting on inspection surfaces, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "工單與實體狀態交接~Handoff of work orders and physical state",
+      "title": "工單與實體狀態交接~Handoff of work orders and physical state",
+      "mechanism": "本單元對齊電子工單更新與實體車輛移交的時間，防止資料已完成但現場尚未完成的版本落差。端到端延遲由量測、通訊、運算與致動串接而成。改善最快的一段通常影響有限，且平均延遲不能代表最壞尾端；定義一致的起訖事件，才能避免子系統都量到好看的數值卻漏掉交接等待。解釋前先固定模型適用範圍：各階段串行且時間確定，沒有平行重疊或隨機尾端。~Align electronic work-order updates with physical vehicle handoff, preventing a completed database entry from concealing unfinished physical work. End-to-end delay spans sensing, communication, computation and actuation. Improving the fastest stage often yields little benefit, and mean latency does not represent its worst tail. Consistent start and end events prevent subsystems from reporting attractive numbers while overlooking handoff queues. Before interpreting the result, fix its domain: Deterministic serial stages without overlap or random latency tails.",
+      "model": "原創假想教學輸入：量測時間 sense=0.03 s；網路時間 network=0.08 s；運算時間 compute=0.02 s；致動時間 actuate=0.12 s。公式 y=sense+network+compute+actuate，代入得 y=0.25 s。邊界：各階段串行且時間確定，沒有平行重疊或隨機尾端。~Original hypothetical teaching inputs: sensing time sense=0.03 s; network time network=0.08 s; computation time compute=0.02 s; actuation time actuate=0.12 s. Formula y=sense+network+compute+actuate gives y=0.25 s. Boundary: Deterministic serial stages without overlap or random latency tails.",
+      "verify": "沿同一事件編號串接時間戳，檢查每一段邊界是否重疊或漏算，並注入負載重測。以「工單與實體狀態交接」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Follow one event identifier through timestamps, check stage boundaries for overlap or gaps, and repeat under injected load. For handoff of work orders and physical state, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "時間基準不同可造成負延遲假象；漏記排隊會使快速單元測試無法預測整合表現。回到「工單與實體狀態交接」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Different clock references can create apparently negative delays; omitted queues prevent fast unit tests from predicting integrated performance. Trace the input chain for handoff of work orders and physical state. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "每個子系統平均很快就代表整體最壞延遲一定很短~Fast average subsystems guarantee a short worst-case end-to-end delay.",
+      "practice": "只把網路時間 network 從 0.08 改成 0.088 s（增加百分之十），其餘輸入固定。重算結果應由 0.25 變為 0.258 s。先說明「工單與實體狀態交接」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only network time network from 0.08 to 0.088 s (increase by ten percent), holding other inputs fixed. Recalculate 0.25 to 0.258 s. Explain the causal direction for handoff of work orders and physical state, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "檢修驗證工時計畫~Planning maintenance verification effort",
+      "title": "檢修驗證工時計畫~Planning maintenance verification effort",
+      "mechanism": "本單元將檢查、重置、證據保存及缺陷重測納入完整時間，不把計畫工時只等同於首次操作時間。測試工時包含案例執行與環境設定、資料復原及證據整理。平行化只有在資源和狀態真正獨立時有效；把多個會修改同一狀態的測試同時執行，可能造成結果不可重現，表面節省時間卻增加診斷成本。解釋前先固定模型適用範圍：確定平均案例時間的串行估算，未含故障重測與資源衝突。~Include inspection, reset, evidence preservation and defect reruns in effort estimates rather than equating planned duration with first-pass operation alone. Test effort includes case execution, setup, state restoration and evidence handling. Parallelism helps only when resources and state are genuinely independent. Concurrent tests modifying one shared state can become irreproducible, apparently saving execution time while increasing diagnostic cost. Before interpreting the result, fix its domain: Serial estimate with deterministic mean case time; failure reruns and resource conflicts are excluded.",
+      "model": "原創假想教學輸入：測試案例數 cases=120 cases；平均案例時間 minutes=8 min/case；設定與恢復時間 setup=180 min。公式 y=(cases*minutes+setup)/60，代入得 y=19 h。邊界：確定平均案例時間的串行估算，未含故障重測與資源衝突。~Original hypothetical teaching inputs: test cases cases=120 cases; mean case duration minutes=8 min/case; setup and recovery time setup=180 min. Formula y=(cases*minutes+setup)/60 gives y=19 h. Boundary: Serial estimate with deterministic mean case time; failure reruns and resource conflicts are excluded.",
+      "verify": "逐案記錄前置狀態、執行時間與復原時間，分開列出正常完成和失敗重測。以「檢修驗證工時計畫」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Record preconditions, execution and restoration for every case, separating normal completion from failure reruns. For planning maintenance verification effort, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "省略復原步驟會讓前案狀態污染後案，僅報告成功案例時間則低估總測試成本。回到「檢修驗證工時計畫」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Omitted restoration contaminates later tests with earlier state; reporting only successful durations understates total effort. Trace the input chain for planning maintenance verification effort. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "所有整合測試都可以同時執行而完全不影響結果~All integration tests can run simultaneously without affecting results.",
+      "practice": "只把測試案例數 cases 從 120 改成 121 cases（增加一個可計數單位），其餘輸入固定。重算結果應由 19 變為 19.1333 h。先說明「檢修驗證工時計畫」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only test cases cases from 120 to 121 cases (increase by one whole count), holding other inputs fixed. Recalculate 19 to 19.1333 h. Explain the causal direction for planning maintenance verification effort, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    },
+    {
+      "anchor": "維修品質抽樣推論~Sampling inference for maintenance quality",
+      "title": "維修品質抽樣推論~Sampling inference for maintenance quality",
+      "mechanism": "本單元比較少數重複車型與多樣車況的抽樣，將零返修紀錄的結論限制於實際觀察族群。零次觀察到失效不代表真實失效機率為零。獨立伯努利試驗可由全數成功的機率反推單側上界，試驗數增加才會縮小界限；相關測試或只選容易案例會使這個統計推論不再成立，也不能由此宣告達到安全完整性等級。解釋前先固定模型適用範圍：獨立同分布二元試驗且觀察零失效，非每小時失效率。~Compare repeated sampling of one fleet type with varied vehicle conditions, bounding zero-return claims by the population actually observed. Zero observed failures does not imply zero true failure probability. Independent Bernoulli trials allow a one-sided upper bound from the probability of all successes, which decreases with sample count. Correlated or selectively easy cases invalidate this inference and cannot establish a safety-integrity level. Before interpreting the result, fix its domain: Independent identical binary trials with zero observed failures, not an hourly failure rate.",
+      "model": "原創假想教學輸入：獨立試驗次數 tests=300 independent trials；單側信賴水準 confidence=0.95 1。公式 y=1-(1-confidence)**(1/tests)，代入得 y=0.00993608 failure probability。邊界：獨立同分布二元試驗且觀察零失效，非每小時失效率。~Original hypothetical teaching inputs: independent trial count tests=300 independent trials; one-sided confidence level confidence=0.95 1. Formula y=1-(1-confidence)**(1/tests) gives y=0.00993608 failure probability. Boundary: Independent identical binary trials with zero observed failures, not an hourly failure rate.",
+      "verify": "核對案例獨立性與抽樣範圍，保留所有失敗紀錄，再說明統計界限對哪一類情境有效。以「維修品質抽樣推論」為驗證目標，先寫出預期變化方向及可分辨的替代原因，再保存原始讀值、單位、校正版本與時間窗。只有比較同一系統邊界的資料，才判定殘差是否支持這項機制。~Audit independence and sampling scope, retain all failures, and state the scenario population to which the bound applies. For sampling inference for maintenance quality, state the expected direction and distinguishable alternative causes before collecting data. Retain raw readings, units, calibration version and observation window. Compare evidence within the same system boundary before deciding whether the residual supports this mechanism.",
+      "failure": "反覆重跑相同狀態可能沒有增加獨立證據，刪去失敗案例則直接破壞零失效假設。回到「維修品質抽樣推論」的輸入鏈逐項定位；先重播單一異常，再比較共同原因的組合。保留不確定項，避免為了讓結果符合預期而刪去不利證據。~Repeated identical states may add no independent evidence, while deleting failures invalidates the zero-failure assumption. Trace the input chain for sampling inference for maintenance quality. Replay one anomaly first, then compare common-cause combinations. Retain uncertain observations rather than discarding adverse evidence to force the expected conclusion.",
+      "misconception": "完成很多次沒有故障的測試就能證明故障機率為零~Many failure-free tests prove that the failure probability is zero.",
+      "practice": "只把獨立試驗次數 tests 從 300 改成 301 independent trials（增加一個可計數單位），其餘輸入固定。重算結果應由 0.00993608 變為 0.00990324 failure probability。先說明「維修品質抽樣推論」中變化的因果方向，再檢查適用邊界是否仍成立，提交計算與一個可反駁此解釋的觀測。~Change only independent trial count tests from 300 to 301 independent trials (increase by one whole count), holding other inputs fixed. Recalculate 0.00993608 to 0.00990324 failure probability. Explain the causal direction for sampling inference for maintenance quality, check that the stated boundary still holds, and submit the calculation plus one observation that could refute the explanation."
+    }
+  ],
+  "facts": [
+    "教學假設：檢修工位利用率採 arrival=8 jobs/h；本課公式結果 0.666667 1，非現場額定值。~Teaching assumption for utilization of maintenance bays: arrival=8 jobs/h; this model gives 0.666667 1, not a field rating.",
+    "教學假設：車輛移交完整週期採 receive=120 s；本課公式結果 2.5 jobs/h，非現場額定值。~Teaching assumption for complete vehicle-handoff cycle: receive=120 s; this model gives 2.5 jobs/h, not a field rating.",
+    "教學假設：人員與備料路徑採 distance=120 m；本課公式結果 185 s，非現場額定值。~Teaching assumption for staff and material-preparation routes: distance=120 m; this model gives 185 s, not a field rating.",
+    "教學假設：車輛工位狀態管理採 bits=8 bits；本課公式結果 256 states，非現場額定值。~Teaching assumption for vehicle and bay state management: bits=8 bits; this model gives 256 states, not a field rating.",
+    "教學假設：檢修需求追溯採 tested=72 cases；本課公式結果 0.8 1，非現場額定值。~Teaching assumption for tracing maintenance requirements: tested=72 cases; this model gives 0.8 1, not a field rating.",
+    "教學假設：設備停機與備品等待採 mtbf=2000 h；本課公式結果 0.998004 1，非現場額定值。~Teaching assumption for equipment outages and spares waiting: mtbf=2000 h; this model gives 0.998004 1, not a field rating."
+  ],
+  "timeline": [
+    {
+      "year": "2010",
+      "event": "機械風險評估方法的該版標準發布。~This edition of machinery risk-assessment guidance was published."
+    },
+    {
+      "year": "2015",
+      "event": "品質管理方法的二零一五版發布。~The twenty-fifteen edition of quality-management requirements was published."
+    },
+    {
+      "year": "2023",
+      "event": "機械安全控制設計方法更新版發布。~An updated machinery safety-control design edition was published."
+    }
+  ],
+  "codes": [
+    "ISO 12100:2010 機械風險評估與降低方法，非設備額定證明~ISO 12100:2010 machinery risk assessment and reduction, not equipment rating certification",
+    "ISO 13849-1:2023 安全相關控制設計，教材不宣告性能等級~ISO 13849-1:2023 safety-related control design, with no performance-level claim for this lesson"
+  ],
+  "landmarks": [
+    "臺北捷運北投機廠~Taipei Metro Beitou Depot",
+    "香港港鐵八鄉機廠~Hong Kong MTR Pat Heung Depot"
+  ],
+  "place": {
+    "name": "北投機廠示意地點~Beitou depot reference area",
+    "country": "臺灣~Taiwan",
+    "lat": 25.138,
+    "lng": 121.484,
+    "query": "Beitou Depot Taipei"
+  },
+  "sources": [
+    {
+      "key": "iso-risk",
+      "title": "機械風險評估方法",
+      "titleEn": "Machinery risk-assessment methodology",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/cms/live/live/en/sites/isoorg/contents/data/standard/05/15/51528.html?browse=tc",
+      "sourceType": "primary",
+      "scope": "支持機械風險方法與出版年代；不提供特定設備額定能力或作業許可。",
+      "scopeEn": "Supports machinery-risk methodology and edition year, not equipment ratings or work authorization."
+    },
+    {
+      "key": "iso-quality",
+      "title": "品質管理方法歷史版",
+      "titleEn": "Historical quality-management edition",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/62085.html?iframeView=true",
+      "sourceType": "primary",
+      "scope": "僅支持歷史版出版與品質管理主題，不把歷史版宣稱為所有地區最新要求。",
+      "scopeEn": "Supports historical edition and quality-management topic, without claiming universal current applicability."
+    },
+    {
+      "key": "iso-control",
+      "title": "機械安全控制設計方法",
+      "titleEn": "Machinery safety-related control design",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/73481.html",
+      "sourceType": "primary",
+      "scope": "支持安全相關控制設計的標準範圍；本課沒有宣稱達成特定性能等級。",
+      "scopeEn": "Supports the scope of safety-related control design; no particular performance level is claimed."
+    },
+    {
+      "key": "beitou-reference",
+      "title": "北投維修組織官方背景",
+      "titleEn": "Official Beitou maintenance reference",
+      "publisher": "Taipei Rapid Transit Corporation",
+      "url": "https://www.metro.taipei/cp.aspx?n=195274F164A8EE0B&s=EAC107016EAB69E7",
+      "sourceType": "primary",
+      "scope": "支持北投維修工程背景，不聲稱特定機具或供應合約。",
+      "scopeEn": "Supports Beitou maintenance context, without asserting particular machines or supply contracts."
+    },
+    {
+      "key": "pat-heung-reference",
+      "title": "港鐵機廠官方背景",
+      "titleEn": "Official MTR depot reference",
+      "publisher": "MTR Corporation",
+      "url": "https://www.mtr.com.hk/en/corporate/operations/detail_depots.html",
+      "sourceType": "primary",
+      "scope": "支持八鄉機廠作為維修工程參考，不聲稱使用任何特定算例設備。",
+      "scopeEn": "Supports Pat Heung as a maintenance reference without claiming use of any particular exercise equipment."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "海根賽特",
+      "nameEn": "Hegenscheidt",
+      "business": "輪對加工與鐵路維修設備",
+      "businessEn": "Wheelset machining and railway maintenance equipment",
+      "url": "https://www.hegenscheidt.com/en/",
+      "role": "產品角色參考，不宣稱供應本課列出的任何機廠",
+      "roleEn": "Product-role reference; no claim of supplying any listed depot",
+      "security": null
+    },
+    {
+      "name": "國際標準化組織",
+      "nameEn": "ISO",
+      "business": "機械風險與品質方法標準",
+      "businessEn": "Machinery-risk and quality methodology standards",
+      "url": "https://www.iso.org/standard/73481.html",
+      "role": "標準出版機構而非設備認證結論",
+      "roleEn": "Standards publisher, not an equipment-certification conclusion",
+      "security": null
+    }
+  ],
+  "related": [
+    "b387",
+    "b389"
+  ],
+  "architectureNodes": [
+    [
+      "車輛到達",
+      "Vehicle arrival"
+    ],
+    [
+      "檢修工位",
+      "Maintenance bay"
+    ],
+    [
+      "備料路徑",
+      "Spares route"
+    ],
+    [
+      "驗證工單",
+      "Verification order"
+    ],
+    [
+      "交回證據",
+      "Return evidence"
+    ]
+  ],
+  "architectureEdges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      1
+    ]
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scope": "V16 shell dispatch, Python/Conda priority, local AI argument forwarding and legacy read-only preview",
+  "shell_tests": 17,
+  "uploader_integration_tests": 15,
+  "shell": "GNU bash, version 5.2.21(1)-release (x86_64-pc-linux-gnu)",
+  "checks": [
+    "All root .sh files pass bash -n",
+    "V16 defaults and upload-all alias route to incremental uploader",
+    "compare forces dry-run; serve forwards to run-local",
+    "Explicit legacy advanced commands warn and preserve original arguments",
+    "No empty-command execution when Python is absent or too old",
+    "Conda and explicit interpreter paths containing spaces",
+    "Cloud/Gemini preflight and server reuse selected interpreter",
+    "AI help exits without Python, provider keys, model files or downloads",
+    "Ollama empty argument array uses Bash 3.2-compatible nounset guard",
+    "No unbraced variable immediately before non-ASCII text",
+    "Real local bare Git preview preserves refs and generated files"
+  ],
+  "limits": [
+    "Executed on Linux Bash 5.2; no actual macOS Bash 3.2 or Windows execution",
+    "No actual provider calls, model downloads, GitHub push or scheduled-task installation"
+  ],
+  "files": {
+    "macgyver.sh": "0f5c0c05b71bcedc5280fb16c128e83463808896ce2379c0cc83bcff02613c22",
+    "macgyver-legacy-v15.sh": "bd36e479080462c983d3d3a9b49a65da6d9a4781292c1c7eb6803c221b381ecc",
+    "upload-all.sh": "6366820ec9c9975e90d7ce3620e07976981f6b6f36db1754ed89b36920fe6ef7",
+    "Upload_MacGyver_v16_SSH.sh": "a7d0888fa79901233f66b38dac10eeca5eec68154b6adcf8d0843b0d968201e0",
+    "run-local.sh": "66ac6223485870ee6aaebc4b1797e671e83b440df8702135c4219d31865aff7a",
+    "run-ai-local.sh": "5dfd65b3a03d71fba97a17b279adeb5dc1c3514d6339a972d295f7e3229f7537",
+    "run-ai-cloud.sh": "19369ddcaf512e04a93977390737752323e37bf46acf142d4fa6b198a8d16026",
+    "run-ai-gemini.sh": "7e74ff5337e5c3b76db954d2b52e2eae33a4efa35884c58e86aea9bb382426e6",
+    "run-ai-llamacpp.sh": "edce44dabd069e0236c2c86ab04752c46802964ded648c0f0dd1cabd6dd8bcbb",
+    "tests/test_launchers_v16.py": "8982e0b253442418c65b92d66c07e77cc8157181abd033d3abd5eda95b7f2529",
+    "tests/test_macgyver_shell.py": "d10f8801f2813569d8d0fb9ece9472a1ee5b825492e8e016b9750aa404c3f4b7",
+    "tests/test_cli_dry_run_v15.py": "00a7f863f0c41f2f902b2ded798c6049d8bef0986c7e89954d2f1c80fa509203",
+    "docs/SHELL_LAUNCH_V16_ZH.md": "043963fd7074fdc8b31e291f462ceb946d08d4502489dbd8a1cf66fec2b750c1",
+    "tools/upload-v16/README_ZH.md": "a9f532297c7e1fc0e8f3e49b4ca91dd6f953a16735568c7819fc43ac2042b942"
+  },
+  "log_sha256": {
+    "v16-shell-launch-validation.log": "054afe833edd11b9cf25d4fc9e0d54fefeafa7b106b40790403726f6668dc609",
+    "v16-upload-launch-regression.log": "8286a73356991e3fb523cbf3529c952d4261a401a76ecec650f7c4343785266a"
+  }
+}
