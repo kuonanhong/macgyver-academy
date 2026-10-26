@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c023-1e4c18188c53a277.json"]={sha256:"1e4c18188c53a277387e87e30713943b6bd30d6a871acbb8fa0ea4676e7abbb9",value:{"title":"DHC-6 Twin Otter 短場起降飛機","titleEn":"DHC-6 Twin Otter STOL aircraft","category":"aerospace","kind":"project","summary":"課程規劃主題：高升力設計與多用途起落架。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: high-lift design and versatile landing gear. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c023"}};

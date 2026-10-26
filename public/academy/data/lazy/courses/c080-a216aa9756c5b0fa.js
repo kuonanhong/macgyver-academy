@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c080-a216aa9756c5b0fa.json"]={sha256:"a216aa9756c5b0fae619545601ad7e2762cbcf007d534806284af38fb3d9a361",value:{"title":"飛機重量與平衡管理","titleEn":"Aircraft weight and balance management","category":"aerospace","kind":"craft","summary":"課程規劃主題：重心包線與載重紀錄。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: center-of-gravity envelopes and load records. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c080"}};

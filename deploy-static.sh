@@ -17,5 +17,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 command -v python3 >/dev/null || { echo '需要 Python 3.10 或更新版本。' >&2; exit 1; }
-bash "$TASK_ROOT/build-offline.sh" --if-needed
-exec python3 "$TASK_ROOT/tools/export-preview-v16.py" --out "$OUTPUT_DIR"
+if [[ ! -f "$TASK_ROOT/public/academy/preview-manifest.json" ]]; then
+  bash "$TASK_ROOT/build-offline.sh" --if-needed
+fi
+exec python3 "$TASK_ROOT/tools/export-preview-v18.py" --out "$OUTPUT_DIR"

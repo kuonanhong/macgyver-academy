@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c039-2e2d8bec29f21317.json"]={sha256:"2e2d8bec29f213171f9980c1245d7b7792753328fb6cc1cdd79af068eac070b0",value:{"title":"運輸機氣動外形風洞驗證","titleEn":"Transport-aircraft wind-tunnel validation","category":"aerospace","kind":"craft","summary":"課程規劃主題：相似律與量測修正。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: similarity laws and measurement correction. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c039"}};

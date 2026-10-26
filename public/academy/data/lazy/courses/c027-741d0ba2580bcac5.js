@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c027-741d0ba2580bcac5.json"]={sha256:"741d0ba2580bcac5c685e4ec8f884c80765852ee8f91adb577473c0a7fef27f6",value:{"title":"NASA X-59 靜音超音速研究機","titleEn":"NASA X-59 quiet-supersonic research aircraft","category":"aerospace","kind":"project","summary":"課程規劃主題：音爆塑形與飛行研究。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: sonic-boom shaping and flight research. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c027"}};

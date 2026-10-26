@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c013-d5264296ce9de905.json"]={sha256:"d5264296ce9de905cd53427e9e59d1597e49356ce5730a9283cde9dbf78f93eb",value:{"title":"De Havilland Dash 8 客機工程","titleEn":"De Havilland Dash 8 airliner engineering","category":"aerospace","kind":"project","summary":"課程規劃主題：渦槳振動與降噪。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: turboprop vibration and noise reduction. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c013"}};

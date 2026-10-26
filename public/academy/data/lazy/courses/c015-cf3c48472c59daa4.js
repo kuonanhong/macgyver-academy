@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c015-cf3c48472c59daa4.json"]={sha256:"cf3c48472c59daa48361d431ec0ee1424a25628e961e63e16171c626019cc375",value:{"title":"COMAC C919 客機整合工程","titleEn":"COMAC C919 airliner integration","category":"aerospace","kind":"project","summary":"課程規劃主題：供應鏈介面與整機驗證。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: supplier interfaces and aircraft verification. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c015"}};

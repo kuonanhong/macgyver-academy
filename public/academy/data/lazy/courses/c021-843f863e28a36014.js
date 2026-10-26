@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c021-843f863e28a36014.json"]={sha256:"843f863e28a36014438701d4b45630479fcc014039f023d0ede44d7d94d2fe44",value:{"title":"Cirrus SR22 整機安全工程","titleEn":"Cirrus SR22 whole-aircraft safety engineering","category":"aerospace","kind":"project","summary":"課程規劃主題：人機介面與安全設計。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: human-machine interfaces and safety design. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c021"}};

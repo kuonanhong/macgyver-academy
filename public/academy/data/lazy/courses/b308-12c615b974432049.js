@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b308-12c615b974432049.json"]={sha256:"12c615b974432049a391a63e13585cd5db92d0ab269a24d29de9db025ae51658",value:{"id":"b308","title":"東北新幹線","titleEn":"Tohoku Shinkansen","category":"rail","kind":"project","summary":"以「東北新幹線」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Tohoku Shinkansen. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

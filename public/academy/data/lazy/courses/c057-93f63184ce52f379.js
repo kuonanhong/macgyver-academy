@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c057-93f63184ce52f379.json"]={sha256:"93f63184ce52f379d143e3636e7830b18ea25910cdf0360980873e348e6f14fc",value:{"title":"航空渦扇引擎剖面解讀","titleEn":"Turbofan engine cross-section interpretation","category":"aerospace","kind":"craft","summary":"課程規劃主題：風扇、壓縮機與渦輪功能。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: fan, compressor and turbine functions. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c057"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c064-56a7477a01f7aa58.json"]={sha256:"56a7477a01f7aa5853b510c78f8d97e685fcfe95635e0932321d1f56397347c2",value:{"title":"飛機客艙增壓控制","titleEn":"Aircraft cabin pressurization control","category":"aerospace","kind":"craft","summary":"課程規劃主題：壓差管理與失效監測。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: differential-pressure management and fault monitoring. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c064"}};

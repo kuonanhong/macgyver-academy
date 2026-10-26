@@ -1,4 +1,5 @@
 /* Original V17 scene state and projection. No DOM, network or animation on import. */
+import {aviationModel, aviationModelKind, calculateAviation, aviationProfile} from './aviation-models-v18.js';
 import {SCENE_MODELS, sceneModelFor, sceneDefaults, calculateSceneModel, projectArchitecture, resolveScenePhoto} from './immersive-v16.js';
 
 export const text=(value,en=false)=>Array.isArray(value)?String(value[en?1:0]??value[0]??''):String(value??'');
@@ -61,10 +62,12 @@ const ENVIRONMENT_WARMUP_NOTES={
  acoustic:['此課先比較目標源衰減與背景聲級；不從真實屏障幾何計算繞射。','Compare target-source attenuation with background level first; actual barrier geometry and diffraction are not calculated.']
 };
 export function modelKind(course={}){
+ if(course.category==='aerospace')return 'aviation-'+aviationModelKind(course);
  if(course.category!=='environment')return sceneModelFor(course);
  return ENVIRONMENT_COURSE_MODELS[course.id]||'removal';
 }
 export function getModel(course={}){
+ if(course.category==='aerospace')return aviationModel(course);
  const kind=modelKind(course),base=ENVIRONMENT_MODELS[kind]||SCENE_MODELS[kind];
  if(course.category!=='environment')return {kind,...base};
  const note=ENVIRONMENT_WARMUP_NOTES[kind]||['',''];
@@ -72,6 +75,7 @@ export function getModel(course={}){
 }
 export function defaults(course={}){return Object.fromEntries(getModel(course).params.map(p=>[p.id,p.value]));}
 export function calculate(course,values){
+ if(course.category==='aerospace')return calculateAviation(course,values);
  const m=getModel(course);if(!ENVIRONMENT_MODELS[m.kind])return calculateSceneModel(m.kind,values);
  for(const p of m.params)if(!Number.isFinite(values[p.id])||values[p.id]<p.min-1e-9||values[p.id]>p.max+1e-9)throw new RangeError(p.id+' outside teaching range');
  let value,detail={};
@@ -86,6 +90,7 @@ export function calculate(course,values){
  return {kind:m.kind,value,unit:m.unit,detail};
 }
 export function profile(course={}){
+ if(course.category==='aerospace')return aviationProfile(course);
  const c=CATEGORIES[course.category]||CATEGORIES.manufacturing,m=getModel(course);
  if(course.category!=='environment')return {...c};
  const variants={
@@ -110,6 +115,7 @@ export function safeAssetPath(value){return typeof value==='string'&&/^(?:\.\/)?
 export function safeHttps(value){try{const u=new URL(value);return u.protocol==='https:'?u.href:'';}catch{return '';}}
 export function assetChoices(course={},options={}){
  const a=options.sceneAssets||{},all=a.assets||[],ids=[];
+ ids.push(...(a.coursePanoramaSets?.[course.id]||[]));ids.push(...(a.coursePhotoSets?.[course.id]||[]));
  const exact=a.courses?.[course.id];if(exact?.assetIds)ids.push(...exact.assetIds);
  const def=a.categoryDefaults?.[course.category];if(typeof def==='string')ids.push(def);
  ids.push(...(a.categoryPhotoSets?.[course.category]||[]));
@@ -120,7 +126,7 @@ export function assetChoices(course={},options={}){
  if(!chosen.length){const old=resolveScenePhoto(course,options.photos,options.scenePhotos);if(old)chosen.push({...old.photo,projection:'flat',match:old.match,note:old.note,noteEn:old.noteEn});}
  return chosen;
 }
-export function isPanorama(asset){return asset?.projection==='equirectangular'&&asset?.photoType==='real-panorama'&&asset.width>0&&asset.height>0&&Math.abs(asset.width/asset.height-2)<.03;}
+export function isPanorama(asset){return asset?.projection==='equirectangular'&&(asset?.photoType==='real-panorama'||(asset?.photoType==='real-fixed-position-panorama'&&asset.panoramaVerified===true))&&asset.width>0&&asset.height>0&&Math.abs(asset.width/asset.height-2)<.03;}
 export function panoramaUV(yaw,pitch){return {u:((yaw/(2*Math.PI)+.5)%1+1)%1,v:clamp(.5-pitch/Math.PI,0,1)};}
 const sub=(a,b)=>a.map((v,i)=>v-b[i]),dot=(a,b)=>a.reduce((v,x,i)=>v+x*b[i],0),norm=a=>{const n=Math.hypot(...a);return a.map(v=>v/n);},cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 export function camera(view='third',yaw=.5,pitch=.45,zoom=1,target=[0,.8,0]){

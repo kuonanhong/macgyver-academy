@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c002-19c55c366ddaaa4e.json"]={sha256:"19c55c366ddaaa4ed45d920c4ccec20f28bfe3e827c07fa79c4b3ea9b2f9cafb",value:{"title":"Airbus A380 雙層客機工程","titleEn":"Airbus A380 double-deck airliner engineering","category":"aerospace","kind":"project","summary":"課程規劃主題：大尺寸結構與客艙系統。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: large structures and cabin systems. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c002"}};

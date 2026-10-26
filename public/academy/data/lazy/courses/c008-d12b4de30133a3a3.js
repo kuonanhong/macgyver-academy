@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c008-d12b4de30133a3a3.json"]={sha256:"d12b4de30133a3a39a497b6cf2da1f70e775a2b6853b4faec67e64cd833f8a1e",value:{"title":"Concorde 超音速客機工程史","titleEn":"Concorde supersonic airliner engineering history","category":"aerospace","kind":"project","summary":"課程規劃主題：氣動熱與進氣系統概念。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: aerothermal and inlet-system concepts. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c008"}};

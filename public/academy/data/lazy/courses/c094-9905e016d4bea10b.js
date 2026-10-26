@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c094-9905e016d4bea10b.json"]={sha256:"9905e016d4bea10b7a96a51a954ac0e38888737203fdb26fce3f85402db4a804",value:{"title":"eVTOL 乘客航空器系統整合","titleEn":"Passenger eVTOL systems integration","category":"aerospace","kind":"craft","summary":"課程規劃主題：推進分散化與能源限制。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: distributed propulsion and energy constraints. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c094"}};

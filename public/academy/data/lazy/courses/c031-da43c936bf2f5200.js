@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c031-da43c936bf2f5200.json"]={sha256:"da43c936bf2f52000765c2213ad289733fb2039c6a6f2b599aaa9173f0e4b085",value:{"title":"Leonardo AW139 民用直升機","titleEn":"Leonardo AW139 civil helicopter","category":"aerospace","kind":"project","summary":"課程規劃主題：傳動系統概念與任務配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: transmission concepts and mission configuration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c031"}};

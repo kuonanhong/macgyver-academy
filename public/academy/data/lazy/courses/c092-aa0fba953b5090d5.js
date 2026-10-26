@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c092-aa0fba953b5090d5.json"]={sha256:"aa0fba953b5090d58bbd96c5e8d1840f8d063705b0d5e8a5fdc72f29efd3f60b",value:{"title":"民用無人機地面站介面","titleEn":"Civil-drone ground-station interfaces","category":"aerospace","kind":"craft","summary":"課程規劃主題：遙測可視化與告警分級。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: telemetry visualization and alert priorities. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c092"}};

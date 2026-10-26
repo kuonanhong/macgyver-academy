@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c007-9c8caf8042be6cd1.json"]={sha256:"9c8caf8042be6cd163cb86e01805b14f8741c30b29c2778ac7d782037127c41d",value:{"title":"Boeing 777 長程雙發客機工程","titleEn":"Boeing 777 long-range twinjet engineering","category":"aerospace","kind":"project","summary":"課程規劃主題：系統可靠度與結構驗證。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: system reliability and structural verification. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c007"}};

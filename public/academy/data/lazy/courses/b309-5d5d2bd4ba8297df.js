@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b309-5d5d2bd4ba8297df.json"]={sha256:"5d5d2bd4ba8297df4d35ce0d670708158829e06cf7fe7a8f7de6403090505c93",value:{"id":"b309","title":"九州新幹線","titleEn":"Kyushu Shinkansen","category":"rail","kind":"project","summary":"以「九州新幹線」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Kyushu Shinkansen. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c091-a12ad3b05b8a97b2.json"]={sha256:"a12ad3b05b8a97b2a6b809e1e7bb02e86f13e4db8a22a96fd6e053e73fa87acd",value:{"title":"民用無人機法規與運作風險","titleEn":"Civil-drone rules and operational risk","category":"aerospace","kind":"craft","summary":"課程規劃主題：空域認知與任務風險評估。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: airspace awareness and operational risk assessment. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c091"}};

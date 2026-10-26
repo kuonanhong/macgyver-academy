@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c004-0908d587be5ce0c1.json"]={sha256:"0908d587be5ce0c19669c48381a2f2815349f3b73caeceee94b51321a73e4598",value:{"title":"Airbus A220 區域客機工程","titleEn":"Airbus A220 regional airliner engineering","category":"aerospace","kind":"project","summary":"課程規劃主題：短程效率與系統配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: short-haul efficiency and system layout. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c004"}};

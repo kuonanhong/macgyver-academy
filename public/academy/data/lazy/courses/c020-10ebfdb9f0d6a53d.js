@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c020-10ebfdb9f0d6a53d.json"]={sha256:"10ebfdb9f0d6a53dff68eb91b9a331c5f93c2849e31bc1f046b03688a5738d63",value:{"title":"Cessna 172 訓練機系統","titleEn":"Cessna 172 training-aircraft systems","category":"aerospace","kind":"project","summary":"課程規劃主題：基礎操縱與維護邏輯。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: basic controls and maintenance logic. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c020"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/b325-0d4d0ab3fdae1d5d.json"]={sha256:"0d4d0ab3fdae1d5d3c02ba054319df3f9af88c1eaecadf6782beddd29e7ad443",value:{"id":"b325","title":"杜拜地鐵紅線","titleEn":"Dubai Metro Red Line","category":"rail","kind":"project","summary":"以「杜拜地鐵紅線」為研究主題，規劃拆解土建與機電介面、系統整合、可靠度及測試。目前為選題路線圖，逐步課程與專案細節尚待編審；所附通用來源屬類別背景。","summaryEn":"Study topic: Dubai Metro Red Line. Planned coverage includes civil–electromechanical interfaces, system integration, reliability and testing. Roadmap entry: step-by-step lessons and project details await editorial review; general references provide category context.","sourceIds":["b-src-rail","b-src-rail-signals"],"status":"roadmap"}};

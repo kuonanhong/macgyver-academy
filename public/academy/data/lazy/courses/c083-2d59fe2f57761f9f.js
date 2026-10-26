@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c083-2d59fe2f57761f9f.json"]={sha256:"2d59fe2f57761f9f76cbdf9028d9c958c86871290fcafe1cd76ed4bcb48e0112",value:{"title":"民航機噪音認證概念","titleEn":"Civil-aircraft noise certification concepts","category":"aerospace","kind":"craft","summary":"課程規劃主題：噪音指標與量測流程。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: noise metrics and measurement workflow. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c083"}};

@@ -344,7 +344,9 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
         requests++;
         let result;
         if(typeof translateBatch==='function')result=await translateBatch({language,texts:batch,signal:controller.signal});
-        else {
+        // The app's optional local-model adapter returns null when no model is
+        // loaded. A configured server translator must still remain reachable.
+        if(result==null) {
           const response = await fetch('/api/translate', {
             method: 'POST', credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
