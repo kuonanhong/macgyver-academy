@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c122-ac42e7b7c90bda77.json"]={sha256:"ac42e7b7c90bda77d03c56a1a3608c33bbf0f4eafb78b424ed0bfab4e316b56e",value:{"title":"Glomar Challenger 海洋鑽探史","titleEn":"Glomar Challenger ocean-drilling history","category":"marine","kind":"project","summary":"課程規劃主題：深海取芯與地球科學。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: deep-sea coring and earth science. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c122"}};

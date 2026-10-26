@@ -1,3 +1,4 @@
+import {marineModel,marineModelKind,calculateMarine,marineProfile} from './marine-models-v19.js';
 /* Original V17 scene state and projection. No DOM, network or animation on import. */
 import {aviationModel, aviationModelKind, calculateAviation, aviationProfile} from './aviation-models-v18.js';
 import {SCENE_MODELS, sceneModelFor, sceneDefaults, calculateSceneModel, projectArchitecture, resolveScenePhoto} from './immersive-v16.js';
@@ -62,11 +63,13 @@ const ENVIRONMENT_WARMUP_NOTES={
  acoustic:['此課先比較目標源衰減與背景聲級；不從真實屏障幾何計算繞射。','Compare target-source attenuation with background level first; actual barrier geometry and diffraction are not calculated.']
 };
 export function modelKind(course={}){
+ if(course.category==='marine')return 'marine-'+marineModelKind(course);
  if(course.category==='aerospace')return 'aviation-'+aviationModelKind(course);
  if(course.category!=='environment')return sceneModelFor(course);
  return ENVIRONMENT_COURSE_MODELS[course.id]||'removal';
 }
 export function getModel(course={}){
+ if(course.category==='marine')return marineModel(course);
  if(course.category==='aerospace')return aviationModel(course);
  const kind=modelKind(course),base=ENVIRONMENT_MODELS[kind]||SCENE_MODELS[kind];
  if(course.category!=='environment')return {kind,...base};
@@ -75,6 +78,7 @@ export function getModel(course={}){
 }
 export function defaults(course={}){return Object.fromEntries(getModel(course).params.map(p=>[p.id,p.value]));}
 export function calculate(course,values){
+ if(course.category==='marine')return calculateMarine(course,values);
  if(course.category==='aerospace')return calculateAviation(course,values);
  const m=getModel(course);if(!ENVIRONMENT_MODELS[m.kind])return calculateSceneModel(m.kind,values);
  for(const p of m.params)if(!Number.isFinite(values[p.id])||values[p.id]<p.min-1e-9||values[p.id]>p.max+1e-9)throw new RangeError(p.id+' outside teaching range');
@@ -90,6 +94,7 @@ export function calculate(course,values){
  return {kind:m.kind,value,unit:m.unit,detail};
 }
 export function profile(course={}){
+ if(course.category==='marine')return marineProfile(course);
  if(course.category==='aerospace')return aviationProfile(course);
  const c=CATEGORIES[course.category]||CATEGORIES.manufacturing,m=getModel(course);
  if(course.category!=='environment')return {...c};

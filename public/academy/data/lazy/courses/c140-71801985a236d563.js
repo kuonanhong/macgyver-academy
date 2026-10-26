@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c140-71801985a236d563.json"]={sha256:"71801985a236d563bee3dfabbeae106bffcf280c9498573f0d6f0e4b0cf1a366",value:{"title":"Pioneering Spirit 工程船","titleEn":"Pioneering Spirit construction vessel","category":"marine","kind":"project","summary":"課程規劃主題：超大型吊裝與船體配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: large-scale lifting and hull configuration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c140"}};

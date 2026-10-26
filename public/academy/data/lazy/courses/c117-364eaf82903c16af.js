@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c117-364eaf82903c16af.json"]={sha256:"364eaf82903c16af5f8a2e653910be25c52f18e344f836b380f1ce75a2f8ecc0",value:{"title":"RSV Nuyina 南極研究船","titleEn":"RSV Nuyina Antarctic research vessel","category":"marine","kind":"project","summary":"課程規劃主題：破冰結構與研究支援。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: icebreaking structures and research support. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c117"}};

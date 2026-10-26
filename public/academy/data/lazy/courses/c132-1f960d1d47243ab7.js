@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c132-1f960d1d47243ab7.json"]={sha256:"1f960d1d47243ab7f3ac16cd73fa088a096c7d7862949c82d96fb1093f16d4e3",value:{"title":"Laura Maersk 甲醇貨櫃船","titleEn":"Laura Maersk methanol container ship","category":"marine","kind":"project","summary":"課程規劃主題：雙燃料概念與燃料供應。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: dual-fuel concepts and fuel supply. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c132"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c149-c8c8005c6dd6a49e.json"]={sha256:"c8c8005c6dd6a49ececc1fcf1f314e981b2fc2caaba52c264d8024ff44abaaa1",value:{"title":"WindFloat Atlantic 浮式風電","titleEn":"WindFloat Atlantic floating wind project","category":"marine","kind":"project","summary":"課程規劃主題：半潛平台與海上組裝。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: semi-submersible platforms and offshore assembly. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c149"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c124-d92e691d5c111ed5.json"]={sha256:"d92e691d5c111ed52030d66c0aa5a4115c5e401c1c46bc06d916b5dfe79dfc09",value:{"title":"Icon of the Seas 大型郵輪系統","titleEn":"Icon of the Seas large cruise-ship systems","category":"marine","kind":"project","summary":"課程規劃主題：複合能源與旅客空間。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: integrated energy and passenger spaces. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c124"}};

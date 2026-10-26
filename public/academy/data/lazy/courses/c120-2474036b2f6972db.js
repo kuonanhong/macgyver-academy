@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c120-2474036b2f6972db.json"]={sha256:"2474036b2f6972db345dd54af13fb4193f19bfee228a72c016f38942df42d40b",value:{"title":"Chikyu 地球深部探查船","titleEn":"Chikyu scientific drilling vessel","category":"marine","kind":"project","summary":"課程規劃主題：海洋科學鑽探與船位控制。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: scientific ocean drilling and station keeping. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c120"}};

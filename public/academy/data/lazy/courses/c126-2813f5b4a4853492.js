@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c126-2813f5b4a4853492.json"]={sha256:"2813f5b4a485349257b54223f20a5efee1701135b090103f4874ec136a95fadc",value:{"title":"SS United States 遠洋客輪工程史","titleEn":"SS United States ocean-liner engineering history","category":"marine","kind":"project","summary":"課程規劃主題：輕量上層結構與高速航行。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: light superstructures and high-speed sailing. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c126"}};

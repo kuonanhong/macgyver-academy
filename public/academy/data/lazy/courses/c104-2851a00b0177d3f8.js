@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c104-2851a00b0177d3f8.json"]={sha256:"2851a00b0177d3f804527ceedf4627860ba17ffb65ab868ad382608e6b19a33d",value:{"title":"Shinkai 6500 科學潛器","titleEn":"Shinkai 6500 research submersible","category":"marine","kind":"project","summary":"課程規劃主題：深海載人探測與安全理念。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: crewed deep-sea observation and safety concepts. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c104"}};

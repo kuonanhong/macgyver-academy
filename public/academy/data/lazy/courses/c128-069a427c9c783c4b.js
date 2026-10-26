@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c128-069a427c9c783c4b.json"]={sha256:"069a427c9c783c4be3bad4e1b7131419b4dbb9f9cb828daafe0670bedd1d9646",value:{"title":"Emma Maersk 貨櫃船工程","titleEn":"Emma Maersk container-ship engineering","category":"marine","kind":"project","summary":"課程規劃主題：船體尺度與貨物配置。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: hull dimensions and cargo arrangements. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c128"}};

@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c115-db45b47e1178845b.json"]={sha256:"db45b47e1178845bde63ab2258227367c9dbb18ef1ddb52653817c5d53850337",value:{"title":"RV Falkor too 科學研究船","titleEn":"RV Falkor too research vessel","category":"marine","kind":"project","summary":"課程規劃主題：水下機器人與實驗室整合。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: underwater robots and laboratory integration. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c115"}};

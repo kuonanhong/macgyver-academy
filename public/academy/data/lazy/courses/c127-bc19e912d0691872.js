@@ -1,3 +1,0 @@
-/* Generated on-demand data. */
-window.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);
-window.MG_LAZY_DATA["data/lazy/courses/c127-bc19e912d0691872.json"]={sha256:"bc19e912d06918726586c7f53321c405d1c3b060c87da604ee474eeca861e8fb",value:{"title":"SS Normandie 郵輪工程史","titleEn":"SS Normandie liner engineering history","category":"marine","kind":"project","summary":"課程規劃主題：船型設計與電力推進。待補逐步教材與專案級來源核對。","summaryEn":"Curriculum planning topic: hull design and electric propulsion. Detailed lessons and project-level source verification are pending.","sourceIds":[],"status":"roadmap","id":"c127"}};
