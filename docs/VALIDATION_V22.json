@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "version": "22.0.0",
+  "date": "2026-11-01",
+  "baseCommit": "f3d45dd9ec510945ba32f1ea68e7ea3f0c91f5af",
+  "curriculum": {
+    "guidedCourses": 1393,
+    "steps": 48274,
+    "v21FeaturedBytesPreserved": true
+  },
+  "worlds": {
+    "domainLayouts": 20,
+    "storyRoutes": 290,
+    "stationBindings": 1740,
+    "reachabilityRoutesTested": 120
+  },
+  "checks": [
+    {
+      "command": "node tools/test-walk-physics-v22.mjs",
+      "result": "PASS",
+      "physicsChecks": 10,
+      "allDomainSequentialRoutes": 120
+    },
+    {
+      "command": "node tools/test-walk-fallback-v22.mjs",
+      "result": "PASS",
+      "checks": 20
+    },
+    {
+      "command": "node tools/test-walk-state-v22.mjs",
+      "result": "PASS",
+      "checks": 14
+    },
+    {
+      "command": "node tools/test-walk-controller-v22.mjs",
+      "result": "PASS",
+      "checks": 5
+    },
+    {
+      "command": "node tools/test-walk-domains-v22.mjs",
+      "result": "PASS",
+      "routes": 290,
+      "stations": 1740
+    },
+    {
+      "command": "node tools/test-walk-i18n-v22.mjs",
+      "result": "PASS",
+      "completeHUDBundledLanguages": 20,
+      "labels": 900,
+      "recognizedLanguages": 79
+    },
+    {
+      "command": "python3 tools/test-installer-v22.py",
+      "result": "PASS",
+      "checks": 20
+    },
+    {
+      "command": "V21 uploader/installer fixture suite + V22 marker/fail-closed regressions",
+      "result": "PASS",
+      "checks": 47
+    },
+    {
+      "command": "python3 tools/check-offline.py; node tools/build-offline.mjs --check",
+      "result": "PASS"
+    },
+    {
+      "command": "Existing AI/locale/tutor regression suites",
+      "result": "PASS",
+      "nodeSuites": 5,
+      "pythonAITests": 15,
+      "pythonPortableTests": 5
+    }
+  ],
+  "browser": {
+    "desktop": "PASS: continuous Canvas2D navigation, arrival/task/observations/decision/complete and position/progress on reload",
+    "mobile": "PASS: 390x844 iframe viewport layout, control access and route navigation",
+    "webgl": "Unavailable in this cloud browser; Three.js r170 symbols/geometry/projection/raycast reviewed, 3D rendered output not visually verified",
+    "notClaimed": "Not all physical devices/operating systems were tested"
+  },
+  "scope": {
+    "visuals": "Original 3D teaching models with credited existing photograph evidence boards; not surveyed photogrammetry or calibrated digital twins",
+    "language": "20 new HUD languages; full authored narrative zh-TW/en; other 77 target languages need device/configured translation",
+    "AI": "Existing adapters retained; no large weights or provider keys bundled"
+  }
+}

@@ -159,8 +159,8 @@ def export(source: Path, output: Path) -> dict:
     if output.exists() and (output.is_symlink() or not (output/MARKER).is_file()):
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
-    if index.get('release',{}).get('version','').split('.')[0] != '21':
-        raise ValueError('Rebuild V21 before exporting the public preview.')
+    if index.get('release',{}).get('version','').split('.')[0] not in {'21','22'}:
+        raise ValueError('Rebuild V21/V22 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -218,9 +218,9 @@ def export(source: Path, output: Path) -> dict:
         games = public_game_data(source, temp)
         (temp/'.nojekyll').write_text('','utf-8')
         (temp/'runtime-mode.js').write_text("window.MG_STATIC_MODE=true;window.MG_PUBLIC_PREVIEW_ONLY=true;window.MG_CONFIG=window.MG_CONFIG||{};window.MG_CONFIG.paywall=Object.assign({},window.MG_CONFIG.paywall,{ownerPreviewOnFile:false});\n",'utf-8')
-        (temp/MARKER).write_text('V21 generated public first-stage preview\n','utf-8')
+        (temp/MARKER).write_text('V22 generated public first-stage preview\n','utf-8')
         files=[p for p in temp.rglob('*') if p.is_file()]
-        result={'version':21,'mode':'first-stage-preview','files':len(files),'bytes':sum(p.stat().st_size for p in files),'descriptors':count,'memberBodies':0,'publicGameData':games}
+        result={'version':22,'mode':'first-stage-preview','files':len(files),'bytes':sum(p.stat().st_size for p in files),'descriptors':count,'memberBodies':0,'publicGameData':games}
         (temp/'preview-manifest.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
         if output.exists():shutil.rmtree(output)
         temp.replace(output)

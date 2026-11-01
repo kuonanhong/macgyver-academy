@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="馬蓋先工程學院 V22：連續行走、跟隨鏡頭、設備互動、多語介面與一鍵安裝上傳指南。">
+<title>MacGyver V22 · 行走工程世界操作指南</title>
+<style>
+:root{--paper:#f6f5ef;--ink:#18333a;--muted:#526b70;--accent:#245f60;--line:#d7dfd8}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.8 system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}header{background:#102a34;color:#f7faef;padding:58px max(24px,calc((100vw - 1110px)/2));border-bottom:7px solid #c3e995}header small{font-size:12px;letter-spacing:.16em;color:#c3e995}h1{font-size:clamp(32px,5vw,48px);line-height:1.25;margin:16px 0}header p{max-width:780px;color:#c4d7d4;font-size:19px}main{max-width:1160px;padding:24px;margin:auto}section{padding:20px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}h2{font-size:28px;margin:12px 0 18px;line-height:1.4}h3{font-size:21px;margin:24px 0 10px}p{margin:12px 0}a{color:var(--accent);text-underline-offset:3px}nav{display:flex;gap:12px 20px;flex-wrap:wrap;padding:18px 0}nav a{font-size:15px}ol,ul{padding-left:25px}li{margin:9px 0}pre{padding:18px 20px;border-radius:12px;background:#102a34;color:#e1f2dd;overflow:auto;line-height:1.7;font-size:14px}code,kbd{font-family:ui-monospace,Consolas,monospace}p code,li code,td code{background:#e3e9df;padding:2px 5px;border-radius:4px;font-size:.9em}kbd{display:inline-block;padding:0 6px;border:1px solid #adbdb9;border-bottom-width:2px;background:#fff;border-radius:4px;font-size:14px;white-space:nowrap}.callout{padding:16px 20px;border-left:4px solid #719b51;background:#e9efdf;border-radius:7px;margin:20px 0}.muted{color:var(--muted);font-size:15px}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0}th{text-align:left;background:#e4ebe3;color:#254b4f}td,th{padding:11px 13px;border:1px solid var(--line);vertical-align:top}tbody tr:nth-child(even){background:#fafbf7}.stats{display:flex;gap:20px;flex-wrap:wrap;margin:22px 0 10px}.stats div{border:1px solid #55746f;border-radius:10px;padding:14px 20px;min-width:170px}.stats strong{display:block;font-size:29px;color:#d4f3aa}.stats span{font-size:13px;color:#c3d5d1}footer{max-width:1160px;margin:auto;padding:32px 24px;color:var(--muted);font-size:14px}@media(max-width:600px){body{font-size:16px}header{padding:35px 22px}header p{font-size:17px}main{padding:18px}h2{font-size:24px}table{font-size:14px}td,th{padding:9px}.stats{gap:8px}.stats div{min-width:130px;padding:10px 14px}.stats strong{font-size:24px}}@media print{body{font-size:11pt;background:#fff}header{background:#fff;color:#18333a;padding:12mm 0;border-bottom:2px solid #245f60}header p,header small,.stats span{color:#526b70}.stats strong{color:#18333a}main,footer{padding:0}nav{display:none}section{break-inside:auto}h2,h3{break-after:avoid}tr,pre,.callout{break-inside:avoid}a{color:inherit}pre{white-space:pre-wrap;font-size:9pt;background:#f1f3ee;color:#18333a}header h1{font-size:26pt}.stats div{border:1px solid #adbdb9}table{font-size:9pt}}
+</style>
+</head>
+<body>
+<header>
+<small>MACGYVER ENGINEERING ACADEMY / VERSION 22</small>
+<h1>連續行走的工程世界</h1>
+<p>人物走進場地，鏡頭跟隨移動；從設備旁的觀察、證據與工程決策，走完一條製程故事。</p>
+<div class="stats"><div><strong>20</strong><span>領域專屬設備與配置</span></div><div><strong>290</strong><span>沿用的工程故事路線</span></div><div><strong>1,740</strong><span>連結原章節的互動站</span></div></div>
+</header>
+<main>
+<nav aria-label="指南目錄"><a href="#start">快速開始</a><a href="#controls">操作方式</a><a href="#journey">完成工程旅程</a><a href="#domains">20 個領域</a><a href="#media">模型與實拍</a><a href="#languages">語言與語音</a><a href="#records">進度紀錄</a><a href="#upload">安裝與上傳</a><a href="#ai">AI 師傅</a><a href="#help">常見問題</a><a href="#sources">參考與授權</a></nav>
+<section id="start">
+<h2>第一次進入</h2>
+<p>V22 的主要入口是 <code>public/academy/experience.html</code>。每條故事的六個製程站放在同一個可行走空間；人物可以沿走道自由移動，切換鏡頭，靠近設備後開啟任務。工程領域與故事目錄仍可用卡片搜尋，進入後則使用連續場景。</p>
+<ol>
+<li>先啟動本機網站，或開啟已部署的學院網站，再選「全畫面工程世界」。</li>
+<li>選擇一個領域與故事。初次進入時，先看「目前目標」中的第一站任務。</li>
+<li>按「帶我前往」或鍵盤 <kbd>G</kbd>，觀察人物沿可通行走道到達設備旁。也可自行使用鍵盤或搖桿行走。</li>
+<li>接近設備後，按 <kbd>E</kbd> 或畫面「互動」按鈕。閱讀證據、做出選擇並儲存筆記，完成本站後再走往下一站。</li>
+</ol>
+<div class="callout"><strong>本機必須透過 HTTP 開啟。</strong>新版行走程式使用 ES 模組。解壓後請執行 <code>run-local.sh</code> 或 <code>run-local.bat</code>；直接雙擊 HTML 的 <code>file://</code> 開啟方式不會啟動新版 3D 行走。</div>
+</section>
+<section id="controls">
+<h2>行走、鏡頭與互動</h2>
+<div class="table-scroll"><table><thead><tr><th>目的</th><th>桌機／筆電</th><th>手機／平板</th></tr></thead><tbody>
+<tr><td>人物連續移動</td><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 或方向鍵；以目前觀看方向為基準。</td><td>拖動左下角虛擬搖桿；鬆手後停止。</td></tr>
+<tr><td>加快行走</td><td>行走時按住 <kbd>Shift</kbd>。</td><td>使用搖桿持續移動，或按「帶我前往」。</td></tr>
+<tr><td>轉動鏡頭</td><td>拖曳場景。</td><td>在搖桿以外的場景區域單指拖曳。</td></tr>
+<tr><td>拉近／拉遠</td><td>滑鼠滾輪。</td><td>雙指開合調整鏡頭距離。</td></tr>
+<tr><td>選擇行走目的地</td><td>點擊可通行的地面，或點設備標籤前往設備旁。</td><td>點選地面或設備標籤。</td></tr>
+<tr><td>前往目前任務</td><td><kbd>G</kbd>，或按「帶我前往」。</td><td>點「帶我前往」。</td></tr>
+<tr><td>操作身邊設備</td><td>走近後按 <kbd>E</kbd> 或「互動」。</td><td>走近後點畫面「互動」按鈕。</td></tr>
+<tr><td>切換鏡頭</td><td>畫面「跟隨視角」「第一人稱」「總覽視角」。3D 模式另可按 <kbd>1</kbd> 切第一人稱、<kbd>3</kbd> 切跟隨視角。</td><td>使用畫面視角按鈕。</td></tr>
+<tr><td>全螢幕</td><td><kbd>F</kbd> 或右上角全螢幕按鈕。</td><td>點右上角全螢幕按鈕；未支援原生全螢幕的瀏覽器仍使用視窗滿版。</td></tr>
+<tr><td>收合介面</td><td><kbd>H</kbd>；再次按下或使用畫面還原按鈕顯示。</td><td>收合目標面板，或使用畫面還原按鈕。</td></tr>
+<tr><td>回到入口</td><td><kbd>R</kbd>，或「操作說明」中的「回到入口」。</td><td>「操作說明」→「回到入口」。</td></tr>
+<tr><td>結束當前面板／停止</td><td><kbd>Escape</kbd>，或面板右上角關閉鈕。</td><td>點關閉鈕；停止推動搖桿即可停止手動移動。</td></tr>
+</tbody></table></div>
+<p>點地面與「帶我前往」會沿可通行路徑行走，設備本體與外牆保留碰撞範圍。使用手動移動鍵可以接手導引。人物必須走近設備，才能開始該站互動；這讓每個製程在空間中有實際位置。</p>
+<p>開啟任務、影像、目錄或 AI 面板時，行走會暫停。切換視窗或讓頁面進入背景時，也會停止移動，避免回來後人物仍持續前進。</p>
+</section>
+<section id="journey">
+<h2>怎麼完成一條工程旅程</h2>
+<ol>
+<li><strong>辨認設備與目前目標。</strong>小地圖標出站位與人物位置；「目前目標」顯示要前往的章節。可先用跟隨視角認識走道，再切第一人稱觀察。</li>
+<li><strong>走到工作站。</strong>自行行走、點地面，或按「帶我前往」。抵達後，設備旁會出現互動提示。</li>
+<li><strong>選擇角色。</strong>任務面板提供該故事原有的三種專業角色。不同角色會改變任務切入角度、結果說明與獨立進度。</li>
+<li><strong>閱讀觀察證據。</strong>逐項展開證據。可開啟「真實影像」，確認照片的拍攝範圍、作者、來源與授權；需要時再切到原有定點全景模式。</li>
+<li><strong>留下工程判斷。</strong>證據閱讀完成後選擇方案，查看對應角色的後果說明；學習筆記可記錄量測條件、未知假設、版本與待查問題。</li>
+<li><strong>完成本站並前進。</strong>按「完成・下一步」記錄結果，任務面板關閉，人物留在當前位置。下一站成為目前目標，再沿走道繼續。</li>
+</ol>
+<p>「帶我前往」記錄為輔助行走；它負責帶路，不會代替閱讀證據或做工程決策。完成六站代表完成這條模擬故事，原有逐步課程的學習與通過條件仍各自保存。</p>
+</section>
+<section id="domains">
+<h2>20 個領域的空間與設備</h2>
+<p>下表列出領域配置的代表性設備。故事章節名稱與任務仍以所選路線原文為準，設備外形為原創教學示意；同一領域的故事可以共用場地配置。</p>
+<div class="table-scroll"><table><thead><tr><th>領域</th><th>配置形式</th><th>代表性設備與流程</th></tr></thead><tbody>
+<tr><td>半導體製造</td><td>無塵室</td><td>晶圓量測、清洗槽、微影與蝕刻腔體、搬送機構、電性驗證。</td></tr>
+<tr><td>先進封裝與矽光子</td><td>精密無塵室</td><td>晶粒載具、對準、載板、接合機構、熱管理與系統測試。</td></tr>
+<tr><td>電子與電路</td><td>製作與量測實驗室</td><td>材料電路台、加工、組裝、訊號量測、冷卻與負載驗證。</td></tr>
+<tr><td>資訊與運算</td><td>運算與網路實驗室</td><td>系統邊界、網路分區、運算節點、日誌、備援與結果檢查。</td></tr>
+<tr><td>精密儀器與量測</td><td>光學量測實驗室</td><td>參考標準、光路、定位台、對準、環境試驗與校準。</td></tr>
+<tr><td>橋梁與建築結構</td><td>戶外結構工作區</td><td>基地量測、基礎與吊裝、梁段、纜索、接合與位移觀測。</td></tr>
+<tr><td>隧道與地下工程</td><td>地下工程教學作業區</td><td>地表調查、岩芯、湧水試驗、開挖支撐、沉陷量測與通風。</td></tr>
+<tr><td>水利與水資源</td><td>戶外水工試驗區</td><td>來水、儲水槽、水工構造、消能、水輪轉換與下游觀測。</td></tr>
+<tr><td>鐵道與軌道運輸</td><td>大型車輛工棚</td><td>能源供應、動力、走行部、輪軌、制動與車輛量測。</td></tr>
+<tr><td>環境與城市</td><td>戶外處理與採樣區</td><td>環境採樣、前處理、分離槽、再利用、品質與城市資料。</td></tr>
+<tr><td>航空工程</td><td>航空機棚</td><td>任務規格、氣動外形、機體結構、接合、推進與驗證。</td></tr>
+<tr><td>船舶與海洋</td><td>海洋工程作業區</td><td>水深海況、浮力槽、船體、推進、定位通訊與任務驗證。</td></tr>
+<tr><td>汽車與交通工具</td><td>車輛工廠</td><td>整車參考、焊裝機器人、冷卻儲能、底盤、品質與車輛試驗。</td></tr>
+<tr><td>太空工程</td><td>航天整合無塵室</td><td>需求、覆蓋示意、載荷平台、通訊、時間控制與任務驗證。</td></tr>
+<tr><td>製造與自動化</td><td>自動化工廠</td><td>工件、機構致動、機械手臂、控制、搬運治具與品質。</td></tr>
+<tr><td>能源工程</td><td>戶外能源工作區</td><td>能源儲存、輸送損失、轉換機組、旋轉電機、電網與能量收支。</td></tr>
+<tr><td>材料工程</td><td>材料製程工廠</td><td>原料試片、爐體、反應成形、熱處理、顯微檢查與追溯。</td></tr>
+<tr><td>生醫工程</td><td>生醫設備實驗室</td><td>成像感測、來源與偵測器、資料重建、校準物件、品質與假體。</td></tr>
+<tr><td>化工與製程</td><td>流程系統工廠</td><td>物料需求、容器、流體輸送、熱控制、採樣與資源盤點。</td></tr>
+<tr><td>巨型科學設施</td><td>科學儀器實驗室</td><td>科學目標、束流準備、傳輸示意、偵測、同步擷取與校準。</td></tr>
+</tbody></table></div>
+<p class="muted">本版把既有 290 條故事的 1,740 個章節接到可行走站位，並提供 20 種不同領域配置。這些數字是教材路線與互動站數量，不是新增 290 座真實工廠或 1,740 台經實測重建的設備。</p>
+</section>
+<section id="media">
+<h2>可行走模型、實拍與 360° 全景</h2>
+<div class="table-scroll"><table><thead><tr><th>內容</th><th>如何使用</th><th>可以提供的資訊</th></tr></thead><tbody>
+<tr><td>V22 連續行走場景</td><td>人物自由行走；鏡頭跟隨、第一人稱或總覽；走近設備互動。</td><td>原創 3D 教學模型、代表性設備形狀、站位與故事流程。座標與場地尺度屬教學配置。</td></tr>
+<tr><td>來源標示的真實照片</td><td>場景中的參考影像，或按「真實影像」開啟照片及來源。</td><td>照片實際拍到的外觀與環境；作者、授權及顯示時的裁切／縮放說明。</td></tr>
+<tr><td>原 V21 定點全景</td><td>「真實影像」面板→「查看實拍與真正 360° 全景」。</td><td>從實際拍攝位置環視；觀察可見設備與場所，保留原有全景來源。</td></tr>
+</tbody></table></div>
+<p>V22 人物的連續移動發生在教學模型內。照片保持其來源與授權，全景保持拍攝位置的意義；單張照片未拍到的背面、內部構造與尺寸，不能據此當成已重建或已量測。尚未進行現地測繪、相機標定與設備參數驗證，因此本版不宣稱為實測數位孿生。</p>
+</section>
+<section id="languages">
+<h2>語言自動選擇與語音</h2>
+<p>「Auto」依瀏覽器語言偏好選擇，不需要取得 GPS 或定位權限。也可從右上語言選單手動選擇，保留自己的偏好。</p>
+<div class="table-scroll"><table><thead><tr><th>範圍</th><th>本版提供</th></tr></thead><tbody>
+<tr><td>新行走介面的主要控制</td><td>20 種內建語言字典：繁中、英文、簡中、日文、韓文、西班牙文、法文、德文、葡萄牙文、義大利文、阿拉伯文、印地文、越南文、印尼文、泰文、土耳其文、俄文、烏克蘭文、波蘭文、荷蘭文。</td></tr>
+<tr><td>語言選單</td><td>保留 79 個目標語言；尚無內建操作字典的語言，以英文操作文字作為備援。</td></tr>
+<tr><td>完整故事、證據與原課程</td><td>自帶繁體中文及英文原文。其餘 77 個目標語言需可用的裝置翻譯能力或已配置的翻譯服務；選到該語言不代表所有內容已翻譯完成。</td></tr>
+<tr><td>翻譯狀態</td><td>內容尚未翻譯時保留原文並顯示狀態；機器翻譯內容有對應標示。可切回繁中或英文比對。</td></tr>
+<tr><td>語音解說</td><td>使用裝置的語音合成與可用語音。可用語種、發音與聲音品質依裝置及瀏覽器而異；文字始終可閱讀。</td></tr>
+</tbody></table></div>
+</section>
+<section id="records">
+<h2>角色、進度與學習筆記</h2>
+<p>V22 使用獨立的行走故事紀錄，保存已讀證據、工程選擇、完成章節、學習筆記、人物位置及操作事件。不同角色有各自的故事進度；切換角色會回到該角色的紀錄。</p>
+<p>行走進度與原 V21 故事、逐步課程進度分開。既有課程與 V21 紀錄仍保留；完成行走任務不會直接替原課程打勾。紀錄依本機使用者或已登入帳號分開識別，瀏覽器的本地儲存仍是本版行走紀錄的保存位置，不能把登入視為已自動跨裝置同步。</p>
+<ol>
+<li>在任務面板輸入學習筆記，按「儲存筆記」。切換任務或關閉面板時也會保留目前筆記。</li>
+<li>按右上角「?」開啟操作說明，再選「匯出紀錄」，取得目前故事的 V22 JSON。</li>
+<li>換裝置後先進入相同故事，再使用「匯入紀錄」。匯入會檢查 V22 版本與故事識別碼；不同故事的紀錄不能直接混用。</li>
+</ol>
+<p class="muted">無痕模式、清除網站資料或瀏覽器禁止本地儲存時，紀錄可能無法長期保存；需要保留學習歷程時，可使用匯出功能。</p>
+</section>
+<section id="upload">
+<h2>下載、啟動與一鍵上傳</h2>
+<h3>1．下載並解壓</h3>
+<p>完整 ZIP 與四個替代 ZIP 擇一。若用替代包，四包都要下載；它們共同組成完整專案。將 ZIP 與 <code>Install_and_Upload_MacGyver_v22.sh</code> 放在同一資料夾並保留檔名。以 macOS 的「下載」資料夾為例：</p>
+<pre><code>cd "$HOME/Downloads"
+bash Install_and_Upload_MacGyver_v22.sh --extract-only</code></pre>
+<p>腳本會檢查本次發行的壓縮檔及檔案清單，再解壓為 <code>MacGyver_Engineering_Academy_v22</code>。<code>--extract-only</code> 只處理安裝，不連線上傳。重跑時保留本機修改與新增檔；遇到新版檔案與本機修改衝突，更新檔放在 <code>.macgyver-updates-v22</code> 供合併。</p>
+<h3>2．啟動網站</h3>
+<pre><code>bash "$HOME/Downloads/MacGyver_Engineering_Academy_v22/run-local.sh"</code></pre>
+<p>Windows 可執行專案中的 <code>run-local.bat</code>。需要 Python 3.10 以上版本。啟動後依終端機顯示網址開啟學院，選「全畫面工程世界」。預設連接埠通常是 8010；若已被使用，啟動工具可能另選連接埠，請以實際輸出為準。</p>
+<p>若只測試已建置的靜態前端，也可在專案根目錄執行下列命令；它只提供靜態檔案，不包含會員驗證及 AI 後端：</p>
+<pre><code>python3 -m http.server 8080 --directory public/academy</code></pre>
+<p>然後開啟 <code>http://127.0.0.1:8080/experience.html</code>。</p>
+<h3>3．一鍵增量上傳</h3>
+<p>本機需已有 Git、GitHub SSH 金鑰及對目標倉庫的權限。安裝後執行：</p>
+<pre><code>cd "$HOME/Downloads"
+bash Install_and_Upload_MacGyver_v22.sh</code></pre>
+<p>這會沿用既有的公開網站匯出與增量上傳流程。若要一併處理現有模型／權重和私人文件：</p>
+<pre><code>bash Install_and_Upload_MacGyver_v22.sh --with-assets</code></pre>
+<p>公開網站更新送到 <code>kuonanhong/macgyver-academy</code>；模型與私人文件沿用獨立的私人資產同步流程，目的地是既有 <code>kuonanhong/PRIVATE-MODELS</code>。腳本使用現有檔案，依既有同步機制分批、校驗與重試；不會因執行上傳而自動下載大型模型。</p>
+<p>也可明確指定目前模型與文件資料夾：</p>
+<pre><code>bash Install_and_Upload_MacGyver_v22.sh --with-assets \
+  --models-dir "/完整路徑/我的模型" \
+  --documents-dir "/完整路徑/我的文件"</code></pre>
+<p>只想先查看差異，可加 <code>--dry-run</code>；它可能安裝並連線比較，但不提交或推送。Windows 的 Bash 上傳流程可在 Git Bash 或 WSL 使用；平常瀏覽網站的手機與平板不需要安裝 Bash 或 Python。</p>
+</section>
+<section id="ai">
+<h2>讓 AI 師傅回答目前任務</h2>
+<p>右上角或任務面板的「AI 師傅」沿用既有模型連接介面，會帶入目前工程故事、章節、角色任務、觀察證據與來源。可問「這一步要先量哪個量？」、「這張照片能支持哪些判斷？」或「如果換另一個假設，需要什麼對照？」。</p>
+<p>生成式回答需要可用的本地模型或已配置的後端 API。套件提供接線程式與相關工具，不附大型權重及供應商 API 金鑰；靜態 GitHub Pages 本身不會執行模型推論。請依專案原有 AI 設定說明啟動本地服務或部署後端，並在 AI 面板選擇可用路線。</p>
+<p>模型／權重同步只是保存或傳輸檔案；還需要模型執行環境載入權重，AI 才能產生回答。服務尚未設定時，仍可進行行走、閱讀教材與保存故事紀錄。</p>
+</section>
+<section id="help">
+<h2>常見問題</h2>
+<h3>為什麼雙擊 HTML 只有啟動說明？</h3>
+<p>這是本機檔案入口。請先執行 <code>run-local.sh</code> 或 <code>run-local.bat</code>，再用瀏覽器開啟啟動網址；新版 ES 模組需要 HTTP。原有照片／定點全景模式另有保留入口。</p>
+<h3>為什麼人物走近之前不能完成任務？</h3>
+<p>互動依設備距離啟用。先靠近設備，或按「帶我前往」，再使用互動鍵。若完成按鈕仍未啟用，請閱讀每項觀察證據，並做出該站需要的工程選擇。</p>
+<h3>為什麼顯示可行走平面場景？</h3>
+<p>裝置或瀏覽器無法建立 WebGL 時，會使用連續可行走的 2D 備援。它保留人物、工作站、距離互動與任務，視角選項會依可用能力調整。</p>
+<h3>手機畫面太擠時怎麼辦？</h3>
+<p>收合目前目標面板，先使用搖桿行走，走近後再展開任務。橫向使用能增加觀察空間；原生全螢幕是否可用依裝置與瀏覽器而定。</p>
+<h3>這次是否增加了 1,740 個新課程？</h3>
+<p>1,740 是既有 290 條故事的章節總數。本次把它們接到連續行走的設備站，改善空間、鏡頭和互動；原有逐步課程內容與識別碼另行保留。</p>
+<h3>為什麼選了語言還有英文？</h3>
+<p>20 個語言內建主要操作字典；完整教材的其他語言仍需翻譯服務。尚未翻譯的內容會保留可閱讀原文，避免把語言選單當成已完成翻譯的證明。</p>
+</section>
+<section id="sources">
+<h2>參考入口與授權</h2>
+<ul>
+<li><a href="https://github.com/kuonanhong/macgyver-academy">MacGyver Academy 原始碼</a>、<a href="https://kuonanhong.github.io/macgyver-academy">工程學院網站</a>。</li>
+<li><a href="https://github.com/kuonanhong/Hua-Tuo-Medical-Biomedical-Academy">華佗醫學院原始碼</a>、<a href="https://kuonanhong.github.io/Hua-Tuo-Medical-Biomedical-Academy/">華佗醫學院網站</a>：參考其人物行走、鏡頭跟隨及走近互動的體驗。</li>
+<li><a href="https://fab24hr.com/">fab24hr</a>、<a href="https://github.com/mcltyl/fab24hr-engine">fab24hr 公開引擎</a>：保留研究入口；V22 行走程式為本專案原創實作，未將該引擎程式碼混入。</li>
+<li><a href="https://github.com/kuonanhong/AERO_Explorer">AERO Explorer 原始碼</a>：使用者指定的寫實模擬參考。</li>
+<li>Three.js 使用 MIT 授權，隨包附 <code>public/academy/vendor/THREE-LICENSE.txt</code>。各實拍圖片依其個別來源與授權標示使用；Three.js 的程式授權不會取代照片授權。</li>
+</ul>
+<p class="muted">本指南說明程式設計與使用範圍。不同作業系統、裝置效能、觸控瀏覽器與語音服務的實際表現，仍取決於使用環境；不把響應式網頁視為已逐台測試所有裝置。</p>
+</section>
+</main>
+<footer>MacGyver Engineering Academy · V22 · 可行走教學空間、原有工程故事與來源標示實拍。</footer>
+</body></html>
