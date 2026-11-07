@@ -342,10 +342,17 @@ def owned_state(path, source):
         lock.unlink(missing_ok=True)
 
 
+def default_upload_state(source):
+    """Keep retry state stable per canonical source path, including moved releases."""
+    source = Path(source).expanduser().resolve()
+    key = hashlib.sha256(str(source).encode('utf-8')).hexdigest()[:12]
+    return source.parent / ('MacGyver_SSH_Upload_State_' + key)
+
+
 def main(argv=None):
     version_path = ROOT / 'SOURCE_VERSION.json'
     source_major = str(json.loads(version_path.read_text('utf-8')).get('version', '21')).split('.')[0] if version_path.is_file() else '21'
-    source_label = 'V' + source_major if source_major in {'21', '22', '23'} else 'V21/V22'
+    source_label = 'V' + source_major if source_major in {'21', '22', '23', '24'} else 'V21/V22'
     ap = argparse.ArgumentParser(description=source_label + ' 一鍵 SSH：預設公開網站差異 → macgyver-academy；--with-assets 將現成模型與 local-documents 另送 PRIVATE-MODELS。無自動下載、無強推；只清理已知舊版會員教材生成檔。')
     ap.add_argument('--dry-run', action='store_true', help='連線比較，不提交、不上傳；會建立本地比較快取')
     ap.add_argument('--with-assets', action='store_true', help='同時處理現有私人模型與文件；預設只更新公開網站')
@@ -355,7 +362,7 @@ def main(argv=None):
     ap.add_argument('--skip-data', action='store_true', help=argparse.SUPPRESS)
     ap.add_argument('--models-dir', type=Path, help='現有模型資料夾；需 --with-assets')
     ap.add_argument('--documents-dir', type=Path, help='現有私人文件資料夾；需 --with-assets')
-    ap.add_argument('--state', type=Path, default=ROOT.parent / 'MacGyver_v21_SSH_Upload_State')
+    ap.add_argument('--state', type=Path, default=default_upload_state(ROOT))
     ap.add_argument('--branch', default='main')
     ap.add_argument('--batch-mib', type=int, default=120, choices=range(40, 1025), metavar='40..1024')
     ap.add_argument('--restore-assets', type=Path, metavar='DEST', help='僅還原私人 documents/ 與 models/ 並核對 SHA-256，不上傳網站')
@@ -395,6 +402,7 @@ def main(argv=None):
     if directories or args.restore_assets:
         note('檢查 PRIVATE-MODELS 可見性：' + check_private_repo(private_repo, test))
     plans = plan_assets(engine, directories)
+    note('上傳狀態：' + str(args.state.expanduser().resolve()))
     with owned_state(args.state, ROOT) as state:
         if args.restore_assets:
             if args.dry_run:

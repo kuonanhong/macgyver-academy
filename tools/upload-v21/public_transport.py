@@ -51,7 +51,7 @@ KEEP_REMOTE = {'CNAME', '.nojekyll', 'LICENSE', 'LICENSE.md'}
 AUTHORING_TREES = {
     'curriculum', 'expansion', 'expansion-v7', 'semiconductor-v8', 'packaging-v9',
     'electronics-v10', 'computing-v11', 'optics-v12', 'structures-v13',
-    'underground-v14', 'water-v15', 'rail-v16', 'environment-v17', 'aviation-v18', 'marine-v19', 'campaign-v20', 'automotive-v21', 'space-v23'
+    'underground-v14', 'water-v15', 'rail-v16', 'environment-v17', 'aviation-v18', 'marine-v19', 'campaign-v20', 'automotive-v21', 'space-v23', 'curriculum-v24'
 }
 
 def sensitive_remote_path(name):

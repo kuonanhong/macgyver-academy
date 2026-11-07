@@ -164,8 +164,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23'}:
-        raise ValueError('Rebuild V21, V22 or V23 before exporting the public preview.')
+    if major not in {'21','22','23','24'}:
+        raise ValueError('Rebuild V21, V22, V23 or V24 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -221,12 +221,13 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major == '23':
+        if legacy_entrypoints and major in {'23', '24'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
             for page in ('index.html', 'experience.html', 'campaign.html', 'experience-photo-v21.html',
-                         'automotive-lab-v21.html', 'space-lab-v23.html', 'help.html'):
+                         'automotive-lab-v21.html', 'space-lab-v23.html', 'help.html',
+                         *(['curriculum-v24.html'] if major == '24' else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page
