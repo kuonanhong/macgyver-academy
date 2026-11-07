@@ -68,6 +68,8 @@ def public_snapshot(source, excluded=()):
     # this list; full owner curricula remain in the downloadable edition.
     if (source / 'Install_and_Upload_MacGyver_v22.sh').is_file():
         required.append('Install_and_Upload_MacGyver_v22.sh')
+    if (source / 'Install_and_Upload_MacGyver_v23.sh').is_file():
+        required.append('Install_and_Upload_MacGyver_v23.sh')
     for name in required:
         path = source / name
         if path.is_symlink() or not path.is_file():
@@ -85,8 +87,8 @@ def public_snapshot(source, excluded=()):
             raise ValueError('Unsafe SOURCE_VERSION.json')
         version = json.loads(version_file.read_text('utf-8'))
         source_major = str(version.get('version', '')).split('.')[0]
-        if source_major not in {'21', '22'}:
-            raise ValueError('SOURCE_VERSION.json must identify V21 or V22 before uploading.')
+        if source_major not in {'21', '22', '23'}:
+            raise ValueError('SOURCE_VERSION.json must identify V21 or V22 or V23 before uploading.')
         files['SOURCE_VERSION.json'] = (json.dumps(version, ensure_ascii=False, indent=2) + '\n').encode()
     files['.nojekyll'] = b''
     files['README.md'] = (

@@ -29,6 +29,51 @@ export function cameraRelativeMove(input, yaw) {
   const n = normalizeInput(input.x, input.z), s = Math.sin(yaw), c = Math.cos(yaw);
   return {x:n.x * c + n.z * s, z:-n.x * s + n.z * c};
 }
+export function angleDelta(from, to) {
+  const turn = Math.PI * 2;
+  return ((to - from + Math.PI) % turn + turn) % turn - Math.PI;
+}
+export function approachVelocity(velocity, target, dt) {
+  const gain = 1 - Math.exp(-dt * (target.x || target.z ? 14 : 22));
+  const x = velocity.x + (target.x - velocity.x) * gain;
+  const z = velocity.z + (target.z - velocity.z) * gain;
+  return Math.hypot(x, z) < .015 ? {x: 0, z: 0} : {x, z};
+}
+export function stationBearing(position, approach, yaw) {
+  return angleDelta(yaw, Math.atan2(position.x - approach.x, position.z - approach.z));
+}
+export function stationObstacles(stations) {
+  return stations.map(station => ({
+    minX: station.x - 1.7,
+    maxX: station.x + 1.7,
+    minZ: station.z - 1.8,
+    maxZ: station.z + 1.8,
+    minY: 0,
+    maxY: station.photoSrc ? 5 : 3.15,
+  }));
+}
+/** Fraction of the segment available for a following camera, with near-plane clearance. */
+export function cameraClearFraction(origin, target, obstacles, clearance = .28) {
+  const distance = Math.hypot(target.x - origin.x, target.y - origin.y, target.z - origin.z);
+  if (distance < .01) return 1;
+  let closest = 1;
+  for (const box of obstacles) {
+    let enter = 0, exit = 1;
+    for (const [axis, min, max] of [['x', box.minX, box.maxX], ['y', box.minY, box.maxY], ['z', box.minZ, box.maxZ]]) {
+      const delta = target[axis] - origin[axis];
+      if (Math.abs(delta) < 1e-7) {
+        if (origin[axis] < min || origin[axis] > max) { enter = 1; exit = 0; break; }
+        continue;
+      }
+      const a = (min - origin[axis]) / delta, b = (max - origin[axis]) / delta;
+      enter = Math.max(enter, Math.min(a, b));
+      exit = Math.min(exit, Math.max(a, b));
+      if (enter > exit) break;
+    }
+    if (enter <= exit && enter > 0) closest = Math.min(closest, Math.max(.06, enter - clearance / distance));
+  }
+  return closest;
+}
 export function findPath(start, target, bounds, obstacles = [], radius = .38, step = .55) {
   // An eight-neighbour A* grid, with corner-cutting prohibited for clearances.
   if (!isWalkable(start.x, start.z, bounds, obstacles, radius)) return [];

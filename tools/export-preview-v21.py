@@ -69,12 +69,16 @@ def public_game_data(source, destination):
             # A journey is original public narrative. Original member lesson
             # bodies remain in the checked lazy course descriptors above.
             allowed = {'id', 'category', 'courseId', 'title', 'titleEn', 'brief', 'briefEn',
-                       'assetIds', 'roles', 'chapters', 'equipment'}
+                       'assetIds', 'roles', 'chapters', 'equipment', 'spaceModule'}
             allowed_chapter = {'id', 'title', 'titleEn', 'description', 'descriptionEn',
                                'assetId', 'observations', 'task', 'taskEn', 'roleTasks', 'choices'}
             for journey in value['experiences']:
                 if not isinstance(journey, dict) or set(journey) - allowed or not ID.fullmatch(journey.get('id', '')):
                     raise ValueError('Unexpected public experience fields.')
+                if 'spaceModule' in journey and (journey.get('category') != 'space'
+                        or not re.fullmatch(r'space-[a-z0-9]+(?:-[a-z0-9]+)*', journey.get('courseId', ''))
+                        or type(journey['spaceModule']) is not int or not 1 <= journey['spaceModule'] <= 10):
+                    raise ValueError('Invalid public space module.')
                 if not isinstance(journey.get('chapters'), list):
                     raise ValueError('Public experience chapters must be a list.')
                 for chapter in journey['chapters']:
@@ -151,7 +155,7 @@ def bound_script(descriptor,raw):
     payload=raw.decode('utf-8').strip().replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
     return ('/* Generated on-demand data. */\nwindow.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);\nwindow.MG_LAZY_DATA['+json.dumps(descriptor['file'])+']={sha256:'+json.dumps(descriptor['sha256'])+',value:'+payload+'};\n').encode('utf-8')
 
-def export(source: Path, output: Path) -> dict:
+def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
     if output.is_symlink():raise ValueError('Output must not be a symlink.')
     source, output = source.resolve(), output.resolve()
     if source == output or source in output.parents or output in source.parents:
@@ -159,8 +163,9 @@ def export(source: Path, output: Path) -> dict:
     if output.exists() and (output.is_symlink() or not (output/MARKER).is_file()):
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
-    if index.get('release',{}).get('version','').split('.')[0] not in {'21','22'}:
-        raise ValueError('Rebuild V21/V22 before exporting the public preview.')
+    major = index.get('release',{}).get('version','').split('.')[0]
+    if major not in {'21','22','23'}:
+        raise ValueError('Rebuild V21, V22 or V23 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -216,11 +221,26 @@ def export(source: Path, output: Path) -> dict:
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
+        if legacy_entrypoints and major == '23':
+            # The Actions artifact serves at repository root. Keep deep links
+            # previously shared from the branch's /public/academy/ directory.
+            prefix = Path('public/academy')
+            for page in ('index.html', 'experience.html', 'campaign.html', 'experience-photo-v21.html',
+                         'automotive-lab-v21.html', 'space-lab-v23.html', 'help.html'):
+                alias = temp / prefix / page
+                alias.parent.mkdir(parents=True, exist_ok=True)
+                destination = '../../' + page
+                alias.write_text(
+                    '<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>MacGyver Academy</title>'
+                    '<script>location.replace(' + json.dumps(destination) + '+location.search+location.hash);</script>'
+                    '<p><a href="' + destination + '">開啟馬蓋先創新學院 / Open MacGyver Academy</a></p></html>\n',
+                    'utf-8',
+                )
         (temp/'.nojekyll').write_text('','utf-8')
         (temp/'runtime-mode.js').write_text("window.MG_STATIC_MODE=true;window.MG_PUBLIC_PREVIEW_ONLY=true;window.MG_CONFIG=window.MG_CONFIG||{};window.MG_CONFIG.paywall=Object.assign({},window.MG_CONFIG.paywall,{ownerPreviewOnFile:false});\n",'utf-8')
-        (temp/MARKER).write_text('V22 generated public first-stage preview\n','utf-8')
+        (temp/MARKER).write_text(f'V{major} generated public first-stage preview\n','utf-8')
         files=[p for p in temp.rglob('*') if p.is_file()]
-        result={'version':22,'mode':'first-stage-preview','files':len(files),'bytes':sum(p.stat().st_size for p in files),'descriptors':count,'memberBodies':0,'publicGameData':games}
+        result={'version':int(major),'mode':'first-stage-preview','files':len(files),'bytes':sum(p.stat().st_size for p in files),'descriptors':count,'memberBodies':0,'publicGameData':games}
         (temp/'preview-manifest.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
         if output.exists():shutil.rmtree(output)
         temp.replace(output)
@@ -233,7 +253,7 @@ def main():
     parser.add_argument('--out',type=Path,required=True)
     args=parser.parse_args()
     root=Path(__file__).resolve().parents[1]
-    try:print(json.dumps(export(root/'public/academy',args.out),ensure_ascii=False))
+    try:print(json.dumps(export(root/'public/academy',args.out,legacy_entrypoints=True),ensure_ascii=False))
     except (OSError,ValueError,KeyError) as error:parser.exit(1,'Export stopped: '+str(error)+'\n')
 
 if __name__=='__main__':main()

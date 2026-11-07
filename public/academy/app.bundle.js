@@ -7,13 +7,19 @@ const factories={
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;
- const tiles=[['semiconductor','半導體製造','Semiconductor'],['automotive','汽車與交通工具','Automotive'],['aerospace','航空工程','Aerospace'],['marine','船舶與海洋','Marine']];
- return `<section class="campaign-entry-v20 experience-entry-v21" aria-labelledby="experienceEntryTitle"><div class="campaign-entry-copy"><span class="campaign-kicker">ENGINEERING WORLDS / V22</span><h1 id="experienceEntryTitle">${t('走進工程現場。<br>讓故事帶你動手。','Step inside engineering.<br>Follow the story.')}</h1><p>${t('走進連續工程空間，用鍵盤或觸控搖桿移動人物，讓鏡頭跟隨你走近設備。從不同專業角色出發，操作製程站、查閱實拍證據，再回到完整課程。','Walk continuously through engineering facilities with a camera that follows your character. Approach equipment, inspect credited photographic evidence, and explore the process from different professional roles.')}</p><div class="campaign-entry-actions"><a class="button" href="experience.html?domain=automotive">${t('走進汽車工程空間','Walk into automotive engineering')} ↗</a><a class="button light" href="experience.html">${t('探索 20 個領域','Explore 20 disciplines')} ↗</a><a class="button light" href="#catalog/domain/automotive">${t('汽車 100 門逐步課程','100 automotive courses')}</a></div><div class="campaign-entry-flow"><span>01 ${t('行走','Walk')}</span><span>02 ${t('選擇角色','Choose a role')}</span><span>03 ${t('動手驗證','Test an idea')}</span><span>04 ${t('完成旅程','Complete the journey')}</span></div></div><div class="campaign-entry-visual"><img src="assets/photos/cleanroom.jpg" alt="${t('UCL 微影無塵室實拍','Real UCL photolithography cleanroom')}"><span class="campaign-image-credit">${t('實拍參考','Real photographic reference')} · <a href="https://commons.wikimedia.org/wiki/File:Cleanroom_-_photolithography_lab_%289150555216%29.jpg" target="_blank" rel="noopener">O. Usher / UCL</a> · CC BY 2.0</span><a class="campaign-live-badge" href="experience.html?domain=semiconductor">⛶ ${t('全畫面探索','FULL-WINDOW EXPLORER')}</a></div><div class="campaign-entry-tiles">${tiles.map(([id,cn,en],i)=>`<a href="experience.html?domain=${id}"><small>0${i+1}</small><strong>${esc(t(cn,en))}</strong><span>↗</span></a>`).join('')}</div></section><p class="experience-legacy-link"><a href="campaign.html">${t('開啟 V20 工程決策遊戲','Open V20 engineering decision games')} ↗</a></p>`;
+ const tiles=[['space','太空與衛星','Space & satellites'],['semiconductor','半導體製造','Semiconductor'],['automotive','汽車與交通工具','Automotive'],['aerospace','航空工程','Aerospace'],['marine','船舶與海洋','Marine']];
+ return `<section class="campaign-entry-v20 experience-entry-v21" aria-labelledby="experienceEntryTitle"><div class="campaign-entry-copy"><span class="campaign-kicker">ENGINEERING WORLDS / V23</span><h1 id="experienceEntryTitle">${t('走進工程現場。<br>讓故事帶你動手。','Step inside engineering.<br>Follow the story.')}</h1><p>${t('走進連續工程空間，用鍵盤或觸控搖桿移動人物，讓鏡頭跟隨你走近設備。從不同專業角色出發，操作製程站、查閱實拍證據，再回到完整課程。','Walk continuously through engineering facilities with a camera that follows your character. Approach equipment, inspect credited photographic evidence, and explore the process from different professional roles.')}</p><div class="campaign-entry-actions"><a class="button" href="experience.html?domain=space">${t('走進太空任務中心','Walk into the space mission center')} ↗</a><a class="button light" href="experience.html">${t('探索 20 個領域','Explore 20 disciplines')} ↗</a><a class="button light" href="#catalog/domain/space">${t('太空與衛星逐步課程','Guided space and satellite courses')}</a><a class="button light" href="space-lab-v23.html">${t('太空工程試算室','Space engineering lab')}</a></div><div class="campaign-entry-flow"><span>01 ${t('行走','Walk')}</span><span>02 ${t('選擇角色','Choose a role')}</span><span>03 ${t('動手驗證','Test an idea')}</span><span>04 ${t('完成旅程','Complete the journey')}</span></div></div><div class="campaign-entry-visual"><img src="assets/photos/webb.jpg" alt="${t('韋伯太空望遠鏡完整光學組件，NASA 實拍','Completed Webb optical telescope element, NASA photograph')}"><span class="campaign-image-credit">${t('實拍參考','Real photographic reference')} · <a href="https://science.nasa.gov/asset/webb/completed-optical-telescope-element/" target="_blank" rel="noopener">NASA / Desiree Stover</a></span><a class="campaign-live-badge" href="experience.html?domain=space">⛶ ${t('全畫面探索','FULL-WINDOW EXPLORER')}</a></div><div class="campaign-entry-tiles">${tiles.map(([id,cn,en],i)=>`<a href="experience.html?domain=${id}"><small>0${i+1}</small><strong>${esc(t(cn,en))}</strong><span>↗</span></a>`).join('')}</div></section><p class="experience-legacy-link"><a href="campaign.html">${t('開啟 V20 工程決策遊戲','Open V20 engineering decision games')} ↗</a></p>`;
+}
+function spaceModel(course) {
+ const id=course.id;
+ const named=[[/hohmann|gto|transfer/,'hohmann'],[/phas|rendezvous/,'phasing'],[/solar|array/,'solar-array'],[/radiat|thermal|sunshield/,'radiator'],[/eclipse|batter|power/,'power-eclipse'],[/wheel|attitude|momentum/,'reaction-wheel'],[/rf-|telecom|link|antenna|ground/,'radio-link'],[/gsd|imaging|sensor|lidar|optics/,'imaging-gsd']];
+ return named.find(([pattern])=>pattern.test(id))?.[1]||{'space-02':'circular-orbit','space-03':'rocket-equation','space-05':'power-eclipse','space-06':'reaction-wheel','space-07':'radio-link','space-08':'imaging-gsd'}[course.subcategory]||'circular-orbit';
 }
 function experienceCourseMarkup(course,zh=true){
  if(!course)return '';
  const t=(a,b)=>zh?a:b;
- return `<section class="campaign-course-v20"><div><span class="campaign-kicker">SCENE → STORY → LESSON</span><h3>${t('走進這門課的工程空間','Walk through this subject’s engineering space')}</h3><p>${t('選擇角色、觀察設備，再回到逐步課程。故事紀錄與課程進度分開保存；場景會標示實拍來源與參考範圍。','Choose a role and inspect equipment, then return to the lesson. Story records and course progress are saved separately. Each scene identifies its photographic source and reference scope.')}</p></div><a class="button" href="experience.html?domain=${encodeURIComponent(course.category)}&course=${encodeURIComponent(course.id)}">⛶ ${t('進入全畫面','Enter full window')} ↗</a></section>`;
+ const lab=course.category==='space'&&course.educationEdition===23? `<a class="button light" href="space-lab-v23.html?course=${encodeURIComponent(course.id)}#${spaceModel(course)}">${t('太空工程試算室','Space engineering calculator')} ↗</a>`:'';
+ return `<section class="campaign-course-v20"><div><span class="campaign-kicker">SCENE → STORY → LESSON</span><h3>${t('走進這門課的工程空間','Walk through this subject’s engineering space')}</h3><p>${t('選擇角色、觀察設備，再回到逐步課程。故事紀錄與課程進度分開保存；場景會標示實拍來源與參考範圍。','Choose a role and inspect equipment, then return to the lesson. Story records and course progress are saved separately. Each scene identifies its photographic source and reference scope.')}</p></div><a class="button" href="experience.html?domain=${encodeURIComponent(course.category)}&course=${encodeURIComponent(course.id)}">⛶ ${t('進入全畫面','Enter full window')} ↗</a>${lab}</section>`;
 }
 
 Object.defineProperty(exports, "experienceEntryMarkup", { enumerable: true, get: () => experienceEntryMarkup });
@@ -2756,6 +2762,7 @@ const textFor = course => [course.title, course.titleEn, course.summary, course.
 
 /** These are editorial learning families, not rankings or geographic locations. */
 const LEARNING_TRACKS = [
+  {id:'space',icon:'science',title:pair('太空與衛星','Space & satellites'),description:pair('100門逐步課涵蓋任務、軌道、發射、平台、姿控、通訊、遙測、測試與探索。','100 guided courses cover missions, orbits, launch, buses, attitude, links, remote sensing, testing, and exploration.'),boundary:pair('用公開案例、合成數據與可重現驗證學習；依來源與教學假設分列判據。','Learn from public cases, synthetic data, and reproducible checks. Keep source facts and teaching assumptions in separate records.')},
   {id:'rail',icon:'motion',title:pair('鐵道與交通','Rail & transport'),description:pair('100門課串接高速鐵路、捷運貨運、軌道、供電、號誌與系統整合。','100 courses connect high-speed rail, metro and freight, track, power, signalling and integration.'),boundary:pair('用可核算的假想數據理解工程原理；實際運行參數須另依路線、車輛與適用規範驗證。','Use reproducible hypothetical data to understand principles; real operating parameters require route, vehicle and applicable-code validation.')},
   {id:'water',icon:'process',title:pair('水利與海岸工程','Water & coastal engineering'),description:pair('100門課串接世界水壩、河川防洪、輸配水、船閘、海岸與港灣。','100 courses connect world dams, flood management, conveyance, locks, coasts and ports.'),boundary:pair('分開教學假設與實測邊界；用守恆、量測與不確定度檢核水工模型。','Separate teaching assumptions from measured boundaries; verify hydraulic models through conservation, measurement and uncertainty.')},
   {id:'underground',icon:'bridge',title:pair('隧道與地下工程','Tunnels & underground engineering'),description:pair('100門課程串接世界隧道、地質調查、潛盾、支護、地下水與地盤改良。','100 courses connect landmark tunnels, investigation, TBMs, support, groundwater and ground improvement.'),boundary:pair('從公開原理與教學算例學習；施工參數必須依實測地層與審查另定。','Learn from public principles and teaching examples; field parameters require measured ground data and review.')},
@@ -4466,6 +4473,137 @@ Object.defineProperty(exports, "loadCourseOnDemand", { enumerable: true, get: ()
 Object.defineProperty(exports, "loadCourseResources", { enumerable: true, get: () => loadCourseResources });
 Object.defineProperty(exports, "loadAuxiliaryData", { enumerable: true, get: () => loadAuxiliaryData });
 },
+"mentor-cloud-v23.js":function(require, exports) {
+'use strict';
+// Browser-side Cloudflare adapter. Configuration contains an HTTPS origin only.
+const CONSENT_KEY = 'mg-cloud-public-translation-v23';
+
+function mentorWorkerOrigin(value = globalThis.MG_CONFIG?.mentorWorkerUrl) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && url.pathname === '/' && !url.username && !url.password &&
+      !url.search && !url.hash ? url.origin : '';
+  } catch {
+    return '';
+  }
+}
+
+function mentorLineLink(value = globalThis.MG_CONFIG?.mentorLineUrl) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || url.username || url.password || url.port || url.search || url.hash) return '';
+    const valid = url.hostname === 'lin.ee' && /^\/[A-Za-z0-9_-]+$/.test(url.pathname)
+      || url.hostname === 'line.me' && /^\/R\/ti\/p\/[@%A-Za-z0-9_-]+$/.test(url.pathname);
+    return valid ? url.href : '';
+  } catch {
+    return '';
+  }
+}
+
+function cloudMentorRoute(language) {
+  const destination = mentorWorkerOrigin();
+  if (!destination) return null;
+  return {
+    id: 'cloudflare-mentor',
+    label: String(language).startsWith('zh') ? 'Cloudflare 工程師傅' : 'Cloudflare engineering mentor',
+    model: String(language).startsWith('zh') ? '站方配置的生成模型' : 'Operator-configured model',
+    cloud: true,
+    supportsImages: false,
+    destination,
+  };
+}
+
+const validId = value => typeof value === 'string' && /^[a-z0-9][a-z0-9_-]{0,99}$/i.test(value);
+const httpUrl = value => {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && !url.username && !url.password ? url.href : '';
+  } catch {
+    return '';
+  }
+};
+
+async function post(path, body, {signal, fetchImpl = globalThis.fetch} = {}) {
+  const origin = mentorWorkerOrigin();
+  if (!origin) throw Error('Cloudflare mentor is not configured.');
+  const response = await fetchImpl(origin + path, {
+    method: 'POST', headers: {'Content-Type': 'application/json', Accept: 'application/json'},
+    body: JSON.stringify(body), credentials: 'omit', referrerPolicy: 'no-referrer',
+    redirect: 'error', signal,
+  });
+  if (!response.ok) {
+    const error = Error('Cloudflare HTTP ' + response.status);
+    error.status = response.status;
+    throw error;
+  }
+  return response.json();
+}
+
+async function askCloudMentor({question, locale, context = {}, signal, fetchImpl} = {}) {
+  const body = {question: String(question || '').slice(0, 1200), locale: String(locale || 'en').slice(0, 24)};
+  // Never forward lesson text, personal notes, attachments, or chat history.
+  const metadata = {
+    domain: context.domain, courseId: context.courseId || context.projectId,
+    sceneId: context.sceneId, station: context.station,
+  };
+  for (const [key, value] of Object.entries(metadata)) {
+    if (validId(value)) body[key] = value;
+    else if (key === 'station' && Number.isInteger(value) && value >= 0 && value <= 99) body[key] = value;
+  }
+  const result = await post('/api/mentor', body, {signal, fetchImpl});
+  if (typeof result?.answer !== 'string' || !result.answer.trim()) throw Error('Cloudflare mentor returned an empty response.');
+  const sources = Array.isArray(result.sources) ? result.sources.slice(0, 8).map(source => ({
+    id: String(source?.id || '').slice(0, 160),
+    title: [source?.reference, source?.title || source?.id].filter(value => typeof value === 'string' && value).join(' · ').slice(0, 300),
+    url: httpUrl(source?.url),
+  })).filter(source => source.id && source.title) : [];
+  return {
+    answer: result.answer.slice(0, 24000), sources, grounded: result.grounded === true,
+    kind: result.mode === 'extract' ? 'extract' : 'generated',
+    model: [result.provider, result.model].filter(value => typeof value === 'string').join(' · ').slice(0, 200),
+  };
+}
+
+// Restrict DOM translation to the reviewed, first-stage-only static build.
+function cloudTranslationConfigured() {
+  return globalThis.MG_PUBLIC_PREVIEW_ONLY === true &&
+    globalThis.MG_CONFIG?.mentorCloudTranslation === true && Boolean(mentorWorkerOrigin());
+}
+
+let consentOrigin = '';
+function cloudTranslationAllowed() {
+  if (!cloudTranslationConfigured()) return false;
+  const origin = mentorWorkerOrigin();
+  try { return consentOrigin === origin || sessionStorage.getItem(CONSENT_KEY) === origin; }
+  catch { return consentOrigin === origin; }
+}
+
+function allowCloudTranslation() {
+  if (!cloudTranslationConfigured()) return false;
+  consentOrigin = mentorWorkerOrigin();
+  try { sessionStorage.setItem(CONSENT_KEY, consentOrigin); } catch { /* Session memory remains available. */ }
+  return true;
+}
+
+async function translatePublicText({language, texts, signal, fetchImpl}) {
+  if (!cloudTranslationAllowed()) return null;
+  const items = texts.map((text, i) => ({id: String(i), text}));
+  const result = await post('/api/translate', {locale: language, items}, {signal, fetchImpl});
+  if (!Array.isArray(result?.items) || result.items.length !== items.length) throw Error('Cloudflare translation was incomplete.');
+  const translated = new Map(result.items.map(item => [String(item?.id), item?.text]));
+  if (translated.size !== items.length) throw Error('Cloudflare translation returned duplicate IDs.');
+  return {translations: items.map(item => translated.get(item.id))};
+}
+
+Object.defineProperty(exports, "mentorWorkerOrigin", { enumerable: true, get: () => mentorWorkerOrigin });
+Object.defineProperty(exports, "mentorLineLink", { enumerable: true, get: () => mentorLineLink });
+Object.defineProperty(exports, "cloudMentorRoute", { enumerable: true, get: () => cloudMentorRoute });
+Object.defineProperty(exports, "askCloudMentor", { enumerable: true, get: () => askCloudMentor });
+Object.defineProperty(exports, "cloudTranslationConfigured", { enumerable: true, get: () => cloudTranslationConfigured });
+Object.defineProperty(exports, "cloudTranslationAllowed", { enumerable: true, get: () => cloudTranslationAllowed });
+Object.defineProperty(exports, "allowCloudTranslation", { enumerable: true, get: () => allowCloudTranslation });
+Object.defineProperty(exports, "translatePublicText", { enumerable: true, get: () => translatePublicText });
+},
 "ai-client.js":function(require, exports) {
 'use strict';
 /* Optional real, local CPU inference. Nothing downloads until load(...,{consent:true}). */
@@ -4769,6 +4907,7 @@ Object.defineProperty(exports, "tutorServiceRoutes", { enumerable: true, get: ()
 "tutor-panel.js":function(require, exports) {
 'use strict';
 const { AI_MODELS, createAIClient, boundedTutorHistory, hostedTutorContext } = require("ai-client.js");
+const { askCloudMentor, cloudMentorRoute, mentorLineLink } = require("mentor-cloud-v23.js");
 const { prepareTutorImage, releaseTutorImage, tutorServiceRoutes } = require("tutor-attachments.js");
 const escapeHTML=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const https=v=>/^https:\/\//.test(v||'')?v:'#';
@@ -4777,19 +4916,19 @@ function tutorNativeCommands(id) {
 }
 function tutorAnswerMarkup(entry,{zh=true}={}) {
  const L=(a,b)=>zh?a:b,e=escapeHTML;
- return `<article class="mentor-message ${entry.role==='user'?'from-learner':'from-mentor'}"><div class="mentor-message-label">${e(entry.role==='user'?L('你的問題','Your question'):entry.kind==='generated'?L('生成式回答','Generated answer'):entry.kind==='error'?L('服務狀態','Service status'):L('課程摘錄 · 非生成式','Lesson extract · not generated'))}${entry.model?' · '+e(entry.model):''}</div><div class="mentor-message-text">${e(entry.text)}</div>${entry.imageAttached?`<small class="mentor-image-history">${L('此問題曾附圖片；圖片不保存在問答紀錄，也不會於下一題重新傳送。','An image accompanied this question. Images are not saved in chat history or resent on the next question.')}</small>`:''}${entry.role!=='user'&&entry.sources?.length?`<details class="mentor-grounding"><summary>${L('本課程參考來源（不是逐句引用證明）','Course references (not claim-level citations)')}</summary>${entry.sources.map(s=>`<a href="${e(https(s.url))}" target="_blank" rel="noopener noreferrer">${e(s.title||s.id)} ↗</a>`).join('')}</details>`:''}</article>`;
+ return `<article class="mentor-message ${entry.role==='user'?'from-learner':'from-mentor'}"><div class="mentor-message-label">${e(entry.role==='user'?L('你的問題','Your question'):entry.kind==='generated'?L('生成式回答','Generated answer'):entry.kind==='error'?L('服務狀態','Service status'):L('課程摘錄 · 非生成式','Lesson extract · not generated'))}${entry.model?' · '+e(entry.model):''}</div><div class="mentor-message-text">${e(entry.text)}</div>${entry.imageAttached?`<small class="mentor-image-history">${L('此問題曾附圖片；圖片不保存在問答紀錄，也不會於下一題重新傳送。','An image accompanied this question. Images are not saved in chat history or resent on the next question.')}</small>`:''}${entry.role!=='user'&&entry.sources?.length?`<details class="mentor-grounding"><summary>${entry.grounded?L('本次回答取用的知識庫來源','Knowledge base sources retrieved for this answer'):L('本課程參考來源（不是逐句引用證明）','Course references (not claim-level citations)')}</summary>${entry.sources.map(s=>https(s.url)!=='#'?`<a href="${e(https(s.url))}" target="_blank" rel="noopener noreferrer">${e(s.title||s.id)} ↗</a>`:`<span>${e(s.title||s.id)}</span>`).join('')}</details>`:''}</article>`;
 }
 function createTutorPanel({getLanguage=()=> 'zh-TW',getContext=()=>({}),getOwner=()=> 'guest',getHostedAvailable=()=>false,getHostedRoutes=()=>[],onOpen=()=>{}}={}) {
  const zh=()=>getLanguage().startsWith('zh'),L=(a,b)=>zh()?a:b,e=escapeHTML;
- let host=null,opened=false,previousFocus=null,client=null,mode='lesson',busy=false,progress='',request=null,entries=[],contextKey='',epoch=0,attachment=null,attachmentEpoch=0,preparingImage=false;
+ let host=null,opened=false,previousFocus=null,client=null,mode=cloudMentorRoute(getLanguage())?'route:cloudflare-mentor':'lesson',busy=false,progress='',request=null,entries=[],contextKey='',epoch=0,attachment=null,attachmentEpoch=0,preparingImage=false;
  const q=s=>host?.querySelector(s),models=()=>AI_MODELS||[];
- const routes=()=>tutorServiceRoutes(getHostedRoutes(),getHostedAvailable());
+ const routes=()=>[cloudMentorRoute(getLanguage()), ...tutorServiceRoutes(getHostedRoutes(),getHostedAvailable())].filter(Boolean);
  const service=()=>routes().find(r=>r.id===(mode==='hosted'?'default':mode.startsWith('route:')?mode.slice(6):''));
  const getClient=()=>client||(client=createAIClient({onStatus:status=>{progress=String(status.message||status.phase||'');updateStatus()}}));
  function current(){return getContext()||{}}
  function historyKey(){const c=current();return 'mg-tutor-v1-'+getOwner()+'-'+String(c.projectId||'general')}
  function clearImage(){attachmentEpoch++;preparingImage=false;releaseTutorImage(attachment);attachment=null;}
- function loadHistory(){const key=historyKey();if(key===contextKey)return;clearImage();contextKey=key;try{const raw=JSON.parse(localStorage.getItem(key)||'[]');entries=Array.isArray(raw)?raw.filter(v=>v&&['user','assistant'].includes(v.role)&&typeof v.text==='string').slice(-20).map(v=>({role:v.role,text:v.text.slice(0,24000),kind:v.kind,model:typeof v.model==='string'?v.model.slice(0,200):undefined,imageAttached:v.imageAttached===true,sources:Array.isArray(v.sources)?v.sources.filter(x=>x&&typeof x==='object').slice(0,8):[]})):[]}catch{entries=[]}}
+ function loadHistory(){const key=historyKey();if(key===contextKey)return;clearImage();contextKey=key;try{const raw=JSON.parse(localStorage.getItem(key)||'[]');entries=Array.isArray(raw)?raw.filter(v=>v&&['user','assistant'].includes(v.role)&&typeof v.text==='string').slice(-20).map(v=>({role:v.role,text:v.text.slice(0,24000),kind:v.kind,grounded:v.grounded,model:typeof v.model==='string'?v.model.slice(0,200):undefined,imageAttached:v.imageAttached===true,sources:Array.isArray(v.sources)?v.sources.filter(x=>x&&typeof x==='object').slice(0,8):[]})):[]}catch{entries=[]}}
  function store(){try{localStorage.setItem(contextKey,JSON.stringify(entries.slice(-20)))}catch{progress=L('對話僅保留本次開啟；瀏覽器無法保存。','Chat is session-only because browser storage is unavailable.')}}
  function modelInfo(){return models().find(m=>m.id===mode.slice(mode.indexOf(':')+1))}
  function updateStatus(){if(!host)return;const state=client?.state?.()||{phase:'idle'},label=[progress,state.phase==='ready'?L('本地模型就緒','Local model ready'):''].filter(Boolean).join(' · ');if(q('[data-ai-status]'))q('[data-ai-status]').textContent=label;if(q('[data-ai-submit]'))q('[data-ai-submit]').disabled=busy||preparingImage||mode.startsWith('native:');if(q('[data-ai-cancel]'))q('[data-ai-cancel]').hidden=!busy&&!preparingImage&&!['downloading','loading','verifying'].includes(state.phase);if(q('[data-ai-model]'))q('[data-ai-model]').disabled=busy||preparingImage;if(q('[data-ai-image]'))q('[data-ai-image]').disabled=busy||preparingImage||!service()?.supportsImages;if(q('[data-ai-image-remove]'))q('[data-ai-image-remove]').disabled=busy;}
@@ -4798,13 +4937,14 @@ function createTutorPanel({getLanguage=()=> 'zh-TW',getContext=()=>({}),getOwner
  function renderAttachment(){if(q('[data-ai-attachment]'))q('[data-ai-attachment]').innerHTML=imageMarkup();if(q('[data-ai-image-remove]'))q('[data-ai-image-remove]').onclick=()=>{clearImage();renderAttachment();updateStatus()};updateStatus()}
  function render(){if(!host)return;loadHistory();if((mode==='hosted'||mode.startsWith('route:'))&&!service())mode='lesson';const c=current(),m=modelInfo(),native=mode.startsWith('native:'),browser=mode.startsWith('browser:'),route=service(),caps=browser?getClient().capabilities():null,size=m?.bytes?`${(m.bytes/1e9).toFixed(2)} GB`:L('大小見模型資料頁','See model page for size');
  host.lang=getLanguage();host.innerHTML=`<div class="mentor-panel-head"><div><span class="eyebrow">MACGYVER · MENTOR</span><h2 id="mentorPanelTitle">${L('工程師傅問答','Ask your engineering mentor')}</h2></div><button type="button" class="icon-btn" data-ai-close aria-label="${L('關閉問答','Close mentor')}">×</button></div><p class="mentor-context">${L('目前課程','Current course')}：<strong>${e(c.project||L('探索工程','Explore engineering'))}</strong>${c.step?'<br>'+e(c.step):''}</p>
+ ${mentorLineLink()?`<p><a class="text-link" href="${e(mentorLineLink())}" target="_blank" rel="noopener noreferrer">${L('在 LINE 開啟工程師傅','Open the engineering mentor in LINE')} ↗</a></p>`:''}
  <label class="field">${L('回答模式與模型','Answer mode and model')}<select data-ai-model><option value="lesson" ${mode==='lesson'?'selected':''}>${L('課程摘錄（非生成式、無需下載）','Lesson extracts (not generated; no download)')}</option>${routes().map(r=>`<option value="route:${e(r.id)}" ${mode==='route:'+r.id||(mode==='hosted'&&r.id==='default')?'selected':''}>${e(r.label)} · ${e(r.model)} · ${r.supportsImages?L('文字＋圖片','Text + image'):L('純文字','Text only')} · ${r.cloud?L('雲端','Cloud'):L('本機','Local')}</option>`).join('')}${models().map(m=>`<option value="${e(m.kind+':'+m.id)}" ${mode===m.kind+':'+m.id?'selected':''}>${e(m.label)} · ${m.kind==='native'?L('安裝說明（非已連接模型）','Setup guide (not a connected model)'):L('瀏覽器 CPU · 純文字','Browser CPU · text only')}</option>`).join('')}</select></label>
  <details class="mentor-route-help"><summary>${L('四條 AI 路線與連接方式','Four AI routes and setup')}</summary><ol><li><strong>${L('瀏覽器 CPU 文字問答','Browser CPU text chat')}</strong> — ${L('下載前需勾選同意；Qwen 小模型在此裝置回答文字，不辨識圖片。','Consent before downloading. Small Qwen models answer text on this device; they do not understand images.')}</li><li><strong>${L('Ollama 本機文字模型','Ollama local text model')}</strong> — ${L('電腦安裝服務與模型後，使用本機啟動器連接。','Install the service and model on your computer, then use the local launcher.')}</li><li><strong>${L('Ollama 本機圖片模型','Ollama local vision model')}</strong> — ${L('另需支援圖片的模型；CPU 可執行但速度取決於硬體與模型，未保證即時。','Requires a vision model. CPU speed depends on hardware and model; real-time responses are not guaranteed.')}</li><li><strong>${L('Gemini 雲端圖片與文字','Gemini cloud image and text')}</strong> — ${L('站方需設定伺服器金鑰，每題明確同意後才會傳送。','The operator configures a server-side key. Each question requires explicit consent before transmission.')}</li></ol><p>${L('選單只顯示已設定的服務。GitHub Pages／index.html 本身不能執行 Python 或 Ollama；本機路線請下載完整套件，依 docs/AI_ROUTES_V81_ZH.md 啟動。雲端需另接已設定的後端；不要把 API 金鑰放入網頁。','Only configured services appear in the menu. GitHub Pages / index.html cannot run Python or Ollama. Download the full package and follow docs/AI_ROUTES_V81_ZH.md for local routes. Cloud routes require a configured backend; never place API keys in web pages.')}</p><a href="help.html" target="_blank" rel="noopener noreferrer">${L('開啟帳號與四條 AI 路線設定指南','Open the account and four AI routes setup guide')} ↗</a></details>
  ${m?`<details class="mentor-model-details" open><summary>${L('模型資訊、下載與記憶體','Model details, download and memory')}</summary><p>${e(zh()?m.descriptionZh:m.descriptionEn)}</p><p class="subtext">${size} · ${e(m.license||'')} ${m.minMemoryGB?' · '+L('建議記憶體','Suggested memory')+' '+e(m.minMemoryGB)+' GB':''}</p><a href="${e(https(m.sourceUrl))}" target="_blank" rel="noopener noreferrer">${L('模型來源、授權與限制','Model source, license and limitations')} ↗</a>${browser?`${caps&&!caps.supported?`<p class="notice warn">${L('此頁無法啟動瀏覽器 CPU 模型，請使用 HTTPS 網站或本機啟動器。','This page cannot start a browser CPU model. Open the HTTPS site or the local launcher.')} ${e((caps.reasons||[]).join(' '))}</p>`:''}<label class="mentor-consent"><input type="checkbox" data-ai-consent> <span>${L('我同意連線模型供應網站，下載權重並使用本裝置儲存空間與 CPU。行動裝置可能緩慢或記憶體不足。','I agree to connect to the model provider, download weights and use this device’s storage and CPU. Mobile devices may be slow or run out of memory.')}</span></label><div class="mentor-tools"><button type="button" class="button light" data-ai-load ${caps&&!caps.supported?'disabled':''}>${L('同意後下載／載入','Download / load with consent')}</button><button type="button" class="button light" data-ai-unload>${L('卸載記憶體','Unload memory')}</button><button type="button" class="text-link" data-ai-cache>${L('清除權重快取','Clear weight cache')}</button></div>`:`<p>${L('這是本機安裝建議。請在完整解壓的套件資料夾開啟終端機。下列 --download 明確同意下載所選模型，啟動後請開啟終端機顯示的本機網站並登入；已連接的模型會另外列於上方選單。','This is an installation recommendation. Open a terminal in the extracted package folder. The --download flag explicitly approves the selected model download. After startup, open the local website printed in the terminal and sign in; connected models appear separately above.')}</p>${tutorNativeCommands(m.id).length?`<pre class="mentor-setup-commands"><code>${e(tutorNativeCommands(m.id).join('\n'))}</code></pre>`:''}<p>${m.id==='qwen3-17b'?L('前置需求：Python 3.10+ 與 llama.cpp 的 llama-server。','Prerequisites: Python 3.10+ and llama.cpp’s llama-server.'):L('前置需求：Python 3.10+、相容版本的 Ollama，並先啟動 Ollama 應用程式或 ollama serve。','Prerequisites: Python 3.10+, a compatible Ollama installation, and the running Ollama app or ollama serve.')} ${L('此頁不會自動安裝或下載原生模型。','This page never automatically installs or downloads native models.')}</p>`}</details>`:''}
- <p class="mentor-mode-note">${route?`<strong>${L('此題傳送目的地','Destination for this question')}：${e(route.destination||route.label)}</strong><br>${route.cloud?L('問題、課程、最近問答、檢索到的本機文件段落及本次附圖將經由此網站後端送至雲端服務。','The question, lesson, recent chat, retrieved local document passages and attached image go through this site’s backend to the cloud service.'):L('問題、課程、最近問答、檢索到的文件段落及本次附圖將送至本機服務。','The question, lesson, recent chat, retrieved document passages and attached image go to the local service.')}`:browser?L('下載完成後在本裝置推論，只支援文字；首次下載需要網路。本地小模型可能答錯，請核對來源。','After download, text-only inference runs on this device. The first download needs a connection. Small local models can be wrong: verify sources.'):native?L('此選項為安裝說明。完成設定後，選擇已連接的本機服務提問。','This option shows setup instructions. After configuration, select the connected local service to ask.'):L('以下只整理課程內容，不是生成式 AI 回答。','This mode presents lesson content, not generative AI answers.')}</p>
+ <p class="mentor-mode-note">${route?`<strong>${L('此題傳送目的地','Destination for this question')}：${e(route.destination||route.label)}</strong><br>${route.id==='cloudflare-mentor'?L('這次只傳送問題、語言及公開課程或站位的識別碼。師傅從核准的公開資料檢索來源。','Only this question, language and public course or station identifiers are sent. The mentor searches approved public material.'):route.cloud?L('問題、課程、最近問答、檢索到的本機文件段落及本次附圖將經由此網站後端送至雲端服務。','The question, lesson, recent chat, retrieved local document passages and attached image go through this site’s backend to the cloud service.'):L('問題、課程、最近問答、檢索到的文件段落及本次附圖將送至本機服務。','The question, lesson, recent chat, retrieved document passages and attached image go to the local service.')}`:browser?L('下載完成後在本裝置推論，只支援文字；首次下載需要網路。本地小模型可能答錯，請核對來源。','After download, text-only inference runs on this device. The first download needs a connection. Small local models can be wrong: verify sources.'):native?L('此選項為安裝說明。完成設定後，選擇已連接的本機服務提問。','This option shows setup instructions. After configuration, select the connected local service to ask.'):L('以下只整理課程內容，不是生成式 AI 回答。','This mode presents lesson content, not generative AI answers.')}</p>
  <div class="mentor-chat-log" data-ai-log role="log" aria-label="${L('問答紀錄','Conversation history')}"></div><form class="mentor-question-form" data-ai-form><label class="sr-only" for="mentorQuestion">${L('問題','Question')}</label><textarea id="mentorQuestion" data-ai-question maxlength="1200" rows="3" required placeholder="${L('最多 1,200 字；例如：曝光景深與 NA 為何互相牽制？','Up to 1,200 characters. Why does NA constrain depth of focus?')}"></textarea>
  <div class="mentor-image-tools"><label class="mentor-image-picker">${L('附照片／截圖','Attach photo / screenshot')}<input type="file" data-ai-image accept="image/png,image/jpeg,image/webp" ${!route?.supportsImages?'disabled':''}></label><small>${route?.supportsImages?L('PNG／JPEG／WebP，最多 4 MiB；長邊 ≤ 8,192 px、≤ 3,200 萬像素。建議先縮至 2,048 px。只在按「送出問題」時上傳。','PNG / JPEG / WebP, up to 4 MiB; maximum side 8,192 px and 32 MP. A 2,048 px image is recommended. Uploaded only when you select Ask mentor.'):L('附圖需選擇已連接的圖片模型；瀏覽器 CPU 小模型只回答文字。','Select a connected vision model to attach an image. Small browser CPU models answer text only.')}</small></div><div data-ai-attachment></div>
- ${route?.cloud?`<label class="mentor-consent mentor-cloud-consent"><input type="checkbox" data-ai-cloud-consent> <span>${L('我同意將這一題的問題、課程、最近問答、檢索到的本機文件段落與本次附圖傳至','I agree to send this question, lesson, recent chat, retrieved local document passages and attached image to')} <strong>${e(route.destination||route.label)}</strong>${L('；此同意只適用於這一次送出。','; consent applies to this submission only.')}</span></label>`:''}<div class="mentor-send-row"><button class="button" data-ai-submit>${L('送出問題','Ask mentor')} ↗</button><button type="button" class="button light" data-ai-cancel hidden>${L('取消','Cancel')}</button><button type="button" class="text-link" data-ai-clear>${L('清除對話','Clear chat')}</button></div></form><p class="mentor-status" data-ai-status role="status" aria-live="polite"></p><p class="subtext mentor-history-note">${L('最多附帶最近 3 輪完整文字問答，內容過長時縮短；圖片不儲存在紀錄，也不隨下一題重送。文字依目前帳號與課程保存在此瀏覽器，不隨學習進度同步；可隨時清除。沒有適用所有問題的單一最佳模型。','Up to 3 recent complete text exchanges are included, shortened when needed. Images are neither stored in history nor resent. Text history stays in this browser per profile and course, separate from progress sync. Clear it anytime. No single model is best for every question.')}</p>`;
+ ${route?.cloud?`<label class="mentor-consent mentor-cloud-consent"><input type="checkbox" data-ai-cloud-consent> <span>${route.id==='cloudflare-mentor'?L('我同意將這一題的問題、語言與公開課程識別碼傳至','I agree to send this question, language and public course IDs to'):L('我同意將這一題的問題、課程、最近問答、檢索到的本機文件段落與本次附圖傳至','I agree to send this question, lesson, recent chat, retrieved local document passages and attached image to')} <strong>${e(route.destination||route.label)}</strong>${L('；此同意只適用於這一次送出。','; consent applies to this submission only.')}</span></label>`:''}<div class="mentor-send-row"><button class="button" data-ai-submit>${L('送出問題','Ask mentor')} ↗</button><button type="button" class="button light" data-ai-cancel hidden>${L('取消','Cancel')}</button><button type="button" class="text-link" data-ai-clear>${L('清除對話','Clear chat')}</button></div></form><p class="mentor-status" data-ai-status role="status" aria-live="polite"></p><p class="subtext mentor-history-note">${L('最多附帶最近 3 輪完整文字問答，內容過長時縮短；圖片不儲存在紀錄，也不隨下一題重送。文字依目前帳號與課程保存在此瀏覽器，不隨學習進度同步；可隨時清除。沒有適用所有問題的單一最佳模型。','Up to 3 recent complete text exchanges are included, shortened when needed. Images are neither stored in history nor resent. Text history stays in this browser per profile and course, separate from progress sync. Clear it anytime. No single model is best for every question.')}</p>`;
  q('[data-ai-close]').onclick=close;
  q('[data-ai-model]').onchange=event=>{if(busy||preparingImage){event.target.value=mode;return}const draft=q('[data-ai-question]')?.value||'';mode=event.target.value;clearImage();progress='';render();q('[data-ai-question]').value=draft;};
  q('[data-ai-form]').onsubmit=event=>{event.preventDefault();ask(q('[data-ai-question]').value)};
@@ -4821,6 +4961,15 @@ function createTutorPanel({getLanguage=()=> 'zh-TW',getContext=()=>({}),getOwner
  async function ask(question){question=String(question||'').trim().slice(0,1200);if(!question||busy||preparingImage)return;const changed=historyKey()!==contextKey;loadHistory();if(changed){progress=L('帳號或課程已變更，請重新確認問題與傳送目的地。','The profile or course changed. Check your question and destination again.');render();return}const route=service(),cloudConsent=q('[data-ai-cloud-consent]')?.checked===true;if(route?.cloud&&!cloudConsent){progress=L('請先勾選本次雲端傳送同意，尚未傳送任何問題或圖片。','Consent to this cloud submission first. No question or image has been sent.');updateStatus();return}if(attachment&&!route?.supportsImages){progress=L('此模型無法讀取圖片，請選擇圖片模型或移除圖片。','This model cannot read images. Select a vision model or remove the image.');updateStatus();return}
  const c=current(),history=boundedTutorHistory(entries),selected=mode,token=++epoch,key=contextKey,image=attachment?.image;busy=true;request=new AbortController();entries.push({role:'user',text:question,...(image?{imageAttached:true}:{})});if(q('[data-ai-question]'))q('[data-ai-question]').value='';if(q('[data-ai-cloud-consent]'))q('[data-ai-cloud-consent]').checked=false;clearImage();renderAttachment();progress=L('正在處理問題…','Working on your question…');renderMessages();let entry;
  try{if(selected==='lesson'){const knowledge=Array.isArray(c.knowledge)?c.knowledge:[];entry={role:'assistant',kind:'extract',text:[c.step||c.project,c.objective||c.summary,c.instruction,...knowledge.map(k=>k.title+'\n'+k.text),c.check].filter(Boolean).join('\n\n')||L('此頁尚無可引用的工序內容。請進入逐步課程再問。','Open a guided lesson to view its reference content.'),sources:c.sources||[]};}
+ else if(route?.id==='cloudflare-mentor'){
+  let result;
+  try { result=await askCloudMentor({question,locale:getLanguage(),context:c,signal:request.signal}); }
+  catch(error) {
+   if(error.status===429)throw Error(L('雲端提問額度暫時用完，請稍後再試。','The cloud question limit was reached. Try again later.'));
+   throw Error(L('Cloudflare 師傅暫時無法回答。你仍可切換至課程摘錄。','The Cloudflare mentor is unavailable. Lesson extracts are still available.'));
+  }
+  entry={role:'assistant',kind:result.kind,text:result.answer,model:result.kind==='generated'?(result.model||route.label):route.label,sources:result.sources,grounded:result.grounded};
+ }
  else if(selected==='hosted'||selected.startsWith('route:')){if(!route)throw Error(L('AI 服務尚未連接。請先設定並啟動本機或雲端服務。','AI service is not connected. Configure and start a local or cloud service first.'));const response=await fetch('/api/tutor',{method:'POST',headers:{'Content-Type':'application/json'},signal:request.signal,body:JSON.stringify({question,language:getLanguage(),context:hostedTutorContext(c,history),route:route.id,cloudConsent,...(image?{image}:{})})});const result=await response.json();if(!response.ok)throw Error(result.error||'AI service unavailable');if(typeof result.answer!=='string'||!result.answer.trim())throw Error(L('AI 服務沒有回傳文字，請重試。','AI service returned no text. Try again.'));entry={role:'assistant',kind:'generated',text:result.answer.slice(0,24000),model:result.model||route.model||route.label,sources:c.sources||[]};}
  else if(selected.startsWith('native:'))throw Error(L('此選項是本機安裝建議；安裝並啟動服務後，請改選已連接的本機服務。','This option is a native installation recommendation. After starting the service, select the connected local service.'));
  else{const ai=getClient(),state=ai.state();if(state.phase!=='ready'||state.modelId!==modelInfo()?.id)throw Error(L('請先同意下載並載入所選模型。','Consent to download and load the selected model first.'));const result=await ai.ask({question,context:c,language:getLanguage(),history,signal:request.signal});entry={role:'assistant',kind:'generated',text:typeof result==='string'?result:String(result.answer||result.text||''),model:modelInfo()?.label,sources:(c.sources||[]).slice(0,3)};}
@@ -8002,6 +8151,7 @@ Object.defineProperty(exports, "assemblySvg", { enumerable: true, get: () => ass
 },
 "locale.js":function(require, exports) {
 'use strict';
+const { cloudTranslationAllowed, translatePublicText } = require("mentor-cloud-v23.js");
 /** Whole-interface, opt-in machine translation with a bounded offline cache.
  * App renders its canonical English (or core Traditional Chinese) first, calls
  * invalidate() before rendering, and calls apply() after rendering / opening a
@@ -8167,7 +8317,7 @@ async function onDeviceTranslator(language, {source = 'en', userActivated = fals
     return translators.get(key);
   } catch { return null; }
 }
-function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, onStatus = () => {}, onDictionary = () => {} } = {}) {
+function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, getCloudAllowed = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
   const attributeSources = new WeakMap();
   const cache = new Map();
@@ -8326,7 +8476,8 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
       if(!missing.length)return report('translated');
     }
     if (cancelled()) return {...latestStatus,state:'cancelled'};
-    if (!getTranslationAvailable()) {
+    const cloudAllowed = () => getCloudAllowed() && cloudTranslationAllowed();
+    if (!getTranslationAvailable() && !cloudAllowed()) {
       failed=missing.length;
       return report(translations.size?'partial':'unavailable','Only the available dictionary/cache text has been translated. Remaining course text needs a loaded local model, supported browser translator, or configured translation service. Machine translation requires review.');
     }
@@ -8348,6 +8499,7 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
         requests++;
         let result;
         if(typeof translateBatch==='function')result=await translateBatch({language,texts:batch,signal:controller.signal});
+        if(result==null && cloudAllowed())result=await translatePublicText({language,texts:batch,signal:controller.signal});
         // The app's optional local-model adapter returns null when no model is
         // loaded. A configured server translator must still remain reachable.
         if(result==null) {
@@ -8426,6 +8578,7 @@ const { loadVendors, setVendors, loadMarkets, vendorsMarkup, bindVendors } = req
 const { billingState, loadBillingConfig, resetLearningEvidence, loadVerifiedLearning, submitVerifiedStep, courseAccessMarkup, membershipMarkup, certificateMarkup, bindMembership, resumeEcpayReturn } = require("membership.js");
 const { initializeServices } = require("services.js");
 const { loadCurriculumData, loadCurriculumIndex, loadCourseOnDemand, loadCourseResources, loadAuxiliaryData } = require("curriculum-loader.js");
+const { cloudTranslationConfigured, cloudTranslationAllowed, allowCloudTranslation } = require("mentor-cloud-v23.js");
 const { createTutorPanel } = require("tutor-panel.js");
 const { packagingPathsMarkup } = require("packaging-paths.js");
 const { buildSourceIndex, sourceLibraryMarkup, courseSubcategory } = require("source-library.js");
@@ -8997,7 +9150,8 @@ function exportLegacyProgress(){let data={};try{data=JSON.parse(localStorage.get
 function syncLanguageSelect(){const select=$('#language');if(!select)return;select.setAttribute('data-no-translate','');if(!select.dataset.expanded){select.innerHTML=[['auto','◎ Auto'],...languageChoices].map(([key,name])=>`<option value="${key}">${name}</option>`).join('');select.dataset.expanded='true'}select.value=lang;select.setAttribute('aria-label',t('language'));$('#translateButton')?.setAttribute('title',t('translateTitle'));$('#closeDialog')?.setAttribute('aria-label',t('close'));$('#menu')?.setAttribute('aria-label',t('curriculum'));$('.skip')?.setAttribute('aria-label',isZh()?'跳至內容':'Skip to content')}
 function setPreferredLanguage(value){captureNotes();const statusKey=saveStatusMessageKey();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';if(statusKey)saveState=t(statusKey);localStorage.setItem('mg-language',lang);const chosen=resolved();if(chosen!=='en'&&chosen!=='zh-TW'){onDeviceTranslator(chosen,{userActivated:true});loadDictionary(chosen).then(()=>applyLanguage())}render()}
 function updateTranslationStatus(status){translationState=status;const indicator=$('#translationStatus');if(!indicator)return;const core=['en','zh-TW'].includes(resolved());indicator.hidden=core;if(core)return;const state=status.state;const label=['translating'].includes(state)?t('translationWorking'):['translated','cached'].includes(state)?t('translationReady'):state==='unavailable'?t('translationUnavailable'):state==='dictionary'?t('translationDictionary'):t('translationPartial');const target=indicator.querySelector?.('[data-translation-label]');if(target){target.replaceChildren();const code=document.createElement('span');code.setAttribute('data-no-translate','');code.textContent=`${resolved()} · `;const text=document.createElement('span');let localized=label;try{const dict=loadedDictionary(resolved());localized=(dict&&lookupDictionary(dict,label))||label}catch{}text.textContent=localized;target.append(code,text);if(status.total&&state!=='dictionary'){const count=document.createElement('span');count.setAttribute('data-no-translate','');count.textContent=` (${status.translated||0}/${status.total})`;target.append(count)}}indicator.classList?.toggle('is-info',state==='dictionary');const retry=indicator.querySelector?.('button');if(retry)retry.hidden=state==='dictionary'}
-function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>localeController?.apply(document.body)}{let label=t('retry');try{const dict=loadedDictionary(resolved());label=(dict&&lookupDictionary(dict,label))||label}catch{}$('#retryTranslation').textContent=label;}if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),getTranslationAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),translateBatch:value=>tutorPanel?.translationReady?.()?tutorPanel.translate(value):null,onStatus:updateTranslationStatus,onDictionary:language=>{if(language===resolved())applyLanguage()}});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return localeController.apply(document.body)}
+const publicTranslationPage=()=>!user&&['home','catalog','project','scene','workshop','sources'].includes(currentPage);
+function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>{if(publicTranslationPage()&&cloudTranslationConfigured()&&!cloudTranslationAllowed()){const message=isZh()?'將本頁可見的公開教材文字傳給已設定的 Cloudflare 與 AI 供應商，以翻譯至你的語言？本次瀏覽分頁有效。':'Send visible public learning text to the configured Cloudflare and AI services for translation in this tab?';if(!window.confirm(message))return;allowCloudTranslation()}applyLanguage()}}{let label=t('retry');try{const dict=loadedDictionary(resolved());label=(dict&&lookupDictionary(dict,label))||label}catch{}$('#retryTranslation').textContent=publicTranslationPage()&&cloudTranslationConfigured()&&!cloudTranslationAllowed()?(isZh()?'開啟雲端翻譯':'Enable cloud translation'):label;}if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),getTranslationAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),translateBatch:value=>tutorPanel?.translationReady?.()?tutorPanel.translate(value):null,getCloudAllowed:publicTranslationPage,onStatus:updateTranslationStatus,onDictionary:language=>{if(language===resolved())applyLanguage()}});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return localeController.apply(publicTranslationPage()&&cloudTranslationAllowed()?$('#main'):document.body)}
 
 function bind(){if(currentPage==='scene')bindScene();if(currentPage==='learning-map')learningMapController=mountLearningMap($('#main'),{catalog,featured,language:resolved(),onRendered:()=>applyLanguage()});if(currentPage==='catalog'){$$('[data-environment-path]').forEach(b=>b.onclick=()=>{subdiscipline=b.dataset.environmentPath;pageIndex=0;render();focusSection('#explorerCatalog')});const search=$('#search');search.oninput=()=>{query=search.value;pageIndex=0;const pos=search.selectionStart;render();$('#search').focus();$('#search').setSelectionRange(pos,pos)};$('#categoryFilter').onchange=e=>{filter=e.target.value;subdiscipline='';pageIndex=0;render()};$('#catalogSubdiscipline').onchange=e=>{subdiscipline=e.target.value;pageIndex=0;render()};$('#maturity').onchange=e=>{maturity=e.target.value;pageIndex=0;render()};$$('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;subdiscipline='';pageIndex=0;render()});$('#prevPage').onclick=()=>{pageIndex--;render();focusSection('#explorerCatalog')};$('#nextPage').onclick=()=>{pageIndex++;render();focusSection('#explorerCatalog')};$('#catalogView').onchange=e=>{catalogView=e.target.value==='cards'?'cards':'list';render()};$('#catalogPageForm').onsubmit=e=>{e.preventDefault();const page=Number($('#catalogPage').value),pages=Math.max(1,Math.ceil(filteredCatalog().length/24));if(!Number.isInteger(page)||page<1||page>pages)return;pageIndex=page-1;render();focusSection('#search')}}
 if(currentPage==='project'){const b=$('#beginCourse');if(b)b.onclick=async()=>{activeId=b.dataset.id;const enteringId=activeId,enteringOwner=accountGeneration,enteringRoute=location.hash;await hydrateServerLearning(course());if(activeId!==enteringId||accountGeneration!==enteringOwner||location.hash!==enteringRoute)return;activeStep=unlocked(course());navStage=-1;navQuery='';localStorage.setItem('mg-active',activeId);location.hash='scene/'+activeId};const s=$('#saveResearch');if(s){s.onclick=async()=>{record(s.dataset.id).notes=$('#researchNotes').value;await save(s.dataset.id);toast(saveState)};$('#researchNotes').dataset.owner=user?.id||'guest';$('#researchNotes').dataset.savedValue=$('#researchNotes').value;$('#researchNotes').oninput=()=>captureNotes(false);$('#researchNotes').onchange=()=>save(s.dataset.id)}const project=catalog.find(c=>c.id===shownProjectId);if(project&&!project.stages)bindResearchPlan(document.querySelector('[data-research-plan]'),project,{en:!isZh(),profileId:user?.id||'guest'})}
@@ -9008,7 +9162,7 @@ if(currentPage==='map'){bindAtlasContent();$('#atlasQuery').oninput=e=>{atlasQue
 if(currentPage==='sources'){$$('[data-source-tab]').forEach(b=>b.onclick=()=>{sourceTab=b.dataset.sourceTab;sourceFilters.page=0;render()});$('#sourceQuery').oninput=event=>{sourceFilters.query=event.target.value;sourceFilters.page=0;const position=event.target.selectionStart;render();$('#sourceQuery').focus();$('#sourceQuery').setSelectionRange(position,position)};for(const [selector,key]of [['#sourceCategory','category'],['#sourceSubcategory','subcategory'],['#sourceCourse','courseId']])$(selector).onchange=event=>{sourceFilters[key]=event.target.value;sourceFilters.page=0;if(key==='category'){sourceFilters.subcategory='';sourceFilters.courseId=''}if(key==='subcategory')sourceFilters.courseId='';render()};$('#sourcePrevious').onclick=()=>{sourceFilters.page=Math.max(0,sourceFilters.page-1);render();focusSection('#sourceQuery')};$('#sourceNext').onclick=()=>{sourceFilters.page++;render();focusSection('#sourceQuery')}}$$('[data-open-tutor]').forEach(button=>button.onclick=()=>openTutor());$$('[data-catalog-route]').forEach(link=>link.onclick=()=>{lastCatalogRoute='';if(location.hash==='#catalog/'+link.dataset.catalogRoute)render()});$$('[data-download-catalog]').forEach(button=>button.onclick=()=>download('MacGyver_Catalog_'+catalog.length+'_zh_en.csv',catalogCsv(),'text/csv;charset=utf-8'));bindLearningMedia(document,()=>applyLanguage());bindCoursePlaces({zh:isZh(),language:resolved(),onRendered:()=>applyLanguage()})}
 function captureNotes(sync=true){const node=$('#notes')||$('#researchNotes');if(!node||node.dataset.owner&&node.dataset.owner!==(user?.id||'guest'))return;const id=node.dataset.projectId||((node.id==='notes')?activeId:shownProjectId);if(!id)return;const dirtyKey=stateKey()+':'+id;if(node.dataset.savedValue!==node.value){node.dataset.savedValue=node.value;const p=record(id);if(p.notes!==node.value){p.notes=node.value;p.updatedAt=Date.now();dirtyNotes.add(dirtyKey);try{persistDeviceProgress(id)}catch{}}}if(sync&&dirtyNotes.has(dirtyKey)){dirtyNotes.delete(dirtyKey);save(id)}}
 function tutorContext(c,s){const task=exerciseContext(c,s),related=relatedForCourse(c);return {relatedLearning:related.curated?related.related.slice(0,3).map(item=>Object.fromEntries(['title','transfer','difference'].map(key=>[key,String(txt(item,key)).slice(0,500)]))):[],exercise:{mode:task.spec.mode,object:exerciseText(task.spec.object),instruction:exerciseText(task.spec.instruction),evidence:exerciseText(task.spec.evidence),provenance:task.spec.provenance,controls:task.spec.controls.map(control=>({id:control.id,label:exerciseText(control.label),unit:control.unit,value:task.exercise.values[control.id]})),choice:task.exercise.choice,observed:task.exercise.observed,performed:task.exercise.performed,readout:exerciseText(task.result.readout)},project:txt(c),stage:txt(s.stage),step:txt(s),objective:txt(s,'objective'),instruction:txt(s,'instruction'),observation:txt(s,'observation'),failure:txt(s,'failure'),knowledge:(s.knowledge||[]).map(k=>({title:txt(k),text:txt(k,'text')})),check:txt(s,'check'),sources:stepSourceIds(c,s).map(id=>sources.find(x=>x.id===id)).filter(Boolean).slice(0,8).map(source=>({id:source.id,title:txt(source),url:source.url,scope:typeof source.scope==='object'?txt(source.scope):txt(source,'scope')}))}}
-function currentTutorContext(){const c=['project','scene'].includes(currentPage)?catalog.find(c=>c.id===shownProjectId):course();if(!c)return {};if(currentPage==='workshop'&&!c.locked&&!c._lazy){const s=allSteps(c)[activeStep];if(s&&!stepLocked(c,s))return {...tutorContext(c,s),projectId:c.id,stepId:s.id}}return {projectId:c.id,project:txt(c),summary:txt(c,'summary'),scope:txt(c,'scope'),sources:(c.sourceIds||[]).map(id=>sources.find(s=>s.id===id)).filter(Boolean).slice(0,8).map(s=>({id:s.id,title:txt(s),url:s.url}))}}
+function currentTutorContext(){const c=['project','scene'].includes(currentPage)?catalog.find(c=>c.id===shownProjectId):course();if(!c)return {};if(currentPage==='workshop'&&!c.locked&&!c._lazy){const s=allSteps(c)[activeStep];if(s&&!stepLocked(c,s))return {...tutorContext(c,s),projectId:c.id,domain:c.category,stepId:s.id}}return {projectId:c.id,domain:c.category,project:txt(c),summary:txt(c,'summary'),scope:txt(c,'scope'),sources:(c.sourceIds||[]).map(id=>sources.find(s=>s.id===id)).filter(Boolean).slice(0,8).map(s=>({id:s.id,title:txt(s),url:s.url}))}}
 function openTutor(question=''){if(!tutorPanel)tutorPanel=createTutorPanel({getLanguage:resolved,getContext:currentTutorContext,getOwner:()=>user?.id||'guest',getHostedAvailable:()=>aiAvailable,getHostedRoutes:()=>aiRoutes,onOpen:()=>{deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()}});tutorPanel.open(question)}
 async function askTutor(question){if(!String(question||'').trim())return;openTutor(question);await tutorPanel.ask(question);}
 

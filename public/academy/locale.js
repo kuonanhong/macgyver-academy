@@ -1,3 +1,4 @@
+import { cloudTranslationAllowed, translatePublicText } from './mentor-cloud-v23.js';
 /** Whole-interface, opt-in machine translation with a bounded offline cache.
  * App renders its canonical English (or core Traditional Chinese) first, calls
  * invalidate() before rendering, and calls apply() after rendering / opening a
@@ -163,7 +164,7 @@ export async function onDeviceTranslator(language, {source = 'en', userActivated
     return translators.get(key);
   } catch { return null; }
 }
-export function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, onStatus = () => {}, onDictionary = () => {} } = {}) {
+export function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, getCloudAllowed = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
   const attributeSources = new WeakMap();
   const cache = new Map();
@@ -322,7 +323,8 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
       if(!missing.length)return report('translated');
     }
     if (cancelled()) return {...latestStatus,state:'cancelled'};
-    if (!getTranslationAvailable()) {
+    const cloudAllowed = () => getCloudAllowed() && cloudTranslationAllowed();
+    if (!getTranslationAvailable() && !cloudAllowed()) {
       failed=missing.length;
       return report(translations.size?'partial':'unavailable','Only the available dictionary/cache text has been translated. Remaining course text needs a loaded local model, supported browser translator, or configured translation service. Machine translation requires review.');
     }
@@ -344,6 +346,7 @@ export function createLocaleController({ getLanguage = () => 'en', getAIAvailabl
         requests++;
         let result;
         if(typeof translateBatch==='function')result=await translateBatch({language,texts:batch,signal:controller.signal});
+        if(result==null && cloudAllowed())result=await translatePublicText({language,texts:batch,signal:controller.signal});
         // The app's optional local-model adapter returns null when no model is
         // loaded. A configured server translator must still remain reachable.
         if(result==null) {

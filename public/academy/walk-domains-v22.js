@@ -114,10 +114,10 @@ export const DOMAIN_PROFILES_V22 = Object.freeze({
   space: profile('cleanroom','#aba5e9',38,40,[
     station('bench','任務與服務工作台','Mission and service workbench',-11,12),
     station('dish','軌道與覆蓋示意台','Orbit and coverage demonstrator',11,12),
-    station('instrument','航天載荷與平台','Spacecraft payload and bus',11,1),
+    station('satellite','衛星載荷與平台','Spacecraft payload and bus',11,1),
     station('dish','星地通訊介面','Space-to-ground communication',-11,0),
     station('rack','時間與控制系統','Timing and control systems',-11,-11),
-    station('instrument','任務效能驗證','Mission performance validation',11,-12)
+    station('vacuum','太空環境與效能驗證','Space environment and performance validation',11,-12)
   ]),
   manufacturing: profile('factory','#eebf6c',38,40,[
     station('bench','製程與工件工作台','Process and workpiece bench',-11,12),
@@ -169,6 +169,27 @@ export const DOMAIN_PROFILES_V22 = Object.freeze({
   ])
 });
 
+const spaceEquipment = {
+  1: ['bench','rack','satellite','bench','dish','rack'],
+  2: ['rack','dish','satellite','rack','dish','instrument'],
+  3: ['bench','rocket','tank','rocket','instrument','rack'],
+  4: ['bench','satellite','robot','crane','instrument','vacuum'],
+  5: ['bench','satellite','vacuum','rack','tank','instrument'],
+  6: ['rack','instrument','satellite','robot','rack','vacuum'],
+  7: ['rack','dish','satellite','dish','instrument','rack'],
+  8: ['bench','instrument','satellite','rack','vacuum','dish'],
+  9: ['bench','crane','satellite','vacuum','instrument','rack'],
+  10: ['bench','rocket','robot','satellite','dish','vacuum'],
+};
+const spaceEquipmentNames = {
+  bench: ['系統工程台','Systems workbench'], rack: ['任務控制與資料機櫃','Mission control and data rack'],
+  satellite: ['衛星平台與展開式太陽能板','Spacecraft bus and deployable solar arrays'],
+  dish: ['地面站天線與饋源','Ground-station antenna and feed'], instrument: ['量測與校準台','Measurement and calibration bench'],
+  vacuum: ['熱真空驗證艙','Thermal vacuum chamber'], rocket: ['推進與分離示意台','Propulsion and separation demonstrator'],
+  tank: ['流體與熱控示意槽','Fluid and thermal-control model'], robot: ['整合與載荷操作機械臂','Integration and payload handling robot'],
+  crane: ['衛星搬運與吊裝平台','Spacecraft handling and lift fixture'],
+};
+
 /** Accept only bundled relative image paths. Blob/remote imports belong to their
  * existing dedicated viewer and must not initiate requests in this module. */
 export function safePhotoPath(value) {
@@ -190,14 +211,21 @@ export function buildWorldConfig(scene, assets = [], language = 'en') {
   const chapters = Array.isArray(scene.chapters) ? scene.chapters : [];
   if (!chapters.length || chapters.length > source.stations.length) throw new RangeError('A journey needs one to six chapters.');
   const assetList = Array.isArray(assets) ? assets : [];
+  const spaceModule = scene.category === 'space' && Number.isInteger(scene.spaceModule) ? scene.spaceModule : 0;
+  const moduleEquipment = spaceEquipment[spaceModule];
   const byId = new Map(assetList.filter(a => a && typeof a.id === 'string').map(a => [a.id,a]));
   const routePhotos = (Array.isArray(scene.assetIds) ? scene.assetIds : []).map(id => byId.get(id)).filter(usablePhoto);
   const stations = chapters.map((chapter, chapterIndex) => {
     const base = source.stations[chapterIndex];
+    const kind = moduleEquipment?.[chapterIndex] || base.kind;
+    const names = moduleEquipment ? spaceEquipmentNames[kind] : null;
     const exactPhoto = byId.get(chapter.assetId);
     const photo = usablePhoto(exactPhoto) ? exactPhoto : routePhotos[chapterIndex % Math.max(1,routePhotos.length)];
     return {
       ...base,
+      kind,
+      equipmentTitle: names?.[0] || base.equipmentTitle,
+      equipmentTitleEn: names?.[1] || base.equipmentTitleEn,
       id: String(chapter.id || scene.id + '-chapter-' + (chapterIndex + 1)),
       chapterIndex,
       title: String(chapter.title || chapter.titleEn || ''),
@@ -205,7 +233,7 @@ export function buildWorldConfig(scene, assets = [], language = 'en') {
       // The process label is authoritative; the machinery is representative.
       photoSrc: photo ? safePhotoPath(photo.src || photo.path) : '',
       photoAssetId: photo?.id || '',
-      photoMatch: photo === exactPhoto ? 'chapter-reference' : photo ? 'journey-reference' : 'none',
+      photoMatch: photo ? (photo === exactPhoto ? 'chapter-reference' : 'journey-reference') : 'none',
       photoCredit: photo ? {title:photo.title || '',titleEn:photo.titleEn || '',author:photo.author || '',license:photo.license || '',sourceUrl:photo.sourceUrl || '',licenseUrl:photo.licenseUrl || ''} : null,
       approach: {x:base.x - Math.sign(base.x)*2.9,z:base.z}
     };
@@ -217,7 +245,7 @@ export function buildWorldConfig(scene, assets = [], language = 'en') {
     titleEn:String(scene.titleEn || scene.title || ''),
     language,
     color:source.color,
-    layout:source.layout,
+    layout:spaceModule === 3 || spaceModule === 10 ? 'hangar' : source.layout,
     bounds:{...source.bounds},
     stations,
     scope:'illustrative-engineering-world-with-credited-photo-references'

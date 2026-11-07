@@ -9,6 +9,11 @@
 window.MG_CONFIG = Object.assign({
   videoPlayerUrl: 'https://macgyver-public-player.kuonanhong.chatgpt.site/video-player.html',
   googleMapsEmbedKey: '',
+  // Public Worker HTTPS origin. Set with bash Configure_MacGyver_Cloud_v23.sh.
+  // Provider credentials are Cloudflare secrets and never belong in this file.
+  mentorWorkerUrl: '',
+  mentorCloudTranslation: false,
+  mentorLineUrl: '',
   // Optional cloud accounts: use only publishable / anon key after applying supabase SQL.
   siteMode: 'auto',
   supabaseUrl: '',

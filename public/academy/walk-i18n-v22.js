@@ -6,7 +6,7 @@ import { resolveSupportedLanguage } from './locale.js';
 
 export const SUPPORTED_LANGUAGES_V22 = Object.freeze('zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo'.split(' '));
 
-export const UI_KEYS_V22 = Object.freeze('enter domains search role follow first overview interact approach guide task close next evidence choose complete saved exportRecord importRecord help fullscreen photos mentor move look zoom record journey home loading webglFallback modelScope language resetPosition pause resume narrate previous source machineTranslation untranslated controls objective notes saveNote'.split(' '));
+export const UI_KEYS_V22 = Object.freeze('enter domains search role follow first overview interact approach guide task close next evidence choose complete saved exportRecord importRecord help fullscreen photos mentor move look zoom record journey home loading webglFallback modelScope language resetPosition pause resume narrate previous source machineTranslation untranslated controls objective notes saveNote shoulder recenter hideHud showHud'.split(' '));
 
 // One ordered row per language keeps every locale's contract identical.
 const rows = {
@@ -132,7 +132,31 @@ const rows = {
   ],
 };
 
-export const UI_LANGUAGES_V22 = Object.freeze(Object.fromEntries(Object.entries(rows).map(([lang, values]) => {
+const cameraControls = {
+  'zh-TW': ['肩後視角', '鏡頭回正', '收合工具', '顯示工具'],
+  en: ['Over the shoulder', 'Recenter camera', 'Hide controls', 'Show controls'],
+  'zh-CN': ['肩后视角', '镜头回正', '隐藏工具', '显示工具'],
+  ja: ['肩越し視点', 'カメラを正面に戻す', '操作パネルを隠す', '操作パネルを表示'],
+  ko: ['어깨너머 시점', '카메라 중앙 정렬', '조작 도구 숨기기', '조작 도구 표시'],
+  es: ['Vista sobre el hombro', 'Recentrar cámara', 'Ocultar controles', 'Mostrar controles'],
+  fr: ['Vue par-dessus l’épaule', 'Recentrer la caméra', 'Masquer les commandes', 'Afficher les commandes'],
+  de: ['Schulterperspektive', 'Kamera zentrieren', 'Steuerung ausblenden', 'Steuerung einblenden'],
+  pt: ['Vista por cima do ombro', 'Recentrar a câmara', 'Ocultar controlos', 'Mostrar controlos'],
+  it: ['Visuale da dietro la spalla', 'Ricentra la telecamera', 'Nascondi i comandi', 'Mostra i comandi'],
+  ar: ['منظور فوق الكتف', 'إعادة توسيط الكاميرا', 'إخفاء عناصر التحكم', 'إظهار عناصر التحكم'],
+  hi: ['कंधे के ऊपर से दृश्य', 'कैमरा केंद्रित करें', 'नियंत्रण छिपाएँ', 'नियंत्रण दिखाएँ'],
+  vi: ['Góc nhìn qua vai', 'Đưa máy quay về giữa', 'Ẩn điều khiển', 'Hiện điều khiển'],
+  id: ['Tampilan dari balik bahu', 'Pusatkan kamera', 'Sembunyikan kontrol', 'Tampilkan kontrol'],
+  th: ['มุมมองข้ามไหล่', 'จัดกล้องให้อยู่กึ่งกลาง', 'ซ่อนตัวควบคุม', 'แสดงตัวควบคุม'],
+  tr: ['Omuz üstü görünüm', 'Kamerayı ortala', 'Kontrolleri gizle', 'Kontrolleri göster'],
+  ru: ['Вид из-за плеча', 'Центрировать камеру', 'Скрыть управление', 'Показать управление'],
+  uk: ['Вид з-за плеча', 'Відцентрувати камеру', 'Приховати керування', 'Показати керування'],
+  pl: ['Widok znad ramienia', 'Wyśrodkuj kamerę', 'Ukryj sterowanie', 'Pokaż sterowanie'],
+  nl: ['Over de schouder', 'Camera centreren', 'Bediening verbergen', 'Bediening tonen'],
+};
+
+export const UI_LANGUAGES_V22 = Object.freeze(Object.fromEntries(Object.entries(rows).map(([lang, row]) => {
+  const values = [...row, ...cameraControls[lang]];
   if (values.length !== UI_KEYS_V22.length) throw new Error(`Incomplete V22 HUD dictionary: ${lang}`);
   return [lang, Object.freeze(Object.fromEntries(UI_KEYS_V22.map((key, i) => [key, values[i]])))];
 })));

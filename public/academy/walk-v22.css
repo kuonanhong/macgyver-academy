@@ -8,3 +8,43 @@
 #footbar{margin:0;padding:0;border:0;max-width:none}body{max-width:none;padding:0}#movement{pointer-events:auto}
 
 body.task-open #walk-world{pointer-events:none}
+
+/* Full-screen field navigation, shared by the 3D and Canvas renderers. */
+.walk-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#direction-button{position:absolute;left:50%;bottom:calc(56px + env(safe-area-inset-bottom));transform:translateX(-50%);border:1px solid #e5c78588;background:#102631ed;color:#f8dda1;min-width:105px;padding:9px 14px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;box-shadow:0 6px 22px #0b1d2d55}
+#direction-button.guiding{border-color:#f8dda1;box-shadow:0 0 0 3px #f8dda142}
+#direction-button:hover{background:#233d45}
+#direction-arrow{display:inline-block;line-height:1;transform-origin:center}
+#viewbar button{white-space:nowrap}
+#camera-center{font-size:19px!important;padding-inline:10px!important}
+#minimap.collapsed{width:auto}
+#minimap .map-caption{align-items:center;gap:12px}
+#minimap .map-caption button{min-width:27px;min-height:26px;border:1px solid var(--line);border-radius:6px}
+#restore-hud{bottom:calc(18px + env(safe-area-inset-bottom));right:calc(18px + env(safe-area-inset-right))}
+.walk-station-label{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;color:#edf7f4;background:#102c38ed;border:1px solid #a1cab66b;border-radius:9px;padding:7px 11px;max-width:210px;min-height:36px;font:600 11px/1.4 system-ui;text-align:left;box-shadow:0 4px 15px #07121b44;white-space:normal}
+.walk-station-label.station-done{border-color:#90e5ae}
+.walk-station-label.station-target{border-color:#e8c480;background:#18313a;color:#ffe4ac}
+.walk-station-label.station-near{border-color:var(--lime);color:#143325;background:var(--lime)}
+.catalog-pagination{display:flex;justify-content:center;align-items:center;gap:14px;margin:14px 0 4px}
+body.task-open #movement,body.task-open #direction-button,body.task-open #near-prompt{visibility:hidden}
+@media(max-width:900px){
+  #topbar{padding-top:calc(15px + env(safe-area-inset-top))}
+  #viewbar{top:calc(115px + env(safe-area-inset-top))}
+}
+@media(max-width:600px){
+  #topbar{padding-top:calc(10px + env(safe-area-inset-top))}
+  #objective,#viewbar{top:calc(121px + env(safe-area-inset-top))}
+  #objective{max-width:calc(100vw - 143px)}
+  #objective.collapsed{max-width:calc(100vw - 143px)}
+  #viewbar{max-width:132px}
+  #viewbar button{min-height:37px;white-space:normal}
+  #near-prompt{bottom:calc(139px + env(safe-area-inset-bottom));max-width:60vw}
+  #minimap{bottom:calc(105px + env(safe-area-inset-bottom))}
+  #direction-button{bottom:calc(62px + env(safe-area-inset-bottom))}
+}
+@media(max-height:500px) and (orientation:landscape){
+  #viewbar{top:calc(94px + env(safe-area-inset-top))}
+  #objective{top:calc(94px + env(safe-area-inset-top))}
+  #near-prompt{bottom:calc(76px + env(safe-area-inset-bottom))}
+  #direction-button{bottom:calc(19px + env(safe-area-inset-bottom))}
+}
