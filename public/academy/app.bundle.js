@@ -8,7 +8,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;
  const tiles=[['space','太空與衛星','Space & satellites'],['semiconductor','半導體製造','Semiconductor'],['automotive','汽車與交通工具','Automotive'],['aerospace','航空工程','Aerospace'],['marine','船舶與海洋','Marine']];
- return `<section class="campaign-entry-v20 experience-entry-v21" aria-labelledby="experienceEntryTitle"><div class="campaign-entry-copy"><span class="campaign-kicker">ENGINEERING WORLDS / V25</span><h1 id="experienceEntryTitle">${t('走進工程現場。<br>讓故事帶你動手。','Step inside engineering.<br>Follow the story.')}</h1><p>${t('走進連續工程空間，用鍵盤或觸控搖桿移動人物，讓鏡頭跟隨你走近設備。從不同專業角色出發，操作製程站、查閱實拍證據，再回到完整課程。','Walk continuously through engineering facilities with a camera that follows your character. Approach equipment, inspect credited photographic evidence, and explore the process from different professional roles.')}</p><div class="campaign-entry-actions"><a class="button" href="experience.html?domain=space">${t('走進太空任務中心','Walk into the space mission center')} ↗</a><a class="button light" href="experience.html">${t('探索 20 個領域','Explore 20 disciplines')} ↗</a><a class="button light" href="#catalog/domain/space">${t('太空與衛星逐步課程','Guided space and satellite courses')}</a><a class="button light" href="space-lab-v23.html">${t('太空工程試算室','Space engineering lab')}</a></div><div class="campaign-entry-flow"><span>01 ${t('行走','Walk')}</span><span>02 ${t('選擇角色','Choose a role')}</span><span>03 ${t('動手驗證','Test an idea')}</span><span>04 ${t('完成旅程','Complete the journey')}</span></div></div><div class="campaign-entry-visual"><img src="assets/photos/webb.jpg" alt="${t('韋伯太空望遠鏡完整光學組件，NASA 實拍','Completed Webb optical telescope element, NASA photograph')}"><span class="campaign-image-credit">${t('實拍參考','Real photographic reference')} · <a href="https://science.nasa.gov/asset/webb/completed-optical-telescope-element/" target="_blank" rel="noopener">NASA / Desiree Stover</a></span><a class="campaign-live-badge" href="experience.html?domain=space">⛶ ${t('全畫面探索','FULL-WINDOW EXPLORER')}</a></div><div class="campaign-entry-tiles">${tiles.map(([id,cn,en],i)=>`<a href="experience.html?domain=${id}"><small>0${i+1}</small><strong>${esc(t(cn,en))}</strong><span>↗</span></a>`).join('')}</div></section><p class="experience-legacy-link"><a href="campaign.html">${t('開啟 V20 工程決策遊戲','Open V20 engineering decision games')} ↗</a></p>`;
+ return `<section class="campaign-entry-v20 experience-entry-v21" aria-labelledby="experienceEntryTitle"><div class="campaign-entry-copy"><span class="campaign-kicker">ENGINEERING WORLDS / V26</span><h1 id="experienceEntryTitle">${t('走進工程現場。<br>讓故事帶你動手。','Step inside engineering.<br>Follow the story.')}</h1><p>${t('走進連續工程空間，用鍵盤或觸控搖桿移動人物，讓鏡頭跟隨你走近設備。從不同專業角色出發，操作製程站、查閱實拍證據，再回到完整課程。','Walk continuously through engineering facilities with a camera that follows your character. Approach equipment, inspect credited photographic evidence, and explore the process from different professional roles.')}</p><div class="campaign-entry-actions"><a class="button" href="experience.html?domain=computing&scene=xp-hpc-v26">${t('走進 HPC 叢集實驗室','Enter the HPC cluster laboratory')} ↗</a><a class="button light" href="experience.html">${t('探索 20 個領域','Explore 20 disciplines')} ↗</a><a class="button light" href="experience.html?domain=computing&scene=xp-security-v26">${t('進入防禦資安 SOC','Enter the defensive SOC')}</a><a class="button light" href="curriculum-v26.html">${t('200 門新逐步課程','200 new guided courses')}</a></div><div class="campaign-entry-flow"><span>01 ${t('行走','Walk')}</span><span>02 ${t('選擇角色','Choose a role')}</span><span>03 ${t('動手驗證','Test an idea')}</span><span>04 ${t('完成旅程','Complete the journey')}</span></div></div><div class="campaign-entry-visual"><img src="assets/photos/v3-network-switches.jpg" alt="${t('網路交換器與雙絞線實拍；代表性工程參考','Real network switches and twisted-pair cabling; representative engineering reference')}"><span class="campaign-image-credit">${t('實拍參考','Real photographic reference')} · <a href="https://commons.wikimedia.org/wiki/File:Network_switches.jpg" target="_blank" rel="noopener">ShakataGaNai · CC BY-SA 3.0</a></span><a class="campaign-live-badge" href="experience.html?domain=computing&scene=xp-hpc-v26">⛶ ${t('全畫面探索','FULL-WINDOW EXPLORER')}</a></div><div class="campaign-entry-tiles">${tiles.map(([id,cn,en],i)=>`<a href="experience.html?domain=${id}"><small>0${i+1}</small><strong>${esc(t(cn,en))}</strong><span>↗</span></a>`).join('')}</div></section><p class="experience-legacy-link"><a href="campaign.html">${t('開啟 V20 工程決策遊戲','Open V20 engineering decision games')} ↗</a></p>`;
 }
 function spaceModel(course) {
  const id=course.id;
@@ -2768,8 +2768,8 @@ const LEARNING_TRACKS = [
   {id:'underground',icon:'bridge',title:pair('隧道與地下工程','Tunnels & underground engineering'),description:pair('100門課程串接世界隧道、地質調查、潛盾、支護、地下水與地盤改良。','100 courses connect landmark tunnels, investigation, TBMs, support, groundwater and ground improvement.'),boundary:pair('從公開原理與教學算例學習；施工參數必須依實測地層與審查另定。','Learn from public principles and teaching examples; field parameters require measured ground data and review.')},
   {id:'quantum', icon:'quantum', title:pair('量子電腦與 QPU','Quantum computers & QPUs'), description:pair('新增 100 門深入逐步課程，串接量子元件、控制、讀出、錯誤更正、演算法與驗證。','100 new detailed courses connect quantum devices, control, readout, error correction, algorithms and verification.'), boundary:pair('共同點是量子態準備、控制與量測；低溫、雷射、光損耗及錯誤模型各不相同。','State preparation, control and measurement are shared; cryogenics, lasers, optical loss and error models differ.')},
   {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('新增 100 門深入逐步課程，從著名神經架構一路到加速器、記憶體、編譯、訓練與推論驗收。','100 new detailed courses connect landmark neural architectures to accelerators, memory, compilation, training and inference acceptance.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
-  {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('處理器、儲存、叢集、機房與科學運算的系統觀。','A systems view of processors, storage, clusters, facilities and scientific computing.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
-  {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('身分、信任、分段、證據、監測與復原。','Identity, trust, segmentation, evidence, monitoring and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
+  {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('新增 100 門深入課程，串接經典超級電腦、加速器、科學核心、互連、儲存、排程與韌性。','100 new detailed courses connect landmark supercomputers, accelerators, scientific kernels, interconnects, storage, scheduling and resilience.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
+  {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('新增 100 門深入課程，串接身分、密碼協定、防禦監測、安全開發、雲端治理、應變與復原。','100 new detailed courses connect identity, cryptographic protocols, defensive monitoring, secure development, cloud governance, response and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
   {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('封包、光纖、無線、衛星與量子通訊介面。','Packet, fiber, wireless, satellite and quantum-communication interfaces.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
   {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('作業系統、編譯器、資料庫、建置與可信交付。','Operating systems, compilers, databases, builds and trustworthy delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
   {id:'energy', icon:'energy', title:pair('核能、再生能源與儲能','Nuclear, renewable energy & storage'), description:pair('核電、SMR、核融合、風力、水力、地熱與儲能。','Nuclear plants, SMRs, fusion, wind, hydro, geothermal and storage.'), boundary:pair('比較能量轉換、熱流、機電介面與監測；裂變、融合與再生能源的物理及驗證條件不同。','Compare conversion, heat flow, electromechanical interfaces and monitoring; fission, fusion and renewables have different physics and validation conditions.')},
@@ -2789,6 +2789,50 @@ const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 const LEARNING_SUBDISCIPLINES = [
+  // V27 SUBDISCIPLINES START
+  subdivision("hpc-v27-01","servers","著名超算的拓撲與工作交接驗收","Topology and workflow acceptance at landmark supercomputers",/hpc-v27-01/i),
+  subdivision("hpc-v27-02","servers","記憶體政策、配置粒度與 RAS 證據","Memory policy, allocation granularity and RAS evidence",/hpc-v27-02/i),
+  subdivision("hpc-v27-03","servers","互連壅塞、計數器與活性契約","Interconnect congestion, counters and liveness contracts",/hpc-v27-03/i),
+  subdivision("hpc-v27-04","servers","儲存位址、版本可見性與完整性","Storage addressing, version visibility and integrity",/hpc-v27-04/i),
+  subdivision("hpc-v27-05","servers","超算機房的熱、電力與控制韌性","Thermal, power and control resilience for HPC facilities",/hpc-v27-05/i),
+  subdivision("hpc-v27-06","servers","分子、電子結構與粒子科學計算","Molecular, electronic-structure and particle computing",/hpc-v27-06/i),
+  subdivision("hpc-v27-07","servers","地球、流體與離散物理驗證","Earth, fluid and discrete-physics verification",/hpc-v27-07/i),
+  subdivision("hpc-v27-08","servers","數值求解器的可靠性與證明","Numerical solver reliability and certification",/hpc-v27-08/i),
+  subdivision("hpc-v27-09","servers","科學工作流與資料契約","Scientific workflows and data contracts",/hpc-v27-09/i),
+  subdivision("hpc-v27-10","servers","量測方法與科學成果驗收","Measurement and time-to-science acceptance",/hpc-v27-10/i),
+  subdivision("security-v27-01","cyber","工作負載身分與聯邦信任驗證","Workload identity and federation verification",/security-v27-01/i),
+  subdivision("security-v27-02","cyber","密碼協定、時間與量測證據","Cryptographic protocols, time and attestation evidence",/security-v27-02/i),
+  subdivision("security-v27-03","cyber","授權語意、相依與一致性","Authorization semantics, dependencies and consistency",/security-v27-03/i),
+  subdivision("security-v27-04","cyber","軟體來源證明與透明度","Software provenance and transparency",/security-v27-04/i),
+  subdivision("security-v27-05","cyber","可重現建置與產物准入","Reproducible builds and artifact admission",/security-v27-05/i),
+  subdivision("security-v27-06","cyber","遙測管線、完整性與資料契約","Telemetry pipelines, integrity and data contracts",/security-v27-06/i),
+  subdivision("security-v27-07","cyber","偵測評估、遺失診斷與告警治理","Detection evaluation, loss diagnosis and alert governance",/security-v27-07/i),
+  subdivision("security-v27-08","cyber","鑑識時間線、證據來源與可重現分析","Forensic timelines, provenance and reproducible analysis",/security-v27-08/i),
+  subdivision("security-v27-09","cyber","多租戶、復原相依與可用性邊界","Multitenancy, recovery dependencies and availability boundaries",/security-v27-09/i),
+  subdivision("security-v27-10","cyber","事件演練、服務恢復與可驗證交接","Incident exercises, service recovery and verifiable handoffs",/security-v27-10/i),
+  // V27 SUBDISCIPLINES END
+  // V26 SUBDISCIPLINES START
+  subdivision("hpc-v26-01","servers","經典超級電腦與計算架構","Landmark supercomputers and compute architecture",/hpc-v26-01/i),
+  subdivision("hpc-v26-02","servers","Exascale 節點、SIMD 與資料放置","Exascale nodes,SIMD and placement",/hpc-v26-02/i),
+  subdivision("hpc-v26-03","servers","異質程式、數值核心與介面","Heterogeneous programs,kernels and interfaces",/hpc-v26-03/i),
+  subdivision("hpc-v26-04","servers","求解器、粒子與科學基準","Solvers,particles and scientific benchmarks",/hpc-v26-04/i),
+  subdivision("hpc-v26-05","servers","擴展、可攜與可重現驗收","Scaling,portability and reproducible acceptance",/hpc-v26-05/i),
+  subdivision("hpc-v26-06","servers","訊息傳遞與高速互連","Message passing and high-speed interconnects",/hpc-v26-06/i),
+  subdivision("hpc-v26-07","servers","平行儲存與科學資料","Parallel storage and scientific data",/hpc-v26-07/i),
+  subdivision("hpc-v26-08","servers","排程與可重現軟體堆疊","Scheduling and reproducible software stacks",/hpc-v26-08/i),
+  subdivision("hpc-v26-09","servers","容錯、遙測與效能證據","Resilience, telemetry and performance evidence",/hpc-v26-09/i),
+  subdivision("hpc-v26-10","servers","能源工程與彈性工作流","Energy engineering and elastic workflows",/hpc-v26-10/i),
+  subdivision("security-v26-01","cyber","身分保證、授權與零信任架構","Identity assurance, authorization and zero-trust architecture",/security-v26-01/i),
+  subdivision("security-v26-02","cyber","憑證、加密通道與網際信任","Certificates, encrypted channels and Internet trust",/security-v26-02/i),
+  subdivision("security-v26-03","cyber","網路邊界與可觀測協定","Network boundaries and observable protocols",/security-v26-03/i),
+  subdivision("security-v26-04","cyber","偵測邏輯與端點證據品質","Detection logic and endpoint evidence quality",/security-v26-04/i),
+  subdivision("security-v26-05","cyber","作業系統隔離與硬體信任根","Operating-system isolation and hardware roots of trust",/security-v26-05/i),
+  subdivision("security-v26-06","cyber","安全軟體生命週期與元件證據","Secure development and component evidence",/security-v26-06/i),
+  subdivision("security-v26-07","cyber","可驗證供應鏈與容器隔離","Verifiable supply chains and container isolation",/security-v26-07/i),
+  subdivision("security-v26-08","cyber","雲端政策、稽核與組態治理","Cloud policy, auditing and configuration governance",/security-v26-08/i),
+  subdivision("security-v26-09","cyber","偵測品質、事件分析與鑑識","Detection quality, incident analysis and forensics",/security-v26-09/i),
+  subdivision("security-v26-10","cyber","證據保全、復原與韌性演練","Evidence preservation, recovery and resilience exercises",/security-v26-10/i),
+  // V26 SUBDISCIPLINES END
   // V25 SUBDISCIPLINES START
   subdivision("quantum-v25-01","quantum","超導能階與量子控制","Superconducting levels and quantum control",/quantum-v25-01/i),
   subdivision("quantum-v25-02","quantum","讀出、耦合與低溫邊界","Readout, coupling and cryogenic boundaries",/quantum-v25-02/i),
@@ -2897,6 +2941,50 @@ const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
+  // V27 ROUTES START
+  {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
+  {"id": "hpc-v27-02", "title": ["記憶體政策、配置粒度與 RAS 證據", "Memory policy, allocation granularity and RAS evidence"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-011", "hpc-v27-012", "hpc-v27-013", "hpc-v27-014", "hpc-v27-015", "hpc-v27-016", "hpc-v27-017", "hpc-v27-018", "hpc-v27-019", "hpc-v27-020"]},
+  {"id": "hpc-v27-03", "title": ["互連壅塞、計數器與活性契約", "Interconnect congestion, counters and liveness contracts"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-021", "hpc-v27-022", "hpc-v27-023", "hpc-v27-024", "hpc-v27-025", "hpc-v27-026", "hpc-v27-027", "hpc-v27-028", "hpc-v27-029", "hpc-v27-030"]},
+  {"id": "hpc-v27-04", "title": ["儲存位址、版本可見性與完整性", "Storage addressing, version visibility and integrity"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-031", "hpc-v27-032", "hpc-v27-033", "hpc-v27-034", "hpc-v27-035", "hpc-v27-036", "hpc-v27-037", "hpc-v27-038", "hpc-v27-039", "hpc-v27-040"]},
+  {"id": "hpc-v27-05", "title": ["超算機房的熱、電力與控制韌性", "Thermal, power and control resilience for HPC facilities"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-041", "hpc-v27-042", "hpc-v27-043", "hpc-v27-044", "hpc-v27-045", "hpc-v27-046", "hpc-v27-047", "hpc-v27-048", "hpc-v27-049", "hpc-v27-050"]},
+  {"id": "hpc-v27-06", "title": ["分子、電子結構與粒子科學計算", "Molecular, electronic-structure and particle computing"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-051", "hpc-v27-052", "hpc-v27-053", "hpc-v27-054", "hpc-v27-055", "hpc-v27-056", "hpc-v27-057", "hpc-v27-058", "hpc-v27-059", "hpc-v27-060"]},
+  {"id": "hpc-v27-07", "title": ["地球、流體與離散物理驗證", "Earth, fluid and discrete-physics verification"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-061", "hpc-v27-062", "hpc-v27-063", "hpc-v27-064", "hpc-v27-065", "hpc-v27-066", "hpc-v27-067", "hpc-v27-068", "hpc-v27-069", "hpc-v27-070"]},
+  {"id": "hpc-v27-08", "title": ["數值求解器的可靠性與證明", "Numerical solver reliability and certification"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-071", "hpc-v27-072", "hpc-v27-073", "hpc-v27-074", "hpc-v27-075", "hpc-v27-076", "hpc-v27-077", "hpc-v27-078", "hpc-v27-079", "hpc-v27-080"]},
+  {"id": "hpc-v27-09", "title": ["科學工作流與資料契約", "Scientific workflows and data contracts"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-081", "hpc-v27-082", "hpc-v27-083", "hpc-v27-084", "hpc-v27-085", "hpc-v27-086", "hpc-v27-087", "hpc-v27-088", "hpc-v27-089", "hpc-v27-090"]},
+  {"id": "hpc-v27-10", "title": ["量測方法與科學成果驗收", "Measurement and time-to-science acceptance"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-091", "hpc-v27-092", "hpc-v27-093", "hpc-v27-094", "hpc-v27-095", "hpc-v27-096", "hpc-v27-097", "hpc-v27-098", "hpc-v27-099", "hpc-v27-100"]},
+  {"id": "security-v27-01", "title": ["工作負載身分與聯邦信任驗證", "Workload identity and federation verification"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-001", "security-v27-002", "security-v27-003", "security-v27-004", "security-v27-005", "security-v27-006", "security-v27-007", "security-v27-008", "security-v27-009", "security-v27-010"]},
+  {"id": "security-v27-02", "title": ["密碼協定、時間與量測證據", "Cryptographic protocols, time and attestation evidence"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-011", "security-v27-012", "security-v27-013", "security-v27-014", "security-v27-015", "security-v27-016", "security-v27-017", "security-v27-018", "security-v27-019", "security-v27-020"]},
+  {"id": "security-v27-03", "title": ["授權語意、相依與一致性", "Authorization semantics, dependencies and consistency"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-021", "security-v27-022", "security-v27-023", "security-v27-024", "security-v27-025", "security-v27-026", "security-v27-027", "security-v27-028", "security-v27-029", "security-v27-030"]},
+  {"id": "security-v27-04", "title": ["軟體來源證明與透明度", "Software provenance and transparency"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-031", "security-v27-032", "security-v27-033", "security-v27-034", "security-v27-035", "security-v27-036", "security-v27-037", "security-v27-038", "security-v27-039", "security-v27-040"]},
+  {"id": "security-v27-05", "title": ["可重現建置與產物准入", "Reproducible builds and artifact admission"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-041", "security-v27-042", "security-v27-043", "security-v27-044", "security-v27-045", "security-v27-046", "security-v27-047", "security-v27-048", "security-v27-049", "security-v27-050"]},
+  {"id": "security-v27-06", "title": ["遙測管線、完整性與資料契約", "Telemetry pipelines, integrity and data contracts"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-051", "security-v27-052", "security-v27-053", "security-v27-054", "security-v27-055", "security-v27-056", "security-v27-057", "security-v27-058", "security-v27-059", "security-v27-060"]},
+  {"id": "security-v27-07", "title": ["偵測評估、遺失診斷與告警治理", "Detection evaluation, loss diagnosis and alert governance"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-061", "security-v27-062", "security-v27-063", "security-v27-064", "security-v27-065", "security-v27-066", "security-v27-067", "security-v27-068", "security-v27-069", "security-v27-070"]},
+  {"id": "security-v27-08", "title": ["鑑識時間線、證據來源與可重現分析", "Forensic timelines, provenance and reproducible analysis"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-071", "security-v27-072", "security-v27-073", "security-v27-074", "security-v27-075", "security-v27-076", "security-v27-077", "security-v27-078", "security-v27-079", "security-v27-080"]},
+  {"id": "security-v27-09", "title": ["多租戶、復原相依與可用性邊界", "Multitenancy, recovery dependencies and availability boundaries"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-081", "security-v27-082", "security-v27-083", "security-v27-084", "security-v27-085", "security-v27-086", "security-v27-087", "security-v27-088", "security-v27-089", "security-v27-090"]},
+  {"id": "security-v27-10", "title": ["事件演練、服務恢復與可驗證交接", "Incident exercises, service recovery and verifiable handoffs"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["security-v27-091", "security-v27-092", "security-v27-093", "security-v27-094", "security-v27-095", "security-v27-096", "security-v27-097", "security-v27-098", "security-v27-099", "security-v27-100"]},
+  // V27 ROUTES END
+  // V26 ROUTES START
+  {"id": "hpc-v26-01", "title": ["經典超級電腦與計算架構", "Landmark supercomputers and compute architecture"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-001", "hpc-v26-002", "hpc-v26-003", "hpc-v26-004", "hpc-v26-005", "hpc-v26-006", "hpc-v26-007", "hpc-v26-008", "hpc-v26-009", "hpc-v26-010"]},
+  {"id": "hpc-v26-02", "title": ["Exascale 節點、SIMD 與資料放置", "Exascale nodes,SIMD and placement"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-011", "hpc-v26-012", "hpc-v26-013", "hpc-v26-014", "hpc-v26-015", "hpc-v26-016", "hpc-v26-017", "hpc-v26-018", "hpc-v26-019", "hpc-v26-020"]},
+  {"id": "hpc-v26-03", "title": ["異質程式、數值核心與介面", "Heterogeneous programs,kernels and interfaces"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-021", "hpc-v26-022", "hpc-v26-023", "hpc-v26-024", "hpc-v26-025", "hpc-v26-026", "hpc-v26-027", "hpc-v26-028", "hpc-v26-029", "hpc-v26-030"]},
+  {"id": "hpc-v26-04", "title": ["求解器、粒子與科學基準", "Solvers,particles and scientific benchmarks"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-031", "hpc-v26-032", "hpc-v26-033", "hpc-v26-034", "hpc-v26-035", "hpc-v26-036", "hpc-v26-037", "hpc-v26-038", "hpc-v26-039", "hpc-v26-040"]},
+  {"id": "hpc-v26-05", "title": ["擴展、可攜與可重現驗收", "Scaling,portability and reproducible acceptance"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-041", "hpc-v26-042", "hpc-v26-043", "hpc-v26-044", "hpc-v26-045", "hpc-v26-046", "hpc-v26-047", "hpc-v26-048", "hpc-v26-049", "hpc-v26-050"]},
+  {"id": "hpc-v26-06", "title": ["訊息傳遞與高速互連", "Message passing and high-speed interconnects"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-051", "hpc-v26-052", "hpc-v26-053", "hpc-v26-054", "hpc-v26-055", "hpc-v26-056", "hpc-v26-057", "hpc-v26-058", "hpc-v26-059", "hpc-v26-060"]},
+  {"id": "hpc-v26-07", "title": ["平行儲存與科學資料", "Parallel storage and scientific data"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-061", "hpc-v26-062", "hpc-v26-063", "hpc-v26-064", "hpc-v26-065", "hpc-v26-066", "hpc-v26-067", "hpc-v26-068", "hpc-v26-069", "hpc-v26-070"]},
+  {"id": "hpc-v26-08", "title": ["排程與可重現軟體堆疊", "Scheduling and reproducible software stacks"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-071", "hpc-v26-072", "hpc-v26-073", "hpc-v26-074", "hpc-v26-075", "hpc-v26-076", "hpc-v26-077", "hpc-v26-078", "hpc-v26-079", "hpc-v26-080"]},
+  {"id": "hpc-v26-09", "title": ["容錯、遙測與效能證據", "Resilience, telemetry and performance evidence"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-081", "hpc-v26-082", "hpc-v26-083", "hpc-v26-084", "hpc-v26-085", "hpc-v26-086", "hpc-v26-087", "hpc-v26-088", "hpc-v26-089", "hpc-v26-090"]},
+  {"id": "hpc-v26-10", "title": ["能源工程與彈性工作流", "Energy engineering and elastic workflows"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["hpc-v26-091", "hpc-v26-092", "hpc-v26-093", "hpc-v26-094", "hpc-v26-095", "hpc-v26-096", "hpc-v26-097", "hpc-v26-098", "hpc-v26-099", "hpc-v26-100"]},
+  {"id": "security-v26-01", "title": ["身分保證、授權與零信任架構", "Identity assurance, authorization and zero-trust architecture"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-001", "security-v26-002", "security-v26-003", "security-v26-004", "security-v26-005", "security-v26-006", "security-v26-007", "security-v26-008", "security-v26-009", "security-v26-010"]},
+  {"id": "security-v26-02", "title": ["憑證、加密通道與網際信任", "Certificates, encrypted channels and Internet trust"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-011", "security-v26-012", "security-v26-013", "security-v26-014", "security-v26-015", "security-v26-016", "security-v26-017", "security-v26-018", "security-v26-019", "security-v26-020"]},
+  {"id": "security-v26-03", "title": ["網路邊界與可觀測協定", "Network boundaries and observable protocols"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-021", "security-v26-022", "security-v26-023", "security-v26-024", "security-v26-025", "security-v26-026", "security-v26-027", "security-v26-028", "security-v26-029", "security-v26-030"]},
+  {"id": "security-v26-04", "title": ["偵測邏輯與端點證據品質", "Detection logic and endpoint evidence quality"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-031", "security-v26-032", "security-v26-033", "security-v26-034", "security-v26-035", "security-v26-036", "security-v26-037", "security-v26-038", "security-v26-039", "security-v26-040"]},
+  {"id": "security-v26-05", "title": ["作業系統隔離與硬體信任根", "Operating-system isolation and hardware roots of trust"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-041", "security-v26-042", "security-v26-043", "security-v26-044", "security-v26-045", "security-v26-046", "security-v26-047", "security-v26-048", "security-v26-049", "security-v26-050"]},
+  {"id": "security-v26-06", "title": ["安全軟體生命週期與元件證據", "Secure development and component evidence"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-051", "security-v26-052", "security-v26-053", "security-v26-054", "security-v26-055", "security-v26-056", "security-v26-057", "security-v26-058", "security-v26-059", "security-v26-060"]},
+  {"id": "security-v26-07", "title": ["可驗證供應鏈與容器隔離", "Verifiable supply chains and container isolation"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-061", "security-v26-062", "security-v26-063", "security-v26-064", "security-v26-065", "security-v26-066", "security-v26-067", "security-v26-068", "security-v26-069", "security-v26-070"]},
+  {"id": "security-v26-08", "title": ["雲端政策、稽核與組態治理", "Cloud policy, auditing and configuration governance"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-071", "security-v26-072", "security-v26-073", "security-v26-074", "security-v26-075", "security-v26-076", "security-v26-077", "security-v26-078", "security-v26-079", "security-v26-080"]},
+  {"id": "security-v26-09", "title": ["偵測品質、事件分析與鑑識", "Detection quality, incident analysis and forensics"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-081", "security-v26-082", "security-v26-083", "security-v26-084", "security-v26-085", "security-v26-086", "security-v26-087", "security-v26-088", "security-v26-089", "security-v26-090"]},
+  {"id": "security-v26-10", "title": ["證據保全、復原與韌性演練", "Evidence preservation, recovery and resilience exercises"], "goal": ["以具名案例、可重算模型與獨立證據串接診斷和驗收；課程次序是學習建議。", "Connect named cases through reproducible models, independent evidence, diagnosis and acceptance; course order is a learning suggestion."], "courses": ["security-v26-091", "security-v26-092", "security-v26-093", "security-v26-094", "security-v26-095", "security-v26-096", "security-v26-097", "security-v26-098", "security-v26-099", "security-v26-100"]},
+  // V26 ROUTES END
   // V25 ROUTES START
   {"id": "quantum-v25-01", "title": ["超導能階與量子控制", "Superconducting levels and quantum control"], "goal": ["由可核算的案例串接模型、量測、故障診斷與設計取捨；課程順序是學習建議。", "Connect cases through models, measurements, diagnosis and design tradeoffs; course order is a learning suggestion."], "courses": ["qpu-v25-001", "qpu-v25-002", "qpu-v25-003", "qpu-v25-004", "qpu-v25-005", "qpu-v25-006", "qpu-v25-007", "qpu-v25-008", "qpu-v25-009", "qpu-v25-010"]},
   {"id": "quantum-v25-02", "title": ["讀出、耦合與低溫邊界", "Readout, coupling and cryogenic boundaries"], "goal": ["由可核算的案例串接模型、量測、故障診斷與設計取捨；課程順序是學習建議。", "Connect cases through models, measurements, diagnosis and design tradeoffs; course order is a learning suggestion."], "courses": ["qpu-v25-011", "qpu-v25-012", "qpu-v25-013", "qpu-v25-014", "qpu-v25-015", "qpu-v25-016", "qpu-v25-017", "qpu-v25-018", "qpu-v25-019", "qpu-v25-020"]},
@@ -7476,6 +7564,142 @@ function renderCurriculumEvidenceV25(spec,choice,lang){
 Object.defineProperty(exports, "resolveCurriculumExerciseV25", { enumerable: true, get: () => resolveCurriculumExerciseV25 });
 Object.defineProperty(exports, "renderCurriculumEvidenceV25", { enumerable: true, get: () => renderCurriculumEvidenceV25 });
 },
+"curriculum-exercises-v26.js":function(require, exports) {
+'use strict';
+/** V26 lesson evidence workbench. No new lesson/answer payload is bundled here. */
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(value,n)=>{const chars=Array.from(String(value??'').replace(/\s+/g,' '));return chars.length>n?chars.slice(0,n-1).join('')+'…':chars.join('')};
+
+function resolveCurriculumExerciseV26(course,step,make){
+  const match=/^(hpc|security)-v26-(\d{3})$/.exec(String(course.id||''));
+  if(!match||Number(match[2])<1||Number(match[2])>100||Number(course.curriculumVersion)!==26)return null;
+  const track=match[1];
+  const stepMatch=String(step.id||'').match(/-v26-(\d{2})$/);
+  const sequence=Number(stepMatch?.[1]);
+  if(!stepMatch||step.id!==`${course.id}-v26-${stepMatch[1]}`||sequence<1||sequence>40)return null;
+  const quiz=step.quiz;
+  const complete=!step.locked&&quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)
+    &&quiz.options.length>=2&&quiz.options.length===quiz.optionsEn.length
+    &&quiz.options.every(s=>typeof s==='string'&&s.trim())&&quiz.optionsEn.every(s=>typeof s==='string'&&s.trim())
+    &&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length
+    &&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim())
+    &&['question','questionEn','explanation','explanationEn'].every(k=>typeof quiz[k]==='string'&&quiz[k].trim());
+  const choices=complete?quiz.options.map((value,i)=>({id:'answer-'+i,label:bi(value,quiz.optionsEn[i])})):[];
+  const offset=choices.length?sequence%choices.length:0;
+  const object=bi(short(step.title||course.title,27),short(step.titleEn||course.titleEn,51));
+  const instruction=complete?bi(
+    `${step.instruction}\n觀察與紀錄：${step.observation}\n證據判讀：${quiz.question}\n選擇與本步資料相符的判讀，再記錄觀察。`,
+    `${step.instructionEn}\nObserve and document: ${step.observationEn}\nEvidence decision: ${quiz.questionEn}\nChoose the interpretation supported by this step, then record your observation.`
+  ):bi('請載入已授權的完整步驟，才能開始此證據任務。','Load the authorized complete step before starting this evidence task.');
+  const evidence=complete?bi(`${step.check}\n${quiz.explanation}`,`${step.checkEn}\n${quiz.explanationEn}`):bi('尚未載入本步證據。','Step evidence has not been loaded.');
+  return make(`${step.id}-authored-evidence-v26`,'inspect',`curriculum-v26:${track}`,object,instruction,
+    track==='hpc'?bi('HPC 模型、效能與驗收證據台','HPC model, performance and acceptance workbench'):bi('防禦控制、證據與復原驗收台','Defensive controls, evidence and recovery workbench'),evidence,{
+      choices:[...choices.slice(offset),...choices.slice(0,offset)],expectedChoice:complete?'answer-'+quiz.answer:'unavailable',
+      provenance:complete?'step-authored-evidence':'unavailable',family:track==='hpc'?'hpc-evidence':'defensive-evidence',
+      decisionFeedback:bi('此判讀尚未符合本步證據；請重新核對模型假設、輸入條件與題目選項。','This interpretation does not yet match the step evidence. Recheck model assumptions, input conditions and answer options.'),
+      curriculumEvidenceV26:{track,sequence,available:!!complete,courseTitle:bi(course.title,course.titleEn),
+        question:complete?bi(quiz.question,quiz.questionEn):instruction},
+      coverage:bi('本步原創教材的證據判讀任務。圖中為量測／計算紀錄的概念工作流；不代表原廠設備拓樸、超級電腦實測或網路攻防模擬。完整算例與實驗紀錄請依本步教材完成。','An evidence decision authored for this lesson. The diagram is a conceptual workflow for measurement/calculation records, not an equipment topology, supercomputer measurement or cyberattack simulation. Complete calculations and laboratory records using this step’s lesson.')
+    });
+}
+
+/** A workflow board, explicitly not a fictitious HPC/security infrastructure diagram. */
+function renderCurriculumEvidenceV26(spec,choice,lang){
+  const context=spec.curriculumEvidenceV26;if(!context)return '';
+  const zh=lang==='zh',hpc=context.track==='hpc',selected=spec.choices.find(c=>c.id===choice);
+  const labels=hpc?(zh?['模型與輸入','效能／正確性','獨立重算','證據驗收']:['Model / inputs','Performance / validity','Independent check','Evidence review']):(zh?['資產與邊界','防禦控制','證據／反證','驗收與復原']:['Assets / boundaries','Defensive control','Evidence / countertest','Accept / recover']);
+  const text=(x,y,value,size=9,color='#234b4e',anchor='start')=>`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+  let out=`<g data-v26-evidence="${context.track}" aria-label="${esc(context.courseTitle[lang])}"><title>${esc(context.courseTitle[lang])}</title>`;
+  out+=text(20,59,short(context.courseTitle[lang],zh?28:58),9);
+  out+=text(20,75,zh?`本步證據工作流 · ${context.sequence} / 40`:`STEP EVIDENCE WORKFLOW · ${context.sequence} / 40`,8,'#607e80');
+  labels.forEach((label,i)=>{
+    const x=19+i*95;
+    if(i<3)out+=`<path d="M${x+79} 117h12m-4-3 4 3-4 3" fill="none" stroke="#6b9695" stroke-width="1.5"/>`;
+    out+=`<rect x="${x}" y="90" width="79" height="55" rx="7" fill="${i===3&&selected?'#e9d9a9':'#e1eeea'}" stroke="#719795"/>`;
+    out+=text(x+39.5,110,String(i+1),10,'#326b70','middle')+text(x+39.5,132,label,zh?9:6.7,'#234b4e','middle');
+  });
+  const question=context.question[lang],questionChars=Array.from(String(question));
+  out+=`<rect x="19" y="157" width="362" height="62" rx="7" fill="#f8fbf5" stroke="#b0c7bd"/><title>${esc(question)}</title>`;
+  out+=text(29,173,zh?'依本步資料判讀（完整題目在下方任務欄）':'USE THIS STEP’S EVIDENCE · FULL QUESTION IN TASK PANEL',7.5,'#607e80');
+  const lineLength=zh?31:64;
+  out+=text(29,191,questionChars.slice(0,lineLength).join(''),zh?9:8);
+  out+=text(29,207,short(questionChars.slice(lineLength).join(''),lineLength),zh?9:8);
+  out+=text(20,237,selected?(zh?'已選判讀；請記錄觀察並提交檢查。':'Interpretation selected; record observation and submit.'):(zh?'移動觀察工具，核對教材，再選擇證據判讀。':'Move the review tool, check the lesson, then choose evidence.'),zh?9:8);
+  return out+'</g>';
+}
+
+Object.defineProperty(exports, "resolveCurriculumExerciseV26", { enumerable: true, get: () => resolveCurriculumExerciseV26 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV26", { enumerable: true, get: () => renderCurriculumEvidenceV26 });
+},
+"curriculum-exercises-v27.js":function(require, exports) {
+'use strict';
+/** V27 lesson evidence workbench. No new lesson/answer payload is bundled here. */
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(value,n)=>{const chars=Array.from(String(value??'').replace(/\s+/g,' '));return chars.length>n?chars.slice(0,n-1).join('')+'…':chars.join('')};
+
+function resolveCurriculumExerciseV27(course,step,make){
+  const match=/^(hpc|security)-v27-(\d{3})$/.exec(String(course.id||''));
+  if(!match||Number(match[2])<1||Number(match[2])>100||Number(course.curriculumVersion)!==27)return null;
+  const track=match[1];
+  const stepMatch=String(step.id||'').match(/-v27-(\d{2})$/);
+  const sequence=Number(stepMatch?.[1]);
+  if(!stepMatch||step.id!==`${course.id}-v27-${stepMatch[1]}`||sequence<1||sequence>40)return null;
+  const quiz=step.quiz;
+  const complete=!step.locked&&quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)
+    &&quiz.options.length>=2&&quiz.options.length===quiz.optionsEn.length
+    &&quiz.options.every(s=>typeof s==='string'&&s.trim())&&quiz.optionsEn.every(s=>typeof s==='string'&&s.trim())
+    &&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length
+    &&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim())
+    &&['question','questionEn','explanation','explanationEn'].every(k=>typeof quiz[k]==='string'&&quiz[k].trim())
+    &&Array.isArray(step.knowledge)&&step.knowledge.length>=2
+    &&step.knowledge.slice(0,2).every(item=>item&&['title','titleEn','text','textEn'].every(k=>typeof item[k]==='string'&&item[k].trim()));
+  const choices=complete?quiz.options.map((value,i)=>({id:'answer-'+i,label:bi(value,quiz.optionsEn[i])})):[];
+  const offset=choices.length?sequence%choices.length:0;
+  const object=bi(short(step.title||course.title,27),short(step.titleEn||course.titleEn,51));
+  const instruction=complete?bi(
+    `${step.instruction}\n觀察與紀錄：${step.observation}\n證據判讀：${quiz.question}\n選擇與本步資料相符的判讀，再記錄觀察。`,
+    `${step.instructionEn}\nObserve and document: ${step.observationEn}\nEvidence decision: ${quiz.questionEn}\nChoose the interpretation supported by this step, then record your observation.`
+  ):bi('請載入已授權的完整步驟，才能開始此證據任務。','Load the authorized complete step before starting this evidence task.');
+  const evidence=complete?bi(`${step.check}\n${quiz.explanation}`,`${step.checkEn}\n${quiz.explanationEn}`):bi('尚未載入本步證據。','Step evidence has not been loaded.');
+  return make(`${step.id}-authored-evidence-v27`,'inspect',`curriculum-v27:${track}`,object,instruction,
+    track==='hpc'?bi('HPC 模型、效能與驗收證據台','HPC model, performance and acceptance workbench'):bi('防禦控制、證據與復原驗收台','Defensive controls, evidence and recovery workbench'),evidence,{
+      choices:[...choices.slice(offset),...choices.slice(0,offset)],expectedChoice:complete?'answer-'+quiz.answer:'unavailable',
+      provenance:complete?'step-authored-evidence':'unavailable',family:track==='hpc'?'hpc-evidence':'defensive-evidence',
+      decisionFeedback:bi('此判讀尚未符合本步證據；請重新核對模型假設、輸入條件與題目選項。','This interpretation does not yet match the step evidence. Recheck model assumptions, input conditions and answer options.'),
+      curriculumEvidenceV27:{track,sequence,available:!!complete,courseTitle:bi(course.title,course.titleEn),
+        question:complete?bi(quiz.question,quiz.questionEn):instruction,
+        artifacts:complete?[...(step.knowledge||[]).slice(0,2).map(item=>({label:bi(item.title,item.titleEn),text:bi(item.text,item.textEn)})),
+          {label:bi('本階段驗收紀錄','Investigation acceptance record'),text:bi(step.check,step.checkEn)}]:[]},
+      coverage:bi('本步原創教材的證據判讀任務。證據台直接呈現本案例的模型、資料與驗收條件摘要；完整內容在下方任務欄。這些是明示教學資料，不代表原廠設備拓樸、超級電腦實測或網路攻防模擬。','An evidence decision authored for this lesson. The board displays this case’s model, data and acceptance criteria; full records appear in the task panel. These are stated teaching records, not equipment topology, supercomputer measurements or a cyberattack simulation.')
+    });
+}
+
+/** Inspect the actual lesson's evidence records, without inventing hardware imagery. */
+function renderCurriculumEvidenceV27(spec,choice,lang){
+  const context=spec.curriculumEvidenceV27;if(!context)return '';
+  const zh=lang==='zh',selected=spec.choices.find(c=>c.id===choice);
+  const text=(x,y,value,size=9,color='#234b4e',anchor='start')=>`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+  let out=`<g data-v27-evidence="${context.track}" aria-label="${esc(context.courseTitle[lang])}"><title>${esc(context.courseTitle[lang])}</title>`;
+  out+=text(20,59,short(context.courseTitle[lang],zh?28:58),9);
+  out+=text(20,75,zh?`本案例證據紀錄 · ${context.sequence} / 40`:`CASE EVIDENCE RECORDS · ${context.sequence} / 40`,8,'#607e80');
+  context.artifacts.forEach((artifact,i)=>{
+    const y=86+i*43,body=artifact.text[lang]||'',label=artifact.label[lang]||'';
+    out+=`<g data-v27-artifact="${i}"><title>${esc(label+': '+body)}</title><rect x="19" y="${y}" width="362" height="38" rx="6" fill="${i===2&&selected?'#e9d9a9':'#e1eeea'}" stroke="#719795"/>`;
+    out+=text(29,y+13,short(label,zh?32:64),7.5,'#326b70');
+    out+=text(29,y+28,short(body,zh?36:72),zh?8.5:7.5)+'</g>';
+  });
+  if(!context.available)out+=text(29,123,zh?'尚未載入已授權的完整證據。':'Authorized evidence has not been loaded.',9);
+  out+=`<title>${esc(context.question[lang])}</title>`;
+  out+=text(20,224,zh?'完整題目與原始證據請見下方任務欄。':'Full question and evidence appear in the task panel.',8,'#607e80');
+  out+=text(20,237,selected?(zh?'已選判讀；請記錄觀察並提交檢查。':'Interpretation selected; record observation and submit.'):(zh?'移動觀察工具，核對教材，再選擇證據判讀。':'Move the review tool, check the lesson, then choose evidence.'),zh?9:8);
+  return out+'</g>';
+}
+
+Object.defineProperty(exports, "resolveCurriculumExerciseV27", { enumerable: true, get: () => resolveCurriculumExerciseV27 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV27", { enumerable: true, get: () => renderCurriculumEvidenceV27 });
+},
 "process-exercises.js":function(require, exports) {
 'use strict';
 const { COMPUTING_SUBJECTS, renderComputingVisual, computingVisualFamily } = require("computing-visuals.js");
@@ -7491,6 +7715,8 @@ const { EXPANSION_STAGE_FAMILIES, EXPANSION_CONTEXT_FAMILIES, renderExpansionCon
  */
 const { resolveExpansionExercise, renderExpansionScene } = require("expansion-exercises.js");
 const { resolveCurriculumExerciseV25, renderCurriculumEvidenceV25 } = require("curriculum-exercises-v25.js");
+const { resolveCurriculumExerciseV26, renderCurriculumEvidenceV26 } = require("curriculum-exercises-v26.js");
+const { resolveCurriculumExerciseV27, renderCurriculumEvidenceV27 } = require("curriculum-exercises-v27.js");
 const bi=(zh,en)=>({zh,en});
 const ctl=(id,zh,en,min,max,step,initial,target,unit='',tolerance=step/2)=>({id,label:bi(zh,en),min,max,step,initial,target,unit,tolerance});
 const opt=(id,zh,en)=>({id,label:bi(zh,en)});
@@ -7750,6 +7976,8 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ const curriculumV27=resolveCurriculumExerciseV27(course,step,make);if(curriculumV27)return curriculumV27;
+ const curriculumV26=resolveCurriculumExerciseV26(course,step,make);if(curriculumV26)return curriculumV26;
  const curriculumV25=resolveCurriculumExerciseV25(course,step,make);if(curriculumV25)return curriculumV25;
  // Extension-only architecture: preserve every original course step and scene.
  if(String(step.id).includes('-v15-')&&course.v15Architecture)course={...course,...course.v15Architecture};
@@ -7806,7 +8034,7 @@ function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -7926,6 +8154,8 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV27)return renderCurriculumEvidenceV27(spec,choice,lang);
+ if(spec.curriculumEvidenceV26)return renderCurriculumEvidenceV26(spec,choice,lang);
  if(spec.curriculumEvidenceV25)return renderCurriculumEvidenceV25(spec,choice,lang);
  if(spec.expansion)return renderExpansionScene(spec,values,choice,phase,lang);
  if(spec.scene.startsWith('itv11:'))return renderComputingVisual(spec.scene.slice(6),{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');

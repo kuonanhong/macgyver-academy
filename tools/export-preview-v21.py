@@ -77,9 +77,9 @@ def public_game_data(source, destination):
             for journey in value['experiences']:
                 if not isinstance(journey, dict) or set(journey) - allowed or not ID.fullmatch(journey.get('id', '')):
                     raise ValueError('Unexpected public experience fields.')
-                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai'} or journey.get('category') != 'computing'):
+                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai', 'hpc', 'security'} or journey.get('category') != 'computing'):
                     raise ValueError('Invalid public laboratory specialty.')
-                if 'curriculumVersion' in journey and journey['curriculumVersion'] != '25.0.0':
+                if 'curriculumVersion' in journey and journey['curriculumVersion'] not in {'25.0.0', '26.0.0', '27.0.0'}:
                     raise ValueError('Invalid public laboratory version.')
                 if 'references' in journey:
                     refs = journey['references']
@@ -102,7 +102,9 @@ def public_game_data(source, destination):
                         raise ValueError('Unexpected public experience chapter fields.')
                     if 'labExperiment' in chapter:
                         approved = {'quantum': {'shots', 'relaxation', 'ramsey', 'readout', 'rb', 'repetition'},
-                                    'ai': {'matmul', 'intensity', 'roofline', 'quantize', 'allreduce', 'throughput'}}
+                                    'ai': {'matmul', 'intensity', 'roofline', 'quantize', 'allreduce', 'throughput'},
+                                    'hpc': {'hpc-amdahl', 'hpc-transfer', 'hpc-checkpoint', 'hpc-capacity', 'hpc-availability', 'hpc-cooling', 'hpc-numa-mix', 'hpc-erasure-capacity', 'hpc-halo-volume', 'hpc-backward-error', 'hpc-queue-drain', 'hpc-power-envelope'},
+                                    'security': {'security-precision', 'security-log-volume', 'security-coverage', 'security-rpo', 'security-rto', 'security-cert-window', 'security-buffer-window', 'security-clock-bound', 'security-zero-event-bound', 'security-unique-event-ratio', 'security-recovery-dag', 'security-restore-sampling'}}
                         if chapter['labExperiment'] not in approved.get(journey.get('specialty'), set()):
                             raise ValueError('Invalid public laboratory experiment.')
         target = destination / 'data' / name
@@ -185,8 +187,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23','24','25'}:
-        raise ValueError('Rebuild V21, V22, V23, V24 or V25 before exporting the public preview.')
+    if major not in {'21','22','23','24','25','26','27'}:
+        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26 or V27 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -242,14 +244,16 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major in {'23', '24', '25'}:
+        if legacy_entrypoints and major in {'23', '24', '25', '26', '27'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
             for page in ('index.html', 'experience.html', 'campaign.html', 'experience-photo-v21.html',
                          'automotive-lab-v21.html', 'space-lab-v23.html', 'help.html',
                          *(['curriculum-v24.html'] if int(major) >= 24 else []),
-                         *(['curriculum-v25.html'] if int(major) >= 25 else [])):
+                         *(['curriculum-v25.html'] if int(major) >= 25 else []),
+                         *(['curriculum-v26.html'] if int(major) >= 26 else []),
+                         *(['curriculum-v27.html'] if int(major) >= 27 else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page

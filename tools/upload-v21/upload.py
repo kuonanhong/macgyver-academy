@@ -352,7 +352,7 @@ def default_upload_state(source):
 def main(argv=None):
     version_path = ROOT / 'SOURCE_VERSION.json'
     source_major = str(json.loads(version_path.read_text('utf-8')).get('version', '21')).split('.')[0] if version_path.is_file() else '21'
-    source_label = 'V' + source_major if source_major in {'21', '22', '23', '24', '25'} else 'V21/V22'
+    source_label = 'V' + source_major if source_major in {'21', '22', '23', '24', '25', '26', '27'} else 'V21/V22'
     ap = argparse.ArgumentParser(description=source_label + ' 一鍵 SSH：預設公開網站差異 → macgyver-academy；--with-assets 將現成模型與 local-documents 另送 PRIVATE-MODELS。無自動下載、無強推；只清理已知舊版會員教材生成檔。')
     ap.add_argument('--dry-run', action='store_true', help='連線比較，不提交、不上傳；會建立本地比較快取')
     ap.add_argument('--with-assets', action='store_true', help='同時處理現有私人模型與文件；預設只更新公開網站')

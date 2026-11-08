@@ -74,6 +74,10 @@ def public_snapshot(source, excluded=()):
         required.append('Install_and_Upload_MacGyver_v24.sh')
     if (source / 'Install_and_Upload_MacGyver_v25.sh').is_file():
         required.append('Install_and_Upload_MacGyver_v25.sh')
+    if (source / 'Install_and_Upload_MacGyver_v26.sh').is_file():
+        required.append('Install_and_Upload_MacGyver_v26.sh')
+    if (source / 'Install_and_Upload_MacGyver_v27.sh').is_file():
+        required.append('Install_and_Upload_MacGyver_v27.sh')
     for name in required:
         path = source / name
         if path.is_symlink() or not path.is_file():
@@ -91,8 +95,8 @@ def public_snapshot(source, excluded=()):
             raise ValueError('Unsafe SOURCE_VERSION.json')
         version = json.loads(version_file.read_text('utf-8'))
         source_major = str(version.get('version', '')).split('.')[0]
-        if source_major not in {'21', '22', '23', '24', '25'}:
-            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24 or V25 before uploading.')
+        if source_major not in {'21', '22', '23', '24', '25', '26', '27'}:
+            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26 or V27 before uploading.')
         files['SOURCE_VERSION.json'] = (json.dumps(version, ensure_ascii=False, indent=2) + '\n').encode()
     files['.nojekyll'] = b''
     files['README.md'] = (

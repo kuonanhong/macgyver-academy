@@ -57,6 +57,44 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
       for(let j=0;j<4;j++){box(p,.48,.1,.7,-.9+j*.6,1.48,0,mats.cyan);for(let k=0;k<7;k++)box(p,.04,.25,.68,-1.08+j*.6+k*.06,1.65,0,mats.metal);}
       for(const z of [-.65,.65])pipe(p,[-1.25,1.52,z],[1.25,1.52,z],.045,mats.accent);
       for(const x of [-1.1,1.1])box(p,.12,1.05,1.2,x,.65,0,mats.metal);screen(p,1.8,.72,0,2.3,-.55,index);
+    }else if(kind==='hpc-node'){
+      box(p,2.8,2.55,1.55,0,1.52,0,mats.dark);
+      for(let j=0;j<4;j++){box(p,2.5,.43,.10,0,.57+j*.58,.82,mats.metal);for(let k=0;k<4;k++){box(p,.35,.26,.04,-.91+k*.61,.58+j*.58,.89,mats.cyan);statusLight(p,-.86+k*.61,.59+j*.58,.93);}}
+      pipe(p,[-1.3,.3,-.6],[-1.3,2.8,-.6],.07,mats.cyan);pipe(p,[1.3,.3,-.6],[1.3,2.8,-.6],.07,mats.amber);
+    }else if(kind==='network-fabric'){
+      for(const x of [-1.25,1.25])box(p,.1,2.35,.8,x,1.35,0,mats.metal);
+      for(let j=0;j<3;j++){box(p,2.5,.44,.72,0,.66+j*.7,0,mats.dark);for(let k=0;k<8;k++)box(p,.16,.13,.04,-1+k*.28,.67+j*.7,.39,mats.cyan);}
+      for(let j=0;j<4;j++){pipe(p,[-.9+j*.55,.7,.45],[-.9+j*.55,1.08,.75],.025,j%2?mats.amber:mats.cyan);pipe(p,[-.9+j*.55,1.08,.75],[.8-j*.48,1.4,.45],.025,j%2?mats.amber:mats.cyan);}
+    }else if(kind==='storage-array'||kind==='log-archive'){
+      box(p,2.7,2.3,1.5,0,1.4,0,mats.dark);
+      for(let row=0;row<5;row++)for(let col=0;col<4;col++){box(p,.55,.33,.08,-.93+col*.62,.49+row*.43,.8,mats.metal);box(p,.33,.04,.04,-.93+col*.62,.49+row*.43,.86,mats.black);statusLight(p,-.74+col*.62,.49+row*.43,.87);}
+      if(kind==='log-archive')screen(p,1.6,.54,0,2.65,.2,index);
+    }else if(kind==='memory-bench'){
+      box(p,2.9,.14,1.8,0,1.05,0,mats.body);for(const x of [-1.2,1.2])box(p,.12,.95,1.4,x,.52,0,mats.metal);
+      box(p,1.8,.08,1.3,-.25,1.19,0,mats.accent);for(let row=0;row<4;row++){box(p,1.45,.30,.08,-.25,1.39,-.45+row*.3,mats.cyan);for(let col=0;col<5;col++)box(p,.19,.18,.09,-.83+col*.29,1.42,-.45+row*.3,mats.dark);}screen(p,.6,.5,1.03,1.8,.7,index);
+    }else if(kind==='availability-panel'){
+      for(const side of [-1,1]){box(p,.92,2.1,1.15,side*.76,1.3,0,mats.dark);screen(p,.66,.56,side*.76,1.7,.6,index);for(let j=0;j<3;j++)box(p,.69,.18,.06,side*.76,.6+j*.27,.61,mats.metal);}
+      pipe(p,[-.75,2.48,0],[.75,2.48,0],.06,mats.amber);statusLight(p,-.75,2.52,.3);statusLight(p,.75,2.52,.3);
+    }else if(kind==='cooling-cdu'){
+      box(p,2.15,2.3,1.65,-.2,1.4,0,mats.body);screen(p,.85,.55,-.35,1.97,.87,index);
+      for(const side of [-1,1]){pipe(p,[side*.58,.55,.93],[side*.58,1.45,.93],.09,side<0?mats.cyan:mats.amber);cylinder(p,.17,.17,.12,side*.58,1,.93,mats.metal);}
+      for(let j=0;j<7;j++)box(p,.04,1.4,1.05,.86+j*.07,1.1,0,mats.metal);statusLight(p,.68,2.55,.5);
+    }else if(kind==='soc-console'||kind==='recovery-bench'){
+      box(p,3,.15,1.5,0,1.1,0,mats.body);for(const x of [-1.3,1.3])box(p,.13,1.02,1.2,x,.54,0,mats.metal);
+      for(const side of [-1,1]){screen(p,1.2,.8,side*.7,2.1,-.15,index);box(p,.1,.5,.1,side*.7,1.42,-.2,mats.dark);box(p,.9,.045,.35,side*.7,1.21,.45,mats.dark);}
+      if(kind==='recovery-bench'){box(p,.7,.4,.7,0,.45,.15,mats.accent);for(let j=0;j<3;j++)box(p,.51,.07,.05,0,.35+j*.11,.53,mats.metal);}
+    }else if(kind==='asset-board'){
+      box(p,2.8,1.8,.13,0,1.8,0,mats.dark);for(const x of [-1.1,1.1])box(p,.1,.9,.6,x,.47,0,mats.metal);
+      for(let row=0;row<3;row++)for(let col=0;col<5;col++)box(p,.38,.35,.04,-1.04+col*.52,1.24+row*.48,.10,row===2&&col===4?mats.amber:mats.cyan);
+      box(p,2.9,.1,.45,0,.85,.15,mats.metal);
+    }else if(kind==='backup-vault'){
+      box(p,2.2,2.45,1.65,0,1.47,0,mats.metal);box(p,1.95,2.18,.12,0,1.47,.91,mats.dark);
+      for(let row=0;row<4;row++)for(let col=0;col<3;col++)box(p,.45,.35,.05,-.6+col*.6,.71+row*.47,.99,mats.body);
+      box(p,.12,1.6,.07,.87,1.47,1.02,mats.amber);screen(p,.6,.26,0,2.69,.1,index);
+    }else if(kind==='certificate-terminal'){
+      box(p,2.8,.15,1.7,0,1.05,0,mats.body);for(const x of [-1.15,1.15])box(p,.12,.94,1.25,x,.51,0,mats.metal);
+      screen(p,1.65,1.0,-.3,2.2,-.2,index);box(p,.12,.5,.15,-.3,1.42,-.25,mats.dark);box(p,1.25,.06,.48,-.3,1.17,.5,mats.dark);
+      box(p,.55,.62,.6,1,1.42,.3,mats.accent);box(p,.36,.12,.04,1,1.45,.63,mats.amber);statusLight(p,1,1.83,.5);
     }else if(kind==='vacuum'){
       const chamber=cylinder(p,.88,.88,1.8,0,1.3,-.16,mats.metal);
       chamber.rotation.x=Math.PI/2;
@@ -160,6 +198,12 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
     if(domain==='computing'){
       for(const side of [-1,1]){pipe(world,[side*W*.28,5.65,-D/2],[side*W*.28,5.65,D/2],.15,side<0?mats.cyan:mats.amber);for(let z=-D/2+3;z<D/2;z+=6){box(world,1.8,.18,3,side*W*.28,5.9,z,mats.dark);}}
       for(let x=-W/2+3;x<W/2;x+=3)screen(world,2.35,1.15,x,5.4,-D/2+.3,1);
+    }
+    if(c.specialty==='hpc'||c.specialty==='security'){
+      const soc=c.specialty==='security';
+      const banner=textureCanvas((ctx,w,h)=>{ctx.fillStyle=soc?'#172739':'#153a40';ctx.fillRect(0,0,w,h);ctx.fillStyle='#c3ede4';ctx.font='bold 36px sans-serif';ctx.fillText(soc?'DEFENSIVE SOC / SYNTHETIC EVIDENCE':'HPC CLUSTER / TEACHING MODEL',28,58);ctx.font='22px monospace';ctx.fillText(soc?'OBSERVE  ·  VALIDATE  ·  RECOVER':'COMPUTE  ·  TRANSFER  ·  RESTORE',28,104);},1024,144);
+      box(world,Math.min(W-3,18),1.55,.04,0,5.75,-D/2+.4,makeMaterial(0xffffff,.7,.1,{map:banner}));
+      if(soc)for(const side of [-1,1])for(let z=-D/2+4;z<D/2-2;z+=6)screen(world,2.5,1.35,side*(W/2-1.4),5.7,z,2);
     }
     if(['underground','rail'].includes(domain)){
       for(let z=-D/2+1;z<D/2;z+=5){beam(z,mats.metal);for(const side of [-1,1])pipe(world,[side*(W/2+.25),0,z],[side*(W/2+.25),5.7,z],.12,mats.metal);}

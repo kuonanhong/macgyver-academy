@@ -1,4 +1,4 @@
-import {restoreLabRun} from './walk-labs-v25.js';
+import {restoreLabRun} from './walk-labs-v27.js';
 /* Separate walking-game progress; original course/V21 completion is untouched. */
 export function newWalkRecord(scene,roleId=scene.roles?.[0]?.id||'learner') {
   return {version:22,sceneId:scene.id,roleId,chapterId:scene.chapters[0].id,seen:{},decisions:{},completed:[],notes:{},labRuns:{},actions:[],position:null,roleRuns:{},updatedAt:null};

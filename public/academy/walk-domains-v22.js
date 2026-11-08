@@ -217,7 +217,7 @@ export function buildWorldConfig(scene, assets = [], language = 'en') {
   const routePhotos = (Array.isArray(scene.assetIds) ? scene.assetIds : []).map(id => byId.get(id)).filter(usablePhoto);
   const stations = chapters.map((chapter, chapterIndex) => {
     const base = source.stations[chapterIndex];
-    const specialtyKinds = scene.specialty === 'quantum' ? ['cryostat','instrument','bench','rack','instrument','bench'] : scene.specialty === 'ai' ? ['accelerator','rack','bench','accelerator','rack','instrument'] : null;
+    const specialtyKinds = {quantum:['cryostat','instrument','bench','rack','instrument','bench'],ai:['accelerator','rack','bench','accelerator','rack','instrument'],hpc:['hpc-node','network-fabric','storage-array','memory-bench','availability-panel','cooling-cdu'],security:['soc-console','log-archive','asset-board','backup-vault','recovery-bench','certificate-terminal']}[scene.specialty] || null;
     const kind = specialtyKinds?.[chapterIndex] || moduleEquipment?.[chapterIndex] || base.kind;
     const names = moduleEquipment ? spaceEquipmentNames[kind] : null;
     const exactPhoto = byId.get(chapter.assetId);

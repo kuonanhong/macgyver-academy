@@ -4,6 +4,7 @@
  */
 import { resolveSupportedLanguage } from './locale.js';
 import { EXTRA_WALK_ROWS_V25 } from './walk-extra-i18n-v25.js';
+import { EXTRA_WALK_ROWS_V26 } from './walk-extra-i18n-v26.js';
 
 export const SUPPORTED_LANGUAGES_V22 = Object.freeze('zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo'.split(' '));
 
@@ -156,8 +157,8 @@ const cameraControls = {
   nl: ['Over de schouder', 'Camera centreren', 'Bediening verbergen', 'Bediening tonen'],
 };
 
-for (const [lang, values] of Object.entries(EXTRA_WALK_ROWS_V25)) {
-  if (values.length !== UI_KEYS_V22.length) throw new Error(`Incomplete V25 HUD dictionary: ${lang}`);
+for (const [lang, values] of Object.entries({...EXTRA_WALK_ROWS_V25, ...EXTRA_WALK_ROWS_V26})) {
+  if (values.length !== UI_KEYS_V22.length) throw new Error(`Incomplete additional HUD dictionary: ${lang}`);
   rows[lang] = values.slice(0, 45);
   cameraControls[lang] = values.slice(45);
 }

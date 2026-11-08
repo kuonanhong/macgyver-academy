@@ -63,6 +63,16 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
       }
       case 'cryostat':{cylinder(x,z,.85,2.6,'#9eafb6',.2);for(let j=0;j<5;j++)circle(x,z,.6+j*.43,.69-j*.09,'#e6ba59','#364a5c');screen(x+1.1,z+.4,1.8,.55,.4);break;}
       case 'accelerator':{box(x,z,2.8,1.7,.3,'#37505c',1.15);for(let j=0;j<4;j++){box(x-.9+j*.6,z,.48,.7,.25,'#7aaab4',1.45);}screen(x,z,2.5,1.7,.65);break;}
+      case 'hpc-node':{box(x,z,2.8,1.6,2.6,'#304a58',.2);for(let row=0;row<4;row++)for(let col=0;col<4;col++)box(x-.9+col*.6,z+.84,.42,.06,.3,col%2?'#7ac3c4':'#abc5d0',.45+row*.6);break;}
+      case 'network-fabric':{for(let row=0;row<3;row++){box(x,z,2.6,.8,.44,'#304a58',.45+row*.7);for(let col=0;col<6;col++)box(x-1+col*.4,z+.44,.18,.05,.12,'#68b9bd',.6+row*.7);}for(let j=0;j<4;j++)line(project(x-.9+j*.5,z+.5,.7),project(x+.7-j*.4,z+.7,1.4),j%2?'#edbd6a':'#6cd0cf',2);break;}
+      case 'storage-array':case 'log-archive':{box(x,z,2.7,1.5,2.35,'#354d5a',.2);for(let row=0;row<5;row++)for(let col=0;col<4;col++)box(x-.93+col*.62,z+.8,.54,.06,.29,'#99b5bf',.43+row*.43);if(s.kind==='log-archive')screen(x,z,2.9,1.6,.5);break;}
+      case 'memory-bench':{box(x,z,2.9,1.8,.15,'#c0d1d4',1);box(x-.2,z,1.8,1.3,.08,'#46766f',1.17);for(let j=0;j<4;j++)box(x-.2,z-.45+j*.3,1.5,.08,.3,'#79b9be',1.25);screen(x+1,z+.6,1.9,.55,.5);break;}
+      case 'availability-panel':{for(const side of [-1,1]){box(x+side*.76,z,.93,1.15,2.15,'#3d5764',.2);screen(x+side*.76,z+.6,2.05,.65,.5);}line(project(x-.75,z,2.65),project(x+.75,z,2.65),'#edbd6a',3);break;}
+      case 'cooling-cdu':{box(x-.2,z,2.1,1.6,2.3,'#b1c6cc',.2);screen(x-.3,z+.86,2.2,.85,.55);for(const side of [-1,1])line(project(x+side*.55,z+.91,.5),project(x+side*.55,z+.91,1.4),side<0?'#66c4d1':'#edbd6a',5);for(let j=0;j<6;j++)box(x+.9+j*.06,z,.03,1.1,1.5,'#7897a6',.3);break;}
+      case 'soc-console':case 'recovery-bench':{box(x,z,3,1.5,.15,'#c4d5d9',1.05);for(const side of [-1,1]){box(x+side*1.2,z,.14,1.1,1,'#718e9a');screen(x+side*.7,z-.15,2.5,1.2,.8);box(x+side*.7,z+.4,.9,.35,.06,'#304a58',1.23);}if(s.kind==='recovery-bench')box(x,z,.7,.7,.42,'#648f96',.3);break;}
+      case 'asset-board':{box(x,z,2.8,.15,1.8,'#294656',.9);for(let row=0;row<3;row++)for(let col=0;col<5;col++)box(x-1.04+col*.52,z+.11,.38,.05,.35,row===2&&col===4?'#edbd6a':'#76bdc7',1.05+row*.48);break;}
+      case 'backup-vault':{box(x,z,2.2,1.6,2.45,'#6c8895',.2);for(let row=0;row<4;row++)for(let col=0;col<3;col++)box(x-.6+col*.6,z+.85,.45,.06,.34,'#bdd1d7',.53+row*.48);box(x+.87,z+.91,.1,.06,1.7,'#edbd6a',.54);break;}
+      case 'certificate-terminal':{box(x,z,2.8,1.7,.15,'#c0d1d4',1.0);screen(x-.3,z-.2,2.6,1.6,1);box(x-.3,z+.5,1.2,.45,.06,'#304a58',1.2);box(x+1,z+.3,.55,.6,.65,'#608d9a',1.15);break;}
       case 'vacuum':{
         cylinder(x,z,.87,1.75,'#9cb4c0',.27);
         circle(x,z,2.02,.69,'#304f66','#e0ecee');
