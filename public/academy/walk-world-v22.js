@@ -47,6 +47,16 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
       pipe(p,[0,2,0],[.01,2.32,.4],.026,mats.metal);
       cylinder(p,.14,.14,.72,0,.64,0,mats.dark);
       box(p,1.7,.15,1.3,0,.27,0,mats.metal);
+    }else if(kind==='cryostat'){
+      cylinder(p,.85,.85,2.45,0,1.55,0,mats.metal);
+      for(let j=0;j<5;j++){cylinder(p,.7-j*.1,.7-j*.1,.08,0,.55+j*.42,0,mats.amber);for(const side of [-1,1])pipe(p,[side*(.6-j*.1),.6+j*.42,0],[side*(.5-j*.1),1+j*.42,.12],.025,mats.cyan);}
+      box(p,1.45,2.25,.05,0,1.55,.77,mats.glass);
+      screen(p,.7,.45,1.15,1.5,.65,index);statusLight(p,1.15,2.2,.4);
+    }else if(kind==='accelerator'){
+      box(p,2.8,.35,1.7,0,1.25,0,mats.dark);
+      for(let j=0;j<4;j++){box(p,.48,.1,.7,-.9+j*.6,1.48,0,mats.cyan);for(let k=0;k<7;k++)box(p,.04,.25,.68,-1.08+j*.6+k*.06,1.65,0,mats.metal);}
+      for(const z of [-.65,.65])pipe(p,[-1.25,1.52,z],[1.25,1.52,z],.045,mats.accent);
+      for(const x of [-1.1,1.1])box(p,.12,1.05,1.2,x,.65,0,mats.metal);screen(p,1.8,.72,0,2.3,-.55,index);
     }else if(kind==='vacuum'){
       const chamber=cylinder(p,.88,.88,1.8,0,1.3,-.16,mats.metal);
       chamber.rotation.x=Math.PI/2;
@@ -139,6 +149,37 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
     box(world,Math.min(W-3,17),2.1,.04,0,4.5,-D/2+.03,makeMaterial(0xffffff,.6,.1,{map:sign}));
     const portal=box(world,4.5,3.6,.15,0,1.8,-D/2+.14,mats.dark);box(world,3.8,3.1,.05,0,1.55,-D/2+.25,mats.glass);box(world,.08,3.1,.07,0,1.55,-D/2+.3,mats.body);
   }
+  // Architectural motifs stay above 5.4 m or beyond the traversable boundary.
+  // They therefore cannot become invisible obstacles in the teaching aisles.
+  function specialtyArchitecture(c){
+    const W=bounds.width,D=bounds.depth,domain=c.domainId;
+    const beam=(z,color=mats.accent)=>{box(world,W+.7,.24,.3,0,5.7,z,color);};
+    if(['semiconductor','packaging','biomedical','instruments'].includes(domain)){
+      for(let z=-D/2+3;z<D/2;z+=5)for(const x of [-W*.27,0,W*.27]){box(world,3.8,.16,2.8,x,6.3,z,mats.body);for(let j=0;j<5;j++)box(world,3.5,.02,.04,x,6.21,z-1+j*.5,mats.dark);}
+    }
+    if(domain==='computing'){
+      for(const side of [-1,1]){pipe(world,[side*W*.28,5.65,-D/2],[side*W*.28,5.65,D/2],.15,side<0?mats.cyan:mats.amber);for(let z=-D/2+3;z<D/2;z+=6){box(world,1.8,.18,3,side*W*.28,5.9,z,mats.dark);}}
+      for(let x=-W/2+3;x<W/2;x+=3)screen(world,2.35,1.15,x,5.4,-D/2+.3,1);
+    }
+    if(['underground','rail'].includes(domain)){
+      for(let z=-D/2+1;z<D/2;z+=5){beam(z,mats.metal);for(const side of [-1,1])pipe(world,[side*(W/2+.25),0,z],[side*(W/2+.25),5.7,z],.12,mats.metal);}
+      if(domain==='rail')for(const x of [-W*.39,W*.39])for(const side of [-1,1])box(world,.08,.025,D-1,x+side*.65,.02,0,mats.metal);
+    }
+    if(['manufacturing','materials','aerospace','space','automotive','structures'].includes(domain)){
+      for(const x of [-W*.38,W*.38])box(world,.35,.35,D,x,6,0,mats.amber);
+      for(const z of [-D*.28,D*.28]){beam(z,mats.amber);box(world,2.2,.5,1.1,0,5.7,z,mats.dark);}
+    }
+    if(['water','marine','environment'].includes(domain)){
+      for(const side of [-1,1]){box(world,7,.12,D+12,side*(W/2+4),-.24,0,mats.cyan);for(let z=-D/2;z<D/2;z+=3){pipe(world,[side*(W/2+.18),.4,z],[side*(W/2+.18),1.4,z],.035,mats.body);}pipe(world,[side*(W/2+.18),1.4,-D/2],[side*(W/2+.18),1.4,D/2],.045,mats.body);}
+    }
+    if(['energy','process'].includes(domain)){
+      for(let j=0;j<4;j++)pipe(world,[-W/2-.35,2+j*.6,-D/2],[-W/2-.35,2+j*.6,D/2],.12,j%2?mats.amber:mats.metal);
+      for(let z=-D/2+2;z<D/2;z+=7){beam(z,mats.metal);for(const x of [-W*.22,W*.22])pipe(world,[x,5.6,z],[x,5.6,z+5],.18,mats.accent);}
+    }
+    if(['electronics','megascience'].includes(domain)){
+      for(let z=-D/2+2;z<D/2;z+=5){beam(z);for(const side of [-1,1]){box(world,.14,3.6,2.2,side*(W/2-.03),2,z,mats.dark);screen(world,2,1.1,side*(W/2-1.2),5.5,z,1);}}
+    }
+  }
   function localPhotoPath(src){return /^assets\/[A-Za-z0-9_./-]+\.(?:jpg|jpeg|png|webp)$/i.test(src||'')&&!src.includes('..');}
   function addPhoto(group,s,epoch){if(!localPhotoPath(s.photoSrc))return;const board=box(group,3.28,1.7,.08,0,4.15,-.05,mats.dark);
     loader.load(s.photoSrc,texture=>{if(disposed||epoch!==configEpoch){texture.dispose();return;}texture.colorSpace=T.SRGBColorSpace;texture.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),4);worldTextures.push(texture);const image=texture.image;const ratio=(image.width||16)/(image.height||9);const w=Math.min(3.12,1.52*ratio),h=w/ratio;const mat=makeMaterial(0xffffff,.8,.0,{map:texture,emissive:0xffffff,emissiveIntensity:.13});box(group,w,h,.025,0,4.15,.005,mat).userData.stationId=s.id;},undefined,()=>{/* Photographic evidence is optional; geometry stays navigable offline. */});
@@ -160,7 +201,7 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
     const label=document.createElement('button');label.className='walk-station-label';
     label.addEventListener('pointerdown',e=>e.stopPropagation());label.addEventListener('click',e=>{e.stopPropagation();onManual();if(near?.id===s.id)interact();else goToStation(s.id);});labelLayer.append(label);const beacon=mesh(new T.RingGeometry(.32,.41,24),makeMaterial(0xe8c26d,.5,.15,{side:T.DoubleSide}),world,s.approach.x,.04,s.approach.z);beacon.rotation.x=-Math.PI/2;labels.push({element:label,station:s,group:g,beacon,number:i+1});
   }
-  function setConfig(next){if(disposed)return;snapCamera=true;const epoch=++configEpoch;config=next||{};completed=new Set();disposeWorld();bounds={width:Math.max(22,config.bounds?.width||30),depth:Math.max(28,config.bounds?.depth||38)};room(config);avatar.suit.color.set(config.layout==='cleanroom'?0xd7e2e6:0x285e69);avatar.vest.color.set(config.layout==='cleanroom'?0xa5c8d4:0xf3b954);avatar.helmet.color.set(['outdoor','yard'].includes(config.layout)?0xf0c859:0xe8eeee);obstacles=[];stations=(config.stations||[]).map((s,i)=>{const x=Number.isFinite(s.x)?s.x:(i%2?7:-7),z=Number.isFinite(s.z)?s.z:-bounds.depth/2+7+Math.floor(i/2)*8;return {...s,x,z,approach:s.approach||{x:s.approachX??(x-Math.sign(x||1)*2.95),z:s.approachZ??z}};});obstacles=stationObstacles(stations);stations.forEach((s,i)=>makeStation(s,i,epoch));position={x:0,z:bounds.depth/2-4};stopMovement();yaw=heading=0;firstFov=67;manualLookUntil=0;[pitch,distance]=cameraDefaults[view];near=null;lastNear='';avatar.object.position.set(position.x,0,position.z);avatar.object.rotation.y=0;cameraAim.set(position.x,1.15,position.z);camera.position.set(0,4.3,position.z+6);marker.visible=false;routeGuide.visible=false;onNear(null);updateLabels();onMove(getState());}
+  function setConfig(next){if(disposed)return;snapCamera=true;const epoch=++configEpoch;config=next||{};completed=new Set();disposeWorld();bounds={width:Math.max(22,config.bounds?.width||30),depth:Math.max(28,config.bounds?.depth||38)};room(config);specialtyArchitecture(config);avatar.suit.color.set(config.layout==='cleanroom'?0xd7e2e6:0x285e69);avatar.vest.color.set(config.layout==='cleanroom'?0xa5c8d4:0xf3b954);avatar.helmet.color.set(['outdoor','yard'].includes(config.layout)?0xf0c859:0xe8eeee);obstacles=[];stations=(config.stations||[]).map((s,i)=>{const x=Number.isFinite(s.x)?s.x:(i%2?7:-7),z=Number.isFinite(s.z)?s.z:-bounds.depth/2+7+Math.floor(i/2)*8;return {...s,x,z,approach:s.approach||{x:s.approachX??(x-Math.sign(x||1)*2.95),z:s.approachZ??z}};});obstacles=stationObstacles(stations);stations.forEach((s,i)=>makeStation(s,i,epoch));position={x:0,z:bounds.depth/2-4};stopMovement();yaw=heading=0;firstFov=67;manualLookUntil=0;[pitch,distance]=cameraDefaults[view];near=null;lastNear='';avatar.object.position.set(position.x,0,position.z);avatar.object.rotation.y=0;cameraAim.set(position.x,1.15,position.z);camera.position.set(0,4.3,position.z+6);marker.visible=false;routeGuide.visible=false;onNear(null);updateLabels();onMove(getState());}
   function name(s){return language.startsWith('zh')?s.title||s.titleEn||s.id:s.titleEn||s.title||s.id;}
   function updateLabels(){const W=container.clientWidth||innerWidth,H=container.clientHeight||innerHeight;for(const label of labels){const s=label.station,p=v3.set(s.x,s.photoSrc?5.25:3.35,s.z).project(camera),d=Math.hypot(position.x-s.approach.x,position.z-s.approach.z);const visible=p.z>-1&&p.z<1&&Math.abs(p.x)<.97&&p.y>-.89&&p.y<.78&&(d<19||s.id===objectiveId||view==='overview');label.element.hidden=!visible;if(!visible)continue;label.element.style.left=((p.x*.5+.5)*W)+'px';label.element.style.top=((-p.y*.5+.5)*H)+'px';label.element.style.opacity=d<16||s.id===objectiveId?'1':'.63';
       label.element.classList.toggle('station-target',s.id===objectiveId);
@@ -179,15 +220,18 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
   function coord(e){const r=canvas.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(pointer,camera);}
   function clickWorld(e){coord(e);const hits=raycaster.intersectObjects(world.children,true);const hit=hits.find(h=>h.object.userData.stationId||h.object.userData.ground);if(!hit)return;onManual();if(hit.object.userData.stationId){if(near?.id===hit.object.userData.stationId)interact();else goToStation(hit.object.userData.stationId);return;}path=findPath(position,{x:hit.point.x,z:hit.point.z},bounds,obstacles);if(path.length){marker.position.set(path.at(-1).x,.03,path.at(-1).z);marker.visible=true;drawRoute();}}
   listen(canvas,'pointerdown',e=>{if(paused||e.button>0)return;canvas.focus({preventScroll:true});pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});canvas.setPointerCapture?.(e.pointerId);if(pointers.size===1)drag={id:e.pointerId,x:e.clientX,y:e.clientY,total:0};else{drag=null;const p=[...pointers.values()];lastPinch=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);}});
-  listen(canvas,'pointermove',e=>{const p=pointers.get(e.pointerId);if(!p||paused)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2){const q=[...pointers.values()],d=Math.hypot(q[0].x-q[1].x,q[0].y-q[1].y);if(lastPinch>0)zoom(lastPinch/Math.max(d,1));lastPinch=d;
+  listen(canvas,'pointermove',e=>{if(document.pointerLockElement===canvas){if(!paused)look(-e.movementX*.003,-e.movementY*.003);return;}const p=pointers.get(e.pointerId);if(!p||paused)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2){const q=[...pointers.values()],d=Math.hypot(q[0].x-q[1].x,q[0].y-q[1].y);if(lastPinch>0)zoom(lastPinch/Math.max(d,1));lastPinch=d;
     }else if(drag){
       drag.total+=Math.hypot(dx,dy);
-      if(drag.total>=5){yaw=angleDelta(0,yaw-dx*.005);pitch=clamp(pitch+dy*.004,view==='first'?-.7:.12,view==='first'?.8:1.15);manualLookUntil=performance.now()+1600;}
+      if(drag.total>=5){look(-dx*.005,(view==='first'?-1:1)*dy*.004);}
     }
   });
   function pointerEnd(e){if(drag?.id===e.pointerId&&drag.total<7&&!paused)clickWorld(e);pointers.delete(e.pointerId);drag=null;lastPinch=0;}
   listen(canvas,'pointerup',pointerEnd);const cancelPointer=e=>{pointers.delete(e.pointerId);drag=null;lastPinch=0;};listen(canvas,'pointercancel',cancelPointer);listen(canvas,'lostpointercapture',cancelPointer);listen(canvas,'wheel',e=>{if(paused)return;e.preventDefault();zoom(Math.exp(clamp(e.deltaY,-150,150)*.0015));},{passive:false});listen(canvas,'contextmenu',e=>e.preventDefault());
   listen(canvas,'webglcontextlost',e=>{e.preventDefault();paused=true;stopMovement();onError(Error(language.startsWith('zh')?'3D 繪圖暫停，請重新開啟場景。':'3D graphics paused. Reopen the scene.'));});
+  function look(deltaYaw,deltaPitch){if(paused)return;yaw=angleDelta(0,yaw+(Number(deltaYaw)||0));pitch=clamp(pitch+(Number(deltaPitch)||0),view==='first'?-Math.PI/2+.03:.06,view==='first'?Math.PI/2-.03:1.35);manualLookUntil=performance.now()+2200;}
+  async function lockLook(){if(paused||!canvas.requestPointerLock)return false;try{setView('first');await canvas.requestPointerLock();return true;}catch{return false;}}
+  listen(document,'pointerlockchange',()=>{container.classList.toggle('pointer-locked',document.pointerLockElement===canvas);if(document.pointerLockElement!==canvas)stopMovement();});
   function setView(next){if(!Object.hasOwn(cameraDefaults,next))return;view=next;[pitch,distance]=cameraDefaults[next];firstFov=67;avatar.object.visible=next!=='first';onView(view);onMove(getState());}
   function zoom(multiplier){
     if(view==='first')firstFov=clamp(firstFov*multiplier,42,90);
@@ -276,14 +320,15 @@ export function createWalkWorld({container,THREE:T,config,onNear=()=>{},onIntera
       camera.lookAt(cameraAim);
     }
     snapCamera=false;
-    renderer.render(scene,camera);
+    // A fixed capture can use its own GPU/CPU while the walking world is paused.
+    if(!document.body.classList.contains('media-open'))renderer.render(scene,camera);
     if(performance.now()-lastEmit>110){
       updateLabels();onMove({...getState(),moving:moved>.001});lastEmit=performance.now();
     }
   }
-  function setPaused(value){paused=!!value;if(paused)stopMovement();}
+  function setPaused(value){paused=!!value;if(paused){stopMovement();if(document.pointerLockElement===canvas)document.exitPointerLock?.();}}
   function setLanguage(value){language=String(value||'en');canvas.setAttribute('aria-label',language.startsWith('zh')?'可行走工程場景，WASD 或方向鍵移動，E 操作':'Walkable engineering scene. WASD or arrows move. E interacts.');updateLabels();onNear(near);}
   function dispose(){if(disposed)return;disposed=true;configEpoch++;cancelAnimationFrame(frame);stopMovement();listeners.forEach(f=>f());disposeWorld();avatar.dispose();marker.geometry.dispose();markerMaterial.dispose();routeGuide.geometry.dispose();routeGuide.material.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();labelLayer.remove();}
   setConfig(config);resize();animate();
-  return {setConfig,setView,setMove,goToStation,interact,resize,dispose,getState,setPaused,setLanguage,setPosition,resetPosition,setCompleted,setObjective,recenter,stop:stopMovement};
+  return {setConfig,setView,setMove,goToStation,interact,resize,dispose,getState,setPaused,setLanguage,setPosition,resetPosition,setCompleted,setObjective,recenter,look,lockLook,stop:stopMovement};
 }

@@ -217,15 +217,16 @@ export function buildWorldConfig(scene, assets = [], language = 'en') {
   const routePhotos = (Array.isArray(scene.assetIds) ? scene.assetIds : []).map(id => byId.get(id)).filter(usablePhoto);
   const stations = chapters.map((chapter, chapterIndex) => {
     const base = source.stations[chapterIndex];
-    const kind = moduleEquipment?.[chapterIndex] || base.kind;
+    const specialtyKinds = scene.specialty === 'quantum' ? ['cryostat','instrument','bench','rack','instrument','bench'] : scene.specialty === 'ai' ? ['accelerator','rack','bench','accelerator','rack','instrument'] : null;
+    const kind = specialtyKinds?.[chapterIndex] || moduleEquipment?.[chapterIndex] || base.kind;
     const names = moduleEquipment ? spaceEquipmentNames[kind] : null;
     const exactPhoto = byId.get(chapter.assetId);
     const photo = usablePhoto(exactPhoto) ? exactPhoto : routePhotos[chapterIndex % Math.max(1,routePhotos.length)];
     return {
       ...base,
       kind,
-      equipmentTitle: names?.[0] || base.equipmentTitle,
-      equipmentTitleEn: names?.[1] || base.equipmentTitleEn,
+      equipmentTitle: scene.specialty ? String(chapter.title||'').replace(/^\d+\s*[·.]\s*/,'') : names?.[0] || base.equipmentTitle,
+      equipmentTitleEn: scene.specialty ? String(chapter.titleEn||'').replace(/^\d+\s*[·.]\s*/,'') : names?.[1] || base.equipmentTitleEn,
       id: String(chapter.id || scene.id + '-chapter-' + (chapterIndex + 1)),
       chapterIndex,
       title: String(chapter.title || chapter.titleEn || ''),
@@ -245,6 +246,7 @@ export function buildWorldConfig(scene, assets = [], language = 'en') {
     titleEn:String(scene.titleEn || scene.title || ''),
     language,
     color:source.color,
+    specialty:scene.specialty || null,
     layout:spaceModule === 3 || spaceModule === 10 ? 'hangar' : source.layout,
     bounds:{...source.bounds},
     stations,

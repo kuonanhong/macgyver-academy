@@ -10,6 +10,7 @@ import {EXPANSION_STAGE_FAMILIES,EXPANSION_CONTEXT_FAMILIES,renderExpansionConte
  * Explicit tasks are authored; remaining curricula select shared semantic models.
  */
 import {resolveExpansionExercise,renderExpansionScene} from './expansion-exercises.js';
+import {resolveCurriculumExerciseV25,renderCurriculumEvidenceV25} from './curriculum-exercises-v25.js';
 const bi=(zh,en)=>({zh,en});
 const ctl=(id,zh,en,min,max,step,initial,target,unit='',tolerance=step/2)=>({id,label:bi(zh,en),min,max,step,initial,target,unit,tolerance});
 const opt=(id,zh,en)=>({id,label:bi(zh,en)});
@@ -269,6 +270,7 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 export function resolveExercise(course={},step={}){
+ const curriculumV25=resolveCurriculumExerciseV25(course,step,make);if(curriculumV25)return curriculumV25;
  // Extension-only architecture: preserve every original course step and scene.
  if(String(step.id).includes('-v15-')&&course.v15Architecture)course={...course,...course.v15Architecture};
  if(String(step.id).includes('-v14-')&&course.v14Architecture)course={...course,...course.v14Architecture};
@@ -324,9 +326,9 @@ export function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
- const passed=numbers&&choice&&action;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
- return {passed,readout,evidence:passed?spec.evidence:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
+  return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
 
 const firstPackage={
@@ -444,6 +446,7 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV25)return renderCurriculumEvidenceV25(spec,choice,lang);
  if(spec.expansion)return renderExpansionScene(spec,values,choice,phase,lang);
  if(spec.scene.startsWith('itv11:'))return renderComputingVisual(spec.scene.slice(6),{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');
  if(spec.scene.startsWith('worldv11:')&&spec.worldCourse)return renderWorldVisual(spec.worldCourse,{zh:lang==='zh',focus:spec.visualFocus}).replace('<svg ','<svg x="16" y="40" width="368" height="219" ');

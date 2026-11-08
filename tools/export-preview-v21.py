@@ -3,12 +3,13 @@
 from __future__ import annotations
 import argparse, hashlib, json, re, shutil, tempfile
 from pathlib import Path
+from urllib.parse import urlsplit
 
 MARKER = '.macgyver-static-export'
 BLOCKED = {'.git','node_modules','models','local-documents','owner-private','credentials','secrets','uploads','__pycache__','userdata','user-data','accounts','auth'}
 SUFFIXES = {'.pem','.key','.p12','.pfx','.sqlite','.sqlite3','.db','.gguf','.safetensors','.ckpt','.pt','.pth','.onnx','.bin','.pyc','.h5','.hdf5','.pb','.npy','.npz','.pkl','.pickle','.keras','.model'}
 ID = re.compile(r'^[a-z0-9]+(?:[-_][a-z0-9]+)*$')
-META = {'id','title','titleEn','category','subcategory','subcategoryTitle','subcategoryTitleEn','summary','summaryEn','status','kind','stepCount','estimatedMinutes','photoId','educationEdition','enrichmentVersion','curriculumVersion','contentStatus','depth','languageCoverage','learningTrack','learningSubdiscipline','learningTags','tags','architectureFamily','_lazy','_lazyTopic','stages'}
+META = {'id','title','titleEn','category','subcategory','subcategoryTitle','subcategoryTitleEn','summary','summaryEn','status','kind','stepCount','estimatedMinutes','photoId','educationEdition','enrichmentVersion','curriculumVersion','contentStatus','depth','languageCoverage','learningTrack','learningSubdiscipline','learningTags','tags','architectureFamily','experienceId','_lazy','_lazyTopic','stages'}
 PUBLIC_GAME_DATA = {
     'campaigns-v20.json': 'MG_CAMPAIGNS_V20',
     'campaign-index-v20.json': 'MG_CAMPAIGN_INDEX_V20',
@@ -69,12 +70,27 @@ def public_game_data(source, destination):
             # A journey is original public narrative. Original member lesson
             # bodies remain in the checked lazy course descriptors above.
             allowed = {'id', 'category', 'courseId', 'title', 'titleEn', 'brief', 'briefEn',
-                       'assetIds', 'roles', 'chapters', 'equipment', 'spaceModule'}
+                       'assetIds', 'roles', 'chapters', 'equipment', 'spaceModule',
+                       'specialty', 'curriculumVersion', 'references'}
             allowed_chapter = {'id', 'title', 'titleEn', 'description', 'descriptionEn',
-                               'assetId', 'observations', 'task', 'taskEn', 'roleTasks', 'choices'}
+                               'assetId', 'observations', 'task', 'taskEn', 'roleTasks', 'choices', 'labExperiment'}
             for journey in value['experiences']:
                 if not isinstance(journey, dict) or set(journey) - allowed or not ID.fullmatch(journey.get('id', '')):
                     raise ValueError('Unexpected public experience fields.')
+                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai'} or journey.get('category') != 'computing'):
+                    raise ValueError('Invalid public laboratory specialty.')
+                if 'curriculumVersion' in journey and journey['curriculumVersion'] != '25.0.0':
+                    raise ValueError('Invalid public laboratory version.')
+                if 'references' in journey:
+                    refs = journey['references']
+                    if not isinstance(refs, list) or len(refs) > 20:
+                        raise ValueError('Invalid public laboratory references.')
+                    for reference in refs:
+                        if not isinstance(reference, dict) or set(reference) != {'title', 'url'} or not isinstance(reference['title'], str) or not 1 <= len(reference['title']) <= 500 or not isinstance(reference['url'], str):
+                            raise ValueError('Invalid public laboratory reference.')
+                        parsed = urlsplit(reference['url'])
+                        if parsed.scheme != 'https' or not parsed.hostname or parsed.username or parsed.password:
+                            raise ValueError('Invalid public laboratory reference URL.')
                 if 'spaceModule' in journey and (journey.get('category') != 'space'
                         or not re.fullmatch(r'space-[a-z0-9]+(?:-[a-z0-9]+)*', journey.get('courseId', ''))
                         or type(journey['spaceModule']) is not int or not 1 <= journey['spaceModule'] <= 10):
@@ -84,6 +100,11 @@ def public_game_data(source, destination):
                 for chapter in journey['chapters']:
                     if not isinstance(chapter, dict) or set(chapter) - allowed_chapter:
                         raise ValueError('Unexpected public experience chapter fields.')
+                    if 'labExperiment' in chapter:
+                        approved = {'quantum': {'shots', 'relaxation', 'ramsey', 'readout', 'rb', 'repetition'},
+                                    'ai': {'matmul', 'intensity', 'roofline', 'quantize', 'allreduce', 'throughput'}}
+                        if chapter['labExperiment'] not in approved.get(journey.get('specialty'), set()):
+                            raise ValueError('Invalid public laboratory experiment.')
         target = destination / 'data' / name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(serial(value) + '\n', 'utf-8')
@@ -164,8 +185,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23','24'}:
-        raise ValueError('Rebuild V21, V22, V23 or V24 before exporting the public preview.')
+    if major not in {'21','22','23','24','25'}:
+        raise ValueError('Rebuild V21, V22, V23, V24 or V25 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -221,13 +242,14 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major in {'23', '24'}:
+        if legacy_entrypoints and major in {'23', '24', '25'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
             for page in ('index.html', 'experience.html', 'campaign.html', 'experience-photo-v21.html',
                          'automotive-lab-v21.html', 'space-lab-v23.html', 'help.html',
-                         *(['curriculum-v24.html'] if major == '24' else [])):
+                         *(['curriculum-v24.html'] if int(major) >= 24 else []),
+                         *(['curriculum-v25.html'] if int(major) >= 25 else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page

@@ -25,6 +25,7 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
   function setConfig(next){completed=new Set();world=next||{};bounds=world.bounds||{width:30,depth:36};stations=(world.stations||[]).map(s=>({...s,approach:stationPosition(s)}));
     obstacles=stationObstacles(stations);position=spawn();camera={...position};yaw=heading=Math.PI/4;clearMovement();near=null;updateNear();emit(true);}
   function setPosition(p){if(!p||!Number.isFinite(p.x)||!Number.isFinite(p.z)||!isWalkable(p.x,p.z,bounds,obstacles))return false;position={x:p.x,z:p.z};camera={...position};if(Number.isFinite(p.yaw))yaw=heading=angleDelta(0,p.yaw);clearMovement();updateNear();emit(true);return true;}
+  function look(deltaYaw){if(!paused)yaw=angleDelta(0,yaw+(Number(deltaYaw)||0));}
   function resetPosition(){setPosition({...spawn(),yaw:Math.PI/4});}
   function goToStation(id){const s=stations.find(s=>s.id===id);if(!s)return false;velocity={x:0,z:0};path=findPath(position,s.approach,bounds,obstacles);target=path.length?s.approach:null;return path.length>0||Math.hypot(position.x-s.approach.x,position.z-s.approach.z)<.5;}
   function interact(){if(paused)return false;updateNear();if(near){clearMovement();onInteract(near);return true;}return false;}
@@ -60,6 +61,8 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
         circle(x,z,2.09,.42,'#e3e8de','#68868c');
         break;
       }
+      case 'cryostat':{cylinder(x,z,.85,2.6,'#9eafb6',.2);for(let j=0;j<5;j++)circle(x,z,.6+j*.43,.69-j*.09,'#e6ba59','#364a5c');screen(x+1.1,z+.4,1.8,.55,.4);break;}
+      case 'accelerator':{box(x,z,2.8,1.7,.3,'#37505c',1.15);for(let j=0;j<4;j++){box(x-.9+j*.6,z,.48,.7,.25,'#7aaab4',1.45);}screen(x,z,2.5,1.7,.65);break;}
       case 'vacuum':{
         cylinder(x,z,.87,1.75,'#9cb4c0',.27);
         circle(x,z,2.02,.69,'#304f66','#e0ecee');
@@ -152,5 +155,5 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
   listen(document,'keyup',e=>keys.delete(e.key.toLowerCase()));listen(window,'blur',clearMovement);listen(document,'visibilitychange',()=>{if(document.hidden)clearMovement();});listen(window,'resize',resize);
   function dispose(){disposed=true;cancelAnimationFrame(frameId);for(const remove of removers)remove();canvas.remove();}
   setConfig(config);resize();frameId=requestAnimationFrame(animate);
-  return {setConfig,setCompleted,setView,setMove,goToStation,interact,resize,dispose,getState,setPaused,setLanguage,setPosition,resetPosition,setObjective,recenter,stop:clearMovement};
+  return {setConfig,setCompleted,setView,setMove,goToStation,interact,resize,dispose,getState,setPaused,setLanguage,setPosition,resetPosition,setObjective,recenter,look,stop:clearMovement};
 }

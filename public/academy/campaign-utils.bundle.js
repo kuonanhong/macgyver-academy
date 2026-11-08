@@ -511,6 +511,33 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
   return {
     apply,
     invalidate,
+    exportCache: (language = null) => ({
+      format: 'macgyver-translation-cache', version: 1,
+      entries: [...cache].filter(([key]) => !language || key.startsWith(language + '\u0000')),
+    }),
+    importCache: pack => {
+      // Validate the whole pack before changing the active cache. Text is only
+      // rendered as text nodes, never interpreted as HTML or executable code.
+      if (pack?.format !== 'macgyver-translation-cache' || pack.version !== 1 ||
+          !Array.isArray(pack.entries) || pack.entries.length > MAX_ENTRIES) throw Error('Invalid translation pack.');
+      let characters = 0;
+      const seen = new Set();
+      for (const entry of pack.entries) {
+        if (!Array.isArray(entry) || entry.length !== 2 || entry.some(value => typeof value !== 'string')) throw Error('Invalid translation entry.');
+        const [key, value] = entry;
+        const divider = key.indexOf('\u0000');
+        if (divider < 1 || !SUPPORTED.includes(key.slice(0, divider)) ||
+            key.indexOf('\u0000', divider + 1) !== -1 || !key.slice(divider + 1).trim() ||
+            key.length > MAX_TEXT_CHARS + 60 || !value.trim() || value.length > 12000 || seen.has(key)) throw Error('Invalid translation entry.');
+        seen.add(key);
+        characters += weight(key, value);
+      }
+      if (characters > MAX_CACHE_CHARS) throw Error('Translation pack exceeds the device cache limit.');
+      invalidate();
+      for (const [key, value] of pack.entries) put(key, value);
+      persist();
+      return { imported: pack.entries.length, storageAvailable };
+    },
     stats: () => ({ entries: cache.size, characters: cacheChars, maxEntries: MAX_ENTRIES, storageAvailable, requests, status: { ...latestStatus } }),
     clearCache: () => { invalidate(); cache.clear(); cacheChars = 0; try { localStorage.removeItem(CACHE_KEY); } catch { storageAvailable = false; } },
   };

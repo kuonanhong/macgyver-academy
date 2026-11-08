@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# V21–V24 entry point. Older explicit-version tools are preserved separately.
+# V21–V25 entry point. Older explicit-version tools are preserved separately.
 set -euo pipefail
 TASK_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 TASK_UPLOADER="$TASK_ROOT/Upload_MacGyver_v21_SSH.sh"
@@ -15,7 +15,7 @@ Usage: bash macgyver.sh [upload|deploy|all] [uploader options]
        bash macgyver.sh compare [uploader options]
        bash macgyver.sh serve [server options]
 
-Default: V21–V24 incremental public-preview SSH upload; rebuild only when changed.
+Default: V21–V25 incremental public-preview SSH upload; rebuild only when changed.
 Only known obsolete member payloads are cleaned; unrelated remote files are preserved.
 Website: git@github.com:kuonanhong/macgyver-academy.git
 Add --with-assets for existing models/documents: git@github.com:kuonanhong/PRIVATE-MODELS.git

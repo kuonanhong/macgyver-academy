@@ -1,6 +1,7 @@
+import {restoreLabRun} from './walk-labs-v25.js';
 /* Separate walking-game progress; original course/V21 completion is untouched. */
 export function newWalkRecord(scene,roleId=scene.roles?.[0]?.id||'learner') {
-  return {version:22,sceneId:scene.id,roleId,chapterId:scene.chapters[0].id,seen:{},decisions:{},completed:[],notes:{},actions:[],position:null,roleRuns:{},updatedAt:null};
+  return {version:22,sceneId:scene.id,roleId,chapterId:scene.chapters[0].id,seen:{},decisions:{},completed:[],notes:{},labRuns:{},actions:[],position:null,roleRuns:{},updatedAt:null};
 }
 export function restoreWalkRecord(scene,raw) {
   const out=newWalkRecord(scene);
@@ -15,6 +16,7 @@ export function restoreWalkRecord(scene,raw) {
     const d=raw.decisions?.[id];
     if(d&&c.choices?.some(x=>x.id===d.choiceId))out.decisions[id]={choiceId:d.choiceId,assisted:d.assisted===true};
     if(typeof raw.notes?.[id]==='string')out.notes[id]=raw.notes[id].slice(0,4000);
+    if(c.labExperiment){const run=restoreLabRun(c.labExperiment,raw.labRuns?.[id]);if(run)out.labRuns[id]=run;}
     // A forged completion without the corresponding evidence/decision is rejected.
     if(out.completed.includes(id)&&(out.seen[id].length!==ids.size||(c.choices?.length&&!out.decisions[id])))out.completed=out.completed.filter(v=>v!==id);
   }
