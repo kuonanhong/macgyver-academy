@@ -70,7 +70,7 @@ async function askCloudMentor({question, locale, context = {}, signal, fetchImpl
   // Never forward lesson text, personal notes, attachments, or chat history.
   const metadata = {
     domain: context.domain, courseId: context.courseId || context.projectId,
-    sceneId: context.sceneId, station: context.station,
+    sceneId: context.sceneId, station: context.station, stepId: context.stepId,
   };
   for (const [key, value] of Object.entries(metadata)) {
     if (validId(value)) body[key] = value;
@@ -131,7 +131,11 @@ const { cloudTranslationAllowed, translatePublicText }=modules["mentor-cloud-v23
  * dialog or details element. Mark private/user-generated content and language
  * names with data-no-translate. No form values are read or sent to the service.
  */
-const SUPPORTED = 'zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo'.split(' ');
+// Target catalog; only zh-TW/en are fully authored. Other targets need a capable translator.
+const SUPPORTED_LANGUAGES = Object.freeze('zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo as be bho bo ceb co dv ff fy gd gn gom haw hmn ht jv ku ky la lb ln mai mg mi oc om or ps qu sa sd sn st su tg ti tk tt ug xh yi'.split(' '));
+const supportedLanguages = SUPPORTED_LANGUAGES;
+const SUPPORTED = SUPPORTED_LANGUAGES;
+const BUNDLED_UI_LANGUAGES = Object.freeze(SUPPORTED_LANGUAGES.slice(0, 79));
 const CACHE_KEY = 'mg-translation-cache-v2';
 const MAX_ENTRIES = 3000;
 const MAX_CACHE_CHARS = 1000000;
@@ -140,7 +144,7 @@ const MAX_BATCH_CHARS = 4000;
 const MAX_BATCH_SIZE = 12;
 const TIMEOUT_MS = 45000;
 const ATTRIBUTES = ['placeholder', 'title', 'aria-label'];
-const NEVER_TRANSLATE = '[data-no-translate],[translate="no"],[data-private],script,style,noscript,template,code,pre,textarea,[contenteditable]:not([contenteditable="false"]),#language,#translationLanguage,#notes,#researchNotes,#question,#answer,#accountName';
+const NEVER_TRANSLATE = '[data-no-translate],[translate="no"],[data-private],script,style,noscript,template,code,pre,math,.katex,.MathJax,[data-formula],textarea,[contenteditable]:not([contenteditable="false"]),#language,#translationLanguage,#notes,#researchNotes,#question,#answer,#accountName';
 
 function tag(value) {
   const parts = String(value || '').trim().replaceAll('_', '-').split('-');
@@ -228,7 +232,7 @@ function hiddenOrExcluded(element, attributes = false) {
 const dictionaryPromises = new Map();
 function loadDictionary(language) {
   const root = globalThis.window || globalThis;
-  if (!language || language === 'en' || language === 'zh-TW') return Promise.resolve(null);
+  if (!language || language === 'en' || language === 'zh-TW' || !BUNDLED_UI_LANGUAGES.includes(language)) return Promise.resolve(null);
   if (root.MG_I18N?.[language]) return Promise.resolve(root.MG_I18N[language]);
   if (!/^[a-z]{2,3}(?:-[A-Z]{2})?$/.test(language) || typeof root.document?.createElement !== 'function' || typeof root.document?.head?.appendChild !== 'function') return Promise.resolve(null);
   if (!dictionaryPromises.has(language)) dictionaryPromises.set(language, new Promise(resolve => {
@@ -275,7 +279,7 @@ function lookupDictionary(dict, source) {
 }
 const translators = new Map();
 /** On-device translation (Chrome Translator API). Returns null when unavailable. */
-async function onDeviceTranslator(language, {source = 'en', userActivated = false} = {}) {
+async function onDeviceTranslator(language, {source = 'en', userActivated = false, onProgress = () => {}} = {}) {
   const api = globalThis.Translator;
   if (!api?.create || !language || language === source) return null;
   const target = language === 'zh-CN' ? 'zh' : language === 'zh-TW' ? 'zh-Hant' : language === 'fil' ? 'tl' : language;
@@ -285,10 +289,32 @@ async function onDeviceTranslator(language, {source = 'en', userActivated = fals
     const availability = await api.availability?.({sourceLanguage: source, targetLanguage: target});
     if (availability === 'unavailable' || availability === 'no') return null;
     if (availability !== 'available' && availability !== 'readily' && !userActivated && !globalThis.navigator?.userActivation?.isActive) return null;
-    const promise = api.create({sourceLanguage: source, targetLanguage: target});
+    const promise = api.create({sourceLanguage: source, targetLanguage: target,
+      monitor(monitor) { monitor?.addEventListener?.('downloadprogress', event => {
+        const loaded = Number(event.loaded), total = Number(event.total);
+        const fraction = total > 0 ? loaded / total : loaded <= 1 ? loaded : null;
+        try { onProgress(Number.isFinite(fraction) ? Math.max(0, Math.min(1, fraction)) : null); } catch {}
+      }); }
+    });
     translators.set(key, promise.catch(() => { translators.delete(key); return null; }));
     return translators.get(key);
   } catch { return null; }
+}
+/** Visible public text only: no notes, form values, code or mentor conversation.
+ * Used by V28 narration. Call after language rendering/translation completes. */
+function publicTextSnapshot(root, {maxCharacters = 24000} = {}) {
+  if (!root) return '';
+  const documentForRoot = root.ownerDocument || root;
+  const walker = documentForRoot.createTreeWalker(root, 4);
+  const values = []; let node, size = 0;
+  while ((node = walker.nextNode()) && size < maxCharacters) {
+    if (hiddenOrExcluded(node.parentElement)) continue;
+    const value = String(node.nodeValue || '').trim();
+    if (!value) continue;
+    const remaining = Math.max(0, maxCharacters - size);
+    values.push(value.slice(0, remaining)); size += value.length + 1;
+  }
+  return values.join('\n');
 }
 function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, getCloudAllowed = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
@@ -543,7 +569,7 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
   };
 }
 
-return {resolveSupportedLanguage,languageDirection,loadDictionary,loadedDictionary,lookupDictionary,onDeviceTranslator,createLocaleController};
+return {SUPPORTED_LANGUAGES,supportedLanguages,BUNDLED_UI_LANGUAGES,resolveSupportedLanguage,languageDirection,loadDictionary,loadedDictionary,lookupDictionary,onDeviceTranslator,publicTextSnapshot,createLocaleController};
 })();
 modules["panorama-cpu-v18.js"]=(function(){
 /* CPU spherical projection for verified 2:1 panoramas. No synthesized views.
@@ -755,7 +781,7 @@ function createAIClient({onStatus=()=>{},config=globalThis.MG_CONFIG||{},fetcher
   async unload(){if(busy){operation++;controller?.abort();emit('cancelling','Stopping; unload will finish after the current operation.');return;}busy=true;try{if(runtime)await runtime.exit();runtime=null;emit('idle','Model memory released.',{modelId:null});}finally{busy=false;}},
   async clearCache(){if(busy)throw aiError('Stop the active model operation first.','busy');busy=true;try{if(runtime)await runtime.exit();runtime=null;await environment.caches?.delete(AI_CACHE);emit('idle','Downloaded model cache removed.',{modelId:null});}finally{busy=false;}},
   async translate({texts,language='en',signal}={}){
-   const supported='zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo'.split(' ');
+   const supported='zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo as be bho bo ceb co dv ff fy gd gn gom haw hmn ht jv ku ky la lb ln mai mg mi oc om or ps qu sa sd sn st su tg ti tk tt ug xh yi'.split(' ');
    if(!runtime||status.phase!=='ready')throw aiError('Load a CPU model before local translation.','not-ready');
    if(busy)throw aiError('The model is busy. Retry when it is ready.','busy');
    if(!supported.includes(language)||!Array.isArray(texts)||texts.length<1||texts.length>40||texts.some(t=>typeof t!=='string'||t.length>3000)||texts.join('').length>18000)throw aiError('Invalid translation batch.','validation');

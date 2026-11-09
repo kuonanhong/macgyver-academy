@@ -7,6 +7,32 @@ const choose = (value, zh) => Array.isArray(value) ? value[zh ? 0 : 1] || value[
 const field = (course, key, zh) => String(course?.[zh ? key : `${key}En`] || course?.[key] || course?.[`${key}En`] || '');
 const textFor = course => [course.title, course.titleEn, course.summary, course.summaryEn, course.subcategoryTitle, course.subcategoryTitleEn, course.learningTrack, course.learningSubdiscipline, ...(Array.isArray(course.learningTags) ? course.learningTags : []), ...(Array.isArray(course.tags) ? course.tags : [])].filter(Boolean).join(' ').normalize('NFKC').toLowerCase();
 
+// BEGIN V28 COMMUNICATIONS GROUP METADATA
+export const COMMUNICATIONS_V28_GROUPS = [
+  ["IP、位址與路徑封包尺寸", "IP, addressing and path packet size"],
+  ["乙太網路與資料中心封裝", "Ethernet and data-center encapsulation"],
+  ["路由、標籤與流量工程", "Routing, labels and traffic engineering"],
+  ["DNS 與分散式名稱服務", "DNS and distributed naming"],
+  ["TCP 傳輸與壅塞控制", "TCP transport and congestion control"],
+  ["QUIC、HTTP 與內容傳遞", "QUIC, HTTP and content delivery"],
+  ["網路組態、遙測與效能證據", "Network configuration, telemetry and performance evidence"],
+  ["經典接收機、波形與資訊容量", "Classic receivers, waveforms and information capacity"],
+  ["GSM、UMTS 與 LTE 的無線資源", "Radio resources in GSM, UMTS and LTE"],
+  ["5G NR 與開放式無線接取", "5G NR and open radio access"],
+  ["Wi-Fi 各世代的空中介面設計", "Air-interface design across Wi-Fi generations"],
+  ["低功耗近距離無線與測距", "Low-power short-range radio and ranging"],
+  ["全球衛星通訊與導航星系", "Global satellite communications and navigation"],
+  ["深空網路、遙測與任務鏈路", "Deep-space networks, telemetry and mission links"],
+  ["光纖物理、量測與鏈路驗收", "Fiber physics, measurement and link acceptance"],
+  ["同調 DWDM、光交換與 OTN", "Coherent DWDM, optical switching and OTN"],
+  ["PON 接取、分光與前傳", "PON access, splitting and fronthaul"],
+  ["著名海底光纜的工程取捨", "Engineering tradeoffs in landmark submarine cables"],
+  ["量子通訊、QKD 與量子網路", "Quantum communication, QKD and quantum networks"],
+  ["精密授時、White Rabbit 與 TSN", "Precision timing, White Rabbit and TSN"],
+  ["工業與物聯網通訊協定", "Industrial and IoT communication protocols"]
+];
+// END V28 COMMUNICATIONS GROUP METADATA
+
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
   {id:'space',icon:'science',title:pair('太空與衛星','Space & satellites'),description:pair('100門逐步課涵蓋任務、軌道、發射、平台、姿控、通訊、遙測、測試與探索。','100 guided courses cover missions, orbits, launch, buses, attitude, links, remote sensing, testing, and exploration.'),boundary:pair('用公開案例、合成數據與可重現驗證學習；依來源與教學假設分列判據。','Learn from public cases, synthetic data, and reproducible checks. Keep source facts and teaching assumptions in separate records.')},
@@ -17,7 +43,7 @@ export const LEARNING_TRACKS = [
   {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('新增 100 門深入逐步課程，從著名神經架構一路到加速器、記憶體、編譯、訓練與推論驗收。','100 new detailed courses connect landmark neural architectures to accelerators, memory, compilation, training and inference acceptance.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
   {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('新增 100 門深入課程，串接經典超級電腦、加速器、科學核心、互連、儲存、排程與韌性。','100 new detailed courses connect landmark supercomputers, accelerators, scientific kernels, interconnects, storage, scheduling and resilience.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
   {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('新增 100 門深入課程，串接身分、密碼協定、防禦監測、安全開發、雲端治理、應變與復原。','100 new detailed courses connect identity, cryptographic protocols, defensive monitoring, secure development, cloud governance, response and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
-  {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('封包、光纖、無線、衛星與量子通訊介面。','Packet, fiber, wireless, satellite and quantum-communication interfaces.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
+  {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('新增 210 門深入逐步課程、21 個專題分組，每門 40 步；保留原有 25 門。從封包、路由與網際網路，深入無線、衛星、光纖、量子通訊、精密授時與工業網路。','210 new detailed courses in 21 topic groups, with 40 steps each; all 25 earlier courses remain. Follow packets, routing and the Internet into wireless, satellites, fiber, quantum communications, precision timing and industrial networks.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
   {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('作業系統、編譯器、資料庫、建置與可信交付。','Operating systems, compilers, databases, builds and trustworthy delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
   {id:'energy', icon:'energy', title:pair('核能、再生能源與儲能','Nuclear, renewable energy & storage'), description:pair('核電、SMR、核融合、風力、水力、地熱與儲能。','Nuclear plants, SMRs, fusion, wind, hydro, geothermal and storage.'), boundary:pair('比較能量轉換、熱流、機電介面與監測；裂變、融合與再生能源的物理及驗證條件不同。','Compare conversion, heat flow, electromechanical interfaces and monitoring; fission, fusion and renewables have different physics and validation conditions.')},
   {id:'resources', icon:'resources', title:pair('石油、天然氣與採礦','Oil, gas & mineral resources'), description:pair('資源調查、井與礦場系統、淘金及環境監測。','Resource surveys, well and mine systems, gold recovery and environmental monitoring.'), boundary:pair('共同點是地質證據、物料流與環境監測；油氣井、露天礦與重力選礦的工程邊界不同。','Geological evidence, material flow and environmental monitoring are shared; wells, open-pit mines and gravity separation have different engineering boundaries.')},
@@ -36,6 +62,8 @@ export const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 export const LEARNING_SUBDISCIPLINES = [
+  // Exact V28 identities take precedence over the older topic-word heuristics.
+  ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>{const id=`communications-v28-${String(index+1).padStart(2,'0')}`;return subdivision(id,'networks',title[0],title[1],new RegExp(`\\b${id}\\b`,'i'));}),
   // V27 SUBDISCIPLINES START
   subdivision("hpc-v27-01","servers","著名超算的拓撲與工作交接驗收","Topology and workflow acceptance at landmark supercomputers",/hpc-v27-01/i),
   subdivision("hpc-v27-02","servers","記憶體政策、配置粒度與 RAS 證據","Memory policy, allocation granularity and RAS evidence",/hpc-v27-02/i),
@@ -188,6 +216,7 @@ export const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 export const LEARNING_ROUTES = [
+  ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
   {"id": "hpc-v27-02", "title": ["記憶體政策、配置粒度與 RAS 證據", "Memory policy, allocation granularity and RAS evidence"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-011", "hpc-v27-012", "hpc-v27-013", "hpc-v27-014", "hpc-v27-015", "hpc-v27-016", "hpc-v27-017", "hpc-v27-018", "hpc-v27-019", "hpc-v27-020"]},

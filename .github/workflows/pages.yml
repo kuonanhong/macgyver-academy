@@ -1,7 +1,15 @@
 name: Publish static MacGyver Academy
-# Uploading source is separate from publishing the public learning site.
+run-name: "Pages · ${{ inputs.request_id || github.run_id }}"
+# One explicit publishing route; the uploader configures Pages Source=Actions.
+# No push trigger: batch source uploads must finish before the single dispatch.
 on:
   workflow_dispatch:
+    inputs:
+      request_id:
+        description: 'Updater correlation ID (optional for a manual run)'
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -10,7 +18,7 @@ permissions:
 
 concurrency:
   group: macgyver-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -18,30 +26,26 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Assemble only the static academy
+      - name: Assemble and check only the public HTTP academy
         run: bash deploy-static.sh
-      - name: Reject private data in the public artifact
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          root = Path('github-pages')
-          assert (root / 'index.html').is_file()
-          assert (root / '.nojekyll').is_file()
-          blocked = {'.git', 'node_modules', 'models', 'local-documents', 'portable'}
-          for path in root.rglob('*'):
-              assert not path.is_symlink(), path
-              assert not blocked.intersection(path.relative_to(root).parts), path
-              assert not path.name.startswith('.env'), path
-              assert path.suffix.lower() not in {'.pem', '.key', '.sqlite', '.sqlite3', '.gguf', '.safetensors'}, path
-          PY
+      - name: Record exact Pages payload budget
+        run: python3 tools/check-pages-artifact-v28.py github-pages --report pages-payload-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pages-payload-report
+          path: pages-payload-report.json
+          retention-days: 7
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
@@ -49,3 +53,12 @@ jobs:
       - name: Publish Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # GitHub's Pages service has a 10-minute deployment limit.
+          timeout: 600000
+      - name: Report a failed deployment without hiding it
+        if: failure()
+        run: |
+          echo 'Inspect the failed step and the pages-payload-report artifact.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'A successful artifact upload does not mean Pages deployment succeeded.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'If syncing_files timed out within the checked size budget, retry this workflow once after checking GitHub Status.' >> "$GITHUB_STEP_SUMMARY"

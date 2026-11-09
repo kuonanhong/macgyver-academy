@@ -67,7 +67,7 @@ export async function askCloudMentor({question, locale, context = {}, signal, fe
   // Never forward lesson text, personal notes, attachments, or chat history.
   const metadata = {
     domain: context.domain, courseId: context.courseId || context.projectId,
-    sceneId: context.sceneId, station: context.station,
+    sceneId: context.sceneId, station: context.station, stepId: context.stepId,
   };
   for (const [key, value] of Object.entries(metadata)) {
     if (validId(value)) body[key] = value;

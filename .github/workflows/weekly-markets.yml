@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write
-  pages: write
+  actions: write
 
 concurrency:
   group: weekly-markets
@@ -28,15 +28,17 @@ jobs:
       - name: Validate snapshot
         run: python3 tools/markets-v12/update_markets.py --check
       - name: Commit only changed data files
+        id: commit
         run: |
           git config user.name "macgyver-weekly-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/academy/data/markets.json public/academy/data/fx.json
-          if git diff --cached --quiet; then echo "No change."; exit 0; fi
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; echo "No change."; exit 0; fi
           git commit -m "Weekly market & FX snapshot $(date -u +%F)"
           git push
-      - name: Ask GitHub Pages to rebuild (branch-published sites)
-        continue-on-error: true
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Publish changed data through the same checked Pages workflow
+        if: steps.commit.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request skipped (Actions-published site or no change)."
+        run: gh workflow run pages.yml --repo "${{ github.repository }}" --ref main -f request_id="weekly-${{ github.run_id }}"

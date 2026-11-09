@@ -1,4 +1,5 @@
 /* Original V22 continuous canvas fallback. Teaching geometry; never a reconstruction of real photographs. */
+import {normalizeWalkSettings} from './walk-v28.js';
 import {clamp,normalizeInput,isWalkable,moveWithCollisions,cameraRelativeMove,findPath,nearestStation,angleDelta,approachVelocity,stationObstacles} from './walk-physics-v22.js';
 
 export function createFallbackWorld({container,config,onNear=()=>{},onInteract=()=>{},onMove=()=>{},onView=()=>{},onManual=()=>{}}={}) {
@@ -12,14 +13,14 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
   let input={x:0,z:0},keys=new Set(),path=[],target=null,near=null,lastTime=null,lastEmit=0,walking=false,tick=0,zoom=1,pointers=new Map(),drag=null,pinch=0,width=1,height=1,dpr=1,frameId=0,labelRects=[],completed=new Set();
   const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
   const removers=[];
-  let objectiveId='',velocity={x:0,z:0},heading=Math.PI/4;
+  let objectiveId='',velocity={x:0,z:0},heading=Math.PI/4,displaySettings=normalizeWalkSettings(),speedMps=0;
   const cameraAngle=()=>yaw-Math.PI/4;
   const listen=(el,type,fn,opts)=>{el.addEventListener(type,fn,opts);removers.push(()=>el.removeEventListener(type,fn,opts));};
   const localText=s=>language.startsWith('zh')?s.title||s.titleEn:s.titleEn||s.title;
-  const hasDialog=()=>!!document.querySelector('dialog[open]')||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)||!!document.activeElement?.closest('.mentor-panel');
+  const hasDialog=()=>!!document.querySelector('dialog[open]')||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)||!!document.activeElement?.closest('[contenteditable]:not([contenteditable=false]),.mentor-panel');
   const spawn=()=>({x:0,z:bounds.depth/2-4});
   function emit(force=false){const now=performance.now();if(force||now-lastEmit>120){lastEmit=now;onMove(getState());}}
-  function getState(){return {x:position.x,z:position.z,yaw,moving:walking,view,nearId:near?.id||null,pathRemaining:path.length,renderer:'canvas2d'};}
+  function getState(){return {x:position.x,z:position.z,yaw,moving:walking,view,nearId:near?.id||null,pathRemaining:path.length,renderer:'canvas2d',speedMps};}
   function stationPosition(s){return s.approach||{x:s.x,z:s.z+2.9};}
   function updateNear(){const next=nearestStation(position,stations,2.25);if(next?.id!==near?.id){near=next;onNear(near);}}
   function setConfig(next){completed=new Set();world=next||{};bounds=world.bounds||{width:30,depth:36};stations=(world.stations||[]).map(s=>({...s,approach:stationPosition(s)}));
@@ -37,7 +38,7 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
   function recenter(){yaw=angleDelta(0,heading);emit(true);}
   function setObjective(id){objectiveId=id;}
   function setLanguage(value){language=String(value||'en');canvas.setAttribute('aria-label',language.startsWith('zh')?'連續工程場景：點地面行走，WASD 或方向鍵移動':'Continuous engineering room: click floor to walk, WASD or arrow keys to move');}
-  function resize(){const r=container.getBoundingClientRect();width=Math.max(1,r.width);height=Math.max(1,r.height);dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);}
+  function resize(){const r=container.getBoundingClientRect();width=Math.max(1,r.width);height=Math.max(1,r.height);dpr=Math.min(window.devicePixelRatio||1,displaySettings.quality==='low'?1:displaySettings.quality==='high'?2:1.35);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);}
   const scale=()=>Math.max(20,Math.min(width,height)*.055)*zoom;
   function project(x,z,y=0){const dx=x-camera.x,dz=z-camera.z,c=Math.cos(cameraAngle()),s=Math.sin(cameraAngle()),rx=dx*c-dz*s,rz=dx*s+dz*c,S=scale();return {x:width*.5+(rx-rz)*S*.76,y:height*.60+(rx+rz)*S*.43-y*S};}
   function unproject(x,y){const S=scale(),u=(x-width*.5)/(.76*S),v=(y-height*.60)/(.43*S),rx=(u+v)/2,rz=(v-u)/2,c=Math.cos(cameraAngle()),s=Math.sin(cameraAngle());return {x:camera.x+rx*c+rz*s,z:camera.z-rx*s+rz*c};}
@@ -51,6 +52,10 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
   function screen(x,z,y,w=1.0,h=.6){const p=project(x,z,y);ctx.fillStyle='#102b39';ctx.fillRect(p.x-w*scale()/2,p.y-h*scale(),w*scale(),h*scale());ctx.fillStyle='#67edc9';ctx.fillRect(p.x-w*scale()*.4,p.y-h*scale()*.8,w*scale()*.65,2);for(let i=0;i<3;i++)ctx.fillRect(p.x-w*scale()*.4,p.y-h*scale()*(.55-i*.12),w*scale()*(.5-i*.08),1);}
   function machine(s){const {x,z}=s,accent=completed.has(s.id)?'#b3df9c':world.color||'#83dfd9';box(x,z,4,3,.10,'#637b86');
     switch(s.kind){
+      case 'rf-bench':case 'timing-bench':{box(x,z,3,1.8,.15,'#c0d1d4',1.05);for(const side of [-1,1])box(x+side*1.15,z,.14,1.4,1,'#708e99');box(x-.65,z,1.2,1,.65,'#9bb4bf',1.2);screen(x-.65,z+.55,1.8,1,.4);box(x+.8,z,.9,.75,.48,'#33515c',1.2);screen(x+.8,z+.4,1.65,.6,.25);if(s.kind==='rf-bench')for(const side of [-1,1]){line(project(x+.8+side*.33,z,1.7),project(x+.8+side*.33,z,2.6),'#d5dfe1',2);for(let i=0;i<3;i++)line(project(x+.62+side*.33,z,2.2+i*.13),project(x+.98+side*.33,z,2.2+i*.13),'#85d8d4',2);}else for(let j=0;j<5;j++)box(x-.5+j*.25,z+.75,.15,.15,.07,'#65b9c6',1.23);break;}
+      case 'fiber-link':{box(x,z,3,1.8,.15,'#c0d1d4',1.05);for(const side of [-1,1]){box(x+side*1.15,z,.14,1.4,1,'#708e99');box(x+side*.95,z,.7,.7,.65,'#33515c',1.2);screen(x+side*.95,z+.4,1.7,.5,.3);}circle(x,z,1.25,.43,null,'#f1bf63');for(const side of [-1,1])line(project(x+side*.45,z+.1,1.25),project(x+side*.7,z+.1,1.25),'#f1bf63',2);break;}
+      case 'packet-wall':{box(x,z,3,.2,2.25,'#294656',.65);for(let row=0;row<3;row++)for(let col=0;col<5;col++)box(x-1.08+col*.54,z+.14,.4,.05,.3,(row+col)%3?'#6bc5cd':'#edbd6a',.87+row*.6);for(const side of [-1,1])box(x+side*1.15,z,.14,.9,.7,'#708e99');break;}
+
       case 'satellite':{
         box(x,z,1.04,.98,1.2,'#d3ab57',.68);
         box(x,z,.86,.08,.56,'#dbe6e2',1.05);
@@ -119,14 +124,14 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
     if(target)circle(target.x,target.z,.10,.45,null,'#e1f69d');
     const depth=(x,z)=>{const c=Math.cos(cameraAngle()),s=Math.sin(cameraAngle());return x*c-z*s+x*s+z*c;};
     const objects=stations.map(s=>({s,depth:depth(s.x,s.z)}));objects.push({player:true,depth:depth(position.x,position.z)});objects.sort((a,b)=>a.depth-b.depth);for(const o of objects)o.player?avatar():machine(o.s);
-    labelRects=[];for(let i=0;i<stations.length;i++){const s=stations[i],p=project(s.x,s.z,3.4);if(p.x<-130||p.x>width+130||p.y<20||p.y>height-40)continue;const text=String(localText(s)||'').replace(/^\d+\s*[·.\-]\s*/,'');ctx.font='600 11px system-ui';const str=text.length>26?text.slice(0,24)+'…':text,W=Math.min(220,ctx.measureText(str).width+42),H=28;ctx.fillStyle=near?.id===s.id?'#d9eea5':s.id===objectiveId?'#f5d88d':completed.has(s.id)?'#244f3eee':'#102c38e8';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(p.x-W/2,p.y-H/2,W,H,6);else ctx.rect(p.x-W/2,p.y-H/2,W,H);ctx.fill();ctx.strokeStyle=near?.id===s.id?'#edfccc':'#c3e5df55';ctx.stroke();ctx.fillStyle=near?.id===s.id||s.id===objectiveId?'#17372d':'#e0efec';ctx.textAlign='left';ctx.fillText(completed.has(s.id)?'✓':String(i+1).padStart(2,'0'),p.x-W/2+8,p.y+4);ctx.fillText(str,p.x-W/2+32,p.y+4);labelRects.push({s,x:p.x-W/2,y:p.y-H/2,w:W,h:H});}
+    labelRects=[];if(displaySettings.labels)for(let i=0;i<stations.length;i++){const s=stations[i],p=project(s.x,s.z,3.4);if(p.x<-130||p.x>width+130||p.y<20||p.y>height-40)continue;const text=String(localText(s)||'').replace(/^\d+\s*[·.\-]\s*/,'');ctx.font='600 11px system-ui';const str=text.length>26?text.slice(0,24)+'…':text,W=Math.min(220,ctx.measureText(str).width+42),H=28;ctx.fillStyle=near?.id===s.id?'#d9eea5':s.id===objectiveId?'#f5d88d':completed.has(s.id)?'#244f3eee':'#102c38e8';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(p.x-W/2,p.y-H/2,W,H,6);else ctx.rect(p.x-W/2,p.y-H/2,W,H);ctx.fill();ctx.strokeStyle=near?.id===s.id?'#edfccc':'#c3e5df55';ctx.stroke();ctx.fillStyle=near?.id===s.id||s.id===objectiveId?'#17372d':'#e0efec';ctx.textAlign='left';ctx.fillText(completed.has(s.id)?'✓':String(i+1).padStart(2,'0'),p.x-W/2+8,p.y+4);ctx.fillText(str,p.x-W/2+32,p.y+4);labelRects.push({s,x:p.x-W/2,y:p.y-H/2,w:W,h:H});}
     const shadeBottom=ctx.createLinearGradient(0,height*.78,0,height);shadeBottom.addColorStop(0,'#061c2500');shadeBottom.addColorStop(1,'#061c2577');ctx.fillStyle=shadeBottom;ctx.fillRect(0,height*.78,width,height*.22);
   }
   function animate(time){
     if(disposed)return;
     frameId=requestAnimationFrame(animate);
     const dt=Math.min(.10,Math.max(0,(time-(lastTime===null?time:lastTime))/1000));
-    lastTime=time;walking=false;
+    lastTime=time;walking=false;speedMps=0;
     if(!paused&&!document.hidden&&!hasDialog()){
       const keyX=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0);
       const keyZ=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);
@@ -135,16 +140,16 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
         while(path.length&&Math.hypot(path[0].x-position.x,path[0].z-position.z)<.12)path.shift();
         if(path.length){
           const dx=path[0].x-position.x,dz=path[0].z-position.z,length=Math.hypot(dx,dz);
-          const step=Math.min(length,3.35*dt);
+          const step=Math.min(length,3.35*displaySettings.speed*dt);
           delta={x:dx/length*step,z:dz/length*step};
         }else target=null;
       }else{
-        const dir=cameraRelativeMove({x:input.x+keyX,z:input.z+keyZ},yaw),speed=keys.has('shift')?5.3:3.2;
+        const dir=cameraRelativeMove({x:input.x+keyX,z:input.z+keyZ},yaw),speed=(keys.has('shift')?5.3:3.2)*displaySettings.speed;
         velocity=approachVelocity(velocity,{x:dir.x*speed,z:dir.z*speed},dt);
         delta={x:velocity.x*dt,z:velocity.z*dt};
       }
       const next=moveWithCollisions(position,delta,bounds,obstacles);
-      walking=Math.hypot(next.x-position.x,next.z-position.z)>.0001;
+      speedMps=dt>0?Math.hypot(next.x-position.x,next.z-position.z)/dt:0;walking=speedMps>.006;
       if(walking){
         heading=Math.atan2(position.x-next.x,position.z-next.z);
         position=next;
@@ -162,8 +167,9 @@ export function createFallbackWorld({container,config,onNear=()=>{},onInteract=(
   const release=e=>{const p=localPoint(e);if(drag?.id===e.pointerId&&!drag.moved&&!paused&&!hasDialog()){const hit=labelRects.find(r=>p.x>=r.x&&p.x<=r.x+r.w&&p.y>=r.y&&p.y<=r.y+r.h);onManual();if(hit){if(near?.id===hit.s.id)interact();else goToStation(hit.s.id);}else{const floor=unproject(p.x,p.y);if(isWalkable(floor.x,floor.z,bounds,obstacles)){path=findPath(position,floor,bounds,obstacles);target=path.length?floor:null;}}}pointers.delete(e.pointerId);if(!pointers.size)drag=null;pinch=0;};
   listen(canvas,'pointerup',release);const cancelPointer=e=>{pointers.delete(e.pointerId);drag=null;pinch=0;};listen(canvas,'pointercancel',cancelPointer);listen(canvas,'lostpointercapture',cancelPointer);listen(canvas,'wheel',e=>{if(paused)return;e.preventDefault();zoom=clamp(zoom*Math.exp(-clamp(e.deltaY,-100,100)*.002),.45,2);},{passive:false});
   listen(document,'keydown',e=>{if(paused||hasDialog()||e.ctrlKey||e.metaKey||e.altKey)return;const k=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright','shift'].includes(k)){keys.add(k);path=[];target=null;onManual();e.preventDefault();}else if(k==='e'){e.preventDefault();interact();}else if(k==='2')setView('close');else if(k==='3')setView('follow');else if(k==='4')setView('overview');});
-  listen(document,'keyup',e=>keys.delete(e.key.toLowerCase()));listen(window,'blur',clearMovement);listen(document,'visibilitychange',()=>{if(document.hidden)clearMovement();});listen(window,'resize',resize);
+  listen(document,'keyup',e=>keys.delete(e.key.toLowerCase()));listen(document,'focusin',()=>{if(hasDialog())clearMovement();});listen(window,'blur',clearMovement);listen(document,'visibilitychange',()=>{if(document.hidden)clearMovement();});listen(window,'resize',resize);
+  function setDisplaySettings(value){displaySettings=normalizeWalkSettings(value);resize();}
   function dispose(){disposed=true;cancelAnimationFrame(frameId);for(const remove of removers)remove();canvas.remove();}
   setConfig(config);resize();frameId=requestAnimationFrame(animate);
-  return {setConfig,setCompleted,setView,setMove,goToStation,interact,resize,dispose,getState,setPaused,setLanguage,setPosition,resetPosition,setObjective,recenter,look,stop:clearMovement};
+  return {setConfig,setCompleted,setView,setMove,goToStation,interact,resize,dispose,getState,setPaused,setLanguage,setPosition,resetPosition,setObjective,recenter,look,setDisplaySettings,stop:clearMovement};
 }

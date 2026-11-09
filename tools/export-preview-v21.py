@@ -15,6 +15,7 @@ PUBLIC_GAME_DATA = {
     'campaign-index-v20.json': 'MG_CAMPAIGN_INDEX_V20',
     'campaign-media-v20.json': 'MG_CAMPAIGN_MEDIA_V20',
     'experiences-v21.json': 'MACGYVER_EXPERIENCES_V21',
+    'languages-v28.json': None,
 }
 PRIVATE_LESSON_KEYS = {'stages', 'knowledge', 'quiz', 'guides', 'ownerCourses', 'ownerResources'}
 
@@ -61,6 +62,20 @@ def public_game_data(source, destination):
         inspect(value)
         if name == 'campaigns-v20.json' and (not isinstance(value, dict) or value.get('version') != 20 or not isinstance(value.get('campaigns'), list)):
             raise ValueError('Public campaigns must use the V20 schema.')
+        if name == 'languages-v28.json':
+            fields = {'version', 'targets', 'authored', 'bundledHudTargets', 'sourceSelection', 'otherTargets'}
+            if not isinstance(value, dict) or set(value) != fields or value.get('version') != '28.0.0':
+                raise ValueError('Invalid public V28 language metadata.')
+            for key in ('targets', 'authored', 'bundledHudTargets'):
+                codes = value[key]
+                if (not isinstance(codes, list) or not 1 <= len(codes) <= 200
+                        or any(not isinstance(code, str) or not re.fullmatch(r'[A-Za-z]{2,8}(?:-[A-Za-z0-9]{2,8})*', code) for code in codes)
+                        or len(codes) != len(set(codes))):
+                    raise ValueError('Invalid public V28 language codes.')
+            if not set(value['authored']) <= set(value['targets']) or not set(value['bundledHudTargets']) <= set(value['targets']):
+                raise ValueError('V28 language coverage exceeds its target list.')
+            if any(not isinstance(value[key], str) or not 1 <= len(value[key]) <= 5000 for key in ('sourceSelection', 'otherTargets')):
+                raise ValueError('Invalid public V28 language scope.')
         if name == 'experiences-v21.json':
             if not isinstance(value, dict) or value.get('version') != 21 or not all(isinstance(value.get(key), list) for key in ('domains', 'assets', 'experiences')):
                 raise ValueError('Public experiences must use the V21 schema.')
@@ -77,9 +92,9 @@ def public_game_data(source, destination):
             for journey in value['experiences']:
                 if not isinstance(journey, dict) or set(journey) - allowed or not ID.fullmatch(journey.get('id', '')):
                     raise ValueError('Unexpected public experience fields.')
-                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai', 'hpc', 'security'} or journey.get('category') != 'computing'):
+                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai', 'hpc', 'security', 'network', 'communications'} or journey.get('category') != 'computing'):
                     raise ValueError('Invalid public laboratory specialty.')
-                if 'curriculumVersion' in journey and journey['curriculumVersion'] not in {'25.0.0', '26.0.0', '27.0.0'}:
+                if 'curriculumVersion' in journey and journey['curriculumVersion'] not in {'25.0.0', '26.0.0', '27.0.0', '28.0.0'}:
                     raise ValueError('Invalid public laboratory version.')
                 if 'references' in journey:
                     refs = journey['references']
@@ -101,7 +116,9 @@ def public_game_data(source, destination):
                     if not isinstance(chapter, dict) or set(chapter) - allowed_chapter:
                         raise ValueError('Unexpected public experience chapter fields.')
                     if 'labExperiment' in chapter:
-                        approved = {'quantum': {'shots', 'relaxation', 'ramsey', 'readout', 'rb', 'repetition'},
+                        approved = {'communications': {'comm-packet-delay', 'comm-shannon', 'comm-fiber-margin', 'comm-ptp-asymmetry', 'comm-qkd-fraction', 'comm-queue-drain'},
+                                    'network': {'comm-packet-delay', 'comm-shannon', 'comm-fiber-margin', 'comm-ptp-asymmetry', 'comm-qkd-fraction', 'comm-queue-drain'},
+                                    'quantum': {'shots', 'relaxation', 'ramsey', 'readout', 'rb', 'repetition'},
                                     'ai': {'matmul', 'intensity', 'roofline', 'quantize', 'allreduce', 'throughput'},
                                     'hpc': {'hpc-amdahl', 'hpc-transfer', 'hpc-checkpoint', 'hpc-capacity', 'hpc-availability', 'hpc-cooling', 'hpc-numa-mix', 'hpc-erasure-capacity', 'hpc-halo-volume', 'hpc-backward-error', 'hpc-queue-drain', 'hpc-power-envelope'},
                                     'security': {'security-precision', 'security-log-volume', 'security-coverage', 'security-rpo', 'security-rto', 'security-cert-window', 'security-buffer-window', 'security-clock-bound', 'security-zero-event-bound', 'security-unique-event-ratio', 'security-recovery-dag', 'security-restore-sampling'}}
@@ -178,7 +195,7 @@ def bound_script(descriptor,raw):
     payload=raw.decode('utf-8').strip().replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
     return ('/* Generated on-demand data. */\nwindow.MG_LAZY_DATA=window.MG_LAZY_DATA||Object.create(null);\nwindow.MG_LAZY_DATA['+json.dumps(descriptor['file'])+']={sha256:'+json.dumps(descriptor['sha256'])+',value:'+payload+'};\n').encode('utf-8')
 
-def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
+def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=False) -> dict:
     if output.is_symlink():raise ValueError('Output must not be a symlink.')
     source, output = source.resolve(), output.resolve()
     if source == output or source in output.parents or output in source.parents:
@@ -187,8 +204,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23','24','25','26','27'}:
-        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26 or V27 before exporting the public preview.')
+    if major not in {'21','22','23','24','25','26','27','28'}:
+        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27 or V28 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -218,7 +235,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         # Derive file:// bootstrap from the same reviewed public index. Never
         # copy an old full/offline payload left over from another version.
         bootstrap='/* Generated public preview catalogue only. */\nwindow.MG_LAZY_INDEX='+serial(index)+';\nwindow.MG_DATA={catalog:window.MG_LAZY_INDEX.catalog,featured:window.MG_LAZY_INDEX.guidedIds.map(id=>window.MG_LAZY_INDEX.catalog.find(c=>c.id===id)),photos:window.MG_LAZY_INDEX.photos,sources:[],release:window.MG_LAZY_INDEX.release};\nwindow.MG_DATA_FILES=[];\n'
-        (temp/'offline-data.js').write_text(bootstrap,'utf-8')
+        if not http_only:
+            (temp/'offline-data.js').write_text(bootstrap,'utf-8')
         count=0
         for group in ('courses','resources','auxiliary'):
             for cid, d in index[group].items():
@@ -236,7 +254,12 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
                 script=source/d['script']
                 if script.is_symlink() or not script.resolve().is_relative_to(source) or script.read_bytes()!=bound_script(d,raw):
                     raise ValueError('Classic script does not match its checked JSON; rebuild: '+cid)
-                copy(rel);copy(Path(d['script']));count+=1
+                copy(rel)
+                # Hosted HTTP(S) uses checksum-verified JSON; the duplicate
+                # classic wrapper is only consumed by file:// offline users.
+                if not http_only:
+                    copy(Path(d['script']))
+                count += 1
                 if group=='auxiliary':
                     (temp/'data'/f'{cid}.json').write_bytes(raw)
         for name in ('catalog','photos','release'):
@@ -244,7 +267,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major in {'23', '24', '25', '26', '27'}:
+        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
@@ -253,7 +276,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
                          *(['curriculum-v24.html'] if int(major) >= 24 else []),
                          *(['curriculum-v25.html'] if int(major) >= 25 else []),
                          *(['curriculum-v26.html'] if int(major) >= 26 else []),
-                         *(['curriculum-v27.html'] if int(major) >= 27 else [])):
+                         *(['curriculum-v27.html'] if int(major) >= 27 else []),
+                         *(['curriculum-v28.html'] if int(major) >= 28 else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page
@@ -267,7 +291,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
         (temp/'runtime-mode.js').write_text("window.MG_STATIC_MODE=true;window.MG_PUBLIC_PREVIEW_ONLY=true;window.MG_CONFIG=window.MG_CONFIG||{};window.MG_CONFIG.paywall=Object.assign({},window.MG_CONFIG.paywall,{ownerPreviewOnFile:false});\n",'utf-8')
         (temp/MARKER).write_text(f'V{major} generated public first-stage preview\n','utf-8')
         files=[p for p in temp.rglob('*') if p.is_file()]
-        result={'version':int(major),'mode':'first-stage-preview','files':len(files),'bytes':sum(p.stat().st_size for p in files),'descriptors':count,'memberBodies':0,'publicGameData':games}
+        result={'version':int(major),'mode':'first-stage-preview','files':len(files),'bytes':sum(p.stat().st_size for p in files),'descriptors':count,'memberBodies':0,'publicGameData':games,'httpOnly':http_only}
         (temp/'preview-manifest.json').write_text(json.dumps(result,indent=2)+'\n','utf-8')
         if output.exists():shutil.rmtree(output)
         temp.replace(output)
@@ -278,9 +302,10 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False) -> dict:
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--http-only', action='store_true', help='Hosted Pages output; omit duplicate file:// wrappers, retain checked JSON.')
     args=parser.parse_args()
     root=Path(__file__).resolve().parents[1]
-    try:print(json.dumps(export(root/'public/academy',args.out,legacy_entrypoints=True),ensure_ascii=False))
+    try:print(json.dumps(export(root/'public/academy',args.out,legacy_entrypoints=True,http_only=args.http_only),ensure_ascii=False))
     except (OSError,ValueError,KeyError) as error:parser.exit(1,'Export stopped: '+str(error)+'\n')
 
 if __name__=='__main__':main()

@@ -8,7 +8,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;
  const tiles=[['space','太空與衛星','Space & satellites'],['semiconductor','半導體製造','Semiconductor'],['automotive','汽車與交通工具','Automotive'],['aerospace','航空工程','Aerospace'],['marine','船舶與海洋','Marine']];
- return `<section class="campaign-entry-v20 experience-entry-v21" aria-labelledby="experienceEntryTitle"><div class="campaign-entry-copy"><span class="campaign-kicker">ENGINEERING WORLDS / V26</span><h1 id="experienceEntryTitle">${t('走進工程現場。<br>讓故事帶你動手。','Step inside engineering.<br>Follow the story.')}</h1><p>${t('走進連續工程空間，用鍵盤或觸控搖桿移動人物，讓鏡頭跟隨你走近設備。從不同專業角色出發，操作製程站、查閱實拍證據，再回到完整課程。','Walk continuously through engineering facilities with a camera that follows your character. Approach equipment, inspect credited photographic evidence, and explore the process from different professional roles.')}</p><div class="campaign-entry-actions"><a class="button" href="experience.html?domain=computing&scene=xp-hpc-v26">${t('走進 HPC 叢集實驗室','Enter the HPC cluster laboratory')} ↗</a><a class="button light" href="experience.html">${t('探索 20 個領域','Explore 20 disciplines')} ↗</a><a class="button light" href="experience.html?domain=computing&scene=xp-security-v26">${t('進入防禦資安 SOC','Enter the defensive SOC')}</a><a class="button light" href="curriculum-v26.html">${t('200 門新逐步課程','200 new guided courses')}</a></div><div class="campaign-entry-flow"><span>01 ${t('行走','Walk')}</span><span>02 ${t('選擇角色','Choose a role')}</span><span>03 ${t('動手驗證','Test an idea')}</span><span>04 ${t('完成旅程','Complete the journey')}</span></div></div><div class="campaign-entry-visual"><img src="assets/photos/v3-network-switches.jpg" alt="${t('網路交換器與雙絞線實拍；代表性工程參考','Real network switches and twisted-pair cabling; representative engineering reference')}"><span class="campaign-image-credit">${t('實拍參考','Real photographic reference')} · <a href="https://commons.wikimedia.org/wiki/File:Network_switches.jpg" target="_blank" rel="noopener">ShakataGaNai · CC BY-SA 3.0</a></span><a class="campaign-live-badge" href="experience.html?domain=computing&scene=xp-hpc-v26">⛶ ${t('全畫面探索','FULL-WINDOW EXPLORER')}</a></div><div class="campaign-entry-tiles">${tiles.map(([id,cn,en],i)=>`<a href="experience.html?domain=${id}"><small>0${i+1}</small><strong>${esc(t(cn,en))}</strong><span>↗</span></a>`).join('')}</div></section><p class="experience-legacy-link"><a href="campaign.html">${t('開啟 V20 工程決策遊戲','Open V20 engineering decision games')} ↗</a></p>`;
+ return `<section class="campaign-entry-v20 experience-entry-v21" aria-labelledby="experienceEntryTitle"><div class="campaign-entry-copy"><span class="campaign-kicker">ENGINEERING WORLDS / V28</span><h1 id="experienceEntryTitle">${t('走進工程現場。<br>讓故事帶你動手。','Step inside engineering.<br>Follow the story.')}</h1><p>${t('走進連續工程空間，用鍵盤或觸控搖桿移動人物，讓鏡頭跟隨你走近設備。從不同專業角色出發，操作製程站、查閱實拍證據，再回到完整課程。','Walk continuously through engineering facilities with a camera that follows your character. Approach equipment, inspect credited photographic evidence, and explore the process from different professional roles.')}</p><div class="campaign-entry-actions"><a class="button" href="experience.html?domain=computing&scene=xp-comm-v28">${t('走進通訊與網路實驗室','Enter the communications laboratory')} ↗</a><a class="button light" href="experience.html">${t('探索 20 個領域','Explore 20 disciplines')} ↗</a><a class="button light" href="experience.html?domain=computing&scene=xp-security-v26">${t('進入防禦資安 SOC','Enter the defensive SOC')}</a><a class="button light" href="curriculum-v28.html">${t('210 門通訊逐步課程','210 communications courses')}</a></div><div class="campaign-entry-flow"><span>01 ${t('行走','Walk')}</span><span>02 ${t('選擇角色','Choose a role')}</span><span>03 ${t('動手驗證','Test an idea')}</span><span>04 ${t('完成旅程','Complete the journey')}</span></div></div><div class="campaign-entry-visual"><img src="assets/photos/v3-network-switches.jpg" alt="${t('網路交換器與雙絞線實拍；代表性工程參考','Real network switches and twisted-pair cabling; representative engineering reference')}"><span class="campaign-image-credit">${t('實拍參考','Real photographic reference')} · <a href="https://commons.wikimedia.org/wiki/File:Network_switches.jpg" target="_blank" rel="noopener">ShakataGaNai · CC BY-SA 3.0</a></span><a class="campaign-live-badge" href="experience.html?domain=computing&scene=xp-comm-v28">⛶ ${t('全畫面探索','FULL-WINDOW EXPLORER')}</a></div><div class="campaign-entry-tiles">${tiles.map(([id,cn,en],i)=>`<a href="experience.html?domain=${id}"><small>0${i+1}</small><strong>${esc(t(cn,en))}</strong><span>↗</span></a>`).join('')}</div></section><p class="experience-legacy-link"><a href="campaign.html">${t('開啟 V20 工程決策遊戲','Open V20 engineering decision games')} ↗</a></p>`;
 }
 function spaceModel(course) {
  const id=course.id;
@@ -2760,6 +2760,32 @@ const choose = (value, zh) => Array.isArray(value) ? value[zh ? 0 : 1] || value[
 const field = (course, key, zh) => String(course?.[zh ? key : `${key}En`] || course?.[key] || course?.[`${key}En`] || '');
 const textFor = course => [course.title, course.titleEn, course.summary, course.summaryEn, course.subcategoryTitle, course.subcategoryTitleEn, course.learningTrack, course.learningSubdiscipline, ...(Array.isArray(course.learningTags) ? course.learningTags : []), ...(Array.isArray(course.tags) ? course.tags : [])].filter(Boolean).join(' ').normalize('NFKC').toLowerCase();
 
+// BEGIN V28 COMMUNICATIONS GROUP METADATA
+const COMMUNICATIONS_V28_GROUPS = [
+  ["IP、位址與路徑封包尺寸", "IP, addressing and path packet size"],
+  ["乙太網路與資料中心封裝", "Ethernet and data-center encapsulation"],
+  ["路由、標籤與流量工程", "Routing, labels and traffic engineering"],
+  ["DNS 與分散式名稱服務", "DNS and distributed naming"],
+  ["TCP 傳輸與壅塞控制", "TCP transport and congestion control"],
+  ["QUIC、HTTP 與內容傳遞", "QUIC, HTTP and content delivery"],
+  ["網路組態、遙測與效能證據", "Network configuration, telemetry and performance evidence"],
+  ["經典接收機、波形與資訊容量", "Classic receivers, waveforms and information capacity"],
+  ["GSM、UMTS 與 LTE 的無線資源", "Radio resources in GSM, UMTS and LTE"],
+  ["5G NR 與開放式無線接取", "5G NR and open radio access"],
+  ["Wi-Fi 各世代的空中介面設計", "Air-interface design across Wi-Fi generations"],
+  ["低功耗近距離無線與測距", "Low-power short-range radio and ranging"],
+  ["全球衛星通訊與導航星系", "Global satellite communications and navigation"],
+  ["深空網路、遙測與任務鏈路", "Deep-space networks, telemetry and mission links"],
+  ["光纖物理、量測與鏈路驗收", "Fiber physics, measurement and link acceptance"],
+  ["同調 DWDM、光交換與 OTN", "Coherent DWDM, optical switching and OTN"],
+  ["PON 接取、分光與前傳", "PON access, splitting and fronthaul"],
+  ["著名海底光纜的工程取捨", "Engineering tradeoffs in landmark submarine cables"],
+  ["量子通訊、QKD 與量子網路", "Quantum communication, QKD and quantum networks"],
+  ["精密授時、White Rabbit 與 TSN", "Precision timing, White Rabbit and TSN"],
+  ["工業與物聯網通訊協定", "Industrial and IoT communication protocols"]
+];
+// END V28 COMMUNICATIONS GROUP METADATA
+
 /** These are editorial learning families, not rankings or geographic locations. */
 const LEARNING_TRACKS = [
   {id:'space',icon:'science',title:pair('太空與衛星','Space & satellites'),description:pair('100門逐步課涵蓋任務、軌道、發射、平台、姿控、通訊、遙測、測試與探索。','100 guided courses cover missions, orbits, launch, buses, attitude, links, remote sensing, testing, and exploration.'),boundary:pair('用公開案例、合成數據與可重現驗證學習；依來源與教學假設分列判據。','Learn from public cases, synthetic data, and reproducible checks. Keep source facts and teaching assumptions in separate records.')},
@@ -2770,7 +2796,7 @@ const LEARNING_TRACKS = [
   {id:'ai', icon:'ai', title:pair('神經網路與 AI 加速器','Neural networks & AI accelerators'), description:pair('新增 100 門深入逐步課程，從著名神經架構一路到加速器、記憶體、編譯、訓練與推論驗收。','100 new detailed courses connect landmark neural architectures to accelerators, memory, compilation, training and inference acceptance.'), boundary:pair('比較計算圖、資料搬移與記憶體；訓練、推論及不同硬體的瓶頸需分開驗證。','Compare computation graphs, data movement and memory; training, inference and hardware bottlenecks require separate validation.')},
   {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('新增 100 門深入課程，串接經典超級電腦、加速器、科學核心、互連、儲存、排程與韌性。','100 new detailed courses connect landmark supercomputers, accelerators, scientific kernels, interconnects, storage, scheduling and resilience.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
   {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('新增 100 門深入課程，串接身分、密碼協定、防禦監測、安全開發、雲端治理、應變與復原。','100 new detailed courses connect identity, cryptographic protocols, defensive monitoring, secure development, cloud governance, response and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
-  {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('封包、光纖、無線、衛星與量子通訊介面。','Packet, fiber, wireless, satellite and quantum-communication interfaces.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
+  {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('新增 210 門深入逐步課程、21 個專題分組，每門 40 步；保留原有 25 門。從封包、路由與網際網路，深入無線、衛星、光纖、量子通訊、精密授時與工業網路。','210 new detailed courses in 21 topic groups, with 40 steps each; all 25 earlier courses remain. Follow packets, routing and the Internet into wireless, satellites, fiber, quantum communications, precision timing and industrial networks.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
   {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('作業系統、編譯器、資料庫、建置與可信交付。','Operating systems, compilers, databases, builds and trustworthy delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
   {id:'energy', icon:'energy', title:pair('核能、再生能源與儲能','Nuclear, renewable energy & storage'), description:pair('核電、SMR、核融合、風力、水力、地熱與儲能。','Nuclear plants, SMRs, fusion, wind, hydro, geothermal and storage.'), boundary:pair('比較能量轉換、熱流、機電介面與監測；裂變、融合與再生能源的物理及驗證條件不同。','Compare conversion, heat flow, electromechanical interfaces and monitoring; fission, fusion and renewables have different physics and validation conditions.')},
   {id:'resources', icon:'resources', title:pair('石油、天然氣與採礦','Oil, gas & mineral resources'), description:pair('資源調查、井與礦場系統、淘金及環境監測。','Resource surveys, well and mine systems, gold recovery and environmental monitoring.'), boundary:pair('共同點是地質證據、物料流與環境監測；油氣井、露天礦與重力選礦的工程邊界不同。','Geological evidence, material flow and environmental monitoring are shared; wells, open-pit mines and gravity separation have different engineering boundaries.')},
@@ -2789,6 +2815,8 @@ const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 const LEARNING_SUBDISCIPLINES = [
+  // Exact V28 identities take precedence over the older topic-word heuristics.
+  ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>{const id=`communications-v28-${String(index+1).padStart(2,'0')}`;return subdivision(id,'networks',title[0],title[1],new RegExp(`\\b${id}\\b`,'i'));}),
   // V27 SUBDISCIPLINES START
   subdivision("hpc-v27-01","servers","著名超算的拓撲與工作交接驗收","Topology and workflow acceptance at landmark supercomputers",/hpc-v27-01/i),
   subdivision("hpc-v27-02","servers","記憶體政策、配置粒度與 RAS 證據","Memory policy, allocation granularity and RAS evidence",/hpc-v27-02/i),
@@ -2941,6 +2969,7 @@ const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
+  ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
   {"id": "hpc-v27-02", "title": ["記憶體政策、配置粒度與 RAS 證據", "Memory policy, allocation granularity and RAS evidence"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-011", "hpc-v27-012", "hpc-v27-013", "hpc-v27-014", "hpc-v27-015", "hpc-v27-016", "hpc-v27-017", "hpc-v27-018", "hpc-v27-019", "hpc-v27-020"]},
@@ -3170,6 +3199,7 @@ function mountLearningMap(root,{catalog=[],featured=[],language='zh-TW',routes=L
   return {getState:()=>({...state}),update:next=>{if(disposed)return;data={...data,...next};if(next?.state)state={...state,...next.state};render();},dispose(){if(disposed)return;disposed=true;root.removeEventListener('click',handleClick);root.removeEventListener('submit',handleSubmit);root.removeEventListener('change',handleChange);}};
 }
 
+Object.defineProperty(exports, "COMMUNICATIONS_V28_GROUPS", { enumerable: true, get: () => COMMUNICATIONS_V28_GROUPS });
 Object.defineProperty(exports, "LEARNING_TRACKS", { enumerable: true, get: () => LEARNING_TRACKS });
 Object.defineProperty(exports, "LEARNING_SUBDISCIPLINES", { enumerable: true, get: () => LEARNING_SUBDISCIPLINES });
 Object.defineProperty(exports, "LEARNING_ROUTES", { enumerable: true, get: () => LEARNING_ROUTES });
@@ -4676,7 +4706,7 @@ async function askCloudMentor({question, locale, context = {}, signal, fetchImpl
   // Never forward lesson text, personal notes, attachments, or chat history.
   const metadata = {
     domain: context.domain, courseId: context.courseId || context.projectId,
-    sceneId: context.sceneId, station: context.station,
+    sceneId: context.sceneId, station: context.station, stepId: context.stepId,
   };
   for (const [key, value] of Object.entries(metadata)) {
     if (validId(value)) body[key] = value;
@@ -4905,7 +4935,7 @@ function createAIClient({onStatus=()=>{},config=globalThis.MG_CONFIG||{},fetcher
   async unload(){if(busy){operation++;controller?.abort();emit('cancelling','Stopping; unload will finish after the current operation.');return;}busy=true;try{if(runtime)await runtime.exit();runtime=null;emit('idle','Model memory released.',{modelId:null});}finally{busy=false;}},
   async clearCache(){if(busy)throw aiError('Stop the active model operation first.','busy');busy=true;try{if(runtime)await runtime.exit();runtime=null;await environment.caches?.delete(AI_CACHE);emit('idle','Downloaded model cache removed.',{modelId:null});}finally{busy=false;}},
   async translate({texts,language='en',signal}={}){
-   const supported='zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo'.split(' ');
+   const supported='zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo as be bho bo ceb co dv ff fy gd gn gom haw hmn ht jv ku ky la lb ln mai mg mi oc om or ps qu sa sd sn st su tg ti tk tt ug xh yi'.split(' ');
    if(!runtime||status.phase!=='ready')throw aiError('Load a CPU model before local translation.','not-ready');
    if(busy)throw aiError('The model is busy. Retry when it is ready.','busy');
    if(!supported.includes(language)||!Array.isArray(texts)||texts.length<1||texts.length>40||texts.some(t=>typeof t!=='string'||t.length>3000)||texts.join('').length>18000)throw aiError('Invalid translation batch.','validation');
@@ -7632,6 +7662,74 @@ function renderCurriculumEvidenceV26(spec,choice,lang){
 Object.defineProperty(exports, "resolveCurriculumExerciseV26", { enumerable: true, get: () => resolveCurriculumExerciseV26 });
 Object.defineProperty(exports, "renderCurriculumEvidenceV26", { enumerable: true, get: () => renderCurriculumEvidenceV26 });
 },
+"curriculum-exercises-v28.js":function(require, exports) {
+'use strict';
+/** V28 lesson evidence workbench. No new lesson/answer payload is bundled here. */
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(value,n)=>{const chars=Array.from(String(value??'').replace(/\s+/g,' '));return chars.length>n?chars.slice(0,n-1).join('')+'…':chars.join('')};
+
+function resolveCurriculumExerciseV28(course,step,make){
+  const match=/^(comm)-v28-(\d{3})$/.exec(String(course.id||''));
+  if(!match||Number(match[2])<1||Number(match[2])>210||Number(course.curriculumVersion)!==28)return null;
+  const track='communications';
+  const stepMatch=String(step.id||'').match(/-v28-(\d{2})$/);
+  const sequence=Number(stepMatch?.[1]);
+  if(!stepMatch||step.id!==`${course.id}-v28-${stepMatch[1]}`||sequence<1||sequence>40)return null;
+  const quiz=step.quiz;
+  const complete=!step.locked&&quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)
+    &&quiz.options.length>=2&&quiz.options.length===quiz.optionsEn.length
+    &&quiz.options.every(s=>typeof s==='string'&&s.trim())&&quiz.optionsEn.every(s=>typeof s==='string'&&s.trim())
+    &&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length
+    &&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim())
+    &&['question','questionEn','explanation','explanationEn'].every(k=>typeof quiz[k]==='string'&&quiz[k].trim())
+    &&Array.isArray(step.knowledge)&&step.knowledge.length>=2
+    &&step.knowledge.slice(0,2).every(item=>item&&['title','titleEn','text','textEn'].every(k=>typeof item[k]==='string'&&item[k].trim()));
+  const choices=complete?quiz.options.map((value,i)=>({id:'answer-'+i,label:bi(value,quiz.optionsEn[i])})):[];
+  const offset=choices.length?sequence%choices.length:0;
+  const object=bi(short(step.title||course.title,27),short(step.titleEn||course.titleEn,51));
+  const instruction=complete?bi(
+    `${step.instruction}\n觀察與紀錄：${step.observation}\n證據判讀：${quiz.question}\n選擇與本步資料相符的判讀，再記錄觀察。`,
+    `${step.instructionEn}\nObserve and document: ${step.observationEn}\nEvidence decision: ${quiz.questionEn}\nChoose the interpretation supported by this step, then record your observation.`
+  ):bi('請載入已授權的完整步驟，才能開始此證據任務。','Load the authorized complete step before starting this evidence task.');
+  const evidence=complete?bi(`${step.check}\n${quiz.explanation}`,`${step.checkEn}\n${quiz.explanationEn}`):bi('尚未載入本步證據。','Step evidence has not been loaded.');
+  return make(`${step.id}-authored-evidence-v28`,'inspect',`curriculum-v28:${track}`,object,instruction,
+    bi('通訊鏈路、協定與驗收證據台','Communications, protocols and acceptance evidence'),evidence,{
+      choices:[...choices.slice(offset),...choices.slice(0,offset)],expectedChoice:complete?'answer-'+quiz.answer:'unavailable',
+      provenance:complete?'step-authored-evidence':'unavailable',family:'communications-evidence',
+      decisionFeedback:bi('此判讀尚未符合本步證據；請重新核對模型假設、輸入條件與題目選項。','This interpretation does not yet match the step evidence. Recheck model assumptions, input conditions and answer options.'),
+      curriculumEvidenceV28:{track,sequence,available:!!complete,courseTitle:bi(course.title,course.titleEn),
+        question:complete?bi(quiz.question,quiz.questionEn):instruction,
+        artifacts:complete?[...(step.knowledge||[]).slice(0,2).map(item=>({label:bi(item.title,item.titleEn),text:bi(item.text,item.textEn)})),
+          {label:bi('本階段驗收紀錄','Investigation acceptance record'),text:bi(step.check,step.checkEn)}]:[]},
+      coverage:bi('本步原創教材的證據判讀任務。證據台直接呈現本案例的模型、資料與驗收條件摘要；完整內容在下方任務欄。這些是明示教學資料，不代表原廠設備拓樸、真實網路量測或實機測試。','An evidence decision authored for this lesson. The board displays this case’s model, data and acceptance criteria; full records appear in the task panel. These are stated teaching records, not equipment topology, live network measurements or equipment tests.')
+    });
+}
+
+/** Inspect the actual lesson's evidence records, without inventing hardware imagery. */
+function renderCurriculumEvidenceV28(spec,choice,lang){
+  const context=spec.curriculumEvidenceV28;if(!context)return '';
+  const zh=lang==='zh',selected=spec.choices.find(c=>c.id===choice);
+  const text=(x,y,value,size=9,color='#234b4e',anchor='start')=>`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+  let out=`<g data-v28-evidence="${context.track}" aria-label="${esc(context.courseTitle[lang])}"><title>${esc(context.courseTitle[lang])}</title>`;
+  out+=text(20,59,short(context.courseTitle[lang],zh?28:58),9);
+  out+=text(20,75,zh?`本案例證據紀錄 · ${context.sequence} / 40`:`CASE EVIDENCE RECORDS · ${context.sequence} / 40`,8,'#607e80');
+  context.artifacts.forEach((artifact,i)=>{
+    const y=86+i*43,body=artifact.text[lang]||'',label=artifact.label[lang]||'';
+    out+=`<g data-v28-artifact="${i}"><title>${esc(label+': '+body)}</title><rect x="19" y="${y}" width="362" height="38" rx="6" fill="${i===2&&selected?'#e9d9a9':'#e1eeea'}" stroke="#719795"/>`;
+    out+=text(29,y+13,short(label,zh?32:64),7.5,'#326b70');
+    out+=text(29,y+28,short(body,zh?36:72),zh?8.5:7.5)+'</g>';
+  });
+  if(!context.available)out+=text(29,123,zh?'尚未載入已授權的完整證據。':'Authorized evidence has not been loaded.',9);
+  out+=`<title>${esc(context.question[lang])}</title>`;
+  out+=text(20,224,zh?'完整題目與原始證據請見下方任務欄。':'Full question and evidence appear in the task panel.',8,'#607e80');
+  out+=text(20,237,selected?(zh?'已選判讀；請記錄觀察並提交檢查。':'Interpretation selected; record observation and submit.'):(zh?'移動觀察工具，核對教材，再選擇證據判讀。':'Move the review tool, check the lesson, then choose evidence.'),zh?9:8);
+  return out+'</g>';
+}
+
+Object.defineProperty(exports, "resolveCurriculumExerciseV28", { enumerable: true, get: () => resolveCurriculumExerciseV28 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV28", { enumerable: true, get: () => renderCurriculumEvidenceV28 });
+},
 "curriculum-exercises-v27.js":function(require, exports) {
 'use strict';
 /** V27 lesson evidence workbench. No new lesson/answer payload is bundled here. */
@@ -7716,6 +7814,7 @@ const { EXPANSION_STAGE_FAMILIES, EXPANSION_CONTEXT_FAMILIES, renderExpansionCon
 const { resolveExpansionExercise, renderExpansionScene } = require("expansion-exercises.js");
 const { resolveCurriculumExerciseV25, renderCurriculumEvidenceV25 } = require("curriculum-exercises-v25.js");
 const { resolveCurriculumExerciseV26, renderCurriculumEvidenceV26 } = require("curriculum-exercises-v26.js");
+const { resolveCurriculumExerciseV28, renderCurriculumEvidenceV28 } = require("curriculum-exercises-v28.js");
 const { resolveCurriculumExerciseV27, renderCurriculumEvidenceV27 } = require("curriculum-exercises-v27.js");
 const bi=(zh,en)=>({zh,en});
 const ctl=(id,zh,en,min,max,step,initial,target,unit='',tolerance=step/2)=>({id,label:bi(zh,en),min,max,step,initial,target,unit,tolerance});
@@ -7976,6 +8075,7 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ const curriculumV28=resolveCurriculumExerciseV28(course,step,make);if(curriculumV28)return curriculumV28;
  const curriculumV27=resolveCurriculumExerciseV27(course,step,make);if(curriculumV27)return curriculumV27;
  const curriculumV26=resolveCurriculumExerciseV26(course,step,make);if(curriculumV26)return curriculumV26;
  const curriculumV25=resolveCurriculumExerciseV25(course,step,make);if(curriculumV25)return curriculumV25;
@@ -8034,7 +8134,7 @@ function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -8154,6 +8254,7 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV28)return renderCurriculumEvidenceV28(spec,choice,lang);
  if(spec.curriculumEvidenceV27)return renderCurriculumEvidenceV27(spec,choice,lang);
  if(spec.curriculumEvidenceV26)return renderCurriculumEvidenceV26(spec,choice,lang);
  if(spec.curriculumEvidenceV25)return renderCurriculumEvidenceV25(spec,choice,lang);
@@ -8503,7 +8604,11 @@ const { cloudTranslationAllowed, translatePublicText } = require("mentor-cloud-v
  * dialog or details element. Mark private/user-generated content and language
  * names with data-no-translate. No form values are read or sent to the service.
  */
-const SUPPORTED = 'zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo'.split(' ');
+// Target catalog; only zh-TW/en are fully authored. Other targets need a capable translator.
+const SUPPORTED_LANGUAGES = Object.freeze('zh-TW en zh-CN ja ko es fr de pt it nl ru uk pl cs sk sl hr sr bg ro hu el tr ar he fa ur hi bn ta te mr gu kn ml pa ne si th vi id ms fil km lo my mn kk uz az ka hy sw am ha yo ig zu af so sv no da fi is et lv lt ga cy mt sq mk bs eu gl ca eo as be bho bo ceb co dv ff fy gd gn gom haw hmn ht jv ku ky la lb ln mai mg mi oc om or ps qu sa sd sn st su tg ti tk tt ug xh yi'.split(' '));
+const supportedLanguages = SUPPORTED_LANGUAGES;
+const SUPPORTED = SUPPORTED_LANGUAGES;
+const BUNDLED_UI_LANGUAGES = Object.freeze(SUPPORTED_LANGUAGES.slice(0, 79));
 const CACHE_KEY = 'mg-translation-cache-v2';
 const MAX_ENTRIES = 3000;
 const MAX_CACHE_CHARS = 1000000;
@@ -8512,7 +8617,7 @@ const MAX_BATCH_CHARS = 4000;
 const MAX_BATCH_SIZE = 12;
 const TIMEOUT_MS = 45000;
 const ATTRIBUTES = ['placeholder', 'title', 'aria-label'];
-const NEVER_TRANSLATE = '[data-no-translate],[translate="no"],[data-private],script,style,noscript,template,code,pre,textarea,[contenteditable]:not([contenteditable="false"]),#language,#translationLanguage,#notes,#researchNotes,#question,#answer,#accountName';
+const NEVER_TRANSLATE = '[data-no-translate],[translate="no"],[data-private],script,style,noscript,template,code,pre,math,.katex,.MathJax,[data-formula],textarea,[contenteditable]:not([contenteditable="false"]),#language,#translationLanguage,#notes,#researchNotes,#question,#answer,#accountName';
 
 function tag(value) {
   const parts = String(value || '').trim().replaceAll('_', '-').split('-');
@@ -8600,7 +8705,7 @@ function hiddenOrExcluded(element, attributes = false) {
 const dictionaryPromises = new Map();
 function loadDictionary(language) {
   const root = globalThis.window || globalThis;
-  if (!language || language === 'en' || language === 'zh-TW') return Promise.resolve(null);
+  if (!language || language === 'en' || language === 'zh-TW' || !BUNDLED_UI_LANGUAGES.includes(language)) return Promise.resolve(null);
   if (root.MG_I18N?.[language]) return Promise.resolve(root.MG_I18N[language]);
   if (!/^[a-z]{2,3}(?:-[A-Z]{2})?$/.test(language) || typeof root.document?.createElement !== 'function' || typeof root.document?.head?.appendChild !== 'function') return Promise.resolve(null);
   if (!dictionaryPromises.has(language)) dictionaryPromises.set(language, new Promise(resolve => {
@@ -8647,7 +8752,7 @@ function lookupDictionary(dict, source) {
 }
 const translators = new Map();
 /** On-device translation (Chrome Translator API). Returns null when unavailable. */
-async function onDeviceTranslator(language, {source = 'en', userActivated = false} = {}) {
+async function onDeviceTranslator(language, {source = 'en', userActivated = false, onProgress = () => {}} = {}) {
   const api = globalThis.Translator;
   if (!api?.create || !language || language === source) return null;
   const target = language === 'zh-CN' ? 'zh' : language === 'zh-TW' ? 'zh-Hant' : language === 'fil' ? 'tl' : language;
@@ -8657,10 +8762,32 @@ async function onDeviceTranslator(language, {source = 'en', userActivated = fals
     const availability = await api.availability?.({sourceLanguage: source, targetLanguage: target});
     if (availability === 'unavailable' || availability === 'no') return null;
     if (availability !== 'available' && availability !== 'readily' && !userActivated && !globalThis.navigator?.userActivation?.isActive) return null;
-    const promise = api.create({sourceLanguage: source, targetLanguage: target});
+    const promise = api.create({sourceLanguage: source, targetLanguage: target,
+      monitor(monitor) { monitor?.addEventListener?.('downloadprogress', event => {
+        const loaded = Number(event.loaded), total = Number(event.total);
+        const fraction = total > 0 ? loaded / total : loaded <= 1 ? loaded : null;
+        try { onProgress(Number.isFinite(fraction) ? Math.max(0, Math.min(1, fraction)) : null); } catch {}
+      }); }
+    });
     translators.set(key, promise.catch(() => { translators.delete(key); return null; }));
     return translators.get(key);
   } catch { return null; }
+}
+/** Visible public text only: no notes, form values, code or mentor conversation.
+ * Used by V28 narration. Call after language rendering/translation completes. */
+function publicTextSnapshot(root, {maxCharacters = 24000} = {}) {
+  if (!root) return '';
+  const documentForRoot = root.ownerDocument || root;
+  const walker = documentForRoot.createTreeWalker(root, 4);
+  const values = []; let node, size = 0;
+  while ((node = walker.nextNode()) && size < maxCharacters) {
+    if (hiddenOrExcluded(node.parentElement)) continue;
+    const value = String(node.nodeValue || '').trim();
+    if (!value) continue;
+    const remaining = Math.max(0, maxCharacters - size);
+    values.push(value.slice(0, remaining)); size += value.length + 1;
+  }
+  return values.join('\n');
 }
 function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () => false, getTranslationAvailable = getAIAvailable, translateBatch = null, getCloudAllowed = () => false, onStatus = () => {}, onDictionary = () => {} } = {}) {
   const textSources = new WeakMap();
@@ -8915,12 +9042,16 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
   };
 }
 
+Object.defineProperty(exports, "SUPPORTED_LANGUAGES", { enumerable: true, get: () => SUPPORTED_LANGUAGES });
+Object.defineProperty(exports, "supportedLanguages", { enumerable: true, get: () => supportedLanguages });
+Object.defineProperty(exports, "BUNDLED_UI_LANGUAGES", { enumerable: true, get: () => BUNDLED_UI_LANGUAGES });
 Object.defineProperty(exports, "resolveSupportedLanguage", { enumerable: true, get: () => resolveSupportedLanguage });
 Object.defineProperty(exports, "languageDirection", { enumerable: true, get: () => languageDirection });
 Object.defineProperty(exports, "loadDictionary", { enumerable: true, get: () => loadDictionary });
 Object.defineProperty(exports, "loadedDictionary", { enumerable: true, get: () => loadedDictionary });
 Object.defineProperty(exports, "lookupDictionary", { enumerable: true, get: () => lookupDictionary });
 Object.defineProperty(exports, "onDeviceTranslator", { enumerable: true, get: () => onDeviceTranslator });
+Object.defineProperty(exports, "publicTextSnapshot", { enumerable: true, get: () => publicTextSnapshot });
 Object.defineProperty(exports, "createLocaleController", { enumerable: true, get: () => createLocaleController });
 },
 "app.js":function(require, exports) {
@@ -9550,6 +9681,7 @@ function bindMemberAuthForms({status,submit}){const tabs=$$('[data-auth-tab]');t
 async function cloudAccountModal(){const cloud=window.MacGyverCloud;if(!cloud?.configured){modal(isZh()?'跨裝置學習帳號':'Cross-device learning accounts',`${cloud?.configurationError?`<p class="notice warn" role="alert">${esc(cloud.configurationError)}</p>`:''}<div class="notice">${isZh()?'此網站尚未設定雲端帳號服務。您仍可使用本機學習檔案並匯出備份。網站管理者需先設定 Supabase 專案、資料表與登入回呼網址，完成後即可用帳號、密碼、信箱與手機號碼註冊並跨裝置同步。':'Cloud accounts are not configured on this website. Local learning profiles and progress exports remain available. The site owner must configure a Supabase project, database and authentication callback URL before member registration (username, password, email and mobile number) and cross-device sync can work.'}</div><p>${isZh()?'完整設定請見套件 docs/PAYMENTS_V12_ZH.md 與 supabase/002_accounts_commerce.sql。私密服務金鑰不得放進網頁。':'See docs/PAYMENTS_V12_ZH.md and supabase/002_accounts_commerce.sql in the package. Never put a secret service key in the website.'}</p>`);return}let session;try{session=await cloud.getSession()}catch(error){toast(String(error.message||error));return}const account=session?.user,needsResume=!!account&&(authMode!=='supabase'||user?.id!==account.id);modal(isZh()?'會員帳號 · 登入與註冊':'Member account · sign in and register',`<p>${isZh()?'帳號、信箱、手機號碼及學習紀錄保存在網站設定的 Supabase 服務；登入後可跨裝置繼續。註冊後請依信箱連結完成驗證。本機檔案仍獨立保存，不會自動覆蓋。':'Your username, email, mobile number and progress are stored in this website’s Supabase service for cross-device learning. Follow the verification email after registration. Local profiles remain separate and are not automatically overwritten.'}</p>${account?`<p data-no-translate><strong>${esc(account.name)}</strong><br>${esc(account.email)}</p>${needsResume?`<div class="notice">${isZh()?'雲端身分已驗證，目前仍在使用本機學習檔案。恢復後會載入此雲端帳號的紀錄；本機紀錄保留在原檔案。':'Your cloud session is verified, but learning still uses the local profile. Resume to load this cloud account’s records; local records stay in their original profile.'}</div><button class="button" id="cloudResume">${isZh()?'恢復雲端學習':'Resume cloud learning'}</button>`:''}<button class="button light" id="cloudLogout">${t('logout')}</button><details class="mt"><summary>${isZh()?'重設／更新密碼':'Reset / update password'}</summary><form id="cloudPasswordForm"><label class="field">${t('password')}<input id="cloudNewPassword" type="password" minlength="12" maxlength="128" required autocomplete="new-password"></label><button class="button">${isZh()?'更新密碼':'Update password'}</button></form></details>`:memberAuthForms()}<p id="cloudAccountStatus" role="status" aria-live="polite"></p>`);const status=message=>{if($('#cloudAccountStatus'))$('#cloudAccountStatus').textContent=message};if(account){if(needsResume)$('#cloudResume').onclick=async()=>{const button=$('#cloudResume');button.disabled=true;status(isZh()?'正在載入雲端紀錄…':'Loading cloud records…');try{captureNotes();await saveQueue;await cloud.resumeSession({expectedUserId:account.id});await initAccount();if(authMode!=='supabase'||user?.id!==account.id)throw new Error(isZh()?'雲端連線尚未完成，請重試。':'Cloud connection is incomplete. Please retry.');closeModal();render();toast(isZh()?'已恢復雲端學習；本機紀錄仍保留。':'Cloud learning resumed; local records were retained.')}catch(error){status(String(error.message||error))}finally{button.disabled=false}};$('#cloudLogout').onclick=async()=>{captureNotes();await saveQueue;try{await cloud.signOut();await initAccount();closeModal();render()}catch(error){status(String(error.message||error))}};$('#cloudPasswordForm').onsubmit=async event=>{event.preventDefault();try{await cloud.updatePassword($('#cloudNewPassword').value);$('#cloudNewPassword').value='';status(isZh()?'密碼已更新。':'Password updated.')}catch(error){status(String(error.message||error))}};return}bindMemberAuthForms({status,submit:async(mode,v)=>{if(mode==='reset'){await cloud.resetPassword(v.email);status(isZh()?'若此信箱符合重設條件，將收到重設密碼信。請檢查收件匣與垃圾郵件。':'If this email is eligible, a password reset message will arrive. Check your inbox and spam folder.');return}captureNotes();await saveQueue;if(mode==='signup'){const free=await cloud.checkAvailability({username:v.username,phone:v.phone}).catch(()=>({}));if(free.usernameAvailable===false)throw new Error(isZh()?'此帳號已被使用，請換一個。':'This username is taken.');if(free.phoneAvailable===false)throw new Error(isZh()?'此手機號碼已註冊。':'This mobile number is already registered.');await cloud.signUp({name:v.name||v.username,username:v.username,email:v.email,phone:v.phone,password:v.password})}else await cloud.signInWithLogin({login:v.login,password:v.password});await initAccount();if(authMode==='supabase'&&user){closeModal();render();toast(isZh()?'已登入雲端學習帳號。':'Signed in to your cloud learning account.')}else{render();status(isZh()?'請到信箱點擊驗證連結完成註冊，再回到此處以帳號或信箱登入。若未收到，請檢查垃圾郵件。':'Open the verification link in your email, then return here and sign in with your username or email. Check spam if nothing arrives.')}}})}
 
 const languageChoices=[['zh-TW','繁體中文'],['en','English'],['zh-CN','简体中文'],['ja','日本語'],['ko','한국어'],['es','Español'],['fr','Français'],['de','Deutsch'],['pt','Português'],['it','Italiano'],['nl','Nederlands'],['ru','Русский'],['uk','Українська'],['pl','Polski'],['cs','Čeština'],['sk','Slovenčina'],['sl','Slovenščina'],['hr','Hrvatski'],['sr','Српски'],['bg','Български'],['ro','Română'],['hu','Magyar'],['el','Ελληνικά'],['tr','Türkçe'],['ar','العربية'],['he','עברית'],['fa','فارسی'],['ur','اردو'],['hi','हिन्दी'],['bn','বাংলা'],['ta','தமிழ்'],['te','తెలుగు'],['mr','मराठी'],['gu','ગુજરાતી'],['kn','ಕನ್ನಡ'],['ml','മലയാളം'],['pa','ਪੰਜਾਬੀ'],['ne','नेपाली'],['si','සිංහල'],['th','ไทย'],['vi','Tiếng Việt'],['id','Bahasa Indonesia'],['ms','Bahasa Melayu'],['fil','Filipino'],['km','ខ្មែរ'],['lo','ລາວ'],['my','မြန်မာ'],['mn','Монгол'],['kk','Қазақша'],['uz','Oʻzbekcha'],['az','Azərbaycanca'],['ka','ქართული'],['hy','Հայերեն'],['sw','Kiswahili'],['am','አማርኛ'],['ha','Hausa'],['yo','Yorùbá'],['ig','Igbo'],['zu','isiZulu'],['af','Afrikaans'],['so','Soomaali'],['sv','Svenska'],['no','Norsk'],['da','Dansk'],['fi','Suomi'],['is','Íslenska'],['et','Eesti'],['lv','Latviešu'],['lt','Lietuvių'],['ga','Gaeilge'],['cy','Cymraeg'],['mt','Malti'],['sq','Shqip'],['mk','Македонски'],['bs','Bosanski'],['eu','Euskara'],['gl','Galego'],['ca','Català'],['eo','Esperanto']];
+for(const code of ["as", "be", "bho", "bo", "ceb", "co", "dv", "ff", "fy", "gd", "gn", "gom", "haw", "hmn", "ht", "jv", "ku", "ky", "la", "lb", "ln", "mai", "mg", "mi", "oc", "om", "or", "ps", "qu", "sa", "sd", "sn", "st", "su", "tg", "ti", "tk", "tt", "ug", "xh", "yi"]){let label=code;try{label=new Intl.DisplayNames([code],{type:'language'}).of(code)||code;}catch{}languageChoices.push([code,label]);}
 let preferenceTimer=0;
 const personalization=createPersonalization({getLanguage:resolved,getProfileId:()=>user?.id||'guest',getProfileName:()=>user?.name||t('guest'),onOpen:stopDemonstration,onRendered:()=>applyLanguage(),onChanged:prefs=>{if(authMode==='supabase'&&user&&window.MacGyverCloud?.savePreferences){clearTimeout(preferenceTimer);preferenceTimer=setTimeout(()=>window.MacGyverCloud.savePreferences(prefs).catch(()=>{}),1200)}}});
 function translationModal(){

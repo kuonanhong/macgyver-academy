@@ -46,12 +46,12 @@ MANIFEST = '.macgyver-sync-manifest.json'
 KEEP_REMOTE = {'CNAME', '.nojekyll', 'LICENSE', 'LICENSE.md'}
 
 
-# These are known full-authoring trees shipped by MacGyver V1–V21, not
+# These are known full-authoring trees shipped by MacGyver V1–V28, not
 # arbitrary names inferred from the remote repository.
 AUTHORING_TREES = {
     'curriculum', 'expansion', 'expansion-v7', 'semiconductor-v8', 'packaging-v9',
     'electronics-v10', 'computing-v11', 'optics-v12', 'structures-v13',
-    'underground-v14', 'water-v15', 'rail-v16', 'environment-v17', 'aviation-v18', 'marine-v19', 'campaign-v20', 'automotive-v21', 'space-v23', 'curriculum-v24', 'curriculum-v25', 'curriculum-v26', 'curriculum-v27'
+    'underground-v14', 'water-v15', 'rail-v16', 'environment-v17', 'aviation-v18', 'marine-v19', 'campaign-v20', 'automotive-v21', 'space-v23', 'curriculum-v24', 'curriculum-v25', 'curriculum-v26', 'curriculum-v27', 'curriculum-v28'
 }
 
 def sensitive_remote_path(name):

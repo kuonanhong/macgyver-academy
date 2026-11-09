@@ -62,6 +62,19 @@ def candidate(relative):
 
 
 def snapshot(source):
+    # This legacy exporter predates the first-stage preview boundary. Its broad
+    # source-tree walk would publish the complete owner authoring inputs. Keep
+    # shared policy helpers importable, but never use this route for V21+.
+    version_file = source / 'SOURCE_VERSION.json'
+    if version_file.exists():
+        version = json.loads(version_file.read_text('utf-8'))
+        try:
+            major = int(str(version.get('version', '')).split('.')[0])
+        except (TypeError, ValueError):
+            fail('無法辨識 SOURCE_VERSION.json；未匯出或上傳。')
+        if major >= 21:
+            fail('V21+ 不接受舊版整套原始碼公開匯出，避免公開完整會員教材。'
+                 '請使用 bash macgyver.sh 或本版本的 Update_MacGyver_v*.sh；未匯出或上傳。')
     result = {}
     ignored = []
     for folder, directories, files in os.walk(source, followlinks=False):

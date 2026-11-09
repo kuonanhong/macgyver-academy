@@ -20,4 +20,5 @@ command -v python3 >/dev/null || { echo '需要 Python 3.10 或更新版本。' 
 if [[ ! -f "$TASK_ROOT/public/academy/preview-manifest.json" ]]; then
   bash "$TASK_ROOT/build-offline.sh" --if-needed
 fi
-exec python3 "$TASK_ROOT/tools/export-preview-v21.py" --out "$OUTPUT_DIR"
+python3 "$TASK_ROOT/tools/export-preview-v21.py" --out "$OUTPUT_DIR" --http-only
+exec python3 "$TASK_ROOT/tools/check-pages-artifact-v28.py" "$OUTPUT_DIR"
