@@ -108,6 +108,54 @@ export const ENERGY_V30_COURSES = [
   ["energy-v30-090", "energy-v30-091", "energy-v30-092", "energy-v30-093", "energy-v30-094", "energy-v30-095", "energy-v30-096", "energy-v30-097", "energy-v30-098", "energy-v30-099"]
 ];
 // END V30 ENERGY GROUP METADATA
+// BEGIN V31 ENERGY GROUP METADATA
+export const RESOURCE_V31_GROUPS = [
+  ["巨型陸上油田與集輸", "Giant onshore fields and gathering"],
+  ["固定式平台與海上油田", "Fixed platforms and offshore oil fields"],
+  ["深海浮式生產與卸油", "Deepwater FPSO developments"],
+  ["複雜海域與深水工程", "Complex offshore and deepwater systems"],
+  ["大型煉油與化工整合", "Large refineries and integration"],
+  ["油砂與重質油工程", "Oil sands and heavy-oil systems"],
+  ["儲運、減碳與退役工程", "Storage, carbon management and decommissioning"],
+  ["世界級天然氣開發", "Major gas developments"],
+  ["大型液化出口系統", "Large LNG export systems"],
+  ["浮式與國際液化工程", "Floating and international LNG"],
+  ["接收與再氣化樞紐", "Receipt and regasification hubs"],
+  ["跨國與海底天然氣管線", "International and subsea gas pipelines"],
+  ["地下儲氣與季節供應", "Underground storage and seasonal supply"],
+  ["氣體處理與高值副產品", "Gas processing and valuable coproducts"],
+  ["巨型銅礦與綜合選礦", "Giant copper mines and integrated concentration"],
+  ["鐵礦與礦鐵港物流", "Iron ore and mine-rail-port logistics"],
+  ["金礦與地下深部工程", "Gold mines and deep underground systems"],
+  ["煤、鉀鹽與磷礦", "Coal, potash and phosphate"],
+  ["鎳、鋁土與鑽石礦", "Nickel, bauxite and diamond mines"],
+  ["鋰與稀土關鍵礦物", "Lithium and rare-earth minerals"],
+  ["礦山復育與長期水管理", "Mine rehabilitation and long-term water management"]
+];
+export const RESOURCE_V31_COURSES = [
+  ["extractive-v31-001", "extractive-v31-002", "extractive-v31-003", "extractive-v31-004", "extractive-v31-005", "extractive-v31-006", "extractive-v31-007", "extractive-v31-008", "extractive-v31-009", "extractive-v31-010"],
+  ["extractive-v31-011", "extractive-v31-012", "extractive-v31-013", "extractive-v31-014", "v11-troll-field", "v11-johan-sverdrup", "extractive-v31-017", "extractive-v31-018", "extractive-v31-019", "extractive-v31-020"],
+  ["extractive-v31-021", "extractive-v31-022", "extractive-v31-023", "extractive-v31-024", "extractive-v31-025", "extractive-v31-026", "extractive-v31-027", "extractive-v31-028", "extractive-v31-029", "extractive-v31-030"],
+  ["extractive-v31-031", "extractive-v31-032", "extractive-v31-033", "extractive-v31-034", "v11-shell-perdido", "extractive-v31-036", "extractive-v31-037", "extractive-v31-038", "extractive-v31-039", "extractive-v31-040"],
+  ["extractive-v31-041", "extractive-v31-042", "extractive-v31-043", "extractive-v31-044", "extractive-v31-045", "extractive-v31-046", "extractive-v31-047", "extractive-v31-048", "extractive-v31-049", "extractive-v31-050"],
+  ["extractive-v31-051", "extractive-v31-052", "extractive-v31-053", "extractive-v31-054", "extractive-v31-055", "extractive-v31-056", "extractive-v31-057", "extractive-v31-058", "extractive-v31-059", "extractive-v31-060"],
+  ["extractive-v31-061", "extractive-v31-062", "extractive-v31-063", "extractive-v31-064", "extractive-v31-065", "extractive-v31-066", "extractive-v31-067", "extractive-v31-068", "extractive-v31-069", "extractive-v31-070"],
+  ["extractive-v31-071", "extractive-v31-072", "extractive-v31-073", "extractive-v31-074", "extractive-v31-075", "extractive-v31-076", "extractive-v31-077", "extractive-v31-078", "extractive-v31-079", "extractive-v31-080"],
+  ["extractive-v31-081", "extractive-v31-082", "extractive-v31-083", "extractive-v31-084", "extractive-v31-085", "extractive-v31-086", "extractive-v31-087", "extractive-v31-088", "extractive-v31-089", "extractive-v31-090"],
+  ["v11-prelude-flng", "extractive-v31-092", "extractive-v31-093", "extractive-v31-094", "extractive-v31-095", "extractive-v31-096", "extractive-v31-097", "extractive-v31-098", "extractive-v31-099", "extractive-v31-100"],
+  ["extractive-v31-101", "extractive-v31-102", "extractive-v31-103", "extractive-v31-104", "extractive-v31-105", "extractive-v31-106", "extractive-v31-107", "extractive-v31-108", "extractive-v31-109", "extractive-v31-110"],
+  ["extractive-v31-111", "extractive-v31-112", "extractive-v31-113", "extractive-v31-114", "extractive-v31-115", "extractive-v31-116", "extractive-v31-117", "extractive-v31-118", "extractive-v31-119", "extractive-v31-120"],
+  ["extractive-v31-121", "extractive-v31-122", "extractive-v31-123", "extractive-v31-124", "extractive-v31-125", "extractive-v31-126", "extractive-v31-127", "extractive-v31-128", "extractive-v31-129", "extractive-v31-130"],
+  ["extractive-v31-131", "extractive-v31-132", "extractive-v31-133", "extractive-v31-134", "extractive-v31-135", "extractive-v31-136", "extractive-v31-137", "extractive-v31-138", "extractive-v31-139", "extractive-v31-140"],
+  ["extractive-v31-141", "extractive-v31-142", "extractive-v31-143", "extractive-v31-144", "extractive-v31-145", "extractive-v31-146", "extractive-v31-147", "extractive-v31-148", "extractive-v31-149", "extractive-v31-150"],
+  ["extractive-v31-151", "extractive-v31-152", "extractive-v31-153", "extractive-v31-154", "extractive-v31-155", "extractive-v31-156", "extractive-v31-157", "extractive-v31-158", "extractive-v31-159", "extractive-v31-160"],
+  ["v11-boddington-mine", "v11-cadia-mine", "extractive-v31-163", "extractive-v31-164", "extractive-v31-165", "extractive-v31-166", "extractive-v31-167", "extractive-v31-168", "extractive-v31-169", "extractive-v31-170"],
+  ["extractive-v31-171", "extractive-v31-172", "extractive-v31-173", "extractive-v31-174", "extractive-v31-175", "extractive-v31-176", "extractive-v31-177", "extractive-v31-178", "extractive-v31-179", "extractive-v31-180"],
+  ["extractive-v31-181", "extractive-v31-182", "extractive-v31-183", "extractive-v31-184", "extractive-v31-185", "extractive-v31-186", "extractive-v31-187", "extractive-v31-188", "extractive-v31-189", "extractive-v31-190"],
+  ["extractive-v31-191", "extractive-v31-192", "extractive-v31-193", "extractive-v31-194", "extractive-v31-195", "extractive-v31-196", "extractive-v31-197", "extractive-v31-198", "extractive-v31-199", "extractive-v31-200"],
+  ["extractive-v31-201", "extractive-v31-202", "extractive-v31-203", "extractive-v31-204", "extractive-v31-205", "extractive-v31-206", "extractive-v31-207", "extractive-v31-208", "extractive-v31-209", "extractive-v31-210"]
+];
+// END V31 ENERGY GROUP METADATA
 
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
@@ -288,6 +336,7 @@ export const LEARNING_SUBDISCIPLINES = [
   subdivision('energy-solar','energy','太陽能與其他轉換','Solar & other energy conversion',/太陽能|光伏|solar|photovoltaic|潮汐|tidal|波浪|wave|燃氣|gas.?turbine|蒸汽|steam/),
   ...ENERGY_V30_GROUPS.map((p,i)=>subdivision('energy-v30-'+String(i+1).padStart(2,'0'),'energy',p[0],p[1],new RegExp('energy-v30-'+String(i+1).padStart(2,'0')+'(?!\\d)','i'))),
   subdivision('resources-gold','resources','淘金與黃金礦業','Gold recovery & gold mining',/淘金|黃金|金礦|gold|placer/),
+  ...RESOURCE_V31_GROUPS.map((p,i)=>subdivision('resources-v31-'+String(i+1).padStart(2,'0'),'resources',p[0],p[1],new RegExp('resources-v31-'+String(i+1).padStart(2,'0')+'(?!\\d)','i'))),
   subdivision('resources-oil','resources','石油、天然氣與井','Oil, gas & wells',/石油|油氣|油田|天然氣|oil|petroleum|gas|well|鑽井/),
   subdivision('resources-mining','resources','採礦、選礦與監測','Mining, beneficiation & monitoring',/採礦|礦場|礦山|選礦|mining|mine|ore|mineral|tailings|尾礦/)
 ];
@@ -296,6 +345,7 @@ export const LEARNING_SUBDISCIPLINES = [
 export const LEARNING_ROUTES = [
   ...SOFTWARE_V29_GROUPS.map((p,i)=>({id:'software-v29-'+String(i+1).padStart(2,'0'),title:p,goal:pair('循序完成案例、實驗、故障與驗收。','Progress through cases, experiments, diagnosis and acceptance.'),courses:Array.from({length:10},(_,j)=>'soft-v29-'+String(i*10+j+1).padStart(3,'0'))})),
   ...ENERGY_V30_GROUPS.map((p,i)=>({id:'energy-v30-'+String(i+1).padStart(2,'0'),title:p,goal:pair('依序完成機制、定量估算、試驗驗證與失效診斷。','Progress through mechanism, quantitative estimate, verification and failure diagnosis.'),courses:ENERGY_V30_COURSES[i]})),
+  ...RESOURCE_V31_GROUPS.map((p,i)=>({id:'resources-v31-'+String(i+1).padStart(2,'0'),title:p,goal:pair('依序完成機制、定量估算、試驗驗證與失效診斷。','Progress through mechanism, quantitative estimate, verification and failure diagnosis.'),courses:RESOURCE_V31_COURSES[i]})),
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},

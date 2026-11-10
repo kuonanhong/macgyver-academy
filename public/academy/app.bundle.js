@@ -5,6 +5,13 @@ const factories={
 "experience-links-v21.js":function(require, exports) {
 'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// V31 resource courses have dedicated project stations in the upgraded walking world.
+const resourceExtensionsV31=new Set(['v11-troll-field','v11-johan-sverdrup','v11-shell-perdido','v11-prelude-flng','v11-boddington-mine','v11-cadia-mine']);
+function courseSceneHref(course){
+ const id=String(course?.id||''), domain=String(course?.category||'');
+ const resourceV31=domain==='materials'&&(course?.v31Extension===true||course?.educationEdition===31||resourceExtensionsV31.has(id)||/^extractive-v31-\d{3}$/.test(id));
+ return resourceV31?`realworld-v31.html?domain=materials&site=${encodeURIComponent(id)}`:`experience.html?domain=${encodeURIComponent(domain)}&course=${encodeURIComponent(id)}`;
+}
 function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;
  const tiles=[['space','太空與衛星','Space & satellites'],['semiconductor','半導體製造','Semiconductor'],['automotive','汽車與交通工具','Automotive'],['aerospace','航空工程','Aerospace'],['marine','船舶與海洋','Marine']];
@@ -19,9 +26,10 @@ function experienceCourseMarkup(course,zh=true){
  if(!course)return '';
  const t=(a,b)=>zh?a:b;
  const lab=course.category==='space'&&course.educationEdition===23? `<a class="button light" href="space-lab-v23.html?course=${encodeURIComponent(course.id)}#${spaceModel(course)}">${t('太空工程試算室','Space engineering calculator')} ↗</a>`:'';
- return `<section class="campaign-course-v20"><div><span class="campaign-kicker">SCENE → STORY → LESSON</span><h3>${t('走進這門課的工程空間','Walk through this subject’s engineering space')}</h3><p>${t('選擇角色、觀察設備，再回到逐步課程。故事紀錄與課程進度分開保存；場景會標示實拍來源與參考範圍。','Choose a role and inspect equipment, then return to the lesson. Story records and course progress are saved separately. Each scene identifies its photographic source and reference scope.')}</p></div><a class="button" href="experience.html?domain=${encodeURIComponent(course.category)}&course=${encodeURIComponent(course.id)}">⛶ ${t('進入全畫面','Enter full window')} ↗</a>${lab}</section>`;
+ return `<section class="campaign-course-v20"><div><span class="campaign-kicker">SCENE → STORY → LESSON</span><h3>${t('走進這門課的工程空間','Walk through this subject’s engineering space')}</h3><p>${t('選擇角色、觀察設備，再回到逐步課程。故事紀錄與課程進度分開保存；場景會標示實拍來源與參考範圍。','Choose a role and inspect equipment, then return to the lesson. Story records and course progress are saved separately. Each scene identifies its photographic source and reference scope.')}</p></div><a class="button" href="${esc(courseSceneHref(course))}">⛶ ${t('進入全畫面','Enter full window')} ↗</a>${lab}</section>`;
 }
 
+Object.defineProperty(exports, "courseSceneHref", { enumerable: true, get: () => courseSceneHref });
 Object.defineProperty(exports, "experienceEntryMarkup", { enumerable: true, get: () => experienceEntryMarkup });
 Object.defineProperty(exports, "experienceCourseMarkup", { enumerable: true, get: () => experienceCourseMarkup });
 },
@@ -2861,6 +2869,54 @@ const ENERGY_V30_COURSES = [
   ["energy-v30-090", "energy-v30-091", "energy-v30-092", "energy-v30-093", "energy-v30-094", "energy-v30-095", "energy-v30-096", "energy-v30-097", "energy-v30-098", "energy-v30-099"]
 ];
 // END V30 ENERGY GROUP METADATA
+// BEGIN V31 ENERGY GROUP METADATA
+const RESOURCE_V31_GROUPS = [
+  ["巨型陸上油田與集輸", "Giant onshore fields and gathering"],
+  ["固定式平台與海上油田", "Fixed platforms and offshore oil fields"],
+  ["深海浮式生產與卸油", "Deepwater FPSO developments"],
+  ["複雜海域與深水工程", "Complex offshore and deepwater systems"],
+  ["大型煉油與化工整合", "Large refineries and integration"],
+  ["油砂與重質油工程", "Oil sands and heavy-oil systems"],
+  ["儲運、減碳與退役工程", "Storage, carbon management and decommissioning"],
+  ["世界級天然氣開發", "Major gas developments"],
+  ["大型液化出口系統", "Large LNG export systems"],
+  ["浮式與國際液化工程", "Floating and international LNG"],
+  ["接收與再氣化樞紐", "Receipt and regasification hubs"],
+  ["跨國與海底天然氣管線", "International and subsea gas pipelines"],
+  ["地下儲氣與季節供應", "Underground storage and seasonal supply"],
+  ["氣體處理與高值副產品", "Gas processing and valuable coproducts"],
+  ["巨型銅礦與綜合選礦", "Giant copper mines and integrated concentration"],
+  ["鐵礦與礦鐵港物流", "Iron ore and mine-rail-port logistics"],
+  ["金礦與地下深部工程", "Gold mines and deep underground systems"],
+  ["煤、鉀鹽與磷礦", "Coal, potash and phosphate"],
+  ["鎳、鋁土與鑽石礦", "Nickel, bauxite and diamond mines"],
+  ["鋰與稀土關鍵礦物", "Lithium and rare-earth minerals"],
+  ["礦山復育與長期水管理", "Mine rehabilitation and long-term water management"]
+];
+const RESOURCE_V31_COURSES = [
+  ["extractive-v31-001", "extractive-v31-002", "extractive-v31-003", "extractive-v31-004", "extractive-v31-005", "extractive-v31-006", "extractive-v31-007", "extractive-v31-008", "extractive-v31-009", "extractive-v31-010"],
+  ["extractive-v31-011", "extractive-v31-012", "extractive-v31-013", "extractive-v31-014", "v11-troll-field", "v11-johan-sverdrup", "extractive-v31-017", "extractive-v31-018", "extractive-v31-019", "extractive-v31-020"],
+  ["extractive-v31-021", "extractive-v31-022", "extractive-v31-023", "extractive-v31-024", "extractive-v31-025", "extractive-v31-026", "extractive-v31-027", "extractive-v31-028", "extractive-v31-029", "extractive-v31-030"],
+  ["extractive-v31-031", "extractive-v31-032", "extractive-v31-033", "extractive-v31-034", "v11-shell-perdido", "extractive-v31-036", "extractive-v31-037", "extractive-v31-038", "extractive-v31-039", "extractive-v31-040"],
+  ["extractive-v31-041", "extractive-v31-042", "extractive-v31-043", "extractive-v31-044", "extractive-v31-045", "extractive-v31-046", "extractive-v31-047", "extractive-v31-048", "extractive-v31-049", "extractive-v31-050"],
+  ["extractive-v31-051", "extractive-v31-052", "extractive-v31-053", "extractive-v31-054", "extractive-v31-055", "extractive-v31-056", "extractive-v31-057", "extractive-v31-058", "extractive-v31-059", "extractive-v31-060"],
+  ["extractive-v31-061", "extractive-v31-062", "extractive-v31-063", "extractive-v31-064", "extractive-v31-065", "extractive-v31-066", "extractive-v31-067", "extractive-v31-068", "extractive-v31-069", "extractive-v31-070"],
+  ["extractive-v31-071", "extractive-v31-072", "extractive-v31-073", "extractive-v31-074", "extractive-v31-075", "extractive-v31-076", "extractive-v31-077", "extractive-v31-078", "extractive-v31-079", "extractive-v31-080"],
+  ["extractive-v31-081", "extractive-v31-082", "extractive-v31-083", "extractive-v31-084", "extractive-v31-085", "extractive-v31-086", "extractive-v31-087", "extractive-v31-088", "extractive-v31-089", "extractive-v31-090"],
+  ["v11-prelude-flng", "extractive-v31-092", "extractive-v31-093", "extractive-v31-094", "extractive-v31-095", "extractive-v31-096", "extractive-v31-097", "extractive-v31-098", "extractive-v31-099", "extractive-v31-100"],
+  ["extractive-v31-101", "extractive-v31-102", "extractive-v31-103", "extractive-v31-104", "extractive-v31-105", "extractive-v31-106", "extractive-v31-107", "extractive-v31-108", "extractive-v31-109", "extractive-v31-110"],
+  ["extractive-v31-111", "extractive-v31-112", "extractive-v31-113", "extractive-v31-114", "extractive-v31-115", "extractive-v31-116", "extractive-v31-117", "extractive-v31-118", "extractive-v31-119", "extractive-v31-120"],
+  ["extractive-v31-121", "extractive-v31-122", "extractive-v31-123", "extractive-v31-124", "extractive-v31-125", "extractive-v31-126", "extractive-v31-127", "extractive-v31-128", "extractive-v31-129", "extractive-v31-130"],
+  ["extractive-v31-131", "extractive-v31-132", "extractive-v31-133", "extractive-v31-134", "extractive-v31-135", "extractive-v31-136", "extractive-v31-137", "extractive-v31-138", "extractive-v31-139", "extractive-v31-140"],
+  ["extractive-v31-141", "extractive-v31-142", "extractive-v31-143", "extractive-v31-144", "extractive-v31-145", "extractive-v31-146", "extractive-v31-147", "extractive-v31-148", "extractive-v31-149", "extractive-v31-150"],
+  ["extractive-v31-151", "extractive-v31-152", "extractive-v31-153", "extractive-v31-154", "extractive-v31-155", "extractive-v31-156", "extractive-v31-157", "extractive-v31-158", "extractive-v31-159", "extractive-v31-160"],
+  ["v11-boddington-mine", "v11-cadia-mine", "extractive-v31-163", "extractive-v31-164", "extractive-v31-165", "extractive-v31-166", "extractive-v31-167", "extractive-v31-168", "extractive-v31-169", "extractive-v31-170"],
+  ["extractive-v31-171", "extractive-v31-172", "extractive-v31-173", "extractive-v31-174", "extractive-v31-175", "extractive-v31-176", "extractive-v31-177", "extractive-v31-178", "extractive-v31-179", "extractive-v31-180"],
+  ["extractive-v31-181", "extractive-v31-182", "extractive-v31-183", "extractive-v31-184", "extractive-v31-185", "extractive-v31-186", "extractive-v31-187", "extractive-v31-188", "extractive-v31-189", "extractive-v31-190"],
+  ["extractive-v31-191", "extractive-v31-192", "extractive-v31-193", "extractive-v31-194", "extractive-v31-195", "extractive-v31-196", "extractive-v31-197", "extractive-v31-198", "extractive-v31-199", "extractive-v31-200"],
+  ["extractive-v31-201", "extractive-v31-202", "extractive-v31-203", "extractive-v31-204", "extractive-v31-205", "extractive-v31-206", "extractive-v31-207", "extractive-v31-208", "extractive-v31-209", "extractive-v31-210"]
+];
+// END V31 ENERGY GROUP METADATA
 
 /** These are editorial learning families, not rankings or geographic locations. */
 const LEARNING_TRACKS = [
@@ -3041,6 +3097,7 @@ const LEARNING_SUBDISCIPLINES = [
   subdivision('energy-solar','energy','太陽能與其他轉換','Solar & other energy conversion',/太陽能|光伏|solar|photovoltaic|潮汐|tidal|波浪|wave|燃氣|gas.?turbine|蒸汽|steam/),
   ...ENERGY_V30_GROUPS.map((p,i)=>subdivision('energy-v30-'+String(i+1).padStart(2,'0'),'energy',p[0],p[1],new RegExp('energy-v30-'+String(i+1).padStart(2,'0')+'(?!\\d)','i'))),
   subdivision('resources-gold','resources','淘金與黃金礦業','Gold recovery & gold mining',/淘金|黃金|金礦|gold|placer/),
+  ...RESOURCE_V31_GROUPS.map((p,i)=>subdivision('resources-v31-'+String(i+1).padStart(2,'0'),'resources',p[0],p[1],new RegExp('resources-v31-'+String(i+1).padStart(2,'0')+'(?!\\d)','i'))),
   subdivision('resources-oil','resources','石油、天然氣與井','Oil, gas & wells',/石油|油氣|油田|天然氣|oil|petroleum|gas|well|鑽井/),
   subdivision('resources-mining','resources','採礦、選礦與監測','Mining, beneficiation & monitoring',/採礦|礦場|礦山|選礦|mining|mine|ore|mineral|tailings|尾礦/)
 ];
@@ -3049,6 +3106,7 @@ const LEARNING_SUBDISCIPLINES = [
 const LEARNING_ROUTES = [
   ...SOFTWARE_V29_GROUPS.map((p,i)=>({id:'software-v29-'+String(i+1).padStart(2,'0'),title:p,goal:pair('循序完成案例、實驗、故障與驗收。','Progress through cases, experiments, diagnosis and acceptance.'),courses:Array.from({length:10},(_,j)=>'soft-v29-'+String(i*10+j+1).padStart(3,'0'))})),
   ...ENERGY_V30_GROUPS.map((p,i)=>({id:'energy-v30-'+String(i+1).padStart(2,'0'),title:p,goal:pair('依序完成機制、定量估算、試驗驗證與失效診斷。','Progress through mechanism, quantitative estimate, verification and failure diagnosis.'),courses:ENERGY_V30_COURSES[i]})),
+  ...RESOURCE_V31_GROUPS.map((p,i)=>({id:'resources-v31-'+String(i+1).padStart(2,'0'),title:p,goal:pair('依序完成機制、定量估算、試驗驗證與失效診斷。','Progress through mechanism, quantitative estimate, verification and failure diagnosis.'),courses:RESOURCE_V31_COURSES[i]})),
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
@@ -3283,6 +3341,8 @@ Object.defineProperty(exports, "COMMUNICATIONS_V28_GROUPS", { enumerable: true, 
 Object.defineProperty(exports, "SOFTWARE_V29_GROUPS", { enumerable: true, get: () => SOFTWARE_V29_GROUPS });
 Object.defineProperty(exports, "ENERGY_V30_GROUPS", { enumerable: true, get: () => ENERGY_V30_GROUPS });
 Object.defineProperty(exports, "ENERGY_V30_COURSES", { enumerable: true, get: () => ENERGY_V30_COURSES });
+Object.defineProperty(exports, "RESOURCE_V31_GROUPS", { enumerable: true, get: () => RESOURCE_V31_GROUPS });
+Object.defineProperty(exports, "RESOURCE_V31_COURSES", { enumerable: true, get: () => RESOURCE_V31_COURSES });
 Object.defineProperty(exports, "LEARNING_TRACKS", { enumerable: true, get: () => LEARNING_TRACKS });
 Object.defineProperty(exports, "LEARNING_SUBDISCIPLINES", { enumerable: true, get: () => LEARNING_SUBDISCIPLINES });
 Object.defineProperty(exports, "LEARNING_ROUTES", { enumerable: true, get: () => LEARNING_ROUTES });
@@ -5906,7 +5966,7 @@ const array = value => Array.isArray(value) ? value : [];
 // Bundled raster images only: no parent traversal, URL schemes, query strings,
 // encoded separators or executable SVG imported through the photo manifest.
 function safeBundledPhotoPath(value) {
-  return typeof value === 'string' && /^(?:assets\/photos\/[A-Za-z0-9_-]+|assets\/v8-[A-Za-z0-9_-]+)\.(?:jpg|jpeg|png|webp)$/i.test(value) ? value : '';
+  return typeof value === 'string' && /^assets\/(?:(?:photos(?:-v\d+)?|scenes-v\d+)\/(?:[A-Za-z0-9_-]+\/){0,3}[A-Za-z0-9_-]+|v8-[A-Za-z0-9_-]+)\.(?:jpg|jpeg|png|webp)$/i.test(value) ? value : '';
 }
 function photoContextCaption(photo, courseId, zh = true) {
   return text(photo?.courseContext?.[courseId], 'note', zh) || text(photo, 'scope', zh) || text(photo, 'note', zh) || text(photo, 'caption', zh) || '';
@@ -6116,6 +6176,171 @@ Object.defineProperty(exports, "setLearningMedia", { enumerable: true, get: () =
 Object.defineProperty(exports, "mediaForCourse", { enumerable: true, get: () => mediaForCourse });
 Object.defineProperty(exports, "learningMediaMarkup", { enumerable: true, get: () => learningMediaMarkup });
 Object.defineProperty(exports, "bindLearningMedia", { enumerable: true, get: () => bindLearningMedia });
+},
+"curriculum-exercises-v31.js":function(require, exports) {
+'use strict';
+/** V31 oil, gas and mining lesson evidence workbench. No lesson or answer payload is bundled here. */
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(value,n)=>{const chars=Array.from(String(value??'').replace(/\s+/g,' '));return chars.length>n?chars.slice(0,n-1).join('')+'…':chars.join('')};
+const FACETS={mechanism:bi('機制與能量路徑','Mechanism and energy path'),model:bi('定量估算與敏感度','Quantitative estimate and sensitivity'),verification:bi('試驗與驗證','Testing and verification'),failure:bi('失效診斷','Failure diagnosis')};
+const FACET_ORDER=['mechanism','model','verification','failure'];
+
+/** Resolve only genuine V31 energy steps: <courseId>-v31-01 … -40 in a resources course. */
+function resolveCurriculumExerciseV31(course,step,make){
+  const courseId=String(course?.id||''),stepId=String(step?.id||'');
+  if(course?.category!=='materials'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(courseId))return null;
+  const stepMatch=stepId.match(/-v31-(\d{2})$/);
+  const sequence=Number(stepMatch?.[1]);
+  if(!stepMatch||stepId!==`${courseId}-v31-${stepMatch[1]}`||sequence<1||sequence>40)return null;
+  const facet=FACET_ORDER.includes(step.unitFacet)?step.unitFacet:FACET_ORDER[(sequence-1)%4];
+  const unit=Math.floor((sequence-1)/4)+1;
+  const quiz=step.quiz;
+  const complete=!step.locked&&quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)
+    &&quiz.options.length>=2&&quiz.options.length===quiz.optionsEn.length
+    &&quiz.options.every(s=>typeof s==='string'&&s.trim())&&quiz.optionsEn.every(s=>typeof s==='string'&&s.trim())
+    &&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length
+    &&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim())
+    &&['question','questionEn','explanation','explanationEn'].every(k=>typeof quiz[k]==='string'&&quiz[k].trim());
+  const choices=complete?quiz.options.map((value,i)=>({id:'answer-'+i,label:bi(value,quiz.optionsEn[i])})):[];
+  const offset=choices.length?sequence%choices.length:0;
+  const object=bi(short(step.title||course.title,27),short(step.titleEn||course.titleEn,51));
+  const instruction=complete?bi(
+    `${step.instruction}\n觀察與紀錄：${step.observation}\n工程判讀：${quiz.question}\n選擇與本步資料相符的判讀，再記錄你的觀察。`,
+    `${step.instructionEn}\nObserve and document: ${step.observationEn}\nEngineering decision: ${quiz.questionEn}\nChoose the interpretation supported by this step, then record your observation.`
+  ):bi('請載入已授權的完整步驟，才能開始此工程任務。','Load the authorized complete step before starting this engineering task.');
+  const evidence=complete?bi(`${step.check}\n${quiz.explanation}`,`${step.checkEn}\n${quiz.explanationEn}`):bi('尚未載入本步證據。','Step evidence has not been loaded.');
+  const architecture=course.v31Architecture;
+  const nodes=Array.isArray(architecture?.nodes)?architecture.nodes.filter(n=>Array.isArray(n)&&n.length===2).slice(0,6).map(n=>bi(String(n[0]),String(n[1]))):[];
+  const knowledge=Array.isArray(step.knowledge)?step.knowledge.filter(item=>item&&['title','titleEn','text','textEn'].every(k=>typeof item[k]==='string'&&item[k].trim())).slice(0,2):[];
+  return make(`${step.id}-authored-evidence-v31`,'inspect','curriculum-v31:resources',object,instruction,
+    bi('資源工程證據台','Resource engineering evidence bench'),evidence,{
+      choices:[...choices.slice(offset),...choices.slice(0,offset)],expectedChoice:complete?'answer-'+quiz.answer:'unavailable',
+      provenance:complete?'step-authored-evidence':'unavailable',family:'resources-evidence',
+      decisionFeedback:bi('此判讀尚未符合本步證據；請重新核對機制、單位、數量級與題目選項。','This interpretation does not yet match the step evidence. Recheck the mechanism, units, magnitude and answer options.'),
+      curriculumEvidenceV31:{sequence,unit,facet,available:!!complete,courseTitle:bi(course.title,course.titleEn),facetTitle:FACETS[facet],
+        nodes,focus:nodes.length?(unit-1)%nodes.length:0,
+        question:complete?bi(quiz.question,quiz.questionEn):instruction,
+        artifacts:complete?[...knowledge.map(item=>({label:bi(item.title,item.titleEn),text:bi(item.text,item.textEn)})),
+          {label:bi('本步驗收紀錄','Acceptance record for this step'),text:bi(step.check,step.checkEn)}].slice(0,3):[]},
+      coverage:bi('本步原創教材的工程判讀任務。證據台呈現本課的系統架構、本步的知識重點與驗收條件；完整內容在下方任務欄。數值是公開標稱值或明示的教學假設，不是場址設計值、運轉限值或實機試驗。','An engineering decision authored for this lesson. The bench shows this course’s system architecture, the step’s key knowledge and its acceptance criterion; full records appear in the task panel. Numbers are public nominal values or stated teaching assumptions, not site design values, operating limits or equipment tests.')
+    });
+}
+
+/** Draw the course architecture and this step's records; never invents plant imagery. */
+function renderCurriculumEvidenceV31(spec,choice,lang){
+  const context=spec.curriculumEvidenceV31;if(!context)return '';
+  const zh=lang==='zh',selected=spec.choices.find(c=>c.id===choice);
+  const text=(x,y,value,size=9,color='#4a3a12',anchor='start')=>`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+  let out=`<g data-v31-evidence="resources" aria-label="${esc(context.courseTitle[lang])}"><title>${esc(context.courseTitle[lang])}</title>`;
+  out+=text(20,57,short(context.courseTitle[lang],zh?28:58),9);
+  out+=text(20,71,zh?`單元 ${context.unit} / 10 · ${context.facetTitle.zh} · 第 ${context.sequence} / 40 步`:`UNIT ${context.unit} / 10 · ${context.facetTitle.en} · STEP ${context.sequence} / 40`,7.5,'#7a6a44');
+  const count=context.nodes.length;
+  if(count){
+    const gap=6,width=(362-gap*(count-1))/count;
+    context.nodes.forEach((node,i)=>{
+      const x=19+i*(width+gap),active=i===context.focus;
+      out+=`<g data-v31-node="${i}"><title>${esc(node[lang])}</title><rect x="${x.toFixed(1)}" y="78" width="${width.toFixed(1)}" height="24" rx="5" fill="${active?'#f3d58a':'#f4eedb'}" stroke="${active?'#8a5a14':'#b9a877'}"/>`;
+      out+=text((x+width/2).toFixed(1),93,short(node[lang],zh?Math.max(3,Math.floor(width/8.2)):Math.max(5,Math.floor(width/4.4))),zh?7.2:6.2,'#4a3a12','middle')+'</g>';
+      if(i<count-1)out+=`<path d="M${(x+width+1).toFixed(1)} 90h${gap-2}" stroke="#8a5a14" stroke-width="1.2"/>`;
+    });
+  }
+  const top=count?108:84,rowHeight=count?35:42;
+  context.artifacts.forEach((artifact,i)=>{
+    const y=top+i*(rowHeight+3),body=artifact.text[lang]||'',label=artifact.label[lang]||'';
+    out+=`<g data-v31-artifact="${i}"><title>${esc(label+': '+body)}</title><rect x="19" y="${y}" width="362" height="${rowHeight}" rx="6" fill="${i===context.artifacts.length-1&&selected?'#e9d9a9':'#f1ecdc'}" stroke="#a8956a"/>`;
+    out+=text(29,y+12,short(label,zh?32:64),7.5,'#8a5a14');
+    out+=text(29,y+26,short(body,zh?36:72),zh?8.5:7.5)+'</g>';
+  });
+  if(!context.available)out+=text(29,123,zh?'尚未載入已授權的完整證據。':'Authorized evidence has not been loaded.',9);
+  out+=`<title>${esc(context.question[lang])}</title>`;
+  out+=text(20,228,zh?'完整題目、算式與原始證據請見下方任務欄。':'The full question, formula and evidence appear in the task panel.',8,'#7a6a44');
+  out+=text(20,240,selected?(zh?'已選判讀；請記錄觀察並提交檢查。':'Interpretation selected; record observation and submit.'):(zh?'移動觀察工具，核對教材，再選擇工程判讀。':'Move the review tool, check the lesson, then choose a decision.'),zh?9:8);
+  return out+'</g>';
+}
+
+/** Parse only bounded arithmetic. User input can never become executable JavaScript. */
+const MODEL_FUNCTIONS={sqrt:Math.sqrt,sin:Math.sin,cos:Math.cos,tan:Math.tan,log:Math.log,log10:Math.log10,log2:Math.log2,exp:Math.exp,radians:x=>x*Math.PI/180,ceil:Math.ceil,floor:Math.floor,min:Math.min,max:Math.max,abs:Math.abs};
+function arithmeticV31(expression,variables){
+ const src=String(expression);if(!src||src.length>400)throw new RangeError('Invalid expression size');
+ const tokens=src.match(/\s+|\d+\.?\d*(?:[eE][+-]?\d+)?|\.\d+|\*\*|[-+*/(),]|[A-Za-z_][A-Za-z0-9_]*/g)||[];
+ if(tokens.join('')!==src)throw new TypeError('Invalid arithmetic token');
+ const list=tokens.filter(t=>!/^\s+$/.test(t));let i=0,depth=0;
+ const peek=()=>list[i],next=()=>list[i++];
+ function primary(){
+  if(++depth>40)throw new RangeError('Expression nested too deeply');
+  const t=next();let value;
+  if(t===undefined)throw new TypeError('Unexpected end of formula');
+  if(t==='('){value=sum();if(next()!==')')throw new TypeError('Missing parenthesis');}
+  else if(/^[\d.]/.test(t))value=Number(t);
+  else if(t==='-')value=-power();else if(t==='+')value=power();
+  else if(peek()==='('){const f=Object.hasOwn(MODEL_FUNCTIONS,t)?MODEL_FUNCTIONS[t]:null;if(!f)throw new TypeError('Unapproved function');next();const args=[sum()];while(peek()===','){next();args.push(sum());}if(next()!==')')throw new TypeError('Missing parenthesis');value=f(...args);}
+  else if(t==='pi')value=Math.PI;
+  else if(Object.hasOwn(variables,t))value=variables[t];else throw new TypeError('Unknown variable');
+  depth--;return value;
+ }
+ function power(){const base=primary();if(peek()==='**'){next();return Math.pow(base,power());}return base;}
+ function product(){let v=power();while(peek()==='*'||peek()==='/'){const op=next(),r=power();v=op==='*'?v*r:v/r;}return v;}
+ function sum(){let v=product();while(peek()==='+'||peek()==='-'){const op=next(),r=product();v=op==='+'?v+r:v-r;}return v;}
+ const result=sum();if(i!==list.length||!Number.isFinite(result))throw new RangeError('Formula outside its finite domain');return result;
+}
+function calculateCurriculumModelV31(model,values){
+ if(!model||typeof model!=='object'||!model.variables||typeof model.variables!=='object'||Array.isArray(model.variables))throw new TypeError('Missing model variables');
+ const names=Object.keys(model.variables);if(!names.length||names.length>16||names.some(n=>!(/^[A-Za-z][A-Za-z0-9_]{0,31}$/.test(n))))throw new TypeError('Invalid variable names');
+ if(!values||typeof values!=='object'||Object.keys(values).length!==names.length||names.some(n=>!Object.hasOwn(values,n)))throw new TypeError('Inputs do not match model');
+ for(const n of names){
+  const v=values[n],b=model.bounds?.[n]||{};
+  if(typeof b!=='object'||Array.isArray(b)||Object.keys(b).some(k=>!['min','max','exclusiveMin','exclusiveMax'].includes(k))||(b.min!==undefined&&b.max!==undefined&&b.min>b.max))throw new TypeError(`Invalid bounds: ${n}`);
+  if(typeof v!=='number'||!Number.isFinite(v)||Math.abs(v)>1e15)throw new RangeError(`Invalid input: ${n}`);
+  if(b.min!==undefined&&(!Number.isFinite(b.min)||v<b.min||(b.exclusiveMin&&v===b.min)))throw new RangeError(`Below model bound: ${n}`);
+  if(b.max!==undefined&&(!Number.isFinite(b.max)||v>b.max||(b.exclusiveMax&&v===b.max)))throw new RangeError(`Above model bound: ${n}`);
+ }
+ return arithmeticV31(model.expression,values);
+}
+function modelForCurriculumV31(course,step){
+ if(course?.category!=='materials'||step?.locked||!String(step?.id||'').startsWith(String(course?.id||'')+'-v31-'))return null;
+ const suffix=String(step.id).match(/-v31-(\d{2})$/)?.[1],sequence=Number(suffix);if(!Number.isInteger(sequence)||sequence<1||sequence>40||step.id!==`${course.id}-v31-${suffix}`)return null;
+ const unit=Math.floor((sequence-1)/4)+1;
+ const model=step.v31Model||(Array.isArray(course.v31Models)?course.v31Models.find(m=>m.unit===unit):null);
+ if(!model)return null;
+ try{calculateCurriculumModelV31(model,model.variables);return model;}catch{return null;}
+}
+const formatModelV31=value=>Math.abs(value)>=1e8||(value!==0&&Math.abs(value)<1e-4)?value.toExponential(5):value.toLocaleString('en-US',{maximumSignificantDigits:7});
+function curriculumLabMarkupV31(course,step,zh=true){
+ const m=modelForCurriculumV31(course,step);if(!m)return '';
+ const fields=Object.entries(m.variables).map(([name,value])=>{
+  const bounds=m.bounds?.[name]||{},unit=m.variableUnits?.[name]||'';
+  const range=[bounds.min!==undefined?`${bounds.exclusiveMin?'>':'≥'} ${bounds.min}`:'',bounds.max!==undefined?`${bounds.exclusiveMax?'<':'≤'} ${bounds.max}`:''].filter(Boolean).join(' · ');
+  return `<label class="field">${esc(name)} <small>${esc(unit)}</small><input data-v31-number="${esc(name)}" type="number" inputmode="decimal" step="any" value="${value}" ${bounds.min!==undefined?`min="${bounds.min}"`:''} ${bounds.max!==undefined?`max="${bounds.max}"`:''} style="min-height:44px;width:100%"><small>${esc(range)}</small></label>`;
+ }).join('');
+ return `<section id="engineeringLabV31" class="lesson-card engineering-lab" data-v31-model="${esc(step.id)}"><div class="eyebrow">${zh?'可重算的工程算例':'RECOMPUTABLE ENGINEERING MODEL'}</div><h3>${zh?'修改輸入、計算與比較':'Change inputs, compute and compare'}</h3><p><code>${esc(m.formula)}</code></p><p>${esc(zh?m.meaning:m.meaningEn)}</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">${fields}</div><div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0"><button type="button" data-v31-compute>${zh?'計算並保存':'Compute and save'}</button><button type="button" data-v31-reset>${zh?'還原教學輸入':'Restore teaching inputs'}</button></div><output data-v31-result aria-live="polite" style="display:block;font-size:22px;font-weight:700">${zh?'按計算取得結果。':'Press Compute for the result.'}</output><p data-v31-sensitivity></p><small>${zh?'所有預設值皆為教學假設。修改輸入後需重新計算；此練習不會自動完成課程步驟。':'All defaults are teaching assumptions. Recompute after edits; this exploration does not automatically complete a lesson step.'}</small></section>`;
+}
+function bindCurriculumLabV31(course,step,zh=true,doc=globalThis.document,storage){
+ if(storage===undefined)try{storage=globalThis.localStorage;}catch{storage=null;}
+ const m=modelForCurriculumV31(course,step),root=doc?.querySelector?.('#engineeringLabV31');if(!m||!root)return false;
+ const inputs=Array.from(root.querySelectorAll('[data-v31-number]')),result=root.querySelector('[data-v31-result]'),sensitivity=root.querySelector('[data-v31-sensitivity]');
+ const key='mg-v31-model:'+course.id+':'+step.id;
+ const clear=()=>{result.textContent=zh?'輸入已更改，請重新計算。':'Inputs changed; compute again.';sensitivity.textContent='';root.dataset.computed='false';};
+ try{const saved=JSON.parse(storage?.getItem?.(key)||'null');if(saved?.inputs){calculateCurriculumModelV31(m,saved.inputs);for(const input of inputs)input.value=String(saved.inputs[input.dataset.v31Number]);clear();}}catch{}
+ for(const input of inputs)input.oninput=clear;
+ root.querySelector('[data-v31-compute]').onclick=()=>{
+  try{
+   const values=Object.fromEntries(inputs.map(input=>{if(String(input.value).trim()==='')throw new RangeError('Empty input');return [input.dataset.v31Number,Number(input.value)];}));
+   const value=calculateCurriculumModelV31(m,values);result.textContent=`${zh?'結果':'Result'}: ${formatModelV31(value)} ${m.unitLabel||''}`;root.dataset.computed='true';
+   try{const varied={...values,[m.vary]:values[m.vary]*1.1};const changed=calculateCurriculumModelV31(m,varied);sensitivity.textContent=`${m.vary} +10% → ${formatModelV31(changed)} ${m.unitLabel||''}`;}catch{sensitivity.textContent=zh?'增加10%後超出模型適用範圍。':'A10% increase exceeds the model domain.';}
+   try{storage?.setItem?.(key,JSON.stringify({inputs:values,result:value,savedAt:Date.now()}));}catch{}
+  }catch(error){result.textContent=zh?'輸入無效或超出模型範圍。':'Invalid input or values outside the model domain.';sensitivity.textContent=error.message;root.dataset.computed='false';}
+ };
+ root.querySelector('[data-v31-reset]').onclick=()=>{for(const input of inputs)input.value=String(m.variables[input.dataset.v31Number]);try{storage?.removeItem?.(key);}catch{}clear();};
+ return true;
+}
+
+Object.defineProperty(exports, "resolveCurriculumExerciseV31", { enumerable: true, get: () => resolveCurriculumExerciseV31 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV31", { enumerable: true, get: () => renderCurriculumEvidenceV31 });
+Object.defineProperty(exports, "calculateCurriculumModelV31", { enumerable: true, get: () => calculateCurriculumModelV31 });
+Object.defineProperty(exports, "modelForCurriculumV31", { enumerable: true, get: () => modelForCurriculumV31 });
+Object.defineProperty(exports, "curriculumLabMarkupV31", { enumerable: true, get: () => curriculumLabMarkupV31 });
+Object.defineProperty(exports, "bindCurriculumLabV31", { enumerable: true, get: () => bindCurriculumLabV31 });
 },
 "water-calculators.js":function(require, exports) {
 'use strict';
@@ -7184,6 +7409,7 @@ Object.defineProperty(exports, "electronicsLabDetail", { enumerable: true, get: 
 },
 "engineering-labs.js":function(require, exports) {
 'use strict';
+const { curriculumLabMarkupV31, bindCurriculumLabV31 } = require("curriculum-exercises-v31.js");
 const { WATER_LABS, waterLabKind, calculateWaterLab, waterLabDetail } = require("water-calculators.js");
 const { UNDERGROUND_LABS, undergroundLabKind, calculateUndergroundLab, undergroundLabDetail } = require("underground-calculators.js");
 const { COMPUTING_LABS, COMPUTING_COURSE_LABS, computingLabKind, calculateComputingLab, computingLabDetail } = require("computing-visuals.js");
@@ -7276,10 +7502,12 @@ function calculateLab(kind, v) {
 }
 Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS,UNDERGROUND_LABS,WATER_LABS);
 function labMarkup(course, step, zh) {
+  const resources=curriculumLabMarkupV31(course,step,zh);if(resources)return resources;
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return '';
   return `<section class="lesson-card engineering-lab" id="engineeringLab" data-kind="${kind}"><div class="eyebrow">EXPLORE / ${zh?'互動工程算例':'INTERACTIVE ENGINEERING'}</div><h3>${choose(lab.title,zh)}</h3><p><code>${e(lab.formula)}</code></p>${kind==='lithography'?`<label class="field">${zh?'光學情境預設':'Optical scenario'}<select id="labPreset"><option value="duv">ArF immersion · 193 nm · NA 1.35</option><option value="euv">EUV · 13.5 nm · NA 0.33</option><option value="highna">High-NA EUV · 13.5 nm · NA 0.55</option></select></label>`:''}<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">${lab.params.map(([id,label,min,max,delta,value,unit])=>`<label class="field" for="lab-${id}">${e(choose(label,zh))} <output id="lab-value-${id}">${value}</output> ${e(unit)}<input id="lab-${id}" data-lab-input="${id}" type="range" min="${min}" max="${max}" step="${delta}" value="${value}" style="width:100%;min-height:42px;accent-color:#245443"></label>`).join('')}</div><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:20px 0"><output id="labResult" aria-live="polite" style="font-size:32px;font-weight:700;color:#245443"></output><span id="labDetail"></span></div><div id="labChart" aria-hidden="true"></div><p id="labScenarioNote" class="muted"></p><p class="notice">${e(choose(lab.note,zh))}</p><p><strong>${zh?'試著推理：':'Reason it through: '}</strong>${e(choose(lab.question,zh))}</p>${lab.source?`<a href="${e(lab.source)}" target="_blank" rel="noopener noreferrer">${zh?'公式／假設延伸閱讀':'Formula / assumptions reference'} ↗</a>`:''}</section>`;
 }
 function bindLab(course, step, zh) {
+  if(bindCurriculumLabV31(course,step,zh))return;
   if(typeof document==='undefined')return;
   const root=document.querySelector('#engineeringLab');if(!root || !root.querySelectorAll)return;
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return;
@@ -8052,6 +8280,7 @@ const { resolveCurriculumExerciseV25, renderCurriculumEvidenceV25 } = require("c
 const { resolveCurriculumExerciseV26, renderCurriculumEvidenceV26 } = require("curriculum-exercises-v26.js");
 const { resolveCurriculumExerciseV29, renderCurriculumEvidenceV29 } = require("curriculum-exercises-v29.js");
 const { resolveCurriculumExerciseV30, renderCurriculumEvidenceV30 } = require("curriculum-exercises-v30.js");
+const { resolveCurriculumExerciseV31, renderCurriculumEvidenceV31 } = require("curriculum-exercises-v31.js");
 const { resolveCurriculumExerciseV28, renderCurriculumEvidenceV28 } = require("curriculum-exercises-v28.js");
 const { resolveCurriculumExerciseV27, renderCurriculumEvidenceV27 } = require("curriculum-exercises-v27.js");
 const bi=(zh,en)=>({zh,en});
@@ -8313,6 +8542,7 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ const curriculumV31=resolveCurriculumExerciseV31(course,step,make);if(curriculumV31)return curriculumV31;
  const curriculumV30=resolveCurriculumExerciseV30(course,step,make);if(curriculumV30)return curriculumV30;
  const curriculumV29=resolveCurriculumExerciseV29(course,step,make);if(curriculumV29)return curriculumV29;
  const curriculumV28=resolveCurriculumExerciseV28(course,step,make);if(curriculumV28)return curriculumV28;
@@ -8374,7 +8604,7 @@ function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false&&spec.curriculumEvidenceV31?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -8494,6 +8724,7 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV31)return renderCurriculumEvidenceV31(spec,choice,lang);
  if(spec.curriculumEvidenceV30)return renderCurriculumEvidenceV30(spec,choice,lang);
  if(spec.curriculumEvidenceV29)return renderCurriculumEvidenceV29(spec,choice,lang);
  if(spec.curriculumEvidenceV28)return renderCurriculumEvidenceV28(spec,choice,lang);
@@ -9298,7 +9529,7 @@ Object.defineProperty(exports, "createLocaleController", { enumerable: true, get
 },
 "app.js":function(require, exports) {
 'use strict';
-const { experienceEntryMarkup, experienceCourseMarkup } = require("experience-links-v21.js");
+const { experienceEntryMarkup, experienceCourseMarkup, courseSceneHref } = require("experience-links-v21.js");
 const { marineMissionsMarkup, marinePathsMarkup } = require("marine-paths-v19.js");
 const { stageGuidancePlan, guidanceContextMatches, learningBadges } = require("learning-coach-v18.js");
 const { environmentLabMarkup, bindEnvironmentLab } = require("environment-lab-v17.js");
@@ -9484,7 +9715,7 @@ function learningMediaRegion(c,step=null){return `<div id="learningMediaRegion" 
 function refreshLearningMedia(){const slot=$('#learningMediaRegion');if(!slot)return;const c=catalog.find(course=>course.id===slot.dataset.courseId);if(!c)return;const step=slot.dataset.stepId?allSteps(c).find(s=>s.id===slot.dataset.stepId):null;disposeLearningMedia(slot);slot.innerHTML=learningMediaMarkup(c,{zh:isZh(),photos,step,compact:!!step});bindLearningMedia(slot,()=>applyLanguage());applyLanguage()}
 async function loadLearningMedia(){if(window.MG_DATA?.media){setLearningMedia(window.MG_DATA.media);refreshLearningMedia();return}const controller=new AbortController();let timer;try{const data=await Promise.race([fetch('data/media.json',{signal:controller.signal}).then(r=>r.ok?r.json():null),new Promise((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('media-timeout'))},5000)})]);setLearningMedia(data);refreshLearningMedia()}catch{/* Optional media never blocks the curriculum or resets an active task. */}finally{clearTimeout(timer)}}
 function curriculumOverview(c){return `<div class="curriculum-overview">${c.stages.map((stage,i)=>`<details class="curriculum-stage" ${i===0?'open':''}><summary><span class="task-label">PHASE ${String(i+1).padStart(2,'0')}</span><strong>${esc(txt(stage))}</strong>${stageBadge(i,{zh:isZh()})}<small>${stage.steps.length} ${t('steps')}</small></summary><ol>${stage.steps.map(step=>`<li data-curriculum-step="${esc(step.id)}"><h4>${esc(txt(step))}</h4><p>${esc(txt(step,'objective'))}</p>${Array.isArray(step.knowledge)&&step.knowledge.length?`<small>${t('knowledge')} · ${step.knowledge.map(point=>esc(txt(point))).join(' · ')}</small>`:''}</li>`).join('')}</ol></details>`).join('')}</div>`}
-function renderProject(id){const c=catalog.find(x=>x.id===id),body=renderProjectBody(id);if(!c)return body;return `<section class="v16-scene-entry"><div><strong>${isZh()?'先到現場探索':'Explore the scene first'}</strong><p>${isZh()?'從照片、設備與參數實驗開始，接著進入逐步課程。':'Start with the photograph, equipment and parameter experiments, then enter the lesson.'}</p></div><a class="button" href="experience.html?domain=${encodeURIComponent(c.category)}&course=${encodeURIComponent(id)}">${isZh()?'進入場景':'Enter scene'} ↗</a></section>${experienceCourseMarkup(c,isZh())}${body}`}
+function renderProject(id){const c=catalog.find(x=>x.id===id),body=renderProjectBody(id);if(!c)return body;return `<section class="v16-scene-entry"><div><strong>${isZh()?'先到現場探索':'Explore the scene first'}</strong><p>${isZh()?'從照片、設備與參數實驗開始，接著進入逐步課程。':'Start with the photograph, equipment and parameter experiments, then enter the lesson.'}</p></div><a class="button" href="${esc(courseSceneHref(c))}">${isZh()?'進入場景':'Enter scene'} ↗</a></section>${experienceCourseMarkup(c,isZh())}${body}`}
 function renderProjectBody(id){shownProjectId=id;const c=catalog.find(c=>c.id===id);if(!c)return `<p>${t('noResults')}</p>`;const ready=!!c.stages,p=photoFor(c);return `<a class="text-link" href="#catalog">← ${t('catalog')}</a><div class="page-lead mt"><div><span class="page-number">${esc(catName(c.category))} / ${t(ready?'ready':'roadmap')}</span><div class="project-brief-title">${projectIconSvg(c,{en:!isZh()})}<h1>${esc(txt(c))}</h1></div><p>${esc(txt(c,'summary'))}</p></div>${ready&&!c.locked?`<div class="project-entry-actions"><button class="button" id="beginCourse" data-id="${c.id}">${t('begin')} ↗</button><a class="button light" href="#resume/${encodeURIComponent(c.id)}">${isZh()?'進入逐步課程':'Open guided lessons'} →</a></div>`:''}</div>${`<div class="project-mentor-invite"><button class="button light mentor-open" data-open-tutor>✳ ${isZh()?'詢問 AI 師傅 · 原理與延伸問題':'Ask AI mentor · principles and questions'}</button><span>${isZh()?'可選本地 CPU 模型；下載前先徵求同意':'Optional local CPU models; download only with consent'}</span></div>`}${ready?courseAccessMarkup(c,isZh()):''}${relatedRegion(c,true)}${coursePlacesMarkup(c,{zh:isZh()})}<div class="info-list"><div><small>${t('contentStatus')}</small>${ready?(c.stepCount||allSteps(c).length)+' '+t('steps'):t('roadmap')}</div><div><small>${t('scope')}</small>${ready?t('layers'):t('researchOverview')}</div><div><small>${t('progress')}</small>${percent(c.id)}%</div></div>${['suspension','water-treatment'].includes(c.diagram?.type)?`<figure class="course-schematic">${iconSvg(c.diagram.type,5)}<figcaption>${t('conceptModel')}</figcaption></figure>`:''}${typeof c.flowDiagram==='string'?`<figure class="course-flow"><img src="${esc(isZh()?c.flowDiagram:(c.flowDiagramEn||c.flowDiagram))}" alt="${esc(txt(c))} · ${isZh()?'原創教學流程圖':'Original learning flow diagram'}"><figcaption>${isZh()?'原創教學流程圖；各製程分支需依實際產品與驗證重新整合。':'Original learning flow. Process branches require product-specific integration and verification.'}</figcaption></figure>`:''}${p?`<figure class="project-brief-media">${projectMedia(c)}<figcaption class="subtext">${esc(txt(p))} · ${esc(photoCredit(p))}${photoContextCaption(p,c.id,isZh())?`<br>${esc(photoContextCaption(p,c.id,isZh()))}`:''} · <a href="${esc(safeUrl(p.sourceUrl))}" target="_blank" rel="noopener">${t('credits')} ↗</a></figcaption></figure>`:`<figure class="project-brief-media identity-only">${projectMedia(c)}<figcaption class="subtext">${(c.architectureFamily&&Array.isArray(c.architectureNodes)&&c.architectureNodes.length>=3)?(isZh()?'原創功能架構教學圖；非比例尺、實物照片、廠商圖稿或設備運轉圖。':'Original functional architecture for learning; not to scale, a photograph, vendor artwork or an operating drawing.'):(isZh()?'專題識別插畫使用具代表性的領域與設備符號；不是實物照片或工程圖。':'Project identity with representative discipline and equipment motifs; not a photograph or engineering drawing.')}</figcaption></figure>`}${ready?`<div class="notice">${esc(txt(c,'scope'))}</div>${workedExampleMarkup(c)}<div class="section-head"><h2>${t('curriculum')}</h2><span class="subtext">${c.stages.length} ${isZh()?'階段':'stages'}</span></div>${c.locked?'':curriculumOverview(c)}${!c.locked?certificateMarkup(c,isZh()):''}`:`<div class="notice warn">${t('roadmapNote')}</div><div class="task-card"><h3>${t('researchNote')}</h3><textarea id="researchNotes" data-project-id="${id}" class="notes" placeholder="${t('noteHint')}">${esc(progressFor(id).notes)}</textarea><button id="saveResearch" data-id="${id}" class="button mt">${t('saveResearch')}</button></div>${renderResearchPlan(c,{en:!isZh(),profileId:user?.id||'guest'})}`}${learningMediaRegion(c)}${vendorsMarkup(c,{zh:isZh()})}<div class="section-head"><h2>${t('courseSources')}</h2></div><div class="source-grid">${sourceLinks(c.sourceIds)||`<p class="subtext">${isZh()?'尚未建立此題的專屬來源索引。':'Topic-specific references have not yet been indexed.'}</p>`}</div>`}
 async function hydrateServerLearning(c){if(!billingState().protected||!user||!c||c.locked)return;const account=user.id,generation=accountGeneration;try{const data=await loadVerifiedLearning(c.id);if(user?.id!==account||accountGeneration!==generation)return;record(c.id).completed=data.completed||[];record(c.id).assembly=[...new Set([...record(c.id).assembly,...record(c.id).completed])];}catch(error){if(user?.id!==account||accountGeneration!==generation)return;record(c.id).completed=[];toast(error.message);}}
 function workedExampleMarkup(c){const ext=c.v14Extension||c.v13Extension||c.v12Extension||{},w=ext.workedExample||c.workedExample;if(!w)return '';const focus=c.focus||ext.focus?`<p><strong>${isZh()?'本課重點':'Course focus'}</strong> · ${esc(isZh()?(c.focus||ext.focus):(c.focusEn||ext.focusEn))}</p>`:'';return `<section class="task-card worked-example"><span class="task-label">WORKED EXAMPLE</span><h3>${esc(txt(w))}</h3>${focus}<p>${esc(txt(w,'text'))}</p>${txt(w,'assumptions')?`<p class="subtext">${esc(txt(w,'assumptions'))}</p>`:''}</section>`}
@@ -9566,7 +9797,7 @@ function bindAtlasContent(){$$('[data-place]').forEach(button=>button.onclick=()
 function mapIframe(lat,lng){return `<iframe title="Google Maps" src="https://maps.google.com/maps?q=${Number(lat)},${Number(lng)}&z=13&hl=${encodeURIComponent(resolved())}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`}
 function renderSources(){if(!sourceIndex)sourceIndex=buildSourceIndex({courses:sourceUsage?featured.map(c=>({...c,...sourceUsage.get(c.id)})):featured,sources,photos});return `<div class="page-lead"><div><span class="page-number">KNOWLEDGE, WITH TRACEABILITY</span><h1>${t('sourcesTitle')}</h1><p>${t('sourcesDesc')}</p></div></div><div class="notice"><strong>${catalog.length.toLocaleString()} ${t('topicsCount')} · ${featured.length} ${t('featuredCount')}</strong><br>${isZh()?'依來源與課程的實際引用關係分類。引用支持公開原理，並不等於廠商配方已公開；代表照片不等於每道工序的現場實拍。':'Categories follow actual citations. References support public principles, not undisclosed vendor recipes; representative photographs are not process-specific documentary evidence.'}</div><div class="filter-chips">${['official','photos'].map(k=>`<button class="chip ${sourceTab===k?'active':''}" data-source-tab="${k}">${t(k)}</button>`).join('')}</div>${sourceLibraryMarkup(sourceIndex,{...sourceFilters,tab:sourceTab},{zh:isZh(),categories:catMap})}<p class="subtext mt">${isZh()?'MacGyver 是「馬蓋先」的英文名稱。本教學專案與影視作品、廠商或工程業主無隸屬或背書關係。':'MacGyver is the English name for 馬蓋先. This educational project is not affiliated with or endorsed by the television franchise, manufacturers or project owners.'}</p>`}
 
-function render(options={}){if(!coreReady)return;if(!options.keepStageAssist)stopV18StageAssist();sceneMountSerial++;immersiveDispose?.();immersiveDispose=null;routeLoadSerial++;learningMapController?.dispose();learningMapController=null;try{iconWallController?.dispose()}catch{}iconWallController=null;personalization.syncProfile();mapRequestGeneration++;captureNotes(false);refreshDeviceProgress();stopDemonstration();deactivateWorkshopKeyboard();localeController?.invalidate();const route=location.hash.slice(1)||'home',parts=route.split('/'),previousPage=currentPage;currentPage=parts[0];if(currentPage==='scene'&&parts[1]){const target=catalog.find(c=>c.id===parts[1]);if(target){location.replace('experience.html?domain='+encodeURIComponent(target.category)+'&course='+encodeURIComponent(target.id));return;}}if(routeDataGate(currentPage,parts,route))return;if(['home','catalog'].includes(currentPage)&&(lastCatalogRoute!==route||!['home','catalog'].includes(previousPage))){lastCatalogRoute=route;pageIndex=0;query='';subdiscipline='';filter=parts[1]==='domain'&&catMap[parts[2]]?parts[2]:'';maturity=parts[1]==='ready'?'ready':parts[1]==='roadmap'?'roadmap':''}if(currentPage==='resume'){activeId=featured.some(c=>c.id===parts[1])?parts[1]:featured[0].id;localStorage.setItem('mg-active',activeId);const resumeId=activeId,resumeOwner=accountGeneration;$('#main').innerHTML='<div class="loading">'+(isZh()?'正在載入學習紀錄…':'Loading learning records…')+'</div>';hydrateServerLearning(course()).then(()=>{if(location.hash.slice(1)!==route||activeId!==resumeId||accountGeneration!==resumeOwner)return;activeStep=unlocked(course());navStage=-1;navQuery='';location.hash='workshop';});return}if(!['home','catalog','workshop','progress','map','sources','project','membership','learning-map','scene'].includes(currentPage)){location.hash='home';return}const pageKey=['home','catalog','project','scene'].includes(currentPage)?'home':currentPage;$('#pageTitle').textContent=t(pageKey);$$('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));$('#accountName').textContent=user?.name||t('guest');syncLanguageSelect();document.documentElement.lang=resolved();document.documentElement.dir=languageDirection(resolved());$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===pageKey));const renderers={scene:()=>renderScene(parts[1]),home:renderHome,catalog:renderCatalog,workshop:renderWorkshop,progress:renderProgress,map:renderMap,'learning-map':()=>renderLearningMap(catalog,featured,resolved()),sources:renderSources,project:()=>renderProject(parts[1]),membership:()=>membershipMarkup({zh:isZh(),user})};disposeLearningMedia($('#main'));$('#main').innerHTML=renderers[currentPage]();bind();if(currentPage==='home')mountEngineeringIsland($('#main [data-island-v17]'),islandCategories(),catalog,{zh:isZh()});try{const wallRoot=document.querySelector?.('#main [data-icon-wall]');if(wallRoot)iconWallController=mountHeroIconWall(wallRoot,catalog,{zh:isZh(),icons:{}})}catch{}tutorPanel?.refresh();applyLanguage();if(['project','workshop'].includes(currentPage))loadMarkets().then(refreshVendorWidgets).catch(()=>{});}
+function render(options={}){if(!coreReady)return;if(!options.keepStageAssist)stopV18StageAssist();sceneMountSerial++;immersiveDispose?.();immersiveDispose=null;routeLoadSerial++;learningMapController?.dispose();learningMapController=null;try{iconWallController?.dispose()}catch{}iconWallController=null;personalization.syncProfile();mapRequestGeneration++;captureNotes(false);refreshDeviceProgress();stopDemonstration();deactivateWorkshopKeyboard();localeController?.invalidate();const route=location.hash.slice(1)||'home',parts=route.split('/'),previousPage=currentPage;currentPage=parts[0];if(currentPage==='scene'&&parts[1]){const target=catalog.find(c=>c.id===parts[1]);if(target){location.replace(courseSceneHref(target));return;}}if(routeDataGate(currentPage,parts,route))return;if(['home','catalog'].includes(currentPage)&&(lastCatalogRoute!==route||!['home','catalog'].includes(previousPage))){lastCatalogRoute=route;pageIndex=0;query='';subdiscipline='';filter=parts[1]==='domain'&&catMap[parts[2]]?parts[2]:'';maturity=parts[1]==='ready'?'ready':parts[1]==='roadmap'?'roadmap':''}if(currentPage==='resume'){activeId=featured.some(c=>c.id===parts[1])?parts[1]:featured[0].id;localStorage.setItem('mg-active',activeId);const resumeId=activeId,resumeOwner=accountGeneration;$('#main').innerHTML='<div class="loading">'+(isZh()?'正在載入學習紀錄…':'Loading learning records…')+'</div>';hydrateServerLearning(course()).then(()=>{if(location.hash.slice(1)!==route||activeId!==resumeId||accountGeneration!==resumeOwner)return;activeStep=unlocked(course());navStage=-1;navQuery='';location.hash='workshop';});return}if(!['home','catalog','workshop','progress','map','sources','project','membership','learning-map','scene'].includes(currentPage)){location.hash='home';return}const pageKey=['home','catalog','project','scene'].includes(currentPage)?'home':currentPage;$('#pageTitle').textContent=t(pageKey);$$('[data-t]').forEach(el=>el.textContent=t(el.dataset.t));$('#accountName').textContent=user?.name||t('guest');syncLanguageSelect();document.documentElement.lang=resolved();document.documentElement.dir=languageDirection(resolved());$$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===pageKey));const renderers={scene:()=>renderScene(parts[1]),home:renderHome,catalog:renderCatalog,workshop:renderWorkshop,progress:renderProgress,map:renderMap,'learning-map':()=>renderLearningMap(catalog,featured,resolved()),sources:renderSources,project:()=>renderProject(parts[1]),membership:()=>membershipMarkup({zh:isZh(),user})};disposeLearningMedia($('#main'));$('#main').innerHTML=renderers[currentPage]();bind();if(currentPage==='home')mountEngineeringIsland($('#main [data-island-v17]'),islandCategories(),catalog,{zh:isZh()});try{const wallRoot=document.querySelector?.('#main [data-icon-wall]');if(wallRoot)iconWallController=mountHeroIconWall(wallRoot,catalog,{zh:isZh(),icons:{}})}catch{}tutorPanel?.refresh();applyLanguage();if(['project','workshop'].includes(currentPage))loadMarkets().then(refreshVendorWidgets).catch(()=>{});}
 function record(id){if(!projects[id])projects[id]=blank();return projects[id]}
 const deviceProgressBases=new Map();
 const MERGED_NOTES_SEPARATOR='\n\n--- MERGED DEVICE NOTES ---\n\n';
@@ -9832,7 +10063,7 @@ function stopV18StageAssist(message=''){
 }
 function renderV18Coach(c,s,p){
  const plan=stageGuidancePlan(c,s.id,p.completed),badges=learningBadges(c,p),run=v18StageAssist;
- return `<section class="v18-coach" aria-label="${isZh()?'新手任務導航':'Beginner mission guide'}"><div class="v18-coach-head"><span class="task-label">${isZh()?'這一步，從這裡開始':'YOUR NEXT SMALL TASK'}</span><span class="v18-earned">${isZh()?`自行完成 ${badges.independent} · 輔助完成 ${badges.assisted}`:`Independent ${badges.independent} · Assisted ${badges.assisted}`}</span></div><h3>${esc(txt(s,'objective')||txt(s))}</h3><ol class="v18-checklist"><li data-v18-check="watch"><button data-coach-target="mentorAction"><b>01</b>${isZh()?'看師傅示範':'Watch the mentor'}</button></li><li data-v18-check="practice"><button data-coach-target="assemblySection"><b>02</b>${isZh()?'操作並留下證據':'Operate and record evidence'}</button></li><li data-v18-check="check"><button data-coach-target="quizSection"><b>03</b>${isZh()?'驗證與完成':'Check and complete'}</button></li></ol><p id="v18NextCue" role="status"></p><div class="v19-next-actions"><button id="v19NextAction" class="button">${isZh()?'開始這一步':'Start this step'} →</button><a class="text-link" href="experience.html?domain=${encodeURIComponent(c.category)}&course=${encodeURIComponent(c.id)}">${isZh()?'回到場景觀察設備':'Return to the equipment scene'} ↗</a><button type="button" id="v19StepHelp" class="button light">${isZh()?'✦ 帶我完成這一步':'✦ Guide this one step'}</button><button type="button" id="v19StopHelp" class="button light" hidden>${isZh()?'停止輔助':'Stop guidance'}</button></div><div class="v18-stage-assist"><div><strong>${isZh()?'階段導覽':'Stage guidance'} · ${esc(txt(s.stage))}</strong><p id="v18StageStatus" role="status">${run?(isZh()?`師傅逐步帶領中 · ${plan.done}/${plan.total} 已完成。可隨時停止。`:`Mentor guidance · ${plan.done}/${plan.total} complete. Stop at any time.`):(isZh()?`本階段 ${plan.done}/${plan.total} 步完成。可逐步跟做，或讓師傅依序示範剩下的 ${plan.pending.length} 步。`:`${plan.done}/${plan.total} steps complete. Practice one at a time, or ask the mentor to demonstrate the remaining ${plan.pending.length}.`)}</p></div><button id="v18StageAssist" class="button light" ${!plan.pending.length||run?'disabled':''}>${isZh()?'帶我完成本階段':'Guide this stage'}</button><button id="v18StageCancel" class="button light" ${run?'':'hidden'}>${isZh()?'停止階段輔助':'Stop stage guidance'}</button></div><p class="subtext">${isZh()?'每步先示範、解說並儲存，再進入同階段下一步；完成本階段即停止。自行操作、切換分頁／視窗、頁面或帳號會停止連續輔助，已完成紀錄仍保留。':'Each step is demonstrated, explained and saved before the next step in this stage. Guidance stops at the stage boundary. Manual actions, switching tabs or windows, navigation or account changes stop the sequence; completed records remain.'}</p></section>`;
+ return `<section class="v18-coach" aria-label="${isZh()?'新手任務導航':'Beginner mission guide'}"><div class="v18-coach-head"><span class="task-label">${isZh()?'這一步，從這裡開始':'YOUR NEXT SMALL TASK'}</span><span class="v18-earned">${isZh()?`自行完成 ${badges.independent} · 輔助完成 ${badges.assisted}`:`Independent ${badges.independent} · Assisted ${badges.assisted}`}</span></div><h3>${esc(txt(s,'objective')||txt(s))}</h3><ol class="v18-checklist"><li data-v18-check="watch"><button data-coach-target="mentorAction"><b>01</b>${isZh()?'看師傅示範':'Watch the mentor'}</button></li><li data-v18-check="practice"><button data-coach-target="assemblySection"><b>02</b>${isZh()?'操作並留下證據':'Operate and record evidence'}</button></li><li data-v18-check="check"><button data-coach-target="quizSection"><b>03</b>${isZh()?'驗證與完成':'Check and complete'}</button></li></ol><p id="v18NextCue" role="status"></p><div class="v19-next-actions"><button id="v19NextAction" class="button">${isZh()?'開始這一步':'Start this step'} →</button><a class="text-link" href="${esc(courseSceneHref(c))}">${isZh()?'回到場景觀察設備':'Return to the equipment scene'} ↗</a><button type="button" id="v19StepHelp" class="button light">${isZh()?'✦ 帶我完成這一步':'✦ Guide this one step'}</button><button type="button" id="v19StopHelp" class="button light" hidden>${isZh()?'停止輔助':'Stop guidance'}</button></div><div class="v18-stage-assist"><div><strong>${isZh()?'階段導覽':'Stage guidance'} · ${esc(txt(s.stage))}</strong><p id="v18StageStatus" role="status">${run?(isZh()?`師傅逐步帶領中 · ${plan.done}/${plan.total} 已完成。可隨時停止。`:`Mentor guidance · ${plan.done}/${plan.total} complete. Stop at any time.`):(isZh()?`本階段 ${plan.done}/${plan.total} 步完成。可逐步跟做，或讓師傅依序示範剩下的 ${plan.pending.length} 步。`:`${plan.done}/${plan.total} steps complete. Practice one at a time, or ask the mentor to demonstrate the remaining ${plan.pending.length}.`)}</p></div><button id="v18StageAssist" class="button light" ${!plan.pending.length||run?'disabled':''}>${isZh()?'帶我完成本階段':'Guide this stage'}</button><button id="v18StageCancel" class="button light" ${run?'':'hidden'}>${isZh()?'停止階段輔助':'Stop stage guidance'}</button></div><p class="subtext">${isZh()?'每步先示範、解說並儲存，再進入同階段下一步；完成本階段即停止。自行操作、切換分頁／視窗、頁面或帳號會停止連續輔助，已完成紀錄仍保留。':'Each step is demonstrated, explained and saved before the next step in this stage. Guidance stops at the stage boundary. Manual actions, switching tabs or windows, navigation or account changes stop the sequence; completed records remain.'}</p></section>`;
 }
 function refreshV18Coach(){
  if(currentPage!=='workshop'||!$('#v18NextCue'))return;const c=course(),s=allSteps(c)[activeStep],gate=gateState(c,s),checks={watch:gate.done||demonstrationReady(c,s),practice:gate.assembled,check:gate.done};let found=false;

@@ -167,19 +167,23 @@ def compact_index(index):
 def safe_course(value,cid):
     if not isinstance(value,dict) or value.get('id')!=cid:raise ValueError('Mismatched preview course: '+cid)
     if not isinstance(value.get('stages'),list):return
-    if set(value)-(META|{'scope','scopeEn','sourceIds','diagram','flowDiagram','flowDiagramEn','architectureNodes','architectureEdges','v16Architecture','v30Architecture','v30Extension','v30Focus','v30FocusEn','previewOnly','freeStagesPerCourse'}):raise ValueError('Unexpected full-course fields reached preview export: '+cid)
-    if 'v30Extension' in value and value['v30Extension'] is not True:raise ValueError('Invalid V30 extension marker: '+cid)
-    for key in ('v30Focus','v30FocusEn'):
-        if key in value and (not isinstance(value[key],str) or not 1<=len(value[key])<=600):raise ValueError('Invalid V30 focus text: '+cid)
-    if 'v30Architecture' in value:
-        arch=value['v30Architecture']
-        if not isinstance(arch,dict) or set(arch)!={'family','nodes','edges'} or not isinstance(arch['family'],str) or not re.fullmatch(r'[a-z0-9-]{1,80}',arch['family']):
-            raise ValueError('Invalid public V30 architecture fields: '+cid)
-        nodes,edges=arch['nodes'],arch['edges']
-        if not isinstance(nodes,list) or not 1<=len(nodes)<=12 or any(not isinstance(n,list) or len(n)!=2 or any(not isinstance(t,str) or not 1<=len(t)<=200 for t in n) for n in nodes):
-            raise ValueError('Invalid public V30 architecture nodes: '+cid)
-        if not isinstance(edges,list) or len(edges)>48 or any(not isinstance(e,list) or len(e)!=2 or any(type(i) is not int or not 0<=i<len(nodes) for i in e) for e in edges):
-            raise ValueError('Invalid public V30 architecture edges: '+cid)
+    if set(value)-(META|{'scope','scopeEn','sourceIds','diagram','flowDiagram','flowDiagramEn','architectureNodes','architectureEdges','v16Architecture','v30Architecture','v30Extension','v30Focus','v30FocusEn','v31Architecture','v31Extension','v31Focus','v31FocusEn','previewOnly','freeStagesPerCourse'}):raise ValueError('Unexpected full-course fields reached preview export: '+cid)
+    for release in (30, 31):
+        prefix = f'v{release}'
+        if prefix + 'Extension' in value and value[prefix + 'Extension'] is not True:
+            raise ValueError(f'Invalid V{release} extension marker: ' + cid)
+        for key in (prefix + 'Focus', prefix + 'FocusEn'):
+            if key in value and (not isinstance(value[key], str) or not 1 <= len(value[key]) <= 600):
+                raise ValueError(f'Invalid V{release} focus text: ' + cid)
+        if prefix + 'Architecture' in value:
+            arch = value[prefix + 'Architecture']
+            if not isinstance(arch, dict) or set(arch) != {'family', 'nodes', 'edges'} or not isinstance(arch['family'], str) or not re.fullmatch(r'[a-z0-9-]{1,80}', arch['family']):
+                raise ValueError(f'Invalid public V{release} architecture fields: ' + cid)
+            nodes, edges = arch['nodes'], arch['edges']
+            if not isinstance(nodes, list) or not 1 <= len(nodes) <= 12 or any(not isinstance(n, list) or len(n) != 2 or any(not isinstance(t, str) or not 1 <= len(t) <= 200 for t in n) for n in nodes):
+                raise ValueError(f'Invalid public V{release} architecture nodes: ' + cid)
+            if not isinstance(edges, list) or len(edges) > 48 or any(not isinstance(e, list) or len(e) != 2 or any(type(i) is not int or not 0 <= i < len(nodes) for i in e) for e in edges):
+                raise ValueError(f'Invalid public V{release} architecture edges: ' + cid)
     if 'flowDiagramEn' in value and (not isinstance(value['flowDiagramEn'],str) or not re.fullmatch(r'assets/diagrams/[A-Za-z0-9_-]+\.svg',value['flowDiagramEn'])):
         raise ValueError('Unsafe English diagram asset: '+cid)
     if 'v16Architecture' in value:
@@ -221,8 +225,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23','24','25','26','27','28','29','30'}:
-        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27, V28, V29 or V30 before exporting the public preview.')
+    if major not in {'21','22','23','24','25','26','27','28','29','30','31'}:
+        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27, V28, V29, V30 or V31 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -284,7 +288,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28', '29', '30'}:
+        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28', '29', '30', '31'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
@@ -296,7 +300,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
                          *(['curriculum-v27.html'] if int(major) >= 27 else []),
                          *(['curriculum-v28.html'] if int(major) >= 28 else []),
                          *(['curriculum-v29.html'] if int(major) >= 29 else []),
-                         *(['curriculum-v30.html', 'realworld-v30.html'] if int(major) >= 30 else [])):
+                         *(['curriculum-v30.html', 'realworld-v30.html'] if int(major) >= 30 else []),
+                         *(['curriculum-v31.html', 'realworld-v31.html'] if int(major) >= 31 else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page

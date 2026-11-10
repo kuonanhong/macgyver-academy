@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# V21–V28 entry point. Older explicit-version tools are preserved separately.
+# V21–V31 entry point. Older explicit-version tools are preserved separately.
 set -euo pipefail
 TASK_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 TASK_UPLOADER="$TASK_ROOT/Upload_MacGyver_v21_SSH.sh"

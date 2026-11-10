@@ -1,4 +1,11 @@
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// V31 resource courses have dedicated project stations in the upgraded walking world.
+const resourceExtensionsV31=new Set(['v11-troll-field','v11-johan-sverdrup','v11-shell-perdido','v11-prelude-flng','v11-boddington-mine','v11-cadia-mine']);
+export function courseSceneHref(course){
+ const id=String(course?.id||''), domain=String(course?.category||'');
+ const resourceV31=domain==='materials'&&(course?.v31Extension===true||course?.educationEdition===31||resourceExtensionsV31.has(id)||/^extractive-v31-\d{3}$/.test(id));
+ return resourceV31?`realworld-v31.html?domain=materials&site=${encodeURIComponent(id)}`:`experience.html?domain=${encodeURIComponent(domain)}&course=${encodeURIComponent(id)}`;
+}
 export function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;
  const tiles=[['space','太空與衛星','Space & satellites'],['semiconductor','半導體製造','Semiconductor'],['automotive','汽車與交通工具','Automotive'],['aerospace','航空工程','Aerospace'],['marine','船舶與海洋','Marine']];
@@ -13,5 +20,5 @@ export function experienceCourseMarkup(course,zh=true){
  if(!course)return '';
  const t=(a,b)=>zh?a:b;
  const lab=course.category==='space'&&course.educationEdition===23? `<a class="button light" href="space-lab-v23.html?course=${encodeURIComponent(course.id)}#${spaceModel(course)}">${t('太空工程試算室','Space engineering calculator')} ↗</a>`:'';
- return `<section class="campaign-course-v20"><div><span class="campaign-kicker">SCENE → STORY → LESSON</span><h3>${t('走進這門課的工程空間','Walk through this subject’s engineering space')}</h3><p>${t('選擇角色、觀察設備，再回到逐步課程。故事紀錄與課程進度分開保存；場景會標示實拍來源與參考範圍。','Choose a role and inspect equipment, then return to the lesson. Story records and course progress are saved separately. Each scene identifies its photographic source and reference scope.')}</p></div><a class="button" href="experience.html?domain=${encodeURIComponent(course.category)}&course=${encodeURIComponent(course.id)}">⛶ ${t('進入全畫面','Enter full window')} ↗</a>${lab}</section>`;
+ return `<section class="campaign-course-v20"><div><span class="campaign-kicker">SCENE → STORY → LESSON</span><h3>${t('走進這門課的工程空間','Walk through this subject’s engineering space')}</h3><p>${t('選擇角色、觀察設備，再回到逐步課程。故事紀錄與課程進度分開保存；場景會標示實拍來源與參考範圍。','Choose a role and inspect equipment, then return to the lesson. Story records and course progress are saved separately. Each scene identifies its photographic source and reference scope.')}</p></div><a class="button" href="${esc(courseSceneHref(course))}">⛶ ${t('進入全畫面','Enter full window')} ↗</a>${lab}</section>`;
 }

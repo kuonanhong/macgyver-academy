@@ -1,3 +1,4 @@
+import {curriculumLabMarkupV31,bindCurriculumLabV31} from './curriculum-exercises-v31.js';
 import {WATER_LABS,waterLabKind,calculateWaterLab,waterLabDetail} from './water-calculators.js';
 import {UNDERGROUND_LABS,undergroundLabKind,calculateUndergroundLab,undergroundLabDetail} from './underground-calculators.js';
 import { COMPUTING_LABS, COMPUTING_COURSE_LABS, computingLabKind, calculateComputingLab, computingLabDetail } from './computing-visuals.js';
@@ -90,10 +91,12 @@ export function calculateLab(kind, v) {
 }
 Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS,UNDERGROUND_LABS,WATER_LABS);
 export function labMarkup(course, step, zh) {
+  const resources=curriculumLabMarkupV31(course,step,zh);if(resources)return resources;
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return '';
   return `<section class="lesson-card engineering-lab" id="engineeringLab" data-kind="${kind}"><div class="eyebrow">EXPLORE / ${zh?'互動工程算例':'INTERACTIVE ENGINEERING'}</div><h3>${choose(lab.title,zh)}</h3><p><code>${e(lab.formula)}</code></p>${kind==='lithography'?`<label class="field">${zh?'光學情境預設':'Optical scenario'}<select id="labPreset"><option value="duv">ArF immersion · 193 nm · NA 1.35</option><option value="euv">EUV · 13.5 nm · NA 0.33</option><option value="highna">High-NA EUV · 13.5 nm · NA 0.55</option></select></label>`:''}<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">${lab.params.map(([id,label,min,max,delta,value,unit])=>`<label class="field" for="lab-${id}">${e(choose(label,zh))} <output id="lab-value-${id}">${value}</output> ${e(unit)}<input id="lab-${id}" data-lab-input="${id}" type="range" min="${min}" max="${max}" step="${delta}" value="${value}" style="width:100%;min-height:42px;accent-color:#245443"></label>`).join('')}</div><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:20px 0"><output id="labResult" aria-live="polite" style="font-size:32px;font-weight:700;color:#245443"></output><span id="labDetail"></span></div><div id="labChart" aria-hidden="true"></div><p id="labScenarioNote" class="muted"></p><p class="notice">${e(choose(lab.note,zh))}</p><p><strong>${zh?'試著推理：':'Reason it through: '}</strong>${e(choose(lab.question,zh))}</p>${lab.source?`<a href="${e(lab.source)}" target="_blank" rel="noopener noreferrer">${zh?'公式／假設延伸閱讀':'Formula / assumptions reference'} ↗</a>`:''}</section>`;
 }
 export function bindLab(course, step, zh) {
+  if(bindCurriculumLabV31(course,step,zh))return;
   if(typeof document==='undefined')return;
   const root=document.querySelector('#engineeringLab');if(!root || !root.querySelectorAll)return;
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return;

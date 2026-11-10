@@ -47,7 +47,7 @@ def public_snapshot(source, excluded=()):
     files = {}
     with tempfile.TemporaryDirectory(prefix='macgyver-v21-public-') as directory:
         output = Path(directory) / 'preview'
-        exporter.export(source / 'public/academy', output)
+        exported = exporter.export(source / 'public/academy', output)
         for path in output.rglob('*'):
             if not path.is_file() or path.name == exporter.MARKER:
                 continue
@@ -80,7 +80,7 @@ def public_snapshot(source, excluded=()):
         required.append('Install_and_Upload_MacGyver_v26.sh')
     if (source / 'Install_and_Upload_MacGyver_v27.sh').is_file():
         required.append('Install_and_Upload_MacGyver_v27.sh')
-    for optional in ('Install_and_Upload_MacGyver_v28.sh', 'Update_MacGyver_v30.sh'):
+    for optional in ('Install_and_Upload_MacGyver_v28.sh', 'Update_MacGyver_v30.sh', 'Update_MacGyver_v31.sh'):
         if (source / optional).is_file():
             required.append(optional)
     for name in required:
@@ -93,15 +93,17 @@ def public_snapshot(source, excluded=()):
         files[name] = path.read_bytes()
     # Keep the public repository's version marker synchronized with its actual
     # source snapshot instead of leaving an older V17/V19 marker behind.
-    source_major = '21'
+    source_major = str(exported['version'])
     version_file = source / 'SOURCE_VERSION.json'
     if version_file.exists():
         if version_file.is_symlink() or not version_file.is_file():
             raise ValueError('Unsafe SOURCE_VERSION.json')
         version = json.loads(version_file.read_text('utf-8'))
         source_major = str(version.get('version', '')).split('.')[0]
-        if source_major not in {'21', '22', '23', '24', '25', '26', '27', '28', '29', '30'}:
-            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26, V27, V28, V29 or V30 before uploading.')
+        if source_major not in {'21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'}:
+            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26, V27, V28, V29, V30 or V31 before uploading.')
+        if source_major != str(exported['version']):
+            raise ValueError('SOURCE_VERSION.json and the built public curriculum version disagree; rebuild the same release before uploading.')
         files['SOURCE_VERSION.json'] = (json.dumps(version, ensure_ascii=False, indent=2) + '\n').encode()
     files['.nojekyll'] = b''
     files['README.md'] = (

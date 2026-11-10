@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0d1a22"><meta name="referrer" content="strict-origin-when-cross-origin"><title>全螢幕實景工程場景 · MacGyver V30</title><meta name="description" content="在真實場址的地形與影像上移動人物、環視六個方向、走近實拍照片與全景，並在工作站處理工程問題。"><link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="realworld-v30.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0d1a22"><meta name="referrer" content="strict-origin-when-cross-origin"><title>全螢幕實景工程場景 · MacGyver V31</title><meta name="description" content="在二十領域的三維教學場景行走、環視六個方向、查看實拍照片與固定全景，並在工作站處理工程問題。"><link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="realworld-v30.css"></head>
 <body>
 <a class="rw-skip" href="#rw-info">跳至場址資訊 / Skip to site information</a>
 <main id="rw-stage" tabindex="0" aria-label="全螢幕實景工程場景 / Full-screen real-world engineering scene"><div id="rw-loading" role="status">正在建立實景場景… / Building the real-world scene…</div></main>
 <header id="rw-top">
- <a class="rw-brand" href="index.html" aria-label="MacGyver Academy"><img src="assets/brand/logo-static.svg" alt="" width="34" height="34"><span>馬蓋先<small>REAL-WORLD / V30</small></span></a>
+ <a class="rw-brand" href="index.html" aria-label="MacGyver Academy"><img src="assets/brand/logo-static.svg" alt="" width="34" height="34"><span>馬蓋先<small>FIELD LAB / V31</small></span></a>
  <label><span class="rw-sr" data-rw="domain"></span><select id="rw-domain"></select></label>
  <label class="rw-grow"><span class="rw-sr" data-rw="site"></span><select id="rw-site"></select></label>
  <label><span class="rw-sr">Language</span><select id="rw-lang" aria-label="Language"></select></label>
  <button id="rw-cam" type="button" aria-expanded="false"></button>
  <button id="rw-online" type="button" aria-pressed="false"></button>
  <button id="rw-full" type="button"></button>
- <button id="rw-help" type="button"></button>
+ <button id="rw-help" type="button"></button><button id="rw-info-toggle" type="button" aria-pressed="false" aria-label="Toggle site information">ⓘ</button>
 </header>
 <nav id="rw-views" aria-label="鏡頭 / Camera">
  <div class="rw-row" id="rw-view-buttons"></div>
@@ -21,11 +21,12 @@
  <div class="rw-row"><button id="rw-pace" type="button"></button><button id="rw-recenter" type="button"></button></div>
 </nav>
 <aside id="rw-info" aria-live="polite"><h1 id="rw-title"></h1><p id="rw-coords"></p><p id="rw-status"></p><p id="rw-progress"></p><a id="rw-course" hidden></a></aside>
+<div id="rw-mode"></div><div id="rw-bearing" aria-hidden="true"></div><div id="rw-dock"><button id="rw-stations" type="button"></button><button id="rw-gallery-open" type="button"></button><button id="rw-guide-stop" type="button" hidden></button><span id="rw-guide-label"></span></div>
 <div id="rw-prompt" role="status" aria-live="polite" hidden></div>
 <div id="rw-joy" role="group" aria-label="移動搖桿 / Movement joystick"><span id="rw-stick"></span></div>
 <button id="rw-act" type="button" hidden></button>
-<aside id="rw-panel" hidden aria-labelledby="rw-panel-title"></aside>
+<aside id="rw-panel" role="dialog" aria-modal="true" hidden aria-labelledby="rw-panel-title"></aside>
 <footer id="rw-credit"></footer>
 <noscript>請啟用 JavaScript，或回到 <a href="index.html">工程學院課程</a>。 Enable JavaScript or return to the academy.</noscript>
-<script src="runtime-mode.js"></script><script src="config.js"></script><script src="realworld-sites-v30.js"></script><script src="vendor/three.js"></script><script src="realworld-v30.js"></script>
+<script src="runtime-mode.js"></script><script src="config.js"></script><script src="realworld-sites-v30.js"></script><script src="realworld-media-v31.js"></script><script src="resource-sites-v31.js"></script><script src="vendor/three.js"></script><script src="realworld-scenes-v31.js"></script><script src="realworld-i18n-v31.js"></script><script src="realworld-v30.js"></script>
 </body></html>

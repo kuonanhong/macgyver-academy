@@ -14,6 +14,7 @@ import {resolveCurriculumExerciseV25,renderCurriculumEvidenceV25} from './curric
 import {resolveCurriculumExerciseV26,renderCurriculumEvidenceV26} from './curriculum-exercises-v26.js';
 import {resolveCurriculumExerciseV29,renderCurriculumEvidenceV29} from './curriculum-exercises-v29.js';
 import {resolveCurriculumExerciseV30,renderCurriculumEvidenceV30} from './curriculum-exercises-v30.js';
+import {resolveCurriculumExerciseV31,renderCurriculumEvidenceV31} from './curriculum-exercises-v31.js';
 import {resolveCurriculumExerciseV28,renderCurriculumEvidenceV28} from './curriculum-exercises-v28.js';
 import {resolveCurriculumExerciseV27,renderCurriculumEvidenceV27} from './curriculum-exercises-v27.js';
 const bi=(zh,en)=>({zh,en});
@@ -275,6 +276,7 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 export function resolveExercise(course={},step={}){
+ const curriculumV31=resolveCurriculumExerciseV31(course,step,make);if(curriculumV31)return curriculumV31;
  const curriculumV30=resolveCurriculumExerciseV30(course,step,make);if(curriculumV30)return curriculumV30;
  const curriculumV29=resolveCurriculumExerciseV29(course,step,make);if(curriculumV29)return curriculumV29;
  const curriculumV28=resolveCurriculumExerciseV28(course,step,make);if(curriculumV28)return curriculumV28;
@@ -336,7 +338,7 @@ export function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false&&spec.curriculumEvidenceV31?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -456,6 +458,7 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV31)return renderCurriculumEvidenceV31(spec,choice,lang);
  if(spec.curriculumEvidenceV30)return renderCurriculumEvidenceV30(spec,choice,lang);
  if(spec.curriculumEvidenceV29)return renderCurriculumEvidenceV29(spec,choice,lang);
  if(spec.curriculumEvidenceV28)return renderCurriculumEvidenceV28(spec,choice,lang);

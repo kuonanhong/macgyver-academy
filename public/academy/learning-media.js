@@ -12,7 +12,7 @@ const array = value => Array.isArray(value) ? value : [];
 // Bundled raster images only: no parent traversal, URL schemes, query strings,
 // encoded separators or executable SVG imported through the photo manifest.
 export function safeBundledPhotoPath(value) {
-  return typeof value === 'string' && /^(?:assets\/photos\/[A-Za-z0-9_-]+|assets\/v8-[A-Za-z0-9_-]+)\.(?:jpg|jpeg|png|webp)$/i.test(value) ? value : '';
+  return typeof value === 'string' && /^assets\/(?:(?:photos(?:-v\d+)?|scenes-v\d+)\/(?:[A-Za-z0-9_-]+\/){0,3}[A-Za-z0-9_-]+|v8-[A-Za-z0-9_-]+)\.(?:jpg|jpeg|png|webp)$/i.test(value) ? value : '';
 }
 export function photoContextCaption(photo, courseId, zh = true) {
   return text(photo?.courseContext?.[courseId], 'note', zh) || text(photo, 'scope', zh) || text(photo, 'note', zh) || text(photo, 'caption', zh) || '';
