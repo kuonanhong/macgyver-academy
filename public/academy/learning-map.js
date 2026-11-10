@@ -58,6 +58,56 @@ export const SOFTWARE_V29_GROUPS = [
   ["軟體架構與企業資訊系統", "Software architecture and enterprise information systems"]
 ];
 // END V29 SOFTWARE GROUP METADATA
+// BEGIN V30 ENERGY GROUP METADATA
+export const ENERGY_V30_GROUPS = [
+  ["大型壓水式核電機組", "Large pressurized-water reactor units"],
+  ["沸水式、重水式與氣冷式機組", "Boiling-water, heavy-water and gas-cooled units"],
+  ["小型模組化與先進反應爐", "Small modular and advanced reactors"],
+  ["核融合：磁約束裝置", "Fusion: magnetic-confinement devices"],
+  ["核融合：工程系統與其他路線", "Fusion: engineering systems and other approaches"],
+  ["核安全、除役與後端土木工程", "Nuclear safety, decommissioning and back-end civil works"],
+  ["世界巨型水電站 I", "World mega hydropower stations I"],
+  ["世界巨型水電站 II", "World mega hydropower stations II"],
+  ["抽蓄水力發電", "Pumped-storage hydropower"],
+  ["水輪機、發電機與水力機電", "Hydraulic turbines, generators and hydro-mechanical systems"],
+  ["離岸風電場", "Offshore wind farms"],
+  ["浮式風電與大型風機", "Floating wind and large turbines"],
+  ["風機元件、基礎與併網", "Wind turbine components, foundations and grid connection"],
+  ["大型太陽光電園區", "Utility-scale solar photovoltaic parks"],
+  ["聚光太陽熱發電", "Concentrating solar thermal power"],
+  ["光電技術與系統工程", "Photovoltaic technology and system engineering"],
+  ["地熱發電與供熱", "Geothermal power and heat"],
+  ["海洋能與地熱系統技術", "Ocean energy and geothermal system technology"],
+  ["電池儲能電站與電池系統", "Battery storage plants and battery systems"],
+  ["機械、壓縮空氣與熱儲能", "Mechanical, compressed-air and thermal storage"],
+  ["熱力循環與熱電系統", "Power cycles and combined heat and power"],
+  ["儲能、輸電與氫能巨作", "Landmark storage, transmission and hydrogen projects"]
+];
+export const ENERGY_V30_COURSES = [
+  ["v11-ap1000", "v11-hinkley-epr", "d050", "energy-v30-001", "energy-v30-002", "energy-v30-003", "energy-v30-004", "energy-v30-005", "energy-v30-006", "energy-v30-007"],
+  ["v11-esbwr", "v11-bruce-candu", "energy-v30-008", "energy-v30-009", "energy-v30-010", "energy-v30-011", "energy-v30-012", "energy-v30-013", "energy-v30-014", "energy-v30-015"],
+  ["v11-nuscale-us600", "v11-darlington-bwrx300", "v11-htr-pm", "energy-v30-016", "energy-v30-017", "energy-v30-018", "energy-v30-019", "energy-v30-020", "energy-v30-021", "energy-v30-022"],
+  ["v11-iter", "v11-wendelstein7x", "v11-jt60sa", "v11-sparc", "v11-mast-upgrade", "v11-diii-d", "v11-nstx-u", "energy-v30-023", "energy-v30-024", "energy-v30-025"],
+  ["v11-nif-energy-systems", "energy-v30-026", "energy-v30-027", "energy-v30-028", "energy-v30-029", "energy-v30-030", "energy-v30-031", "energy-v30-032", "energy-v30-033", "energy-v30-034"],
+  ["energy-v30-035", "energy-v30-036", "energy-v30-037", "energy-v30-038", "energy-v30-039", "energy-v30-040", "energy-v30-041", "energy-v30-042", "energy-v30-043", "energy-v30-044"],
+  ["d001", "d002", "d003", "d004", "d005", "d006", "d007", "d008", "d009", "d010"],
+  ["d011", "d012", "d013", "d014", "d015", "d016", "energy-v30-045", "energy-v30-046", "energy-v30-047", "energy-v30-048"],
+  ["d017", "d018", "d019", "d020", "d021", "d022", "energy-v30-049", "energy-v30-050", "energy-v30-051", "energy-v30-052"],
+  ["d051", "d052", "d053", "d054", "d055", "d056", "d057", "energy-v30-053", "energy-v30-054", "energy-v30-055"],
+  ["d035", "d036", "d037", "d038", "energy-v30-056", "energy-v30-057", "energy-v30-058", "energy-v30-059", "energy-v30-060", "energy-v30-061"],
+  ["d039", "d040", "v11-hywind-tampen", "v11-iea15mw", "v11-vestas-v236", "energy-v30-062", "energy-v30-063", "energy-v30-064", "energy-v30-065", "energy-v30-066"],
+  ["d065", "d066", "d067", "d068", "d069", "d070", "d071", "d072", "energy-v30-067", "energy-v30-068"],
+  ["d031", "d032", "d033", "d034", "energy-v30-069", "energy-v30-070", "energy-v30-071", "energy-v30-072", "energy-v30-073", "energy-v30-074"],
+  ["d028", "d029", "d030", "d062", "d063", "d064", "energy-v30-075", "energy-v30-076", "energy-v30-077", "energy-v30-078"],
+  ["d058", "d059", "d060", "d061", "energy-v30-079", "energy-v30-080", "energy-v30-081", "energy-v30-082", "energy-v30-083", "energy-v30-084"],
+  ["d023", "d024", "d025", "d026", "d027", "v11-krafla-geothermal", "v11-theistareykir", "v11-utah-forge", "d048", "energy-v30-085"],
+  ["d041", "d042", "d043", "d076", "d077", "d078", "d079", "d073", "d074", "d075"],
+  ["d044", "d045", "d086", "d087", "d088", "d089", "d090", "d093", "d099", "d100"],
+  ["d046", "d047", "d091", "d092", "d094", "d095", "d096", "d097", "d098", "d049"],
+  ["d080", "d081", "d082", "d083", "d084", "d085", "energy-v30-086", "energy-v30-087", "energy-v30-088", "energy-v30-089"],
+  ["energy-v30-090", "energy-v30-091", "energy-v30-092", "energy-v30-093", "energy-v30-094", "energy-v30-095", "energy-v30-096", "energy-v30-097", "energy-v30-098", "energy-v30-099"]
+];
+// END V30 ENERGY GROUP METADATA
 
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
@@ -236,6 +286,7 @@ export const LEARNING_SUBDISCIPLINES = [
   subdivision('energy-geothermal','energy','地熱、井與儲層','Geothermal energy, wells & reservoirs',/地熱|geothermal|hellisheidi|geysers|olkaria|wairakei|larderello/),
   subdivision('energy-storage','energy','儲能與電網整合','Storage & grid integration',/儲能|storage|電池|battery|電網|grid|flywheel|飛輪|thermal|蓄熱/),
   subdivision('energy-solar','energy','太陽能與其他轉換','Solar & other energy conversion',/太陽能|光伏|solar|photovoltaic|潮汐|tidal|波浪|wave|燃氣|gas.?turbine|蒸汽|steam/),
+  ...ENERGY_V30_GROUPS.map((p,i)=>subdivision('energy-v30-'+String(i+1).padStart(2,'0'),'energy',p[0],p[1],new RegExp('energy-v30-'+String(i+1).padStart(2,'0')+'(?!\\d)','i'))),
   subdivision('resources-gold','resources','淘金與黃金礦業','Gold recovery & gold mining',/淘金|黃金|金礦|gold|placer/),
   subdivision('resources-oil','resources','石油、天然氣與井','Oil, gas & wells',/石油|油氣|油田|天然氣|oil|petroleum|gas|well|鑽井/),
   subdivision('resources-mining','resources','採礦、選礦與監測','Mining, beneficiation & monitoring',/採礦|礦場|礦山|選礦|mining|mine|ore|mineral|tailings|尾礦/)
@@ -244,6 +295,7 @@ export const LEARNING_SUBDISCIPLINES = [
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 export const LEARNING_ROUTES = [
   ...SOFTWARE_V29_GROUPS.map((p,i)=>({id:'software-v29-'+String(i+1).padStart(2,'0'),title:p,goal:pair('循序完成案例、實驗、故障與驗收。','Progress through cases, experiments, diagnosis and acceptance.'),courses:Array.from({length:10},(_,j)=>'soft-v29-'+String(i*10+j+1).padStart(3,'0'))})),
+  ...ENERGY_V30_GROUPS.map((p,i)=>({id:'energy-v30-'+String(i+1).padStart(2,'0'),title:p,goal:pair('依序完成機制、定量估算、試驗驗證與失效診斷。','Progress through mechanism, quantitative estimate, verification and failure diagnosis.'),courses:ENERGY_V30_COURSES[i]})),
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
@@ -339,7 +391,7 @@ export const LEARNING_ROUTES = [
   {id:'hydro',title:pair('水力發電到電網介面','Hydropower to grid interfaces'),goal:pair('由水力與水輪機跨接發電機、調速與抽蓄系統。','Connect hydraulics and turbines to generators, governing and pumped storage.'),courses:['three-gorges','d051','d054','d055','d056','a201']},
   {id:'wind',title:pair('風場、葉片與發電系統','Wind farms, blades & generation systems'),goal:pair('比較轉子、支承、傳動、發電與海纜介面。','Compare rotors, supports, drives, generation and export cables.'),courses:['d035','d066','d067','d069','d070','d071']},
   {id:'geothermal',title:pair('地熱場到可驗證能量轉換','Geothermal fields to verifiable conversion'),goal:pair('把地質證據、井完整性、儲層與熱循環連結。','Connect geological evidence, well integrity, reservoirs and heat cycles.'),courses:['d023','d073','d075','d074','d080']},
-  {id:'nuclear-compare',title:pair('核電、SMR 與核融合的系統比較','Compare nuclear plants, SMRs & fusion'),goal:pair('比較能量來源、熱轉換、監測與研究成熟度；融合不是小型裂變反應爐。','Compare energy sources, heat conversion, monitoring and research maturity; fusion is not a small fission reactor.'),courses:[{track:'energy',subdiscipline:'energy-nuclear'},{track:'energy',subdiscipline:'energy-smr'},{track:'energy',subdiscipline:'energy-fusion'}],branching:true},
+  {id:'nuclear-compare',title:pair('核電、SMR 與核融合的系統比較','Compare nuclear plants, SMRs & fusion'),goal:pair('比較能量來源、熱轉換、監測與研究成熟度；融合不是小型裂變反應爐。','Compare energy sources, heat conversion, monitoring and research maturity; fusion is not a small fission reactor.'),courses:[{track:'energy',subdiscipline:'energy-nuclear'},{track:'energy',subdiscipline:'energy-smr'},{track:'energy',subdiscipline:'energy-fusion'},{track:'energy',subdiscipline:'energy-v30-01'},{track:'energy',subdiscipline:'energy-v30-03'},{track:'energy',subdiscipline:'energy-v30-04'}],branching:true},
   {id:'resources',title:pair('油氣、淘金與礦業系統比較','Compare oil, gold & mining systems'),goal:pair('比較地質證據、開採介面、物料分離與環境監測。','Compare geological evidence, extraction interfaces, material separation and environmental monitoring.'),courses:[{track:'resources',subdiscipline:'resources-oil'},{track:'resources',subdiscipline:'resources-gold'},{track:'resources',subdiscipline:'resources-mining'}],branching:true}
 ];
 

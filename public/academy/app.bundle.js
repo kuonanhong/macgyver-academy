@@ -2811,6 +2811,56 @@ const SOFTWARE_V29_GROUPS = [
   ["軟體架構與企業資訊系統", "Software architecture and enterprise information systems"]
 ];
 // END V29 SOFTWARE GROUP METADATA
+// BEGIN V30 ENERGY GROUP METADATA
+const ENERGY_V30_GROUPS = [
+  ["大型壓水式核電機組", "Large pressurized-water reactor units"],
+  ["沸水式、重水式與氣冷式機組", "Boiling-water, heavy-water and gas-cooled units"],
+  ["小型模組化與先進反應爐", "Small modular and advanced reactors"],
+  ["核融合：磁約束裝置", "Fusion: magnetic-confinement devices"],
+  ["核融合：工程系統與其他路線", "Fusion: engineering systems and other approaches"],
+  ["核安全、除役與後端土木工程", "Nuclear safety, decommissioning and back-end civil works"],
+  ["世界巨型水電站 I", "World mega hydropower stations I"],
+  ["世界巨型水電站 II", "World mega hydropower stations II"],
+  ["抽蓄水力發電", "Pumped-storage hydropower"],
+  ["水輪機、發電機與水力機電", "Hydraulic turbines, generators and hydro-mechanical systems"],
+  ["離岸風電場", "Offshore wind farms"],
+  ["浮式風電與大型風機", "Floating wind and large turbines"],
+  ["風機元件、基礎與併網", "Wind turbine components, foundations and grid connection"],
+  ["大型太陽光電園區", "Utility-scale solar photovoltaic parks"],
+  ["聚光太陽熱發電", "Concentrating solar thermal power"],
+  ["光電技術與系統工程", "Photovoltaic technology and system engineering"],
+  ["地熱發電與供熱", "Geothermal power and heat"],
+  ["海洋能與地熱系統技術", "Ocean energy and geothermal system technology"],
+  ["電池儲能電站與電池系統", "Battery storage plants and battery systems"],
+  ["機械、壓縮空氣與熱儲能", "Mechanical, compressed-air and thermal storage"],
+  ["熱力循環與熱電系統", "Power cycles and combined heat and power"],
+  ["儲能、輸電與氫能巨作", "Landmark storage, transmission and hydrogen projects"]
+];
+const ENERGY_V30_COURSES = [
+  ["v11-ap1000", "v11-hinkley-epr", "d050", "energy-v30-001", "energy-v30-002", "energy-v30-003", "energy-v30-004", "energy-v30-005", "energy-v30-006", "energy-v30-007"],
+  ["v11-esbwr", "v11-bruce-candu", "energy-v30-008", "energy-v30-009", "energy-v30-010", "energy-v30-011", "energy-v30-012", "energy-v30-013", "energy-v30-014", "energy-v30-015"],
+  ["v11-nuscale-us600", "v11-darlington-bwrx300", "v11-htr-pm", "energy-v30-016", "energy-v30-017", "energy-v30-018", "energy-v30-019", "energy-v30-020", "energy-v30-021", "energy-v30-022"],
+  ["v11-iter", "v11-wendelstein7x", "v11-jt60sa", "v11-sparc", "v11-mast-upgrade", "v11-diii-d", "v11-nstx-u", "energy-v30-023", "energy-v30-024", "energy-v30-025"],
+  ["v11-nif-energy-systems", "energy-v30-026", "energy-v30-027", "energy-v30-028", "energy-v30-029", "energy-v30-030", "energy-v30-031", "energy-v30-032", "energy-v30-033", "energy-v30-034"],
+  ["energy-v30-035", "energy-v30-036", "energy-v30-037", "energy-v30-038", "energy-v30-039", "energy-v30-040", "energy-v30-041", "energy-v30-042", "energy-v30-043", "energy-v30-044"],
+  ["d001", "d002", "d003", "d004", "d005", "d006", "d007", "d008", "d009", "d010"],
+  ["d011", "d012", "d013", "d014", "d015", "d016", "energy-v30-045", "energy-v30-046", "energy-v30-047", "energy-v30-048"],
+  ["d017", "d018", "d019", "d020", "d021", "d022", "energy-v30-049", "energy-v30-050", "energy-v30-051", "energy-v30-052"],
+  ["d051", "d052", "d053", "d054", "d055", "d056", "d057", "energy-v30-053", "energy-v30-054", "energy-v30-055"],
+  ["d035", "d036", "d037", "d038", "energy-v30-056", "energy-v30-057", "energy-v30-058", "energy-v30-059", "energy-v30-060", "energy-v30-061"],
+  ["d039", "d040", "v11-hywind-tampen", "v11-iea15mw", "v11-vestas-v236", "energy-v30-062", "energy-v30-063", "energy-v30-064", "energy-v30-065", "energy-v30-066"],
+  ["d065", "d066", "d067", "d068", "d069", "d070", "d071", "d072", "energy-v30-067", "energy-v30-068"],
+  ["d031", "d032", "d033", "d034", "energy-v30-069", "energy-v30-070", "energy-v30-071", "energy-v30-072", "energy-v30-073", "energy-v30-074"],
+  ["d028", "d029", "d030", "d062", "d063", "d064", "energy-v30-075", "energy-v30-076", "energy-v30-077", "energy-v30-078"],
+  ["d058", "d059", "d060", "d061", "energy-v30-079", "energy-v30-080", "energy-v30-081", "energy-v30-082", "energy-v30-083", "energy-v30-084"],
+  ["d023", "d024", "d025", "d026", "d027", "v11-krafla-geothermal", "v11-theistareykir", "v11-utah-forge", "d048", "energy-v30-085"],
+  ["d041", "d042", "d043", "d076", "d077", "d078", "d079", "d073", "d074", "d075"],
+  ["d044", "d045", "d086", "d087", "d088", "d089", "d090", "d093", "d099", "d100"],
+  ["d046", "d047", "d091", "d092", "d094", "d095", "d096", "d097", "d098", "d049"],
+  ["d080", "d081", "d082", "d083", "d084", "d085", "energy-v30-086", "energy-v30-087", "energy-v30-088", "energy-v30-089"],
+  ["energy-v30-090", "energy-v30-091", "energy-v30-092", "energy-v30-093", "energy-v30-094", "energy-v30-095", "energy-v30-096", "energy-v30-097", "energy-v30-098", "energy-v30-099"]
+];
+// END V30 ENERGY GROUP METADATA
 
 /** These are editorial learning families, not rankings or geographic locations. */
 const LEARNING_TRACKS = [
@@ -2989,6 +3039,7 @@ const LEARNING_SUBDISCIPLINES = [
   subdivision('energy-geothermal','energy','地熱、井與儲層','Geothermal energy, wells & reservoirs',/地熱|geothermal|hellisheidi|geysers|olkaria|wairakei|larderello/),
   subdivision('energy-storage','energy','儲能與電網整合','Storage & grid integration',/儲能|storage|電池|battery|電網|grid|flywheel|飛輪|thermal|蓄熱/),
   subdivision('energy-solar','energy','太陽能與其他轉換','Solar & other energy conversion',/太陽能|光伏|solar|photovoltaic|潮汐|tidal|波浪|wave|燃氣|gas.?turbine|蒸汽|steam/),
+  ...ENERGY_V30_GROUPS.map((p,i)=>subdivision('energy-v30-'+String(i+1).padStart(2,'0'),'energy',p[0],p[1],new RegExp('energy-v30-'+String(i+1).padStart(2,'0')+'(?!\\d)','i'))),
   subdivision('resources-gold','resources','淘金與黃金礦業','Gold recovery & gold mining',/淘金|黃金|金礦|gold|placer/),
   subdivision('resources-oil','resources','石油、天然氣與井','Oil, gas & wells',/石油|油氣|油田|天然氣|oil|petroleum|gas|well|鑽井/),
   subdivision('resources-mining','resources','採礦、選礦與監測','Mining, beneficiation & monitoring',/採礦|礦場|礦山|選礦|mining|mine|ore|mineral|tailings|尾礦/)
@@ -2997,6 +3048,7 @@ const LEARNING_SUBDISCIPLINES = [
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
   ...SOFTWARE_V29_GROUPS.map((p,i)=>({id:'software-v29-'+String(i+1).padStart(2,'0'),title:p,goal:pair('循序完成案例、實驗、故障與驗收。','Progress through cases, experiments, diagnosis and acceptance.'),courses:Array.from({length:10},(_,j)=>'soft-v29-'+String(i*10+j+1).padStart(3,'0'))})),
+  ...ENERGY_V30_GROUPS.map((p,i)=>({id:'energy-v30-'+String(i+1).padStart(2,'0'),title:p,goal:pair('依序完成機制、定量估算、試驗驗證與失效診斷。','Progress through mechanism, quantitative estimate, verification and failure diagnosis.'),courses:ENERGY_V30_COURSES[i]})),
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
@@ -3092,7 +3144,7 @@ const LEARNING_ROUTES = [
   {id:'hydro',title:pair('水力發電到電網介面','Hydropower to grid interfaces'),goal:pair('由水力與水輪機跨接發電機、調速與抽蓄系統。','Connect hydraulics and turbines to generators, governing and pumped storage.'),courses:['three-gorges','d051','d054','d055','d056','a201']},
   {id:'wind',title:pair('風場、葉片與發電系統','Wind farms, blades & generation systems'),goal:pair('比較轉子、支承、傳動、發電與海纜介面。','Compare rotors, supports, drives, generation and export cables.'),courses:['d035','d066','d067','d069','d070','d071']},
   {id:'geothermal',title:pair('地熱場到可驗證能量轉換','Geothermal fields to verifiable conversion'),goal:pair('把地質證據、井完整性、儲層與熱循環連結。','Connect geological evidence, well integrity, reservoirs and heat cycles.'),courses:['d023','d073','d075','d074','d080']},
-  {id:'nuclear-compare',title:pair('核電、SMR 與核融合的系統比較','Compare nuclear plants, SMRs & fusion'),goal:pair('比較能量來源、熱轉換、監測與研究成熟度；融合不是小型裂變反應爐。','Compare energy sources, heat conversion, monitoring and research maturity; fusion is not a small fission reactor.'),courses:[{track:'energy',subdiscipline:'energy-nuclear'},{track:'energy',subdiscipline:'energy-smr'},{track:'energy',subdiscipline:'energy-fusion'}],branching:true},
+  {id:'nuclear-compare',title:pair('核電、SMR 與核融合的系統比較','Compare nuclear plants, SMRs & fusion'),goal:pair('比較能量來源、熱轉換、監測與研究成熟度；融合不是小型裂變反應爐。','Compare energy sources, heat conversion, monitoring and research maturity; fusion is not a small fission reactor.'),courses:[{track:'energy',subdiscipline:'energy-nuclear'},{track:'energy',subdiscipline:'energy-smr'},{track:'energy',subdiscipline:'energy-fusion'},{track:'energy',subdiscipline:'energy-v30-01'},{track:'energy',subdiscipline:'energy-v30-03'},{track:'energy',subdiscipline:'energy-v30-04'}],branching:true},
   {id:'resources',title:pair('油氣、淘金與礦業系統比較','Compare oil, gold & mining systems'),goal:pair('比較地質證據、開採介面、物料分離與環境監測。','Compare geological evidence, extraction interfaces, material separation and environmental monitoring.'),courses:[{track:'resources',subdiscipline:'resources-oil'},{track:'resources',subdiscipline:'resources-gold'},{track:'resources',subdiscipline:'resources-mining'}],branching:true}
 ];
 
@@ -3229,6 +3281,8 @@ function mountLearningMap(root,{catalog=[],featured=[],language='zh-TW',routes=L
 
 Object.defineProperty(exports, "COMMUNICATIONS_V28_GROUPS", { enumerable: true, get: () => COMMUNICATIONS_V28_GROUPS });
 Object.defineProperty(exports, "SOFTWARE_V29_GROUPS", { enumerable: true, get: () => SOFTWARE_V29_GROUPS });
+Object.defineProperty(exports, "ENERGY_V30_GROUPS", { enumerable: true, get: () => ENERGY_V30_GROUPS });
+Object.defineProperty(exports, "ENERGY_V30_COURSES", { enumerable: true, get: () => ENERGY_V30_COURSES });
 Object.defineProperty(exports, "LEARNING_TRACKS", { enumerable: true, get: () => LEARNING_TRACKS });
 Object.defineProperty(exports, "LEARNING_SUBDISCIPLINES", { enumerable: true, get: () => LEARNING_SUBDISCIPLINES });
 Object.defineProperty(exports, "LEARNING_ROUTES", { enumerable: true, get: () => LEARNING_ROUTES });
@@ -7759,6 +7813,91 @@ function renderCurriculumEvidenceV29(spec,choice,lang){
 Object.defineProperty(exports, "resolveCurriculumExerciseV29", { enumerable: true, get: () => resolveCurriculumExerciseV29 });
 Object.defineProperty(exports, "renderCurriculumEvidenceV29", { enumerable: true, get: () => renderCurriculumEvidenceV29 });
 },
+"curriculum-exercises-v30.js":function(require, exports) {
+'use strict';
+/** V30 energy lesson evidence workbench. No lesson or answer payload is bundled here. */
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(value,n)=>{const chars=Array.from(String(value??'').replace(/\s+/g,' '));return chars.length>n?chars.slice(0,n-1).join('')+'…':chars.join('')};
+const FACETS={mechanism:bi('機制與能量路徑','Mechanism and energy path'),model:bi('定量估算與敏感度','Quantitative estimate and sensitivity'),verification:bi('試驗與驗證','Testing and verification'),failure:bi('失效診斷','Failure diagnosis')};
+const FACET_ORDER=['mechanism','model','verification','failure'];
+
+/** Resolve only genuine V30 energy steps: <courseId>-v30-01 … -40 in an energy course. */
+function resolveCurriculumExerciseV30(course,step,make){
+  const courseId=String(course?.id||''),stepId=String(step?.id||'');
+  if(course?.category!=='energy'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(courseId))return null;
+  const stepMatch=stepId.match(/-v30-(\d{2})$/);
+  const sequence=Number(stepMatch?.[1]);
+  if(!stepMatch||stepId!==`${courseId}-v30-${stepMatch[1]}`||sequence<1||sequence>40)return null;
+  const facet=FACET_ORDER.includes(step.unitFacet)?step.unitFacet:FACET_ORDER[(sequence-1)%4];
+  const unit=Math.floor((sequence-1)/4)+1;
+  const quiz=step.quiz;
+  const complete=!step.locked&&quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)
+    &&quiz.options.length>=2&&quiz.options.length===quiz.optionsEn.length
+    &&quiz.options.every(s=>typeof s==='string'&&s.trim())&&quiz.optionsEn.every(s=>typeof s==='string'&&s.trim())
+    &&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length
+    &&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim())
+    &&['question','questionEn','explanation','explanationEn'].every(k=>typeof quiz[k]==='string'&&quiz[k].trim());
+  const choices=complete?quiz.options.map((value,i)=>({id:'answer-'+i,label:bi(value,quiz.optionsEn[i])})):[];
+  const offset=choices.length?sequence%choices.length:0;
+  const object=bi(short(step.title||course.title,27),short(step.titleEn||course.titleEn,51));
+  const instruction=complete?bi(
+    `${step.instruction}\n觀察與紀錄：${step.observation}\n工程判讀：${quiz.question}\n選擇與本步資料相符的判讀，再記錄你的觀察。`,
+    `${step.instructionEn}\nObserve and document: ${step.observationEn}\nEngineering decision: ${quiz.questionEn}\nChoose the interpretation supported by this step, then record your observation.`
+  ):bi('請載入已授權的完整步驟，才能開始此工程任務。','Load the authorized complete step before starting this engineering task.');
+  const evidence=complete?bi(`${step.check}\n${quiz.explanation}`,`${step.checkEn}\n${quiz.explanationEn}`):bi('尚未載入本步證據。','Step evidence has not been loaded.');
+  const architecture=course.v30Architecture;
+  const nodes=Array.isArray(architecture?.nodes)?architecture.nodes.filter(n=>Array.isArray(n)&&n.length===2).slice(0,6).map(n=>bi(String(n[0]),String(n[1]))):[];
+  const knowledge=Array.isArray(step.knowledge)?step.knowledge.filter(item=>item&&['title','titleEn','text','textEn'].every(k=>typeof item[k]==='string'&&item[k].trim())).slice(0,2):[];
+  return make(`${step.id}-authored-evidence-v30`,'inspect','curriculum-v30:energy',object,instruction,
+    bi('能源工程證據台','Energy engineering evidence bench'),evidence,{
+      choices:[...choices.slice(offset),...choices.slice(0,offset)],expectedChoice:complete?'answer-'+quiz.answer:'unavailable',
+      provenance:complete?'step-authored-evidence':'unavailable',family:'energy-evidence',
+      decisionFeedback:bi('此判讀尚未符合本步證據；請重新核對機制、單位、數量級與題目選項。','This interpretation does not yet match the step evidence. Recheck the mechanism, units, magnitude and answer options.'),
+      curriculumEvidenceV30:{sequence,unit,facet,available:!!complete,courseTitle:bi(course.title,course.titleEn),facetTitle:FACETS[facet],
+        nodes,focus:nodes.length?(unit-1)%nodes.length:0,
+        question:complete?bi(quiz.question,quiz.questionEn):instruction,
+        artifacts:complete?[...knowledge.map(item=>({label:bi(item.title,item.titleEn),text:bi(item.text,item.textEn)})),
+          {label:bi('本步驗收紀錄','Acceptance record for this step'),text:bi(step.check,step.checkEn)}].slice(0,3):[]},
+      coverage:bi('本步原創教材的工程判讀任務。證據台呈現本課的系統架構、本步的知識重點與驗收條件；完整內容在下方任務欄。數值是公開標稱值或明示的教學假設，不是電廠設計值、運轉限值或實機試驗。','An engineering decision authored for this lesson. The bench shows this course’s system architecture, the step’s key knowledge and its acceptance criterion; full records appear in the task panel. Numbers are public nominal values or stated teaching assumptions, not plant design values, operating limits or equipment tests.')
+    });
+}
+
+/** Draw the course architecture and this step's records; never invents plant imagery. */
+function renderCurriculumEvidenceV30(spec,choice,lang){
+  const context=spec.curriculumEvidenceV30;if(!context)return '';
+  const zh=lang==='zh',selected=spec.choices.find(c=>c.id===choice);
+  const text=(x,y,value,size=9,color='#4a3a12',anchor='start')=>`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+  let out=`<g data-v30-evidence="energy" aria-label="${esc(context.courseTitle[lang])}"><title>${esc(context.courseTitle[lang])}</title>`;
+  out+=text(20,57,short(context.courseTitle[lang],zh?28:58),9);
+  out+=text(20,71,zh?`單元 ${context.unit} / 10 · ${context.facetTitle.zh} · 第 ${context.sequence} / 40 步`:`UNIT ${context.unit} / 10 · ${context.facetTitle.en} · STEP ${context.sequence} / 40`,7.5,'#7a6a44');
+  const count=context.nodes.length;
+  if(count){
+    const gap=6,width=(362-gap*(count-1))/count;
+    context.nodes.forEach((node,i)=>{
+      const x=19+i*(width+gap),active=i===context.focus;
+      out+=`<g data-v30-node="${i}"><title>${esc(node[lang])}</title><rect x="${x.toFixed(1)}" y="78" width="${width.toFixed(1)}" height="24" rx="5" fill="${active?'#f3d58a':'#f4eedb'}" stroke="${active?'#8a5a14':'#b9a877'}"/>`;
+      out+=text((x+width/2).toFixed(1),93,short(node[lang],zh?Math.max(3,Math.floor(width/8.2)):Math.max(5,Math.floor(width/4.4))),zh?7.2:6.2,'#4a3a12','middle')+'</g>';
+      if(i<count-1)out+=`<path d="M${(x+width+1).toFixed(1)} 90h${gap-2}" stroke="#8a5a14" stroke-width="1.2"/>`;
+    });
+  }
+  const top=count?108:84,rowHeight=count?35:42;
+  context.artifacts.forEach((artifact,i)=>{
+    const y=top+i*(rowHeight+3),body=artifact.text[lang]||'',label=artifact.label[lang]||'';
+    out+=`<g data-v30-artifact="${i}"><title>${esc(label+': '+body)}</title><rect x="19" y="${y}" width="362" height="${rowHeight}" rx="6" fill="${i===context.artifacts.length-1&&selected?'#e9d9a9':'#f1ecdc'}" stroke="#a8956a"/>`;
+    out+=text(29,y+12,short(label,zh?32:64),7.5,'#8a5a14');
+    out+=text(29,y+26,short(body,zh?36:72),zh?8.5:7.5)+'</g>';
+  });
+  if(!context.available)out+=text(29,123,zh?'尚未載入已授權的完整證據。':'Authorized evidence has not been loaded.',9);
+  out+=`<title>${esc(context.question[lang])}</title>`;
+  out+=text(20,228,zh?'完整題目、算式與原始證據請見下方任務欄。':'The full question, formula and evidence appear in the task panel.',8,'#7a6a44');
+  out+=text(20,240,selected?(zh?'已選判讀；請記錄觀察並提交檢查。':'Interpretation selected; record observation and submit.'):(zh?'移動觀察工具，核對教材，再選擇工程判讀。':'Move the review tool, check the lesson, then choose a decision.'),zh?9:8);
+  return out+'</g>';
+}
+
+Object.defineProperty(exports, "resolveCurriculumExerciseV30", { enumerable: true, get: () => resolveCurriculumExerciseV30 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV30", { enumerable: true, get: () => renderCurriculumEvidenceV30 });
+},
 "curriculum-exercises-v28.js":function(require, exports) {
 'use strict';
 /** V28 lesson evidence workbench. No new lesson/answer payload is bundled here. */
@@ -7912,6 +8051,7 @@ const { resolveExpansionExercise, renderExpansionScene } = require("expansion-ex
 const { resolveCurriculumExerciseV25, renderCurriculumEvidenceV25 } = require("curriculum-exercises-v25.js");
 const { resolveCurriculumExerciseV26, renderCurriculumEvidenceV26 } = require("curriculum-exercises-v26.js");
 const { resolveCurriculumExerciseV29, renderCurriculumEvidenceV29 } = require("curriculum-exercises-v29.js");
+const { resolveCurriculumExerciseV30, renderCurriculumEvidenceV30 } = require("curriculum-exercises-v30.js");
 const { resolveCurriculumExerciseV28, renderCurriculumEvidenceV28 } = require("curriculum-exercises-v28.js");
 const { resolveCurriculumExerciseV27, renderCurriculumEvidenceV27 } = require("curriculum-exercises-v27.js");
 const bi=(zh,en)=>({zh,en});
@@ -8173,6 +8313,7 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ const curriculumV30=resolveCurriculumExerciseV30(course,step,make);if(curriculumV30)return curriculumV30;
  const curriculumV29=resolveCurriculumExerciseV29(course,step,make);if(curriculumV29)return curriculumV29;
  const curriculumV28=resolveCurriculumExerciseV28(course,step,make);if(curriculumV28)return curriculumV28;
  const curriculumV27=resolveCurriculumExerciseV27(course,step,make);if(curriculumV27)return curriculumV27;
@@ -8233,7 +8374,7 @@ function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -8353,6 +8494,7 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV30)return renderCurriculumEvidenceV30(spec,choice,lang);
  if(spec.curriculumEvidenceV29)return renderCurriculumEvidenceV29(spec,choice,lang);
  if(spec.curriculumEvidenceV28)return renderCurriculumEvidenceV28(spec,choice,lang);
  if(spec.curriculumEvidenceV27)return renderCurriculumEvidenceV27(spec,choice,lang);

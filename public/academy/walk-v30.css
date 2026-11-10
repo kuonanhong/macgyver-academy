@@ -1,0 +1,7 @@
+/* V30 six-way look bar for the walking world. */
+#six-v30{position:fixed;z-index:6;left:50%;transform:translateX(-50%);top:calc(58px + env(safe-area-inset-top));display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(10,24,32,.74);border:1px solid rgba(190,220,230,.28);backdrop-filter:blur(6px)}
+#six-v30 button,#six-v30 a{min-width:34px;min-height:34px;border-radius:999px;border:1px solid rgba(190,220,230,.28);background:rgba(20,40,50,.9);color:#eaf2f4;font:600 15px/1 system-ui,sans-serif;display:grid;place-items:center;padding:0 9px;text-decoration:none;cursor:pointer}
+#six-v30 a{background:#f3c75a;color:#1d1603;border-color:transparent;font-size:13px;white-space:nowrap}
+#six-v30 button:focus-visible,#six-v30 a:focus-visible{outline:2px solid #f3c75a;outline-offset:2px}
+body.media-open #six-v30,body.hud-hidden #six-v30{display:none}
+@media (max-width:720px){#six-v30{top:calc(96px + env(safe-area-inset-top))}#six-v30 button,#six-v30 a{min-width:30px;min-height:30px;font-size:13px}}
