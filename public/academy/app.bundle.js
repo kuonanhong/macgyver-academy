@@ -2786,6 +2786,32 @@ const COMMUNICATIONS_V28_GROUPS = [
 ];
 // END V28 COMMUNICATIONS GROUP METADATA
 
+// BEGIN V29 SOFTWARE GROUP METADATA
+const SOFTWARE_V29_GROUPS = [
+  ["UNIX、POSIX 與作業系統設計", "UNIX, POSIX and operating-system design"],
+  ["Linux 行程、記憶體與 I/O", "Linux processes, memory and I/O"],
+  ["檔案系統、儲存與持久化", "Filesystems, storage and persistence"],
+  ["程式語言與直譯器", "Languages and interpreters"],
+  ["編譯器、LLVM 與 WebAssembly", "Compilers, LLVM and WebAssembly"],
+  ["演算法與資料結構", "Algorithms and data structures"],
+  ["文字、Unicode 與交換格式", "Text, Unicode and interchange formats"],
+  ["關聯模型與 SQL 系統", "Relational models and SQL systems"],
+  ["交易、MVCC 與復原", "Transactions, MVCC and recovery"],
+  ["索引與查詢規劃", "Indexes and query planning"],
+  ["分散式系統基礎", "Distributed-system foundations"],
+  ["串流與訊息系統", "Streaming and messaging systems"],
+  ["NoSQL 與資訊檢索", "NoSQL and information retrieval"],
+  ["資料格式、管線與分析", "Data formats, pipelines and analytics"],
+  ["網頁標準、跨裝置與無障礙", "Web standards, devices and accessibility"],
+  ["瀏覽器、語言執行期與介面狀態", "Browsers, runtimes and interface state"],
+  ["Git、建置圖與可重現套件", "Git, build graphs and reproducible packages"],
+  ["測試、規格與形式驗證", "Testing, specifications and formal verification"],
+  ["容器、組態與可重現交付", "Containers, configuration and reproducible delivery"],
+  ["可觀測性、可靠度與漸進發布", "Observability, reliability and progressive rollout"],
+  ["軟體架構與企業資訊系統", "Software architecture and enterprise information systems"]
+];
+// END V29 SOFTWARE GROUP METADATA
+
 /** These are editorial learning families, not rankings or geographic locations. */
 const LEARNING_TRACKS = [
   {id:'space',icon:'science',title:pair('太空與衛星','Space & satellites'),description:pair('100門逐步課涵蓋任務、軌道、發射、平台、姿控、通訊、遙測、測試與探索。','100 guided courses cover missions, orbits, launch, buses, attitude, links, remote sensing, testing, and exploration.'),boundary:pair('用公開案例、合成數據與可重現驗證學習；依來源與教學假設分列判據。','Learn from public cases, synthetic data, and reproducible checks. Keep source facts and teaching assumptions in separate records.')},
@@ -2797,7 +2823,7 @@ const LEARNING_TRACKS = [
   {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('新增 100 門深入課程，串接經典超級電腦、加速器、科學核心、互連、儲存、排程與韌性。','100 new detailed courses connect landmark supercomputers, accelerators, scientific kernels, interconnects, storage, scheduling and resilience.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
   {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('新增 100 門深入課程，串接身分、密碼協定、防禦監測、安全開發、雲端治理、應變與復原。','100 new detailed courses connect identity, cryptographic protocols, defensive monitoring, secure development, cloud governance, response and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
   {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('新增 210 門深入逐步課程、21 個專題分組，每門 40 步；保留原有 25 門。從封包、路由與網際網路，深入無線、衛星、光纖、量子通訊、精密授時與工業網路。','210 new detailed courses in 21 topic groups, with 40 steps each; all 25 earlier courses remain. Follow packets, routing and the Internet into wireless, satellites, fiber, quantum communications, precision timing and industrial networks.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
-  {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('作業系統、編譯器、資料庫、建置與可信交付。','Operating systems, compilers, databases, builds and trustworthy delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
+  {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('新增 210 門深入課程：作業系統、語言、編譯器、資料庫、分散式系統、Web、建置與交付。','210 new detailed courses: operating systems, languages, compilers, databases, distributed systems, Web, builds and delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
   {id:'energy', icon:'energy', title:pair('核能、再生能源與儲能','Nuclear, renewable energy & storage'), description:pair('核電、SMR、核融合、風力、水力、地熱與儲能。','Nuclear plants, SMRs, fusion, wind, hydro, geothermal and storage.'), boundary:pair('比較能量轉換、熱流、機電介面與監測；裂變、融合與再生能源的物理及驗證條件不同。','Compare conversion, heat flow, electromechanical interfaces and monitoring; fission, fusion and renewables have different physics and validation conditions.')},
   {id:'resources', icon:'resources', title:pair('石油、天然氣與採礦','Oil, gas & mineral resources'), description:pair('資源調查、井與礦場系統、淘金及環境監測。','Resource surveys, well and mine systems, gold recovery and environmental monitoring.'), boundary:pair('共同點是地質證據、物料流與環境監測；油氣井、露天礦與重力選礦的工程邊界不同。','Geological evidence, material flow and environmental monitoring are shared; wells, open-pit mines and gravity separation have different engineering boundaries.')},
   {id:'semiconductor', icon:'chip', title:pair('半導體製程','Semiconductor fabrication'), description:pair('材料、微影、元件、互連、量測與整合。','Materials, lithography, devices, interconnects, metrology and integration.'), boundary:pair('以製程窗口與量測證據連結工法；不同節點、材料與產品的配方不可直接移用。','Connect process windows and measurement evidence; recipes are not directly transferable across nodes, materials and products.')},
@@ -2815,6 +2841,7 @@ const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 const LEARNING_SUBDISCIPLINES = [
+  ...SOFTWARE_V29_GROUPS.map((p,i)=>subdivision('software-v29-'+String(i+1).padStart(2,'0'),'foundation',p[0],p[1],new RegExp('software-v29-'+String(i+1).padStart(2,'0'),'i'))),
   // Exact V28 identities take precedence over the older topic-word heuristics.
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>{const id=`communications-v28-${String(index+1).padStart(2,'0')}`;return subdivision(id,'networks',title[0],title[1],new RegExp(`\\b${id}\\b`,'i'));}),
   // V27 SUBDISCIPLINES START
@@ -2969,6 +2996,7 @@ const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 const LEARNING_ROUTES = [
+  ...SOFTWARE_V29_GROUPS.map((p,i)=>({id:'software-v29-'+String(i+1).padStart(2,'0'),title:p,goal:pair('循序完成案例、實驗、故障與驗收。','Progress through cases, experiments, diagnosis and acceptance.'),courses:Array.from({length:10},(_,j)=>'soft-v29-'+String(i*10+j+1).padStart(3,'0'))})),
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},
@@ -3200,6 +3228,7 @@ function mountLearningMap(root,{catalog=[],featured=[],language='zh-TW',routes=L
 }
 
 Object.defineProperty(exports, "COMMUNICATIONS_V28_GROUPS", { enumerable: true, get: () => COMMUNICATIONS_V28_GROUPS });
+Object.defineProperty(exports, "SOFTWARE_V29_GROUPS", { enumerable: true, get: () => SOFTWARE_V29_GROUPS });
 Object.defineProperty(exports, "LEARNING_TRACKS", { enumerable: true, get: () => LEARNING_TRACKS });
 Object.defineProperty(exports, "LEARNING_SUBDISCIPLINES", { enumerable: true, get: () => LEARNING_SUBDISCIPLINES });
 Object.defineProperty(exports, "LEARNING_ROUTES", { enumerable: true, get: () => LEARNING_ROUTES });
@@ -7662,6 +7691,74 @@ function renderCurriculumEvidenceV26(spec,choice,lang){
 Object.defineProperty(exports, "resolveCurriculumExerciseV26", { enumerable: true, get: () => resolveCurriculumExerciseV26 });
 Object.defineProperty(exports, "renderCurriculumEvidenceV26", { enumerable: true, get: () => renderCurriculumEvidenceV26 });
 },
+"curriculum-exercises-v29.js":function(require, exports) {
+'use strict';
+/** V29 lesson evidence workbench. No new lesson/answer payload is bundled here. */
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(value,n)=>{const chars=Array.from(String(value??'').replace(/\s+/g,' '));return chars.length>n?chars.slice(0,n-1).join('')+'…':chars.join('')};
+
+function resolveCurriculumExerciseV29(course,step,make){
+  const match=/^(soft)-v29-(\d{3})$/.exec(String(course.id||''));
+  if(!match||Number(match[2])<1||Number(match[2])>210||Number(course.curriculumVersion)!==29)return null;
+  const track='software';
+  const stepMatch=String(step.id||'').match(/-v29-(\d{2})$/);
+  const sequence=Number(stepMatch?.[1]);
+  if(!stepMatch||step.id!==`${course.id}-v29-${stepMatch[1]}`||sequence<1||sequence>40)return null;
+  const quiz=step.quiz;
+  const complete=!step.locked&&quiz&&Array.isArray(quiz.options)&&Array.isArray(quiz.optionsEn)
+    &&quiz.options.length>=2&&quiz.options.length===quiz.optionsEn.length
+    &&quiz.options.every(s=>typeof s==='string'&&s.trim())&&quiz.optionsEn.every(s=>typeof s==='string'&&s.trim())
+    &&Number.isInteger(quiz.answer)&&quiz.answer>=0&&quiz.answer<quiz.options.length
+    &&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim())
+    &&['question','questionEn','explanation','explanationEn'].every(k=>typeof quiz[k]==='string'&&quiz[k].trim())
+    &&Array.isArray(step.knowledge)&&step.knowledge.length>=2
+    &&step.knowledge.slice(0,2).every(item=>item&&['title','titleEn','text','textEn'].every(k=>typeof item[k]==='string'&&item[k].trim()));
+  const choices=complete?quiz.options.map((value,i)=>({id:'answer-'+i,label:bi(value,quiz.optionsEn[i])})):[];
+  const offset=choices.length?sequence%choices.length:0;
+  const object=bi(short(step.title||course.title,27),short(step.titleEn||course.titleEn,51));
+  const instruction=complete?bi(
+    `${step.instruction}\n觀察與紀錄：${step.observation}\n證據判讀：${quiz.question}\n選擇與本步資料相符的判讀，再記錄觀察。`,
+    `${step.instructionEn}\nObserve and document: ${step.observationEn}\nEvidence decision: ${quiz.questionEn}\nChoose the interpretation supported by this step, then record your observation.`
+  ):bi('請載入已授權的完整步驟，才能開始此證據任務。','Load the authorized complete step before starting this evidence task.');
+  const evidence=complete?bi(`${step.check}\n${quiz.explanation}`,`${step.checkEn}\n${quiz.explanationEn}`):bi('尚未載入本步證據。','Step evidence has not been loaded.');
+  return make(`${step.id}-authored-evidence-v29`,'inspect',`curriculum-v29:${track}`,object,instruction,
+    bi('資訊系統、程式與驗收證據台','Systems, programs and acceptance evidence'),evidence,{
+      choices:[...choices.slice(offset),...choices.slice(0,offset)],expectedChoice:complete?'answer-'+quiz.answer:'unavailable',
+      provenance:complete?'step-authored-evidence':'unavailable',family:'software-evidence',
+      decisionFeedback:bi('此判讀尚未符合本步證據；請重新核對模型假設、輸入條件與題目選項。','This interpretation does not yet match the step evidence. Recheck model assumptions, input conditions and answer options.'),
+      curriculumEvidenceV29:{track,sequence,available:!!complete,courseTitle:bi(course.title,course.titleEn),
+        question:complete?bi(quiz.question,quiz.questionEn):instruction,
+        artifacts:complete?[...(step.knowledge||[]).slice(0,2).map(item=>({label:bi(item.title,item.titleEn),text:bi(item.text,item.textEn)})),
+          {label:bi('本階段驗收紀錄','Investigation acceptance record'),text:bi(step.check,step.checkEn)}]:[]},
+      coverage:bi('本步原創教材的證據判讀任務。證據台直接呈現本案例的模型、資料與驗收條件摘要；完整內容在下方任務欄。這些是明示教學資料，不代表原廠設備拓樸、正式環境資料或實機測試。','An evidence decision authored for this lesson. The board displays this case’s model, data and acceptance criteria; full records appear in the task panel. These are stated teaching records, not equipment topology, production-system records or equipment tests.')
+    });
+}
+
+/** Inspect the actual lesson's evidence records, without inventing hardware imagery. */
+function renderCurriculumEvidenceV29(spec,choice,lang){
+  const context=spec.curriculumEvidenceV29;if(!context)return '';
+  const zh=lang==='zh',selected=spec.choices.find(c=>c.id===choice);
+  const text=(x,y,value,size=9,color='#234b4e',anchor='start')=>`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+  let out=`<g data-v29-evidence="${context.track}" aria-label="${esc(context.courseTitle[lang])}"><title>${esc(context.courseTitle[lang])}</title>`;
+  out+=text(20,59,short(context.courseTitle[lang],zh?28:58),9);
+  out+=text(20,75,zh?`本案例證據紀錄 · ${context.sequence} / 40`:`CASE EVIDENCE RECORDS · ${context.sequence} / 40`,8,'#607e80');
+  context.artifacts.forEach((artifact,i)=>{
+    const y=86+i*43,body=artifact.text[lang]||'',label=artifact.label[lang]||'';
+    out+=`<g data-v29-artifact="${i}"><title>${esc(label+': '+body)}</title><rect x="19" y="${y}" width="362" height="38" rx="6" fill="${i===2&&selected?'#e9d9a9':'#e1eeea'}" stroke="#719795"/>`;
+    out+=text(29,y+13,short(label,zh?32:64),7.5,'#326b70');
+    out+=text(29,y+28,short(body,zh?36:72),zh?8.5:7.5)+'</g>';
+  });
+  if(!context.available)out+=text(29,123,zh?'尚未載入已授權的完整證據。':'Authorized evidence has not been loaded.',9);
+  out+=`<title>${esc(context.question[lang])}</title>`;
+  out+=text(20,224,zh?'完整題目與原始證據請見下方任務欄。':'Full question and evidence appear in the task panel.',8,'#607e80');
+  out+=text(20,237,selected?(zh?'已選判讀；請記錄觀察並提交檢查。':'Interpretation selected; record observation and submit.'):(zh?'移動觀察工具，核對教材，再選擇證據判讀。':'Move the review tool, check the lesson, then choose evidence.'),zh?9:8);
+  return out+'</g>';
+}
+
+Object.defineProperty(exports, "resolveCurriculumExerciseV29", { enumerable: true, get: () => resolveCurriculumExerciseV29 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV29", { enumerable: true, get: () => renderCurriculumEvidenceV29 });
+},
 "curriculum-exercises-v28.js":function(require, exports) {
 'use strict';
 /** V28 lesson evidence workbench. No new lesson/answer payload is bundled here. */
@@ -7814,6 +7911,7 @@ const { EXPANSION_STAGE_FAMILIES, EXPANSION_CONTEXT_FAMILIES, renderExpansionCon
 const { resolveExpansionExercise, renderExpansionScene } = require("expansion-exercises.js");
 const { resolveCurriculumExerciseV25, renderCurriculumEvidenceV25 } = require("curriculum-exercises-v25.js");
 const { resolveCurriculumExerciseV26, renderCurriculumEvidenceV26 } = require("curriculum-exercises-v26.js");
+const { resolveCurriculumExerciseV29, renderCurriculumEvidenceV29 } = require("curriculum-exercises-v29.js");
 const { resolveCurriculumExerciseV28, renderCurriculumEvidenceV28 } = require("curriculum-exercises-v28.js");
 const { resolveCurriculumExerciseV27, renderCurriculumEvidenceV27 } = require("curriculum-exercises-v27.js");
 const bi=(zh,en)=>({zh,en});
@@ -8075,6 +8173,7 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ const curriculumV29=resolveCurriculumExerciseV29(course,step,make);if(curriculumV29)return curriculumV29;
  const curriculumV28=resolveCurriculumExerciseV28(course,step,make);if(curriculumV28)return curriculumV28;
  const curriculumV27=resolveCurriculumExerciseV27(course,step,make);if(curriculumV27)return curriculumV27;
  const curriculumV26=resolveCurriculumExerciseV26(course,step,make);if(curriculumV26)return curriculumV26;
@@ -8134,7 +8233,7 @@ function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -8254,6 +8353,7 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
+ if(spec.curriculumEvidenceV29)return renderCurriculumEvidenceV29(spec,choice,lang);
  if(spec.curriculumEvidenceV28)return renderCurriculumEvidenceV28(spec,choice,lang);
  if(spec.curriculumEvidenceV27)return renderCurriculumEvidenceV27(spec,choice,lang);
  if(spec.curriculumEvidenceV26)return renderCurriculumEvidenceV26(spec,choice,lang);

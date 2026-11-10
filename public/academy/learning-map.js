@@ -33,6 +33,32 @@ export const COMMUNICATIONS_V28_GROUPS = [
 ];
 // END V28 COMMUNICATIONS GROUP METADATA
 
+// BEGIN V29 SOFTWARE GROUP METADATA
+export const SOFTWARE_V29_GROUPS = [
+  ["UNIX、POSIX 與作業系統設計", "UNIX, POSIX and operating-system design"],
+  ["Linux 行程、記憶體與 I/O", "Linux processes, memory and I/O"],
+  ["檔案系統、儲存與持久化", "Filesystems, storage and persistence"],
+  ["程式語言與直譯器", "Languages and interpreters"],
+  ["編譯器、LLVM 與 WebAssembly", "Compilers, LLVM and WebAssembly"],
+  ["演算法與資料結構", "Algorithms and data structures"],
+  ["文字、Unicode 與交換格式", "Text, Unicode and interchange formats"],
+  ["關聯模型與 SQL 系統", "Relational models and SQL systems"],
+  ["交易、MVCC 與復原", "Transactions, MVCC and recovery"],
+  ["索引與查詢規劃", "Indexes and query planning"],
+  ["分散式系統基礎", "Distributed-system foundations"],
+  ["串流與訊息系統", "Streaming and messaging systems"],
+  ["NoSQL 與資訊檢索", "NoSQL and information retrieval"],
+  ["資料格式、管線與分析", "Data formats, pipelines and analytics"],
+  ["網頁標準、跨裝置與無障礙", "Web standards, devices and accessibility"],
+  ["瀏覽器、語言執行期與介面狀態", "Browsers, runtimes and interface state"],
+  ["Git、建置圖與可重現套件", "Git, build graphs and reproducible packages"],
+  ["測試、規格與形式驗證", "Testing, specifications and formal verification"],
+  ["容器、組態與可重現交付", "Containers, configuration and reproducible delivery"],
+  ["可觀測性、可靠度與漸進發布", "Observability, reliability and progressive rollout"],
+  ["軟體架構與企業資訊系統", "Software architecture and enterprise information systems"]
+];
+// END V29 SOFTWARE GROUP METADATA
+
 /** These are editorial learning families, not rankings or geographic locations. */
 export const LEARNING_TRACKS = [
   {id:'space',icon:'science',title:pair('太空與衛星','Space & satellites'),description:pair('100門逐步課涵蓋任務、軌道、發射、平台、姿控、通訊、遙測、測試與探索。','100 guided courses cover missions, orbits, launch, buses, attitude, links, remote sensing, testing, and exploration.'),boundary:pair('用公開案例、合成數據與可重現驗證學習；依來源與教學假設分列判據。','Learn from public cases, synthetic data, and reproducible checks. Keep source facts and teaching assumptions in separate records.')},
@@ -44,7 +70,7 @@ export const LEARNING_TRACKS = [
   {id:'servers', icon:'servers', title:pair('大型伺服器與 HPC','Servers & high-performance computing'), description:pair('新增 100 門深入課程，串接經典超級電腦、加速器、科學核心、互連、儲存、排程與韌性。','100 new detailed courses connect landmark supercomputers, accelerators, scientific kernels, interconnects, storage, scheduling and resilience.'), boundary:pair('共同點是吞吐、延遲與可靠度預算；單機、分散式系統和超級電腦的介面與故障域不同。','Throughput, latency and reliability budgets are shared; single servers, distributed systems and supercomputers have different interfaces and failure domains.')},
   {id:'cyber', icon:'shield', title:pair('防禦性資訊安全','Defensive cybersecurity'), description:pair('新增 100 門深入課程，串接身分、密碼協定、防禦監測、安全開發、雲端治理、應變與復原。','100 new detailed courses connect identity, cryptographic protocols, defensive monitoring, secure development, cloud governance, response and recovery.'), boundary:pair('以資產、信任邊界與可核驗證據串連課程；各演練限自己的或明確授權的隔離環境。','Connect assets, trust boundaries and verifiable evidence; exercises use owned or explicitly authorized isolated environments.')},
   {id:'networks', icon:'network', title:pair('通訊與網路系統','Communications & networking'), description:pair('新增 210 門深入逐步課程、21 個專題分組，每門 40 步；保留原有 25 門。從封包、路由與網際網路，深入無線、衛星、光纖、量子通訊、精密授時與工業網路。','210 new detailed courses in 21 topic groups, with 40 steps each; all 25 earlier courses remain. Follow packets, routing and the Internet into wireless, satellites, fiber, quantum communications, precision timing and industrial networks.'), boundary:pair('比較鏈路預算、時序與傳輸協定；物理媒介與傳輸距離改變設計限制。','Compare link budgets, timing and protocols; media and distance change the design constraints.')},
-  {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('作業系統、編譯器、資料庫、建置與可信交付。','Operating systems, compilers, databases, builds and trustworthy delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
+  {id:'foundation', icon:'code', title:pair('資訊系統與軟體基礎','Computing & software foundations'), description:pair('新增 210 門深入課程：作業系統、語言、編譯器、資料庫、分散式系統、Web、建置與交付。','210 new detailed courses: operating systems, languages, compilers, databases, distributed systems, Web, builds and delivery.'), boundary:pair('以介面契約、資源管理與可重現驗證連結；軟體層與硬體層不能互相替代。','Connect interface contracts, resource management and reproducible validation; software and hardware layers are not interchangeable.')},
   {id:'energy', icon:'energy', title:pair('核能、再生能源與儲能','Nuclear, renewable energy & storage'), description:pair('核電、SMR、核融合、風力、水力、地熱與儲能。','Nuclear plants, SMRs, fusion, wind, hydro, geothermal and storage.'), boundary:pair('比較能量轉換、熱流、機電介面與監測；裂變、融合與再生能源的物理及驗證條件不同。','Compare conversion, heat flow, electromechanical interfaces and monitoring; fission, fusion and renewables have different physics and validation conditions.')},
   {id:'resources', icon:'resources', title:pair('石油、天然氣與採礦','Oil, gas & mineral resources'), description:pair('資源調查、井與礦場系統、淘金及環境監測。','Resource surveys, well and mine systems, gold recovery and environmental monitoring.'), boundary:pair('共同點是地質證據、物料流與環境監測；油氣井、露天礦與重力選礦的工程邊界不同。','Geological evidence, material flow and environmental monitoring are shared; wells, open-pit mines and gravity separation have different engineering boundaries.')},
   {id:'semiconductor', icon:'chip', title:pair('半導體製程','Semiconductor fabrication'), description:pair('材料、微影、元件、互連、量測與整合。','Materials, lithography, devices, interconnects, metrology and integration.'), boundary:pair('以製程窗口與量測證據連結工法；不同節點、材料與產品的配方不可直接移用。','Connect process windows and measurement evidence; recipes are not directly transferable across nodes, materials and products.')},
@@ -62,6 +88,7 @@ export const LEARNING_TRACKS = [
 
 const subdivision = (id, track, zh, en, pattern, note=null) => ({id, track, title:pair(zh,en), pattern, note});
 export const LEARNING_SUBDISCIPLINES = [
+  ...SOFTWARE_V29_GROUPS.map((p,i)=>subdivision('software-v29-'+String(i+1).padStart(2,'0'),'foundation',p[0],p[1],new RegExp('software-v29-'+String(i+1).padStart(2,'0'),'i'))),
   // Exact V28 identities take precedence over the older topic-word heuristics.
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>{const id=`communications-v28-${String(index+1).padStart(2,'0')}`;return subdivision(id,'networks',title[0],title[1],new RegExp(`\\b${id}\\b`,'i'));}),
   // V27 SUBDISCIPLINES START
@@ -216,6 +243,7 @@ export const LEARNING_SUBDISCIPLINES = [
 
 /** Order suggests conceptual preparation; it is neither an enforced prerequisite nor an industrial procedure. */
 export const LEARNING_ROUTES = [
+  ...SOFTWARE_V29_GROUPS.map((p,i)=>({id:'software-v29-'+String(i+1).padStart(2,'0'),title:p,goal:pair('循序完成案例、實驗、故障與驗收。','Progress through cases, experiments, diagnosis and acceptance.'),courses:Array.from({length:10},(_,j)=>'soft-v29-'+String(i*10+j+1).padStart(3,'0'))})),
   ...COMMUNICATIONS_V28_GROUPS.map((title,index)=>({id:`communications-v28-${String(index+1).padStart(2,'0')}`,title,goal:pair('從具名案例開始，逐步核對模型、單位、故障假說與驗收證據；課序為學習建議。','Start with named cases and verify models, units, competing fault hypotheses and acceptance evidence; course order is a learning suggestion.'),courses:Array.from({length:10},(_,offset)=>`comm-v28-${String(index*10+offset+1).padStart(3,'0')}`)})),
   // V27 ROUTES START
   {"id": "hpc-v27-01", "title": ["著名超算的拓撲與工作交接驗收", "Topology and workflow acceptance at landmark supercomputers"], "goal": ["從進階案例逐步驗證資料、模型、故障假說與驗收證據；每項結論都須保留適用邊界。", "Validate data, models, competing fault hypotheses and acceptance evidence in advanced cases; retain the applicability boundary of each conclusion."], "courses": ["hpc-v27-001", "hpc-v27-002", "hpc-v27-003", "hpc-v27-004", "hpc-v27-005", "hpc-v27-006", "hpc-v27-007", "hpc-v27-008", "hpc-v27-009", "hpc-v27-010"]},

@@ -91,7 +91,7 @@ def publish(repo, branch='main', wait_seconds=1800, no_wait=False):
     sha = commit.get('sha', '')
     if not re.fullmatch(r'[0-9a-f]{40}', sha):
         raise PagesError('未取得發布分支的完整 commit SHA。')
-    request_id = 'v28-' + uuid.uuid4().hex[:16]
+    request_id = 'macgyver-' + uuid.uuid4().hex[:16]
     print('發布 commit：' + sha + '；工作識別：' + request_id, flush=True)
     dispatched = api(repo, 'actions/workflows/' + WORKFLOW + '/dispatches', method='POST',
                      payload={'ref': branch, 'inputs': {'request_id': request_id}})

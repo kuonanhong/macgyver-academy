@@ -58,7 +58,7 @@ def public_snapshot(source, excluded=()):
             data = path.read_bytes()
             files['public/academy/' + relative.as_posix()] = data
     # Deployment is deliberately independent of the full course compiler.
-    required = ['index.html', 'deploy-static.sh', '.github/workflows/pages.yml', 'Update_MacGyver_v28.sh',
+    required = ['index.html', 'deploy-static.sh', '.github/workflows/pages.yml', 'Update_MacGyver_v29.sh',
                 '.github/workflows/weekly-markets.yml', 'tools/markets-v12/update_markets.py',
                 'tools/check-pages-artifact-v28.py', 'tools/pages-doctor-v28.py', 'tools/read-json-array.mjs',
                 'tools/export-preview-v21.py', 'macgyver.sh', 'Upload_MacGyver_v21_SSH.sh',
@@ -100,8 +100,8 @@ def public_snapshot(source, excluded=()):
             raise ValueError('Unsafe SOURCE_VERSION.json')
         version = json.loads(version_file.read_text('utf-8'))
         source_major = str(version.get('version', '')).split('.')[0]
-        if source_major not in {'21', '22', '23', '24', '25', '26', '27', '28'}:
-            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26, V27 or V28 before uploading.')
+        if source_major not in {'21', '22', '23', '24', '25', '26', '27', '28', '29'}:
+            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26, V27, V28 or V29 before uploading.')
         files['SOURCE_VERSION.json'] = (json.dumps(version, ensure_ascii=False, indent=2) + '\n').encode()
     files['.nojekyll'] = b''
     files['README.md'] = (

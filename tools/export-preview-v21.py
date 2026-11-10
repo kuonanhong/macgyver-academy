@@ -88,13 +88,13 @@ def public_game_data(source, destination):
                        'assetIds', 'roles', 'chapters', 'equipment', 'spaceModule',
                        'specialty', 'curriculumVersion', 'references'}
             allowed_chapter = {'id', 'title', 'titleEn', 'description', 'descriptionEn',
-                               'assetId', 'observations', 'task', 'taskEn', 'roleTasks', 'choices', 'labExperiment'}
+                               'assetId', 'observations', 'task', 'taskEn', 'roleTasks', 'choices', 'labExperiment', 'requiresLabRun', 'requiredChoiceId'}
             for journey in value['experiences']:
                 if not isinstance(journey, dict) or set(journey) - allowed or not ID.fullmatch(journey.get('id', '')):
                     raise ValueError('Unexpected public experience fields.')
-                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai', 'hpc', 'security', 'network', 'communications'} or journey.get('category') != 'computing'):
+                if 'specialty' in journey and (journey['specialty'] not in {'quantum', 'ai', 'hpc', 'security', 'network', 'communications', 'software'} or journey.get('category') != 'computing'):
                     raise ValueError('Invalid public laboratory specialty.')
-                if 'curriculumVersion' in journey and journey['curriculumVersion'] not in {'25.0.0', '26.0.0', '27.0.0', '28.0.0'}:
+                if 'curriculumVersion' in journey and journey['curriculumVersion'] not in {'25.0.0', '26.0.0', '27.0.0', '28.0.0', '29.0.0'}:
                     raise ValueError('Invalid public laboratory version.')
                 if 'references' in journey:
                     refs = journey['references']
@@ -115,8 +115,13 @@ def public_game_data(source, destination):
                 for chapter in journey['chapters']:
                     if not isinstance(chapter, dict) or set(chapter) - allowed_chapter:
                         raise ValueError('Unexpected public experience chapter fields.')
+                    if 'requiresLabRun' in chapter and (chapter['requiresLabRun'] is not True or journey.get('specialty') != 'software' or 'labExperiment' not in chapter):
+                        raise ValueError('Invalid public laboratory completion requirement.')
+                    if 'requiredChoiceId' in chapter and (journey.get('specialty') != 'software' or chapter.get('requiresLabRun') is not True or not isinstance(chapter['requiredChoiceId'], str) or not ID.fullmatch(chapter['requiredChoiceId']) or not any(isinstance(choice, dict) and choice.get('id') == chapter['requiredChoiceId'] for choice in chapter.get('choices', []))):
+                        raise ValueError('Invalid public laboratory required decision.')
                     if 'labExperiment' in chapter:
                         approved = {'communications': {'comm-packet-delay', 'comm-shannon', 'comm-fiber-margin', 'comm-ptp-asymmetry', 'comm-qkd-fraction', 'comm-queue-drain'},
+                                    'software': {'software-build-match', 'software-build-dag', 'software-transfer-invariant', 'software-ci-matrix', 'software-canary-delta', 'software-error-budget'},
                                     'network': {'comm-packet-delay', 'comm-shannon', 'comm-fiber-margin', 'comm-ptp-asymmetry', 'comm-qkd-fraction', 'comm-queue-drain'},
                                     'quantum': {'shots', 'relaxation', 'ramsey', 'readout', 'rb', 'repetition'},
                                     'ai': {'matmul', 'intensity', 'roofline', 'quantize', 'allreduce', 'throughput'},
@@ -204,8 +209,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23','24','25','26','27','28'}:
-        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27 or V28 before exporting the public preview.')
+    if major not in {'21','22','23','24','25','26','27','28','29'}:
+        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27, V28 or V29 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -267,7 +272,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28'}:
+        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28', '29'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
@@ -277,7 +282,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
                          *(['curriculum-v25.html'] if int(major) >= 25 else []),
                          *(['curriculum-v26.html'] if int(major) >= 26 else []),
                          *(['curriculum-v27.html'] if int(major) >= 27 else []),
-                         *(['curriculum-v28.html'] if int(major) >= 28 else [])):
+                         *(['curriculum-v28.html'] if int(major) >= 28 else []),
+                         *(['curriculum-v29.html'] if int(major) >= 29 else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page

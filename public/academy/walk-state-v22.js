@@ -1,4 +1,4 @@
-import {restoreLabRun} from './walk-labs-v28.js';
+import {restoreLabRun} from './walk-labs-v29.js';
 /* Separate walking-game progress; original course/V21 completion is untouched. */
 export function newWalkRecord(scene,roleId=scene.roles?.[0]?.id||'learner') {
   return {version:22,sceneId:scene.id,roleId,chapterId:scene.chapters[0].id,seen:{},decisions:{},completed:[],notes:{},labRuns:{},actions:[],position:null,roleRuns:{},updatedAt:null};
@@ -18,7 +18,7 @@ export function restoreWalkRecord(scene,raw) {
     if(typeof raw.notes?.[id]==='string')out.notes[id]=raw.notes[id].slice(0,4000);
     if(c.labExperiment){const run=restoreLabRun(c.labExperiment,raw.labRuns?.[id]);if(run)out.labRuns[id]=run;}
     // A forged completion without the corresponding evidence/decision is rejected.
-    if(out.completed.includes(id)&&(out.seen[id].length!==ids.size||(c.choices?.length&&!out.decisions[id])))out.completed=out.completed.filter(v=>v!==id);
+    if(out.completed.includes(id)&&(out.seen[id].length!==ids.size||(c.choices?.length&&!out.decisions[id])||(c.requiredChoiceId&&out.decisions[id]?.choiceId!==c.requiredChoiceId)||(c.requiresLabRun&&!out.labRuns[id])))out.completed=out.completed.filter(v=>v!==id);
   }
   if(raw.position&&['x','z','yaw'].every(k=>Number.isFinite(raw.position[k])&&Math.abs(raw.position[k])<10000))out.position={x:raw.position.x,z:raw.position.z,yaw:raw.position.yaw};
   out.actions=(Array.isArray(raw.actions)?raw.actions:[]).filter(a=>a&&typeof a.type==='string'&&a.type.length<80&&chapters.has(a.chapterId)&&typeof a.at==='string').slice(-600).map(a=>({type:a.type,chapterId:a.chapterId,assisted:a.assisted===true,at:a.at.slice(0,40)}));
