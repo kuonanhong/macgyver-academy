@@ -34,6 +34,7 @@ def public_game_data(source, destination):
     source wrappers. Course enrichment stays inside the existing checked lesson
     descriptors and therefore obeys the same free-stage/member-stage boundary.
     """
+    source, destination = source.resolve(), destination.resolve()
     def reject_constant(value):
         raise ValueError('Non-finite number in public campaign data: ' + value)
     def inspect(value, depth=0):
@@ -225,8 +226,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
         raise ValueError('Output exists and is not a marked generated export. Choose another directory.')
     index = json.loads((source/'data/lazy/index.json').read_text('utf-8'))
     major = index.get('release',{}).get('version','').split('.')[0]
-    if major not in {'21','22','23','24','25','26','27','28','29','30','31'}:
-        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27, V28, V29, V30 or V31 before exporting the public preview.')
+    if major not in {'21','22','23','24','25','26','27','28','29','30','31','32'}:
+        raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27, V28, V29, V30, V31 or V32 before exporting the public preview.')
     safe_index(index)
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
@@ -288,7 +289,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
         for name in ('markets.json','fx.json'):
             if (source/'data'/name).is_file():copy(Path('data')/name)
         games = public_game_data(source, temp)
-        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28', '29', '30', '31'}:
+        if legacy_entrypoints and major in {'23', '24', '25', '26', '27', '28', '29', '30', '31', '32'}:
             # The Actions artifact serves at repository root. Keep deep links
             # previously shared from the branch's /public/academy/ directory.
             prefix = Path('public/academy')
@@ -301,7 +302,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
                          *(['curriculum-v28.html'] if int(major) >= 28 else []),
                          *(['curriculum-v29.html'] if int(major) >= 29 else []),
                          *(['curriculum-v30.html', 'realworld-v30.html'] if int(major) >= 30 else []),
-                         *(['curriculum-v31.html', 'realworld-v31.html'] if int(major) >= 31 else [])):
+                         *(['curriculum-v31.html', 'realworld-v31.html'] if int(major) >= 31 else []),
+                         *(['realworld-v32.html'] if int(major) >= 32 else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page

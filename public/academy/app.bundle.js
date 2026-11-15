@@ -10,7 +10,7 @@ const resourceExtensionsV31=new Set(['v11-troll-field','v11-johan-sverdrup','v11
 function courseSceneHref(course){
  const id=String(course?.id||''), domain=String(course?.category||'');
  const resourceV31=domain==='materials'&&(course?.v31Extension===true||course?.educationEdition===31||resourceExtensionsV31.has(id)||/^extractive-v31-\d{3}$/.test(id));
- return resourceV31?`realworld-v31.html?domain=materials&site=${encodeURIComponent(id)}`:`experience.html?domain=${encodeURIComponent(domain)}&course=${encodeURIComponent(id)}`;
+ return resourceV31?`realworld-v32.html?domain=materials&site=${encodeURIComponent(id)}`:`experience.html?domain=${encodeURIComponent(domain)}&course=${encodeURIComponent(id)}`;
 }
 function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;
@@ -6342,6 +6342,112 @@ Object.defineProperty(exports, "modelForCurriculumV31", { enumerable: true, get:
 Object.defineProperty(exports, "curriculumLabMarkupV31", { enumerable: true, get: () => curriculumLabMarkupV31 });
 Object.defineProperty(exports, "bindCurriculumLabV31", { enumerable: true, get: () => bindCurriculumLabV31 });
 },
+"curriculum-exercises-v32.js":function(require, exports) {
+'use strict';
+/** V32 lesson-linked evidence and arithmetic workbenches. No lesson payload is bundled. */
+const { calculateCurriculumModelV31 } = require("curriculum-exercises-v31.js");
+const bi=(zh,en)=>({zh,en});
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const short=(s,n)=>{const a=Array.from(String(s??'').replace(/\s+/g,' '));return a.length>n?a.slice(0,n-1).join('')+'…':a.join('')};
+const number=value=>Math.abs(value)>=1e8||(value!==0&&Math.abs(value)<1e-4)?value.toExponential(6):value.toLocaleString('en-US',{maximumSignificantDigits:9});
+
+function sequenceFor(course,step){
+ if(!/^d\d{3}$/.test(String(course?.id||''))||step?.locked||course?.locked||course?.access==='locked'||step?.access==='locked')return 0;
+ const match=String(step?.id||'').match(/^(d\d{3})-v32-(\d{2})$/);
+ if(!match||match[1]!==course.id)return 0;
+ const sequence=Number(match[2]);return sequence>=1&&sequence<=40?sequence:0;
+}
+
+function calculateCurriculumModelV32(model,values){
+ const result=calculateCurriculumModelV31(model,values);
+ const pairs={yield:['good','feed'],porosity:['bulk','solid'],reduction:['final','initial'],shrink:['fired','green'],
+  recovery:['product','feed'],rejection:['permeate','feed'],moisture:['final','wet'],coverage:['verified','required']};
+ const pair=pairs[model.key];if(pair&&values[pair[0]]>values[pair[1]])throw new RangeError('Inputs violate the stated material/count boundary');
+ if(model.key==='dilution'&&values.amount>values.total)throw new RangeError('Stock volume exceeds total volume');
+ return result;
+}
+
+function modelForCurriculumV32(course,step){
+ const sequence=sequenceFor(course,step);if(!sequence||sequence%4!==2)return null;
+ const unit=Math.floor((sequence-1)/4)+1;
+ const model=step.v32Model||(Array.isArray(course.v32Models)?course.v32Models.find(m=>m.unit===unit):null);
+ if(!model||model.unit!==unit||model.provenance!=='original-v32-synthetic-teaching-model')return null;
+ try{calculateCurriculumModelV32(model,model.variables);return model;}catch{return null;}
+}
+
+function curriculumLabMarkupV32(course,step,zh=true){
+ const m=modelForCurriculumV32(course,step);if(!m)return '';
+ const fields=Object.entries(m.variables).map(([name,value])=>{
+  const b=m.bounds?.[name]||{};
+  const range=[b.min!==undefined?`${b.exclusiveMin?'>':'≥'} ${b.min}`:'',b.max!==undefined?`${b.exclusiveMax?'<':'≤'} ${b.max}`:''].filter(Boolean).join(' · ');
+  return `<label class="field">${esc(name)} <small>${esc(m.variableUnits?.[name]||'')}</small><input data-v32-number="${esc(name)}" type="number" inputmode="decimal" step="any" value="${value}" style="min-height:44px;width:100%"><small>${esc(range)}</small></label>`;
+ }).join('');
+ return `<section class="lesson-card engineering-lab" id="engineeringLabV32" data-v32-model="${esc(step.id)}"><div class="eyebrow">${zh?'工程算例｜合成教學資料':'ENGINEERING MODEL · SYNTHETIC DATA'}</div><h3>${esc(zh?m.title:m.titleEn)}</h3><p><code>${esc(m.formula)}</code></p><p>${esc(zh?m.meaning:m.meaningEn)}</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">${fields}</div><div style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0"><button type="button" data-v32-compute>${zh?'計算與比較':'Compute and compare'}</button><button type="button" data-v32-reset>${zh?'還原教學值':'Restore teaching inputs'}</button></div><output data-v32-result aria-live="polite" style="display:block;font-size:22px;font-weight:700">${zh?'按計算取得結果。':'Press Compute for a result.'}</output><p data-v32-sensitivity></p><p class="notice">${esc(zh?m.limit:m.limitEn)}</p><small>${zh?'預設值全部為合成教學假設。修改後需重算；算例不會自動完成步驟，也不是實機設定。':'All defaults are synthetic teaching assumptions. Recompute after edits; calculations do not complete the step and are not equipment settings.'}</small></section>`;
+}
+
+function bindCurriculumLabV32(course,step,zh=true,doc=globalThis.document,storage){
+ if(storage===undefined)try{storage=globalThis.localStorage;}catch{storage=null;}
+ const m=modelForCurriculumV32(course,step),root=doc?.querySelector?.('#engineeringLabV32');if(!m||!root)return false;
+ const inputs=Array.from(root.querySelectorAll('[data-v32-number]')),result=root.querySelector('[data-v32-result]'),sensitivity=root.querySelector('[data-v32-sensitivity]');
+ const key='mg-v32-model:'+course.id+':'+step.id;
+ const clear=()=>{root.dataset.computed='false';result.textContent=zh?'輸入已變更，請重新計算。':'Inputs changed; compute again.';sensitivity.textContent='';};
+ try{const saved=JSON.parse(storage?.getItem?.(key)||'null');if(saved?.inputs){calculateCurriculumModelV32(m,saved.inputs);for(const input of inputs)input.value=String(saved.inputs[input.dataset.v32Number]);clear();}}catch{}
+ for(const input of inputs)input.oninput=clear;
+ root.querySelector('[data-v32-compute]').onclick=()=>{
+  try{
+   const values=Object.fromEntries(inputs.map(input=>{if(!String(input.value).trim())throw new RangeError('Empty input');return [input.dataset.v32Number,Number(input.value)];}));
+   const value=calculateCurriculumModelV32(m,values);result.textContent=`${zh?'結果':'Result'}: ${number(value)} ${m.unitLabel}`;root.dataset.computed='true';
+   try{const changed=calculateCurriculumModelV32(m,{...values,[m.vary]:values[m.vary]*1.1});sensitivity.textContent=`${m.vary} +10% → ${number(changed)} ${m.unitLabel}`;}catch{sensitivity.textContent=zh?'增加10%後超出模型邊界。':'The +10% scenario exceeds model boundaries.';}
+   try{storage?.setItem?.(key,JSON.stringify({inputs:values,result:value,savedAt:Date.now()}));}catch{}
+  }catch(error){result.textContent=zh?'輸入無效或超出模型邊界。':'Invalid inputs or model boundary exceeded.';sensitivity.textContent=error.message;root.dataset.computed='false';}
+ };
+ root.querySelector('[data-v32-reset]').onclick=()=>{for(const input of inputs)input.value=String(m.variables[input.dataset.v32Number]);try{storage?.removeItem?.(key);}catch{}clear();};
+ return true;
+}
+
+function resolveCurriculumExerciseV32(course,step,make){
+ const sequence=sequenceFor(course,step);if(!sequence)return null;
+ const q=step.quiz;
+ const complete=q&&Array.isArray(q.options)&&Array.isArray(q.optionsEn)&&q.options.length===3&&q.optionsEn.length===3
+  &&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<3&&['instruction','instructionEn','observation','observationEn','check','checkEn'].every(k=>typeof step[k]==='string'&&step[k].trim());
+ if(!complete)return null;
+ const choices=q.options.map((s,i)=>({id:'answer-'+i,label:bi(s,q.optionsEn[i])}));
+ const unit=Math.floor((sequence-1)/4)+1;
+ const nodes=Array.isArray(course.v32Architecture?.nodes)?course.v32Architecture.nodes.map(n=>bi(n[0],n[1])):[];
+ return make(step.id+'-evidence-v32','inspect','curriculum-v32:'+course.category,bi(step.title,step.titleEn),
+  bi(`${step.instruction}\n觀察紀錄：${step.observation}\n工程判讀：${q.question}`,`${step.instructionEn}\nObservation: ${step.observationEn}\nDecision: ${q.questionEn}`),
+  bi('工程證據工作台','Engineering evidence workbench'),bi(step.check+'\n'+q.explanation,step.checkEn+'\n'+q.explanationEn),{
+   choices,expectedChoice:'answer-'+q.answer,provenance:'step-authored-evidence',family:'v32-evidence',
+   decisionFeedback:bi('請重核本課的介面、單位、合成算例及適用邊界。','Recheck the case interfaces, units, synthetic calculation and applicability boundary.'),
+   curriculumEvidenceV32:{available:true,sequence,unit,courseTitle:bi(course.title,course.titleEn),focus:bi(course.v32Focus||course.title,course.v32FocusEn||course.titleEn),
+    nodes,artifacts:(step.knowledge||[]).slice(0,2).map(k=>({label:bi(k.title,k.titleEn),text:bi(k.text,k.textEn)})),check:bi(step.check,step.checkEn)},
+   coverage:bi('本課的具體焦點與失效情境，搭配明示共通方法；數值是教學假設，畫面是原創架構示意。','The case focus and failure scenario use explicitly shared methods. Numbers are teaching assumptions and the architecture is an original schematic.')
+  });
+}
+
+function renderCurriculumEvidenceV32(spec,choice,lang='zh'){
+ const c=spec.curriculumEvidenceV32;if(!c)return '';
+ if(c.available===false)return `<g data-v32-evidence="unavailable"><text x="18" y="112" font-size="12" font-family="system-ui,sans-serif">${esc(lang==='zh'?'請先載入已授權的完整步驟。':'Load the authorized complete step first.')}</text></g>`;
+ const zh=lang==='zh',selected=spec.choices.find(x=>x.id===choice);
+ const text=(x,y,value,size=8)=>`<text x="${x}" y="${y}" font-size="${size}" fill="#173e45" font-family="system-ui,sans-serif">${esc(value)}</text>`;
+ let out=`<g data-v32-evidence="${c.unit}"><title>${esc(c.courseTitle[lang])}</title>`;
+ out+=text(18,56,short(c.courseTitle[lang],zh?28:56),10)+text(18,73,zh?`單元 ${c.unit}/10 · 第 ${c.sequence}/40 步`:`UNIT ${c.unit}/10 · STEP ${c.sequence}/40`,8);
+ const nodes=c.nodes.slice(0,5),width=nodes.length?350/nodes.length:0;
+ nodes.forEach((n,i)=>{const x=18+i*width;out+=`<rect x="${x}" y="84" width="${width-5}" height="29" rx="5" fill="#e2efeb" stroke="#6a9b8d"/><title>${esc(n[lang])}</title>`+text(x+5,102,short(n[lang],zh?7:12),7);});
+ const fields=[{label:bi('本課焦點','Case focus'),text:c.focus},...c.artifacts];
+ fields.forEach((a,i)=>{const y=122+i*31;out+=`<rect x="18" y="${y}" width="355" height="28" rx="5" fill="#f2f6f4" stroke="#becfc7"/><title>${esc(a.label[lang]+': '+a.text[lang])}</title>`+text(25,y+10,short(a.label[lang],32),6.8)+text(25,y+22,short(a.text[lang],zh?37:73),7.6);});
+ out+=text(18,226,zh?'完整算式、證據與判讀請見下方任務欄。':'Full formulas, evidence and decisions appear below.',8);
+ out+=text(18,240,selected?(zh?'已選判讀；記錄觀察後提交檢查。':'Decision selected; record evidence and submit.'):(zh?'核對本課證據後選擇判讀。':'Inspect the case evidence, then choose a decision.'),8);
+ return out+'</g>';
+}
+
+Object.defineProperty(exports, "calculateCurriculumModelV32", { enumerable: true, get: () => calculateCurriculumModelV32 });
+Object.defineProperty(exports, "modelForCurriculumV32", { enumerable: true, get: () => modelForCurriculumV32 });
+Object.defineProperty(exports, "curriculumLabMarkupV32", { enumerable: true, get: () => curriculumLabMarkupV32 });
+Object.defineProperty(exports, "bindCurriculumLabV32", { enumerable: true, get: () => bindCurriculumLabV32 });
+Object.defineProperty(exports, "resolveCurriculumExerciseV32", { enumerable: true, get: () => resolveCurriculumExerciseV32 });
+Object.defineProperty(exports, "renderCurriculumEvidenceV32", { enumerable: true, get: () => renderCurriculumEvidenceV32 });
+},
 "water-calculators.js":function(require, exports) {
 'use strict';
 /* Original, bounded teaching models. Inputs are hypothetical, never site limits. */
@@ -7409,6 +7515,7 @@ Object.defineProperty(exports, "electronicsLabDetail", { enumerable: true, get: 
 },
 "engineering-labs.js":function(require, exports) {
 'use strict';
+const { curriculumLabMarkupV32, bindCurriculumLabV32 } = require("curriculum-exercises-v32.js");
 const { curriculumLabMarkupV31, bindCurriculumLabV31 } = require("curriculum-exercises-v31.js");
 const { WATER_LABS, waterLabKind, calculateWaterLab, waterLabDetail } = require("water-calculators.js");
 const { UNDERGROUND_LABS, undergroundLabKind, calculateUndergroundLab, undergroundLabDetail } = require("underground-calculators.js");
@@ -7502,11 +7609,17 @@ function calculateLab(kind, v) {
 }
 Object.assign(LABS,SEMICONDUCTOR_LABS,PACKAGING_LABS,ELECTRONICS_LABS,COMPUTING_LABS,WORLD_LABS,UNDERGROUND_LABS,WATER_LABS);
 function labMarkup(course, step, zh) {
+  if(course?.locked||step?.locked||course?.access==='locked'||step?.access==='locked')return '';
+  const newCourse=curriculumLabMarkupV32(course,step,zh);if(newCourse)return newCourse;
+  if(/^d\d{3}$/.test(String(course?.id||''))&&String(step?.id||'').startsWith(course.id+'-v32-'))return '';
   const resources=curriculumLabMarkupV31(course,step,zh);if(resources)return resources;
   const kind=labKind(course,step),lab=LABS[kind];if(!lab)return '';
   return `<section class="lesson-card engineering-lab" id="engineeringLab" data-kind="${kind}"><div class="eyebrow">EXPLORE / ${zh?'互動工程算例':'INTERACTIVE ENGINEERING'}</div><h3>${choose(lab.title,zh)}</h3><p><code>${e(lab.formula)}</code></p>${kind==='lithography'?`<label class="field">${zh?'光學情境預設':'Optical scenario'}<select id="labPreset"><option value="duv">ArF immersion · 193 nm · NA 1.35</option><option value="euv">EUV · 13.5 nm · NA 0.33</option><option value="highna">High-NA EUV · 13.5 nm · NA 0.55</option></select></label>`:''}<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:16px">${lab.params.map(([id,label,min,max,delta,value,unit])=>`<label class="field" for="lab-${id}">${e(choose(label,zh))} <output id="lab-value-${id}">${value}</output> ${e(unit)}<input id="lab-${id}" data-lab-input="${id}" type="range" min="${min}" max="${max}" step="${delta}" value="${value}" style="width:100%;min-height:42px;accent-color:#245443"></label>`).join('')}</div><div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:20px 0"><output id="labResult" aria-live="polite" style="font-size:32px;font-weight:700;color:#245443"></output><span id="labDetail"></span></div><div id="labChart" aria-hidden="true"></div><p id="labScenarioNote" class="muted"></p><p class="notice">${e(choose(lab.note,zh))}</p><p><strong>${zh?'試著推理：':'Reason it through: '}</strong>${e(choose(lab.question,zh))}</p>${lab.source?`<a href="${e(lab.source)}" target="_blank" rel="noopener noreferrer">${zh?'公式／假設延伸閱讀':'Formula / assumptions reference'} ↗</a>`:''}</section>`;
 }
 function bindLab(course, step, zh) {
+  if(course?.locked||step?.locked||course?.access==='locked'||step?.access==='locked')return;
+  if(bindCurriculumLabV32(course,step,zh))return;
+  if(/^d\d{3}$/.test(String(course?.id||''))&&String(step?.id||'').startsWith(course.id+'-v32-'))return;
   if(bindCurriculumLabV31(course,step,zh))return;
   if(typeof document==='undefined')return;
   const root=document.querySelector('#engineeringLab');if(!root || !root.querySelectorAll)return;
@@ -8264,6 +8377,7 @@ Object.defineProperty(exports, "renderCurriculumEvidenceV27", { enumerable: true
 },
 "process-exercises.js":function(require, exports) {
 'use strict';
+const { resolveCurriculumExerciseV32, renderCurriculumEvidenceV32 } = require("curriculum-exercises-v32.js");
 const { COMPUTING_SUBJECTS, renderComputingVisual, computingVisualFamily } = require("computing-visuals.js");
 const { hasWorldVisual, renderWorldVisual, worldVisualFamily } = require("world-project-visuals.js");
 const { renderPackagingVisual, packagingVisualFamily } = require("packaging-visuals.js");
@@ -8542,6 +8656,16 @@ Object.assign(observations,{
  backside:[bi('正面訊號与背面供電仍需介面及隔離驗證','Front-side signals and backside power need interface/isolation checks'),bi('背面供電會自動消除所有電壓降','Backside power automatically eliminates every voltage drop')]
 });
 function resolveExercise(course={},step={}){
+ if(course.locked||course.access==='locked'||step.access==='locked')step={...step,locked:true};
+ const curriculumV32=resolveCurriculumExerciseV32(course,step,make);if(curriculumV32)return curriculumV32;
+ // A recognized V32 step without authorized, complete evidence must not fall
+ // through to a generic exercise whose default answer could mark it complete.
+ if(/^d\d{3}$/.test(String(course.id||''))&&String(step.id||'').startsWith(course.id+'-v32-')){
+  const unavailable=bi('請先載入已授權的完整步驟。','Load the authorized complete step first.');
+  return make(String(step.id)+'-unavailable-v32','inspect','curriculum-v32:unavailable',bi(course.title||course.id,course.titleEn||course.id),unavailable,
+   bi('工程證據尚未提供','Engineering evidence unavailable'),unavailable,{choices:[],expectedChoice:'unavailable',provenance:'unavailable',family:'v32-evidence',
+    curriculumEvidenceV32:{available:false,sequence:0,unit:0,courseTitle:bi(course.title||course.id,course.titleEn||course.id),focus:unavailable,nodes:[],artifacts:[],check:unavailable}});
+ }
  const curriculumV31=resolveCurriculumExerciseV31(course,step,make);if(curriculumV31)return curriculumV31;
  const curriculumV30=resolveCurriculumExerciseV30(course,step,make);if(curriculumV30)return curriculumV30;
  const curriculumV29=resolveCurriculumExerciseV29(course,step,make);if(curriculumV29)return curriculumV29;
@@ -8604,7 +8728,7 @@ function evaluateExercise(spec,state={}){
  const numbers=spec.controls.every(c=>Number.isFinite(Number(values[c.id]))&&Math.abs(Number(values[c.id])-c.target)<=c.tolerance+1e-8);
  const choice=!spec.expectedChoice||state.choice===spec.expectedChoice;
  const action=spec.mode==='inspect'?state.observed===true:spec.mode==='process'?state.performed===true:true;
-  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false&&spec.curriculumEvidenceV31?.available!==false;
+  const passed=numbers&&choice&&action&&spec.curriculumEvidenceV25?.available!==false&&spec.curriculumEvidenceV26?.available!==false&&spec.curriculumEvidenceV27?.available!==false&&spec.curriculumEvidenceV28?.available!==false&&spec.curriculumEvidenceV29?.available!==false&&spec.curriculumEvidenceV30?.available!==false&&spec.curriculumEvidenceV31?.available!==false&&spec.curriculumEvidenceV32?.available!==false;
  const readout=bi(spec.controls.map(c=>`${c.label.zh}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.zh||(spec.mode==='assembly'?'對位後放開零件並提交':'尚未選擇判讀')),spec.controls.map(c=>`${c.label.en}: ${Number.isFinite(Number(values[c.id]))?Number(values[c.id]).toFixed(c.step<1?2:0):'—'} ${c.unit}`).join(' · ')||((spec.choices.find(c=>c.id===state.choice)||{}).label?.en||(spec.mode==='assembly'?'Align, release and submit the component':'No review selection')));
   return {passed,readout,evidence:passed?spec.evidence:!choice&&spec.decisionFeedback?spec.decisionFeedback:bi(!numbers?'讀值／階段尚未與本示例一致。':!choice?'請重新檢查剖面、圖層或路線選擇。':spec.mode==='process'?'請執行並記錄此示意製程。':'請記錄本次觀察。',!numbers?'Reading/phase does not yet match this specimen.':!choice?'Recheck the cross-section, layers or route.':spec.mode==='process'?'Run and record this schematic process.':'Record your observation.')};
 }
@@ -8724,7 +8848,8 @@ function routeScene(spec,choice,done,lang){
  out+=path('M115 176v27h84m84-27v27h-84','none',done?colors.green:'#9caea8',2,'4 3')+text(200,225,l(bi('只選一條相容路線；勿串接替代分支','Select a compatible branch; do not chain alternatives')),9,colors.ink,'middle');return out;
 }
 function sceneDrawing(spec,values,choice,phase,lang){
- if(spec.curriculumEvidenceV31)return renderCurriculumEvidenceV31(spec,choice,lang);
+ if(spec.curriculumEvidenceV32)return renderCurriculumEvidenceV32(spec,choice,lang);
+  if(spec.curriculumEvidenceV31)return renderCurriculumEvidenceV31(spec,choice,lang);
  if(spec.curriculumEvidenceV30)return renderCurriculumEvidenceV30(spec,choice,lang);
  if(spec.curriculumEvidenceV29)return renderCurriculumEvidenceV29(spec,choice,lang);
  if(spec.curriculumEvidenceV28)return renderCurriculumEvidenceV28(spec,choice,lang);
@@ -9130,6 +9255,22 @@ function resolveSupportedLanguage(preference = 'auto', browser, choices = SUPPOR
   return exact('en') || codes[0];
 }
 
+/** A shared URL language is temporary. Invalid explicit values mean Auto,
+ * while an absent URL choice preserves the saved preference. Never writes storage. */
+function readLanguagePreference({ search = '', storage = globalThis.localStorage, choices = SUPPORTED } = {}) {
+  const codes = Array.from(choices || SUPPORTED, item => typeof item === 'string' ? item : Array.isArray(item) ? item[0] : item?.value || item?.code || item?.id).filter(Boolean);
+  const normalize = value => {
+    const candidate = tag(value);
+    if (!candidate || candidate === 'auto') return 'auto';
+    if (!/^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(candidate) ||
+        !codes.some(code => tag(code).split('-')[0] === candidate.split('-')[0])) return 'auto';
+    return resolveSupportedLanguage(candidate, {}, codes);
+  };
+  const params = new URLSearchParams(search);
+  if (params.has('lang')) return normalize(params.get('lang'));
+  try { return normalize(storage?.getItem('mg-language')); } catch { return 'auto'; }
+}
+
 function languageDirection(language) {
   const bits = tag(language).toLowerCase().split('-');
   if (bits.includes('latn')) return 'ltr';
@@ -9165,10 +9306,21 @@ function hiddenOrExcluded(element, attributes = false) {
   // Textareas contain private notes. Their prompts can still be translated.
   let selector = NEVER_TRANSLATE;
   if (attributes) selector = selector.replace(',textarea', '').replace(',#notes', '').replace(',#researchNotes', '').replace(',#question', '');
-  if (element.closest(selector) || element.closest('[hidden],dialog:not([open])')) return true;
+  if (element.closest(selector) || element.closest('[hidden],[aria-hidden="true"],dialog:not([open])')) return true;
   for (let details = element.closest('details:not([open])'); details; details = details.parentElement?.closest('details:not([open])')) {
     const summary = [...details.children].find(child => child.localName === 'summary');
     if (!summary || !summary.contains(element)) return true;
+  }
+  // CSS-collapsed panels are not part of current-page coverage. Content lower
+  // down the scrollable page still is; viewport clipping is deliberately ignored.
+  const view = element.ownerDocument?.defaultView;
+  if (view?.getComputedStyle) {
+    for (let parent = element; parent; parent = parent.parentElement) {
+      const style = view.getComputedStyle(parent);
+      if (style.display === 'none' || style.contentVisibility === 'hidden') return true;
+    }
+    const style = view.getComputedStyle(element);
+    if (style.visibility === 'hidden' || style.visibility === 'collapse') return true;
   }
   return false;
 }
@@ -9350,30 +9502,49 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
     const token = generation;
     const language = resolveSupportedLanguage(getLanguage(), {});
     const core = language === 'en' || language === 'zh-TW';
-    const descriptors = root ? collect(root) : [];
+    const roots = (Array.isArray(root) ? root : [root]).filter(Boolean);
+    const seenNodes = new WeakMap();
+    const descriptors = roots.flatMap(item => collect(item)).filter(descriptor => {
+      let attributes = seenNodes.get(descriptor.node);
+      if (!attributes) seenNodes.set(descriptor.node, attributes = new Set());
+      const key = descriptor.attribute || '#text';
+      if (attributes.has(key)) return false;
+      attributes.add(key); return true;
+    });
     const texts = [...new Set(descriptors.flatMap(descriptor => descriptor.parts.filter(part => part.translate).map(part => part.text)))];
     const translations = new Map();
     if (!core) for (const source of texts) {
       const value = get(keyFor(language, source));
       if (typeof value === 'string' && value.trim() && value.length <= 12000) translations.set(source, value);
     }
+    const cacheTranslated = translations.size;
     let dictionary = null;
     if (!core) {
       // Never block on the dictionary: use it when loaded, otherwise load it in
       // the background and re-apply once it arrives.
       dictionary = loadedDictionary(language);
       if (!dictionary) loadDictionary(language).then(loaded => { if (loaded) try { onDictionary(language); } catch {} });
+      const renderedDictionaryValues = dictionary ? new Set(Object.values(dictionary.strings || dictionary).filter(value => typeof value === 'string')) : null;
       if (dictionary) for (const source of texts) {
         if (translations.has(source)) continue;
-        const value = lookupDictionary(dictionary, source);
+        // Components may already render t(key) in the selected UI language.
+        // Do not send that target-language text back to an English-source translator.
+        const value = renderedDictionaryValues.has(source) ? source : lookupDictionary(dictionary, source);
         if (typeof value === 'string' && value.trim() && value.length <= 12000) translations.set(source, value);
       }
     }
     const cached = translations.size;
+    const dictionaryTranslated = cached - cacheTranslated;
+    const sourceCharacters = texts.reduce((sum, value) => sum + value.length, 0);
     let failed = 0;
     const cancelled = () => token !== generation;
     const report = (state, error) => {
-      const status = { state, language, total: texts.length, translated: core ? texts.length : translations.size, pending: core ? 0 : texts.length - translations.size, cached, failed, ...(error ? { error } : {}) };
+      const translatedCharacters = core ? sourceCharacters : [...translations.keys()].reduce((sum, value) => sum + value.length, 0);
+      const status = { state, language, total: texts.length, translated: core ? texts.length : translations.size, pending: core ? 0 : texts.length - translations.size, cached, failed,
+        scope: 'visible-public-unique-fragments', sourceCharacters, translatedCharacters,
+        coveragePercent: sourceCharacters ? Math.floor(translatedCharacters / sourceCharacters * 10000) / 100 : null,
+        dictionaryTranslated, cacheTranslated, machineTranslated: core ? 0 : translations.size - cached,
+        ...(error ? { error } : {}) };
       if (!cancelled()) {
         latestStatus = status;
         try { onStatus({ ...status }); } catch { /* A status widget must not interrupt translation. */ }
@@ -9430,6 +9601,10 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
     report('translating');
     let cursor = 0;
     while (cursor < missing.length && !cancelled()) {
+      if (!getTranslationAvailable() && !cloudAllowed()) {
+        failed = texts.length - translations.size;
+        return report(translations.size ? 'partial' : 'unavailable', 'Translation permission or service is no longer available. Original text remains visible.');
+      }
       const batch = [];
       let size = 0;
       while (cursor < missing.length && batch.length < MAX_BATCH_SIZE && size + missing[cursor].length <= MAX_BATCH_CHARS) {
@@ -9444,10 +9619,13 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
         requests++;
         let result;
         if(typeof translateBatch==='function')result=await translateBatch({language,texts:batch,signal:controller.signal});
+        if (cancelled()) return { ...latestStatus, state: 'cancelled' };
         if(result==null && cloudAllowed())result=await translatePublicText({language,texts:batch,signal:controller.signal});
+        if (cancelled()) return { ...latestStatus, state: 'cancelled' };
         // The app's optional local-model adapter returns null when no model is
         // loaded. A configured server translator must still remain reachable.
         if(result==null) {
+          if (!getTranslationAvailable()) throw Error('Translation service is no longer available. Original text remains visible.');
           const response = await fetch('/api/translate', {
             method: 'POST', credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -9519,6 +9697,7 @@ Object.defineProperty(exports, "SUPPORTED_LANGUAGES", { enumerable: true, get: (
 Object.defineProperty(exports, "supportedLanguages", { enumerable: true, get: () => supportedLanguages });
 Object.defineProperty(exports, "BUNDLED_UI_LANGUAGES", { enumerable: true, get: () => BUNDLED_UI_LANGUAGES });
 Object.defineProperty(exports, "resolveSupportedLanguage", { enumerable: true, get: () => resolveSupportedLanguage });
+Object.defineProperty(exports, "readLanguagePreference", { enumerable: true, get: () => readLanguagePreference });
 Object.defineProperty(exports, "languageDirection", { enumerable: true, get: () => languageDirection });
 Object.defineProperty(exports, "loadDictionary", { enumerable: true, get: () => loadDictionary });
 Object.defineProperty(exports, "loadedDictionary", { enumerable: true, get: () => loadedDictionary });
@@ -9568,7 +9747,7 @@ const { setLearningMedia, learningMediaMarkup, bindLearningMedia, disposeLearnin
 const { labMarkup, bindLab } = require("engineering-labs.js");
 const { initialPose, normalizePose, targetFor, alignment, advancePose, assemblySvg, renderExerciseSvg } = require("workshop-model.js");
 const { resolveExercise, evaluateExercise } = require("process-exercises.js");
-const { createLocaleController, languageDirection, resolveSupportedLanguage, loadDictionary, onDeviceTranslator, loadedDictionary, lookupDictionary } = require("locale.js");
+const { createLocaleController, languageDirection, resolveSupportedLanguage, readLanguagePreference, loadDictionary, onDeviceTranslator, loadedDictionary, lookupDictionary } = require("locale.js");
 const { validMemberFields, normalizePhone } = require("cloud-sync.js");
 const { configurePaywall, resetProtectedContent, refreshAccess, accessState, stepLocked, stageBadge, lockedStepMarkup, hydrateProtectedStages, hasFullAccess } = require("paywall.js");
 const { loadPricing, freeStages, priceTable, selectedCurrency, setLanguageProvider } = require("pricing.js");
@@ -9582,7 +9761,7 @@ immersiveWorlds:['全畫面工程世界','Full-window engineering'],
 'learning-map':['課程地圖','Learning map'],
 openMentor:['✳ AI 師傅','✳ AI mentor'],workspace:['工程師工作室','ENGINEER’S WORKSPACE'],home:['探索工程','Explore engineering'],catalog:['探索工程','Explore engineering'],workshop:['組合工作台','Assembly workshop'],progress:['我的工程進度','My projects'],map:['世界工程地圖','Engineering atlas'],sources:['知識與來源','Knowledge & sources'],sideTitle:['大工程，從小步開始。','Big ideas. Small steps.'],sideDesc:['今天理解一個原理，明天完成一個系統。','Understand a principle today. Build a system tomorrow.'],guide:['操作指南 ↗','Getting started ↗'],academy:['工程學院','Engineering academy'],guest:['訪客工程師','Guest engineer'],footer:['工程教育示意 · 公開知識 · 持續探索','Educational models · Open knowledge · Keep exploring'],credits:['來源與授權','Sources & credits'],heroTitle:['世界級工程，<br>一步一步造出來。','World-class engineering.<br>One step at a time.'],heroDesc:['從奈米晶片到跨海大橋。跟著師傅拆解系統、理解原理，以總工程師的視角，親手完成每一個學習步驟。','From nanoscale chips to landmark bridges. Follow your mentor, understand the principles, and build a system one learning step at a time.'],start:['開始第一項工程','Start your first project'],explore:['探索所有工程','Explore engineering'],topics:['工程與工藝題目','engineering topics'],featuredCount:['逐步學習課程','guided courses'],levels:['層技術探索','levels of discovery'],bilingual:['中英核心內容','core languages'],featured:['精選工程，從這裡開始','Your next engineering challenge'],featuredSub:['先看全貌，再深入每一道工序。','See the whole system. Then explore every step.'],all:['全部','All'],ready:['逐步課程','GUIDED COURSE'],roadmap:['題目路線圖','TOPIC ROADMAP'],steps:['道學習工序','learning steps'],viewCourse:['進入工程','Open project'],learnBanner:['不是旁觀者，你就是總工程師。','You are the chief engineer.'],learnBannerDesc:['保存每個專案的組合、筆記與工序進度，下次從上次的位置繼續。','Save each project’s assembly, notes and learning progress. Pick up where you left off.'],myProjects:['查看我的工程','My projects'],catalogTitle:['把世界，拆解成可以理解的工程。','Make the world understandable.'],catalogDesc:['跨越資訊、量子運算、能源與各工程領域的精選工程與工藝題目。已展開的課程提供知識點、概念組合與驗收題；路線圖提供後續研究入口。','Selected computing, quantum, energy and engineering projects across disciplines. Guided courses include knowledge, conceptual assembly and checks; roadmaps are research entry points.'],search:['搜尋工藝、工程名稱或關鍵字…','Search projects, processes or keywords…'],allDomains:['所有工程領域','All disciplines'],allMaturity:['所有內容類型','All content types'],catalogScope:['編輯選題目錄，並非官方世界排名；路線圖尚未具備完整工序。','An editorial selection, not an official global ranking. Roadmaps do not yet contain full curricula.'],previous:['上一頁','Previous'],next:['下一頁','Next'],results:['項結果','results'],noResults:['沒有符合的工程，試試其他關鍵字。','No matching projects. Try another keyword.'],curriculum:['工序導航','Process navigator'],learner:['學徒 · 我的組合','APPRENTICE · YOUR BUILD'],mentor:['師傅 · 系統參考','MENTOR · REFERENCE'],conceptModel:['原創概念模型，非施工或製造 CAD','Original concept model; not manufacturing CAD'],place:['放入這道工序','Place this process'],placed:['工序已放入','Process placed'],assist:['組合輔助','Assembly assist'],assemblyHint:['拖曳或點擊「放入」完成概念組合，再回答驗收題以解鎖下一步。','Drag or click Place to assemble the concept, then pass the check to unlock the next step.'],goal:['本工序目標','Your objective'],knowledge:['往下一層探索','Explore one level deeper'],check:['總工程師驗收','Chief engineer check'],complete:['驗收完成，下一步','Complete & continue'],done:['已完成此工序','Step complete'],correct:['正確。','Correct.'],incorrect:['再想想：','Try again:'],gate:['先完成組合與知識驗收，才能前進。','Assemble the process and pass the check to continue.'],notes:['工程筆記','Engineering notebook'],noteHint:['記錄假設、疑問、驗證方法與決策理由…','Record assumptions, questions, validation methods and decisions…'],saveNote:['保存筆記','Save notes'],tutor:['師傅工作室','Mentor’s desk'],tutorLocal:['課程知識模式','COURSE KNOWLEDGE'],tutorAI:['生成式 AI','GENERATIVE AI'],tutorIntro:['試著問：這道工序為何重要？先從本課程的知識點找答案。','Try asking why this process matters. Start with the knowledge in this lesson.'],askPlaceholder:['請師傅解釋這道工序…','Ask your mentor about this step…'],ask:['提問','Ask'],why:['為何重要？','Why does it matter?'],verify:['怎麼驗收？','How do I verify it?'],principle:['說明原理','Explain the principles'],listen:['朗讀工序','Read aloud'],saved:['已保存','Saved'],localSaved:['已存於此裝置','Saved on this device'],syncError:['雲端未同步；此裝置已有備份','Cloud sync failed; device backup saved'],saving:['保存中…','Saving…'],progressDesc:['每個帳號、每項工程，分別保存。訪客進度只保留於目前瀏覽器。','Progress is separate for every account and project. Guest progress stays in this browser.'],export:['匯出進度','Export progress'],import:['匯入進度','Import progress'],emptyProgress:['第一個工程，從今天開始。','Your first project starts today.'],emptyProgressDesc:['選一門課程，放入第一道工序，就會出現在這裡。','Choose a course and place the first process to begin.'],continue:['繼續工程','Continue building'],atlasTitle:['工程，發生在真實世界。','Engineering in the real world.'],atlasDesc:['選擇工程據點，透過 Google 地圖理解地理環境。介面語言依瀏覽器偏好，不以 GPS 推測您的語言。','Explore engineering locations with Google Maps. Language follows browser preferences, not GPS assumptions.'],locate:['查看我的位置','Use my location'],loadMap:['載入 Google 地圖','Load Google Maps'],mapPrivacy:['點擊後會連線 Google；定位只在您主動同意後取得，不保存至帳號。','Loading connects to Google. Location is requested only with permission and is not saved to your account.'],sourcesTitle:['讓每一份知識，都有來處。','Knowledge with provenance.'],sourcesDesc:['官方技術資料、延伸閱讀，以及真實照片的作者與授權。概念圖與專案識別插畫由本網站原創繪製。','Official technical references, further reading and credits for real photographs. Concept diagrams and project identity illustrations are original.'],official:['官方資料與延伸閱讀','Official references'],photos:['照片與授權','Photography & licenses'],contentStatus:['內容完成度','Content coverage'],sourceScope:['來源支援範圍','Source scope'],projectBrief:['工程任務簡報','Project briefing'],begin:['開始實景探索','Explore the engineering scene'],bookmark:['加入我的研究','Add to my research'],roadmapNote:['此項為研究路線圖，尚未編寫專屬逐步課程。可先保存筆記並查閱領域來源。','This is a research roadmap. A dedicated step-by-step course has not been authored yet. Save notes and explore the domain sources.'],scope:['課程範圍','Scope'],layers:['專案 → 階段 → 工序 → 知識點','Project → Stage → Step → Knowledge'],login:['登入 / 建立帳號','Sign in / Create account'],signInChatGPT:['使用 ChatGPT 登入','Sign in with ChatGPT'],accountHint:['登入後以帳號保存，跨裝置可接續；訪客模式只存在目前瀏覽器。','Sign in to save across devices. Guest mode stores progress only in this browser.'],logout:['登出','Sign out'],email:['電子郵件','Email'],password:['密碼（至少 12 字元）','Password (12+ characters)'],name:['顯示名稱','Display name'],register:['建立帳號','Create account'],signIn:['登入','Sign in'],close:['關閉','Close'],readSources:['查閱課程來源','Course sources'],researchNote:['研究筆記','Research notes'],saveResearch:['保存研究筆記','Save research notes'],showAll:['全部工序','All processes'],finished:['課程已完成！可再次複習每道工序。','Course complete! Review any step whenever you like.'],translateTitle:['更多語言','More languages'],translateInfo:['繁體中文與英文為完整核心內容。其他語言透過已設定的 AI 服務翻譯目前頁面正文，屬暫時機器翻譯；導覽與表單維持核心語言，換頁後需重新翻譯。未設定服務時不啟用。','Traditional Chinese and English are the complete core languages. Other languages use the configured AI service for temporary translation of the current page content; navigation and forms retain the core language. Translate again after changing pages. Translations are unreviewed; a configured service is required.'],translateGo:['翻譯目前頁面','Translate this page'],translated:['機器翻譯，技術內容請核對原文。','Machine translation. Verify technical details against the original.'],aiUnavailable:['生成式 AI 尚未連接。以下整理本工序教材，並非生成式回答。','Generative AI is not connected. The following comes from this lesson, not a generated answer.'],noAI:['AI 服務不可用，已顯示課程內容。','AI service unavailable; showing course content.'],guideTitle:['像練太極，一道工序一道工序。','One process at a time.'],guideText:['1. 在探索工程選擇「逐步課程」。\n2. 先閱讀工程任務與來源，再進入工作台。\n3. 左側是你的概念組合，右側是師傅的完整參考。\n4. 點擊放入工序，展開知識點，完成驗收題。\n5. 驗收完成後解鎖下一步，進度自動保存。\n6. 工程筆記、JSON 匯出與匯入可保留學習紀錄。','1. Choose a guided course in Explore engineering.\n2. Read the brief and sources before entering the workshop.\n3. Your concept assembly is on the left; the mentor reference is on the right.\n4. Place a process, explore the knowledge and pass the check.\n5. Complete the step to unlock the next. Progress is saved automatically.\n6. Keep a notebook and export or import your progress as JSON.'],assemblySuccess:['已放入；接著閱讀並完成驗收題。','Placed. Read the knowledge and pass the check.'],assistMsg:['已高亮本步對應的系統層。點擊放入即可跟做。','The relevant system layer is highlighted. Click Place to follow.'],modelSource:['原創教學示意','ORIGINAL SCHEMATIC'],topicsCount:['題目','topics'],courseSources:['課程公開來源','Public course sources'],researchOverview:['研究方向','Research outline']
 };
-let lang=localStorage.getItem('mg-language')||'auto';
+let lang=readLanguagePreference({search:globalThis.location?.search||'',storage:localStorage});
 const resolved=()=>resolveSupportedLanguage(lang,navigator,languageChoices);
 const isZh=()=>resolved()==='zh-TW';
 const t=k=>messages[k]?.[isZh()?0:1]||k;
@@ -10124,10 +10303,10 @@ function legacyStorageKey(){return `mg-legacy-progress-v2-${user?.id||'guest'}`}
 function migrateCourseProgress(c){const p=projects[c.id];if(!p)return;const valid=new Set(allSteps(c).map(s=>s.id)),invalid=[...p.completed,...p.assembly].filter(id=>!valid.has(id));if(!invalid.length){try{const archive=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}');if(archive[c.id]?.length)migrationNotices[c.id]='saved'}catch{}return}try{const archive=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}');archive[c.id]||=[];const signature=JSON.stringify([p.completed,p.assembly]);if(!archive[c.id].some(v=>v.signature===signature))archive[c.id].push({savedAt:new Date().toISOString(),signature,reason:'Curriculum IDs changed; no guessed mapping.',progress:JSON.parse(JSON.stringify(p))});localStorage.setItem(legacyStorageKey(),JSON.stringify(archive));p.completed=p.completed.filter(id=>valid.has(id));p.assembly=p.assembly.filter(id=>valid.has(id));migrationNotices[c.id]='saved';save(c.id)}catch{migrationNotices[c.id]='failed'}}
 function exportLegacyProgress(){let data={};try{data=JSON.parse(localStorage.getItem(legacyStorageKey())||'{}')}catch{}download('MacGyver_legacy_progress.json',{version:1,legacy:data,current:projects})}
 function syncLanguageSelect(){const select=$('#language');if(!select)return;select.setAttribute('data-no-translate','');if(!select.dataset.expanded){select.innerHTML=[['auto','◎ Auto'],...languageChoices].map(([key,name])=>`<option value="${key}">${name}</option>`).join('');select.dataset.expanded='true'}select.value=lang;select.setAttribute('aria-label',t('language'));$('#translateButton')?.setAttribute('title',t('translateTitle'));$('#closeDialog')?.setAttribute('aria-label',t('close'));$('#menu')?.setAttribute('aria-label',t('curriculum'));$('.skip')?.setAttribute('aria-label',isZh()?'跳至內容':'Skip to content')}
-function setPreferredLanguage(value){captureNotes();const statusKey=saveStatusMessageKey();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';if(statusKey)saveState=t(statusKey);localStorage.setItem('mg-language',lang);const chosen=resolved();if(chosen!=='en'&&chosen!=='zh-TW'){onDeviceTranslator(chosen,{userActivated:true});loadDictionary(chosen).then(()=>applyLanguage())}render()}
-function updateTranslationStatus(status){translationState=status;const indicator=$('#translationStatus');if(!indicator)return;const core=['en','zh-TW'].includes(resolved());indicator.hidden=core;if(core)return;const state=status.state;const label=['translating'].includes(state)?t('translationWorking'):['translated','cached'].includes(state)?t('translationReady'):state==='unavailable'?t('translationUnavailable'):state==='dictionary'?t('translationDictionary'):t('translationPartial');const target=indicator.querySelector?.('[data-translation-label]');if(target){target.replaceChildren();const code=document.createElement('span');code.setAttribute('data-no-translate','');code.textContent=`${resolved()} · `;const text=document.createElement('span');let localized=label;try{const dict=loadedDictionary(resolved());localized=(dict&&lookupDictionary(dict,label))||label}catch{}text.textContent=localized;target.append(code,text);if(status.total&&state!=='dictionary'){const count=document.createElement('span');count.setAttribute('data-no-translate','');count.textContent=` (${status.translated||0}/${status.total})`;target.append(count)}}indicator.classList?.toggle('is-info',state==='dictionary');const retry=indicator.querySelector?.('button');if(retry)retry.hidden=state==='dictionary'}
+function setPreferredLanguage(value){captureNotes();const statusKey=saveStatusMessageKey();lang=value==='auto'||languageChoices.some(([id])=>id===value)?value:'auto';if(statusKey)saveState=t(statusKey);try{localStorage.setItem('mg-language',lang)}catch{}try{const url=new URL(location.href);if(url.searchParams.has('lang')){url.searchParams.delete('lang');history.replaceState(history.state,'',url)}}catch{}const chosen=resolved();if(chosen!=='en'&&chosen!=='zh-TW'){onDeviceTranslator(chosen,{userActivated:true});loadDictionary(chosen).then(()=>applyLanguage())}render()}
+function updateTranslationStatus(status){translationState=status;const indicator=$('#translationStatus');if(!indicator)return;const core=['en','zh-TW'].includes(resolved());indicator.hidden=core;if(core)return;const state=status.state;const label=['translating'].includes(state)?t('translationWorking'):['translated','cached'].includes(state)?t('translationReady'):state==='unavailable'?t('translationUnavailable'):state==='dictionary'?t('translationDictionary'):t('translationPartial');const target=indicator.querySelector?.('[data-translation-label]');if(target){target.replaceChildren();const code=document.createElement('span');code.setAttribute('data-no-translate','');code.textContent=`${resolved()} · `;const text=document.createElement('span');let localized=label;try{const dict=loadedDictionary(resolved());localized=(dict&&lookupDictionary(dict,label))||label}catch{}text.textContent=localized;target.append(code,text);if(status.total&&state!=='dictionary'){const count=document.createElement('span');count.setAttribute('data-no-translate','');count.textContent=` (${status.translated||0}/${status.total}${Number.isFinite(status.coveragePercent)?' · '+status.coveragePercent+'%':''})`;target.append(count)}}indicator.classList?.toggle('is-info',state==='dictionary');const retry=indicator.querySelector?.('button');if(retry)retry.hidden=state==='dictionary'}
 const publicTranslationPage=()=>!user&&['home','catalog','project','scene','workshop','sources','learning-map'].includes(currentPage);
-function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>{if(publicTranslationPage()&&cloudTranslationConfigured()&&!cloudTranslationAllowed()){const message=isZh()?'將本頁可見的公開教材文字傳給已設定的 Cloudflare 與 AI 供應商，以翻譯至你的語言？本次瀏覽分頁有效。':'Send visible public learning text to the configured Cloudflare and AI services for translation in this tab?';if(!window.confirm(message))return;allowCloudTranslation()}applyLanguage()}}{let label=t('retry');try{const dict=loadedDictionary(resolved());label=(dict&&lookupDictionary(dict,label))||label}catch{}$('#retryTranslation').textContent=publicTranslationPage()&&cloudTranslationConfigured()&&!cloudTranslationAllowed()?(isZh()?'開啟雲端翻譯':'Enable cloud translation'):label;}if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),getTranslationAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),translateBatch:value=>tutorPanel?.translationReady?.()?tutorPanel.translate(value):null,getCloudAllowed:publicTranslationPage,onStatus:updateTranslationStatus,onDictionary:language=>{if(language===resolved())applyLanguage()}});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return localeController.apply(publicTranslationPage()&&cloudTranslationAllowed()?$('#main'):document.body)}
+function applyLanguage(){if(!document.body)return;if(!$('#translationStatus')){const box=document.createElement('div');box.id='translationStatus';box.className='translation-status';box.setAttribute('data-no-translate','');box.setAttribute('role','status');box.innerHTML='<span data-translation-label></span><button id="retryTranslation" type="button"></button>';$('#main').before(box);$('#retryTranslation').onclick=()=>{if(publicTranslationPage()&&cloudTranslationConfigured()&&!cloudTranslationAllowed()){const message=isZh()?'將本頁可見的公開教材文字傳給已設定的 Cloudflare 與 AI 供應商，以翻譯至你的語言？本次瀏覽分頁有效。':'Send visible public learning text to the configured Cloudflare and AI services for translation in this tab?';if(!window.confirm(message))return;allowCloudTranslation()}applyLanguage()}}{let label=t('retry');try{const dict=loadedDictionary(resolved());label=(dict&&lookupDictionary(dict,label))||label}catch{}$('#retryTranslation').textContent=publicTranslationPage()&&cloudTranslationConfigured()&&!cloudTranslationAllowed()?(isZh()?'開啟雲端翻譯':'Enable cloud translation'):label;}if(!localeController)localeController=createLocaleController({getLanguage:resolved,getAIAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),getTranslationAvailable:()=>translationAvailable||!!tutorPanel?.translationReady?.(),translateBatch:value=>tutorPanel?.translationReady?.()?tutorPanel.translate(value):null,getCloudAllowed:publicTranslationPage,onStatus:updateTranslationStatus,onDictionary:language=>{if(language===resolved())applyLanguage()}});document.documentElement.dir=languageDirection(resolved());document.documentElement.lang=resolved();return Promise.resolve().then(()=>localeController.apply(publicTranslationPage()&&cloudTranslationAllowed()?[$('#main'),$('#sidebar')]:document.body))}
 
 function bind(){if(currentPage==='scene')bindScene();if(currentPage==='learning-map')learningMapController=mountLearningMap($('#main'),{catalog,featured,language:resolved(),onRendered:()=>applyLanguage()});if(currentPage==='catalog'){$$('[data-environment-path]').forEach(b=>b.onclick=()=>{subdiscipline=b.dataset.environmentPath;pageIndex=0;render();focusSection('#explorerCatalog')});const search=$('#search');search.oninput=()=>{query=search.value;pageIndex=0;const pos=search.selectionStart;render();$('#search').focus();$('#search').setSelectionRange(pos,pos)};$('#categoryFilter').onchange=e=>{filter=e.target.value;subdiscipline='';pageIndex=0;render()};$('#catalogSubdiscipline').onchange=e=>{subdiscipline=e.target.value;pageIndex=0;render()};$('#maturity').onchange=e=>{maturity=e.target.value;pageIndex=0;render()};$$('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;subdiscipline='';pageIndex=0;render()});$('#prevPage').onclick=()=>{pageIndex--;render();focusSection('#explorerCatalog')};$('#nextPage').onclick=()=>{pageIndex++;render();focusSection('#explorerCatalog')};$('#catalogView').onchange=e=>{catalogView=e.target.value==='cards'?'cards':'list';render()};$('#catalogPageForm').onsubmit=e=>{e.preventDefault();const page=Number($('#catalogPage').value),pages=Math.max(1,Math.ceil(filteredCatalog().length/24));if(!Number.isInteger(page)||page<1||page>pages)return;pageIndex=page-1;render();focusSection('#search')}}
 if(currentPage==='project'){const b=$('#beginCourse');if(b)b.onclick=async()=>{activeId=b.dataset.id;const enteringId=activeId,enteringOwner=accountGeneration,enteringRoute=location.hash;await hydrateServerLearning(course());if(activeId!==enteringId||accountGeneration!==enteringOwner||location.hash!==enteringRoute)return;activeStep=unlocked(course());navStage=-1;navQuery='';localStorage.setItem('mg-active',activeId);location.hash='scene/'+activeId};const s=$('#saveResearch');if(s){s.onclick=async()=>{record(s.dataset.id).notes=$('#researchNotes').value;await save(s.dataset.id);toast(saveState)};$('#researchNotes').dataset.owner=user?.id||'guest';$('#researchNotes').dataset.savedValue=$('#researchNotes').value;$('#researchNotes').oninput=()=>captureNotes(false);$('#researchNotes').onchange=()=>save(s.dataset.id)}const project=catalog.find(c=>c.id===shownProjectId);if(project&&!project.stages)bindResearchPlan(document.querySelector('[data-research-plan]'),project,{en:!isZh(),profileId:user?.id||'guest'})}
@@ -10167,7 +10346,7 @@ function translationModal(){
 }
 
 $('#preferencesButton').onclick=()=>personalization.open();
-$('.skip').onclick=e=>{e.preventDefault();$('#main').focus();$('#main').scrollIntoView()};$('#closeDialog').onclick=closeModal;$('#dialog').addEventListener('click',e=>{if(e.target===$('#dialog'))closeModal()});$('#account').onclick=accountModal;$('#mentorButton').onclick=()=>openTutor();$('#translateButton').onclick=translationModal;$('#menu').onclick=()=>$('#sidebar').classList.toggle('open');$('#guideButton').onclick=()=>modal(t('guideTitle'),`<p style="white-space:pre-line">${t('guideText')}</p><div class="notice">${t('conceptModel')}</div><p>${t('translateInfo')}</p><p><a class="button light" href="help.html" target="_blank" rel="noopener noreferrer">${isZh()?'會員、資訊資安、AI 與付款設定指南':'Membership, computing/security, AI and payment setup guide'} ↗</a></p>`);$('#language').onchange=e=>setPreferredLanguage(e.target.value);window.addEventListener('hashchange',()=>{captureNotes();$('#sidebar').classList.remove('open');render();window.scrollTo(0,0)});window.addEventListener('pagehide',()=>{stopMotion();stopDemonstration();captureNotes()});document.addEventListener('keydown',handleWorkshopKey,true);document.addEventListener('keyup',handleWorkshopKey,true);document.addEventListener('focusin',handleWorkshopFocus);window.addEventListener('blur',()=>{if(v18StageAssist)stopV18StageAssist(isZh()?'已切離此頁，階段輔助已停止；已完成步驟保留。回來後可按「帶我完成本階段」繼續。':'Stage guidance stopped when this page lost focus. Completed steps are saved. Choose Guide this stage to continue.');deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()});document.addEventListener('visibilitychange',()=>{if(document.hidden){if(v18StageAssist)stopV18StageAssist(isZh()?'已切離此頁，階段輔助已停止；已完成步驟保留。回來後可按「帶我完成本階段」繼續。':'Stage guidance stopped when this page lost focus. Completed steps are saved. Choose Guide this stage to continue.');deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()}});document.addEventListener('toggle',e=>{if(e.target?.tagName==='DETAILS'&&e.target.open)applyLanguage()},true);window.addEventListener('storage',handleDeviceProgressStorage);window.addEventListener('beforeunload',flushDeviceProgressOnUnload);
+$('.skip').onclick=e=>{e.preventDefault();$('#main').focus();$('#main').scrollIntoView()};$('#closeDialog').onclick=closeModal;$('#dialog').addEventListener('click',e=>{if(e.target===$('#dialog'))closeModal()});$('#account').onclick=accountModal;$('#mentorButton').onclick=()=>openTutor();$('#translateButton').onclick=translationModal;$('#menu').onclick=()=>{const opened=$('#sidebar').classList.toggle('open');if(opened)applyLanguage()};$('#guideButton').onclick=()=>modal(t('guideTitle'),`<p style="white-space:pre-line">${t('guideText')}</p><div class="notice">${t('conceptModel')}</div><p>${t('translateInfo')}</p><p><a class="button light" href="help.html" target="_blank" rel="noopener noreferrer">${isZh()?'會員、資訊資安、AI 與付款設定指南':'Membership, computing/security, AI and payment setup guide'} ↗</a></p>`);$('#language').onchange=e=>setPreferredLanguage(e.target.value);window.addEventListener('hashchange',()=>{captureNotes();$('#sidebar').classList.remove('open');render();window.scrollTo(0,0)});window.addEventListener('pagehide',()=>{stopMotion();stopDemonstration();captureNotes()});document.addEventListener('keydown',handleWorkshopKey,true);document.addEventListener('keyup',handleWorkshopKey,true);document.addEventListener('focusin',handleWorkshopFocus);window.addEventListener('blur',()=>{if(v18StageAssist)stopV18StageAssist(isZh()?'已切離此頁，階段輔助已停止；已完成步驟保留。回來後可按「帶我完成本階段」繼續。':'Stage guidance stopped when this page lost focus. Completed steps are saved. Choose Guide this stage to continue.');deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()});document.addEventListener('visibilitychange',()=>{if(document.hidden){if(v18StageAssist)stopV18StageAssist(isZh()?'已切離此頁，階段輔助已停止；已完成步驟保留。回來後可按「帶我完成本階段」繼續。':'Stage guidance stopped when this page lost focus. Completed steps are saved. Choose Guide this stage to continue.');deactivateWorkshopKeyboard();mentorDemo?.pause();assistanceDemo?.pause()}});document.addEventListener('toggle',e=>{if(e.target?.tagName==='DETAILS'&&e.target.open)applyLanguage()},true);window.addEventListener('storage',handleDeviceProgressStorage);window.addEventListener('beforeunload',flushDeviceProgressOnUnload);
 function prepareAccount(){
   accountReady=false;
   accountReadyPromise=(async()=>{

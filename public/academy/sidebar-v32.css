@@ -1,0 +1,15 @@
+/* Final navigation layer. Collections are discoverable without filling the rail. */
+.sidebar{padding:24px 15px 14px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;gap:0}
+.sidebar .brand{padding:0 10px;font-size:22px;flex-shrink:0}.sidebar .side-label{display:none}
+.sidebar .nav-v32{display:flex;flex-direction:column;gap:18px;margin-top:27px;flex-shrink:0}
+.nav-v32-group{display:grid;gap:3px}.nav-v32-label{font:600 10px/1.4 var(--mono);letter-spacing:.13em;color:var(--muted);padding:0 12px;margin:0 0 7px}
+.sidebar .nav-v32 a{min-height:44px;padding:10px 12px;gap:11px;border:0;margin:0;border-radius:8px;line-height:1.5;font-size:12px;background:transparent}
+.sidebar .nav-v32 a b{font-weight:550;font-size:12px}.sidebar .nav-v32 a span{font-size:19px;flex:0 0 20px}.sidebar .nav-v32 a small{font-size:9px}
+.sidebar .nav-v32 a:hover{background:var(--soft)}.sidebar .nav-v32 a.active{background:var(--green);color:#fff}
+.sidebar .nav-v32 .nav-v32-ready{background:var(--soft);font-weight:650}.sidebar .nav-v32 .nav-v32-ready.active{background:var(--green)}
+.nav-v32-fold{border-top:1px solid var(--line);padding-top:10px}.nav-v32-fold summary{cursor:pointer;min-height:44px;padding:10px 12px;color:var(--muted);font-size:12px;font-weight:650}
+.sidebar .nav-v32-fold a{padding-inline-start:20px;font-size:11px}.sidebar .nav-v32-fold a b{font-size:11px}.sidebar .nav-v32-fold a small{display:none}
+.sidebar .side-note{margin-top:22px;padding:18px 12px 12px;border-top:1px solid var(--line)}.sidebar .side-note .eyebrow,.sidebar .side-note p,.sidebar .side-note .mini-line{display:none}.sidebar .side-note h3{font-size:12px;margin:0 0 5px}.sidebar .side-help{padding:12px;min-height:44px;flex-shrink:0}
+.nav-v32-close,.nav-v32-shade{display:none}
+@media(max-width:700px){.sidebar{padding-top:24px;width:min(300px,85vw);max-width:85vw;z-index:51}.sidebar .brand{padding-inline-end:28px}.nav-v32-close{display:block;position:absolute;inset-inline-end:8px;top:13px;width:44px;height:44px;font-size:26px;border-radius:8px}.sidebar.open~.nav-v32-shade{display:block;position:fixed;inset:0;border:0;padding:0;background:#09251f88;z-index:50;backdrop-filter:blur(2px)}.sidebar .nav-v32{margin-top:22px}.sidebar .side-note{margin-top:18px}.sidebar .nav-v32 a{font-size:14px}.sidebar .nav-v32 a b{font-size:13px}.sidebar .nav-v32-fold a b{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.sidebar,.nav-v32 a{transition:none!important}}

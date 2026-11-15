@@ -184,6 +184,22 @@ function resolveSupportedLanguage(preference = 'auto', browser, choices = SUPPOR
   return exact('en') || codes[0];
 }
 
+/** A shared URL language is temporary. Invalid explicit values mean Auto,
+ * while an absent URL choice preserves the saved preference. Never writes storage. */
+function readLanguagePreference({ search = '', storage = globalThis.localStorage, choices = SUPPORTED } = {}) {
+  const codes = Array.from(choices || SUPPORTED, item => typeof item === 'string' ? item : Array.isArray(item) ? item[0] : item?.value || item?.code || item?.id).filter(Boolean);
+  const normalize = value => {
+    const candidate = tag(value);
+    if (!candidate || candidate === 'auto') return 'auto';
+    if (!/^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(candidate) ||
+        !codes.some(code => tag(code).split('-')[0] === candidate.split('-')[0])) return 'auto';
+    return resolveSupportedLanguage(candidate, {}, codes);
+  };
+  const params = new URLSearchParams(search);
+  if (params.has('lang')) return normalize(params.get('lang'));
+  try { return normalize(storage?.getItem('mg-language')); } catch { return 'auto'; }
+}
+
 function languageDirection(language) {
   const bits = tag(language).toLowerCase().split('-');
   if (bits.includes('latn')) return 'ltr';
@@ -219,10 +235,21 @@ function hiddenOrExcluded(element, attributes = false) {
   // Textareas contain private notes. Their prompts can still be translated.
   let selector = NEVER_TRANSLATE;
   if (attributes) selector = selector.replace(',textarea', '').replace(',#notes', '').replace(',#researchNotes', '').replace(',#question', '');
-  if (element.closest(selector) || element.closest('[hidden],dialog:not([open])')) return true;
+  if (element.closest(selector) || element.closest('[hidden],[aria-hidden="true"],dialog:not([open])')) return true;
   for (let details = element.closest('details:not([open])'); details; details = details.parentElement?.closest('details:not([open])')) {
     const summary = [...details.children].find(child => child.localName === 'summary');
     if (!summary || !summary.contains(element)) return true;
+  }
+  // CSS-collapsed panels are not part of current-page coverage. Content lower
+  // down the scrollable page still is; viewport clipping is deliberately ignored.
+  const view = element.ownerDocument?.defaultView;
+  if (view?.getComputedStyle) {
+    for (let parent = element; parent; parent = parent.parentElement) {
+      const style = view.getComputedStyle(parent);
+      if (style.display === 'none' || style.contentVisibility === 'hidden') return true;
+    }
+    const style = view.getComputedStyle(element);
+    if (style.visibility === 'hidden' || style.visibility === 'collapse') return true;
   }
   return false;
 }
@@ -404,30 +431,49 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
     const token = generation;
     const language = resolveSupportedLanguage(getLanguage(), {});
     const core = language === 'en' || language === 'zh-TW';
-    const descriptors = root ? collect(root) : [];
+    const roots = (Array.isArray(root) ? root : [root]).filter(Boolean);
+    const seenNodes = new WeakMap();
+    const descriptors = roots.flatMap(item => collect(item)).filter(descriptor => {
+      let attributes = seenNodes.get(descriptor.node);
+      if (!attributes) seenNodes.set(descriptor.node, attributes = new Set());
+      const key = descriptor.attribute || '#text';
+      if (attributes.has(key)) return false;
+      attributes.add(key); return true;
+    });
     const texts = [...new Set(descriptors.flatMap(descriptor => descriptor.parts.filter(part => part.translate).map(part => part.text)))];
     const translations = new Map();
     if (!core) for (const source of texts) {
       const value = get(keyFor(language, source));
       if (typeof value === 'string' && value.trim() && value.length <= 12000) translations.set(source, value);
     }
+    const cacheTranslated = translations.size;
     let dictionary = null;
     if (!core) {
       // Never block on the dictionary: use it when loaded, otherwise load it in
       // the background and re-apply once it arrives.
       dictionary = loadedDictionary(language);
       if (!dictionary) loadDictionary(language).then(loaded => { if (loaded) try { onDictionary(language); } catch {} });
+      const renderedDictionaryValues = dictionary ? new Set(Object.values(dictionary.strings || dictionary).filter(value => typeof value === 'string')) : null;
       if (dictionary) for (const source of texts) {
         if (translations.has(source)) continue;
-        const value = lookupDictionary(dictionary, source);
+        // Components may already render t(key) in the selected UI language.
+        // Do not send that target-language text back to an English-source translator.
+        const value = renderedDictionaryValues.has(source) ? source : lookupDictionary(dictionary, source);
         if (typeof value === 'string' && value.trim() && value.length <= 12000) translations.set(source, value);
       }
     }
     const cached = translations.size;
+    const dictionaryTranslated = cached - cacheTranslated;
+    const sourceCharacters = texts.reduce((sum, value) => sum + value.length, 0);
     let failed = 0;
     const cancelled = () => token !== generation;
     const report = (state, error) => {
-      const status = { state, language, total: texts.length, translated: core ? texts.length : translations.size, pending: core ? 0 : texts.length - translations.size, cached, failed, ...(error ? { error } : {}) };
+      const translatedCharacters = core ? sourceCharacters : [...translations.keys()].reduce((sum, value) => sum + value.length, 0);
+      const status = { state, language, total: texts.length, translated: core ? texts.length : translations.size, pending: core ? 0 : texts.length - translations.size, cached, failed,
+        scope: 'visible-public-unique-fragments', sourceCharacters, translatedCharacters,
+        coveragePercent: sourceCharacters ? Math.floor(translatedCharacters / sourceCharacters * 10000) / 100 : null,
+        dictionaryTranslated, cacheTranslated, machineTranslated: core ? 0 : translations.size - cached,
+        ...(error ? { error } : {}) };
       if (!cancelled()) {
         latestStatus = status;
         try { onStatus({ ...status }); } catch { /* A status widget must not interrupt translation. */ }
@@ -484,6 +530,10 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
     report('translating');
     let cursor = 0;
     while (cursor < missing.length && !cancelled()) {
+      if (!getTranslationAvailable() && !cloudAllowed()) {
+        failed = texts.length - translations.size;
+        return report(translations.size ? 'partial' : 'unavailable', 'Translation permission or service is no longer available. Original text remains visible.');
+      }
       const batch = [];
       let size = 0;
       while (cursor < missing.length && batch.length < MAX_BATCH_SIZE && size + missing[cursor].length <= MAX_BATCH_CHARS) {
@@ -498,10 +548,13 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
         requests++;
         let result;
         if(typeof translateBatch==='function')result=await translateBatch({language,texts:batch,signal:controller.signal});
+        if (cancelled()) return { ...latestStatus, state: 'cancelled' };
         if(result==null && cloudAllowed())result=await translatePublicText({language,texts:batch,signal:controller.signal});
+        if (cancelled()) return { ...latestStatus, state: 'cancelled' };
         // The app's optional local-model adapter returns null when no model is
         // loaded. A configured server translator must still remain reachable.
         if(result==null) {
+          if (!getTranslationAvailable()) throw Error('Translation service is no longer available. Original text remains visible.');
           const response = await fetch('/api/translate', {
             method: 'POST', credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -569,7 +622,7 @@ function createLocaleController({ getLanguage = () => 'en', getAIAvailable = () 
   };
 }
 
-return {SUPPORTED_LANGUAGES,supportedLanguages,BUNDLED_UI_LANGUAGES,resolveSupportedLanguage,languageDirection,loadDictionary,loadedDictionary,lookupDictionary,onDeviceTranslator,publicTextSnapshot,createLocaleController};
+return {SUPPORTED_LANGUAGES,supportedLanguages,BUNDLED_UI_LANGUAGES,resolveSupportedLanguage,readLanguagePreference,languageDirection,loadDictionary,loadedDictionary,lookupDictionary,onDeviceTranslator,publicTextSnapshot,createLocaleController};
 })();
 modules["panorama-cpu-v18.js"]=(function(){
 /* CPU spherical projection for verified 2:1 panoramas. No synthesized views.

@@ -17,8 +17,11 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 command -v python3 >/dev/null || { echo '需要 Python 3.10 或更新版本。' >&2; exit 1; }
+command -v node >/dev/null || { echo '需要 Node.js 22 或更新版本。' >&2; exit 1; }
+node -e 'if (Number(process.versions.node.split(".")[0]) < 22) { console.error("需要 Node.js 22 或更新版本。"); process.exit(1); }'
 if [[ ! -f "$TASK_ROOT/public/academy/preview-manifest.json" ]]; then
   bash "$TASK_ROOT/build-offline.sh" --if-needed
 fi
 python3 "$TASK_ROOT/tools/export-preview-v21.py" --out "$OUTPUT_DIR" --http-only
+python3 "$TASK_ROOT/tools/deployment-marker-v32.py" "$OUTPUT_DIR"
 exec python3 "$TASK_ROOT/tools/check-pages-artifact-v28.py" "$OUTPUT_DIR"

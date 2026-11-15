@@ -37,7 +37,10 @@
       (supported.some(code=>code.split('-')[0]===value.split(/[-_]/)[0].toLowerCase())||['iw','in','tl','nb','nn'].includes(value.split(/[-_]/)[0].toLowerCase())));
     const resolve=value=>U.resolveSupportedLanguage?.(value,root.navigator,supported)||'en';
     const normalize=value=>valid(value)?value==='auto'?'auto':resolve(value):'auto';
-    let preference=normalize(valid(urlPreference)?urlPreference:read()),language=resolve(preference),lastRoot=null,hosted=false,latest=null,controller=null,disposed=false,voiceEpoch=0,speaking=false;
+    // Query language is the explicit share override; a previous hash filter or
+    // saved preference must not silently win, including an empty/invalid query.
+    const queryPreference=()=>{try{const params=new URLSearchParams(root.location?.search||'');return params.has('lang')?params.get('lang'):null;}catch{return null;}};
+    let preference=normalize(queryPreference()??urlPreference??read()),language=resolve(preference),lastRoot=null,hosted=false,latest=null,controller=null,disposed=false,voiceEpoch=0,speaking=false;
     status.setAttribute('data-no-translate','');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
     select.replaceChildren();
     for(const code of ['auto',...supported]){
@@ -70,7 +73,8 @@
         `完整繁體中文與英文原創內容；可選 ${supported.length} 個語系。其他語系需要裝置或已設定的翻譯服務，並逐段顯示涵蓋率。`,
         `Complete authored Traditional Chinese and English; ${supported.length} language targets. Other targets require device or configured translation; coverage is reported per visible section.`);
       else{
-        const count=total?`${done} / ${total} public text fragments translated. `:'';
+        const coverage=Number.isFinite(latest.coveragePercent)?` (${latest.coveragePercent}% of source characters)`:'';
+        const count=total?`${done} / ${total} distinct public text fragments translated${coverage}. `:'';
         const prefix=label(language)+' · '+count;
         if(latest.state==='translating')status.textContent=prefix+'Translating visible lesson content…';
         else if(total>0&&pending===0&&['translated','cached'].includes(latest.state))status.textContent=prefix+'Machine translation. Formulas and source references remain unchanged; verify technical meaning against English or Chinese.';
@@ -90,7 +94,10 @@
     controller=U.createLocaleController?.({getLanguage:()=>language,getTranslationAvailable:()=>hosted,getCloudAllowed:()=>true,onStatus:describe,onDictionary:loaded=>{if(loaded===language&&lastRoot&&!disposed)void apply(lastRoot);}});
     function change(value,{save=false,notify=true}={}){
       stop();preference=normalize(value);language=resolve(preference);controller?.invalidate();select.value=preference;
-      if(save)try{root.localStorage.setItem('mg-language',preference);}catch{}
+      if(save){
+        try{root.localStorage.setItem('mg-language',preference);}catch{}
+        try{const url=new URL(root.location.href);if(url.searchParams.has('lang')){url.searchParams.delete('lang');root.history.replaceState(root.history.state,'',url);}}catch{}
+      }
       if(notify)onChange({language,preference});
     }
     function narrate(node=lastRoot){
@@ -137,7 +144,7 @@
     }
     controls();
     return Object.freeze({get language(){return language;},get preference(){return preference;},get status(){return latest;},apply,narrate,stop,
-      invalidate:()=>controller?.invalidate(),readUrl:value=>{if(valid(value))change(value,{notify:false});},
+      invalidate:()=>controller?.invalidate(),readUrl:value=>{const choice=queryPreference()??value;if(choice!==null&&choice!==undefined)change(choice,{notify:false});},
       exportCache:()=>controller?.exportCache(language),importCache:pack=>controller?.importCache(pack),
       dispose:()=>{stop();disposed=true;controller?.invalidate();handlers.forEach(remove=>remove());tools?.remove?.();}
     });

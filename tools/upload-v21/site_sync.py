@@ -60,7 +60,7 @@ def public_snapshot(source, excluded=()):
     # Deployment is deliberately independent of the full course compiler.
     required = ['index.html', 'deploy-static.sh', '.github/workflows/pages.yml', 'Update_MacGyver_v29.sh',
                 '.github/workflows/weekly-markets.yml', 'tools/markets-v12/update_markets.py',
-                'tools/check-pages-artifact-v28.py', 'tools/pages-doctor-v28.py', 'tools/read-json-array.mjs',
+                'tools/check-pages-artifact-v28.py', 'tools/deployment-marker-v32.py', 'tools/count-learning-tracks-v32.mjs', 'tools/verify-live-v32.py', 'tools/pages-doctor-v28.py', 'tools/read-json-array.mjs',
                 'tools/export-preview-v21.py', 'macgyver.sh', 'Upload_MacGyver_v21_SSH.sh',
                 'tools/upload-v21/site_sync.py', 'tools/upload-v21/upload.py',
                 'tools/upload-v21/public_transport.py', 'tools/export_github.py',
@@ -80,7 +80,7 @@ def public_snapshot(source, excluded=()):
         required.append('Install_and_Upload_MacGyver_v26.sh')
     if (source / 'Install_and_Upload_MacGyver_v27.sh').is_file():
         required.append('Install_and_Upload_MacGyver_v27.sh')
-    for optional in ('Install_and_Upload_MacGyver_v28.sh', 'Update_MacGyver_v30.sh', 'Update_MacGyver_v31.sh'):
+    for optional in ('Install_and_Upload_MacGyver_v28.sh', 'Update_MacGyver_v30.sh', 'Update_MacGyver_v31.sh', 'Update_MacGyver_v32.sh'):
         if (source / optional).is_file():
             required.append(optional)
     for name in required:
@@ -100,8 +100,8 @@ def public_snapshot(source, excluded=()):
             raise ValueError('Unsafe SOURCE_VERSION.json')
         version = json.loads(version_file.read_text('utf-8'))
         source_major = str(version.get('version', '')).split('.')[0]
-        if source_major not in {'21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'}:
-            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26, V27, V28, V29, V30 or V31 before uploading.')
+        if source_major not in {'21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'}:
+            raise ValueError('SOURCE_VERSION.json must identify V21, V22, V23, V24, V25, V26, V27, V28, V29, V30, V31 or V32 before uploading.')
         if source_major != str(exported['version']):
             raise ValueError('SOURCE_VERSION.json and the built public curriculum version disagree; rebuild the same release before uploading.')
         files['SOURCE_VERSION.json'] = (json.dumps(version, ensure_ascii=False, indent=2) + '\n').encode()

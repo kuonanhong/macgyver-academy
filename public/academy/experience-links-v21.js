@@ -4,7 +4,7 @@ const resourceExtensionsV31=new Set(['v11-troll-field','v11-johan-sverdrup','v11
 export function courseSceneHref(course){
  const id=String(course?.id||''), domain=String(course?.category||'');
  const resourceV31=domain==='materials'&&(course?.v31Extension===true||course?.educationEdition===31||resourceExtensionsV31.has(id)||/^extractive-v31-\d{3}$/.test(id));
- return resourceV31?`realworld-v31.html?domain=materials&site=${encodeURIComponent(id)}`:`experience.html?domain=${encodeURIComponent(domain)}&course=${encodeURIComponent(id)}`;
+ return resourceV31?`realworld-v32.html?domain=materials&site=${encodeURIComponent(id)}`:`experience.html?domain=${encodeURIComponent(domain)}&course=${encodeURIComponent(id)}`;
 }
 export function experienceEntryMarkup(zh=true){
  const t=(a,b)=>zh?a:b;

@@ -1,10 +1,15 @@
 /* Classic scripts also run under file://, where ES module imports are blocked. */
 (function () {
   'use strict';
+  // The builder gives this entry a release/source revision. Carry it through
+  // dynamic scripts so a new lesson index cannot reuse an older cached app.
+  let assetVersion = '';
+  try { assetVersion = new URL(document.currentScript?.src || '', location.href).searchParams.get('v') || ''; } catch {}
+  window.MG_BOOT_VERSION = assetVersion;
   function load(source) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = source; script.async = false;
+      script.src = source + (location.protocol !== 'file:' && assetVersion ? '?v=' + encodeURIComponent(assetVersion) : ''); script.async = false;
       script.onload = resolve;
       script.onerror = () => reject(new Error('Unable to load ' + source));
       document.head.appendChild(script);

@@ -9,7 +9,7 @@ export const SIX_LOOKS_V30=Object.freeze([
 export function realWorldHref(scene,config){
  const domain=String(scene?.category||config?.domainId||'energy').replace(/[^a-z0-9-]/gi,'').slice(0,40)||'energy';
  const course=String(scene?.courseId||'').replace(/[^a-z0-9-]/gi,'').slice(0,80);
- return 'realworld-v30.html?domain='+encodeURIComponent(domain)+(course?'&site='+encodeURIComponent(course):'');
+ return 'realworld-v32.html?domain='+encodeURIComponent(domain)+(course?'&site='+encodeURIComponent(course):'');
 }
 export function createFieldControls(options){
  const base=previousControls(options),{getWorld,getScene,getConfig}=options;
@@ -20,7 +20,7 @@ export function createFieldControls(options){
   button.addEventListener('click',()=>{const world=getWorld();if(!world?.look||!world.setView)return;world.setView('first');world.recenter?.();world.look(yaw,pitch);widen();});
   bar.append(button);
  }
- const link=document.createElement('a');link.id='realworld-link-v30';link.textContent='實景 ↗';link.title=link.ariaLabel='全螢幕實景工程場景 / Full-screen real-world scene';link.href='realworld-v30.html';
+ const link=document.createElement('a');link.id='realworld-link-v30';link.textContent='實景 ↗';link.title=link.ariaLabel='全螢幕實景工程場景 / Full-screen real-world scene';link.href='realworld-v32.html';
  const refresh=()=>{link.href=realWorldHref(getScene?.(),getConfig?.());};
  link.addEventListener('pointerdown',refresh);link.addEventListener('focus',refresh);link.addEventListener('click',refresh);
  bar.append(link);document.body.append(bar);

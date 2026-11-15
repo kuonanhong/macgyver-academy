@@ -13,7 +13,7 @@ window.MG_CONFIG = Object.assign({
   // Provider credentials are Cloudflare secrets and never belong in this file.
   mentorWorkerUrl: '',
   mentorCloudTranslation: false,
-  mentorLineUrl: '',
+  mentorLineUrl: 'https://line.me/R/ti/p/@530pgchc',
   // Optional cloud accounts: use only publishable / anon key after applying supabase SQL.
   siteMode: 'auto',
   supabaseUrl: '',
