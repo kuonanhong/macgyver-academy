@@ -20,7 +20,7 @@ class PagesError(RuntimeError):
     pass
 
 
-def api(repo, endpoint, *, method='GET', payload=None):
+def api(repo, endpoint, *, method='GET', payload=None, timeout=60):
     command = ['gh', 'api', '--hostname', 'github.com', '--method', method,
                '-H', 'Accept: application/vnd.github+json',
                '-H', 'X-GitHub-Api-Version: ' + API_VERSION,
@@ -28,7 +28,7 @@ def api(repo, endpoint, *, method='GET', payload=None):
     if payload is not None:
         command += ['--input', '-']
     result = subprocess.run(command, input=json.dumps(payload) if payload is not None else None,
-                            capture_output=True, text=True, encoding='utf-8', timeout=60)
+                            capture_output=True, text=True, encoding='utf-8', timeout=timeout)
     if result.returncode:
         # gh errors may include local context. Show only the short final message;
         # authentication tokens are never read, logged, or placed in arguments.
@@ -83,6 +83,40 @@ def find_requested_run(repo, sha, branch, request_id, deadline):
     raise PagesError('已送出發布，但尚未取得工作編號；請查看 Actions，不要連續重複提交。')
 
 
+def wait_for_run_identity(repo, run_id, sha, branch, request_id):
+    """Allow a newly dispatched run's metadata to settle, reading only its ID.
+
+    A transient missing/mismatching field is never accepted as success. The
+    read deadline includes each API subprocess timeout, and no dispatch or
+    latest-run lookup is performed by this retry path.
+    """
+    deadline = time.monotonic() + 90
+    last, announced = {}, False
+    while (remaining := deadline - time.monotonic()) > 0:
+        run = api(repo, 'actions/runs/' + str(run_id), timeout=min(60, remaining))
+        if not isinstance(run, dict):
+            raise PagesError('GitHub 回傳的工作資料格式無效；未宣稱部署成功。')
+        try:
+            if run.get('id') != run_id:
+                raise PagesError('工作編號不符。')
+            validate_run(run, sha, branch, request_id)
+        except PagesError:
+            # Record only public identity fields, not headers or arbitrary API
+            # response bodies. This also makes a future timeout diagnosable.
+            last = {key: str(run.get(key, ''))[:240] for key in
+                    ('id', 'head_sha', 'head_branch', 'path', 'event', 'display_title')}
+        else:
+            return run
+        if not announced:
+            print('等待 GitHub 完成本次工作識別資料：%s；只重讀同一工作，不重送發布。' % run_id, flush=True)
+            announced = True
+        remaining = deadline - time.monotonic()
+        if remaining > 0:
+            time.sleep(min(3, remaining))
+    raise PagesError('工作識別／版本不符；等待同一工作最多 90 秒仍未核實，未宣稱發布成功。'
+                     + ' 最後公開識別欄位：' + json.dumps(last, ensure_ascii=False))
+
+
 def publish(repo, branch='main', wait_seconds=1800, no_wait=False):
     workflow = api(repo, 'actions/workflows/' + WORKFLOW)
     if workflow.get('state') != 'active' or workflow.get('path') != '.github/workflows/pages.yml':
@@ -97,8 +131,10 @@ def publish(repo, branch='main', wait_seconds=1800, no_wait=False):
                      payload={'ref': branch, 'inputs': {'request_id': request_id}})
     run_id = dispatched.get('workflow_run_id')
     if run_id:
-        run = api(repo, 'actions/runs/' + str(int(run_id)))
-        validate_run(run, sha, branch, request_id)
+        if isinstance(run_id, bool) or not re.fullmatch(r'[1-9][0-9]*', str(run_id)):
+            raise PagesError('GitHub 回傳無效工作編號；未重新派送發布。')
+        run_id = int(run_id)
+        run = wait_for_run_identity(repo, run_id, sha, branch, request_id)
     else:
         # Older API deployments return 204: correlate by unique request ID, not
         # the latest run or merely a shared commit SHA.
