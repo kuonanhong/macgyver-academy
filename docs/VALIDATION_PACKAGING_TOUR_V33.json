@@ -1,0 +1,201 @@
+{
+  "version": "33.0.1",
+  "date": "2026-11-23",
+  "status": "PASS",
+  "scope": "Standalone packaging cinema; existing academy curricula remain at V32.",
+  "tours": 6,
+  "secondsPerTour": 300,
+  "totalMinutes": 30,
+  "languages": [
+    "zh-TW",
+    "en",
+    "ja",
+    "ko",
+    "zh-CN"
+  ],
+  "chapters": 60,
+  "narrativeTranslations": 300,
+  "localizedModelLabels": 115,
+  "contentTests": "reports/packaging-tour-v33-data-tests.json",
+  "browserChecks": {
+    "desktopThreeDimensionalScene": "PASS: real Chrome rendering of interposer and hybrid models; materials, separated layers and labels visible",
+    "mobileViewport": "PASS: 390x844, document width and scroll width both 390; Japanese hybrid scene and captions visible",
+    "languageSwitch": "PASS: zh-TW and Japanese inspected in real browser; all five content paths covered in player tests",
+    "mp4Decode": "PASS: H.264 videoWidth 1280, duration 300, readyState 4",
+    "mp4ModeKeepsTime": "PASS: switched from 3D at 135 seconds, video currentTime 135",
+    "mp4Seeking": "PASS: local byte ranges support 0-300 seconds; keyboard End reached 300",
+    "mp4Replay": "PASS: at 300 displayed Replay, then played from zero",
+    "missingWebGLAndSpeech": "PASS in DOM harness; no actual GPU-disabled browser tested",
+    "nativeFullscreen": "Not tested in browser automation; fallback implementation provided",
+    "speechAudio": "Not included in MP4; optional device speech not recorded or verified in all languages"
+  },
+  "sources": "docs/PACKAGING_TOUR_SOURCES_V33.md",
+  "referenceApproach": [
+    "https://kuonanhong.github.io/AERO_Explorer/",
+    "https://kuonanhong.github.io/Resilience_Crew_Lab/"
+  ],
+  "limits": [
+    "Original three-dimensional teaching reconstruction, not facility drone footage or vendor CAD.",
+    "Illustrative dimensions, layer counts, heat and signal flows; not measured engineering results.",
+    "Five complete authored language drafts, not reviewed by native engineers in every language.",
+    "Actual physical iOS, Android, Windows and Linux hardware was not exhaustively tested."
+  ],
+  "publication": "Local validation only. Live publication is tracked separately in reports/pages-deploy-packaging-tour-v33.json.",
+  "mediaVerification": {
+    "version": "33.0.1",
+    "date": "2026-11-23",
+    "status": "PASS",
+    "silent": true,
+    "teachingReconstruction": true,
+    "encoding": "H.264 720p 24fps, CRF 22 with 650 kbit/s ceiling",
+    "videos": [
+      {
+        "id": "interposer",
+        "duration": 300.0,
+        "width": 1280,
+        "height": 720,
+        "fps": "24/1",
+        "frames": 7200,
+        "subtitleLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "chapters": 10,
+        "bytes": 23202207,
+        "sha256": "74ad05d5ac2dd4097a97816e58bc04005280d873ae195a24fd35b7d30a597101"
+      },
+      {
+        "id": "fanout",
+        "duration": 300.0,
+        "width": 1280,
+        "height": 720,
+        "fps": "24/1",
+        "frames": 7200,
+        "subtitleLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "chapters": 10,
+        "bytes": 21752901,
+        "sha256": "20e3609d462a2e67cc328a9668b76043c85b45fc4dc262a5db7e5d2be4e0b0dc"
+      },
+      {
+        "id": "hybrid",
+        "duration": 300.0,
+        "width": 1280,
+        "height": 720,
+        "fps": "24/1",
+        "frames": 7200,
+        "subtitleLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "chapters": 10,
+        "bytes": 21833287,
+        "sha256": "e0e78356f4ba257aa8a8566548345277d8813ca90e28596b689fd0454f8885f7"
+      },
+      {
+        "id": "bridge",
+        "duration": 300.0,
+        "width": 1280,
+        "height": 720,
+        "fps": "24/1",
+        "frames": 7200,
+        "subtitleLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "chapters": 10,
+        "bytes": 22713169,
+        "sha256": "75a2b6623f7dfa6da26cce1d5269df01260797474f4f0d623d23adf0d92f7801"
+      },
+      {
+        "id": "chiplet",
+        "duration": 300.0,
+        "width": 1280,
+        "height": 720,
+        "fps": "24/1",
+        "frames": 7200,
+        "subtitleLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "chapters": 10,
+        "bytes": 23494054,
+        "sha256": "aee5f66ad5f7cd93e221d32eb6c82e088e366b73656801c2beb8f1c9da8c8f20"
+      },
+      {
+        "id": "thermal",
+        "duration": 300.0,
+        "width": 1280,
+        "height": 720,
+        "fps": "24/1",
+        "frames": 7200,
+        "subtitleLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "chapters": 10,
+        "bytes": 23208760,
+        "sha256": "b433bfb9ec23636e519afc5964cc4eda863002c5d5d1c43ead1115a32f7965ac"
+      }
+    ]
+  },
+  "offlineBuild": "PASS",
+  "publicUploadBoundaryTests": {
+    "status": "PASS",
+    "tests": 36,
+    "report": "reports/packaging-tour-v33-upload-tests.log"
+  },
+  "sourceHashes": {
+    "public/academy/packaging-tour-content-v33.js": "84efbfa7b9ec5c130dda60c87b5ae8503749cb138c47870616d889b5921cd9df",
+    "public/academy/packaging-tour-scene-v33.js": "e363729d1d7fc90a2e3716055a9c2aa10496a334dcfd98e84ef4d917845133d3"
+  },
+  "compressionQuality": {
+    "status": "PASS",
+    "method": "SSIM of decoded 3-second video samples against original browser render; objective similarity, not a lossless claim",
+    "samples": [
+      {
+        "startSeconds": 15,
+        "sampleSeconds": 3,
+        "ssim": 0.991788
+      },
+      {
+        "startSeconds": 135,
+        "sampleSeconds": 3,
+        "ssim": 0.993916
+      },
+      {
+        "startSeconds": 225,
+        "sampleSeconds": 3,
+        "ssim": 0.989941
+      }
+    ],
+    "tour": "interposer"
+  },
+  "pagesBudget": {
+    "status": "PASS",
+    "files": 14072,
+    "uncompressedBytes": 841618722,
+    "tarUpperBoundBytes": 874031104,
+    "budgetBytes": 900000000
+  }
+}

@@ -83,6 +83,14 @@ def public_snapshot(source, excluded=()):
     for optional in ('Install_and_Upload_MacGyver_v28.sh', 'Update_MacGyver_v30.sh', 'Update_MacGyver_v31.sh', 'Update_MacGyver_v32.sh'):
         if (source / optional).is_file():
             required.append(optional)
+    # The independent public cinema can be reproduced without owner curricula.
+    for optional in ('README_PACKAGING_TOUR_V33.html', 'Start_Packaging_Tour_v33.sh',
+                     'tools/preview-packaging-tour-v33.py', 'tools/export-packaging-subtitles-v33.mjs',
+                     'tools/finalize-packaging-videos-v33.py', 'tools/package-packaging-tour-v33.py',
+                     'tools/test-packaging-tour-v33.mjs', 'docs/PACKAGING_TOUR_SOURCES_V33.md',
+                     'docs/VALIDATION_PACKAGING_TOUR_V33.json'):
+        if (source / optional).is_file():
+            required.append(optional)
     for name in required:
         path = source / name
         if path.is_symlink() or not path.is_file():

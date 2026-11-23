@@ -303,7 +303,8 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
                          *(['curriculum-v29.html'] if int(major) >= 29 else []),
                          *(['curriculum-v30.html', 'realworld-v30.html'] if int(major) >= 30 else []),
                          *(['curriculum-v31.html', 'realworld-v31.html'] if int(major) >= 31 else []),
-                         *(['realworld-v32.html'] if int(major) >= 32 else [])):
+                         *(['realworld-v32.html'] if int(major) >= 32 else []),
+                         *(['packaging-tour-v33.html'] if (source/'packaging-tour-v33.html').is_file() else [])):
                 alias = temp / prefix / page
                 alias.parent.mkdir(parents=True, exist_ok=True)
                 destination = '../../' + page
