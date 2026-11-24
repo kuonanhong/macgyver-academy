@@ -28,7 +28,7 @@ window.MACGYVER_PACKAGING_PROCESS_ROADMAP = {
     "existingOverviewFilms": 6,
     "existingOverviewsAreProcessFilms": false,
     "fullNarrationScriptsWritten": 4,
-    "fifteenMinuteProcessFilmsLocallyVerified": 3
+    "fifteenMinuteProcessFilmsLocallyVerified": 4
   },
   "scope": {
     "zh-TW": "這是120項不重複的教學工序與工程活動目錄，含設計、製造操作和檢驗測試；不是聲稱某條產線恰好有120個製造站。已公開C01、C02、C03、C04共4部五分鐘五語影片，其餘116項尚未連結公開完成片。十五分鐘長片的本機驗證與公開方式依各項標示；六部架構總覽另列。",
@@ -1112,8 +1112,11 @@ window.MACGYVER_PACKAGING_PROCESS_ROADMAP = {
         "manifestUrl": "assets/packaging-films-v35/C04/verification.json"
       },
       "longLesson": {
-        "status": "in_production",
+        "status": "local_verified",
         "durationSeconds": 900,
+        "sha256": "477878d0030f522cf805f54c594419ddf93fd9bfde5dd0e5414e7806013e81db",
+        "bytes": 157843327,
+        "publicationStatus": "not_published",
         "youtubeStatus": "pending",
         "youtubeId": null
       }
