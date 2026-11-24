@@ -85,10 +85,32 @@ def public_snapshot(source, excluded=()):
             required.append(optional)
     # The independent public cinema can be reproduced without owner curricula.
     for optional in ('README_PACKAGING_TOUR_V33.html', 'Start_Packaging_Tour_v33.sh',
+                     'Upload_Packaging_YouTube_v33.sh', 'docs/PACKAGING_YOUTUBE_METADATA_V33.json',
+                     'tools/test-publish-packaging-youtube-v33.py',
                      'tools/preview-packaging-tour-v33.py', 'tools/export-packaging-subtitles-v33.mjs',
                      'tools/finalize-packaging-videos-v33.py', 'tools/package-packaging-tour-v33.py',
+                     'tools/add-line-qr-packaging-v33.py', 'tools/publish-packaging-youtube-v33.py',
                      'tools/test-packaging-tour-v33.mjs', 'docs/PACKAGING_TOUR_SOURCES_V33.md',
                      'docs/VALIDATION_PACKAGING_TOUR_V33.json'):
+        if (source / optional).is_file():
+            required.append(optional)
+    for optional in (
+            'Upload_Narrated_V34.sh', 'Publish_Packaging_Website_v34.sh',
+            'requirements-packaging-media-v34.txt', 'docs/PACKAGING_MEDIA_ENVIRONMENT_V34.json',
+            'tools/publish-packaging-release-v34.py', 'tools/test-packaging-hosting-v33.py',
+            'tools/build-native-narration-v34.py', 'tools/collect-packaging-narration-v34.py',
+            'tools/test-native-narration-duration-v34.py',
+            'tools/build-all-packaging-narration-v34.py', 'tools/mux-narrated-packaging-v34.py',
+            'tools/prepare-narrated-youtube-job-v34.py', 'tools/build-c01-narrated-job-v34.py',
+            'tools/test-narrated-packaging-v34.py', 'tools/export-bilingual-packaging-subtitles-v33.py',
+            'tools/build-speech-aligned-subtitles-v34.py',
+            'docs/PACKAGING_YOUTUBE_METADATA_V34.json', 'docs/PACKAGING_PROCESS_C01_YOUTUBE_METADATA_V34.json',
+            'tools/test-bilingual-packaging-subtitles-v33.py',
+            'tools/preview-packaging-process-v34.py', 'tools/test-packaging-process-v34.mjs',
+            'tools/test-packaging-process-scene-v34.mjs',
+            'tools/test-packaging-process-player-v34.mjs', 'tools/build-c01-semantic-mapping-v34.mjs',
+            'docs/PACKAGING_PROCESS_ROADMAP_V34.json',
+            'docs/packaging-process-scripts-v34/C01.json'):
         if (source / optional).is_file():
             required.append(optional)
     for name in required:

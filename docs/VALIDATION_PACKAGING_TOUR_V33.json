@@ -1,53 +1,28 @@
 {
-  "version": "33.0.1",
-  "date": "2026-11-23",
+  "version": "34.0.4",
+  "date": "2026-11-24",
   "status": "PASS",
-  "scope": "Standalone packaging cinema; existing academy curricula remain at V32.",
-  "tours": 6,
+  "scope": "Six five-minute introductory overview films, C01 five-minute process film, 120 bilingual roadmap activities; separate 15-minute long films are in production.",
+  "overviewFilms": 6,
+  "processFilms": 1,
+  "processRoadmapActivities": 120,
+  "remainingProcessFilms": 119,
+  "longFilmsProduced": 0,
   "secondsPerTour": 300,
-  "totalMinutes": 30,
   "languages": [
     "zh-TW",
+    "zh-CN",
     "en",
     "ja",
-    "ko",
-    "zh-CN"
+    "ko"
   ],
-  "chapters": 60,
-  "narrativeTranslations": 300,
-  "localizedModelLabels": 115,
-  "contentTests": "reports/packaging-tour-v33-data-tests.json",
-  "browserChecks": {
-    "desktopThreeDimensionalScene": "PASS: real Chrome rendering of interposer and hybrid models; materials, separated layers and labels visible",
-    "mobileViewport": "PASS: 390x844, document width and scroll width both 390; Japanese hybrid scene and captions visible",
-    "languageSwitch": "PASS: zh-TW and Japanese inspected in real browser; all five content paths covered in player tests",
-    "mp4Decode": "PASS: H.264 videoWidth 1280, duration 300, readyState 4",
-    "mp4ModeKeepsTime": "PASS: switched from 3D at 135 seconds, video currentTime 135",
-    "mp4Seeking": "PASS: local byte ranges support 0-300 seconds; keyboard End reached 300",
-    "mp4Replay": "PASS: at 300 displayed Replay, then played from zero",
-    "missingWebGLAndSpeech": "PASS in DOM harness; no actual GPU-disabled browser tested",
-    "nativeFullscreen": "Not tested in browser automation; fallback implementation provided",
-    "speechAudio": "Not included in MP4; optional device speech not recorded or verified in all languages"
-  },
-  "sources": "docs/PACKAGING_TOUR_SOURCES_V33.md",
-  "referenceApproach": [
-    "https://kuonanhong.github.io/AERO_Explorer/",
-    "https://kuonanhong.github.io/Resilience_Crew_Lab/"
-  ],
-  "limits": [
-    "Original three-dimensional teaching reconstruction, not facility drone footage or vendor CAD.",
-    "Illustrative dimensions, layer counts, heat and signal flows; not measured engineering results.",
-    "Five complete authored language drafts, not reviewed by native engineers in every language.",
-    "Actual physical iOS, Android, Windows and Linux hardware was not exhaustively tested."
-  ],
-  "publication": "Local validation only. Live publication is tracked separately in reports/pages-deploy-packaging-tour-v33.json.",
   "mediaVerification": {
-    "version": "33.0.1",
-    "date": "2026-11-23",
+    "version": "34.0.0",
+    "date": "2026-11-24",
     "status": "PASS",
-    "silent": true,
+    "silent": false,
     "teachingReconstruction": true,
-    "encoding": "H.264 720p 24fps, CRF 22 with 650 kbit/s ceiling",
+    "encoding": "Original 720p H.264 and five AAC speech tracks stream-copied; five speech-aligned mov_text tracks.",
     "videos": [
       {
         "id": "interposer",
@@ -64,8 +39,45 @@
           "zh-CN"
         ],
         "chapters": 10,
-        "bytes": 23202207,
-        "sha256": "74ad05d5ac2dd4097a97816e58bc04005280d873ae195a24fd35b7d30a597101"
+        "bytes": 30336594,
+        "sha256": "24cbf024bf983c331fe9ca1eeea3bc841076cc0ee0b3e302213583de899693e6",
+        "file": "interposer.mp4",
+        "audioLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "defaultAudioLanguage": "zh-TW",
+        "subtitleMode": "native language with semantically aligned English; English-only en track",
+        "verification": {
+          "status": "PASS",
+          "videoPacketsByteIdentical": true,
+          "videoPacketTimingUnchanged": true,
+          "aacPacketsByteIdentical": true,
+          "subtitleTextTimingAndLineBreaks": "PASS",
+          "chapterBoundariesAndTitles": "UNCHANGED",
+          "qrDecoded": {
+            "status": "PASS",
+            "checks": [
+              {
+                "second": 290,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 295,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 299.9583333333333,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              }
+            ]
+          },
+          "defaultAudioLanguage": "zh-TW",
+          "defaultSubtitleLanguage": "zh-TW"
+        }
       },
       {
         "id": "fanout",
@@ -82,8 +94,45 @@
           "zh-CN"
         ],
         "chapters": 10,
-        "bytes": 21752901,
-        "sha256": "20e3609d462a2e67cc328a9668b76043c85b45fc4dc262a5db7e5d2be4e0b0dc"
+        "bytes": 28714996,
+        "sha256": "8857ac69c0a95b178e6e663d42acdcd8d9ebd1131135be792ccd079df62ca55a",
+        "file": "fanout.mp4",
+        "audioLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "defaultAudioLanguage": "zh-TW",
+        "subtitleMode": "native language with semantically aligned English; English-only en track",
+        "verification": {
+          "status": "PASS",
+          "videoPacketsByteIdentical": true,
+          "videoPacketTimingUnchanged": true,
+          "aacPacketsByteIdentical": true,
+          "subtitleTextTimingAndLineBreaks": "PASS",
+          "chapterBoundariesAndTitles": "UNCHANGED",
+          "qrDecoded": {
+            "status": "PASS",
+            "checks": [
+              {
+                "second": 290,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 295,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 299.9583333333333,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              }
+            ]
+          },
+          "defaultAudioLanguage": "zh-TW",
+          "defaultSubtitleLanguage": "zh-TW"
+        }
       },
       {
         "id": "hybrid",
@@ -100,8 +149,45 @@
           "zh-CN"
         ],
         "chapters": 10,
-        "bytes": 21833287,
-        "sha256": "e0e78356f4ba257aa8a8566548345277d8813ca90e28596b689fd0454f8885f7"
+        "bytes": 28778911,
+        "sha256": "9e5bff385c3f81578c0004b385a7510d6f0bcf87aeeb15c3c2929435fdfd7561",
+        "file": "hybrid.mp4",
+        "audioLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "defaultAudioLanguage": "zh-TW",
+        "subtitleMode": "native language with semantically aligned English; English-only en track",
+        "verification": {
+          "status": "PASS",
+          "videoPacketsByteIdentical": true,
+          "videoPacketTimingUnchanged": true,
+          "aacPacketsByteIdentical": true,
+          "subtitleTextTimingAndLineBreaks": "PASS",
+          "chapterBoundariesAndTitles": "UNCHANGED",
+          "qrDecoded": {
+            "status": "PASS",
+            "checks": [
+              {
+                "second": 290,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 295,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 299.9583333333333,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              }
+            ]
+          },
+          "defaultAudioLanguage": "zh-TW",
+          "defaultSubtitleLanguage": "zh-TW"
+        }
       },
       {
         "id": "bridge",
@@ -118,8 +204,45 @@
           "zh-CN"
         ],
         "chapters": 10,
-        "bytes": 22713169,
-        "sha256": "75a2b6623f7dfa6da26cce1d5269df01260797474f4f0d623d23adf0d92f7801"
+        "bytes": 29644048,
+        "sha256": "666312db8aa368b6a940814803e45f5ca355aabfa21cecccb2ad520814c3c0d3",
+        "file": "bridge.mp4",
+        "audioLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "defaultAudioLanguage": "zh-TW",
+        "subtitleMode": "native language with semantically aligned English; English-only en track",
+        "verification": {
+          "status": "PASS",
+          "videoPacketsByteIdentical": true,
+          "videoPacketTimingUnchanged": true,
+          "aacPacketsByteIdentical": true,
+          "subtitleTextTimingAndLineBreaks": "PASS",
+          "chapterBoundariesAndTitles": "UNCHANGED",
+          "qrDecoded": {
+            "status": "PASS",
+            "checks": [
+              {
+                "second": 290,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 295,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 299.9583333333333,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              }
+            ]
+          },
+          "defaultAudioLanguage": "zh-TW",
+          "defaultSubtitleLanguage": "zh-TW"
+        }
       },
       {
         "id": "chiplet",
@@ -136,8 +259,45 @@
           "zh-CN"
         ],
         "chapters": 10,
-        "bytes": 23494054,
-        "sha256": "aee5f66ad5f7cd93e221d32eb6c82e088e366b73656801c2beb8f1c9da8c8f20"
+        "bytes": 30595487,
+        "sha256": "fd74676449d9a1f4014e0e090c4c15574a5f4d803602dc46ac24740d6a74f998",
+        "file": "chiplet.mp4",
+        "audioLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "defaultAudioLanguage": "zh-TW",
+        "subtitleMode": "native language with semantically aligned English; English-only en track",
+        "verification": {
+          "status": "PASS",
+          "videoPacketsByteIdentical": true,
+          "videoPacketTimingUnchanged": true,
+          "aacPacketsByteIdentical": true,
+          "subtitleTextTimingAndLineBreaks": "PASS",
+          "chapterBoundariesAndTitles": "UNCHANGED",
+          "qrDecoded": {
+            "status": "PASS",
+            "checks": [
+              {
+                "second": 290,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 295,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 299.9583333333333,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              }
+            ]
+          },
+          "defaultAudioLanguage": "zh-TW",
+          "defaultSubtitleLanguage": "zh-TW"
+        }
       },
       {
         "id": "thermal",
@@ -154,48 +314,413 @@
           "zh-CN"
         ],
         "chapters": 10,
-        "bytes": 23208760,
-        "sha256": "b433bfb9ec23636e519afc5964cc4eda863002c5d5d1c43ead1115a32f7965ac"
-      }
-    ]
-  },
-  "offlineBuild": "PASS",
-  "publicUploadBoundaryTests": {
-    "status": "PASS",
-    "tests": 36,
-    "report": "reports/packaging-tour-v33-upload-tests.log"
-  },
-  "sourceHashes": {
-    "public/academy/packaging-tour-content-v33.js": "84efbfa7b9ec5c130dda60c87b5ae8503749cb138c47870616d889b5921cd9df",
-    "public/academy/packaging-tour-scene-v33.js": "e363729d1d7fc90a2e3716055a9c2aa10496a334dcfd98e84ef4d917845133d3"
-  },
-  "compressionQuality": {
-    "status": "PASS",
-    "method": "SSIM of decoded 3-second video samples against original browser render; objective similarity, not a lossless claim",
-    "samples": [
-      {
-        "startSeconds": 15,
-        "sampleSeconds": 3,
-        "ssim": 0.991788
-      },
-      {
-        "startSeconds": 135,
-        "sampleSeconds": 3,
-        "ssim": 0.993916
-      },
-      {
-        "startSeconds": 225,
-        "sampleSeconds": 3,
-        "ssim": 0.989941
+        "bytes": 30302015,
+        "sha256": "3db2901168433477f94513317e6677e7c4c071f7cb18d16c199d23f0b9824a94",
+        "file": "thermal.mp4",
+        "audioLanguages": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ],
+        "defaultAudioLanguage": "zh-TW",
+        "subtitleMode": "native language with semantically aligned English; English-only en track",
+        "verification": {
+          "status": "PASS",
+          "videoPacketsByteIdentical": true,
+          "videoPacketTimingUnchanged": true,
+          "aacPacketsByteIdentical": true,
+          "subtitleTextTimingAndLineBreaks": "PASS",
+          "chapterBoundariesAndTitles": "UNCHANGED",
+          "qrDecoded": {
+            "status": "PASS",
+            "checks": [
+              {
+                "second": 290,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 295,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              },
+              {
+                "second": 299.9583333333333,
+                "decoded": "https://line.me/R/ti/p/%40530pgchc"
+              }
+            ]
+          },
+          "defaultAudioLanguage": "zh-TW",
+          "defaultSubtitleLanguage": "zh-TW"
+        }
       }
     ],
-    "tour": "interposer"
+    "endCard": {
+      "url": "https://line.me/R/ti/p/%40530pgchc",
+      "errorCorrection": "H",
+      "quietZoneModules": 4,
+      "qrPixels": 246,
+      "qrSha256": "28fbe6ed4aa09f6988f9885a1b6d73f34b520486328571063da265d1d38f01d8",
+      "cardSha256": "de16fb8c1fa2a96d664878f749019499ff2a33cc1bb33734a6c32ffe146f4788",
+      "x": 976,
+      "y": 175,
+      "width": 276,
+      "height": 380,
+      "start": 290,
+      "end": 300,
+      "startSeconds": 290,
+      "endSeconds": 300,
+      "verified": true,
+      "verification": "Decoded the exact URL from each final MP4 at 290, 295 and 299.958 seconds; absent at 289.958 seconds."
+    },
+    "audioProvider": "Installed macOS synthetic voices; not human narration",
+    "originalVideosModified": false,
+    "originalManifestSha256": "b9fbba670d9b6246690376587a995ce5aa1158e52fb138f109b728ba07b4d6c4",
+    "audioManifestSha256": "c37980d51a8fe2bedb0c45a22189da12729e0dd45bc88c294e37dba19107148f",
+    "assemblyVerification": "All six per-film packet/QR/caption verifications remain bound to unchanged MP4, audio and subtitle SHA256 values; no completed movie was rewritten."
   },
-  "pagesBudget": {
+  "processMediaVerification": {
+    "schemaVersion": 1,
+    "version": "34.0.0",
     "status": "PASS",
-    "files": 14072,
-    "uncompressedBytes": 841618722,
-    "tarUpperBoundBytes": 874031104,
-    "budgetBytes": 900000000
+    "processId": "C01",
+    "bytes": 52549959,
+    "sha256": "fee6ec0dc01d40b16c646d1b00609296ecf7612df43dd29b347fec3a5d099f66",
+    "durationSeconds": 300,
+    "frames": 7200,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audioLanguages": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "subtitleLanguages": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "defaultAudioLanguage": "zh-TW",
+    "chapters": [
+      {
+        "index": 1,
+        "startSeconds": 0,
+        "endSeconds": 30,
+        "title": "Define the mission before the package",
+        "titles": {
+          "zh-TW": "先決定任務，再選封裝",
+          "en": "Define the mission before the package",
+          "zh-CN": "先决定任务，再选封装",
+          "ja": "構造を選ぶ前に、役割を決める",
+          "ko": "패키지를 고르기 전에 역할을 정의하기"
+        }
+      },
+      {
+        "index": 2,
+        "startSeconds": 30,
+        "endSeconds": 60,
+        "title": "Describe the complete workload",
+        "titles": {
+          "zh-TW": "把工作負載說完整",
+          "en": "Describe the complete workload",
+          "zh-CN": "把工作负载说完整",
+          "ja": "ワークロードを具体化する",
+          "ko": "전체 작업 부하 설명하기"
+        }
+      },
+      {
+        "index": 3,
+        "startSeconds": 60,
+        "endSeconds": 90,
+        "title": "Make each requirement measurable",
+        "titles": {
+          "zh-TW": "需求必須能量測",
+          "en": "Make each requirement measurable",
+          "zh-CN": "需求必须能测量",
+          "ja": "測定できる要件にする",
+          "ko": "측정 가능한 요구사항 만들기"
+        }
+      },
+      {
+        "index": 4,
+        "startSeconds": 90,
+        "endSeconds": 120,
+        "title": "Convert line rate into useful bandwidth",
+        "titles": {
+          "zh-TW": "從線速算到有效頻寬",
+          "en": "Convert line rate into useful bandwidth",
+          "zh-CN": "从线速算到有效带宽",
+          "ja": "線路速度から有効帯域を計算する",
+          "ko": "회선 속도를 유효 대역폭으로 바꾸기"
+        }
+      },
+      {
+        "index": 5,
+        "startSeconds": 120,
+        "endSeconds": 150,
+        "title": "Budget heat, then investigate hot spots",
+        "titles": {
+          "zh-TW": "先做熱預算，再查熱點",
+          "en": "Budget heat, then investigate hot spots",
+          "zh-CN": "先做热预算，再查热点",
+          "ja": "熱予算の次に、局所温度を調べる",
+          "ko": "열 예산을 계산한 뒤 국부 고온점 확인하기"
+        }
+      },
+      {
+        "index": 6,
+        "startSeconds": 150,
+        "endSeconds": 180,
+        "title": "Reserve space, power and system boundaries",
+        "titles": {
+          "zh-TW": "空間、供電與系統邊界",
+          "en": "Reserve space, power and system boundaries",
+          "zh-CN": "空间、供电与系统边界",
+          "ja": "寸法と電源の境界を決める",
+          "ko": "공간과 전원 경계 정하기"
+        }
+      },
+      {
+        "index": 7,
+        "startSeconds": 180,
+        "endSeconds": 210,
+        "title": "Preserve access for testing",
+        "titles": {
+          "zh-TW": "先留下測試的入口",
+          "en": "Preserve access for testing",
+          "zh-CN": "先留下测试的入口",
+          "ja": "テストの入口を確保する",
+          "ko": "시험 접근 경로 확보하기"
+        }
+      },
+      {
+        "index": 8,
+        "startSeconds": 210,
+        "endSeconds": 240,
+        "title": "Treat architectures as alternatives",
+        "titles": {
+          "zh-TW": "架構是候選路線",
+          "en": "Treat architectures as alternatives",
+          "zh-CN": "架构是候选路线",
+          "ja": "構造は比較する候補である",
+          "ko": "구조를 대안으로 비교하기"
+        }
+      },
+      {
+        "index": 9,
+        "startSeconds": 240,
+        "endSeconds": 270,
+        "title": "Challenge the requirements with a failure case",
+        "titles": {
+          "zh-TW": "用失效情境檢查需求",
+          "en": "Challenge the requirements with a failure case",
+          "zh-CN": "用失效情境检查需求",
+          "ja": "失敗条件で仮定を点検する",
+          "ko": "실패 조건으로 가정 검토하기"
+        }
+      },
+      {
+        "index": 10,
+        "startSeconds": 270,
+        "endSeconds": 300,
+        "title": "Release a traceable requirements baseline",
+        "titles": {
+          "zh-TW": "交付可追溯的需求基線",
+          "en": "Release a traceable requirements baseline",
+          "zh-CN": "交付可追溯的需求基线",
+          "ja": "追跡できる要件基準を引き渡す",
+          "ko": "추적 가능한 요구사항 기준선 전달하기"
+        }
+      }
+    ],
+    "endCard": {
+      "url": "https://line.me/R/ti/p/%40530pgchc",
+      "startSeconds": 290,
+      "endSeconds": 300,
+      "verified": true,
+      "method": "OpenCV QRCodeDetector decoded actual H264 frames at 290, 295 and 299.958333333; absent at 289.958333333.",
+      "rectangle": {
+        "x": 1052,
+        "y": 287,
+        "width": 200,
+        "height": 260
+      },
+      "decodedSamples": [
+        {
+          "timeSeconds": 289.9583333333333,
+          "payload": "",
+          "expectedPresent": false
+        },
+        {
+          "timeSeconds": 290,
+          "payload": "https://line.me/R/ti/p/%40530pgchc",
+          "expectedPresent": true
+        },
+        {
+          "timeSeconds": 299.9583333333333,
+          "payload": "https://line.me/R/ti/p/%40530pgchc",
+          "expectedPresent": true
+        }
+      ]
+    },
+    "verification": {
+      "status": "PASS",
+      "videoPacketsByteIdentical": true,
+      "videoPacketTimingUnchanged": true,
+      "aacPacketsByteIdentical": true,
+      "subtitleTextTimingAndLineBreaks": "PASS",
+      "chapterBoundariesAndTitles": "MATCHES_AUTHORED_SCRIPT",
+      "qrDecoded": {
+        "status": "PASS",
+        "checks": [
+          {
+            "second": 290,
+            "decoded": "https://line.me/R/ti/p/%40530pgchc"
+          },
+          {
+            "second": 295,
+            "decoded": "https://line.me/R/ti/p/%40530pgchc"
+          },
+          {
+            "second": 299.9583333333333,
+            "decoded": "https://line.me/R/ti/p/%40530pgchc"
+          }
+        ]
+      },
+      "defaultAudioLanguage": "zh-TW",
+      "defaultSubtitleLanguage": "zh-TW"
+    },
+    "publicTracks": [
+      {
+        "language": "zh-TW",
+        "audio": "assets/packaging-process-v34/C01/audio/C01.zh-TW.m4a",
+        "audioSha256": "95ea9126df04e22f0cb6ba8ecfd038a384bc2fbc6a104fa5c45042447130faba",
+        "audioBytes": 1445315,
+        "caption": "assets/packaging-process-v34/C01/subtitles/C01.zh-TW.vtt",
+        "captionSha256": "06ca5166caab2ac83badbba2f8b5bfb4b2ec7ed509a7e0b42deb07f3db4cd0db"
+      },
+      {
+        "language": "zh-CN",
+        "audio": "assets/packaging-process-v34/C01/audio/C01.zh-CN.m4a",
+        "audioSha256": "040016bd85ab09e471b023d9c85ebea6c9ec6634d892ced6408f67e890d79b7b",
+        "audioBytes": 1483303,
+        "caption": "assets/packaging-process-v34/C01/subtitles/C01.zh-CN.vtt",
+        "captionSha256": "4bc5877956e29cebb4cbf384b3c0294f8c531db621babd06ed55547bcd4c3f91"
+      },
+      {
+        "language": "en",
+        "audio": "assets/packaging-process-v34/C01/audio/C01.en.m4a",
+        "audioSha256": "c4f5fb15f80915dc86708486458dec74c5d75535b530bfc4025c411a67ffcbe4",
+        "audioBytes": 1470023,
+        "caption": "assets/packaging-process-v34/C01/subtitles/C01.en.vtt",
+        "captionSha256": "95650d7f510c41bdc2ca125e08a4e481a3e557d428a5fd3e37d8590ef9dbe863"
+      },
+      {
+        "language": "ja",
+        "audio": "assets/packaging-process-v34/C01/audio/C01.ja.m4a",
+        "audioSha256": "7e1cf9d8dd99f2cfaf250fa6b72082a7bdc34b7ae6421b6a63f1137ccc34dcb0",
+        "audioBytes": 1334919,
+        "caption": "assets/packaging-process-v34/C01/subtitles/C01.ja.vtt",
+        "captionSha256": "51fa0a9d348e37b25739363b37ffc087d73d3a8bf436049699627148160736e6"
+      },
+      {
+        "language": "ko",
+        "audio": "assets/packaging-process-v34/C01/audio/C01.ko.m4a",
+        "audioSha256": "9475135e991d334ad4453d3ce2fd77cea696c5fdea9334ad74d7bf855868c07f",
+        "audioBytes": 1513793,
+        "caption": "assets/packaging-process-v34/C01/subtitles/C01.ko.vtt",
+        "captionSha256": "16a1adbb8bb09727330851a185cb82330c72e1c4e4fcf8cba4c24436d63fdf00"
+      }
+    ],
+    "publicAssetsInstalled": true,
+    "sourceVideoSha256": "b945a1ffad41afe416f85fd12078e6254d681e39b86f56e77cc662c55e441105",
+    "sourceScriptSha256": "8b676403d8e19ce76ec46a814080b9a4019e1371192dace2882c2192801d54d1",
+    "audioManifestSha256": "040a97179c0e3b3b90b2afcbc83c97f5230907a2290b92894f83e4d84b424784",
+    "semanticMappingSha256": "e80d02e4c9d109243eba5ed53a46f1dba5a1ca185e53ae4cc1c978422b84685e",
+    "masterModified": false,
+    "file": "C01.mp4",
+    "publicationStatus": {
+      "website": "prepared",
+      "youtube": "not-published"
+    }
+  },
+  "audioVerification": {
+    "status": "PASS",
+    "tracks": 35,
+    "trackDurationSeconds": 300,
+    "totalBytes": 44787234,
+    "totalSentenceCues": 1179,
+    "minimumLUFS": -16.4,
+    "maximumLUFS": -16.0,
+    "maximumTruePeakDBTP": -0.6,
+    "method": "Independent SHA256/bytes, original sentence sidecar SHA256, AAC stream format, every packet presentation timestamp, and fresh EBU R128/true-peak analysis of decoded AAC."
+  },
+  "contentTests": {
+    "overviewPlayer": "PASS",
+    "roadmap120": "PASS",
+    "C01Scene44Views": "PASS",
+    "C01PlayerHarness": "PASS",
+    "publicUploadBoundary": {
+      "status": "PASS",
+      "tests": 36
+    },
+    "releaseAssetHashGate": "PASS",
+    "PagesRemoteMediaPolicy": {
+      "status": "PASS",
+      "tests": 5
+    },
+    "youtubePublisher": {
+      "status": "PASS",
+      "tests": 15
+    },
+    "speechSemanticMetadata": {
+      "status": "PASS",
+      "tests": 5
+    },
+    "generic900SecondNarration": "PASS: thirty chapters and exact 900-second AAC presentation timeline tested without replacing original 35 tracks"
+  },
+  "browserChecks": {
+    "overviewAudio": "PASS: actual Chrome audio element currentSrc, 300-second duration and playback confirmed",
+    "overviewSeekReplay": "PASS: local MP4/M4A byte ranges and actual 120-second seek/replay checked",
+    "roadmapMobile": "PASS: actual Chrome 390x844 rendering inspected",
+    "C01VideoAudio": "PASS: actual Chrome 1280x720 video and zh-TW/ja M4A decode at 300 seconds; synchronized clocks",
+    "C01QuickLanguageChange": "PASS: real Chrome rapid zh-TW/ja/ko/zh-CN/en selection and playback; actual audio currentSrc, paused=false, no displayed media error",
+    "C01MobileAndFullscreen": "PASS: 390x844 document width=scrollWidth=390, both caption fonts16px; native fullscreen unavailable, full-viewport fallback matched1920x936 desktop and390x844 mobile, captions visible, exit button and Escape both passed",
+    "C01SeekReplay": "PASS: 120-second chapter seek,300-second end and replay fromzero; corrected pending-video AbortError during audio buffering"
+  },
+  "publication": {
+    "githubPages": "Deployment and live verification tracked separately; this report certifies local source/media.",
+    "youtube": {
+      "publishedFilms": 0,
+      "studioError": "已達每日上傳數量上限；24 小時後，你就可以再上傳其他影片。",
+      "apiError": "quotaExceeded",
+      "playlistIdVerified": false
+    }
+  },
+  "limits": [
+    "Original 3D teaching reconstructions, not factory footage or vendor CAD.",
+    "Illustrative dimensions and hypothetical numerical examples are not measured validation results.",
+    "Five synthetic narration languages; not all world languages and not native-engineer-reviewed in every language.",
+    "Browser language preferences and manual selection are used, not geographic IP enforcement.",
+    "Actual physical iOS/Android/Windows/Linux devices were not exhaustively tested.",
+    "120 roadmap entries do not imply 120 produced films."
+  ],
+  "sourceHashes": {
+    "public/academy/packaging-tour-content-v33.js": "84efbfa7b9ec5c130dda60c87b5ae8503749cb138c47870616d889b5921cd9df",
+    "public/academy/packaging-tour-scene-v33.js": "e363729d1d7fc90a2e3716055a9c2aa10496a334dcfd98e84ef4d917845133d3",
+    "public/academy/packaging-tour-v33.js": "30e3a4441fe7c536d0905fc095a3046f7f4a394177115f705c17d9c2323ac327",
+    "public/academy/packaging-process-scene-v34.js": "e8d42e7320d8eed5db537c120e0a3af5dfcda1567b1451d9a4707e9e571835cc",
+    "public/academy/packaging-process-film-v34.js": "bae8693259b24e62a3d704ef45d545fb53def549bc1b433ad56ceca3d56e98e9",
+    "public/academy/packaging-process-film-v34.html": "1c454937617fafa0147bcba064fae90b3348fe91447e46b77682b873b24d7ac0",
+    "public/academy/packaging-process-film-v34.css": "aebb56f80c7eabdb23c6db752cdd4a7c7419eed1b91468b0215dd57e582df945",
+    "public/academy/packaging-captions-v33.js": "e87e5a0ef505f1096de4bbfb650ada6a993f87704469ecb463fd675e81609956",
+    "public/academy/packaging-narration-v33.js": "794adf182d61a4bceeed812a6f46270e442671af82909d073feb2e3843fd7216",
+    "public/academy/packaging-process-captions-v34.js": "b50c50248896cbcb12701a73ce07723678a5fd437fb922c0f65b8678407b28bf",
+    "public/academy/packaging-process-media-v34.js": "15af0ffb39e758cd9b36794b077569711fac1a11280890d2b0703d79f6ab42b7"
   }
 }

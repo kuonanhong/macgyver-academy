@@ -1,0 +1,226 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.255
+歡迎來到第一道工程活動：定義系統任務與封裝需求。
+Welcome to activity one: defining system and package requirements.
+
+2
+00:00:06.255 --> 00:00:11.845
+鏡頭下的加速器是教學模型，還沒有選定製造架構。
+The accelerator below is a teaching model; its manufacturing architecture has not been selected.
+
+3
+00:00:11.845 --> 00:00:15.619
+今天的成果是一張可追溯需求表。
+Our deliverable is a traceable requirements table.
+
+4
+00:00:15.619 --> 00:00:23.036
+你要說清楚它做什麼、在什麼條件下做到，以及用什麼證據判定合格。
+State what the system must do, under which conditions, and which evidence will demonstrate success.
+
+5
+00:00:23.036 --> 00:00:30.000
+漂亮的晶片堆疊，不能代替這三個答案。
+An impressive stack of chips cannot replace those three answers.
+
+6
+00:00:30.000 --> 00:00:38.746
+先把使用情境寫下來：這個假設的加速器要持續處理資料，不是只跑一秒的展示。
+Begin with the use case. Our hypothetical accelerator must process a sustained workload, not a one-second demonstration.
+
+7
+00:00:38.746 --> 00:00:46.884
+記錄資料大小、讀寫方向、尖峰與平均需求，還有允許的延遲和運作時間。
+Record data size, read and write directions, peak and average demand, allowed latency, and operating duration.
+
+8
+00:00:46.884 --> 00:00:52.212
+畫面中短高柱是突發流量，長平台是持續負載。
+The short tall bars represent bursts; the long plateau represents sustained activity.
+
+9
+00:00:52.212 --> 00:01:00.000
+兩者都要描述；只抄介面的最高速率，無法代表應用表現。
+Describe both. An interface's headline rate alone does not describe application performance.
+
+10
+00:01:00.000 --> 00:01:06.349
+現在建立四個需求編號：頻寬、散熱、空間與測試。
+Create four requirement identifiers: bandwidth, thermal performance, physical envelope, and test access.
+
+11
+00:01:06.349 --> 00:01:12.262
+每一列都要有條件、單位、門檻、驗證方法與責任人。
+Every row needs conditions, units, a threshold, a verification method, and an owner.
+
+12
+00:01:12.262 --> 00:01:19.268
+比如頻寬這列，要寫單一方向的有效資料率，而不是含糊的很快。
+For bandwidth, specify useful data rate in one direction, not simply fast.
+
+13
+00:01:19.268 --> 00:01:23.661
+尚未取得的數字保持待定，指定誰補齊。
+Leave unknown values open and assign responsibility for resolving them.
+
+14
+00:01:23.661 --> 00:01:30.000
+提案、估算與實測通過，是三種不同狀態。
+A proposal, an estimate, and a measured pass are different states.
+
+15
+00:01:30.000 --> 00:01:40.753
+看這個教學算例：單向六十四條通道，每條每秒十六吉位元，原始總量是一千零二十四吉位元。
+Consider this teaching example: sixty-four lanes in one direction, each carrying sixteen gigabits per second. Raw aggregate rate is one thousand twenty-four gigabits per second.
+
+16
+00:01:40.753 --> 00:01:49.973
+假設協定與負載合計效率八成，再除以八換成位元組，得到每秒一百零二點四吉位元組。
+Assume eighty percent combined protocol and workload efficiency; divide by eight to obtain one hundred two point four gigabytes per second.
+
+17
+00:01:49.973 --> 00:02:00.000
+這不是任何標準的保證規格；效率、方向與流量型態，都必須另外驗證。
+This is arithmetic, not a standards guarantee. Verify efficiency, direction, and traffic conditions separately.
+
+18
+00:02:00.000 --> 00:02:03.230
+散熱也先做有條件的估算。
+Start thermal planning with explicit assumptions.
+
+19
+00:02:03.230 --> 00:02:12.685
+假設持續功率二百五十瓦，完整冷卻系統的有效熱阻是每瓦零點一八度，環境三十五度。
+Assume two hundred fifty watts sustained, an effective resistance of zero point one eight kelvin per watt for the complete cooling system, and thirty-five degrees ambient.
+
+20
+00:02:12.685 --> 00:02:18.683
+簡化穩態估算得到八十度，比假設上限八十五度低五度。
+A lumped steady-state estimate gives eighty degrees, five below our illustrative limit.
+
+21
+00:02:18.683 --> 00:02:21.764
+但這不是最熱晶粒的驗證結果。
+That is not verified peak junction temperature.
+
+22
+00:02:21.764 --> 00:02:30.000
+接面、氣流、局部功率與暫態，都還需要建模和量測。
+Interfaces, airflow, local power, and transients still require modeling and measurement.
+
+23
+00:02:30.000 --> 00:02:32.496
+把視角拉到主機板。
+Pull back to the board.
+
+24
+00:02:32.496 --> 00:02:41.383
+案例暫留六十乘六十毫米、封裝本體高四毫米的空間，散熱器和固定件要另外計算。
+Reserve sixty by sixty millimeters and four millimeters of package-body height in this example; budget the cooler and mounting hardware separately.
+
+25
+00:02:41.383 --> 00:02:48.750
+再畫出電源進入晶粒的路徑，指定供電範圍、壓降預算與量測位置。
+Trace power into the dies, and specify supply range, voltage-drop budget, and measurement points.
+
+26
+00:02:48.750 --> 00:03:00.000
+小封裝不一定帶來小系統；插座、電容、走線和維修空間，都會改變最後布局。
+A smaller package does not automatically make a smaller system. Sockets, capacitors, routing, and service clearances affect the layout.
+
+27
+00:03:00.000 --> 00:03:04.221
+在晶粒被蓋住之前，決定怎麼觀察故障。
+Before a die becomes inaccessible, decide how faults will be observed.
+
+28
+00:03:04.221 --> 00:03:10.036
+先確認裸晶的測試資料，再規劃組裝後的連線與功能測試。
+Review incoming die-test evidence, then plan interconnect and functional tests after assembly.
+
+29
+00:03:10.036 --> 00:03:15.854
+畫面的探針代表可控制、可觀測的入口，不是實際探針尺寸。
+The probes symbolize controllable, observable access; their size is illustrative.
+
+30
+00:03:15.854 --> 00:03:19.016
+測不到的內部節點不能假裝正常。
+An unobservable internal node cannot simply be assumed good.
+
+31
+00:03:19.016 --> 00:03:30.000
+需求表要交代故障範圍、測試階段與資料歸屬，避免昂貴組裝後才發現缺口。
+Record fault scope, test stage, and data ownership, so expensive integration does not reveal a missing test strategy.
+
+32
+00:03:30.000 --> 00:03:32.757
+現在才比較候選架構。
+Now compare candidate architectures.
+
+33
+00:03:32.757 --> 00:03:42.928
+矽中介層、扇出重佈線與局部矽橋，是不同的互連路線；垂直混合鍵合還可能與其中某些路線組合。
+Silicon interposers, fan-out redistribution, and local silicon bridges provide different interconnect routes. Vertical hybrid bonding can also combine with some routes.
+
+34
+00:03:42.928 --> 00:03:46.853
+不要把它們排成每個產品都必經的流水線。
+Do not turn them into a mandatory serial factory line.
+
+35
+00:03:46.853 --> 00:03:53.146
+比較有效頻寬、功率、尺寸、測試能力、供應條件與總成本。
+Compare useful bandwidth, power, dimensions, test access, supply conditions, and total cost.
+
+36
+00:03:53.146 --> 00:04:00.000
+此刻保留候選，先列出需要證明的差異。
+Keep alternatives open while identifying the evidence needed to distinguish them.
+
+37
+00:04:00.000 --> 00:04:12.554
+試著破壞剛才的假設：若實際冷卻系統有效熱阻變成每瓦零點二二度，同樣功率下，簡化估算就升到九十度，超過案例門檻。
+Challenge the cooling assumption. If effective system resistance rises to zero point two two kelvin per watt, the same screening calculation reaches ninety degrees, exceeding our example limit.
+
+38
+00:04:12.554 --> 00:04:16.863
+這是待解決的風險，不是漂亮動畫中的通過。
+That is an unresolved risk, not an animated pass.
+
+39
+00:04:16.863 --> 00:04:23.610
+保存模型版本、邊界條件、量測位置與誤差，再比較持續吞吐量。
+Preserve model revision, boundary conditions, measurement locations, and uncertainty. Then check sustained throughput.
+
+40
+00:04:23.610 --> 00:04:30.000
+降頻後的速度，也必須算進需求驗證。
+Any performance reduction from thermal throttling belongs in the verification result.
+
+41
+00:04:30.000 --> 00:04:32.101
+最後回到全貌。
+Return to the complete system.
+
+42
+00:04:32.101 --> 00:04:37.350
+你交付的是有版本的需求基線，以及仍未解決的事項。
+Deliver a versioned requirements baseline and an explicit open-issues list.
+
+43
+00:04:37.350 --> 00:04:45.076
+每項關鍵需求，都要連到負責人和驗證證據；還沒量到的，維持待驗證。
+Link each critical requirement to an owner and its verification evidence; unmeasured items remain unverified.
+
+44
+00:04:45.076 --> 00:04:51.650
+下一道活動是功能與晶粒分割，把需求轉成候選系統構成。
+Next comes functional and die partitioning, turning requirements into candidate system compositions.
+
+45
+00:04:51.650 --> 00:05:00.000
+先問清楚成功的條件，後面的每一道製造與測試，才知道要證明什麼。
+Defining success first gives every later manufacturing and testing activity a clear purpose and a claim to demonstrate.

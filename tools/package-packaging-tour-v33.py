@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package only the six verified, standalone packaging films and their player.
+"""Package the verified packaging cinema, 120-activity atlas and completed C01 film.
 
 This never builds or publishes the academy and never collects its course data.
 The final six-film manifest and validation report must already exist and pass.
@@ -26,12 +26,57 @@ LANGUAGES = ('zh-TW', 'en', 'ja', 'ko', 'zh-CN')
 ASSETS = 'public/academy/assets/packaging-tour-v33'
 FIXED_FILES = (
     'README_PACKAGING_TOUR_V33.html',
+    'requirements-packaging-media-v34.txt',
+    'docs/PACKAGING_MEDIA_ENVIRONMENT_V34.json',
     'Start_Packaging_Tour_v33.sh',
+    'Upload_Packaging_YouTube_v33.sh',
+    'tools/publish-packaging-youtube-v33.py',
+    'tools/test-publish-packaging-youtube-v33.py',
+    'docs/PACKAGING_YOUTUBE_METADATA_V33.json',
     'tools/preview-packaging-tour-v33.py',
     'tools/export-packaging-subtitles-v33.mjs',
     'tools/finalize-packaging-videos-v33.py',
+    'tools/add-line-qr-packaging-v33.py',
     'tools/test-packaging-tour-v33.mjs',
     'tools/package-packaging-tour-v33.py',
+    'public/academy/packaging-youtube-v33.js',
+    'public/academy/packaging-narration-v33.js',
+    'public/academy/packaging-captions-v33.js',
+    'public/academy/packaging-media-v33.js',
+    'tools/export-bilingual-packaging-subtitles-v33.py',
+    'tools/test-bilingual-packaging-subtitles-v33.py',
+    'Upload_Narrated_V34.sh',
+    'tools/build-native-narration-v34.py',
+    'tools/test-native-narration-duration-v34.py',
+    'tools/collect-packaging-narration-v34.py',
+    'tools/build-all-packaging-narration-v34.py',
+    'tools/mux-narrated-packaging-v34.py',
+    'tools/prepare-narrated-youtube-job-v34.py',
+    'tools/build-c01-narrated-job-v34.py',
+    'tools/test-narrated-packaging-v34.py',
+    'tools/build-speech-aligned-subtitles-v34.py',
+    'docs/PACKAGING_YOUTUBE_METADATA_V34.json',
+    'docs/PACKAGING_PROCESS_C01_YOUTUBE_METADATA_V34.json',
+    'tools/preview-packaging-process-v34.py',
+    'tools/test-packaging-process-v34.mjs',
+    'tools/test-packaging-process-scene-v34.mjs',
+    'tools/test-packaging-process-player-v34.mjs',
+    'tools/build-c01-semantic-mapping-v34.mjs',
+    'docs/PACKAGING_PROCESS_ROADMAP_V34.json',
+    'docs/packaging-process-scripts-v34/C01.json',
+    'public/academy/packaging-process-v34.html',
+    'public/academy/packaging-process-v34.css',
+    'public/academy/packaging-process-v34.js',
+    'public/academy/packaging-process-data-v34.js',
+    'public/academy/packaging-process-c01-v34.js',
+    'public/academy/packaging-process-scene-v34.js',
+    'public/academy/packaging-process-film-v34.html',
+    'public/academy/packaging-process-film-v34.js',
+    'public/academy/packaging-process-film-v34.css',
+    'public/academy/packaging-process-media-v34.js',
+    'public/academy/packaging-process-captions-v34.js',
+    'public/academy/packaging-process-studio-v34.html',
+    'public/academy/packaging-process-studio-v34.js',
     'public/academy/packaging-tour-v33.html',
     'public/academy/packaging-tour-v33.js',
     'public/academy/packaging-tour-v33.css',
@@ -87,6 +132,8 @@ def check_films(root: Path):
     manifest = read_json(root, ASSETS + '/videos/manifest.json')
     if manifest.get('status') != 'PASS':
         fail('Film manifest must have status PASS.')
+    if manifest.get('silent') is not False:
+        fail('The new delivery requires narrated films, not silent originals.')
     films = manifest.get('videos')
     if not isinstance(films, list) or len(films) != len(TOURS):
         fail('Six finalized films are required; a partial manifest cannot be packaged.')
@@ -103,6 +150,8 @@ def check_films(root: Path):
             fail(identity + ': expected 1280×720 and ten chapters.')
         if sorted(film.get('subtitleLanguages', [])) != sorted(LANGUAGES):
             fail(identity + ': all five subtitle languages are required.')
+        if sorted(film.get('audioLanguages', [])) != sorted(LANGUAGES):
+            fail(identity + ': all five actual narration tracks are required.')
         file = checked_file(root, ASSETS + '/videos/' + identity + '.mp4')
         digest = film.get('sha256', '')
         if not re.fullmatch(r'[0-9a-f]{64}', digest) or file.stat().st_size != film.get('bytes'):
@@ -144,7 +193,7 @@ def collect(root: Path) -> list[str]:
 
     # Exact asset families prevent accidentally packaging owner course content,
     # recordings-in-progress, credentials, or unrelated files in the source tree.
-    expected_assets = {'videos/manifest.json'}
+    expected_assets = {'videos/manifest.json', 'videos/hosting.json', 'line-530pgchc-qr.png', 'line-530pgchc-endcard.png'}
     for identity in TOURS:
         expected_assets.add('videos/' + identity + '.mp4')
         expected_assets.add('transcripts/' + identity + '.ffmetadata')
@@ -152,6 +201,9 @@ def collect(root: Path) -> list[str]:
             expected_assets.add(f'stills/{identity}-{second}.jpg')
         for language in LANGUAGES:
             expected_assets.add(f'subtitles/{identity}.{language}.vtt')
+            expected_assets.add(f'subtitles-bilingual/{identity}.{language}.vtt')
+            expected_assets.add(f'subtitles-bilingual/{identity}.{language}.srt')
+            expected_assets.add(f'audio/{identity}.{language}.m4a')
             expected_assets.add(f'transcripts/{identity}.{language}.json')
     asset_root = root / ASSETS
     for file in asset_root.rglob('*'):
@@ -160,6 +212,24 @@ def collect(root: Path) -> list[str]:
         if file.is_file() and file.relative_to(asset_root).as_posix() not in expected_assets:
             fail('Unreviewed file in the tour asset folder: ' + str(file.relative_to(root)))
     selected.update(ASSETS + '/' + rel for rel in expected_assets)
+    process_base = 'public/academy/assets/packaging-process-v34'
+    process_assets = {'roadmap.json', 'C01/script.json', 'C01/poster.png', 'C01/C01.mp4', 'C01/manifest.json'}
+    for language in LANGUAGES:
+        process_assets.add(f'C01/audio/C01.{language}.m4a')
+        process_assets.add(f'C01/subtitles/C01.{language}.vtt')
+        process_assets.add(f'C01/subtitles/C01.{language}.srt')
+    for file in (root / process_base).rglob('*'):
+        if file.is_symlink() or (file.is_file() and file.relative_to(root / process_base).as_posix() not in process_assets):
+            fail('Unreviewed process asset: ' + str(file.relative_to(root)))
+    selected.update(process_base + '/' + rel for rel in process_assets)
+    process_manifest = read_json(root, process_base + '/C01/manifest.json')
+    process_file = checked_file(root, process_base + '/C01/C01.mp4')
+    if (process_manifest.get('status') != 'PASS' or process_manifest.get('durationSeconds') != 300
+            or process_manifest.get('sha256') != sha256_file(process_file)
+            or process_manifest.get('bytes') != process_file.stat().st_size
+            or set(process_manifest.get('audioLanguages', [])) != set(LANGUAGES)
+            or set(process_manifest.get('subtitleLanguages', [])) != set(LANGUAGES)):
+        fail('C01 process film must match its verified five-language manifest.')
     for relative in selected:
         checked_file(root, relative)
     return sorted(selected)
@@ -239,7 +309,7 @@ def main():
             for relative in files:
                 source = checked_file(root, relative)
                 info = zipfile.ZipInfo.from_file(source, arcname=PACKAGE + '/' + relative)
-                info.compress_type = zipfile.ZIP_STORED if source.suffix.lower() in {'.mp4', '.jpg', '.jpeg', '.png', '.webp'} else zipfile.ZIP_DEFLATED
+                info.compress_type = zipfile.ZIP_STORED if source.suffix.lower() in {'.mp4', '.m4a', '.jpg', '.jpeg', '.png', '.webp'} else zipfile.ZIP_DEFLATED
                 info.external_attr = (stat.S_IFREG | stat.S_IMODE(source.stat().st_mode)) << 16
                 with source.open('rb') as stream, z.open(info, 'w') as target:
                     for block in iter(lambda: stream.read(BLOCK_SIZE), b''):
@@ -266,7 +336,9 @@ def main():
         'uncompressedBytes': sum(item['bytes'] for item in expected.values()),
         'zipCRC': 'PASS', 'archivedFileHashes': 'PASS', 'sourceUnchangedDuringPackaging': 'PASS',
         'videos': manifest['videos'], 'videoMetadataBasis': 'Finalized PASS manifest; every MP4 SHA-256 and size reverified.',
-        'subtitleFiles': 30, 'stillImages': 18, 'privateCourseDataIncluded': False,
+        'overviewFilms': 6, 'processFilms': 1, 'processRoadmapItems': 120,
+        'audioFiles': 35, 'bilingualVttFiles': 35, 'bilingualSrtFiles': 35, 'legacySingleLanguageSubtitleFiles': 30,
+        'stillImages': 18, 'privateCourseDataIncluded': False,
         'typeDeclarationsIncluded': False,
     }
     report_path = output / 'PACKAGE_VALIDATION_PACKAGING_TOUR_V33.json'

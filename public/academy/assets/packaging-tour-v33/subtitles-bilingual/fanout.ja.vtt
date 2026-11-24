@@ -1,0 +1,156 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.660
+中央のダイの周囲は無駄な空間ではなく、配線を広げる場所です。
+Look down at the central die. The surrounding area is useful routing space, not empty waste.
+
+2
+00:00:07.660 --> 00:00:14.595
+再配線層は密集した接点を広い範囲へ配置し直します。
+Redistribution layers relocate dense die connections across a wider region.
+
+3
+00:00:14.595 --> 00:00:30.000
+ダイの輪郭と、その外へ伸びる線を比べて、シリコンとパッケージの大きさを区別しましょう。
+Compare the die outline with routes extending beyond it, and distinguish the size of the silicon from the size of its package.
+
+4
+00:00:30.000 --> 00:00:37.910
+シリコン、周囲の封止材、絶縁層、金属配線の境界へ降ります。
+Descend to the material boundaries: silicon dies, surrounding molding compound, dielectric layers and metal traces form one structure.
+
+5
+00:00:37.910 --> 00:00:44.328
+色は機能を区別するためで、メーカーの材料配合ではありません。
+Colors identify function, not a vendor recipe.
+
+6
+00:00:44.328 --> 00:01:00.000
+整った層が見た目を明快にし、異なる材料が一緒に変形することが技術上の課題になります。
+The ordered layers create visual clarity; the engineering challenge is how different materials deform together.
+
+7
+00:01:00.000 --> 00:01:07.630
+ダイ接点から外部はんだボールまで、平面配線と層間ビアを追います。
+Follow a die contact to an external solder ball through planar traces and interlayer vias.
+
+8
+00:01:07.630 --> 00:01:17.148
+RDL は自由な線画ではなく、線幅、間隔、帰路、絶縁の制約を受けます。
+RDL is constrained routing, not arbitrary drawing: width, spacing, return paths and insulation all matter.
+
+9
+00:01:17.148 --> 00:01:30.000
+層を変える場所と、接続位置を外側へ広げる場所を探してください。
+Identify where the route changes layer and where it moves the connection outward.
+
+10
+00:01:30.000 --> 00:01:40.670
+ダイを先に置いて再配線する工程と、RDL を先に作ってダイを載せる工程を比べます。
+Compare two flows: place dies before building redistribution layers, or form RDL before attaching dies.
+
+11
+00:01:40.670 --> 00:01:47.600
+どちらもファンアウトですが、歩留まりのリスクが現れる段階は異なります。
+Both are fan-out approaches, but yield risks enter at different stages.
+
+12
+00:01:47.600 --> 00:02:00.000
+完成形だけで判断せず、高価なダイをいつ投入するか確認します。
+The final outline alone does not reveal the process. Ask when valuable dies enter the assembly and what has already been tested.
+
+13
+00:02:00.000 --> 00:02:04.443
+薄いパッケージを層ごとに開きます。
+Open the thin package into separated layers.
+
+14
+00:02:04.443 --> 00:02:12.229
+絶縁層が金属層を分け、ビアが必要な点だけを接続します。
+Dielectrics separate metal layers, while vias connect selected locations.
+
+15
+00:02:12.229 --> 00:02:18.101
+厚みは見やすく拡大しており製造寸法ではありません。
+Thickness is exaggerated for visibility and must not be read as manufacturing scale.
+
+16
+00:02:18.101 --> 00:02:30.000
+隣の線をつなぐべきか、絶縁すべきかを確認します。
+Check whether adjacent routes should be connected or electrically isolated; that distinction is the purpose of the layer stack.
+
+17
+00:02:30.000 --> 00:02:35.329
+信号の近くにある基準導体も重要です。
+The reference conductor beside a signal is important too.
+
+18
+00:02:35.329 --> 00:02:44.163
+電流には閉じた経路が必要で、帰路の不連続は高速信号に影響します。
+Current needs a complete loop; a disrupted return path affects high-speed behavior.
+
+19
+00:02:44.163 --> 00:03:00.000
+上から配線を、断面から基準層の連続性を見て、形の背後にある電気的な秩序を理解します。
+Use the overhead view to inspect routing and the section to inspect reference continuity. Together, the two views explain the electrical order behind the geometry.
+
+20
+00:03:00.000 --> 00:03:05.538
+概念的な曲がりで熱膨張の違いを示します。
+A slight conceptual bend highlights mismatched thermal expansion.
+
+21
+00:03:05.538 --> 00:03:14.121
+反りは位置合わせ、接合、基板実装に影響し、外観だけの問題ではありません。
+Warpage can affect alignment, joining and board assembly; it is more than a cosmetic defect.
+
+22
+00:03:14.121 --> 00:03:17.572
+映像は変形を誇張しています。
+The animated bend is exaggerated.
+
+23
+00:03:17.572 --> 00:03:30.000
+評価には測定、材料特性、境界条件を定めた力学モデルが必要です。
+Evaluation requires measurements, material properties and a mechanical model with explicit boundary conditions.
+
+24
+00:03:30.000 --> 00:03:37.877
+接点で止まり、ダイが少しずれたら配線が正しく届くか考えます。
+Pause beside a contact and imagine the die shifting slightly. Would the intended route still land correctly?
+
+25
+00:03:37.877 --> 00:03:45.017
+位置、断線、短絡、界面欠陥を検査する必要があります。
+Inspection must address alignment, opens, shorts and interface defects.
+
+26
+00:03:45.017 --> 00:04:00.000
+映像で接触して見えることは接合品質の証拠ではなく、追跡可能な測定が必要です。
+Each suspected issue needs traceable measurement; a visually touching animated connection is not evidence of a functional joint.
+
+27
+00:04:00.000 --> 00:04:14.630
+全体を見ると、ファンアウトは柔軟な接点配置と薄型化を可能にしますが、多層化、微細化、大面積化は工程を難しくします。
+Step back: fan-out offers flexible connection placement and thin integration, while more layers, finer routing or larger area raise process demands.
+
+28
+00:04:14.630 --> 00:04:18.266
+必ず安価になるわけではありません。
+It is not automatically cheaper.
+
+29
+00:04:18.266 --> 00:04:30.000
+同じ機能、試験範囲、良品出荷を条件に比較します。
+Compare alternatives at equal function, test coverage and qualified output, rather than comparing package outlines alone.
+
+30
+00:04:30.000 --> 00:04:44.705
+接点と寸法の要求から始め、ダイ先行か RDL 先行かを選び、配線、反り対策、電気・信頼性検証へ進みます。
+Take this route with you: define connections and size, select die-first or RDL-first integration, plan routing, manage warpage and verify electrical behavior and reliability.
+
+31
+00:04:44.705 --> 00:05:00.000
+密集する出口を、製造でき検査できる整ったネットワークへ変えることがファンアウトの美しさです。
+Fan-out turns crowded die exits into an orderly network that must be manufacturable and inspectable, not merely visually elegant.

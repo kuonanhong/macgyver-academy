@@ -1,0 +1,141 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:11.883
+先俯瞰，再缓缓转成斜视：原本并排的功能可以上下堆叠，缩短某些晶粒间的路径。
+Begin overhead, then tilt: functions can be stacked rather than placed side by side, shortening selected die-to-die routes.
+
+2
+00:00:11.883 --> 00:00:20.169
+这不是把完整电路板直接叠起来，而是在精密控制的界面接合晶粒。
+This is not a stack of circuit boards. Dies meet at carefully controlled interfaces.
+
+3
+00:00:20.169 --> 00:00:30.000
+先数清有几层，再找每一层的角色。
+Count the layers and identify what each layer contributes before inspecting the bond.
+
+4
+00:00:30.000 --> 00:00:41.874
+上层可以放计算或存储功能，下层可以承接其他电路与连接；具体配置取决于架构。
+Upper and lower dies can divide compute, memory and connection functions in different ways. Architecture determines which functions belong together.
+
+5
+00:00:41.874 --> 00:00:46.043
+堆叠不保证每层都使用同一工艺。
+Their process technologies need not match.
+
+6
+00:00:46.043 --> 00:01:00.000
+这里是通用教学模型，不是 SoIC 或 Foveros 特定产品的内部配置图。
+This is a generic teaching model, not an internal floorplan of a particular SoIC or Foveros product.
+
+7
+00:01:00.000 --> 00:01:11.919
+靠近界面：铜接点建立电性连接，周围介电表面也参与接合，这就是混合键合的关键。
+Approach the interface: copper contacts provide electrical connections while surrounding dielectric surfaces also bond. That combination defines hybrid bonding.
+
+8
+00:01:11.919 --> 00:01:30.000
+不要把它画成一排大型焊球；焊料微凸块与直接混合键合是不同的互连方式，适用限制也不同。
+Do not picture a row of large solder balls. Solder microbumps and direct hybrid bonding are different interconnect approaches with different integration constraints.
+
+9
+00:01:30.000 --> 00:01:39.832
+让两片晶粒暂时分离，想象任何微粒或表面不平都可能留在接合界面。
+Separate the dies and imagine a particle or uneven surface trapped between them.
+
+10
+00:01:39.832 --> 00:01:47.017
+表面准备、洁净度、平坦度与对位精度共同决定质量。
+Surface preparation, cleanliness, flatness and alignment work together to determine bond quality.
+
+11
+00:01:47.017 --> 00:02:00.000
+动画把动作放慢是为了看懂原理，不提供清洗配方或工艺温度。
+The motion is slowed to explain the principle; it is not a cleaning recipe or a manufacturing temperature schedule.
+
+12
+00:02:00.000 --> 00:02:08.614
+分层示意中的接合距离虽短，数据仍要经过晶粒内部电路与布线。
+The bond interface is short, but data still traverses circuits and wiring within each die.
+
+13
+00:02:08.614 --> 00:02:15.476
+垂直连接只解决路径的一部分，不会让逻辑延迟消失。
+Vertical connectivity solves only part of the path; it does not remove logic delay.
+
+14
+00:02:15.476 --> 00:02:30.000
+找出跨越接合面的那一步，再把它放回完整的信号链。
+Identify the crossing between dies, then place that crossing back into the complete signal chain.
+
+15
+00:02:30.000 --> 00:02:38.660
+密集接点能让相邻层交换更多信息，但架构必须真的用得上这些连接。
+Dense contacts can support richer communication between layers, but the architecture must make use of them.
+
+16
+00:02:38.660 --> 00:02:47.665
+先决定数据分工，再规划接点与供电，不要先堆出最多接点才找用途。
+Define the division of data and work before allocating contacts and power. More connections are not a goal by themselves.
+
+17
+00:02:47.665 --> 00:03:00.000
+画面中的流动是信息关系示意，没有宣称特定速度。
+Animated movement shows information relationships, not a claimed transfer speed.
+
+18
+00:03:00.000 --> 00:03:03.934
+从侧面看热往外走的路径。
+From the side, follow heat out of the stack.
+
+19
+00:03:03.934 --> 00:03:11.335
+不同层的发热位置、界面热阻与散热器位置共同影响温度。
+Heat-source location, interface resistance and cooler placement jointly affect temperature.
+
+20
+00:03:11.335 --> 00:03:30.000
+不能认为堆叠越高就越好；把最热的电路放在哪里，是一开始就要解决的架构问题。
+A taller stack is not automatically better. Where the hottest circuits belong is an architectural decision to make early, not a problem to postpone until assembly.
+
+21
+00:03:30.000 --> 00:03:39.100
+被其他晶粒盖住的接点不容易再直接碰到，因此要预先设计测试访问。
+Contacts become difficult to reach after another die covers them, so test access must be designed in advance.
+
+22
+00:03:39.100 --> 00:03:46.327
+组装前筛选、接合后连通检查与系统测试各有任务。
+Pre-assembly screening, post-bond connectivity and system testing serve different purposes.
+
+23
+00:03:46.327 --> 00:04:00.000
+通过一次测试不是永久保证；要把覆盖率与剩余风险说清楚。
+One passing test is not a permanent guarantee; coverage and remaining risk must be explicit.
+
+24
+00:04:00.000 --> 00:04:09.075
+拉开到整体视角，高密度集成会同时提高界面质量与测试规划的重要性。
+Zoom out: dense integration makes interface quality and test planning more important.
+
+25
+00:04:09.075 --> 00:04:16.333
+已接合的晶粒未必能经济地拆换，所以前段筛选更有价值。
+Bonded dies may not be economical to replace, increasing the value of earlier screening.
+
+26
+00:04:16.333 --> 00:04:30.000
+比较方案时，要连同良品成本、热条件与返修能力一起看。
+Compare solutions using cost per good unit, thermal conditions and repair options together, rather than connection density alone.
+
+27
+00:04:30.000 --> 00:04:41.625
+最后的路线是功能分层、界面设计、表面准备、对位接合、可测试性与散热验证。
+The route is functional partitioning, interface design, surface preparation, alignment, bonding, testability and thermal verification.
+
+28
+00:04:41.625 --> 00:05:00.000
+记住：3D 的重点不是把楼盖高，而是让最需要沟通的功能靠近，同时让电流、热与测试都有可靠出口。
+The aim of 3D is not merely a taller building. It is to bring communicating functions closer while preserving dependable paths for electricity, heat and testing.

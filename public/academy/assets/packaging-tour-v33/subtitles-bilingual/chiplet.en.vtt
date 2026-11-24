@@ -1,0 +1,129 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.642
+Look over districts for compute, memory control and input/output.
+
+2
+00:00:05.642 --> 00:00:14.329
+Chiplets partition a system into integrable dies; placing arbitrary chips together does not make them cooperate.
+
+3
+00:00:14.329 --> 00:00:30.000
+First map which functions exchange which data, then decide where splitting the system is worthwhile.
+
+4
+00:00:30.000 --> 00:00:34.944
+Different functions need not use the same process technology.
+
+5
+00:00:34.944 --> 00:00:42.676
+Partitioning can match technology to purpose, but adds interface, power and packaging costs.
+
+6
+00:00:42.676 --> 00:01:00.000
+Chiplets are a design option, not a requirement for every product; a smaller, simpler system may favor another architecture.
+
+7
+00:01:00.000 --> 00:01:11.152
+At the die boundary, UCIe supplies standardized rules for on-package die-to-die connectivity, including physical and communication mechanisms.
+
+8
+00:01:11.152 --> 00:01:14.915
+It is not a silicon bridge or a cooling technology.
+
+9
+00:01:14.915 --> 00:01:30.000
+Separate the package structure from the interconnect standard before combining them into a system.
+
+10
+00:01:30.000 --> 00:01:40.007
+Before placing dies, align interface locations, power requirements, clocking strategy and package capability.
+
+11
+00:01:40.007 --> 00:01:47.948
+Standardization can reduce coordination work, but cannot automatically solve every compatibility issue.
+
+12
+00:01:47.948 --> 00:02:00.000
+The assembly animation represents designed integration, not a guarantee that any two components are plug-and-play.
+
+13
+00:02:00.000 --> 00:02:05.859
+The section reveals metal and contacts; the upper view shows messages.
+
+14
+00:02:05.859 --> 00:02:14.209
+Physical connectivity addresses reliable signaling, while protocols organize the meaning and management of data.
+
+15
+00:02:14.209 --> 00:02:19.165
+Similar-looking connections need not carry identical semantics.
+
+16
+00:02:19.165 --> 00:02:30.000
+Verify what functions both endpoints actually support.
+
+17
+00:02:30.000 --> 00:02:33.700
+Follow data between functional districts.
+
+18
+00:02:33.700 --> 00:02:43.060
+Every boundary crossing requires interface work; excessive partitioning can add communication and synchronization overhead.
+
+19
+00:02:43.060 --> 00:03:00.000
+The roadmap must budget data volume, latency and energy instead of merely adding up the computing capability of individual blocks.
+
+20
+00:03:00.000 --> 00:03:04.040
+Switch the function map to an illustrative heat map.
+
+21
+00:03:04.040 --> 00:03:07.988
+Observe the distance between a busy die and its neighbors.
+
+22
+00:03:07.988 --> 00:03:15.033
+System performance may be limited by the hottest die, weakest power path or busiest link.
+
+23
+00:03:15.033 --> 00:03:30.000
+Coordinate power management and cooling rather than treating dies as isolated islands.
+
+24
+00:03:30.000 --> 00:03:37.422
+Test not only whether dies work separately, but whether the assembled system meets shared conditions.
+
+25
+00:03:37.422 --> 00:03:45.181
+Exercise link startup, error handling and target workloads; record versions and configurations.
+
+26
+00:03:45.181 --> 00:04:00.000
+A UCIe label does not replace complete product-level integration and interoperability validation.
+
+27
+00:04:00.000 --> 00:04:09.566
+Reusing chiplets can make product families more flexible, while adding supplier, version and validation coordination.
+
+28
+00:04:09.566 --> 00:04:17.810
+Compare monolithic and chiplet designs using development time, cost per good unit and long-term maintenance.
+
+29
+00:04:17.810 --> 00:04:30.000
+No partition fits every need; preserve the reasoning behind each architectural trade-off.
+
+30
+00:04:30.000 --> 00:04:38.948
+Survey partitioning, interface selection, physical packaging, power, cooling and system validation.
+
+31
+00:04:38.948 --> 00:04:47.680
+Distinguish three questions: what each die does, how the package connects it and how protocols coordinate behavior.
+
+32
+00:04:47.680 --> 00:05:00.000
+Chiplet elegance comes from orderly specialization, supported by evidence that the whole system works.

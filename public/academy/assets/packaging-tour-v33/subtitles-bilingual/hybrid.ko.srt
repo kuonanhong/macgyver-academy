@@ -1,0 +1,169 @@
+1
+00:00:00,000 --> 00:00:03,490
+위에서 본 뒤 비스듬히 내려봅니다.
+Begin overhead, then tilt.
+
+2
+00:00:03,490 --> 00:00:09,370
+기능을 나란히 놓는 대신 쌓으면 일부 다이 간 경로를 줄일 수 있습니다.
+Functions can be stacked rather than placed side by side, shortening selected die-to-die routes.
+
+3
+00:00:09,370 --> 00:00:16,130
+회로 보드를 쌓는 방식이 아니라 정밀하게 관리한 계면에서 다이를 접합합니다.
+This is not a stack of circuit boards. Dies meet at carefully controlled interfaces.
+
+4
+00:00:16,130 --> 00:00:30,000
+먼저 층수와 각 층의 역할을 확인하세요.
+Count the layers and identify what each layer contributes before inspecting the bond.
+
+5
+00:00:30,000 --> 00:00:39,091
+상하 다이는 연산, 메모리, 연결 기능을 나눌 수 있으며 같은 제조 공정을 사용할 필요는 없습니다.
+Upper and lower dies can divide compute, memory and connection functions in different ways. Their process technologies need not match.
+
+6
+00:00:39,091 --> 00:00:46,483
+이 장면은 일반 교육 모델로 특정 SoIC 또는 Foveros 제품의 내부 배치도가 아닙니다.
+This is a generic teaching model, not an internal floorplan of a particular SoIC or Foveros product.
+
+7
+00:00:46,483 --> 00:01:00,000
+어떤 기능을 함께 쌓을지는 아키텍처가 결정합니다.
+Architecture determines which functions belong together.
+
+8
+00:01:00,000 --> 00:01:07,307
+계면에서 구리 접점은 전기적으로 연결되고 주변 유전체 표면도 접합됩니다.
+Approach the interface: copper contacts provide electrical connections while surrounding dielectric surfaces also bond.
+
+9
+00:01:07,307 --> 00:01:10,540
+이것이 하이브리드 본딩의 핵심입니다.
+That combination defines hybrid bonding.
+
+10
+00:01:10,540 --> 00:01:13,825
+큰 솔더볼의 줄로 이해하면 안 됩니다.
+Do not picture a row of large solder balls.
+
+11
+00:01:13,825 --> 00:01:30,000
+솔더 마이크로범프와 직접 하이브리드 본딩은 서로 다른 연결 방식이며 제약도 다릅니다.
+Solder microbumps and direct hybrid bonding are different interconnect approaches with different integration constraints.
+
+12
+00:01:30,000 --> 00:01:36,402
+다이를 분리하고 계면에 입자나 표면 요철이 남는 상황을 생각합니다.
+Separate the dies and imagine a particle or uneven surface trapped between them.
+
+13
+00:01:36,402 --> 00:01:44,281
+표면 준비, 청정도, 평탄도, 정렬 정확도가 함께 접합 품질을 좌우합니다.
+Surface preparation, cleanliness, flatness and alignment work together to determine bond quality.
+
+14
+00:01:44,281 --> 00:02:00,000
+느린 동작은 원리 설명용이며 세정 방법이나 공정 온도 조건을 제시하지 않습니다.
+The motion is slowed to explain the principle; it is not a cleaning recipe or a manufacturing temperature schedule.
+
+15
+00:02:00,000 --> 00:02:06,536
+접합 계면은 짧지만 데이터는 각 다이 내부 회로와 배선을 통과합니다.
+The bond interface is short, but data still traverses circuits and wiring within each die.
+
+16
+00:02:06,536 --> 00:02:12,467
+수직 연결은 경로의 일부를 해결할 뿐 논리 지연을 없애지는 않습니다.
+Vertical connectivity solves only part of the path; it does not remove logic delay.
+
+17
+00:02:12,467 --> 00:02:30,000
+다이 사이를 건너는 지점을 찾고 전체 신호 경로 안에서 그 의미를 확인하세요.
+Identify the crossing between dies, then place that crossing back into the complete signal chain.
+
+18
+00:02:30,000 --> 00:02:37,020
+조밀한 접점은 층간 통신을 늘릴 수 있지만 아키텍처가 이를 활용해야 합니다.
+Dense contacts can support richer communication between layers, but the architecture must make use of them.
+
+19
+00:02:37,020 --> 00:02:42,400
+접점과 전원을 배분하기 전에 데이터와 작업 분담을 정합니다.
+Define the division of data and work before allocating contacts and power.
+
+20
+00:02:42,400 --> 00:02:45,516
+연결 수 자체가 목적은 아닙니다.
+More connections are not a goal by themselves.
+
+21
+00:02:45,516 --> 00:03:00,000
+빛의 흐름은 정보 관계이며 특정 전송 속도를 나타내지 않습니다.
+Animated movement shows information relationships, not a claimed transfer speed.
+
+22
+00:03:00,000 --> 00:03:04,153
+측면에서 열이 빠져나가는 경로를 봅니다.
+From the side, follow heat out of the stack.
+
+23
+00:03:04,153 --> 00:03:10,360
+발열 위치, 계면 열저항, 냉각기 위치가 온도에 영향을 줍니다.
+Heat-source location, interface resistance and cooler placement jointly affect temperature.
+
+24
+00:03:10,360 --> 00:03:13,588
+높이 쌓을수록 좋은 것은 아닙니다.
+A taller stack is not automatically better.
+
+25
+00:03:13,588 --> 00:03:30,000
+가장 뜨거운 회로의 위치는 조립 후가 아니라 아키텍처 초기 단계에서 결정해야 합니다.
+Where the hottest circuits belong is an architectural decision to make early, not a problem to postpone until assembly.
+
+26
+00:03:30,000 --> 00:03:38,587
+다른 다이가 덮으면 접점에 직접 접근하기 어려워지므로 시험 접근 경로를 미리 설계해야 합니다.
+Contacts become difficult to reach after another die covers them, so test access must be designed in advance.
+
+27
+00:03:38,587 --> 00:03:45,221
+조립 전 선별, 접합 후 연결 확인, 시스템 시험은 역할이 다릅니다.
+Pre-assembly screening, post-bond connectivity and system testing serve different purposes.
+
+28
+00:03:45,221 --> 00:04:00,000
+한 번의 통과가 영구 보장은 아니므로 시험 범위와 남은 위험을 명확히 해야 합니다.
+One passing test is not a permanent guarantee; coverage and remaining risk must be explicit.
+
+29
+00:04:00,000 --> 00:04:06,778
+전체로 보면 고밀도 통합일수록 계면 품질과 시험 계획이 중요합니다.
+Zoom out: dense integration makes interface quality and test planning more important.
+
+30
+00:04:06,778 --> 00:04:13,841
+접합된 다이를 경제적으로 교체하기 어려울 수 있어 사전 선별 가치가 커집니다.
+Bonded dies may not be economical to replace, increasing the value of earlier screening.
+
+31
+00:04:13,841 --> 00:04:30,000
+연결 밀도만 보지 말고 양품 단가, 열 조건, 수리 가능성을 함께 비교해야 합니다.
+Compare solutions using cost per good unit, thermal conditions and repair options together, rather than connection density alone.
+
+32
+00:04:30,000 --> 00:04:40,514
+기능 분할, 계면 설계, 표면 준비, 정렬·접합, 시험 접근성, 열 검증이 전체 경로입니다.
+The route is functional partitioning, interface design, surface preparation, alignment, bonding, testability and thermal verification.
+
+33
+00:04:40,514 --> 00:04:45,031
+3D의 목표는 단순히 높이 쌓는 것이 아닙니다.
+The aim of 3D is not merely a taller building.
+
+34
+00:04:45,031 --> 00:05:00,000
+통신하는 기능을 가까이 두면서 전류, 열, 시험의 확실한 경로를 유지하는 것입니다.
+It is to bring communicating functions closer while preserving dependable paths for electricity, heat and testing.

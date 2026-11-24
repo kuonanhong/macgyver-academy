@@ -1,0 +1,164 @@
+1
+00:00:00,000 --> 00:00:04,105
+上空から斜めへ視点を変えます。
+Begin overhead, then tilt.
+
+2
+00:00:04,105 --> 00:00:11,074
+機能を上下に重ねると、一部のダイ間経路を短縮できます。
+Functions can be stacked rather than placed side by side, shortening selected die-to-die routes.
+
+3
+00:00:11,074 --> 00:00:18,657
+回路基板を積むのではなく、管理された界面でダイを接合します。
+This is not a stack of circuit boards. Dies meet at carefully controlled interfaces.
+
+4
+00:00:18,657 --> 00:00:30,000
+層を数え、それぞれの役割を確認しましょう。
+Count the layers and identify what each layer contributes before inspecting the bond.
+
+5
+00:00:30,000 --> 00:00:39,938
+上下のダイは演算、記憶、接続などを分担し、同じ製造プロセスとは限りません。
+Upper and lower dies can divide compute, memory and connection functions in different ways. Their process technologies need not match.
+
+6
+00:00:39,938 --> 00:00:50,216
+この模型は一般的な教材で、特定の SoIC や Foveros 製品の内部配置ではありません。
+This is a generic teaching model, not an internal floorplan of a particular SoIC or Foveros product.
+
+7
+00:00:50,216 --> 00:01:00,000
+何を重ねるかはアーキテクチャで決めます。
+Architecture determines which functions belong together.
+
+8
+00:01:00,000 --> 00:01:08,960
+界面では銅接点が電気をつなぎ、周囲の絶縁体表面も接合します。
+Approach the interface: copper contacts provide electrical connections while surrounding dielectric surfaces also bond.
+
+9
+00:01:08,960 --> 00:01:13,063
+この組合せがハイブリッド接合です。
+That combination defines hybrid bonding.
+
+10
+00:01:13,063 --> 00:01:17,011
+大きなはんだボールの列ではありません。
+Do not picture a row of large solder balls.
+
+11
+00:01:17,011 --> 00:01:30,000
+微細はんだバンプと直接接合は異なる方式で、制約も違います。
+Solder microbumps and direct hybrid bonding are different interconnect approaches with different integration constraints.
+
+12
+00:01:30,000 --> 00:01:37,269
+ダイを離し、粒子や凹凸が界面に残る様子を考えます。
+Separate the dies and imagine a particle or uneven surface trapped between them.
+
+13
+00:01:37,269 --> 00:01:45,419
+表面処理、清浄度、平坦度、位置精度が接合品質を左右します。
+Surface preparation, cleanliness, flatness and alignment work together to determine bond quality.
+
+14
+00:01:45,419 --> 00:02:00,000
+動作を遅くして原理を示しており、洗浄レシピや工程温度を提供するものではありません。
+The motion is slowed to explain the principle; it is not a cleaning recipe or a manufacturing temperature schedule.
+
+15
+00:02:00,000 --> 00:02:08,706
+接合界面は短くても、データは各ダイ内の回路や配線を通ります。
+The bond interface is short, but data still traverses circuits and wiring within each die.
+
+16
+00:02:08,706 --> 00:02:18,652
+縦方向接続が解決するのは経路の一部であり、論理遅延が消えるわけではありません。
+Vertical connectivity solves only part of the path; it does not remove logic delay.
+
+17
+00:02:18,652 --> 00:02:30,000
+界面を越える箇所を、信号経路全体の中で見直します。
+Identify the crossing between dies, then place that crossing back into the complete signal chain.
+
+18
+00:02:30,000 --> 00:02:39,424
+高密度接点は層間通信を豊かにできますが、活用できる設計が必要です。
+Dense contacts can support richer communication between layers, but the architecture must make use of them.
+
+19
+00:02:39,424 --> 00:02:46,173
+接点や給電を決める前に、データと処理の分担を定めます。
+Define the division of data and work before allocating contacts and power.
+
+20
+00:02:46,173 --> 00:03:00,000
+接点の多さ自体が目的ではなく、光の動きも特定の転送速度を示しません。
+More connections are not a goal by themselves. Animated movement shows information relationships, not a claimed transfer speed.
+
+21
+00:03:00,000 --> 00:03:04,022
+側面から熱の出口を追います。
+From the side, follow heat out of the stack.
+
+22
+00:03:04,022 --> 00:03:12,019
+発熱位置、界面熱抵抗、冷却器の位置が温度に影響します。
+Heat-source location, interface resistance and cooler placement jointly affect temperature.
+
+23
+00:03:12,019 --> 00:03:15,621
+高く積めばよいわけではありません。
+A taller stack is not automatically better.
+
+24
+00:03:15,621 --> 00:03:30,000
+最も熱い回路の配置は、組立後ではなく設計の初期に決める問題です。
+Where the hottest circuits belong is an architectural decision to make early, not a problem to postpone until assembly.
+
+25
+00:03:30,000 --> 00:03:39,427
+他のダイに覆われた接点へは直接触れにくくなるため、試験経路を先に設計します。
+Contacts become difficult to reach after another die covers them, so test access must be designed in advance.
+
+26
+00:03:39,427 --> 00:03:47,548
+組立前の選別、接合後の導通、システム試験は役割が異なります。
+Pre-assembly screening, post-bond connectivity and system testing serve different purposes.
+
+27
+00:03:47,548 --> 00:04:00,000
+一度の合格は永続的保証ではなく、範囲と残るリスクを示します。
+One passing test is not a permanent guarantee; coverage and remaining risk must be explicit.
+
+28
+00:04:00,000 --> 00:04:07,684
+全体を見ると、高密度化ほど界面品質と試験計画が重要です。
+Zoom out: dense integration makes interface quality and test planning more important.
+
+29
+00:04:07,684 --> 00:04:16,071
+接合後のダイ交換は経済的でない場合があり、事前選別の価値が高まります。
+Bonded dies may not be economical to replace, increasing the value of earlier screening.
+
+30
+00:04:16,071 --> 00:04:30,000
+接続密度だけでなく、良品単価、熱条件、修復性を一緒に比較します。
+Compare solutions using cost per good unit, thermal conditions and repair options together, rather than connection density alone.
+
+31
+00:04:30,000 --> 00:04:41,743
+機能分割、界面設計、表面準備、位置合わせ、接合、試験性、熱検証が道筋です。
+The route is functional partitioning, interface design, surface preparation, alignment, bonding, testability and thermal verification.
+
+32
+00:04:41,743 --> 00:04:46,029
+3D の目的は高さではありません。
+The aim of 3D is not merely a taller building.
+
+33
+00:04:46,029 --> 00:05:00,000
+通信する機能を近づけつつ、電流、熱、試験の確かな通り道を残すことです。
+It is to bring communicating functions closer while preserving dependable paths for electricity, heat and testing.

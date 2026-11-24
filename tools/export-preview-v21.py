@@ -24,6 +24,34 @@ def temporary_browser_file(relative):
     return (any(part.startswith('.') for part in relative.parts)
             or relative.name.casefold().endswith(('.bak', '.orig', '.tmp', '.part', '.download', '.swp', '.swo', '~')))
 
+def remote_packaging_videos(source):
+    """Only omit verified release copies from the Pages artifact, never source ZIPs."""
+    base = Path('assets/packaging-tour-v33/videos')
+    policy = source/base/'hosting.json'
+    if not policy.exists():
+        return set()
+    if policy.is_symlink():
+        raise ValueError('Unsafe packaging hosting policy.')
+    data = json.loads(policy.read_text('utf-8'))
+    ids = {'interposer','fanout','hybrid','bridge','chiplet','thermal'}
+    if data.get('status') != 'verified' or set(data.get('videos',{})) != ids:
+        raise ValueError('Packaging release has not been verified in full.')
+    omitted = set()
+    for identity, item in data['videos'].items():
+        rel = base/(identity+'.mp4')
+        file = source/rel
+        expected = 'https://github.com/kuonanhong/macgyver-academy/releases/download/'+data.get('tag','')+'/'+identity+'.mp4'
+        if (not re.fullmatch(r'[A-Za-z0-9_.-]+',data.get('tag',''))
+                or item.get('url') != expected
+                or not re.fullmatch(r'[0-9a-f]{64}',item.get('sha256',''))
+                or type(item.get('bytes')) is not int or item['bytes'] <= 0
+                or file.is_symlink() or not file.is_file()
+                or file.stat().st_size != item['bytes']
+                or hashlib.sha256(file.read_bytes()).hexdigest() != item['sha256']):
+            raise ValueError('Stale or unsafe packaging release asset: '+identity)
+        omitted.add(rel)
+    return omitted
+
 def serial(value):
     return json.dumps(value,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
 
@@ -229,6 +257,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
     if major not in {'21','22','23','24','25','26','27','28','29','30','31','32'}:
         raise ValueError('Rebuild V21, V22, V23, V24, V25, V26, V27, V28, V29, V30, V31 or V32 before exporting the public preview.')
     safe_index(index)
+    remote_videos = remote_packaging_videos(source) if http_only else set()
     compact=compact_index(index)
     if json.loads((source/'data/lazy/index.compact.json').read_text('utf-8'))!=compact:
         raise ValueError('Public expanded/compact indexes disagree; rebuild V21.')
@@ -250,7 +279,7 @@ def export(source: Path, output: Path, *, legacy_entrypoints=False, http_only=Fa
                 copy(src.relative_to(source))
         for folder in ('assets','vendor','i18n'):
             for src in (source/folder).rglob('*'):
-                if src.is_file() and not temporary_browser_file(src.relative_to(source)):copy(src.relative_to(source))
+                if src.is_file() and src.relative_to(source) not in remote_videos and not temporary_browser_file(src.relative_to(source)):copy(src.relative_to(source))
         (temp/'data/lazy').mkdir(parents=True,exist_ok=True)
         (temp/'data/lazy/index.json').write_text(serial(index)+'\n','utf-8')
         (temp/'data/lazy/index.compact.json').write_text(serial(compact)+'\n','utf-8')

@@ -1,0 +1,149 @@
+1
+00:00:00,000 --> 00:00:10,865
+先從上方看完整封裝：晶粒、接點、基板與散熱結構要在指定環境中長期合作。
+Survey the complete package: dies, joints, substrate and cooling must cooperate in a specified environment over time.
+
+2
+00:00:10,865 --> 00:00:21,436
+今天的路線不只看資料流，而是問「熱能否出去、缺陷能否發現、壽命是否有證據」。
+Today’s route asks whether heat can escape, defects can be found and lifetime claims have evidence.
+
+3
+00:00:21,436 --> 00:00:30,000
+這些問題從設計開始就要加入。
+These questions belong at the beginning of design, not only at final inspection.
+
+4
+00:00:30,000 --> 00:00:36,563
+沿著各晶粒停靠，標出不同工作負載下的功率分布。
+Visit each die and consider power distribution under different workloads.
+
+5
+00:00:36,563 --> 00:00:42,963
+總功率相同，熱點位置不同，溫度結果仍可能不同。
+Equal total power can produce different temperatures when hotspots move.
+
+6
+00:00:42,963 --> 00:01:00,000
+散熱設計需要空間與時間資訊，不能只拿一個平均瓦數代表所有使用情境。
+Cooling design needs spatial and time-dependent information; one average power number cannot represent every operating condition.
+
+7
+00:01:00,000 --> 00:01:07,195
+從晶粒向上飛，穿過熱介面材料、上蓋與散熱器。
+Travel upward from the die through interface material, lid and cooler.
+
+8
+00:01:07,195 --> 00:01:13,984
+每一層的厚度、接觸狀態與材料特性都可能限制熱流。
+Thickness, contact quality and material properties can each restrict heat flow.
+
+9
+00:01:13,984 --> 00:01:30,000
+不是只換一個更大的散熱器就一定有效；先找真正瓶頸在哪一段。
+A larger cooler alone may not solve the problem. Identify the limiting part of the path before changing the hardware.
+
+10
+00:01:30,000 --> 00:01:37,912
+把上蓋與介面分離，觀察接觸是否均勻、材料是否連續。
+Separate lid and interface to examine uniform contact and material continuity.
+
+11
+00:01:37,912 --> 00:01:44,848
+厚度差與空隙可能改變熱阻，機械固定也會影響接觸。
+Thickness variation and voids can change thermal resistance, while mechanical attachment affects contact.
+
+12
+00:01:44,848 --> 00:02:00,000
+這是理解品質的觀察框架，不提供可直接套用到產品的壓力或材料厚度設定。
+This is an inspection framework, not a transferable prescription for clamping pressure or interface thickness on a real product.
+
+13
+00:02:00,000 --> 00:02:09,602
+分層示意讓你看到熱不只往單一方向走，也可能經基板與周圍結構分流。
+The separated-layer view shows heat can split through the substrate and surrounding structures, not only move upward.
+
+14
+00:02:09,602 --> 00:02:16,334
+簡化熱阻網路可幫助初步判斷，但必須交代模型假設。
+A simplified thermal-resistance network helps early reasoning if its assumptions are stated.
+
+15
+00:02:16,334 --> 00:02:30,000
+動畫顏色沒有溫度刻度，不能用來讀出結溫或驗收產品。
+The animation has no temperature scale and cannot provide junction-temperature readings or product acceptance results.
+
+16
+00:02:30,000 --> 00:02:40,264
+讓示意訊號通過系統，區分元件測試、封裝後電性測試與系統級工作負載。
+Follow a test signal and distinguish component tests, post-package electrical tests and system workloads.
+
+17
+00:02:40,264 --> 00:02:43,147
+不同測試抓到不同失效。
+They expose different failures.
+
+18
+00:02:43,147 --> 00:03:00,000
+當結果不符預期，先保存條件與症狀，再把問題縮小到供電、連線、熱或邏輯等可能來源。
+When a result is unexpected, preserve conditions and symptoms before narrowing the cause to power, interconnect, temperature, logic or another subsystem.
+
+19
+00:03:00,000 --> 00:03:08,389
+觀看加熱與冷卻時的概念變形，不同材料會反覆拉扯接點與界面。
+Watch conceptual expansion and contraction as different materials load joints and interfaces repeatedly.
+
+20
+00:03:08,389 --> 00:03:16,692
+可靠度關心的是時間與循環下的變化，不只是剛組裝完能否通電。
+Reliability concerns change over time and cycling, not merely successful power-on after assembly.
+
+21
+00:03:16,692 --> 00:03:30,000
+實際試驗條件應依使用環境與適用規範制定，不能由示意動畫決定。
+Real test conditions must follow the use environment and applicable qualification requirements, never the timing of this illustration.
+
+22
+00:03:30,000 --> 00:03:36,171
+在檢查站結合影像、電性、溫度與失效位置。
+Combine images, electrical results, temperatures and failure locations.
+
+23
+00:03:36,171 --> 00:03:41,813
+單張影像能提示異常，卻不能獨自證明根因。
+One image can suggest a problem without proving its cause.
+
+24
+00:03:41,813 --> 00:04:00,000
+把模型預測和量測比較，記錄誤差與不確定性；只有經過驗證的數據，才應出現在工程結論裡。
+Compare model predictions with measurements and record error and uncertainty. Engineering conclusions should be supported by validated data rather than the apparent realism of a visualization.
+
+25
+00:04:00,000 --> 00:04:13,299
+比較兩種散熱或封裝方案時，固定工作負載、環境與量測方法，再看溫度、功耗、可靠度與成本。
+Compare package or cooling options under the same workload, environment and measurement method, then evaluate temperature, power, reliability and cost.
+
+26
+00:04:13,299 --> 00:04:19,637
+若同時改了太多條件，就難以判斷哪個改動有效。
+Changing many conditions at once obscures causality.
+
+27
+00:04:19,637 --> 00:04:30,000
+漂亮的下降曲線，必須能回到可重做的實驗。
+An attractive improvement curve must be traceable to an experiment that can be repeated.
+
+28
+00:04:30,000 --> 00:04:39,418
+最後升高，看需求、熱路徑、裝配品質、測試與可靠度如何連成一圈。
+Rise to see requirements, heat paths, assembly quality, testing and reliability form a feedback loop.
+
+29
+00:04:39,418 --> 00:04:50,888
+先進封裝的美感不只是精密層次，而是每一條資料、電力與熱的路線都有去處，每一項結論都有證據。
+Advanced packaging is beautiful when data, power and heat have deliberate routes and conclusions have evidence.
+
+30
+00:04:50,888 --> 00:05:00,000
+現在你可以帶著這張地圖，回到任何一種封裝技術。
+Carry this map back to any packaging technology and ask how the complete system is verified.

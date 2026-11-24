@@ -1,0 +1,203 @@
+1
+00:00:00,000 --> 00:00:05,551
+Welcome to activity one: defining system and package requirements.
+
+2
+00:00:05,551 --> 00:00:12,196
+The accelerator below is a teaching model; its manufacturing architecture has not been selected.
+
+3
+00:00:12,196 --> 00:00:15,742
+Our deliverable is a traceable requirements table.
+
+4
+00:00:15,742 --> 00:00:22,634
+State what the system must do, under which conditions, and which evidence will demonstrate success.
+
+5
+00:00:22,634 --> 00:00:30,000
+An impressive stack of chips cannot replace those three answers.
+
+6
+00:00:30,000 --> 00:00:32,002
+Begin with the use case.
+
+7
+00:00:32,002 --> 00:00:38,247
+Our hypothetical accelerator must process a sustained workload, not a one-second demonstration.
+
+8
+00:00:38,247 --> 00:00:46,096
+Record data size, read and write directions, peak and average demand, allowed latency, and operating duration.
+
+9
+00:00:46,096 --> 00:00:51,818
+The short tall bars represent bursts; the long plateau represents sustained activity.
+
+10
+00:00:51,818 --> 00:00:52,993
+Describe both.
+
+11
+00:00:52,993 --> 00:01:00,000
+An interface's headline rate alone does not describe application performance.
+
+12
+00:01:00,000 --> 00:01:07,766
+Create four requirement identifiers: bandwidth, thermal performance, physical envelope, and test access.
+
+13
+00:01:07,766 --> 00:01:13,546
+Every row needs conditions, units, a threshold, a verification method, and an owner.
+
+14
+00:01:13,546 --> 00:01:18,784
+For bandwidth, specify useful data rate in one direction, not simply fast.
+
+15
+00:01:18,784 --> 00:01:22,916
+Leave unknown values open and assign responsibility for resolving them.
+
+16
+00:01:22,916 --> 00:01:30,000
+A proposal, an estimate, and a measured pass are different states.
+
+17
+00:01:30,000 --> 00:01:37,754
+Consider this teaching example: sixty-four lanes in one direction, each carrying sixteen gigabits per second.
+
+18
+00:01:37,754 --> 00:01:41,834
+Raw aggregate rate is one thousand twenty-four gigabits per second.
+
+19
+00:01:41,834 --> 00:01:50,552
+Assume eighty percent combined protocol and workload efficiency; divide by eight to obtain one hundred two point four gigabytes per second.
+
+20
+00:01:50,552 --> 00:01:53,849
+This is arithmetic, not a standards guarantee.
+
+21
+00:01:53,849 --> 00:02:00,000
+Verify efficiency, direction, and traffic conditions separately.
+
+22
+00:02:00,000 --> 00:02:13,389
+Start thermal planning with explicit assumptions: two hundred fifty watts sustained, an effective resistance of zero point one eight kelvin per watt for the complete cooling system, and thirty-five degrees ambient.
+
+23
+00:02:13,389 --> 00:02:18,693
+A lumped steady-state estimate gives eighty degrees, five below our illustrative limit.
+
+24
+00:02:18,693 --> 00:02:21,635
+That is not verified peak junction temperature.
+
+25
+00:02:21,635 --> 00:02:30,000
+Interfaces, airflow, local power, and transients still require modeling and measurement.
+
+26
+00:02:30,000 --> 00:02:31,774
+Pull back to the board.
+
+27
+00:02:31,774 --> 00:02:40,667
+Reserve sixty by sixty millimeters and four millimeters of package-body height in this example; budget the cooler and mounting hardware separately.
+
+28
+00:02:40,667 --> 00:02:47,679
+Trace power into the dies, and specify supply range, voltage-drop budget, and measurement points.
+
+29
+00:02:47,679 --> 00:02:51,729
+A smaller package does not automatically make a smaller system.
+
+30
+00:02:51,729 --> 00:03:00,000
+Sockets, capacitors, routing, and service clearances affect the layout.
+
+31
+00:03:00,000 --> 00:03:04,949
+Before a die becomes inaccessible, decide how faults will be observed.
+
+32
+00:03:04,949 --> 00:03:11,053
+Review incoming die-test evidence, then plan interconnect and functional tests after assembly.
+
+33
+00:03:11,053 --> 00:03:16,442
+The probes symbolize controllable, observable access; their size is illustrative.
+
+34
+00:03:16,442 --> 00:03:20,151
+An unobservable internal node cannot simply be assumed good.
+
+35
+00:03:20,151 --> 00:03:30,000
+Record fault scope, test stage, and data ownership, so expensive integration does not reveal a missing test strategy.
+
+36
+00:03:30,000 --> 00:03:32,665
+Now compare candidate architectures.
+
+37
+00:03:32,665 --> 00:03:39,350
+Silicon interposers, fan-out redistribution, and local silicon bridges provide different interconnect routes.
+
+38
+00:03:39,350 --> 00:03:42,734
+Vertical hybrid bonding can also combine with some routes.
+
+39
+00:03:42,734 --> 00:03:46,155
+Do not turn them into a mandatory serial factory line.
+
+40
+00:03:46,155 --> 00:03:53,247
+Compare useful bandwidth, power, dimensions, test access, supply conditions, and total cost.
+
+41
+00:03:53,247 --> 00:04:00,000
+Keep alternatives open while identifying the evidence needed to distinguish them.
+
+42
+00:04:00,000 --> 00:04:02,125
+Challenge the cooling assumption.
+
+43
+00:04:02,125 --> 00:04:11,735
+If effective system resistance rises to zero point two two kelvin per watt, the same screening calculation reaches ninety degrees, exceeding our example limit.
+
+44
+00:04:11,735 --> 00:04:14,996
+That is an unresolved risk, not an animated pass.
+
+45
+00:04:14,996 --> 00:04:20,579
+Preserve model revision, boundary conditions, measurement locations, and uncertainty.
+
+46
+00:04:20,579 --> 00:04:30,000
+Then check sustained throughput; any performance reduction from thermal throttling belongs in the verification result.
+
+47
+00:04:30,000 --> 00:04:32,366
+Return to the complete system.
+
+48
+00:04:32,366 --> 00:04:37,121
+Deliver a versioned requirements baseline and an explicit open-issues list.
+
+49
+00:04:37,121 --> 00:04:44,380
+Link each critical requirement to an owner and its verification evidence; unmeasured items remain unverified.
+
+50
+00:04:44,380 --> 00:04:50,912
+Next comes functional and die partitioning, turning requirements into candidate system compositions.
+
+51
+00:04:50,912 --> 00:05:00,000
+Defining success first gives every later manufacturing and testing activity a clear purpose and a claim to demonstrate.

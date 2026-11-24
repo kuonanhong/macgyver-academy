@@ -1,0 +1,264 @@
+1
+00:00:00,000 --> 00:00:05,897
+最初の活動は、システムの役割とパッケージ要件の定義です。
+Welcome to activity one: defining system and package requirements.
+
+2
+00:00:05,897 --> 00:00:12,186
+このアクセラレーターは教材用モデルで、製造構造はまだ未選定です。
+The accelerator below is a teaching model; its manufacturing architecture has not been selected.
+
+3
+00:00:12,186 --> 00:00:16,786
+成果物は、根拠を追跡できる要件表です。
+Our deliverable is a traceable requirements table.
+
+4
+00:00:16,786 --> 00:00:22,933
+何を実現し、どの条件で動かし、どの証拠で合格と判断するか。
+State what the system must do, under which conditions, and which evidence will demonstrate success.
+
+5
+00:00:22,933 --> 00:00:30,000
+この三つの答えは、美しいチップの積層だけでは得られません。
+An impressive stack of chips cannot replace those three answers.
+
+6
+00:00:30,000 --> 00:00:32,494
+まず使用場面を記述します。
+Begin with the use case.
+
+7
+00:00:32,494 --> 00:00:38,111
+この仮想アクセラレーターには、一秒の実演ではなく、継続処理が必要です。
+Our hypothetical accelerator must process a sustained workload, not a one-second demonstration.
+
+8
+00:00:38,111 --> 00:00:44,273
+データ量、読み書きの方向、ピークと平均、許容遅延、運転時間を記録します。
+Record data size, read and write directions, peak and average demand, allowed latency, and operating duration.
+
+9
+00:00:44,273 --> 00:00:49,004
+高く短い棒は突発的な負荷、長い台地は持続負荷です。
+The short tall bars represent bursts; the long plateau represents sustained activity.
+
+10
+00:00:49,004 --> 00:00:50,757
+両方を定義しましょう。
+Describe both.
+
+11
+00:00:50,757 --> 00:01:00,000
+接続仕様の最高速度だけでは、実際の処理性能を表せません。
+An interface's headline rate alone does not describe application performance.
+
+12
+00:01:00,000 --> 00:01:05,405
+帯域、放熱、寸法、テストの四つに要件番号を付けます。
+Create four requirement identifiers: bandwidth, thermal performance, physical envelope, and test access.
+
+13
+00:01:05,405 --> 00:01:11,499
+各行には、条件、単位、基準値、検証方法、担当者が必要です。
+Every row needs conditions, units, a threshold, a verification method, and an owner.
+
+14
+00:01:11,499 --> 00:01:16,917
+帯域なら、単に高速とせず、一方向の有効データ速度を指定します。
+For bandwidth, specify useful data rate in one direction, not simply fast.
+
+15
+00:01:16,917 --> 00:01:20,793
+不明な数値は未決のまま、確認担当を決めます。
+Leave unknown values open and assign responsibility for resolving them.
+
+16
+00:01:20,793 --> 00:01:30,000
+提案、概算、実測による合格は、区別して管理してください。
+A proposal, an estimate, and a measured pass are different states.
+
+17
+00:01:30,000 --> 00:01:32,393
+教材の計算例です。
+Consider this teaching example.
+
+18
+00:01:32,393 --> 00:01:36,956
+一方向に六十四レーン、各レーンは毎秒十六ギガビット。
+Sixty-four lanes in one direction, each carrying sixteen gigabits per second.
+
+19
+00:01:36,956 --> 00:01:40,610
+生の合計は毎秒千二十四ギガビットです。
+Raw aggregate rate is one thousand twenty-four gigabits per second.
+
+20
+00:01:40,610 --> 00:01:49,597
+通信規約と負荷を合わせた効率を八割と仮定し、八で割ってバイトにすると、毎秒百二点四ギガバイトになります。
+Assume eighty percent combined protocol and workload efficiency; divide by eight to obtain one hundred two point four gigabytes per second.
+
+21
+00:01:49,597 --> 00:01:52,439
+規格が保証する値ではありません。
+This is not a standards guarantee.
+
+22
+00:01:52,439 --> 00:02:00,000
+効率、方向、通信条件は別途検証します。
+Verify efficiency, direction, and traffic conditions separately.
+
+23
+00:02:00,000 --> 00:02:02,732
+熱も条件を明示して概算します。
+Start thermal planning with explicit assumptions.
+
+24
+00:02:02,732 --> 00:02:10,546
+持続電力二百五十ワット、冷却系全体の有効熱抵抗を一ワット当たり零点一八度、周囲を三十五度と仮定します。
+Assume two hundred fifty watts sustained, an effective resistance of zero point one eight kelvin per watt for the complete cooling system, and thirty-five degrees ambient.
+
+25
+00:02:10,546 --> 00:02:15,977
+集中定数の定常計算は八十度で、仮の上限八十五度より五度低い値です。
+A lumped steady-state estimate gives eighty degrees, five below our illustrative limit.
+
+26
+00:02:15,977 --> 00:02:18,808
+ただし最高接合温度の検証ではありません。
+That is not verified peak junction temperature.
+
+27
+00:02:18,808 --> 00:02:30,000
+界面、気流、局所電力、過渡状態を解析し、測定する必要があります。
+Interfaces, airflow, local power, and transients still require modeling and measurement.
+
+28
+00:02:30,000 --> 00:02:32,224
+基板全体を見ましょう。
+Pull back to the board.
+
+29
+00:02:32,224 --> 00:02:40,132
+この例では、本体用に六十ミリ四方、高さ四ミリを確保し、冷却器や固定具は別に計上します。
+Reserve sixty by sixty millimeters and four millimeters of package-body height in this example; budget the cooler and mounting hardware separately.
+
+30
+00:02:40,132 --> 00:02:46,723
+電源がダイへ入る経路を描き、供給範囲、電圧降下の予算、測定点を指定します。
+Trace power into the dies, and specify supply range, voltage-drop budget, and measurement points.
+
+31
+00:02:46,723 --> 00:02:51,102
+小さなパッケージが、小さなシステムを意味するとは限りません。
+A smaller package does not automatically make a smaller system.
+
+32
+00:02:51,102 --> 00:03:00,000
+ソケット、容量部品、配線、保守空間も配置を左右します。
+Sockets, capacitors, routing, and service clearances affect the layout.
+
+33
+00:03:00,000 --> 00:03:03,783
+ダイが隠れる前に、故障の観測方法を決めます。
+Before a die becomes inaccessible, decide how faults will be observed.
+
+34
+00:03:03,783 --> 00:03:09,811
+受け入れ時のダイ試験の証拠を確認し、組立後の接続試験と機能試験を計画します。
+Review incoming die-test evidence, then plan interconnect and functional tests after assembly.
+
+35
+00:03:09,811 --> 00:03:14,458
+探針は制御と観測の入口を示す記号で、実寸ではありません。
+The probes symbolize controllable, observable access; their size is illustrative.
+
+36
+00:03:14,458 --> 00:03:18,097
+観測できない内部点を、良品とみなしてはいけません。
+An unobservable internal node cannot simply be assumed good.
+
+37
+00:03:18,097 --> 00:03:30,000
+故障範囲、試験段階、データの担当を記録し、高価な組立後に不足が判明するのを防ぎます。
+Record fault scope, test stage, and data ownership, so expensive integration does not reveal a missing test strategy.
+
+38
+00:03:30,000 --> 00:03:32,637
+ここで候補構造を比較します。
+Now compare candidate architectures.
+
+39
+00:03:32,637 --> 00:03:38,408
+シリコンインターポーザー、ファンアウト配線、局所シリコンブリッジは、異なる接続経路です。
+Silicon interposers, fan-out redistribution, and local silicon bridges provide different interconnect routes.
+
+40
+00:03:38,408 --> 00:03:42,360
+垂直ハイブリッド接合は、一部と組み合わせることもできます。
+Vertical hybrid bonding can also combine with some routes.
+
+41
+00:03:42,360 --> 00:03:45,724
+すべてを必須の連続工程に並べてはいけません。
+Do not turn them into a mandatory serial factory line.
+
+42
+00:03:45,724 --> 00:04:00,000
+有効帯域、電力、寸法、試験性、供給条件、総費用を比べ、候補の差を証明するために必要な証拠を整理します。
+Compare useful bandwidth, power, dimensions, test access, supply conditions, and total cost; identify the evidence needed to distinguish candidates.
+
+43
+00:04:00,000 --> 00:04:02,348
+冷却の仮定を変えてみます。
+Challenge the cooling assumption.
+
+44
+00:04:02,348 --> 00:04:10,601
+有効熱抵抗が一ワット当たり零点二二度になると、同じ電力でも概算は九十度となり、教材の上限を超えます。
+If effective system resistance rises to zero point two two kelvin per watt, the same screening calculation reaches ninety degrees, exceeding our example limit.
+
+45
+00:04:10,601 --> 00:04:14,439
+これは未解決のリスクで、動画上の合格ではありません。
+That is an unresolved risk, not an animated pass.
+
+46
+00:04:14,439 --> 00:04:20,664
+モデル版、境界条件、測定位置、不確かさを保存し、持続的な処理速度を確認します。
+Preserve model revision, boundary conditions, measurement locations, and uncertainty. Then check sustained throughput.
+
+47
+00:04:20,664 --> 00:04:30,000
+温度制御による速度低下も、検証結果に含めます。
+Any performance reduction from thermal throttling belongs in the verification result.
+
+48
+00:04:30,000 --> 00:04:32,203
+最後に全体へ戻ります。
+Return to the complete system.
+
+49
+00:04:32,203 --> 00:04:36,618
+成果物は、版管理した要件基準と未解決事項の一覧です。
+Deliver a versioned requirements baseline and an explicit open-issues list.
+
+50
+00:04:36,618 --> 00:04:42,645
+重要な要件を担当者と検証証拠につなぎ、未測定項目は未検証のままにします。
+Link each critical requirement to an owner and its verification evidence; unmeasured items remain unverified.
+
+51
+00:04:42,645 --> 00:04:44,745
+次は機能とダイの分割です。
+Next comes functional and die partitioning.
+
+52
+00:04:44,745 --> 00:04:47,593
+要件を候補システム構成へ変換します。
+Turn requirements into candidate system compositions.
+
+53
+00:04:47,593 --> 00:05:00,000
+成功の条件を先に定義すれば、後続の製造と試験で何を証明すべきかが明確になります。
+Defining success first gives every later manufacturing and testing activity a clear purpose and a claim to demonstrate.

@@ -1,0 +1,164 @@
+1
+00:00:00,000 --> 00:00:07,146
+上空から隣り合うダイの境界にある接続部分を探します。
+From above, find the narrow connection zone between neighboring dies.
+
+2
+00:00:07,146 --> 00:00:17,248
+局所シリコンブリッジは必要な場所に微細配線を集中させ、周囲は基板が支えます。
+A local silicon bridge concentrates fine routing where a crossing is needed, while the substrate serves the surrounding area.
+
+3
+00:00:17,248 --> 00:00:30,000
+橋の場所を見つけ、底面全体を橋にしなくてよい理由を考えます。
+Locate the bridge first, then ask why the whole package floor does not need to become one.
+
+4
+00:00:30,000 --> 00:00:37,803
+橋だけを強調すると、広い面積を覆う中間層との違いが分かります。
+Highlight the bridge to distinguish it from a broad interposer.
+
+5
+00:00:37,803 --> 00:00:45,163
+どちらも異種集積を支えますが、微細配線の配置方法が異なります。
+Both support heterogeneous integration, but distribute fine routing differently.
+
+6
+00:00:45,163 --> 00:01:00,000
+この模型は基板埋込み型の概念で、全製品に共通する構造図ではありません。
+This model explains a bridge embedded in a substrate; bridge-based products can differ in structure, so the illustration is not a universal vendor structure.
+
+7
+00:01:00,000 --> 00:01:03,989
+向かい合うダイの縁に沿って飛びます。
+Fly along facing die edges.
+
+8
+00:01:03,989 --> 00:01:14,585
+橋の配線は所定の接点に合う必要があり、自由に回転させても接続は成立しません。
+Bridge channels must meet the intended contacts; rotating a die arbitrarily will not make compatible wiring appear.
+
+9
+00:01:14,585 --> 00:01:30,000
+縁の長さ、接点配置、インターフェースの向きは、システム配置計画の一部です。
+Available die-edge length, contact placement and interface orientation belong in the system floorplan, before the bridge is treated as a finished connection.
+
+10
+00:01:30,000 --> 00:01:32,146
+基板へ降ります。
+Descend toward the substrate.
+
+11
+00:01:32,146 --> 00:01:44,834
+橋と周囲の材料は組立可能な面を作る必要があり、埋込み、位置合わせ、搭載、接点形成には公差があります。
+The bridge and surrounding material must create an assembly-compatible surface. Embedding, alignment, die placement and contact formation all have tolerances.
+
+12
+00:01:44,834 --> 00:01:51,016
+ここでは関係を示し、特定装置の手順ではありません。
+This sequence explains assembly relationships, not a particular machine recipe.
+
+13
+00:01:51,016 --> 00:02:00,000
+実作業は認定工程書に従います。
+Actual work follows qualified process documentation.
+
+14
+00:02:00,000 --> 00:02:08,393
+分けた層からダイ間信号と、基板へ向かう電源・外部接続を分けて追います。
+In the separated-layer view, trace die-to-die signals separately from power and external connections toward the substrate.
+
+15
+00:02:08,393 --> 00:02:12,893
+すべてが同じ橋を渡る必要はありません。
+They need not all cross the same bridge.
+
+16
+00:02:12,893 --> 00:02:30,000
+縦方向構造を加える方式もあるため、この簡略な分層図から全製品の給電方式を推測してはいけません。
+Some bridge technologies add vertical structures, so this simplified view must not be used to infer every product’s power-delivery arrangement.
+
+17
+00:02:30,000 --> 00:02:34,145
+光る経路は幾何的な接続です。
+Glowing paths show geometric connectivity.
+
+18
+00:02:34,145 --> 00:02:40,571
+通信には両端の信号とプロトコルの適合が必要です。
+Communication still requires compatible signaling and protocols at both ends.
+
+19
+00:02:40,571 --> 00:02:48,418
+橋は物理的な集積方法で、特定の通信規格そのものではありません。
+A bridge is a physical integration approach, not a single communication standard.
+
+20
+00:02:48,418 --> 00:03:00,000
+UCIe 編では道路の作り方と通信ルールを分けて説明します。
+The UCIe tour separates the question of how roads are built from how participants communicate over them.
+
+21
+00:03:00,000 --> 00:03:04,642
+橋、基板、ダイは異なる材料です。
+Bridge, substrate and dies are different materials.
+
+22
+00:03:04,642 --> 00:03:11,139
+温度変化による変形の差が接合部に応力を生みます。
+Temperature changes can create mismatched deformation and concentrate stress near joints.
+
+23
+00:03:11,139 --> 00:03:15,022
+熱と機械を一緒に解析します。
+Thermal and mechanical analysis belong together.
+
+24
+00:03:15,022 --> 00:03:30,000
+面積が小さいという理由だけで、橋の信頼性リスクがないとは判断できません。
+A small bridge is not automatically free of reliability risk simply because it occupies little area.
+
+25
+00:03:30,000 --> 00:03:39,311
+断線と短絡を調べ、指定条件で正しいデータを交換できるか確認します。
+Check channels for opens and shorts, then verify that the dies exchange correct data under specified conditions.
+
+26
+00:03:39,311 --> 00:03:47,299
+幾何的な整列、電気的導通、システム機能は別々の証拠です。
+Geometric alignment, electrical continuity and system function are different evidence layers.
+
+27
+00:03:47,299 --> 00:04:00,000
+故障時は接点、信号品質、プロトコル設定を切り分けます。
+Diagnose failures by separating joint defects, signal quality and protocol configuration.
+
+28
+00:04:00,000 --> 00:04:10,909
+局所ブリッジは精密さを必要箇所へ集中できますが、配置と基板統合に制約も生みます。
+Local bridges focus precision where it is needed, but constrain floorplanning and substrate integration.
+
+29
+00:04:10,909 --> 00:04:19,474
+シリコン面積だけでなく、組立、供給網、試験、歩留まりを比べます。
+Compare more than silicon area: include assembly complexity, supply chain, testing and yield.
+
+30
+00:04:19,474 --> 00:04:30,000
+選択基準は見栄えではなく製品全体の要求です。
+The right choice serves the complete product, rather than rewarding the most visually appealing structure.
+
+31
+00:04:30,000 --> 00:04:42,084
+通信するダイ、縁のインターフェース、橋、電源と冷却を配置し、試験で協調動作を証明します。
+Return overhead: choose communicating dies, arrange edge interfaces, place bridges, plan power and cooling, then prove cooperation through testing.
+
+32
+00:04:42,084 --> 00:04:49,070
+全体を複雑にせず、重要な接続に精密さを注ぐ。
+Reserve precision for critical crossings instead of making every part of the package equally complex.
+
+33
+00:04:49,070 --> 00:05:00,000
+その節度が、この技術の美しさです。
+That restraint is the visual beauty of this approach.

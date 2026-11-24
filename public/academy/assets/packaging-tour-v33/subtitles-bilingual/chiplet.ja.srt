@@ -1,0 +1,154 @@
+1
+00:00:00,000 --> 00:00:06,439
+演算、メモリー制御、入出力の街区を見渡します。
+Look over districts for compute, memory control and input/output.
+
+2
+00:00:06,439 --> 00:00:15,661
+チップレットは統合可能なダイへの分割であり、任意のチップを並べることではありません。
+Chiplets partition a system into integrable dies; placing arbitrary chips together does not make them cooperate.
+
+3
+00:00:15,661 --> 00:00:30,000
+まず機能間のデータ交換を描き、どこを分ける価値があるか決めます。
+First map which functions exchange which data, then decide where splitting the system is worthwhile.
+
+4
+00:00:30,000 --> 00:00:37,019
+すべての機能が同じ製造技術を必要とするわけではありません。
+Different functions need not use the same process technology.
+
+5
+00:00:37,019 --> 00:00:44,773
+分割で技術を選べますが、接続、電源、パッケージのコストも増えます。
+Partitioning can match technology to purpose, but adds interface, power and packaging costs.
+
+6
+00:00:44,773 --> 00:01:00,000
+チップレットは選択肢であり、単純な小規模システムでは別の構成が適する場合があります。
+Chiplets are a design option, not a requirement for every product; a smaller, simpler system may favor another architecture.
+
+7
+00:01:00,000 --> 00:01:12,259
+ダイの境界で、UCIe はパッケージ内のダイ間接続に物理層や通信機構の共通規則を与えます。
+At the die boundary, UCIe supplies standardized rules for on-package die-to-die connectivity, including physical and communication mechanisms.
+
+8
+00:01:12,259 --> 00:01:16,968
+シリコンブリッジや冷却技術ではありません。
+It is not a silicon bridge or a cooling technology.
+
+9
+00:01:16,968 --> 00:01:30,000
+パッケージ構造と相互接続規格を分けて理解してから組み合わせます。
+Separate the package structure from the interconnect standard before combining them into a system.
+
+10
+00:01:30,000 --> 00:01:38,672
+搭載前にインターフェース位置、電源、クロック、パッケージ技術の能力を揃えます。
+Before placing dies, align interface locations, power requirements, clocking strategy and package capability.
+
+11
+00:01:38,672 --> 00:01:46,494
+標準化は調整を減らせても、全ての相性問題を自動解決しません。
+Standardization can reduce coordination work, but cannot automatically solve every compatibility issue.
+
+12
+00:01:46,494 --> 00:02:00,000
+模型の組合せは設計済みの統合であり、任意部品の交換可能性を保証しません。
+The assembly animation represents designed integration, not a guarantee that any two components are plug-and-play.
+
+13
+00:02:00,000 --> 00:02:06,442
+断面では金属と接点、上ではメッセージを見ます。
+The section reveals metal and contacts; the upper view shows messages.
+
+14
+00:02:06,442 --> 00:02:16,095
+物理接続は信号を確実に運べるかを扱い、プロトコルは意味と管理を定めます。
+Physical connectivity addresses reliable signaling, while protocols organize the meaning and management of data.
+
+15
+00:02:16,095 --> 00:02:30,000
+同じ形でも意味は同じとは限らず、両端が対応する機能を確認します。
+Similar-looking connections need not carry identical semantics. Verify what functions both endpoints actually support.
+
+16
+00:02:30,000 --> 00:02:37,819
+機能間のデータを追うと、境界ごとにインターフェース処理が必要です。
+Follow data between functional districts. Every boundary crossing requires interface work.
+
+17
+00:02:37,819 --> 00:02:43,545
+細かく分けすぎると通信と同期の負担が増えます。
+Excessive partitioning can add communication and synchronization overhead.
+
+18
+00:02:43,545 --> 00:03:00,000
+各ブロックの計算能力を足すだけでなく、データ量、遅延、エネルギーを配分します。
+The roadmap must budget data volume, latency and energy instead of merely adding up the computing capability of individual blocks.
+
+19
+00:03:00,000 --> 00:03:05,066
+機能地図を概念的な熱地図へ変えます。
+Switch the function map to an illustrative heat map.
+
+20
+00:03:05,066 --> 00:03:09,374
+高負荷ダイと周囲の距離を見てください。
+Observe the distance between a busy die and its neighbors.
+
+21
+00:03:09,374 --> 00:03:17,228
+最も熱いダイ、弱い給電、混雑したリンクが性能を制限します。
+System performance may be limited by the hottest die, weakest power path or busiest link.
+
+22
+00:03:17,228 --> 00:03:30,000
+独立した島と考えず、電力管理と冷却を協調させます。
+Coordinate power management and cooling rather than treating dies as isolated islands.
+
+23
+00:03:30,000 --> 00:03:38,550
+個別のダイだけでなく、接続したシステムが共通条件を満たすか試験します。
+Test not only whether dies work separately, but whether the assembled system meets shared conditions.
+
+24
+00:03:38,550 --> 00:03:46,159
+リンク起動、エラー処理、対象負荷を確認し、版と設定を記録します。
+Exercise link startup, error handling and target workloads; record versions and configurations.
+
+25
+00:03:46,159 --> 00:04:00,000
+UCIe の名称だけでは製品全体の相互運用検証を代替できません。
+A UCIe label does not replace complete product-level integration and interoperability validation.
+
+26
+00:04:00,000 --> 00:04:10,660
+再利用は製品展開を柔軟にしますが、供給元、版、検証の調整も増えます。
+Reusing chiplets can make product families more flexible, while adding supplier, version and validation coordination.
+
+27
+00:04:10,660 --> 00:04:19,286
+一枚のチップと比較するときは開発期間、良品単価、長期保守を見ます。
+Compare monolithic and chiplet designs using development time, cost per good unit and long-term maintenance.
+
+28
+00:04:19,286 --> 00:04:30,000
+万能な分割はなく、選択理由を地図に残します。
+No partition fits every need; preserve the reasoning behind each architectural trade-off.
+
+29
+00:04:30,000 --> 00:04:40,492
+機能分割、接続規格、物理的なパッケージ、電源、冷却、システム検証を見渡します。
+Survey partitioning, interface selection, physical packaging, power, cooling and system validation.
+
+30
+00:04:40,492 --> 00:04:48,630
+ダイの役割、パッケージのつなぎ方、通信の協調という三点を区別します。
+Distinguish three questions: what each die does, how the package connects it and how protocols coordinate behavior.
+
+31
+00:04:48,630 --> 00:05:00,000
+秩序ある分担が美しさを生み、検証がそれを成立させます。
+Chiplet elegance comes from orderly specialization, supported by evidence that the whole system works.

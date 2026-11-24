@@ -18,7 +18,7 @@ def main():
         def send_head(self):
             self.range_remaining=None
             path=Path(self.translate_path(self.path))
-            if path.suffix.lower()!='.mp4' or not path.is_file():return super().send_head()
+            if path.suffix.lower() not in {'.mp4','.m4a'} or not path.is_file():return super().send_head()
             if not path.resolve().is_relative_to((ROOT/'public/academy').resolve()):
                 self.send_error(403);return None
             size=path.stat().st_size;start=0;end=size-1;status=200
@@ -34,7 +34,7 @@ def main():
                     self.send_response(416);self.send_header('Content-Range',f'bytes */{size}');self.send_header('Content-Length','0');self.end_headers();return None
                 status=206
             source=path.open('rb');source.seek(start);self.range_remaining=end-start+1
-            self.send_response(status);self.send_header('Content-Type','video/mp4');self.send_header('Accept-Ranges','bytes');self.send_header('Content-Length',str(self.range_remaining))
+            self.send_response(status);self.send_header('Content-Type','audio/mp4' if path.suffix.lower()=='.m4a' else 'video/mp4');self.send_header('Accept-Ranges','bytes');self.send_header('Content-Length',str(self.range_remaining))
             if status==206:self.send_header('Content-Range',f'bytes {start}-{end}/{size}')
             self.end_headers();return source
         def copyfile(self,source,outputfile):

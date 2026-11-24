@@ -1,16 +1,36 @@
 #!/usr/bin/env python3
-"""Attach all five subtitle tracks, verify duration, and create real film stills."""
+"""Attach five subtitle tracks, verify duration, and create real film stills.
+
+The v33.0.2 browser renderer already includes its LINE QR in seconds 290–300.
+This tool never adds another card. If OpenCV/NumPy are installed, it decodes the
+finished MP4 at three tail positions; endCard.verified is true only if every
+finalized film passes. Without a decoder, verification is explicitly false.
+"""
 from pathlib import Path
 import argparse,json,subprocess,hashlib
 ROOT=Path(__file__).resolve().parents[1]
 ASSETS=ROOT/'public/academy/assets/packaging-tour-v33'
 IDS=['interposer','fanout','hybrid','bridge','chiplet','thermal']
 LANGS=[('zh-TW','zho','繁體中文'),('en','eng','English'),('ja','jpn','日本語'),('ko','kor','한국어'),('zh-CN','zho','简体中文')]
+LINE_URL='https://line.me/R/ti/p/%40530pgchc'
 def run(argv):return subprocess.run(argv,check=True,capture_output=True,text=True).stdout
+def verify_end_card(file):
+ try:
+  import cv2
+  import numpy as np
+ except ImportError:
+  return {'verified':False,'reason':'OpenCV/NumPy unavailable; no QR verification claimed.'}
+ checks=[]
+ for second in (290,295,299+23/24):
+  raw=subprocess.run(['ffmpeg','-hide_banner','-loglevel','error','-ss',f'{second:.9f}','-i',str(file),'-map','0:v:0','-frames:v','1','-f','image2pipe','-vcodec','png','-'],check=True,capture_output=True).stdout
+  frame=cv2.imdecode(np.frombuffer(raw,dtype=np.uint8),cv2.IMREAD_COLOR)
+  payload=cv2.QRCodeDetector().detectAndDecode(frame)[0] if frame is not None else ''
+  checks.append({'second':second,'decoded':payload})
+ return {'verified':all(c['decoded']==LINE_URL for c in checks),'checks':checks}
 def main():
  p=argparse.ArgumentParser();p.add_argument('--recordings',type=Path,default=ROOT.parent/'MacGyver_Packaging_Tour_Experiment/recordings');p.add_argument('--tour',choices=IDS,action='append');p.add_argument('--compact',action='store_true',help='Re-encode at 720p/24fps with a 650 kbit/s ceiling for the shared Pages budget');a=p.parse_args()
  (ASSETS/'videos').mkdir(exist_ok=True);(ASSETS/'stills').mkdir(exist_ok=True)
- reports=[]
+ reports=[];qr_checks=[]
  for id in a.tour or IDS:
   src=a.recordings/(id+'.mp4');dst=ASSETS/'videos'/(id+'.mp4')
   if not src.is_file():raise FileNotFoundError(src)
@@ -29,6 +49,8 @@ def main():
   assert len(subs)==5 and len(meta['chapters'])==10
   for second in [15,135,225]:
    run(['ffmpeg','-hide_banner','-loglevel','error','-y','-ss',str(second),'-i',str(dst),'-frames:v','1','-q:v','2',str(ASSETS/'stills'/f'{id}-{second}.jpg')])
+  qr_checks.append({'id':id,**verify_end_card(dst)})
   entry={'id':id,'duration':float(video[0]['duration']),'width':1280,'height':720,'fps':'24/1','frames':int(video[0]['nb_frames']),'subtitleLanguages':[l[0] for l in LANGS],'chapters':10,'bytes':dst.stat().st_size,'sha256':hashlib.sha256(dst.read_bytes()).hexdigest()};reports.append(entry);print(json.dumps(entry),flush=True)
- (ASSETS/'videos'/'manifest.json').write_text(json.dumps({'version':'33.0.1','date':'2026-11-23','status':'PASS','silent':True,'teachingReconstruction':True,'encoding':'H.264 720p 24fps, CRF 22 with 650 kbit/s ceiling' if a.compact else 'Original browser H.264','videos':reports},ensure_ascii=False,indent=2)+'\n')
+ end_card={'url':LINE_URL,'startSeconds':290,'endSeconds':300,'verified':len(reports)==6 and all(c['verified'] for c in qr_checks),'verification':qr_checks,'cardAddedByFinalizer':False}
+ (ASSETS/'videos'/'manifest.json').write_text(json.dumps({'version':'33.0.2','date':'2026-11-24','status':'PASS','silent':True,'teachingReconstruction':True,'encoding':'H.264 720p 24fps, CRF 22 with 650 kbit/s ceiling' if a.compact else 'Original browser H.264','endCard':end_card,'videos':reports},ensure_ascii=False,indent=2)+'\n')
 if __name__=='__main__':main()

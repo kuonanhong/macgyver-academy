@@ -1,0 +1,139 @@
+1
+00:00:00,000 --> 00:00:08,342
+俯瞰中央晶粒，四周留出的不是浪費空間，而是扇出連接的舞台。
+Look down at the central die. The surrounding area is useful routing space, not empty waste.
+
+2
+00:00:08,342 --> 00:00:14,713
+重佈線層把原本密集的接點重新安排到較大的範圍。
+Redistribution layers relocate dense die connections across a wider region.
+
+3
+00:00:14,713 --> 00:00:30,000
+先看晶粒邊界，再看連線越過邊界，你就能分辨「晶片大小」和「封裝大小」。
+Compare the die outline with routes extending beyond it, and distinguish the size of the silicon from the size of its package.
+
+4
+00:00:30,000 --> 00:00:41,262
+下降到材質交界：硬的矽晶粒、周圍的模封材料、表面的介電層與金屬線共同形成結構。
+Descend to the material boundaries: silicon dies, surrounding molding compound, dielectric layers and metal traces form one structure.
+
+5
+00:00:41,262 --> 00:00:46,966
+顏色用來辨認功能，不代表特定廠商配方。
+Colors identify function, not a vendor recipe.
+
+6
+00:00:46,966 --> 00:01:00,000
+美感來自整齊的層次；工程難點則藏在不同材料如何一起變形。
+The ordered layers create visual clarity; the engineering challenge is how different materials deform together.
+
+7
+00:01:00,000 --> 00:01:08,258
+沿著一個晶粒接點追到外部焊球，會遇到平面走線與跨層導孔。
+Follow a die contact to an external solder ball through planar traces and interlayer vias.
+
+8
+00:01:08,258 --> 00:01:17,099
+RDL 不是任意畫線：線寬、間距、回流路徑與絕緣都有限制。
+RDL is constrained routing, not arbitrary drawing: width, spacing, return paths and insulation all matter.
+
+9
+00:01:17,099 --> 00:01:30,000
+請找出哪一段在換層，哪一段在把連接位置往外展開。
+Identify where the route changes layer and where it moves the connection outward.
+
+10
+00:01:30,000 --> 00:01:41,512
+畫面把兩種流程分開：晶粒先放好再形成重佈線，或先形成 RDL 再接上晶粒。
+Compare two flows: place dies before building redistribution layers, or form RDL before attaching dies.
+
+11
+00:01:41,512 --> 00:01:47,723
+兩條路都叫扇出，但良率風險出現的位置不同。
+Both are fan-out approaches, but yield risks enter at different stages.
+
+12
+00:01:47,723 --> 00:02:00,000
+不能只用成品外觀判斷製程；要知道昂貴晶粒在哪一步加入。
+The final outline alone does not reveal the process. Ask when valuable dies enter the assembly and what has already been tested.
+
+13
+00:02:00,000 --> 00:02:10,381
+把薄薄的封裝拉開成分層示意，介電層隔開不同金屬層，導孔讓特定位置相通。
+Open the thin package into separated layers. Dielectrics separate metal layers, while vias connect selected locations.
+
+14
+00:02:10,381 --> 00:02:18,066
+這裡刻意放大厚度方便觀看，不能拿畫面比例當成製造尺寸。
+Thickness is exaggerated for visibility and must not be read as manufacturing scale.
+
+15
+00:02:18,066 --> 00:02:30,000
+請確認相鄰的兩條線是刻意連接，還是應該保持絕緣。
+Check whether adjacent routes should be connected or electrically isolated; that distinction is the purpose of the layer stack.
+
+16
+00:02:30,000 --> 00:02:34,597
+訊號線旁的參考導體同樣重要。
+The reference conductor beside a signal is important too.
+
+17
+00:02:34,597 --> 00:02:41,874
+電流必須形成回路；回流路徑中斷會改變高速訊號品質。
+Current needs a complete loop; a disrupted return path affects high-speed behavior.
+
+18
+00:02:41,874 --> 00:03:00,000
+俯瞰時看走線是否順暢，剖面時看參考層是否連續，兩種角度一起看，才能理解佈線的真正秩序。
+Use the overhead view to inspect routing and the section to inspect reference continuity. Together, the two views explain the electrical order behind the geometry.
+
+19
+00:03:00,000 --> 00:03:06,154
+示意結構微微彎曲，提醒你材料熱膨脹不一致。
+A slight conceptual bend highlights mismatched thermal expansion.
+
+20
+00:03:06,154 --> 00:03:13,421
+翹曲會影響對位、接合與後續裝板，不只是看起來不平。
+Warpage can affect alignment, joining and board assembly; it is more than a cosmetic defect.
+
+21
+00:03:13,421 --> 00:03:30,000
+動畫中的彎曲被誇張呈現；真正評估要使用量測、材料資料與有邊界條件的力學模型。
+The animated bend is exaggerated. Evaluation requires measurements, material properties and a mechanical model with explicit boundary conditions.
+
+22
+00:03:30,000 --> 00:03:39,533
+停在接點附近，想像晶粒輕微偏移後，原定走線能否仍落在正確位置。
+Pause beside a contact and imagine the die shifting slightly. Would the intended route still land correctly?
+
+23
+00:03:39,533 --> 00:03:46,080
+檢查必須同時照顧對位、開路、短路與界面缺陷。
+Inspection must address alignment, opens, shorts and interface defects.
+
+24
+00:03:46,080 --> 00:04:00,000
+每個異常都要回到可追溯的量測，不能只憑動畫上「看起來有接到」。
+Each suspected issue needs traceable measurement; a visually touching animated connection is not evidence of a functional joint.
+
+25
+00:04:00,000 --> 00:04:13,901
+退後看整體，扇出可以提供靈活的接點配置與薄型整合，但更多層、更密線距或更大面積也會增加製程挑戰。
+Step back: fan-out offers flexible connection placement and thin integration, while more layers, finer routing or larger area raise process demands.
+
+26
+00:04:13,901 --> 00:04:30,000
+不能一概說扇出一定比較便宜；比較時必須使用相同功能、測試涵蓋與合格產出。
+It is not automatically cheaper. Compare alternatives at equal function, test coverage and qualified output, rather than comparing package outlines alone.
+
+27
+00:04:30,000 --> 00:04:45,582
+帶走這條路線：先定接點與尺寸需求，再選晶粒先行或 RDL 先行，接著規劃佈線、控制翹曲、完成電性與可靠度驗證。
+Take this route with you: define connections and size, select die-first or RDL-first integration, plan routing, manage warpage and verify electrical behavior and reliability.
+
+28
+00:04:45,582 --> 00:05:00,000
+扇出的美感，是把擁擠的微小出口整理成有秩序、能製造也能檢查的網路。
+Fan-out turns crowded die exits into an orderly network that must be manufacturable and inspectable, not merely visually elegant.

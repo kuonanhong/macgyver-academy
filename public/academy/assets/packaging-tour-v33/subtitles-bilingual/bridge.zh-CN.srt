@@ -1,0 +1,144 @@
+1
+00:00:00,000 --> 00:00:07,241
+从高处看两个晶粒街区，注意交界处的一小段连接区。
+From above, find the narrow connection zone between neighboring dies.
+
+2
+00:00:07,241 --> 00:00:16,777
+局部硅桥把精密布线集中在需要跨越的位置，其他区域仍由封装基板承接。
+A local silicon bridge concentrates fine routing where a crossing is needed, while the substrate serves the surrounding area.
+
+3
+00:00:16,777 --> 00:00:30,000
+先找出桥在哪里，再思考为什么不必让整个底面都是桥。
+Locate the bridge first, then ask why the whole package floor does not need to become one.
+
+4
+00:00:30,000 --> 00:00:37,419
+把桥的位置高亮，就能和覆盖较大范围的中介层区分。
+Highlight the bridge to distinguish it from a broad interposer.
+
+5
+00:00:37,419 --> 00:00:44,466
+两者都能支持异构集成，但分配精密布线的方式不同。
+Both support heterogeneous integration, but distribute fine routing differently.
+
+6
+00:00:44,466 --> 00:01:00,000
+这里以嵌入基板的硅桥为概念，不能把所有桥接产品的结构视为完全相同。
+This model explains a bridge embedded in a substrate; bridge-based products can differ in structure, so the illustration is not a universal vendor structure.
+
+7
+00:01:00,000 --> 00:01:04,279
+沿着两个晶粒相对的边缘飞行。
+Fly along facing die edges.
+
+8
+00:01:04,279 --> 00:01:13,378
+桥的通道要对上晶粒的接点，不能把晶粒任意旋转就期待连线自动成立。
+Bridge channels must meet the intended contacts; rotating a die arbitrarily will not make compatible wiring appear.
+
+9
+00:01:13,378 --> 00:01:30,000
+晶粒边缘的可用空间、接点配置与接口方向，都是系统平面规划的一部分。
+Available die-edge length, contact placement and interface orientation belong in the system floorplan, before the bridge is treated as a finished connection.
+
+10
+00:01:30,000 --> 00:01:37,928
+镜头下降到基板，桥与周围材料必须形成可组装的平面。
+Descend toward the substrate. The bridge and surrounding material must create an assembly-compatible surface.
+
+11
+00:01:37,928 --> 00:01:44,287
+嵌入、对位、晶粒贴合与接点形成都有公差。
+Embedding, alignment, die placement and contact formation all have tolerances.
+
+12
+00:01:44,287 --> 00:02:00,000
+这段展示的是组装关系，不是特定设备的操作顺序；真正的流程要依合格工艺文件。
+This sequence explains assembly relationships, not a particular machine recipe; actual work follows qualified process documentation.
+
+13
+00:02:00,000 --> 00:02:09,024
+分層示意中先追晶粒到晶粒的连线，再追向基板的供电与外部信号。
+In the separated-layer view, trace die-to-die signals separately from power and external connections toward the substrate.
+
+14
+00:02:09,024 --> 00:02:12,778
+它们不必全部经过同一座桥。
+They need not all cross the same bridge.
+
+15
+00:02:12,778 --> 00:02:30,000
+不同桥接技术可能加入其他垂直结构，因此不要由这张简化分层图推论所有产品的供电方式。
+Some bridge technologies add vertical structures, so this simplified view must not be used to infer every product’s power-delivery arrangement.
+
+16
+00:02:30,000 --> 00:02:39,712
+发光路径表示数据能走的几何连接，但通信还需要两端同意信号与协议。
+Glowing paths show geometric connectivity. Communication still requires compatible signaling and protocols at both ends.
+
+17
+00:02:39,712 --> 00:02:46,085
+桥是物理集成方式，不等于某个固定通信标准。
+A bridge is a physical integration approach, not a single communication standard.
+
+18
+00:02:46,085 --> 00:03:00,000
+接下来的 UCIe 单元会把道路怎么造和车辆怎么对话分开说清楚。
+The UCIe tour separates the question of how roads are built from how participants communicate over them.
+
+19
+00:03:00,000 --> 00:03:04,858
+桥、基板与晶粒不是同一种材料。
+Bridge, substrate and dies are different materials.
+
+20
+00:03:04,858 --> 00:03:11,541
+温度改变时，它们的变形差异会把应力带到接合区。
+Temperature changes can create mismatched deformation and concentrate stress near joints.
+
+21
+00:03:11,541 --> 00:03:30,000
+热与机械分析应一起看；只看桥很小，不能直接认定它不会成为可靠性风险。
+Thermal and mechanical analysis belong together. A small bridge is not automatically free of reliability risk simply because it occupies little area.
+
+22
+00:03:30,000 --> 00:03:40,546
+检查通道是否开路或短路，再确认两端晶粒能在指定条件下交换正确数据。
+Check channels for opens and shorts, then verify that the dies exchange correct data under specified conditions.
+
+23
+00:03:40,546 --> 00:03:46,979
+几何对位、电性连通与系统功能是三层不同证据。
+Geometric alignment, electrical continuity and system function are different evidence layers.
+
+24
+00:03:46,979 --> 00:04:00,000
+若发生错误，要能区分接点问题、信号质量与协议设置。
+Diagnose failures by separating joint defects, signal quality and protocol configuration.
+
+25
+00:04:00,000 --> 00:04:10,480
+局部桥可以把精密资源放到真正需要的地方，但晶粒配置与基板集成也因此受到约束。
+Local bridges focus precision where it is needed, but constrain floorplanning and substrate integration.
+
+26
+00:04:10,480 --> 00:04:17,964
+不要只比较硅面积；还要计入组装难度、供应链、测试与良率。
+Compare more than silicon area: include assembly complexity, supply chain, testing and yield.
+
+27
+00:04:17,964 --> 00:04:30,000
+选择的依据是整个产品的需求，不是单一结构的漂亮程度。
+The right choice serves the complete product, rather than rewarding the most visually appealing structure.
+
+28
+00:04:30,000 --> 00:04:44,839
+最后回到俯瞰：选定互通的晶粒、安排边缘接口、配置局部桥、规划供电散热，再用测试证明它们能合作。
+Return overhead: choose communicating dies, arrange edge interfaces, place bridges, plan power and cooling, then prove cooperation through testing.
+
+29
+00:04:44,839 --> 00:05:00,000
+这个技术的美感是节制：不把所有地方都变复杂，只在最重要的连接处投入精密。
+The visual idea is restraint: reserve precision for critical crossings instead of making every part of the package equally complex.

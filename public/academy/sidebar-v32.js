@@ -22,7 +22,7 @@
  function organize(){if(busy)return;busy=true;
   const links=[...nav.querySelectorAll('a')].filter(a=>a!==ready);const seen=new Set();
   for(const a of links){const href=a.getAttribute('href')||'';if(seen.has(href)){a.remove();continue;}seen.add(href);
-   let target=/^curriculum-/.test(href)?collections:/^(realworld-|packaging-tour-|experience\.html)/.test(href)?field:['#home','#learning-map','#workshop','#progress'].includes(href)?main:more;
+   let target=/^curriculum-/.test(href)?collections:/^(realworld-|packaging-(?:tour|process)-|experience\.html)/.test(href)?field:['#home','#learning-map','#workshop','#progress'].includes(href)?main:more;
    if(a.parentElement!==target)target.append(a);
    compact(a);if(/^curriculum-/.test(href))a.classList.remove('campaign-nav-v20');
   }

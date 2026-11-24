@@ -1,0 +1,597 @@
+window.MACGYVER_PACKAGING_C01 = {
+  "schemaVersion": "1.0.0",
+  "id": "C01",
+  "version": "34.0.0-script-1",
+  "durationSeconds": 300,
+  "title": {
+    "zh-TW": "定義系統任務與封裝需求",
+    "en": "Define system and package requirements",
+    "zh-CN": "定义系统任务与封装需求",
+    "ja": "システムの役割とパッケージ要件を定義する",
+    "ko": "시스템의 역할과 패키지 요구사항 정의"
+  },
+  "activityType": "design",
+  "languages": [
+    "zh-TW",
+    "zh-CN",
+    "en",
+    "ja",
+    "ko"
+  ],
+  "status": {
+    "script": "ready_for_tts_timing",
+    "narrationTiming": "not_yet_measured",
+    "film": "not_produced",
+    "roadmapStatusUnchanged": true
+  },
+  "scope": {
+    "zh-TW": "本片是 C01 系統需求設計活動，使用原創、假設的加速器案例與重建視覺，不是工廠實拍、廠商製程配方或產品性能承諾。所有數值為教學假設；簡化估算必須由後續分析與量測驗證。",
+    "en": "C01 teaches system requirements as a design activity, using an original hypothetical accelerator and reconstructed visuals. It is not factory footage, a vendor process recipe or a product performance claim. Every numerical value is an educational assumption; screening estimates require subsequent analysis and measurement."
+  },
+  "learningObjectives": {
+    "zh-TW": [
+      "將工作負載轉成有條件、可量測的封裝需求",
+      "區分原始線速、有效資料率、系統熱預算與局部熱點",
+      "以需求 ID 串接責任人、測試方法、證據及版本",
+      "帶著未決事項進入 C02 功能與晶粒分割"
+    ],
+    "en": [
+      "Turn workloads into conditional, measurable package requirements",
+      "Distinguish raw line rate, useful throughput, system thermal budget and local hot spots",
+      "Trace each requirement to an owner, test method, evidence and revision",
+      "Carry open issues into C02 functional and die partitioning"
+    ]
+  },
+  "example": {
+    "kind": "original_hypothetical_teaching_case",
+    "notAStandardOrProductSpecification": true,
+    "workload": "Sustained accelerator workload, illustrative requirement baseline",
+    "bandwidth": {
+      "oneDirectionLanes": 64,
+      "rawGbpsPerLane": 16,
+      "aggregateUsefulEfficiency": 0.8,
+      "rawAggregateGbps": 1024,
+      "usefulGBps": 102.4,
+      "targetUsefulGBps": 100,
+      "definitions": "Decimal gigabits/gigabytes, one direction only. The aggregate efficiency is an explicit assumption covering protocol and workload losses; no particular UCIe mode is claimed. Read and write are not summed."
+    },
+    "thermal": {
+      "sustainedPackagePowerW": 250,
+      "exampleAmbientC": 35,
+      "hypotheticalSystemEffectiveResistanceKPerW": 0.18,
+      "screeningTemperatureRiseK": 45,
+      "screeningJunctionTemperatureC": 80,
+      "illustrativeLimitC": 85,
+      "illustrativeScreeningMarginK": 5,
+      "caution": "One lumped steady-state screening estimate for the assumed complete cooling system. Not a component datasheet theta, not local peak junction temperature, not a validated solver result, and not signoff. Actual boundary conditions, interfaces, chiplet power maps, transients and sensor/model correlation must be established."
+    },
+    "envelope": {
+      "packageWidthMm": 60,
+      "packageDepthMm": 60,
+      "packageBodyHeightMm": 4,
+      "note": "Illustrative package-body reservation only; separately budget lid, cooler, board, socket, clamp, tolerances and keep-outs."
+    },
+    "changedCoolingScenario": {
+      "hypotheticalSystemEffectiveResistanceKPerW": 0.22,
+      "screeningJunctionTemperatureC": 90,
+      "status": "screening_failure_against_illustrative_85C_limit"
+    }
+  },
+  "deliverable": {
+    "name": "C01 requirements baseline, revision A",
+    "minimumColumns": [
+      "requirementId",
+      "condition",
+      "metricAndUnits",
+      "threshold",
+      "verificationMethod",
+      "evidenceReference",
+      "owner",
+      "revision",
+      "status"
+    ],
+    "requirements": [
+      {
+        "id": "BW-01",
+        "condition": "Declared sustained workload; one direction",
+        "metric": "Useful GB/s",
+        "threshold": ">= 100 (teaching assumption)",
+        "method": "Workload trace plus declared traffic-generator test",
+        "owner": "System and interconnect engineer",
+        "initialStatus": "proposed_not_verified"
+      },
+      {
+        "id": "TH-01",
+        "condition": "250 W sustained, 35 C inlet/ambient boundary as defined by the test fixture",
+        "metric": "Peak junction temperature, C",
+        "threshold": "<= 85 (teaching assumption)",
+        "method": "Correlated spatial thermal model plus instrumented hardware test",
+        "owner": "Thermal engineer",
+        "initialStatus": "proposed_not_verified"
+      },
+      {
+        "id": "ME-01",
+        "condition": "Package body only; separate system clearance budget",
+        "metric": "Width x depth x body height, mm",
+        "threshold": "Within 60 x 60 x 4 reservation (teaching assumption)",
+        "method": "Mechanical stack-up and tolerance review",
+        "owner": "Package and mechanical engineer",
+        "initialStatus": "proposed_not_verified"
+      },
+      {
+        "id": "DFT-01",
+        "condition": "Before irreversible integration and after package assembly",
+        "metric": "Accessible fault classes, coverage definition and test time",
+        "threshold": "Product-specific targets to be agreed; no invented coverage percentage",
+        "method": "DFT access review, executable test plan and test records",
+        "owner": "Test architect",
+        "initialStatus": "open"
+      }
+    ],
+    "exitCriteria": {
+      "zh-TW": "每項關鍵需求均有單位、條件、責任人、驗證方法及版本；未知值有負責人與截止點。估算、模擬與實測分開標記，未驗證不得勾選通過。",
+      "en": "Each critical requirement has units, conditions, an owner, verification method and revision. Unknowns have an owner and decision date. Estimates, simulations and measurements are distinct; unverified items are never marked passed."
+    },
+    "nextActivityId": "C02"
+  },
+  "sources": [
+    {
+      "id": "cadence-3dic",
+      "publisher": "Cadence",
+      "title": "3D-IC Design Challenges and Requirements",
+      "url": "https://www.cadence.com/en_US/home/resources/white-papers/3d-ic-design-wp.html",
+      "checkedOn": "2026-11-24",
+      "supports": "Early system intent, cross-domain co-design, power/thermal planning and test access. The numerical example, requirement IDs and teaching sequence are original synthesis."
+    },
+    {
+      "id": "amkor-chiplets",
+      "publisher": "Amkor",
+      "title": "Readying the supply chain for chiplets and heterogeneous IC packaging",
+      "url": "https://amkormarcomexternal.blob.core.windows.net/amkordotcom/wp-content/uploads/2024/03/Readying-the-supply-chain-for-chiplets-and-heterogeneous-integration_EN.pdf",
+      "checkedOn": "2026-11-24",
+      "supports": "Heterogeneous integration requires package/design/test infrastructure; silicon interposer, high-density fan-out and bridges are distinct integration alternatives. Cost depends on both silicon and packaging."
+    },
+    {
+      "id": "ase-thermal",
+      "publisher": "ASE",
+      "title": "Stress and Thermal Lab",
+      "url": "https://ase.aseglobal.com/lab-services/stress-and-thermal-lab/",
+      "checkedOn": "2026-11-24",
+      "supports": "Package and system thermal analysis, hot spots, transient power, boundary-sensitive thermal measurements and correlated design work. No numeric requirement from this page is reproduced."
+    },
+    {
+      "id": "amkor-test",
+      "publisher": "Amkor",
+      "title": "IC Semiconductor Test Services",
+      "url": "https://amkor.com/test-services/",
+      "checkedOn": "2026-11-24",
+      "supports": "Wafer probe, final test and system-level test have distinct infrastructure, electrical/power and performance requirements."
+    },
+    {
+      "id": "ucie",
+      "publisher": "UCIe Consortium",
+      "title": "Specifications",
+      "url": "https://www.uciexpress.org/specifications",
+      "checkedOn": "2026-11-24",
+      "supports": "A die-to-die interface contract includes physical, protocol and compliance/test concerns. The illustrative 64-lane arithmetic is not represented as a compliant UCIe configuration."
+    }
+  ],
+  "cues": [
+    {
+      "id": "c01-01",
+      "start": 0,
+      "end": 30,
+      "key": "mission",
+      "title": {
+        "zh-TW": "先決定任務，再選封裝",
+        "en": "Define the mission before the package",
+        "zh-CN": "先决定任务，再选封装",
+        "ja": "構造を選ぶ前に、役割を決める",
+        "ko": "패키지를 고르기 전에 역할을 정의하기"
+      },
+      "text": {
+        "zh-TW": "歡迎來到第一道工程活動：定義系統任務與封裝需求。鏡頭下的加速器是教學模型，還沒有選定製造架構。今天的成果是一張可追溯需求表。你要說清楚它做什麼、在什麼條件下做到，以及用什麼證據判定合格。漂亮的晶片堆疊，不能代替這三個答案。",
+        "en": "Welcome to activity one: defining system and package requirements. The accelerator below is a teaching model; its manufacturing architecture has not been selected. Our deliverable is a traceable requirements table. State what the system must do, under which conditions, and which evidence will demonstrate success. An impressive stack of chips cannot replace those three answers.",
+        "zh-CN": "欢迎来到第一道工程活动：定义系统任务与封装需求。镜头下的加速器是教学模型，还没有选定制造架构。今天的成果是一张可追溯需求表。你要说清楚它做什么、在什么条件下做到，以及用什么证据判定合格。漂亮的芯片堆叠，不能代替这三个答案。",
+        "ja": "最初の活動は、システムの役割とパッケージ要件の定義です。このアクセラレーターは教材用モデルで、製造構造はまだ未選定です。成果物は、根拠を追跡できる要件表です。何を実現し、どの条件で動かし、どの証拠で合格と判断するか。この三つの答えは、美しいチップの積層だけでは得られません。",
+        "ko": "첫 번째 활동은 시스템의 역할과 패키지 요구사항 정의입니다. 화면의 가속기는 교육용 모델이며 제조 구조는 아직 선택하지 않았습니다. 결과물은 근거를 추적할 수 있는 요구사항 표입니다. 무엇을 수행하고, 어떤 조건에서 동작하며, 어떤 증거로 합격을 판단할지 명확히 하세요. 멋진 칩 적층 구조가 이 세 가지 답을 대신하지는 못합니다."
+      },
+      "shot": {
+        "station": 0,
+        "camera": "High oblique establishing orbit; descend toward a central accelerator and its ten linked design stations.",
+        "action": "Illuminate workload, electrical, thermal and verification paths in sequence, without selecting a fabrication architecture.",
+        "overlay": {
+          "zh-TW": [
+            "C01｜設計活動",
+            "任務 → 條件 → 證據",
+            "教學重建・非工廠實拍"
+          ],
+          "en": [
+            "C01 | DESIGN ACTIVITY",
+            "Mission → Conditions → Evidence",
+            "Teaching reconstruction · not factory footage"
+          ]
+        }
+      },
+      "sourceIds": [
+        "cadence-3dic"
+      ],
+      "claimKind": "Original instructional synthesis grounded in system-intent practice"
+    },
+    {
+      "id": "c01-02",
+      "start": 30,
+      "end": 60,
+      "key": "workload",
+      "title": {
+        "zh-TW": "把工作負載說完整",
+        "en": "Describe the complete workload",
+        "zh-CN": "把工作负载说完整",
+        "ja": "ワークロードを具体化する",
+        "ko": "전체 작업 부하 설명하기"
+      },
+      "text": {
+        "zh-TW": "先把使用情境寫下來：這個假設的加速器要持續處理資料，不是只跑一秒的展示。記錄資料大小、讀寫方向、尖峰與平均需求，還有允許的延遲和運作時間。畫面中短高柱是突發流量，長平台是持續負載。兩者都要描述；只抄介面的最高速率，無法代表應用表現。",
+        "en": "Begin with the use case. Our hypothetical accelerator must process a sustained workload, not a one-second demonstration. Record data size, read and write directions, peak and average demand, allowed latency, and operating duration. The short tall bars represent bursts; the long plateau represents sustained activity. Describe both. An interface's headline rate alone does not describe application performance.",
+        "zh-CN": "先把使用情境写下来：这个假设的加速器要持续处理数据，不是只跑一秒的展示。记录数据大小、读写方向、峰值与平均需求，还有允许的延迟和运行时间。画面中短高柱是突发流量，长平台是持续负载。两者都要描述；只抄接口的最高速率，无法代表应用表现。",
+        "ja": "まず使用場面を記述します。この仮想アクセラレーターには、一秒の実演ではなく、継続処理が必要です。データ量、読み書きの方向、ピークと平均、許容遅延、運転時間を記録します。高く短い棒は突発的な負荷、長い台地は持続負荷です。両方を定義しましょう。接続仕様の最高速度だけでは、実際の処理性能を表せません。",
+        "ko": "먼저 사용 상황을 기록합니다. 이 가상의 가속기는 일 초짜리 시연이 아니라 지속적인 처리가 필요합니다. 데이터 크기, 읽기와 쓰기 방향, 최대와 평균 요구량, 허용 지연, 동작 시간을 기록하세요. 높고 짧은 막대는 순간 부하이며 긴 평탄 구간은 지속 부하입니다. 두 조건을 모두 정의해야 합니다. 인터페이스의 최고 속도만으로 실제 응용 성능을 설명할 수는 없습니다."
+      },
+      "shot": {
+        "station": 1,
+        "camera": "Low lateral track past a three-dimensional workload timeline; rise to compare tall bursts and a long plateau.",
+        "action": "A moving time marker traverses the timeline; separate read and write lanes remain visibly separate.",
+        "overlay": {
+          "zh-TW": [
+            "突發 ≠ 持續",
+            "方向・資料大小・延遲・時間"
+          ],
+          "en": [
+            "BURST ≠ SUSTAINED",
+            "Direction · data size · latency · duration"
+          ]
+        }
+      },
+      "sourceIds": [],
+      "claimKind": "Original workload-definition exercise; no measured workload claimed"
+    },
+    {
+      "id": "c01-03",
+      "start": 60,
+      "end": 90,
+      "key": "requirements",
+      "title": {
+        "zh-TW": "需求必須能量測",
+        "en": "Make each requirement measurable",
+        "zh-CN": "需求必须能测量",
+        "ja": "測定できる要件にする",
+        "ko": "측정 가능한 요구사항 만들기"
+      },
+      "text": {
+        "zh-TW": "現在建立四個需求編號：頻寬、散熱、空間與測試。每一列都要有條件、單位、門檻、驗證方法與責任人。比如頻寬這列，要寫單一方向的有效資料率，而不是含糊的很快。尚未取得的數字保持待定，指定誰補齊。提案、估算與實測通過，是三種不同狀態。",
+        "en": "Create four requirement identifiers: bandwidth, thermal performance, physical envelope, and test access. Every row needs conditions, units, a threshold, a verification method, and an owner. For bandwidth, specify useful data rate in one direction, not simply fast. Leave unknown values open and assign responsibility for resolving them. A proposal, an estimate, and a measured pass are different states.",
+        "zh-CN": "现在建立四个需求编号：带宽、散热、空间与测试。每一行都要有条件、单位、门槛、验证方法与负责人。比如带宽这一行，要写单一方向的有效数据率，而不是含糊的很快。尚未取得的数字保持待定，指定谁补齐。提案、估算与实测通过，是三种不同状态。",
+        "ja": "帯域、放熱、寸法、テストの四つに要件番号を付けます。各行には、条件、単位、基準値、検証方法、担当者が必要です。帯域なら、単に高速とせず、一方向の有効データ速度を指定します。不明な数値は未決のまま、確認担当を決めます。提案、概算、実測による合格は、区別して管理してください。",
+        "ko": "대역폭, 방열, 크기, 시험에 각각 요구사항 번호를 부여합니다. 각 행에는 조건, 단위, 기준값, 검증 방법, 담당자가 필요합니다. 대역폭은 단순히 빠르다고 쓰지 말고 한 방향의 유효 데이터 속도로 정의하세요. 모르는 값은 미정으로 두고 확인 담당자를 지정합니다. 제안, 추정, 실측에 따른 합격은 서로 다른 상태로 관리해야 합니다."
+      },
+      "shot": {
+        "station": 2,
+        "camera": "Near-vertical inspection of four precision-machined requirement tiles; move across their condition-to-evidence connectors.",
+        "action": "Show BW-01, TH-01, ME-01, DFT-01 as proposed/open amber tiles; do not display green pass stamps.",
+        "overlay": {
+          "zh-TW": [
+            "條件 + 單位 + 門檻",
+            "方法 + 證據 + 責任人 + 版本",
+            "待定 ≠ 通過"
+          ],
+          "en": [
+            "Conditions + units + threshold",
+            "Method + evidence + owner + revision",
+            "OPEN ≠ PASSED"
+          ]
+        }
+      },
+      "sourceIds": [
+        "cadence-3dic"
+      ],
+      "claimKind": "Original requirements-table method; not a vendor template"
+    },
+    {
+      "id": "c01-04",
+      "start": 90,
+      "end": 120,
+      "key": "bandwidth",
+      "title": {
+        "zh-TW": "從線速算到有效頻寬",
+        "en": "Convert line rate into useful bandwidth",
+        "zh-CN": "从线速算到有效带宽",
+        "ja": "線路速度から有効帯域を計算する",
+        "ko": "회선 속도를 유효 대역폭으로 바꾸기"
+      },
+      "text": {
+        "zh-TW": "看這個教學算例：單向六十四條通道，每條每秒十六吉位元，原始總量是一千零二十四吉位元。假設協定與負載合計效率八成，再除以八換成位元組，得到每秒一百零二點四吉位元組。這不是任何標準的保證規格；效率、方向與流量型態，都必須另外驗證。",
+        "en": "Consider this teaching example: sixty-four lanes in one direction, each carrying sixteen gigabits per second. Raw aggregate rate is one thousand twenty-four gigabits per second. Assume eighty percent combined protocol and workload efficiency; divide by eight to obtain one hundred two point four gigabytes per second. This is arithmetic, not a standards guarantee. Verify efficiency, direction, and traffic conditions separately.",
+        "zh-CN": "看这个教学算例：单向六十四条通道，每条每秒十六吉比特，原始总量是一千零二十四吉比特。假设协议与负载合计效率八成，再除以八换成字节，得到每秒一百零二点四吉字节。这不是任何标准的保证规格；效率、方向与流量类型，都必须另外验证。",
+        "ja": "教材の計算例です。一方向に六十四レーン、各レーンは毎秒十六ギガビット。生の合計は毎秒千二十四ギガビットです。通信規約と負荷を合わせた効率を八割と仮定し、八で割ってバイトにすると、毎秒百二点四ギガバイトになります。規格が保証する値ではありません。効率、方向、通信条件は別途検証します。",
+        "ko": "교육용 계산 예를 보겠습니다. 한 방향으로 육십사 개 레인이 있고, 각 레인은 초당 십육 기가비트입니다. 원시 합계는 초당 천이십사 기가비트입니다. 프로토콜과 작업 부하의 종합 효율을 팔십 퍼센트로 가정하고, 바이트로 바꾸기 위해 팔로 나누면 초당 백이 점 사 기가바이트입니다. 규격이 보증하는 값은 아닙니다. 효율, 방향, 통신 조건을 별도로 검증해야 합니다."
+      },
+      "shot": {
+        "station": 3,
+        "camera": "Dive along eight banks of eight parallel copper lanes, then lift to reveal the complete lane fan.",
+        "action": "Animate 64 lanes; group five packets with four cyan and one muted to illustrate assumed aggregate efficiency, not an actual encoding scheme.",
+        "overlay": {
+          "zh-TW": [
+            "教學假設・單向・十進位",
+            "64 × 16 × 0.80 ÷ 8 = 102.4 GB/s",
+            "有效吞吐量需實測"
+          ],
+          "en": [
+            "ASSUMED · ONE DIRECTION · DECIMAL",
+            "64 × 16 × 0.80 ÷ 8 = 102.4 GB/s",
+            "Useful throughput requires measurement"
+          ]
+        }
+      },
+      "sourceIds": [
+        "ucie"
+      ],
+      "claimKind": "Original dimensional arithmetic; source supports interface contract context only"
+    },
+    {
+      "id": "c01-05",
+      "start": 120,
+      "end": 150,
+      "key": "thermal",
+      "title": {
+        "zh-TW": "先做熱預算，再查熱點",
+        "en": "Budget heat, then investigate hot spots",
+        "zh-CN": "先做热预算，再查热点",
+        "ja": "熱予算の次に、局所温度を調べる",
+        "ko": "열 예산을 계산한 뒤 국부 고온점 확인하기"
+      },
+      "text": {
+        "zh-TW": "散熱也先做有條件的估算。假設持續功率二百五十瓦，完整冷卻系統的有效熱阻是每瓦零點一八度，環境三十五度。簡化穩態估算得到八十度，比假設上限八十五度低五度。但這不是最熱晶粒的驗證結果。接面、氣流、局部功率與暫態，都還需要建模和量測。",
+        "en": "Start thermal planning with explicit assumptions: two hundred fifty watts sustained, an effective resistance of zero point one eight kelvin per watt for the complete cooling system, and thirty-five degrees ambient. A lumped steady-state estimate gives eighty degrees, five below our illustrative limit. That is not verified peak junction temperature. Interfaces, airflow, local power, and transients still require modeling and measurement.",
+        "zh-CN": "散热也先做有条件的估算。假设持续功率二百五十瓦，完整冷却系统的有效热阻是每瓦零点一八度，环境三十五度。简化稳态估算得到八十度，比假设上限八十五度低五度。但这不是最热芯粒的验证结果。界面、气流、局部功率与瞬态，都还需要建模和测量。",
+        "ja": "熱も条件を明示して概算します。持続電力二百五十ワット、冷却系全体の有効熱抵抗を一ワット当たり零点一八度、周囲を三十五度と仮定します。集中定数の定常計算は八十度で、仮の上限八十五度より五度低い値です。ただし最高接合温度の検証ではありません。界面、気流、局所電力、過渡状態を解析し、測定する必要があります。",
+        "ko": "열도 조건을 명시해 추정합니다. 지속 전력 이백오십 와트, 전체 냉각계의 유효 열저항은 와트당 영 점 일팔 도, 주변 온도는 삼십오 도로 가정합니다. 집중 정수 정상 상태 추정치는 팔십 도로, 가정한 한계 팔십오 도보다 오 도 낮습니다. 하지만 최고 접합 온도를 검증한 결과는 아닙니다. 접촉면, 기류, 국부 전력, 과도 상태를 모델링하고 측정해야 합니다."
+      },
+      "shot": {
+        "station": 4,
+        "camera": "Vertical crane move from heat source through separated interface, spreader and cooling fins; orbit to expose a localized glowing hot spot.",
+        "action": "Use a smooth nonquantitative heat field and rising heat arrows; explicitly distinguish the lumped estimate from a solved spatial temperature map.",
+        "overlay": {
+          "zh-TW": [
+            "教學假設・完整系統的簡化估算",
+            "35 + 250 × 0.18 = 80 °C",
+            "示意熱色・非模擬結果／熱點驗證"
+          ],
+          "en": [
+            "ASSUMED LUMPED SYSTEM SCREEN",
+            "35 + 250 × 0.18 = 80 °C",
+            "Illustrative heat color · not simulation or hot-spot signoff"
+          ]
+        }
+      },
+      "sourceIds": [
+        "ase-thermal"
+      ],
+      "claimKind": "Original screening example with explicit model limitations"
+    },
+    {
+      "id": "c01-06",
+      "start": 150,
+      "end": 180,
+      "key": "envelope",
+      "title": {
+        "zh-TW": "空間、供電與系統邊界",
+        "en": "Reserve space, power and system boundaries",
+        "zh-CN": "空间、供电与系统边界",
+        "ja": "寸法と電源の境界を決める",
+        "ko": "공간과 전원 경계 정하기"
+      },
+      "text": {
+        "zh-TW": "把視角拉到主機板。案例暫留六十乘六十毫米、封裝本體高四毫米的空間，散熱器和固定件要另外計算。再畫出電源進入晶粒的路徑，指定供電範圍、壓降預算與量測位置。小封裝不一定帶來小系統；插座、電容、走線和維修空間，都會改變最後布局。",
+        "en": "Pull back to the board. Reserve sixty by sixty millimeters and four millimeters of package-body height in this example; budget the cooler and mounting hardware separately. Trace power into the dies, and specify supply range, voltage-drop budget, and measurement points. A smaller package does not automatically make a smaller system. Sockets, capacitors, routing, and service clearances affect the layout.",
+        "zh-CN": "把视角拉到主板。案例暂留六十乘六十毫米、封装本体高四毫米的空间，散热器和固定件要另外计算。再画出电源进入芯粒的路径，指定供电范围、压降预算与测量位置。小封装不一定带来小系统；插座、电容、走线和维修空间，都会改变最后布局。",
+        "ja": "基板全体を見ましょう。この例では、本体用に六十ミリ四方、高さ四ミリを確保し、冷却器や固定具は別に計上します。電源がダイへ入る経路を描き、供給範囲、電圧降下の予算、測定点を指定します。小さなパッケージが、小さなシステムを意味するとは限りません。ソケット、容量部品、配線、保守空間も配置を左右します。",
+        "ko": "보드 전체로 시야를 넓힙니다. 이 예에서는 패키지 본체에 가로와 세로 육십 밀리미터, 높이 사 밀리미터를 배정하며 냉각기와 고정 부품은 별도로 계산합니다. 다이까지의 전원 경로를 그리고 공급 범위, 전압 강하 예산, 측정 지점을 지정하세요. 작은 패키지가 반드시 작은 시스템을 뜻하지는 않습니다. 소켓, 커패시터, 배선, 정비 공간도 배치에 영향을 줍니다."
+      },
+      "shot": {
+        "station": 5,
+        "camera": "Low board-edge dolly reveals body-height bracket; climb above the keep-out outline and adjacent power-delivery path.",
+        "action": "Separate translucent package-body reservation from the taller cooler; illuminate supply and return conductors in different colors.",
+        "overlay": {
+          "zh-TW": [
+            "60 × 60 × 4 mm｜教學本體預留",
+            "另計冷卻器、插座、固定件",
+            "電源路徑 + 回流路徑"
+          ],
+          "en": [
+            "60 × 60 × 4 mm | ASSUMED BODY RESERVATION",
+            "Budget cooler, socket and mounting separately",
+            "Supply path + return path"
+          ]
+        }
+      },
+      "sourceIds": [
+        "cadence-3dic"
+      ],
+      "claimKind": "Original envelope example and co-design exercise"
+    },
+    {
+      "id": "c01-07",
+      "start": 180,
+      "end": 210,
+      "key": "testability",
+      "title": {
+        "zh-TW": "先留下測試的入口",
+        "en": "Preserve access for testing",
+        "zh-CN": "先留下测试的入口",
+        "ja": "テストの入口を確保する",
+        "ko": "시험 접근 경로 확보하기"
+      },
+      "text": {
+        "zh-TW": "在晶粒被蓋住之前，決定怎麼觀察故障。先確認裸晶的測試資料，再規劃組裝後的連線與功能測試。畫面的探針代表可控制、可觀測的入口，不是實際探針尺寸。測不到的內部節點不能假裝正常。需求表要交代故障範圍、測試階段與資料歸屬，避免昂貴組裝後才發現缺口。",
+        "en": "Before a die becomes inaccessible, decide how faults will be observed. Review incoming die-test evidence, then plan interconnect and functional tests after assembly. The probes symbolize controllable, observable access; their size is illustrative. An unobservable internal node cannot simply be assumed good. Record fault scope, test stage, and data ownership, so expensive integration does not reveal a missing test strategy.",
+        "zh-CN": "在芯粒被盖住之前，决定怎么观察故障。先确认裸芯的测试数据，再规划组装后的连线与功能测试。画面的探针代表可控制、可观察的入口，不是实际探针尺寸。测不到的内部节点不能假装正常。需求表要交代故障范围、测试阶段与数据归属，避免昂贵组装后才发现缺口。",
+        "ja": "ダイが隠れる前に、故障の観測方法を決めます。受け入れ時のダイ試験の証拠を確認し、組立後の接続試験と機能試験を計画します。探針は制御と観測の入口を示す記号で、実寸ではありません。観測できない内部点を、良品とみなしてはいけません。故障範囲、試験段階、データの担当を記録し、高価な組立後に不足が判明するのを防ぎます。",
+        "ko": "다이가 가려지기 전에 고장을 관측할 방법을 결정합니다. 먼저 입고 다이의 시험 증거를 확인하고, 조립 후 연결 및 기능 시험을 계획합니다. 화면의 프로브는 제어와 관측 경로를 나타내며 실제 크기는 아닙니다. 관측할 수 없는 내부 노드를 정상이라고 가정해서는 안 됩니다. 고장 범위, 시험 단계, 데이터 책임자를 기록해 비싼 조립 뒤에 시험 전략의 빈틈을 발견하지 않도록 합니다."
+      },
+      "shot": {
+        "station": 6,
+        "camera": "Probe-level macro approach, followed by an exploded view that preserves visible test-access paths to two chiplets.",
+        "action": "Alternate amber inaccessible internal node and accessible cyan test path; show separate die-stage and package-stage evidence trays.",
+        "overlay": {
+          "zh-TW": [
+            "裸晶證據 → 組裝後連線／功能測試",
+            "可控制 + 可觀測",
+            "未觀測 ≠ 已知良好"
+          ],
+          "en": [
+            "Die evidence → assembled interconnect / functional tests",
+            "CONTROLLABILITY + OBSERVABILITY",
+            "Unobserved ≠ known good"
+          ]
+        }
+      },
+      "sourceIds": [
+        "amkor-test",
+        "cadence-3dic"
+      ],
+      "claimKind": "Test-planning synthesis; no test coverage percentage claimed"
+    },
+    {
+      "id": "c01-08",
+      "start": 210,
+      "end": 240,
+      "key": "alternatives",
+      "title": {
+        "zh-TW": "架構是候選路線",
+        "en": "Treat architectures as alternatives",
+        "zh-CN": "架构是候选路线",
+        "ja": "構造は比較する候補である",
+        "ko": "구조를 대안으로 비교하기"
+      },
+      "text": {
+        "zh-TW": "現在才比較候選架構。矽中介層、扇出重佈線與局部矽橋，是不同的互連路線；垂直混合鍵合還可能與其中某些路線組合。不要把它們排成每個產品都必經的流水線。比較有效頻寬、功率、尺寸、測試能力、供應條件與總成本。此刻保留候選，先列出需要證明的差異。",
+        "en": "Now compare candidate architectures. Silicon interposers, fan-out redistribution, and local silicon bridges provide different interconnect routes. Vertical hybrid bonding can also combine with some routes. Do not turn them into a mandatory serial factory line. Compare useful bandwidth, power, dimensions, test access, supply conditions, and total cost. Keep alternatives open while identifying the evidence needed to distinguish them.",
+        "zh-CN": "现在才比较候选架构。硅中介层、扇出重布线与局部硅桥，是不同的互连路线；垂直混合键合还可能与其中某些路线组合。不要把它们排成每个产品都必经的流水线。比较有效带宽、功率、尺寸、测试能力、供应条件与总成本。此刻保留候选，先列出需要证明的差异。",
+        "ja": "ここで候補構造を比較します。シリコンインターポーザー、ファンアウト配線、局所シリコンブリッジは、異なる接続経路です。垂直ハイブリッド接合は、一部と組み合わせることもできます。すべてを必須の連続工程に並べてはいけません。有効帯域、電力、寸法、試験性、供給条件、総費用を比べ、候補の差を証明するために必要な証拠を整理します。",
+        "ko": "이제 후보 구조를 비교합니다. 실리콘 인터포저, 팬아웃 재배선, 국부 실리콘 브리지는 서로 다른 연결 경로입니다. 수직 하이브리드 본딩은 일부 경로와 결합할 수도 있습니다. 모두를 모든 제품이 거치는 직렬 공정으로 나열하지 마세요. 유효 대역폭, 전력, 크기, 시험 접근성, 공급 조건, 총비용을 비교합니다. 후보를 열어 두고 차이를 입증할 증거부터 정리하세요."
+      },
+      "shot": {
+        "station": 7,
+        "camera": "Aerial lateral pass over four independent display plinths, each with a technically distinct miniature architecture.",
+        "action": "Silicon interposer spans two dies; fan-out uses polymer/RDL and no silicon plate; bridge is local; hybrid contact stack has flat Cu contacts without solder balls. No superiority ranking is displayed.",
+        "overlay": {
+          "zh-TW": [
+            "中介層／扇出／局部矽橋／垂直鍵合",
+            "候選路線・部分可組合",
+            "依需求與證據比較"
+          ],
+          "en": [
+            "INTERPOSER / FAN-OUT / LOCAL BRIDGE / VERTICAL BOND",
+            "Alternative routes · some can combine",
+            "Compare against requirements and evidence"
+          ]
+        }
+      },
+      "sourceIds": [
+        "amkor-chiplets",
+        "cadence-3dic"
+      ],
+      "claimKind": "Architecture distinctions; miniature teaching geometries are not vendor CAD"
+    },
+    {
+      "id": "c01-09",
+      "start": 240,
+      "end": 270,
+      "key": "failure-evidence",
+      "title": {
+        "zh-TW": "用失效情境檢查需求",
+        "en": "Challenge the requirements with a failure case",
+        "zh-CN": "用失效情境检查需求",
+        "ja": "失敗条件で仮定を点検する",
+        "ko": "실패 조건으로 가정 검토하기"
+      },
+      "text": {
+        "zh-TW": "試著破壞剛才的假設：若實際冷卻系統有效熱阻變成每瓦零點二二度，同樣功率下，簡化估算就升到九十度，超過案例門檻。這是待解決的風險，不是漂亮動畫中的通過。保存模型版本、邊界條件、量測位置與誤差，再比較持續吞吐量。降頻後的速度，也必須算進需求驗證。",
+        "en": "Challenge the cooling assumption. If effective system resistance rises to zero point two two kelvin per watt, the same screening calculation reaches ninety degrees, exceeding our example limit. That is an unresolved risk, not an animated pass. Preserve model revision, boundary conditions, measurement locations, and uncertainty. Then check sustained throughput; any performance reduction from thermal throttling belongs in the verification result.",
+        "zh-CN": "试着破坏刚才的假设：若实际冷却系统有效热阻变成每瓦零点二二度，同样功率下，简化估算就升到九十度，超过案例门槛。这是待解决的风险，不是漂亮动画中的通过。保存模型版本、边界条件、测量位置与误差，再比较持续吞吐量。降频后的速度，也必须算进需求验证。",
+        "ja": "冷却の仮定を変えてみます。有効熱抵抗が一ワット当たり零点二二度になると、同じ電力でも概算は九十度となり、教材の上限を超えます。これは未解決のリスクで、動画上の合格ではありません。モデル版、境界条件、測定位置、不確かさを保存し、持続的な処理速度を確認します。温度制御による速度低下も、検証結果に含めます。",
+        "ko": "냉각 가정을 바꿔 보겠습니다. 유효 열저항이 와트당 영 점 이이 도로 증가하면, 같은 전력에서도 추정 온도는 구십 도가 되어 사례의 한계를 넘습니다. 이는 미해결 위험이며 애니메이션상의 합격이 아닙니다. 모델 버전, 경계 조건, 측정 위치, 불확실성을 보존하고 지속 처리량을 확인하세요. 열에 따른 속도 제한도 요구사항 검증 결과에 포함해야 합니다."
+      },
+      "shot": {
+        "station": 8,
+        "camera": "Split comparison: descend toward the original thermal stack, then slide to a warmer case beside an evidence ledger.",
+        "action": "Show 80 C estimate versus 90 C estimate with identical power; decrease illustrative throughput bar without claiming a numeric throttle model; amber evidence row remains open.",
+        "overlay": {
+          "zh-TW": [
+            "35 + 250 × 0.22 = 90 °C",
+            "假設改變 → 重新驗證",
+            "估算／模擬／實測分開保存"
+          ],
+          "en": [
+            "35 + 250 × 0.22 = 90 °C",
+            "CHANGED ASSUMPTION → REVERIFY",
+            "Keep estimates, simulations and measurements distinct"
+          ]
+        }
+      },
+      "sourceIds": [
+        "ase-thermal"
+      ],
+      "claimKind": "Original sensitivity exercise; no measured failure or simulated throttle curve claimed"
+    },
+    {
+      "id": "c01-10",
+      "start": 270,
+      "end": 300,
+      "key": "baseline",
+      "title": {
+        "zh-TW": "交付可追溯的需求基線",
+        "en": "Release a traceable requirements baseline",
+        "zh-CN": "交付可追溯的需求基线",
+        "ja": "追跡できる要件基準を引き渡す",
+        "ko": "추적 가능한 요구사항 기준선 전달하기"
+      },
+      "text": {
+        "zh-TW": "最後回到全貌。你交付的是有版本的需求基線，以及仍未解決的事項。每項關鍵需求，都要連到負責人和驗證證據；還沒量到的，維持待驗證。下一道活動是功能與晶粒分割，把需求轉成候選系統構成。先問清楚成功的條件，後面的每一道製造與測試，才知道要證明什麼。",
+        "en": "Return to the complete system. Deliver a versioned requirements baseline and an explicit open-issues list. Link each critical requirement to an owner and its verification evidence; unmeasured items remain unverified. Next comes functional and die partitioning, turning requirements into candidate system compositions. Defining success first gives every later manufacturing and testing activity a clear purpose and a claim to demonstrate.",
+        "zh-CN": "最后回到全貌。你交付的是有版本的需求基线，以及仍未解决的事项。每项关键需求，都要连到负责人和验证证据；还没测到的，维持待验证。下一道活动是功能与芯粒划分，把需求转成候选系统构成。先问清楚成功的条件，后面的每一道制造与测试，才知道要证明什么。",
+        "ja": "最後に全体へ戻ります。成果物は、版管理した要件基準と未解決事項の一覧です。重要な要件を担当者と検証証拠につなぎ、未測定項目は未検証のままにします。次は機能とダイの分割です。要件を候補システム構成へ変換します。成功の条件を先に定義すれば、後続の製造と試験で何を証明すべきかが明確になります。",
+        "ko": "마지막으로 전체 시스템을 봅니다. 결과물은 버전이 있는 요구사항 기준선과 미해결 항목 목록입니다. 중요한 요구사항을 담당자 및 검증 증거와 연결하고, 측정하지 않은 항목은 미검증으로 남깁니다. 다음 활동은 기능과 다이 분할입니다. 요구사항을 후보 시스템 구성으로 바꿉니다. 성공 조건을 먼저 정의해야 이후 제조와 시험에서 무엇을 입증해야 하는지 분명해집니다."
+      },
+      "shot": {
+        "station": 9,
+        "camera": "Pull back from versioned evidence tiles to the full flight route; finish above the forward C02 gate.",
+        "action": "Link all requirement categories to a baseline node; show open amber items and a next-step arrow, not a product qualification pass. Reserve right-center area for optional last-ten-second LINE card.",
+        "overlay": {
+          "zh-TW": [
+            "輸出：需求基線 + 未決事項",
+            "下一道 C02｜功能與晶粒分割",
+            "來源：Cadence・Amkor・ASE・UCIe"
+          ],
+          "en": [
+            "OUTPUT: BASELINE + OPEN ISSUES",
+            "NEXT C02 | FUNCTIONAL AND DIE PARTITIONING",
+            "Sources: Cadence · Amkor · ASE · UCIe"
+          ]
+        }
+      },
+      "sourceIds": [
+        "cadence-3dic",
+        "amkor-chiplets"
+      ],
+      "claimKind": "Original handoff and learning assessment"
+    }
+  ],
+  "productionNotes": {
+    "narration": "Synthesize each language and each 30-second cue separately; measure the actual PCM duration. Fit natural speech within its assigned window with a short start/end allowance. Do not label estimated sentence timestamps as measured. Prefer rewriting a too-long cue over excessive speed changes.",
+    "subtitles": "Use measured sentence timings per language. For simultaneous bilingual subtitles, map corresponding meaning to each narrated sentence; do not union unrelated language timing tracks.",
+    "visual": "MG_PACKAGING_PROCESS_SCENE in packaging-process-scene-v34.js is a new design-activity route with ten distinct scenes. Render deterministically at 1280x720 or higher, preserving top headings and bottom caption safe areas. Any heat color or data packet count is illustrative unless explicitly labeled arithmetic.",
+    "honestyGate": "Do not change roadmap videoStatus or processFilmsProduced until the final 300-second film, usable audio, subtitles and playback have been verified. Script readiness is not film completion.",
+    "translation": "Five complete narration languages and chapter titles. The production rehearsal UI and technical shot directions are zh-TW/en; final measured subtitle tracks use each language's own narration timings. Existing zh-TW and English narration text is byte-for-byte preserved."
+  }
+};

@@ -1,0 +1,139 @@
+1
+00:00:00,000 --> 00:00:12,038
+先從上方看：中央是運算晶片，周圍是 HBM 記憶體堆疊，下方共同的平台是矽中介層。
+Start overhead: a compute die sits beside HBM memory stacks, all supported by a silicon interposer.
+
+2
+00:00:12,038 --> 00:00:30,000
+這個教學場景把微小封裝放大成一座城市；先找出「誰負責計算、誰存資料、誰把兩者連起來」，再靠近細節。
+This teaching scene enlarges a tiny package into a city. First identify who computes, who stores data and who connects them; then descend into the details.
+
+3
+00:00:30,000 --> 00:00:35,674
+鏡頭降低，分清晶粒、中介層與封裝基板。
+Lower the camera and separate the dies, interposer and package substrate.
+
+4
+00:00:35,674 --> 00:00:43,444
+中介層承接高密度晶粒間連線；基板把訊號與電源帶往電路板。
+The interposer handles dense die-to-die routing; the substrate connects the assembly to the circuit board.
+
+5
+00:00:43,444 --> 00:01:00,000
+這裡講的是矽中介層型 2.5D 結構，不能把所有 CoWoS 變體都畫成同一片矽板。
+This tour represents silicon-interposer 2.5D packaging, not every CoWoS variant, which can use different interconnect structures.
+
+6
+00:01:00,000 --> 00:01:07,588
+沿著晶片邊緣飛行，注意並行連線如何跨向 HBM。
+Fly along the die edges and follow parallel connections toward HBM.
+
+7
+00:01:07,588 --> 00:01:13,846
+高頻寬不只靠單條線變快，也靠許多通道合作。
+Bandwidth comes from many channels working together, not simply from accelerating one wire.
+
+8
+00:01:13,846 --> 00:01:30,000
+發光線代表連接關係，不是電子的真實速度；實際設計還要計算寄生效應、串擾與時序裕量。
+Glowing routes show connectivity rather than electron speed. Real design also evaluates parasitics, crosstalk and timing margin.
+
+9
+00:01:30,000 --> 00:01:35,604
+把整體拆成待組裝的晶粒、中介層與基板。
+Separate the dies, interposer and substrate before assembly.
+
+10
+00:01:35,604 --> 00:01:46,881
+先檢查各元件，再規劃貼合、填膠與接合後測試，能避免到最後才發現昂貴的缺陷。
+Inspect components, then plan placement, underfill and post-bond tests so defects are not discovered only after costly integration.
+
+11
+00:01:46,881 --> 00:02:00,000
+這是概念流程；實際先後順序與材料條件必須依製程規範決定。
+This is a conceptual workflow: actual sequencing, materials and process conditions depend on the qualified manufacturing flow.
+
+12
+00:02:00,000 --> 00:02:07,536
+展開分層結構，辨認晶粒接點、中介層佈線與穿矽孔。
+In the separated layers, identify die contacts, interposer wiring and through-silicon vias.
+
+13
+00:02:07,536 --> 00:02:17,307
+不要把 HBM 內部堆疊的垂直連線，和中介層通往下方基板的連線混為一談。
+Vertical connections inside an HBM stack are not the same structures as connections through the interposer toward the substrate.
+
+14
+00:02:17,307 --> 00:02:30,000
+現在用眼睛追一遍：資料往鄰居走，供電與外部連接往基板走。
+Trace the distinct routes: data travels to neighboring dies, while power and external connections reach the substrate.
+
+15
+00:02:30,000 --> 00:02:35,628
+資料從記憶體到運算核心，再回到記憶體。
+Follow data from memory to compute and back.
+
+16
+00:02:35,628 --> 00:02:44,032
+問三件事：每秒搬多少資料、每位元耗多少能量、最壞情況延遲多大。
+Ask three questions: how much data per second, how much energy per bit and what worst-case latency?
+
+17
+00:02:44,032 --> 00:03:00,000
+靠近可以縮短互連，但不能直接推論整個系統一定更省電；工作負載與控制器也會改變結果。
+Shorter links can help, but proximity alone does not guarantee lower system power. Workload, controllers and utilization also shape the result.
+
+18
+00:03:00,000 --> 00:03:07,754
+熱點從運算晶粒浮現，向上穿過介面材料與散熱結構。
+Heat leaves the compute die through interface material and cooling structures above it.
+
+19
+00:03:07,754 --> 00:03:14,121
+旁邊的記憶體也有溫度限制，不能只盯著中央晶片。
+Nearby memory also has temperature limits.
+
+20
+00:03:14,121 --> 00:03:30,000
+紅色是概念熱區，不是量測溫度；真正比較散熱方案，要固定功率、環境與接觸條件。
+The red region is an illustrative hotspot, not measured temperature. A fair cooling comparison holds power, ambient conditions and contact conditions constant.
+
+21
+00:03:30,000 --> 00:03:37,769
+鏡頭停在檢查站：外觀、接點影像與電性測試回答不同問題。
+At inspection, visual checks, joint imaging and electrical tests answer different questions.
+
+22
+00:03:37,769 --> 00:03:46,355
+漂亮的 X 光影像不等於每條訊號都正常；電性通過也不代表長期可靠。
+A clean X-ray image does not prove every signal works; an electrical pass does not prove lifetime reliability.
+
+23
+00:03:46,355 --> 00:04:00,000
+把缺陷位置、測試結果與製程批次連起來，才能找到真正的改善方向。
+Connect defect locations, test results and process lots to identify meaningful corrective actions.
+
+24
+00:04:00,000 --> 00:04:08,470
+拉高鏡頭，比較多放記憶體、縮短走線與維持可製造性的拉扯。
+Rise above the package and compare more memory, shorter routes and manufacturability.
+
+25
+00:04:08,470 --> 00:04:15,453
+封裝面積、翹曲、供電與散熱都會牽動成本和良率。
+Package area, warpage, power delivery and cooling interact with cost and yield.
+
+26
+00:04:15,453 --> 00:04:30,000
+中介層的價值在於整合適合的系統，而不是把所有空間塞滿。
+The interposer is valuable because it enables a balanced system, not because every available location is filled with silicon.
+
+27
+00:04:30,000 --> 00:04:44,420
+最後俯瞰整條技術路線：定義需求、配置運算與 HBM、設計互連和供電、安排組裝、驗證熱與可靠度。
+Finish with the complete route: define requirements, place compute and HBM, design interconnect and power, plan assembly, then verify thermal behavior and reliability.
+
+28
+00:04:44,420 --> 00:05:00,000
+若你能指出資料從哪裡來、熱往哪裡走、哪個接點最需要證據，就已看懂這個封裝的核心。
+If you can show where data begins, where heat leaves and which connection needs evidence, you understand the core of this package.

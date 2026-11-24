@@ -1,0 +1,139 @@
+1
+00:00:00,000 --> 00:00:12,877
+先从上方看：中央是计算芯片，周围是 HBM 内存堆叠，下方共同的平台是硅中介层。
+Start overhead: a compute die sits beside HBM memory stacks, all supported by a silicon interposer.
+
+2
+00:00:12,877 --> 00:00:30,000
+这个教学场景把微小封装放大成一座城市；先找出谁负责计算、谁存数据、谁把两者连起来，再靠近细节。
+This teaching scene enlarges a tiny package into a city. First identify who computes, who stores data and who connects them; then descend into the details.
+
+3
+00:00:30,000 --> 00:00:35,825
+镜头降低，分清晶粒、中介层与封装基板。
+Lower the camera and separate the dies, interposer and package substrate.
+
+4
+00:00:35,825 --> 00:00:43,534
+中介层承接高密度晶粒间连线；基板把信号与电源带往电路板。
+The interposer handles dense die-to-die routing; the substrate connects the assembly to the circuit board.
+
+5
+00:00:43,534 --> 00:01:00,000
+这里讲的是硅中介层型 2.5D 结构，不能把所有 CoWoS 变体都画成同一片硅板。
+This tour represents silicon-interposer 2.5D packaging, not every CoWoS variant, which can use different interconnect structures.
+
+6
+00:01:00,000 --> 00:01:08,072
+沿着芯片边缘飞行，注意并行连线如何跨向 HBM。
+Fly along the die edges and follow parallel connections toward HBM.
+
+7
+00:01:08,072 --> 00:01:14,093
+高带宽不只靠单条线变快，也靠许多通道合作。
+Bandwidth comes from many channels working together, not simply from accelerating one wire.
+
+8
+00:01:14,093 --> 00:01:30,000
+发光线代表连接关系，不是电子的真实速度；实际设计还要计算寄生效应、串扰与时序裕量。
+Glowing routes show connectivity rather than electron speed. Real design also evaluates parasitics, crosstalk and timing margin.
+
+9
+00:01:30,000 --> 00:01:35,456
+把整体拆成待组装的晶粒、中介层与基板。
+Separate the dies, interposer and substrate before assembly.
+
+10
+00:01:35,456 --> 00:01:46,343
+先检查各元件，再规划贴合、填胶与接合后测试，能避免到最后才发现昂贵的缺陷。
+Inspect components, then plan placement, underfill and post-bond tests so defects are not discovered only after costly integration.
+
+11
+00:01:46,343 --> 00:02:00,000
+这是概念流程；实际先后顺序与材料条件必须依工艺规范决定。
+This is a conceptual workflow: actual sequencing, materials and process conditions depend on the qualified manufacturing flow.
+
+12
+00:02:00,000 --> 00:02:07,310
+展开分层结构，辨认晶粒接点、中介层布线与穿硅孔。
+In the separated layers, identify die contacts, interposer wiring and through-silicon vias.
+
+13
+00:02:07,310 --> 00:02:17,551
+不要把 HBM 内部堆叠的垂直连线，和中介层通往下方基板的连线混为一谈。
+Vertical connections inside an HBM stack are not the same structures as connections through the interposer toward the substrate.
+
+14
+00:02:17,551 --> 00:02:30,000
+现在用眼睛追一遍：数据往邻居走，供电与外部连接往基板走。
+Trace the distinct routes: data travels to neighboring dies, while power and external connections reach the substrate.
+
+15
+00:02:30,000 --> 00:02:35,462
+数据从内存到计算核心，再回到内存。
+Follow data from memory to compute and back.
+
+16
+00:02:35,462 --> 00:02:44,369
+问三件事：每秒搬多少数据、每比特耗多少能量、最坏情况延迟多大。
+Ask three questions: how much data per second, how much energy per bit and what worst-case latency?
+
+17
+00:02:44,369 --> 00:03:00,000
+靠近可以缩短互连，但不能直接推论整个系统一定更省电；工作负载与控制器也会改变结果。
+Shorter links can help, but proximity alone does not guarantee lower system power. Workload, controllers and utilization also shape the result.
+
+18
+00:03:00,000 --> 00:03:07,262
+热点从计算晶粒浮现，向上穿过界面材料与散热结构。
+Heat leaves the compute die through interface material and cooling structures above it.
+
+19
+00:03:07,262 --> 00:03:13,053
+旁边的内存也有温度限制，不能只盯着中央芯片。
+Nearby memory also has temperature limits.
+
+20
+00:03:13,053 --> 00:03:30,000
+红色是概念热区，不是测量温度；真正比较散热方案，要固定功率、环境与接触条件。
+The red region is an illustrative hotspot, not measured temperature. A fair cooling comparison holds power, ambient conditions and contact conditions constant.
+
+21
+00:03:30,000 --> 00:03:38,429
+镜头停在检查站：外观、接点影像与电性测试回答不同问题。
+At inspection, visual checks, joint imaging and electrical tests answer different questions.
+
+22
+00:03:38,429 --> 00:03:47,843
+漂亮的 X 光影像不等于每条信号都正常；电性通过也不代表长期可靠。
+A clean X-ray image does not prove every signal works; an electrical pass does not prove lifetime reliability.
+
+23
+00:03:47,843 --> 00:04:00,000
+把缺陷位置、测试结果与工艺批次连起来，才能找到真正的改善方向。
+Connect defect locations, test results and process lots to identify meaningful corrective actions.
+
+24
+00:04:00,000 --> 00:04:08,677
+拉高镜头，比较多放内存、缩短走线与维持可制造性的拉扯。
+Rise above the package and compare more memory, shorter routes and manufacturability.
+
+25
+00:04:08,677 --> 00:04:15,904
+封装面积、翘曲、供电与散热都会牵动成本和良率。
+Package area, warpage, power delivery and cooling interact with cost and yield.
+
+26
+00:04:15,904 --> 00:04:30,000
+中介层的价值在于整合适合的系统，而不是把所有空间塞满。
+The interposer is valuable because it enables a balanced system, not because every available location is filled with silicon.
+
+27
+00:04:30,000 --> 00:04:44,741
+最后俯瞰整条技术路线：定义需求、配置计算与 HBM、设计互连和供电、安排组装、验证热与可靠性。
+Finish with the complete route: define requirements, place compute and HBM, design interconnect and power, plan assembly, then verify thermal behavior and reliability.
+
+28
+00:04:44,741 --> 00:05:00,000
+若你能指出数据从哪里来、热往哪里走、哪个接点最需要证据，就已看懂这个封装的核心。
+If you can show where data begins, where heat leaves and which connection needs evidence, you understand the core of this package.

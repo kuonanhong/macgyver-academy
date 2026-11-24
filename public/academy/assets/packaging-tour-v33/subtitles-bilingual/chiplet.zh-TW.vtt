@@ -1,0 +1,151 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.432
+俯瞰運算、記憶體控制與輸入輸出等功能街區。
+Look over districts for compute, memory control and input/output.
+
+2
+00:00:06.432 --> 00:00:15.530
+Chiplet 是把系統分成可整合的晶粒，不是把任意晶片放在一起就會合作。
+Chiplets partition a system into integrable dies; placing arbitrary chips together does not make them cooperate.
+
+3
+00:00:15.530 --> 00:00:30.000
+先畫出誰需要交換哪些資料，再決定哪些功能值得拆開。
+First map which functions exchange which data, then decide where splitting the system is worthwhile.
+
+4
+00:00:30.000 --> 00:00:34.910
+不同功能未必需要相同的製程條件。
+Different functions need not use the same process technology.
+
+5
+00:00:34.910 --> 00:00:44.244
+拆分可以讓各晶粒採用適合的技術，也帶來介面、供電與封裝整合成本。
+Partitioning can match technology to purpose, but adds interface, power and packaging costs.
+
+6
+00:00:44.244 --> 00:01:00.000
+這是一種設計選項，不是任何產品都必須改成 Chiplet；小而單純的系統可能有別的最佳解。
+Chiplets are a design option, not a requirement for every product; a smaller, simpler system may favor another architecture.
+
+7
+00:01:00.000 --> 00:01:11.538
+現在看晶粒邊界：UCIe 針對封裝內晶粒間互連定義介面規則，涵蓋實體層與相關通訊機制。
+At the die boundary, UCIe supplies standardized rules for on-package die-to-die connectivity, including physical and communication mechanisms.
+
+8
+00:01:11.538 --> 00:01:16.034
+它不是某種矽橋，也不是冷卻技術。
+It is not a silicon bridge or a cooling technology.
+
+9
+00:01:16.034 --> 00:01:30.000
+把「封裝結構」和「互連標準」分開，才能正確組合方案。
+Separate the package structure from the interconnect standard before combining them into a system.
+
+10
+00:01:30.000 --> 00:01:41.024
+把晶粒放進規劃位置之前，先確認介面位置、電源需求、時脈策略與封裝能力。
+Before placing dies, align interface locations, power requirements, clocking strategy and package capability.
+
+11
+00:01:41.024 --> 00:01:48.167
+標準化能減少協調成本，卻不會自動解決所有相容問題。
+Standardization can reduce coordination work, but cannot automatically solve every compatibility issue.
+
+12
+00:01:48.167 --> 00:02:00.000
+這裡的拼合動作代表經過設計的整合，不是隨插即用的保證。
+The assembly animation represents designed integration, not a guarantee that any two components are plug-and-play.
+
+13
+00:02:00.000 --> 00:02:06.795
+在剖面看金屬與接點，在上方看訊息如何交換。
+The section reveals metal and contacts; the upper view shows messages.
+
+14
+00:02:06.795 --> 00:02:15.872
+實體連接回答訊號能否可靠傳送，協定則規範資料如何被理解與管理。
+Physical connectivity addresses reliable signaling, while protocols organize the meaning and management of data.
+
+15
+00:02:15.872 --> 00:02:30.000
+相同連線形狀不代表相同語意；系統必須核對雙方實際支援的功能。
+Similar-looking connections need not carry identical semantics. Verify what functions both endpoints actually support.
+
+16
+00:02:30.000 --> 00:02:38.603
+跟著資料從一個功能區移到另一個，留意每次跨界都需要介面工作。
+Follow data between functional districts. Every boundary crossing requires interface work.
+
+17
+00:02:38.603 --> 00:02:43.866
+拆分得太細，可能增加溝通與同步負擔。
+Excessive partitioning can add communication and synchronization overhead.
+
+18
+00:02:43.866 --> 00:03:00.000
+路線圖要標出資料量、延遲與能量預算，不能只把每個區塊的算力加總。
+The roadmap must budget data volume, latency and energy instead of merely adding up the computing capability of individual blocks.
+
+19
+00:03:00.000 --> 00:03:08.537
+把功能地圖切換成概念熱圖，觀察高負載晶粒與旁邊元件的距離。
+Switch the function map to an illustrative heat map. Observe the distance between a busy die and its neighbors.
+
+20
+00:03:08.537 --> 00:03:14.918
+系統效能可能受最熱、最缺電或最忙的連線限制。
+System performance may be limited by the hottest die, weakest power path or busiest link.
+
+21
+00:03:14.918 --> 00:03:30.000
+設計應協調功率管理與散熱，不能把每個晶粒當成互不影響的孤島。
+Coordinate power management and cooling rather than treating dies as isolated islands.
+
+22
+00:03:30.000 --> 00:03:38.934
+檢查站不只問晶粒各自能否工作，也問連在一起是否符合共同條件。
+Test not only whether dies work separately, but whether the assembled system meets shared conditions.
+
+23
+00:03:38.934 --> 00:03:47.362
+驗證連線啟動、錯誤處理與目標工作負載，並保留版本與設定紀錄。
+Exercise link startup, error handling and target workloads; record versions and configurations.
+
+24
+00:03:47.362 --> 00:04:00.000
+貼上 UCIe 名稱不等於完成所有產品層級的相容性驗證。
+A UCIe label does not replace complete product-level integration and interoperability validation.
+
+25
+00:04:00.000 --> 00:04:09.414
+重用晶粒可以讓產品組合更靈活，但也增加供應商、版本與驗證工作的協調。
+Reusing chiplets can make product families more flexible, while adding supplier, version and validation coordination.
+
+26
+00:04:09.414 --> 00:04:17.393
+比較單晶片與 Chiplet 時，要看開發時間、良品成本與長期維護。
+Compare monolithic and chiplet designs using development time, cost per good unit and long-term maintenance.
+
+27
+00:04:17.393 --> 00:04:30.000
+沒有一種拆分方式適合所有需求，路線圖應保留取捨依據。
+No partition fits every need; preserve the reasoning behind each architectural trade-off.
+
+28
+00:04:30.000 --> 00:04:38.964
+最後俯瞰功能分割、介面選擇、實體封裝、供電散熱與系統驗證。
+Survey partitioning, interface selection, physical packaging, power, cooling and system validation.
+
+29
+00:04:38.964 --> 00:04:47.615
+你應能分清三件事：晶粒負責什麼、封裝怎麼連、協定怎麼合作。
+Distinguish three questions: what each die does, how the package connects it and how protocols coordinate behavior.
+
+30
+00:04:47.615 --> 00:05:00.000
+Chiplet 的美感是有秩序的分工，而完整證據讓分工真正成立。
+Chiplet elegance comes from orderly specialization, supported by evidence that the whole system works.
