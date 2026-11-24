@@ -1,0 +1,2019 @@
+{
+  "version": "35.0.0",
+  "status": "PASS",
+  "duration": 300,
+  "processes": {
+    "C02": {
+      "zh-TW": [
+        {
+          "start": 0,
+          "end": 4.293,
+          "text": "先從空中俯瞰一個假想加速器的功能圖。",
+          "english": "Fly over the functional map of a hypothetical accelerator.",
+          "speechStart": 0.35,
+          "speechEnd": 4.113271,
+          "chapter": 1,
+          "sentence": 1
+        },
+        {
+          "start": 4.293,
+          "end": 12.429,
+          "text": "C02要把運算、快取、記憶體控制與I/O功能分配到單晶粒或多個小晶片。",
+          "english": "C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.",
+          "speechStart": 4.293271,
+          "speechEnd": 12.249146,
+          "chapter": 1,
+          "sentence": 2
+        },
+        {
+          "start": 12.429,
+          "end": 19.427,
+          "text": "交付物是功能分割圖、逐方向的跨晶粒流量表，以及能耗和時序預算。",
+          "english": "Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.",
+          "speechStart": 12.429146,
+          "speechEnd": 19.246792,
+          "chapter": 1,
+          "sentence": 3
+        },
+        {
+          "start": 19.427,
+          "end": 30,
+          "text": "所有數字都是教學假設；先說明分割理由，下一課C03再選封裝技術。",
+          "english": "Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.",
+          "speechStart": 19.426792,
+          "speechEnd": 26.991375,
+          "chapter": 1,
+          "sentence": 4
+        },
+        {
+          "start": 30,
+          "end": 34.268,
+          "text": "放大三種與記憶體有關、卻不同的功能。",
+          "english": "Zoom into three different memory-related functions.",
+          "speechStart": 30.35,
+          "speechEnd": 34.087979,
+          "chapter": 2,
+          "sentence": 1
+        },
+        {
+          "start": 34.268,
+          "end": 44.837,
+          "text": "SRAM快取把可重用資料留在運算旁，控制器排程記憶體交易，記憶體PHY則驅動通往外部DRAM的電氣連線。",
+          "english": "SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.",
+          "speechStart": 34.267979,
+          "speechEnd": 44.657333,
+          "chapter": 2,
+          "sentence": 2
+        },
+        {
+          "start": 44.837,
+          "end": 50.863,
+          "text": "功能圖必須分清這些角色，不能只畫一個籠統的記憶體方塊。",
+          "english": "These roles must not collapse into one box simply labeled memory.",
+          "speechStart": 44.837333,
+          "speechEnd": 50.682563,
+          "chapter": 2,
+          "sentence": 3
+        },
+        {
+          "start": 50.863,
+          "end": 60,
+          "text": "新增晶粒邊界還需要兩端的晶粒間介面，它和外部記憶體PHY是不同功能。",
+          "english": "A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.",
+          "speechStart": 50.862562,
+          "speechEnd": 57.525875,
+          "chapter": 2,
+          "sentence": 4
+        },
+        {
+          "start": 60,
+          "end": 67.718,
+          "text": "方案A把運算與快取留在一起，記憶體控制與I/O則放在第二顆晶粒。",
+          "english": "Candidate A keeps compute and cache together, while memory control and I/O share a second die.",
+          "speechStart": 60.35,
+          "speechEnd": 67.537583,
+          "chapter": 3,
+          "sentence": 1
+        },
+        {
+          "start": 67.718,
+          "end": 75.627,
+          "text": "選定工作負載中，控制器每秒送六十四GB到快取，反方向每秒十六GB。",
+          "english": "The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.",
+          "speechStart": 67.717583,
+          "speechEnd": 75.446708,
+          "chapter": 3,
+          "sentence": 2
+        },
+        {
+          "start": 75.627,
+          "end": 80.813,
+          "text": "因此這條分割邊界的雙向合計流量是每秒八十GB。",
+          "english": "The cut therefore moves eighty gigabytes per second in aggregate.",
+          "speechStart": 75.626708,
+          "speechEnd": 80.633292,
+          "chapter": 3,
+          "sentence": 3
+        },
+        {
+          "start": 80.813,
+          "end": 90,
+          "text": "表格仍要保留兩個箭頭；合計可以用來算能耗，卻不是單一方向的頻寬需求。",
+          "english": "Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.",
+          "speechStart": 80.813292,
+          "speechEnd": 88.353708,
+          "chapter": 3,
+          "sentence": 4
+        },
+        {
+          "start": 90,
+          "end": 94.337,
+          "text": "現在把運算和快取分開，形成方案B。",
+          "english": "Now separate compute from cache to create candidate B.",
+          "speechStart": 90.35,
+          "speechEnd": 94.156854,
+          "chapter": 4,
+          "sentence": 1
+        },
+        {
+          "start": 94.337,
+          "end": 102.317,
+          "text": "原本留在晶粒內的流量，朝運算方向每秒一百九十二GB，回快取方向每秒六十四GB。",
+          "english": "Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.",
+          "speechStart": 94.336854,
+          "speechEnd": 102.136958,
+          "chapter": 4,
+          "sentence": 2
+        },
+        {
+          "start": 102.317,
+          "end": 109.557,
+          "text": "新邊界增加每秒二百五十六GB，使跨晶粒合計從八十升到三百三十六GB。",
+          "english": "The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.",
+          "speechStart": 102.316958,
+          "speechEnd": 109.376563,
+          "chapter": 4,
+          "sentence": 3
+        },
+        {
+          "start": 109.557,
+          "end": 120,
+          "text": "資料重用讓快取內部流量高於外部記憶體流量；晶粒變小，本身並不能證明系統更好。",
+          "english": "Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.",
+          "speechStart": 109.556562,
+          "speechEnd": 116.891771,
+          "chapter": 4,
+          "sentence": 4
+        },
+        {
+          "start": 120,
+          "end": 122.594,
+          "text": "從流量圖移到製程選項表。",
+          "english": "Move from the traffic map to process choices.",
+          "speechStart": 120.35,
+          "speechEnd": 122.4145,
+          "chapter": 5,
+          "sentence": 1
+        },
+        {
+          "start": 122.594,
+          "end": 129.323,
+          "text": "運算邏輯、SRAM、類比電路與外部I/O，從同一種製程升級得到的好處未必相同。",
+          "english": "Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.",
+          "speechStart": 122.5945,
+          "speechEnd": 129.143271,
+          "chapter": 5,
+          "sentence": 2
+        },
+        {
+          "start": 129.323,
+          "end": 136.811,
+          "text": "AMD官方文件有運算與I/O分開的實際產品，但本課布局和數字並非重建AMD產品。",
+          "english": "AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.",
+          "speechStart": 129.323271,
+          "speechEnd": 136.630667,
+          "chapter": 5,
+          "sentence": 3
+        },
+        {
+          "start": 136.811,
+          "end": 150,
+          "text": "指派製程前，要比較可用IP、特性驗證、成本和重用條件；若整體取捨有利，也保留單晶粒候選。",
+          "english": "Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.",
+          "speechStart": 136.810667,
+          "speechEnd": 144.447375,
+          "chapter": 5,
+          "sentence": 4
+        },
+        {
+          "start": 150,
+          "end": 158.448,
+          "text": "假設有效率百分之八十，發送與接收兩端合計，每個實體位元的動態能耗是四皮焦耳。",
+          "english": "Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.",
+          "speechStart": 150.35,
+          "speechEnd": 158.268021,
+          "chapter": 6,
+          "sentence": 1
+        },
+        {
+          "start": 158.448,
+          "end": 166.295,
+          "text": "方案A每秒八百億位元組，先乘八、除以零點八，再乘四乘十的負十二次方焦耳。",
+          "english": "Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.",
+          "speechStart": 158.448021,
+          "speechEnd": 166.114875,
+          "chapter": 6,
+          "sentence": 2
+        },
+        {
+          "start": 166.295,
+          "end": 171.092,
+          "text": "結果是三點二瓦，方案B則需要十三點四四瓦。",
+          "english": "The result is three point two watts, while candidate B requires thirteen point four four.",
+          "speechStart": 166.294875,
+          "speechEnd": 170.912479,
+          "chapter": 6,
+          "sentence": 3
+        },
+        {
+          "start": 171.092,
+          "end": 180,
+          "text": "固定功率與共通的外部記憶體連線，沒有算在這項比較內，不代表它們不耗電。",
+          "english": "Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.",
+          "speechStart": 171.092479,
+          "speechEnd": 178.062062,
+          "chapter": 6,
+          "sentence": 4
+        },
+        {
+          "start": 180,
+          "end": 183.725,
+          "text": "跟著一次讀取請求，直到資料回到呼叫端。",
+          "english": "Follow one read request all the way back to its caller.",
+          "speechStart": 180.35,
+          "speechEnd": 183.545104,
+          "chapter": 7,
+          "sentence": 1
+        },
+        {
+          "start": 183.725,
+          "end": 192.583,
+          "text": "假設請求傳輸十二奈秒、記憶體服務四十奈秒、回應傳輸十二奈秒，合計六十四；各傳輸項已包含自己的序列化。",
+          "english": "Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.",
+          "speechStart": 183.725104,
+          "speechEnd": 192.402938,
+          "chapter": 7,
+          "sentence": 2
+        },
+        {
+          "start": 192.583,
+          "end": 196.756,
+          "text": "兩側佇列若再增加十六奈秒，整筆交易就到八十奈秒。",
+          "english": "Another sixteen nanoseconds of combined queueing brings the transaction to eighty.",
+          "speechStart": 192.582938,
+          "speechEnd": 196.575917,
+          "chapter": 7,
+          "sentence": 3
+        },
+        {
+          "start": 196.756,
+          "end": 210,
+          "text": "只看連線頻寬與PHY延遲，無法得到這個答案；必須定義端點、相依關係與工作負載，再驗證所需的延遲分布。",
+          "english": "Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.",
+          "speechStart": 196.755917,
+          "speechEnd": 205.196333,
+          "chapter": 7,
+          "sentence": 4
+        },
+        {
+          "start": 210,
+          "end": 213.724,
+          "text": "替每一條新增邊界附上介面契約。",
+          "english": "Attach a contract to every new boundary.",
+          "speechStart": 210.35,
+          "speechEnd": 213.544062,
+          "chapter": 8,
+          "sentence": 1
+        },
+        {
+          "start": 213.724,
+          "end": 222.518,
+          "text": "記錄協定版本、支援模式、順序規則、時脈與重置行為、電源切換，以及錯誤復原。",
+          "english": "Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.",
+          "speechStart": 213.724063,
+          "speechEnd": 222.337771,
+          "chapter": 8,
+          "sentence": 2
+        },
+        {
+          "start": 222.518,
+          "end": 230.408,
+          "text": "UCIe等標準有助於定義互通條件，但相同名稱不能證明兩個實際實作完全相容。",
+          "english": "Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.",
+          "speechStart": 222.517771,
+          "speechEnd": 230.228313,
+          "chapter": 8,
+          "sentence": 3
+        },
+        {
+          "start": 230.408,
+          "end": 240,
+          "text": "兩顆晶粒都要預留測試與除錯入口，除了個別元件，也要驗證組裝後的連線。",
+          "english": "Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.",
+          "speechStart": 230.408312,
+          "speechEnd": 237.829583,
+          "chapter": 8,
+          "sentence": 4
+        },
+        {
+          "start": 240,
+          "end": 244.93,
+          "text": "用同一份明確定義的工作負載，重播各個分割模型。",
+          "english": "Replay the same declared workload against every partition model.",
+          "speechStart": 240.35,
+          "speechEnd": 244.750146,
+          "chapter": 9,
+          "sentence": 1
+        },
+        {
+          "start": 244.93,
+          "end": 252.58,
+          "text": "在指定量測邊界檢查回傳資料與順序、各方向位元組數、佇列占用、延遲和功率。",
+          "english": "Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.",
+          "speechStart": 244.930146,
+          "speechEnd": 252.399917,
+          "chapter": 9,
+          "sentence": 2
+        },
+        {
+          "start": 252.58,
+          "end": 260.19,
+          "text": "方案B若增加互連能耗，先比對新跨界的快取流量，再判斷原因是否與製程有關。",
+          "english": "If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.",
+          "speechStart": 252.579917,
+          "speechEnd": 260.010125,
+          "chapter": 9,
+          "sentence": 3
+        },
+        {
+          "start": 260.19,
+          "end": 270,
+          "text": "之後再用硬體證據校正模型；散熱與路由分析尚未完成時，應保留待確認狀態。",
+          "english": "Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.",
+          "speechStart": 260.190125,
+          "speechEnd": 267.371542,
+          "chapter": 9,
+          "sentence": 4
+        },
+        {
+          "start": 270,
+          "end": 274.195,
+          "text": "交付有版本的功能分割圖，也要交付支持它的資料。",
+          "english": "Release a versioned partition map, not just an attractive placement image.",
+          "speechStart": 270.35,
+          "speechEnd": 274.014729,
+          "chapter": 10,
+          "sentence": 1
+        },
+        {
+          "start": 274.195,
+          "end": 282.054,
+          "text": "內容包括各操作模式的逐方向流量、介面負責人、能耗與延遲假設、未採用的候選，以及尚缺的證據。",
+          "english": "Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.",
+          "speechStart": 274.194729,
+          "speechEnd": 281.873646,
+          "chapter": 10,
+          "sentence": 2
+        },
+        {
+          "start": 282.054,
+          "end": 288.803,
+          "text": "方案A把高重用流量留在晶粒內，在本教學案例值得繼續評估；最終仍須符合完整需求。",
+          "english": "Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.",
+          "speechStart": 282.053646,
+          "speechEnd": 288.622729,
+          "chapter": 10,
+          "sentence": 3
+        },
+        {
+          "start": 288.803,
+          "end": 300,
+          "text": "把這些限制帶到C03選封裝架構，再交給C04建立接點與電源網表。",
+          "english": "Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.",
+          "speechStart": 288.802729,
+          "speechEnd": 294.391542,
+          "chapter": 10,
+          "sentence": 4
+        }
+      ],
+      "en": [
+        {
+          "start": 0,
+          "end": 4.387,
+          "text": "Fly over the functional map of a hypothetical accelerator.",
+          "english": "",
+          "speechStart": 0.35,
+          "speechEnd": 4.207208,
+          "chapter": 1,
+          "sentence": 1
+        },
+        {
+          "start": 4.387,
+          "end": 12.408,
+          "text": "C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.",
+          "english": "",
+          "speechStart": 4.387208,
+          "speechEnd": 12.228312,
+          "chapter": 1,
+          "sentence": 2
+        },
+        {
+          "start": 12.408,
+          "end": 19.809,
+          "text": "Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.",
+          "english": "",
+          "speechStart": 12.408312,
+          "speechEnd": 19.628958,
+          "chapter": 1,
+          "sentence": 3
+        },
+        {
+          "start": 19.809,
+          "end": 30,
+          "text": "Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.",
+          "english": "",
+          "speechStart": 19.808958,
+          "speechEnd": 29.4715,
+          "chapter": 1,
+          "sentence": 4
+        },
+        {
+          "start": 30,
+          "end": 33.686,
+          "text": "Zoom into three different memory-related functions.",
+          "english": "",
+          "speechStart": 30.35,
+          "speechEnd": 33.506333,
+          "chapter": 2,
+          "sentence": 1
+        },
+        {
+          "start": 33.686,
+          "end": 45.783,
+          "text": "SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.",
+          "english": "",
+          "speechStart": 33.686333,
+          "speechEnd": 45.602583,
+          "chapter": 2,
+          "sentence": 2
+        },
+        {
+          "start": 45.783,
+          "end": 50.144,
+          "text": "These roles must not collapse into one box simply labeled memory.",
+          "english": "",
+          "speechStart": 45.782583,
+          "speechEnd": 49.963771,
+          "chapter": 2,
+          "sentence": 3
+        },
+        {
+          "start": 50.144,
+          "end": 60,
+          "text": "A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.",
+          "english": "",
+          "speechStart": 50.143771,
+          "speechEnd": 58.343875,
+          "chapter": 2,
+          "sentence": 4
+        },
+        {
+          "start": 60,
+          "end": 67.023,
+          "text": "Candidate A keeps compute and cache together, while memory control and I/O share a second die.",
+          "english": "",
+          "speechStart": 60.35,
+          "speechEnd": 66.842979,
+          "chapter": 3,
+          "sentence": 1
+        },
+        {
+          "start": 67.023,
+          "end": 75.004,
+          "text": "The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.",
+          "english": "",
+          "speechStart": 67.022979,
+          "speechEnd": 74.824479,
+          "chapter": 3,
+          "sentence": 2
+        },
+        {
+          "start": 75.004,
+          "end": 79.271,
+          "text": "The cut therefore moves eighty gigabytes per second in aggregate.",
+          "english": "",
+          "speechStart": 75.004479,
+          "speechEnd": 79.090604,
+          "chapter": 3,
+          "sentence": 3
+        },
+        {
+          "start": 79.271,
+          "end": 90,
+          "text": "Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.",
+          "english": "",
+          "speechStart": 79.270604,
+          "speechEnd": 87.118146,
+          "chapter": 3,
+          "sentence": 4
+        },
+        {
+          "start": 90,
+          "end": 93.85,
+          "text": "Now separate compute from cache to create candidate B.",
+          "english": "",
+          "speechStart": 90.35,
+          "speechEnd": 93.670104,
+          "chapter": 4,
+          "sentence": 1
+        },
+        {
+          "start": 93.85,
+          "end": 101.58,
+          "text": "Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.",
+          "english": "",
+          "speechStart": 93.850104,
+          "speechEnd": 101.400229,
+          "chapter": 4,
+          "sentence": 2
+        },
+        {
+          "start": 101.58,
+          "end": 110.352,
+          "text": "The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.",
+          "english": "",
+          "speechStart": 101.580229,
+          "speechEnd": 110.172083,
+          "chapter": 4,
+          "sentence": 3
+        },
+        {
+          "start": 110.352,
+          "end": 120,
+          "text": "Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.",
+          "english": "",
+          "speechStart": 110.352083,
+          "speechEnd": 118.573854,
+          "chapter": 4,
+          "sentence": 4
+        },
+        {
+          "start": 120,
+          "end": 123.207,
+          "text": "Move from the traffic map to process choices.",
+          "english": "",
+          "speechStart": 120.35,
+          "speechEnd": 123.027479,
+          "chapter": 5,
+          "sentence": 1
+        },
+        {
+          "start": 123.207,
+          "end": 131.423,
+          "text": "Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.",
+          "english": "",
+          "speechStart": 123.207479,
+          "speechEnd": 131.242958,
+          "chapter": 5,
+          "sentence": 2
+        },
+        {
+          "start": 131.423,
+          "end": 138.833,
+          "text": "AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.",
+          "english": "",
+          "speechStart": 131.422958,
+          "speechEnd": 138.652729,
+          "chapter": 5,
+          "sentence": 3
+        },
+        {
+          "start": 138.833,
+          "end": 150,
+          "text": "Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.",
+          "english": "",
+          "speechStart": 138.832729,
+          "speechEnd": 149.495271,
+          "chapter": 5,
+          "sentence": 4
+        },
+        {
+          "start": 150,
+          "end": 158.158,
+          "text": "Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.",
+          "english": "",
+          "speechStart": 150.35,
+          "speechEnd": 157.977771,
+          "chapter": 6,
+          "sentence": 1
+        },
+        {
+          "start": 158.158,
+          "end": 167.079,
+          "text": "Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.",
+          "english": "",
+          "speechStart": 158.157771,
+          "speechEnd": 166.899042,
+          "chapter": 6,
+          "sentence": 2
+        },
+        {
+          "start": 167.079,
+          "end": 172.699,
+          "text": "The result is three point two watts, while candidate B requires thirteen point four four.",
+          "english": "",
+          "speechStart": 167.079042,
+          "speechEnd": 172.519146,
+          "chapter": 6,
+          "sentence": 3
+        },
+        {
+          "start": 172.699,
+          "end": 180,
+          "text": "Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.",
+          "english": "",
+          "speechStart": 172.699146,
+          "speechEnd": 179.479521,
+          "chapter": 6,
+          "sentence": 4
+        },
+        {
+          "start": 180,
+          "end": 183.575,
+          "text": "Follow one read request all the way back to its caller.",
+          "english": "",
+          "speechStart": 180.35,
+          "speechEnd": 183.395125,
+          "chapter": 7,
+          "sentence": 1
+        },
+        {
+          "start": 183.575,
+          "end": 195.046,
+          "text": "Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.",
+          "english": "",
+          "speechStart": 183.575125,
+          "speechEnd": 194.86625,
+          "chapter": 7,
+          "sentence": 2
+        },
+        {
+          "start": 195.046,
+          "end": 199.462,
+          "text": "Another sixteen nanoseconds of combined queueing brings the transaction to eighty.",
+          "english": "",
+          "speechStart": 195.04625,
+          "speechEnd": 199.281958,
+          "chapter": 7,
+          "sentence": 3
+        },
+        {
+          "start": 199.462,
+          "end": 210,
+          "text": "Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.",
+          "english": "",
+          "speechStart": 199.461958,
+          "speechEnd": 209.476625,
+          "chapter": 7,
+          "sentence": 4
+        },
+        {
+          "start": 210,
+          "end": 213.238,
+          "text": "Attach a contract to every new boundary.",
+          "english": "",
+          "speechStart": 210.35,
+          "speechEnd": 213.058,
+          "chapter": 8,
+          "sentence": 1
+        },
+        {
+          "start": 213.238,
+          "end": 222.504,
+          "text": "Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.",
+          "english": "",
+          "speechStart": 213.238,
+          "speechEnd": 222.324042,
+          "chapter": 8,
+          "sentence": 2
+        },
+        {
+          "start": 222.504,
+          "end": 231.535,
+          "text": "Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.",
+          "english": "",
+          "speechStart": 222.504042,
+          "speechEnd": 231.354708,
+          "chapter": 8,
+          "sentence": 3
+        },
+        {
+          "start": 231.535,
+          "end": 240,
+          "text": "Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.",
+          "english": "",
+          "speechStart": 231.534708,
+          "speechEnd": 239.463833,
+          "chapter": 8,
+          "sentence": 4
+        },
+        {
+          "start": 240,
+          "end": 244.218,
+          "text": "Replay the same declared workload against every partition model.",
+          "english": "",
+          "speechStart": 240.35,
+          "speechEnd": 244.038,
+          "chapter": 9,
+          "sentence": 1
+        },
+        {
+          "start": 244.218,
+          "end": 253.019,
+          "text": "Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.",
+          "english": "",
+          "speechStart": 244.218,
+          "speechEnd": 252.839271,
+          "chapter": 9,
+          "sentence": 2
+        },
+        {
+          "start": 253.019,
+          "end": 260.861,
+          "text": "If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.",
+          "english": "",
+          "speechStart": 253.019271,
+          "speechEnd": 260.6815,
+          "chapter": 9,
+          "sentence": 3
+        },
+        {
+          "start": 260.861,
+          "end": 270,
+          "text": "Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.",
+          "english": "",
+          "speechStart": 260.8615,
+          "speechEnd": 269.480187,
+          "chapter": 9,
+          "sentence": 4
+        },
+        {
+          "start": 270,
+          "end": 274.684,
+          "text": "Release a versioned partition map, not just an attractive placement image.",
+          "english": "",
+          "speechStart": 270.35,
+          "speechEnd": 274.503521,
+          "chapter": 10,
+          "sentence": 1
+        },
+        {
+          "start": 274.684,
+          "end": 283.365,
+          "text": "Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.",
+          "english": "",
+          "speechStart": 274.683521,
+          "speechEnd": 283.18475,
+          "chapter": 10,
+          "sentence": 2
+        },
+        {
+          "start": 283.365,
+          "end": 291.589,
+          "text": "Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.",
+          "english": "",
+          "speechStart": 283.36475,
+          "speechEnd": 291.408521,
+          "chapter": 10,
+          "sentence": 3
+        },
+        {
+          "start": 291.589,
+          "end": 300,
+          "text": "Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.",
+          "english": "",
+          "speechStart": 291.588521,
+          "speechEnd": 299.471667,
+          "chapter": 10,
+          "sentence": 4
+        }
+      ],
+      "ja": [
+        {
+          "start": 0,
+          "end": 4.055,
+          "text": "仮想アクセラレーターの機能図を上空から見てみましょう。",
+          "english": "Fly over the functional map of a hypothetical accelerator.",
+          "speechStart": 0.35,
+          "speechEnd": 3.875458,
+          "chapter": 1,
+          "sentence": 1
+        },
+        {
+          "start": 4.055,
+          "end": 11.166,
+          "text": "C02では、演算、キャッシュ、メモリ制御、I/Oを、一つのダイまたは複数のチップレットに割り当てます。",
+          "english": "C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.",
+          "speechStart": 4.055458,
+          "speechEnd": 10.986313,
+          "chapter": 1,
+          "sentence": 2
+        },
+        {
+          "start": 11.166,
+          "end": 17.609,
+          "text": "成果物は分割図と方向別のダイ間トラフィック表、そしてエネルギーと時間の予算です。",
+          "english": "Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.",
+          "speechStart": 11.166313,
+          "speechEnd": 17.429229,
+          "chapter": 1,
+          "sentence": 3
+        },
+        {
+          "start": 17.609,
+          "end": 30,
+          "text": "数値はすべて教材の仮定であり、分割の根拠を示した後、C03で実際のパッケージ技術を選びます。",
+          "english": "Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.",
+          "speechStart": 17.609229,
+          "speechEnd": 25.257125,
+          "chapter": 1,
+          "sentence": 4
+        },
+        {
+          "start": 30,
+          "end": 34.008,
+          "text": "メモリに関係する三つの異なる機能を拡大します。",
+          "english": "Zoom into three different memory-related functions.",
+          "speechStart": 30.35,
+          "speechEnd": 33.827688,
+          "chapter": 2,
+          "sentence": 1
+        },
+        {
+          "start": 34.008,
+          "end": 44.032,
+          "text": "SRAMキャッシュは再利用するデータを演算の近くに保持し、コントローラーはメモリ取引を調整し、メモリPHYは外部DRAMへの電気接続を担います。",
+          "english": "SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.",
+          "speechStart": 34.007688,
+          "speechEnd": 43.852104,
+          "chapter": 2,
+          "sentence": 2
+        },
+        {
+          "start": 44.032,
+          "end": 47.974,
+          "text": "これらを単にメモリという一つの箱にまとめてはいけません。",
+          "english": "These roles must not collapse into one box simply labeled memory.",
+          "speechStart": 44.032104,
+          "speechEnd": 47.793833,
+          "chapter": 2,
+          "sentence": 3
+        },
+        {
+          "start": 47.974,
+          "end": 60,
+          "text": "新しいダイ境界には両端のダイ間インターフェースも必要で、これは外部メモリPHYとは別の機能です。",
+          "english": "A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.",
+          "speechStart": 47.973833,
+          "speechEnd": 54.938187,
+          "chapter": 2,
+          "sentence": 4
+        },
+        {
+          "start": 60,
+          "end": 66.285,
+          "text": "候補Aは演算とキャッシュを同じダイに置き、メモリ制御とI/Oを二つ目のダイにまとめます。",
+          "english": "Candidate A keeps compute and cache together, while memory control and I/O share a second die.",
+          "speechStart": 60.35,
+          "speechEnd": 66.105063,
+          "chapter": 3,
+          "sentence": 1
+        },
+        {
+          "start": 66.285,
+          "end": 72.257,
+          "text": "選んだ負荷では、コントローラーからキャッシュへ毎秒六十四ギガバイト、逆方向へ毎秒十六ギガバイトが流れます。",
+          "english": "The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.",
+          "speechStart": 66.285062,
+          "speechEnd": 72.0775,
+          "chapter": 3,
+          "sentence": 2
+        },
+        {
+          "start": 72.257,
+          "end": 75.869,
+          "text": "この境界を通る両方向の合計は毎秒八十ギガバイトです。",
+          "english": "The cut therefore moves eighty gigabytes per second in aggregate.",
+          "speechStart": 72.2575,
+          "speechEnd": 75.688812,
+          "chapter": 3,
+          "sentence": 3
+        },
+        {
+          "start": 75.869,
+          "end": 90,
+          "text": "表には二本の矢印を残し、合計はエネルギー計算に使っても、一方向の帯域要件とは扱わないでください。",
+          "english": "Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.",
+          "speechStart": 75.868813,
+          "speechEnd": 82.032229,
+          "chapter": 3,
+          "sentence": 4
+        },
+        {
+          "start": 90,
+          "end": 93.224,
+          "text": "次に演算とキャッシュを分離して候補Bを作ります。",
+          "english": "Now separate compute from cache to create candidate B.",
+          "speechStart": 90.35,
+          "speechEnd": 93.044438,
+          "chapter": 4,
+          "sentence": 1
+        },
+        {
+          "start": 93.224,
+          "end": 99.78,
+          "text": "それまでダイ内にあった通信は、演算方向が毎秒百九十二ギガバイト、キャッシュへの戻りが毎秒六十四ギガバイトです。",
+          "english": "Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.",
+          "speechStart": 93.224437,
+          "speechEnd": 99.600417,
+          "chapter": 4,
+          "sentence": 2
+        },
+        {
+          "start": 99.78,
+          "end": 105.672,
+          "text": "新しい境界で毎秒二百五十六ギガバイトが加わり、ダイ間合計は八十から三百三十六へ増えます。",
+          "english": "The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.",
+          "speechStart": 99.780417,
+          "speechEnd": 105.492,
+          "chapter": 4,
+          "sentence": 3
+        },
+        {
+          "start": 105.672,
+          "end": 120,
+          "text": "データ再利用によりキャッシュ通信は外部メモリ通信より多くなり得るため、ダイを小さくしただけではシステム改善を証明できません。",
+          "english": "Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.",
+          "speechStart": 105.672,
+          "speechEnd": 112.406833,
+          "chapter": 4,
+          "sentence": 4
+        },
+        {
+          "start": 120,
+          "end": 123.09,
+          "text": "トラフィック図からプロセスの選択表へ移ります。",
+          "english": "Move from the traffic map to process choices.",
+          "speechStart": 120.35,
+          "speechEnd": 122.910417,
+          "chapter": 5,
+          "sentence": 1
+        },
+        {
+          "start": 123.09,
+          "end": 129.267,
+          "text": "演算ロジック、SRAM、アナログ回路、外部I/Oは、同じ技術変更から同じ利益を得るとは限りません。",
+          "english": "Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.",
+          "speechStart": 123.090417,
+          "speechEnd": 129.08675,
+          "chapter": 5,
+          "sentence": 2
+        },
+        {
+          "start": 129.267,
+          "end": 137.694,
+          "text": "AMDは演算とI/Oを分離した実製品を公開していますが、この配置と数値はAMD製品の再現ではありません。",
+          "english": "AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.",
+          "speechStart": 129.26675,
+          "speechEnd": 137.514333,
+          "chapter": 5,
+          "sentence": 3
+        },
+        {
+          "start": 137.694,
+          "end": 150,
+          "text": "利用可能なIP、特性評価、コスト、再利用条件を比較し、総合的に有利ならモノリシック候補も残します。",
+          "english": "Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.",
+          "speechStart": 137.694333,
+          "speechEnd": 143.821958,
+          "chapter": 5,
+          "sentence": 4
+        },
+        {
+          "start": 150,
+          "end": 156.635,
+          "text": "有効データ効率を八十パーセント、物理ビット当たりの動的エネルギーを送受信合計で四ピコジュールと仮定します。",
+          "english": "Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.",
+          "speechStart": 150.35,
+          "speechEnd": 156.455458,
+          "chapter": 6,
+          "sentence": 1
+        },
+        {
+          "start": 156.635,
+          "end": 162.79,
+          "text": "候補Aの毎秒八百億バイトに八を掛け、零点八で割り、さらに四掛ける十のマイナス十二乗ジュールを掛けます。",
+          "english": "Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.",
+          "speechStart": 156.635458,
+          "speechEnd": 162.610396,
+          "chapter": 6,
+          "sentence": 2
+        },
+        {
+          "start": 162.79,
+          "end": 167.144,
+          "text": "結果は三点二ワットで、候補Bには十三点四四ワットが必要です。",
+          "english": "The result is three point two watts, while candidate B requires thirteen point four four.",
+          "speechStart": 162.790396,
+          "speechEnd": 166.964333,
+          "chapter": 6,
+          "sentence": 3
+        },
+        {
+          "start": 167.144,
+          "end": 180,
+          "text": "固定電力と共通の外部メモリ接続はこの比較の対象外ですが、電力が不要という意味ではありません。",
+          "english": "Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.",
+          "speechStart": 167.144333,
+          "speechEnd": 172.931375,
+          "chapter": 6,
+          "sentence": 4
+        },
+        {
+          "start": 180,
+          "end": 183.64,
+          "text": "一つの読み出し要求が呼び出し元に戻るまで追跡します。",
+          "english": "Follow one read request all the way back to its caller.",
+          "speechStart": 180.35,
+          "speechEnd": 183.459771,
+          "chapter": 7,
+          "sentence": 1
+        },
+        {
+          "start": 183.64,
+          "end": 191.167,
+          "text": "要求転送十二ナノ秒、メモリ処理四十、応答転送十二の合計は六十四で、各転送項にはそれぞれの直列化時間を含みます。",
+          "english": "Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.",
+          "speechStart": 183.639771,
+          "speechEnd": 190.9875,
+          "chapter": 7,
+          "sentence": 2
+        },
+        {
+          "start": 191.167,
+          "end": 195.766,
+          "text": "合計十六ナノ秒の待ち行列時間が加われば、取引は八十ナノ秒になります。",
+          "english": "Another sixteen nanoseconds of combined queueing brings the transaction to eighty.",
+          "speechStart": 191.1675,
+          "speechEnd": 195.586458,
+          "chapter": 7,
+          "sentence": 3
+        },
+        {
+          "start": 195.766,
+          "end": 210,
+          "text": "帯域やPHY遅延だけではこの結果は分からず、端点、依存関係、負荷を定義し、必要な遅延分布を検証します。",
+          "english": "Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.",
+          "speechStart": 195.766458,
+          "speechEnd": 202.087917,
+          "chapter": 7,
+          "sentence": 4
+        },
+        {
+          "start": 210,
+          "end": 214.289,
+          "text": "新しく作る境界ごとにインターフェース契約を付けます。",
+          "english": "Attach a contract to every new boundary.",
+          "speechStart": 210.35,
+          "speechEnd": 214.109062,
+          "chapter": 8,
+          "sentence": 1
+        },
+        {
+          "start": 214.289,
+          "end": 221.086,
+          "text": "プロトコル版、対応モード、順序規則、クロックとリセット、電源遷移、エラー回復を記録します。",
+          "english": "Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.",
+          "speechStart": 214.289062,
+          "speechEnd": 220.905812,
+          "chapter": 8,
+          "sentence": 2
+        },
+        {
+          "start": 221.086,
+          "end": 229.154,
+          "text": "UCIeなどの標準は相互運用の条件を定めますが、同じ名称だけで二つの実装の一致は確認できません。",
+          "english": "Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.",
+          "speechStart": 221.085813,
+          "speechEnd": 228.973625,
+          "chapter": 8,
+          "sentence": 3
+        },
+        {
+          "start": 229.154,
+          "end": 240,
+          "text": "両ダイにテストとデバッグの入口を確保し、各部品だけでなく組み立て後のリンクも検証します。",
+          "english": "Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.",
+          "speechStart": 229.153625,
+          "speechEnd": 235.416729,
+          "chapter": 8,
+          "sentence": 4
+        },
+        {
+          "start": 240,
+          "end": 243.424,
+          "text": "すべての分割モデルに同じ定義済み負荷を再生します。",
+          "english": "Replay the same declared workload against every partition model.",
+          "speechStart": 240.35,
+          "speechEnd": 243.244438,
+          "chapter": 9,
+          "sentence": 1
+        },
+        {
+          "start": 243.424,
+          "end": 249.999,
+          "text": "明示した測定境界で、返却データと順序、方向別バイト数、待ち行列占有量、遅延、電力を確認します。",
+          "english": "Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.",
+          "speechStart": 243.424438,
+          "speechEnd": 249.818833,
+          "chapter": 9,
+          "sentence": 2
+        },
+        {
+          "start": 249.999,
+          "end": 255.944,
+          "text": "候補Bのリンクエネルギーが増えたら、製造プロセスを疑う前に、新しく境界を越えるキャッシュ通信を比較します。",
+          "english": "If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.",
+          "speechStart": 249.998833,
+          "speechEnd": 255.764187,
+          "chapter": 9,
+          "sentence": 3
+        },
+        {
+          "start": 255.944,
+          "end": 270,
+          "text": "後でハードウェア証拠とモデルを照合し、熱と配線の解析が終わるまでは、その実現性を未確認として残します。",
+          "english": "Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.",
+          "speechStart": 255.944187,
+          "speechEnd": 262.191312,
+          "chapter": 9,
+          "sentence": 4
+        },
+        {
+          "start": 270,
+          "end": 274.58,
+          "text": "見栄えのよい配置図だけでなく、版管理した機能分割と根拠を引き渡します。",
+          "english": "Release a versioned partition map, not just an attractive placement image.",
+          "speechStart": 270.35,
+          "speechEnd": 274.399812,
+          "chapter": 10,
+          "sentence": 1
+        },
+        {
+          "start": 274.58,
+          "end": 280.628,
+          "text": "動作モードごとの方向別通信、責任者、エネルギーと遅延の仮定、除外した候補、未取得の証拠を含めます。",
+          "english": "Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.",
+          "speechStart": 274.579813,
+          "speechEnd": 280.447854,
+          "chapter": 10,
+          "sentence": 2
+        },
+        {
+          "start": 280.628,
+          "end": 288.142,
+          "text": "候補Aは再利用の多い通信をダイ内に保つため、この教材では有望ですが、最終判断には要件全体への適合が必要です。",
+          "english": "Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.",
+          "speechStart": 280.627854,
+          "speechEnd": 287.961833,
+          "chapter": 10,
+          "sentence": 3
+        },
+        {
+          "start": 288.142,
+          "end": 300,
+          "text": "これらの制約をC03のパッケージ構造選択へ渡し、後のC04で接続と電源ネットの表に展開します。",
+          "english": "Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.",
+          "speechStart": 288.141833,
+          "speechEnd": 294.593813,
+          "chapter": 10,
+          "sentence": 4
+        }
+      ],
+      "ko": [
+        {
+          "start": 0,
+          "end": 4.263,
+          "text": "가상 가속기의 기능 지도를 위에서 살펴봅니다.",
+          "english": "Fly over the functional map of a hypothetical accelerator.",
+          "speechStart": 0.35,
+          "speechEnd": 4.082792,
+          "chapter": 1,
+          "sentence": 1
+        },
+        {
+          "start": 4.263,
+          "end": 11.942,
+          "text": "C02에서는 연산, 캐시, 메모리 제어와 I/O를 하나의 다이 또는 여러 칩렛에 배치합니다.",
+          "english": "C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.",
+          "speechStart": 4.262792,
+          "speechEnd": 11.761854,
+          "chapter": 1,
+          "sentence": 2
+        },
+        {
+          "start": 11.942,
+          "end": 18.708,
+          "text": "산출물은 기능 분할도, 방향별 다이 간 트래픽 표, 에너지와 시간 예산입니다.",
+          "english": "Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.",
+          "speechStart": 11.941854,
+          "speechEnd": 18.527812,
+          "chapter": 1,
+          "sentence": 3
+        },
+        {
+          "start": 18.708,
+          "end": 30,
+          "text": "모든 수치는 교육용 가정이며, 분할 근거를 마련한 뒤 다음 C03에서 실제 패키징 기술을 선택합니다.",
+          "english": "Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.",
+          "speechStart": 18.707812,
+          "speechEnd": 27.171854,
+          "chapter": 1,
+          "sentence": 4
+        },
+        {
+          "start": 30,
+          "end": 34.375,
+          "text": "메모리와 관련되지만 서로 다른 세 기능을 확대합니다.",
+          "english": "Zoom into three different memory-related functions.",
+          "speechStart": 30.35,
+          "speechEnd": 34.195229,
+          "chapter": 2,
+          "sentence": 1
+        },
+        {
+          "start": 34.375,
+          "end": 46.319,
+          "text": "SRAM 캐시는 재사용 데이터를 연산부 가까이에 보관하고, 컨트롤러는 메모리 트랜잭션을 조정하며, 메모리 PHY는 외부 DRAM으로 가는 전기 연결을 담당합니다.",
+          "english": "SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.",
+          "speechStart": 34.375229,
+          "speechEnd": 46.138771,
+          "chapter": 2,
+          "sentence": 2
+        },
+        {
+          "start": 46.319,
+          "end": 51.213,
+          "text": "이 역할들을 단순히 메모리라는 하나의 상자로 합쳐서는 안 됩니다.",
+          "english": "These roles must not collapse into one box simply labeled memory.",
+          "speechStart": 46.318771,
+          "speechEnd": 51.033479,
+          "chapter": 2,
+          "sentence": 3
+        },
+        {
+          "start": 51.213,
+          "end": 60,
+          "text": "새로운 다이 경계 양쪽에는 다이 간 인터페이스도 필요하며, 이는 외부 메모리 PHY와 다른 기능입니다.",
+          "english": "A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.",
+          "speechStart": 51.213479,
+          "speechEnd": 58.454708,
+          "chapter": 2,
+          "sentence": 4
+        },
+        {
+          "start": 60,
+          "end": 67.496,
+          "text": "후보 A는 연산과 캐시를 같은 다이에 두고, 메모리 제어와 I/O를 두 번째 다이에 모읍니다.",
+          "english": "Candidate A keeps compute and cache together, while memory control and I/O share a second die.",
+          "speechStart": 60.35,
+          "speechEnd": 67.316042,
+          "chapter": 3,
+          "sentence": 1
+        },
+        {
+          "start": 67.496,
+          "end": 76.654,
+          "text": "선택한 부하에서 컨트롤러는 캐시로 초당 육십사 기가바이트를 보내고, 반대 방향은 초당 십육 기가바이트입니다.",
+          "english": "The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.",
+          "speechStart": 67.496042,
+          "speechEnd": 76.473604,
+          "chapter": 3,
+          "sentence": 2
+        },
+        {
+          "start": 76.654,
+          "end": 82.119,
+          "text": "따라서 이 경계를 지나는 양방향 합계는 초당 팔십 기가바이트입니다.",
+          "english": "The cut therefore moves eighty gigabytes per second in aggregate.",
+          "speechStart": 76.653604,
+          "speechEnd": 81.939104,
+          "chapter": 3,
+          "sentence": 3
+        },
+        {
+          "start": 82.119,
+          "end": 90,
+          "text": "표에는 두 화살표를 유지하며, 합계는 에너지 계산에 쓰지만 한 방향의 대역폭 요구량은 아닙니다.",
+          "english": "Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.",
+          "speechStart": 82.119104,
+          "speechEnd": 89.470042,
+          "chapter": 3,
+          "sentence": 4
+        },
+        {
+          "start": 90,
+          "end": 93.736,
+          "text": "이제 연산과 캐시를 분리해 후보 B를 만듭니다.",
+          "english": "Now separate compute from cache to create candidate B.",
+          "speechStart": 90.35,
+          "speechEnd": 93.556125,
+          "chapter": 4,
+          "sentence": 1
+        },
+        {
+          "start": 93.736,
+          "end": 102.362,
+          "text": "기존의 다이 내부 트래픽은 연산 방향으로 초당 백구십이 기가바이트, 캐시로 돌아오는 방향으로 초당 육십사 기가바이트입니다.",
+          "english": "Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.",
+          "speechStart": 93.736125,
+          "speechEnd": 102.182479,
+          "chapter": 4,
+          "sentence": 2
+        },
+        {
+          "start": 102.362,
+          "end": 109.826,
+          "text": "새 경계가 이백오십육을 더하므로, 다이 간 합계는 초당 팔십에서 삼백삼십육 기가바이트로 증가합니다.",
+          "english": "The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.",
+          "speechStart": 102.362479,
+          "speechEnd": 109.646479,
+          "chapter": 4,
+          "sentence": 3
+        },
+        {
+          "start": 109.826,
+          "end": 120,
+          "text": "데이터 재사용 때문에 캐시 트래픽은 외부 메모리 트래픽보다 클 수 있으며, 다이가 작아졌다는 사실만으로 시스템 개선이 입증되지는 않습니다.",
+          "english": "Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.",
+          "speechStart": 109.826479,
+          "speechEnd": 119.482354,
+          "chapter": 4,
+          "sentence": 4
+        },
+        {
+          "start": 120,
+          "end": 123.786,
+          "text": "트래픽 지도에서 공정 선택표로 이동합니다.",
+          "english": "Move from the traffic map to process choices.",
+          "speechStart": 120.35,
+          "speechEnd": 123.606063,
+          "chapter": 5,
+          "sentence": 1
+        },
+        {
+          "start": 123.786,
+          "end": 131.506,
+          "text": "연산 로직, SRAM, 아날로그 회로와 외부 I/O가 같은 기술 변경에서 얻는 이점은 서로 다를 수 있습니다.",
+          "english": "Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.",
+          "speechStart": 123.786062,
+          "speechEnd": 131.326167,
+          "chapter": 5,
+          "sentence": 2
+        },
+        {
+          "start": 131.506,
+          "end": 140.46,
+          "text": "AMD는 연산과 I/O 다이를 분리한 실제 제품을 공개하지만, 이 수치와 배치는 AMD 제품을 재현한 것이 아닙니다.",
+          "english": "AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.",
+          "speechStart": 131.506167,
+          "speechEnd": 140.280417,
+          "chapter": 5,
+          "sentence": 3
+        },
+        {
+          "start": 140.46,
+          "end": 150,
+          "text": "사용 가능한 IP, 특성 평가, 비용과 재사용 조건을 비교하고, 전체적으로 유리하다면 단일 다이 후보도 유지합니다.",
+          "english": "Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.",
+          "speechStart": 140.460417,
+          "speechEnd": 149.466917,
+          "chapter": 5,
+          "sentence": 4
+        },
+        {
+          "start": 150,
+          "end": 158.052,
+          "text": "유효 데이터 효율을 팔십 퍼센트, 물리 비트당 동적 에너지를 송수신 합계 사 피코줄로 가정합니다.",
+          "english": "Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.",
+          "speechStart": 150.35,
+          "speechEnd": 157.872104,
+          "chapter": 6,
+          "sentence": 1
+        },
+        {
+          "start": 158.052,
+          "end": 166.534,
+          "text": "후보 A의 초당 팔백억 바이트에 팔을 곱하고 영 점 팔로 나눈 뒤, 사 곱하기 십의 마이너스 십이 제곱 줄을 곱합니다.",
+          "english": "Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.",
+          "speechStart": 158.052104,
+          "speechEnd": 166.353875,
+          "chapter": 6,
+          "sentence": 2
+        },
+        {
+          "start": 166.534,
+          "end": 171.978,
+          "text": "결과는 삼 점 이 와트이며, 후보 B는 십삼 점 사사 와트가 필요합니다.",
+          "english": "The result is three point two watts, while candidate B requires thirteen point four four.",
+          "speechStart": 166.533875,
+          "speechEnd": 171.797562,
+          "chapter": 6,
+          "sentence": 3
+        },
+        {
+          "start": 171.978,
+          "end": 180,
+          "text": "고정 전력과 공통 외부 메모리 연결은 이 비교에서 제외했지만, 전력을 소비하지 않는다는 뜻은 아닙니다.",
+          "english": "Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.",
+          "speechStart": 171.977563,
+          "speechEnd": 179.466646,
+          "chapter": 6,
+          "sentence": 4
+        },
+        {
+          "start": 180,
+          "end": 184.596,
+          "text": "하나의 읽기 요청이 호출자에게 돌아올 때까지 추적합니다.",
+          "english": "Follow one read request all the way back to its caller.",
+          "speechStart": 180.35,
+          "speechEnd": 184.416229,
+          "chapter": 7,
+          "sentence": 1
+        },
+        {
+          "start": 184.596,
+          "end": 195.219,
+          "text": "요청 전송 십이 나노초, 메모리 처리 사십, 응답 전송 십이를 합치면 육십사이며, 각 전송 항에는 자체 직렬화 시간이 이미 포함됩니다.",
+          "english": "Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.",
+          "speechStart": 184.596229,
+          "speechEnd": 195.039104,
+          "chapter": 7,
+          "sentence": 2
+        },
+        {
+          "start": 195.219,
+          "end": 201.312,
+          "text": "양쪽 대기열에서 십육 나노초가 더해지면 전체 트랜잭션은 팔십 나노초가 됩니다.",
+          "english": "Another sixteen nanoseconds of combined queueing brings the transaction to eighty.",
+          "speechStart": 195.219104,
+          "speechEnd": 201.132,
+          "chapter": 7,
+          "sentence": 3
+        },
+        {
+          "start": 201.312,
+          "end": 210,
+          "text": "대역폭과 PHY 지연만으로는 이를 알 수 없으므로, 끝점과 의존성 및 부하를 정의하고 필요한 지연 분포를 검증합니다.",
+          "english": "Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.",
+          "speechStart": 201.312,
+          "speechEnd": 209.483396,
+          "chapter": 7,
+          "sentence": 4
+        },
+        {
+          "start": 210,
+          "end": 213.813,
+          "text": "새 경계마다 인터페이스 계약을 붙입니다.",
+          "english": "Attach a contract to every new boundary.",
+          "speechStart": 210.35,
+          "speechEnd": 213.632729,
+          "chapter": 8,
+          "sentence": 1
+        },
+        {
+          "start": 213.813,
+          "end": 222.604,
+          "text": "프로토콜 버전, 지원 모드, 순서 규칙, 클록과 리셋 동작, 전원 전환 및 오류 복구를 기록합니다.",
+          "english": "Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.",
+          "speechStart": 213.812729,
+          "speechEnd": 222.423812,
+          "chapter": 8,
+          "sentence": 2
+        },
+        {
+          "start": 222.604,
+          "end": 231.551,
+          "text": "UCIe 같은 표준은 상호운용 조건을 정의하지만, 같은 이름만으로 두 실제 구현의 호환성이 입증되지는 않습니다.",
+          "english": "Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.",
+          "speechStart": 222.603813,
+          "speechEnd": 231.371438,
+          "chapter": 8,
+          "sentence": 3
+        },
+        {
+          "start": 231.551,
+          "end": 240,
+          "text": "양쪽 다이에 시험과 디버그 접근 경로를 남기고, 개별 부품뿐 아니라 조립된 연결도 검증합니다.",
+          "english": "Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.",
+          "speechStart": 231.551437,
+          "speechEnd": 239.468458,
+          "chapter": 8,
+          "sentence": 4
+        },
+        {
+          "start": 240,
+          "end": 244.506,
+          "text": "모든 분할 모델에 동일하게 정의한 작업 부하를 재생합니다.",
+          "english": "Replay the same declared workload against every partition model.",
+          "speechStart": 240.35,
+          "speechEnd": 244.326375,
+          "chapter": 9,
+          "sentence": 1
+        },
+        {
+          "start": 244.506,
+          "end": 253.126,
+          "text": "명시한 측정 경계에서 반환 데이터와 순서, 방향별 바이트 수, 대기열 점유량, 지연과 전력을 확인합니다.",
+          "english": "Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.",
+          "speechStart": 244.506375,
+          "speechEnd": 252.94575,
+          "chapter": 9,
+          "sentence": 2
+        },
+        {
+          "start": 253.126,
+          "end": 260.63,
+          "text": "후보 B의 연결 에너지가 늘었다면 제조 공정을 의심하기 전에 새 경계를 넘는 캐시 트래픽을 비교합니다.",
+          "english": "If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.",
+          "speechStart": 253.12575,
+          "speechEnd": 260.450479,
+          "chapter": 9,
+          "sentence": 3
+        },
+        {
+          "start": 260.63,
+          "end": 270,
+          "text": "이후 하드웨어 증거로 모델을 보정하고, 열 및 배선 분석이 실제로 끝날 때까지 해당 실현 가능성은 미확인 상태로 남깁니다.",
+          "english": "Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.",
+          "speechStart": 260.630479,
+          "speechEnd": 269.471854,
+          "chapter": 9,
+          "sentence": 4
+        },
+        {
+          "start": 270,
+          "end": 275.158,
+          "text": "보기 좋은 배치도뿐 아니라 버전이 있는 기능 분할과 근거를 전달합니다.",
+          "english": "Release a versioned partition map, not just an attractive placement image.",
+          "speechStart": 270.35,
+          "speechEnd": 274.977729,
+          "chapter": 10,
+          "sentence": 1
+        },
+        {
+          "start": 275.158,
+          "end": 283.284,
+          "text": "동작 모드별 방향 트래픽, 인터페이스 책임자, 에너지와 지연 가정, 제외한 대안 및 부족한 증거를 포함합니다.",
+          "english": "Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.",
+          "speechStart": 275.157729,
+          "speechEnd": 283.104229,
+          "chapter": 10,
+          "sentence": 2
+        },
+        {
+          "start": 283.284,
+          "end": 292.393,
+          "text": "후보 A는 재사용이 많은 트래픽을 다이 내부에 유지하므로 이 교육 사례에서 유망하지만, 최종 선택에는 전체 요구사항 충족이 필요합니다.",
+          "english": "Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.",
+          "speechStart": 283.284229,
+          "speechEnd": 292.213167,
+          "chapter": 10,
+          "sentence": 3
+        },
+        {
+          "start": 292.393,
+          "end": 300,
+          "text": "이 제약을 C03의 패키징 구조 선택으로 넘기고, 이후 C04에서 연결과 전원 네트 맵으로 구체화합니다.",
+          "english": "Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.",
+          "speechStart": 292.393167,
+          "speechEnd": 299.478396,
+          "chapter": 10,
+          "sentence": 4
+        }
+      ],
+      "zh-CN": [
+        {
+          "start": 0,
+          "end": 4.406,
+          "text": "先从空中俯瞰一个假想加速器的功能图。",
+          "english": "Fly over the functional map of a hypothetical accelerator.",
+          "speechStart": 0.35,
+          "speechEnd": 4.226375,
+          "chapter": 1,
+          "sentence": 1
+        },
+        {
+          "start": 4.406,
+          "end": 12.943,
+          "text": "C02要把计算、缓存、存储器控制与I/O功能分配到单片或多个芯粒。",
+          "english": "C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.",
+          "speechStart": 4.406375,
+          "speechEnd": 12.762896,
+          "chapter": 1,
+          "sentence": 2
+        },
+        {
+          "start": 12.943,
+          "end": 20.357,
+          "text": "交付物是功能划分图、逐方向的跨裸片流量表，以及能耗和时序预算。",
+          "english": "Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.",
+          "speechStart": 12.942896,
+          "speechEnd": 20.177333,
+          "chapter": 1,
+          "sentence": 3
+        },
+        {
+          "start": 20.357,
+          "end": 30,
+          "text": "所有数字都是教学假设；先说明划分理由，下一课C03再选封装技术。",
+          "english": "Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.",
+          "speechStart": 20.357333,
+          "speechEnd": 28.527188,
+          "chapter": 1,
+          "sentence": 4
+        },
+        {
+          "start": 30,
+          "end": 34.276,
+          "text": "放大三种与存储器有关、却不同的功能。",
+          "english": "Zoom into three different memory-related functions.",
+          "speechStart": 30.35,
+          "speechEnd": 34.096396,
+          "chapter": 2,
+          "sentence": 1
+        },
+        {
+          "start": 34.276,
+          "end": 44.296,
+          "text": "SRAM缓存把可重用数据留在计算旁，控制器调度存储器事务，存储器PHY则驱动通往外部DRAM的电气连接。",
+          "english": "SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.",
+          "speechStart": 34.276396,
+          "speechEnd": 44.116271,
+          "chapter": 2,
+          "sentence": 2
+        },
+        {
+          "start": 44.296,
+          "end": 50.147,
+          "text": "功能图必须分清这些角色，不能只绘制一个笼统的存储器方块。",
+          "english": "These roles must not collapse into one box simply labeled memory.",
+          "speechStart": 44.296271,
+          "speechEnd": 49.967083,
+          "chapter": 2,
+          "sentence": 3
+        },
+        {
+          "start": 50.147,
+          "end": 60,
+          "text": "新增裸片边界还需要两端的裸片间接口，它和外部存储器PHY是不同功能。",
+          "english": "A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.",
+          "speechStart": 50.147083,
+          "speechEnd": 57.056479,
+          "chapter": 2,
+          "sentence": 4
+        },
+        {
+          "start": 60,
+          "end": 66.679,
+          "text": "方案A把计算与缓存留在一起，存储器控制与I/O则放在第二颗裸片。",
+          "english": "Candidate A keeps compute and cache together, while memory control and I/O share a second die.",
+          "speechStart": 60.35,
+          "speechEnd": 66.499271,
+          "chapter": 3,
+          "sentence": 1
+        },
+        {
+          "start": 66.679,
+          "end": 74.104,
+          "text": "选定工作负载中，控制器每秒送六十四GB到缓存，反方向每秒十六GB。",
+          "english": "The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.",
+          "speechStart": 66.679271,
+          "speechEnd": 73.924083,
+          "chapter": 3,
+          "sentence": 2
+        },
+        {
+          "start": 74.104,
+          "end": 78.709,
+          "text": "因此这条划分边界的双向合计流量是每秒八十GB。",
+          "english": "The cut therefore moves eighty gigabytes per second in aggregate.",
+          "speechStart": 74.104083,
+          "speechEnd": 78.528583,
+          "chapter": 3,
+          "sentence": 3
+        },
+        {
+          "start": 78.709,
+          "end": 90,
+          "text": "表格仍要保留两个箭头；合计可以用来算能耗，却不是单一方向的带宽需求。",
+          "english": "Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.",
+          "speechStart": 78.708583,
+          "speechEnd": 84.698792,
+          "chapter": 3,
+          "sentence": 4
+        },
+        {
+          "start": 90,
+          "end": 93.628,
+          "text": "现在把计算和缓存分开，形成方案B。",
+          "english": "Now separate compute from cache to create candidate B.",
+          "speechStart": 90.35,
+          "speechEnd": 93.447563,
+          "chapter": 4,
+          "sentence": 1
+        },
+        {
+          "start": 93.628,
+          "end": 100.831,
+          "text": "原本留在裸片内的流量，朝计算方向每秒一百九十二GB，回缓存方向每秒六十四GB。",
+          "english": "Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.",
+          "speechStart": 93.627562,
+          "speechEnd": 100.650604,
+          "chapter": 4,
+          "sentence": 2
+        },
+        {
+          "start": 100.831,
+          "end": 107.48,
+          "text": "新边界增加每秒二百五十六GB，使跨裸片合计从八十升到三百三十六GB。",
+          "english": "The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.",
+          "speechStart": 100.830604,
+          "speechEnd": 107.299604,
+          "chapter": 4,
+          "sentence": 3
+        },
+        {
+          "start": 107.48,
+          "end": 120,
+          "text": "数据重用让缓存内部流量高于外部存储器流量；裸片变小，本身并不能证明系统更好。",
+          "english": "Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.",
+          "speechStart": 107.479604,
+          "speechEnd": 113.672938,
+          "chapter": 4,
+          "sentence": 4
+        },
+        {
+          "start": 120,
+          "end": 122.434,
+          "text": "从流量图移到制程选项表。",
+          "english": "Move from the traffic map to process choices.",
+          "speechStart": 120.35,
+          "speechEnd": 122.253729,
+          "chapter": 5,
+          "sentence": 1
+        },
+        {
+          "start": 122.434,
+          "end": 128.189,
+          "text": "计算逻辑、SRAM、模拟电路与外部I/O，从同一种制程升级得到的好处未必相同。",
+          "english": "Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.",
+          "speechStart": 122.433729,
+          "speechEnd": 128.008979,
+          "chapter": 5,
+          "sentence": 2
+        },
+        {
+          "start": 128.189,
+          "end": 135.673,
+          "text": "AMD官方文件有计算与I/O分开的实际产品，但本课布局和数字并非重建AMD产品。",
+          "english": "AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.",
+          "speechStart": 128.188979,
+          "speechEnd": 135.492854,
+          "chapter": 5,
+          "sentence": 3
+        },
+        {
+          "start": 135.673,
+          "end": 150,
+          "text": "指派制程前，要比较可用IP、特性验证、成本和重用条件；若整体取舍有利，也保留单片候选。",
+          "english": "Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.",
+          "speechStart": 135.672854,
+          "speechEnd": 142.877708,
+          "chapter": 5,
+          "sentence": 4
+        },
+        {
+          "start": 150,
+          "end": 157.426,
+          "text": "假设有效率百分之八十，发送与接收两端合计，每个物理比特的动态能耗是四皮焦耳。",
+          "english": "Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.",
+          "speechStart": 150.35,
+          "speechEnd": 157.24625,
+          "chapter": 6,
+          "sentence": 1
+        },
+        {
+          "start": 157.426,
+          "end": 164.399,
+          "text": "方案A每秒八百亿字节，先乘八、除以零点八，再乘四乘十的负十二次方焦耳。",
+          "english": "Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.",
+          "speechStart": 157.42625,
+          "speechEnd": 164.219188,
+          "chapter": 6,
+          "sentence": 2
+        },
+        {
+          "start": 164.399,
+          "end": 168.786,
+          "text": "结果是三点二瓦，方案B则需要十三点四四瓦。",
+          "english": "The result is three point two watts, while candidate B requires thirteen point four four.",
+          "speechStart": 164.399188,
+          "speechEnd": 168.605813,
+          "chapter": 6,
+          "sentence": 3
+        },
+        {
+          "start": 168.786,
+          "end": 180,
+          "text": "固定功率与共通的外部存储器连接，没有算在这项比较内，不代表它们不耗电。",
+          "english": "Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.",
+          "speechStart": 168.785812,
+          "speechEnd": 174.958438,
+          "chapter": 6,
+          "sentence": 4
+        },
+        {
+          "start": 180,
+          "end": 183.496,
+          "text": "跟着一次读取请求，直到数据回到调用方。",
+          "english": "Follow one read request all the way back to its caller.",
+          "speechStart": 180.35,
+          "speechEnd": 183.315771,
+          "chapter": 7,
+          "sentence": 1
+        },
+        {
+          "start": 183.496,
+          "end": 191.799,
+          "text": "假设请求传输十二纳秒、存储器服务四十纳秒、响应传输十二纳秒，合计六十四；各传输项已包含自己的串行化。",
+          "english": "Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.",
+          "speechStart": 183.495771,
+          "speechEnd": 191.619458,
+          "chapter": 7,
+          "sentence": 2
+        },
+        {
+          "start": 191.799,
+          "end": 195.687,
+          "text": "两侧队列若再增加十六纳秒，整笔事务就到八十纳秒。",
+          "english": "Another sixteen nanoseconds of combined queueing brings the transaction to eighty.",
+          "speechStart": 191.799458,
+          "speechEnd": 195.507271,
+          "chapter": 7,
+          "sentence": 3
+        },
+        {
+          "start": 195.687,
+          "end": 210,
+          "text": "只看连接带宽与PHY延迟，无法得到这个答案；必须定义端点、依赖关系与工作负载，再验证所需的延迟分布。",
+          "english": "Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.",
+          "speechStart": 195.687271,
+          "speechEnd": 203.337667,
+          "chapter": 7,
+          "sentence": 4
+        },
+        {
+          "start": 210,
+          "end": 213.823,
+          "text": "替每一条新增边界附上接口契约。",
+          "english": "Attach a contract to every new boundary.",
+          "speechStart": 210.35,
+          "speechEnd": 213.643479,
+          "chapter": 8,
+          "sentence": 1
+        },
+        {
+          "start": 213.823,
+          "end": 222.477,
+          "text": "记录协议版本、支持模式、顺序规则、时钟与复位行为、电源切换，以及错误恢复。",
+          "english": "Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.",
+          "speechStart": 213.823479,
+          "speechEnd": 222.297375,
+          "chapter": 8,
+          "sentence": 2
+        },
+        {
+          "start": 222.477,
+          "end": 230.43,
+          "text": "UCIe等标准有助于定义互通条件，但相同名称不能证明两个实际实现完全兼容。",
+          "english": "Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.",
+          "speechStart": 222.477375,
+          "speechEnd": 230.249667,
+          "chapter": 8,
+          "sentence": 3
+        },
+        {
+          "start": 230.43,
+          "end": 240,
+          "text": "两颗裸片都要预留测试与调试入口，除了个别元件，也要验证组装后的连接。",
+          "english": "Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.",
+          "speechStart": 230.429667,
+          "speechEnd": 237.752813,
+          "chapter": 8,
+          "sentence": 4
+        },
+        {
+          "start": 240,
+          "end": 244.42,
+          "text": "用同一份明确定义的工作负载，重放各个划分模型。",
+          "english": "Replay the same declared workload against every partition model.",
+          "speechStart": 240.35,
+          "speechEnd": 244.239583,
+          "chapter": 9,
+          "sentence": 1
+        },
+        {
+          "start": 244.42,
+          "end": 250.792,
+          "text": "在指定测量边界检查返回数据与顺序、各方向字节数、队列占用、延迟和功率。",
+          "english": "Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.",
+          "speechStart": 244.419583,
+          "speechEnd": 250.611667,
+          "chapter": 9,
+          "sentence": 2
+        },
+        {
+          "start": 250.792,
+          "end": 257.871,
+          "text": "方案B若增加互连能耗，先比对新跨界的缓存流量，再判断原因是否与制程有关。",
+          "english": "If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.",
+          "speechStart": 250.791667,
+          "speechEnd": 257.690625,
+          "chapter": 9,
+          "sentence": 3
+        },
+        {
+          "start": 257.871,
+          "end": 270,
+          "text": "之后再用硬件证据校正模型；散热与路由分析尚未完成时，应保留待确认状态。",
+          "english": "Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.",
+          "speechStart": 257.870625,
+          "speechEnd": 264.336979,
+          "chapter": 9,
+          "sentence": 4
+        },
+        {
+          "start": 270,
+          "end": 273.753,
+          "text": "交付有版本的功能划分图，也要交付支持它的数据。",
+          "english": "Release a versioned partition map, not just an attractive placement image.",
+          "speechStart": 270.35,
+          "speechEnd": 273.572917,
+          "chapter": 10,
+          "sentence": 1
+        },
+        {
+          "start": 273.753,
+          "end": 280.858,
+          "text": "内容包括各操作模式的逐方向流量、接口负责人、能耗与延迟假设、未采用的候选，以及尚缺的证据。",
+          "english": "Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.",
+          "speechStart": 273.752917,
+          "speechEnd": 280.677875,
+          "chapter": 10,
+          "sentence": 2
+        },
+        {
+          "start": 280.858,
+          "end": 287.167,
+          "text": "方案A把高重用流量留在裸片内，在本教学案例值得继续评估；最终仍须符合完整需求。",
+          "english": "Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.",
+          "speechStart": 280.857875,
+          "speechEnd": 286.987313,
+          "chapter": 10,
+          "sentence": 3
+        },
+        {
+          "start": 287.167,
+          "end": 300,
+          "text": "把这些限制带到C03选封装架构，再交给C04建立连接点与电源网表。",
+          "english": "Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.",
+          "speechStart": 287.167312,
+          "speechEnd": 292.972167,
+          "chapter": 10,
+          "sentence": 4
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.406
+先从空中俯瞰一个假想加速器的功能图。
+Fly over the functional map of a hypothetical accelerator.
+
+2
+00:00:04.406 --> 00:00:12.943
+C02要把计算、缓存、存储器控制与I/O功能分配到单片或多个芯粒。
+C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.
+
+3
+00:00:12.943 --> 00:00:20.357
+交付物是功能划分图、逐方向的跨裸片流量表，以及能耗和时序预算。
+Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.
+
+4
+00:00:20.357 --> 00:00:30.000
+所有数字都是教学假设；先说明划分理由，下一课C03再选封装技术。
+Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.
+
+5
+00:00:30.000 --> 00:00:34.276
+放大三种与存储器有关、却不同的功能。
+Zoom into three different memory-related functions.
+
+6
+00:00:34.276 --> 00:00:44.296
+SRAM缓存把可重用数据留在计算旁，控制器调度存储器事务，存储器PHY则驱动通往外部DRAM的电气连接。
+SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.
+
+7
+00:00:44.296 --> 00:00:50.147
+功能图必须分清这些角色，不能只绘制一个笼统的存储器方块。
+These roles must not collapse into one box simply labeled memory.
+
+8
+00:00:50.147 --> 00:01:00.000
+新增裸片边界还需要两端的裸片间接口，它和外部存储器PHY是不同功能。
+A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.
+
+9
+00:01:00.000 --> 00:01:06.679
+方案A把计算与缓存留在一起，存储器控制与I/O则放在第二颗裸片。
+Candidate A keeps compute and cache together, while memory control and I/O share a second die.
+
+10
+00:01:06.679 --> 00:01:14.104
+选定工作负载中，控制器每秒送六十四GB到缓存，反方向每秒十六GB。
+The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.
+
+11
+00:01:14.104 --> 00:01:18.709
+因此这条划分边界的双向合计流量是每秒八十GB。
+The cut therefore moves eighty gigabytes per second in aggregate.
+
+12
+00:01:18.709 --> 00:01:30.000
+表格仍要保留两个箭头；合计可以用来算能耗，却不是单一方向的带宽需求。
+Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.
+
+13
+00:01:30.000 --> 00:01:33.628
+现在把计算和缓存分开，形成方案B。
+Now separate compute from cache to create candidate B.
+
+14
+00:01:33.628 --> 00:01:40.831
+原本留在裸片内的流量，朝计算方向每秒一百九十二GB，回缓存方向每秒六十四GB。
+Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.
+
+15
+00:01:40.831 --> 00:01:47.480
+新边界增加每秒二百五十六GB，使跨裸片合计从八十升到三百三十六GB。
+The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.
+
+16
+00:01:47.480 --> 00:02:00.000
+数据重用让缓存内部流量高于外部存储器流量；裸片变小，本身并不能证明系统更好。
+Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.
+
+17
+00:02:00.000 --> 00:02:02.434
+从流量图移到制程选项表。
+Move from the traffic map to process choices.
+
+18
+00:02:02.434 --> 00:02:08.189
+计算逻辑、SRAM、模拟电路与外部I/O，从同一种制程升级得到的好处未必相同。
+Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.
+
+19
+00:02:08.189 --> 00:02:15.673
+AMD官方文件有计算与I/O分开的实际产品，但本课布局和数字并非重建AMD产品。
+AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.
+
+20
+00:02:15.673 --> 00:02:30.000
+指派制程前，要比较可用IP、特性验证、成本和重用条件；若整体取舍有利，也保留单片候选。
+Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.
+
+21
+00:02:30.000 --> 00:02:37.426
+假设有效率百分之八十，发送与接收两端合计，每个物理比特的动态能耗是四皮焦耳。
+Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.
+
+22
+00:02:37.426 --> 00:02:44.399
+方案A每秒八百亿字节，先乘八、除以零点八，再乘四乘十的负十二次方焦耳。
+Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.
+
+23
+00:02:44.399 --> 00:02:48.786
+结果是三点二瓦，方案B则需要十三点四四瓦。
+The result is three point two watts, while candidate B requires thirteen point four four.
+
+24
+00:02:48.786 --> 00:03:00.000
+固定功率与共通的外部存储器连接，没有算在这项比较内，不代表它们不耗电。
+Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.
+
+25
+00:03:00.000 --> 00:03:03.496
+跟着一次读取请求，直到数据回到调用方。
+Follow one read request all the way back to its caller.
+
+26
+00:03:03.496 --> 00:03:11.799
+假设请求传输十二纳秒、存储器服务四十纳秒、响应传输十二纳秒，合计六十四；各传输项已包含自己的串行化。
+Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.
+
+27
+00:03:11.799 --> 00:03:15.687
+两侧队列若再增加十六纳秒，整笔事务就到八十纳秒。
+Another sixteen nanoseconds of combined queueing brings the transaction to eighty.
+
+28
+00:03:15.687 --> 00:03:30.000
+只看连接带宽与PHY延迟，无法得到这个答案；必须定义端点、依赖关系与工作负载，再验证所需的延迟分布。
+Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.
+
+29
+00:03:30.000 --> 00:03:33.823
+替每一条新增边界附上接口契约。
+Attach a contract to every new boundary.
+
+30
+00:03:33.823 --> 00:03:42.477
+记录协议版本、支持模式、顺序规则、时钟与复位行为、电源切换，以及错误恢复。
+Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.
+
+31
+00:03:42.477 --> 00:03:50.430
+UCIe等标准有助于定义互通条件，但相同名称不能证明两个实际实现完全兼容。
+Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.
+
+32
+00:03:50.430 --> 00:04:00.000
+两颗裸片都要预留测试与调试入口，除了个别元件，也要验证组装后的连接。
+Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.
+
+33
+00:04:00.000 --> 00:04:04.420
+用同一份明确定义的工作负载，重放各个划分模型。
+Replay the same declared workload against every partition model.
+
+34
+00:04:04.420 --> 00:04:10.792
+在指定测量边界检查返回数据与顺序、各方向字节数、队列占用、延迟和功率。
+Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.
+
+35
+00:04:10.792 --> 00:04:17.871
+方案B若增加互连能耗，先比对新跨界的缓存流量，再判断原因是否与制程有关。
+If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.
+
+36
+00:04:17.871 --> 00:04:30.000
+之后再用硬件证据校正模型；散热与路由分析尚未完成时，应保留待确认状态。
+Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.
+
+37
+00:04:30.000 --> 00:04:33.753
+交付有版本的功能划分图，也要交付支持它的数据。
+Release a versioned partition map, not just an attractive placement image.
+
+38
+00:04:33.753 --> 00:04:40.858
+内容包括各操作模式的逐方向流量、接口负责人、能耗与延迟假设、未采用的候选，以及尚缺的证据。
+Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.
+
+39
+00:04:40.858 --> 00:04:47.167
+方案A把高重用流量留在裸片内，在本教学案例值得继续评估；最终仍须符合完整需求。
+Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.
+
+40
+00:04:47.167 --> 00:05:00.000
+把这些限制带到C03选封装架构，再交给C04建立连接点与电源网表。
+Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.

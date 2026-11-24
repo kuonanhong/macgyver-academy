@@ -66,8 +66,14 @@ window.MACGYVER_PACKAGING_PROCESS_MEDIA = {
       },
       "verificationManifest": "assets/packaging-process-v34/C01/manifest.json",
       "longLesson": {
-        "status": "in_production",
-        "youtubeId": null
+        "status": "local_verified",
+        "durationSeconds": 900,
+        "youtubeId": null,
+        "youtubeStatus": "pending_quota",
+        "bundleStatus": "PUBLIC_VERIFIED",
+        "bundleUrl": "https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-process-v35/C01-long_15min_V34.zip",
+        "bundleSha256": "a6c9f88d1c710dd1cc579443b3a965b1783bc7fa7b116a591b6bb192775a7178",
+        "bundleBytes": 181611331
       }
     }
   }

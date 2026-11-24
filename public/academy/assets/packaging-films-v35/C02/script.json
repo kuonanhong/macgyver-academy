@@ -1,0 +1,793 @@
+{
+  "schemaVersion": 1,
+  "id": "C02",
+  "processId": "C02",
+  "mode": "short",
+  "version": "35.0.0",
+  "title": {
+    "zh-TW": "劃分運算、記憶體與I/O晶粒",
+    "zh-CN": "计算、存储与I/O芯粒的功能划分",
+    "en": "Partition compute, memory and I/O",
+    "ja": "演算・メモリ・I/Oのチップレット分割",
+    "ko": "연산·메모리·I/O 칩렛 기능 분할"
+  },
+  "youtubeBilingualTitle": "C02｜晶粒功能分割｜Compute, memory and I/O partitioning｜5 min",
+  "youtubeTitle": {
+    "zh-TW": "C02｜運算、記憶體與I/O晶粒分割｜5分鐘課程",
+    "zh-CN": "C02｜计算、存储与I/O芯粒划分｜5分钟课程",
+    "en": "C02 | Compute, memory and I/O partitioning | 5-minute lesson",
+    "ja": "C02｜演算・メモリ・I/Oのチップレット分割｜5分授業",
+    "ko": "C02｜연산·메모리·I/O 칩렛 분할｜5분 수업"
+  },
+  "metadataSummary": {
+    "zh-TW": "以原創假想加速器比較功能分割：運算與快取保持局部性，或拆開而增加跨晶粒流量。五分鐘走過流量方向、動態互連功率、讀取往返、介面契約與驗證證據，交付C03所需的分割圖。",
+    "zh-CN": "用原创假想加速器比较功能划分：计算与缓存保持局部性，或拆开而增加跨裸片流量。五分钟说明流量方向、动态互连功率、读取往返、接口契约与验证证据，交付C03需要的划分图。",
+    "en": "Compare two hypothetical functional partitions while preserving compute-cache locality or creating another die boundary. This five-minute lesson follows directional traffic, dynamic link power, read round trips, interface contracts and verification evidence before the C03 package-architecture decision.",
+    "ja": "仮想アクセラレーターで、演算とキャッシュを同じダイに置く案と分離する案を比較します。五分で方向別通信、動的リンク電力、読み出し往復、契約と検証を学び、C03に分割図を渡します。",
+    "ko": "가상 가속기로 연산과 캐시를 같은 다이에 두는 안과 분리하는 안을 비교합니다. 오 분 동안 방향별 트래픽, 동적 연결 전력, 읽기 왕복, 계약과 검증을 살피고 C03에 분할도를 전달합니다."
+  },
+  "durationSeconds": 300,
+  "chapterDurationSeconds": 30,
+  "activityType": "design",
+  "languages": [
+    "zh-TW",
+    "zh-CN",
+    "en",
+    "ja",
+    "ko"
+  ],
+  "status": {
+    "script": "reviewed_ready_for_measured_tts",
+    "narrationTiming": "not_measured",
+    "film": "not_produced",
+    "publication": "not_published"
+  },
+  "scope": {
+    "zh-TW": "教學重建與原創假想算例；不是工廠實拍、供應商SOP、量測結果或標準符合性證明。",
+    "en": "Teaching reconstruction with original hypothetical examples; not factory footage, a supplier SOP, measured performance or proof of standards compliance."
+  },
+  "reviewStatement": "AI-authored and AI-translated engineering teaching material. Independent AI technical, translation and sentence-meaning review passed; this is not certified review by a native-language engineer. Actual narration timing, rendered visual quality and final media remain separate production gates.",
+  "roadmapBinding": {
+    "id": "C02",
+    "title": {
+      "zh-TW": "劃分運算、記憶體與I/O晶粒",
+      "en": "Partition compute, memory and I/O"
+    },
+    "prerequisiteIds": [
+      "C01"
+    ],
+    "next": [
+      "C03",
+      "C04"
+    ],
+    "source": "MacGyver_Engineering_Academy_v32/docs/PACKAGING_PROCESS_ROADMAP_V34.json"
+  },
+  "scenario": {
+    "status": "HYPOTHETICAL_TEACHING_CASE_NOT_MEASURED",
+    "trafficUnits": "decimal GB/s of useful logical data for these selected flows; all flows are simultaneous for the energy example",
+    "boundaryScope": "Internal SoC die-to-die cuts only. External DRAM and board I/O links common to all alternatives are excluded from the cut-energy comparison, not claimed to consume zero power.",
+    "nodes": [
+      {
+        "id": "compute",
+        "label": "COMPUTE",
+        "role": "arithmetic and execution"
+      },
+      {
+        "id": "cache",
+        "label": "SRAM CACHE",
+        "role": "reuse, buffering and locality"
+      },
+      {
+        "id": "controller",
+        "label": "MEMORY CONTROLLER",
+        "role": "scheduling and memory transactions"
+      },
+      {
+        "id": "memphy",
+        "label": "MEMORY PHY",
+        "role": "electrical interface to external DRAM"
+      },
+      {
+        "id": "io",
+        "label": "I/O",
+        "role": "external communication functions"
+      },
+      {
+        "id": "dram",
+        "label": "EXTERNAL DRAM",
+        "role": "storage device outside the internal SoC partition scope"
+      }
+    ],
+    "edges": [
+      {
+        "from": "cache",
+        "to": "compute",
+        "logicalPayloadGBps": 192,
+        "countInInternalCut": true
+      },
+      {
+        "from": "compute",
+        "to": "cache",
+        "logicalPayloadGBps": 64,
+        "countInInternalCut": true
+      },
+      {
+        "from": "controller",
+        "to": "cache",
+        "logicalPayloadGBps": 64,
+        "countInInternalCut": true
+      },
+      {
+        "from": "cache",
+        "to": "controller",
+        "logicalPayloadGBps": 16,
+        "countInInternalCut": true
+      },
+      {
+        "from": "io",
+        "to": "controller",
+        "logicalPayloadGBps": 8,
+        "countInInternalCut": true
+      },
+      {
+        "from": "controller",
+        "to": "io",
+        "logicalPayloadGBps": 8,
+        "countInInternalCut": true
+      }
+    ],
+    "partitions": {
+      "M": [
+        [
+          "compute",
+          "cache",
+          "controller",
+          "memphy",
+          "io"
+        ]
+      ],
+      "A": [
+        [
+          "compute",
+          "cache"
+        ],
+        [
+          "controller",
+          "memphy",
+          "io"
+        ]
+      ],
+      "B": [
+        [
+          "compute"
+        ],
+        [
+          "cache"
+        ],
+        [
+          "controller",
+          "memphy",
+          "io"
+        ]
+      ]
+    },
+    "newInterfaceRule": "A cut inserts a D2D TX/RX interface at both endpoints; the existing external-memory PHY is a different function.",
+    "efficiency": 0.8,
+    "energyPjPerPhysicalBit": 4,
+    "energyBoundary": "Combined TX+RX dynamic energy per transmitted physical bit, excluding fixed/idle and other package power. Overhead is counted once through efficiency; the same assumed efficiency is used only for this simplified traffic case.",
+    "arithmetic": {
+      "cutA_GBps": 80,
+      "localComputeCache_GBps": 256,
+      "cutB_GBps": 336,
+      "dynamicA_W": 3.2,
+      "dynamicB_W": 13.44,
+      "additionalCut_W": 10.24,
+      "sensitivityEnergyPjPerPhysicalBit": 8,
+      "sensitivityA_W": 6.4,
+      "dynamicLinkBudget_W": 6,
+      "criticalEnergyPjPerPhysicalBit": 7.5,
+      "lanesPerDirection": 48,
+      "GbitPerSecondPerLane": 16,
+      "payloadCapacityPerDirection_GBps": 76.8,
+      "demandReadDirection_GBps": 64,
+      "utilizationRead": 0.8333333333333334,
+      "burstRate_GBps": 96,
+      "burstDuration_ms": 2,
+      "burstBacklog_MB": 38.4,
+      "postBurstArrival_GBps": 64,
+      "drainTime_ms": 3,
+      "isolatedPayload_bytes": 256,
+      "illustrativePayloadServiceRate_GBps": 64,
+      "serialization_ns": 4,
+      "requestPath_ns": 12,
+      "memoryService_ns": 40,
+      "responsePath_ns": 12,
+      "noQueueReadRoundTrip_ns": 64,
+      "addedQueue_ns": 16,
+      "queuedReadRoundTrip_ns": 80,
+      "fourSerialDependencies_ns": 256,
+      "portWidthEach_mm": 3,
+      "portsRequired": 2,
+      "usableEdge_mm": 5,
+      "costInputs_units": [
+        80,
+        30,
+        20
+      ],
+      "finalPassFraction": 0.95,
+      "costPerPassingUnit": 136.8421052631579,
+      "exerciseA": {
+        "dynamic_W": 3.2,
+        "budgetedPath_ns": 76
+      },
+      "exerciseB": {
+        "dynamic_W": 13.44,
+        "budgetedPath_ns": 58
+      },
+      "exerciseMaxPath_ns": 80
+    },
+    "numericLimitations": [
+      "No quantity is a vendor specification, measured benchmark, validated physical simulation or standards-compliance claim.",
+      "48 lanes is arithmetic only; legal widths, granularity, clocks, sideband, spare lanes, power/ground and protocol mode must be verified for a real interface.",
+      "Queue example is a fluid-buffer teaching model, not an implemented38.4MB on-die buffer.",
+      "Read-path terms are additive planning assumptions, not a measured latency distribution.",
+      "Candidate cost figures are abstract cost units, not prices or production-yield data.",
+      "Architecture selection is C03, bump/power-net assignment is C04; C02 hands off logical partition and interface constraints."
+    ],
+    "latencyAccounting": "The12ns request and12ns response transport budgets already include their own serialization; do not add the independent4ns payload-serialization illustration again.",
+    "costAccounting": "80+30+20 are costs incurred per assembly attempt; divide once by the assumed final assembled-product pass fraction. Do not apply that same yield factor again to individual dies."
+  },
+  "sourceContractSha256": "41a6ac601dfef0f3f8217a626b823cec82df73e1fb85998c65ed8ad608a615c9",
+  "sources": [
+    {
+      "id": "cadence-3dic",
+      "publisher": "Cadence",
+      "title": "3D-IC Design Challenges and Requirements",
+      "url": "https://www.cadence.com/en_US/home/resources/white-papers/3d-ic-design-wp.html",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "System planning, heterogeneous technology selection, cross-domain power/thermal/routing analysis and test. No supplier numerical target is used.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "imec-partition",
+      "publisher": "imec",
+      "title": "When does it make sense to move from a monolithic ASIC to a chiplet-based design?",
+      "url": "https://www.imec-int.com/en/articles/when-does-it-make-sense-move-monolithic-asic-chiplet-based-design",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Interaction intensity, timing, process fit, test and physical constraints guide partitioning; monolithic and chiplet choices coexist. Article-specific yield percentages are deliberately not imported.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "amd-epyc-architecture",
+      "publisher": "AMD",
+      "title": "4th Gen AMD EPYC Processor Architecture, Fourth Edition, May 2024",
+      "url": "https://www.amd.com/content/dam/amd/en/documents/products/epyc/4th-gen-amd-epyc-processor-architecture-whitepaper.pdf",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "An actual example of separate compute/cache and I/O dies and process choices; memory controllers and external interfaces reside on the I/O die. C02 drawings and all numerical examples are not AMD product reconstructions.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "ucie-scope",
+      "publisher": "UCIe Consortium",
+      "title": "UCIe Specifications",
+      "url": "https://www.uciexpress.org/specifications",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Standards address physical layer, protocols, software and compliance; exact implemented revision and optional features must be recorded. No hypothetical lane grouping, efficiency, energy or latency is represented as UCIe compliance.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "ucie-qa",
+      "publisher": "UCIe Consortium",
+      "title": "Introduction to UCIe Webinar: Q&A Recap",
+      "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Interface latency is not complete transaction latency; replay and retraining affect repeatability, and configuration/test access is part of integration. Legacy version-specific numerical targets are not reused.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "ocp-chiplet-methodology",
+      "publisher": "Open Compute Project",
+      "title": "Addressing the Colossal Challenge of System Co-Optimization with a Holistic Chiplet Design Methodology",
+      "url": "https://www.opencompute.org/news/addressing-the-colossal-challenge-of-system-co-optimization-with-a-holistic-chiplet-design-methodology/",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Partition strategies, transaction-level and system verification, clock-domain crossings, physical planning and power models spanning operating modes.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "amkor-test",
+      "publisher": "Amkor",
+      "title": "IC Semiconductor Test Services",
+      "url": "https://amkor.com/test-services/",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Early test planning, wafer probe, intermediate assembly tests, package/system testing and chiplet interface access.",
+      "access": "official source content inspected"
+    },
+    {
+      "id": "amkor-chiplets",
+      "publisher": "Amkor",
+      "title": "Readying the supply chain for chiplets and heterogeneous IC packaging",
+      "url": "https://amkormarcomexternal.blob.core.windows.net/amkordotcom/wp-content/uploads/2024/03/Readying-the-supply-chain-for-chiplets-and-heterogeneous-integration_EN.pdf",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Primary indexed abstract confirms functional de-partitioning and supply-chain qualification context. Full PDF timed out during this audit; no inaccessible detail is used.",
+      "access": "indexed primary abstract only; full PDF timed out"
+    },
+    {
+      "id": "nist-si",
+      "publisher": "NIST",
+      "title": "Metric (SI) Prefixes",
+      "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "supports": "Decimal giga=10^9, mega=10^6, milli=10^-3, nano=10^-9 and pico=10^-12 underpin the original arithmetic.",
+      "access": "official source content inspected"
+    }
+  ],
+  "cues": [
+    {
+      "key": "deliverables",
+      "start": 0,
+      "end": 30,
+      "title": {
+        "zh-TW": "功能分割與交付物",
+        "en": "Partition and deliverables",
+        "zh-CN": "功能划分与交付物",
+        "ja": "分割の成果物",
+        "ko": "분할 산출물"
+      },
+      "sourceIds": [
+        "imec-partition"
+      ],
+      "visual": {
+        "station": "deliverables",
+        "subchapter": 1,
+        "shot": "Distinct C02 deliverables explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "deliverables",
+          "focus": "deliverables",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-01",
+      "shortTitle": {
+        "zh-TW": "功能分割與交付物",
+        "en": "Partition outputs",
+        "zh-CN": "功能划分与交付物",
+        "ja": "分割の成果物",
+        "ko": "분할 산출물"
+      },
+      "text": {
+        "zh-TW": "先從空中俯瞰一個假想加速器的功能圖。C02要把運算、快取、記憶體控制與I/O功能分配到單晶粒或多個小晶片。交付物是功能分割圖、逐方向的跨晶粒流量表，以及能耗和時序預算。所有數字都是教學假設；先說明分割理由，下一課C03再選封裝技術。",
+        "zh-CN": "先从空中俯瞰一个假想加速器的功能图。C02要把计算、缓存、存储器控制与I/O功能分配到单片或多个芯粒。交付物是功能划分图、逐方向的跨裸片流量表，以及能耗和时序预算。所有数字都是教学假设；先说明划分理由，下一课C03再选封装技术。",
+        "en": "Fly over the functional map of a hypothetical accelerator. C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets. Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets. Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.",
+        "ja": "仮想アクセラレーターの機能図を上空から見てみましょう。C02では、演算、キャッシュ、メモリ制御、I/Oを、一つのダイまたは複数のチップレットに割り当てます。成果物は分割図と方向別のダイ間トラフィック表、そしてエネルギーと時間の予算です。数値はすべて教材の仮定であり、分割の根拠を示した後、C03で実際のパッケージ技術を選びます。",
+        "ko": "가상 가속기의 기능 지도를 위에서 살펴봅니다. C02에서는 연산, 캐시, 메모리 제어와 I/O를 하나의 다이 또는 여러 칩렛에 배치합니다. 산출물은 기능 분할도, 방향별 다이 간 트래픽 표, 에너지와 시간 예산입니다. 모든 수치는 교육용 가정이며, 분할 근거를 마련한 뒤 다음 C03에서 실제 패키징 기술을 선택합니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "memory-roles",
+      "start": 30,
+      "end": 60,
+      "title": {
+        "zh-TW": "運算、快取與記憶體介面",
+        "en": "Compute, cache and memory",
+        "zh-CN": "计算、缓存与存储器接口",
+        "ja": "キャッシュとメモリの役割",
+        "ko": "캐시와 메모리 역할"
+      },
+      "sourceIds": [
+        "amd-epyc-architecture"
+      ],
+      "visual": {
+        "station": "memory-roles",
+        "subchapter": 2,
+        "shot": "Distinct C02 roles explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "roles",
+          "focus": "memory-roles",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-02",
+      "shortTitle": {
+        "zh-TW": "運算、快取與記憶體介面",
+        "en": "Memory roles",
+        "zh-CN": "计算、缓存与存储器接口",
+        "ja": "キャッシュとメモリの役割",
+        "ko": "캐시와 메모리 역할"
+      },
+      "text": {
+        "zh-TW": "放大三種與記憶體有關、卻不同的功能。SRAM快取把可重用資料留在運算旁，控制器排程記憶體交易，記憶體PHY則驅動通往外部DRAM的電氣連線。功能圖必須分清這些角色，不能只畫一個籠統的記憶體方塊。新增晶粒邊界還需要兩端的晶粒間介面，它和外部記憶體PHY是不同功能。",
+        "zh-CN": "放大三种与存储器有关、却不同的功能。SRAM缓存把可重用数据留在计算旁，控制器调度存储器事务，存储器PHY则驱动通往外部DRAM的电气连接。功能图必须分清这些角色，不能只绘制一个笼统的存储器方块。新增裸片边界还需要两端的裸片间接口，它和外部存储器PHY是不同功能。",
+        "en": "Zoom into three different memory-related functions. SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM. These roles must not collapse into one box simply labeled memory. A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.",
+        "ja": "メモリに関係する三つの異なる機能を拡大します。SRAMキャッシュは再利用するデータを演算の近くに保持し、コントローラーはメモリ取引を調整し、メモリPHYは外部DRAMへの電気接続を担います。これらを単にメモリという一つの箱にまとめてはいけません。新しいダイ境界には両端のダイ間インターフェースも必要で、これは外部メモリPHYとは別の機能です。",
+        "ko": "메모리와 관련되지만 서로 다른 세 기능을 확대합니다. SRAM 캐시는 재사용 데이터를 연산부 가까이에 보관하고, 컨트롤러는 메모리 트랜잭션을 조정하며, 메모리 PHY는 외부 DRAM으로 가는 전기 연결을 담당합니다. 이 역할들을 단순히 메모리라는 하나의 상자로 합쳐서는 안 됩니다. 새로운 다이 경계 양쪽에는 다이 간 인터페이스도 필요하며, 이는 외부 메모리 PHY와 다른 기능입니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "cut-a",
+      "start": 60,
+      "end": 90,
+      "title": {
+        "zh-TW": "用逐方向流量畫第一條邊界",
+        "en": "Draw the first boundary",
+        "zh-CN": "用逐方向流量画第一条边界",
+        "ja": "候補Aと局所性",
+        "ko": "후보 A와 지역성"
+      },
+      "sourceIds": [
+        "ocp-chiplet-methodology"
+      ],
+      "visual": {
+        "station": "cut-a",
+        "subchapter": 3,
+        "shot": "Distinct C02 partition-a explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "partition-a",
+          "focus": "cut-a",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-03",
+      "shortTitle": {
+        "zh-TW": "用逐方向流量畫第一條邊界",
+        "en": "Cut A",
+        "zh-CN": "用逐方向流量画第一条边界",
+        "ja": "候補Aと局所性",
+        "ko": "후보 A와 지역성"
+      },
+      "text": {
+        "zh-TW": "方案A把運算與快取留在一起，記憶體控制與I/O則放在第二顆晶粒。選定工作負載中，控制器每秒送六十四GB到快取，反方向每秒十六GB。因此這條分割邊界的雙向合計流量是每秒八十GB。表格仍要保留兩個箭頭；合計可以用來算能耗，卻不是單一方向的頻寬需求。",
+        "zh-CN": "方案A把计算与缓存留在一起，存储器控制与I/O则放在第二颗裸片。选定工作负载中，控制器每秒送六十四GB到缓存，反方向每秒十六GB。因此这条划分边界的双向合计流量是每秒八十GB。表格仍要保留两个箭头；合计可以用来算能耗，却不是单一方向的带宽需求。",
+        "en": "Candidate A keeps compute and cache together, while memory control and I/O share a second die. The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction. The cut therefore moves eighty gigabytes per second in aggregate. Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.",
+        "ja": "候補Aは演算とキャッシュを同じダイに置き、メモリ制御とI/Oを二つ目のダイにまとめます。選んだ負荷では、コントローラーからキャッシュへ毎秒六十四ギガバイト、逆方向へ毎秒十六ギガバイトが流れます。この境界を通る両方向の合計は毎秒八十ギガバイトです。表には二本の矢印を残し、合計はエネルギー計算に使っても、一方向の帯域要件とは扱わないでください。",
+        "ko": "후보 A는 연산과 캐시를 같은 다이에 두고, 메모리 제어와 I/O를 두 번째 다이에 모읍니다. 선택한 부하에서 컨트롤러는 캐시로 초당 육십사 기가바이트를 보내고, 반대 방향은 초당 십육 기가바이트입니다. 따라서 이 경계를 지나는 양방향 합계는 초당 팔십 기가바이트입니다. 표에는 두 화살표를 유지하며, 합계는 에너지 계산에 쓰지만 한 방향의 대역폭 요구량은 아닙니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "oversplit",
+      "start": 90,
+      "end": 120,
+      "title": {
+        "zh-TW": "把快取拆開之後",
+        "en": "After splitting the cache",
+        "zh-CN": "把缓存拆开之后",
+        "ja": "候補Bの追加境界",
+        "ko": "후보 B의 추가 경계"
+      },
+      "sourceIds": [
+        "imec-partition"
+      ],
+      "visual": {
+        "station": "oversplit",
+        "subchapter": 4,
+        "shot": "Distinct C02 partition-b explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "partition-b",
+          "focus": "oversplit",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-04",
+      "shortTitle": {
+        "zh-TW": "把快取拆開之後",
+        "en": "Cut B",
+        "zh-CN": "把缓存拆开之后",
+        "ja": "候補Bの追加境界",
+        "ko": "후보 B의 추가 경계"
+      },
+      "text": {
+        "zh-TW": "現在把運算和快取分開，形成方案B。原本留在晶粒內的流量，朝運算方向每秒一百九十二GB，回快取方向每秒六十四GB。新邊界增加每秒二百五十六GB，使跨晶粒合計從八十升到三百三十六GB。資料重用讓快取內部流量高於外部記憶體流量；晶粒變小，本身並不能證明系統更好。",
+        "zh-CN": "现在把计算和缓存分开，形成方案B。原本留在裸片内的流量，朝计算方向每秒一百九十二GB，回缓存方向每秒六十四GB。新边界增加每秒二百五十六GB，使跨裸片合计从八十升到三百三十六GB。数据重用让缓存内部流量高于外部存储器流量；裸片变小，本身并不能证明系统更好。",
+        "en": "Now separate compute from cache to create candidate B. Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache. The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second. Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.",
+        "ja": "次に演算とキャッシュを分離して候補Bを作ります。それまでダイ内にあった通信は、演算方向が毎秒百九十二ギガバイト、キャッシュへの戻りが毎秒六十四ギガバイトです。新しい境界で毎秒二百五十六ギガバイトが加わり、ダイ間合計は八十から三百三十六へ増えます。データ再利用によりキャッシュ通信は外部メモリ通信より多くなり得るため、ダイを小さくしただけではシステム改善を証明できません。",
+        "ko": "이제 연산과 캐시를 분리해 후보 B를 만듭니다. 기존의 다이 내부 트래픽은 연산 방향으로 초당 백구십이 기가바이트, 캐시로 돌아오는 방향으로 초당 육십사 기가바이트입니다. 새 경계가 이백오십육을 더하므로, 다이 간 합계는 초당 팔십에서 삼백삼십육 기가바이트로 증가합니다. 데이터 재사용 때문에 캐시 트래픽은 외부 메모리 트래픽보다 클 수 있으며, 다이가 작아졌다는 사실만으로 시스템 개선이 입증되지는 않습니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "process-fit",
+      "start": 120,
+      "end": 150,
+      "title": {
+        "zh-TW": "製程選項與重用條件",
+        "en": "Process fit and reuse",
+        "zh-CN": "制程选项与重用条件",
+        "ja": "機能に合うプロセス",
+        "ko": "기능에 맞는 공정"
+      },
+      "sourceIds": [
+        "amd-epyc-architecture",
+        "cadence-3dic"
+      ],
+      "visual": {
+        "station": "process-fit",
+        "subchapter": 5,
+        "shot": "Distinct C02 process-fit explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "process-fit",
+          "focus": "process-fit",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-05",
+      "shortTitle": {
+        "zh-TW": "製程選項與重用條件",
+        "en": "Process fit",
+        "zh-CN": "制程选项与重用条件",
+        "ja": "機能に合うプロセス",
+        "ko": "기능에 맞는 공정"
+      },
+      "text": {
+        "zh-TW": "從流量圖移到製程選項表。運算邏輯、SRAM、類比電路與外部I/O，從同一種製程升級得到的好處未必相同。AMD官方文件有運算與I/O分開的實際產品，但本課布局和數字並非重建AMD產品。指派製程前，要比較可用IP、特性驗證、成本和重用條件；若整體取捨有利，也保留單晶粒候選。",
+        "zh-CN": "从流量图移到制程选项表。计算逻辑、SRAM、模拟电路与外部I/O，从同一种制程升级得到的好处未必相同。AMD官方文件有计算与I/O分开的实际产品，但本课布局和数字并非重建AMD产品。指派制程前，要比较可用IP、特性验证、成本和重用条件；若整体取舍有利，也保留单片候选。",
+        "en": "Move from the traffic map to process choices. Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change. AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction. Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.",
+        "ja": "トラフィック図からプロセスの選択表へ移ります。演算ロジック、SRAM、アナログ回路、外部I/Oは、同じ技術変更から同じ利益を得るとは限りません。AMDは演算とI/Oを分離した実製品を公開していますが、この配置と数値はAMD製品の再現ではありません。利用可能なIP、特性評価、コスト、再利用条件を比較し、総合的に有利ならモノリシック候補も残します。",
+        "ko": "트래픽 지도에서 공정 선택표로 이동합니다. 연산 로직, SRAM, 아날로그 회로와 외부 I/O가 같은 기술 변경에서 얻는 이점은 서로 다를 수 있습니다. AMD는 연산과 I/O 다이를 분리한 실제 제품을 공개하지만, 이 수치와 배치는 AMD 제품을 재현한 것이 아닙니다. 사용 가능한 IP, 특성 평가, 비용과 재사용 조건을 비교하고, 전체적으로 유리하다면 단일 다이 후보도 유지합니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "energy-a",
+      "start": 150,
+      "end": 180,
+      "title": {
+        "zh-TW": "計算新增互連功率",
+        "en": "Calculate link power",
+        "zh-CN": "计算新增互连功率",
+        "ja": "リンク電力の比較",
+        "ko": "연결 전력 비교"
+      },
+      "sourceIds": [
+        "nist-si",
+        "ocp-chiplet-methodology"
+      ],
+      "visual": {
+        "station": "energy-a",
+        "subchapter": 6,
+        "shot": "Distinct C02 energy-comparison explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "energy-comparison",
+          "focus": "energy-a",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-06",
+      "shortTitle": {
+        "zh-TW": "計算新增互連功率",
+        "en": "Link energy A",
+        "zh-CN": "计算新增互连功率",
+        "ja": "リンク電力の比較",
+        "ko": "연결 전력 비교"
+      },
+      "text": {
+        "zh-TW": "假設有效率百分之八十，發送與接收兩端合計，每個實體位元的動態能耗是四皮焦耳。方案A每秒八百億位元組，先乘八、除以零點八，再乘四乘十的負十二次方焦耳。結果是三點二瓦，方案B則需要十三點四四瓦。固定功率與共通的外部記憶體連線，沒有算在這項比較內，不代表它們不耗電。",
+        "zh-CN": "假设有效率百分之八十，发送与接收两端合计，每个物理比特的动态能耗是四皮焦耳。方案A每秒八百亿字节，先乘八、除以零点八，再乘四乘十的负十二次方焦耳。结果是三点二瓦，方案B则需要十三点四四瓦。固定功率与共通的外部存储器连接，没有算在这项比较内，不代表它们不耗电。",
+        "en": "Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy. Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule. The result is three point two watts, while candidate B requires thirteen point four four. Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.",
+        "ja": "有効データ効率を八十パーセント、物理ビット当たりの動的エネルギーを送受信合計で四ピコジュールと仮定します。候補Aの毎秒八百億バイトに八を掛け、零点八で割り、さらに四掛ける十のマイナス十二乗ジュールを掛けます。結果は三点二ワットで、候補Bには十三点四四ワットが必要です。固定電力と共通の外部メモリ接続はこの比較の対象外ですが、電力が不要という意味ではありません。",
+        "ko": "유효 데이터 효율을 팔십 퍼센트, 물리 비트당 동적 에너지를 송수신 합계 사 피코줄로 가정합니다. 후보 A의 초당 팔백억 바이트에 팔을 곱하고 영 점 팔로 나눈 뒤, 사 곱하기 십의 마이너스 십이 제곱 줄을 곱합니다. 결과는 삼 점 이 와트이며, 후보 B는 십삼 점 사사 와트가 필요합니다. 고정 전력과 공통 외부 메모리 연결은 이 비교에서 제외했지만, 전력을 소비하지 않는다는 뜻은 아닙니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "round-trip",
+      "start": 180,
+      "end": 210,
+      "title": {
+        "zh-TW": "頻寬足夠仍要檢查延遲",
+        "en": "Check complete latency",
+        "zh-CN": "带宽足够仍要检查延迟",
+        "ja": "読み出しの往復時間",
+        "ko": "읽기 왕복 시간"
+      },
+      "sourceIds": [
+        "ucie-qa"
+      ],
+      "visual": {
+        "station": "round-trip",
+        "subchapter": 7,
+        "shot": "Distinct C02 round-trip explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "round-trip",
+          "focus": "round-trip",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-07",
+      "shortTitle": {
+        "zh-TW": "頻寬足夠仍要檢查延遲",
+        "en": "Read round trip",
+        "zh-CN": "带宽足够仍要检查延迟",
+        "ja": "読み出しの往復時間",
+        "ko": "읽기 왕복 시간"
+      },
+      "text": {
+        "zh-TW": "跟著一次讀取請求，直到資料回到呼叫端。假設請求傳輸十二奈秒、記憶體服務四十奈秒、回應傳輸十二奈秒，合計六十四；各傳輸項已包含自己的序列化。兩側佇列若再增加十六奈秒，整筆交易就到八十奈秒。只看連線頻寬與PHY延遲，無法得到這個答案；必須定義端點、相依關係與工作負載，再驗證所需的延遲分布。",
+        "zh-CN": "跟着一次读取请求，直到数据回到调用方。假设请求传输十二纳秒、存储器服务四十纳秒、响应传输十二纳秒，合计六十四；各传输项已包含自己的串行化。两侧队列若再增加十六纳秒，整笔事务就到八十纳秒。只看连接带宽与PHY延迟，无法得到这个答案；必须定义端点、依赖关系与工作负载，再验证所需的延迟分布。",
+        "en": "Follow one read request all the way back to its caller. Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization. Another sixteen nanoseconds of combined queueing brings the transaction to eighty. Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.",
+        "ja": "一つの読み出し要求が呼び出し元に戻るまで追跡します。要求転送十二ナノ秒、メモリ処理四十、応答転送十二の合計は六十四で、各転送項にはそれぞれの直列化時間を含みます。合計十六ナノ秒の待ち行列時間が加われば、取引は八十ナノ秒になります。帯域やPHY遅延だけではこの結果は分からず、端点、依存関係、負荷を定義し、必要な遅延分布を検証します。",
+        "ko": "하나의 읽기 요청이 호출자에게 돌아올 때까지 추적합니다. 요청 전송 십이 나노초, 메모리 처리 사십, 응답 전송 십이를 합치면 육십사이며, 각 전송 항에는 자체 직렬화 시간이 이미 포함됩니다. 양쪽 대기열에서 십육 나노초가 더해지면 전체 트랜잭션은 팔십 나노초가 됩니다. 대역폭과 PHY 지연만으로는 이를 알 수 없으므로, 끝점과 의존성 및 부하를 정의하고 필요한 지연 분포를 검증합니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "functional-contracts",
+      "start": 210,
+      "end": 240,
+      "title": {
+        "zh-TW": "介面契約與測試入口",
+        "en": "Contracts and test access",
+        "zh-CN": "接口契约与测试入口",
+        "ja": "機能ブロックの契約",
+        "ko": "기능 블록 계약"
+      },
+      "sourceIds": [
+        "ucie-scope",
+        "amkor-test"
+      ],
+      "visual": {
+        "station": "functional-contracts",
+        "subchapter": 8,
+        "shot": "Distinct C02 contracts explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "contracts",
+          "focus": "functional-contracts",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-08",
+      "shortTitle": {
+        "zh-TW": "介面契約與測試入口",
+        "en": "Block contracts",
+        "zh-CN": "接口契约与测试入口",
+        "ja": "機能ブロックの契約",
+        "ko": "기능 블록 계약"
+      },
+      "text": {
+        "zh-TW": "替每一條新增邊界附上介面契約。記錄協定版本、支援模式、順序規則、時脈與重置行為、電源切換，以及錯誤復原。UCIe等標準有助於定義互通條件，但相同名稱不能證明兩個實際實作完全相容。兩顆晶粒都要預留測試與除錯入口，除了個別元件，也要驗證組裝後的連線。",
+        "zh-CN": "替每一条新增边界附上接口契约。记录协议版本、支持模式、顺序规则、时钟与复位行为、电源切换，以及错误恢复。UCIe等标准有助于定义互通条件，但相同名称不能证明两个实际实现完全兼容。两颗裸片都要预留测试与调试入口，除了个别元件，也要验证组装后的连接。",
+        "en": "Attach a contract to every new boundary. Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery. Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree. Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.",
+        "ja": "新しく作る境界ごとにインターフェース契約を付けます。プロトコル版、対応モード、順序規則、クロックとリセット、電源遷移、エラー回復を記録します。UCIeなどの標準は相互運用の条件を定めますが、同じ名称だけで二つの実装の一致は確認できません。両ダイにテストとデバッグの入口を確保し、各部品だけでなく組み立て後のリンクも検証します。",
+        "ko": "새 경계마다 인터페이스 계약을 붙입니다. 프로토콜 버전, 지원 모드, 순서 규칙, 클록과 리셋 동작, 전원 전환 및 오류 복구를 기록합니다. UCIe 같은 표준은 상호운용 조건을 정의하지만, 같은 이름만으로 두 실제 구현의 호환성이 입증되지는 않습니다. 양쪽 다이에 시험과 디버그 접근 경로를 남기고, 개별 부품뿐 아니라 조립된 연결도 검증합니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "verification",
+      "start": 240,
+      "end": 270,
+      "title": {
+        "zh-TW": "用證據找出過度分割",
+        "en": "Verify the partition",
+        "zh-CN": "用证据找出过度划分",
+        "ja": "同じ負荷による検証",
+        "ko": "동일 부하 검증"
+      },
+      "sourceIds": [
+        "ocp-chiplet-methodology"
+      ],
+      "visual": {
+        "station": "verification",
+        "subchapter": 9,
+        "shot": "Distinct C02 verification explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "verification",
+          "focus": "verification",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-09",
+      "shortTitle": {
+        "zh-TW": "用證據找出過度分割",
+        "en": "Verification",
+        "zh-CN": "用证据找出过度划分",
+        "ja": "同じ負荷による検証",
+        "ko": "동일 부하 검증"
+      },
+      "text": {
+        "zh-TW": "用同一份明確定義的工作負載，重播各個分割模型。在指定量測邊界檢查回傳資料與順序、各方向位元組數、佇列占用、延遲和功率。方案B若增加互連能耗，先比對新跨界的快取流量，再判斷原因是否與製程有關。之後再用硬體證據校正模型；散熱與路由分析尚未完成時，應保留待確認狀態。",
+        "zh-CN": "用同一份明确定义的工作负载，重放各个划分模型。在指定测量边界检查返回数据与顺序、各方向字节数、队列占用、延迟和功率。方案B若增加互连能耗，先比对新跨界的缓存流量，再判断原因是否与制程有关。之后再用硬件证据校正模型；散热与路由分析尚未完成时，应保留待确认状态。",
+        "en": "Replay the same declared workload against every partition model. Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries. If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process. Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.",
+        "ja": "すべての分割モデルに同じ定義済み負荷を再生します。明示した測定境界で、返却データと順序、方向別バイト数、待ち行列占有量、遅延、電力を確認します。候補Bのリンクエネルギーが増えたら、製造プロセスを疑う前に、新しく境界を越えるキャッシュ通信を比較します。後でハードウェア証拠とモデルを照合し、熱と配線の解析が終わるまでは、その実現性を未確認として残します。",
+        "ko": "모든 분할 모델에 동일하게 정의한 작업 부하를 재생합니다. 명시한 측정 경계에서 반환 데이터와 순서, 방향별 바이트 수, 대기열 점유량, 지연과 전력을 확인합니다. 후보 B의 연결 에너지가 늘었다면 제조 공정을 의심하기 전에 새 경계를 넘는 캐시 트래픽을 비교합니다. 이후 하드웨어 증거로 모델을 보정하고, 열 및 배선 분석이 실제로 끝날 때까지 해당 실현 가능성은 미확인 상태로 남깁니다."
+      },
+      "originalExample": true
+    },
+    {
+      "key": "release",
+      "start": 270,
+      "end": 300,
+      "title": {
+        "zh-TW": "交付可追溯分割決策",
+        "en": "Release a traceable decision",
+        "zh-CN": "交付可追溯划分决策",
+        "ja": "分割をC03へ引き渡す",
+        "ko": "분할 결과를 C03로 전달"
+      },
+      "sourceIds": [
+        "cadence-3dic"
+      ],
+      "visual": {
+        "station": "release",
+        "subchapter": 10,
+        "shot": "Distinct C02 release explanatory view; camera and highlighted partition follow this concept.",
+        "diagram": {
+          "type": "release",
+          "focus": "release",
+          "scenarioRef": "C02_SCENE_CONTRACT_V35.json#/scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": "C02-specific functional partitioning, not a replay of C01 or slowed short film."
+      },
+      "id": "c02-10",
+      "shortTitle": {
+        "zh-TW": "交付可追溯分割決策",
+        "en": "Release for C03",
+        "zh-CN": "交付可追溯划分决策",
+        "ja": "分割をC03へ引き渡す",
+        "ko": "분할 결과를 C03로 전달"
+      },
+      "text": {
+        "zh-TW": "交付有版本的功能分割圖，也要交付支持它的資料。內容包括各操作模式的逐方向流量、介面負責人、能耗與延遲假設、未採用的候選，以及尚缺的證據。方案A把高重用流量留在晶粒內，在本教學案例值得繼續評估；最終仍須符合完整需求。把這些限制帶到C03選封裝架構，再交給C04建立接點與電源網表。",
+        "zh-CN": "交付有版本的功能划分图，也要交付支持它的数据。内容包括各操作模式的逐方向流量、接口负责人、能耗与延迟假设、未采用的候选，以及尚缺的证据。方案A把高重用流量留在裸片内，在本教学案例值得继续评估；最终仍须符合完整需求。把这些限制带到C03选封装架构，再交给C04建立连接点与电源网表。",
+        "en": "Release a versioned partition map, not just an attractive placement image. Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing. Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements. Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.",
+        "ja": "見栄えのよい配置図だけでなく、版管理した機能分割と根拠を引き渡します。動作モードごとの方向別通信、責任者、エネルギーと遅延の仮定、除外した候補、未取得の証拠を含めます。候補Aは再利用の多い通信をダイ内に保つため、この教材では有望ですが、最終判断には要件全体への適合が必要です。これらの制約をC03のパッケージ構造選択へ渡し、後のC04で接続と電源ネットの表に展開します。",
+        "ko": "보기 좋은 배치도뿐 아니라 버전이 있는 기능 분할과 근거를 전달합니다. 동작 모드별 방향 트래픽, 인터페이스 책임자, 에너지와 지연 가정, 제외한 대안 및 부족한 증거를 포함합니다. 후보 A는 재사용이 많은 트래픽을 다이 내부에 유지하므로 이 교육 사례에서 유망하지만, 최종 선택에는 전체 요구사항 충족이 필요합니다. 이 제약을 C03의 패키징 구조 선택으로 넘기고, 이후 C04에서 연결과 전원 네트 맵으로 구체화합니다."
+      },
+      "originalExample": true
+    }
+  ],
+  "productionContract": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "totalFrames": 7200,
+    "narration": "five separate measured speech tracks; no fabricated sentence times",
+    "subtitles": "selected-language measured sentence timing with semantically matching English second line",
+    "endCard": {
+      "url": "https://line.me/R/ti/p/%40530pgchc",
+      "startSeconds": 290,
+      "endSeconds": 300
+    },
+    "generated": false
+  },
+  "distribution": {
+    "shortFilm": "GitHub Release and YouTube only after final media verification",
+    "longFilm": "Local delivery and YouTube; never store the long MP4 in source/public or GitHub Release"
+  },
+  "contentReview": {
+    "status": "PASS",
+    "report": "INDEPENDENT_TRANSLATION_SEMANTIC_REVIEW_C02_V35.json",
+    "reviewedDraftSha256": "c36ac2f55c6a4f1d34195f0be5b8d41b86c114bd018fceb8d7d6ae64ffa9e6f3",
+    "chapterTextSha256": "5721808d4a108d2978f8809161b1ebcbbae50d52cb7b8785d7439ed7fb005606",
+    "humanNativeEngineerCertified": false
+  }
+}

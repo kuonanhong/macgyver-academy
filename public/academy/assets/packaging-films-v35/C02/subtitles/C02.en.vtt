@@ -1,0 +1,161 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.387
+Fly over the functional map of a hypothetical accelerator.
+
+2
+00:00:04.387 --> 00:00:12.408
+C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.
+
+3
+00:00:12.408 --> 00:00:19.809
+Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.
+
+4
+00:00:19.809 --> 00:00:30.000
+Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.
+
+5
+00:00:30.000 --> 00:00:33.686
+Zoom into three different memory-related functions.
+
+6
+00:00:33.686 --> 00:00:45.783
+SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.
+
+7
+00:00:45.783 --> 00:00:50.144
+These roles must not collapse into one box simply labeled memory.
+
+8
+00:00:50.144 --> 00:01:00.000
+A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.
+
+9
+00:01:00.000 --> 00:01:07.023
+Candidate A keeps compute and cache together, while memory control and I/O share a second die.
+
+10
+00:01:07.023 --> 00:01:15.004
+The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.
+
+11
+00:01:15.004 --> 00:01:19.271
+The cut therefore moves eighty gigabytes per second in aggregate.
+
+12
+00:01:19.271 --> 00:01:30.000
+Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.
+
+13
+00:01:30.000 --> 00:01:33.850
+Now separate compute from cache to create candidate B.
+
+14
+00:01:33.850 --> 00:01:41.580
+Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.
+
+15
+00:01:41.580 --> 00:01:50.352
+The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.
+
+16
+00:01:50.352 --> 00:02:00.000
+Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.
+
+17
+00:02:00.000 --> 00:02:03.207
+Move from the traffic map to process choices.
+
+18
+00:02:03.207 --> 00:02:11.423
+Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.
+
+19
+00:02:11.423 --> 00:02:18.833
+AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.
+
+20
+00:02:18.833 --> 00:02:30.000
+Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.
+
+21
+00:02:30.000 --> 00:02:38.158
+Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.
+
+22
+00:02:38.158 --> 00:02:47.079
+Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.
+
+23
+00:02:47.079 --> 00:02:52.699
+The result is three point two watts, while candidate B requires thirteen point four four.
+
+24
+00:02:52.699 --> 00:03:00.000
+Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.
+
+25
+00:03:00.000 --> 00:03:03.575
+Follow one read request all the way back to its caller.
+
+26
+00:03:03.575 --> 00:03:15.046
+Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.
+
+27
+00:03:15.046 --> 00:03:19.462
+Another sixteen nanoseconds of combined queueing brings the transaction to eighty.
+
+28
+00:03:19.462 --> 00:03:30.000
+Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.
+
+29
+00:03:30.000 --> 00:03:33.238
+Attach a contract to every new boundary.
+
+30
+00:03:33.238 --> 00:03:42.504
+Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.
+
+31
+00:03:42.504 --> 00:03:51.535
+Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.
+
+32
+00:03:51.535 --> 00:04:00.000
+Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.
+
+33
+00:04:00.000 --> 00:04:04.218
+Replay the same declared workload against every partition model.
+
+34
+00:04:04.218 --> 00:04:13.019
+Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.
+
+35
+00:04:13.019 --> 00:04:20.861
+If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.
+
+36
+00:04:20.861 --> 00:04:30.000
+Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.
+
+37
+00:04:30.000 --> 00:04:34.684
+Release a versioned partition map, not just an attractive placement image.
+
+38
+00:04:34.684 --> 00:04:43.365
+Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.
+
+39
+00:04:43.365 --> 00:04:51.589
+Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.
+
+40
+00:04:51.589 --> 00:05:00.000
+Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.

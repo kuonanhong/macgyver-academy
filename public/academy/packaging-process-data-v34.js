@@ -23,15 +23,16 @@ window.MACGYVER_PACKAGING_PROCESS_ROADMAP = {
     "index": "complete",
     "bilingualSummaries": "complete",
     "fullNarrationScripts": "in_progress",
-    "fiveMinuteProcessFilmsProduced": 1,
+    "fiveMinuteProcessFilmsProduced": 2,
     "fiveMinuteProcessFilmsPlanned": 120,
     "existingOverviewFilms": 6,
     "existingOverviewsAreProcessFilms": false,
-    "fullNarrationScriptsWritten": 1
+    "fullNarrationScriptsWritten": 2,
+    "fifteenMinuteProcessFilmsLocallyVerified": 2
   },
   "scope": {
-    "zh-TW": "這是120項不重複的教學工序與工程活動目錄，含設計、製造操作和檢驗測試；不是聲稱某條產線恰好有120個製造站。每項規劃5分鐘，目前已完成C01五語影片，另外119部尚未製作；六部架構總覽另列。",
-    "en": "This catalogue contains 120 distinct teaching processes and engineering activities, including design, manufacturing and inspection/test. It does not claim that one factory route has exactly 120 manufacturing stations. Each planned film is five minutes. C01 is complete in five languages; the other 119 films have not been produced. The six architecture overviews are separate."
+    "zh-TW": "這是120項不重複的教學工序與工程活動目錄，含設計、製造操作和檢驗測試；不是聲稱某條產線恰好有120個製造站。已公開C01、C02兩部五分鐘五語影片，其餘118部尚未公開完成片。兩項的十五分鐘長片已在本機完成驗證，公開方式依各項標示；六部架構總覽另列。",
+    "en": "This catalogue contains 120 distinct teaching processes and engineering activities, not a claim that one factory route has exactly 120 stations. C01 and C02 have published five-minute films in five languages; the remaining 118 entries do not yet link to completed published films. Their fifteen-minute lessons are locally verified; each item identifies its available distribution. The six architecture overviews are separate."
   },
   "routing": {
     "commonBranch": "common",
@@ -786,8 +787,14 @@ window.MACGYVER_PACKAGING_PROCESS_ROADMAP = {
         "ko"
       ],
       "longLesson": {
-        "status": "in_production",
-        "youtubeId": null
+        "status": "local_verified",
+        "durationSeconds": 900,
+        "youtubeId": null,
+        "youtubeStatus": "pending_quota",
+        "bundleStatus": "PUBLIC_VERIFIED",
+        "bundleUrl": "https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-process-v35/C01-long_15min_V34.zip",
+        "bundleSha256": "a6c9f88d1c710dd1cc579443b3a965b1783bc7fa7b116a591b6bb192775a7178",
+        "bundleBytes": 181611331
       },
       "filmVerification": {
         "status": "PASS",
@@ -849,12 +856,59 @@ window.MACGYVER_PACKAGING_PROCESS_ROADMAP = {
         "https://amkormarcomexternal.blob.core.windows.net/amkordotcom/wp-content/uploads/2024/03/Readying-the-supply-chain-for-chiplets-and-heterogeneous-integration_EN.pdf"
       ],
       "plannedDurationSeconds": 300,
-      "videoStatus": "not_produced",
-      "videoUrl": null,
-      "scriptStatus": "summary_only",
+      "videoStatus": "produced",
+      "videoUrl": "https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-process-v35/C02.mp4",
+      "scriptStatus": "complete",
       "applicability": {
         "zh-TW": "按本教學分支與核准產品路線適用。",
         "en": "Applicable within this teaching branch and the qualified product route."
+      },
+      "playerUrl": "packaging-film-v35.html?film=C02",
+      "filmLanguages": [
+        "zh-TW",
+        "zh-CN",
+        "en",
+        "ja",
+        "ko"
+      ],
+      "filmVerification": {
+        "status": "PASS",
+        "id": "C02",
+        "durationSeconds": 300,
+        "frames": 7200,
+        "sha256": "c2252c8341baea594b2b12788305f5b22fb9d78b753c1cf85a8eb2e3d75dd35f",
+        "bytes": 52504573,
+        "audioTracks": 5,
+        "subtitleTracks": 5,
+        "speechAlignedSentences": 200,
+        "scriptSha256": "79ef6e9d59087beec8d1a3b56826d3117a11590d9c40e940608464859313af88",
+        "hostVerification": {
+          "status": "PUBLIC_VERIFIED",
+          "method": "Parent verified GitHub Release asset API digest/size against local final files; this builder independently checks the proof against those exact files."
+        },
+        "endCard": {
+          "url": "https://line.me/R/ti/p/%40530pgchc",
+          "startSeconds": 290,
+          "endSeconds": 300,
+          "rectangle": {
+            "x": 1038,
+            "y": 246,
+            "width": 210,
+            "height": 289
+          },
+          "verified": true,
+          "method": "Actual encoded frames decoded by OpenCV QRCodeDetector"
+        },
+        "manifestUrl": "assets/packaging-films-v35/C02/verification.json"
+      },
+      "longLesson": {
+        "status": "local_verified",
+        "durationSeconds": 900,
+        "sha256": "2e8e5c6383853c5483daf5fda6d926123ebd2ef2ada9a7d0810d9ead3498f5c4",
+        "bytes": 157128810,
+        "publicationStatus": "not_published",
+        "youtubeStatus": "pending",
+        "youtubeId": null
       }
     },
     {

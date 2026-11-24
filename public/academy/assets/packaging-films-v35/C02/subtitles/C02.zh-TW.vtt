@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.293
+先從空中俯瞰一個假想加速器的功能圖。
+Fly over the functional map of a hypothetical accelerator.
+
+2
+00:00:04.293 --> 00:00:12.429
+C02要把運算、快取、記憶體控制與I/O功能分配到單晶粒或多個小晶片。
+C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.
+
+3
+00:00:12.429 --> 00:00:19.427
+交付物是功能分割圖、逐方向的跨晶粒流量表，以及能耗和時序預算。
+Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.
+
+4
+00:00:19.427 --> 00:00:30.000
+所有數字都是教學假設；先說明分割理由，下一課C03再選封裝技術。
+Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.
+
+5
+00:00:30.000 --> 00:00:34.268
+放大三種與記憶體有關、卻不同的功能。
+Zoom into three different memory-related functions.
+
+6
+00:00:34.268 --> 00:00:44.837
+SRAM快取把可重用資料留在運算旁，控制器排程記憶體交易，記憶體PHY則驅動通往外部DRAM的電氣連線。
+SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.
+
+7
+00:00:44.837 --> 00:00:50.863
+功能圖必須分清這些角色，不能只畫一個籠統的記憶體方塊。
+These roles must not collapse into one box simply labeled memory.
+
+8
+00:00:50.863 --> 00:01:00.000
+新增晶粒邊界還需要兩端的晶粒間介面，它和外部記憶體PHY是不同功能。
+A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.
+
+9
+00:01:00.000 --> 00:01:07.718
+方案A把運算與快取留在一起，記憶體控制與I/O則放在第二顆晶粒。
+Candidate A keeps compute and cache together, while memory control and I/O share a second die.
+
+10
+00:01:07.718 --> 00:01:15.627
+選定工作負載中，控制器每秒送六十四GB到快取，反方向每秒十六GB。
+The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.
+
+11
+00:01:15.627 --> 00:01:20.813
+因此這條分割邊界的雙向合計流量是每秒八十GB。
+The cut therefore moves eighty gigabytes per second in aggregate.
+
+12
+00:01:20.813 --> 00:01:30.000
+表格仍要保留兩個箭頭；合計可以用來算能耗，卻不是單一方向的頻寬需求。
+Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.
+
+13
+00:01:30.000 --> 00:01:34.337
+現在把運算和快取分開，形成方案B。
+Now separate compute from cache to create candidate B.
+
+14
+00:01:34.337 --> 00:01:42.317
+原本留在晶粒內的流量，朝運算方向每秒一百九十二GB，回快取方向每秒六十四GB。
+Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.
+
+15
+00:01:42.317 --> 00:01:49.557
+新邊界增加每秒二百五十六GB，使跨晶粒合計從八十升到三百三十六GB。
+The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.
+
+16
+00:01:49.557 --> 00:02:00.000
+資料重用讓快取內部流量高於外部記憶體流量；晶粒變小，本身並不能證明系統更好。
+Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.
+
+17
+00:02:00.000 --> 00:02:02.594
+從流量圖移到製程選項表。
+Move from the traffic map to process choices.
+
+18
+00:02:02.594 --> 00:02:09.323
+運算邏輯、SRAM、類比電路與外部I/O，從同一種製程升級得到的好處未必相同。
+Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.
+
+19
+00:02:09.323 --> 00:02:16.811
+AMD官方文件有運算與I/O分開的實際產品，但本課布局和數字並非重建AMD產品。
+AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.
+
+20
+00:02:16.811 --> 00:02:30.000
+指派製程前，要比較可用IP、特性驗證、成本和重用條件；若整體取捨有利，也保留單晶粒候選。
+Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.
+
+21
+00:02:30.000 --> 00:02:38.448
+假設有效率百分之八十，發送與接收兩端合計，每個實體位元的動態能耗是四皮焦耳。
+Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.
+
+22
+00:02:38.448 --> 00:02:46.295
+方案A每秒八百億位元組，先乘八、除以零點八，再乘四乘十的負十二次方焦耳。
+Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.
+
+23
+00:02:46.295 --> 00:02:51.092
+結果是三點二瓦，方案B則需要十三點四四瓦。
+The result is three point two watts, while candidate B requires thirteen point four four.
+
+24
+00:02:51.092 --> 00:03:00.000
+固定功率與共通的外部記憶體連線，沒有算在這項比較內，不代表它們不耗電。
+Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.
+
+25
+00:03:00.000 --> 00:03:03.725
+跟著一次讀取請求，直到資料回到呼叫端。
+Follow one read request all the way back to its caller.
+
+26
+00:03:03.725 --> 00:03:12.583
+假設請求傳輸十二奈秒、記憶體服務四十奈秒、回應傳輸十二奈秒，合計六十四；各傳輸項已包含自己的序列化。
+Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.
+
+27
+00:03:12.583 --> 00:03:16.756
+兩側佇列若再增加十六奈秒，整筆交易就到八十奈秒。
+Another sixteen nanoseconds of combined queueing brings the transaction to eighty.
+
+28
+00:03:16.756 --> 00:03:30.000
+只看連線頻寬與PHY延遲，無法得到這個答案；必須定義端點、相依關係與工作負載，再驗證所需的延遲分布。
+Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.
+
+29
+00:03:30.000 --> 00:03:33.724
+替每一條新增邊界附上介面契約。
+Attach a contract to every new boundary.
+
+30
+00:03:33.724 --> 00:03:42.518
+記錄協定版本、支援模式、順序規則、時脈與重置行為、電源切換，以及錯誤復原。
+Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.
+
+31
+00:03:42.518 --> 00:03:50.408
+UCIe等標準有助於定義互通條件，但相同名稱不能證明兩個實際實作完全相容。
+Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.
+
+32
+00:03:50.408 --> 00:04:00.000
+兩顆晶粒都要預留測試與除錯入口，除了個別元件，也要驗證組裝後的連線。
+Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.
+
+33
+00:04:00.000 --> 00:04:04.930
+用同一份明確定義的工作負載，重播各個分割模型。
+Replay the same declared workload against every partition model.
+
+34
+00:04:04.930 --> 00:04:12.580
+在指定量測邊界檢查回傳資料與順序、各方向位元組數、佇列占用、延遲和功率。
+Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.
+
+35
+00:04:12.580 --> 00:04:20.190
+方案B若增加互連能耗，先比對新跨界的快取流量，再判斷原因是否與製程有關。
+If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.
+
+36
+00:04:20.190 --> 00:04:30.000
+之後再用硬體證據校正模型；散熱與路由分析尚未完成時，應保留待確認狀態。
+Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.
+
+37
+00:04:30.000 --> 00:04:34.195
+交付有版本的功能分割圖，也要交付支持它的資料。
+Release a versioned partition map, not just an attractive placement image.
+
+38
+00:04:34.195 --> 00:04:42.054
+內容包括各操作模式的逐方向流量、介面負責人、能耗與延遲假設、未採用的候選，以及尚缺的證據。
+Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.
+
+39
+00:04:42.054 --> 00:04:48.803
+方案A把高重用流量留在晶粒內，在本教學案例值得繼續評估；最終仍須符合完整需求。
+Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.
+
+40
+00:04:48.803 --> 00:05:00.000
+把這些限制帶到C03選封裝架構，再交給C04建立接點與電源網表。
+Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.

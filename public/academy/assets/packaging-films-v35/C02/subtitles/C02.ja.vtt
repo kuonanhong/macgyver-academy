@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.055
+仮想アクセラレーターの機能図を上空から見てみましょう。
+Fly over the functional map of a hypothetical accelerator.
+
+2
+00:00:04.055 --> 00:00:11.166
+C02では、演算、キャッシュ、メモリ制御、I/Oを、一つのダイまたは複数のチップレットに割り当てます。
+C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.
+
+3
+00:00:11.166 --> 00:00:17.609
+成果物は分割図と方向別のダイ間トラフィック表、そしてエネルギーと時間の予算です。
+Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.
+
+4
+00:00:17.609 --> 00:00:30.000
+数値はすべて教材の仮定であり、分割の根拠を示した後、C03で実際のパッケージ技術を選びます。
+Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.
+
+5
+00:00:30.000 --> 00:00:34.008
+メモリに関係する三つの異なる機能を拡大します。
+Zoom into three different memory-related functions.
+
+6
+00:00:34.008 --> 00:00:44.032
+SRAMキャッシュは再利用するデータを演算の近くに保持し、コントローラーはメモリ取引を調整し、メモリPHYは外部DRAMへの電気接続を担います。
+SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.
+
+7
+00:00:44.032 --> 00:00:47.974
+これらを単にメモリという一つの箱にまとめてはいけません。
+These roles must not collapse into one box simply labeled memory.
+
+8
+00:00:47.974 --> 00:01:00.000
+新しいダイ境界には両端のダイ間インターフェースも必要で、これは外部メモリPHYとは別の機能です。
+A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.
+
+9
+00:01:00.000 --> 00:01:06.285
+候補Aは演算とキャッシュを同じダイに置き、メモリ制御とI/Oを二つ目のダイにまとめます。
+Candidate A keeps compute and cache together, while memory control and I/O share a second die.
+
+10
+00:01:06.285 --> 00:01:12.257
+選んだ負荷では、コントローラーからキャッシュへ毎秒六十四ギガバイト、逆方向へ毎秒十六ギガバイトが流れます。
+The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.
+
+11
+00:01:12.257 --> 00:01:15.869
+この境界を通る両方向の合計は毎秒八十ギガバイトです。
+The cut therefore moves eighty gigabytes per second in aggregate.
+
+12
+00:01:15.869 --> 00:01:30.000
+表には二本の矢印を残し、合計はエネルギー計算に使っても、一方向の帯域要件とは扱わないでください。
+Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.
+
+13
+00:01:30.000 --> 00:01:33.224
+次に演算とキャッシュを分離して候補Bを作ります。
+Now separate compute from cache to create candidate B.
+
+14
+00:01:33.224 --> 00:01:39.780
+それまでダイ内にあった通信は、演算方向が毎秒百九十二ギガバイト、キャッシュへの戻りが毎秒六十四ギガバイトです。
+Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.
+
+15
+00:01:39.780 --> 00:01:45.672
+新しい境界で毎秒二百五十六ギガバイトが加わり、ダイ間合計は八十から三百三十六へ増えます。
+The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.
+
+16
+00:01:45.672 --> 00:02:00.000
+データ再利用によりキャッシュ通信は外部メモリ通信より多くなり得るため、ダイを小さくしただけではシステム改善を証明できません。
+Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.
+
+17
+00:02:00.000 --> 00:02:03.090
+トラフィック図からプロセスの選択表へ移ります。
+Move from the traffic map to process choices.
+
+18
+00:02:03.090 --> 00:02:09.267
+演算ロジック、SRAM、アナログ回路、外部I/Oは、同じ技術変更から同じ利益を得るとは限りません。
+Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.
+
+19
+00:02:09.267 --> 00:02:17.694
+AMDは演算とI/Oを分離した実製品を公開していますが、この配置と数値はAMD製品の再現ではありません。
+AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.
+
+20
+00:02:17.694 --> 00:02:30.000
+利用可能なIP、特性評価、コスト、再利用条件を比較し、総合的に有利ならモノリシック候補も残します。
+Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.
+
+21
+00:02:30.000 --> 00:02:36.635
+有効データ効率を八十パーセント、物理ビット当たりの動的エネルギーを送受信合計で四ピコジュールと仮定します。
+Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.
+
+22
+00:02:36.635 --> 00:02:42.790
+候補Aの毎秒八百億バイトに八を掛け、零点八で割り、さらに四掛ける十のマイナス十二乗ジュールを掛けます。
+Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.
+
+23
+00:02:42.790 --> 00:02:47.144
+結果は三点二ワットで、候補Bには十三点四四ワットが必要です。
+The result is three point two watts, while candidate B requires thirteen point four four.
+
+24
+00:02:47.144 --> 00:03:00.000
+固定電力と共通の外部メモリ接続はこの比較の対象外ですが、電力が不要という意味ではありません。
+Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.
+
+25
+00:03:00.000 --> 00:03:03.640
+一つの読み出し要求が呼び出し元に戻るまで追跡します。
+Follow one read request all the way back to its caller.
+
+26
+00:03:03.640 --> 00:03:11.167
+要求転送十二ナノ秒、メモリ処理四十、応答転送十二の合計は六十四で、各転送項にはそれぞれの直列化時間を含みます。
+Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.
+
+27
+00:03:11.167 --> 00:03:15.766
+合計十六ナノ秒の待ち行列時間が加われば、取引は八十ナノ秒になります。
+Another sixteen nanoseconds of combined queueing brings the transaction to eighty.
+
+28
+00:03:15.766 --> 00:03:30.000
+帯域やPHY遅延だけではこの結果は分からず、端点、依存関係、負荷を定義し、必要な遅延分布を検証します。
+Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.
+
+29
+00:03:30.000 --> 00:03:34.289
+新しく作る境界ごとにインターフェース契約を付けます。
+Attach a contract to every new boundary.
+
+30
+00:03:34.289 --> 00:03:41.086
+プロトコル版、対応モード、順序規則、クロックとリセット、電源遷移、エラー回復を記録します。
+Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.
+
+31
+00:03:41.086 --> 00:03:49.154
+UCIeなどの標準は相互運用の条件を定めますが、同じ名称だけで二つの実装の一致は確認できません。
+Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.
+
+32
+00:03:49.154 --> 00:04:00.000
+両ダイにテストとデバッグの入口を確保し、各部品だけでなく組み立て後のリンクも検証します。
+Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.
+
+33
+00:04:00.000 --> 00:04:03.424
+すべての分割モデルに同じ定義済み負荷を再生します。
+Replay the same declared workload against every partition model.
+
+34
+00:04:03.424 --> 00:04:09.999
+明示した測定境界で、返却データと順序、方向別バイト数、待ち行列占有量、遅延、電力を確認します。
+Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.
+
+35
+00:04:09.999 --> 00:04:15.944
+候補Bのリンクエネルギーが増えたら、製造プロセスを疑う前に、新しく境界を越えるキャッシュ通信を比較します。
+If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.
+
+36
+00:04:15.944 --> 00:04:30.000
+後でハードウェア証拠とモデルを照合し、熱と配線の解析が終わるまでは、その実現性を未確認として残します。
+Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.
+
+37
+00:04:30.000 --> 00:04:34.580
+見栄えのよい配置図だけでなく、版管理した機能分割と根拠を引き渡します。
+Release a versioned partition map, not just an attractive placement image.
+
+38
+00:04:34.580 --> 00:04:40.628
+動作モードごとの方向別通信、責任者、エネルギーと遅延の仮定、除外した候補、未取得の証拠を含めます。
+Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.
+
+39
+00:04:40.628 --> 00:04:48.142
+候補Aは再利用の多い通信をダイ内に保つため、この教材では有望ですが、最終判断には要件全体への適合が必要です。
+Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.
+
+40
+00:04:48.142 --> 00:05:00.000
+これらの制約をC03のパッケージ構造選択へ渡し、後のC04で接続と電源ネットの表に展開します。
+Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.

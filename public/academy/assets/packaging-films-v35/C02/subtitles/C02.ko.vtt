@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.263
+가상 가속기의 기능 지도를 위에서 살펴봅니다.
+Fly over the functional map of a hypothetical accelerator.
+
+2
+00:00:04.263 --> 00:00:11.942
+C02에서는 연산, 캐시, 메모리 제어와 I/O를 하나의 다이 또는 여러 칩렛에 배치합니다.
+C02 assigns compute, cache, memory control and I/O functions to one die or several chiplets.
+
+3
+00:00:11.942 --> 00:00:18.708
+산출물은 기능 분할도, 방향별 다이 간 트래픽 표, 에너지와 시간 예산입니다.
+Our deliverables are a partition map and a directed cross-die traffic table, with energy and timing budgets.
+
+4
+00:00:18.708 --> 00:00:30.000
+모든 수치는 교육용 가정이며, 분할 근거를 마련한 뒤 다음 C03에서 실제 패키징 기술을 선택합니다.
+Every number is a teaching assumption; package technology selection comes next in C03, after the partition has been justified.
+
+5
+00:00:30.000 --> 00:00:34.375
+메모리와 관련되지만 서로 다른 세 기능을 확대합니다.
+Zoom into three different memory-related functions.
+
+6
+00:00:34.375 --> 00:00:46.319
+SRAM 캐시는 재사용 데이터를 연산부 가까이에 보관하고, 컨트롤러는 메모리 트랜잭션을 조정하며, 메모리 PHY는 외부 DRAM으로 가는 전기 연결을 담당합니다.
+SRAM cache keeps reusable data close to compute, the controller schedules memory transactions, and the memory PHY drives the electrical connection to external DRAM.
+
+7
+00:00:46.319 --> 00:00:51.213
+이 역할들을 단순히 메모리라는 하나의 상자로 합쳐서는 안 됩니다.
+These roles must not collapse into one box simply labeled memory.
+
+8
+00:00:51.213 --> 00:01:00.000
+새로운 다이 경계 양쪽에는 다이 간 인터페이스도 필요하며, 이는 외부 메모리 PHY와 다른 기능입니다.
+A new die boundary also needs a die-to-die interface at both ends; that interface is distinct from the external-memory PHY.
+
+9
+00:01:00.000 --> 00:01:07.496
+후보 A는 연산과 캐시를 같은 다이에 두고, 메모리 제어와 I/O를 두 번째 다이에 모읍니다.
+Candidate A keeps compute and cache together, while memory control and I/O share a second die.
+
+10
+00:01:07.496 --> 00:01:16.654
+선택한 부하에서 컨트롤러는 캐시로 초당 육십사 기가바이트를 보내고, 반대 방향은 초당 십육 기가바이트입니다.
+The selected traffic carries sixty-four gigabytes per second from controller to cache and sixteen in the reverse direction.
+
+11
+00:01:16.654 --> 00:01:22.119
+따라서 이 경계를 지나는 양방향 합계는 초당 팔십 기가바이트입니다.
+The cut therefore moves eighty gigabytes per second in aggregate.
+
+12
+00:01:22.119 --> 00:01:30.000
+표에는 두 화살표를 유지하며, 합계는 에너지 계산에 쓰지만 한 방향의 대역폭 요구량은 아닙니다.
+Keep both arrows in the table: their sum supports energy accounting, but it is not a one-direction bandwidth requirement.
+
+13
+00:01:30.000 --> 00:01:33.736
+이제 연산과 캐시를 분리해 후보 B를 만듭니다.
+Now separate compute from cache to create candidate B.
+
+14
+00:01:33.736 --> 00:01:42.362
+기존의 다이 내부 트래픽은 연산 방향으로 초당 백구십이 기가바이트, 캐시로 돌아오는 방향으로 초당 육십사 기가바이트입니다.
+Their previously local traffic is one hundred ninety-two gigabytes per second toward compute and sixty-four back toward cache.
+
+15
+00:01:42.362 --> 00:01:49.826
+새 경계가 이백오십육을 더하므로, 다이 간 합계는 초당 팔십에서 삼백삼십육 기가바이트로 증가합니다.
+The extra cut adds two hundred fifty-six, raising aggregate cross-die traffic from eighty to three hundred thirty-six gigabytes per second.
+
+16
+00:01:49.826 --> 00:02:00.000
+데이터 재사용 때문에 캐시 트래픽은 외부 메모리 트래픽보다 클 수 있으며, 다이가 작아졌다는 사실만으로 시스템 개선이 입증되지는 않습니다.
+Data reuse explains why internal cache traffic can exceed external-memory traffic; smaller dies alone do not prove a better system.
+
+17
+00:02:00.000 --> 00:02:03.786
+트래픽 지도에서 공정 선택표로 이동합니다.
+Move from the traffic map to process choices.
+
+18
+00:02:03.786 --> 00:02:11.506
+연산 로직, SRAM, 아날로그 회로와 외부 I/O가 같은 기술 변경에서 얻는 이점은 서로 다를 수 있습니다.
+Compute logic, SRAM, analog circuits and external I/O do not necessarily gain equally from the same technology change.
+
+19
+00:02:11.506 --> 00:02:20.460
+AMD는 연산과 I/O 다이를 분리한 실제 제품을 공개하지만, 이 수치와 배치는 AMD 제품을 재현한 것이 아닙니다.
+AMD documents real products with separate compute and I/O dies, but our layout and numbers are not an AMD reconstruction.
+
+20
+00:02:20.460 --> 00:02:30.000
+사용 가능한 IP, 특성 평가, 비용과 재사용 조건을 비교하고, 전체적으로 유리하다면 단일 다이 후보도 유지합니다.
+Compare available IP, characterization, cost and reuse conditions before assigning a process; retain the monolithic candidate when its system trade-offs remain favorable.
+
+21
+00:02:30.000 --> 00:02:38.052
+유효 데이터 효율을 팔십 퍼센트, 물리 비트당 동적 에너지를 송수신 합계 사 피코줄로 가정합니다.
+Assume eighty percent payload efficiency and four picojoules per physical bit for combined transmitter and receiver dynamic energy.
+
+22
+00:02:38.052 --> 00:02:46.534
+후보 A의 초당 팔백억 바이트에 팔을 곱하고 영 점 팔로 나눈 뒤, 사 곱하기 십의 마이너스 십이 제곱 줄을 곱합니다.
+Candidate A moves eighty billion bytes per second; multiply by eight, divide by point eight, then multiply by four trillionths of a joule.
+
+23
+00:02:46.534 --> 00:02:51.978
+결과는 삼 점 이 와트이며, 후보 B는 십삼 점 사사 와트가 필요합니다.
+The result is three point two watts, while candidate B requires thirteen point four four.
+
+24
+00:02:51.978 --> 00:03:00.000
+고정 전력과 공통 외부 메모리 연결은 이 비교에서 제외했지만, 전력을 소비하지 않는다는 뜻은 아닙니다.
+Fixed power and the common external-memory link are excluded from this particular comparison, not assumed free.
+
+25
+00:03:00.000 --> 00:03:04.596
+하나의 읽기 요청이 호출자에게 돌아올 때까지 추적합니다.
+Follow one read request all the way back to its caller.
+
+26
+00:03:04.596 --> 00:03:15.219
+요청 전송 십이 나노초, 메모리 처리 사십, 응답 전송 십이를 합치면 육십사이며, 각 전송 항에는 자체 직렬화 시간이 이미 포함됩니다.
+Assumed request transport of twelve nanoseconds, memory service of forty, and response transport of twelve total sixty-four; each transport term already includes its own serialization.
+
+27
+00:03:15.219 --> 00:03:21.312
+양쪽 대기열에서 십육 나노초가 더해지면 전체 트랜잭션은 팔십 나노초가 됩니다.
+Another sixteen nanoseconds of combined queueing brings the transaction to eighty.
+
+28
+00:03:21.312 --> 00:03:30.000
+대역폭과 PHY 지연만으로는 이를 알 수 없으므로, 끝점과 의존성 및 부하를 정의하고 필요한 지연 분포를 검증합니다.
+Link bandwidth and PHY latency alone cannot establish this result; define the endpoints, dependencies and workload, then verify the required latency distribution.
+
+29
+00:03:30.000 --> 00:03:33.813
+새 경계마다 인터페이스 계약을 붙입니다.
+Attach a contract to every new boundary.
+
+30
+00:03:33.813 --> 00:03:42.604
+프로토콜 버전, 지원 모드, 순서 규칙, 클록과 리셋 동작, 전원 전환 및 오류 복구를 기록합니다.
+Record protocol revision, supported modes, ordering, clock and reset behavior, power transitions and error recovery.
+
+31
+00:03:42.604 --> 00:03:51.551
+UCIe 같은 표준은 상호운용 조건을 정의하지만, 같은 이름만으로 두 실제 구현의 호환성이 입증되지는 않습니다.
+Standards such as UCIe help define interoperability, but a shared name does not establish that two actual implementations agree.
+
+32
+00:03:51.551 --> 00:04:00.000
+양쪽 다이에 시험과 디버그 접근 경로를 남기고, 개별 부품뿐 아니라 조립된 연결도 검증합니다.
+Reserve test and debug access on both dies, and verify the assembled links as well as the individual components.
+
+33
+00:04:00.000 --> 00:04:04.506
+모든 분할 모델에 동일하게 정의한 작업 부하를 재생합니다.
+Replay the same declared workload against every partition model.
+
+34
+00:04:04.506 --> 00:04:13.126
+명시한 측정 경계에서 반환 데이터와 순서, 방향별 바이트 수, 대기열 점유량, 지연과 전력을 확인합니다.
+Check returned data and ordering, directional byte counts, queue occupancy, latency and power using explicit measurement boundaries.
+
+35
+00:04:13.126 --> 00:04:20.630
+후보 B의 연결 에너지가 늘었다면 제조 공정을 의심하기 전에 새 경계를 넘는 캐시 트래픽을 비교합니다.
+If candidate B consumes more link energy, compare the newly crossing cache traffic before blaming the fabrication process.
+
+36
+00:04:20.630 --> 00:04:30.000
+이후 하드웨어 증거로 모델을 보정하고, 열 및 배선 분석이 실제로 끝날 때까지 해당 실현 가능성은 미확인 상태로 남깁니다.
+Correlate the chosen model with hardware evidence later, and keep thermal and routing feasibility open until those analyses have actually been completed.
+
+37
+00:04:30.000 --> 00:04:35.158
+보기 좋은 배치도뿐 아니라 버전이 있는 기능 분할과 근거를 전달합니다.
+Release a versioned partition map, not just an attractive placement image.
+
+38
+00:04:35.158 --> 00:04:43.284
+동작 모드별 방향 트래픽, 인터페이스 책임자, 에너지와 지연 가정, 제외한 대안 및 부족한 증거를 포함합니다.
+Include directed traffic by operating mode, interface owners, energy and latency assumptions, rejected alternatives and the evidence still missing.
+
+39
+00:04:43.284 --> 00:04:52.393
+후보 A는 재사용이 많은 트래픽을 다이 내부에 유지하므로 이 교육 사례에서 유망하지만, 최종 선택에는 전체 요구사항 충족이 필요합니다.
+Candidate A is a promising teaching choice because it keeps high-reuse traffic local; final acceptance still depends on the complete requirements.
+
+40
+00:04:52.393 --> 00:05:00.000
+이 제약을 C03의 패키징 구조 선택으로 넘기고, 이후 C04에서 연결과 전원 네트 맵으로 구체화합니다.
+Carry these constraints into C03 for package-architecture selection, and later into C04 for connectivity and power-net maps.
