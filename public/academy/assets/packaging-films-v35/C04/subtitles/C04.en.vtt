@@ -1,0 +1,161 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.323
+Fly from C03's approved architecture to the die-interface documents, where every contact needs an identity and an intended connection.
+
+2
+00:00:08.323 --> 00:00:13.922
+C04 produces a versioned bump and power-net map, not a finished routed package.
+
+3
+00:00:13.922 --> 00:00:22.964
+We must distinguish the die instance, pad identifier, physical coordinate, and electrical net instead of treating a coloured square as all four.
+
+4
+00:00:22.964 --> 00:00:30.000
+Detailed die placement and assembly access belong to C05 after this connectivity baseline is checked.
+
+5
+00:00:30.000 --> 00:00:36.587
+Descend onto an invented eight-column, six-row grid with a teaching pitch of 250 micrometres.
+
+6
+00:00:36.587 --> 00:00:43.251
+Columns A through H run left to right, rows one through six run bottom to top, and the origin is the array centre.
+
+7
+00:00:43.251 --> 00:00:53.266
+This declared die-front view has x pointing right and y pointing up, so B2 is at minus 0.625 and minus 0.375 millimetres.
+
+8
+00:00:53.266 --> 00:01:00.000
+These are demonstration coordinates, not a supplier's bump dimensions or a universal import orientation.
+
+9
+00:01:00.000 --> 00:01:10.398
+Follow B2 through our declared transform: mirror x through the local y axis, rotate ninety degrees counterclockwise, then translate by ten and twenty millimetres.
+
+10
+00:01:10.398 --> 00:01:17.342
+The resulting formula is package X equals ten minus local y, and package Y equals twenty minus local x.
+
+11
+00:01:17.342 --> 00:01:22.457
+B2 therefore lands at 10.375 and 20.625 millimetres.
+
+12
+00:01:22.457 --> 00:01:30.000
+Reversing mirror and rotation changes the result, so inspect independent asymmetric reference points as well as the outline.
+
+13
+00:01:30.000 --> 00:01:38.126
+Rise above all forty-eight candidate sites, then remove four keep-out corners and four reserved sites that have no bump in this exercise.
+
+14
+00:01:38.126 --> 00:01:46.626
+The remaining forty electrical pads contain twenty signals, eight CORE supply pads, four IO supply pads, and eight ground pads.
+
+15
+00:01:46.626 --> 00:01:53.718
+Repeated supply-net names intentionally share a net, while pad identifiers must remain unique within their die instance.
+
+16
+00:01:53.718 --> 00:02:00.000
+An excluded site is not the same as an installed no-connect pad, and colour alone proves neither case.
+
+17
+00:02:00.000 --> 00:02:06.027
+Zoom into separate CORE, IO, and reference-net records instead of merging everything named VDD.
+
+18
+00:02:06.027 --> 00:02:13.489
+Our invented domains are 0.8 volts for CORE and 1.2 volts for IO, with a deliberately shared reference in this example.
+
+19
+00:02:13.489 --> 00:02:21.713
+Signal mapping also needs explicit meaning: a transmitter's positive contact may connect to a receiver's positive contact through a named package net.
+
+20
+00:02:21.713 --> 00:02:30.000
+Matching names, exchanging polarity, or joining different voltage domains requires an approved interface rule, never a visual guess.
+
+21
+00:02:30.000 --> 00:02:35.762
+Look down on the assumed static loads: eight amperes on CORE and two on IO.
+
+22
+00:02:35.762 --> 00:02:42.901
+Equal sharing would give one ampere across each of eight CORE pads and half an ampere across each of four IO pads.
+
+23
+00:02:42.901 --> 00:02:50.423
+With both rails returning through the eight reference pads, the simplified average there is 1.25 amperes.
+
+24
+00:02:50.423 --> 00:03:00.000
+These averages do not establish local current, physical pad ratings, transient behaviour, or a qualified power network.
+
+25
+00:03:00.000 --> 00:03:07.815
+Move to an ideal two-node circuit containing eight parallel CORE supply branches, with total current fixed at eight amperes.
+
+26
+00:03:07.815 --> 00:03:17.718
+When every branch is eight milliohms, each carries one ampere, but reducing just one branch to four milliohms makes it carry about 1.778 amperes.
+
+27
+00:03:17.718 --> 00:03:23.502
+That exceeds our invented 1.2-ampere screening threshold even though the average remains one.
+
+28
+00:03:23.502 --> 00:03:30.000
+The circuit illustrates unequal sharing, not measured bump resistance or a manufacturing current rating.
+
+29
+00:03:30.000 --> 00:03:35.881
+Follow CORE's eight-ampere supply and the shared reference return carrying eight CORE plus two IO amperes.
+
+30
+00:03:35.881 --> 00:03:45.399
+With a hypothetical two-milliohm CORE supply path and three-milliohm shared return, the CORE delivery drop is eight times two plus ten times three, or forty-six millivolts.
+
+31
+00:03:45.399 --> 00:03:51.638
+That fails the forty-millivolt budget, while incorrectly using eight amperes for both paths would hide six millivolts.
+
+32
+00:03:51.638 --> 00:04:00.000
+After the thirty-millivolt return contribution, only ten millivolts remain for CORE supply, allowing at most 1.25 milliohms.
+
+33
+00:04:00.000 --> 00:04:06.470
+Freeze a deliberately wrong map that rotates before mirroring, contrary to the declared contract.
+
+34
+00:04:06.470 --> 00:04:15.123
+Its CORE pad B2 lands at the position intended for ground pad G5, although the symmetric outline and total pad count still look plausible.
+
+35
+00:04:15.123 --> 00:04:23.608
+Reject the mismatch using independent coordinate witnesses and typed endpoint connectivity, rather than recolouring the square or waiving the error.
+
+36
+00:04:23.608 --> 00:04:30.000
+No amount of favourable current averaging makes a supply-to-reference connection acceptable in this map.
+
+37
+00:04:30.000 --> 00:04:38.121
+Pull back to a release record containing the input revision, coordinate convention, explicit net aliases, and every installed pad's identity.
+
+38
+00:04:38.121 --> 00:04:44.866
+Attach orientation and connectivity checks, power-budget assumptions, unresolved evidence, and the approved change history.
+
+39
+00:04:44.866 --> 00:04:54.079
+C04 delivers a traceable map for later physical and electrical verification, not a claim that routing, reliability, or current capacity is already signed off.
+
+40
+00:04:54.079 --> 00:05:00.000
+C05 can now place dies and reserve assembly access using the same controlled interface baseline.

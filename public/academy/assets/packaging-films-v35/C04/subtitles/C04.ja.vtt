@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.575
+C03で承認した構造からダイのインターフェース文書へ飛び、各接点の識別と意図した接続を確認します。
+Fly from C03's approved architecture to the die-interface documents, where every contact needs an identity and an intended connection.
+
+2
+00:00:06.575 --> 00:00:11.957
+C04で作るのは版管理されたバンプと電源ネットの図であり、配線済みパッケージではありません。
+C04 produces a versioned bump and power-net map, not a finished routed package.
+
+3
+00:00:11.957 --> 00:00:18.438
+ダイのインスタンス、パッド識別子、物理座標、電気ネットを区別し、一つの色付きマスで全てを表さないようにします。
+We must distinguish the die instance, pad identifier, physical coordinate, and electrical net instead of treating a coloured square as all four.
+
+4
+00:00:18.438 --> 00:00:30.000
+接続の基準を確認してから、詳細なダイ配置と組立時のアクセスをC05で扱います。
+Detailed die placement and assembly access belong to C05 after this connectivity baseline is checked.
+
+5
+00:00:30.000 --> 00:00:35.556
+仮想の八列六行の格子へ降下し、教材用の間隔を250マイクロメートルとします。
+Descend onto an invented eight-column, six-row grid with a teaching pitch of 250 micrometres.
+
+6
+00:00:35.556 --> 00:00:40.922
+列AからHは左から右へ、行一から六は下から上へ増え、原点は配列の中心です。
+Columns A through H run left to right, rows one through six run bottom to top, and the origin is the array centre.
+
+7
+00:00:40.922 --> 00:00:47.902
+定義したダイ表面の視点ではxが右、yが上を向き、B2はマイナス0.625とマイナス0.375ミリメートルにあります。
+This declared die-front view has x pointing right and y pointing up, so B2 is at minus 0.625 and minus 0.375 millimetres.
+
+8
+00:00:47.902 --> 00:01:00.000
+これは説明用の座標であり、供給者のバンプ寸法や汎用の読み込み方向ではありません。
+These are demonstration coordinates, not a supplier's bump dimensions or a universal import orientation.
+
+9
+00:01:00.000 --> 00:01:08.221
+B2を追い、まず局所y軸に対してxを鏡映し、次に反時計回りに九十度回転し、最後に十と二十ミリメートル平行移動します。
+Follow B2 through our declared transform: mirror x through the local y axis, rotate ninety degrees counterclockwise, then translate by ten and twenty millimetres.
+
+10
+00:01:08.221 --> 00:01:13.866
+得られる式は、パッケージXが十から局所yを引いた値、Yが二十から局所xを引いた値です。
+The resulting formula is package X equals ten minus local y, and package Y equals twenty minus local x.
+
+11
+00:01:13.866 --> 00:01:17.778
+したがってB2は10.375と20.625ミリメートルに移ります。
+B2 therefore lands at 10.375 and 20.625 millimetres.
+
+12
+00:01:17.778 --> 00:01:30.000
+鏡映と回転の順序を逆にすると結果が変わるため、外形だけでなく独立した非対称の基準点も確認します。
+Reversing mirror and rotation changes the result, so inspect independent asymmetric reference points as well as the outline.
+
+13
+00:01:30.000 --> 00:01:36.738
+四十八の候補位置を俯瞰し、配置禁止の四隅と、この演習ではバンプを置かない四つの予約位置を取り除きます。
+Rise above all forty-eight candidate sites, then remove four keep-out corners and four reserved sites that have no bump in this exercise.
+
+14
+00:01:36.738 --> 00:01:41.758
+残る四十の電気パッドは、信号二十、CORE電源八、IO電源四、接地八です。
+The remaining forty electrical pads contain twenty signals, eight CORE supply pads, four IO supply pads, and eight ground pads.
+
+15
+00:01:41.758 --> 00:01:48.394
+電源ネット名の繰り返しは意図した共有ですが、同じダイのインスタンス内ではパッド識別子が一意でなければなりません。
+Repeated supply-net names intentionally share a net, while pad identifiers must remain unique within their die instance.
+
+16
+00:01:48.394 --> 00:02:00.000
+除外位置と実装された未接続パッドは別であり、色だけではどちらも証明できません。
+An excluded site is not the same as an installed no-connect pad, and colour alone proves neither case.
+
+17
+00:02:00.000 --> 00:02:06.427
+CORE、IO、基準ネットの別々の記録へ近づき、VDDという名前だけで全てを統合しないようにします。
+Zoom into separate CORE, IO, and reference-net records instead of merging everything named VDD.
+
+18
+00:02:06.427 --> 00:02:12.538
+仮想の電源領域はCOREが0.8ボルト、IOが1.2ボルトで、この例では基準を明示的に共有します。
+Our invented domains are 0.8 volts for CORE and 1.2 volts for IO, with a deliberately shared reference in this example.
+
+19
+00:02:12.538 --> 00:02:20.142
+信号の対応にも明確な意味が必要で、例えば送信側の正端子を名前付きパッケージネット経由で受信側の正端子へ接続します。
+Signal mapping also needs explicit meaning: a transmitter's positive contact may connect to a receiver's positive contact through a named package net.
+
+20
+00:02:20.142 --> 00:02:30.000
+名前の対応、極性交換、異なる電圧領域の接続には承認済みのインターフェース規則が必要で、見た目で推測してはいけません。
+Matching names, exchanging polarity, or joining different voltage domains requires an approved interface rule, never a visual guess.
+
+21
+00:02:30.000 --> 00:02:34.904
+仮定した静的負荷を俯瞰すると、COREは八アンペア、IOは二アンペアです。
+Look down on the assumed static loads: eight amperes on CORE and two on IO.
+
+22
+00:02:34.904 --> 00:02:41.126
+均等に分担すれば、八つのCOREパッドは各一アンペア、四つのIOパッドは各0.5アンペアです。
+Equal sharing would give one ampere across each of eight CORE pads and half an ampere across each of four IO pads.
+
+23
+00:02:41.126 --> 00:02:47.677
+両電源が八つの基準パッドを通って戻る場合、その単純化した平均は各1.25アンペアです。
+With both rails returning through the eight reference pads, the simplified average there is 1.25 amperes.
+
+24
+00:02:47.677 --> 00:03:00.000
+この平均では局所電流、実際のパッド定格、過渡挙動、電源網の適格性を確定できません。
+These averages do not establish local current, physical pad ratings, transient behaviour, or a qualified power network.
+
+25
+00:03:00.000 --> 00:03:06.715
+理想的な二節点間に八本のCORE電源枝を並列接続し、総電流を八アンペアに固定した回路へ移ります。
+Move to an ideal two-node circuit containing eight parallel CORE supply branches, with total current fixed at eight amperes.
+
+26
+00:03:06.715 --> 00:03:13.440
+各枝が八ミリオームなら一アンペアずつですが、一枝だけ四ミリオームにすると、その枝は約1.778アンペアになります。
+When every branch is eight milliohms, each carries one ampere, but reducing just one branch to four milliohms makes it carry about 1.778 amperes.
+
+27
+00:03:13.440 --> 00:03:17.844
+平均は一アンペアのままでも、仮定した1.2アンペアの確認しきい値を超えます。
+That exceeds our invented 1.2-ampere screening threshold even though the average remains one.
+
+28
+00:03:17.844 --> 00:03:30.000
+これは不均等な電流分担の説明であり、実測バンプ抵抗や製造上の電流定格ではありません。
+The circuit illustrates unequal sharing, not measured bump resistance or a manufacturing current rating.
+
+29
+00:03:30.000 --> 00:03:35.544
+COREの八アンペアの供給と、COREの八アンペアにIOの二アンペアを加えた共有基準帰還を追います。
+Follow CORE's eight-ampere supply and the shared reference return carrying eight CORE plus two IO amperes.
+
+30
+00:03:35.544 --> 00:03:43.789
+仮にCORE供給経路が二ミリオーム、共有帰還が三ミリオームなら、COREへの供給電圧降下は八掛ける二と十掛ける三の和で四十六ミリボルトです。
+With a hypothetical two-milliohm CORE supply path and three-milliohm shared return, the CORE delivery drop is eight times two plus ten times three, or forty-six millivolts.
+
+31
+00:03:43.789 --> 00:03:49.669
+これは四十ミリボルトの予算を超え、両経路を誤って八アンペアで計算すると六ミリボルトを見落とします。
+That fails the forty-millivolt budget, while incorrectly using eight amperes for both paths would hide six millivolts.
+
+32
+00:03:49.669 --> 00:04:00.000
+帰還の三十ミリボルトを差し引くとCORE供給には十ミリボルトだけが残り、許容抵抗は最大1.25ミリオームです。
+After the thirty-millivolt return contribution, only ten millivolts remain for CORE supply, allowing at most 1.25 milliohms.
+
+33
+00:04:00.000 --> 00:04:05.099
+定義した契約に反し、鏡映より先に回転する意図的な誤りのある図で停止します。
+Freeze a deliberately wrong map that rotates before mirroring, contrary to the declared contract.
+
+34
+00:04:05.099 --> 00:04:11.243
+COREパッドB2が接地パッドG5の予定位置へ移っても、対称な外形とパッド総数は妥当に見えることがあります。
+Its CORE pad B2 lands at the position intended for ground pad G5, although the symmetric outline and total pad count still look plausible.
+
+35
+00:04:11.243 --> 00:04:17.518
+色を塗り直したり誤りを免除したりせず、独立した座標の確認点と型を持つ端点接続で不一致を拒否します。
+Reject the mismatch using independent coordinate witnesses and typed endpoint connectivity, rather than recolouring the square or waiving the error.
+
+36
+00:04:17.518 --> 00:04:30.000
+平均電流がどれほど好ましくても、この図で電源を基準へ接続することは許容されません。
+No amount of favourable current averaging makes a supply-to-reference connection acceptable in this map.
+
+37
+00:04:30.000 --> 00:04:37.325
+引いて全体を見渡し、入力版、座標規約、明示したネット別名、各実装パッドの識別を含むリリース記録を確認します。
+Pull back to a release record containing the input revision, coordinate convention, explicit net aliases, and every installed pad's identity.
+
+38
+00:04:37.325 --> 00:04:42.680
+向きと接続の検査、電源予算の仮定、未解決の根拠、承認した変更履歴を添付します。
+Attach orientation and connectivity checks, power-budget assumptions, unresolved evidence, and the approved change history.
+
+39
+00:04:42.680 --> 00:04:50.147
+C04は後続の物理・電気検証に使う追跡可能な図を渡し、配線、信頼性、電流容量の承認完了を主張しません。
+C04 delivers a traceable map for later physical and electrical verification, not a claim that routing, reliability, or current capacity is already signed off.
+
+40
+00:04:50.147 --> 00:05:00.000
+C05では同じ管理されたインターフェース基準を用いて、ダイを配置し組立アクセスを確保します。
+C05 can now place dies and reserve assembly access using the same controlled interface baseline.

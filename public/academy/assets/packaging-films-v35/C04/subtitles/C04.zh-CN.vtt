@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.660
+从C03批准架构飞向裸片接口文件，每个接点都需要身份与预定连接。
+Fly from C03's approved architecture to the die-interface documents, where every contact needs an identity and an intended connection.
+
+2
+00:00:06.660 --> 00:00:12.071
+C04产生具版本的凸块与电源网络图，不是已完成布线的封装。
+C04 produces a versioned bump and power-net map, not a finished routed package.
+
+3
+00:00:12.071 --> 00:00:19.024
+裸片实例、接点编号、物理坐标与电气网络必须分开，不能用一个色块同时代替四者。
+We must distinguish the die instance, pad identifier, physical coordinate, and electrical net instead of treating a coloured square as all four.
+
+4
+00:00:19.024 --> 00:00:30.000
+检查连接基线后，详细裸片放置与组装可达性才交给C05。
+Detailed die placement and assembly access belong to C05 after this connectivity baseline is checked.
+
+5
+00:00:30.000 --> 00:00:35.029
+降到假想八栏六列格点，教学间距为250微米。
+Descend onto an invented eight-column, six-row grid with a teaching pitch of 250 micrometres.
+
+6
+00:00:35.029 --> 00:00:41.542
+A到H栏由左至右，第一到第六列由下至上，原点位于阵列中心。
+Columns A through H run left to right, rows one through six run bottom to top, and the origin is the array centre.
+
+7
+00:00:41.542 --> 00:00:50.957
+明示的裸片正面视图以x向右、y向上，因此B2位于负0.625与负0.375mm。
+This declared die-front view has x pointing right and y pointing up, so B2 is at minus 0.625 and minus 0.375 millimetres.
+
+8
+00:00:50.957 --> 00:01:00.000
+这些是示范坐标，不是供应商凸块尺寸，也不是通用导入方向。
+These are demonstration coordinates, not a supplier's bump dimensions or a universal import orientation.
+
+9
+00:01:00.000 --> 00:01:08.844
+跟随B2进行明示转换，先以局部y轴镜射x，再逆时针旋转九十度，最后平移10与20mm。
+Follow B2 through our declared transform: mirror x through the local y axis, rotate ninety degrees counterclockwise, then translate by ten and twenty millimetres.
+
+10
+00:01:08.844 --> 00:01:14.525
+结果为封装X等于10减局部y，封装Y等于20减局部x。
+The resulting formula is package X equals ten minus local y, and package Y equals twenty minus local x.
+
+11
+00:01:14.525 --> 00:01:18.565
+因此B2落在10.375与20.625mm。
+B2 therefore lands at 10.375 and 20.625 millimetres.
+
+12
+00:01:18.565 --> 00:01:30.000
+镜射与旋转顺序互换会改变结果，除了外框，也须检查独立且不对称的参考点。
+Reversing mirror and rotation changes the result, so inspect independent asymmetric reference points as well as the outline.
+
+13
+00:01:30.000 --> 00:01:37.413
+升到四十八个候选位置上方，移除四个禁放角点与本例不放凸块的四个预留位置。
+Rise above all forty-eight candidate sites, then remove four keep-out corners and four reserved sites that have no bump in this exercise.
+
+14
+00:01:37.413 --> 00:01:44.771
+剩余四十个电气接点包含二十信号、八个CORE供电、四个IO供电与八个接地。
+The remaining forty electrical pads contain twenty signals, eight CORE supply pads, four IO supply pads, and eight ground pads.
+
+15
+00:01:44.771 --> 00:01:51.288
+多个供电接点可刻意共用网络，但接点编号在同一裸片实例内必须唯一。
+Repeated supply-net names intentionally share a net, while pad identifiers must remain unique within their die instance.
+
+16
+00:01:51.288 --> 00:02:00.000
+排除位置不等于已安装的无连接接点，单靠颜色也无法证明两者。
+An excluded site is not the same as an installed no-connect pad, and colour alone proves neither case.
+
+17
+00:02:00.000 --> 00:02:06.472
+放大CORE、IO与参考网络的独立记录，不把所有名为VDD的网络合并。
+Zoom into separate CORE, IO, and reference-net records instead of merging everything named VDD.
+
+18
+00:02:06.472 --> 00:02:11.829
+本例假设CORE为0.8V、IO为1.2V，并明示共用一个参考网络。
+Our invented domains are 0.8 volts for CORE and 1.2 volts for IO, with a deliberately shared reference in this example.
+
+19
+00:02:11.829 --> 00:02:17.672
+信号对应也需要明确语意，例如发送端正接点经具名封装网络连至接收端正接点。
+Signal mapping also needs explicit meaning: a transmitter's positive contact may connect to a receiver's positive contact through a named package net.
+
+20
+00:02:17.672 --> 00:02:30.000
+名称对应、极性交换或不同电压域连接，都须有批准接口规则，不能凭图猜测。
+Matching names, exchanging polarity, or joining different voltage domains requires an approved interface rule, never a visual guess.
+
+21
+00:02:30.000 --> 00:02:35.825
+俯瞰假设静态负载，CORE为8A，IO为2A。
+Look down on the assumed static loads: eight amperes on CORE and two on IO.
+
+22
+00:02:35.825 --> 00:02:42.304
+若均分，八个CORE接点各1A，四个IO接点各0.5A。
+Equal sharing would give one ampere across each of eight CORE pads and half an ampere across each of four IO pads.
+
+23
+00:02:42.304 --> 00:02:49.321
+两电源域均经八个参考接点回流时，简化平均为每个1.25A。
+With both rails returning through the eight reference pads, the simplified average there is 1.25 amperes.
+
+24
+00:02:49.321 --> 00:03:00.000
+这些平均值不能确立局部电流、物理接点额定、暂态行为或已验证电源网络。
+These averages do not establish local current, physical pad ratings, transient behaviour, or a qualified power network.
+
+25
+00:03:00.000 --> 00:03:07.129
+移到理想两节点电路，八条CORE供电支路并联，总电流固定8A。
+Move to an ideal two-node circuit containing eight parallel CORE supply branches, with total current fixed at eight amperes.
+
+26
+00:03:07.129 --> 00:03:15.975
+每条都是8毫欧时各流1A，但只把其中一条改成4毫欧，它便约流1.778A。
+When every branch is eight milliohms, each carries one ampere, but reducing just one branch to four milliohms makes it carry about 1.778 amperes.
+
+27
+00:03:15.975 --> 00:03:22.083
+即使平均仍为1A，该支路已超过假设的1.2A筛检门槛。
+That exceeds our invented 1.2-ampere screening threshold even though the average remains one.
+
+28
+00:03:22.083 --> 00:03:30.000
+电路说明不均流，不是测量凸块电阻或制造电流额定。
+The circuit illustrates unequal sharing, not measured bump resistance or a manufacturing current rating.
+
+29
+00:03:30.000 --> 00:03:35.798
+沿CORE的8A供电及共用参考回流前进，回流承载CORE的8A加IO的2A。
+Follow CORE's eight-ampere supply and the shared reference return carrying eight CORE plus two IO amperes.
+
+30
+00:03:35.798 --> 00:03:42.387
+假设CORE供电路径2毫欧、共用回流3毫欧，CORE供电压降为8乘2加10乘3，也就是46毫伏。
+With a hypothetical two-milliohm CORE supply path and three-milliohm shared return, the CORE delivery drop is eight times two plus ten times three, or forty-six millivolts.
+
+31
+00:03:42.387 --> 00:03:47.183
+它超出40毫伏预算，若错把两段都用8A计算，就会漏掉6毫伏。
+That fails the forty-millivolt budget, while incorrectly using eight amperes for both paths would hide six millivolts.
+
+32
+00:03:47.183 --> 00:04:00.000
+扣除30毫伏回流贡献后，CORE供电只剩10毫伏，因此最多允许1.25毫欧。
+After the thirty-millivolt return contribution, only ten millivolts remain for CORE supply, allowing at most 1.25 milliohms.
+
+33
+00:04:00.000 --> 00:04:05.885
+停在刻意错误的接点图，它违反明定契约，先旋转再镜射。
+Freeze a deliberately wrong map that rotates before mirroring, contrary to the declared contract.
+
+34
+00:04:05.885 --> 00:04:13.769
+CORE接点B2落到原本接地G5的位置，但对称外框与接点总数仍可能看似合理。
+Its CORE pad B2 lands at the position intended for ground pad G5, although the symmetric outline and total pad count still look plausible.
+
+35
+00:04:13.769 --> 00:04:20.539
+应以独立坐标见证与具类型端点连接拒绝错配，不是重涂色块或豁免错误。
+Reject the mismatch using independent coordinate witnesses and typed endpoint connectivity, rather than recolouring the square or waiving the error.
+
+36
+00:04:20.539 --> 00:04:30.000
+在这张图中，再有利的电流平均也不能使供电接参考网络变成合格。
+No amount of favourable current averaging makes a supply-to-reference connection acceptable in this map.
+
+37
+00:04:30.000 --> 00:04:36.404
+拉远到交付记录，包含输入版本、坐标惯例、明示网络别名与每个已安装接点的身份。
+Pull back to a release record containing the input revision, coordinate convention, explicit net aliases, and every installed pad's identity.
+
+38
+00:04:36.404 --> 00:04:41.718
+附上方向与连接检查、电源预算假设、未解证据，以及批准变更历史。
+Attach orientation and connectivity checks, power-budget assumptions, unresolved evidence, and the approved change history.
+
+39
+00:04:41.718 --> 00:04:48.419
+C04交付可追溯图供后续物理及电气验证，不宣称布线、可靠性或载流能力已签核。
+C04 delivers a traceable map for later physical and electrical verification, not a claim that routing, reliability, or current capacity is already signed off.
+
+40
+00:04:48.419 --> 00:05:00.000
+C05便能使用同一受控接口基线，安排裸片并预留组装访问空间。
+C05 can now place dies and reserve assembly access using the same controlled interface baseline.

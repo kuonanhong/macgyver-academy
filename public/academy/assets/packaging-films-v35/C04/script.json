@@ -1,0 +1,1496 @@
+{
+  "schemaVersion": 1,
+  "id": "C04",
+  "processId": "C04",
+  "mode": "short",
+  "version": "35.0.0",
+  "title": {
+    "zh-TW": "建立接點與電源網路圖",
+    "zh-CN": "建立接点与电源网络图",
+    "en": "Create bump and power-net maps",
+    "ja": "接点と電源ネットの図を作る",
+    "ko": "접점과 전원 네트 맵 작성"
+  },
+  "youtubeBilingualTitle": "C04｜接點與電源網路｜Bump and power-net mapping｜5 min",
+  "youtubeTitle": {
+    "zh-TW": "C04｜接點圖與電源網路｜5分鐘課程",
+    "zh-CN": "C04｜接点图与电源网络｜5分钟课程",
+    "en": "C04 | Bump and power-net mapping | 5-minute lesson",
+    "ja": "C04｜接点図と電源ネット｜5分授業",
+    "ko": "C04｜접점도와 전원 네트｜5분 수업"
+  },
+  "metadataSummary": {
+    "zh-TW": "五分鐘從介面文件建立接點與電源網路圖：座標與鏡射順序、接點身分及電源域、平均與局部電流、共用回流壓降、錯接診斷。48位置／40接點與全部電流數值均為原創假想案例，銜接C05。",
+    "zh-CN": "五分钟从接口文件建立接点与电源网络图：坐标与镜像顺序、接点身份及电源域、平均与局部电流、共享回流压降、错接诊断。48位置／40接点及全部电流数值均为原创假想案例，衔接C05。",
+    "en": "Build a bump and power-net map from interface files: coordinates, ordered transforms, pad identities, voltage domains, average versus local current, shared-return drop and fault diagnosis. All 48-site/40-pad geometry and electrical figures are original teaching assumptions; the checked map feeds C05.",
+    "ja": "五分で座標と鏡映の順序、接点識別と電源領域、平均と局所電流、共有帰還の電圧降下、誤接続診断を学びます。四十八位置と四十接点の形状および全ての電流値は独自の仮想例で、確認した図をC05へ渡します。",
+    "ko": "오 분 동안 좌표와 미러 순서, 접점 식별자와 전원 도메인, 평균과 국부 전류, 공유 귀환 전압 강하와 오접속 진단을 배웁니다. 마흔여덟 위치와 마흔 접점 및 모든 전류값은 독창적인 가정이며 확인한 맵을 C05에 전달합니다."
+  },
+  "durationSeconds": 300,
+  "chapterDurationSeconds": 30,
+  "activityType": "design",
+  "languages": [
+    "zh-TW",
+    "zh-CN",
+    "en",
+    "ja",
+    "ko"
+  ],
+  "status": {
+    "script": "reviewed_ready_for_measured_tts",
+    "narrationTiming": "not_measured",
+    "film": "not_produced",
+    "publication": "not_published"
+  },
+  "scope": {
+    "zh-TW": "教學重建與原創假想接點及直流算例，非實測、製造間距、供應商載流額定、組裝資格認證或完整電氣簽核。",
+    "en": "Teaching reconstruction with original hypothetical connectivity and DC examples; not measurements, manufacturing pitch, supplier current ratings, assembly qualification or complete electrical signoff."
+  },
+  "reviewStatement": "AI-authored and AI-translated teaching material. Independent AI technical, translation and sentence-meaning review passed; this is not certified review by a native-language engineer. Measured narration, visual quality and final media remain separate production gates.",
+  "roadmapBinding": {
+    "id": "C04",
+    "title": {
+      "zh-TW": "建立接點與電源網路圖",
+      "zh-CN": "建立接点与电源网络图",
+      "en": "Create bump and power-net maps",
+      "ja": "接点と電源ネットの図を作る",
+      "ko": "접점과 전원 네트 맵 작성"
+    },
+    "prerequisiteIds": [
+      "C03"
+    ],
+    "next": [
+      "C05"
+    ],
+    "source": "MacGyver_Engineering_Academy_v32/docs/PACKAGING_PROCESS_ROADMAP_V34.json",
+    "excludedNextScope": "Detailed die placement and physical assembly/tooling/underfill/cooling access belong to C05; no placement optimization or manufacturing signoff is claimed here"
+  },
+  "scenario": {
+    "classification": "ORIGINAL_HYPOTHETICAL_COORDINATE_AND_DC_SCREENING_EXERCISES_NOT_VENDOR_RULES_OR_SIGNOFF",
+    "grid": {
+      "columns": 8,
+      "rows": 6,
+      "candidateSites": 48,
+      "columnLabels": "A through H left to right",
+      "rowLabels": "1 through 6 bottom to top",
+      "pitchUm": 250,
+      "pitchMm": 0.25,
+      "origin": "array center",
+      "view": "declared die-front view with x right and y up",
+      "integerStorageUnit": "nm if implemented; teaching coordinates are exact rational fractions",
+      "keepout": [
+        "A1",
+        "H1",
+        "A6",
+        "H6"
+      ],
+      "reservedWithoutBump": [
+        "A3",
+        "H3",
+        "D1",
+        "D6"
+      ],
+      "electricalPadCount": 40,
+      "signals": 20,
+      "corePads": 8,
+      "ioPads": 4,
+      "groundPads": 8,
+      "distinctElectricalNetNames": 23,
+      "notOptimizedLayout": true
+    },
+    "sites": [
+      {
+        "padId": "A1",
+        "dieInstance": "D1",
+        "column": "A",
+        "row": 1,
+        "localXmm": -0.875,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 20.875,
+        "siteClass": "keepout",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "B1",
+        "dieInstance": "D1",
+        "column": "B",
+        "row": 1,
+        "localXmm": -0.625,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 20.625,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "TX0_P"
+      },
+      {
+        "padId": "C1",
+        "dieInstance": "D1",
+        "column": "C",
+        "row": 1,
+        "localXmm": -0.375,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 20.375,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "TX0_N"
+      },
+      {
+        "padId": "D1",
+        "dieInstance": "D1",
+        "column": "D",
+        "row": 1,
+        "localXmm": -0.125,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 20.125,
+        "siteClass": "reserved-no-bump",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "E1",
+        "dieInstance": "D1",
+        "column": "E",
+        "row": 1,
+        "localXmm": 0.125,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 19.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "TX1_P"
+      },
+      {
+        "padId": "F1",
+        "dieInstance": "D1",
+        "column": "F",
+        "row": 1,
+        "localXmm": 0.375,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 19.625,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "TX1_N"
+      },
+      {
+        "padId": "G1",
+        "dieInstance": "D1",
+        "column": "G",
+        "row": 1,
+        "localXmm": 0.625,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 19.375,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "RX0_P"
+      },
+      {
+        "padId": "H1",
+        "dieInstance": "D1",
+        "column": "H",
+        "row": 1,
+        "localXmm": 0.875,
+        "localYmm": -0.625,
+        "packageXmm": 10.625,
+        "packageYmm": 19.125,
+        "siteClass": "keepout",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "A2",
+        "dieInstance": "D1",
+        "column": "A",
+        "row": 2,
+        "localXmm": -0.875,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 20.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "RX0_N"
+      },
+      {
+        "padId": "B2",
+        "dieInstance": "D1",
+        "column": "B",
+        "row": 2,
+        "localXmm": -0.625,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 20.625,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "C2",
+        "dieInstance": "D1",
+        "column": "C",
+        "row": 2,
+        "localXmm": -0.375,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 20.375,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "D2",
+        "dieInstance": "D1",
+        "column": "D",
+        "row": 2,
+        "localXmm": -0.125,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 20.125,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "E2",
+        "dieInstance": "D1",
+        "column": "E",
+        "row": 2,
+        "localXmm": 0.125,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 19.875,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "F2",
+        "dieInstance": "D1",
+        "column": "F",
+        "row": 2,
+        "localXmm": 0.375,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 19.625,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "G2",
+        "dieInstance": "D1",
+        "column": "G",
+        "row": 2,
+        "localXmm": 0.625,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 19.375,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "H2",
+        "dieInstance": "D1",
+        "column": "H",
+        "row": 2,
+        "localXmm": 0.875,
+        "localYmm": -0.375,
+        "packageXmm": 10.375,
+        "packageYmm": 19.125,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "RX1_P"
+      },
+      {
+        "padId": "A3",
+        "dieInstance": "D1",
+        "column": "A",
+        "row": 3,
+        "localXmm": -0.875,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 20.875,
+        "siteClass": "reserved-no-bump",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "B3",
+        "dieInstance": "D1",
+        "column": "B",
+        "row": 3,
+        "localXmm": -0.625,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 20.625,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "C3",
+        "dieInstance": "D1",
+        "column": "C",
+        "row": 3,
+        "localXmm": -0.375,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 20.375,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_CORE"
+      },
+      {
+        "padId": "D3",
+        "dieInstance": "D1",
+        "column": "D",
+        "row": 3,
+        "localXmm": -0.125,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 20.125,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "RX1_N"
+      },
+      {
+        "padId": "E3",
+        "dieInstance": "D1",
+        "column": "E",
+        "row": 3,
+        "localXmm": 0.125,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 19.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA0"
+      },
+      {
+        "padId": "F3",
+        "dieInstance": "D1",
+        "column": "F",
+        "row": 3,
+        "localXmm": 0.375,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 19.625,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_IO"
+      },
+      {
+        "padId": "G3",
+        "dieInstance": "D1",
+        "column": "G",
+        "row": 3,
+        "localXmm": 0.625,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 19.375,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_IO"
+      },
+      {
+        "padId": "H3",
+        "dieInstance": "D1",
+        "column": "H",
+        "row": 3,
+        "localXmm": 0.875,
+        "localYmm": -0.125,
+        "packageXmm": 10.125,
+        "packageYmm": 19.125,
+        "siteClass": "reserved-no-bump",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "A4",
+        "dieInstance": "D1",
+        "column": "A",
+        "row": 4,
+        "localXmm": -0.875,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 20.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA1"
+      },
+      {
+        "padId": "B4",
+        "dieInstance": "D1",
+        "column": "B",
+        "row": 4,
+        "localXmm": -0.625,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 20.625,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "C4",
+        "dieInstance": "D1",
+        "column": "C",
+        "row": 4,
+        "localXmm": -0.375,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 20.375,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "D4",
+        "dieInstance": "D1",
+        "column": "D",
+        "row": 4,
+        "localXmm": -0.125,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 20.125,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "E4",
+        "dieInstance": "D1",
+        "column": "E",
+        "row": 4,
+        "localXmm": 0.125,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 19.875,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "F4",
+        "dieInstance": "D1",
+        "column": "F",
+        "row": 4,
+        "localXmm": 0.375,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 19.625,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_IO"
+      },
+      {
+        "padId": "G4",
+        "dieInstance": "D1",
+        "column": "G",
+        "row": 4,
+        "localXmm": 0.625,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 19.375,
+        "siteClass": "power",
+        "electricalPad": true,
+        "net": "VDD_IO"
+      },
+      {
+        "padId": "H4",
+        "dieInstance": "D1",
+        "column": "H",
+        "row": 4,
+        "localXmm": 0.875,
+        "localYmm": 0.125,
+        "packageXmm": 9.875,
+        "packageYmm": 19.125,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA2"
+      },
+      {
+        "padId": "A5",
+        "dieInstance": "D1",
+        "column": "A",
+        "row": 5,
+        "localXmm": -0.875,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 20.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA3"
+      },
+      {
+        "padId": "B5",
+        "dieInstance": "D1",
+        "column": "B",
+        "row": 5,
+        "localXmm": -0.625,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 20.625,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "C5",
+        "dieInstance": "D1",
+        "column": "C",
+        "row": 5,
+        "localXmm": -0.375,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 20.375,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "D5",
+        "dieInstance": "D1",
+        "column": "D",
+        "row": 5,
+        "localXmm": -0.125,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 20.125,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA4"
+      },
+      {
+        "padId": "E5",
+        "dieInstance": "D1",
+        "column": "E",
+        "row": 5,
+        "localXmm": 0.125,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 19.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA5"
+      },
+      {
+        "padId": "F5",
+        "dieInstance": "D1",
+        "column": "F",
+        "row": 5,
+        "localXmm": 0.375,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 19.625,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "G5",
+        "dieInstance": "D1",
+        "column": "G",
+        "row": 5,
+        "localXmm": 0.625,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 19.375,
+        "siteClass": "ground",
+        "electricalPad": true,
+        "net": "VSS"
+      },
+      {
+        "padId": "H5",
+        "dieInstance": "D1",
+        "column": "H",
+        "row": 5,
+        "localXmm": 0.875,
+        "localYmm": 0.375,
+        "packageXmm": 9.625,
+        "packageYmm": 19.125,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA6"
+      },
+      {
+        "padId": "A6",
+        "dieInstance": "D1",
+        "column": "A",
+        "row": 6,
+        "localXmm": -0.875,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 20.875,
+        "siteClass": "keepout",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "B6",
+        "dieInstance": "D1",
+        "column": "B",
+        "row": 6,
+        "localXmm": -0.625,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 20.625,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "DATA7"
+      },
+      {
+        "padId": "C6",
+        "dieInstance": "D1",
+        "column": "C",
+        "row": 6,
+        "localXmm": -0.375,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 20.375,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "CLK_P"
+      },
+      {
+        "padId": "D6",
+        "dieInstance": "D1",
+        "column": "D",
+        "row": 6,
+        "localXmm": -0.125,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 20.125,
+        "siteClass": "reserved-no-bump",
+        "electricalPad": false,
+        "net": null
+      },
+      {
+        "padId": "E6",
+        "dieInstance": "D1",
+        "column": "E",
+        "row": 6,
+        "localXmm": 0.125,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 19.875,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "CLK_N"
+      },
+      {
+        "padId": "F6",
+        "dieInstance": "D1",
+        "column": "F",
+        "row": 6,
+        "localXmm": 0.375,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 19.625,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "RESET_N"
+      },
+      {
+        "padId": "G6",
+        "dieInstance": "D1",
+        "column": "G",
+        "row": 6,
+        "localXmm": 0.625,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 19.375,
+        "siteClass": "signal",
+        "electricalPad": true,
+        "net": "TEST_EN"
+      },
+      {
+        "padId": "H6",
+        "dieInstance": "D1",
+        "column": "H",
+        "row": 6,
+        "localXmm": 0.875,
+        "localYmm": 0.625,
+        "packageXmm": 9.375,
+        "packageYmm": 19.125,
+        "siteClass": "keepout",
+        "electricalPad": false,
+        "net": null
+      }
+    ],
+    "transform": {
+      "convention": "First mirror local x through the local y axis, then +90 degrees counterclockwise in the drawn x-right/y-up plane, then translate by package (10,20) mm",
+      "mirror": [
+        "-x",
+        "y"
+      ],
+      "rotate90": [
+        "-y",
+        "x"
+      ],
+      "translationMm": [
+        10,
+        20
+      ],
+      "composite": [
+        "X = 10 - y",
+        "Y = 20 - x"
+      ],
+      "inverse": [
+        "x = 20 - Y",
+        "y = 10 - X"
+      ],
+      "warning": "This declared convention is not a universal flip-chip import setting; face, axis and layer semantics must be confirmed for each actual tool/input",
+      "anchors": [
+        {
+          "padId": "B2",
+          "localXmm": -0.625,
+          "localYmm": -0.375,
+          "packageXmm": 10.375,
+          "packageYmm": 20.625,
+          "net": "VDD_CORE"
+        },
+        {
+          "padId": "C5",
+          "localXmm": -0.375,
+          "localYmm": 0.375,
+          "packageXmm": 9.625,
+          "packageYmm": 20.375,
+          "net": "VSS"
+        },
+        {
+          "padId": "G4",
+          "localXmm": 0.625,
+          "localYmm": 0.125,
+          "packageXmm": 9.875,
+          "packageYmm": 19.375,
+          "net": "VDD_IO"
+        }
+      ]
+    },
+    "wrongOrder": {
+      "operation": "Rotate then mirror then translate; erroneous for this declared contract",
+      "composite": [
+        "X = 10 + y",
+        "Y = 20 + x"
+      ],
+      "B2WrongPackageMm": [
+        9.625,
+        19.375
+      ],
+      "collidesWithCorrectPad": "G5",
+      "wrongNetConnection": [
+        "VDD_CORE",
+        "VSS"
+      ],
+      "note": "A symmetric bounding box and total counts can both look correct while pad identity is wrong"
+    },
+    "coordinateImport": {
+      "exampleUm": 1250,
+      "exampleMm": 1.25,
+      "hypotheticalMatchToleranceUm": 5,
+      "nearestNeighbourPitchUm": 250,
+      "policy": "Exactly one compatible contact within the declared coordinate-matching tolerance; zero/multiple matches reject; tolerance is not assembly qualification and cannot rename a net"
+    },
+    "netIdentity": {
+      "primaryKey": [
+        "dieInstance",
+        "padId"
+      ],
+      "attributes": [
+        "net",
+        "domain",
+        "direction",
+        "pairId",
+        "polarity",
+        "layer",
+        "face",
+        "revision",
+        "units"
+      ],
+      "exampleExplicitAlias": [
+        "D1.TX0_P",
+        "PKG.LINK0_P",
+        "D2.RX0_P"
+      ],
+      "policy": "Names differ across hierarchy but connectivity is explicitly mapped; broad VDD aliases are forbidden; no lane/polarity swaps allowed by this hypothetical interface contract"
+    },
+    "dcRails": {
+      "scope": "Hypothetical static DC state; signal-return and other loads omitted from this simplified bookkeeping",
+      "VDD_CORE": {
+        "nominalV": 0.8,
+        "totalA": 8,
+        "padCount": 8,
+        "equalShareA": 1,
+        "inventedScreeningLimitA": 1.2,
+        "loadW": 6.4
+      },
+      "VDD_IO": {
+        "nominalV": 1.2,
+        "totalA": 2,
+        "padCount": 4,
+        "equalShareA": 0.5,
+        "inventedScreeningLimitA": 0.7,
+        "loadW": 2.4
+      },
+      "VSS": {
+        "referenceV": 0,
+        "returnA": 10,
+        "padCount": 8,
+        "equalShareA": 1.25,
+        "inventedScreeningLimitA": 1.5
+      },
+      "totalLoadW": 8.8,
+      "limitsAreNotPhysicalRatings": true,
+      "returnModel": "Both supplies share this defined reference in the exercise; other products may require different return/domain topology"
+    },
+    "equalBranchModel": {
+      "scope": "Only the eight CORE supply branches, all between the same two ideal nodes; excludes shared routing, source impedance, return and transients",
+      "branchCount": 8,
+      "eachMilliOhm": 8,
+      "equivalentMilliOhm": 1,
+      "totalA": 8,
+      "dropMilliV": 8,
+      "eachA": 1,
+      "lossW": 0.064
+    },
+    "unequalBranchModel": {
+      "scope": "Same two ideal nodes and fixed total 8 A; one branch 4 mOhm and seven branches 8 mOhm",
+      "lowMilliOhm": 4,
+      "otherMilliOhm": 8,
+      "otherCount": 7,
+      "conductanceSiemens": 1125,
+      "dropMilliV": 7.111111111111111,
+      "lowBranchA": 1.7777777777777777,
+      "eachOtherA": 0.8888888888888888,
+      "screenA": 1.2,
+      "lowBranchResult": "FAIL; lower resistance attracts more current despite average 1 A"
+    },
+    "openBranchModel": {
+      "remainingBranches": 7,
+      "eachMilliOhm": 8,
+      "fixedTotalA": 8,
+      "eachA": 1.1428571428571428,
+      "equivalentMilliOhm": 1.1428571428571428,
+      "dropMilliV": 9.142857142857142,
+      "screenA": 1.2,
+      "averageScreenPass": true,
+      "connectivityResult": "FAIL: a required path is open; a current average does not waive connectivity"
+    },
+    "loopBudget": {
+      "scope": "CORE delivery between declared package-input supply/reference pair and die CORE/VSS pair; CORE supply carries 8 A, while the same shared VSS return carries CORE8+IO2=10 A; no regulator or undeclared die-internal drops",
+      "coreCurrentA": 8,
+      "ioCurrentA": 2,
+      "sharedReturnCurrentA": 10,
+      "dropBudgetMilliV": 40,
+      "coreSupplyMilliOhm": 2,
+      "sharedReturnMilliOhm": 3,
+      "coreSupplyDropMilliV": 16,
+      "sharedReturnDropMilliV": 30,
+      "coreDeliveryDropMilliV": 46,
+      "formula": "8 A * 2 mOhm + (8+2) A * 3 mOhm = 46 mV",
+      "incorrectCoreOnlyDropMilliV": 40,
+      "incorrectFormula": "8 A * (2+3) mOhm = 40 mV omits IO return contribution",
+      "remainingSupplyDropBudgetMilliV": 10,
+      "maxCoreSupplyMilliOhm": 1.25,
+      "exampleResult": "FAIL: 46 mV exceeds 40 mV",
+      "supplyContactBundleMilliOhm": 1,
+      "bundleRelationship": "The earlier equal-branch 1 mOhm is a contact-only submodel; the 2 mOhm supply example may include additional supply routing",
+      "supplyBundleAloneProvesLoopPass": false
+    },
+    "excludedScope": [
+      "No supplier bump size, current-density rating, recipe or measured hardware map",
+      "No routing optimization, actual assembly access or complete floorplan: C05 follows",
+      "DC arithmetic is not AC PI, signal integrity, electromigration, thermal or reliability signoff",
+      "No C04 TTS, render or deployment at draft stage"
+    ]
+  },
+  "sourceContractSha256": "eca54bfb0ee3eb02894f518052c2bdaaea0c2a60edac6ff82dde21c2d50cb4dc",
+  "sources": [
+    {
+      "id": "siemens-emib",
+      "publisher": "Siemens",
+      "title": "EMIB advanced packaging design flow",
+      "url": "https://blogs.sw.siemens.com/semiconductor-packaging/2024/08/12/user2user-2024-emib-based-advanced-packaging-flow-intel-foundry/",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Separate but interdependent silicon/package netlists and bump patterns need system-level coordination"
+    },
+    {
+      "id": "cadence-integrity",
+      "publisher": "Cadence",
+      "title": "Integrity 3D-IC Platform datasheet",
+      "url": "https://www.cadence.com/content/dam/cadence-www/global/en_US/documents/tools/digital-design-signoff/Integrity-3D-IC-DS-v1.pdf",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Stack management, chip/package signal mapping, bump/TSV planning and cross-die verification"
+    },
+    {
+      "id": "cadence-mirror",
+      "publisher": "Cadence",
+      "title": "IC Packagers: The Different Types of Mirrors",
+      "url": "https://community.cadence.com/cadence_blogs_8/b/pcb/posts/ic-package-mirroring",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Mirror geometry and stack/layer mirroring are distinct tool semantics; coordinate convention must be explicit"
+    },
+    {
+      "id": "cadence-orientation",
+      "publisher": "Cadence",
+      "title": "Correcting Die Orientations and Die Attachments",
+      "url": "https://community.cadence.com/cadence_blogs_8/b/pcb/posts/correcting-die-orientations-and-die-attachments",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Attachment type, face orientation and stack-layer interpretation must be checked together"
+    },
+    {
+      "id": "cadence-net-eco",
+      "publisher": "Cadence",
+      "title": "Push Design Connectivity across a Design",
+      "url": "https://community.cadence.com/cadence_blogs_8/b/pcb/posts/push-design-connectivity-across-a-design",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Controlled connectivity updates need before/after review; not blind propagation of an imported replacement"
+    },
+    {
+      "id": "cadence-planner",
+      "publisher": "Cadence",
+      "title": "Integrity System Planner",
+      "url": "https://www.cadence.com/zh_TW/home/resources/datasheets/integrity-system-planner-ds.html",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Hierarchical net mapping, net-graph topology and exchange of pin or net-map data"
+    },
+    {
+      "id": "cadence-bump-map",
+      "publisher": "Cadence",
+      "title": "Creating Connectivity Between Die and BGA Package",
+      "url": "https://community.cadence.com/cadence_blogs_8/b/cic/posts/creating-bga-package-die-text-import-for-connectivity",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Logical connectivity and pin/net identity precede detailed implementation; bump maps carry physical positions and net assignments"
+    },
+    {
+      "id": "ansys-pi",
+      "publisher": "Ansys / Synopsys",
+      "title": "Speeding 5G Network Infrastructure Design",
+      "url": "https://ansys.synopsys.com/advantage-magazine/volume-xiii-issue-1-2019/speeding-5g-network-infrastructure-design",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Power-path modeling spans system boundaries; local currents can differ from average current; DC and dynamic analyses are distinct"
+    },
+    {
+      "id": "nist-prefixes",
+      "publisher": "NIST",
+      "title": "Metric SI Prefixes",
+      "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "sourceType": "primary",
+      "checkedOn": "2026-11-24",
+      "access": "Official source opened and relevant technical body read",
+      "supports": "Milli and micro scale factors for explicit coordinate and resistance-unit conversion"
+    }
+  ],
+  "cues": [
+    {
+      "key": "mission",
+      "start": 0,
+      "end": 30,
+      "sourceIds": [
+        "cadence-integrity"
+      ],
+      "visual": {
+        "station": "interface-intake",
+        "subchapter": 1,
+        "shot": "overhead-follow-c03-to-map",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "C03 fixed architecture to versioned connectivity output",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "C03",
+          "departTo": "coordinates"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-01",
+      "title": {
+        "en": "Define the map deliverable",
+        "zh-TW": "界定接點圖交付物",
+        "ja": "接点図の成果物を定義",
+        "ko": "접점도 산출물 정의",
+        "zh-CN": "界定接点图交付物"
+      },
+      "shortTitle": {
+        "en": "Define the map deliverable",
+        "zh-TW": "界定接點圖交付物",
+        "ja": "接点図の成果物を定義",
+        "ko": "접점도 산출물 정의",
+        "zh-CN": "界定接点图交付物"
+      },
+      "text": {
+        "zh-TW": "從C03核准架構飛向晶粒介面文件，每個接點都需要身分與預定連接。C04產生具版本的凸塊與電源網路圖，不是已完成布線的封裝。晶粒實例、接點編號、實體座標與電氣網路必須分開，不能用一個色塊同時代替四者。檢查連接基線後，詳細晶粒擺位與組裝可達性才交給C05。",
+        "zh-CN": "从C03批准架构飞向裸片接口文件，每个接点都需要身份与预定连接。C04产生具版本的凸块与电源网络图，不是已完成布线的封装。裸片实例、接点编号、物理坐标与电气网络必须分开，不能用一个色块同时代替四者。检查连接基线后，详细裸片放置与组装可达性才交给C05。",
+        "en": "Fly from C03's approved architecture to the die-interface documents, where every contact needs an identity and an intended connection. C04 produces a versioned bump and power-net map, not a finished routed package. We must distinguish the die instance, pad identifier, physical coordinate, and electrical net instead of treating a coloured square as all four. Detailed die placement and assembly access belong to C05 after this connectivity baseline is checked.",
+        "ja": "C03で承認した構造からダイのインターフェース文書へ飛び、各接点の識別と意図した接続を確認します。C04で作るのは版管理されたバンプと電源ネットの図であり、配線済みパッケージではありません。ダイのインスタンス、パッド識別子、物理座標、電気ネットを区別し、一つの色付きマスで全てを表さないようにします。接続の基準を確認してから、詳細なダイ配置と組立時のアクセスをC05で扱います。",
+        "ko": "C03에서 승인한 구조에서 다이 인터페이스 문서로 이동하며 각 접점의 식별자와 의도한 연결을 확인합니다. C04의 산출물은 버전이 관리되는 범프 및 전원 네트 맵이며 배선이 끝난 패키지가 아닙니다. 다이 인스턴스, 패드 식별자, 물리 좌표, 전기 네트를 구분하고 하나의 색상 칸으로 네 가지 모두를 대신하지 않습니다. 연결 기준을 확인한 뒤 상세한 다이 배치와 조립 접근성은 C05에서 다룹니다."
+      }
+    },
+    {
+      "key": "coordinates",
+      "start": 30,
+      "end": 60,
+      "sourceIds": [
+        "nist-prefixes"
+      ],
+      "visual": {
+        "station": "coordinate-plaza",
+        "subchapter": 2,
+        "shot": "descend-onto-eight-by-six-grid",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "x-right y-up center origin and 250um illustrative pitch",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "mission",
+          "departTo": "composition"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-02",
+      "title": {
+        "en": "Build the coordinate frame",
+        "zh-TW": "建立座標框架",
+        "ja": "座標系を組み立てる",
+        "ko": "좌표계 구성",
+        "zh-CN": "建立坐标框架"
+      },
+      "shortTitle": {
+        "en": "Build the coordinate frame",
+        "zh-TW": "建立座標框架",
+        "ja": "座標系を組み立てる",
+        "ko": "좌표계 구성",
+        "zh-CN": "建立坐标框架"
+      },
+      "text": {
+        "zh-TW": "降到假想八欄六列格點，教學間距為250微米。A到H欄由左至右，第一到第六列由下至上，原點位於陣列中心。明示的晶粒正面視圖以x向右、y向上，因此B2位於負0.625與負0.375mm。這些是示範座標，不是供應商凸塊尺寸，也不是通用匯入方向。",
+        "zh-CN": "降到假想八栏六列格点，教学间距为250微米。A到H栏由左至右，第一到第六列由下至上，原点位于阵列中心。明示的裸片正面视图以x向右、y向上，因此B2位于负0.625与负0.375mm。这些是示范坐标，不是供应商凸块尺寸，也不是通用导入方向。",
+        "en": "Descend onto an invented eight-column, six-row grid with a teaching pitch of 250 micrometres. Columns A through H run left to right, rows one through six run bottom to top, and the origin is the array centre. This declared die-front view has x pointing right and y pointing up, so B2 is at minus 0.625 and minus 0.375 millimetres. These are demonstration coordinates, not a supplier's bump dimensions or a universal import orientation.",
+        "ja": "仮想の八列六行の格子へ降下し、教材用の間隔を250マイクロメートルとします。列AからHは左から右へ、行一から六は下から上へ増え、原点は配列の中心です。定義したダイ表面の視点ではxが右、yが上を向き、B2はマイナス0.625とマイナス0.375ミリメートルにあります。これは説明用の座標であり、供給者のバンプ寸法や汎用の読み込み方向ではありません。",
+        "ko": "가상의 여덟 열 여섯 행 격자로 내려가며 교육용 간격은 250마이크로미터로 정합니다. A부터 H 열은 왼쪽에서 오른쪽으로, 첫째부터 여섯째 행은 아래에서 위로 증가하며 원점은 배열 중심입니다. 정의한 다이 앞면 보기에서는 x가 오른쪽, y가 위쪽이므로 B2 좌표는 마이너스 0.625와 마이너스 0.375밀리미터입니다. 이는 시범 좌표이며 공급업체의 범프 치수나 보편적인 가져오기 방향이 아닙니다."
+      }
+    },
+    {
+      "key": "composition",
+      "start": 60,
+      "end": 90,
+      "sourceIds": [
+        "cadence-mirror"
+      ],
+      "visual": {
+        "station": "transform-gantry",
+        "subchapter": 3,
+        "shot": "follow-anchor-to-package-frame",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "B2 to(10.375,20.625)mm with ordered transforms",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "coordinates",
+          "departTo": "classes"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-03",
+      "title": {
+        "en": "Compose mirror, rotation, translation",
+        "zh-TW": "組合鏡射旋轉平移",
+        "ja": "鏡映・回転・平行移動を合成",
+        "ko": "미러 회전 이동 합성",
+        "zh-CN": "组合镜射旋转平移"
+      },
+      "shortTitle": {
+        "en": "Compose mirror, rotation, translation",
+        "zh-TW": "組合鏡射旋轉平移",
+        "ja": "鏡映・回転・平行移動を合成",
+        "ko": "미러 회전 이동 합성",
+        "zh-CN": "组合镜射旋转平移"
+      },
+      "text": {
+        "zh-TW": "跟隨B2進行明示轉換，先以局部y軸鏡射x，再逆時針旋轉九十度，最後平移10與20mm。結果為封裝X等於10減局部y，封裝Y等於20減局部x。因此B2落在10.375與20.625mm。鏡射與旋轉順序互換會改變結果，除了外框，也須檢查獨立且不對稱的參考點。",
+        "zh-CN": "跟随B2进行明示转换，先以局部y轴镜射x，再逆时针旋转九十度，最后平移10与20mm。结果为封装X等于10减局部y，封装Y等于20减局部x。因此B2落在10.375与20.625mm。镜射与旋转顺序互换会改变结果，除了外框，也须检查独立且不对称的参考点。",
+        "en": "Follow B2 through our declared transform: mirror x through the local y axis, rotate ninety degrees counterclockwise, then translate by ten and twenty millimetres. The resulting formula is package X equals ten minus local y, and package Y equals twenty minus local x. B2 therefore lands at 10.375 and 20.625 millimetres. Reversing mirror and rotation changes the result, so inspect independent asymmetric reference points as well as the outline.",
+        "ja": "B2を追い、まず局所y軸に対してxを鏡映し、次に反時計回りに九十度回転し、最後に十と二十ミリメートル平行移動します。得られる式は、パッケージXが十から局所yを引いた値、Yが二十から局所xを引いた値です。したがってB2は10.375と20.625ミリメートルに移ります。鏡映と回転の順序を逆にすると結果が変わるため、外形だけでなく独立した非対称の基準点も確認します。",
+        "ko": "B2를 따라 먼저 로컬 y축에 대해 x를 미러링하고 반시계 방향으로 구십 도 회전한 뒤 십과 이십 밀리미터만큼 평행 이동합니다. 결과식은 패키지 X가 십에서 로컬 y를 뺀 값이고 Y가 이십에서 로컬 x를 뺀 값입니다. 따라서 B2는 10.375와 20.625밀리미터에 놓입니다. 미러링과 회전 순서를 바꾸면 결과가 달라지므로 외곽선뿐 아니라 독립적인 비대칭 기준점도 확인합니다."
+      }
+    },
+    {
+      "key": "classes",
+      "start": 90,
+      "end": 120,
+      "sourceIds": [
+        "cadence-bump-map"
+      ],
+      "visual": {
+        "station": "net-map-table",
+        "subchapter": 4,
+        "shot": "colour-and-label-forty-pads",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "20signal+8CORE+4IO+8VSS; colour is not evidence",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "composition",
+          "departTo": "domains"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-04",
+      "title": {
+        "en": "Audit the pad classes",
+        "zh-TW": "核對接點分類",
+        "ja": "接点分類を監査",
+        "ko": "접점 분류 확인",
+        "zh-CN": "核对接点分类"
+      },
+      "shortTitle": {
+        "en": "Audit the pad classes",
+        "zh-TW": "核對接點分類",
+        "ja": "接点分類を監査",
+        "ko": "접점 분류 확인",
+        "zh-CN": "核对接点分类"
+      },
+      "text": {
+        "zh-TW": "升到四十八個候選位置上方，移除四個禁放角點與本例不放凸塊的四個預留位置。剩餘四十個電氣接點包含二十訊號、八個CORE供電、四個IO供電與八個接地。多個供電接點可刻意共用網路，但接點編號在同一晶粒實例內必須唯一。排除位置不等於已安裝的無連接接點，單靠顏色也無法證明兩者。",
+        "zh-CN": "升到四十八个候选位置上方，移除四个禁放角点与本例不放凸块的四个预留位置。剩余四十个电气接点包含二十信号、八个CORE供电、四个IO供电与八个接地。多个供电接点可刻意共用网络，但接点编号在同一裸片实例内必须唯一。排除位置不等于已安装的无连接接点，单靠颜色也无法证明两者。",
+        "en": "Rise above all forty-eight candidate sites, then remove four keep-out corners and four reserved sites that have no bump in this exercise. The remaining forty electrical pads contain twenty signals, eight CORE supply pads, four IO supply pads, and eight ground pads. Repeated supply-net names intentionally share a net, while pad identifiers must remain unique within their die instance. An excluded site is not the same as an installed no-connect pad, and colour alone proves neither case.",
+        "ja": "四十八の候補位置を俯瞰し、配置禁止の四隅と、この演習ではバンプを置かない四つの予約位置を取り除きます。残る四十の電気パッドは、信号二十、CORE電源八、IO電源四、接地八です。電源ネット名の繰り返しは意図した共有ですが、同じダイのインスタンス内ではパッド識別子が一意でなければなりません。除外位置と実装された未接続パッドは別であり、色だけではどちらも証明できません。",
+        "ko": "마흔여덟 후보 위치를 내려다보고 배치 금지인 네 모서리와 이 연습에서 범프를 놓지 않는 네 예약 위치를 제외합니다. 남은 마흔 개 전기 패드는 신호 스무 개, CORE 전원 여덟 개, IO 전원 네 개, 접지 여덟 개입니다. 전원 네트 이름의 반복은 의도한 공유이지만 같은 다이 인스턴스 안의 패드 식별자는 유일해야 합니다. 제외된 위치는 설치된 미연결 패드와 다르며 색상만으로 어느 쪽도 증명할 수 없습니다."
+      }
+    },
+    {
+      "key": "domains",
+      "start": 120,
+      "end": 150,
+      "sourceIds": [
+        "cadence-planner"
+      ],
+      "visual": {
+        "station": "net-map-table",
+        "subchapter": 5,
+        "shot": "separate-voltage-domain-columns",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "typed .8V CORE/1.2V IO/VSS and explicit aliases",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "classes",
+          "departTo": "current-average"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-05",
+      "title": {
+        "en": "Keep voltage domains explicit",
+        "zh-TW": "明示電壓域",
+        "ja": "電圧領域を明示",
+        "ko": "전압 도메인 명시",
+        "zh-CN": "明示电压域"
+      },
+      "shortTitle": {
+        "en": "Keep voltage domains explicit",
+        "zh-TW": "明示電壓域",
+        "ja": "電圧領域を明示",
+        "ko": "전압 도메인 명시",
+        "zh-CN": "明示电压域"
+      },
+      "text": {
+        "zh-TW": "放大CORE、IO與參考網路的獨立紀錄，不把所有名為VDD的網路合併。本例假設CORE為0.8V、IO為1.2V，並明示共用一個參考網路。訊號對應也需要明確語意，例如發送端正接點經具名封裝網路連至接收端正接點。名稱對應、極性交換或不同電壓域連接，都須有核准介面規則，不能憑圖猜測。",
+        "zh-CN": "放大CORE、IO与参考网络的独立记录，不把所有名为VDD的网络合并。本例假设CORE为0.8V、IO为1.2V，并明示共用一个参考网络。信号对应也需要明确语意，例如发送端正接点经具名封装网络连至接收端正接点。名称对应、极性交换或不同电压域连接，都须有批准接口规则，不能凭图猜测。",
+        "en": "Zoom into separate CORE, IO, and reference-net records instead of merging everything named VDD. Our invented domains are 0.8 volts for CORE and 1.2 volts for IO, with a deliberately shared reference in this example. Signal mapping also needs explicit meaning: a transmitter's positive contact may connect to a receiver's positive contact through a named package net. Matching names, exchanging polarity, or joining different voltage domains requires an approved interface rule, never a visual guess.",
+        "ja": "CORE、IO、基準ネットの別々の記録へ近づき、VDDという名前だけで全てを統合しないようにします。仮想の電源領域はCOREが0.8ボルト、IOが1.2ボルトで、この例では基準を明示的に共有します。信号の対応にも明確な意味が必要で、例えば送信側の正端子を名前付きパッケージネット経由で受信側の正端子へ接続します。名前の対応、極性交換、異なる電圧領域の接続には承認済みのインターフェース規則が必要で、見た目で推測してはいけません。",
+        "ko": "CORE, IO, 기준 네트의 별도 기록을 확대하며 VDD라는 이름만으로 모두 합치지 않습니다. 가정한 전원 도메인은 CORE 0.8볼트와 IO 1.2볼트이며 이 예에서는 기준을 명시적으로 공유합니다. 신호 매핑에도 명확한 의미가 필요하며 송신 측 양의 접점이 이름 있는 패키지 네트를 거쳐 수신 측 양의 접점에 연결되는 것이 한 예입니다. 이름 대응, 극성 교환, 서로 다른 전압 도메인 연결에는 승인된 인터페이스 규칙이 필요하며 외형으로 추측하면 안 됩니다."
+      }
+    },
+    {
+      "key": "current-average",
+      "start": 150,
+      "end": 180,
+      "sourceIds": [
+        "ansys-pi"
+      ],
+      "visual": {
+        "station": "power-ledger",
+        "subchapter": 6,
+        "shot": "distribute-current-to-typed-pads",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "CORE1A/IO.5A/VSS1.25A averages only",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "domains",
+          "departTo": "current-crowding"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-06",
+      "title": {
+        "en": "Screen average current carefully",
+        "zh-TW": "謹慎篩檢平均電流",
+        "ja": "平均電流を慎重に確認",
+        "ko": "평균 전류를 신중히 점검",
+        "zh-CN": "谨慎筛检平均电流"
+      },
+      "shortTitle": {
+        "en": "Screen average current carefully",
+        "zh-TW": "謹慎篩檢平均電流",
+        "ja": "平均電流を慎重に確認",
+        "ko": "평균 전류를 신중히 점검",
+        "zh-CN": "谨慎筛检平均电流"
+      },
+      "text": {
+        "zh-TW": "俯瞰假設靜態負載，CORE為8A，IO為2A。若均分，八個CORE接點各1A，四個IO接點各0.5A。兩電源域均經八個參考接點回流時，簡化平均為每個1.25A。這些平均值不能確立局部電流、實體接點額定、暫態行為或已驗證電源網路。",
+        "zh-CN": "俯瞰假设静态负载，CORE为8A，IO为2A。若均分，八个CORE接点各1A，四个IO接点各0.5A。两电源域均经八个参考接点回流时，简化平均为每个1.25A。这些平均值不能确立局部电流、物理接点额定、暂态行为或已验证电源网络。",
+        "en": "Look down on the assumed static loads: eight amperes on CORE and two on IO. Equal sharing would give one ampere across each of eight CORE pads and half an ampere across each of four IO pads. With both rails returning through the eight reference pads, the simplified average there is 1.25 amperes. These averages do not establish local current, physical pad ratings, transient behaviour, or a qualified power network.",
+        "ja": "仮定した静的負荷を俯瞰すると、COREは八アンペア、IOは二アンペアです。均等に分担すれば、八つのCOREパッドは各一アンペア、四つのIOパッドは各0.5アンペアです。両電源が八つの基準パッドを通って戻る場合、その単純化した平均は各1.25アンペアです。この平均では局所電流、実際のパッド定格、過渡挙動、電源網の適格性を確定できません。",
+        "ko": "가정한 정적 부하를 내려다보면 CORE는 팔 암페어이고 IO는 이 암페어입니다. 균등 분담이라면 여덟 CORE 패드는 각각 일 암페어, 네 IO 패드는 각각 0.5암페어입니다. 두 전원이 모두 여덟 기준 패드로 귀환할 때 단순 평균은 각각 1.25암페어입니다. 이 평균은 국부 전류, 실제 패드 정격, 과도 동작이나 검증된 전원망을 확정하지 못합니다."
+      }
+    },
+    {
+      "key": "current-crowding",
+      "start": 180,
+      "end": 210,
+      "sourceIds": [
+        "ansys-pi"
+      ],
+      "visual": {
+        "station": "resistor-bench",
+        "subchapter": 7,
+        "shot": "zoom-asymmetric-parallel-branches",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "one4mOhm branch carries16/9A under fixed8A total",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "current-average",
+          "departTo": "loop-budget"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-07",
+      "title": {
+        "en": "Solve unequal parallel branches",
+        "zh-TW": "解算不等並聯支路",
+        "ja": "異なる並列枝を解く",
+        "ko": "서로 다른 병렬 분기 계산",
+        "zh-CN": "解算不等并联支路"
+      },
+      "shortTitle": {
+        "en": "Solve unequal parallel branches",
+        "zh-TW": "解算不等並聯支路",
+        "ja": "異なる並列枝を解く",
+        "ko": "서로 다른 병렬 분기 계산",
+        "zh-CN": "解算不等并联支路"
+      },
+      "text": {
+        "zh-TW": "移到理想兩節點電路，八條CORE供電支路並聯，總電流固定8A。每條都是8毫歐時各流1A，但只把其中一條改成4毫歐，它便約流1.778A。即使平均仍為1A，該支路已超過假設的1.2A篩檢門檻。電路說明不均流，不是量測凸塊電阻或製造電流額定。",
+        "zh-CN": "移到理想两节点电路，八条CORE供电支路并联，总电流固定8A。每条都是8毫欧时各流1A，但只把其中一条改成4毫欧，它便约流1.778A。即使平均仍为1A，该支路已超过假设的1.2A筛检门槛。电路说明不均流，不是测量凸块电阻或制造电流额定。",
+        "en": "Move to an ideal two-node circuit containing eight parallel CORE supply branches, with total current fixed at eight amperes. When every branch is eight milliohms, each carries one ampere, but reducing just one branch to four milliohms makes it carry about 1.778 amperes. That exceeds our invented 1.2-ampere screening threshold even though the average remains one. The circuit illustrates unequal sharing, not measured bump resistance or a manufacturing current rating.",
+        "ja": "理想的な二節点間に八本のCORE電源枝を並列接続し、総電流を八アンペアに固定した回路へ移ります。各枝が八ミリオームなら一アンペアずつですが、一枝だけ四ミリオームにすると、その枝は約1.778アンペアになります。平均は一アンペアのままでも、仮定した1.2アンペアの確認しきい値を超えます。これは不均等な電流分担の説明であり、実測バンプ抵抗や製造上の電流定格ではありません。",
+        "ko": "이상적인 두 노드 사이에 여덟 CORE 공급 분기를 병렬로 놓고 총전류를 팔 암페어로 고정한 회로로 이동합니다. 각 분기가 팔 밀리옴이면 각각 일 암페어지만 하나만 사 밀리옴으로 바꾸면 그 분기에는 약 1.778암페어가 흐릅니다. 평균은 일 암페어로 같아도 가정한 1.2암페어 선별 기준을 초과합니다. 이 회로는 불균등한 전류 분담을 설명하며 측정한 범프 저항이나 제조 전류 정격이 아닙니다."
+      }
+    },
+    {
+      "key": "loop-budget",
+      "start": 210,
+      "end": 240,
+      "sourceIds": [
+        "ansys-pi"
+      ],
+      "visual": {
+        "station": "resistor-bench",
+        "subchapter": 8,
+        "shot": "follow-supply-and-return-loop",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "8A*2mOhm + 10A*3mOhm = 46mV fails40mV; shared return cannot use onlyCORE8A",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "current-crowding",
+          "departTo": "fault-review"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-08",
+      "title": {
+        "en": "Budget the shared return correctly",
+        "zh-TW": "正確預算共用回流",
+        "ja": "共有帰還を正しく予算化",
+        "ko": "공유 귀환 예산 정확히 계산",
+        "zh-CN": "正确预算共用回流"
+      },
+      "shortTitle": {
+        "en": "Budget the shared return correctly",
+        "zh-TW": "正確預算共用回流",
+        "ja": "共有帰還を正しく予算化",
+        "ko": "공유 귀환 예산 정확히 계산",
+        "zh-CN": "正确预算共用回流"
+      },
+      "text": {
+        "zh-TW": "沿CORE的8A供電及共用參考回流前進，回流承載CORE的8A加IO的2A。假設CORE供電路徑2毫歐、共用回流3毫歐，CORE供電壓降為8乘2加10乘3，也就是46毫伏。它超出40毫伏預算，若錯把兩段都用8A計算，就會漏掉6毫伏。扣除30毫伏回流貢獻後，CORE供電只剩10毫伏，因此最多允許1.25毫歐。",
+        "zh-CN": "沿CORE的8A供电及共用参考回流前进，回流承载CORE的8A加IO的2A。假设CORE供电路径2毫欧、共用回流3毫欧，CORE供电压降为8乘2加10乘3，也就是46毫伏。它超出40毫伏预算，若错把两段都用8A计算，就会漏掉6毫伏。扣除30毫伏回流贡献后，CORE供电只剩10毫伏，因此最多允许1.25毫欧。",
+        "en": "Follow CORE's eight-ampere supply and the shared reference return carrying eight CORE plus two IO amperes. With a hypothetical two-milliohm CORE supply path and three-milliohm shared return, the CORE delivery drop is eight times two plus ten times three, or forty-six millivolts. That fails the forty-millivolt budget, while incorrectly using eight amperes for both paths would hide six millivolts. After the thirty-millivolt return contribution, only ten millivolts remain for CORE supply, allowing at most 1.25 milliohms.",
+        "ja": "COREの八アンペアの供給と、COREの八アンペアにIOの二アンペアを加えた共有基準帰還を追います。仮にCORE供給経路が二ミリオーム、共有帰還が三ミリオームなら、COREへの供給電圧降下は八掛ける二と十掛ける三の和で四十六ミリボルトです。これは四十ミリボルトの予算を超え、両経路を誤って八アンペアで計算すると六ミリボルトを見落とします。帰還の三十ミリボルトを差し引くとCORE供給には十ミリボルトだけが残り、許容抵抗は最大1.25ミリオームです。",
+        "ko": "CORE의 팔 암페어 공급과 CORE 팔 암페어에 IO 이 암페어를 더한 공유 기준 귀환을 추적합니다. 가정한 CORE 공급 경로가 이 밀리옴이고 공유 귀환이 삼 밀리옴이면 CORE 전달 전압 강하는 팔 곱하기 이에 십 곱하기 삼을 더한 사십육 밀리볼트입니다. 이는 사십 밀리볼트 예산을 초과하며 두 경로에 모두 팔 암페어를 잘못 적용하면 육 밀리볼트를 놓칩니다. 귀환의 삼십 밀리볼트를 빼면 CORE 공급에는 십 밀리볼트만 남아 허용 저항은 최대 1.25밀리옴입니다."
+      }
+    },
+    {
+      "key": "fault-review",
+      "start": 240,
+      "end": 270,
+      "sourceIds": [
+        "cadence-mirror"
+      ],
+      "visual": {
+        "station": "fault-lab",
+        "subchapter": 9,
+        "shot": "freeze-failed-core-ground-association",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "CORE/VSS mismatch cannot be waived by matching counts",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "loop-budget",
+          "departTo": "handoff"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-09",
+      "title": {
+        "en": "Diagnose the CORE-to-ground error",
+        "zh-TW": "診斷CORE接地錯誤",
+        "ja": "COREと接地の誤接続を診断",
+        "ko": "CORE 접지 오접속 진단",
+        "zh-CN": "诊断CORE接地错误"
+      },
+      "shortTitle": {
+        "en": "Diagnose the CORE-to-ground error",
+        "zh-TW": "診斷CORE接地錯誤",
+        "ja": "COREと接地の誤接続を診断",
+        "ko": "CORE 접지 오접속 진단",
+        "zh-CN": "诊断CORE接地错误"
+      },
+      "text": {
+        "zh-TW": "停在刻意錯誤的接點圖，它違反明定契約，先旋轉再鏡射。CORE接點B2落到原本接地G5的位置，但對稱外框與接點總數仍可能看似合理。應以獨立座標見證與具類型端點連接拒絕錯配，不是重塗色塊或豁免錯誤。在這張圖中，再有利的電流平均也不能使供電接參考網路變成合格。",
+        "zh-CN": "停在刻意错误的接点图，它违反明定契约，先旋转再镜射。CORE接点B2落到原本接地G5的位置，但对称外框与接点总数仍可能看似合理。应以独立坐标见证与具类型端点连接拒绝错配，不是重涂色块或豁免错误。在这张图中，再有利的电流平均也不能使供电接参考网络变成合格。",
+        "en": "Freeze a deliberately wrong map that rotates before mirroring, contrary to the declared contract. Its CORE pad B2 lands at the position intended for ground pad G5, although the symmetric outline and total pad count still look plausible. Reject the mismatch using independent coordinate witnesses and typed endpoint connectivity, rather than recolouring the square or waiving the error. No amount of favourable current averaging makes a supply-to-reference connection acceptable in this map.",
+        "ja": "定義した契約に反し、鏡映より先に回転する意図的な誤りのある図で停止します。COREパッドB2が接地パッドG5の予定位置へ移っても、対称な外形とパッド総数は妥当に見えることがあります。色を塗り直したり誤りを免除したりせず、独立した座標の確認点と型を持つ端点接続で不一致を拒否します。平均電流がどれほど好ましくても、この図で電源を基準へ接続することは許容されません。",
+        "ko": "정의한 계약과 달리 미러링 전에 회전하는 의도적인 오류 맵에서 멈춥니다. CORE 패드 B2가 접지 패드 G5의 예정 위치에 놓여도 대칭 외곽선과 총 패드 수는 그럴듯해 보일 수 있습니다. 색상을 바꾸거나 오류를 면제하지 말고 독립적인 좌표 확인점과 유형이 지정된 끝점 연결로 불일치를 거부합니다. 평균 전류가 아무리 유리해도 이 맵의 공급과 기준 간 오접속은 허용되지 않습니다."
+      }
+    },
+    {
+      "key": "handoff",
+      "start": 270,
+      "end": 300,
+      "sourceIds": [
+        "cadence-integrity"
+      ],
+      "visual": {
+        "station": "release-gate",
+        "subchapter": 10,
+        "shot": "rise-from-versioned-map-to-c05",
+        "diagram": {
+          "type": "bump-map-and-power-net-teaching-reconstruction",
+          "focus": "fixed connectivity baseline passed to assembly-aware floorplanning",
+          "scenarioRef": "C04_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "fault-review",
+          "departTo": "C05"
+        }
+      },
+      "originalExample": true,
+      "id": "c04-10",
+      "title": {
+        "en": "Hand the baseline to C05",
+        "zh-TW": "把基線交給C05",
+        "ja": "基準をC05へ渡す",
+        "ko": "기준을 C05에 전달",
+        "zh-CN": "把基线交给C05"
+      },
+      "shortTitle": {
+        "en": "Hand the baseline to C05",
+        "zh-TW": "把基線交給C05",
+        "ja": "基準をC05へ渡す",
+        "ko": "기준을 C05에 전달",
+        "zh-CN": "把基线交给C05"
+      },
+      "text": {
+        "zh-TW": "拉遠到交付紀錄，包含輸入版本、座標慣例、明示網路別名與每個已安裝接點的身分。附上方向與連接檢查、電源預算假設、未解證據，以及核准變更歷史。C04交付可追溯圖供後續實體及電氣驗證，不宣稱布線、可靠度或載流能力已簽核。C05便能使用同一受控介面基線，安排晶粒並預留組裝存取空間。",
+        "zh-CN": "拉远到交付记录，包含输入版本、坐标惯例、明示网络别名与每个已安装接点的身份。附上方向与连接检查、电源预算假设、未解证据，以及批准变更历史。C04交付可追溯图供后续物理及电气验证，不宣称布线、可靠性或载流能力已签核。C05便能使用同一受控接口基线，安排裸片并预留组装访问空间。",
+        "en": "Pull back to a release record containing the input revision, coordinate convention, explicit net aliases, and every installed pad's identity. Attach orientation and connectivity checks, power-budget assumptions, unresolved evidence, and the approved change history. C04 delivers a traceable map for later physical and electrical verification, not a claim that routing, reliability, or current capacity is already signed off. C05 can now place dies and reserve assembly access using the same controlled interface baseline.",
+        "ja": "引いて全体を見渡し、入力版、座標規約、明示したネット別名、各実装パッドの識別を含むリリース記録を確認します。向きと接続の検査、電源予算の仮定、未解決の根拠、承認した変更履歴を添付します。C04は後続の物理・電気検証に使う追跡可能な図を渡し、配線、信頼性、電流容量の承認完了を主張しません。C05では同じ管理されたインターフェース基準を用いて、ダイを配置し組立アクセスを確保します。",
+        "ko": "입력 버전, 좌표 규약, 명시한 네트 별칭, 각 설치 패드의 식별자를 담은 인계 기록으로 시야를 넓힙니다. 방향 및 연결 검사, 전원 예산 가정, 미해결 근거와 승인된 변경 이력을 첨부합니다. C04는 이후 물리 및 전기 검증을 위한 추적 가능한 맵을 제공하며 배선, 신뢰성 또는 전류 용량의 최종 승인을 주장하지 않습니다. C05는 같은 통제된 인터페이스 기준으로 다이를 배치하고 조립 접근 공간을 확보합니다."
+      }
+    }
+  ],
+  "productionContract": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "totalFrames": 7200,
+    "narration": "five independent native-language measured speech tracks; authored chapter slots are not sentence timing",
+    "subtitles": "native measured speech cues with deliberately authored matching English meaning; never align by English audio time",
+    "endCard": {
+      "url": "https://line.me/R/ti/p/%40530pgchc",
+      "startSeconds": 290,
+      "endSeconds": 300
+    },
+    "generated": false
+  },
+  "distribution": {
+    "shortFilm": "Publish only after final verified media and explicit publication workflow",
+    "longFilm": "Hosting and YouTube route selected by project owner; no unverified links or IDs",
+    "youtubeId": null
+  },
+  "contentReview": {
+    "status": "PASS",
+    "report": "INDEPENDENT_CONTENT_SEMANTIC_REVIEW_C04_V35.json",
+    "reviewedDraftSha256": "37ea3a1523e239a5d48c4d65cfdfc49bfcdd80a8cc8dcdd5e74cc705105ba5a9",
+    "chapterTextSha256": "3b3cfee46b82d6029555b094761bc8fe304f8a1c356d2cbe5d4de85265e8c746",
+    "chapterTextHashPolicy": "SHA-256 of UTF-8 JSON.stringify(cues.map(c=>({key:c.key,text:c.text}))) with source insertion order",
+    "humanNativeEngineerCertified": false
+  }
+}
