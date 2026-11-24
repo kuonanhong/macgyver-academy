@@ -17,7 +17,9 @@ API_VERSION = '2026-03-10'
 
 
 class PagesError(RuntimeError):
-    pass
+    def __init__(self, message, *, http_status=None):
+        super().__init__(message)
+        self.http_status = http_status
 
 
 def api(repo, endpoint, *, method='GET', payload=None, timeout=60):
@@ -33,7 +35,9 @@ def api(repo, endpoint, *, method='GET', payload=None, timeout=60):
         # gh errors may include local context. Show only the short final message;
         # authentication tokens are never read, logged, or placed in arguments.
         detail = result.stderr.strip().splitlines()
-        raise PagesError('GitHub API 失敗：' + (detail[-1][:400] if detail else endpoint))
+        status = re.search(r'\bHTTP\s+(\d{3})\b', result.stderr)
+        raise PagesError('GitHub API 失敗：' + (detail[-1][:400] if detail else endpoint),
+                         http_status=int(status[1]) if status else None)
     if not result.stdout.strip():
         return {}
     return json.loads(result.stdout)
@@ -92,21 +96,34 @@ def wait_for_run_identity(repo, run_id, sha, branch, request_id):
     """
     deadline = time.monotonic() + 90
     last, announced = {}, False
+    print('已取得發布工作編號：%s；https://github.com/%s/actions/runs/%s'
+          % (run_id, repo, run_id), flush=True)
     while (remaining := deadline - time.monotonic()) > 0:
-        run = api(repo, 'actions/runs/' + str(run_id), timeout=min(60, remaining))
-        if not isinstance(run, dict):
-            raise PagesError('GitHub 回傳的工作資料格式無效；未宣稱部署成功。')
+        missing = False
         try:
-            if run.get('id') != run_id:
-                raise PagesError('工作編號不符。')
-            validate_run(run, sha, branch, request_id)
-        except PagesError:
-            # Record only public identity fields, not headers or arbitrary API
-            # response bodies. This also makes a future timeout diagnosable.
-            last = {key: str(run.get(key, ''))[:240] for key in
-                    ('id', 'head_sha', 'head_branch', 'path', 'event', 'display_title')}
-        else:
-            return run
+            run = api(repo, 'actions/runs/' + str(run_id), timeout=min(60, remaining))
+        except PagesError as error:
+            # A newly returned run ID may briefly be absent from GET. Retry
+            # only this exact 404 read within the original 90-second deadline.
+            # Authentication/permission errors and other failures still stop.
+            if error.http_status != 404:
+                raise
+            missing = True
+            last = {'id': run_id, 'httpStatus': 404}
+        if not missing:
+            if not isinstance(run, dict):
+                raise PagesError('GitHub 回傳的工作資料格式無效；未宣稱部署成功。')
+            try:
+                if run.get('id') != run_id:
+                    raise PagesError('工作編號不符。')
+                validate_run(run, sha, branch, request_id)
+            except PagesError:
+                # Record only public identity fields, not headers or arbitrary
+                # API response bodies, so a timeout remains diagnosable.
+                last = {key: str(run.get(key, ''))[:240] for key in
+                        ('id', 'head_sha', 'head_branch', 'path', 'event', 'display_title')}
+            else:
+                return run
         if not announced:
             print('等待 GitHub 完成本次工作識別資料：%s；只重讀同一工作，不重送發布。' % run_id, flush=True)
             announced = True
