@@ -35,7 +35,7 @@
   const bundleLabels={'zh-TW':`下載 ${DURATION/60} 分鐘五語影片與原始碼 ZIP`,'zh-CN':`下载 ${DURATION/60} 分钟五语影片与源代码 ZIP`,en:`Download ${DURATION/60}-minute film, five languages and source ZIP`,ja:`${DURATION/60}分映像・五言語音声・ソース ZIP を保存`,ko:`${DURATION/60}분 영상·다섯 언어 음성·소스 ZIP 다운로드`};
   for(const lang of LANGS){I[lang].eyebrow=FILM+' · '+String(DURATION/60).padStart(2,'0')+':00';I[lang].intro=D.metadataSummary[lang];I[lang].chapters=COUNT+' '+chapterWords[lang];I[lang].longPending=media.pendingText?.[lang]||pending[lang];I[lang].shortTour=media.related?.labels?.[lang]||'';I[lang].downloadBundle=bundleLabels[lang];}
   $('timeline').max=String(DURATION);$('script-download').href=media.script;$('script-download').download=FILM+'.script.json';$('renderer-download').href=media.renderer;
-  const sourceBundleLabels={'zh-TW':'下載完整影片製作工具','zh-CN':'下载完整影片制作工具',en:'Download complete film production tools',ja:'映像制作ツール一式を保存',ko:'전체 영상 제작 도구 다운로드'};
+  const sourceBundleLabels={"zh-TW":"共用製片工具（C02 範例）","zh-CN":"共用制片工具（C02 示例）","en":"Shared production tools (C02 example)","ja":"共通の映像制作ツール（C02 サンプル）","ko":"공용 영상 제작 도구(C02 예제)"};
   const sourceBundleReady=media.sourceBundleVerification?.status==='PUBLIC_VERIFIED'&&releaseUrl(media.sourceBundleUrl);$('source-bundle').hidden=!sourceBundleReady;if(sourceBundleReady)$('source-bundle').href=media.sourceBundleUrl;
   const relatedReady=media.related?.status==='verified'&&relatedUrl(media.related.url)&&translated(media.related.labels);
   $('short-link').hidden=!relatedReady;if(relatedReady)$('short-link').href=media.related.url;

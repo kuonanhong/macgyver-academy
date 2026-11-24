@@ -1,0 +1,841 @@
+{
+  "schemaVersion": 1,
+  "id": "C03",
+  "processId": "C03",
+  "mode": "short",
+  "version": "35.0.0",
+  "title": {
+    "zh-TW": "選擇封裝架構分支",
+    "zh-CN": "选择封装架构分支",
+    "en": "Select the packaging architecture",
+    "ja": "パッケージ構造の選択",
+    "ko": "패키지 구조 선택"
+  },
+  "youtubeBilingualTitle": "C03｜封裝架構選型｜Packaging architecture decisions｜5 min",
+  "youtubeTitle": {
+    "zh-TW": "C03｜封裝架構選型與決策｜5分鐘課程",
+    "zh-CN": "C03｜封装架构选型与决策｜5分钟课程",
+    "en": "C03 | Packaging architecture decisions | 5-minute lesson",
+    "ja": "C03｜パッケージ構造の選択と判断｜5分授業",
+    "ko": "C03｜패키지 구조 선택과 결정｜5분 수업"
+  },
+  "metadataSummary": {
+    "zh-TW": "五分鐘比較矽中介層、扇出重佈線、局部矽橋與混合鍵合，先查必要條件再評偏好。原創假想候選帶出冷卻證據、成本良率與權重敏感度，交付可追溯架構決策，銜接C04。",
+    "zh-CN": "五分钟比较硅中介层、扇出重布线、局部硅桥与混合键合，先查必要条件再评偏好。原创假想候选说明冷却证据、成本良率与权重敏感度，交付可追溯架构决策，衔接C04。",
+    "en": "Compare silicon interposers, fan-out redistribution, local bridges and hybrid bonding in five minutes. Original hypothetical candidates separate mandatory gates from preferences, then examine cooling evidence, accepted-unit cost and weight sensitivity before a traceable handoff to C04.",
+    "ja": "五分でシリコンインターポーザー、ファンアウト再配線、局所ブリッジ、ハイブリッド接合を比較します。独自の仮想候補で必須条件と好みを分け、冷却の根拠、合格品費用、重みの感度を調べ、C04へ追跡可能な決定を渡します。",
+    "ko": "오 분 동안 실리콘 인터포저, 팬아웃 재배선, 국부 브리지, 하이브리드 접합을 비교합니다. 독창적인 가상 후보로 필수 조건과 선호를 구분하고 냉각 근거, 합격품 비용, 가중치 민감도를 살펴 C04에 추적 가능한 결정을 전달합니다."
+  },
+  "durationSeconds": 300,
+  "chapterDurationSeconds": 30,
+  "activityType": "design",
+  "languages": [
+    "zh-TW",
+    "zh-CN",
+    "en",
+    "ja",
+    "ko"
+  ],
+  "status": {
+    "script": "reviewed_ready_for_measured_tts",
+    "narrationTiming": "not_measured",
+    "film": "not_produced",
+    "publication": "not_published"
+  },
+  "scope": {
+    "zh-TW": "教學重建與原創假想選型算例，非實測、量產參數、供應商製程配方、採購承諾或標準符合性證明。",
+    "en": "Teaching reconstruction with original hypothetical decision examples; not measurements, production specifications, supplier recipes, purchasing commitments or standards-compliance evidence."
+  },
+  "reviewStatement": "AI-authored and AI-translated teaching material. Independent AI technical, translation and sentence-meaning review passed; this is not certified review by a native-language engineer. Measured narration, visual quality and final media remain separate production gates.",
+  "roadmapBinding": {
+    "id": "C03",
+    "title": {
+      "zh-TW": "選擇封裝架構分支",
+      "zh-CN": "选择封装架构分支",
+      "en": "Select the packaging architecture",
+      "ja": "パッケージ構造の選択",
+      "ko": "패키지 구조 선택"
+    },
+    "prerequisiteIds": [
+      "C02"
+    ],
+    "next": [
+      "C04"
+    ],
+    "source": "MacGyver_Engineering_Academy_v32/docs/PACKAGING_PROCESS_ROADMAP_V34.json",
+    "excludedNextScope": "Detailed bump orientation, mirroring, individual net assignment and power-net mapping belong to C04"
+  },
+  "scenario": {
+    "classification": "ORIGINAL_HYPOTHETICAL_TEACHING_EXERCISES_NOT_VENDOR_SPECIFICATIONS_OR_MEASUREMENTS",
+    "candidateScope": "I/F/B/H represent four fictional implementations, not a universal comparison of technology families",
+    "commonBoundary": {
+      "capacity": "useful one-way payload at declared endpoints, workload, protocol and operating condition",
+      "power": "allocated dynamic link power, not idle power or total package power",
+      "height": "board top to lid top including declared tolerances",
+      "schedule": "from approved interface baseline to completed qualification"
+    },
+    "mandatoryGates": {
+      "usefulOneWayGBpsMin": 120,
+      "dynamicLinkWMax": 5,
+      "heightMmMax": 2,
+      "qualificationWeekMax": 18,
+      "coolingEvidence": "required",
+      "testEvidence": "required",
+      "forecastStatus": "provisional, not measured hardware acceptance"
+    },
+    "candidates": [
+      {
+        "id": "I",
+        "route": "silicon interposer",
+        "capacityGBps": 144,
+        "dynamicLinkW": 4.2,
+        "qualificationWeek": 17,
+        "otherGateForecasts": "provisionally satisfied, requires evidence confirmation",
+        "screen": "provisionally feasible"
+      },
+      {
+        "id": "F",
+        "route": "fan-out redistribution",
+        "capacityGBps": 112,
+        "screen": "fails useful bandwidth forecast"
+      },
+      {
+        "id": "B",
+        "route": "local silicon bridge",
+        "capacityGBps": 128,
+        "dynamicLinkW": 4.8,
+        "qualificationWeek": 16,
+        "otherGateForecasts": "provisionally satisfied, requires evidence confirmation",
+        "screen": "provisionally feasible"
+      },
+      {
+        "id": "H",
+        "route": "vertical hybrid bonding",
+        "capacityGBps": 160,
+        "dynamicLinkW": 3.0,
+        "coolingEvidence": "missing",
+        "screen": "pending, cannot rank as qualified"
+      }
+    ],
+    "heightExercise": {
+      "scope": "separate invented stack, not the candidate I/B baseline",
+      "units": "mm",
+      "datum": "board top to lid top",
+      "parts": {
+        "standoff": 0.25,
+        "substrate": 0.7,
+        "stackEnvelope": 0.35,
+        "interfaceMaterial": 0.1,
+        "lid": 0.5
+      },
+      "nominalTotal": 1.9,
+      "limit": 2.0,
+      "nominalMargin": 0.1,
+      "positiveWorstCaseAllowance": 0.15,
+      "worstCaseTotal": 2.05,
+      "result": "FAIL under stated worst-case bound"
+    },
+    "coverageExercise": {
+      "mandatory": 12,
+      "passingForecasts": 10,
+      "unknown": 1,
+      "failed": 1,
+      "passingFractionPercent": 83.33333333333333,
+      "releaseAllowed": false
+    },
+    "conditionalYieldExercise": {
+      "stageRates": [
+        0.98,
+        0.97,
+        0.99
+      ],
+      "denominator": "units entering each respective stage",
+      "product": 0.941094,
+      "startingUnits": 1000,
+      "expectedAcceptedUnits": 941.094,
+      "notes": "Conditional chain, no independence assumption; expectation is not a fractional physical shipment"
+    },
+    "costExercise": {
+      "units": "invented cost units, not currency or supplier quotes",
+      "attemptCost": {
+        "I": 210,
+        "B": 190
+      },
+      "finalPassingFraction": {
+        "I": 0.9,
+        "B": 0.95
+      },
+      "acceptedUnitCost": {
+        "I": 233.33333333333331,
+        "B": 200
+      },
+      "B_sensitivityPassingFraction": 0.8,
+      "B_sensitivityAcceptedCost": 237.5,
+      "avoidDoubleCounting": "Do not reapply identical yield loss to inputs already priced per accepted component"
+    },
+    "nreExercise": {
+      "scope": "P/Q are separate hypothetical offers within a feasible route, not the I/B ratings",
+      "P": {
+        "upfront": 900000,
+        "recurringPerAcceptedUnit": 180
+      },
+      "Q": {
+        "upfront": 300000,
+        "recurringPerAcceptedUnit": 200
+      },
+      "breakEvenAcceptedUnits": 30000,
+      "excluded": [
+        "financing",
+        "other omitted effects"
+      ]
+    },
+    "scheduleExercise": {
+      "B_parallelPreparationWeeks": {
+        "die": 8,
+        "substrate": 6
+      },
+      "serialAssemblyWeeks": 3,
+      "serialQualificationWeeks": 5,
+      "forecastWeeks": 16,
+      "criticalBranchDelayWeeks": 4,
+      "delayedWeeks": 20,
+      "gateWeeks": 18,
+      "assumptions": [
+        "interface already approved",
+        "preparation branches start together",
+        "handoffs agreed",
+        "capacity available"
+      ],
+      "notSupplierCommitment": true
+    },
+    "preferenceExercise": {
+      "columns": [
+        "performance",
+        "risk",
+        "cost",
+        "footprint"
+      ],
+      "ratingScale": "1 to 5; larger is better, including risk score where larger means a more favourable risk assessment",
+      "subjectiveOriginalRatings": {
+        "I": [
+          4,
+          3,
+          2,
+          3
+        ],
+        "B": [
+          3,
+          4,
+          4,
+          3
+        ]
+      },
+      "baseWeights": [
+        0.4,
+        0.3,
+        0.2,
+        0.1
+      ],
+      "baseTotals": {
+        "I": 3.2,
+        "B": 3.5
+      },
+      "sensitivityWeights": [
+        0.7,
+        0.15,
+        0.1,
+        0.05
+      ],
+      "sensitivityTotals": {
+        "I": 3.6,
+        "B": 3.25
+      },
+      "appliesOnlyAfter": "provisional gate screening; cannot compensate a failed or unknown mandatory requirement"
+    },
+    "boundaryC04": "Detailed bump orientation, individual net assignment, power-net mapping, and mirroring belong to C04, not this lesson"
+  },
+  "sourceContractSha256": "918285ad1c25f1ba302c2a482ea87f3d2452bf2f882fbe02e7b15e98bd9d3782",
+  "sources": [
+    {
+      "id": "imec-hybrid",
+      "publisher": "imec",
+      "title": "Wafer-to-wafer hybrid bonding: copper and dielectric interfaces",
+      "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "Hybrid Cu-to-Cu and dielectric-to-dielectric interface, surface preparation and alignment; no laboratory pitch or temperature imported as a production specification"
+    },
+    {
+      "id": "tsmc-cowos",
+      "publisher": "TSMC",
+      "title": "CoWoS packaging families",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "CoWoS-S silicon interposer; CoWoS-R RDL; CoWoS-L RDL plus local silicon interconnect; family distinctions, no imported numerical specifications"
+    },
+    {
+      "id": "tsmc-info",
+      "publisher": "TSMC",
+      "title": "Integrated Fan-Out technology",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/InFO.htm",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "InFO-oS is an on-substrate fan-out implementation; not every fan-out architecture omits a substrate"
+    },
+    {
+      "id": "tsmc-soic",
+      "publisher": "TSMC",
+      "title": "System on Integrated Chips",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "Vertical chip integration can subsequently combine with CoWoS or InFO; not blanket compatibility"
+    },
+    {
+      "id": "intel-packaging",
+      "publisher": "Intel",
+      "title": "Advanced packaging",
+      "url": "https://www.intel.com/content/www/us/en/foundry/packaging.html",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "EMIB embedded local silicon bridges; EMIB-T through-silicon vias; Foveros Direct copper hybrid bonding; implementation-specific variants"
+    },
+    {
+      "id": "ase-vipack",
+      "publisher": "ASE",
+      "title": "VIPack advanced integration platform",
+      "url": "https://ase.aseglobal.com/VIPack/",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "Portfolio includes fan-out, bridge and 2.5D/3D integration; co-design context"
+    },
+    {
+      "id": "amkor-test",
+      "publisher": "Amkor",
+      "title": "Test services",
+      "url": "https://amkor.com/test-services/",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "Test planning and wafer, intermediate, final and system-level test capabilities; access and stage coverage"
+    },
+    {
+      "id": "nasa-decision",
+      "publisher": "NASA",
+      "title": "Systems Engineering Handbook: 6.8 Decision Analysis",
+      "url": "https://www.nasa.gov/reference/6-8-decision-analysis/",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "Define decision context, alternatives and criteria, examine uncertainty, document rationale; numerical exercise here is independently authored"
+    },
+    {
+      "id": "ti-thermal",
+      "publisher": "Texas Instruments",
+      "title": "Semiconductor and IC Package Thermal Metrics, SPRA953D",
+      "url": "https://www.ti.com/lit/an/spra953d/spra953d.pdf",
+      "checkedOn": "2026-11-24",
+      "sourceType": "primary",
+      "access": "official web page or official PDF opened and read",
+      "supports": "Thermal metrics depend on measurement/system conditions; a package metric alone is not an application peak-junction validation"
+    }
+  ],
+  "cues": [
+    {
+      "key": "mission",
+      "start": 0,
+      "end": 30,
+      "sourceIds": [
+        "nasa-decision"
+      ],
+      "visual": {
+        "station": "requirements-plaza",
+        "subchapter": 1,
+        "shot": "overhead-to-partition",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "functional partition and decision deliverables",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "overview",
+          "departTo": "gates"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-01",
+      "title": {
+        "en": "Define the architecture decision",
+        "zh-TW": "界定架構決策",
+        "ja": "構造の決定を定義する",
+        "ko": "구조 결정 정의",
+        "zh-CN": "界定架构决策"
+      },
+      "shortTitle": {
+        "en": "Define the architecture decision",
+        "zh-TW": "界定架構決策",
+        "ja": "構造の決定を定義する",
+        "ko": "구조 결정 정의",
+        "zh-CN": "界定架构决策"
+      },
+      "text": {
+        "zh-TW": "俯瞰C02交付的功能分割，再展開四條封裝路線。本課比較矽中介層、扇出重佈線、局部矽橋，以及垂直混合鍵合。它們是可選擇且有時可刻意組合的架構，不是四道必經製造工序。本課交付有理由與未解風險的選型，詳細凸塊與電源網路映射留給C04。",
+        "zh-CN": "俯瞰C02交付的功能划分，再展开四条封装路线。本课比较硅中介层、扇出重布线、局部硅桥，以及垂直混合键合。它们是可选择且有时可刻意组合的架构，不是四道必经制造工序。本课交付有理由与未解风险的选型，详细凸块与电源网络映射留给C04。",
+        "en": "Fly over the functional partition delivered by C02, then open four packaging routes. This lesson compares a silicon interposer, fan-out redistribution, a local silicon bridge, and vertical hybrid bonding. They are architectural choices, sometimes deliberately combined, rather than four compulsory manufacturing steps. Our deliverable is a justified selection with unresolved risks, while detailed bump and power-net mapping belongs to C04.",
+        "ja": "C02から受け取った機能分割を上空から眺め、四つのパッケージ経路を開きます。この授業では、シリコンインターポーザー、ファンアウト再配線、局所シリコンブリッジ、垂直ハイブリッド接合を比較します。これらは選択肢であり、意図的に組み合わせる場合もありますが、必ず通る四つの製造工程ではありません。成果物は理由と未解決リスクを伴う選択であり、詳細なバンプと電源ネットの対応付けはC04で行います。",
+        "ko": "C02에서 받은 기능 분할을 위에서 내려다보고 네 가지 패키지 경로를 펼칩니다. 이 수업은 실리콘 인터포저, 팬아웃 재배선, 국부 실리콘 브리지, 수직 하이브리드 접합을 비교합니다. 이는 선택 가능한 구조이며 의도적으로 조합할 수도 있지만 반드시 거쳐야 하는 네 제조 단계는 아닙니다. 결과물은 근거와 미해결 위험을 담은 선택이며 상세 범프와 전원 네트 매핑은 C04에서 다룹니다."
+      }
+    },
+    {
+      "key": "gates",
+      "start": 30,
+      "end": 60,
+      "sourceIds": [
+        "nasa-decision"
+      ],
+      "visual": {
+        "station": "requirements-plaza",
+        "subchapter": 2,
+        "shot": "descend-to-three-column-board",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "mandatory gates, preferences, unknown evidence",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "mission",
+          "departTo": "interposer"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-02",
+      "title": {
+        "en": "Separate gates and preferences",
+        "zh-TW": "區分門檻與偏好",
+        "ja": "必須条件と好みを分ける",
+        "ko": "필수 조건과 선호 구분",
+        "zh-CN": "区分门槛与偏好"
+      },
+      "shortTitle": {
+        "en": "Separate gates and preferences",
+        "zh-TW": "區分門檻與偏好",
+        "ja": "必須条件と好みを分ける",
+        "ko": "필수 조건과 선호 구분",
+        "zh-CN": "区分门槛与偏好"
+      },
+      "text": {
+        "zh-TW": "先降落到需求看板，再欣賞各種結構。原創假設案例要求單向每秒至少120GB、分配給動態鏈路的功率不超過5W，以及封裝高度不超過2mm。另須在第18週前完成資格驗證，並具備足夠冷卻證據。必要條件失敗或未知，不能靠偏好分數很高來抵銷。",
+        "zh-CN": "先降落到需求看板，再欣赏各种结构。原创假设案例要求单向每秒至少120GB、分配给动态链路的功率不超过5W，以及封装高度不超过2mm。另须在第18周前完成资格验证，并具备足够冷却证据。必要条件失败或未知，不能靠偏好分数很高来抵销。",
+        "en": "Descend to the requirement board before looking at attractive structures. Our invented example requires at least 120 gigabytes per second in one direction, no more than five watts of allocated dynamic link power, and a package height within two millimetres. It also requires qualification by week eighteen and adequate cooling evidence. A failed or unknown mandatory requirement cannot be cancelled by a high preference score.",
+        "ja": "魅力的な構造を見る前に、要求事項のボードへ降ります。この独自の仮想例では、片方向で毎秒120GB以上、動的リンク電力の割当ては5W以下、パッケージ高さは2mm以内とします。さらに第18週までの適格性評価完了と、十分な冷却の根拠を求めます。必須条件の不合格や不明点は、好みの点数が高くても相殺できません。",
+        "ko": "매력적인 구조를 보기 전에 요구사항 보드로 내려갑니다. 이 독창적인 가상 사례는 단방향 초당120GB 이상, 동적 링크 전력 할당5W 이하, 패키지 높이2mm 이내를 요구합니다. 또한18주차까지 적격성 평가를 마치고 충분한 냉각 근거를 확보해야 합니다. 필수 조건의 실패나 미확인은 높은 선호 점수로 상쇄할 수 없습니다."
+      }
+    },
+    {
+      "key": "interposer",
+      "start": 60,
+      "end": 90,
+      "sourceIds": [
+        "tsmc-cowos"
+      ],
+      "visual": {
+        "station": "interposer-bay",
+        "subchapter": 3,
+        "shot": "glide-logic-to-memory",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "shared routing platform and return paths",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "gates",
+          "departTo": "fanout"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-03",
+      "title": {
+        "en": "Follow shared interposer routes",
+        "zh-TW": "追蹤中介層共用路徑",
+        "ja": "インターポーザーの配線を追う",
+        "ko": "인터포저 공통 경로 추적",
+        "zh-CN": "跟踪中介层共用路径"
+      },
+      "shortTitle": {
+        "en": "Follow shared interposer routes",
+        "zh-TW": "追蹤中介層共用路徑",
+        "ja": "インターポーザーの配線を追う",
+        "ko": "인터포저 공통 경로 추적",
+        "zh-CN": "跟踪中介层共用路径"
+      },
+      "text": {
+        "zh-TW": "傾斜模型，露出讓相鄰晶粒共用布線區的矽中介層。它可支援大量密集連線，包括邏輯到記憶體，但實際堆疊與垂直連接依平台而定。CoWoS-S是矽中介層的例子，整個CoWoS家族也包含其他互連結構。評分之前，先問所選實作是否符合布線、組裝、測試與供應限制。",
+        "zh-CN": "倾斜模型，露出让相邻裸片共用布线区的硅中介层。它可支持大量密集连接，包括逻辑到存储器，但实际堆叠与垂直连接依平台而定。CoWoS-S是硅中介层的例子，整个CoWoS家族也包含其他互连结构。评分之前，先问所选实现是否符合布线、组装、测试与供应限制。",
+        "en": "Tilt the model to reveal a silicon interposer connecting neighbouring dies across a shared routing area. This can support many dense connections, including logic-to-memory links, but the exact stack and vertical connections are platform specific. CoWoS-S is a silicon-interposer example; the wider CoWoS family also contains different interconnect constructions. Ask whether the chosen implementation meets routing, assembly, test, and supply constraints before assigning it a score.",
+        "ja": "モデルを傾け、隣接するダイを共通配線領域でつなぐシリコンインターポーザーを見せます。ロジックとメモリの接続を含む多数の高密度接続を支えられますが、実際の積層と垂直接続はプラットフォームごとに異なります。CoWoS-Sはシリコンインターポーザーの例であり、CoWoS全体には異なる配線構造もあります。点数を付ける前に、選んだ実装が配線、組立、テスト、供給の制約を満たすか確認します。",
+        "ko": "모델을 기울여 인접 다이를 공통 배선 영역으로 연결하는 실리콘 인터포저를 드러냅니다. 로직과 메모리 연결을 포함한 많은 고밀도 연결을 지원할 수 있지만 실제 적층과 수직 연결은 플랫폼별로 다릅니다. CoWoS-S는 실리콘 인터포저의 예이며 전체 CoWoS 제품군에는 다른 연결 구조도 있습니다. 점수를 매기기 전에 선택한 구현이 배선, 조립, 시험, 공급 제약을 충족하는지 확인합니다."
+      }
+    },
+    {
+      "key": "fanout",
+      "start": 90,
+      "end": 120,
+      "sourceIds": [
+        "tsmc-info"
+      ],
+      "visual": {
+        "station": "fanout-bay",
+        "subchapter": 4,
+        "shot": "sweep-rdl-outward",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "redistribution beyond die edges and substrate variant",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "interposer",
+          "departTo": "bridge"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-04",
+      "title": {
+        "en": "Understand fan-out redistribution",
+        "zh-TW": "理解扇出重佈線",
+        "ja": "ファンアウト再配線を理解する",
+        "ko": "팬아웃 재배선 이해",
+        "zh-CN": "理解扇出重布线"
+      },
+      "shortTitle": {
+        "en": "Understand fan-out redistribution",
+        "zh-TW": "理解扇出重佈線",
+        "ja": "ファンアウト再配線を理解する",
+        "ko": "팬아웃 재배선 이해",
+        "zh-CN": "理解扇出重布线"
+      },
+      "text": {
+        "zh-TW": "沿銅重佈線層滑行，看連線延伸到個別晶粒邊緣之外。扇出是一系列結構，有些變體之後仍會安裝在基板上。圖像是教學重建，不是實測截面，也不是某供應商的製程配方。在相同系統需求下，比較可用布線密度、封裝變形、組裝公差與已驗證產能。",
+        "zh-CN": "沿铜重布线层滑行，看连接延伸到个别裸片边缘之外。扇出是一系列结构，有些变体之后仍会安装在基板上。图像是教学重建，不是实测截面，也不是某供应商的工艺配方。在相同系统需求下，比较可用布线密度、封装变形、组装公差与已验证产能。",
+        "en": "Glide above copper redistribution layers that extend connections beyond individual die edges. Fan-out is a family of constructions, and some variants are subsequently mounted on a substrate. The drawing is an explanatory reconstruction, not a measured cross-section or a recipe for one supplier. Compare available routing density, package deformation, assembly tolerances, and qualified capacity under the same system requirements.",
+        "ja": "個々のダイの端を越えて接続を広げる銅の再配線層の上を滑空します。ファンアウトは構造の一群であり、後から基板に実装する種類もあります。この図は説明用の再構成であり、測定した断面や特定の供給元の工程処方ではありません。同じシステム要求の下で、利用可能な配線密度、パッケージ変形、組立公差、適格性確認済みの能力を比較します。",
+        "ko": "각 다이 가장자리 밖으로 연결을 확장하는 구리 재배선층 위를 이동합니다. 팬아웃은 여러 구조의 집합이며 나중에 기판 위에 실장하는 변형도 있습니다. 그림은 설명용 재구성이지 측정한 단면이나 특정 공급사의 공정 레시피가 아닙니다. 동일 시스템 요구사항 아래 가용 배선 밀도, 패키지 변형, 조립 공차, 적격성이 확인된 생산능력을 비교합니다."
+      }
+    },
+    {
+      "key": "bridge",
+      "start": 120,
+      "end": 150,
+      "sourceIds": [
+        "intel-packaging"
+      ],
+      "visual": {
+        "station": "bridge-bay",
+        "subchapter": 5,
+        "shot": "track-facing-die-edges",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "local fine-routing crossing and available frontage",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "fanout",
+          "departTo": "hybrid"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-05",
+      "title": {
+        "en": "Inspect the local bridge crossing",
+        "zh-TW": "檢查局部矽橋跨越",
+        "ja": "局所ブリッジの接続を調べる",
+        "ko": "국부 브리지 연결 점검",
+        "zh-CN": "检查局部硅桥跨越"
+      },
+      "shortTitle": {
+        "en": "Inspect the local bridge crossing",
+        "zh-TW": "檢查局部矽橋跨越",
+        "ja": "局所ブリッジの接続を調べる",
+        "ko": "국부 브리지 연결 점검",
+        "zh-CN": "检查局部硅桥跨越"
+      },
+      "text": {
+        "zh-TW": "沿兩個相對的晶粒邊緣移動，展開連接區下方的局部矽橋。矽橋把精細布線集中在選定跨越處，不必讓整個共用布線平面都採同一結構。晶粒邊緣、基板布線、供電與擺放公差仍須相互匹配。不要假定每種矽橋相同或都沒有垂直通孔，平台變體必須逐一確認。",
+        "zh-CN": "沿两个相对的裸片边缘移动，展开连接区下方的局部硅桥。硅桥把精细布线集中在选定跨越处，不必让整个共用布线平面都采同一结构。裸片边缘、基板布线、供电与放置公差仍须相互匹配。不要假定每种硅桥相同或都没有垂直通孔，平台变体必须逐一确认。",
+        "en": "Move along two facing die edges and expose a local silicon bridge beneath their connection region. A bridge concentrates fine wiring at selected crossings instead of requiring the entire shared routing plane to use that construction. The die edges, substrate routing, power delivery, and placement tolerances still need a compatible design. Do not assume every bridge is identical or lacks vertical vias; platform variants must be checked individually.",
+        "ja": "向かい合う二つのダイ端に沿って移動し、接続領域の下にある局所シリコンブリッジを展開します。ブリッジは選んだ横断部に微細配線を集中させ、共通配線面全体を同じ構造にする必要をなくします。ダイ端、基板配線、給電、配置公差は引き続き整合する設計が必要です。すべてのブリッジが同一、あるいは垂直ビアを持たないとは考えず、各プラットフォームを確認します。",
+        "ko": "마주 보는 두 다이 가장자리를 따라 이동하며 연결 영역 아래 국부 실리콘 브리지를 펼칩니다. 브리지는 선택한 교차부에 미세 배선을 집중하므로 공통 배선면 전체를 같은 구조로 만들 필요가 없습니다. 다이 가장자리, 기판 배선, 전력 공급, 배치 공차는 여전히 서로 맞는 설계가 필요합니다. 모든 브리지가 같거나 수직 비아가 없다고 가정하지 말고 각 플랫폼 변형을 확인합니다."
+      }
+    },
+    {
+      "key": "hybrid",
+      "start": 150,
+      "end": 180,
+      "sourceIds": [
+        "intel-packaging",
+        "tsmc-soic",
+        "imec-hybrid"
+      ],
+      "visual": {
+        "station": "hybrid-tower",
+        "subchapter": 6,
+        "shot": "lift-upper-die-layer-explanation",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "copper and dielectric interface, explanatory geometry",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "bridge",
+          "departTo": "screen"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-06",
+      "title": {
+        "en": "Inspect the hybrid interface",
+        "zh-TW": "觀察混合鍵合界面",
+        "ja": "ハイブリッド接合面を見る",
+        "ko": "하이브리드 접합면 관찰",
+        "zh-CN": "观察混合键合界面"
+      },
+      "shortTitle": {
+        "en": "Inspect the hybrid interface",
+        "zh-TW": "觀察混合鍵合界面",
+        "ja": "ハイブリッド接合面を見る",
+        "ko": "하이브리드 접합면 관찰",
+        "zh-CN": "观察混合键合界面"
+      },
+      "text": {
+        "zh-TW": "抬起一片晶粒，展現含銅接點與介電質鍵合表面的混合鍵合界面。垂直整合可縮短部分連接，但表面準備、對準、測試存取與冷卻成為選型要點。經驗證的堆疊本身也可能再整合進中介層或扇出封裝。這種組合需要自己的證據，不代表所有封裝製程都變成必選。",
+        "zh-CN": "抬起一片裸片，展现含铜接点与介电质键合表面的混合键合界面。垂直整合可缩短部分连接，但表面准备、对准、测试访问与冷却成为选型要点。经验证的堆叠本身也可能再整合进中介层或扇出封装。这种组合需要自己的证据，不代表所有封装工艺都变成必选。",
+        "en": "Lift one die to reveal a hybrid-bond interface with copper contacts and dielectric bonding surfaces. Vertical integration can shorten selected connections, while surface preparation, alignment, test access, and cooling become essential selection questions. A qualified stack may itself be integrated into an interposer or fan-out package. That combination needs its own evidence and does not make every available packaging process mandatory.",
+        "ja": "一枚のダイを持ち上げ、銅接点と誘電体の接合面を持つハイブリッド接合界面を見せます。垂直統合は一部の接続を短縮できますが、表面準備、位置合わせ、テストアクセス、冷却が重要な選択項目になります。適格性を確認した積層を、さらにインターポーザーやファンアウトパッケージへ統合する場合もあります。その組合せには独自の根拠が必要で、すべての工程を必須にするわけではありません。",
+        "ko": "다이 한 장을 들어 올려 구리 접점과 유전체 접합면으로 된 하이브리드 접합 계면을 보여 줍니다. 수직 통합은 일부 연결을 줄일 수 있지만 표면 준비, 정렬, 시험 접근, 냉각이 중요한 선택 항목이 됩니다. 적격성이 확인된 적층을 인터포저나 팬아웃 패키지에 다시 통합할 수도 있습니다. 그 조합에는 자체 근거가 필요하며 모든 패키징 공정이 필수가 되는 것은 아닙니다."
+      }
+    },
+    {
+      "key": "screen",
+      "start": 180,
+      "end": 210,
+      "sourceIds": [
+        "nasa-decision"
+      ],
+      "visual": {
+        "station": "review-room",
+        "subchapter": 7,
+        "shot": "reveal-four-candidate-cards",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "I/F/B/H forecasts and failed or pending gates",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "hybrid",
+          "departTo": "economics"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-07",
+      "title": {
+        "en": "Screen the fictional implementations",
+        "zh-TW": "篩選假想實作",
+        "ja": "仮想実装を絞り込む",
+        "ko": "가상 구현 선별",
+        "zh-CN": "筛选假想实现"
+      },
+      "shortTitle": {
+        "en": "Screen the fictional implementations",
+        "zh-TW": "篩選假想實作",
+        "ja": "仮想実装を絞り込む",
+        "ko": "가상 구현 선별",
+        "zh-CN": "筛选假想实现"
+      },
+      "text": {
+        "zh-TW": "回到標為I、F、B、H的四個假想實作，它們不是各架構家族的普遍排名。在相同且明示的條件下，其預估有效容量依序為每秒144、112、128、160GB。F未達120門檻，H則因缺少冷卻證據而待定。其餘需求的預估結果明確記錄後，I與B才可進入暫定比較。",
+        "zh-CN": "回到标为I、F、B、H的四个假想实现，它们不是各架构家族的普遍排名。在相同且明示的条件下，其预估有效容量依序为每秒144、112、128、160GB。F未达120门槛，H则因缺少冷却证据而待定。其余需求的预估结果明确记录后，I与B才可进入暂定比较。",
+        "en": "Return to four fictional implementations labelled I, F, B, and H, not universal rankings of their architecture families. Their forecast useful capacities are respectively 144, 112, 128, and 160 gigabytes per second under identical declared conditions. F misses our 120 threshold, while H remains pending because its cooling evidence is missing. I and B may enter a provisional comparison only after the remaining requirement forecasts are explicitly recorded.",
+        "ja": "I、F、B、Hと名付けた四つの仮想実装へ戻りますが、これは構造群全体の普遍的順位ではありません。同じ明示条件での有効容量予測は、順に毎秒144、112、128、160GBです。Fは120の基準を満たさず、Hは冷却の根拠がないため保留です。IとBも、残る要求の予測結果を明記してから暫定比較に進めます。",
+        "ko": "I, F, B, H로 표시한 네 가상 구현으로 돌아가며 이는 구조 제품군 전체의 보편적 순위가 아닙니다. 동일하게 명시한 조건의 유효 용량 예측은 순서대로 초당144,112,128,160GB입니다. F는120기준에 못 미치고 H는 냉각 근거가 없어 보류됩니다. I와 B도 나머지 요구사항의 예측 결과를 명확히 기록한 뒤에만 잠정 비교에 들어갑니다."
+      }
+    },
+    {
+      "key": "economics",
+      "start": 210,
+      "end": 240,
+      "sourceIds": [
+        "nasa-decision"
+      ],
+      "visual": {
+        "station": "economics-desk",
+        "subchapter": 8,
+        "shot": "zoom-accepted-unit-ledger",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "cost per attempt divided by final passing fraction",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "screen",
+          "departTo": "weights"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-08",
+      "title": {
+        "en": "Compare cost per accepted unit",
+        "zh-TW": "比較每個合格品成本",
+        "ja": "合格品当たりの費用を比べる",
+        "ko": "합격품당 비용 비교",
+        "zh-CN": "比较每个合格品成本"
+      },
+      "shortTitle": {
+        "en": "Compare cost per accepted unit",
+        "zh-TW": "比較每個合格品成本",
+        "ja": "合格品当たりの費用を比べる",
+        "ko": "합격품당 비용 비교",
+        "zh-CN": "比较每个合格品成本"
+      },
+      "text": {
+        "zh-TW": "放大成本帳，數字是每次組裝投入的假想成本單位。I每次210且最終通過率0.90，每個合格品約233.33；B則為190除以0.95，得到200。若B降至0.80，每個合格品成本升為237.50，成本排序便反轉。供應商也須提出相容設計規則、測試覆蓋、材料與交付產能的證據。",
+        "zh-CN": "放大成本账，数字是每次组装投入的假想成本单位。I每次210且最终通过率0.90，每个合格品约233.33；B则为190除以0.95，得到200。若B降至0.80，每个合格品成本升为237.50，成本排序便反转。供应商也须提出兼容设计规则、测试覆盖、材料与交付产能的证据。",
+        "en": "Zoom into a cost ledger whose numbers are invented accounting units per assembly attempt. I costs 210 with a final passing fraction of 0.90, giving about 233.33 per accepted unit, while B gives 190 divided by 0.95, or 200. If B falls to 0.80, its accepted-unit cost rises to 237.50 and the cost ranking reverses. A supplier must also substantiate compatible design rules, test coverage, materials, and delivery capacity.",
+        "ja": "一回の組立投入当たりの仮想費用単位を記した台帳へ拡大します。Iは210で最終合格率0.90なので合格品当たり約233.33となり、Bは190を0.95で割って200です。Bが0.80まで下がると合格品当たり237.50になり、費用順位が逆転します。供給元には、整合する設計規則、テスト範囲、材料、納入能力の根拠も求めます。",
+        "ko": "한 번의 조립 투입당 가상 비용 단위를 기록한 장부를 확대합니다. I는210과 최종 합격률0.90으로 합격품당 약233.33이며 B는190을0.95로 나누어200입니다. B가0.80으로 떨어지면 합격품당 비용은237.50이 되어 비용 순위가 뒤집힙니다. 공급사는 호환 설계 규칙, 시험 범위, 재료, 납품능력의 근거도 제시해야 합니다."
+      }
+    },
+    {
+      "key": "weights",
+      "start": 240,
+      "end": 270,
+      "sourceIds": [
+        "nasa-decision"
+      ],
+      "visual": {
+        "station": "review-room",
+        "subchapter": 9,
+        "shot": "overhead-rating-matrix",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "subjective ratings and declared base weights",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "economics",
+          "departTo": "handoff"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-09",
+      "title": {
+        "en": "Expose subjective preference scores",
+        "zh-TW": "公開主觀偏好分數",
+        "ja": "主観的な点数を公開する",
+        "ko": "주관적 선호 점수 공개",
+        "zh-CN": "公开主观偏好分数"
+      },
+      "shortTitle": {
+        "en": "Expose subjective preference scores",
+        "zh-TW": "公開主觀偏好分數",
+        "ja": "主観的な点数を公開する",
+        "ko": "주관적 선호 점수 공개",
+        "zh-CN": "公开主观偏好分数"
+      },
+      "text": {
+        "zh-TW": "俯瞰暫定可行候選I與B的偏好矩陣。明示的效能、風險、成本與占地權重為0.4、0.3、0.2、0.1，示例分數是3.2與3.5。在這些主觀評級下偏好B，但提高效能權重可能反轉排序。應公布評級定義與敏感度，不應宣稱矽橋封裝永遠獲勝。",
+        "zh-CN": "俯瞰暂定可行候选I与B的偏好矩阵。明示的性能、风险、成本与占用面积权重为0.4、0.3、0.2、0.1，示例分数是3.2与3.5。在这些主观评级下偏好B，但提高性能权重可能反转排序。应公布评级定义与敏感度，不应宣称硅桥封装永远获胜。",
+        "en": "Look down on a preference matrix for the provisionally feasible I and B candidates. Our declared performance, risk, cost, and footprint weights are 0.4, 0.3, 0.2, and 0.1, giving illustrative scores of 3.2 and 3.5. B is preferred under these subjective ratings, but a stronger performance emphasis can reverse the ordering. Publish the rating definitions and sensitivity, not a claim that bridge packaging always wins.",
+        "ja": "暫定的に実現可能なIとBの選好行列を上から眺めます。性能、リスク、費用、面積の重みを0.4、0.3、0.2、0.1と明示すると、例示得点は3.2と3.5になります。この主観的な評価ではBが優先ですが、性能をより重視すると順序が逆転し得ます。ブリッジが必ず勝つと主張せず、評価の定義と感度を公開します。",
+        "ko": "잠정적으로 가능한 I와 B의 선호 행렬을 위에서 봅니다. 성능, 위험, 비용, 면적 가중치를0.4,0.3,0.2,0.1로 명시하면 예시 점수는3.2와3.5입니다. 이 주관적 평점에서는 B를 선호하지만 성능을 더 중시하면 순위가 바뀔 수 있습니다. 브리지 패키징이 항상 이긴다는 주장 대신 평점 정의와 민감도를 공개합니다."
+      }
+    },
+    {
+      "key": "handoff",
+      "start": 270,
+      "end": 300,
+      "sourceIds": [
+        "nasa-decision"
+      ],
+      "visual": {
+        "station": "release-gate",
+        "subchapter": 10,
+        "shot": "rise-over-traceable-baseline",
+        "diagram": {
+          "type": "architecture-decision-teaching-reconstruction",
+          "focus": "controlled architecture baseline passed to C04",
+          "scenarioRef": "C03_SCENE_CONTRACT_V35.json#scenario"
+        },
+        "labelsAreIllustrationsNotMeasurement": true,
+        "routeContinuity": {
+          "arriveFrom": "weights",
+          "departTo": "C04-handoff"
+        }
+      },
+      "originalExample": true,
+      "id": "c03-10",
+      "title": {
+        "en": "Freeze a traceable architecture baseline",
+        "zh-TW": "凍結可追溯架構基線",
+        "ja": "追跡可能な構造の基準を確定",
+        "ko": "추적 가능한 구조 기준 확정",
+        "zh-CN": "冻结可追溯架构基线"
+      },
+      "shortTitle": {
+        "en": "Freeze a traceable architecture baseline",
+        "zh-TW": "凍結可追溯架構基線",
+        "ja": "追跡可能な構造の基準を確定",
+        "ko": "추적 가능한 구조 기준 확정",
+        "zh-CN": "冻结可追溯架构基线"
+      },
+      "text": {
+        "zh-TW": "拉遠到決策紀錄，將每項需求連到證據、假設、負責人與下一次檢查。本練習有條件選B，I僅在自己的證據確認後才保留為已驗證替代方案，H維持待定。延遲或冷卻需求改變時，必須重開受影響的決策，而不是默默改分數。將核准的架構限制交給C04，再做詳細凸塊與電源網路映射。",
+        "zh-CN": "拉远到决策记录，将每项需求连到证据、假设、负责人与下一次检查。本练习有条件选B，I仅在自己的证据确认后才保留为已验证替代方案，H维持待定。延迟或冷却需求改变时，必须重开受影响的决策，而不是默默改分数。将批准的架构限制交给C04，再做详细凸块与电源网络映射。",
+        "en": "Pull back to a decision record linking each requirement to evidence, assumptions, an owner, and a next check. Select B conditionally in this exercise, retain I as a qualified alternative only if its own evidence is confirmed, and keep H pending. A delay or changed cooling requirement must reopen the affected decision rather than silently changing a score. Pass the approved architecture constraints to C04 for detailed bump and power-net mapping.",
+        "ja": "画面を引き、各要求を根拠、仮定、担当者、次の確認に結び付けた決定記録を示します。この演習ではBを条件付きで選び、Iは独自の根拠が確認できた場合にだけ適格な代替案として残し、Hは保留します。遅延や冷却要求の変更があれば、点数を黙って変更せず、影響する決定を再検討します。承認した構造上の制約をC04へ渡し、詳細なバンプと電源ネットの対応付けに進みます。",
+        "ko": "화면을 뒤로 빼 각 요구사항을 근거, 가정, 담당자, 다음 점검에 연결한 결정 기록을 보여 줍니다. 이 연습에서는 B를 조건부 선택하고 I는 자체 근거가 확인된 경우에만 적격 대안으로 유지하며 H는 보류합니다. 지연이나 냉각 요구 변경 시 점수만 몰래 바꾸지 말고 영향을 받는 결정을 다시 검토해야 합니다. 승인한 구조 제약을 C04에 넘겨 상세 범프와 전원 네트 매핑을 진행합니다."
+      }
+    }
+  ],
+  "productionContract": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "totalFrames": 7200,
+    "narration": "five independent native-language measured speech tracks; authored chapter slots are not sentence timing",
+    "subtitles": "native measured speech cues with deliberately authored matching English meaning; never align by English audio time",
+    "endCard": {
+      "url": "https://line.me/R/ti/p/%40530pgchc",
+      "startSeconds": 290,
+      "endSeconds": 300
+    },
+    "generated": false
+  },
+  "distribution": {
+    "shortFilm": "Publish only after final verified media and explicit publication workflow",
+    "longFilm": "Hosting and YouTube route selected by project owner; no unverified links or IDs",
+    "youtubeId": null
+  },
+  "contentReview": {
+    "status": "PASS",
+    "report": "INDEPENDENT_TECHNICAL_TRANSLATION_SEMANTIC_REVIEW_C03_V35.json",
+    "reviewedDraftSha256": "e239585edfcfb94212a94179d15e1907ed71a1554839e39b4deca78c988239e8",
+    "chapterTextSha256": "7faf9d56b04625d6bc83b7e80b7eee98655fa0ebf7edfe0d170879e05635ff2f",
+    "chapterTextHashPolicy": "JSON [{key,text}] in chapter order; ensure_ascii=false, sort_keys=true, compact separators; UTF-8 SHA256",
+    "humanNativeEngineerCertified": false
+  }
+}
