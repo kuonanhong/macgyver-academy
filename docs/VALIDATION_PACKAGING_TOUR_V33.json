@@ -1,13 +1,13 @@
 {
-  "version": "34.0.4",
+  "version": "34.0.5",
   "date": "2026-11-24",
   "status": "PASS",
-  "scope": "Six five-minute introductory overview films, C01 five-minute process film, 120 bilingual roadmap activities; separate 15-minute long films are in production.",
+  "scope": "Six five-minute overview films, C01 five-minute process film, 120 bilingual roadmap activities; C01 fifteen-minute full lesson completed locally and awaiting YouTube publication.",
   "overviewFilms": 6,
   "processFilms": 1,
   "processRoadmapActivities": 120,
   "remainingProcessFilms": 119,
-  "longFilmsProduced": 0,
+  "longFilmsProduced": 1,
   "secondsPerTour": 300,
   "languages": [
     "zh-TW",
@@ -706,7 +706,16 @@
     "longFilmAssembler": {
       "status": "PASS",
       "offlineTests": 8,
-      "actualLongFilmAssembly": "pending"
+      "actualLongFilmAssembly": "PASS: final900-second movie, fiveAAC/fivecaption streams,30chapters, packet/timing/text/QR verified"
+    },
+    "PagesArtifactVisibilityWait": {
+      "status": "PASS",
+      "tests": 13,
+      "verifiedDeploymentRun": 45331154228
+    },
+    "PagesRunIdentityWait": {
+      "status": "PASS",
+      "tests": 26
     }
   },
   "browserChecks": {
@@ -716,10 +725,19 @@
     "C01VideoAudio": "PASS: actual Chrome 1280x720 video and zh-TW/ja M4A decode at 300 seconds; synchronized clocks",
     "C01QuickLanguageChange": "PASS: real Chrome rapid zh-TW/ja/ko/zh-CN/en selection and playback; actual audio currentSrc, paused=false, no displayed media error",
     "C01MobileAndFullscreen": "PASS: 390x844 document width=scrollWidth=390, both caption fonts16px; native fullscreen unavailable, full-viewport fallback matched1920x936 desktop and390x844 mobile, captions visible, exit button and Escape both passed",
-    "C01SeekReplay": "PASS: 120-second chapter seek,300-second end and replay fromzero; corrected pending-video AbortError during audio buffering"
+    "C01SeekReplay": "PASS: 120-second chapter seek,300-second end and replay fromzero; corrected pending-video AbortError during audio buffering",
+    "PublishedReleasePlayback": "PASS: live Chrome reads C01 MP4 from verified GitHub Release; 300-second1280x720 video and Japanese/Korean/Traditional Chinese audio, synchronized playback and120-second seek.",
+    "AuthoredCaptionLanguage": "PASS: after real Chrome automatically mistranslated Japanese+English, both cinema HTML pages now preserve authored text; live Japanese and Korean first lines retain matching English second lines.",
+    "PublishedMobile": "PASS: actual390px CSS width, scrollWidth390, fullscreen fallback390x843.75; both caption fonts16px; viewport reset and Traditional Chinese selection restored."
   },
   "publication": {
-    "githubPages": "Deployment and live verification tracked separately; this report certifies local source/media.",
+    "githubPages": {
+      "status": "verified",
+      "commit": "392112fc006736f7cacb2c6bcbaa48155643fa29",
+      "runId": 45331154228,
+      "url": "https://kuonanhong.github.io/macgyver-academy/",
+      "captionFixVerifiedInChrome": true
+    },
     "youtube": {
       "publishedFilms": 0,
       "studioError": "已達每日上傳數量上限；24 小時後，你就可以再上傳其他影片。",
@@ -749,7 +767,7 @@
     "public/academy/packaging-tour-v33.js": "30e3a4441fe7c536d0905fc095a3046f7f4a394177115f705c17d9c2323ac327",
     "public/academy/packaging-process-scene-v34.js": "e8d42e7320d8eed5db537c120e0a3af5dfcda1567b1451d9a4707e9e571835cc",
     "public/academy/packaging-process-film-v34.js": "bae8693259b24e62a3d704ef45d545fb53def549bc1b433ad56ceca3d56e98e9",
-    "public/academy/packaging-process-film-v34.html": "1c454937617fafa0147bcba064fae90b3348fe91447e46b77682b873b24d7ac0",
+    "public/academy/packaging-process-film-v34.html": "c39ce918d8d4d30cb018a1184fec9e2383f976bd993fe607bee97bb022d05947",
     "public/academy/packaging-process-film-v34.css": "aebb56f80c7eabdb23c6db752cdd4a7c7419eed1b91468b0215dd57e582df945",
     "public/academy/packaging-captions-v33.js": "e87e5a0ef505f1096de4bbfb650ada6a993f87704469ecb463fd675e81609956",
     "public/academy/packaging-narration-v33.js": "794adf182d61a4bceeed812a6f46270e442671af82909d073feb2e3843fd7216",
@@ -757,6 +775,18 @@
     "public/academy/packaging-process-media-v34.js": "48c6976258e9a54f445b12828914a4f52423e435219124f22465597229861e12",
     "public/academy/packaging-media-v33.js": "a359f40a43826236f3c5e5eef8537ca602fadcc1e7b8f49a5986e95318811dd9",
     "public/academy/packaging-youtube-v33.js": "61d2008433484d3d0528c40292b26a80203fc7bd488f63f37e6709bc4f5d5712",
-    "public/academy/assets/packaging-tour-v33/videos/hosting.json": "2abd953ca94a02c1d9389a421b97b26e29791aa2c3ec92436f617753cb585054"
+    "public/academy/assets/packaging-tour-v33/videos/hosting.json": "2abd953ca94a02c1d9389a421b97b26e29791aa2c3ec92436f617753cb585054",
+    "public/academy/packaging-tour-v33.html": "cad4138b802458b0e0fb73af39477fd7ccb838233331999b9c1e2e0e954d14a6"
+  },
+  "longLessonVerification": {
+    "id": "C01-long",
+    "durationSeconds": 900,
+    "frames": 21600,
+    "chapters": 30,
+    "narrationLanguages": 5,
+    "subtitleLanguages": 5,
+    "bytes": 158226011,
+    "sha256": "436b404851681d715d44ef20391e16c1b4bf2b9c53592d7d0a533db570fb13ba",
+    "distribution": "local completed; YouTube not published; excluded from GitHub Release"
   }
 }
