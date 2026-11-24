@@ -1,4 +1,4 @@
-/* C01 five-minute film verified; the separate full lesson remains in production. */
+/* Verified short-film Release; full YouTube lesson is tracked separately. */
 window.MACGYVER_PACKAGING_PROCESS_MEDIA = {
   "version": "34.0.1",
   "processes": {
@@ -8,7 +8,8 @@ window.MACGYVER_PACKAGING_PROCESS_MEDIA = {
       "video": {
         "src": "assets/packaging-process-v34/C01/C01.mp4?v=34.0.1",
         "sha256": "fee6ec0dc01d40b16c646d1b00609296ecf7612df43dd29b347fec3a5d099f66",
-        "bytes": 52549959
+        "bytes": 52549959,
+        "remoteSrc": "https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/C01.mp4"
       },
       "audio": {
         "zh-TW": {

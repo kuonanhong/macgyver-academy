@@ -32,5 +32,11 @@ class HostingTests(unittest.TestCase):
     def test_other_account_is_not_accepted(self):
         self.policy['videos']['interposer']['url']='https://github.com/other/repo/releases/download/tag/interposer.mp4';self.write()
         with self.assertRaises(ValueError):exporter.remote_packaging_videos(self.root)
+    def test_verified_process_film_is_omitted_too(self):
+        file=self.root/'assets/packaging-process-v34/C01/C01.mp4';file.parent.mkdir(parents=True);file.write_bytes(b'verified process')
+        self.policy['processVideos']={'C01':{'url':'https://github.com/kuonanhong/macgyver-academy/releases/download/'+self.policy['tag']+'/C01.mp4','bytes':file.stat().st_size,'sha256':hashlib.sha256(file.read_bytes()).hexdigest()}}
+        self.write();self.assertEqual(len(exporter.remote_packaging_videos(self.root)),7)
+        file.write_bytes(b'changed process')
+        with self.assertRaises(ValueError):exporter.remote_packaging_videos(self.root)
 
 if __name__=='__main__':unittest.main()

@@ -672,7 +672,7 @@
     "releaseAssetHashGate": "PASS",
     "PagesRemoteMediaPolicy": {
       "status": "PASS",
-      "tests": 5
+      "tests": 6
     },
     "youtubePublisher": {
       "status": "PASS",
@@ -682,7 +682,32 @@
       "status": "PASS",
       "tests": 5
     },
-    "generic900SecondNarration": "PASS: thirty chapters and exact 900-second AAC presentation timeline tested without replacing original 35 tracks"
+    "generic900SecondNarration": "PASS: thirty chapters and exact 900-second AAC presentation timeline tested without replacing original 35 tracks",
+    "releasePublicationDraftURLGate": {
+      "status": "PASS",
+      "tests": 6,
+      "behavior": "Draft assets verified with same-release token; published assets verified with exact tag URL, size and SHA-256."
+    },
+    "offlineBuild": {
+      "status": "PASS",
+      "appModules": 71,
+      "sceneModules": 7,
+      "datasets": 22,
+      "guidedCourses": 3491,
+      "initialCatalogueBytes": 11146904,
+      "compatibilityParts": 113
+    },
+    "processYoutubePublisher": {
+      "status": "PASS",
+      "tests": 9,
+      "outsideWorkingDirectoryPreflight": "PASS",
+      "networkUsed": false
+    },
+    "longFilmAssembler": {
+      "status": "PASS",
+      "offlineTests": 8,
+      "actualLongFilmAssembly": "pending"
+    }
   },
   "browserChecks": {
     "overviewAudio": "PASS: actual Chrome audio element currentSrc, 300-second duration and playback confirmed",
@@ -700,6 +725,14 @@
       "studioError": "已達每日上傳數量上限；24 小時後，你就可以再上傳其他影片。",
       "apiError": "quotaExceeded",
       "playlistIdVerified": false
+    },
+    "githubRelease": {
+      "status": "verified",
+      "url": "https://github.com/kuonanhong/macgyver-academy/releases/tag/packaging-tours-v33.0.3",
+      "shortFilms": 7,
+      "totalBytes": 230922010,
+      "serverDigestMatchesLocal": true,
+      "httpRangeCheck": "PASS: representative overview and C01 return206 with ftyp headers and expected totals"
     }
   },
   "limits": [
@@ -721,6 +754,9 @@
     "public/academy/packaging-captions-v33.js": "e87e5a0ef505f1096de4bbfb650ada6a993f87704469ecb463fd675e81609956",
     "public/academy/packaging-narration-v33.js": "794adf182d61a4bceeed812a6f46270e442671af82909d073feb2e3843fd7216",
     "public/academy/packaging-process-captions-v34.js": "b50c50248896cbcb12701a73ce07723678a5fd437fb922c0f65b8678407b28bf",
-    "public/academy/packaging-process-media-v34.js": "15af0ffb39e758cd9b36794b077569711fac1a11280890d2b0703d79f6ab42b7"
+    "public/academy/packaging-process-media-v34.js": "48c6976258e9a54f445b12828914a4f52423e435219124f22465597229861e12",
+    "public/academy/packaging-media-v33.js": "a359f40a43826236f3c5e5eef8537ca602fadcc1e7b8f49a5986e95318811dd9",
+    "public/academy/packaging-youtube-v33.js": "61d2008433484d3d0528c40292b26a80203fc7bd488f63f37e6709bc4f5d5712",
+    "public/academy/assets/packaging-tour-v33/videos/hosting.json": "2abd953ca94a02c1d9389a421b97b26e29791aa2c3ec92436f617753cb585054"
   }
 }

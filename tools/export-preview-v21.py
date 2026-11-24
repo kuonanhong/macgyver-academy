@@ -50,6 +50,17 @@ def remote_packaging_videos(source):
                 or hashlib.sha256(file.read_bytes()).hexdigest() != item['sha256']):
             raise ValueError('Stale or unsafe packaging release asset: '+identity)
         omitted.add(rel)
+    for identity, item in data.get('processVideos', {}).items():
+        if identity != 'C01':
+            raise ValueError('Unreviewed process release entry: '+identity)
+        rel = Path('assets/packaging-process-v34/C01/C01.mp4')
+        file = source/rel
+        expected = 'https://github.com/kuonanhong/macgyver-academy/releases/download/'+data['tag']+'/C01.mp4'
+        if (item.get('url') != expected or file.is_symlink() or not file.is_file()
+                or file.stat().st_size != item.get('bytes')
+                or hashlib.sha256(file.read_bytes()).hexdigest() != item.get('sha256')):
+            raise ValueError('Stale or unsafe C01 release asset.')
+        omitted.add(rel)
     return omitted
 
 def serial(value):

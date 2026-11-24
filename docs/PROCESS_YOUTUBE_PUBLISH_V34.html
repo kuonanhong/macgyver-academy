@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>工序影片一鍵發布｜Process film publishing V34</title>
+<style>body{max-width:900px;margin:32px auto;padding:0 20px;font:17px/1.7 system-ui;color:#163044}h1,h2{line-height:1.3}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf3f7;padding:18px;border-radius:10px}code{font-family:ui-monospace,monospace}a{color:#096fa0}</style>
+<h1>工序影片一鍵發布</h1>
+<p>本工具支援每次一部已驗證的 5 分鐘或 15 分鐘工序影片。C01 短片與 C01-long 長片使用不同的進度目錄；既有六部總覽的發布工作與進度檔維持獨立。所有發布階段都先核對頻道 <code>UCXcPnnnM7btkcHwSFkVckzQ</code>。</p>
+<p>本次工具開發僅進行離線檢查與假 API 測試，沒有因此上傳任何 YouTube 影片。請在帳號上傳限制及專案配額恢復、影片已審閱後，再明確執行發布命令。程式遇配額限制即停止，不會排程、自動等待或重試。</p>
+<h2>1. 不需要帳密的離線檢查</h2>
+<p>在解壓後的程式根目錄執行。需要 Python 3 與 Bash；Git Bash、WSL、macOS 與 Linux 可使用同一份腳本。此發布工具使用 Python 標準函式庫，無須 requests、NumPy 或 FFmpeg。</p>
+<pre>bash Upload_Process_V34.sh --film C01 --offline-preflight</pre>
+<p>此命令不讀 OAuth 檔、不連網、不建立私人進度。會核對 manifest 綁定、MP4、五語音訊、五語 VTT/SRT 雜湊、完整字幕時間範圍、章節、語言與 LINE 結尾證據。</p>
+<h2>2. 一次完成播放清單、影片、字幕與核實</h2>
+<pre>bash Upload_Process_V34.sh --film C01 \
+  --client "/私人路徑/client.json" \
+  --token "/私人路徑/token.json"</pre>
+<p>請提供已授權的 Google installed-app client JSON 與含 refresh_token 的 token JSON；不要把它們放進網站、程式包或 Git。工具不搜尋憑證、不顯示 token，更新後的 access token 只保留在記憶體。可用 <code>PYTHON_BIN</code> 指定 Python 執行檔。</p>
+<p>短片沿用精確名稱「馬蓋先創意工程學院｜先進半導體封裝：5分鐘俯瞰導覽」；長片使用「馬蓋先創意工程學院｜先進半導體封裝：15分鐘深入工序」。工具完整查詢授權頻道的播放清單：恰有一個同名清單就沿用，沒有才建立，重複或先前建立結果不明則停止。沒有預填未核實的播放清單或影片 ID。</p>
+<p>各工序只新增自己的影片並核實唯一成員關係；不重排或刪除其他影片。排序交由播放清單既有設定管理。影片採公開、教育分類、非兒童專用、標記合成媒體，並關閉訂閱者通知。</p>
+<h2>3. 長片與之後的工序</h2>
+<p>C01-long 必須先完成 900 秒母片、五語旁白實測、語意字幕與最終合成，才會產生可發布 metadata。尚未完成時工具會拒絕執行。長片只交付本地與 YouTube，不放入公開網站源碼或 GitHub Release。</p>
+<pre>bash Upload_Process_V34.sh --film C01-long --offline-preflight
+
+bash Upload_Process_V34.sh --film C01-long \
+  --metadata "/長片交付/C01-long/youtube-metadata.long-v34.json" \
+  --client "/私人路徑/client.json" --token "/私人路徑/token.json"</pre>
+<p>其他工序可用 <code>--film C02</code> 或 <code>--film C02-long</code> 搭配各自完整、已驗證的 <code>--metadata</code>。支援格式為一個字母加二至三位數字，可加 <code>-long</code>。不會根據索引假裝尚未製作的影片存在。</p>
+<h2>4. 中斷續傳與查核</h2>
+<p>預設私人進度位於 <code>~/.local/state/macgyver-youtube/process-v34/影片ID</code>（遵循 XDG_STATE_HOME），目錄 0700、檔案 0600。請保留原進度並重新執行相同命令：完成影片不再上傳，已存在字幕不重複建立，不確定的操作先核對結果。變動 metadata 或影片後，不可用同一進度硬續傳。</p>
+<pre>bash Upload_Process_V34.sh --film C01 --phase verify \
+  --client "/私人路徑/client.json" --token "/私人路徑/token.json"</pre>
+<p><code>--phase</code> 可選 all、playlist、videos、captions、verify。配額停止退出碼為 3；恢復額度後由你再次執行。<code>--state</code> 可指定其他私人資料夾，但工具拒絕使用六部總覽的進度目錄。<code>--report</code> 必須放在私人進度之外，預設為 <code>reports/YOUTUBE_PROCESS_影片ID_V34.json</code>；報告只包含公開 ID、網址、標題與處理／字幕狀態。階段完成不等於 YouTube 處理或所有字幕已就緒，請讀取報告的實際狀態。</p>
+<h2>五語音軌與五語字幕的差別</h2>
+<p>主 MP4 有五個 AAC 音軌、預設繁中旁白。API 工具上傳主片與五條已對時字幕；非英文字幕每句含本語與對應英文，英文軌為英文單語。YouTube 是否提供替代語音，仍取決於帳號的 Studio 多語音軌功能與實際發布結果；不能保證它自動匯入 MP4 的所有音軌。本工具不虛構不存在的音軌 API。</p>
+<p>舊 C01 metadata 中的 Studio-only 說明是之前的工作紀錄；現有 metadata 可直接交給這個獨立 adapter，不需修改或交給六部總覽 uploader。補充語音仍可在 Studio 使用相同交付資料夾的 M4A。</p>
+<h2>English</h2><p>Run <code>Upload_Process_V34.sh --film C01 --offline-preflight</code> to validate without credentials or networking. After limits reset, explicitly supply <code>--client</code> and <code>--token</code>. Each film has isolated resumable state, a fixed authorized channel, exact-title playlist reconciliation, and five deduplicated caption tracks. Other playlist entries are never moved or deleted. A 900-second long-film job is accepted only after its complete media and timing validation. Alternate-language audio still requires supported YouTube Studio publication.</p>
+<p>官方規格：<a href="https://developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert">播放清單成員新增與選用 position</a>、<a href="https://developers.google.com/youtube/data/reference/rest/v3/captions/insert">字幕新增</a>、<a href="https://support.google.com/youtube/answer/13338784?hl=en">Studio 多語音軌</a>。</p>
+</html>

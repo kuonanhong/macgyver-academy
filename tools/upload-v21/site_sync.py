@@ -96,6 +96,10 @@ def public_snapshot(source, excluded=()):
             required.append(optional)
     for optional in (
             'Upload_Narrated_V34.sh', 'Publish_Packaging_Website_v34.sh',
+            'Upload_Process_V34.sh', 'tools/publish-process-youtube-v34.py',
+            'tools/test-publish-process-youtube-v34.py', 'docs/PROCESS_YOUTUBE_PUBLISH_V34.html',
+            'tools/build-process-long-v34.py', 'tools/test-process-long-v34.py',
+            'tools/test-publish-packaging-release-v34.py',
             'requirements-packaging-media-v34.txt', 'docs/PACKAGING_MEDIA_ENVIRONMENT_V34.json',
             'tools/publish-packaging-release-v34.py', 'tools/test-packaging-hosting-v33.py',
             'tools/build-native-narration-v34.py', 'tools/collect-packaging-narration-v34.py',

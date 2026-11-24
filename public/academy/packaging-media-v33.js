@@ -1,2 +1,2 @@
-/* Verified remote media URLs are installed after upload. */
-window.MACGYVER_PACKAGING_MEDIA={version:"33.0.3",videos:{}};
+/* Verified GitHub Release media; local copies remain in the offline package. */
+window.MACGYVER_PACKAGING_MEDIA={"version":"33.0.3","videos":{"interposer":"https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/interposer.mp4","fanout":"https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/fanout.mp4","hybrid":"https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/hybrid.mp4","bridge":"https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/bridge.mp4","chiplet":"https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/chiplet.mp4","thermal":"https://github.com/kuonanhong/macgyver-academy/releases/download/packaging-tours-v33.0.3/thermal.mp4"}};

@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 PROJECT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-SYNC_STATE="${MACGYVER_GITHUB_STATE:-$PROJECT_DIR/../MacGyver_v34_SSH_Upload_State}"
+DEFAULT_SYNC_STATE="$PROJECT_DIR/../MacGyver_v34_SSH_Upload_State"
+if [[ -d "$PROJECT_DIR/../MacGyver_v32_SSH_Upload_State/site/.git" ]]; then
+  DEFAULT_SYNC_STATE="$PROJECT_DIR/../MacGyver_v32_SSH_Upload_State"
+fi
+SYNC_STATE="${MACGYVER_GITHUB_STATE:-$DEFAULT_SYNC_STATE}"
 RELEASE_TAG='packaging-tours-v33.0.3'
 CHECK_ONLY=0
 while (($#)); do
