@@ -60,7 +60,8 @@ def public_snapshot(source, excluded=()):
     # Deployment is deliberately independent of the full course compiler.
     required = ['index.html', 'deploy-static.sh', '.github/workflows/pages.yml', 'Update_MacGyver_v29.sh',
                 '.github/workflows/weekly-markets.yml', 'tools/markets-v12/update_markets.py',
-                'tools/check-pages-artifact-v28.py', 'tools/deployment-marker-v32.py', 'tools/count-learning-tracks-v32.mjs', 'tools/verify-live-v32.py', 'tools/pages-doctor-v28.py', 'tools/read-json-array.mjs',
+                'tools/check-pages-artifact-v28.py', 'tools/wait-pages-artifact-v34.py', 'tools/test-wait-pages-artifact-v34.py',
+                'tools/deployment-marker-v32.py', 'tools/count-learning-tracks-v32.mjs', 'tools/verify-live-v32.py', 'tools/pages-doctor-v28.py', 'tools/read-json-array.mjs',
                 'tools/export-preview-v21.py', 'macgyver.sh', 'Upload_MacGyver_v21_SSH.sh',
                 'tools/upload-v21/site_sync.py', 'tools/upload-v21/upload.py',
                 'tools/upload-v21/public_transport.py', 'tools/export_github.py',
